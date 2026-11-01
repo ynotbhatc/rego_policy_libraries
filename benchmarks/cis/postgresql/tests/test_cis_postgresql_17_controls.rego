@@ -198,7 +198,7 @@ test_section_control_counts if {
 	s.special_requirements.controls == 3
 }
 
-# 1.1 Ensure packages are obtained from authorized repositories
+# 1.1 packages must be obtained from authorized repositories
 test_1_1_pass if {
 	"1.1" in b.passed with input as green
 }
@@ -215,7 +215,7 @@ test_1_1_fail_attest_absent if {
 	not "1.1" in b.passed with input as inp
 }
 
-# 1.2 Ensure only required packages are installed
+# 1.2 only required packages must be present
 test_1_2_pass if {
 	"1.2" in b.passed with input as green
 }
@@ -232,7 +232,7 @@ test_1_2_fail_attest_absent if {
 	not "1.2" in b.passed with input as inp
 }
 
-# 1.3 Ensure systemd Service Files Are Enabled
+# 1.3 systemd Service Files must be turned on
 test_1_3_pass if {
 	"1.3" in b.passed with input as green
 }
@@ -241,7 +241,7 @@ test_1_3_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/service/enabled", "value": false}])
 	not "1.3" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"1.3: Ensure systemd Service Files Are Enabled — requirement not met" in vs
+	"1.3: systemd Service Files must be turned on — requirement not met" in vs
 }
 
 test_1_3_evidence_missing_1 if {
@@ -249,12 +249,12 @@ test_1_3_evidence_missing_1 if {
 	not "1.3" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.3: evidence missing — postgresql.service.enabled not collected" in vs
-	not "1.3: Ensure systemd Service Files Are Enabled — requirement not met" in vs
+	not "1.3: systemd Service Files must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 1.4 Ensure Data Cluster Initialized Successfully
+# 1.4 checked condition — Data Cluster Initialized Successfully
 test_1_4_pass if {
 	"1.4" in b.passed with input as green
 }
@@ -263,14 +263,14 @@ test_1_4_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/cluster/check_db_dir_rc", "value": 1}])
 	not "1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"1.4: Ensure Data Cluster Initialized Successfully — requirement not met" in vs
+	"1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
 }
 
 test_1_4_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/cluster/initialized", "value": false}])
 	not "1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"1.4: Ensure Data Cluster Initialized Successfully — requirement not met" in vs
+	"1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
 }
 
 test_1_4_evidence_missing_1 if {
@@ -278,7 +278,7 @@ test_1_4_evidence_missing_1 if {
 	not "1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.4: evidence missing — postgresql.cluster.initialized not collected" in vs
-	not "1.4: Ensure Data Cluster Initialized Successfully — requirement not met" in vs
+	not "1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -288,12 +288,12 @@ test_1_4_evidence_missing_2 if {
 	not "1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.4: evidence missing — postgresql.cluster.check_db_dir_rc not collected" in vs
-	not "1.4: Ensure Data Cluster Initialized Successfully — requirement not met" in vs
+	not "1.4: checked condition — Data Cluster Initialized Successfully — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 1.5 Ensure the Latest Security Patches are Applied
+# 1.5 the Latest Security Patches must be Applied
 test_1_5_pass if {
 	"1.5" in b.passed with input as green
 }
@@ -310,7 +310,7 @@ test_1_5_fail_attest_absent if {
 	not "1.5" in b.passed with input as inp
 }
 
-# 1.6 Verify that 'PGPASSWORD' is not set in Users' Profiles
+# 1.6 'PGPASSWORD' is not set in Users' Profiles must be confirmed from collected state
 test_1_6_pass if {
 	"1.6" in b.passed with input as green
 }
@@ -319,7 +319,7 @@ test_1_6_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/system/pgpassword_profile_files", "value": ["/home/app/.bashrc"]}])
 	not "1.6" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"1.6: Verify that 'PGPASSWORD' is not set in Users' Profiles — requirement not met" in vs
+	"1.6: 'PGPASSWORD' is not set in Users' Profiles must be confirmed from collected state — requirement not met" in vs
 }
 
 test_1_6_evidence_missing_1 if {
@@ -327,12 +327,12 @@ test_1_6_evidence_missing_1 if {
 	not "1.6" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.6: evidence missing — postgresql.system.pgpassword_profile_files not collected" in vs
-	not "1.6: Verify that 'PGPASSWORD' is not set in Users' Profiles — requirement not met" in vs
+	not "1.6: 'PGPASSWORD' is not set in Users' Profiles must be confirmed from collected state — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 1.7 Verify that the 'PGPASSWORD' Environment Variable is not in use
+# 1.7 Verify that the 'PGPASSWORD' Environment Variable must not be running
 test_1_7_pass if {
 	"1.7" in b.passed with input as green
 }
@@ -341,7 +341,7 @@ test_1_7_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/system/pgpassword_processes", "value": [4242]}])
 	not "1.7" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"1.7: Verify that the 'PGPASSWORD' Environment Variable is not in use — requirement not met" in vs
+	"1.7: Verify that the 'PGPASSWORD' Environment Variable must not be running — requirement not met" in vs
 }
 
 test_1_7_evidence_missing_1 if {
@@ -349,12 +349,12 @@ test_1_7_evidence_missing_1 if {
 	not "1.7" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"1.7: evidence missing — postgresql.system.pgpassword_processes not collected" in vs
-	not "1.7: Verify that the 'PGPASSWORD' Environment Variable is not in use — requirement not met" in vs
+	not "1.7: Verify that the 'PGPASSWORD' Environment Variable must not be running — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 2.1 Ensure the file permissions mask is correct
+# 2.1 the file permissions mask must be correct
 test_2_1_pass if {
 	"2.1" in b.passed with input as green
 }
@@ -371,7 +371,7 @@ test_2_1_fail_attest_absent if {
 	not "2.1" in b.passed with input as inp
 }
 
-# 2.2 Ensure extension directory has appropriate ownership and permissions
+# 2.2 extension directory must have appropriate ownership and permissions
 test_2_2_pass if {
 	"2.2" in b.passed with input as green
 }
@@ -380,21 +380,21 @@ test_2_2_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/file_permissions/extension_directory/mode", "value": "0775"}])
 	not "2.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"2.2: Ensure extension directory has appropriate ownership and permissions — requirement not met" in vs
+	"2.2: extension directory must have appropriate ownership and permissions — requirement not met" in vs
 }
 
 test_2_2_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/file_permissions/extension_directory/owner", "value": "postgres"}])
 	not "2.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"2.2: Ensure extension directory has appropriate ownership and permissions — requirement not met" in vs
+	"2.2: extension directory must have appropriate ownership and permissions — requirement not met" in vs
 }
 
 test_2_2_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/file_permissions/extension_directory/mode", "value": "0700"}])
 	not "2.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"2.2: Ensure extension directory has appropriate ownership and permissions — requirement not met" in vs
+	"2.2: extension directory must have appropriate ownership and permissions — requirement not met" in vs
 }
 
 test_2_2_evidence_missing_1 if {
@@ -402,12 +402,12 @@ test_2_2_evidence_missing_1 if {
 	not "2.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"2.2: evidence missing — postgresql.file_permissions.extension_directory not collected" in vs
-	not "2.2: Ensure extension directory has appropriate ownership and permissions — requirement not met" in vs
+	not "2.2: extension directory must have appropriate ownership and permissions — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 2.3 Disable PostgreSQL Command History
+# 2.3 PostgreSQL Command History must be turned off
 test_2_3_pass if {
 	"2.3" in b.passed with input as green
 }
@@ -416,7 +416,7 @@ test_2_3_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/system/psql_history_files", "value": [{"path": "/home/jim/.psql_history", "symlink_target": ""}]}])
 	not "2.3" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"2.3: Disable PostgreSQL Command History — requirement not met" in vs
+	"2.3: PostgreSQL Command History must be turned off — requirement not met" in vs
 }
 
 test_2_3_evidence_missing_1 if {
@@ -424,12 +424,12 @@ test_2_3_evidence_missing_1 if {
 	not "2.3" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"2.3: evidence missing — postgresql.system.psql_history_files not collected" in vs
-	not "2.3: Disable PostgreSQL Command History — requirement not met" in vs
+	not "2.3: PostgreSQL Command History must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 2.4 Ensure Passwords are not stored in the service file
+# 2.4 Passwords must be not stored in the service file
 test_2_4_pass if {
 	"2.4" in b.passed with input as green
 }
@@ -446,7 +446,7 @@ test_2_4_fail_attest_absent if {
 	not "2.4" in b.passed with input as inp
 }
 
-# 3.1.2 Ensure the log destinations are set correctly
+# 3.1.2 the log destinations must match the approved value
 test_3_1_2_pass if {
 	"3.1.2" in b.passed with input as green
 }
@@ -455,14 +455,14 @@ test_3_1_2_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_destination", "value": ""}])
 	not "3.1.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.2: Ensure the log destinations are set correctly — requirement not met" in vs
+	"3.1.2: the log destinations must match the approved value — requirement not met" in vs
 }
 
 test_3_1_2_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_destination", "value": "stderr"}, {"op": "add", "path": "/postgresql/policy", "value": {"log_destinations": ["csvlog"]}}])
 	not "3.1.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.2: Ensure the log destinations are set correctly — requirement not met" in vs
+	"3.1.2: the log destinations must match the approved value — requirement not met" in vs
 }
 
 test_3_1_2_evidence_missing_1 if {
@@ -470,12 +470,12 @@ test_3_1_2_evidence_missing_1 if {
 	not "3.1.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.2: evidence missing — postgresql.logging.log_destination not collected" in vs
-	not "3.1.2: Ensure the log destinations are set correctly — requirement not met" in vs
+	not "3.1.2: the log destinations must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.3 Ensure the logging collector is enabled
+# 3.1.3 the logging collector must be turned on
 test_3_1_3_pass if {
 	"3.1.3" in b.passed with input as green
 }
@@ -484,7 +484,7 @@ test_3_1_3_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/logging_collector", "value": "off"}])
 	not "3.1.3" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.3: Ensure the logging collector is enabled — requirement not met" in vs
+	"3.1.3: the logging collector must be turned on — requirement not met" in vs
 }
 
 test_3_1_3_evidence_missing_1 if {
@@ -492,12 +492,12 @@ test_3_1_3_evidence_missing_1 if {
 	not "3.1.3" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.3: evidence missing — postgresql.logging.logging_collector not collected" in vs
-	not "3.1.3: Ensure the logging collector is enabled — requirement not met" in vs
+	not "3.1.3: the logging collector must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.4 Ensure the log file destination directory is set correctly
+# 3.1.4 the log file destination directory must match the approved value
 test_3_1_4_pass if {
 	"3.1.4" in b.passed with input as green
 }
@@ -506,14 +506,14 @@ test_3_1_4_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_directory", "value": ""}])
 	not "3.1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.4: Ensure the log file destination directory is set correctly — requirement not met" in vs
+	"3.1.4: the log file destination directory must match the approved value — requirement not met" in vs
 }
 
 test_3_1_4_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/policy", "value": {"log_directory": "/srv/pglog"}}])
 	not "3.1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.4: Ensure the log file destination directory is set correctly — requirement not met" in vs
+	"3.1.4: the log file destination directory must match the approved value — requirement not met" in vs
 }
 
 test_3_1_4_evidence_missing_1 if {
@@ -521,12 +521,12 @@ test_3_1_4_evidence_missing_1 if {
 	not "3.1.4" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.4: evidence missing — postgresql.logging.log_directory not collected" in vs
-	not "3.1.4: Ensure the log file destination directory is set correctly — requirement not met" in vs
+	not "3.1.4: the log file destination directory must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.5 Ensure the filename pattern for log files is set correctly
+# 3.1.5 the filename pattern for log files must match the approved value
 test_3_1_5_pass if {
 	"3.1.5" in b.passed with input as green
 }
@@ -535,14 +535,14 @@ test_3_1_5_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_filename", "value": ""}])
 	not "3.1.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.5: Ensure the filename pattern for log files is set correctly — requirement not met" in vs
+	"3.1.5: the filename pattern for log files must match the approved value — requirement not met" in vs
 }
 
 test_3_1_5_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/policy", "value": {"log_filename": "postgresql-%a.log"}}])
 	not "3.1.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.5: Ensure the filename pattern for log files is set correctly — requirement not met" in vs
+	"3.1.5: the filename pattern for log files must match the approved value — requirement not met" in vs
 }
 
 test_3_1_5_evidence_missing_1 if {
@@ -550,12 +550,12 @@ test_3_1_5_evidence_missing_1 if {
 	not "3.1.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.5: evidence missing — postgresql.logging.log_filename not collected" in vs
-	not "3.1.5: Ensure the filename pattern for log files is set correctly — requirement not met" in vs
+	not "3.1.5: the filename pattern for log files must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.6 Ensure the log file permissions are set correctly
+# 3.1.6 the log file permissions must match the approved value
 test_3_1_6_pass if {
 	"3.1.6" in b.passed with input as green
 }
@@ -564,14 +564,14 @@ test_3_1_6_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_file_mode", "value": "0644"}])
 	not "3.1.6" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.6: Ensure the log file permissions are set correctly — requirement not met" in vs
+	"3.1.6: the log file permissions must match the approved value — requirement not met" in vs
 }
 
 test_3_1_6_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_file_mode", "value": "rw"}])
 	not "3.1.6" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.6: Ensure the log file permissions are set correctly — requirement not met" in vs
+	"3.1.6: the log file permissions must match the approved value — requirement not met" in vs
 }
 
 test_3_1_6_evidence_missing_1 if {
@@ -579,12 +579,12 @@ test_3_1_6_evidence_missing_1 if {
 	not "3.1.6" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.6: evidence missing — postgresql.logging.log_file_mode not collected" in vs
-	not "3.1.6: Ensure the log file permissions are set correctly — requirement not met" in vs
+	not "3.1.6: the log file permissions must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.7 Ensure 'log_truncate_on_rotation' is enabled
+# 3.1.7 'log_truncate_on_rotation' must be turned on
 test_3_1_7_pass if {
 	"3.1.7" in b.passed with input as green
 }
@@ -593,7 +593,7 @@ test_3_1_7_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_truncate_on_rotation", "value": "off"}])
 	not "3.1.7" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.7: Ensure 'log_truncate_on_rotation' is enabled — requirement not met" in vs
+	"3.1.7: 'log_truncate_on_rotation' must be turned on — requirement not met" in vs
 }
 
 test_3_1_7_evidence_missing_1 if {
@@ -601,12 +601,12 @@ test_3_1_7_evidence_missing_1 if {
 	not "3.1.7" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.7: evidence missing — postgresql.logging.log_truncate_on_rotation not collected" in vs
-	not "3.1.7: Ensure 'log_truncate_on_rotation' is enabled — requirement not met" in vs
+	not "3.1.7: 'log_truncate_on_rotation' must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.8 Ensure the maximum log file lifetime is set correctly
+# 3.1.8 the maximum log file lifetime must match the approved value
 test_3_1_8_pass if {
 	"3.1.8" in b.passed with input as green
 }
@@ -615,21 +615,21 @@ test_3_1_8_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_age", "value": "0"}])
 	not "3.1.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.8: Ensure the maximum log file lifetime is set correctly — requirement not met" in vs
+	"3.1.8: the maximum log file lifetime must match the approved value — requirement not met" in vs
 }
 
 test_3_1_8_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_age", "value": "2d"}])
 	not "3.1.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.8: Ensure the maximum log file lifetime is set correctly — requirement not met" in vs
+	"3.1.8: the maximum log file lifetime must match the approved value — requirement not met" in vs
 }
 
 test_3_1_8_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_age", "value": "soon"}])
 	not "3.1.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.8: Ensure the maximum log file lifetime is set correctly — requirement not met" in vs
+	"3.1.8: the maximum log file lifetime must match the approved value — requirement not met" in vs
 }
 
 test_3_1_8_evidence_missing_1 if {
@@ -637,12 +637,12 @@ test_3_1_8_evidence_missing_1 if {
 	not "3.1.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.8: evidence missing — postgresql.logging.log_rotation_age not collected" in vs
-	not "3.1.8: Ensure the maximum log file lifetime is set correctly — requirement not met" in vs
+	not "3.1.8: the maximum log file lifetime must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.9 Ensure the maximum log file size is set correctly
+# 3.1.9 the maximum log file size must match the approved value
 test_3_1_9_pass if {
 	"3.1.9" in b.passed with input as green
 }
@@ -651,21 +651,21 @@ test_3_1_9_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_size", "value": "0"}])
 	not "3.1.9" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.9: Ensure the maximum log file size is set correctly — requirement not met" in vs
+	"3.1.9: the maximum log file size must match the approved value — requirement not met" in vs
 }
 
 test_3_1_9_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_size", "value": "2GB"}])
 	not "3.1.9" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.9: Ensure the maximum log file size is set correctly — requirement not met" in vs
+	"3.1.9: the maximum log file size must match the approved value — requirement not met" in vs
 }
 
 test_3_1_9_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_rotation_size", "value": "lots"}])
 	not "3.1.9" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.9: Ensure the maximum log file size is set correctly — requirement not met" in vs
+	"3.1.9: the maximum log file size must match the approved value — requirement not met" in vs
 }
 
 test_3_1_9_evidence_missing_1 if {
@@ -673,12 +673,12 @@ test_3_1_9_evidence_missing_1 if {
 	not "3.1.9" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.9: evidence missing — postgresql.logging.log_rotation_size not collected" in vs
-	not "3.1.9: Ensure the maximum log file size is set correctly — requirement not met" in vs
+	not "3.1.9: the maximum log file size must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.10 Ensure the correct Syslog facility is selected
+# 3.1.10 the correct Syslog facility must be selected
 test_3_1_10_pass if {
 	"3.1.10" in b.passed with input as green
 }
@@ -695,7 +695,7 @@ test_3_1_10_fail_attest_absent if {
 	not "3.1.10" in b.passed with input as inp
 }
 
-# 3.1.11 Ensure Syslog messages are not suppressed
+# 3.1.11 Syslog messages must be not suppressed
 test_3_1_11_pass if {
 	"3.1.11" in b.passed with input as green
 }
@@ -704,7 +704,7 @@ test_3_1_11_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/syslog_sequence_numbers", "value": "off"}])
 	not "3.1.11" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.11: Ensure Syslog messages are not suppressed — requirement not met" in vs
+	"3.1.11: Syslog messages must be not suppressed — requirement not met" in vs
 }
 
 test_3_1_11_evidence_missing_1 if {
@@ -712,12 +712,12 @@ test_3_1_11_evidence_missing_1 if {
 	not "3.1.11" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.11: evidence missing — postgresql.logging.syslog_sequence_numbers not collected" in vs
-	not "3.1.11: Ensure Syslog messages are not suppressed — requirement not met" in vs
+	not "3.1.11: Syslog messages must be not suppressed — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.12 Ensure Syslog messages are not lost due to size
+# 3.1.12 Syslog messages must be not lost due to size
 test_3_1_12_pass if {
 	"3.1.12" in b.passed with input as green
 }
@@ -726,7 +726,7 @@ test_3_1_12_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/syslog_split_messages", "value": "off"}])
 	not "3.1.12" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.12: Ensure Syslog messages are not lost due to size — requirement not met" in vs
+	"3.1.12: Syslog messages must be not lost due to size — requirement not met" in vs
 }
 
 test_3_1_12_evidence_missing_1 if {
@@ -734,12 +734,12 @@ test_3_1_12_evidence_missing_1 if {
 	not "3.1.12" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.12: evidence missing — postgresql.logging.syslog_split_messages not collected" in vs
-	not "3.1.12: Ensure Syslog messages are not lost due to size — requirement not met" in vs
+	not "3.1.12: Syslog messages must be not lost due to size — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.13 Ensure the program name for PostgreSQL Syslog messages is correct
+# 3.1.13 the program name for PostgreSQL Syslog messages must be correct
 test_3_1_13_pass if {
 	"3.1.13" in b.passed with input as green
 }
@@ -748,14 +748,14 @@ test_3_1_13_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/syslog_ident", "value": ""}])
 	not "3.1.13" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.13: Ensure the program name for PostgreSQL Syslog messages is correct — requirement not met" in vs
+	"3.1.13: the program name for PostgreSQL Syslog messages must be correct — requirement not met" in vs
 }
 
 test_3_1_13_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/policy", "value": {"syslog_ident": "proddb"}}])
 	not "3.1.13" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.13: Ensure the program name for PostgreSQL Syslog messages is correct — requirement not met" in vs
+	"3.1.13: the program name for PostgreSQL Syslog messages must be correct — requirement not met" in vs
 }
 
 test_3_1_13_evidence_missing_1 if {
@@ -763,12 +763,12 @@ test_3_1_13_evidence_missing_1 if {
 	not "3.1.13" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.13: evidence missing — postgresql.logging.syslog_ident not collected" in vs
-	not "3.1.13: Ensure the program name for PostgreSQL Syslog messages is correct — requirement not met" in vs
+	not "3.1.13: the program name for PostgreSQL Syslog messages must be correct — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.14 Ensure the correct messages are written to the server log
+# 3.1.14 the correct messages must be written to the server log
 test_3_1_14_pass if {
 	"3.1.14" in b.passed with input as green
 }
@@ -777,21 +777,21 @@ test_3_1_14_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_min_messages", "value": "error"}])
 	not "3.1.14" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.14: Ensure the correct messages are written to the server log — requirement not met" in vs
+	"3.1.14: the correct messages must be written to the server log — requirement not met" in vs
 }
 
 test_3_1_14_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_min_messages", "value": "panic"}])
 	not "3.1.14" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.14: Ensure the correct messages are written to the server log — requirement not met" in vs
+	"3.1.14: the correct messages must be written to the server log — requirement not met" in vs
 }
 
 test_3_1_14_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_min_messages", "value": "loud"}])
 	not "3.1.14" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.14: Ensure the correct messages are written to the server log — requirement not met" in vs
+	"3.1.14: the correct messages must be written to the server log — requirement not met" in vs
 }
 
 test_3_1_14_evidence_missing_1 if {
@@ -799,12 +799,12 @@ test_3_1_14_evidence_missing_1 if {
 	not "3.1.14" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.14: evidence missing — postgresql.logging.log_min_messages not collected" in vs
-	not "3.1.14: Ensure the correct messages are written to the server log — requirement not met" in vs
+	not "3.1.14: the correct messages must be written to the server log — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.15 Ensure the correct SQL statements generating errors are recorded
+# 3.1.15 the correct SQL statements generating errors must be recorded
 test_3_1_15_pass if {
 	"3.1.15" in b.passed with input as green
 }
@@ -813,14 +813,14 @@ test_3_1_15_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_min_error_statement", "value": "fatal"}])
 	not "3.1.15" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.15: Ensure the correct SQL statements generating errors are recorded — requirement not met" in vs
+	"3.1.15: the correct SQL statements generating errors must be recorded — requirement not met" in vs
 }
 
 test_3_1_15_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_min_error_statement", "value": "log"}])
 	not "3.1.15" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.15: Ensure the correct SQL statements generating errors are recorded — requirement not met" in vs
+	"3.1.15: the correct SQL statements generating errors must be recorded — requirement not met" in vs
 }
 
 test_3_1_15_evidence_missing_1 if {
@@ -828,12 +828,12 @@ test_3_1_15_evidence_missing_1 if {
 	not "3.1.15" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.15: evidence missing — postgresql.logging.log_min_error_statement not collected" in vs
-	not "3.1.15: Ensure the correct SQL statements generating errors are recorded — requirement not met" in vs
+	not "3.1.15: the correct SQL statements generating errors must be recorded — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.16 Ensure 'debug_print_parse' is disabled
+# 3.1.16 'debug_print_parse' must be turned off
 test_3_1_16_pass if {
 	"3.1.16" in b.passed with input as green
 }
@@ -842,7 +842,7 @@ test_3_1_16_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/debug_print_parse", "value": "on"}])
 	not "3.1.16" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.16: Ensure 'debug_print_parse' is disabled — requirement not met" in vs
+	"3.1.16: 'debug_print_parse' must be turned off — requirement not met" in vs
 }
 
 test_3_1_16_evidence_missing_1 if {
@@ -850,12 +850,12 @@ test_3_1_16_evidence_missing_1 if {
 	not "3.1.16" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.16: evidence missing — postgresql.logging.debug_print_parse not collected" in vs
-	not "3.1.16: Ensure 'debug_print_parse' is disabled — requirement not met" in vs
+	not "3.1.16: 'debug_print_parse' must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.17 Ensure 'debug_print_rewritten' is disabled
+# 3.1.17 'debug_print_rewritten' must be turned off
 test_3_1_17_pass if {
 	"3.1.17" in b.passed with input as green
 }
@@ -864,7 +864,7 @@ test_3_1_17_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/debug_print_rewritten", "value": "on"}])
 	not "3.1.17" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.17: Ensure 'debug_print_rewritten' is disabled — requirement not met" in vs
+	"3.1.17: 'debug_print_rewritten' must be turned off — requirement not met" in vs
 }
 
 test_3_1_17_evidence_missing_1 if {
@@ -872,12 +872,12 @@ test_3_1_17_evidence_missing_1 if {
 	not "3.1.17" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.17: evidence missing — postgresql.logging.debug_print_rewritten not collected" in vs
-	not "3.1.17: Ensure 'debug_print_rewritten' is disabled — requirement not met" in vs
+	not "3.1.17: 'debug_print_rewritten' must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.18 Ensure 'debug_print_plan' is disabled
+# 3.1.18 'debug_print_plan' must be turned off
 test_3_1_18_pass if {
 	"3.1.18" in b.passed with input as green
 }
@@ -886,7 +886,7 @@ test_3_1_18_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/debug_print_plan", "value": "on"}])
 	not "3.1.18" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.18: Ensure 'debug_print_plan' is disabled — requirement not met" in vs
+	"3.1.18: 'debug_print_plan' must be turned off — requirement not met" in vs
 }
 
 test_3_1_18_evidence_missing_1 if {
@@ -894,12 +894,12 @@ test_3_1_18_evidence_missing_1 if {
 	not "3.1.18" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.18: evidence missing — postgresql.logging.debug_print_plan not collected" in vs
-	not "3.1.18: Ensure 'debug_print_plan' is disabled — requirement not met" in vs
+	not "3.1.18: 'debug_print_plan' must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.19 Ensure 'debug_pretty_print' is enabled
+# 3.1.19 'debug_pretty_print' must be turned on
 test_3_1_19_pass if {
 	"3.1.19" in b.passed with input as green
 }
@@ -908,7 +908,7 @@ test_3_1_19_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/debug_pretty_print", "value": "off"}])
 	not "3.1.19" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.19: Ensure 'debug_pretty_print' is enabled — requirement not met" in vs
+	"3.1.19: 'debug_pretty_print' must be turned on — requirement not met" in vs
 }
 
 test_3_1_19_evidence_missing_1 if {
@@ -916,12 +916,12 @@ test_3_1_19_evidence_missing_1 if {
 	not "3.1.19" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.19: evidence missing — postgresql.logging.debug_pretty_print not collected" in vs
-	not "3.1.19: Ensure 'debug_pretty_print' is enabled — requirement not met" in vs
+	not "3.1.19: 'debug_pretty_print' must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.20 Ensure 'log_connections' is enabled
+# 3.1.20 'log_connections' must be turned on
 test_3_1_20_pass if {
 	"3.1.20" in b.passed with input as green
 }
@@ -930,7 +930,7 @@ test_3_1_20_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_connections", "value": "off"}])
 	not "3.1.20" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.20: Ensure 'log_connections' is enabled — requirement not met" in vs
+	"3.1.20: 'log_connections' must be turned on — requirement not met" in vs
 }
 
 test_3_1_20_evidence_missing_1 if {
@@ -938,12 +938,12 @@ test_3_1_20_evidence_missing_1 if {
 	not "3.1.20" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.20: evidence missing — postgresql.logging.log_connections not collected" in vs
-	not "3.1.20: Ensure 'log_connections' is enabled — requirement not met" in vs
+	not "3.1.20: 'log_connections' must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.21 Ensure 'log_disconnections' is enabled
+# 3.1.21 'log_disconnections' must be turned on
 test_3_1_21_pass if {
 	"3.1.21" in b.passed with input as green
 }
@@ -952,7 +952,7 @@ test_3_1_21_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_disconnections", "value": "off"}])
 	not "3.1.21" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.21: Ensure 'log_disconnections' is enabled — requirement not met" in vs
+	"3.1.21: 'log_disconnections' must be turned on — requirement not met" in vs
 }
 
 test_3_1_21_evidence_missing_1 if {
@@ -960,12 +960,12 @@ test_3_1_21_evidence_missing_1 if {
 	not "3.1.21" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.21: evidence missing — postgresql.logging.log_disconnections not collected" in vs
-	not "3.1.21: Ensure 'log_disconnections' is enabled — requirement not met" in vs
+	not "3.1.21: 'log_disconnections' must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.22 Ensure 'log_error_verbosity' is set correctly
+# 3.1.22 'log_error_verbosity' must match the approved value
 test_3_1_22_pass if {
 	"3.1.22" in b.passed with input as green
 }
@@ -974,7 +974,7 @@ test_3_1_22_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_error_verbosity", "value": "default"}])
 	not "3.1.22" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.22: Ensure 'log_error_verbosity' is set correctly — requirement not met" in vs
+	"3.1.22: 'log_error_verbosity' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_22_evidence_missing_1 if {
@@ -982,12 +982,12 @@ test_3_1_22_evidence_missing_1 if {
 	not "3.1.22" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.22: evidence missing — postgresql.logging.log_error_verbosity not collected" in vs
-	not "3.1.22: Ensure 'log_error_verbosity' is set correctly — requirement not met" in vs
+	not "3.1.22: 'log_error_verbosity' must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.23 Ensure 'log_hostname' is set correctly
+# 3.1.23 'log_hostname' must match the approved value
 test_3_1_23_pass if {
 	"3.1.23" in b.passed with input as green
 }
@@ -996,7 +996,7 @@ test_3_1_23_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_hostname", "value": "on"}])
 	not "3.1.23" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.23: Ensure 'log_hostname' is set correctly — requirement not met" in vs
+	"3.1.23: 'log_hostname' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_23_evidence_missing_1 if {
@@ -1004,12 +1004,12 @@ test_3_1_23_evidence_missing_1 if {
 	not "3.1.23" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.23: evidence missing — postgresql.logging.log_hostname not collected" in vs
-	not "3.1.23: Ensure 'log_hostname' is set correctly — requirement not met" in vs
+	not "3.1.23: 'log_hostname' must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.24 Ensure 'log_line_prefix' is set correctly
+# 3.1.24 'log_line_prefix' must match the approved value
 test_3_1_24_pass if {
 	"3.1.24" in b.passed with input as green
 }
@@ -1018,14 +1018,14 @@ test_3_1_24_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_line_prefix", "value": "< %m [%p] >"}])
 	not "3.1.24" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.24: Ensure 'log_line_prefix' is set correctly — requirement not met" in vs
+	"3.1.24: 'log_line_prefix' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_24_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_line_prefix", "value": "%m [%p]: [%l-1] db=%d,user=%u,app=%a,client=%%h "}])
 	not "3.1.24" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.24: Ensure 'log_line_prefix' is set correctly — requirement not met" in vs
+	"3.1.24: 'log_line_prefix' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_24_evidence_missing_1 if {
@@ -1033,12 +1033,12 @@ test_3_1_24_evidence_missing_1 if {
 	not "3.1.24" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.24: evidence missing — postgresql.logging.log_line_prefix not collected" in vs
-	not "3.1.24: Ensure 'log_line_prefix' is set correctly — requirement not met" in vs
+	not "3.1.24: 'log_line_prefix' must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.25 Ensure 'log_statement' is set correctly
+# 3.1.25 'log_statement' must match the approved value
 test_3_1_25_pass if {
 	"3.1.25" in b.passed with input as green
 }
@@ -1047,7 +1047,7 @@ test_3_1_25_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_statement", "value": "none"}])
 	not "3.1.25" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.25: Ensure 'log_statement' is set correctly — requirement not met" in vs
+	"3.1.25: 'log_statement' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_25_evidence_missing_1 if {
@@ -1055,12 +1055,12 @@ test_3_1_25_evidence_missing_1 if {
 	not "3.1.25" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.25: evidence missing — postgresql.logging.log_statement not collected" in vs
-	not "3.1.25: Ensure 'log_statement' is set correctly — requirement not met" in vs
+	not "3.1.25: 'log_statement' must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.1.26 Ensure 'log_timezone' is set correctly
+# 3.1.26 'log_timezone' must match the approved value
 test_3_1_26_pass if {
 	"3.1.26" in b.passed with input as green
 }
@@ -1069,7 +1069,7 @@ test_3_1_26_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/logging/log_timezone", "value": "US/Eastern"}])
 	not "3.1.26" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.1.26: Ensure 'log_timezone' is set correctly — requirement not met" in vs
+	"3.1.26: 'log_timezone' must match the approved value — requirement not met" in vs
 }
 
 test_3_1_26_evidence_missing_1 if {
@@ -1077,12 +1077,12 @@ test_3_1_26_evidence_missing_1 if {
 	not "3.1.26" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.1.26: evidence missing — postgresql.logging.log_timezone not collected" in vs
-	not "3.1.26: Ensure 'log_timezone' is set correctly — requirement not met" in vs
+	not "3.1.26: 'log_timezone' must match the approved value — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 3.2 Ensure the PostgreSQL Audit Extension (pgAudit) is enabled
+# 3.2 the PostgreSQL Audit Extension (pgAudit) must be turned on
 test_3_2_pass if {
 	"3.2" in b.passed with input as green
 }
@@ -1091,21 +1091,21 @@ test_3_2_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/settings/shared_preload_libraries", "value": "pg_stat_statements"}])
 	not "3.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.2: Ensure the PostgreSQL Audit Extension (pgAudit) is enabled — requirement not met" in vs
+	"3.2: the PostgreSQL Audit Extension (pgAudit) must be turned on — requirement not met" in vs
 }
 
 test_3_2_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/pgaudit/log", "value": "ddl"}])
 	not "3.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.2: Ensure the PostgreSQL Audit Extension (pgAudit) is enabled — requirement not met" in vs
+	"3.2: the PostgreSQL Audit Extension (pgAudit) must be turned on — requirement not met" in vs
 }
 
 test_3_2_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/pgaudit/log", "value": "none"}])
 	not "3.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"3.2: Ensure the PostgreSQL Audit Extension (pgAudit) is enabled — requirement not met" in vs
+	"3.2: the PostgreSQL Audit Extension (pgAudit) must be turned on — requirement not met" in vs
 }
 
 test_3_2_evidence_missing_1 if {
@@ -1113,7 +1113,7 @@ test_3_2_evidence_missing_1 if {
 	not "3.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.2: evidence missing — postgresql.settings.shared_preload_libraries not collected" in vs
-	not "3.2: Ensure the PostgreSQL Audit Extension (pgAudit) is enabled — requirement not met" in vs
+	not "3.2: the PostgreSQL Audit Extension (pgAudit) must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1123,12 +1123,12 @@ test_3_2_evidence_missing_2 if {
 	not "3.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"3.2: evidence missing — postgresql.pgaudit.log not collected" in vs
-	not "3.2: Ensure the PostgreSQL Audit Extension (pgAudit) is enabled — requirement not met" in vs
+	not "3.2: the PostgreSQL Audit Extension (pgAudit) must be turned on — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 4.1 Ensure Interactive Login is Disabled
+# 4.1 Interactive Login must be turned off
 test_4_1_pass if {
 	"4.1" in b.passed with input as green
 }
@@ -1145,7 +1145,7 @@ test_4_1_fail_attest_absent if {
 	not "4.1" in b.passed with input as inp
 }
 
-# 4.2 Ensure sudo is configured correctly
+# 4.2 sudo must match the approved configuration
 test_4_2_pass if {
 	"4.2" in b.passed with input as green
 }
@@ -1162,7 +1162,7 @@ test_4_2_fail_attest_absent if {
 	not "4.2" in b.passed with input as inp
 }
 
-# 4.3 Ensure excessive administrative privileges are revoked
+# 4.3 excessive administrative privileges must be revoked
 test_4_3_pass if {
 	"4.3" in b.passed with input as green
 }
@@ -1179,7 +1179,7 @@ test_4_3_fail_attest_absent if {
 	not "4.3" in b.passed with input as inp
 }
 
-# 4.4 Lock Out Accounts if Not Currently in Use
+# 4.4 Accounts if Not Currently in Use must be locked when unused
 test_4_4_pass if {
 	"4.4" in b.passed with input as green
 }
@@ -1196,7 +1196,7 @@ test_4_4_fail_attest_absent if {
 	not "4.4" in b.passed with input as inp
 }
 
-# 4.5 Ensure excessive function privileges are revoked
+# 4.5 excessive function privileges must be revoked
 test_4_5_pass if {
 	"4.5" in b.passed with input as green
 }
@@ -1205,7 +1205,7 @@ test_4_5_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/security_definer_functions", "value": [{"schema": "public", "name": "audit_fn", "prosecdef": true}, {"schema": "public", "name": "escalate", "prosecdef": "t"}]}])
 	not "4.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"4.5: Ensure excessive function privileges are revoked — requirement not met" in vs
+	"4.5: excessive function privileges must be revoked — requirement not met" in vs
 }
 
 test_4_5_evidence_missing_1 if {
@@ -1213,12 +1213,12 @@ test_4_5_evidence_missing_1 if {
 	not "4.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.5: evidence missing — postgresql.security_definer_functions not collected" in vs
-	not "4.5: Ensure excessive function privileges are revoked — requirement not met" in vs
+	not "4.5: excessive function privileges must be revoked — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 4.6 Ensure excessive DML privileges are revoked
+# 4.6 excessive DML privileges must be revoked
 test_4_6_pass if {
 	"4.6" in b.passed with input as green
 }
@@ -1235,7 +1235,7 @@ test_4_6_fail_attest_absent if {
 	not "4.6" in b.passed with input as inp
 }
 
-# 4.7 Ensure Row Level Security (RLS) is configured correctly
+# 4.7 Row Level Security (RLS) must match the approved configuration
 test_4_7_pass if {
 	"4.7" in b.passed with input as green
 }
@@ -1252,7 +1252,7 @@ test_4_7_fail_attest_absent if {
 	not "4.7" in b.passed with input as inp
 }
 
-# 4.8 Ensure the set_user extension is installed
+# 4.8 the set_user extension must be present
 test_4_8_pass if {
 	"4.8" in b.passed with input as green
 }
@@ -1261,14 +1261,14 @@ test_4_8_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/available_extensions", "value": ["pgaudit"]}])
 	not "4.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"4.8: Ensure the set_user extension is installed — requirement not met" in vs
+	"4.8: the set_user extension must be present — requirement not met" in vs
 }
 
 test_4_8_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/superuser_login_roles", "value": ["postgres", "mallory"]}])
 	not "4.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"4.8: Ensure the set_user extension is installed — requirement not met" in vs
+	"4.8: the set_user extension must be present — requirement not met" in vs
 }
 
 test_4_8_evidence_missing_1 if {
@@ -1276,7 +1276,7 @@ test_4_8_evidence_missing_1 if {
 	not "4.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.8: evidence missing — postgresql.available_extensions not collected" in vs
-	not "4.8: Ensure the set_user extension is installed — requirement not met" in vs
+	not "4.8: the set_user extension must be present — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1286,12 +1286,12 @@ test_4_8_evidence_missing_2 if {
 	not "4.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"4.8: evidence missing — postgresql.superuser_login_roles not collected" in vs
-	not "4.8: Ensure the set_user extension is installed — requirement not met" in vs
+	not "4.8: the set_user extension must be present — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 4.9 Make use of predefined roles
+# 4.9 predefined roles must be used
 test_4_9_pass if {
 	"4.9" in b.passed with input as green
 }
@@ -1308,7 +1308,7 @@ test_4_9_fail_attest_absent if {
 	not "4.9" in b.passed with input as inp
 }
 
-# 4.10 Ensure all accounts that can log in have passwords
+# 4.10 all accounts that can log in must have passwords
 test_4_10_pass if {
 	"4.10" in b.passed with input as green
 }
@@ -1325,7 +1325,7 @@ test_4_10_fail_attest_absent if {
 	not "4.10" in b.passed with input as inp
 }
 
-# 5.1 Do Not Specify Passwords in the Command Line
+# 5.1 Specify Passwords in the Command Line is prohibited
 test_5_1_pass if {
 	"5.1" in b.passed with input as green
 }
@@ -1342,7 +1342,7 @@ test_5_1_fail_attest_absent if {
 	not "5.1" in b.passed with input as inp
 }
 
-# 5.2 Ensure PostgreSQL is Bound to an IP Address
+# 5.2 PostgreSQL must be Bound to an IP Address
 test_5_2_pass if {
 	"5.2" in b.passed with input as green
 }
@@ -1359,7 +1359,7 @@ test_5_2_fail_attest_absent if {
 	not "5.2" in b.passed with input as inp
 }
 
-# 5.3 Ensure login via "local" UNIX Domain Socket is configured correctly
+# 5.3 login via "local" UNIX Domain Socket must match the approved configuration
 test_5_3_pass if {
 	"5.3" in b.passed with input as green
 }
@@ -1376,7 +1376,7 @@ test_5_3_fail_attest_absent if {
 	not "5.3" in b.passed with input as inp
 }
 
-# 5.4 Ensure login via "host" TCP/IP Socket is configured correctly
+# 5.4 login via "host" TCP/IP Socket must match the approved configuration
 test_5_4_pass if {
 	"5.4" in b.passed with input as green
 }
@@ -1393,7 +1393,7 @@ test_5_4_fail_attest_absent if {
 	not "5.4" in b.passed with input as inp
 }
 
-# 5.5 Ensure per-account connection limits are used
+# 5.5 per-account connection limits must be used
 test_5_5_pass if {
 	"5.5" in b.passed with input as green
 }
@@ -1402,14 +1402,14 @@ test_5_5_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app", "connection_limit": -1}]}])
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"5.5: Ensure per-account connection limits are used — requirement not met" in vs
+	"5.5: per-account connection limits must be used — requirement not met" in vs
 }
 
 test_5_5_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/roles", "value": [{"name": "app"}]}])
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"5.5: Ensure per-account connection limits are used — requirement not met" in vs
+	"5.5: per-account connection limits must be used — requirement not met" in vs
 }
 
 test_5_5_evidence_missing_1 if {
@@ -1417,12 +1417,12 @@ test_5_5_evidence_missing_1 if {
 	not "5.5" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"5.5: evidence missing — postgresql.roles not collected" in vs
-	not "5.5: Ensure per-account connection limits are used — requirement not met" in vs
+	not "5.5: per-account connection limits must be used — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 5.6 Ensure password complexity is configured
+# 5.6 password complexity must be explicitly configured
 test_5_6_pass if {
 	"5.6" in b.passed with input as green
 }
@@ -1439,7 +1439,7 @@ test_5_6_fail_attest_absent if {
 	not "5.6" in b.passed with input as inp
 }
 
-# 6.1 Understanding attack vectors and runtime parameters
+# 6.1 attack vectors and runtime parameters must be reviewed before the service is treated as configured
 test_6_1_pass if {
 	"6.1" in b.passed with input as green
 }
@@ -1456,7 +1456,7 @@ test_6_1_fail_attest_absent if {
 	not "6.1" in b.passed with input as inp
 }
 
-# 6.2 Ensure 'backend' runtime parameters are configured correctly
+# 6.2 'backend' runtime parameters must match the approved configuration
 test_6_2_pass if {
 	"6.2" in b.passed with input as green
 }
@@ -1465,21 +1465,21 @@ test_6_2_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/backend_settings/post_auth_delay", "value": "5"}])
 	not "6.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.2: Ensure 'backend' runtime parameters are configured correctly — requirement not met" in vs
+	"6.2: 'backend' runtime parameters must match the approved configuration — requirement not met" in vs
 }
 
 test_6_2_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/backend_settings/ignore_system_indexes", "value": "on"}])
 	not "6.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.2: Ensure 'backend' runtime parameters are configured correctly — requirement not met" in vs
+	"6.2: 'backend' runtime parameters must match the approved configuration — requirement not met" in vs
 }
 
 test_6_2_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/backend_settings/log_connections", "value": "off"}])
 	not "6.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.2: Ensure 'backend' runtime parameters are configured correctly — requirement not met" in vs
+	"6.2: 'backend' runtime parameters must match the approved configuration — requirement not met" in vs
 }
 
 test_6_2_evidence_missing_1 if {
@@ -1487,12 +1487,12 @@ test_6_2_evidence_missing_1 if {
 	not "6.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.2: evidence missing — postgresql.backend_settings not collected" in vs
-	not "6.2: Ensure 'backend' runtime parameters are configured correctly — requirement not met" in vs
+	not "6.2: 'backend' runtime parameters must match the approved configuration — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 6.3 Ensure 'Postmaster' Runtime Parameters are Configured
+# 6.3 'Postmaster' Runtime Parameters must be explicitly configured
 test_6_3_pass if {
 	"6.3" in b.passed with input as green
 }
@@ -1509,7 +1509,7 @@ test_6_3_fail_attest_absent if {
 	not "6.3" in b.passed with input as inp
 }
 
-# 6.4 Ensure 'SIGHUP' Runtime Parameters are Configured
+# 6.4 'SIGHUP' Runtime Parameters must be explicitly configured
 test_6_4_pass if {
 	"6.4" in b.passed with input as green
 }
@@ -1526,7 +1526,7 @@ test_6_4_fail_attest_absent if {
 	not "6.4" in b.passed with input as inp
 }
 
-# 6.5 Ensure 'Superuser' Runtime Parameters are Configured
+# 6.5 'Superuser' Runtime Parameters must be explicitly configured
 test_6_5_pass if {
 	"6.5" in b.passed with input as green
 }
@@ -1543,7 +1543,7 @@ test_6_5_fail_attest_absent if {
 	not "6.5" in b.passed with input as inp
 }
 
-# 6.6 Ensure 'User' Runtime Parameters are Configured
+# 6.6 'User' Runtime Parameters must be explicitly configured
 test_6_6_pass if {
 	"6.6" in b.passed with input as green
 }
@@ -1560,7 +1560,7 @@ test_6_6_fail_attest_absent if {
 	not "6.6" in b.passed with input as inp
 }
 
-# 6.7 Ensure FIPS 140-2 OpenSSL Cryptography Is Used
+# 6.7 FIPS 140-2 OpenSSL Cryptography must be Used
 test_6_7_pass if {
 	"6.7" in b.passed with input as green
 }
@@ -1569,14 +1569,14 @@ test_6_7_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/cryptography/fips_140_2_enabled", "value": false}])
 	not "6.7" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.7: Ensure FIPS 140-2 OpenSSL Cryptography Is Used — requirement not met" in vs
+	"6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
 }
 
 test_6_7_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/cryptography/openssl_fips_mode", "value": false}])
 	not "6.7" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.7: Ensure FIPS 140-2 OpenSSL Cryptography Is Used — requirement not met" in vs
+	"6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
 }
 
 test_6_7_evidence_missing_1 if {
@@ -1584,7 +1584,7 @@ test_6_7_evidence_missing_1 if {
 	not "6.7" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.7: evidence missing — postgresql.cryptography.fips_140_2_enabled not collected" in vs
-	not "6.7: Ensure FIPS 140-2 OpenSSL Cryptography Is Used — requirement not met" in vs
+	not "6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1594,12 +1594,12 @@ test_6_7_evidence_missing_2 if {
 	not "6.7" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.7: evidence missing — postgresql.cryptography.openssl_fips_mode not collected" in vs
-	not "6.7: Ensure FIPS 140-2 OpenSSL Cryptography Is Used — requirement not met" in vs
+	not "6.7: FIPS 140-2 OpenSSL Cryptography must be Used — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 6.8 Ensure TLS is enabled and configured correctly
+# 6.8 TLS must be turned on and configured correctly
 test_6_8_pass if {
 	"6.8" in b.passed with input as green
 }
@@ -1608,21 +1608,21 @@ test_6_8_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/enabled", "value": false}])
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	"6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 }
 
 test_6_8_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/authentication/pg_hba_entries", "value": [{"connection_type": "host", "auth_method": "scram-sha-256"}]}])
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	"6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 }
 
 test_6_8_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/non_ssl_client_connections", "value": [{"pid": 7, "usename": "app"}]}])
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	"6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 }
 
 test_6_8_evidence_missing_1 if {
@@ -1630,7 +1630,7 @@ test_6_8_evidence_missing_1 if {
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.8: evidence missing — postgresql.ssl.enabled not collected" in vs
-	not "6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	not "6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1640,7 +1640,7 @@ test_6_8_evidence_missing_2 if {
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.8: evidence missing — postgresql.authentication.pg_hba_entries not collected" in vs
-	not "6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	not "6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1650,12 +1650,12 @@ test_6_8_evidence_missing_3 if {
 	not "6.8" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.8: evidence missing — postgresql.ssl.non_ssl_client_connections not collected" in vs
-	not "6.8: Ensure TLS is enabled and configured correctly — requirement not met" in vs
+	not "6.8: TLS must be turned on and configured correctly — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 6.9 Ensure the TLSv1.0 and TLSv1.1 Protocols are Disabled
+# 6.9 the TLSv1.0 and TLSv1.1 Protocols must be turned off
 test_6_9_pass if {
 	"6.9" in b.passed with input as green
 }
@@ -1664,7 +1664,7 @@ test_6_9_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/ssl_min_protocol_version", "value": "TLSv1"}])
 	not "6.9" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.9: Ensure the TLSv1.0 and TLSv1.1 Protocols are Disabled — requirement not met" in vs
+	"6.9: the TLSv1.0 and TLSv1.1 Protocols must be turned off — requirement not met" in vs
 }
 
 test_6_9_evidence_missing_1 if {
@@ -1672,12 +1672,12 @@ test_6_9_evidence_missing_1 if {
 	not "6.9" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.9: evidence missing — postgresql.ssl.ssl_min_protocol_version not collected" in vs
-	not "6.9: Ensure the TLSv1.0 and TLSv1.1 Protocols are Disabled — requirement not met" in vs
+	not "6.9: the TLSv1.0 and TLSv1.1 Protocols must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 6.10 Ensure Weak SSL/TLS Ciphers Are Disabled
+# 6.10 Weak SSL/TLS Ciphers must be turned off
 test_6_10_pass if {
 	"6.10" in b.passed with input as green
 }
@@ -1686,14 +1686,14 @@ test_6_10_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/ssl_ciphers", "value": "HIGH:MEDIUM:+3DES:!aNULL"}])
 	not "6.10" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.10: Ensure Weak SSL/TLS Ciphers Are Disabled — requirement not met" in vs
+	"6.10: Weak SSL/TLS Ciphers must be turned off — requirement not met" in vs
 }
 
 test_6_10_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/ssl/tls12_unapproved_cipher_sessions", "value": [{"pid": 9, "cipher": "AES128-SHA"}]}])
 	not "6.10" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"6.10: Ensure Weak SSL/TLS Ciphers Are Disabled — requirement not met" in vs
+	"6.10: Weak SSL/TLS Ciphers must be turned off — requirement not met" in vs
 }
 
 test_6_10_evidence_missing_1 if {
@@ -1701,7 +1701,7 @@ test_6_10_evidence_missing_1 if {
 	not "6.10" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.10: evidence missing — postgresql.ssl.ssl_ciphers not collected" in vs
-	not "6.10: Ensure Weak SSL/TLS Ciphers Are Disabled — requirement not met" in vs
+	not "6.10: Weak SSL/TLS Ciphers must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
@@ -1711,12 +1711,12 @@ test_6_10_evidence_missing_2 if {
 	not "6.10" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"6.10: evidence missing — postgresql.ssl.tls12_unapproved_cipher_sessions not collected" in vs
-	not "6.10: Ensure Weak SSL/TLS Ciphers Are Disabled — requirement not met" in vs
+	not "6.10: Weak SSL/TLS Ciphers must be turned off — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 6.11 Ensure the pgcrypto extension is installed and configured correctly
+# 6.11 the pgcrypto extension must be installed and configured correctly
 test_6_11_pass if {
 	"6.11" in b.passed with input as green
 }
@@ -1733,7 +1733,7 @@ test_6_11_fail_attest_absent if {
 	not "6.11" in b.passed with input as inp
 }
 
-# 7.1 Ensure a replication-only user is created and used for streaming replication
+# 7.1 a replication-only user must be created and used for streaming replication
 test_7_1_pass if {
 	"7.1" in b.passed with input as green
 }
@@ -1750,7 +1750,7 @@ test_7_1_fail_attest_absent if {
 	not "7.1" in b.passed with input as inp
 }
 
-# 7.2 Ensure logging of replication commands is configured
+# 7.2 logging of replication commands must be explicitly configured
 test_7_2_pass if {
 	"7.2" in b.passed with input as green
 }
@@ -1767,7 +1767,7 @@ test_7_2_fail_attest_absent if {
 	not "7.2" in b.passed with input as inp
 }
 
-# 7.3 Ensure base backups are configured and functional
+# 7.3 base backups must be explicitly configured and functional
 test_7_3_pass if {
 	"7.3" in b.passed with input as green
 }
@@ -1784,7 +1784,7 @@ test_7_3_fail_attest_absent if {
 	not "7.3" in b.passed with input as inp
 }
 
-# 7.4 Ensure WAL archiving is configured and functional
+# 7.4 WAL archiving must be explicitly configured and functional
 test_7_4_pass if {
 	"7.4" in b.passed with input as green
 }
@@ -1793,21 +1793,21 @@ test_7_4_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/archive_settings/archive_mode", "value": "off"}])
 	not "7.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"7.4: Ensure WAL archiving is configured and functional — requirement not met" in vs
+	"7.4: WAL archiving must be explicitly configured and functional — requirement not met" in vs
 }
 
 test_7_4_fail_2 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/archive_settings/archive_mode", "value": "always"}])
 	not "7.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"7.4: Ensure WAL archiving is configured and functional — requirement not met" in vs
+	"7.4: WAL archiving must be explicitly configured and functional — requirement not met" in vs
 }
 
 test_7_4_fail_3 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/archive_settings/archive_command", "value": "(disabled)"}])
 	not "7.4" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"7.4: Ensure WAL archiving is configured and functional — requirement not met" in vs
+	"7.4: WAL archiving must be explicitly configured and functional — requirement not met" in vs
 }
 
 test_7_4_evidence_missing_1 if {
@@ -1815,12 +1815,12 @@ test_7_4_evidence_missing_1 if {
 	not "7.4" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"7.4: evidence missing — postgresql.archive_settings.archive_mode not collected" in vs
-	not "7.4: Ensure WAL archiving is configured and functional — requirement not met" in vs
+	not "7.4: WAL archiving must be explicitly configured and functional — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 7.5 Ensure streaming replication parameters are configured correctly
+# 7.5 streaming replication parameters must match the approved configuration
 test_7_5_pass if {
 	"7.5" in b.passed with input as green
 }
@@ -1837,7 +1837,7 @@ test_7_5_fail_attest_absent if {
 	not "7.5" in b.passed with input as inp
 }
 
-# 8.1 Ensure PostgreSQL subdirectory locations are outside the data cluster
+# 8.1 PostgreSQL subdirectory locations must be outside the data cluster
 test_8_1_pass if {
 	"8.1" in b.passed with input as green
 }
@@ -1854,7 +1854,7 @@ test_8_1_fail_attest_absent if {
 	not "8.1" in b.passed with input as inp
 }
 
-# 8.2 Ensure the backup and restore tool, 'pgBackRest', is installed and configured
+# 8.2 the backup and restore tool, 'pgBackRest', must be installed and configured
 test_8_2_pass if {
 	"8.2" in b.passed with input as green
 }
@@ -1863,7 +1863,7 @@ test_8_2_fail_1 if {
 	inp := json.patch(green, [{"op": "add", "path": "/postgresql/backup_methods", "value": ["pg_dump"]}])
 	not "8.2" in b.passed with input as inp
 	vs := b.violations with input as inp
-	"8.2: Ensure the backup and restore tool, 'pgBackRest', is installed and configured — requirement not met" in vs
+	"8.2: the backup and restore tool, 'pgBackRest', must be installed and configured — requirement not met" in vs
 }
 
 test_8_2_evidence_missing_1 if {
@@ -1871,12 +1871,12 @@ test_8_2_evidence_missing_1 if {
 	not "8.2" in b.passed with input as inp
 	vs := b.violations with input as inp
 	"8.2: evidence missing — postgresql.backup_methods not collected" in vs
-	not "8.2: Ensure the backup and restore tool, 'pgBackRest', is installed and configured — requirement not met" in vs
+	not "8.2: the backup and restore tool, 'pgBackRest', must be installed and configured — requirement not met" in vs
 	r := b.compliance_report with input as inp
 	r.compliant == false
 }
 
-# 8.3 Ensure miscellaneous configuration settings are correct
+# 8.3 miscellaneous configuration settings must be correct
 test_8_3_pass if {
 	"8.3" in b.passed with input as green
 }

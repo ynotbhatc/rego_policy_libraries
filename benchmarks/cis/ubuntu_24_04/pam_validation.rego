@@ -58,7 +58,7 @@ pwquality_value(key) := v if {
 	v := s.v
 }
 
-# CIS 5.4.1: Ensure password creation requirements are configured (pwquality)
+# CIS 5.4.1: password creation requirements must be explicitly configured (pwquality)
 
 # CIS 5.4.1.1: Minimum password length >= 14
 pwquality_violations contains msg if {
@@ -72,14 +72,14 @@ pwquality_violations contains msg if {
 	msg := "CIS 5.4.1.1: Password minimum length (minlen) not configured in pwquality.conf"
 }
 
-# CIS 5.4.1.2: Ensure password complexity (minclass or dcredit/ucredit/lcredit/ocredit)
+# CIS 5.4.1.2: checked condition — password complexity (minclass or dcredit/ucredit/lcredit/ocredit)
 pwquality_violations contains msg if {
 	not pwquality_value("minclass")
 	not pwquality_value("dcredit")
 	msg := "CIS 5.4.1.2: Password complexity not configured (minclass or dcredit not set)"
 }
 
-# CIS 5.4.2: Ensure lockout for failed password attempts
+# CIS 5.4.2: checked condition — lockout for failed password attempts
 faillock_violations contains msg if {
 	not input.pam.faillock_configured
 	msg := "CIS 5.4.2: pam_faillock (or pam_tally2) not configured for failed password lockout"
@@ -98,7 +98,7 @@ faillock_violations contains msg if {
 	msg := sprintf("CIS 5.4.2: Account unlock time is %d seconds, should be 900 or more (or 0 for never)", [input.pam.faillock_unlock_time])
 }
 
-# CIS 5.4.3: Ensure password reuse is limited
+# CIS 5.4.3: password reuse must be limited to named principals
 faillock_violations contains msg if {
 	not input.pam.remember_configured
 	msg := "CIS 5.4.3: Password history (remember) not configured in PAM"
@@ -110,7 +110,7 @@ faillock_violations contains msg if {
 	msg := sprintf("CIS 5.4.3: Password history remembers only %d passwords, should be 5 or more", [input.pam.remember_count])
 }
 
-# CIS 5.4.4: Ensure password hashing algorithm is SHA-512 or yescrypt
+# CIS 5.4.4: password hashing algorithm must be SHA-512 or yescrypt
 hash_algorithm_configured if {
 	some line in active_lines(object.get(object.get(input, "pam", {}), "common_password_raw", ""))
 	regex.match(`\b(sha512|yescrypt)\b`, line)
@@ -128,25 +128,25 @@ password_aging_violations contains msg if {
 	msg := sprintf("CIS 5.5: evidence missing — %s not collected", [key])
 }
 
-# CIS 5.5.1: Ensure minimum days between password changes
+# CIS 5.5.1: checked condition — minimum days between password changes
 password_aging_violations contains msg if {
 	input.pam.pass_min_days < 1
 	msg := sprintf("CIS 5.5.1: PASS_MIN_DAYS is %d, should be 1 or more", [input.pam.pass_min_days])
 }
 
-# CIS 5.5.2: Ensure password expiration is 365 days or less
+# CIS 5.5.2: password expiration must be 365 days or less
 password_aging_violations contains msg if {
 	input.pam.pass_max_days > 365
 	msg := sprintf("CIS 5.5.2: PASS_MAX_DAYS is %d, should be 365 or less", [input.pam.pass_max_days])
 }
 
-# CIS 5.5.3: Ensure password expiration warning days is 7 or more
+# CIS 5.5.3: password expiration warning days must be 7 or more
 password_aging_violations contains msg if {
 	input.pam.pass_warn_age < 7
 	msg := sprintf("CIS 5.5.3: PASS_WARN_AGE is %d, should be 7 or more", [input.pam.pass_warn_age])
 }
 
-# CIS 5.5.4: Ensure inactive password lock is 30 days or less
+# CIS 5.5.4: inactive password lock must be 30 days or less
 account_violations contains msg if {
 	input.pam.inactive_days > 30
 	msg := sprintf("CIS 5.5.4: INACTIVE is %d days, should be 30 or less", [input.pam.inactive_days])
@@ -157,13 +157,13 @@ account_violations contains msg if {
 	msg := "CIS 5.5.4: INACTIVE is not set (-1), inactive accounts will never be locked"
 }
 
-# CIS 5.5.5: Ensure all users last password change date is in the past
+# CIS 5.5.5: all users last password change date must be in the past
 account_violations contains msg if {
 	some user in input.pam.users_with_future_password_change
 	msg := sprintf("CIS 5.5.5: User %s has a last password change date in the future", [user])
 }
 
-# CIS 5.6: Ensure system accounts are secured
+# CIS 5.6: system accounts must be secured
 account_violations contains msg if {
 	some user in input.pam.system_accounts_with_login_shell
 	msg := sprintf("CIS 5.6: System account %s has an interactive login shell", [user])

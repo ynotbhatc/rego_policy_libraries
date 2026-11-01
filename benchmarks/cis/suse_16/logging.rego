@@ -214,7 +214,7 @@ log_file_ok(f) if {
 }
 
 # 6.1.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald service is active
+# journald service must be active
 default e_6_1_1_1 := false
 
 e_6_1_1_1 if {
@@ -229,13 +229,13 @@ p_6_1_1_1 if {
 
 violations contains "6.1.1.1: evidence missing — journald.service_active not collected" if not e_6_1_1_1
 
-violations contains "6.1.1.1: not met — Ensure journald service is active" if {
+violations contains "6.1.1.1: not met — journald service must be active" if {
 	e_6_1_1_1
 	not p_6_1_1_1
 }
 
 # 6.1.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-journal-remote service is not in use
+# systemd-journal-remote service must not be running
 default e_6_1_1_2 := false
 
 e_6_1_1_2 if {
@@ -251,13 +251,13 @@ p_6_1_1_2 if {
 
 violations contains "6.1.1.2: evidence missing — services[systemd-journal-remote.socket,systemd-journal-remote.service] not collected" if not e_6_1_1_2
 
-violations contains "6.1.1.2: not met — Ensure systemd-journal-remote service is not in use" if {
+violations contains "6.1.1.2: not met — systemd-journal-remote service must not be running" if {
 	e_6_1_1_2
 	not p_6_1_1_2
 }
 
 # 6.1.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald Compress is configured
+# journald Compress must be explicitly configured
 default e_6_1_1_3 := false
 
 e_6_1_1_3 if {
@@ -272,13 +272,13 @@ p_6_1_1_3 if {
 
 violations contains "6.1.1.3: evidence missing — journald.compress_enabled not collected" if not e_6_1_1_3
 
-violations contains "6.1.1.3: not met — Ensure journald Compress is configured" if {
+violations contains "6.1.1.3: not met — journald Compress must be explicitly configured" if {
 	e_6_1_1_3
 	not p_6_1_1_3
 }
 
 # 6.1.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald Storage is configured
+# journald Storage must be explicitly configured
 default e_6_1_1_4 := false
 
 e_6_1_1_4 if {
@@ -293,13 +293,13 @@ p_6_1_1_4 if {
 
 violations contains "6.1.1.4: evidence missing — journald.storage_mode not collected" if not e_6_1_1_4
 
-violations contains "6.1.1.4: not met — Ensure journald Storage is configured" if {
+violations contains "6.1.1.4: not met — journald Storage must be explicitly configured" if {
 	e_6_1_1_4
 	not p_6_1_1_4
 }
 
 # 6.1.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald is configured to send logs to rsyslog
+# journald must be explicitly configured to send logs to rsyslog
 default e_6_1_1_5 := false
 
 e_6_1_1_5 if {
@@ -314,33 +314,33 @@ p_6_1_1_5 if {
 
 violations contains "6.1.1.5: evidence missing — journald.forward_to_syslog not collected" if not e_6_1_1_5
 
-violations contains "6.1.1.5: not met — Ensure journald is configured to send logs to rsyslog" if {
+violations contains "6.1.1.5: not met — journald must be explicitly configured to send logs to rsyslog" if {
 	e_6_1_1_5
 	not p_6_1_1_5
 }
 
 # 6.1.1.6 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald log file rotation is configured
+# journald log file rotation must be explicitly configured
 default p_6_1_1_6 := false
 
 p_6_1_1_6 if {
 	input.attest.journald_rotation_reviewed == true
 }
 
-violations contains "6.1.1.6: manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (Ensure journald log file rotation is configured)" if not p_6_1_1_6
+violations contains "6.1.1.6: manual review not attested — set attest.journald_rotation_reviewed to true once reviewed (journald log file rotation must be explicitly configured)" if not p_6_1_1_6
 
 # 6.1.1.7 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald log file access is configured
+# journald log file access must be explicitly configured
 default p_6_1_1_7 := false
 
 p_6_1_1_7 if {
 	input.attest.journald_file_access_reviewed == true
 }
 
-violations contains "6.1.1.7: manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (Ensure journald log file access is configured)" if not p_6_1_1_7
+violations contains "6.1.1.7: manual review not attested — set attest.journald_file_access_reviewed to true once reviewed (journald log file access must be explicitly configured)" if not p_6_1_1_7
 
 # 6.1.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog is installed
+# rsyslog must be present
 default e_6_1_2_1 := false
 
 e_6_1_2_1 if {
@@ -355,13 +355,13 @@ p_6_1_2_1 if {
 
 violations contains "6.1.2.1: evidence missing — rsyslog.installed not collected" if not e_6_1_2_1
 
-violations contains "6.1.2.1: not met — Ensure rsyslog is installed" if {
+violations contains "6.1.2.1: not met — rsyslog must be present" if {
 	e_6_1_2_1
 	not p_6_1_2_1
 }
 
 # 6.1.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog service is enabled and active
+# rsyslog service must be turned on and active
 default e_6_1_2_2 := false
 
 e_6_1_2_2 if {
@@ -378,13 +378,13 @@ p_6_1_2_2 if {
 
 violations contains "6.1.2.2: evidence missing — rsyslog.service_enabled/service_active not collected" if not e_6_1_2_2
 
-violations contains "6.1.2.2: not met — Ensure rsyslog service is enabled and active" if {
+violations contains "6.1.2.2: not met — rsyslog service must be turned on and active" if {
 	e_6_1_2_2
 	not p_6_1_2_2
 }
 
 # 6.1.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure journald is configured to send logs to rsyslog
+# journald must be explicitly configured to send logs to rsyslog
 default e_6_1_2_3 := false
 
 e_6_1_2_3 if {
@@ -399,13 +399,13 @@ p_6_1_2_3 if {
 
 violations contains "6.1.2.3: evidence missing — journald.forward_to_syslog not collected" if not e_6_1_2_3
 
-violations contains "6.1.2.3: not met — Ensure journald is configured to send logs to rsyslog" if {
+violations contains "6.1.2.3: not met — journald must be explicitly configured to send logs to rsyslog" if {
 	e_6_1_2_3
 	not p_6_1_2_3
 }
 
 # 6.1.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog log file creation mode is configured
+# rsyslog log file creation mode must be explicitly configured
 default e_6_1_2_4 := false
 
 e_6_1_2_4 if {
@@ -420,33 +420,33 @@ p_6_1_2_4 if {
 
 violations contains "6.1.2.4: evidence missing — rsyslog not collected" if not e_6_1_2_4
 
-violations contains "6.1.2.4: not met — Ensure rsyslog log file creation mode is configured" if {
+violations contains "6.1.2.4: not met — rsyslog log file creation mode must be explicitly configured" if {
 	e_6_1_2_4
 	not p_6_1_2_4
 }
 
 # 6.1.2.5 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog logging is configured
+# rsyslog logging must be explicitly configured
 default p_6_1_2_5 := false
 
 p_6_1_2_5 if {
 	input.attest.rsyslog_logging_reviewed == true
 }
 
-violations contains "6.1.2.5: manual review not attested — set attest.rsyslog_logging_reviewed to true once reviewed (Ensure rsyslog logging is configured)" if not p_6_1_2_5
+violations contains "6.1.2.5: manual review not attested — set attest.rsyslog_logging_reviewed to true once reviewed (rsyslog logging must be explicitly configured)" if not p_6_1_2_5
 
 # 6.1.2.6 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog is configured to send logs to a remote log host
+# rsyslog must be explicitly configured to send logs to a remote log host
 default p_6_1_2_6 := false
 
 p_6_1_2_6 if {
 	input.attest.rsyslog_remote_host_configured == true
 }
 
-violations contains "6.1.2.6: manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (Ensure rsyslog is configured to send logs to a remote log host)" if not p_6_1_2_6
+violations contains "6.1.2.6: manual review not attested — set attest.rsyslog_remote_host_configured to true once reviewed (rsyslog must be explicitly configured to send logs to a remote log host)" if not p_6_1_2_6
 
 # 6.1.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsyslog is not configured to receive logs from a remote client
+# rsyslog must be left unconfigured to receive logs from a remote client
 default e_6_1_2_7 := false
 
 e_6_1_2_7 if {
@@ -461,23 +461,23 @@ p_6_1_2_7 if {
 
 violations contains "6.1.2.7: evidence missing — rsyslog.config_raw not collected" if not e_6_1_2_7
 
-violations contains "6.1.2.7: not met — Ensure rsyslog is not configured to receive logs from a remote client" if {
+violations contains "6.1.2.7: not met — rsyslog must be left unconfigured to receive logs from a remote client" if {
 	e_6_1_2_7
 	not p_6_1_2_7
 }
 
 # 6.1.2.8 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure logrotate is configured
+# logrotate must be explicitly configured
 default p_6_1_2_8 := false
 
 p_6_1_2_8 if {
 	input.attest.logrotate_reviewed == true
 }
 
-violations contains "6.1.2.8: manual review not attested — set attest.logrotate_reviewed to true once reviewed (Ensure logrotate is configured)" if not p_6_1_2_8
+violations contains "6.1.2.8: manual review not attested — set attest.logrotate_reviewed to true once reviewed (logrotate must be explicitly configured)" if not p_6_1_2_8
 
 # 6.1.2.9 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure rsyslog-gnutls is installed
+# rsyslog-gnutls must be present
 default e_6_1_2_9 := false
 
 e_6_1_2_9 if {
@@ -492,13 +492,13 @@ p_6_1_2_9 if {
 
 violations contains "6.1.2.9: evidence missing — packages.rsyslog-module-gtls not collected" if not e_6_1_2_9
 
-violations contains "6.1.2.9: not met — Ensure rsyslog-gnutls is installed" if {
+violations contains "6.1.2.9: not met — rsyslog-gnutls must be present" if {
 	e_6_1_2_9
 	not p_6_1_2_9
 }
 
 # 6.1.2.10 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure rsyslog forwarding uses gtls
+# checked condition — rsyslog forwarding uses gtls
 default e_6_1_2_10 := false
 
 e_6_1_2_10 if {
@@ -513,23 +513,23 @@ p_6_1_2_10 if {
 
 violations contains "6.1.2.10: evidence missing — rsyslog.config_raw not collected" if not e_6_1_2_10
 
-violations contains "6.1.2.10: not met — Ensure rsyslog forwarding uses gtls" if {
+violations contains "6.1.2.10: not met — checked condition — rsyslog forwarding uses gtls" if {
 	e_6_1_2_10
 	not p_6_1_2_10
 }
 
 # 6.1.2.11 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure rsyslog CA certificates are configured
+# rsyslog CA certificates must be explicitly configured
 default p_6_1_2_11 := false
 
 p_6_1_2_11 if {
 	input.attest.rsyslog_ca_certificates_configured == true
 }
 
-violations contains "6.1.2.11: manual review not attested — set attest.rsyslog_ca_certificates_configured to true once reviewed (Ensure rsyslog CA certificates are configured)" if not p_6_1_2_11
+violations contains "6.1.2.11: manual review not attested — set attest.rsyslog_ca_certificates_configured to true once reviewed (rsyslog CA certificates must be explicitly configured)" if not p_6_1_2_11
 
 # 6.1.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to all logfiles has been configured
+# access to all logfiles must have been configured
 default e_6_1_3_1 := false
 
 e_6_1_3_1 if {
@@ -545,7 +545,7 @@ p_6_1_3_1 if {
 
 violations contains "6.1.3.1: evidence missing — log_file_permissions.analysis not collected" if not e_6_1_3_1
 
-violations contains "6.1.3.1: not met — Ensure access to all logfiles has been configured" if {
+violations contains "6.1.3.1: not met — access to all logfiles must have been configured" if {
 	e_6_1_3_1
 	not p_6_1_3_1
 }

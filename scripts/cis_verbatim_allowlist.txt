@@ -1,0 +1,9 @@
+# Lines under benchmarks/cis that may contain the CIS recommendation-title
+# shape ("Ensure ...") without failing scripts/check_cis_verbatim.py.
+#
+# One pattern per line, matched with re.search against "path:line".
+# Blank lines and lines starting with # are ignored.
+#
+# Prefer deleting the sentence over adding an entry. An entry is for a
+# setting name or a quotation that is not the benchmark's recommendation
+# title. Keep the pattern as narrow as you can.

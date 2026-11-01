@@ -93,27 +93,27 @@ compliant if {
 
 master_node_violations := [msg |
     msgs := [
-        {"msg": "1.1.1 Ensure that the API server pod specification file permissions are set to 644 or more restrictive", "condition": api_server_permissions_secure},
-        {"msg": "1.1.2 Ensure that the API server pod specification file ownership is set to root:root", "condition": api_server_ownership_secure},
-        {"msg": "1.1.3 Ensure that the controller manager pod specification file permissions are set to 644 or more restrictive", "condition": controller_manager_permissions_secure},
-        {"msg": "1.1.4 Ensure that the controller manager pod specification file ownership is set to root:root", "condition": controller_manager_ownership_secure},
-        {"msg": "1.1.5 Ensure that the scheduler pod specification file permissions are set to 644 or more restrictive", "condition": scheduler_permissions_secure},
-        {"msg": "1.1.6 Ensure that the scheduler pod specification file ownership is set to root:root", "condition": scheduler_ownership_secure},
-        {"msg": "1.1.7 Ensure that the etcd pod specification file permissions are set to 644 or more restrictive", "condition": etcd_permissions_secure},
-        {"msg": "1.1.8 Ensure that the etcd pod specification file ownership is set to root:root", "condition": etcd_ownership_secure},
-        {"msg": "1.1.9 Ensure that the Container Network Interface file permissions are set to 644 or more restrictive", "condition": cni_permissions_secure},
-        {"msg": "1.1.10 Ensure that the Container Network Interface file ownership is set to root:root", "condition": cni_ownership_secure},
-        {"msg": "1.1.11 Ensure that the etcd data directory permissions are set to 700 or more restrictive", "condition": etcd_data_permissions_secure},
-        {"msg": "1.1.12 Ensure that the etcd data directory ownership is set to etcd:etcd", "condition": etcd_data_ownership_secure},
-        {"msg": "1.1.13 Ensure that the admin.conf file permissions are set to 644 or more restrictive", "condition": admin_conf_permissions_secure},
-        {"msg": "1.1.14 Ensure that the admin.conf file ownership is set to root:root", "condition": admin_conf_ownership_secure},
-        {"msg": "1.1.15 Ensure that the scheduler.conf file permissions are set to 644 or more restrictive", "condition": scheduler_conf_permissions_secure},
-        {"msg": "1.1.16 Ensure that the scheduler.conf file ownership is set to root:root", "condition": scheduler_conf_ownership_secure},
-        {"msg": "1.1.17 Ensure that the controller-manager.conf file permissions are set to 644 or more restrictive", "condition": controller_manager_conf_permissions_secure},
-        {"msg": "1.1.18 Ensure that the controller-manager.conf file ownership is set to root:root", "condition": controller_manager_conf_ownership_secure},
-        {"msg": "1.1.19 Ensure that the OpenShift PKI directory and file ownership is set to root:root", "condition": pki_ownership_secure},
-        {"msg": "1.1.20 Ensure that the OpenShift PKI certificate file permissions are set to 644 or more restrictive", "condition": pki_cert_permissions_secure},
-        {"msg": "1.1.21 Ensure that the OpenShift PKI key file permissions are set to 600", "condition": pki_key_permissions_secure}
+        {"msg": "1.1.1 the API server pod specification file permissions must be set to 644 or more restrictive", "condition": api_server_permissions_secure},
+        {"msg": "1.1.2 required value of the API server pod specification file ownership is root:root", "condition": api_server_ownership_secure},
+        {"msg": "1.1.3 the controller manager pod specification file permissions must be set to 644 or more restrictive", "condition": controller_manager_permissions_secure},
+        {"msg": "1.1.4 required value of the controller manager pod specification file ownership is root:root", "condition": controller_manager_ownership_secure},
+        {"msg": "1.1.5 the scheduler pod specification file permissions must be set to 644 or more restrictive", "condition": scheduler_permissions_secure},
+        {"msg": "1.1.6 required value of the scheduler pod specification file ownership is root:root", "condition": scheduler_ownership_secure},
+        {"msg": "1.1.7 the etcd pod specification file permissions must be set to 644 or more restrictive", "condition": etcd_permissions_secure},
+        {"msg": "1.1.8 required value of the etcd pod specification file ownership is root:root", "condition": etcd_ownership_secure},
+        {"msg": "1.1.9 the Container Network Interface file permissions must be set to 644 or more restrictive", "condition": cni_permissions_secure},
+        {"msg": "1.1.10 required value of the Container Network Interface file ownership is root:root", "condition": cni_ownership_secure},
+        {"msg": "1.1.11 the etcd data directory permissions must be set to 700 or more restrictive", "condition": etcd_data_permissions_secure},
+        {"msg": "1.1.12 required value of the etcd data directory ownership is etcd:etcd", "condition": etcd_data_ownership_secure},
+        {"msg": "1.1.13 the admin.conf file permissions must be set to 644 or more restrictive", "condition": admin_conf_permissions_secure},
+        {"msg": "1.1.14 required value of the admin.conf file ownership is root:root", "condition": admin_conf_ownership_secure},
+        {"msg": "1.1.15 the scheduler.conf file permissions must be set to 644 or more restrictive", "condition": scheduler_conf_permissions_secure},
+        {"msg": "1.1.16 required value of the scheduler.conf file ownership is root:root", "condition": scheduler_conf_ownership_secure},
+        {"msg": "1.1.17 the controller-manager.conf file permissions must be set to 644 or more restrictive", "condition": controller_manager_conf_permissions_secure},
+        {"msg": "1.1.18 required value of the controller-manager.conf file ownership is root:root", "condition": controller_manager_conf_ownership_secure},
+        {"msg": "1.1.19 required value of the OpenShift PKI directory and file ownership is root:root", "condition": pki_ownership_secure},
+        {"msg": "1.1.20 the OpenShift PKI certificate file permissions must be set to 644 or more restrictive", "condition": pki_cert_permissions_secure},
+        {"msg": "1.1.21 the OpenShift PKI key file permissions must be set to 600", "condition": pki_key_permissions_secure}
     ]
     m := msgs[_]
     not m.condition
@@ -122,13 +122,13 @@ master_node_violations := [msg |
 
 etcd_violations := [msg |
     msgs := [
-        {"msg": "2.1 Ensure that the --cert-file and --key-file arguments are set as appropriate", "condition": etcd_cert_key_configured},
-        {"msg": "2.2 Ensure that the --client-cert-auth argument is set to true", "condition": etcd_client_cert_auth},
-        {"msg": "2.3 Ensure that the --auto-tls argument is not set to true", "condition": etcd_auto_tls_disabled},
-        {"msg": "2.4 Ensure that the --peer-cert-file and --peer-key-file arguments are set as appropriate", "condition": etcd_peer_cert_configured},
-        {"msg": "2.5 Ensure that the --peer-client-cert-auth argument is set to true", "condition": etcd_peer_client_cert_auth},
-        {"msg": "2.6 Ensure that the --peer-auto-tls argument is not set to true", "condition": etcd_peer_auto_tls_disabled},
-        {"msg": "2.7 Ensure that a unique Certificate Authority is used for etcd", "condition": etcd_unique_ca}
+        {"msg": "2.1 the --cert-file and --key-file arguments must be set as appropriate", "condition": etcd_cert_key_configured},
+        {"msg": "2.2 required value of the --client-cert-auth argument is true", "condition": etcd_client_cert_auth},
+        {"msg": "2.3 the --auto-tls argument must not be true", "condition": etcd_auto_tls_disabled},
+        {"msg": "2.4 the --peer-cert-file and --peer-key-file arguments must be set as appropriate", "condition": etcd_peer_cert_configured},
+        {"msg": "2.5 required value of the --peer-client-cert-auth argument is true", "condition": etcd_peer_client_cert_auth},
+        {"msg": "2.6 the --peer-auto-tls argument must not be true", "condition": etcd_peer_auto_tls_disabled},
+        {"msg": "2.7 a unique Certificate Authority must be used for etcd", "condition": etcd_unique_ca}
     ]
     m := msgs[_]
     not m.condition
@@ -137,41 +137,41 @@ etcd_violations := [msg |
 
 control_plane_violations := [msg |
     msgs := [
-        {"msg": "3.1.1 Ensure that the --anonymous-auth argument is set to false", "condition": anonymous_auth_disabled},
-        {"msg": "3.1.2 Ensure that the --basic-auth-file argument is not set", "condition": basic_auth_disabled},
-        {"msg": "3.1.3 Ensure that the --token-auth-file parameter is not set", "condition": token_auth_disabled},
-        {"msg": "3.1.4 Ensure that the --kubelet-https argument is set to true", "condition": kubelet_https_enabled},
-        {"msg": "3.1.5 Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate", "condition": kubelet_client_cert_configured},
-        {"msg": "3.1.6 Ensure that the --kubelet-certificate-authority argument is set as appropriate", "condition": kubelet_ca_configured},
-        {"msg": "3.1.7 Ensure that the --authorization-mode argument is not set to AlwaysAllow", "condition": authorization_mode_secure},
-        {"msg": "3.1.8 Ensure that the --authorization-mode argument includes Node", "condition": authorization_mode_includes_node},
-        {"msg": "3.1.9 Ensure that the --authorization-mode argument includes RBAC", "condition": authorization_mode_includes_rbac},
-        {"msg": "3.1.10 Ensure that the admission control plugin EventRateLimit is set", "condition": event_rate_limit_enabled},
-        {"msg": "3.1.11 Ensure that the admission control plugin AlwaysAdmit is not set", "condition": always_admit_disabled},
-        {"msg": "3.1.12 Ensure that the admission control plugin AlwaysPullImages is set", "condition": always_pull_images_enabled},
-        {"msg": "3.1.13 Ensure that the admission control plugin SecurityContextDeny is set if PodSecurityPolicy is not used", "condition": security_context_deny_configured},
-        {"msg": "3.1.14 Ensure that the admission control plugin ServiceAccount is set", "condition": service_account_admission_enabled},
-        {"msg": "3.1.15 Ensure that the admission control plugin NamespaceLifecycle is set", "condition": namespace_lifecycle_enabled},
-        {"msg": "3.1.16 Ensure that the admission control plugin PodSecurityPolicy is set", "condition": pod_security_policy_enabled},
-        {"msg": "3.1.17 Ensure that the admission control plugin NodeRestriction is set", "condition": node_restriction_enabled},
-        {"msg": "3.1.18 Ensure that the --insecure-bind-address argument is not set", "condition": insecure_bind_address_disabled},
-        {"msg": "3.1.19 Ensure that the --insecure-port argument is set to 0", "condition": insecure_port_disabled},
-        {"msg": "3.1.20 Ensure that the --secure-port argument is not set to 0", "condition": secure_port_enabled},
-        {"msg": "3.1.21 Ensure that the --profiling argument is set to false", "condition": profiling_disabled},
-        {"msg": "3.1.22 Ensure that the --audit-log-path argument is set", "condition": audit_log_path_configured},
-        {"msg": "3.1.23 Ensure that the --audit-log-maxage argument is set to 30 or as appropriate", "condition": audit_log_maxage_configured},
-        {"msg": "3.1.24 Ensure that the --audit-log-maxbackup argument is set to 10 or as appropriate", "condition": audit_log_maxbackup_configured},
-        {"msg": "3.1.25 Ensure that the --audit-log-maxsize argument is set to 100 or as appropriate", "condition": audit_log_maxsize_configured},
-        {"msg": "3.1.26 Ensure that the --request-timeout argument is set as appropriate", "condition": request_timeout_configured},
-        {"msg": "3.1.27 Ensure that the --service-account-lookup argument is set to true", "condition": service_account_lookup_enabled},
-        {"msg": "3.1.28 Ensure that the --service-account-key-file argument is set as appropriate", "condition": service_account_key_configured},
-        {"msg": "3.1.29 Ensure that the --etcd-certfile and --etcd-keyfile arguments are set as appropriate", "condition": etcd_cert_configured},
-        {"msg": "3.1.30 Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate", "condition": tls_cert_configured},
-        {"msg": "3.1.31 Ensure that the --client-ca-file argument is set as appropriate", "condition": client_ca_configured},
-        {"msg": "3.1.32 Ensure that the --etcd-cafile argument is set as appropriate", "condition": etcd_ca_configured},
-        {"msg": "3.1.33 Ensure that the --encryption-provider-config argument is set as appropriate", "condition": encryption_provider_configured},
-        {"msg": "3.1.34 Ensure encryption providers are appropriately configured", "condition": encryption_providers_secure},
-        {"msg": "3.1.35 Ensure that the API Server only makes use of Strong Cryptographic Ciphers", "condition": strong_crypto_ciphers}
+        {"msg": "3.1.1 required value of the --anonymous-auth argument is false", "condition": anonymous_auth_disabled},
+        {"msg": "3.1.2 the --basic-auth-file argument must be unset", "condition": basic_auth_disabled},
+        {"msg": "3.1.3 required value of parameter the --token-auth-file is not set", "condition": token_auth_disabled},
+        {"msg": "3.1.4 required value of the --kubelet-https argument is true", "condition": kubelet_https_enabled},
+        {"msg": "3.1.5 the --kubelet-client-certificate and --kubelet-client-key arguments must be set as appropriate", "condition": kubelet_client_cert_configured},
+        {"msg": "3.1.6 the --kubelet-certificate-authority argument must be set as appropriate", "condition": kubelet_ca_configured},
+        {"msg": "3.1.7 the --authorization-mode argument must not be AlwaysAllow", "condition": authorization_mode_secure},
+        {"msg": "3.1.8 checked condition — the --authorization-mode argument includes Node", "condition": authorization_mode_includes_node},
+        {"msg": "3.1.9 checked condition — the --authorization-mode argument includes RBAC", "condition": authorization_mode_includes_rbac},
+        {"msg": "3.1.10 the admission control plugin EventRateLimit must be set", "condition": event_rate_limit_enabled},
+        {"msg": "3.1.11 the admission control plugin AlwaysAdmit must be unset", "condition": always_admit_disabled},
+        {"msg": "3.1.12 the admission control plugin AlwaysPullImages must be set", "condition": always_pull_images_enabled},
+        {"msg": "3.1.13 the admission control plugin SecurityContextDeny must be set if PodSecurityPolicy is not used", "condition": security_context_deny_configured},
+        {"msg": "3.1.14 the admission control plugin ServiceAccount must be set", "condition": service_account_admission_enabled},
+        {"msg": "3.1.15 the admission control plugin NamespaceLifecycle must be set", "condition": namespace_lifecycle_enabled},
+        {"msg": "3.1.16 the admission control plugin PodSecurityPolicy must be set", "condition": pod_security_policy_enabled},
+        {"msg": "3.1.17 the admission control plugin NodeRestriction must be set", "condition": node_restriction_enabled},
+        {"msg": "3.1.18 the --insecure-bind-address argument must be unset", "condition": insecure_bind_address_disabled},
+        {"msg": "3.1.19 required value of the --insecure-port argument is 0", "condition": insecure_port_disabled},
+        {"msg": "3.1.20 the --secure-port argument must not be 0", "condition": secure_port_enabled},
+        {"msg": "3.1.21 required value of the --profiling argument is false", "condition": profiling_disabled},
+        {"msg": "3.1.22 the --audit-log-path argument must be set", "condition": audit_log_path_configured},
+        {"msg": "3.1.23 required value of the --audit-log-maxage argument is 30 or as appropriate", "condition": audit_log_maxage_configured},
+        {"msg": "3.1.24 required value of the --audit-log-maxbackup argument is 10 or as appropriate", "condition": audit_log_maxbackup_configured},
+        {"msg": "3.1.25 required value of the --audit-log-maxsize argument is 100 or as appropriate", "condition": audit_log_maxsize_configured},
+        {"msg": "3.1.26 the --request-timeout argument must be set as appropriate", "condition": request_timeout_configured},
+        {"msg": "3.1.27 required value of the --service-account-lookup argument is true", "condition": service_account_lookup_enabled},
+        {"msg": "3.1.28 the --service-account-key-file argument must be set as appropriate", "condition": service_account_key_configured},
+        {"msg": "3.1.29 the --etcd-certfile and --etcd-keyfile arguments must be set as appropriate", "condition": etcd_cert_configured},
+        {"msg": "3.1.30 the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate", "condition": tls_cert_configured},
+        {"msg": "3.1.31 the --client-ca-file argument must be set as appropriate", "condition": client_ca_configured},
+        {"msg": "3.1.32 the --etcd-cafile argument must be set as appropriate", "condition": etcd_ca_configured},
+        {"msg": "3.1.33 the --encryption-provider-config argument must be set as appropriate", "condition": encryption_provider_configured},
+        {"msg": "3.1.34 encryption providers must be appropriately configured", "condition": encryption_providers_secure},
+        {"msg": "3.1.35 checked condition — the API Server only makes use of Strong Cryptographic Ciphers", "condition": strong_crypto_ciphers}
     ]
     m := msgs[_]
     not m.condition
@@ -180,29 +180,29 @@ control_plane_violations := [msg |
 
 worker_node_violations := [msg |
     msgs := [
-        {"msg": "4.1.1 Ensure that the kubelet service file permissions are set to 644 or more restrictive", "condition": kubelet_service_permissions_secure},
-        {"msg": "4.1.2 Ensure that the kubelet service file ownership is set to root:root", "condition": kubelet_service_ownership_secure},
-        {"msg": "4.1.3 Ensure that the proxy kubeconfig file permissions are set to 644 or more restrictive", "condition": proxy_kubeconfig_permissions_secure},
-        {"msg": "4.1.4 Ensure that the proxy kubeconfig file ownership is set to root:root", "condition": proxy_kubeconfig_ownership_secure},
-        {"msg": "4.1.5 Ensure that the kubelet.conf file permissions are set to 644 or more restrictive", "condition": kubelet_conf_permissions_secure},
-        {"msg": "4.1.6 Ensure that the kubelet.conf file ownership is set to root:root", "condition": kubelet_conf_ownership_secure},
-        {"msg": "4.1.7 Ensure that the certificate authorities file permissions are set to 644 or more restrictive", "condition": ca_permissions_secure},
-        {"msg": "4.1.8 Ensure that the client certificate authorities file ownership is set to root:root", "condition": ca_ownership_secure},
-        {"msg": "4.1.9 Ensure that the kubelet configuration file has permissions set to 644 or more restrictive", "condition": kubelet_config_permissions_secure},
-        {"msg": "4.1.10 Ensure that the kubelet configuration file ownership is set to root:root", "condition": kubelet_config_ownership_secure},
-        {"msg": "4.2.1 Ensure that the anonymous-auth argument is set to false", "condition": kubelet_anonymous_auth_disabled},
-        {"msg": "4.2.2 Ensure that the --authorization-mode argument is not set to AlwaysAllow", "condition": kubelet_authorization_secure},
-        {"msg": "4.2.3 Ensure that the --client-ca-file argument is set as appropriate", "condition": kubelet_client_ca_configured},
-        {"msg": "4.2.4 Ensure that the --read-only-port argument is set to 0", "condition": kubelet_readonly_port_disabled},
-        {"msg": "4.2.5 Ensure that the --streaming-connection-idle-timeout argument is not set to 0", "condition": kubelet_streaming_timeout_configured},
-        {"msg": "4.2.6 Ensure that the --protect-kernel-defaults argument is set to true", "condition": kubelet_protect_kernel_defaults},
-        {"msg": "4.2.7 Ensure that the --make-iptables-util-chains argument is set to true", "condition": kubelet_iptables_util_chains},
-        {"msg": "4.2.8 Ensure that the --hostname-override argument is not set", "condition": kubelet_hostname_override_disabled},
-        {"msg": "4.2.9 Ensure that the --event-qps argument is set to 0 or a level which ensures appropriate event capture", "condition": kubelet_event_qps_configured},
-        {"msg": "4.2.10 Ensure that the --tls-cert-file and --tls-private-key-file arguments are set as appropriate", "condition": kubelet_tls_configured},
-        {"msg": "4.2.11 Ensure that the --rotate-certificates argument is not set to false", "condition": kubelet_rotate_certificates_enabled},
-        {"msg": "4.2.12 Ensure that the RotateKubeletServerCertificate argument is set to true", "condition": kubelet_rotate_server_certs},
-        {"msg": "4.2.13 Ensure that the Kubelet only makes use of Strong Cryptographic Ciphers", "condition": kubelet_strong_crypto_ciphers}
+        {"msg": "4.1.1 the kubelet service file permissions must be set to 644 or more restrictive", "condition": kubelet_service_permissions_secure},
+        {"msg": "4.1.2 required value of the kubelet service file ownership is root:root", "condition": kubelet_service_ownership_secure},
+        {"msg": "4.1.3 the proxy kubeconfig file permissions must be set to 644 or more restrictive", "condition": proxy_kubeconfig_permissions_secure},
+        {"msg": "4.1.4 required value of the proxy kubeconfig file ownership is root:root", "condition": proxy_kubeconfig_ownership_secure},
+        {"msg": "4.1.5 the kubelet.conf file permissions must be set to 644 or more restrictive", "condition": kubelet_conf_permissions_secure},
+        {"msg": "4.1.6 required value of the kubelet.conf file ownership is root:root", "condition": kubelet_conf_ownership_secure},
+        {"msg": "4.1.7 the certificate authorities file permissions must be set to 644 or more restrictive", "condition": ca_permissions_secure},
+        {"msg": "4.1.8 required value of the client certificate authorities file ownership is root:root", "condition": ca_ownership_secure},
+        {"msg": "4.1.9 the kubelet configuration file must have permissions set to 644 or more restrictive", "condition": kubelet_config_permissions_secure},
+        {"msg": "4.1.10 required value of the kubelet configuration file ownership is root:root", "condition": kubelet_config_ownership_secure},
+        {"msg": "4.2.1 required value of the anonymous-auth argument is false", "condition": kubelet_anonymous_auth_disabled},
+        {"msg": "4.2.2 the --authorization-mode argument must not be AlwaysAllow", "condition": kubelet_authorization_secure},
+        {"msg": "4.2.3 the --client-ca-file argument must be set as appropriate", "condition": kubelet_client_ca_configured},
+        {"msg": "4.2.4 required value of the --read-only-port argument is 0", "condition": kubelet_readonly_port_disabled},
+        {"msg": "4.2.5 the --streaming-connection-idle-timeout argument must not be 0", "condition": kubelet_streaming_timeout_configured},
+        {"msg": "4.2.6 required value of the --protect-kernel-defaults argument is true", "condition": kubelet_protect_kernel_defaults},
+        {"msg": "4.2.7 required value of the --make-iptables-util-chains argument is true", "condition": kubelet_iptables_util_chains},
+        {"msg": "4.2.8 the --hostname-override argument must be unset", "condition": kubelet_hostname_override_disabled},
+        {"msg": "4.2.9 required value of the --event-qps argument is 0 or a level which ensures appropriate event capture", "condition": kubelet_event_qps_configured},
+        {"msg": "4.2.10 the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate", "condition": kubelet_tls_configured},
+        {"msg": "4.2.11 the --rotate-certificates argument must not be false", "condition": kubelet_rotate_certificates_enabled},
+        {"msg": "4.2.12 required value of the RotateKubeletServerCertificate argument is true", "condition": kubelet_rotate_server_certs},
+        {"msg": "4.2.13 checked condition — the Kubelet only makes use of Strong Cryptographic Ciphers", "condition": kubelet_strong_crypto_ciphers}
     ]
     m := msgs[_]
     not m.condition
@@ -211,30 +211,30 @@ worker_node_violations := [msg |
 
 kubernetes_policies_violations := [msg |
     msgs := [
-        {"msg": "5.1.1 Ensure that the cluster-admin role is only used where required", "condition": cluster_admin_role_restricted},
+        {"msg": "5.1.1 the cluster-admin role must be only used where required", "condition": cluster_admin_role_restricted},
         {"msg": "5.1.2 Minimize access to secrets", "condition": secrets_access_minimized},
-        {"msg": "5.1.3 Minimize wildcard use in Roles and ClusterRoles", "condition": wildcard_usage_minimized},
-        {"msg": "5.1.4 Minimize access to create pods", "condition": pod_creation_access_minimized},
-        {"msg": "5.1.5 Ensure that default service accounts are not actively used", "condition": default_service_accounts_restricted},
-        {"msg": "5.1.6 Ensure that Service Account Tokens are only mounted where necessary", "condition": service_account_tokens_restricted},
-        {"msg": "5.2.1 Minimize the admission of privileged containers", "condition": privileged_containers_minimized},
-        {"msg": "5.2.2 Minimize the admission of containers wishing to share the host process ID namespace", "condition": host_pid_sharing_minimized},
-        {"msg": "5.2.3 Minimize the admission of containers wishing to share the host IPC namespace", "condition": host_ipc_sharing_minimized},
-        {"msg": "5.2.4 Minimize the admission of containers wishing to share the host network namespace", "condition": host_network_sharing_minimized},
-        {"msg": "5.2.5 Minimize the admission of containers with allowPrivilegeEscalation", "condition": privilege_escalation_minimized},
+        {"msg": "5.1.3 wildcard use in Roles and ClusterRoles must be held to the smallest scope the platform allows", "condition": wildcard_usage_minimized},
+        {"msg": "5.1.4 access to create pods must be held to the smallest scope the platform allows", "condition": pod_creation_access_minimized},
+        {"msg": "5.1.5 default service accounts must be not actively used", "condition": default_service_accounts_restricted},
+        {"msg": "5.1.6 Service Account Tokens must be only mounted where necessary", "condition": service_account_tokens_restricted},
+        {"msg": "5.2.1 admission of privileged containers must be held to the smallest scope the platform allows", "condition": privileged_containers_minimized},
+        {"msg": "5.2.2 admission of containers wishing to share the host process ID namespace must be held to the smallest scope the platform allows", "condition": host_pid_sharing_minimized},
+        {"msg": "5.2.3 admission of containers wishing to share the host IPC namespace must be held to the smallest scope the platform allows", "condition": host_ipc_sharing_minimized},
+        {"msg": "5.2.4 admission of containers wishing to share the host network namespace must be held to the smallest scope the platform allows", "condition": host_network_sharing_minimized},
+        {"msg": "5.2.5 admission of containers with allowPrivilegeEscalation must be held to the smallest scope the platform allows", "condition": privilege_escalation_minimized},
         {"msg": "5.2.6 Minimize the admission of root containers", "condition": root_containers_minimized},
         {"msg": "5.2.7 Minimize the admission of containers with the NET_RAW capability", "condition": net_raw_capability_minimized},
         {"msg": "5.2.8 Minimize the admission of containers with added capabilities", "condition": added_capabilities_minimized},
         {"msg": "5.2.9 Minimize the admission of containers with capabilities assigned", "condition": capabilities_assignment_minimized},
-        {"msg": "5.3.1 Ensure that the CNI in use supports Network Policies", "condition": cni_network_policies_supported},
-        {"msg": "5.3.2 Ensure that all Namespaces have Network Policies defined", "condition": namespace_network_policies_defined},
+        {"msg": "5.3.1 checked condition — the CNI in use supports Network Policies", "condition": cni_network_policies_supported},
+        {"msg": "5.3.2 all Namespaces must have Network Policies defined", "condition": namespace_network_policies_defined},
         {"msg": "5.4.1 Prefer using secrets as files over secrets as environment variables", "condition": secrets_as_files_preferred},
-        {"msg": "5.4.2 Consider external secret storage", "condition": external_secret_storage_considered},
+        {"msg": "5.4.2 external secret storage must be evaluated and the decision recorded", "condition": external_secret_storage_considered},
         {"msg": "5.5.1 Configure Image Provenance using ImagePolicyWebhook admission controller", "condition": image_provenance_configured},
-        {"msg": "5.7.1 Create administrative boundaries between resources using namespaces", "condition": administrative_boundaries_configured},
-        {"msg": "5.7.2 Ensure that the seccomp profile is set to docker/default in your pod definitions", "condition": seccomp_profile_configured},
+        {"msg": "5.7.1 administrative boundaries between resources using namespaces must exist", "condition": administrative_boundaries_configured},
+        {"msg": "5.7.2 required value of the seccomp profile is docker/default in your pod definitions", "condition": seccomp_profile_configured},
         {"msg": "5.7.3 Apply Security Context to Your Pods and Containers", "condition": security_context_applied},
-        {"msg": "5.7.4 The default namespace should not be used", "condition": default_namespace_avoided}
+        {"msg": "5.7.4 default namespace must not be used", "condition": default_namespace_avoided}
     ]
     m := msgs[_]
     not m.condition
@@ -243,15 +243,15 @@ kubernetes_policies_violations := [msg |
 
 network_policies_violations := [msg |
     msgs := [
-        {"msg": "6.1.1 Ensure that OpenShift Network Policies are in place", "condition": openshift_network_policies_configured},
-        {"msg": "6.1.2 Ensure that network segmentation is applied", "condition": network_segmentation_applied},
-        {"msg": "6.1.3 Ensure that traffic between nodes and masters is encrypted", "condition": node_master_traffic_encrypted},
-        {"msg": "6.1.4 Ensure that traffic between pods is encrypted when required", "condition": pod_traffic_encryption_configured},
-        {"msg": "6.2.1 Ensure that Ingress Controllers have appropriate security configurations", "condition": ingress_controllers_secure},
-        {"msg": "6.2.2 Ensure that Routes have appropriate security configurations", "condition": routes_security_configured},
-        {"msg": "6.2.3 Ensure that external traffic is properly controlled", "condition": external_traffic_controlled},
-        {"msg": "6.3.1 Ensure that Service Mesh is configured securely when used", "condition": service_mesh_secure},
-        {"msg": "6.3.2 Ensure that sidecar injection is properly configured", "condition": sidecar_injection_configured}
+        {"msg": "6.1.1 OpenShift Network Policies must be in place", "condition": openshift_network_policies_configured},
+        {"msg": "6.1.2 network segmentation must be applied", "condition": network_segmentation_applied},
+        {"msg": "6.1.3 traffic between nodes and masters must be encrypted", "condition": node_master_traffic_encrypted},
+        {"msg": "6.1.4 traffic between pods must be encrypted when required", "condition": pod_traffic_encryption_configured},
+        {"msg": "6.2.1 Ingress Controllers must have appropriate security configurations", "condition": ingress_controllers_secure},
+        {"msg": "6.2.2 Routes must have appropriate security configurations", "condition": routes_security_configured},
+        {"msg": "6.2.3 external traffic must be properly controlled", "condition": external_traffic_controlled},
+        {"msg": "6.3.1 Service Mesh must be explicitly configured securely when used", "condition": service_mesh_secure},
+        {"msg": "6.3.2 sidecar injection must match the approved configuration", "condition": sidecar_injection_configured}
     ]
     m := msgs[_]
     not m.condition
@@ -260,15 +260,15 @@ network_policies_violations := [msg |
 
 authentication_violations := [msg |
     msgs := [
-        {"msg": "7.1.1 Ensure that OpenShift identity providers are properly configured", "condition": identity_providers_configured},
-        {"msg": "7.1.2 Ensure that LDAP/Active Directory integration is secure", "condition": ldap_integration_secure},
-        {"msg": "7.1.3 Ensure that OAuth configuration is secure", "condition": oauth_configuration_secure},
-        {"msg": "7.1.4 Ensure that service account authentication is properly configured", "condition": service_account_auth_configured},
-        {"msg": "7.2.1 Ensure that multi-factor authentication is enabled where possible", "condition": mfa_enabled},
-        {"msg": "7.2.2 Ensure that strong password policies are enforced", "condition": strong_password_policies},
-        {"msg": "7.2.3 Ensure that session timeouts are appropriately configured", "condition": session_timeouts_configured},
-        {"msg": "7.3.1 Ensure that certificate-based authentication is used where appropriate", "condition": cert_based_auth_configured},
-        {"msg": "7.3.2 Ensure that certificate rotation is properly configured", "condition": cert_rotation_configured}
+        {"msg": "7.1.1 OpenShift identity providers must match the approved configuration", "condition": identity_providers_configured},
+        {"msg": "7.1.2 LDAP/Active Directory integration must be secure", "condition": ldap_integration_secure},
+        {"msg": "7.1.3 OAuth configuration must be secure", "condition": oauth_configuration_secure},
+        {"msg": "7.1.4 service account authentication must match the approved configuration", "condition": service_account_auth_configured},
+        {"msg": "7.2.1 multi-factor authentication must be turned on where possible", "condition": mfa_enabled},
+        {"msg": "7.2.2 strong password policies must be enforced", "condition": strong_password_policies},
+        {"msg": "7.2.3 session timeouts must be appropriately configured", "condition": session_timeouts_configured},
+        {"msg": "7.3.1 certificate-based authentication must be used where appropriate", "condition": cert_based_auth_configured},
+        {"msg": "7.3.2 certificate rotation must match the approved configuration", "condition": cert_rotation_configured}
     ]
     m := msgs[_]
     not m.condition
@@ -277,14 +277,14 @@ authentication_violations := [msg |
 
 authorization_violations := [msg |
     msgs := [
-        {"msg": "8.1.1 Ensure that RBAC is properly configured", "condition": rbac_properly_configured},
-        {"msg": "8.1.2 Ensure that role bindings are reviewed regularly", "condition": role_bindings_reviewed},
-        {"msg": "8.1.3 Ensure that cluster role bindings are minimized", "condition": cluster_role_bindings_minimized},
-        {"msg": "8.2.1 Ensure that Security Context Constraints are properly configured", "condition": scc_properly_configured},
-        {"msg": "8.2.2 Ensure that custom SCCs follow security best practices", "condition": custom_scc_secure},
-        {"msg": "8.2.3 Ensure that privileged SCCs are restricted", "condition": privileged_scc_restricted},
-        {"msg": "8.3.1 Ensure that admission controllers are properly configured", "condition": admission_controllers_configured},
-        {"msg": "8.3.2 Ensure that custom admission controllers are secure", "condition": custom_admission_controllers_secure}
+        {"msg": "8.1.1 RBAC must match the approved configuration", "condition": rbac_properly_configured},
+        {"msg": "8.1.2 role bindings must be reviewed regularly", "condition": role_bindings_reviewed},
+        {"msg": "8.1.3 cluster role bindings must be minimized", "condition": cluster_role_bindings_minimized},
+        {"msg": "8.2.1 Security Context Constraints must match the approved configuration", "condition": scc_properly_configured},
+        {"msg": "8.2.2 checked condition — custom SCCs follow security best practices", "condition": custom_scc_secure},
+        {"msg": "8.2.3 privileged SCCs must be restricted", "condition": privileged_scc_restricted},
+        {"msg": "8.3.1 admission controllers must match the approved configuration", "condition": admission_controllers_configured},
+        {"msg": "8.3.2 custom admission controllers must be secure", "condition": custom_admission_controllers_secure}
     ]
     m := msgs[_]
     not m.condition
@@ -293,16 +293,16 @@ authorization_violations := [msg |
 
 logging_violations := [msg |
     msgs := [
-        {"msg": "9.1.1 Ensure that audit logging is enabled", "condition": audit_logging_enabled},
-        {"msg": "9.1.2 Ensure that audit log retention is configured appropriately", "condition": audit_log_retention_configured},
-        {"msg": "9.1.3 Ensure that audit logs are stored securely", "condition": audit_logs_stored_securely},
-        {"msg": "9.2.1 Ensure that application logging is properly configured", "condition": application_logging_configured},
-        {"msg": "9.2.2 Ensure that log aggregation is properly configured", "condition": log_aggregation_configured},
-        {"msg": "9.2.3 Ensure that sensitive information is not logged", "condition": sensitive_info_logging_prevented},
-        {"msg": "9.3.1 Ensure that log monitoring and alerting is configured", "condition": log_monitoring_configured},
-        {"msg": "9.3.2 Ensure that security events are properly logged and alerted", "condition": security_events_monitored},
-        {"msg": "9.4.1 Ensure that logs are backed up regularly", "condition": logs_backed_up},
-        {"msg": "9.4.2 Ensure that log integrity is maintained", "condition": log_integrity_maintained}
+        {"msg": "9.1.1 audit logging must be turned on", "condition": audit_logging_enabled},
+        {"msg": "9.1.2 audit log retention must be explicitly configured appropriately", "condition": audit_log_retention_configured},
+        {"msg": "9.1.3 audit logs must be stored securely", "condition": audit_logs_stored_securely},
+        {"msg": "9.2.1 application logging must match the approved configuration", "condition": application_logging_configured},
+        {"msg": "9.2.2 log aggregation must match the approved configuration", "condition": log_aggregation_configured},
+        {"msg": "9.2.3 sensitive information must be not logged", "condition": sensitive_info_logging_prevented},
+        {"msg": "9.3.1 log monitoring and alerting must be explicitly configured", "condition": log_monitoring_configured},
+        {"msg": "9.3.2 security events must be properly logged and alerted", "condition": security_events_monitored},
+        {"msg": "9.4.1 logs must be backed up regularly", "condition": logs_backed_up},
+        {"msg": "9.4.2 log integrity must be maintained", "condition": log_integrity_maintained}
     ]
     m := msgs[_]
     not m.condition
@@ -311,16 +311,16 @@ logging_violations := [msg |
 
 secrets_management_violations := [msg |
     msgs := [
-        {"msg": "10.1.1 Ensure that secrets are not stored in container images", "condition": secrets_not_in_images},
-        {"msg": "10.1.2 Ensure that secrets are properly encrypted at rest", "condition": secrets_encrypted_at_rest},
-        {"msg": "10.1.3 Ensure that secrets are encrypted in transit", "condition": secrets_encrypted_in_transit},
-        {"msg": "10.2.1 Ensure that secret rotation is properly configured", "condition": secret_rotation_configured},
-        {"msg": "10.2.2 Ensure that secret access is logged and monitored", "condition": secret_access_monitored},
-        {"msg": "10.2.3 Ensure that secret lifecycle management is implemented", "condition": secret_lifecycle_managed},
-        {"msg": "10.3.1 Ensure that external secret management systems are used when appropriate", "condition": external_secret_management},
-        {"msg": "10.3.2 Ensure that secret injection is done securely", "condition": secure_secret_injection},
-        {"msg": "10.4.1 Ensure that certificate management is automated", "condition": automated_cert_management},
-        {"msg": "10.4.2 Ensure that certificate expiration monitoring is configured", "condition": cert_expiration_monitoring}
+        {"msg": "10.1.1 secrets must be not stored in container images", "condition": secrets_not_in_images},
+        {"msg": "10.1.2 secrets must be properly encrypted at rest", "condition": secrets_encrypted_at_rest},
+        {"msg": "10.1.3 secrets must be encrypted in transit", "condition": secrets_encrypted_in_transit},
+        {"msg": "10.2.1 secret rotation must match the approved configuration", "condition": secret_rotation_configured},
+        {"msg": "10.2.2 secret access must be logged and monitored", "condition": secret_access_monitored},
+        {"msg": "10.2.3 secret lifecycle management must be implemented", "condition": secret_lifecycle_managed},
+        {"msg": "10.3.1 external secret management systems must be used when appropriate", "condition": external_secret_management},
+        {"msg": "10.3.2 secret injection must be done securely", "condition": secure_secret_injection},
+        {"msg": "10.4.1 certificate management must be automated", "condition": automated_cert_management},
+        {"msg": "10.4.2 certificate expiration monitoring must be explicitly configured", "condition": cert_expiration_monitoring}
     ]
     m := msgs[_]
     not m.condition

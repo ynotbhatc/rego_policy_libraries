@@ -19,7 +19,7 @@ package cis_mcp_server.client_host_config
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 4: Client (Host) Configuration.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,16 +30,16 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"4.1.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure per-tool consent or pre-approved allowlists are required"},
-	"4.1.2": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure project-scoped MCP server definitions are not enabled or executed without explicit user approval"},
-	"4.1.3": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure Elicitation requests are consented, redacted, and identity-bound"},
-	"4.1.4": {"section": 4, "level": "L2", "assessment": "Automated", "title": "Ensure Sampling consent and redaction controls are implemented where Sampling is in use"},
-	"4.1.5": {"section": 4, "level": "L2", "assessment": "Manual", "title": "Ensure a human can deny tool invocations and sensitive or high-impact operations require confirmation"},
-	"4.2.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure filesystem scope is restricted to least privilege and enforced by OS-level controls"},
-	"4.2.2": {"section": 4, "level": "L1", "assessment": "Automated", "title": "Ensure MCP stdio server subprocess environment is restricted to the minimum required variables"},
-	"4.2.3": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure untrusted Resource URIs are not directly dereferenced outside MCP without scheme and destination policy"},
-	"4.3.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure MCP Apps content is rendered in sandboxed isolation with Content Security Policy enforced from declared metadata"},
-	"4.3.2": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Ensure MCP Apps permission requests default-deny, all app-to-host messages are logged, and high-risk channels are consented"},
+	"4.1.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "per-tool consent or pre-approved allowlists must be required"},
+	"4.1.2": {"section": 4, "level": "L1", "assessment": "Manual", "title": "project-scoped MCP server definitions must be not enabled or executed without explicit user approval"},
+	"4.1.3": {"section": 4, "level": "L1", "assessment": "Manual", "title": "Elicitation requests must be consented, redacted, and identity-bound"},
+	"4.1.4": {"section": 4, "level": "L2", "assessment": "Automated", "title": "Sampling consent and redaction controls must be implemented where Sampling is in use"},
+	"4.1.5": {"section": 4, "level": "L2", "assessment": "Manual", "title": "checked condition — a human can deny tool invocations and sensitive or high-impact operations require confirmation"},
+	"4.2.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "filesystem scope must be restricted to least privilege and enforced by OS-level controls"},
+	"4.2.2": {"section": 4, "level": "L1", "assessment": "Automated", "title": "MCP stdio server subprocess environment must be restricted to the minimum required variables"},
+	"4.2.3": {"section": 4, "level": "L1", "assessment": "Manual", "title": "untrusted Resource URIs must be not directly dereferenced outside MCP without scheme and destination policy"},
+	"4.3.1": {"section": 4, "level": "L1", "assessment": "Manual", "title": "MCP Apps content must be rendered in sandboxed isolation with Content Security Policy enforced from declared metadata"},
+	"4.3.2": {"section": 4, "level": "L1", "assessment": "Manual", "title": "MCP Apps permission requests default-deny, all app-to-host messages must be logged, and high-risk channels are consented"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

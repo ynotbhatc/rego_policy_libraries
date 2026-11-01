@@ -55,5 +55,5 @@ test_ssh_banner_text_from_issue_net_flag if {
 	vs := data.cis_rhel9.ssh.violations with input as {"ssh": {"sshd_config_raw": "banner /etc/issue.net"}, "initial_setup": {"issue_net_contains_sensitive_info": false}}
 	count(ids(vs, "5.1.9")) == 0
 	vs2 := data.cis_rhel9.ssh.violations with input as {"ssh": {"sshd_config_raw": "banner /etc/issue.net"}, "initial_setup": {"issue_net_contains_sensitive_info": true}}
-	"5.1.9: not met — Ensure sshd Banner is configured" in vs2
+	"5.1.9: not met — sshd Banner must be explicitly configured" in vs2
 }

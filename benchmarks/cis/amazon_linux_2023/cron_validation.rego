@@ -35,7 +35,7 @@ octal(s) := n if {
 # true when mode grants nothing beyond max (both octal strings)
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
-# CIS 5.1.1: Ensure cron daemon is enabled and running
+# CIS 5.1.1: cron daemon must be turned on and running
 violations contains msg if {
     not input.cron.crond_enabled
     msg := "CIS 5.1.1: cron daemon (crond) is not enabled"
@@ -47,7 +47,7 @@ violations contains msg if {
     msg := "CIS 5.1.1: cron daemon (crond) is not running"
 }
 
-# CIS 5.1.2: Ensure permissions on /etc/crontab are configured
+# CIS 5.1.2: owner, group, and mode of /etc/crontab must be tightened
 violations contains msg if {
     not input.cron.crontab_mode
     msg := "CIS 5.1.2: evidence missing - cron.crontab_mode not collected"
@@ -195,7 +195,7 @@ violations contains msg if {
     msg := sprintf("CIS 5.1.7: /etc/cron.d owned by %s, should be root", [owner])
 }
 
-# CIS 5.1.8: Ensure cron is restricted to authorized users
+# CIS 5.1.8: cron must be restricted to authorized users
 violations contains msg if {
     input.cron.cron_deny_exists
     msg := "CIS 5.1.8: /etc/cron.deny exists - should be removed"
@@ -219,7 +219,7 @@ violations contains msg if {
     msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %s, should be 0600 or stricter", [mode])
 }
 
-# CIS 5.1.9: Ensure at is restricted to authorized users
+# CIS 5.1.9: at must be restricted to authorized users
 violations contains msg if {
     input.cron.at_deny_exists
     msg := "CIS 5.1.9: /etc/at.deny exists - should be removed"

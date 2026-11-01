@@ -26,7 +26,7 @@ compliant if {
 	count(violations) == 0
 }
 
-# CIS 5.1.1: Ensure cron daemon is enabled and running
+# CIS 5.1.1: cron daemon must be turned on and running
 violations contains msg if {
 	not input.cron.crond_enabled
 	msg := "CIS 5.1.1: cron daemon (cron) is not enabled"
@@ -202,7 +202,7 @@ violations contains msg if {
 	msg := sprintf("CIS 5.1.7: /etc/cron.d owned by %s, should be root", [owner])
 }
 
-# CIS 5.1.8: Ensure cron is restricted to authorized users
+# CIS 5.1.8: cron must be restricted to authorized users
 violations contains msg if {
 	input.cron.cron_deny_exists
 	msg := "CIS 5.1.8: /etc/cron.deny exists - should be removed"
@@ -225,7 +225,7 @@ violations contains msg if {
 	msg := sprintf("CIS 5.1.8: /etc/cron.allow has mode %s, should be 0600", [input.cron.cron_allow_mode])
 }
 
-# CIS 5.1.9: Ensure at is restricted to authorized users
+# CIS 5.1.9: at must be restricted to authorized users
 violations contains msg if {
 	input.cron.at_deny_exists
 	msg := "CIS 5.1.9: /etc/at.deny exists - should be removed"

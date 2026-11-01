@@ -204,7 +204,7 @@ mta_interfaces_open if {
 }
 
 # 2.1.1 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure autofs services are not in use
+# autofs services must not be running
 default ep_2_1_1 := false
 
 ep_2_1_1 if {
@@ -257,13 +257,13 @@ p_2_1_1 if {
 
 violations contains "2.1.1: evidence missing — packages[autofs] / services[autofs.service] (or autofs.installed/active/enabled) not collected" if not e_2_1_1
 
-violations contains "2.1.1: not met — Ensure autofs services are not in use" if {
+violations contains "2.1.1: not met — autofs services must not be running" if {
 	e_2_1_1
 	not p_2_1_1
 }
 
 # 2.1.2 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure avahi daemon services are not in use
+# avahi daemon services must not be running
 default e_2_1_2 := false
 
 e_2_1_2 if {
@@ -291,13 +291,13 @@ p_2_1_2 if {
 
 violations contains "2.1.2: evidence missing — packages[avahi] / services[avahi-daemon.socket,avahi-daemon.service] not collected" if not e_2_1_2
 
-violations contains "2.1.2: not met — Ensure avahi daemon services are not in use" if {
+violations contains "2.1.2: not met — avahi daemon services must not be running" if {
 	e_2_1_2
 	not p_2_1_2
 }
 
 # 2.1.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure cockpit web services are not in use
+# cockpit web services must not be running
 default e_2_1_3 := false
 
 e_2_1_3 if {
@@ -325,13 +325,13 @@ p_2_1_3 if {
 
 violations contains "2.1.3: evidence missing — packages[cockpit-ws] / services[cockpit.socket,cockpit.service] not collected" if not e_2_1_3
 
-violations contains "2.1.3: not met — Ensure cockpit web services are not in use" if {
+violations contains "2.1.3: not met — cockpit web services must not be running" if {
 	e_2_1_3
 	not p_2_1_3
 }
 
 # 2.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure dhcp server services are not in use
+# dhcp server services must not be running
 default e_2_1_4 := false
 
 e_2_1_4 if {
@@ -359,13 +359,13 @@ p_2_1_4 if {
 
 violations contains "2.1.4: evidence missing — packages[dhcp-server] / services[dhcpd.service,dhcpd6.service] not collected" if not e_2_1_4
 
-violations contains "2.1.4: not met — Ensure dhcp server services are not in use" if {
+violations contains "2.1.4: not met — dhcp server services must not be running" if {
 	e_2_1_4
 	not p_2_1_4
 }
 
 # 2.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure dns server services are not in use
+# dns server services must not be running
 default e_2_1_5 := false
 
 e_2_1_5 if {
@@ -393,13 +393,13 @@ p_2_1_5 if {
 
 violations contains "2.1.5: evidence missing — packages[bind] / services[named.service] not collected" if not e_2_1_5
 
-violations contains "2.1.5: not met — Ensure dns server services are not in use" if {
+violations contains "2.1.5: not met — dns server services must not be running" if {
 	e_2_1_5
 	not p_2_1_5
 }
 
 # 2.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure dnsmasq services are not in use
+# dnsmasq services must not be running
 default e_2_1_6 := false
 
 e_2_1_6 if {
@@ -427,13 +427,13 @@ p_2_1_6 if {
 
 violations contains "2.1.6: evidence missing — packages[dnsmasq] / services[dnsmasq.service] not collected" if not e_2_1_6
 
-violations contains "2.1.6: not met — Ensure dnsmasq services are not in use" if {
+violations contains "2.1.6: not met — dnsmasq services must not be running" if {
 	e_2_1_6
 	not p_2_1_6
 }
 
 # 2.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure samba file server services are not in use
+# samba file server services must not be running
 default e_2_1_7 := false
 
 e_2_1_7 if {
@@ -461,13 +461,13 @@ p_2_1_7 if {
 
 violations contains "2.1.7: evidence missing — packages[samba] / services[smb.service] not collected" if not e_2_1_7
 
-violations contains "2.1.7: not met — Ensure samba file server services are not in use" if {
+violations contains "2.1.7: not met — samba file server services must not be running" if {
 	e_2_1_7
 	not p_2_1_7
 }
 
 # 2.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ftp server services are not in use
+# ftp server services must not be running
 default e_2_1_8 := false
 
 e_2_1_8 if {
@@ -495,13 +495,13 @@ p_2_1_8 if {
 
 violations contains "2.1.8: evidence missing — packages[vsftpd] / services[vsftpd.service] not collected" if not e_2_1_8
 
-violations contains "2.1.8: not met — Ensure ftp server services are not in use" if {
+violations contains "2.1.8: not met — ftp server services must not be running" if {
 	e_2_1_8
 	not p_2_1_8
 }
 
 # 2.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure message access server services are not in use
+# message access server services must not be running
 default e_2_1_9 := false
 
 e_2_1_9 if {
@@ -533,13 +533,13 @@ p_2_1_9 if {
 
 violations contains "2.1.9: evidence missing — packages[dovecot,cyrus-imapd] / services[dovecot.socket,dovecot.service,cyrus-imapd.service] not collected" if not e_2_1_9
 
-violations contains "2.1.9: not met — Ensure message access server services are not in use" if {
+violations contains "2.1.9: not met — message access server services must not be running" if {
 	e_2_1_9
 	not p_2_1_9
 }
 
 # 2.1.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure network file system services are not in use
+# network file system services must not be running
 default e_2_1_10 := false
 
 e_2_1_10 if {
@@ -567,13 +567,13 @@ p_2_1_10 if {
 
 violations contains "2.1.10: evidence missing — packages[nfs-utils] / services[nfs-server.service] not collected" if not e_2_1_10
 
-violations contains "2.1.10: not met — Ensure network file system services are not in use" if {
+violations contains "2.1.10: not met — network file system services must not be running" if {
 	e_2_1_10
 	not p_2_1_10
 }
 
 # 2.1.11 (Automated; Level 1 - Server)
-# Ensure print server services are not in use
+# print server services must not be running
 default e_2_1_11 := false
 
 e_2_1_11 if {
@@ -601,13 +601,13 @@ p_2_1_11 if {
 
 violations contains "2.1.11: evidence missing — packages[cups] / services[cups.socket,cups.service] not collected" if not e_2_1_11
 
-violations contains "2.1.11: not met — Ensure print server services are not in use" if {
+violations contains "2.1.11: not met — print server services must not be running" if {
 	e_2_1_11
 	not p_2_1_11
 }
 
 # 2.1.12 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rpcbind services are not in use
+# rpcbind services must not be running
 default e_2_1_12 := false
 
 e_2_1_12 if {
@@ -635,13 +635,13 @@ p_2_1_12 if {
 
 violations contains "2.1.12: evidence missing — packages[rpcbind] / services[rpcbind.socket,rpcbind.service] not collected" if not e_2_1_12
 
-violations contains "2.1.12: not met — Ensure rpcbind services are not in use" if {
+violations contains "2.1.12: not met — rpcbind services must not be running" if {
 	e_2_1_12
 	not p_2_1_12
 }
 
 # 2.1.13 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rsync services are not in use
+# rsync services must not be running
 default e_2_1_13 := false
 
 e_2_1_13 if {
@@ -669,13 +669,13 @@ p_2_1_13 if {
 
 violations contains "2.1.13: evidence missing — packages[rsync-daemon] / services[rsyncd.socket,rsyncd.service] not collected" if not e_2_1_13
 
-violations contains "2.1.13: not met — Ensure rsync services are not in use" if {
+violations contains "2.1.13: not met — rsync services must not be running" if {
 	e_2_1_13
 	not p_2_1_13
 }
 
 # 2.1.14 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure snmp services are not in use
+# snmp services must not be running
 default e_2_1_14 := false
 
 e_2_1_14 if {
@@ -703,13 +703,13 @@ p_2_1_14 if {
 
 violations contains "2.1.14: evidence missing — packages[net-snmp] / services[snmpd.service] not collected" if not e_2_1_14
 
-violations contains "2.1.14: not met — Ensure snmp services are not in use" if {
+violations contains "2.1.14: not met — snmp services must not be running" if {
 	e_2_1_14
 	not p_2_1_14
 }
 
 # 2.1.15 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure telnet server services are not in use
+# telnet server services must not be running
 default e_2_1_15 := false
 
 e_2_1_15 if {
@@ -737,13 +737,13 @@ p_2_1_15 if {
 
 violations contains "2.1.15: evidence missing — packages[telnet-server] / services[telnet.socket] not collected" if not e_2_1_15
 
-violations contains "2.1.15: not met — Ensure telnet server services are not in use" if {
+violations contains "2.1.15: not met — telnet server services must not be running" if {
 	e_2_1_15
 	not p_2_1_15
 }
 
 # 2.1.16 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure tftp server services are not in use
+# tftp server services must not be running
 default e_2_1_16 := false
 
 e_2_1_16 if {
@@ -771,13 +771,13 @@ p_2_1_16 if {
 
 violations contains "2.1.16: evidence missing — packages[tftp-server] / services[tftp.socket,tftp.service] not collected" if not e_2_1_16
 
-violations contains "2.1.16: not met — Ensure tftp server services are not in use" if {
+violations contains "2.1.16: not met — tftp server services must not be running" if {
 	e_2_1_16
 	not p_2_1_16
 }
 
 # 2.1.17 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure web proxy server services are not in use
+# web proxy server services must not be running
 default e_2_1_17 := false
 
 e_2_1_17 if {
@@ -805,13 +805,13 @@ p_2_1_17 if {
 
 violations contains "2.1.17: evidence missing — packages[squid] / services[squid.service] not collected" if not e_2_1_17
 
-violations contains "2.1.17: not met — Ensure web proxy server services are not in use" if {
+violations contains "2.1.17: not met — web proxy server services must not be running" if {
 	e_2_1_17
 	not p_2_1_17
 }
 
 # 2.1.18 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure web server services are not in use
+# web server services must not be running
 default ep_2_1_18 := false
 
 ep_2_1_18 if {
@@ -868,13 +868,13 @@ p_2_1_18 if {
 
 violations contains "2.1.18: evidence missing — packages[httpd,nginx] / services[httpd.socket,httpd.service,nginx.service] (or webserver.any_installed) not collected" if not e_2_1_18
 
-violations contains "2.1.18: not met — Ensure web server services are not in use" if {
+violations contains "2.1.18: not met — web server services must not be running" if {
 	e_2_1_18
 	not p_2_1_18
 }
 
 # 2.1.19 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure mail transfer agents are configured for local-only mode
+# mail transfer agents must be explicitly configured for local-only mode
 default e_2_1_19 := false
 
 e_2_1_19 if {
@@ -898,13 +898,13 @@ p_2_1_19 if {
 
 violations contains "2.1.19: evidence missing — mta.has_mta (or mta.non_loopback_listeners/inet_interfaces) not collected" if not e_2_1_19
 
-violations contains "2.1.19: not met — Ensure mail transfer agents are configured for local-only mode" if {
+violations contains "2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" if {
 	e_2_1_19
 	not p_2_1_19
 }
 
 # 2.1.20 (Automated; Level 2 - Server)
-# Ensure a graphical user interface is not in use
+# a graphical user interface must not be running
 default e_2_1_20 := false
 
 e_2_1_20 if {
@@ -929,13 +929,13 @@ p_2_1_20 if {
 
 violations contains "2.1.20: evidence missing — gui.environment_installed/default_target not collected" if not e_2_1_20
 
-violations contains "2.1.20: not met — Ensure a graphical user interface is not in use" if {
+violations contains "2.1.20: not met — a graphical user interface must not be running" if {
 	e_2_1_20
 	not p_2_1_20
 }
 
 # 2.1.21 (Automated; Level 2 - Server)
-# Ensure X window server services are not in use
+# X window server services must not be running
 default ep_2_1_21 := false
 
 ep_2_1_21 if {
@@ -965,13 +965,13 @@ p_2_1_21 if {
 
 violations contains "2.1.21: evidence missing — packages[xorg-x11-server-common] (or x11.any_installed) not collected" if not e_2_1_21
 
-violations contains "2.1.21: not met — Ensure X window server services are not in use" if {
+violations contains "2.1.21: not met — X window server services must not be running" if {
 	e_2_1_21
 	not p_2_1_21
 }
 
 # 2.1.22 (Automated; Level 2 - Server)
-# Ensure Xwayland is not in use
+# Xwayland must not be running
 default e_2_1_22 := false
 
 e_2_1_22 if {
@@ -986,23 +986,23 @@ p_2_1_22 if {
 
 violations contains "2.1.22: evidence missing — packages[xorg-x11-server-Xwayland] not collected" if not e_2_1_22
 
-violations contains "2.1.22: not met — Ensure Xwayland is not in use" if {
+violations contains "2.1.22: not met — Xwayland must not be running" if {
 	e_2_1_22
 	not p_2_1_22
 }
 
 # 2.1.23 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure only approved services are listening on a network interface
+# only approved services must be listening on a network interface
 default p_2_1_23 := false
 
 p_2_1_23 if {
 	input.attest.listening_services_approved == true
 }
 
-violations contains "2.1.23: manual review not attested — set attest.listening_services_approved to true once reviewed (Ensure only approved services are listening on a network interface)" if not p_2_1_23
+violations contains "2.1.23: manual review not attested — set attest.listening_services_approved to true once reviewed (only approved services must be listening on a network interface)" if not p_2_1_23
 
 # 2.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure ftp client is not installed
+# ftp client must not be present
 default ep_2_2_1 := false
 
 ep_2_2_1 if {
@@ -1033,13 +1033,13 @@ p_2_2_1 if {
 
 violations contains "2.2.1: evidence missing — packages[ftp] (or client_packages.analysis) not collected" if not e_2_2_1
 
-violations contains "2.2.1: not met — Ensure ftp client is not installed" if {
+violations contains "2.2.1: not met — ftp client must not be present" if {
 	e_2_2_1
 	not p_2_2_1
 }
 
 # 2.2.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure ldap client is not installed
+# ldap client must not be present
 default ep_2_2_2 := false
 
 ep_2_2_2 if {
@@ -1070,13 +1070,13 @@ p_2_2_2 if {
 
 violations contains "2.2.2: evidence missing — packages[openldap-clients] (or client_packages.analysis) not collected" if not e_2_2_2
 
-violations contains "2.2.2: not met — Ensure ldap client is not installed" if {
+violations contains "2.2.2: not met — ldap client must not be present" if {
 	e_2_2_2
 	not p_2_2_2
 }
 
 # 2.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure telnet client is not installed
+# telnet client must not be present
 default ep_2_2_3 := false
 
 ep_2_2_3 if {
@@ -1107,13 +1107,13 @@ p_2_2_3 if {
 
 violations contains "2.2.3: evidence missing — packages[telnet] (or client_packages.analysis) not collected" if not e_2_2_3
 
-violations contains "2.2.3: not met — Ensure telnet client is not installed" if {
+violations contains "2.2.3: not met — telnet client must not be present" if {
 	e_2_2_3
 	not p_2_2_3
 }
 
 # 2.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure tftp client is not installed
+# tftp client must not be present
 default ep_2_2_4 := false
 
 ep_2_2_4 if {
@@ -1144,13 +1144,13 @@ p_2_2_4 if {
 
 violations contains "2.2.4: evidence missing — packages[tftp] (or client_packages.analysis) not collected" if not e_2_2_4
 
-violations contains "2.2.4: not met — Ensure tftp client is not installed" if {
+violations contains "2.2.4: not met — tftp client must not be present" if {
 	e_2_2_4
 	not p_2_2_4
 }
 
 # 2.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure time synchronization is in use
+# time synchronization must be in use
 default ep_2_3_1 := false
 
 ep_2_3_1 if {
@@ -1180,13 +1180,13 @@ p_2_3_1 if {
 
 violations contains "2.3.1: evidence missing — chronyd.installed (or packages.chrony) not collected" if not e_2_3_1
 
-violations contains "2.3.1: not met — Ensure time synchronization is in use" if {
+violations contains "2.3.1: not met — time synchronization must be in use" if {
 	e_2_3_1
 	not p_2_3_1
 }
 
 # 2.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is configured
+# chrony must be explicitly configured
 default e_2_3_2 := false
 
 e_2_3_2 if {
@@ -1206,13 +1206,13 @@ p_2_3_2 if {
 
 violations contains "2.3.2: evidence missing — chronyd.servers_configured/pools_configured not collected" if not e_2_3_2
 
-violations contains "2.3.2: not met — Ensure chrony is configured" if {
+violations contains "2.3.2: not met — chrony must be explicitly configured" if {
 	e_2_3_2
 	not p_2_3_2
 }
 
 # 2.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure chrony is not run as the root user
+# chrony must be not run as the root user
 default e_2_3_3 := false
 
 e_2_3_3 if {
@@ -1235,7 +1235,7 @@ p_2_3_3 if {
 
 violations contains "2.3.3: evidence missing — chronyd.sysconfig_options (or chronyd.installed) not collected" if not e_2_3_3
 
-violations contains "2.3.3: not met — Ensure chrony is not run as the root user" if {
+violations contains "2.3.3: not met — chrony must be not run as the root user" if {
 	e_2_3_3
 	not p_2_3_3
 }

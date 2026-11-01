@@ -49,7 +49,7 @@ violations := [v |
 
 # Section 1: Initial Setup
 initial_setup_violations := [
-    "1.1.1.1: Ensure mounting of squashfs filesystems is disabled" |
+    "1.1.1.1: mounting of squashfs filesystems must be turned off" |
     not filesystem_disabled("squashfs")
 ]
 
@@ -178,7 +178,7 @@ file_permissions_secure(file, expected_owner, expected_group, expected_mode) if 
 
 # Section 2: Services
 services_violations := [
-    "2.1.1: Ensure xinetd is not installed" |
+    "2.1.1: xinetd must not be present" |
     package_installed("xinetd")
 ]
 
@@ -286,7 +286,7 @@ necessary_service(service) if {
 
 # Section 4: Logging and Auditing
 logging_violations := [
-    "4.1.1.1: Ensure auditd is installed" |
+    "4.1.1.1: auditd must be present" |
     not package_installed("audit")
 ]
 
@@ -334,7 +334,7 @@ audit_rule_exists(rule) if {
 
 # Section 5: Access, Authentication and Authorization
 access_auth_violations := [
-    "5.1.1: Ensure cron daemon is enabled and running" |
+    "5.1.1: cron daemon must be turned on and running" |
     not cron_daemon_ok
 ]
 

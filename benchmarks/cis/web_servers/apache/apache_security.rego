@@ -57,7 +57,7 @@ ssl_enabled_tokens := {t |
 	t := lower(trim_prefix(tok, "+"))
 }
 
-# CIS 1.1 - Ensure the pre-installed Apache is removed
+# CIS 1.1 - the pre-installed Apache must be removed
 default preinstalled_apache_removed := false
 
 preinstalled_apache_removed if {
@@ -65,7 +65,7 @@ preinstalled_apache_removed if {
     input.apache_info.preinstalled_removed == true
 }
 
-# CIS 1.2 - Ensure the Apache web server runs as a non-privileged user
+# CIS 1.2 - checked condition — the Apache web server runs as a non-privileged user
 default apache_non_privileged_user := false
 
 apache_non_privileged_user if {
@@ -75,7 +75,7 @@ apache_non_privileged_user if {
     input.apache_config.group != ""
 }
 
-# CIS 1.3 - Ensure the Apache user account has an invalid shell
+# CIS 1.3 - the Apache user account must use a non-login shell
 default apache_user_invalid_shell := false
 
 apache_user_invalid_shell if {
@@ -84,14 +84,14 @@ apache_user_invalid_shell if {
     shell == valid_shell
 }
 
-# CIS 1.4 - Ensure the Apache user account is locked
+# CIS 1.4 - the Apache user account must be locked
 default apache_user_locked := false
 
 apache_user_locked if {
     input.system_users[input.apache_config.user].locked == true
 }
 
-# CIS 2.1 - Ensure the minimal modules are installed
+# CIS 2.1 - the minimal modules must be present
 default minimal_modules_installed := false
 
 minimal_modules_installed if {
@@ -113,7 +113,7 @@ minimal_modules_installed if {
     count([module | some module in required_modules; not has_module(module)]) == 0
 }
 
-# CIS 2.2 - Ensure mod_dav is disabled
+# CIS 2.2 - mod_dav must be turned off
 default mod_dav_disabled := false
 
 mod_dav_disabled if {
@@ -123,7 +123,7 @@ mod_dav_disabled if {
     not has_module("mod_dav_lock")
 }
 
-# CIS 2.3 - Ensure mod_status is disabled
+# CIS 2.3 - mod_status must be turned off
 default mod_status_disabled := false
 
 mod_status_disabled if {
@@ -131,7 +131,7 @@ mod_status_disabled if {
     not has_module("mod_status")
 }
 
-# CIS 2.4 - Ensure mod_info is disabled
+# CIS 2.4 - mod_info must be turned off
 default mod_info_disabled := false
 
 mod_info_disabled if {
@@ -139,7 +139,7 @@ mod_info_disabled if {
     not has_module("mod_info")
 }
 
-# CIS 2.5 - Ensure mod_autoindex is disabled
+# CIS 2.5 - mod_autoindex must be turned off
 default mod_autoindex_disabled := false
 
 mod_autoindex_disabled if {
@@ -147,7 +147,7 @@ mod_autoindex_disabled if {
     not has_module("mod_autoindex")
 }
 
-# CIS 2.6 - Ensure mod_proxy is disabled
+# CIS 2.6 - mod_proxy must be turned off
 default mod_proxy_disabled := false
 
 mod_proxy_disabled if {
@@ -157,7 +157,7 @@ mod_proxy_disabled if {
     not has_module("mod_proxy_ftp")
 }
 
-# CIS 2.7 - Ensure mod_userdir is disabled
+# CIS 2.7 - mod_userdir must be turned off
 default mod_userdir_disabled := false
 
 mod_userdir_disabled if {
@@ -165,7 +165,7 @@ mod_userdir_disabled if {
     not has_module("mod_userdir")
 }
 
-# CIS 3.1 - Ensure the Apache directories and files are owned by root
+# CIS 3.1 - the Apache directories and files must be owned by root
 default apache_files_owned_by_root := false
 
 apache_files_owned_by_root if {
@@ -175,7 +175,7 @@ apache_files_owned_by_root if {
     }
 }
 
-# CIS 3.2 - Ensure the Apache directories and files are not write accessible by group
+# CIS 3.2 - the Apache directories and files must be not write accessible by group
 default apache_files_group_not_writable := false
 
 apache_files_group_not_writable if {
@@ -185,7 +185,7 @@ apache_files_group_not_writable if {
     }
 }
 
-# CIS 3.3 - Ensure the Apache directories and files are not write accessible by others
+# CIS 3.3 - the Apache directories and files must be not write accessible by others
 default apache_files_others_not_writable := false
 
 apache_files_others_not_writable if {
@@ -195,7 +195,7 @@ apache_files_others_not_writable if {
     }
 }
 
-# CIS 3.4 - Ensure core dump directory is secured
+# CIS 3.4 - core dump directory must be secured
 default core_dump_directory_secured := false
 
 core_dump_directory_secured if {
@@ -204,7 +204,7 @@ core_dump_directory_secured if {
     input.file_permissions[input.apache_config.core_dump_directory].owner == input.apache_config.user
 }
 
-# CIS 3.5 - Ensure the lock file is secured
+# CIS 3.5 - the lock file must be secured
 default lock_file_secured := false
 
 lock_file_secured if {
@@ -213,7 +213,7 @@ lock_file_secured if {
     mode_within(input.file_permissions[input.apache_config.mutex_file].mode, "0644") # not writable by group/other
 }
 
-# CIS 3.6 - Ensure the pid file is secured
+# CIS 3.6 - the pid file must be secured
 default pid_file_secured := false
 
 pid_file_secured if {
@@ -222,7 +222,7 @@ pid_file_secured if {
     mode_within(input.file_permissions[input.apache_config.pid_file].mode, "0644")
 }
 
-# CIS 3.7 - Ensure the scoreboard file is secured
+# CIS 3.7 - the scoreboard file must be secured
 default scoreboard_file_secured := false
 
 scoreboard_file_secured if {
@@ -231,7 +231,7 @@ scoreboard_file_secured if {
     mode_within(input.file_permissions[input.apache_config.scoreboard_file].mode, "0644")
 }
 
-# CIS 4.1 - Ensure access to OS root directory is denied
+# CIS 4.1 - access to OS root directory must be denied
 default root_directory_access_denied := false
 
 root_directory_access_denied if {
@@ -239,7 +239,7 @@ root_directory_access_denied if {
     input.apache_config.directory_rules["/"].require == "all denied"
 }
 
-# CIS 4.2 - Ensure appropriate access to web content is allowed
+# CIS 4.2 - appropriate access to web content must be allowed
 default web_content_access_controlled := false
 
 web_content_access_controlled if {
@@ -247,49 +247,49 @@ web_content_access_controlled if {
     input.apache_config.directory_rules[input.apache_config.document_root].allow_override == "None"
 }
 
-# CIS 4.3 - Ensure FollowSymLinks directive is disabled
+# CIS 4.3 - FollowSymLinks directive must be turned off
 default follow_symlinks_disabled := false
 
 follow_symlinks_disabled if {
     not contains(input.apache_config.directory_rules[input.apache_config.document_root].options, "FollowSymLinks")
 }
 
-# CIS 4.4 - Ensure SymLinksIfOwnerMatch directive is enabled
+# CIS 4.4 - SymLinksIfOwnerMatch directive must be turned on
 default symlinks_if_owner_match_enabled := false
 
 symlinks_if_owner_match_enabled if {
     contains(input.apache_config.directory_rules[input.apache_config.document_root].options, "SymLinksIfOwnerMatch")
 }
 
-# CIS 4.5 - Ensure the Indexes directive is disabled
+# CIS 4.5 - the Indexes directive must be turned off
 default indexes_disabled := false
 
 indexes_disabled if {
     not contains(input.apache_config.directory_rules[input.apache_config.document_root].options, "Indexes")
 }
 
-# CIS 4.6 - Ensure the WebDAV modules are disabled
+# CIS 4.6 - the WebDAV modules must be turned off
 default webdav_modules_disabled := false
 
 webdav_modules_disabled if {
     mod_dav_disabled # Already covered in 2.2
 }
 
-# CIS 5.1 - Ensure options for the OS root directory are restricted
+# CIS 5.1 - options for the OS root directory must be restricted
 default os_root_options_restricted := false
 
 os_root_options_restricted if {
     input.apache_config.directory_rules["/"].options == "None"
 }
 
-# CIS 5.2 - Ensure options for the web root directory are restricted
+# CIS 5.2 - options for the web root directory must be restricted
 default web_root_options_restricted := false
 
 web_root_options_restricted if {
     input.apache_config.directory_rules[input.apache_config.document_root].options == "None"
 }
 
-# CIS 5.3 - Ensure options for other directories are minimized
+# CIS 5.3 - options for other directories must be minimized
 default other_directories_options_minimized := false
 
 other_directories_options_minimized if {
@@ -311,7 +311,7 @@ apache_directory_check_passes(_, dir, _) if {
     not contains(dir.options, "ExecCGI")
 }
 
-# CIS 6.1 - Ensure the Error Log file is properly secured
+# CIS 6.1 - the Error Log file must be properly secured
 default error_log_secured := false
 
 error_log_secured if {
@@ -320,7 +320,7 @@ error_log_secured if {
     mode_within(input.file_permissions[input.apache_config.error_log].mode, "0640")
 }
 
-# CIS 6.2 - Ensure the Access Log file is properly secured
+# CIS 6.2 - the Access Log file must be properly secured
 default access_log_secured := false
 
 access_log_secured if {
@@ -329,14 +329,14 @@ access_log_secured if {
     mode_within(input.file_permissions[input.apache_config.access_log].mode, "0640")
 }
 
-# CIS 6.3 - Ensure the LogLevel directive is enabled
+# CIS 6.3 - the LogLevel directive must be turned on
 default log_level_enabled := false
 
 log_level_enabled if {
     input.apache_config.log_level in ["warn", "notice", "info"]
 }
 
-# CIS 6.4 - Ensure log files are rotated
+# CIS 6.4 - log files must be rotated
 default log_rotation_configured := false
 
 log_rotation_configured if {
@@ -345,7 +345,7 @@ log_rotation_configured if {
     input.apache_config.log_rotation.retention_days <= 30
 }
 
-# CIS 7.1 - Ensure mod_ssl is enabled
+# CIS 7.1 - mod_ssl must be turned on
 default mod_ssl_enabled := false
 
 mod_ssl_enabled if {
@@ -353,7 +353,7 @@ mod_ssl_enabled if {
     has_module("mod_ssl")
 }
 
-# CIS 7.2 - Ensure a valid trusted certificate is installed
+# CIS 7.2 - a valid trusted certificate must be present
 default valid_certificate_installed := false
 
 valid_certificate_installed if {
@@ -362,7 +362,7 @@ valid_certificate_installed if {
     input.apache_config.ssl_ca_certificate != ""
 }
 
-# CIS 7.3 - Ensure the private key is protected
+# CIS 7.3 - the private key must be protected
 default private_key_protected := false
 
 private_key_protected if {
@@ -370,7 +370,7 @@ private_key_protected if {
     input.file_permissions[input.apache_config.ssl_certificate_key].owner == input.apache_config.user
 }
 
-# CIS 7.4 - Ensure insecure SSL protocols are disabled
+# CIS 7.4 - insecure SSL protocols must be turned off
 default insecure_ssl_protocols_disabled := false
 
 insecure_ssl_protocols_disabled if {
@@ -381,7 +381,7 @@ insecure_ssl_protocols_disabled if {
     "tlsv1.3" in ssl_enabled_tokens
 }
 
-# CIS 7.5 - Ensure weak SSL cipher suites are disabled
+# CIS 7.5 - weak SSL cipher suites must be turned off
 default weak_ciphers_disabled := false
 
 weak_ciphers_disabled if {
@@ -395,28 +395,28 @@ weak_ciphers_disabled if {
     contains(input.apache_config.ssl_cipher_suite, "ECDHE")
 }
 
-# CIS 8.1 - Ensure ServerTokens directive is set to Prod
+# CIS 8.1 - required value of ServerTokens directive is Prod
 default server_tokens_minimal := false
 
 server_tokens_minimal if {
     input.apache_config.server_tokens == "Prod"
 }
 
-# CIS 8.2 - Ensure ServerSignature directive is disabled
+# CIS 8.2 - ServerSignature directive must be turned off
 default server_signature_disabled := false
 
 server_signature_disabled if {
     input.apache_config.server_signature == "Off"
 }
 
-# CIS 8.3 - Ensure all default Apache content is removed
+# CIS 8.3 - all default Apache content must be removed
 default default_content_removed := false
 
 default_content_removed if {
     input.apache_config.default_content_removed == true
 }
 
-# CIS 8.4 - Ensure ETag header is disabled
+# CIS 8.4 - ETag header must be turned off
 default etag_disabled := false
 
 etag_disabled if {

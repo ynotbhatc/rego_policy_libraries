@@ -58,13 +58,13 @@ violations := [v |
 
 # Section 1: Initial Setup (Enhanced for RHEL 10)
 initial_setup_checks := [
-	{"msg": "UNMAPPED-RHEL10-1.2: Ensure grub config is secure (root:root, mode 0600 or stricter)", "ok": grub_config_secure},
-	{"msg": "UNMAPPED-RHEL10-1.3: Ensure core dumps are restricted", "ok": core_dumps_restricted},
+	{"msg": "UNMAPPED-RHEL10-1.2: grub config must be secure (root:root, mode 0600 or stricter)", "ok": grub_config_secure},
+	{"msg": "UNMAPPED-RHEL10-1.3: core dumps must be restricted", "ok": core_dumps_restricted},
 ]
 
 initial_setup_violations := array.concat(
 [
-    "1.1.1.1: Ensure mounting of squashfs filesystems is disabled" |
+    "1.1.1.1: mounting of squashfs filesystems must be turned off" |
     not filesystem_disabled("squashfs")
 ],
 [c.msg | some c in initial_setup_checks; not c.ok],
@@ -221,12 +221,12 @@ file_permissions_secure(file, expected_owner, expected_group, expected_mode) if 
 
 # Section 2: Services (Enhanced for RHEL 10)
 services_checks := [
-	{"msg": "UNMAPPED-RHEL10-2.2: Ensure mta local only is configured", "ok": mta_local_only_configured},
+	{"msg": "UNMAPPED-RHEL10-2.2: mta local only must be explicitly configured", "ok": mta_local_only_configured},
 ]
 
 services_violations := array.concat(
 [
-    "2.1.1: Ensure xinetd is not installed" |
+    "2.1.1: xinetd must not be present" |
     package_installed("xinetd")
 ],
 [c.msg | some c in services_checks; not c.ok],
@@ -267,10 +267,10 @@ mta_local_only_configured if {
 
 # Section 3: Network Configuration (Enhanced for RHEL 10)
 network_checks := [
-	{"msg": "UNMAPPED-RHEL10-3.2: Ensure nftables base chains (input, forward, output) exist", "ok": nftables_base_chains_exist},
-	{"msg": "UNMAPPED-RHEL10-3.3: Ensure nftables loopback is configured", "ok": nftables_loopback_configured},
-	{"msg": "UNMAPPED-RHEL10-3.4: Ensure nftables outbound is configured", "ok": nftables_outbound_configured},
-	{"msg": "UNMAPPED-RHEL10-3.5: Ensure nftables default deny is configured", "ok": nftables_default_deny_configured},
+	{"msg": "UNMAPPED-RHEL10-3.2: checked condition — nftables base chains (input, forward, output) exist", "ok": nftables_base_chains_exist},
+	{"msg": "UNMAPPED-RHEL10-3.3: nftables loopback must be explicitly configured", "ok": nftables_loopback_configured},
+	{"msg": "UNMAPPED-RHEL10-3.4: nftables outbound must be explicitly configured", "ok": nftables_outbound_configured},
+	{"msg": "UNMAPPED-RHEL10-3.5: nftables default deny must be explicitly configured", "ok": nftables_default_deny_configured},
 ]
 
 network_violations := array.concat(
@@ -395,7 +395,7 @@ nftables_default_deny_configured if {
 
 # Section 4: Logging and Auditing (Enhanced for RHEL 10)
 logging_violations := [
-    "4.1.1.1: Ensure auditd is installed" |
+    "4.1.1.1: auditd must be present" |
     not package_installed("audit")
 ]
 
@@ -449,18 +449,18 @@ log_file_permissions_secure(log_file) if {
 
 # Section 5: Access, Authentication and Authorization (Enhanced for RHEL 10)
 access_auth_checks := [
-	{"msg": "UNMAPPED-RHEL10-5.2: Ensure cron access is restricted", "ok": cron_access_restricted},
-	{"msg": "UNMAPPED-RHEL10-5.3: Ensure at access is restricted", "ok": at_access_restricted},
-	{"msg": "UNMAPPED-RHEL10-5.4: Ensure pam faillock is configured", "ok": pam_faillock_configured},
-	{"msg": "UNMAPPED-RHEL10-5.5: Ensure pam pwquality is configured", "ok": pam_pwquality_configured},
-	{"msg": "UNMAPPED-RHEL10-5.6: Ensure password lockout is configured", "ok": password_lockout_configured},
-	{"msg": "UNMAPPED-RHEL10-5.7: Ensure shell timeout is configured", "ok": shell_timeout_configured},
-	{"msg": "UNMAPPED-RHEL10-5.8: Ensure su access is restricted", "ok": su_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.2: cron access must be restricted", "ok": cron_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.3: at access must be restricted", "ok": at_access_restricted},
+	{"msg": "UNMAPPED-RHEL10-5.4: pam faillock must be explicitly configured", "ok": pam_faillock_configured},
+	{"msg": "UNMAPPED-RHEL10-5.5: pam pwquality must be explicitly configured", "ok": pam_pwquality_configured},
+	{"msg": "UNMAPPED-RHEL10-5.6: password lockout must be explicitly configured", "ok": password_lockout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.7: shell timeout must be explicitly configured", "ok": shell_timeout_configured},
+	{"msg": "UNMAPPED-RHEL10-5.8: su access must be restricted", "ok": su_access_restricted},
 ]
 
 access_auth_violations := array.concat(
 [
-    "5.1.1: Ensure cron daemon is enabled and running" |
+    "5.1.1: cron daemon must be turned on and running" |
     not cron_running_and_enabled
 ],
 [c.msg | some c in access_auth_checks; not c.ok],
@@ -648,7 +648,7 @@ su_access_restricted if {
 # Section 6: System Maintenance (Enhanced for RHEL 10)
 system_maintenance_checks := [
 	{"msg": "6.1.0: evidence missing — ansible_facts.system_files not collected", "ok": system_files_collected},
-	{"msg": "UNMAPPED-RHEL10-6.2: Ensure root PATH is secure", "ok": root_path_secure},
+	{"msg": "UNMAPPED-RHEL10-6.2: root PATH must be secure", "ok": root_path_secure},
 ]
 
 system_maintenance_violations := array.concat(
@@ -725,12 +725,12 @@ directory_exists(path) if {
 
 # Section 7: Container Security (New for RHEL 10)
 container_security_checks := [
-	{"msg": "UNMAPPED-RHEL10-7.2: Ensure container network policies is configured", "ok": container_network_policies_configured},
+	{"msg": "UNMAPPED-RHEL10-7.2: container network policies must be explicitly configured", "ok": container_network_policies_configured},
 ]
 
 container_security_violations := array.concat(
 [
-    "7.1.1: Ensure Podman is configured securely" |
+    "7.1.1: Podman must be explicitly configured securely" |
     not podman_configured_securely
 ],
 [c.msg | some c in container_security_checks; not c.ok],
@@ -763,7 +763,7 @@ container_network_policies_configured if {
 
 # Section 8: Systemd Security (New for RHEL 10)
 systemd_security_violations := [
-    "8.1.1: Ensure systemd services use User= directive" |
+    "8.1.1: checked condition — systemd services use User= directive" |
     service := input.ansible_facts.systemd_services[_]
     service.custom == true
     not service.user_directive

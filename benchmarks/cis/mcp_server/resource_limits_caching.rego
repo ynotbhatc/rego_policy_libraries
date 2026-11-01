@@ -19,7 +19,7 @@ package cis_mcp_server.resource_limits_caching
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 10: Resource Limits and Caching.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,8 +30,8 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"10.1": {"section": 10, "level": "L1", "assessment": "Manual", "title": "Ensure safe, static resources are cached with freshness limits and per-user data is never shared-cached"},
-	"10.2": {"section": 10, "level": "L1", "assessment": "Manual", "title": "Ensure request and response body size limits, token budgets, and per-principal quotas are enforced"},
+	"10.1": {"section": 10, "level": "L1", "assessment": "Manual", "title": "safe, static resources must be cached with freshness limits and per-user data is never shared-cached"},
+	"10.2": {"section": 10, "level": "L1", "assessment": "Manual", "title": "request and response body size limits, token budgets, and per-principal quotas must be enforced"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

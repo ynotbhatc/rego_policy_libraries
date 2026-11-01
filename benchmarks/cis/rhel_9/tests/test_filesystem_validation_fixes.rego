@@ -47,5 +47,5 @@ test_filesystem_v2_usb_storage_object if {
 	vs := data.cis_rhel9.filesystem.violations with input as {"usb_storage": {"disabled": true, "loaded": false, "status": "disabled"}}
 	count([v | some v in vs; startswith(v, "1.1.1.10: ")]) == 0
 	vs2 := data.cis_rhel9.filesystem.violations with input as {"usb_storage": {"disabled": true, "loaded": false}, "disabled_filesystem_modules": {"modules": [{"module": "usb-storage", "disabled": false, "loaded": true}]}}
-	"1.1.1.10: not met — Ensure usb-storage kernel module is not available" in vs2
+	"1.1.1.10: not met — usb-storage kernel module must be blocked from loading" in vs2
 }

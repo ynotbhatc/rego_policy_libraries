@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_oracle-1.1",
-      "title": "Ensure Oracle Installation Is From Authorized Sources",
+      "title": "Oracle Installation must be From Authorized Sources",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_oracle-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle Installation Is From Authorized Sources"
+        "prose": "Oracle Installation must be From Authorized Sources"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.2",
-      "title": "Ensure Latest Oracle Patches Are Applied",
+      "title": "Latest Oracle Patches must be Applied",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_oracle-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure Latest Oracle Patches Are Applied"
+        "prose": "Latest Oracle Patches must be Applied"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.3",
-      "title": "Ensure Oracle Home Directory Permissions Are Restricted",
+      "title": "Oracle Home Directory Permissions must be Restricted",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_oracle-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle Home Directory Permissions Are Restricted"
+        "prose": "Oracle Home Directory Permissions must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.4",
-      "title": "Ensure Oracle Base Directory Permissions Are Restricted",
+      "title": "Oracle Base Directory Permissions must be Restricted",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_oracle-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle Base Directory Permissions Are Restricted"
+        "prose": "Oracle Base Directory Permissions must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.5",
-      "title": "Ensure Oracle Data Files Are on Non-System Partitions",
+      "title": "Oracle Data Files must be on Non-System Partitions",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_oracle-1.5_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle Data Files Are on Non-System Partitions"
+        "prose": "Oracle Data Files must be on Non-System Partitions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.6",
-      "title": "Ensure Oracle Software Is Not Installed on System Partitions",
+      "title": "Oracle Software must be Not Installed on System Partitions",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_oracle-1.6_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle Software Is Not Installed on System Partitions"
+        "prose": "Oracle Software must be Not Installed on System Partitions"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.7",
-      "title": "Ensure Oracle processes do not run as root or with root privileges",
+      "title": "checked condition — Oracle processes do not run as root or with root privileges",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_oracle-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle processes do not run as root or with root privileges"
+        "prose": "checked condition — Oracle processes do not run as root or with root privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.8",
-      "title": "Ensure ORACLE_HOME and PATH environment variables are secured",
+      "title": "ORACLE_HOME and PATH environment variables must be secured",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_oracle-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure ORACLE_HOME and PATH environment variables are secured"
+        "prose": "ORACLE_HOME and PATH environment variables must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.9",
-      "title": "Ensure Oracle inventory is secured",
+      "title": "Oracle inventory must be secured",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_oracle-1.9_stmt",
         "name": "statement",
-        "prose": "Ensure Oracle inventory is secured"
+        "prose": "Oracle inventory must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.10",
-      "title": "Ensure tnsnames.ora file is secured",
+      "title": "tnsnames.ora file must be secured",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_oracle-1.10_stmt",
         "name": "statement",
-        "prose": "Ensure tnsnames.ora file is secured"
+        "prose": "tnsnames.ora file must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.11",
-      "title": "Ensure sqlnet.ora file is secured",
+      "title": "sqlnet.ora file must be secured",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_oracle-1.11_stmt",
         "name": "statement",
-        "prose": "Ensure sqlnet.ora file is secured"
+        "prose": "sqlnet.ora file must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.12",
-      "title": "Ensure listener.ora file is secured",
+      "title": "listener.ora file must be secured",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_oracle-1.12_stmt",
         "name": "statement",
-        "prose": "Ensure listener.ora file is secured"
+        "prose": "listener.ora file must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.13",
-      "title": "Ensure default database accounts are secured",
+      "title": "default database accounts must be secured",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_oracle-1.13_stmt",
         "name": "statement",
-        "prose": "Ensure default database accounts are secured"
+        "prose": "default database accounts must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.14",
-      "title": "Ensure sample schemas are removed",
+      "title": "sample schemas must be removed",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_oracle-1.14_stmt",
         "name": "statement",
-        "prose": "Ensure sample schemas are removed"
+        "prose": "sample schemas must be removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.15",
-      "title": "Ensure database links are secured",
+      "title": "database links must be secured",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_oracle-1.15_stmt",
         "name": "statement",
-        "prose": "Ensure database links are secured"
+        "prose": "database links must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.16",
-      "title": "Ensure external procedures are secured",
+      "title": "external procedures must be secured",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_oracle-1.16_stmt",
         "name": "statement",
-        "prose": "Ensure external procedures are secured"
+        "prose": "external procedures must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.17",
-      "title": "Ensure UTL_FILE_DIR parameter is not set",
+      "title": "required value of parameter UTL_FILE_DIR is not set",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_oracle-1.17_stmt",
         "name": "statement",
-        "prose": "Ensure UTL_FILE_DIR parameter is not set"
+        "prose": "required value of parameter UTL_FILE_DIR is not set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.18",
-      "title": "Ensure REMOTE_OS_AUTHENT parameter is FALSE",
+      "title": "required value of parameter REMOTE_OS_AUTHENT is FALSE",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_oracle-1.18_stmt",
         "name": "statement",
-        "prose": "Ensure REMOTE_OS_AUTHENT parameter is FALSE"
+        "prose": "required value of parameter REMOTE_OS_AUTHENT is FALSE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.19",
-      "title": "Ensure REMOTE_OS_ROLES parameter is FALSE",
+      "title": "required value of parameter REMOTE_OS_ROLES is FALSE",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_oracle-1.19_stmt",
         "name": "statement",
-        "prose": "Ensure REMOTE_OS_ROLES parameter is FALSE"
+        "prose": "required value of parameter REMOTE_OS_ROLES is FALSE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.20",
-      "title": "Ensure SQL92_SECURITY parameter is TRUE",
+      "title": "required value of parameter SQL92_SECURITY is TRUE",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_oracle-1.20_stmt",
         "name": "statement",
-        "prose": "Ensure SQL92_SECURITY parameter is TRUE"
+        "prose": "required value of parameter SQL92_SECURITY is TRUE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.21",
-      "title": "Ensure O7_DICTIONARY_ACCESSIBILITY parameter is FALSE",
+      "title": "required value of parameter O7_DICTIONARY_ACCESSIBILITY is FALSE",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_oracle-1.21_stmt",
         "name": "statement",
-        "prose": "Ensure O7_DICTIONARY_ACCESSIBILITY parameter is FALSE"
+        "prose": "required value of parameter O7_DICTIONARY_ACCESSIBILITY is FALSE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.22",
-      "title": "Ensure SEC_CASE_SENSITIVE_LOGON parameter is TRUE",
+      "title": "required value of parameter SEC_CASE_SENSITIVE_LOGON is TRUE",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_oracle-1.22_stmt",
         "name": "statement",
-        "prose": "Ensure SEC_CASE_SENSITIVE_LOGON parameter is TRUE"
+        "prose": "required value of parameter SEC_CASE_SENSITIVE_LOGON is TRUE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.23",
-      "title": "Ensure SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter is set appropriately",
+      "title": "SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter must match the approved value",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_oracle-1.23_stmt",
         "name": "statement",
-        "prose": "Ensure SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter is set appropriately"
+        "prose": "SEC_MAX_FAILED_LOGIN_ATTEMPTS parameter must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.24",
-      "title": "Ensure SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is set to LOG",
+      "title": "required value of SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is LOG",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_oracle-1.24_stmt",
         "name": "statement",
-        "prose": "Ensure SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is set to LOG"
+        "prose": "required value of SEC_PROTOCOL_ERROR_TRACE_ACTION parameter is LOG"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.25",
-      "title": "Ensure SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter is set appropriately",
+      "title": "SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter must match the approved value",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_oracle-1.25_stmt",
         "name": "statement",
-        "prose": "Ensure SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter is set appropriately"
+        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.26",
-      "title": "Ensure SEC_RETURN_SERVER_RELEASE_BANNER parameter is FALSE",
+      "title": "required value of parameter SEC_RETURN_SERVER_RELEASE_BANNER is FALSE",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_oracle-1.26_stmt",
         "name": "statement",
-        "prose": "Ensure SEC_RETURN_SERVER_RELEASE_BANNER parameter is FALSE"
+        "prose": "required value of parameter SEC_RETURN_SERVER_RELEASE_BANNER is FALSE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.27",
-      "title": "Ensure GLOBAL_NAMES parameter is TRUE",
+      "title": "required value of parameter GLOBAL_NAMES is TRUE",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_oracle-1.27_stmt",
         "name": "statement",
-        "prose": "Ensure GLOBAL_NAMES parameter is TRUE"
+        "prose": "required value of parameter GLOBAL_NAMES is TRUE"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-1.28",
-      "title": "Ensure database character set is appropriate",
+      "title": "database character set must use an approved value",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_oracle-1.28_stmt",
         "name": "statement",
-        "prose": "Ensure database character set is appropriate"
+        "prose": "database character set must use an approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.1",
-      "title": "Ensure the Listener is not set to use the default port of 1521",
+      "title": "the Listener must not be use the default port of 1521",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_oracle-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure the Listener is not set to use the default port of 1521"
+        "prose": "the Listener must not be use the default port of 1521"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.2",
-      "title": "Ensure the Listener Password is Set",
+      "title": "the Listener Password must be Set",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_oracle-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the Listener Password is Set"
+        "prose": "the Listener Password must be Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.3",
-      "title": "Ensure 'ADMIN_RESTRICTIONS' Is Set to 'ON'",
+      "title": "required value of 'ADMIN_RESTRICTIONS' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_oracle-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'ADMIN_RESTRICTIONS' Is Set to 'ON'"
+        "prose": "required value of 'ADMIN_RESTRICTIONS' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.4",
-      "title": "Ensure 'LOCAL_OS_AUTHENTICATION' is disabled",
+      "title": "'LOCAL_OS_AUTHENTICATION' must be turned off",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_oracle-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'LOCAL_OS_AUTHENTICATION' is disabled"
+        "prose": "'LOCAL_OS_AUTHENTICATION' must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.5",
-      "title": "Ensure 'SECURE_REGISTER' is set to 'ON'",
+      "title": "required value of 'SECURE_REGISTER' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_oracle-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'SECURE_REGISTER' is set to 'ON'"
+        "prose": "required value of 'SECURE_REGISTER' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.6",
-      "title": "Ensure 'SECURE_CONTROL' is set to 'ON'",
+      "title": "required value of 'SECURE_CONTROL' is 'ON'",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_oracle-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'SECURE_CONTROL' is set to 'ON'"
+        "prose": "required value of 'SECURE_CONTROL' is 'ON'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.7",
-      "title": "Ensure the listener process runs as a non-privileged user",
+      "title": "checked condition — the listener process runs as a non-privileged user",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_oracle-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure the listener process runs as a non-privileged user"
+        "prose": "checked condition — the listener process runs as a non-privileged user"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.8",
-      "title": "Ensure listener logging is enabled",
+      "title": "listener logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_oracle-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure listener logging is enabled"
+        "prose": "listener logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.9",
-      "title": "Ensure listener log files are protected",
+      "title": "listener log files must be protected",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_oracle-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure listener log files are protected"
+        "prose": "listener log files must be protected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.10",
-      "title": "Ensure connection rate limiting is configured",
+      "title": "connection rate limiting must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_oracle-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure connection rate limiting is configured"
+        "prose": "connection rate limiting must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.11",
-      "title": "Ensure listener registration is secured",
+      "title": "listener registration must be secured",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_oracle-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure listener registration is secured"
+        "prose": "listener registration must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.12",
-      "title": "Ensure TNS_ADMIN is set appropriately",
+      "title": "TNS_ADMIN must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_oracle-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure TNS_ADMIN is set appropriately"
+        "prose": "TNS_ADMIN must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.13",
-      "title": "Ensure NAMES.DIRECTORY_PATH parameter is set correctly",
+      "title": "NAMES.DIRECTORY_PATH parameter must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_oracle-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure NAMES.DIRECTORY_PATH parameter is set correctly"
+        "prose": "NAMES.DIRECTORY_PATH parameter must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.14",
-      "title": "Ensure SQLNET.AUTHENTICATION_SERVICES parameter is set correctly",
+      "title": "SQLNET.AUTHENTICATION_SERVICES parameter must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_oracle-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure SQLNET.AUTHENTICATION_SERVICES parameter is set correctly"
+        "prose": "SQLNET.AUTHENTICATION_SERVICES parameter must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.15",
-      "title": "Ensure SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter is set correctly",
+      "title": "SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_oracle-2.15_stmt",
         "name": "statement",
-        "prose": "Ensure SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter is set correctly"
+        "prose": "SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.16",
-      "title": "Ensure SQLNET.CRYPTO_SEED parameter is configured",
+      "title": "required value of parameter SQLNET.CRYPTO_SEED is configured",
       "props": [
        {
         "name": "label",
@@ -1512,14 +1512,14 @@
        {
         "id": "cis_oracle-2.16_stmt",
         "name": "statement",
-        "prose": "Ensure SQLNET.CRYPTO_SEED parameter is configured"
+        "prose": "required value of parameter SQLNET.CRYPTO_SEED is configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.17",
-      "title": "Ensure connection timeout is configured",
+      "title": "connection timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1545,14 +1545,14 @@
        {
         "id": "cis_oracle-2.17_stmt",
         "name": "statement",
-        "prose": "Ensure connection timeout is configured"
+        "prose": "connection timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-2.18",
-      "title": "Ensure listener is configured for SSL/TLS",
+      "title": "listener must be explicitly configured for SSL/TLS",
       "props": [
        {
         "name": "label",
@@ -1578,14 +1578,14 @@
        {
         "id": "cis_oracle-2.18_stmt",
         "name": "statement",
-        "prose": "Ensure listener is configured for SSL/TLS"
+        "prose": "listener must be explicitly configured for SSL/TLS"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.1",
-      "title": "Ensure 'AUDIT_SYS_OPERATIONS' Is Set to 'TRUE'",
+      "title": "required value of 'AUDIT_SYS_OPERATIONS' is 'TRUE'",
       "props": [
        {
         "name": "label",
@@ -1611,14 +1611,14 @@
        {
         "id": "cis_oracle-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'AUDIT_SYS_OPERATIONS' Is Set to 'TRUE'"
+        "prose": "required value of 'AUDIT_SYS_OPERATIONS' is 'TRUE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.2",
-      "title": "Ensure 'AUDIT_TRAIL' Is Set to 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'",
+      "title": "required value of 'AUDIT_TRAIL' is 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'",
       "props": [
        {
         "name": "label",
@@ -1644,14 +1644,14 @@
        {
         "id": "cis_oracle-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'AUDIT_TRAIL' Is Set to 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'"
+        "prose": "required value of 'AUDIT_TRAIL' is 'DB', 'OS', 'DB, EXTENDED', or 'XML, EXTENDED'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.3",
-      "title": "Ensure 'AUDIT_FILE_DEST' Is Set to a Dedicated Directory",
+      "title": "required value of 'AUDIT_FILE_DEST' is a Dedicated Directory",
       "props": [
        {
         "name": "label",
@@ -1677,14 +1677,14 @@
        {
         "id": "cis_oracle-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'AUDIT_FILE_DEST' Is Set to a Dedicated Directory"
+        "prose": "required value of 'AUDIT_FILE_DEST' is a Dedicated Directory"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.4",
-      "title": "Ensure 'DB_ULTRA_SAFE' Is Set to 'DATA_AND_INDEX'",
+      "title": "required value of 'DB_ULTRA_SAFE' is 'DATA_AND_INDEX'",
       "props": [
        {
         "name": "label",
@@ -1710,14 +1710,14 @@
        {
         "id": "cis_oracle-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'DB_ULTRA_SAFE' Is Set to 'DATA_AND_INDEX'"
+        "prose": "required value of 'DB_ULTRA_SAFE' is 'DATA_AND_INDEX'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.5",
-      "title": "Ensure audit files are protected",
+      "title": "audit files must be protected",
       "props": [
        {
         "name": "label",
@@ -1743,14 +1743,14 @@
        {
         "id": "cis_oracle-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure audit files are protected"
+        "prose": "audit files must be protected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.6",
-      "title": "Ensure audit trail destinations are secured",
+      "title": "audit trail destinations must be secured",
       "props": [
        {
         "name": "label",
@@ -1776,14 +1776,14 @@
        {
         "id": "cis_oracle-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure audit trail destinations are secured"
+        "prose": "audit trail destinations must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.7",
-      "title": "Ensure comprehensive database activity auditing is enabled",
+      "title": "comprehensive database activity auditing must be turned on",
       "props": [
        {
         "name": "label",
@@ -1809,14 +1809,14 @@
        {
         "id": "cis_oracle-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure comprehensive database activity auditing is enabled"
+        "prose": "comprehensive database activity auditing must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.8",
-      "title": "Ensure auditing of failed logon attempts is enabled",
+      "title": "auditing of failed logon attempts must be turned on",
       "props": [
        {
         "name": "label",
@@ -1842,14 +1842,14 @@
        {
         "id": "cis_oracle-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of failed logon attempts is enabled"
+        "prose": "auditing of failed logon attempts must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.9",
-      "title": "Ensure auditing of successful logon attempts is enabled",
+      "title": "auditing of successful logon attempts must be turned on",
       "props": [
        {
         "name": "label",
@@ -1875,14 +1875,14 @@
        {
         "id": "cis_oracle-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of successful logon attempts is enabled"
+        "prose": "auditing of successful logon attempts must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.10",
-      "title": "Ensure auditing of logoff events is enabled",
+      "title": "auditing of logoff events must be turned on",
       "props": [
        {
         "name": "label",
@@ -1908,14 +1908,14 @@
        {
         "id": "cis_oracle-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of logoff events is enabled"
+        "prose": "auditing of logoff events must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.11",
-      "title": "Ensure auditing of database schema changes is enabled",
+      "title": "auditing of database schema changes must be turned on",
       "props": [
        {
         "name": "label",
@@ -1941,14 +1941,14 @@
        {
         "id": "cis_oracle-3.11_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of database schema changes is enabled"
+        "prose": "auditing of database schema changes must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.12",
-      "title": "Ensure auditing of privilege grants and revokes is enabled",
+      "title": "auditing of privilege grants and revokes must be turned on",
       "props": [
        {
         "name": "label",
@@ -1974,14 +1974,14 @@
        {
         "id": "cis_oracle-3.12_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of privilege grants and revokes is enabled"
+        "prose": "auditing of privilege grants and revokes must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.13",
-      "title": "Ensure auditing of data access is enabled for sensitive tables",
+      "title": "auditing of data access must be turned on for sensitive tables",
       "props": [
        {
         "name": "label",
@@ -2007,14 +2007,14 @@
        {
         "id": "cis_oracle-3.13_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of data access is enabled for sensitive tables"
+        "prose": "auditing of data access must be turned on for sensitive tables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.14",
-      "title": "Ensure auditing of data modification is enabled for sensitive tables",
+      "title": "auditing of data modification must be turned on for sensitive tables",
       "props": [
        {
         "name": "label",
@@ -2040,14 +2040,14 @@
        {
         "id": "cis_oracle-3.14_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of data modification is enabled for sensitive tables"
+        "prose": "auditing of data modification must be turned on for sensitive tables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.15",
-      "title": "Ensure auditing of administrative operations is enabled",
+      "title": "auditing of administrative operations must be turned on",
       "props": [
        {
         "name": "label",
@@ -2073,14 +2073,14 @@
        {
         "id": "cis_oracle-3.15_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of administrative operations is enabled"
+        "prose": "auditing of administrative operations must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.16",
-      "title": "Ensure auditing of user creation and deletion is enabled",
+      "title": "auditing of user creation and deletion must be turned on",
       "props": [
        {
         "name": "label",
@@ -2106,14 +2106,14 @@
        {
         "id": "cis_oracle-3.16_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of user creation and deletion is enabled"
+        "prose": "auditing of user creation and deletion must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.17",
-      "title": "Ensure auditing of role assignment changes is enabled",
+      "title": "auditing of role assignment changes must be turned on",
       "props": [
        {
         "name": "label",
@@ -2139,14 +2139,14 @@
        {
         "id": "cis_oracle-3.17_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of role assignment changes is enabled"
+        "prose": "auditing of role assignment changes must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.18",
-      "title": "Ensure auditing of system privilege operations is enabled",
+      "title": "auditing of system privilege operations must be turned on",
       "props": [
        {
         "name": "label",
@@ -2172,14 +2172,14 @@
        {
         "id": "cis_oracle-3.18_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of system privilege operations is enabled"
+        "prose": "auditing of system privilege operations must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.19",
-      "title": "Ensure auditing of object privilege operations is enabled",
+      "title": "auditing of object privilege operations must be turned on",
       "props": [
        {
         "name": "label",
@@ -2205,14 +2205,14 @@
        {
         "id": "cis_oracle-3.19_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of object privilege operations is enabled"
+        "prose": "auditing of object privilege operations must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.20",
-      "title": "Ensure auditing of database startup and shutdown is enabled",
+      "title": "auditing of database startup and shutdown must be turned on",
       "props": [
        {
         "name": "label",
@@ -2238,14 +2238,14 @@
        {
         "id": "cis_oracle-3.20_stmt",
         "name": "statement",
-        "prose": "Ensure auditing of database startup and shutdown is enabled"
+        "prose": "auditing of database startup and shutdown must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.21",
-      "title": "Ensure log retention policies are configured",
+      "title": "log retention policies must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2271,14 +2271,14 @@
        {
         "id": "cis_oracle-3.21_stmt",
         "name": "statement",
-        "prose": "Ensure log retention policies are configured"
+        "prose": "log retention policies must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.22",
-      "title": "Ensure audit log monitoring and alerting is configured",
+      "title": "audit log monitoring and alerting must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2304,14 +2304,14 @@
        {
         "id": "cis_oracle-3.22_stmt",
         "name": "statement",
-        "prose": "Ensure audit log monitoring and alerting is configured"
+        "prose": "audit log monitoring and alerting must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.23",
-      "title": "Ensure Fine Grained Auditing (FGA) is enabled for sensitive data",
+      "title": "Fine Grained Auditing (FGA) must be turned on for sensitive data",
       "props": [
        {
         "name": "label",
@@ -2337,14 +2337,14 @@
        {
         "id": "cis_oracle-3.23_stmt",
         "name": "statement",
-        "prose": "Ensure Fine Grained Auditing (FGA) is enabled for sensitive data"
+        "prose": "Fine Grained Auditing (FGA) must be turned on for sensitive data"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.24",
-      "title": "Ensure Database Vault auditing is enabled",
+      "title": "Database Vault auditing must be turned on",
       "props": [
        {
         "name": "label",
@@ -2370,14 +2370,14 @@
        {
         "id": "cis_oracle-3.24_stmt",
         "name": "statement",
-        "prose": "Ensure Database Vault auditing is enabled"
+        "prose": "Database Vault auditing must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.25",
-      "title": "Ensure audit cleanup jobs are configured",
+      "title": "audit cleanup jobs must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2403,14 +2403,14 @@
        {
         "id": "cis_oracle-3.25_stmt",
         "name": "statement",
-        "prose": "Ensure audit cleanup jobs are configured"
+        "prose": "audit cleanup jobs must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.26",
-      "title": "Ensure SYS and SYSTEM operations are audited",
+      "title": "SYS and SYSTEM operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2436,14 +2436,14 @@
        {
         "id": "cis_oracle-3.26_stmt",
         "name": "statement",
-        "prose": "Ensure SYS and SYSTEM operations are audited"
+        "prose": "SYS and SYSTEM operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.27",
-      "title": "Ensure public synonym operations are audited",
+      "title": "public synonym operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2469,14 +2469,14 @@
        {
         "id": "cis_oracle-3.27_stmt",
         "name": "statement",
-        "prose": "Ensure public synonym operations are audited"
+        "prose": "public synonym operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.28",
-      "title": "Ensure directory operations are audited",
+      "title": "directory operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2502,14 +2502,14 @@
        {
         "id": "cis_oracle-3.28_stmt",
         "name": "statement",
-        "prose": "Ensure directory operations are audited"
+        "prose": "directory operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.29",
-      "title": "Ensure database link operations are audited",
+      "title": "database link operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2535,14 +2535,14 @@
        {
         "id": "cis_oracle-3.29_stmt",
         "name": "statement",
-        "prose": "Ensure database link operations are audited"
+        "prose": "database link operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.30",
-      "title": "Ensure external procedure operations are audited",
+      "title": "external procedure operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2568,14 +2568,14 @@
        {
         "id": "cis_oracle-3.30_stmt",
         "name": "statement",
-        "prose": "Ensure external procedure operations are audited"
+        "prose": "external procedure operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.31",
-      "title": "Ensure network operations are audited",
+      "title": "network operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2601,14 +2601,14 @@
        {
         "id": "cis_oracle-3.31_stmt",
         "name": "statement",
-        "prose": "Ensure network operations are audited"
+        "prose": "network operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-3.32",
-      "title": "Ensure SQL*Loader operations are audited",
+      "title": "SQL*Loader operations must be audited",
       "props": [
        {
         "name": "label",
@@ -2634,14 +2634,14 @@
        {
         "id": "cis_oracle-3.32_stmt",
         "name": "statement",
-        "prose": "Ensure SQL*Loader operations are audited"
+        "prose": "SQL*Loader operations must be audited"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.1",
-      "title": "Ensure All Default Passwords Are Changed",
+      "title": "All Default Passwords must be Changed",
       "props": [
        {
         "name": "label",
@@ -2667,14 +2667,14 @@
        {
         "id": "cis_oracle-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure All Default Passwords Are Changed"
+        "prose": "All Default Passwords must be Changed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.2",
-      "title": "Ensure All Sample Data and Users Are Removed",
+      "title": "All Sample Data and Users must be Removed",
       "props": [
        {
         "name": "label",
@@ -2700,14 +2700,14 @@
        {
         "id": "cis_oracle-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure All Sample Data and Users Are Removed"
+        "prose": "All Sample Data and Users must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.3",
-      "title": "Ensure All Unnecessary Accounts Are Removed",
+      "title": "All Unnecessary Accounts must be Removed",
       "props": [
        {
         "name": "label",
@@ -2733,14 +2733,14 @@
        {
         "id": "cis_oracle-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure All Unnecessary Accounts Are Removed"
+        "prose": "All Unnecessary Accounts must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.4",
-      "title": "Ensure All Default Accounts That Are Not Needed Are Locked",
+      "title": "All Default Accounts That must be Not Needed Are Locked",
       "props": [
        {
         "name": "label",
@@ -2766,14 +2766,14 @@
        {
         "id": "cis_oracle-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure All Default Accounts That Are Not Needed Are Locked"
+        "prose": "All Default Accounts That must be Not Needed Are Locked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.5",
-      "title": "Ensure Password Complexity Is Enforced",
+      "title": "Password Complexity must be Enforced",
       "props": [
        {
         "name": "label",
@@ -2799,14 +2799,14 @@
        {
         "id": "cis_oracle-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure Password Complexity Is Enforced"
+        "prose": "Password Complexity must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.6",
-      "title": "Ensure Password Expiration Is Enforced",
+      "title": "Password Expiration must be Enforced",
       "props": [
        {
         "name": "label",
@@ -2832,14 +2832,14 @@
        {
         "id": "cis_oracle-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure Password Expiration Is Enforced"
+        "prose": "Password Expiration must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.7",
-      "title": "Ensure Password Reuse Is Limited",
+      "title": "Password Reuse must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -2865,14 +2865,14 @@
        {
         "id": "cis_oracle-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure Password Reuse Is Limited"
+        "prose": "Password Reuse must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.8",
-      "title": "Ensure Account Lockout Policy Is Enforced",
+      "title": "Account Lockout Policy must be Enforced",
       "props": [
        {
         "name": "label",
@@ -2898,14 +2898,14 @@
        {
         "id": "cis_oracle-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure Account Lockout Policy Is Enforced"
+        "prose": "Account Lockout Policy must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.9",
-      "title": "Ensure Password Grace Period Is Limited",
+      "title": "Password Grace Period must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -2931,14 +2931,14 @@
        {
         "id": "cis_oracle-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure Password Grace Period Is Limited"
+        "prose": "Password Grace Period must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.10",
-      "title": "Ensure Strong Authentication Methods Are Used",
+      "title": "Strong Authentication Methods must be Used",
       "props": [
        {
         "name": "label",
@@ -2964,14 +2964,14 @@
        {
         "id": "cis_oracle-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure Strong Authentication Methods Are Used"
+        "prose": "Strong Authentication Methods must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.11",
-      "title": "Ensure Database Authentication Is Not Used for Application Accounts",
+      "title": "Database Authentication must be Not Used for Application Accounts",
       "props": [
        {
         "name": "label",
@@ -2997,14 +2997,14 @@
        {
         "id": "cis_oracle-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure Database Authentication Is Not Used for Application Accounts"
+        "prose": "Database Authentication must be Not Used for Application Accounts"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.12",
-      "title": "Ensure External Authentication Is Secured",
+      "title": "External Authentication must be Secured",
       "props": [
        {
         "name": "label",
@@ -3030,14 +3030,14 @@
        {
         "id": "cis_oracle-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure External Authentication Is Secured"
+        "prose": "External Authentication must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.13",
-      "title": "Ensure Global Authentication Is Secured",
+      "title": "Global Authentication must be Secured",
       "props": [
        {
         "name": "label",
@@ -3063,14 +3063,14 @@
        {
         "id": "cis_oracle-4.13_stmt",
         "name": "statement",
-        "prose": "Ensure Global Authentication Is Secured"
+        "prose": "Global Authentication must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.14",
-      "title": "Ensure Database User Session Management Is Configured",
+      "title": "Database User Session Management must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3096,14 +3096,14 @@
        {
         "id": "cis_oracle-4.14_stmt",
         "name": "statement",
-        "prose": "Ensure Database User Session Management Is Configured"
+        "prose": "Database User Session Management must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.15",
-      "title": "Ensure Idle Time Limits Are Enforced",
+      "title": "Idle Time Limits must be Enforced",
       "props": [
        {
         "name": "label",
@@ -3129,14 +3129,14 @@
        {
         "id": "cis_oracle-4.15_stmt",
         "name": "statement",
-        "prose": "Ensure Idle Time Limits Are Enforced"
+        "prose": "Idle Time Limits must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.16",
-      "title": "Ensure Connect Time Limits Are Enforced",
+      "title": "Connect Time Limits must be Enforced",
       "props": [
        {
         "name": "label",
@@ -3162,14 +3162,14 @@
        {
         "id": "cis_oracle-4.16_stmt",
         "name": "statement",
-        "prose": "Ensure Connect Time Limits Are Enforced"
+        "prose": "Connect Time Limits must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.17",
-      "title": "Ensure Concurrent Session Limits Are Enforced",
+      "title": "Concurrent Session Limits must be Enforced",
       "props": [
        {
         "name": "label",
@@ -3195,14 +3195,14 @@
        {
         "id": "cis_oracle-4.17_stmt",
         "name": "statement",
-        "prose": "Ensure Concurrent Session Limits Are Enforced"
+        "prose": "Concurrent Session Limits must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.18",
-      "title": "Ensure User Profile Management Is Implemented",
+      "title": "User Profile Management must be Implemented",
       "props": [
        {
         "name": "label",
@@ -3228,14 +3228,14 @@
        {
         "id": "cis_oracle-4.18_stmt",
         "name": "statement",
-        "prose": "Ensure User Profile Management Is Implemented"
+        "prose": "User Profile Management must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.19",
-      "title": "Ensure Application User Account Management Is Secured",
+      "title": "Application User Account Management must be Secured",
       "props": [
        {
         "name": "label",
@@ -3261,14 +3261,14 @@
        {
         "id": "cis_oracle-4.19_stmt",
         "name": "statement",
-        "prose": "Ensure Application User Account Management Is Secured"
+        "prose": "Application User Account Management must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.20",
-      "title": "Ensure Service Account Management Is Secured",
+      "title": "Service Account Management must be Secured",
       "props": [
        {
         "name": "label",
@@ -3294,14 +3294,14 @@
        {
         "id": "cis_oracle-4.20_stmt",
         "name": "statement",
-        "prose": "Ensure Service Account Management Is Secured"
+        "prose": "Service Account Management must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.21",
-      "title": "Ensure Administrative Account Usage Is Monitored",
+      "title": "Administrative Account Usage must be Monitored",
       "props": [
        {
         "name": "label",
@@ -3327,14 +3327,14 @@
        {
         "id": "cis_oracle-4.21_stmt",
         "name": "statement",
-        "prose": "Ensure Administrative Account Usage Is Monitored"
+        "prose": "Administrative Account Usage must be Monitored"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.22",
-      "title": "Ensure Emergency Account Procedures Are Defined",
+      "title": "Emergency Account Procedures must be Defined",
       "props": [
        {
         "name": "label",
@@ -3360,14 +3360,14 @@
        {
         "id": "cis_oracle-4.22_stmt",
         "name": "statement",
-        "prose": "Ensure Emergency Account Procedures Are Defined"
+        "prose": "Emergency Account Procedures must be Defined"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.23",
-      "title": "Ensure Account Lifecycle Management Is Implemented",
+      "title": "Account Lifecycle Management must be Implemented",
       "props": [
        {
         "name": "label",
@@ -3393,14 +3393,14 @@
        {
         "id": "cis_oracle-4.23_stmt",
         "name": "statement",
-        "prose": "Ensure Account Lifecycle Management Is Implemented"
+        "prose": "Account Lifecycle Management must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-4.24",
-      "title": "Ensure Shared Account Usage Is Eliminated or Controlled",
+      "title": "Shared Account Usage must be Eliminated or Controlled",
       "props": [
        {
         "name": "label",
@@ -3426,14 +3426,14 @@
        {
         "id": "cis_oracle-4.24_stmt",
         "name": "statement",
-        "prose": "Ensure Shared Account Usage Is Eliminated or Controlled"
+        "prose": "Shared Account Usage must be Eliminated or Controlled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.1",
-      "title": "Ensure All Unnecessary Roles Are Dropped",
+      "title": "All Unnecessary Roles must be Dropped",
       "props": [
        {
         "name": "label",
@@ -3459,14 +3459,14 @@
        {
         "id": "cis_oracle-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure All Unnecessary Roles Are Dropped"
+        "prose": "All Unnecessary Roles must be Dropped"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.2",
-      "title": "Ensure No Users Have the DBA Role",
+      "title": "No Users must have the DBA Role",
       "props": [
        {
         "name": "label",
@@ -3492,14 +3492,14 @@
        {
         "id": "cis_oracle-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure No Users Have the DBA Role"
+        "prose": "No Users must have the DBA Role"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.3",
-      "title": "Ensure DBA Roles Are Protected",
+      "title": "DBA Roles must be Protected",
       "props": [
        {
         "name": "label",
@@ -3525,14 +3525,14 @@
        {
         "id": "cis_oracle-5.3_stmt",
         "name": "statement",
-        "prose": "Ensure DBA Roles Are Protected"
+        "prose": "DBA Roles must be Protected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.4",
-      "title": "Ensure Custom DBA Roles Follow Principle of Least Privilege",
+      "title": "checked condition — Custom DBA Roles Follow Principle of Least Privilege",
       "props": [
        {
         "name": "label",
@@ -3558,14 +3558,14 @@
        {
         "id": "cis_oracle-5.4_stmt",
         "name": "statement",
-        "prose": "Ensure Custom DBA Roles Follow Principle of Least Privilege"
+        "prose": "checked condition — Custom DBA Roles Follow Principle of Least Privilege"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.5",
-      "title": "Ensure All Roles are Password Protected",
+      "title": "All Roles must be Password Protected",
       "props": [
        {
         "name": "label",
@@ -3591,14 +3591,14 @@
        {
         "id": "cis_oracle-5.5_stmt",
         "name": "statement",
-        "prose": "Ensure All Roles are Password Protected"
+        "prose": "All Roles must be Password Protected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.6",
-      "title": "Ensure No Roles Are Granted to PUBLIC",
+      "title": "No Roles must be Granted to PUBLIC",
       "props": [
        {
         "name": "label",
@@ -3624,14 +3624,14 @@
        {
         "id": "cis_oracle-5.6_stmt",
         "name": "statement",
-        "prose": "Ensure No Roles Are Granted to PUBLIC"
+        "prose": "No Roles must be Granted to PUBLIC"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.7",
-      "title": "Ensure DBA and Other Administrative Privileges Are Granted Only Where Needed",
+      "title": "DBA and Other Administrative Privileges must be Granted Only Where Needed",
       "props": [
        {
         "name": "label",
@@ -3657,14 +3657,14 @@
        {
         "id": "cis_oracle-5.7_stmt",
         "name": "statement",
-        "prose": "Ensure DBA and Other Administrative Privileges Are Granted Only Where Needed"
+        "prose": "DBA and Other Administrative Privileges must be Granted Only Where Needed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.8",
-      "title": "Ensure 'GRANT ANY ROLE' Privilege Is Restricted",
+      "title": "privilege 'GRANT ANY ROLE' must be limited to approved grantees",
       "props": [
        {
         "name": "label",
@@ -3690,14 +3690,14 @@
        {
         "id": "cis_oracle-5.8_stmt",
         "name": "statement",
-        "prose": "Ensure 'GRANT ANY ROLE' Privilege Is Restricted"
+        "prose": "privilege 'GRANT ANY ROLE' must be limited to approved grantees"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.9",
-      "title": "Ensure 'GRANT ANY PRIVILEGE' Privilege Is Restricted",
+      "title": "privilege 'GRANT ANY PRIVILEGE' must be limited to approved grantees",
       "props": [
        {
         "name": "label",
@@ -3723,14 +3723,14 @@
        {
         "id": "cis_oracle-5.9_stmt",
         "name": "statement",
-        "prose": "Ensure 'GRANT ANY PRIVILEGE' Privilege Is Restricted"
+        "prose": "privilege 'GRANT ANY PRIVILEGE' must be limited to approved grantees"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.10",
-      "title": "Ensure 'GRANT ANY OBJECT PRIVILEGE' Privilege Is Restricted",
+      "title": "privilege 'GRANT ANY OBJECT PRIVILEGE' must be limited to approved grantees",
       "props": [
        {
         "name": "label",
@@ -3756,14 +3756,14 @@
        {
         "id": "cis_oracle-5.10_stmt",
         "name": "statement",
-        "prose": "Ensure 'GRANT ANY OBJECT PRIVILEGE' Privilege Is Restricted"
+        "prose": "privilege 'GRANT ANY OBJECT PRIVILEGE' must be limited to approved grantees"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.11",
-      "title": "Ensure System Privileges Are Granted Appropriately",
+      "title": "System Privileges must be Granted Appropriately",
       "props": [
        {
         "name": "label",
@@ -3789,14 +3789,14 @@
        {
         "id": "cis_oracle-5.11_stmt",
         "name": "statement",
-        "prose": "Ensure System Privileges Are Granted Appropriately"
+        "prose": "System Privileges must be Granted Appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.12",
-      "title": "Ensure Object Privileges Are Granted Appropriately",
+      "title": "Object Privileges must be Granted Appropriately",
       "props": [
        {
         "name": "label",
@@ -3822,14 +3822,14 @@
        {
         "id": "cis_oracle-5.12_stmt",
         "name": "statement",
-        "prose": "Ensure Object Privileges Are Granted Appropriately"
+        "prose": "Object Privileges must be Granted Appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.13",
-      "title": "Ensure WITH ADMIN OPTION Is Restricted",
+      "title": "WITH ADMIN OPTION must be Restricted",
       "props": [
        {
         "name": "label",
@@ -3855,14 +3855,14 @@
        {
         "id": "cis_oracle-5.13_stmt",
         "name": "statement",
-        "prose": "Ensure WITH ADMIN OPTION Is Restricted"
+        "prose": "WITH ADMIN OPTION must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.14",
-      "title": "Ensure WITH GRANT OPTION Is Restricted",
+      "title": "WITH GRANT OPTION must be Restricted",
       "props": [
        {
         "name": "label",
@@ -3888,14 +3888,14 @@
        {
         "id": "cis_oracle-5.14_stmt",
         "name": "statement",
-        "prose": "Ensure WITH GRANT OPTION Is Restricted"
+        "prose": "WITH GRANT OPTION must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.15",
-      "title": "Ensure Role Hierarchies Are Appropriately Designed",
+      "title": "Role Hierarchies must be Appropriately Designed",
       "props": [
        {
         "name": "label",
@@ -3921,14 +3921,14 @@
        {
         "id": "cis_oracle-5.15_stmt",
         "name": "statement",
-        "prose": "Ensure Role Hierarchies Are Appropriately Designed"
+        "prose": "Role Hierarchies must be Appropriately Designed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.16",
-      "title": "Ensure Application Roles Are Used for Application Access",
+      "title": "Application Roles must be Used for Application Access",
       "props": [
        {
         "name": "label",
@@ -3954,14 +3954,14 @@
        {
         "id": "cis_oracle-5.16_stmt",
         "name": "statement",
-        "prose": "Ensure Application Roles Are Used for Application Access"
+        "prose": "Application Roles must be Used for Application Access"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.17",
-      "title": "Ensure Database Link Privileges Are Restricted",
+      "title": "Database Link Privileges must be Restricted",
       "props": [
        {
         "name": "label",
@@ -3987,14 +3987,14 @@
        {
         "id": "cis_oracle-5.17_stmt",
         "name": "statement",
-        "prose": "Ensure Database Link Privileges Are Restricted"
+        "prose": "Database Link Privileges must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.18",
-      "title": "Ensure Directory Object Privileges Are Restricted",
+      "title": "Directory Object Privileges must be Restricted",
       "props": [
        {
         "name": "label",
@@ -4020,14 +4020,14 @@
        {
         "id": "cis_oracle-5.18_stmt",
         "name": "statement",
-        "prose": "Ensure Directory Object Privileges Are Restricted"
+        "prose": "Directory Object Privileges must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.19",
-      "title": "Ensure Java Privileges Are Restricted",
+      "title": "Java Privileges must be Restricted",
       "props": [
        {
         "name": "label",
@@ -4053,14 +4053,14 @@
        {
         "id": "cis_oracle-5.19_stmt",
         "name": "statement",
-        "prose": "Ensure Java Privileges Are Restricted"
+        "prose": "Java Privileges must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.20",
-      "title": "Ensure External Procedure Privileges Are Restricted",
+      "title": "External Procedure Privileges must be Restricted",
       "props": [
        {
         "name": "label",
@@ -4086,14 +4086,14 @@
        {
         "id": "cis_oracle-5.20_stmt",
         "name": "statement",
-        "prose": "Ensure External Procedure Privileges Are Restricted"
+        "prose": "External Procedure Privileges must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.21",
-      "title": "Ensure Network Access Control List (ACL) Is Configured",
+      "title": "Network Access Control List (ACL) must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4119,14 +4119,14 @@
        {
         "id": "cis_oracle-5.21_stmt",
         "name": "statement",
-        "prose": "Ensure Network Access Control List (ACL) Is Configured"
+        "prose": "Network Access Control List (ACL) must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.22",
-      "title": "Ensure Privilege Analysis Is Implemented",
+      "title": "Privilege Analysis must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4152,14 +4152,14 @@
        {
         "id": "cis_oracle-5.22_stmt",
         "name": "statement",
-        "prose": "Ensure Privilege Analysis Is Implemented"
+        "prose": "Privilege Analysis must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.23",
-      "title": "Ensure Regular Privilege Reviews Are Conducted",
+      "title": "Regular Privilege Reviews must be Conducted",
       "props": [
        {
         "name": "label",
@@ -4185,14 +4185,14 @@
        {
         "id": "cis_oracle-5.23_stmt",
         "name": "statement",
-        "prose": "Ensure Regular Privilege Reviews Are Conducted"
+        "prose": "Regular Privilege Reviews must be Conducted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.24",
-      "title": "Ensure Privilege Escalation Is Monitored",
+      "title": "Privilege Escalation must be Monitored",
       "props": [
        {
         "name": "label",
@@ -4218,14 +4218,14 @@
        {
         "id": "cis_oracle-5.24_stmt",
         "name": "statement",
-        "prose": "Ensure Privilege Escalation Is Monitored"
+        "prose": "Privilege Escalation must be Monitored"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.25",
-      "title": "Ensure Administrative Privilege Usage Is Logged",
+      "title": "Administrative Privilege Usage must be Logged",
       "props": [
        {
         "name": "label",
@@ -4251,14 +4251,14 @@
        {
         "id": "cis_oracle-5.25_stmt",
         "name": "statement",
-        "prose": "Ensure Administrative Privilege Usage Is Logged"
+        "prose": "Administrative Privilege Usage must be Logged"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.26",
-      "title": "Ensure Application Context Usage Is Secured",
+      "title": "Application Context Usage must be Secured",
       "props": [
        {
         "name": "label",
@@ -4284,14 +4284,14 @@
        {
         "id": "cis_oracle-5.26_stmt",
         "name": "statement",
-        "prose": "Ensure Application Context Usage Is Secured"
+        "prose": "Application Context Usage must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.27",
-      "title": "Ensure Virtual Private Database Policies Are Implemented",
+      "title": "Virtual Private Database Policies must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4317,14 +4317,14 @@
        {
         "id": "cis_oracle-5.27_stmt",
         "name": "statement",
-        "prose": "Ensure Virtual Private Database Policies Are Implemented"
+        "prose": "Virtual Private Database Policies must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-5.28",
-      "title": "Ensure Definer Rights Are Used Appropriately",
+      "title": "Definer Rights must be Used Appropriately",
       "props": [
        {
         "name": "label",
@@ -4350,14 +4350,14 @@
        {
         "id": "cis_oracle-5.28_stmt",
         "name": "statement",
-        "prose": "Ensure Definer Rights Are Used Appropriately"
+        "prose": "Definer Rights must be Used Appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.1",
-      "title": "Ensure Virtual Private Database (VPD) Is Configured for Sensitive Data",
+      "title": "Virtual Private Database (VPD) must be explicitly configured for Sensitive Data",
       "props": [
        {
         "name": "label",
@@ -4383,14 +4383,14 @@
        {
         "id": "cis_oracle-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure Virtual Private Database (VPD) Is Configured for Sensitive Data"
+        "prose": "Virtual Private Database (VPD) must be explicitly configured for Sensitive Data"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.2",
-      "title": "Ensure Application Contexts Are Secure",
+      "title": "Application Contexts must be Secure",
       "props": [
        {
         "name": "label",
@@ -4416,14 +4416,14 @@
        {
         "id": "cis_oracle-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure Application Contexts Are Secure"
+        "prose": "Application Contexts must be Secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.3",
-      "title": "Ensure Label Security Is Configured Where Appropriate",
+      "title": "Label Security must be explicitly configured Where Appropriate",
       "props": [
        {
         "name": "label",
@@ -4449,14 +4449,14 @@
        {
         "id": "cis_oracle-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure Label Security Is Configured Where Appropriate"
+        "prose": "Label Security must be explicitly configured Where Appropriate"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.4",
-      "title": "Ensure Data Redaction Is Configured for Sensitive Data",
+      "title": "Data Redaction must be explicitly configured for Sensitive Data",
       "props": [
        {
         "name": "label",
@@ -4482,14 +4482,14 @@
        {
         "id": "cis_oracle-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure Data Redaction Is Configured for Sensitive Data"
+        "prose": "Data Redaction must be explicitly configured for Sensitive Data"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.5",
-      "title": "Ensure Column-Level Security Is Implemented",
+      "title": "Column-Level Security must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4515,14 +4515,14 @@
        {
         "id": "cis_oracle-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure Column-Level Security Is Implemented"
+        "prose": "Column-Level Security must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.6",
-      "title": "Ensure Row-Level Security Is Implemented",
+      "title": "Row-Level Security must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4548,14 +4548,14 @@
        {
         "id": "cis_oracle-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure Row-Level Security Is Implemented"
+        "prose": "Row-Level Security must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.7",
-      "title": "Ensure Views Are Used to Restrict Data Access",
+      "title": "Views must be Used to Restrict Data Access",
       "props": [
        {
         "name": "label",
@@ -4581,14 +4581,14 @@
        {
         "id": "cis_oracle-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure Views Are Used to Restrict Data Access"
+        "prose": "Views must be Used to Restrict Data Access"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.8",
-      "title": "Ensure Synonyms Are Used Appropriately",
+      "title": "Synonyms must be Used Appropriately",
       "props": [
        {
         "name": "label",
@@ -4614,14 +4614,14 @@
        {
         "id": "cis_oracle-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure Synonyms Are Used Appropriately"
+        "prose": "Synonyms must be Used Appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.9",
-      "title": "Ensure Database Vault Is Configured",
+      "title": "Database Vault must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4647,14 +4647,14 @@
        {
         "id": "cis_oracle-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure Database Vault Is Configured"
+        "prose": "Database Vault must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.10",
-      "title": "Ensure Real Application Security Is Implemented",
+      "title": "Real Application Security must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4680,14 +4680,14 @@
        {
         "id": "cis_oracle-6.10_stmt",
         "name": "statement",
-        "prose": "Ensure Real Application Security Is Implemented"
+        "prose": "Real Application Security must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.11",
-      "title": "Ensure Fine Grained Auditing (FGA) Is Configured",
+      "title": "Fine Grained Auditing (FGA) must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4713,14 +4713,14 @@
        {
         "id": "cis_oracle-6.11_stmt",
         "name": "statement",
-        "prose": "Ensure Fine Grained Auditing (FGA) Is Configured"
+        "prose": "Fine Grained Auditing (FGA) must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.12",
-      "title": "Ensure Data Classification Is Implemented",
+      "title": "Data Classification must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4746,14 +4746,14 @@
        {
         "id": "cis_oracle-6.12_stmt",
         "name": "statement",
-        "prose": "Ensure Data Classification Is Implemented"
+        "prose": "Data Classification must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.13",
-      "title": "Ensure Sensitive Data Discovery Is Implemented",
+      "title": "Sensitive Data Discovery must be Implemented",
       "props": [
        {
         "name": "label",
@@ -4779,14 +4779,14 @@
        {
         "id": "cis_oracle-6.13_stmt",
         "name": "statement",
-        "prose": "Ensure Sensitive Data Discovery Is Implemented"
+        "prose": "Sensitive Data Discovery must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.14",
-      "title": "Ensure Data Masking Is Configured",
+      "title": "Data Masking must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4812,14 +4812,14 @@
        {
         "id": "cis_oracle-6.14_stmt",
         "name": "statement",
-        "prose": "Ensure Data Masking Is Configured"
+        "prose": "Data Masking must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.15",
-      "title": "Ensure Data Pump Security Is Configured",
+      "title": "Data Pump Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4845,14 +4845,14 @@
        {
         "id": "cis_oracle-6.15_stmt",
         "name": "statement",
-        "prose": "Ensure Data Pump Security Is Configured"
+        "prose": "Data Pump Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.16",
-      "title": "Ensure SQL*Loader Security Is Configured",
+      "title": "SQL*Loader Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4878,14 +4878,14 @@
        {
         "id": "cis_oracle-6.16_stmt",
         "name": "statement",
-        "prose": "Ensure SQL*Loader Security Is Configured"
+        "prose": "SQL*Loader Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.17",
-      "title": "Ensure External Table Security Is Configured",
+      "title": "External Table Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4911,14 +4911,14 @@
        {
         "id": "cis_oracle-6.17_stmt",
         "name": "statement",
-        "prose": "Ensure External Table Security Is Configured"
+        "prose": "External Table Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.18",
-      "title": "Ensure UTL_FILE Security Is Configured",
+      "title": "UTL_FILE Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4944,14 +4944,14 @@
        {
         "id": "cis_oracle-6.18_stmt",
         "name": "statement",
-        "prose": "Ensure UTL_FILE Security Is Configured"
+        "prose": "UTL_FILE Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.19",
-      "title": "Ensure DBMS_SCHEDULER Security Is Configured",
+      "title": "DBMS_SCHEDULER Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -4977,14 +4977,14 @@
        {
         "id": "cis_oracle-6.19_stmt",
         "name": "statement",
-        "prose": "Ensure DBMS_SCHEDULER Security Is Configured"
+        "prose": "DBMS_SCHEDULER Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.20",
-      "title": "Ensure Advanced Queuing Security Is Configured",
+      "title": "Advanced Queuing Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5010,14 +5010,14 @@
        {
         "id": "cis_oracle-6.20_stmt",
         "name": "statement",
-        "prose": "Ensure Advanced Queuing Security Is Configured"
+        "prose": "Advanced Queuing Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.21",
-      "title": "Ensure XML Security Is Configured",
+      "title": "XML Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5043,14 +5043,14 @@
        {
         "id": "cis_oracle-6.21_stmt",
         "name": "statement",
-        "prose": "Ensure XML Security Is Configured"
+        "prose": "XML Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-6.22",
-      "title": "Ensure JSON Security Is Configured",
+      "title": "JSON Security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5076,14 +5076,14 @@
        {
         "id": "cis_oracle-6.22_stmt",
         "name": "statement",
-        "prose": "Ensure JSON Security Is Configured"
+        "prose": "JSON Security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.1",
-      "title": "Ensure Transparent Data Encryption (TDE) Is Configured",
+      "title": "Transparent Data Encryption (TDE) must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5109,14 +5109,14 @@
        {
         "id": "cis_oracle-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure Transparent Data Encryption (TDE) Is Configured"
+        "prose": "Transparent Data Encryption (TDE) must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.2",
-      "title": "Ensure TDE Wallet Security",
+      "title": "checked condition — TDE Wallet Security",
       "props": [
        {
         "name": "label",
@@ -5142,14 +5142,14 @@
        {
         "id": "cis_oracle-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure TDE Wallet Security"
+        "prose": "checked condition — TDE Wallet Security"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.3",
-      "title": "Ensure TDE Key Management",
+      "title": "checked condition — TDE Key Management",
       "props": [
        {
         "name": "label",
@@ -5175,14 +5175,14 @@
        {
         "id": "cis_oracle-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure TDE Key Management"
+        "prose": "checked condition — TDE Key Management"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.4",
-      "title": "Ensure Network Encryption Is Configured",
+      "title": "Network Encryption must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5208,14 +5208,14 @@
        {
         "id": "cis_oracle-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure Network Encryption Is Configured"
+        "prose": "Network Encryption must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.5",
-      "title": "Ensure Strong Encryption Algorithms Are Used",
+      "title": "Strong Encryption Algorithms must be Used",
       "props": [
        {
         "name": "label",
@@ -5241,14 +5241,14 @@
        {
         "id": "cis_oracle-7.5_stmt",
         "name": "statement",
-        "prose": "Ensure Strong Encryption Algorithms Are Used"
+        "prose": "Strong Encryption Algorithms must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.6",
-      "title": "Ensure Backup Encryption Is Configured",
+      "title": "Backup Encryption must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5274,14 +5274,14 @@
        {
         "id": "cis_oracle-7.6_stmt",
         "name": "statement",
-        "prose": "Ensure Backup Encryption Is Configured"
+        "prose": "Backup Encryption must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.7",
-      "title": "Ensure Data Pump Encryption Is Configured",
+      "title": "Data Pump Encryption must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5307,14 +5307,14 @@
        {
         "id": "cis_oracle-7.7_stmt",
         "name": "statement",
-        "prose": "Ensure Data Pump Encryption Is Configured"
+        "prose": "Data Pump Encryption must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.8",
-      "title": "Ensure RMAN Encryption Is Configured",
+      "title": "RMAN Encryption must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5340,14 +5340,14 @@
        {
         "id": "cis_oracle-7.8_stmt",
         "name": "statement",
-        "prose": "Ensure RMAN Encryption Is Configured"
+        "prose": "RMAN Encryption must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.9",
-      "title": "Ensure Secure External Password Store",
+      "title": "checked condition — Secure External Password Store",
       "props": [
        {
         "name": "label",
@@ -5373,14 +5373,14 @@
        {
         "id": "cis_oracle-7.9_stmt",
         "name": "statement",
-        "prose": "Ensure Secure External Password Store"
+        "prose": "checked condition — Secure External Password Store"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.10",
-      "title": "Ensure Crypto-related Init Parameters Are Set Securely",
+      "title": "Crypto-related Init Parameters must be Set Securely",
       "props": [
        {
         "name": "label",
@@ -5406,14 +5406,14 @@
        {
         "id": "cis_oracle-7.10_stmt",
         "name": "statement",
-        "prose": "Ensure Crypto-related Init Parameters Are Set Securely"
+        "prose": "Crypto-related Init Parameters must be Set Securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.11",
-      "title": "Ensure Key Rotation Policies Are Implemented",
+      "title": "Key Rotation Policies must be Implemented",
       "props": [
        {
         "name": "label",
@@ -5439,14 +5439,14 @@
        {
         "id": "cis_oracle-7.11_stmt",
         "name": "statement",
-        "prose": "Ensure Key Rotation Policies Are Implemented"
+        "prose": "Key Rotation Policies must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.12",
-      "title": "Ensure Encryption Key Backup and Recovery",
+      "title": "checked condition — Encryption Key Backup and Recovery",
       "props": [
        {
         "name": "label",
@@ -5472,14 +5472,14 @@
        {
         "id": "cis_oracle-7.12_stmt",
         "name": "statement",
-        "prose": "Ensure Encryption Key Backup and Recovery"
+        "prose": "checked condition — Encryption Key Backup and Recovery"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.13",
-      "title": "Ensure Application-Level Encryption Is Considered",
+      "title": "Application-Level Encryption must be Considered",
       "props": [
        {
         "name": "label",
@@ -5505,14 +5505,14 @@
        {
         "id": "cis_oracle-7.13_stmt",
         "name": "statement",
-        "prose": "Ensure Application-Level Encryption Is Considered"
+        "prose": "Application-Level Encryption must be Considered"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.14",
-      "title": "Ensure Encryption Compliance Requirements Are Met",
+      "title": "Encryption Compliance Requirements must be Met",
       "props": [
        {
         "name": "label",
@@ -5538,14 +5538,14 @@
        {
         "id": "cis_oracle-7.14_stmt",
         "name": "statement",
-        "prose": "Ensure Encryption Compliance Requirements Are Met"
+        "prose": "Encryption Compliance Requirements must be Met"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.15",
-      "title": "Ensure Encryption Performance Impact Is Monitored",
+      "title": "Encryption Performance Impact must be Monitored",
       "props": [
        {
         "name": "label",
@@ -5571,14 +5571,14 @@
        {
         "id": "cis_oracle-7.15_stmt",
         "name": "statement",
-        "prose": "Ensure Encryption Performance Impact Is Monitored"
+        "prose": "Encryption Performance Impact must be Monitored"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-7.16",
-      "title": "Ensure Hardware Security Module (HSM) Integration",
+      "title": "checked condition — Hardware Security Module (HSM) Integration",
       "props": [
        {
         "name": "label",
@@ -5604,14 +5604,14 @@
        {
         "id": "cis_oracle-7.16_stmt",
         "name": "statement",
-        "prose": "Ensure Hardware Security Module (HSM) Integration"
+        "prose": "checked condition — Hardware Security Module (HSM) Integration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.1",
-      "title": "Ensure Database Is Not Directly Accessible from Untrusted Networks",
+      "title": "Database must be Not Directly Accessible from Untrusted Networks",
       "props": [
        {
         "name": "label",
@@ -5637,14 +5637,14 @@
        {
         "id": "cis_oracle-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure Database Is Not Directly Accessible from Untrusted Networks"
+        "prose": "Database must be Not Directly Accessible from Untrusted Networks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.2",
-      "title": "Ensure Network Access Control Lists Are Configured",
+      "title": "Network Access Control Lists must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5670,14 +5670,14 @@
        {
         "id": "cis_oracle-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure Network Access Control Lists Are Configured"
+        "prose": "Network Access Control Lists must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.3",
-      "title": "Ensure Valid Node Checking Is Enabled",
+      "title": "Valid Node Checking must be turned on",
       "props": [
        {
         "name": "label",
@@ -5703,14 +5703,14 @@
        {
         "id": "cis_oracle-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure Valid Node Checking Is Enabled"
+        "prose": "Valid Node Checking must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.4",
-      "title": "Ensure Connection Rate Limiting Is Configured",
+      "title": "Connection Rate Limiting must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -5736,14 +5736,14 @@
        {
         "id": "cis_oracle-8.4_stmt",
         "name": "statement",
-        "prose": "Ensure Connection Rate Limiting Is Configured"
+        "prose": "Connection Rate Limiting must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.5",
-      "title": "Ensure Network Encryption Is Enabled",
+      "title": "Network Encryption must be turned on",
       "props": [
        {
         "name": "label",
@@ -5769,14 +5769,14 @@
        {
         "id": "cis_oracle-8.5_stmt",
         "name": "statement",
-        "prose": "Ensure Network Encryption Is Enabled"
+        "prose": "Network Encryption must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.6",
-      "title": "Ensure Network Data Integrity Is Enabled",
+      "title": "Network Data Integrity must be turned on",
       "props": [
        {
         "name": "label",
@@ -5802,14 +5802,14 @@
        {
         "id": "cis_oracle-8.6_stmt",
         "name": "statement",
-        "prose": "Ensure Network Data Integrity Is Enabled"
+        "prose": "Network Data Integrity must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.7",
-      "title": "Ensure Strong Authentication Is Used for Network Connections",
+      "title": "Strong Authentication must be Used for Network Connections",
       "props": [
        {
         "name": "label",
@@ -5835,14 +5835,14 @@
        {
         "id": "cis_oracle-8.7_stmt",
         "name": "statement",
-        "prose": "Ensure Strong Authentication Is Used for Network Connections"
+        "prose": "Strong Authentication must be Used for Network Connections"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.8",
-      "title": "Ensure Kerberos Authentication Is Configured Where Appropriate",
+      "title": "Kerberos Authentication must be explicitly configured Where Appropriate",
       "props": [
        {
         "name": "label",
@@ -5868,14 +5868,14 @@
        {
         "id": "cis_oracle-8.8_stmt",
         "name": "statement",
-        "prose": "Ensure Kerberos Authentication Is Configured Where Appropriate"
+        "prose": "Kerberos Authentication must be explicitly configured Where Appropriate"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.9",
-      "title": "Ensure SSL/TLS Is Configured for Database Connections",
+      "title": "SSL/TLS must be explicitly configured for Database Connections",
       "props": [
        {
         "name": "label",
@@ -5901,14 +5901,14 @@
        {
         "id": "cis_oracle-8.9_stmt",
         "name": "statement",
-        "prose": "Ensure SSL/TLS Is Configured for Database Connections"
+        "prose": "SSL/TLS must be explicitly configured for Database Connections"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle-8.10",
-      "title": "Ensure Network Monitoring and Intrusion Detection",
+      "title": "checked condition — Network Monitoring and Intrusion Detection",
       "props": [
        {
         "name": "label",
@@ -5934,7 +5934,7 @@
        {
         "id": "cis_oracle-8.10_stmt",
         "name": "statement",
-        "prose": "Ensure Network Monitoring and Intrusion Detection"
+        "prose": "checked condition — Network Monitoring and Intrusion Detection"
        }
       ],
       "class": "security"

@@ -19,7 +19,7 @@ package cis_mcp_server.server_config
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 5: Server Configuration.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,16 +30,16 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"5.1.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure tool schemas and argument types are validated"},
-	"5.1.2": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure resource templates with explicit URI patterns and MIME types are used"},
-	"5.1.3": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure prompt templates declare and validate their arguments"},
-	"5.2.1": {"section": 5, "level": "L2", "assessment": "Automated", "title": "Ensure listChanged notifications are rate-limited to prevent client flooding"},
-	"5.2.2": {"section": 5, "level": "L1", "assessment": "Manual", "title": "Ensure sessions are not used as authentication and, where present, are bound to user identity"},
-	"5.2.3": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure legacy Streamable HTTP session and stream-resumption mechanisms are disabled"},
-	"5.3.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure logs are separated from the protocol stream in stdio mode"},
-	"5.4.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "Ensure path traversal and arbitrary filesystem access are prevented"},
-	"5.5.1": {"section": 5, "level": "L2", "assessment": "Manual", "title": "Ensure authorization, scope, and expiry controls are enforced on MCP Tasks"},
-	"5.6.1": {"section": 5, "level": "L2", "assessment": "Manual", "title": "Ensure idempotency keys are required for side-effecting tool calls and duplicate side effects are prevented"},
+	"5.1.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "tool schemas and argument types must be validated"},
+	"5.1.2": {"section": 5, "level": "L1", "assessment": "Automated", "title": "resource templates with explicit URI patterns and MIME types must be used"},
+	"5.1.3": {"section": 5, "level": "L1", "assessment": "Automated", "title": "checked condition — prompt templates declare and validate their arguments"},
+	"5.2.1": {"section": 5, "level": "L2", "assessment": "Automated", "title": "listChanged notifications must be rate-limited to prevent client flooding"},
+	"5.2.2": {"section": 5, "level": "L1", "assessment": "Manual", "title": "sessions must be not used as authentication and, where present, are bound to user identity"},
+	"5.2.3": {"section": 5, "level": "L1", "assessment": "Automated", "title": "legacy Streamable HTTP session and stream-resumption mechanisms must be turned off"},
+	"5.3.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "logs must be separated from the protocol stream in stdio mode"},
+	"5.4.1": {"section": 5, "level": "L1", "assessment": "Automated", "title": "path traversal and arbitrary filesystem access must be prevented"},
+	"5.5.1": {"section": 5, "level": "L2", "assessment": "Manual", "title": "authorization, scope, and expiry controls must be enforced on MCP Tasks"},
+	"5.6.1": {"section": 5, "level": "L2", "assessment": "Manual", "title": "idempotency keys must be required for side-effecting tool calls and duplicate side effects are prevented"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

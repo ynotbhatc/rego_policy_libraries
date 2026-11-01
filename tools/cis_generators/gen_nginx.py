@@ -240,7 +240,7 @@ package cis_nginx_1_20
 
 # {BENCH}
 # The package name (cis_nginx_1_20) is kept so existing callers keep working; it no longer refers to NGINX 1.20.
-# 44 recommendations, every one in the benchmark; ids, titles, levels, profiles and assessment status read from the
+# 44 recommendations, every one in the benchmark; ids, levels, profiles and assessment status read from the
 # CIS workbook. Every recommendation in v3.1.0 is assessed "Manual" by CIS.
 # - {len(fact_manual)} of them are decided from collected configuration facts, because the audit is a directive or
 #   value comparison (the cis.oracle_26ai precedent): {", ".join(fact_manual)}.

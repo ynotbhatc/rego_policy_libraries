@@ -77,7 +77,7 @@ def scan(policy_dir: pathlib.Path, prefix: str):
     """Yield (file, line_no, control_id) for every cited id.
 
     Matches the house convention for violation messages, e.g.
-        msg := "CIS 1.1.1: Ensure Administrative accounts are cloud-only"
+        msg := "CIS 1.1.1: administrative accounts must be cloud-only"
     """
     pattern = re.compile(rf"\b{re.escape(prefix)}\s+(\d+(?:\.\d+)+)\s*:?\s*(.*)")
     for rego in sorted(policy_dir.rglob("*.rego")):

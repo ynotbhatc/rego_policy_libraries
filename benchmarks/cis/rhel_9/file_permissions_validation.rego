@@ -196,7 +196,7 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 ]
 
 # 7.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/passwd is configured
+# access to /etc/passwd must be explicitly configured
 default e_7_1_1 := false
 
 e_7_1_1 if {
@@ -213,13 +213,13 @@ p_7_1_1 if {
 
 violations contains "7.1.1: evidence missing — critical_files.analysis[/etc/passwd] not collected" if not e_7_1_1
 
-violations contains "7.1.1: not met — Ensure access to /etc/passwd is configured" if {
+violations contains "7.1.1: not met — access to /etc/passwd must be explicitly configured" if {
 	e_7_1_1
 	not p_7_1_1
 }
 
 # 7.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/passwd- is configured
+# access to /etc/passwd- must be explicitly configured
 default e_7_1_2 := false
 
 e_7_1_2 if {
@@ -236,13 +236,13 @@ p_7_1_2 if {
 
 violations contains "7.1.2: evidence missing — critical_files.analysis[/etc/passwd-] not collected" if not e_7_1_2
 
-violations contains "7.1.2: not met — Ensure access to /etc/passwd- is configured" if {
+violations contains "7.1.2: not met — access to /etc/passwd- must be explicitly configured" if {
 	e_7_1_2
 	not p_7_1_2
 }
 
 # 7.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/group is configured
+# access to /etc/group must be explicitly configured
 default e_7_1_3 := false
 
 e_7_1_3 if {
@@ -259,13 +259,13 @@ p_7_1_3 if {
 
 violations contains "7.1.3: evidence missing — critical_files.analysis[/etc/group] not collected" if not e_7_1_3
 
-violations contains "7.1.3: not met — Ensure access to /etc/group is configured" if {
+violations contains "7.1.3: not met — access to /etc/group must be explicitly configured" if {
 	e_7_1_3
 	not p_7_1_3
 }
 
 # 7.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/group- is configured
+# access to /etc/group- must be explicitly configured
 default e_7_1_4 := false
 
 e_7_1_4 if {
@@ -282,13 +282,13 @@ p_7_1_4 if {
 
 violations contains "7.1.4: evidence missing — critical_files.analysis[/etc/group-] not collected" if not e_7_1_4
 
-violations contains "7.1.4: not met — Ensure access to /etc/group- is configured" if {
+violations contains "7.1.4: not met — access to /etc/group- must be explicitly configured" if {
 	e_7_1_4
 	not p_7_1_4
 }
 
 # 7.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/shadow is configured
+# access to /etc/shadow must be explicitly configured
 default e_7_1_5 := false
 
 e_7_1_5 if {
@@ -305,13 +305,13 @@ p_7_1_5 if {
 
 violations contains "7.1.5: evidence missing — critical_files.analysis[/etc/shadow] not collected" if not e_7_1_5
 
-violations contains "7.1.5: not met — Ensure access to /etc/shadow is configured" if {
+violations contains "7.1.5: not met — access to /etc/shadow must be explicitly configured" if {
 	e_7_1_5
 	not p_7_1_5
 }
 
 # 7.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/shadow- is configured
+# access to /etc/shadow- must be explicitly configured
 default e_7_1_6 := false
 
 e_7_1_6 if {
@@ -328,13 +328,13 @@ p_7_1_6 if {
 
 violations contains "7.1.6: evidence missing — critical_files.analysis[/etc/shadow-] not collected" if not e_7_1_6
 
-violations contains "7.1.6: not met — Ensure access to /etc/shadow- is configured" if {
+violations contains "7.1.6: not met — access to /etc/shadow- must be explicitly configured" if {
 	e_7_1_6
 	not p_7_1_6
 }
 
 # 7.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/gshadow is configured
+# access to /etc/gshadow must be explicitly configured
 default e_7_1_7 := false
 
 e_7_1_7 if {
@@ -351,13 +351,13 @@ p_7_1_7 if {
 
 violations contains "7.1.7: evidence missing — critical_files.analysis[/etc/gshadow] not collected" if not e_7_1_7
 
-violations contains "7.1.7: not met — Ensure access to /etc/gshadow is configured" if {
+violations contains "7.1.7: not met — access to /etc/gshadow must be explicitly configured" if {
 	e_7_1_7
 	not p_7_1_7
 }
 
 # 7.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/gshadow- is configured
+# access to /etc/gshadow- must be explicitly configured
 default e_7_1_8 := false
 
 e_7_1_8 if {
@@ -374,13 +374,13 @@ p_7_1_8 if {
 
 violations contains "7.1.8: evidence missing — critical_files.analysis[/etc/gshadow-] not collected" if not e_7_1_8
 
-violations contains "7.1.8: not met — Ensure access to /etc/gshadow- is configured" if {
+violations contains "7.1.8: not met — access to /etc/gshadow- must be explicitly configured" if {
 	e_7_1_8
 	not p_7_1_8
 }
 
 # 7.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/shells is configured
+# access to /etc/shells must be explicitly configured
 default e_7_1_9 := false
 
 e_7_1_9 if {
@@ -397,13 +397,13 @@ p_7_1_9 if {
 
 violations contains "7.1.9: evidence missing — critical_files.analysis[/etc/shells] not collected" if not e_7_1_9
 
-violations contains "7.1.9: not met — Ensure access to /etc/shells is configured" if {
+violations contains "7.1.9: not met — access to /etc/shells must be explicitly configured" if {
 	e_7_1_9
 	not p_7_1_9
 }
 
 # 7.1.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/security/opasswd is configured
+# access to /etc/security/opasswd must be explicitly configured
 default e_7_1_10 := false
 
 e_7_1_10 if {
@@ -445,13 +445,13 @@ p_7_1_10 if {
 
 violations contains "7.1.10: evidence missing — critical_files.analysis[/etc/security/opasswd, /etc/security/opasswd.old] not collected" if not e_7_1_10
 
-violations contains "7.1.10: not met — Ensure access to /etc/security/opasswd is configured" if {
+violations contains "7.1.10: not met — access to /etc/security/opasswd must be explicitly configured" if {
 	e_7_1_10
 	not p_7_1_10
 }
 
 # 7.1.11 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure world writable files and directories are secured
+# world writable files and directories must be secured
 default e_7_1_11 := false
 
 e_7_1_11 if {
@@ -470,13 +470,13 @@ p_7_1_11 if {
 
 violations contains "7.1.11: evidence missing — world_writable.files/sticky_bit.world_writable_without_sticky not collected" if not e_7_1_11
 
-violations contains "7.1.11: not met — Ensure world writable files and directories are secured" if {
+violations contains "7.1.11: not met — world writable files and directories must be secured" if {
 	e_7_1_11
 	not p_7_1_11
 }
 
 # 7.1.12 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure no files or directories without an owner and a group exist
+# checked condition — no files or directories without an owner and a group exist
 default e_7_1_12 := false
 
 e_7_1_12 if {
@@ -495,17 +495,17 @@ p_7_1_12 if {
 
 violations contains "7.1.12: evidence missing — unowned_files.files/ungrouped_files.files not collected" if not e_7_1_12
 
-violations contains "7.1.12: not met — Ensure no files or directories without an owner and a group exist" if {
+violations contains "7.1.12: not met — checked condition — no files or directories without an owner and a group exist" if {
 	e_7_1_12
 	not p_7_1_12
 }
 
 # 7.1.13 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure SUID and SGID files are reviewed
+# SUID and SGID files must be reviewed
 default p_7_1_13 := false
 
 p_7_1_13 if {
 	input.attest.suid_sgid_files_reviewed == true
 }
 
-violations contains "7.1.13: manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (Ensure SUID and SGID files are reviewed)" if not p_7_1_13
+violations contains "7.1.13: manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (SUID and SGID files must be reviewed)" if not p_7_1_13

@@ -19,7 +19,7 @@ package cis_mcp_server.observability_audit
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 7: Observability and Audit.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,11 +30,11 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"7.1.1": {"section": 7, "level": "L1", "assessment": "Automated", "title": "Ensure lifecycle and invocation metadata is recorded"},
-	"7.1.2": {"section": 7, "level": "L1", "assessment": "Automated", "title": "Ensure non-null JSON-RPC request IDs are enforced and included in audit logs"},
-	"7.1.3": {"section": 7, "level": "L1", "assessment": "Automated", "title": "Ensure MCP audit records carry accurate, monotonic timestamps"},
-	"7.2.1": {"section": 7, "level": "L1", "assessment": "Automated", "title": "Ensure alerts are generated on audience and issuer validation failures"},
-	"7.2.2": {"section": 7, "level": "L2", "assessment": "Automated", "title": "Ensure notifications/cancelled and notifications/progress messages are monitored for behavioral anomalies"},
+	"7.1.1": {"section": 7, "level": "L1", "assessment": "Automated", "title": "lifecycle and invocation metadata must be recorded"},
+	"7.1.2": {"section": 7, "level": "L1", "assessment": "Automated", "title": "non-null JSON-RPC request IDs must be enforced and included in audit logs"},
+	"7.1.3": {"section": 7, "level": "L1", "assessment": "Automated", "title": "checked condition — MCP audit records carry accurate, monotonic timestamps"},
+	"7.2.1": {"section": 7, "level": "L1", "assessment": "Automated", "title": "alerts must be generated on audience and issuer validation failures"},
+	"7.2.2": {"section": 7, "level": "L2", "assessment": "Automated", "title": "notifications/cancelled and notifications/progress messages must be monitored for behavioral anomalies"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

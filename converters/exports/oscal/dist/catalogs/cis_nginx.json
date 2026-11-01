@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_nginx-1.1.1",
-      "title": "Ensure NGINX is installed",
+      "title": "NGINX must be present",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_nginx-1.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure NGINX is installed"
+        "prose": "NGINX must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-1.2.1",
-      "title": "Ensure package manager repositories are properly configured",
+      "title": "package manager repositories must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_nginx-1.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure package manager repositories are properly configured"
+        "prose": "package manager repositories must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-1.2.2",
-      "title": "Ensure the latest software package is installed",
+      "title": "the latest software package must be present",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_nginx-1.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the latest software package is installed"
+        "prose": "the latest software package must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.1.1",
-      "title": "Ensure only required dynamic modules are loaded",
+      "title": "only required dynamic modules must be loaded",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_nginx-2.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure only required dynamic modules are loaded"
+        "prose": "only required dynamic modules must be loaded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.2.1",
-      "title": "Ensure that NGINX is run using a non-privileged, dedicated service account",
+      "title": "NGINX must be run using a non-privileged, dedicated service account",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_nginx-2.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure that NGINX is run using a non-privileged, dedicated service account"
+        "prose": "NGINX must be run using a non-privileged, dedicated service account"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.2.2",
-      "title": "Ensure the NGINX service account is locked",
+      "title": "the NGINX service account must be locked",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_nginx-2.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the NGINX service account is locked"
+        "prose": "the NGINX service account must be locked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.2.3",
-      "title": "Ensure the NGINX service account has an invalid shell",
+      "title": "the NGINX service account must use a non-login shell",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_nginx-2.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure the NGINX service account has an invalid shell"
+        "prose": "the NGINX service account must use a non-login shell"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.3.1",
-      "title": "Ensure NGINX directories and files are owned by root",
+      "title": "NGINX directories and files must be owned by root",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_nginx-2.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure NGINX directories and files are owned by root"
+        "prose": "NGINX directories and files must be owned by root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.3.2",
-      "title": "Ensure access to NGINX directories and files is restricted",
+      "title": "access to NGINX directories and files must be restricted",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_nginx-2.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure access to NGINX directories and files is restricted"
+        "prose": "access to NGINX directories and files must be restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.3.3",
-      "title": "Ensure the NGINX process ID (PID) file is secured",
+      "title": "the NGINX process ID (PID) file must be secured",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_nginx-2.3.3_stmt",
         "name": "statement",
-        "prose": "Ensure the NGINX process ID (PID) file is secured"
+        "prose": "the NGINX process ID (PID) file must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.4.1",
-      "title": "Ensure NGINX only listens for network connections on authorized ports",
+      "title": "checked condition — NGINX only listens for network connections on authorized ports",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_nginx-2.4.1_stmt",
         "name": "statement",
-        "prose": "Ensure NGINX only listens for network connections on authorized ports"
+        "prose": "checked condition — NGINX only listens for network connections on authorized ports"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.4.2",
-      "title": "Ensure requests for unknown host names are rejected",
+      "title": "requests for unknown host names must be rejected",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_nginx-2.4.2_stmt",
         "name": "statement",
-        "prose": "Ensure requests for unknown host names are rejected"
+        "prose": "requests for unknown host names must be rejected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.4.3",
-      "title": "Ensure keepalive_timeout is 10 seconds or less, but not 0",
+      "title": "keepalive_timeout must be 10 seconds or less, but not 0",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_nginx-2.4.3_stmt",
         "name": "statement",
-        "prose": "Ensure keepalive_timeout is 10 seconds or less, but not 0"
+        "prose": "keepalive_timeout must be 10 seconds or less, but not 0"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.4.4",
-      "title": "Ensure send_timeout is set to 10 seconds or less, but not 0",
+      "title": "required value of send_timeout is 10 seconds or less, but not 0",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_nginx-2.4.4_stmt",
         "name": "statement",
-        "prose": "Ensure send_timeout is set to 10 seconds or less, but not 0"
+        "prose": "required value of send_timeout is 10 seconds or less, but not 0"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.5.1",
-      "title": "Ensure server_tokens directive is set to `off`",
+      "title": "required value of server_tokens directive is `off`",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_nginx-2.5.1_stmt",
         "name": "statement",
-        "prose": "Ensure server_tokens directive is set to `off`"
+        "prose": "required value of server_tokens directive is `off`"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.5.2",
-      "title": "Ensure default error and index.html pages do not reference NGINX",
+      "title": "checked condition — default error and index.html pages do not reference NGINX",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_nginx-2.5.2_stmt",
         "name": "statement",
-        "prose": "Ensure default error and index.html pages do not reference NGINX"
+        "prose": "checked condition — default error and index.html pages do not reference NGINX"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.5.3",
-      "title": "Ensure hidden file serving is disabled",
+      "title": "hidden file serving must be turned off",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_nginx-2.5.3_stmt",
         "name": "statement",
-        "prose": "Ensure hidden file serving is disabled"
+        "prose": "hidden file serving must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-2.5.4",
-      "title": "Ensure the NGINX reverse proxy does not enable information disclosure",
+      "title": "checked condition — the NGINX reverse proxy does not enable information disclosure",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_nginx-2.5.4_stmt",
         "name": "statement",
-        "prose": "Ensure the NGINX reverse proxy does not enable information disclosure"
+        "prose": "checked condition — the NGINX reverse proxy does not enable information disclosure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-3.1",
-      "title": "Ensure detailed logging is enabled",
+      "title": "detailed logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_nginx-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure detailed logging is enabled"
+        "prose": "detailed logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-3.2",
-      "title": "Ensure access logging is enabled",
+      "title": "access logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_nginx-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure access logging is enabled"
+        "prose": "access logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-3.3",
-      "title": "Ensure error logging is enabled and set to the info logging level",
+      "title": "error logging must be turned on and set to the info logging level",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_nginx-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure error logging is enabled and set to the info logging level"
+        "prose": "error logging must be turned on and set to the info logging level"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-3.4",
-      "title": "Ensure proxies pass source IP information",
+      "title": "checked condition — proxies pass source IP information",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_nginx-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure proxies pass source IP information"
+        "prose": "checked condition — proxies pass source IP information"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.1",
-      "title": "Ensure HTTP is redirected to HTTPS",
+      "title": "HTTP must be redirected to HTTPS",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_nginx-4.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP is redirected to HTTPS"
+        "prose": "HTTP must be redirected to HTTPS"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.10",
-      "title": "Ensure the upstream traffic server certificate is trusted",
+      "title": "the upstream traffic server certificate must be trusted",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_nginx-4.1.10_stmt",
         "name": "statement",
-        "prose": "Ensure the upstream traffic server certificate is trusted"
+        "prose": "the upstream traffic server certificate must be trusted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.11",
-      "title": "Ensure Secure Session Resumption is Enabled",
+      "title": "Secure Session Resumption must be turned on",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_nginx-4.1.11_stmt",
         "name": "statement",
-        "prose": "Ensure Secure Session Resumption is Enabled"
+        "prose": "Secure Session Resumption must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.12",
-      "title": "Ensure HTTP/3.0 is used",
+      "title": "HTTP/3.0 must be used",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_nginx-4.1.12_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP/3.0 is used"
+        "prose": "HTTP/3.0 must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.2",
-      "title": "Ensure a trusted certificate and trust chain is installed",
+      "title": "a trusted certificate and trust chain must be present",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_nginx-4.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure a trusted certificate and trust chain is installed"
+        "prose": "a trusted certificate and trust chain must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.3",
-      "title": "Ensure private key permissions are restricted",
+      "title": "private key permissions must be restricted",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_nginx-4.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure private key permissions are restricted"
+        "prose": "private key permissions must be restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.4",
-      "title": "Ensure only modern TLS protocols are used",
+      "title": "only modern TLS protocols must be used",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_nginx-4.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure only modern TLS protocols are used"
+        "prose": "only modern TLS protocols must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.5",
-      "title": "Disable weak ciphers",
+      "title": "weak ciphers must be turned off",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_nginx-4.1.5_stmt",
         "name": "statement",
-        "prose": "Disable weak ciphers"
+        "prose": "weak ciphers must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.6",
-      "title": "Ensure awareness of TLS 1.3 new Diffie-Hellman parameters",
+      "title": "checked condition — awareness of TLS 1.3 new Diffie-Hellman parameters",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_nginx-4.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure awareness of TLS 1.3 new Diffie-Hellman parameters"
+        "prose": "checked condition — awareness of TLS 1.3 new Diffie-Hellman parameters"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.7",
-      "title": "Ensure Online Certificate Status Protocol (OCSP) stapling is enabled",
+      "title": "Online Certificate Status Protocol (OCSP) stapling must be turned on",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_nginx-4.1.7_stmt",
         "name": "statement",
-        "prose": "Ensure Online Certificate Status Protocol (OCSP) stapling is enabled"
+        "prose": "Online Certificate Status Protocol (OCSP) stapling must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.8",
-      "title": "Ensure HTTP Strict Transport Security (HSTS) is enabled",
+      "title": "HTTP Strict Transport Security (HSTS) must be turned on",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_nginx-4.1.8_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP Strict Transport Security (HSTS) is enabled"
+        "prose": "HTTP Strict Transport Security (HSTS) must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-4.1.9",
-      "title": "Ensure upstream server traffic is authenticated with a client certificate",
+      "title": "upstream server traffic must be authenticated with a client certificate",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_nginx-4.1.9_stmt",
         "name": "statement",
-        "prose": "Ensure upstream server traffic is authenticated with a client certificate"
+        "prose": "upstream server traffic must be authenticated with a client certificate"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.1.1",
-      "title": "Ensure allow and deny filters limit access to specific IP addresses",
+      "title": "checked condition — allow and deny filters limit access to specific IP addresses",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_nginx-5.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure allow and deny filters limit access to specific IP addresses"
+        "prose": "checked condition — allow and deny filters limit access to specific IP addresses"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.1.2",
-      "title": "Ensure only approved HTTP methods are allowed",
+      "title": "only approved HTTP methods must be allowed",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_nginx-5.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure only approved HTTP methods are allowed"
+        "prose": "only approved HTTP methods must be allowed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.2.1",
-      "title": "Ensure timeout values for reading the client header and body are set correctly",
+      "title": "timeout values for reading the client header and body must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_nginx-5.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure timeout values for reading the client header and body are set correctly"
+        "prose": "timeout values for reading the client header and body must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.2.2",
-      "title": "Ensure the maximum request body size is set correctly",
+      "title": "the maximum request body size must match the approved value",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_nginx-5.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum request body size is set correctly"
+        "prose": "the maximum request body size must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.2.3",
-      "title": "Ensure the maximum buffer size for URIs is defined",
+      "title": "the maximum buffer size for URIs must be defined",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_nginx-5.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure the maximum buffer size for URIs is defined"
+        "prose": "the maximum buffer size for URIs must be defined"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.2.4",
-      "title": "Ensure the number of connections per IP address is limited",
+      "title": "the number of connections per IP address must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_nginx-5.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure the number of connections per IP address is limited"
+        "prose": "the number of connections per IP address must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.2.5",
-      "title": "Ensure rate limits by IP address are set",
+      "title": "rate limits by IP address must be set",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_nginx-5.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure rate limits by IP address are set"
+        "prose": "rate limits by IP address must be set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.3.1",
-      "title": "Ensure X-Content-Type-Options header is configured and enabled",
+      "title": "X-Content-Type-Options header must be explicitly configured and enabled",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_nginx-5.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure X-Content-Type-Options header is configured and enabled"
+        "prose": "X-Content-Type-Options header must be explicitly configured and enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.3.2",
-      "title": "Ensure that Content Security Policy (CSP) is enabled and configured properly",
+      "title": "Content Security Policy (CSP) must be turned on and configured properly",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_nginx-5.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure that Content Security Policy (CSP) is enabled and configured properly"
+        "prose": "Content Security Policy (CSP) must be turned on and configured properly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_nginx-5.3.3",
-      "title": "Ensure the Referrer Policy is enabled and configured properly",
+      "title": "the Referrer Policy must be turned on and configured properly",
       "props": [
        {
         "name": "label",
@@ -1512,7 +1512,7 @@
        {
         "id": "cis_nginx-5.3.3_stmt",
         "name": "statement",
-        "prose": "Ensure the Referrer Policy is enabled and configured properly"
+        "prose": "the Referrer Policy must be turned on and configured properly"
        }
       ],
       "class": "security"

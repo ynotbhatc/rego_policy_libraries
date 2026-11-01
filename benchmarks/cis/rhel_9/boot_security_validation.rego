@@ -219,7 +219,7 @@ aide_opts_ok(s) if {
 }
 
 # 1.4.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure bootloader password is set
+# bootloader password must be set
 default e_1_4_1 := false
 
 e_1_4_1 if {
@@ -236,13 +236,13 @@ p_1_4_1 if {
 
 violations contains "1.4.1: evidence missing — boot_security.grub_password_set/grub_password_hashed not collected" if not e_1_4_1
 
-violations contains "1.4.1: not met — Ensure bootloader password is set" if {
+violations contains "1.4.1: not met — bootloader password must be set" if {
 	e_1_4_1
 	not p_1_4_1
 }
 
 # 1.4.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to bootloader config is configured
+# access to bootloader config must be explicitly configured
 default e_1_4_2 := false
 
 e_1_4_2 if {
@@ -264,13 +264,13 @@ p_1_4_2 if {
 
 violations contains "1.4.2: evidence missing — boot_security.grub_cfg_mode/grub_cfg_owner/grub_cfg_group/grub_files not collected" if not e_1_4_2
 
-violations contains "1.4.2: not met — Ensure access to bootloader config is configured" if {
+violations contains "1.4.2: not met — access to bootloader config must be explicitly configured" if {
 	e_1_4_2
 	not p_1_4_2
 }
 
 # 1.4.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure authentication is required when booting into rescue mode
+# authentication must be required when booting into rescue mode
 default e_1_4_3 := false
 
 e_1_4_3 if {
@@ -294,13 +294,13 @@ p_1_4_3 if {
 
 violations contains "1.4.3: evidence missing — boot_security.rescue_auth_required (or single_user_auth_required) not collected" if not e_1_4_3
 
-violations contains "1.4.3: not met — Ensure authentication is required when booting into rescue mode" if {
+violations contains "1.4.3: not met — authentication must be required when booting into rescue mode" if {
 	e_1_4_3
 	not p_1_4_3
 }
 
 # 1.4.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure authentication is required when booting into emergency mode
+# authentication must be required when booting into emergency mode
 default e_1_4_4 := false
 
 e_1_4_4 if {
@@ -324,13 +324,13 @@ p_1_4_4 if {
 
 violations contains "1.4.4: evidence missing — boot_security.emergency_auth_required (or single_user_auth_required) not collected" if not e_1_4_4
 
-violations contains "1.4.4: not met — Ensure authentication is required when booting into emergency mode" if {
+violations contains "1.4.4: not met — authentication must be required when booting into emergency mode" if {
 	e_1_4_4
 	not p_1_4_4
 }
 
 # 1.4.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd ability to spawn an interactive boot process is disabled
+# systemd ability to spawn an interactive boot process must be turned off
 default e_1_4_5 := false
 
 e_1_4_5 if {
@@ -356,13 +356,13 @@ p_1_4_5 if {
 
 violations contains "1.4.5: evidence missing — boot_security.kernel_args (or bootloader.grub_config) not collected" if not e_1_4_5
 
-violations contains "1.4.5: not met — Ensure systemd ability to spawn an interactive boot process is disabled" if {
+violations contains "1.4.5: not met — systemd ability to spawn an interactive boot process must be turned off" if {
 	e_1_4_5
 	not p_1_4_5
 }
 
 # 1.5.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure fs.protected_hardlinks is configured
+# fs.protected_hardlinks must be explicitly configured
 default e_1_5_1 := false
 
 e_1_5_1 if {
@@ -380,13 +380,13 @@ p_1_5_1 if {
 
 violations contains "1.5.1: evidence missing — sysctl_parameters.analysis/persisted[fs.protected_hardlinks] not collected" if not e_1_5_1
 
-violations contains "1.5.1: not met — Ensure fs.protected_hardlinks is configured" if {
+violations contains "1.5.1: not met — fs.protected_hardlinks must be explicitly configured" if {
 	e_1_5_1
 	not p_1_5_1
 }
 
 # 1.5.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure fs.protected_symlinks is configured
+# fs.protected_symlinks must be explicitly configured
 default e_1_5_2 := false
 
 e_1_5_2 if {
@@ -404,13 +404,13 @@ p_1_5_2 if {
 
 violations contains "1.5.2: evidence missing — sysctl_parameters.analysis/persisted[fs.protected_symlinks] not collected" if not e_1_5_2
 
-violations contains "1.5.2: not met — Ensure fs.protected_symlinks is configured" if {
+violations contains "1.5.2: not met — fs.protected_symlinks must be explicitly configured" if {
 	e_1_5_2
 	not p_1_5_2
 }
 
 # 1.5.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure fs.suid_dumpable is configured
+# fs.suid_dumpable must be explicitly configured
 default e_1_5_3 := false
 
 e_1_5_3 if {
@@ -439,13 +439,13 @@ p_1_5_3 if {
 
 violations contains "1.5.3: evidence missing — sysctl_parameters.analysis/persisted[fs.suid_dumpable] not collected" if not e_1_5_3
 
-violations contains "1.5.3: not met — Ensure fs.suid_dumpable is configured" if {
+violations contains "1.5.3: not met — fs.suid_dumpable must be explicitly configured" if {
 	e_1_5_3
 	not p_1_5_3
 }
 
 # 1.5.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.dmesg_restrict is configured
+# kernel.dmesg_restrict must be explicitly configured
 default e_1_5_4 := false
 
 e_1_5_4 if {
@@ -474,13 +474,13 @@ p_1_5_4 if {
 
 violations contains "1.5.4: evidence missing — sysctl_parameters.analysis/persisted[kernel.dmesg_restrict] not collected" if not e_1_5_4
 
-violations contains "1.5.4: not met — Ensure kernel.dmesg_restrict is configured" if {
+violations contains "1.5.4: not met — kernel.dmesg_restrict must be explicitly configured" if {
 	e_1_5_4
 	not p_1_5_4
 }
 
 # 1.5.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.kptr_restrict is configured
+# kernel.kptr_restrict must be explicitly configured
 default e_1_5_5 := false
 
 e_1_5_5 if {
@@ -509,13 +509,13 @@ p_1_5_5 if {
 
 violations contains "1.5.5: evidence missing — sysctl_parameters.analysis/persisted[kernel.kptr_restrict] not collected" if not e_1_5_5
 
-violations contains "1.5.5: not met — Ensure kernel.kptr_restrict is configured" if {
+violations contains "1.5.5: not met — kernel.kptr_restrict must be explicitly configured" if {
 	e_1_5_5
 	not p_1_5_5
 }
 
 # 1.5.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.randomize_va_space is configured
+# kernel.randomize_va_space must be explicitly configured
 default e_1_5_6 := false
 
 e_1_5_6 if {
@@ -544,13 +544,13 @@ p_1_5_6 if {
 
 violations contains "1.5.6: evidence missing — sysctl_parameters.analysis/persisted[kernel.randomize_va_space] not collected" if not e_1_5_6
 
-violations contains "1.5.6: not met — Ensure kernel.randomize_va_space is configured" if {
+violations contains "1.5.6: not met — kernel.randomize_va_space must be explicitly configured" if {
 	e_1_5_6
 	not p_1_5_6
 }
 
 # 1.5.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure kernel.yama.ptrace_scope is configured
+# kernel.yama.ptrace_scope must be explicitly configured
 default e_1_5_7 := false
 
 e_1_5_7 if {
@@ -568,13 +568,13 @@ p_1_5_7 if {
 
 violations contains "1.5.7: evidence missing — sysctl_parameters.analysis/persisted[kernel.yama.ptrace_scope] not collected" if not e_1_5_7
 
-violations contains "1.5.7: not met — Ensure kernel.yama.ptrace_scope is configured" if {
+violations contains "1.5.7: not met — kernel.yama.ptrace_scope must be explicitly configured" if {
 	e_1_5_7
 	not p_1_5_7
 }
 
 # 1.5.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure core file size is configured
+# core file size must be explicitly configured
 default e_1_5_8 := false
 
 e_1_5_8 if {
@@ -589,13 +589,13 @@ p_1_5_8 if {
 
 violations contains "1.5.8: evidence missing — boot_security.core_dumps_disabled_limits not collected" if not e_1_5_8
 
-violations contains "1.5.8: not met — Ensure core file size is configured" if {
+violations contains "1.5.8: not met — core file size must be explicitly configured" if {
 	e_1_5_8
 	not p_1_5_8
 }
 
 # 1.5.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-coredump ProcessSizeMax is configured
+# systemd-coredump ProcessSizeMax must be explicitly configured
 default e_1_5_9 := false
 
 e_1_5_9 if {
@@ -610,13 +610,13 @@ p_1_5_9 if {
 
 violations contains "1.5.9: evidence missing — boot_security.systemd_coredump_process_size_max not collected" if not e_1_5_9
 
-violations contains "1.5.9: not met — Ensure systemd-coredump ProcessSizeMax is configured" if {
+violations contains "1.5.9: not met — systemd-coredump ProcessSizeMax must be explicitly configured" if {
 	e_1_5_9
 	not p_1_5_9
 }
 
 # 1.5.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure systemd-coredump Storage is configured
+# systemd-coredump Storage must be explicitly configured
 default e_1_5_10 := false
 
 e_1_5_10 if {
@@ -631,13 +631,13 @@ p_1_5_10 if {
 
 violations contains "1.5.10: evidence missing — boot_security.systemd_coredump_storage not collected" if not e_1_5_10
 
-violations contains "1.5.10: not met — Ensure systemd-coredump Storage is configured" if {
+violations contains "1.5.10: not met — systemd-coredump Storage must be explicitly configured" if {
 	e_1_5_10
 	not p_1_5_10
 }
 
 # 6.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AIDE is installed
+# AIDE must be present
 default e_6_3_1 := false
 
 e_6_3_1 if {
@@ -652,13 +652,13 @@ p_6_3_1 if {
 
 violations contains "6.3.1: evidence missing — boot_security.aide_installed not collected" if not e_6_3_1
 
-violations contains "6.3.1: not met — Ensure AIDE is installed" if {
+violations contains "6.3.1: not met — AIDE must be present" if {
 	e_6_3_1
 	not p_6_3_1
 }
 
 # 6.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure filesystem integrity is regularly checked
+# filesystem integrity must be regularly checked
 default e_6_3_2 := false
 
 e_6_3_2 if {
@@ -678,13 +678,13 @@ p_6_3_2 if {
 
 violations contains "6.3.2: evidence missing — boot_security.aide_cron_configured/aide_timer_configured not collected" if not e_6_3_2
 
-violations contains "6.3.2: not met — Ensure filesystem integrity is regularly checked" if {
+violations contains "6.3.2: not met — filesystem integrity must be regularly checked" if {
 	e_6_3_2
 	not p_6_3_2
 }
 
 # 6.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure cryptographic mechanisms are used to protect the integrity of audit tools
+# cryptographic mechanisms must be used to protect the integrity of audit tools
 default e_6_3_3 := false
 
 e_6_3_3 if {
@@ -699,13 +699,13 @@ p_6_3_3 if {
 
 violations contains "6.3.3: evidence missing — boot_security.aide_audit_tool_options not collected" if not e_6_3_3
 
-violations contains "6.3.3: not met — Ensure cryptographic mechanisms are used to protect the integrity of audit tools" if {
+violations contains "6.3.3: not met — cryptographic mechanisms must be used to protect the integrity of audit tools" if {
 	e_6_3_3
 	not p_6_3_3
 }
 
 # 6.3.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure report_url is configured
+# report_url must be explicitly configured
 default e_6_3_4 := false
 
 e_6_3_4 if {
@@ -721,7 +721,7 @@ p_6_3_4 if {
 
 violations contains "6.3.4: evidence missing — boot_security.aide_report_urls not collected" if not e_6_3_4
 
-violations contains "6.3.4: not met — Ensure report_url is configured" if {
+violations contains "6.3.4: not met — report_url must be explicitly configured" if {
 	e_6_3_4
 	not p_6_3_4
 }

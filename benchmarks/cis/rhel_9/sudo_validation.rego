@@ -210,7 +210,7 @@ sudo_timeouts := [num(m[1]) |
 ]
 
 # 5.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo is installed
+# sudo must be present
 default e_5_2_1 := false
 
 e_5_2_1 if {
@@ -225,13 +225,13 @@ p_5_2_1 if {
 
 violations contains "5.2.1: evidence missing — sudo.installed not collected" if not e_5_2_1
 
-violations contains "5.2.1: not met — Ensure sudo is installed" if {
+violations contains "5.2.1: not met — sudo must be present" if {
 	e_5_2_1
 	not p_5_2_1
 }
 
 # 5.2.2 (Automated; Level 1 - Server)
-# Ensure access on sudoers configuration files is configured
+# access on sudoers configuration files must be explicitly configured
 default e_5_2_2 := false
 
 e_5_2_2 if {
@@ -252,13 +252,13 @@ p_5_2_2 if {
 
 violations contains "5.2.2: evidence missing — sudo.sudoers_mode/sudoers_owner/sudoers_group/sudoers_d_files not collected" if not e_5_2_2
 
-violations contains "5.2.2: not met — Ensure access on sudoers configuration files is configured" if {
+violations contains "5.2.2: not met — access on sudoers configuration files must be explicitly configured" if {
 	e_5_2_2
 	not p_5_2_2
 }
 
 # 5.2.3 (Automated; Level 1 - Server)
-# Ensure access on the /etc/sudoers.d directory is configured
+# access on the /etc/sudoers.d directory must be explicitly configured
 default e_5_2_3 := false
 
 e_5_2_3 if {
@@ -277,13 +277,13 @@ p_5_2_3 if {
 
 violations contains "5.2.3: evidence missing — sudo.sudoers_d_dir.mode/sudo.sudoers_d_dir.owner/sudo.sudoers_d_dir.group not collected" if not e_5_2_3
 
-violations contains "5.2.3: not met — Ensure access on the /etc/sudoers.d directory is configured" if {
+violations contains "5.2.3: not met — access on the /etc/sudoers.d directory must be explicitly configured" if {
 	e_5_2_3
 	not p_5_2_3
 }
 
 # 5.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo commands use pty
+# sudo commands must allocate a pseudo-terminal
 default e_5_2_4 := false
 
 e_5_2_4 if {
@@ -299,13 +299,13 @@ p_5_2_4 if {
 
 violations contains "5.2.4: evidence missing — sudo.sudoers_content not collected" if not e_5_2_4
 
-violations contains "5.2.4: not met — Ensure sudo commands use pty" if {
+violations contains "5.2.4: not met — sudo commands must allocate a pseudo-terminal" if {
 	e_5_2_4
 	not p_5_2_4
 }
 
 # 5.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo log file exists
+# a log file for sudo must exist
 default e_5_2_5 := false
 
 e_5_2_5 if {
@@ -321,13 +321,13 @@ p_5_2_5 if {
 
 violations contains "5.2.5: evidence missing — sudo.sudoers_content/logfile_exists not collected" if not e_5_2_5
 
-violations contains "5.2.5: not met — Ensure sudo log file exists" if {
+violations contains "5.2.5: not met — a log file for sudo must exist" if {
 	e_5_2_5
 	not p_5_2_5
 }
 
 # 5.2.6 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure users must provide password for escalation
+# checked condition — users must provide password for escalation
 default e_5_2_6 := false
 
 e_5_2_6 if {
@@ -342,13 +342,13 @@ p_5_2_6 if {
 
 violations contains "5.2.6: evidence missing — sudo.sudoers_content not collected" if not e_5_2_6
 
-violations contains "5.2.6: not met — Ensure users must provide password for escalation" if {
+violations contains "5.2.6: not met — checked condition — users must provide password for escalation" if {
 	e_5_2_6
 	not p_5_2_6
 }
 
 # 5.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure re-authentication for privilege escalation is not disabled globally
+# re-authentication for privilege escalation must stay in effect globally
 default e_5_2_7 := false
 
 e_5_2_7 if {
@@ -363,13 +363,13 @@ p_5_2_7 if {
 
 violations contains "5.2.7: evidence missing — sudo.sudoers_content not collected" if not e_5_2_7
 
-violations contains "5.2.7: not met — Ensure re-authentication for privilege escalation is not disabled globally" if {
+violations contains "5.2.7: not met — re-authentication for privilege escalation must stay in effect globally" if {
 	e_5_2_7
 	not p_5_2_7
 }
 
 # 5.2.8 (Automated; Level 1 - Server)
-# Ensure sudo pwfeedback is configured
+# sudo pwfeedback must be explicitly configured
 default e_5_2_8 := false
 
 e_5_2_8 if {
@@ -384,13 +384,13 @@ p_5_2_8 if {
 
 violations contains "5.2.8: evidence missing — sudo.sudoers_content not collected" if not e_5_2_8
 
-violations contains "5.2.8: not met — Ensure sudo pwfeedback is configured" if {
+violations contains "5.2.8: not met — sudo pwfeedback must be explicitly configured" if {
 	e_5_2_8
 	not p_5_2_8
 }
 
 # 5.2.9 (Automated; Level 1 - Server)
-# Ensure sudo visiblepw is configured
+# sudo visiblepw must be explicitly configured
 default e_5_2_9 := false
 
 e_5_2_9 if {
@@ -405,13 +405,13 @@ p_5_2_9 if {
 
 violations contains "5.2.9: evidence missing — sudo.sudoers_content not collected" if not e_5_2_9
 
-violations contains "5.2.9: not met — Ensure sudo visiblepw is configured" if {
+violations contains "5.2.9: not met — sudo visiblepw must be explicitly configured" if {
 	e_5_2_9
 	not p_5_2_9
 }
 
 # 5.2.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo timestamp_timeout is configured
+# sudo timestamp_timeout must be explicitly configured
 default e_5_2_10 := false
 
 e_5_2_10 if {
@@ -426,13 +426,13 @@ p_5_2_10 if {
 
 violations contains "5.2.10: evidence missing — sudo.sudoers_content not collected" if not e_5_2_10
 
-violations contains "5.2.10: not met — Ensure sudo timestamp_timeout is configured" if {
+violations contains "5.2.10: not met — sudo timestamp_timeout must be explicitly configured" if {
 	e_5_2_10
 	not p_5_2_10
 }
 
 # 5.2.11 (Automated; Level 1 - Server)
-# Ensure sudo timestamp_type is configured
+# sudo timestamp_type must be explicitly configured
 default e_5_2_11 := false
 
 e_5_2_11 if {
@@ -447,13 +447,13 @@ p_5_2_11 if {
 
 violations contains "5.2.11: evidence missing — sudo.sudoers_content not collected" if not e_5_2_11
 
-violations contains "5.2.11: not met — Ensure sudo timestamp_type is configured" if {
+violations contains "5.2.11: not met — sudo timestamp_type must be explicitly configured" if {
 	e_5_2_11
 	not p_5_2_11
 }
 
 # 5.2.12 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to the su command is restricted
+# access to the su command must be restricted
 default e_5_2_12 := false
 
 e_5_2_12 if {
@@ -468,7 +468,7 @@ p_5_2_12 if {
 
 violations contains "5.2.12: evidence missing — sudo.su_restricted not collected" if not e_5_2_12
 
-violations contains "5.2.12: not met — Ensure access to the su command is restricted" if {
+violations contains "5.2.12: not met — access to the su command must be restricted" if {
 	e_5_2_12
 	not p_5_2_12
 }

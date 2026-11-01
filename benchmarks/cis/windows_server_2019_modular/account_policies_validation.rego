@@ -29,15 +29,15 @@ SECTION := {
 
 # One row per recommendation; lib.rego evaluates each row by its `kind`.
 controls := {
-	"1.1.1": {"msg": "CIS 1.1.1: Ensure 'Enforce password history' is set to '24 or more password(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "PasswordHistorySize", "op": "ge", "value": 24},
-	"1.1.2": {"msg": "CIS 1.1.2: Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MaximumPasswordAge", "op": "le_not0", "value": 365},
-	"1.1.3": {"msg": "CIS 1.1.3: Ensure 'Minimum password age' is set to '1 or more day(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MinimumPasswordAge", "op": "ge", "value": 1},
-	"1.1.4": {"msg": "CIS 1.1.4: Ensure 'Minimum password length' is set to '14 or more character(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MinimumPasswordLength", "op": "ge", "value": 14},
-	"1.1.5": {"msg": "CIS 1.1.5: Ensure 'Password must meet complexity requirements' is set to 'Enabled'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "PasswordComplexity", "op": "eq", "value": 1},
-	"1.1.6": {"msg": "CIS 1.1.6: Ensure 'Store passwords using reversible encryption' is set to 'Disabled'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "ClearTextPassword", "op": "eq", "value": 0},
-	"1.2.1": {"msg": "CIS 1.2.1: Ensure 'Account lockout duration' is set to '15 or more minute(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "LockoutDuration", "op": "ge_or_forever", "value": 15},
-	"1.2.2": {"msg": "CIS 1.2.2: Ensure 'Account lockout threshold' is set to '5 or fewer invalid logon attempt(s), but not 0'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "LockoutBadCount", "op": "le_not0", "value": 5},
-	"1.2.4": {"msg": "CIS 1.2.4: Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "ResetLockoutCount", "op": "ge", "value": 15},
+	"1.1.1": {"msg": "CIS 1.1.1: required value of 'Enforce password history' is '24 or more password(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "PasswordHistorySize", "op": "ge", "value": 24},
+	"1.1.2": {"msg": "CIS 1.1.2: required value of 'Maximum password age' is '365 or fewer days, but not 0'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MaximumPasswordAge", "op": "le_not0", "value": 365},
+	"1.1.3": {"msg": "CIS 1.1.3: required value of 'Minimum password age' is '1 or more day(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MinimumPasswordAge", "op": "ge", "value": 1},
+	"1.1.4": {"msg": "CIS 1.1.4: required value of 'Minimum password length' is '14 or more character(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "MinimumPasswordLength", "op": "ge", "value": 14},
+	"1.1.5": {"msg": "CIS 1.1.5: required value of 'Password must meet complexity requirements' is 'Enabled'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "PasswordComplexity", "op": "eq", "value": 1},
+	"1.1.6": {"msg": "CIS 1.1.6: required value of 'Store passwords using reversible encryption' is 'Disabled'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "ClearTextPassword", "op": "eq", "value": 0},
+	"1.2.1": {"msg": "CIS 1.2.1: required value of 'Account lockout duration' is '15 or more minute(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "LockoutDuration", "op": "ge_or_forever", "value": 15},
+	"1.2.2": {"msg": "CIS 1.2.2: required value of 'Account lockout threshold' is '5 or fewer invalid logon attempt(s), but not 0'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "LockoutBadCount", "op": "le_not0", "value": 5},
+	"1.2.4": {"msg": "CIS 1.2.4: required value of 'Reset account lockout counter after' is '15 or more minute(s)'", "profiles": ["L1_DC", "L1_MS"], "kind": "secedit", "key": "ResetLockoutCount", "op": "ge", "value": 15},
 }
 
 compliance_report := lib.section_reports.account_policies

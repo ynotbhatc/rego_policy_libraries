@@ -306,7 +306,7 @@ grub_linux_lines := [l |
 ]
 
 # 6.2.1.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure auditd packages are installed
+# auditd packages must be present
 default e_6_2_1_1 := false
 
 e_6_2_1_1 if {
@@ -323,13 +323,13 @@ p_6_2_1_1 if {
 
 violations contains "6.2.1.1: evidence missing — packages[auditd,audispd-plugins] not collected" if not e_6_2_1_1
 
-violations contains "6.2.1.1: not met — Ensure auditd packages are installed" if {
+violations contains "6.2.1.1: not met — auditd packages must be present" if {
 	e_6_2_1_1
 	not p_6_2_1_1
 }
 
 # 6.2.1.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure auditd service is enabled and active
+# auditd service must be turned on and active
 default e_6_2_1_2 := false
 
 e_6_2_1_2 if {
@@ -344,13 +344,13 @@ p_6_2_1_2 if {
 
 violations contains "6.2.1.2: evidence missing — services not collected" if not e_6_2_1_2
 
-violations contains "6.2.1.2: not met — Ensure auditd service is enabled and active" if {
+violations contains "6.2.1.2: not met — auditd service must be turned on and active" if {
 	e_6_2_1_2
 	not p_6_2_1_2
 }
 
 # 6.2.1.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure auditing for processes that start prior to auditd is enabled
+# auditing for processes that start prior to auditd must be turned on
 default e_6_2_1_3 := false
 
 e_6_2_1_3 if {
@@ -366,13 +366,13 @@ p_6_2_1_3 if {
 
 violations contains "6.2.1.3: evidence missing — boot_security.grub_cfg_linux_lines not collected" if not e_6_2_1_3
 
-violations contains "6.2.1.3: not met — Ensure auditing for processes that start prior to auditd is enabled" if {
+violations contains "6.2.1.3: not met — auditing for processes that start prior to auditd must be turned on" if {
 	e_6_2_1_3
 	not p_6_2_1_3
 }
 
 # 6.2.1.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit_backlog_limit is configured
+# audit_backlog_limit must be explicitly configured
 default e_6_2_1_4 := false
 
 e_6_2_1_4 if {
@@ -388,13 +388,13 @@ p_6_2_1_4 if {
 
 violations contains "6.2.1.4: evidence missing — boot_security.grub_cfg_linux_lines not collected" if not e_6_2_1_4
 
-violations contains "6.2.1.4: not met — Ensure audit_backlog_limit is configured" if {
+violations contains "6.2.1.4: not met — audit_backlog_limit must be explicitly configured" if {
 	e_6_2_1_4
 	not p_6_2_1_4
 }
 
 # 6.2.2.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit log storage size is configured
+# audit log storage size must be explicitly configured
 default e_6_2_2_1 := false
 
 e_6_2_2_1 if {
@@ -410,13 +410,13 @@ p_6_2_2_1 if {
 
 violations contains "6.2.2.1: evidence missing — auditd.config not collected" if not e_6_2_2_1
 
-violations contains "6.2.2.1: not met — Ensure audit log storage size is configured" if {
+violations contains "6.2.2.1: not met — audit log storage size must be explicitly configured" if {
 	e_6_2_2_1
 	not p_6_2_2_1
 }
 
 # 6.2.2.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit logs are not automatically deleted
+# audit logs must be not automatically deleted
 default e_6_2_2_2 := false
 
 e_6_2_2_2 if {
@@ -432,13 +432,13 @@ p_6_2_2_2 if {
 
 violations contains "6.2.2.2: evidence missing — auditd.config not collected" if not e_6_2_2_2
 
-violations contains "6.2.2.2: not met — Ensure audit logs are not automatically deleted" if {
+violations contains "6.2.2.2: not met — audit logs must be not automatically deleted" if {
 	e_6_2_2_2
 	not p_6_2_2_2
 }
 
 # 6.2.2.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure system is disabled when audit logs are full
+# system must be turned off when audit logs are full
 default e_6_2_2_3 := false
 
 e_6_2_2_3 if {
@@ -454,13 +454,13 @@ p_6_2_2_3 if {
 
 violations contains "6.2.2.3: evidence missing — auditd.config not collected" if not e_6_2_2_3
 
-violations contains "6.2.2.3: not met — Ensure system is disabled when audit logs are full" if {
+violations contains "6.2.2.3: not met — system must be turned off when audit logs are full" if {
 	e_6_2_2_3
 	not p_6_2_2_3
 }
 
 # 6.2.2.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure system warns when audit logs are low on space
+# system warns when audit logs must be low on space
 default e_6_2_2_4 := false
 
 e_6_2_2_4 if {
@@ -476,13 +476,13 @@ p_6_2_2_4 if {
 
 violations contains "6.2.2.4: evidence missing — auditd.config not collected" if not e_6_2_2_4
 
-violations contains "6.2.2.4: not met — Ensure system warns when audit logs are low on space" if {
+violations contains "6.2.2.4: not met — system warns when audit logs must be low on space" if {
 	e_6_2_2_4
 	not p_6_2_2_4
 }
 
 # 6.2.3.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure modification of the /etc/sudoers file is collected
+# an audit rule must record modification of the /etc/sudoers file
 default e_6_2_3_1 := false
 
 e_6_2_3_1 if {
@@ -498,13 +498,13 @@ p_6_2_3_1 if {
 
 violations contains "6.2.3.1: evidence missing — auditd.active_rules not collected" if not e_6_2_3_1
 
-violations contains "6.2.3.1: not met — Ensure modification of the /etc/sudoers file is collected" if {
+violations contains "6.2.3.1: not met — an audit rule must record modification of the /etc/sudoers file" if {
 	e_6_2_3_1
 	not p_6_2_3_1
 }
 
 # 6.2.3.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure actions as another user are always logged
+# actions as another user must be always logged
 default e_6_2_3_2 := false
 
 e_6_2_3_2 if {
@@ -519,13 +519,13 @@ p_6_2_3_2 if {
 
 violations contains "6.2.3.2: evidence missing — auditd.active_rules not collected" if not e_6_2_3_2
 
-violations contains "6.2.3.2: not met — Ensure actions as another user are always logged" if {
+violations contains "6.2.3.2: not met — actions as another user must be always logged" if {
 	e_6_2_3_2
 	not p_6_2_3_2
 }
 
 # 6.2.3.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify the sudo log file are collected
+# an audit rule must record events that modify the sudo log file
 default e_6_2_3_3 := false
 
 e_6_2_3_3 if {
@@ -542,13 +542,13 @@ p_6_2_3_3 if {
 
 violations contains "6.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" if not e_6_2_3_3
 
-violations contains "6.2.3.3: not met — Ensure events that modify the sudo log file are collected" if {
+violations contains "6.2.3.3: not met — an audit rule must record events that modify the sudo log file" if {
 	e_6_2_3_3
 	not p_6_2_3_3
 }
 
 # 6.2.3.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify date and time information are collected
+# an audit rule must record events that modify date and time information
 default e_6_2_3_4 := false
 
 e_6_2_3_4 if {
@@ -564,13 +564,13 @@ p_6_2_3_4 if {
 
 violations contains "6.2.3.4: evidence missing — auditd.active_rules not collected" if not e_6_2_3_4
 
-violations contains "6.2.3.4: not met — Ensure events that modify date and time information are collected" if {
+violations contains "6.2.3.4: not met — an audit rule must record events that modify date and time information" if {
 	e_6_2_3_4
 	not p_6_2_3_4
 }
 
 # 6.2.3.5 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify sethostname and setdomainname are collected
+# an audit rule must record events that modify sethostname and setdomainname
 default e_6_2_3_5 := false
 
 e_6_2_3_5 if {
@@ -585,13 +585,13 @@ p_6_2_3_5 if {
 
 violations contains "6.2.3.5: evidence missing — auditd.active_rules not collected" if not e_6_2_3_5
 
-violations contains "6.2.3.5: not met — Ensure events that modify sethostname and setdomainname are collected" if {
+violations contains "6.2.3.5: not met — an audit rule must record events that modify sethostname and setdomainname" if {
 	e_6_2_3_5
 	not p_6_2_3_5
 }
 
 # 6.2.3.6 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/issue and /etc/issue.net are collected
+# an audit rule must record events that modify /etc/issue and /etc/issue.net
 default e_6_2_3_6 := false
 
 e_6_2_3_6 if {
@@ -607,13 +607,13 @@ p_6_2_3_6 if {
 
 violations contains "6.2.3.6: evidence missing — auditd.active_rules not collected" if not e_6_2_3_6
 
-violations contains "6.2.3.6: not met — Ensure events that modify /etc/issue and /etc/issue.net are collected" if {
+violations contains "6.2.3.6: not met — an audit rule must record events that modify /etc/issue and /etc/issue.net" if {
 	e_6_2_3_6
 	not p_6_2_3_6
 }
 
 # 6.2.3.7 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/hosts and /etc/hostname are collected
+# an audit rule must record events that modify /etc/hosts and /etc/hostname
 default e_6_2_3_7 := false
 
 e_6_2_3_7 if {
@@ -629,13 +629,13 @@ p_6_2_3_7 if {
 
 violations contains "6.2.3.7: evidence missing — auditd.active_rules not collected" if not e_6_2_3_7
 
-violations contains "6.2.3.7: not met — Ensure events that modify /etc/hosts and /etc/hostname are collected" if {
+violations contains "6.2.3.7: not met — an audit rule must record events that modify /etc/hosts and /etc/hostname" if {
 	e_6_2_3_7
 	not p_6_2_3_7
 }
 
 # 6.2.3.8 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify the system's network environment are collected
+# an audit rule must record events that modify the system's network environment
 default e_6_2_3_8 := false
 
 e_6_2_3_8 if {
@@ -652,13 +652,13 @@ p_6_2_3_8 if {
 
 violations contains "6.2.3.8: evidence missing — auditd.active_rules not collected" if not e_6_2_3_8
 
-violations contains "6.2.3.8: not met — Ensure events that modify the system's network environment are collected" if {
+violations contains "6.2.3.8: not met — an audit rule must record events that modify the system's network environment" if {
 	e_6_2_3_8
 	not p_6_2_3_8
 }
 
 # 6.2.3.9 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/NetworkManager directory are collected
+# an audit rule must record events that modify /etc/NetworkManager directory
 default e_6_2_3_9 := false
 
 e_6_2_3_9 if {
@@ -681,13 +681,13 @@ p_6_2_3_9 if {
 
 violations contains "6.2.3.9: evidence missing — auditd.active_rules (or packages.network-manager) not collected" if not e_6_2_3_9
 
-violations contains "6.2.3.9: not met — Ensure events that modify /etc/NetworkManager directory are collected" if {
+violations contains "6.2.3.9: not met — an audit rule must record events that modify /etc/NetworkManager directory" if {
 	e_6_2_3_9
 	not p_6_2_3_9
 }
 
 # 6.2.3.10 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure use of privileged commands are collected
+# an audit rule must record use of privileged commands
 default e_6_2_3_10 := false
 
 e_6_2_3_10 if {
@@ -704,13 +704,13 @@ p_6_2_3_10 if {
 
 violations contains "6.2.3.10: evidence missing — auditd.active_rules/privileged_commands not collected" if not e_6_2_3_10
 
-violations contains "6.2.3.10: not met — Ensure use of privileged commands are collected" if {
+violations contains "6.2.3.10: not met — an audit rule must record use of privileged commands" if {
 	e_6_2_3_10
 	not p_6_2_3_10
 }
 
 # 6.2.3.11 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure unsuccessful file access attempts are collected
+# an audit rule must record unsuccessful file access attempts
 default e_6_2_3_11 := false
 
 e_6_2_3_11 if {
@@ -726,13 +726,13 @@ p_6_2_3_11 if {
 
 violations contains "6.2.3.11: evidence missing — auditd.active_rules not collected" if not e_6_2_3_11
 
-violations contains "6.2.3.11: not met — Ensure unsuccessful file access attempts are collected" if {
+violations contains "6.2.3.11: not met — an audit rule must record unsuccessful file access attempts" if {
 	e_6_2_3_11
 	not p_6_2_3_11
 }
 
 # 6.2.3.12 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/group information are collected
+# an audit rule must record events that modify /etc/group information
 default e_6_2_3_12 := false
 
 e_6_2_3_12 if {
@@ -747,13 +747,13 @@ p_6_2_3_12 if {
 
 violations contains "6.2.3.12: evidence missing — auditd.active_rules not collected" if not e_6_2_3_12
 
-violations contains "6.2.3.12: not met — Ensure events that modify /etc/group information are collected" if {
+violations contains "6.2.3.12: not met — an audit rule must record events that modify /etc/group information" if {
 	e_6_2_3_12
 	not p_6_2_3_12
 }
 
 # 6.2.3.13 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/passwd information are collected
+# an audit rule must record events that modify /etc/passwd information
 default e_6_2_3_13 := false
 
 e_6_2_3_13 if {
@@ -768,13 +768,13 @@ p_6_2_3_13 if {
 
 violations contains "6.2.3.13: evidence missing — auditd.active_rules not collected" if not e_6_2_3_13
 
-violations contains "6.2.3.13: not met — Ensure events that modify /etc/passwd information are collected" if {
+violations contains "6.2.3.13: not met — an audit rule must record events that modify /etc/passwd information" if {
 	e_6_2_3_13
 	not p_6_2_3_13
 }
 
 # 6.2.3.14 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/shadow and /etc/gshadow are collected
+# an audit rule must record events that modify /etc/shadow and /etc/gshadow
 default e_6_2_3_14 := false
 
 e_6_2_3_14 if {
@@ -790,13 +790,13 @@ p_6_2_3_14 if {
 
 violations contains "6.2.3.14: evidence missing — auditd.active_rules not collected" if not e_6_2_3_14
 
-violations contains "6.2.3.14: not met — Ensure events that modify /etc/shadow and /etc/gshadow are collected" if {
+violations contains "6.2.3.14: not met — an audit rule must record events that modify /etc/shadow and /etc/gshadow" if {
 	e_6_2_3_14
 	not p_6_2_3_14
 }
 
 # 6.2.3.15 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/security/opasswd are collected
+# an audit rule must record events that modify /etc/security/opasswd
 default e_6_2_3_15 := false
 
 e_6_2_3_15 if {
@@ -811,13 +811,13 @@ p_6_2_3_15 if {
 
 violations contains "6.2.3.15: evidence missing — auditd.active_rules not collected" if not e_6_2_3_15
 
-violations contains "6.2.3.15: not met — Ensure events that modify /etc/security/opasswd are collected" if {
+violations contains "6.2.3.15: not met — an audit rule must record events that modify /etc/security/opasswd" if {
 	e_6_2_3_15
 	not p_6_2_3_15
 }
 
 # 6.2.3.16 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/nsswitch.conf file are collected
+# an audit rule must record events that modify /etc/nsswitch.conf file
 default e_6_2_3_16 := false
 
 e_6_2_3_16 if {
@@ -832,13 +832,13 @@ p_6_2_3_16 if {
 
 violations contains "6.2.3.16: evidence missing — auditd.active_rules not collected" if not e_6_2_3_16
 
-violations contains "6.2.3.16: not met — Ensure events that modify /etc/nsswitch.conf file are collected" if {
+violations contains "6.2.3.16: not met — an audit rule must record events that modify /etc/nsswitch.conf file" if {
 	e_6_2_3_16
 	not p_6_2_3_16
 }
 
 # 6.2.3.17 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify /etc/pam.conf and /etc/pam.d/ information are collected
+# an audit rule must record events that modify /etc/pam.conf and /etc/pam.d/ information
 default e_6_2_3_17 := false
 
 e_6_2_3_17 if {
@@ -854,13 +854,13 @@ p_6_2_3_17 if {
 
 violations contains "6.2.3.17: evidence missing — auditd.active_rules not collected" if not e_6_2_3_17
 
-violations contains "6.2.3.17: not met — Ensure events that modify /etc/pam.conf and /etc/pam.d/ information are collected" if {
+violations contains "6.2.3.17: not met — an audit rule must record events that modify /etc/pam.conf and /etc/pam.d/ information" if {
 	e_6_2_3_17
 	not p_6_2_3_17
 }
 
 # 6.2.3.18 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2 are collected
+# an audit rule must record discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2
 default e_6_2_3_18 := false
 
 e_6_2_3_18 if {
@@ -875,13 +875,13 @@ p_6_2_3_18 if {
 
 violations contains "6.2.3.18: evidence missing — auditd.active_rules not collected" if not e_6_2_3_18
 
-violations contains "6.2.3.18: not met — Ensure discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2 are collected" if {
+violations contains "6.2.3.18: not met — an audit rule must record discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2" if {
 	e_6_2_3_18
 	not p_6_2_3_18
 }
 
 # 6.2.3.19 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure discretionary access control permission modification events chown,fchown,lchown,fchownat are collected
+# an audit rule must record discretionary access control permission modification events chown,fchown,lchown,fchownat
 default e_6_2_3_19 := false
 
 e_6_2_3_19 if {
@@ -896,13 +896,13 @@ p_6_2_3_19 if {
 
 violations contains "6.2.3.19: evidence missing — auditd.active_rules not collected" if not e_6_2_3_19
 
-violations contains "6.2.3.19: not met — Ensure discretionary access control permission modification events chown,fchown,lchown,fchownat are collected" if {
+violations contains "6.2.3.19: not met — an audit rule must record discretionary access control permission modification events chown,fchown,lchown,fchownat" if {
 	e_6_2_3_19
 	not p_6_2_3_19
 }
 
 # 6.2.3.20 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected
+# checked condition — discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected
 default e_6_2_3_20 := false
 
 e_6_2_3_20 if {
@@ -917,13 +917,13 @@ p_6_2_3_20 if {
 
 violations contains "6.2.3.20: evidence missing — auditd.active_rules not collected" if not e_6_2_3_20
 
-violations contains "6.2.3.20: not met — Ensure discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected" if {
+violations contains "6.2.3.20: not met — checked condition — discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected" if {
 	e_6_2_3_20
 	not p_6_2_3_20
 }
 
 # 6.2.3.21 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure successful file system mounts are collected
+# an audit rule must record successful file system mounts
 default e_6_2_3_21 := false
 
 e_6_2_3_21 if {
@@ -938,13 +938,13 @@ p_6_2_3_21 if {
 
 violations contains "6.2.3.21: evidence missing — auditd.active_rules not collected" if not e_6_2_3_21
 
-violations contains "6.2.3.21: not met — Ensure successful file system mounts are collected" if {
+violations contains "6.2.3.21: not met — an audit rule must record successful file system mounts" if {
 	e_6_2_3_21
 	not p_6_2_3_21
 }
 
 # 6.2.3.22 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure session initiation information is collected
+# an audit rule must record session initiation information
 default e_6_2_3_22 := false
 
 e_6_2_3_22 if {
@@ -961,13 +961,13 @@ p_6_2_3_22 if {
 
 violations contains "6.2.3.22: evidence missing — auditd.active_rules not collected" if not e_6_2_3_22
 
-violations contains "6.2.3.22: not met — Ensure session initiation information is collected" if {
+violations contains "6.2.3.22: not met — an audit rule must record session initiation information" if {
 	e_6_2_3_22
 	not p_6_2_3_22
 }
 
 # 6.2.3.23 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure login and logout events are collected
+# an audit rule must record login and logout events
 default e_6_2_3_23 := false
 
 e_6_2_3_23 if {
@@ -983,13 +983,13 @@ p_6_2_3_23 if {
 
 violations contains "6.2.3.23: evidence missing — auditd.active_rules not collected" if not e_6_2_3_23
 
-violations contains "6.2.3.23: not met — Ensure login and logout events are collected" if {
+violations contains "6.2.3.23: not met — an audit rule must record login and logout events" if {
 	e_6_2_3_23
 	not p_6_2_3_23
 }
 
 # 6.2.3.24 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure unlink file deletion events by users are collected
+# an audit rule must record unlink file deletion events by users
 default e_6_2_3_24 := false
 
 e_6_2_3_24 if {
@@ -1004,13 +1004,13 @@ p_6_2_3_24 if {
 
 violations contains "6.2.3.24: evidence missing — auditd.active_rules not collected" if not e_6_2_3_24
 
-violations contains "6.2.3.24: not met — Ensure unlink file deletion events by users are collected" if {
+violations contains "6.2.3.24: not met — an audit rule must record unlink file deletion events by users" if {
 	e_6_2_3_24
 	not p_6_2_3_24
 }
 
 # 6.2.3.25 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure rename file deletion events by users are collected
+# an audit rule must record rename file deletion events by users
 default e_6_2_3_25 := false
 
 e_6_2_3_25 if {
@@ -1025,13 +1025,13 @@ p_6_2_3_25 if {
 
 violations contains "6.2.3.25: evidence missing — auditd.active_rules not collected" if not e_6_2_3_25
 
-violations contains "6.2.3.25: not met — Ensure rename file deletion events by users are collected" if {
+violations contains "6.2.3.25: not met — an audit rule must record rename file deletion events by users" if {
 	e_6_2_3_25
 	not p_6_2_3_25
 }
 
 # 6.2.3.26 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure events that modify the system's Mandatory Access Controls are collected
+# an audit rule must record events that modify the system's Mandatory Access Controls
 default e_6_2_3_26 := false
 
 e_6_2_3_26 if {
@@ -1047,13 +1047,13 @@ p_6_2_3_26 if {
 
 violations contains "6.2.3.26: evidence missing — auditd.active_rules not collected" if not e_6_2_3_26
 
-violations contains "6.2.3.26: not met — Ensure events that modify the system's Mandatory Access Controls are collected" if {
+violations contains "6.2.3.26: not met — an audit rule must record events that modify the system's Mandatory Access Controls" if {
 	e_6_2_3_26
 	not p_6_2_3_26
 }
 
 # 6.2.3.27 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure successful and unsuccessful attempts to use the chcon command are collected
+# an audit rule must record successful and unsuccessful attempts to use the chcon command
 default e_6_2_3_27 := false
 
 e_6_2_3_27 if {
@@ -1068,13 +1068,13 @@ p_6_2_3_27 if {
 
 violations contains "6.2.3.27: evidence missing — auditd.active_rules not collected" if not e_6_2_3_27
 
-violations contains "6.2.3.27: not met — Ensure successful and unsuccessful attempts to use the chcon command are collected" if {
+violations contains "6.2.3.27: not met — an audit rule must record successful and unsuccessful attempts to use the chcon command" if {
 	e_6_2_3_27
 	not p_6_2_3_27
 }
 
 # 6.2.3.28 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure successful and unsuccessful attempts to use the setfacl command are collected
+# an audit rule must record successful and unsuccessful attempts to use the setfacl command
 default e_6_2_3_28 := false
 
 e_6_2_3_28 if {
@@ -1089,13 +1089,13 @@ p_6_2_3_28 if {
 
 violations contains "6.2.3.28: evidence missing — auditd.active_rules not collected" if not e_6_2_3_28
 
-violations contains "6.2.3.28: not met — Ensure successful and unsuccessful attempts to use the setfacl command are collected" if {
+violations contains "6.2.3.28: not met — an audit rule must record successful and unsuccessful attempts to use the setfacl command" if {
 	e_6_2_3_28
 	not p_6_2_3_28
 }
 
 # 6.2.3.29 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure successful and unsuccessful attempts to use the chacl command are collected
+# an audit rule must record successful and unsuccessful attempts to use the chacl command
 default e_6_2_3_29 := false
 
 e_6_2_3_29 if {
@@ -1110,13 +1110,13 @@ p_6_2_3_29 if {
 
 violations contains "6.2.3.29: evidence missing — auditd.active_rules not collected" if not e_6_2_3_29
 
-violations contains "6.2.3.29: not met — Ensure successful and unsuccessful attempts to use the chacl command are collected" if {
+violations contains "6.2.3.29: not met — an audit rule must record successful and unsuccessful attempts to use the chacl command" if {
 	e_6_2_3_29
 	not p_6_2_3_29
 }
 
 # 6.2.3.30 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure successful and unsuccessful attempts to use the usermod command are collected
+# an audit rule must record successful and unsuccessful attempts to use the usermod command
 default e_6_2_3_30 := false
 
 e_6_2_3_30 if {
@@ -1131,13 +1131,13 @@ p_6_2_3_30 if {
 
 violations contains "6.2.3.30: evidence missing — auditd.active_rules not collected" if not e_6_2_3_30
 
-violations contains "6.2.3.30: not met — Ensure successful and unsuccessful attempts to use the usermod command are collected" if {
+violations contains "6.2.3.30: not met — an audit rule must record successful and unsuccessful attempts to use the usermod command" if {
 	e_6_2_3_30
 	not p_6_2_3_30
 }
 
 # 6.2.3.31 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure kernel module loading unloading and modification is collected
+# an audit rule must record kernel module loading unloading and modification
 default e_6_2_3_31 := false
 
 e_6_2_3_31 if {
@@ -1152,13 +1152,13 @@ p_6_2_3_31 if {
 
 violations contains "6.2.3.31: evidence missing — auditd.active_rules not collected" if not e_6_2_3_31
 
-violations contains "6.2.3.31: not met — Ensure kernel module loading unloading and modification is collected" if {
+violations contains "6.2.3.31: not met — an audit rule must record kernel module loading unloading and modification" if {
 	e_6_2_3_31
 	not p_6_2_3_31
 }
 
 # 6.2.3.32 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure kernel "init_module" and "finit_module" loading unloading and modification is collected
+# an audit rule must record kernel "init_module" and "finit_module" loading unloading and modification
 default e_6_2_3_32 := false
 
 e_6_2_3_32 if {
@@ -1173,13 +1173,13 @@ p_6_2_3_32 if {
 
 violations contains "6.2.3.32: evidence missing — auditd.active_rules not collected" if not e_6_2_3_32
 
-violations contains "6.2.3.32: not met — Ensure kernel \"init_module\" and \"finit_module\" loading unloading and modification is collected" if {
+violations contains "6.2.3.32: not met — an audit rule must record kernel \"init_module\" and \"finit_module\" loading unloading and modification" if {
 	e_6_2_3_32
 	not p_6_2_3_32
 }
 
 # 6.2.3.33 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure kernel "delete_module" loading unloading and modification is collected
+# an audit rule must record kernel "delete_module" loading unloading and modification
 default e_6_2_3_33 := false
 
 e_6_2_3_33 if {
@@ -1194,13 +1194,13 @@ p_6_2_3_33 if {
 
 violations contains "6.2.3.33: evidence missing — auditd.active_rules not collected" if not e_6_2_3_33
 
-violations contains "6.2.3.33: not met — Ensure kernel \"delete_module\" loading unloading and modification is collected" if {
+violations contains "6.2.3.33: not met — an audit rule must record kernel \"delete_module\" loading unloading and modification" if {
 	e_6_2_3_33
 	not p_6_2_3_33
 }
 
 # 6.2.3.34 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure the audit configuration is loaded regardless of errors
+# the audit configuration must be loaded regardless of errors
 default e_6_2_3_34 := false
 
 e_6_2_3_34 if {
@@ -1216,13 +1216,13 @@ p_6_2_3_34 if {
 
 violations contains "6.2.3.34: evidence missing — auditd.rules not collected" if not e_6_2_3_34
 
-violations contains "6.2.3.34: not met — Ensure the audit configuration is loaded regardless of errors" if {
+violations contains "6.2.3.34: not met — the audit configuration must be loaded regardless of errors" if {
 	e_6_2_3_34
 	not p_6_2_3_34
 }
 
 # 6.2.3.35 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure the audit configuration is immutable
+# the audit configuration must be immutable
 default e_6_2_3_35 := false
 
 e_6_2_3_35 if {
@@ -1237,23 +1237,23 @@ p_6_2_3_35 if {
 
 violations contains "6.2.3.35: evidence missing — auditd.rules not collected" if not e_6_2_3_35
 
-violations contains "6.2.3.35: not met — Ensure the audit configuration is immutable" if {
+violations contains "6.2.3.35: not met — the audit configuration must be immutable" if {
 	e_6_2_3_35
 	not p_6_2_3_35
 }
 
 # 6.2.3.36 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure the running and on disk configuration is the same
+# the running and on disk configuration must be the same
 default p_6_2_3_36 := false
 
 p_6_2_3_36 if {
 	input.attest.audit_running_and_disk_rules_match == true
 }
 
-violations contains "6.2.3.36: manual review not attested — set attest.audit_running_and_disk_rules_match to true once reviewed (Ensure the running and on disk configuration is the same)" if not p_6_2_3_36
+violations contains "6.2.3.36: manual review not attested — set attest.audit_running_and_disk_rules_match to true once reviewed (the running and on disk configuration must be the same)" if not p_6_2_3_36
 
 # 6.2.4.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit log files mode is configured
+# audit log files mode must be explicitly configured
 default e_6_2_4_1 := false
 
 e_6_2_4_1 if {
@@ -1269,13 +1269,13 @@ p_6_2_4_1 if {
 
 violations contains "6.2.4.1: evidence missing — auditd.log_files not collected" if not e_6_2_4_1
 
-violations contains "6.2.4.1: not met — Ensure audit log files mode is configured" if {
+violations contains "6.2.4.1: not met — audit log files mode must be explicitly configured" if {
 	e_6_2_4_1
 	not p_6_2_4_1
 }
 
 # 6.2.4.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit log files owner is configured
+# audit log files owner must be explicitly configured
 default e_6_2_4_2 := false
 
 e_6_2_4_2 if {
@@ -1291,13 +1291,13 @@ p_6_2_4_2 if {
 
 violations contains "6.2.4.2: evidence missing — auditd.log_files not collected" if not e_6_2_4_2
 
-violations contains "6.2.4.2: not met — Ensure audit log files owner is configured" if {
+violations contains "6.2.4.2: not met — audit log files owner must be explicitly configured" if {
 	e_6_2_4_2
 	not p_6_2_4_2
 }
 
 # 6.2.4.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit log files group owner is configured
+# audit log files group owner must be explicitly configured
 default e_6_2_4_3 := false
 
 e_6_2_4_3 if {
@@ -1315,13 +1315,13 @@ p_6_2_4_3 if {
 
 violations contains "6.2.4.3: evidence missing — auditd.log_files/auditd.config not collected" if not e_6_2_4_3
 
-violations contains "6.2.4.3: not met — Ensure audit log files group owner is configured" if {
+violations contains "6.2.4.3: not met — audit log files group owner must be explicitly configured" if {
 	e_6_2_4_3
 	not p_6_2_4_3
 }
 
 # 6.2.4.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure the audit log file directory mode is configured
+# the audit log file directory mode must be explicitly configured
 default e_6_2_4_4 := false
 
 e_6_2_4_4 if {
@@ -1336,13 +1336,13 @@ p_6_2_4_4 if {
 
 violations contains "6.2.4.4: evidence missing — auditd.log_dir_permissions.mode not collected" if not e_6_2_4_4
 
-violations contains "6.2.4.4: not met — Ensure the audit log file directory mode is configured" if {
+violations contains "6.2.4.4: not met — the audit log file directory mode must be explicitly configured" if {
 	e_6_2_4_4
 	not p_6_2_4_4
 }
 
 # 6.2.4.5 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit configuration files mode is configured
+# audit configuration files mode must be explicitly configured
 default e_6_2_4_5 := false
 
 e_6_2_4_5 if {
@@ -1358,13 +1358,13 @@ p_6_2_4_5 if {
 
 violations contains "6.2.4.5: evidence missing — auditd.config_files not collected" if not e_6_2_4_5
 
-violations contains "6.2.4.5: not met — Ensure audit configuration files mode is configured" if {
+violations contains "6.2.4.5: not met — audit configuration files mode must be explicitly configured" if {
 	e_6_2_4_5
 	not p_6_2_4_5
 }
 
 # 6.2.4.6 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit configuration files owner is configured
+# audit configuration files owner must be explicitly configured
 default e_6_2_4_6 := false
 
 e_6_2_4_6 if {
@@ -1380,13 +1380,13 @@ p_6_2_4_6 if {
 
 violations contains "6.2.4.6: evidence missing — auditd.config_files not collected" if not e_6_2_4_6
 
-violations contains "6.2.4.6: not met — Ensure audit configuration files owner is configured" if {
+violations contains "6.2.4.6: not met — audit configuration files owner must be explicitly configured" if {
 	e_6_2_4_6
 	not p_6_2_4_6
 }
 
 # 6.2.4.7 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit configuration files group owner is configured
+# audit configuration files group owner must be explicitly configured
 default e_6_2_4_7 := false
 
 e_6_2_4_7 if {
@@ -1402,13 +1402,13 @@ p_6_2_4_7 if {
 
 violations contains "6.2.4.7: evidence missing — auditd.config_files not collected" if not e_6_2_4_7
 
-violations contains "6.2.4.7: not met — Ensure audit configuration files group owner is configured" if {
+violations contains "6.2.4.7: not met — audit configuration files group owner must be explicitly configured" if {
 	e_6_2_4_7
 	not p_6_2_4_7
 }
 
 # 6.2.4.8 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit tools mode is configured
+# audit tools mode must be explicitly configured
 default e_6_2_4_8 := false
 
 e_6_2_4_8 if {
@@ -1424,13 +1424,13 @@ p_6_2_4_8 if {
 
 violations contains "6.2.4.8: evidence missing — auditd.tools not collected" if not e_6_2_4_8
 
-violations contains "6.2.4.8: not met — Ensure audit tools mode is configured" if {
+violations contains "6.2.4.8: not met — audit tools mode must be explicitly configured" if {
 	e_6_2_4_8
 	not p_6_2_4_8
 }
 
 # 6.2.4.9 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit tools owner is configured
+# audit tools owner must be explicitly configured
 default e_6_2_4_9 := false
 
 e_6_2_4_9 if {
@@ -1446,13 +1446,13 @@ p_6_2_4_9 if {
 
 violations contains "6.2.4.9: evidence missing — auditd.tools not collected" if not e_6_2_4_9
 
-violations contains "6.2.4.9: not met — Ensure audit tools owner is configured" if {
+violations contains "6.2.4.9: not met — audit tools owner must be explicitly configured" if {
 	e_6_2_4_9
 	not p_6_2_4_9
 }
 
 # 6.2.4.10 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure audit tools group owner is configured
+# audit tools group owner must be explicitly configured
 default e_6_2_4_10 := false
 
 e_6_2_4_10 if {
@@ -1468,7 +1468,7 @@ p_6_2_4_10 if {
 
 violations contains "6.2.4.10: evidence missing — auditd.tools not collected" if not e_6_2_4_10
 
-violations contains "6.2.4.10: not met — Ensure audit tools group owner is configured" if {
+violations contains "6.2.4.10: not met — audit tools group owner must be explicitly configured" if {
 	e_6_2_4_10
 	not p_6_2_4_10
 }

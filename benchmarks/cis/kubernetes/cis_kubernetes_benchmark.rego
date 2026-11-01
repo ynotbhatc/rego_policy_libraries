@@ -41,7 +41,7 @@ violations := [v |
 
 # Section 1: Control Plane Security Configuration
 control_plane_violations := [
-    "1.1.1: Ensure that the API server pod specification file permissions are set to 644 or more restrictive" |
+    "1.1.1: the API server pod specification file permissions must be set to 644 or more restrictive" |
     input.control_plane.api_server_pod_spec_permissions > 644
 ]
 
@@ -124,7 +124,7 @@ weak_cipher(cipher) if {
 
 # Section 2: etcd
 etcd_violations := [
-    "2.1: Ensure that the --cert-file and --key-file arguments are set as appropriate" |
+    "2.1: the --cert-file and --key-file arguments must be set as appropriate" |
     not input.etcd.cert_file
     not input.etcd.key_file
 ]
@@ -146,7 +146,7 @@ control_plane_config_violations := [
 
 # Section 4: Worker Nodes
 worker_nodes_violations := [
-    "4.1.1: Ensure that the kubelet service file permissions are set to 644 or more restrictive" |
+    "4.1.1: the kubelet service file permissions must be set to 644 or more restrictive" |
     node := input.worker_nodes[_]
     node.kubelet_service_permissions > 644
 ]
@@ -176,7 +176,7 @@ worker_nodes_violations := [
 
 # Section 5: Policies
 policies_violations := [
-    "5.1.1: Ensure that the cluster-admin role is only used where required" |
+    "5.1.1: the cluster-admin role must be only used where required" |
     binding := input.cluster_role_bindings[_]
     binding.role_ref.name == "cluster-admin"
     subject := binding.subjects[_]

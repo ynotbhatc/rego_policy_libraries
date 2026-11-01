@@ -21,14 +21,14 @@ import rego.v1
 # CIS Amazon Web Services Foundations Benchmark
 # Section 1: Identity and Access Management
 
-# CIS 1.1 - Ensure IAM policies are attached only to groups or roles
+# CIS 1.1 - IAM policies must be attached only to groups or roles
 default iam_policies_not_attached_to_users := false
 
 iam_policies_not_attached_to_users if {
     count(input.iam_user_attached_policies) == 0
 }
 
-# CIS 1.2 - Ensure MFA is enabled for all IAM users that have a console password
+# CIS 1.2 - MFA must be turned on for all IAM users that have a console password
 default mfa_enabled_for_console_users := false
 
 mfa_enabled_for_console_users if {
@@ -36,7 +36,7 @@ mfa_enabled_for_console_users if {
     count([name | some name, user in input.iam_users; user.console_access == true; user.mfa_enabled != true]) == 0
 }
 
-# CIS 1.3 - Ensure credentials unused for 90 days or greater are disabled
+# CIS 1.3 - credentials unused for 90 days or greater must be turned off
 default old_credentials_disabled := false
 
 old_credentials_disabled if {
@@ -50,7 +50,7 @@ days_since_last_used(last_used) := days if {
     days := (now - last_used_ns) / (24 * 60 * 60 * 1000000000)
 }
 
-# CIS 1.4 - Ensure access keys are rotated every 90 days or less
+# CIS 1.4 - access keys must be rotated every 90 days or less
 default access_keys_rotated := false
 
 access_keys_rotated if {
@@ -63,70 +63,70 @@ days_since_created(created_date) := days if {
     days := (now - created_ns) / (24 * 60 * 60 * 1000000000)
 }
 
-# CIS 1.5 - Ensure IAM password policy requires minimum length of 14 or greater
+# CIS 1.5 - checked condition — IAM password policy requires minimum length of 14 or greater
 default password_policy_min_length := false
 
 password_policy_min_length if {
     input.iam_password_policy.minimum_password_length >= 14
 }
 
-# CIS 1.6 - Ensure IAM password policy prevents password reuse
+# CIS 1.6 - checked condition — IAM password policy prevents password reuse
 default password_policy_prevents_reuse := false
 
 password_policy_prevents_reuse if {
     input.iam_password_policy.password_reuse_prevention >= 24
 }
 
-# CIS 1.7 - Ensure IAM password policy requires at least one uppercase letter
+# CIS 1.7 - checked condition — IAM password policy requires at least one uppercase letter
 default password_policy_uppercase := false
 
 password_policy_uppercase if {
     input.iam_password_policy.require_uppercase_characters == true
 }
 
-# CIS 1.8 - Ensure IAM password policy requires at least one lowercase letter
+# CIS 1.8 - checked condition — IAM password policy requires at least one lowercase letter
 default password_policy_lowercase := false
 
 password_policy_lowercase if {
     input.iam_password_policy.require_lowercase_characters == true
 }
 
-# CIS 1.9 - Ensure IAM password policy requires at least one symbol
+# CIS 1.9 - checked condition — IAM password policy requires at least one symbol
 default password_policy_symbols := false
 
 password_policy_symbols if {
     input.iam_password_policy.require_symbols == true
 }
 
-# CIS 1.10 - Ensure IAM password policy requires at least one number
+# CIS 1.10 - checked condition — IAM password policy requires at least one number
 default password_policy_numbers := false
 
 password_policy_numbers if {
     input.iam_password_policy.require_numbers == true
 }
 
-# CIS 1.11 - Ensure IAM password policy expires passwords within 90 days or less
+# CIS 1.11 - checked condition — IAM password policy expires passwords within 90 days or less
 default password_policy_max_age := false
 
 password_policy_max_age if {
     input.iam_password_policy.max_password_age <= 90
 }
 
-# CIS 1.12 - Ensure no root account access key exists
+# CIS 1.12 - checked condition — no root account access key exists
 default no_root_access_keys := false
 
 no_root_access_keys if {
     count(input.root_access_keys) == 0
 }
 
-# CIS 1.13 - Ensure MFA is enabled for the root account
+# CIS 1.13 - MFA must be turned on for the root account
 default root_mfa_enabled := false
 
 root_mfa_enabled if {
     input.root_account.mfa_enabled == true
 }
 
-# CIS 1.14 - Ensure hardware MFA is enabled for the root account
+# CIS 1.14 - hardware MFA must be turned on for the root account
 default root_hardware_mfa_enabled := false
 
 root_hardware_mfa_enabled if {

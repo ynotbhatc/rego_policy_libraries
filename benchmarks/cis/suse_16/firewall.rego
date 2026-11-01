@@ -204,7 +204,7 @@ zone_target_ok(z) if {
 }
 
 # 4.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld is installed
+# firewalld must be present
 default e_4_1_1 := false
 
 e_4_1_1 if {
@@ -219,13 +219,13 @@ p_4_1_1 if {
 
 violations contains "4.1.1: evidence missing — packages.firewalld not collected" if not e_4_1_1
 
-violations contains "4.1.1: not met — Ensure firewalld is installed" if {
+violations contains "4.1.1: not met — firewalld must be present" if {
 	e_4_1_1
 	not p_4_1_1
 }
 
 # 4.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld backend is configured
+# firewalld backend must be explicitly configured
 default e_4_1_2 := false
 
 e_4_1_2 if {
@@ -240,13 +240,13 @@ p_4_1_2 if {
 
 violations contains "4.1.2: evidence missing — firewalld.backend not collected" if not e_4_1_2
 
-violations contains "4.1.2: not met — Ensure firewalld backend is configured" if {
+violations contains "4.1.2: not met — firewalld backend must be explicitly configured" if {
 	e_4_1_2
 	not p_4_1_2
 }
 
 # 4.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld.service is configured
+# firewalld.service must be explicitly configured
 default e_4_1_3 := false
 
 e_4_1_3 if {
@@ -261,13 +261,13 @@ p_4_1_3 if {
 
 violations contains "4.1.3: evidence missing — services not collected" if not e_4_1_3
 
-violations contains "4.1.3: not met — Ensure firewalld.service is configured" if {
+violations contains "4.1.3: not met — firewalld.service must be explicitly configured" if {
 	e_4_1_3
 	not p_4_1_3
 }
 
 # 4.1.4 (Automated; Level 2 - Server)
-# Ensure firewalld active zone target is configured
+# firewalld active zone target must be explicitly configured
 default e_4_1_4 := false
 
 e_4_1_4 if {
@@ -283,47 +283,47 @@ p_4_1_4 if {
 
 violations contains "4.1.4: evidence missing — firewalld.zones not collected" if not e_4_1_4
 
-violations contains "4.1.4: not met — Ensure firewalld active zone target is configured" if {
+violations contains "4.1.4: not met — firewalld active zone target must be explicitly configured" if {
 	e_4_1_4
 	not p_4_1_4
 }
 
 # 4.1.5 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld loopback traffic is configured
+# firewalld loopback traffic must be explicitly configured
 default p_4_1_5 := false
 
 p_4_1_5 if {
 	input.attest.firewalld_loopback_traffic_configured == true
 }
 
-violations contains "4.1.5: manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (Ensure firewalld loopback traffic is configured)" if not p_4_1_5
+violations contains "4.1.5: manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (firewalld loopback traffic must be explicitly configured)" if not p_4_1_5
 
 # 4.1.6 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld loopback source address traffic is configured
+# firewalld loopback source address traffic must be explicitly configured
 default p_4_1_6 := false
 
 p_4_1_6 if {
 	input.attest.firewalld_loopback_source_traffic_configured == true
 }
 
-violations contains "4.1.6: manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (Ensure firewalld loopback source address traffic is configured)" if not p_4_1_6
+violations contains "4.1.6: manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (firewalld loopback source address traffic must be explicitly configured)" if not p_4_1_6
 
 # 4.1.7 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld services and ports are configured
+# firewalld services and ports must be explicitly configured
 default p_4_1_7 := false
 
 p_4_1_7 if {
 	input.attest.firewalld_services_ports_reviewed == true
 }
 
-violations contains "4.1.7: manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (Ensure firewalld services and ports are configured)" if not p_4_1_7
+violations contains "4.1.7: manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (firewalld services and ports must be explicitly configured)" if not p_4_1_7
 
 # 4.1.8 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Configure firewall to drop all traffic
+# firewall to drop all traffic must be set to the approved value
 default p_4_1_8 := false
 
 p_4_1_8 if {
 	input.attest.firewall_default_drop_configured == true
 }
 
-violations contains "4.1.8: manual review not attested — set attest.firewall_default_drop_configured to true once reviewed (Configure firewall to drop all traffic)" if not p_4_1_8
+violations contains "4.1.8: manual review not attested — set attest.firewall_default_drop_configured to true once reviewed (firewall to drop all traffic must be set to the approved value)" if not p_4_1_8

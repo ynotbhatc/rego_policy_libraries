@@ -21,7 +21,7 @@ import rego.v1
 # Official CIS Controls v8.1 safeguards for Control 9:
 # Email and Web Browser Protections. Official IDs, titles, and IG levels.
 safeguards := {
-	"9.1": {"ig": 1, "title": "Ensure Use of Only Fully Supported Browsers and Email Clients"},
+	"9.1": {"ig": 1, "title": "Browsers and email clients must be fully supported products"},
 	"9.2": {"ig": 1, "title": "Use DNS Filtering Services"},
 	"9.3": {"ig": 2, "title": "Maintain and Enforce Network-Based URL Filters"},
 	"9.4": {"ig": 2, "title": "Restrict Unnecessary or Unauthorized Browser and Email Client Extensions"},

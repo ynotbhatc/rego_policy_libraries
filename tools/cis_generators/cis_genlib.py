@@ -2,6 +2,8 @@
 import json
 import re
 
+from neutralize import neutralize_title
+
 ATT = "(manual review not attested)"
 
 
@@ -41,7 +43,7 @@ def emit_control(c, wb, setname, applies=None):
     """c: {id, kind: fact|attest, ok: [[lines]...], ev: [lines], label, attest}"""
     cid = c["id"]
     w = wb[cid]
-    t = w["title"]
+    t = neutralize_title(w["title"])
     uu = u(cid)
     tag = f"# {cid} ({w['assessment']}, " + "; ".join(w["profiles"]) + ")"
     if w["assessment"] == "Manual" and c["kind"] == "fact":
@@ -69,7 +71,7 @@ def emit_tests(pkg, controls, wb, green, attest_path):
     for c in controls:
         cid = c["id"]
         uu = u(cid)
-        t = wb[cid]["title"]
+        t = neutralize_title(wb[cid]["title"])
         out.append(f"test_{uu}_pass if {{\n\tvs := b.violations with input as green\n\tnot _has_id(vs, \"{cid}\")\n}}\n")
         if c["kind"] == "attest":
             fail = [{"op": "replace", "path": f"{attest_path}/{c['attest']}", "value": False}]
@@ -89,7 +91,7 @@ def table(controls, wb, extra=None):
     t = {}
     for c in controls:
         w = wb[c["id"]]
-        e = {"title": w["title"], "level": w["level"], "assessment": w["assessment"], "profiles": w["profiles"],
+        e = {"title": neutralize_title(w["title"]), "level": w["level"], "assessment": w["assessment"], "profiles": w["profiles"],
              "check": "attestation" if c["kind"] == "attest" else "configuration"}
         if extra:
             e.update(extra(c, w))

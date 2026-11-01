@@ -22,7 +22,7 @@ import rego.v1
 # Inventory and Control of Software Assets.
 safeguards := {
 	"2.1": {"ig": 1, "title": "Establish and Maintain a Software Inventory"},
-	"2.2": {"ig": 1, "title": "Ensure Authorized Software is Currently Supported"},
+	"2.2": {"ig": 1, "title": "Authorized software must be a supported release"},
 	"2.3": {"ig": 1, "title": "Address Unauthorized Software"},
 	"2.4": {"ig": 2, "title": "Utilize Automated Software Inventory Tools"},
 	"2.5": {"ig": 2, "title": "Allowlist Authorized Software"},

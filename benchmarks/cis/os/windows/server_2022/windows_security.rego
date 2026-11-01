@@ -27,14 +27,14 @@ as_set(v) := {x | some x in v} if is_array(v)
 
 as_set(v) := {trim_space(x) | some x in split(v, ","); trim_space(x) != ""} if is_string(v)
 
-# CIS 1.1.1 - Ensure 'Enforce password history' is set to '24 or more password(s)'
+# CIS 1.1.1 - required value of 'Enforce password history' is '24 or more password(s)'
 default password_history_enforced := false
 
 password_history_enforced if {
     input.security_policy.password_history >= 24
 }
 
-# CIS 1.1.2 - Ensure 'Maximum password age' is set to '365 or fewer days, but not 0'
+# CIS 1.1.2 - required value of 'Maximum password age' is '365 or fewer days, but not 0'
 default password_max_age := false
 
 password_max_age if {
@@ -42,42 +42,42 @@ password_max_age if {
     input.security_policy.password_max_age > 0
 }
 
-# CIS 1.1.3 - Ensure 'Minimum password age' is set to '1 or more day(s)'
+# CIS 1.1.3 - required value of 'Minimum password age' is '1 or more day(s)'
 default password_min_age := false
 
 password_min_age if {
     input.security_policy.password_min_age >= 1
 }
 
-# CIS 1.1.4 - Ensure 'Minimum password length' is set to '14 or more character(s)'
+# CIS 1.1.4 - required value of 'Minimum password length' is '14 or more character(s)'
 default password_min_length := false
 
 password_min_length if {
     input.security_policy.password_min_length >= 14
 }
 
-# CIS 1.1.5 - Ensure 'Password must meet complexity requirements' is set to 'Enabled'
+# CIS 1.1.5 - required value of 'Password must meet complexity requirements' is 'Enabled'
 default password_complexity_enabled := false
 
 password_complexity_enabled if {
     input.security_policy.password_complexity == true
 }
 
-# CIS 1.1.6 - Ensure 'Store passwords using reversible encryption' is set to 'Disabled'
+# CIS 1.1.6 - required value of 'Store passwords using reversible encryption' is 'Disabled'
 default reversible_encryption_disabled := false
 
 reversible_encryption_disabled if {
     input.security_policy.reversible_encryption == false
 }
 
-# CIS 1.2.1 - Ensure 'Account lockout duration' is set to '15 or more minute(s)'
+# CIS 1.2.1 - required value of 'Account lockout duration' is '15 or more minute(s)'
 default account_lockout_duration := false
 
 account_lockout_duration if {
     input.security_policy.account_lockout_duration >= 15
 }
 
-# CIS 1.2.2 - Ensure 'Account lockout threshold' is set to '5 or fewer invalid logon attempt(s), but not 0'
+# CIS 1.2.2 - required value of 'Account lockout threshold' is '5 or fewer invalid logon attempt(s), but not 0'
 default account_lockout_threshold := false
 
 account_lockout_threshold if {
@@ -85,35 +85,35 @@ account_lockout_threshold if {
     input.security_policy.account_lockout_threshold > 0
 }
 
-# CIS 1.2.3 - Ensure 'Reset account lockout counter after' is set to '15 or more minute(s)'
+# CIS 1.2.3 - required value of 'Reset account lockout counter after' is '15 or more minute(s)'
 default lockout_counter_reset := false
 
 lockout_counter_reset if {
     input.security_policy.lockout_counter_reset >= 15
 }
 
-# CIS 2.2.1 - Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'
+# CIS 2.2.1 - required value of 'Access Credential Manager as a trusted caller' is 'No One'
 default access_credential_manager_restricted := false
 
 access_credential_manager_restricted if {
     count(input.user_rights.access_credential_manager) == 0
 }
 
-# CIS 2.2.2 - Ensure 'Access this computer from the network' is set to 'Administrators, Authenticated Users'
+# CIS 2.2.2 - required value of 'Access this computer from the network' is 'Administrators, Authenticated Users'
 default network_access_restricted := false
 
 network_access_restricted if {
     input.user_rights.network_access == ["Administrators", "Authenticated Users"]
 }
 
-# CIS 2.2.3 - Ensure 'Act as part of the operating system' is set to 'No One'
+# CIS 2.2.3 - required value of 'Act as part of the operating system' is 'No One'
 default act_as_os_restricted := false
 
 act_as_os_restricted if {
     count(input.user_rights.act_as_os) == 0
 }
 
-# CIS 2.2.4 - Ensure 'Adjust memory quotas for a process' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
+# CIS 2.2.4 - required value of 'Adjust memory quotas for a process' is 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
 default adjust_memory_quotas_restricted := false
 
 adjust_memory_quotas_restricted if {
@@ -121,28 +121,28 @@ adjust_memory_quotas_restricted if {
     input.user_rights.adjust_memory_quotas == expected
 }
 
-# CIS 2.2.5 - Ensure 'Allow log on locally' is set to 'Administrators'
+# CIS 2.2.5 - required value of 'Allow log on locally' is 'Administrators'
 default local_logon_restricted := false
 
 local_logon_restricted if {
     input.user_rights.local_logon == ["Administrators"]
 }
 
-# CIS 2.2.6 - Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators'
+# CIS 2.2.6 - required value of 'Allow log on through Remote Desktop Services' is 'Administrators'
 default rdp_logon_restricted := false
 
 rdp_logon_restricted if {
     input.user_rights.rdp_logon == ["Administrators"]
 }
 
-# CIS 2.2.7 - Ensure 'Back up files and directories' is set to 'Administrators'
+# CIS 2.2.7 - required value of 'Back up files and directories' is 'Administrators'
 default backup_privilege_restricted := false
 
 backup_privilege_restricted if {
     input.user_rights.backup_privilege == ["Administrators"]
 }
 
-# CIS 2.2.8 - Ensure 'Change the system time' is set to 'Administrators, LOCAL SERVICE'
+# CIS 2.2.8 - required value of 'Change the system time' is 'Administrators, LOCAL SERVICE'
 default change_system_time_restricted := false
 
 change_system_time_restricted if {
@@ -150,7 +150,7 @@ change_system_time_restricted if {
     input.user_rights.change_system_time == expected
 }
 
-# CIS 2.2.9 - Ensure 'Change the time zone' is set to 'Administrators, LOCAL SERVICE'
+# CIS 2.2.9 - required value of 'Change the time zone' is 'Administrators, LOCAL SERVICE'
 default change_time_zone_restricted := false
 
 change_time_zone_restricted if {
@@ -158,21 +158,21 @@ change_time_zone_restricted if {
     input.user_rights.change_time_zone == expected
 }
 
-# CIS 2.2.10 - Ensure 'Create a pagefile' is set to 'Administrators'
+# CIS 2.2.10 - required value of 'Create a pagefile' is 'Administrators'
 default create_pagefile_restricted := false
 
 create_pagefile_restricted if {
     input.user_rights.create_pagefile == ["Administrators"]
 }
 
-# CIS 2.2.11 - Ensure 'Create a token object' is set to 'No One'
+# CIS 2.2.11 - required value of 'Create a token object' is 'No One'
 default create_token_restricted := false
 
 create_token_restricted if {
     count(input.user_rights.create_token) == 0
 }
 
-# CIS 2.2.12 - Ensure 'Create global objects' is set to 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
+# CIS 2.2.12 - required value of 'Create global objects' is 'Administrators, LOCAL SERVICE, NETWORK SERVICE, SERVICE'
 default create_global_objects_restricted := false
 
 create_global_objects_restricted if {
@@ -180,91 +180,91 @@ create_global_objects_restricted if {
     input.user_rights.create_global_objects == expected
 }
 
-# CIS 2.2.13 - Ensure 'Create permanent shared objects' is set to 'No One'
+# CIS 2.2.13 - required value of 'Create permanent shared objects' is 'No One'
 default create_permanent_objects_restricted := false
 
 create_permanent_objects_restricted if {
     count(input.user_rights.create_permanent_objects) == 0
 }
 
-# CIS 2.2.14 - Ensure 'Create symbolic links' is set to 'Administrators'
+# CIS 2.2.14 - required value of 'Create symbolic links' is 'Administrators'
 default create_symbolic_links_restricted := false
 
 create_symbolic_links_restricted if {
     input.user_rights.create_symbolic_links == ["Administrators"]
 }
 
-# CIS 2.2.15 - Ensure 'Debug programs' is set to 'Administrators'
+# CIS 2.2.15 - required value of 'Debug programs' is 'Administrators'
 default debug_programs_restricted := false
 
 debug_programs_restricted if {
     input.user_rights.debug_programs == ["Administrators"]
 }
 
-# CIS 2.2.16 - Ensure 'Deny access to this computer from the network' includes 'Guests'
+# CIS 2.2.16 - required entries for 'Deny access to this computer from the network' include 'Guests'
 default deny_network_access_includes_guests := false
 
 deny_network_access_includes_guests if {
     "Guests" in as_set(input.user_rights.deny_network_access)
 }
 
-# CIS 2.2.17 - Ensure 'Deny log on as a batch job' includes 'Guests'
+# CIS 2.2.17 - required entries for 'Deny log on as a batch job' include 'Guests'
 default deny_batch_logon_includes_guests := false
 
 deny_batch_logon_includes_guests if {
     "Guests" in as_set(input.user_rights.deny_batch_logon)
 }
 
-# CIS 2.2.18 - Ensure 'Deny log on as a service' includes 'Guests'
+# CIS 2.2.18 - required entries for 'Deny log on as a service' include 'Guests'
 default deny_service_logon_includes_guests := false
 
 deny_service_logon_includes_guests if {
     "Guests" in as_set(input.user_rights.deny_service_logon)
 }
 
-# CIS 2.2.19 - Ensure 'Deny log on locally' includes 'Guests'
+# CIS 2.2.19 - required entries for 'Deny log on locally' include 'Guests'
 default deny_local_logon_includes_guests := false
 
 deny_local_logon_includes_guests if {
     "Guests" in as_set(input.user_rights.deny_local_logon)
 }
 
-# CIS 2.2.20 - Ensure 'Deny log on through Remote Desktop Services' includes 'Guests'
+# CIS 2.2.20 - required entries for 'Deny log on through Remote Desktop Services' include 'Guests'
 default deny_rdp_logon_includes_guests := false
 
 deny_rdp_logon_includes_guests if {
     "Guests" in as_set(input.user_rights.deny_rdp_logon)
 }
 
-# CIS 2.3.1.1 - Ensure 'Accounts: Administrator account status' is set to 'Disabled'
+# CIS 2.3.1.1 - required value of 'Accounts: Administrator account status' is 'Disabled'
 default administrator_account_disabled := false
 
 administrator_account_disabled if {
     input.security_options.administrator_account_status == "Disabled"
 }
 
-# CIS 2.3.1.2 - Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts'
+# CIS 2.3.1.2 - required value of 'Accounts: Block Microsoft accounts' is 'Users can't add or log on with Microsoft accounts'
 default block_microsoft_accounts := false
 
 block_microsoft_accounts if {
     input.security_options.block_microsoft_accounts == "Users can't add or log on with Microsoft accounts"
 }
 
-# CIS 2.3.1.3 - Ensure 'Accounts: Guest account status' is set to 'Disabled'
+# CIS 2.3.1.3 - required value of 'Accounts: Guest account status' is 'Disabled'
 default guest_account_disabled := false
 
 guest_account_disabled if {
     input.security_options.guest_account_status == "Disabled"
 }
 
-# CIS 2.3.1.4 - Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
+# CIS 2.3.1.4 - required value of 'Accounts: Limit local account use of blank passwords to console logon only' is 'Enabled'
 default limit_blank_passwords := false
 
 limit_blank_passwords if {
     input.security_options.limit_blank_passwords == "Enabled"
 }
 
-# CIS 2.3.1.5 - Ensure 'Accounts: Rename administrator account' is configured
+# CIS 2.3.1.5 - 'Accounts: Rename administrator account' must be explicitly configured
 default rename_administrator_account := false
 
 rename_administrator_account if {
@@ -272,7 +272,7 @@ rename_administrator_account if {
     input.security_options.administrator_account_name != ""
 }
 
-# CIS 2.3.1.6 - Ensure 'Accounts: Rename guest account' is configured
+# CIS 2.3.1.6 - 'Accounts: Rename guest account' must be explicitly configured
 default rename_guest_account := false
 
 rename_guest_account if {
@@ -280,63 +280,63 @@ rename_guest_account if {
     input.security_options.guest_account_name != ""
 }
 
-# CIS 2.3.2.1 - Ensure 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is set to 'Enabled'
+# CIS 2.3.2.1 - required value of 'Audit: Force audit policy subcategory settings (Windows Vista or later) to override audit policy category settings' is 'Enabled'
 default force_audit_policy_subcategory := false
 
 force_audit_policy_subcategory if {
     input.security_options.force_audit_policy_subcategory == "Enabled"
 }
 
-# CIS 2.3.2.2 - Ensure 'Audit: Shut down system immediately if unable to log security audits' is set to 'Disabled'
+# CIS 2.3.2.2 - required value of 'Audit: Shut down system immediately if unable to log security audits' is 'Disabled'
 default shutdown_on_audit_failure := false
 
 shutdown_on_audit_failure if {
     input.security_options.shutdown_on_audit_failure == "Disabled"
 }
 
-# CIS 2.3.4.1 - Ensure 'Devices: Allowed to format and eject removable media' is set to 'Administrators'
+# CIS 2.3.4.1 - required value of 'Devices: Allowed to format and eject removable media' is 'Administrators'
 default format_removable_media_restricted := false
 
 format_removable_media_restricted if {
     input.security_options.format_removable_media == "Administrators"
 }
 
-# CIS 2.3.4.2 - Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
+# CIS 2.3.4.2 - required value of 'Devices: Prevent users from installing printer drivers' is 'Enabled'
 default prevent_printer_driver_install := false
 
 prevent_printer_driver_install if {
     input.security_options.prevent_printer_driver_install == "Enabled"
 }
 
-# CIS 2.3.6.1 - Ensure 'Domain member: Digitally encrypt or sign secure channel data (always)' is set to 'Enabled'
+# CIS 2.3.6.1 - required value of 'Domain member: Digitally encrypt or sign secure channel data (always)' is 'Enabled'
 default encrypt_secure_channel := false
 
 encrypt_secure_channel if {
     input.security_options.encrypt_secure_channel == "Enabled"
 }
 
-# CIS 2.3.6.2 - Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled'
+# CIS 2.3.6.2 - required value of 'Domain member: Digitally encrypt secure channel data (when possible)' is 'Enabled'
 default encrypt_secure_channel_when_possible := false
 
 encrypt_secure_channel_when_possible if {
     input.security_options.encrypt_secure_channel_when_possible == "Enabled"
 }
 
-# CIS 2.3.6.3 - Ensure 'Domain member: Digitally sign secure channel data (when possible)' is set to 'Enabled'
+# CIS 2.3.6.3 - required value of 'Domain member: Digitally sign secure channel data (when possible)' is 'Enabled'
 default sign_secure_channel_when_possible := false
 
 sign_secure_channel_when_possible if {
     input.security_options.sign_secure_channel_when_possible == "Enabled"
 }
 
-# CIS 2.3.6.4 - Ensure 'Domain member: Disable machine account password changes' is set to 'Disabled'
+# CIS 2.3.6.4 - required value of 'Domain member: Disable machine account password changes' is 'Disabled'
 default disable_machine_password_changes := false
 
 disable_machine_password_changes if {
     input.security_options.disable_machine_password_changes == "Disabled"
 }
 
-# CIS 2.3.6.5 - Ensure 'Domain member: Maximum machine account password age' is set to '30 or fewer days, but not 0'
+# CIS 2.3.6.5 - required value of 'Domain member: Maximum machine account password age' is '30 or fewer days, but not 0'
 default machine_password_max_age := false
 
 machine_password_max_age if {
@@ -344,7 +344,7 @@ machine_password_max_age if {
     input.security_options.machine_password_max_age > 0
 }
 
-# CIS 2.3.6.6 - Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled'
+# CIS 2.3.6.6 - required value of 'Domain member: Require strong (Windows 2000 or later) session key' is 'Enabled'
 default require_strong_session_key := false
 
 require_strong_session_key if {

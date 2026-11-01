@@ -21,13 +21,13 @@ import rego.v1
 # Official CIS Controls v8.1 safeguards for Control 12:
 # Network Infrastructure Management.
 safeguards := {
-	"12.1": {"ig": 1, "title": "Ensure Network Infrastructure is Up-to-Date"},
+	"12.1": {"ig": 1, "title": "Network infrastructure must be kept current"},
 	"12.2": {"ig": 2, "title": "Establish and Maintain a Secure Network Architecture"},
 	"12.3": {"ig": 2, "title": "Securely Manage Network Infrastructure"},
 	"12.4": {"ig": 2, "title": "Establish and Maintain Architecture Diagram(s)"},
 	"12.5": {"ig": 2, "title": "Centralize Network Authentication, Authorization, and Auditing (AAA)"},
 	"12.6": {"ig": 2, "title": "Use of Secure Network Management and Communication Protocols"},
-	"12.7": {"ig": 2, "title": "Ensure Remote Devices Utilize a VPN and are Connecting to an Enterprise's AAA Infrastructure"},
+	"12.7": {"ig": 2, "title": "Remote devices must use a VPN into enterprise authentication"},
 	"12.8": {"ig": 3, "title": "Establish and Maintain Dedicated Computing Resources for All Administrative Work"},
 }
 

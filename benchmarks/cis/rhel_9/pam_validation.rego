@@ -275,7 +275,7 @@ umask_ok(u) if {
 }
 
 # 5.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure latest version of pam is installed
+# latest version of pam must be present
 default e_5_3_1_1 := false
 
 e_5_3_1_1 if {
@@ -290,13 +290,13 @@ p_5_3_1_1 if {
 
 violations contains "5.3.1.1: evidence missing — pam.package_versions[pam] not collected" if not e_5_3_1_1
 
-violations contains "5.3.1.1: not met — Ensure latest version of pam is installed" if {
+violations contains "5.3.1.1: not met — latest version of pam must be present" if {
 	e_5_3_1_1
 	not p_5_3_1_1
 }
 
 # 5.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure latest version of authselect is installed
+# latest version of authselect must be present
 default e_5_3_1_2 := false
 
 e_5_3_1_2 if {
@@ -311,13 +311,13 @@ p_5_3_1_2 if {
 
 violations contains "5.3.1.2: evidence missing — pam.package_versions[authselect] not collected" if not e_5_3_1_2
 
-violations contains "5.3.1.2: not met — Ensure latest version of authselect is installed" if {
+violations contains "5.3.1.2: not met — latest version of authselect must be present" if {
 	e_5_3_1_2
 	not p_5_3_1_2
 }
 
 # 5.3.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure latest version of libpwquality is installed
+# latest version of libpwquality must be present
 default e_5_3_1_3 := false
 
 e_5_3_1_3 if {
@@ -332,13 +332,13 @@ p_5_3_1_3 if {
 
 violations contains "5.3.1.3: evidence missing — pam.package_versions[libpwquality] not collected" if not e_5_3_1_3
 
-violations contains "5.3.1.3: not met — Ensure latest version of libpwquality is installed" if {
+violations contains "5.3.1.3: not met — latest version of libpwquality must be present" if {
 	e_5_3_1_3
 	not p_5_3_1_3
 }
 
 # 5.3.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure PAM is managed by an active authselect profile
+# PAM must be managed by an active authselect profile
 default e_5_3_2_1 := false
 
 e_5_3_2_1 if {
@@ -355,13 +355,13 @@ p_5_3_2_1 if {
 
 violations contains "5.3.2.1: evidence missing — pam.authselect_profile/authselect_check_valid not collected" if not e_5_3_2_1
 
-violations contains "5.3.2.1: not met — Ensure PAM is managed by an active authselect profile" if {
+violations contains "5.3.2.1: not met — PAM must be managed by an active authselect profile" if {
 	e_5_3_2_1
 	not p_5_3_2_1
 }
 
 # 5.3.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_faillock module is enabled
+# pam_faillock module must be turned on
 default e_5_3_2_2 := false
 
 e_5_3_2_2 if {
@@ -377,13 +377,13 @@ p_5_3_2_2 if {
 
 violations contains "5.3.2.2: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_2_2
 
-violations contains "5.3.2.2: not met — Ensure pam_faillock module is enabled" if {
+violations contains "5.3.2.2: not met — pam_faillock module must be turned on" if {
 	e_5_3_2_2
 	not p_5_3_2_2
 }
 
 # 5.3.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_pwquality module is enabled
+# pam_pwquality module must be turned on
 default e_5_3_2_3 := false
 
 e_5_3_2_3 if {
@@ -399,13 +399,13 @@ p_5_3_2_3 if {
 
 violations contains "5.3.2.3: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_2_3
 
-violations contains "5.3.2.3: not met — Ensure pam_pwquality module is enabled" if {
+violations contains "5.3.2.3: not met — pam_pwquality module must be turned on" if {
 	e_5_3_2_3
 	not p_5_3_2_3
 }
 
 # 5.3.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_pwhistory module is enabled
+# pam_pwhistory module must be turned on
 default e_5_3_2_4 := false
 
 e_5_3_2_4 if {
@@ -421,13 +421,13 @@ p_5_3_2_4 if {
 
 violations contains "5.3.2.4: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_2_4
 
-violations contains "5.3.2.4: not met — Ensure pam_pwhistory module is enabled" if {
+violations contains "5.3.2.4: not met — pam_pwhistory module must be turned on" if {
 	e_5_3_2_4
 	not p_5_3_2_4
 }
 
 # 5.3.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_unix module is enabled
+# pam_unix module must be turned on
 default e_5_3_2_5 := false
 
 e_5_3_2_5 if {
@@ -443,13 +443,13 @@ p_5_3_2_5 if {
 
 violations contains "5.3.2.5: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_2_5
 
-violations contains "5.3.2.5: not met — Ensure pam_unix module is enabled" if {
+violations contains "5.3.2.5: not met — pam_unix module must be turned on" if {
 	e_5_3_2_5
 	not p_5_3_2_5
 }
 
 # 5.3.3.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password failed attempts lockout is configured
+# password failed attempts lockout must be explicitly configured
 default e_5_3_3_1_1 := false
 
 e_5_3_3_1_1 if {
@@ -469,13 +469,13 @@ p_5_3_3_1_1 if {
 
 violations contains "5.3.3.1.1: evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_1_1
 
-violations contains "5.3.3.1.1: not met — Ensure password failed attempts lockout is configured" if {
+violations contains "5.3.3.1.1: not met — password failed attempts lockout must be explicitly configured" if {
 	e_5_3_3_1_1
 	not p_5_3_3_1_1
 }
 
 # 5.3.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password unlock time is configured
+# password unlock time must be explicitly configured
 default e_5_3_3_1_2 := false
 
 e_5_3_3_1_2 if {
@@ -493,13 +493,13 @@ p_5_3_3_1_2 if {
 
 violations contains "5.3.3.1.2: evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_1_2
 
-violations contains "5.3.3.1.2: not met — Ensure password unlock time is configured" if {
+violations contains "5.3.3.1.2: not met — password unlock time must be explicitly configured" if {
 	e_5_3_3_1_2
 	not p_5_3_3_1_2
 }
 
 # 5.3.3.1.3 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure password failed attempts lockout includes root account
+# checked condition — password failed attempts lockout includes root account
 default e_5_3_3_1_3 := false
 
 e_5_3_3_1_3 if {
@@ -518,13 +518,13 @@ p_5_3_3_1_3 if {
 
 violations contains "5.3.3.1.3: evidence missing — pam.faillock_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_1_3
 
-violations contains "5.3.3.1.3: not met — Ensure password failed attempts lockout includes root account" if {
+violations contains "5.3.3.1.3: not met — checked condition — password failed attempts lockout includes root account" if {
 	e_5_3_3_1_3
 	not p_5_3_3_1_3
 }
 
 # 5.3.3.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password number of changed characters is configured
+# password number of changed characters must be explicitly configured
 default e_5_3_3_2_1 := false
 
 e_5_3_3_2_1 if {
@@ -543,13 +543,13 @@ p_5_3_3_2_1 if {
 
 violations contains "5.3.3.2.1: evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_2_1
 
-violations contains "5.3.3.2.1: not met — Ensure password number of changed characters is configured" if {
+violations contains "5.3.3.2.1: not met — password number of changed characters must be explicitly configured" if {
 	e_5_3_3_2_1
 	not p_5_3_3_2_1
 }
 
 # 5.3.3.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password length is configured
+# password length must be explicitly configured
 default e_5_3_3_2_2 := false
 
 e_5_3_3_2_2 if {
@@ -568,23 +568,23 @@ p_5_3_3_2_2 if {
 
 violations contains "5.3.3.2.2: evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_2_2
 
-violations contains "5.3.3.2.2: not met — Ensure password length is configured" if {
+violations contains "5.3.3.2.2: not met — password length must be explicitly configured" if {
 	e_5_3_3_2_2
 	not p_5_3_3_2_2
 }
 
 # 5.3.3.2.3 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure password complexity is configured
+# password complexity must be explicitly configured
 default p_5_3_3_2_3 := false
 
 p_5_3_3_2_3 if {
 	input.attest.password_complexity_reviewed == true
 }
 
-violations contains "5.3.3.2.3: manual review not attested — set attest.password_complexity_reviewed to true once reviewed (Ensure password complexity is configured)" if not p_5_3_3_2_3
+violations contains "5.3.3.2.3: manual review not attested — set attest.password_complexity_reviewed to true once reviewed (password complexity must be explicitly configured)" if not p_5_3_3_2_3
 
 # 5.3.3.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password same consecutive characters is configured
+# password same consecutive characters must be explicitly configured
 default e_5_3_3_2_4 := false
 
 e_5_3_3_2_4 if {
@@ -604,13 +604,13 @@ p_5_3_3_2_4 if {
 
 violations contains "5.3.3.2.4: evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_2_4
 
-violations contains "5.3.3.2.4: not met — Ensure password same consecutive characters is configured" if {
+violations contains "5.3.3.2.4: not met — password same consecutive characters must be explicitly configured" if {
 	e_5_3_3_2_4
 	not p_5_3_3_2_4
 }
 
 # 5.3.3.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password maximum sequential characters is configured
+# password maximum sequential characters must be explicitly configured
 default e_5_3_3_2_5 := false
 
 e_5_3_3_2_5 if {
@@ -630,13 +630,13 @@ p_5_3_3_2_5 if {
 
 violations contains "5.3.3.2.5: evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_2_5
 
-violations contains "5.3.3.2.5: not met — Ensure password maximum sequential characters is configured" if {
+violations contains "5.3.3.2.5: not met — password maximum sequential characters must be explicitly configured" if {
 	e_5_3_3_2_5
 	not p_5_3_3_2_5
 }
 
 # 5.3.3.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password dictionary check is enabled
+# password dictionary check must be turned on
 default e_5_3_3_2_6 := false
 
 e_5_3_3_2_6 if {
@@ -655,13 +655,13 @@ p_5_3_3_2_6 if {
 
 violations contains "5.3.3.2.6: evidence missing — pam.pwquality_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_2_6
 
-violations contains "5.3.3.2.6: not met — Ensure password dictionary check is enabled" if {
+violations contains "5.3.3.2.6: not met — password dictionary check must be turned on" if {
 	e_5_3_3_2_6
 	not p_5_3_3_2_6
 }
 
 # 5.3.3.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password quality is enforced for the root user
+# password quality must be enforced for the root user
 default e_5_3_3_2_7 := false
 
 e_5_3_3_2_7 if {
@@ -676,13 +676,13 @@ p_5_3_3_2_7 if {
 
 violations contains "5.3.3.2.7: evidence missing — pam.pwquality_conf_raw not collected" if not e_5_3_3_2_7
 
-violations contains "5.3.3.2.7: not met — Ensure password quality is enforced for the root user" if {
+violations contains "5.3.3.2.7: not met — password quality must be enforced for the root user" if {
 	e_5_3_3_2_7
 	not p_5_3_3_2_7
 }
 
 # 5.3.3.3.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password history remember is configured
+# password history remember must be explicitly configured
 default e_5_3_3_3_1 := false
 
 e_5_3_3_3_1 if {
@@ -701,13 +701,13 @@ p_5_3_3_3_1 if {
 
 violations contains "5.3.3.3.1: evidence missing — pam.pwhistory_conf_raw/pam.system_auth/password_auth not collected" if not e_5_3_3_3_1
 
-violations contains "5.3.3.3.1: not met — Ensure password history remember is configured" if {
+violations contains "5.3.3.3.1: not met — password history remember must be explicitly configured" if {
 	e_5_3_3_3_1
 	not p_5_3_3_3_1
 }
 
 # 5.3.3.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password history is enforced for the root user
+# password history must be enforced for the root user
 default e_5_3_3_3_2 := false
 
 e_5_3_3_3_2 if {
@@ -722,13 +722,13 @@ p_5_3_3_3_2 if {
 
 violations contains "5.3.3.3.2: evidence missing — pam.pwhistory_conf_raw not collected" if not e_5_3_3_3_2
 
-violations contains "5.3.3.3.2: not met — Ensure password history is enforced for the root user" if {
+violations contains "5.3.3.3.2: not met — password history must be enforced for the root user" if {
 	e_5_3_3_3_2
 	not p_5_3_3_3_2
 }
 
 # 5.3.3.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_pwhistory includes use_authtok
+# checked condition — pam_pwhistory includes use_authtok
 default e_5_3_3_3_3 := false
 
 e_5_3_3_3_3 if {
@@ -744,13 +744,13 @@ p_5_3_3_3_3 if {
 
 violations contains "5.3.3.3.3: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_3_3
 
-violations contains "5.3.3.3.3: not met — Ensure pam_pwhistory includes use_authtok" if {
+violations contains "5.3.3.3.3: not met — checked condition — pam_pwhistory includes use_authtok" if {
 	e_5_3_3_3_3
 	not p_5_3_3_3_3
 }
 
 # 5.3.3.4.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_unix does not include nullok
+# checked condition — pam_unix does not include nullok
 default e_5_3_3_4_1 := false
 
 e_5_3_3_4_1 if {
@@ -766,13 +766,13 @@ p_5_3_3_4_1 if {
 
 violations contains "5.3.3.4.1: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_1
 
-violations contains "5.3.3.4.1: not met — Ensure pam_unix does not include nullok" if {
+violations contains "5.3.3.4.1: not met — checked condition — pam_unix does not include nullok" if {
 	e_5_3_3_4_1
 	not p_5_3_3_4_1
 }
 
 # 5.3.3.4.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_unix does not include remember
+# checked condition — pam_unix does not include remember
 default e_5_3_3_4_2 := false
 
 e_5_3_3_4_2 if {
@@ -788,13 +788,13 @@ p_5_3_3_4_2 if {
 
 violations contains "5.3.3.4.2: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_2
 
-violations contains "5.3.3.4.2: not met — Ensure pam_unix does not include remember" if {
+violations contains "5.3.3.4.2: not met — checked condition — pam_unix does not include remember" if {
 	e_5_3_3_4_2
 	not p_5_3_3_4_2
 }
 
 # 5.3.3.4.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_unix includes a strong password hashing algorithm
+# checked condition — pam_unix includes a strong password hashing algorithm
 default e_5_3_3_4_3 := false
 
 e_5_3_3_4_3 if {
@@ -810,13 +810,13 @@ p_5_3_3_4_3 if {
 
 violations contains "5.3.3.4.3: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_3
 
-violations contains "5.3.3.4.3: not met — Ensure pam_unix includes a strong password hashing algorithm" if {
+violations contains "5.3.3.4.3: not met — checked condition — pam_unix includes a strong password hashing algorithm" if {
 	e_5_3_3_4_3
 	not p_5_3_3_4_3
 }
 
 # 5.3.3.4.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure pam_unix includes use_authtok
+# checked condition — pam_unix includes use_authtok
 default e_5_3_3_4_4 := false
 
 e_5_3_3_4_4 if {
@@ -832,13 +832,13 @@ p_5_3_3_4_4 if {
 
 violations contains "5.3.3.4.4: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_4
 
-violations contains "5.3.3.4.4: not met — Ensure pam_unix includes use_authtok" if {
+violations contains "5.3.3.4.4: not met — checked condition — pam_unix includes use_authtok" if {
 	e_5_3_3_4_4
 	not p_5_3_3_4_4
 }
 
 # 5.4.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password expiration is configured
+# password expiration must be explicitly configured
 default e_5_4_1_1 := false
 
 e_5_4_1_1 if {
@@ -858,23 +858,23 @@ p_5_4_1_1 if {
 
 violations contains "5.4.1.1: evidence missing — pam.pass_max_days/user_group.shadow_entries not collected" if not e_5_4_1_1
 
-violations contains "5.4.1.1: not met — Ensure password expiration is configured" if {
+violations contains "5.4.1.1: not met — password expiration must be explicitly configured" if {
 	e_5_4_1_1
 	not p_5_4_1_1
 }
 
 # 5.4.1.2 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure minimum password days is configured
+# minimum password days must be explicitly configured
 default p_5_4_1_2 := false
 
 p_5_4_1_2 if {
 	input.attest.minimum_password_days_reviewed == true
 }
 
-violations contains "5.4.1.2: manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (Ensure minimum password days is configured)" if not p_5_4_1_2
+violations contains "5.4.1.2: manual review not attested — set attest.minimum_password_days_reviewed to true once reviewed (minimum password days must be explicitly configured)" if not p_5_4_1_2
 
 # 5.4.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure password expiration warning days is configured
+# password expiration warning days must be explicitly configured
 default e_5_4_1_3 := false
 
 e_5_4_1_3 if {
@@ -893,13 +893,13 @@ p_5_4_1_3 if {
 
 violations contains "5.4.1.3: evidence missing — pam.pass_warn_age/user_group.shadow_entries not collected" if not e_5_4_1_3
 
-violations contains "5.4.1.3: not met — Ensure password expiration warning days is configured" if {
+violations contains "5.4.1.3: not met — password expiration warning days must be explicitly configured" if {
 	e_5_4_1_3
 	not p_5_4_1_3
 }
 
 # 5.4.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure strong password hashing algorithm is configured
+# strong password hashing algorithm must be explicitly configured
 default e_5_4_1_4 := false
 
 e_5_4_1_4 if {
@@ -914,13 +914,13 @@ p_5_4_1_4 if {
 
 violations contains "5.4.1.4: evidence missing — pam.encrypt_method not collected" if not e_5_4_1_4
 
-violations contains "5.4.1.4: not met — Ensure strong password hashing algorithm is configured" if {
+violations contains "5.4.1.4: not met — strong password hashing algorithm must be explicitly configured" if {
 	e_5_4_1_4
 	not p_5_4_1_4
 }
 
 # 5.4.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure inactive password lock is configured
+# inactive password lock must be explicitly configured
 default e_5_4_1_5 := false
 
 e_5_4_1_5 if {
@@ -940,13 +940,13 @@ p_5_4_1_5 if {
 
 violations contains "5.4.1.5: evidence missing — pam.inactive_days/user_group.shadow_entries not collected" if not e_5_4_1_5
 
-violations contains "5.4.1.5: not met — Ensure inactive password lock is configured" if {
+violations contains "5.4.1.5: not met — inactive password lock must be explicitly configured" if {
 	e_5_4_1_5
 	not p_5_4_1_5
 }
 
 # 5.4.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure all users last password change date is in the past
+# all users last password change date must be in the past
 default e_5_4_1_6 := false
 
 e_5_4_1_6 if {
@@ -962,13 +962,13 @@ p_5_4_1_6 if {
 
 violations contains "5.4.1.6: evidence missing — user_group.shadow_entries not collected" if not e_5_4_1_6
 
-violations contains "5.4.1.6: not met — Ensure all users last password change date is in the past" if {
+violations contains "5.4.1.6: not met — all users last password change date must be in the past" if {
 	e_5_4_1_6
 	not p_5_4_1_6
 }
 
 # 5.4.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure root is the only UID 0 account
+# uid 0 must belong only to root
 default e_5_4_2_1 := false
 
 e_5_4_2_1 if {
@@ -984,13 +984,13 @@ p_5_4_2_1 if {
 
 violations contains "5.4.2.1: evidence missing — user_group.uid_zero_accounts not collected" if not e_5_4_2_1
 
-violations contains "5.4.2.1: not met — Ensure root is the only UID 0 account" if {
+violations contains "5.4.2.1: not met — uid 0 must belong only to root" if {
 	e_5_4_2_1
 	not p_5_4_2_1
 }
 
 # 5.4.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure root is the only GID 0 account
+# root must be the only GID 0 account
 default e_5_4_2_2 := false
 
 e_5_4_2_2 if {
@@ -1006,13 +1006,13 @@ p_5_4_2_2 if {
 
 violations contains "5.4.2.2: evidence missing — user_group.gid_zero_accounts not collected" if not e_5_4_2_2
 
-violations contains "5.4.2.2: not met — Ensure root is the only GID 0 account" if {
+violations contains "5.4.2.2: not met — root must be the only GID 0 account" if {
 	e_5_4_2_2
 	not p_5_4_2_2
 }
 
 # 5.4.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure group root is the only GID 0 group
+# group root must be the only GID 0 group
 default e_5_4_2_3 := false
 
 e_5_4_2_3 if {
@@ -1028,13 +1028,13 @@ p_5_4_2_3 if {
 
 violations contains "5.4.2.3: evidence missing — user_group.gid_zero_groups not collected" if not e_5_4_2_3
 
-violations contains "5.4.2.3: not met — Ensure group root is the only GID 0 group" if {
+violations contains "5.4.2.3: not met — group root must be the only GID 0 group" if {
 	e_5_4_2_3
 	not p_5_4_2_3
 }
 
 # 5.4.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure root account access is controlled
+# root account access must be controlled
 default e_5_4_2_4 := false
 
 e_5_4_2_4 if {
@@ -1049,13 +1049,13 @@ p_5_4_2_4 if {
 
 violations contains "5.4.2.4: evidence missing — user_group.root_password_status not collected" if not e_5_4_2_4
 
-violations contains "5.4.2.4: not met — Ensure root account access is controlled" if {
+violations contains "5.4.2.4: not met — root account access must be controlled" if {
 	e_5_4_2_4
 	not p_5_4_2_4
 }
 
 # 5.4.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure root path integrity
+# checked condition — root path integrity
 default e_5_4_2_5 := false
 
 e_5_4_2_5 if {
@@ -1077,13 +1077,13 @@ p_5_4_2_5 if {
 
 violations contains "5.4.2.5: evidence missing — user_group.root_path/root_path_nonexistent_dirs/root_path_writable_dirs/root_path_entries not collected" if not e_5_4_2_5
 
-violations contains "5.4.2.5: not met — Ensure root path integrity" if {
+violations contains "5.4.2.5: not met — checked condition — root path integrity" if {
 	e_5_4_2_5
 	not p_5_4_2_5
 }
 
 # 5.4.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure root user umask is configured
+# root user umask must be explicitly configured
 default e_5_4_2_6 := false
 
 e_5_4_2_6 if {
@@ -1098,13 +1098,13 @@ p_5_4_2_6 if {
 
 violations contains "5.4.2.6: evidence missing — user_group.root_umask not collected" if not e_5_4_2_6
 
-violations contains "5.4.2.6: not met — Ensure root user umask is configured" if {
+violations contains "5.4.2.6: not met — root user umask must be explicitly configured" if {
 	e_5_4_2_6
 	not p_5_4_2_6
 }
 
 # 5.4.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure system accounts do not have a valid login shell
+# system accounts do not must have a valid login shell
 default e_5_4_2_7 := false
 
 e_5_4_2_7 if {
@@ -1119,13 +1119,13 @@ p_5_4_2_7 if {
 
 violations contains "5.4.2.7: evidence missing — pam.system_accounts_with_login_shell not collected" if not e_5_4_2_7
 
-violations contains "5.4.2.7: not met — Ensure system accounts do not have a valid login shell" if {
+violations contains "5.4.2.7: not met — system accounts do not must have a valid login shell" if {
 	e_5_4_2_7
 	not p_5_4_2_7
 }
 
 # 5.4.2.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure accounts without a valid login shell are locked
+# accounts without a valid login shell must be locked
 default e_5_4_2_8 := false
 
 e_5_4_2_8 if {
@@ -1140,13 +1140,13 @@ p_5_4_2_8 if {
 
 violations contains "5.4.2.8: evidence missing — user_group.unlocked_accounts_without_shell not collected" if not e_5_4_2_8
 
-violations contains "5.4.2.8: not met — Ensure accounts without a valid login shell are locked" if {
+violations contains "5.4.2.8: not met — accounts without a valid login shell must be locked" if {
 	e_5_4_2_8
 	not p_5_4_2_8
 }
 
 # 5.4.3.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure nologin is not listed in /etc/shells
+# nologin must be not listed in /etc/shells
 default e_5_4_3_1 := false
 
 e_5_4_3_1 if {
@@ -1161,13 +1161,13 @@ p_5_4_3_1 if {
 
 violations contains "5.4.3.1: evidence missing — user_group.shells_content not collected" if not e_5_4_3_1
 
-violations contains "5.4.3.1: not met — Ensure nologin is not listed in /etc/shells" if {
+violations contains "5.4.3.1: not met — nologin must be not listed in /etc/shells" if {
 	e_5_4_3_1
 	not p_5_4_3_1
 }
 
 # 5.4.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure default user shell timeout is configured
+# default user shell timeout must be explicitly configured
 default e_5_4_3_2 := false
 
 e_5_4_3_2 if {
@@ -1185,13 +1185,13 @@ p_5_4_3_2 if {
 
 violations contains "5.4.3.2: evidence missing — pam.tmout/tmout_readonly_exported not collected" if not e_5_4_3_2
 
-violations contains "5.4.3.2: not met — Ensure default user shell timeout is configured" if {
+violations contains "5.4.3.2: not met — default user shell timeout must be explicitly configured" if {
 	e_5_4_3_2
 	not p_5_4_3_2
 }
 
 # 5.4.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure default user umask is configured in /etc/login.defs
+# default user umask must be explicitly configured in /etc/login.defs
 default e_5_4_3_3 := false
 
 e_5_4_3_3 if {
@@ -1206,13 +1206,13 @@ p_5_4_3_3 if {
 
 violations contains "5.4.3.3: evidence missing — pam.login_defs_umask not collected" if not e_5_4_3_3
 
-violations contains "5.4.3.3: not met — Ensure default user umask is configured in /etc/login.defs" if {
+violations contains "5.4.3.3: not met — default user umask must be explicitly configured in /etc/login.defs" if {
 	e_5_4_3_3
 	not p_5_4_3_3
 }
 
 # 5.4.3.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure default user umask is configured
+# default user umask must be explicitly configured
 default e_5_4_3_4 := false
 
 e_5_4_3_4 if {
@@ -1227,7 +1227,7 @@ p_5_4_3_4 if {
 
 violations contains "5.4.3.4: evidence missing — pam.default_umask not collected" if not e_5_4_3_4
 
-violations contains "5.4.3.4: not met — Ensure default user umask is configured" if {
+violations contains "5.4.3.4: not met — default user umask must be explicitly configured" if {
 	e_5_4_3_4
 	not p_5_4_3_4
 }

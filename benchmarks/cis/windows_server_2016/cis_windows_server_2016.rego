@@ -54,7 +54,7 @@ account_policy_violations := [v |
 
 # 1.1 Password Policy Violations
 password_policy_violations := [
-    "1.1.1: Ensure 'Enforce password history' is set to '24 or more password(s)'" |
+    "1.1.1: required value of 'Enforce password history' is '24 or more password(s)'" |
     to_number(input.password_policy.enforce_password_history) < 24
 ]
 
@@ -65,7 +65,7 @@ password_policy_violations := [
 
 # 1.2 Account Lockout Policy Violations
 account_lockout_violations := [
-    "1.2.1: Ensure 'Account lockout duration' is set to '15 or more minute(s)'" |
+    "1.2.1: required value of 'Account lockout duration' is '15 or more minute(s)'" |
     to_number(input.account_lockout_policy.account_lockout_duration) < 15
 ]
 
@@ -73,7 +73,7 @@ account_lockout_violations := [
 
 # 1.3 Kerberos Policy Violations
 kerberos_policy_violations := [
-    "1.3.1: Ensure 'Enforce user logon restrictions' is set to 'Enabled'" |
+    "1.3.1: required value of 'Enforce user logon restrictions' is 'Enabled'" |
     input.kerberos_policy.enforce_user_logon_restrictions != "Enabled"
 ]
 
@@ -93,14 +93,14 @@ local_policy_violations := [v |
 
 # 2.1 Audit Policy Violations
 audit_policy_violations := [
-    "2.2.1: Ensure 'Audit: Force audit policy subcategory settings' is set to 'Enabled'" |
+    "2.2.1: required value of 'Audit: Force audit policy subcategory settings' is 'Enabled'" |
     input.security_options.audit_force_audit_policy_subcategory_settings != "Enabled"
 ]
 
 
 # 2.2 User Rights Assignment Violations
 user_rights_violations := [
-    "2.2.3: Ensure 'Access Credential Manager as a trusted caller' is set to 'No One'" |
+    "2.2.3: required value of 'Access Credential Manager as a trusted caller' is 'No One'" |
     count(input.user_rights.access_credential_manager_as_trusted_caller) > 0
 ]
 
@@ -145,35 +145,35 @@ event_log_violations := [v |
 
 # 3.1 Application Log Violations
 application_log_violations := [
-    "3.1.1: Ensure 'Application: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    "3.1.1: required value of 'Application: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
     input.event_log.application.control_event_log_behavior != "Disabled"
 ]
 
 
 # 3.2 Security Log Violations  
 security_log_violations := [
-    "3.2.1: Ensure 'Security: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    "3.2.1: required value of 'Security: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
     input.event_log.security.control_event_log_behavior != "Disabled"
 ]
 
 
 # 3.3 Setup Log Violations
 setup_log_violations := [
-    "3.3.1: Ensure 'Setup: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    "3.3.1: required value of 'Setup: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
     input.event_log.setup.control_event_log_behavior != "Disabled"
 ]
 
 
 # 3.4 System Log Violations
 system_log_violations := [
-    "3.4.1: Ensure 'System: Control Event Log behavior when the log file reaches its maximum size' is set to 'Disabled'" |
+    "3.4.1: required value of 'System: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
     input.event_log.system.control_event_log_behavior != "Disabled"
 ]
 
 
 # Section 4: Restricted Groups
 restricted_groups_violations := [
-    "4.1: Ensure 'Administrators' group membership is properly configured" |
+    "4.1: 'Administrators' group membership must match the approved configuration" |
     not administrators_group_properly_configured
 ]
 
@@ -184,7 +184,7 @@ administrators_group_properly_configured if {
 
 # Section 5: System Services
 system_services_violations := [
-    "5.1: Ensure 'Computer Browser (Browser)' is set to 'Disabled'" |
+    "5.1: required value of 'Computer Browser (Browser)' is 'Disabled'" |
     input.system_services.computer_browser != "Disabled"
 ]
 
@@ -219,7 +219,7 @@ system_services_violations := [
 
 # Section 6: Registry
 registry_violations := [
-    "6.1: Ensure 'Apply UAC restrictions to local accounts on network logons' is set to 'Enabled'" |
+    "6.1: required value of 'Apply UAC restrictions to local accounts on network logons' is 'Enabled'" |
     input.registry.apply_uac_restrictions_to_local_accounts != "Enabled"
 ]
 
@@ -230,7 +230,7 @@ registry_violations := [
 
 # Section 7: Security Options
 security_options_violations := [
-    "7.1: Ensure 'Accounts: Administrator account status' is set to 'Disabled'" |
+    "7.1: required value of 'Accounts: Administrator account status' is 'Disabled'" |
     input.security_options.accounts_administrator_account_status != "Disabled"
 ]
 
@@ -309,13 +309,13 @@ advanced_audit_violations := [v |
 
 # 8.1 Account Logon Audit Violations
 account_logon_audit_violations := [
-    "8.1.1: Ensure 'Audit Credential Validation' is set to 'Success and Failure'" |
+    "8.1.1: required value of 'Audit Credential Validation' is 'Success and Failure'" |
     input.advanced_audit_policy.account_logon.audit_credential_validation != "Success and Failure"
 ]
 
 # 8.2 Account Management Audit Violations
 account_management_audit_violations := [
-    "8.2.1: Ensure 'Audit Application Group Management' is set to 'Success and Failure'" |
+    "8.2.1: required value of 'Audit Application Group Management' is 'Success and Failure'" |
     input.advanced_audit_policy.account_management.audit_application_group_management != "Success and Failure"
 ]
 
@@ -323,14 +323,14 @@ account_management_audit_violations := [
 
 # 8.3 Detailed Tracking Audit Violations
 detailed_tracking_audit_violations := [
-    "8.3.1: Ensure 'Audit PNP Activity' is set to include 'Success'" |
+    "8.3.1: required entries for 'Audit PNP Activity' include 'Success'" |
     not contains(input.advanced_audit_policy.detailed_tracking.audit_pnp_activity, "Success")
 ]
 
 
 # 8.4 DS Access Audit Violations
 ds_access_audit_violations := [
-    "8.4.1: Ensure 'Audit Directory Service Changes' is set to include 'Success'" |
+    "8.4.1: required entries for 'Audit Directory Service Changes' include 'Success'" |
     not contains(input.advanced_audit_policy.ds_access.audit_directory_service_changes, "Success")
 ]
 
@@ -338,7 +338,7 @@ ds_access_audit_violations := [
 
 # 8.5 Logon/Logoff Audit Violations
 logon_logoff_audit_violations := [
-    "8.5.1: Ensure 'Audit Account Lockout' is set to include 'Success'" |
+    "8.5.1: required entries for 'Audit Account Lockout' include 'Success'" |
     not contains(input.advanced_audit_policy.logon_logoff.audit_account_lockout, "Success")
 ]
 
@@ -349,7 +349,7 @@ logon_logoff_audit_violations := [
 
 # 8.6 Object Access Audit Violations
 object_access_audit_violations := [
-    "8.6.1: Ensure 'Audit Detailed File Share' is set to include 'Failure'" |
+    "8.6.1: required entries for 'Audit Detailed File Share' include 'Failure'" |
     not contains(input.advanced_audit_policy.object_access.audit_detailed_file_share, "Failure")
 ]
 
@@ -358,7 +358,7 @@ object_access_audit_violations := [
 
 # 8.7 Policy Change Audit Violations  
 policy_change_audit_violations := [
-    "8.7.1: Ensure 'Audit Audit Policy Change' is set to include 'Success'" |
+    "8.7.1: required entries for 'Audit Audit Policy Change' include 'Success'" |
     not contains(input.advanced_audit_policy.policy_change.audit_audit_policy_change, "Success")
 ]
 
@@ -368,13 +368,13 @@ policy_change_audit_violations := [
 
 # 8.8 Privilege Use Audit Violations
 privilege_use_audit_violations := [
-    "8.8.1: Ensure 'Audit Sensitive Privilege Use' is set to 'Success and Failure'" |
+    "8.8.1: required value of 'Audit Sensitive Privilege Use' is 'Success and Failure'" |
     input.advanced_audit_policy.privilege_use.audit_sensitive_privilege_use != "Success and Failure"
 ]
 
 # 8.9 System Audit Violations
 system_audit_violations := [
-    "8.9.1: Ensure 'Audit IPSec Driver' is set to 'Success and Failure'" |
+    "8.9.1: required value of 'Audit IPSec Driver' is 'Success and Failure'" |
     input.advanced_audit_policy.system.audit_ipsec_driver != "Success and Failure"
 ]
 

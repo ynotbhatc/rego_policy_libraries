@@ -43,7 +43,7 @@ violations := [v |
 
 # Section 1: Management Interface
 management_interface_violations := [
-    "1.1: Ensure 'Permitted IP Addresses' is set for all administrative users" |
+    "1.1: 'Permitted IP Addresses' must be set for all administrative users" |
     admin := input.panos_config.mgt_config.users.entry[_]
     not admin.client_certificate_only
     not admin.allowed_ips
@@ -63,7 +63,7 @@ certificate_based_admin_configured if {
 
 # Section 2: Authentication
 authentication_violations := [
-    "2.1: Ensure that an authentication profile is set for each administrator" |
+    "2.1: an authentication profile must be set for each administrator" |
     admin := input.panos_config.mgt_config.users.entry[_]
     not admin.authentication_profile
 ]
@@ -77,7 +77,7 @@ authentication_violations := [
 
 # Section 3: Admin Access
 admin_access_violations := [
-    "3.1: Ensure 'Maximum number of concurrent administrators' is set to a value lower than 10" |
+    "3.1: required value of 'Maximum number of concurrent administrators' is a value lower than 10" |
     max_admins := input.panos_config.mgt_config.max_concurrent_admins
     not max_admins
     max_admins >= 10
@@ -92,7 +92,7 @@ admin_access_violations := [
 
 # Section 4: Security Services
 security_services_violations := [
-    "4.1: Ensure DNS sinkholing is configured for malicious domains" |
+    "4.1: DNS sinkholing must be explicitly configured for malicious domains" |
     not dns_sinkhole_configured
 ]
 
@@ -116,7 +116,7 @@ wildfire_configured if {
 
 # Section 5: Logging
 logging_violations := [
-    "5.1: Ensure that an email server profile is configured for critical alerts" |
+    "5.1: an email server profile must be explicitly configured for critical alerts" |
     not email_server_configured
 ]
 
@@ -152,7 +152,7 @@ ha_logging_configured if {
 
 # Section 6: Network Security
 network_security_violations := [
-    "6.1: Ensure that 'Zones' are set to the appropriate function" |
+    "6.1: 'Zones' must be set to the appropriate function" |
     zone := input.panos_config.shared.zone.entry[_]
     zone.network.layer3[_]
     not zone_function_appropriate(zone.name)
@@ -189,7 +189,7 @@ anti_spoof_configured if {
 
 # Section 7: Device Management
 device_management_violations := [
-    "7.1: Ensure that 'Hostname' is set appropriately" |
+    "7.1: 'Hostname' must match the approved value" |
     not input.panos_config.device.hostname
 ]
 

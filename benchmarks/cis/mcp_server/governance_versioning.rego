@@ -19,7 +19,7 @@ package cis_mcp_server.governance_versioning
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 1: Governance and Versioning.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,10 +30,10 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"1.1": {"section": 1, "level": "L1", "assessment": "Automated", "title": "Ensure MCP protocol version is pinned and logged"},
-	"1.2": {"section": 1, "level": "L1", "assessment": "Manual", "title": "Ensure server capability baseline is established and documented"},
-	"1.3": {"section": 1, "level": "L2", "assessment": "Manual", "title": "Ensure newly advertised server capabilities are re-validated before invocation"},
-	"1.4": {"section": 1, "level": "L1", "assessment": "Automated", "title": "Ensure MCP client and server identity metadata is captured and validated against the asset inventory"},
+	"1.1": {"section": 1, "level": "L1", "assessment": "Automated", "title": "MCP protocol version must be pinned and logged"},
+	"1.2": {"section": 1, "level": "L1", "assessment": "Manual", "title": "server capability baseline must be established and documented"},
+	"1.3": {"section": 1, "level": "L2", "assessment": "Manual", "title": "newly advertised server capabilities must be re-validated before invocation"},
+	"1.4": {"section": 1, "level": "L1", "assessment": "Automated", "title": "MCP client and server identity metadata must be captured and validated against the asset inventory"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

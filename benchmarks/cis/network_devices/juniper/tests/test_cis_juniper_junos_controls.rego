@@ -12,12 +12,12 @@ test_compliant_false_on_empty if data.cis_juniper_junos.compliant == false with 
 
 test_weak_ssh_flagged if {
 	inp := {"junos_config": {"system": {"services": {"ssh": {"protocol_version": "v1", "root_login": "allow"}}}}}
-	"UNMAPPED-JUNOS-1.2: Ensure SSH is configured securely (protocol v2, root login denied)" in data.cis_juniper_junos.violations with input as inp
+	"UNMAPPED-JUNOS-1.2: SSH must be explicitly configured securely (protocol v2, root login denied)" in data.cis_juniper_junos.violations with input as inp
 }
 
 test_strong_ssh_ok if {
 	inp := {"junos_config": {"system": {"services": {"ssh": {"protocol_version": "v2", "root_login": "deny"}}}}}
-	not "UNMAPPED-JUNOS-1.2: Ensure SSH is configured securely (protocol v2, root login denied)" in data.cis_juniper_junos.violations with input as inp
+	not "UNMAPPED-JUNOS-1.2: SSH must be explicitly configured securely (protocol v2, root login denied)" in data.cis_juniper_junos.violations with input as inp
 }
 
 test_interface_without_unit0_flagged if has("3.1.1", {"external_interfaces": [{"name": "ge-0/0/0"}]})

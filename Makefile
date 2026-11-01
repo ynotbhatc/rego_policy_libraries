@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm coverage check-coverage oscal crosswalk xccdf check-converters load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm coverage check-coverage oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -84,7 +84,10 @@ metadata:
 	@echo "=== Checking policy METADATA annotations ==="
 	@python3 scripts/check_metadata.py
 
-check: lint test metadata check-coverage
+check-cis-verbatim:
+	@python3 scripts/check_cis_verbatim.py benchmarks/cis
+
+check: lint test metadata check-coverage check-cis-verbatim
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

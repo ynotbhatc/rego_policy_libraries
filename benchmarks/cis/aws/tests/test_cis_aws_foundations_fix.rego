@@ -15,13 +15,13 @@ test_cis_filter_pattern_accepted_for_4_1 if {
 		"cloudwatch_log_metric_filters": [{"metric_name": "m", "filter_pattern": "{ ($.errorCode = \"*UnauthorizedOperation\") || ($.errorCode = \"AccessDenied*\") }"}],
 	}
 	v := data.cis_aws.violations with input as inp
-	not "4.1: Ensure a log metric filter and alarm exist for unauthorized API calls" in v
+	not "4.1: checked condition — a log metric filter and alarm exist for unauthorized API calls" in v
 }
 
 test_4_7_cmk_deletion_violation_reported if {
 	v := data.cis_aws.violations with input as {}
-	"4.7: Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys" in v
-	"4.3: Ensure a log metric filter and alarm exist for usage of the root account" in v
+	"4.7: checked condition — a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys" in v
+	"4.3: checked condition — a log metric filter and alarm exist for usage of the root account" in v
 }
 
 test_4_7_passes_when_alarm_present if {
@@ -30,7 +30,7 @@ test_4_7_passes_when_alarm_present if {
 		"cloudwatch_log_metric_filters": [{"metric_name": "k", "filter_pattern": "DisableKey ScheduleKeyDeletion"}],
 	}
 	v := data.cis_aws.violations with input as inp
-	not "4.7: Ensure a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys" in v
+	not "4.7: checked condition — a log metric filter and alarm exist for disabling or scheduled deletion of customer managed keys" in v
 }
 
 test_nacl_allow_all_protocol_without_port_range_flagged if {

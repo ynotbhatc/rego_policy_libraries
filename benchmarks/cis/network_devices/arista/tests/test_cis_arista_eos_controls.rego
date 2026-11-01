@@ -158,7 +158,7 @@ test_1_1_1_1_pass if {
 
 test_1_1_1_1_fail_not_attested if {
 	v := data.cis_arista_eos.violations with input as unattest("mgmt_vrf_exists")
-	"1.1.1.1: manual review not attested — Ensure the Management VRF Exists (attest.mgmt_vrf_exists)" in v
+	"1.1.1.1: manual review not attested — checked condition — the Management VRF Exists (attest.mgmt_vrf_exists)" in v
 	not data.cis_arista_eos.compliant with input as unattest("mgmt_vrf_exists")
 }
 
@@ -422,7 +422,7 @@ test_2_7_2_pass if {
 
 test_2_7_2_fail_not_attested if {
 	v := data.cis_arista_eos.violations with input as unattest("snmp_community_hardened")
-	"2.7.2: manual review not attested — Ensure SNMP Community (attest.snmp_community_hardened)" in v
+	"2.7.2: manual review not attested — checked condition — SNMP Community (attest.snmp_community_hardened)" in v
 	not data.cis_arista_eos.compliant with input as unattest("snmp_community_hardened")
 }
 

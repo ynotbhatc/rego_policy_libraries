@@ -222,7 +222,7 @@ su_group_empty(g) if {
 }
 
 # 5.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo is installed
+# sudo must be present
 default e_5_2_1 := false
 
 e_5_2_1 if {
@@ -237,13 +237,13 @@ p_5_2_1 if {
 
 violations contains "5.2.1: evidence missing — sudo.installed not collected" if not e_5_2_1
 
-violations contains "5.2.1: not met — Ensure sudo is installed" if {
+violations contains "5.2.1: not met — sudo must be present" if {
 	e_5_2_1
 	not p_5_2_1
 }
 
 # 5.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo commands use pty
+# sudo commands must allocate a pseudo-terminal
 default e_5_2_2 := false
 
 e_5_2_2 if {
@@ -259,13 +259,13 @@ p_5_2_2 if {
 
 violations contains "5.2.2: evidence missing — sudo.sudoers_content not collected" if not e_5_2_2
 
-violations contains "5.2.2: not met — Ensure sudo commands use pty" if {
+violations contains "5.2.2: not met — sudo commands must allocate a pseudo-terminal" if {
 	e_5_2_2
 	not p_5_2_2
 }
 
 # 5.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo log file exists
+# a log file for sudo must exist
 default e_5_2_3 := false
 
 e_5_2_3 if {
@@ -280,13 +280,13 @@ p_5_2_3 if {
 
 violations contains "5.2.3: evidence missing — sudo.sudoers_content not collected" if not e_5_2_3
 
-violations contains "5.2.3: not met — Ensure sudo log file exists" if {
+violations contains "5.2.3: not met — a log file for sudo must exist" if {
 	e_5_2_3
 	not p_5_2_3
 }
 
 # 5.2.4 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure users must provide password for escalation
+# checked condition — users must provide password for escalation
 default e_5_2_4 := false
 
 e_5_2_4 if {
@@ -301,13 +301,13 @@ p_5_2_4 if {
 
 violations contains "5.2.4: evidence missing — sudo.sudoers_content not collected" if not e_5_2_4
 
-violations contains "5.2.4: not met — Ensure users must provide password for escalation" if {
+violations contains "5.2.4: not met — checked condition — users must provide password for escalation" if {
 	e_5_2_4
 	not p_5_2_4
 }
 
 # 5.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure re-authentication for privilege escalation is not disabled globally
+# re-authentication for privilege escalation must stay in effect globally
 default e_5_2_5 := false
 
 e_5_2_5 if {
@@ -322,13 +322,13 @@ p_5_2_5 if {
 
 violations contains "5.2.5: evidence missing — sudo.sudoers_content not collected" if not e_5_2_5
 
-violations contains "5.2.5: not met — Ensure re-authentication for privilege escalation is not disabled globally" if {
+violations contains "5.2.5: not met — re-authentication for privilege escalation must stay in effect globally" if {
 	e_5_2_5
 	not p_5_2_5
 }
 
 # 5.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sudo timestamp_timeout is configured
+# sudo timestamp_timeout must be explicitly configured
 default e_5_2_6 := false
 
 e_5_2_6 if {
@@ -356,13 +356,13 @@ p_5_2_6 if {
 
 violations contains "5.2.6: evidence missing — sudo.sudoers_content/sudo.default_timestamp_timeout not collected" if not e_5_2_6
 
-violations contains "5.2.6: not met — Ensure sudo timestamp_timeout is configured" if {
+violations contains "5.2.6: not met — sudo timestamp_timeout must be explicitly configured" if {
 	e_5_2_6
 	not p_5_2_6
 }
 
 # 5.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to the su command is restricted
+# access to the su command must be restricted
 default e_5_2_7 := false
 
 e_5_2_7 if {
@@ -379,7 +379,7 @@ p_5_2_7 if {
 
 violations contains "5.2.7: evidence missing — pam.su/user_group.group_content not collected" if not e_5_2_7
 
-violations contains "5.2.7: not met — Ensure access to the su command is restricted" if {
+violations contains "5.2.7: not met — access to the su command must be restricted" if {
 	e_5_2_7
 	not p_5_2_7
 }

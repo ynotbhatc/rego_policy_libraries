@@ -19,7 +19,7 @@ package cis_mcp_server.authn_authz
 import rego.v1
 
 # CIS MCP Server Benchmark v1.0.0 — Section 3: Authentication and Authorization.
-# Ids, titles, profile levels and Automated/Manual status are taken from the
+# Ids, profile levels and Automated/Manual status are taken from the
 # official CIS workbook (55 recommendations, all implemented across 10 section
 # modules). Messages are in our own words.
 #
@@ -30,16 +30,16 @@ import rego.v1
 #   input.cis_mcp_server.<sec>.evidence.<key>     : collected probe results for an Automated
 #       recommendation (key per _evidence_key). Absent/empty evidence is a violation.
 requirements := {
-	"3.1.1": {"section": 3, "level": "L1", "assessment": "Automated", "title": "Ensure stdio server credentials are sourced from the environment or OS credential store"},
-	"3.1.2": {"section": 3, "level": "L1", "assessment": "Manual", "title": "Ensure OIDC/OAuth 2.1 or short-lived API tokens are used for remote servers"},
-	"3.2.1": {"section": 3, "level": "L2", "assessment": "Manual", "title": "Ensure per-tool authorization policies are enforced"},
-	"3.2.2": {"section": 3, "level": "L1", "assessment": "Manual", "title": "Ensure token passthrough to downstream APIs is forbidden"},
-	"3.2.3": {"section": 3, "level": "L1", "assessment": "Manual", "title": "Ensure server-provided tool annotations are not relied upon for authorization or HITL gating decisions"},
-	"3.3.1": {"section": 3, "level": "L1", "assessment": "Automated", "title": "Ensure OAuth tokens are audience-bound to the MCP server using Resource Indicators"},
-	"3.3.2": {"section": 3, "level": "L2", "assessment": "Automated", "title": "Ensure OAuth discovery metadata is served over TLS and validated against the approved authorization server list"},
-	"3.3.3": {"section": 3, "level": "L2", "assessment": "Manual", "title": "Ensure shared downstream service account identities are prohibited across multiple MCP tools or servers"},
-	"3.3.4": {"section": 3, "level": "L2", "assessment": "Manual", "title": "Ensure OAuth scopes are minimized and elevated progressively"},
-	"3.3.5": {"section": 3, "level": "L2", "assessment": "Manual", "title": "Ensure confused-deputy safeguards are applied for static OAuth client IDs"},
+	"3.1.1": {"section": 3, "level": "L1", "assessment": "Automated", "title": "stdio server credentials must be sourced from the environment or OS credential store"},
+	"3.1.2": {"section": 3, "level": "L1", "assessment": "Manual", "title": "OIDC/OAuth 2.1 or short-lived API tokens must be used for remote servers"},
+	"3.2.1": {"section": 3, "level": "L2", "assessment": "Manual", "title": "per-tool authorization policies must be enforced"},
+	"3.2.2": {"section": 3, "level": "L1", "assessment": "Manual", "title": "token passthrough to downstream APIs must be forbidden"},
+	"3.2.3": {"section": 3, "level": "L1", "assessment": "Manual", "title": "server-provided tool annotations must be not relied upon for authorization or HITL gating decisions"},
+	"3.3.1": {"section": 3, "level": "L1", "assessment": "Automated", "title": "OAuth tokens must be audience-bound to the MCP server using Resource Indicators"},
+	"3.3.2": {"section": 3, "level": "L2", "assessment": "Automated", "title": "OAuth discovery metadata must be served over TLS and validated against the approved authorization server list"},
+	"3.3.3": {"section": 3, "level": "L2", "assessment": "Manual", "title": "shared downstream service account identities must be prohibited across multiple MCP tools or servers"},
+	"3.3.4": {"section": 3, "level": "L2", "assessment": "Manual", "title": "OAuth scopes must be minimized and elevated progressively"},
+	"3.3.5": {"section": 3, "level": "L2", "assessment": "Manual", "title": "confused-deputy safeguards must be applied for static OAuth client IDs"},
 }
 
 # ── shared plumbing ──────────────────────────────────────────────────────────

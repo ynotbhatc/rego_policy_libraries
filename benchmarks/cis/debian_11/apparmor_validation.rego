@@ -32,7 +32,7 @@ violations := array.concat(
 	array.concat([v | some v in service_violations], [v | some v in profile_violations]),
 )
 
-# CIS 1.6.1.1: Ensure AppArmor is installed
+# CIS 1.6.1.1: AppArmor must be present
 install_violations contains msg if {
 	not input.apparmor.installed
 	msg := "CIS 1.6.1.1: AppArmor is not installed"
@@ -43,7 +43,7 @@ install_violations contains msg if {
 	msg := "CIS 1.6.1.1: apparmor-utils is not installed"
 }
 
-# CIS 1.6.1.2: Ensure AppArmor is enabled in the bootloader configuration
+# CIS 1.6.1.2: AppArmor must be turned on in the bootloader configuration
 service_violations contains msg if {
 	not input.apparmor.bootloader_enabled
 	msg := "CIS 1.6.1.2: AppArmor is not enabled in bootloader (apparmor=1 security=apparmor missing from GRUB_CMDLINE_LINUX)"
@@ -55,7 +55,7 @@ service_violations contains msg if {
 	msg := "CIS 1.6.1.2: AppArmor security= parameter not set to apparmor in bootloader"
 }
 
-# CIS 1.6.1.3: Ensure all AppArmor Profiles are in enforce or complain mode
+# CIS 1.6.1.3: all AppArmor Profiles must be in enforce or complain mode
 profile_violations contains msg if {
 	input.apparmor.unloaded_profiles > 0
 	msg := sprintf("CIS 1.6.1.3: %d AppArmor profiles are not loaded", [input.apparmor.unloaded_profiles])
@@ -67,7 +67,7 @@ profile_violations contains msg if {
 	msg := sprintf("CIS 1.6.1.3: AppArmor profile '%s' is not loaded", [profile.name])
 }
 
-# CIS 1.6.1.4: Ensure all AppArmor Profiles are enforcing
+# CIS 1.6.1.4: all AppArmor Profiles must be enforcing
 profile_violations contains msg if {
 	input.apparmor.complain_profiles > 0
 	msg := sprintf("CIS 1.6.1.4: %d AppArmor profiles are in complain mode (should be enforce)", [input.apparmor.complain_profiles])

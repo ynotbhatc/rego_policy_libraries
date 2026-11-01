@@ -98,12 +98,12 @@
        {
         "id": "cis_oracle_26ai-1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure That Appropriate Version/Patches For Oracle Software Are Installed"
+        "prose": "Appropriate Version/Patches For Oracle Software must be present"
        },
        {
         "id": "cis_oracle_26ai-1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure That Appropriate Version/Patches For Oracle Software Are Installed"
+        "prose": "Appropriate Version/Patches For Oracle Software must be present"
        }
       ],
       "class": "security"
@@ -141,12 +141,12 @@
        {
         "id": "cis_oracle_26ai-2.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'extproc' Is Not Present In 'listener.ora'"
+        "prose": "'listener.ora' must not contain 'extproc'"
        },
        {
         "id": "cis_oracle_26ai-2.1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'extproc' Is Not Present In 'listener.ora'"
+        "prose": "'listener.ora' must not contain 'extproc'"
        }
       ],
       "class": "security"
@@ -184,12 +184,12 @@
        {
         "id": "cis_oracle_26ai-2.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly"
+        "prose": "'ACCEPT_MD5_CERTS' must match the approved configuration"
        },
        {
         "id": "cis_oracle_26ai-2.1.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is Configured Correctly"
+        "prose": "'ACCEPT_MD5_CERTS' must match the approved configuration"
        }
       ],
       "class": "security"
@@ -227,12 +227,12 @@
        {
         "id": "cis_oracle_26ai-2.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly"
+        "prose": "'ACCEPT_SHA1_CERTS' must match the approved configuration"
        },
        {
         "id": "cis_oracle_26ai-2.1.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is Configured Correctly"
+        "prose": "'ACCEPT_SHA1_CERTS' must match the approved configuration"
        }
       ],
       "class": "security"
@@ -270,12 +270,12 @@
        {
         "id": "cis_oracle_26ai-2.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set."
+        "prose": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset"
        },
        {
         "id": "cis_oracle_26ai-2.1.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS’ Is NOT Set."
+        "prose": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset"
        }
       ],
       "class": "security"
@@ -313,12 +313,12 @@
        {
         "id": "cis_oracle_26ai-2.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET"
+        "prose": "'ACCEPT_MD5_CERTS' must be unset"
        },
        {
         "id": "cis_oracle_26ai-2.2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_MD5_CERTS' Is NOT SET"
+        "prose": "'ACCEPT_MD5_CERTS' must be unset"
        }
       ],
       "class": "security"
@@ -356,12 +356,12 @@
        {
         "id": "cis_oracle_26ai-2.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set"
+        "prose": "'ACCEPT_SHA1_CERTS' must be unset"
        },
        {
         "id": "cis_oracle_26ai-2.2.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ACCEPT_SHA1_CERTS' Is NOT Set"
+        "prose": "'ACCEPT_SHA1_CERTS' must be unset"
        }
       ],
       "class": "security"
@@ -399,12 +399,12 @@
        {
         "id": "cis_oracle_26ai-2.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set"
+        "prose": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset"
        },
        {
         "id": "cis_oracle_26ai-2.2.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOWED_WEAK_CERT_ALGORITHMS' Is NOT Set"
+        "prose": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset"
        }
       ],
       "class": "security"
@@ -442,12 +442,12 @@
        {
         "id": "cis_oracle_26ai-2.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a"
+        "prose": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a"
        },
        {
         "id": "cis_oracle_26ai-2.2.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' Is Set To 12a"
+        "prose": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a"
        }
       ],
       "class": "security"
@@ -485,12 +485,12 @@
        {
         "id": "cis_oracle_26ai-2.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a"
+        "prose": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a"
        },
        {
         "id": "cis_oracle_26ai-2.2.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' Is Set To 12a"
+        "prose": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a"
        }
       ],
       "class": "security"
@@ -528,12 +528,12 @@
        {
         "id": "cis_oracle_26ai-2.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'"
        },
        {
         "id": "cis_oracle_26ai-2.2.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_CLIENT Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'"
        }
       ],
       "class": "security"
@@ -571,12 +571,12 @@
        {
         "id": "cis_oracle_26ai-2.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'"
        },
        {
         "id": "cis_oracle_26ai-2.2.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_SERVER' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'"
        }
       ],
       "class": "security"
@@ -614,12 +614,12 @@
        {
         "id": "cis_oracle_26ai-2.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'"
        },
        {
         "id": "cis_oracle_26ai-2.2.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_CLIENT' Is Set To 'AES256'"
+        "prose": "required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'"
        }
       ],
       "class": "security"
@@ -657,12 +657,12 @@
        {
         "id": "cis_oracle_26ai-2.2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256"
+        "prose": "required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256"
        },
        {
         "id": "cis_oracle_26ai-2.2.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.ENCRYPTION_TYPES_SERVER' Is Set To AES256"
+        "prose": "required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256"
        }
       ],
       "class": "security"
@@ -700,12 +700,12 @@
        {
         "id": "cis_oracle_26ai-2.2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'"
        },
        {
         "id": "cis_oracle_26ai-2.2.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_CLIENT' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'"
        }
       ],
       "class": "security"
@@ -743,12 +743,12 @@
        {
         "id": "cis_oracle_26ai-2.2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'"
        },
        {
         "id": "cis_oracle_26ai-2.2.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQLNET.CRYPTO_CHECKSUM_SERVER' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'"
        }
       ],
       "class": "security"
@@ -786,12 +786,12 @@
        {
         "id": "cis_oracle_26ai-2.2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'"
        },
        {
         "id": "cis_oracle_26ai-2.2.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SSL_CERT_REVOCATION' Is Set To 'REQUIRED'"
+        "prose": "required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'"
        }
       ],
       "class": "security"
@@ -829,12 +829,12 @@
        {
         "id": "cis_oracle_26ai-2.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'"
+        "prose": "'BACKGROUND_CORE_DUMP' must not be 'Full'"
        },
        {
         "id": "cis_oracle_26ai-2.3.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'BACKGROUND_CORE_DUMP' Is Not Set To 'Full'"
+        "prose": "'BACKGROUND_CORE_DUMP' must not be 'Full'"
        }
       ],
       "class": "security"
@@ -872,12 +872,12 @@
        {
         "id": "cis_oracle_26ai-2.3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'"
+        "prose": "'SHADOW_CORE_DUMP' must not be 'Full'"
        },
        {
         "id": "cis_oracle_26ai-2.3.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SHADOW_CORE_DUMP' Is Not Set To 'Full'"
+        "prose": "'SHADOW_CORE_DUMP' must not be 'Full'"
        }
       ],
       "class": "security"
@@ -915,12 +915,12 @@
        {
         "id": "cis_oracle_26ai-2.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'"
+        "prose": "required value of 'MLE_PROG_LANGUAGES' is 'OFF'"
        },
        {
         "id": "cis_oracle_26ai-2.3.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'MLE_PROG_LANGUAGES' Is Set To 'OFF'"
+        "prose": "required value of 'MLE_PROG_LANGUAGES' is 'OFF'"
        }
       ],
       "class": "security"
@@ -958,19 +958,19 @@
        {
         "id": "cis_oracle_26ai-2.3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`"
+        "prose": "required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`"
        },
        {
         "id": "cis_oracle_26ai-2.3.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALLOW_GROUP_ACCESS_TO_SGA' Is Set To `FALSE`"
+        "prose": "required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-2.3.5",
-      "title": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values (manual review not attested)",
+      "title": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -996,12 +996,12 @@
        {
         "id": "cis_oracle_26ai-2.3.5_stmt",
         "name": "statement",
-        "prose": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values (manual review not attested)"
+        "prose": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-2.3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Review Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values"
+        "prose": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review"
        }
       ],
       "class": "security"
@@ -1039,12 +1039,12 @@
        {
         "id": "cis_oracle_26ai-2.3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'OS_ROLES' Is Set To 'FALSE'"
+        "prose": "required value of 'OS_ROLES' is 'FALSE'"
        },
        {
         "id": "cis_oracle_26ai-2.3.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'OS_ROLES' Is Set To 'FALSE'"
+        "prose": "required value of 'OS_ROLES' is 'FALSE'"
        }
       ],
       "class": "security"
@@ -1082,12 +1082,12 @@
        {
         "id": "cis_oracle_26ai-2.3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'"
+        "prose": "required value of 'REMOTE_OS_ROLES' is 'FALSE'"
        },
        {
         "id": "cis_oracle_26ai-2.3.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'"
+        "prose": "required value of 'REMOTE_OS_ROLES' is 'FALSE'"
        }
       ],
       "class": "security"
@@ -1125,12 +1125,12 @@
        {
         "id": "cis_oracle_26ai-2.3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less"
+        "prose": "required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less"
        },
        {
         "id": "cis_oracle_26ai-2.3.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' Is Set To '3' Or Less"
+        "prose": "required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less"
        }
       ],
       "class": "security"
@@ -1168,12 +1168,12 @@
        {
         "id": "cis_oracle_26ai-2.3.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'"
+        "prose": "required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'"
        },
        {
         "id": "cis_oracle_26ai-2.3.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' Is Set To '(DROP,3)'"
+        "prose": "required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'"
        }
       ],
       "class": "security"
@@ -1211,12 +1211,12 @@
        {
         "id": "cis_oracle_26ai-2.3.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'"
+        "prose": "required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'"
        },
        {
         "id": "cis_oracle_26ai-2.3.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_PROTOCOL_ERROR_TRACE_ACTION' Is Set To 'LOG'"
+        "prose": "required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'"
        }
       ],
       "class": "security"
@@ -1254,12 +1254,12 @@
        {
         "id": "cis_oracle_26ai-2.3.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'"
+        "prose": "required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'"
        },
        {
         "id": "cis_oracle_26ai-2.3.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SEC_RETURN_SERVER_RELEASE_BANNER' Is Set To 'FALSE'"
+        "prose": "required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'"
        }
       ],
       "class": "security"
@@ -1297,12 +1297,12 @@
        {
         "id": "cis_oracle_26ai-2.3.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'"
+        "prose": "required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'"
        },
        {
         "id": "cis_oracle_26ai-2.3.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_LOGIN_PASSWORDFILE' Is Set To 'NONE'"
+        "prose": "required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'"
        }
       ],
       "class": "security"
@@ -1340,12 +1340,12 @@
        {
         "id": "cis_oracle_26ai-2.3.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_LISTENER' Is Empty"
+        "prose": "'REMOTE_LISTENER' must be blank"
        },
        {
         "id": "cis_oracle_26ai-2.3.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'REMOTE_LISTENER' Is Empty"
+        "prose": "'REMOTE_LISTENER' must be blank"
        }
       ],
       "class": "security"
@@ -1383,12 +1383,12 @@
        {
         "id": "cis_oracle_26ai-2.3.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'"
+        "prose": "required value of 'RESOURCE_LIMIT' is 'TRUE'"
        },
        {
         "id": "cis_oracle_26ai-2.3.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'RESOURCE_LIMIT' Is Set To 'TRUE'"
+        "prose": "required value of 'RESOURCE_LIMIT' is 'TRUE'"
        }
       ],
       "class": "security"
@@ -1426,12 +1426,12 @@
        {
         "id": "cis_oracle_26ai-3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'"
+        "prose": "'FAILED_LOGIN_ATTEMPTS' must be at most '5'"
        },
        {
         "id": "cis_oracle_26ai-3.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'FAILED_LOGIN_ATTEMPTS' Is Less Than Or Equal To '5'"
+        "prose": "'FAILED_LOGIN_ATTEMPTS' must be at most '5'"
        }
       ],
       "class": "security"
@@ -1469,12 +1469,12 @@
        {
         "id": "cis_oracle_26ai-3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'"
+        "prose": "'PASSWORD_LOCK_TIME' must be at least '1'"
        },
        {
         "id": "cis_oracle_26ai-3.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_LOCK_TIME' Is Greater Than Or Equal To '1'"
+        "prose": "'PASSWORD_LOCK_TIME' must be at least '1'"
        }
       ],
       "class": "security"
@@ -1512,12 +1512,12 @@
        {
         "id": "cis_oracle_26ai-3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'"
+        "prose": "'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'"
        },
        {
         "id": "cis_oracle_26ai-3.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' Is Less Than Or Equal To '365'"
+        "prose": "'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'"
        }
       ],
       "class": "security"
@@ -1555,12 +1555,12 @@
        {
         "id": "cis_oracle_26ai-3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'"
+        "prose": "required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'"
        },
        {
         "id": "cis_oracle_26ai-3.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_REUSE_MAX' Is Set To 'UNLIMITED'"
+        "prose": "required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'"
        }
       ],
       "class": "security"
@@ -1598,19 +1598,19 @@
        {
         "id": "cis_oracle_26ai-3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles"
+        "prose": "'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles"
        },
        {
         "id": "cis_oracle_26ai-3.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Set For All Profiles"
+        "prose": "'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-3.6",
-      "title": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly (manual review not attested)",
+      "title": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1636,12 +1636,12 @@
        {
         "id": "cis_oracle_26ai-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly (manual review not attested)"
+        "prose": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_VERIFY_FUNCTION' Is Configured Correctly"
+        "prose": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration"
        }
       ],
       "class": "security"
@@ -1679,12 +1679,12 @@
        {
         "id": "cis_oracle_26ai-3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'"
+        "prose": "required value of 'PASSWORD_ROLLOVER_TIME' is '0'"
        },
        {
         "id": "cis_oracle_26ai-3.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PASSWORD_ROLLOVER_TIME' Is set to '0'"
+        "prose": "required value of 'PASSWORD_ROLLOVER_TIME' is '0'"
        }
       ],
       "class": "security"
@@ -1722,12 +1722,12 @@
        {
         "id": "cis_oracle_26ai-3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'"
+        "prose": "'INACTIVE_ACCOUNT_TIME' must be at most '120'"
        },
        {
         "id": "cis_oracle_26ai-3.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'INACTIVE_ACCOUNT_TIME' Is Less than or Equal to '120'"
+        "prose": "'INACTIVE_ACCOUNT_TIME' must be at most '120'"
        }
       ],
       "class": "security"
@@ -1765,12 +1765,12 @@
        {
         "id": "cis_oracle_26ai-4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure All Default Passwords Are Changed"
+        "prose": "All Default Passwords must be Changed"
        },
        {
         "id": "cis_oracle_26ai-4.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure All Default Passwords Are Changed"
+        "prose": "All Default Passwords must be Changed"
        }
       ],
       "class": "security"
@@ -1808,19 +1808,19 @@
        {
         "id": "cis_oracle_26ai-4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist"
+        "prose": "checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist"
        },
        {
         "id": "cis_oracle_26ai-4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure No Custom 'ORACLE_MAINTAINED' Users Exist"
+        "prose": "checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-4.3",
-      "title": "Review The Users Created Through Real Application Security (manual review not attested)",
+      "title": "The Users Created Through Real Application Security requires a recorded review (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -1846,12 +1846,12 @@
        {
         "id": "cis_oracle_26ai-4.3_stmt",
         "name": "statement",
-        "prose": "Review The Users Created Through Real Application Security (manual review not attested)"
+        "prose": "The Users Created Through Real Application Security requires a recorded review (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Review The Users Created Through Real Application Security"
+        "prose": "The Users Created Through Real Application Security requires a recorded review"
        }
       ],
       "class": "security"
@@ -1889,12 +1889,12 @@
        {
         "id": "cis_oracle_26ai-4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Old Password Versions Are Not Used"
+        "prose": "Old Password Versions must be Not Used"
        },
        {
         "id": "cis_oracle_26ai-4.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Old Password Versions Are Not Used"
+        "prose": "Old Password Versions must be Not Used"
        }
       ],
       "class": "security"
@@ -1932,12 +1932,12 @@
        {
         "id": "cis_oracle_26ai-4.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure The Latest Version of The Password File Is Used"
+        "prose": "The Latest Version of The Password File must be Used"
        },
        {
         "id": "cis_oracle_26ai-4.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure The Latest Version of The Password File Is Used"
+        "prose": "The Latest Version of The Password File must be Used"
        }
       ],
       "class": "security"
@@ -1975,12 +1975,12 @@
        {
         "id": "cis_oracle_26ai-4.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure That Users In Different RAC Instances Are Identical In PW Files"
+        "prose": "Users In Different RAC Instances must be Identical In PW Files"
        },
        {
         "id": "cis_oracle_26ai-4.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure That Users In Different RAC Instances Are Identical In PW Files"
+        "prose": "Users In Different RAC Instances must be Identical In PW Files"
        }
       ],
       "class": "security"
@@ -2018,12 +2018,12 @@
        {
         "id": "cis_oracle_26ai-4.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure No Public Database Links Exist"
+        "prose": "checked condition — No Public Database Links Exist"
        },
        {
         "id": "cis_oracle_26ai-4.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure No Public Database Links Exist"
+        "prose": "checked condition — No Public Database Links Exist"
        }
       ],
       "class": "security"
@@ -2061,12 +2061,12 @@
        {
         "id": "cis_oracle_26ai-4.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure That Database Link Passwords Are Using The Latest Encryption"
+        "prose": "Database Link Passwords must be Using The Latest Encryption"
        },
        {
         "id": "cis_oracle_26ai-4.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure That Database Link Passwords Are Using The Latest Encryption"
+        "prose": "Database Link Passwords must be Using The Latest Encryption"
        }
       ],
       "class": "security"
@@ -2104,12 +2104,12 @@
        {
         "id": "cis_oracle_26ai-5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure All Auditable System Actions Commands Are Audited"
+        "prose": "All Auditable System Actions Commands must be Audited"
        },
        {
         "id": "cis_oracle_26ai-5.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure All Auditable System Actions Commands Are Audited"
+        "prose": "All Auditable System Actions Commands must be Audited"
        }
       ],
       "class": "security"
@@ -2147,12 +2147,12 @@
        {
         "id": "cis_oracle_26ai-5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled"
+        "prose": "the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on"
        },
        {
         "id": "cis_oracle_26ai-5.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure the 'LOGON' AND 'LOGOFF' Actions Audit Is Enabled"
+        "prose": "the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on"
        }
       ],
       "class": "security"
@@ -2190,12 +2190,12 @@
        {
         "id": "cis_oracle_26ai-5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Critical Packages Are Audited"
+        "prose": "Critical Packages must be Audited"
        },
        {
         "id": "cis_oracle_26ai-5.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Critical Packages Are Audited"
+        "prose": "Critical Packages must be Audited"
        }
       ],
       "class": "security"
@@ -2233,12 +2233,12 @@
        {
         "id": "cis_oracle_26ai-5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure All Export Activities Are Audited"
+        "prose": "All Export Activities must be Audited"
        },
        {
         "id": "cis_oracle_26ai-5.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure All Export Activities Are Audited"
+        "prose": "All Export Activities must be Audited"
        }
       ],
       "class": "security"
@@ -2276,12 +2276,12 @@
        {
         "id": "cis_oracle_26ai-5.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure The Use Of SYS* Privileges Is Audited"
+        "prose": "The Use Of SYS* Privileges must be Audited"
        },
        {
         "id": "cis_oracle_26ai-5.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure The Use Of SYS* Privileges Is Audited"
+        "prose": "The Use Of SYS* Privileges must be Audited"
        }
       ],
       "class": "security"
@@ -2319,12 +2319,12 @@
        {
         "id": "cis_oracle_26ai-6.1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'%ANY%' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure '%ANY%' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'%ANY%' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2362,12 +2362,12 @@
        {
         "id": "cis_oracle_26ai-6.1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "Admin Privileges must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure Admin Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "Admin Privileges must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2405,12 +2405,12 @@
        {
         "id": "cis_oracle_26ai-6.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'IMPORT' And 'EXPORT' 'FULL DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2448,12 +2448,12 @@
        {
         "id": "cis_oracle_26ai-6.1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE EXTERNAL JOB' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2491,12 +2491,12 @@
        {
         "id": "cis_oracle_26ai-6.1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'BECOME USER' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'BECOME USER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'BECOME USER' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2534,12 +2534,12 @@
        {
         "id": "cis_oracle_26ai-6.1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'TEXT DATASTORE ACCESS' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2577,12 +2577,12 @@
        {
         "id": "cis_oracle_26ai-6.1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2620,12 +2620,12 @@
        {
         "id": "cis_oracle_26ai-6.1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LOGMINING' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'LOGMINING' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LOGMINING' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2663,12 +2663,12 @@
        {
         "id": "cis_oracle_26ai-6.1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALTER SYSTEM' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2706,12 +2706,12 @@
        {
         "id": "cis_oracle_26ai-6.1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'CREATE LIBRARY' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2749,12 +2749,12 @@
        {
         "id": "cis_oracle_26ai-6.1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.1.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure All `SYSTEM` Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2792,12 +2792,12 @@
        {
         "id": "cis_oracle_26ai-6.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'DBA' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'DBA' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2835,12 +2835,12 @@
        {
         "id": "cis_oracle_26ai-6.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2878,12 +2878,12 @@
        {
         "id": "cis_oracle_26ai-6.2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'IMP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2921,12 +2921,12 @@
        {
         "id": "cis_oracle_26ai-6.2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DATAPUMP_EXP_FULL_DATABASE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -2964,12 +2964,12 @@
        {
         "id": "cis_oracle_26ai-6.2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DATAPUMP_IMP_FULL_DATABASE' is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3007,12 +3007,12 @@
        {
         "id": "cis_oracle_26ai-6.2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_ADMIN' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.6_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_ADMIN’ Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_ADMIN' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3050,12 +3050,12 @@
        {
         "id": "cis_oracle_26ai-6.2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_AUDIT_CLEANUP’ Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3093,12 +3093,12 @@
        {
         "id": "cis_oracle_26ai-6.2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'OLAP_DBA' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.8_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'OLAP_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'OLAP_DBA' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3136,12 +3136,12 @@
        {
         "id": "cis_oracle_26ai-6.2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LBAC_DBA' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.9_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'LBAC_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LBAC_DBA' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3179,12 +3179,12 @@
        {
         "id": "cis_oracle_26ai-6.2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.10_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVA_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3222,12 +3222,12 @@
        {
         "id": "cis_oracle_26ai-6.2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.11_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVASYSPRIVS' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3265,12 +3265,12 @@
        {
         "id": "cis_oracle_26ai-6.2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.12_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'LOGSTDBY_ADMINISTRATOR' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3308,12 +3308,12 @@
        {
         "id": "cis_oracle_26ai-6.2.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.13_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SQL_FIREWALL_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3351,12 +3351,12 @@
        {
         "id": "cis_oracle_26ai-6.2.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.14_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'MAINTPLAN_APP' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3394,12 +3394,12 @@
        {
         "id": "cis_oracle_26ai-6.2.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.15_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'JAVADEBUGPRIV' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3437,12 +3437,12 @@
        {
         "id": "cis_oracle_26ai-6.2.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.16_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_PATCH_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3480,12 +3480,12 @@
        {
         "id": "cis_oracle_26ai-6.2.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.17_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'DV_POLICY_OWNER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3523,12 +3523,12 @@
        {
         "id": "cis_oracle_26ai-6.2.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.18_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure AUDIT_ADMIN' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3566,12 +3566,12 @@
        {
         "id": "cis_oracle_26ai-6.2.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.19_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'AUDIT_VIEWER' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3609,12 +3609,12 @@
        {
         "id": "cis_oracle_26ai-6.2.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'PDB_DBA' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.20_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'PDB_DBA' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'PDB_DBA' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3652,12 +3652,12 @@
        {
         "id": "cis_oracle_26ai-6.2.21_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.21_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'SELECT_CATALOG_ROLE' Is Revoked From Unauthorized 'GRANTEE'"
+        "prose": "'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
@@ -3695,19 +3695,19 @@
        {
         "id": "cis_oracle_26ai-6.2.22_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'"
        },
        {
         "id": "cis_oracle_26ai-6.2.22_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'EXECUTE_CATALOG_ROLE' Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.3.1",
-      "title": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges (manual review not attested)",
+      "title": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3733,12 +3733,12 @@
        {
         "id": "cis_oracle_26ai-6.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges (manual review not attested)"
+        "prose": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'CDB_SCHEMA_PRIVS' Does Not Have Unauthorized Privileges"
+        "prose": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set"
        }
       ],
       "class": "security"
@@ -3776,19 +3776,19 @@
        {
         "id": "cis_oracle_26ai-6.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables"
+        "prose": "'ALL' must be revoked on 'Sensitive' Tables"
        },
        {
         "id": "cis_oracle_26ai-6.4.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Ensure 'ALL' Is Revoked On 'Sensitive' Tables"
+        "prose": "'ALL' must be revoked on 'Sensitive' Tables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.5.1",
-      "title": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "title": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE' (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3814,19 +3814,19 @@
        {
         "id": "cis_oracle_26ai-6.5.1_stmt",
         "name": "statement",
-        "prose": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+        "prose": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE' (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure ‘DBA_COL_PRIVS’ Is Revoked from Unauthorized 'GRANTEE'"
+        "prose": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.6.1",
-      "title": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "title": "Proxy User Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3852,19 +3852,19 @@
        {
         "id": "cis_oracle_26ai-6.6.1_stmt",
         "name": "statement",
-        "prose": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+        "prose": "Proxy User Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Proxy User Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "Proxy User Privileges must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.7.1",
-      "title": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)",
+      "title": "Custom Java Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3890,19 +3890,19 @@
        {
         "id": "cis_oracle_26ai-6.7.1_stmt",
         "name": "statement",
-        "prose": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE' (manual review not attested)"
+        "prose": "Custom Java Privileges must be removed from unauthorized 'GRANTEE' (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Custom Java Privileges Are Revoked from Unauthorized 'GRANTEE'"
+        "prose": "Custom Java Privileges must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.8.1",
-      "title": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’ (manual review not attested)",
+      "title": "Directory Object Access must be removed from unauthorized 'GRANTEE' (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3928,19 +3928,19 @@
        {
         "id": "cis_oracle_26ai-6.8.1_stmt",
         "name": "statement",
-        "prose": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’ (manual review not attested)"
+        "prose": "Directory Object Access must be removed from unauthorized 'GRANTEE' (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.8.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Directory Object Access Is Revoked From Unauthorized ‘GRANTEE’"
+        "prose": "Directory Object Access must be removed from unauthorized 'GRANTEE'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.8.2",
-      "title": "Review Directory Objects Privileges (manual review not attested)",
+      "title": "Directory Objects Privileges requires a recorded review (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -3966,19 +3966,19 @@
        {
         "id": "cis_oracle_26ai-6.8.2_stmt",
         "name": "statement",
-        "prose": "Review Directory Objects Privileges (manual review not attested)"
+        "prose": "Directory Objects Privileges requires a recorded review (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.8.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Review Directory Objects Privileges"
+        "prose": "Directory Objects Privileges requires a recorded review"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.8.3",
-      "title": "Review External Tables With Preprocessor (manual review not attested)",
+      "title": "External Tables With Preprocessor requires a recorded review (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -4004,19 +4004,19 @@
        {
         "id": "cis_oracle_26ai-6.8.3_stmt",
         "name": "statement",
-        "prose": "Review External Tables With Preprocessor (manual review not attested)"
+        "prose": "External Tables With Preprocessor requires a recorded review (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.8.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Review External Tables With Preprocessor"
+        "prose": "External Tables With Preprocessor requires a recorded review"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_oracle_26ai-6.8.4",
-      "title": "Review External Tables (manual review not attested)",
+      "title": "External Tables requires a recorded review (manual review not attested)",
       "props": [
        {
         "name": "label",
@@ -4042,12 +4042,12 @@
        {
         "id": "cis_oracle_26ai-6.8.4_stmt",
         "name": "statement",
-        "prose": "Review External Tables (manual review not attested)"
+        "prose": "External Tables requires a recorded review (manual review not attested)"
        },
        {
         "id": "cis_oracle_26ai-6.8.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Review External Tables"
+        "prose": "External Tables requires a recorded review"
        }
       ],
       "class": "security"

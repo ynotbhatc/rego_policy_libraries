@@ -32,7 +32,7 @@ loaded_module_set := mods if {
     mods := {m | some m in regex.split(`[\s,]+`, input.loaded_modules); m != ""}
 }
 
-# CIS 1.1.1 - Ensure mounting of cramfs filesystems is disabled
+# CIS 1.1.1 - mounting of cramfs filesystems must be turned off
 default cramfs_disabled := false
 
 cramfs_disabled if {
@@ -40,7 +40,7 @@ cramfs_disabled if {
     not "cramfs" in modules
 }
 
-# CIS 1.1.2 - Ensure mounting of freevxfs filesystems is disabled  
+# CIS 1.1.2 - mounting of freevxfs filesystems must be turned off
 default freevxfs_disabled := false
 
 freevxfs_disabled if {
@@ -48,7 +48,7 @@ freevxfs_disabled if {
     not "freevxfs" in modules
 }
 
-# CIS 1.1.3 - Ensure mounting of jffs2 filesystems is disabled
+# CIS 1.1.3 - mounting of jffs2 filesystems must be turned off
 default jffs2_disabled := false
 
 jffs2_disabled if {
@@ -56,7 +56,7 @@ jffs2_disabled if {
     not "jffs2" in modules
 }
 
-# CIS 1.1.4 - Ensure mounting of hfs filesystems is disabled
+# CIS 1.1.4 - mounting of hfs filesystems must be turned off
 default hfs_disabled := false
 
 hfs_disabled if {
@@ -64,7 +64,7 @@ hfs_disabled if {
     not "hfs" in modules
 }
 
-# CIS 1.1.5 - Ensure mounting of hfsplus filesystems is disabled
+# CIS 1.1.5 - mounting of hfsplus filesystems must be turned off
 default hfsplus_disabled := false
 
 hfsplus_disabled if {
@@ -72,7 +72,7 @@ hfsplus_disabled if {
     not "hfsplus" in modules
 }
 
-# CIS 1.1.6 - Ensure mounting of squashfs filesystems is disabled
+# CIS 1.1.6 - mounting of squashfs filesystems must be turned off
 default squashfs_disabled := false
 
 squashfs_disabled if {
@@ -80,7 +80,7 @@ squashfs_disabled if {
     not "squashfs" in modules
 }
 
-# CIS 1.1.7 - Ensure mounting of udf filesystems is disabled
+# CIS 1.1.7 - mounting of udf filesystems must be turned off
 default udf_disabled := false
 
 udf_disabled if {
@@ -88,28 +88,28 @@ udf_disabled if {
     not "udf" in modules
 }
 
-# CIS 1.1.8 - Ensure /tmp is configured
+# CIS 1.1.8 - /tmp must be explicitly configured
 default tmp_configured := false
 
 tmp_configured if {
     input.mounts["/tmp"]
 }
 
-# CIS 1.1.9 - Ensure nodev option set on /tmp partition
+# CIS 1.1.9 - /tmp must be mounted with the nodev option
 default tmp_nodev := false
 
 tmp_nodev if {
     "nodev" in input.mounts["/tmp"].options
 }
 
-# CIS 1.1.10 - Ensure nosuid option set on /tmp partition
+# CIS 1.1.10 - /tmp must be mounted with the nosuid option
 default tmp_nosuid := false
 
 tmp_nosuid if {
     "nosuid" in input.mounts["/tmp"].options
 }
 
-# CIS 1.1.11 - Ensure noexec option set on /tmp partition
+# CIS 1.1.11 - /tmp must be mounted with the noexec option
 default tmp_noexec := false
 
 tmp_noexec if {

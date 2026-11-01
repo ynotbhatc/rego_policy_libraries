@@ -51,26 +51,26 @@ compliant if {
 
 vcenter_server_violations := [msg |
 	msgs := [
-		{"msg": "1.1 Ensure vCenter Server service account is configured correctly", "condition": vcenter_service_account_secure},
-		{"msg": "1.2 Ensure vCenter Server logging is configured appropriately", "condition": vcenter_logging_configured},
-		{"msg": "1.3 Ensure vCenter Server session timeout is configured", "condition": vcenter_session_timeout_configured},
-		{"msg": "1.4 Ensure vCenter Server password policies are enforced", "condition": vcenter_password_policy_enforced},
-		{"msg": "1.5 Ensure vCenter Server SSL certificates are properly configured", "condition": vcenter_ssl_certificates_secure},
-		{"msg": "1.6 Ensure vCenter Server network security is properly configured", "condition": vcenter_network_security_configured},
-		{"msg": "1.7 Ensure vCenter Server backup and recovery procedures are in place", "condition": vcenter_backup_procedures_configured},
-		{"msg": "1.8 Ensure vCenter Server database security is properly configured", "condition": vcenter_database_security_configured},
-		{"msg": "1.9 Ensure vCenter Server access control is properly configured", "condition": vcenter_access_control_configured},
-		{"msg": "1.10 Ensure vCenter Server audit logging is enabled", "condition": vcenter_audit_logging_enabled},
-		{"msg": "1.11 Ensure vCenter Server management interfaces are secured", "condition": vcenter_management_interfaces_secured},
-		{"msg": "1.12 Ensure vCenter Server time synchronization is configured", "condition": vcenter_time_sync_configured},
-		{"msg": "1.13 Ensure vCenter Server SNMP is configured securely", "condition": vcenter_snmp_secure},
-		{"msg": "1.14 Ensure vCenter Server performance monitoring is secured", "condition": vcenter_performance_monitoring_secure},
-		{"msg": "1.15 Ensure vCenter Server update and patch management is configured", "condition": vcenter_patch_management_configured},
-		{"msg": "1.16 Ensure vCenter Server high availability is properly configured", "condition": vcenter_ha_configured},
-		{"msg": "1.17 Ensure vCenter Server disaster recovery is configured", "condition": vcenter_dr_configured},
-		{"msg": "1.18 Ensure vCenter Server inventory management is secured", "condition": vcenter_inventory_management_secure},
-		{"msg": "1.19 Ensure vCenter Server API access is properly secured", "condition": vcenter_api_access_secure},
-		{"msg": "1.20 Ensure vCenter Server licensing is properly managed", "condition": vcenter_licensing_managed}
+		{"msg": "1.1 vCenter Server service account must match the approved configuration", "condition": vcenter_service_account_secure},
+		{"msg": "1.2 vCenter Server logging must be explicitly configured appropriately", "condition": vcenter_logging_configured},
+		{"msg": "1.3 vCenter Server session timeout must be explicitly configured", "condition": vcenter_session_timeout_configured},
+		{"msg": "1.4 vCenter Server password policies must be enforced", "condition": vcenter_password_policy_enforced},
+		{"msg": "1.5 vCenter Server SSL certificates must match the approved configuration", "condition": vcenter_ssl_certificates_secure},
+		{"msg": "1.6 vCenter Server network security must match the approved configuration", "condition": vcenter_network_security_configured},
+		{"msg": "1.7 vCenter Server backup and recovery procedures must be in place", "condition": vcenter_backup_procedures_configured},
+		{"msg": "1.8 vCenter Server database security must match the approved configuration", "condition": vcenter_database_security_configured},
+		{"msg": "1.9 vCenter Server access control must match the approved configuration", "condition": vcenter_access_control_configured},
+		{"msg": "1.10 vCenter Server audit logging must be turned on", "condition": vcenter_audit_logging_enabled},
+		{"msg": "1.11 vCenter Server management interfaces must be secured", "condition": vcenter_management_interfaces_secured},
+		{"msg": "1.12 vCenter Server time synchronization must be explicitly configured", "condition": vcenter_time_sync_configured},
+		{"msg": "1.13 vCenter Server SNMP must be explicitly configured securely", "condition": vcenter_snmp_secure},
+		{"msg": "1.14 vCenter Server performance monitoring must be secured", "condition": vcenter_performance_monitoring_secure},
+		{"msg": "1.15 vCenter Server update and patch management must be explicitly configured", "condition": vcenter_patch_management_configured},
+		{"msg": "1.16 vCenter Server high availability must match the approved configuration", "condition": vcenter_ha_configured},
+		{"msg": "1.17 vCenter Server disaster recovery must be explicitly configured", "condition": vcenter_dr_configured},
+		{"msg": "1.18 vCenter Server inventory management must be secured", "condition": vcenter_inventory_management_secure},
+		{"msg": "1.19 vCenter Server API access must be properly secured", "condition": vcenter_api_access_secure},
+		{"msg": "1.20 vCenter Server licensing must be properly managed", "condition": vcenter_licensing_managed}
 	]
 	m := msgs[_]
 	not m.condition
@@ -79,18 +79,18 @@ vcenter_server_violations := [msg |
 
 sso_violations := [msg |
 	msgs := [
-		{"msg": "2.1 Ensure SSO password policy is configured securely", "condition": sso_password_policy_secure},
-		{"msg": "2.2 Ensure SSO lockout policy is configured appropriately", "condition": sso_lockout_policy_configured},
-		{"msg": "2.3 Ensure SSO identity sources are configured securely", "condition": sso_identity_sources_secure},
-		{"msg": "2.4 Ensure SSO token policy is configured appropriately", "condition": sso_token_policy_configured},
-		{"msg": "2.5 Ensure SSO certificate management is secure", "condition": sso_certificate_management_secure},
-		{"msg": "2.6 Ensure SSO domain join operations are secured", "condition": sso_domain_join_secure},
-		{"msg": "2.7 Ensure SSO service accounts have minimal privileges", "condition": sso_service_accounts_minimal_privileges},
-		{"msg": "2.8 Ensure SSO audit logging is enabled and configured", "condition": sso_audit_logging_enabled},
-		{"msg": "2.9 Ensure SSO global permissions are reviewed and minimized", "condition": sso_global_permissions_minimized},
-		{"msg": "2.10 Ensure SSO solution user certificates are managed properly", "condition": sso_solution_user_certs_managed},
-		{"msg": "2.11 Ensure SSO IdP discovery is configured securely", "condition": sso_idp_discovery_secure},
-		{"msg": "2.12 Ensure SSO smart card authentication is configured properly", "condition": sso_smart_card_auth_configured}
+		{"msg": "2.1 SSO password policy must be explicitly configured securely", "condition": sso_password_policy_secure},
+		{"msg": "2.2 SSO lockout policy must be explicitly configured appropriately", "condition": sso_lockout_policy_configured},
+		{"msg": "2.3 SSO identity sources must be explicitly configured securely", "condition": sso_identity_sources_secure},
+		{"msg": "2.4 SSO token policy must be explicitly configured appropriately", "condition": sso_token_policy_configured},
+		{"msg": "2.5 SSO certificate management must be secure", "condition": sso_certificate_management_secure},
+		{"msg": "2.6 SSO domain join operations must be secured", "condition": sso_domain_join_secure},
+		{"msg": "2.7 SSO service accounts must have minimal privileges", "condition": sso_service_accounts_minimal_privileges},
+		{"msg": "2.8 SSO audit logging must be turned on and configured", "condition": sso_audit_logging_enabled},
+		{"msg": "2.9 SSO global permissions must be reviewed and minimized", "condition": sso_global_permissions_minimized},
+		{"msg": "2.10 SSO solution user certificates must be managed properly", "condition": sso_solution_user_certs_managed},
+		{"msg": "2.11 SSO IdP discovery must be explicitly configured securely", "condition": sso_idp_discovery_secure},
+		{"msg": "2.12 SSO smart card authentication must be explicitly configured properly", "condition": sso_smart_card_auth_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -99,14 +99,14 @@ sso_violations := [msg |
 
 vsphere_client_violations := [msg |
 	msgs := [
-		{"msg": "3.1 Ensure vSphere Client session timeout is configured", "condition": vsphere_client_session_timeout_configured},
-		{"msg": "3.2 Ensure vSphere Client SSL/TLS configuration is secure", "condition": vsphere_client_ssl_secure},
-		{"msg": "3.3 Ensure vSphere Client access logging is enabled", "condition": vsphere_client_access_logging_enabled},
-		{"msg": "3.4 Ensure vSphere Client plugin security is configured", "condition": vsphere_client_plugin_security_configured},
-		{"msg": "3.5 Ensure vSphere Client content security policy is configured", "condition": vsphere_client_csp_configured},
-		{"msg": "3.6 Ensure vSphere Client HTTP security headers are configured", "condition": vsphere_client_security_headers_configured},
-		{"msg": "3.7 Ensure vSphere Client authentication mechanisms are secure", "condition": vsphere_client_auth_secure},
-		{"msg": "3.8 Ensure vSphere Client cookie security is configured", "condition": vsphere_client_cookie_security_configured}
+		{"msg": "3.1 vSphere Client session timeout must be explicitly configured", "condition": vsphere_client_session_timeout_configured},
+		{"msg": "3.2 vSphere Client SSL/TLS configuration must be secure", "condition": vsphere_client_ssl_secure},
+		{"msg": "3.3 vSphere Client access logging must be turned on", "condition": vsphere_client_access_logging_enabled},
+		{"msg": "3.4 vSphere Client plugin security must be explicitly configured", "condition": vsphere_client_plugin_security_configured},
+		{"msg": "3.5 vSphere Client content security policy must be explicitly configured", "condition": vsphere_client_csp_configured},
+		{"msg": "3.6 vSphere Client HTTP security headers must be explicitly configured", "condition": vsphere_client_security_headers_configured},
+		{"msg": "3.7 vSphere Client authentication mechanisms must be secure", "condition": vsphere_client_auth_secure},
+		{"msg": "3.8 vSphere Client cookie security must be explicitly configured", "condition": vsphere_client_cookie_security_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -115,12 +115,12 @@ vsphere_client_violations := [msg |
 
 inventory_service_violations := [msg |
 	msgs := [
-		{"msg": "4.1 Ensure Inventory Service logging is configured appropriately", "condition": inventory_service_logging_configured},
-		{"msg": "4.2 Ensure Inventory Service access controls are properly configured", "condition": inventory_service_access_controls_configured},
-		{"msg": "4.3 Ensure Inventory Service SSL/TLS configuration is secure", "condition": inventory_service_ssl_secure},
-		{"msg": "4.4 Ensure Inventory Service database connections are secured", "condition": inventory_service_database_secure},
-		{"msg": "4.5 Ensure Inventory Service performance monitoring is configured", "condition": inventory_service_performance_monitoring_configured},
-		{"msg": "4.6 Ensure Inventory Service backup procedures are in place", "condition": inventory_service_backup_configured}
+		{"msg": "4.1 Inventory Service logging must be explicitly configured appropriately", "condition": inventory_service_logging_configured},
+		{"msg": "4.2 Inventory Service access controls must match the approved configuration", "condition": inventory_service_access_controls_configured},
+		{"msg": "4.3 Inventory Service SSL/TLS configuration must be secure", "condition": inventory_service_ssl_secure},
+		{"msg": "4.4 Inventory Service database connections must be secured", "condition": inventory_service_database_secure},
+		{"msg": "4.5 Inventory Service performance monitoring must be explicitly configured", "condition": inventory_service_performance_monitoring_configured},
+		{"msg": "4.6 Inventory Service backup procedures must be in place", "condition": inventory_service_backup_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -129,11 +129,11 @@ inventory_service_violations := [msg |
 
 lookup_service_violations := [msg |
 	msgs := [
-		{"msg": "5.1 Ensure Lookup Service SSL/TLS configuration is secure", "condition": lookup_service_ssl_secure},
-		{"msg": "5.2 Ensure Lookup Service logging is configured appropriately", "condition": lookup_service_logging_configured},
-		{"msg": "5.3 Ensure Lookup Service registration security is configured", "condition": lookup_service_registration_secure},
-		{"msg": "5.4 Ensure Lookup Service access controls are properly configured", "condition": lookup_service_access_controls_configured},
-		{"msg": "5.5 Ensure Lookup Service endpoint security is configured", "condition": lookup_service_endpoint_security_configured}
+		{"msg": "5.1 Lookup Service SSL/TLS configuration must be secure", "condition": lookup_service_ssl_secure},
+		{"msg": "5.2 Lookup Service logging must be explicitly configured appropriately", "condition": lookup_service_logging_configured},
+		{"msg": "5.3 Lookup Service registration security must be explicitly configured", "condition": lookup_service_registration_secure},
+		{"msg": "5.4 Lookup Service access controls must match the approved configuration", "condition": lookup_service_access_controls_configured},
+		{"msg": "5.5 Lookup Service endpoint security must be explicitly configured", "condition": lookup_service_endpoint_security_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -142,14 +142,14 @@ lookup_service_violations := [msg |
 
 postgresql_violations := [msg |
 	msgs := [
-		{"msg": "6.1 Ensure PostgreSQL authentication is configured securely", "condition": postgresql_auth_secure},
-		{"msg": "6.2 Ensure PostgreSQL logging is configured appropriately", "condition": postgresql_logging_configured},
-		{"msg": "6.3 Ensure PostgreSQL connection security is configured", "condition": postgresql_connection_security_configured},
-		{"msg": "6.4 Ensure PostgreSQL access controls are properly configured", "condition": postgresql_access_controls_configured},
-		{"msg": "6.5 Ensure PostgreSQL SSL/TLS configuration is secure", "condition": postgresql_ssl_secure},
-		{"msg": "6.6 Ensure PostgreSQL backup and recovery procedures are in place", "condition": postgresql_backup_configured},
-		{"msg": "6.7 Ensure PostgreSQL performance monitoring is configured", "condition": postgresql_performance_monitoring_configured},
-		{"msg": "6.8 Ensure PostgreSQL audit logging is enabled", "condition": postgresql_audit_logging_enabled}
+		{"msg": "6.1 PostgreSQL authentication must be explicitly configured securely", "condition": postgresql_auth_secure},
+		{"msg": "6.2 PostgreSQL logging must be explicitly configured appropriately", "condition": postgresql_logging_configured},
+		{"msg": "6.3 PostgreSQL connection security must be explicitly configured", "condition": postgresql_connection_security_configured},
+		{"msg": "6.4 PostgreSQL access controls must match the approved configuration", "condition": postgresql_access_controls_configured},
+		{"msg": "6.5 PostgreSQL SSL/TLS configuration must be secure", "condition": postgresql_ssl_secure},
+		{"msg": "6.6 PostgreSQL backup and recovery procedures must be in place", "condition": postgresql_backup_configured},
+		{"msg": "6.7 PostgreSQL performance monitoring must be explicitly configured", "condition": postgresql_performance_monitoring_configured},
+		{"msg": "6.8 PostgreSQL audit logging must be turned on", "condition": postgresql_audit_logging_enabled}
 	]
 	m := msgs[_]
 	not m.condition
@@ -158,16 +158,16 @@ postgresql_violations := [msg |
 
 photon_os_violations := [msg |
 	msgs := [
-		{"msg": "7.1 Ensure Photon OS firewall is configured appropriately", "condition": photon_firewall_configured},
-		{"msg": "7.2 Ensure Photon OS system logging is configured", "condition": photon_logging_configured},
-		{"msg": "7.3 Ensure Photon OS access controls are properly configured", "condition": photon_access_controls_configured},
-		{"msg": "7.4 Ensure Photon OS network security is configured", "condition": photon_network_security_configured},
-		{"msg": "7.5 Ensure Photon OS time synchronization is configured", "condition": photon_time_sync_configured},
-		{"msg": "7.6 Ensure Photon OS package management is secure", "condition": photon_package_management_secure},
-		{"msg": "7.7 Ensure Photon OS user account security is configured", "condition": photon_user_account_security_configured},
-		{"msg": "7.8 Ensure Photon OS audit logging is enabled", "condition": photon_audit_logging_enabled},
-		{"msg": "7.9 Ensure Photon OS kernel security parameters are configured", "condition": photon_kernel_security_configured},
-		{"msg": "7.10 Ensure Photon OS filesystem security is configured", "condition": photon_filesystem_security_configured}
+		{"msg": "7.1 Photon OS firewall must be explicitly configured appropriately", "condition": photon_firewall_configured},
+		{"msg": "7.2 Photon OS system logging must be explicitly configured", "condition": photon_logging_configured},
+		{"msg": "7.3 Photon OS access controls must match the approved configuration", "condition": photon_access_controls_configured},
+		{"msg": "7.4 Photon OS network security must be explicitly configured", "condition": photon_network_security_configured},
+		{"msg": "7.5 Photon OS time synchronization must be explicitly configured", "condition": photon_time_sync_configured},
+		{"msg": "7.6 Photon OS package management must be secure", "condition": photon_package_management_secure},
+		{"msg": "7.7 Photon OS user account security must be explicitly configured", "condition": photon_user_account_security_configured},
+		{"msg": "7.8 Photon OS audit logging must be turned on", "condition": photon_audit_logging_enabled},
+		{"msg": "7.9 Photon OS kernel security parameters must be explicitly configured", "condition": photon_kernel_security_configured},
+		{"msg": "7.10 Photon OS filesystem security must be explicitly configured", "condition": photon_filesystem_security_configured}
 	]
 	m := msgs[_]
 	not m.condition
@@ -176,10 +176,10 @@ photon_os_violations := [msg |
 
 performance_charts_violations := [msg |
 	msgs := [
-		{"msg": "8.1 Ensure Performance Charts service logging is configured", "condition": performance_charts_logging_configured},
-		{"msg": "8.2 Ensure Performance Charts service SSL/TLS is configured securely", "condition": performance_charts_ssl_secure},
-		{"msg": "8.3 Ensure Performance Charts service access controls are configured", "condition": performance_charts_access_controls_configured},
-		{"msg": "8.4 Ensure Performance Charts service database security is configured", "condition": performance_charts_database_secure}
+		{"msg": "8.1 Performance Charts service logging must be explicitly configured", "condition": performance_charts_logging_configured},
+		{"msg": "8.2 Performance Charts service SSL/TLS must be explicitly configured securely", "condition": performance_charts_ssl_secure},
+		{"msg": "8.3 Performance Charts service access controls must be explicitly configured", "condition": performance_charts_access_controls_configured},
+		{"msg": "8.4 Performance Charts service database security must be explicitly configured", "condition": performance_charts_database_secure}
 	]
 	m := msgs[_]
 	not m.condition

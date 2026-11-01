@@ -21,7 +21,7 @@ import rego.v1
 # CIS Docker Benchmark
 # Section 1: Host Configuration
 
-# CIS 1.1 - Ensure a separate partition for containers has been created
+# CIS 1.1 - a separate partition for containers must have been created
 default separate_partition_for_containers := false
 
 separate_partition_for_containers if {
@@ -29,7 +29,7 @@ separate_partition_for_containers if {
     input.docker_partition.mount_point == "/var/lib/docker"
 }
 
-# CIS 1.2 - Ensure only trusted users are allowed to control Docker daemon
+# CIS 1.2 - only trusted users must be allowed to control Docker daemon
 default trusted_docker_users := false
 
 trusted_docker_users if {
@@ -38,14 +38,14 @@ trusted_docker_users if {
     count([user | user := input.docker_group_members[_]; not user in input.trusted_users]) == 0
 }
 
-# CIS 1.3 - Ensure auditing is configured for the Docker daemon
+# CIS 1.3 - auditing must be explicitly configured for the Docker daemon
 default docker_daemon_auditing := false
 
 docker_daemon_auditing if {
     "/usr/bin/dockerd" in input.audit_rules
 }
 
-# CIS 1.4 - Ensure auditing is configured for Docker files and directories
+# CIS 1.4 - auditing must be explicitly configured for Docker files and directories
 default docker_files_auditing := false
 
 docker_files_auditing if {
@@ -63,63 +63,63 @@ docker_files_auditing if {
     }
 }
 
-# CIS 1.5 - Ensure auditing is configured for /etc/default/docker
+# CIS 1.5 - auditing must be explicitly configured for /etc/default/docker
 default default_docker_auditing := false
 
 default_docker_auditing if {
     "/etc/default/docker" in input.audit_rules
 }
 
-# CIS 1.6 - Ensure auditing is configured for /etc/sysconfig/docker
+# CIS 1.6 - auditing must be explicitly configured for /etc/sysconfig/docker
 default sysconfig_docker_auditing := false
 
 sysconfig_docker_auditing if {
     "/etc/sysconfig/docker" in input.audit_rules
 }
 
-# CIS 1.7 - Ensure auditing is configured for /etc/docker/daemon.json
+# CIS 1.7 - auditing must be explicitly configured for /etc/docker/daemon.json
 default daemon_json_auditing := false
 
 daemon_json_auditing if {
     "/etc/docker/daemon.json" in input.audit_rules
 }
 
-# CIS 1.8 - Ensure auditing is configured for /usr/bin/docker-containerd
+# CIS 1.8 - auditing must be explicitly configured for /usr/bin/docker-containerd
 default containerd_auditing := false
 
 containerd_auditing if {
     "/usr/bin/docker-containerd" in input.audit_rules
 }
 
-# CIS 1.9 - Ensure auditing is configured for /usr/bin/docker-runc
+# CIS 1.9 - auditing must be explicitly configured for /usr/bin/docker-runc
 default runc_auditing := false
 
 runc_auditing if {
     "/usr/bin/docker-runc" in input.audit_rules
 }
 
-# CIS 1.10 - Ensure auditing is configured for /usr/bin/docker
+# CIS 1.10 - auditing must be explicitly configured for /usr/bin/docker
 default docker_binary_auditing := false
 
 docker_binary_auditing if {
     "/usr/bin/docker" in input.audit_rules
 }
 
-# CIS 1.11 - Ensure auditing is configured for /var/lib/docker
+# CIS 1.11 - auditing must be explicitly configured for /var/lib/docker
 default docker_lib_auditing := false
 
 docker_lib_auditing if {
     "/var/lib/docker" in input.audit_rules
 }
 
-# CIS 1.12 - Ensure auditing is configured for /etc/docker
+# CIS 1.12 - auditing must be explicitly configured for /etc/docker
 default docker_etc_auditing := false
 
 docker_etc_auditing if {
     "/etc/docker" in input.audit_rules
 }
 
-# CIS 1.13 - Ensure auditing is configured for docker.service
+# CIS 1.13 - auditing must be explicitly configured for docker.service
 default docker_service_auditing := false
 
 docker_service_auditing if {
@@ -127,7 +127,7 @@ docker_service_auditing if {
     contains(path, "docker.service")
 }
 
-# CIS 1.14 - Ensure auditing is configured for docker.socket
+# CIS 1.14 - auditing must be explicitly configured for docker.socket
 default docker_socket_auditing := false
 
 docker_socket_auditing if {

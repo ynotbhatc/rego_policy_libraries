@@ -9,7 +9,8 @@ benchmarks/cis/oracle/cis_oracle_26ai.rego plus tests/test_cis_oracle_26ai.rego.
 
 Adapted from gen_oracle_db_23ai.py (CIS renamed 23ai to 26ai; 87 recommendations carried over, seven new).
 Differences from the 23ai generator:
-  * ids, titles, Automated/Manual status and profiles come from the workbook, not PDF text;
+  * ids, Automated/Manual status and profiles come from the workbook, not PDF text;
+    wording written into the module is original (neutralize_title), not the benchmark title;
   * every Automated check fails closed with its own "<id>: evidence missing — <field> not collected"
     message when the facts it reads were not collected (an empty settings object is not evidence);
   * every Manual review without a decidable fact is an attestation boolean (not attested => violation);
@@ -18,6 +19,8 @@ The logic table is hand-authored from the audit procedures. Input contract match
 """
 import json
 import pathlib
+
+from neutralize import publish_titles
 import sys
 
 import openpyxl
@@ -376,6 +379,7 @@ def main(xlsx):
     for rid, r in recs.items():  # every attestation must be a Manual recommendation
         if RULES[rid]["kind"] == "attest" and r["status"] != "Manual":
             raise SystemExit(f"{rid} is {r['status']} in the workbook but the logic table attests it")
+    recs = publish_titles(recs)
     ids = sorted(recs, key=key)
     tops = sorted({rid.split(".")[0] for rid in ids}, key=int)
     sections = {s: all_sections[s] for s in tops}
@@ -389,7 +393,7 @@ def main(xlsx):
     L = ["# METADATA", f'# title: "{BENCH}"', "# custom:", "#   class: security", "#   framework: cis_oracle_26ai",
          "#   source: cis", "#   domains: [database, oracle]", "package cis.oracle_26ai", "",
          f"# {BENCH} (CIS renamed the Oracle Database 23ai benchmark to 26ai; supersedes cis.oracle_23ai).",
-         f"# {len(ids)} recommendations ({n_auto} Automated, {n_manual} Manual), every one in the benchmark; ids, titles,",
+         f"# {len(ids)} recommendations ({n_auto} Automated, {n_manual} Manual), every one in the benchmark; ids,",
          "# status and profiles read from the CIS workbook and the logic written from each audit procedure",
          "# (tools/cis_generators/gen_oracle_db_26ai.py). All recommendations are Level 1.",
          f"# Profiles: {len(rdbms)} are 'Level 1 - RDBMS'; the {len(host)} host-file recommendations ({', '.join(host_sections)})",

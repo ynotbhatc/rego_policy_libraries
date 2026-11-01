@@ -43,7 +43,7 @@ violations := [v |
 
 # Section 1: Host Configuration
 host_config_violations := [
-    "1.1.1: Ensure a separate partition for containers has been created" |
+    "1.1.1: a separate partition for containers must have been created" |
     not input.host.separate_partition_exists
 ]
 
@@ -62,7 +62,7 @@ host_config_violations := [
 
 # Section 2: Docker daemon configuration
 docker_daemon_violations := [
-    "2.1: Ensure network traffic is restricted between containers on the default bridge" |
+    "2.1: network traffic must be restricted between containers on the default bridge" |
     input.docker.daemon_config.icc == true
 ]
 
@@ -84,7 +84,7 @@ docker_daemon_violations := [
 
 # Section 3: Docker daemon configuration files
 daemon_config_violations := [
-    "3.1: Ensure that the docker.service file ownership is set to root:root" |
+    "3.1: required value of the docker.service file ownership is root:root" |
     input.host.file_permissions["docker.service"].owner != "root"
     input.host.file_permissions["docker.service"].group != "root"
 ]
@@ -112,7 +112,7 @@ daemon_config_violations := [
 
 # Section 4: Container Images and Build File
 container_images_violations := [
-    "4.1: Ensure that a user for the container has been created" |
+    "4.1: a user for the container must have been created" |
     image := input.container_images[_]
     not image.user_created
 ]
@@ -129,7 +129,7 @@ container_images_violations := [
 
 # Section 5: Container Runtime
 container_runtime_violations := [
-    "5.1: Ensure that, if applicable, an AppArmor Profile is enabled" |
+    "5.1: that, if applicable, an AppArmor Profile must be turned on" |
     container := input.running_containers[_]
     container.security_opts.apparmor == "unconfined"
 ]
@@ -174,14 +174,14 @@ sensitive_host_directory(path) if {
 
 # Section 6: Docker Security Operations
 docker_security_violations := [
-    "6.1: Ensure that image sprawl is avoided" |
+    "6.1: image sprawl must be avoided" |
     count(input.container_images) > input.recommended_max_images
 ]
 
 
 # Section 7: Docker Swarm Configuration
 swarm_config_violations := [
-    "7.1: Ensure swarm mode is not Enabled, if not needed" |
+    "7.1: swarm mode must stay off, if not needed" |
     input.docker.swarm_mode.enabled == true
     not input.docker.swarm_mode.needed
 ]

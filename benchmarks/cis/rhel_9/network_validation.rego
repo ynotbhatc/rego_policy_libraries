@@ -225,17 +225,17 @@ zone_icmp_ok(z) if {
 }
 
 # 3.1.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure IPv6 status is identified
+# IPv6 status must be identified
 default p_3_1_1 := false
 
 p_3_1_1 if {
 	input.attest.ipv6_status_identified == true
 }
 
-violations contains "3.1.1: manual review not attested — set attest.ipv6_status_identified to true once reviewed (Ensure IPv6 status is identified)" if not p_3_1_1
+violations contains "3.1.1: manual review not attested — set attest.ipv6_status_identified to true once reviewed (IPv6 status must be identified)" if not p_3_1_1
 
 # 3.1.2 (Automated; Level 1 - Server)
-# Ensure wireless interfaces are not available
+# wireless interfaces must be not available
 default e_3_1_2 := false
 
 e_3_1_2 if {
@@ -261,13 +261,13 @@ p_3_1_2 if {
 
 violations contains "3.1.2: evidence missing — wireless_interfaces.has_wireless/modules not collected" if not e_3_1_2
 
-violations contains "3.1.2: not met — Ensure wireless interfaces are not available" if {
+violations contains "3.1.2: not met — wireless interfaces must be not available" if {
 	e_3_1_2
 	not p_3_1_2
 }
 
 # 3.1.3 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure bluetooth services are not in use
+# bluetooth services must not be running
 default e_3_1_3 := false
 
 e_3_1_3 if {
@@ -295,13 +295,13 @@ p_3_1_3 if {
 
 violations contains "3.1.3: evidence missing — packages[bluez] / services[bluetooth.service] not collected" if not e_3_1_3
 
-violations contains "3.1.3: not met — Ensure bluetooth services are not in use" if {
+violations contains "3.1.3: not met — bluetooth services must not be running" if {
 	e_3_1_3
 	not p_3_1_3
 }
 
 # 3.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure dccp kernel module is not available
+# dccp kernel module must be blocked from loading
 default e_3_2_1 := false
 
 e_3_2_1 if {
@@ -319,13 +319,13 @@ p_3_2_1 if {
 
 violations contains "3.2.1: evidence missing — disabled_network_modules.modules[dccp] not collected" if not e_3_2_1
 
-violations contains "3.2.1: not met — Ensure dccp kernel module is not available" if {
+violations contains "3.2.1: not met — dccp kernel module must be blocked from loading" if {
 	e_3_2_1
 	not p_3_2_1
 }
 
 # 3.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure tipc kernel module is not available
+# tipc kernel module must be blocked from loading
 default e_3_2_2 := false
 
 e_3_2_2 if {
@@ -343,13 +343,13 @@ p_3_2_2 if {
 
 violations contains "3.2.2: evidence missing — disabled_network_modules.modules[tipc] not collected" if not e_3_2_2
 
-violations contains "3.2.2: not met — Ensure tipc kernel module is not available" if {
+violations contains "3.2.2: not met — tipc kernel module must be blocked from loading" if {
 	e_3_2_2
 	not p_3_2_2
 }
 
 # 3.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure rds kernel module is not available
+# rds kernel module must be blocked from loading
 default e_3_2_3 := false
 
 e_3_2_3 if {
@@ -367,13 +367,13 @@ p_3_2_3 if {
 
 violations contains "3.2.3: evidence missing — disabled_network_modules.modules[rds] not collected" if not e_3_2_3
 
-violations contains "3.2.3: not met — Ensure rds kernel module is not available" if {
+violations contains "3.2.3: not met — rds kernel module must be blocked from loading" if {
 	e_3_2_3
 	not p_3_2_3
 }
 
 # 3.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sctp kernel module is not available
+# sctp kernel module must be blocked from loading
 default e_3_2_4 := false
 
 e_3_2_4 if {
@@ -391,13 +391,13 @@ p_3_2_4 if {
 
 violations contains "3.2.4: evidence missing — disabled_network_modules.modules[sctp] not collected" if not e_3_2_4
 
-violations contains "3.2.4: not met — Ensure sctp kernel module is not available" if {
+violations contains "3.2.4: not met — sctp kernel module must be blocked from loading" if {
 	e_3_2_4
 	not p_3_2_4
 }
 
 # 3.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure atm kernel module is not available
+# atm kernel module must be blocked from loading
 default e_3_2_5 := false
 
 e_3_2_5 if {
@@ -415,13 +415,13 @@ p_3_2_5 if {
 
 violations contains "3.2.5: evidence missing — disabled_network_modules.modules[atm] not collected" if not e_3_2_5
 
-violations contains "3.2.5: not met — Ensure atm kernel module is not available" if {
+violations contains "3.2.5: not met — atm kernel module must be blocked from loading" if {
 	e_3_2_5
 	not p_3_2_5
 }
 
 # 3.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure can kernel module is not available
+# can kernel module must be blocked from loading
 default e_3_2_6 := false
 
 e_3_2_6 if {
@@ -439,13 +439,13 @@ p_3_2_6 if {
 
 violations contains "3.2.6: evidence missing — disabled_network_modules.modules[can] not collected" if not e_3_2_6
 
-violations contains "3.2.6: not met — Ensure can kernel module is not available" if {
+violations contains "3.2.6: not met — can kernel module must be blocked from loading" if {
 	e_3_2_6
 	not p_3_2_6
 }
 
 # 3.3.1.1 (Automated; Level 2 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.ip_forward is configured
+# net.ipv4.ip_forward must be explicitly configured
 default e_3_3_1_1 := false
 
 e_3_3_1_1 if {
@@ -463,13 +463,13 @@ p_3_3_1_1 if {
 
 violations contains "3.3.1.1: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.ip_forward] not collected" if not e_3_3_1_1
 
-violations contains "3.3.1.1: not met — Ensure net.ipv4.ip_forward is configured" if {
+violations contains "3.3.1.1: not met — net.ipv4.ip_forward must be explicitly configured" if {
 	e_3_3_1_1
 	not p_3_3_1_1
 }
 
 # 3.3.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.forwarding is configured
+# net.ipv4.conf.all.forwarding must be explicitly configured
 default e_3_3_1_2 := false
 
 e_3_3_1_2 if {
@@ -487,13 +487,13 @@ p_3_3_1_2 if {
 
 violations contains "3.3.1.2: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.forwarding] not collected" if not e_3_3_1_2
 
-violations contains "3.3.1.2: not met — Ensure net.ipv4.conf.all.forwarding is configured" if {
+violations contains "3.3.1.2: not met — net.ipv4.conf.all.forwarding must be explicitly configured" if {
 	e_3_3_1_2
 	not p_3_3_1_2
 }
 
 # 3.3.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.forwarding is configured
+# net.ipv4.conf.default.forwarding must be explicitly configured
 default e_3_3_1_3 := false
 
 e_3_3_1_3 if {
@@ -511,13 +511,13 @@ p_3_3_1_3 if {
 
 violations contains "3.3.1.3: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.forwarding] not collected" if not e_3_3_1_3
 
-violations contains "3.3.1.3: not met — Ensure net.ipv4.conf.default.forwarding is configured" if {
+violations contains "3.3.1.3: not met — net.ipv4.conf.default.forwarding must be explicitly configured" if {
 	e_3_3_1_3
 	not p_3_3_1_3
 }
 
 # 3.3.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.send_redirects is configured
+# net.ipv4.conf.all.send_redirects must be explicitly configured
 default e_3_3_1_4 := false
 
 e_3_3_1_4 if {
@@ -535,13 +535,13 @@ p_3_3_1_4 if {
 
 violations contains "3.3.1.4: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.send_redirects] not collected" if not e_3_3_1_4
 
-violations contains "3.3.1.4: not met — Ensure net.ipv4.conf.all.send_redirects is configured" if {
+violations contains "3.3.1.4: not met — net.ipv4.conf.all.send_redirects must be explicitly configured" if {
 	e_3_3_1_4
 	not p_3_3_1_4
 }
 
 # 3.3.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.send_redirects is configured
+# net.ipv4.conf.default.send_redirects must be explicitly configured
 default e_3_3_1_5 := false
 
 e_3_3_1_5 if {
@@ -559,13 +559,13 @@ p_3_3_1_5 if {
 
 violations contains "3.3.1.5: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.send_redirects] not collected" if not e_3_3_1_5
 
-violations contains "3.3.1.5: not met — Ensure net.ipv4.conf.default.send_redirects is configured" if {
+violations contains "3.3.1.5: not met — net.ipv4.conf.default.send_redirects must be explicitly configured" if {
 	e_3_3_1_5
 	not p_3_3_1_5
 }
 
 # 3.3.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.icmp_ignore_bogus_error_responses is configured
+# net.ipv4.icmp_ignore_bogus_error_responses must be explicitly configured
 default e_3_3_1_6 := false
 
 e_3_3_1_6 if {
@@ -583,13 +583,13 @@ p_3_3_1_6 if {
 
 violations contains "3.3.1.6: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.icmp_ignore_bogus_error_responses] not collected" if not e_3_3_1_6
 
-violations contains "3.3.1.6: not met — Ensure net.ipv4.icmp_ignore_bogus_error_responses is configured" if {
+violations contains "3.3.1.6: not met — net.ipv4.icmp_ignore_bogus_error_responses must be explicitly configured" if {
 	e_3_3_1_6
 	not p_3_3_1_6
 }
 
 # 3.3.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.icmp_echo_ignore_broadcasts is configured
+# net.ipv4.icmp_echo_ignore_broadcasts must be explicitly configured
 default e_3_3_1_7 := false
 
 e_3_3_1_7 if {
@@ -607,13 +607,13 @@ p_3_3_1_7 if {
 
 violations contains "3.3.1.7: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.icmp_echo_ignore_broadcasts] not collected" if not e_3_3_1_7
 
-violations contains "3.3.1.7: not met — Ensure net.ipv4.icmp_echo_ignore_broadcasts is configured" if {
+violations contains "3.3.1.7: not met — net.ipv4.icmp_echo_ignore_broadcasts must be explicitly configured" if {
 	e_3_3_1_7
 	not p_3_3_1_7
 }
 
 # 3.3.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.accept_redirects is configured
+# net.ipv4.conf.all.accept_redirects must be explicitly configured
 default e_3_3_1_8 := false
 
 e_3_3_1_8 if {
@@ -631,13 +631,13 @@ p_3_3_1_8 if {
 
 violations contains "3.3.1.8: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.accept_redirects] not collected" if not e_3_3_1_8
 
-violations contains "3.3.1.8: not met — Ensure net.ipv4.conf.all.accept_redirects is configured" if {
+violations contains "3.3.1.8: not met — net.ipv4.conf.all.accept_redirects must be explicitly configured" if {
 	e_3_3_1_8
 	not p_3_3_1_8
 }
 
 # 3.3.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.accept_redirects is configured
+# net.ipv4.conf.default.accept_redirects must be explicitly configured
 default e_3_3_1_9 := false
 
 e_3_3_1_9 if {
@@ -655,13 +655,13 @@ p_3_3_1_9 if {
 
 violations contains "3.3.1.9: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.accept_redirects] not collected" if not e_3_3_1_9
 
-violations contains "3.3.1.9: not met — Ensure net.ipv4.conf.default.accept_redirects is configured" if {
+violations contains "3.3.1.9: not met — net.ipv4.conf.default.accept_redirects must be explicitly configured" if {
 	e_3_3_1_9
 	not p_3_3_1_9
 }
 
 # 3.3.1.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.secure_redirects is configured
+# net.ipv4.conf.all.secure_redirects must be explicitly configured
 default e_3_3_1_10 := false
 
 e_3_3_1_10 if {
@@ -679,13 +679,13 @@ p_3_3_1_10 if {
 
 violations contains "3.3.1.10: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.secure_redirects] not collected" if not e_3_3_1_10
 
-violations contains "3.3.1.10: not met — Ensure net.ipv4.conf.all.secure_redirects is configured" if {
+violations contains "3.3.1.10: not met — net.ipv4.conf.all.secure_redirects must be explicitly configured" if {
 	e_3_3_1_10
 	not p_3_3_1_10
 }
 
 # 3.3.1.11 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.secure_redirects is configured
+# net.ipv4.conf.default.secure_redirects must be explicitly configured
 default e_3_3_1_11 := false
 
 e_3_3_1_11 if {
@@ -703,13 +703,13 @@ p_3_3_1_11 if {
 
 violations contains "3.3.1.11: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.secure_redirects] not collected" if not e_3_3_1_11
 
-violations contains "3.3.1.11: not met — Ensure net.ipv4.conf.default.secure_redirects is configured" if {
+violations contains "3.3.1.11: not met — net.ipv4.conf.default.secure_redirects must be explicitly configured" if {
 	e_3_3_1_11
 	not p_3_3_1_11
 }
 
 # 3.3.1.12 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.rp_filter is configured
+# net.ipv4.conf.all.rp_filter must be explicitly configured
 default e_3_3_1_12 := false
 
 e_3_3_1_12 if {
@@ -727,13 +727,13 @@ p_3_3_1_12 if {
 
 violations contains "3.3.1.12: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.rp_filter] not collected" if not e_3_3_1_12
 
-violations contains "3.3.1.12: not met — Ensure net.ipv4.conf.all.rp_filter is configured" if {
+violations contains "3.3.1.12: not met — net.ipv4.conf.all.rp_filter must be explicitly configured" if {
 	e_3_3_1_12
 	not p_3_3_1_12
 }
 
 # 3.3.1.13 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.rp_filter is configured
+# net.ipv4.conf.default.rp_filter must be explicitly configured
 default e_3_3_1_13 := false
 
 e_3_3_1_13 if {
@@ -751,13 +751,13 @@ p_3_3_1_13 if {
 
 violations contains "3.3.1.13: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.rp_filter] not collected" if not e_3_3_1_13
 
-violations contains "3.3.1.13: not met — Ensure net.ipv4.conf.default.rp_filter is configured" if {
+violations contains "3.3.1.13: not met — net.ipv4.conf.default.rp_filter must be explicitly configured" if {
 	e_3_3_1_13
 	not p_3_3_1_13
 }
 
 # 3.3.1.14 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.accept_source_route is configured
+# net.ipv4.conf.all.accept_source_route must be explicitly configured
 default e_3_3_1_14 := false
 
 e_3_3_1_14 if {
@@ -775,13 +775,13 @@ p_3_3_1_14 if {
 
 violations contains "3.3.1.14: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.accept_source_route] not collected" if not e_3_3_1_14
 
-violations contains "3.3.1.14: not met — Ensure net.ipv4.conf.all.accept_source_route is configured" if {
+violations contains "3.3.1.14: not met — net.ipv4.conf.all.accept_source_route must be explicitly configured" if {
 	e_3_3_1_14
 	not p_3_3_1_14
 }
 
 # 3.3.1.15 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.accept_source_route is configured
+# net.ipv4.conf.default.accept_source_route must be explicitly configured
 default e_3_3_1_15 := false
 
 e_3_3_1_15 if {
@@ -799,13 +799,13 @@ p_3_3_1_15 if {
 
 violations contains "3.3.1.15: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.accept_source_route] not collected" if not e_3_3_1_15
 
-violations contains "3.3.1.15: not met — Ensure net.ipv4.conf.default.accept_source_route is configured" if {
+violations contains "3.3.1.15: not met — net.ipv4.conf.default.accept_source_route must be explicitly configured" if {
 	e_3_3_1_15
 	not p_3_3_1_15
 }
 
 # 3.3.1.16 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.log_martians is configured
+# net.ipv4.conf.all.log_martians must be explicitly configured
 default e_3_3_1_16 := false
 
 e_3_3_1_16 if {
@@ -823,13 +823,13 @@ p_3_3_1_16 if {
 
 violations contains "3.3.1.16: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.log_martians] not collected" if not e_3_3_1_16
 
-violations contains "3.3.1.16: not met — Ensure net.ipv4.conf.all.log_martians is configured" if {
+violations contains "3.3.1.16: not met — net.ipv4.conf.all.log_martians must be explicitly configured" if {
 	e_3_3_1_16
 	not p_3_3_1_16
 }
 
 # 3.3.1.17 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.log_martians is configured
+# net.ipv4.conf.default.log_martians must be explicitly configured
 default e_3_3_1_17 := false
 
 e_3_3_1_17 if {
@@ -847,13 +847,13 @@ p_3_3_1_17 if {
 
 violations contains "3.3.1.17: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.log_martians] not collected" if not e_3_3_1_17
 
-violations contains "3.3.1.17: not met — Ensure net.ipv4.conf.default.log_martians is configured" if {
+violations contains "3.3.1.17: not met — net.ipv4.conf.default.log_martians must be explicitly configured" if {
 	e_3_3_1_17
 	not p_3_3_1_17
 }
 
 # 3.3.1.18 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.tcp_syncookies is configured
+# net.ipv4.tcp_syncookies must be explicitly configured
 default e_3_3_1_18 := false
 
 e_3_3_1_18 if {
@@ -871,13 +871,13 @@ p_3_3_1_18 if {
 
 violations contains "3.3.1.18: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.tcp_syncookies] not collected" if not e_3_3_1_18
 
-violations contains "3.3.1.18: not met — Ensure net.ipv4.tcp_syncookies is configured" if {
+violations contains "3.3.1.18: not met — net.ipv4.tcp_syncookies must be explicitly configured" if {
 	e_3_3_1_18
 	not p_3_3_1_18
 }
 
 # 3.3.1.19 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.all.route_localnet is configured
+# net.ipv4.conf.all.route_localnet must be explicitly configured
 default e_3_3_1_19 := false
 
 e_3_3_1_19 if {
@@ -895,13 +895,13 @@ p_3_3_1_19 if {
 
 violations contains "3.3.1.19: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.all.route_localnet] not collected" if not e_3_3_1_19
 
-violations contains "3.3.1.19: not met — Ensure net.ipv4.conf.all.route_localnet is configured" if {
+violations contains "3.3.1.19: not met — net.ipv4.conf.all.route_localnet must be explicitly configured" if {
 	e_3_3_1_19
 	not p_3_3_1_19
 }
 
 # 3.3.1.20 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv4.conf.default.route_localnet is configured
+# net.ipv4.conf.default.route_localnet must be explicitly configured
 default e_3_3_1_20 := false
 
 e_3_3_1_20 if {
@@ -919,13 +919,13 @@ p_3_3_1_20 if {
 
 violations contains "3.3.1.20: evidence missing — sysctl_parameters.analysis/persisted[net.ipv4.conf.default.route_localnet] not collected" if not e_3_3_1_20
 
-violations contains "3.3.1.20: not met — Ensure net.ipv4.conf.default.route_localnet is configured" if {
+violations contains "3.3.1.20: not met — net.ipv4.conf.default.route_localnet must be explicitly configured" if {
 	e_3_3_1_20
 	not p_3_3_1_20
 }
 
 # 3.3.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.all.forwarding is configured
+# net.ipv6.conf.all.forwarding must be explicitly configured
 default e_3_3_2_1 := false
 
 e_3_3_2_1 if {
@@ -951,13 +951,13 @@ p_3_3_2_1 if {
 
 violations contains "3.3.2.1: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.forwarding] not collected" if not e_3_3_2_1
 
-violations contains "3.3.2.1: not met — Ensure net.ipv6.conf.all.forwarding is configured" if {
+violations contains "3.3.2.1: not met — net.ipv6.conf.all.forwarding must be explicitly configured" if {
 	e_3_3_2_1
 	not p_3_3_2_1
 }
 
 # 3.3.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.default.forwarding is configured
+# net.ipv6.conf.default.forwarding must be explicitly configured
 default e_3_3_2_2 := false
 
 e_3_3_2_2 if {
@@ -983,13 +983,13 @@ p_3_3_2_2 if {
 
 violations contains "3.3.2.2: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.forwarding] not collected" if not e_3_3_2_2
 
-violations contains "3.3.2.2: not met — Ensure net.ipv6.conf.default.forwarding is configured" if {
+violations contains "3.3.2.2: not met — net.ipv6.conf.default.forwarding must be explicitly configured" if {
 	e_3_3_2_2
 	not p_3_3_2_2
 }
 
 # 3.3.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.all.accept_redirects is configured
+# net.ipv6.conf.all.accept_redirects must be explicitly configured
 default e_3_3_2_3 := false
 
 e_3_3_2_3 if {
@@ -1015,13 +1015,13 @@ p_3_3_2_3 if {
 
 violations contains "3.3.2.3: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_redirects] not collected" if not e_3_3_2_3
 
-violations contains "3.3.2.3: not met — Ensure net.ipv6.conf.all.accept_redirects is configured" if {
+violations contains "3.3.2.3: not met — net.ipv6.conf.all.accept_redirects must be explicitly configured" if {
 	e_3_3_2_3
 	not p_3_3_2_3
 }
 
 # 3.3.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.default.accept_redirects is configured
+# net.ipv6.conf.default.accept_redirects must be explicitly configured
 default e_3_3_2_4 := false
 
 e_3_3_2_4 if {
@@ -1047,13 +1047,13 @@ p_3_3_2_4 if {
 
 violations contains "3.3.2.4: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_redirects] not collected" if not e_3_3_2_4
 
-violations contains "3.3.2.4: not met — Ensure net.ipv6.conf.default.accept_redirects is configured" if {
+violations contains "3.3.2.4: not met — net.ipv6.conf.default.accept_redirects must be explicitly configured" if {
 	e_3_3_2_4
 	not p_3_3_2_4
 }
 
 # 3.3.2.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.all.accept_source_route is configured
+# net.ipv6.conf.all.accept_source_route must be explicitly configured
 default e_3_3_2_5 := false
 
 e_3_3_2_5 if {
@@ -1079,13 +1079,13 @@ p_3_3_2_5 if {
 
 violations contains "3.3.2.5: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_source_route] not collected" if not e_3_3_2_5
 
-violations contains "3.3.2.5: not met — Ensure net.ipv6.conf.all.accept_source_route is configured" if {
+violations contains "3.3.2.5: not met — net.ipv6.conf.all.accept_source_route must be explicitly configured" if {
 	e_3_3_2_5
 	not p_3_3_2_5
 }
 
 # 3.3.2.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.default.accept_source_route is configured
+# net.ipv6.conf.default.accept_source_route must be explicitly configured
 default e_3_3_2_6 := false
 
 e_3_3_2_6 if {
@@ -1111,13 +1111,13 @@ p_3_3_2_6 if {
 
 violations contains "3.3.2.6: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_source_route] not collected" if not e_3_3_2_6
 
-violations contains "3.3.2.6: not met — Ensure net.ipv6.conf.default.accept_source_route is configured" if {
+violations contains "3.3.2.6: not met — net.ipv6.conf.default.accept_source_route must be explicitly configured" if {
 	e_3_3_2_6
 	not p_3_3_2_6
 }
 
 # 3.3.2.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.all.accept_ra is configured
+# net.ipv6.conf.all.accept_ra must be explicitly configured
 default e_3_3_2_7 := false
 
 e_3_3_2_7 if {
@@ -1143,13 +1143,13 @@ p_3_3_2_7 if {
 
 violations contains "3.3.2.7: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.all.accept_ra] not collected" if not e_3_3_2_7
 
-violations contains "3.3.2.7: not met — Ensure net.ipv6.conf.all.accept_ra is configured" if {
+violations contains "3.3.2.7: not met — net.ipv6.conf.all.accept_ra must be explicitly configured" if {
 	e_3_3_2_7
 	not p_3_3_2_7
 }
 
 # 3.3.2.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure net.ipv6.conf.default.accept_ra is configured
+# net.ipv6.conf.default.accept_ra must be explicitly configured
 default e_3_3_2_8 := false
 
 e_3_3_2_8 if {
@@ -1175,13 +1175,13 @@ p_3_3_2_8 if {
 
 violations contains "3.3.2.8: evidence missing — sysctl_parameters.analysis/persisted[net.ipv6.conf.default.accept_ra] not collected" if not e_3_3_2_8
 
-violations contains "3.3.2.8: not met — Ensure net.ipv6.conf.default.accept_ra is configured" if {
+violations contains "3.3.2.8: not met — net.ipv6.conf.default.accept_ra must be explicitly configured" if {
 	e_3_3_2_8
 	not p_3_3_2_8
 }
 
 # 4.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld is installed
+# firewalld must be present
 default ep_4_1_1 := false
 
 ep_4_1_1 if {
@@ -1212,13 +1212,13 @@ p_4_1_1 if {
 
 violations contains "4.1.1: evidence missing — packages.firewalld (or firewall.type=firewalld (active)) not collected" if not e_4_1_1
 
-violations contains "4.1.1: not met — Ensure firewalld is installed" if {
+violations contains "4.1.1: not met — firewalld must be present" if {
 	e_4_1_1
 	not p_4_1_1
 }
 
 # 4.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld backend is configured
+# firewalld backend must be explicitly configured
 default e_4_1_2 := false
 
 e_4_1_2 if {
@@ -1233,13 +1233,13 @@ p_4_1_2 if {
 
 violations contains "4.1.2: evidence missing — firewall.backend not collected" if not e_4_1_2
 
-violations contains "4.1.2: not met — Ensure firewalld backend is configured" if {
+violations contains "4.1.2: not met — firewalld backend must be explicitly configured" if {
 	e_4_1_2
 	not p_4_1_2
 }
 
 # 4.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld.service is configured
+# firewalld.service must be explicitly configured
 default e_4_1_3 := false
 
 e_4_1_3 if {
@@ -1254,13 +1254,13 @@ p_4_1_3 if {
 
 violations contains "4.1.3: evidence missing — services not collected" if not e_4_1_3
 
-violations contains "4.1.3: not met — Ensure firewalld.service is configured" if {
+violations contains "4.1.3: not met — firewalld.service must be explicitly configured" if {
 	e_4_1_3
 	not p_4_1_3
 }
 
 # 4.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld active zone target is configured
+# firewalld active zone target must be explicitly configured
 default e_4_1_4 := false
 
 e_4_1_4 if {
@@ -1277,53 +1277,53 @@ p_4_1_4 if {
 
 violations contains "4.1.4: evidence missing — firewall.zones not collected" if not e_4_1_4
 
-violations contains "4.1.4: not met — Ensure firewalld active zone target is configured" if {
+violations contains "4.1.4: not met — firewalld active zone target must be explicitly configured" if {
 	e_4_1_4
 	not p_4_1_4
 }
 
 # 4.1.5 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld loopback traffic is configured
+# firewalld loopback traffic must be explicitly configured
 default p_4_1_5 := false
 
 p_4_1_5 if {
 	input.attest.firewalld_loopback_traffic_configured == true
 }
 
-violations contains "4.1.5: manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (Ensure firewalld loopback traffic is configured)" if not p_4_1_5
+violations contains "4.1.5: manual review not attested — set attest.firewalld_loopback_traffic_configured to true once reviewed (firewalld loopback traffic must be explicitly configured)" if not p_4_1_5
 
 # 4.1.6 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld loopback source address traffic is configured
+# firewalld loopback source address traffic must be explicitly configured
 default p_4_1_6 := false
 
 p_4_1_6 if {
 	input.attest.firewalld_loopback_source_traffic_configured == true
 }
 
-violations contains "4.1.6: manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (Ensure firewalld loopback source address traffic is configured)" if not p_4_1_6
+violations contains "4.1.6: manual review not attested — set attest.firewalld_loopback_source_traffic_configured to true once reviewed (firewalld loopback source address traffic must be explicitly configured)" if not p_4_1_6
 
 # 4.1.7 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure firewalld services and ports are configured
+# firewalld services and ports must be explicitly configured
 default p_4_1_7 := false
 
 p_4_1_7 if {
 	input.attest.firewalld_services_ports_reviewed == true
 }
 
-violations contains "4.1.7: manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (Ensure firewalld services and ports are configured)" if not p_4_1_7
+violations contains "4.1.7: manual review not attested — set attest.firewalld_services_ports_reviewed to true once reviewed (firewalld services and ports must be explicitly configured)" if not p_4_1_7
 
 # 4.1.8 (Manual; Level 2 - Server, Level 2 - Workstation)
-# Ensure firewalld default zone is set to drop
+# required value of firewalld default zone is drop
 default p_4_1_8 := false
 
 p_4_1_8 if {
 	input.attest.firewalld_default_zone_drop == true
 }
 
-violations contains "4.1.8: manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (Ensure firewalld default zone is set to drop)" if not p_4_1_8
+violations contains "4.1.8: manual review not attested — set attest.firewalld_default_zone_drop to true once reviewed (required value of firewalld default zone is drop)" if not p_4_1_8
 
 # 4.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure conflicting firewall utilities are not in use with firewalld
+# conflicting firewall utilities must be not in use with firewalld
 default e_4_1_9 := false
 
 e_4_1_9 if {
@@ -1343,13 +1343,13 @@ p_4_1_9 if {
 
 violations contains "4.1.9: evidence missing — services[nftables.service]/packages[iptables-services,ufw] not collected" if not e_4_1_9
 
-violations contains "4.1.9: not met — Ensure conflicting firewall utilities are not in use with firewalld" if {
+violations contains "4.1.9: not met — conflicting firewall utilities must be not in use with firewalld" if {
 	e_4_1_9
 	not p_4_1_9
 }
 
 # 4.1.10 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure firewalld logs denied packets
+# checked condition — firewalld logs denied packets
 default e_4_1_10 := false
 
 e_4_1_10 if {
@@ -1364,13 +1364,13 @@ p_4_1_10 if {
 
 violations contains "4.1.10: evidence missing — firewall.log_denied not collected" if not e_4_1_10
 
-violations contains "4.1.10: not met — Ensure firewalld logs denied packets" if {
+violations contains "4.1.10: not met — checked condition — firewalld logs denied packets" if {
 	e_4_1_10
 	not p_4_1_10
 }
 
 # 4.1.11 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure firewalld blocks ICMP timestamp requests and replies
+# checked condition — firewalld blocks ICMP timestamp requests and replies
 default e_4_1_11 := false
 
 e_4_1_11 if {
@@ -1386,7 +1386,7 @@ p_4_1_11 if {
 
 violations contains "4.1.11: evidence missing — firewall.zones not collected" if not e_4_1_11
 
-violations contains "4.1.11: not met — Ensure firewalld blocks ICMP timestamp requests and replies" if {
+violations contains "4.1.11: not met — checked condition — firewalld blocks ICMP timestamp requests and replies" if {
 	e_4_1_11
 	not p_4_1_11
 }

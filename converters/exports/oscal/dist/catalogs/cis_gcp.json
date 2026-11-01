@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_gcp-1.1.1",
-      "title": "Ensure Super Admin Email Address Is Not Tied To A Single User",
+      "title": "Super Admin Email Address must be Not Tied To A Single User",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_gcp-1.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Super Admin Email Address Is Not Tied To A Single User"
+        "prose": "Super Admin Email Address must be Not Tied To A Single User"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.1.2",
-      "title": "Ensure Super Admin Account Is Not Used For Google Cloud Administration",
+      "title": "Super Admin Account must be Not Used For Google Cloud Administration",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_gcp-1.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure Super Admin Account Is Not Used For Google Cloud Administration"
+        "prose": "Super Admin Account must be Not Used For Google Cloud Administration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.1.3",
-      "title": "Ensure Folders Are Structured By Environment And Sensitivity",
+      "title": "Folders must be Structured By Environment And Sensitivity",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_gcp-1.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure Folders Are Structured By Environment And Sensitivity"
+        "prose": "Folders must be Structured By Environment And Sensitivity"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.1.4",
-      "title": "Ensure Organization Policies Are Configured For Centralized Constraints",
+      "title": "Organization Policies must be explicitly configured For Centralized Constraints",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_gcp-1.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure Organization Policies Are Configured For Centralized Constraints"
+        "prose": "Organization Policies must be explicitly configured For Centralized Constraints"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.10",
-      "title": "Ensure That Cloud KMS Cryptokeys Are Not Anonymously or Publicly Accessible",
+      "title": "Cloud KMS Cryptokeys must be Not Anonymously or Publicly Accessible",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_gcp-1.10_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud KMS Cryptokeys Are Not Anonymously or Publicly Accessible"
+        "prose": "Cloud KMS Cryptokeys must be Not Anonymously or Publicly Accessible"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.11",
-      "title": "Ensure KMS Encryption Keys Are Rotated Within a Period of 90 Days",
+      "title": "KMS Encryption Keys must be Rotated Within a Period of 90 Days",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_gcp-1.11_stmt",
         "name": "statement",
-        "prose": "Ensure KMS Encryption Keys Are Rotated Within a Period of 90 Days"
+        "prose": "KMS Encryption Keys must be Rotated Within a Period of 90 Days"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.12",
-      "title": "Ensure That Separation of Duties Is Enforced While Assigning KMS Related Roles to Users",
+      "title": "Separation of Duties must be Enforced While Assigning KMS Related Roles to Users",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_gcp-1.12_stmt",
         "name": "statement",
-        "prose": "Ensure That Separation of Duties Is Enforced While Assigning KMS Related Roles to Users"
+        "prose": "Separation of Duties must be Enforced While Assigning KMS Related Roles to Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.13",
-      "title": "Ensure API Keys Only Exist for Active Services",
+      "title": "checked condition — API Keys Only Exist for Active Services",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_gcp-1.13_stmt",
         "name": "statement",
-        "prose": "Ensure API Keys Only Exist for Active Services"
+        "prose": "checked condition — API Keys Only Exist for Active Services"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.14",
-      "title": "Ensure API Keys Are Restricted To Use by Only Specified Hosts and Apps",
+      "title": "API Keys must be Restricted To Use by Only Specified Hosts and Apps",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_gcp-1.14_stmt",
         "name": "statement",
-        "prose": "Ensure API Keys Are Restricted To Use by Only Specified Hosts and Apps"
+        "prose": "API Keys must be Restricted To Use by Only Specified Hosts and Apps"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.15",
-      "title": "Ensure API Keys Are Restricted to Only APIs That Application Needs Access",
+      "title": "API Keys must be Restricted to Only APIs That Application Needs Access",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_gcp-1.15_stmt",
         "name": "statement",
-        "prose": "Ensure API Keys Are Restricted to Only APIs That Application Needs Access"
+        "prose": "API Keys must be Restricted to Only APIs That Application Needs Access"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.16",
-      "title": "Ensure API Keys Are Rotated Every 90 Days",
+      "title": "API Keys must be Rotated Every 90 Days",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_gcp-1.16_stmt",
         "name": "statement",
-        "prose": "Ensure API Keys Are Rotated Every 90 Days"
+        "prose": "API Keys must be Rotated Every 90 Days"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.17",
-      "title": "Ensure Essential Contacts is Configured for Organization",
+      "title": "Essential Contacts must be explicitly configured for Organization",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_gcp-1.17_stmt",
         "name": "statement",
-        "prose": "Ensure Essential Contacts is Configured for Organization"
+        "prose": "Essential Contacts must be explicitly configured for Organization"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.18",
-      "title": "Ensure Secrets are Not Stored in Cloud Functions Environment Variables by Using Secret Manager",
+      "title": "Secrets must be Not Stored in Cloud Functions Environment Variables by Using Secret Manager",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_gcp-1.18_stmt",
         "name": "statement",
-        "prose": "Ensure Secrets are Not Stored in Cloud Functions Environment Variables by Using Secret Manager"
+        "prose": "Secrets must be Not Stored in Cloud Functions Environment Variables by Using Secret Manager"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.2",
-      "title": "Ensure that Corporate Login Credentials are Used",
+      "title": "Corporate Login Credentials must be Used",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_gcp-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure that Corporate Login Credentials are Used"
+        "prose": "Corporate Login Credentials must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.3",
-      "title": "Ensure that Multi-Factor Authentication is 'Enabled' for All Non-Service Accounts",
+      "title": "required value of Multi-Factor Authentication is 'Enabled' for All Non-Service Accounts",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_gcp-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure that Multi-Factor Authentication is 'Enabled' for All Non-Service Accounts"
+        "prose": "required value of Multi-Factor Authentication is 'Enabled' for All Non-Service Accounts"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.4",
-      "title": "Ensure that Security Key Enforcement is Enabled for All Admin Accounts",
+      "title": "Security Key Enforcement must be turned on for All Admin Accounts",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_gcp-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure that Security Key Enforcement is Enabled for All Admin Accounts"
+        "prose": "Security Key Enforcement must be turned on for All Admin Accounts"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.5",
-      "title": "Ensure That There Are Only GCP-Managed Service Account Keys for Each Service Account",
+      "title": "There must be Only GCP-Managed Service Account Keys for Each Service Account",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_gcp-1.5_stmt",
         "name": "statement",
-        "prose": "Ensure That There Are Only GCP-Managed Service Account Keys for Each Service Account"
+        "prose": "There must be Only GCP-Managed Service Account Keys for Each Service Account"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.6",
-      "title": "Ensure That Service Account Has No Admin Privileges",
+      "title": "Service Account must have No Admin Privileges",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_gcp-1.6_stmt",
         "name": "statement",
-        "prose": "Ensure That Service Account Has No Admin Privileges"
+        "prose": "Service Account must have No Admin Privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.7",
-      "title": "Ensure That IAM Users Are Not Assigned the Service Account User or Service Account Token Creator Roles at Project Level",
+      "title": "IAM Users must not be assigned the Service Account User or Service Account Token Creator Roles at Project Level",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_gcp-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure That IAM Users Are Not Assigned the Service Account User or Service Account Token Creator Roles at Project Level"
+        "prose": "IAM Users must not be assigned the Service Account User or Service Account Token Creator Roles at Project Level"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.8",
-      "title": "Ensure User-Managed/External Keys for Service Accounts Are Rotated Every 90 Days or Fewer",
+      "title": "User-Managed/External Keys for Service Accounts must be Rotated Every 90 Days or Fewer",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_gcp-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure User-Managed/External Keys for Service Accounts Are Rotated Every 90 Days or Fewer"
+        "prose": "User-Managed/External Keys for Service Accounts must be Rotated Every 90 Days or Fewer"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-1.9",
-      "title": "Ensure That Separation of Duties Is Enforced While Assigning Service Account Related Roles to Users",
+      "title": "Separation of Duties must be Enforced While Assigning Service Account Related Roles to Users",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_gcp-1.9_stmt",
         "name": "statement",
-        "prose": "Ensure That Separation of Duties Is Enforced While Assigning Service Account Related Roles to Users"
+        "prose": "Separation of Duties must be Enforced While Assigning Service Account Related Roles to Users"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.1",
-      "title": "Ensure That Cloud Audit Logging Is Configured Properly",
+      "title": "Cloud Audit Logging must be explicitly configured Properly",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_gcp-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud Audit Logging Is Configured Properly"
+        "prose": "Cloud Audit Logging must be explicitly configured Properly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.10",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Changes",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_gcp-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.11",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for Cloud Storage IAM Permission Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for Cloud Storage IAM Permission Changes",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_gcp-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for Cloud Storage IAM Permission Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for Cloud Storage IAM Permission Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.12",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for SQL Instance Configuration Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for SQL Instance Configuration Changes",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_gcp-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for SQL Instance Configuration Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for SQL Instance Configuration Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.13",
-      "title": "Ensure That Cloud DNS Logging Is Enabled for All VPC Networks",
+      "title": "Cloud DNS Logging must be turned on for All VPC Networks",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_gcp-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud DNS Logging Is Enabled for All VPC Networks"
+        "prose": "Cloud DNS Logging must be turned on for All VPC Networks"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.14",
-      "title": "Ensure Cloud Asset Inventory Is Enabled",
+      "title": "Cloud Asset Inventory must be turned on",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_gcp-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure Cloud Asset Inventory Is Enabled"
+        "prose": "Cloud Asset Inventory must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.15",
-      "title": "Ensure 'Access Transparency' is 'Enabled'",
+      "title": "required value of 'Access Transparency' is 'Enabled'",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_gcp-2.15_stmt",
         "name": "statement",
-        "prose": "Ensure 'Access Transparency' is 'Enabled'"
+        "prose": "required value of 'Access Transparency' is 'Enabled'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.16",
-      "title": "Ensure 'Access Approval' is 'Enabled'",
+      "title": "required value of 'Access Approval' is 'Enabled'",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_gcp-2.16_stmt",
         "name": "statement",
-        "prose": "Ensure 'Access Approval' is 'Enabled'"
+        "prose": "required value of 'Access Approval' is 'Enabled'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.17",
-      "title": "Ensure Logging is enabled for HTTP(S) Load Balancer",
+      "title": "Logging must be turned on for HTTP(S) Load Balancer",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_gcp-2.17_stmt",
         "name": "statement",
-        "prose": "Ensure Logging is enabled for HTTP(S) Load Balancer"
+        "prose": "Logging must be turned on for HTTP(S) Load Balancer"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.2",
-      "title": "Ensure Google Workspace/Cloud Identity Data Sharing with Google Cloud is Enabled for Admin Audit Logging",
+      "title": "Google Workspace/Cloud Identity Data Sharing with Google Cloud must be turned on for Admin Audit Logging",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_gcp-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure Google Workspace/Cloud Identity Data Sharing with Google Cloud is Enabled for Admin Audit Logging"
+        "prose": "Google Workspace/Cloud Identity Data Sharing with Google Cloud must be turned on for Admin Audit Logging"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.3",
-      "title": "Ensure That Sinks Are Configured for All Log Entries",
+      "title": "Sinks must be explicitly configured for All Log Entries",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_gcp-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure That Sinks Are Configured for All Log Entries"
+        "prose": "Sinks must be explicitly configured for All Log Entries"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.4",
-      "title": "Ensure That Retention Policies on Cloud Storage Buckets Used for Exporting Logs Are Configured Using Bucket Lock",
+      "title": "Retention Policies on Cloud Storage Buckets Used for Exporting Logs must be explicitly configured Using Bucket Lock",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_gcp-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure That Retention Policies on Cloud Storage Buckets Used for Exporting Logs Are Configured Using Bucket Lock"
+        "prose": "Retention Policies on Cloud Storage Buckets Used for Exporting Logs must be explicitly configured Using Bucket Lock"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.5",
-      "title": "Ensure Log Metric Filter and Alerts Exist for Project Ownership Assignments/Changes",
+      "title": "checked condition — Log Metric Filter and Alerts Exist for Project Ownership Assignments/Changes",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_gcp-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure Log Metric Filter and Alerts Exist for Project Ownership Assignments/Changes"
+        "prose": "checked condition — Log Metric Filter and Alerts Exist for Project Ownership Assignments/Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.6",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for Audit Configuration Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for Audit Configuration Changes",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_gcp-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for Audit Configuration Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for Audit Configuration Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.7",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for Custom Role Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for Custom Role Changes",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_gcp-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for Custom Role Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for Custom Role Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.8",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Firewall Rule Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Firewall Rule Changes",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_gcp-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Firewall Rule Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Firewall Rule Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-2.9",
-      "title": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Route Changes",
+      "title": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Route Changes",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_gcp-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure That the Log Metric Filter and Alerts Exist for VPC Network Route Changes"
+        "prose": "checked condition — the Log Metric Filter and Alerts Exist for VPC Network Route Changes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.1",
-      "title": "Ensure That the Default Network Does Not Exist in a Project",
+      "title": "checked condition — the Default Network Does Not Exist in a Project",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_gcp-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure That the Default Network Does Not Exist in a Project"
+        "prose": "checked condition — the Default Network Does Not Exist in a Project"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.10",
-      "title": "Ensure that VPC Flow Logs is Enabled for Every Subnet in a VPC Network",
+      "title": "VPC Flow Logs must be turned on for Every Subnet in a VPC Network",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_gcp-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure that VPC Flow Logs is Enabled for Every Subnet in a VPC Network"
+        "prose": "VPC Flow Logs must be turned on for Every Subnet in a VPC Network"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.11",
-      "title": "Ensure No HTTPS or SSL Proxy Load Balancers Permit SSL Policies With Weak Cipher Suites",
+      "title": "checked condition — No HTTPS or SSL Proxy Load Balancers Permit SSL Policies With Weak Cipher Suites",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_gcp-3.11_stmt",
         "name": "statement",
-        "prose": "Ensure No HTTPS or SSL Proxy Load Balancers Permit SSL Policies With Weak Cipher Suites"
+        "prose": "checked condition — No HTTPS or SSL Proxy Load Balancers Permit SSL Policies With Weak Cipher Suites"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.12",
-      "title": "Use Identity Aware Proxy (IAP) to Ensure Only Traffic From Google IP Addresses are 'Allowed'",
+      "title": "Use Identity Aware Proxy (IAP) to Only Traffic From Google IP Addresses must be 'Allowed'",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_gcp-3.12_stmt",
         "name": "statement",
-        "prose": "Use Identity Aware Proxy (IAP) to Ensure Only Traffic From Google IP Addresses are 'Allowed'"
+        "prose": "Use Identity Aware Proxy (IAP) to Only Traffic From Google IP Addresses must be 'Allowed'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.2",
-      "title": "Ensure Legacy Networks Do Not Exist for Older Projects",
+      "title": "checked condition — Legacy Networks Do Not Exist for Older Projects",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_gcp-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure Legacy Networks Do Not Exist for Older Projects"
+        "prose": "checked condition — Legacy Networks Do Not Exist for Older Projects"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.3",
-      "title": "Ensure That DNSSEC Is Enabled for Cloud DNS",
+      "title": "DNSSEC must be turned on for Cloud DNS",
       "props": [
        {
         "name": "label",
@@ -1512,14 +1512,14 @@
        {
         "id": "cis_gcp-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure That DNSSEC Is Enabled for Cloud DNS"
+        "prose": "DNSSEC must be turned on for Cloud DNS"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.4",
-      "title": "Ensure That RSASHA1 Is Not Used for the Key-Signing Key in Cloud DNS DNSSEC",
+      "title": "RSASHA1 must be Not Used for the Key-Signing Key in Cloud DNS DNSSEC",
       "props": [
        {
         "name": "label",
@@ -1545,14 +1545,14 @@
        {
         "id": "cis_gcp-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure That RSASHA1 Is Not Used for the Key-Signing Key in Cloud DNS DNSSEC"
+        "prose": "RSASHA1 must be Not Used for the Key-Signing Key in Cloud DNS DNSSEC"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.5",
-      "title": "Ensure That RSASHA1 Is Not Used for the Zone-Signing Key in Cloud DNS DNSSEC",
+      "title": "RSASHA1 must be Not Used for the Zone-Signing Key in Cloud DNS DNSSEC",
       "props": [
        {
         "name": "label",
@@ -1578,14 +1578,14 @@
        {
         "id": "cis_gcp-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure That RSASHA1 Is Not Used for the Zone-Signing Key in Cloud DNS DNSSEC"
+        "prose": "RSASHA1 must be Not Used for the Zone-Signing Key in Cloud DNS DNSSEC"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.6",
-      "title": "Ensure That SSH Access Is Restricted From the Internet",
+      "title": "SSH Access must be Restricted From the Internet",
       "props": [
        {
         "name": "label",
@@ -1611,14 +1611,14 @@
        {
         "id": "cis_gcp-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure That SSH Access Is Restricted From the Internet"
+        "prose": "SSH Access must be Restricted From the Internet"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.7",
-      "title": "Ensure That RDP Access Is Restricted From the Internet",
+      "title": "RDP Access must be Restricted From the Internet",
       "props": [
        {
         "name": "label",
@@ -1644,14 +1644,14 @@
        {
         "id": "cis_gcp-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure That RDP Access Is Restricted From the Internet"
+        "prose": "RDP Access must be Restricted From the Internet"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.8",
-      "title": "Ensure VPC Service Controls Is Enabled for Supported Google Cloud Services",
+      "title": "VPC Service Controls must be turned on for Supported Google Cloud Services",
       "props": [
        {
         "name": "label",
@@ -1677,14 +1677,14 @@
        {
         "id": "cis_gcp-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure VPC Service Controls Is Enabled for Supported Google Cloud Services"
+        "prose": "VPC Service Controls must be turned on for Supported Google Cloud Services"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-3.9",
-      "title": "Ensure Private Service Connect is Used for Access to Google APIs",
+      "title": "Private Service Connect must be Used for Access to Google APIs",
       "props": [
        {
         "name": "label",
@@ -1710,14 +1710,14 @@
        {
         "id": "cis_gcp-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure Private Service Connect is Used for Access to Google APIs"
+        "prose": "Private Service Connect must be Used for Access to Google APIs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.1",
-      "title": "Ensure That Instances Are Not Configured To Use the Default Service Account",
+      "title": "Instances must be left unconfigured To Use the Default Service Account",
       "props": [
        {
         "name": "label",
@@ -1743,14 +1743,14 @@
        {
         "id": "cis_gcp-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure That Instances Are Not Configured To Use the Default Service Account"
+        "prose": "Instances must be left unconfigured To Use the Default Service Account"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.10",
-      "title": "Ensure That App Engine Applications Enforce HTTPS Connections",
+      "title": "checked condition — App Engine Applications Enforce HTTPS Connections",
       "props": [
        {
         "name": "label",
@@ -1776,14 +1776,14 @@
        {
         "id": "cis_gcp-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure That App Engine Applications Enforce HTTPS Connections"
+        "prose": "checked condition — App Engine Applications Enforce HTTPS Connections"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.11",
-      "title": "Ensure That Compute Instances Have Confidential Computing Enabled",
+      "title": "Compute Instances must have Confidential Computing Enabled",
       "props": [
        {
         "name": "label",
@@ -1809,14 +1809,14 @@
        {
         "id": "cis_gcp-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure That Compute Instances Have Confidential Computing Enabled"
+        "prose": "Compute Instances must have Confidential Computing Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.12",
-      "title": "Ensure the Latest Operating System Updates Are Installed On Your Virtual Machines in All Projects",
+      "title": "the Latest Operating System Updates must be Installed On Your Virtual Machines in All Projects",
       "props": [
        {
         "name": "label",
@@ -1842,14 +1842,14 @@
        {
         "id": "cis_gcp-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure the Latest Operating System Updates Are Installed On Your Virtual Machines in All Projects"
+        "prose": "the Latest Operating System Updates must be Installed On Your Virtual Machines in All Projects"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.2",
-      "title": "Ensure That Instances Are Not Configured To Use the Default Service Account With Full Access to All Cloud APIs",
+      "title": "Instances must be left unconfigured To Use the Default Service Account With Full Access to All Cloud APIs",
       "props": [
        {
         "name": "label",
@@ -1875,14 +1875,14 @@
        {
         "id": "cis_gcp-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure That Instances Are Not Configured To Use the Default Service Account With Full Access to All Cloud APIs"
+        "prose": "Instances must be left unconfigured To Use the Default Service Account With Full Access to All Cloud APIs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.3",
-      "title": "Ensure “Block Project-Wide SSH Keys” Is Enabled for VM Instances",
+      "title": "“Block Project-Wide SSH Keys” must be turned on for VM Instances",
       "props": [
        {
         "name": "label",
@@ -1908,14 +1908,14 @@
        {
         "id": "cis_gcp-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure “Block Project-Wide SSH Keys” Is Enabled for VM Instances"
+        "prose": "“Block Project-Wide SSH Keys” must be turned on for VM Instances"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.4",
-      "title": "Ensure Oslogin Is Enabled for a Project",
+      "title": "Oslogin must be turned on for a Project",
       "props": [
        {
         "name": "label",
@@ -1941,14 +1941,14 @@
        {
         "id": "cis_gcp-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure Oslogin Is Enabled for a Project"
+        "prose": "Oslogin must be turned on for a Project"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.5",
-      "title": "Ensure ‘Enable Connecting to Serial Ports’ Is Not Enabled for VM Instance",
+      "title": "'Enable Connecting to Serial Ports' must stay off for VM Instance",
       "props": [
        {
         "name": "label",
@@ -1974,14 +1974,14 @@
        {
         "id": "cis_gcp-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure ‘Enable Connecting to Serial Ports’ Is Not Enabled for VM Instance"
+        "prose": "'Enable Connecting to Serial Ports' must stay off for VM Instance"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.6",
-      "title": "Ensure That IP Forwarding Is Not Enabled on Instances",
+      "title": "IP Forwarding must stay off on Instances",
       "props": [
        {
         "name": "label",
@@ -2007,14 +2007,14 @@
        {
         "id": "cis_gcp-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure That IP Forwarding Is Not Enabled on Instances"
+        "prose": "IP Forwarding must stay off on Instances"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.7",
-      "title": "Ensure VM Disks for Critical VMs Are Encrypted With Customer-Supplied Encryption Keys (CSEK)",
+      "title": "VM Disks for Critical VMs must be encrypted with Customer-Supplied Encryption Keys (CSEK)",
       "props": [
        {
         "name": "label",
@@ -2040,14 +2040,14 @@
        {
         "id": "cis_gcp-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure VM Disks for Critical VMs Are Encrypted With Customer-Supplied Encryption Keys (CSEK)"
+        "prose": "VM Disks for Critical VMs must be encrypted with Customer-Supplied Encryption Keys (CSEK)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.8",
-      "title": "Ensure Compute Instances Are Launched With Shielded VM Enabled",
+      "title": "Compute Instances must be Launched With Shielded VM Enabled",
       "props": [
        {
         "name": "label",
@@ -2073,14 +2073,14 @@
        {
         "id": "cis_gcp-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure Compute Instances Are Launched With Shielded VM Enabled"
+        "prose": "Compute Instances must be Launched With Shielded VM Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-4.9",
-      "title": "Ensure That Compute Instances Do Not Have Public IP Addresses",
+      "title": "Compute Instances Do Not must have Public IP Addresses",
       "props": [
        {
         "name": "label",
@@ -2106,14 +2106,14 @@
        {
         "id": "cis_gcp-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure That Compute Instances Do Not Have Public IP Addresses"
+        "prose": "Compute Instances Do Not must have Public IP Addresses"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-5.1",
-      "title": "Ensure That Cloud Storage Bucket Is Not Anonymously or Publicly Accessible",
+      "title": "Cloud Storage Bucket must be Not Anonymously or Publicly Accessible",
       "props": [
        {
         "name": "label",
@@ -2139,14 +2139,14 @@
        {
         "id": "cis_gcp-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud Storage Bucket Is Not Anonymously or Publicly Accessible"
+        "prose": "Cloud Storage Bucket must be Not Anonymously or Publicly Accessible"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-5.2",
-      "title": "Ensure That Cloud Storage Buckets Have Uniform Bucket-Level Access Enabled",
+      "title": "Cloud Storage Buckets must have Uniform Bucket-Level Access Enabled",
       "props": [
        {
         "name": "label",
@@ -2172,14 +2172,14 @@
        {
         "id": "cis_gcp-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud Storage Buckets Have Uniform Bucket-Level Access Enabled"
+        "prose": "Cloud Storage Buckets must have Uniform Bucket-Level Access Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.1.1",
-      "title": "Ensure That a MySQL Instance Does Not Allow Anyone To Connect With Administrative Privileges",
+      "title": "checked condition — a MySQL Instance Does Not Allow Anyone To Connect With Administrative Privileges",
       "props": [
        {
         "name": "label",
@@ -2205,14 +2205,14 @@
        {
         "id": "cis_gcp-6.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure That a MySQL Instance Does Not Allow Anyone To Connect With Administrative Privileges"
+        "prose": "checked condition — a MySQL Instance Does Not Allow Anyone To Connect With Administrative Privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.1.2",
-      "title": "Ensure ‘Skip_show_database’ Database Flag for Cloud SQL MySQL Instance Is Set to ‘On’",
+      "title": "required value of 'Skip_show_database' Database Flag for Cloud SQL MySQL Instance is 'On'",
       "props": [
        {
         "name": "label",
@@ -2238,14 +2238,14 @@
        {
         "id": "cis_gcp-6.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure ‘Skip_show_database’ Database Flag for Cloud SQL MySQL Instance Is Set to ‘On’"
+        "prose": "required value of 'Skip_show_database' Database Flag for Cloud SQL MySQL Instance is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.1.3",
-      "title": "Ensure That the ‘Local_infile’ Database Flag for a Cloud SQL MySQL Instance Is Set to ‘Off’",
+      "title": "required value of the 'Local_infile' Database Flag for a Cloud SQL MySQL Instance is 'Off'",
       "props": [
        {
         "name": "label",
@@ -2271,14 +2271,14 @@
        {
         "id": "cis_gcp-6.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure That the ‘Local_infile’ Database Flag for a Cloud SQL MySQL Instance Is Set to ‘Off’"
+        "prose": "required value of the 'Local_infile' Database Flag for a Cloud SQL MySQL Instance is 'Off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.1",
-      "title": "Ensure ‘Log_error_verbosity’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘DEFAULT’ or Stricter",
+      "title": "required value of 'Log_error_verbosity' Database Flag for Cloud SQL PostgreSQL Instance is 'DEFAULT' or Stricter",
       "props": [
        {
         "name": "label",
@@ -2304,14 +2304,14 @@
        {
         "id": "cis_gcp-6.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure ‘Log_error_verbosity’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘DEFAULT’ or Stricter"
+        "prose": "required value of 'Log_error_verbosity' Database Flag for Cloud SQL PostgreSQL Instance is 'DEFAULT' or Stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.2",
-      "title": "Ensure That the ‘Log_connections’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘On’",
+      "title": "required value of the 'Log_connections' Database Flag for Cloud SQL PostgreSQL Instance is 'On'",
       "props": [
        {
         "name": "label",
@@ -2337,14 +2337,14 @@
        {
         "id": "cis_gcp-6.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure That the ‘Log_connections’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘On’"
+        "prose": "required value of the 'Log_connections' Database Flag for Cloud SQL PostgreSQL Instance is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.3",
-      "title": "Ensure That the ‘Log_disconnections’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘On’",
+      "title": "required value of the 'Log_disconnections' Database Flag for Cloud SQL PostgreSQL Instance is 'On'",
       "props": [
        {
         "name": "label",
@@ -2370,14 +2370,14 @@
        {
         "id": "cis_gcp-6.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure That the ‘Log_disconnections’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘On’"
+        "prose": "required value of the 'Log_disconnections' Database Flag for Cloud SQL PostgreSQL Instance is 'On'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.4",
-      "title": "Ensure ‘Log_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set Appropriately",
+      "title": "'Log_statement' Database Flag for Cloud SQL PostgreSQL Instance must match the approved value",
       "props": [
        {
         "name": "label",
@@ -2403,14 +2403,14 @@
        {
         "id": "cis_gcp-6.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure ‘Log_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set Appropriately"
+        "prose": "'Log_statement' Database Flag for Cloud SQL PostgreSQL Instance must match the approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.5",
-      "title": "Ensure that the ‘Log_min_messages’ Flag for a Cloud SQL PostgreSQL Instance is set at minimum to 'Warning'",
+      "title": "the 'Log_min_messages' Flag for a Cloud SQL PostgreSQL Instance must be set at minimum to 'Warning'",
       "props": [
        {
         "name": "label",
@@ -2436,14 +2436,14 @@
        {
         "id": "cis_gcp-6.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure that the ‘Log_min_messages’ Flag for a Cloud SQL PostgreSQL Instance is set at minimum to 'Warning'"
+        "prose": "the 'Log_min_messages' Flag for a Cloud SQL PostgreSQL Instance must be set at minimum to 'Warning'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.6",
-      "title": "Ensure ‘Log_min_error_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘Error’ or Stricter",
+      "title": "required value of 'Log_min_error_statement' Database Flag for Cloud SQL PostgreSQL Instance is 'Error' or Stricter",
       "props": [
        {
         "name": "label",
@@ -2469,14 +2469,14 @@
        {
         "id": "cis_gcp-6.2.6_stmt",
         "name": "statement",
-        "prose": "Ensure ‘Log_min_error_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to ‘Error’ or Stricter"
+        "prose": "required value of 'Log_min_error_statement' Database Flag for Cloud SQL PostgreSQL Instance is 'Error' or Stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.7",
-      "title": "Ensure That the ‘Log_min_duration_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to '-1' (Disabled)",
+      "title": "required value of the 'Log_min_duration_statement' Database Flag for Cloud SQL PostgreSQL Instance is '-1' (Disabled)",
       "props": [
        {
         "name": "label",
@@ -2502,14 +2502,14 @@
        {
         "id": "cis_gcp-6.2.7_stmt",
         "name": "statement",
-        "prose": "Ensure That the ‘Log_min_duration_statement’ Database Flag for Cloud SQL PostgreSQL Instance Is Set to '-1' (Disabled)"
+        "prose": "required value of the 'Log_min_duration_statement' Database Flag for Cloud SQL PostgreSQL Instance is '-1' (Disabled)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.2.8",
-      "title": "Ensure That 'cloudsql.enable_pgaudit' Database Flag for each Cloud Sql Postgresql Instance Is Set to 'on' For Centralized Logging",
+      "title": "required value of 'cloudsql.enable_pgaudit' Database Flag for each Cloud Sql Postgresql Instance is 'on' For Centralized Logging",
       "props": [
        {
         "name": "label",
@@ -2535,14 +2535,14 @@
        {
         "id": "cis_gcp-6.2.8_stmt",
         "name": "statement",
-        "prose": "Ensure That 'cloudsql.enable_pgaudit' Database Flag for each Cloud Sql Postgresql Instance Is Set to 'on' For Centralized Logging"
+        "prose": "required value of 'cloudsql.enable_pgaudit' Database Flag for each Cloud Sql Postgresql Instance is 'on' For Centralized Logging"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.1",
-      "title": "Ensure 'external scripts enabled' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'",
+      "title": "required value of 'external scripts enabled' Database Flag for Cloud SQL SQL Server Instance is 'off'",
       "props": [
        {
         "name": "label",
@@ -2568,14 +2568,14 @@
        {
         "id": "cis_gcp-6.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure 'external scripts enabled' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'"
+        "prose": "required value of 'external scripts enabled' Database Flag for Cloud SQL SQL Server Instance is 'off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.2",
-      "title": "Ensure 'cross db ownership chaining' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'",
+      "title": "required value of 'cross db ownership chaining' Database Flag for Cloud SQL SQL Server Instance is 'off'",
       "props": [
        {
         "name": "label",
@@ -2601,14 +2601,14 @@
        {
         "id": "cis_gcp-6.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure 'cross db ownership chaining' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'"
+        "prose": "required value of 'cross db ownership chaining' Database Flag for Cloud SQL SQL Server Instance is 'off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.3",
-      "title": "Ensure 'user Connections' Database Flag for Cloud SQL SQL Server Instance Is Set to a Non-limiting Value",
+      "title": "required value of 'user Connections' Database Flag for Cloud SQL SQL Server Instance is a Non-limiting Value",
       "props": [
        {
         "name": "label",
@@ -2634,14 +2634,14 @@
        {
         "id": "cis_gcp-6.3.3_stmt",
         "name": "statement",
-        "prose": "Ensure 'user Connections' Database Flag for Cloud SQL SQL Server Instance Is Set to a Non-limiting Value"
+        "prose": "required value of 'user Connections' Database Flag for Cloud SQL SQL Server Instance is a Non-limiting Value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.4",
-      "title": "Ensure 'user options' Database Flag for Cloud SQL SQL Server Instance Is Not Configured",
+      "title": "'user options' Database Flag for Cloud SQL SQL Server Instance must be left unconfigured",
       "props": [
        {
         "name": "label",
@@ -2667,14 +2667,14 @@
        {
         "id": "cis_gcp-6.3.4_stmt",
         "name": "statement",
-        "prose": "Ensure 'user options' Database Flag for Cloud SQL SQL Server Instance Is Not Configured"
+        "prose": "'user options' Database Flag for Cloud SQL SQL Server Instance must be left unconfigured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.5",
-      "title": "Ensure 'remote access' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'",
+      "title": "required value of 'remote access' Database Flag for Cloud SQL SQL Server Instance is 'off'",
       "props": [
        {
         "name": "label",
@@ -2700,14 +2700,14 @@
        {
         "id": "cis_gcp-6.3.5_stmt",
         "name": "statement",
-        "prose": "Ensure 'remote access' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'"
+        "prose": "required value of 'remote access' Database Flag for Cloud SQL SQL Server Instance is 'off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.6",
-      "title": "Ensure '3625 (trace flag)' Database Flag for all Cloud SQL SQL Server Instances Is Set to 'on'",
+      "title": "required value of '3625 (trace flag)' Database Flag for all Cloud SQL SQL Server Instances is 'on'",
       "props": [
        {
         "name": "label",
@@ -2733,14 +2733,14 @@
        {
         "id": "cis_gcp-6.3.6_stmt",
         "name": "statement",
-        "prose": "Ensure '3625 (trace flag)' Database Flag for all Cloud SQL SQL Server Instances Is Set to 'on'"
+        "prose": "required value of '3625 (trace flag)' Database Flag for all Cloud SQL SQL Server Instances is 'on'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.3.7",
-      "title": "Ensure 'contained database authentication' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'",
+      "title": "required value of 'contained database authentication' Database Flag for Cloud SQL SQL Server Instance is 'off'",
       "props": [
        {
         "name": "label",
@@ -2766,14 +2766,14 @@
        {
         "id": "cis_gcp-6.3.7_stmt",
         "name": "statement",
-        "prose": "Ensure 'contained database authentication' Database Flag for Cloud SQL SQL Server Instance Is Set to 'off'"
+        "prose": "required value of 'contained database authentication' Database Flag for Cloud SQL SQL Server Instance is 'off'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.4",
-      "title": "Ensure That the Cloud SQL Database Instance Requires All Incoming Connections To Use SSL",
+      "title": "checked condition — the Cloud SQL Database Instance Requires All Incoming Connections To Use SSL",
       "props": [
        {
         "name": "label",
@@ -2799,14 +2799,14 @@
        {
         "id": "cis_gcp-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure That the Cloud SQL Database Instance Requires All Incoming Connections To Use SSL"
+        "prose": "checked condition — the Cloud SQL Database Instance Requires All Incoming Connections To Use SSL"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.5",
-      "title": "Ensure That Cloud SQL Database Instances Do Not Implicitly Whitelist All Public IP Addresses",
+      "title": "checked condition — Cloud SQL Database Instances Do Not Implicitly Whitelist All Public IP Addresses",
       "props": [
        {
         "name": "label",
@@ -2832,14 +2832,14 @@
        {
         "id": "cis_gcp-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud SQL Database Instances Do Not Implicitly Whitelist All Public IP Addresses"
+        "prose": "checked condition — Cloud SQL Database Instances Do Not Implicitly Whitelist All Public IP Addresses"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.6",
-      "title": "Ensure Cloud SQL Database Instances Have IAM Database Authentication Enabled",
+      "title": "Cloud SQL Database Instances must have IAM Database Authentication Enabled",
       "props": [
        {
         "name": "label",
@@ -2865,14 +2865,14 @@
        {
         "id": "cis_gcp-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure Cloud SQL Database Instances Have IAM Database Authentication Enabled"
+        "prose": "Cloud SQL Database Instances must have IAM Database Authentication Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.7",
-      "title": "Ensure That Cloud SQL Database Instances Do Not Have Public IPs",
+      "title": "Cloud SQL Database Instances Do Not must have Public IPs",
       "props": [
        {
         "name": "label",
@@ -2898,14 +2898,14 @@
        {
         "id": "cis_gcp-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud SQL Database Instances Do Not Have Public IPs"
+        "prose": "Cloud SQL Database Instances Do Not must have Public IPs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.8",
-      "title": "Ensure That Cloud SQL Database Instances Are Configured With Automated Backups",
+      "title": "Cloud SQL Database Instances must be explicitly configured With Automated Backups",
       "props": [
        {
         "name": "label",
@@ -2931,14 +2931,14 @@
        {
         "id": "cis_gcp-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure That Cloud SQL Database Instances Are Configured With Automated Backups"
+        "prose": "Cloud SQL Database Instances must be explicitly configured With Automated Backups"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-6.9",
-      "title": "Ensure Cloud SQL Database Instances Have Deletion Protection Enabled",
+      "title": "Cloud SQL Database Instances must have Deletion Protection Enabled",
       "props": [
        {
         "name": "label",
@@ -2964,14 +2964,14 @@
        {
         "id": "cis_gcp-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure Cloud SQL Database Instances Have Deletion Protection Enabled"
+        "prose": "Cloud SQL Database Instances must have Deletion Protection Enabled"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-7.1",
-      "title": "Ensure That BigQuery Datasets Are Not Anonymously or Publicly Accessible",
+      "title": "BigQuery Datasets must be Not Anonymously or Publicly Accessible",
       "props": [
        {
         "name": "label",
@@ -2997,14 +2997,14 @@
        {
         "id": "cis_gcp-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure That BigQuery Datasets Are Not Anonymously or Publicly Accessible"
+        "prose": "BigQuery Datasets must be Not Anonymously or Publicly Accessible"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-7.2",
-      "title": "Ensure That All BigQuery Tables Are Encrypted With Customer-Managed Encryption Key (CMEK)",
+      "title": "All BigQuery Tables must be encrypted with Customer-Managed Encryption Key (CMEK)",
       "props": [
        {
         "name": "label",
@@ -3030,14 +3030,14 @@
        {
         "id": "cis_gcp-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure That All BigQuery Tables Are Encrypted With Customer-Managed Encryption Key (CMEK)"
+        "prose": "All BigQuery Tables must be encrypted with Customer-Managed Encryption Key (CMEK)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-7.3",
-      "title": "Ensure That a Default Customer-Managed Encryption Key (CMEK) Is Specified for All BigQuery Data Sets",
+      "title": "a Default Customer-Managed Encryption Key (CMEK) must be Specified for All BigQuery Data Sets",
       "props": [
        {
         "name": "label",
@@ -3063,14 +3063,14 @@
        {
         "id": "cis_gcp-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure That a Default Customer-Managed Encryption Key (CMEK) Is Specified for All BigQuery Data Sets"
+        "prose": "a Default Customer-Managed Encryption Key (CMEK) must be Specified for All BigQuery Data Sets"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-7.4",
-      "title": "Ensure all data in BigQuery has been classified",
+      "title": "all data in BigQuery must have been classified",
       "props": [
        {
         "name": "label",
@@ -3096,14 +3096,14 @@
        {
         "id": "cis_gcp-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure all data in BigQuery has been classified"
+        "prose": "all data in BigQuery must have been classified"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_gcp-8.1",
-      "title": "Ensure that Dataproc Cluster is encrypted using Customer-Managed Encryption Key",
+      "title": "Dataproc Cluster must be encrypted using Customer-Managed Encryption Key",
       "props": [
        {
         "name": "label",
@@ -3129,7 +3129,7 @@
        {
         "id": "cis_gcp-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure that Dataproc Cluster is encrypted using Customer-Managed Encryption Key"
+        "prose": "Dataproc Cluster must be encrypted using Customer-Managed Encryption Key"
        }
       ],
       "class": "security"

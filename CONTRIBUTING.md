@@ -14,6 +14,14 @@ Thank you for contributing! This library grows by community submissions. Whether
    [`converters/exports/oscal/`](converters/exports/oscal/), all derived from OPA's parse of the policy tree and
    validated against the OSCAL 1.2.3 schemas on every merge. A file without the block, or with values outside
    `scripts/metadata_vocabulary.json`, fails `make metadata`.
+4. **No verbatim CIS benchmark text.** This repository is Apache-2.0. CIS benchmark
+   recommendation titles, rationale, and remediation text are not reproduced.
+   A check is cited by its control id plus a short original description of what
+   the Rego evaluates (the pattern in `benchmarks/cis/saas/m365_v7/`). Do not
+   paste the benchmark's "Ensure …" sentence into a message, a comment, a
+   `title` field, a test, or a generator. `tools/cis_generators/neutralize.py`
+   is what the generators use instead. `scripts/check_cis_verbatim.py` fails CI
+   if that sentence shape shows up again under `benchmarks/cis/`.
 
 ---
 
@@ -121,7 +129,7 @@ The CI pipeline (`.github/workflows/opa-test.yml`) runs all tests on every PR.
 - [ ] `import rego.v1` present in every new `.rego` file
 - [ ] `default compliant := false` present
 - [ ] `compliance_report` rule exported
-- [ ] Violation messages include a control identifier
+- [ ] Violation messages include a control identifier and original wording (no verbatim CIS benchmark text)
 - [ ] Tests added for new controls (or existing tests still pass)
 - [ ] PR title follows the pattern: `feat(<framework>): add <description>` or `fix(<framework>): <description>`
 - [ ] `make check-converters` passes (the OSCAL, SARIF and crosswalk exports rebuild and validate; commit the regenerated `dist/` files)

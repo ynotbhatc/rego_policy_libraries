@@ -21,4 +21,4 @@ are DERIVED from a sibling benchmark (Debian 11 from Ubuntu 20.04, Ubuntu 24.04 
 sibling, so treat those rows as a hint, not a key.
 
 `test/roundtrip.sh` proves every CIS section in the inventory appears once per platform, prefixes are
-well-formed, at least 90 % of rows carry a benchmark name (modules that do not declare one in their report literal leave it empty), and RHEL 9 1.3.1 joins `..._rule_1.3.1_Ensure_AIDE_is_installed`.
+well-formed, at least 90 % of rows carry a benchmark name (modules that do not declare one in their report literal leave it empty), and RHEL 9 1.3.1 joins a rule id that starts with `..._rule_1.3.1_`. The title slug CIS-CAT appends after that prefix is not stored here.

@@ -192,7 +192,7 @@ valid_shells := {s |
 }
 
 # 1.1.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure cramfs kernel module is not available
+# cramfs kernel module must be blocked from loading
 default e_1_1_1_1 := false
 
 e_1_1_1_1 if {
@@ -210,13 +210,13 @@ p_1_1_1_1 if {
 
 violations contains "1.1.1.1: evidence missing — disabled_filesystem_modules.modules[cramfs] not collected" if not e_1_1_1_1
 
-violations contains "1.1.1.1: not met — Ensure cramfs kernel module is not available" if {
+violations contains "1.1.1.1: not met — cramfs kernel module must be blocked from loading" if {
 	e_1_1_1_1
 	not p_1_1_1_1
 }
 
 # 1.1.1.2 (Automated; Level 1 - Server, Level 2 - Workstation)
-# Ensure firewire-core kernel module is not available
+# firewire-core kernel module must be blocked from loading
 default e_1_1_1_2 := false
 
 e_1_1_1_2 if {
@@ -234,13 +234,13 @@ p_1_1_1_2 if {
 
 violations contains "1.1.1.2: evidence missing — disabled_filesystem_modules.modules[firewire-core] not collected" if not e_1_1_1_2
 
-violations contains "1.1.1.2: not met — Ensure firewire-core kernel module is not available" if {
+violations contains "1.1.1.2: not met — firewire-core kernel module must be blocked from loading" if {
 	e_1_1_1_2
 	not p_1_1_1_2
 }
 
 # 1.1.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure freevxfs kernel module is not available
+# freevxfs kernel module must be blocked from loading
 default e_1_1_1_3 := false
 
 e_1_1_1_3 if {
@@ -258,13 +258,13 @@ p_1_1_1_3 if {
 
 violations contains "1.1.1.3: evidence missing — disabled_filesystem_modules.modules[freevxfs] not collected" if not e_1_1_1_3
 
-violations contains "1.1.1.3: not met — Ensure freevxfs kernel module is not available" if {
+violations contains "1.1.1.3: not met — freevxfs kernel module must be blocked from loading" if {
 	e_1_1_1_3
 	not p_1_1_1_3
 }
 
 # 1.1.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure hfs kernel module is not available
+# hfs kernel module must be blocked from loading
 default e_1_1_1_4 := false
 
 e_1_1_1_4 if {
@@ -282,13 +282,13 @@ p_1_1_1_4 if {
 
 violations contains "1.1.1.4: evidence missing — disabled_filesystem_modules.modules[hfs] not collected" if not e_1_1_1_4
 
-violations contains "1.1.1.4: not met — Ensure hfs kernel module is not available" if {
+violations contains "1.1.1.4: not met — hfs kernel module must be blocked from loading" if {
 	e_1_1_1_4
 	not p_1_1_1_4
 }
 
 # 1.1.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure hfsplus kernel module is not available
+# hfsplus kernel module must be blocked from loading
 default e_1_1_1_5 := false
 
 e_1_1_1_5 if {
@@ -306,13 +306,13 @@ p_1_1_1_5 if {
 
 violations contains "1.1.1.5: evidence missing — disabled_filesystem_modules.modules[hfsplus] not collected" if not e_1_1_1_5
 
-violations contains "1.1.1.5: not met — Ensure hfsplus kernel module is not available" if {
+violations contains "1.1.1.5: not met — hfsplus kernel module must be blocked from loading" if {
 	e_1_1_1_5
 	not p_1_1_1_5
 }
 
 # 1.1.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure jffs2 kernel module is not available
+# jffs2 kernel module must be blocked from loading
 default e_1_1_1_6 := false
 
 e_1_1_1_6 if {
@@ -330,13 +330,13 @@ p_1_1_1_6 if {
 
 violations contains "1.1.1.6: evidence missing — disabled_filesystem_modules.modules[jffs2] not collected" if not e_1_1_1_6
 
-violations contains "1.1.1.6: not met — Ensure jffs2 kernel module is not available" if {
+violations contains "1.1.1.6: not met — jffs2 kernel module must be blocked from loading" if {
 	e_1_1_1_6
 	not p_1_1_1_6
 }
 
 # 1.1.1.7 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure overlay kernel module is not available
+# overlay kernel module must be blocked from loading
 default e_1_1_1_7 := false
 
 e_1_1_1_7 if {
@@ -354,13 +354,13 @@ p_1_1_1_7 if {
 
 violations contains "1.1.1.7: evidence missing — disabled_filesystem_modules.modules[overlay] not collected" if not e_1_1_1_7
 
-violations contains "1.1.1.7: not met — Ensure overlay kernel module is not available" if {
+violations contains "1.1.1.7: not met — overlay kernel module must be blocked from loading" if {
 	e_1_1_1_7
 	not p_1_1_1_7
 }
 
 # 1.1.1.8 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure squashfs kernel module is not available
+# squashfs kernel module must be blocked from loading
 default e_1_1_1_8 := false
 
 e_1_1_1_8 if {
@@ -378,13 +378,13 @@ p_1_1_1_8 if {
 
 violations contains "1.1.1.8: evidence missing — disabled_filesystem_modules.modules[squashfs] not collected" if not e_1_1_1_8
 
-violations contains "1.1.1.8: not met — Ensure squashfs kernel module is not available" if {
+violations contains "1.1.1.8: not met — squashfs kernel module must be blocked from loading" if {
 	e_1_1_1_8
 	not p_1_1_1_8
 }
 
 # 1.1.1.9 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure udf kernel module is not available
+# udf kernel module must be blocked from loading
 default e_1_1_1_9 := false
 
 e_1_1_1_9 if {
@@ -402,23 +402,23 @@ p_1_1_1_9 if {
 
 violations contains "1.1.1.9: evidence missing — disabled_filesystem_modules.modules[udf] not collected" if not e_1_1_1_9
 
-violations contains "1.1.1.9: not met — Ensure udf kernel module is not available" if {
+violations contains "1.1.1.9: not met — udf kernel module must be blocked from loading" if {
 	e_1_1_1_9
 	not p_1_1_1_9
 }
 
 # 1.1.1.10 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure unused filesystems kernel modules are not available
+# unused filesystems kernel modules must be not available
 default p_1_1_1_10 := false
 
 p_1_1_1_10 if {
 	input.attest.unused_filesystem_modules_reviewed == true
 }
 
-violations contains "1.1.1.10: manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (Ensure unused filesystems kernel modules are not available)" if not p_1_1_1_10
+violations contains "1.1.1.10: manual review not attested — set attest.unused_filesystem_modules_reviewed to true once reviewed (unused filesystems kernel modules must be not available)" if not p_1_1_1_10
 
 # 1.1.2.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /tmp is tmpfs or a separate partition
+# /tmp must be tmpfs or a separate partition
 default e_1_1_2_1_1 := false
 
 e_1_1_2_1_1 if {
@@ -434,13 +434,13 @@ p_1_1_2_1_1 if {
 
 violations contains "1.1.2.1.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_1_1
 
-violations contains "1.1.2.1.1: not met — Ensure /tmp is tmpfs or a separate partition" if {
+violations contains "1.1.2.1.1: not met — /tmp must be tmpfs or a separate partition" if {
 	e_1_1_2_1_1
 	not p_1_1_2_1_1
 }
 
 # 1.1.2.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /tmp partition
+# /tmp must be mounted with the nodev option
 default e_1_1_2_1_2 := false
 
 e_1_1_2_1_2 if {
@@ -459,13 +459,13 @@ p_1_1_2_1_2 if {
 
 violations contains "1.1.2.1.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_1_2
 
-violations contains "1.1.2.1.2: not met — Ensure nodev option set on /tmp partition" if {
+violations contains "1.1.2.1.2: not met — /tmp must be mounted with the nodev option" if {
 	e_1_1_2_1_2
 	not p_1_1_2_1_2
 }
 
 # 1.1.2.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /tmp partition
+# /tmp must be mounted with the nosuid option
 default e_1_1_2_1_3 := false
 
 e_1_1_2_1_3 if {
@@ -484,13 +484,13 @@ p_1_1_2_1_3 if {
 
 violations contains "1.1.2.1.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_1_3
 
-violations contains "1.1.2.1.3: not met — Ensure nosuid option set on /tmp partition" if {
+violations contains "1.1.2.1.3: not met — /tmp must be mounted with the nosuid option" if {
 	e_1_1_2_1_3
 	not p_1_1_2_1_3
 }
 
 # 1.1.2.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure noexec option set on /tmp partition
+# /tmp must be mounted with the noexec option
 default e_1_1_2_1_4 := false
 
 e_1_1_2_1_4 if {
@@ -509,13 +509,13 @@ p_1_1_2_1_4 if {
 
 violations contains "1.1.2.1.4: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_1_4
 
-violations contains "1.1.2.1.4: not met — Ensure noexec option set on /tmp partition" if {
+violations contains "1.1.2.1.4: not met — /tmp must be mounted with the noexec option" if {
 	e_1_1_2_1_4
 	not p_1_1_2_1_4
 }
 
 # 1.1.2.2.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure /dev/shm is tmpfs or a separate partition
+# /dev/shm must be tmpfs or a separate partition
 default e_1_1_2_2_1 := false
 
 e_1_1_2_2_1 if {
@@ -530,13 +530,13 @@ p_1_1_2_2_1 if {
 
 violations contains "1.1.2.2.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_2_1
 
-violations contains "1.1.2.2.1: not met — Ensure /dev/shm is tmpfs or a separate partition" if {
+violations contains "1.1.2.2.1: not met — /dev/shm must be tmpfs or a separate partition" if {
 	e_1_1_2_2_1
 	not p_1_1_2_2_1
 }
 
 # 1.1.2.2.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /dev/shm partition
+# /dev/shm must be mounted with the nodev option
 default e_1_1_2_2_2 := false
 
 e_1_1_2_2_2 if {
@@ -555,13 +555,13 @@ p_1_1_2_2_2 if {
 
 violations contains "1.1.2.2.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_2_2
 
-violations contains "1.1.2.2.2: not met — Ensure nodev option set on /dev/shm partition" if {
+violations contains "1.1.2.2.2: not met — /dev/shm must be mounted with the nodev option" if {
 	e_1_1_2_2_2
 	not p_1_1_2_2_2
 }
 
 # 1.1.2.2.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /dev/shm partition
+# /dev/shm must be mounted with the nosuid option
 default e_1_1_2_2_3 := false
 
 e_1_1_2_2_3 if {
@@ -580,13 +580,13 @@ p_1_1_2_2_3 if {
 
 violations contains "1.1.2.2.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_2_3
 
-violations contains "1.1.2.2.3: not met — Ensure nosuid option set on /dev/shm partition" if {
+violations contains "1.1.2.2.3: not met — /dev/shm must be mounted with the nosuid option" if {
 	e_1_1_2_2_3
 	not p_1_1_2_2_3
 }
 
 # 1.1.2.2.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure noexec option set on /dev/shm partition
+# /dev/shm must be mounted with the noexec option
 default e_1_1_2_2_4 := false
 
 e_1_1_2_2_4 if {
@@ -605,13 +605,13 @@ p_1_1_2_2_4 if {
 
 violations contains "1.1.2.2.4: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_2_4
 
-violations contains "1.1.2.2.4: not met — Ensure noexec option set on /dev/shm partition" if {
+violations contains "1.1.2.2.4: not met — /dev/shm must be mounted with the noexec option" if {
 	e_1_1_2_2_4
 	not p_1_1_2_2_4
 }
 
 # 1.1.2.3.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure separate partition exists for /home
+# /home must be its own filesystem
 default e_1_1_2_3_1 := false
 
 e_1_1_2_3_1 if {
@@ -626,13 +626,13 @@ p_1_1_2_3_1 if {
 
 violations contains "1.1.2.3.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_3_1
 
-violations contains "1.1.2.3.1: not met — Ensure separate partition exists for /home" if {
+violations contains "1.1.2.3.1: not met — /home must be its own filesystem" if {
 	e_1_1_2_3_1
 	not p_1_1_2_3_1
 }
 
 # 1.1.2.3.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /home partition
+# /home must be mounted with the nodev option
 default e_1_1_2_3_2 := false
 
 e_1_1_2_3_2 if {
@@ -651,13 +651,13 @@ p_1_1_2_3_2 if {
 
 violations contains "1.1.2.3.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_3_2
 
-violations contains "1.1.2.3.2: not met — Ensure nodev option set on /home partition" if {
+violations contains "1.1.2.3.2: not met — /home must be mounted with the nodev option" if {
 	e_1_1_2_3_2
 	not p_1_1_2_3_2
 }
 
 # 1.1.2.3.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /home partition
+# /home must be mounted with the nosuid option
 default e_1_1_2_3_3 := false
 
 e_1_1_2_3_3 if {
@@ -676,13 +676,13 @@ p_1_1_2_3_3 if {
 
 violations contains "1.1.2.3.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_3_3
 
-violations contains "1.1.2.3.3: not met — Ensure nosuid option set on /home partition" if {
+violations contains "1.1.2.3.3: not met — /home must be mounted with the nosuid option" if {
 	e_1_1_2_3_3
 	not p_1_1_2_3_3
 }
 
 # 1.1.2.4.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure separate partition exists for /var
+# /var must be its own filesystem
 default e_1_1_2_4_1 := false
 
 e_1_1_2_4_1 if {
@@ -697,13 +697,13 @@ p_1_1_2_4_1 if {
 
 violations contains "1.1.2.4.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_4_1
 
-violations contains "1.1.2.4.1: not met — Ensure separate partition exists for /var" if {
+violations contains "1.1.2.4.1: not met — /var must be its own filesystem" if {
 	e_1_1_2_4_1
 	not p_1_1_2_4_1
 }
 
 # 1.1.2.4.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /var partition
+# /var must be mounted with the nodev option
 default e_1_1_2_4_2 := false
 
 e_1_1_2_4_2 if {
@@ -722,13 +722,13 @@ p_1_1_2_4_2 if {
 
 violations contains "1.1.2.4.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_4_2
 
-violations contains "1.1.2.4.2: not met — Ensure nodev option set on /var partition" if {
+violations contains "1.1.2.4.2: not met — /var must be mounted with the nodev option" if {
 	e_1_1_2_4_2
 	not p_1_1_2_4_2
 }
 
 # 1.1.2.4.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /var partition
+# /var must be mounted with the nosuid option
 default e_1_1_2_4_3 := false
 
 e_1_1_2_4_3 if {
@@ -747,13 +747,13 @@ p_1_1_2_4_3 if {
 
 violations contains "1.1.2.4.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_4_3
 
-violations contains "1.1.2.4.3: not met — Ensure nosuid option set on /var partition" if {
+violations contains "1.1.2.4.3: not met — /var must be mounted with the nosuid option" if {
 	e_1_1_2_4_3
 	not p_1_1_2_4_3
 }
 
 # 1.1.2.5.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure separate partition exists for /var/tmp
+# /var/tmp must be its own filesystem
 default e_1_1_2_5_1 := false
 
 e_1_1_2_5_1 if {
@@ -768,13 +768,13 @@ p_1_1_2_5_1 if {
 
 violations contains "1.1.2.5.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_5_1
 
-violations contains "1.1.2.5.1: not met — Ensure separate partition exists for /var/tmp" if {
+violations contains "1.1.2.5.1: not met — /var/tmp must be its own filesystem" if {
 	e_1_1_2_5_1
 	not p_1_1_2_5_1
 }
 
 # 1.1.2.5.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /var/tmp partition
+# /var/tmp must be mounted with the nodev option
 default e_1_1_2_5_2 := false
 
 e_1_1_2_5_2 if {
@@ -793,13 +793,13 @@ p_1_1_2_5_2 if {
 
 violations contains "1.1.2.5.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_5_2
 
-violations contains "1.1.2.5.2: not met — Ensure nodev option set on /var/tmp partition" if {
+violations contains "1.1.2.5.2: not met — /var/tmp must be mounted with the nodev option" if {
 	e_1_1_2_5_2
 	not p_1_1_2_5_2
 }
 
 # 1.1.2.5.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /var/tmp partition
+# /var/tmp must be mounted with the nosuid option
 default e_1_1_2_5_3 := false
 
 e_1_1_2_5_3 if {
@@ -818,13 +818,13 @@ p_1_1_2_5_3 if {
 
 violations contains "1.1.2.5.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_5_3
 
-violations contains "1.1.2.5.3: not met — Ensure nosuid option set on /var/tmp partition" if {
+violations contains "1.1.2.5.3: not met — /var/tmp must be mounted with the nosuid option" if {
 	e_1_1_2_5_3
 	not p_1_1_2_5_3
 }
 
 # 1.1.2.5.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure noexec option set on /var/tmp partition
+# /var/tmp must be mounted with the noexec option
 default e_1_1_2_5_4 := false
 
 e_1_1_2_5_4 if {
@@ -843,13 +843,13 @@ p_1_1_2_5_4 if {
 
 violations contains "1.1.2.5.4: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_5_4
 
-violations contains "1.1.2.5.4: not met — Ensure noexec option set on /var/tmp partition" if {
+violations contains "1.1.2.5.4: not met — /var/tmp must be mounted with the noexec option" if {
 	e_1_1_2_5_4
 	not p_1_1_2_5_4
 }
 
 # 1.1.2.6.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure separate partition exists for /var/log
+# /var/log must be its own filesystem
 default e_1_1_2_6_1 := false
 
 e_1_1_2_6_1 if {
@@ -864,13 +864,13 @@ p_1_1_2_6_1 if {
 
 violations contains "1.1.2.6.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_6_1
 
-violations contains "1.1.2.6.1: not met — Ensure separate partition exists for /var/log" if {
+violations contains "1.1.2.6.1: not met — /var/log must be its own filesystem" if {
 	e_1_1_2_6_1
 	not p_1_1_2_6_1
 }
 
 # 1.1.2.6.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /var/log partition
+# /var/log must be mounted with the nodev option
 default e_1_1_2_6_2 := false
 
 e_1_1_2_6_2 if {
@@ -889,13 +889,13 @@ p_1_1_2_6_2 if {
 
 violations contains "1.1.2.6.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_6_2
 
-violations contains "1.1.2.6.2: not met — Ensure nodev option set on /var/log partition" if {
+violations contains "1.1.2.6.2: not met — /var/log must be mounted with the nodev option" if {
 	e_1_1_2_6_2
 	not p_1_1_2_6_2
 }
 
 # 1.1.2.6.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /var/log partition
+# /var/log must be mounted with the nosuid option
 default e_1_1_2_6_3 := false
 
 e_1_1_2_6_3 if {
@@ -914,13 +914,13 @@ p_1_1_2_6_3 if {
 
 violations contains "1.1.2.6.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_6_3
 
-violations contains "1.1.2.6.3: not met — Ensure nosuid option set on /var/log partition" if {
+violations contains "1.1.2.6.3: not met — /var/log must be mounted with the nosuid option" if {
 	e_1_1_2_6_3
 	not p_1_1_2_6_3
 }
 
 # 1.1.2.6.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure noexec option set on /var/log partition
+# /var/log must be mounted with the noexec option
 default e_1_1_2_6_4 := false
 
 e_1_1_2_6_4 if {
@@ -939,13 +939,13 @@ p_1_1_2_6_4 if {
 
 violations contains "1.1.2.6.4: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_6_4
 
-violations contains "1.1.2.6.4: not met — Ensure noexec option set on /var/log partition" if {
+violations contains "1.1.2.6.4: not met — /var/log must be mounted with the noexec option" if {
 	e_1_1_2_6_4
 	not p_1_1_2_6_4
 }
 
 # 1.1.2.7.1 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure separate partition exists for /var/log/audit
+# /var/log/audit must be its own filesystem
 default e_1_1_2_7_1 := false
 
 e_1_1_2_7_1 if {
@@ -960,13 +960,13 @@ p_1_1_2_7_1 if {
 
 violations contains "1.1.2.7.1: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_7_1
 
-violations contains "1.1.2.7.1: not met — Ensure separate partition exists for /var/log/audit" if {
+violations contains "1.1.2.7.1: not met — /var/log/audit must be its own filesystem" if {
 	e_1_1_2_7_1
 	not p_1_1_2_7_1
 }
 
 # 1.1.2.7.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nodev option set on /var/log/audit partition
+# /var/log/audit must be mounted with the nodev option
 default e_1_1_2_7_2 := false
 
 e_1_1_2_7_2 if {
@@ -985,13 +985,13 @@ p_1_1_2_7_2 if {
 
 violations contains "1.1.2.7.2: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_7_2
 
-violations contains "1.1.2.7.2: not met — Ensure nodev option set on /var/log/audit partition" if {
+violations contains "1.1.2.7.2: not met — /var/log/audit must be mounted with the nodev option" if {
 	e_1_1_2_7_2
 	not p_1_1_2_7_2
 }
 
 # 1.1.2.7.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure nosuid option set on /var/log/audit partition
+# /var/log/audit must be mounted with the nosuid option
 default e_1_1_2_7_3 := false
 
 e_1_1_2_7_3 if {
@@ -1010,13 +1010,13 @@ p_1_1_2_7_3 if {
 
 violations contains "1.1.2.7.3: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_7_3
 
-violations contains "1.1.2.7.3: not met — Ensure nosuid option set on /var/log/audit partition" if {
+violations contains "1.1.2.7.3: not met — /var/log/audit must be mounted with the nosuid option" if {
 	e_1_1_2_7_3
 	not p_1_1_2_7_3
 }
 
 # 1.1.2.7.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure noexec option set on /var/log/audit partition
+# /var/log/audit must be mounted with the noexec option
 default e_1_1_2_7_4 := false
 
 e_1_1_2_7_4 if {
@@ -1035,7 +1035,7 @@ p_1_1_2_7_4 if {
 
 violations contains "1.1.2.7.4: evidence missing — ansible_facts.ansible_mounts not collected" if not e_1_1_2_7_4
 
-violations contains "1.1.2.7.4: not met — Ensure noexec option set on /var/log/audit partition" if {
+violations contains "1.1.2.7.4: not met — /var/log/audit must be mounted with the noexec option" if {
 	e_1_1_2_7_4
 	not p_1_1_2_7_4
 }

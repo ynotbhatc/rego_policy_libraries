@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_vmware-1.1",
-      "title": "Ensure ESXi host is configured with appropriate time synchronization",
+      "title": "ESXi host must be explicitly configured with appropriate time synchronization",
       "props": [
        {
         "name": "label",
@@ -97,19 +97,19 @@
        {
         "id": "cis_vmware-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host is configured with appropriate time synchronization"
+        "prose": "ESXi host must be explicitly configured with appropriate time synchronization"
        },
        {
         "id": "cis_vmware-1.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server service account is configured correctly"
+        "prose": "vCenter Server service account must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.2",
-      "title": "Ensure ESXi host SSH service is configured securely",
+      "title": "ESXi host SSH service must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -139,19 +139,19 @@
        {
         "id": "cis_vmware-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host SSH service is configured securely"
+        "prose": "ESXi host SSH service must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-1.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server logging is configured appropriately"
+        "prose": "vCenter Server logging must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.3",
-      "title": "Ensure ESXi host firewall is configured appropriately",
+      "title": "ESXi host firewall must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -181,19 +181,19 @@
        {
         "id": "cis_vmware-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host firewall is configured appropriately"
+        "prose": "ESXi host firewall must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server session timeout is configured"
+        "prose": "vCenter Server session timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.4",
-      "title": "Ensure ESXi host certificate management is configured securely",
+      "title": "ESXi host certificate management must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -223,19 +223,19 @@
        {
         "id": "cis_vmware-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host certificate management is configured securely"
+        "prose": "ESXi host certificate management must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-1.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server password policies are enforced"
+        "prose": "vCenter Server password policies must be enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.5",
-      "title": "Ensure ESXi host password policies are enforced",
+      "title": "ESXi host password policies must be enforced",
       "props": [
        {
         "name": "label",
@@ -265,19 +265,19 @@
        {
         "id": "cis_vmware-1.5_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host password policies are enforced"
+        "prose": "ESXi host password policies must be enforced"
        },
        {
         "id": "cis_vmware-1.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server SSL certificates are properly configured"
+        "prose": "vCenter Server SSL certificates must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.6",
-      "title": "Ensure ESXi host account lockout policies are configured",
+      "title": "ESXi host account lockout policies must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -307,19 +307,19 @@
        {
         "id": "cis_vmware-1.6_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host account lockout policies are configured"
+        "prose": "ESXi host account lockout policies must be explicitly configured"
        },
        {
         "id": "cis_vmware-1.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server network security is properly configured"
+        "prose": "vCenter Server network security must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.7",
-      "title": "Ensure ESXi host session timeout is configured appropriately",
+      "title": "ESXi host session timeout must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -349,19 +349,19 @@
        {
         "id": "cis_vmware-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host session timeout is configured appropriately"
+        "prose": "ESXi host session timeout must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-1.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server backup and recovery procedures are in place"
+        "prose": "vCenter Server backup and recovery procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.8",
-      "title": "Ensure ESXi host console access is properly secured",
+      "title": "ESXi host console access must be properly secured",
       "props": [
        {
         "name": "label",
@@ -391,19 +391,19 @@
        {
         "id": "cis_vmware-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host console access is properly secured"
+        "prose": "ESXi host console access must be properly secured"
        },
        {
         "id": "cis_vmware-1.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server database security is properly configured"
+        "prose": "vCenter Server database security must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.9",
-      "title": "Ensure ESXi host SNMP configuration is secure",
+      "title": "ESXi host SNMP configuration must be secure",
       "props": [
        {
         "name": "label",
@@ -433,19 +433,19 @@
        {
         "id": "cis_vmware-1.9_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host SNMP configuration is secure"
+        "prose": "ESXi host SNMP configuration must be secure"
        },
        {
         "id": "cis_vmware-1.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server access control is properly configured"
+        "prose": "vCenter Server access control must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.10",
-      "title": "Ensure ESXi host syslog is configured appropriately",
+      "title": "ESXi host syslog must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -475,19 +475,19 @@
        {
         "id": "cis_vmware-1.10_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host syslog is configured appropriately"
+        "prose": "ESXi host syslog must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-1.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server audit logging is enabled"
+        "prose": "vCenter Server audit logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.11",
-      "title": "Ensure ESXi host kernel modules are restricted",
+      "title": "ESXi host kernel modules must be restricted",
       "props": [
        {
         "name": "label",
@@ -517,19 +517,19 @@
        {
         "id": "cis_vmware-1.11_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host kernel modules are restricted"
+        "prose": "ESXi host kernel modules must be restricted"
        },
        {
         "id": "cis_vmware-1.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server management interfaces are secured"
+        "prose": "vCenter Server management interfaces must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.12",
-      "title": "Ensure ESXi host hypervisor scheduler is configured securely",
+      "title": "ESXi host hypervisor scheduler must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -559,19 +559,19 @@
        {
         "id": "cis_vmware-1.12_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host hypervisor scheduler is configured securely"
+        "prose": "ESXi host hypervisor scheduler must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-1.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server time synchronization is configured"
+        "prose": "vCenter Server time synchronization must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.13",
-      "title": "Ensure ESXi host memory management is configured securely",
+      "title": "ESXi host memory management must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -601,19 +601,19 @@
        {
         "id": "cis_vmware-1.13_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host memory management is configured securely"
+        "prose": "ESXi host memory management must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-1.13_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server SNMP is configured securely"
+        "prose": "vCenter Server SNMP must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.14",
-      "title": "Ensure ESXi host CPU resource management is configured",
+      "title": "ESXi host CPU resource management must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -643,19 +643,19 @@
        {
         "id": "cis_vmware-1.14_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host CPU resource management is configured"
+        "prose": "ESXi host CPU resource management must be explicitly configured"
        },
        {
         "id": "cis_vmware-1.14_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server performance monitoring is secured"
+        "prose": "vCenter Server performance monitoring must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.15",
-      "title": "Ensure ESXi host power management is configured appropriately",
+      "title": "ESXi host power management must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -685,19 +685,19 @@
        {
         "id": "cis_vmware-1.15_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host power management is configured appropriately"
+        "prose": "ESXi host power management must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-1.15_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server update and patch management is configured"
+        "prose": "vCenter Server update and patch management must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.16",
-      "title": "Ensure ESXi host hardware monitoring is configured",
+      "title": "ESXi host hardware monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -727,19 +727,19 @@
        {
         "id": "cis_vmware-1.16_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host hardware monitoring is configured"
+        "prose": "ESXi host hardware monitoring must be explicitly configured"
        },
        {
         "id": "cis_vmware-1.16_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server high availability is properly configured"
+        "prose": "vCenter Server high availability must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.17",
-      "title": "Ensure ESXi host update and patch management is configured",
+      "title": "ESXi host update and patch management must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -769,19 +769,19 @@
        {
         "id": "cis_vmware-1.17_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host update and patch management is configured"
+        "prose": "ESXi host update and patch management must be explicitly configured"
        },
        {
         "id": "cis_vmware-1.17_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server disaster recovery is configured"
+        "prose": "vCenter Server disaster recovery must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.18",
-      "title": "Ensure ESXi host backup and recovery procedures are in place",
+      "title": "ESXi host backup and recovery procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -811,19 +811,19 @@
        {
         "id": "cis_vmware-1.18_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host backup and recovery procedures are in place"
+        "prose": "ESXi host backup and recovery procedures must be in place"
        },
        {
         "id": "cis_vmware-1.18_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server inventory management is secured"
+        "prose": "vCenter Server inventory management must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.19",
-      "title": "Ensure ESXi host disaster recovery is configured",
+      "title": "ESXi host disaster recovery must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -853,19 +853,19 @@
        {
         "id": "cis_vmware-1.19_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host disaster recovery is configured"
+        "prose": "ESXi host disaster recovery must be explicitly configured"
        },
        {
         "id": "cis_vmware-1.19_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server API access is properly secured"
+        "prose": "vCenter Server API access must be properly secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-1.20",
-      "title": "Ensure ESXi host compliance monitoring is enabled",
+      "title": "ESXi host compliance monitoring must be turned on",
       "props": [
        {
         "name": "label",
@@ -895,19 +895,19 @@
        {
         "id": "cis_vmware-1.20_stmt",
         "name": "statement",
-        "prose": "Ensure ESXi host compliance monitoring is enabled"
+        "prose": "ESXi host compliance monitoring must be turned on"
        },
        {
         "id": "cis_vmware-1.20_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vCenter Server licensing is properly managed"
+        "prose": "vCenter Server licensing must be properly managed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.1",
-      "title": "Ensure network redundancy is configured for critical traffic",
+      "title": "network redundancy must be explicitly configured for critical traffic",
       "props": [
        {
         "name": "label",
@@ -937,19 +937,19 @@
        {
         "id": "cis_vmware-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure network redundancy is configured for critical traffic"
+        "prose": "network redundancy must be explicitly configured for critical traffic"
        },
        {
         "id": "cis_vmware-2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO password policy is configured securely"
+        "prose": "SSO password policy must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.2",
-      "title": "Ensure network security policies are implemented",
+      "title": "network security policies must be implemented",
       "props": [
        {
         "name": "label",
@@ -979,19 +979,19 @@
        {
         "id": "cis_vmware-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure network security policies are implemented"
+        "prose": "network security policies must be implemented"
        },
        {
         "id": "cis_vmware-2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO lockout policy is configured appropriately"
+        "prose": "SSO lockout policy must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.3",
-      "title": "Ensure VLAN configuration follows security best practices",
+      "title": "checked condition — VLAN configuration follows security best practices",
       "props": [
        {
         "name": "label",
@@ -1021,19 +1021,19 @@
        {
         "id": "cis_vmware-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure VLAN configuration follows security best practices"
+        "prose": "checked condition — VLAN configuration follows security best practices"
        },
        {
         "id": "cis_vmware-2.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO identity sources are configured securely"
+        "prose": "SSO identity sources must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.4",
-      "title": "Ensure virtual switch security policies are configured",
+      "title": "virtual switch security policies must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1063,19 +1063,19 @@
        {
         "id": "cis_vmware-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure virtual switch security policies are configured"
+        "prose": "virtual switch security policies must be explicitly configured"
        },
        {
         "id": "cis_vmware-2.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO token policy is configured appropriately"
+        "prose": "SSO token policy must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.5",
-      "title": "Ensure port group security policies are configured",
+      "title": "port group security policies must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1105,19 +1105,19 @@
        {
         "id": "cis_vmware-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure port group security policies are configured"
+        "prose": "port group security policies must be explicitly configured"
        },
        {
         "id": "cis_vmware-2.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO certificate management is secure"
+        "prose": "SSO certificate management must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.6",
-      "title": "Ensure network I/O control is configured appropriately",
+      "title": "network I/O control must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -1147,19 +1147,19 @@
        {
         "id": "cis_vmware-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure network I/O control is configured appropriately"
+        "prose": "network I/O control must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-2.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO domain join operations are secured"
+        "prose": "SSO domain join operations must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.7",
-      "title": "Ensure network traffic shaping is configured",
+      "title": "network traffic shaping must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1189,19 +1189,19 @@
        {
         "id": "cis_vmware-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure network traffic shaping is configured"
+        "prose": "network traffic shaping must be explicitly configured"
        },
        {
         "id": "cis_vmware-2.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO service accounts have minimal privileges"
+        "prose": "SSO service accounts must have minimal privileges"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.8",
-      "title": "Ensure network security and monitoring is configured",
+      "title": "network security and monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1231,19 +1231,19 @@
        {
         "id": "cis_vmware-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure network security and monitoring is configured"
+        "prose": "network security and monitoring must be explicitly configured"
        },
        {
         "id": "cis_vmware-2.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO audit logging is enabled and configured"
+        "prose": "SSO audit logging must be turned on and configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.9",
-      "title": "Ensure network access control is properly configured",
+      "title": "network access control must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -1273,19 +1273,19 @@
        {
         "id": "cis_vmware-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure network access control is properly configured"
+        "prose": "network access control must match the approved configuration"
        },
        {
         "id": "cis_vmware-2.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO global permissions are reviewed and minimized"
+        "prose": "SSO global permissions must be reviewed and minimized"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.10",
-      "title": "Ensure network encryption is enabled where appropriate",
+      "title": "network encryption must be turned on where appropriate",
       "props": [
        {
         "name": "label",
@@ -1315,19 +1315,19 @@
        {
         "id": "cis_vmware-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure network encryption is enabled where appropriate"
+        "prose": "network encryption must be turned on where appropriate"
        },
        {
         "id": "cis_vmware-2.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO solution user certificates are managed properly"
+        "prose": "SSO solution user certificates must be managed properly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.11",
-      "title": "Ensure network segmentation is properly implemented",
+      "title": "network segmentation must be properly implemented",
       "props": [
        {
         "name": "label",
@@ -1357,19 +1357,19 @@
        {
         "id": "cis_vmware-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure network segmentation is properly implemented"
+        "prose": "network segmentation must be properly implemented"
        },
        {
         "id": "cis_vmware-2.11_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO IdP discovery is configured securely"
+        "prose": "SSO IdP discovery must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.12",
-      "title": "Ensure virtual networking security features are enabled",
+      "title": "virtual networking security features must be turned on",
       "props": [
        {
         "name": "label",
@@ -1399,19 +1399,19 @@
        {
         "id": "cis_vmware-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure virtual networking security features are enabled"
+        "prose": "virtual networking security features must be turned on"
        },
        {
         "id": "cis_vmware-2.12_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure SSO smart card authentication is configured properly"
+        "prose": "SSO smart card authentication must be explicitly configured properly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.13",
-      "title": "Ensure network intrusion detection is configured",
+      "title": "network intrusion detection must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1437,14 +1437,14 @@
        {
         "id": "cis_vmware-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure network intrusion detection is configured"
+        "prose": "network intrusion detection must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-2.14",
-      "title": "Ensure network performance monitoring is configured",
+      "title": "network performance monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1470,14 +1470,14 @@
        {
         "id": "cis_vmware-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure network performance monitoring is configured"
+        "prose": "network performance monitoring must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.1",
-      "title": "Ensure storage access control is properly configured",
+      "title": "storage access control must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -1507,19 +1507,19 @@
        {
         "id": "cis_vmware-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure storage access control is properly configured"
+        "prose": "storage access control must match the approved configuration"
        },
        {
         "id": "cis_vmware-3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client session timeout is configured"
+        "prose": "vSphere Client session timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.2",
-      "title": "Ensure storage encryption is enabled where appropriate",
+      "title": "storage encryption must be turned on where appropriate",
       "props": [
        {
         "name": "label",
@@ -1549,19 +1549,19 @@
        {
         "id": "cis_vmware-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure storage encryption is enabled where appropriate"
+        "prose": "storage encryption must be turned on where appropriate"
        },
        {
         "id": "cis_vmware-3.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client SSL/TLS configuration is secure"
+        "prose": "vSphere Client SSL/TLS configuration must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.3",
-      "title": "Ensure storage multipathing is configured securely",
+      "title": "storage multipathing must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -1591,19 +1591,19 @@
        {
         "id": "cis_vmware-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure storage multipathing is configured securely"
+        "prose": "storage multipathing must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client access logging is enabled"
+        "prose": "vSphere Client access logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.4",
-      "title": "Ensure storage performance monitoring is configured",
+      "title": "storage performance monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1633,19 +1633,19 @@
        {
         "id": "cis_vmware-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure storage performance monitoring is configured"
+        "prose": "storage performance monitoring must be explicitly configured"
        },
        {
         "id": "cis_vmware-3.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client plugin security is configured"
+        "prose": "vSphere Client plugin security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.5",
-      "title": "Ensure storage backup and recovery procedures are in place",
+      "title": "storage backup and recovery procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -1675,19 +1675,19 @@
        {
         "id": "cis_vmware-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure storage backup and recovery procedures are in place"
+        "prose": "storage backup and recovery procedures must be in place"
        },
        {
         "id": "cis_vmware-3.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client content security policy is configured"
+        "prose": "vSphere Client content security policy must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.6",
-      "title": "Ensure storage array integration is secure",
+      "title": "storage array integration must be secure",
       "props": [
        {
         "name": "label",
@@ -1717,19 +1717,19 @@
        {
         "id": "cis_vmware-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure storage array integration is secure"
+        "prose": "storage array integration must be secure"
        },
        {
         "id": "cis_vmware-3.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client HTTP security headers are configured"
+        "prose": "vSphere Client HTTP security headers must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.7",
-      "title": "Ensure storage I/O control is configured appropriately",
+      "title": "storage I/O control must be explicitly configured appropriately",
       "props": [
        {
         "name": "label",
@@ -1759,19 +1759,19 @@
        {
         "id": "cis_vmware-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure storage I/O control is configured appropriately"
+        "prose": "storage I/O control must be explicitly configured appropriately"
        },
        {
         "id": "cis_vmware-3.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client authentication mechanisms are secure"
+        "prose": "vSphere Client authentication mechanisms must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.8",
-      "title": "Ensure storage security policies are implemented",
+      "title": "storage security policies must be implemented",
       "props": [
        {
         "name": "label",
@@ -1801,19 +1801,19 @@
        {
         "id": "cis_vmware-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure storage security policies are implemented"
+        "prose": "storage security policies must be implemented"
        },
        {
         "id": "cis_vmware-3.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure vSphere Client cookie security is configured"
+        "prose": "vSphere Client cookie security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.9",
-      "title": "Ensure storage audit logging is enabled",
+      "title": "storage audit logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -1839,14 +1839,14 @@
        {
         "id": "cis_vmware-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure storage audit logging is enabled"
+        "prose": "storage audit logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-3.10",
-      "title": "Ensure storage compliance monitoring is configured",
+      "title": "storage compliance monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -1872,14 +1872,14 @@
        {
         "id": "cis_vmware-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure storage compliance monitoring is configured"
+        "prose": "storage compliance monitoring must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.1",
-      "title": "Ensure VM configuration security is enforced",
+      "title": "VM configuration security must be enforced",
       "props": [
        {
         "name": "label",
@@ -1909,19 +1909,19 @@
        {
         "id": "cis_vmware-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure VM configuration security is enforced"
+        "prose": "VM configuration security must be enforced"
        },
        {
         "id": "cis_vmware-4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service logging is configured appropriately"
+        "prose": "Inventory Service logging must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.2",
-      "title": "Ensure VM resource allocation is properly controlled",
+      "title": "VM resource allocation must be properly controlled",
       "props": [
        {
         "name": "label",
@@ -1951,19 +1951,19 @@
        {
         "id": "cis_vmware-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure VM resource allocation is properly controlled"
+        "prose": "VM resource allocation must be properly controlled"
        },
        {
         "id": "cis_vmware-4.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service access controls are properly configured"
+        "prose": "Inventory Service access controls must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.3",
-      "title": "Ensure VM security policies are implemented",
+      "title": "VM security policies must be implemented",
       "props": [
        {
         "name": "label",
@@ -1993,19 +1993,19 @@
        {
         "id": "cis_vmware-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure VM security policies are implemented"
+        "prose": "VM security policies must be implemented"
        },
        {
         "id": "cis_vmware-4.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service SSL/TLS configuration is secure"
+        "prose": "Inventory Service SSL/TLS configuration must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.4",
-      "title": "Ensure VM network security is configured",
+      "title": "VM network security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2035,19 +2035,19 @@
        {
         "id": "cis_vmware-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure VM network security is configured"
+        "prose": "VM network security must be explicitly configured"
        },
        {
         "id": "cis_vmware-4.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service database connections are secured"
+        "prose": "Inventory Service database connections must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.5",
-      "title": "Ensure VM storage security is configured",
+      "title": "VM storage security must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2077,19 +2077,19 @@
        {
         "id": "cis_vmware-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure VM storage security is configured"
+        "prose": "VM storage security must be explicitly configured"
        },
        {
         "id": "cis_vmware-4.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service performance monitoring is configured"
+        "prose": "Inventory Service performance monitoring must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.6",
-      "title": "Ensure VM access control is properly configured",
+      "title": "VM access control must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -2119,19 +2119,19 @@
        {
         "id": "cis_vmware-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure VM access control is properly configured"
+        "prose": "VM access control must match the approved configuration"
        },
        {
         "id": "cis_vmware-4.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Inventory Service backup procedures are in place"
+        "prose": "Inventory Service backup procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.7",
-      "title": "Ensure VM monitoring and logging is configured",
+      "title": "VM monitoring and logging must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2157,14 +2157,14 @@
        {
         "id": "cis_vmware-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure VM monitoring and logging is configured"
+        "prose": "VM monitoring and logging must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.8",
-      "title": "Ensure VM backup and recovery procedures are in place",
+      "title": "VM backup and recovery procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -2190,14 +2190,14 @@
        {
         "id": "cis_vmware-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure VM backup and recovery procedures are in place"
+        "prose": "VM backup and recovery procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.9",
-      "title": "Ensure VM compliance monitoring is enabled",
+      "title": "VM compliance monitoring must be turned on",
       "props": [
        {
         "name": "label",
@@ -2223,14 +2223,14 @@
        {
         "id": "cis_vmware-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure VM compliance monitoring is enabled"
+        "prose": "VM compliance monitoring must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.10",
-      "title": "Ensure VM security scanning is configured",
+      "title": "VM security scanning must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2256,14 +2256,14 @@
        {
         "id": "cis_vmware-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure VM security scanning is configured"
+        "prose": "VM security scanning must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.11",
-      "title": "Ensure VM vulnerability management is implemented",
+      "title": "VM vulnerability management must be implemented",
       "props": [
        {
         "name": "label",
@@ -2289,14 +2289,14 @@
        {
         "id": "cis_vmware-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure VM vulnerability management is implemented"
+        "prose": "VM vulnerability management must be implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.12",
-      "title": "Ensure VM patch management is configured",
+      "title": "VM patch management must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2322,14 +2322,14 @@
        {
         "id": "cis_vmware-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure VM patch management is configured"
+        "prose": "VM patch management must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.13",
-      "title": "Ensure VM antivirus and anti-malware protection is configured",
+      "title": "VM antivirus and anti-malware protection must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2355,14 +2355,14 @@
        {
         "id": "cis_vmware-4.13_stmt",
         "name": "statement",
-        "prose": "Ensure VM antivirus and anti-malware protection is configured"
+        "prose": "VM antivirus and anti-malware protection must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-4.14",
-      "title": "Ensure VM data loss prevention is configured",
+      "title": "VM data loss prevention must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2388,14 +2388,14 @@
        {
         "id": "cis_vmware-4.14_stmt",
         "name": "statement",
-        "prose": "Ensure VM data loss prevention is configured"
+        "prose": "VM data loss prevention must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.1",
-      "title": "Ensure role-based access control is implemented",
+      "title": "role-based access control must be implemented",
       "props": [
        {
         "name": "label",
@@ -2425,19 +2425,19 @@
        {
         "id": "cis_vmware-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure role-based access control is implemented"
+        "prose": "role-based access control must be implemented"
        },
        {
         "id": "cis_vmware-5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Lookup Service SSL/TLS configuration is secure"
+        "prose": "Lookup Service SSL/TLS configuration must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.2",
-      "title": "Ensure user account management is properly configured",
+      "title": "user account management must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -2467,19 +2467,19 @@
        {
         "id": "cis_vmware-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure user account management is properly configured"
+        "prose": "user account management must match the approved configuration"
        },
        {
         "id": "cis_vmware-5.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Lookup Service logging is configured appropriately"
+        "prose": "Lookup Service logging must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.3",
-      "title": "Ensure service account management is secure",
+      "title": "service account management must be secure",
       "props": [
        {
         "name": "label",
@@ -2509,19 +2509,19 @@
        {
         "id": "cis_vmware-5.3_stmt",
         "name": "statement",
-        "prose": "Ensure service account management is secure"
+        "prose": "service account management must be secure"
        },
        {
         "id": "cis_vmware-5.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Lookup Service registration security is configured"
+        "prose": "Lookup Service registration security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.4",
-      "title": "Ensure privileged access management is implemented",
+      "title": "privileged access management must be implemented",
       "props": [
        {
         "name": "label",
@@ -2551,19 +2551,19 @@
        {
         "id": "cis_vmware-5.4_stmt",
         "name": "statement",
-        "prose": "Ensure privileged access management is implemented"
+        "prose": "privileged access management must be implemented"
        },
        {
         "id": "cis_vmware-5.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Lookup Service access controls are properly configured"
+        "prose": "Lookup Service access controls must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.5",
-      "title": "Ensure authentication mechanisms are secure",
+      "title": "authentication mechanisms must be secure",
       "props": [
        {
         "name": "label",
@@ -2593,19 +2593,19 @@
        {
         "id": "cis_vmware-5.5_stmt",
         "name": "statement",
-        "prose": "Ensure authentication mechanisms are secure"
+        "prose": "authentication mechanisms must be secure"
        },
        {
         "id": "cis_vmware-5.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Lookup Service endpoint security is configured"
+        "prose": "Lookup Service endpoint security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.6",
-      "title": "Ensure authorization policies are properly configured",
+      "title": "authorization policies must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -2631,14 +2631,14 @@
        {
         "id": "cis_vmware-5.6_stmt",
         "name": "statement",
-        "prose": "Ensure authorization policies are properly configured"
+        "prose": "authorization policies must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.7",
-      "title": "Ensure access review procedures are in place",
+      "title": "access review procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -2664,14 +2664,14 @@
        {
         "id": "cis_vmware-5.7_stmt",
         "name": "statement",
-        "prose": "Ensure access review procedures are in place"
+        "prose": "access review procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.8",
-      "title": "Ensure access provisioning and deprovisioning is automated",
+      "title": "access provisioning and deprovisioning must be automated",
       "props": [
        {
         "name": "label",
@@ -2697,14 +2697,14 @@
        {
         "id": "cis_vmware-5.8_stmt",
         "name": "statement",
-        "prose": "Ensure access provisioning and deprovisioning is automated"
+        "prose": "access provisioning and deprovisioning must be automated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.9",
-      "title": "Ensure access monitoring and alerting is configured",
+      "title": "access monitoring and alerting must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2730,14 +2730,14 @@
        {
         "id": "cis_vmware-5.9_stmt",
         "name": "statement",
-        "prose": "Ensure access monitoring and alerting is configured"
+        "prose": "access monitoring and alerting must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-5.10",
-      "title": "Ensure emergency access procedures are documented",
+      "title": "emergency access procedures must be documented",
       "props": [
        {
         "name": "label",
@@ -2763,14 +2763,14 @@
        {
         "id": "cis_vmware-5.10_stmt",
         "name": "statement",
-        "prose": "Ensure emergency access procedures are documented"
+        "prose": "emergency access procedures must be documented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.1",
-      "title": "Ensure comprehensive audit logging is enabled",
+      "title": "comprehensive audit logging must be turned on",
       "props": [
        {
         "name": "label",
@@ -2800,19 +2800,19 @@
        {
         "id": "cis_vmware-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure comprehensive audit logging is enabled"
+        "prose": "comprehensive audit logging must be turned on"
        },
        {
         "id": "cis_vmware-6.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL authentication is configured securely"
+        "prose": "PostgreSQL authentication must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.2",
-      "title": "Ensure log forwarding is configured securely",
+      "title": "log forwarding must be explicitly configured securely",
       "props": [
        {
         "name": "label",
@@ -2842,19 +2842,19 @@
        {
         "id": "cis_vmware-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure log forwarding is configured securely"
+        "prose": "log forwarding must be explicitly configured securely"
        },
        {
         "id": "cis_vmware-6.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL logging is configured appropriately"
+        "prose": "PostgreSQL logging must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.3",
-      "title": "Ensure log retention policies are implemented",
+      "title": "log retention policies must be implemented",
       "props": [
        {
         "name": "label",
@@ -2884,19 +2884,19 @@
        {
         "id": "cis_vmware-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure log retention policies are implemented"
+        "prose": "log retention policies must be implemented"
        },
        {
         "id": "cis_vmware-6.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL connection security is configured"
+        "prose": "PostgreSQL connection security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.4",
-      "title": "Ensure log monitoring and alerting is configured",
+      "title": "log monitoring and alerting must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2926,19 +2926,19 @@
        {
         "id": "cis_vmware-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure log monitoring and alerting is configured"
+        "prose": "log monitoring and alerting must be explicitly configured"
        },
        {
         "id": "cis_vmware-6.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL access controls are properly configured"
+        "prose": "PostgreSQL access controls must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.5",
-      "title": "Ensure log integrity protection is enabled",
+      "title": "log integrity protection must be turned on",
       "props": [
        {
         "name": "label",
@@ -2968,19 +2968,19 @@
        {
         "id": "cis_vmware-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure log integrity protection is enabled"
+        "prose": "log integrity protection must be turned on"
        },
        {
         "id": "cis_vmware-6.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL SSL/TLS configuration is secure"
+        "prose": "PostgreSQL SSL/TLS configuration must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.6",
-      "title": "Ensure security event correlation is configured",
+      "title": "security event correlation must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3010,19 +3010,19 @@
        {
         "id": "cis_vmware-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure security event correlation is configured"
+        "prose": "security event correlation must be explicitly configured"
        },
        {
         "id": "cis_vmware-6.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL backup and recovery procedures are in place"
+        "prose": "PostgreSQL backup and recovery procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.7",
-      "title": "Ensure incident response procedures are documented",
+      "title": "incident response procedures must be documented",
       "props": [
        {
         "name": "label",
@@ -3052,19 +3052,19 @@
        {
         "id": "cis_vmware-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure incident response procedures are documented"
+        "prose": "incident response procedures must be documented"
        },
        {
         "id": "cis_vmware-6.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL performance monitoring is configured"
+        "prose": "PostgreSQL performance monitoring must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.8",
-      "title": "Ensure forensic analysis capabilities are available",
+      "title": "forensic analysis capabilities must be available",
       "props": [
        {
         "name": "label",
@@ -3094,19 +3094,19 @@
        {
         "id": "cis_vmware-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure forensic analysis capabilities are available"
+        "prose": "forensic analysis capabilities must be available"
        },
        {
         "id": "cis_vmware-6.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure PostgreSQL audit logging is enabled"
+        "prose": "PostgreSQL audit logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.9",
-      "title": "Ensure compliance reporting is automated",
+      "title": "compliance reporting must be automated",
       "props": [
        {
         "name": "label",
@@ -3132,14 +3132,14 @@
        {
         "id": "cis_vmware-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure compliance reporting is automated"
+        "prose": "compliance reporting must be automated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-6.10",
-      "title": "Ensure audit trail review procedures are in place",
+      "title": "audit trail review procedures must be in place",
       "props": [
        {
         "name": "label",
@@ -3165,14 +3165,14 @@
        {
         "id": "cis_vmware-6.10_stmt",
         "name": "statement",
-        "prose": "Ensure audit trail review procedures are in place"
+        "prose": "audit trail review procedures must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.1",
-      "title": "Ensure system hardening standards are applied",
+      "title": "system hardening standards must be applied",
       "props": [
        {
         "name": "label",
@@ -3202,19 +3202,19 @@
        {
         "id": "cis_vmware-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure system hardening standards are applied"
+        "prose": "system hardening standards must be applied"
        },
        {
         "id": "cis_vmware-7.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS firewall is configured appropriately"
+        "prose": "Photon OS firewall must be explicitly configured appropriately"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.2",
-      "title": "Ensure security patches are applied timely",
+      "title": "security patches must be applied timely",
       "props": [
        {
         "name": "label",
@@ -3244,19 +3244,19 @@
        {
         "id": "cis_vmware-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure security patches are applied timely"
+        "prose": "security patches must be applied timely"
        },
        {
         "id": "cis_vmware-7.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS system logging is configured"
+        "prose": "Photon OS system logging must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.3",
-      "title": "Ensure vulnerability scanning is configured",
+      "title": "vulnerability scanning must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3286,19 +3286,19 @@
        {
         "id": "cis_vmware-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure vulnerability scanning is configured"
+        "prose": "vulnerability scanning must be explicitly configured"
        },
        {
         "id": "cis_vmware-7.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS access controls are properly configured"
+        "prose": "Photon OS access controls must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.4",
-      "title": "Ensure penetration testing is performed regularly",
+      "title": "penetration testing must be performed regularly",
       "props": [
        {
         "name": "label",
@@ -3328,19 +3328,19 @@
        {
         "id": "cis_vmware-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure penetration testing is performed regularly"
+        "prose": "penetration testing must be performed regularly"
        },
        {
         "id": "cis_vmware-7.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS network security is configured"
+        "prose": "Photon OS network security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.5",
-      "title": "Ensure security baseline compliance is monitored",
+      "title": "security baseline compliance must be monitored",
       "props": [
        {
         "name": "label",
@@ -3370,19 +3370,19 @@
        {
         "id": "cis_vmware-7.5_stmt",
         "name": "statement",
-        "prose": "Ensure security baseline compliance is monitored"
+        "prose": "security baseline compliance must be monitored"
        },
        {
         "id": "cis_vmware-7.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS time synchronization is configured"
+        "prose": "Photon OS time synchronization must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.6",
-      "title": "Ensure configuration drift detection is enabled",
+      "title": "configuration drift detection must be turned on",
       "props": [
        {
         "name": "label",
@@ -3412,19 +3412,19 @@
        {
         "id": "cis_vmware-7.6_stmt",
         "name": "statement",
-        "prose": "Ensure configuration drift detection is enabled"
+        "prose": "configuration drift detection must be turned on"
        },
        {
         "id": "cis_vmware-7.6_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS package management is secure"
+        "prose": "Photon OS package management must be secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.7",
-      "title": "Ensure security automation is implemented",
+      "title": "security automation must be implemented",
       "props": [
        {
         "name": "label",
@@ -3454,19 +3454,19 @@
        {
         "id": "cis_vmware-7.7_stmt",
         "name": "statement",
-        "prose": "Ensure security automation is implemented"
+        "prose": "security automation must be implemented"
        },
        {
         "id": "cis_vmware-7.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS user account security is configured"
+        "prose": "Photon OS user account security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.8",
-      "title": "Ensure threat intelligence integration is configured",
+      "title": "threat intelligence integration must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3496,19 +3496,19 @@
        {
         "id": "cis_vmware-7.8_stmt",
         "name": "statement",
-        "prose": "Ensure threat intelligence integration is configured"
+        "prose": "threat intelligence integration must be explicitly configured"
        },
        {
         "id": "cis_vmware-7.8_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS audit logging is enabled"
+        "prose": "Photon OS audit logging must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.9",
-      "title": "Ensure security metrics and KPIs are tracked",
+      "title": "security metrics and KPIs must be tracked",
       "props": [
        {
         "name": "label",
@@ -3538,19 +3538,19 @@
        {
         "id": "cis_vmware-7.9_stmt",
         "name": "statement",
-        "prose": "Ensure security metrics and KPIs are tracked"
+        "prose": "security metrics and KPIs must be tracked"
        },
        {
         "id": "cis_vmware-7.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS kernel security parameters are configured"
+        "prose": "Photon OS kernel security parameters must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-7.10",
-      "title": "Ensure continuous security improvement processes are in place",
+      "title": "continuous security improvement processes must be in place",
       "props": [
        {
         "name": "label",
@@ -3580,19 +3580,19 @@
        {
         "id": "cis_vmware-7.10_stmt",
         "name": "statement",
-        "prose": "Ensure continuous security improvement processes are in place"
+        "prose": "continuous security improvement processes must be in place"
        },
        {
         "id": "cis_vmware-7.10_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Photon OS filesystem security is configured"
+        "prose": "Photon OS filesystem security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.1",
-      "title": "Ensure compliance framework alignment is documented",
+      "title": "compliance framework alignment must be documented",
       "props": [
        {
         "name": "label",
@@ -3622,19 +3622,19 @@
        {
         "id": "cis_vmware-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure compliance framework alignment is documented"
+        "prose": "compliance framework alignment must be documented"
        },
        {
         "id": "cis_vmware-8.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Performance Charts service logging is configured"
+        "prose": "Performance Charts service logging must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.2",
-      "title": "Ensure regulatory compliance monitoring is configured",
+      "title": "regulatory compliance monitoring must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3664,19 +3664,19 @@
        {
         "id": "cis_vmware-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure regulatory compliance monitoring is configured"
+        "prose": "regulatory compliance monitoring must be explicitly configured"
        },
        {
         "id": "cis_vmware-8.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Performance Charts service SSL/TLS is configured securely"
+        "prose": "Performance Charts service SSL/TLS must be explicitly configured securely"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.3",
-      "title": "Ensure compliance reporting is automated",
+      "title": "compliance reporting must be automated",
       "props": [
        {
         "name": "label",
@@ -3706,19 +3706,19 @@
        {
         "id": "cis_vmware-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure compliance reporting is automated"
+        "prose": "compliance reporting must be automated"
        },
        {
         "id": "cis_vmware-8.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Performance Charts service access controls are configured"
+        "prose": "Performance Charts service access controls must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.4",
-      "title": "Ensure compliance audit trails are maintained",
+      "title": "compliance audit trails must be maintained",
       "props": [
        {
         "name": "label",
@@ -3748,19 +3748,19 @@
        {
         "id": "cis_vmware-8.4_stmt",
         "name": "statement",
-        "prose": "Ensure compliance audit trails are maintained"
+        "prose": "compliance audit trails must be maintained"
        },
        {
         "id": "cis_vmware-8.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure Performance Charts service database security is configured"
+        "prose": "Performance Charts service database security must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.5",
-      "title": "Ensure compliance exception management is implemented",
+      "title": "compliance exception management must be implemented",
       "props": [
        {
         "name": "label",
@@ -3786,14 +3786,14 @@
        {
         "id": "cis_vmware-8.5_stmt",
         "name": "statement",
-        "prose": "Ensure compliance exception management is implemented"
+        "prose": "compliance exception management must be implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.6",
-      "title": "Ensure compliance training and awareness programs are in place",
+      "title": "compliance training and awareness programs must be in place",
       "props": [
        {
         "name": "label",
@@ -3819,14 +3819,14 @@
        {
         "id": "cis_vmware-8.6_stmt",
         "name": "statement",
-        "prose": "Ensure compliance training and awareness programs are in place"
+        "prose": "compliance training and awareness programs must be in place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.7",
-      "title": "Ensure compliance risk assessment is performed regularly",
+      "title": "compliance risk assessment must be performed regularly",
       "props": [
        {
         "name": "label",
@@ -3852,14 +3852,14 @@
        {
         "id": "cis_vmware-8.7_stmt",
         "name": "statement",
-        "prose": "Ensure compliance risk assessment is performed regularly"
+        "prose": "compliance risk assessment must be performed regularly"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_vmware-8.8",
-      "title": "Ensure compliance governance processes are documented",
+      "title": "compliance governance processes must be documented",
       "props": [
        {
         "name": "label",
@@ -3885,7 +3885,7 @@
        {
         "id": "cis_vmware-8.8_stmt",
         "name": "statement",
-        "prose": "Ensure compliance governance processes are documented"
+        "prose": "compliance governance processes must be documented"
        }
       ],
       "class": "security"

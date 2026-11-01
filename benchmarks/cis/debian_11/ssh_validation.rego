@@ -100,7 +100,7 @@ enabled_tokens(key) := [t |
 	t := trim_prefix(trim_prefix(t0, "+"), "^")
 ]
 
-# CIS 5.2.1: Ensure permissions on /etc/ssh/sshd_config are configured
+# CIS 5.2.1: owner, group, and mode of /etc/ssh/sshd_config must be tightened
 permission_violations contains msg if {
 	some k in ["sshd_config_mode", "sshd_config_owner", "sshd_config_group"]
 	not has_key(object.get(input, "ssh", {}), k)
@@ -122,7 +122,7 @@ permission_violations contains msg if {
 	msg := sprintf("CIS 5.2.1: /etc/ssh/sshd_config group is %s, should be root", [input.ssh.sshd_config_group])
 }
 
-# CIS 5.2.2: Ensure permissions on SSH private host key files
+# CIS 5.2.2: checked condition — permissions on SSH private host key files
 permission_violations contains msg if {
 	not input.ssh.private_key_files
 	msg := "CIS 5.2.2: evidence missing — ssh.private_key_files not collected"
@@ -134,7 +134,7 @@ permission_violations contains msg if {
 	msg := sprintf("CIS 5.2.2: SSH private host key %s has mode %s, should be 0600", [key.path, key.mode])
 }
 
-# CIS 5.2.3: Ensure permissions on SSH public host key files
+# CIS 5.2.3: checked condition — permissions on SSH public host key files
 permission_violations contains msg if {
 	not input.ssh.public_key_files
 	msg := "CIS 5.2.3: evidence missing — ssh.public_key_files not collected"
@@ -152,7 +152,7 @@ config_violations contains msg if {
 	msg := "CIS 5.2.x: evidence missing — ssh.sshd_config_raw not collected"
 }
 
-# CIS 5.2.4: Ensure SSH access is limited
+# CIS 5.2.4: SSH access must be limited to named principals
 config_violations contains msg if {
 	every k in ["AllowUsers", "AllowGroups", "DenyUsers", "DenyGroups"] {
 		not directive(k)
@@ -160,61 +160,61 @@ config_violations contains msg if {
 	msg := "CIS 5.2.4: SSH access is not limited via AllowUsers/AllowGroups/DenyUsers/DenyGroups"
 }
 
-# CIS 5.2.5: Ensure SSH LogLevel is appropriate
+# CIS 5.2.5: SSH LogLevel must use an approved value
 config_violations contains msg if {
 	not dir_in("LogLevel", {"verbose", "info"})
 	msg := "CIS 5.2.5: SSH LogLevel is not set to VERBOSE or INFO"
 }
 
-# CIS 5.2.6: Ensure SSH PAM is enabled
+# CIS 5.2.6: SSH PAM must be turned on
 config_violations contains msg if {
 	directive("UsePAM") == "no"
 	msg := "CIS 5.2.6: SSH UsePAM is disabled"
 }
 
-# CIS 5.2.7: Ensure SSH root login is disabled
+# CIS 5.2.7: SSH root login must be turned off
 config_violations contains msg if {
 	not dir_in("PermitRootLogin", {"no", "prohibit-password", "without-password", "forced-commands-only"})
 	msg := "CIS 5.2.7: SSH root login is not disabled"
 }
 
-# CIS 5.2.8: Ensure SSH HostbasedAuthentication is disabled
+# CIS 5.2.8: SSH HostbasedAuthentication must be turned off
 config_violations contains msg if {
 	directive("HostbasedAuthentication") == "yes"
 	msg := "CIS 5.2.8: SSH HostbasedAuthentication is enabled"
 }
 
-# CIS 5.2.9: Ensure SSH PermitEmptyPasswords is disabled
+# CIS 5.2.9: SSH PermitEmptyPasswords must be turned off
 config_violations contains msg if {
 	directive("PermitEmptyPasswords") == "yes"
 	msg := "CIS 5.2.9: SSH PermitEmptyPasswords is enabled"
 }
 
-# CIS 5.2.10: Ensure SSH PermitUserEnvironment is disabled
+# CIS 5.2.10: SSH PermitUserEnvironment must be turned off
 config_violations contains msg if {
 	directive("PermitUserEnvironment") == "yes"
 	msg := "CIS 5.2.10: SSH PermitUserEnvironment is enabled"
 }
 
-# CIS 5.2.11: Ensure SSH IgnoreRhosts is enabled
+# CIS 5.2.11: SSH IgnoreRhosts must be turned on
 config_violations contains msg if {
 	directive("IgnoreRhosts") == "no"
 	msg := "CIS 5.2.11: SSH IgnoreRhosts is disabled"
 }
 
-# CIS 5.2.12: Ensure SSH X11Forwarding is disabled
+# CIS 5.2.12: SSH X11Forwarding must be turned off
 config_violations contains msg if {
 	directive("X11Forwarding") == "yes"
 	msg := "CIS 5.2.12: SSH X11Forwarding is enabled"
 }
 
-# CIS 5.2.13: Ensure SSH AllowTcpForwarding is disabled
+# CIS 5.2.13: SSH AllowTcpForwarding must be turned off
 config_violations contains msg if {
 	directive("AllowTcpForwarding") in {"yes", "all"}
 	msg := "CIS 5.2.13: SSH AllowTcpForwarding is enabled"
 }
 
-# CIS 5.2.14: Ensure SSH warning banner is configured
+# CIS 5.2.14: SSH warning banner must be explicitly configured
 config_violations contains msg if {
 	not directive("Banner")
 	msg := "CIS 5.2.14: SSH warning banner (Banner) is not configured"
@@ -225,7 +225,7 @@ config_violations contains msg if {
 	msg := "CIS 5.2.14: SSH banner is set to none"
 }
 
-# CIS 5.2.15: Ensure SSH MaxAuthTries is set to 4 or less (sshd default is 6, so unset fails)
+# CIS 5.2.15: required value of SSH MaxAuthTries is 4 or less (sshd default is 6, so unset fails)
 config_violations contains msg if {
 	v := directive("MaxAuthTries")
 	not regex.match(`^[0-9]+$`, v)
@@ -244,13 +244,13 @@ config_violations contains msg if {
 	msg := "CIS 5.2.15: SSH MaxAuthTries is not set (sshd default is 6, should be 4 or less)"
 }
 
-# CIS 5.2.16: Ensure SSH MaxStartups is configured
+# CIS 5.2.16: SSH MaxStartups must be explicitly configured
 config_violations contains msg if {
 	not directive("MaxStartups")
 	msg := "CIS 5.2.16: SSH MaxStartups is not configured"
 }
 
-# CIS 5.2.17: Ensure SSH MaxSessions is set to 10 or less (sshd default is 10)
+# CIS 5.2.17: required value of SSH MaxSessions is 10 or less (sshd default is 10)
 config_violations contains msg if {
 	v := directive("MaxSessions")
 	not regex.match(`^[0-9]+$`, v)
@@ -264,7 +264,7 @@ config_violations contains msg if {
 	msg := sprintf("CIS 5.2.17: SSH MaxSessions is %s, should be 10 or less", [v])
 }
 
-# CIS 5.2.18: Ensure SSH LoginGraceTime is set to one minute or less (sshd default is 120s, so unset fails)
+# CIS 5.2.18: required value of SSH LoginGraceTime is one minute or less (sshd default is 120s, so unset fails)
 config_violations contains msg if {
 	v := directive("LoginGraceTime")
 	not seconds(v)
@@ -282,7 +282,7 @@ config_violations contains msg if {
 	msg := "CIS 5.2.18: SSH LoginGraceTime is not set (sshd default is 120 seconds, should be 60 or less)"
 }
 
-# CIS 5.2.19: Ensure SSH Idle Timeout Interval is configured
+# CIS 5.2.19: SSH Idle Timeout Interval must be explicitly configured
 config_violations contains msg if {
 	not directive("ClientAliveInterval")
 	msg := "CIS 5.2.19: SSH ClientAliveInterval is not configured"
@@ -293,7 +293,7 @@ config_violations contains msg if {
 	msg := "CIS 5.2.19: SSH ClientAliveCountMax is not configured"
 }
 
-# CIS 5.2.20: Ensure SSH Ciphers are configured
+# CIS 5.2.20: SSH Ciphers must be explicitly configured
 weak_ciphers := ["arcfour", "arcfour128", "arcfour256", "3des-cbc", "blowfish-cbc", "cast128-cbc", "aes128-cbc", "aes192-cbc", "aes256-cbc"]
 
 crypto_violations contains msg if {
@@ -303,7 +303,7 @@ crypto_violations contains msg if {
 	msg := sprintf("CIS 5.2.20: SSH configuration contains weak cipher: %s", [weak_cipher])
 }
 
-# CIS 5.2.21: Ensure only strong MAC algorithms are used
+# CIS 5.2.21: only strong MAC algorithms must be used
 weak_macs := [
 	"hmac-md5", "hmac-md5-96", "hmac-ripemd160", "hmac-sha1", "hmac-sha1-96", "umac-64@openssh.com",
 	"hmac-md5-etm@openssh.com", "hmac-md5-96-etm@openssh.com", "hmac-ripemd160-etm@openssh.com",
@@ -317,7 +317,7 @@ crypto_violations contains msg if {
 	msg := sprintf("CIS 5.2.21: SSH configuration contains weak MAC algorithm: %s", [weak_mac])
 }
 
-# CIS 5.2.22: Ensure only strong Key Exchange algorithms are used
+# CIS 5.2.22: only strong Key Exchange algorithms must be used
 weak_kex := ["diffie-hellman-group1-sha1", "diffie-hellman-group14-sha1", "diffie-hellman-group-exchange-sha1"]
 
 crypto_violations contains msg if {

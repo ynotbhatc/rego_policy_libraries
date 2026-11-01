@@ -60,14 +60,14 @@ violations contains msg if {
     msg := "CIS 5.3.1: sudo package not installed"
 }
 
-# CIS 5.3.2: Ensure sudo commands use pty
+# CIS 5.3.2: sudo commands must allocate a pseudo-terminal
 violations contains msg if {
     sudo_installed
     not sudoers_default_flag_set("use_pty")
     msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
-# CIS 5.3.3: Ensure sudo log file exists
+# CIS 5.3.3: a log file for sudo must exist
 violations contains msg if {
     sudo_installed
     not sudoers_has_option("logfile=")
@@ -81,21 +81,21 @@ violations contains msg if {
     msg := "CIS 5.3.3: sudo logfile configured but file does not exist"
 }
 
-# CIS 5.3.4: Ensure users must provide password for privilege escalation
+# CIS 5.3.4: checked condition — users must provide password for privilege escalation
 violations contains msg if {
     sudo_installed
     sudoers_has_option("NOPASSWD:")
     msg := "CIS 5.3.4: NOPASSWD option found in sudoers - users should provide password"
 }
 
-# CIS 5.3.5: Ensure re-authentication for privilege escalation is not disabled globally
+# CIS 5.3.5: re-authentication for privilege escalation must stay in effect globally
 violations contains msg if {
     sudo_installed
     sudoers_has_option("!authenticate")
     msg := "CIS 5.3.5: !authenticate found in sudoers - re-authentication is disabled"
 }
 
-# CIS 5.3.6: Ensure sudo authentication timeout is configured correctly
+# CIS 5.3.6: sudo authentication timeout must match the approved configuration
 violations contains msg if {
     sudo_installed
     input.sudo.timestamp_timeout
@@ -118,7 +118,7 @@ violations contains msg if {
     msg := "CIS 5.3.6: sudo timestamp_timeout not configured"
 }
 
-# CIS 5.3.7: Ensure access to the su command is restricted
+# CIS 5.3.7: access to the su command must be restricted
 violations contains msg if {
     not input.sudo.su_restricted
     msg := "CIS 5.3.7: Access to su command not restricted (pam_wheel.so not configured)"

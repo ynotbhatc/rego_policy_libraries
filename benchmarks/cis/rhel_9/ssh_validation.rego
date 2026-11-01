@@ -270,7 +270,7 @@ sshd_config := {k: concat(",", [p[1] | some p in sshd_pairs; p[0] == k]) | some 
 permission_violations := {v | some v in violations; regex.match(`^5\.1\.[1-4]: `, v)}
 
 # 5.1.1 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/ssh/sshd_config is configured
+# access to /etc/ssh/sshd_config must be explicitly configured
 default e_5_1_1 := false
 
 e_5_1_1 if {
@@ -289,13 +289,13 @@ p_5_1_1 if {
 
 violations contains "5.1.1: evidence missing — ssh.config_permissions/dropin_permissions not collected" if not e_5_1_1
 
-violations contains "5.1.1: not met — Ensure access to /etc/ssh/sshd_config is configured" if {
+violations contains "5.1.1: not met — access to /etc/ssh/sshd_config must be explicitly configured" if {
 	e_5_1_1
 	not p_5_1_1
 }
 
 # 5.1.2 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/ssh/sshd_config.d/ directory is configured
+# access to /etc/ssh/sshd_config.d/ directory must be explicitly configured
 default e_5_1_2 := false
 
 e_5_1_2 if {
@@ -312,13 +312,13 @@ p_5_1_2 if {
 
 violations contains "5.1.2: evidence missing — ssh.dropin_dir_permissions not collected" if not e_5_1_2
 
-violations contains "5.1.2: not met — Ensure access to /etc/ssh/sshd_config.d/ directory is configured" if {
+violations contains "5.1.2: not met — access to /etc/ssh/sshd_config.d/ directory must be explicitly configured" if {
 	e_5_1_2
 	not p_5_1_2
 }
 
 # 5.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to SSH private host key files is configured
+# access to SSH private host key files must be explicitly configured
 default e_5_1_3 := false
 
 e_5_1_3 if {
@@ -334,13 +334,13 @@ p_5_1_3 if {
 
 violations contains "5.1.3: evidence missing — ssh.private_key_permissions not collected" if not e_5_1_3
 
-violations contains "5.1.3: not met — Ensure access to SSH private host key files is configured" if {
+violations contains "5.1.3: not met — access to SSH private host key files must be explicitly configured" if {
 	e_5_1_3
 	not p_5_1_3
 }
 
 # 5.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to SSH public host key files is configured
+# access to SSH public host key files must be explicitly configured
 default e_5_1_4 := false
 
 e_5_1_4 if {
@@ -356,13 +356,13 @@ p_5_1_4 if {
 
 violations contains "5.1.4: evidence missing — ssh.public_key_permissions not collected" if not e_5_1_4
 
-violations contains "5.1.4: not met — Ensure access to SSH public host key files is configured" if {
+violations contains "5.1.4: not met — access to SSH public host key files must be explicitly configured" if {
 	e_5_1_4
 	not p_5_1_4
 }
 
 # 5.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd Ciphers are configured
+# sshd Ciphers must be explicitly configured
 default e_5_1_5 := false
 
 e_5_1_5 if {
@@ -378,13 +378,13 @@ p_5_1_5 if {
 
 violations contains "5.1.5: evidence missing — ssh.sshd_config_raw (effective ciphers) not collected" if not e_5_1_5
 
-violations contains "5.1.5: not met — Ensure sshd Ciphers are configured" if {
+violations contains "5.1.5: not met — sshd Ciphers must be explicitly configured" if {
 	e_5_1_5
 	not p_5_1_5
 }
 
 # 5.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd KexAlgorithms is configured
+# sshd KexAlgorithms must be explicitly configured
 default e_5_1_6 := false
 
 e_5_1_6 if {
@@ -400,13 +400,13 @@ p_5_1_6 if {
 
 violations contains "5.1.6: evidence missing — ssh.sshd_config_raw (effective kexalgorithms) not collected" if not e_5_1_6
 
-violations contains "5.1.6: not met — Ensure sshd KexAlgorithms is configured" if {
+violations contains "5.1.6: not met — sshd KexAlgorithms must be explicitly configured" if {
 	e_5_1_6
 	not p_5_1_6
 }
 
 # 5.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd MACs are configured
+# sshd MACs must be explicitly configured
 default e_5_1_7 := false
 
 e_5_1_7 if {
@@ -422,13 +422,13 @@ p_5_1_7 if {
 
 violations contains "5.1.7: evidence missing — ssh.sshd_config_raw (effective macs) not collected" if not e_5_1_7
 
-violations contains "5.1.7: not met — Ensure sshd MACs are configured" if {
+violations contains "5.1.7: not met — sshd MACs must be explicitly configured" if {
 	e_5_1_7
 	not p_5_1_7
 }
 
 # 5.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd access is configured
+# sshd access must be explicitly configured
 default e_5_1_8 := false
 
 e_5_1_8 if {
@@ -444,13 +444,13 @@ p_5_1_8 if {
 
 violations contains "5.1.8: evidence missing — ssh.sshd_config_raw not collected" if not e_5_1_8
 
-violations contains "5.1.8: not met — Ensure sshd access is configured" if {
+violations contains "5.1.8: not met — sshd access must be explicitly configured" if {
 	e_5_1_8
 	not p_5_1_8
 }
 
 # 5.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd Banner is configured
+# sshd Banner must be explicitly configured
 default e_5_1_9 := false
 
 e_5_1_9 if {
@@ -473,13 +473,13 @@ p_5_1_9 if {
 
 violations contains "5.1.9: evidence missing — ssh.sshd_config_raw (effective banner)/ssh.banner_contains_sensitive_info not collected" if not e_5_1_9
 
-violations contains "5.1.9: not met — Ensure sshd Banner is configured" if {
+violations contains "5.1.9: not met — sshd Banner must be explicitly configured" if {
 	e_5_1_9
 	not p_5_1_9
 }
 
 # 5.1.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+# sshd ClientAliveInterval and ClientAliveCountMax must be explicitly configured
 default e_5_1_10 := false
 
 e_5_1_10 if {
@@ -497,13 +497,13 @@ p_5_1_10 if {
 
 violations contains "5.1.10: evidence missing — ssh.sshd_config_raw (effective clientaliveinterval/clientalivecountmax) not collected" if not e_5_1_10
 
-violations contains "5.1.10: not met — Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured" if {
+violations contains "5.1.10: not met — sshd ClientAliveInterval and ClientAliveCountMax must be explicitly configured" if {
 	e_5_1_10
 	not p_5_1_10
 }
 
 # 5.1.11 (Automated; Level 2 - Server, Level 1 - Workstation)
-# Ensure sshd DisableForwarding is enabled
+# sshd DisableForwarding must be turned on
 default e_5_1_11 := false
 
 e_5_1_11 if {
@@ -520,13 +520,13 @@ p_5_1_11 if {
 
 violations contains "5.1.11: evidence missing — ssh.sshd_config_raw (effective disableforwarding) not collected" if not e_5_1_11
 
-violations contains "5.1.11: not met — Ensure sshd DisableForwarding is enabled" if {
+violations contains "5.1.11: not met — sshd DisableForwarding must be turned on" if {
 	e_5_1_11
 	not p_5_1_11
 }
 
 # 5.1.12 (Automated; Level 2 - Server, Level 1 - Workstation)
-# Ensure sshd GSSAPIAuthentication is disabled
+# sshd GSSAPIAuthentication must be turned off
 default e_5_1_12 := false
 
 e_5_1_12 if {
@@ -543,13 +543,13 @@ p_5_1_12 if {
 
 violations contains "5.1.12: evidence missing — ssh.sshd_config_raw (effective gssapiauthentication) not collected" if not e_5_1_12
 
-violations contains "5.1.12: not met — Ensure sshd GSSAPIAuthentication is disabled" if {
+violations contains "5.1.12: not met — sshd GSSAPIAuthentication must be turned off" if {
 	e_5_1_12
 	not p_5_1_12
 }
 
 # 5.1.13 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd HostbasedAuthentication is disabled
+# sshd HostbasedAuthentication must be turned off
 default e_5_1_13 := false
 
 e_5_1_13 if {
@@ -566,13 +566,13 @@ p_5_1_13 if {
 
 violations contains "5.1.13: evidence missing — ssh.sshd_config_raw (effective hostbasedauthentication) not collected" if not e_5_1_13
 
-violations contains "5.1.13: not met — Ensure sshd HostbasedAuthentication is disabled" if {
+violations contains "5.1.13: not met — sshd HostbasedAuthentication must be turned off" if {
 	e_5_1_13
 	not p_5_1_13
 }
 
 # 5.1.14 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd IgnoreRhosts is enabled
+# sshd IgnoreRhosts must be turned on
 default e_5_1_14 := false
 
 e_5_1_14 if {
@@ -589,13 +589,13 @@ p_5_1_14 if {
 
 violations contains "5.1.14: evidence missing — ssh.sshd_config_raw (effective ignorerhosts) not collected" if not e_5_1_14
 
-violations contains "5.1.14: not met — Ensure sshd IgnoreRhosts is enabled" if {
+violations contains "5.1.14: not met — sshd IgnoreRhosts must be turned on" if {
 	e_5_1_14
 	not p_5_1_14
 }
 
 # 5.1.15 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd LoginGraceTime is configured
+# sshd LoginGraceTime must be explicitly configured
 default e_5_1_15 := false
 
 e_5_1_15 if {
@@ -613,13 +613,13 @@ p_5_1_15 if {
 
 violations contains "5.1.15: evidence missing — ssh.sshd_config_raw (effective logingracetime) not collected" if not e_5_1_15
 
-violations contains "5.1.15: not met — Ensure sshd LoginGraceTime is configured" if {
+violations contains "5.1.15: not met — sshd LoginGraceTime must be explicitly configured" if {
 	e_5_1_15
 	not p_5_1_15
 }
 
 # 5.1.16 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd LogLevel is configured
+# sshd LogLevel must be explicitly configured
 default e_5_1_16 := false
 
 e_5_1_16 if {
@@ -636,13 +636,13 @@ p_5_1_16 if {
 
 violations contains "5.1.16: evidence missing — ssh.sshd_config_raw (effective loglevel) not collected" if not e_5_1_16
 
-violations contains "5.1.16: not met — Ensure sshd LogLevel is configured" if {
+violations contains "5.1.16: not met — sshd LogLevel must be explicitly configured" if {
 	e_5_1_16
 	not p_5_1_16
 }
 
 # 5.1.17 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd MaxAuthTries is configured
+# sshd MaxAuthTries must be explicitly configured
 default e_5_1_17 := false
 
 e_5_1_17 if {
@@ -659,13 +659,13 @@ p_5_1_17 if {
 
 violations contains "5.1.17: evidence missing — ssh.sshd_config_raw (effective maxauthtries) not collected" if not e_5_1_17
 
-violations contains "5.1.17: not met — Ensure sshd MaxAuthTries is configured" if {
+violations contains "5.1.17: not met — sshd MaxAuthTries must be explicitly configured" if {
 	e_5_1_17
 	not p_5_1_17
 }
 
 # 5.1.18 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd MaxStartups is configured
+# sshd MaxStartups must be explicitly configured
 default e_5_1_18 := false
 
 e_5_1_18 if {
@@ -682,13 +682,13 @@ p_5_1_18 if {
 
 violations contains "5.1.18: evidence missing — ssh.sshd_config_raw (effective maxstartups) not collected" if not e_5_1_18
 
-violations contains "5.1.18: not met — Ensure sshd MaxStartups is configured" if {
+violations contains "5.1.18: not met — sshd MaxStartups must be explicitly configured" if {
 	e_5_1_18
 	not p_5_1_18
 }
 
 # 5.1.19 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd MaxSessions is configured
+# sshd MaxSessions must be explicitly configured
 default e_5_1_19 := false
 
 e_5_1_19 if {
@@ -705,13 +705,13 @@ p_5_1_19 if {
 
 violations contains "5.1.19: evidence missing — ssh.sshd_config_raw (effective maxsessions) not collected" if not e_5_1_19
 
-violations contains "5.1.19: not met — Ensure sshd MaxSessions is configured" if {
+violations contains "5.1.19: not met — sshd MaxSessions must be explicitly configured" if {
 	e_5_1_19
 	not p_5_1_19
 }
 
 # 5.1.20 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd PermitEmptyPasswords is disabled
+# sshd PermitEmptyPasswords must be turned off
 default e_5_1_20 := false
 
 e_5_1_20 if {
@@ -728,13 +728,13 @@ p_5_1_20 if {
 
 violations contains "5.1.20: evidence missing — ssh.sshd_config_raw (effective permitemptypasswords) not collected" if not e_5_1_20
 
-violations contains "5.1.20: not met — Ensure sshd PermitEmptyPasswords is disabled" if {
+violations contains "5.1.20: not met — sshd PermitEmptyPasswords must be turned off" if {
 	e_5_1_20
 	not p_5_1_20
 }
 
 # 5.1.21 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd PermitRootLogin is disabled
+# sshd PermitRootLogin must be turned off
 default e_5_1_21 := false
 
 e_5_1_21 if {
@@ -751,13 +751,13 @@ p_5_1_21 if {
 
 violations contains "5.1.21: evidence missing — ssh.sshd_config_raw (effective permitrootlogin) not collected" if not e_5_1_21
 
-violations contains "5.1.21: not met — Ensure sshd PermitRootLogin is disabled" if {
+violations contains "5.1.21: not met — sshd PermitRootLogin must be turned off" if {
 	e_5_1_21
 	not p_5_1_21
 }
 
 # 5.1.22 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd PermitUserEnvironment is disabled
+# sshd PermitUserEnvironment must be turned off
 default e_5_1_22 := false
 
 e_5_1_22 if {
@@ -774,13 +774,13 @@ p_5_1_22 if {
 
 violations contains "5.1.22: evidence missing — ssh.sshd_config_raw (effective permituserenvironment) not collected" if not e_5_1_22
 
-violations contains "5.1.22: not met — Ensure sshd PermitUserEnvironment is disabled" if {
+violations contains "5.1.22: not met — sshd PermitUserEnvironment must be turned off" if {
 	e_5_1_22
 	not p_5_1_22
 }
 
 # 5.1.23 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure sshd UsePAM is enabled
+# sshd UsePAM must be turned on
 default e_5_1_23 := false
 
 e_5_1_23 if {
@@ -797,7 +797,7 @@ p_5_1_23 if {
 
 violations contains "5.1.23: evidence missing — ssh.sshd_config_raw (effective usepam) not collected" if not e_5_1_23
 
-violations contains "5.1.23: not met — Ensure sshd UsePAM is enabled" if {
+violations contains "5.1.23: not met — sshd UsePAM must be turned on" if {
 	e_5_1_23
 	not p_5_1_23
 }

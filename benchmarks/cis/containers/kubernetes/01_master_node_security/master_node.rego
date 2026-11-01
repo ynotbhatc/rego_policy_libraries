@@ -33,14 +33,14 @@ octal(s) := n if {
 # true when mode grants nothing beyond max (both octal strings)
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
-# CIS 1.1.1 - Ensure that the API server pod specification file permissions are set to 644 or more restrictive
+# CIS 1.1.1 - the API server pod specification file permissions must be set to 644 or more restrictive
 default api_server_pod_file_permissions := false
 
 api_server_pod_file_permissions if {
     mode_within(input.file_permissions["/etc/kubernetes/manifests/kube-apiserver.yaml"].mode, "0644")
 }
 
-# CIS 1.1.2 - Ensure that the API server pod specification file ownership is set to root:root
+# CIS 1.1.2 - required value of the API server pod specification file ownership is root:root
 default api_server_pod_file_ownership := false
 
 api_server_pod_file_ownership if {
@@ -48,14 +48,14 @@ api_server_pod_file_ownership if {
     input.file_permissions["/etc/kubernetes/manifests/kube-apiserver.yaml"].group == "root"
 }
 
-# CIS 1.1.3 - Ensure that the controller manager pod specification file permissions are set to 644 or more restrictive
+# CIS 1.1.3 - the controller manager pod specification file permissions must be set to 644 or more restrictive
 default controller_manager_pod_file_permissions := false
 
 controller_manager_pod_file_permissions if {
     mode_within(input.file_permissions["/etc/kubernetes/manifests/kube-controller-manager.yaml"].mode, "0644")
 }
 
-# CIS 1.1.4 - Ensure that the controller manager pod specification file ownership is set to root:root
+# CIS 1.1.4 - required value of the controller manager pod specification file ownership is root:root
 default controller_manager_pod_file_ownership := false
 
 controller_manager_pod_file_ownership if {
@@ -63,14 +63,14 @@ controller_manager_pod_file_ownership if {
     input.file_permissions["/etc/kubernetes/manifests/kube-controller-manager.yaml"].group == "root"
 }
 
-# CIS 1.1.5 - Ensure that the scheduler pod specification file permissions are set to 644 or more restrictive
+# CIS 1.1.5 - the scheduler pod specification file permissions must be set to 644 or more restrictive
 default scheduler_pod_file_permissions := false
 
 scheduler_pod_file_permissions if {
     mode_within(input.file_permissions["/etc/kubernetes/manifests/kube-scheduler.yaml"].mode, "0644")
 }
 
-# CIS 1.1.6 - Ensure that the scheduler pod specification file ownership is set to root:root
+# CIS 1.1.6 - required value of the scheduler pod specification file ownership is root:root
 default scheduler_pod_file_ownership := false
 
 scheduler_pod_file_ownership if {
@@ -78,14 +78,14 @@ scheduler_pod_file_ownership if {
     input.file_permissions["/etc/kubernetes/manifests/kube-scheduler.yaml"].group == "root"
 }
 
-# CIS 1.1.7 - Ensure that the etcd pod specification file permissions are set to 644 or more restrictive
+# CIS 1.1.7 - the etcd pod specification file permissions must be set to 644 or more restrictive
 default etcd_pod_file_permissions := false
 
 etcd_pod_file_permissions if {
     mode_within(input.file_permissions["/etc/kubernetes/manifests/etcd.yaml"].mode, "0644")
 }
 
-# CIS 1.1.8 - Ensure that the etcd pod specification file ownership is set to root:root
+# CIS 1.1.8 - required value of the etcd pod specification file ownership is root:root
 default etcd_pod_file_ownership := false
 
 etcd_pod_file_ownership if {
@@ -93,14 +93,14 @@ etcd_pod_file_ownership if {
     input.file_permissions["/etc/kubernetes/manifests/etcd.yaml"].group == "root"
 }
 
-# CIS 1.2.1 - Ensure that the --anonymous-auth argument is set to false
+# CIS 1.2.1 - required value of the --anonymous-auth argument is false
 default anonymous_auth_disabled := false
 
 anonymous_auth_disabled if {
     contains(input.kube_apiserver_args, "--anonymous-auth=false")
 }
 
-# CIS 1.2.2 - Ensure that the --basic-auth-file argument is not set
+# CIS 1.2.2 - the --basic-auth-file argument must be unset
 default basic_auth_file_not_set := false
 
 basic_auth_file_not_set if {
@@ -108,7 +108,7 @@ basic_auth_file_not_set if {
     not regex.match("--basic-auth-file", input.kube_apiserver_args)
 }
 
-# CIS 1.2.3 - Ensure that the --token-auth-file argument is not set
+# CIS 1.2.3 - the --token-auth-file argument must be unset
 default token_auth_file_not_set := false
 
 token_auth_file_not_set if {
@@ -116,7 +116,7 @@ token_auth_file_not_set if {
     not regex.match("--token-auth-file", input.kube_apiserver_args)
 }
 
-# CIS 1.2.4 - Ensure that the --kubelet-https argument is set to true
+# CIS 1.2.4 - required value of the --kubelet-https argument is true
 default kubelet_https_enabled := false
 
 kubelet_https_enabled if {
@@ -129,7 +129,7 @@ kubelet_https_enabled if {
     not regex.match("--kubelet-https", input.kube_apiserver_args)
 }
 
-# CIS 1.2.5 - Ensure that the --kubelet-client-certificate and --kubelet-client-key arguments are set as appropriate
+# CIS 1.2.5 - the --kubelet-client-certificate and --kubelet-client-key arguments must be set as appropriate
 default kubelet_client_cert_configured := false
 
 kubelet_client_cert_configured if {
@@ -137,14 +137,14 @@ kubelet_client_cert_configured if {
     regex.match("--kubelet-client-key=", input.kube_apiserver_args)
 }
 
-# CIS 1.2.6 - Ensure that the --kubelet-certificate-authority argument is set as appropriate
+# CIS 1.2.6 - the --kubelet-certificate-authority argument must be set as appropriate
 default kubelet_certificate_authority_set := false
 
 kubelet_certificate_authority_set if {
     regex.match("--kubelet-certificate-authority=", input.kube_apiserver_args)
 }
 
-# CIS 1.2.7 - Ensure that the --authorization-mode argument is not set to AlwaysAllow
+# CIS 1.2.7 - the --authorization-mode argument must not be AlwaysAllow
 default authorization_mode_not_always_allow := false
 
 authorization_mode_not_always_allow if {
@@ -152,28 +152,28 @@ authorization_mode_not_always_allow if {
     not contains(input.kube_apiserver_args, "--authorization-mode=AlwaysAllow")
 }
 
-# CIS 1.2.8 - Ensure that the --authorization-mode argument includes Node
+# CIS 1.2.8 - checked condition — the --authorization-mode argument includes Node
 default authorization_mode_includes_node := false
 
 authorization_mode_includes_node if {
     regex.match("--authorization-mode=.*Node", input.kube_apiserver_args)
 }
 
-# CIS 1.2.9 - Ensure that the --authorization-mode argument includes RBAC
+# CIS 1.2.9 - checked condition — the --authorization-mode argument includes RBAC
 default authorization_mode_includes_rbac := false
 
 authorization_mode_includes_rbac if {
     regex.match("--authorization-mode=.*RBAC", input.kube_apiserver_args)
 }
 
-# CIS 1.2.10 - Ensure that the admission control plugin EventRateLimit is set
+# CIS 1.2.10 - the admission control plugin EventRateLimit must be set
 default admission_control_event_rate_limit := false
 
 admission_control_event_rate_limit if {
     regex.match("--enable-admission-plugins=.*EventRateLimit", input.kube_apiserver_args)
 }
 
-# CIS 1.2.11 - Ensure that the admission control plugin AlwaysAdmit is not set
+# CIS 1.2.11 - the admission control plugin AlwaysAdmit must be unset
 default admission_control_not_always_admit := false
 
 admission_control_not_always_admit if {
@@ -181,14 +181,14 @@ admission_control_not_always_admit if {
     not regex.match("--enable-admission-plugins=.*AlwaysAdmit", input.kube_apiserver_args)
 }
 
-# CIS 1.2.12 - Ensure that the admission control plugin AlwaysPullImages is set
+# CIS 1.2.12 - the admission control plugin AlwaysPullImages must be set
 default admission_control_always_pull_images := false
 
 admission_control_always_pull_images if {
     regex.match("--enable-admission-plugins=.*AlwaysPullImages", input.kube_apiserver_args)
 }
 
-# CIS 1.2.13 - Ensure that the admission control plugin SecurityContextDeny is set, if PodSecurityPolicy is not used
+# CIS 1.2.13 - the admission control plugin SecurityContextDeny must be set, if PodSecurityPolicy is not used
 default admission_control_security_context_deny := false
 
 admission_control_security_context_deny if {
@@ -200,7 +200,7 @@ admission_control_security_context_deny if {
     regex.match("--enable-admission-plugins=.*PodSecurityPolicy", input.kube_apiserver_args)
 }
 
-# CIS 1.2.14 - Ensure that the admission control plugin ServiceAccount is set
+# CIS 1.2.14 - the admission control plugin ServiceAccount must be set
 default admission_control_service_account := false
 
 admission_control_service_account if {
@@ -213,7 +213,7 @@ admission_control_service_account if {
     not regex.match("--disable-admission-plugins=.*ServiceAccount", input.kube_apiserver_args)
 }
 
-# CIS 1.2.15 - Ensure that the admission control plugin NamespaceLifecycle is set
+# CIS 1.2.15 - the admission control plugin NamespaceLifecycle must be set
 default admission_control_namespace_lifecycle := false
 
 admission_control_namespace_lifecycle if {

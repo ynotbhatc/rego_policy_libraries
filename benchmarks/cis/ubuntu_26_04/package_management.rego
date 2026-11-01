@@ -203,17 +203,17 @@ apt_last(key) := lower(vs[count(vs) - 1]) if {
 }
 
 # 1.2.1.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure the source.list and .source files use the Signed-By option
+# checked condition — the source.list and .source files use the Signed-By option
 default p_1_2_1_1 := false
 
 p_1_2_1_1 if {
 	input.attest.apt_sources_signed_by_reviewed == true
 }
 
-violations contains "1.2.1.1: manual review not attested — set attest.apt_sources_signed_by_reviewed to true once reviewed (Ensure the source.list and .source files use the Signed-By option)" if not p_1_2_1_1
+violations contains "1.2.1.1: manual review not attested — set attest.apt_sources_signed_by_reviewed to true once reviewed (checked condition — the source.list and .source files use the Signed-By option)" if not p_1_2_1_1
 
 # 1.2.1.2 (Automated; Level 2 - Server, Level 2 - Workstation)
-# Ensure weak dependencies are configured
+# weak dependencies must be explicitly configured
 default e_1_2_1_2 := false
 
 e_1_2_1_2 if {
@@ -229,13 +229,13 @@ p_1_2_1_2 if {
 
 violations contains "1.2.1.2: evidence missing — apt.config_dump not collected" if not e_1_2_1_2
 
-violations contains "1.2.1.2: not met — Ensure weak dependencies are configured" if {
+violations contains "1.2.1.2: not met — weak dependencies must be explicitly configured" if {
 	e_1_2_1_2
 	not p_1_2_1_2
 }
 
 # 1.2.1.3 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to gpg key files are configured
+# access to gpg key files must be explicitly configured
 default e_1_2_1_3 := false
 
 e_1_2_1_3 if {
@@ -251,13 +251,13 @@ p_1_2_1_3 if {
 
 violations contains "1.2.1.3: evidence missing — apt.key_files not collected" if not e_1_2_1_3
 
-violations contains "1.2.1.3: not met — Ensure access to gpg key files are configured" if {
+violations contains "1.2.1.3: not met — access to gpg key files must be explicitly configured" if {
 	e_1_2_1_3
 	not p_1_2_1_3
 }
 
 # 1.2.1.4 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/apt/trusted.gpg.d  directory is configured
+# access to /etc/apt/trusted.gpg.d directory must be explicitly configured
 default e_1_2_1_4 := false
 
 e_1_2_1_4 if {
@@ -276,13 +276,13 @@ p_1_2_1_4 if {
 
 violations contains "1.2.1.4: evidence missing — apt.trusted_gpg_d.mode/apt.trusted_gpg_d.owner/apt.trusted_gpg_d.group not collected" if not e_1_2_1_4
 
-violations contains "1.2.1.4: not met — Ensure access to /etc/apt/trusted.gpg.d  directory is configured" if {
+violations contains "1.2.1.4: not met — access to /etc/apt/trusted.gpg.d directory must be explicitly configured" if {
 	e_1_2_1_4
 	not p_1_2_1_4
 }
 
 # 1.2.1.5 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/apt/auth.conf.d directory  is configured
+# access to /etc/apt/auth.conf.d directory must be explicitly configured
 default e_1_2_1_5 := false
 
 e_1_2_1_5 if {
@@ -301,13 +301,13 @@ p_1_2_1_5 if {
 
 violations contains "1.2.1.5: evidence missing — apt.auth_conf_d.mode/apt.auth_conf_d.owner/apt.auth_conf_d.group not collected" if not e_1_2_1_5
 
-violations contains "1.2.1.5: not met — Ensure access to /etc/apt/auth.conf.d directory  is configured" if {
+violations contains "1.2.1.5: not met — access to /etc/apt/auth.conf.d directory must be explicitly configured" if {
 	e_1_2_1_5
 	not p_1_2_1_5
 }
 
 # 1.2.1.6 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to files in the /etc/apt/auth.conf.d/ directory is configured
+# access to files in the /etc/apt/auth.conf.d/ directory must be explicitly configured
 default e_1_2_1_6 := false
 
 e_1_2_1_6 if {
@@ -322,13 +322,13 @@ p_1_2_1_6 if {
 
 violations contains "1.2.1.6: evidence missing — apt.auth_conf_files not collected" if not e_1_2_1_6
 
-violations contains "1.2.1.6: not met — Ensure access to files in the /etc/apt/auth.conf.d/ directory is configured" if {
+violations contains "1.2.1.6: not met — access to files in the /etc/apt/auth.conf.d/ directory must be explicitly configured" if {
 	e_1_2_1_6
 	not p_1_2_1_6
 }
 
 # 1.2.1.7 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /usr/share/keyrings directory is configured
+# access to /usr/share/keyrings directory must be explicitly configured
 default e_1_2_1_7 := false
 
 e_1_2_1_7 if {
@@ -347,13 +347,13 @@ p_1_2_1_7 if {
 
 violations contains "1.2.1.7: evidence missing — apt.usr_share_keyrings.mode/apt.usr_share_keyrings.owner/apt.usr_share_keyrings.group not collected" if not e_1_2_1_7
 
-violations contains "1.2.1.7: not met — Ensure access to /usr/share/keyrings directory is configured" if {
+violations contains "1.2.1.7: not met — access to /usr/share/keyrings directory must be explicitly configured" if {
 	e_1_2_1_7
 	not p_1_2_1_7
 }
 
 # 1.2.1.8 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to /etc/apt/sources.list.d directory is configured
+# access to /etc/apt/sources.list.d directory must be explicitly configured
 default e_1_2_1_8 := false
 
 e_1_2_1_8 if {
@@ -372,13 +372,13 @@ p_1_2_1_8 if {
 
 violations contains "1.2.1.8: evidence missing — apt.sources_list_d.mode/apt.sources_list_d.owner/apt.sources_list_d.group not collected" if not e_1_2_1_8
 
-violations contains "1.2.1.8: not met — Ensure access to /etc/apt/sources.list.d directory is configured" if {
+violations contains "1.2.1.8: not met — access to /etc/apt/sources.list.d directory must be explicitly configured" if {
 	e_1_2_1_8
 	not p_1_2_1_8
 }
 
 # 1.2.1.9 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure access to files in /etc/apt/sources.list.d are configured
+# access to files in /etc/apt/sources.list.d must be explicitly configured
 default e_1_2_1_9 := false
 
 e_1_2_1_9 if {
@@ -393,13 +393,13 @@ p_1_2_1_9 if {
 
 violations contains "1.2.1.9: evidence missing — apt.sources_list_d_files not collected" if not e_1_2_1_9
 
-violations contains "1.2.1.9: not met — Ensure access to files in /etc/apt/sources.list.d are configured" if {
+violations contains "1.2.1.9: not met — access to files in /etc/apt/sources.list.d must be explicitly configured" if {
 	e_1_2_1_9
 	not p_1_2_1_9
 }
 
 # 1.2.1.10 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure repositories are set to https in /etc/apt/sources.list
+# repositories must be set to https in /etc/apt/sources.list
 default e_1_2_1_10 := false
 
 e_1_2_1_10 if {
@@ -422,13 +422,13 @@ p_1_2_1_10 if {
 
 violations contains "1.2.1.10: evidence missing — apt.sources_list_raw/sources_list_exists not collected" if not e_1_2_1_10
 
-violations contains "1.2.1.10: not met — Ensure repositories are set to https in /etc/apt/sources.list" if {
+violations contains "1.2.1.10: not met — repositories must be set to https in /etc/apt/sources.list" if {
 	e_1_2_1_10
 	not p_1_2_1_10
 }
 
 # 1.2.1.11 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure repositories are set to https in /etc/apt/sources.list.d directory
+# repositories must be set to https in /etc/apt/sources.list.d directory
 default e_1_2_1_11 := false
 
 e_1_2_1_11 if {
@@ -443,13 +443,13 @@ p_1_2_1_11 if {
 
 violations contains "1.2.1.11: evidence missing — apt.sources_list_d_raw not collected" if not e_1_2_1_11
 
-violations contains "1.2.1.11: not met — Ensure repositories are set to https in /etc/apt/sources.list.d directory" if {
+violations contains "1.2.1.11: not met — repositories must be set to https in /etc/apt/sources.list.d directory" if {
 	e_1_2_1_11
 	not p_1_2_1_11
 }
 
 # 1.2.1.12 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AllowInsecureRepositories is configured
+# AllowInsecureRepositories must be explicitly configured
 default e_1_2_1_12 := false
 
 e_1_2_1_12 if {
@@ -464,13 +464,13 @@ p_1_2_1_12 if {
 
 violations contains "1.2.1.12: evidence missing — apt.config_dump not collected" if not e_1_2_1_12
 
-violations contains "1.2.1.12: not met — Ensure AllowInsecureRepositories is configured" if {
+violations contains "1.2.1.12: not met — AllowInsecureRepositories must be explicitly configured" if {
 	e_1_2_1_12
 	not p_1_2_1_12
 }
 
 # 1.2.1.13 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AllowWeakRepositories is configured
+# AllowWeakRepositories must be explicitly configured
 default e_1_2_1_13 := false
 
 e_1_2_1_13 if {
@@ -485,13 +485,13 @@ p_1_2_1_13 if {
 
 violations contains "1.2.1.13: evidence missing — apt.config_dump not collected" if not e_1_2_1_13
 
-violations contains "1.2.1.13: not met — Ensure AllowWeakRepositories is configured" if {
+violations contains "1.2.1.13: not met — AllowWeakRepositories must be explicitly configured" if {
 	e_1_2_1_13
 	not p_1_2_1_13
 }
 
 # 1.2.1.14 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure AllowDowngradeToInsecureRepositories is configured
+# AllowDowngradeToInsecureRepositories must be explicitly configured
 default e_1_2_1_14 := false
 
 e_1_2_1_14 if {
@@ -506,13 +506,13 @@ p_1_2_1_14 if {
 
 violations contains "1.2.1.14: evidence missing — apt.config_dump not collected" if not e_1_2_1_14
 
-violations contains "1.2.1.14: not met — Ensure AllowDowngradeToInsecureRepositories is configured" if {
+violations contains "1.2.1.14: not met — AllowDowngradeToInsecureRepositories must be explicitly configured" if {
 	e_1_2_1_14
 	not p_1_2_1_14
 }
 
 # 1.2.1.15 (Automated; Level 1 - Server, Level 1 - Workstation)
-# Ensure Acquire::Check-Date is configured
+# Acquire::Check-Date must be explicitly configured
 default e_1_2_1_15 := false
 
 e_1_2_1_15 if {
@@ -527,17 +527,17 @@ p_1_2_1_15 if {
 
 violations contains "1.2.1.15: evidence missing — apt.config_dump not collected" if not e_1_2_1_15
 
-violations contains "1.2.1.15: not met — Ensure Acquire::Check-Date is configured" if {
+violations contains "1.2.1.15: not met — Acquire::Check-Date must be explicitly configured" if {
 	e_1_2_1_15
 	not p_1_2_1_15
 }
 
 # 1.2.2.1 (Manual; Level 1 - Server, Level 1 - Workstation)
-# Ensure updates, patches, and additional security software are installed
+# updates, patches, and additional security software must be present
 default p_1_2_2_1 := false
 
 p_1_2_2_1 if {
 	input.attest.updates_installed == true
 }
 
-violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (Ensure updates, patches, and additional security software are installed)" if not p_1_2_2_1
+violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)" if not p_1_2_2_1

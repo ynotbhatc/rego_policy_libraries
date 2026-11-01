@@ -59,23 +59,23 @@ test_fail_closed_on_empty_input if {
 test_ssh_open_to_internet_is_2_1 if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oci/network/security_lists/1/ingress/0/source", "value": "0.0.0.0/0"}])
 	v := main.violations with input as bad
-	"2.1: Ensure no security lists allow ingress from 0.0.0.0/0 to port 22" in v
+	"2.1: checked condition — no security lists allow ingress from 0.0.0.0/0 to port 22" in v
 	not main.compliant with input as bad
 }
 
 test_public_bucket_is_5_1_1 if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oci/object_storage/buckets/0/public_access_type", "value": "ObjectRead"}])
-	"5.1.1: Ensure no Object Storage buckets are publicly visible" in main.violations with input as bad
+	"5.1.1: no Object Storage buckets must be publicly visible" in main.violations with input as bad
 }
 
 test_missing_mfa_names_the_user if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oci/iam/users/0/mfa_enabled", "value": false}])
-	"1.7: Ensure MFA is enabled for all users with a console password (alice)" in main.violations with input as bad
+	"1.7: MFA must be turned on for all users with a console password (alice)" in main.violations with input as bad
 }
 
 test_missing_event_rule_is_4_6 if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oci/events/rules/0/enabled", "value": false}])
-	"4.6: Ensure a notification is configured for IAM policy changes" in main.violations with input as bad
+	"4.6: a notification must be explicitly configured for IAM policy changes" in main.violations with input as bad
 }
 
 test_every_recommendation_has_a_rule if {

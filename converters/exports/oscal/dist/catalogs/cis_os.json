@@ -2044,7 +2044,7 @@
      },
      {
       "id": "cis_os-5.2.1",
-      "title": "Ensure password creation requirements are configured",
+      "title": "password creation requirements must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2070,19 +2070,19 @@
        {
         "id": "cis_os-5.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure password creation requirements are configured"
+        "prose": "password creation requirements must be explicitly configured"
        },
        {
         "id": "cis_os-5.2.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure password creation requirements are configured"
+        "prose": "password creation requirements must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.2",
-      "title": "Ensure lockout for failed password attempts is configured",
+      "title": "lockout for failed password attempts must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2108,19 +2108,19 @@
        {
         "id": "cis_os-5.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure lockout for failed password attempts is configured"
+        "prose": "lockout for failed password attempts must be explicitly configured"
        },
        {
         "id": "cis_os-5.2.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Ensure lockout for failed password attempts is configured"
+        "prose": "lockout for failed password attempts must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.3",
-      "title": "Ensure password reuse is limited",
+      "title": "password reuse must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -2146,14 +2146,14 @@
        {
         "id": "cis_os-5.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure password reuse is limited"
+        "prose": "password reuse must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.4",
-      "title": "Ensure password hashing algorithm is SHA-512 or yescrypt",
+      "title": "password hashing algorithm must be SHA-512 or yescrypt",
       "props": [
        {
         "name": "label",
@@ -2179,14 +2179,14 @@
        {
         "id": "cis_os-5.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure password hashing algorithm is SHA-512 or yescrypt"
+        "prose": "password hashing algorithm must be SHA-512 or yescrypt"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.5",
-      "title": "Ensure all current passwords use the configured hashing algorithm",
+      "title": "checked condition — all current passwords use the configured hashing algorithm",
       "props": [
        {
         "name": "label",
@@ -2212,14 +2212,14 @@
        {
         "id": "cis_os-5.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure all current passwords use the configured hashing algorithm"
+        "prose": "checked condition — all current passwords use the configured hashing algorithm"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.6",
-      "title": "Ensure password minimum age is configured",
+      "title": "password minimum age must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2245,14 +2245,14 @@
        {
         "id": "cis_os-5.2.6_stmt",
         "name": "statement",
-        "prose": "Ensure password minimum age is configured"
+        "prose": "password minimum age must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.7",
-      "title": "Ensure password maximum age is configured",
+      "title": "password maximum age must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2278,14 +2278,14 @@
        {
         "id": "cis_os-5.2.7_stmt",
         "name": "statement",
-        "prose": "Ensure password maximum age is configured"
+        "prose": "password maximum age must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.8",
-      "title": "Ensure password expiration warning days is configured",
+      "title": "password expiration warning days must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2311,14 +2311,14 @@
        {
         "id": "cis_os-5.2.8_stmt",
         "name": "statement",
-        "prose": "Ensure password expiration warning days is configured"
+        "prose": "password expiration warning days must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.9",
-      "title": "Ensure inactive password lock is configured",
+      "title": "inactive password lock must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2344,14 +2344,14 @@
        {
         "id": "cis_os-5.2.9_stmt",
         "name": "statement",
-        "prose": "Ensure inactive password lock is configured"
+        "prose": "inactive password lock must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.10",
-      "title": "Ensure all users last password change date is in the past",
+      "title": "all users last password change date must be in the past",
       "props": [
        {
         "name": "label",
@@ -2377,14 +2377,14 @@
        {
         "id": "cis_os-5.2.10_stmt",
         "name": "statement",
-        "prose": "Ensure all users last password change date is in the past"
+        "prose": "all users last password change date must be in the past"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.11",
-      "title": "Ensure system accounts are secured",
+      "title": "system accounts must be secured",
       "props": [
        {
         "name": "label",
@@ -2410,14 +2410,14 @@
        {
         "id": "cis_os-5.2.11_stmt",
         "name": "statement",
-        "prose": "Ensure system accounts are secured"
+        "prose": "system accounts must be secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.12",
-      "title": "Ensure default user shell timeout is configured",
+      "title": "default user shell timeout must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2443,14 +2443,14 @@
        {
         "id": "cis_os-5.2.12_stmt",
         "name": "statement",
-        "prose": "Ensure default user shell timeout is configured"
+        "prose": "default user shell timeout must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.13",
-      "title": "Ensure default group for the root account is GID 0",
+      "title": "default group for the root account must be GID 0",
       "props": [
        {
         "name": "label",
@@ -2476,14 +2476,14 @@
        {
         "id": "cis_os-5.2.13_stmt",
         "name": "statement",
-        "prose": "Ensure default group for the root account is GID 0"
+        "prose": "default group for the root account must be GID 0"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.14",
-      "title": "Ensure default user umask is configured",
+      "title": "default user umask must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2509,14 +2509,14 @@
        {
         "id": "cis_os-5.2.14_stmt",
         "name": "statement",
-        "prose": "Ensure default user umask is configured"
+        "prose": "default user umask must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.2.16",
-      "title": "Ensure user accounts are locked after 35 days of inactivity",
+      "title": "user accounts must be locked after 35 days of inactivity",
       "props": [
        {
         "name": "label",
@@ -2542,7 +2542,7 @@
        {
         "id": "cis_os-5.2.16_stmt",
         "name": "statement",
-        "prose": "Ensure user accounts are locked after 35 days of inactivity"
+        "prose": "user accounts must be locked after 35 days of inactivity"
        }
       ],
       "class": "security"
@@ -2573,7 +2573,7 @@
     "controls": [
      {
       "id": "cis_os-5.1.1",
-      "title": "Ensure permissions on /etc/ssh/sshd_config are configured",
+      "title": "owner, group, and mode of /etc/ssh/sshd_config must be tightened",
       "props": [
        {
         "name": "label",
@@ -2599,14 +2599,14 @@
        {
         "id": "cis_os-5.1.1_stmt",
         "name": "statement",
-        "prose": "Ensure permissions on /etc/ssh/sshd_config are configured"
+        "prose": "owner, group, and mode of /etc/ssh/sshd_config must be tightened"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.2",
-      "title": "Ensure permissions on SSH private host key files are configured",
+      "title": "owner, group, and mode of SSH private host key files must be tightened",
       "props": [
        {
         "name": "label",
@@ -2632,14 +2632,14 @@
        {
         "id": "cis_os-5.1.2_stmt",
         "name": "statement",
-        "prose": "Ensure permissions on SSH private host key files are configured"
+        "prose": "owner, group, and mode of SSH private host key files must be tightened"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.3",
-      "title": "Ensure permissions on SSH public host key files are configured",
+      "title": "owner, group, and mode of SSH public host key files must be tightened",
       "props": [
        {
         "name": "label",
@@ -2665,14 +2665,14 @@
        {
         "id": "cis_os-5.1.3_stmt",
         "name": "statement",
-        "prose": "Ensure permissions on SSH public host key files are configured"
+        "prose": "owner, group, and mode of SSH public host key files must be tightened"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.4",
-      "title": "Ensure SSH access is limited",
+      "title": "SSH access must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -2698,14 +2698,14 @@
        {
         "id": "cis_os-5.1.4_stmt",
         "name": "statement",
-        "prose": "Ensure SSH access is limited"
+        "prose": "SSH access must be limited to named principals"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.5",
-      "title": "Ensure SSH LogLevel is appropriate",
+      "title": "SSH LogLevel must use an approved value",
       "props": [
        {
         "name": "label",
@@ -2731,14 +2731,14 @@
        {
         "id": "cis_os-5.1.5_stmt",
         "name": "statement",
-        "prose": "Ensure SSH LogLevel is appropriate"
+        "prose": "SSH LogLevel must use an approved value"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.6",
-      "title": "Ensure SSH PAM is enabled",
+      "title": "SSH PAM must be turned on",
       "props": [
        {
         "name": "label",
@@ -2764,14 +2764,14 @@
        {
         "id": "cis_os-5.1.6_stmt",
         "name": "statement",
-        "prose": "Ensure SSH PAM is enabled"
+        "prose": "SSH PAM must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.7",
-      "title": "Ensure SSH root login is disabled",
+      "title": "SSH root login must be turned off",
       "props": [
        {
         "name": "label",
@@ -2797,14 +2797,14 @@
        {
         "id": "cis_os-5.1.7_stmt",
         "name": "statement",
-        "prose": "Ensure SSH root login is disabled"
+        "prose": "SSH root login must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.8",
-      "title": "Ensure SSH HostbasedAuthentication is disabled",
+      "title": "SSH HostbasedAuthentication must be turned off",
       "props": [
        {
         "name": "label",
@@ -2830,14 +2830,14 @@
        {
         "id": "cis_os-5.1.8_stmt",
         "name": "statement",
-        "prose": "Ensure SSH HostbasedAuthentication is disabled"
+        "prose": "SSH HostbasedAuthentication must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.9",
-      "title": "Ensure SSH PermitEmptyPasswords is disabled",
+      "title": "SSH PermitEmptyPasswords must be turned off",
       "props": [
        {
         "name": "label",
@@ -2863,14 +2863,14 @@
        {
         "id": "cis_os-5.1.9_stmt",
         "name": "statement",
-        "prose": "Ensure SSH PermitEmptyPasswords is disabled"
+        "prose": "SSH PermitEmptyPasswords must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.10",
-      "title": "Ensure SSH PermitUserEnvironment is disabled",
+      "title": "SSH PermitUserEnvironment must be turned off",
       "props": [
        {
         "name": "label",
@@ -2896,14 +2896,14 @@
        {
         "id": "cis_os-5.1.10_stmt",
         "name": "statement",
-        "prose": "Ensure SSH PermitUserEnvironment is disabled"
+        "prose": "SSH PermitUserEnvironment must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.11",
-      "title": "Ensure SSH IgnoreRhosts is enabled",
+      "title": "SSH IgnoreRhosts must be turned on",
       "props": [
        {
         "name": "label",
@@ -2929,14 +2929,14 @@
        {
         "id": "cis_os-5.1.11_stmt",
         "name": "statement",
-        "prose": "Ensure SSH IgnoreRhosts is enabled"
+        "prose": "SSH IgnoreRhosts must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.12",
-      "title": "Ensure SSH X11 forwarding is disabled",
+      "title": "SSH X11 forwarding must be turned off",
       "props": [
        {
         "name": "label",
@@ -2962,14 +2962,14 @@
        {
         "id": "cis_os-5.1.12_stmt",
         "name": "statement",
-        "prose": "Ensure SSH X11 forwarding is disabled"
+        "prose": "SSH X11 forwarding must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.13",
-      "title": "Ensure only strong ciphers are used",
+      "title": "only strong ciphers must be used",
       "props": [
        {
         "name": "label",
@@ -2995,14 +2995,14 @@
        {
         "id": "cis_os-5.1.13_stmt",
         "name": "statement",
-        "prose": "Ensure only strong ciphers are used"
+        "prose": "only strong ciphers must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.14",
-      "title": "Ensure only strong MAC algorithms are used",
+      "title": "only strong MAC algorithms must be used",
       "props": [
        {
         "name": "label",
@@ -3028,14 +3028,14 @@
        {
         "id": "cis_os-5.1.14_stmt",
         "name": "statement",
-        "prose": "Ensure only strong MAC algorithms are used"
+        "prose": "only strong MAC algorithms must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.15",
-      "title": "Ensure only strong Key Exchange algorithms are used",
+      "title": "only strong Key Exchange algorithms must be used",
       "props": [
        {
         "name": "label",
@@ -3061,14 +3061,14 @@
        {
         "id": "cis_os-5.1.15_stmt",
         "name": "statement",
-        "prose": "Ensure only strong Key Exchange algorithms are used"
+        "prose": "only strong Key Exchange algorithms must be used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.16",
-      "title": "Ensure SSH Idle Timeout Interval is configured",
+      "title": "SSH Idle Timeout Interval must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3094,14 +3094,14 @@
        {
         "id": "cis_os-5.1.16_stmt",
         "name": "statement",
-        "prose": "Ensure SSH Idle Timeout Interval is configured"
+        "prose": "SSH Idle Timeout Interval must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.17",
-      "title": "Ensure SSH LoginGraceTime is set to one minute or less",
+      "title": "required value of SSH LoginGraceTime is one minute or less",
       "props": [
        {
         "name": "label",
@@ -3127,14 +3127,14 @@
        {
         "id": "cis_os-5.1.17_stmt",
         "name": "statement",
-        "prose": "Ensure SSH LoginGraceTime is set to one minute or less"
+        "prose": "required value of SSH LoginGraceTime is one minute or less"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.18",
-      "title": "Ensure SSH warning banner is configured",
+      "title": "SSH warning banner must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3160,14 +3160,14 @@
        {
         "id": "cis_os-5.1.18_stmt",
         "name": "statement",
-        "prose": "Ensure SSH warning banner is configured"
+        "prose": "SSH warning banner must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.19",
-      "title": "Ensure SSH MaxAuthTries is set to 4 or less",
+      "title": "required value of SSH MaxAuthTries is 4 or less",
       "props": [
        {
         "name": "label",
@@ -3193,14 +3193,14 @@
        {
         "id": "cis_os-5.1.19_stmt",
         "name": "statement",
-        "prose": "Ensure SSH MaxAuthTries is set to 4 or less"
+        "prose": "required value of SSH MaxAuthTries is 4 or less"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.20",
-      "title": "Ensure SSH MaxStartups is configured",
+      "title": "SSH MaxStartups must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3226,14 +3226,14 @@
        {
         "id": "cis_os-5.1.20_stmt",
         "name": "statement",
-        "prose": "Ensure SSH MaxStartups is configured"
+        "prose": "SSH MaxStartups must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.1.21",
-      "title": "Ensure SSH MaxSessions is limited",
+      "title": "SSH MaxSessions must be limited to named principals",
       "props": [
        {
         "name": "label",
@@ -3259,7 +3259,7 @@
        {
         "id": "cis_os-5.1.21_stmt",
         "name": "statement",
-        "prose": "Ensure SSH MaxSessions is limited"
+        "prose": "SSH MaxSessions must be limited to named principals"
        }
       ],
       "class": "security"
@@ -3290,7 +3290,7 @@
     "controls": [
      {
       "id": "cis_os-5.3.1",
-      "title": "Ensure sudo is installed",
+      "title": "sudo must be present",
       "props": [
        {
         "name": "label",
@@ -3316,14 +3316,14 @@
        {
         "id": "cis_os-5.3.1_stmt",
         "name": "statement",
-        "prose": "Ensure sudo is installed"
+        "prose": "sudo must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.2",
-      "title": "Ensure sudo commands use pty",
+      "title": "sudo commands must allocate a pseudo-terminal",
       "props": [
        {
         "name": "label",
@@ -3349,14 +3349,14 @@
        {
         "id": "cis_os-5.3.2_stmt",
         "name": "statement",
-        "prose": "Ensure sudo commands use pty"
+        "prose": "sudo commands must allocate a pseudo-terminal"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.3",
-      "title": "Ensure sudo log file exists",
+      "title": "a log file for sudo must exist",
       "props": [
        {
         "name": "label",
@@ -3382,14 +3382,14 @@
        {
         "id": "cis_os-5.3.3_stmt",
         "name": "statement",
-        "prose": "Ensure sudo log file exists"
+        "prose": "a log file for sudo must exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.4",
-      "title": "Ensure users must provide password for privilege escalation",
+      "title": "checked condition — users must provide password for privilege escalation",
       "props": [
        {
         "name": "label",
@@ -3415,14 +3415,14 @@
        {
         "id": "cis_os-5.3.4_stmt",
         "name": "statement",
-        "prose": "Ensure users must provide password for privilege escalation"
+        "prose": "checked condition — users must provide password for privilege escalation"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.5",
-      "title": "Ensure re-authentication for privilege escalation is not disabled",
+      "title": "re-authentication for privilege escalation must stay in effect",
       "props": [
        {
         "name": "label",
@@ -3448,14 +3448,14 @@
        {
         "id": "cis_os-5.3.5_stmt",
         "name": "statement",
-        "prose": "Ensure re-authentication for privilege escalation is not disabled"
+        "prose": "re-authentication for privilege escalation must stay in effect"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.6",
-      "title": "Ensure sudo authentication timeout is configured correctly",
+      "title": "sudo authentication timeout must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -3481,14 +3481,14 @@
        {
         "id": "cis_os-5.3.6_stmt",
         "name": "statement",
-        "prose": "Ensure sudo authentication timeout is configured correctly"
+        "prose": "sudo authentication timeout must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-5.3.7",
-      "title": "Ensure access to the su command is restricted",
+      "title": "access to the su command must be restricted",
       "props": [
        {
         "name": "label",
@@ -3514,14 +3514,14 @@
        {
         "id": "cis_os-5.3.7_stmt",
         "name": "statement",
-        "prose": "Ensure access to the su command is restricted"
+        "prose": "access to the su command must be restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.1",
-      "title": "Ensure accounts in /etc/passwd use shadowed passwords",
+      "title": "password hashes must be stored outside /etc/passwd",
       "props": [
        {
         "name": "label",
@@ -3547,14 +3547,14 @@
        {
         "id": "cis_os-6.2.1_stmt",
         "name": "statement",
-        "prose": "Ensure accounts in /etc/passwd use shadowed passwords"
+        "prose": "password hashes must be stored outside /etc/passwd"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.2",
-      "title": "Ensure password fields are not empty",
+      "title": "password fields must be populated",
       "props": [
        {
         "name": "label",
@@ -3580,14 +3580,14 @@
        {
         "id": "cis_os-6.2.2_stmt",
         "name": "statement",
-        "prose": "Ensure password fields are not empty"
+        "prose": "password fields must be populated"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.3",
-      "title": "Ensure all groups in /etc/passwd exist in /etc/group",
+      "title": "every group named in /etc/passwd must also exist in /etc/group",
       "props": [
        {
         "name": "label",
@@ -3613,14 +3613,14 @@
        {
         "id": "cis_os-6.2.3_stmt",
         "name": "statement",
-        "prose": "Ensure all groups in /etc/passwd exist in /etc/group"
+        "prose": "every group named in /etc/passwd must also exist in /etc/group"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.4",
-      "title": "Ensure shadow group is empty",
+      "title": "shadow group must be blank",
       "props": [
        {
         "name": "label",
@@ -3646,14 +3646,14 @@
        {
         "id": "cis_os-6.2.4_stmt",
         "name": "statement",
-        "prose": "Ensure shadow group is empty"
+        "prose": "shadow group must be blank"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.5",
-      "title": "Ensure no duplicate UIDs exist",
+      "title": "the local account database must not contain duplicate UIDs",
       "props": [
        {
         "name": "label",
@@ -3679,14 +3679,14 @@
        {
         "id": "cis_os-6.2.5_stmt",
         "name": "statement",
-        "prose": "Ensure no duplicate UIDs exist"
+        "prose": "the local account database must not contain duplicate UIDs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.6",
-      "title": "Ensure no duplicate GIDs exist",
+      "title": "the local account database must not contain duplicate GIDs",
       "props": [
        {
         "name": "label",
@@ -3712,14 +3712,14 @@
        {
         "id": "cis_os-6.2.6_stmt",
         "name": "statement",
-        "prose": "Ensure no duplicate GIDs exist"
+        "prose": "the local account database must not contain duplicate GIDs"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.7",
-      "title": "Ensure no duplicate user names exist",
+      "title": "the local account database must not contain duplicate user names",
       "props": [
        {
         "name": "label",
@@ -3745,14 +3745,14 @@
        {
         "id": "cis_os-6.2.7_stmt",
         "name": "statement",
-        "prose": "Ensure no duplicate user names exist"
+        "prose": "the local account database must not contain duplicate user names"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.8",
-      "title": "Ensure no duplicate group names exist",
+      "title": "the local account database must not contain duplicate group names",
       "props": [
        {
         "name": "label",
@@ -3778,14 +3778,14 @@
        {
         "id": "cis_os-6.2.8_stmt",
         "name": "statement",
-        "prose": "Ensure no duplicate group names exist"
+        "prose": "the local account database must not contain duplicate group names"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.9",
-      "title": "Ensure root PATH Integrity",
+      "title": "checked condition — root PATH Integrity",
       "props": [
        {
         "name": "label",
@@ -3811,14 +3811,14 @@
        {
         "id": "cis_os-6.2.9_stmt",
         "name": "statement",
-        "prose": "Ensure root PATH Integrity"
+        "prose": "checked condition — root PATH Integrity"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.10",
-      "title": "Ensure root is the only UID 0 account",
+      "title": "uid 0 must belong only to root",
       "props": [
        {
         "name": "label",
@@ -3844,14 +3844,14 @@
        {
         "id": "cis_os-6.2.10_stmt",
         "name": "statement",
-        "prose": "Ensure root is the only UID 0 account"
+        "prose": "uid 0 must belong only to root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.11",
-      "title": "Ensure local interactive user home directories exist",
+      "title": "checked condition — local interactive user home directories exist",
       "props": [
        {
         "name": "label",
@@ -3877,14 +3877,14 @@
        {
         "id": "cis_os-6.2.11_stmt",
         "name": "statement",
-        "prose": "Ensure local interactive user home directories exist"
+        "prose": "checked condition — local interactive user home directories exist"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.12",
-      "title": "Ensure local interactive user home directories are configured",
+      "title": "local interactive user home directories must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3910,14 +3910,14 @@
        {
         "id": "cis_os-6.2.12_stmt",
         "name": "statement",
-        "prose": "Ensure local interactive user home directories are configured"
+        "prose": "local interactive user home directories must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.13",
-      "title": "Ensure local interactive user dot files access is configured",
+      "title": "local interactive user dot files access must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -3943,14 +3943,14 @@
        {
         "id": "cis_os-6.2.13_stmt",
         "name": "statement",
-        "prose": "Ensure local interactive user dot files access is configured"
+        "prose": "local interactive user dot files access must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.14",
-      "title": "Ensure no local interactive user has .netrc files",
+      "title": "local interactive users must not have .netrc files",
       "props": [
        {
         "name": "label",
@@ -3976,14 +3976,14 @@
        {
         "id": "cis_os-6.2.14_stmt",
         "name": "statement",
-        "prose": "Ensure no local interactive user has .netrc files"
+        "prose": "local interactive users must not have .netrc files"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.15",
-      "title": "Ensure no local interactive user has .forward files",
+      "title": "local interactive users must not have .forward files",
       "props": [
        {
         "name": "label",
@@ -4009,14 +4009,14 @@
        {
         "id": "cis_os-6.2.15_stmt",
         "name": "statement",
-        "prose": "Ensure no local interactive user has .forward files"
+        "prose": "local interactive users must not have .forward files"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_os-6.2.16",
-      "title": "Ensure no local interactive user has .rhosts files",
+      "title": "local interactive users must not have .rhosts files",
       "props": [
        {
         "name": "label",
@@ -4042,7 +4042,7 @@
        {
         "id": "cis_os-6.2.16_stmt",
         "name": "statement",
-        "prose": "Ensure no local interactive user has .rhosts files"
+        "prose": "local interactive users must not have .rhosts files"
        }
       ],
       "class": "security"

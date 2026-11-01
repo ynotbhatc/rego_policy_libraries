@@ -25,5 +25,5 @@ test_user_group_each_missing_fact_is_violation if {
 
 test_user_group_real_finding_still_reported if {
 	i := json.patch(good, [{"op": "replace", "path": "/user_group/users_with_empty_password", "value": ["bob"]}])
-	"7.2.2: not met — Ensure /etc/shadow password fields are not empty" in data.cis_rhel9.user_group.violations with input as i
+	"7.2.2: not met — password fields in /etc/shadow must be populated" in data.cis_rhel9.user_group.violations with input as i
 }

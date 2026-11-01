@@ -126,12 +126,12 @@ test_fail_closed_on_empty_input if {
 
 test_remote_os_roles_true_is_2_3_7 if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oracle/parameters/remote_os_roles", "value": "TRUE"}])
-	"2.3.7: Ensure 'REMOTE_OS_ROLES' Is Set To 'FALSE'" in b.violations with input as bad
+	"2.3.7: required value of 'REMOTE_OS_ROLES' is 'FALSE'" in b.violations with input as bad
 }
 
 test_unauthorized_dba_grant_is_6_2_1 if {
 	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "APP_USER", "granted_role": "DBA", "oracle_maintained": false}]}])
-	"6.2.1: Ensure 'DBA' Is Revoked from Unauthorized 'GRANTEE'" in b.violations with input as bad
+	"6.2.1: 'DBA' must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
 }
 
 test_authorized_dba_grant_is_not_a_finding if {

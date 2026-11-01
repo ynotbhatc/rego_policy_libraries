@@ -259,7 +259,7 @@ violations contains "CIS L2 5.4.1: Prefer using Secrets as files over Secrets as
 	input.workloads.secrets_as_env_vars_count > 0
 }
 
-violations contains "CIS L2 5.7.2: Ensure admission of containers with securityContext allowPrivilegeEscalation=false" if {
+violations contains "CIS L2 5.7.2: checked condition — admission of containers with securityContext allowPrivilegeEscalation=false" if {
 	input.pod_security.privilege_escalation_default_allow
 }
 

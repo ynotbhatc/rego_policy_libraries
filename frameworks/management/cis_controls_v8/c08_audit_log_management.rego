@@ -23,7 +23,7 @@ import rego.v1
 safeguards := {
 	"8.1": {"ig": 1, "title": "Establish and Maintain an Audit Log Management Process"},
 	"8.2": {"ig": 1, "title": "Collect Audit Logs"},
-	"8.3": {"ig": 1, "title": "Ensure Adequate Audit Log Storage"},
+	"8.3": {"ig": 1, "title": "Audit log storage must cover the retention period"},
 	"8.4": {"ig": 2, "title": "Standardize Time Synchronization"},
 	"8.5": {"ig": 2, "title": "Collect Detailed Audit Logs"},
 	"8.6": {"ig": 2, "title": "Collect DNS Query Audit Logs"},

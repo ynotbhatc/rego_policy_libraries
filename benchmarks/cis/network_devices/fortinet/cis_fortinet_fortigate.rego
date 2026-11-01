@@ -23,7 +23,7 @@ package cis_fortinet_fortigate
 # Rewritten 2026-10-20 from the CIS workbook. The previous module claimed "Fortinet FortiGate Benchmark v1.3.0"; its 8
 # control ids do not match the FortiGate 7.4.x numbering (e.g. its 1.1 checked the admin GUI TLS version, which is
 # 7.4.x 2.1.10; 7.4.x 1.1 is the DNS server).
-# 64 recommendations (48 Automated, 16 Manual), every one in the benchmark; ids, titles, levels
+# 64 recommendations (48 Automated, 16 Manual), every one in the benchmark; ids, levels
 # and assessment status read from the workbook. All levels are evaluated; `recommendations` lists each id's level.
 # Automated checks fail closed: facts not collected => "<id>: evidence missing — <field> not collected".
 # Manual recommendations with a decidable configuration fact are checked like Automated ones:
@@ -236,7 +236,7 @@ _v_network contains "1.1: evidence missing — fortigate_config.system.dns not c
 	not e_1_1
 }
 
-_v_network contains "1.1: Ensure DNS server is configured" if {
+_v_network contains "1.1: DNS server must be explicitly configured" if {
 	e_1_1
 	not r_1_1
 }
@@ -258,7 +258,7 @@ _v_network contains "1.2: evidence missing — fortigate_config.system.zone not 
 	not e_1_2
 }
 
-_v_network contains "1.2: Ensure intra-zone traffic is not always allowed" if {
+_v_network contains "1.2: intra-zone traffic must be not always allowed" if {
 	e_1_2
 	not r_1_2
 }
@@ -282,7 +282,7 @@ _v_network contains "1.3: evidence missing — fortigate_config.system.interface
 	not e_1_3
 }
 
-_v_network contains "1.3: Disable all management related services on WAN port" if {
+_v_network contains "1.3: all management related services on WAN port must be turned off" if {
 	e_1_3
 	not r_1_3
 }
@@ -304,7 +304,7 @@ _v_system_settings contains "2.1.1: evidence missing — fortigate_config.system
 	not e_2_1_1
 }
 
-_v_system_settings contains "2.1.1: Ensure 'Pre-Login Banner' is set" if {
+_v_system_settings contains "2.1.1: 'Pre-Login Banner' must be populated" if {
 	e_2_1_1
 	not r_2_1_1
 }
@@ -326,7 +326,7 @@ _v_system_settings contains "2.1.2: evidence missing — fortigate_config.system
 	not e_2_1_2
 }
 
-_v_system_settings contains "2.1.2: Ensure 'Post-Login-Banner' is set" if {
+_v_system_settings contains "2.1.2: 'Post-Login-Banner' must be populated" if {
 	e_2_1_2
 	not r_2_1_2
 }
@@ -349,7 +349,7 @@ _v_system_settings contains "2.1.3: evidence missing — fortigate_config.system
 	not e_2_1_3
 }
 
-_v_system_settings contains "2.1.3: Ensure timezone is properly configured" if {
+_v_system_settings contains "2.1.3: timezone must match the approved configuration" if {
 	e_2_1_3
 	not r_2_1_3
 }
@@ -371,7 +371,7 @@ _v_system_settings contains "2.1.4: evidence missing — fortigate_config.system
 	not e_2_1_4
 }
 
-_v_system_settings contains "2.1.4: Ensure correct system time is configured through NTP" if {
+_v_system_settings contains "2.1.4: correct system time must be explicitly configured through NTP" if {
 	e_2_1_4
 	not r_2_1_4
 }
@@ -394,7 +394,7 @@ _v_system_settings contains "2.1.5: evidence missing — fortigate_config.system
 	not e_2_1_5
 }
 
-_v_system_settings contains "2.1.5: Ensure hostname is set" if {
+_v_system_settings contains "2.1.5: hostname must be set" if {
 	e_2_1_5
 	not r_2_1_5
 }
@@ -406,7 +406,7 @@ r_2_1_6 if {
 	input.fortigate_config.attest.latest_firmware_installed == true
 }
 
-_v_system_settings contains "2.1.6: Ensure the latest firmware is installed (manual review not attested)" if {
+_v_system_settings contains "2.1.6: the latest firmware must be present (manual review not attested)" if {
 	not r_2_1_6
 }
 
@@ -428,7 +428,7 @@ _v_system_settings contains "2.1.7: evidence missing — fortigate_config.system
 	not e_2_1_7
 }
 
-_v_system_settings contains "2.1.7: Disable USB Firmware and configuration installation" if {
+_v_system_settings contains "2.1.7: USB Firmware and configuration installation must be turned off" if {
 	e_2_1_7
 	not r_2_1_7
 }
@@ -450,7 +450,7 @@ _v_system_settings contains "2.1.8: evidence missing — fortigate_config.system
 	not e_2_1_8
 }
 
-_v_system_settings contains "2.1.8: Disable static keys for TLS" if {
+_v_system_settings contains "2.1.8: static keys for TLS must be turned off" if {
 	e_2_1_8
 	not r_2_1_8
 }
@@ -472,7 +472,7 @@ _v_system_settings contains "2.1.9: evidence missing — fortigate_config.system
 	not e_2_1_9
 }
 
-_v_system_settings contains "2.1.9: Enable Global Strong Encryption" if {
+_v_system_settings contains "2.1.9: Global Strong Encryption must be turned on" if {
 	e_2_1_9
 	not r_2_1_9
 }
@@ -494,7 +494,7 @@ _v_system_settings contains "2.1.10: evidence missing — fortigate_config.syste
 	not e_2_1_10
 }
 
-_v_system_settings contains "2.1.10: Ensure management GUI listens on secure TLS version" if {
+_v_system_settings contains "2.1.10: checked condition — management GUI listens on secure TLS version" if {
 	e_2_1_10
 	not r_2_1_10
 }
@@ -516,7 +516,7 @@ _v_system_settings contains "2.1.11: evidence missing — fortigate_config.syste
 	not e_2_1_11
 }
 
-_v_system_settings contains "2.1.11: Ensure CDN is enabled for improved GUI performance" if {
+_v_system_settings contains "2.1.11: CDN must be turned on for improved GUI performance" if {
 	e_2_1_11
 	not r_2_1_11
 }
@@ -538,7 +538,7 @@ _v_system_settings contains "2.1.12: evidence missing — fortigate_config.syste
 	not e_2_1_12
 }
 
-_v_system_settings contains "2.1.12: Ensure single CPU core overloaded event is logged" if {
+_v_system_settings contains "2.1.12: single CPU core overloaded event must be logged" if {
 	e_2_1_12
 	not r_2_1_12
 }
@@ -560,7 +560,7 @@ _v_system_settings contains "2.1.13: evidence missing — fortigate_config.syste
 	not e_2_1_13
 }
 
-_v_system_settings contains "2.1.13: Ensure Hostname is Not Displayed On Login GUI" if {
+_v_system_settings contains "2.1.13: Hostname must be Not Displayed On Login GUI" if {
 	e_2_1_13
 	not r_2_1_13
 }
@@ -584,7 +584,7 @@ _v_administration contains "2.2.1: evidence missing — fortigate_config.system.
 	not e_2_2_1
 }
 
-_v_administration contains "2.2.1: Ensure 'Password Policy' is enabled" if {
+_v_administration contains "2.2.1: 'Password Policy' must be turned on" if {
 	e_2_2_1
 	not r_2_2_1
 }
@@ -611,7 +611,7 @@ _v_administration contains "2.2.2: evidence missing — fortigate_config.system.
 	not e_2_2_2
 }
 
-_v_administration contains "2.2.2: Ensure administrator password retries and lockout time are configured" if {
+_v_administration contains "2.2.2: administrator password retries and lockout time must be explicitly configured" if {
 	e_2_2_2
 	not r_2_2_2
 }
@@ -637,7 +637,7 @@ _v_system_settings contains "2.3.1: evidence missing — fortigate_config.system
 	not e_2_3_1
 }
 
-_v_system_settings contains "2.3.1: Ensure only SNMPv3 is enabled" if {
+_v_system_settings contains "2.3.1: only SNMPv3 must be turned on" if {
 	e_2_3_1
 	not r_2_3_1
 }
@@ -660,7 +660,7 @@ _v_system_settings contains "2.3.2: evidence missing — fortigate_config.system
 	not e_2_3_2
 }
 
-_v_system_settings contains "2.3.2: Allow only trusted hosts in SNMPv3" if {
+_v_system_settings contains "2.3.2: only trusted hosts in SNMPv3 may be permitted" if {
 	e_2_3_2
 	not r_2_3_2
 }
@@ -683,7 +683,7 @@ _v_system_settings contains "2.3.3: evidence missing — fortigate_config.system
 	not e_2_3_3
 }
 
-_v_system_settings contains "2.3.3: Disable SNMPv3 Query Per User" if {
+_v_system_settings contains "2.3.3: SNMPv3 Query Per User must be turned off" if {
 	e_2_3_3
 	not r_2_3_3
 }
@@ -707,7 +707,7 @@ _v_system_settings contains "2.3.4: evidence missing — fortigate_config.system
 	not e_2_3_4
 }
 
-_v_system_settings contains "2.3.4: Enabling SNMP trap for memory usage" if {
+_v_system_settings contains "2.3.4: checked condition — Enabling SNMP trap for memory usage" if {
 	e_2_3_4
 	not r_2_3_4
 }
@@ -730,7 +730,7 @@ _v_administration contains "2.4.1: evidence missing — fortigate_config.system.
 	not e_2_4_1
 }
 
-_v_administration contains "2.4.1: Remove default admin user and create one with other name" if {
+_v_administration contains "2.4.1: default admin user and create one with other name must be removed" if {
 	e_2_4_1
 	not r_2_4_1
 }
@@ -753,7 +753,7 @@ _v_administration contains "2.4.2: evidence missing — fortigate_config.system.
 	not e_2_4_2
 }
 
-_v_administration contains "2.4.2: Ensure all the login accounts having specific trusted hosts enabled" if {
+_v_administration contains "2.4.2: checked condition — all the login accounts having specific trusted hosts enabled" if {
 	e_2_4_2
 	not r_2_4_2
 }
@@ -765,7 +765,7 @@ r_2_4_3 if {
 	input.fortigate_config.attest.admin_profiles_reviewed == true
 }
 
-_v_administration contains "2.4.3: Ensure admin accounts with different privileges have their correct profiles assigned (manual review not attested)" if {
+_v_administration contains "2.4.3: admin accounts with different privileges must have their correct profiles assigned (manual review not attested)" if {
 	not r_2_4_3
 }
 
@@ -788,7 +788,7 @@ _v_administration contains "2.4.4: evidence missing — fortigate_config.system.
 	not e_2_4_4
 }
 
-_v_administration contains "2.4.4: Ensure Admin idle timeout time is configured" if {
+_v_administration contains "2.4.4: Admin idle timeout time must be explicitly configured" if {
 	e_2_4_4
 	not r_2_4_4
 }
@@ -811,7 +811,7 @@ _v_administration contains "2.4.5: evidence missing — fortigate_config.system.
 	not e_2_4_5
 }
 
-_v_administration contains "2.4.5: Ensure only encrypted access channels are enabled" if {
+_v_administration contains "2.4.5: only encrypted access channels must be turned on" if {
 	e_2_4_5
 	not r_2_4_5
 }
@@ -833,7 +833,7 @@ _v_administration contains "2.4.6: evidence missing — fortigate_config.firewal
 	not e_2_4_6
 }
 
-_v_administration contains "2.4.6: Apply Local-in Policies" if {
+_v_administration contains "2.4.6: Local-in Policies must be applied" if {
 	e_2_4_6
 	not r_2_4_6
 }
@@ -857,7 +857,7 @@ _v_administration contains "2.4.7: evidence missing — fortigate_config.system.
 	not e_2_4_7
 }
 
-_v_administration contains "2.4.7: Ensure default Admin ports are changed" if {
+_v_administration contains "2.4.7: default Admin ports must be changed" if {
 	e_2_4_7
 	not r_2_4_7
 }
@@ -879,7 +879,7 @@ _v_administration contains "2.4.8: evidence missing — fortigate_config.firewal
 	not e_2_4_8
 }
 
-_v_administration contains "2.4.8: Virtual patching on the local-in management interface" if {
+_v_administration contains "2.4.8: checked condition — Virtual patching on the local-in management interface" if {
 	e_2_4_8
 	not r_2_4_8
 }
@@ -905,7 +905,7 @@ _v_system_settings contains "2.5.1: evidence missing — fortigate_config.system
 	not e_2_5_1
 }
 
-_v_system_settings contains "2.5.1: Ensure High Availability configuration is enabled" if {
+_v_system_settings contains "2.5.1: High Availability configuration must be turned on" if {
 	e_2_5_1
 	not r_2_5_1
 }
@@ -932,7 +932,7 @@ _v_system_settings contains "2.5.2: evidence missing — fortigate_config.system
 	not e_2_5_2
 }
 
-_v_system_settings contains "2.5.2: Ensure \"Monitor Interfaces\" for High Availability devices is enabled" if {
+_v_system_settings contains "2.5.2: \"Monitor Interfaces\" for High Availability devices must be turned on" if {
 	e_2_5_2
 	not r_2_5_2
 }
@@ -960,7 +960,7 @@ _v_system_settings contains "2.5.3: evidence missing — fortigate_config.system
 	not e_2_5_3
 }
 
-_v_system_settings contains "2.5.3: Ensure HA Reserved Management Interface is configured" if {
+_v_system_settings contains "2.5.3: HA Reserved Management Interface must be explicitly configured" if {
 	e_2_5_3
 	not r_2_5_3
 }
@@ -983,7 +983,7 @@ _v_system_settings contains "2.5.4: evidence missing — fortigate_config.system
 	not e_2_5_4
 }
 
-_v_system_settings contains "2.5.4: Ensure High Availability Group-ID is configured" if {
+_v_system_settings contains "2.5.4: High Availability Group-ID must be explicitly configured" if {
 	e_2_5_4
 	not r_2_5_4
 }
@@ -995,7 +995,7 @@ r_3_1 if {
 	input.fortigate_config.attest.unused_policies_reviewed == true
 }
 
-_v_firewall contains "3.1: Ensure that unused policies are reviewed regularly (manual review not attested)" if {
+_v_firewall contains "3.1: unused policies must be reviewed regularly (manual review not attested)" if {
 	not r_3_1
 }
 
@@ -1017,7 +1017,7 @@ _v_firewall contains "3.2: evidence missing — fortigate_config.firewall.policy
 	not e_3_2
 }
 
-_v_firewall contains "3.2: Ensure that policies do not use \"ALL\" as Service" if {
+_v_firewall contains "3.2: checked condition — policies do not use \"ALL\" as Service" if {
 	e_3_2
 	not r_3_2
 }
@@ -1041,7 +1041,7 @@ _v_firewall contains "3.3: evidence missing — fortigate_config.firewall.policy
 	not e_3_3
 }
 
-_v_firewall contains "3.3: Ensure firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB" if {
+_v_firewall contains "3.3: checked condition — firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB" if {
 	e_3_3
 	not r_3_3
 }
@@ -1064,7 +1064,7 @@ _v_firewall contains "3.4: evidence missing — fortigate_config.firewall.policy
 	not e_3_4
 }
 
-_v_firewall contains "3.4: Ensure logging is enabled on all firewall policies" if {
+_v_firewall contains "3.4: logging must be turned on on all firewall policies" if {
 	e_3_4
 	not r_3_4
 }
@@ -1091,7 +1091,7 @@ _v_security_profiles contains "4.1.1: evidence missing — fortigate_config.{ips
 	not e_4_1_1
 }
 
-_v_security_profiles contains "4.1.1: Detect Botnet connections" if {
+_v_security_profiles contains "4.1.1: Botnet connections must be detected and recorded" if {
 	e_4_1_1
 	not r_4_1_1
 }
@@ -1114,7 +1114,7 @@ _v_security_profiles contains "4.1.2: evidence missing — fortigate_config.fire
 	not e_4_1_2
 }
 
-_v_security_profiles contains "4.1.2: Apply IPS Security Profile to Policies" if {
+_v_security_profiles contains "4.1.2: IPS Security Profile to Policies must be applied" if {
 	e_4_1_2
 	not r_4_1_2
 }
@@ -1136,7 +1136,7 @@ _v_security_profiles contains "4.2.1: evidence missing — fortigate_config.syst
 	not e_4_2_1
 }
 
-_v_security_profiles contains "4.2.1: Ensure Antivirus Definition Push Updates are Configured" if {
+_v_security_profiles contains "4.2.1: Antivirus Definition Push Updates must be explicitly configured" if {
 	e_4_2_1
 	not r_4_2_1
 }
@@ -1159,7 +1159,7 @@ _v_security_profiles contains "4.2.2: evidence missing — fortigate_config.fire
 	not e_4_2_2
 }
 
-_v_security_profiles contains "4.2.2: Apply Antivirus Security Profile to Policies" if {
+_v_security_profiles contains "4.2.2: Antivirus Security Profile to Policies must be applied" if {
 	e_4_2_2
 	not r_4_2_2
 }
@@ -1182,7 +1182,7 @@ _v_security_profiles contains "4.2.3: evidence missing — fortigate_config.anti
 	not e_4_2_3
 }
 
-_v_security_profiles contains "4.2.3: Enable Outbreak Prevention Database" if {
+_v_security_profiles contains "4.2.3: Outbreak Prevention Database must be turned on" if {
 	e_4_2_3
 	not r_4_2_3
 }
@@ -1204,7 +1204,7 @@ _v_security_profiles contains "4.2.4: evidence missing — fortigate_config.anti
 	not e_4_2_4
 }
 
-_v_security_profiles contains "4.2.4: Enable AI /heuristic based malware detection" if {
+_v_security_profiles contains "4.2.4: AI /heuristic based malware detection must be turned on" if {
 	e_4_2_4
 	not r_4_2_4
 }
@@ -1226,7 +1226,7 @@ _v_security_profiles contains "4.2.5: evidence missing — fortigate_config.anti
 	not e_4_2_5
 }
 
-_v_security_profiles contains "4.2.5: Enable grayware detection on antivirus" if {
+_v_security_profiles contains "4.2.5: grayware detection on antivirus must be turned on" if {
 	e_4_2_5
 	not r_4_2_5
 }
@@ -1251,7 +1251,7 @@ _v_security_profiles contains "4.2.6: evidence missing — fortigate_config.{sys
 	not e_4_2_6
 }
 
-_v_security_profiles contains "4.2.6: Ensure inline scanning with FortiGuard AI-Based Sandbox Service is enabled" if {
+_v_security_profiles contains "4.2.6: inline scanning with FortiGuard AI-Based Sandbox Service must be turned on" if {
 	e_4_2_6
 	not r_4_2_6
 }
@@ -1275,7 +1275,7 @@ _v_security_profiles contains "4.2.7: evidence missing — fortigate_config.anti
 	not e_4_2_7
 }
 
-_v_security_profiles contains "4.2.7: Enable CDR for proxy mode on XLSB, OpenOffice, and RTF files" if {
+_v_security_profiles contains "4.2.7: CDR for proxy mode on XLSB, OpenOffice, and RTF files must be turned on" if {
 	e_4_2_7
 	not r_4_2_7
 }
@@ -1298,7 +1298,7 @@ _v_security_profiles contains "4.3.1: evidence missing — fortigate_config.dnsf
 	not e_4_3_1
 }
 
-_v_security_profiles contains "4.3.1: Enable Botnet C&C Domain Blocking DNS Filter" if {
+_v_security_profiles contains "4.3.1: Botnet C&C Domain Blocking DNS Filter must be turned on" if {
 	e_4_3_1
 	not r_4_3_1
 }
@@ -1321,7 +1321,7 @@ _v_security_profiles contains "4.3.2: evidence missing — fortigate_config.dnsf
 	not e_4_3_2
 }
 
-_v_security_profiles contains "4.3.2: Ensure DNS Filter logs all DNS queries and responses" if {
+_v_security_profiles contains "4.3.2: checked condition — DNS Filter logs all DNS queries and responses" if {
 	e_4_3_2
 	not r_4_3_2
 }
@@ -1346,7 +1346,7 @@ _v_security_profiles contains "4.3.3: evidence missing — fortigate_config.{fir
 	not e_4_3_3
 }
 
-_v_security_profiles contains "4.3.3: Apply DNS Filter Security Profile to Policies" if {
+_v_security_profiles contains "4.3.3: DNS Filter Security Profile to Policies must be applied" if {
 	e_4_3_3
 	not r_4_3_3
 }
@@ -1370,7 +1370,7 @@ _v_security_profiles contains "4.4.1: evidence missing — fortigate_config.webf
 	not e_4_4_1
 }
 
-_v_security_profiles contains "4.4.1: Create a Web Filtering Profile" if {
+_v_security_profiles contains "4.4.1: a Web Filtering Profile must exist" if {
 	e_4_4_1
 	not r_4_4_1
 }
@@ -1394,7 +1394,7 @@ _v_security_profiles contains "4.5.1: evidence missing — fortigate_config.appl
 	not e_4_5_1
 }
 
-_v_security_profiles contains "4.5.1: Block high risk categories on Application Control" if {
+_v_security_profiles contains "4.5.1: high risk categories on Application Control must be blocked" if {
 	e_4_5_1
 	not r_4_5_1
 }
@@ -1417,7 +1417,7 @@ _v_security_profiles contains "4.5.2: evidence missing — fortigate_config.appl
 	not e_4_5_2
 }
 
-_v_security_profiles contains "4.5.2: Block applications running on non-default ports" if {
+_v_security_profiles contains "4.5.2: applications running on non-default ports must be blocked" if {
 	e_4_5_2
 	not r_4_5_2
 }
@@ -1440,7 +1440,7 @@ _v_security_profiles contains "4.5.3: evidence missing — fortigate_config.appl
 	not e_4_5_3
 }
 
-_v_security_profiles contains "4.5.3: Ensure all Application Control related traffic is logged" if {
+_v_security_profiles contains "4.5.3: all Application Control related traffic must be logged" if {
 	e_4_5_3
 	not r_4_5_3
 }
@@ -1463,7 +1463,7 @@ _v_security_profiles contains "4.5.4: evidence missing — fortigate_config.fire
 	not e_4_5_4
 }
 
-_v_security_profiles contains "4.5.4: Apply Application Control Security Profile to Policies" if {
+_v_security_profiles contains "4.5.4: Application Control Security Profile to Policies must be applied" if {
 	e_4_5_4
 	not r_4_5_4
 }
@@ -1486,7 +1486,7 @@ _v_security_fabric contains "5.1.1: evidence missing — fortigate_config.system
 	not e_5_1_1
 }
 
-_v_security_fabric contains "5.1.1: Enable Compromised Host Quarantine" if {
+_v_security_fabric contains "5.1.1: Compromised Host Quarantine must be turned on" if {
 	e_5_1_1
 	not r_5_1_1
 }
@@ -1510,7 +1510,7 @@ _v_security_fabric contains "5.2.1.1: evidence missing — fortigate_config.syst
 	not e_5_2_1_1
 }
 
-_v_security_fabric contains "5.2.1.1: Ensure Security Fabric is Configured" if {
+_v_security_fabric contains "5.2.1.1: Security Fabric must be explicitly configured" if {
 	e_5_2_1_1
 	not r_5_2_1_1
 }
@@ -1533,7 +1533,7 @@ _v_vpn contains "6.1.1: evidence missing — fortigate_config.vpn.ssl.settings n
 	not e_6_1_1
 }
 
-_v_vpn contains "6.1.1: Apply a Trusted Signed Certificate for VPN Portal" if {
+_v_vpn contains "6.1.1: a Trusted Signed Certificate for VPN Portal must be applied" if {
 	e_6_1_1
 	not r_6_1_1
 }
@@ -1557,7 +1557,7 @@ _v_vpn contains "6.1.2: evidence missing — fortigate_config.vpn.ssl.settings n
 	not e_6_1_2
 }
 
-_v_vpn contains "6.1.2: Enable Limited TLS Versions for SSL VPN" if {
+_v_vpn contains "6.1.2: Limited TLS Versions for SSL VPN must be turned on" if {
 	e_6_1_2
 	not r_6_1_2
 }
@@ -1580,7 +1580,7 @@ _v_logging contains "7.1.1: evidence missing — fortigate_config.log.eventfilte
 	not e_7_1_1
 }
 
-_v_logging contains "7.1.1: Enable Event Logging" if {
+_v_logging contains "7.1.1: Event Logging must be turned on" if {
 	e_7_1_1
 	not r_7_1_1
 }
@@ -1605,7 +1605,7 @@ _v_logging contains "7.2.1: evidence missing — fortigate_config.log.syslogd.se
 	not e_7_2_1
 }
 
-_v_logging contains "7.2.1: Centralized Logging and Reporting" if {
+_v_logging contains "7.2.1: checked condition — Centralized Logging and Reporting" if {
 	e_7_2_1
 	not r_7_2_1
 }
@@ -1629,7 +1629,7 @@ _v_logging contains "7.3.1: evidence missing — fortigate_config.log.fortianaly
 	not e_7_3_1
 }
 
-_v_logging contains "7.3.1: Encrypt Log Transmission to FortiAnalyzer / FortiManager" if {
+_v_logging contains "7.3.1: Log Transmission to FortiAnalyzer / FortiManager must be encrypted in transit or at rest" if {
 	e_7_3_1
 	not r_7_3_1
 }
@@ -1653,7 +1653,7 @@ _v_logging contains "7.3.2: evidence missing — fortigate_config.log.syslogd.se
 	not e_7_3_2
 }
 
-_v_logging contains "7.3.2: Encrypt Log Transmission to Syslog" if {
+_v_logging contains "7.3.2: Log Transmission to Syslog must be encrypted in transit or at rest" if {
 	e_7_3_2
 	not r_7_3_2
 }
@@ -1677,7 +1677,7 @@ _v_logging contains "7.3.3: evidence missing — fortigate_config.log.syslogd.se
 	not e_7_3_3
 }
 
-_v_logging contains "7.3.3: Encrypt Log Transmission to Syslog" if {
+_v_logging contains "7.3.3: Log Transmission to Syslog must be encrypted in transit or at rest" if {
 	e_7_3_3
 	not r_7_3_3
 }
@@ -1685,7 +1685,7 @@ _v_logging contains "7.3.3: Encrypt Log Transmission to Syslog" if {
 # Every recommendation in the benchmark: title, level, assessment status, how it is checked, report section.
 recommendations := {
 	"1.1": {
-		"title": "Ensure DNS server is configured",
+		"title": "DNS server must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1695,7 +1695,7 @@ recommendations := {
 		"section": "network"
 	},
 	"1.2": {
-		"title": "Ensure intra-zone traffic is not always allowed",
+		"title": "intra-zone traffic must be not always allowed",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1705,7 +1705,7 @@ recommendations := {
 		"section": "network"
 	},
 	"1.3": {
-		"title": "Disable all management related services on WAN port",
+		"title": "all management related services on WAN port must be turned off",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1715,7 +1715,7 @@ recommendations := {
 		"section": "network"
 	},
 	"2.1.1": {
-		"title": "Ensure 'Pre-Login Banner' is set",
+		"title": "'Pre-Login Banner' must be populated",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1725,7 +1725,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.2": {
-		"title": "Ensure 'Post-Login-Banner' is set",
+		"title": "'Post-Login-Banner' must be populated",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1735,7 +1735,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.3": {
-		"title": "Ensure timezone is properly configured",
+		"title": "timezone must match the approved configuration",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1745,7 +1745,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.4": {
-		"title": "Ensure correct system time is configured through NTP",
+		"title": "correct system time must be explicitly configured through NTP",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1755,7 +1755,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.5": {
-		"title": "Ensure hostname is set",
+		"title": "hostname must be set",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1765,7 +1765,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.6": {
-		"title": "Ensure the latest firmware is installed",
+		"title": "the latest firmware must be present",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -1775,7 +1775,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.7": {
-		"title": "Disable USB Firmware and configuration installation",
+		"title": "USB Firmware and configuration installation must be turned off",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1785,7 +1785,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.8": {
-		"title": "Disable static keys for TLS",
+		"title": "static keys for TLS must be turned off",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1795,7 +1795,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.9": {
-		"title": "Enable Global Strong Encryption",
+		"title": "Global Strong Encryption must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1805,7 +1805,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.10": {
-		"title": "Ensure management GUI listens on secure TLS version",
+		"title": "checked condition — management GUI listens on secure TLS version",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1815,7 +1815,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.11": {
-		"title": "Ensure CDN is enabled for improved GUI performance",
+		"title": "CDN must be turned on for improved GUI performance",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1825,7 +1825,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.12": {
-		"title": "Ensure single CPU core overloaded event is logged",
+		"title": "single CPU core overloaded event must be logged",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1835,7 +1835,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.1.13": {
-		"title": "Ensure Hostname is Not Displayed On Login GUI",
+		"title": "Hostname must be Not Displayed On Login GUI",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1845,7 +1845,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.2.1": {
-		"title": "Ensure 'Password Policy' is enabled",
+		"title": "'Password Policy' must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1855,7 +1855,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.2.2": {
-		"title": "Ensure administrator password retries and lockout time are configured",
+		"title": "administrator password retries and lockout time must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1865,7 +1865,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.3.1": {
-		"title": "Ensure only SNMPv3 is enabled",
+		"title": "only SNMPv3 must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1875,7 +1875,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.3.2": {
-		"title": "Allow only trusted hosts in SNMPv3",
+		"title": "only trusted hosts in SNMPv3 may be permitted",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -1885,7 +1885,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.3.3": {
-		"title": "Disable SNMPv3 Query Per User",
+		"title": "SNMPv3 Query Per User must be turned off",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1895,7 +1895,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.3.4": {
-		"title": "Enabling SNMP trap for memory usage",
+		"title": "checked condition — Enabling SNMP trap for memory usage",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1905,7 +1905,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.4.1": {
-		"title": "Remove default admin user and create one with other name",
+		"title": "default admin user and create one with other name must be removed",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1915,7 +1915,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.2": {
-		"title": "Ensure all the login accounts having specific trusted hosts enabled",
+		"title": "checked condition — all the login accounts having specific trusted hosts enabled",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1925,7 +1925,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.3": {
-		"title": "Ensure admin accounts with different privileges have their correct profiles assigned",
+		"title": "admin accounts with different privileges must have their correct profiles assigned",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -1935,7 +1935,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.4": {
-		"title": "Ensure Admin idle timeout time is configured",
+		"title": "Admin idle timeout time must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1945,7 +1945,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.5": {
-		"title": "Ensure only encrypted access channels are enabled",
+		"title": "only encrypted access channels must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1955,7 +1955,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.6": {
-		"title": "Apply Local-in Policies",
+		"title": "Local-in Policies must be applied",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1965,7 +1965,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.7": {
-		"title": "Ensure default Admin ports are changed",
+		"title": "default Admin ports must be changed",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1975,7 +1975,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.4.8": {
-		"title": "Virtual patching on the local-in management interface",
+		"title": "checked condition — Virtual patching on the local-in management interface",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -1985,7 +1985,7 @@ recommendations := {
 		"section": "administration"
 	},
 	"2.5.1": {
-		"title": "Ensure High Availability configuration is enabled",
+		"title": "High Availability configuration must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -1995,7 +1995,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.5.2": {
-		"title": "Ensure \"Monitor Interfaces\" for High Availability devices is enabled",
+		"title": "\"Monitor Interfaces\" for High Availability devices must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2005,7 +2005,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.5.3": {
-		"title": "Ensure HA Reserved Management Interface is configured",
+		"title": "HA Reserved Management Interface must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2015,7 +2015,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"2.5.4": {
-		"title": "Ensure High Availability Group-ID is configured",
+		"title": "High Availability Group-ID must be explicitly configured",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2025,7 +2025,7 @@ recommendations := {
 		"section": "system_settings"
 	},
 	"3.1": {
-		"title": "Ensure that unused policies are reviewed regularly",
+		"title": "unused policies must be reviewed regularly",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2035,7 +2035,7 @@ recommendations := {
 		"section": "firewall"
 	},
 	"3.2": {
-		"title": "Ensure that policies do not use \"ALL\" as Service",
+		"title": "checked condition — policies do not use \"ALL\" as Service",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2045,7 +2045,7 @@ recommendations := {
 		"section": "firewall"
 	},
 	"3.3": {
-		"title": "Ensure firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB",
+		"title": "checked condition — firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2055,7 +2055,7 @@ recommendations := {
 		"section": "firewall"
 	},
 	"3.4": {
-		"title": "Ensure logging is enabled on all firewall policies",
+		"title": "logging must be turned on on all firewall policies",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2065,7 +2065,7 @@ recommendations := {
 		"section": "firewall"
 	},
 	"4.1.1": {
-		"title": "Detect Botnet connections",
+		"title": "Botnet connections must be detected and recorded",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2075,7 +2075,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.1.2": {
-		"title": "Apply IPS Security Profile to Policies",
+		"title": "IPS Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2085,7 +2085,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.1": {
-		"title": "Ensure Antivirus Definition Push Updates are Configured",
+		"title": "Antivirus Definition Push Updates must be explicitly configured",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2095,7 +2095,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.2": {
-		"title": "Apply Antivirus Security Profile to Policies",
+		"title": "Antivirus Security Profile to Policies must be applied",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2105,7 +2105,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.3": {
-		"title": "Enable Outbreak Prevention Database",
+		"title": "Outbreak Prevention Database must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2115,7 +2115,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.4": {
-		"title": "Enable AI /heuristic based malware detection",
+		"title": "AI /heuristic based malware detection must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2125,7 +2125,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.5": {
-		"title": "Enable grayware detection on antivirus",
+		"title": "grayware detection on antivirus must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2135,7 +2135,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.6": {
-		"title": "Ensure inline scanning with FortiGuard AI-Based Sandbox Service is enabled",
+		"title": "inline scanning with FortiGuard AI-Based Sandbox Service must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2145,7 +2145,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.2.7": {
-		"title": "Enable CDR for proxy mode on XLSB, OpenOffice, and RTF files",
+		"title": "CDR for proxy mode on XLSB, OpenOffice, and RTF files must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2155,7 +2155,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.3.1": {
-		"title": "Enable Botnet C&C Domain Blocking DNS Filter",
+		"title": "Botnet C&C Domain Blocking DNS Filter must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2165,7 +2165,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.3.2": {
-		"title": "Ensure DNS Filter logs all DNS queries and responses",
+		"title": "checked condition — DNS Filter logs all DNS queries and responses",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2175,7 +2175,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.3.3": {
-		"title": "Apply DNS Filter Security Profile to Policies",
+		"title": "DNS Filter Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2185,7 +2185,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.4.1": {
-		"title": "Create a Web Filtering Profile",
+		"title": "a Web Filtering Profile must exist",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2195,7 +2195,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.5.1": {
-		"title": "Block high risk categories on Application Control",
+		"title": "high risk categories on Application Control must be blocked",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2205,7 +2205,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.5.2": {
-		"title": "Block applications running on non-default ports",
+		"title": "applications running on non-default ports must be blocked",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2215,7 +2215,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.5.3": {
-		"title": "Ensure all Application Control related traffic is logged",
+		"title": "all Application Control related traffic must be logged",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2225,7 +2225,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"4.5.4": {
-		"title": "Apply Application Control Security Profile to Policies",
+		"title": "Application Control Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2235,7 +2235,7 @@ recommendations := {
 		"section": "security_profiles"
 	},
 	"5.1.1": {
-		"title": "Enable Compromised Host Quarantine",
+		"title": "Compromised Host Quarantine must be turned on",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2245,7 +2245,7 @@ recommendations := {
 		"section": "security_fabric"
 	},
 	"5.2.1.1": {
-		"title": "Ensure Security Fabric is Configured",
+		"title": "Security Fabric must be explicitly configured",
 		"level": 2,
 		"assessment": "Manual",
 		"profiles": [
@@ -2255,7 +2255,7 @@ recommendations := {
 		"section": "security_fabric"
 	},
 	"6.1.1": {
-		"title": "Apply a Trusted Signed Certificate for VPN Portal",
+		"title": "a Trusted Signed Certificate for VPN Portal must be applied",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2265,7 +2265,7 @@ recommendations := {
 		"section": "vpn"
 	},
 	"6.1.2": {
-		"title": "Enable Limited TLS Versions for SSL VPN",
+		"title": "Limited TLS Versions for SSL VPN must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2275,7 +2275,7 @@ recommendations := {
 		"section": "vpn"
 	},
 	"7.1.1": {
-		"title": "Enable Event Logging",
+		"title": "Event Logging must be turned on",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2285,7 +2285,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"7.2.1": {
-		"title": "Centralized Logging and Reporting",
+		"title": "checked condition — Centralized Logging and Reporting",
 		"level": 2,
 		"assessment": "Automated",
 		"profiles": [
@@ -2295,7 +2295,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"7.3.1": {
-		"title": "Encrypt Log Transmission to FortiAnalyzer / FortiManager",
+		"title": "Log Transmission to FortiAnalyzer / FortiManager must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Automated",
 		"profiles": [
@@ -2305,7 +2305,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"7.3.2": {
-		"title": "Encrypt Log Transmission to Syslog",
+		"title": "Log Transmission to Syslog must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [
@@ -2315,7 +2315,7 @@ recommendations := {
 		"section": "logging"
 	},
 	"7.3.3": {
-		"title": "Encrypt Log Transmission to Syslog",
+		"title": "Log Transmission to Syslog must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Manual",
 		"profiles": [

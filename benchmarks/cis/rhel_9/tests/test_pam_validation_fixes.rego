@@ -38,18 +38,18 @@ test_pam_umask_unparsable_is_violation if {
 test_pam_commented_faillock_does_not_satisfy if {
 	t := "# auth        required      pam_faillock.so preauth silent\nauth        sufficient    pam_unix.so\n# auth        required      pam_faillock.so authfail\n# account     required      pam_faillock.so\naccount     required      pam_unix.so\npassword    requisite     pam_pwquality.so local_users_only\npassword    required      pam_pwhistory.so use_authtok\npassword    sufficient    pam_unix.so sha512 shadow use_authtok\nsession     required      pam_unix.so"
 	i := json.patch(good, [{"op": "replace", "path": "/pam/system_auth", "value": t}, {"op": "replace", "path": "/pam/password_auth", "value": t}])
-	"5.3.2.2: not met — Ensure pam_faillock module is enabled" in data.cis_rhel9.pam.violations with input as i
+	"5.3.2.2: not met — pam_faillock module must be turned on" in data.cis_rhel9.pam.violations with input as i
 }
 
 test_pam_commented_deny_does_not_satisfy if {
 	i := json.patch(good, [{"op": "replace", "path": "/pam/faillock_conf_raw", "value": "# deny = 5\nunlock_time = 900\neven_deny_root\nroot_unlock_time = 60"}])
-	"5.3.3.1.1: not met — Ensure password failed attempts lockout is configured" in data.cis_rhel9.pam.violations with input as i
+	"5.3.3.1.1: not met — password failed attempts lockout must be explicitly configured" in data.cis_rhel9.pam.violations with input as i
 }
 
 test_pam_commented_sha512_does_not_satisfy if {
 	t := "auth        required      pam_faillock.so preauth silent\nauth        sufficient    pam_unix.so\nauth        required      pam_faillock.so authfail\naccount     required      pam_faillock.so\naccount     required      pam_unix.so\npassword    requisite     pam_pwquality.so local_users_only\npassword    required      pam_pwhistory.so use_authtok\n# password    sufficient    pam_unix.so sha512 shadow use_authtok\nsession     required      pam_unix.so"
 	i := json.patch(good, [{"op": "replace", "path": "/pam/system_auth", "value": t}, {"op": "replace", "path": "/pam/password_auth", "value": t}])
-	"5.3.3.4.3: not met — Ensure pam_unix includes a strong password hashing algorithm" in data.cis_rhel9.pam.violations with input as i
+	"5.3.3.4.3: not met — checked condition — pam_unix includes a strong password hashing algorithm" in data.cis_rhel9.pam.violations with input as i
 }
 
 test_pam_missing_login_defs_values_are_violations if {
@@ -62,5 +62,5 @@ test_pam_missing_login_defs_values_are_violations if {
 test_pam_module_deny_argument_undercuts_conf if {
 	t := replace(good.pam.password_auth, "pam_faillock.so authfail", "pam_faillock.so authfail deny=10")
 	i := json.patch(good, [{"op": "replace", "path": "/pam/password_auth", "value": t}])
-	"5.3.3.1.1: not met — Ensure password failed attempts lockout is configured" in data.cis_rhel9.pam.violations with input as i
+	"5.3.3.1.1: not met — password failed attempts lockout must be explicitly configured" in data.cis_rhel9.pam.violations with input as i
 }

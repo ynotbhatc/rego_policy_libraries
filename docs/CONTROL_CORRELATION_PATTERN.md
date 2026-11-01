@@ -87,8 +87,8 @@ standards do not share a structure:
 1. **Three unrelated ID schemes** — STIG `AZLX-23-000050` (SRG-derived), CIS
    `4.1.1.1` (benchmark section), NIST `AC-17` (control family). Nothing links
    them on the surface.
-2. **Different wording for identical controls** — "Ensure SSH root login is
-   disabled" (CIS) vs. "must not permit direct logons to the root account
+2. **Different wording for identical controls** — a CIS recommendation about
+   remote root shell access, versus "must not permit direct logons to the root account
    using remote access via SSH" (STIG). Text matching across the two returns
    near-zero; only a semantic or CCI join finds the equivalence.
 3. **The cross-mappings were not preserved.** Standards *carry* the join key

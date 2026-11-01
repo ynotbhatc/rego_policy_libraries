@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "cis_apache-1.1",
-      "title": "Ensure Apache Is Installed From Source",
+      "title": "Apache must be Installed From Source",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "cis_apache-1.1_stmt",
         "name": "statement",
-        "prose": "Ensure Apache Is Installed From Source"
+        "prose": "Apache must be Installed From Source"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.2",
-      "title": "Ensure the Apache Web Server Runs as a Non-Root User",
+      "title": "checked condition — the Apache Web Server Runs as a Non-Root User",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "cis_apache-1.2_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache Web Server Runs as a Non-Root User"
+        "prose": "checked condition — the Apache Web Server Runs as a Non-Root User"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.3",
-      "title": "Ensure the Apache User Account Has an Invalid Shell",
+      "title": "the Apache User Account must use a non-login shell",
       "props": [
        {
         "name": "label",
@@ -159,14 +159,14 @@
        {
         "id": "cis_apache-1.3_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache User Account Has an Invalid Shell"
+        "prose": "the Apache User Account must use a non-login shell"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.4",
-      "title": "Ensure the Apache User Account Is Locked",
+      "title": "the Apache User Account must be locked",
       "props": [
        {
         "name": "label",
@@ -192,14 +192,14 @@
        {
         "id": "cis_apache-1.4_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache User Account Is Locked"
+        "prose": "the Apache User Account must be locked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.5",
-      "title": "Ensure Apache Directories and Files Are Owned by Root",
+      "title": "Apache Directories and Files must be Owned by Root",
       "props": [
        {
         "name": "label",
@@ -225,14 +225,14 @@
        {
         "id": "cis_apache-1.5_stmt",
         "name": "statement",
-        "prose": "Ensure Apache Directories and Files Are Owned by Root"
+        "prose": "Apache Directories and Files must be Owned by Root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.6",
-      "title": "Ensure the Apache User Account Has a Non-privileged Home Directory",
+      "title": "the Apache User Account must have a Non-privileged Home Directory",
       "props": [
        {
         "name": "label",
@@ -258,14 +258,14 @@
        {
         "id": "cis_apache-1.6_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache User Account Has a Non-privileged Home Directory"
+        "prose": "the Apache User Account must have a Non-privileged Home Directory"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.7",
-      "title": "Ensure the Core Dump Directory Is Secured",
+      "title": "the Core Dump Directory must be Secured",
       "props": [
        {
         "name": "label",
@@ -291,14 +291,14 @@
        {
         "id": "cis_apache-1.7_stmt",
         "name": "statement",
-        "prose": "Ensure the Core Dump Directory Is Secured"
+        "prose": "the Core Dump Directory must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.8",
-      "title": "Ensure the Pid File Is Secured",
+      "title": "the Pid File must be Secured",
       "props": [
        {
         "name": "label",
@@ -324,14 +324,14 @@
        {
         "id": "cis_apache-1.8_stmt",
         "name": "statement",
-        "prose": "Ensure the Pid File Is Secured"
+        "prose": "the Pid File must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.9",
-      "title": "Ensure the ScoreBoard File Is Secured",
+      "title": "the ScoreBoard File must be Secured",
       "props": [
        {
         "name": "label",
@@ -357,14 +357,14 @@
        {
         "id": "cis_apache-1.9_stmt",
         "name": "statement",
-        "prose": "Ensure the ScoreBoard File Is Secured"
+        "prose": "the ScoreBoard File must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.10",
-      "title": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted",
+      "title": "Group Write Access for the Apache Directories and Files must be Properly Restricted",
       "props": [
        {
         "name": "label",
@@ -390,14 +390,14 @@
        {
         "id": "cis_apache-1.10_stmt",
         "name": "statement",
-        "prose": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted"
+        "prose": "Group Write Access for the Apache Directories and Files must be Properly Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.11",
-      "title": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted",
+      "title": "Group Write Access for the Document Root Directories and Files must be Properly Restricted",
       "props": [
        {
         "name": "label",
@@ -423,14 +423,14 @@
        {
         "id": "cis_apache-1.11_stmt",
         "name": "statement",
-        "prose": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted"
+        "prose": "Group Write Access for the Document Root Directories and Files must be Properly Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-1.12",
-      "title": "Ensure the HTTP Request Methods Are Restricted",
+      "title": "the HTTP Request Methods must be Restricted",
       "props": [
        {
         "name": "label",
@@ -456,14 +456,14 @@
        {
         "id": "cis_apache-1.12_stmt",
         "name": "statement",
-        "prose": "Ensure the HTTP Request Methods Are Restricted"
+        "prose": "the HTTP Request Methods must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.1",
-      "title": "Ensure Only Necessary Authentication and Authorization Modules Are Enabled",
+      "title": "Only Necessary Authentication and Authorization Modules must be turned on",
       "props": [
        {
         "name": "label",
@@ -489,14 +489,14 @@
        {
         "id": "cis_apache-2.1_stmt",
         "name": "statement",
-        "prose": "Ensure Only Necessary Authentication and Authorization Modules Are Enabled"
+        "prose": "Only Necessary Authentication and Authorization Modules must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.2",
-      "title": "Ensure the Log Config Module Is Enabled",
+      "title": "the Log Config Module must be turned on",
       "props": [
        {
         "name": "label",
@@ -522,14 +522,14 @@
        {
         "id": "cis_apache-2.2_stmt",
         "name": "statement",
-        "prose": "Ensure the Log Config Module Is Enabled"
+        "prose": "the Log Config Module must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.3",
-      "title": "Ensure the WebDAV Modules Are Disabled",
+      "title": "the WebDAV Modules must be turned off",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "cis_apache-2.3_stmt",
         "name": "statement",
-        "prose": "Ensure the WebDAV Modules Are Disabled"
+        "prose": "the WebDAV Modules must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.4",
-      "title": "Ensure the Status Module Is Disabled",
+      "title": "the Status Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "cis_apache-2.4_stmt",
         "name": "statement",
-        "prose": "Ensure the Status Module Is Disabled"
+        "prose": "the Status Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.5",
-      "title": "Ensure the Autoindex Module Is Disabled",
+      "title": "the Autoindex Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "cis_apache-2.5_stmt",
         "name": "statement",
-        "prose": "Ensure the Autoindex Module Is Disabled"
+        "prose": "the Autoindex Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.6",
-      "title": "Ensure the Proxy Modules Are Disabled",
+      "title": "the Proxy Modules must be turned off",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "cis_apache-2.6_stmt",
         "name": "statement",
-        "prose": "Ensure the Proxy Modules Are Disabled"
+        "prose": "the Proxy Modules must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.7",
-      "title": "Ensure the User Directories Module Is Disabled",
+      "title": "the User Directories Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "cis_apache-2.7_stmt",
         "name": "statement",
-        "prose": "Ensure the User Directories Module Is Disabled"
+        "prose": "the User Directories Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.8",
-      "title": "Ensure the Info Module Is Disabled",
+      "title": "the Info Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -720,14 +720,14 @@
        {
         "id": "cis_apache-2.8_stmt",
         "name": "statement",
-        "prose": "Ensure the Info Module Is Disabled"
+        "prose": "the Info Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.9",
-      "title": "Ensure the Rewrite Module Is Enabled Only If Necessary",
+      "title": "the Rewrite Module must be turned on Only If Necessary",
       "props": [
        {
         "name": "label",
@@ -753,14 +753,14 @@
        {
         "id": "cis_apache-2.9_stmt",
         "name": "statement",
-        "prose": "Ensure the Rewrite Module Is Enabled Only If Necessary"
+        "prose": "the Rewrite Module must be turned on Only If Necessary"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.10",
-      "title": "Ensure the CGI Modules Are Disabled",
+      "title": "the CGI Modules must be turned off",
       "props": [
        {
         "name": "label",
@@ -786,14 +786,14 @@
        {
         "id": "cis_apache-2.10_stmt",
         "name": "statement",
-        "prose": "Ensure the CGI Modules Are Disabled"
+        "prose": "the CGI Modules must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.11",
-      "title": "Ensure the Include Module Is Disabled",
+      "title": "the Include Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -819,14 +819,14 @@
        {
         "id": "cis_apache-2.11_stmt",
         "name": "statement",
-        "prose": "Ensure the Include Module Is Disabled"
+        "prose": "the Include Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.12",
-      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "title": "the HTTP TRACE Method must be turned off",
       "props": [
        {
         "name": "label",
@@ -852,14 +852,14 @@
        {
         "id": "cis_apache-2.12_stmt",
         "name": "statement",
-        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+        "prose": "the HTTP TRACE Method must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.13",
-      "title": "Ensure the Negotiation Module Is Disabled",
+      "title": "the Negotiation Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -885,14 +885,14 @@
        {
         "id": "cis_apache-2.13_stmt",
         "name": "statement",
-        "prose": "Ensure the Negotiation Module Is Disabled"
+        "prose": "the Negotiation Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.14",
-      "title": "Ensure the MIME Magic Module Is Disabled",
+      "title": "the MIME Magic Module must be turned off",
       "props": [
        {
         "name": "label",
@@ -918,14 +918,14 @@
        {
         "id": "cis_apache-2.14_stmt",
         "name": "statement",
-        "prose": "Ensure the MIME Magic Module Is Disabled"
+        "prose": "the MIME Magic Module must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.15",
-      "title": "Ensure the Expires Module Is Enabled",
+      "title": "the Expires Module must be turned on",
       "props": [
        {
         "name": "label",
@@ -951,14 +951,14 @@
        {
         "id": "cis_apache-2.15_stmt",
         "name": "statement",
-        "prose": "Ensure the Expires Module Is Enabled"
+        "prose": "the Expires Module must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.16",
-      "title": "Ensure the Headers Module Is Enabled",
+      "title": "the Headers Module must be turned on",
       "props": [
        {
         "name": "label",
@@ -984,14 +984,14 @@
        {
         "id": "cis_apache-2.16_stmt",
         "name": "statement",
-        "prose": "Ensure the Headers Module Is Enabled"
+        "prose": "the Headers Module must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.17",
-      "title": "Ensure the SSL Module Is Enabled",
+      "title": "the SSL Module must be turned on",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1017,14 @@
        {
         "id": "cis_apache-2.17_stmt",
         "name": "statement",
-        "prose": "Ensure the SSL Module Is Enabled"
+        "prose": "the SSL Module must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-2.18",
-      "title": "Ensure Only Required Modules Are Loaded",
+      "title": "Only Required Modules must be Loaded",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1050,14 @@
        {
         "id": "cis_apache-2.18_stmt",
         "name": "statement",
-        "prose": "Ensure Only Required Modules Are Loaded"
+        "prose": "Only Required Modules must be Loaded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.1",
-      "title": "Ensure the Apache Web Server Runs as a Non-privileged User",
+      "title": "checked condition — the Apache Web Server Runs as a Non-privileged User",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1083,14 @@
        {
         "id": "cis_apache-3.1_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache Web Server Runs as a Non-privileged User"
+        "prose": "checked condition — the Apache Web Server Runs as a Non-privileged User"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.2",
-      "title": "Ensure the Apache User Account Has a Non-privileged Home Directory",
+      "title": "the Apache User Account must have a Non-privileged Home Directory",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1116,14 @@
        {
         "id": "cis_apache-3.2_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache User Account Has a Non-privileged Home Directory"
+        "prose": "the Apache User Account must have a Non-privileged Home Directory"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.3",
-      "title": "Ensure the Apache User Account Has an Invalid Shell",
+      "title": "the Apache User Account must use a non-login shell",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1149,14 @@
        {
         "id": "cis_apache-3.3_stmt",
         "name": "statement",
-        "prose": "Ensure the Apache User Account Has an Invalid Shell"
+        "prose": "the Apache User Account must use a non-login shell"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.4",
-      "title": "Ensure Apache Directories and Files Are Owned by Root",
+      "title": "Apache Directories and Files must be Owned by Root",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1182,14 @@
        {
         "id": "cis_apache-3.4_stmt",
         "name": "statement",
-        "prose": "Ensure Apache Directories and Files Are Owned by Root"
+        "prose": "Apache Directories and Files must be Owned by Root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.5",
-      "title": "Ensure Group Ownership of Apache Directories and Files",
+      "title": "checked condition — Group Ownership of Apache Directories and Files",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1215,14 @@
        {
         "id": "cis_apache-3.5_stmt",
         "name": "statement",
-        "prose": "Ensure Group Ownership of Apache Directories and Files"
+        "prose": "checked condition — Group Ownership of Apache Directories and Files"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.6",
-      "title": "Ensure Other Write Access on Apache Directories and Files Is Restricted",
+      "title": "Other Write Access on Apache Directories and Files must be Restricted",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1248,14 @@
        {
         "id": "cis_apache-3.6_stmt",
         "name": "statement",
-        "prose": "Ensure Other Write Access on Apache Directories and Files Is Restricted"
+        "prose": "Other Write Access on Apache Directories and Files must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.7",
-      "title": "Ensure the Core Dump Directory Is Secured",
+      "title": "the Core Dump Directory must be Secured",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1281,14 @@
        {
         "id": "cis_apache-3.7_stmt",
         "name": "statement",
-        "prose": "Ensure the Core Dump Directory Is Secured"
+        "prose": "the Core Dump Directory must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.8",
-      "title": "Ensure the Lock File Is Secured",
+      "title": "the Lock File must be Secured",
       "props": [
        {
         "name": "label",
@@ -1314,14 +1314,14 @@
        {
         "id": "cis_apache-3.8_stmt",
         "name": "statement",
-        "prose": "Ensure the Lock File Is Secured"
+        "prose": "the Lock File must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.9",
-      "title": "Ensure the Pid File Is Secured",
+      "title": "the Pid File must be Secured",
       "props": [
        {
         "name": "label",
@@ -1347,14 +1347,14 @@
        {
         "id": "cis_apache-3.9_stmt",
         "name": "statement",
-        "prose": "Ensure the Pid File Is Secured"
+        "prose": "the Pid File must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.10",
-      "title": "Ensure the ScoreBoard File Is Secured",
+      "title": "the ScoreBoard File must be Secured",
       "props": [
        {
         "name": "label",
@@ -1380,14 +1380,14 @@
        {
         "id": "cis_apache-3.10_stmt",
         "name": "statement",
-        "prose": "Ensure the ScoreBoard File Is Secured"
+        "prose": "the ScoreBoard File must be Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.11",
-      "title": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted",
+      "title": "Group Write Access for the Apache Directories and Files must be Properly Restricted",
       "props": [
        {
         "name": "label",
@@ -1413,14 +1413,14 @@
        {
         "id": "cis_apache-3.11_stmt",
         "name": "statement",
-        "prose": "Ensure Group Write Access for the Apache Directories and Files Is Properly Restricted"
+        "prose": "Group Write Access for the Apache Directories and Files must be Properly Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.12",
-      "title": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted",
+      "title": "Group Write Access for the Document Root Directories and Files must be Properly Restricted",
       "props": [
        {
         "name": "label",
@@ -1446,14 +1446,14 @@
        {
         "id": "cis_apache-3.12_stmt",
         "name": "statement",
-        "prose": "Ensure Group Write Access for the Document Root Directories and Files Is Properly Restricted"
+        "prose": "Group Write Access for the Document Root Directories and Files must be Properly Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.13",
-      "title": "Ensure Access to OS Root Directory Is Denied by Default",
+      "title": "Access to OS Root Directory must be Denied by Default",
       "props": [
        {
         "name": "label",
@@ -1479,14 +1479,14 @@
        {
         "id": "cis_apache-3.13_stmt",
         "name": "statement",
-        "prose": "Ensure Access to OS Root Directory Is Denied by Default"
+        "prose": "Access to OS Root Directory must be Denied by Default"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.14",
-      "title": "Ensure Appropriate Directory Permissions on Document Root",
+      "title": "checked condition — Appropriate Directory Permissions on Document Root",
       "props": [
        {
         "name": "label",
@@ -1512,14 +1512,14 @@
        {
         "id": "cis_apache-3.14_stmt",
         "name": "statement",
-        "prose": "Ensure Appropriate Directory Permissions on Document Root"
+        "prose": "checked condition — Appropriate Directory Permissions on Document Root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.15",
-      "title": "Ensure Operations on Files Are Limited to Serving",
+      "title": "Operations on Files must be Limited to Serving",
       "props": [
        {
         "name": "label",
@@ -1545,14 +1545,14 @@
        {
         "id": "cis_apache-3.15_stmt",
         "name": "statement",
-        "prose": "Ensure Operations on Files Are Limited to Serving"
+        "prose": "Operations on Files must be Limited to Serving"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.16",
-      "title": "Ensure Default Web Content Is Removed",
+      "title": "Default Web Content must be Removed",
       "props": [
        {
         "name": "label",
@@ -1578,14 +1578,14 @@
        {
         "id": "cis_apache-3.16_stmt",
         "name": "statement",
-        "prose": "Ensure Default Web Content Is Removed"
+        "prose": "Default Web Content must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.17",
-      "title": "Ensure Access to .ht* Files Is Restricted",
+      "title": "Access to .ht* Files must be Restricted",
       "props": [
        {
         "name": "label",
@@ -1611,14 +1611,14 @@
        {
         "id": "cis_apache-3.17_stmt",
         "name": "statement",
-        "prose": "Ensure Access to .ht* Files Is Restricted"
+        "prose": "Access to .ht* Files must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.18",
-      "title": "Ensure Directory Browsing Is Disabled",
+      "title": "Directory Browsing must be turned off",
       "props": [
        {
         "name": "label",
@@ -1644,14 +1644,14 @@
        {
         "id": "cis_apache-3.18_stmt",
         "name": "statement",
-        "prose": "Ensure Directory Browsing Is Disabled"
+        "prose": "Directory Browsing must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.19",
-      "title": "Ensure Options for Files Are Restricted",
+      "title": "Options for Files must be Restricted",
       "props": [
        {
         "name": "label",
@@ -1677,14 +1677,14 @@
        {
         "id": "cis_apache-3.19_stmt",
         "name": "statement",
-        "prose": "Ensure Options for Files Are Restricted"
+        "prose": "Options for Files must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.20",
-      "title": "Ensure Access to Inappropriate File Extensions Is Restricted",
+      "title": "Access to Inappropriate File Extensions must be Restricted",
       "props": [
        {
         "name": "label",
@@ -1710,14 +1710,14 @@
        {
         "id": "cis_apache-3.20_stmt",
         "name": "statement",
-        "prose": "Ensure Access to Inappropriate File Extensions Is Restricted"
+        "prose": "Access to Inappropriate File Extensions must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.21",
-      "title": "Ensure Default CGI Content printenv Script Is Removed",
+      "title": "Default CGI Content printenv Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -1743,14 +1743,14 @@
        {
         "id": "cis_apache-3.21_stmt",
         "name": "statement",
-        "prose": "Ensure Default CGI Content printenv Script Is Removed"
+        "prose": "Default CGI Content printenv Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.22",
-      "title": "Ensure Default CGI Content test-cgi Script Is Removed",
+      "title": "Default CGI Content test-cgi Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -1776,14 +1776,14 @@
        {
         "id": "cis_apache-3.22_stmt",
         "name": "statement",
-        "prose": "Ensure Default CGI Content test-cgi Script Is Removed"
+        "prose": "Default CGI Content test-cgi Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.23",
-      "title": "Ensure Default CGI Content handlers Script Is Removed",
+      "title": "Default CGI Content handlers Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -1809,14 +1809,14 @@
        {
         "id": "cis_apache-3.23_stmt",
         "name": "statement",
-        "prose": "Ensure Default CGI Content handlers Script Is Removed"
+        "prose": "Default CGI Content handlers Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-3.24",
-      "title": "Ensure the Test PHP Script Is Removed",
+      "title": "the Test PHP Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -1842,14 +1842,14 @@
        {
         "id": "cis_apache-3.24_stmt",
         "name": "statement",
-        "prose": "Ensure the Test PHP Script Is Removed"
+        "prose": "the Test PHP Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.1",
-      "title": "Ensure Access to OS Root Directory Is Denied by Default",
+      "title": "Access to OS Root Directory must be Denied by Default",
       "props": [
        {
         "name": "label",
@@ -1875,14 +1875,14 @@
        {
         "id": "cis_apache-4.1_stmt",
         "name": "statement",
-        "prose": "Ensure Access to OS Root Directory Is Denied by Default"
+        "prose": "Access to OS Root Directory must be Denied by Default"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.2",
-      "title": "Ensure Appropriate Directory Permissions on Document Root",
+      "title": "checked condition — Appropriate Directory Permissions on Document Root",
       "props": [
        {
         "name": "label",
@@ -1908,14 +1908,14 @@
        {
         "id": "cis_apache-4.2_stmt",
         "name": "statement",
-        "prose": "Ensure Appropriate Directory Permissions on Document Root"
+        "prose": "checked condition — Appropriate Directory Permissions on Document Root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.3",
-      "title": "Ensure OverRide Is Disabled for Document Root",
+      "title": "OverRide must be turned off for Document Root",
       "props": [
        {
         "name": "label",
@@ -1941,14 +1941,14 @@
        {
         "id": "cis_apache-4.3_stmt",
         "name": "statement",
-        "prose": "Ensure OverRide Is Disabled for Document Root"
+        "prose": "OverRide must be turned off for Document Root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.4",
-      "title": "Ensure Default HTML Content Is Removed",
+      "title": "Default HTML Content must be Removed",
       "props": [
        {
         "name": "label",
@@ -1974,14 +1974,14 @@
        {
         "id": "cis_apache-4.4_stmt",
         "name": "statement",
-        "prose": "Ensure Default HTML Content Is Removed"
+        "prose": "Default HTML Content must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.5",
-      "title": "Ensure the Default CGI Content Is Removed",
+      "title": "the Default CGI Content must be Removed",
       "props": [
        {
         "name": "label",
@@ -2007,14 +2007,14 @@
        {
         "id": "cis_apache-4.5_stmt",
         "name": "statement",
-        "prose": "Ensure the Default CGI Content Is Removed"
+        "prose": "the Default CGI Content must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.6",
-      "title": "Ensure Access to .ht* Files Is Restricted",
+      "title": "Access to .ht* Files must be Restricted",
       "props": [
        {
         "name": "label",
@@ -2040,14 +2040,14 @@
        {
         "id": "cis_apache-4.6_stmt",
         "name": "statement",
-        "prose": "Ensure Access to .ht* Files Is Restricted"
+        "prose": "Access to .ht* Files must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.7",
-      "title": "Ensure HTTP Request Methods Are Restricted",
+      "title": "HTTP Request Methods must be Restricted",
       "props": [
        {
         "name": "label",
@@ -2073,14 +2073,14 @@
        {
         "id": "cis_apache-4.7_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP Request Methods Are Restricted"
+        "prose": "HTTP Request Methods must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.8",
-      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "title": "the HTTP TRACE Method must be turned off",
       "props": [
        {
         "name": "label",
@@ -2106,14 +2106,14 @@
        {
         "id": "cis_apache-4.8_stmt",
         "name": "statement",
-        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+        "prose": "the HTTP TRACE Method must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.9",
-      "title": "Ensure Old Backup and Include Files Are Removed",
+      "title": "Old Backup and Include Files must be Removed",
       "props": [
        {
         "name": "label",
@@ -2139,14 +2139,14 @@
        {
         "id": "cis_apache-4.9_stmt",
         "name": "statement",
-        "prose": "Ensure Old Backup and Include Files Are Removed"
+        "prose": "Old Backup and Include Files must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.10",
-      "title": "Ensure Access to Inappropriate File Extensions Is Restricted",
+      "title": "Access to Inappropriate File Extensions must be Restricted",
       "props": [
        {
         "name": "label",
@@ -2172,14 +2172,14 @@
        {
         "id": "cis_apache-4.10_stmt",
         "name": "statement",
-        "prose": "Ensure Access to Inappropriate File Extensions Is Restricted"
+        "prose": "Access to Inappropriate File Extensions must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.11",
-      "title": "Ensure IP-based Access Control Is Implemented",
+      "title": "IP-based Access Control must be Implemented",
       "props": [
        {
         "name": "label",
@@ -2205,14 +2205,14 @@
        {
         "id": "cis_apache-4.11_stmt",
         "name": "statement",
-        "prose": "Ensure IP-based Access Control Is Implemented"
+        "prose": "IP-based Access Control must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.12",
-      "title": "Ensure mod_authz_core Is Used for Authorization",
+      "title": "mod_authz_core must be Used for Authorization",
       "props": [
        {
         "name": "label",
@@ -2238,14 +2238,14 @@
        {
         "id": "cis_apache-4.12_stmt",
         "name": "statement",
-        "prose": "Ensure mod_authz_core Is Used for Authorization"
+        "prose": "mod_authz_core must be Used for Authorization"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.13",
-      "title": "Ensure the Require Directive Is Used",
+      "title": "the Require Directive must be Used",
       "props": [
        {
         "name": "label",
@@ -2271,14 +2271,14 @@
        {
         "id": "cis_apache-4.13_stmt",
         "name": "statement",
-        "prose": "Ensure the Require Directive Is Used"
+        "prose": "the Require Directive must be Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.14",
-      "title": "Ensure Require all denied Is Set for Sensitive Directories",
+      "title": "Require all denied must be set for Sensitive Directories",
       "props": [
        {
         "name": "label",
@@ -2304,14 +2304,14 @@
        {
         "id": "cis_apache-4.14_stmt",
         "name": "statement",
-        "prose": "Ensure Require all denied Is Set for Sensitive Directories"
+        "prose": "Require all denied must be set for Sensitive Directories"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.15",
-      "title": "Ensure Options for Files Are Restricted",
+      "title": "Options for Files must be Restricted",
       "props": [
        {
         "name": "label",
@@ -2337,14 +2337,14 @@
        {
         "id": "cis_apache-4.15_stmt",
         "name": "statement",
-        "prose": "Ensure Options for Files Are Restricted"
+        "prose": "Options for Files must be Restricted"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.16",
-      "title": "Ensure Directory Browsing Is Disabled",
+      "title": "Directory Browsing must be turned off",
       "props": [
        {
         "name": "label",
@@ -2370,14 +2370,14 @@
        {
         "id": "cis_apache-4.16_stmt",
         "name": "statement",
-        "prose": "Ensure Directory Browsing Is Disabled"
+        "prose": "Directory Browsing must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.17",
-      "title": "Ensure Server Side Includes Are Disabled",
+      "title": "Server Side Includes must be turned off",
       "props": [
        {
         "name": "label",
@@ -2403,14 +2403,14 @@
        {
         "id": "cis_apache-4.17_stmt",
         "name": "statement",
-        "prose": "Ensure Server Side Includes Are Disabled"
+        "prose": "Server Side Includes must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.18",
-      "title": "Ensure CGI Execution Is Disabled",
+      "title": "CGI Execution must be turned off",
       "props": [
        {
         "name": "label",
@@ -2436,14 +2436,14 @@
        {
         "id": "cis_apache-4.18_stmt",
         "name": "statement",
-        "prose": "Ensure CGI Execution Is Disabled"
+        "prose": "CGI Execution must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.19",
-      "title": "Ensure FollowSymLinks Is Disabled",
+      "title": "FollowSymLinks must be turned off",
       "props": [
        {
         "name": "label",
@@ -2469,14 +2469,14 @@
        {
         "id": "cis_apache-4.19_stmt",
         "name": "statement",
-        "prose": "Ensure FollowSymLinks Is Disabled"
+        "prose": "FollowSymLinks must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.20",
-      "title": "Ensure Access Control Lists Are Implemented",
+      "title": "Access Control Lists must be Implemented",
       "props": [
        {
         "name": "label",
@@ -2502,14 +2502,14 @@
        {
         "id": "cis_apache-4.20_stmt",
         "name": "statement",
-        "prose": "Ensure Access Control Lists Are Implemented"
+        "prose": "Access Control Lists must be Implemented"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.21",
-      "title": "Ensure Authentication Is Required for Administrative Areas",
+      "title": "Authentication must be Required for Administrative Areas",
       "props": [
        {
         "name": "label",
@@ -2535,14 +2535,14 @@
        {
         "id": "cis_apache-4.21_stmt",
         "name": "statement",
-        "prose": "Ensure Authentication Is Required for Administrative Areas"
+        "prose": "Authentication must be Required for Administrative Areas"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.22",
-      "title": "Ensure Strong Password Policy Is Enforced",
+      "title": "Strong Password Policy must be Enforced",
       "props": [
        {
         "name": "label",
@@ -2568,14 +2568,14 @@
        {
         "id": "cis_apache-4.22_stmt",
         "name": "statement",
-        "prose": "Ensure Strong Password Policy Is Enforced"
+        "prose": "Strong Password Policy must be Enforced"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.23",
-      "title": "Ensure Session Management Is Secure",
+      "title": "Session Management must be Secure",
       "props": [
        {
         "name": "label",
@@ -2601,14 +2601,14 @@
        {
         "id": "cis_apache-4.23_stmt",
         "name": "statement",
-        "prose": "Ensure Session Management Is Secure"
+        "prose": "Session Management must be Secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.24",
-      "title": "Ensure Error Pages Don't Reveal Sensitive Information",
+      "title": "checked condition — Error Pages Don't Reveal Sensitive Information",
       "props": [
        {
         "name": "label",
@@ -2634,14 +2634,14 @@
        {
         "id": "cis_apache-4.24_stmt",
         "name": "statement",
-        "prose": "Ensure Error Pages Don't Reveal Sensitive Information"
+        "prose": "checked condition — Error Pages Don't Reveal Sensitive Information"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.25",
-      "title": "Ensure File Upload Restrictions Are in Place",
+      "title": "File Upload Restrictions must be in Place",
       "props": [
        {
         "name": "label",
@@ -2667,14 +2667,14 @@
        {
         "id": "cis_apache-4.25_stmt",
         "name": "statement",
-        "prose": "Ensure File Upload Restrictions Are in Place"
+        "prose": "File Upload Restrictions must be in Place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.26",
-      "title": "Ensure Request Size Limits Are Configured",
+      "title": "Request Size Limits must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2700,14 +2700,14 @@
        {
         "id": "cis_apache-4.26_stmt",
         "name": "statement",
-        "prose": "Ensure Request Size Limits Are Configured"
+        "prose": "Request Size Limits must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.27",
-      "title": "Ensure Timeout Values Are Properly Set",
+      "title": "Timeout Values must be Properly Set",
       "props": [
        {
         "name": "label",
@@ -2733,14 +2733,14 @@
        {
         "id": "cis_apache-4.27_stmt",
         "name": "statement",
-        "prose": "Ensure Timeout Values Are Properly Set"
+        "prose": "Timeout Values must be Properly Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-4.28",
-      "title": "Ensure Access Logs Capture Required Information",
+      "title": "checked condition — Access Logs Capture Required Information",
       "props": [
        {
         "name": "label",
@@ -2766,14 +2766,14 @@
        {
         "id": "cis_apache-4.28_stmt",
         "name": "statement",
-        "prose": "Ensure Access Logs Capture Required Information"
+        "prose": "checked condition — Access Logs Capture Required Information"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.1",
-      "title": "Ensure mod_setenvif Is Enabled",
+      "title": "mod_setenvif must be turned on",
       "props": [
        {
         "name": "label",
@@ -2799,14 +2799,14 @@
        {
         "id": "cis_apache-5.1_stmt",
         "name": "statement",
-        "prose": "Ensure mod_setenvif Is Enabled"
+        "prose": "mod_setenvif must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.2",
-      "title": "Ensure mod_headers Is Enabled",
+      "title": "mod_headers must be turned on",
       "props": [
        {
         "name": "label",
@@ -2832,14 +2832,14 @@
        {
         "id": "cis_apache-5.2_stmt",
         "name": "statement",
-        "prose": "Ensure mod_headers Is Enabled"
+        "prose": "mod_headers must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.3",
-      "title": "Ensure Security Related Headers Are Added",
+      "title": "Security Related Headers must be Added",
       "props": [
        {
         "name": "label",
@@ -2865,14 +2865,14 @@
        {
         "id": "cis_apache-5.3_stmt",
         "name": "statement",
-        "prose": "Ensure Security Related Headers Are Added"
+        "prose": "Security Related Headers must be Added"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.4",
-      "title": "Ensure Server Tokens Directive Is Configured",
+      "title": "Server Tokens Directive must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2898,14 +2898,14 @@
        {
         "id": "cis_apache-5.4_stmt",
         "name": "statement",
-        "prose": "Ensure Server Tokens Directive Is Configured"
+        "prose": "Server Tokens Directive must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.5",
-      "title": "Ensure Server Signature Directive Is Configured",
+      "title": "Server Signature Directive must be explicitly configured",
       "props": [
        {
         "name": "label",
@@ -2931,14 +2931,14 @@
        {
         "id": "cis_apache-5.5_stmt",
         "name": "statement",
-        "prose": "Ensure Server Signature Directive Is Configured"
+        "prose": "Server Signature Directive must be explicitly configured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.6",
-      "title": "Ensure All Default Apache Content Is Removed",
+      "title": "All Default Apache Content must be Removed",
       "props": [
        {
         "name": "label",
@@ -2964,14 +2964,14 @@
        {
         "id": "cis_apache-5.6_stmt",
         "name": "statement",
-        "prose": "Ensure All Default Apache Content Is Removed"
+        "prose": "All Default Apache Content must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.7",
-      "title": "Ensure the Default Welcome Page Is Removed",
+      "title": "the Default Welcome Page must be Removed",
       "props": [
        {
         "name": "label",
@@ -2997,14 +2997,14 @@
        {
         "id": "cis_apache-5.7_stmt",
         "name": "statement",
-        "prose": "Ensure the Default Welcome Page Is Removed"
+        "prose": "the Default Welcome Page must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.8",
-      "title": "Ensure Default Error Pages Do Not Reference the Server",
+      "title": "checked condition — Default Error Pages Do Not Reference the Server",
       "props": [
        {
         "name": "label",
@@ -3030,14 +3030,14 @@
        {
         "id": "cis_apache-5.8_stmt",
         "name": "statement",
-        "prose": "Ensure Default Error Pages Do Not Reference the Server"
+        "prose": "checked condition — Default Error Pages Do Not Reference the Server"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.9",
-      "title": "Ensure Default CGI Content printenv Script Is Removed",
+      "title": "Default CGI Content printenv Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -3063,14 +3063,14 @@
        {
         "id": "cis_apache-5.9_stmt",
         "name": "statement",
-        "prose": "Ensure Default CGI Content printenv Script Is Removed"
+        "prose": "Default CGI Content printenv Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.10",
-      "title": "Ensure Default CGI Content test-cgi Script Is Removed",
+      "title": "Default CGI Content test-cgi Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -3096,14 +3096,14 @@
        {
         "id": "cis_apache-5.10_stmt",
         "name": "statement",
-        "prose": "Ensure Default CGI Content test-cgi Script Is Removed"
+        "prose": "Default CGI Content test-cgi Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.11",
-      "title": "Ensure Test PHP Script Is Removed",
+      "title": "Test PHP Script must be Removed",
       "props": [
        {
         "name": "label",
@@ -3129,14 +3129,14 @@
        {
         "id": "cis_apache-5.11_stmt",
         "name": "statement",
-        "prose": "Ensure Test PHP Script Is Removed"
+        "prose": "Test PHP Script must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.12",
-      "title": "Ensure the HTTP TRACE Method Is Disabled",
+      "title": "the HTTP TRACE Method must be turned off",
       "props": [
        {
         "name": "label",
@@ -3162,14 +3162,14 @@
        {
         "id": "cis_apache-5.12_stmt",
         "name": "statement",
-        "prose": "Ensure the HTTP TRACE Method Is Disabled"
+        "prose": "the HTTP TRACE Method must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.13",
-      "title": "Ensure mod_include Is Disabled",
+      "title": "mod_include must be turned off",
       "props": [
        {
         "name": "label",
@@ -3195,14 +3195,14 @@
        {
         "id": "cis_apache-5.13_stmt",
         "name": "statement",
-        "prose": "Ensure mod_include Is Disabled"
+        "prose": "mod_include must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.14",
-      "title": "Ensure mod_cgi Is Disabled",
+      "title": "mod_cgi must be turned off",
       "props": [
        {
         "name": "label",
@@ -3228,14 +3228,14 @@
        {
         "id": "cis_apache-5.14_stmt",
         "name": "statement",
-        "prose": "Ensure mod_cgi Is Disabled"
+        "prose": "mod_cgi must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.15",
-      "title": "Ensure mod_cgid Is Disabled",
+      "title": "mod_cgid must be turned off",
       "props": [
        {
         "name": "label",
@@ -3261,14 +3261,14 @@
        {
         "id": "cis_apache-5.15_stmt",
         "name": "statement",
-        "prose": "Ensure mod_cgid Is Disabled"
+        "prose": "mod_cgid must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.16",
-      "title": "Ensure mod_negotiation Is Disabled",
+      "title": "mod_negotiation must be turned off",
       "props": [
        {
         "name": "label",
@@ -3294,14 +3294,14 @@
        {
         "id": "cis_apache-5.16_stmt",
         "name": "statement",
-        "prose": "Ensure mod_negotiation Is Disabled"
+        "prose": "mod_negotiation must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.17",
-      "title": "Ensure mod_autoindex Is Disabled",
+      "title": "mod_autoindex must be turned off",
       "props": [
        {
         "name": "label",
@@ -3327,14 +3327,14 @@
        {
         "id": "cis_apache-5.17_stmt",
         "name": "statement",
-        "prose": "Ensure mod_autoindex Is Disabled"
+        "prose": "mod_autoindex must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.18",
-      "title": "Ensure mod_status Is Disabled",
+      "title": "mod_status must be turned off",
       "props": [
        {
         "name": "label",
@@ -3360,14 +3360,14 @@
        {
         "id": "cis_apache-5.18_stmt",
         "name": "statement",
-        "prose": "Ensure mod_status Is Disabled"
+        "prose": "mod_status must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.19",
-      "title": "Ensure mod_info Is Disabled",
+      "title": "mod_info must be turned off",
       "props": [
        {
         "name": "label",
@@ -3393,14 +3393,14 @@
        {
         "id": "cis_apache-5.19_stmt",
         "name": "statement",
-        "prose": "Ensure mod_info Is Disabled"
+        "prose": "mod_info must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.20",
-      "title": "Ensure mod_userdir Is Disabled",
+      "title": "mod_userdir must be turned off",
       "props": [
        {
         "name": "label",
@@ -3426,14 +3426,14 @@
        {
         "id": "cis_apache-5.20_stmt",
         "name": "statement",
-        "prose": "Ensure mod_userdir Is Disabled"
+        "prose": "mod_userdir must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.21",
-      "title": "Ensure mod_rewrite Logging Is Enabled If Used",
+      "title": "mod_rewrite Logging must be turned on If Used",
       "props": [
        {
         "name": "label",
@@ -3459,14 +3459,14 @@
        {
         "id": "cis_apache-5.21_stmt",
         "name": "statement",
-        "prose": "Ensure mod_rewrite Logging Is Enabled If Used"
+        "prose": "mod_rewrite Logging must be turned on If Used"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-5.22",
-      "title": "Ensure Unnecessary File Extensions Are Blocked",
+      "title": "Unnecessary File Extensions must be Blocked",
       "props": [
        {
         "name": "label",
@@ -3492,14 +3492,14 @@
        {
         "id": "cis_apache-5.22_stmt",
         "name": "statement",
-        "prose": "Ensure Unnecessary File Extensions Are Blocked"
+        "prose": "Unnecessary File Extensions must be Blocked"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.1",
-      "title": "Ensure mod_ssl Is Enabled",
+      "title": "mod_ssl must be turned on",
       "props": [
        {
         "name": "label",
@@ -3525,14 +3525,14 @@
        {
         "id": "cis_apache-6.1_stmt",
         "name": "statement",
-        "prose": "Ensure mod_ssl Is Enabled"
+        "prose": "mod_ssl must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.2",
-      "title": "Ensure a Valid Trusted Certificate Is Installed",
+      "title": "a Valid Trusted Certificate must be present",
       "props": [
        {
         "name": "label",
@@ -3558,14 +3558,14 @@
        {
         "id": "cis_apache-6.2_stmt",
         "name": "statement",
-        "prose": "Ensure a Valid Trusted Certificate Is Installed"
+        "prose": "a Valid Trusted Certificate must be present"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.3",
-      "title": "Ensure the Server's Private Key Is Protected",
+      "title": "the Server's Private Key must be Protected",
       "props": [
        {
         "name": "label",
@@ -3591,14 +3591,14 @@
        {
         "id": "cis_apache-6.3_stmt",
         "name": "statement",
-        "prose": "Ensure the Server's Private Key Is Protected"
+        "prose": "the Server's Private Key must be Protected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.4",
-      "title": "Ensure Insecure SSL Renegotiation Is Not Enabled",
+      "title": "Insecure SSL Renegotiation must stay off",
       "props": [
        {
         "name": "label",
@@ -3624,14 +3624,14 @@
        {
         "id": "cis_apache-6.4_stmt",
         "name": "statement",
-        "prose": "Ensure Insecure SSL Renegotiation Is Not Enabled"
+        "prose": "Insecure SSL Renegotiation must stay off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.5",
-      "title": "Ensure Weak SSL/TLS Ciphers Are Disabled",
+      "title": "Weak SSL/TLS Ciphers must be turned off",
       "props": [
        {
         "name": "label",
@@ -3657,14 +3657,14 @@
        {
         "id": "cis_apache-6.5_stmt",
         "name": "statement",
-        "prose": "Ensure Weak SSL/TLS Ciphers Are Disabled"
+        "prose": "Weak SSL/TLS Ciphers must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.6",
-      "title": "Ensure Insecure SSL/TLS Protocols Are Disabled",
+      "title": "Insecure SSL/TLS Protocols must be turned off",
       "props": [
        {
         "name": "label",
@@ -3690,14 +3690,14 @@
        {
         "id": "cis_apache-6.6_stmt",
         "name": "statement",
-        "prose": "Ensure Insecure SSL/TLS Protocols Are Disabled"
+        "prose": "Insecure SSL/TLS Protocols must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.7",
-      "title": "Ensure SSL Compression Is Disabled",
+      "title": "SSL Compression must be turned off",
       "props": [
        {
         "name": "label",
@@ -3723,14 +3723,14 @@
        {
         "id": "cis_apache-6.7_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Compression Is Disabled"
+        "prose": "SSL Compression must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.8",
-      "title": "Ensure Medium Strength SSL/TLS Ciphers Are Disabled",
+      "title": "Medium Strength SSL/TLS Ciphers must be turned off",
       "props": [
        {
         "name": "label",
@@ -3756,14 +3756,14 @@
        {
         "id": "cis_apache-6.8_stmt",
         "name": "statement",
-        "prose": "Ensure Medium Strength SSL/TLS Ciphers Are Disabled"
+        "prose": "Medium Strength SSL/TLS Ciphers must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.9",
-      "title": "Ensure All Web Content Is Accessed via HTTPS",
+      "title": "All Web Content must be Accessed via HTTPS",
       "props": [
        {
         "name": "label",
@@ -3789,14 +3789,14 @@
        {
         "id": "cis_apache-6.9_stmt",
         "name": "statement",
-        "prose": "Ensure All Web Content Is Accessed via HTTPS"
+        "prose": "All Web Content must be Accessed via HTTPS"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.10",
-      "title": "Ensure OCSP Stapling Is Enabled",
+      "title": "OCSP Stapling must be turned on",
       "props": [
        {
         "name": "label",
@@ -3822,14 +3822,14 @@
        {
         "id": "cis_apache-6.10_stmt",
         "name": "statement",
-        "prose": "Ensure OCSP Stapling Is Enabled"
+        "prose": "OCSP Stapling must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.11",
-      "title": "Ensure HTTP Strict Transport Security Is Enabled",
+      "title": "HTTP Strict Transport Security must be turned on",
       "props": [
        {
         "name": "label",
@@ -3855,14 +3855,14 @@
        {
         "id": "cis_apache-6.11_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP Strict Transport Security Is Enabled"
+        "prose": "HTTP Strict Transport Security must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.12",
-      "title": "Ensure Only Cipher Suites That Provide Authentication Are Enabled",
+      "title": "Only Cipher Suites That Provide Authentication must be turned on",
       "props": [
        {
         "name": "label",
@@ -3888,14 +3888,14 @@
        {
         "id": "cis_apache-6.12_stmt",
         "name": "statement",
-        "prose": "Ensure Only Cipher Suites That Provide Authentication Are Enabled"
+        "prose": "Only Cipher Suites That Provide Authentication must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.13",
-      "title": "Ensure Only Cipher Suites That Provide Encryption Are Enabled",
+      "title": "Only Cipher Suites That Provide Encryption must be turned on",
       "props": [
        {
         "name": "label",
@@ -3921,14 +3921,14 @@
        {
         "id": "cis_apache-6.13_stmt",
         "name": "statement",
-        "prose": "Ensure Only Cipher Suites That Provide Encryption Are Enabled"
+        "prose": "Only Cipher Suites That Provide Encryption must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.14",
-      "title": "Ensure HTTP Public Key Pinning Is Considered",
+      "title": "HTTP Public Key Pinning must be Considered",
       "props": [
        {
         "name": "label",
@@ -3954,14 +3954,14 @@
        {
         "id": "cis_apache-6.14_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP Public Key Pinning Is Considered"
+        "prose": "HTTP Public Key Pinning must be Considered"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.15",
-      "title": "Ensure the TLS 1.3 Protocol Is Enabled",
+      "title": "the TLS 1.3 Protocol must be turned on",
       "props": [
        {
         "name": "label",
@@ -3987,14 +3987,14 @@
        {
         "id": "cis_apache-6.15_stmt",
         "name": "statement",
-        "prose": "Ensure the TLS 1.3 Protocol Is Enabled"
+        "prose": "the TLS 1.3 Protocol must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-6.16",
-      "title": "Ensure SSL Session Configuration Is Secure",
+      "title": "SSL Session Configuration must be Secure",
       "props": [
        {
         "name": "label",
@@ -4020,14 +4020,14 @@
        {
         "id": "cis_apache-6.16_stmt",
         "name": "statement",
-        "prose": "Ensure SSL Session Configuration Is Secure"
+        "prose": "SSL Session Configuration must be Secure"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.1",
-      "title": "Ensure ServerTokens Is Set to 'Prod' or 'ProductOnly'",
+      "title": "required value of ServerTokens is 'Prod' or 'ProductOnly'",
       "props": [
        {
         "name": "label",
@@ -4053,14 +4053,14 @@
        {
         "id": "cis_apache-7.1_stmt",
         "name": "statement",
-        "prose": "Ensure ServerTokens Is Set to 'Prod' or 'ProductOnly'"
+        "prose": "required value of ServerTokens is 'Prod' or 'ProductOnly'"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.2",
-      "title": "Ensure ServerSignature Is Not Enabled",
+      "title": "ServerSignature must stay off",
       "props": [
        {
         "name": "label",
@@ -4086,14 +4086,14 @@
        {
         "id": "cis_apache-7.2_stmt",
         "name": "statement",
-        "prose": "Ensure ServerSignature Is Not Enabled"
+        "prose": "ServerSignature must stay off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.3",
-      "title": "Ensure All Default Apache Content Is Removed",
+      "title": "All Default Apache Content must be Removed",
       "props": [
        {
         "name": "label",
@@ -4119,14 +4119,14 @@
        {
         "id": "cis_apache-7.3_stmt",
         "name": "statement",
-        "prose": "Ensure All Default Apache Content Is Removed"
+        "prose": "All Default Apache Content must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.4",
-      "title": "Ensure ETag Response Header Fields Do Not Include Inodes",
+      "title": "checked condition — ETag Response Header Fields Do Not Include Inodes",
       "props": [
        {
         "name": "label",
@@ -4152,14 +4152,14 @@
        {
         "id": "cis_apache-7.4_stmt",
         "name": "statement",
-        "prose": "Ensure ETag Response Header Fields Do Not Include Inodes"
+        "prose": "checked condition — ETag Response Header Fields Do Not Include Inodes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.5",
-      "title": "Ensure the Banner Is Modified",
+      "title": "the Banner must be Modified",
       "props": [
        {
         "name": "label",
@@ -4185,14 +4185,14 @@
        {
         "id": "cis_apache-7.5_stmt",
         "name": "statement",
-        "prose": "Ensure the Banner Is Modified"
+        "prose": "the Banner must be Modified"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.6",
-      "title": "Ensure Error Response Pages Do Not Disclose Information",
+      "title": "checked condition — Error Response Pages Do Not Disclose Information",
       "props": [
        {
         "name": "label",
@@ -4218,14 +4218,14 @@
        {
         "id": "cis_apache-7.6_stmt",
         "name": "statement",
-        "prose": "Ensure Error Response Pages Do Not Disclose Information"
+        "prose": "checked condition — Error Response Pages Do Not Disclose Information"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.7",
-      "title": "Ensure Debug Information Is Not Enabled",
+      "title": "Debug Information must stay off",
       "props": [
        {
         "name": "label",
@@ -4251,14 +4251,14 @@
        {
         "id": "cis_apache-7.7_stmt",
         "name": "statement",
-        "prose": "Ensure Debug Information Is Not Enabled"
+        "prose": "Debug Information must stay off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.8",
-      "title": "Ensure Application Specific Headers Are Removed",
+      "title": "Application Specific Headers must be Removed",
       "props": [
        {
         "name": "label",
@@ -4284,14 +4284,14 @@
        {
         "id": "cis_apache-7.8_stmt",
         "name": "statement",
-        "prose": "Ensure Application Specific Headers Are Removed"
+        "prose": "Application Specific Headers must be Removed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.9",
-      "title": "Ensure HTTP Response Headers Don't Expose Apache Version",
+      "title": "checked condition — HTTP Response Headers Don't Expose Apache Version",
       "props": [
        {
         "name": "label",
@@ -4317,14 +4317,14 @@
        {
         "id": "cis_apache-7.9_stmt",
         "name": "statement",
-        "prose": "Ensure HTTP Response Headers Don't Expose Apache Version"
+        "prose": "checked condition — HTTP Response Headers Don't Expose Apache Version"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.10",
-      "title": "Ensure Request Debugging Is Disabled",
+      "title": "Request Debugging must be turned off",
       "props": [
        {
         "name": "label",
@@ -4350,14 +4350,14 @@
        {
         "id": "cis_apache-7.10_stmt",
         "name": "statement",
-        "prose": "Ensure Request Debugging Is Disabled"
+        "prose": "Request Debugging must be turned off"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.11",
-      "title": "Ensure Directory Listing Headers Are Suppressed",
+      "title": "Directory Listing Headers must be Suppressed",
       "props": [
        {
         "name": "label",
@@ -4383,14 +4383,14 @@
        {
         "id": "cis_apache-7.11_stmt",
         "name": "statement",
-        "prose": "Ensure Directory Listing Headers Are Suppressed"
+        "prose": "Directory Listing Headers must be Suppressed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.12",
-      "title": "Ensure Server Status Information Is Not Accessible",
+      "title": "Server Status Information must be Not Accessible",
       "props": [
        {
         "name": "label",
@@ -4416,14 +4416,14 @@
        {
         "id": "cis_apache-7.12_stmt",
         "name": "statement",
-        "prose": "Ensure Server Status Information Is Not Accessible"
+        "prose": "Server Status Information must be Not Accessible"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.13",
-      "title": "Ensure Server Information Is Not Accessible",
+      "title": "Server Information must be Not Accessible",
       "props": [
        {
         "name": "label",
@@ -4449,14 +4449,14 @@
        {
         "id": "cis_apache-7.13_stmt",
         "name": "statement",
-        "prose": "Ensure Server Information Is Not Accessible"
+        "prose": "Server Information must be Not Accessible"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-7.14",
-      "title": "Ensure Filesystem Information Is Not Disclosed",
+      "title": "Filesystem Information must be Not Disclosed",
       "props": [
        {
         "name": "label",
@@ -4482,14 +4482,14 @@
        {
         "id": "cis_apache-7.14_stmt",
         "name": "statement",
-        "prose": "Ensure Filesystem Information Is Not Disclosed"
+        "prose": "Filesystem Information must be Not Disclosed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.1",
-      "title": "Ensure mod_log_config Is Enabled",
+      "title": "mod_log_config must be turned on",
       "props": [
        {
         "name": "label",
@@ -4515,14 +4515,14 @@
        {
         "id": "cis_apache-8.1_stmt",
         "name": "statement",
-        "prose": "Ensure mod_log_config Is Enabled"
+        "prose": "mod_log_config must be turned on"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.2",
-      "title": "Ensure a Logging Policy Exists",
+      "title": "checked condition — a Logging Policy Exists",
       "props": [
        {
         "name": "label",
@@ -4548,14 +4548,14 @@
        {
         "id": "cis_apache-8.2_stmt",
         "name": "statement",
-        "prose": "Ensure a Logging Policy Exists"
+        "prose": "checked condition — a Logging Policy Exists"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.3",
-      "title": "Ensure the Error Log Filename and Location Are Configured Correctly",
+      "title": "the Error Log Filename and Location must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -4581,14 +4581,14 @@
        {
         "id": "cis_apache-8.3_stmt",
         "name": "statement",
-        "prose": "Ensure the Error Log Filename and Location Are Configured Correctly"
+        "prose": "the Error Log Filename and Location must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.4",
-      "title": "Ensure the Access Log Filename and Location Are Configured Correctly",
+      "title": "the Access Log Filename and Location must match the approved configuration",
       "props": [
        {
         "name": "label",
@@ -4614,14 +4614,14 @@
        {
         "id": "cis_apache-8.4_stmt",
         "name": "statement",
-        "prose": "Ensure the Access Log Filename and Location Are Configured Correctly"
+        "prose": "the Access Log Filename and Location must match the approved configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.5",
-      "title": "Ensure Appropriate Log Level Is Set",
+      "title": "Appropriate Log Level must be Set",
       "props": [
        {
         "name": "label",
@@ -4647,14 +4647,14 @@
        {
         "id": "cis_apache-8.5_stmt",
         "name": "statement",
-        "prose": "Ensure Appropriate Log Level Is Set"
+        "prose": "Appropriate Log Level must be Set"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.6",
-      "title": "Ensure Log Storage and Rotation Policy Is in Place",
+      "title": "Log Storage and Rotation Policy must be in Place",
       "props": [
        {
         "name": "label",
@@ -4680,14 +4680,14 @@
        {
         "id": "cis_apache-8.6_stmt",
         "name": "statement",
-        "prose": "Ensure Log Storage and Rotation Policy Is in Place"
+        "prose": "Log Storage and Rotation Policy must be in Place"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.7",
-      "title": "Ensure Log Files Are Properly Secured",
+      "title": "Log Files must be Properly Secured",
       "props": [
        {
         "name": "label",
@@ -4713,14 +4713,14 @@
        {
         "id": "cis_apache-8.7_stmt",
         "name": "statement",
-        "prose": "Ensure Log Files Are Properly Secured"
+        "prose": "Log Files must be Properly Secured"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_apache-8.8",
-      "title": "Ensure Non-Printable ASCII Characters Are Escaped in Logs",
+      "title": "Non-Printable ASCII Characters must be Escaped in Logs",
       "props": [
        {
         "name": "label",
@@ -4746,7 +4746,7 @@
        {
         "id": "cis_apache-8.8_stmt",
         "name": "statement",
-        "prose": "Ensure Non-Printable ASCII Characters Are Escaped in Logs"
+        "prose": "Non-Printable ASCII Characters must be Escaped in Logs"
        }
       ],
       "class": "security"

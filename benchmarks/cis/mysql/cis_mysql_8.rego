@@ -164,28 +164,28 @@ logs_on_non_system_partitions if {
 # Section 2: MySQL Configuration
 mysql_configuration_violations := [v |
 	arrays := [
-		["2.1: Ensure 'local_infile' Is Disabled" | not local_infile_disabled],
-		["2.2: Ensure 'mysqld' Is Not Started with '--skip-grant-tables'" | not skip_grant_tables_disabled],
-		["2.3: Ensure 'mysqld' Is Not Started with '--skip-networking'" | not skip_networking_disabled],
-		["2.4: Ensure 'mysqld' Is Not Started with '--skip-show-database'" | not skip_show_database_disabled],
-		["2.5: Ensure 'symbolic-links' Is Disabled" | not symbolic_links_disabled],
-		["2.6: Ensure 'secure_file_priv' Is Not Empty" | not secure_file_priv_set],
-		["2.7: Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES'" | not strict_trans_tables_enabled],
-		["2.8: Ensure 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'" | not error_for_division_by_zero],
-		["2.9: Ensure 'sql_mode' Contains 'NO_AUTO_CREATE_USER'" | not no_auto_create_user],
-		["2.10: Ensure 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'" | not no_engine_substitution],
-		["2.11: Ensure 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'" | not only_full_group_by],
-		["2.12: Ensure 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'" | not no_auto_value_on_zero],
-		["2.13: Ensure Password Complexity Is In Place" | not password_complexity_enabled],
-		["2.14: Ensure Password Reuse Is Limited" | not password_reuse_limited],
-		["2.15: Ensure Password Expiration Is Less Than Or Equal To 90 Days" | not password_expiration_90_days],
-		["2.16: Ensure 'default_password_lifetime' Is Less Than Or Equal To 90" | not default_password_lifetime_90],
-		["2.17: Ensure 'validate_password_length' Is Configured" | not password_length_configured],
-		["2.18: Ensure 'validate_password_mixed_case_count' Is Configured" | not mixed_case_count_configured],
-		["2.19: Ensure 'validate_password_number_count' Is Configured" | not number_count_configured],
-		["2.20: Ensure 'validate_password_special_char_count' Is Configured" | not special_char_count_configured],
-		["2.21: Ensure No Wildcards In User Hostnames" | not no_wildcards_in_hostnames],
-		["2.22: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts]
+		["2.1: 'local_infile' must be turned off" | not local_infile_disabled],
+		["2.2: 'mysqld' must be Not Started with '--skip-grant-tables'" | not skip_grant_tables_disabled],
+		["2.3: 'mysqld' must be Not Started with '--skip-networking'" | not skip_networking_disabled],
+		["2.4: 'mysqld' must be Not Started with '--skip-show-database'" | not skip_show_database_disabled],
+		["2.5: 'symbolic-links' must be turned off" | not symbolic_links_disabled],
+		["2.6: 'secure_file_priv' must be Not Empty" | not secure_file_priv_set],
+		["2.7: checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES'" | not strict_trans_tables_enabled],
+		["2.8: checked condition — 'sql_mode' Contains 'ERROR_FOR_DIVISION_BY_ZERO'" | not error_for_division_by_zero],
+		["2.9: checked condition — 'sql_mode' Contains 'NO_AUTO_CREATE_USER'" | not no_auto_create_user],
+		["2.10: checked condition — 'sql_mode' Contains 'NO_ENGINE_SUBSTITUTION'" | not no_engine_substitution],
+		["2.11: checked condition — 'sql_mode' Contains 'ONLY_FULL_GROUP_BY'" | not only_full_group_by],
+		["2.12: checked condition — 'sql_mode' Contains 'NO_AUTO_VALUE_ON_ZERO'" | not no_auto_value_on_zero],
+		["2.13: Password Complexity must be In Place" | not password_complexity_enabled],
+		["2.14: Password Reuse must be limited to named principals" | not password_reuse_limited],
+		["2.15: Password Expiration must be at most 90 Days" | not password_expiration_90_days],
+		["2.16: 'default_password_lifetime' must be at most 90" | not default_password_lifetime_90],
+		["2.17: 'validate_password_length' must be explicitly configured" | not password_length_configured],
+		["2.18: 'validate_password_mixed_case_count' must be explicitly configured" | not mixed_case_count_configured],
+		["2.19: 'validate_password_number_count' must be explicitly configured" | not number_count_configured],
+		["2.20: 'validate_password_special_char_count' must be explicitly configured" | not special_char_count_configured],
+		["2.21: checked condition — No Wildcards In User Hostnames" | not no_wildcards_in_hostnames],
+		["2.22: checked condition — No Anonymous Accounts Exist" | not no_anonymous_accounts]
 	]
 	v := arrays[_][_]
 ]
@@ -295,18 +295,18 @@ no_anonymous_accounts if {
 # Section 3: File System Permissions
 filesystem_permissions_violations := [v |
 	arrays := [
-		["3.1: Ensure 'datadir' Has Appropriate Permissions" | not datadir_permissions_correct],
-		["3.2: Ensure 'log_bin_basename' Files Have Appropriate Permissions" | not log_bin_permissions_correct],
-		["3.3: Ensure 'log_error' Has Appropriate Permissions" | not log_error_permissions_correct],
-		["3.4: Ensure 'slow_query_log' Has Appropriate Permissions" | not slow_query_log_permissions_correct],
-		["3.5: Ensure 'relay_log_basename' Files Have Appropriate Permissions" | not relay_log_permissions_correct],
-		["3.6: Ensure 'general_log_file' Has Appropriate Permissions" | not general_log_permissions_correct],
-		["3.7: Ensure SSL Key Files Have Appropriate Permissions" | not ssl_key_permissions_correct],
-		["3.8: Ensure SSL Certificate Files Have Appropriate Permissions" | not ssl_cert_permissions_correct],
-		["3.9: Ensure 'plugin_dir' Has Appropriate Permissions" | not plugin_dir_permissions_correct],
-		["3.10: Ensure 'mysql' Directory Has Appropriate Permissions" | not mysql_dir_permissions_correct],
-		["3.11: Ensure 'mysql' Binary Has Appropriate Permissions" | not mysql_binary_permissions_correct],
-		["3.12: Ensure 'mysqld' Binary Has Appropriate Permissions" | not mysqld_binary_permissions_correct]
+		["3.1: owner and mode of 'datadir' must be restrictive" | not datadir_permissions_correct],
+		["3.2: 'log_bin_basename' Files must have Appropriate Permissions" | not log_bin_permissions_correct],
+		["3.3: owner and mode of 'log_error' must be restrictive" | not log_error_permissions_correct],
+		["3.4: owner and mode of 'slow_query_log' must be restrictive" | not slow_query_log_permissions_correct],
+		["3.5: 'relay_log_basename' Files must have Appropriate Permissions" | not relay_log_permissions_correct],
+		["3.6: owner and mode of 'general_log_file' must be restrictive" | not general_log_permissions_correct],
+		["3.7: SSL Key Files must have Appropriate Permissions" | not ssl_key_permissions_correct],
+		["3.8: SSL Certificate Files must have Appropriate Permissions" | not ssl_cert_permissions_correct],
+		["3.9: owner and mode of 'plugin_dir' must be restrictive" | not plugin_dir_permissions_correct],
+		["3.10: owner and mode of 'mysql' Directory must be restrictive" | not mysql_dir_permissions_correct],
+		["3.11: owner and mode of 'mysql' Binary must be restrictive" | not mysql_binary_permissions_correct],
+		["3.12: owner and mode of 'mysqld' Binary must be restrictive" | not mysqld_binary_permissions_correct]
 	]
 	v := arrays[_][_]
 ]
@@ -398,34 +398,34 @@ mysqld_binary_permissions_correct if {
 # Section 4: General
 general_violations := [v |
 	arrays := [
-		["4.1: Ensure Latest Security Patches Are Applied" | not security_patches_applied],
-		["4.2: Ensure the 'test' Database Is Not Installed" | not mysql_test_db_removed],
-		["4.3: Ensure 'old_passwords' Is Not Used" | not old_passwords_disabled],
-		["4.4: Ensure 'safe-user-create' Is Enabled" | not safe_user_create_enabled],
-		["4.5: Ensure 'skip-symbolic-links' Is Enabled" | not skip_symbolic_links_enabled],
-		["4.6: Ensure 'secure-auth' Is Enabled" | not secure_auth_enabled],
-		["4.7: Ensure 'skip-show-database' Is Enabled" | not skip_show_database_enabled],
-		["4.8: Ensure 'local-infile' Is Disabled" | not local_infile_config_disabled],
-		["4.9: Ensure 'mysqld' Is Not Started with '--skip-grant-tables'" | not skip_grant_tables_config_disabled],
-		["4.10: Ensure MySQL Is Run Under a Sandbox" | not mysql_sandbox_enabled],
-		["4.11: Ensure 'allow-suspicious-udfs' Is Set to 'FALSE'" | not allow_suspicious_udfs_disabled],
-		["4.12: Ensure 'automatic_sp_privileges' Is Disabled" | not automatic_sp_privileges_disabled],
-		["4.13: Ensure SQL_MODE Contains 'STRICT_TRANS_TABLES'" | not sql_mode_strict_trans_tables],
-		["4.14: Ensure 'log-raw' Is Disabled" | not log_raw_disabled],
-		["4.15: Ensure 'password_lifetime' Is Less Than Or Equal To 90" | not password_lifetime_90],
-		["4.16: Ensure 'password_reuse_interval' Is Greater Than Or Equal To 365" | not password_reuse_interval_365],
-		["4.17: Ensure 'password_require_current' Is Enabled" | not password_require_current_enabled],
-		["4.18: Ensure 'default_table_encryption' Is Set to 'ON'" | not default_table_encryption_on],
-		["4.19: Ensure 'table_encryption_privilege_check' Is Set to 'ON'" | not table_encryption_privilege_check_on],
-		["4.20: Ensure 'audit_log_policy' Is Set to 'ALL'" | not audit_log_policy_all],
-		["4.21: Ensure 'audit_log_rotate_on_size' Is Configured" | not audit_log_rotate_configured],
-		["4.22: Ensure 'audit_log_format' Is Set to 'JSON'" | not audit_log_format_json],
-		["4.23: Ensure 'binlog_encryption' Is Enabled" | not binlog_encryption_enabled],
-		["4.24: Ensure 'binlog_row_image' Is Set to 'FULL'" | not binlog_row_image_full],
-		["4.25: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled],
-		["4.26: Ensure 'master_info_repository' Is Set to 'TABLE'" | not master_info_repository_table],
-		["4.27: Ensure 'relay_log_info_repository' Is Set to 'TABLE'" | not relay_log_info_repository_table],
-		["4.28: Ensure Binary and Relay Logs Are Encrypted" | not binary_relay_logs_encrypted]
+		["4.1: Latest Security Patches must be Applied" | not security_patches_applied],
+		["4.2: the 'test' Database must not be present" | not mysql_test_db_removed],
+		["4.3: 'old_passwords' must be Not Used" | not old_passwords_disabled],
+		["4.4: 'safe-user-create' must be turned on" | not safe_user_create_enabled],
+		["4.5: 'skip-symbolic-links' must be turned on" | not skip_symbolic_links_enabled],
+		["4.6: 'secure-auth' must be turned on" | not secure_auth_enabled],
+		["4.7: 'skip-show-database' must be turned on" | not skip_show_database_enabled],
+		["4.8: 'local-infile' must be turned off" | not local_infile_config_disabled],
+		["4.9: 'mysqld' must be Not Started with '--skip-grant-tables'" | not skip_grant_tables_config_disabled],
+		["4.10: MySQL must be Run Under a Sandbox" | not mysql_sandbox_enabled],
+		["4.11: required value of 'allow-suspicious-udfs' is 'FALSE'" | not allow_suspicious_udfs_disabled],
+		["4.12: 'automatic_sp_privileges' must be turned off" | not automatic_sp_privileges_disabled],
+		["4.13: checked condition — SQL_MODE Contains 'STRICT_TRANS_TABLES'" | not sql_mode_strict_trans_tables],
+		["4.14: 'log-raw' must be turned off" | not log_raw_disabled],
+		["4.15: 'password_lifetime' must be at most 90" | not password_lifetime_90],
+		["4.16: 'password_reuse_interval' must be at least 365" | not password_reuse_interval_365],
+		["4.17: 'password_require_current' must be turned on" | not password_require_current_enabled],
+		["4.18: required value of 'default_table_encryption' is 'ON'" | not default_table_encryption_on],
+		["4.19: required value of 'table_encryption_privilege_check' is 'ON'" | not table_encryption_privilege_check_on],
+		["4.20: required value of 'audit_log_policy' is 'ALL'" | not audit_log_policy_all],
+		["4.21: 'audit_log_rotate_on_size' must be explicitly configured" | not audit_log_rotate_configured],
+		["4.22: required value of 'audit_log_format' is 'JSON'" | not audit_log_format_json],
+		["4.23: 'binlog_encryption' must be turned on" | not binlog_encryption_enabled],
+		["4.24: required value of 'binlog_row_image' is 'FULL'" | not binlog_row_image_full],
+		["4.25: 'log_slave_updates' must be turned on" | not log_slave_updates_enabled],
+		["4.26: required value of 'master_info_repository' is 'TABLE'" | not master_info_repository_table],
+		["4.27: required value of 'relay_log_info_repository' is 'TABLE'" | not relay_log_info_repository_table],
+		["4.28: Binary and Relay Logs must be Encrypted" | not binary_relay_logs_encrypted]
 	]
 	v := arrays[_][_]
 ]
@@ -553,24 +553,24 @@ binary_relay_logs_encrypted if {
 # Section 5: MySQL Permissions
 mysql_permissions_violations := [v |
 	arrays := [
-		["5.1: Ensure Only Administrative Users Have Full Database Access" | not admin_users_only_full_access],
-		["5.2: Ensure 'file_priv' Is Not Set to 'Y' for Non-Administrative Users" | not file_priv_restricted],
-		["5.3: Ensure 'process_priv' Is Not Set to 'Y' for Non-Administrative Users" | not process_priv_restricted],
-		["5.4: Ensure 'super_priv' Is Not Set to 'Y' for Non-Administrative Users" | not super_priv_restricted],
-		["5.5: Ensure 'shutdown_priv' Is Not Set to 'Y' for Non-Administrative Users" | not shutdown_priv_restricted],
-		["5.6: Ensure 'create_user_priv' Is Not Set to 'Y' for Non-Administrative Users" | not create_user_priv_restricted],
-		["5.7: Ensure 'grant_priv' Is Not Set to 'Y' for Non-Administrative Users" | not grant_priv_restricted],
-		["5.8: Ensure 'repl_slave_priv' Is Not Set to 'Y' for Non-Administrative Users" | not repl_slave_priv_restricted],
-		["5.9: Ensure DML/DDL Grants Are Limited to Specific Databases and Users" | not dml_ddl_grants_limited],
-		["5.10: Ensure No Users Have Wildcard Hostnames" | not no_wildcard_hostnames],
-		["5.11: Ensure No Anonymous Accounts Exist" | not no_anonymous_user_accounts],
-		["5.12: Ensure 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users" | not users_strict_trans_tables],
-		["5.13: Ensure MySQL Users' Passwords Are Strong" | not users_strong_passwords],
-		["5.14: Ensure No Users Have Empty Passwords" | not no_empty_passwords],
-		["5.15: Ensure No Duplicate MySQL User Accounts Exist" | not no_duplicate_users],
-		["5.16: Ensure Password Expiration Is Set For All Users" | not password_expiration_set],
-		["5.17: Ensure All Users Are Assigned to Appropriate Roles" | not users_assigned_roles],
-		["5.18: Ensure Administrative Users Are Separated From Application Users" | not admin_app_users_separated]
+		["5.1: Only Administrative Users must have Full Database Access" | not admin_users_only_full_access],
+		["5.2: 'file_priv' must not be 'Y' for Non-Administrative Users" | not file_priv_restricted],
+		["5.3: 'process_priv' must not be 'Y' for Non-Administrative Users" | not process_priv_restricted],
+		["5.4: 'super_priv' must not be 'Y' for Non-Administrative Users" | not super_priv_restricted],
+		["5.5: 'shutdown_priv' must not be 'Y' for Non-Administrative Users" | not shutdown_priv_restricted],
+		["5.6: 'create_user_priv' must not be 'Y' for Non-Administrative Users" | not create_user_priv_restricted],
+		["5.7: 'grant_priv' must not be 'Y' for Non-Administrative Users" | not grant_priv_restricted],
+		["5.8: 'repl_slave_priv' must not be 'Y' for Non-Administrative Users" | not repl_slave_priv_restricted],
+		["5.9: DML/DDL Grants must be Limited to Specific Databases and Users" | not dml_ddl_grants_limited],
+		["5.10: No Users must have Wildcard Hostnames" | not no_wildcard_hostnames],
+		["5.11: checked condition — No Anonymous Accounts Exist" | not no_anonymous_user_accounts],
+		["5.12: checked condition — 'sql_mode' Contains 'STRICT_TRANS_TABLES' for All Users" | not users_strict_trans_tables],
+		["5.13: MySQL Users' Passwords must be Strong" | not users_strong_passwords],
+		["5.14: No Users must have Empty Passwords" | not no_empty_passwords],
+		["5.15: the local account database must not contain duplicate MySQL User Accounts" | not no_duplicate_users],
+		["5.16: Password Expiration must be set for All Users" | not password_expiration_set],
+		["5.17: All Users must be Assigned to Appropriate Roles" | not users_assigned_roles],
+		["5.18: Administrative Users must be Separated From Application Users" | not admin_app_users_separated]
 	]
 	v := arrays[_][_]
 ]
@@ -698,30 +698,30 @@ admin_app_users_separated if {
 # Section 6: Auditing and Logging
 auditing_logging_violations := [v |
 	arrays := [
-		["6.1: Ensure 'log_error' Is Not Empty" | not log_error_configured],
-		["6.2: Ensure Log Files Are Stored on a Non-System Partition" | not log_files_non_system_partition],
-		["6.3: Ensure 'log_error_verbosity' Is Not Set to '1'" | not log_error_verbosity_adequate],
-		["6.4: Ensure 'log_warnings' Is Set to '2'" | not log_warnings_level_2],
-		["6.5: Ensure 'log_raw' Is Set to 'OFF'" | not log_raw_off],
-		["6.6: Ensure audit_log_policy Is Set to log logins" | not audit_log_policy_logins],
-		["6.7: Ensure audit_log_connection_policy Is Not Set to 'NONE'" | not audit_log_connection_policy_set],
-		["6.8: Ensure audit_log_exclude_accounts Is Configured Correctly" | not audit_log_exclude_accounts_configured],
-		["6.9: Ensure audit_log_include_accounts Is Configured Correctly" | not audit_log_include_accounts_configured],
-		["6.10: Ensure Logs Are Rotated" | not logs_rotated],
-		["6.11: Ensure Log Files Are Not Stored in '/tmp'" | not log_files_not_tmp],
-		["6.12: Ensure 'general_log_file' Is Set to a Non-Default Location" | not general_log_file_non_default],
-		["6.13: Ensure 'general_log' Is Disabled" | not general_log_disabled],
-		["6.14: Ensure 'slow_query_log' Is Enabled" | not slow_query_log_enabled],
-		["6.15: Ensure 'slow_query_log_file' Is Set" | not slow_query_log_file_set],
-		["6.16: Ensure 'long_query_time' Is Set to 10 or Less" | not long_query_time_10],
-		["6.17: Ensure 'log_queries_not_using_indexes' Is Enabled" | not log_queries_not_using_indexes_enabled],
-		["6.18: Ensure 'log_throttle_queries_not_using_indexes' Is Set to 0" | not log_throttle_queries_disabled],
-		["6.19: Ensure Binary Logging Is Enabled" | not binary_logging_enabled],
-		["6.20: Ensure 'binlog_format' Is Set to 'ROW'" | not binlog_format_row],
-		["6.21: Ensure 'sync_binlog' Is Set to 1" | not sync_binlog_1],
-		["6.22: Ensure 'expire_logs_days' Is Set to 30 or Less" | not expire_logs_days_30],
-		["6.23: Ensure 'max_binlog_size' Is Set" | not max_binlog_size_set],
-		["6.24: Ensure audit plugin Is Active" | not audit_plugin_active]
+		["6.1: 'log_error' must be Not Empty" | not log_error_configured],
+		["6.2: Log Files must be Stored on a Non-System Partition" | not log_files_non_system_partition],
+		["6.3: 'log_error_verbosity' must not be '1'" | not log_error_verbosity_adequate],
+		["6.4: required value of 'log_warnings' is '2'" | not log_warnings_level_2],
+		["6.5: required value of 'log_raw' is 'OFF'" | not log_raw_off],
+		["6.6: required value of audit_log_policy is log logins" | not audit_log_policy_logins],
+		["6.7: audit_log_connection_policy must not be 'NONE'" | not audit_log_connection_policy_set],
+		["6.8: audit_log_exclude_accounts must match the approved configuration" | not audit_log_exclude_accounts_configured],
+		["6.9: audit_log_include_accounts must match the approved configuration" | not audit_log_include_accounts_configured],
+		["6.10: Logs must be Rotated" | not logs_rotated],
+		["6.11: Log Files must be Not Stored in '/tmp'" | not log_files_not_tmp],
+		["6.12: required value of 'general_log_file' is a Non-Default Location" | not general_log_file_non_default],
+		["6.13: 'general_log' must be turned off" | not general_log_disabled],
+		["6.14: 'slow_query_log' must be turned on" | not slow_query_log_enabled],
+		["6.15: 'slow_query_log_file' must be populated" | not slow_query_log_file_set],
+		["6.16: required value of 'long_query_time' is 10 or Less" | not long_query_time_10],
+		["6.17: 'log_queries_not_using_indexes' must be turned on" | not log_queries_not_using_indexes_enabled],
+		["6.18: required value of 'log_throttle_queries_not_using_indexes' is 0" | not log_throttle_queries_disabled],
+		["6.19: Binary Logging must be turned on" | not binary_logging_enabled],
+		["6.20: required value of 'binlog_format' is 'ROW'" | not binlog_format_row],
+		["6.21: required value of 'sync_binlog' is 1" | not sync_binlog_1],
+		["6.22: required value of 'expire_logs_days' is 30 or Less" | not expire_logs_days_30],
+		["6.23: 'max_binlog_size' must be populated" | not max_binlog_size_set],
+		["6.24: audit plugin must be Active" | not audit_plugin_active]
 	]
 	v := arrays[_][_]
 ]
@@ -851,22 +851,22 @@ audit_plugin_active if {
 # Section 7: Authentication
 authentication_violations := [v |
 	arrays := [
-		["7.1: Ensure Password Validation Plugin Is Installed and Active" | not password_validation_plugin_active],
-		["7.2: Ensure Password Complexity Is Configured" | not password_complexity_configured],
-		["7.3: Ensure Password Policy Is in Force" | not password_policy_enforced],
-		["7.4: Ensure Password Reuse Is Limited" | not password_reuse_limited_auth],
-		["7.5: Ensure Password Expiration Is in Force" | not password_expiration_enforced],
-		["7.6: Ensure MySQL Passwords Are Not Stored in History" | not passwords_not_in_history],
-		["7.7: Ensure No Users Have Wildcard Hostnames" | not no_wildcard_hostnames_auth],
-		["7.8: Ensure No Anonymous Accounts Exist" | not no_anonymous_accounts_auth],
-		["7.9: Ensure All Users Are Assigned to Roles" | not all_users_assigned_roles],
-		["7.10: Ensure Default Roles Are Set for All Users" | not default_roles_set],
-		["7.11: Ensure Password Lifetime Is Set" | not password_lifetime_set],
-		["7.12: Ensure Account Locking Is Configured" | not account_locking_configured],
-		["7.13: Ensure 'default_authentication_plugin' Is Set" | not default_authentication_plugin_set],
-		["7.14: Ensure SHA256 Password Authentication Plugin Is Used" | not sha256_password_plugin_used],
-		["7.15: Ensure Caching SHA2 Authentication Plugin Is Used" | not caching_sha2_plugin_used],
-		["7.16: Ensure Connection Control Plugin Is Installed and Active" | not connection_control_plugin_active]
+		["7.1: Password Validation Plugin must be Installed and Active" | not password_validation_plugin_active],
+		["7.2: Password Complexity must be explicitly configured" | not password_complexity_configured],
+		["7.3: Password Policy must be in Force" | not password_policy_enforced],
+		["7.4: Password Reuse must be limited to named principals" | not password_reuse_limited_auth],
+		["7.5: Password Expiration must be in Force" | not password_expiration_enforced],
+		["7.6: MySQL Passwords must be Not Stored in History" | not passwords_not_in_history],
+		["7.7: No Users must have Wildcard Hostnames" | not no_wildcard_hostnames_auth],
+		["7.8: checked condition — No Anonymous Accounts Exist" | not no_anonymous_accounts_auth],
+		["7.9: All Users must be Assigned to Roles" | not all_users_assigned_roles],
+		["7.10: Default Roles must be Set for All Users" | not default_roles_set],
+		["7.11: Password Lifetime must be Set" | not password_lifetime_set],
+		["7.12: Account Locking must be explicitly configured" | not account_locking_configured],
+		["7.13: 'default_authentication_plugin' must be populated" | not default_authentication_plugin_set],
+		["7.14: SHA256 Password Authentication Plugin must be Used" | not sha256_password_plugin_used],
+		["7.15: Caching SHA2 Authentication Plugin must be Used" | not caching_sha2_plugin_used],
+		["7.16: Connection Control Plugin must be Installed and Active" | not connection_control_plugin_active]
 	]
 	v := arrays[_][_]
 ]
@@ -966,20 +966,20 @@ connection_control_plugin_active if {
 # Section 8: Network
 network_violations := [v |
 	arrays := [
-		["8.1: Ensure 'bind_address' Is Set to a Specific Interface" | not bind_address_specific],
-		["8.2: Ensure 'port' Is Set to a Non-Default Value" | not port_non_default],
-		["8.3: Ensure 'skip_networking' Is Disabled" | not skip_networking_disabled_network],
-		["8.4: Ensure 'skip_name_resolve' Is Enabled" | not skip_name_resolve_enabled],
-		["8.5: Ensure SSL Is Configured and Enabled" | not ssl_configured_enabled],
-		["8.6: Ensure 'ssl_type' Is Set to 'ANY', 'X509', or 'SPECIFIED' for All Users" | not ssl_type_configured],
-		["8.7: Ensure Certificates Are Valid" | not certificates_valid],
-		["8.8: Ensure SSL Certificates Use Strong Cryptographic Algorithms" | not ssl_strong_crypto],
-		["8.9: Ensure 'require_secure_transport' Is Enabled" | not require_secure_transport_enabled],
-		["8.10: Ensure 'tls_version' Contains Secure TLS Versions" | not tls_version_secure],
-		["8.11: Ensure 'ssl_cipher' Is Configured with Secure Ciphers" | not ssl_cipher_secure],
-		["8.12: Ensure Connection Limits Are Set" | not connection_limits_set],
-		["8.13: Ensure 'connect_timeout' Is Set to 10 or Less" | not connect_timeout_10],
-		["8.14: Ensure 'interactive_timeout' and 'wait_timeout' Are Set" | not timeout_values_set]
+		["8.1: required value of 'bind_address' is a Specific Interface" | not bind_address_specific],
+		["8.2: required value of 'port' is a Non-Default Value" | not port_non_default],
+		["8.3: 'skip_networking' must be turned off" | not skip_networking_disabled_network],
+		["8.4: 'skip_name_resolve' must be turned on" | not skip_name_resolve_enabled],
+		["8.5: SSL must be explicitly configured and Enabled" | not ssl_configured_enabled],
+		["8.6: required value of 'ssl_type' is 'ANY', 'X509', or 'SPECIFIED' for All Users" | not ssl_type_configured],
+		["8.7: Certificates must be Valid" | not certificates_valid],
+		["8.8: checked condition — SSL Certificates Use Strong Cryptographic Algorithms" | not ssl_strong_crypto],
+		["8.9: 'require_secure_transport' must be turned on" | not require_secure_transport_enabled],
+		["8.10: checked condition — 'tls_version' Contains Secure TLS Versions" | not tls_version_secure],
+		["8.11: 'ssl_cipher' must be explicitly configured with Secure Ciphers" | not ssl_cipher_secure],
+		["8.12: Connection Limits must be Set" | not connection_limits_set],
+		["8.13: required value of 'connect_timeout' is 10 or Less" | not connect_timeout_10],
+		["8.14: 'interactive_timeout' and 'wait_timeout' must be Set" | not timeout_values_set]
 	]
 	v := arrays[_][_]
 ]
@@ -1042,7 +1042,7 @@ tls_version_secure if {
 
 ssl_cipher_secure if {
 	ssl_cipher := input.mysql.config.ssl_cipher
-	# Ensure no weak ciphers
+	# checked condition — no weak ciphers
 	not contains(ssl_cipher, "DES")
 	not contains(ssl_cipher, "RC4")
 	not contains(ssl_cipher, "MD5")
@@ -1067,20 +1067,20 @@ timeout_values_set if {
 # Section 9: Replication
 replication_violations := [v |
 	arrays := [
-		["9.1: Ensure Replication Traffic Is Secured" | not replication_traffic_secured],
-		["9.2: Ensure 'master_ssl_verify_server_cert' Is Set to 'ON'" | not master_ssl_verify_server_cert_on],
-		["9.3: Ensure 'master_ssl_ca' Is Set on Slaves" | not master_ssl_ca_set],
-		["9.4: Ensure 'master_ssl_capath' Is Set on Slaves" | not master_ssl_capath_set],
-		["9.5: Ensure 'master_ssl_cert' Is Set on Slaves" | not master_ssl_cert_set],
-		["9.6: Ensure 'master_ssl_key' Is Set on Slaves" | not master_ssl_key_set],
-		["9.7: Ensure 'master_ssl_crl' Is Set on Slaves" | not master_ssl_crl_set],
-		["9.8: Ensure 'master_ssl_crlpath' Is Set on Slaves" | not master_ssl_crlpath_set],
-		["9.9: Ensure 'slave_ssl_verify_server_cert' Is Set to 'ON'" | not slave_ssl_verify_server_cert_on],
-		["9.10: Ensure Replication User Has Limited Privileges" | not replication_user_limited_privileges],
-		["9.11: Ensure 'log_slave_updates' Is Enabled" | not log_slave_updates_enabled_repl],
-		["9.12: Ensure 'slave_compressed_protocol' Is Disabled" | not slave_compressed_protocol_disabled],
-		["9.13: Ensure 'gtid_mode' Is Enabled" | not gtid_mode_enabled],
-		["9.14: Ensure 'enforce_gtid_consistency' Is Enabled" | not enforce_gtid_consistency_enabled]
+		["9.1: Replication Traffic must be Secured" | not replication_traffic_secured],
+		["9.2: required value of 'master_ssl_verify_server_cert' is 'ON'" | not master_ssl_verify_server_cert_on],
+		["9.3: 'master_ssl_ca' must be Set on Slaves" | not master_ssl_ca_set],
+		["9.4: 'master_ssl_capath' must be Set on Slaves" | not master_ssl_capath_set],
+		["9.5: 'master_ssl_cert' must be Set on Slaves" | not master_ssl_cert_set],
+		["9.6: 'master_ssl_key' must be Set on Slaves" | not master_ssl_key_set],
+		["9.7: 'master_ssl_crl' must be Set on Slaves" | not master_ssl_crl_set],
+		["9.8: 'master_ssl_crlpath' must be Set on Slaves" | not master_ssl_crlpath_set],
+		["9.9: required value of 'slave_ssl_verify_server_cert' is 'ON'" | not slave_ssl_verify_server_cert_on],
+		["9.10: Replication User must have Limited Privileges" | not replication_user_limited_privileges],
+		["9.11: 'log_slave_updates' must be turned on" | not log_slave_updates_enabled_repl],
+		["9.12: 'slave_compressed_protocol' must be turned off" | not slave_compressed_protocol_disabled],
+		["9.13: 'gtid_mode' must be turned on" | not gtid_mode_enabled],
+		["9.14: 'enforce_gtid_consistency' must be turned on" | not enforce_gtid_consistency_enabled]
 	]
 	v := arrays[_][_]
 ]
