@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm coverage check-coverage oscal crosswalk xccdf check-converters load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm coverage check-coverage check-per-file-load oscal crosswalk xccdf check-converters load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -11,6 +11,7 @@ help:
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
+	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
 	@echo "  make load-ot          Load OT policies into opa-ot (:8183)"
@@ -80,11 +81,19 @@ coverage:
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
 
+# The product loads this library with one PUT /v1/policies per file into an empty
+# server; a module that only compiles next to its siblings is rejected there even
+# though `opa check <dir>` and `opa test` pass. OPA_IMAGE=docker.io/openpolicyagent/opa:latest
+# runs the server from a container with podman instead of the local binary.
+check-per-file-load:
+	@echo "=== Per-file load into a throwaway OPA server (scripts/check_per_file_load.py) ==="
+	@python3 scripts/check_per_file_load.py --quiet $(if $(OPA_IMAGE),--podman-image $(OPA_IMAGE),--opa $(OPA))
+
 metadata:
 	@echo "=== Checking policy METADATA annotations ==="
 	@python3 scripts/check_metadata.py
 
-check: lint test metadata check-coverage
+check: lint test metadata check-coverage check-per-file-load
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

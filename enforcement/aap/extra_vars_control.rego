@@ -136,8 +136,18 @@ _tev_cfg := object.union(_tev_defaults, _override) if {
 	is_object(_override)
 } else := _tev_defaults
 
-# Team objects and bare names both accepted — see _aap_team_name in owner_scope.rego.
-_user_teams := {_aap_team_name(t) | some t in object.get(input, ["created_by", "teams"], [])}
+# Team objects and bare names both accepted. Same rule as _aap_team_name in
+# owner_scope.rego, defined here as well because the product uploads one file at a
+# time and this file sorts before owner_scope.rego; a module may only call what it
+# (or an already-loaded package) defines (scripts/check_per_file_load.py).
+_ev_team_name(t) := lower(t) if is_string(t)
+
+_ev_team_name(t) := lower(t.name) if {
+	is_object(t)
+	is_string(t.name)
+}
+
+_user_teams := {_ev_team_name(t) | some t in object.get(input, ["created_by", "teams"], [])}
 
 _team_permitted := {lower(k) |
 	some team in _user_teams

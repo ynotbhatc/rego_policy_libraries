@@ -39,6 +39,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Fixed
 
+- **Every module now loads on its own, and the library compiles on OPA 1.22.** The product loads this library
+  with one `PUT /v1/policies` per non-test file into an empty OPA server (`docker.io/openpolicyagent/opa:latest`,
+  1.22.0 today). OPA 1.22 types a literal empty `{}`, `set()` or `[]` as having no members and rejects every
+  index or iteration over it as `rego_type_error: undefined ref`, so 22 modules were rejected on upload and
+  their frameworks were silently absent from the product's OPA while CI (OPA 1.10, `opa check <dir>`) stayed
+  green: HIPAA Part 160 and Part 162 (`fact_basis := {}` / `_fact_pass := set()`), the eight CIS MCP Server
+  sections with no multi-part attestation (`_parts := {}`; two of them also `_evidence_key := {}` /
+  `fail := set()`), CIS FortiGate (`_v_wireless := set()`), CIS M365 v7 attestation (`NOT_IMPLEMENTED := {}`),
+  the Kubernetes and RKE2 STIG cores (`some p in []` in 12 attestation-only rules) and eight Oracle Linux 8/9
+  STIG modules with no CAT I rule (`cat_i_findings := []`). Each empty table is now built with a builtin
+  (`object.union({}, {})`, `set() | set()`, `array.concat([], [])`), or the dead iteration is replaced by the
+  literal it always produced; values, rule names, report shapes and all 15,132 tests are unchanged. The
+  Oracle Linux generator emits the new form. One more module failed for the other reason a per-file upload
+  can fail: `enforcement/aap/extra_vars_control.rego` called `_aap_team_name` from `owner_scope.rego`, which
+  sorts after it, so it was rejected until its sibling arrived; it now carries the two-line helper itself.
+  `scripts/check_per_file_load.py` (`make check-per-file-load`, and a CI step) starts a throwaway OPA server,
+  uploads every policy file one at a time in sorted order, as the product does, and lists every module
+  that is rejected. It does not prove every `find` order: `frameworks/financial/mas_trm/mas_trm_main.rego`
+  still depends on `mas_trm_controls_a.rego`, which happens to sort first.
+
 - **Fix decisions (2026-10-19): the 84 judgment items left open by the 2026-10-17 validation, decided by the maintainer and implemented.** 90 policy modules change, each fix with a test that fails on the old code; 6,919/6,919 tests pass on OPA 1.10.
   - **STIG `compliant` means no open finding at any category** (34 modules: Oracle Linux 8/9, RHEL 8/9). The old CAT-I-only meaning is kept as `cat_i_compliant`, also in each `compliance_report`. Modules without CAT I rules no longer report compliant with CAT II/III findings open. **Behaviour change for consumers that gate on `compliant`.**
   - **Undeclared applicability fails closed** (CRA authorised representative, FOSS exclusion, online marketplace, OSS steward; NERC CIP-002, CIP-008; EU AI Act Art. 50; GDPR joint controllers and SCC+TIA): an absent deciding fact raises "applicability not determined"; an explicit `false` is still not applicable.
