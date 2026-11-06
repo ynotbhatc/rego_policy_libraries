@@ -3,7 +3,8 @@
 # Sources (all verified 2026-10-06):
 #   FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) — final Aug 2024
 #   NIST SP 800-208 (LMS/XMSS stateful hash-based signatures, firmware signing)
-#   NIST IR 8547 (Transition to PQC Standards — DRAFT, ipd Nov 2024):
+#   NIST IR 8547 (Transition to PQC Standards — FINAL 2026-10-27, verified
+#     2026-11-06; cited as the Nov 2024 initial public draft until then):
 #     112-bit-security public-key algorithms deprecated after 2030,
 #     disallowed after 2035
 #   EO 14412 "Securing the Nation Against Advanced Cryptographic Attacks"
@@ -353,7 +354,7 @@ compliance_report := {
 	"version": "1.0",
 	"sources": [
 		"FIPS 203/204/205 (Aug 2024)",
-		"NIST IR 8547 (draft)",
+		"NIST IR 8547 (final, 2026-10-27)",
 		"EO 14412 (2026-06-22)",
 		"OMB M-26-15",
 		"NSA CNSA 2.0",

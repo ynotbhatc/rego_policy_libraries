@@ -8,6 +8,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — PQC Readiness cites the final NIST IR 8547
+
+- `frameworks/federal/pqc/pqc_main.rego`: NIST finalized IR 8547, "Transition to Post-Quantum Cryptography
+  Standards", on 2026-10-27. The header and the report's `sources` list cited the November 2024 initial public
+  draft; both now cite the final. No rule changes: the deprecate-after-2030 / disallow-after-2035 schedule the
+  checks quote is the one the final carries. `STANDARDS_UPDATE_REGISTRY.md` row updated; what is left to watch
+  is the CNSA 2.0 FAQ, the FAR proposed rule and CISA's CBOM minimum elements.
+
 ### Added — SAP Security Baseline Template v2.6, ABAP stack (`benchmarks/sap/abap/`)
 
 - **First application-suite baseline.** SAP publishes its Baseline Template checks as Focused Run CSA policies
