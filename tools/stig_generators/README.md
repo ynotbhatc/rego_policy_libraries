@@ -46,6 +46,17 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   with the same two-way gate. Each logic entry carries its evidence paths, a pass fixture and a fail
   mutation, so the tests (pass / fail / evidence-missing per rule) are generated with the module.
   `openshift_4` is no longer generated (hand-maintained; its old table is in git history).
+- `stamp_catalog.py [rhel_9] [rhel_8] [--check]` (added 2026-11-10) — re-stamps the hand-maintained RHEL
+  modules from the current catalog, keyed on the FACT each block checks (its `MAP` is the reviewed
+  `<section>:<id in the module>` → current stig_id table; `None` retires a block whose fact has no rule).
+  Rewrites ids, vuln ids, severities, titles, `status_`/`finding_` names, the CAT grouping and the
+  aggregation lists; renames the ids in the section tests and reports tests that name a retired rule.
+  A block that is neither mapped nor an exact title match aborts the run with the closest titles.
+- `gen_oracle_linux.py rhel_10` — RHEL 10 V1R2 derived from the re-stamped RHEL 9 modules the same way
+  as Oracle Linux (no argument still means the two Oracle platforms).
+- `gen_linux.py` also emits `ubuntu_24_04` (the 22.04 table re-keyed via `UBTU_22_TO_24`) and now reads
+  the current catalog shape (`version` "V2R10", `release` "10", `release_date`, raw `severity`), writes
+  each module's METADATA block and names the library / verification date in `LIBRARY` / `VERIFIED`.
 - `gen_crosswalk.py <U_CCI_List.xml> <key> …` — stig_id → CCI → 800-53 Rev 5
   join for the given catalogs, merged into `crosswalk/stig_800_53/data.json`.
 

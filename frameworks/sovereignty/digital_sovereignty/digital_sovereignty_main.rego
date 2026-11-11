@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 13
+#     cited: 13
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: report
+#     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.main
 
 import rego.v1
@@ -263,3 +263,20 @@ default geopolitical_sovereignty_compliant := false
 default dora_sovereignty_compliant := false
 
 default cyber_resilience_sovereignty_compliant := false
+
+# Framework-key entrypoint: the product reads /v1/data/digital_sovereignty/main/compliance_report. This package
+# names its report `report`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "digital_sovereignty",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for digital_sovereignty; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(report, {"framework_key": "digital_sovereignty", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if report.overall_compliant == true

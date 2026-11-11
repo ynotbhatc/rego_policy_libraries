@@ -6,13 +6,13 @@
 #   source: us-federal
 #   domains: [financial, public-company]
 #   coverage:
-#     checks: 23
-#     cited: 23
+#     checks: 24
+#     cited: 24
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: none
-#     guard: n/a
+#     entrypoint: compliance_report
+#     guard: self
 #     as_of: v2.4.2
 package sox.main
 
@@ -695,3 +695,20 @@ _d_application_controls_error_handling_robust := data.sox.application_controls.e
 default _d_application_controls_transaction_logging_complete := false
 
 _d_application_controls_transaction_logging_complete := data.sox.application_controls.transaction_logging.complete
+
+# Framework-key entrypoint: the product reads /v1/data/sox/main/compliance_report. This package
+# names its report `overall_sox_assessment`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "sox",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for sox; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(overall_sox_assessment, {"framework_key": "sox", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if overall_sox_assessment.compliance_status == true

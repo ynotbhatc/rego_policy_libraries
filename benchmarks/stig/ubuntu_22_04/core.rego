@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.ubuntu_22_04.core
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide
-# V2R9 | Release: 9 Benchmark Date: 01 Jul 2026
+# V2R10 | Release: 10 Benchmark Date: 30 Sep 2026
 # 22 rules (all CAT I + selected CAT II). Rule IDs, severities and
-# titles verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03.
+# titles verified against the October 2026 SRG-STIG library XCCDF on 2026-11-10.
 # Input contract: see gen_linux.py header / tests fixture.
 
 import rego.v1

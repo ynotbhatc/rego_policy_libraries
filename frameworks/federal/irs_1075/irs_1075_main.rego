@@ -24,7 +24,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package irs_1075.main
 
 import rego.v1

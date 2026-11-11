@@ -14,15 +14,15 @@ test_empty_input_not_compliant if not fp.compliant with input as {}
 
 test_empty_section_not_compliant if not fp.compliant with input as {"file_permissions": {}}
 
-test_clean_evidence_compliant if fp.cat_i_compliant with input as {"file_permissions": clean}
+# V2R10 carries no CAT I file-permission rule; the clean fixture must still leave the valid-owner rules closed.
+test_clean_evidence_owner_rules_closed if {
+	fp.status_rhel_09_232255 == "Not_a_Finding" with input as {"file_permissions": clean}
+	fp.status_rhel_09_232250 == "Not_a_Finding" with input as {"file_permissions": clean}
+}
 
 test_offender_makes_noncompliant if not fp.compliant with input as {"file_permissions": object.union(clean, {"unowned_files": ["/tmp/x"]})}
 
-test_missing_list_is_open if fp.status_rhel_09_232045 == "Open" with input as {"file_permissions": {}}
-
-test_empty_suid_list_ok if fp.status_rhel_09_232045 == "Not_a_Finding" with input as {"file_permissions": {"undocumented_suid_files": []}}
-
-test_missing_home_dirs_open if fp.status_rhel_09_232065 == "Open" with input as {}
+test_missing_home_dirs_open if fp.status_rhel_09_232050 == "Open" with input as {}
 
 test_passwd_stricter_0600_ok if fp.passwd_permissions_ok with input as {"file_permissions": {"etc_passwd": {"mode": "0600"}}}
 
@@ -39,11 +39,3 @@ test_shadow_0000_ok if fp.shadow_permissions_ok with input as {"file_permissions
 test_shadow_0640_open if not fp.shadow_permissions_ok with input as {"file_permissions": {"etc_shadow": {"mode": "0640"}}}
 
 test_gshadow_0640_open if not fp.gshadow_permissions_ok with input as {"file_permissions": {"etc_gshadow": {"mode": "0640"}}}
-
-test_cron_allow_absent_evidence_open if not fp.cron_allow_permissions_ok with input as {}
-
-test_cron_allow_explicitly_absent_ok if fp.cron_allow_permissions_ok with input as {"cron_allow": {"file_exists": false}}
-
-test_cron_allow_0600_ok if fp.cron_allow_permissions_ok with input as {"cron_allow": {"file_exists": true, "permissions": "0600"}}
-
-test_cron_allow_0644_open if not fp.cron_allow_permissions_ok with input as {"cron_allow": {"file_exists": true, "permissions": "0644"}}

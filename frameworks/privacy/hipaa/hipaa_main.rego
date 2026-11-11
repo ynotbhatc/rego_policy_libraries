@@ -26,12 +26,12 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 1
+#     cited: 1
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: report
+#     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
 package hipaa.main
@@ -126,3 +126,20 @@ report := {
 	"domains_total": count(_domains),
 	"security_safeguards_score_pct": security_safeguards_score,
 }
+
+# Framework-key entrypoint: the product reads /v1/data/hipaa/main/compliance_report. This package names
+# its report `report`; expose it under the shared name with an explicit `compliant` and a fail-closed
+# default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "hipaa",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for hipaa; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(report, {"framework_key": "hipaa", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if report.compliant == true
