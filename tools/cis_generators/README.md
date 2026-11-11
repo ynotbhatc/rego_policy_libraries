@@ -40,6 +40,19 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   400 recommendations (393 in the L1/L2 x DC/MS profiles plus 7 opt-in Next Generation). Reuses the
   2022 generator's reader, check derivation and test builder; holds only the 2019 tables.
 
+- `gen_windows_10.py <workbook.xlsx>`: CIS Microsoft Windows 10 Enterprise Benchmark v5.0.0, 501
+  recommendations (499 Automated, 2 Manual) -- 337 Level 1, 102 Level 2, 49 BitLocker and 13 Next Generation
+  Windows Security, the last two opt-in. The 2022 generator's reader, derivation and fixture builder with the
+  workstation profile model in place of the server roles (`input.cis_profile`: level, bitlocker,
+  next_generation); folds the Combined Profiles rows CIS repeats per combined profile into one recommendation.
+  Adds a numeric must-not-equal comparison and a `reg_key_values` kind (numbered values under one key).
+  Writes `benchmarks/cis/windows_10_modular/`; run `python3 scripts/coverage_stamp.py` afterwards.
+
+- `gen_windows_11.py <workbook.xlsx>`: CIS Microsoft Windows 11 Enterprise Benchmark v5.1.0, 535
+  recommendations (533 Automated, 2 Manual) -- 373 Level 1, 117 Level 2, 45 BitLocker; no Next Generation
+  profile in this release. The Windows 10 generator pointed at the Windows 11 workbook; holds only the ids that
+  shift (2.3.1.x, 2.3.11.5, 18.9.7.1.2) and the entries Windows 11 lacks. Writes `benchmarks/cis/windows_11_modular/`.
+
 - `gen_suse_16.py <workbook.xlsx> [fields.json]`: CIS SUSE Linux Enterprise 16 Benchmark v1.0.0,
   336 recommendations across 22 section packages in the rhel_9 layout. Aborts on any count, status
   or logic mismatch with the workbook.
