@@ -1,647 +1,123 @@
 # Rego Policy Libraries
 
-> **953 production-ready Rego policies** (2,261 including tests; **23,776 control-level checks** by `make count`, from OPA's parser; counted 2026-11-11, AS9100D evidence validation) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles, **Oracle Cloud Infrastructure** and **Oracle Database 26ai** among them), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
->
-> Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
->
-> **The largest open library of executable compliance policy anyone can verify — 23,776 control-level checks across 185 framework catalogs — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md). Where we still trail the Secure Controls Framework on documents mapped, and the plan to close it: [docs/SCF_GAP.md](docs/SCF_GAP.md). Every entrypoint fails closed: a framework given no facts reports non-compliant with the reason, because we treat a lack of facts as non-compliance.
-> **Compared with:** Kubescape regolibrary (304 Rego rules, Kubernetes only), Kyverno policies (180), Gatekeeper library (49), trivy-checks (563), Checkov (~1,000, IaC), KICS (1,813, IaC), Prowler (1,625 cloud checks), Steampipe AWS mod (1,361), ComplianceAsCode (2,574 OS rules), Azure Policy built-ins (5,130, Azure), Secure Controls Framework (1,534 catalogue controls, not executable). **Runs unchanged in:** OPA, Enterprise OPA, Styra DAS, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula, Snyk IaC, Terraform Cloud, Spacelift, env0, Envoy/Istio. **Exports to:** WASM for every language SDK, signed bundles, OSCAL, SARIF, OCSF, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler (see [`converters/`](converters/)).
->
-> **Use it in CI in sixty seconds:** [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) — pull the GHCR bundle, evaluate your facts, fail the job on non-compliance; Conftest for the IaC gates.
->
->
+Ready-to-run compliance checks for [Open Policy Agent](https://www.openpolicyagent.org/), written in Rego. Give a framework your system facts and it tells you which controls pass, which fail, and why. No agent, no orchestrator, no vendor runtime: clone it or pull the bundle, load it into OPA, query it.
 
-<sub>The count above is restamped by the docs pass that accompanies each merge batch;
-between batches it can drift slightly low. The exact number at any commit:</sub>
+It covers the benchmarks and regulations most teams are asked about: CIS Benchmarks and DISA STIGs for Linux, Windows, cloud, containers, databases and network gear; NIST, ISO 27001, SOC 2, PCI DSS, HIPAA, GDPR, NERC CIP, IEC 62443, FedRAMP, CMMC, the EU AI Act, and regional rules from the UK, EU, India, Japan, Singapore, Malaysia, Hong Kong and Australia. The full list is in [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md).
 
-```bash
-git ls-files | grep '\.rego$' | grep -vcE '(^|/)(test_|.*_test\.rego$)'   # policy files
-git ls-files | grep -c '\.rego$'                                          # including tests
-```
+**953 production-ready Rego policies** (2,261 including tests) holding **23,776 control-level checks** across 185 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
 
-[![control-level checks](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2FREADME.md&search=%28%5B0-9%2C%5D%2B%29%20control-level%20checks&replace=%241&label=control-level%20checks&color=blue)](docs/COMPARISON.md)
-[![control-level checks (endpoint)](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
+[![control-level checks](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![OPA](https://img.shields.io/badge/OPA-v0.60%2B-blue)](https://www.openpolicyagent.org/)
 [![Rego](https://img.shields.io/badge/Rego-v1-green)](https://www.openpolicyagent.org/docs/latest/policy-language/)
-[![CIS RHEL 9](https://img.shields.io/badge/CIS%20RHEL%209-v2.0.0%20%C2%B7%2017%20modules-brightgreen)](benchmarks/cis/rhel_9/)
-[![GitHub Stars](https://img.shields.io/github/stars/ynotbhatc/rego_policy_libraries?style=social)](https://github.com/ynotbhatc/rego_policy_libraries/stargazers)
 
----
-
-## Why this repo?
-
-Writing compliance policies from scratch is expensive and error-prone. A typical enterprise deploying OPA for CIS RHEL 9 alone needs 338 individual control checks — and that's one framework for one OS.
-
-This library gives you a **complete, working policy set on day one**, covering 30+ platforms, 55+ regulatory frameworks, and every major compliance standard from CIS and DISA STIGs to NERC-CIP and IEC 62443. All policies:
-
-- Use **Rego v1 syntax** (`import rego.v1`) — no deprecation warnings, forward-compatible
-- Return **structured JSON reports** (compliant, score, violations list) — wire directly to dashboards or CI
-- Are **independently loadable** — use one framework or the whole library; no coupling
-- Expose a **uniform entrypoint** — `data.<package>.main.compliance_report` for every framework, so you can evaluate one by name without learning its internal layout
-- **Fail closed** — a framework given no facts reports non-compliant with an explicit reason, never a silent pass (see below)
-- Are **vendor-neutral** — no orchestrator, deployment topology, or caller vocabulary baked in
-- Are **Apache 2.0 licensed** — use commercially without restriction
-
-> **Why not build your own?** You can — but CIS RHEL 9 alone has 338 controls across 14 sections. NERC-CIP covers 14 standards (CIP-002 through CIP-015) with 200+ requirements. IEC 62443 adds 51 System Requirements across 7 Foundational Requirements. Starting from scratch takes months. This library is that months-of-work already done.
-
----
-
-## Coverage at a glance
-
-| Standard / Framework | Path | Controls / Requirements |
-|---------------------|------|------------------------|
-| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
-| CIS RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
-| CIS RHEL 10 | `benchmarks/cis/rhel_10/` | Full |
-| CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/ubuntu_*/` | Full |
-| CIS Rocky Linux 8/9 | `benchmarks/cis/rocky_linux_*/` | Full |
-| CIS Debian 11 | `benchmarks/cis/debian_11/` | Full |
-| CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
-| CIS Windows Server 2022 v5.1.0 | `benchmarks/cis/windows_server_2022_modular/` | Full: all 408 recommendations (406 evaluated, 2 Manual by attestation), member server and domain controller, Level 1/2 and Next Generation profiles |
-| CIS Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified: a copy of the old 2022 module's numbering, not checked against the CIS Windows Server 2019 benchmark |
-| CIS Windows 10 Enterprise v5.0.0 | `benchmarks/cis/windows_10_modular/` | Full: all 501 recommendations (499 evaluated, 2 Manual by attestation), Level 1/2, BitLocker and Next Generation profiles |
-| CIS Windows 11 Enterprise v5.1.0 | `benchmarks/cis/windows_11_modular/` | Full: all 535 recommendations (533 evaluated, 2 Manual by attestation), Level 1/2 and BitLocker profiles |
-| CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
-| CIS PostgreSQL | `benchmarks/cis/postgresql/` | Full |
-| Network devices — Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
-| CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
-| CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library; Oracle from October 2026; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
-| NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
-| NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
-| FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
-| ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |
-| SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
-| PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
-| SOX ITGC | `frameworks/financial/sox/` | Full |
-| HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | Full |
-| GDPR | `frameworks/privacy/gdpr/` | Full |
-| NERC-CIP (CIP-002 – CIP-015) | `frameworks/critical_infrastructure/nerc_cip/` | 14 standards |
-| IEC 62443 (all parts) | `frameworks/critical_infrastructure/iec_62443/` | 51 SRs, SL 1–4 |
-| NIST IR 7628 (AMI / Smart Grid) | `frameworks/critical_infrastructure/ami/` | Full |
-| DORA / NIS2 (DORA incl. RTS 2024/1774 ICT risk management framework, 308 rows, simplified-framework gate) | `frameworks/financial/dora/`, `frameworks/compliance/nis2/` | Full |
-| NCSC CAF 4.0 | `frameworks/compliance/ncsc_caf/` | 23 Cyber Outcomes |
-| Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
-| **CSA CCM v4.0** | `frameworks/management/csa_ccm/` | 16 domains, 197 controls |
-| **ISO/IEC 27701:2019** | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
-| **NIST SP 800-171 Rev 3** | `frameworks/federal/nist/sp_800_171/` | 17 families, all 97 requirements with their 349 statements, ids and text from NIST's CPRT export; 79 decided by facts, 18 attested; 33 withdrawn listed with reasons |
-| **NIST SP 800-171A Rev 3** | `frameworks/federal/nist/sp_800_171a/` | all 422 assessment determination statements, rolled up per requirement; examine / interview / test methods carried as data |
-| **NIST SP 800-171 Rev 2** | `frameworks/federal/nist/sp_800_171_r2/` | the 110 requirements DFARS 7012 and CMMC 2.0 Level 2 still assess, basic / derived classification from CPRT |
-| **NISPOM (32 CFR 117)** | `frameworks/federal/nispom/` | 599 contractor obligations from the CFR text, 18 programme gates (FOCI, classified IS, SAP, SCI, RD, NNPI, NATO …) |
-| **FAR 52.204-21 / -25 / -27** | `frameworks/federal/far_cyber/` | basic safeguarding (15 requirements), covered telecom (Section 889) reporting clocks, ByteDance prohibition; per-clause gates |
-| **CISA TIC 3.0 Security Capabilities Catalog v3.3** | `frameworks/federal/cisa_tic3/` | 116 capabilities, universal + 12 PEP groups, group gate |
-| **DOE C2M2 v2.1** | `frameworks/critical_infrastructure/c2m2/` | all 356 practices in 10 domains, target-MIL gate and cumulative MIL scoring |
-| **NRC 10 CFR 73.54 + USCG 33 CFR 101 Subpart F** | `frameworks/critical_infrastructure/nrc_73_54/`, `frameworks/critical_infrastructure/maritime_33cfr101f/` | nuclear licensee cyber rule (34 paragraphs) and the 2025 maritime cybersecurity rule (105 obligations, compliance dates as data) |
-| **CERT-RMM v1.2** | `frameworks/management/cert_rmm/` | 248 specific practices in 26 process areas (ids and titles; summaries are our own) |
-| **CMS MARS-E 2.0, 45 CFR 155.260, FTC Red Flags / Disposal** | `frameworks/privacy/cms_mars_e/`, `frameworks/privacy/aca_155_260/`, `frameworks/financial/ftc_red_flags/` | 352 MARS-E controls (superseded by ARC-AMPE, recorded), 35 ACA Exchange PII obligations, 12 Red Flags / FACTA disposal obligations |
-| **NIST SP 800-37 Rev 2 RMF + SP 800-39** | `frameworks/federal/nist/risk_management_framework/`, `frameworks/federal/nist/sp_800_39/` | all 47 RMF tasks across the seven steps (P-1 … M-7, optional P-4 / P-6 gated) and the 12 SP 800-39 risk-management tasks |
-| **NIST AI RMF 1.0 + AI 600-1 Generative AI Profile** | `frameworks/federal/nist/ai_rmf/` | all 72 Core subcategories (14 fact-decided) and the 212 suggested actions of the GAI profile on their parent subcategories, rolled up per GAI risk; profile gated by `generative_ai` |
-| **NIST SP 800-160 Vol 2 Rev 1** | `frameworks/federal/nist/sp_800_160v2/` | the 50 cyber-resiliency implementation approaches under 14 techniques, with objectives, design principles and the Table E-1 SP 800-53 mapping as data |
-| **OWASP Top 10:2025** | `governance/owasp_top10/` | the 10 categories with their 249 mapped CWEs (titles and CWE lists only; summaries are our own) |
-| **NIST SP 800-171A (June 2018)** | `frameworks/federal/nist/sp_800_171a_r2/` | all 320 assessment objectives under the 110 Rev 2 requirements, examine / interview / test lists as data |
-| **NIST SP 800-172 Rev 3 + 172A** | `frameworks/federal/nist/sp_800_172/` | 137 enhanced security requirement statements and all 199 determination statements; a statement is satisfied only when attested and every determination holds |
-| **DFARS 252.204-7012 (May 2024, change of 2026-05-07)** | `frameworks/federal/dfars_7012/` | 25 contractor obligations by paragraph: 800-171 implementation, FedRAMP Moderate-equivalent cloud, 72-hour reporting, malware submission, 90-day media preservation, flow-down |
-| **EO 14028 Improving the Nation's Cybersecurity** | `frameworks/federal/eo_14028/` | 43 directive rows from Secs. 2, 3, 4, 6, 7, 8 by role (agency, FCEB agency, supplier); the 15 Sec. 4(e) supplier practices |
-| **CISA Secure Software Development Attestation Form v1.0** | `frameworks/federal/cisa_ssdaf/` | the 15 attestation items with their scope gates; each item carries its EO 4(e) subsection and SSDF tasks |
-| **CCPA / CPRA** | `frameworks/privacy/ccpa/` | Consumer rights, sensitive PI, data practices |
-| **EU AI Act (2024/1689)** | `governance/eu_ai_act/` | Prohibited, High-Risk, Transparency, GPAI, Governance |
-| **TSA Pipeline Security Directives** | `frameworks/critical_infrastructure/tsa_pipeline/` | SD Pipeline-2021-01G + 02G, 12 sections, 112 requirements |
-| **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
-| **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
-| **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
-| **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing scoped out honestly |
-| **COBIT 2019** | `frameworks/management/cobit/` | Governance-system attestation across EDM/APO/BAI/DSS/MEA — maturity assessment explicitly disclaimed |
-| **CISA SCuBA M365** | `benchmarks/scuba/m365/` | All 104 baseline policies across 7 products (Entra ID, Defender, EXO, Power BI, Power Platform, SharePoint/OneDrive, Teams); SHALL/SHOULD criticality reported; BOD 25-01 |
-| **CIS Amazon EKS v1.8.0** | `benchmarks/cis/eks/` | 49 controls (kubescape-mapped coverage; gaps stated in header) |
-| **CIS Azure AKS v1.8.0** | `benchmarks/cis/aks/` | 56 controls (kubescape-mapped coverage; gaps stated in header) |
-| **CIS Google GKE v1.9.0** | `benchmarks/cis/gke/` | 40 controls (partial cover of the official benchmark — stated in header) |
-| **NSA/CISA Kubernetes Hardening v1.2** | `benchmarks/nsa_cisa/kubernetes/` | 43 controls across the guide's 5 sections |
-| **SAP Security Baseline Template v2.6 (ABAP)** | `benchmarks/sap/abap/` | Registry of all 355 ABAP checks SAP publishes (SAP-samples, Apache-2.0); 138 decided from host facts (profile, transport and kernel parameters, gateway and message-server ACL files), the rest listed not-assessable with the store named; projections onto the Baseline requirements, the DSAG S/4HANA audit guide sections and NIST CSF 2.0 |
-| **Kubernetes Pod Security Standards** | `benchmarks/pss/kubernetes/` | 12 baseline + 6 restricted controls, evaluated against an actual Pod manifest |
-| **FERPA (34 CFR Part 99)** | `frameworks/privacy/ferpa/` | 32 controls: notification, access/amendment, consent, exception conditions, directory info, disclosure recordkeeping |
-| **COPPA (16 CFR Part 312, 2025 amendments)** | `frameworks/privacy/coppa/` | 21 controls incl. separate third-party-disclosure consent, retention policy, written infosec program |
-| **CIS Controls v8.1** | `frameworks/management/cis_controls_v8/` | 18 Critical Security Controls, 153 safeguards, cumulative IG1 ⊆ IG2 ⊆ IG3 scoring — distinct from the CIS *Benchmarks* above |
-| **Zero Trust — CISA ZTMM v2.0 + NIST SP 800-207** | `frameworks/federal/zero_trust/` | 83 criteria across the 5 pillars + 3 cross-cutting capabilities |
-| **PQC Readiness (FIPS 203/204/205, EO 14412, CNSA 2.0) + NIST CSWP 39-upd1 crypto agility** | `frameworks/federal/pqc/` | 67 CSWP 39 practice rows (June 2026 update, implementer and cloud gates) beside 15 profile-gated controls (general/federal/nss) + data-driven algorithm classification over a supplied crypto inventory (HNDL, IR 8547 deprecation, CNSA 2.0) |
-| **BNM Risk Management in Technology (Malaysia, Sep 2026)** | `frameworks/financial/bnm_rmit/` | 99 mandatory S paragraphs of Part B §§8–15; cloud, third-party, NCII and digital-services paragraphs gated by declared flags; 2027 dated obligations and the 4-hour / 120-minute availability targets in the report |
-| **HKMA SPM TM-G-1 + TM-C-1 (Hong Kong)** | `frameworks/financial/hkma_trm/` | 67 controls: TM-G-1 §§2–7 technology risk management plus the TM-C-1 cyber duties (incident reporting, C-RAF, STDB, CISP); WLAN, outsourcing and overseas-IT paragraphs gated by declared flags |
-| **APRA CPS 234 Information Security (Australia, 2019)** | `frameworks/financial/apra_cps234/` | one control per requirement paragraph 13–36; third-party paragraphs gated by a declared flag; 72-hour incident and 10-business-day weakness clocks in the report |
-| **METI Cybersecurity Management Guidelines Ver. 3.0 (Japan, 2023)** | `frameworks/regional/meti_csm/` | Appendix A check sheets: 3 principles (9 items) + 10 directions (40 items), each with its NIST CSF subcategory refs; per-direction report |
-| **India DPDP Act 2023 + DPDP Rules 2025** | `frameworks/privacy/dpdp_india/` | Data Fiduciary duties: lawful basis, notice, consent, Rule 6 safeguards, 72-hour breach reporting, retention and erasure, children, Significant Data Fiduciary, rights, transfers; four declared scope flags; penalty tiers in the report |
-| **CERT-In Directions under s.70B(6) IT Act (Apr 2022)** | `frameworks/regional/cert_in/` | India: 6-hour incident reporting, all 20 Annexure I incident types, 180-day in-country logs, NIC/NPL time sync, PoC; provider and VASP duties by declared sector flag |
-| **MAS Technology Risk Management Guidelines (Jan 2021)** | `frameworks/financial/mas_trm/` | 237 controls across chapters 3–15, per-chapter report; chapter 14 (online financial services) scoped by flag |
-| **ACSC Essential Eight (Nov 2023)** | `frameworks/regional/essential_eight/` | 8 mitigation strategies, 96 requirements; overall maturity = lowest strategy level |
-| **FBI CJIS Security Policy** | `frameworks/federal/cjis/` | All 13 Policy Areas, 98 requirements, NIST 800-53-mapped |
-| **NIST SSDF (SP 800-218 v1.1)** | `frameworks/federal/nist_ssdf/` | 42 secure-software-development controls |
-| **NIST CSF 2.0** | `frameworks/federal/nist/cybersecurity_framework_2.0/` | all 106 subcategories (6 functions, 22 categories) with ids, text and the 363 implementation examples from NIST's CPRT export; 29 decided by facts, 77 attested; 79 withdrawn CSF 1.1 subcategories listed with their destination |
-| **NIST Privacy Framework 1.0** | `frameworks/privacy/nist_privacy_framework/` | all 100 subcategories (5 functions, 18 categories) from NIST's CPRT export, with each row's CSF relationship (identical / adapted / none) |
-| **NIST SP 800-82 Rev 3 OT overlay** | `frameworks/critical_infrastructure/nist_800_82/` | Appendix F Table 22 transcribed: 424 SP 800-53 controls with Low / Moderate / High OT baseline membership (verified against the 800-53B sizes), 24 additions and 3 removals, impact gate |
-| **NIST SP 800-161 Rev 1 C-SCRM tailoring** | `benchmarks/supply_chain/scrm_800_161/` | Appendix B Table 6 transcribed: 297 controls with Baseline / Flow Down / Level 1-3 membership, level gate |
-| **IRS Publication 1075 (Rev. 11-2021)** | `frameworks/federal/irs_1075/` | 8 safeguard areas, 57 requirements — IRC 6103(p)(4)(A)–(F), §9 computer security (800-53 Rev 5 tailoring), §10 incident response |
-| **UK Cyber Essentials (Willow, April 2025)** | `frameworks/regional/cyber_essentials/` | 5 technical control themes, 28 requirements |
-| **UK Data Protection Act 2018 (as at 2026-09-30)** | `frameworks/privacy/uk_dpa_2018/` | 151 controller / processor duties beyond the UK GDPR: Part 2 supplementary provisions and Schedule 1 policy document, Part 3 law-enforcement processing (gated), s.164A; Parts 4–7 out of scope with citations |
-| **BSI C5:2026** (all 168 criteria, 17 subject areas, BSI's ids; binding for periods from 2027-06-01), **MAS TRM (Singapore, Jan 2021)**, **CERT-In Directions (India, 2022)**, **India DPDP Act 2023 + Rules 2025**, **METI CSM Guidelines (Japan)**, **APRA CPS 234**, **HKMA TM-G-1/TM-C-1**, **BNM RMiT (Malaysia)** | `frameworks/regional/bsi_c5/` | All 17 criteria domains, 61 requirements — incl. Portability/Interoperability (export + confirmed deletion) and Government Investigation Requests (INQ) |
-| **ISO/IEC 42005:2025 (AI impact assessment)** | `governance/iso_42005/` | 22 attestation checks across the AIIA process (Clause 5) and per-system records (Clause 6), wired to the ISO 42001 AIMS integration |
-| **OWASP LLM Top 10 (2026)** | `governance/owasp_llm/` | 30 controls (3 per risk, LLM01–LLM10:2026) with a MITRE ATLAS mitigation crosswalk (atlas-data v2026.09) |
-| **FedRAMP 20x KSI** | `frameworks/federal/fedramp_20x/` | All 46 Key Security Indicators, Class B/C profiles, generated from the Consolidated Rules datafile; rev5 module retained for existing/High |
-| **UK MoD DCC — DEF STAN 05-138 Issue 4** | `frameworks/regional/dcc/` | All 148 controls, 4 Cyber Risk Profiles (L0 Basic → L3 Expert) with exact per-control level sets incl. the non-cumulative supersession pairs |
-| **SAE AS9100D (IAQG 9100:2016) aerospace QMS** | `frameworks/management/as9100d/` | 71 clause rows of clauses 4–10 in seven clause packages incl. every aerospace addition (8.1.1–8.1.4, 8.3.4.1 V&V testing, 8.4 flow-down, 8.5.1.1–8.5.1.3, 8.5.6, 8.7, 9.1.2 on-time delivery/conformity KPIs + customer feedback, 10.2 root cause + human factors); 18 decided from collected evidence (malformed, blank or empty evidence never passes), 53 attested; clause numbers and titles only — no standard text |
-
-Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDARDS_UPDATE_REGISTRY.md) — pinned version, upstream revision cadence, and watch URL — so modules regenerate when standards change instead of drifting silently.
-
----
-
-## What's in the box
-
-| Domain | Policies | Coverage |
-|--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 486 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 24 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
-| **Federal & K8s hardening baselines** | 19 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
-| **Application suite baselines** | 7 | **SAP Security Baseline Template v2.6 (ABAP)** — registry of all 355 checks SAP publishes (SAP-samples, Apache-2.0), 138 decided from host facts, projections onto the Baseline requirements, the DSAG S/4HANA audit guide and NIST CSF 2.0 |
-| **Regulatory Frameworks** | 389 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020**, **SAE AS9100D (aerospace QMS)** |
-| **Enforcement** | 22 | Ansible, Terraform, Dockerfile, Kubernetes admission, Git approval/playbook docs, **AAP job gating**, **CI/CD pipeline gating**, **SLSA supply-chain governance**, **Terraform-provider change gate (aac.tfprovider)** |
-| **Governance** | 26 | AI agent authorization, MCP tool-call enforcement, GEISA (API/ADM/LEE/VEE), **EU AI Act (Regulation 2024/1689)** suite, **ISO/IEC 42001 (AIMS)**, **OIDC token validation**, **FinOps tagging**, **estate continuity** (retired vs disappeared vs not responding) |
-| **Crosswalks** | 2 | STIG ↔ NIST 800-53 control mappings, framework maps |
-| **Threat Detection** | 2 | Cryptocurrency miner detection |
-
-**Highlight:** CIS RHEL 9 v3.0.0 — **352 CIS recommendations** with Level 1/2 server and workstation profiles
-(14 core CIS sections plus 3 extended-hardening modules for STIG/NIST drift detection).
-
-> **On coverage numbers.** The control IDs above are counted from the violation messages
-> the modules actually emit, so the figure is reproducible from a clone:
-> ```bash
-> grep -rhoE 'CIS (L2 )?[0-9]+(\.[0-9]+)*' benchmarks/cis/rhel_9 --include='*.rego' \
->   | sed -E 's/CIS L2 /CIS /' | sort -u | wc -l
-> ```
-> It is a **floor, not a ceiling** — a single rule often satisfies more than one CIS control,
-> so true coverage is higher. We publish the number we can prove rather than a headline
-> percentage we cannot.
-
----
-
-## Continuous ATO, in machine-readable form
-
-Everything an authorization package needs from the policy side is generated from the Rego parse tree and the
-evaluation output, validated against the OSCAL 1.2.3 schemas in CI, and committed under
-[`converters/exports/oscal/dist/`](converters/exports/oscal/):
-
-| OSCAL object | What it holds | Where |
-|---|---|---|
-| catalog | one per framework, 185 catalogs, 19,379 controls with the Rego file that evaluates each | `dist/catalogs/` |
-| profile | NIST SP 800-53 Rev 5 Low / Moderate / High / Privacy and FedRAMP Rev 5 Low / Moderate / High / LI-SaaS, imported from NIST's and FedRAMP's own files at pinned commits | `dist/profiles/` |
-| component-definition | the library as one component: an implemented-requirement per catalog control, plus one per baseline control the library evaluates | `dist/component-definition.json` |
-| assessment-results | built from any `compliance_report` run, one finding per violation targeting the catalog statement | `build_assessment_results.py` |
-| baseline coverage | per baseline, which 800-53 controls at least one check evaluates: about 60 % of base controls in every baseline, few enhancements, with the mapping source for each | `dist/profiles/coverage.csv` |
-
-Mappings to 800-53 come only from authoritative tables (DISA's CCI map for every STIG rule, NIST's baselines, and
-modules whose control ids are 800-53 ids); nothing is mapped by hand. Not yet generated: a system security plan, a
-POA&M, and signed results. SARIF 2.1.0 and OCSF 1.9.0 exports sit beside the OSCAL ones. How it works:
-[`converters/exports/oscal/README.md`](converters/exports/oscal/README.md).
-
-## Quick Start
-
-### Option A — OCI bundle (recommended for production)
-
-Pull the pre-built bundle directly from GitHub Container Registry — no clone needed:
+## Try it in two minutes
 
 ```bash
-# Pull the full policy bundle
-oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
-
-# Start OPA with the bundle
-podman run -d --name opa -p 8181:8181 \
-  -v "$(pwd)/bundle.tar.gz:/bundle.tar.gz:ro" \
-  openpolicyagent/opa:1.10.0 run --server --addr :8181 --bundle /bundle.tar.gz
-```
-
-Versioned tags are available: `ghcr.io/ynotbhatc/rego_policy_libraries:v1.0.0`
-
-Install `oras`: https://oras.land/docs/installation
-
----
-
-### Option B — Git clone
-
-```bash
-# Clone
 git clone https://github.com/ynotbhatc/rego_policy_libraries.git
 cd rego_policy_libraries
 
-# Start OPA
-podman run -d --name opa -p 8181:8181 openpolicyagent/opa run --server --addr :8181
+# Ask the CIS RHEL 9 benchmark for a report with no facts at all
+opa eval -d benchmarks/cis/rhel_9 -f pretty 'data.cis_rhel9.main.compliance_report'
+```
 
-# Load all CIS RHEL 9 policies
-for f in benchmarks/cis/rhel_9/*.rego; do
-  curl -s -X PUT --data-binary @"$f" \
-    "http://localhost:8181/v1/policies/$(basename $f .rego)"
-done
+You get a report that is **not** compliant:
 
-# Evaluate against your system facts — uniform entrypoint, same for every framework
+```
+"compliant": false,
+"compliance_percentage": 0,
+"total_controls": 263,
+"failed_controls": 263,
+"violations": [
+  "FAIL-CLOSED: no facts supplied for cis_rhel9 — the assessment could not be evaluated. ...",
+  "1.1.1.1: evidence missing — disabled_filesystem_modules.modules[cramfs] not collected",
+  ...
+]
+```
+
+That is the one rule every framework here follows: no facts means non-compliant with a reason, never a silent pass. Feed it real facts and the same query returns the real result.
+
+```bash
+opa eval -d benchmarks/cis/rhel_9 -i facts.json -f pretty 'data.cis_rhel9.main.compliance_report'
+```
+
+Prefer a running server? Pull the pre-built bundle instead of cloning:
+
+```bash
+oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
+podman run -d --name opa -p 8181:8181 -v "$(pwd)/bundle.tar.gz:/bundle.tar.gz:ro" \
+  openpolicyagent/opa:1.10.0 run --server --addr :8181 --bundle /bundle.tar.gz
 curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/main/compliance_report \
-  -H 'Content-Type: application/json' \
-  -d '{"input": {"os_family": "RedHat", ...}}'
+  -H 'Content-Type: application/json' -d @facts.json
 ```
 
-> Query with **no** input and you get `compliant: false` with an explicit
-> `FAIL-CLOSED` violation — not a 100% pass. That is deliberate; see
-> [Framework entrypoints](#framework-entrypoints).
+Wiring it into a CI job, Conftest, Gatekeeper or Kubewarden: [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
 
----
+## How it works
 
-## Policy Taxonomy
+- **One entrypoint per framework.** `data.<key>.main.compliance_report`, where `<key>` is the framework's name (`cis_rhel9`, `stig_rhel9`, `nist_800_53`, `pci_dss`, `as9100d` …). You do not need to know how a framework is organised inside.
+- **One report shape.** `compliant`, counts of passed and failed controls, a percentage, and a `violations` list that names each control. Sections are reported separately when a framework has them.
+- **Facts in, decisions out.** Policies read only their input. They perform no I/O, call no services and need no data documents, so they run the same in OPA, Enterprise OPA, Conftest, Gatekeeper, Kubewarden and Trivy.
+- **Fails closed.** Missing facts fail. A control whose evidence is absent fails with an "evidence missing" violation rather than passing by default. The gate catches empty input; sparse or wrongly shaped input still evaluates, so send what the module header asks for.
+- **Loadable in any slice.** Load one benchmark, one directory or the whole tree. Nothing references another instance.
 
-```
-rego_policy_libraries/
-├── benchmarks/                  # Technical security baselines
-│   ├── cis/
-│   │   ├── rhel_8/ rhel_9/ rhel_10/
-│   │   ├── ubuntu_20_04/ ubuntu_22_04/ ubuntu_24_04/
-│   │   ├── debian_11/ rocky_linux_8/ rocky_linux_9/ amazon_linux_2023/
-│   │   ├── windows_server_2016/ windows_server_2019_modular/
-│   │   ├── windows_server_2022/ windows_server_2022_modular/
-│   │   ├── windows_10_modular/ windows_11_modular/
-│   │   ├── aws/ azure/ gcp/     # Cloud Foundations
-│   │   ├── docker/ kubernetes/  # Containers
-│   │   ├── eks/ aks/ gke/       # Managed Kubernetes (EKS v1.8.0, AKS v1.8.0, GKE v1.9.0)
-│   │   ├── postgresql/ databases/
-│   │   ├── saas/m365_v7/        # SaaS — CIS Microsoft 365 Foundations v7 (m365/ = v6 legacy)
-│   │   ├── network_devices/     # Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense
-│   │   ├── vmware/              # ESXi 8, vCenter
-│   │   ├── mobile_devices/      # Android, iOS
-│   │   ├── os/linux/            # legacy/simple RHEL 9 variants — superseded
-│   │   ├── cloud/               # AWS, Azure, GCP Foundations
-│   │   ├── containers/          # Docker, Kubernetes, OpenShift
-│   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
-│   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
-│   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
-│   ├── stig/                    # DISA STIGs — 25 platforms (Linux, Windows, K8s/RKE2/OpenShift,
-│   │                            # databases, Apache, Cisco IOS-XE, vSphere)
-│   ├── scuba/m365/              # CISA SCuBA M365 baselines — 104 policies, 7 products (BOD 25-01)
-│   ├── nsa_cisa/kubernetes/     # NSA/CISA Kubernetes Hardening Guidance v1.2 — 43 controls
-│   ├── pss/kubernetes/          # K8s Pod Security Standards — baseline + restricted, manifest-evaluated
-│   └── sap/abap/                # SAP Security Baseline Template v2.6 (ABAP) — 355-check registry, 138 host-decided
-│
-├── frameworks/                  # Regulatory compliance
-│   ├── federal/                 # NIST 800-53/171/800-82, CSF 2.0, AI RMF, SSDF, FISMA, FedRAMP,
-│   │                            # CMMC, Zero Trust (ZTMM v2.0 + 800-207), CJIS, IRS Pub 1075
-│   ├── management/              # ISO 27001, SOC 2, CSA CCM, COBIT 2019, CIS Controls v8.1,
-│   │                            # Corporate, NCSC CAF 4.0
-│   ├── financial/               # PCI-DSS, SOX, SWIFT CSP, NY DFS, SEC Cyber, GLBA
-│   ├── privacy/                 # GDPR, HIPAA, ISO 27701, CCPA/CPRA, FERPA, COPPA
-│   ├── regulatory/              # DORA, NIS2, ITAR
-│   ├── regional/                # ACSC Essential Eight, UK Cyber Essentials, BSI C5, UK MoD DCC, CERT-In (India), METI CSM (Japan)
-│   ├── critical_infrastructure/ # NERC-CIP (CIP-002–CIP-015), IEC 62443, NIST IR 7628,
-│   │                            # NIST 800-82, TSA Pipeline Security Directives
-│   └── sovereignty/             # Digital Sovereignty (7 domains)
-│
-├── enforcement/                 # Gate-style policy enforcement
-│   ├── ansible/                 # Block non-compliant playbooks at check-in and runtime
-│   ├── terraform/               # Validate plans before apply
-│   ├── dockerfile/              # Lint Dockerfiles at build time
-│   ├── kubernetes/              # Admission control for K8s manifests
-│   ├── git/                     # Approval and playbook-documentation policies
-│   ├── cicd/                    # CI/CD pipeline gating
-│   └── supply_chain/            # SLSA-style supply-chain governance
-│
-├── governance/                  # AI and operational governance
-│   ├── ai/                      # AI agent action classification and authorization
-│   ├── mcp/                     # MCP server tool-call enforcement
-│   ├── eu_ai_act/               # EU AI Act (Regulation 2024/1689) — prohibited, high-risk, GPAI, transparency
-│   ├── geisa/                   # GEISA runtime compliance (API, ADM, LEE, VEE)
-│   ├── oidc/                    # OIDC token validation for portal/MCP access control
-│   └── finops/                  # Resource tagging policies
-│
-└── threat_detection/
-    └── crypto_mining/           # Detect unauthorized cryptocurrency miners
-```
-
----
-
-## CIS Benchmark Coverage
-
-| Platform | Path | Controls |
-|----------|------|----------|
-| **RHEL 9** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
-| RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
-| Ubuntu 22.04 | `benchmarks/cis/ubuntu_22_04/` | Full |
-| Ubuntu 20.04 / 24.04 | `benchmarks/cis/ubuntu_20_04/` | Full |
-| Debian 11 | `benchmarks/cis/debian_11/` | Full |
-| Rocky Linux 8 / 9 | `benchmarks/cis/rocky_linux_8/` | Full |
-| Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
-| Windows Server 2022 | `benchmarks/cis/windows_server_2022_modular/` | Full (v5.1.0, 408 recommendations) |
-| Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified |
-| AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
-| Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |
-| Cisco / Juniper / Palo Alto / Fortinet / Arista | `benchmarks/cis/network/` | Full |
-
----
-
-## IEC 62443 Coverage
-
-Full library for IEC 62443 Industrial Automation and Control Systems (IACS) Security — all 51 System Requirements (SRs) from Part 3-3 plus Part 2 management requirements.
-
-| File | Part | Title | SRs |
-|------|------|-------|-----|
-| `fr1_identification_authentication.rego` | 3-3 FR 1 | Identification & Authentication Control (IAC) | SR 1.1–1.13 (13) |
-| `fr2_use_control.rego` | 3-3 FR 2 | Use Control (UC) | SR 2.1–2.12 (12) |
-| `fr3_system_integrity.rego` | 3-3 FR 3 | System Integrity (SI) | SR 3.1–3.9 (9) |
-| `fr4_data_confidentiality.rego` | 3-3 FR 4 | Data Confidentiality (DC) | SR 4.1–4.3 (3) |
-| `fr5_restricted_data_flow.rego` | 3-3 FR 5 | Restricted Data Flow / Zone & Conduit (RDF) | SR 5.1–5.4 (4) |
-| `fr6_timely_response.rego` | 3-3 FR 6 | Timely Response to Events (TRE) | SR 6.1–6.2 (2) |
-| `fr7_resource_availability.rego` | 3-3 FR 7 | Resource Availability (RA) | SR 7.1–7.8 (8) |
-| `part2_security_management.rego` | 2-1 | Security Management System (CSMS) | — |
-| `part2_patch_management.rego` | 2-3 | Patch Management in IACS Environments | — |
-| `part2_service_provider.rego` | 2-4 | Security Program for IACS Service Providers (SP.01–SP.10) | — |
-| `part3_risk_assessment.rego` | 3-2 | Security Risk Assessment (ZCR 1–5) | — |
-| `iec_62443_main.rego` | All | Main orchestrator — aggregates all parts | 51 total |
-
-**Security Level (SL) tiering:** All FR modules enforce SL-differentiated requirements — violations are tagged with the SL at which they apply (SL 1 baseline through SL 4 state-sponsored threat protection).
-
-**OPA endpoint:** `POST /v1/data/iec_62443_main/iec_62443_compliance_report`
-
-```json
-{
-  "standard": "IEC 62443",
-  "target_sl": 2,
-  "compliant": false,
-  "fr_compliance_score": 71,
-  "sr_compliance_score": 84,
-  "passing_frs": 5,
-  "total_frs": 7,
-  "passing_srs": 43,
-  "total_srs": 51,
-  "part3_3_foundational_requirements": {
-    "FR1_identification_authentication": { "compliant": true, "passing_srs": 13 },
-    "FR5_restricted_data_flow": { "compliant": false, "violations": ["..."] }
-  }
-}
-```
-
----
-
-## TSA Pipeline Security Directives Coverage
-
-Both currently-effective TSA pipeline cybersecurity directives, in
-`frameworks/critical_infrastructure/tsa_pipeline/` — 12 section modules plus an
-orchestrator, covering 112 directive subparagraphs.
-
-| Directive | Effective | Sections covered |
-|---|---|---|
-| **SD Pipeline-2021-01G** — *Enhancing Pipeline Cybersecurity* | 2026-01-16 → 2027-01-15 | II.B Cybersecurity Coordinator · II.C Incident reporting to CISA · II.D Vulnerability assessment |
-| **SD Pipeline-2021-02G** — *Pipeline Cybersecurity Mitigation Actions, Contingency Planning, and Testing* | 2026-05-03 → 2027-05-02 | II.A/III.A Critical Cyber Systems · II.B/VI Implementation Plan + amendments · III.B Network segmentation · III.C Access control · III.D Continuous monitoring · III.E Patch management · III.F Incident Response Plan · III.G Assessment Plan · IV/V Records + SSI |
-
-**OPA endpoint:** `POST /v1/data/tsa_pipeline/main/compliance_report`
-
-The directives are largely deadline-driven, and the deadlines are what these
-policies assert — each is pinned by a test in
-`tests/test_tsa_pipeline_deadlines.rego`:
-
-| Clock | Directive |
-|---|---|
-| 72 hours — report incident to CISA | SD-01G II.C.3 |
-| 24 hours — supplemental information | SD-01G II.C.5.f |
-| 7 days — Coordinator info change | SD-01G II.B.1.e |
-| 60 days — "no Critical Cyber Systems" notice | SD-02G II.A.5 |
-| 45 / 50 / 30 days — permanent change · amendment filing · reconsideration petition | SD-02G VI.C / VI.D / VI.F |
-| 12 months, ≥ 2 objectives — Incident Response Plan exercise | SD-02G III.F.1.e |
-| 24 months — cybersecurity architecture design review | SD-02G III.G.2.b |
-| ⅓ per year, 100% over 3 years — assessment coverage | SD-02G III.G.2.d |
-| 12 months — Assessment Plan and report submission | SD-02G III.G.3–4 |
-| 24 hours — maximum packet capture period | SD-02G IV.C.2.e.ii |
-
-> **No fact source exists yet.** Both directives are overwhelmingly plan-,
-> attestation-, and recordkeeping-driven ("is there a TSA-approved Cybersecurity
-> Implementation Plan", "was the Assessment Plan submitted within 12 months").
-> None of that comes from host fact-gathering, and nothing currently emits the
-> `input` documented in each module header. On absent input this framework
-> reports **fully non-compliant across all 12 sections** — correct fail-closed
-> behavior for an audit framework, but not a working assessment until an
-> attestation intake or GRC export is wired up. Don't demo it as one.
-
----
-
-## NERC-CIP Coverage
-
-Full library covering all active CIP standards (CIP-002 through CIP-015) in `frameworks/critical_infrastructure/nerc_cip/`.
-
-**OPA endpoint:** `POST /v1/data/nerc_cip_main`
-
-**Data sources:** Every `input.*` field used by the 14 CIP policies is documented in [`frameworks/critical_infrastructure/nerc_cip/DATA_SOURCES.md`](frameworks/critical_infrastructure/nerc_cip/DATA_SOURCES.md) — each entry lists the real-world source system (GRC, CMDB, LMS, PACS, SIEM, INSM platform, vulnerability scanner, etc.), the collection method (Ansible module or REST endpoint), and whether the integration is currently live or stubbed.
-
----
-
-## Loading Policies into OPA
-
-### Single policy
-```bash
-curl -X PUT --data-binary @benchmarks/cis/rhel_9/pam_validation.rego \
-  http://localhost:8181/v1/policies/cis_rhel9_pam
-```
-
-### All policies in a directory
-```bash
-for f in benchmarks/cis/rhel_9/*.rego; do
-  curl -s -X PUT --data-binary @"$f" \
-    "http://localhost:8181/v1/policies/$(basename $f .rego)"
-done
-```
-
-### Optional: splitting by domain
-
-A single OPA instance serves this entire library comfortably — start there. If you later want
-blast-radius or access isolation between domains, you can run several instances and load a
-subtree into each:
-
-```bash
-# e.g. one instance per domain, each on its own port
-podman run -d --name opa-benchmarks  -p 8181:8181 openpolicyagent/opa run --server --addr :8181
-podman run -d --name opa-frameworks  -p 8182:8181 openpolicyagent/opa run --server --addr :8181
-podman run -d --name opa-governance  -p 8183:8181 openpolicyagent/opa run --server --addr :8181
-```
-
-Then load `benchmarks/` into the first, `frameworks/` into the second, and
-`governance/` + `enforcement/` into the third.
-
-The split is entirely your choice — the policies neither know nor care which instance they
-are loaded into, and no policy references another instance. Pick whatever grouping matches
-how you want to control access; there is nothing special about the one above.
-
----
-
-## Framework entrypoints
-
-Every framework exposes a uniform entrypoint:
-
-```
-data.<package>.main.compliance_report
-```
-
-so you can evaluate any framework by name without learning how its modules are organised
-internally. Some frameworks are a single module, others aggregate a dozen; the entrypoint
-looks the same either way.
-
-**Entrypoints are named after the package that holds the policy** — never after a caller's
-own vocabulary. If your system spells a framework differently (`cis_ubuntu_2204` where this
-library says `cis_ubuntu_22_04`), write a thin alias on your side:
-
-```rego
-package cis_ubuntu_2204.main
-
-import rego.v1
-
-compliance_report := data.cis_ubuntu_22_04.main.compliance_report
-```
-
-Keeping that translation in your repo is what lets this one stay generic.
-
-### Fail closed
-
-Most controls are phrased *"violate if the fact says X"*. Given **no facts**, nothing
-iterates, nothing violates — and a naive report would announce near-total compliance for an
-assessment that measured nothing. That result is indistinguishable from a genuinely clean
-system, and it is exactly the kind of thing that quietly lands in an audit record.
-
-Every entrypoint therefore gates on whether facts were supplied at all:
-
-| input | result |
-|---|---|
-| no facts | `compliant: false`, 0%, all controls counted failed, explicit `FAIL-CLOSED` violation |
-| real facts | normal assessment; the gate is transparent |
-
-```bash
-opa eval -d . -f pretty 'data.cis_rhel9.main.compliance_report'
-# compliant: false, compliance_percentage: 0, violations: ["FAIL-CLOSED: no facts supplied ..."]
-```
-
-An empty report is never a passing report. **Limitation:** the gate detects a completely
-empty input, not a partial one — sparse or wrong-shaped facts still evaluate normally and can
-under-report violations.
-
----
-
-## Input / Output Contract
-
-Each framework's entrypoint accepts system facts as input and returns a structured report.
-Individual modules additionally expose their own `compliance_assessment` / `compliance_report`
-rules if you want a single section rather than the whole framework:
+A typical report:
 
 ```json
 {
   "compliant": false,
-  "summary": {
-    "total_controls": 338,
-    "passing_controls": 301,
-    "failing_controls": 37,
-    "compliance_percentage": 89.05,
-    "overall_compliance": "FAIL"
-  },
+  "total_controls": 352,
+  "passed_controls": 301,
+  "failed_controls": 51,
+  "compliance_percentage": 86,
   "violations": [
-    "1.1.1 mounting of cramfs filesystems must be turned off",
-    "5.2.4 SSH X11 forwarding must be turned off"
+    "1.1.1.1: evidence missing — disabled_filesystem_modules.modules[cramfs] not collected",
+    "5.1.7: X11Forwarding is yes; expected no"
   ],
-  "section_compliance": {
-    "1_filesystem": true,
-    "2_services": false,
-    ...
-  }
+  "section_results": { "1": {"compliant": false, "...": "..."}, "...": "..." }
 }
 ```
 
----
+## What's inside
 
-## Use as a Git Submodule
+| Domain | Policies | Coverage |
+|--------|----------|----------|
+| **CIS Benchmarks + DISA STIGs** | 486 | CIS for Linux, Windows, cloud, containers, managed Kubernetes, databases, web servers, network devices, VMware and Microsoft 365, with Level 2 profiles; DISA STIGs — 25 platforms on the October 2026 library |
+| **Federal & K8s hardening baselines** | 19 | CISA SCuBA M365, NSA/CISA Kubernetes Hardening, Kubernetes Pod Security Standards |
+| **Application suite baselines** | 7 | SAP Security Baseline Template v2.6 (ABAP) |
+| **Regulatory Frameworks** | 389 | NIST (800-53, 800-171, CSF 2.0, AI RMF, SSDF, Zero Trust), ISO 27001 and 27701, SOC 2, PCI DSS, SOX, HIPAA, GDPR, CCPA, NERC CIP, IEC 62443, FedRAMP, CMMC, CJIS, DORA, NIS2, NY DFS, SWIFT CSP, HITRUST, TISAX, COBIT, CIS Controls v8.1, UK Cyber Essentials, BSI C5, Essential Eight, MAS TRM, APRA CPS 234, HKMA, BNM RMiT, DPDP, CERT-In, METI, SAE AS9100D, and more |
+| **Enforcement** | 22 | Gates for Ansible, Terraform, Dockerfiles, Kubernetes admission, Git approvals, AAP jobs, CI/CD pipelines, SLSA supply chain |
+| **Governance** | 26 | AI agent authorisation, MCP tool calls, EU AI Act, ISO/IEC 42001 and 42005, OIDC tokens, FinOps tagging, estate continuity |
+| **Crosswalks** | 2 | STIG ↔ NIST 800-53 and framework-to-framework maps |
+| **Threat Detection** | 2 | Cryptocurrency miner indicators |
 
-```bash
-# Add to your project
-git submodule add https://github.com/ynotbhatc/rego_policy_libraries.git policies
-git submodule update --init --recursive
+Every framework, its path and what it covers: [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md). The directory layout and ways to load it: [docs/TAXONOMY.md](docs/TAXONOMY.md). Which version of each standard is implemented and when it is next expected to change: [STANDARDS_UPDATE_REGISTRY.md](STANDARDS_UPDATE_REGISTRY.md).
 
-# Update to latest
-git submodule update --remote policies
-git add policies && git commit -m "Update policy library"
-```
+## Find your way in
 
----
+| You are | Start here |
+|---|---|
+| Running OPA and want checks for a platform | [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md), then `opa eval` as above |
+| Gating CI, Terraform, containers or Ansible | [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) and [`enforcement/`](enforcement/) |
+| Writing or fixing a policy | [CONTRIBUTING.md](CONTRIBUTING.md), [CLAUDE.md](CLAUDE.md) for the house rules, `make test` |
+| Preparing an audit or an authorisation package | [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md) for scope, the OSCAL exports below for evidence |
+| Using it from another engine or format | [`converters/`](converters/) |
+
+## Machine-readable outputs
+
+The evaluation output and the policy source generate the artefacts an authorisation package needs, validated in CI against the OSCAL 1.2.3 schemas and committed under [`converters/exports/oscal/dist/`](converters/exports/oscal/): catalogs (one per framework, 185 catalogs, 19,379 controls, each with the Rego file that evaluates it), NIST and FedRAMP profiles, a component definition, and assessment results built from any `compliance_report` run. SARIF and OCSF exports sit beside them. Control mappings come only from authoritative tables (DISA's CCI map, NIST's baselines), never by hand. [`converters/README.md`](converters/README.md) lists every packaging target, interchange format and per-engine generator (WASM, signed bundles, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler).
 
 ## Requirements
 
-- [Open Policy Agent](https://www.openpolicyagent.org/) or
-  [Enterprise OPA (EOPA)](https://www.styra.com/enterprise-opa/) — the policies use only
-  standard Rego and built-ins, so either runtime works
-- All policies use `import rego.v1` (Rego v1 syntax)
-- Continuously tested in CI against OPA v1.10.0 and v1.22.0 (the newest stable release as of 2026-11-01). The matrix is in `.github/workflows/opa-test.yml`; both versions must pass the same strict check and the same test suite. v1.10.0 remains the floor the published bundle is built with.
-- Other Rego engines are not supported: rego-cpp / regopy 1.5.2 fails to load some policies and reaches different decisions on others — see [docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)
-- No other dependencies — no sidecar, no data documents, no external services. Policies are
-  pure functions of their input and perform no I/O (no `http.send`).
+- Open Policy Agent or Enterprise OPA. Tested in CI on OPA 1.10.0 and 1.22.0; the published bundle is built with 1.10.0. Other Rego engines are not supported ([docs/ENGINE_COMPATIBILITY.md](docs/ENGINE_COMPATIBILITY.md)).
+- Nothing else. Policies use `import rego.v1` and standard built-ins only.
 
----
+## Who uses it
 
-## Consumers
-
-This library is standalone. It has no opinion about who calls it, how facts are gathered, or
-where results are stored — it is a tree of `.rego` files and their tests, and nothing else.
-
-Anything specific to a particular caller — framework-key naming, routing tables, result
-schemas, fact collection — belongs in that caller, not here. If you find something in this
-repo that only makes sense for one consumer, that is a bug worth reporting.
-
-**Known consumers:**
-
-- **AAC (Ansible Automated Compliance)** — a compliance automation platform on Ansible
-  Automation Platform + OPA + PostgreSQL. It consumes this library as a git submodule and
-  keeps its own key-translation aliases and routing config on its side. (The orchestration
-  repo is private; this policy library is the open component.)
-
-Using it somewhere else? Open an issue — the goal is that nothing in here requires knowing
-about any of the above.
-
----
-
-## More Rego Policies on GitHub
-
-Pointers to other great policy-as-code work in the community — **full credit to the owners and authors** of each project below. These are references, not vendored copies: we link to them so you can find them; the policies stay in their home repositories under their own maintainers and licenses.
-
-### Policy libraries
-
-| Repository | Owner / Author | What it covers |
-|---|---|---|
-| [redhat-cop/rego-policies](https://github.com/redhat-cop/rego-policies) | Red Hat Community of Practice | Kubernetes/OpenShift + general config-compliance policies for OPA, Gatekeeper, and Conftest |
-| [kubewarden/rego-policies-library](https://github.com/kubewarden/rego-policies-library) | Kubewarden project (SUSE) | Kubernetes security & compliance admission policies (Gatekeeper/Kubewarden-compatible, compiled to Wasm) |
-| [conforma/policy](https://github.com/conforma/policy) | Conforma / Konflux-CI (Enterprise Contract) | Software supply-chain verification — image attestations, build provenance, pipeline-definition validation |
-| [raedrizk/ansible-policy-as-code](https://github.com/raedrizk/ansible-policy-as-code) | Raed Rizk ([@raedrizk](https://github.com/raedrizk)) | AAP governance / pipeline enforcement — job-template naming, EE security, fork limits, time-based access, SCM branch enforcement, superuser restrictions |
-
-### Style, linting & tooling
-
-| Repository | Owner / Author | What it is |
-|---|---|---|
-| [open-policy-agent/rego-style-guide](https://github.com/open-policy-agent/rego-style-guide) | Open Policy Agent maintainers | Official Rego style guide / authoring best practices (complements the Regal linter) |
-| [open-policy-agent/rego-python](https://github.com/open-policy-agent/rego-python) | Open Policy Agent | Python library for working with Rego ASTs |
-| [itaysk/regogo](https://github.com/itaysk/regogo) | Itay Shakury ([@itaysk](https://github.com/itaysk)) | Go library wrapping the Rego engine for general-purpose JSON querying (jq-style) |
-
-> Credit to each project's maintainers and authors. Adding a repository? Link to it (don't copy the policies), name the owner/author, and give a one-line description.
-
----
-
-## Converters — using the library from other engines
-
-Rego is the native language of OPA, Enterprise OPA, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula,
-Snyk IaC, Styra, Terraform Cloud and Spacelift, so most platforms run these policies as they are. For
-everything else, [`converters/`](converters/) is the library's second product: packaging (WASM for every
-language SDK, signed bundles), interchange exports (OSCAL, SARIF, OCSF, crosswalk CSV) and per-engine generators
-(Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler).
-Each target has its own directory, status and round-trip test; the roadmap and the order of work are in
-[`converters/README.md`](converters/README.md).
+The library is standalone and has no opinion about who calls it. Its first consumer is [Ansible Automated Compliance](https://github.com/Ansible-Automated-Compliance/aac), which gathers facts with Ansible, evaluates them here and stores the results. Framework-key aliases, routing tables and result schemas belong to the caller, not to this repo. Other Rego policy projects worth knowing: [docs/COMMUNITY.md](docs/COMMUNITY.md).
 
 ## Contributing
 
-1. Place new `.rego` files in the appropriate taxonomy path
-2. Add `import rego.v1` at the top
-3. Expose a `compliance_assessment` rule with the standard output structure
-4. Open a PR
-
----
+Put new `.rego` files on the right taxonomy path, start them with `import rego.v1`, expose `compliance_report` from a `.main` package that fails closed on empty input, add tests, and open a PR. [CONTRIBUTING.md](CONTRIBUTING.md) has the walk-through, including the rule that no benchmark text is copied verbatim.
 
 ## License
 
