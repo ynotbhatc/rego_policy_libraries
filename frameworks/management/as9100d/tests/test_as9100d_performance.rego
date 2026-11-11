@@ -9,9 +9,9 @@ import data.as9100d_fixture_test as fx
 
 # ── Table integrity ─────────────────────────────────────────────────────────
 
-test_table_has_9_rows if {
-	count(mod.items) == 9
-	count({id | some id, it in mod.items; it.kind == "attestation"}) == 5
+test_table_has_8_rows if {
+	count(mod.items) == 8
+	count({id | some id, it in mod.items; it.kind == "attestation"}) == 4
 	count({id | some id, it in mod.items; it.kind == "fact"}) == 4
 }
 
@@ -25,18 +25,18 @@ test_empty_input_fails_every_row if {
 	r := mod.compliance_report with input as {}
 	r.compliant == false
 	r.passed == 0
-	r.failed == 9
-	r.violation_count == 9
+	r.failed == 8
+	r.violation_count == 8
 	r.gaps == sort([id | some id, _ in mod.items])
 }
 
 test_full_fixture_passes if {
 	r := mod.compliance_report with input as fx.full
 	r.compliant == true
-	r.passed == 9
+	r.passed == 8
 	r.failed == 0
 	r.violation_count == 0
-	r.attested == 5
+	r.attested == 4
 	r.fact_evaluated == 4
 	r.fact_passed == 4
 	r.gaps == []
@@ -47,8 +47,8 @@ test_report_shape if {
 	r.framework == "SAE AS9100D (9100:2016)"
 	r.clause == "9"
 	r.name == "Performance evaluation"
-	r.total == 9
-	r.attestation_items == 5
+	r.total == 8
+	r.attestation_items == 4
 	r.fact_items == 4
 	is_set(r.violations)
 }
@@ -113,18 +113,22 @@ test_9_1_2_fails_on_bad_evidence if {
 	contains(msg, "against a target of 95")
 }
 
-test_9_1_2_feedback_passes_when_attested if {
-	mod.passed["9.1.2-feedback"] with input as fx.full
-}
-
-test_9_1_2_feedback_fails_when_not_attested if {
-	inp := fx.without_attestation("9.1.2-feedback")
-	not mod.passed["9.1.2-feedback"] with input as inp
+test_9_1_2_fails_when_customer_feedback_is_not_attested if {
+	inp := fx.without_attestation("9.1.2")
+	not mod.passed["9.1.2"] with input as inp
 	v := mod.violations with input as inp
 	count(v) == 1
 	some msg in v
-	startswith(msg, "AS9100D 9.1.2-feedback: ")
-	contains(msg, "not attested")
+	startswith(msg, "AS9100D 9.1.2: ")
+	contains(msg, "attestations[\"9.1.2\"] must be true")
+}
+
+test_9_1_2_feedback_attestation_alone_does_not_pass if {
+	inp := fx.without_evidence("kpis")
+	not mod.passed["9.1.2"] with input as inp
+	v := mod.violations with input as inp
+	some msg in v
+	contains(msg, "FAIL-CLOSED: no evidence at input.as9100d.kpis")
 }
 
 test_9_1_3_passes_when_attested if {

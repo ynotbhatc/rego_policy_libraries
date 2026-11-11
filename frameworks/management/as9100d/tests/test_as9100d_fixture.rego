@@ -55,7 +55,7 @@ full := {"as9100d": {
 		"8.5.5": true,
 		"8.6": true,
 		"9.1.1": true,
-		"9.1.2-feedback": true,
+		"9.1.2": true,
 		"9.1.3": true,
 		"9.3.2": true,
 		"9.3.3": true,

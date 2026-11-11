@@ -66,8 +66,9 @@ passed contains id if {
 
 # ── Reference date and field tests ───────────────────────────────────────────
 # input.as9100d.as_of (RFC 3339 or YYYY-MM-DD) pins the evaluation date for reproducible reports; otherwise
-# the evaluation clock is used. "Within the past year" is a rolling 365-day window ending on that date, not a
-# calendar or fiscal year. Repeated in every clause module that needs it because the product uploads one file
+# the evaluation clock is used. "Within the past year" is the twelve months ending on that date: the same
+# calendar date one year earlier is the earliest that counts (time.add_date, so a February 29 anchor falls back
+# to March 1). It is not a fiscal year and not a count of days. Repeated in every clause module that needs it because the product uploads one file
 # at a time into an empty OPA server (scripts/check_per_file_load.py).
 
 _now_ns := time.parse_rfc3339_ns(_rfc3339(input.as9100d.as_of)) if input.as9100d.as_of
@@ -86,7 +87,7 @@ _rfc3339(d) := d if {
 
 _ns(d) := time.parse_rfc3339_ns(_rfc3339(d))
 
-_year_ns := ((365 * 24) * 3600) * 1000000000
+_year_ago_ns := time.add_date(_now_ns, -1, 0, 0)
 
 # A date is valid only when it is a string that parses. A parse failure leaves _ns undefined, so every date test
 # is false for an absent, null, non-string or unparseable value and the row reports the gap instead of passing.
@@ -98,7 +99,7 @@ _date(d) if {
 _within_past_year(d) if {
 	_date(d)
 	_ns(d) <= _now_ns
-	_now_ns - _ns(d) <= _year_ns
+	_ns(d) >= _year_ago_ns
 }
 
 _in_past(d) if {

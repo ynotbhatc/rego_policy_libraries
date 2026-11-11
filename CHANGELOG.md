@@ -30,18 +30,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `corrective_actions.none_occurred: true` plus the row's attestation (`8.7.1`/`8.7.2`, `10.2.1`/`10.2.2`);
   the declaration alongside records is a contradiction. Suppliers and measuring equipment have no such case.
 - **Coverage and wording.** 8.3.4.1 (design and development verification and validation testing, aerospace
-  addition) is its own attested row; clause 9.1.2 is now two rows — `9.1.2` (fact: on-time delivery and
-  conformity KPIs) and `9.1.2-feedback` (attested: customer feedback, complaints and corrective-action requests).
-  The module header states the grouped model (7.5.3.1/.2 under 7.5.3, 8.2.3.1/.2 under 8.2.3), that "past year"
-  is a rolling 365 days ending on `as_of`, the `none_occurred` keys, and that the exports' 89 controls are the
-  72 rows plus 17 template controls. `attestations: false` (or any non-object) now carries the contract violation
-  in the report; an `as_of` that does not parse is a contract violation. 72 rows (18 fact, 54 attested);
+  addition) is its own attested row; clause 9.1.2 keeps its single clause id and is decided two ways — on-time delivery
+  and conformity KPIs from evidence, and customer feedback, complaints and corrective-action requests attested
+  under `attestations["9.1.2"]` (a `9.1.2-feedback` companion id was tried and dropped: consumers expect real
+  clause numbers). "Within the past year" is the twelve months ending on `as_of` via `time.add_date` (the same
+  calendar date one year earlier counts; a 365-day count failed the exact anniversary across a leap day).
+  The module header states the grouped model (7.5.3.1/.2 under 7.5.3, 8.2.3.1/.2 under 8.2.3), the past-year
+  rule, the `none_occurred` keys, and that the exports' 88 controls are the 71 rows plus 17 template controls. `attestations: false` (or any non-object) now carries the contract violation
+  in the report; an `as_of` that does not parse is a contract violation. 71 rows (18 fact, 53 attested);
   258 tests (43 new, one per finding and sub-case, each asserting the row fails and the message names the path).
 
 ### Added — SAE AS9100D aerospace quality management (`frameworks/management/as9100d/`)
 
 - **First industry QMS standard in the library.** SAE AS9100 Rev D (IAQG 9100:2016, built on ISO 9001:2015) at
-  clause granularity: **72 rows** across clauses 4–10 in seven self-contained clause packages (`as9100d.context`,
+  clause granularity: **71 rows** across clauses 4–10 in seven self-contained clause packages (`as9100d.context`,
   `.leadership`, `.planning`, `.support`, `.operation`, `.performance`, `.improvement`) rolled up by `as9100d.main`
   at `/v1/data/as9100d/main/compliance_report`. Every aerospace addition is a row: 8.1.1 operational risk
   management, 8.1.2 configuration management, 8.1.3 product safety, 8.1.4 counterfeit parts, 8.3.4.1 verification and validation testing, 8.4.1–8.4.3 external
@@ -54,7 +56,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   traceability, validated tooling and software, calibration register with no overdue due dates, nonconformance
   dispositions incl. customer authorization for use-as-is/repair, corrective actions with root cause, human factors
   and overdue tracking, audit and management-review dates within the past year, OTD/conformity KPIs against
-  targets); **54 are attested** (`input.as9100d.attestations["<clause>"] == true`; `input.as9100d.as_of` pins the
+  targets); **53 are attested** (`input.as9100d.attestations["<clause>"] == true`; `input.as9100d.as_of` pins the
   date). Fail-closed: empty input fails all 72 rows with an explicit reason (`not attested` / `FAIL-CLOSED: no
   evidence at input.as9100d.<path>`), unknown clause ids and a non-object attestations container are flagged, and a
   clause module missing from the store is itself a violation. Clause numbers and short titles only — AS9100D and

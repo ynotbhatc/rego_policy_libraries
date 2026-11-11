@@ -21,7 +21,7 @@ import rego.v1
 # SAE AS9100D — Quality Management Systems: Requirements for Aviation, Space and Defense
 # Organizations (SAE AS9100 Rev D, 2016; IAQG 9100:2016), built on ISO 9001:2015.
 #
-# Scope. 72 rows over the clause and sub-clause requirements of clauses 4–10 at clause granularity, including
+# Scope. 71 rows over the clause and sub-clause requirements of clauses 4–10 at clause granularity, including
 # every aerospace addition to ISO 9001: 8.1.1 operational risk management, 8.1.2 configuration management, 8.1.3
 # product safety, 8.1.4 prevention of counterfeit parts, 8.3.4.1 verification and validation testing, 8.4
 # external providers with flow-down, 8.5.1.1 equipment/tools/software, 8.5.1.2 special processes, 8.5.1.3
@@ -32,13 +32,13 @@ import rego.v1
 #                baselines and drift, change records, SBOM/provenance and approved sources, supplier registers,
 #                asset/lot/serial identity, validated tooling, calibration registers, nonconformance and
 #                corrective-action records, audit and review dates, KPIs)
-#   attestation  54 rows attested by the organization: input.as9100d.attestations["<id>"] == true
+#   attestation  53 rows attested by the organization: input.as9100d.attestations["<id>"] == true
 #
 # Grouped model. Rows follow the clause structure, but not every sub-clause is its own row: 7.5.3.1 and 7.5.3.2
 # are decided under 7.5.3, and 8.2.3.1 and 8.2.3.2 under 8.2.3 (their titles say so). 8.3.4.1 is its own row.
-# Clause 9.1.2 has two rows: "9.1.2" (fact: on-time delivery and conformity KPIs against targets) and
-# "9.1.2-feedback" (attested: customer feedback, complaints and corrective-action requests). The "-feedback"
-# suffix marks a companion row and is not a clause number of the standard; every other row id is one.
+# Clause 9.1.2 is one row decided two ways: on-time delivery and conformity KPIs are evidence (kpis) and
+# customer feedback, complaints and corrective-action requests are attested under the same id
+# (attestations["9.1.2"]), because no collector produces them. Every row id is a clause number of the standard.
 #
 # Not reproduced. AS9100D is sold by SAE International and IAQG; ISO 9001:2015 by ISO. This module carries
 # clause numbers and short titles (public structure) and our own wording of the evidence that satisfies each
@@ -57,9 +57,9 @@ import rego.v1
 #   as9100d.operation (8, 31)  as9100d.performance (9, 9)  as9100d.improvement (10, 4)
 # This package rolls them up. Query: POST /v1/data/as9100d/main/compliance_report
 #
-# Exports. The OSCAL catalog and the other converter outputs list 89 controls for this framework: the 72 rows
+# Exports. The OSCAL catalog and the other converter outputs list 88 controls for this framework: the 71 rows
 # plus 17 template controls (the per-package "not attested", "FAIL-CLOSED" and gap message templates and this
-# package's two contract rules), which the exporters count as controls of their own. 72 is the clause-row count.
+# package's two contract rules), which the exporters count as controls of their own. 71 is the clause-row count.
 #
 # Fail-closed. Empty input: every row fails (attestation rows "not attested", fact rows "FAIL-CLOSED: no
 # evidence at input.as9100d.<path>"), compliant is false, the report object is always defined. A clause
@@ -71,7 +71,8 @@ import rego.v1
 # Evidence validation. A required field that is absent, null, blank, of the wrong type or (for dates)
 # unparseable is evidence missing: the row fails and the violation names the field. Ids must be non-blank and
 # unique within their list. Dates are RFC 3339 or YYYY-MM-DD and are compared numerically after parsing.
-# "Within the past year" is a rolling 365-day window ending on as_of, not a calendar or fiscal year.
+# "Within the past year" is the twelve months ending on as_of: the same calendar date one year earlier counts
+# (time.add_date, so a February 29 anchor falls back to March 1). Not a fiscal year, not a count of days.
 #
 # Empty lists. Rows that read a list require at least one record. Two evidence roots accept an explicit
 # declaration that nothing occurred in the period, and only together with the row's attestation:
@@ -82,9 +83,9 @@ import rego.v1
 # no measuring equipment or no external providers is not credible, so an empty list fails every row that reads it.
 #
 # Evidence contract — input.as9100d.*
-#   as_of                      date (RFC 3339 or YYYY-MM-DD) that pins "today" for the rolling past-year windows;
+#   as_of                      date (RFC 3339 or YYYY-MM-DD) that pins "today" for the past-year windows;
 #                              default: the evaluation clock
-#   attestations               {"<row id>": true, ...} for the 54 attestation rows (and the none_occurred rows above)
+#   attestations               {"<row id>": true, ...} for the 53 attestation rows, the 9.1.2 feedback attestation and the none_occurred rows
 #   measuring_equipment        [{id, description, in_service, calibration_due, calibrated_on, traceable}]  (7.1.5.1, 7.1.5.2)
 #   configuration_management   {baselines: [{id, approved, approved_by, approved_on}],
 #                               drift_records: [{baseline_id, detected_on, disposition}]}                (8.1.2)

@@ -40,7 +40,7 @@ test_f1_equipment_with_id_only_fails_both_calibration_rows if {
 	_names(v, "7.1.5.1", "has no description")
 	_names(v, "7.1.5.2", "no in_service status")
 	r := main.compliance_report with input as inp
-	r.passed == 70
+	r.passed == 69
 	r.compliant == false
 }
 
@@ -110,7 +110,7 @@ test_f1_open_corrective_action_without_due_on_fails if {
 	not improvement.passed["10.2.1"] with input as inp
 	_names(improvement.violations, "10.2.1", "no due date that parses (due_on: <missing>)") with input as inp
 	r := main.compliance_report with input as inp
-	r.passed == 71
+	r.passed == 70
 	r.compliant == false
 }
 
@@ -152,7 +152,7 @@ test_f2_kpi_value_zero_without_target_fails if {
 	_names(v, "9.1.2", "on_time_delivery has no target (kpis.on_time_delivery.target must be a number")
 	_names(v, "9.1.2", "conformity has no target (kpis.conformity.target must be a number")
 	r := main.compliance_report with input as inp
-	r.passed == 71
+	r.passed == 70
 	r.compliant == false
 }
 
@@ -178,7 +178,7 @@ test_f3_traceability_blank_id_and_serial_fails if {
 	_names(v, "8.5.2", "part_number must be a non-blank string")
 	_names(v, "8.5.2", "serial or lot must be a non-blank string")
 	r := main.compliance_report with input as inp
-	r.passed == 71
+	r.passed == 70
 	r.compliant == false
 }
 
@@ -217,7 +217,7 @@ test_f3_validated_equipment_with_no_id_or_date_fails if {
 	_names(v, "8.5.1.1", "no validation date that parses (validated_on: <missing>)")
 	_names(v, "8.5.1.1", "type <missing>, not equipment, tool or software")
 	r := main.compliance_report with input as inp
-	r.passed == 71
+	r.passed == 70
 	r.compliant == false
 }
 
@@ -235,7 +235,7 @@ test_f3_baseline_with_empty_approved_by_fails if {
 	not operation.passed["8.1.2"] with input as inp
 	_names(operation.violations, "8.1.2", "baseline BL-1 records no approving authority (approved_by must be a non-blank string)") with input as inp
 	r := main.compliance_report with input as inp
-	r.passed == 71
+	r.passed == 70
 	r.compliant == false
 }
 
@@ -291,7 +291,7 @@ test_f4_no_suppliers_fails_all_three_rows if {
 	_names(v, "8.4.2", "no supplier performance has been reviewed")
 	_names(v, "8.4.3", "no flow-down acknowledgement exists")
 	r := main.compliance_report with input as inp
-	r.passed == 69
+	r.passed == 68
 	r.clauses["8"].gaps == ["8.4.1", "8.4.2", "8.4.3"]
 }
 
@@ -303,7 +303,7 @@ test_f4_no_measuring_equipment_fails_both_rows if {
 	_names(v, "7.1.5.1", "register is empty")
 	_names(v, "7.1.5.2", "no calibration status can be confirmed")
 	r := main.compliance_report with input as inp
-	r.passed == 70
+	r.passed == 69
 }
 
 test_f4_no_nonconformances_without_declaration_fails_both_rows if {
@@ -314,7 +314,7 @@ test_f4_no_nonconformances_without_declaration_fails_both_rows if {
 	_names(v, "8.7.1", "set nonconformance.none_occurred: true and attest 8.7.1")
 	_names(v, "8.7.2", "set nonconformance.none_occurred: true and attest 8.7.2")
 	r := main.compliance_report with input as inp
-	r.passed == 70
+	r.passed == 69
 }
 
 test_f4_no_nonconformances_declared_but_unattested_fails if {
@@ -336,7 +336,7 @@ test_f4_no_nonconformances_declared_and_attested_passes if {
 	operation.passed["8.7.2"] with input as inp
 	r := main.compliance_report with input as inp
 	r.compliant == true
-	r.passed == 72
+	r.passed == 71
 }
 
 test_f4_nonconformance_declaration_with_records_is_a_contradiction if {
@@ -358,7 +358,7 @@ test_f4_no_corrective_actions_without_declaration_fails_both_rows if {
 	_names(v, "10.2.1", "set corrective_actions.none_occurred: true and attest 10.2.1")
 	_names(v, "10.2.2", "set corrective_actions.none_occurred: true and attest 10.2.2")
 	r := main.compliance_report with input as inp
-	r.passed == 70
+	r.passed == 69
 }
 
 test_f4_no_corrective_actions_declared_but_unattested_fails if {
@@ -380,7 +380,7 @@ test_f4_no_corrective_actions_declared_and_attested_passes if {
 	improvement.passed["10.2.2"] with input as inp
 	r := main.compliance_report with input as inp
 	r.compliant == true
-	r.passed == 72
+	r.passed == 71
 }
 
 test_f4_corrective_action_declaration_with_records_is_a_contradiction if {
@@ -410,7 +410,7 @@ test_minor_attestations_false_carries_the_container_violation if {
 	contains(msg, "input.as9100d.attestations must be an object")
 	contains(msg, "got false")
 	r.violation_count == 55
-	r.passed == 18
+	r.passed == 17
 }
 
 test_minor_attestations_string_carries_the_container_violation if {
@@ -428,19 +428,27 @@ test_minor_as_of_that_does_not_parse_is_a_contract_violation if {
 	not performance.passed["9.1.2"] with input as inp
 }
 
-test_rolling_window_is_365_days_not_a_calendar_year if {
-	inside := fx.with_patch("management_review", {"reviews": [{"held_on": "2025-11-12", "outputs_recorded": true}]})
-	performance.passed["9.3.1"] with input as inside
-	outside := fx.with_patch("management_review", {"reviews": [{"held_on": "2025-11-10", "outputs_recorded": true}]})
-	not performance.passed["9.3.1"] with input as outside
+test_past_year_is_a_calendar_year_not_365_days if {
+	# as_of is 2026-11-11: the anniversary counts, the day before it does not.
+	anniversary := fx.with_patch("management_review", {"reviews": [{"held_on": "2025-11-11", "outputs_recorded": true}]})
+	performance.passed["9.3.1"] with input as anniversary
+	day_before := fx.with_patch("management_review", {"reviews": [{"held_on": "2025-11-10", "outputs_recorded": true}]})
+	not performance.passed["9.3.1"] with input as day_before
+
+	# Across February 29 the anniversary is 366 days back; a 365-day count would fail it.
+	leap := json.patch(fx.with_patch("management_review", {"reviews": [{"held_on": "2027-03-01", "outputs_recorded": true}]}), [{"op": "replace", "path": "/as9100d/as_of", "value": "2028-03-01"}])
+	performance.passed["9.3.1"] with input as leap
+	leap_day_before := json.patch(leap, [{"op": "replace", "path": "/as9100d/management_review/reviews/0/held_on", "value": "2027-02-28"}])
+	not performance.passed["9.3.1"] with input as leap_day_before
 }
 
 # ── The two new rows ─────────────────────────────────────────────────────────
 
-test_new_rows_are_attested_and_keep_fact_set_unchanged if {
+test_new_row_is_attested_and_9_1_2_keeps_its_clause_id if {
 	main.items["8.3.4.1"].kind == "attestation"
-	main.items["9.1.2-feedback"].kind == "attestation"
+	not main.items["9.1.2-feedback"]
 	main.items["9.1.2"].kind == "fact"
-	startswith(main.items["9.1.2"].title, "Customer satisfaction (delivery and conformity KPIs)")
+	startswith(main.items["9.1.2"].title, "Customer satisfaction")
+	count({id | some id, _ in main.items; contains(id, "-")}) == 0
 	count({id | some id, it in main.items; it.kind == "fact"}) == 18
 }

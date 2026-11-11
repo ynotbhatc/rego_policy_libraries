@@ -3480,7 +3480,7 @@
      {
       "uuid": "28d9e37f-3137-5a01-95c1-57e624af3d7a",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/as9100d.json",
-      "description": "Controls of as9100d evaluated by the Rego Policy Libraries (89 controls, 8 Rego modules).",
+      "description": "Controls of as9100d evaluated by the Rego Policy Libraries (88 controls, 8 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -4892,36 +4892,11 @@
        {
         "uuid": "b8c3a639-6cd8-599f-8b5c-a01460550766",
         "control-id": "as9100d-9.1.2",
-        "description": "Evaluated by Rego package as9100d.performance (frameworks/management/as9100d/as9100d_performance.rego): Customer satisfaction (delivery and conformity KPIs) — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets",
+        "description": "Evaluated by Rego package as9100d.performance (frameworks/management/as9100d/as9100d_performance.rego): Customer satisfaction — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets, and customer feedback, complaints and corrective-action requests are attested as collected, monitored and acted on",
         "props": [
          {
           "name": "label",
           "value": "9.1.2"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "as9100d.performance"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/management/as9100d/as9100d_performance.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "f9fe0c43-dd9f-5105-8089-ce90e05b4552",
-        "control-id": "as9100d-9.1.2-feedback",
-        "description": "Evaluated by Rego package as9100d.performance (frameworks/management/as9100d/as9100d_performance.rego): Customer satisfaction (feedback) — customer feedback, complaints, corrective-action requests and customer-reported delivery and conformity results are collected, monitored and acted on (companion to the 9.1.2 KPI row)",
-        "props": [
-         {
-          "name": "label",
-          "value": "9.1.2-feedback"
          },
          {
           "name": "rego-package",

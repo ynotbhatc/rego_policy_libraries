@@ -26,9 +26,9 @@ import rego.v1
 # ISO 9001 is reproduced (both are licensed). Sources, the evidence contract and the roll-up live in
 # as9100d_main.rego. Query this clause alone at /v1/data/as9100d/performance/compliance_report.
 #
-# Clause 9.1.2 has two rows: "9.1.2" is the delivery-and-conformity KPI check decided from evidence and
-# "9.1.2-feedback" is the attested companion for customer feedback, complaints and corrective-action requests,
-# which no collector produces. The suffix marks a companion row; it is not a clause number of the standard.
+# Clause 9.1.2 is one row decided two ways: the on-time delivery and conformity KPIs are evidence (kpis) and
+# customer feedback, complaints and corrective-action requests, which no collector produces, are attested under
+# the same clause id (attestations["9.1.2"]). The row fails without either. Every row id is a clause number.
 #
 # kind: attestation  -> input.as9100d.attestations["<id>"] == true (anything else is a violation)
 # kind: fact         -> evidence under input.as9100d.<evidence>; missing evidence is FAIL-CLOSED, present
@@ -42,8 +42,7 @@ clause_name := "Performance evaluation"
 
 items := {
 	"9.1.1": {"title": "Monitoring and measurement — what is monitored, the methods, the timing and the evaluation of results are determined and QMS performance is evaluated", "kind": "attestation"},
-	"9.1.2": {"title": "Customer satisfaction (delivery and conformity KPIs) — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets", "kind": "fact", "evidence": "kpis"},
-	"9.1.2-feedback": {"title": "Customer satisfaction (feedback) — customer feedback, complaints, corrective-action requests and customer-reported delivery and conformity results are collected, monitored and acted on (companion to the 9.1.2 KPI row)", "kind": "attestation"},
+	"9.1.2": {"title": "Customer satisfaction — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets, and customer feedback, complaints and corrective-action requests are attested as collected, monitored and acted on", "kind": "fact", "evidence": "kpis"},
 	"9.1.3": {"title": "Analysis and evaluation — data on conformity, satisfaction, performance, planning, risk actions, suppliers and improvement needs is analysed", "kind": "attestation"},
 	"9.2.1": {"title": "Internal audit — at least one internal audit of the QMS has been completed within the past year", "kind": "fact", "evidence": "internal_audit"},
 	"9.2.2": {"title": "Audit programme — audits are planned with scope and criteria, results are reported to management and corrections follow", "kind": "fact", "evidence": "internal_audit"},
@@ -75,8 +74,9 @@ passed contains id if {
 
 # ── Reference date and field tests ───────────────────────────────────────────
 # input.as9100d.as_of (RFC 3339 or YYYY-MM-DD) pins the evaluation date for reproducible reports; otherwise
-# the evaluation clock is used. "Within the past year" is a rolling 365-day window ending on that date, not a
-# calendar or fiscal year. Repeated in every clause module that needs it because the product uploads one file
+# the evaluation clock is used. "Within the past year" is the twelve months ending on that date: the same
+# calendar date one year earlier is the earliest that counts (time.add_date, so a February 29 anchor falls back
+# to March 1). It is not a fiscal year and not a count of days. Repeated in every clause module that needs it because the product uploads one file
 # at a time into an empty OPA server (scripts/check_per_file_load.py).
 
 _now_ns := time.parse_rfc3339_ns(_rfc3339(input.as9100d.as_of)) if input.as9100d.as_of
@@ -95,7 +95,7 @@ _rfc3339(d) := d if {
 
 _ns(d) := time.parse_rfc3339_ns(_rfc3339(d))
 
-_year_ns := ((365 * 24) * 3600) * 1000000000
+_year_ago_ns := time.add_date(_now_ns, -1, 0, 0)
 
 # A date is valid only when it is a string that parses. A parse failure leaves _ns undefined, so every date test
 # is false for an absent, null, non-string or unparseable value and the row reports the gap instead of passing.
@@ -107,7 +107,7 @@ _date(d) if {
 _within_past_year(d) if {
 	_date(d)
 	_ns(d) <= _now_ns
-	_now_ns - _ns(d) <= _year_ns
+	_ns(d) >= _year_ago_ns
 }
 
 _in_past(d) if {
@@ -153,7 +153,7 @@ _dup_ids(xs) := {id |
 # input.as9100d.kpis: {on_time_delivery: {value: number, target: number, period_end: date},
 #   conformity: {value: number, target: number, period_end: date}}
 # Each KPI needs a numeric value, a numeric target (a KPI without a target is unmeasured, not passing) and a
-# period_end that parses and lies within the rolling past year; the value must meet the target.
+# period_end that parses and lies within the past year; the value must meet the target.
 
 _kpis := {"on_time_delivery", "conformity"}
 
@@ -189,6 +189,12 @@ _gaps["9.1.2"] contains r if {
 	r := sprintf("%v has no measurement period ending within the past year (kpis.%v.period_end: %v)", [k, k, _kpi(k, "period_end")])
 }
 
+# Customer feedback, complaints and corrective-action requests have no collector, so the organization attests
+# them under the clause's own id. Without that attestation the row fails even when every KPI meets its target.
+_gaps["9.1.2"] contains "customer feedback, complaints and corrective-action requests are not attested as collected, monitored and acted on (input.as9100d.attestations[\"9.1.2\"] must be true)" if {
+	not _attested("9.1.2")
+}
+
 # ── 9.2 Internal audit ───────────────────────────────────────────────────────
 # input.as9100d.internal_audit: {programme: {planned: [{id, scope, scheduled_on}]},
 #   audits: [{id, completed_on: date, report_issued: bool}]}
@@ -200,7 +206,7 @@ _recent_audits contains a if {
 	_within_past_year(object.get(a, "completed_on", null))
 }
 
-_gaps["9.2.1"] contains "no internal audit was completed within the past year (internal_audit.audits[].completed_on must be a date in the rolling 365-day window)" if {
+_gaps["9.2.1"] contains "no internal audit was completed within the past year (internal_audit.audits[].completed_on must be a date in the twelve months ending on as_of)" if {
 	count(_recent_audits) == 0
 }
 
@@ -242,7 +248,7 @@ _recent_reviews contains m if {
 	_within_past_year(object.get(m, "held_on", null))
 }
 
-_gaps["9.3.1"] contains "no management review was held within the past year (management_review.reviews[].held_on must be a date in the rolling 365-day window)" if {
+_gaps["9.3.1"] contains "no management review was held within the past year (management_review.reviews[].held_on must be a date in the twelve months ending on as_of)" if {
 	count(_recent_reviews) == 0
 }
 
