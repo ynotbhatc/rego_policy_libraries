@@ -585,9 +585,15 @@ report := {
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
 default cloud_act_response_procedure_documented := false
+
 default data_portability_in_open_formats := false
+
 default dns_sovereignty := false
+
 default exit_strategy_documented := false
+
 default fisa_702_response_procedure_documented := false
+
 default foreign_provider_concentration_within_limits := false
+
 default vendor_lockin_cost_assessed := false

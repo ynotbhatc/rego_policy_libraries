@@ -4,12 +4,15 @@ import rego.v1
 
 import data.kubernetes.admission as adm
 
-container(extra) := object.union({
-	"name": "app",
-	"image": "quay.io/org/app:1.0",
-	"resources": {"limits": {"cpu": "1", "memory": "1Gi"}, "requests": {"cpu": "1", "memory": "1Gi"}},
-	"securityContext": {"allowPrivilegeEscalation": false, "readOnlyRootFilesystem": true, "runAsNonRoot": true, "capabilities": {"drop": ["ALL"]}},
-}, extra)
+container(extra) := object.union(
+	{
+		"name": "app",
+		"image": "quay.io/org/app:1.0",
+		"resources": {"limits": {"cpu": "1", "memory": "1Gi"}, "requests": {"cpu": "1", "memory": "1Gi"}},
+		"securityContext": {"allowPrivilegeEscalation": false, "readOnlyRootFilesystem": true, "runAsNonRoot": true, "capabilities": {"drop": ["ALL"]}},
+	},
+	extra,
+)
 
 review(kind, spec_wrapper) := {"request": {"operation": "CREATE", "namespace": "prod", "kind": {"kind": kind}, "object": spec_wrapper}}
 

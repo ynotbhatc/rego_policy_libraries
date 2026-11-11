@@ -65,7 +65,7 @@ import rego.v1
 geopolitical_risk_register_current if {
 	input.geopolitical_risk.risk_register_maintained == true
 	input.geopolitical_risk.designated_sovereign_risk_owner == true
-	max_age_ns := input.geopolitical_risk.review_frequency_days * 24 * 3600 * 1000000000
+	max_age_ns := ((input.geopolitical_risk.review_frequency_days * 24) * 3600) * 1000000000
 	review_ns := time.parse_rfc3339_ns(input.geopolitical_risk.last_risk_review_date)
 	review_ns >= time.now_ns() - max_age_ns
 }
@@ -243,5 +243,7 @@ report := {
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
 default geopolitical_risk_register_current := false
+
 default regulatory_change_monitoring_active := false
+
 default supply_chain_geopolitical_assessed := false

@@ -143,17 +143,29 @@ poi_device_protection if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default physical_security_policies_established := false
+
 default physical_security_roles_defined := false
+
 default physical_access_controls := false
+
 default badge_system := false
+
 default public_network_jacks_disabled := false
+
 default physical_access_authorization := false
+
 default visitor_management := false
+
 default physical_media_controls := false
+
 default media_distribution_secured := false
+
 default media_destruction := false
+
 default disk_destruction := false
+
 default poi_device_protection := false
+
 default pci_requirement_9_compliant := false
 
 # =================================================================
@@ -176,6 +188,7 @@ pci_requirement_9_compliant if {
 }
 
 default pci_requirement_9_score := 0
+
 default pci_requirement_9_findings := {}
 
 pci_requirement_9_score := score if {
@@ -218,9 +231,7 @@ pci_requirement_9_findings := {
 		"media_destruction": media_destruction,
 		"disk_destruction": disk_destruction,
 	},
-	"requirement_9_5": {
-		"poi_device_protection": poi_device_protection,
-	},
+	"requirement_9_5": {"poi_device_protection": poi_device_protection},
 	"overall_score": pci_requirement_9_score,
 	"overall_compliant": pci_requirement_9_compliant,
 }

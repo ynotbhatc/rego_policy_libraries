@@ -52,8 +52,9 @@ no_unowned_files if {
 	count(input.file_permissions.unowned_files) == 0
 }
 
+status_ol09_00_002512 := "Not_a_Finding" if no_unowned_files
 
-status_ol09_00_002512 := "Not_a_Finding" if { no_unowned_files } else := "Open"
+else := "Open"
 
 finding_ol09_00_002512 := {
 	"vuln_id": "V-271781",
@@ -74,8 +75,9 @@ no_ungrouped_files if {
 	count(input.file_permissions.ungrouped_files) == 0
 }
 
+status_ol09_00_002511 := "Not_a_Finding" if no_ungrouped_files
 
-status_ol09_00_002511 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
+else := "Open"
 
 finding_ol09_00_002511 := {
 	"vuln_id": "V-271780",
@@ -94,7 +96,9 @@ passwd_permissions_ok if {
 	mode_within(input.file_permissions.etc_passwd.mode, "0644")
 }
 
-status_ol09_00_002548 := "Not_a_Finding" if { passwd_permissions_ok } else := "Open"
+status_ol09_00_002548 := "Not_a_Finding" if passwd_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002548 := {
 	"vuln_id": "V-271810",
@@ -121,7 +125,9 @@ shadow_permissions_ok if {
 	input.file_permissions.etc_shadow.mode == "0"
 }
 
-status_ol09_00_002552 := "Not_a_Finding" if { shadow_permissions_ok } else := "Open"
+status_ol09_00_002552 := "Not_a_Finding" if shadow_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002552 := {
 	"vuln_id": "V-271814",
@@ -140,7 +146,9 @@ group_permissions_ok if {
 	mode_within(input.file_permissions.etc_group.mode, "0644")
 }
 
-status_ol09_00_002536 := "Not_a_Finding" if { group_permissions_ok } else := "Open"
+status_ol09_00_002536 := "Not_a_Finding" if group_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002536 := {
 	"vuln_id": "V-271798",
@@ -163,7 +171,9 @@ gshadow_permissions_ok if {
 	input.file_permissions.etc_gshadow.mode == "000"
 }
 
-status_ol09_00_002540 := "Not_a_Finding" if { gshadow_permissions_ok } else := "Open"
+status_ol09_00_002540 := "Not_a_Finding" if gshadow_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002540 := {
 	"vuln_id": "V-271802",
@@ -182,7 +192,9 @@ lib_permissions_ok if {
 	input.file_permissions.library_files_ok == true
 }
 
-status_ol09_00_002525 := "Not_a_Finding" if { lib_permissions_ok } else := "Open"
+status_ol09_00_002525 := "Not_a_Finding" if lib_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002525 := {
 	"vuln_id": "V-271791",
@@ -201,7 +213,9 @@ lib_dirs_owned_root if {
 	input.file_permissions.library_dirs_owned_root == true
 }
 
-status_ol09_00_002524 := "Not_a_Finding" if { lib_dirs_owned_root } else := "Open"
+status_ol09_00_002524 := "Not_a_Finding" if lib_dirs_owned_root
+
+else := "Open"
 
 finding_ol09_00_002524 := {
 	"vuln_id": "V-271790",
@@ -220,7 +234,9 @@ sys_commands_permissions_ok if {
 	input.file_permissions.system_commands_ok == true
 }
 
-status_ol09_00_002506 := "Not_a_Finding" if { sys_commands_permissions_ok } else := "Open"
+status_ol09_00_002506 := "Not_a_Finding" if sys_commands_permissions_ok
+
+else := "Open"
 
 finding_ol09_00_002506 := {
 	"vuln_id": "V-271775",
@@ -241,8 +257,9 @@ home_dir_permissions_ok if {
 	count(input.file_permissions.insecure_home_dirs) == 0
 }
 
+status_ol09_00_002515 := "Not_a_Finding" if home_dir_permissions_ok
 
-status_ol09_00_002515 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
+else := "Open"
 
 finding_ol09_00_002515 := {
 	"vuln_id": "V-271784",

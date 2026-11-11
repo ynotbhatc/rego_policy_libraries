@@ -25,21 +25,21 @@ import rego.v1
 default allow := false
 
 allow if {
-    selinux_enabled
-    ssh_hardened
-    firewall_configured
-    os_supported
+	selinux_enabled
+	ssh_hardened
+	firewall_configured
+	os_supported
 }
 
 # CIS Control 1.6.1 - SELinux must be turned on
 default selinux_enabled := false
 
 selinux_enabled if {
-    input.selinux_status == "enforcing"
+	input.selinux_status == "enforcing"
 }
 
 selinux_enabled if {
-    input.selinux_status == "permissive"
+	input.selinux_status == "permissive"
 }
 
 # CIS Control 5.2.2 - SSH access must be limited to named principals
@@ -49,82 +49,82 @@ selinux_enabled if {
 default ssh_hardened := false
 
 ssh_hardened if {
-    some line in ssh_config_lines
-    regex.match(`(?i)^(allowusers|allowgroups|denyusers|denygroups) +\S`, line)
+	some line in ssh_config_lines
+	regex.match(`(?i)^(allowusers|allowgroups|denyusers|denygroups) +\S`, line)
 }
 
 ssh_config_lines := [norm |
-    is_array(input.ssh_config)
-    some raw in input.ssh_config
-    norm := regex.replace(trim_space(raw), `\s+`, " ")
-    norm != ""
-    not startswith(norm, "#")
+	is_array(input.ssh_config)
+	some raw in input.ssh_config
+	norm := regex.replace(trim_space(raw), `\s+`, " ")
+	norm != ""
+	not startswith(norm, "#")
 ]
 
 # CIS Control 3.5.1 - firewall must be active
 default firewall_configured := false
 
 firewall_configured if {
-    input.firewall_enabled == true
+	input.firewall_enabled == true
 }
 
 # Support for major Linux distributions
 default os_supported := false
 
 os_supported if {
-    input.os_family == "RedHat"
-    supported_redhat_version
+	input.os_family == "RedHat"
+	supported_redhat_version
 }
 
 os_supported if {
-    input.os_family == "Debian"
+	input.os_family == "Debian"
 }
 
 supported_redhat_version if {
-    to_number(split(input.distribution_version, ".")[0]) >= 8
+	to_number(split(input.distribution_version, ".")[0]) >= 8
 }
 
 # Compliance details for reporting
 compliance_details := {
-    "selinux": {
-        "status": selinux_enabled,
-        "current_value": object.get(input, "selinux_status", null),
-        "requirement": "enforcing or permissive"
-    },
-    "ssh": {
-        "status": ssh_hardened,
-        "current_port": object.get(input, "ssh_port", null),
-        "requirement": "SSH access limited via AllowUsers/AllowGroups/DenyUsers/DenyGroups (CIS 5.2.2)"
-    },
-    "firewall": {
-        "status": firewall_configured,
-        "current_status": object.get(input, "firewall_enabled", null),
-        "requirement": "firewall must be active"
-    },
-    "os": {
-        "status": os_supported,
-        "current_os": sprintf("%s %s", [object.get(input, "distribution", "unknown"), object.get(input, "distribution_version", "unknown")]),
-        "requirement": "supported OS version"
-    }
+	"selinux": {
+		"status": selinux_enabled,
+		"current_value": object.get(input, "selinux_status", null),
+		"requirement": "enforcing or permissive",
+	},
+	"ssh": {
+		"status": ssh_hardened,
+		"current_port": object.get(input, "ssh_port", null),
+		"requirement": "SSH access limited via AllowUsers/AllowGroups/DenyUsers/DenyGroups (CIS 5.2.2)",
+	},
+	"firewall": {
+		"status": firewall_configured,
+		"current_status": object.get(input, "firewall_enabled", null),
+		"requirement": "firewall must be active",
+	},
+	"os": {
+		"status": os_supported,
+		"current_os": sprintf("%s %s", [object.get(input, "distribution", "unknown"), object.get(input, "distribution_version", "unknown")]),
+		"requirement": "supported OS version",
+	},
 }
 
 # Failed controls for remediation guidance
 failed_controls contains control if {
-    control := "selinux"
-    not selinux_enabled
+	control := "selinux"
+	not selinux_enabled
 }
 
 failed_controls contains control if {
-    control := "ssh"
-    not ssh_hardened
+	control := "ssh"
+	not ssh_hardened
 }
 
 failed_controls contains control if {
-    control := "firewall"
-    not firewall_configured
+	control := "firewall"
+	not firewall_configured
 }
 
 failed_controls contains control if {
-    control := "os_support"
-    not os_supported
+	control := "os_support"
+	not os_supported
 }

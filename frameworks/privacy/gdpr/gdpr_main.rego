@@ -31,16 +31,20 @@ import data.gdpr.data_transfers
 # =============================================================================
 
 default core_compliant := false
-core_compliant if { compliance.compliant }
+
+core_compliant if compliance.compliant
 
 default controller_processor_compliant := false
-controller_processor_compliant if { controller_processor.compliant }
+
+controller_processor_compliant if controller_processor.compliant
 
 default data_transfers_compliant := false
-data_transfers_compliant if { data_transfers.compliant }
+
+data_transfers_compliant if data_transfers.compliant
 
 default cookies_tracking_compliant := false
-cookies_tracking_compliant if { cookies_tracking.compliant }
+
+cookies_tracking_compliant if cookies_tracking.compliant
 
 # =============================================================================
 # OVERALL COMPLIANCE

@@ -123,16 +123,12 @@ ip_forwarding_violations contains "CIS 3.1.1: evidence missing - ip_forwarding.i
 
 ip_forwarding_violations contains violation if {
 	input.ip_forwarding.ipv4_forwarding != 0
-	violation := sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [
-		input.ip_forwarding.ipv4_forwarding,
-	])
+	violation := sprintf("CIS 3.1.1: IPv4 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv4_forwarding])
 }
 
 ip_forwarding_violations contains violation if {
 	input.ip_forwarding.ipv6_forwarding != 0
-	violation := sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [
-		input.ip_forwarding.ipv6_forwarding,
-	])
+	violation := sprintf("CIS 3.1.1: IPv6 forwarding is enabled (value: %v, expected: 0)", [input.ip_forwarding.ipv6_forwarding])
 }
 
 # =============================================================================
@@ -162,9 +158,7 @@ sysctl_violations contains violation if {
 	startswith(param.parameter, "net.ipv4.conf.")
 	endswith(param.parameter, ".accept_source_route")
 	param.current_value != "0"
-	violation := sprintf("CIS 3.2.1: Source routed packets accepted on %s (firewall bypass risk)", [
-		param.parameter,
-	])
+	violation := sprintf("CIS 3.2.1: Source routed packets accepted on %s (firewall bypass risk)", [param.parameter])
 }
 
 sysctl_violations contains violation if {
@@ -172,9 +166,7 @@ sysctl_violations contains violation if {
 	startswith(param.parameter, "net.ipv6.conf.")
 	endswith(param.parameter, ".accept_source_route")
 	param.current_value != "0"
-	violation := sprintf("CIS 3.2.1: IPv6 source routed packets accepted on %s", [
-		param.parameter,
-	])
+	violation := sprintf("CIS 3.2.1: IPv6 source routed packets accepted on %s", [param.parameter])
 }
 
 # =============================================================================
@@ -185,9 +177,7 @@ sysctl_violations contains violation if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "accept_redirects")
 	param.current_value != "0"
-	violation := sprintf("CIS 3.2.2: ICMP redirects accepted on %s (man-in-the-middle risk)", [
-		param.parameter,
-	])
+	violation := sprintf("CIS 3.2.2: ICMP redirects accepted on %s (man-in-the-middle risk)", [param.parameter])
 }
 
 # =============================================================================
@@ -198,9 +188,7 @@ sysctl_violations contains violation if {
 	some param in input.sysctl_parameters.analysis
 	contains(param.parameter, "secure_redirects")
 	param.current_value != "0"
-	violation := sprintf("CIS 3.2.3: Secure ICMP redirects accepted on %s", [
-		param.parameter,
-	])
+	violation := sprintf("CIS 3.2.3: Secure ICMP redirects accepted on %s", [param.parameter])
 }
 
 # =============================================================================
@@ -231,9 +219,7 @@ ipv6_violations contains violation if {
 	contains(param.parameter, "ipv6.conf.")
 	contains(param.parameter, ".accept_ra")
 	param.current_value != "0"
-	violation := sprintf("CIS 3.2.9: IPv6 router advertisements accepted on %s (rogue router risk)", [
-		param.parameter,
-	])
+	violation := sprintf("CIS 3.2.9: IPv6 router advertisements accepted on %s (rogue router risk)", [param.parameter])
 }
 
 # =============================================================================
@@ -248,9 +234,7 @@ network_interface_violations contains violation if {
 
 network_interface_violations contains violation if {
 	not input.wireless_interfaces.compliant
-	violation := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [
-		input.wireless_interfaces.count,
-	])
+	violation := sprintf("CIS 3.3.2: %d wireless interfaces found on server (should have 0)", [input.wireless_interfaces.count])
 }
 
 # =============================================================================
@@ -259,9 +243,7 @@ network_interface_violations contains violation if {
 
 network_interface_violations contains violation if {
 	not input.firewall.active
-	violation := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [
-		input.firewall.type,
-	])
+	violation := sprintf("CIS 3.5.x: No active firewall detected (type: %s)", [input.firewall.type])
 }
 
 network_interface_violations contains violation if {
@@ -371,4 +353,3 @@ report := {
 	"sysctl_summary": sysctl_summary,
 	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
-

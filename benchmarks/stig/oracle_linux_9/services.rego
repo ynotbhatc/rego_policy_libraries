@@ -73,9 +73,11 @@ service_disabled(svc) if {
 # TFTP server must not be installed
 default tftp_server_absent := false
 
-tftp_server_absent if { pkg_absent("tftp-server") }
+tftp_server_absent if pkg_absent("tftp-server")
 
-status_ol09_00_000135 := "Not_a_Finding" if { tftp_server_absent } else := "Open"
+status_ol09_00_000135 := "Not_a_Finding" if tftp_server_absent
+
+else := "Open"
 
 finding_ol09_00_000135 := {
 	"vuln_id": "V-271463",
@@ -96,7 +98,9 @@ ftp_server_disabled if {
 	pkg_absent("vsftpd")
 }
 
-status_ol09_00_000130 := "Not_a_Finding" if { ftp_server_disabled } else := "Open"
+status_ol09_00_000130 := "Not_a_Finding" if ftp_server_disabled
+
+else := "Open"
 
 finding_ol09_00_000130 := {
 	"vuln_id": "V-271462",
@@ -120,7 +124,9 @@ telnet_server_absent if {
 	pkg_absent("telnetd")
 }
 
-status_ol09_00_000110 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
+status_ol09_00_000110 := "Not_a_Finding" if telnet_server_absent
+
+else := "Open"
 
 finding_ol09_00_000110 := {
 	"vuln_id": "V-271458",
@@ -135,9 +141,11 @@ finding_ol09_00_000110 := {
 # xinetd must not be installed
 default xinetd_absent := false
 
-xinetd_absent if { pkg_absent("xinetd") }
+xinetd_absent if pkg_absent("xinetd")
 
-status_ol09_00_000125 := "Not_a_Finding" if { xinetd_absent } else := "Open"
+status_ol09_00_000125 := "Not_a_Finding" if xinetd_absent
+
+else := "Open"
 
 finding_ol09_00_000125 := {
 	"vuln_id": "V-271461",
@@ -158,7 +166,9 @@ nfs_disabled if {
 	service_disabled("nfsd")
 }
 
-status_ol09_00_000100 := "Not_a_Finding" if { nfs_disabled } else := "Open"
+status_ol09_00_000100 := "Not_a_Finding" if nfs_disabled
+
+else := "Open"
 
 finding_ol09_00_000100 := {
 	"vuln_id": "V-271456",

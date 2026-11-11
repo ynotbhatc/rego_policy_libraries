@@ -39,135 +39,135 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 1.2.1: GPG keys must be explicitly configured
 violations contains msg if {
-    count(input.initial_setup.gpg_keys) == 0
-    msg := "CIS 1.2.1: No GPG keys configured for package verification"
+	count(input.initial_setup.gpg_keys) == 0
+	msg := "CIS 1.2.1: No GPG keys configured for package verification"
 }
 
 # CIS 1.2.2: package manager repositories must be explicitly configured
 violations contains msg if {
-    count(input.initial_setup.enabled_repos) == 0
-    msg := "CIS 1.2.2: No package repositories are enabled"
+	count(input.initial_setup.enabled_repos) == 0
+	msg := "CIS 1.2.2: No package repositories are enabled"
 }
 
 violations contains msg if {
-    some repo in input.initial_setup.repos_without_gpgcheck
-    msg := sprintf("CIS 1.2.2: Repository %s does not have gpgcheck enabled", [repo])
+	some repo in input.initial_setup.repos_without_gpgcheck
+	msg := sprintf("CIS 1.2.2: Repository %s does not have gpgcheck enabled", [repo])
 }
 
 # CIS 1.2.3: gpgcheck must be globally activated
 violations contains msg if {
-    not input.initial_setup.global_gpgcheck_enabled
-    msg := "CIS 1.2.3: Global gpgcheck is not enabled in /etc/dnf/dnf.conf"
+	not input.initial_setup.global_gpgcheck_enabled
+	msg := "CIS 1.2.3: Global gpgcheck is not enabled in /etc/dnf/dnf.conf"
 }
 
 # CIS 1.7: Command Line Warning Banners
 
 # CIS 1.7.1: message of the day must be explicitly configured properly
 violations contains msg if {
-    not input.initial_setup.motd_exists
-    msg := "CIS 1.7.1: /etc/motd does not exist"
+	not input.initial_setup.motd_exists
+	msg := "CIS 1.7.1: /etc/motd does not exist"
 }
 
 violations contains msg if {
-    input.initial_setup.motd_exists
-    mode := input.initial_setup.motd_mode
-    not mode_within(mode, "0644")
-    msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644 or stricter", [mode])
+	input.initial_setup.motd_exists
+	mode := input.initial_setup.motd_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.1: /etc/motd has mode %s, should be 0644 or stricter", [mode])
 }
 
 violations contains msg if {
-    input.initial_setup.motd_exists
-    not input.initial_setup.motd_mode
-    msg := "CIS 1.7.1: evidence missing - initial_setup.motd_mode not collected"
+	input.initial_setup.motd_exists
+	not input.initial_setup.motd_mode
+	msg := "CIS 1.7.1: evidence missing - initial_setup.motd_mode not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.motd_contains_sensitive_info
-    msg := "CIS 1.7.1: /etc/motd contains sensitive system information (OS version, kernel, etc.)"
+	input.initial_setup.motd_contains_sensitive_info
+	msg := "CIS 1.7.1: /etc/motd contains sensitive system information (OS version, kernel, etc.)"
 }
 
 # CIS 1.7.2: local login warning banner must be explicitly configured properly
 violations contains msg if {
-    not input.initial_setup.issue_exists
-    msg := "CIS 1.7.2: /etc/issue does not exist"
+	not input.initial_setup.issue_exists
+	msg := "CIS 1.7.2: /etc/issue does not exist"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_exists
-    mode := input.initial_setup.issue_mode
-    not mode_within(mode, "0644")
-    msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644 or stricter", [mode])
+	input.initial_setup.issue_exists
+	mode := input.initial_setup.issue_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.2: /etc/issue has mode %s, should be 0644 or stricter", [mode])
 }
 
 violations contains msg if {
-    input.initial_setup.issue_exists
-    not input.initial_setup.issue_mode
-    msg := "CIS 1.7.2: evidence missing - initial_setup.issue_mode not collected"
+	input.initial_setup.issue_exists
+	not input.initial_setup.issue_mode
+	msg := "CIS 1.7.2: evidence missing - initial_setup.issue_mode not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_contains_sensitive_info
-    msg := "CIS 1.7.2: /etc/issue contains sensitive system information"
+	input.initial_setup.issue_contains_sensitive_info
+	msg := "CIS 1.7.2: /etc/issue contains sensitive system information"
 }
 
 # CIS 1.7.3: remote login warning banner must be explicitly configured properly
 violations contains msg if {
-    not input.initial_setup.issue_net_exists
-    msg := "CIS 1.7.3: /etc/issue.net does not exist"
+	not input.initial_setup.issue_net_exists
+	msg := "CIS 1.7.3: /etc/issue.net does not exist"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_net_exists
-    mode := input.initial_setup.issue_net_mode
-    not mode_within(mode, "0644")
-    msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644 or stricter", [mode])
+	input.initial_setup.issue_net_exists
+	mode := input.initial_setup.issue_net_mode
+	not mode_within(mode, "0644")
+	msg := sprintf("CIS 1.7.3: /etc/issue.net has mode %s, should be 0644 or stricter", [mode])
 }
 
 violations contains msg if {
-    input.initial_setup.issue_net_exists
-    not input.initial_setup.issue_net_mode
-    msg := "CIS 1.7.3: evidence missing - initial_setup.issue_net_mode not collected"
+	input.initial_setup.issue_net_exists
+	not input.initial_setup.issue_net_mode
+	msg := "CIS 1.7.3: evidence missing - initial_setup.issue_net_mode not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_net_contains_sensitive_info
-    msg := "CIS 1.7.3: /etc/issue.net contains sensitive system information"
+	input.initial_setup.issue_net_contains_sensitive_info
+	msg := "CIS 1.7.3: /etc/issue.net contains sensitive system information"
 }
 
 # CIS 1.7.4: owner, group, and mode of /etc/motd must be tightened
 violations contains msg if {
-    input.initial_setup.motd_exists
-    not input.initial_setup.motd_owner
-    msg := "CIS 1.7.4: evidence missing - initial_setup.motd_owner not collected"
+	input.initial_setup.motd_exists
+	not input.initial_setup.motd_owner
+	msg := "CIS 1.7.4: evidence missing - initial_setup.motd_owner not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.motd_owner != "root"
-    msg := sprintf("CIS 1.7.4: /etc/motd owned by %s, should be root", [input.initial_setup.motd_owner])
+	input.initial_setup.motd_owner != "root"
+	msg := sprintf("CIS 1.7.4: /etc/motd owned by %s, should be root", [input.initial_setup.motd_owner])
 }
 
 # CIS 1.7.5: owner, group, and mode of /etc/issue must be tightened
 violations contains msg if {
-    input.initial_setup.issue_exists
-    not input.initial_setup.issue_owner
-    msg := "CIS 1.7.5: evidence missing - initial_setup.issue_owner not collected"
+	input.initial_setup.issue_exists
+	not input.initial_setup.issue_owner
+	msg := "CIS 1.7.5: evidence missing - initial_setup.issue_owner not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_owner != "root"
-    msg := sprintf("CIS 1.7.5: /etc/issue owned by %s, should be root", [input.initial_setup.issue_owner])
+	input.initial_setup.issue_owner != "root"
+	msg := sprintf("CIS 1.7.5: /etc/issue owned by %s, should be root", [input.initial_setup.issue_owner])
 }
 
 # CIS 1.7.6: owner, group, and mode of /etc/issue.net must be tightened
 violations contains msg if {
-    input.initial_setup.issue_net_exists
-    not input.initial_setup.issue_net_owner
-    msg := "CIS 1.7.6: evidence missing - initial_setup.issue_net_owner not collected"
+	input.initial_setup.issue_net_exists
+	not input.initial_setup.issue_net_owner
+	msg := "CIS 1.7.6: evidence missing - initial_setup.issue_net_owner not collected"
 }
 
 violations contains msg if {
-    input.initial_setup.issue_net_owner != "root"
-    msg := sprintf("CIS 1.7.6: /etc/issue.net owned by %s, should be root", [input.initial_setup.issue_net_owner])
+	input.initial_setup.issue_net_owner != "root"
+	msg := sprintf("CIS 1.7.6: /etc/issue.net owned by %s, should be root", [input.initial_setup.issue_net_owner])
 }
 
 # CIS 1.8: GNOME Display Manager
@@ -175,120 +175,120 @@ violations contains msg if {
 # CIS 1.8.1: GNOME Display Manager must be removed (if not required)
 # Note: This is environment-specific, only check if GDM is installed but not intentionally used
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.server_environment
-    not input.initial_setup.gui_required
-    msg := "CIS 1.8.1: GNOME Display Manager (GDM) installed on server without GUI requirement"
+	input.initial_setup.gdm_installed
+	input.initial_setup.server_environment
+	not input.initial_setup.gui_required
+	msg := "CIS 1.8.1: GNOME Display Manager (GDM) installed on server without GUI requirement"
 }
 
 # CIS 1.8.2: GDM login banner must be explicitly configured
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_banner_configured
-    msg := "CIS 1.8.2: GDM login banner is not configured"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_banner_configured
+	msg := "CIS 1.8.2: GDM login banner is not configured"
 }
 
 # CIS 1.8.3: GDM disable-user-list option must be turned on
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_disable_user_list
-    msg := "CIS 1.8.3: GDM user list is not disabled"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_disable_user_list
+	msg := "CIS 1.8.3: GDM user list is not disabled"
 }
 
 # CIS 1.8.4: GDM screen locks when the user must be idle
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_screen_lock_enabled
-    msg := "CIS 1.8.4: GDM automatic screen lock is not enabled"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_screen_lock_enabled
+	msg := "CIS 1.8.4: GDM automatic screen lock is not enabled"
 }
 
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    input.initial_setup.gdm_screen_lock_enabled
-    delay := to_number(input.initial_setup.gdm_idle_delay)
-    delay > 900
-    msg := sprintf("CIS 1.8.4: GDM idle delay is %v seconds, should be 900 or less", [delay])
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	delay := to_number(input.initial_setup.gdm_idle_delay)
+	delay > 900
+	msg := sprintf("CIS 1.8.4: GDM idle delay is %v seconds, should be 900 or less", [delay])
 }
 
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    input.initial_setup.gdm_screen_lock_enabled
-    not input.initial_setup.gdm_idle_delay
-    msg := "CIS 1.8.4: evidence missing - initial_setup.gdm_idle_delay not collected"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	not input.initial_setup.gdm_idle_delay
+	msg := "CIS 1.8.4: evidence missing - initial_setup.gdm_idle_delay not collected"
 }
 
 # CIS 1.8.5: checked condition — GDM screen locks cannot be overridden
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    input.initial_setup.gdm_lock_override_allowed
-    msg := "CIS 1.8.5: GDM screen lock can be overridden by users"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_lock_override_allowed
+	msg := "CIS 1.8.5: GDM screen lock can be overridden by users"
 }
 
 # CIS 1.8.6: GDM automatic mounting of removable media must be turned off
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_automount_disabled
-    msg := "CIS 1.8.6: GDM automatic mounting of removable media is not disabled"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_automount_disabled
+	msg := "CIS 1.8.6: GDM automatic mounting of removable media is not disabled"
 }
 
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_automount_open_disabled
-    msg := "CIS 1.8.6: GDM automatic opening of removable media is not disabled"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_automount_open_disabled
+	msg := "CIS 1.8.6: GDM automatic opening of removable media is not disabled"
 }
 
 # CIS 1.8.7: GDM disabling automatic mounting of removable media must be not overridden
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    input.initial_setup.gdm_automount_override_allowed
-    msg := "CIS 1.8.7: GDM automount settings can be overridden by users"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_automount_override_allowed
+	msg := "CIS 1.8.7: GDM automount settings can be overridden by users"
 }
 
 # CIS 1.8.8: GDM autorun-never must be turned on
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    not input.initial_setup.gdm_autorun_never_enabled
-    msg := "CIS 1.8.8: GDM autorun-never is not enabled"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	not input.initial_setup.gdm_autorun_never_enabled
+	msg := "CIS 1.8.8: GDM autorun-never is not enabled"
 }
 
 # CIS 1.8.9: GDM autorun-never must be not overridden
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gui_required
-    input.initial_setup.gdm_autorun_override_allowed
-    msg := "CIS 1.8.9: GDM autorun-never can be overridden by users"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_autorun_override_allowed
+	msg := "CIS 1.8.9: GDM autorun-never can be overridden by users"
 }
 
 # CIS 1.8.10: XDMCP must stay off
 violations contains msg if {
-    input.initial_setup.gdm_installed
-    input.initial_setup.gdm_xdmcp_enabled
-    msg := "CIS 1.8.10: GDM XDMCP is enabled - should be disabled for security"
+	input.initial_setup.gdm_installed
+	input.initial_setup.gdm_xdmcp_enabled
+	msg := "CIS 1.8.10: GDM XDMCP is enabled - should be disabled for security"
 }
 
 # CIS 1.9: system-wide crypto policy must be not legacy
 violations contains msg if {
-    input.initial_setup.crypto_policy
-    input.initial_setup.crypto_policy == "LEGACY"
-    msg := "CIS 1.9: System-wide crypto policy is set to LEGACY - should use DEFAULT, FUTURE, or FIPS"
+	input.initial_setup.crypto_policy
+	input.initial_setup.crypto_policy == "LEGACY"
+	msg := "CIS 1.9: System-wide crypto policy is set to LEGACY - should use DEFAULT, FUTURE, or FIPS"
 }
 
 violations contains msg if {
-    not input.initial_setup.crypto_policy
-    msg := "CIS 1.9: System-wide crypto policy is not configured"
+	not input.initial_setup.crypto_policy
+	msg := "CIS 1.9: System-wide crypto policy is not configured"
 }
 
 # Compliance check
 compliant if {
-    count(violations) == 0
+	count(violations) == 0
 }

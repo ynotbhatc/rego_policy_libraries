@@ -62,4 +62,3 @@ test_passphrase_cat_flagged if {
 test_passphrase_echo_flagged if {
 	not pkg.ssl_passphrase_command_secure with input as {"postgresql": {"ssl": {"ssl_passphrase_command": "echo secret"}}}
 }
-

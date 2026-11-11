@@ -232,25 +232,45 @@ forensic_readiness if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default information_security_policy := false
+
 default security_roles_defined := false
+
 default acceptable_use_policy := false
+
 default risk_management_program := false
+
 default targeted_risk_analysis := false
+
 default technology_review := false
+
 default pci_compliance_management := false
+
 default pci_responsibilities_assigned := false
+
 default pci_scope_documented := false
+
 default pan_data_locations := false
+
 default security_awareness_program := false
+
 default targeted_security_training := false
+
 default personnel_screening := false
+
 default third_party_risk_management := false
+
 default third_party_acknowledgment := false
+
 default tpsp_accountability := false
+
 default incident_response_plan := false
+
 default incident_response_scope := false
+
 default incident_response_communication := false
+
 default forensic_readiness := false
+
 default pci_requirement_12_compliant := false
 
 # =================================================================
@@ -281,6 +301,7 @@ pci_requirement_12_compliant if {
 }
 
 default pci_requirement_12_score := 0
+
 default pci_requirement_12_findings := {}
 
 pci_requirement_12_score := score if {
@@ -316,9 +337,7 @@ pci_requirement_12_findings := {
 		"information_security_policy": information_security_policy,
 		"security_roles_defined": security_roles_defined,
 	},
-	"requirement_12_2": {
-		"acceptable_use_policy": acceptable_use_policy,
-	},
+	"requirement_12_2": {"acceptable_use_policy": acceptable_use_policy},
 	"requirement_12_3": {
 		"risk_management": risk_management_program,
 		"targeted_risk_analysis": targeted_risk_analysis,
@@ -336,9 +355,7 @@ pci_requirement_12_findings := {
 		"awareness_program": security_awareness_program,
 		"targeted_training": targeted_security_training,
 	},
-	"requirement_12_7": {
-		"personnel_screening": personnel_screening,
-	},
+	"requirement_12_7": {"personnel_screening": personnel_screening},
 	"requirement_12_8_9": {
 		"third_party_risk": third_party_risk_management,
 		"third_party_acknowledgment": third_party_acknowledgment,

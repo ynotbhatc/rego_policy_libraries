@@ -24,76 +24,78 @@ import rego.v1
 default compliant := false
 
 violation contains msg if {
-    not input.au_controls.policy.documented
-    msg := "NIST AU-1: Audit and accountability policy not documented"
+	not input.au_controls.policy.documented
+	msg := "NIST AU-1: Audit and accountability policy not documented"
 }
 
 violation contains msg if {
-    not input.au_controls.event_logging.enabled
-    msg := "NIST AU-2: Auditable events not identified or logging not enabled"
+	not input.au_controls.event_logging.enabled
+	msg := "NIST AU-2: Auditable events not identified or logging not enabled"
 }
 
 violation contains msg if {
-    not input.au_controls.content_of_records.adequate
-    msg := "NIST AU-3: Audit record content lacks who/what/when/where/source/outcome"
+	not input.au_controls.content_of_records.adequate
+	msg := "NIST AU-3: Audit record content lacks who/what/when/where/source/outcome"
 }
 
 violation contains msg if {
-    not input.au_controls.storage_capacity.adequate
-    msg := "NIST AU-4: Audit record storage capacity insufficient for required retention"
+	not input.au_controls.storage_capacity.adequate
+	msg := "NIST AU-4: Audit record storage capacity insufficient for required retention"
 }
 
 violation contains msg if {
-    not input.au_controls.response_to_failures.alerting
-    msg := "NIST AU-5: Audit logging failure does not alert appropriate personnel"
+	not input.au_controls.response_to_failures.alerting
+	msg := "NIST AU-5: Audit logging failure does not alert appropriate personnel"
 }
 
 violation contains msg if {
-    not input.au_controls.review_and_analysis.regular
-    msg := "NIST AU-6: Audit records not regularly reviewed or analyzed"
+	not input.au_controls.review_and_analysis.regular
+	msg := "NIST AU-6: Audit records not regularly reviewed or analyzed"
 }
 
 violation contains msg if {
-    not input.au_controls.reduction_and_reporting.tools_available
-    msg := "NIST AU-7: Audit record reduction/report-generation tooling unavailable"
+	not input.au_controls.reduction_and_reporting.tools_available
+	msg := "NIST AU-7: Audit record reduction/report-generation tooling unavailable"
 }
 
 violation contains msg if {
-    not input.au_controls.time_stamps.synchronized
-    msg := "NIST AU-8: Audit record time stamps not synchronized to authoritative source"
+	not input.au_controls.time_stamps.synchronized
+	msg := "NIST AU-8: Audit record time stamps not synchronized to authoritative source"
 }
 
 violation contains msg if {
-    not input.au_controls.protection_of_records.tamper_resistant
-    msg := "NIST AU-9: Audit records not protected against unauthorized modification/deletion"
+	not input.au_controls.protection_of_records.tamper_resistant
+	msg := "NIST AU-9: Audit records not protected against unauthorized modification/deletion"
 }
 
 violation contains msg if {
-    not input.au_controls.non_repudiation.implemented
-    msg := "NIST AU-10: Non-repudiation of actions by individuals not implemented"
+	not input.au_controls.non_repudiation.implemented
+	msg := "NIST AU-10: Non-repudiation of actions by individuals not implemented"
 }
 
 violation contains msg if {
-    # object.get defaults missing/undefined to 0 so the rule still fires
-    # when retention_period_days is absent (otherwise the undefined comparison
-    # silently skips the control and skews the violation count).
-    object.get(input.au_controls, "retention_period_days", 0) < 365
-    msg := sprintf("NIST AU-11: Audit record retention %d days is below 365-day minimum",
-                   [object.get(input.au_controls, "retention_period_days", 0)])
+	# object.get defaults missing/undefined to 0 so the rule still fires
+	# when retention_period_days is absent (otherwise the undefined comparison
+	# silently skips the control and skews the violation count).
+	object.get(input.au_controls, "retention_period_days", 0) < 365
+	msg := sprintf(
+		"NIST AU-11: Audit record retention %d days is below 365-day minimum",
+		[object.get(input.au_controls, "retention_period_days", 0)],
+	)
 }
 
 violation contains msg if {
-    not input.au_controls.generation.required_events_captured
-    msg := "NIST AU-12: Audit record generation does not capture all required events"
+	not input.au_controls.generation.required_events_captured
+	msg := "NIST AU-12: Audit record generation does not capture all required events"
 }
 
-compliant if { count(violation) == 0 }
+compliant if count(violation) == 0
 
 compliance_report := {
-    "family": "AU",
-    "name":   "Audit and Accountability",
-    "controls_evaluated": 12,
-    "violations": violation,
-    "violation_count": count(violation),
-    "compliant": compliant,
+	"family": "AU",
+	"name": "Audit and Accountability",
+	"controls_evaluated": 12,
+	"violations": violation,
+	"violation_count": count(violation),
+	"compliant": compliant,
 }

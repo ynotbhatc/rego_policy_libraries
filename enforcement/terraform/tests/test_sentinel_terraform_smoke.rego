@@ -9,4 +9,3 @@ test_sentinel_terraform_loads_on_empty_input if {
 	m := data.sentinel.terraform with input as {}
 	is_object(m)
 }
-

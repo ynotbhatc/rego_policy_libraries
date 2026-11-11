@@ -84,10 +84,7 @@ controls_not_evaluated := BENCHMARK_TOTAL_CONTROLS - controls_evaluated
 # The four buckets must partition the benchmark. Anything not evaluated
 # has to be claimed by a named reason -- an unclaimed control is one the
 # report does not mention at all, which reads exactly like a pass.
-accounted_controls := (
-	(controls_evaluated + count(attestation.REQUIRES_ATTESTATION)) +
-	count(attestation.UNRESOLVED)
-) + count(attestation.NOT_IMPLEMENTED)
+accounted_controls := ((controls_evaluated + count(attestation.REQUIRES_ATTESTATION)) + count(attestation.UNRESOLVED)) + count(attestation.NOT_IMPLEMENTED)
 
 default accounting_balanced := false
 
@@ -119,7 +116,7 @@ compliance_report := {
 	"benchmark_total_controls": BENCHMARK_TOTAL_CONTROLS,
 	"controls_evaluated": controls_evaluated,
 	"controls_not_evaluated": controls_not_evaluated,
-	"coverage_percentage": round(controls_evaluated * 100 / BENCHMARK_TOTAL_CONTROLS),
+	"coverage_percentage": round((controls_evaluated * 100) / BENCHMARK_TOTAL_CONTROLS),
 	"evaluated_control_ids": evaluated_controls,
 	"coverage_accounting": coverage_accounting,
 	"sections_evaluated": section_reports,

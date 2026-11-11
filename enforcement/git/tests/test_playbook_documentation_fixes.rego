@@ -4,7 +4,6 @@ import rego.v1
 
 # Regression tests for the 2026-10-17 validation findings. Each fails on the pre-fix module.
 
-
 good_playbook := {
 	"path": "playbooks/site.yml",
 	"metadata": {

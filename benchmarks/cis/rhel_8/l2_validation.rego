@@ -23,7 +23,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # ---------------------------------------------------------------------------
 # Section 1.1 - Filesystem (L2)
@@ -173,15 +173,15 @@ sshd_config := {key: value |
 }
 
 violations contains "CIS L2 5.2.7: AllowTcpForwarding not set to 'no'" if {
-	sshd_config["allowtcpforwarding"] != "no"
+	sshd_config.allowtcpforwarding != "no"
 }
 
 violations contains "CIS L2 5.2.8: LoginGraceTime not configured or exceeds 60s" if {
-	not sshd_config["logingracetime"]
+	not sshd_config.logingracetime
 }
 
 violations contains "CIS L2 5.2.8: LoginGraceTime exceeds 60 seconds" if {
-	to_number(sshd_config["logingracetime"]) > 60
+	to_number(sshd_config.logingracetime) > 60
 }
 
 # ---------------------------------------------------------------------------
@@ -217,9 +217,9 @@ violations contains "CIS L2 6.1.14: Unexpected SGID executables found" if {
 }
 
 compliance_report := {
-	"profile":       "level2",
-	"benchmark":     "CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0",
-	"l2_controls":   36,
+	"profile": "level2",
+	"benchmark": "CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0",
+	"l2_controls": 36,
 	"l2_violations": count(violations),
-	"l2_compliant":  compliant,
+	"l2_compliant": compliant,
 }

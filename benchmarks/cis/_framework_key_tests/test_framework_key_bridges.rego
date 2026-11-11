@@ -16,45 +16,45 @@ import rego.v1
 
 # --- report is populated (not {} and not undefined) -------------------------
 
-test_rhel9_report_populated if { count(data.cis_rhel9.main.compliance_report) > 0 }
+test_rhel9_report_populated if count(data.cis_rhel9.main.compliance_report) > 0
 
-test_rhel8_report_populated if { count(data.cis_rhel8.main.compliance_report) > 0 }
+test_rhel8_report_populated if count(data.cis_rhel8.main.compliance_report) > 0
 
-test_rocky8_report_populated if { count(data.cis_rocky_linux_8.main.compliance_report) > 0 }
+test_rocky8_report_populated if count(data.cis_rocky_linux_8.main.compliance_report) > 0
 
-test_rocky9_report_populated if { count(data.cis_rocky_linux_9.main.compliance_report) > 0 }
+test_rocky9_report_populated if count(data.cis_rocky_linux_9.main.compliance_report) > 0
 
-test_amazon2023_report_populated if { count(data.cis_amazon_linux_2023.main.compliance_report) > 0 }
+test_amazon2023_report_populated if count(data.cis_amazon_linux_2023.main.compliance_report) > 0
 
-test_windows2022_report_populated if { count(data.cis_windows_server_2022.main.compliance_report) > 0 }
+test_windows2022_report_populated if count(data.cis_windows_server_2022.main.compliance_report) > 0
 
-test_windows2019_report_populated if { count(data.cis_windows_server_2019.main.compliance_report) > 0 }
+test_windows2019_report_populated if count(data.cis_windows_server_2019.main.compliance_report) > 0
 
-test_ubuntu2204_report_populated if { count(data.cis_ubuntu_22_04.main.compliance_report) > 0 }
+test_ubuntu2204_report_populated if count(data.cis_ubuntu_22_04.main.compliance_report) > 0
 
-test_ubuntu2004_report_populated if { count(data.cis_ubuntu_20_04.main.compliance_report) > 0 }
+test_ubuntu2004_report_populated if count(data.cis_ubuntu_20_04.main.compliance_report) > 0
 
-test_ubuntu2404_report_populated if { count(data.cis_ubuntu_24_04.main.compliance_report) > 0 }
+test_ubuntu2404_report_populated if count(data.cis_ubuntu_24_04.main.compliance_report) > 0
 
-test_debian11_report_populated if { count(data.cis_debian_11.main.compliance_report) > 0 }
+test_debian11_report_populated if count(data.cis_debian_11.main.compliance_report) > 0
 
-test_vyos_report_populated if { count(data.cis_vyos.main.compliance_report) > 0 }
+test_vyos_report_populated if count(data.cis_vyos.main.compliance_report) > 0
 
-test_pfsense_report_populated if { count(data.cis_pfsense.main.compliance_report) > 0 }
+test_pfsense_report_populated if count(data.cis_pfsense.main.compliance_report) > 0
 
-test_opnsense_report_populated if { count(data.cis_opnsense.main.compliance_report) > 0 }
+test_opnsense_report_populated if count(data.cis_opnsense.main.compliance_report) > 0
 
-test_gcp_report_populated if { count(data.cis_gcp.main.compliance_report) > 0 }
+test_gcp_report_populated if count(data.cis_gcp.main.compliance_report) > 0
 
-test_eks_report_populated if { count(data.cis_eks.main.compliance_report) > 0 }
+test_eks_report_populated if count(data.cis_eks.main.compliance_report) > 0
 
-test_suse16_report_populated if { count(data.cis_suse16.main.compliance_report) > 0 }
+test_suse16_report_populated if count(data.cis_suse16.main.compliance_report) > 0
 
-test_ubuntu2604_report_populated if { count(data.cis_ubuntu_26_04.main.compliance_report) > 0 }
+test_ubuntu2604_report_populated if count(data.cis_ubuntu_26_04.main.compliance_report) > 0
 
-test_sql_server_2025_report_populated if { count(data.cis.sql_server_2025.main.compliance_report) > 0 }
+test_sql_server_2025_report_populated if count(data.cis.sql_server_2025.main.compliance_report) > 0
 
-test_intune_defender_av_report_populated if { count(data.cis.intune_defender_antivirus.main.compliance_report) > 0 }
+test_intune_defender_av_report_populated if count(data.cis.intune_defender_antivirus.main.compliance_report) > 0
 
 # --- counts are internally consistent and non-negative ----------------------
 

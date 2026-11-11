@@ -29,9 +29,13 @@ default compliant := false
 
 # RHEL-08-040160 | V-230555 | CAT I - SSH must not allow root login
 default no_root_login := false
-no_root_login if { lower(input.ssh_config.PermitRootLogin) == "no" }
 
-status_rhel_08_040160 := "Not_a_Finding" if { no_root_login } else := "Open"
+no_root_login if lower(input.ssh_config.PermitRootLogin) == "no"
+
+status_rhel_08_040160 := "Not_a_Finding" if no_root_login
+
+else := "Open"
+
 finding_rhel_08_040160 := {
 	"vuln_id": "V-230555",
 	"stig_id": "RHEL-08-040160",
@@ -43,6 +47,7 @@ finding_rhel_08_040160 := {
 
 # RHEL-08-040170 | V-230556 | CAT I - SSH must use FIPS ciphers
 default ssh_fips_ciphers := false
+
 ssh_fips_ciphers if {
 	ciphers := input.ssh_config.Ciphers
 	not contains(ciphers, "3des")
@@ -50,7 +55,10 @@ ssh_fips_ciphers if {
 	not contains(ciphers, "blowfish")
 }
 
-status_rhel_08_040170 := "Not_a_Finding" if { ssh_fips_ciphers } else := "Open"
+status_rhel_08_040170 := "Not_a_Finding" if ssh_fips_ciphers
+
+else := "Open"
+
 finding_rhel_08_040170 := {
 	"vuln_id": "V-230556",
 	"stig_id": "RHEL-08-040170",
@@ -66,9 +74,13 @@ finding_rhel_08_040170 := {
 
 # RHEL-08-040180 | V-230557 | CAT II - SSH must not allow empty passwords
 default no_empty_passwords := false
-no_empty_passwords if { lower(input.ssh_config.PermitEmptyPasswords) == "no" }
 
-status_rhel_08_040180 := "Not_a_Finding" if { no_empty_passwords } else := "Open"
+no_empty_passwords if lower(input.ssh_config.PermitEmptyPasswords) == "no"
+
+status_rhel_08_040180 := "Not_a_Finding" if no_empty_passwords
+
+else := "Open"
+
 finding_rhel_08_040180 := {
 	"vuln_id": "V-230557",
 	"stig_id": "RHEL-08-040180",
@@ -80,9 +92,13 @@ finding_rhel_08_040180 := {
 
 # RHEL-08-040190 | V-230558 | CAT II - MaxAuthTries must be 4 or less
 default max_auth_tries := false
-max_auth_tries if { to_number(input.ssh_config.MaxAuthTries) <= 4 }
 
-status_rhel_08_040190 := "Not_a_Finding" if { max_auth_tries } else := "Open"
+max_auth_tries if to_number(input.ssh_config.MaxAuthTries) <= 4
+
+status_rhel_08_040190 := "Not_a_Finding" if max_auth_tries
+
+else := "Open"
+
 finding_rhel_08_040190 := {
 	"vuln_id": "V-230558",
 	"stig_id": "RHEL-08-040190",
@@ -94,12 +110,16 @@ finding_rhel_08_040190 := {
 
 # RHEL-08-040200 | V-230559 | CAT II - ClientAliveInterval must be 600 or less
 default client_alive := false
+
 client_alive if {
 	to_number(input.ssh_config.ClientAliveInterval) <= 600
 	to_number(input.ssh_config.ClientAliveInterval) > 0
 }
 
-status_rhel_08_040200 := "Not_a_Finding" if { client_alive } else := "Open"
+status_rhel_08_040200 := "Not_a_Finding" if client_alive
+
+else := "Open"
+
 finding_rhel_08_040200 := {
 	"vuln_id": "V-230559",
 	"stig_id": "RHEL-08-040200",
@@ -111,6 +131,7 @@ finding_rhel_08_040200 := {
 
 # RHEL-08-040210 | V-230560 | CAT II - SSH must use FIPS MACs
 default ssh_fips_macs := false
+
 ssh_fips_macs if {
 	macs := input.ssh_config.MACs
 	contains(macs, "hmac-sha2")
@@ -118,7 +139,10 @@ ssh_fips_macs if {
 	not contains(macs, "hmac-sha1")
 }
 
-status_rhel_08_040210 := "Not_a_Finding" if { ssh_fips_macs } else := "Open"
+status_rhel_08_040210 := "Not_a_Finding" if ssh_fips_macs
+
+else := "Open"
+
 finding_rhel_08_040210 := {
 	"vuln_id": "V-230560",
 	"stig_id": "RHEL-08-040210",
@@ -130,9 +154,13 @@ finding_rhel_08_040210 := {
 
 # RHEL-08-040220 | V-230561 | CAT II - IgnoreRhosts must be yes
 default ignore_rhosts := false
-ignore_rhosts if { lower(input.ssh_config.IgnoreRhosts) == "yes" }
 
-status_rhel_08_040220 := "Not_a_Finding" if { ignore_rhosts } else := "Open"
+ignore_rhosts if lower(input.ssh_config.IgnoreRhosts) == "yes"
+
+status_rhel_08_040220 := "Not_a_Finding" if ignore_rhosts
+
+else := "Open"
+
 finding_rhel_08_040220 := {
 	"vuln_id": "V-230561",
 	"stig_id": "RHEL-08-040220",
@@ -144,9 +172,13 @@ finding_rhel_08_040220 := {
 
 # RHEL-08-040230 | V-230562 | CAT II - HostbasedAuthentication must be no
 default no_hostbased := false
-no_hostbased if { lower(input.ssh_config.HostbasedAuthentication) == "no" }
 
-status_rhel_08_040230 := "Not_a_Finding" if { no_hostbased } else := "Open"
+no_hostbased if lower(input.ssh_config.HostbasedAuthentication) == "no"
+
+status_rhel_08_040230 := "Not_a_Finding" if no_hostbased
+
+else := "Open"
+
 finding_rhel_08_040230 := {
 	"vuln_id": "V-230562",
 	"stig_id": "RHEL-08-040230",
@@ -158,9 +190,13 @@ finding_rhel_08_040230 := {
 
 # RHEL-08-040240 | V-230563 | CAT II - UsePAM must be yes
 default use_pam := false
-use_pam if { lower(input.ssh_config.UsePAM) == "yes" }
 
-status_rhel_08_040240 := "Not_a_Finding" if { use_pam } else := "Open"
+use_pam if lower(input.ssh_config.UsePAM) == "yes"
+
+status_rhel_08_040240 := "Not_a_Finding" if use_pam
+
+else := "Open"
+
 finding_rhel_08_040240 := {
 	"vuln_id": "V-230563",
 	"stig_id": "RHEL-08-040240",
@@ -172,12 +208,16 @@ finding_rhel_08_040240 := {
 
 # RHEL-08-040250 | V-230564 | CAT II - Banner must be set
 default ssh_banner := false
+
 ssh_banner if {
 	input.ssh_config.Banner != ""
 	input.ssh_config.Banner != "none"
 }
 
-status_rhel_08_040250 := "Not_a_Finding" if { ssh_banner } else := "Open"
+status_rhel_08_040250 := "Not_a_Finding" if ssh_banner
+
+else := "Open"
+
 finding_rhel_08_040250 := {
 	"vuln_id": "V-230564",
 	"stig_id": "RHEL-08-040250",

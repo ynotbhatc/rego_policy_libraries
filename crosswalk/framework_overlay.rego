@@ -71,7 +71,7 @@ _coverage_for(fwmap) := {
 		some fc
 		ctrls := fwmap[fc]
 		count(ctrls) > 0
-		every c in ctrls {_control_status[c] == "satisfied"}
+		every c in ctrls { _control_status[c] == "satisfied" }
 		some c in ctrls
 		_control_status[c] # at least one actually evaluated
 	])
@@ -81,6 +81,7 @@ _coverage_for(fwmap) := {
 		some c in ctrls
 		_control_status[c] == "gap"
 	])
+
 	# not_covered: framework controls whose spine controls were never evaluated
 	notcov := sort([fc |
 		some fc

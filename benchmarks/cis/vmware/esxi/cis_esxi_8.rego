@@ -34,13 +34,13 @@ violations := array.concat(
 						logging_audit_violations,
 						array.concat(
 							system_hardening_violations,
-							compliance_monitoring_violations
-						)
-					)
-				)
-			)
-		)
-	)
+							compliance_monitoring_violations,
+						),
+					),
+				),
+			),
+		),
+	),
 )
 
 compliant if {
@@ -70,7 +70,7 @@ host_configuration_violations := [msg |
 		{"msg": "1.17 ESXi host update and patch management must be explicitly configured", "condition": host_patch_management_configured},
 		{"msg": "1.18 ESXi host backup and recovery procedures must be in place", "condition": host_backup_procedures_configured},
 		{"msg": "1.19 ESXi host disaster recovery must be explicitly configured", "condition": host_disaster_recovery_configured},
-		{"msg": "1.20 ESXi host compliance monitoring must be turned on", "condition": host_compliance_monitoring_enabled}
+		{"msg": "1.20 ESXi host compliance monitoring must be turned on", "condition": host_compliance_monitoring_enabled},
 	]
 	m := msgs[_]
 	not m.condition
@@ -92,7 +92,7 @@ network_security_violations := [msg |
 		{"msg": "2.11 network segmentation must be properly implemented", "condition": network_segmentation_implemented},
 		{"msg": "2.12 virtual networking security features must be turned on", "condition": virtual_networking_security_enabled},
 		{"msg": "2.13 network intrusion detection must be explicitly configured", "condition": network_intrusion_detection_configured},
-		{"msg": "2.14 network performance monitoring must be explicitly configured", "condition": network_performance_monitoring_configured}
+		{"msg": "2.14 network performance monitoring must be explicitly configured", "condition": network_performance_monitoring_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -110,7 +110,7 @@ storage_security_violations := [msg |
 		{"msg": "3.7 storage I/O control must be explicitly configured appropriately", "condition": storage_io_control_configured},
 		{"msg": "3.8 storage security policies must be implemented", "condition": storage_security_policies_implemented},
 		{"msg": "3.9 storage audit logging must be turned on", "condition": storage_audit_logging_enabled},
-		{"msg": "3.10 storage compliance monitoring must be explicitly configured", "condition": storage_compliance_monitoring_configured}
+		{"msg": "3.10 storage compliance monitoring must be explicitly configured", "condition": storage_compliance_monitoring_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -132,7 +132,7 @@ vm_security_violations := [msg |
 		{"msg": "4.11 VM vulnerability management must be implemented", "condition": vm_vulnerability_management_implemented},
 		{"msg": "4.12 VM patch management must be explicitly configured", "condition": vm_patch_management_configured},
 		{"msg": "4.13 VM antivirus and anti-malware protection must be explicitly configured", "condition": vm_antivirus_protection_configured},
-		{"msg": "4.14 VM data loss prevention must be explicitly configured", "condition": vm_data_loss_prevention_configured}
+		{"msg": "4.14 VM data loss prevention must be explicitly configured", "condition": vm_data_loss_prevention_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -150,7 +150,7 @@ access_control_violations := [msg |
 		{"msg": "5.7 access review procedures must be in place", "condition": access_review_procedures_configured},
 		{"msg": "5.8 access provisioning and deprovisioning must be automated", "condition": access_provisioning_automated},
 		{"msg": "5.9 access monitoring and alerting must be explicitly configured", "condition": access_monitoring_configured},
-		{"msg": "5.10 emergency access procedures must be documented", "condition": emergency_access_procedures_documented}
+		{"msg": "5.10 emergency access procedures must be documented", "condition": emergency_access_procedures_documented},
 	]
 	m := msgs[_]
 	not m.condition
@@ -168,7 +168,7 @@ logging_audit_violations := [msg |
 		{"msg": "6.7 incident response procedures must be documented", "condition": incident_response_procedures_documented},
 		{"msg": "6.8 forensic analysis capabilities must be available", "condition": forensic_analysis_capabilities_available},
 		{"msg": "6.9 compliance reporting must be automated", "condition": compliance_reporting_automated},
-		{"msg": "6.10 audit trail review procedures must be in place", "condition": audit_trail_review_procedures_configured}
+		{"msg": "6.10 audit trail review procedures must be in place", "condition": audit_trail_review_procedures_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -186,7 +186,7 @@ system_hardening_violations := [msg |
 		{"msg": "7.7 security automation must be implemented", "condition": security_automation_implemented},
 		{"msg": "7.8 threat intelligence integration must be explicitly configured", "condition": threat_intelligence_integration_configured},
 		{"msg": "7.9 security metrics and KPIs must be tracked", "condition": security_metrics_kpis_tracked},
-		{"msg": "7.10 continuous security improvement processes must be in place", "condition": continuous_security_improvement_processes_configured}
+		{"msg": "7.10 continuous security improvement processes must be in place", "condition": continuous_security_improvement_processes_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -202,7 +202,7 @@ compliance_monitoring_violations := [msg |
 		{"msg": "8.5 compliance exception management must be implemented", "condition": compliance_exception_management_implemented},
 		{"msg": "8.6 compliance training and awareness programs must be in place", "condition": compliance_training_awareness_programs_configured},
 		{"msg": "8.7 compliance risk assessment must be performed regularly", "condition": compliance_risk_assessment_performed_regularly},
-		{"msg": "8.8 compliance governance processes must be documented", "condition": compliance_governance_processes_documented}
+		{"msg": "8.8 compliance governance processes must be documented", "condition": compliance_governance_processes_documented},
 	]
 	m := msgs[_]
 	not m.condition
@@ -938,5 +938,5 @@ findings := [{
 	"severity": "HIGH",
 	"details": sprintf("Found %d configuration violations across ESXi security domains", [count(violations)]),
 	"violations": violations,
-	"remediation": "Review and implement the recommended VMware ESXi security configurations including proper host hardening, network security policies, storage access controls, virtual machine security settings, comprehensive access control mechanisms, audit logging, system hardening standards, and compliance monitoring procedures"
+	"remediation": "Review and implement the recommended VMware ESXi security configurations including proper host hardening, network security policies, storage access controls, virtual machine security settings, comprehensive access control mechanisms, audit logging, system hardening standards, and compliance monitoring procedures",
 }]

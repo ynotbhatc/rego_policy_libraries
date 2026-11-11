@@ -25,139 +25,139 @@ default compliant := false
 
 # Helper to check if sudo is installed
 sudo_installed if {
-    input.sudo.installed
+	input.sudo.installed
 }
 
 # `Defaults use_pty` style flag: set on a Defaults line, never negated (`!use_pty`).
 # Substring matching would accept "Defaults !use_pty".
 sudoers_default_flag_set(flag) if {
-    some line in split(input.sudo.sudoers_content, "\n")
-    regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?%s\s*(,|#|$)`, [flag]), line)
-    not sudoers_default_flag_negated(flag)
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?%s\s*(,|#|$)`, [flag]), line)
+	not sudoers_default_flag_negated(flag)
 }
 
 sudoers_default_flag_negated(flag) if {
-    some line in split(input.sudo.sudoers_content, "\n")
-    regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?!\s*%s\s*(,|#|$)`, [flag]), line)
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?!\s*%s\s*(,|#|$)`, [flag]), line)
 }
 
 # `#includedir` and `@includedir` are directives, not comments.
 sudoers_includes_sudoers_d if {
-    some line in split(input.sudo.sudoers_content, "\n")
-    regex.match(`^\s*[#@]includedir\s+/etc/sudoers\.d\s*$`, line)
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(`^\s*[#@]includedir\s+/etc/sudoers\.d\s*$`, line)
 }
 
 # Helper to parse sudoers file
 sudoers_has_option(option) if {
-    some line in split(input.sudo.sudoers_content, "\n")
-    trimmed := trim_space(line)
-    not startswith(trimmed, "#")
-    contains(trimmed, option)
+	some line in split(input.sudo.sudoers_content, "\n")
+	trimmed := trim_space(line)
+	not startswith(trimmed, "#")
+	contains(trimmed, option)
 }
 
 violations contains msg if {
-    not sudo_installed
-    msg := "CIS 5.3.1: sudo package not installed"
+	not sudo_installed
+	msg := "CIS 5.3.1: sudo package not installed"
 }
 
 # CIS 5.3.2: sudo commands must allocate a pseudo-terminal
 violations contains msg if {
-    sudo_installed
-    not sudoers_default_flag_set("use_pty")
-    msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
+	sudo_installed
+	not sudoers_default_flag_set("use_pty")
+	msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
 # CIS 5.3.3: a log file for sudo must exist
 violations contains msg if {
-    sudo_installed
-    not sudoers_has_option("logfile=")
-    msg := "CIS 5.3.3: sudo logfile not configured (Defaults logfile= missing)"
+	sudo_installed
+	not sudoers_has_option("logfile=")
+	msg := "CIS 5.3.3: sudo logfile not configured (Defaults logfile= missing)"
 }
 
 violations contains msg if {
-    sudo_installed
-    sudoers_has_option("logfile=")
-    not input.sudo.logfile_exists
-    msg := "CIS 5.3.3: sudo logfile configured but file does not exist"
+	sudo_installed
+	sudoers_has_option("logfile=")
+	not input.sudo.logfile_exists
+	msg := "CIS 5.3.3: sudo logfile configured but file does not exist"
 }
 
 # CIS 5.3.4: checked condition — users must provide password for privilege escalation
 violations contains msg if {
-    sudo_installed
-    sudoers_has_option("NOPASSWD:")
-    msg := "CIS 5.3.4: NOPASSWD option found in sudoers - users should provide password"
+	sudo_installed
+	sudoers_has_option("NOPASSWD:")
+	msg := "CIS 5.3.4: NOPASSWD option found in sudoers - users should provide password"
 }
 
 # CIS 5.3.5: re-authentication for privilege escalation must stay in effect globally
 violations contains msg if {
-    sudo_installed
-    sudoers_has_option("!authenticate")
-    msg := "CIS 5.3.5: !authenticate found in sudoers - re-authentication is disabled"
+	sudo_installed
+	sudoers_has_option("!authenticate")
+	msg := "CIS 5.3.5: !authenticate found in sudoers - re-authentication is disabled"
 }
 
 # CIS 5.3.6: sudo authentication timeout must match the approved configuration
 violations contains msg if {
-    sudo_installed
-    input.sudo.timestamp_timeout
-    to_number(input.sudo.timestamp_timeout) > 15
-    msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s minutes, should be 15 or less", [input.sudo.timestamp_timeout])
+	sudo_installed
+	input.sudo.timestamp_timeout
+	to_number(input.sudo.timestamp_timeout) > 15
+	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s minutes, should be 15 or less", [input.sudo.timestamp_timeout])
 }
 
 # -1 means the credential cache never expires
 violations contains msg if {
-    sudo_installed
-    input.sudo.timestamp_timeout
-    to_number(input.sudo.timestamp_timeout) < 0
-    msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s (never expires), should be 0-15 minutes", [input.sudo.timestamp_timeout])
+	sudo_installed
+	input.sudo.timestamp_timeout
+	to_number(input.sudo.timestamp_timeout) < 0
+	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %s (never expires), should be 0-15 minutes", [input.sudo.timestamp_timeout])
 }
 
 violations contains msg if {
-    sudo_installed
-    not input.sudo.timestamp_timeout
-    not sudoers_has_option("timestamp_timeout=")
-    msg := "CIS 5.3.6: sudo timestamp_timeout not configured"
+	sudo_installed
+	not input.sudo.timestamp_timeout
+	not sudoers_has_option("timestamp_timeout=")
+	msg := "CIS 5.3.6: sudo timestamp_timeout not configured"
 }
 
 # CIS 5.3.7: access to the su command must be restricted
 violations contains msg if {
-    not input.sudo.su_restricted
-    msg := "CIS 5.3.7: Access to su command not restricted (pam_wheel.so not configured)"
+	not input.sudo.su_restricted
+	msg := "CIS 5.3.7: Access to su command not restricted (pam_wheel.so not configured)"
 }
 
 violations contains msg if {
-    input.sudo.su_restricted
-    count(input.sudo.wheel_group_members) == 0
-    msg := "CIS 5.3.7: wheel group has no members - no users can use su"
+	input.sudo.su_restricted
+	count(input.sudo.wheel_group_members) == 0
+	msg := "CIS 5.3.7: wheel group has no members - no users can use su"
 }
 
 # Additional checks for sudoers file permissions
 violations contains msg if {
-    input.sudo.sudoers_mode
-    input.sudo.sudoers_mode != "0440"
-    input.sudo.sudoers_mode != "0400"
-    msg := sprintf("CIS 5.3: /etc/sudoers has mode %s, should be 0440 or 0400", [input.sudo.sudoers_mode])
+	input.sudo.sudoers_mode
+	input.sudo.sudoers_mode != "0440"
+	input.sudo.sudoers_mode != "0400"
+	msg := sprintf("CIS 5.3: /etc/sudoers has mode %s, should be 0440 or 0400", [input.sudo.sudoers_mode])
 }
 
 violations contains msg if {
-    input.sudo.sudoers_owner
-    input.sudo.sudoers_owner != "root"
-    msg := sprintf("CIS 5.3: /etc/sudoers owned by %s, should be root", [input.sudo.sudoers_owner])
+	input.sudo.sudoers_owner
+	input.sudo.sudoers_owner != "root"
+	msg := sprintf("CIS 5.3: /etc/sudoers owned by %s, should be root", [input.sudo.sudoers_owner])
 }
 
 violations contains msg if {
-    input.sudo.sudoers_group
-    input.sudo.sudoers_group != "root"
-    msg := sprintf("CIS 5.3: /etc/sudoers group is %s, should be root", [input.sudo.sudoers_group])
+	input.sudo.sudoers_group
+	input.sudo.sudoers_group != "root"
+	msg := sprintf("CIS 5.3: /etc/sudoers group is %s, should be root", [input.sudo.sudoers_group])
 }
 
 # Check for includedir in sudoers
 violations contains msg if {
-    sudo_installed
-    not sudoers_includes_sudoers_d
-    msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
+	sudo_installed
+	not sudoers_includes_sudoers_d
+	msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
 }
 
 # Compliance check
 compliant if {
-    count(violations) == 0
+	count(violations) == 0
 }

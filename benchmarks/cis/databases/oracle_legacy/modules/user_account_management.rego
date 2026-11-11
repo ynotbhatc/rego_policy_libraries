@@ -57,18 +57,14 @@ default_account_violations contains violation if {
 	account.status == "OPEN"
 	account.account_name != "SYS"
 	account.account_name != "SYSTEM"
-	violation := sprintf("CIS 3.1: Default account '%s' is OPEN (should be LOCKED or DROPPED)", [
-		account.account_name,
-	])
+	violation := sprintf("CIS 3.1: Default account '%s' is OPEN (should be LOCKED or DROPPED)", [account.account_name])
 }
 
 default_account_violations contains violation if {
 	some account in input.default_accounts
 	account.status == "OPEN"
 	not account.password_changed
-	violation := sprintf("CIS 3.1: Default account '%s' has never changed password (CRITICAL: using default password)", [
-		account.account_name,
-	])
+	violation := sprintf("CIS 3.1: Default account '%s' has never changed password (CRITICAL: using default password)", [account.account_name])
 }
 
 # Common default accounts that should be locked/dropped
@@ -100,9 +96,7 @@ default_account_violations contains violation if {
 	some account in input.all_accounts
 	account.account_name == default_account
 	account.status == "OPEN"
-	violation := sprintf("CIS 3.1: Default Oracle account '%s' is OPEN (should be LOCKED)", [
-		default_account,
-	])
+	violation := sprintf("CIS 3.1: Default Oracle account '%s' is OPEN (should be LOCKED)", [default_account])
 }
 
 # =============================================================================
@@ -120,9 +114,7 @@ password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	profile.PASSWORD_REUSE_TIME == "UNLIMITED"
 	profile.PASSWORD_REUSE_MAX == "UNLIMITED"
-	violation := sprintf("CIS 3.2: Profile '%s' allows unlimited password reuse", [
-		profile.profile_name,
-	])
+	violation := sprintf("CIS 3.2: Profile '%s' allows unlimited password reuse", [profile.profile_name])
 }
 
 default_unlimited_life(profile) if {
@@ -188,9 +180,7 @@ verify_function_set(profile) if {
 password_policy_violations contains violation if {
 	some profile in input.password_profiles
 	not verify_function_set(profile)
-	violation := sprintf("CIS 3.2: Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)", [
-		profile.profile_name,
-	])
+	violation := sprintf("CIS 3.2: Profile '%s' has no password complexity function (PASSWORD_VERIFY_FUNCTION=NULL)", [profile.profile_name])
 }
 
 # =============================================================================
@@ -212,18 +202,14 @@ privilege_violations contains violation if {
 	some account in input.dba_users
 	not account.account_name in ["SYS", "SYSTEM"]
 	account.granted_role == "DBA"
-	violation := sprintf("CIS 3.3: Account '%s' has DBA role granted directly (should use custom roles)", [
-		account.account_name,
-	])
+	violation := sprintf("CIS 3.3: Account '%s' has DBA role granted directly (should use custom roles)", [account.account_name])
 }
 
 privilege_violations contains violation if {
 	some account in input.all_accounts
 	account.sysdba_privilege
 	account.authentication_type == "PASSWORD"
-	violation := sprintf("CIS 3.3: Account '%s' has SYSDBA using password authentication (should use OS or certificate auth)", [
-		account.account_name,
-	])
+	violation := sprintf("CIS 3.3: Account '%s' has SYSDBA using password authentication (should use OS or certificate auth)", [account.account_name])
 }
 
 # =============================================================================
@@ -267,9 +253,7 @@ privilege_violations contains violation if {
 
 privilege_violations contains violation if {
 	some priv in input.public_privileges.dangerous_privileges
-	violation := sprintf("CIS 3.6: Dangerous privilege '%s' is granted to PUBLIC (should be revoked)", [
-		priv,
-	])
+	violation := sprintf("CIS 3.6: Dangerous privilege '%s' is granted to PUBLIC (should be revoked)", [priv])
 }
 
 dangerous_public_privileges := [
@@ -286,9 +270,7 @@ privilege_violations contains violation if {
 	some dangerous_priv in dangerous_public_privileges
 	some granted_priv in input.public_privileges.granted_privileges
 	granted_priv == dangerous_priv
-	violation := sprintf("CIS 3.6: CRITICAL: '%s' is granted to PUBLIC", [
-		dangerous_priv,
-	])
+	violation := sprintf("CIS 3.6: CRITICAL: '%s' is granted to PUBLIC", [dangerous_priv])
 }
 
 # =============================================================================

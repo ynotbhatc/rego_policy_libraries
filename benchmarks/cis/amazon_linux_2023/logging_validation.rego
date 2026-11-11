@@ -82,9 +82,7 @@ rsyslog_violations contains violation if {
 
 journald_violations contains violation if {
 	input.journald.forward_to_syslog != "yes"
-	violation := sprintf("CIS 4.2.1.3: journald is not configured to forward to rsyslog (ForwardToSyslog: %s)", [
-		input.journald.forward_to_syslog,
-	])
+	violation := sprintf("CIS 4.2.1.3: journald is not configured to forward to rsyslog (ForwardToSyslog: %s)", [input.journald.forward_to_syslog])
 }
 
 # =============================================================================
@@ -112,9 +110,7 @@ rsyslog_violations contains violation if {
 
 rsyslog_violations contains violation if {
 	input.rsyslog.logging_rules_count < 4
-	violation := sprintf("CIS 4.2.1.5: Insufficient rsyslog logging rules configured (%d rules, expected at least 4)", [
-		input.rsyslog.logging_rules_count,
-	])
+	violation := sprintf("CIS 4.2.1.5: Insufficient rsyslog logging rules configured (%d rules, expected at least 4)", [input.rsyslog.logging_rules_count])
 }
 
 # =============================================================================
@@ -125,6 +121,7 @@ rsyslog_violations contains violation if {
 # This is informational rather than a hard requirement
 rsyslog_violations contains violation if {
 	not input.rsyslog.remote_logging_configured
+
 	# Only warn if explicitly required by your policy
 	input.require_remote_logging == true
 	violation := "CIS 4.2.1.6: rsyslog is not configured to send logs to remote host"
@@ -136,9 +133,7 @@ rsyslog_violations contains violation if {
 
 journald_violations contains violation if {
 	input.journald.compress_enabled != "yes"
-	violation := sprintf("CIS 4.2.2.1: journald compression is not enabled (Compress: %s)", [
-		input.journald.compress_enabled,
-	])
+	violation := sprintf("CIS 4.2.2.1: journald compression is not enabled (Compress: %s)", [input.journald.compress_enabled])
 }
 
 # =============================================================================
@@ -147,9 +142,7 @@ journald_violations contains violation if {
 
 journald_violations contains violation if {
 	input.journald.storage_mode != "persistent"
-	violation := sprintf("CIS 4.2.2.2: journald is not configured for persistent storage (Storage: %s)", [
-		input.journald.storage_mode,
-	])
+	violation := sprintf("CIS 4.2.2.2: journald is not configured for persistent storage (Storage: %s)", [input.journald.storage_mode])
 }
 
 # =============================================================================
@@ -265,4 +258,3 @@ report := {
 	"excessive_permissions_count": object.get(input, ["excessive_permissions", "count"], null),
 	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
-

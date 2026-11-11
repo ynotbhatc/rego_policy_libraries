@@ -18,6 +18,7 @@ test_admin_center_absent_facts_is_not_a_pass if {
 	r := admin_center.compliance_report with input as {}
 	r.compliant == false
 	r.facts_present == false
+
 	# admin_center's own 1.1.1 not-collected catch (1) plus the four
 	# Exchange-sourced controls (1.2.2/1.3.3/1.3.6/1.3.9) now reported as
 	# not-evaluated when Exchange facts are absent, rather than passing silently.
@@ -77,6 +78,7 @@ test_1_1_3_too_many_global_admins if {
 
 test_1_1_3_three_global_admins_passes if {
 	r := admin_center.compliance_report with input as admins(3)
+
 	# Three global admins is within the 2-4 range, so 1.1.3 must not be
 	# flagged. This minimal input carries no Exchange facts, so the
 	# Exchange-sourced controls correctly report as not-evaluated (the report
@@ -133,6 +135,7 @@ test_2_1_domain_dns_unavailable_is_not_a_false_violation if {
 	some v in r.violations
 	contains(v, "could not be evaluated")
 	contains(v, "contoso.com")
+
 	# and no false definite failure for that domain
 	every v in r.violations {
 		not contains(v, "no SPF record published")
@@ -285,8 +288,10 @@ test_6_1_3_audit_bypass_flagged if {
 test_6_2_2_scl_bypass_whitelist_flagged if {
 	r := exchange.compliance_report with input as {"exchange": {
 		"collected": true, "unavailable": {},
-		"transport_rules": [{"Name": "allow-partner", "State": "Enabled",
-			"SetSCL": -1, "SenderDomainIs": ["partner.com"]}],
+		"transport_rules": [{
+			"Name": "allow-partner", "State": "Enabled",
+			"SetSCL": -1, "SenderDomainIs": ["partner.com"],
+		}],
 	}}
 	some v in r.violations
 	contains(v, "CIS 6.2.2:")
@@ -407,9 +412,10 @@ import data.cis_m365_v7.intune as intune
 ac_input(extra) := {"admin_center": object.union({"collected": true, "unavailable": {}}, extra)}
 
 test_1_1_1_on_prem_synced_admin if {
-	r := ac.compliance_report with input as ac_input({"global_admins": [
-		{"user_principal_name": "a@c.com", "on_premises_sync_enabled": true},
-	], "global_admin_count": 3})
+	r := ac.compliance_report with input as ac_input({
+		"global_admins": [{"user_principal_name": "a@c.com", "on_premises_sync_enabled": true}],
+		"global_admin_count": 3,
+	})
 	some v in r.violations
 	contains(v, "CIS 1.1.1:")
 }
@@ -421,17 +427,13 @@ test_1_2_1_public_group_flagged if {
 }
 
 test_1_3_1_password_expiry_configured if {
-	r := ac.compliance_report with input as ac_input({"domains": [
-		{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 90},
-	]})
+	r := ac.compliance_report with input as ac_input({"domains": [{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 90}]})
 	some v in r.violations
 	contains(v, "CIS 1.3.1:")
 }
 
 test_1_3_1_never_expires_passes if {
-	r := ac.compliance_report with input as ac_input({"domains": [
-		{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 2147483647},
-	]})
+	r := ac.compliance_report with input as ac_input({"domains": [{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 2147483647}]})
 	every v in r.violations { not contains(v, "CIS 1.3.1:") }
 }
 
@@ -468,9 +470,7 @@ test_4_1_secure_by_default_off if {
 test_4_2_personal_enrollment_permitted if {
 	r := intune.compliance_report with input as {"intune": {
 		"collected": true, "unavailable": {}, "secure_by_default": true,
-		"enrollment_platform_restrictions": [{"display_name": "Default", "platforms": {
-			"iosRestriction": {"personal_device_enrollment_blocked": false},
-		}}],
+		"enrollment_platform_restrictions": [{"display_name": "Default", "platforms": {"iosRestriction": {"personal_device_enrollment_blocked": false}}}],
 	}}
 	some v in r.violations
 	contains(v, "CIS 4.2:")
@@ -492,6 +492,7 @@ test_uncollectable_controls_are_reported_not_omitted if {
 	r.requires_attestation_count == 6
 	r.unresolved_count == 10
 	r.not_implemented_count == 0
+
 	# An omitted control is indistinguishable from a passing one.
 	count(r.violations) == 16
 }
@@ -546,9 +547,7 @@ test_1_3_3_checks_every_policy_not_just_the_default if {
 }
 
 test_1_3_3_all_policies_disabled_passes if {
-	r := ac.compliance_report with input as object.union(ac_input({}), ex({"sharing_policies": [
-		{"Name": "Default Sharing Policy", "Enabled": false},
-	]}))
+	r := ac.compliance_report with input as object.union(ac_input({}), ex({"sharing_policies": [{"Name": "Default Sharing Policy", "Enabled": false}]}))
 	every v in r.violations { not contains(v, "CIS 1.3.3:") }
 }
 
@@ -732,18 +731,14 @@ GA_KEY := "pim_approval_62e90394-69f5-4237-9190-012177145e10"
 PRA_KEY := "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
 
 test_5_3_4_approval_not_required_violates if {
-	r := entra.compliance_report with input as en({GA_KEY: {
-		"is_approval_required": false, "primary_approver_count": 0,
-	}})
+	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": false, "primary_approver_count": 0}})
 	some v in r.violations
 	contains(v, "CIS 5.3.4:")
 	contains(v, "Global Administrator")
 }
 
 test_5_3_5_approval_not_required_violates if {
-	r := entra.compliance_report with input as en({PRA_KEY: {
-		"is_approval_required": false, "primary_approver_count": 0,
-	}})
+	r := entra.compliance_report with input as en({PRA_KEY: {"is_approval_required": false, "primary_approver_count": 0}})
 	some v in r.violations
 	contains(v, "CIS 5.3.5:")
 	contains(v, "Privileged Role Administrator")
@@ -751,18 +746,14 @@ test_5_3_5_approval_not_required_violates if {
 
 test_5_3_4_approval_required_with_no_approvers_violates if {
 	# A requirement that nobody can satisfy gates nothing.
-	r := entra.compliance_report with input as en({GA_KEY: {
-		"is_approval_required": true, "primary_approver_count": 0,
-	}})
+	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": true, "primary_approver_count": 0}})
 	some v in r.violations
 	contains(v, "CIS 5.3.4:")
 	contains(v, "no approvers are assigned")
 }
 
 test_5_3_4_approval_required_with_approvers_passes if {
-	r := entra.compliance_report with input as en({GA_KEY: {
-		"is_approval_required": true, "primary_approver_count": 2,
-	}})
+	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": true, "primary_approver_count": 2}})
 	every v in r.violations { not contains(v, "CIS 5.3.4:") }
 }
 
@@ -798,8 +789,7 @@ test_coverage_accounting_balances_to_the_whole_benchmark if {
 test_coverage_accounting_is_published_not_just_asserted if {
 	# A reader has to be able to check the sum without running the tests.
 	r := main.compliance_report with input as {}
-	r.coverage_accounting.evaluated + r.coverage_accounting.requires_attestation +
-		r.coverage_accounting.unresolved + r.coverage_accounting.not_implemented == r.benchmark_total_controls
+	((r.coverage_accounting.evaluated + r.coverage_accounting.requires_attestation) + r.coverage_accounting.unresolved) + r.coverage_accounting.not_implemented == r.benchmark_total_controls
 }
 
 test_complete_attestation_satisfies_the_control if {
@@ -812,20 +802,21 @@ test_complete_attestation_satisfies_the_control if {
 }
 
 test_attestation_missing_provenance_is_inadmissible if {
-	r := att.compliance_report with input as {"attestations": [{
-		"control_id": "5.2.4.1", "observed": "All", "attested_by": "operator@example.com",
-	}]}
+	r := att.compliance_report with input as {"attestations": [{"control_id": "5.2.4.1", "observed": "All", "attested_by": "operator@example.com"}]}
 	some v in r.violations
 	contains(v, "CIS 5.2.4.1:")
 	contains(v, "not admissible")
 }
 
 # null, blank or non-string provenance is present but is not evidence.
-_attestation_with(field, value) := {"attestations": [object.union({
-	"control_id": "5.2.4.1", "observed": "All",
-	"attested_by": "operator@example.com", "attested_on": "2026-08-14",
-	"evidence_ref": "screenshot-001.png",
-}, {field: value})]}
+_attestation_with(field, value) := {"attestations": [object.union(
+	{
+		"control_id": "5.2.4.1", "observed": "All",
+		"attested_by": "operator@example.com", "attested_on": "2026-08-14",
+		"evidence_ref": "screenshot-001.png",
+	},
+	{field: value},
+)]}
 
 test_attestation_null_evidence_ref_is_inadmissible if {
 	r := att.compliance_report with input as _attestation_with("evidence_ref", null)
@@ -935,16 +926,12 @@ test_5_1_2_1_legacy_per_user_mfa_flagged if {
 # 5.1.8.1 only applies to hybrid tenants -- a cloud-only tenant must not
 # be marked non-compliant for a control that does not apply to it.
 test_5_1_8_1_not_raised_for_cloud_only_tenant if {
-	r := entra.compliance_report with input as entra_input({"on_premises_sync": {
-		"configured": false, "password_sync_enabled": null,
-	}})
+	r := entra.compliance_report with input as entra_input({"on_premises_sync": {"configured": false, "password_sync_enabled": null}})
 	every v in r.violations { not contains(v, "CIS 5.1.8.1:") }
 }
 
 test_5_1_8_1_raised_for_hybrid_without_hash_sync if {
-	r := entra.compliance_report with input as entra_input({"on_premises_sync": {
-		"configured": true, "password_sync_enabled": false,
-	}})
+	r := entra.compliance_report with input as entra_input({"on_premises_sync": {"configured": true, "password_sync_enabled": false}})
 	some v in r.violations
 	contains(v, "CIS 5.1.8.1:")
 }
@@ -984,24 +971,18 @@ test_8_2_2_unmanaged_teams_users_allowed if {
 }
 
 test_8_2_1_open_federation_with_no_allow_list if {
-	r := teams.compliance_report with input as teams_input({"federation_configuration": {
-		"AllowFederatedUsers": true, "AllowedDomains": [],
-	}})
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": []}})
 	some v in r.violations
 	contains(v, "CIS 8.2.1:")
 }
 
 test_8_2_1_not_raised_when_an_allow_list_exists if {
-	r := teams.compliance_report with input as teams_input({"federation_configuration": {
-		"AllowFederatedUsers": true, "AllowedDomains": ["partner.com"],
-	}})
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": ["partner.com"]}})
 	every v in r.violations { not contains(v, "CIS 8.2.1:") }
 }
 
 test_8_5_1_anonymous_join_in_global_policy if {
-	r := teams.compliance_report with input as teams_input({"meeting_policies": [
-		{"Identity": "Global", "AllowAnonymousUsersToJoinMeeting": true},
-	]})
+	r := teams.compliance_report with input as teams_input({"meeting_policies": [{"Identity": "Global", "AllowAnonymousUsersToJoinMeeting": true}]})
 	some v in r.violations
 	contains(v, "CIS 8.5.1:")
 }
@@ -1019,17 +1000,13 @@ test_permissive_non_global_policy_is_not_masked_by_a_clean_global if {
 }
 
 test_8_5_4_pstn_bypasses_lobby if {
-	r := teams.compliance_report with input as teams_input({"meeting_policies": [
-		{"Identity": "Global", "AllowPSTNUsersToBypassLobby": true},
-	]})
+	r := teams.compliance_report with input as teams_input({"meeting_policies": [{"Identity": "Global", "AllowPSTNUsersToBypassLobby": true}]})
 	some v in r.violations
 	contains(v, "CIS 8.5.4:")
 }
 
 test_8_6_1_security_reporting_disabled if {
-	r := teams.compliance_report with input as teams_input({"messaging_policies": [
-		{"Identity": "Global", "AllowSecurityEndUserReporting": false},
-	]})
+	r := teams.compliance_report with input as teams_input({"messaging_policies": [{"Identity": "Global", "AllowSecurityEndUserReporting": false}]})
 	some v in r.violations
 	contains(v, "CIS 8.6.1:")
 }
@@ -1066,17 +1043,13 @@ test_teams_report_survives_undefined_input if {
 def_input(extra) := {"defender": object.union({"collected": true, "unavailable": {}}, extra)}
 
 test_2_1_1_safe_links_not_enabled_for_office if {
-	r := defender.compliance_report with input as def_input({"safe_links_policies": [
-		{"Name": "Default", "EnableSafeLinksForOffice": false},
-	]})
+	r := defender.compliance_report with input as def_input({"safe_links_policies": [{"Name": "Default", "EnableSafeLinksForOffice": false}]})
 	some v in r.violations
 	contains(v, "CIS 2.1.1:")
 }
 
 test_2_1_2_attachment_type_filter_disabled if {
-	r := defender.compliance_report with input as def_input({"malware_filter_policies": [
-		{"Identity": "Default", "EnableFileFilter": false},
-	]})
+	r := defender.compliance_report with input as def_input({"malware_filter_policies": [{"Identity": "Default", "EnableFileFilter": false}]})
 	some v in r.violations
 	contains(v, "CIS 2.1.2:")
 }
@@ -1088,17 +1061,13 @@ test_2_1_4_no_safe_attachments_policy if {
 }
 
 test_2_1_12_ip_allow_list_in_use if {
-	r := defender.compliance_report with input as def_input({"connection_filter_policies": [
-		{"Name": "Default", "IPAllowList": ["203.0.113.10"]},
-	]})
+	r := defender.compliance_report with input as def_input({"connection_filter_policies": [{"Name": "Default", "IPAllowList": ["203.0.113.10"]}]})
 	some v in r.violations
 	contains(v, "CIS 2.1.12:")
 }
 
 test_2_1_14_allowed_sender_domains if {
-	r := defender.compliance_report with input as def_input({"content_filter_policies": [
-		{"Name": "Default", "AllowedSenderDomains": ["partner.com"]},
-	]})
+	r := defender.compliance_report with input as def_input({"content_filter_policies": [{"Name": "Default", "AllowedSenderDomains": ["partner.com"]}]})
 	some v in r.violations
 	contains(v, "CIS 2.1.14:")
 }
@@ -1140,17 +1109,13 @@ test_3_2_1_no_enforcing_dlp_policy if {
 # A policy in Test mode reports matches but prevents nothing, so it must
 # not satisfy a control asking for DLP to be enabled.
 test_3_2_1_test_mode_policy_does_not_satisfy_the_control if {
-	r := purview.compliance_report with input as pv({"dlp_policies": [
-		{"Name": "Pilot", "Enabled": true, "Mode": "TestWithNotifications"},
-	]})
+	r := purview.compliance_report with input as pv({"dlp_policies": [{"Name": "Pilot", "Enabled": true, "Mode": "TestWithNotifications"}]})
 	some v in r.violations
 	contains(v, "CIS 3.2.1:")
 }
 
 test_3_2_2_dlp_does_not_cover_teams if {
-	r := purview.compliance_report with input as pv({"dlp_policies": [
-		{"Name": "Default", "Enabled": true, "Mode": "Enforce", "TeamsLocation": []},
-	]})
+	r := purview.compliance_report with input as pv({"dlp_policies": [{"Name": "Default", "Enabled": true, "Mode": "Enforce", "TeamsLocation": []}]})
 	some v in r.violations
 	contains(v, "CIS 3.2.2:")
 }
@@ -1207,9 +1172,7 @@ test_9_1_4_publish_to_web_open_to_whole_org if {
 # security groups is what the benchmark accepts. Treating that as a
 # violation would flood a correctly-configured tenant with false findings.
 test_enabled_but_scoped_to_a_security_group_is_accepted if {
-	r := fabric.compliance_report with input as fab({"PublishToWeb": {
-		"enabled": true, "enabled_security_groups": [{"name": "BI-Publishers"}],
-	}})
+	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": true, "enabled_security_groups": [{"name": "BI-Publishers"}]}})
 	every v in r.violations { not contains(v, "CIS 9.1.4:") }
 }
 
@@ -1304,9 +1267,11 @@ trusted_locations := [
 test_5_2_2_cluster_silent_on_a_hardened_tenant if {
 	r := entra.compliance_report with input as ca_full([hardened_ca], trusted_locations)
 	every v in r.violations {
-		every c in ["5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
+		every c in [
+			"5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
 			"5.2.2.9", "5.2.2.10", "5.2.2.11", "5.2.2.12", "5.2.2.13",
-			"5.2.2.14", "5.2.2.15", "5.2.2.16", "5.2.2.17"] {
+			"5.2.2.14", "5.2.2.15", "5.2.2.16", "5.2.2.17",
+		] {
 			not contains(v, sprintf("CIS %s:", [c]))
 		}
 	}
@@ -1314,9 +1279,11 @@ test_5_2_2_cluster_silent_on_a_hardened_tenant if {
 
 test_5_2_2_cluster_fires_on_an_empty_tenant if {
 	r := entra.compliance_report with input as ca_full([], [])
-	every c in ["5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
+	every c in [
+		"5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
 		"5.2.2.9", "5.2.2.10", "5.2.2.11", "5.2.2.12", "5.2.2.13",
-		"5.2.2.14", "5.2.2.15", "5.2.2.16", "5.2.2.17"] {
+		"5.2.2.14", "5.2.2.15", "5.2.2.16", "5.2.2.17",
+	] {
 		some v in r.violations
 		contains(v, sprintf("CIS %s:", [c]))
 	}
@@ -1346,17 +1313,13 @@ test_5_2_2_x_declares_the_undocumented_path if {
 # ── 5.1.4.x / 5.1.5.x / 5.3.x ─────────────────────────────────────────
 
 test_5_1_4_1_device_join_open_to_all if {
-	r := entra.compliance_report with input as entra_input({"device_registration": {
-		"azure_ad_join_allowed_to_join": "all",
-	}})
+	r := entra.compliance_report with input as entra_input({"device_registration": {"azure_ad_join_allowed_to_join": "all"}})
 	some v in r.violations
 	contains(v, "CIS 5.1.4.1:")
 }
 
 test_5_1_4_3_global_admin_as_local_admin if {
-	r := entra.compliance_report with input as entra_input({"device_registration": {
-		"local_admin_global_admins_enabled": true,
-	}})
+	r := entra.compliance_report with input as entra_input({"device_registration": {"local_admin_global_admins_enabled": true}})
 	some v in r.violations
 	contains(v, "CIS 5.1.4.3:")
 }
@@ -1370,32 +1333,24 @@ test_5_1_4_5_laps_disabled if {
 # The app management policy expresses restrictions as a list of rules,
 # not flags -- a rule present but disabled must not satisfy the control.
 test_5_1_5_3_disabled_restriction_does_not_satisfy_the_control if {
-	r := entra.compliance_report with input as entra_input({"app_management": {
-		"password_credentials": [{"restrictionType": "passwordAddition", "state": "disabled"}],
-	}})
+	r := entra.compliance_report with input as entra_input({"app_management": {"password_credentials": [{"restrictionType": "passwordAddition", "state": "disabled"}]}})
 	some v in r.violations
 	contains(v, "CIS 5.1.5.3:")
 }
 
 test_5_1_5_3_enabled_restriction_satisfies_the_control if {
-	r := entra.compliance_report with input as entra_input({"app_management": {
-		"password_credentials": [{"restrictionType": "passwordAddition", "state": "enabled"}],
-	}})
+	r := entra.compliance_report with input as entra_input({"app_management": {"password_credentials": [{"restrictionType": "passwordAddition", "state": "enabled"}]}})
 	every v in r.violations { not contains(v, "CIS 5.1.5.3:") }
 }
 
 test_5_3_2_no_guest_access_review if {
-	r := entra.compliance_report with input as entra_input({"access_reviews": [
-		{"id": "r1", "scope_query": "/roleAssignments", "status": "InProgress"},
-	]})
+	r := entra.compliance_report with input as entra_input({"access_reviews": [{"id": "r1", "scope_query": "/roleAssignments", "status": "InProgress"}]})
 	some v in r.violations
 	contains(v, "CIS 5.3.2:")
 }
 
 test_5_3_3_no_privileged_role_access_review if {
-	r := entra.compliance_report with input as entra_input({"access_reviews": [
-		{"id": "r1", "scope_query": "/groups/guests", "status": "InProgress"},
-	]})
+	r := entra.compliance_report with input as entra_input({"access_reviews": [{"id": "r1", "scope_query": "/groups/guests", "status": "InProgress"}]})
 	some v in r.violations
 	contains(v, "CIS 5.3.3:")
 }
@@ -1436,17 +1391,13 @@ test_5_2_3_1_fully_hardened_authenticator_passes if {
 }
 
 test_5_2_3_8_lockout_threshold_too_high if {
-	r := entra.compliance_report with input as entra_input({"lockout": {
-		"settings_present": true, "threshold": "25", "duration_seconds": "60",
-	}})
+	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": true, "threshold": "25", "duration_seconds": "60"}})
 	some v in r.violations
 	contains(v, "CIS 5.2.3.8:")
 }
 
 test_5_2_3_9_lockout_duration_too_short if {
-	r := entra.compliance_report with input as entra_input({"lockout": {
-		"settings_present": true, "threshold": "10", "duration_seconds": "30",
-	}})
+	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": true, "threshold": "10", "duration_seconds": "30"}})
 	some v in r.violations
 	contains(v, "CIS 5.2.3.9:")
 }
@@ -1455,9 +1406,7 @@ test_5_2_3_9_lockout_duration_too_short if {
 # Absent is not the same as non-compliant -- treating a missing value as 0
 # would report every such tenant as failing 5.2.3.9.
 test_absent_lockout_settings_do_not_fabricate_a_finding if {
-	r := entra.compliance_report with input as entra_input({"lockout": {
-		"settings_present": false,
-	}})
+	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": false}})
 	every v in r.violations {
 		not contains(v, "CIS 5.2.3.8:")
 		not contains(v, "CIS 5.2.3.9:")
@@ -1465,16 +1414,12 @@ test_absent_lockout_settings_do_not_fabricate_a_finding if {
 }
 
 test_5_1_3_4_unrestricted_group_creation if {
-	r := entra.compliance_report with input as entra_input({"group_creation": {
-		"settings_present": true, "enabled": "True", "allowed_group_id": "",
-	}})
+	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": "True", "allowed_group_id": ""}})
 	some v in r.violations
 	contains(v, "CIS 5.1.3.4:")
 }
 
 test_5_1_3_4_group_creation_restricted_to_a_group_passes if {
-	r := entra.compliance_report with input as entra_input({"group_creation": {
-		"settings_present": true, "enabled": "True", "allowed_group_id": "0000-group",
-	}})
+	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": "True", "allowed_group_id": "0000-group"}})
 	every v in r.violations { not contains(v, "CIS 5.1.3.4:") }
 }

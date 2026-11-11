@@ -152,6 +152,7 @@ _audit_group_ok(g) if {
 
 # 1.1 (Manual, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_1_1 := false
+
 r_1_1 if {
 	input.sql.attest.latest_cumulative_update_installed == true
 }
@@ -163,6 +164,7 @@ violations contains "1.1: Latest SQL Server Cumulative and Security Updates must
 
 # 1.2 (Manual, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_1_2 := false
+
 r_1_2 if {
 	input.sql.attest.single_function_member_server == true
 }
@@ -174,11 +176,13 @@ violations contains "1.2: Single-Function Member Servers must be Used (manual re
 
 # 2.1 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_1 := false
+
 r_2_1 if {
 	_cfg_is("ad hoc distributed queries", 0)
 }
 
 default e_2_1 := false
+
 e_2_1 if {
 	count(_cfg_rows("ad hoc distributed queries")) > 0
 }
@@ -196,6 +200,7 @@ violations contains "2.1: required value of 'Ad Hoc Distributed Queries' Server 
 
 # 2.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_2 := false
+
 r_2_2 if {
 	_cfg_is("clr strict security", 1)
 }
@@ -205,6 +210,7 @@ r_2_2 if {
 }
 
 default e_2_2 := false
+
 e_2_2 if {
 	_cfg_is("clr strict security", 1)
 }
@@ -226,11 +232,13 @@ violations contains "2.2: required value of 'CLR Enabled' Server Configuration O
 
 # 2.3 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_3 := false
+
 r_2_3 if {
 	_cfg_is("cross db ownership chaining", 0)
 }
 
 default e_2_3 := false
+
 e_2_3 if {
 	count(_cfg_rows("cross db ownership chaining")) > 0
 }
@@ -248,11 +256,13 @@ violations contains "2.3: required value of 'Cross DB Ownership Chaining' Server
 
 # 2.4 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_4 := false
+
 r_2_4 if {
 	_cfg_is("database mail xps", 0)
 }
 
 default e_2_4 := false
+
 e_2_4 if {
 	count(_cfg_rows("database mail xps")) > 0
 }
@@ -270,11 +280,13 @@ violations contains "2.4: required value of 'Database Mail XPs' Server Configura
 
 # 2.5 (Automated, Level 1 - Database Engine)
 default r_2_5 := false
+
 r_2_5 if {
 	_cfg_is("ole automation procedures", 0)
 }
 
 default e_2_5 := false
+
 e_2_5 if {
 	count(_cfg_rows("ole automation procedures")) > 0
 }
@@ -292,11 +304,13 @@ violations contains "2.5: required value of 'Ole Automation Procedures' Server C
 
 # 2.6 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_6 := false
+
 r_2_6 if {
 	_cfg_is("remote access", 0)
 }
 
 default e_2_6 := false
+
 e_2_6 if {
 	count(_cfg_rows("remote access")) > 0
 }
@@ -314,6 +328,7 @@ violations contains "2.6: required value of 'Remote Access' Server Configuration
 
 # 2.7 (Automated, Level 1 - Database Engine)
 default r_2_7 := false
+
 r_2_7 if {
 	input.sql.is_clustered == true
 }
@@ -323,6 +338,7 @@ r_2_7 if {
 }
 
 default e_2_7 := false
+
 e_2_7 if {
 	input.sql.is_clustered == true
 }
@@ -345,11 +361,13 @@ violations contains "2.7: required value of 'Remote Admin Connections' Server Co
 
 # 2.8 (Automated, Level 1 - Database Engine)
 default r_2_8 := false
+
 r_2_8 if {
 	_cfg_is("scan for startup procs", 0)
 }
 
 default e_2_8 := false
+
 e_2_8 if {
 	count(_cfg_rows("scan for startup procs")) > 0
 }
@@ -367,11 +385,13 @@ violations contains "2.8: required value of 'Scan For Startup Procs' Server Conf
 
 # 2.9 (Automated, Level 1 - Database Engine)
 default r_2_9 := false
+
 r_2_9 if {
 	count(input.sql.databases_trustworthy_on) == 0
 }
 
 default e_2_9 := false
+
 e_2_9 if {
 	is_array(input.sql.databases_trustworthy_on)
 }
@@ -389,6 +409,7 @@ violations contains "2.9: required value of 'Trustworthy' Database Property is '
 
 # 2.10 (Manual, Level 1 - Database Engine)
 default r_2_10 := false
+
 r_2_10 if {
 	input.sql.attest.unnecessary_protocols_disabled == true
 }
@@ -400,11 +421,13 @@ violations contains "2.10: Unnecessary SQL Server Protocols must be set to 'Disa
 
 # 2.11 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_11 := false
+
 r_2_11 if {
 	input.sql.tcp_port_1433_count == 0
 }
 
 default e_2_11 := false
+
 e_2_11 if {
 	is_number(input.sql.tcp_port_1433_count)
 }
@@ -422,11 +445,13 @@ violations contains "2.11: SQL Server must be explicitly configured to use non-s
 
 # 2.12 (Automated, Level 1 - Database Engine)
 default r_2_12 := false
+
 r_2_12 if {
 	input.sql.hide_instance == 1
 }
 
 default e_2_12 := false
+
 e_2_12 if {
 	is_number(input.sql.hide_instance)
 }
@@ -444,11 +469,13 @@ violations contains "2.12: required value of 'Hide Instance' option is 'Yes' for
 
 # 2.13 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_13 := false
+
 r_2_13 if {
 	input.sql.sa_account_disabled == true
 }
 
 default e_2_13 := false
+
 e_2_13 if {
 	is_boolean(input.sql.sa_account_disabled)
 }
@@ -466,11 +493,13 @@ violations contains "2.13: required value of the 'sa' Login Account is 'Disabled
 
 # 2.14 (Automated, Level 1 - Database Engine)
 default r_2_14 := false
+
 r_2_14 if {
 	lower(input.sql.sa_login_name) != "sa"
 }
 
 default e_2_14 := false
+
 e_2_14 if {
 	is_string(input.sql.sa_login_name)
 }
@@ -488,11 +517,13 @@ violations contains "2.14: the 'sa' Login Account must have been renamed" if {
 
 # 2.15 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_15 := false
+
 r_2_15 if {
 	count(input.sql.contained_databases_auto_close_on) == 0
 }
 
 default e_2_15 := false
+
 e_2_15 if {
 	is_array(input.sql.contained_databases_auto_close_on)
 }
@@ -510,11 +541,13 @@ violations contains "2.15: required value of 'AUTO_CLOSE' is 'OFF' on contained 
 
 # 2.16 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_16 := false
+
 r_2_16 if {
 	count(input.sql.logins_named_sa) == 0
 }
 
 default e_2_16 := false
+
 e_2_16 if {
 	is_array(input.sql.logins_named_sa)
 }
@@ -532,11 +565,13 @@ violations contains "2.16: checked condition — no login exists with the name '
 
 # 2.17 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_2_17 := false
+
 r_2_17 if {
 	_cfg_is("clr strict security", 1)
 }
 
 default e_2_17 := false
+
 e_2_17 if {
 	count(_cfg_rows("clr strict security")) > 0
 }
@@ -554,11 +589,13 @@ violations contains "2.17: required value of 'clr strict security' Server Config
 
 # 3.1 (Automated, Level 1 - Database Engine)
 default r_3_1 := false
+
 r_3_1 if {
 	input.sql.is_integrated_security_only == 1
 }
 
 default e_3_1 := false
+
 e_3_1 if {
 	is_number(input.sql.is_integrated_security_only)
 }
@@ -576,11 +613,13 @@ violations contains "3.1: required value of 'Server Authentication' Property is 
 
 # 3.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_2 := false
+
 r_3_2 if {
 	count([r | some r in input.sql.guest_connect_grants; not _rds_rdsadmin_db(r)]) == 0
 }
 
 default e_3_2 := false
+
 e_3_2 if {
 	is_array(input.sql.guest_connect_grants)
 }
@@ -598,11 +637,13 @@ violations contains "3.2: CONNECT permissions on the 'guest' user must be Revoke
 
 # 3.3 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_3 := false
+
 r_3_3 if {
 	count(input.sql.orphaned_users) == 0
 }
 
 default e_3_3 := false
+
 e_3_3 if {
 	is_array(input.sql.orphaned_users)
 }
@@ -620,11 +661,13 @@ violations contains "3.3: 'Orphaned Users' must be removed from SQL Server Datab
 
 # 3.4 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_4 := false
+
 r_3_4 if {
 	count(input.sql.contained_db_sql_auth_users) == 0
 }
 
 default e_3_4 := false
+
 e_3_4 if {
 	is_array(input.sql.contained_db_sql_auth_users)
 }
@@ -642,6 +685,7 @@ violations contains "3.4: SQL Authentication must be not used in contained datab
 
 # 3.5 (Manual, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_5 := false
+
 r_3_5 if {
 	input.sql.attest.mssql_service_account_not_admin == true
 }
@@ -653,6 +697,7 @@ violations contains "3.5: the SQL Server's MSSQL Service Account must be Not an 
 
 # 3.6 (Manual, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_6 := false
+
 r_3_6 if {
 	input.sql.attest.sqlagent_service_account_not_admin == true
 }
@@ -664,6 +709,7 @@ violations contains "3.6: the SQL Server's SQLAgent Service Account must be Not 
 
 # 3.7 (Manual, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_7 := false
+
 r_3_7 if {
 	input.sql.attest.fulltext_service_account_not_admin == true
 }
@@ -675,11 +721,13 @@ violations contains "3.7: the SQL Server's Full-Text Service Account must be Not
 
 # 3.8 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_8 := false
+
 r_3_8 if {
 	count(input.sql.public_role_extra_permissions) == 0
 }
 
 default e_3_8 := false
+
 e_3_8 if {
 	is_array(input.sql.public_role_extra_permissions)
 }
@@ -697,11 +745,13 @@ violations contains "3.8: only the default permissions specified by Microsoft mu
 
 # 3.9 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_9 := false
+
 r_3_9 if {
 	count([r | some r in input.sql.builtin_logins; not _rds_builtin_admins(r)]) == 0
 }
 
 default e_3_9 := false
+
 e_3_9 if {
 	is_array(input.sql.builtin_logins)
 }
@@ -719,11 +769,13 @@ violations contains "3.9: Windows BUILTIN groups must be not SQL Logins" if {
 
 # 3.10 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_3_10 := false
+
 r_3_10 if {
 	count(input.sql.local_group_logins) == 0
 }
 
 default e_3_10 := false
+
 e_3_10 if {
 	is_array(input.sql.local_group_logins)
 }
@@ -741,11 +793,13 @@ violations contains "3.10: Windows local groups must be not SQL Logins" if {
 
 # 3.11 (Automated, Level 1 - Database Engine)
 default r_3_11 := false
+
 r_3_11 if {
 	count(input.sql.msdb_public_proxy_grants) == 0
 }
 
 default e_3_11 := false
+
 e_3_11 if {
 	is_array(input.sql.msdb_public_proxy_grants)
 }
@@ -763,6 +817,7 @@ violations contains "3.11: the public role in the msdb database must be not gran
 
 # 3.12 (Manual, Level 1 - Database Engine)
 default r_3_12 := false
+
 r_3_12 if {
 	input.sql.attest.sysadmin_membership_reviewed == true
 }
@@ -774,11 +829,13 @@ violations contains "3.12: the 'SYSADMIN' Role must be Limited to Administrative
 
 # 3.13 (Automated, Level 1 - Database Engine)
 default r_3_13 := false
+
 r_3_13 if {
 	count(input.sql.msdb_admin_role_members) == 0
 }
 
 default e_3_13 := false
+
 e_3_13 if {
 	is_array(input.sql.msdb_admin_role_members)
 }
@@ -796,6 +853,7 @@ violations contains "3.13: checked condition — no admin role membership in MSD
 
 # 3.14 (Manual, Level 1 - Database Engine)
 default r_3_14 := false
+
 r_3_14 if {
 	input.sql.attest.control_server_grants_reviewed == true
 }
@@ -807,6 +865,7 @@ violations contains "3.14: permission 'Control Server' permission must not be gr
 
 # 3.15 (Manual, Level 1 - Database Engine)
 default r_3_15 := false
+
 r_3_15 if {
 	input.sql.attest.external_rest_endpoint_access_reviewed == true
 }
@@ -818,6 +877,7 @@ violations contains "3.15: access to 'sp_invoke_external_rest_endpoint' must be 
 
 # 4.1 (Manual, Level 1 - Database Engine)
 default r_4_1 := false
+
 r_4_1 if {
 	input.sql.attest.must_change_reviewed == true
 }
@@ -829,11 +889,13 @@ violations contains "4.1: required value of 'MUST_CHANGE' Option is 'ON' for All
 
 # 4.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_4_2 := false
+
 r_4_2 if {
 	count([r | some r in input.sql.sysadmin_logins_without_expiration_check; not _rds_master_rdsa(r)]) == 0
 }
 
 default e_4_2 := false
+
 e_4_2 if {
 	is_array(input.sql.sysadmin_logins_without_expiration_check)
 }
@@ -851,11 +913,13 @@ violations contains "4.2: required value of 'CHECK_EXPIRATION' Option is 'ON' fo
 
 # 4.3 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_4_3 := false
+
 r_4_3 if {
 	count(input.sql.sql_logins_without_check_policy) == 0
 }
 
 default e_4_3 := false
+
 e_4_3 if {
 	is_array(input.sql.sql_logins_without_check_policy)
 }
@@ -873,6 +937,7 @@ violations contains "4.3: required value of 'CHECK_POLICY' Option is 'ON' for Al
 
 # 5.1 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_5_1 := false
+
 r_5_1 if {
 	input.sql.num_error_logs == -1
 }
@@ -882,6 +947,7 @@ r_5_1 if {
 }
 
 default e_5_1 := false
+
 e_5_1 if {
 	is_number(input.sql.num_error_logs)
 }
@@ -899,11 +965,13 @@ violations contains "5.1: required value of 'Maximum number of error log files' 
 
 # 5.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_5_2 := false
+
 r_5_2 if {
 	_cfg_is("default trace enabled", 1)
 }
 
 default e_5_2 := false
+
 e_5_2 if {
 	count(_cfg_rows("default trace enabled")) > 0
 }
@@ -921,11 +989,13 @@ violations contains "5.2: required value of 'Default Trace Enabled' Server Confi
 
 # 5.3 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_5_3 := false
+
 r_5_3 if {
 	lower(input.sql.login_audit_level) in {"failure", "all"}
 }
 
 default e_5_3 := false
+
 e_5_3 if {
 	is_string(input.sql.login_audit_level)
 }
@@ -943,11 +1013,13 @@ violations contains "5.3: required value of 'Login Auditing' is 'failed logins'"
 
 # 5.4 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_5_4 := false
+
 r_5_4 if {
 	every g in _audit_groups_required { _audit_group_ok(g) }
 }
 
 default e_5_4 := false
+
 e_5_4 if {
 	is_array(input.sql.server_audit_actions)
 	is_boolean(input.sql.has_contained_databases)
@@ -966,6 +1038,7 @@ violations contains "5.4: required value of 'SQL Server Audit' is capture both '
 
 # 6.1 (Manual, Level 1 - Database Engine)
 default r_6_1 := false
+
 r_6_1 if {
 	input.sql.attest.input_sanitization_reviewed == true
 }
@@ -977,11 +1050,13 @@ violations contains "6.1: Database and Application User Input must be Sanitized 
 
 # 6.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_6_2 := false
+
 r_6_2 if {
 	every a in input.sql.user_assemblies { upper(a.permission_set_desc) == "SAFE_ACCESS" }
 }
 
 default e_6_2 := false
+
 e_6_2 if {
 	is_array(input.sql.user_assemblies)
 }
@@ -999,11 +1074,13 @@ violations contains "6.2: required value of 'CLR Assembly Permission Set' is 'SA
 
 # 7.1 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_7_1 := false
+
 r_7_1 if {
 	every k in input.sql.symmetric_keys { upper(k.algorithm_desc) in {"AES_128", "AES_192", "AES_256"} }
 }
 
 default e_7_1 := false
+
 e_7_1 if {
 	is_array(input.sql.symmetric_keys)
 }
@@ -1021,11 +1098,13 @@ violations contains "7.1: required value of 'Symmetric Key encryption algorithm'
 
 # 7.2 (Automated, Level 1 - Database Engine; Level 1 - AWS RDS)
 default r_7_2 := false
+
 r_7_2 if {
 	every k in input.sql.asymmetric_keys { to_number(k.key_length) >= 2048 }
 }
 
 default e_7_2 := false
+
 e_7_2 if {
 	is_array(input.sql.asymmetric_keys)
 }
@@ -1043,11 +1122,13 @@ violations contains "7.2: required value of Asymmetric Key Size is 'greater than
 
 # 7.3 (Automated, Level 2 - Database Engine)
 default r_7_3 := false
+
 r_7_3 if {
 	count(input.sql.unencrypted_backups) == 0
 }
 
 default e_7_3 := false
+
 e_7_3 if {
 	is_array(input.sql.unencrypted_backups)
 }
@@ -1065,12 +1146,14 @@ violations contains "7.3: Database Backups must be Encrypted" if {
 
 # 7.4 (Automated, Level 2 - Database Engine)
 default r_7_4 := false
+
 r_7_4 if {
 	count(input.sql.connection_encrypt_options) > 0
 	every o in input.sql.connection_encrypt_options { upper(sprintf("%v", [o])) == "TRUE" }
 }
 
 default e_7_4 := false
+
 e_7_4 if {
 	is_array(input.sql.connection_encrypt_options)
 }
@@ -1088,11 +1171,13 @@ violations contains "7.4: Network Encryption must be explicitly configured and E
 
 # 7.5 (Automated, Level 2 - Database Engine)
 default r_7_5 := false
+
 r_7_5 if {
 	count(input.sql.databases_without_tde) == 0
 }
 
 default e_7_5 := false
+
 e_7_5 if {
 	is_array(input.sql.databases_without_tde)
 }
@@ -1110,6 +1195,7 @@ violations contains "7.5: Databases must be encrypted with TDE" if {
 
 # 8.1 (Manual, Level 1 - Database Engine)
 default r_8_1 := false
+
 r_8_1 if {
 	input.sql.attest.browser_service_reviewed == true
 }
@@ -1124,440 +1210,402 @@ violations contains "CIS SQL Server 2025: FAIL-CLOSED - facts 'input.sql' were n
 }
 
 sections := {
- "1": "Installation, Updates and Patches",
- "2": "Surface Area Reduction",
- "3": "Authentication and Authorization",
- "4": "Password Policies",
- "5": "Auditing and Logging",
- "6": "Application Development",
- "7": "Encryption",
- "8": "Appendix: Additional Considerations"
+	"1": "Installation, Updates and Patches",
+	"2": "Surface Area Reduction",
+	"3": "Authentication and Authorization",
+	"4": "Password Policies",
+	"5": "Auditing and Logging",
+	"6": "Application Development",
+	"7": "Encryption",
+	"8": "Appendix: Additional Considerations",
 }
 
 # id -> CIS title, level, Automated/Manual status and the workbook profiles it belongs to
 recommendations := {
- "1.1": {
-  "title": "Latest SQL Server Cumulative and Security Updates must be present",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "1.2": {
-  "title": "Single-Function Member Servers must be Used",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.1": {
-  "title": "required value of 'Ad Hoc Distributed Queries' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.2": {
-  "title": "required value of 'CLR Enabled' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.3": {
-  "title": "required value of 'Cross DB Ownership Chaining' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.4": {
-  "title": "required value of 'Database Mail XPs' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.5": {
-  "title": "required value of 'Ole Automation Procedures' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.6": {
-  "title": "required value of 'Remote Access' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.7": {
-  "title": "required value of 'Remote Admin Connections' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.8": {
-  "title": "required value of 'Scan For Startup Procs' Server Configuration Option is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.9": {
-  "title": "required value of 'Trustworthy' Database Property is 'Off'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.10": {
-  "title": "Unnecessary SQL Server Protocols must be set to 'Disabled'",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.11": {
-  "title": "SQL Server must be explicitly configured to use non-standard ports",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.12": {
-  "title": "required value of 'Hide Instance' option is 'Yes' for Production SQL Server instances",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.13": {
-  "title": "required value of the 'sa' Login Account is 'Disabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.14": {
-  "title": "the 'sa' Login Account must have been renamed",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "2.15": {
-  "title": "required value of 'AUTO_CLOSE' is 'OFF' on contained databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.16": {
-  "title": "checked condition — no login exists with the name 'sa'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "2.17": {
-  "title": "required value of 'clr strict security' Server Configuration Option is '1'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.1": {
-  "title": "required value of 'Server Authentication' Property is 'Windows Authentication Mode'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "3.2": {
-  "title": "CONNECT permissions on the 'guest' user must be Revoked within all SQL Server databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.3": {
-  "title": "'Orphaned Users' must be removed from SQL Server Databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.4": {
-  "title": "SQL Authentication must be not used in contained databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.5": {
-  "title": "the SQL Server's MSSQL Service Account must be Not an Administrator",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.6": {
-  "title": "the SQL Server's SQLAgent Service Account must be Not an Administrator",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.7": {
-  "title": "the SQL Server's Full-Text Service Account must be Not an Administrator",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.8": {
-  "title": "only the default permissions specified by Microsoft must be granted to the public server role",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.9": {
-  "title": "Windows BUILTIN groups must be not SQL Logins",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.10": {
-  "title": "Windows local groups must be not SQL Logins",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "3.11": {
-  "title": "the public role in the msdb database must be not granted access to SQL Agent proxies",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "3.12": {
-  "title": "the 'SYSADMIN' Role must be Limited to Administrative or Built-in Accounts",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "3.13": {
-  "title": "checked condition — no admin role membership in MSDB database",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "3.14": {
-  "title": "permission 'Control Server' permission must not be granted",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "3.15": {
-  "title": "access to 'sp_invoke_external_rest_endpoint' must be limited to trusted accounts only",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "4.1": {
-  "title": "required value of 'MUST_CHANGE' Option is 'ON' for All SQL Authenticated Logins",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "4.2": {
-  "title": "required value of 'CHECK_EXPIRATION' Option is 'ON' for All SQL Authenticated Logins Within the Sysadmin Role",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "4.3": {
-  "title": "required value of 'CHECK_POLICY' Option is 'ON' for All SQL Authenticated Logins",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "5.1": {
-  "title": "required value of 'Maximum number of error log files' is greater than or equal to '12'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "5.2": {
-  "title": "required value of 'Default Trace Enabled' Server Configuration Option is '1'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "5.3": {
-  "title": "required value of 'Login Auditing' is 'failed logins'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "5.4": {
-  "title": "required value of 'SQL Server Audit' is capture both 'failed' and 'successful logins'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "6.1": {
-  "title": "Database and Application User Input must be Sanitized",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- },
- "6.2": {
-  "title": "required value of 'CLR Assembly Permission Set' is 'SAFE_ACCESS' for All CLR Assemblies",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "7.1": {
-  "title": "required value of 'Symmetric Key encryption algorithm' is 'AES_128' or higher in non-system databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "7.2": {
-  "title": "required value of Asymmetric Key Size is 'greater than or equal to 2048' in non-system databases",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Database Engine",
-   "Level 1 - AWS RDS"
-  ]
- },
- "7.3": {
-  "title": "Database Backups must be Encrypted",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Database Engine"
-  ]
- },
- "7.4": {
-  "title": "Network Encryption must be explicitly configured and Enabled",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Database Engine"
-  ]
- },
- "7.5": {
-  "title": "Databases must be encrypted with TDE",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Database Engine"
-  ]
- },
- "8.1": {
-  "title": "'SQL Server Browser Service' must match the approved configuration",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Database Engine"
-  ]
- }
+	"1.1": {
+		"title": "Latest SQL Server Cumulative and Security Updates must be present",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"1.2": {
+		"title": "Single-Function Member Servers must be Used",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.1": {
+		"title": "required value of 'Ad Hoc Distributed Queries' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.2": {
+		"title": "required value of 'CLR Enabled' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.3": {
+		"title": "required value of 'Cross DB Ownership Chaining' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.4": {
+		"title": "required value of 'Database Mail XPs' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.5": {
+		"title": "required value of 'Ole Automation Procedures' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.6": {
+		"title": "required value of 'Remote Access' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.7": {
+		"title": "required value of 'Remote Admin Connections' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.8": {
+		"title": "required value of 'Scan For Startup Procs' Server Configuration Option is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.9": {
+		"title": "required value of 'Trustworthy' Database Property is 'Off'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.10": {
+		"title": "Unnecessary SQL Server Protocols must be set to 'Disabled'",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.11": {
+		"title": "SQL Server must be explicitly configured to use non-standard ports",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.12": {
+		"title": "required value of 'Hide Instance' option is 'Yes' for Production SQL Server instances",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.13": {
+		"title": "required value of the 'sa' Login Account is 'Disabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.14": {
+		"title": "the 'sa' Login Account must have been renamed",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"2.15": {
+		"title": "required value of 'AUTO_CLOSE' is 'OFF' on contained databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.16": {
+		"title": "checked condition — no login exists with the name 'sa'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"2.17": {
+		"title": "required value of 'clr strict security' Server Configuration Option is '1'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.1": {
+		"title": "required value of 'Server Authentication' Property is 'Windows Authentication Mode'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"3.2": {
+		"title": "CONNECT permissions on the 'guest' user must be Revoked within all SQL Server databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.3": {
+		"title": "'Orphaned Users' must be removed from SQL Server Databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.4": {
+		"title": "SQL Authentication must be not used in contained databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.5": {
+		"title": "the SQL Server's MSSQL Service Account must be Not an Administrator",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.6": {
+		"title": "the SQL Server's SQLAgent Service Account must be Not an Administrator",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.7": {
+		"title": "the SQL Server's Full-Text Service Account must be Not an Administrator",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.8": {
+		"title": "only the default permissions specified by Microsoft must be granted to the public server role",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.9": {
+		"title": "Windows BUILTIN groups must be not SQL Logins",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.10": {
+		"title": "Windows local groups must be not SQL Logins",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"3.11": {
+		"title": "the public role in the msdb database must be not granted access to SQL Agent proxies",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"3.12": {
+		"title": "the 'SYSADMIN' Role must be Limited to Administrative or Built-in Accounts",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"3.13": {
+		"title": "checked condition — no admin role membership in MSDB database",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"3.14": {
+		"title": "permission 'Control Server' permission must not be granted",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"3.15": {
+		"title": "access to 'sp_invoke_external_rest_endpoint' must be limited to trusted accounts only",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"4.1": {
+		"title": "required value of 'MUST_CHANGE' Option is 'ON' for All SQL Authenticated Logins",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"4.2": {
+		"title": "required value of 'CHECK_EXPIRATION' Option is 'ON' for All SQL Authenticated Logins Within the Sysadmin Role",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"4.3": {
+		"title": "required value of 'CHECK_POLICY' Option is 'ON' for All SQL Authenticated Logins",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"5.1": {
+		"title": "required value of 'Maximum number of error log files' is greater than or equal to '12'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"5.2": {
+		"title": "required value of 'Default Trace Enabled' Server Configuration Option is '1'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"5.3": {
+		"title": "required value of 'Login Auditing' is 'failed logins'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"5.4": {
+		"title": "required value of 'SQL Server Audit' is capture both 'failed' and 'successful logins'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"6.1": {
+		"title": "Database and Application User Input must be Sanitized",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
+	"6.2": {
+		"title": "required value of 'CLR Assembly Permission Set' is 'SAFE_ACCESS' for All CLR Assemblies",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"7.1": {
+		"title": "required value of 'Symmetric Key encryption algorithm' is 'AES_128' or higher in non-system databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"7.2": {
+		"title": "required value of Asymmetric Key Size is 'greater than or equal to 2048' in non-system databases",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Database Engine",
+			"Level 1 - AWS RDS",
+		],
+	},
+	"7.3": {
+		"title": "Database Backups must be Encrypted",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Database Engine"],
+	},
+	"7.4": {
+		"title": "Network Encryption must be explicitly configured and Enabled",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Database Engine"],
+	},
+	"7.5": {
+		"title": "Databases must be encrypted with TDE",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Database Engine"],
+	},
+	"8.1": {
+		"title": "'SQL Server Browser Service' must match the approved configuration",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - Database Engine"],
+	},
 }
 
 compliance_report := {

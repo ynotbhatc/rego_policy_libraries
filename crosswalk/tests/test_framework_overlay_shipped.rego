@@ -11,7 +11,7 @@ import data.crosswalk.stig_800_53
 _all_pass_findings := [{"stig_id": sid, "status": "Not_a_Finding"} | some sid, _ in stig_800_53.map]
 
 test_moderate_baseline_scores_with_real_coverage if {
-	cov := framework_overlay.coverage["nist_800_53b_moderate"] with input as {"findings": _all_pass_findings}
+	cov := framework_overlay.coverage.nist_800_53b_moderate with input as {"findings": _all_pass_findings}
 	cov.controls_satisfied > 30 # ~54 base controls of the Moderate baseline touched
 	count(cov.not_covered) > 0 # honest: the STIG spine does not cover the whole baseline
 	cov.controls_total > 150 # the full Moderate base-control set
@@ -28,5 +28,5 @@ test_pending_frameworks_listed_not_scored if {
 	s := framework_overlay.summary with input as {"findings": _all_pass_findings}
 	"pci_dss_v4" in s.frameworks_pending
 	"cis_controls_v8" in s.frameworks_pending
-	not s.coverage["pci_dss_v4"]
+	not s.coverage.pci_dss_v4
 }

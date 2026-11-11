@@ -70,36 +70,28 @@ critical_file_violations contains violation if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/shadow"
 	not file.mode_compliant
-	violation := sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [
-		file.actual_mode,
-	])
+	violation := sprintf("CIS 6.1.6: /etc/shadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
 }
 
 critical_file_violations contains violation if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/gshadow"
 	not file.mode_compliant
-	violation := sprintf("CIS 6.1.8: /etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [
-		file.actual_mode,
-	])
+	violation := sprintf("CIS 6.1.8: /etc/gshadow has insecure permissions (mode: %s, expected: 0000/0400/0600)", [file.actual_mode])
 }
 
 critical_file_violations contains violation if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/passwd"
 	not file.mode_compliant
-	violation := sprintf("CIS 6.1.2: /etc/passwd has incorrect permissions (mode: %s, expected: 0644)", [
-		file.actual_mode,
-	])
+	violation := sprintf("CIS 6.1.2: /etc/passwd has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
 }
 
 critical_file_violations contains violation if {
 	some file in input.critical_files.analysis
 	file.file == "/etc/group"
 	not file.mode_compliant
-	violation := sprintf("CIS 6.1.4: /etc/group has incorrect permissions (mode: %s, expected: 0644)", [
-		file.actual_mode,
-	])
+	violation := sprintf("CIS 6.1.4: /etc/group has incorrect permissions (mode: %s, expected: 0644)", [file.actual_mode])
 }
 
 # =============================================================================
@@ -119,9 +111,7 @@ world_writable_violations contains violation if {
 world_writable_violations contains violation if {
 	not input.world_writable.compliant
 	input.world_writable.count > 0
-	violation := sprintf("CIS 6.1.10: %d world-writable files found on system", [
-		input.world_writable.count,
-	])
+	violation := sprintf("CIS 6.1.10: %d world-writable files found on system", [input.world_writable.count])
 }
 
 # =============================================================================
@@ -141,9 +131,7 @@ ownership_violations contains violation if {
 ownership_violations contains violation if {
 	not input.unowned_files.compliant
 	input.unowned_files.count > 0
-	violation := sprintf("CIS 6.1.11: %d unowned files found on system", [
-		input.unowned_files.count,
-	])
+	violation := sprintf("CIS 6.1.11: %d unowned files found on system", [input.unowned_files.count])
 }
 
 # =============================================================================
@@ -163,9 +151,7 @@ ownership_violations contains violation if {
 ownership_violations contains violation if {
 	not input.ungrouped_files.compliant
 	input.ungrouped_files.count > 0
-	violation := sprintf("CIS 6.1.12: %d ungrouped files found on system", [
-		input.ungrouped_files.count,
-	])
+	violation := sprintf("CIS 6.1.12: %d ungrouped files found on system", [input.ungrouped_files.count])
 }
 
 # =============================================================================
@@ -198,9 +184,7 @@ suid_sgid_violations contains violation if {
 
 suid_sgid_violations contains violation if {
 	input.sgid_files.count > 30
-	violation := sprintf("CIS 6.1.14: Excessive SGID binaries found (%d files)", [
-		input.sgid_files.count,
-	])
+	violation := sprintf("CIS 6.1.14: Excessive SGID binaries found (%d files)", [input.sgid_files.count])
 }
 
 # =============================================================================
@@ -313,4 +297,3 @@ report := {
 	"suid_summary": suid_summary,
 	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
-

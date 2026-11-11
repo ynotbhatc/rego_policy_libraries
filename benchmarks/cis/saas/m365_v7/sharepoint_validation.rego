@@ -204,9 +204,7 @@ compliance_report := {
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
-	"evidence_strength": {
-		"section": "collected with Get-PnPTenant, not the Get-SPOTenant the benchmark documents -- Microsoft.Online.SharePoint.PowerShell is Windows-only and cannot run in a Linux execution environment. The same CSOM tenant properties are read.",
-	},
+	"evidence_strength": {"section": "collected with Get-PnPTenant, not the Get-SPOTenant the benchmark documents -- Microsoft.Online.SharePoint.PowerShell is Windows-only and cannot run in a Linux execution environment. The same CSOM tenant properties are read."},
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

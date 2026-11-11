@@ -28,8 +28,8 @@ package cis_docker.main
 # unrelated benchmarks, where partial rules such as `violations` silently
 # merged across all of them. It now owns `cis_docker`.
 
-import rego.v1
 import data.cis_docker as bench
+import rego.v1
 
 default _compliant := false
 
