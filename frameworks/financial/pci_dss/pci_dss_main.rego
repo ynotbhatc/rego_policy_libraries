@@ -9,14 +9,14 @@
 #   source: pci-ssc
 #   domains: [financial, payment-cards]
 #   coverage:
-#     checks: 16
-#     cited: 3
+#     checks: 17
+#     cited: 4
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: none
-#     guard: n/a
-#     as_of: v2.4.1
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package pci_dss.main
 
 import rego.v1
@@ -238,3 +238,20 @@ pci_dss_detailed_findings := {
 		"requirement_12": requirement_12.pci_requirement_12_findings,
 	},
 }
+
+# Framework-key entrypoint: the product reads /v1/data/pci_dss/main/compliance_report. This package
+# names its report `pci_dss_detailed_findings`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "pci_dss",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for pci_dss; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(pci_dss_detailed_findings, {"framework_key": "pci_dss", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if pci_dss_detailed_findings.requirements_passing == pci_dss_detailed_findings.requirements_total

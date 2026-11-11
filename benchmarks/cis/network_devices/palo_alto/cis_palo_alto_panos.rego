@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis_palo_alto_panos
 
 # CIS Palo Alto PAN-OS Benchmark v1.2.0

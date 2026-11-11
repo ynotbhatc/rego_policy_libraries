@@ -2546,6 +2546,63 @@
     ]
    },
    {
+    "id": "hipaa-hipaa_main",
+    "class": "rego-module",
+    "title": "HIPAA Administrative Simplification - aggregator (45 CFR Parts 160, 162 and 164, plus the HITECH Act)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "hipaa.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/privacy/hipaa/hipaa_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "hipaa-FAIL-CLOSED",
+      "title": "no report produced for hipaa; this is not a passing result",
+      "props": [
+       {
+        "name": "label",
+        "value": "FAIL-CLOSED"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "FAIL-CLOSED"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "hipaa.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#91f4e126-bce5-518d-875c-f2502cba5993",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "hipaa-FAIL-CLOSED_stmt",
+        "name": "statement",
+        "prose": "no report produced for hipaa; this is not a passing result"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
     "id": "hipaa-hipaa_part160",
     "class": "rego-module",
     "title": "HIPAA Administrative Simplification - 45 CFR Part 160: the obligations it places on covered entities and",
@@ -11211,6 +11268,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/privacy/hipaa/hipaa_integrity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "91f4e126-bce5-518d-875c-f2502cba5993",
+     "title": "HIPAA Administrative Simplification - aggregator (45 CFR Parts 160, 162 and 164, plus the HITECH Act)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "hipaa.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/privacy/hipaa/hipaa_main.rego",
        "media-type": "text/plain"
       }
      ]

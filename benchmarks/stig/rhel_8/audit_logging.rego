@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.audit_logging
 
 # DISA STIG for RHEL 8 - Audit Logging Module
@@ -40,6 +40,7 @@ auditd_active if input.services.auditd == "active"
 status_rhel_08_030000 := "Not_a_Finding" if auditd_active
 
 else := "Open"
+
 finding_rhel_08_030000 := {
 	"vuln_id": "V-230400",
 	"stig_id": "RHEL-08-030000",
@@ -60,6 +61,7 @@ audit_no_overwrite if {
 status_rhel_08_030010 := "Not_a_Finding" if audit_no_overwrite
 
 else := "Open"
+
 finding_rhel_08_030010 := {
 	"vuln_id": "V-230401",
 	"stig_id": "RHEL-08-030010",
@@ -81,6 +83,7 @@ audit_execve_b64 if audit_rule_exists("-a always,exit -F arch=b64 -S execve")
 status_rhel_08_030020 := "Not_a_Finding" if audit_execve_b64
 
 else := "Open"
+
 finding_rhel_08_030020 := {
 	"vuln_id": "V-230402",
 	"stig_id": "RHEL-08-030020",
@@ -98,6 +101,7 @@ audit_chown if audit_rule_exists("-a always,exit -F arch=b64 -S chown")
 status_rhel_08_030030 := "Not_a_Finding" if audit_chown
 
 else := "Open"
+
 finding_rhel_08_030030 := {
 	"vuln_id": "V-230403",
 	"stig_id": "RHEL-08-030030",
@@ -115,6 +119,7 @@ audit_chmod if audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
 status_rhel_08_030040 := "Not_a_Finding" if audit_chmod
 
 else := "Open"
+
 finding_rhel_08_030040 := {
 	"vuln_id": "V-230404",
 	"stig_id": "RHEL-08-030040",
@@ -132,6 +137,7 @@ audit_sudoers if audit_rule_exists("-w /etc/sudoers")
 status_rhel_08_030050 := "Not_a_Finding" if audit_sudoers
 
 else := "Open"
+
 finding_rhel_08_030050 := {
 	"vuln_id": "V-230405",
 	"stig_id": "RHEL-08-030050",
@@ -149,6 +155,7 @@ audit_passwd if audit_rule_exists("-w /etc/passwd")
 status_rhel_08_030060 := "Not_a_Finding" if audit_passwd
 
 else := "Open"
+
 finding_rhel_08_030060 := {
 	"vuln_id": "V-230406",
 	"stig_id": "RHEL-08-030060",
@@ -166,6 +173,7 @@ audit_sudo if audit_rule_exists("-a always,exit -F path=/usr/bin/sudo")
 status_rhel_08_030070 := "Not_a_Finding" if audit_sudo
 
 else := "Open"
+
 finding_rhel_08_030070 := {
 	"vuln_id": "V-230407",
 	"stig_id": "RHEL-08-030070",
@@ -183,6 +191,7 @@ audit_immutable if audit_rule_exists("-e 2")
 status_rhel_08_030080 := "Not_a_Finding" if audit_immutable
 
 else := "Open"
+
 finding_rhel_08_030080 := {
 	"vuln_id": "V-230408",
 	"stig_id": "RHEL-08-030080",
@@ -201,6 +210,7 @@ space_left_notify if input.auditd_config.space_left_action == "syslog"
 status_rhel_08_030090 := "Not_a_Finding" if space_left_notify
 
 else := "Open"
+
 finding_rhel_08_030090 := {
 	"vuln_id": "V-230409",
 	"stig_id": "RHEL-08-030090",

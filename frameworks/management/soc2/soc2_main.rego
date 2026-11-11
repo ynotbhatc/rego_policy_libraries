@@ -9,14 +9,14 @@
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 3
-#     cited: 0
+#     checks: 4
+#     cited: 1
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: none
-#     guard: n/a
-#     as_of: v2.4.1
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package soc2.main
 
 import rego.v1
@@ -399,3 +399,34 @@ soc2_detailed_findings := findings if {
 		},
 	}
 }
+
+# Framework-key entrypoint: /v1/data/soc2/main/compliance_report. Built from this package's
+# trust-services booleans; fail-closed (every boolean defaults to false on empty input).
+default compliance_report := {
+	"framework_key": "soc2",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for soc2; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := {
+	"framework_key": "soc2",
+	"standard": "SOC 2 Trust Services Criteria",
+	"compliant": overall_soc2_compliant == true,
+	"trust_services": {
+		"security": security_compliant == true,
+		"availability": availability_compliant == true,
+		"confidentiality": confidentiality_compliant == true,
+		"processing_integrity": processing_integrity_compliant == true,
+		"privacy": privacy_compliant == true,
+	},
+	"violations": [c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)],
+	"violation_count": count([c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)]),
+}
+
+_soc2_ok("security") if security_compliant == true
+_soc2_ok("availability") if availability_compliant == true
+_soc2_ok("confidentiality") if confidentiality_compliant == true
+_soc2_ok("processing_integrity") if processing_integrity_compliant == true
+_soc2_ok("privacy") if privacy_compliant == true

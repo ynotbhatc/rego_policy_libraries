@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.account_auth
 
 # DISA STIG for RHEL 8 - Account and Authentication Module
@@ -36,6 +36,7 @@ mfa_enabled if input.pam_config.sssd_mfa == true
 status_rhel_08_020000 := "Not_a_Finding" if mfa_enabled
 
 else := "Open"
+
 finding_rhel_08_020000 := {
 	"vuln_id": "V-230280",
 	"stig_id": "RHEL-08-020000",
@@ -56,6 +57,7 @@ account_lockout if {
 status_rhel_08_020010 := "Not_a_Finding" if account_lockout
 
 else := "Open"
+
 finding_rhel_08_020010 := {
 	"vuln_id": "V-230281",
 	"stig_id": "RHEL-08-020010",
@@ -74,6 +76,7 @@ password_sha512 if input.pam_config.password_hash == "sha512"
 status_rhel_08_020020 := "Not_a_Finding" if password_sha512
 
 else := "Open"
+
 finding_rhel_08_020020 := {
 	"vuln_id": "V-230282",
 	"stig_id": "RHEL-08-020020",
@@ -92,6 +95,7 @@ no_empty_passwords if count(input.local_accounts_with_empty_passwords) == 0
 status_rhel_08_020030 := "Not_a_Finding" if no_empty_passwords
 
 else := "Open"
+
 finding_rhel_08_020030 := {
 	"vuln_id": "V-230283",
 	"stig_id": "RHEL-08-020030",
@@ -113,6 +117,7 @@ password_minlen if input.password_policy.minlen >= 15
 status_rhel_08_020040 := "Not_a_Finding" if password_minlen
 
 else := "Open"
+
 finding_rhel_08_020040 := {
 	"vuln_id": "V-230284",
 	"stig_id": "RHEL-08-020040",
@@ -133,6 +138,7 @@ password_maxage if {
 status_rhel_08_020050 := "Not_a_Finding" if password_maxage
 
 else := "Open"
+
 finding_rhel_08_020050 := {
 	"vuln_id": "V-230285",
 	"stig_id": "RHEL-08-020050",
@@ -150,6 +156,7 @@ password_history if input.password_policy.remember >= 5
 status_rhel_08_020060 := "Not_a_Finding" if password_history
 
 else := "Open"
+
 finding_rhel_08_020060 := {
 	"vuln_id": "V-230286",
 	"stig_id": "RHEL-08-020060",
@@ -167,6 +174,7 @@ lockout_duration if input.pam_config.lockout_time >= 900
 status_rhel_08_020070 := "Not_a_Finding" if lockout_duration
 
 else := "Open"
+
 finding_rhel_08_020070 := {
 	"vuln_id": "V-230287",
 	"stig_id": "RHEL-08-020070",
@@ -187,6 +195,7 @@ inactive_lock if {
 status_rhel_08_020080 := "Not_a_Finding" if inactive_lock
 
 else := "Open"
+
 finding_rhel_08_020080 := {
 	"vuln_id": "V-230288",
 	"stig_id": "RHEL-08-020080",
@@ -205,6 +214,7 @@ no_dup_uids if count(input.duplicate_uids) == 0
 status_rhel_08_020090 := "Not_a_Finding" if no_dup_uids
 
 else := "Open"
+
 finding_rhel_08_020090 := {
 	"vuln_id": "V-230289",
 	"stig_id": "RHEL-08-020090",

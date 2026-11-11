@@ -238299,7 +238299,7 @@
      {
       "uuid": "584036ed-720e-5b2e-a018-8427ea8de9b7",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/digital_sovereignty.json",
-      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (285 controls, 12 Rego modules).",
+      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (286 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -241616,6 +241616,31 @@
          {
           "name": "label",
           "value": "violation_summary"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/digital_sovereignty_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a4a6a7fc-3152-582d-bee5-ed26c18e2f86",
+        "control-id": "digital_sovereignty-FAIL-CLOSED",
+        "description": "Evaluated by Rego package digital_sovereignty.main (frameworks/sovereignty/digital_sovereignty/digital_sovereignty_main.rego): no report produced for digital_sovereignty; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
          },
          {
           "name": "rego-package",
@@ -271046,7 +271071,7 @@
      {
       "uuid": "bcddcc40-5a4f-55c2-9762-fa8861bdffd0",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/fisma.json",
-      "description": "Controls of fisma evaluated by the Rego Policy Libraries (7 controls, 1 Rego modules).",
+      "description": "Controls of fisma evaluated by the Rego Policy Libraries (8 controls, 2 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -271055,6 +271080,31 @@
        }
       ],
       "implemented-requirements": [
+       {
+        "uuid": "bea7c757-155a-58a5-9cb6-60a535190f71",
+        "control-id": "fisma-FAIL-CLOSED",
+        "description": "Evaluated by Rego package fisma.main (frameworks/federal/fisma/fisma_main.rego): no report produced for fisma; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "fisma.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/fisma/fisma_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
        {
         "uuid": "f85a2f6f-1213-58b9-a8a6-9c2a47ed2276",
         "control-id": "fisma-Document-Structure",
@@ -271649,7 +271699,7 @@
      {
       "uuid": "27b63f11-7856-5438-97d8-cc663e38b7ac",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/gdpr.json",
-      "description": "Controls of gdpr evaluated by the Rego Policy Libraries (66 controls, 5 Rego modules).",
+      "description": "Controls of gdpr evaluated by the Rego Policy Libraries (67 controls, 5 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -273291,6 +273341,31 @@
          {
           "name": "label",
           "value": "data_transfers"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "gdpr.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/gdpr/gdpr_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "eaa9cff5-8b23-5c41-88a1-d296b75fd99d",
+        "control-id": "gdpr-FAIL-CLOSED",
+        "description": "Evaluated by Rego package gdpr.main (frameworks/privacy/gdpr/gdpr_main.rego): no report produced for gdpr; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
          },
          {
           "name": "rego-package",
@@ -276316,7 +276391,7 @@
      {
       "uuid": "3c6f2c98-db1d-577d-87cc-9416c6fdf51f",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/hipaa.json",
-      "description": "Controls of hipaa evaluated by the Rego Policy Libraries (318 controls, 10 Rego modules).",
+      "description": "Controls of hipaa evaluated by the Rego Policy Libraries (319 controls, 11 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -277918,6 +277993,31 @@
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "frameworks/privacy/hipaa/hipaa_integrity.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "493a41f1-7d81-53e2-aaa7-84ee1c603d78",
+        "control-id": "hipaa-FAIL-CLOSED",
+        "description": "Evaluated by Rego package hipaa.main (frameworks/privacy/hipaa/hipaa_main.rego): no report produced for hipaa; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "hipaa.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/hipaa/hipaa_main.rego"
          },
          {
           "name": "implementation-status",
@@ -387498,7 +387598,7 @@
      {
       "uuid": "84276292-7c8f-53c7-9cee-86c8cf259586",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/pci_dss.json",
-      "description": "Controls of pci_dss evaluated by the Rego Policy Libraries (200 controls, 14 Rego modules).",
+      "description": "Controls of pci_dss evaluated by the Rego Policy Libraries (201 controls, 14 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -391140,6 +391240,31 @@
          {
           "name": "label",
           "value": "scores"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "pci_dss.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/financial/pci_dss/pci_dss_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "604d19fd-9eb3-51c5-af58-331d48f20442",
+        "control-id": "pci_dss-FAIL-CLOSED",
+        "description": "Evaluated by Rego package pci_dss.main (frameworks/financial/pci_dss/pci_dss_main.rego): no report produced for pci_dss; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
          },
          {
           "name": "rego-package",
@@ -401757,7 +401882,7 @@
      {
       "uuid": "c9d29b7d-74ea-52e9-9dcb-9d7d692cdbc4",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/soc2.json",
-      "description": "Controls of soc2 evaluated by the Rego Policy Libraries (220 controls, 12 Rego modules).",
+      "description": "Controls of soc2 evaluated by the Rego Policy Libraries (221 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -407265,13 +407390,38 @@
           "value": "implemented"
          }
         ]
+       },
+       {
+        "uuid": "3a55ecb1-d67b-5ab4-9c78-b36384dd238d",
+        "control-id": "soc2-FAIL-CLOSED",
+        "description": "Evaluated by Rego package soc2.main (frameworks/management/soc2/soc2_main.rego): no report produced for soc2; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "soc2.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/soc2/soc2_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
        }
       ]
      },
      {
       "uuid": "1abe57d8-996b-5f66-b781-bdcc9d9e0946",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/sox.json",
-      "description": "Controls of sox evaluated by the Rego Policy Libraries (80 controls, 3 Rego modules).",
+      "description": "Controls of sox evaluated by the Rego Policy Libraries (81 controls, 3 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -409263,6 +409413,31 @@
          {
           "name": "label",
           "value": "Continuous Monitoring"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "sox.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/financial/sox/sox_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4a58e6b6-d234-5940-aa01-aea63d873340",
+        "control-id": "sox-FAIL-CLOSED",
+        "description": "Evaluated by Rego package sox.main (frameworks/financial/sox/sox_main.rego): no report produced for sox; this is not a passing result",
+        "props": [
+         {
+          "name": "label",
+          "value": "FAIL-CLOSED"
          },
          {
           "name": "rego-package",
