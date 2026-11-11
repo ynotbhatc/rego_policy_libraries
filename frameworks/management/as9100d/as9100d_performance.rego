@@ -6,8 +6,8 @@
 #   source: sae
 #   domains: [aerospace, quality]
 #   coverage:
-#     checks: 12
-#     cited: 9
+#     checks: 11
+#     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
