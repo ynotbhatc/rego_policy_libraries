@@ -4,7 +4,7 @@ import rego.v1
 
 # Every key the compliance product's opa_framework_map and framework catalog can evaluate.
 keys := {
-	"ai_governance", "ami_device", "ami_headend", "ami_nist_ir7628", "ccpa", "cfr_part_11",
+	"ai_governance", "ami_device", "ami_headend", "ami_nist_ir7628", "as9100d", "ccpa", "cfr_part_11",
 	"cis_aks", "cis_amazon_linux_2023", "cis_aws", "cis_azure", "cis_debian_11", "cis_docker",
 	"cis_eks", "cis_gcp", "cis_gke", "cis_kubernetes", "cis_openshift", "cis_pfsense", "cis_rhel10",
 	"cis_rhel8", "cis_rhel9", "cis_rocky_linux_8", "cis_rocky_linux_9", "cis_ubuntu_2004",
@@ -44,6 +44,12 @@ test_key_ami_headend if {
 
 test_key_ami_nist_ir7628 if {
 	r := data.ami_nist_ir7628.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+}
+
+test_key_as9100d if {
+	r := data.as9100d.main.compliance_report with input as {}
 	is_object(r)
 	r.compliant == false
 }

@@ -1,0 +1,3261 @@
+{
+ "catalog": {
+  "uuid": "4d64f572-d1db-525e-a9ec-7fb4df48b63b",
+  "metadata": {
+   "title": "Rego Policy Libraries — as9100d (SAE AS9100D (9100:2016) — Clause 4: Context of the organization)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "as9100d"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "as9100d-as9100d_context",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 4: Context of the organization",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.context"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_context.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-4.1",
+      "title": "Organizational context — internal and external issues relevant to the QMS are determined and reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-4.1_stmt",
+        "name": "statement",
+        "prose": "Organizational context — internal and external issues relevant to the QMS are determined and reviewed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-4.2",
+      "title": "Interested parties — relevant parties and their requirements, including statutory, regulatory and customer, are determined",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-4.2_stmt",
+        "name": "statement",
+        "prose": "Interested parties — relevant parties and their requirements, including statutory, regulatory and customer, are determined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-4.3",
+      "title": "QMS scope — boundaries and applicability are defined, documented and justified where a requirement is not applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-4.3_stmt",
+        "name": "statement",
+        "prose": "QMS scope — boundaries and applicability are defined, documented and justified where a requirement is not applied"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-4.4.1",
+      "title": "QMS processes — processes, their sequence, interaction, criteria, resources, risks and ownership are established and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-4.4.1_stmt",
+        "name": "statement",
+        "prose": "QMS processes — processes, their sequence, interaction, criteria, resources, risks and ownership are established and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-4.4.2",
+      "title": "Process documentation — documented information needed to operate the processes and to show they run as planned is maintained and retained",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-4.4.2_stmt",
+        "name": "statement",
+        "prose": "Process documentation — documented information needed to operate the processes and to show they run as planned is maintained and retained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.context-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.context#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.context#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.context"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f259639-05c4-5b27-b248-2a4e2fcdda52",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.context-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_improvement",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 10: Improvement",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.improvement"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_improvement.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-10.1",
+      "title": "Improvement — opportunities to meet customer requirements and enhance satisfaction are determined and acted on",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-10.1_stmt",
+        "name": "statement",
+        "prose": "Improvement — opportunities to meet customer requirements and enhance satisfaction are determined and acted on"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-10.2.1",
+      "title": "Nonconformity and corrective action — each corrective action record states the root cause, considers human factors and is closed or not yet overdue",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-10.2.1_stmt",
+        "name": "statement",
+        "prose": "Nonconformity and corrective action — each corrective action record states the root cause, considers human factors and is closed or not yet overdue"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-10.2.2",
+      "title": "Corrective action records — each record references its nonconformity and closed records show an effectiveness review",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-10.2.2_stmt",
+        "name": "statement",
+        "prose": "Corrective action records — each record references its nonconformity and closed records show an effectiveness review"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-10.3",
+      "title": "Continual improvement — the suitability, adequacy and effectiveness of the QMS are improved using analysis, evaluation and review outputs",
+      "props": [
+       {
+        "name": "label",
+        "value": "10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-10.3_stmt",
+        "name": "statement",
+        "prose": "Continual improvement — the suitability, adequacy and effectiveness of the QMS are improved using analysis, evaluation and review outputs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.improvement-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.improvement#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.improvement#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.improvement-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.improvement-2",
+      "title": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.improvement#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.improvement#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.improvement-2_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.improvement-3",
+      "title": "AS9100D %s: %s — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.improvement#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.improvement#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.improvement"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.improvement-3_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — %s"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_leadership",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 5: Leadership",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.leadership"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_leadership.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-5.1.1",
+      "title": "Leadership and commitment — top management owns QMS effectiveness, policy, objectives, resources and the promotion of risk-based thinking",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-5.1.1_stmt",
+        "name": "statement",
+        "prose": "Leadership and commitment — top management owns QMS effectiveness, policy, objectives, resources and the promotion of risk-based thinking"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-5.1.2",
+      "title": "Customer focus — customer and applicable statutory and regulatory requirements are met, and product conformity and on-time delivery performance are measured with action on shortfalls",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-5.1.2_stmt",
+        "name": "statement",
+        "prose": "Customer focus — customer and applicable statutory and regulatory requirements are met, and product conformity and on-time delivery performance are measured with action on shortfalls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-5.2.1",
+      "title": "Quality policy — a policy appropriate to the organization's purpose and context is established, with a framework for objectives and a commitment to improve",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-5.2.1_stmt",
+        "name": "statement",
+        "prose": "Quality policy — a policy appropriate to the organization's purpose and context is established, with a framework for objectives and a commitment to improve"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-5.2.2",
+      "title": "Quality policy communication — the policy is documented, communicated, understood, applied and available to interested parties",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-5.2.2_stmt",
+        "name": "statement",
+        "prose": "Quality policy communication — the policy is documented, communicated, understood, applied and available to interested parties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-5.3",
+      "title": "Roles and authorities — responsibilities are assigned and communicated, including a management representative with the authority and freedom to resolve quality matters",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-5.3_stmt",
+        "name": "statement",
+        "prose": "Roles and authorities — responsibilities are assigned and communicated, including a management representative with the authority and freedom to resolve quality matters"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.leadership-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.leadership#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.leadership#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.leadership"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.leadership-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_main",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Aerospace quality management system, clauses 4–10",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.main"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_main.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-as9100d.main-1",
+      "title": "Implemented by a Rego rule in frameworks/management/as9100d/as9100d_main.rego (package as9100d.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.main#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.main#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1fb37c9c-971b-55d5-87d9-7b8be719a586",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.main-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/as9100d/as9100d_main.rego (package as9100d.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-AS9100D-Input-Contract",
+      "title": "clause module as9100d.%s is not loaded — FAIL-CLOSED, its clauses cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "AS9100D Input Contract"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AS9100D Input Contract"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1fb37c9c-971b-55d5-87d9-7b8be719a586",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-AS9100D-Input-Contract_stmt",
+        "name": "statement",
+        "prose": "clause module as9100d.%s is not loaded — FAIL-CLOSED, its clauses cannot be evaluated"
+       },
+       {
+        "id": "as9100d-AS9100D-Input-Contract_obj.1",
+        "name": "assessment-objective",
+        "prose": "attestation for unknown clause id %v — not a clause of AS9100D"
+       },
+       {
+        "id": "as9100d-AS9100D-Input-Contract_obj.2",
+        "name": "assessment-objective",
+        "prose": "input.as9100d.attestations must be an object of {\"<clause id>\": true}"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_operation",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 8: Operation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.operation"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_operation.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-8.1",
+      "title": "Operational planning and control — criteria, resources, documented information and controls for product and service provision are planned, including work transfers and outsourced processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.1_stmt",
+        "name": "statement",
+        "prose": "Operational planning and control — criteria, resources, documented information and controls for product and service provision are planned, including work transfers and outsourced processes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.1.1",
+      "title": "Operational risk management — a process assigns responsibility, defines risk criteria, identifies, assesses and mitigates risks that exceed criteria, and accepts residual risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.1.1_stmt",
+        "name": "statement",
+        "prose": "Operational risk management — a process assigns responsibility, defines risk criteria, identifies, assesses and mitigates risks that exceed criteria, and accepts residual risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.1.2",
+      "title": "Configuration management — approved baselines are recorded, changes to them are controlled and status accounting (drift) records carry a disposition",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.1.2_stmt",
+        "name": "statement",
+        "prose": "Configuration management — approved baselines are recorded, changes to them are controlled and status accounting (drift) records carry a disposition"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.1.3",
+      "title": "Product safety — hazards are assessed and managed across the product life cycle, with safety-critical items identified and communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.1.3_stmt",
+        "name": "statement",
+        "prose": "Product safety — hazards are assessed and managed across the product life cycle, with safety-critical items identified and communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.1.4",
+      "title": "Prevention of counterfeit parts — components carry documented provenance (SBOM or certificate of conformity) and come from approved sources",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.1.4_stmt",
+        "name": "statement",
+        "prose": "Prevention of counterfeit parts — components carry documented provenance (SBOM or certificate of conformity) and come from approved sources"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.2.1",
+      "title": "Customer communication — product information, enquiries, contracts, feedback, customer property and contingency actions are communicated",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.2.1_stmt",
+        "name": "statement",
+        "prose": "Customer communication — product information, enquiries, contracts, feedback, customer property and contingency actions are communicated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.2.2",
+      "title": "Determining requirements — product and service requirements including statutory, regulatory, special and operational-risk requirements are defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.2.2_stmt",
+        "name": "statement",
+        "prose": "Determining requirements — product and service requirements including statutory, regulatory, special and operational-risk requirements are defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.2.3",
+      "title": "Review of requirements — requirements are reviewed before commitment, special requirements and critical items are identified and differences are resolved",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.2.3_stmt",
+        "name": "statement",
+        "prose": "Review of requirements — requirements are reviewed before commitment, special requirements and critical items are identified and differences are resolved"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.2.4",
+      "title": "Changes to requirements — amended documented information and awareness of changed requirements by relevant persons",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.2.4_stmt",
+        "name": "statement",
+        "prose": "Changes to requirements — amended documented information and awareness of changed requirements by relevant persons"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.1",
+      "title": "Design and development — a process suitable for ensuring subsequent provision of products and services is established",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.1_stmt",
+        "name": "statement",
+        "prose": "Design and development — a process suitable for ensuring subsequent provision of products and services is established"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.2",
+      "title": "Design and development planning — stages, reviews, verification and validation, authorities, interfaces and the division into elements are planned",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.2_stmt",
+        "name": "statement",
+        "prose": "Design and development planning — stages, reviews, verification and validation, authorities, interfaces and the division into elements are planned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.3",
+      "title": "Design and development inputs — functional, performance, statutory, regulatory and previous-design inputs are determined and conflicts resolved",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.3_stmt",
+        "name": "statement",
+        "prose": "Design and development inputs — functional, performance, statutory, regulatory and previous-design inputs are determined and conflicts resolved"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.4",
+      "title": "Design and development controls — reviews, verification and validation are performed, with tests planned, witnessed and recorded against acceptance criteria",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.4_stmt",
+        "name": "statement",
+        "prose": "Design and development controls — reviews, verification and validation are performed, with tests planned, witnessed and recorded against acceptance criteria"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.5",
+      "title": "Design and development outputs — outputs meet inputs, define key characteristics and critical items and specify acceptance criteria and data for production",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.5_stmt",
+        "name": "statement",
+        "prose": "Design and development outputs — outputs meet inputs, define key characteristics and critical items and specify acceptance criteria and data for production"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.3.6",
+      "title": "Design and development changes — changes are identified, reviewed, controlled, authorized and assessed for impact on delivered product",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.3.6_stmt",
+        "name": "statement",
+        "prose": "Design and development changes — changes are identified, reviewed, controlled, authorized and assessed for impact on delivered product"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.4.1",
+      "title": "Control of external providers — an approved supplier list records each provider's approval status and scope, with controls set by the provider's effect on conformity",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.4.1_stmt",
+        "name": "statement",
+        "prose": "Control of external providers — an approved supplier list records each provider's approval status and scope, with controls set by the provider's effect on conformity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.4.2",
+      "title": "Type and extent of control — supplier performance is monitored and reviewed within the past year, verification activities are defined and risk is used to set controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.4.2_stmt",
+        "name": "statement",
+        "prose": "Type and extent of control — supplier performance is monitored and reviewed within the past year, verification activities are defined and risk is used to set controls"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.4.3",
+      "title": "Information for external providers — requirements including flow-down of customer and QMS requirements are communicated and acknowledged by each provider",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.4.3_stmt",
+        "name": "statement",
+        "prose": "Information for external providers — requirements including flow-down of customer and QMS requirements are communicated and acknowledged by each provider"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.1",
+      "title": "Control of production and service provision — provision runs under controlled conditions with documented information, monitoring, infrastructure, competence and release criteria",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.1_stmt",
+        "name": "statement",
+        "prose": "Control of production and service provision — provision runs under controlled conditions with documented information, monitoring, infrastructure, competence and release criteria"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.1.1",
+      "title": "Control of equipment, tools and software programs — production equipment, tooling and software are validated before use and maintained in a known state",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.1.1_stmt",
+        "name": "statement",
+        "prose": "Control of equipment, tools and software programs — production equipment, tooling and software are validated before use and maintained in a known state"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.1.2",
+      "title": "Validation and control of special processes — processes whose output cannot be verified afterwards are qualified, with criteria, approved equipment, personnel and records",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.1.2_stmt",
+        "name": "statement",
+        "prose": "Validation and control of special processes — processes whose output cannot be verified afterwards are qualified, with criteria, approved equipment, personnel and records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.1.3",
+      "title": "Production process verification — first article inspection confirms the process delivers conforming product and is repeated after process or design changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.1.3_stmt",
+        "name": "statement",
+        "prose": "Production process verification — first article inspection confirms the process delivers conforming product and is repeated after process or design changes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.2",
+      "title": "Identification and traceability — each unit or batch carries a unique identifier and its lot or serial record, so configuration and history can be reconstructed",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.2_stmt",
+        "name": "statement",
+        "prose": "Identification and traceability — each unit or batch carries a unique identifier and its lot or serial record, so configuration and history can be reconstructed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.3",
+      "title": "Property of customers and external providers — such property is identified, verified, protected and safeguarded, with loss or damage reported",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.3_stmt",
+        "name": "statement",
+        "prose": "Property of customers and external providers — such property is identified, verified, protected and safeguarded, with loss or damage reported"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.4",
+      "title": "Preservation — outputs are preserved during production and provision, including cleaning, FOD prevention, handling, shelf life and marking",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.4_stmt",
+        "name": "statement",
+        "prose": "Preservation — outputs are preserved during production and provision, including cleaning, FOD prevention, handling, shelf life and marking"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.5",
+      "title": "Post-delivery activities — warranty, maintenance, recycling, disposal and the collection of in-service data and problems are controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.5_stmt",
+        "name": "statement",
+        "prose": "Post-delivery activities — warranty, maintenance, recycling, disposal and the collection of in-service data and problems are controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.5.6",
+      "title": "Control of changes — every production or service change record is reviewed for impact, approved by an authorized person and retained",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.5.6_stmt",
+        "name": "statement",
+        "prose": "Control of changes — every production or service change record is reviewed for impact, approved by an authorized person and retained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.6",
+      "title": "Release of products and services — planned verification is completed, release is authorized and evidence of conformity with release authority is retained",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.6_stmt",
+        "name": "statement",
+        "prose": "Release of products and services — planned verification is completed, release is authorized and evidence of conformity with release authority is retained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.7.1",
+      "title": "Control of nonconforming outputs — each nonconformance record carries a disposition, and use-as-is or repair dispositions carry customer authorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.7.1_stmt",
+        "name": "statement",
+        "prose": "Control of nonconforming outputs — each nonconformance record carries a disposition, and use-as-is or repair dispositions carry customer authorization"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-8.7.2",
+      "title": "Nonconformity records — each record describes the nonconformity, the action taken and the authority that decided the disposition",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-8.7.2_stmt",
+        "name": "statement",
+        "prose": "Nonconformity records — each record describes the nonconformity, the action taken and the authority that decided the disposition"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.operation-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.operation#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.operation#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.operation-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.operation-2",
+      "title": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.operation#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.operation#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.operation-2_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.operation-3",
+      "title": "AS9100D %s: %s — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.operation#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.operation#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.operation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#61c9124a-5cd4-55ef-a4c9-9c270926443a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.operation-3_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — %s"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_performance",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 9: Performance evaluation",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.performance"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_performance.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-9.1.1",
+      "title": "Monitoring and measurement — what is monitored, the methods, the timing and the evaluation of results are determined and QMS performance is evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.1.1_stmt",
+        "name": "statement",
+        "prose": "Monitoring and measurement — what is monitored, the methods, the timing and the evaluation of results are determined and QMS performance is evaluated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.1.2",
+      "title": "Customer satisfaction — on-time delivery and product conformity are measured for the current period and compared with their targets",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.1.2_stmt",
+        "name": "statement",
+        "prose": "Customer satisfaction — on-time delivery and product conformity are measured for the current period and compared with their targets"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.1.3",
+      "title": "Analysis and evaluation — data on conformity, satisfaction, performance, planning, risk actions, suppliers and improvement needs is analysed",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.1.3_stmt",
+        "name": "statement",
+        "prose": "Analysis and evaluation — data on conformity, satisfaction, performance, planning, risk actions, suppliers and improvement needs is analysed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.2.1",
+      "title": "Internal audit — at least one internal audit of the QMS has been completed within the past year",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.2.1_stmt",
+        "name": "statement",
+        "prose": "Internal audit — at least one internal audit of the QMS has been completed within the past year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.2.2",
+      "title": "Audit programme — audits are planned with scope and criteria, results are reported to management and corrections follow",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.2.2_stmt",
+        "name": "statement",
+        "prose": "Audit programme — audits are planned with scope and criteria, results are reported to management and corrections follow"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.3.1",
+      "title": "Management review — top management has reviewed the QMS within the past year",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.3.1_stmt",
+        "name": "statement",
+        "prose": "Management review — top management has reviewed the QMS within the past year"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.3.2",
+      "title": "Management review inputs — status of actions, changes, performance trends, resource adequacy, risk actions and on-time delivery are considered",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.3.2_stmt",
+        "name": "statement",
+        "prose": "Management review inputs — status of actions, changes, performance trends, resource adequacy, risk actions and on-time delivery are considered"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-9.3.3",
+      "title": "Management review outputs — decisions on improvement, QMS changes and resource needs are recorded and retained",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-9.3.3_stmt",
+        "name": "statement",
+        "prose": "Management review outputs — decisions on improvement, QMS changes and resource needs are recorded and retained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.performance-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.performance#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.performance#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.performance-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.performance-2",
+      "title": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.performance#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.performance#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.performance-2_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.performance-3",
+      "title": "AS9100D %s: %s — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.performance#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.performance#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.performance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#af0c11e7-2f48-508e-858e-38ec618bde18",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.performance-3_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — %s"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_planning",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 6: Planning",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.planning"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_planning.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-6.1.1",
+      "title": "Risks and opportunities — those able to affect intended results, desirable effects and improvement are determined for the QMS",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-6.1.1_stmt",
+        "name": "statement",
+        "prose": "Risks and opportunities — those able to affect intended results, desirable effects and improvement are determined for the QMS"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-6.1.2",
+      "title": "Risk treatment — actions to address risks and opportunities are planned, integrated into processes and evaluated for effectiveness",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-6.1.2_stmt",
+        "name": "statement",
+        "prose": "Risk treatment — actions to address risks and opportunities are planned, integrated into processes and evaluated for effectiveness"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-6.2.1",
+      "title": "Quality objectives — measurable, monitored, communicated and updated objectives are set at relevant functions, levels and processes",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-6.2.1_stmt",
+        "name": "statement",
+        "prose": "Quality objectives — measurable, monitored, communicated and updated objectives are set at relevant functions, levels and processes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-6.2.2",
+      "title": "Objective plans — what will be done, with which resources, by whom, by when and how results are evaluated is planned for each objective",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-6.2.2_stmt",
+        "name": "statement",
+        "prose": "Objective plans — what will be done, with which resources, by whom, by when and how results are evaluated is planned for each objective"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-6.3",
+      "title": "Planning of changes — QMS changes are made in a planned way considering purpose, consequences, integrity, resources and responsibilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-6.3_stmt",
+        "name": "statement",
+        "prose": "Planning of changes — QMS changes are made in a planned way considering purpose, consequences, integrity, resources and responsibilities"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.planning-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.planning#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.planning#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.planning"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b4e36490-6ce6-5358-ad99-7722014fdf5e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.planning-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
+    "id": "as9100d-as9100d_support",
+    "class": "rego-module",
+    "title": "SAE AS9100D (9100:2016) — Clause 7: Support",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "as9100d.support"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/as9100d/as9100d_support.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "as9100d-7.1.1",
+      "title": "Resources — the resources needed to establish, maintain and improve the QMS are determined and provided, including those from external providers",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.1_stmt",
+        "name": "statement",
+        "prose": "Resources — the resources needed to establish, maintain and improve the QMS are determined and provided, including those from external providers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.2",
+      "title": "People — the persons necessary for QMS operation and process control are provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.2_stmt",
+        "name": "statement",
+        "prose": "People — the persons necessary for QMS operation and process control are provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.3",
+      "title": "Infrastructure — buildings, equipment, transport and information technology needed for conforming output are determined, provided and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.3_stmt",
+        "name": "statement",
+        "prose": "Infrastructure — buildings, equipment, transport and information technology needed for conforming output are determined, provided and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.4",
+      "title": "Process environment — the social, psychological and physical conditions needed for conforming output are determined and maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.4_stmt",
+        "name": "statement",
+        "prose": "Process environment — the social, psychological and physical conditions needed for conforming output are determined and maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.5.1",
+      "title": "Monitoring and measuring resources — a register of measuring equipment identifies each item, its suitability and its calibration schedule, and recall is managed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.5.1_stmt",
+        "name": "statement",
+        "prose": "Monitoring and measuring resources — a register of measuring equipment identifies each item, its suitability and its calibration schedule, and recall is managed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.5.2",
+      "title": "Measurement traceability — in-service equipment is calibrated against traceable standards, its status is identified and no calibration is overdue",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.5.2_stmt",
+        "name": "statement",
+        "prose": "Measurement traceability — in-service equipment is calibrated against traceable standards, its status is identified and no calibration is overdue"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.1.6",
+      "title": "Organizational knowledge — the knowledge needed to operate processes is maintained and additional knowledge needs are anticipated",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.1.6_stmt",
+        "name": "statement",
+        "prose": "Organizational knowledge — the knowledge needed to operate processes is maintained and additional knowledge needs are anticipated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.2",
+      "title": "Competence — competence needs are determined, met through education, training or experience, evaluated for effectiveness and evidenced in retained records",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.2_stmt",
+        "name": "statement",
+        "prose": "Competence — competence needs are determined, met through education, training or experience, evaluated for effectiveness and evidenced in retained records"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.3",
+      "title": "Awareness — persons know the policy, objectives, their contribution, the consequences of nonconformity, product safety and ethical behaviour expectations",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.3_stmt",
+        "name": "statement",
+        "prose": "Awareness — persons know the policy, objectives, their contribution, the consequences of nonconformity, product safety and ethical behaviour expectations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.4",
+      "title": "Communication — internal and external communications relevant to the QMS are determined: what, when, with whom, how and by whom",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.4_stmt",
+        "name": "statement",
+        "prose": "Communication — internal and external communications relevant to the QMS are determined: what, when, with whom, how and by whom"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.5.1",
+      "title": "Documented information — the information the standard requires and the organization needs for QMS effectiveness is maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.5.1_stmt",
+        "name": "statement",
+        "prose": "Documented information — the information the standard requires and the organization needs for QMS effectiveness is maintained"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.5.2",
+      "title": "Creating and updating — documents carry identification, format and media controls and are reviewed and approved for suitability",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.5.2_stmt",
+        "name": "statement",
+        "prose": "Creating and updating — documents carry identification, format and media controls and are reviewed and approved for suitability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-7.5.3",
+      "title": "Control of documented information — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and ",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-7.5.3_stmt",
+        "name": "statement",
+        "prose": "Control of documented information — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and customer-furnished information"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.support-1",
+      "title": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.support#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.support#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.support-1_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — not attested: input.as9100d.attestations[%q] is not true"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.support-2",
+      "title": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.support#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.support#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.support-2_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — FAIL-CLOSED: no evidence at input.as9100d.%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "as9100d-as9100d.support-3",
+      "title": "AS9100D %s: %s — %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "as9100d.support#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "as9100d.support#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "as9100d.support"
+       }
+      ],
+      "links": [
+       {
+        "href": "#12a819e4-382b-576c-a10b-5abfb54171d0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "as9100d-as9100d.support-3_stmt",
+        "name": "statement",
+        "prose": "AS9100D %s: %s — %s"
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "7f259639-05c4-5b27-b248-2a4e2fcdda52",
+     "title": "SAE AS9100D (9100:2016) — Clause 4: Context of the organization",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.context"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_context.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "c6ac4cd3-98b7-525b-a44e-bd223541ca51",
+     "title": "SAE AS9100D (9100:2016) — Clause 10: Improvement",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.improvement"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_improvement.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "4bbef9ce-9a8e-5822-ab69-d137e484a87c",
+     "title": "SAE AS9100D (9100:2016) — Clause 5: Leadership",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.leadership"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_leadership.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "1fb37c9c-971b-55d5-87d9-7b8be719a586",
+     "title": "SAE AS9100D (9100:2016) — Aerospace quality management system, clauses 4–10",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.main"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_main.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "61c9124a-5cd4-55ef-a4c9-9c270926443a",
+     "title": "SAE AS9100D (9100:2016) — Clause 8: Operation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.operation"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_operation.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "af0c11e7-2f48-508e-858e-38ec618bde18",
+     "title": "SAE AS9100D (9100:2016) — Clause 9: Performance evaluation",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.performance"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_performance.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "b4e36490-6ce6-5358-ad99-7722014fdf5e",
+     "title": "SAE AS9100D (9100:2016) — Clause 6: Planning",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.planning"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_planning.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "12a819e4-382b-576c-a10b-5abfb54171d0",
+     "title": "SAE AS9100D (9100:2016) — Clause 7: Support",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "as9100d.support"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/frameworks/management/as9100d/as9100d_support.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

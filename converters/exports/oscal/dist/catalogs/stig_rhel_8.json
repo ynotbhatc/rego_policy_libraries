@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_8-RHEL-08-020000",
-      "title": "RHEL 8 must implement multifactor authentication for access to privileged accounts",
+      "id": "stig_rhel_8-RHEL-08-010121",
+      "title": "The RHEL 8 operating system must not have accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020000"
+        "value": "RHEL-08-010121"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020000"
+        "value": "RHEL-08-010121"
        },
        {
         "name": "rego-package",
@@ -91,16 +91,49 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020000_stmt",
+        "id": "stig_rhel_8-RHEL-08-010121_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must implement multifactor authentication for access to privileged accounts"
+        "prose": "The RHEL 8 operating system must not have accounts configured with blank or null passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-020250",
+      "title": "RHEL 8 must implement smart card logon for multifactor authentication for access to interactive accounts.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-020250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-020250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-020250_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must implement smart card logon for multifactor authentication for access to interactive accounts."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-020010",
-      "title": "RHEL 8 must lock an account after three consecutive invalid access attempts",
+      "title": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur.",
       "props": [
        {
         "name": "label",
@@ -126,22 +159,22 @@
        {
         "id": "stig_rhel_8-RHEL-08-020010_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must lock an account after three consecutive invalid access attempts"
+        "prose": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020020",
-      "title": "RHEL 8 must store only encrypted representations of passwords",
+      "id": "stig_rhel_8-RHEL-08-010110",
+      "title": "RHEL 8 must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020020"
+        "value": "RHEL-08-010110"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020020"
+        "value": "RHEL-08-010110"
        },
        {
         "name": "rego-package",
@@ -157,24 +190,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020020_stmt",
+        "id": "stig_rhel_8-RHEL-08-010110_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must store only encrypted representations of passwords"
+        "prose": "RHEL 8 must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020030",
-      "title": "RHEL 8 must not have accounts configured with blank or null passwords",
+      "id": "stig_rhel_8-RHEL-08-020230",
+      "title": "RHEL 8 passwords must have a minimum of 15 characters.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020030"
+        "value": "RHEL-08-020230"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020030"
+        "value": "RHEL-08-020230"
        },
        {
         "name": "rego-package",
@@ -190,24 +223,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020030_stmt",
+        "id": "stig_rhel_8-RHEL-08-020230_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not have accounts configured with blank or null passwords"
+        "prose": "RHEL 8 passwords must have a minimum of 15 characters."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020040",
-      "title": "RHEL 8 passwords must have a minimum of 15 characters",
+      "id": "stig_rhel_8-RHEL-08-020200",
+      "title": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020040"
+        "value": "RHEL-08-020200"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020040"
+        "value": "RHEL-08-020200"
        },
        {
         "name": "rego-package",
@@ -223,24 +256,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020040_stmt",
+        "id": "stig_rhel_8-RHEL-08-020200_stmt",
         "name": "statement",
-        "prose": "RHEL 8 passwords must have a minimum of 15 characters"
+        "prose": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020050",
-      "title": "RHEL 8 must enforce a 60-day maximum password lifetime restriction",
+      "id": "stig_rhel_8-RHEL-08-020012",
+      "title": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020050"
+        "value": "RHEL-08-020012"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020050"
+        "value": "RHEL-08-020012"
        },
        {
         "name": "rego-package",
@@ -256,24 +289,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020050_stmt",
+        "id": "stig_rhel_8-RHEL-08-020012_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must enforce a 60-day maximum password lifetime restriction"
+        "prose": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020060",
-      "title": "RHEL 8 must prohibit password reuse for a minimum of five generations",
+      "id": "stig_rhel_8-RHEL-08-020260",
+      "title": "RHEL 8 account identifiers (individuals, groups, roles, and devices) must be disabled after 35 days of inactivity.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020060"
+        "value": "RHEL-08-020260"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020060"
+        "value": "RHEL-08-020260"
        },
        {
         "name": "rego-package",
@@ -289,24 +322,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020060_stmt",
+        "id": "stig_rhel_8-RHEL-08-020260_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must prohibit password reuse for a minimum of five generations"
+        "prose": "RHEL 8 account identifiers (individuals, groups, roles, and devices) must be disabled after 35 days of inactivity."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-020070",
-      "title": "RHEL 8 must automatically lock accounts after three unsuccessful login attempts",
+      "id": "stig_rhel_8-RHEL-08-020240",
+      "title": "RHEL 8 duplicate User IDs (UIDs) must not exist for interactive users.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-020070"
+        "value": "RHEL-08-020240"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-020070"
+        "value": "RHEL-08-020240"
        },
        {
         "name": "rego-package",
@@ -322,75 +355,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-020070_stmt",
+        "id": "stig_rhel_8-RHEL-08-020240_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must automatically lock accounts after three unsuccessful login attempts"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-020080",
-      "title": "RHEL 8 must disable account identifiers after 35 days of inactivity",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-020080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-020080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-020080_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable account identifiers after 35 days of inactivity"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-020090",
-      "title": "RHEL 8 must not allow duplicate UIDs",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-020090"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-020090"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d9ae4e04-208b-572a-b89c-904fdfd24cdf",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-020090_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not allow duplicate UIDs"
+        "prose": "RHEL 8 duplicate User IDs (UIDs) must not exist for interactive users."
        }
       ],
       "class": "security"
@@ -453,8 +420,41 @@
     ],
     "controls": [
      {
+      "id": "stig_rhel_8-RHEL-08-030181",
+      "title": "RHEL 8 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-030181"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-030181"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-030181_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_8-RHEL-08-030000",
-      "title": "RHEL 8 must have the auditd service started",
+      "title": "The RHEL 8 audit system must be configured to audit the execution of privileged functions and prevent all software from executing at higher privilege levels than users executing the software.",
       "props": [
        {
         "name": "label",
@@ -480,22 +480,22 @@
        {
         "id": "stig_rhel_8-RHEL-08-030000_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must have the auditd service started"
+        "prose": "The RHEL 8 audit system must be configured to audit the execution of privileged functions and prevent all software from executing at higher privilege levels than users executing the software."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030010",
-      "title": "RHEL 8 audit logs must not automatically be overwritten",
+      "id": "stig_rhel_8-RHEL-08-030480",
+      "title": "Successful/unsuccessful uses of the chown, fchown, fchownat, and lchown system calls in RHEL 8 must generate an audit record.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030010"
+        "value": "RHEL-08-030480"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030010"
+        "value": "RHEL-08-030480"
        },
        {
         "name": "rego-package",
@@ -511,24 +511,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030010_stmt",
+        "id": "stig_rhel_8-RHEL-08-030480_stmt",
         "name": "statement",
-        "prose": "RHEL 8 audit logs must not automatically be overwritten"
+        "prose": "Successful/unsuccessful uses of the chown, fchown, fchownat, and lchown system calls in RHEL 8 must generate an audit record."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030020",
-      "title": "RHEL 8 must audit all uses of the execve syscall (b64)",
+      "id": "stig_rhel_8-RHEL-08-030490",
+      "title": "Successful/unsuccessful uses of the chmod, fchmod, and fchmodat system calls in RHEL 8 must generate an audit record.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030020"
+        "value": "RHEL-08-030490"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030020"
+        "value": "RHEL-08-030490"
        },
        {
         "name": "rego-package",
@@ -544,24 +544,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030020_stmt",
+        "id": "stig_rhel_8-RHEL-08-030490_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must audit all uses of the execve syscall (b64)"
+        "prose": "Successful/unsuccessful uses of the chmod, fchmod, and fchmodat system calls in RHEL 8 must generate an audit record."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030030",
-      "title": "RHEL 8 must audit all uses of the chown syscall",
+      "id": "stig_rhel_8-RHEL-08-030171",
+      "title": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030030"
+        "value": "RHEL-08-030171"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030030"
+        "value": "RHEL-08-030171"
        },
        {
         "name": "rego-package",
@@ -577,24 +577,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030030_stmt",
+        "id": "stig_rhel_8-RHEL-08-030171_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must audit all uses of the chown syscall"
+        "prose": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030040",
-      "title": "RHEL 8 must audit all uses of the chmod syscall",
+      "id": "stig_rhel_8-RHEL-08-030150",
+      "title": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030040"
+        "value": "RHEL-08-030150"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030040"
+        "value": "RHEL-08-030150"
        },
        {
         "name": "rego-package",
@@ -610,24 +610,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030040_stmt",
+        "id": "stig_rhel_8-RHEL-08-030150_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must audit all uses of the chmod syscall"
+        "prose": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030050",
-      "title": "RHEL 8 must generate audit records for sudoers file changes",
+      "id": "stig_rhel_8-RHEL-08-030550",
+      "title": "Successful/unsuccessful uses of the sudo command in RHEL 8 must generate an audit record.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030050"
+        "value": "RHEL-08-030550"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030050"
+        "value": "RHEL-08-030550"
        },
        {
         "name": "rego-package",
@@ -643,24 +643,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030050_stmt",
+        "id": "stig_rhel_8-RHEL-08-030550_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must generate audit records for sudoers file changes"
+        "prose": "Successful/unsuccessful uses of the sudo command in RHEL 8 must generate an audit record."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030060",
-      "title": "RHEL 8 must audit changes to /etc/passwd",
+      "id": "stig_rhel_8-RHEL-08-030121",
+      "title": "RHEL 8 audit system must protect auditing rules from unauthorized change.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030060"
+        "value": "RHEL-08-030121"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030060"
+        "value": "RHEL-08-030121"
        },
        {
         "name": "rego-package",
@@ -676,24 +676,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030060_stmt",
+        "id": "stig_rhel_8-RHEL-08-030121_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must audit changes to /etc/passwd"
+        "prose": "RHEL 8 audit system must protect auditing rules from unauthorized change."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-030070",
-      "title": "RHEL 8 must audit the sudo command",
+      "id": "stig_rhel_8-RHEL-08-030731",
+      "title": "RHEL 8 must notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-030070"
+        "value": "RHEL-08-030731"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-030070"
+        "value": "RHEL-08-030731"
        },
        {
         "name": "rego-package",
@@ -709,75 +709,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-030070_stmt",
+        "id": "stig_rhel_8-RHEL-08-030731_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must audit the sudo command"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-030080",
-      "title": "RHEL 8 audit configuration must be made immutable",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-030080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-030080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-030080_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 audit configuration must be made immutable"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-030090",
-      "title": "RHEL 8 audit system must notify SA when audit storage is approaching capacity",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-030090"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-030090"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#03d98fd6-ab2f-51b3-a3ec-1cdc91661c57",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-030090_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 audit system must notify SA when audit storage is approaching capacity"
+        "prose": "RHEL 8 must notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization."
        }
       ],
       "class": "security"
@@ -840,74 +774,8 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_8-RHEL-08-010000",
-      "title": "RHEL 8 must enable SELinux in enforcing mode",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010000"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010000"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010000_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must enable SELinux in enforcing mode"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010010",
-      "title": "RHEL 8 must implement the SELinux targeted policy",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010010_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must implement the SELinux targeted policy"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_rhel_8-RHEL-08-010020",
-      "title": "All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure",
+      "title": "RHEL 8 must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
       "props": [
        {
         "name": "label",
@@ -933,410 +801,14 @@
        {
         "id": "stig_rhel_8-RHEL-08-010020_stmt",
         "name": "statement",
-        "prose": "All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010030",
-      "title": "RHEL 8 must require authentication upon booting into single-user and maintenance modes",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010030"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010030"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010030_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must require authentication upon booting into single-user and maintenance modes"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010040",
-      "title": "RHEL 8 must disable the x86 Ctrl-Alt-Delete key sequence",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010040_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the x86 Ctrl-Alt-Delete key sequence"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010050",
-      "title": "RHEL 8 must have the DoD Root CA certificates installed as a trusted CA",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010050"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010050"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010050_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must have the DoD Root CA certificates installed as a trusted CA"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010060",
-      "title": "RHEL 8 must ensure system-wide crypto policy is not set to legacy",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010060"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010060"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010060_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must ensure system-wide crypto policy is not set to legacy"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010070",
-      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting access",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010070"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010070"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010070_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting access"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010080",
-      "title": "RHEL 8 must implement address space layout randomization (ASLR)",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010080_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must implement address space layout randomization (ASLR)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010090",
-      "title": "RHEL 8 must restrict access to the kernel message buffer",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010090"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010090"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010090_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must restrict access to the kernel message buffer"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010100",
-      "title": "RHEL 8 must disable the USB mass storage kernel module",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010100"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010100"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010100_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the USB mass storage kernel module"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010110",
-      "title": "RHEL 8 must use a file integrity tool",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010110"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010110"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010110_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must use a file integrity tool"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010120",
-      "title": "RHEL 8 must routinely check the baseline configuration for unauthorized changes",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010120"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010120"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010120_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must routinely check the baseline configuration for unauthorized changes"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010130",
-      "title": "RHEL 8 must use a separate file system for /tmp",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010130"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010130"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010130_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must use a separate file system for /tmp"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010140",
-      "title": "RHEL 8 must use a separate file system for /var/log",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010140"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010140"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010140_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must use a separate file system for /var/log"
+        "prose": "RHEL 8 must implement a FIPS 140-3-compliant systemwide cryptographic policy."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-010150",
-      "title": "RHEL 8 must use a separate file system for /var/log/audit",
+      "title": "RHEL 8 operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes.",
       "props": [
        {
         "name": "label",
@@ -1362,7 +834,436 @@
        {
         "id": "stig_rhel_8-RHEL-08-010150_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must use a separate file system for /var/log/audit"
+        "prose": "RHEL 8 operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040170",
+      "title": "The x86 Ctrl-Alt-Delete key sequence must be disabled on RHEL 8.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040170_stmt",
+        "name": "statement",
+        "prose": "The x86 Ctrl-Alt-Delete key sequence must be disabled on RHEL 8."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010170",
+      "title": "RHEL 8 must use a Linux Security Module configured to enforce limits on system services.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010170_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must use a Linux Security Module configured to enforce limits on system services."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010450",
+      "title": "RHEL 8 must enable the SELinux targeted policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010450_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must enable the SELinux targeted policy."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010090",
+      "title": "RHEL 8, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010090_stmt",
+        "name": "statement",
+        "prose": "RHEL 8, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010040",
+      "title": "RHEL 8 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a ssh logon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010040_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a ssh logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010430",
+      "title": "RHEL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010430_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040080",
+      "title": "RHEL 8 must be configured to disable USB mass storage.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040080_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must be configured to disable USB mass storage."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010359",
+      "title": "The RHEL 8 operating system must use a file integrity tool to verify correct operation of all security functions.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010359"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010359"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010359_stmt",
+        "name": "statement",
+        "prose": "The RHEL 8 operating system must use a file integrity tool to verify correct operation of all security functions."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010360",
+      "title": "The RHEL 8 file integrity tool must notify the system administrator when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organiza",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010360_stmt",
+        "name": "statement",
+        "prose": "The RHEL 8 file integrity tool must notify the system administrator when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organizationally defined frequency."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010543",
+      "title": "A separate RHEL 8 filesystem must be used for the /tmp directory.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010543"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010543"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010543_stmt",
+        "name": "statement",
+        "prose": "A separate RHEL 8 filesystem must be used for the /tmp directory."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010375",
+      "title": "RHEL 8 must restrict access to the kernel message buffer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010375"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010375"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010375_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must restrict access to the kernel message buffer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010541",
+      "title": "RHEL 8 must use a separate file system for /var/log.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010541"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010541"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010541_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must use a separate file system for /var/log."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-010542",
+      "title": "RHEL 8 must use a separate file system for the system audit data path.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-010542"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-010542"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f45e83b7-7549-58f7-956f-45d86e822c5a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-010542_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must use a separate file system for the system audit data path."
        }
       ],
       "class": "security"
@@ -1425,16 +1326,16 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_8-RHEL-08-010200",
-      "title": "RHEL 8 must have no world-writable files",
+      "id": "stig_rhel_8-RHEL-08-010780",
+      "title": "All RHEL 8 local files and directories must have a valid owner.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-010200"
+        "value": "RHEL-08-010780"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-010200"
+        "value": "RHEL-08-010780"
        },
        {
         "name": "rego-package",
@@ -1450,24 +1351,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-010200_stmt",
+        "id": "stig_rhel_8-RHEL-08-010780_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must have no world-writable files"
+        "prose": "All RHEL 8 local files and directories must have a valid owner."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-010210",
-      "title": "RHEL 8 must have no files not owned by a valid user",
+      "id": "stig_rhel_8-RHEL-08-010330",
+      "title": "RHEL 8 library files must have mode 755 or less permissive.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-010210"
+        "value": "RHEL-08-010330"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-010210"
+        "value": "RHEL-08-010330"
        },
        {
         "name": "rego-package",
@@ -1483,24 +1384,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-010210_stmt",
+        "id": "stig_rhel_8-RHEL-08-010330_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must have no files not owned by a valid user"
+        "prose": "RHEL 8 library files must have mode 755 or less permissive."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-010220",
-      "title": "RHEL 8 /etc/passwd must have mode 0644 or less",
+      "id": "stig_rhel_8-RHEL-08-010730",
+      "title": "All RHEL 8 local interactive user home directories must have mode 0750 or less permissive.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-010220"
+        "value": "RHEL-08-010730"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-010220"
+        "value": "RHEL-08-010730"
        },
        {
         "name": "rego-package",
@@ -1516,174 +1417,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-010220_stmt",
+        "id": "stig_rhel_8-RHEL-08-010730_stmt",
         "name": "statement",
-        "prose": "RHEL 8 /etc/passwd must have mode 0644 or less"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010230",
-      "title": "RHEL 8 /etc/shadow must have mode 0000",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010230"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010230"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010230_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 /etc/shadow must have mode 0000"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010240",
-      "title": "RHEL 8 /etc/group must have mode 0644 or less",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010240"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010240"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010240_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 /etc/group must have mode 0644 or less"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010250",
-      "title": "RHEL 8 must have no unauthorized SUID/SGID executables",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010250"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010250"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010250_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must have no unauthorized SUID/SGID executables"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010260",
-      "title": "RHEL 8 library files must have mode 0755 or less",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010260"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010260"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010260_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 library files must have mode 0755 or less"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-010270",
-      "title": "RHEL 8 home directories must have mode 0750 or less",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-010270"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-010270"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#bd0d770a-31ad-5f86-9946-058f77676fb7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-010270_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 home directories must have mode 0750 or less"
+        "prose": "All RHEL 8 local interactive user home directories must have mode 0750 or less permissive."
        }
       ],
       "class": "security"
@@ -1746,16 +1482,16 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_8-RHEL-08-040100",
-      "title": "RHEL 8 must have firewalld installed",
+      "id": "stig_rhel_8-RHEL-08-040101",
+      "title": "A firewall must be active on RHEL 8.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040100"
+        "value": "RHEL-08-040101"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040100"
+        "value": "RHEL-08-040101"
        },
        {
         "name": "rego-package",
@@ -1771,16 +1507,181 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040100_stmt",
+        "id": "stig_rhel_8-RHEL-08-040101_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must have firewalld installed"
+        "prose": "A firewall must be active on RHEL 8."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040259",
+      "title": "RHEL 8 must not enable IPv4 packet forwarding unless the system is a router.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040259"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040259"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040259_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must not enable IPv4 packet forwarding unless the system is a router."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040279",
+      "title": "RHEL 8 must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040279"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040279"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040279_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040220",
+      "title": "RHEL 8 must not allow IPv4 ICMP redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040220_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must not allow IPv4 ICMP redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040239",
+      "title": "RHEL 8 must not forward IPv4 source-routed packets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040239"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040239"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040239_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 must not forward IPv4 source-routed packets."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_8-RHEL-08-040111",
+      "title": "RHEL 8 Bluetooth must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-08-040111"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-08-040111"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_8-RHEL-08-040111_stmt",
+        "name": "statement",
+        "prose": "RHEL 8 Bluetooth must be disabled."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040110",
-      "title": "RHEL 8 must not enable IPv4 packet forwarding unless system is a router",
+      "title": "RHEL 8 wireless network adapters must be disabled.",
       "props": [
        {
         "name": "label",
@@ -1806,22 +1707,22 @@
        {
         "id": "stig_rhel_8-RHEL-08-040110_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not enable IPv4 packet forwarding unless system is a router"
+        "prose": "RHEL 8 wireless network adapters must be disabled."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040120",
-      "title": "RHEL 8 must not accept ICMP redirect messages",
+      "id": "stig_rhel_8-RHEL-08-040285",
+      "title": "RHEL 8 must use reverse path filtering on all IPv4 interfaces.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040120"
+        "value": "RHEL-08-040285"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040120"
+        "value": "RHEL-08-040285"
        },
        {
         "name": "rego-package",
@@ -1837,207 +1738,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040120_stmt",
+        "id": "stig_rhel_8-RHEL-08-040285_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not accept ICMP redirect messages"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040130",
-      "title": "RHEL 8 must not send ICMP redirects",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040130"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040130"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040130_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not send ICMP redirects"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040140",
-      "title": "RHEL 8 must not forward IPv4 source-routed packets",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040140"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040140"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040140_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not forward IPv4 source-routed packets"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040150",
-      "title": "RHEL 8 must use TCP syncookies",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040150"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040150"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040150_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must use TCP syncookies"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040155",
-      "title": "RHEL 8 must disable the Bluetooth kernel module",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040155"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040155"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040155_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the Bluetooth kernel module"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040157",
-      "title": "RHEL 8 must disable wireless network adapters",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040157"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040157"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040157_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable wireless network adapters"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040158",
-      "title": "RHEL 8 must enable reverse path filtering",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040158"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040158"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5da5e347-e349-5433-a9b4-3c9bdaf6934d",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040158_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must enable reverse path filtering"
+        "prose": "RHEL 8 must use reverse path filtering on all IPv4 interfaces."
        }
       ],
       "class": "security"
@@ -2101,7 +1804,7 @@
     "controls": [
      {
       "id": "stig_rhel_8-RHEL-08-040000",
-      "title": "RHEL 8 must not have the telnet-server package installed",
+      "title": "RHEL 8 must not have the telnet-server package installed.",
       "props": [
        {
         "name": "label",
@@ -2127,22 +1830,22 @@
        {
         "id": "stig_rhel_8-RHEL-08-040000_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not have the telnet-server package installed"
+        "prose": "RHEL 8 must not have the telnet-server package installed."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040010",
-      "title": "RHEL 8 must not have the rsh-server package installed",
+      "id": "stig_rhel_8-RHEL-08-040190",
+      "title": "The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for RHEL 8 operational support.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040010"
+        "value": "RHEL-08-040190"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040010"
+        "value": "RHEL-08-040190"
        },
        {
         "name": "rego-package",
@@ -2158,181 +1861,16 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040010_stmt",
+        "id": "stig_rhel_8-RHEL-08-040190_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not have the rsh-server package installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040020",
-      "title": "RHEL 8 must not have the ypserv package installed",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040020"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040020"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040020_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not have the ypserv package installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040030",
-      "title": "RHEL 8 must not have the tftp-server package installed",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040030"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040030"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040030_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not have the tftp-server package installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040040",
-      "title": "RHEL 8 must disable the autofs service",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040040_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the autofs service"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040050",
-      "title": "RHEL 8 must not have the xinetd package installed",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040050"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040050"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040050_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not have the xinetd package installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040060",
-      "title": "RHEL 8 must disable the Bluetooth service",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040060"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040060"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040060_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the Bluetooth service"
+        "prose": "The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for RHEL 8 operational support."
        }
       ],
       "class": "security"
      },
      {
       "id": "stig_rhel_8-RHEL-08-040070",
-      "title": "RHEL 8 must not have the net-snmp package installed unless required",
+      "title": "The RHEL 8 file system automounter must be disabled.",
       "props": [
        {
         "name": "label",
@@ -2358,73 +1896,7 @@
        {
         "id": "stig_rhel_8-RHEL-08-040070_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not have the net-snmp package installed unless required"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040080",
-      "title": "RHEL 8 must not have the nfs-utils package installed unless required",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040080_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not have the nfs-utils package installed unless required"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040090",
-      "title": "RHEL 8 must disable the avahi-daemon service",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040090"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040090"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#68f7d9fe-ffe1-51ba-b52f-ceca257a7a4c",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040090_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must disable the avahi-daemon service"
+        "prose": "The RHEL 8 file system automounter must be disabled."
        }
       ],
       "class": "security"
@@ -2487,16 +1959,16 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_8-RHEL-08-040160",
-      "title": "RHEL 8 must not permit direct logons to the root account using remote access via SSH",
+      "id": "stig_rhel_8-RHEL-08-010291",
+      "title": "The RHEL 8 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connectio",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040160"
+        "value": "RHEL-08-010291"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040160"
+        "value": "RHEL-08-010291"
        },
        {
         "name": "rego-package",
@@ -2512,24 +1984,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040160_stmt",
+        "id": "stig_rhel_8-RHEL-08-010291_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not permit direct logons to the root account using remote access via SSH"
+        "prose": "The RHEL 8 SSH server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040170",
-      "title": "RHEL 8 must implement DoD-approved encryption in the OpenSSH client",
+      "id": "stig_rhel_8-RHEL-08-020330",
+      "title": "RHEL 8 must not allow accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040170"
+        "value": "RHEL-08-020330"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040170"
+        "value": "RHEL-08-020330"
        },
        {
         "name": "rego-package",
@@ -2545,24 +2017,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040170_stmt",
+        "id": "stig_rhel_8-RHEL-08-020330_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must implement DoD-approved encryption in the OpenSSH client"
+        "prose": "RHEL 8 must not allow accounts configured with blank or null passwords."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040180",
-      "title": "RHEL 8 must not allow blank or null passwords",
+      "id": "stig_rhel_8-RHEL-08-010290",
+      "title": "The RHEL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server conne",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040180"
+        "value": "RHEL-08-010290"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040180"
+        "value": "RHEL-08-010290"
        },
        {
         "name": "rego-package",
@@ -2578,24 +2050,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040180_stmt",
+        "id": "stig_rhel_8-RHEL-08-010290_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must not allow blank or null passwords"
+        "prose": "The RHEL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040190",
-      "title": "RHEL 8 must limit the number of SSH login attempts",
+      "id": "stig_rhel_8-RHEL-08-010550",
+      "title": "RHEL 8 must not permit direct logons to the root account using remote access via SSH.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040190"
+        "value": "RHEL-08-010550"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040190"
+        "value": "RHEL-08-010550"
        },
        {
         "name": "rego-package",
@@ -2611,24 +2083,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040190_stmt",
+        "id": "stig_rhel_8-RHEL-08-010550_stmt",
         "name": "statement",
-        "prose": "RHEL 8 must limit the number of SSH login attempts"
+        "prose": "RHEL 8 must not permit direct logons to the root account using remote access via SSH."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040200",
-      "title": "RHEL 8 SSH client alive interval must be configured",
+      "id": "stig_rhel_8-RHEL-08-010201",
+      "title": "RHEL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040200"
+        "value": "RHEL-08-010201"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040200"
+        "value": "RHEL-08-010201"
        },
        {
         "name": "rego-package",
@@ -2644,24 +2116,24 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040200_stmt",
+        "id": "stig_rhel_8-RHEL-08-010201_stmt",
         "name": "statement",
-        "prose": "RHEL 8 SSH client alive interval must be configured"
+        "prose": "RHEL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_rhel_8-RHEL-08-040210",
-      "title": "RHEL 8 SSH server must be configured to use only MACs employing FIPS-validated algorithms",
+      "id": "stig_rhel_8-RHEL-08-010060",
+      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-08-040210"
+        "value": "RHEL-08-010060"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-08-040210"
+        "value": "RHEL-08-010060"
        },
        {
         "name": "rego-package",
@@ -2677,141 +2149,9 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_8-RHEL-08-040210_stmt",
+        "id": "stig_rhel_8-RHEL-08-010060_stmt",
         "name": "statement",
-        "prose": "RHEL 8 SSH server must be configured to use only MACs employing FIPS-validated algorithms"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040220",
-      "title": "RHEL 8 SSH daemon must not allow rhosts-based authentication",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040220"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040220"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040220_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 SSH daemon must not allow rhosts-based authentication"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040230",
-      "title": "RHEL 8 must not allow host-based authentication via SSH",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040230"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040230"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040230_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must not allow host-based authentication via SSH"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040240",
-      "title": "RHEL 8 must enable PAM for SSH",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040240"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040240"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040240_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must enable PAM for SSH"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_8-RHEL-08-040250",
-      "title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before SSH access",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-08-040250"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-08-040250"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_8.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#80d5af92-46cf-500b-a94d-8193c6df3148",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_8-RHEL-08-040250_stmt",
-        "name": "statement",
-        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before SSH access"
+        "prose": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
        }
       ],
       "class": "security"
