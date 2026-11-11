@@ -52,11 +52,12 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-# This section has none. Built with object.union rather than a literal `{}`:
-# OPA >= 1.22 types a literal empty object as having no keys and rejects every
-# `_parts[id]` below as an undefined ref, so the module fails to compile when
-# it is loaded on its own (scripts/check_per_file_load.py).
-_parts := object.union({}, {})
+# Parts follow the components the workbook's audit procedure confirms separately.
+_parts := {
+	"8.1": ["allowlist_enforced_by_host_or_client", "every_allowlisted_server_has_vetting_record", "unlisted_servers_refused"],
+	"8.2": ["pinned_artifacts_match_approved_hash", "no_unpinned_installed_instance", "hash_mismatch_blocks_start", "update_triggers_revetting"],
+	"8.3": ["package_sources_point_to_mirror", "public_registry_unreachable_from_host", "mirror_holds_only_vetted_artifacts", "other_channels_internal_only"],
+}
 
 attested(id) if {
 	requirements[id].assessment == "Manual"
