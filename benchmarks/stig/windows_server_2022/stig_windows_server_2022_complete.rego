@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.windows_server_2022
 
 # DISA STIG — Microsoft Windows Server 2022 Security Technical Implementation Guide — Master Aggregator
-# V2R9 | Release: 9 Benchmark Date: 01 Jul 2026
-# Coverage: 104 auto-derived registry rules across 3 generated modules; 175 rules of 279 not yet implemented (non-registry or complex).
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# V2R11 | Release: 11 Benchmark Date: 30 Sep 2026
+# Coverage: 103 auto-derived registry rules across 3 generated modules; 174 rules of 277 not yet implemented (non-registry or complex).
+# Rule IDs verified against the October 2026 SRG-STIG library on 2026-11-10.
 
 import rego.v1
 
@@ -39,15 +39,18 @@ open_findings := [f | some f in all_findings; f.status == "Open"]
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
 
 default overall_compliant := false
+
 overall_compliant if count(cat_i_open) == 0
+
 default fully_compliant := false
+
 fully_compliant if count(open_findings) == 0
 
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Microsoft Windows Server 2022 Security Technical Implementation Guide",
-		"version": "V2R9",
-		"release": "Release: 9 Benchmark Date: 01 Jul 2026",
+		"version": "V2R11",
+		"release": "Release: 11 Benchmark Date: 30 Sep 2026",
 		"platform": "Windows Server 2022",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

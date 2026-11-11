@@ -16,7 +16,9 @@ content — tooling that regenerates it from DISA's own XCCDF data.
    derivation round).
 3. Run the generators (they write straight into `benchmarks/stig/`):
    - `gen_windows.py` — auto-derives registry rules from check-content
-     blocks (exact / or-less / or-greater / multi-block-AND / absent).
+     blocks (exact / set / or-less / or-greater / excluding-0 / absent-allowed /
+     multi-value-AND / absent). Run it with the `tools/stig_generators` directory on
+     `sys.path` (it imports `gen_k8s.ALIAS_TMPL`); `python3 -I` alone cannot import it.
    - `gen_linux.py`, `gen_k8s.py`, `gen_apps.py` — hand-authored logic
      tables; **catalog ID hard-gate**: a rule ID missing from the current
      XCCDF aborts generation.
@@ -49,7 +51,12 @@ content — tooling that regenerates it from DISA's own XCCDF data.
 
 ## Lessons encoded
 
-- Platforms leave the library (Win 10, Server 2016/2019, Ubuntu 20.04 in
-  July 2026) — absence means SUNSET.md, never silence.
+- Platforms leave the library (Win 10, Ubuntu 20.04) — absence means SUNSET.md, never silence.
+  They can also come back: Server 2016 and 2019 were absent from the July 2026 compilation and
+  present in October 2026 (V2R10, V3R9). Check every platform directory against every compilation.
+- Read the whole Value line (2026-11-10): "0x1 (1), 0x3 (3), or 0x8 (8) (or if the Value Name does
+  not exist)" is a set plus an absent-allowed clause, not `== 1`. `gen_windows.py` parses
+  alternatives, bounds, "excluding 0", absent-allowed and numeric REG_SZ; a rule with a value block
+  the parser cannot read is refused, never half-derived.
 - Hand-written stub IDs rot: the pre-2026-09 Server 2022 stub misattributed
   WN22-SO-000050. Generated-with-verification replaces trusted-from-memory.

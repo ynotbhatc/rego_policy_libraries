@@ -8,6 +8,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — Windows STIGs refreshed to the October 2026 DISA library
+
+- `benchmarks/stig/windows_11` V2R8 → **V2R11** (30 Sep 2026): 117 of 257 rules generated (was 102 of 256; WN11-SO-000080
+  left the catalog, 16 rules are new or newly derivable). `windows_server_2022` V2R9 → **V2R11**: 103 of 277 (was 104 of 279;
+  WN22-SO-000140 left). `windows_server_2025` V1R2 → **V1R4**: 94 of 291 (was 95 of 292; WN25-SO-000140 left; WN25-DC-000320
+  moved under an unchanged title — the check now reads `LDAPServerEnforceIntegrity = 1`, not `LDAPServerIntegrity = 2`).
+  Rule titles are unchanged for every id kept on all three platforms.
+- `windows_server_2016` **V2R10** (103 of 273) and `windows_server_2019` **V3R9** (104 of 282) are generated platforms again:
+  both were marked sunset against the July 2026 compilation, but the October 2026 library ships them. Each replaces a
+  5-finding hand-written stub that carried Windows Server 2022 rule ids. Package names (`stig.windows_server_2016`,
+  `stig.windows_server_2019`, their `.main` aliases) are unchanged.
+- `windows_10` removed: DISA's final release is V3R6 and the platform is absent from the library. Recorded in
+  `benchmarks/stig/SUNSET.md` (new); the stub stays in git history. 23 STIG platforms, 182 OSCAL catalogs.
+- `tools/stig_generators/gen_windows.py` reads the `parse_xccdf.py` catalogs (version/release/date fields, DISA's
+  `high/medium/low` mapped to CAT I/II/III), emits the `# METADATA` block itself, drives every platform from one table,
+  and stamps "October 2026 library, verified 2026-11-10" in the headers.
+
+### Fixed — Windows registry derivation reads the whole Value line
+
+- The generator took the first number of a DISA Value line and ignored the rest, which PR #248 had fixed by hand for one
+  rule (WN22/WN25-CC-000130). It now reads the line as written, on all five platforms: `in {…}` for "X, Y, or Z"
+  (DriverLoadPolicy 1/3/8, AllowTelemetry, HypervisorEnforcedCodeIntegrity 1/2, RequirePlatformSecurityFeatures 1/3);
+  `<=` / `>=` for "(or less)" / "or greater" where it read `==` (MaximumPasswordAge 30, InactivityTimeoutSecs 900,
+  BitLocker MinimumPIN 6) with `> 0` for "excluding 0"; a second rule body for "(or if the Value Name does not exist)"
+  (7 rules per server platform, 8 on Windows 11) so an absent value is not a finding once registry facts exist; and
+  `to_number(...)` for numeric REG_SZ values, which were compared to the literal prose (`== "10 (or less)"`,
+  `== "1 (Lock Workstation) or 2 (Force Logoff)"`) and could never pass. Two-value rules under one registry path
+  (Hardened UNC Paths NETLOGON + SYSVOL, VBS EnableVirtualizationBasedSecurity + RequirePlatformSecurityFeatures) now
+  check both values; a rule whose Value Name count the parser does not fully read is refused rather than half-derived.
+  The #248 tests are kept and copied to Server 2016/2019.
+
 ### Changed — PQC Readiness cites the final NIST IR 8547
 
 - `frameworks/federal/pqc/pqc_main.rego`: NIST finalized IR 8547, "Transition to Post-Quantum Cryptography
