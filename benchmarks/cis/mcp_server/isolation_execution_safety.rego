@@ -52,11 +52,11 @@ _ev := e if {
 
 # Manual recommendations whose CIS scope has several components take a
 # structured attestation (every listed part true); a bare `true` is not enough.
-# This section has none. Built with object.union rather than a literal `{}`:
-# OPA >= 1.22 types a literal empty object as having no keys and rejects every
-# `_parts[id]` below as an undefined ref, so the module fails to compile when
-# it is loaded on its own (scripts/check_per_file_load.py).
-_parts := object.union({}, {})
+# Parts follow the components the workbook's audit procedure confirms separately.
+_parts := {
+	"9.1": ["runs_non_root_unprivileged", "readonly_rootfs_caps_dropped_no_new_privileges", "seccomp_and_mac_not_disabled", "capability_set_minimized", "reachable_only_via_gateway"],
+	"9.3": ["runs_as_designated_least_privilege_identity", "filesystem_restricted_to_documented_paths", "default_deny_egress_with_declared_allowlist", "subprocess_execution_restricted", "denials_demonstrated_and_logged"],
+}
 
 attested(id) if {
 	requirements[id].assessment == "Manual"

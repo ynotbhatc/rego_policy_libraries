@@ -6,7 +6,7 @@ import rego.v1
 import data.cis_mcp_server.data_protection_privacy
 
 # Fully compliant input: every Manual recommendation attested, every Automated one with passing evidence.
-full_input := {"cis_mcp_server": {"data_protection_privacy": {"requirements": {"6.1": true, "6.3": true}, "evidence": {"secret_scan": {"scanner_findings": 0, "inline_manifest_secrets": []}}}}}
+full_input := {"cis_mcp_server": {"data_protection_privacy": {"requirements": {"6.1": {"payloads_carry_only_needed_content": true, "no_payload_exceeds_configured_max": true, "content_review_no_secrets_or_raw_binary": true, "direct_provider_path_inspected": true}, "6.3": {"direct_egress_blocked": true, "proxy_path_reaches_destination": true, "resolvers_all_approved": true, "fqdn_allowlist_enforced_at_proxy": true}}, "evidence": {"secret_scan": {"scanner_findings": 0, "inline_manifest_secrets": []}}}}}
 
 manual_ids := ["6.1", "6.3"]
 
@@ -153,4 +153,52 @@ test_fail_6_2_inline_manifest_secret if {
 	some v in vs
 	contains(v, "deploy/mcp.yaml:API_KEY")
 	not "6.2" in data_protection_privacy.met with input as inp
+}
+
+# 6.1 has several audited components: a bare `true` is not an attestation.
+test_6_1_bare_true_rejected if {
+	inp := json.patch(full_input, [{"op": "replace", "path": "/cis_mcp_server/data_protection_privacy/requirements/6.1", "value": true}])
+	vs := data_protection_privacy.violation with input as inp
+	count(vs) == 1
+	some v in vs
+	contains(v, "CIS MCP 6.1:")
+	contains(v, "attest each of")
+}
+
+# 6.1: every component must be attested; one false part fails.
+test_6_1_each_part_required if {
+	every p in data_protection_privacy._parts["6.1"] {
+		inp := json.patch(full_input, [{"op": "replace", "path": sprintf("/cis_mcp_server/data_protection_privacy/requirements/6.1/%s", [p]), "value": false}])
+		count(data_protection_privacy.violation) == 1 with input as inp
+		not "6.1" in data_protection_privacy.met with input as inp
+	}
+}
+
+# 6.1: pass with every part attested.
+test_6_1_pass if {
+	"6.1" in data_protection_privacy.met with input as full_input
+}
+
+# 6.3 has several audited components: a bare `true` is not an attestation.
+test_6_3_bare_true_rejected if {
+	inp := json.patch(full_input, [{"op": "replace", "path": "/cis_mcp_server/data_protection_privacy/requirements/6.3", "value": true}])
+	vs := data_protection_privacy.violation with input as inp
+	count(vs) == 1
+	some v in vs
+	contains(v, "CIS MCP 6.3:")
+	contains(v, "attest each of")
+}
+
+# 6.3: every component must be attested; one false part fails.
+test_6_3_each_part_required if {
+	every p in data_protection_privacy._parts["6.3"] {
+		inp := json.patch(full_input, [{"op": "replace", "path": sprintf("/cis_mcp_server/data_protection_privacy/requirements/6.3/%s", [p]), "value": false}])
+		count(data_protection_privacy.violation) == 1 with input as inp
+		not "6.3" in data_protection_privacy.met with input as inp
+	}
+}
+
+# 6.3: pass with every part attested.
+test_6_3_pass if {
+	"6.3" in data_protection_privacy.met with input as full_input
 }
