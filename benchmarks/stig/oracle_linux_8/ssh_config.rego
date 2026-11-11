@@ -55,7 +55,9 @@ ssh_fips_macs if {
 	count(macs) > 0
 }
 
-status_ol08_00_010290 := "Not_a_Finding" if { ssh_fips_macs } else := "Open"
+status_ol08_00_010290 := "Not_a_Finding" if ssh_fips_macs
+
+else := "Open"
 
 finding_ol08_00_010290 := {
 	"vuln_id": "V-283457",
@@ -82,7 +84,9 @@ ssh_no_root_login if {
 	lower(input.ssh_config.PermitRootLogin) == "forced-commands-only"
 }
 
-status_ol08_00_010550 := "Not_a_Finding" if { ssh_no_root_login } else := "Open"
+status_ol08_00_010550 := "Not_a_Finding" if ssh_no_root_login
+
+else := "Open"
 
 finding_ol08_00_010550 := {
 	"vuln_id": "V-248613",
@@ -102,10 +106,12 @@ ssh_protocol_2 if {
 }
 
 ssh_protocol_2 if {
-	not input.ssh_config.Protocol  # Protocol 2 is default in OpenSSH 7+
+	not input.ssh_config.Protocol # Protocol 2 is default in OpenSSH 7+
 }
 
-status_ol08_00_040160 := "Not_a_Finding" if { ssh_protocol_2 } else := "Open"
+status_ol08_00_040160 := "Not_a_Finding" if ssh_protocol_2
+
+else := "Open"
 
 finding_ol08_00_040160 := {
 	"vuln_id": "V-248867",
@@ -126,7 +132,9 @@ ssh_client_alive_interval_ok if {
 	interval > 0
 }
 
-status_ol08_00_010201 := "Not_a_Finding" if { ssh_client_alive_interval_ok } else := "Open"
+status_ol08_00_010201 := "Not_a_Finding" if ssh_client_alive_interval_ok
+
+else := "Open"
 
 finding_ol08_00_010201 := {
 	"vuln_id": "V-248553",
@@ -146,7 +154,9 @@ ssh_client_alive_count_ok if {
 	count_max <= 1
 }
 
-status_ol08_00_010200 := "Not_a_Finding" if { ssh_client_alive_count_ok } else := "Open"
+status_ol08_00_010200 := "Not_a_Finding" if ssh_client_alive_count_ok
+
+else := "Open"
 
 finding_ol08_00_010200 := {
 	"vuln_id": "V-248552",
@@ -165,7 +175,9 @@ ssh_strict_modes if {
 	lower(input.ssh_config.StrictModes) == "yes"
 }
 
-status_ol08_00_010500 := "Not_a_Finding" if { ssh_strict_modes } else := "Open"
+status_ol08_00_010500 := "Not_a_Finding" if ssh_strict_modes
+
+else := "Open"
 
 finding_ol08_00_010500 := {
 	"vuln_id": "V-248603",
@@ -184,7 +196,9 @@ ssh_ignore_user_known_hosts if {
 	lower(input.ssh_config.IgnoreUserKnownHosts) == "yes"
 }
 
-status_ol08_00_010520 := "Not_a_Finding" if { ssh_ignore_user_known_hosts } else := "Open"
+status_ol08_00_010520 := "Not_a_Finding" if ssh_ignore_user_known_hosts
+
+else := "Open"
 
 finding_ol08_00_010520 := {
 	"vuln_id": "V-248605",
@@ -203,7 +217,9 @@ ssh_print_last_log if {
 	lower(input.ssh_config.PrintLastLog) == "yes"
 }
 
-status_ol08_00_020350 := "Not_a_Finding" if { ssh_print_last_log } else := "Open"
+status_ol08_00_020350 := "Not_a_Finding" if ssh_print_last_log
+
+else := "Open"
 
 finding_ol08_00_020350 := {
 	"vuln_id": "V-248718",
@@ -218,9 +234,7 @@ finding_ol08_00_020350 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_ol08_00_010290,
-]
+cat_i_findings := [finding_ol08_00_010290]
 
 cat_ii_findings := [
 	finding_ol08_00_010550,

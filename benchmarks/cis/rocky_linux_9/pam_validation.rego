@@ -201,6 +201,7 @@ violations contains msg if {
 # CIS 5.5.4: Default umask 027 or more restrictive
 violations contains msg if {
 	input.pam.default_umask
+
 	# "at least as restrictive as 027" means the umask masks all of 027's bits (23 decimal)
 	not umask_restrictive(input.pam.default_umask)
 	msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])

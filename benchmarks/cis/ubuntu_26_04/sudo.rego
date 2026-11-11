@@ -359,7 +359,7 @@ default p_5_2_6 := false
 
 p_5_2_6 if {
 	count(sudo_timeouts) > 0
-	every t in sudo_timeouts { t >= 0; t <= 15 }
+	every t in sudo_timeouts { t >= 0; t <= 15}
 }
 
 violations contains "5.2.6: evidence missing — sudo.sudoers_content not collected" if not e_5_2_6

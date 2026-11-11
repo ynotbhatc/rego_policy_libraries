@@ -18,14 +18,14 @@
 #     as_of: v2.4.2
 package cis_windows_server_2022
 
-import data.cis_windows_server_2022.attestation
 import data.cis_windows_server_2022.account_policies
-import data.cis_windows_server_2022.local_policies
-import data.cis_windows_server_2022.system_services
-import data.cis_windows_server_2022.firewall
-import data.cis_windows_server_2022.advanced_audit
 import data.cis_windows_server_2022.admin_templates_computer
 import data.cis_windows_server_2022.admin_templates_user
+import data.cis_windows_server_2022.advanced_audit
+import data.cis_windows_server_2022.attestation
+import data.cis_windows_server_2022.firewall
+import data.cis_windows_server_2022.local_policies
+import data.cis_windows_server_2022.system_services
 import rego.v1
 
 BENCHMARK_TOTAL_CONTROLS := 408
@@ -89,4 +89,6 @@ section_compliance := {r.name: {
 	"passed": count(r.passed),
 	"failed": count(r.failed),
 	"not_assessed": count(r.not_assessed),
-} | some r in section_reports}
+} |
+	some r in section_reports
+}

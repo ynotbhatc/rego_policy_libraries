@@ -34,12 +34,10 @@ UNRESOLVED := {}
 NOT_IMPLEMENTED := {}
 
 PROFILES := {
-	"1.2.3": [
-		"L1_MS"
-	],
+	"1.2.3": ["L1_MS"],
 	"2.3.11.6": [
 		"L1_DC",
-		"L1_MS"
+		"L1_MS",
 	],
 }
 

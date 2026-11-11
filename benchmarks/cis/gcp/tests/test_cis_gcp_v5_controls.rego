@@ -17,379 +17,237 @@ good := {
 				"role": "roles/viewer",
 				"members": [
 					"user:alice@example.com",
-					"serviceAccount:app@proj.iam.gserviceaccount.com"
-				]
+					"serviceAccount:app@proj.iam.gserviceaccount.com",
+				],
 			},
 			{
 				"role": "roles/cloudkms.admin",
-				"members": [
-					"group:kms-admins@example.com"
-				]
+				"members": ["group:kms-admins@example.com"],
 			},
 			{
 				"role": "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-				"members": [
-					"serviceAccount:app@proj.iam.gserviceaccount.com"
-				]
+				"members": ["serviceAccount:app@proj.iam.gserviceaccount.com"],
 			},
 			{
 				"role": "roles/iam.serviceAccountAdmin",
-				"members": [
-					"group:sa-admins@example.com"
-				]
+				"members": ["group:sa-admins@example.com"],
 			},
 			{
 				"role": "roles/owner",
-				"members": [
-					"user:owner@example.com"
-				]
-			}
+				"members": ["user:owner@example.com"],
+			},
 		],
-		"auditConfigs": [
-			{
-				"service": "allServices",
-				"auditLogConfigs": [
-					{
-						"logType": "ADMIN_READ"
-					},
-					{
-						"logType": "DATA_READ"
-					},
-					{
-						"logType": "DATA_WRITE"
-					}
-				]
-			}
-		]
+		"auditConfigs": [{
+			"service": "allServices",
+			"auditLogConfigs": [
+				{"logType": "ADMIN_READ"},
+				{"logType": "DATA_READ"},
+				{"logType": "DATA_WRITE"},
+			],
+		}],
 	},
-	"service_accounts": [
-		{
-			"email": "app@proj.iam.gserviceaccount.com",
-			"keys": [
-				{
-					"name": "k-sys",
-					"keyType": "SYSTEM_MANAGED",
-					"validAfterTime": "2020-01-01T00:00:00Z"
-				}
-			]
-		}
-	],
-	"kms_keys": [
-		{
-			"name": "projects/proj/locations/global/keyRings/r/cryptoKeys/k",
-			"purpose": "ENCRYPT_DECRYPT",
-			"rotationPeriod": "7776000s",
-			"nextRotationTime": "2026-11-15T00:00:00Z",
-			"iam_policy": {
-				"bindings": [
-					{
-						"role": "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-						"members": [
-							"serviceAccount:app@proj.iam.gserviceaccount.com"
-						]
-					}
-				]
-			}
-		}
-	],
+	"service_accounts": [{
+		"email": "app@proj.iam.gserviceaccount.com",
+		"keys": [{
+			"name": "k-sys",
+			"keyType": "SYSTEM_MANAGED",
+			"validAfterTime": "2020-01-01T00:00:00Z",
+		}],
+	}],
+	"kms_keys": [{
+		"name": "projects/proj/locations/global/keyRings/r/cryptoKeys/k",
+		"purpose": "ENCRYPT_DECRYPT",
+		"rotationPeriod": "7776000s",
+		"nextRotationTime": "2026-11-15T00:00:00Z",
+		"iam_policy": {"bindings": [{
+			"role": "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+			"members": ["serviceAccount:app@proj.iam.gserviceaccount.com"],
+		}]},
+	}],
 	"api_keys": [],
-	"essential_contacts": [
-		{
-			"email": "security@example.com",
-			"notificationCategorySubscriptions": [
-				"ALL"
-			]
-		}
-	],
-	"log_sinks": [
-		{
-			"name": "all-logs",
-			"destination": "storage.googleapis.com/log-archive",
-			"filter": ""
-		}
-	],
+	"essential_contacts": [{
+		"email": "security@example.com",
+		"notificationCategorySubscriptions": ["ALL"],
+	}],
+	"log_sinks": [{
+		"name": "all-logs",
+		"destination": "storage.googleapis.com/log-archive",
+		"filter": "",
+	}],
 	"log_metrics": [
 		{
 			"name": "owner-changes",
-			"filter": "(protoPayload.serviceName=\"cloudresourcemanager.googleapis.com\") AND (ProjectOwnership OR projectOwnerInvitee) OR (protoPayload.serviceData.policyDelta.bindingDeltas.action=\"REMOVE\" AND protoPayload.serviceData.policyDelta.bindingDeltas.role=\"roles/owner\") OR (protoPayload.serviceData.policyDelta.bindingDeltas.action=\"ADD\" AND protoPayload.serviceData.policyDelta.bindingDeltas.role=\"roles/owner\")"
+			"filter": "(protoPayload.serviceName=\"cloudresourcemanager.googleapis.com\") AND (ProjectOwnership OR projectOwnerInvitee) OR (protoPayload.serviceData.policyDelta.bindingDeltas.action=\"REMOVE\" AND protoPayload.serviceData.policyDelta.bindingDeltas.role=\"roles/owner\") OR (protoPayload.serviceData.policyDelta.bindingDeltas.action=\"ADD\" AND protoPayload.serviceData.policyDelta.bindingDeltas.role=\"roles/owner\")",
 		},
 		{
 			"name": "audit-config-changes",
-			"filter": "protoPayload.methodName=\"SetIamPolicy\" AND protoPayload.serviceData.policyDelta.auditConfigDeltas:*"
+			"filter": "protoPayload.methodName=\"SetIamPolicy\" AND protoPayload.serviceData.policyDelta.auditConfigDeltas:*",
 		},
 		{
 			"name": "custom-role-changes",
-			"filter": "resource.type=\"iam_role\" AND (protoPayload.methodName=\"google.iam.admin.v1.CreateRole\" OR protoPayload.methodName=\"google.iam.admin.v1.DeleteRole\" OR protoPayload.methodName=\"google.iam.admin.v1.UpdateRole\" OR protoPayload.methodName=\"google.iam.admin.v1.UndeleteRole\")"
+			"filter": "resource.type=\"iam_role\" AND (protoPayload.methodName=\"google.iam.admin.v1.CreateRole\" OR protoPayload.methodName=\"google.iam.admin.v1.DeleteRole\" OR protoPayload.methodName=\"google.iam.admin.v1.UpdateRole\" OR protoPayload.methodName=\"google.iam.admin.v1.UndeleteRole\")",
 		},
 		{
 			"name": "firewall-changes",
-			"filter": "resource.type=\"gce_firewall_rule\" AND (protoPayload.methodName:\"compute.firewalls.patch\" OR protoPayload.methodName:\"compute.firewalls.insert\" OR protoPayload.methodName:\"compute.firewalls.delete\")"
+			"filter": "resource.type=\"gce_firewall_rule\" AND (protoPayload.methodName:\"compute.firewalls.patch\" OR protoPayload.methodName:\"compute.firewalls.insert\" OR protoPayload.methodName:\"compute.firewalls.delete\")",
 		},
 		{
 			"name": "route-changes",
-			"filter": "resource.type=\"gce_route\" AND (protoPayload.methodName:\"compute.routes.delete\" OR protoPayload.methodName:\"compute.routes.insert\")"
+			"filter": "resource.type=\"gce_route\" AND (protoPayload.methodName:\"compute.routes.delete\" OR protoPayload.methodName:\"compute.routes.insert\")",
 		},
 		{
 			"name": "network-changes",
-			"filter": "resource.type=\"gce_network\" AND protoPayload.methodName=\"beta.compute.networks.insert\" OR protoPayload.methodName=\"beta.compute.networks.patch\" OR protoPayload.methodName=\"v1.compute.networks.delete\" OR protoPayload.methodName=\"v1.compute.networks.removePeering\" OR protoPayload.methodName=\"v1.compute.networks.addPeering\""
+			"filter": "resource.type=\"gce_network\" AND protoPayload.methodName=\"beta.compute.networks.insert\" OR protoPayload.methodName=\"beta.compute.networks.patch\" OR protoPayload.methodName=\"v1.compute.networks.delete\" OR protoPayload.methodName=\"v1.compute.networks.removePeering\" OR protoPayload.methodName=\"v1.compute.networks.addPeering\"",
 		},
 		{
 			"name": "bucket-iam-changes",
-			"filter": "resource.type=gcs_bucket AND protoPayload.methodName=\"storage.setIamPermissions\""
+			"filter": "resource.type=gcs_bucket AND protoPayload.methodName=\"storage.setIamPermissions\"",
 		},
 		{
 			"name": "sql-changes",
-			"filter": "protoPayload.methodName=\"cloudsql.instances.update\""
-		}
+			"filter": "protoPayload.methodName=\"cloudsql.instances.update\"",
+		},
 	],
 	"alert_policies": [
 		{
 			"displayName": "owner-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/owner-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/owner-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "audit-config-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/audit-config-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/audit-config-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "custom-role-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/custom-role-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/custom-role-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "firewall-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/firewall-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/firewall-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "route-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/route-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/route-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "network-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/network-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/network-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "bucket-iam-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/bucket-iam-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/bucket-iam-changes\" AND resource.type=\"global\""}}],
 		},
 		{
 			"displayName": "sql-changes",
 			"enabled": true,
-			"conditions": [
-				{
-					"conditionThreshold": {
-						"filter": "metric.type=\"logging.googleapis.com/user/sql-changes\" AND resource.type=\"global\""
-					}
-				}
-			]
-		}
+			"conditions": [{"conditionThreshold": {"filter": "metric.type=\"logging.googleapis.com/user/sql-changes\" AND resource.type=\"global\""}}],
+		},
 	],
 	"enabled_services": [
 		"compute.googleapis.com",
-		"cloudasset.googleapis.com"
+		"cloudasset.googleapis.com",
 	],
-	"backend_services": [
-		{
-			"name": "web",
-			"protocol": "HTTPS",
-			"logConfig": {
-				"enable": true,
-				"sampleRate": 1
-			}
-		}
-	],
-	"vpc_networks": [
-		{
-			"name": "prod",
-			"x_gcloud_subnet_mode": "CUSTOM"
-		}
-	],
-	"dns_policies": [
-		{
-			"name": "dns-logging",
-			"enableLogging": true,
-			"networks": [
+	"backend_services": [{
+		"name": "web",
+		"protocol": "HTTPS",
+		"logConfig": {
+			"enable": true,
+			"sampleRate": 1,
+		},
+	}],
+	"vpc_networks": [{
+		"name": "prod",
+		"x_gcloud_subnet_mode": "CUSTOM",
+	}],
+	"dns_policies": [{
+		"name": "dns-logging",
+		"enableLogging": true,
+		"networks": [{"networkUrl": "https://www.googleapis.com/compute/v1/projects/proj/global/networks/prod"}],
+	}],
+	"dns_managed_zones": [{
+		"name": "example-com",
+		"visibility": "public",
+		"dnssecConfig": {
+			"state": "on",
+			"defaultKeySpecs": [
 				{
-					"networkUrl": "https://www.googleapis.com/compute/v1/projects/proj/global/networks/prod"
-				}
-			]
-		}
-	],
-	"dns_managed_zones": [
-		{
-			"name": "example-com",
-			"visibility": "public",
-			"dnssecConfig": {
-				"state": "on",
-				"defaultKeySpecs": [
-					{
-						"keyType": "keySigning",
-						"algorithm": "rsasha256"
-					},
-					{
-						"keyType": "zoneSigning",
-						"algorithm": "rsasha256"
-					}
-				]
-			}
-		}
-	],
-	"firewall_rules": [
-		{
-			"name": "allow-https",
-			"direction": "INGRESS",
-			"sourceRanges": [
-				"0.0.0.0/0"
+					"keyType": "keySigning",
+					"algorithm": "rsasha256",
+				},
+				{
+					"keyType": "zoneSigning",
+					"algorithm": "rsasha256",
+				},
 			],
-			"allowed": [
-				{
-					"IPProtocol": "tcp",
-					"ports": [
-						"443"
-					]
-				}
-			]
-		}
-	],
-	"subnetworks": [
-		{
-			"name": "prod-a",
-			"purpose": "PRIVATE",
-			"enableFlowLogs": true,
-			"logConfig": {
-				"enable": true,
-				"aggregationInterval": "INTERVAL_5_SEC",
-				"flowSampling": 1,
-				"metadata": "INCLUDE_ALL_METADATA"
-			}
-		}
-	],
-	"compute_project": {
-		"commonInstanceMetadata": {
-			"items": [
-				{
-					"key": "enable-oslogin",
-					"value": "TRUE"
-				}
-			]
-		}
-	},
-	"compute_instances": [
-		{
-			"name": "vm1",
-			"machineType": "https://www.googleapis.com/compute/v1/projects/proj/zones/z/machineTypes/n2d-standard-2",
-			"serviceAccounts": [
-				{
-					"email": "app@proj.iam.gserviceaccount.com",
-					"scopes": [
-						"https://www.googleapis.com/auth/cloud-platform"
-					]
-				}
-			],
-			"metadata": {
-				"items": [
-					{
-						"key": "block-project-ssh-keys",
-						"value": "true"
-					}
-				]
-			},
-			"canIpForward": false,
-			"shieldedInstanceConfig": {
-				"enableSecureBoot": true,
-				"enableVtpm": true,
-				"enableIntegrityMonitoring": true
-			},
-			"networkInterfaces": [
-				{
-					"network": "prod"
-				}
-			],
-			"confidentialInstanceConfig": {
-				"enableConfidentialCompute": true
-			}
-		}
-	],
-	"compute_disks": [
-		{
-			"name": "vm1-boot",
-			"diskEncryptionKey": {
-				"sha256": "c2hhMjU2LWRpZ2VzdA=="
-			}
-		}
-	],
-	"storage_buckets": [
-		{
-			"name": "log-archive",
-			"iamConfiguration": {
-				"uniformBucketLevelAccess": {
-					"enabled": true
-				}
-			},
-			"retentionPolicy": {
-				"retentionPeriod": "31536000",
-				"isLocked": true
-			},
-			"iam_policy": {
-				"bindings": [
-					{
-						"role": "roles/storage.objectViewer",
-						"members": [
-							"group:ops@example.com"
-						]
-					}
-				]
-			}
-		}
-	],
+		},
+	}],
+	"firewall_rules": [{
+		"name": "allow-https",
+		"direction": "INGRESS",
+		"sourceRanges": ["0.0.0.0/0"],
+		"allowed": [{
+			"IPProtocol": "tcp",
+			"ports": ["443"],
+		}],
+	}],
+	"subnetworks": [{
+		"name": "prod-a",
+		"purpose": "PRIVATE",
+		"enableFlowLogs": true,
+		"logConfig": {
+			"enable": true,
+			"aggregationInterval": "INTERVAL_5_SEC",
+			"flowSampling": 1,
+			"metadata": "INCLUDE_ALL_METADATA",
+		},
+	}],
+	"compute_project": {"commonInstanceMetadata": {"items": [{
+		"key": "enable-oslogin",
+		"value": "TRUE",
+	}]}},
+	"compute_instances": [{
+		"name": "vm1",
+		"machineType": "https://www.googleapis.com/compute/v1/projects/proj/zones/z/machineTypes/n2d-standard-2",
+		"serviceAccounts": [{
+			"email": "app@proj.iam.gserviceaccount.com",
+			"scopes": ["https://www.googleapis.com/auth/cloud-platform"],
+		}],
+		"metadata": {"items": [{
+			"key": "block-project-ssh-keys",
+			"value": "true",
+		}]},
+		"canIpForward": false,
+		"shieldedInstanceConfig": {
+			"enableSecureBoot": true,
+			"enableVtpm": true,
+			"enableIntegrityMonitoring": true,
+		},
+		"networkInterfaces": [{"network": "prod"}],
+		"confidentialInstanceConfig": {"enableConfidentialCompute": true},
+	}],
+	"compute_disks": [{
+		"name": "vm1-boot",
+		"diskEncryptionKey": {"sha256": "c2hhMjU2LWRpZ2VzdA=="},
+	}],
+	"storage_buckets": [{
+		"name": "log-archive",
+		"iamConfiguration": {"uniformBucketLevelAccess": {"enabled": true}},
+		"retentionPolicy": {
+			"retentionPeriod": "31536000",
+			"isLocked": true,
+		},
+		"iam_policy": {"bindings": [{
+			"role": "roles/storage.objectViewer",
+			"members": ["group:ops@example.com"],
+		}]},
+	}],
 	"sql_instances": [
 		{
 			"name": "mysql1",
@@ -399,28 +257,24 @@ good := {
 				"databaseFlags": [
 					{
 						"name": "skip_show_database",
-						"value": "on"
+						"value": "on",
 					},
 					{
 						"name": "local_infile",
-						"value": "off"
-					}
+						"value": "off",
+					},
 				],
 				"ipConfiguration": {
 					"sslMode": "ENCRYPTED_ONLY",
 					"ipv4Enabled": false,
-					"authorizedNetworks": []
+					"authorizedNetworks": [],
 				},
-				"backupConfiguration": {
-					"enabled": true
-				}
+				"backupConfiguration": {"enabled": true},
 			},
-			"ipAddresses": [
-				{
-					"type": "PRIVATE",
-					"ipAddress": "10.0.0.5"
-				}
-			]
+			"ipAddresses": [{
+				"type": "PRIVATE",
+				"ipAddress": "10.0.0.5",
+			}],
 		},
 		{
 			"name": "pg1",
@@ -430,36 +284,32 @@ good := {
 				"databaseFlags": [
 					{
 						"name": "log_connections",
-						"value": "on"
+						"value": "on",
 					},
 					{
 						"name": "log_disconnections",
-						"value": "on"
+						"value": "on",
 					},
 					{
 						"name": "log_statement",
-						"value": "ddl"
+						"value": "ddl",
 					},
 					{
 						"name": "cloudsql.enable_pgaudit",
-						"value": "on"
-					}
+						"value": "on",
+					},
 				],
 				"ipConfiguration": {
 					"sslMode": "ENCRYPTED_ONLY",
 					"ipv4Enabled": false,
-					"authorizedNetworks": []
+					"authorizedNetworks": [],
 				},
-				"backupConfiguration": {
-					"enabled": true
-				}
+				"backupConfiguration": {"enabled": true},
 			},
-			"ipAddresses": [
-				{
-					"type": "PRIVATE",
-					"ipAddress": "10.0.0.5"
-				}
-			]
+			"ipAddresses": [{
+				"type": "PRIVATE",
+				"ipAddress": "10.0.0.5",
+			}],
 		},
 		{
 			"name": "mssql1",
@@ -469,62 +319,42 @@ good := {
 				"databaseFlags": [
 					{
 						"name": "remote access",
-						"value": "off"
+						"value": "off",
 					},
 					{
 						"name": "3625",
-						"value": "on"
-					}
+						"value": "on",
+					},
 				],
 				"ipConfiguration": {
 					"sslMode": "ENCRYPTED_ONLY",
 					"ipv4Enabled": false,
-					"authorizedNetworks": []
+					"authorizedNetworks": [],
 				},
-				"backupConfiguration": {
-					"enabled": true
-				}
+				"backupConfiguration": {"enabled": true},
 			},
-			"ipAddresses": [
-				{
-					"type": "PRIVATE",
-					"ipAddress": "10.0.0.5"
-				}
-			]
-		}
+			"ipAddresses": [{
+				"type": "PRIVATE",
+				"ipAddress": "10.0.0.5",
+			}],
+		},
 	],
-	"bigquery_datasets": [
-		{
-			"id": "proj:ds",
-			"access": [
-				{
-					"role": "READER",
-					"groupByEmail": "analysts@example.com"
-				}
-			],
-			"defaultEncryptionConfiguration": {
-				"kmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"
-			}
-		}
-	],
-	"bigquery_tables": [
-		{
-			"id": "proj:ds.t1",
-			"encryptionConfiguration": {
-				"kmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"
-			}
-		}
-	],
-	"dataproc_clusters": [
-		{
-			"clusterName": "etl",
-			"config": {
-				"encryptionConfig": {
-					"gcePdKmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"
-				}
-			}
-		}
-	],
+	"bigquery_datasets": [{
+		"id": "proj:ds",
+		"access": [{
+			"role": "READER",
+			"groupByEmail": "analysts@example.com",
+		}],
+		"defaultEncryptionConfiguration": {"kmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"},
+	}],
+	"bigquery_tables": [{
+		"id": "proj:ds.t1",
+		"encryptionConfiguration": {"kmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"},
+	}],
+	"dataproc_clusters": [{
+		"clusterName": "etl",
+		"config": {"encryptionConfig": {"gcePdKmsKeyName": "projects/proj/locations/global/keyRings/r/cryptoKeys/k"}},
+	}],
 	"attest": {
 		"super_admin_email_not_single_user": true,
 		"super_admin_not_used_for_cloud_admin": true,
@@ -547,8 +377,8 @@ good := {
 		"mysql_no_anonymous_admin_access": true,
 		"sql_iam_database_authentication": true,
 		"sql_deletion_protection": true,
-		"bigquery_data_classified": true
-	}
+		"bigquery_data_classified": true,
+	},
 }
 
 failing(inp) := f if {

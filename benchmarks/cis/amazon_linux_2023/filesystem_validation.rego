@@ -69,9 +69,7 @@ all_filesystem_modules_disabled if {
 partition_violations contains violation if {
 	some partition in input.separate_partitions.analysis
 	not partition.is_separate_partition
-	violation := sprintf("CIS 1.1.2.x: Required partition '%s' is not a separate partition", [
-		partition.mount_point,
-	])
+	violation := sprintf("CIS 1.1.2.x: Required partition '%s' is not a separate partition", [partition.mount_point])
 }
 
 partition_violations contains violation if {
@@ -179,9 +177,7 @@ usb_storage_violation contains "CIS 1.1.1.8: evidence missing - usb_storage not 
 usb_storage_violation contains violation if {
 	input.usb_storage
 	not usb_storage_disabled
-	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %v)", [
-		object.get(input.usb_storage, "status", "unknown"),
-	])
+	violation := sprintf("CIS 1.1.1.8: USB storage module is not disabled (status: %v)", [object.get(input.usb_storage, "status", "unknown")])
 }
 
 # Disabled means the collector reported disabled == true or status == "disabled".
@@ -241,4 +237,3 @@ report := {
 	"non_compliant_partitions": non_compliant_partitions,
 	"collection_timestamp": object.get(input, ["collection_timestamp"], null),
 }
-

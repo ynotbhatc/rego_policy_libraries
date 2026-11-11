@@ -7,174 +7,118 @@ import data.cis_nginx_1_20 as b
 # Generated per-recommendation tests for CIS NGINX Benchmark v3.1.0: every recommendation has a pass test (green input) and a
 # fail test; configuration checks also have an evidence-missing test; attestations fail when false or absent.
 
-green := {
-	"nginx": {
-		"profiles": [
-			"webserver",
-			"proxy",
-			"loadbalancer"
+green := {"nginx": {
+	"profiles": [
+		"webserver",
+		"proxy",
+		"loadbalancer",
+	],
+	"version": "1.28.0",
+	"package": {"update_available": false},
+	"user": {
+		"name": "nginx",
+		"uid": 988,
+		"groups": ["nginx"],
+		"sudo_allowed": false,
+		"password_locked": true,
+		"shell": "/sbin/nologin",
+	},
+	"files": {
+		"not_root_owned": [],
+		"dir_modes": {
+			"/etc/nginx": "750",
+			"/etc/nginx/conf.d": "750",
+		},
+		"file_modes": {
+			"/etc/nginx/nginx.conf": "640",
+			"/etc/nginx/conf.d/app.conf": "600",
+		},
+	},
+	"pid_file": {
+		"owner": "root",
+		"group": "root",
+		"mode": "644",
+	},
+	"listen_ports": [
+		80,
+		443,
+	],
+	"default_server": {
+		"present": true,
+		"return_code": 444,
+		"ssl_reject_handshake": true,
+	},
+	"probe": {"error_page_mentions_nginx": false},
+	"hidden_files_denied": true,
+	"access_log_off_outside_location": false,
+	"servers": [
+		{
+			"name": "app",
+			"ssl": true,
+		},
+		{
+			"name": "redirect",
+			"ssl": false,
+			"redirects_to_https": true,
+		},
+	],
+	"certificates": [{
+		"path": "/etc/nginx/ssl/site.crt",
+		"chain_trusted": true,
+	}],
+	"private_keys": {"/etc/nginx/ssl/site.key": "400"},
+	"directives": {
+		"keepalive_timeout": ["10"],
+		"send_timeout": ["10s"],
+		"server_tokens": ["off"],
+		"proxy_hide_header": [
+			"X-Powered-By",
+			"Server",
 		],
-		"version": "1.28.0",
-		"package": {
-			"update_available": false
-		},
-		"user": {
-			"name": "nginx",
-			"uid": 988,
-			"groups": [
-				"nginx"
-			],
-			"sudo_allowed": false,
-			"password_locked": true,
-			"shell": "/sbin/nologin"
-		},
-		"files": {
-			"not_root_owned": [],
-			"dir_modes": {
-				"/etc/nginx": "750",
-				"/etc/nginx/conf.d": "750"
-			},
-			"file_modes": {
-				"/etc/nginx/nginx.conf": "640",
-				"/etc/nginx/conf.d/app.conf": "600"
-			}
-		},
-		"pid_file": {
-			"owner": "root",
-			"group": "root",
-			"mode": "644"
-		},
-		"listen_ports": [
-			80,
-			443
+		"log_format": ["main_json escape=json '{\"time\":\"$time_iso8601\",\"remote_addr\":\"$remote_addr\",\"remote_user\":\"$remote_user\",\"request\":\"$request\",\"status\":\"$status\",\"user_agent\":\"$http_user_agent\"}'"],
+		"access_log": ["/var/log/nginx/access.json main_json"],
+		"error_log": ["/var/log/nginx/error.log info"],
+		"ssl_protocols": ["TLSv1.3"],
+		"proxy_ssl_protocols": ["TLSv1.3"],
+		"ssl_stapling": ["on"],
+		"ssl_stapling_verify": ["on"],
+		"ssl_trusted_certificate": ["/etc/nginx/ssl/chain.pem"],
+		"resolver": ["10.0.0.53"],
+		"add_header": [
+			"Strict-Transport-Security \"max-age=63072000; includeSubDomains\" always",
+			"X-Content-Type-Options \"nosniff\" always",
+			"Content-Security-Policy \"default-src 'self'; frame-ancestors 'self'\" always",
+			"Referrer-Policy \"strict-origin-when-cross-origin\" always",
+			"Alt-Svc 'h3=\":443\"; ma=86400'",
 		],
-		"default_server": {
-			"present": true,
-			"return_code": 444,
-			"ssl_reject_handshake": true
-		},
-		"probe": {
-			"error_page_mentions_nginx": false
-		},
-		"hidden_files_denied": true,
-		"access_log_off_outside_location": false,
-		"servers": [
-			{
-				"name": "app",
-				"ssl": true
-			},
-			{
-				"name": "redirect",
-				"ssl": false,
-				"redirects_to_https": true
-			}
+		"proxy_ssl_certificate": ["/etc/nginx/ssl/client.crt"],
+		"proxy_ssl_certificate_key": ["/etc/nginx/ssl/client.key"],
+		"proxy_ssl_verify": ["on"],
+		"proxy_ssl_trusted_certificate": ["/etc/nginx/ssl/upstream-ca.crt"],
+		"proxy_ssl_name": ["backend.internal"],
+		"http2": ["on"],
+		"listen": [
+			"80",
+			"443 ssl",
+			"443 quic reuseport",
 		],
-		"certificates": [
-			{
-				"path": "/etc/nginx/ssl/site.crt",
-				"chain_trusted": true
-			}
+		"limit_except": ["GET HEAD POST"],
+		"proxy_set_header": [
+			"X-Forwarded-For $proxy_add_x_forwarded_for",
+			"X-Real-IP $remote_addr",
 		],
-		"private_keys": {
-			"/etc/nginx/ssl/site.key": "400"
-		},
-		"directives": {
-			"keepalive_timeout": [
-				"10"
-			],
-			"send_timeout": [
-				"10s"
-			],
-			"server_tokens": [
-				"off"
-			],
-			"proxy_hide_header": [
-				"X-Powered-By",
-				"Server"
-			],
-			"log_format": [
-				"main_json escape=json '{\"time\":\"$time_iso8601\",\"remote_addr\":\"$remote_addr\",\"remote_user\":\"$remote_user\",\"request\":\"$request\",\"status\":\"$status\",\"user_agent\":\"$http_user_agent\"}'"
-			],
-			"access_log": [
-				"/var/log/nginx/access.json main_json"
-			],
-			"error_log": [
-				"/var/log/nginx/error.log info"
-			],
-			"ssl_protocols": [
-				"TLSv1.3"
-			],
-			"proxy_ssl_protocols": [
-				"TLSv1.3"
-			],
-			"ssl_stapling": [
-				"on"
-			],
-			"ssl_stapling_verify": [
-				"on"
-			],
-			"ssl_trusted_certificate": [
-				"/etc/nginx/ssl/chain.pem"
-			],
-			"resolver": [
-				"10.0.0.53"
-			],
-			"add_header": [
-				"Strict-Transport-Security \"max-age=63072000; includeSubDomains\" always",
-				"X-Content-Type-Options \"nosniff\" always",
-				"Content-Security-Policy \"default-src 'self'; frame-ancestors 'self'\" always",
-				"Referrer-Policy \"strict-origin-when-cross-origin\" always",
-				"Alt-Svc 'h3=\":443\"; ma=86400'"
-			],
-			"proxy_ssl_certificate": [
-				"/etc/nginx/ssl/client.crt"
-			],
-			"proxy_ssl_certificate_key": [
-				"/etc/nginx/ssl/client.key"
-			],
-			"proxy_ssl_verify": [
-				"on"
-			],
-			"proxy_ssl_trusted_certificate": [
-				"/etc/nginx/ssl/upstream-ca.crt"
-			],
-			"proxy_ssl_name": [
-				"backend.internal"
-			],
-			"http2": [
-				"on"
-			],
-			"listen": [
-				"80",
-				"443 ssl",
-				"443 quic reuseport"
-			],
-			"limit_except": [
-				"GET HEAD POST"
-			],
-			"proxy_set_header": [
-				"X-Forwarded-For $proxy_add_x_forwarded_for",
-				"X-Real-IP $remote_addr"
-			],
-			"client_header_timeout": [
-				"10"
-			],
-			"client_body_timeout": [
-				"10"
-			],
-			"client_max_body_size": [
-				"1m"
-			]
-		},
-		"attest": {
-			"package_repositories_reviewed": true,
-			"dynamic_modules_reviewed": true,
-			"ip_allow_deny_reviewed": true,
-			"connection_limits_reviewed": true,
-			"rate_limits_reviewed": true
-		}
-	}
-}
+		"client_header_timeout": ["10"],
+		"client_body_timeout": ["10"],
+		"client_max_body_size": ["1m"],
+	},
+	"attest": {
+		"package_repositories_reviewed": true,
+		"dynamic_modules_reviewed": true,
+		"ip_allow_deny_reviewed": true,
+		"connection_limits_reviewed": true,
+		"rate_limits_reviewed": true,
+	},
+}}
 
 _has_id(vs, id) if {
 	some v in vs

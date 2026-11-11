@@ -54,12 +54,10 @@ test_restricted_compliant_pod if {
 
 baseline_only_pod := {"pod": {
 	"metadata": {"name": "legacy"},
-	"spec": {
-		"containers": [{
-			"name": "app",
-			"image": "registry.access.redhat.com/ubi9/ubi:latest",
-		}],
-	},
+	"spec": {"containers": [{
+		"name": "app",
+		"image": "registry.access.redhat.com/ubi9/ubi:latest",
+	}]},
 }}
 
 test_baseline_only_pod_fails_restricted_by_default if {
@@ -190,6 +188,7 @@ test_added_capability_beyond_netbind_fails_restricted if {
 		"value": {"drop": ["ALL"], "add": ["CHOWN"]},
 	}])
 	r := main.compliance_report with input as bad
+
 	# CHOWN is baseline-allowed but restricted only permits NET_BIND_SERVICE.
 	r.baseline_compliant == true
 	r.restricted_compliant == false

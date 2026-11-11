@@ -261,7 +261,6 @@ violation contains msg if {
 	msg := "CIS 5.3.1: Privileged Identity Management is not in use; privileged role assignments are standing rather than activated on demand"
 }
 
-
 # ── 5.2.2.x -- the Conditional Access cluster ────────────────────────
 # Fourteen further controls, all evaluable from the Conditional Access
 # policies already collected. CIS documents these as portal steps, so
@@ -457,7 +456,6 @@ violation contains msg if {
 	msg := "CIS 5.2.2.17: authentication transfer is not blocked, so a session can be handed from a desktop to an attacker-controlled device"
 }
 
-
 # ── 5.1.4.x -- device registration ───────────────────────────────────
 # Five controls from one beta policy object. CIS documents these as
 # portal steps; recorded in evidence_strength for the subsection.
@@ -547,7 +545,6 @@ violation contains msg if {
 	not review_covers("roleassignment")
 	msg := "CIS 5.3.3: no access review is configured for privileged roles, so standing administrative access is never re-attested"
 }
-
 
 # ── Authenticator hardening and smart lockout ────────────────────────
 # Five more controls, all riding on policy objects already fetched --

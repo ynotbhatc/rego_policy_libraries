@@ -49,68 +49,82 @@ import rego.v1
 # undefined; without these defaults the aggregate object literal collapses.
 # The stub carries the only fields consumers read: compliant, passing, violations.
 default ac_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
-ac_report  := data.cmmc.access_control.compliance_report
+
+ac_report := data.cmmc.access_control.compliance_report
 
 default at_report := {"compliant": false, "passing": 0, "violations": []}
-at_report  := data.cmmc.awareness_training.compliance_report
+
+at_report := data.cmmc.awareness_training.compliance_report
 
 default au_report := {"compliant": false, "passing": 0, "violations": []}
-au_report  := data.cmmc.audit_accountability.compliance_report
+
+au_report := data.cmmc.audit_accountability.compliance_report
 
 default cm_report := {"compliant": false, "passing": 0, "violations": []}
-cm_report  := data.cmmc.configuration_management.compliance_report
+
+cm_report := data.cmmc.configuration_management.compliance_report
 
 default ia_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
-ia_report  := data.cmmc.identification_authentication.compliance_report
+
+ia_report := data.cmmc.identification_authentication.compliance_report
 
 default ir_report := {"compliant": false, "passing": 0, "violations": []}
-ir_report  := data.cmmc.incident_response.compliance_report
+
+ir_report := data.cmmc.incident_response.compliance_report
 
 default ma_report := {"compliant": false, "passing": 0, "violations": []}
-ma_report  := data.cmmc.maintenance.compliance_report
+
+ma_report := data.cmmc.maintenance.compliance_report
 
 default mp_report := {"compliant": false, "passing": 0, "violations": []}
-mp_report  := data.cmmc.media_protection.compliance_report
+
+mp_report := data.cmmc.media_protection.compliance_report
 
 default ps_report := {"compliant": false, "passing": 0, "violations": []}
-ps_report  := data.cmmc.personnel_security.compliance_report
+
+ps_report := data.cmmc.personnel_security.compliance_report
 
 default pe_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
-pe_report  := data.cmmc.physical_protection.compliance_report
+
+pe_report := data.cmmc.physical_protection.compliance_report
 
 default rm_report := {"compliant": false, "passing": 0, "violations": []}
-rm_report  := data.cmmc.risk_assessment.compliance_report
+
+rm_report := data.cmmc.risk_assessment.compliance_report
 
 default ca_report := {"compliant": false, "passing": 0, "violations": []}
-ca_report  := data.cmmc.security_assessment.compliance_report
+
+ca_report := data.cmmc.security_assessment.compliance_report
 
 default sc_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
-sc_report  := data.cmmc.system_communications_protection.compliance_report
+
+sc_report := data.cmmc.system_communications_protection.compliance_report
 
 default si_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
-si_report  := data.cmmc.system_information_integrity.compliance_report
+
+si_report := data.cmmc.system_information_integrity.compliance_report
 
 # ---------------------------------------------------------------------------
 # Aggregate violations across all 14 domains
 # ---------------------------------------------------------------------------
 
 # Convert set-based violations (legacy modules) to arrays
-ac_violations  := [v | some v in data.cmmc.access_control.violations]
-cm_violations  := [v | some v in data.cmmc.configuration_management.violations]
-ir_violations  := [v | some v in data.cmmc.incident_response.violations]
+ac_violations := [v | some v in data.cmmc.access_control.violations]
+cm_violations := [v | some v in data.cmmc.configuration_management.violations]
+ir_violations := [v | some v in data.cmmc.incident_response.violations]
 
 # New modules expose violations as arrays via compliance_report
-at_violations  := at_report.violations
-au_violations  := au_report.violations
-ia_violations  := ia_report.violations
-ma_violations  := ma_report.violations
-mp_violations  := mp_report.violations
-ps_violations  := ps_report.violations
-pe_violations  := pe_report.violations
-rm_violations  := rm_report.violations
-ca_violations  := ca_report.violations
-sc_violations  := sc_report.violations
-si_violations  := si_report.violations
+at_violations := at_report.violations
+au_violations := au_report.violations
+ia_violations := ia_report.violations
+ma_violations := ma_report.violations
+mp_violations := mp_report.violations
+ps_violations := ps_report.violations
+pe_violations := pe_report.violations
+rm_violations := rm_report.violations
+ca_violations := ca_report.violations
+sc_violations := sc_report.violations
+si_violations := si_report.violations
 
 # Aggregate in pairs (array.concat takes exactly 2 args)
 violations_ac_at := array.concat(ac_violations, at_violations)
@@ -135,45 +149,59 @@ all_violations := array.concat(violations_half1, violations_half2)
 # ---------------------------------------------------------------------------
 
 default ac_compliant := false
+
 ac_compliant if ac_report.compliant == true
 
 default at_compliant := false
+
 at_compliant if at_report.compliant == true
 
 default au_compliant := false
+
 au_compliant if au_report.compliant == true
 
 default cm_compliant := false
+
 cm_compliant if cm_report.compliant == true
 
 default ia_compliant := false
+
 ia_compliant if ia_report.compliant == true
 
 default ir_compliant := false
+
 ir_compliant if ir_report.compliant == true
 
 default ma_compliant := false
+
 ma_compliant if ma_report.compliant == true
 
 default mp_compliant := false
+
 mp_compliant if mp_report.compliant == true
 
 default ps_compliant := false
+
 ps_compliant if ps_report.compliant == true
 
 default pe_compliant := false
+
 pe_compliant if pe_report.compliant == true
 
 default rm_compliant := false
+
 rm_compliant if rm_report.compliant == true
 
 default ca_compliant := false
+
 ca_compliant if ca_report.compliant == true
 
 default sc_compliant := false
+
 sc_compliant if sc_report.compliant == true
 
 default si_compliant := false
+
 si_compliant if si_report.compliant == true
 
 # ---------------------------------------------------------------------------
@@ -181,24 +209,24 @@ si_compliant if si_report.compliant == true
 # ---------------------------------------------------------------------------
 
 domain_results := [
-    ac_compliant,
-    at_compliant,
-    au_compliant,
-    cm_compliant,
-    ia_compliant,
-    ir_compliant,
-    ma_compliant,
-    mp_compliant,
-    ps_compliant,
-    pe_compliant,
-    rm_compliant,
-    ca_compliant,
-    sc_compliant,
-    si_compliant,
+	ac_compliant,
+	at_compliant,
+	au_compliant,
+	cm_compliant,
+	ia_compliant,
+	ir_compliant,
+	ma_compliant,
+	mp_compliant,
+	ps_compliant,
+	pe_compliant,
+	rm_compliant,
+	ca_compliant,
+	sc_compliant,
+	si_compliant,
 ]
 
-passing_domains  := count([d | some d in domain_results; d == true])
-total_domains    := 14
+passing_domains := count([d | some d in domain_results; d == true])
+total_domains := 14
 
 compliance_score := round((passing_domains / total_domains) * 100)
 
@@ -206,12 +234,14 @@ compliance_score := round((passing_domains / total_domains) * 100)
 # Practice counts across all domains
 # ---------------------------------------------------------------------------
 
-total_practices := 110   # NIST SP 800-171 Rev 2 total
+total_practices := 110 # NIST SP 800-171 Rev 2 total
 
-practices_passing := sum([ac_report.passing, at_report.passing, au_report.passing,
-    cm_report.passing, ia_report.passing, ir_report.passing, ma_report.passing,
-    mp_report.passing, ps_report.passing, pe_report.passing, rm_report.passing,
-    ca_report.passing, sc_report.passing, si_report.passing])
+practices_passing := sum([
+	ac_report.passing, at_report.passing, au_report.passing,
+	cm_report.passing, ia_report.passing, ir_report.passing, ma_report.passing,
+	mp_report.passing, ps_report.passing, pe_report.passing, rm_report.passing,
+	ca_report.passing, sc_report.passing, si_report.passing,
+])
 
 practices_failing := total_practices - practices_passing
 
@@ -220,15 +250,16 @@ practices_failing := total_practices - practices_passing
 # ---------------------------------------------------------------------------
 
 default cmmc_level_1_compliant := false
+
 cmmc_level_1_compliant if {
-    # Level 1 practices: AC (3.1.1-3.1.2), IA (3.5.1-3.5.2),
-    #                    MP (none at L1), PE (3.10.1-3.10.2),
-    #                    SC (3.13.1, 3.13.5), SI (3.14.1-3.14.5)
-    ac_report.level_1_passing == true
-    ia_report.level_1_passing == true
-    pe_report.level_1_passing == true
-    sc_report.level_1_passing == true
-    si_report.level_1_passing == true
+	# Level 1 practices: AC (3.1.1-3.1.2), IA (3.5.1-3.5.2),
+	#                    MP (none at L1), PE (3.10.1-3.10.2),
+	#                    SC (3.13.1, 3.13.5), SI (3.14.1-3.14.5)
+	ac_report.level_1_passing == true
+	ia_report.level_1_passing == true
+	pe_report.level_1_passing == true
+	sc_report.level_1_passing == true
+	si_report.level_1_passing == true
 }
 
 # A domain whose report is undefined contributes [] violations through its
@@ -237,15 +268,17 @@ cmmc_level_1_compliant if {
 all_domains_compliant if passing_domains == total_domains
 
 default cmmc_level_2_compliant := false
+
 cmmc_level_2_compliant if {
-    count(all_violations) == 0
-    all_domains_compliant
+	count(all_violations) == 0
+	all_domains_compliant
 }
 
 default compliant := false
+
 compliant if {
-    count(all_violations) == 0
-    all_domains_compliant
+	count(all_violations) == 0
+	all_domains_compliant
 }
 
 # ---------------------------------------------------------------------------
@@ -253,35 +286,35 @@ compliant if {
 # ---------------------------------------------------------------------------
 
 cmmc_compliance_report := {
-    "standard":              "CMMC 2.0",
-    "regulation":            "32 CFR Part 170 / DFARS 252.204-7021",
-    "nist_sp":               "NIST SP 800-171 Rev 2",
-    "compliant":             compliant,
-    "level_1_compliant":     cmmc_level_1_compliant,
-    "level_2_compliant":     cmmc_level_2_compliant,
-    "compliance_score":      compliance_score,
-    "total_domains":         total_domains,
-    "domains_passing":       passing_domains,
-    "domains_failing":       total_domains - passing_domains,
-    "total_practices":       total_practices,
-    "practices_passing":     practices_passing,
-    "practices_failing":     practices_failing,
-    "total_violations":      count(all_violations),
-    "violations":            all_violations,
-    "domains": {
-        "3.1_access_control":                   ac_report,
-        "3.2_awareness_training":               at_report,
-        "3.3_audit_accountability":             au_report,
-        "3.4_configuration_management":         cm_report,
-        "3.5_identification_authentication":    ia_report,
-        "3.6_incident_response":                ir_report,
-        "3.7_maintenance":                      ma_report,
-        "3.8_media_protection":                 mp_report,
-        "3.9_personnel_security":               ps_report,
-        "3.10_physical_protection":             pe_report,
-        "3.11_risk_assessment":                 rm_report,
-        "3.12_security_assessment":             ca_report,
-        "3.13_system_communications":           sc_report,
-        "3.14_system_information_integrity":    si_report,
-    },
+	"standard": "CMMC 2.0",
+	"regulation": "32 CFR Part 170 / DFARS 252.204-7021",
+	"nist_sp": "NIST SP 800-171 Rev 2",
+	"compliant": compliant,
+	"level_1_compliant": cmmc_level_1_compliant,
+	"level_2_compliant": cmmc_level_2_compliant,
+	"compliance_score": compliance_score,
+	"total_domains": total_domains,
+	"domains_passing": passing_domains,
+	"domains_failing": total_domains - passing_domains,
+	"total_practices": total_practices,
+	"practices_passing": practices_passing,
+	"practices_failing": practices_failing,
+	"total_violations": count(all_violations),
+	"violations": all_violations,
+	"domains": {
+		"3.1_access_control": ac_report,
+		"3.2_awareness_training": at_report,
+		"3.3_audit_accountability": au_report,
+		"3.4_configuration_management": cm_report,
+		"3.5_identification_authentication": ia_report,
+		"3.6_incident_response": ir_report,
+		"3.7_maintenance": ma_report,
+		"3.8_media_protection": mp_report,
+		"3.9_personnel_security": ps_report,
+		"3.10_physical_protection": pe_report,
+		"3.11_risk_assessment": rm_report,
+		"3.12_security_assessment": ca_report,
+		"3.13_system_communications": sc_report,
+		"3.14_system_information_integrity": si_report,
+	},
 }

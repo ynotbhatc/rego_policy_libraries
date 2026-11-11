@@ -60,7 +60,6 @@ violation contains msg if {
 	msg := "CIS 3.1.1: audit log facts not collected -- control could not be evaluated (this is not a pass)"
 }
 
-
 # ── DLP and sensitivity labels (Security & Compliance PowerShell) ─────
 
 default ps_unavailable := {}

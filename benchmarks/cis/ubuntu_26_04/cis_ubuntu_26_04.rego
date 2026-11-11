@@ -32,4575 +32,4563 @@ package cis_ubuntu_26_04
 
 import rego.v1
 
-import data.cis_ubuntu_26_04.filesystem
-import data.cis_ubuntu_26_04.package_management
+import data.cis_ubuntu_26_04.accounts
 import data.cis_ubuntu_26_04.apparmor
-import data.cis_ubuntu_26_04.bootloader
-import data.cis_ubuntu_26_04.process_hardening
+import data.cis_ubuntu_26_04.auditd
 import data.cis_ubuntu_26_04.banners
-import data.cis_ubuntu_26_04.gdm
-import data.cis_ubuntu_26_04.services
-import data.cis_ubuntu_26_04.time_sync
-import data.cis_ubuntu_26_04.job_schedulers
-import data.cis_ubuntu_26_04.network
+import data.cis_ubuntu_26_04.bootloader
+import data.cis_ubuntu_26_04.file_permissions
+import data.cis_ubuntu_26_04.filesystem
 import data.cis_ubuntu_26_04.firewall
+import data.cis_ubuntu_26_04.gdm
+import data.cis_ubuntu_26_04.integrity
+import data.cis_ubuntu_26_04.job_schedulers
+import data.cis_ubuntu_26_04.logging
+import data.cis_ubuntu_26_04.network
+import data.cis_ubuntu_26_04.package_management
+import data.cis_ubuntu_26_04.pam
+import data.cis_ubuntu_26_04.process_hardening
+import data.cis_ubuntu_26_04.services
 import data.cis_ubuntu_26_04.ssh
 import data.cis_ubuntu_26_04.sudo
-import data.cis_ubuntu_26_04.pam
-import data.cis_ubuntu_26_04.accounts
-import data.cis_ubuntu_26_04.logging
-import data.cis_ubuntu_26_04.auditd
-import data.cis_ubuntu_26_04.integrity
-import data.cis_ubuntu_26_04.file_permissions
+import data.cis_ubuntu_26_04.time_sync
 import data.cis_ubuntu_26_04.user_group
 
 standard_total := 350
 
 controls := {
- "1.1.1.1": {
-  "title": "cramfs kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.1.2": {
-  "title": "freevxfs kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.1.3": {
-  "title": "hfs kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.1.4": {
-  "title": "hfsplus kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.1.5": {
-  "title": "jffs2 kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.1.6": {
-  "title": "overlay kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.1.7": {
-  "title": "squashfs kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.1.8": {
-  "title": "udf kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.1.9": {
-  "title": "firewire-core kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.1.10": {
-  "title": "usb-storage kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.1.11": {
-  "title": "unused filesystems kernel modules must be not available",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.1.1": {
-  "title": "/tmp must be tmpfs or a separate partition",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.1.2": {
-  "title": "/tmp must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.1.3": {
-  "title": "/tmp must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.1.4": {
-  "title": "/tmp must be mounted with the noexec option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.2.1": {
-  "title": "/dev/shm must be tmpfs or a separate partition",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.2.2": {
-  "title": "/dev/shm must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.2.3": {
-  "title": "/dev/shm must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.2.4": {
-  "title": "/dev/shm must be mounted with the noexec option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.3.1": {
-  "title": "/home must be its own filesystem",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.2.3.2": {
-  "title": "/home must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.3.3": {
-  "title": "/home must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.4.1": {
-  "title": "/var must be its own filesystem",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.2.4.2": {
-  "title": "/var must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.4.3": {
-  "title": "/var must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.5.1": {
-  "title": "/var/tmp must be its own filesystem",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.2.5.2": {
-  "title": "/var/tmp must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.5.3": {
-  "title": "/var/tmp must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.5.4": {
-  "title": "/var/tmp must be mounted with the noexec option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.6.1": {
-  "title": "/var/log must be its own filesystem",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.2.6.2": {
-  "title": "/var/log must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.6.3": {
-  "title": "/var/log must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.6.4": {
-  "title": "/var/log must be mounted with the noexec option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.7.1": {
-  "title": "/var/log/audit must be its own filesystem",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "filesystem"
- },
- "1.1.2.7.2": {
-  "title": "/var/log/audit must be mounted with the nodev option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.7.3": {
-  "title": "/var/log/audit must be mounted with the nosuid option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.1.2.7.4": {
-  "title": "/var/log/audit must be mounted with the noexec option",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "filesystem"
- },
- "1.2.1.1": {
-  "title": "checked condition — the source.list and .source files use the Signed-By option",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.2": {
-  "title": "weak dependencies must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "package_management"
- },
- "1.2.1.3": {
-  "title": "access to gpg key files must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.4": {
-  "title": "access to /etc/apt/trusted.gpg.d directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.5": {
-  "title": "access to /etc/apt/auth.conf.d directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.6": {
-  "title": "access to files in the /etc/apt/auth.conf.d/ directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.7": {
-  "title": "access to /usr/share/keyrings directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.8": {
-  "title": "access to /etc/apt/sources.list.d directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.9": {
-  "title": "access to files in /etc/apt/sources.list.d must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.10": {
-  "title": "repositories must be set to https in /etc/apt/sources.list",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.11": {
-  "title": "repositories must be set to https in /etc/apt/sources.list.d directory",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.12": {
-  "title": "AllowInsecureRepositories must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.13": {
-  "title": "AllowWeakRepositories must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.14": {
-  "title": "AllowDowngradeToInsecureRepositories must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.1.15": {
-  "title": "Acquire::Check-Date must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.2.2.1": {
-  "title": "updates, patches, and additional security software must be present",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "package_management"
- },
- "1.3.1.1": {
-  "title": "apparmor packages must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "apparmor"
- },
- "1.3.1.2": {
-  "title": "AppArmor must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "apparmor"
- },
- "1.3.1.3": {
-  "title": "all AppArmor Profiles must be enforcing",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "apparmor"
- },
- "1.3.1.4": {
-  "title": "kernel.apparmor_restrict_unprivileged_unconfined must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "apparmor"
- },
- "1.4.1": {
-  "title": "bootloader password must be set",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "bootloader"
- },
- "1.4.2": {
-  "title": "access to bootloader config must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "bootloader"
- },
- "1.5.1": {
-  "title": "fs.protected_hardlinks must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.2": {
-  "title": "fs.protected_symlinks must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "process_hardening"
- },
- "1.5.3": {
-  "title": "kernel.yama.ptrace_scope must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.4": {
-  "title": "fs.suid_dumpable must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.5": {
-  "title": "kernel.dmesg_restrict must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.6": {
-  "title": "prelink must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.7": {
-  "title": "Automatic Error Reporting must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.8": {
-  "title": "kernel.kptr_restrict must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.9": {
-  "title": "kernel.randomize_va_space must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.10": {
-  "title": "core file size must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.11": {
-  "title": "systemd-coredump ProcessSizeMax must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.5.12": {
-  "title": "systemd-coredump Storage must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "process_hardening"
- },
- "1.6.1": {
-  "title": "/etc/motd must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.2": {
-  "title": "/etc/issue must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.3": {
-  "title": "/etc/issue.net must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.4": {
-  "title": "pam_motd must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.5": {
-  "title": "sshd warning Banner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.6": {
-  "title": "access to /etc/motd must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.7": {
-  "title": "access to /etc/issue must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.8": {
-  "title": "access to /etc/issue.net must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.9": {
-  "title": "access to pam_motd file must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.10": {
-  "title": "access to sshd warning banner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.11": {
-  "title": "update-notifier-motd.service must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "banners"
- },
- "1.6.12": {
-  "title": "update-notifier-motd.timer must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server"
-  ],
-  "levels": {
-   "server": 1
-  },
-  "section": "banners"
- },
- "1.7.1": {
-  "title": "GDM login banner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "gdm"
- },
- "1.7.2": {
-  "title": "GDM disable-user-list must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "gdm"
- },
- "1.7.3": {
-  "title": "GDM screen lock must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "gdm"
- },
- "1.7.4": {
-  "title": "GDM automount must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "gdm"
- },
- "1.7.5": {
-  "title": "GDM autorun-never must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "gdm"
- },
- "1.7.6": {
-  "title": "XDMCP must stay off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "gdm"
- },
- "1.7.7": {
-  "title": "Xwayland must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "gdm"
- },
- "2.1.1": {
-  "title": "autofs services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "services"
- },
- "2.1.2": {
-  "title": "avahi daemon services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "services"
- },
- "2.1.3": {
-  "title": "dhcp server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.4": {
-  "title": "dns server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.5": {
-  "title": "dnsmasq services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.6": {
-  "title": "ftp server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.7": {
-  "title": "ldap server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.8": {
-  "title": "message access server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.9": {
-  "title": "network file system services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.10": {
-  "title": "nis server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.11": {
-  "title": "print server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "services"
- },
- "2.1.12": {
-  "title": "rpcbind services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.13": {
-  "title": "rsync services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.14": {
-  "title": "samba file server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.15": {
-  "title": "snmp services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.16": {
-  "title": "telnet server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.17": {
-  "title": "tftp server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.18": {
-  "title": "web proxy server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.19": {
-  "title": "web server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.20": {
-  "title": "xinetd services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.21": {
-  "title": "X window server services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server"
-  ],
-  "levels": {
-   "server": 2
-  },
-  "section": "services"
- },
- "2.1.22": {
-  "title": "mail transfer agents must be explicitly configured for local-only mode",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.1.23": {
-  "title": "only approved services must be listening on a network interface",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.1": {
-  "title": "nis client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.2": {
-  "title": "rsh client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.3": {
-  "title": "talk client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.4": {
-  "title": "telnet client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.5": {
-  "title": "ldap client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.2.6": {
-  "title": "ftp client must not be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "services"
- },
- "2.3.1.1": {
-  "title": "a single time synchronization daemon must be in use",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.3.2.1": {
-  "title": "checked condition — systemd-timesyncd configured with authorized timeserver",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.3.2.2": {
-  "title": "systemd-timesyncd must be turned on and running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.3.3.1": {
-  "title": "chrony must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.3.3.2": {
-  "title": "chrony must be running as user _chrony",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.3.3.3": {
-  "title": "chrony must be turned on and running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "time_sync"
- },
- "2.4.1.1": {
-  "title": "cron daemon must be turned on and active",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.2": {
-  "title": "access to /etc/crontab must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.3": {
-  "title": "access to /etc/cron.hourly must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.4": {
-  "title": "access to /etc/cron.daily must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.5": {
-  "title": "access to /etc/cron.weekly must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.6": {
-  "title": "access to /etc/cron.monthly must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.7": {
-  "title": "access to /etc/cron.yearly must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.8": {
-  "title": "access to /etc/cron.d must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.1.9": {
-  "title": "access to crontab must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "2.4.2.1": {
-  "title": "access to at must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "job_schedulers"
- },
- "3.1.1": {
-  "title": "IPv6 status must be identified",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.1.2": {
-  "title": "wireless interfaces must be not available",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server"
-  ],
-  "levels": {
-   "server": 1
-  },
-  "section": "network"
- },
- "3.1.3": {
-  "title": "bluetooth services must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 2
-  },
-  "section": "network"
- },
- "3.2.1": {
-  "title": "atm kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.2": {
-  "title": "can kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.3": {
-  "title": "dccp kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.4": {
-  "title": "rds kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.5": {
-  "title": "sctp kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.6": {
-  "title": "tipc kernel module must be blocked from loading",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.2.7": {
-  "title": "unneeded network protocol kernel modules must be not available",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.1": {
-  "title": "net.ipv4.ip_forward must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.2": {
-  "title": "net.ipv4.conf.all.forwarding must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.3": {
-  "title": "net.ipv4.conf.default.forwarding must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.4": {
-  "title": "net.ipv4.conf.all.send_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.5": {
-  "title": "net.ipv4.conf.default.send_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.6": {
-  "title": "net.ipv4.icmp_ignore_bogus_error_responses must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.7": {
-  "title": "net.ipv4.icmp_echo_ignore_broadcasts must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.8": {
-  "title": "net.ipv4.conf.all.accept_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.9": {
-  "title": "net.ipv4.conf.default.accept_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.10": {
-  "title": "net.ipv4.conf.all.secure_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.11": {
-  "title": "net.ipv4.conf.default.secure_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.12": {
-  "title": "net.ipv4.conf.all.rp_filter must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.13": {
-  "title": "net.ipv4.conf.default.rp_filter must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.14": {
-  "title": "net.ipv4.conf.all.accept_source_route must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.15": {
-  "title": "net.ipv4.conf.default.accept_source_route must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.16": {
-  "title": "net.ipv4.conf.all.log_martians must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.17": {
-  "title": "net.ipv4.conf.default.log_martians must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.18": {
-  "title": "net.ipv4.tcp_syncookies must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.1.19": {
-  "title": "net.ipv4.conf.all.route_localnet must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.1": {
-  "title": "net.ipv6.conf.all.forwarding must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.2": {
-  "title": "net.ipv6.conf.default.forwarding must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.3": {
-  "title": "net.ipv6.conf.all.accept_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.4": {
-  "title": "net.ipv6.conf.default.accept_redirects must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.5": {
-  "title": "net.ipv6.conf.all.accept_source_route must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.6": {
-  "title": "net.ipv6.conf.default.accept_source_route must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.7": {
-  "title": "net.ipv6.conf.all.accept_ra must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "3.3.2.8": {
-  "title": "net.ipv6.conf.default.accept_ra must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "network"
- },
- "4.1.1": {
-  "title": "ufw must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "firewall"
- },
- "4.1.2": {
-  "title": "ufw service must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "firewall"
- },
- "4.1.3": {
-  "title": "ufw incoming default must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "firewall"
- },
- "4.1.4": {
-  "title": "ufw outgoing default must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "firewall"
- },
- "4.1.5": {
-  "title": "ufw routed default must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "firewall"
- },
- "5.1.1": {
-  "title": "access to /etc/ssh/sshd_config must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.2": {
-  "title": "access to /etc/ssh/sshd_config.d/ directory must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.3": {
-  "title": "access to SSH private host key files must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.4": {
-  "title": "access to SSH public host key files must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.5": {
-  "title": "sshd access must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.6": {
-  "title": "sshd Banner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.7": {
-  "title": "sshd Ciphers must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.8": {
-  "title": "sshd ClientAliveInterval and ClientAliveCountMax must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.9": {
-  "title": "sshd DisableForwarding must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.10": {
-  "title": "sshd GSSAPIAuthentication must be turned off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.11": {
-  "title": "sshd HostbasedAuthentication must be turned off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.12": {
-  "title": "sshd IgnoreRhosts must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.13": {
-  "title": "sshd KexAlgorithms must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.14": {
-  "title": "sshd post-quantum cryptography key exchange algorithms must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.15": {
-  "title": "sshd LoginGraceTime must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.16": {
-  "title": "sshd LogLevel must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.17": {
-  "title": "sshd MACs must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.18": {
-  "title": "sshd MaxAuthTries must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.19": {
-  "title": "sshd MaxSessions must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.20": {
-  "title": "sshd MaxStartups must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.21": {
-  "title": "sshd PermitEmptyPasswords must be turned off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.22": {
-  "title": "sshd PermitRootLogin must be turned off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.23": {
-  "title": "sshd PermitUserEnvironment must be turned off",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.1.24": {
-  "title": "sshd UsePAM must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "ssh"
- },
- "5.2.1": {
-  "title": "sudo must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.2.2": {
-  "title": "sudo commands must allocate a pseudo-terminal",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.2.3": {
-  "title": "a log file for sudo must exist",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.2.4": {
-  "title": "checked condition — users must provide password for escalation",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "sudo"
- },
- "5.2.5": {
-  "title": "re-authentication for privilege escalation must stay in effect globally",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.2.6": {
-  "title": "sudo timestamp_timeout must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.2.7": {
-  "title": "access to the su command must be restricted",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "sudo"
- },
- "5.3.1.1": {
-  "title": "latest version of pam must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.1.2": {
-  "title": "latest version of libpam-modules must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.1.3": {
-  "title": "latest version of libpam-pwquality must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.1.4": {
-  "title": "latest version of cracklib-runtime must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.2.1": {
-  "title": "pam_unix module must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.2.2": {
-  "title": "pam_faillock module must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.2.3": {
-  "title": "pam_pwquality module must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.2.4": {
-  "title": "pam_pwhistory module must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.1.1": {
-  "title": "password failed attempts lockout must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.1.2": {
-  "title": "password unlock time must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.1.3": {
-  "title": "checked condition — password failed attempts lockout includes root account",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "pam"
- },
- "5.3.3.2.1": {
-  "title": "password number of changed characters must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.2": {
-  "title": "password length must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.3": {
-  "title": "password complexity must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.4": {
-  "title": "password same consecutive characters must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.5": {
-  "title": "password maximum sequential characters must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.6": {
-  "title": "password dictionary check must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.7": {
-  "title": "password quality checking must be enforced",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.2.8": {
-  "title": "password quality must be enforced for the root user",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.3.1": {
-  "title": "password history remember must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.3.2": {
-  "title": "password history must be enforced for the root user",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.3.3": {
-  "title": "checked condition — pam_pwhistory includes use_authtok",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.4.1": {
-  "title": "checked condition — pam_unix does not include nullok",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.4.2": {
-  "title": "checked condition — pam_unix does not include remember",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.4.3": {
-  "title": "checked condition — pam_unix includes a strong password hashing algorithm",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.3.3.4.4": {
-  "title": "checked condition — pam_unix includes use_authtok",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "pam"
- },
- "5.4.1.1": {
-  "title": "password expiration must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.1.2": {
-  "title": "minimum password days must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "accounts"
- },
- "5.4.1.3": {
-  "title": "password expiration warning days must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.1.4": {
-  "title": "strong password hashing algorithm must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.1.5": {
-  "title": "inactive password lock must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.1.6": {
-  "title": "all users last password change date must be in the past",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.1": {
-  "title": "uid 0 must belong only to root",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.2": {
-  "title": "root must be the only GID 0 account",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.3": {
-  "title": "group root must be the only GID 0 group",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.4": {
-  "title": "root account access must be controlled",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.5": {
-  "title": "checked condition — root path integrity",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.6": {
-  "title": "root user umask must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.7": {
-  "title": "system accounts do not must have a valid login shell",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.2.8": {
-  "title": "accounts without a valid login shell must be locked",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.3.1": {
-  "title": "nologin must be not listed in /etc/shells",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "accounts"
- },
- "5.4.3.2": {
-  "title": "default user shell timeout must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "5.4.3.3": {
-  "title": "default user umask must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "accounts"
- },
- "6.1.1.1.1": {
-  "title": "journald service must be active",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.2": {
-  "title": "systemd-journal-remote service must not be running",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.3": {
-  "title": "journald must be explicitly configured to send logs to rsyslog",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.4": {
-  "title": "journald log file access must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.5": {
-  "title": "journald log file rotation must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.6": {
-  "title": "journald Storage must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.1.1.7": {
-  "title": "journald Compress must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.1": {
-  "title": "rsyslog must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.2": {
-  "title": "rsyslog service must be turned on and active",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.3": {
-  "title": "rsyslog log file creation mode must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.4": {
-  "title": "rsyslog logging must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.5": {
-  "title": "rsyslog must be explicitly configured to send logs to a remote log host",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.6": {
-  "title": "rsyslog must be left unconfigured to receive logs from a remote client",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.7": {
-  "title": "logrotate must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.1.2.8": {
-  "title": "rsyslog-gnutls must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "logging"
- },
- "6.1.2.9": {
-  "title": "checked condition — rsyslog forwarding uses gtls",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "logging"
- },
- "6.1.2.10": {
-  "title": "rsyslog CA certificates must be explicitly configured",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "logging"
- },
- "6.1.3.1": {
-  "title": "access to all logfiles must have been configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "logging"
- },
- "6.2.1.1": {
-  "title": "auditd packages must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.1.2": {
-  "title": "auditd service must be turned on and active",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.1.3": {
-  "title": "auditing for processes that start prior to auditd must be turned on",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.1.4": {
-  "title": "audit_backlog_limit must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.2.1": {
-  "title": "audit log storage size must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.2.2": {
-  "title": "audit logs must be not automatically deleted",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.2.3": {
-  "title": "system must be turned off when audit logs are full",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.2.4": {
-  "title": "system warns when audit logs must be low on space",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.1": {
-  "title": "an audit rule must record modification of the /etc/sudoers file",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.2": {
-  "title": "actions as another user must be always logged",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.3": {
-  "title": "an audit rule must record events that modify the sudo log file",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.4": {
-  "title": "an audit rule must record events that modify date and time information",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.5": {
-  "title": "an audit rule must record events that modify sethostname and setdomainname",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.6": {
-  "title": "an audit rule must record events that modify /etc/issue and /etc/issue.net",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.7": {
-  "title": "an audit rule must record events that modify /etc/hosts and /etc/hostname",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.8": {
-  "title": "an audit rule must record events that modify the system's network environment",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.9": {
-  "title": "an audit rule must record events that modify /etc/NetworkManager directory",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.10": {
-  "title": "an audit rule must record use of privileged commands",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.11": {
-  "title": "an audit rule must record unsuccessful file access attempts",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.12": {
-  "title": "an audit rule must record events that modify /etc/group information",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.13": {
-  "title": "an audit rule must record events that modify /etc/passwd information",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.14": {
-  "title": "an audit rule must record events that modify /etc/shadow and /etc/gshadow",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.15": {
-  "title": "an audit rule must record events that modify /etc/security/opasswd",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.16": {
-  "title": "an audit rule must record events that modify /etc/nsswitch.conf file",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.17": {
-  "title": "an audit rule must record events that modify /etc/pam.conf and /etc/pam.d/ information",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.18": {
-  "title": "an audit rule must record discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.19": {
-  "title": "an audit rule must record discretionary access control permission modification events chown,fchown,lchown,fchownat",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.20": {
-  "title": "checked condition — discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.21": {
-  "title": "an audit rule must record successful file system mounts",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.22": {
-  "title": "an audit rule must record session initiation information",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.23": {
-  "title": "an audit rule must record login and logout events",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.24": {
-  "title": "an audit rule must record unlink file deletion events by users",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.25": {
-  "title": "an audit rule must record rename file deletion events by users",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.26": {
-  "title": "an audit rule must record events that modify the system's Mandatory Access Controls",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.27": {
-  "title": "an audit rule must record successful and unsuccessful attempts to use the chcon command",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.28": {
-  "title": "an audit rule must record successful and unsuccessful attempts to use the setfacl command",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.29": {
-  "title": "an audit rule must record successful and unsuccessful attempts to use the chacl command",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.30": {
-  "title": "an audit rule must record successful and unsuccessful attempts to use the usermod command",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.31": {
-  "title": "an audit rule must record kernel module loading unloading and modification",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.32": {
-  "title": "an audit rule must record kernel \"init_module\" and \"finit_module\" loading unloading and modification",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.33": {
-  "title": "an audit rule must record kernel \"delete_module\" loading unloading and modification",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.34": {
-  "title": "the audit configuration must be loaded regardless of errors",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.35": {
-  "title": "the audit configuration must be immutable",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.3.36": {
-  "title": "the running and on disk configuration must be the same",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.1": {
-  "title": "audit log files mode must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.2": {
-  "title": "audit log files owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.3": {
-  "title": "audit log files group owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.4": {
-  "title": "the audit log file directory mode must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.5": {
-  "title": "audit configuration files mode must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.6": {
-  "title": "audit configuration files owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.7": {
-  "title": "audit configuration files group owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.8": {
-  "title": "audit tools mode must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.9": {
-  "title": "audit tools owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.2.4.10": {
-  "title": "audit tools group owner must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "auditd"
- },
- "6.3.1": {
-  "title": "AIDE must be present",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "integrity"
- },
- "6.3.2": {
-  "title": "filesystem integrity must be regularly checked",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "integrity"
- },
- "6.3.3": {
-  "title": "cryptographic mechanisms must be used to protect the integrity of audit tools",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Server",
-   "Level 2 - Workstation"
-  ],
-  "levels": {
-   "server": 2,
-   "workstation": 2
-  },
-  "section": "integrity"
- },
- "7.1.1": {
-  "title": "access to /etc/passwd must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.2": {
-  "title": "access to /etc/passwd- must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.3": {
-  "title": "access to /etc/group must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.4": {
-  "title": "access to /etc/group- must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.5": {
-  "title": "access to /etc/shadow must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.6": {
-  "title": "access to /etc/shadow- must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.7": {
-  "title": "access to /etc/gshadow must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.8": {
-  "title": "access to /etc/gshadow- must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.9": {
-  "title": "access to /etc/shells must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.10": {
-  "title": "access to /etc/security/opasswd must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.11": {
-  "title": "world writable files and directories must be secured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.12": {
-  "title": "checked condition — no files or directories without an owner and a group exist",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.1.13": {
-  "title": "SUID and SGID files must be reviewed",
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "file_permissions"
- },
- "7.2.1": {
-  "title": "password hashes must be stored outside /etc/passwd",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.2": {
-  "title": "password fields in /etc/shadow must be populated",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.3": {
-  "title": "every group named in /etc/passwd must also exist in /etc/group",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.4": {
-  "title": "shadow group must be blank",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.5": {
-  "title": "the local account database must not contain duplicate UIDs",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.6": {
-  "title": "the local account database must not contain duplicate GIDs",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.7": {
-  "title": "the local account database must not contain duplicate user names",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.8": {
-  "title": "the local account database must not contain duplicate group names",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.9": {
-  "title": "local interactive user home directories must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.10": {
-  "title": "local interactive user dot files access must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- },
- "7.2.11": {
-  "title": "local interactive user dot directories access must be explicitly configured",
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Server",
-   "Level 1 - Workstation"
-  ],
-  "levels": {
-   "server": 1,
-   "workstation": 1
-  },
-  "section": "user_group"
- }
+	"1.1.1.1": {
+		"title": "cramfs kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.2": {
+		"title": "freevxfs kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.3": {
+		"title": "hfs kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.4": {
+		"title": "hfsplus kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.5": {
+		"title": "jffs2 kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.6": {
+		"title": "overlay kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.7": {
+		"title": "squashfs kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.8": {
+		"title": "udf kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.9": {
+		"title": "firewire-core kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.10": {
+		"title": "usb-storage kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.1.11": {
+		"title": "unused filesystems kernel modules must be not available",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.1.1": {
+		"title": "/tmp must be tmpfs or a separate partition",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.1.2": {
+		"title": "/tmp must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.1.3": {
+		"title": "/tmp must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.1.4": {
+		"title": "/tmp must be mounted with the noexec option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.2.1": {
+		"title": "/dev/shm must be tmpfs or a separate partition",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.2.2": {
+		"title": "/dev/shm must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.2.3": {
+		"title": "/dev/shm must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.2.4": {
+		"title": "/dev/shm must be mounted with the noexec option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.3.1": {
+		"title": "/home must be its own filesystem",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.3.2": {
+		"title": "/home must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.3.3": {
+		"title": "/home must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.4.1": {
+		"title": "/var must be its own filesystem",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.4.2": {
+		"title": "/var must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.4.3": {
+		"title": "/var must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.5.1": {
+		"title": "/var/tmp must be its own filesystem",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.5.2": {
+		"title": "/var/tmp must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.5.3": {
+		"title": "/var/tmp must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.5.4": {
+		"title": "/var/tmp must be mounted with the noexec option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.6.1": {
+		"title": "/var/log must be its own filesystem",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.6.2": {
+		"title": "/var/log must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.6.3": {
+		"title": "/var/log must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.6.4": {
+		"title": "/var/log must be mounted with the noexec option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.7.1": {
+		"title": "/var/log/audit must be its own filesystem",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.7.2": {
+		"title": "/var/log/audit must be mounted with the nodev option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.7.3": {
+		"title": "/var/log/audit must be mounted with the nosuid option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.1.2.7.4": {
+		"title": "/var/log/audit must be mounted with the noexec option",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "filesystem",
+	},
+	"1.2.1.1": {
+		"title": "checked condition — the source.list and .source files use the Signed-By option",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.2": {
+		"title": "weak dependencies must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.3": {
+		"title": "access to gpg key files must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.4": {
+		"title": "access to /etc/apt/trusted.gpg.d directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.5": {
+		"title": "access to /etc/apt/auth.conf.d directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.6": {
+		"title": "access to files in the /etc/apt/auth.conf.d/ directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.7": {
+		"title": "access to /usr/share/keyrings directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.8": {
+		"title": "access to /etc/apt/sources.list.d directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.9": {
+		"title": "access to files in /etc/apt/sources.list.d must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.10": {
+		"title": "repositories must be set to https in /etc/apt/sources.list",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.11": {
+		"title": "repositories must be set to https in /etc/apt/sources.list.d directory",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.12": {
+		"title": "AllowInsecureRepositories must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.13": {
+		"title": "AllowWeakRepositories must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.14": {
+		"title": "AllowDowngradeToInsecureRepositories must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.1.15": {
+		"title": "Acquire::Check-Date must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.2.2.1": {
+		"title": "updates, patches, and additional security software must be present",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "package_management",
+	},
+	"1.3.1.1": {
+		"title": "apparmor packages must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "apparmor",
+	},
+	"1.3.1.2": {
+		"title": "AppArmor must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "apparmor",
+	},
+	"1.3.1.3": {
+		"title": "all AppArmor Profiles must be enforcing",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "apparmor",
+	},
+	"1.3.1.4": {
+		"title": "kernel.apparmor_restrict_unprivileged_unconfined must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "apparmor",
+	},
+	"1.4.1": {
+		"title": "bootloader password must be set",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "bootloader",
+	},
+	"1.4.2": {
+		"title": "access to bootloader config must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "bootloader",
+	},
+	"1.5.1": {
+		"title": "fs.protected_hardlinks must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.2": {
+		"title": "fs.protected_symlinks must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.3": {
+		"title": "kernel.yama.ptrace_scope must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.4": {
+		"title": "fs.suid_dumpable must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.5": {
+		"title": "kernel.dmesg_restrict must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.6": {
+		"title": "prelink must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.7": {
+		"title": "Automatic Error Reporting must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.8": {
+		"title": "kernel.kptr_restrict must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.9": {
+		"title": "kernel.randomize_va_space must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.10": {
+		"title": "core file size must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.11": {
+		"title": "systemd-coredump ProcessSizeMax must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.5.12": {
+		"title": "systemd-coredump Storage must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "process_hardening",
+	},
+	"1.6.1": {
+		"title": "/etc/motd must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.2": {
+		"title": "/etc/issue must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.3": {
+		"title": "/etc/issue.net must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.4": {
+		"title": "pam_motd must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.5": {
+		"title": "sshd warning Banner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.6": {
+		"title": "access to /etc/motd must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.7": {
+		"title": "access to /etc/issue must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.8": {
+		"title": "access to /etc/issue.net must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.9": {
+		"title": "access to pam_motd file must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.10": {
+		"title": "access to sshd warning banner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.11": {
+		"title": "update-notifier-motd.service must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "banners",
+	},
+	"1.6.12": {
+		"title": "update-notifier-motd.timer must not be running",
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Server"],
+		"levels": {"server": 1},
+		"section": "banners",
+	},
+	"1.7.1": {
+		"title": "GDM login banner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "gdm",
+	},
+	"1.7.2": {
+		"title": "GDM disable-user-list must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "gdm",
+	},
+	"1.7.3": {
+		"title": "GDM screen lock must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "gdm",
+	},
+	"1.7.4": {
+		"title": "GDM automount must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "gdm",
+	},
+	"1.7.5": {
+		"title": "GDM autorun-never must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "gdm",
+	},
+	"1.7.6": {
+		"title": "XDMCP must stay off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "gdm",
+	},
+	"1.7.7": {
+		"title": "Xwayland must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "gdm",
+	},
+	"2.1.1": {
+		"title": "autofs services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "services",
+	},
+	"2.1.2": {
+		"title": "avahi daemon services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "services",
+	},
+	"2.1.3": {
+		"title": "dhcp server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.4": {
+		"title": "dns server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.5": {
+		"title": "dnsmasq services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.6": {
+		"title": "ftp server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.7": {
+		"title": "ldap server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.8": {
+		"title": "message access server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.9": {
+		"title": "network file system services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.10": {
+		"title": "nis server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.11": {
+		"title": "print server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "services",
+	},
+	"2.1.12": {
+		"title": "rpcbind services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.13": {
+		"title": "rsync services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.14": {
+		"title": "samba file server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.15": {
+		"title": "snmp services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.16": {
+		"title": "telnet server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.17": {
+		"title": "tftp server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.18": {
+		"title": "web proxy server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.19": {
+		"title": "web server services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.20": {
+		"title": "xinetd services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.21": {
+		"title": "X window server services must not be running",
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Server"],
+		"levels": {"server": 2},
+		"section": "services",
+	},
+	"2.1.22": {
+		"title": "mail transfer agents must be explicitly configured for local-only mode",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.1.23": {
+		"title": "only approved services must be listening on a network interface",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.1": {
+		"title": "nis client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.2": {
+		"title": "rsh client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.3": {
+		"title": "talk client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.4": {
+		"title": "telnet client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.5": {
+		"title": "ldap client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.2.6": {
+		"title": "ftp client must not be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "services",
+	},
+	"2.3.1.1": {
+		"title": "a single time synchronization daemon must be in use",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.3.2.1": {
+		"title": "checked condition — systemd-timesyncd configured with authorized timeserver",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.3.2.2": {
+		"title": "systemd-timesyncd must be turned on and running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.3.3.1": {
+		"title": "chrony must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.3.3.2": {
+		"title": "chrony must be running as user _chrony",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.3.3.3": {
+		"title": "chrony must be turned on and running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "time_sync",
+	},
+	"2.4.1.1": {
+		"title": "cron daemon must be turned on and active",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.2": {
+		"title": "access to /etc/crontab must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.3": {
+		"title": "access to /etc/cron.hourly must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.4": {
+		"title": "access to /etc/cron.daily must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.5": {
+		"title": "access to /etc/cron.weekly must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.6": {
+		"title": "access to /etc/cron.monthly must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.7": {
+		"title": "access to /etc/cron.yearly must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.8": {
+		"title": "access to /etc/cron.d must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.1.9": {
+		"title": "access to crontab must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"2.4.2.1": {
+		"title": "access to at must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "job_schedulers",
+	},
+	"3.1.1": {
+		"title": "IPv6 status must be identified",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.1.2": {
+		"title": "wireless interfaces must be not available",
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Server"],
+		"levels": {"server": 1},
+		"section": "network",
+	},
+	"3.1.3": {
+		"title": "bluetooth services must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 2,
+		},
+		"section": "network",
+	},
+	"3.2.1": {
+		"title": "atm kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.2": {
+		"title": "can kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.3": {
+		"title": "dccp kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.4": {
+		"title": "rds kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.5": {
+		"title": "sctp kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.6": {
+		"title": "tipc kernel module must be blocked from loading",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.2.7": {
+		"title": "unneeded network protocol kernel modules must be not available",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.1": {
+		"title": "net.ipv4.ip_forward must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.2": {
+		"title": "net.ipv4.conf.all.forwarding must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.3": {
+		"title": "net.ipv4.conf.default.forwarding must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.4": {
+		"title": "net.ipv4.conf.all.send_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.5": {
+		"title": "net.ipv4.conf.default.send_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.6": {
+		"title": "net.ipv4.icmp_ignore_bogus_error_responses must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.7": {
+		"title": "net.ipv4.icmp_echo_ignore_broadcasts must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.8": {
+		"title": "net.ipv4.conf.all.accept_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.9": {
+		"title": "net.ipv4.conf.default.accept_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.10": {
+		"title": "net.ipv4.conf.all.secure_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.11": {
+		"title": "net.ipv4.conf.default.secure_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.12": {
+		"title": "net.ipv4.conf.all.rp_filter must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.13": {
+		"title": "net.ipv4.conf.default.rp_filter must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.14": {
+		"title": "net.ipv4.conf.all.accept_source_route must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.15": {
+		"title": "net.ipv4.conf.default.accept_source_route must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.16": {
+		"title": "net.ipv4.conf.all.log_martians must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.17": {
+		"title": "net.ipv4.conf.default.log_martians must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.18": {
+		"title": "net.ipv4.tcp_syncookies must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.1.19": {
+		"title": "net.ipv4.conf.all.route_localnet must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.1": {
+		"title": "net.ipv6.conf.all.forwarding must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.2": {
+		"title": "net.ipv6.conf.default.forwarding must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.3": {
+		"title": "net.ipv6.conf.all.accept_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.4": {
+		"title": "net.ipv6.conf.default.accept_redirects must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.5": {
+		"title": "net.ipv6.conf.all.accept_source_route must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.6": {
+		"title": "net.ipv6.conf.default.accept_source_route must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.7": {
+		"title": "net.ipv6.conf.all.accept_ra must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"3.3.2.8": {
+		"title": "net.ipv6.conf.default.accept_ra must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "network",
+	},
+	"4.1.1": {
+		"title": "ufw must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "firewall",
+	},
+	"4.1.2": {
+		"title": "ufw service must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "firewall",
+	},
+	"4.1.3": {
+		"title": "ufw incoming default must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "firewall",
+	},
+	"4.1.4": {
+		"title": "ufw outgoing default must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "firewall",
+	},
+	"4.1.5": {
+		"title": "ufw routed default must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "firewall",
+	},
+	"5.1.1": {
+		"title": "access to /etc/ssh/sshd_config must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.2": {
+		"title": "access to /etc/ssh/sshd_config.d/ directory must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.3": {
+		"title": "access to SSH private host key files must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.4": {
+		"title": "access to SSH public host key files must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.5": {
+		"title": "sshd access must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.6": {
+		"title": "sshd Banner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.7": {
+		"title": "sshd Ciphers must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.8": {
+		"title": "sshd ClientAliveInterval and ClientAliveCountMax must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.9": {
+		"title": "sshd DisableForwarding must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.10": {
+		"title": "sshd GSSAPIAuthentication must be turned off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.11": {
+		"title": "sshd HostbasedAuthentication must be turned off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.12": {
+		"title": "sshd IgnoreRhosts must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.13": {
+		"title": "sshd KexAlgorithms must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.14": {
+		"title": "sshd post-quantum cryptography key exchange algorithms must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.15": {
+		"title": "sshd LoginGraceTime must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.16": {
+		"title": "sshd LogLevel must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.17": {
+		"title": "sshd MACs must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.18": {
+		"title": "sshd MaxAuthTries must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.19": {
+		"title": "sshd MaxSessions must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.20": {
+		"title": "sshd MaxStartups must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.21": {
+		"title": "sshd PermitEmptyPasswords must be turned off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.22": {
+		"title": "sshd PermitRootLogin must be turned off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.23": {
+		"title": "sshd PermitUserEnvironment must be turned off",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.1.24": {
+		"title": "sshd UsePAM must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "ssh",
+	},
+	"5.2.1": {
+		"title": "sudo must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.2.2": {
+		"title": "sudo commands must allocate a pseudo-terminal",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.2.3": {
+		"title": "a log file for sudo must exist",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.2.4": {
+		"title": "checked condition — users must provide password for escalation",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "sudo",
+	},
+	"5.2.5": {
+		"title": "re-authentication for privilege escalation must stay in effect globally",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.2.6": {
+		"title": "sudo timestamp_timeout must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.2.7": {
+		"title": "access to the su command must be restricted",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "sudo",
+	},
+	"5.3.1.1": {
+		"title": "latest version of pam must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.1.2": {
+		"title": "latest version of libpam-modules must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.1.3": {
+		"title": "latest version of libpam-pwquality must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.1.4": {
+		"title": "latest version of cracklib-runtime must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.2.1": {
+		"title": "pam_unix module must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.2.2": {
+		"title": "pam_faillock module must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.2.3": {
+		"title": "pam_pwquality module must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.2.4": {
+		"title": "pam_pwhistory module must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.1.1": {
+		"title": "password failed attempts lockout must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.1.2": {
+		"title": "password unlock time must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.1.3": {
+		"title": "checked condition — password failed attempts lockout includes root account",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.1": {
+		"title": "password number of changed characters must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.2": {
+		"title": "password length must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.3": {
+		"title": "password complexity must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.4": {
+		"title": "password same consecutive characters must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.5": {
+		"title": "password maximum sequential characters must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.6": {
+		"title": "password dictionary check must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.7": {
+		"title": "password quality checking must be enforced",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.2.8": {
+		"title": "password quality must be enforced for the root user",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.3.1": {
+		"title": "password history remember must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.3.2": {
+		"title": "password history must be enforced for the root user",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.3.3": {
+		"title": "checked condition — pam_pwhistory includes use_authtok",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.4.1": {
+		"title": "checked condition — pam_unix does not include nullok",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.4.2": {
+		"title": "checked condition — pam_unix does not include remember",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.4.3": {
+		"title": "checked condition — pam_unix includes a strong password hashing algorithm",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.3.3.4.4": {
+		"title": "checked condition — pam_unix includes use_authtok",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "pam",
+	},
+	"5.4.1.1": {
+		"title": "password expiration must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.1.2": {
+		"title": "minimum password days must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "accounts",
+	},
+	"5.4.1.3": {
+		"title": "password expiration warning days must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.1.4": {
+		"title": "strong password hashing algorithm must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.1.5": {
+		"title": "inactive password lock must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.1.6": {
+		"title": "all users last password change date must be in the past",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.1": {
+		"title": "uid 0 must belong only to root",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.2": {
+		"title": "root must be the only GID 0 account",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.3": {
+		"title": "group root must be the only GID 0 group",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.4": {
+		"title": "root account access must be controlled",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.5": {
+		"title": "checked condition — root path integrity",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.6": {
+		"title": "root user umask must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.7": {
+		"title": "system accounts do not must have a valid login shell",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.2.8": {
+		"title": "accounts without a valid login shell must be locked",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.3.1": {
+		"title": "nologin must be not listed in /etc/shells",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "accounts",
+	},
+	"5.4.3.2": {
+		"title": "default user shell timeout must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"5.4.3.3": {
+		"title": "default user umask must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "accounts",
+	},
+	"6.1.1.1.1": {
+		"title": "journald service must be active",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.2": {
+		"title": "systemd-journal-remote service must not be running",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.3": {
+		"title": "journald must be explicitly configured to send logs to rsyslog",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.4": {
+		"title": "journald log file access must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.5": {
+		"title": "journald log file rotation must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.6": {
+		"title": "journald Storage must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.1.1.7": {
+		"title": "journald Compress must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.1": {
+		"title": "rsyslog must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.2": {
+		"title": "rsyslog service must be turned on and active",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.3": {
+		"title": "rsyslog log file creation mode must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.4": {
+		"title": "rsyslog logging must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.5": {
+		"title": "rsyslog must be explicitly configured to send logs to a remote log host",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.6": {
+		"title": "rsyslog must be left unconfigured to receive logs from a remote client",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.7": {
+		"title": "logrotate must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.1.2.8": {
+		"title": "rsyslog-gnutls must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "logging",
+	},
+	"6.1.2.9": {
+		"title": "checked condition — rsyslog forwarding uses gtls",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "logging",
+	},
+	"6.1.2.10": {
+		"title": "rsyslog CA certificates must be explicitly configured",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "logging",
+	},
+	"6.1.3.1": {
+		"title": "access to all logfiles must have been configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "logging",
+	},
+	"6.2.1.1": {
+		"title": "auditd packages must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.1.2": {
+		"title": "auditd service must be turned on and active",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.1.3": {
+		"title": "auditing for processes that start prior to auditd must be turned on",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.1.4": {
+		"title": "audit_backlog_limit must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.2.1": {
+		"title": "audit log storage size must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.2.2": {
+		"title": "audit logs must be not automatically deleted",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.2.3": {
+		"title": "system must be turned off when audit logs are full",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.2.4": {
+		"title": "system warns when audit logs must be low on space",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.1": {
+		"title": "an audit rule must record modification of the /etc/sudoers file",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.2": {
+		"title": "actions as another user must be always logged",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.3": {
+		"title": "an audit rule must record events that modify the sudo log file",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.4": {
+		"title": "an audit rule must record events that modify date and time information",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.5": {
+		"title": "an audit rule must record events that modify sethostname and setdomainname",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.6": {
+		"title": "an audit rule must record events that modify /etc/issue and /etc/issue.net",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.7": {
+		"title": "an audit rule must record events that modify /etc/hosts and /etc/hostname",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.8": {
+		"title": "an audit rule must record events that modify the system's network environment",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.9": {
+		"title": "an audit rule must record events that modify /etc/NetworkManager directory",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.10": {
+		"title": "an audit rule must record use of privileged commands",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.11": {
+		"title": "an audit rule must record unsuccessful file access attempts",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.12": {
+		"title": "an audit rule must record events that modify /etc/group information",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.13": {
+		"title": "an audit rule must record events that modify /etc/passwd information",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.14": {
+		"title": "an audit rule must record events that modify /etc/shadow and /etc/gshadow",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.15": {
+		"title": "an audit rule must record events that modify /etc/security/opasswd",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.16": {
+		"title": "an audit rule must record events that modify /etc/nsswitch.conf file",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.17": {
+		"title": "an audit rule must record events that modify /etc/pam.conf and /etc/pam.d/ information",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.18": {
+		"title": "an audit rule must record discretionary access control permission modification events chmod,fchmod,fchmodat,fchmodat2",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.19": {
+		"title": "an audit rule must record discretionary access control permission modification events chown,fchown,lchown,fchownat",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.20": {
+		"title": "checked condition — discretionary access control permission modification events setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr collected",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.21": {
+		"title": "an audit rule must record successful file system mounts",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.22": {
+		"title": "an audit rule must record session initiation information",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.23": {
+		"title": "an audit rule must record login and logout events",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.24": {
+		"title": "an audit rule must record unlink file deletion events by users",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.25": {
+		"title": "an audit rule must record rename file deletion events by users",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.26": {
+		"title": "an audit rule must record events that modify the system's Mandatory Access Controls",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.27": {
+		"title": "an audit rule must record successful and unsuccessful attempts to use the chcon command",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.28": {
+		"title": "an audit rule must record successful and unsuccessful attempts to use the setfacl command",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.29": {
+		"title": "an audit rule must record successful and unsuccessful attempts to use the chacl command",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.30": {
+		"title": "an audit rule must record successful and unsuccessful attempts to use the usermod command",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.31": {
+		"title": "an audit rule must record kernel module loading unloading and modification",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.32": {
+		"title": "an audit rule must record kernel \"init_module\" and \"finit_module\" loading unloading and modification",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.33": {
+		"title": "an audit rule must record kernel \"delete_module\" loading unloading and modification",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.34": {
+		"title": "the audit configuration must be loaded regardless of errors",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.35": {
+		"title": "the audit configuration must be immutable",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.3.36": {
+		"title": "the running and on disk configuration must be the same",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.1": {
+		"title": "audit log files mode must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.2": {
+		"title": "audit log files owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.3": {
+		"title": "audit log files group owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.4": {
+		"title": "the audit log file directory mode must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.5": {
+		"title": "audit configuration files mode must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.6": {
+		"title": "audit configuration files owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.7": {
+		"title": "audit configuration files group owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.8": {
+		"title": "audit tools mode must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.9": {
+		"title": "audit tools owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.2.4.10": {
+		"title": "audit tools group owner must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "auditd",
+	},
+	"6.3.1": {
+		"title": "AIDE must be present",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "integrity",
+	},
+	"6.3.2": {
+		"title": "filesystem integrity must be regularly checked",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "integrity",
+	},
+	"6.3.3": {
+		"title": "cryptographic mechanisms must be used to protect the integrity of audit tools",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 2 - Server",
+			"Level 2 - Workstation",
+		],
+		"levels": {
+			"server": 2,
+			"workstation": 2,
+		},
+		"section": "integrity",
+	},
+	"7.1.1": {
+		"title": "access to /etc/passwd must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.2": {
+		"title": "access to /etc/passwd- must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.3": {
+		"title": "access to /etc/group must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.4": {
+		"title": "access to /etc/group- must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.5": {
+		"title": "access to /etc/shadow must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.6": {
+		"title": "access to /etc/shadow- must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.7": {
+		"title": "access to /etc/gshadow must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.8": {
+		"title": "access to /etc/gshadow- must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.9": {
+		"title": "access to /etc/shells must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.10": {
+		"title": "access to /etc/security/opasswd must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.11": {
+		"title": "world writable files and directories must be secured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.12": {
+		"title": "checked condition — no files or directories without an owner and a group exist",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.1.13": {
+		"title": "SUID and SGID files must be reviewed",
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "file_permissions",
+	},
+	"7.2.1": {
+		"title": "password hashes must be stored outside /etc/passwd",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.2": {
+		"title": "password fields in /etc/shadow must be populated",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.3": {
+		"title": "every group named in /etc/passwd must also exist in /etc/group",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.4": {
+		"title": "shadow group must be blank",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.5": {
+		"title": "the local account database must not contain duplicate UIDs",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.6": {
+		"title": "the local account database must not contain duplicate GIDs",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.7": {
+		"title": "the local account database must not contain duplicate user names",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.8": {
+		"title": "the local account database must not contain duplicate group names",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.9": {
+		"title": "local interactive user home directories must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.10": {
+		"title": "local interactive user dot files access must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
+	"7.2.11": {
+		"title": "local interactive user dot directories access must be explicitly configured",
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - Server",
+			"Level 1 - Workstation",
+		],
+		"levels": {
+			"server": 1,
+			"workstation": 1,
+		},
+		"section": "user_group",
+	},
 }
 
 profiles := {"level1_server": {"platform": "server", "level": 1}, "level2_server": {"platform": "server", "level": 2}, "level1_workstation": {"platform": "workstation", "level": 1}, "level2_workstation": {"platform": "workstation", "level": 2}}
@@ -4650,118 +4638,108 @@ failing_ids := {split(v, ":")[0] | some v in all_violations}
 # =============================================================================
 
 section_inputs := {
- "filesystem": [
-  "ansible_facts",
-  "disabled_filesystem_modules",
-  "services"
- ],
- "package_management": [
-  "apt"
- ],
- "apparmor": [
-  "apparmor",
-  "boot_security",
-  "packages",
-  "services",
-  "sysctl",
-  "sysctl_persisted"
- ],
- "bootloader": [
-  "boot_security"
- ],
- "process_hardening": [
-  "apport",
-  "boot_security",
-  "limits",
-  "packages",
-  "services",
-  "sysctl",
-  "sysctl_persisted"
- ],
- "banners": [
-  "initial_setup",
-  "packages",
-  "services",
-  "ssh"
- ],
- "gdm": [
-  "initial_setup"
- ],
- "services": [
-  "mta",
-  "packages",
-  "services"
- ],
- "time_sync": [
-  "chronyd",
-  "services",
-  "timesyncd"
- ],
- "job_schedulers": [
-  "cron",
-  "packages",
-  "services"
- ],
- "network": [
-  "disabled_network_modules",
-  "ipv6",
-  "packages",
-  "services",
-  "sysctl",
-  "sysctl_persisted",
-  "wireless_interfaces"
- ],
- "firewall": [
-  "packages",
-  "services",
-  "ufw"
- ],
- "ssh": [
-  "ssh"
- ],
- "sudo": [
-  "packages",
-  "pam",
-  "sudo",
-  "user_group"
- ],
- "pam": [
-  "packages",
-  "pam",
-  "pending_updates"
- ],
- "accounts": [
-  "pam",
-  "user_group"
- ],
- "logging": [
-  "journald",
-  "log_file_permissions",
-  "packages",
-  "rsyslog",
-  "services"
- ],
- "auditd": [
-  "auditd",
-  "boot_security",
-  "packages",
-  "services",
-  "sudo"
- ],
- "integrity": [
-  "aide",
-  "packages"
- ],
- "file_permissions": [
-  "critical_files",
-  "sticky_bit",
-  "ungrouped_files",
-  "unowned_files",
-  "world_writable"
- ],
- "user_group": [
-  "user_group"
- ]
+	"filesystem": [
+		"ansible_facts",
+		"disabled_filesystem_modules",
+		"services",
+	],
+	"package_management": ["apt"],
+	"apparmor": [
+		"apparmor",
+		"boot_security",
+		"packages",
+		"services",
+		"sysctl",
+		"sysctl_persisted",
+	],
+	"bootloader": ["boot_security"],
+	"process_hardening": [
+		"apport",
+		"boot_security",
+		"limits",
+		"packages",
+		"services",
+		"sysctl",
+		"sysctl_persisted",
+	],
+	"banners": [
+		"initial_setup",
+		"packages",
+		"services",
+		"ssh",
+	],
+	"gdm": ["initial_setup"],
+	"services": [
+		"mta",
+		"packages",
+		"services",
+	],
+	"time_sync": [
+		"chronyd",
+		"services",
+		"timesyncd",
+	],
+	"job_schedulers": [
+		"cron",
+		"packages",
+		"services",
+	],
+	"network": [
+		"disabled_network_modules",
+		"ipv6",
+		"packages",
+		"services",
+		"sysctl",
+		"sysctl_persisted",
+		"wireless_interfaces",
+	],
+	"firewall": [
+		"packages",
+		"services",
+		"ufw",
+	],
+	"ssh": ["ssh"],
+	"sudo": [
+		"packages",
+		"pam",
+		"sudo",
+		"user_group",
+	],
+	"pam": [
+		"packages",
+		"pam",
+		"pending_updates",
+	],
+	"accounts": [
+		"pam",
+		"user_group",
+	],
+	"logging": [
+		"journald",
+		"log_file_permissions",
+		"packages",
+		"rsyslog",
+		"services",
+	],
+	"auditd": [
+		"auditd",
+		"boot_security",
+		"packages",
+		"services",
+		"sudo",
+	],
+	"integrity": [
+		"aide",
+		"packages",
+	],
+	"file_permissions": [
+		"critical_files",
+		"sticky_bit",
+		"ungrouped_files",
+		"unowned_files",
+		"world_writable",
+	],
+	"user_group": ["user_group"],
 }
 
 section_assessed(name) if {

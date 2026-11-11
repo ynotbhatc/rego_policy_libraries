@@ -279,13 +279,13 @@ umask_ok(u) if {
 default e_5_3_1_1 := false
 
 e_5_3_1_1 if {
-	text_collected(input.pam.package_versions["pam"])
+	text_collected(input.pam.package_versions.pam)
 }
 
 default p_5_3_1_1 := false
 
 p_5_3_1_1 if {
-	rpm_version_ge(input.pam.package_versions["pam"], "1.5.1-14")
+	rpm_version_ge(input.pam.package_versions.pam, "1.5.1-14")
 }
 
 violations contains "5.3.1.1: evidence missing — pam.package_versions[pam] not collected" if not e_5_3_1_1
@@ -300,13 +300,13 @@ violations contains "5.3.1.1: not met — latest version of pam must be present"
 default e_5_3_1_2 := false
 
 e_5_3_1_2 if {
-	text_collected(input.pam.package_versions["authselect"])
+	text_collected(input.pam.package_versions.authselect)
 }
 
 default p_5_3_1_2 := false
 
 p_5_3_1_2 if {
-	rpm_version_ge(input.pam.package_versions["authselect"], "1.2.6-1")
+	rpm_version_ge(input.pam.package_versions.authselect, "1.2.6-1")
 }
 
 violations contains "5.3.1.2: evidence missing — pam.package_versions[authselect] not collected" if not e_5_3_1_2
@@ -321,13 +321,13 @@ violations contains "5.3.1.2: not met — latest version of authselect must be p
 default e_5_3_1_3 := false
 
 e_5_3_1_3 if {
-	text_collected(input.pam.package_versions["libpwquality"])
+	text_collected(input.pam.package_versions.libpwquality)
 }
 
 default p_5_3_1_3 := false
 
 p_5_3_1_3 if {
-	rpm_version_ge(input.pam.package_versions["libpwquality"], "1.4.4-8")
+	rpm_version_ge(input.pam.package_versions.libpwquality, "1.4.4-8")
 }
 
 violations contains "5.3.1.3: evidence missing — pam.package_versions[libpwquality] not collected" if not e_5_3_1_3
@@ -372,7 +372,7 @@ e_5_3_2_2 if {
 default p_5_3_2_2 := false
 
 p_5_3_2_2 if {
-	every t in [pam_system_auth_text, input.pam.password_auth] { pam_line(t, "auth", "pam_faillock.so", `\spreauth\b`); pam_line(t, "auth", "pam_faillock.so", `\sauthfail\b`); pam_line(t, "account", "pam_faillock.so", ``) }
+	every t in [pam_system_auth_text, input.pam.password_auth] { pam_line(t, "auth", "pam_faillock.so", `\spreauth\b`); pam_line(t, "auth", "pam_faillock.so", `\sauthfail\b`); pam_line(t, "account", "pam_faillock.so", ``)}
 }
 
 violations contains "5.3.2.2: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_2_2
@@ -739,7 +739,7 @@ e_5_3_3_3_3 if {
 default p_5_3_3_3_3 := false
 
 p_5_3_3_3_3 if {
-	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_pwhistory.so")) > 0; every l in pam_lines(t, "password", "pam_pwhistory.so") { regex.match(`\suse_authtok\b`, l) } }
+	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_pwhistory.so")) > 0; every l in pam_lines(t, "password", "pam_pwhistory.so") { regex.match(`\suse_authtok\b`, l) }}
 }
 
 violations contains "5.3.3.3.3: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_3_3
@@ -805,7 +805,7 @@ e_5_3_3_4_3 if {
 default p_5_3_3_4_3 := false
 
 p_5_3_3_4_3 if {
-	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_unix.so")) > 0; every l in pam_lines(t, "password", "pam_unix.so") { regex.match(`\s(sha512|yescrypt)\b`, l) } }
+	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_unix.so")) > 0; every l in pam_lines(t, "password", "pam_unix.so") { regex.match(`\s(sha512|yescrypt)\b`, l) }}
 }
 
 violations contains "5.3.3.4.3: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_3
@@ -827,7 +827,7 @@ e_5_3_3_4_4 if {
 default p_5_3_3_4_4 := false
 
 p_5_3_3_4_4 if {
-	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_unix.so")) > 0; every l in pam_lines(t, "password", "pam_unix.so") { regex.match(`\suse_authtok\b`, l) } }
+	every t in [pam_system_auth_text, input.pam.password_auth] { count(pam_lines(t, "password", "pam_unix.so")) > 0; every l in pam_lines(t, "password", "pam_unix.so") { regex.match(`\suse_authtok\b`, l) }}
 }
 
 violations contains "5.3.3.4.4: evidence missing — pam.system_auth/password_auth not collected" if not e_5_3_3_4_4
@@ -853,7 +853,7 @@ p_5_4_1_1 if {
 	v := num(input.pam.pass_max_days)
 	v >= 1
 	v <= 365
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.max_days) >= 1; num(u.max_days) <= 365 }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.max_days) >= 1; num(u.max_days) <= 365}
 }
 
 violations contains "5.4.1.1: evidence missing — pam.pass_max_days/user_group.shadow_entries not collected" if not e_5_4_1_1
@@ -935,7 +935,7 @@ p_5_4_1_5 if {
 	v := num(input.pam.inactive_days)
 	v >= 0
 	v <= 45
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.inactive) >= 0; num(u.inactive) <= 45 }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { num(u.inactive) >= 0; num(u.inactive) <= 45}
 }
 
 violations contains "5.4.1.5: evidence missing — pam.inactive_days/user_group.shadow_entries not collected" if not e_5_4_1_5
@@ -1072,7 +1072,7 @@ p_5_4_2_5 if {
 	root_path_text_ok
 	count(input.user_group.root_path_nonexistent_dirs) == 0
 	count(input.user_group.root_path_writable_dirs) == 0
-	every d in input.user_group.root_path_entries { d.owner == "root"; mode_within(d.mode, "0755") }
+	every d in input.user_group.root_path_entries { d.owner == "root"; mode_within(d.mode, "0755")}
 }
 
 violations contains "5.4.2.5: evidence missing — user_group.root_path/root_path_nonexistent_dirs/root_path_writable_dirs/root_path_entries not collected" if not e_5_4_2_5

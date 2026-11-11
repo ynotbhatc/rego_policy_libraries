@@ -20,15 +20,25 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default cip_senior_manager_designated := false
+
 default cybersecurity_policies_established := false
+
 default delegation_documented := false
+
 default information_sharing_plan_exists := false
+
 default low_impact_plan_implemented := false
+
 default low_impact_plan_reviewed := false
+
 default policy_review_current := false
+
 default removable_media_controls := false
+
 default required_policy_areas_covered := false
+
 default transient_asset_security_controls := false
+
 default transient_cyber_asset_policy := false
 
 # CIP-003-8: Security Management Controls
@@ -92,7 +102,7 @@ required_policy_areas_covered if {
 # Policies must be reviewed within 15 calendar months
 policy_review_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.cybersecurity_policies.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -125,7 +135,7 @@ low_impact_plan_reviewed if {
 	count(low_systems) == 0
 } else if {
 	last_review_ns := time.parse_rfc3339_ns(input.low_impact_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -166,7 +176,7 @@ information_sharing_plan_exists if {
 	input.information_sharing_plan.regional_entity_contact_included == true
 	input.information_sharing_plan.contacts_current == true
 	last_review_ns := time.parse_rfc3339_ns(input.information_sharing_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 

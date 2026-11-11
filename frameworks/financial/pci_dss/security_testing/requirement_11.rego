@@ -157,17 +157,29 @@ payment_page_integrity if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default security_testing_policies_established := false
+
 default security_testing_roles_defined := false
+
 default wireless_access_point_testing := false
+
 default internal_vulnerability_scanning := false
+
 default external_vulnerability_scanning := false
+
 default vulnerability_remediation := false
+
 default penetration_testing := false
+
 default pen_test_remediation := false
+
 default segmentation_testing := false
+
 default ids_ips_deployed := false
+
 default file_integrity_monitoring := false
+
 default payment_page_integrity := false
+
 default pci_requirement_11_compliant := false
 
 # =================================================================
@@ -190,6 +202,7 @@ pci_requirement_11_compliant if {
 }
 
 default pci_requirement_11_score := 0
+
 default pci_requirement_11_findings := {}
 
 pci_requirement_11_score := score if {
@@ -217,9 +230,7 @@ pci_requirement_11_findings := {
 		"policies_established": security_testing_policies_established,
 		"roles_defined": security_testing_roles_defined,
 	},
-	"requirement_11_2": {
-		"wireless_ap_testing": wireless_access_point_testing,
-	},
+	"requirement_11_2": {"wireless_ap_testing": wireless_access_point_testing},
 	"requirement_11_3": {
 		"internal_scanning": internal_vulnerability_scanning,
 		"external_scanning_asv": external_vulnerability_scanning,
@@ -234,9 +245,7 @@ pci_requirement_11_findings := {
 		"ids_ips": ids_ips_deployed,
 		"file_integrity_monitoring": file_integrity_monitoring,
 	},
-	"requirement_11_6": {
-		"payment_page_integrity": payment_page_integrity,
-	},
+	"requirement_11_6": {"payment_page_integrity": payment_page_integrity},
 	"overall_score": pci_requirement_11_score,
 	"overall_compliant": pci_requirement_11_compliant,
 }

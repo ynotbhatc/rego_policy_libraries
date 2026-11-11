@@ -191,7 +191,9 @@ valid_shells := {s |
 	not regex.match(`/nologin$`, s)
 }
 
-dot_max(b) := "0600" if b in {".netrc", ".bash_history"} else := "0644"
+dot_max(b) := "0600" if b in {".netrc", ".bash_history"}
+
+else := "0644"
 
 dotfile_ok(d) if {
 	b := regex.replace(d.path, `^.*/`, "")
@@ -368,7 +370,7 @@ e_7_2_8 if {
 default p_7_2_8 := false
 
 p_7_2_8 if {
-	every h in input.user_group.interactive_homes { h.exists == true; h.owner == h.user; mode_within(h.mode, "0750") }
+	every h in input.user_group.interactive_homes { h.exists == true; h.owner == h.user; mode_within(h.mode, "0750")}
 }
 
 violations contains "7.2.8: evidence missing — user_group.interactive_homes not collected" if not e_7_2_8

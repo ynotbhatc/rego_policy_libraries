@@ -125,7 +125,7 @@ bgp_route_filtering if {
 # BGP peers must be reviewed
 bgp_peers_reviewed if {
 	last_review_ns := time.parse_rfc3339_ns(input.bgp_configuration.peer_list_reviewed_date)
-	age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 180
 }
 
@@ -420,11 +420,19 @@ report := {
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
 default dns_resolver_in_jurisdiction := false
+
 default dns_under_org_control := false
+
 default dnssec_enabled := false
+
 default egress_controlled := false
+
 default egress_in_jurisdiction := false
+
 default foreign_destination_alerting := false
+
 default netflow_monitoring := false
+
 default public_dns_blocked := false
+
 default rpki_deployed := false

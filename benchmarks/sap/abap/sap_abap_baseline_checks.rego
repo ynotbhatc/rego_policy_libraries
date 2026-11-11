@@ -15,6 +15,7 @@ violations contains msg if {
 	not ok_MSGSRV_A_d_1
 	msg := sprintf("MSGSRV-A_d.1: Profile parameter: ms/acl_info path is maintained (Message Server Security, pointing to access control list file for Message Server (%s)", [state("profile_parameters", "ms/acl_info")])
 }
+
 ok_MSGSRV_A_d_1 if {
 	v := fact("profile_parameters", "ms/acl_info")
 	regex.match(`(\w:)?([\/\\]usr[\/\\]sap|[\/\\]sapmnt)[\/\\](\w{3})([\/\\]SYS)?[\/\\]global[\/\\]ms_acl(_info)?(\.DAT|\.dat|\.txt)?`, v)
@@ -26,6 +27,7 @@ violations contains msg if {
 	not ok_NETENC_A_e
 	msg := sprintf("NETENC-A_e: Profile parameter: system/secure_communication = ON ≥ 7.40 (see SAP Notes 2040644, 2362078) (%s)", [state("profile_parameters", "system/secure_communication")])
 }
+
 ok_NETENC_A_e if {
 	v := fact("profile_parameters", "system/secure_communication")
 	upper(v) == "ON"
@@ -37,6 +39,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_a_1
 	msg := sprintf("PWDPOL-A_a.1: Profile parameter: login/min_password_lng ≥ 12 (Password Policy) (%s)", [state("profile_parameters", "login/min_password_lng")])
 }
+
 ok_PWDPOL_A_a_1 if {
 	v := fact("profile_parameters", "login/min_password_lng")
 	num_ge(v, 12)
@@ -48,6 +51,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_b_1
 	msg := sprintf("PWDPOL-A_b.1: Profile parameter: login/password_max_idle_initial between 1 and 14 (recommended 1 to 7) (Password Policy) (%s)", [state("profile_parameters", "login/password_max_idle_initial")])
 }
+
 ok_PWDPOL_A_b_1 if {
 	v := fact("profile_parameters", "login/password_max_idle_initial")
 	num_between(v, 1, 14)
@@ -59,6 +63,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_d
 	msg := sprintf("PWDPOL-A_d: Profile parameter: login/password_downwards_compatibility = 0 (disable downward compatible passwords, see Note 1023437) (%s)", [state("profile_parameters", "login/password_downwards_compatibility")])
 }
+
 ok_PWDPOL_A_d if {
 	v := fact("profile_parameters", "login/password_downwards_compatibility")
 	v == "0"
@@ -70,6 +75,7 @@ violations contains msg if {
 	not ok_RFCGW_A_b_secinfo_1
 	msg := sprintf("RFCGW-A_b secinfo.1: Profile parameter: gw/sec_info (mount path defined to ACL file) (%s)", [state("profile_parameters", "gw/sec_info")])
 }
+
 ok_RFCGW_A_b_secinfo_1 if {
 	v := fact("profile_parameters", "gw/sec_info")
 	count(v) > 0
@@ -81,6 +87,7 @@ violations contains msg if {
 	not ok_RFCGW_A_b_reginfo_1
 	msg := sprintf("RFCGW-A_b reginfo.1: Profile parameter: gw/reg_info (mount path defined to ACL file) (%s)", [state("profile_parameters", "gw/reg_info")])
 }
+
 ok_RFCGW_A_b_reginfo_1 if {
 	v := fact("profile_parameters", "gw/reg_info")
 	count(v) > 0
@@ -92,6 +99,7 @@ violations contains msg if {
 	not ok_RFCGW_A_c_1
 	msg := sprintf("RFCGW-A_c.1: Profile parameter: gw/reg_no_conn_info as recommended (Gateway security options Kernel lt 7.40) (%s)", [state("profile_parameters", "gw/reg_no_conn_info")])
 }
+
 ok_RFCGW_A_c_1 if {
 	v := fact("profile_parameters", "gw/reg_no_conn_info")
 	v in {"15", "31", "47", "63", "79", "95", "111", "127", "143", "159", "175", "191", "207", "223", "239", "255"}
@@ -103,6 +111,7 @@ violations contains msg if {
 	not ok_RFCGW_A_c_2
 	msg := sprintf("RFCGW-A_c.2: Profile parameter: gw/reg_no_conn_info = 255 (recommended) or uneven (Gateway security options Kernel ≥ 7.40, see Note 2776748) (%s)", [state("profile_parameters", "gw/reg_no_conn_info")])
 }
+
 ok_RFCGW_A_c_2 if {
 	v := fact("profile_parameters", "gw/reg_no_conn_info")
 	v in {"1", "65", "129", "255"}
@@ -114,6 +123,7 @@ violations contains msg if {
 	not ok_RFCGW_A_d
 	msg := sprintf("RFCGW-A_d: Profile parameter: gw/acl_mode = 1 (Mode for non existing ACL file) (%s)", [state("profile_parameters", "gw/acl_mode")])
 }
+
 ok_RFCGW_A_d if {
 	v := fact("profile_parameters", "gw/acl_mode")
 	v == "1"
@@ -125,6 +135,7 @@ violations contains msg if {
 	not ok_RFCGW_A_e
 	msg := sprintf("RFCGW-A_e: Profile parameter: gw/monitor = 1 (Enable gateway monitor commands) (%s)", [state("profile_parameters", "gw/monitor")])
 }
+
 ok_RFCGW_A_e if {
 	v := fact("profile_parameters", "gw/monitor")
 	v == "1"
@@ -136,6 +147,7 @@ violations contains msg if {
 	not ok_RFCGW_A_f
 	msg := sprintf("RFCGW-A_f: Profile parameter: gw/sim_mode = 0 (Disable simulation mode for reg_info and sec_info) (%s)", [state("profile_parameters", "gw/sim_mode")])
 }
+
 ok_RFCGW_A_f if {
 	v := fact("profile_parameters", "gw/sim_mode")
 	v == "0"
@@ -147,6 +159,7 @@ violations contains msg if {
 	not ok_SECUPD_A_a_5
 	msg := sprintf("SECUPD-A_a.5: CRYPTOLIB version ≥ 8.5.39 (see SAP Note 3051787) (%s)", [state("cryptolib", "CCL")])
 }
+
 ok_SECUPD_A_a_5 if {
 	v := fact("cryptolib", "CCL")
 	regex.match(`^(8\.5\.39|8\.5\.[456789]\d|8\.[6789]\.\d+|8\.\d{2,}\.\d+)[ ].*`, v)
@@ -158,6 +171,7 @@ violations contains msg if {
 	not ok_STDUSR_A_a_6
 	msg := sprintf("STDUSR-A_a.6: Profile parameter: login/no_automatic_user_sapstar = 1 (no login with hardcoded automatic user SAP*) (%s)", [state("profile_parameters", "login/no_automatic_user_sapstar")])
 }
+
 ok_STDUSR_A_a_6 if {
 	v := fact("profile_parameters", "login/no_automatic_user_sapstar")
 	v == "1"
@@ -169,6 +183,7 @@ violations contains msg if {
 	not ok_STDUSR_A_a_7
 	msg := sprintf("STDUSR-A_a.7: Profile parameter: login/create_virtual_user_sapstar = 1 (Kernel ≥ 790) (see Note 3303172, 3633474) (%s)", [state("profile_parameters", "login/create_virtual_user_sapstar")])
 }
+
 ok_STDUSR_A_a_7 if {
 	v := fact("profile_parameters", "login/create_virtual_user_sapstar")
 	v == "1"
@@ -180,6 +195,7 @@ violations contains msg if {
 	not ok_AUDIT_A_a_1p
 	msg := sprintf("AUDIT-A_a.1p: Profile parameters: rsau/enable = 1 (lt 740) (%s)", [state("profile_parameters", "rsau/enable")])
 }
+
 ok_AUDIT_A_a_1p if {
 	v := fact("profile_parameters", "rsau/enable")
 	v == "1"
@@ -191,6 +207,7 @@ violations contains msg if {
 	not ok_AUDIT_A_a_3p
 	msg := sprintf("AUDIT-A_a.3p: Profile parameter: rsau/selection_slots ≥ 10 (lt 740) (%s)", [state("profile_parameters", "rsau/selection_slots")])
 }
+
 ok_AUDIT_A_a_3p if {
 	v := fact("profile_parameters", "rsau/selection_slots")
 	num_ge(v, 10)
@@ -202,6 +219,7 @@ violations contains msg if {
 	not ok_AUDIT_A_a_4p
 	msg := sprintf("AUDIT-A_a.4p: Profile parameter: rsau/integrity = 1 (lt 740) (%s)", [state("profile_parameters", "rsau/integrity")])
 }
+
 ok_AUDIT_A_a_4p if {
 	v := fact("profile_parameters", "rsau/integrity")
 	v == "1"
@@ -213,6 +231,7 @@ violations contains msg if {
 	not ok_AUDIT_A_a_5p
 	msg := sprintf("AUDIT-A_a.5p: Profile parameter: rsau/log_peer_address = 1 (lt 740) (%s)", [state("profile_parameters", "rsau/log_peer_address")])
 }
+
 ok_AUDIT_A_a_5p if {
 	v := fact("profile_parameters", "rsau/log_peer_address")
 	v == "1"
@@ -224,6 +243,7 @@ violations contains msg if {
 	not ok_AUDIT_A_a_6p
 	msg := sprintf("AUDIT-A_a.6p: Profile parameter: rsau/user_selection = 1 (lt 740) (%s)", [state("profile_parameters", "rsau/user_selection")])
 }
+
 ok_AUDIT_A_a_6p if {
 	v := fact("profile_parameters", "rsau/user_selection")
 	v == "1"
@@ -235,6 +255,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_1a
 	msg := sprintf("AUDIT-A_c.1a: Profile parameter: icm/HTTP/logging_0 exists (%s)", [state("profile_parameters", "icm/HTTP/logging_0")])
 }
+
 ok_AUDIT_A_c_1a if {
 	v := fact("profile_parameters", "icm/HTTP/logging_0")
 	regex.match(`^.*$`, v)
@@ -246,6 +267,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_1b
 	msg := sprintf("AUDIT-A_c.1b: Profile parameter: icm/HTTP/logging_0 set as expected (%s)", [state("profile_parameters", "icm/HTTP/logging_0")])
 }
+
 ok_AUDIT_A_c_1b if {
 	v := fact("profile_parameters", "icm/HTTP/logging_0")
 	regex.match(`PREFIX=\/`, v)
@@ -254,6 +276,7 @@ ok_AUDIT_A_c_1b if {
 	regex.match(`SWITCHTF=month`, v)
 	regex.match(`LOGFORMAT=\%t \%a \%u - "\%r" \%s \%b \%Lms \%{[Hh]ost}i \%P \%w1 \%w2 \%y1 \%y2`, v)
 }
+
 ok_AUDIT_A_c_1b if {
 	v := fact("profile_parameters", "icm/HTTP/logging_0")
 	regex.match(`PREFIX=\/`, v)
@@ -270,6 +293,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_2a
 	msg := sprintf("AUDIT-A_c.2a: Profile parameter: icm/HTTP/logging_client_0 exists (%s)", [state("profile_parameters", "icm/HTTP/logging_client_0")])
 }
+
 ok_AUDIT_A_c_2a if {
 	v := fact("profile_parameters", "icm/HTTP/logging_client_0")
 	regex.match(`^.*$`, v)
@@ -281,6 +305,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_2b
 	msg := sprintf("AUDIT-A_c.2b: Profile parameter: icm/HTTP/logging_client_0 set as expected (%s)", [state("profile_parameters", "icm/HTTP/logging_client_0")])
 }
+
 ok_AUDIT_A_c_2b if {
 	v := fact("profile_parameters", "icm/HTTP/logging_client_0")
 	regex.match(`PREFIX=\/`, v)
@@ -289,6 +314,7 @@ ok_AUDIT_A_c_2b if {
 	regex.match(`SWITCHTF=month`, v)
 	regex.match(`LOGFORMAT=\%t \%a \%u - "\%r" \%s \%b \%Lms \%{[Hh]ost}i \%P \%w1 \%w2 \%y1 \%y2`, v)
 }
+
 ok_AUDIT_A_c_2b if {
 	v := fact("profile_parameters", "icm/HTTP/logging_client_0")
 	regex.match(`PREFIX=\/`, v)
@@ -305,6 +331,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_3a
 	msg := sprintf("AUDIT-A_c.3a: Profile parameter: icm/security_log exists (%s)", [state("profile_parameters", "icm/security_log")])
 }
+
 ok_AUDIT_A_c_3a if {
 	v := fact("profile_parameters", "icm/security_log")
 	regex.match(`^.*$`, v)
@@ -316,6 +343,7 @@ violations contains msg if {
 	not ok_AUDIT_A_c_3b
 	msg := sprintf("AUDIT-A_c.3b: Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)", [state("profile_parameters", "icm/security_log")])
 }
+
 ok_AUDIT_A_c_3b if {
 	v := fact("profile_parameters", "icm/security_log")
 	regex.match(`LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMAT=TABLE`, v)
@@ -327,6 +355,7 @@ violations contains msg if {
 	not ok_AUDIT_A_d_1a
 	msg := sprintf("AUDIT-A_d.1a: Profile parameter: ms/HTTP/logging_0 exists (%s)", [state("profile_parameters", "ms/HTTP/logging_0")])
 }
+
 ok_AUDIT_A_d_1a if {
 	v := fact("profile_parameters", "ms/HTTP/logging_0")
 	regex.match(`^.*$`, v)
@@ -338,6 +367,7 @@ violations contains msg if {
 	not ok_AUDIT_A_d_1b
 	msg := sprintf("AUDIT-A_d.1b: Profile parameter: ms/HTTP/logging_0 set as expected (%s)", [state("profile_parameters", "ms/HTTP/logging_0")])
 }
+
 ok_AUDIT_A_d_1b if {
 	v := fact("profile_parameters", "ms/HTTP/logging_0")
 	regex.match(`PREFIX=\/`, v)
@@ -354,6 +384,7 @@ violations contains msg if {
 	not ok_AUDIT_A_d_2a
 	msg := sprintf("AUDIT-A_d.2a: Profile parameter: ms/http_logging = 1 (monitoring of the Message Server active) (%s)", [state("profile_parameters", "ms/http_logging")])
 }
+
 ok_AUDIT_A_d_2a if {
 	v := fact("profile_parameters", "ms/http_logging")
 	v == "1"
@@ -365,6 +396,7 @@ violations contains msg if {
 	not ok_CHANGE_A_c_1
 	msg := sprintf("CHANGE-A_c.1: Profile parameter: rec/client maintained and != OFF (for client-specific tables, see Note 1916) (%s)", [state("profile_parameters", "rec/client")])
 }
+
 ok_CHANGE_A_c_1 if {
 	v := fact("profile_parameters", "rec/client")
 	v != "OFF"
@@ -377,6 +409,7 @@ violations contains msg if {
 	not ok_CHANGE_A_c_2
 	msg := sprintf("CHANGE-A_c.2: Profile parameter: rec/client = ALL (recommended value) (see Note 1916) (%s)", [state("profile_parameters", "rec/client")])
 }
+
 ok_CHANGE_A_c_2 if {
 	v := fact("profile_parameters", "rec/client")
 	upper(v) == "ALL"
@@ -388,6 +421,7 @@ violations contains msg if {
 	not ok_CHANGE_A_h
 	msg := sprintf("CHANGE-A_h: Profile parameter: abap/ext_debugging_possible = 2 (requests of other users cannot be debugged using external debugging) (%s)", [state("profile_parameters", "abap/ext_debugging_possible")])
 }
+
 ok_CHANGE_A_h if {
 	v := fact("profile_parameters", "abap/ext_debugging_possible")
 	v == "2"
@@ -399,6 +433,7 @@ violations contains msg if {
 	not ok_CHANGE_A_i
 	msg := sprintf("CHANGE-A_i: Profile parameter: dbs/dba/ccms_maintenance = 1 (for DBA Cockpit: CCMS Maintenance Enabling respective S_RZL_ADM) (%s)", [state("profile_parameters", "dbs/dba/ccms_maintenance")])
 }
+
 ok_CHANGE_A_i if {
 	v := fact("profile_parameters", "dbs/dba/ccms_maintenance")
 	v == "1"
@@ -410,6 +445,7 @@ violations contains msg if {
 	not ok_CHANGE_A_j
 	msg := sprintf("CHANGE-A_j: Profile parameter: dbs/dba/ccms_security_level = 1 (for DBA Cockpit: Granularity of CCMS Maintenance Security Check respective S_DBCON) (%s)", [state("profile_parameters", "dbs/dba/ccms_security_level")])
 }
+
 ok_CHANGE_A_j if {
 	v := fact("profile_parameters", "dbs/dba/ccms_security_level")
 	v == "1"
@@ -421,10 +457,12 @@ violations contains msg if {
 	not ok_CHANGE_A_f
 	msg := sprintf("CHANGE-A_f: Transport Parameter: TLOGOCHECK = 1 (activated to validate the content of transport files) (%s)", [state("transport_parameters", "TLOGOCHECK")])
 }
+
 ok_CHANGE_A_f if {
 	v := fact("transport_parameters", "TLOGOCHECK")
 	v == "1"
 }
+
 ok_CHANGE_A_f if {
 	v := fact("transport_parameters", "TLOGOCHECK")
 	upper(v) in {"TRUE", "ON", "YES"}
@@ -436,6 +474,7 @@ violations contains msg if {
 	not ok_DISCL_A_a
 	msg := sprintf("DISCL-A_a: Profile parameter: login/show_detailed_errors = 0 (disclosure of unnecessary information about versions or from errors) (%s)", [state("profile_parameters", "login/show_detailed_errors")])
 }
+
 ok_DISCL_A_a if {
 	v := fact("profile_parameters", "login/show_detailed_errors")
 	v == "0"
@@ -447,6 +486,7 @@ violations contains msg if {
 	not ok_DISCL_A_c
 	msg := sprintf("DISCL-A_c: Profile parameter: service/protectedwebmethods = SDEFAULT or ALL (disclosure of unnecessary information with limited list of exceptions, see Note 1439348) (%s)", [state("profile_parameters", "service/protectedwebmethods")])
 }
+
 ok_DISCL_A_c if {
 	v := fact("profile_parameters", "service/protectedwebmethods")
 	regex.match(`(SDEFAULT.*|ALL.*)`, v)
@@ -458,10 +498,12 @@ violations contains msg if {
 	not ok_DISCL_O_a_1
 	msg := sprintf("DISCL-O_a.1: Profile parameter: is/HTTP/show_server_header = FALSE or 0 (see Note 1329326) (%s)", [state("profile_parameters", "is/HTTP/show_server_header")])
 }
+
 ok_DISCL_O_a_1 if {
 	v := fact("profile_parameters", "is/HTTP/show_server_header")
 	upper(v) == "FALSE"
 }
+
 ok_DISCL_O_a_1 if {
 	v := fact("profile_parameters", "is/HTTP/show_server_header")
 	v == "0"
@@ -473,10 +515,12 @@ violations contains msg if {
 	not ok_DISCL_O_a_2
 	msg := sprintf("DISCL-O_a.2: Profile parameter: is/HTTP/show_detailed_errors = FALSE or 0 (see Note 1616535) (%s)", [state("profile_parameters", "is/HTTP/show_detailed_errors")])
 }
+
 ok_DISCL_O_a_2 if {
 	v := fact("profile_parameters", "is/HTTP/show_detailed_errors")
 	upper(v) == "FALSE"
 }
+
 ok_DISCL_O_a_2 if {
 	v := fact("profile_parameters", "is/HTTP/show_detailed_errors")
 	v == "0"
@@ -488,10 +532,12 @@ violations contains msg if {
 	not ok_DISCL_O_a_3
 	msg := sprintf("DISCL-O_a.3: Profile parameter: icm/SMTP/show_server_header = FALSE or 0 (see Note 2045861) (%s)", [state("profile_parameters", "icm/SMTP/show_server_header")])
 }
+
 ok_DISCL_O_a_3 if {
 	v := fact("profile_parameters", "icm/SMTP/show_server_header")
 	upper(v) == "FALSE"
 }
+
 ok_DISCL_O_a_3 if {
 	v := fact("profile_parameters", "icm/SMTP/show_server_header")
 	v == "0"
@@ -503,11 +549,13 @@ violations contains msg if {
 	not ok_DISCL_O_b_1
 	msg := sprintf("DISCL-O_b.1: Profile parameter: icm/HTTP/auth_NN includes PREFIX=/, FILTER=SAP and PERMFILE (SAP_BASIS ≥ 7.40) (%s)", [pattern_state("profile_parameters", `^icm/HTTP/auth_.*$`)])
 }
+
 ok_DISCL_O_b_1 if {
 	ms := facts_matching("profile_parameters", `^icm/HTTP/auth_.*$`)
 	count(ms) > 0
 	every v in ms { ok_DISCL_O_b_1_row(v) }
 }
+
 ok_DISCL_O_b_1_row(v) if {
 	regex.match(`^PREFIX=/.*$`, v)
 	regex.match(`^.*FILTER=SAP.*$`, v)
@@ -521,10 +569,12 @@ violations contains msg if {
 	not ok_DISCL_O_b_2
 	msg := sprintf("DISCL-O_b.2: Profile parameter: wdisp/permission_table has path to permission table file (SAP_BASIS lower 7.40) (%s)", [state("profile_parameters", "wdisp/permission_table")])
 }
+
 ok_DISCL_O_b_2 if {
 	v := fact("profile_parameters", "wdisp/permission_table")
 	count(v) > 0
 }
+
 ok_DISCL_O_b_2 if {
 	v := fact("profile_parameters", "wdisp/permission_table")
 	count(v) == 0
@@ -536,11 +586,13 @@ violations contains msg if {
 	not ok_DISCL_O_c
 	msg := sprintf("DISCL-O_c: Profile parameter: icm/HTTP/admin_NN contains CLIENTHOST and ALLOWPUB=FALSE (see Note 2260323) (%s)", [pattern_state("profile_parameters", `^icm/HTTP/admin_.*$`)])
 }
+
 ok_DISCL_O_c if {
 	ms := facts_matching("profile_parameters", `^icm/HTTP/admin_.*$`)
 	count(ms) > 0
 	every v in ms { ok_DISCL_O_c_row(v) }
 }
+
 ok_DISCL_O_c_row(v) if {
 	regex.match(`^.*CLIENTHOST=.*$`, v)
 	regex.match(`^.*ALLOWPUB=FALSE.*$`, v)
@@ -552,10 +604,12 @@ violations contains msg if {
 	not ok_DISCL_O_d
 	msg := sprintf("DISCL-O_d: Profile parameter: icm/HTTP/error_templ_path set as required for individual error pages for preventing disclosure of unnecessary information (%s)", [state("profile_parameters", "icm/HTTP/error_templ_path")])
 }
+
 ok_DISCL_O_d if {
 	v := fact("profile_parameters", "icm/HTTP/error_templ_path")
 	regex.match(`^\/usr\/sap\/\w{3}\/\w{3,10}\/data\/icmandir\/error_templ`, v)
 }
+
 ok_DISCL_O_d if {
 	v := fact("profile_parameters", "icm/HTTP/error_templ_path")
 	regex.match(`^\w:\\usr\\sap\\\w{3}\\\w{3,10}\\data\\icmandir[\\|\/]error_temp`, v)
@@ -567,6 +621,7 @@ violations contains msg if {
 	not ok_DISCL_O_e
 	msg := sprintf("DISCL-O_e: Profile parameter: rdisp/TRACE_HIDE_SEC_DATA = on (see Note 2012562) (SAP Kernel lt 916) (%s)", [state("profile_parameters", "rdisp/TRACE_HIDE_SEC_DATA")])
 }
+
 ok_DISCL_O_e if {
 	v := fact("profile_parameters", "rdisp/TRACE_HIDE_SEC_DATA")
 	lower(v) == "on"
@@ -578,10 +633,12 @@ violations contains msg if {
 	not ok_DISCL_O_f
 	msg := sprintf("DISCL-O_f: Profile parameter: icm/trace_secured_data = FALSE or 0 (see Note 634262) (%s)", [state("profile_parameters", "icm/trace_secured_data")])
 }
+
 ok_DISCL_O_f if {
 	v := fact("profile_parameters", "icm/trace_secured_data")
 	upper(v) == "FALSE"
 }
+
 ok_DISCL_O_f if {
 	v := fact("profile_parameters", "icm/trace_secured_data")
 	v == "0"
@@ -593,10 +650,12 @@ violations contains msg if {
 	not ok_DISCL_O_g
 	msg := sprintf("DISCL-O_g: Profile parameter: icm/accept_forwarded_cert_via_http = FALSE or 0 (see Note 2656696) (%s)", [state("profile_parameters", "icm/accept_forwarded_cert_via_http")])
 }
+
 ok_DISCL_O_g if {
 	v := fact("profile_parameters", "icm/accept_forwarded_cert_via_http")
 	upper(v) == "FALSE"
 }
+
 ok_DISCL_O_g if {
 	v := fact("profile_parameters", "icm/accept_forwarded_cert_via_http")
 	v == "0"
@@ -608,12 +667,15 @@ violations contains msg if {
 	not ok_DISCL_O_h
 	msg := sprintf("DISCL-O_h: Profile parameter: icm/trusted_reverse_proxy_NN, no wildcards (see Note 2052899) (%s)", [pattern_state("profile_parameters", `^icm/trusted_reverse_proxy_.*$`)])
 }
-ok_DISCL_O_h if { count(facts_matching("profile_parameters", `^icm/trusted_reverse_proxy_.*$`)) == 0 }
+
+ok_DISCL_O_h if count(facts_matching("profile_parameters", `^icm/trusted_reverse_proxy_.*$`)) == 0
+
 ok_DISCL_O_h if {
 	ms := facts_matching("profile_parameters", `^icm/trusted_reverse_proxy_.*$`)
 	count(ms) > 0
 	every v in ms { ok_DISCL_O_h_row(v) }
 }
+
 ok_DISCL_O_h_row(v) if {
 	not regex.match(`^.*SUBJECT="\*".*$`, v)
 	not regex.match(`^.*ISSUER="\*".*$`, v)
@@ -625,6 +687,7 @@ violations contains msg if {
 	not ok_FILE_A_a_1
 	msg := sprintf("FILE-A_a.1: Profile parameter: abap/path_normalization != off (Directory Traversal Protection, see Notes 1497003, 2551541, 2562089) (%s)", [state("profile_parameters", "abap/path_normalization")])
 }
+
 ok_FILE_A_a_1 if {
 	v := fact("profile_parameters", "abap/path_normalization")
 	lower(v) != "off"
@@ -636,6 +699,7 @@ violations contains msg if {
 	not ok_FILE_A_a_2
 	msg := sprintf("FILE-A_a.2: Profile parameter: abap/path_norm_Windows = 0 (Directory Traversal Protection, see Note 2634476) (%s)", [state("profile_parameters", "abap/path_norm_Windows")])
 }
+
 ok_FILE_A_a_2 if {
 	v := fact("profile_parameters", "abap/path_norm_Windows")
 	v == "0"
@@ -647,6 +711,7 @@ violations contains msg if {
 	not ok_MSGSRV_A_a
 	msg := sprintf("MSGSRV-A_a: Profile parameter: rdisp/msserv_internal maintained (Message Server Security, for internal port for server communication) (%s)", [state("profile_parameters", "rdisp/msserv_internal")])
 }
+
 ok_MSGSRV_A_a if {
 	v := fact("profile_parameters", "rdisp/msserv_internal")
 	num_gt(v, 0)
@@ -658,6 +723,7 @@ violations contains msg if {
 	not ok_MSGSRV_A_b
 	msg := sprintf("MSGSRV-A_b: Profile parameter: ms/monitor = 0 (Message Server Security, to prohibit external monitor) (%s)", [state("profile_parameters", "ms/monitor")])
 }
+
 ok_MSGSRV_A_b if {
 	v := fact("profile_parameters", "ms/monitor")
 	v == "0"
@@ -669,6 +735,7 @@ violations contains msg if {
 	not ok_MSGSRV_A_c
 	msg := sprintf("MSGSRV-A_c: Profile parameter: ms/admin_port = 0 (Message Server Security, deactivated administration port for external clients) (%s)", [state("profile_parameters", "ms/admin_port")])
 }
+
 ok_MSGSRV_A_c if {
 	v := fact("profile_parameters", "ms/admin_port")
 	num_le(v, 0)
@@ -680,6 +747,7 @@ violations contains msg if {
 	not ok_NETCF_A_a
 	msg := sprintf("NETCF-A_a: Profile parameter: auth/rfc_authority_check = 1 6 or 9 (Secure Network Configuration, execution option for the RFC authority check, see Note 2216306) (%s)", [state("profile_parameters", "auth/rfc_authority_check")])
 }
+
 ok_NETCF_A_a if {
 	v := fact("profile_parameters", "auth/rfc_authority_check")
 	v in {"1", "6", "9"}
@@ -691,6 +759,7 @@ violations contains msg if {
 	not ok_NETCF_A_b
 	msg := sprintf("NETCF-A_b: Profile parameter: rfc/callback_security_method = 3 (Secure Network Configuration, block unauthorized remote RFC callbacks, see Note 2678501) (%s)", [state("profile_parameters", "rfc/callback_security_method")])
 }
+
 ok_NETCF_A_b if {
 	v := fact("profile_parameters", "rfc/callback_security_method")
 	v == "3"
@@ -702,6 +771,7 @@ violations contains msg if {
 	not ok_NETCF_A_c
 	msg := sprintf("NETCF-A_c: Profile parameter: rfc/selftrust = 0 (Secure Network Configuration, see Notes 2449757, 2614667) (%s)", [state("profile_parameters", "rfc/selftrust")])
 }
+
 ok_NETCF_A_c if {
 	v := fact("profile_parameters", "rfc/selftrust")
 	v == "0"
@@ -713,10 +783,12 @@ violations contains msg if {
 	not ok_NETCF_A_e
 	msg := sprintf("NETCF-A_e: Profile parameter: ixml/dtd_restriction = expansion or prohibited (Secure Network Configuration) (see Notes 2308217, 1712860) (%s)", [state("profile_parameters", "ixml/dtd_restriction")])
 }
+
 ok_NETCF_A_e if {
 	v := fact("profile_parameters", "ixml/dtd_restriction")
 	v == "expansion"
 }
+
 ok_NETCF_A_e if {
 	v := fact("profile_parameters", "ixml/dtd_restriction")
 	v == "prohibited"
@@ -728,6 +800,7 @@ violations contains msg if {
 	not ok_NETCF_A_f
 	msg := sprintf("NETCF-A_f: Profile parameter: login/disable_cpic = 1 (Secure Network Configuration, see Note 2926224) (%s)", [state("profile_parameters", "login/disable_cpic")])
 }
+
 ok_NETCF_A_f if {
 	v := fact("profile_parameters", "login/disable_cpic")
 	v == "1"
@@ -739,10 +812,12 @@ violations contains msg if {
 	not ok_NETCF_A_g
 	msg := sprintf("NETCF-A_g: Profile parameter: wdisp/add_xforwardedfor_header = 1 or TRUE (Secure Network Configuration, see Note 2788140) (%s)", [state("profile_parameters", "wdisp/add_xforwardedfor_header")])
 }
+
 ok_NETCF_A_g if {
 	v := fact("profile_parameters", "wdisp/add_xforwardedfor_header")
 	v == "1"
 }
+
 ok_NETCF_A_g if {
 	v := fact("profile_parameters", "wdisp/add_xforwardedfor_header")
 	upper(v) == "TRUE"
@@ -754,6 +829,7 @@ violations contains msg if {
 	not ok_NETENC_A_a
 	msg := sprintf("NETENC-A_a: Profile parameter: snc/enable = 1 (enable SNC-Module) (%s)", [state("profile_parameters", "snc/enable")])
 }
+
 ok_NETENC_A_a if {
 	v := fact("profile_parameters", "snc/enable")
 	v == "1"
@@ -765,6 +841,7 @@ violations contains msg if {
 	not ok_NETENC_A_b_1
 	msg := sprintf("NETENC-A_b.1: Profile parameter: snc/data_protection/min = 3 (enforce encryption for SNC) (%s)", [state("profile_parameters", "snc/data_protection/min")])
 }
+
 ok_NETENC_A_b_1 if {
 	v := fact("profile_parameters", "snc/data_protection/min")
 	v == "3"
@@ -776,6 +853,7 @@ violations contains msg if {
 	not ok_NETENC_A_b_2
 	msg := sprintf("NETENC-A_b.2: Profile parameter: snc/data_protection/max = 3 (enforce encryption for SNC) (%s)", [state("profile_parameters", "snc/data_protection/max")])
 }
+
 ok_NETENC_A_b_2 if {
 	v := fact("profile_parameters", "snc/data_protection/max")
 	v == "3"
@@ -787,10 +865,12 @@ violations contains msg if {
 	not ok_NETENC_A_b_3
 	msg := sprintf("NETENC-A_b.3: Profile parameter: snc/data_protection/use = 3 or 9 (enforce encryption for SNC) (%s)", [state("profile_parameters", "snc/data_protection/use")])
 }
+
 ok_NETENC_A_b_3 if {
 	v := fact("profile_parameters", "snc/data_protection/use")
 	v == "3"
 }
+
 ok_NETENC_A_b_3 if {
 	v := fact("profile_parameters", "snc/data_protection/use")
 	v == "9"
@@ -802,11 +882,13 @@ violations contains msg if {
 	not ok_NETENC_O_b_1
 	msg := sprintf("NETENC-O_b.1: Profile parameter: icm/HTTP/admin_nn has PORT defined (allow ICM Web Dispatcher administration only on certain port) (%s)", [pattern_state("profile_parameters", `^icm/HTTP/admin_.*$`)])
 }
+
 ok_NETENC_O_b_1 if {
 	ms := facts_matching("profile_parameters", `^icm/HTTP/admin_.*$`)
 	count(ms) > 0
 	every v in ms { ok_NETENC_O_b_1_row(v) }
 }
+
 ok_NETENC_O_b_1_row(v) if {
 	regex.match(`^.*PORT.*$`, v)
 }
@@ -817,6 +899,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_e_1
 	msg := sprintf("PWDPOL-A_e.1: Profile parameter: login/password_compliance_to_current_policy = 1 (compliance with current password policy must be enforced) (%s)", [state("profile_parameters", "login/password_compliance_to_current_policy")])
 }
+
 ok_PWDPOL_A_e_1 if {
 	v := fact("profile_parameters", "login/password_compliance_to_current_policy")
 	v == "1"
@@ -828,6 +911,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_g
 	msg := sprintf("PWDPOL-A_g: Profile parameter: icf/reject_expired_passwd = 1 (http(s) calls with expired passwords must be rejected, see Note 2579165) (%s)", [state("profile_parameters", "icf/reject_expired_passwd")])
 }
+
 ok_PWDPOL_A_g if {
 	v := fact("profile_parameters", "icf/reject_expired_passwd")
 	v == "1"
@@ -839,6 +923,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_h
 	msg := sprintf("PWDPOL-A_h: Profile parameter: rfc/reject_expired_passwd = 1 (RFC calls with expired passwords must be rejected, see Note 1591259) (%s)", [state("profile_parameters", "rfc/reject_expired_passwd")])
 }
+
 ok_PWDPOL_A_h if {
 	v := fact("profile_parameters", "rfc/reject_expired_passwd")
 	v == "1"
@@ -850,6 +935,7 @@ violations contains msg if {
 	not ok_SSO_A_a
 	msg := sprintf("SSO-A_a: Profile parameter: login/ticket_only_by_https = 1 (to generate ticket only via https, see Notes 1531399 and 2068872) (%s)", [state("profile_parameters", "login/ticket_only_by_https")])
 }
+
 ok_SSO_A_a if {
 	v := fact("profile_parameters", "login/ticket_only_by_https")
 	v == "1"
@@ -861,6 +947,7 @@ violations contains msg if {
 	not ok_SSO_A_b
 	msg := sprintf("SSO-A_b: Profile parameter: login/ticket_only_to_host = 1 (ticket only back to creating host) (%s)", [state("profile_parameters", "login/ticket_only_to_host")])
 }
+
 ok_SSO_A_b if {
 	v := fact("profile_parameters", "login/ticket_only_to_host")
 	v == "1"
@@ -872,6 +959,7 @@ violations contains msg if {
 	not ok_SSO_A_c
 	msg := sprintf("SSO-A_c: Profile parameter: icf/set_HTTPonly_flag_on_cookies != 1 or 3 (recommended 0) (to set HTTPonly-Flag for Cookies, see Notes 2068872 and 1277022) (%s)", [state("profile_parameters", "icf/set_HTTPonly_flag_on_cookies")])
 }
+
 ok_SSO_A_c if {
 	v := fact("profile_parameters", "icf/set_HTTPonly_flag_on_cookies")
 	v != "1"
@@ -885,10 +973,12 @@ violations contains msg if {
 	not ok_SSO_A_d
 	msg := sprintf("SSO-A_d: Profile parameter: login/accept_sso2_ticket = 2 or 1 if SAP Kernel lt 916 (to accept SAP Assertion Tickets but reject SAP Logon Tickets, see Note 3584984) (%s)", [state("profile_parameters", "login/accept_sso2_ticket")])
 }
+
 ok_SSO_A_d if {
 	v := fact("profile_parameters", "login/accept_sso2_ticket")
 	v in {"1", "2"}
 }
+
 ok_SSO_A_d if {
 	v := fact("profile_parameters", "login/accept_sso2_ticket")
 	v == "2"
@@ -900,6 +990,7 @@ violations contains msg if {
 	not ok_TRUST_A_f
 	msg := sprintf("TRUST-A_f: Profile parameter: rfc/selftrust = 0 (block implicit self-trust, see Notes 2449757, 2614667) (%s)", [state("profile_parameters", "rfc/selftrust")])
 }
+
 ok_TRUST_A_f if {
 	v := fact("profile_parameters", "rfc/selftrust")
 	v == "0"
@@ -911,6 +1002,7 @@ violations contains msg if {
 	not ok_USRCTR_A_a_1
 	msg := sprintf("USRCTR-A_a.1: Profile parameter: dynp/checkskip1screen value = ALL and dynp/confirmskip1screen value = OFF or not set (User Control of Action) (see Note 2999707) (%s)", [state("profile_parameters", "dynp/checkskip1screen")])
 }
+
 ok_USRCTR_A_a_1 if {
 	v := fact("profile_parameters", "dynp/checkskip1screen")
 	v == "ALL"
@@ -922,6 +1014,7 @@ violations contains msg if {
 	not ok_USRCTR_A_a_2
 	msg := sprintf("USRCTR-A_a.2: Profile parameter: dynp/checkskip1screen value != ALL IF dynp/confirmskip1screen value = 'ALL' (User Control of Action) (see Note 2999707) (%s)", [state("profile_parameters", "dynp/checkskip1screen")])
 }
+
 ok_USRCTR_A_a_2 if {
 	v := fact("profile_parameters", "dynp/checkskip1screen")
 	v != "ALL"
@@ -933,6 +1026,7 @@ violations contains msg if {
 	not ok_USRCTR_A_a_3
 	msg := sprintf("USRCTR-A_a.3: Profile parameter: dynp/confirmskip1screen value = ALL and dynp/checkskip1screen value = OFF or not set (User Control of Action) (see Note 1956086) (%s)", [state("profile_parameters", "dynp/confirmskip1screen")])
 }
+
 ok_USRCTR_A_a_3 if {
 	v := fact("profile_parameters", "dynp/confirmskip1screen")
 	v == "ALL"
@@ -944,6 +1038,7 @@ violations contains msg if {
 	not ok_USRCTR_A_a_4
 	msg := sprintf("USRCTR-A_a.4: Profile parameter: dynp/confirmskip1screen value != ALL IF dynp/checkskip1screen value = 'ALL' (User Control of Action) (see Note 1956086) (%s)", [state("profile_parameters", "dynp/confirmskip1screen")])
 }
+
 ok_USRCTR_A_a_4 if {
 	v := fact("profile_parameters", "dynp/confirmskip1screen")
 	v != "ALL"
@@ -955,6 +1050,7 @@ violations contains msg if {
 	not ok_USRCTR_A_b
 	msg := sprintf("USRCTR-A_b: Profile parameter: auth/check/calltransaction = 2 or 3 (recommended) (User Control of Action) (see Note 515130) (%s)", [state("profile_parameters", "auth/check/calltransaction")])
 }
+
 ok_USRCTR_A_b if {
 	v := fact("profile_parameters", "auth/check/calltransaction")
 	v in {"2", "3"}
@@ -966,6 +1062,7 @@ violations contains msg if {
 	not ok_USRCTR_A_c
 	msg := sprintf("USRCTR-A_c: Profile parameter: auth/no_check_in_some_cases = Y (User Control of Action) (see Note 1723881) (%s)", [state("profile_parameters", "auth/no_check_in_some_cases")])
 }
+
 ok_USRCTR_A_c if {
 	v := fact("profile_parameters", "auth/no_check_in_some_cases")
 	upper(v) == "Y"
@@ -977,6 +1074,7 @@ violations contains msg if {
 	not ok_USRCTR_A_d
 	msg := sprintf("USRCTR-A_d: Profile parameter: auth/object_disabling_active = N (User Control of Action) (see Note 2926224) (%s)", [state("profile_parameters", "auth/object_disabling_active")])
 }
+
 ok_USRCTR_A_d if {
 	v := fact("profile_parameters", "auth/object_disabling_active")
 	upper(v) == "N"
@@ -988,6 +1086,7 @@ violations contains msg if {
 	not ok_USRCTR_A_e
 	msg := sprintf("USRCTR-A_e: Profile parameter: rdisp/gui_auto_logout ≤ 3600 seconds (User Control of Action) (%s)", [state("profile_parameters", "rdisp/gui_auto_logout")])
 }
+
 ok_USRCTR_A_e if {
 	v := fact("profile_parameters", "rdisp/gui_auto_logout")
 	regex.match(`^(1 ?H|[1-9] ?M|[1-5]\d ?M|60 ?M|[1-9]\d{0,2}|[12]\d\d\d|3[0-5]\d\d|3600)$`, v)
@@ -999,6 +1098,7 @@ violations contains msg if {
 	not ok_USRCTR_A_f
 	msg := sprintf("USRCTR-A_f: Profile parameter: rdisp/vbdelete ≥ 400 days (User Control of Action) (%s)", [state("profile_parameters", "rdisp/vbdelete")])
 }
+
 ok_USRCTR_A_f if {
 	v := fact("profile_parameters", "rdisp/vbdelete")
 	num_ge(v, 400)
@@ -1010,6 +1110,7 @@ violations contains msg if {
 	not ok_USRCTR_A_j
 	msg := sprintf("USRCTR-A_j: Profile parameter: rfc/authCheckInPlayback = 2 (User Control of Action) (see Notes 3674774, 3717541, 3676372) (%s)", [state("profile_parameters", "rfc/authCheckInPlayback")])
 }
+
 ok_USRCTR_A_j if {
 	v := fact("profile_parameters", "rfc/authCheckInPlayback")
 	v == "2"
@@ -1021,6 +1122,7 @@ violations contains msg if {
 	not ok_CHANGE_A_d_1
 	msg := sprintf("CHANGE-A_d.1: Transport Parameter: RECCLIENT maintained and != OFF (%s)", [state("transport_parameters", "RECCLIENT")])
 }
+
 ok_CHANGE_A_d_1 if {
 	v := fact("transport_parameters", "RECCLIENT")
 	v != "OFF"
@@ -1033,6 +1135,7 @@ violations contains msg if {
 	not ok_CHANGE_A_d_2
 	msg := sprintf("CHANGE-A_d.2: Transport Parameter: RECCLIENT = ALL (recommended value) (%s)", [state("transport_parameters", "RECCLIENT")])
 }
+
 ok_CHANGE_A_d_2 if {
 	v := fact("transport_parameters", "RECCLIENT")
 	v == "ALL"
@@ -1044,10 +1147,12 @@ violations contains msg if {
 	not ok_CHANGE_A_e_1
 	msg := sprintf("CHANGE-A_e.1: Transport Parameter: VERS_AT_EXP is activated in DEV (see Note 2296271) (%s)", [state("transport_parameters", "VERS_AT_EXP")])
 }
+
 ok_CHANGE_A_e_1 if {
 	v := fact("transport_parameters", "VERS_AT_EXP")
 	v == "1"
 }
+
 ok_CHANGE_A_e_1 if {
 	v := fact("transport_parameters", "VERS_AT_EXP")
 	upper(v) in {"TRUE", "ON", "YES", "NO_T"}
@@ -1059,6 +1164,7 @@ violations contains msg if {
 	not ok_CHANGE_A_e_2
 	msg := sprintf("CHANGE-A_e.2: Transport Parameter: VERS_AT_IMP is activated in PROD (see Note 1784800) (%s)", [state("transport_parameters", "VERS_AT_IMP")])
 }
+
 ok_CHANGE_A_e_2 if {
 	v := fact("transport_parameters", "VERS_AT_IMP")
 	v == "ALWAYS"
@@ -1070,6 +1176,7 @@ violations contains msg if {
 	not ok_CHANGE_A_g_1
 	msg := sprintf("CHANGE-A_g.1: Transport Parameter: TP_RELEASE ≥ 380.44.90 (%s)", [state("transport_parameters", "TP_RELEASE")])
 }
+
 ok_CHANGE_A_g_1 if {
 	v := fact("transport_parameters", "TP_RELEASE")
 	ver_ge(v, "380.44.90")
@@ -1081,6 +1188,7 @@ violations contains msg if {
 	not ok_CHANGE_A_g_2
 	msg := sprintf("CHANGE-A_g.2: Transport Parameter: TP_VERSION ≥ 380 (see Note 2671160) (%s)", [state("transport_parameters", "TP_VERSION")])
 }
+
 ok_CHANGE_A_g_2 if {
 	v := fact("transport_parameters", "TP_VERSION")
 	num_ge(v, 380)
@@ -1092,26 +1200,32 @@ violations contains msg if {
 	not ok_CHANGE_A_g_3
 	msg := sprintf("CHANGE-A_g.3: Kernel versions in maintenance as per Note 2083594 (%s)", [state("kernel", "KERN_REL")])
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "722"
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "753"
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "754"
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "777"
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "793"
 }
+
 ok_CHANGE_A_g_3 if {
 	v := fact("kernel", "KERN_REL")
 	substring(v, 0, 3) == "916"
@@ -1123,6 +1237,7 @@ violations contains msg if {
 	not ok_MSGSRV_A_d_3
 	msg := sprintf("MSGSRV-A_d.3: Profile parameter: ms/acl_info is maintained (Message Server Security, pointing to access control list file for Message Server (%s)", [state("profile_parameters", "ms/acl_info")])
 }
+
 ok_MSGSRV_A_d_3 if {
 	v := fact("profile_parameters", "ms/acl_info")
 	regex.match(`(\w:)?([\/\\]usr[\/\\]sap|[\/\\]sapmnt)[\/\\](\w{3})([\/\\]SYS)?[\/\\]global[\/\\]ms_acl(_info)?(\.DAT|\.dat|\.txt)?`, v)
@@ -1134,10 +1249,12 @@ violations contains msg if {
 	not ok_NETENC_A_c_1
 	msg := sprintf("NETENC-A_c.1: Profile parameter: snc/accept_insecure_gui = U (or 0) (accept insecure SAPGUI logins to SNC-enabled Server) (%s)", [state("profile_parameters", "snc/accept_insecure_gui")])
 }
+
 ok_NETENC_A_c_1 if {
 	v := fact("profile_parameters", "snc/accept_insecure_gui")
 	v == "0"
 }
+
 ok_NETENC_A_c_1 if {
 	v := fact("profile_parameters", "snc/accept_insecure_gui")
 	v == "U"
@@ -1149,10 +1266,12 @@ violations contains msg if {
 	not ok_NETENC_A_c_2a
 	msg := sprintf("NETENC-A_c.2a: Profile parameter: snc/accept_insecure_rfc = U (or 0) (accept insecure incoming RFC-connections on SNC-enabled Server) (%s)", [state("profile_parameters", "snc/accept_insecure_rfc")])
 }
+
 ok_NETENC_A_c_2a if {
 	v := fact("profile_parameters", "snc/accept_insecure_rfc")
 	v == "0"
 }
+
 ok_NETENC_A_c_2a if {
 	v := fact("profile_parameters", "snc/accept_insecure_rfc")
 	v == "U"
@@ -1164,10 +1283,12 @@ violations contains msg if {
 	not ok_NETENC_A_c_2b
 	msg := sprintf("NETENC-A_c.2b: Profile parameter: snc/accept_insecure_r3int_rfc = 0 or 1 (accept insecure internal RFC-connections on SNC-enabled Server) (%s)", [state("profile_parameters", "snc/accept_insecure_r3int_rfc")])
 }
+
 ok_NETENC_A_c_2b if {
 	v := fact("profile_parameters", "snc/accept_insecure_r3int_rfc")
 	v == "0"
 }
+
 ok_NETENC_A_c_2b if {
 	v := fact("profile_parameters", "snc/accept_insecure_r3int_rfc")
 	v == "1"
@@ -1179,6 +1300,7 @@ violations contains msg if {
 	not ok_NETENC_A_c_3
 	msg := sprintf("NETENC-A_c.3: Profile parameter: snc/only_encrypted_gui = 1 (accept only encrypted GUI connections to SNC-enabled Server) (%s)", [state("profile_parameters", "snc/only_encrypted_gui")])
 }
+
 ok_NETENC_A_c_3 if {
 	v := fact("profile_parameters", "snc/only_encrypted_gui")
 	v == "1"
@@ -1190,6 +1312,7 @@ violations contains msg if {
 	not ok_NETENC_A_c_4
 	msg := sprintf("NETENC-A_c.4: Profile parameter: snc/only_encrypted_rfc = 1 (accept only encrypted RFC connections to SNC-enabled Server) (%s)", [state("profile_parameters", "snc/only_encrypted_rfc")])
 }
+
 ok_NETENC_A_c_4 if {
 	v := fact("profile_parameters", "snc/only_encrypted_rfc")
 	v == "1"
@@ -1201,6 +1324,7 @@ violations contains msg if {
 	not ok_NETENC_A_d
 	msg := sprintf("NETENC-A_d: Profile parameter: snc/log_unencrypted_rfc = 2 (Security Audit Logging for unencrypted RFC connections) (%s)", [state("profile_parameters", "snc/log_unencrypted_rfc")])
 }
+
 ok_NETENC_A_d if {
 	v := fact("profile_parameters", "snc/log_unencrypted_rfc")
 	v == "2"
@@ -1212,18 +1336,22 @@ violations contains msg if {
 	not ok_NETENC_A_f_1
 	msg := sprintf("NETENC-A_f.1: Profile parameter: ssl/ciphersuites set as recommended (server inbound default SSL/TLS server ciphersuites, see Notes 3346659, 510007) (%s)", [state("profile_parameters", "ssl/ciphersuites")])
 }
+
 ok_NETENC_A_f_1 if {
 	v := fact("profile_parameters", "ssl/ciphersuites")
 	v == "545:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
 }
+
 ok_NETENC_A_f_1 if {
 	v := fact("profile_parameters", "ssl/ciphersuites")
 	v == "1159:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
 }
+
 ok_NETENC_A_f_1 if {
 	v := fact("profile_parameters", "ssl/ciphersuites")
 	v == "1568:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
 }
+
 ok_NETENC_A_f_1 if {
 	v := fact("profile_parameters", "ssl/ciphersuites")
 	v == "1569:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
@@ -1235,14 +1363,17 @@ violations contains msg if {
 	not ok_NETENC_A_g_1
 	msg := sprintf("NETENC-A_g.1: Profile parameter: ssl/client_ciphersuites set as recommended (client outbound default SSL/TLS client cipher suites, see Notes 3346659, 510007) (%s)", [state("profile_parameters", "ssl/client_ciphersuites")])
 }
+
 ok_NETENC_A_g_1 if {
 	v := fact("profile_parameters", "ssl/client_ciphersuites")
 	v == "560:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
 }
+
 ok_NETENC_A_g_1 if {
 	v := fact("profile_parameters", "ssl/client_ciphersuites")
 	v == "1174:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
 }
+
 ok_NETENC_A_g_1 if {
 	v := fact("profile_parameters", "ssl/client_ciphersuites")
 	v == "1584:PFS:HIGH::EC_X25519:EC_P256:EC_HIGH"
@@ -1254,6 +1385,7 @@ violations contains msg if {
 	not ok_NETENC_A_h
 	msg := sprintf("NETENC-A_h: Profile parameter: snc/permit_insecure_start = 0 (permit to start insecure programs when SNC is enabled) (%s)", [state("profile_parameters", "snc/permit_insecure_start")])
 }
+
 ok_NETENC_A_h if {
 	v := fact("profile_parameters", "snc/permit_insecure_start")
 	v == "0"
@@ -1265,6 +1397,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_c_1a
 	msg := sprintf("PWDPOL-A_c.1a: Profile parameter: login/password_expiration_time between 1 and 183 (rule for validity period of passwords in days) (%s)", [state("profile_parameters", "login/password_expiration_time")])
 }
+
 ok_PWDPOL_A_c_1a if {
 	v := fact("profile_parameters", "login/password_expiration_time")
 	num_between(v, 1, 183)
@@ -1276,6 +1409,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_1a
 	msg := sprintf("PWDPOL-A_i.1a: Profile parameter: login/min_password_digits ≥ 1 (rule for password complexity, digits) (%s)", [state("profile_parameters", "login/min_password_digits")])
 }
+
 ok_PWDPOL_A_i_1a if {
 	v := fact("profile_parameters", "login/min_password_digits")
 	num_ge(v, 1)
@@ -1287,6 +1421,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_2a
 	msg := sprintf("PWDPOL-A_i.2a: Profile parameter: login/min_password_letters ≥ 1 (rule for password complexity, letters) (%s)", [state("profile_parameters", "login/min_password_letters")])
 }
+
 ok_PWDPOL_A_i_2a if {
 	v := fact("profile_parameters", "login/min_password_letters")
 	num_ge(v, 1)
@@ -1298,6 +1433,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_3a
 	msg := sprintf("PWDPOL-A_i.3a: Profile parameter: login/min_password_lowercase ≥ 1 (rule for password complexity, lowercase) (%s)", [state("profile_parameters", "login/min_password_lowercase")])
 }
+
 ok_PWDPOL_A_i_3a if {
 	v := fact("profile_parameters", "login/min_password_lowercase")
 	num_ge(v, 1)
@@ -1309,6 +1445,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_4a
 	msg := sprintf("PWDPOL-A_i.4a: Profile parameter: login/min_password_uppercase ≥ 1 (rule for password complexity, uppercase) (%s)", [state("profile_parameters", "login/min_password_uppercase")])
 }
+
 ok_PWDPOL_A_i_4a if {
 	v := fact("profile_parameters", "login/min_password_uppercase")
 	num_ge(v, 1)
@@ -1320,6 +1457,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_5a
 	msg := sprintf("PWDPOL-A_i.5a: Profile parameter: login/min_password_specials ≥ 1 (rule for password complexity, special characters) (%s)", [state("profile_parameters", "login/min_password_specials")])
 }
+
 ok_PWDPOL_A_i_5a if {
 	v := fact("profile_parameters", "login/min_password_specials")
 	num_ge(v, 1)
@@ -1331,6 +1469,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_i_6a
 	msg := sprintf("PWDPOL-A_i.6a: Profile parameter: login/min_password_diff ≥ 3 (rule for number of different characters in new passwords) (%s)", [state("profile_parameters", "login/min_password_diff")])
 }
+
 ok_PWDPOL_A_i_6a if {
 	v := fact("profile_parameters", "login/min_password_diff")
 	num_ge(v, 3)
@@ -1342,6 +1481,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_1a
 	msg := sprintf("PWDPOL-A_j.1a: Profile parameter: login/disable_password_logon must be set (rule for disabling password logon) (%s)", [state("profile_parameters", "login/disable_password_logon")])
 }
+
 ok_PWDPOL_A_j_1a if {
 	v := fact("profile_parameters", "login/disable_password_logon")
 	count(v) >= 1
@@ -1353,6 +1493,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_2a
 	msg := sprintf("PWDPOL-A_j.2a: Profile parameter: login/fails_to_user_lock between 1 and 5 (rule for maximum failed logon attempts) (%s)", [state("profile_parameters", "login/fails_to_user_lock")])
 }
+
 ok_PWDPOL_A_j_2a if {
 	v := fact("profile_parameters", "login/fails_to_user_lock")
 	num_between(v, 1, 5)
@@ -1364,6 +1505,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_3a
 	msg := sprintf("PWDPOL-A_j.3a: Profile parameter: login/failed_user_auto_unlock = 0 (rule for automatic user unlock after failed logins) (%s)", [state("profile_parameters", "login/failed_user_auto_unlock")])
 }
+
 ok_PWDPOL_A_j_3a if {
 	v := fact("profile_parameters", "login/failed_user_auto_unlock")
 	v == "0"
@@ -1375,6 +1517,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_4a
 	msg := sprintf("PWDPOL-A_j.4a: Profile parameter: login/password_max_idle_productive between 1 and 180 (rule for maximum idle time of productive passwords) (%s)", [state("profile_parameters", "login/password_max_idle_productive")])
 }
+
 ok_PWDPOL_A_j_4a if {
 	v := fact("profile_parameters", "login/password_max_idle_productive")
 	num_between(v, 1, 180)
@@ -1386,7 +1529,9 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_5a
 	msg := sprintf("PWDPOL-A_j.5a: Profile parameter: login/password_change_waittime must be set (rule for password change wait time) (%s)", [state("profile_parameters", "login/password_change_waittime")])
 }
-ok_PWDPOL_A_j_5a if { not has("profile_parameters", "login/password_change_waittime") }
+
+ok_PWDPOL_A_j_5a if not has("profile_parameters", "login/password_change_waittime")
+
 ok_PWDPOL_A_j_5a if {
 	v := fact("profile_parameters", "login/password_change_waittime")
 	count(v) > 0
@@ -1398,6 +1543,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_6a
 	msg := sprintf("PWDPOL-A_j.6a: Profile parameter: login/password_change_for_SSO = 1 (rule for password change for SSO) (%s)", [state("profile_parameters", "login/password_change_for_SSO")])
 }
+
 ok_PWDPOL_A_j_6a if {
 	v := fact("profile_parameters", "login/password_change_for_SSO")
 	v == "1"
@@ -1409,6 +1555,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_j_7a
 	msg := sprintf("PWDPOL-A_j.7a: Profile parameter: login/password_history_size ≥ 5 (rule for password history size) (%s)", [state("profile_parameters", "login/password_history_size")])
 }
+
 ok_PWDPOL_A_j_7a if {
 	v := fact("profile_parameters", "login/password_history_size")
 	num_ge(v, 5)
@@ -1420,6 +1567,7 @@ violations contains msg if {
 	not ok_PWDPOL_A_k
 	msg := sprintf("PWDPOL-A_k: Profile parameter: login/password_hash_algorithm set as required (see Note 2140269) (%s)", [state("profile_parameters", "login/password_hash_algorithm")])
 }
+
 ok_PWDPOL_A_k if {
 	v := fact("profile_parameters", "login/password_hash_algorithm")
 	regex.match(`encoding=RFC2307, ?algorithm=(iSSHA-256|iSSHA-384|iSSHA-512), ?iterations=(\d{5,}), ?saltsize=(128|256)`, v)
@@ -1431,7 +1579,9 @@ violations contains msg if {
 	not ok_PWDPOL_A_l
 	msg := sprintf("PWDPOL-A_l: Profile parameter: login/password_logon_usergroup maintained if login/disable_password_logon = 1 (rule for groups allowed to logon with passwords) (%s)", [state("profile_parameters", "login/password_logon_usergroup")])
 }
-ok_PWDPOL_A_l if { not has("profile_parameters", "login/password_logon_usergroup") }
+
+ok_PWDPOL_A_l if not has("profile_parameters", "login/password_logon_usergroup")
+
 ok_PWDPOL_A_l if {
 	v := fact("profile_parameters", "login/password_logon_usergroup")
 	count(v) > 0
@@ -1443,10 +1593,12 @@ violations contains msg if {
 	not ok_RFCGW_A_g
 	msg := sprintf("RFCGW-A_g: Profile parameter: gw/rem_start = DISABLED or SSH_SHELL (acceptable method to start programs via the RFC Gateway, see Note 2776748) (%s)", [state("profile_parameters", "gw/rem_start")])
 }
+
 ok_RFCGW_A_g if {
 	v := fact("profile_parameters", "gw/rem_start")
 	v == "DISABLED"
 }
+
 ok_RFCGW_A_g if {
 	v := fact("profile_parameters", "gw/rem_start")
 	v == "SSH_SHELL"
@@ -1458,6 +1610,7 @@ violations contains msg if {
 	not ok_RFCGW_A_h_1
 	msg := sprintf("RFCGW-A_h.1: Profile parameter: gw/acl_mode_proxy = 1 (activates the default content of this ACL, if there is no such file already) (%s)", [state("profile_parameters", "gw/acl_mode_proxy")])
 }
+
 ok_RFCGW_A_h_1 if {
 	v := fact("profile_parameters", "gw/acl_mode_proxy")
 	v == "1"
@@ -1469,10 +1622,12 @@ violations contains msg if {
 	not ok_RFCGW_A_h_2
 	msg := sprintf("RFCGW-A_h.2: Profile parameter: gw/prxy_info (global path defined to central directory) (%s)", [state("profile_parameters", "gw/prxy_info")])
 }
+
 ok_RFCGW_A_h_2 if {
 	v := fact("profile_parameters", "gw/prxy_info")
 	regex.match(`^/usr/sap/(\w{3})/SYS/global/prxy[_]?info$`, v)
 }
+
 ok_RFCGW_A_h_2 if {
 	v := fact("profile_parameters", "gw/prxy_info")
 	regex.match(`^(\w{1}):\\usr\\sap\\(\w{3})\\SYS\\global\\sec[_]?info(|\.DAT|\.dat|\.txt)?$`, v)
@@ -1484,6 +1639,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_1
 	msg := sprintf("SCRIPT-A_a.1: Profile parameter: sapgui/nwbc_scripting = FALSE (Scripting Protection, see Note 1816392) (%s)", [state("profile_parameters", "sapgui/nwbc_scripting")])
 }
+
 ok_SCRIPT_A_a_1 if {
 	v := fact("profile_parameters", "sapgui/nwbc_scripting")
 	upper(v) == "FALSE"
@@ -1495,6 +1651,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_2
 	msg := sprintf("SCRIPT-A_a.2: Profile parameter: sapgui/user_scripting = FALSE (Scripting Protection) (%s)", [state("profile_parameters", "sapgui/user_scripting")])
 }
+
 ok_SCRIPT_A_a_2 if {
 	v := fact("profile_parameters", "sapgui/user_scripting")
 	upper(v) == "FALSE"
@@ -1506,6 +1663,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_3
 	msg := sprintf("SCRIPT-A_a.3: SAP GUI Scripting Security (IF scripting necessary then sapgui/user_scripting_per_user = TRUE, see Note 2715519, 2565390) (%s)", [state("profile_parameters", "sapgui/user_scripting_per_user")])
 }
+
 ok_SCRIPT_A_a_3 if {
 	v := fact("profile_parameters", "sapgui/user_scripting_per_user")
 	v == "TRUE"
@@ -1517,6 +1675,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_4
 	msg := sprintf("SCRIPT-A_a.4: Profile parameter: sapgui/user_scripting_per_user = TRUE (Scripting Protection) (%s)", [state("profile_parameters", "sapgui/user_scripting_per_user")])
 }
+
 ok_SCRIPT_A_a_4 if {
 	v := fact("profile_parameters", "sapgui/user_scripting_per_user")
 	upper(v) == "TRUE"
@@ -1528,6 +1687,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_5
 	msg := sprintf("SCRIPT-A_a.5: Profile parameter: sapgui/user_scripting_disable_recording = TRUE (Scripting Protection) (%s)", [state("profile_parameters", "sapgui/user_scripting_disable_recording")])
 }
+
 ok_SCRIPT_A_a_5 if {
 	v := fact("profile_parameters", "sapgui/user_scripting_disable_recording")
 	upper(v) == "TRUE"
@@ -1539,6 +1699,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_6
 	msg := sprintf("SCRIPT-A_a.6: Profile parameter: sapgui/user_scripting_force_notification = TRUE (Scripting Protection) (%s)", [state("profile_parameters", "sapgui/user_scripting_force_notification")])
 }
+
 ok_SCRIPT_A_a_6 if {
 	v := fact("profile_parameters", "sapgui/user_scripting_force_notification")
 	upper(v) == "TRUE"
@@ -1550,6 +1711,7 @@ violations contains msg if {
 	not ok_SCRIPT_A_a_7
 	msg := sprintf("SCRIPT-A_a.7: Profile parameter: sapgui/user_scripting_set_readonly = TRUE (Scripting Protection) (%s)", [state("profile_parameters", "sapgui/user_scripting_set_readonly")])
 }
+
 ok_SCRIPT_A_a_7 if {
 	v := fact("profile_parameters", "sapgui/user_scripting_set_readonly")
 	upper(v) == "TRUE"
@@ -1561,6 +1723,7 @@ violations contains msg if {
 	not ok_SECSTO_A_a_2
 	msg := sprintf("SECSTO-A_a.2: Profile parameter: rsec/securestorage/keyfile set as expected (SecStoreDBKey.pse key file location, see Note 1902611) (%s)", [state("profile_parameters", "rsec/securestorage/keyfile")])
 }
+
 ok_SECSTO_A_a_2 if {
 	v := fact("profile_parameters", "rsec/securestorage/keyfile")
 	regex.match(`(\w:)?([\/\\]usr[\/\\]sap|[\/\\]sapmnt)[\/\\](\w{3})[\/\\]SYS[\/\\]global[\/\\]security[\/\\]data[\/\\](SecStoreDBKey.pse)`, v)
@@ -1572,6 +1735,7 @@ violations contains msg if {
 	not ok_TRUST_A_j
 	msg := sprintf("TRUST-A_j: Profile parameter: rfc/allowoldticket4tt = no (to block old trusted tickets, see Note 3157268) (%s)", [state("profile_parameters", "rfc/allowoldticket4tt")])
 }
+
 ok_TRUST_A_j if {
 	v := fact("profile_parameters", "rfc/allowoldticket4tt")
 	lower(v) == "no"

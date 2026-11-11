@@ -42,7 +42,9 @@ fips_hashing if {
 	input.crypto_policy == "FIPS"
 }
 
-status_ol09_00_000241 := "Not_a_Finding" if { fips_hashing } else := "Open"
+status_ol09_00_000241 := "Not_a_Finding" if fips_hashing
+
+else := "Open"
 
 finding_ol09_00_000241 := {
 	"vuln_id": "V-271478",
@@ -65,7 +67,9 @@ crypto_policy_not_overridden if {
 	not input.crypto_policy_overrides
 }
 
-status_ol09_00_000242 := "Not_a_Finding" if { crypto_policy_not_overridden } else := "Open"
+status_ol09_00_000242 := "Not_a_Finding" if crypto_policy_not_overridden
+
+else := "Open"
 
 finding_ol09_00_000242 := {
 	"vuln_id": "V-271479",
@@ -97,7 +101,9 @@ dod_pki_enabled if {
 	input.pam_config.pkcs11_enabled == true
 }
 
-status_ol09_00_000930 := "Not_a_Finding" if { dod_pki_enabled } else := "Open"
+status_ol09_00_000930 := "Not_a_Finding" if dod_pki_enabled
+
+else := "Open"
 
 finding_ol09_00_000930 := {
 	"vuln_id": "V-271608",
@@ -120,7 +126,9 @@ sssd_cert_auth if {
 	input.sssd_config.piv_enabled == true
 }
 
-status_ol09_00_000925 := "Not_a_Finding" if { sssd_cert_auth } else := "Open"
+status_ol09_00_000925 := "Not_a_Finding" if sssd_cert_auth
+
+else := "Open"
 
 finding_ol09_00_000925 := {
 	"vuln_id": "V-271607",
@@ -143,7 +151,9 @@ cert_user_mapping if {
 	input.pam_config.cert_mapping_configured == true
 }
 
-status_ol09_00_000910 := "Not_a_Finding" if { cert_user_mapping } else := "Open"
+status_ol09_00_000910 := "Not_a_Finding" if cert_user_mapping
+
+else := "Open"
 
 finding_ol09_00_000910 := {
 	"vuln_id": "V-271606",

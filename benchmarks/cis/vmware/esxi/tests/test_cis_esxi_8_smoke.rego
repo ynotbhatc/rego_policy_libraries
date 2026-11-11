@@ -9,4 +9,3 @@ test_cis_esxi_8_loads_on_empty_input if {
 	m := data.cis_esxi_8 with input as {}
 	is_object(m)
 }
-

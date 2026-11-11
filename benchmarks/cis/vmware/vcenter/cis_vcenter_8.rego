@@ -34,13 +34,13 @@ violations := array.concat(
 						postgresql_violations,
 						array.concat(
 							photon_os_violations,
-							performance_charts_violations
-						)
-					)
-				)
-			)
-		)
-	)
+							performance_charts_violations,
+						),
+					),
+				),
+			),
+		),
+	),
 )
 
 compliant if {
@@ -70,7 +70,7 @@ vcenter_server_violations := [msg |
 		{"msg": "1.17 vCenter Server disaster recovery must be explicitly configured", "condition": vcenter_dr_configured},
 		{"msg": "1.18 vCenter Server inventory management must be secured", "condition": vcenter_inventory_management_secure},
 		{"msg": "1.19 vCenter Server API access must be properly secured", "condition": vcenter_api_access_secure},
-		{"msg": "1.20 vCenter Server licensing must be properly managed", "condition": vcenter_licensing_managed}
+		{"msg": "1.20 vCenter Server licensing must be properly managed", "condition": vcenter_licensing_managed},
 	]
 	m := msgs[_]
 	not m.condition
@@ -90,7 +90,7 @@ sso_violations := [msg |
 		{"msg": "2.9 SSO global permissions must be reviewed and minimized", "condition": sso_global_permissions_minimized},
 		{"msg": "2.10 SSO solution user certificates must be managed properly", "condition": sso_solution_user_certs_managed},
 		{"msg": "2.11 SSO IdP discovery must be explicitly configured securely", "condition": sso_idp_discovery_secure},
-		{"msg": "2.12 SSO smart card authentication must be explicitly configured properly", "condition": sso_smart_card_auth_configured}
+		{"msg": "2.12 SSO smart card authentication must be explicitly configured properly", "condition": sso_smart_card_auth_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -106,7 +106,7 @@ vsphere_client_violations := [msg |
 		{"msg": "3.5 vSphere Client content security policy must be explicitly configured", "condition": vsphere_client_csp_configured},
 		{"msg": "3.6 vSphere Client HTTP security headers must be explicitly configured", "condition": vsphere_client_security_headers_configured},
 		{"msg": "3.7 vSphere Client authentication mechanisms must be secure", "condition": vsphere_client_auth_secure},
-		{"msg": "3.8 vSphere Client cookie security must be explicitly configured", "condition": vsphere_client_cookie_security_configured}
+		{"msg": "3.8 vSphere Client cookie security must be explicitly configured", "condition": vsphere_client_cookie_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -120,7 +120,7 @@ inventory_service_violations := [msg |
 		{"msg": "4.3 Inventory Service SSL/TLS configuration must be secure", "condition": inventory_service_ssl_secure},
 		{"msg": "4.4 Inventory Service database connections must be secured", "condition": inventory_service_database_secure},
 		{"msg": "4.5 Inventory Service performance monitoring must be explicitly configured", "condition": inventory_service_performance_monitoring_configured},
-		{"msg": "4.6 Inventory Service backup procedures must be in place", "condition": inventory_service_backup_configured}
+		{"msg": "4.6 Inventory Service backup procedures must be in place", "condition": inventory_service_backup_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -133,7 +133,7 @@ lookup_service_violations := [msg |
 		{"msg": "5.2 Lookup Service logging must be explicitly configured appropriately", "condition": lookup_service_logging_configured},
 		{"msg": "5.3 Lookup Service registration security must be explicitly configured", "condition": lookup_service_registration_secure},
 		{"msg": "5.4 Lookup Service access controls must match the approved configuration", "condition": lookup_service_access_controls_configured},
-		{"msg": "5.5 Lookup Service endpoint security must be explicitly configured", "condition": lookup_service_endpoint_security_configured}
+		{"msg": "5.5 Lookup Service endpoint security must be explicitly configured", "condition": lookup_service_endpoint_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -149,7 +149,7 @@ postgresql_violations := [msg |
 		{"msg": "6.5 PostgreSQL SSL/TLS configuration must be secure", "condition": postgresql_ssl_secure},
 		{"msg": "6.6 PostgreSQL backup and recovery procedures must be in place", "condition": postgresql_backup_configured},
 		{"msg": "6.7 PostgreSQL performance monitoring must be explicitly configured", "condition": postgresql_performance_monitoring_configured},
-		{"msg": "6.8 PostgreSQL audit logging must be turned on", "condition": postgresql_audit_logging_enabled}
+		{"msg": "6.8 PostgreSQL audit logging must be turned on", "condition": postgresql_audit_logging_enabled},
 	]
 	m := msgs[_]
 	not m.condition
@@ -167,7 +167,7 @@ photon_os_violations := [msg |
 		{"msg": "7.7 Photon OS user account security must be explicitly configured", "condition": photon_user_account_security_configured},
 		{"msg": "7.8 Photon OS audit logging must be turned on", "condition": photon_audit_logging_enabled},
 		{"msg": "7.9 Photon OS kernel security parameters must be explicitly configured", "condition": photon_kernel_security_configured},
-		{"msg": "7.10 Photon OS filesystem security must be explicitly configured", "condition": photon_filesystem_security_configured}
+		{"msg": "7.10 Photon OS filesystem security must be explicitly configured", "condition": photon_filesystem_security_configured},
 	]
 	m := msgs[_]
 	not m.condition
@@ -179,7 +179,7 @@ performance_charts_violations := [msg |
 		{"msg": "8.1 Performance Charts service logging must be explicitly configured", "condition": performance_charts_logging_configured},
 		{"msg": "8.2 Performance Charts service SSL/TLS must be explicitly configured securely", "condition": performance_charts_ssl_secure},
 		{"msg": "8.3 Performance Charts service access controls must be explicitly configured", "condition": performance_charts_access_controls_configured},
-		{"msg": "8.4 Performance Charts service database security must be explicitly configured", "condition": performance_charts_database_secure}
+		{"msg": "8.4 Performance Charts service database security must be explicitly configured", "condition": performance_charts_database_secure},
 	]
 	m := msgs[_]
 	not m.condition
@@ -790,5 +790,5 @@ findings := [{
 	"severity": "HIGH",
 	"details": sprintf("Found %d configuration violations across vCenter security domains", [count(violations)]),
 	"violations": violations,
-	"remediation": "Review and implement the recommended VMware vCenter security configurations including proper service account management, SSL/TLS hardening, authentication and authorization controls, comprehensive logging and monitoring, database security, operating system hardening, and performance monitoring security"
+	"remediation": "Review and implement the recommended VMware vCenter security configurations including proper service account management, SSL/TLS hardening, authentication and authorization controls, comprehensive logging and monitoring, database security, operating system hardening, and performance monitoring security",
 }]

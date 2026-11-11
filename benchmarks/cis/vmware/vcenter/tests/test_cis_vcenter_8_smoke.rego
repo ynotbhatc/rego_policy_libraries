@@ -9,4 +9,3 @@ test_cis_vcenter_8_loads_on_empty_input if {
 	m := data.cis_vcenter_8 with input as {}
 	is_object(m)
 }
-

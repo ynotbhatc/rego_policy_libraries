@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default activation_criteria_tested := false
+
 default backup_processes_documented := false
+
 default backup_testing_performed := false
+
 default log_preservation_process := false
+
 default network_reconnection_process := false
+
 default plans_communicated := false
+
 default post_event_plan_updates := false
+
 default recovery_plan_activation_criteria := false
+
 default recovery_plan_roles_defined := false
+
 default recovery_plans_current := false
+
 default recovery_plans_documented := false
+
 default recovery_testing_performed := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -130,6 +141,7 @@ recovery_plan_exists(system) if {
 # R2.1 - Review and update recovery plans within 15 calendar months
 recovery_plans_current if {
 	bes_inventory_present
+
 	# input.recovery_plans also holds scalar plan-wide settings, so review currency
 	# is judged per high/medium system plan, not over every value in the object.
 	violations := [system |
@@ -141,7 +153,7 @@ recovery_plans_current if {
 }
 
 recovery_plan_current(plan) if {
-	plan_age_days := (time.now_ns() - date_ns(plan.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	plan_age_days := (time.now_ns() - date_ns(plan.last_review_date)) / (((24 * 60) * 60) * 1000000000)
 	plan_age_days <= 455
 }
 
@@ -155,7 +167,7 @@ post_event_plan_updates if {
 post_event_plan_updates if {
 	every event in input.qualifying_recovery_events {
 		event.plan_review_triggered == true
-		update_age_days := (date_ns(event.plan_review_completion_date) - date_ns(event.event_date)) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (date_ns(event.plan_review_completion_date) - date_ns(event.event_date)) / (((24 * 60) * 60) * 1000000000)
 		update_age_days <= 90
 	}
 }
@@ -189,7 +201,7 @@ recovery_testing_performed if {
 recovery_testing_current(system) if {
 	testing := input.recovery_testing[system.system_id]
 	testing.last_test_date
-	test_age_days := (time.now_ns() - date_ns(testing.last_test_date)) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - date_ns(testing.last_test_date)) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 	testing.test_documented == true
 	testing.issues_resolved == true
@@ -208,7 +220,7 @@ backup_testing_performed if {
 
 backup_test_current(system) if {
 	backup := input.backup_procedures[system.system_id]
-	backup_test_age_days := (time.now_ns() - date_ns(backup.last_test_date)) / (24 * 60 * 60 * 1000000000)
+	backup_test_age_days := (time.now_ns() - date_ns(backup.last_test_date)) / (((24 * 60) * 60) * 1000000000)
 	backup_test_age_days <= 455
 	backup.test_documented == true
 	backup.restoration_verified == true
@@ -218,7 +230,7 @@ backup_test_current(system) if {
 activation_criteria_tested if {
 	input.recovery_plans.activation_criteria_tested == true
 	last_test_ns := time.parse_rfc3339_ns(input.recovery_plans.last_activation_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 }
 
