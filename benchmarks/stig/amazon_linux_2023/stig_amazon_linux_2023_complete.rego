@@ -1,5 +1,5 @@
 # METADATA
-# title: "DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator"
+# title: "Amazon Linux 2023 must use a Linux Security Module configured to enforce limits on system services. — Master Aggregator"
 # custom:
 #   class: security
 #   framework: stig_amazon_linux_2023
@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.amazon_linux_2023
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide — Master Aggregator
-# V1R4 | Release: 4 Benchmark Date: 01 Jul 2026
-# Coverage: 23 of 187 rules (19 CAT I of 20); remainder is follow-up work.
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# V1R5 | Release: 5 Benchmark Date: 30 Sep 2026
+# Coverage: 23 of 187 rules (19 CAT I of 21); remainder is follow-up work.
+# Rule IDs verified against the October 2026 SRG-STIG library on 2026-11-10.
 
 import rego.v1
 
@@ -31,15 +31,18 @@ open_findings := [f | some f in all_findings; f.status == "Open"]
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
 
 default overall_compliant := false
+
 overall_compliant if count(cat_i_open) == 0
+
 default fully_compliant := false
+
 fully_compliant if count(open_findings) == 0
 
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Amazon Linux 2023 Security Technical Implementation Guide",
-		"version": "V1R4",
-		"release": "Release: 4 Benchmark Date: 01 Jul 2026",
+		"version": "V1R5",
+		"release": "Release: 5 Benchmark Date: 30 Sep 2026",
 		"platform": "Amazon Linux 2023",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

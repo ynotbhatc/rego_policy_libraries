@@ -6,18 +6,20 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 17
-#     cited: 16
+#     checks: 16
+#     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.configuration_management
 
 # DISA STIG for RHEL 8 - Configuration Management Module
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 # Covers: System settings, kernel params, banners, SELinux, GRUB
 
 import rego.v1
@@ -28,222 +30,215 @@ default compliant := false
 # CAT I - HIGH SEVERITY
 # =============================================================================
 
-# RHEL-08-010000 | V-230221 | CAT I - SELinux must be enforcing
-default selinux_enforcing := false
-
-selinux_enforcing if { input.selinux.status == "enforcing" }
-
-status_rhel_08_010000 := "Not_a_Finding" if { selinux_enforcing } else := "Open"
-
-finding_rhel_08_010000 := {
-	"vuln_id": "V-230221",
-	"stig_id": "RHEL-08-010000",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must enable SELinux in enforcing mode",
-	"status": status_rhel_08_010000,
-	"fix_text": "Set SELINUX=enforcing in /etc/selinux/config",
-}
-
-# RHEL-08-010010 | V-230222 | CAT I - SELinux policy must be targeted
-default selinux_targeted := false
-
-selinux_targeted if { input.selinux.policy == "targeted" }
-
-status_rhel_08_010010 := "Not_a_Finding" if { selinux_targeted } else := "Open"
-
-finding_rhel_08_010010 := {
-	"vuln_id": "V-230222",
-	"stig_id": "RHEL-08-010010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must implement the SELinux targeted policy",
-	"status": status_rhel_08_010010,
-	"fix_text": "Set SELINUXTYPE=targeted in /etc/selinux/config",
-}
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
 
 # RHEL-08-010020 | V-230223 | CAT I - FIPS must be enabled
 default fips_mode := false
 
-fips_mode if { input.fips_mode == true }
+fips_mode if input.fips_mode == true
 
-status_rhel_08_010020 := "Not_a_Finding" if { fips_mode } else := "Open"
+status_rhel_08_010020 := "Not_a_Finding" if fips_mode
+
+else := "Open"
 
 finding_rhel_08_010020 := {
 	"vuln_id": "V-230223",
 	"stig_id": "RHEL-08-010020",
 	"severity": "CAT I",
-	"rule_title": "All RHEL 8 local disk partitions must implement cryptographic mechanisms to prevent unauthorized disclosure",
+	"rule_title": "RHEL 8 must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
 	"status": status_rhel_08_010020,
 	"fix_text": "Enable FIPS mode: fips-mode-setup --enable",
 }
 
-# RHEL-08-010030 | V-230224 | CAT I - GRUB password required
+# RHEL-08-010150 | V-230235 | CAT I - GRUB password required
 default grub_password := false
 
-grub_password if { input.grub_config.password_set == true }
+grub_password if input.grub_config.password_set == true
 
-status_rhel_08_010030 := "Not_a_Finding" if { grub_password } else := "Open"
+status_rhel_08_010150 := "Not_a_Finding" if grub_password
 
-finding_rhel_08_010030 := {
-	"vuln_id": "V-230224",
-	"stig_id": "RHEL-08-010030",
+else := "Open"
+
+finding_rhel_08_010150 := {
+	"vuln_id": "V-230235",
+	"stig_id": "RHEL-08-010150",
 	"severity": "CAT I",
-	"rule_title": "RHEL 8 must require authentication upon booting into single-user and maintenance modes",
-	"status": status_rhel_08_010030,
+	"rule_title": "RHEL 8 operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes.",
+	"status": status_rhel_08_010150,
 	"fix_text": "Configure bootloader password: grub2-setpassword",
 }
 
-# RHEL-08-010040 | V-230225 | CAT I - Ctrl-Alt-Delete must be disabled
+# RHEL-08-040170 | V-230529 | CAT I - Ctrl-Alt-Delete must be disabled
 default ctrl_alt_del := false
 
-ctrl_alt_del if { input.services["ctrl-alt-del.target"] == "masked" }
+ctrl_alt_del if input.services["ctrl-alt-del.target"] == "masked"
 
-status_rhel_08_010040 := "Not_a_Finding" if { ctrl_alt_del } else := "Open"
+status_rhel_08_040170 := "Not_a_Finding" if ctrl_alt_del
 
-finding_rhel_08_010040 := {
-	"vuln_id": "V-230225",
-	"stig_id": "RHEL-08-010040",
+else := "Open"
+
+finding_rhel_08_040170 := {
+	"vuln_id": "V-230529",
+	"stig_id": "RHEL-08-040170",
 	"severity": "CAT I",
-	"rule_title": "RHEL 8 must disable the x86 Ctrl-Alt-Delete key sequence",
-	"status": status_rhel_08_010040,
+	"rule_title": "The x86 Ctrl-Alt-Delete key sequence must be disabled on RHEL 8.",
+	"status": status_rhel_08_040170,
 	"fix_text": "Disable Ctrl-Alt-Del: systemctl mask ctrl-alt-del.target",
-}
-
-# RHEL-08-010050 | V-230226 | CAT I - DoD Root CA must be installed
-default dod_root_ca := false
-
-dod_root_ca if { input.certificates.dod_root_ca_installed == true }
-
-status_rhel_08_010050 := "Not_a_Finding" if { dod_root_ca } else := "Open"
-
-finding_rhel_08_010050 := {
-	"vuln_id": "V-230226",
-	"stig_id": "RHEL-08-010050",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must have the DoD Root CA certificates installed as a trusted CA",
-	"status": status_rhel_08_010050,
-	"fix_text": "Install DoD Root CAs: trust anchor --store DoD_PKE_CA_chain.pem",
 }
 
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
 
-# RHEL-08-010060 | V-230227 | CAT II - Crypto policy must not be LEGACY
-default no_legacy_crypto := false
+# RHEL-08-010170 | V-230240 | CAT II - SELinux must be enforcing
+default selinux_enforcing := false
 
-no_legacy_crypto if { input.crypto_policy != "LEGACY" }
-no_legacy_crypto if { not input.crypto_policy }
+selinux_enforcing if input.selinux.status == "enforcing"
 
-status_rhel_08_010060 := "Not_a_Finding" if { no_legacy_crypto } else := "Open"
+status_rhel_08_010170 := "Not_a_Finding" if selinux_enforcing
 
-finding_rhel_08_010060 := {
-	"vuln_id": "V-230227",
-	"stig_id": "RHEL-08-010060",
+else := "Open"
+
+finding_rhel_08_010170 := {
+	"vuln_id": "V-230240",
+	"stig_id": "RHEL-08-010170",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must ensure system-wide crypto policy is not set to legacy",
-	"status": status_rhel_08_010060,
-	"fix_text": "Set crypto policy: update-crypto-policies --set FIPS",
+	"rule_title": "RHEL 8 must use a Linux Security Module configured to enforce limits on system services.",
+	"status": status_rhel_08_010170,
+	"fix_text": "Set SELINUX=enforcing in /etc/selinux/config",
 }
 
-# RHEL-08-010070 | V-230228 | CAT II - Login banner required
+# RHEL-08-010450 | V-230282 | CAT II - SELinux policy must be targeted
+default selinux_targeted := false
+
+selinux_targeted if input.selinux.policy == "targeted"
+
+status_rhel_08_010450 := "Not_a_Finding" if selinux_targeted
+
+else := "Open"
+
+finding_rhel_08_010450 := {
+	"vuln_id": "V-230282",
+	"stig_id": "RHEL-08-010450",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 must enable the SELinux targeted policy.",
+	"status": status_rhel_08_010450,
+	"fix_text": "Set SELINUXTYPE=targeted in /etc/selinux/config",
+}
+
+# RHEL-08-010090 | V-230229 | CAT II - DoD Root CA must be installed
+default dod_root_ca := false
+
+dod_root_ca if input.certificates.dod_root_ca_installed == true
+
+status_rhel_08_010090 := "Not_a_Finding" if dod_root_ca
+
+else := "Open"
+
+finding_rhel_08_010090 := {
+	"vuln_id": "V-230229",
+	"stig_id": "RHEL-08-010090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+	"status": status_rhel_08_010090,
+	"fix_text": "Install DoD Root CAs: trust anchor --store DoD_PKE_CA_chain.pem",
+}
+
+# RHEL-08-010040 | V-230225 | CAT II - Login banner required
 default login_banner := false
 
-login_banner if { contains(input.login_banner.issue, "U.S. Government") }
-login_banner if { contains(input.login_banner.issue, "authorized users") }
+login_banner if contains(input.login_banner.issue, "U.S. Government")
+login_banner if contains(input.login_banner.issue, "authorized users")
 
-status_rhel_08_010070 := "Not_a_Finding" if { login_banner } else := "Open"
+status_rhel_08_010040 := "Not_a_Finding" if login_banner
 
-finding_rhel_08_010070 := {
-	"vuln_id": "V-230228",
-	"stig_id": "RHEL-08-010070",
+else := "Open"
+
+finding_rhel_08_010040 := {
+	"vuln_id": "V-230225",
+	"stig_id": "RHEL-08-010040",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must display the Standard Mandatory DoD Notice and Consent Banner before granting access",
-	"status": status_rhel_08_010070,
+	"rule_title": "RHEL 8 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a ssh logon.",
+	"status": status_rhel_08_010040,
 	"fix_text": "Configure DoD banner in /etc/issue",
 }
 
-# RHEL-08-010080 | V-230229 | CAT II - ASLR must be enabled
+# RHEL-08-010430 | V-230280 | CAT II - ASLR must be enabled
 default aslr_enabled := false
 
-aslr_enabled if { input.kernel_params["kernel.randomize_va_space"] == "2" }
+aslr_enabled if input.kernel_params["kernel.randomize_va_space"] == "2"
 
-status_rhel_08_010080 := "Not_a_Finding" if { aslr_enabled } else := "Open"
+status_rhel_08_010430 := "Not_a_Finding" if aslr_enabled
 
-finding_rhel_08_010080 := {
-	"vuln_id": "V-230229",
-	"stig_id": "RHEL-08-010080",
+else := "Open"
+
+finding_rhel_08_010430 := {
+	"vuln_id": "V-230280",
+	"stig_id": "RHEL-08-010430",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must implement address space layout randomization (ASLR)",
-	"status": status_rhel_08_010080,
+	"rule_title": "RHEL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+	"status": status_rhel_08_010430,
 	"fix_text": "Set kernel.randomize_va_space=2 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-08-010090 | V-230230 | CAT II - dmesg restrict must be 1
-default dmesg_restrict := false
-
-dmesg_restrict if { input.kernel_params["kernel.dmesg_restrict"] == "1" }
-
-status_rhel_08_010090 := "Not_a_Finding" if { dmesg_restrict } else := "Open"
-
-finding_rhel_08_010090 := {
-	"vuln_id": "V-230230",
-	"stig_id": "RHEL-08-010090",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must restrict access to the kernel message buffer",
-	"status": status_rhel_08_010090,
-	"fix_text": "Set kernel.dmesg_restrict=1 in /etc/sysctl.d/99-stig.conf",
-}
-
-# RHEL-08-010100 | V-230231 | CAT II - USB storage must be disabled
+# RHEL-08-040080 | V-230503 | CAT II - USB storage must be disabled
 default usb_storage_disabled := false
 
-usb_storage_disabled if { input.kernel_modules["usb-storage"].blacklisted == true }
-usb_storage_disabled if { input.kernel_modules["usb-storage"].status == "disabled" }
+usb_storage_disabled if input.kernel_modules["usb-storage"].blacklisted == true
+usb_storage_disabled if input.kernel_modules["usb-storage"].status == "disabled"
 
-status_rhel_08_010100 := "Not_a_Finding" if { usb_storage_disabled } else := "Open"
+status_rhel_08_040080 := "Not_a_Finding" if usb_storage_disabled
 
-finding_rhel_08_010100 := {
-	"vuln_id": "V-230231",
-	"stig_id": "RHEL-08-010100",
+else := "Open"
+
+finding_rhel_08_040080 := {
+	"vuln_id": "V-230503",
+	"stig_id": "RHEL-08-040080",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must disable the USB mass storage kernel module",
-	"status": status_rhel_08_010100,
+	"rule_title": "RHEL 8 must be configured to disable USB mass storage.",
+	"status": status_rhel_08_040080,
 	"fix_text": "Disable USB storage: echo 'install usb-storage /bin/false' >> /etc/modprobe.d/usb-storage.conf",
 }
 
-# RHEL-08-010110 | V-230232 | CAT II - AIDE must be installed
+# RHEL-08-010359 | V-251710 | CAT II - AIDE must be installed
 default aide_installed := false
 
-aide_installed if { input.packages.aide == true }
+aide_installed if input.packages.aide == true
 
-status_rhel_08_010110 := "Not_a_Finding" if { aide_installed } else := "Open"
+status_rhel_08_010359 := "Not_a_Finding" if aide_installed
 
-finding_rhel_08_010110 := {
-	"vuln_id": "V-230232",
-	"stig_id": "RHEL-08-010110",
+else := "Open"
+
+finding_rhel_08_010359 := {
+	"vuln_id": "V-251710",
+	"stig_id": "RHEL-08-010359",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must use a file integrity tool",
-	"status": status_rhel_08_010110,
+	"rule_title": "The RHEL 8 operating system must use a file integrity tool to verify correct operation of all security functions.",
+	"status": status_rhel_08_010359,
 	"fix_text": "Install AIDE: dnf install aide -y && aide --init",
 }
 
-# RHEL-08-010120 | V-230233 | CAT II - AIDE cron job must exist
+# RHEL-08-010360 | V-230263 | CAT II - AIDE cron job must exist
 default aide_cron := false
 
-aide_cron if { input.aide_config.cron_job == true }
+aide_cron if input.aide_config.cron_job == true
 
-status_rhel_08_010120 := "Not_a_Finding" if { aide_cron } else := "Open"
+status_rhel_08_010360 := "Not_a_Finding" if aide_cron
 
-finding_rhel_08_010120 := {
-	"vuln_id": "V-230233",
-	"stig_id": "RHEL-08-010120",
+else := "Open"
+
+finding_rhel_08_010360 := {
+	"vuln_id": "V-230263",
+	"stig_id": "RHEL-08-010360",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must routinely check the baseline configuration for unauthorized changes",
-	"status": status_rhel_08_010120,
+	"rule_title": "The RHEL 8 file integrity tool must notify the system administrator when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organizationally defined frequency.",
+	"status": status_rhel_08_010360,
 	"fix_text": "Configure AIDE cron job: echo '0 5 * * * root /usr/sbin/aide --check' > /etc/cron.d/aide",
 }
 
-# RHEL-08-010130 | V-230234 | CAT II - /tmp must be separate partition
+# RHEL-08-010543 | V-230295 | CAT II - /tmp must be separate partition
 default tmp_separate := false
 
 tmp_separate if {
@@ -251,18 +246,42 @@ tmp_separate if {
 	mount.mount == "/tmp"
 }
 
-status_rhel_08_010130 := "Not_a_Finding" if { tmp_separate } else := "Open"
+status_rhel_08_010543 := "Not_a_Finding" if tmp_separate
 
-finding_rhel_08_010130 := {
-	"vuln_id": "V-230234",
-	"stig_id": "RHEL-08-010130",
+else := "Open"
+
+finding_rhel_08_010543 := {
+	"vuln_id": "V-230295",
+	"stig_id": "RHEL-08-010543",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must use a separate file system for /tmp",
-	"status": status_rhel_08_010130,
+	"rule_title": "A separate RHEL 8 filesystem must be used for the /tmp directory.",
+	"status": status_rhel_08_010543,
 	"fix_text": "Configure /tmp as a separate partition",
 }
 
-# RHEL-08-010140 | V-230235 | CAT II - /var/log must be separate partition
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-08-010375 | V-230269 | CAT III - dmesg restrict must be 1
+default dmesg_restrict := false
+
+dmesg_restrict if input.kernel_params["kernel.dmesg_restrict"] == "1"
+
+status_rhel_08_010375 := "Not_a_Finding" if dmesg_restrict
+
+else := "Open"
+
+finding_rhel_08_010375 := {
+	"vuln_id": "V-230269",
+	"stig_id": "RHEL-08-010375",
+	"severity": "CAT III",
+	"rule_title": "RHEL 8 must restrict access to the kernel message buffer.",
+	"status": status_rhel_08_010375,
+	"fix_text": "Set kernel.dmesg_restrict=1 in /etc/sysctl.d/99-stig.conf",
+}
+
+# RHEL-08-010541 | V-230293 | CAT III - /var/log must be separate partition
 default var_log_separate := false
 
 var_log_separate if {
@@ -270,18 +289,20 @@ var_log_separate if {
 	mount.mount == "/var/log"
 }
 
-status_rhel_08_010140 := "Not_a_Finding" if { var_log_separate } else := "Open"
+status_rhel_08_010541 := "Not_a_Finding" if var_log_separate
 
-finding_rhel_08_010140 := {
-	"vuln_id": "V-230235",
-	"stig_id": "RHEL-08-010140",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must use a separate file system for /var/log",
-	"status": status_rhel_08_010140,
+else := "Open"
+
+finding_rhel_08_010541 := {
+	"vuln_id": "V-230293",
+	"stig_id": "RHEL-08-010541",
+	"severity": "CAT III",
+	"rule_title": "RHEL 8 must use a separate file system for /var/log.",
+	"status": status_rhel_08_010541,
 	"fix_text": "Configure /var/log as a separate partition",
 }
 
-# RHEL-08-010150 | V-230236 | CAT II - /var/log/audit must be separate
+# RHEL-08-010542 | V-230294 | CAT III - /var/log/audit must be separate
 default var_log_audit_separate := false
 
 var_log_audit_separate if {
@@ -289,14 +310,16 @@ var_log_audit_separate if {
 	mount.mount == "/var/log/audit"
 }
 
-status_rhel_08_010150 := "Not_a_Finding" if { var_log_audit_separate } else := "Open"
+status_rhel_08_010542 := "Not_a_Finding" if var_log_audit_separate
 
-finding_rhel_08_010150 := {
-	"vuln_id": "V-230236",
-	"stig_id": "RHEL-08-010150",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must use a separate file system for /var/log/audit",
-	"status": status_rhel_08_010150,
+else := "Open"
+
+finding_rhel_08_010542 := {
+	"vuln_id": "V-230294",
+	"stig_id": "RHEL-08-010542",
+	"severity": "CAT III",
+	"rule_title": "RHEL 8 must use a separate file system for the system audit data path.",
+	"status": status_rhel_08_010542,
 	"fix_text": "Configure /var/log/audit as a separate partition",
 }
 
@@ -305,28 +328,30 @@ finding_rhel_08_010150 := {
 # =============================================================================
 
 cat_i_findings := [
-	finding_rhel_08_010000,
-	finding_rhel_08_010010,
 	finding_rhel_08_010020,
-	finding_rhel_08_010030,
-	finding_rhel_08_010040,
-	finding_rhel_08_010050,
+	finding_rhel_08_010150,
+	finding_rhel_08_040170,
 ]
 
 cat_ii_findings := [
-	finding_rhel_08_010060,
-	finding_rhel_08_010070,
-	finding_rhel_08_010080,
+	finding_rhel_08_010170,
+	finding_rhel_08_010450,
 	finding_rhel_08_010090,
-	finding_rhel_08_010100,
-	finding_rhel_08_010110,
-	finding_rhel_08_010120,
-	finding_rhel_08_010130,
-	finding_rhel_08_010140,
-	finding_rhel_08_010150,
+	finding_rhel_08_010040,
+	finding_rhel_08_010430,
+	finding_rhel_08_040080,
+	finding_rhel_08_010359,
+	finding_rhel_08_010360,
+	finding_rhel_08_010543,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+cat_iii_findings := [
+	finding_rhel_08_010375,
+	finding_rhel_08_010541,
+	finding_rhel_08_010542,
+]
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

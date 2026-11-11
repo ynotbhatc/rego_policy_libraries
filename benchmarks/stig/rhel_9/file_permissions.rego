@@ -6,8 +6,8 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 14
-#     cited: 13
+#     checks: 11
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
@@ -17,7 +17,9 @@
 package stig.rhel_9.file_permissions
 
 # DISA STIG for RHEL 9 - File Permissions Module
-# STIG Version: V2R2 | Released: October 2024
+# STIG Version: V2R10 | Released: 30 Sep 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 # Covers: World-writable files, SUID/SGID, system file ownership, /etc permissions
 
 import rego.v1
@@ -40,28 +42,11 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 # CAT I - HIGH SEVERITY
 # =============================================================================
 
-# RHEL-09-232010 | V-257870 | CAT I
-# World-writable files must not exist
-default no_world_writable_files := false
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
 
-no_world_writable_files if {
-	is_array(input.file_permissions.world_writable_files)
-	count(input.file_permissions.world_writable_files) == 0
-}
-
-
-status_rhel_09_232010 := "Not_a_Finding" if { no_world_writable_files } else := "Open"
-
-finding_rhel_09_232010 := {
-	"vuln_id": "V-257870",
-	"stig_id": "RHEL-09-232010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must have no world-writable files or directories",
-	"status": status_rhel_09_232010,
-	"fix_text": "Remove world-writable permissions: find / -xdev -type f -perm -002 -exec chmod o-w {} \\;",
-}
-
-# RHEL-09-232015 | V-257871 | CAT I
+# RHEL-09-232255 | V-257931 | CAT II
 # No unowned files or directories
 default no_unowned_files := false
 
@@ -70,19 +55,20 @@ no_unowned_files if {
 	count(input.file_permissions.unowned_files) == 0
 }
 
+status_rhel_09_232255 := "Not_a_Finding" if no_unowned_files
 
-status_rhel_09_232015 := "Not_a_Finding" if { no_unowned_files } else := "Open"
+else := "Open"
 
-finding_rhel_09_232015 := {
-	"vuln_id": "V-257871",
-	"stig_id": "RHEL-09-232015",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must have no files or directories not owned by a valid user",
-	"status": status_rhel_09_232015,
+finding_rhel_09_232255 := {
+	"vuln_id": "V-257931",
+	"stig_id": "RHEL-09-232255",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local files and directories must have a valid owner.",
+	"status": status_rhel_09_232255,
 	"fix_text": "Find and remediate unowned files: find / -nouser -xdev -print",
 }
 
-# RHEL-09-232020 | V-257872 | CAT I
+# RHEL-09-232250 | V-257930 | CAT II
 # No ungrouped files or directories
 default no_ungrouped_files := false
 
@@ -91,23 +77,20 @@ no_ungrouped_files if {
 	count(input.file_permissions.ungrouped_files) == 0
 }
 
+status_rhel_09_232250 := "Not_a_Finding" if no_ungrouped_files
 
-status_rhel_09_232020 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
+else := "Open"
 
-finding_rhel_09_232020 := {
-	"vuln_id": "V-257872",
-	"stig_id": "RHEL-09-232020",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must have no files or directories not owned by a valid group",
-	"status": status_rhel_09_232020,
+finding_rhel_09_232250 := {
+	"vuln_id": "V-257930",
+	"stig_id": "RHEL-09-232250",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local files and directories must have a valid group owner.",
+	"status": status_rhel_09_232250,
 	"fix_text": "Find and remediate ungrouped files: find / -nogroup -xdev -print",
 }
 
-# =============================================================================
-# CAT II - MEDIUM SEVERITY
-# =============================================================================
-
-# RHEL-09-232025 | V-257873 | CAT II
+# RHEL-09-232075 | V-257895 | CAT II
 # /etc/passwd must have mode 0644 or less
 default passwd_permissions_ok := false
 
@@ -115,18 +98,20 @@ passwd_permissions_ok if {
 	mode_within(input.file_permissions.etc_passwd.mode, "0644")
 }
 
-status_rhel_09_232025 := "Not_a_Finding" if { passwd_permissions_ok } else := "Open"
+status_rhel_09_232075 := "Not_a_Finding" if passwd_permissions_ok
 
-finding_rhel_09_232025 := {
-	"vuln_id": "V-257873",
-	"stig_id": "RHEL-09-232025",
+else := "Open"
+
+finding_rhel_09_232075 := {
+	"vuln_id": "V-257895",
+	"stig_id": "RHEL-09-232075",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/passwd file must have mode 0644 or less permissive",
-	"status": status_rhel_09_232025,
+	"rule_title": "RHEL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access.",
+	"status": status_rhel_09_232075,
 	"fix_text": "Fix /etc/passwd permissions: chmod 0644 /etc/passwd",
 }
 
-# RHEL-09-232030 | V-257874 | CAT II
+# RHEL-09-232270 | V-257934 | CAT II
 # /etc/shadow must have mode 0000
 default shadow_permissions_ok := false
 
@@ -134,18 +119,20 @@ shadow_permissions_ok if {
 	mode_within(input.file_permissions.etc_shadow.mode, "0000")
 }
 
-status_rhel_09_232030 := "Not_a_Finding" if { shadow_permissions_ok } else := "Open"
+status_rhel_09_232270 := "Not_a_Finding" if shadow_permissions_ok
 
-finding_rhel_09_232030 := {
-	"vuln_id": "V-257874",
-	"stig_id": "RHEL-09-232030",
+else := "Open"
+
+finding_rhel_09_232270 := {
+	"vuln_id": "V-257934",
+	"stig_id": "RHEL-09-232270",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/shadow file must have mode 0000",
-	"status": status_rhel_09_232030,
+	"rule_title": "RHEL 9 /etc/shadow file must have mode 0000 to prevent unauthorized access.",
+	"status": status_rhel_09_232270,
 	"fix_text": "Fix /etc/shadow permissions: chmod 0000 /etc/shadow",
 }
 
-# RHEL-09-232035 | V-257875 | CAT II
+# RHEL-09-232055 | V-257891 | CAT II
 # /etc/group must have mode 0644 or less
 default group_permissions_ok := false
 
@@ -153,18 +140,20 @@ group_permissions_ok if {
 	mode_within(input.file_permissions.etc_group.mode, "0644")
 }
 
-status_rhel_09_232035 := "Not_a_Finding" if { group_permissions_ok } else := "Open"
+status_rhel_09_232055 := "Not_a_Finding" if group_permissions_ok
 
-finding_rhel_09_232035 := {
-	"vuln_id": "V-257875",
-	"stig_id": "RHEL-09-232035",
+else := "Open"
+
+finding_rhel_09_232055 := {
+	"vuln_id": "V-257891",
+	"stig_id": "RHEL-09-232055",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/group file must have mode 0644 or less permissive",
-	"status": status_rhel_09_232035,
+	"rule_title": "RHEL 9 /etc/group file must have mode 0644 or less permissive to prevent unauthorized access.",
+	"status": status_rhel_09_232055,
 	"fix_text": "Fix /etc/group permissions: chmod 0644 /etc/group",
 }
 
-# RHEL-09-232040 | V-257876 | CAT II
+# RHEL-09-232065 | V-257893 | CAT II
 # /etc/gshadow must have mode 0000
 default gshadow_permissions_ok := false
 
@@ -172,39 +161,20 @@ gshadow_permissions_ok if {
 	mode_within(input.file_permissions.etc_gshadow.mode, "0000")
 }
 
-status_rhel_09_232040 := "Not_a_Finding" if { gshadow_permissions_ok } else := "Open"
+status_rhel_09_232065 := "Not_a_Finding" if gshadow_permissions_ok
 
-finding_rhel_09_232040 := {
-	"vuln_id": "V-257876",
-	"stig_id": "RHEL-09-232040",
+else := "Open"
+
+finding_rhel_09_232065 := {
+	"vuln_id": "V-257893",
+	"stig_id": "RHEL-09-232065",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 /etc/gshadow file must have mode 0000",
-	"status": status_rhel_09_232040,
+	"rule_title": "RHEL 9 /etc/gshadow file must have mode 0000 or less permissive to prevent unauthorized access.",
+	"status": status_rhel_09_232065,
 	"fix_text": "Fix /etc/gshadow permissions: chmod 0000 /etc/gshadow",
 }
 
-# RHEL-09-232045 | V-257877 | CAT II
-# All SUID executables must be documented
-default suid_files_reviewed := false
-
-suid_files_reviewed if {
-	is_array(input.file_permissions.undocumented_suid_files)
-	count(input.file_permissions.undocumented_suid_files) == 0
-}
-
-
-status_rhel_09_232045 := "Not_a_Finding" if { suid_files_reviewed } else := "Open"
-
-finding_rhel_09_232045 := {
-	"vuln_id": "V-257877",
-	"stig_id": "RHEL-09-232045",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must have no unauthorized SUID or SGID files",
-	"status": status_rhel_09_232045,
-	"fix_text": "Review SUID/SGID files: find / -xdev \\( -perm -4000 -o -perm -2000 \\) -type f",
-}
-
-# RHEL-09-232050 | V-257878 | CAT II
+# RHEL-09-232020 | V-257884 | CAT II
 # Library files must have mode 0755 or less
 default lib_permissions_ok := false
 
@@ -212,18 +182,20 @@ lib_permissions_ok if {
 	input.file_permissions.library_files_ok == true
 }
 
-status_rhel_09_232050 := "Not_a_Finding" if { lib_permissions_ok } else := "Open"
+status_rhel_09_232020 := "Not_a_Finding" if lib_permissions_ok
 
-finding_rhel_09_232050 := {
-	"vuln_id": "V-257878",
-	"stig_id": "RHEL-09-232050",
+else := "Open"
+
+finding_rhel_09_232020 := {
+	"vuln_id": "V-257884",
+	"stig_id": "RHEL-09-232020",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 library files must have mode 0755 or less permissive",
-	"status": status_rhel_09_232050,
+	"rule_title": "RHEL 9 library files must have mode 755 or less permissive.",
+	"status": status_rhel_09_232020,
 	"fix_text": "Fix library permissions: find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec chmod 755 {} \\;",
 }
 
-# RHEL-09-232055 | V-257879 | CAT II
+# RHEL-09-232200 | V-257920 | CAT II
 # Library dirs must be owned by root
 default lib_dirs_owned_root := false
 
@@ -231,18 +203,20 @@ lib_dirs_owned_root if {
 	input.file_permissions.library_dirs_owned_root == true
 }
 
-status_rhel_09_232055 := "Not_a_Finding" if { lib_dirs_owned_root } else := "Open"
+status_rhel_09_232200 := "Not_a_Finding" if lib_dirs_owned_root
 
-finding_rhel_09_232055 := {
-	"vuln_id": "V-257879",
-	"stig_id": "RHEL-09-232055",
+else := "Open"
+
+finding_rhel_09_232200 := {
+	"vuln_id": "V-257920",
+	"stig_id": "RHEL-09-232200",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 library files must be owned by root",
-	"status": status_rhel_09_232055,
+	"rule_title": "RHEL 9 library files must be owned by root.",
+	"status": status_rhel_09_232200,
 	"fix_text": "Fix library ownership: find /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec chown root {} \\;",
 }
 
-# RHEL-09-232060 | V-257880 | CAT II
+# RHEL-09-232010 | V-257882 | CAT II
 # System commands must have mode 0755 or less
 default sys_commands_permissions_ok := false
 
@@ -250,18 +224,20 @@ sys_commands_permissions_ok if {
 	input.file_permissions.system_commands_ok == true
 }
 
-status_rhel_09_232060 := "Not_a_Finding" if { sys_commands_permissions_ok } else := "Open"
+status_rhel_09_232010 := "Not_a_Finding" if sys_commands_permissions_ok
 
-finding_rhel_09_232060 := {
-	"vuln_id": "V-257880",
-	"stig_id": "RHEL-09-232060",
+else := "Open"
+
+finding_rhel_09_232010 := {
+	"vuln_id": "V-257882",
+	"stig_id": "RHEL-09-232010",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 system commands must have mode 0755 or less permissive",
-	"status": status_rhel_09_232060,
+	"rule_title": "RHEL 9 system commands must have mode 755 or less permissive.",
+	"status": status_rhel_09_232010,
 	"fix_text": "Fix system command permissions: find /bin /sbin /usr/bin /usr/sbin -perm /022 -exec chmod 755 {} \\;",
 }
 
-# RHEL-09-232065 | V-257881 | CAT II
+# RHEL-09-232050 | V-257890 | CAT II
 # All interactive local users must have home dir permissions set to 0750 or less
 default home_dir_permissions_ok := false
 
@@ -270,67 +246,45 @@ home_dir_permissions_ok if {
 	count(input.file_permissions.insecure_home_dirs) == 0
 }
 
+status_rhel_09_232050 := "Not_a_Finding" if home_dir_permissions_ok
 
-status_rhel_09_232065 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
+else := "Open"
 
-finding_rhel_09_232065 := {
-	"vuln_id": "V-257881",
-	"stig_id": "RHEL-09-232065",
+finding_rhel_09_232050 := {
+	"vuln_id": "V-257890",
+	"stig_id": "RHEL-09-232050",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 local interactive user home directories must have mode 0750 or less permissive",
-	"status": status_rhel_09_232065,
+	"rule_title": "All RHEL 9 local interactive user home directories must have mode 0750 or less permissive.",
+	"status": status_rhel_09_232050,
 	"fix_text": "Fix home directory permissions: chmod 0750 /home/<username>",
-}
-
-# RHEL-09-232070 | V-257882 | CAT II
-# /etc/cron.allow must be mode 0600
-default cron_allow_permissions_ok := false
-
-cron_allow_permissions_ok if {
-	input.cron_allow.file_exists == true
-	mode_within(input.cron_allow.permissions, "0600")
-}
-
-# An absent file is compliant only when the collector explicitly reports it absent.
-cron_allow_permissions_ok if {
-	input.cron_allow.file_exists == false
-}
-
-status_rhel_09_232070 := "Not_a_Finding" if { cron_allow_permissions_ok } else := "Open"
-
-finding_rhel_09_232070 := {
-	"vuln_id": "V-257882",
-	"stig_id": "RHEL-09-232070",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 cron configuration files must have mode 0600 or less permissive",
-	"status": status_rhel_09_232070,
-	"fix_text": "Fix cron.allow permissions: chmod 0600 /etc/cron.allow",
 }
 
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_rhel_09_232010,
-	finding_rhel_09_232015,
-	finding_rhel_09_232020,
-]
+# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
-	finding_rhel_09_232025,
-	finding_rhel_09_232030,
-	finding_rhel_09_232035,
-	finding_rhel_09_232040,
-	finding_rhel_09_232045,
-	finding_rhel_09_232050,
+	finding_rhel_09_232255,
+	finding_rhel_09_232250,
+	finding_rhel_09_232075,
+	finding_rhel_09_232270,
 	finding_rhel_09_232055,
-	finding_rhel_09_232060,
 	finding_rhel_09_232065,
-	finding_rhel_09_232070,
+	finding_rhel_09_232020,
+	finding_rhel_09_232200,
+	finding_rhel_09_232010,
+	finding_rhel_09_232050,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

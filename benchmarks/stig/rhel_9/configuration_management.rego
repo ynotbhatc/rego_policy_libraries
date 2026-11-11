@@ -6,18 +6,20 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 26
-#     cited: 25
+#     checks: 25
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_9.configuration_management
 
 # DISA STIG for RHEL 9 - Configuration Management Module
-# STIG Version: V2R2 | Released: October 2024
+# STIG Version: V2R10 | Released: 30 Sep 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 # Covers: System settings, kernel params, banners, SELinux, GRUB, CTL-ALT-DEL
 
 import rego.v1
@@ -32,7 +34,11 @@ default compliant := false
 # CAT I - HIGH SEVERITY FINDINGS
 # =============================================================================
 
-# RHEL-09-211010 | V-257777 | CAT I
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
+
+# RHEL-09-211050 | V-257785 | CAT I
 # Ctrl-Alt-Delete key sequence must be disabled
 default ctrl_alt_del_disabled := false
 
@@ -45,41 +51,20 @@ ctrl_alt_del_disabled if {
 	input.kernel_params["kernel.ctrl-alt-del"] == "0"
 }
 
-status_rhel_09_211010 := "Not_a_Finding" if { ctrl_alt_del_disabled } else := "Open"
+status_rhel_09_211050 := "Not_a_Finding" if ctrl_alt_del_disabled
 
-finding_rhel_09_211010 := {
-	"vuln_id": "V-257777",
-	"stig_id": "RHEL-09-211010",
+else := "Open"
+
+finding_rhel_09_211050 := {
+	"vuln_id": "V-257785",
+	"stig_id": "RHEL-09-211050",
 	"severity": "CAT I",
-	"rule_title": "RHEL 9 must be configured so that the x86 Ctrl-Alt-Delete key sequence is disabled",
-	"status": status_rhel_09_211010,
+	"rule_title": "The x86 Ctrl-Alt-Delete key sequence must be disabled on RHEL 9.",
+	"status": status_rhel_09_211050,
 	"fix_text": "Configure the system to disable the Ctrl-Alt-Delete sequence: systemctl mask ctrl-alt-del.target",
 }
 
-# RHEL-09-211015 | V-257778 | CAT I
-# The Ctrl-Alt-Delete graphical key sequence must be disabled
-default ctrl_alt_del_graphical_disabled := false
-
-ctrl_alt_del_graphical_disabled if {
-	input.dconf_settings["org/gnome/settings-daemon/plugins/media-keys/logout"] == "''"
-}
-
-ctrl_alt_del_graphical_disabled if {
-	not input.packages["gnome-desktop3"]
-}
-
-status_rhel_09_211015 := "Not_a_Finding" if { ctrl_alt_del_graphical_disabled } else := "Open"
-
-finding_rhel_09_211015 := {
-	"vuln_id": "V-257778",
-	"stig_id": "RHEL-09-211015",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must be configured so that the x86 Ctrl-Alt-Delete graphical key sequence is disabled",
-	"status": status_rhel_09_211015,
-	"fix_text": "Disable Ctrl-Alt-Del in GNOME: gsettings set org.gnome.settings-daemon.plugins.media-keys logout ''",
-}
-
-# RHEL-09-211020 | V-257779 | CAT I
+# RHEL-09-431010 | V-258078 | CAT I
 # SELinux must be enabled in enforcing mode
 default selinux_enforcing := false
 
@@ -87,79 +72,20 @@ selinux_enforcing if {
 	input.selinux.status == "enforcing"
 }
 
-status_rhel_09_211020 := "Not_a_Finding" if { selinux_enforcing } else := "Open"
+status_rhel_09_431010 := "Not_a_Finding" if selinux_enforcing
 
-finding_rhel_09_211020 := {
-	"vuln_id": "V-257779",
-	"stig_id": "RHEL-09-211020",
+else := "Open"
+
+finding_rhel_09_431010 := {
+	"vuln_id": "V-258078",
+	"stig_id": "RHEL-09-431010",
 	"severity": "CAT I",
-	"rule_title": "RHEL 9 must enable SELinux",
-	"status": status_rhel_09_211020,
+	"rule_title": "RHEL 9 must use a Linux Security Module configured to enforce limits on system services.",
+	"status": status_rhel_09_431010,
 	"fix_text": "Configure SELinux to be enabled: Set SELINUX=enforcing in /etc/selinux/config",
 }
 
-# RHEL-09-211025 | V-257780 | CAT I
-# SELinux policy must be targeted
-default selinux_targeted := false
-
-selinux_targeted if {
-	input.selinux.policy == "targeted"
-}
-
-status_rhel_09_211025 := "Not_a_Finding" if { selinux_targeted } else := "Open"
-
-finding_rhel_09_211025 := {
-	"vuln_id": "V-257780",
-	"stig_id": "RHEL-09-211025",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must implement the SELinux targeted policy",
-	"status": status_rhel_09_211025,
-	"fix_text": "Configure SELinux policy: Set SELINUXTYPE=targeted in /etc/selinux/config",
-}
-
-# RHEL-09-211030 | V-257781 | CAT I
-# GRUB bootloader must be password protected
-default grub_password_set := false
-
-grub_password_set if {
-	input.grub_config.password_set == true
-}
-
-status_rhel_09_211030 := "Not_a_Finding" if { grub_password_set } else := "Open"
-
-finding_rhel_09_211030 := {
-	"vuln_id": "V-257781",
-	"stig_id": "RHEL-09-211030",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must require authentication upon booting into single-user and maintenance modes",
-	"status": status_rhel_09_211030,
-	"fix_text": "Configure a bootloader password: grub2-setpassword",
-}
-
-# RHEL-09-211040 | V-257783 | CAT I
-# Must use DoD-approved DoD Root CA
-default dod_root_ca_installed := false
-
-dod_root_ca_installed if {
-	input.certificates.dod_root_ca_installed == true
-}
-
-status_rhel_09_211040 := "Not_a_Finding" if { dod_root_ca_installed } else := "Open"
-
-finding_rhel_09_211040 := {
-	"vuln_id": "V-257783",
-	"stig_id": "RHEL-09-211040",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must have the DoD Root Certificate Authority (CA) installed as a trusted CA",
-	"status": status_rhel_09_211040,
-	"fix_text": "Install DoD Root CA certificates: trust anchor --store /path/to/DoD_PKE_CA_chain.pem",
-}
-
-# =============================================================================
-# CAT II - MEDIUM SEVERITY FINDINGS
-# =============================================================================
-
-# RHEL-09-211050 | V-257784 | CAT II
+# RHEL-09-671010 | V-258230 | CAT I
 # FIPS mode must be enabled
 default fips_mode_enabled := false
 
@@ -167,18 +93,20 @@ fips_mode_enabled if {
 	input.fips_mode == true
 }
 
-status_rhel_09_211050 := "Not_a_Finding" if { fips_mode_enabled } else := "Open"
+status_rhel_09_671010 := "Not_a_Finding" if fips_mode_enabled
 
-finding_rhel_09_211050 := {
-	"vuln_id": "V-257784",
-	"stig_id": "RHEL-09-211050",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws",
-	"status": status_rhel_09_211050,
+else := "Open"
+
+finding_rhel_09_671010 := {
+	"vuln_id": "V-258230",
+	"stig_id": "RHEL-09-671010",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must enable FIPS mode.",
+	"status": status_rhel_09_671010,
 	"fix_text": "Enable FIPS mode: fips-mode-setup --enable && reboot",
 }
 
-# RHEL-09-211060 | V-257785 | CAT II
+# RHEL-09-215105 | V-258241 | CAT I
 # System crypto policy must be FIPS
 default crypto_policy_fips := false
 
@@ -190,18 +118,91 @@ crypto_policy_fips if {
 	input.crypto_policy == "FIPS:OSPP"
 }
 
-status_rhel_09_211060 := "Not_a_Finding" if { crypto_policy_fips } else := "Open"
+status_rhel_09_215105 := "Not_a_Finding" if crypto_policy_fips
 
-finding_rhel_09_211060 := {
-	"vuln_id": "V-257785",
-	"stig_id": "RHEL-09-211060",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a Linux Security Module configured to enforce limits on system services",
-	"status": status_rhel_09_211060,
+else := "Open"
+
+finding_rhel_09_215105 := {
+	"vuln_id": "V-258241",
+	"stig_id": "RHEL-09-215105",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
+	"status": status_rhel_09_215105,
 	"fix_text": "Set the crypto policy: update-crypto-policies --set FIPS",
 }
 
-# RHEL-09-212010 | V-257795 | CAT II
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
+
+# RHEL-09-271105 | V-258031 | CAT II
+# The Ctrl-Alt-Delete graphical key sequence must be disabled
+default ctrl_alt_del_graphical_disabled := false
+
+ctrl_alt_del_graphical_disabled if {
+	input.dconf_settings["org/gnome/settings-daemon/plugins/media-keys/logout"] == "''"
+}
+
+ctrl_alt_del_graphical_disabled if {
+	not input.packages["gnome-desktop3"]
+}
+
+status_rhel_09_271105 := "Not_a_Finding" if ctrl_alt_del_graphical_disabled
+
+else := "Open"
+
+finding_rhel_09_271105 := {
+	"vuln_id": "V-258031",
+	"stig_id": "RHEL-09-271105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot.",
+	"status": status_rhel_09_271105,
+	"fix_text": "Disable Ctrl-Alt-Del in GNOME: gsettings set org.gnome.settings-daemon.plugins.media-keys logout ''",
+}
+
+# RHEL-09-431015 | V-258079 | CAT II
+# SELinux policy must be targeted
+default selinux_targeted := false
+
+selinux_targeted if {
+	input.selinux.policy == "targeted"
+}
+
+status_rhel_09_431015 := "Not_a_Finding" if selinux_targeted
+
+else := "Open"
+
+finding_rhel_09_431015 := {
+	"vuln_id": "V-258079",
+	"stig_id": "RHEL-09-431015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must enable the SELinux targeted policy.",
+	"status": status_rhel_09_431015,
+	"fix_text": "Configure SELinux policy: Set SELINUXTYPE=targeted in /etc/selinux/config",
+}
+
+# RHEL-09-212010 | V-257787 | CAT II
+# GRUB bootloader must be password protected
+default grub_password_set := false
+
+grub_password_set if {
+	input.grub_config.password_set == true
+}
+
+status_rhel_09_212010 := "Not_a_Finding" if grub_password_set
+
+else := "Open"
+
+finding_rhel_09_212010 := {
+	"vuln_id": "V-257787",
+	"stig_id": "RHEL-09-212010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must require authentication upon booting into single-user and maintenance modes.",
+	"status": status_rhel_09_212010,
+	"fix_text": "Configure a bootloader password: grub2-setpassword",
+}
+
+# RHEL-09-211020 | V-257779 | CAT II
 # Must display the Standard Mandatory DoD Notice on login banner
 default login_banner_set := false
 
@@ -213,18 +214,20 @@ login_banner_set if {
 	contains(input.login_banner.issue, "authorized users only")
 }
 
-status_rhel_09_212010 := "Not_a_Finding" if { login_banner_set } else := "Open"
+status_rhel_09_211020 := "Not_a_Finding" if login_banner_set
 
-finding_rhel_09_212010 := {
-	"vuln_id": "V-257795",
-	"stig_id": "RHEL-09-212010",
+else := "Open"
+
+finding_rhel_09_211020 := {
+	"vuln_id": "V-257779",
+	"stig_id": "RHEL-09-211020",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must display the Standard Mandatory DoD Notice and Consent Banner before granting local or remote access to the system",
-	"status": status_rhel_09_212010,
+	"rule_title": "RHEL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
+	"status": status_rhel_09_211020,
 	"fix_text": "Configure /etc/issue with the DoD warning banner text",
 }
 
-# RHEL-09-212020 | V-257796 | CAT II
+# RHEL-09-255025 | V-257981 | CAT II
 # SSH must display banner before granting access
 default ssh_banner_set := false
 
@@ -233,18 +236,20 @@ ssh_banner_set if {
 	input.ssh_config.Banner != "none"
 }
 
-status_rhel_09_212020 := "Not_a_Finding" if { ssh_banner_set } else := "Open"
+status_rhel_09_255025 := "Not_a_Finding" if ssh_banner_set
 
-finding_rhel_09_212020 := {
-	"vuln_id": "V-257796",
-	"stig_id": "RHEL-09-212020",
+else := "Open"
+
+finding_rhel_09_255025 := {
+	"vuln_id": "V-257981",
+	"stig_id": "RHEL-09-255025",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must display the Standard Mandatory DoD Notice and Consent Banner before granting access via SSH",
-	"status": status_rhel_09_212020,
+	"rule_title": "RHEL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a SSH logon.",
+	"status": status_rhel_09_255025,
 	"fix_text": "Configure Banner in /etc/ssh/sshd_config to point to /etc/issue",
 }
 
-# RHEL-09-213010 | V-257800 | CAT II
+# RHEL-09-213070 | V-257809 | CAT II
 # kernel.randomize_va_space must be set to 2
 default aslr_enabled := false
 
@@ -252,18 +257,20 @@ aslr_enabled if {
 	input.kernel_params["kernel.randomize_va_space"] == "2"
 }
 
-status_rhel_09_213010 := "Not_a_Finding" if { aslr_enabled } else := "Open"
+status_rhel_09_213070 := "Not_a_Finding" if aslr_enabled
 
-finding_rhel_09_213010 := {
-	"vuln_id": "V-257800",
-	"stig_id": "RHEL-09-213010",
+else := "Open"
+
+finding_rhel_09_213070 := {
+	"vuln_id": "V-257809",
+	"stig_id": "RHEL-09-213070",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must implement address space layout randomization (ASLR)",
-	"status": status_rhel_09_213010,
+	"rule_title": "RHEL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+	"status": status_rhel_09_213070,
 	"fix_text": "Set kernel.randomize_va_space=2 in /etc/sysctl.d/99-stig.conf and run sysctl -p",
 }
 
-# RHEL-09-213020 | V-257801 | CAT II
+# RHEL-09-213010 | V-257797 | CAT II
 # kernel.dmesg_restrict must be set to 1
 default dmesg_restricted := false
 
@@ -271,18 +278,20 @@ dmesg_restricted if {
 	input.kernel_params["kernel.dmesg_restrict"] == "1"
 }
 
-status_rhel_09_213020 := "Not_a_Finding" if { dmesg_restricted } else := "Open"
+status_rhel_09_213010 := "Not_a_Finding" if dmesg_restricted
 
-finding_rhel_09_213020 := {
-	"vuln_id": "V-257801",
-	"stig_id": "RHEL-09-213020",
+else := "Open"
+
+finding_rhel_09_213010 := {
+	"vuln_id": "V-257797",
+	"stig_id": "RHEL-09-213010",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must restrict access to the kernel message buffer",
-	"status": status_rhel_09_213020,
+	"rule_title": "RHEL 9 must restrict access to the kernel message buffer.",
+	"status": status_rhel_09_213010,
 	"fix_text": "Set kernel.dmesg_restrict=1 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-09-213025 | V-257802 | CAT II
+# RHEL-09-213015 | V-257798 | CAT II
 # kernel.perf_event_paranoid must be set to 2
 default perf_event_restricted := false
 
@@ -290,18 +299,20 @@ perf_event_restricted if {
 	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
 }
 
-status_rhel_09_213025 := "Not_a_Finding" if { perf_event_restricted } else := "Open"
+status_rhel_09_213015 := "Not_a_Finding" if perf_event_restricted
 
-finding_rhel_09_213025 := {
-	"vuln_id": "V-257802",
-	"stig_id": "RHEL-09-213025",
+else := "Open"
+
+finding_rhel_09_213015 := {
+	"vuln_id": "V-257798",
+	"stig_id": "RHEL-09-213015",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must restrict usage of ptrace to descendant processes",
-	"status": status_rhel_09_213025,
+	"rule_title": "RHEL 9 must prevent kernel profiling by nonprivileged users.",
+	"status": status_rhel_09_213015,
 	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-09-213030 | V-257803 | CAT II
+# RHEL-09-213075 | V-257810 | CAT II
 # kernel.unprivileged_bpf_disabled must be set to 1
 default bpf_restricted := false
 
@@ -309,18 +320,20 @@ bpf_restricted if {
 	input.kernel_params["kernel.unprivileged_bpf_disabled"] == "1"
 }
 
-status_rhel_09_213030 := "Not_a_Finding" if { bpf_restricted } else := "Open"
+status_rhel_09_213075 := "Not_a_Finding" if bpf_restricted
 
-finding_rhel_09_213030 := {
-	"vuln_id": "V-257803",
-	"stig_id": "RHEL-09-213030",
+else := "Open"
+
+finding_rhel_09_213075 := {
+	"vuln_id": "V-257810",
+	"stig_id": "RHEL-09-213075",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must prevent the loading of a new kernel for later execution",
-	"status": status_rhel_09_213030,
+	"rule_title": "RHEL 9 must disable access to network bpf system call from nonprivileged processes.",
+	"status": status_rhel_09_213075,
 	"fix_text": "Set kernel.unprivileged_bpf_disabled=1 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-09-213035 | V-257804 | CAT II
+# RHEL-09-251045 | V-257942 | CAT II
 # net.core.bpf_jit_harden must be set to 2
 default bpf_jit_hardened := false
 
@@ -328,18 +341,20 @@ bpf_jit_hardened if {
 	input.kernel_params["net.core.bpf_jit_harden"] == "2"
 }
 
-status_rhel_09_213035 := "Not_a_Finding" if { bpf_jit_hardened } else := "Open"
+status_rhel_09_251045 := "Not_a_Finding" if bpf_jit_hardened
 
-finding_rhel_09_213035 := {
-	"vuln_id": "V-257804",
-	"stig_id": "RHEL-09-213035",
+else := "Open"
+
+finding_rhel_09_251045 := {
+	"vuln_id": "V-257942",
+	"stig_id": "RHEL-09-251045",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must enable kernel harden for the BPF JIT compiler",
-	"status": status_rhel_09_213035,
+	"rule_title": "RHEL 9 must enable hardening for the Berkeley Packet Filter just-in-time compiler.",
+	"status": status_rhel_09_251045,
 	"fix_text": "Set net.core.bpf_jit_harden=2 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-09-214010 | V-257808 | CAT II
+# RHEL-09-291010 | V-258034 | CAT II
 # USB storage kernel module must be disabled
 default usb_storage_disabled := false
 
@@ -351,18 +366,20 @@ usb_storage_disabled if {
 	input.kernel_modules["usb-storage"].blacklisted == true
 }
 
-status_rhel_09_214010 := "Not_a_Finding" if { usb_storage_disabled } else := "Open"
+status_rhel_09_291010 := "Not_a_Finding" if usb_storage_disabled
 
-finding_rhel_09_214010 := {
-	"vuln_id": "V-257808",
-	"stig_id": "RHEL-09-214010",
+else := "Open"
+
+finding_rhel_09_291010 := {
+	"vuln_id": "V-258034",
+	"stig_id": "RHEL-09-291010",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must disable the usbguard service unless USB is required",
-	"status": status_rhel_09_214010,
+	"rule_title": "RHEL 9 must be configured to disable USB mass storage.",
+	"status": status_rhel_09_291010,
 	"fix_text": "Disable USB storage: echo 'install usb-storage /bin/false' >> /etc/modprobe.d/usb-storage.conf",
 }
 
-# RHEL-09-214015 | V-257809 | CAT II
+# RHEL-09-213055 | V-257806 | CAT II
 # Firewire kernel module must be disabled
 default firewire_disabled := false
 
@@ -374,18 +391,20 @@ firewire_disabled if {
 	input.kernel_modules["firewire-core"].blacklisted == true
 }
 
-status_rhel_09_214015 := "Not_a_Finding" if { firewire_disabled } else := "Open"
+status_rhel_09_213055 := "Not_a_Finding" if firewire_disabled
 
-finding_rhel_09_214015 := {
-	"vuln_id": "V-257809",
-	"stig_id": "RHEL-09-214015",
+else := "Open"
+
+finding_rhel_09_213055 := {
+	"vuln_id": "V-257806",
+	"stig_id": "RHEL-09-213055",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must disable the IEEE 1394 (Firewire) kernel module",
-	"status": status_rhel_09_214015,
+	"rule_title": "RHEL 9 must be configured to disable the FireWire kernel module.",
+	"status": status_rhel_09_213055,
 	"fix_text": "Disable Firewire: echo 'install firewire-core /bin/false' >> /etc/modprobe.d/firewire.conf",
 }
 
-# RHEL-09-215010 | V-257815 | CAT II
+# RHEL-09-651015 | V-258135 | CAT II
 # AIDE integrity checking cron job must exist
 default aide_cron_configured := false
 
@@ -393,18 +412,20 @@ aide_cron_configured if {
 	input.aide_config.cron_job == true
 }
 
-status_rhel_09_215010 := "Not_a_Finding" if { aide_cron_configured } else := "Open"
+status_rhel_09_651015 := "Not_a_Finding" if aide_cron_configured
 
-finding_rhel_09_215010 := {
-	"vuln_id": "V-257815",
-	"stig_id": "RHEL-09-215010",
+else := "Open"
+
+finding_rhel_09_651015 := {
+	"vuln_id": "V-258135",
+	"stig_id": "RHEL-09-651015",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered",
-	"status": status_rhel_09_215010,
+	"rule_title": "RHEL 9 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered.",
+	"status": status_rhel_09_651015,
 	"fix_text": "Configure AIDE cron job: echo '0 5 * * * /usr/sbin/aide --check' >> /etc/cron.d/aide",
 }
 
-# RHEL-09-215015 | V-257816 | CAT II
+# RHEL-09-651010 | V-258134 | CAT II
 # AIDE must be installed
 default aide_installed := false
 
@@ -412,18 +433,20 @@ aide_installed if {
 	input.packages.aide == true
 }
 
-status_rhel_09_215015 := "Not_a_Finding" if { aide_installed } else := "Open"
+status_rhel_09_651010 := "Not_a_Finding" if aide_installed
 
-finding_rhel_09_215015 := {
-	"vuln_id": "V-257816",
-	"stig_id": "RHEL-09-215015",
+else := "Open"
+
+finding_rhel_09_651010 := {
+	"vuln_id": "V-258134",
+	"stig_id": "RHEL-09-651010",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories",
-	"status": status_rhel_09_215015,
+	"rule_title": "RHEL 9 must have the AIDE package installed.",
+	"status": status_rhel_09_651010,
 	"fix_text": "Install AIDE: dnf install aide -y && aide --init",
 }
 
-# RHEL-09-231010 | V-257825 | CAT II
+# RHEL-09-231015 | V-257844 | CAT II
 # /tmp must be on a separate partition
 default tmp_separate_partition := false
 
@@ -433,18 +456,20 @@ tmp_separate_partition if {
 	mount.device != "tmpfs"
 }
 
-status_rhel_09_231010 := "Not_a_Finding" if { tmp_separate_partition } else := "Open"
+status_rhel_09_231015 := "Not_a_Finding" if tmp_separate_partition
 
-finding_rhel_09_231010 := {
-	"vuln_id": "V-257825",
-	"stig_id": "RHEL-09-231010",
+else := "Open"
+
+finding_rhel_09_231015 := {
+	"vuln_id": "V-257844",
+	"stig_id": "RHEL-09-231015",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a separate file system for /tmp",
-	"status": status_rhel_09_231010,
+	"rule_title": "RHEL 9 must use a separate file system for /tmp.",
+	"status": status_rhel_09_231015,
 	"fix_text": "Configure /tmp on a separate partition in /etc/fstab",
 }
 
-# RHEL-09-231015 | V-257826 | CAT II
+# RHEL-09-231045 | V-257850 | CAT II
 # /tmp must have nodev option
 default tmp_nodev := false
 
@@ -454,18 +479,20 @@ tmp_nodev if {
 	"nodev" in mount.options
 }
 
-status_rhel_09_231015 := "Not_a_Finding" if { tmp_nodev } else := "Open"
+status_rhel_09_231045 := "Not_a_Finding" if tmp_nodev
 
-finding_rhel_09_231015 := {
-	"vuln_id": "V-257826",
-	"stig_id": "RHEL-09-231015",
+else := "Open"
+
+finding_rhel_09_231045 := {
+	"vuln_id": "V-257850",
+	"stig_id": "RHEL-09-231045",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must prevent device files from being interpreted on file systems that contain user home directories",
-	"status": status_rhel_09_231015,
+	"rule_title": "RHEL 9 must prevent device files from being interpreted on file systems that contain user home directories.",
+	"status": status_rhel_09_231045,
 	"fix_text": "Add nodev option to /tmp in /etc/fstab",
 }
 
-# RHEL-09-231020 | V-257827 | CAT II
+# RHEL-09-231050 | V-257851 | CAT II
 # /tmp must have nosuid option
 default tmp_nosuid := false
 
@@ -475,18 +502,20 @@ tmp_nosuid if {
 	"nosuid" in mount.options
 }
 
-status_rhel_09_231020 := "Not_a_Finding" if { tmp_nosuid } else := "Open"
+status_rhel_09_231050 := "Not_a_Finding" if tmp_nosuid
 
-finding_rhel_09_231020 := {
-	"vuln_id": "V-257827",
-	"stig_id": "RHEL-09-231020",
+else := "Open"
+
+finding_rhel_09_231050 := {
+	"vuln_id": "V-257851",
+	"stig_id": "RHEL-09-231050",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories",
-	"status": status_rhel_09_231020,
+	"rule_title": "RHEL 9 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories.",
+	"status": status_rhel_09_231050,
 	"fix_text": "Add nosuid option to /tmp in /etc/fstab",
 }
 
-# RHEL-09-231025 | V-257828 | CAT II
+# RHEL-09-231055 | V-257852 | CAT II
 # /tmp must have noexec option
 default tmp_noexec := false
 
@@ -496,18 +525,24 @@ tmp_noexec if {
 	"noexec" in mount.options
 }
 
-status_rhel_09_231025 := "Not_a_Finding" if { tmp_noexec } else := "Open"
+status_rhel_09_231055 := "Not_a_Finding" if tmp_noexec
 
-finding_rhel_09_231025 := {
-	"vuln_id": "V-257828",
-	"stig_id": "RHEL-09-231025",
+else := "Open"
+
+finding_rhel_09_231055 := {
+	"vuln_id": "V-257852",
+	"stig_id": "RHEL-09-231055",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must prevent code from being executed on file system that contains user home directories",
-	"status": status_rhel_09_231025,
+	"rule_title": "RHEL 9 must prevent code from being executed on file systems that contain user home directories.",
+	"status": status_rhel_09_231055,
 	"fix_text": "Add noexec option to /tmp in /etc/fstab",
 }
 
-# RHEL-09-231180 | V-257865 | CAT II
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-09-231025 | V-257846 | CAT III
 # /var/log must be a separate partition
 default var_log_separate := false
 
@@ -516,18 +551,20 @@ var_log_separate if {
 	mount.mount == "/var/log"
 }
 
-status_rhel_09_231180 := "Not_a_Finding" if { var_log_separate } else := "Open"
+status_rhel_09_231025 := "Not_a_Finding" if var_log_separate
 
-finding_rhel_09_231180 := {
-	"vuln_id": "V-257865",
-	"stig_id": "RHEL-09-231180",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a separate file system for /var/log",
-	"status": status_rhel_09_231180,
+else := "Open"
+
+finding_rhel_09_231025 := {
+	"vuln_id": "V-257846",
+	"stig_id": "RHEL-09-231025",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must use a separate file system for /var/log.",
+	"status": status_rhel_09_231025,
 	"fix_text": "Configure /var/log on a separate partition",
 }
 
-# RHEL-09-231190 | V-257866 | CAT II
+# RHEL-09-231030 | V-257847 | CAT III
 # /var/log/audit must be a separate partition
 default var_log_audit_separate := false
 
@@ -536,14 +573,16 @@ var_log_audit_separate if {
 	mount.mount == "/var/log/audit"
 }
 
-status_rhel_09_231190 := "Not_a_Finding" if { var_log_audit_separate } else := "Open"
+status_rhel_09_231030 := "Not_a_Finding" if var_log_audit_separate
 
-finding_rhel_09_231190 := {
-	"vuln_id": "V-257866",
-	"stig_id": "RHEL-09-231190",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a separate file system for /var/log/audit",
-	"status": status_rhel_09_231190,
+else := "Open"
+
+finding_rhel_09_231030 := {
+	"vuln_id": "V-257847",
+	"stig_id": "RHEL-09-231030",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must use a separate file system for the system audit data path.",
+	"status": status_rhel_09_231030,
 	"fix_text": "Configure /var/log/audit on a separate partition",
 }
 
@@ -552,37 +591,39 @@ finding_rhel_09_231190 := {
 # =============================================================================
 
 cat_i_findings := [
-	finding_rhel_09_211010,
-	finding_rhel_09_211015,
-	finding_rhel_09_211020,
-	finding_rhel_09_211025,
-	finding_rhel_09_211030,
-	finding_rhel_09_211040,
+	finding_rhel_09_211050,
+	finding_rhel_09_431010,
+	finding_rhel_09_671010,
+	finding_rhel_09_215105,
 ]
 
 cat_ii_findings := [
-	finding_rhel_09_211050,
-	finding_rhel_09_211060,
+	finding_rhel_09_271105,
+	finding_rhel_09_431015,
 	finding_rhel_09_212010,
-	finding_rhel_09_212020,
+	finding_rhel_09_211020,
+	finding_rhel_09_255025,
+	finding_rhel_09_213070,
 	finding_rhel_09_213010,
-	finding_rhel_09_213020,
-	finding_rhel_09_213025,
-	finding_rhel_09_213030,
-	finding_rhel_09_213035,
-	finding_rhel_09_214010,
-	finding_rhel_09_214015,
-	finding_rhel_09_215010,
-	finding_rhel_09_215015,
-	finding_rhel_09_231010,
+	finding_rhel_09_213015,
+	finding_rhel_09_213075,
+	finding_rhel_09_251045,
+	finding_rhel_09_291010,
+	finding_rhel_09_213055,
+	finding_rhel_09_651015,
+	finding_rhel_09_651010,
 	finding_rhel_09_231015,
-	finding_rhel_09_231020,
-	finding_rhel_09_231025,
-	finding_rhel_09_231180,
-	finding_rhel_09_231190,
+	finding_rhel_09_231045,
+	finding_rhel_09_231050,
+	finding_rhel_09_231055,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+cat_iii_findings := [
+	finding_rhel_09_231025,
+	finding_rhel_09_231030,
+]
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

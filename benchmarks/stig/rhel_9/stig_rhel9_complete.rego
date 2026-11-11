@@ -13,28 +13,31 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_9
 
 # DISA STIG for RHEL 9 - Master Aggregator
-# STIG Version: V2R2 | Released: October 2024
+# STIG Version: V2R10 | Released: 30 Sep 2026
 # Aggregates all modules: configuration_management, services, software_integrity,
 #   file_permissions, audit_logging, ssh_config, account_auth, network, pki_crypto
 #
 # Endpoints: POST http://localhost:8181/v1/data/stig/rhel_9/stig_assessment
 #            POST http://localhost:8181/v1/data/stig/rhel_9/main/compliance_report  (fail-closed alias)
 
+# Implemented: 104 of 445 RHEL 9 V2R10 rules, stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10.
+# The remaining 341 are tracked follow-up, not silent absence.
+
 import rego.v1
 
-import data.stig.rhel_9.configuration_management
-import data.stig.rhel_9.services
-import data.stig.rhel_9.software_integrity
-import data.stig.rhel_9.file_permissions
-import data.stig.rhel_9.audit_logging
-import data.stig.rhel_9.ssh_config
 import data.stig.rhel_9.account_auth
+import data.stig.rhel_9.audit_logging
+import data.stig.rhel_9.configuration_management
+import data.stig.rhel_9.file_permissions
 import data.stig.rhel_9.network
 import data.stig.rhel_9.pki_crypto
+import data.stig.rhel_9.services
+import data.stig.rhel_9.software_integrity
+import data.stig.rhel_9.ssh_config
 
 # =============================================================================
 # MODULE FINDING SETS
@@ -152,8 +155,8 @@ module_status := {
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Red Hat Enterprise Linux 9 Security Technical Implementation Guide",
-		"version": "V2R2",
-		"release_date": "2024-10-25",
+		"version": "V2R10",
+		"release_date": "2026-09-29",
 		"platform": "RHEL 9",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 		"os_version": object.get(input, ["system_info", "os_version"], "unknown"),
