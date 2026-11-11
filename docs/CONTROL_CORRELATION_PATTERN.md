@@ -108,7 +108,7 @@ findings, one requirement, no join. Overlap without a join key is pure cost.
 > it.**
 
 The join key already exists for STIGs (CCI→800-53). CIS publishes a mapping to
-CIS Controls v8, which maps to 800-53. Regulatory frameworks (PCI, ISO, NERC
+CIS Controls v8.1, which maps to 800-53. Regulatory frameworks (PCI, ISO, NERC
 CIP, HIPAA) publish 800-53 crosswalks. **800-53 is the natural spine** because
 every other standard already defines its relationship to it.
 
@@ -189,7 +189,7 @@ Seeded state (2026-09-03), from an authoritative-source audit:
 | NIST CSF 2.0 → 800-53 | pending | NIST OLIR (final 2025-11-17) — fetch via CPRT flat JSON |
 | ISO/IEC 27001:2022 ↔ 800-53 | pending | NIST OLIR ref 155 — **submitter authorship unverified; confirm before scoring** |
 | PCI DSS v4 → 800-53 | pending | **no authoritative direct mapping exists** (PCI SSC publishes only PCI→CSF 2.0) |
-| CIS Controls v8 → 800-53 | pending | CIS whitepaper (authoritative) but registration-gated download |
+| CIS Controls v8.1 → 800-53 | pending | CIS whitepaper (authoritative) but registration-gated download |
 
 **First grounded result:** a STIG assessment addresses **54 of the 177 base
 controls in the 800-53 Moderate baseline** (Low: 36/131, High: 59/188) — an

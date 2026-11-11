@@ -38,7 +38,7 @@ attested(id) if input.cis_controls.safeguards[id] == true
 violation contains msg if {
 	some id, m in safeguards
 	not attested(id)
-	msg := sprintf("CIS Controls v8 %s (IG%d): %s — not implemented", [id, m.ig, m.title])
+	msg := sprintf("CIS Controls v8.1 %s (IG%d): %s — not implemented", [id, m.ig, m.title])
 }
 
 default control_compliant := false
