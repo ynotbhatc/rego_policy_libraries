@@ -113,6 +113,24 @@ test_9_1_2_fails_on_bad_evidence if {
 	contains(msg, "against a target of 95")
 }
 
+test_9_1_2_fails_when_customer_feedback_is_not_attested if {
+	inp := fx.without_attestation("9.1.2")
+	not mod.passed["9.1.2"] with input as inp
+	v := mod.violations with input as inp
+	count(v) == 1
+	some msg in v
+	startswith(msg, "AS9100D 9.1.2: ")
+	contains(msg, "attestations[\"9.1.2\"] must be true")
+}
+
+test_9_1_2_feedback_attestation_alone_does_not_pass if {
+	inp := fx.without_evidence("kpis")
+	not mod.passed["9.1.2"] with input as inp
+	v := mod.violations with input as inp
+	some msg in v
+	contains(msg, "FAIL-CLOSED: no evidence at input.as9100d.kpis")
+}
+
 test_9_1_3_passes_when_attested if {
 	mod.passed["9.1.3"] with input as fx.full
 }

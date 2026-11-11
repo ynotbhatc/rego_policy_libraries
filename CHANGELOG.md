@@ -14,13 +14,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   the committed site (new STIG and AS9100D pages, sitemap, llms.txt), the OSCAL/crosswalk dists and the Gatekeeper
   template match the modules on main; `make check-converters` passes again.
 
+### Fixed — AS9100D evidence validation (external review, 2026-11-11)
+
+- **Malformed, empty or incomplete evidence never counts as a pass** in `frameworks/management/as9100d/`. The
+  review found four defects, all reproduced before the fix: (1) calibration and corrective-action rows passed with
+  missing or unparseable dates (`{"id": "x"}` alone, `calibration_due: "bad"`, an open corrective action with no
+  `due_on` all gave 70/70); (2) KPIs with no target were skipped (value 0, no target: 70/70); (3) empty records
+  counted as evidence (blank traceability ids/serials, `validated: true` with no id or date, a baseline with an
+  empty `approved_by`); (4) empty lists passed the sibling rows (no suppliers still passed 8.4.2/8.4.3, no
+  measuring equipment 7.1.5.2, no nonconformances 8.7.2, no corrective actions 10.2.2). Now every required field
+  is tested through `object.get`: absent, null, blank, wrong-typed or (for dates) unparseable values are evidence
+  missing and the row fails naming the field; ids must be non-blank and unique within their list; dates parse and
+  compare numerically; KPI targets are required and numeric; list rows need at least one record. A period with no
+  nonconformances or corrective actions is declared, not implied: `nonconformance.none_occurred: true` /
+  `corrective_actions.none_occurred: true` plus the row's attestation (`8.7.1`/`8.7.2`, `10.2.1`/`10.2.2`);
+  the declaration alongside records is a contradiction. Suppliers and measuring equipment have no such case.
+- **Coverage and wording.** 8.3.4.1 (design and development verification and validation testing, aerospace
+  addition) is its own attested row; clause 9.1.2 keeps its single clause id and is decided two ways — on-time delivery
+  and conformity KPIs from evidence, and customer feedback, complaints and corrective-action requests attested
+  under `attestations["9.1.2"]` (a `9.1.2-feedback` companion id was tried and dropped: consumers expect real
+  clause numbers). "Within the past year" is the twelve months ending on `as_of` via `time.add_date` (the same
+  calendar date one year earlier counts; a 365-day count failed the exact anniversary across a leap day).
+  The module header states the grouped model (7.5.3.1/.2 under 7.5.3, 8.2.3.1/.2 under 8.2.3), the past-year
+  rule, the `none_occurred` keys, and that the exports' 88 controls are the 71 rows plus 17 template controls. `attestations: false` (or any non-object) now carries the contract violation
+  in the report; an `as_of` that does not parse is a contract violation. 71 rows (18 fact, 53 attested);
+  258 tests (43 new, one per finding and sub-case, each asserting the row fails and the message names the path).
+
 ### Added — SAE AS9100D aerospace quality management (`frameworks/management/as9100d/`)
 
 - **First industry QMS standard in the library.** SAE AS9100 Rev D (IAQG 9100:2016, built on ISO 9001:2015) at
-  clause granularity: **70 rows** across clauses 4–10 in seven self-contained clause packages (`as9100d.context`,
+  clause granularity: **71 rows** across clauses 4–10 in seven self-contained clause packages (`as9100d.context`,
   `.leadership`, `.planning`, `.support`, `.operation`, `.performance`, `.improvement`) rolled up by `as9100d.main`
   at `/v1/data/as9100d/main/compliance_report`. Every aerospace addition is a row: 8.1.1 operational risk
-  management, 8.1.2 configuration management, 8.1.3 product safety, 8.1.4 counterfeit parts, 8.4.1–8.4.3 external
+  management, 8.1.2 configuration management, 8.1.3 product safety, 8.1.4 counterfeit parts, 8.3.4.1 verification and validation testing, 8.4.1–8.4.3 external
   providers and flow-down, 8.5.1.1 equipment/tools/software, 8.5.1.2 special processes, 8.5.1.3 first article
   inspection, 8.5.2 traceability, 8.5.3 customer property, 8.5.6 control of changes, 8.6 release, 8.7 nonconforming
   outputs, 9.1.2 on-time delivery and conformity, 9.2 internal audit, 9.3 management review, 10.2 root cause and
@@ -30,11 +56,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   traceability, validated tooling and software, calibration register with no overdue due dates, nonconformance
   dispositions incl. customer authorization for use-as-is/repair, corrective actions with root cause, human factors
   and overdue tracking, audit and management-review dates within the past year, OTD/conformity KPIs against
-  targets); **52 are attested** (`input.as9100d.attestations["<clause>"] == true`; `input.as9100d.as_of` pins the
-  date). Fail-closed: empty input fails all 70 rows with an explicit reason (`not attested` / `FAIL-CLOSED: no
+  targets); **53 are attested** (`input.as9100d.attestations["<clause>"] == true`; `input.as9100d.as_of` pins the
+  date). Fail-closed: empty input fails all 72 rows with an explicit reason (`not attested` / `FAIL-CLOSED: no
   evidence at input.as9100d.<path>`), unknown clause ids and a non-object attestations container are flagged, and a
   clause module missing from the store is itself a violation. Clause numbers and short titles only — AS9100D and
-  ISO 9001 are licensed and no requirement text is reproduced; sources in the module header. 215 tests (one pass
+  ISO 9001 are licensed and no requirement text is reproduced; sources in the module header. 258 tests (one pass
   and one fail case per row, evidence-missing and failing-evidence cases per fact row, full fixture, empty input,
   report shape, roll-up, framework key). Vocabulary: source `sae`, domains `aerospace` and `quality`. Registry row
   added: the successor is renamed IA9100 and follows ISO 9001:2026 (published 2026-09-16), no publication date yet.

@@ -9,9 +9,9 @@ import data.as9100d_fixture_test as fx
 
 # ── Table integrity ─────────────────────────────────────────────────────────
 
-test_table_has_30_rows if {
-	count(mod.items) == 30
-	count({id | some id, it in mod.items; it.kind == "attestation"}) == 20
+test_table_has_31_rows if {
+	count(mod.items) == 31
+	count({id | some id, it in mod.items; it.kind == "attestation"}) == 21
 	count({id | some id, it in mod.items; it.kind == "fact"}) == 10
 }
 
@@ -25,18 +25,18 @@ test_empty_input_fails_every_row if {
 	r := mod.compliance_report with input as {}
 	r.compliant == false
 	r.passed == 0
-	r.failed == 30
-	r.violation_count == 30
+	r.failed == 31
+	r.violation_count == 31
 	r.gaps == sort([id | some id, _ in mod.items])
 }
 
 test_full_fixture_passes if {
 	r := mod.compliance_report with input as fx.full
 	r.compliant == true
-	r.passed == 30
+	r.passed == 31
 	r.failed == 0
 	r.violation_count == 0
-	r.attested == 20
+	r.attested == 21
 	r.fact_evaluated == 10
 	r.fact_passed == 10
 	r.gaps == []
@@ -47,8 +47,8 @@ test_report_shape if {
 	r.framework == "SAE AS9100D (9100:2016)"
 	r.clause == "8"
 	r.name == "Operation"
-	r.total == 30
-	r.attestation_items == 20
+	r.total == 31
+	r.attestation_items == 21
 	r.fact_items == 10
 	is_set(r.violations)
 }
@@ -274,6 +274,20 @@ test_8_3_4_fails_when_not_attested if {
 	count(v) == 1
 	some msg in v
 	startswith(msg, "AS9100D 8.3.4: ")
+	contains(msg, "not attested")
+}
+
+test_8_3_4_1_passes_when_attested if {
+	mod.passed["8.3.4.1"] with input as fx.full
+}
+
+test_8_3_4_1_fails_when_not_attested if {
+	inp := fx.without_attestation("8.3.4.1")
+	not mod.passed["8.3.4.1"] with input as inp
+	v := mod.violations with input as inp
+	count(v) == 1
+	some msg in v
+	startswith(msg, "AS9100D 8.3.4.1: ")
 	contains(msg, "not attested")
 }
 
