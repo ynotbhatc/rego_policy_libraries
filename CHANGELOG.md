@@ -8,6 +8,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-11-11
+
+The November 2026 freshen-up: formatting sweep, every framework key resolves fail-closed, DISA STIGs on the October 2026 library (RHEL 8/9/10, Ubuntu 22.04/24.04, Amazon Linux 2023, SLES 15, Windows 11, Server 2016/2019/2022/2025), CIS Windows 10/11 Enterprise, CIS Apache 2.4 v2.4.0, CIS MCP Server complete, SAP Security Baseline, AS9100D, the standards-registry sweep, regenerated exports. Entries below were collected under Unreleased since 2.4.2.
+
 ### Changed — generated site pages and converter exports caught up with main
 
 - `scripts/build_site.py`, `make oscal`, `make crosswalk`, `make xccdf` and the Gatekeeper `build.py` were re-run so
