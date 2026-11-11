@@ -103,7 +103,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | **OWASP LLM Top 10 (2026)** | `governance/owasp_llm/` | 30 controls (3 per risk, LLM01–LLM10:2026) with a MITRE ATLAS mitigation crosswalk (atlas-data v2026.09) |
 | **FedRAMP 20x KSI** | `frameworks/federal/fedramp_20x/` | All 46 Key Security Indicators, Class B/C profiles, generated from the Consolidated Rules datafile; rev5 module retained for existing/High |
 | **UK MoD DCC — DEF STAN 05-138 Issue 4** | `frameworks/regional/dcc/` | All 148 controls, 4 Cyber Risk Profiles (L0 Basic → L3 Expert) with exact per-control level sets incl. the non-cumulative supersession pairs |
-| **SAE AS9100D (IAQG 9100:2016) aerospace QMS** | `frameworks/management/as9100d/` | 70 clause rows of clauses 4–10 in seven clause packages incl. every aerospace addition (8.1.1–8.1.4, 8.4 flow-down, 8.5.1.1–8.5.1.3, 8.5.6, 8.7, 9.1.2 on-time delivery/conformity, 10.2 root cause + human factors); 18 decided from collected evidence, 52 attested; clause numbers and titles only — no standard text |
+| **SAE AS9100D (IAQG 9100:2016) aerospace QMS** | `frameworks/management/as9100d/` | 71 clause rows of clauses 4–10 in seven clause packages incl. every aerospace addition (8.1.1–8.1.4, 8.3.4.1 V&V testing, 8.4 flow-down, 8.5.1.1–8.5.1.3, 8.5.6, 8.7, 9.1.2 on-time delivery/conformity KPIs + customer feedback, 10.2 root cause + human factors); 18 decided from collected evidence (malformed, blank or empty evidence never passes), 53 attested; clause numbers and titles only — no standard text |
 
 ## CIS Benchmark coverage
 
