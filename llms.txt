@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 22,573 control-level checks in 866 policy files, mapped to 183 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 23,776 control-level checks in 953 policy files, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -18,10 +18,13 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 
 ## Standards
 
-- [AI Governance](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-ai.html): 4 policy files
-- [AMI / NIST IR 7628](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html): 9 policy files
+- [AI Governance](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-ai.html): 5 policy files
+- [AMI / NIST IR 7628](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html): 12 policy files
 - [Aap](https://ynotbhatc.github.io/rego_policy_libraries/standard/enforcement-aap.html): 5 policy files
 - [Abap](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-sap-abap.html): 7 policy files
+- [Amazon Linux 2023](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-amazon-linux-2023.html): 4 policy files
+- [Apache 2 4 Unix](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-apache-2-4-unix.html): 4 policy files
+- [As9100D](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-as9100d.html): 8 policy files
 - [Bsi C5](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-regional-bsi-c5.html): 18 policy files
 - [CCPA / CPRA](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-ccpa.html): 8 policy files
 - [CIS Amazon Linux 2023](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-amazon-linux-2023.html): 17 policy files
@@ -32,12 +35,13 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [CIS RHEL 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-9.html): 21 policy files
 - [CIS Rocky Linux 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-8.html): 15 policy files
 - [CIS Rocky Linux 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-9.html): 15 policy files
-- [CIS Ubuntu 20.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-20-04.html): 16 policy files
-- [CIS Ubuntu 22.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-22-04.html): 17 policy files
-- [CIS Ubuntu 24.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-24-04.html): 17 policy files
-- [CMMC](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-cmmc.html): 15 policy files
+- [CIS Ubuntu 20.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-20-04.html): 17 policy files
+- [CIS Ubuntu 22.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-22-04.html): 18 policy files
+- [CIS Ubuntu 24.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-24-04.html): 18 policy files
+- [CMMC](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-cmmc.html): 16 policy files
 - [CSA CCM](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-csa-ccm.html): 17 policy files
 - [Cis Controls V8](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-cis-controls-v8.html): 19 policy files
+- [Cisco Ios Xe Router](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-cisco-ios-xe-router.html): 4 policy files
 - [Cjis](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-cjis.html): 14 policy files
 - [Corporate](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-corporate.html): 4 policy files
 - [Cyber Essentials](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-regional-cyber-essentials.html): 6 policy files
@@ -51,35 +55,45 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [GDPR](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-gdpr.html): 5 policy files
 - [GEISA](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-geisa.html): 6 policy files
 - [HIPAA](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-hipaa.html): 11 policy files
-- [IEC 62443](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-iec-62443.html): 12 policy files
-- [ISO 27001](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-iso27001.html): 6 policy files
+- [IEC 62443](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-iec-62443.html): 13 policy files
+- [ISO 27001](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-iso27001.html): 7 policy files
 - [Irs 1075](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-irs-1075.html): 9 policy files
 - [Iso27701](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-privacy-iso27701.html): 5 policy files
+- [Kubernetes](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-kubernetes.html): 4 policy files
 - [M365](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-scuba-m365.html): 8 policy files
 - [Mcp Server](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-mcp-server.html): 11 policy files
+- [Ms Sql 2016](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-ms-sql-2016.html): 4 policy files
 - [NCSC CAF](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-compliance-ncsc-caf.html): 8 policy files
-- [NERC-CIP](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-nerc-cip.html): 16 policy files
-- [NIST](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist.html): 41 policy files
+- [NERC-CIP](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-nerc-cip.html): 17 policy files
+- [NIST](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist.html): 44 policy files
 - [Nist Ssdf](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist-ssdf.html): 5 policy files
+- [Openshift 4](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-openshift-4.html): 4 policy files
 - [Oracle Linux 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-oracle-linux-8.html): 11 policy files
 - [Oracle Linux 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-oracle-linux-9.html): 11 policy files
 - [Os](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-os.html): 9 policy files
 - [PCI-DSS](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-financial-pci-dss.html): 14 policy files
 - [Postgresql](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-postgresql.html): 5 policy files
-- [Rhel 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-8.html): 9 policy files
-- [Rhel 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-9.html): 11 policy files
+- [Postgresql 16](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-postgresql-16.html): 4 policy files
+- [Rhel 10](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-10.html): 11 policy files
+- [Rhel 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-8.html): 10 policy files
+- [Rhel 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-9.html): 12 policy files
 - [SOC 2](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-soc2.html): 12 policy files
 - [SOX](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-financial-sox.html): 4 policy files
+- [Sles 15](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-sles-15.html): 4 policy files
 - [Suse 16](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-suse-16.html): 24 policy files
 - [TSA Pipeline](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-tsa-pipeline.html): 13 policy files
+- [Ubuntu 22 04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-ubuntu-22-04.html): 4 policy files
 - [Ubuntu 26 04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-26-04.html): 23 policy files
+- [Vmware Vsphere 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-vmware-vsphere-8.html): 4 policy files
 - [Windows 10 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-10-modular.html): 11 policy files
-- [Windows 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-11.html): 5 policy files
+- [Windows 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-11.html): 6 policy files
 - [Windows 11 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-11-modular.html): 11 policy files
-- [Windows Server 2019 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2019-modular.html): 11 policy files
-- [Windows Server 2022](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2022.html): 5 policy files
-- [Windows Server 2022 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2022-modular.html): 11 policy files
-- [Windows Server 2025](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2025.html): 5 policy files
+- [Windows Server 2016](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2016.html): 5 policy files
+- [Windows Server 2019](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2019.html): 5 policy files
+- [Windows Server 2019 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2019-modular.html): 12 policy files
+- [Windows Server 2022](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2022.html): 6 policy files
+- [Windows Server 2022 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2022-modular.html): 12 policy files
+- [Windows Server 2025](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2025.html): 6 policy files
 - [Zero Trust](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-zero-trust.html): 9 policy files
 
 ## Comparisons

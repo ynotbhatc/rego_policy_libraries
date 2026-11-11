@@ -109,6 +109,8 @@ measured leverage score.
 ## Notes
 
 - **HITECH** is already covered (folded into the HIPAA module) — not on this list.
+- **SAE AS9100D** (aerospace quality management, `frameworks/management/as9100d/`) shipped 2026-11-11 outside the
+  tracks above — the first industry QMS standard in the library; its successor IA9100 is tracked in the registry.
 - Items 6–9 are lower-priority and market-dependent; reorder by the deals in front of us.
 - Each addition is a self-contained PR (policies + tests), mergeable independently, so the
   cadence can slip a week without blocking anything else.

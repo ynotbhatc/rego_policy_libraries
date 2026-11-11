@@ -1,0 +1,4290 @@
+{
+ "catalog": {
+  "uuid": "dfe99e7c-7135-5b03-ad8c-7fe9bf7dd5ed",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_rhel_10 (DISA STIG for RHEL 10 - Account and Authentication Module)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_rhel_10"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_rhel_10-account_auth",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Account and Authentication Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.account_auth"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/account_auth.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-600740",
+      "title": "RHEL 10 must be configured to use the shadow file to store only encrypted representations of passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600740"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600740"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600740_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured to use the shadow file to store only encrypted representations of passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701220",
+      "title": "RHEL 10 must enable certificate-based smart card authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701220_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable certificate-based smart card authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600410",
+      "title": "RHEL 10 must automatically lock an account when three unsuccessful login attempts occur.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600410_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must automatically lock an account when three unsuccessful login attempts occur."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600460",
+      "title": "RHEL 10 must not have accounts configured with blank or null passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600460_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not have accounts configured with blank or null passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600220",
+      "title": "RHEL 10 must enforce that passwords be created with a minimum of 15 characters.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600220_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce that passwords be created with a minimum of 15 characters."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600250",
+      "title": "RHEL 10 must enforce password complexity by requiring that at least one uppercase character be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600250_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce password complexity by requiring that at least one uppercase character be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600240",
+      "title": "RHEL 10 must enforce password complexity by requiring that at least one lowercase character be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600240_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce password complexity by requiring that at least one lowercase character be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600310",
+      "title": "RHEL 10 must enforce password complexity by requiring that at least one numeric character be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600310_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce password complexity by requiring that at least one numeric character be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600230",
+      "title": "RHEL 10 must enforce password complexity by requiring at least one special character to be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600230_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce password complexity by requiring at least one special character to be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600100",
+      "title": "RHEL 10 must, for new users or password changes, have a 60-day maximum password lifetime restriction for user account passwords in \"/etc/login.defs\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600100_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must, for new users or password changes, have a 60-day maximum password lifetime restriction for user account passwords in \"/etc/login.defs\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600210",
+      "title": "RHEL 10 must enforce a 24-hours minimum password lifetime restriction for passwords for new users or password changes in \"/etc/login.defs\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600210_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce a 24-hours minimum password lifetime restriction for passwords for new users or password changes in \"/etc/login.defs\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600420",
+      "title": "RHEL 10 must automatically lock an account when three unsuccessful login attempts occur during a 15-minute time period.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600420_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must automatically lock an account when three unsuccessful login attempts occur during a 15-minute time period."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600160",
+      "title": "RHEL 10 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600160_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600130",
+      "title": "RHEL 10 must not allow duplicate user IDs (UIDs) to exist for interactive users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600130_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not allow duplicate user IDs (UIDs) to exist for interactive users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600470",
+      "title": "RHEL 10 must have a unique group ID (GID) for each group in \"/etc/group\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600470_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have a unique group ID (GID) for each group in \"/etc/group\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.account_auth-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/account_auth.rego (package stig.rhel_10.account_auth); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.account_auth#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.account_auth#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.account_auth-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/account_auth.rego (package stig.rhel_10.account_auth); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-audit_logging",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Audit Logging Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.audit_logging"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/audit_logging.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-200661",
+      "title": "RHEL 10 must enable the audit service.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200661"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200661"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200661_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable the audit service."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500205",
+      "title": "RHEL 10 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500205"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500205"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500205_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500300",
+      "title": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"execve\" system call.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500300_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"execve\" system call."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500790",
+      "title": "RHEL 10 must generate audit records for all uses of the \"chown\", \"fchown\", \"fchownat\", and \"lchown\" syscalls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500790"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500790"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500790_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for all uses of the \"chown\", \"fchown\", \"fchownat\", and \"lchown\" syscalls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500780",
+      "title": "RHEL 10 must generate audit records for all uses of the \"chmod\", \"fchmod\", \"fchmodat\", and \"fchmodat2\" syscalls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500780"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500780"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500780_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for all uses of the \"chmod\", \"fchmod\", \"fchmodat\", and \"fchmodat2\" syscalls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500310",
+      "title": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"setxattr\", \"fsetxattr\", \"lsetxattr\", \"removexattr\", \"fremovexattr\", and \"lremovexattr\" system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500310_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"setxattr\", \"fsetxattr\", \"lsetxattr\", \"removexattr\", \"fremovexattr\", and \"lremovexattr\" system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500390",
+      "title": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"truncate\", \"ftruncate\", \"creat\", \"open\", \"openat\", and \"open_by_handle_at\" system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500390_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"truncate\", \"ftruncate\", \"creat\", \"open\", \"openat\", and \"open_by_handle_at\" system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500680",
+      "title": "RHEL 10 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/sudoers\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500680"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500680"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500680_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/sudoers\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500730",
+      "title": "RHEL 10 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/passwd\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500730"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500730"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500730_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/passwd\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500550",
+      "title": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"sudo\" command.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500550_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"sudo\" command."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-500410",
+      "title": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"init_module\" and \"finit_module\" system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-500410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-500410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-500410_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must generate audit records for successful and unsuccessful uses of the \"init_module\" and \"finit_module\" system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.audit_logging-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/audit_logging.rego (package stig.rhel_10.audit_logging); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.audit_logging#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.audit_logging#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.audit_logging-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/audit_logging.rego (package stig.rhel_10.audit_logging); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-configuration_management",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Configuration Management Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.configuration_management"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/configuration_management.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-700960",
+      "title": "RHEL 10 must disable the x86 Ctrl-Alt-Delete key sequence.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700960"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700960"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700960_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable the x86 Ctrl-Alt-Delete key sequence."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-000500",
+      "title": "RHEL 10 must enable FIPS mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-000500_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable FIPS mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-300010",
+      "title": "RHEL 10 must implement a FIPS 140-3-compliant systemwide cryptographic policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-300010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-300010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-300010_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must implement a FIPS 140-3-compliant systemwide cryptographic policy."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700420",
+      "title": "RHEL 10 must use a Linux Security Module configured to enforce limits on system services.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700420_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use a Linux Security Module configured to enforce limits on system services."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700830",
+      "title": "RHEL 10 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700830"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700830"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700830_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700400",
+      "title": "RHEL 10 must enable the SELinux targeted policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700400_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable the SELinux targeted policy."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700040",
+      "title": "RHEL 10 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a command line user login.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700040_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a command line user login."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700010",
+      "title": "RHEL 10 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a Secure Shell (SSH) login.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700010_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a Secure Shell (SSH) login."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701130",
+      "title": "RHEL 10 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701130_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701030",
+      "title": "RHEL 10 must restrict access to the kernel message buffer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701030_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must restrict access to the kernel message buffer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701040",
+      "title": "RHEL 10 must prevent kernel profiling by nonprivileged users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701040_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must prevent kernel profiling by nonprivileged users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800030",
+      "title": "RHEL 10 must disable access to the network bpf system call from nonprivileged processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800030_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable access to the network bpf system call from nonprivileged processes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800050",
+      "title": "RHEL 10 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800050_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700850",
+      "title": "RHEL 10 must be configured to disable USB mass storage.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700850"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700850"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700850_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured to disable USB mass storage."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200633",
+      "title": "RHEL 10 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200633"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200633"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200633_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200630",
+      "title": "RHEL 10 must have the Advanced Intrusion Detection Environment (AIDE) package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200630"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200630"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200630_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have the Advanced Intrusion Detection Environment (AIDE) package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-000540",
+      "title": "RHEL 10 must use a separate file system for \"/tmp\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-000540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-000540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-000540_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use a separate file system for \"/tmp\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400355",
+      "title": "RHEL 10 must prevent device files from being interpreted on file systems that contain user home directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400355"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400355"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400355_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must prevent device files from being interpreted on file systems that contain user home directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400360",
+      "title": "RHEL 10 must prevent files with the \"setuid\" and \"setgid\" bit set from being executed on file systems that contain user home directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400360_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must prevent files with the \"setuid\" and \"setgid\" bit set from being executed on file systems that contain user home directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400365",
+      "title": "RHEL 10 must prevent code from being executed on file systems that contain user home directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400365"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400365"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400365_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must prevent code from being executed on file systems that contain user home directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-000560",
+      "title": "RHEL 10 must use a separate file system for \"/var/log\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-000560"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-000560"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-000560_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use a separate file system for \"/var/log\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-000520",
+      "title": "RHEL 10 must use a separate file system for the system audit data path.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-000520_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use a separate file system for the system audit data path."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.configuration_management-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/configuration_management.rego (package stig.rhel_10.configuration_management); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.configuration_management#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.configuration_management#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#41df01f4-de31-59df-9ac5-64340067b9e7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.configuration_management-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/configuration_management.rego (package stig.rhel_10.configuration_management); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-file_permissions",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - File Permissions Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.file_permissions"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/file_permissions.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-400290",
+      "title": "RHEL 10 must be configured so that all local files and directories must have a valid owner.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400290_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that all local files and directories must have a valid owner."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400285",
+      "title": "RHEL 10 must be configured so that all local files and directories have a valid group owner.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400285"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400285"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400285_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that all local files and directories have a valid group owner."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400265",
+      "title": "RHEL 10 must enforce mode \"0644\" or less permissive for the \"/etc/passwd\" file to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400265"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400265"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400265_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"0644\" or less permissive for the \"/etc/passwd\" file to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400295",
+      "title": "RHEL 10 must enforce mode \"0000\" for \"/etc/shadow\" to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400295"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400295"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400295_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"0000\" for \"/etc/shadow\" to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400245",
+      "title": "RHEL 10 must enforce mode \"0644\" or less permissive for the \"/etc/group\" file to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400245"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400245"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400245_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"0644\" or less permissive for the \"/etc/group\" file to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400255",
+      "title": "RHEL 10 must enforce mode \"0000\" or less permissive for the \"/etc/gshadow\" file to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400255"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400255"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400255_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"0000\" or less permissive for the \"/etc/gshadow\" file to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400215",
+      "title": "RHEL 10 must enforce mode \"755\" or less permissive for library files.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400215"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400215"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400215_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"755\" or less permissive for library files."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400110",
+      "title": "RHEL 10 must be configured so that library files are owned by \"root\".",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400110_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that library files are owned by \"root\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400205",
+      "title": "RHEL 10 must enforce mode \"755\" or less permissive for system commands.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400205"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400205"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400205_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"755\" or less permissive for system commands."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-400240",
+      "title": "RHEL 10 must enforce mode \"0750\" or less permissive for local interactive user home directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-400240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-400240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-400240_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce mode \"0750\" or less permissive for local interactive user home directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.file_permissions-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/file_permissions.rego (package stig.rhel_10.file_permissions); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.file_permissions#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.file_permissions#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.file_permissions-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/file_permissions.rego (package stig.rhel_10.file_permissions); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-network",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Network Configuration Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.network"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/network.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-200531",
+      "title": "RHEL 10 must have the \"firewalld\" service set to active.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200531"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200531"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200531_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have the \"firewalld\" service set to active."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800210",
+      "title": "RHEL 10 must not enable Internet Protocol version 4 (IPv4) packet forwarding unless the system is a router.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800210_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not enable Internet Protocol version 4 (IPv4) packet forwarding unless the system is a router."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800090",
+      "title": "RHEL 10 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800090_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800190",
+      "title": "RHEL 10 must not send Internet Control Message Protocol (ICMP) redirects.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800190_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not send Internet Control Message Protocol (ICMP) redirects."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800100",
+      "title": "RHEL 10 must not forward Internet Protocol version 4 (IPv4) source-routed packets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800100_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not forward Internet Protocol version 4 (IPv4) source-routed packets."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800180",
+      "title": "RHEL 10 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800180_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800080",
+      "title": "RHEL 10 must be configured to use Transmission Control Protocol (TCP) syncookies.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800080_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured to use Transmission Control Protocol (TCP) syncookies."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800130",
+      "title": "RHEL 10 must use reverse path filtering on all Internet Protocol version 4 (IPv4) interfaces.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800130_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use reverse path filtering on all Internet Protocol version 4 (IPv4) interfaces."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700870",
+      "title": "RHEL 10 must disable wireless network adapters.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700870"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700870"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700870_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable wireless network adapters."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700860",
+      "title": "RHEL 10 must disable Bluetooth.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700860"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700860"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700860_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable Bluetooth."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-800020",
+      "title": "RHEL 10 must enforce that network interfaces not be in promiscuous mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-800020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-800020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-800020_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enforce that network interfaces not be in promiscuous mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.network-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/network.rego (package stig.rhel_10.network); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.network#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.network#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#37b2a86f-3062-5b11-aad7-3d272ed815d3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.network-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/network.rego (package stig.rhel_10.network); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-pki_crypto",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - PKI and Cryptography Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.pki_crypto"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/pki_crypto.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-300090",
+      "title": "RHEL 10 cryptographic policy must not be overridden.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-300090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-300090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16862d79-cda6-5927-b713-0055e2d88268",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-300090_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 cryptographic policy must not be overridden."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701230",
+      "title": "RHEL 10 must implement certificate status checking for multifactor authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16862d79-cda6-5927-b713-0055e2d88268",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701230_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must implement certificate status checking for multifactor authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701270",
+      "title": "RHEL 10 must, for PKI-based authentication, validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16862d79-cda6-5927-b713-0055e2d88268",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701270_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must, for PKI-based authentication, validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701280",
+      "title": "RHEL 10 must map the authenticated identity to the user or group account for public key infrastructure (PKI)-based authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16862d79-cda6-5927-b713-0055e2d88268",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701280_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must map the authenticated identity to the user or group account for public key infrastructure (PKI)-based authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.pki_crypto-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/pki_crypto.rego (package stig.rhel_10.pki_crypto); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.pki_crypto#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.pki_crypto#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#16862d79-cda6-5927-b713-0055e2d88268",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.pki_crypto-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/pki_crypto.rego (package stig.rhel_10.pki_crypto); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-services",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Services Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.services"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/services.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-200090",
+      "title": "RHEL 10 must not have a File Transfer Protocol (FTP) server package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200090_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not have a File Transfer Protocol (FTP) server package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200020",
+      "title": "RHEL 10 must not have the \"telnet-server\" package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200020_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not have the \"telnet-server\" package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200050",
+      "title": "RHEL 10 must not have a Trivial File Transfer Protocol (TFTP) server package installed unless it is required by the mission, and if required, the TFTP daemon must be configured to operate in secure mo",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200050_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not have a Trivial File Transfer Protocol (TFTP) server package installed unless it is required by the mission, and if required, the TFTP daemon must be configured to operate in secure mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701210",
+      "title": "RHEL 10 must disable file system automount function unless required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701210_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must disable file system automount function unless required."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200010",
+      "title": "RHEL 10 must not have the \"nfs-utils\" package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200010_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not have the \"nfs-utils\" package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.services-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/services.rego (package stig.rhel_10.services); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.services#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.services#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.services-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/services.rego (package stig.rhel_10.services); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-software_integrity",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Software Integrity Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.software_integrity"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/software_integrity.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-001050",
+      "title": "RHEL 10 must have GNU Privacy Guard (GPG) signature verification enabled for all software repositories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-001050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-001050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-001050_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have GNU Privacy Guard (GPG) signature verification enabled for all software repositories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-001040",
+      "title": "RHEL 10 must check the GNU Privacy Guard (GPG) signature of locally installed software packages before installation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-001040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-001040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-001040_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must check the GNU Privacy Guard (GPG) signature of locally installed software packages before installation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-701050",
+      "title": "RHEL 10 must prevent the loading of a new kernel for later execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-701050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-701050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-701050_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must prevent the loading of a new kernel for later execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-09-251010",
+      "title": "RHEL 10 must ensure cryptographic verification of vendor software packages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-251010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-251010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-09-251010_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must ensure cryptographic verification of vendor software packages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200632",
+      "title": "RHEL 10 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200632"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200632"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200632_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200640",
+      "title": "RHEL 10 must have the \"rsyslog\" package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200640"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200640"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200640_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have the \"rsyslog\" package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-200641",
+      "title": "RHEL 10 must have the rsyslog service set to active.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-200641"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-200641"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-200641_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must have the rsyslog service set to active."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.software_integrity-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/software_integrity.rego (package stig.rhel_10.software_integrity); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.software_integrity#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.software_integrity#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5be50079-e264-5955-bb00-9b6911c99f2b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.software_integrity-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/software_integrity.rego (package stig.rhel_10.software_integrity); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-ssh_config",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - SSH Configuration Module",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10.ssh_config"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/ssh_config.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-RHEL-10-300040",
+      "title": "RHEL 10 must be configured so that Secure Shell (SSH) servers use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SS",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-300040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-300040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-300040_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that Secure Shell (SSH) servers use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-300060",
+      "title": "RHEL 10 must be configured so that Secure Shell (SSH) servers use only DOD-approved Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the conf",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-300060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-300060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-300060_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that Secure Shell (SSH) servers use only DOD-approved Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-600640",
+      "title": "RHEL 10 must enable the Pluggable Authentication Module (PAM) interface for SSHD.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-600640"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-600640"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-600640_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must enable the Pluggable Authentication Module (PAM) interface for SSHD."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700610",
+      "title": "RHEL 10 must be configured so that SSHD does not allow blank passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700610"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700610"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700610_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that SSHD does not allow blank passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700620",
+      "title": "RHEL 10 must not permit direct logins to the root account using remote access via Secure Shell (SSH).",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700620"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700620"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700620_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not permit direct logins to the root account using remote access via Secure Shell (SSH)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700630",
+      "title": "RHEL 10 must not allow a noncertificate trusted host Secure Shell (SSH) login to the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700630"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700630"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700630_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must not allow a noncertificate trusted host Secure Shell (SSH) login to the system."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700930",
+      "title": "RHEL 10 must be configured with a timeout interval for the Secure Shell (SSH) daemon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700930"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700930"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700930_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured with a timeout interval for the Secure Shell (SSH) daemon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700660",
+      "title": "RHEL 10 must be configured so that all network connections associated with Secure Shell (SSH) traffic terminate after becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700660"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700660"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700660_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that all network connections associated with Secure Shell (SSH) traffic terminate after becoming unresponsive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700560",
+      "title": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon performs strict mode checking of home directory configuration files.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700560"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700560"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700560_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon performs strict mode checking of home directory configuration files."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700530",
+      "title": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon does not allow rhosts authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700530_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon does not allow rhosts authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700540",
+      "title": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon does not allow known hosts authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700540_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon does not allow known hosts authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700570",
+      "title": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon displays the date and time of the last successful account login upon an SSH login.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700570"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700570"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700570_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon displays the date and time of the last successful account login upon an SSH login."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-RHEL-10-700550",
+      "title": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon disables remote X connections for interactive users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-10-700550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-10-700550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-RHEL-10-700550_stmt",
+        "name": "statement",
+        "prose": "RHEL 10 must be configured so that the Secure Shell (SSH) daemon disables remote X connections for interactive users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10.ssh_config-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/ssh_config.rego (package stig.rhel_10.ssh_config); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10.ssh_config#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10.ssh_config#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#0fbce401-354d-5aa3-a0ae-d4204a269874",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10.ssh_config-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/ssh_config.rego (package stig.rhel_10.ssh_config); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_rhel_10-stig_rhel_10_complete",
+    "class": "rego-module",
+    "title": "DISA STIG for RHEL 10 - Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.rhel_10"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/rhel_10/stig_rhel_10_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_rhel_10-stig.rhel_10-1",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-2",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-3",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-4",
+      "title": "not a finding",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-4_stmt",
+        "name": "statement",
+        "prose": "not a finding"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-5",
+      "title": "not applicable",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-5_stmt",
+        "name": "statement",
+        "prose": "not applicable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-6",
+      "title": "not reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-6_stmt",
+        "name": "statement",
+        "prose": "not reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-stig.rhel_10-7",
+      "title": "open",
+      "props": [
+       {
+        "name": "label",
+        "value": "stig.rhel_10#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "stig.rhel_10#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-stig.rhel_10-7_stmt",
+        "name": "statement",
+        "prose": "open"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_10-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_10"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_10-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/rhel_10/stig_rhel_10_complete.rego (package stig.rhel_10); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "39f23954-d6ce-5349-9a14-21f6c3a5ebdc",
+     "title": "DISA STIG for RHEL 10 - Account and Authentication Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.account_auth"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/account_auth.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "27a7df50-2ec4-5eb4-865a-6902d070f4e1",
+     "title": "DISA STIG for RHEL 10 - Audit Logging Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.audit_logging"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/audit_logging.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "41df01f4-de31-59df-9ac5-64340067b9e7",
+     "title": "DISA STIG for RHEL 10 - Configuration Management Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.configuration_management"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/configuration_management.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "83ff8361-9e67-51d9-b7cd-ccb4eaebb9a1",
+     "title": "DISA STIG for RHEL 10 - File Permissions Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.file_permissions"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/file_permissions.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "37b2a86f-3062-5b11-aad7-3d272ed815d3",
+     "title": "DISA STIG for RHEL 10 - Network Configuration Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.network"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/network.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "16862d79-cda6-5927-b713-0055e2d88268",
+     "title": "DISA STIG for RHEL 10 - PKI and Cryptography Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.pki_crypto"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/pki_crypto.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "7d23ac9e-ab9d-54d5-9424-bb056f6d29b7",
+     "title": "DISA STIG for RHEL 10 - Services Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.services"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/services.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "5be50079-e264-5955-bb00-9b6911c99f2b",
+     "title": "DISA STIG for RHEL 10 - Software Integrity Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.software_integrity"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/software_integrity.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "0fbce401-354d-5aa3-a0ae-d4204a269874",
+     "title": "DISA STIG for RHEL 10 - SSH Configuration Module",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10.ssh_config"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/ssh_config.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "a2f5b6eb-7a34-508f-875f-a5ecfe597b3f",
+     "title": "DISA STIG for RHEL 10 - Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.rhel_10"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/rhel_10/stig_rhel_10_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
