@@ -6,8 +6,8 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 17
-#     cited: 16
+#     checks: 14
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
@@ -17,7 +17,9 @@
 package stig.rhel_9.ssh_config
 
 # DISA STIG for RHEL 9 - SSH Configuration Module
-# STIG Version: V2R2 | Released: October 2024
+# STIG Version: V2R10 | Released: 30 Sep 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 # Covers: SSH daemon hardening, key exchange, MACs, ciphers
 
 import rego.v1
@@ -54,7 +56,105 @@ approved_kex := {
 # CAT I - HIGH SEVERITY
 # =============================================================================
 
-# RHEL-09-255010 | V-257985 | CAT I
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
+
+# RHEL-09-255065 | V-257989 | CAT I
+# SSH must use FIPS-approved ciphers
+default ssh_fips_ciphers := false
+
+ssh_fips_ciphers if {
+	ciphers_str := input.ssh_config.Ciphers
+	ciphers := split(ciphers_str, ",")
+	count([c | some c in ciphers; not c in approved_ciphers]) == 0
+	count(ciphers) > 0
+}
+
+status_rhel_09_255065 := "Not_a_Finding" if ssh_fips_ciphers
+
+else := "Open"
+
+finding_rhel_09_255065 := {
+	"vuln_id": "V-257989",
+	"stig_id": "RHEL-09-255065",
+	"severity": "CAT I",
+	"rule_title": "The RHEL 9 SSH server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
+	"status": status_rhel_09_255065,
+	"fix_text": "Set Ciphers aes256-ctr,aes192-ctr,aes128-ctr in /etc/ssh/sshd_config",
+}
+
+# RHEL-09-255075 | V-257991 | CAT I
+# SSH must use FIPS-approved MACs
+default ssh_fips_macs := false
+
+ssh_fips_macs if {
+	macs_str := input.ssh_config.MACs
+	macs := split(macs_str, ",")
+	count([m | some m in macs; not m in approved_macs]) == 0
+	count(macs) > 0
+}
+
+status_rhel_09_255075 := "Not_a_Finding" if ssh_fips_macs
+
+else := "Open"
+
+finding_rhel_09_255075 := {
+	"vuln_id": "V-257991",
+	"stig_id": "RHEL-09-255075",
+	"severity": "CAT I",
+	"rule_title": "The RHEL 9 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
+	"status": status_rhel_09_255075,
+	"fix_text": "Set MACs hmac-sha2-512,hmac-sha2-256 in /etc/ssh/sshd_config",
+}
+
+# RHEL-09-255040 | V-257984 | CAT I
+# SSH must not permit empty passwords
+default ssh_no_empty_passwords := false
+
+ssh_no_empty_passwords if {
+	lower(input.ssh_config.PermitEmptyPasswords) == "no"
+}
+
+status_rhel_09_255040 := "Not_a_Finding" if ssh_no_empty_passwords
+
+else := "Open"
+
+finding_rhel_09_255040 := {
+	"vuln_id": "V-257984",
+	"stig_id": "RHEL-09-255040",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 SSHD must not allow blank passwords.",
+	"status": status_rhel_09_255040,
+	"fix_text": "Set PermitEmptyPasswords no in /etc/ssh/sshd_config",
+}
+
+# RHEL-09-255050 | V-257986 | CAT I
+# SSH must use privilege separation
+default ssh_use_pam := false
+
+ssh_use_pam if {
+	lower(input.ssh_config.UsePAM) == "yes"
+}
+
+status_rhel_09_255050 := "Not_a_Finding" if ssh_use_pam
+
+else := "Open"
+
+finding_rhel_09_255050 := {
+	"vuln_id": "V-257986",
+	"stig_id": "RHEL-09-255050",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must enable the Pluggable Authentication Module (PAM) interface for SSHD.",
+	"status": status_rhel_09_255050,
+	"fix_text": "Set UsePAM yes in /etc/ssh/sshd_config",
+}
+
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
+
+# RHEL-09-255045 | V-257985 | CAT II
 # SSH must not permit root login
 default ssh_no_root_login := false
 
@@ -66,118 +166,20 @@ ssh_no_root_login if {
 	lower(input.ssh_config.PermitRootLogin) == "forced-commands-only"
 }
 
-status_rhel_09_255010 := "Not_a_Finding" if ssh_no_root_login
+status_rhel_09_255045 := "Not_a_Finding" if ssh_no_root_login
 
 else := "Open"
 
-finding_rhel_09_255010 := {
+finding_rhel_09_255045 := {
 	"vuln_id": "V-257985",
-	"stig_id": "RHEL-09-255010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must not permit direct logons to the root account using remote access via SSH",
-	"status": status_rhel_09_255010,
+	"stig_id": "RHEL-09-255045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not permit direct logons to the root account using remote access via SSH.",
+	"status": status_rhel_09_255045,
 	"fix_text": "Set PermitRootLogin no in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255015 | V-257986 | CAT I
-# SSH protocol must be 2
-default ssh_protocol_2 := false
-
-ssh_protocol_2 if {
-	input.ssh_config.Protocol == "2"
-}
-
-ssh_protocol_2 if {
-	not input.ssh_config.Protocol # Protocol 2 is default in OpenSSH 7+
-}
-
-status_rhel_09_255015 := "Not_a_Finding" if ssh_protocol_2
-
-else := "Open"
-
-finding_rhel_09_255015 := {
-	"vuln_id": "V-257986",
-	"stig_id": "RHEL-09-255015",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must use SSH to protect the confidentiality and integrity of transmitted information",
-	"status": status_rhel_09_255015,
-	"fix_text": "Ensure Protocol 2 is configured (or remove Protocol line for modern OpenSSH)",
-}
-
-# RHEL-09-255020 | V-257987 | CAT I
-# SSH must use FIPS-approved ciphers
-default ssh_fips_ciphers := false
-
-ssh_fips_ciphers if {
-	ciphers_str := input.ssh_config.Ciphers
-	ciphers := split(ciphers_str, ",")
-	count([c | some c in ciphers; not c in approved_ciphers]) == 0
-	count(ciphers) > 0
-}
-
-status_rhel_09_255020 := "Not_a_Finding" if ssh_fips_ciphers
-
-else := "Open"
-
-finding_rhel_09_255020 := {
-	"vuln_id": "V-257987",
-	"stig_id": "RHEL-09-255020",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must implement DoD-approved encryption in the OpenSSH client",
-	"status": status_rhel_09_255020,
-	"fix_text": "Set Ciphers aes256-ctr,aes192-ctr,aes128-ctr in /etc/ssh/sshd_config",
-}
-
-# =============================================================================
-# CAT II - MEDIUM SEVERITY
-# =============================================================================
-
-# RHEL-09-255025 | V-257988 | CAT II
-# SSH must use FIPS-approved MACs
-default ssh_fips_macs := false
-
-ssh_fips_macs if {
-	macs_str := input.ssh_config.MACs
-	macs := split(macs_str, ",")
-	count([m | some m in macs; not m in approved_macs]) == 0
-	count(macs) > 0
-}
-
-status_rhel_09_255025 := "Not_a_Finding" if ssh_fips_macs
-
-else := "Open"
-
-finding_rhel_09_255025 := {
-	"vuln_id": "V-257988",
-	"stig_id": "RHEL-09-255025",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms",
-	"status": status_rhel_09_255025,
-	"fix_text": "Set MACs hmac-sha2-512,hmac-sha2-256 in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255030 | V-257989 | CAT II
-# SSH must not permit empty passwords
-default ssh_no_empty_passwords := false
-
-ssh_no_empty_passwords if {
-	lower(input.ssh_config.PermitEmptyPasswords) == "no"
-}
-
-status_rhel_09_255030 := "Not_a_Finding" if ssh_no_empty_passwords
-
-else := "Open"
-
-finding_rhel_09_255030 := {
-	"vuln_id": "V-257989",
-	"stig_id": "RHEL-09-255030",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must not allow blank or null passwords in the SSH daemon",
-	"status": status_rhel_09_255030,
-	"fix_text": "Set PermitEmptyPasswords no in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255035 | V-257990 | CAT II
+# RHEL-09-255080 | V-257992 | CAT II
 # SSH must not allow host-based authentication
 default ssh_no_hostbased_auth := false
 
@@ -185,42 +187,20 @@ ssh_no_hostbased_auth if {
 	lower(input.ssh_config.HostbasedAuthentication) == "no"
 }
 
-status_rhel_09_255035 := "Not_a_Finding" if ssh_no_hostbased_auth
+status_rhel_09_255080 := "Not_a_Finding" if ssh_no_hostbased_auth
 
 else := "Open"
 
-finding_rhel_09_255035 := {
-	"vuln_id": "V-257990",
-	"stig_id": "RHEL-09-255035",
+finding_rhel_09_255080 := {
+	"vuln_id": "V-257992",
+	"stig_id": "RHEL-09-255080",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must not allow a non-certificate trusted host SSH logon to the system",
-	"status": status_rhel_09_255035,
+	"rule_title": "RHEL 9 must not allow a noncertificate trusted host SSH logon to the system.",
+	"status": status_rhel_09_255080,
 	"fix_text": "Set HostbasedAuthentication no in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255040 | V-257991 | CAT II
-# SSH MaxAuthTries must be 4 or less
-default ssh_max_auth_tries_ok := false
-
-ssh_max_auth_tries_ok if {
-	tries := to_number(input.ssh_config.MaxAuthTries)
-	tries <= 4
-}
-
-status_rhel_09_255040 := "Not_a_Finding" if ssh_max_auth_tries_ok
-
-else := "Open"
-
-finding_rhel_09_255040 := {
-	"vuln_id": "V-257991",
-	"stig_id": "RHEL-09-255040",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must limit the number of SSH connection attempts",
-	"status": status_rhel_09_255040,
-	"fix_text": "Set MaxAuthTries 4 in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255045 | V-257992 | CAT II
+# RHEL-09-255100 | V-257996 | CAT II
 # SSH ClientAliveInterval must be 600 or less
 default ssh_client_alive_interval_ok := false
 
@@ -230,20 +210,20 @@ ssh_client_alive_interval_ok if {
 	interval > 0
 }
 
-status_rhel_09_255045 := "Not_a_Finding" if ssh_client_alive_interval_ok
+status_rhel_09_255100 := "Not_a_Finding" if ssh_client_alive_interval_ok
 
 else := "Open"
 
-finding_rhel_09_255045 := {
-	"vuln_id": "V-257992",
-	"stig_id": "RHEL-09-255045",
+finding_rhel_09_255100 := {
+	"vuln_id": "V-257996",
+	"stig_id": "RHEL-09-255100",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must set SSH client alive count max to 1",
-	"status": status_rhel_09_255045,
+	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+	"status": status_rhel_09_255100,
 	"fix_text": "Set ClientAliveInterval 600 in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255050 | V-257993 | CAT II
+# RHEL-09-255095 | V-257995 | CAT II
 # SSH ClientAliveCountMax must be 1 or less
 default ssh_client_alive_count_ok := false
 
@@ -252,20 +232,20 @@ ssh_client_alive_count_ok if {
 	count_max <= 1
 }
 
-status_rhel_09_255050 := "Not_a_Finding" if ssh_client_alive_count_ok
+status_rhel_09_255095 := "Not_a_Finding" if ssh_client_alive_count_ok
 
 else := "Open"
 
-finding_rhel_09_255050 := {
-	"vuln_id": "V-257993",
-	"stig_id": "RHEL-09-255050",
+finding_rhel_09_255095 := {
+	"vuln_id": "V-257995",
+	"stig_id": "RHEL-09-255095",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH client alive count max must be set to 1",
-	"status": status_rhel_09_255050,
+	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+	"status": status_rhel_09_255095,
 	"fix_text": "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255055 | V-257994 | CAT II
+# RHEL-09-255160 | V-258008 | CAT II
 # SSH must use strict mode
 default ssh_strict_modes := false
 
@@ -273,41 +253,20 @@ ssh_strict_modes if {
 	lower(input.ssh_config.StrictModes) == "yes"
 }
 
-status_rhel_09_255055 := "Not_a_Finding" if ssh_strict_modes
+status_rhel_09_255160 := "Not_a_Finding" if ssh_strict_modes
 
 else := "Open"
 
-finding_rhel_09_255055 := {
-	"vuln_id": "V-257994",
-	"stig_id": "RHEL-09-255055",
+finding_rhel_09_255160 := {
+	"vuln_id": "V-258008",
+	"stig_id": "RHEL-09-255160",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH daemon must perform strict mode checking of home directory configuration files",
-	"status": status_rhel_09_255055,
+	"rule_title": "RHEL 9 SSH daemon must perform strict mode checking of home directory configuration files.",
+	"status": status_rhel_09_255160,
 	"fix_text": "Set StrictModes yes in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255060 | V-257995 | CAT II
-# SSH must not use compression
-default ssh_no_compression := false
-
-ssh_no_compression if {
-	lower(input.ssh_config.Compression) == "no"
-}
-
-status_rhel_09_255060 := "Not_a_Finding" if ssh_no_compression
-
-else := "Open"
-
-finding_rhel_09_255060 := {
-	"vuln_id": "V-257995",
-	"stig_id": "RHEL-09-255060",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH daemon must not allow compression",
-	"status": status_rhel_09_255060,
-	"fix_text": "Set Compression no in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255065 | V-257996 | CAT II
+# RHEL-09-255145 | V-258005 | CAT II
 # SSH must disable rhosts authentication
 default ssh_ignore_rhosts := false
 
@@ -315,20 +274,20 @@ ssh_ignore_rhosts if {
 	lower(input.ssh_config.IgnoreRhosts) == "yes"
 }
 
-status_rhel_09_255065 := "Not_a_Finding" if ssh_ignore_rhosts
+status_rhel_09_255145 := "Not_a_Finding" if ssh_ignore_rhosts
 
 else := "Open"
 
-finding_rhel_09_255065 := {
-	"vuln_id": "V-257996",
-	"stig_id": "RHEL-09-255065",
+finding_rhel_09_255145 := {
+	"vuln_id": "V-258005",
+	"stig_id": "RHEL-09-255145",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH daemon must ignore .rhosts files",
-	"status": status_rhel_09_255065,
+	"rule_title": "RHEL 9 SSH daemon must not allow rhosts authentication.",
+	"status": status_rhel_09_255145,
 	"fix_text": "Set IgnoreRhosts yes in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255070 | V-257997 | CAT II
+# RHEL-09-255150 | V-258006 | CAT II
 # SSH must not allow .shosts
 default ssh_ignore_user_known_hosts := false
 
@@ -336,41 +295,20 @@ ssh_ignore_user_known_hosts if {
 	lower(input.ssh_config.IgnoreUserKnownHosts) == "yes"
 }
 
-status_rhel_09_255070 := "Not_a_Finding" if ssh_ignore_user_known_hosts
+status_rhel_09_255150 := "Not_a_Finding" if ssh_ignore_user_known_hosts
 
 else := "Open"
 
-finding_rhel_09_255070 := {
-	"vuln_id": "V-257997",
-	"stig_id": "RHEL-09-255070",
+finding_rhel_09_255150 := {
+	"vuln_id": "V-258006",
+	"stig_id": "RHEL-09-255150",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH daemon must not allow known hosts for authentication",
-	"status": status_rhel_09_255070,
+	"rule_title": "RHEL 9 SSH daemon must not allow known hosts authentication.",
+	"status": status_rhel_09_255150,
 	"fix_text": "Set IgnoreUserKnownHosts yes in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255075 | V-257998 | CAT II
-# SSH must use privilege separation
-default ssh_use_pam := false
-
-ssh_use_pam if {
-	lower(input.ssh_config.UsePAM) == "yes"
-}
-
-status_rhel_09_255075 := "Not_a_Finding" if ssh_use_pam
-
-else := "Open"
-
-finding_rhel_09_255075 := {
-	"vuln_id": "V-257998",
-	"stig_id": "RHEL-09-255075",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must enable the Pluggable Authentication Modules (PAM) for SSH",
-	"status": status_rhel_09_255075,
-	"fix_text": "Set UsePAM yes in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255080 | V-257999 | CAT II
+# RHEL-09-255165 | V-258009 | CAT II
 # SSH PrintLastLog must be enabled
 default ssh_print_last_log := false
 
@@ -378,20 +316,20 @@ ssh_print_last_log if {
 	lower(input.ssh_config.PrintLastLog) == "yes"
 }
 
-status_rhel_09_255080 := "Not_a_Finding" if ssh_print_last_log
+status_rhel_09_255165 := "Not_a_Finding" if ssh_print_last_log
 
 else := "Open"
 
-finding_rhel_09_255080 := {
-	"vuln_id": "V-257999",
-	"stig_id": "RHEL-09-255080",
+finding_rhel_09_255165 := {
+	"vuln_id": "V-258009",
+	"stig_id": "RHEL-09-255165",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 SSH daemon must display the date and time of the last successful account logon upon an SSH logon",
-	"status": status_rhel_09_255080,
+	"rule_title": "RHEL 9 SSH daemon must display the date and time of the last successful account logon upon an SSH logon.",
+	"status": status_rhel_09_255165,
 	"fix_text": "Set PrintLastLog yes in /etc/ssh/sshd_config",
 }
 
-# RHEL-09-255085 | V-258000 | CAT II
+# RHEL-09-255155 | V-258007 | CAT II
 # SSH X11Forwarding must be disabled
 default ssh_no_x11 := false
 
@@ -399,16 +337,16 @@ ssh_no_x11 if {
 	lower(input.ssh_config.X11Forwarding) == "no"
 }
 
-status_rhel_09_255085 := "Not_a_Finding" if ssh_no_x11
+status_rhel_09_255155 := "Not_a_Finding" if ssh_no_x11
 
 else := "Open"
 
-finding_rhel_09_255085 := {
-	"vuln_id": "V-258000",
-	"stig_id": "RHEL-09-255085",
+finding_rhel_09_255155 := {
+	"vuln_id": "V-258007",
+	"stig_id": "RHEL-09-255155",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must disable X11 Forwarding for SSH unless mission requires",
-	"status": status_rhel_09_255085,
+	"rule_title": "RHEL 9 SSH daemon must disable remote X connections for interactive users.",
+	"status": status_rhel_09_255155,
 	"fix_text": "Set X11Forwarding no in /etc/ssh/sshd_config",
 }
 
@@ -417,28 +355,29 @@ finding_rhel_09_255085 := {
 # =============================================================================
 
 cat_i_findings := [
-	finding_rhel_09_255010,
-	finding_rhel_09_255015,
-	finding_rhel_09_255020,
+	finding_rhel_09_255065,
+	finding_rhel_09_255075,
+	finding_rhel_09_255040,
+	finding_rhel_09_255050,
 ]
 
 cat_ii_findings := [
-	finding_rhel_09_255025,
-	finding_rhel_09_255030,
-	finding_rhel_09_255035,
-	finding_rhel_09_255040,
 	finding_rhel_09_255045,
-	finding_rhel_09_255050,
-	finding_rhel_09_255055,
-	finding_rhel_09_255060,
-	finding_rhel_09_255065,
-	finding_rhel_09_255070,
-	finding_rhel_09_255075,
 	finding_rhel_09_255080,
-	finding_rhel_09_255085,
+	finding_rhel_09_255100,
+	finding_rhel_09_255095,
+	finding_rhel_09_255160,
+	finding_rhel_09_255145,
+	finding_rhel_09_255150,
+	finding_rhel_09_255165,
+	finding_rhel_09_255155,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

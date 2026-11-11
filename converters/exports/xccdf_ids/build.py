@@ -30,6 +30,7 @@ BARE = re.compile(r"^(\d+(?:\.\d+)+)$")
 WORKBOOK_VERIFIED = (
     "benchmarks/cis/rhel_9/", "benchmarks/cis/suse_16/", "benchmarks/cis/ubuntu_26_04/",
     "benchmarks/cis/windows_server_2019_modular/", "benchmarks/cis/windows_server_2022_modular/",
+    "benchmarks/cis/windows_10_modular/", "benchmarks/cis/windows_11_modular/",
     "benchmarks/cis/gcp/", "benchmarks/cis/eks/", "benchmarks/cis/nginx/", "benchmarks/cis/mcp_server/",
     "benchmarks/cis/sql_server_2025/", "benchmarks/cis/intune_defender_antivirus/",
     "benchmarks/cis/oracle/cis_oracle_23ai.rego", "benchmarks/cis/oracle/cis_oracle_26ai.rego",

@@ -6,8 +6,8 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 11
-#     cited: 10
+#     checks: 10
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
@@ -17,7 +17,9 @@
 package stig.rhel_8.account_auth
 
 # DISA STIG for RHEL 8 - Account and Authentication Module
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 
 import rego.v1
 
@@ -27,26 +29,53 @@ default compliant := false
 # CAT I
 # =============================================================================
 
-# RHEL-08-020000 | V-230280 | CAT I - MFA must be used
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
+
+# RHEL-08-010121 | V-251706 | CAT I - No empty passwords
+default no_empty_passwords := false
+
+no_empty_passwords if not input.local_accounts_with_empty_passwords
+no_empty_passwords if count(input.local_accounts_with_empty_passwords) == 0
+
+status_rhel_08_010121 := "Not_a_Finding" if no_empty_passwords
+
+else := "Open"
+
+finding_rhel_08_010121 := {
+	"vuln_id": "V-251706",
+	"stig_id": "RHEL-08-010121",
+	"severity": "CAT I",
+	"rule_title": "The RHEL 8 operating system must not have accounts configured with blank or null passwords.",
+	"status": status_rhel_08_010121,
+	"fix_text": "Lock empty password accounts: passwd -l <username>",
+}
+
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
+
+# RHEL-08-020250 | V-230372 | CAT II - MFA must be used
 default mfa_enabled := false
 
 mfa_enabled if input.pam_config.mfa_enabled == true
 mfa_enabled if input.pam_config.sssd_mfa == true
 
-status_rhel_08_020000 := "Not_a_Finding" if mfa_enabled
+status_rhel_08_020250 := "Not_a_Finding" if mfa_enabled
 
 else := "Open"
 
-finding_rhel_08_020000 := {
-	"vuln_id": "V-230280",
-	"stig_id": "RHEL-08-020000",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must implement multifactor authentication for access to privileged accounts",
-	"status": status_rhel_08_020000,
+finding_rhel_08_020250 := {
+	"vuln_id": "V-230372",
+	"stig_id": "RHEL-08-020250",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 must implement smart card logon for multifactor authentication for access to interactive accounts.",
+	"status": status_rhel_08_020250,
 	"fix_text": "Configure MFA via SSSD with PIV/CAC",
 }
 
-# RHEL-08-020010 | V-230281 | CAT I - Accounts must lock after 3 failed attempts
+# RHEL-08-020010 | V-230332 | CAT II - Accounts must lock after 3 failed attempts
 default account_lockout := false
 
 account_lockout if {
@@ -59,75 +88,52 @@ status_rhel_08_020010 := "Not_a_Finding" if account_lockout
 else := "Open"
 
 finding_rhel_08_020010 := {
-	"vuln_id": "V-230281",
+	"vuln_id": "V-230332",
 	"stig_id": "RHEL-08-020010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must lock an account after three consecutive invalid access attempts",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur.",
 	"status": status_rhel_08_020010,
 	"fix_text": "Configure pam_faillock: deny=3 in /etc/security/faillock.conf",
 }
 
-# RHEL-08-020020 | V-230282 | CAT I - Passwords must be SHA-512
+# RHEL-08-010110 | V-230231 | CAT II - Passwords must be SHA-512
 default password_sha512 := false
 
 password_sha512 if input.password_policy.sha512 == true
 password_sha512 if input.pam_config.password_hash == "sha512"
 
-status_rhel_08_020020 := "Not_a_Finding" if password_sha512
+status_rhel_08_010110 := "Not_a_Finding" if password_sha512
 
 else := "Open"
 
-finding_rhel_08_020020 := {
-	"vuln_id": "V-230282",
-	"stig_id": "RHEL-08-020020",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must store only encrypted representations of passwords",
-	"status": status_rhel_08_020020,
+finding_rhel_08_010110 := {
+	"vuln_id": "V-230231",
+	"stig_id": "RHEL-08-010110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm.",
+	"status": status_rhel_08_010110,
 	"fix_text": "Configure SHA-512 in PAM: pam_unix.so sha512",
 }
 
-# RHEL-08-020030 | V-230283 | CAT I - No empty passwords
-default no_empty_passwords := false
-
-no_empty_passwords if not input.local_accounts_with_empty_passwords
-no_empty_passwords if count(input.local_accounts_with_empty_passwords) == 0
-
-status_rhel_08_020030 := "Not_a_Finding" if no_empty_passwords
-
-else := "Open"
-
-finding_rhel_08_020030 := {
-	"vuln_id": "V-230283",
-	"stig_id": "RHEL-08-020030",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must not have accounts configured with blank or null passwords",
-	"status": status_rhel_08_020030,
-	"fix_text": "Lock empty password accounts: passwd -l <username>",
-}
-
-# =============================================================================
-# CAT II
-# =============================================================================
-
-# RHEL-08-020040 | V-230284 | CAT II - Password minimum length 15
+# RHEL-08-020230 | V-230369 | CAT II - Password minimum length 15
 default password_minlen := false
 
 password_minlen if input.password_policy.minlen >= 15
 
-status_rhel_08_020040 := "Not_a_Finding" if password_minlen
+status_rhel_08_020230 := "Not_a_Finding" if password_minlen
 
 else := "Open"
 
-finding_rhel_08_020040 := {
-	"vuln_id": "V-230284",
-	"stig_id": "RHEL-08-020040",
+finding_rhel_08_020230 := {
+	"vuln_id": "V-230369",
+	"stig_id": "RHEL-08-020230",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 passwords must have a minimum of 15 characters",
-	"status": status_rhel_08_020040,
+	"rule_title": "RHEL 8 passwords must have a minimum of 15 characters.",
+	"status": status_rhel_08_020230,
 	"fix_text": "Set minlen=15 in /etc/security/pwquality.conf",
 }
 
-# RHEL-08-020050 | V-230285 | CAT II - Password max age 60 days
+# RHEL-08-020200 | V-230366 | CAT II - Password max age 60 days
 default password_maxage := false
 
 password_maxage if {
@@ -135,56 +141,38 @@ password_maxage if {
 	input.password_policy.maxdays > 0
 }
 
-status_rhel_08_020050 := "Not_a_Finding" if password_maxage
+status_rhel_08_020200 := "Not_a_Finding" if password_maxage
 
 else := "Open"
 
-finding_rhel_08_020050 := {
-	"vuln_id": "V-230285",
-	"stig_id": "RHEL-08-020050",
+finding_rhel_08_020200 := {
+	"vuln_id": "V-230366",
+	"stig_id": "RHEL-08-020200",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must enforce a 60-day maximum password lifetime restriction",
-	"status": status_rhel_08_020050,
+	"rule_title": "RHEL 8 user account passwords must have a 60-day maximum password lifetime restriction.",
+	"status": status_rhel_08_020200,
 	"fix_text": "Set PASS_MAX_DAYS 60 in /etc/login.defs",
 }
 
-# RHEL-08-020060 | V-230286 | CAT II - Password history (remember 5)
-default password_history := false
-
-password_history if input.password_policy.remember >= 5
-
-status_rhel_08_020060 := "Not_a_Finding" if password_history
-
-else := "Open"
-
-finding_rhel_08_020060 := {
-	"vuln_id": "V-230286",
-	"stig_id": "RHEL-08-020060",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must prohibit password reuse for a minimum of five generations",
-	"status": status_rhel_08_020060,
-	"fix_text": "Set remember=5 in PAM password configuration",
-}
-
-# RHEL-08-020070 | V-230287 | CAT II - Lockout time 15 minutes
+# RHEL-08-020012 | V-230334 | CAT II - Lockout time 15 minutes
 default lockout_duration := false
 
 lockout_duration if input.pam_config.lockout_time >= 900
 
-status_rhel_08_020070 := "Not_a_Finding" if lockout_duration
+status_rhel_08_020012 := "Not_a_Finding" if lockout_duration
 
 else := "Open"
 
-finding_rhel_08_020070 := {
-	"vuln_id": "V-230287",
-	"stig_id": "RHEL-08-020070",
+finding_rhel_08_020012 := {
+	"vuln_id": "V-230334",
+	"stig_id": "RHEL-08-020012",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must automatically lock accounts after three unsuccessful login attempts",
-	"status": status_rhel_08_020070,
+	"rule_title": "RHEL 8 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
+	"status": status_rhel_08_020012,
 	"fix_text": "Set unlock_time=900 in /etc/security/faillock.conf",
 }
 
-# RHEL-08-020080 | V-230288 | CAT II - Inactive accounts lock after 35 days
+# RHEL-08-020260 | V-230373 | CAT II - Inactive accounts lock after 35 days
 default inactive_lock := false
 
 inactive_lock if {
@@ -192,35 +180,35 @@ inactive_lock if {
 	input.password_policy.inactive_days >= 0
 }
 
-status_rhel_08_020080 := "Not_a_Finding" if inactive_lock
+status_rhel_08_020260 := "Not_a_Finding" if inactive_lock
 
 else := "Open"
 
-finding_rhel_08_020080 := {
-	"vuln_id": "V-230288",
-	"stig_id": "RHEL-08-020080",
+finding_rhel_08_020260 := {
+	"vuln_id": "V-230373",
+	"stig_id": "RHEL-08-020260",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must disable account identifiers after 35 days of inactivity",
-	"status": status_rhel_08_020080,
+	"rule_title": "RHEL 8 account identifiers (individuals, groups, roles, and devices) must be disabled after 35 days of inactivity.",
+	"status": status_rhel_08_020260,
 	"fix_text": "Set INACTIVE=35 in /etc/default/useradd",
 }
 
-# RHEL-08-020090 | V-230289 | CAT II - No duplicate UIDs
+# RHEL-08-020240 | V-230371 | CAT II - No duplicate UIDs
 default no_dup_uids := false
 
 no_dup_uids if not input.duplicate_uids
 no_dup_uids if count(input.duplicate_uids) == 0
 
-status_rhel_08_020090 := "Not_a_Finding" if no_dup_uids
+status_rhel_08_020240 := "Not_a_Finding" if no_dup_uids
 
 else := "Open"
 
-finding_rhel_08_020090 := {
-	"vuln_id": "V-230289",
-	"stig_id": "RHEL-08-020090",
+finding_rhel_08_020240 := {
+	"vuln_id": "V-230371",
+	"stig_id": "RHEL-08-020240",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must not allow duplicate UIDs",
-	"status": status_rhel_08_020090,
+	"rule_title": "RHEL 8 duplicate User IDs (UIDs) must not exist for interactive users.",
+	"status": status_rhel_08_020240,
 	"fix_text": "Resolve duplicate UIDs in /etc/passwd",
 }
 
@@ -228,23 +216,24 @@ finding_rhel_08_020090 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_rhel_08_020000,
-	finding_rhel_08_020010,
-	finding_rhel_08_020020,
-	finding_rhel_08_020030,
-]
+cat_i_findings := [finding_rhel_08_010121]
 
 cat_ii_findings := [
-	finding_rhel_08_020040,
-	finding_rhel_08_020050,
-	finding_rhel_08_020060,
-	finding_rhel_08_020070,
-	finding_rhel_08_020080,
-	finding_rhel_08_020090,
+	finding_rhel_08_020250,
+	finding_rhel_08_020010,
+	finding_rhel_08_010110,
+	finding_rhel_08_020230,
+	finding_rhel_08_020200,
+	finding_rhel_08_020012,
+	finding_rhel_08_020260,
+	finding_rhel_08_020240,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

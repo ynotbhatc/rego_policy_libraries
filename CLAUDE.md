@@ -24,13 +24,13 @@ benchmarks/                    Per-platform configuration baselines
 │   ├── windows_server_2016/   Windows, one directory per version;
 │   │   windows_server_2019_modular/  *_modular are the current ones
 │   │   windows_server_2022/ windows_server_2022_modular/
-│   │   windows_10/ windows_11/
+│   │   windows_10_modular/ windows_11_modular/
 │   ├── cloud/                 AWS / Azure / GCP foundations
 │   ├── container/             Docker / Kubernetes
 │   ├── saas/                  M365 (this is where the SaaS pattern lives)
 │   ├── network/cisco/         Network device baselines
 │   └── mobile/ios/            Mobile platforms
-├── stig/                      DISA STIGs — 19 platforms
+├── stig/                      DISA STIGs — 26 platform directories (4 sunset)
 ├── scuba/m365/                CISA SCuBA M365 baselines (104 policies, 7 products)
 ├── nsa_cisa/kubernetes/       NSA/CISA K8s Hardening Guidance v1.2 (43 controls)
 └── pss/kubernetes/            K8s Pod Security Standards (baseline + restricted)

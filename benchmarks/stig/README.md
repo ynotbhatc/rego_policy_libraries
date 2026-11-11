@@ -14,10 +14,24 @@ Per-platform STIG implementations. Every platform directory carries:
 **Rule IDs are verified against the current DISA SRG-STIG Library
 Compilation before stamping** (July 2026 library, verified 2026-09-03; the
 four Oracle platforms against the October 2026 library, verified 2026-10-13; Kubernetes V2R6 and
-RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21).
+RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21; the five Windows
+platforms against the October 2026 library, verified 2026-11-10).
 Coverage per platform is stated honestly in each aggregator header —
 implemented-of-total; the remainder is tracked follow-up, not silent absence.
 STIGs ride a quarterly release cycle — see `STANDARDS_UPDATE_REGISTRY.md`.
+
+## Windows platforms (October 2026 library, verified 2026-11-10)
+
+| Platform | STIG | Rules | How it was built |
+|---|---|---|---|
+| `windows_11` | V2R11, 30 Sep 2026 | 117 of 257 | `tools/stig_generators/gen_windows.py`: every rule whose check is one or more registry value blocks, read as DISA writes them (exact, `in {…}` for "X, Y, or Z", `<=`/`>=` bounds, "excluding 0", "or if the Value Name does not exist" as a second rule body, numeric REG_SZ by `to_number`). The remainder are non-registry checks (audit policy, user rights, services, certificates, documentation) — tracked follow-up. |
+| `windows_server_2016` | V2R10, 15 Jan 2025 | 103 of 273 | Same generator. Returned to the DISA library (it was marked sunset against the July 2026 compilation); replaces the 5-finding hand-written stub, whose ids were Server 2022's. |
+| `windows_server_2019` | V3R9, 01 Jul 2026 | 104 of 282 | Same generator; same return and same replaced stub. |
+| `windows_server_2022` | V2R11, 30 Sep 2026 | 103 of 277 | Same generator. |
+| `windows_server_2025` | V1R4, 30 Sep 2026 | 94 of 291 | Same generator. WN25-DC-000320 moved under an unchanged title: the check now reads `LDAPServerEnforceIntegrity = 1`, not `LDAPServerIntegrity = 2`. |
+
+Every generated rule's `stig_id`, `vuln_id`, severity and title come from the XCCDF; the rule
+bodies are derived, not copied. Windows 10 left the library (final V3R6) — see `SUNSET.md`.
 
 ## Oracle platforms (October 2026 library)
 
@@ -59,9 +73,10 @@ CCI has no Rev 5 mapping in the CCI list). `openshift_4` remains partial (CAT I 
 
 ## Sunset platforms (absent from the current DISA library)
 
-`windows_10`, `windows_server_2016`, `windows_server_2019`, `ubuntu_20_04` —
-see `SUNSET.md` in each directory. Content frozen for historical assessments;
-successors named per file.
+`windows_10` — removed 2026-11-10, see [`SUNSET.md`](SUNSET.md) (DISA's final release is V3R6).
+`ubuntu_20_04` — see `SUNSET.md` in its directory; content frozen for historical assessments.
+`windows_server_2016` and `windows_server_2019` were listed here against the July 2026
+compilation; the October 2026 library ships both (V2R10, V3R9) and they are generated platforms again.
 
 Observed in the October 2026 library (not yet acted on): RHEL 8 is no longer
 shipped (RHEL 10 V1R3 is); WebLogic 12c and Oracle HTTP Server have left the

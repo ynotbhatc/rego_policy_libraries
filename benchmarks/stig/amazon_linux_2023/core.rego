@@ -17,9 +17,9 @@
 package stig.amazon_linux_2023.core
 
 # DISA STIG — Amazon Linux 2023 Security Technical Implementation Guide
-# V1R4 | Release: 4 Benchmark Date: 01 Jul 2026
+# V1R5 | Release: 5 Benchmark Date: 30 Sep 2026
 # 23 rules (all CAT I + selected CAT II). Rule IDs, severities and
-# titles verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03.
+# titles verified against the October 2026 SRG-STIG library XCCDF on 2026-11-10.
 # Input contract: see gen_linux.py header / tests fixture.
 
 import rego.v1
@@ -251,7 +251,7 @@ finding_r_azlx_23_001205 := {
 	"vuln_id": "V-274042",
 	"stig_id": "AZLX-23-001205",
 	"severity": "CAT I",
-	"rule_title": "Amazon Linux 2023 server must be configured to use only DOD-approved encryption ciphers employing FIPS 140-2/140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
+	"rule_title": "Amazon Linux 2023 server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-2/140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
 	"status": status_r_azlx_23_001205,
 }
 
@@ -269,7 +269,7 @@ finding_r_azlx_23_001206 := {
 	"vuln_id": "V-283442",
 	"stig_id": "AZLX-23-001206",
 	"severity": "CAT I",
-	"rule_title": "The Amazon Linux 2023 SSH client must be configured to use only DOD-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
+	"rule_title": "The Amazon Linux 2023 SSH client must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
 	"status": status_r_azlx_23_001206,
 }
 
@@ -287,7 +287,7 @@ finding_r_azlx_23_001210 := {
 	"vuln_id": "V-274043",
 	"stig_id": "AZLX-23-001210",
 	"severity": "CAT I",
-	"rule_title": "Amazon Linux 2023 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-2/140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
+	"rule_title": "Amazon Linux 2023 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-2/140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
 	"status": status_r_azlx_23_001210,
 }
 
@@ -305,7 +305,7 @@ finding_r_azlx_23_001211 := {
 	"vuln_id": "V-283443",
 	"stig_id": "AZLX-23-001211",
 	"severity": "CAT I",
-	"rule_title": "The Amazon Linux 2023 SSH client must be configured to use only DOD-approved Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client c",
+	"rule_title": "The Amazon Linux 2023 SSH client must be configured to use only DoW-approved Message Authentication Codes (MACs) employing FIPS 140-3-validated cryptographic hash algorithms to protect the confidentiality of SSH client c",
 	"status": status_r_azlx_23_001211,
 }
 
@@ -395,7 +395,7 @@ finding_r_azlx_23_001270 := {
 	"vuln_id": "V-283452",
 	"stig_id": "AZLX-23-001270",
 	"severity": "CAT I",
-	"rule_title": "Amazon Linux 2023 must implement a FIPS 140-2/140-3 compliant systemwide cryptographic policy.",
+	"rule_title": "Amazon Linux 2023 must implement a FIPS 140-2/140-3-compliant systemwide cryptographic policy.",
 	"status": status_r_azlx_23_001270,
 }
 

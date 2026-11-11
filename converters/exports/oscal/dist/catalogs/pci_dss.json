@@ -5107,39 +5107,6 @@
        }
       ],
       "class": "compliance"
-     },
-     {
-      "id": "pci_dss-FAIL-CLOSED",
-      "title": "no report produced for pci_dss; this is not a passing result",
-      "props": [
-       {
-        "name": "label",
-        "value": "FAIL-CLOSED"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "FAIL-CLOSED"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "pci_dss.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#50c4c7c1-e81a-5abf-be38-0756b00a9627",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "pci_dss-FAIL-CLOSED_stmt",
-        "name": "statement",
-        "prose": "no report produced for pci_dss; this is not a passing result"
-       }
-      ],
-      "class": "compliance"
      }
     ]
    },

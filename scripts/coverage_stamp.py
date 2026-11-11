@@ -43,7 +43,6 @@ TOTAL_KEYS = ("standard_total", "total_controls", "controls_total", "total_recom
 # Modules legitimately below their own declared total, with the reason. Everything else below 90 % fails --check.
 KNOWN_GAPS = {
     "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
-    "benchmarks/cis/windows_11/cis_windows_11.rego": "CIS Windows 11 benchmark text is licensed; 210 of 267 recommendations implemented",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design

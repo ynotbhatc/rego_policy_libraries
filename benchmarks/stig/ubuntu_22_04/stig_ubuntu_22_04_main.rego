@@ -3,7 +3,7 @@
 # report fully non-compliant with an explicit finding, never a pass.
 
 # METADATA
-# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# title: "Ubuntu 22.04 LTS must implement NIST FIPS-validated cryptography to protect classified information and for the following: To provision digital signatures, to generate cryptographic hashes, and to protect unclassified inf — framework-key entrypoint alias (fail-closed)"
 # custom:
 #   class: security
 #   framework: stig_ubuntu_22_04
