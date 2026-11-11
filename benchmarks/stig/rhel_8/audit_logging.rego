@@ -6,18 +6,20 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 11
-#     cited: 10
+#     checks: 10
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.audit_logging
 
 # DISA STIG for RHEL 8 - Audit Logging Module
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 
 import rego.v1
 
@@ -32,191 +34,170 @@ audit_rule_exists(pattern) if {
 # CAT I
 # =============================================================================
 
-# RHEL-08-030000 | V-230400 | CAT I - auditd must be running
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
+
+# RHEL-08-030181 | V-244542 | CAT II - auditd must be running
 default auditd_active := false
 
 auditd_active if input.services.auditd == "active"
 
-status_rhel_08_030000 := "Not_a_Finding" if auditd_active
+status_rhel_08_030181 := "Not_a_Finding" if auditd_active
 
 else := "Open"
 
-finding_rhel_08_030000 := {
-	"vuln_id": "V-230400",
-	"stig_id": "RHEL-08-030000",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must have the auditd service started",
-	"status": status_rhel_08_030000,
+finding_rhel_08_030181 := {
+	"vuln_id": "V-244542",
+	"stig_id": "RHEL-08-030181",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events.",
+	"status": status_rhel_08_030181,
 	"fix_text": "systemctl enable --now auditd",
 }
 
-# RHEL-08-030010 | V-230401 | CAT I - Audit log must not be auto-overwritten
-default audit_no_overwrite := false
-
-audit_no_overwrite if {
-	input.auditd_config.max_log_file_action != "ignore"
-	input.auditd_config.max_log_file_action != "IGNORE"
-}
-
-status_rhel_08_030010 := "Not_a_Finding" if audit_no_overwrite
-
-else := "Open"
-
-finding_rhel_08_030010 := {
-	"vuln_id": "V-230401",
-	"stig_id": "RHEL-08-030010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 audit logs must not automatically be overwritten",
-	"status": status_rhel_08_030010,
-	"fix_text": "Set max_log_file_action=keep_logs in /etc/audit/auditd.conf",
-}
-
-# =============================================================================
-# CAT II
-# =============================================================================
-
-# RHEL-08-030020 | V-230402 | CAT II - Audit rules: execve b64
+# RHEL-08-030000 | V-230386 | CAT II - Audit rules: execve b64
 default audit_execve_b64 := false
 
 audit_execve_b64 if audit_rule_exists("-a always,exit -F arch=b64 -S execve")
 
-status_rhel_08_030020 := "Not_a_Finding" if audit_execve_b64
+status_rhel_08_030000 := "Not_a_Finding" if audit_execve_b64
 
 else := "Open"
 
-finding_rhel_08_030020 := {
-	"vuln_id": "V-230402",
-	"stig_id": "RHEL-08-030020",
+finding_rhel_08_030000 := {
+	"vuln_id": "V-230386",
+	"stig_id": "RHEL-08-030000",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must audit all uses of the execve syscall (b64)",
-	"status": status_rhel_08_030020,
+	"rule_title": "The RHEL 8 audit system must be configured to audit the execution of privileged functions and prevent all software from executing at higher privilege levels than users executing the software.",
+	"status": status_rhel_08_030000,
 	"fix_text": "Add audit rule: -a always,exit -F arch=b64 -S execve",
 }
 
-# RHEL-08-030030 | V-230403 | CAT II - Audit rules: chown
+# RHEL-08-030480 | V-230455 | CAT II - Audit rules: chown
 default audit_chown := false
 
 audit_chown if audit_rule_exists("-a always,exit -F arch=b64 -S chown")
 
-status_rhel_08_030030 := "Not_a_Finding" if audit_chown
+status_rhel_08_030480 := "Not_a_Finding" if audit_chown
 
 else := "Open"
 
-finding_rhel_08_030030 := {
-	"vuln_id": "V-230403",
-	"stig_id": "RHEL-08-030030",
+finding_rhel_08_030480 := {
+	"vuln_id": "V-230455",
+	"stig_id": "RHEL-08-030480",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must audit all uses of the chown syscall",
-	"status": status_rhel_08_030030,
+	"rule_title": "Successful/unsuccessful uses of the chown, fchown, fchownat, and lchown system calls in RHEL 8 must generate an audit record.",
+	"status": status_rhel_08_030480,
 	"fix_text": "Add audit rule for chown syscall",
 }
 
-# RHEL-08-030040 | V-230404 | CAT II - Audit rules: chmod
+# RHEL-08-030490 | V-230456 | CAT II - Audit rules: chmod
 default audit_chmod := false
 
 audit_chmod if audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
 
-status_rhel_08_030040 := "Not_a_Finding" if audit_chmod
+status_rhel_08_030490 := "Not_a_Finding" if audit_chmod
 
 else := "Open"
 
-finding_rhel_08_030040 := {
-	"vuln_id": "V-230404",
-	"stig_id": "RHEL-08-030040",
+finding_rhel_08_030490 := {
+	"vuln_id": "V-230456",
+	"stig_id": "RHEL-08-030490",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must audit all uses of the chmod syscall",
-	"status": status_rhel_08_030040,
+	"rule_title": "Successful/unsuccessful uses of the chmod, fchmod, and fchmodat system calls in RHEL 8 must generate an audit record.",
+	"status": status_rhel_08_030490,
 	"fix_text": "Add audit rule for chmod syscall",
 }
 
-# RHEL-08-030050 | V-230405 | CAT II - Audit rules: sudoers
+# RHEL-08-030171 | V-230409 | CAT II - Audit rules: sudoers
 default audit_sudoers := false
 
 audit_sudoers if audit_rule_exists("-w /etc/sudoers")
 
-status_rhel_08_030050 := "Not_a_Finding" if audit_sudoers
+status_rhel_08_030171 := "Not_a_Finding" if audit_sudoers
 
 else := "Open"
 
-finding_rhel_08_030050 := {
-	"vuln_id": "V-230405",
-	"stig_id": "RHEL-08-030050",
+finding_rhel_08_030171 := {
+	"vuln_id": "V-230409",
+	"stig_id": "RHEL-08-030171",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must generate audit records for sudoers file changes",
-	"status": status_rhel_08_030050,
+	"rule_title": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
+	"status": status_rhel_08_030171,
 	"fix_text": "Add: -w /etc/sudoers -p wa -k sudoers_change",
 }
 
-# RHEL-08-030060 | V-230406 | CAT II - Audit rules: /etc/passwd
+# RHEL-08-030150 | V-230406 | CAT II - Audit rules: /etc/passwd
 default audit_passwd := false
 
 audit_passwd if audit_rule_exists("-w /etc/passwd")
 
-status_rhel_08_030060 := "Not_a_Finding" if audit_passwd
+status_rhel_08_030150 := "Not_a_Finding" if audit_passwd
 
 else := "Open"
 
-finding_rhel_08_030060 := {
+finding_rhel_08_030150 := {
 	"vuln_id": "V-230406",
-	"stig_id": "RHEL-08-030060",
+	"stig_id": "RHEL-08-030150",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must audit changes to /etc/passwd",
-	"status": status_rhel_08_030060,
+	"rule_title": "RHEL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd.",
+	"status": status_rhel_08_030150,
 	"fix_text": "Add: -w /etc/passwd -p wa -k passwd_change",
 }
 
-# RHEL-08-030070 | V-230407 | CAT II - Audit rules: sudo command
+# RHEL-08-030550 | V-230462 | CAT II - Audit rules: sudo command
 default audit_sudo := false
 
 audit_sudo if audit_rule_exists("-a always,exit -F path=/usr/bin/sudo")
 
-status_rhel_08_030070 := "Not_a_Finding" if audit_sudo
+status_rhel_08_030550 := "Not_a_Finding" if audit_sudo
 
 else := "Open"
 
-finding_rhel_08_030070 := {
-	"vuln_id": "V-230407",
-	"stig_id": "RHEL-08-030070",
+finding_rhel_08_030550 := {
+	"vuln_id": "V-230462",
+	"stig_id": "RHEL-08-030550",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must audit the sudo command",
-	"status": status_rhel_08_030070,
+	"rule_title": "Successful/unsuccessful uses of the sudo command in RHEL 8 must generate an audit record.",
+	"status": status_rhel_08_030550,
 	"fix_text": "Add: -a always,exit -F path=/usr/bin/sudo -F perm=x",
 }
 
-# RHEL-08-030080 | V-230408 | CAT II - Audit rules immutable
+# RHEL-08-030121 | V-230402 | CAT II - Audit rules immutable
 default audit_immutable := false
 
 audit_immutable if audit_rule_exists("-e 2")
 
-status_rhel_08_030080 := "Not_a_Finding" if audit_immutable
+status_rhel_08_030121 := "Not_a_Finding" if audit_immutable
 
 else := "Open"
 
-finding_rhel_08_030080 := {
-	"vuln_id": "V-230408",
-	"stig_id": "RHEL-08-030080",
+finding_rhel_08_030121 := {
+	"vuln_id": "V-230402",
+	"stig_id": "RHEL-08-030121",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 audit configuration must be made immutable",
-	"status": status_rhel_08_030080,
+	"rule_title": "RHEL 8 audit system must protect auditing rules from unauthorized change.",
+	"status": status_rhel_08_030121,
 	"fix_text": "Add -e 2 as last line in /etc/audit/audit.rules",
 }
 
-# RHEL-08-030090 | V-230409 | CAT II - space_left_action must notify
+# RHEL-08-030731 | V-244543 | CAT II - space_left_action must notify
 default space_left_notify := false
 
 space_left_notify if input.auditd_config.space_left_action == "email"
 space_left_notify if input.auditd_config.space_left_action == "syslog"
 
-status_rhel_08_030090 := "Not_a_Finding" if space_left_notify
+status_rhel_08_030731 := "Not_a_Finding" if space_left_notify
 
 else := "Open"
 
-finding_rhel_08_030090 := {
-	"vuln_id": "V-230409",
-	"stig_id": "RHEL-08-030090",
+finding_rhel_08_030731 := {
+	"vuln_id": "V-244543",
+	"stig_id": "RHEL-08-030731",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 audit system must notify SA when audit storage is approaching capacity",
-	"status": status_rhel_08_030090,
+	"rule_title": "RHEL 8 must notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization.",
+	"status": status_rhel_08_030731,
 	"fix_text": "Set space_left_action=email in /etc/audit/auditd.conf",
 }
 
@@ -224,23 +205,27 @@ finding_rhel_08_030090 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_rhel_08_030000,
-	finding_rhel_08_030010,
-]
+# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
-	finding_rhel_08_030020,
-	finding_rhel_08_030030,
-	finding_rhel_08_030040,
-	finding_rhel_08_030050,
-	finding_rhel_08_030060,
-	finding_rhel_08_030070,
-	finding_rhel_08_030080,
-	finding_rhel_08_030090,
+	finding_rhel_08_030181,
+	finding_rhel_08_030000,
+	finding_rhel_08_030480,
+	finding_rhel_08_030490,
+	finding_rhel_08_030171,
+	finding_rhel_08_030150,
+	finding_rhel_08_030550,
+	finding_rhel_08_030121,
+	finding_rhel_08_030731,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings
