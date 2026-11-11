@@ -1,10 +1,10 @@
 # Rego Policy Libraries
 
-> **946 production-ready Rego policies** (2,245 including tests; **23,766 control-level checks** by `make count`, from OPA's parser; counted 2026-10-29, SAP ABAP baseline) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles, **Oracle Cloud Infrastructure** and **Oracle Database 26ai** among them), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
+> **945 production-ready Rego policies** (2,243 including tests; **23,685 control-level checks** by `make count`, from OPA's parser; counted 2026-11-11, CIS Apache HTTP Server 2.4 v2.4.0) for OPA and Enterprise OPA (EOPA), covering CIS Benchmarks (with Level 2 hardening profiles, **Oracle Cloud Infrastructure** and **Oracle Database 26ai** among them), CIS Controls v8.1, DISA STIGs, CISA SCuBA M365, NSA/CISA Kubernetes Hardening, NIST, Zero Trust (CISA ZTMM v2.0), SOC 2, PCI-DSS, ISO 27001, NERC-CIP (with full data-source reference), IEC 62443, HIPAA, FedRAMP, FBI CJIS, IRS Pub 1075, ACSC Essential Eight, APRA CPS 234, HKMA TM-G-1/TM-C-1 (Hong Kong), MAS TRM (Singapore), BNM RMiT (Malaysia), CERT-In Directions and DPDP Act (India), METI Cybersecurity Management Guidelines (Japan), UK Cyber Essentials, BSI C5, CSA CCM, CCPA/CPRA, EU AI Act, GEISA, and more — all in Rego v1 syntax, ready to load into any OPA or EOPA instance.
 >
 > Standalone and dependency-free: no orchestrator, no agent, no vendor runtime. Clone it, load it, query it.
 >
-> **The largest open library of executable compliance policy anyone can verify — 23,766 control-level checks across 183 framework catalogs — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md). Where we still trail the Secure Controls Framework on documents mapped, and the plan to close it: [docs/SCF_GAP.md](docs/SCF_GAP.md). Every entrypoint fails closed: a framework given no facts reports non-compliant with the reason, because we treat a lack of facts as non-compliance.
+> **The largest open library of executable compliance policy anyone can verify — 23,685 control-level checks across 183 framework catalogs — and the broadest regulatory coverage of any machine-readable policy library, open or closed.** The first half is a number CI recomputes on every merge (`make count`) and fails if this line drifts; the second half is the framework list below, which no other library matches. How we measured both, against every public library we could find: [docs/COMPARISON.md](docs/COMPARISON.md). Where we still trail the Secure Controls Framework on documents mapped, and the plan to close it: [docs/SCF_GAP.md](docs/SCF_GAP.md). Every entrypoint fails closed: a framework given no facts reports non-compliant with the reason, because we treat a lack of facts as non-compliance.
 > **Compared with:** Kubescape regolibrary (304 Rego rules, Kubernetes only), Kyverno policies (180), Gatekeeper library (49), trivy-checks (563), Checkov (~1,000, IaC), KICS (1,813, IaC), Prowler (1,625 cloud checks), Steampipe AWS mod (1,361), ComplianceAsCode (2,574 OS rules), Azure Policy built-ins (5,130, Azure), Secure Controls Framework (1,534 catalogue controls, not executable). **Runs unchanged in:** OPA, Enterprise OPA, Styra DAS, Conftest, Gatekeeper, Kubewarden, Trivy, KICS, Regula, Snyk IaC, Terraform Cloud, Spacelift, env0, Envoy/Istio. **Exports to:** WASM for every language SDK, signed bundles, OSCAL, SARIF, OCSF, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler (see [`converters/`](converters/)).
 >
 > **Use it in CI in sixty seconds:** [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) — pull the GHCR bundle, evaluate your facts, fail the job on non-compliance; Conftest for the IaC gates.
@@ -60,8 +60,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | CIS Windows Server 2022 v5.1.0 | `benchmarks/cis/windows_server_2022_modular/` | Full: all 408 recommendations (406 evaluated, 2 Manual by attestation), member server and domain controller, Level 1/2 and Next Generation profiles |
 | CIS Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified: a copy of the old 2022 module's numbering, not checked against the CIS Windows Server 2019 benchmark |
-| CIS Windows 10 Enterprise v5.0.0 | `benchmarks/cis/windows_10_modular/` | Full: all 501 recommendations (499 evaluated, 2 Manual by attestation), Level 1/2, BitLocker and Next Generation profiles |
-| CIS Windows 11 Enterprise v5.1.0 | `benchmarks/cis/windows_11_modular/` | Full: all 535 recommendations (533 evaluated, 2 Manual by attestation), Level 1/2 and BitLocker profiles |
+| CIS Windows 10/11 | `benchmarks/cis/windows_10/` | Full |
 | CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
 | CIS PostgreSQL | `benchmarks/cis/postgresql/` | Full |
 | Network devices — Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
@@ -155,7 +154,7 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 487 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 24 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **CIS Benchmarks + DISA STIGs** | 486 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 24 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
 | **Federal & K8s hardening baselines** | 19 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
 | **Application suite baselines** | 7 | **SAP Security Baseline Template v2.6 (ABAP)** — registry of all 355 checks SAP publishes (SAP-samples, Apache-2.0), 138 decided from host facts, projections onto the Baseline requirements, the DSAG S/4HANA audit guide and NIST CSF 2.0 |
 | **Regulatory Frameworks** | 381 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020** |
@@ -259,7 +258,7 @@ rego_policy_libraries/
 │   │   ├── debian_11/ rocky_linux_8/ rocky_linux_9/ amazon_linux_2023/
 │   │   ├── windows_server_2016/ windows_server_2019_modular/
 │   │   ├── windows_server_2022/ windows_server_2022_modular/
-│   │   ├── windows_10_modular/ windows_11_modular/
+│   │   ├── windows_10/ windows_11/
 │   │   ├── aws/ azure/ gcp/     # Cloud Foundations
 │   │   ├── docker/ kubernetes/  # Containers
 │   │   ├── eks/ aks/ gke/       # Managed Kubernetes (EKS v1.8.0, AKS v1.8.0, GKE v1.9.0)
@@ -272,7 +271,9 @@ rego_policy_libraries/
 │   │   ├── cloud/               # AWS, Azure, GCP Foundations
 │   │   ├── containers/          # Docker, Kubernetes, OpenShift
 │   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
-│   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
+│   │   ├── apache/              # Apache HTTP Server 2.4 (v2.4.0, generated)
+│   │   ├── nginx/               # NGINX (v3.1.0, generated)
+│   │   ├── web_servers/         # MySQL hardening (legacy)
 │   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
 │   ├── stig/                    # DISA STIGs — 25 platforms (Linux, Windows, K8s/RKE2/OpenShift,
 │   │                            # databases, Apache, Cisco IOS-XE, vSphere)

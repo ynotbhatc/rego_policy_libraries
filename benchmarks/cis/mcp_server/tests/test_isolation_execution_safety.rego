@@ -6,7 +6,7 @@ import rego.v1
 import data.cis_mcp_server.isolation_execution_safety
 
 # Fully compliant input: every Manual recommendation attested, every Automated one with passing evidence.
-full_input := {"cis_mcp_server": {"isolation_execution_safety": {"requirements": {"9.1": true, "9.3": true}, "evidence": {"confinement": {"working_sentinel_readable": true, "out_of_scope_sentinel_denied": true, "mac_profile_present": true, "denials_logged": true}}}}}
+full_input := {"cis_mcp_server": {"isolation_execution_safety": {"requirements": {"9.1": {"runs_non_root_unprivileged": true, "readonly_rootfs_caps_dropped_no_new_privileges": true, "seccomp_and_mac_not_disabled": true, "capability_set_minimized": true, "reachable_only_via_gateway": true}, "9.3": {"runs_as_designated_least_privilege_identity": true, "filesystem_restricted_to_documented_paths": true, "default_deny_egress_with_declared_allowlist": true, "subprocess_execution_restricted": true, "denials_demonstrated_and_logged": true}}, "evidence": {"confinement": {"working_sentinel_readable": true, "out_of_scope_sentinel_denied": true, "mac_profile_present": true, "denials_logged": true}}}}}
 
 manual_ids := ["9.1", "9.3"]
 
@@ -153,4 +153,52 @@ test_fail_9_2_no_mac_profile if {
 	some v in vs
 	contains(v, "mandatory access control")
 	not "9.2" in isolation_execution_safety.met with input as inp
+}
+
+# 9.1 has several audited components: a bare `true` is not an attestation.
+test_9_1_bare_true_rejected if {
+	inp := json.patch(full_input, [{"op": "replace", "path": "/cis_mcp_server/isolation_execution_safety/requirements/9.1", "value": true}])
+	vs := isolation_execution_safety.violation with input as inp
+	count(vs) == 1
+	some v in vs
+	contains(v, "CIS MCP 9.1:")
+	contains(v, "attest each of")
+}
+
+# 9.1: every component must be attested; one false part fails.
+test_9_1_each_part_required if {
+	every p in isolation_execution_safety._parts["9.1"] {
+		inp := json.patch(full_input, [{"op": "replace", "path": sprintf("/cis_mcp_server/isolation_execution_safety/requirements/9.1/%s", [p]), "value": false}])
+		count(isolation_execution_safety.violation) == 1 with input as inp
+		not "9.1" in isolation_execution_safety.met with input as inp
+	}
+}
+
+# 9.1: pass with every part attested.
+test_9_1_pass if {
+	"9.1" in isolation_execution_safety.met with input as full_input
+}
+
+# 9.3 has several audited components: a bare `true` is not an attestation.
+test_9_3_bare_true_rejected if {
+	inp := json.patch(full_input, [{"op": "replace", "path": "/cis_mcp_server/isolation_execution_safety/requirements/9.3", "value": true}])
+	vs := isolation_execution_safety.violation with input as inp
+	count(vs) == 1
+	some v in vs
+	contains(v, "CIS MCP 9.3:")
+	contains(v, "attest each of")
+}
+
+# 9.3: every component must be attested; one false part fails.
+test_9_3_each_part_required if {
+	every p in isolation_execution_safety._parts["9.3"] {
+		inp := json.patch(full_input, [{"op": "replace", "path": sprintf("/cis_mcp_server/isolation_execution_safety/requirements/9.3/%s", [p]), "value": false}])
+		count(isolation_execution_safety.violation) == 1 with input as inp
+		not "9.3" in isolation_execution_safety.met with input as inp
+	}
+}
+
+# 9.3: pass with every part attested.
+test_9_3_pass if {
+	"9.3" in isolation_execution_safety.met with input as full_input
 }
