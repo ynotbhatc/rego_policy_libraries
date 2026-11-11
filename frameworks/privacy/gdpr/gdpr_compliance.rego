@@ -20,26 +20,44 @@ import rego.v1
 
 # Defaults so report/details never collapse to {} on empty input
 default lawful_basis_established := false
-default consent_management := false
-default special_category_data := false
-default right_of_access := false
-default right_to_rectification := false
-default right_to_erasure := false
-default right_to_portability := false
-default right_to_object := false
-default privacy_by_design := false
-default dpia_process := false
-default dpo_requirements := false
-default records_of_processing := false
-default breach_notification := false
-default international_transfers := false
-default encryption_pseudonymisation := false
-default ongoing_confidentiality_integrity := false
-default restore_and_test := false
-default data_retention := false
-default data_minimisation := false
-default processor_agreements := false
 
+default consent_management := false
+
+default special_category_data := false
+
+default right_of_access := false
+
+default right_to_rectification := false
+
+default right_to_erasure := false
+
+default right_to_portability := false
+
+default right_to_object := false
+
+default privacy_by_design := false
+
+default dpia_process := false
+
+default dpo_requirements := false
+
+default records_of_processing := false
+
+default breach_notification := false
+
+default international_transfers := false
+
+default encryption_pseudonymisation := false
+
+default ongoing_confidentiality_integrity := false
+
+default restore_and_test := false
+
+default data_retention := false
+
+default data_minimisation := false
+
+default processor_agreements := false
 
 # GDPR - General Data Protection Regulation (EU) 2016/679
 # Technical and organizational measures for personal data protection
@@ -291,9 +309,7 @@ report := {
 		"dpo_requirements": dpo_requirements,
 		"records_of_processing": records_of_processing,
 	},
-	"incident_management": {
-		"breach_notification": breach_notification,
-	},
+	"incident_management": {"breach_notification": breach_notification},
 	"international_transfers": international_transfers,
 	"technical_measures": {
 		"encryption_pseudonymisation": encryption_pseudonymisation,

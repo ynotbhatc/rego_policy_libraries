@@ -287,7 +287,7 @@ e_1_6_4 if {
 default p_1_6_4 := false
 
 p_1_6_4 if {
-	every f in input.initial_setup.pam_motd_files { is_string(f.content); not regex.match("(?i)(\\\\[mrsv]|\\bubuntu\\b)", f.content) }
+	every f in input.initial_setup.pam_motd_files { is_string(f.content); not regex.match("(?i)(\\\\[mrsv]|\\bubuntu\\b)", f.content)}
 }
 
 violations contains "1.6.4: evidence missing — initial_setup.pam_motd_files not collected" if not e_1_6_4

@@ -20,18 +20,31 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default incident_classification_process := false
+
 default incident_handling_processes_defined := false
+
 default incident_response_plan_current := false
+
 default incident_response_plan_documented := false
+
 default incident_response_roles_defined := false
+
 default incident_response_team_trained := false
+
 default incident_response_test_documented := false
+
 default incident_response_testing_performed := false
+
 default incident_triggered_plan_updates := false
+
 default lessons_learned_incorporated := false
+
 default nerc_notification_timely := false
+
 default nerc_reporting_process_defined := false
+
 default plan_communicated_to_personnel := false
+
 default reportable_incident_identification := false
 
 # Date normaliser: ISO-8601 strings or epoch nanoseconds; anything else is
@@ -105,7 +118,7 @@ incident_classification_process if {
 # R2.1 - Review, update, and communicate the plan within 15 calendar months
 incident_response_plan_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.incident_response_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -121,7 +134,7 @@ incident_triggered_plan_updates if {
 	is_array(input.reportable_cyber_incidents)
 	every incident in input.reportable_cyber_incidents {
 		incident.plan_review_triggered == true
-		update_age_days := (date_ns(incident.plan_review_completion_date) - date_ns(incident.incident_date)) / (24 * 60 * 60 * 1000000000)
+		update_age_days := (date_ns(incident.plan_review_completion_date) - date_ns(incident.incident_date)) / (((24 * 60) * 60) * 1000000000)
 		update_age_days <= 90
 	}
 }
@@ -144,7 +157,7 @@ plan_communicated_to_personnel if {
 # (actual events or tabletop exercise count)
 incident_response_testing_performed if {
 	last_test_ns := time.parse_rfc3339_ns(input.incident_response_testing.last_test_date)
-	test_age_days := (time.now_ns() - last_test_ns) / (24 * 60 * 60 * 1000000000)
+	test_age_days := (time.now_ns() - last_test_ns) / (((24 * 60) * 60) * 1000000000)
 	test_age_days <= 455
 }
 
@@ -177,7 +190,7 @@ incident_response_team_trained if {
 
 incident_response_training_current(member) if {
 	member.training.completed == true
-	training_age_days := (time.now_ns() - date_ns(member.training.completion_date)) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - date_ns(member.training.completion_date)) / (((24 * 60) * 60) * 1000000000)
 	training_age_days <= 455 # 15 calendar months
 }
 

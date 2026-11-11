@@ -2,7 +2,6 @@ package cis_rhel8.l2_test
 
 import rego.v1
 
-
 # Regression: `sshd -T` repeats hostkey / listenaddress. Before this test the
 # module's sshd_config comprehension raised eval_conflict_error ("object keys
 # must be unique") on every real host, which the orchestrator surfaced as an
@@ -11,10 +10,10 @@ _raw := "port 22\nhostkey /etc/ssh/ssh_host_rsa_key\nhostkey /etc/ssh/ssh_host_e
 
 test_sshd_config_tolerates_repeated_directives if {
 	cfg := data.cis_rhel8.l2.sshd_config with input as {"ssh": {"sshd_config_raw": _raw}}
-	cfg["permitrootlogin"] == "no"
-	contains(cfg["hostkey"], "ssh_host_rsa_key")
-	contains(cfg["hostkey"], "ssh_host_ed25519_key")
-	count(split(cfg["listenaddress"], ",")) == 2
+	cfg.permitrootlogin == "no"
+	contains(cfg.hostkey, "ssh_host_rsa_key")
+	contains(cfg.hostkey, "ssh_host_ed25519_key")
+	count(split(cfg.listenaddress, ",")) == 2
 }
 
 test_module_evaluates_with_repeated_directives if {

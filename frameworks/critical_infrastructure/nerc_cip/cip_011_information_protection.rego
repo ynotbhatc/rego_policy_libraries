@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default bcsi_access_need_to_know := false
+
 default bcsi_access_reviewed := false
+
 default bcsi_categories_addressed := false
+
 default bcsi_electronic_access_controlled := false
+
 default bcsi_physical_access_controlled := false
+
 default bcsi_storage_protected := false
+
 default bcsi_transmission_protected := false
+
 default bes_cyber_system_information_identified := false
+
 default information_access_controls_enforced := false
+
 default information_disposal_procedures_implemented := false
+
 default information_protection_program := false
+
 default media_sanitization_verified := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -113,7 +124,7 @@ bcsi_access_need_to_know if {
 
 # Access authorization reviewed at least every 15 calendar months
 bcsi_review_current(person) if {
-	review_age_days := (time.now_ns() - date_ns(person.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - date_ns(person.last_review_date)) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -122,6 +133,7 @@ bcsi_access_reviewed if {
 	count(input.bcsi_access_list) > 0
 	violations := [person |
 		person := input.bcsi_access_list[_]
+
 		# A missing or unparseable last_review_date is not current.
 		not bcsi_review_current(person)
 	]
@@ -160,6 +172,7 @@ bcsi_physical_access_controlled if {
 bcsi_transmission_protected if {
 	violations := [transmission |
 		transmission := input.bcsi_transmissions[_]
+
 		# A transmission with no outside_esp flag is treated as outside the ESP.
 		not transmission.outside_esp == false
 		not transmission_protected(transmission)

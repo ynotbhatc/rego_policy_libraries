@@ -229,9 +229,7 @@ compliance_report := {
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
-	"evidence_strength": {
-		"6.1.2": sprintf("sampled -- %v of at most %v mailboxes inspected; the control is about configuration, but a clean result does not prove every mailbox", [mailboxes_sampled, mailbox_sample_limit]),
-	},
+	"evidence_strength": {"6.1.2": sprintf("sampled -- %v of at most %v mailboxes inspected; the control is about configuration, but a clean result does not prove every mailbox", [mailboxes_sampled, mailbox_sample_limit])},
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

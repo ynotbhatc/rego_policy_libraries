@@ -109,7 +109,6 @@ violation contains msg if {
 	msg := "CIS 2.1.8: verified-domain facts not collected -- SPF, DKIM and DMARC controls could not be evaluated (this is not a pass)"
 }
 
-
 # ── Defender policy controls (Exchange Online PowerShell) ─────────────
 
 default defender_unavailable := {}

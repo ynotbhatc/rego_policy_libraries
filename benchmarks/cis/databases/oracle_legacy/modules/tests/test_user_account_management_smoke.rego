@@ -20,4 +20,3 @@ test_user_account_management_fail_closed_on_empty_input if {
 	report := data.cis_oracle.user_account_management.report with input as {}
 	not object.get(report, "compliant", false) == true
 }
-

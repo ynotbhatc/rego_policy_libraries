@@ -20,15 +20,25 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default access_attempt_logging := false
+
 default all_applicable_systems_in_esp := false
+
 default deny_by_default_implemented := false
+
 default electronic_access_points_controlled := false
+
 default electronic_security_perimeters_documented := false
+
 default esp_monitoring_enabled := false
+
 default remote_access_authentication_implemented := false
+
 default remote_access_encrypted := false
+
 default remote_access_monitored := false
+
 default remote_access_session_timeout := false
+
 default unused_ports_disabled := false
 
 # CIP-005-7: Electronic Security Perimeters
@@ -102,6 +112,7 @@ deny_by_default_implemented if {
 # R1.5 - Physical I/O ports not used must be disabled or protected
 unused_ports_disabled if {
 	is_array(input.bes_cyber_systems)
+
 	# Judge only high/medium systems: an out-of-scope (low impact) system must not
 	# make the whole requirement false.
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {

@@ -28,8 +28,8 @@ package cis.rhel_10.main
 # unrelated benchmarks, where partial rules such as `violations` silently
 # merged across all of them. It now owns `cis.rhel_10`.
 
-import rego.v1
 import data.cis.rhel_10 as bench
+import rego.v1
 
 default _compliant := false
 

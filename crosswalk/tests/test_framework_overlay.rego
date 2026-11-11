@@ -37,13 +37,10 @@ findings := [
 	{"stig_id": "RULE-C", "status": "Not_a_Finding"},
 ]
 
-_with := {
-	"input": {"findings": findings},
-}
+_with := {"input": {"findings": findings}}
 
 test_authoritative_framework_scored if {
-	cov := framework_overlay.coverage["demo_authoritative"]
-		with input as {"findings": findings}
+	cov := framework_overlay.coverage.demo_authoritative with input as {"findings": findings}
 		with data.crosswalk.stig_800_53.map as sample_stig_map
 		with data.crosswalk.framework_maps.maps as sample_fw_maps
 	cov.satisfied == ["REQ-1"]
@@ -54,18 +51,16 @@ test_authoritative_framework_scored if {
 }
 
 test_pending_framework_never_scored if {
-	s := framework_overlay.summary
-		with input as {"findings": findings}
+	s := framework_overlay.summary with input as {"findings": findings}
 		with data.crosswalk.stig_800_53.map as sample_stig_map
 		with data.crosswalk.framework_maps.maps as sample_fw_maps
 	s.frameworks_reported == ["demo_authoritative"]
 	s.frameworks_pending == ["demo_pending"]
-	not s.coverage["demo_pending"]
+	not s.coverage.demo_pending
 }
 
 test_no_framework_maps_is_safe if {
-	s := framework_overlay.summary
-		with input as {"findings": findings}
+	s := framework_overlay.summary with input as {"findings": findings}
 		with data.crosswalk.stig_800_53.map as sample_stig_map
 		with data.crosswalk.framework_maps.maps as {}
 	s.frameworks_reported == []

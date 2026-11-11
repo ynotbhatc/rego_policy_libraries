@@ -255,7 +255,7 @@ p_5_4_1_1 if {
 	v := num(input.pam.pass_max_days)
 	v >= 1
 	v <= 365
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { u.max_days >= 1; u.max_days <= 365 }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { u.max_days >= 1; u.max_days <= 365}
 }
 
 violations contains "5.4.1.1: evidence missing — pam.pass_max_days/user_group.shadow_entries not collected" if not e_5_4_1_1
@@ -337,7 +337,7 @@ p_5_4_1_5 if {
 	v := num(input.pam.inactive_days)
 	v >= 0
 	v <= 45
-	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { u.inactive >= 0; u.inactive <= 45 }
+	every u in [u | some u in input.user_group.shadow_entries; u.has_password == true] { u.inactive >= 0; u.inactive <= 45}
 }
 
 violations contains "5.4.1.5: evidence missing — pam.inactive_days/user_group.shadow_entries not collected" if not e_5_4_1_5
@@ -470,7 +470,7 @@ default p_5_4_2_5 := false
 
 p_5_4_2_5 if {
 	root_path_text_ok
-	every d in input.user_group.root_path_entries { d.is_dir == true; d.owner == "root"; mode_within(d.mode, "0755") }
+	every d in input.user_group.root_path_entries { d.is_dir == true; d.owner == "root"; mode_within(d.mode, "0755")}
 }
 
 violations contains "5.4.2.5: evidence missing — user_group.root_path/root_path_entries not collected" if not e_5_4_2_5

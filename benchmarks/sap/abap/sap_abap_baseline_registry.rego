@@ -32,9 +32,9 @@ source_commit := "888f3c53fddfb04ad9e9be8aa773898c5cfd98de"
 checks := object.union_n(_by_requirement)
 
 _by_requirement := [
-	{ # CHANGE-A: Protect Production System against changes – ABAP
+	{
 		"CHANGE-A_a.1": {
-			"id": "CHANGE-A_a.1",
+			"id": "CHANGE-A_a.1", # CHANGE-A: Protect Production System against changes – ABAP
 			"requirement": "CHANGE-A",
 			"requirement_title": "Protect Production System against changes – ABAP",
 			"level": "critical",
@@ -73,9 +73,9 @@ _by_requirement := [
 			"stores": ["CLIENTS"],
 		},
 	},
-	{ # CRITAU-A: 1-CRITICAL Authorizations – ABAP
+	{
 		"CRITAU-A_a.1": {
-			"id": "CRITAU-A_a.1",
+			"id": "CRITAU-A_a.1", # CRITAU-A: 1-CRITICAL Authorizations – ABAP
 			"requirement": "CRITAU-A",
 			"requirement_title": "1-CRITICAL Authorizations – ABAP",
 			"level": "critical",
@@ -842,9 +842,9 @@ _by_requirement := [
 			"stores": ["USER_AUTH_COMB"],
 		},
 	},
-	{ # MSGSRV-A: Message Server Security
+	{
 		"MSGSRV-A_d.1": {
-			"id": "MSGSRV-A_d.1",
+			"id": "MSGSRV-A_d.1", # MSGSRV-A: Message Server Security
 			"requirement": "MSGSRV-A",
 			"requirement_title": "Message Server Security",
 			"level": "critical",
@@ -883,24 +883,22 @@ _by_requirement := [
 			"stores": ["MS_SECINFO"],
 		},
 	},
-	{ # NETENC-A: Encryption of Network Connections – ABAP
-		"NETENC-A_e": {
-			"id": "NETENC-A_e",
-			"requirement": "NETENC-A",
-			"requirement_title": "Encryption of Network Connections – ABAP",
-			"level": "critical",
-			"severity": "critical",
-			"text": "Profile parameter: system/secure_communication = ON ≥ 7.40 (see SAP Notes 2040644, 2362078)",
-			"assessable": true,
-			"basis": "profile_parameter",
-			"parameter": "system/secure_communication",
-			"reason": null,
-			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
-		},
-	},
-	{ # PWDPOL-A: Password Policy – ABAP
+	{"NETENC-A_e": {
+		"id": "NETENC-A_e", # NETENC-A: Encryption of Network Connections – ABAP
+		"requirement": "NETENC-A",
+		"requirement_title": "Encryption of Network Connections – ABAP",
+		"level": "critical",
+		"severity": "critical",
+		"text": "Profile parameter: system/secure_communication = ON ≥ 7.40 (see SAP Notes 2040644, 2362078)",
+		"assessable": true,
+		"basis": "profile_parameter",
+		"parameter": "system/secure_communication",
+		"reason": null,
+		"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
+	}},
+	{
 		"PWDPOL-A_a.1": {
-			"id": "PWDPOL-A_a.1",
+			"id": "PWDPOL-A_a.1", # PWDPOL-A: Password Policy – ABAP
 			"requirement": "PWDPOL-A",
 			"requirement_title": "Password Policy – ABAP",
 			"level": "critical",
@@ -965,9 +963,9 @@ _by_requirement := [
 			"stores": ["AUTH_SECURITY_POLICY"],
 		},
 	},
-	{ # RFCGW-A: RFC Gateway Security (part of application server ABAP)
+	{
 		"RFCGW-A_a secinfo.1": {
-			"id": "RFCGW-A_a secinfo.1",
+			"id": "RFCGW-A_a secinfo.1", # RFCGW-A: RFC Gateway Security (part of application server ABAP)
 			"requirement": "RFCGW-A",
 			"requirement_title": "RFC Gateway Security (part of application server ABAP)",
 			"level": "critical",
@@ -1110,9 +1108,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # SECUPD-A: Regular Security Updates – ABAP
+	{
 		"SECUPD-A_a.1": {
-			"id": "SECUPD-A_a.1",
+			"id": "SECUPD-A_a.1", # SECUPD-A: Regular Security Updates – ABAP
 			"requirement": "SECUPD-A",
 			"requirement_title": "Regular Security Updates – ABAP",
 			"level": "critical",
@@ -1177,9 +1175,9 @@ _by_requirement := [
 			"stores": ["CRYPTOLIB"],
 		},
 	},
-	{ # STDUSR-A: STANDARD Users in ABAP
+	{
 		"STDUSR-A_a.6": {
-			"id": "STDUSR-A_a.6",
+			"id": "STDUSR-A_a.6", # STDUSR-A: STANDARD Users in ABAP
 			"requirement": "STDUSR-A",
 			"requirement_title": "STANDARD Users in ABAP",
 			"level": "critical",
@@ -1452,9 +1450,9 @@ _by_requirement := [
 			"stores": ["AUTH_PROFILE_USER"],
 		},
 	},
-	{ # TRUST-A: Trusting relations and trusted destinations – ABAP
+	{
 		"TRUST-A_c": {
-			"id": "TRUST-A_c",
+			"id": "TRUST-A_c", # TRUST-A: Trusting relations and trusted destinations – ABAP
 			"requirement": "TRUST-A",
 			"requirement_title": "Trusting relations and trusted destinations – ABAP",
 			"level": "critical",
@@ -1493,9 +1491,9 @@ _by_requirement := [
 			"stores": ["USER_AUTH_COMB"],
 		},
 	},
-	{ # AUDIT-A: Audit Settings – ABAP
+	{
 		"AUDIT-A_a.1": {
-			"id": "AUDIT-A_a.1",
+			"id": "AUDIT-A_a.1", # AUDIT-A: Audit Settings – ABAP
 			"requirement": "AUDIT-A",
 			"requirement_title": "Audit Settings – ABAP",
 			"level": "standard",
@@ -1950,9 +1948,9 @@ _by_requirement := [
 			"stores": ["AUDIT_CONFIGURATION_SLOT"],
 		},
 	},
-	{ # AUTHASSIGN-A: Assignment of Authorizations – ABAP
+	{
 		"AUTHASSIGN-A_a": {
-			"id": "AUTHASSIGN-A_a",
+			"id": "AUTHASSIGN-A_a", # AUTHASSIGN-A: Assignment of Authorizations – ABAP
 			"requirement": "AUTHASSIGN-A",
 			"requirement_title": "Assignment of Authorizations – ABAP",
 			"level": "standard",
@@ -1978,9 +1976,9 @@ _by_requirement := [
 			"stores": ["PRGN_CUST"],
 		},
 	},
-	{ # CHANGE-A: Protect Production System against changes – ABAP
+	{
 		"CHANGE-A_c.1": {
-			"id": "CHANGE-A_c.1",
+			"id": "CHANGE-A_c.1", # CHANGE-A: Protect Production System against changes – ABAP
 			"requirement": "CHANGE-A",
 			"requirement_title": "Protect Production System against changes – ABAP",
 			"level": "standard",
@@ -2058,9 +2056,9 @@ _by_requirement := [
 			"stores": ["TRANSPORT_TOOL"],
 		},
 	},
-	{ # CRITAU-A: Critical Authorizations – ABAP
+	{
 		"CRITAU-A_d.1.1": {
-			"id": "CRITAU-A_d.1.1",
+			"id": "CRITAU-A_d.1.1", # CRITAU-A: Critical Authorizations – ABAP
 			"requirement": "CRITAU-A",
 			"requirement_title": "Critical Authorizations – ABAP",
 			"level": "standard",
@@ -2151,9 +2149,9 @@ _by_requirement := [
 			"stores": ["USER_AUTH_COMB"],
 		},
 	},
-	{ # DISCL-A: Information Disclosure – ABAP
+	{
 		"DISCL-A_a": {
-			"id": "DISCL-A_a",
+			"id": "DISCL-A_a", # DISCL-A: Information Disclosure – ABAP
 			"requirement": "DISCL-A",
 			"requirement_title": "Information Disclosure – ABAP",
 			"level": "standard",
@@ -2322,9 +2320,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # FILE-A: Directory Traversal Protection – ABAP
+	{
 		"FILE-A_a.1": {
-			"id": "FILE-A_a.1",
+			"id": "FILE-A_a.1", # FILE-A: Directory Traversal Protection – ABAP
 			"requirement": "FILE-A",
 			"requirement_title": "Directory Traversal Protection – ABAP",
 			"level": "standard",
@@ -2363,9 +2361,9 @@ _by_requirement := [
 			"stores": ["FILECMCUST"],
 		},
 	},
-	{ # MSGSRV-A: Message Server Security
+	{
 		"MSGSRV-A_a": {
-			"id": "MSGSRV-A_a",
+			"id": "MSGSRV-A_a", # MSGSRV-A: Message Server Security
 			"requirement": "MSGSRV-A",
 			"requirement_title": "Message Server Security",
 			"level": "standard",
@@ -2404,9 +2402,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # NETCF-A: Secure Network Configuration – ABAP
+	{
 		"NETCF-A_a": {
-			"id": "NETCF-A_a",
+			"id": "NETCF-A_a", # NETCF-A: Secure Network Configuration – ABAP
 			"requirement": "NETCF-A",
 			"requirement_title": "Secure Network Configuration – ABAP",
 			"level": "standard",
@@ -2939,9 +2937,9 @@ _by_requirement := [
 			"stores": ["ABAP_UCON_HTTP_WHITE_LIST"],
 		},
 	},
-	{ # NETENC-A: Encryption of Network Connections – ABAP
+	{
 		"NETENC-A_a": {
-			"id": "NETENC-A_a",
+			"id": "NETENC-A_a", # NETENC-A: Encryption of Network Connections – ABAP
 			"requirement": "NETENC-A",
 			"requirement_title": "Encryption of Network Connections – ABAP",
 			"level": "standard",
@@ -3032,9 +3030,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # OBSCNT-A: Obsolete Clients in ABAP
+	{
 		"OBSCNT-A_a.1": {
-			"id": "OBSCNT-A_a.1",
+			"id": "OBSCNT-A_a.1", # OBSCNT-A: Obsolete Clients in ABAP
 			"requirement": "OBSCNT-A",
 			"requirement_title": "Obsolete Clients in ABAP",
 			"level": "standard",
@@ -3060,9 +3058,9 @@ _by_requirement := [
 			"stores": ["CLIENTS"],
 		},
 	},
-	{ # PWDPOL-A: Password Policy – ABAP
+	{
 		"PWDPOL-A_e.1": {
-			"id": "PWDPOL-A_e.1",
+			"id": "PWDPOL-A_e.1", # PWDPOL-A: Password Policy – ABAP
 			"requirement": "PWDPOL-A",
 			"requirement_title": "Password Policy – ABAP",
 			"level": "standard",
@@ -3335,9 +3333,9 @@ _by_requirement := [
 			"stores": ["USER_PASSWD_HASH_USAGE"],
 		},
 	},
-	{ # SSO-A: Single Sign-On – ABAP
+	{
 		"SSO-A_a": {
-			"id": "SSO-A_a",
+			"id": "SSO-A_a", # SSO-A: Single Sign-On – ABAP
 			"requirement": "SSO-A",
 			"requirement_title": "Single Sign-On – ABAP",
 			"level": "standard",
@@ -3389,24 +3387,22 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # TRUST-A: Trusting relations and trusted destinations – ABAP
-		"TRUST-A_f": {
-			"id": "TRUST-A_f",
-			"requirement": "TRUST-A",
-			"requirement_title": "Trusting relations and trusted destinations – ABAP",
-			"level": "standard",
-			"severity": "high",
-			"text": "Profile parameter: rfc/selftrust = 0 (block implicit self-trust, see Notes 2449757, 2614667)",
-			"assessable": true,
-			"basis": "profile_parameter",
-			"parameter": "rfc/selftrust",
-			"reason": null,
-			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
-		},
-	},
-	{ # USRCHAR-A: Allowed character sets for user names in ABAP
+	{"TRUST-A_f": {
+		"id": "TRUST-A_f", # TRUST-A: Trusting relations and trusted destinations – ABAP
+		"requirement": "TRUST-A",
+		"requirement_title": "Trusting relations and trusted destinations – ABAP",
+		"level": "standard",
+		"severity": "high",
+		"text": "Profile parameter: rfc/selftrust = 0 (block implicit self-trust, see Notes 2449757, 2614667)",
+		"assessable": true,
+		"basis": "profile_parameter",
+		"parameter": "rfc/selftrust",
+		"reason": null,
+		"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
+	}},
+	{
 		"USRCHAR-A_a.1": {
-			"id": "USRCHAR-A_a.1",
+			"id": "USRCHAR-A_a.1", # USRCHAR-A: Allowed character sets for user names in ABAP
 			"requirement": "USRCHAR-A",
 			"requirement_title": "Allowed character sets for user names in ABAP",
 			"level": "standard",
@@ -3432,9 +3428,9 @@ _by_requirement := [
 			"stores": ["PRGN_CUST"],
 		},
 	},
-	{ # USRCTR-A: User Control of Action – ABAP
+	{
 		"USRCTR-A_a.1": {
-			"id": "USRCTR-A_a.1",
+			"id": "USRCTR-A_a.1", # USRCTR-A: User Control of Action – ABAP
 			"requirement": "USRCTR-A",
 			"requirement_title": "User Control of Action – ABAP",
 			"level": "standard",
@@ -3616,24 +3612,22 @@ _by_requirement := [
 			"stores": ["ABAP_SACF_INFO"],
 		},
 	},
-	{ # USRTYP-A: User types of reference users in ABAP
-		"USRTYP-A_a": {
-			"id": "USRTYP-A_a",
-			"requirement": "USRTYP-A",
-			"requirement_title": "User types of reference users in ABAP",
-			"level": "standard",
-			"severity": "high",
-			"text": "User types of reference users in ABAP (restricted to L reference-type users via customizing switch REF_USER_CHECK = E in table PRGN_CUST)",
-			"assessable": false,
-			"basis": null,
-			"parameter": null,
-			"reason": "needs runtime data (store PRGN_CUST): RFC or database access, v2 scope",
-			"stores": ["PRGN_CUST"],
-		},
-	},
-	{ # CHANGE-A: Protect Production System against changes – ABAP
+	{"USRTYP-A_a": {
+		"id": "USRTYP-A_a", # USRTYP-A: User types of reference users in ABAP
+		"requirement": "USRTYP-A",
+		"requirement_title": "User types of reference users in ABAP",
+		"level": "standard",
+		"severity": "high",
+		"text": "User types of reference users in ABAP (restricted to L reference-type users via customizing switch REF_USER_CHECK = E in table PRGN_CUST)",
+		"assessable": false,
+		"basis": null,
+		"parameter": null,
+		"reason": "needs runtime data (store PRGN_CUST): RFC or database access, v2 scope",
+		"stores": ["PRGN_CUST"],
+	}},
+	{
 		"CHANGE-A_d.1": {
-			"id": "CHANGE-A_d.1",
+			"id": "CHANGE-A_d.1", # CHANGE-A: Protect Production System against changes – ABAP
 			"requirement": "CHANGE-A",
 			"requirement_title": "Protect Production System against changes – ABAP",
 			"level": "extended",
@@ -3737,9 +3731,9 @@ _by_requirement := [
 			"stores": ["SAP_KERNEL"],
 		},
 	},
-	{ # FILE-A: Directory Traversal Protection – ABAP
+	{
 		"FILE-A_d.001": {
-			"id": "FILE-A_d.001",
+			"id": "FILE-A_d.001", # FILE-A: Directory Traversal Protection – ABAP
 			"requirement": "FILE-A",
 			"requirement_title": "Directory Traversal Protection – ABAP",
 			"level": "extended",
@@ -3882,9 +3876,9 @@ _by_requirement := [
 			"stores": ["USER_AUTH_COMB"],
 		},
 	},
-	{ # MSGSRV-A: Message Server Security
+	{
 		"MSGSRV-A_d.3": {
-			"id": "MSGSRV-A_d.3",
+			"id": "MSGSRV-A_d.3", # MSGSRV-A: Message Server Security
 			"requirement": "MSGSRV-A",
 			"requirement_title": "Message Server Security",
 			"level": "extended",
@@ -3910,9 +3904,9 @@ _by_requirement := [
 			"stores": ["MS_SECINFO"],
 		},
 	},
-	{ # NETENC-A: Encryption of Network Connections – ABAP
+	{
 		"NETENC-A_c.1": {
-			"id": "NETENC-A_c.1",
+			"id": "NETENC-A_c.1", # NETENC-A: Encryption of Network Connections – ABAP
 			"requirement": "NETENC-A",
 			"requirement_title": "Encryption of Network Connections – ABAP",
 			"level": "extended",
@@ -4029,9 +4023,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # PWDPOL-A: Password Policy – ABAP
+	{
 		"PWDPOL-A_c.1a": {
-			"id": "PWDPOL-A_c.1a",
+			"id": "PWDPOL-A_c.1a", # PWDPOL-A: Password Policy – ABAP
 			"requirement": "PWDPOL-A",
 			"requirement_title": "Password Policy – ABAP",
 			"level": "extended",
@@ -4434,9 +4428,9 @@ _by_requirement := [
 			"stores": ["AUTH_SECURITY_POLICY"],
 		},
 	},
-	{ # RFCGW-A: RFC Gateway Security (part of application server ABAP)
+	{
 		"RFCGW-A_g": {
-			"id": "RFCGW-A_g",
+			"id": "RFCGW-A_g", # RFCGW-A: RFC Gateway Security (part of application server ABAP)
 			"requirement": "RFCGW-A",
 			"requirement_title": "RFC Gateway Security (part of application server ABAP)",
 			"level": "extended",
@@ -4501,9 +4495,9 @@ _by_requirement := [
 			"stores": ["GW_PRXINFO"],
 		},
 	},
-	{ # SCRIPT-A: Scripting Protection – ABAP
+	{
 		"SCRIPT-A_a.1": {
-			"id": "SCRIPT-A_a.1",
+			"id": "SCRIPT-A_a.1", # SCRIPT-A: Scripting Protection – ABAP
 			"requirement": "SCRIPT-A",
 			"requirement_title": "Scripting Protection – ABAP",
 			"level": "extended",
@@ -4594,9 +4588,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # SECSTO-A: Protection of Secure Store – ABAP
+	{
 		"SECSTO-A_a.1": {
-			"id": "SECSTO-A_a.1",
+			"id": "SECSTO-A_a.1", # SECSTO-A: Protection of Secure Store – ABAP
 			"requirement": "SECSTO-A",
 			"requirement_title": "Protection of Secure Store – ABAP",
 			"level": "extended",
@@ -4622,9 +4616,9 @@ _by_requirement := [
 			"stores": ["ABAP_INSTANCE_PAHI", "Parameters"],
 		},
 	},
-	{ # TRUST-A: Trusting relations and trusted destinations – ABAP
+	{
 		"TRUST-A_d.1": {
-			"id": "TRUST-A_d.1",
+			"id": "TRUST-A_d.1", # TRUST-A: Trusting relations and trusted destinations – ABAP
 			"requirement": "TRUST-A",
 			"requirement_title": "Trusting relations and trusted destinations – ABAP",
 			"level": "extended",

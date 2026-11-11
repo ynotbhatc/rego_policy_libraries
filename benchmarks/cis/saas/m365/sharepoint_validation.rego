@@ -26,79 +26,76 @@ import rego.v1
 
 default compliant := false
 
-
 control_implemented(control_id) if {
-    input.controls_by_id[control_id] == "Implemented"
+	input.controls_by_id[control_id] == "Implemented"
 }
-
 
 # 6.1.1 — legacy auth disabled
 violation_6_1_1 contains msg if {
-    not control_implemented("SharePointLegacyAuthDisabled")
-    msg := "CIS 6.1.1: legacy authentication protocols enabled for SharePoint; modern-auth-only policy not enforced"
+	not control_implemented("SharePointLegacyAuthDisabled")
+	msg := "CIS 6.1.1: legacy authentication protocols enabled for SharePoint; modern-auth-only policy not enforced"
 }
 
 # Secondary check from /admin/sharepoint/settings (richer signal)
 violation_6_1_1 contains msg if {
-    input.settings_reachable
-    input.legacy_auth_protocols_enabled == true
-    msg := "CIS 6.1.1: legacyAuthProtocolsEnabled=true at the tenant level"
+	input.settings_reachable
+	input.legacy_auth_protocols_enabled == true
+	msg := "CIS 6.1.1: legacyAuthProtocolsEnabled=true at the tenant level"
 }
 
 # 6.1.2 — external sharing scope
 violation_6_1_2 contains msg if {
-    not control_implemented("SharePointExternalSharing")
-    msg := "CIS 6.1.2: external sharing not restricted; default is most-permissive"
+	not control_implemented("SharePointExternalSharing")
+	msg := "CIS 6.1.2: external sharing not restricted; default is most-permissive"
 }
 
 # Stricter check: sharingCapability should be "ExternalUserAndGuestSharing"
 # or stricter (NOT "ExistingExternalUserSharingOnly" alone, NOT
 # "Disabled" unless that's the goal).
 violation_6_1_2 contains msg if {
-    input.settings_reachable
-    input.sharing_capability == "ExternalUserAndGuestSharing"
-    msg := "CIS 6.1.2: sharingCapability=ExternalUserAndGuestSharing is the most-permissive setting; restrict to ExistingExternalUserSharingOnly or Disabled"
+	input.settings_reachable
+	input.sharing_capability == "ExternalUserAndGuestSharing"
+	msg := "CIS 6.1.2: sharingCapability=ExternalUserAndGuestSharing is the most-permissive setting; restrict to ExistingExternalUserSharingOnly or Disabled"
 }
 
 # 6.2.1 — guest reshare
 violation_6_2_1 contains msg if {
-    not control_implemented("SharePointGuestSharing")
-    msg := "CIS 6.2.1: guest users not restricted from resharing"
+	not control_implemented("SharePointGuestSharing")
+	msg := "CIS 6.2.1: guest users not restricted from resharing"
 }
 
 # 6.3.1 — re-auth for shared links
 violation_6_3_1 contains msg if {
-    not control_implemented("SharePointLinkReauth")
-    msg := "CIS 6.3.1: re-authentication for shared links not enforced"
+	not control_implemented("SharePointLinkReauth")
+	msg := "CIS 6.3.1: re-authentication for shared links not enforced"
 }
 
 # 6.4.1 — default link type not anyone
 violation_6_4_1 contains msg if {
-    not control_implemented("SharePointDefaultLinkType")
-    msg := "CIS 6.4.1: default shared link type isn't 'specific people' or 'organization-only'"
+	not control_implemented("SharePointDefaultLinkType")
+	msg := "CIS 6.4.1: default shared link type isn't 'specific people' or 'organization-only'"
 }
 
 # Stricter check from settings
 violation_6_4_1 contains msg if {
-    input.settings_reachable
-    input.default_sharing_link_type == "AnonymousAccess"
-    msg := "CIS 6.4.1: defaultSharingLinkType=AnonymousAccess; new links create world-readable URLs by default"
+	input.settings_reachable
+	input.default_sharing_link_type == "AnonymousAccess"
+	msg := "CIS 6.4.1: defaultSharingLinkType=AnonymousAccess; new links create world-readable URLs by default"
 }
 
+violations contains v if some v in violation_6_1_1
+violations contains v if some v in violation_6_1_2
+violations contains v if some v in violation_6_2_1
+violations contains v if some v in violation_6_3_1
+violations contains v if some v in violation_6_4_1
 
-violations contains v if { some v in violation_6_1_1 }
-violations contains v if { some v in violation_6_1_2 }
-violations contains v if { some v in violation_6_2_1 }
-violations contains v if { some v in violation_6_3_1 }
-violations contains v if { some v in violation_6_4_1 }
-
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
-    "section": "6",
-    "name": "Microsoft SharePoint",
-    "controls_evaluated": 5,
-    "violations": violations,
-    "violation_count": count(violations),
-    "compliant": compliant,
+	"section": "6",
+	"name": "Microsoft SharePoint",
+	"controls_evaluated": 5,
+	"violations": violations,
+	"violation_count": count(violations),
+	"compliant": compliant,
 }

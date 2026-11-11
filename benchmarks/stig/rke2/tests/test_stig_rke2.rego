@@ -8,240 +8,226 @@ import data.stig.rke2
 # collected evidence) one evidence-missing test per rule, plus empty-input fail-closed tests.
 
 green_fixture := {
-		"rke2": {
-			"args": {
-				"kube_apiserver": {
-					"tls-min-version": "VersionTLS12",
-					"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-					"audit-policy-file": "/etc/rancher/rke2/audit-policy.yaml",
-					"audit-log-mode": "blocking-strict",
-					"anonymous-auth": "false",
-					"audit-log-maxage": "30",
-					"authorization-mode": "Node,RBAC"
-				},
-				"kube_controller_manager": {
-					"tls-min-version": "VersionTLS12",
-					"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-					"use-service-account-credentials": "true",
-					"bind-address": "127.0.0.1"
-				},
-				"kube_scheduler": {
-					"tls-min-version": "VersionTLS12",
-					"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"
-				},
-				"kubelet": {
-					"anonymous-auth": "false",
-					"read-only-port": "0",
-					"authorization-mode": "Webhook",
-					"streaming-connection-idle-timeout": "5m",
-					"protect-kernel-defaults": "true"
-				}
+	"rke2": {
+		"args": {
+			"kube_apiserver": {
+				"tls-min-version": "VersionTLS12",
+				"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+				"audit-policy-file": "/etc/rancher/rke2/audit-policy.yaml",
+				"audit-log-mode": "blocking-strict",
+				"anonymous-auth": "false",
+				"audit-log-maxage": "30",
+				"authorization-mode": "Node,RBAC",
 			},
-			"config": {
-				"profile": "cis",
-				"write-kubeconfig-mode": "0600",
-				"pod-security-admission-config-file": "/etc/rancher/rke2/rke2-pss.yaml"
+			"kube_controller_manager": {
+				"tls-min-version": "VersionTLS12",
+				"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+				"use-service-account-credentials": "true",
+				"bind-address": "127.0.0.1",
 			},
-			"audit_policy": {
-				"apiVersion": "audit.k8s.io/v1",
-				"kind": "Policy",
-				"metadata": {
-					"name": "rke2-audit-policy"
-				},
-				"rules": [
-					{
-						"level": "Metadata",
-						"resources": [
-							{
-								"group": "",
-								"resources": [
-									"secrets"
-								]
-							}
-						]
-					},
-					{
-						"level": "RequestResponse",
-						"resources": [
-							{
-								"group": "",
-								"resources": [
-									"*"
-								]
-							}
-						]
-					}
-				]
+			"kube_scheduler": {
+				"tls-min-version": "VersionTLS12",
+				"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
 			},
-			"files": {
-				"etc": [
-					{
-						"name": "config.yaml",
-						"mode": "0600",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "rke2-pss.yaml",
-						"mode": "0600",
-						"owner": "root",
-						"group": "root"
-					}
-				],
-				"root": [
-					{
-						"name": "agent",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "bin",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "data",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "server",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					}
-				],
-				"agent": [
-					{
-						"name": "kubelet.kubeconfig",
-						"mode": "0640",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "client-ca.crt",
-						"mode": "0600",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "client-kubelet.key",
-						"mode": "0600",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "pod-manifests",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "etc",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					}
-				],
-				"bin": [
-					{
-						"name": "kubectl",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "containerd",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					}
-				],
-				"data": [
-					{
-						"name": "v1.30.2-rke2r1-a1b2c3",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					}
-				],
-				"server": [
-					{
-						"name": "cred",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "db",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "tls",
-						"mode": "0700",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "manifests",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "logs",
-						"mode": "0750",
-						"owner": "root",
-						"group": "root"
-					},
-					{
-						"name": "token",
-						"mode": "0600",
-						"owner": "root",
-						"group": "root"
-					}
-				]
+			"kubelet": {
+				"anonymous-auth": "false",
+				"read-only-port": "0",
+				"authorization-mode": "Webhook",
+				"streaming-connection-idle-timeout": "5m",
+				"protect-kernel-defaults": "true",
 			},
-			"pss_defaults": {
-				"audit": "restricted",
-				"audit-version": "latest",
-				"enforce": "restricted",
-				"enforce-version": "latest",
-				"warn": "restricted",
-				"warn-version": "latest"
-			}
 		},
-		"attest": {
-			"rke2_images_signature_verified": true,
-			"rke2_only_essential_components_enabled": true,
-			"rke2_pps_ppsm_cal_compliant": true,
-			"no_sensitive_values_in_workload_env": true,
-			"kube_system_resources_approved": true,
-			"rke2_supported_version_and_current_images": true
+		"config": {
+			"profile": "cis",
+			"write-kubeconfig-mode": "0600",
+			"pod-security-admission-config-file": "/etc/rancher/rke2/rke2-pss.yaml",
 		},
-		"cluster": {
-			"namespace_resources": {
-				"default": [
-					"service/kubernetes"
-				],
-				"kube-public": [],
-				"kube-node-lease": []
-			},
-			"images": [
-				"rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611",
-				"rancher/hardened-etcd:v3.5.13-k3s1-build20240531"
-			]
+		"audit_policy": {
+			"apiVersion": "audit.k8s.io/v1",
+			"kind": "Policy",
+			"metadata": {"name": "rke2-audit-policy"},
+			"rules": [
+				{
+					"level": "Metadata",
+					"resources": [{
+						"group": "",
+						"resources": ["secrets"],
+					}],
+				},
+				{
+					"level": "RequestResponse",
+					"resources": [{
+						"group": "",
+						"resources": ["*"],
+					}],
+				},
+			],
 		},
-		"collection_status": {
-			"namespace_resources": "ok",
-			"images": "ok"
-		}
-	}
+		"files": {
+			"etc": [
+				{
+					"name": "config.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "rke2-pss.yaml",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root",
+				},
+			],
+			"root": [
+				{
+					"name": "agent",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "bin",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "data",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "server",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+			],
+			"agent": [
+				{
+					"name": "kubelet.kubeconfig",
+					"mode": "0640",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "client-ca.crt",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "client-kubelet.key",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "pod-manifests",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "etc",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+			],
+			"bin": [
+				{
+					"name": "kubectl",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "containerd",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+			],
+			"data": [{
+				"name": "v1.30.2-rke2r1-a1b2c3",
+				"mode": "0750",
+				"owner": "root",
+				"group": "root",
+			}],
+			"server": [
+				{
+					"name": "cred",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "db",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "tls",
+					"mode": "0700",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "manifests",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "logs",
+					"mode": "0750",
+					"owner": "root",
+					"group": "root",
+				},
+				{
+					"name": "token",
+					"mode": "0600",
+					"owner": "root",
+					"group": "root",
+				},
+			],
+		},
+		"pss_defaults": {
+			"audit": "restricted",
+			"audit-version": "latest",
+			"enforce": "restricted",
+			"enforce-version": "latest",
+			"warn": "restricted",
+			"warn-version": "latest",
+		},
+	},
+	"attest": {
+		"rke2_images_signature_verified": true,
+		"rke2_only_essential_components_enabled": true,
+		"rke2_pps_ppsm_cal_compliant": true,
+		"no_sensitive_values_in_workload_env": true,
+		"kube_system_resources_approved": true,
+		"rke2_supported_version_and_current_images": true,
+	},
+	"cluster": {
+		"namespace_resources": {
+			"default": ["service/kubernetes"],
+			"kube-public": [],
+			"kube-node-lease": [],
+		},
+		"images": [
+			"rancher/hardened-kubernetes:v1.30.2-rke2r1-build20240611",
+			"rancher/hardened-etcd:v3.5.13-k3s1-build20240531",
+		],
+	},
+	"collection_status": {
+		"namespace_resources": "ok",
+		"images": "ok",
+	},
+}
 
 test_report_wellformed_on_empty_input if {
 	report := rke2.stig_assessment with input as {}

@@ -44,7 +44,7 @@ import rego.v1
 
 default allow := false
 
-allow if { count(deny) == 0 }
+allow if count(deny) == 0
 
 # Expose violations as 'deny' for webhook compatibility and 'violations' for reporting
 # DELETE requests carry no object to judge, so they are never denied by object checks
@@ -55,7 +55,7 @@ deny contains msg if {
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # =============================================================================
 # NAMESPACE CLASSIFICATION
@@ -65,13 +65,19 @@ production_namespaces := object.get(input, ["policy", "production_namespaces"], 
 
 system_namespaces := {"kube-system", "kube-public", "kube-node-lease"}
 
-is_production_namespace(ns) if { ns in production_namespaces }
-is_production_namespace(ns) if { not startswith(ns, "dev-"); not startswith(ns, "test-"); not startswith(ns, "sandbox-"); ns != "staging" }
+is_production_namespace(ns) if ns in production_namespaces
 
-is_dev_namespace(ns) if { startswith(ns, "dev-") }
-is_dev_namespace(ns) if { startswith(ns, "test-") }
-is_dev_namespace(ns) if { startswith(ns, "sandbox-") }
-is_dev_namespace(ns) if { ns == "staging" }
+is_production_namespace(ns) if {
+	not startswith(ns, "dev-")
+	not startswith(ns, "test-")
+	not startswith(ns, "sandbox-")
+	ns != "staging"
+}
+
+is_dev_namespace(ns) if startswith(ns, "dev-")
+is_dev_namespace(ns) if startswith(ns, "test-")
+is_dev_namespace(ns) if startswith(ns, "sandbox-")
+is_dev_namespace(ns) if ns == "staging"
 
 namespace := object.get(input, ["request", "namespace"], "default")
 resource_kind := object.get(input, ["request", "kind", "kind"], "")
@@ -103,9 +109,9 @@ all_containers := array.concat(
 )
 
 # Fail closed on a request that carries nothing to judge (DELETE legitimately has no object)
-is_delete if { input.request.operation == "DELETE" }
+is_delete if input.request.operation == "DELETE"
 
-request_evaluable if { is_delete }
+request_evaluable if is_delete
 
 request_evaluable if {
 	is_string(input.request.kind.kind)
@@ -171,6 +177,7 @@ violations contains sprintf("Registry: Container '%s' in %s '%s' uses unapproved
 
 from_approved_registry(image) if {
 	some registry in approved_registries
+
 	# anchored on the host component: "quay.io" must not admit "quay.io.evil.example/..."
 	startswith(image, concat("", [trim_suffix(registry, "/"), "/"]))
 }
@@ -205,8 +212,12 @@ violations contains sprintf("ImageTag: Container '%s' in %s '%s' uses 'latest' t
 	is_latest_tag(container.image)
 }
 
-is_latest_tag(image) if { endswith(image, ":latest") }
-is_latest_tag(image) if { not contains(image, ":"); not contains(image, "@") }
+is_latest_tag(image) if endswith(image, ":latest")
+
+is_latest_tag(image) if {
+	not contains(image, ":")
+	not contains(image, "@")
+}
 
 violations contains sprintf("ImageTag: Container '%s' in %s '%s' uses mutable tag without digest — use image@sha256:<digest> in production", [container.name, resource_kind, resource_name]) if {
 	resource_kind in long_running_kinds
@@ -374,27 +385,27 @@ violations contains sprintf("Ingress: Ingress '%s' does not specify ingressClass
 # =============================================================================
 
 violations_by_category := {
-	"resources":       [v | some v in violations; contains(v, "Resources:")],
-	"registry":        [v | some v in violations; contains(v, "Registry:")],
-	"image_tags":      [v | some v in violations; contains(v, "ImageTag:")],
-	"labels":          [v | some v in violations; contains(v, "Labels:")],
-	"security":        [v | some v in violations; contains(v, "Security:")],
+	"resources": [v | some v in violations; contains(v, "Resources:")],
+	"registry": [v | some v in violations; contains(v, "Registry:")],
+	"image_tags": [v | some v in violations; contains(v, "ImageTag:")],
+	"labels": [v | some v in violations; contains(v, "Labels:")],
+	"security": [v | some v in violations; contains(v, "Security:")],
 	"service_account": [v | some v in violations; contains(v, "ServiceAccount:")],
-	"probes":          [v | some v in violations; contains(v, "Probes:")],
-	"services":        [v | some v in violations; contains(v, "Service:")],
-	"ingress":         [v | some v in violations; contains(v, "Ingress:")],
+	"probes": [v | some v in violations; contains(v, "Probes:")],
+	"services": [v | some v in violations; contains(v, "Service:")],
+	"ingress": [v | some v in violations; contains(v, "Ingress:")],
 }
 
 compliance_report := {
-	"framework":             "Kubernetes Admission Control",
-	"standard":              "kubernetes.admission",
-	"compliant":             compliant,
-	"allow":                 allow,
-	"resource_kind":         resource_kind,
-	"resource_name":         resource_name,
-	"namespace":             namespace,
-	"is_production":         is_production_namespace(namespace),
-	"violation_count":       count(violations),
-	"violations":            [v | some v in violations],
+	"framework": "Kubernetes Admission Control",
+	"standard": "kubernetes.admission",
+	"compliant": compliant,
+	"allow": allow,
+	"resource_kind": resource_kind,
+	"resource_name": resource_name,
+	"namespace": namespace,
+	"is_production": is_production_namespace(namespace),
+	"violation_count": count(violations),
+	"violations": [v | some v in violations],
 	"violations_by_category": violations_by_category,
 }

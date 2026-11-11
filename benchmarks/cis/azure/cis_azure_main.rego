@@ -28,8 +28,8 @@ package cis_azure.main
 # unrelated benchmarks, where partial rules such as `violations` silently
 # merged across all of them. It now owns `cis_azure`.
 
-import rego.v1
 import data.cis_azure as bench
+import rego.v1
 
 default _compliant := false
 

@@ -25,9 +25,7 @@ test_client_package_without_severity_still_violates if {
 }
 
 test_webserver_package_without_version_still_violates if {
-	i := json.patch(good, [
-		{"op": "replace", "path": "/webserver", "value": {"any_installed": true, "packages": [{"package": "apache2", "installed": true}]}},
-	])
+	i := json.patch(good, [{"op": "replace", "path": "/webserver", "value": {"any_installed": true, "packages": [{"package": "apache2", "installed": true}]}}])
 	not data.cis_debian_11.services.compliant with input as i
 }
 

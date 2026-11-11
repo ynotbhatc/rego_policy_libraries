@@ -23,13 +23,13 @@ package stig.rhel_8
 
 import rego.v1
 
-import data.stig.rhel_8.configuration_management
-import data.stig.rhel_8.services
-import data.stig.rhel_8.ssh_config
 import data.stig.rhel_8.account_auth
 import data.stig.rhel_8.audit_logging
-import data.stig.rhel_8.network
+import data.stig.rhel_8.configuration_management
 import data.stig.rhel_8.file_permissions
+import data.stig.rhel_8.network
+import data.stig.rhel_8.services
+import data.stig.rhel_8.ssh_config
 
 # =============================================================================
 # AGGREGATE ALL FINDINGS
@@ -68,11 +68,11 @@ not_a_finding_count := count([f | some f in all_findings; f.status == "Not_a_Fin
 
 default overall_compliant := false
 
-overall_compliant if { count(cat_i_open) == 0 }
+overall_compliant if count(cat_i_open) == 0
 
 default fully_compliant := false
 
-fully_compliant if { open_count == 0 }
+fully_compliant if open_count == 0
 
 # =============================================================================
 # MASTER ASSESSMENT REPORT

@@ -204,7 +204,7 @@ default p_7_1_1 := false
 
 p_7_1_1 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 violations contains "7.1.1: evidence missing — critical_files.analysis[/etc/passwd] not collected" if not e_7_1_1
@@ -227,7 +227,7 @@ default p_7_1_2 := false
 
 p_7_1_2 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd-"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd-"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/passwd-"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 violations contains "7.1.2: evidence missing — critical_files.analysis[/etc/passwd-] not collected" if not e_7_1_2
@@ -250,7 +250,7 @@ default p_7_1_3 := false
 
 p_7_1_3 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 violations contains "7.1.3: evidence missing — critical_files.analysis[/etc/group] not collected" if not e_7_1_3
@@ -273,7 +273,7 @@ default p_7_1_4 := false
 
 p_7_1_4 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group-"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group-"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/group-"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 violations contains "7.1.4: evidence missing — critical_files.analysis[/etc/group-] not collected" if not e_7_1_4
@@ -296,7 +296,7 @@ default p_7_1_5 := false
 
 p_7_1_5 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"]}
 }
 
 violations contains "7.1.5: evidence missing — critical_files.analysis[/etc/shadow] not collected" if not e_7_1_5
@@ -319,7 +319,7 @@ default p_7_1_6 := false
 
 p_7_1_6 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow-"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow-"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shadow-"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"]}
 }
 
 violations contains "7.1.6: evidence missing — critical_files.analysis[/etc/shadow-] not collected" if not e_7_1_6
@@ -342,7 +342,7 @@ default p_7_1_7 := false
 
 p_7_1_7 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"]}
 }
 
 violations contains "7.1.7: evidence missing — critical_files.analysis[/etc/gshadow] not collected" if not e_7_1_7
@@ -365,7 +365,7 @@ default p_7_1_8 := false
 
 p_7_1_8 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow-"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow-"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/gshadow-"] { f.exists == true; mode_within(f.actual_mode, "0640"); f.actual_owner == "root"; f.actual_group in ["root", "shadow"]}
 }
 
 p_7_1_8 if {
@@ -393,7 +393,7 @@ default p_7_1_9 := false
 
 p_7_1_9 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shells"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shells"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/shells"] { f.exists == true; mode_within(f.actual_mode, "0644"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 violations contains "7.1.9: evidence missing — critical_files.analysis[/etc/shells] not collected" if not e_7_1_9
@@ -418,14 +418,14 @@ default p_7_1_10 := false
 
 p_7_1_10 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"]}
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 p_7_1_10 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"]}
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"]) > 0
 	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"] { f.exists == false }
 }
@@ -434,7 +434,7 @@ p_7_1_10 if {
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"]) > 0
 	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd"] { f.exists == false }
 	count([f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"]) > 0
-	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"] }
+	every f in [f | some f in object.get(input, ["critical_files", "analysis"], []); f.file == "/etc/security/opasswd.old"] { f.exists == true; mode_within(f.actual_mode, "0600"); f.actual_owner == "root"; f.actual_group in ["root"]}
 }
 
 p_7_1_10 if {

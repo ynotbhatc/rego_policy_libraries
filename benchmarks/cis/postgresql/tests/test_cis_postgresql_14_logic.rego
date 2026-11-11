@@ -50,4 +50,3 @@ test_database_names_tokens if {
 	not pkg.database_names_appropriate with input as {"postgresql": {"databases": [{"name": "app_prod"}]}}
 	not pkg.database_names_appropriate with input as {"postgresql": {"databases": [{"name": "dev-db"}]}}
 }
-

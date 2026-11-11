@@ -15,4 +15,3 @@ test_ssh_validation_report_wellformed_on_empty_input if {
 	is_object(report)
 	count(report) > 0
 }
-

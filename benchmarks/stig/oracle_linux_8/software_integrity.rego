@@ -38,7 +38,9 @@ rsyslog_active if {
 	input.services.rsyslog == "active"
 }
 
-status_ol08_00_010561 := "Not_a_Finding" if { rsyslog_active } else := "Open"
+status_ol08_00_010561 := "Not_a_Finding" if rsyslog_active
+
+else := "Open"
 
 finding_ol08_00_010561 := {
 	"vuln_id": "V-248615",
@@ -61,7 +63,9 @@ kexec_disabled if {
 	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_ol08_00_010376 := "Not_a_Finding" if { kexec_disabled } else := "Open"
+status_ol08_00_010376 := "Not_a_Finding" if kexec_disabled
+
+else := "Open"
 
 finding_ol08_00_010376 := {
 	"vuln_id": "V-248580",
@@ -82,13 +86,9 @@ finding_ol08_00_010376 := {
 # (scripts/check_per_file_load.py).
 cat_i_findings := array.concat([], [])
 
-cat_ii_findings := [
-	finding_ol08_00_010561,
-]
+cat_ii_findings := [finding_ol08_00_010561]
 
-cat_iii_findings := [
-	finding_ol08_00_010376,
-]
+cat_iii_findings := [finding_ol08_00_010376]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

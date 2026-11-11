@@ -271,7 +271,7 @@ e_5_1_3 if {
 default p_5_1_3 := false
 
 p_5_1_3 if {
-	every k in input.ssh.private_key_permissions { mode_within(k.stat.mode, "0600"); k.stat.pw_name == "root"; k.stat.gr_name == "root" }
+	every k in input.ssh.private_key_permissions { mode_within(k.stat.mode, "0600"); k.stat.pw_name == "root"; k.stat.gr_name == "root"}
 }
 
 violations contains "5.1.3: evidence missing — ssh.private_key_permissions not collected" if not e_5_1_3

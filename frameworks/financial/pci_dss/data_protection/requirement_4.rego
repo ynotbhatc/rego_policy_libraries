@@ -154,17 +154,29 @@ weak_protocols_inventory_current if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default transmission_security_policies_established := false
+
 default transmission_security_roles_defined := false
+
 default strong_cryptography_for_pan := false
+
 default accepted_cryptography_standards := false
+
 default certificate_management_secure := false
+
 default payment_page_encryption := false
+
 default pos_terminal_encryption := false
+
 default api_transmission_encrypted := false
+
 default trusted_keys_certificates_managed := false
+
 default wireless_pan_transmission_secure := false
+
 default pan_in_messaging_secured := false
+
 default weak_protocols_inventory_current := false
+
 default pci_requirement_4_compliant := false
 
 # =================================================================
@@ -187,6 +199,7 @@ pci_requirement_4_compliant if {
 }
 
 default pci_requirement_4_score := 0
+
 default pci_requirement_4_findings := {}
 
 pci_requirement_4_score := score if {

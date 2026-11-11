@@ -44,7 +44,7 @@ import rego.v1
 viewer_roles := {"viewer", "analyst", "auditor", "admin"}
 analyst_roles := {"analyst", "auditor", "admin"}
 auditor_roles := {"auditor", "admin"}
-admin_roles   := {"admin"}
+admin_roles := {"admin"}
 
 # ── Token validation ──────────────────────────────────────────────────────────
 
@@ -68,7 +68,7 @@ token_valid if {
 
 # Trusted issuers: input.token.issuer (single, the historical field) and/or
 # input.token.trusted_issuers (list). An empty set trusts nothing.
-trusted_issuers := ({i | i := input.token.issuer; is_string(i); i != ""} | {i | some i in input.token.trusted_issuers; is_string(i); i != ""})
+trusted_issuers := {i | i := input.token.issuer; is_string(i); i != ""} | {i | some i in input.token.trusted_issuers; is_string(i); i != ""}
 
 issuer_trusted if input.token.claims.iss in trusted_issuers
 
@@ -137,7 +137,7 @@ signature_ok if {
 }
 
 user_roles := roles if {
-    roles := {r | some r in input.token.claims.realm_access.roles}
+	roles := {r | some r in input.token.claims.realm_access.roles}
 } else := set()
 
 # ── Access decisions ──────────────────────────────────────────────────────────
@@ -146,30 +146,30 @@ default allow := false
 
 # Viewers can read compliance results and framework summaries
 allow if {
-    token_valid
-    input.resource.type in {"results", "frameworks", "hosts", "trend"}
-    count(user_roles & viewer_roles) > 0
+	token_valid
+	input.resource.type in {"results", "frameworks", "hosts", "trend"}
+	count(user_roles & viewer_roles) > 0
 }
 
 # Analysts can additionally download reports and OSCAL exports
 allow if {
-    token_valid
-    input.resource.type in {"report", "oscal"}
-    count(user_roles & analyst_roles) > 0
+	token_valid
+	input.resource.type in {"report", "oscal"}
+	count(user_roles & analyst_roles) > 0
 }
 
 # Auditors can access remediation tracking
 allow if {
-    token_valid
-    input.resource.type == "remediation"
-    count(user_roles & auditor_roles) > 0
+	token_valid
+	input.resource.type == "remediation"
+	count(user_roles & auditor_roles) > 0
 }
 
 # Admins can launch assessments (triggers AAP job templates)
 allow if {
-    token_valid
-    input.resource.type == "assessment_launch"
-    count(user_roles & admin_roles) > 0
+	token_valid
+	input.resource.type == "assessment_launch"
+	count(user_roles & admin_roles) > 0
 }
 
 # ── Framework-level restrictions ──────────────────────────────────────────────
@@ -179,64 +179,64 @@ allow if {
 ot_frameworks := {"nerc_cip", "iec_62443", "ami_nist_ir7628", "nist_800_82"}
 
 framework_access_allowed if {
-    not input.resource.framework in ot_frameworks
+	not input.resource.framework in ot_frameworks
 }
 
 framework_access_allowed if {
-    input.resource.framework in ot_frameworks
-    count(user_roles & auditor_roles) > 0
+	input.resource.framework in ot_frameworks
+	count(user_roles & auditor_roles) > 0
 }
 
 # Combined decision: allow only if base role + framework access both pass
 default authorized := false
 
 authorized if {
-    allow
-    framework_access_allowed
+	allow
+	framework_access_allowed
 }
 
 # ── Denial reasons ────────────────────────────────────────────────────────────
 
 deny_reasons contains msg if {
-    not token_valid
-    msg := "Invalid or missing OIDC token"
+	not token_valid
+	msg := "Invalid or missing OIDC token"
 }
 
 deny_reasons contains msg if {
-    token_valid
-    not allow
-    msg := sprintf(
-        "Role insufficient for resource '%v'. User roles: %v",
-        [input.resource.type, user_roles],
-    )
+	token_valid
+	not allow
+	msg := sprintf(
+		"Role insufficient for resource '%v'. User roles: %v",
+		[input.resource.type, user_roles],
+	)
 }
 
 deny_reasons contains msg if {
-    token_valid
-    allow
-    not framework_access_allowed
-    msg := sprintf(
-        "Framework '%v' requires auditor role. User roles: %v",
-        [input.resource.framework, user_roles],
-    )
+	token_valid
+	allow
+	not framework_access_allowed
+	msg := sprintf(
+		"Framework '%v' requires auditor role. User roles: %v",
+		[input.resource.framework, user_roles],
+	)
 }
 
 # ── Summary report ────────────────────────────────────────────────────────────
 
 default summary := {
-    "authorized": false,
-    "user": null,
-    "roles": [],
-    "resource": {},
-    "deny_reasons": ["Invalid or missing OIDC token"],
+	"authorized": false,
+	"user": null,
+	"roles": [],
+	"resource": {},
+	"deny_reasons": ["Invalid or missing OIDC token"],
 }
 
 summary := {
-    "authorized": authorized,
-    "user": input.token.claims.preferred_username,
-    "roles": user_roles,
-    "resource": input.resource,
-    "deny_reasons": deny_reasons,
+	"authorized": authorized,
+	"user": input.token.claims.preferred_username,
+	"roles": user_roles,
+	"resource": input.resource,
+	"deny_reasons": deny_reasons,
 } if {
-    token_valid
+	token_valid
 }

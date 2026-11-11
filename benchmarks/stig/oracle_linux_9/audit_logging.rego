@@ -52,7 +52,9 @@ auditd_active if {
 	input.services.auditd == "active"
 }
 
-status_ol09_00_000441 := "Not_a_Finding" if { auditd_active } else := "Open"
+status_ol09_00_000441 := "Not_a_Finding" if auditd_active
+
+else := "Open"
 
 finding_ol09_00_000441 := {
 	"vuln_id": "V-271520",
@@ -72,7 +74,9 @@ audit_storage_ok if {
 	input.auditd_config.max_log_file_action != "IGNORE"
 }
 
-status_ol09_00_000770 := "Not_a_Finding" if { audit_storage_ok } else := "Open"
+status_ol09_00_000770 := "Not_a_Finding" if audit_storage_ok
+
+else := "Open"
 
 finding_ol09_00_000770 := {
 	"vuln_id": "V-271581",
@@ -93,7 +97,9 @@ admin_space_left_action_ok if {
 	action != "IGNORE"
 }
 
-status_ol09_00_000765 := "Not_a_Finding" if { admin_space_left_action_ok } else := "Open"
+status_ol09_00_000765 := "Not_a_Finding" if admin_space_left_action_ok
+
+else := "Open"
 
 finding_ol09_00_000765 := {
 	"vuln_id": "V-271580",
@@ -112,7 +118,9 @@ audit_execve_b64 if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S execve")
 }
 
-status_ol09_00_000715 := "Not_a_Finding" if { audit_execve_b64 } else := "Open"
+status_ol09_00_000715 := "Not_a_Finding" if audit_execve_b64
+
+else := "Open"
 
 finding_ol09_00_000715 := {
 	"vuln_id": "V-271570",
@@ -131,7 +139,9 @@ audit_chown if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chown")
 }
 
-status_ol09_00_000645 := "Not_a_Finding" if { audit_chown } else := "Open"
+status_ol09_00_000645 := "Not_a_Finding" if audit_chown
+
+else := "Open"
 
 finding_ol09_00_000645 := {
 	"vuln_id": "V-271556",
@@ -150,7 +160,9 @@ audit_chmod if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
 }
 
-status_ol09_00_000640 := "Not_a_Finding" if { audit_chmod } else := "Open"
+status_ol09_00_000640 := "Not_a_Finding" if audit_chmod
+
+else := "Open"
 
 finding_ol09_00_000640 := {
 	"vuln_id": "V-271555",
@@ -169,7 +181,9 @@ audit_setxattr if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S setxattr")
 }
 
-status_ol09_00_000545 := "Not_a_Finding" if { audit_setxattr } else := "Open"
+status_ol09_00_000545 := "Not_a_Finding" if audit_setxattr
+
+else := "Open"
 
 finding_ol09_00_000545 := {
 	"vuln_id": "V-271536",
@@ -188,7 +202,9 @@ audit_sudoers if {
 	audit_rule_exists("-w /etc/sudoers")
 }
 
-status_ol09_00_000500 := "Not_a_Finding" if { audit_sudoers } else := "Open"
+status_ol09_00_000500 := "Not_a_Finding" if audit_sudoers
+
+else := "Open"
 
 finding_ol09_00_000500 := {
 	"vuln_id": "V-271527",
@@ -207,7 +223,9 @@ audit_passwd_file if {
 	audit_rule_exists("-w /etc/passwd")
 }
 
-status_ol09_00_000525 := "Not_a_Finding" if { audit_passwd_file } else := "Open"
+status_ol09_00_000525 := "Not_a_Finding" if audit_passwd_file
+
+else := "Open"
 
 finding_ol09_00_000525 := {
 	"vuln_id": "V-271532",
@@ -230,7 +248,9 @@ audit_privileged_cmds if {
 	audit_rule_exists("-k privileged")
 }
 
-status_ol09_00_000670 := "Not_a_Finding" if { audit_privileged_cmds } else := "Open"
+status_ol09_00_000670 := "Not_a_Finding" if audit_privileged_cmds
+
+else := "Open"
 
 finding_ol09_00_000670 := {
 	"vuln_id": "V-271561",
@@ -253,7 +273,9 @@ audit_modules if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S init_module")
 }
 
-status_ol09_00_000690 := "Not_a_Finding" if { audit_modules } else := "Open"
+status_ol09_00_000690 := "Not_a_Finding" if audit_modules
+
+else := "Open"
 
 finding_ol09_00_000690 := {
 	"vuln_id": "V-271565",

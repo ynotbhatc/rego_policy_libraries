@@ -32,8 +32,8 @@ package cis_ubuntu_20_04.main
 #    the published CIS benchmark. Reporting the benchmark's headline number
 #    would overstate coverage. See "controls_basis" in the report.
 
-import rego.v1
 import data.cis_ubuntu_20_04 as bench
+import rego.v1
 
 default _compliant := false
 

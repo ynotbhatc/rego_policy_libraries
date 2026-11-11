@@ -9,4 +9,3 @@ test_cis_nginx_1_20_loads_on_empty_input if {
 	m := data.cis_nginx_1_20 with input as {}
 	is_object(m)
 }
-

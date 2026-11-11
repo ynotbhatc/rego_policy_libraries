@@ -21,7 +21,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # =============================================================================
 # SLSA LEVEL ASSESSMENT
@@ -52,10 +52,19 @@ slsa_level_3_met if {
 	input.build.isolated_environment
 }
 
-current_slsa_level := 3 if { slsa_level_3_met }
-current_slsa_level := 2 if { slsa_level_2_met; not slsa_level_3_met }
-current_slsa_level := 1 if { slsa_level_1_met; not slsa_level_2_met }
-current_slsa_level := 0 if { not slsa_level_1_met }
+current_slsa_level := 3 if slsa_level_3_met
+
+current_slsa_level := 2 if {
+	slsa_level_2_met
+	not slsa_level_3_met
+}
+
+current_slsa_level := 1 if {
+	slsa_level_1_met
+	not slsa_level_2_met
+}
+
+current_slsa_level := 0 if not slsa_level_1_met
 
 violations contains "SLSA: Build provenance attestation is missing" if {
 	not input.provenance.exists
@@ -171,13 +180,13 @@ violations contains sprintf("Dependencies: Floating version constraint '%s' foun
 	is_floating_version(dep.version)
 }
 
-is_floating_version(version) if { version == "latest" }
-is_floating_version(version) if { version == "*" }
-is_floating_version(version) if { version == "" }
-is_floating_version(version) if { startswith(version, "^") }
-is_floating_version(version) if { startswith(version, "~") }
-is_floating_version(version) if { startswith(version, ">") }
-is_floating_version(version) if { regex.match(`(^|\.)[xX*](\.|$)`, version) }
+is_floating_version(version) if version == "latest"
+is_floating_version(version) if version == "*"
+is_floating_version(version) if version == ""
+is_floating_version(version) if startswith(version, "^")
+is_floating_version(version) if startswith(version, "~")
+is_floating_version(version) if startswith(version, ">")
+is_floating_version(version) if regex.match(`(^|\.)[xX*](\.|$)`, version)
 
 violations contains sprintf("Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)", [dep.name, dep.version, vuln.cve_id, vuln.cvss_score, vuln.severity]) if {
 	some dep in input.dependencies
@@ -295,26 +304,26 @@ approved_builder(builder_id) if {
 # =============================================================================
 
 slsa_assessment := {
-	"compliant":           compliant,
+	"compliant": compliant,
 	"slsa_level_achieved": current_slsa_level,
 	"slsa_level_required": required_slsa_level,
-	"slsa_level_met":      current_slsa_level >= required_slsa_level,
-	"artifact_signed":     object.get(input, ["artifact", "signed"], false),
-	"sbom_present":        object.get(input, ["sbom", "present"], false),
-	"violation_count":     count(violations),
-	"violations":          [v | some v in violations],
+	"slsa_level_met": current_slsa_level >= required_slsa_level,
+	"artifact_signed": object.get(input, ["artifact", "signed"], false),
+	"sbom_present": object.get(input, ["sbom", "present"], false),
+	"violation_count": count(violations),
+	"violations": [v | some v in violations],
 }
 
 compliance_report := {
-	"framework":    "SLSA v1.0 + Supply Chain Governance",
-	"standard":     "supply_chain.slsa",
-	"compliant":    compliant,
-	"assessment":   slsa_assessment,
+	"framework": "SLSA v1.0 + Supply Chain Governance",
+	"standard": "supply_chain.slsa",
+	"compliant": compliant,
+	"assessment": slsa_assessment,
 	"controls_checked": {
-		"provenance":   is_object(object.get(input, "provenance", null)),
-		"signing":      is_object(object.get(input, "artifact", null)),
-		"sbom":         is_object(object.get(input, "sbom", null)),
+		"provenance": is_object(object.get(input, "provenance", null)),
+		"signing": is_object(object.get(input, "artifact", null)),
+		"sbom": is_object(object.get(input, "sbom", null)),
 		"dependencies": is_array(object.get(input, "dependencies", null)),
-		"licenses":     object.get(input, ["policy", "enforce_license_compliance"], false),
+		"licenses": object.get(input, ["policy", "enforce_license_compliance"], false),
 	},
 }

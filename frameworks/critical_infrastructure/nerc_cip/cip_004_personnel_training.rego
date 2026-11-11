@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default access_authorization_documented := false
+
 default access_authorization_reviewed := false
+
 default access_based_on_need_to_know := false
+
 default access_revoked_timely_on_termination := false
+
 default cyber_security_training_program := false
+
 default personnel_risk_assessments_current := false
+
 default pra_before_access_granted := false
+
 default security_awareness_current := false
+
 default security_awareness_program := false
+
 default shared_accounts_managed := false
+
 default training_completed_for_all_authorized_personnel := false
+
 default training_records_maintained := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -68,7 +79,7 @@ security_awareness_program if {
 
 security_awareness_current if {
 	last_ns := time.parse_rfc3339_ns(input.security_awareness.last_reinforcement_date)
-	age_days := (time.now_ns() - last_ns) / (24 * 60 * 60 * 1000000000)
+	age_days := (time.now_ns() - last_ns) / (((24 * 60) * 60) * 1000000000)
 	age_days <= 92 # roughly 1 quarter
 }
 
@@ -107,7 +118,7 @@ requires_cybersecurity_training(person) if {
 
 training_current(person) if {
 	person.cyber_security_training.initial_completed == true
-	training_age_days := (time.now_ns() - date_ns(person.cyber_security_training.last_completion_date)) / (24 * 60 * 60 * 1000000000)
+	training_age_days := (time.now_ns() - date_ns(person.cyber_security_training.last_completion_date)) / (((24 * 60) * 60) * 1000000000)
 	training_age_days <= 365 # annual
 }
 
@@ -158,7 +169,7 @@ risk_assessment_current(person) if {
 }
 
 risk_assessment_age_ok(assessed_ns) if {
-	(time.now_ns() - assessed_ns) / (24 * 60 * 60 * 1000000000) <= 2555 # 7 years
+	(time.now_ns() - assessed_ns) / (((24 * 60) * 60) * 1000000000) <= 2555 # 7 years
 }
 
 # PRA must include criminal history check and 7-year look-back
@@ -175,6 +186,7 @@ pra_before_access_granted if {
 	violations := [person |
 		person := input.personnel[_]
 		requires_risk_assessment(person)
+
 		# Missing completed_before_access_granted is not a pass.
 		not person.risk_assessment.completed_before_access_granted == true
 		not person.emergency_access_exception == true
@@ -215,7 +227,7 @@ access_based_on_need_to_know if {
 
 # R4.2 - Review access authorizations at least every 15 calendar months
 access_review_current(person) if {
-	review_age_days := (time.now_ns() - date_ns(person.access_authorization.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - date_ns(person.access_authorization.last_review_date)) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -224,6 +236,7 @@ access_authorization_reviewed if {
 	violations := [person |
 		person := input.personnel[_]
 		requires_access_authorization(person)
+
 		# A missing or unparseable last_review_date is not current.
 		not access_review_current(person)
 	]

@@ -39,8 +39,11 @@ open_findings := [f | some f in all_findings; f.status == "Open"]
 cat_i_open := [f | some f in open_findings; f.severity == "CAT I"]
 
 default overall_compliant := false
+
 overall_compliant if count(cat_i_open) == 0
+
 default fully_compliant := false
+
 fully_compliant if count(open_findings) == 0
 
 stig_assessment := {

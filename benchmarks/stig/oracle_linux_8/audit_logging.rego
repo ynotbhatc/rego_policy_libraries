@@ -52,7 +52,9 @@ admin_space_left_action_ok if {
 	action != "IGNORE"
 }
 
-status_ol08_00_030060 := "Not_a_Finding" if { admin_space_left_action_ok } else := "Open"
+status_ol08_00_030060 := "Not_a_Finding" if admin_space_left_action_ok
+
+else := "Open"
 
 finding_ol08_00_030060 := {
 	"vuln_id": "V-248728",
@@ -71,7 +73,9 @@ audit_chown if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chown")
 }
 
-status_ol08_00_030480 := "Not_a_Finding" if { audit_chown } else := "Open"
+status_ol08_00_030480 := "Not_a_Finding" if audit_chown
+
+else := "Open"
 
 finding_ol08_00_030480 := {
 	"vuln_id": "V-248790",
@@ -90,7 +94,9 @@ audit_chmod if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
 }
 
-status_ol08_00_030490 := "Not_a_Finding" if { audit_chmod } else := "Open"
+status_ol08_00_030490 := "Not_a_Finding" if audit_chmod
+
+else := "Open"
 
 finding_ol08_00_030490 := {
 	"vuln_id": "V-248791",
@@ -109,7 +115,9 @@ audit_setxattr if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S setxattr")
 }
 
-status_ol08_00_030200 := "Not_a_Finding" if { audit_setxattr } else := "Open"
+status_ol08_00_030200 := "Not_a_Finding" if audit_setxattr
+
+else := "Open"
 
 finding_ol08_00_030200 := {
 	"vuln_id": "V-248748",
@@ -128,7 +136,9 @@ audit_sudoers if {
 	audit_rule_exists("-w /etc/sudoers")
 }
 
-status_ol08_00_030171 := "Not_a_Finding" if { audit_sudoers } else := "Open"
+status_ol08_00_030171 := "Not_a_Finding" if audit_sudoers
+
+else := "Open"
 
 finding_ol08_00_030171 := {
 	"vuln_id": "V-248745",
@@ -147,7 +157,9 @@ audit_passwd_file if {
 	audit_rule_exists("-w /etc/passwd")
 }
 
-status_ol08_00_030150 := "Not_a_Finding" if { audit_passwd_file } else := "Open"
+status_ol08_00_030150 := "Not_a_Finding" if audit_passwd_file
+
+else := "Open"
 
 finding_ol08_00_030150 := {
 	"vuln_id": "V-248742",
@@ -170,7 +182,9 @@ audit_privileged_cmds if {
 	audit_rule_exists("privileged")
 }
 
-status_ol08_00_030550 := "Not_a_Finding" if { audit_privileged_cmds } else := "Open"
+status_ol08_00_030550 := "Not_a_Finding" if audit_privileged_cmds
+
+else := "Open"
 
 finding_ol08_00_030550 := {
 	"vuln_id": "V-248797",
@@ -193,7 +207,9 @@ audit_modules if {
 	audit_rule_exists("-a always,exit -F arch=b64 -S init_module")
 }
 
-status_ol08_00_030360 := "Not_a_Finding" if { audit_modules } else := "Open"
+status_ol08_00_030360 := "Not_a_Finding" if audit_modules
+
+else := "Open"
 
 finding_ol08_00_030360 := {
 	"vuln_id": "V-248773",

@@ -16,7 +16,7 @@ inp(role, value, changed) := {
 }
 
 # 3 days ago, in RFC3339
-recent := time.format([time.now_ns() - (3 * 24 * 60 * 60 * 1000000000), "UTC", "2006-01-02T15:04:05Z07:00"])
+recent := time.format([time.now_ns() - ((((3 * 24) * 60) * 60) * 1000000000), "UTC", "2006-01-02T15:04:05Z07:00"])
 
 test_unlisted_role_old_password_is_expired if {
 	not p.age_requirements_met with input as inp("developer", "Zk3!mQw9xLp2", old_rfc)
