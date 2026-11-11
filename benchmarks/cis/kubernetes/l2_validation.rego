@@ -24,7 +24,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # ---------------------------------------------------------------------------
 # Helpers. `section` is the name of the input key (e.g. "api_server_flags"), passed as
@@ -274,11 +274,11 @@ violations contains "CIS L2 5.7.3: Apply Security Context to Pods and Containers
 l2_total_controls := 42
 
 compliance_report := {
-	"profile":           "level2",
-	"benchmark":         "CIS Kubernetes Benchmark v1.10.0",
-	"l2_controls":       l2_total_controls,
-	"l2_violations":     count(violations),
-	"l2_compliant":      compliant,
+	"profile": "level2",
+	"benchmark": "CIS Kubernetes Benchmark v1.10.0",
+	"l2_controls": l2_total_controls,
+	"l2_violations": count(violations),
+	"l2_compliant": compliant,
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Designed for regulated Kubernetes workloads (FedRAMP High, PCI-DSS, HIPAA, DoD IL4/IL5).",
 }

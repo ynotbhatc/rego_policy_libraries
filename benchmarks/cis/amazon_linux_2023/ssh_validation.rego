@@ -124,12 +124,12 @@ permission_violations contains sprintf("CIS 5.2.3: SSH public key %s permissions
 # =============================================================================
 
 config_violations contains "CIS 5.2.4: SSH LogLevel not set to appropriate value (should be INFO or VERBOSE)" if {
-	loglevel := sshd_config["loglevel"]
+	loglevel := sshd_config.loglevel
 	not loglevel in ["INFO", "VERBOSE"]
 }
 
 config_violations contains "CIS 5.2.4: SSH LogLevel not configured" if {
-	not sshd_config["loglevel"]
+	not sshd_config.loglevel
 }
 
 # =============================================================================
@@ -137,7 +137,7 @@ config_violations contains "CIS 5.2.4: SSH LogLevel not configured" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.5: SSH X11Forwarding is enabled (should be 'no')" if {
-	x11 := sshd_config["x11forwarding"]
+	x11 := sshd_config.x11forwarding
 	x11 == "yes"
 }
 
@@ -146,13 +146,13 @@ config_violations contains "CIS 5.2.5: SSH X11Forwarding is enabled (should be '
 # =============================================================================
 
 config_violations contains sprintf("CIS 5.2.6: SSH MaxAuthTries is %v (should be 4 or less)", [tries]) if {
-	tries_str := sshd_config["maxauthtries"]
+	tries_str := sshd_config.maxauthtries
 	tries := to_number(tries_str)
 	tries > 4
 }
 
 config_violations contains "CIS 5.2.6: SSH MaxAuthTries not configured" if {
-	not sshd_config["maxauthtries"]
+	not sshd_config.maxauthtries
 }
 
 # =============================================================================
@@ -160,12 +160,12 @@ config_violations contains "CIS 5.2.6: SSH MaxAuthTries not configured" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.7: SSH IgnoreRhosts not enabled" if {
-	ignore := sshd_config["ignorerhosts"]
+	ignore := sshd_config.ignorerhosts
 	ignore != "yes"
 }
 
 config_violations contains "CIS 5.2.7: SSH IgnoreRhosts not configured" if {
-	not sshd_config["ignorerhosts"]
+	not sshd_config.ignorerhosts
 }
 
 # =============================================================================
@@ -173,7 +173,7 @@ config_violations contains "CIS 5.2.7: SSH IgnoreRhosts not configured" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.8: SSH HostbasedAuthentication is enabled (should be 'no')" if {
-	hostbased := sshd_config["hostbasedauthentication"]
+	hostbased := sshd_config.hostbasedauthentication
 	hostbased == "yes"
 }
 
@@ -182,12 +182,12 @@ config_violations contains "CIS 5.2.8: SSH HostbasedAuthentication is enabled (s
 # =============================================================================
 
 config_violations contains sprintf("CIS 5.2.9: SSH PermitRootLogin is '%v' (should be 'no')", [permit]) if {
-	permit := sshd_config["permitrootlogin"]
+	permit := sshd_config.permitrootlogin
 	permit != "no"
 }
 
 config_violations contains "CIS 5.2.9: SSH PermitRootLogin not configured" if {
-	not sshd_config["permitrootlogin"]
+	not sshd_config.permitrootlogin
 }
 
 # =============================================================================
@@ -195,7 +195,7 @@ config_violations contains "CIS 5.2.9: SSH PermitRootLogin not configured" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.10: SSH PermitEmptyPasswords is enabled (should be 'no')" if {
-	permit := sshd_config["permitemptypasswords"]
+	permit := sshd_config.permitemptypasswords
 	permit == "yes"
 }
 
@@ -204,7 +204,7 @@ config_violations contains "CIS 5.2.10: SSH PermitEmptyPasswords is enabled (sho
 # =============================================================================
 
 config_violations contains "CIS 5.2.11: SSH PermitUserEnvironment is enabled (should be 'no')" if {
-	permit := sshd_config["permituserenvironment"]
+	permit := sshd_config.permituserenvironment
 	permit == "yes"
 }
 
@@ -215,11 +215,11 @@ config_violations contains "CIS 5.2.11: SSH PermitUserEnvironment is enabled (sh
 weak_ciphers := {
 	"3des-cbc", "aes128-cbc", "aes192-cbc", "aes256-cbc",
 	"arcfour", "arcfour128", "arcfour256", "blowfish-cbc",
-	"cast128-cbc", "rijndael-cbc@lysator.liu.se"
+	"cast128-cbc", "rijndael-cbc@lysator.liu.se",
 }
 
 crypto_violations contains sprintf("CIS 5.2.12: Weak SSH cipher '%s' is allowed", [cipher]) if {
-	ciphers_str := sshd_config["ciphers"]
+	ciphers_str := sshd_config.ciphers
 	cipher_list := split(ciphers_str, ",")
 	some cipher in cipher_list
 	cipher in weak_ciphers
@@ -235,11 +235,11 @@ weak_macs := {
 	"hmac-md5-etm@openssh.com", "hmac-md5-96-etm@openssh.com",
 	"hmac-ripemd160-etm@openssh.com", "hmac-sha1-etm@openssh.com",
 	"hmac-sha1-96-etm@openssh.com", "umac-64-etm@openssh.com",
-	"umac-128-etm@openssh.com"
+	"umac-128-etm@openssh.com",
 }
 
 crypto_violations contains sprintf("CIS 5.2.13: Weak SSH MAC '%s' is allowed", [mac]) if {
-	macs_str := sshd_config["macs"]
+	macs_str := sshd_config.macs
 	mac_list := split(macs_str, ",")
 	some mac in mac_list
 	mac in weak_macs
@@ -252,11 +252,11 @@ crypto_violations contains sprintf("CIS 5.2.13: Weak SSH MAC '%s' is allowed", [
 weak_kex := {
 	"diffie-hellman-group1-sha1",
 	"diffie-hellman-group14-sha1",
-	"diffie-hellman-group-exchange-sha1"
+	"diffie-hellman-group-exchange-sha1",
 }
 
 crypto_violations contains sprintf("CIS 5.2.14: Weak SSH KexAlgorithm '%s' is allowed", [kex]) if {
-	kex_str := sshd_config["kexalgorithms"]
+	kex_str := sshd_config.kexalgorithms
 	kex_list := split(kex_str, ",")
 	some kex in kex_list
 	kex in weak_kex
@@ -267,17 +267,17 @@ crypto_violations contains sprintf("CIS 5.2.14: Weak SSH KexAlgorithm '%s' is al
 # =============================================================================
 
 config_violations contains sprintf("CIS 5.2.15: SSH ClientAliveInterval is %v seconds (should be 300 or less)", [interval]) if {
-	interval_str := sshd_config["clientaliveinterval"]
+	interval_str := sshd_config.clientaliveinterval
 	interval := to_number(interval_str)
 	interval > 300
 }
 
 config_violations contains "CIS 5.2.15: SSH ClientAliveInterval not configured" if {
-	not sshd_config["clientaliveinterval"]
+	not sshd_config.clientaliveinterval
 }
 
 config_violations contains sprintf("CIS 5.2.15: SSH ClientAliveCountMax is %v (should be 3 or less)", [count_max]) if {
-	count_str := sshd_config["clientalivecountmax"]
+	count_str := sshd_config.clientalivecountmax
 	count_max := to_number(count_str)
 	count_max > 3
 }
@@ -287,7 +287,7 @@ config_violations contains sprintf("CIS 5.2.15: SSH ClientAliveCountMax is %v (s
 # =============================================================================
 
 config_violations contains sprintf("CIS 5.2.16: SSH LoginGraceTime is %v seconds (should be 60 or less)", [grace]) if {
-	grace_str := sshd_config["logingracetime"]
+	grace_str := sshd_config.logingracetime
 	grace := to_number(grace_str)
 	grace > 60
 }
@@ -297,11 +297,11 @@ config_violations contains sprintf("CIS 5.2.16: SSH LoginGraceTime is %v seconds
 # =============================================================================
 
 config_violations contains "CIS 5.2.17: SSH Banner not configured" if {
-	not sshd_config["banner"]
+	not sshd_config.banner
 }
 
 config_violations contains "CIS 5.2.17: SSH Banner set to 'none'" if {
-	banner := sshd_config["banner"]
+	banner := sshd_config.banner
 	banner == "none"
 }
 
@@ -310,12 +310,12 @@ config_violations contains "CIS 5.2.17: SSH Banner set to 'none'" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.18: SSH UsePAM not enabled" if {
-	usepam := sshd_config["usepam"]
+	usepam := sshd_config.usepam
 	usepam != "yes"
 }
 
 config_violations contains "CIS 5.2.18: SSH UsePAM not configured" if {
-	not sshd_config["usepam"]
+	not sshd_config.usepam
 }
 
 # =============================================================================
@@ -323,7 +323,7 @@ config_violations contains "CIS 5.2.18: SSH UsePAM not configured" if {
 # =============================================================================
 
 config_violations contains "CIS 5.2.19: SSH AllowTcpForwarding is enabled (should be 'no')" if {
-	allow := sshd_config["allowtcpforwarding"]
+	allow := sshd_config.allowtcpforwarding
 	allow == "yes"
 }
 
@@ -332,7 +332,7 @@ config_violations contains "CIS 5.2.19: SSH AllowTcpForwarding is enabled (shoul
 # =============================================================================
 
 config_violations contains "CIS 5.2.20: SSH MaxStartups not configured" if {
-	not sshd_config["maxstartups"]
+	not sshd_config.maxstartups
 }
 
 # =============================================================================
@@ -340,7 +340,7 @@ config_violations contains "CIS 5.2.20: SSH MaxStartups not configured" if {
 # =============================================================================
 
 config_violations contains sprintf("CIS 5.2.21: SSH MaxSessions is %v (should be 10 or less)", [sessions]) if {
-	sessions_str := sshd_config["maxsessions"]
+	sessions_str := sshd_config.maxsessions
 	sessions := to_number(sessions_str)
 	sessions > 10
 }

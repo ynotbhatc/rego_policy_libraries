@@ -142,6 +142,7 @@ violation contains msg if {
 	not allowlisted
 	some line in lines
 	secret_assignment(line.text)
+
 	# `[^)]*` after the literal so the two-argument form — default('x', true),
 	# which is how Ansible spells "treat empty as unset" — is caught too. A
 	# pattern requiring `)` immediately after the quote missed every one of them.
@@ -159,6 +160,7 @@ violation contains msg if {
 violation contains msg if {
 	not allowlisted
 	some line in lines
+
 	# `[^}]+` not `[^}]*`: an EMPTY default (`${VAR:-}`) is not a fallback
 	# credential, it is the standard `set -u`-safe way to read a maybe-unset
 	# variable so the next line can check it and print real guidance. Flagging
@@ -166,6 +168,7 @@ violation contains msg if {
 	# message BEFORE the script's own error text can run -- strictly worse.
 	# Only a non-empty fallback is a shipped credential.
 	some m in regex.find_n(`\$\{[A-Za-z_][A-Za-z0-9_]*:-[^}]+\}`, line.text, -1)
+
 	# Shell names abbreviate (GRAFANA_PASS, DB_PASSWD), so match on an
 	# underscore-delimited SEGMENT rather than a substring. Substring matching
 	# would also catch BYPASS_CHECK and PASSED_COUNT; segment matching does not.

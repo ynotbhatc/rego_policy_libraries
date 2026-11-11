@@ -125,7 +125,7 @@ violations contains "GEISA: FAIL-CLOSED - facts 'input.lwm2m' were not supplied;
 	not input.lwm2m
 }
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
 	"pillar": "ADM",

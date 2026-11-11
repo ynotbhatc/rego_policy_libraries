@@ -40,7 +40,9 @@ crypto_policy_not_overridden if {
 	count(input.crypto_policy_overrides) == 0
 }
 
-status_ol08_00_010183 := "Not_a_Finding" if { crypto_policy_not_overridden } else := "Open"
+status_ol08_00_010183 := "Not_a_Finding" if crypto_policy_not_overridden
+
+else := "Open"
 
 finding_ol08_00_010183 := {
 	"vuln_id": "V-283447",
@@ -72,7 +74,9 @@ dod_pki_enabled if {
 	input.pam_config.pkcs11_enabled == true
 }
 
-status_ol08_00_010400 := "Not_a_Finding" if { dod_pki_enabled } else := "Open"
+status_ol08_00_010400 := "Not_a_Finding" if dod_pki_enabled
+
+else := "Open"
 
 finding_ol08_00_010400 := {
 	"vuln_id": "V-248587",
@@ -96,7 +100,9 @@ cert_user_mapping if {
 	input.pam_config.cert_mapping_configured == true
 }
 
-status_ol08_00_020090 := "Not_a_Finding" if { cert_user_mapping } else := "Open"
+status_ol08_00_020090 := "Not_a_Finding" if cert_user_mapping
+
+else := "Open"
 
 finding_ol08_00_020090 := {
 	"vuln_id": "V-248685",
@@ -111,9 +117,7 @@ finding_ol08_00_020090 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_ol08_00_010183,
-]
+cat_i_findings := [finding_ol08_00_010183]
 
 cat_ii_findings := [
 	finding_ol08_00_010400,

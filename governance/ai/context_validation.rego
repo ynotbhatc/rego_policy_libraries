@@ -29,11 +29,11 @@ import rego.v1
 
 # Environment risk levels
 environment_risk := {
-    "production": "high",
-    "staging": "medium",
-    "development": "low",
-    "test": "low",
-    "sandbox": "low"
+	"production": "high",
+	"staging": "medium",
+	"development": "low",
+	"test": "low",
+	"sandbox": "low",
 }
 
 # Default: context invalid if not explicitly valid
@@ -41,29 +41,29 @@ default context_valid := false
 
 # Context is valid if all checks pass
 context_valid if {
-    environment_allowed
-    within_time_window
-    scope_valid
-    rate_limit_ok
+	environment_allowed
+	within_time_window
+	scope_valid
+	rate_limit_ok
 }
 
 # Environment checks
 default environment_allowed := false
 
 environment_allowed if {
-    input.context.environment
-    env_risk := environment_risk[input.context.environment]
-    env_risk != ""
+	input.context.environment
+	env_risk := environment_risk[input.context.environment]
+	env_risk != ""
 
-    # Non-production environments allow all AI operations
-    input.context.environment != "production"
+	# Non-production environments allow all AI operations
+	input.context.environment != "production"
 }
 
 environment_allowed if {
-    input.context.environment == "production"
+	input.context.environment == "production"
 
-    # Production requires explicit production_access flag
-    input.ai_system.production_access == true
+	# Production requires explicit production_access flag
+	input.ai_system.production_access == true
 }
 
 # Time window checks (for maintenance operations)
@@ -73,12 +73,12 @@ environment_allowed if {
 default within_time_window := false
 
 within_time_window if {
-    not input.context.require_maintenance_window
+	not input.context.require_maintenance_window
 }
 
 within_time_window if {
-    input.context.require_maintenance_window
-    input.context.maintenance_window_active == true
+	input.context.require_maintenance_window
+	input.context.maintenance_window_active == true
 }
 
 # Scope validation
@@ -88,13 +88,13 @@ within_time_window if {
 default scope_valid := false
 
 scope_valid if {
-    not input.context.scope_limit
+	not input.context.scope_limit
 }
 
 scope_valid if {
-    input.context.scope_limit
-    input.context.target_hosts
-    count(input.context.target_hosts) <= input.context.scope_limit
+	input.context.scope_limit
+	input.context.target_hosts
+	count(input.context.target_hosts) <= input.context.scope_limit
 }
 
 # Rate limiting
@@ -104,31 +104,31 @@ scope_valid if {
 default rate_limit_ok := false
 
 rate_limit_ok if {
-    not input.context.rate_limit
+	not input.context.rate_limit
 }
 
 rate_limit_ok if {
-    input.context.rate_limit
-    input.context.actions_in_window
-    input.context.actions_in_window < input.context.rate_limit
+	input.context.rate_limit
+	input.context.actions_in_window
+	input.context.actions_in_window < input.context.rate_limit
 }
 
 # Blocked operations check
 default operation_blocked := false
 
 operation_blocked if {
-    input.context.blocked_operations
-    input.action in input.context.blocked_operations
+	input.context.blocked_operations
+	input.action in input.context.blocked_operations
 }
 
 # Context validation report
 context_report := {
-    "environment": object.get(input, ["context", "environment"], "unknown"),
-    "environment_risk": object.get(environment_risk, object.get(input, ["context", "environment"], ""), "unknown"),
-    "environment_allowed": environment_allowed,
-    "within_time_window": within_time_window,
-    "scope_valid": scope_valid,
-    "rate_limit_ok": rate_limit_ok,
-    "context_valid": context_valid,
-    "operation_blocked": operation_blocked
+	"environment": object.get(input, ["context", "environment"], "unknown"),
+	"environment_risk": object.get(environment_risk, object.get(input, ["context", "environment"], ""), "unknown"),
+	"environment_allowed": environment_allowed,
+	"within_time_window": within_time_window,
+	"scope_valid": scope_valid,
+	"rate_limit_ok": rate_limit_ok,
+	"context_valid": context_valid,
+	"operation_blocked": operation_blocked,
 }

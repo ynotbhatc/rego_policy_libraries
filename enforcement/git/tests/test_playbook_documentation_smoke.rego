@@ -9,4 +9,3 @@ test_playbook_documentation_loads_on_empty_input if {
 	m := data.git_audit.playbook_documentation with input as {}
 	is_object(m)
 }
-

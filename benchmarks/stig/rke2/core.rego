@@ -39,7 +39,7 @@ package stig.rke2.core
 #     entries DISA names (config.yaml; agent, bin, data, server; cred, db, tls, manifests, logs, token; ...).
 #     input.cluster.namespace_resources / input.cluster.images / input.collection_status : as for Kubernetes
 #     input.attest.<key>                       : organizational attestations
-#   
+#
 
 import rego.v1
 
@@ -160,6 +160,7 @@ _mode_le(mode, mx) if {
 	m := mode
 	n := count(m)
 	n >= 3
+
 	# per-character split (split(m, "") does not terminate on OPA 1.10)
 	d := [substring(m, i, 1) | some i in numbers.range(0, n - 1)]
 	every i, c in d {
@@ -943,7 +944,7 @@ default r_cntr_r2_000970 := false
 r_cntr_r2_000970 if {
 	count(missing_r_cntr_r2_000970) == 0
 	_only_kubernetes_service(input.cluster.namespace_resources)
-	input.collection_status["namespace_resources"] == "ok"
+	input.collection_status.namespace_resources == "ok"
 	input.attest.kube_system_resources_approved == true
 }
 
@@ -1056,7 +1057,7 @@ default r_cntr_r2_001580 := false
 r_cntr_r2_001580 if {
 	count(missing_r_cntr_r2_001580) == 0
 	_single_version_per_image(input.cluster.images)
-	input.collection_status["images"] == "ok"
+	input.collection_status.images == "ok"
 }
 
 default detail_r_cntr_r2_001580 := ""

@@ -67,7 +67,7 @@ package stig.kubernetes.core
 #                                                (control-plane manifests and confs, kubelet.conf, config.yaml, PKI
 #                                                ca/apiserver crt+key, etcd member) must be present
 #     input.attest.<key>                       : organizational attestations (see each rule)
-#   
+#
 
 import rego.v1
 
@@ -188,6 +188,7 @@ _mode_le(mode, mx) if {
 	m := mode
 	n := count(m)
 	n >= 3
+
 	# per-character split (split(m, "") does not terminate on OPA 1.10)
 	d := [substring(m, i, 1) | some i in numbers.range(0, n - 1)]
 	every i, c in d {
@@ -600,7 +601,7 @@ default r_cntr_k8_000290 := false
 r_cntr_k8_000290 if {
 	count(missing_r_cntr_k8_000290) == 0
 	_only_kubernetes_service(input.cluster.namespace_resources)
-	input.collection_status["namespace_resources"] == "ok"
+	input.collection_status.namespace_resources == "ok"
 }
 
 default detail_r_cntr_k8_000290 := ""
@@ -924,7 +925,7 @@ r_cntr_k8_000400 if {
 	every n in input.worker_nodes {
 		n.sshd_active == false
 	}
-	input.collection_status["worker_nodes"] == "ok"
+	input.collection_status.worker_nodes == "ok"
 }
 
 default detail_r_cntr_k8_000400 := ""
@@ -964,7 +965,7 @@ r_cntr_k8_000410 if {
 	every n in input.worker_nodes {
 		n.sshd_enabled == false
 	}
-	input.collection_status["worker_nodes"] == "ok"
+	input.collection_status.worker_nodes == "ok"
 }
 
 default detail_r_cntr_k8_000410 := ""
@@ -1001,7 +1002,7 @@ r_cntr_k8_000420 if {
 	count(missing_r_cntr_k8_000420) == 0
 	is_array(input.cluster.dashboard_pods)
 	count(input.cluster.dashboard_pods) == 0
-	input.collection_status["dashboard_pods"] == "ok"
+	input.collection_status.dashboard_pods == "ok"
 }
 
 default detail_r_cntr_k8_000420 := ""
@@ -1041,7 +1042,7 @@ r_cntr_k8_000430 if {
 	every v in input.kubectl.client_versions {
 		_ver_at_least(v, 1, 12, 9)
 	}
-	input.collection_status["kubectl_client_versions"] == "ok"
+	input.collection_status.kubectl_client_versions == "ok"
 }
 
 default detail_r_cntr_k8_000430 := ""
@@ -1349,8 +1350,8 @@ default r_cntr_k8_000860 := false
 
 r_cntr_k8_000860 if {
 	count(missing_r_cntr_k8_000860) == 0
-	_files_owned(input.files["manifests"], "root", "root")
-	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
+	_files_owned(input.files.manifests, "root", "root")
+	_has_paths(input.files.manifests, ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_000860 := ""
@@ -1385,7 +1386,7 @@ default r_cntr_k8_000880 := false
 
 r_cntr_k8_000880 if {
 	count(missing_r_cntr_k8_000880) == 0
-	_files_owned(input.files["kubelet_config_file"], "root", "root")
+	_files_owned(input.files.kubelet_config_file, "root", "root")
 }
 
 default detail_r_cntr_k8_000880 := ""
@@ -1420,7 +1421,7 @@ default r_cntr_k8_000890 := false
 
 r_cntr_k8_000890 if {
 	count(missing_r_cntr_k8_000890) == 0
-	_files_mode_le(input.files["kubelet_config_file"], "644")
+	_files_mode_le(input.files.kubelet_config_file, "644")
 }
 
 default detail_r_cntr_k8_000890 := ""
@@ -1455,8 +1456,8 @@ default r_cntr_k8_000900 := false
 
 r_cntr_k8_000900 if {
 	count(missing_r_cntr_k8_000900) == 0
-	_files_mode_le(input.files["manifests"], "644")
-	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
+	_files_mode_le(input.files.manifests, "644")
+	_has_paths(input.files.manifests, ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_000900 := ""
@@ -1670,7 +1671,7 @@ r_cntr_k8_000960 if {
 	every p in input.workloads.user_pod_host_ports {
 		to_number(p) >= 1024
 	}
-	input.collection_status["user_pod_host_ports"] == "ok"
+	input.collection_status.user_pod_host_ports == "ok"
 }
 
 default detail_r_cntr_k8_000960 := ""
@@ -1706,7 +1707,7 @@ default r_cntr_k8_001160 := false
 r_cntr_k8_001160 if {
 	count(missing_r_cntr_k8_001160) == 0
 	input.secrets.env_var_usage_count == 0
-	input.collection_status["secret_env_scan"] == "ok"
+	input.collection_status.secret_env_scan == "ok"
 }
 
 default detail_r_cntr_k8_001160 := ""
@@ -2877,7 +2878,7 @@ default r_cntr_k8_002700 := false
 r_cntr_k8_002700 if {
 	count(missing_r_cntr_k8_002700) == 0
 	_single_version_per_image(input.cluster.images)
-	input.collection_status["images"] == "ok"
+	input.collection_status.images == "ok"
 }
 
 default detail_r_cntr_k8_002700 := ""
@@ -2917,7 +2918,7 @@ r_cntr_k8_002720 if {
 		_ver_part(v, 0) == 1
 		abs(_ver_part(v, 1) - _k8s_minor) <= 1
 	}
-	input.collection_status["kubectl_client_versions"] == "ok"
+	input.collection_status.kubectl_client_versions == "ok"
 }
 
 default detail_r_cntr_k8_002720 := ""
@@ -2952,8 +2953,8 @@ default r_cntr_k8_003110 := false
 
 r_cntr_k8_003110 if {
 	count(missing_r_cntr_k8_003110) == 0
-	_files_owned(input.files["manifests"], "root", "root")
-	_has_paths(input.files["manifests"], ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
+	_files_owned(input.files.manifests, "root", "root")
+	_has_paths(input.files.manifests, ["/etc/kubernetes/manifests/kube-apiserver.yaml", "/etc/kubernetes/manifests/kube-controller-manager.yaml", "/etc/kubernetes/manifests/kube-scheduler.yaml"])
 }
 
 default detail_r_cntr_k8_003110 := ""
@@ -2988,8 +2989,8 @@ default r_cntr_k8_003120 := false
 
 r_cntr_k8_003120 if {
 	count(missing_r_cntr_k8_003120) == 0
-	_files_owned(input.files["etcd_data"], "etcd", "etcd")
-	_has_paths(input.files["etcd_data"], ["/var/lib/etcd/member"])
+	_files_owned(input.files.etcd_data, "etcd", "etcd")
+	_has_paths(input.files.etcd_data, ["/var/lib/etcd/member"])
 }
 
 default detail_r_cntr_k8_003120 := ""
@@ -3024,8 +3025,8 @@ default r_cntr_k8_003130 := false
 
 r_cntr_k8_003130 if {
 	count(missing_r_cntr_k8_003130) == 0
-	_files_owned(input.files["control_plane_confs"], "root", "root")
-	_has_paths(input.files["control_plane_confs"], ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
+	_files_owned(input.files.control_plane_confs, "root", "root")
+	_has_paths(input.files.control_plane_confs, ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
 }
 
 default detail_r_cntr_k8_003130 := ""
@@ -3061,7 +3062,7 @@ default r_cntr_k8_003140 := false
 r_cntr_k8_003140 if {
 	count(missing_r_cntr_k8_003140) == 0
 	input.kube_proxy.running == true
-	_files_mode_le(input.files["kube_proxy_kubeconfig"], "644")
+	_files_mode_le(input.files.kube_proxy_kubeconfig, "644")
 }
 
 r_cntr_k8_003140 if {
@@ -3102,7 +3103,7 @@ default r_cntr_k8_003150 := false
 r_cntr_k8_003150 if {
 	count(missing_r_cntr_k8_003150) == 0
 	input.kube_proxy.running == true
-	_files_owned(input.files["kube_proxy_kubeconfig"], "root", "root")
+	_files_owned(input.files.kube_proxy_kubeconfig, "root", "root")
 }
 
 r_cntr_k8_003150 if {
@@ -3144,7 +3145,7 @@ r_cntr_k8_003160 if {
 	count(missing_r_cntr_k8_003160) == 0
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "client-ca-file") == 0
-	_files_mode_le(input.files["kubelet_client_ca"], "644")
+	_files_mode_le(input.files.kubelet_client_ca, "644")
 }
 
 default detail_r_cntr_k8_003160 := ""
@@ -3181,7 +3182,7 @@ r_cntr_k8_003170 if {
 	count(missing_r_cntr_k8_003170) == 0
 	is_object(input.kubelet.flags)
 	_flag_count(input.kubelet.flags, "client-ca-file") == 0
-	_files_owned(input.files["kubelet_client_ca"], "root", "root")
+	_files_owned(input.files.kubelet_client_ca, "root", "root")
 }
 
 default detail_r_cntr_k8_003170 := ""
@@ -3216,8 +3217,8 @@ default r_cntr_k8_003180 := false
 
 r_cntr_k8_003180 if {
 	count(missing_r_cntr_k8_003180) == 0
-	_files_owned(input.files["pki"], "root", "root")
-	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
+	_files_owned(input.files.pki, "root", "root")
+	_has_paths(input.files.pki, ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003180 := ""
@@ -3252,8 +3253,8 @@ default r_cntr_k8_003190 := false
 
 r_cntr_k8_003190 if {
 	count(missing_r_cntr_k8_003190) == 0
-	_files_mode_le(input.files["kubelet_kubeconfig"], "644")
-	_has_paths(input.files["kubelet_kubeconfig"], ["/etc/kubernetes/kubelet.conf"])
+	_files_mode_le(input.files.kubelet_kubeconfig, "644")
+	_has_paths(input.files.kubelet_kubeconfig, ["/etc/kubernetes/kubelet.conf"])
 }
 
 default detail_r_cntr_k8_003190 := ""
@@ -3288,8 +3289,8 @@ default r_cntr_k8_003200 := false
 
 r_cntr_k8_003200 if {
 	count(missing_r_cntr_k8_003200) == 0
-	_files_owned(input.files["kubelet_kubeconfig"], "root", "root")
-	_has_paths(input.files["kubelet_kubeconfig"], ["/etc/kubernetes/kubelet.conf"])
+	_files_owned(input.files.kubelet_kubeconfig, "root", "root")
+	_has_paths(input.files.kubelet_kubeconfig, ["/etc/kubernetes/kubelet.conf"])
 }
 
 default detail_r_cntr_k8_003200 := ""
@@ -3324,7 +3325,7 @@ default r_cntr_k8_003210 := false
 
 r_cntr_k8_003210 if {
 	count(missing_r_cntr_k8_003210) == 0
-	_files_owned(input.files["kubeadm_conf"], "root", "root")
+	_files_owned(input.files.kubeadm_conf, "root", "root")
 }
 
 default detail_r_cntr_k8_003210 := ""
@@ -3359,7 +3360,7 @@ default r_cntr_k8_003220 := false
 
 r_cntr_k8_003220 if {
 	count(missing_r_cntr_k8_003220) == 0
-	_files_mode_le(input.files["kubeadm_conf"], "644")
+	_files_mode_le(input.files.kubeadm_conf, "644")
 }
 
 default detail_r_cntr_k8_003220 := ""
@@ -3394,8 +3395,8 @@ default r_cntr_k8_003230 := false
 
 r_cntr_k8_003230 if {
 	count(missing_r_cntr_k8_003230) == 0
-	_files_mode_le(input.files["kubelet_config_yaml"], "644")
-	_has_paths(input.files["kubelet_config_yaml"], ["/var/lib/kubelet/config.yaml"])
+	_files_mode_le(input.files.kubelet_config_yaml, "644")
+	_has_paths(input.files.kubelet_config_yaml, ["/var/lib/kubelet/config.yaml"])
 }
 
 default detail_r_cntr_k8_003230 := ""
@@ -3430,8 +3431,8 @@ default r_cntr_k8_003240 := false
 
 r_cntr_k8_003240 if {
 	count(missing_r_cntr_k8_003240) == 0
-	_files_owned(input.files["kubelet_config_yaml"], "root", "root")
-	_has_paths(input.files["kubelet_config_yaml"], ["/var/lib/kubelet/config.yaml"])
+	_files_owned(input.files.kubelet_config_yaml, "root", "root")
+	_has_paths(input.files.kubelet_config_yaml, ["/var/lib/kubelet/config.yaml"])
 }
 
 default detail_r_cntr_k8_003240 := ""
@@ -3466,8 +3467,8 @@ default r_cntr_k8_003260 := false
 
 r_cntr_k8_003260 if {
 	count(missing_r_cntr_k8_003260) == 0
-	_files_mode_le(input.files["etcd_data"], "644")
-	_has_paths(input.files["etcd_data"], ["/var/lib/etcd/member"])
+	_files_mode_le(input.files.etcd_data, "644")
+	_has_paths(input.files.etcd_data, ["/var/lib/etcd/member"])
 }
 
 default detail_r_cntr_k8_003260 := ""
@@ -3502,8 +3503,8 @@ default r_cntr_k8_003270 := false
 
 r_cntr_k8_003270 if {
 	count(missing_r_cntr_k8_003270) == 0
-	_files_mode_le(input.files["control_plane_confs"], "644")
-	_has_paths(input.files["control_plane_confs"], ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
+	_files_mode_le(input.files.control_plane_confs, "644")
+	_has_paths(input.files.control_plane_confs, ["/etc/kubernetes/admin.conf", "/etc/kubernetes/scheduler.conf", "/etc/kubernetes/controller-manager.conf"])
 }
 
 default detail_r_cntr_k8_003270 := ""
@@ -3719,8 +3720,8 @@ default r_cntr_k8_003330 := false
 
 r_cntr_k8_003330 if {
 	count(missing_r_cntr_k8_003330) == 0
-	_files_suffix_mode_le(input.files["pki"], ".crt", "644")
-	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
+	_files_suffix_mode_le(input.files.pki, ".crt", "644")
+	_has_paths(input.files.pki, ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003330 := ""
@@ -3755,8 +3756,8 @@ default r_cntr_k8_003340 := false
 
 r_cntr_k8_003340 if {
 	count(missing_r_cntr_k8_003340) == 0
-	_files_suffix_mode_le(input.files["pki"], ".key", "600")
-	_has_paths(input.files["pki"], ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
+	_files_suffix_mode_le(input.files.pki, ".key", "600")
+	_has_paths(input.files.pki, ["/etc/kubernetes/pki/ca.crt", "/etc/kubernetes/pki/ca.key", "/etc/kubernetes/pki/apiserver.crt", "/etc/kubernetes/pki/apiserver.key"])
 }
 
 default detail_r_cntr_k8_003340 := ""

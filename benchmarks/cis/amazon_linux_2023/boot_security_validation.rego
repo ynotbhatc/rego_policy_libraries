@@ -39,147 +39,159 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # CIS 1.3.1: AIDE must be present
 violations contains msg if {
-    not input.boot_security.aide_installed
-    msg := "CIS 1.3.1: AIDE is not installed"
+	not input.boot_security.aide_installed
+	msg := "CIS 1.3.1: AIDE is not installed"
 }
 
 # CIS 1.3.2: filesystem integrity must be regularly checked
 violations contains msg if {
-    input.boot_security.aide_installed
-    not input.boot_security.aide_cron_configured
-    not input.boot_security.aide_timer_configured
-    msg := "CIS 1.3.2: AIDE filesystem integrity checks are not scheduled (no cron job or systemd timer)"
+	input.boot_security.aide_installed
+	not input.boot_security.aide_cron_configured
+	not input.boot_security.aide_timer_configured
+	msg := "CIS 1.3.2: AIDE filesystem integrity checks are not scheduled (no cron job or systemd timer)"
 }
 
 violations contains msg if {
-    input.boot_security.aide_installed
-    not input.boot_security.aide_database_initialized
-    msg := "CIS 1.3.2: AIDE database is not initialized - run 'aide --init'"
+	input.boot_security.aide_installed
+	not input.boot_security.aide_database_initialized
+	msg := "CIS 1.3.2: AIDE database is not initialized - run 'aide --init'"
 }
 
 # CIS 1.4: Secure Boot Settings
 
 # CIS 1.4.1: bootloader password must be set
 violations contains msg if {
-    not input.boot_security.grub_password_set
-    msg := "CIS 1.4.1: GRUB bootloader password is not set"
+	not input.boot_security.grub_password_set
+	msg := "CIS 1.4.1: GRUB bootloader password is not set"
 }
 
 violations contains msg if {
-    input.boot_security.grub_password_set
-    not input.boot_security.grub_password_hashed
-    msg := "CIS 1.4.1: GRUB bootloader password is not hashed (or hashing evidence not collected)"
+	input.boot_security.grub_password_set
+	not input.boot_security.grub_password_hashed
+	msg := "CIS 1.4.1: GRUB bootloader password is not hashed (or hashing evidence not collected)"
 }
 
 # CIS 1.4.2: owner, group, and mode of bootloader config must be tightened
 violations contains msg if {
-    not input.boot_security.grub_cfg_mode
-    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_mode not collected"
+	not input.boot_security.grub_cfg_mode
+	msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_mode not collected"
 }
 
 violations contains msg if {
-    mode := input.boot_security.grub_cfg_mode
-    not mode_within(mode, "0600")
-    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or stricter",
-        [mode])
+	mode := input.boot_security.grub_cfg_mode
+	not mode_within(mode, "0600")
+	msg := sprintf(
+		"CIS 1.4.2: /boot/grub2/grub.cfg has mode %s, should be 0600 or stricter",
+		[mode],
+	)
 }
 
 violations contains msg if {
-    not input.boot_security.grub_cfg_owner
-    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_owner not collected"
+	not input.boot_security.grub_cfg_owner
+	msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_owner not collected"
 }
 
 violations contains msg if {
-    input.boot_security.grub_cfg_owner != "root"
-    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg owned by %s, should be root",
-        [input.boot_security.grub_cfg_owner])
+	input.boot_security.grub_cfg_owner != "root"
+	msg := sprintf(
+		"CIS 1.4.2: /boot/grub2/grub.cfg owned by %s, should be root",
+		[input.boot_security.grub_cfg_owner],
+	)
 }
 
 violations contains msg if {
-    not input.boot_security.grub_cfg_group
-    msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_group not collected"
+	not input.boot_security.grub_cfg_group
+	msg := "CIS 1.4.2: evidence missing - boot_security.grub_cfg_group not collected"
 }
 
 violations contains msg if {
-    input.boot_security.grub_cfg_group != "root"
-    msg := sprintf("CIS 1.4.2: /boot/grub2/grub.cfg group is %s, should be root",
-        [input.boot_security.grub_cfg_group])
+	input.boot_security.grub_cfg_group != "root"
+	msg := sprintf(
+		"CIS 1.4.2: /boot/grub2/grub.cfg group is %s, should be root",
+		[input.boot_security.grub_cfg_group],
+	)
 }
 
 # CIS 1.4.3: checked condition — authentication required for single user mode
 violations contains msg if {
-    not input.boot_security.single_user_auth_required
-    msg := "CIS 1.4.3: Authentication not required for single user mode"
+	not input.boot_security.single_user_auth_required
+	msg := "CIS 1.4.3: Authentication not required for single user mode"
 }
 
 # CIS 1.5: Additional Process Hardening
 
 # CIS 1.5.1: core dumps must be restricted
 violations contains msg if {
-    not input.boot_security.core_dumps_disabled_sysctl
-    msg := "CIS 1.5.1: Core dumps not disabled via sysctl (fs.suid_dumpable should be 0)"
+	not input.boot_security.core_dumps_disabled_sysctl
+	msg := "CIS 1.5.1: Core dumps not disabled via sysctl (fs.suid_dumpable should be 0)"
 }
 
 violations contains msg if {
-    not input.boot_security.core_dumps_disabled_limits
-    msg := "CIS 1.5.1: Core dumps not disabled via limits.conf (hard core should be 0)"
+	not input.boot_security.core_dumps_disabled_limits
+	msg := "CIS 1.5.1: Core dumps not disabled via limits.conf (hard core should be 0)"
 }
 
 violations contains msg if {
-    input.boot_security.systemd_coredump_storage
-    input.boot_security.systemd_coredump_storage != "none"
-    msg := sprintf("CIS 1.5.1: systemd-coredump Storage is %s, should be 'none'",
-        [input.boot_security.systemd_coredump_storage])
+	input.boot_security.systemd_coredump_storage
+	input.boot_security.systemd_coredump_storage != "none"
+	msg := sprintf(
+		"CIS 1.5.1: systemd-coredump Storage is %s, should be 'none'",
+		[input.boot_security.systemd_coredump_storage],
+	)
 }
 
 violations contains msg if {
-    input.boot_security.systemd_coredump_process_size_max
-    input.boot_security.systemd_coredump_process_size_max != "0"
-    msg := "CIS 1.5.1: systemd-coredump ProcessSizeMax should be 0"
+	input.boot_security.systemd_coredump_process_size_max
+	input.boot_security.systemd_coredump_process_size_max != "0"
+	msg := "CIS 1.5.1: systemd-coredump ProcessSizeMax should be 0"
 }
 
 # CIS 1.5.2: address space layout randomization (ASLR) must be turned on
 violations contains msg if {
-    input.boot_security.aslr_value
-    to_number(input.boot_security.aslr_value) != 2
-    msg := sprintf("CIS 1.5.2: kernel.randomize_va_space is %s, should be 2",
-        [input.boot_security.aslr_value])
+	input.boot_security.aslr_value
+	to_number(input.boot_security.aslr_value) != 2
+	msg := sprintf(
+		"CIS 1.5.2: kernel.randomize_va_space is %s, should be 2",
+		[input.boot_security.aslr_value],
+	)
 }
 
 violations contains msg if {
-    not input.boot_security.aslr_value
-    msg := "CIS 1.5.2: kernel.randomize_va_space not configured (should be 2)"
+	not input.boot_security.aslr_value
+	msg := "CIS 1.5.2: kernel.randomize_va_space not configured (should be 2)"
 }
 
 # CIS 1.5.3: prelink must not be present
 violations contains msg if {
-    input.boot_security.prelink_installed
-    msg := "CIS 1.5.3: prelink is installed - should be removed"
+	input.boot_security.prelink_installed
+	msg := "CIS 1.5.3: prelink is installed - should be removed"
 }
 
 # CIS 1.5.4: Automatic Error Reporting must stay off
 violations contains msg if {
-    input.boot_security.abrtd_enabled
-    msg := "CIS 1.5.4: Automatic Bug Reporting Tool (abrtd) is enabled - should be disabled"
+	input.boot_security.abrtd_enabled
+	msg := "CIS 1.5.4: Automatic Bug Reporting Tool (abrtd) is enabled - should be disabled"
 }
 
 violations contains msg if {
-    input.boot_security.abrt_installed
-    msg := "CIS 1.5.4: ABRT packages are installed - should be removed from production systems"
+	input.boot_security.abrt_installed
+	msg := "CIS 1.5.4: ABRT packages are installed - should be removed from production systems"
 }
 
 # Additional checks for kernel parameters
 violations contains msg if {
-    input.boot_security.kernel_kptr_restrict
-    to_number(input.boot_security.kernel_kptr_restrict) != 1
-    msg := sprintf("CIS 1.5: kernel.kptr_restrict is %s, should be 1 for additional hardening",
-        [input.boot_security.kernel_kptr_restrict])
+	input.boot_security.kernel_kptr_restrict
+	to_number(input.boot_security.kernel_kptr_restrict) != 1
+	msg := sprintf(
+		"CIS 1.5: kernel.kptr_restrict is %s, should be 1 for additional hardening",
+		[input.boot_security.kernel_kptr_restrict],
+	)
 }
 
 violations contains msg if {
-    input.boot_security.kernel_dmesg_restrict
-    to_number(input.boot_security.kernel_dmesg_restrict) != 1
-    msg := "CIS 1.5: kernel.dmesg_restrict should be 1 to restrict dmesg access"
+	input.boot_security.kernel_dmesg_restrict
+	to_number(input.boot_security.kernel_dmesg_restrict) != 1
+	msg := "CIS 1.5: kernel.dmesg_restrict should be 1 to restrict dmesg access"
 }
 
 # kdump: CIS does not require kdump to be disabled, so there is no violation for it
@@ -187,5 +199,5 @@ violations contains msg if {
 
 # Compliance check
 compliant if {
-    count(violations) == 0
+	count(violations) == 0
 }

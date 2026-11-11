@@ -44,9 +44,12 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # RHEL-08-010200 | V-230264 | CAT I - No world-writable files
 default no_world_writable := false
-no_world_writable if { count(input.file_permissions.world_writable_files) == 0 }
 
-status_rhel_08_010200 := "Not_a_Finding" if { no_world_writable } else := "Open"
+no_world_writable if count(input.file_permissions.world_writable_files) == 0
+
+status_rhel_08_010200 := "Not_a_Finding" if no_world_writable
+
+else := "Open"
 finding_rhel_08_010200 := {
 	"vuln_id": "V-230264",
 	"stig_id": "RHEL-08-010200",
@@ -58,9 +61,12 @@ finding_rhel_08_010200 := {
 
 # RHEL-08-010210 | V-230265 | CAT I - No unowned files
 default no_unowned := false
-no_unowned if { count(input.file_permissions.unowned_files) == 0 }
 
-status_rhel_08_010210 := "Not_a_Finding" if { no_unowned } else := "Open"
+no_unowned if count(input.file_permissions.unowned_files) == 0
+
+status_rhel_08_010210 := "Not_a_Finding" if no_unowned
+
+else := "Open"
 finding_rhel_08_010210 := {
 	"vuln_id": "V-230265",
 	"stig_id": "RHEL-08-010210",
@@ -76,9 +82,12 @@ finding_rhel_08_010210 := {
 
 # RHEL-08-010220 | V-230266 | CAT II - /etc/passwd permissions 0644
 default passwd_perms := false
-passwd_perms if { mode_within(input.file_permissions.etc_passwd.mode, "0644") }
 
-status_rhel_08_010220 := "Not_a_Finding" if { passwd_perms } else := "Open"
+passwd_perms if mode_within(input.file_permissions.etc_passwd.mode, "0644")
+
+status_rhel_08_010220 := "Not_a_Finding" if passwd_perms
+
+else := "Open"
 finding_rhel_08_010220 := {
 	"vuln_id": "V-230266",
 	"stig_id": "RHEL-08-010220",
@@ -90,10 +99,13 @@ finding_rhel_08_010220 := {
 
 # RHEL-08-010230 | V-230267 | CAT II - /etc/shadow permissions 0000
 default shadow_perms := false
-shadow_perms if { input.file_permissions.etc_shadow.mode == "0000" }
-shadow_perms if { input.file_permissions.etc_shadow.mode == "000" }
 
-status_rhel_08_010230 := "Not_a_Finding" if { shadow_perms } else := "Open"
+shadow_perms if input.file_permissions.etc_shadow.mode == "0000"
+shadow_perms if input.file_permissions.etc_shadow.mode == "000"
+
+status_rhel_08_010230 := "Not_a_Finding" if shadow_perms
+
+else := "Open"
 finding_rhel_08_010230 := {
 	"vuln_id": "V-230267",
 	"stig_id": "RHEL-08-010230",
@@ -105,9 +117,12 @@ finding_rhel_08_010230 := {
 
 # RHEL-08-010240 | V-230268 | CAT II - /etc/group permissions 0644
 default group_perms := false
-group_perms if { mode_within(input.file_permissions.etc_group.mode, "0644") }
 
-status_rhel_08_010240 := "Not_a_Finding" if { group_perms } else := "Open"
+group_perms if mode_within(input.file_permissions.etc_group.mode, "0644")
+
+status_rhel_08_010240 := "Not_a_Finding" if group_perms
+
+else := "Open"
 finding_rhel_08_010240 := {
 	"vuln_id": "V-230268",
 	"stig_id": "RHEL-08-010240",
@@ -119,9 +134,12 @@ finding_rhel_08_010240 := {
 
 # RHEL-08-010250 | V-230269 | CAT II - No undocumented SUID files
 default no_suid_issues := false
-no_suid_issues if { count(input.file_permissions.undocumented_suid_files) == 0 }
 
-status_rhel_08_010250 := "Not_a_Finding" if { no_suid_issues } else := "Open"
+no_suid_issues if count(input.file_permissions.undocumented_suid_files) == 0
+
+status_rhel_08_010250 := "Not_a_Finding" if no_suid_issues
+
+else := "Open"
 finding_rhel_08_010250 := {
 	"vuln_id": "V-230269",
 	"stig_id": "RHEL-08-010250",
@@ -133,9 +151,12 @@ finding_rhel_08_010250 := {
 
 # RHEL-08-010260 | V-230270 | CAT II - Library files permissions 0755
 default lib_perms := false
-lib_perms if { input.file_permissions.library_files_ok == true }
 
-status_rhel_08_010260 := "Not_a_Finding" if { lib_perms } else := "Open"
+lib_perms if input.file_permissions.library_files_ok == true
+
+status_rhel_08_010260 := "Not_a_Finding" if lib_perms
+
+else := "Open"
 finding_rhel_08_010260 := {
 	"vuln_id": "V-230270",
 	"stig_id": "RHEL-08-010260",
@@ -147,9 +168,12 @@ finding_rhel_08_010260 := {
 
 # RHEL-08-010270 | V-230271 | CAT II - Home directory permissions
 default home_perms := false
-home_perms if { count(input.file_permissions.insecure_home_dirs) == 0 }
 
-status_rhel_08_010270 := "Not_a_Finding" if { home_perms } else := "Open"
+home_perms if count(input.file_permissions.insecure_home_dirs) == 0
+
+status_rhel_08_010270 := "Not_a_Finding" if home_perms
+
+else := "Open"
 finding_rhel_08_010270 := {
 	"vuln_id": "V-230271",
 	"stig_id": "RHEL-08-010270",

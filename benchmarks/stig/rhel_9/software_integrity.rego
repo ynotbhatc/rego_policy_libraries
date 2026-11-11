@@ -40,7 +40,9 @@ gpgcheck_global if {
 	input.yum_config.gpgcheck == true
 }
 
-status_rhel_09_251010 := "Not_a_Finding" if { gpgcheck_global } else := "Open"
+status_rhel_09_251010 := "Not_a_Finding" if gpgcheck_global
+
+else := "Open"
 
 finding_rhel_09_251010 := {
 	"vuln_id": "V-257849",
@@ -64,7 +66,9 @@ all_repos_gpgcheck if {
 	count(input.yum_repos) == 0
 }
 
-status_rhel_09_251015 := "Not_a_Finding" if { all_repos_gpgcheck } else := "Open"
+status_rhel_09_251015 := "Not_a_Finding" if all_repos_gpgcheck
+
+else := "Open"
 
 finding_rhel_09_251015 := {
 	"vuln_id": "V-257850",
@@ -87,7 +91,9 @@ no_unsigned_packages if {
 	not input.unsigned_packages
 }
 
-status_rhel_09_251020 := "Not_a_Finding" if { no_unsigned_packages } else := "Open"
+status_rhel_09_251020 := "Not_a_Finding" if no_unsigned_packages
+
+else := "Open"
 
 finding_rhel_09_251020 := {
 	"vuln_id": "V-257851",
@@ -118,7 +124,9 @@ aide_fips_hashes if {
 	"sha256" in algorithms
 }
 
-status_rhel_09_251025 := "Not_a_Finding" if { aide_fips_hashes } else := "Open"
+status_rhel_09_251025 := "Not_a_Finding" if aide_fips_hashes
+
+else := "Open"
 
 finding_rhel_09_251025 := {
 	"vuln_id": "V-257852",
@@ -138,7 +146,9 @@ aide_db_exists if {
 	input.aide_config.db_exists == true
 }
 
-status_rhel_09_251030 := "Not_a_Finding" if { aide_db_exists } else := "Open"
+status_rhel_09_251030 := "Not_a_Finding" if aide_db_exists
+
+else := "Open"
 
 finding_rhel_09_251030 := {
 	"vuln_id": "V-257853",
@@ -161,7 +171,9 @@ aide_notify_configured if {
 	input.aide_config.notify_email != ""
 }
 
-status_rhel_09_251035 := "Not_a_Finding" if { aide_notify_configured } else := "Open"
+status_rhel_09_251035 := "Not_a_Finding" if aide_notify_configured
+
+else := "Open"
 
 finding_rhel_09_251035 := {
 	"vuln_id": "V-257854",
@@ -180,7 +192,9 @@ kexec_disabled if {
 	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_rhel_09_252010 := "Not_a_Finding" if { kexec_disabled } else := "Open"
+status_rhel_09_252010 := "Not_a_Finding" if kexec_disabled
+
+else := "Open"
 
 finding_rhel_09_252010 := {
 	"vuln_id": "V-257855",
@@ -203,7 +217,9 @@ module_signing_enforced if {
 	input.kernel_config.module_sig_enforce == true
 }
 
-status_rhel_09_252015 := "Not_a_Finding" if { module_signing_enforced } else := "Open"
+status_rhel_09_252015 := "Not_a_Finding" if module_signing_enforced
+
+else := "Open"
 
 finding_rhel_09_252015 := {
 	"vuln_id": "V-257856",
@@ -222,7 +238,9 @@ localpkg_gpgcheck if {
 	input.dnf_config.localpkg_gpgcheck == true
 }
 
-status_rhel_09_252020 := "Not_a_Finding" if { localpkg_gpgcheck } else := "Open"
+status_rhel_09_252020 := "Not_a_Finding" if localpkg_gpgcheck
+
+else := "Open"
 
 finding_rhel_09_252020 := {
 	"vuln_id": "V-257857",
@@ -245,7 +263,9 @@ crypto_not_legacy if {
 	not input.crypto_policy
 }
 
-status_rhel_09_252025 := "Not_a_Finding" if { crypto_not_legacy } else := "Open"
+status_rhel_09_252025 := "Not_a_Finding" if crypto_not_legacy
+
+else := "Open"
 
 finding_rhel_09_252025 := {
 	"vuln_id": "V-257858",
@@ -264,7 +284,9 @@ rsyslog_installed if {
 	input.packages.rsyslog == true
 }
 
-status_rhel_09_252030 := "Not_a_Finding" if { rsyslog_installed } else := "Open"
+status_rhel_09_252030 := "Not_a_Finding" if rsyslog_installed
+
+else := "Open"
 
 finding_rhel_09_252030 := {
 	"vuln_id": "V-257859",
@@ -283,7 +305,9 @@ rsyslog_active if {
 	input.services.rsyslog == "active"
 }
 
-status_rhel_09_252035 := "Not_a_Finding" if { rsyslog_active } else := "Open"
+status_rhel_09_252035 := "Not_a_Finding" if rsyslog_active
+
+else := "Open"
 
 finding_rhel_09_252035 := {
 	"vuln_id": "V-257860",

@@ -15,4 +15,3 @@ test_eu_ai_act_transparency_report_wellformed_on_empty_input if {
 	is_object(report)
 	count(report) > 0
 }
-

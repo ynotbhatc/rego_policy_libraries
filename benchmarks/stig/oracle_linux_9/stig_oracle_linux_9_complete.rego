@@ -29,15 +29,15 @@ package stig.oracle_linux_9
 
 import rego.v1
 
-import data.stig.oracle_linux_9.configuration_management
-import data.stig.oracle_linux_9.services
-import data.stig.oracle_linux_9.software_integrity
-import data.stig.oracle_linux_9.file_permissions
-import data.stig.oracle_linux_9.audit_logging
-import data.stig.oracle_linux_9.ssh_config
 import data.stig.oracle_linux_9.account_auth
+import data.stig.oracle_linux_9.audit_logging
+import data.stig.oracle_linux_9.configuration_management
+import data.stig.oracle_linux_9.file_permissions
 import data.stig.oracle_linux_9.network
 import data.stig.oracle_linux_9.pki_crypto
+import data.stig.oracle_linux_9.services
+import data.stig.oracle_linux_9.software_integrity
+import data.stig.oracle_linux_9.ssh_config
 
 # =============================================================================
 # MODULE FINDING SETS

@@ -44,8 +44,11 @@ build_l3 if {
 }
 
 level := 3 if build_l3
+
 else := 2 if build_l2
+
 else := 1 if build_l1
+
 else := 0
 
 reuses_substrate := ["provenance", "signing", "build_hardening"]

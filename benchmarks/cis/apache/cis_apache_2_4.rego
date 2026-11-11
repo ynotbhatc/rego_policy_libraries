@@ -25,7 +25,6 @@ import rego.v1
 # This policy implements the CIS benchmarks for Apache HTTP Server 2.4
 # Reference: https://www.cisecurity.org/benchmark/apache_http_server
 
-
 # ---------------------------------------------------------------------------
 # Shared helpers (validation 2026-10-17)
 # ---------------------------------------------------------------------------
@@ -96,7 +95,7 @@ violations := [v |
 		minimize_features_violations,
 		ssl_tls_violations,
 		information_disclosure_violations,
-		logging_violations
+		logging_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -112,37 +111,37 @@ compliance_report := {
 	"sections": {
 		"installation": {
 			"violations": count(installation_violations),
-			"controls": 12
+			"controls": 12,
 		},
 		"minimize_modules": {
 			"violations": count(minimize_modules_violations),
-			"controls": 18
+			"controls": 18,
 		},
 		"principles_permissions": {
 			"violations": count(principles_permissions_violations),
-			"controls": 24
+			"controls": 24,
 		},
 		"access_control": {
 			"violations": count(access_control_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"minimize_features": {
 			"violations": count(minimize_features_violations),
-			"controls": 22
+			"controls": 22,
 		},
 		"ssl_tls": {
 			"violations": count(ssl_tls_violations),
-			"controls": 16
+			"controls": 16,
 		},
 		"information_disclosure": {
 			"violations": count(information_disclosure_violations),
-			"controls": 14
+			"controls": 14,
 		},
 		"logging": {
 			"violations": count(logging_violations),
-			"controls": 8
-		}
-	}
+			"controls": 8,
+		},
+	},
 }
 
 # Section 1: Planning the Installation and Deployment
@@ -159,7 +158,7 @@ installation_violations := [v |
 		["1.9: the ScoreBoard File must be Secured" | not scoreboard_file_secured],
 		["1.10: Group Write Access for the Apache Directories and Files must be Properly Restricted" | not group_write_access_restricted],
 		["1.11: Group Write Access for the Document Root Directories and Files must be Properly Restricted" | not docroot_group_write_restricted],
-		["1.12: the HTTP Request Methods must be Restricted" | not http_methods_restricted]
+		["1.12: the HTTP Request Methods must be Restricted" | not http_methods_restricted],
 	]
 	v := arrays[_][_]
 ]
@@ -267,7 +266,7 @@ minimize_modules_violations := [v |
 		["2.15: the Expires Module must be turned on" | not expires_module_enabled],
 		["2.16: the Headers Module must be turned on" | not headers_module_enabled],
 		["2.17: the SSL Module must be turned on" | not ssl_module_enabled],
-		["2.18: Only Required Modules must be Loaded" | not only_required_modules_loaded]
+		["2.18: Only Required Modules must be Loaded" | not only_required_modules_loaded],
 	]
 	v := arrays[_][_]
 ]
@@ -320,7 +319,7 @@ info_module_disabled if {
 rewrite_module_controlled if {
 	loaded_modules := input.apache.modules.loaded
 	rewrite_enabled := "rewrite" in loaded_modules
-	
+
 	# If rewrite is enabled, ensure it's properly configured
 	not rewrite_enabled
 }
@@ -329,7 +328,7 @@ rewrite_module_controlled if {
 	loaded_modules := input.apache.modules.loaded
 	rewrite_enabled := "rewrite" in loaded_modules
 	rewrite_enabled
-	
+
 	# Check if rewrite rules are properly restricted
 	rewrite_config := input.apache.config.rewrite
 	rewrite_config.options_follow_symlinks_disabled == true
@@ -379,10 +378,10 @@ only_required_modules_loaded if {
 	loaded_modules := input.apache.modules.loaded
 	required_modules := [
 		"core", "http_core", "log_config", "headers", "expires",
-		"ssl", "auth_basic", "authz_core", "authz_user", "mime"
+		"ssl", "auth_basic", "authz_core", "authz_user", "mime",
 	]
 	unnecessary_modules := [m | m := loaded_modules[_]; not m in required_modules]
-	count(unnecessary_modules) <= 5  # Allow some flexibility for site-specific needs
+	count(unnecessary_modules) <= 5 # Allow some flexibility for site-specific needs
 }
 
 # Section 3: Principles, Permissions, and Ownership
@@ -411,7 +410,7 @@ principles_permissions_violations := [v |
 		["3.21: Default CGI Content printenv Script must be Removed" | not printenv_script_removed],
 		["3.22: Default CGI Content test-cgi Script must be Removed" | not apache_test_cgi_script_removed],
 		["3.23: Default CGI Content handlers Script must be Removed" | not handlers_script_removed],
-		["3.24: the Test PHP Script must be Removed" | not apache_test_php_removed]
+		["3.24: the Test PHP Script must be Removed" | not apache_test_php_removed],
 	]
 	v := arrays[_][_]
 ]
@@ -454,9 +453,9 @@ other_write_access_restricted if {
 	all_perms := [
 		input.apache.file_permissions.server_root,
 		input.apache.file_permissions.config_files,
-		input.apache.file_permissions.document_root
+		input.apache.file_permissions.document_root,
 	]
-	other_writable := [p | p := all_perms[_]; not no_other_write(p.mode)]  # other-write bit (or unparsable mode)
+	other_writable := [p | p := all_perms[_]; not no_other_write(p.mode)] # other-write bit (or unparsable mode)
 	count(other_writable) == 0
 }
 
@@ -544,10 +543,12 @@ inappropriate_extensions_restricted if {
 	files_match := input.apache.config.files_match
 	restricted_extensions := [
 		"\\.inc$", "\\.conf$", "\\.sql$", "\\.bak$",
-		"\\.backup$", "\\.old$", "\\.tmp$"
+		"\\.backup$", "\\.old$", "\\.tmp$",
 	]
-	all_restricted := [ext | ext := restricted_extensions[_]; 
-		files_match[ext].require == "all denied"]
+	all_restricted := [ext |
+		ext := restricted_extensions[_]
+		files_match[ext].require == "all denied"
+	]
 	count(all_restricted) == count(restricted_extensions)
 }
 
@@ -605,7 +606,7 @@ access_control_violations := [v |
 		["4.25: File Upload Restrictions must be in Place" | not file_upload_restricted],
 		["4.26: Request Size Limits must be explicitly configured" | not request_size_limits],
 		["4.27: Timeout Values must be Properly Set" | not timeout_values_set],
-		["4.28: checked condition — Access Logs Capture Required Information" | not access_logs_comprehensive]
+		["4.28: checked condition — Access Logs Capture Required Information" | not access_logs_comprehensive],
 	]
 	v := arrays[_][_]
 ]
@@ -669,25 +670,31 @@ trace_disabled if {
 backup_files_removed if {
 	all_files := input.apache.content.all_files
 	backup_extensions := [".bak", ".backup", ".old", ".tmp", ".orig", "~"]
-	backup_files := [f | f := all_files[_]; 
-		backup_ext := backup_extensions[_]; 
-		endswith(f.name, backup_ext)]
+	backup_files := [f |
+		f := all_files[_]
+		backup_ext := backup_extensions[_]
+		endswith(f.name, backup_ext)
+	]
 	count(backup_files) == 0
 }
 
 file_extensions_restricted if {
 	files_match := input.apache.config.files_match
 	dangerous_extensions := ["\\.conf$", "\\.log$", "\\.sql$", "\\.ini$"]
-	restricted_extensions := [ext | ext := dangerous_extensions[_]; 
-		files_match[ext].require == "all denied"]
+	restricted_extensions := [ext |
+		ext := dangerous_extensions[_]
+		files_match[ext].require == "all denied"
+	]
 	count(restricted_extensions) == count(dangerous_extensions)
 }
 
 ip_access_control_implemented if {
 	location_config := input.apache.config.location_access
 	sensitive_locations := ["/admin", "/manager", "/status"]
-	ip_restricted_locations := [loc | loc := sensitive_locations[_]; 
-		location_config[loc].ip_restrictions_enabled == true]
+	ip_restricted_locations := [loc |
+		loc := sensitive_locations[_]
+		location_config[loc].ip_restrictions_enabled == true
+	]
 	count(ip_restricted_locations) == count(sensitive_locations)
 }
 
@@ -705,20 +712,25 @@ require_directive_used if {
 sensitive_dirs_denied if {
 	directory_configs := input.apache.config.directory_access
 	sensitive_dirs := ["/etc", "/usr", "/var/log", "/tmp"]
-	denied_dirs := [dir | dir := sensitive_dirs[_]; 
-		directory_configs[dir].require == "all denied"]
+	denied_dirs := [dir |
+		dir := sensitive_dirs[_]
+		directory_configs[dir].require == "all denied"
+	]
 	count(denied_dirs) == count(sensitive_dirs)
 }
 
 options_files_restricted if {
 	directory_configs := input.apache.config.directory_access
-	configs_with_none_options := [cfg | cfg := directory_configs[_]; 
+	configs_with_none_options := [cfg |
+		cfg := directory_configs[_]
 		is_string(cfg.options)
-		lower(trim_space(cfg.options)) == "none"]
+		lower(trim_space(cfg.options)) == "none"
+	]
 	count(configs_with_none_options) > 0
 
 	# every directory that sets Options must be restricted (None, or MultiViews only for web content)
-	unrestricted := [cfg | cfg := directory_configs[_]
+	unrestricted := [cfg |
+		cfg := directory_configs[_]
 		opts := enabled_options(cfg)
 		some o in opts
 		not o in {"none", "multiviews"}
@@ -728,29 +740,37 @@ options_files_restricted if {
 
 directory_browsing_restricted if {
 	directory_configs := input.apache.config.directory_access
-	configs_with_indexes := [cfg | cfg := directory_configs[_]; 
-		has_opt(cfg, "Indexes")]
+	configs_with_indexes := [cfg |
+		cfg := directory_configs[_]
+		has_opt(cfg, "Indexes")
+	]
 	count(configs_with_indexes) == 0
 }
 
 ssi_disabled if {
 	directory_configs := input.apache.config.directory_access
-	configs_with_includes := [cfg | cfg := directory_configs[_]; 
-		has_opt(cfg, "Includes")]
+	configs_with_includes := [cfg |
+		cfg := directory_configs[_]
+		has_opt(cfg, "Includes")
+	]
 	count(configs_with_includes) == 0
 }
 
 cgi_execution_disabled if {
 	directory_configs := input.apache.config.directory_access
-	configs_with_execcgi := [cfg | cfg := directory_configs[_]; 
-		has_opt(cfg, "ExecCGI")]
+	configs_with_execcgi := [cfg |
+		cfg := directory_configs[_]
+		has_opt(cfg, "ExecCGI")
+	]
 	count(configs_with_execcgi) == 0
 }
 
 follow_symlinks_disabled if {
 	directory_configs := input.apache.config.directory_access
-	configs_with_symlinks := [cfg | cfg := directory_configs[_]; 
-		has_opt(cfg, "FollowSymLinks")]
+	configs_with_symlinks := [cfg |
+		cfg := directory_configs[_]
+		has_opt(cfg, "FollowSymLinks")
+	]
 	count(configs_with_symlinks) == 0
 }
 
@@ -763,8 +783,10 @@ access_control_lists_implemented if {
 admin_auth_required if {
 	location_config := input.apache.config.location_access
 	admin_locations := ["/admin", "/manager", "/server-status", "/server-info"]
-	authenticated_locations := [loc | loc := admin_locations[_]; 
-		location_config[loc].auth_required == true]
+	authenticated_locations := [loc |
+		loc := admin_locations[_]
+		location_config[loc].auth_required == true
+	]
 	count(authenticated_locations) == count(admin_locations)
 }
 
@@ -778,7 +800,7 @@ session_management_secure if {
 	session_config := input.apache.config.session
 	session_config.cookie_secure == true
 	session_config.cookie_httponly == true
-	session_config.timeout <= 1800  # 30 minutes
+	session_config.timeout <= 1800 # 30 minutes
 }
 
 error_pages_secure if {
@@ -789,14 +811,14 @@ error_pages_secure if {
 
 file_upload_restricted if {
 	upload_config := input.apache.config.file_upload
-	upload_config.max_file_size <= 10485760  # 10MB
+	upload_config.max_file_size <= 10485760 # 10MB
 	upload_config.allowed_extensions != null
 	count(upload_config.blocked_extensions) > 0
 }
 
 request_size_limits if {
 	limit_config := input.apache.config.limits
-	limit_config.limit_request_body <= 1048576  # 1MB
+	limit_config.limit_request_body <= 1048576 # 1MB
 	limit_config.limit_request_fields <= 100
 	limit_config.limit_request_fieldsize <= 8190
 	limit_config.limit_request_line <= 4094
@@ -840,7 +862,7 @@ minimize_features_violations := [v |
 		["5.19: mod_info must be turned off" | not info_disabled],
 		["5.20: mod_userdir must be turned off" | not userdir_disabled],
 		["5.21: mod_rewrite Logging must be turned on If Used" | not rewrite_logging_enabled],
-		["5.22: Unnecessary File Extensions must be Blocked" | not unnecessary_extensions_blocked]
+		["5.22: Unnecessary File Extensions must be Blocked" | not unnecessary_extensions_blocked],
 	]
 	v := arrays[_][_]
 ]
@@ -880,9 +902,11 @@ default_apache_content_removed if {
 
 welcome_page_removed if {
 	html_files := input.apache.content.html_files
-	welcome_files := [f | f := html_files[_]; 
-		f.name in ["welcome.conf", "welcome.html", "index.html"]; 
-		f.is_default == true]
+	welcome_files := [f |
+		f := html_files[_]
+		f.name in ["welcome.conf", "welcome.html", "index.html"]
+		f.is_default == true
+	]
 	count(welcome_files) == 0
 }
 
@@ -906,8 +930,10 @@ apache_test_cgi_removed if {
 
 apache_test_php_script_removed if {
 	php_files := input.apache.content.php_files
-	test_php_files := [f | f := php_files[_];
-		f.name in ["test.php", "info.php", "phpinfo.php"]]
+	test_php_files := [f |
+		f := php_files[_]
+		f.name in ["test.php", "info.php", "phpinfo.php"]
+	]
 	count(test_php_files) == 0
 }
 
@@ -958,7 +984,7 @@ userdir_disabled if {
 rewrite_logging_enabled if {
 	loaded_modules := input.apache.modules.loaded
 	rewrite_loaded := "rewrite" in loaded_modules
-	
+
 	not rewrite_loaded
 }
 
@@ -966,7 +992,7 @@ rewrite_logging_enabled if {
 	loaded_modules := input.apache.modules.loaded
 	rewrite_loaded := "rewrite" in loaded_modules
 	rewrite_loaded
-	
+
 	rewrite_config := input.apache.config.rewrite
 	rewrite_config.log_level >= 2
 }
@@ -974,8 +1000,10 @@ rewrite_logging_enabled if {
 unnecessary_extensions_blocked if {
 	files_match := input.apache.config.files_match
 	blocked_extensions := ["\\.bak$", "\\.backup$", "\\.old$", "\\.tmp$", "\\.orig$"]
-	blocked_configs := [ext | ext := blocked_extensions[_]; 
-		files_match[ext].require == "all denied"]
+	blocked_configs := [ext |
+		ext := blocked_extensions[_]
+		files_match[ext].require == "all denied"
+	]
 	count(blocked_configs) == count(blocked_extensions)
 }
 
@@ -997,7 +1025,7 @@ ssl_tls_violations := [v |
 		["6.13: Only Cipher Suites That Provide Encryption must be turned on" | not encryption_ciphers_only],
 		["6.14: HTTP Public Key Pinning must be Considered" | not hpkp_considered],
 		["6.15: the TLS 1.3 Protocol must be turned on" | not tls_13_enabled],
-		["6.16: SSL Session Configuration must be Secure" | not ssl_session_secure]
+		["6.16: SSL Session Configuration must be Secure" | not ssl_session_secure],
 	]
 	v := arrays[_][_]
 ]
@@ -1011,7 +1039,7 @@ valid_certificate_installed if {
 	ssl_config := input.apache.config.ssl
 	ssl_config.certificate_file != ""
 	ssl_config.certificate_valid == true
-	ssl_config.certificate_expires_after > 86400000000000  # 24 hours in nanoseconds
+	ssl_config.certificate_expires_after > 86400000000000 # 24 hours in nanoseconds
 }
 
 private_key_protected if {
@@ -1066,6 +1094,7 @@ ssl_compression_disabled if {
 medium_ciphers_disabled if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
+
 	# only HIGH security ciphers must be used
 	contains(cipher_suite, "HIGH")
 	not contains(cipher_suite, "MEDIUM")
@@ -1095,6 +1124,7 @@ hsts_enabled if {
 authenticated_ciphers_only if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
+
 	# checked condition — no anonymous ciphers
 	not contains(cipher_suite, "aNULL")
 	not contains(cipher_suite, "ADH")
@@ -1103,6 +1133,7 @@ authenticated_ciphers_only if {
 encryption_ciphers_only if {
 	ssl_config := input.apache.config.ssl
 	cipher_suite := ssl_config.cipher_suite
+
 	# checked condition — no null encryption ciphers
 	not contains(cipher_suite, "eNULL")
 	not contains(cipher_suite, "NULL")
@@ -1111,6 +1142,7 @@ encryption_ciphers_only if {
 hpkp_considered if {
 	headers_config := input.apache.config.headers
 	hpkp_header := headers_config.public_key_pins
+
 	# HPKP is deprecated, so this check allows for either implementation or documented decision
 	hpkp_header != null
 }
@@ -1129,7 +1161,7 @@ tls_13_enabled if {
 ssl_session_secure if {
 	ssl_config := input.apache.config.ssl
 	ssl_config.session_cache == "shmcb"
-	ssl_config.session_cache_timeout <= 300  # 5 minutes
+	ssl_config.session_cache_timeout <= 300 # 5 minutes
 	ssl_config.session_tickets == "Off"
 }
 
@@ -1149,7 +1181,7 @@ information_disclosure_violations := [v |
 		["7.11: Directory Listing Headers must be Suppressed" | not directory_listing_headers_suppressed],
 		["7.12: Server Status Information must be Not Accessible" | not server_status_not_accessible],
 		["7.13: Server Information must be Not Accessible" | not server_info_not_accessible],
-		["7.14: Filesystem Information must be Not Disclosed" | not filesystem_info_not_disclosed]
+		["7.14: Filesystem Information must be Not Disclosed" | not filesystem_info_not_disclosed],
 	]
 	v := arrays[_][_]
 ]
@@ -1166,11 +1198,14 @@ server_signature_off if {
 all_default_content_removed if {
 	content := input.apache.content
 	default_content := [
-		"manual", "icons", "error", "welcome.conf", 
-		"autoindex.conf", "userdir.conf"
+		"manual", "icons", "error", "welcome.conf",
+		"autoindex.conf", "userdir.conf",
 	]
-	existing_default := [item | item := content.all_items[_]; 
-		item.name in default_content; item.is_default == true]
+	existing_default := [item |
+		item := content.all_items[_]
+		item.name in default_content
+		item.is_default == true
+	]
 	count(existing_default) == 0
 }
 
@@ -1240,10 +1275,13 @@ server_info_not_accessible if {
 
 filesystem_info_not_disclosed if {
 	directory_config := input.apache.config.directory_access
+
 	# sensitive directories must be not browsable
 	sensitive_dirs := ["/etc", "/var", "/usr", "/tmp"]
-	disclosed_dirs := [dir | dir := sensitive_dirs[_]; 
-		has_opt(directory_config[dir], "Indexes")]
+	disclosed_dirs := [dir |
+		dir := sensitive_dirs[_]
+		has_opt(directory_config[dir], "Indexes")
+	]
 	count(disclosed_dirs) == 0
 }
 
@@ -1257,7 +1295,7 @@ logging_violations := [v |
 		["8.5: Appropriate Log Level must be Set" | not log_level_appropriate],
 		["8.6: Log Storage and Rotation Policy must be in Place" | not log_rotation_policy],
 		["8.7: Log Files must be Properly Secured" | not log_files_secured],
-		["8.8: Non-Printable ASCII Characters must be Escaped in Logs" | not non_printable_escaped]
+		["8.8: Non-Printable ASCII Characters must be Escaped in Logs" | not non_printable_escaped],
 	]
 	v := arrays[_][_]
 ]
@@ -1310,5 +1348,5 @@ log_files_secured if {
 
 non_printable_escaped if {
 	access_log := input.apache.config.access_log
-	contains(access_log.format, "%{c}T")  # Escape sequences enabled
+	contains(access_log.format, "%{c}T") # Escape sequences enabled
 }

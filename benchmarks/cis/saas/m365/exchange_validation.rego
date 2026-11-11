@@ -40,7 +40,6 @@ import rego.v1
 
 default compliant := false
 
-
 # ── 4.1.1 — Mailbox auditing enabled tenant-wide ───────────────────
 
 # The Graph v1.0 surface lets us probe per-user mailboxAuditEnabled.
@@ -48,22 +47,21 @@ default compliant := false
 # almost certainly off (the per-user setting inherits the tenant
 # default unless explicitly overridden).
 violation_4_1_1 contains msg if {
-    input.mailbox_audit_summary.evaluable
-    input.mailbox_audit_summary.audit_disabled > 0
-    msg := sprintf("CIS 4.1.1: %d of %d sampled mailboxes have audit disabled; enable tenant-wide mailbox audit", [
-        input.mailbox_audit_summary.audit_disabled,
-        input.mailbox_audit_summary.sampled,
-    ])
+	input.mailbox_audit_summary.evaluable
+	input.mailbox_audit_summary.audit_disabled > 0
+	msg := sprintf("CIS 4.1.1: %d of %d sampled mailboxes have audit disabled; enable tenant-wide mailbox audit", [
+		input.mailbox_audit_summary.audit_disabled,
+		input.mailbox_audit_summary.sampled,
+	])
 }
 
 # When we couldn't evaluate (no mailboxAuditEnabled in any sampled
 # response), surface that explicitly rather than silently passing.
 violation_4_1_1 contains msg if {
-    not input.mailbox_audit_summary.evaluable
-    input.mailbox_audit_summary.sampled > 0
-    msg := "CIS 4.1.1: mailbox audit state not evaluable via Graph; verify tenant-wide setting via Exchange admin center"
+	not input.mailbox_audit_summary.evaluable
+	input.mailbox_audit_summary.sampled > 0
+	msg := "CIS 4.1.1: mailbox audit state not evaluable via Graph; verify tenant-wide setting via Exchange admin center"
 }
-
 
 # ── 4.5.1 — SPF record on every verified non-Microsoft domain ──────
 
@@ -71,34 +69,31 @@ violation_4_1_1 contains msg if {
 # itself; we only check customer-owned domains.
 
 customer_domains contains d if {
-    some d in input.verified_domains
-    not d.is_initial
+	some d in input.verified_domains
+	not d.is_initial
 }
 
 violation_4_5_1 contains msg if {
-    some d in customer_domains
-    not d.spf_present
-    msg := sprintf("CIS 4.5.1: domain %q has no SPF record published; spoofed mail will not be rejected", [d.id])
+	some d in customer_domains
+	not d.spf_present
+	msg := sprintf("CIS 4.5.1: domain %q has no SPF record published; spoofed mail will not be rejected", [d.id])
 }
-
 
 # ── 4.6.1 — DKIM signing for every verified non-Microsoft domain ──
 
 violation_4_6_1 contains msg if {
-    some d in customer_domains
-    not d.dkim_present
-    msg := sprintf("CIS 4.6.1: domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated", [d.id])
+	some d in customer_domains
+	not d.dkim_present
+	msg := sprintf("CIS 4.6.1: domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated", [d.id])
 }
-
 
 # ── 4.7.1 — DMARC policy for every verified non-Microsoft domain ──
 
 violation_4_7_1 contains msg if {
-    some d in customer_domains
-    not d.dmarc_present
-    msg := sprintf("CIS 4.7.1: domain %q has no DMARC record; recipients have no policy guidance on what to do with failed SPF/DKIM", [d.id])
+	some d in customer_domains
+	not d.dmarc_present
+	msg := sprintf("CIS 4.7.1: domain %q has no DMARC record; recipients have no policy guidance on what to do with failed SPF/DKIM", [d.id])
 }
-
 
 # ── 4.8.1 — External sender tagging enabled ─────────────────────────
 
@@ -108,56 +103,54 @@ violation_4_7_1 contains msg if {
 # operator knows we couldn't see the setting.
 
 external_tag_control := c if {
-    some c in input.secure_score_controls
-    c.id == "ExternalSenderTagging"
+	some c in input.secure_score_controls
+	c.id == "ExternalSenderTagging"
 }
 
 violation_4_8_1 contains msg if {
-    external_tag_control
-    external_tag_control.implementation_status != "Implemented"
-    msg := "CIS 4.8.1: External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail"
+	external_tag_control
+	external_tag_control.implementation_status != "Implemented"
+	msg := "CIS 4.8.1: External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail"
 }
-
 
 # ── 4.11.1 — SMTP AUTH disabled tenant-wide ────────────────────────
 
 smtp_auth_control := c if {
-    some c in input.secure_score_controls
-    c.id == "SMTPAuthDisabled"
+	some c in input.secure_score_controls
+	c.id == "SMTPAuthDisabled"
 }
 
 violation_4_11_1 contains msg if {
-    smtp_auth_control
-    smtp_auth_control.implementation_status != "Implemented"
-    msg := "CIS 4.11.1: SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks"
+	smtp_auth_control
+	smtp_auth_control.implementation_status != "Implemented"
+	msg := "CIS 4.11.1: SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks"
 }
-
 
 # ── Roll-up ─────────────────────────────────────────────────────────
 
-violations contains v if { some v in violation_4_1_1 }
-violations contains v if { some v in violation_4_5_1 }
-violations contains v if { some v in violation_4_6_1 }
-violations contains v if { some v in violation_4_7_1 }
-violations contains v if { some v in violation_4_8_1 }
-violations contains v if { some v in violation_4_11_1 }
+violations contains v if some v in violation_4_1_1
+violations contains v if some v in violation_4_5_1
+violations contains v if some v in violation_4_6_1
+violations contains v if some v in violation_4_7_1
+violations contains v if some v in violation_4_8_1
+violations contains v if some v in violation_4_11_1
 
 # fail-closed: without Exchange facts the section reports a violation, never compliance
-_facts_present if { input.mailbox_audit_summary }
-_facts_present if { input.secure_score_controls }
-_facts_present if { input.verified_domains }
+_facts_present if input.mailbox_audit_summary
+_facts_present if input.secure_score_controls
+_facts_present if input.verified_domains
 
 violations contains "4: FAIL-CLOSED - facts 'input.mailbox_audit_summary' / 'input.secure_score_controls' / 'input.verified_domains' were not supplied; Exchange controls were not evaluated" if {
 	not _facts_present
 }
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
-    "section": "4",
-    "name": "Microsoft Exchange",
-    "controls_evaluated": 6,
-    "violations": violations,
-    "violation_count": count(violations),
-    "compliant": compliant,
+	"section": "4",
+	"name": "Microsoft Exchange",
+	"controls_evaluated": 6,
+	"violations": violations,
+	"violation_count": count(violations),
+	"compliant": compliant,
 }

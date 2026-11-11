@@ -7,352 +7,280 @@ import data.cis_fortinet_fortigate as b
 # Generated per-recommendation tests for CIS FortiGate 7.4.x Benchmark v1.0.1: every recommendation has a pass test (green input) and a
 # fail test; configuration checks also have an evidence-missing test; attestations fail when false or absent.
 
-green := {
-	"fortigate_config": {
-		"system": {
-			"dns": {
-				"primary": "10.0.0.53",
-				"secondary": "10.0.1.53"
+green := {"fortigate_config": {
+	"system": {
+		"dns": {
+			"primary": "10.0.0.53",
+			"secondary": "10.0.1.53",
+		},
+		"zone": [{
+			"name": "DMZ",
+			"intrazone": "deny",
+		}],
+		"interface": [
+			{
+				"name": "wan1",
+				"role": "wan",
+				"allowaccess": "",
 			},
-			"zone": [
-				{
-					"name": "DMZ",
-					"intrazone": "deny"
-				}
-			],
-			"interface": [
-				{
-					"name": "wan1",
-					"role": "wan",
-					"allowaccess": ""
-				},
-				{
-					"name": "mgmt",
-					"role": "lan",
-					"allowaccess": "https ssh"
-				}
-			],
-			"global": {
-				"pre_login_banner": "enable",
-				"post_login_banner": "enable",
-				"timezone": "US/Eastern",
-				"hostname": "fw-edge-01",
-				"ssl_static_key_ciphers": "disable",
-				"strong_crypto": "enable",
-				"admin_https_ssl_versions": "tlsv1-3",
-				"gui_cdn_usage": "enable",
-				"log_single_cpu_high": "enable",
-				"gui_display_hostname": "disable",
-				"admin_lockout_threshold": 3,
-				"admin_lockout_duration": 900,
-				"admintimeout": 5,
-				"admin_port": 8082,
-				"admin_sport": 4343,
-				"admin_https_redirect": "disable"
+			{
+				"name": "mgmt",
+				"role": "lan",
+				"allowaccess": "https ssh",
 			},
-			"ntp": {
-				"ntpsync": "enable"
-			},
-			"auto_install": {
-				"auto_install_config": "disable",
-				"auto_install_image": "disable"
-			},
-			"password_policy": {
+		],
+		"global": {
+			"pre_login_banner": "enable",
+			"post_login_banner": "enable",
+			"timezone": "US/Eastern",
+			"hostname": "fw-edge-01",
+			"ssl_static_key_ciphers": "disable",
+			"strong_crypto": "enable",
+			"admin_https_ssl_versions": "tlsv1-3",
+			"gui_cdn_usage": "enable",
+			"log_single_cpu_high": "enable",
+			"gui_display_hostname": "disable",
+			"admin_lockout_threshold": 3,
+			"admin_lockout_duration": 900,
+			"admintimeout": 5,
+			"admin_port": 8082,
+			"admin_sport": 4343,
+			"admin_https_redirect": "disable",
+		},
+		"ntp": {"ntpsync": "enable"},
+		"auto_install": {
+			"auto_install_config": "disable",
+			"auto_install_image": "disable",
+		},
+		"password_policy": {
+			"status": "enable",
+			"minimum_length": 14,
+			"apply_to": "admin-password ipsec-preshared-key",
+		},
+		"snmp": {
+			"sysinfo": {
 				"status": "enable",
-				"minimum_length": 14,
-				"apply_to": "admin-password ipsec-preshared-key"
+				"trap_free_memory_threshold": 20,
+				"trap_freeable_memory_threshold": 50,
 			},
-			"snmp": {
-				"sysinfo": {
-					"status": "enable",
-					"trap_free_memory_threshold": 20,
-					"trap_freeable_memory_threshold": 50
-				},
-				"community": [],
-				"user": [
-					{
-						"name": "snmp_ops",
-						"notify_hosts": [
-							"10.0.0.20"
-						],
-						"queries": "disable"
-					}
-				]
-			},
-			"admin": [
-				{
-					"name": "fw_ops",
-					"trusthosts": [
-						"10.0.0.0 255.255.255.0"
-					]
-				}
+			"community": [],
+			"user": [{
+				"name": "snmp_ops",
+				"notify_hosts": ["10.0.0.20"],
+				"queries": "disable",
+			}],
+		},
+		"admin": [{
+			"name": "fw_ops",
+			"trusthosts": ["10.0.0.0 255.255.255.0"],
+		}],
+		"ha": {
+			"mode": "a-p",
+			"group_name": "FGT-HA",
+			"group_id": 10,
+			"hbdev": ["port10"],
+			"monitor": [
+				"port6",
+				"port7",
 			],
-			"ha": {
-				"mode": "a-p",
-				"group_name": "FGT-HA",
-				"group_id": 10,
-				"hbdev": [
-					"port10"
+			"ha_mgmt_status": "enable",
+			"ha_mgmt_interfaces": [{
+				"interface": "port8",
+				"gateway": "10.10.10.1",
+			}],
+		},
+		"autoupdate": {"schedule": {"frequency": "automatic"}},
+		"fortiguard": {"sandbox_inline_scan": "enable"},
+		"automation_stitch": [{
+			"name": "Compromised Host Quarantine",
+			"status": "enable",
+			"trigger": "Compromised Host - High",
+			"actions": [
+				"Quarantine on FortiSwitch + FortiAP",
+				"Quarantine FortiClient EMS Endpoint",
+			],
+		}],
+		"csf": {
+			"status": "enable",
+			"group_name": "fabric-01",
+		},
+	},
+	"firewall": {
+		"local_in_policy": [
+			{
+				"policyid": 1,
+				"action": "accept",
+				"virtual_patch": "enable",
+			},
+			{
+				"policyid": 2,
+				"action": "deny",
+			},
+		],
+		"policy": [
+			{
+				"policyid": 1,
+				"srcintf": ["mgmt"],
+				"dstintf": ["wan1"],
+				"action": "accept",
+				"service": [
+					"HTTPS",
+					"DNS",
 				],
-				"monitor": [
-					"port6",
-					"port7"
+				"logtraffic": "all",
+				"ips_sensor": "botnet-block",
+				"av_profile": "av-default",
+				"dnsfilter_profile": "dns-default",
+				"application_list": "app-default",
+			},
+			{
+				"policyid": 2,
+				"srcintf": ["wan1"],
+				"dstintf": ["mgmt"],
+				"action": "deny",
+				"service": ["ALL_TCP"],
+				"logtraffic": "all",
+				"internet_service_src": "enable",
+				"internet_service_src_name": [
+					"Tor-Exit.Node",
+					"Tor-Relay.Node",
+					"Censys-Scanner",
+					"Shodan-Scanner",
+					"Botnet-C&C.Server",
+					"Phishing-Phishing.Server",
+					"Proxy-Proxy.Server",
+					"Spam-Spamming.Server",
+					"VPN-Anonymous.VPN",
+					"Malicious-Malicious.Server",
 				],
-				"ha_mgmt_status": "enable",
-				"ha_mgmt_interfaces": [
-					{
-						"interface": "port8",
-						"gateway": "10.10.10.1"
-					}
-				]
 			},
-			"autoupdate": {
-				"schedule": {
-					"frequency": "automatic"
-				}
+			{
+				"policyid": 3,
+				"srcintf": ["mgmt"],
+				"dstintf": ["wan1"],
+				"action": "deny",
+				"service": ["HTTPS"],
+				"logtraffic": "all",
+				"internet_service": "enable",
+				"internet_service_name": [
+					"Tor-Relay.Node",
+					"Botnet-C&C.Server",
+					"Phishing-Phishing.Server",
+					"Proxy-Proxy.Server",
+					"Spam-Spamming.Server",
+					"VPN-Anonymous.VPN",
+					"Malicious-Malicious.Server",
+				],
 			},
-			"fortiguard": {
-				"sandbox_inline_scan": "enable"
+		],
+	},
+	"ips": {"sensor": [{
+		"name": "botnet-block",
+		"scan_botnet_connections": "block",
+	}]},
+	"antivirus": {
+		"settings": {
+			"machine_learning_detection": "enable",
+			"grayware": "enable",
+		},
+		"profile": [{
+			"name": "av-default",
+			"feature_set": "proxy",
+			"fortisandbox_mode": "inline",
+			"http": {
+				"outbreak_prevention": "block",
+				"content_disarm": "enable",
 			},
-			"automation_stitch": [
-				{
-					"name": "Compromised Host Quarantine",
-					"status": "enable",
-					"trigger": "Compromised Host - High",
-					"actions": [
-						"Quarantine on FortiSwitch + FortiAP",
-						"Quarantine FortiClient EMS Endpoint"
-					]
-				}
-			],
-			"csf": {
-				"status": "enable",
-				"group_name": "fabric-01"
-			}
-		},
-		"firewall": {
-			"local_in_policy": [
-				{
-					"policyid": 1,
-					"action": "accept",
-					"virtual_patch": "enable"
-				},
-				{
-					"policyid": 2,
-					"action": "deny"
-				}
-			],
-			"policy": [
-				{
-					"policyid": 1,
-					"srcintf": [
-						"mgmt"
-					],
-					"dstintf": [
-						"wan1"
-					],
-					"action": "accept",
-					"service": [
-						"HTTPS",
-						"DNS"
-					],
-					"logtraffic": "all",
-					"ips_sensor": "botnet-block",
-					"av_profile": "av-default",
-					"dnsfilter_profile": "dns-default",
-					"application_list": "app-default"
-				},
-				{
-					"policyid": 2,
-					"srcintf": [
-						"wan1"
-					],
-					"dstintf": [
-						"mgmt"
-					],
-					"action": "deny",
-					"service": [
-						"ALL_TCP"
-					],
-					"logtraffic": "all",
-					"internet_service_src": "enable",
-					"internet_service_src_name": [
-						"Tor-Exit.Node",
-						"Tor-Relay.Node",
-						"Censys-Scanner",
-						"Shodan-Scanner",
-						"Botnet-C&C.Server",
-						"Phishing-Phishing.Server",
-						"Proxy-Proxy.Server",
-						"Spam-Spamming.Server",
-						"VPN-Anonymous.VPN",
-						"Malicious-Malicious.Server"
-					]
-				},
-				{
-					"policyid": 3,
-					"srcintf": [
-						"mgmt"
-					],
-					"dstintf": [
-						"wan1"
-					],
-					"action": "deny",
-					"service": [
-						"HTTPS"
-					],
-					"logtraffic": "all",
-					"internet_service": "enable",
-					"internet_service_name": [
-						"Tor-Relay.Node",
-						"Botnet-C&C.Server",
-						"Phishing-Phishing.Server",
-						"Proxy-Proxy.Server",
-						"Spam-Spamming.Server",
-						"VPN-Anonymous.VPN",
-						"Malicious-Malicious.Server"
-					]
-				}
-			]
-		},
-		"ips": {
-			"sensor": [
-				{
-					"name": "botnet-block",
-					"scan_botnet_connections": "block"
-				}
-			]
-		},
-		"antivirus": {
-			"settings": {
-				"machine_learning_detection": "enable",
-				"grayware": "enable"
+			"smtp": {
+				"outbreak_prevention": "block",
+				"content_disarm": "enable",
 			},
-			"profile": [
-				{
-					"name": "av-default",
-					"feature_set": "proxy",
-					"fortisandbox_mode": "inline",
-					"http": {
-						"outbreak_prevention": "block",
-						"content_disarm": "enable"
-					},
-					"smtp": {
-						"outbreak_prevention": "block",
-						"content_disarm": "enable"
-					}
-				}
-			]
-		},
-		"dnsfilter": {
-			"profile": [
-				{
-					"name": "dns-default",
-					"block_botnet": "enable",
-					"log_all_domain": "enable"
-				}
-			]
-		},
-		"webfilter": {
-			"profile": [
-				{
-					"name": "web-default",
-					"ftgd_wf": {
-						"filters": [
-							{
-								"category": 26,
-								"action": "block"
-							},
-							{
-								"category": 61,
-								"action": "block"
-							},
-							{
-								"category": 86,
-								"action": "block"
-							}
-						]
-					}
-				}
-			]
-		},
-		"application": {
-			"list": [
-				{
-					"name": "app-default",
-					"enforce_default_app_port": "enable",
-					"entries": [
-						{
-							"category": [
-								2,
-								6
-							],
-							"action": "block"
-						},
-						{
-							"category": [
-								5
-							],
-							"action": "monitor"
-						}
-					]
-				}
-			]
-		},
-		"vpn": {
-			"ssl": {
-				"settings": {
-					"servercert": "vpn.example.com",
-					"ssl_max_proto_ver": "tls1-3",
-					"ssl_min_proto_ver": "tls1-2",
-					"algorithm": "high"
-				}
-			}
-		},
-		"log": {
-			"eventfilter": {
-				"event": "enable",
-				"system": "enable",
-				"vpn": "enable",
-				"user": "enable",
-				"router": "enable",
-				"wireless_activity": "enable",
-				"wan_opt": "enable",
-				"endpoint": "enable",
-				"ha": "enable",
-				"security_rating": "enable",
-				"fortiextender": "enable",
-				"connector": "enable",
-				"sdwan": "enable",
-				"cifs": "enable",
-				"switch_controller": "enable",
-				"rest_api": "enable",
-				"webproxy": "enable"
+		}],
+	},
+	"dnsfilter": {"profile": [{
+		"name": "dns-default",
+		"block_botnet": "enable",
+		"log_all_domain": "enable",
+	}]},
+	"webfilter": {"profile": [{
+		"name": "web-default",
+		"ftgd_wf": {"filters": [
+			{
+				"category": 26,
+				"action": "block",
 			},
-			"syslogd": {
-				"setting": {
-					"status": "enable",
-					"server": "10.0.0.30",
-					"enc_algorithm": "high",
-					"reliable": "enable"
-				}
+			{
+				"category": 61,
+				"action": "block",
 			},
-			"fortianalyzer": {
-				"setting": {
-					"status": "enable",
-					"server": "10.0.0.31",
-					"enc_algorithm": "high",
-					"reliable": "enable"
-				}
-			}
+			{
+				"category": 86,
+				"action": "block",
+			},
+		]},
+	}]},
+	"application": {"list": [{
+		"name": "app-default",
+		"enforce_default_app_port": "enable",
+		"entries": [
+			{
+				"category": [
+					2,
+					6,
+				],
+				"action": "block",
+			},
+			{
+				"category": [5],
+				"action": "monitor",
+			},
+		],
+	}]},
+	"vpn": {"ssl": {"settings": {
+		"servercert": "vpn.example.com",
+		"ssl_max_proto_ver": "tls1-3",
+		"ssl_min_proto_ver": "tls1-2",
+		"algorithm": "high",
+	}}},
+	"log": {
+		"eventfilter": {
+			"event": "enable",
+			"system": "enable",
+			"vpn": "enable",
+			"user": "enable",
+			"router": "enable",
+			"wireless_activity": "enable",
+			"wan_opt": "enable",
+			"endpoint": "enable",
+			"ha": "enable",
+			"security_rating": "enable",
+			"fortiextender": "enable",
+			"connector": "enable",
+			"sdwan": "enable",
+			"cifs": "enable",
+			"switch_controller": "enable",
+			"rest_api": "enable",
+			"webproxy": "enable",
 		},
-		"attest": {
-			"latest_firmware_installed": true,
-			"admin_profiles_reviewed": true,
-			"unused_policies_reviewed": true
-		}
-	}
-}
+		"syslogd": {"setting": {
+			"status": "enable",
+			"server": "10.0.0.30",
+			"enc_algorithm": "high",
+			"reliable": "enable",
+		}},
+		"fortianalyzer": {"setting": {
+			"status": "enable",
+			"server": "10.0.0.31",
+			"enc_algorithm": "high",
+			"reliable": "enable",
+		}},
+	},
+	"attest": {
+		"latest_firmware_installed": true,
+		"admin_profiles_reviewed": true,
+		"unused_policies_reviewed": true,
+	},
+}}
 
 _has_id(vs, id) if {
 	some v in vs

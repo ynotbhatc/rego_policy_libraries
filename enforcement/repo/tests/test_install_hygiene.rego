@@ -78,55 +78,41 @@ test_credential_in_a_readme_violates if {
 # worst, because it reads as authoritative. "e.g. <real password>" still ships
 # the password.
 test_credential_as_an_example_still_violates if {
-	v := ih.violation with input as file("config/secrets.yml.example", [
-		"grafana_admin_password:   <admin password — e.g. Sup3rSecret>",
-	])
+	v := ih.violation with input as file("config/secrets.yml.example", ["grafana_admin_password:   <admin password — e.g. Sup3rSecret>"])
 	has(v, "AAC-CFG-002")
 }
 
 test_placeholder_credential_passes if {
-	v := ih.violation with input as file("config/secrets.yml.example", [
-		"grafana_admin_password: PLACEHOLDER",
-	])
+	v := ih.violation with input as file("config/secrets.yml.example", ["grafana_admin_password: PLACEHOLDER"])
 	not has(v, "AAC-CFG-002")
 }
 
 # ── AAC-CFG-004 — fail-open secret defaults ──────────────────────────────────
 
 test_jinja_default_on_a_password_violates if {
-	v := ih.violation with input as file("playbooks/deploy.yml", [
-		"    grafana_admin_password: \"{{ grafana_admin_password | default('Sup3rSecret') }}\"",
-	])
+	v := ih.violation with input as file("playbooks/deploy.yml", ["    grafana_admin_password: \"{{ grafana_admin_password | default('Sup3rSecret') }}\""])
 	has(v, "AAC-CFG-004")
 }
 
 test_mandatory_instead_of_default_passes if {
-	v := ih.violation with input as file("playbooks/deploy.yml", [
-		"    grafana_admin_password: \"{{ grafana_admin_password | mandatory }}\"",
-	])
+	v := ih.violation with input as file("playbooks/deploy.yml", ["    grafana_admin_password: \"{{ grafana_admin_password | mandatory }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 test_shell_fallback_on_a_password_violates if {
-	v := ih.violation with input as file("scripts/check.sh", [
-		"GRAFANA_PASS=\"${GRAFANA_PASS:-Sup3rSecret}\"",
-	])
+	v := ih.violation with input as file("scripts/check.sh", ["GRAFANA_PASS=\"${GRAFANA_PASS:-Sup3rSecret}\""])
 	has(v, "AAC-CFG-004")
 }
 
 test_shell_required_form_passes if {
-	v := ih.violation with input as file("scripts/check.sh", [
-		"GRAFANA_PASS=\"${GRAFANA_PASS:?set GRAFANA_PASS}\"",
-	])
+	v := ih.violation with input as file("scripts/check.sh", ["GRAFANA_PASS=\"${GRAFANA_PASS:?set GRAFANA_PASS}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 # A default on something that is not a secret is ordinary good practice and
 # must not be flagged — a rule that cries wolf gets switched off.
 test_default_on_a_non_secret_passes if {
-	v := ih.violation with input as file("playbooks/deploy.yml", [
-		"    listen_port: \"{{ listen_port | default('8080') }}\"",
-	])
+	v := ih.violation with input as file("playbooks/deploy.yml", ["    listen_port: \"{{ listen_port | default('8080') }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
@@ -190,33 +176,25 @@ test_tracking_report_is_populated if {
 # and a rule that flags password policy next to real passwords is a rule people
 # learn to ignore.
 test_password_aging_policy_is_not_a_secret if {
-	v := ih.violation with input as file("roles/facts/tasks/users.yml", [
-		"    max_days: \"{{ raw.stdout | regex_search('PASS_MAX_DAYS\\\\s+(\\\\d+)') | default('99999') }}\"",
-	])
+	v := ih.violation with input as file("roles/facts/tasks/users.yml", ["    max_days: \"{{ raw.stdout | regex_search('PASS_MAX_DAYS\\\\s+(\\\\d+)') | default('99999') }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 # A numeric fallback is a timeout, port or retry count.
 test_numeric_default_on_a_secretish_name_passes if {
-	v := ih.violation with input as file("playbooks/x.yml", [
-		"    token_ttl_seconds: \"{{ token_ttl_seconds | default('3600') }}\"",
-	])
+	v := ih.violation with input as file("playbooks/x.yml", ["    token_ttl_seconds: \"{{ token_ttl_seconds | default('3600') }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 # The shell form is usually mid-line, so the secret-ness must come from the
 # variable name inside ${...} rather than from the assignment target.
 test_shell_secret_default_midline_violates if {
-	v := ih.violation with input as file("scripts/install.sh", [
-		"    CREATE ROLE reader LOGIN PASSWORD '${READER_PASSWORD:-changeme}';",
-	])
+	v := ih.violation with input as file("scripts/install.sh", ["    CREATE ROLE reader LOGIN PASSWORD '${READER_PASSWORD:-changeme}';"])
 	has(v, "AAC-CFG-004")
 }
 
 test_shell_non_secret_default_passes if {
-	v := ih.violation with input as file("scripts/install.sh", [
-		"    PORT=\"${PORT:-5432}\"",
-	])
+	v := ih.violation with input as file("scripts/install.sh", ["    PORT=\"${PORT:-5432}\""])
 	not has(v, "AAC-CFG-004")
 }
 
@@ -233,33 +211,25 @@ test_bypass_is_not_a_password if {
 # sshd config FIELDS, not credentials. `| mandatory` on these failed fact
 # collection on any host using sshd defaults.
 test_password_authentication_is_a_setting_not_a_secret if {
-	v := ih.violation with input as file("roles/ssh/tasks/main.yml", [
-		"        password_authentication: \"{{ d.passwordauthentication | default('not set') }}\"",
-	])
+	v := ih.violation with input as file("roles/ssh/tasks/main.yml", ["        password_authentication: \"{{ d.passwordauthentication | default('not set') }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 test_permit_empty_passwords_is_a_setting_not_a_secret if {
-	v := ih.violation with input as file("roles/ssh/tasks/main.yml", [
-		"        permit_empty_passwords: \"{{ d.permitemptypasswords | default('not set') }}\"",
-	])
+	v := ih.violation with input as file("roles/ssh/tasks/main.yml", ["        permit_empty_passwords: \"{{ d.permitemptypasswords | default('not set') }}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 # A display note that happens to start with TOKEN. Requiring it aborted the
 # script on the path where the note is legitimately unset.
 test_token_note_is_not_a_secret if {
-	v := ih.violation with input as file("install/seed.sh", [
-		"echo \"Controller token ID: ${TOKEN_ID}${TOKEN_NOTE:-}\"",
-	])
+	v := ih.violation with input as file("install/seed.sh", ["echo \"Controller token ID: ${TOKEN_ID}${TOKEN_NOTE:-}\""])
 	not has(v, "AAC-CFG-004")
 }
 
 # The real ones must still be caught after tightening.
 test_real_secret_assignment_still_caught if {
-	v := ih.violation with input as file("playbooks/x.yml", [
-		"    compliance_db_password: \"{{ compliance_db_password | default('hunter2') }}\"",
-	])
+	v := ih.violation with input as file("playbooks/x.yml", ["    compliance_db_password: \"{{ compliance_db_password | default('hunter2') }}\""])
 	has(v, "AAC-CFG-004")
 }
 

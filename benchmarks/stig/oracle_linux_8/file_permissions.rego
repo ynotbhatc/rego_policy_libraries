@@ -40,7 +40,9 @@ no_unowned_files if {
 	count(input.file_permissions.unowned_files) == 0
 }
 
-status_ol08_00_010780 := "Not_a_Finding" if { no_unowned_files } else := "Open"
+status_ol08_00_010780 := "Not_a_Finding" if no_unowned_files
+
+else := "Open"
 
 finding_ol08_00_010780 := {
 	"vuln_id": "V-248646",
@@ -61,7 +63,9 @@ no_ungrouped_files if {
 	count(input.file_permissions.ungrouped_files) == 0
 }
 
-status_ol08_00_010790 := "Not_a_Finding" if { no_ungrouped_files } else := "Open"
+status_ol08_00_010790 := "Not_a_Finding" if no_ungrouped_files
+
+else := "Open"
 
 finding_ol08_00_010790 := {
 	"vuln_id": "V-248647",
@@ -80,7 +84,9 @@ lib_permissions_ok if {
 	input.file_permissions.library_files_ok == true
 }
 
-status_ol08_00_010330 := "Not_a_Finding" if { lib_permissions_ok } else := "Open"
+status_ol08_00_010330 := "Not_a_Finding" if lib_permissions_ok
+
+else := "Open"
 
 finding_ol08_00_010330 := {
 	"vuln_id": "V-248570",
@@ -99,7 +105,9 @@ lib_dirs_owned_root if {
 	input.file_permissions.library_dirs_owned_root == true
 }
 
-status_ol08_00_010340 := "Not_a_Finding" if { lib_dirs_owned_root } else := "Open"
+status_ol08_00_010340 := "Not_a_Finding" if lib_dirs_owned_root
+
+else := "Open"
 
 finding_ol08_00_010340 := {
 	"vuln_id": "V-248571",
@@ -118,7 +126,9 @@ sys_commands_permissions_ok if {
 	input.file_permissions.system_commands_ok == true
 }
 
-status_ol08_00_010300 := "Not_a_Finding" if { sys_commands_permissions_ok } else := "Open"
+status_ol08_00_010300 := "Not_a_Finding" if sys_commands_permissions_ok
+
+else := "Open"
 
 finding_ol08_00_010300 := {
 	"vuln_id": "V-248567",
@@ -139,7 +149,9 @@ home_dir_permissions_ok if {
 	count(input.file_permissions.insecure_home_dirs) == 0
 }
 
-status_ol08_00_010730 := "Not_a_Finding" if { home_dir_permissions_ok } else := "Open"
+status_ol08_00_010730 := "Not_a_Finding" if home_dir_permissions_ok
+
+else := "Open"
 
 finding_ol08_00_010730 := {
 	"vuln_id": "V-248639",

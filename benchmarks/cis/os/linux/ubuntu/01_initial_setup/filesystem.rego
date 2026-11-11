@@ -31,290 +31,290 @@ as_set(v) := {x | some x in regex.split(`[\s,]+`, v); x != ""} if is_string(v)
 default cramfs_disabled := false
 
 cramfs_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "cramfs" in loaded
-    "cramfs" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "cramfs" in loaded
+	"cramfs" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.1.2 - mounting of freevxfs filesystems must be turned off
 default freevxfs_disabled := false
 
 freevxfs_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "freevxfs" in loaded
-    "freevxfs" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "freevxfs" in loaded
+	"freevxfs" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.1.3 - mounting of jffs2 filesystems must be turned off
 default jffs2_disabled := false
 
 jffs2_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "jffs2" in loaded
-    "jffs2" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "jffs2" in loaded
+	"jffs2" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.1.4 - mounting of hfs filesystems must be turned off
 default hfs_disabled := false
 
 hfs_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "hfs" in loaded
-    "hfs" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "hfs" in loaded
+	"hfs" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.1.5 - mounting of hfsplus filesystems must be turned off
 default hfsplus_disabled := false
 
 hfsplus_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "hfsplus" in loaded
-    "hfsplus" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "hfsplus" in loaded
+	"hfsplus" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.1.6 - mounting of udf filesystems must be turned off
 default udf_disabled := false
 
 udf_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "udf" in loaded
-    "udf" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "udf" in loaded
+	"udf" in as_set(input.blacklisted_modules)
 }
 
 # CIS 1.1.2 - /tmp must be explicitly configured
 default tmp_partition_configured := false
 
 tmp_partition_configured if {
-    input.mounts["/tmp"]
-    input.mounts["/tmp"].filesystem_type in ["tmpfs", "ext4", "xfs"]
+	input.mounts["/tmp"]
+	input.mounts["/tmp"].filesystem_type in ["tmpfs", "ext4", "xfs"]
 }
 
 # CIS 1.1.3 - /tmp must be mounted with the nodev option
 default tmp_nodev := false
 
 tmp_nodev if {
-    "nodev" in as_set(input.mounts["/tmp"].options)
+	"nodev" in as_set(input.mounts["/tmp"].options)
 }
 
 # CIS 1.1.4 - /tmp must be mounted with the nosuid option
 default tmp_nosuid := false
 
 tmp_nosuid if {
-    "nosuid" in as_set(input.mounts["/tmp"].options)
+	"nosuid" in as_set(input.mounts["/tmp"].options)
 }
 
 # CIS 1.1.5 - /tmp must be mounted with the noexec option
 default tmp_noexec := false
 
 tmp_noexec if {
-    "noexec" in as_set(input.mounts["/tmp"].options)
+	"noexec" in as_set(input.mounts["/tmp"].options)
 }
 
 # CIS 1.1.6 - /var must be its own filesystem
 default var_partition_configured := false
 
 var_partition_configured if {
-    input.mounts["/var"]
-    input.mounts["/var"].device != input.mounts["/"].device
+	input.mounts["/var"]
+	input.mounts["/var"].device != input.mounts["/"].device
 }
 
 # CIS 1.1.7 - /var/tmp must be its own filesystem
 default var_tmp_partition_configured := false
 
 var_tmp_partition_configured if {
-    input.mounts["/var/tmp"]
-    input.mounts["/var/tmp"].device != input.mounts["/var"].device
+	input.mounts["/var/tmp"]
+	input.mounts["/var/tmp"].device != input.mounts["/var"].device
 }
 
 # CIS 1.1.8 - /var/tmp must be mounted with the nodev option
 default var_tmp_nodev := false
 
 var_tmp_nodev if {
-    "nodev" in as_set(input.mounts["/var/tmp"].options)
+	"nodev" in as_set(input.mounts["/var/tmp"].options)
 }
 
 # CIS 1.1.9 - /var/tmp must be mounted with the nosuid option
 default var_tmp_nosuid := false
 
 var_tmp_nosuid if {
-    "nosuid" in as_set(input.mounts["/var/tmp"].options)
+	"nosuid" in as_set(input.mounts["/var/tmp"].options)
 }
 
 # CIS 1.1.10 - /var/tmp must be mounted with the noexec option
 default var_tmp_noexec := false
 
 var_tmp_noexec if {
-    "noexec" in as_set(input.mounts["/var/tmp"].options)
+	"noexec" in as_set(input.mounts["/var/tmp"].options)
 }
 
 # CIS 1.1.11 - /var/log must be its own filesystem
 default var_log_partition_configured := false
 
 var_log_partition_configured if {
-    input.mounts["/var/log"]
-    input.mounts["/var/log"].device != input.mounts["/var"].device
+	input.mounts["/var/log"]
+	input.mounts["/var/log"].device != input.mounts["/var"].device
 }
 
 # CIS 1.1.12 - /var/log/audit must be its own filesystem
 default var_log_audit_partition_configured := false
 
 var_log_audit_partition_configured if {
-    input.mounts["/var/log/audit"]
-    input.mounts["/var/log/audit"].device != input.mounts["/var/log"].device
+	input.mounts["/var/log/audit"]
+	input.mounts["/var/log/audit"].device != input.mounts["/var/log"].device
 }
 
 # CIS 1.1.13 - /home must be its own filesystem
 default home_partition_configured := false
 
 home_partition_configured if {
-    input.mounts["/home"]
-    input.mounts["/home"].device != input.mounts["/"].device
+	input.mounts["/home"]
+	input.mounts["/home"].device != input.mounts["/"].device
 }
 
 # CIS 1.1.14 - /home must be mounted with the nodev option
 default home_nodev := false
 
 home_nodev if {
-    "nodev" in as_set(input.mounts["/home"].options)
+	"nodev" in as_set(input.mounts["/home"].options)
 }
 
 # CIS 1.1.15 - /dev/shm must be mounted with the nodev option
 default dev_shm_nodev := false
 
 dev_shm_nodev if {
-    "nodev" in as_set(input.mounts["/dev/shm"].options)
+	"nodev" in as_set(input.mounts["/dev/shm"].options)
 }
 
 # CIS 1.1.16 - /dev/shm must be mounted with the nosuid option
 default dev_shm_nosuid := false
 
 dev_shm_nosuid if {
-    "nosuid" in as_set(input.mounts["/dev/shm"].options)
+	"nosuid" in as_set(input.mounts["/dev/shm"].options)
 }
 
 # CIS 1.1.17 - /dev/shm must be mounted with the noexec option
 default dev_shm_noexec := false
 
 dev_shm_noexec if {
-    "noexec" in as_set(input.mounts["/dev/shm"].options)
+	"noexec" in as_set(input.mounts["/dev/shm"].options)
 }
 
 # CIS 1.1.18 - removable media partitions must be mounted with the nodev option
 default removable_media_nodev := false
 
 removable_media_nodev if {
-    every mount in input.removable_media_mounts {
-        "nodev" in as_set(mount.options)
-    }
+	every mount in input.removable_media_mounts {
+		"nodev" in as_set(mount.options)
+	}
 }
 
 # CIS 1.1.19 - removable media partitions must be mounted with the nosuid option
 default removable_media_nosuid := false
 
 removable_media_nosuid if {
-    every mount in input.removable_media_mounts {
-        "nosuid" in as_set(mount.options)
-    }
+	every mount in input.removable_media_mounts {
+		"nosuid" in as_set(mount.options)
+	}
 }
 
 # CIS 1.1.20 - removable media partitions must be mounted with the noexec option
 default removable_media_noexec := false
 
 removable_media_noexec if {
-    every mount in input.removable_media_mounts {
-        "noexec" in as_set(mount.options)
-    }
+	every mount in input.removable_media_mounts {
+		"noexec" in as_set(mount.options)
+	}
 }
 
 # CIS 1.1.21 - sticky bit must be set on all world-writable directories
 default sticky_bit_set := false
 
 sticky_bit_set if {
-    every dir in input.world_writable_directories {
-        dir.sticky_bit == true
-    }
+	every dir in input.world_writable_directories {
+		dir.sticky_bit == true
+	}
 }
 
 # CIS 1.1.22 - Disable Automounting
 default automounting_disabled := false
 
 automounting_disabled if {
-    input.services["autofs"].enabled == false
-    input.services["autofs"].running == false
+	input.services.autofs.enabled == false
+	input.services.autofs.running == false
 }
 
 # CIS 1.1.23 - Disable USB Storage
 default usb_storage_disabled := false
 
 usb_storage_disabled if {
-    loaded := as_set(input.loaded_modules)
-    not "usb-storage" in loaded
-    "usb-storage" in as_set(input.blacklisted_modules)
+	loaded := as_set(input.loaded_modules)
+	not "usb-storage" in loaded
+	"usb-storage" in as_set(input.blacklisted_modules)
 }
 
 # Aggregate Ubuntu filesystem compliance
 default ubuntu_filesystem_compliant := false
 
 ubuntu_filesystem_compliant if {
-    cramfs_disabled
-    freevxfs_disabled
-    jffs2_disabled
-    hfs_disabled
-    hfsplus_disabled
-    udf_disabled
-    tmp_partition_configured
-    tmp_nodev
-    tmp_nosuid
-    tmp_noexec
-    var_partition_configured
-    var_tmp_partition_configured
-    var_tmp_nodev
-    var_tmp_nosuid
-    var_tmp_noexec
-    var_log_partition_configured
-    var_log_audit_partition_configured
-    home_partition_configured
-    home_nodev
-    dev_shm_nodev
-    dev_shm_nosuid
-    dev_shm_noexec
-    removable_media_nodev
-    removable_media_nosuid
-    removable_media_noexec
-    sticky_bit_set
-    automounting_disabled
-    usb_storage_disabled
+	cramfs_disabled
+	freevxfs_disabled
+	jffs2_disabled
+	hfs_disabled
+	hfsplus_disabled
+	udf_disabled
+	tmp_partition_configured
+	tmp_nodev
+	tmp_nosuid
+	tmp_noexec
+	var_partition_configured
+	var_tmp_partition_configured
+	var_tmp_nodev
+	var_tmp_nosuid
+	var_tmp_noexec
+	var_log_partition_configured
+	var_log_audit_partition_configured
+	home_partition_configured
+	home_nodev
+	dev_shm_nodev
+	dev_shm_nosuid
+	dev_shm_noexec
+	removable_media_nodev
+	removable_media_nosuid
+	removable_media_noexec
+	sticky_bit_set
+	automounting_disabled
+	usb_storage_disabled
 }
 
 # Detailed Ubuntu filesystem compliance report
 ubuntu_filesystem_compliance := {
-    "cramfs_disabled": cramfs_disabled,
-    "freevxfs_disabled": freevxfs_disabled,
-    "jffs2_disabled": jffs2_disabled,
-    "hfs_disabled": hfs_disabled,
-    "hfsplus_disabled": hfsplus_disabled,
-    "udf_disabled": udf_disabled,
-    "tmp_partition_configured": tmp_partition_configured,
-    "tmp_nodev": tmp_nodev,
-    "tmp_nosuid": tmp_nosuid,
-    "tmp_noexec": tmp_noexec,
-    "var_partition_configured": var_partition_configured,
-    "var_tmp_partition_configured": var_tmp_partition_configured,
-    "var_tmp_nodev": var_tmp_nodev,
-    "var_tmp_nosuid": var_tmp_nosuid,
-    "var_tmp_noexec": var_tmp_noexec,
-    "var_log_partition_configured": var_log_partition_configured,
-    "var_log_audit_partition_configured": var_log_audit_partition_configured,
-    "home_partition_configured": home_partition_configured,
-    "home_nodev": home_nodev,
-    "dev_shm_nodev": dev_shm_nodev,
-    "dev_shm_nosuid": dev_shm_nosuid,
-    "dev_shm_noexec": dev_shm_noexec,
-    "removable_media_nodev": removable_media_nodev,
-    "removable_media_nosuid": removable_media_nosuid,
-    "removable_media_noexec": removable_media_noexec,
-    "sticky_bit_set": sticky_bit_set,
-    "automounting_disabled": automounting_disabled,
-    "usb_storage_disabled": usb_storage_disabled,
-    "overall_compliant": ubuntu_filesystem_compliant
+	"cramfs_disabled": cramfs_disabled,
+	"freevxfs_disabled": freevxfs_disabled,
+	"jffs2_disabled": jffs2_disabled,
+	"hfs_disabled": hfs_disabled,
+	"hfsplus_disabled": hfsplus_disabled,
+	"udf_disabled": udf_disabled,
+	"tmp_partition_configured": tmp_partition_configured,
+	"tmp_nodev": tmp_nodev,
+	"tmp_nosuid": tmp_nosuid,
+	"tmp_noexec": tmp_noexec,
+	"var_partition_configured": var_partition_configured,
+	"var_tmp_partition_configured": var_tmp_partition_configured,
+	"var_tmp_nodev": var_tmp_nodev,
+	"var_tmp_nosuid": var_tmp_nosuid,
+	"var_tmp_noexec": var_tmp_noexec,
+	"var_log_partition_configured": var_log_partition_configured,
+	"var_log_audit_partition_configured": var_log_audit_partition_configured,
+	"home_partition_configured": home_partition_configured,
+	"home_nodev": home_nodev,
+	"dev_shm_nodev": dev_shm_nodev,
+	"dev_shm_nosuid": dev_shm_nosuid,
+	"dev_shm_noexec": dev_shm_noexec,
+	"removable_media_nodev": removable_media_nodev,
+	"removable_media_nosuid": removable_media_nosuid,
+	"removable_media_noexec": removable_media_noexec,
+	"sticky_bit_set": sticky_bit_set,
+	"automounting_disabled": automounting_disabled,
+	"usb_storage_disabled": usb_storage_disabled,
+	"overall_compliant": ubuntu_filesystem_compliant,
 }

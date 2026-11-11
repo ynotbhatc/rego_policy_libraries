@@ -38,7 +38,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # Evidence gate: a pipeline with no jobs is not evidence of anything. An empty or
 # mis-keyed input (parser failure, wrong top-level key) must not report compliant.
@@ -120,9 +120,9 @@ violations contains sprintf("Secrets: Potential hardcoded secret found in job '%
 violations contains sprintf("Secrets: Job '%s' passes secret '%s' as a positional argument — use env var instead", [job_name, secret_ref]) if {
 	some job_name, job in input.jobs
 	some step in job.steps
-	step["run"]
-	secret_ref := regex.find_all_string_submatch_n(`\$\{\{\s*secrets\.[A-Za-z0-9_]+\s*\}\}`, step["run"], -1)[_][0]
-	contains(step["run"], secret_ref)
+	step.run
+	secret_ref := regex.find_all_string_submatch_n(`\$\{\{\s*secrets\.[A-Za-z0-9_]+\s*\}\}`, step.run, -1)[_][0]
+	contains(step.run, secret_ref)
 	not is_safe_secret_usage(job, step, secret_ref)
 }
 
@@ -131,7 +131,7 @@ violations contains sprintf("Secrets: Job '%s' passes secret '%s' as a positiona
 # (decisions 2026-10-19). An unrelated env expression, or the bare substring
 # "env." (".env.example", "venv."), no longer suppresses the check.
 is_safe_secret_usage(job, step, secret_ref) if {
-	some x in env_names_in_script(step["run"])
+	some x in env_names_in_script(step.run)
 	bound := env_binding(job, step, x)
 	normalise_expr(bound) == normalise_expr(secret_ref)
 }
@@ -156,21 +156,21 @@ violations contains sprintf("Injection: Job '%s' step '%s' uses curl|bash/wget|s
 	some job_name, job in input.jobs
 	some step in job.steps
 	step_name := object.get(step, "name", "unnamed")
-	step["run"]
-	dangerous_pipe_pattern(step["run"])
+	step.run
+	dangerous_pipe_pattern(step.run)
 }
 
-dangerous_pipe_pattern(script) if { regex.match(`curl\s+.*\|\s*(ba)?sh`, script) }
-dangerous_pipe_pattern(script) if { regex.match(`wget\s+.*\|\s*(ba)?sh`, script) }
-dangerous_pipe_pattern(script) if { regex.match(`curl\s+.*\|\s*python`, script) }
-dangerous_pipe_pattern(script) if { regex.match(`curl\s+.*\|\s*ruby`, script) }
+dangerous_pipe_pattern(script) if regex.match(`curl\s+.*\|\s*(ba)?sh`, script)
+dangerous_pipe_pattern(script) if regex.match(`wget\s+.*\|\s*(ba)?sh`, script)
+dangerous_pipe_pattern(script) if regex.match(`curl\s+.*\|\s*python`, script)
+dangerous_pipe_pattern(script) if regex.match(`curl\s+.*\|\s*ruby`, script)
 
 violations contains sprintf("Injection: Job '%s' step '%s' interpolates GitHub context expression into shell run — use env var to avoid script injection", [job_name, step_name]) if {
 	some job_name, job in input.jobs
 	some step in job.steps
 	step_name := object.get(step, "name", "unnamed")
-	step["run"]
-	regex.match(`\$\{\{\s*(github\.(event|head_ref|base_ref)|inputs\.)`, step["run"])
+	step.run
+	regex.match(`\$\{\{\s*(github\.(event|head_ref|base_ref)|inputs\.)`, step.run)
 }
 
 # =============================================================================
@@ -190,7 +190,7 @@ violations contains sprintf("Credentials: Job '%s' uses long-lived GCP service a
 	some step in job.steps
 	step.uses
 	startswith(step.uses, "google-github-actions/auth")
-	step["with"]["credentials_json"]
+	step["with"].credentials_json
 }
 
 violations contains sprintf("Credentials: Job '%s' uses long-lived Azure service principal secret — migrate to federated identity credentials", [job_name]) if {
@@ -231,8 +231,8 @@ is_production_deployment(job) if {
 
 is_production_deployment(job) if {
 	some step in job.steps
-	step["with"]["environment"]
-	lower(step["with"]["environment"]) in {"production", "prod"}
+	step["with"].environment
+	lower(step["with"].environment) in {"production", "prod"}
 }
 
 has_required_reviewers(env_name) if {
@@ -310,11 +310,11 @@ violations contains sprintf("Images: Job '%s' container image '%s' is from unapp
 	not approved_registry(image)
 }
 
-approved_registry(image) if { startswith(image, "ghcr.io/") }
-approved_registry(image) if { startswith(image, "quay.io/") }
-approved_registry(image) if { startswith(image, "registry.access.redhat.com/") }
-approved_registry(image) if { startswith(image, "registry.redhat.io/") }
-approved_registry(image) if { regex.match(`^[0-9]+\.dkr\.ecr\.[a-z0-9-]+\.amazonaws\.com/`, image) }
+approved_registry(image) if startswith(image, "ghcr.io/")
+approved_registry(image) if startswith(image, "quay.io/")
+approved_registry(image) if startswith(image, "registry.access.redhat.com/")
+approved_registry(image) if startswith(image, "registry.redhat.io/")
+approved_registry(image) if regex.match(`^[0-9]+\.dkr\.ecr\.[a-z0-9-]+\.amazonaws\.com/`, image)
 
 # =============================================================================
 # DEPENDENCY REVIEW (PIPELINE-LEVEL)
@@ -351,24 +351,24 @@ has_dependency_review_step if {
 # =============================================================================
 
 violations_by_category := {
-	"pinning":      [v | some v in violations; contains(v, "Pinning:")],
-	"permissions":  [v | some v in violations; contains(v, "Permissions:")],
-	"secrets":      [v | some v in violations; contains(v, "Secrets:")],
-	"injection":    [v | some v in violations; contains(v, "Injection:")],
-	"credentials":  [v | some v in violations; contains(v, "Credentials:")],
-	"deployment":   [v | some v in violations; contains(v, "Deployment:")],
-	"runners":      [v | some v in violations; contains(v, "Runners:")],
-	"images":       [v | some v in violations; contains(v, "Images:")],
+	"pinning": [v | some v in violations; contains(v, "Pinning:")],
+	"permissions": [v | some v in violations; contains(v, "Permissions:")],
+	"secrets": [v | some v in violations; contains(v, "Secrets:")],
+	"injection": [v | some v in violations; contains(v, "Injection:")],
+	"credentials": [v | some v in violations; contains(v, "Credentials:")],
+	"deployment": [v | some v in violations; contains(v, "Deployment:")],
+	"runners": [v | some v in violations; contains(v, "Runners:")],
+	"images": [v | some v in violations; contains(v, "Images:")],
 	"dependencies": [v | some v in violations; contains(v, "Dependencies:")],
-	"evidence":     [v | some v in violations; contains(v, "Evidence:")],
+	"evidence": [v | some v in violations; contains(v, "Evidence:")],
 }
 
 compliance_report := {
-	"framework":           "CI/CD Pipeline Security Governance",
-	"standard":            "cicd.pipeline",
-	"compliant":           compliant,
-	"violation_count":     count(violations),
-	"violations":          [v | some v in violations],
+	"framework": "CI/CD Pipeline Security Governance",
+	"standard": "cicd.pipeline",
+	"compliant": compliant,
+	"violation_count": count(violations),
+	"violations": [v | some v in violations],
 	"violations_by_category": violations_by_category,
-	"pipeline_type":       object.get(input, ["_metadata", "pipeline_type"], "github_actions"),
+	"pipeline_type": object.get(input, ["_metadata", "pipeline_type"], "github_actions"),
 }

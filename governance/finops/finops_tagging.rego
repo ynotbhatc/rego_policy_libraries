@@ -41,7 +41,7 @@ violations contains "FINOPS: FAIL-CLOSED - facts 'input.resources' were not supp
 	not input.resources
 }
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # =============================================================================
 # REQUIRED TAGS
@@ -84,8 +84,8 @@ violations contains sprintf("Tagging: Resource '%s' has malformed 'cost-center' 
 	not valid_cost_center(resource.tags["cost-center"])
 }
 
-valid_cost_center(value) if { regex.match(`^[A-Z]{2,6}-[0-9]{3,6}$`, value) }
-valid_cost_center(value) if { regex.match(`^[0-9]{4,8}$`, value) }
+valid_cost_center(value) if regex.match(`^[A-Z]{2,6}-[0-9]{3,6}$`, value)
+valid_cost_center(value) if regex.match(`^[0-9]{4,8}$`, value)
 
 violations contains sprintf("Tagging: Resource '%s' 'owner' tag '%s' is not a valid email address", [resource.id, resource.tags.owner]) if {
 	some resource in input.resources
@@ -104,14 +104,14 @@ violations contains sprintf("Tagging: Resource '%s' 'team' tag '%s' contains inv
 # =============================================================================
 
 naming_patterns := {
-	"aws_instance":            `^[a-z][a-z0-9\-]{2,60}$`,
-	"aws_s3_bucket":           `^[a-z][a-z0-9\-\.]{1,61}[a-z0-9]$`,
-	"aws_rds_instance":        `^[a-z][a-z0-9\-]{1,60}$`,
+	"aws_instance": `^[a-z][a-z0-9\-]{2,60}$`,
+	"aws_s3_bucket": `^[a-z][a-z0-9\-\.]{1,61}[a-z0-9]$`,
+	"aws_rds_instance": `^[a-z][a-z0-9\-]{1,60}$`,
 	"azurerm_virtual_machine": `^[a-z][a-z0-9\-]{1,13}$`,
 	"azurerm_storage_account": `^[a-z0-9]{3,24}$`,
-	"azurerm_resource_group":  `^[a-z][a-z0-9\-_\.]{1,88}$`,
+	"azurerm_resource_group": `^[a-z][a-z0-9\-_\.]{1,88}$`,
 	"google_compute_instance": `^[a-z][a-z0-9\-]{1,61}$`,
-	"google_storage_bucket":   `^[a-z][a-z0-9\-_\.]{1,61}[a-z0-9]$`,
+	"google_storage_bucket": `^[a-z][a-z0-9\-_\.]{1,61}[a-z0-9]$`,
 }
 
 violations contains sprintf("Naming: Resource '%s' of type '%s' does not match naming convention pattern '%s'", [resource.name, resource.type, naming_patterns[resource.type]]) if {
@@ -128,11 +128,11 @@ violations contains sprintf("Naming: Resource '%s' name does not include environ
 	not name_contains_env(resource.name, resource.tags.environment)
 }
 
-name_contains_env(name, env) if { contains(name, env) }
-name_contains_env(name, "production") if { contains(name, "prod") }
-name_contains_env(name, "development") if { contains(name, "dev") }
-name_contains_env(name, "staging") if { contains(name, "stg") }
-name_contains_env(name, "staging") if { contains(name, "stage") }
+name_contains_env(name, env) if contains(name, env)
+name_contains_env(name, "production") if contains(name, "prod")
+name_contains_env(name, "development") if contains(name, "dev")
+name_contains_env(name, "staging") if contains(name, "stg")
+name_contains_env(name, "staging") if contains(name, "stage")
 
 # =============================================================================
 # TEMPORARY RESOURCE GOVERNANCE
@@ -190,6 +190,7 @@ is_leap_year(year) if year % 400 == 0
 is_past_date(date_str) if {
 	parts := split(date_str, "-")
 	count(parts) == 3
+
 	# the date itself, compared with now (the earlier "year < 2025" approximation went stale every January)
 	time.parse_rfc3339_ns(sprintf("%sT00:00:00Z", [date_str])) < time.now_ns()
 }
@@ -282,20 +283,20 @@ tagging_score := (compliant_resources * 100) / total_resources if {
 } else := 100
 
 compliance_report := {
-	"framework":          "FinOps Tagging & Cost Governance",
-	"standard":           "finops.tagging",
-	"compliant":          compliant,
-	"violation_count":    count(violations),
-	"total_resources":    total_resources,
+	"framework": "FinOps Tagging & Cost Governance",
+	"standard": "finops.tagging",
+	"compliant": compliant,
+	"violation_count": count(violations),
+	"total_resources": total_resources,
 	"compliant_resources": compliant_resources,
-	"tagging_score":      tagging_score,
-	"violations":         [v | some v in violations],
+	"tagging_score": tagging_score,
+	"violations": [v | some v in violations],
 	"violations_by_category": {
-		"missing_tags":       [v | some v in violations; contains(v, "Tagging:")],
-		"naming":             [v | some v in violations; contains(v, "Naming:")],
-		"expiry":             [v | some v in violations; contains(v, "Expiry:")],
-		"untagged":           [v | some v in violations; contains(v, "Untagged:")],
-		"classification":     [v | some v in violations; contains(v, "Classification:")],
-		"budget":             [v | some v in violations; contains(v, "Budget:")],
+		"missing_tags": [v | some v in violations; contains(v, "Tagging:")],
+		"naming": [v | some v in violations; contains(v, "Naming:")],
+		"expiry": [v | some v in violations; contains(v, "Expiry:")],
+		"untagged": [v | some v in violations; contains(v, "Untagged:")],
+		"classification": [v | some v in violations; contains(v, "Classification:")],
+		"budget": [v | some v in violations; contains(v, "Budget:")],
 	},
 }

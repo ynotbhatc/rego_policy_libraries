@@ -9,4 +9,3 @@ test_cis_openshift_4_loads_on_empty_input if {
 	m := data.cis_openshift_4 with input as {}
 	is_object(m)
 }
-

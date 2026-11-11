@@ -5,152 +5,142 @@ import rego.v1
 import data.cis.sql_server_2025 as b
 import data.cis.sql_server_2025.main as m
 
-green := {
-	 "sql": {
-	  "attest": {
-	   "latest_cumulative_update_installed": true,
-	   "single_function_member_server": true,
-	   "unnecessary_protocols_disabled": true,
-	   "mssql_service_account_not_admin": true,
-	   "sqlagent_service_account_not_admin": true,
-	   "fulltext_service_account_not_admin": true,
-	   "sysadmin_membership_reviewed": true,
-	   "control_server_grants_reviewed": true,
-	   "external_rest_endpoint_access_reviewed": true,
-	   "must_change_reviewed": true,
-	   "input_sanitization_reviewed": true,
-	   "browser_service_reviewed": true
-	  },
-	  "configurations": {
-	   "ad hoc distributed queries": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "clr enabled": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "cross db ownership chaining": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "database mail xps": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "ole automation procedures": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "remote access": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "remote admin connections": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "scan for startup procs": {
-	    "value_configured": 0,
-	    "value_in_use": 0
-	   },
-	   "clr strict security": {
-	    "value_configured": 1,
-	    "value_in_use": 1
-	   },
-	   "default trace enabled": {
-	    "value_configured": 1,
-	    "value_in_use": 1
-	   }
-	  },
-	  "is_clustered": false,
-	  "databases_trustworthy_on": [],
-	  "tcp_port_1433_count": 0,
-	  "hide_instance": 1,
-	  "sa_account_disabled": true,
-	  "sa_login_name": "dbadmin_x",
-	  "contained_databases_auto_close_on": [],
-	  "logins_named_sa": [],
-	  "is_integrated_security_only": 1,
-	  "guest_connect_grants": [],
-	  "orphaned_users": [],
-	  "contained_db_sql_auth_users": [],
-	  "public_role_extra_permissions": [],
-	  "builtin_logins": [],
-	  "local_group_logins": [],
-	  "msdb_public_proxy_grants": [],
-	  "msdb_admin_role_members": [],
-	  "sysadmin_logins_without_expiration_check": [],
-	  "sql_logins_without_check_policy": [],
-	  "num_error_logs": 12,
-	  "login_audit_level": "failure",
-	  "server_audit_actions": [
-	   {
-	    "audit_action_name": "AUDIT_CHANGE_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   },
-	   {
-	    "audit_action_name": "FAILED_LOGIN_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   },
-	   {
-	    "audit_action_name": "SUCCESSFUL_LOGIN_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   },
-	   {
-	    "audit_action_name": "DATABASE_ROLE_MEMBER_CHANGE_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   },
-	   {
-	    "audit_action_name": "SERVER_ROLE_MEMBER_CHANGE_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   },
-	   {
-	    "audit_action_name": "SERVER_OPERATION_GROUP",
-	    "audit_enabled": true,
-	    "specification_enabled": true,
-	    "audited_result": "SUCCESS AND FAILURE"
-	   }
-	  ],
-	  "has_contained_databases": false,
-	  "user_assemblies": [
-	   {
-	    "database": "AppDB",
-	    "name": "SafeLib",
-	    "permission_set_desc": "SAFE_ACCESS"
-	   }
-	  ],
-	  "symmetric_keys": [
-	   {
-	    "database": "AppDB",
-	    "name": "AppKey",
-	    "algorithm_desc": "AES_256"
-	   }
-	  ],
-	  "asymmetric_keys": [
-	   {
-	    "database": "AppDB",
-	    "name": "AppAsym",
-	    "key_length": 2048
-	   }
-	  ],
-	  "unencrypted_backups": [],
-	  "connection_encrypt_options": [
-	   "TRUE"
-	  ],
-	  "databases_without_tde": []
-	 }
-	}
+green := {"sql": {
+	"attest": {
+		"latest_cumulative_update_installed": true,
+		"single_function_member_server": true,
+		"unnecessary_protocols_disabled": true,
+		"mssql_service_account_not_admin": true,
+		"sqlagent_service_account_not_admin": true,
+		"fulltext_service_account_not_admin": true,
+		"sysadmin_membership_reviewed": true,
+		"control_server_grants_reviewed": true,
+		"external_rest_endpoint_access_reviewed": true,
+		"must_change_reviewed": true,
+		"input_sanitization_reviewed": true,
+		"browser_service_reviewed": true,
+	},
+	"configurations": {
+		"ad hoc distributed queries": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"clr enabled": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"cross db ownership chaining": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"database mail xps": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"ole automation procedures": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"remote access": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"remote admin connections": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"scan for startup procs": {
+			"value_configured": 0,
+			"value_in_use": 0,
+		},
+		"clr strict security": {
+			"value_configured": 1,
+			"value_in_use": 1,
+		},
+		"default trace enabled": {
+			"value_configured": 1,
+			"value_in_use": 1,
+		},
+	},
+	"is_clustered": false,
+	"databases_trustworthy_on": [],
+	"tcp_port_1433_count": 0,
+	"hide_instance": 1,
+	"sa_account_disabled": true,
+	"sa_login_name": "dbadmin_x",
+	"contained_databases_auto_close_on": [],
+	"logins_named_sa": [],
+	"is_integrated_security_only": 1,
+	"guest_connect_grants": [],
+	"orphaned_users": [],
+	"contained_db_sql_auth_users": [],
+	"public_role_extra_permissions": [],
+	"builtin_logins": [],
+	"local_group_logins": [],
+	"msdb_public_proxy_grants": [],
+	"msdb_admin_role_members": [],
+	"sysadmin_logins_without_expiration_check": [],
+	"sql_logins_without_check_policy": [],
+	"num_error_logs": 12,
+	"login_audit_level": "failure",
+	"server_audit_actions": [
+		{
+			"audit_action_name": "AUDIT_CHANGE_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+		{
+			"audit_action_name": "FAILED_LOGIN_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+		{
+			"audit_action_name": "SUCCESSFUL_LOGIN_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+		{
+			"audit_action_name": "DATABASE_ROLE_MEMBER_CHANGE_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+		{
+			"audit_action_name": "SERVER_ROLE_MEMBER_CHANGE_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+		{
+			"audit_action_name": "SERVER_OPERATION_GROUP",
+			"audit_enabled": true,
+			"specification_enabled": true,
+			"audited_result": "SUCCESS AND FAILURE",
+		},
+	],
+	"has_contained_databases": false,
+	"user_assemblies": [{
+		"database": "AppDB",
+		"name": "SafeLib",
+		"permission_set_desc": "SAFE_ACCESS",
+	}],
+	"symmetric_keys": [{
+		"database": "AppDB",
+		"name": "AppKey",
+		"algorithm_desc": "AES_256",
+	}],
+	"asymmetric_keys": [{
+		"database": "AppDB",
+		"name": "AppAsym",
+		"key_length": 2048,
+	}],
+	"unencrypted_backups": [],
+	"connection_encrypt_options": ["TRUE"],
+	"databases_without_tde": [],
+}}
 
 test_green_instance_is_compliant if {
 	r := b.compliance_report with input as green
