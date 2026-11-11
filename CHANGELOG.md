@@ -8,6 +8,33 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — standards registry November 2026 sweep; CIS Controls citations harmonised to v8.1
+
+- `STANDARDS_UPDATE_REGISTRY.md` v1.1 (2026-11-11): every row checked against its watch source. All eight
+  "verify" flags cleared with the confirmed cadence (800-53 patch releases, ISO 27001, SOC 2 points of focus,
+  IEC 62443 per-part, AI RMF profiles, HITRUST, TISAX ×2). Six "pending" rows had already shipped in 2.3.x–2.4.x
+  and now say so (CISA CPG #179, EU AI Act #175, DORA #177, NY DFS #176, ITAR #178, FedRAMP 20x #180). Rows
+  that moved: **CMMC** — Phase II (was 2026-11-10) suspended by DoW on 2026-07-13, no outcome yet; **COBIT 7**
+  launch slipped from 2026-10-27 to "November 2026" (#194 stays open); **SWIFT CSP** — module pins CSCF v2024,
+  upstream v2026 (attestation due 2026-12-31) and v2027 published; **HITRUST** — module v11.3.0, upstream v11.9.0
+  (2026-09-24), v11.0–11.3 decommissioned; **TISAX** — module ISA 6, upstream VDA ISA2027 (applies to orders from
+  2027-01-01); **MITRE ATLAS** v2026.10; **SCuBA** ScubaGear v2.0.0; **NERC CIP** CIP-003-9 / CIP-012-2 effective,
+  CIP-015-2 approved 2026-08-10; **CIS** Sep/Nov 2026 releases (Kubernetes v2.1.0, Docker v1.9.0, AWS v7.1.0,
+  AKS v2.1.0, ESXi 9, IOS XE) against the directory pins; **CIS EKS** row corrected to the v2.0.0 the module
+  carries; **NIST SP 800-53** r5.2.0 (2025-08-27) additions noted as not yet in the module; **DPDP** Rule 4 in
+  force 2026-11-13; **UK DCC** ISN 2026/01–02 and the 2026-12-31 L0 ask; **NIS2** CJEU referrals (2026-07-08);
+  **EU AI Act** new Art. 5 prohibitions apply 2026-12-02. Rows added for **CIS Controls v8.1** and the **SAP
+  Security Baseline v2.6**. None of the modules named above changed in this PR; the behind-upstream ones have no
+  issue yet. The CIS MCP §6/8/9 PDF and the Cyber AI Profile public draft remain pending upstream.
+- **CIS Controls citations harmonised to v8.1** (June 2024, the current release; v9 has no date). The 18
+  `frameworks/management/cis_controls_v8/c*.rego` violation messages read "CIS Controls v8 %s (IG%d)" while the
+  METADATA titles, the orchestrator's `framework` string and the safeguard tables were already v8.1; the four
+  `governance/estate_continuity` messages that cite safeguards 1.1/1.2 and three docs
+  (`docs/CONTROL_CORRELATION_PATTERN.md`, `docs/FRAMEWORK_ROADMAP.md`, `converters/exports/oscal/README.md`)
+  likewise. Package names (`cis_controls_v8`) and directory names are unchanged; OSCAL `dist/` regenerated (which also
+  picks up four "turned on on" → "turned on for" message fixes from #269 that the committed dist had missed:
+  CIS Azure, FortiGate, OCI ×2).
+
 ### Changed — PQC Readiness cites the final NIST IR 8547
 
 - `frameworks/federal/pqc/pqc_main.rego`: NIST finalized IR 8547, "Transition to Post-Quantum Cryptography

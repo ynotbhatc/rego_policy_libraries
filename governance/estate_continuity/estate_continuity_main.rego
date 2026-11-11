@@ -253,7 +253,7 @@ reason(_, label, "invalid_record") := sprintf(
 )
 
 reason(h, label, "zombie") := sprintf(
-	"CIS Controls v8 1.2 / NIST SP 800-53 CM-8: %s is recorded as retired (%s, by %s) but answered an assessment %v h after the retirement — an asset believed gone is still running",
+	"CIS Controls v8.1 1.2 / NIST SP 800-53 CM-8: %s is recorded as retired (%s, by %s) but answered an assessment %v h after the retirement — an asset believed gone is still running",
 	[label, h.retirement.ref, h.retirement.by, h.retirement.hours_ago - h.last_attempt.hours_ago],
 )
 
@@ -268,17 +268,17 @@ reason(h, label, "retirement_incomplete") := sprintf(
 )
 
 reason(h, label, "removed_unrecorded") := sprintf(
-	"NIST SP 800-53 CM-8(1) / CIS Controls v8 1.1: %s was removed by %s (via %v, %v h ago) but there is no decommission record — the removal is unauthorised until one is filed",
+	"NIST SP 800-53 CM-8(1) / CIS Controls v8.1 1.1: %s was removed by %s (via %v, %v h ago) but there is no decommission record — the removal is unauthorised until one is filed",
 	[label, h.removal_event.by, object.get(h.removal_event, "source", "unknown"), object.get(h.removal_event, "hours_ago", "?")],
 )
 
 reason(h, label, "missing") := sprintf(
-	"NIST SP 800-53 CM-8 / CIS Controls v8 1.1: %s is no longer in the inventory or its provider (in_inventory=%v, provider_state=%s) and there is no record of who removed it or why — unexplained disappearance",
+	"NIST SP 800-53 CM-8 / CIS Controls v8.1 1.1: %s is no longer in the inventory or its provider (in_inventory=%v, provider_state=%s) and there is no record of who removed it or why — unexplained disappearance",
 	[label, h.in_inventory, provider_state(h)],
 )
 
 reason(h, label, "unmanaged_running") := sprintf(
-	"CIS Controls v8 1.1 / NIST SP 800-53 CM-8: %s is running (%v) but is in no inventory being checked — it exists, and nothing is managing or assessing it",
+	"CIS Controls v8.1 1.1 / NIST SP 800-53 CM-8: %s is running (%v) but is in no inventory being checked — it exists, and nothing is managing or assessing it",
 	[label, object.get(h, "provider", "provider")],
 )
 

@@ -30,7 +30,7 @@ Placement is decided per framework (existing parents: `federal`, `financial`,
 
 | # | Target week | Framework | Why it's an obvious gap | Proposed home |
 |---|---|---|---|---|
-| **1** | **2026-09-18** | **CIS Controls v8** — the 18 Critical Security Controls / 153 safeguards, IG1–IG3 | Enormous CIS **Benchmark** depth but not the CIS **Controls** framework; the two are constantly conflated | `frameworks/management/cis_controls_v8/` |
+| **1** | **2026-09-18** | **CIS Controls v8.1** — the 18 Critical Security Controls / 153 safeguards, IG1–IG3 | Enormous CIS **Benchmark** depth but not the CIS **Controls** framework; the two are constantly conflated | `frameworks/management/cis_controls_v8/` |
 | 2 | 2026-09-25 | **Zero Trust** — NIST SP 800-207 + CISA Zero Trust Maturity Model | Most-requested current architecture framework; pairs with existing NIST content | `frameworks/federal/zero_trust/` |
 | 3 | 2026-10-02 | **Australia Essential Eight (ACSC)** — 8 strategies × maturity 0–3 | The single most-requested APAC framework; nothing substitutes | `frameworks/regional/essential_eight/` |
 | 4 | 2026-10-09 | **CJIS Security Policy** | US state/local justice staple; FedRAMP/FISMA present but not this | `frameworks/federal/cjis/` |
