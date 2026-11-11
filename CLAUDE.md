@@ -24,7 +24,7 @@ benchmarks/                    Per-platform configuration baselines
 │   ├── windows_server_2016/   Windows, one directory per version;
 │   │   windows_server_2019_modular/  *_modular are the current ones
 │   │   windows_server_2022/ windows_server_2022_modular/
-│   │   windows_10/ windows_11/
+│   │   windows_10_modular/ windows_11_modular/
 │   ├── cloud/                 AWS / Azure / GCP foundations
 │   ├── container/             Docker / Kubernetes
 │   ├── saas/                  M365 (this is where the SaaS pattern lives)
