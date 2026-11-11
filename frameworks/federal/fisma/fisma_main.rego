@@ -6,14 +6,14 @@
 #   source: nist
 #   domains: [us-federal]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 1
+#     cited: 1
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: none
-#     guard: n/a
-#     as_of: v2.4.1
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package fisma.main
 
 import rego.v1
@@ -622,3 +622,20 @@ fisma_metadata := {
 	"penalties": "Varies by agency policy and contract requirements",
 	"scope": "All federal information systems and data",
 }
+
+# Framework-key entrypoint: the product reads /v1/data/fisma/main/compliance_report. This package
+# names its report `fisma_assessment`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "fisma",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for fisma; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(fisma_assessment, {"framework_key": "fisma", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if fisma_assessment.compliance_status == true
