@@ -6,14 +6,14 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 13
+#     cited: 13
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: report
+#     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package digital_sovereignty.main
 
 import rego.v1
@@ -46,17 +46,17 @@ import data.digital_sovereignty.software_sovereignty
 # DOMAIN COMPLIANCE STATUS
 # =============================================================================
 
-data_residency_compliant if { data_residency.compliant }
-cryptographic_sovereignty_compliant if { cryptographic_sovereignty.compliant }
-infrastructure_sovereignty_compliant if { infrastructure_sovereignty.compliant }
-software_sovereignty_compliant if { software_sovereignty.compliant }
-operational_sovereignty_compliant if { operational_sovereignty.compliant }
-network_sovereignty_compliant if { network_sovereignty.compliant }
-ai_sovereignty_compliant if { ai_sovereignty.compliant }
-breach_notification_sovereignty_compliant if { breach_notification_sovereignty.compliant }
-geopolitical_sovereignty_compliant if { geopolitical_sovereignty.compliant }
-dora_sovereignty_compliant if { dora_sovereignty.compliant }
-cyber_resilience_sovereignty_compliant if { cyber_resilience_sovereignty.compliant }
+data_residency_compliant if data_residency.compliant
+cryptographic_sovereignty_compliant if cryptographic_sovereignty.compliant
+infrastructure_sovereignty_compliant if infrastructure_sovereignty.compliant
+software_sovereignty_compliant if software_sovereignty.compliant
+operational_sovereignty_compliant if operational_sovereignty.compliant
+network_sovereignty_compliant if network_sovereignty.compliant
+ai_sovereignty_compliant if ai_sovereignty.compliant
+breach_notification_sovereignty_compliant if breach_notification_sovereignty.compliant
+geopolitical_sovereignty_compliant if geopolitical_sovereignty.compliant
+dora_sovereignty_compliant if dora_sovereignty.compliant
+cyber_resilience_sovereignty_compliant if cyber_resilience_sovereignty.compliant
 
 # =============================================================================
 # OVERALL COMPLIANCE
@@ -119,15 +119,15 @@ all_violations := violations if {
 	a_gt := [v | v := geopolitical_sovereignty.violations[_]]
 	a_dr_s := [v | v := dora_sovereignty.violations[_]]
 	a_cr := [v | v := cyber_resilience_sovereignty.violations[_]]
-	v_dr_cs  := array.concat(a_dr, a_cs)
-	v_is_ss  := array.concat(a_is, a_ss)
-	v_os_ns  := array.concat(a_os, a_ns)
-	v_first  := array.concat(v_dr_cs, v_is_ss)
+	v_dr_cs := array.concat(a_dr, a_cs)
+	v_is_ss := array.concat(a_is, a_ss)
+	v_os_ns := array.concat(a_os, a_ns)
+	v_first := array.concat(v_dr_cs, v_is_ss)
 	v_second := array.concat(v_os_ns, a_ai)
-	v_third  := array.concat(a_bn, a_gt)
+	v_third := array.concat(a_bn, a_gt)
 	v_fourth := array.concat(a_dr_s, a_cr)
-	v_all    := array.concat(v_first, v_second)
-	v_base   := array.concat(v_all, v_third)
+	v_all := array.concat(v_first, v_second)
+	v_base := array.concat(v_all, v_third)
 	violations := array.concat(v_base, v_fourth)
 }
 
@@ -243,13 +243,40 @@ report := {
 
 # Defaults for domain aggregators — keep report/domains_passing well-formed on absent facts
 default data_residency_compliant := false
+
 default cryptographic_sovereignty_compliant := false
+
 default infrastructure_sovereignty_compliant := false
+
 default software_sovereignty_compliant := false
+
 default operational_sovereignty_compliant := false
+
 default network_sovereignty_compliant := false
+
 default ai_sovereignty_compliant := false
+
 default breach_notification_sovereignty_compliant := false
+
 default geopolitical_sovereignty_compliant := false
+
 default dora_sovereignty_compliant := false
+
 default cyber_resilience_sovereignty_compliant := false
+
+# Framework-key entrypoint: the product reads /v1/data/digital_sovereignty/main/compliance_report. This package
+# names its report `report`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "digital_sovereignty",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for digital_sovereignty; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(report, {"framework_key": "digital_sovereignty", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if report.overall_compliant == true

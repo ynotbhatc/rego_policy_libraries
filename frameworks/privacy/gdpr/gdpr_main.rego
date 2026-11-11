@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [privacy, eu]
 #   coverage:
-#     checks: 4
-#     cited: 4
+#     checks: 5
+#     cited: 5
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: report
+#     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package gdpr.main
 
 import rego.v1
@@ -31,16 +31,20 @@ import data.gdpr.data_transfers
 # =============================================================================
 
 default core_compliant := false
-core_compliant if { compliance.compliant }
+
+core_compliant if compliance.compliant
 
 default controller_processor_compliant := false
-controller_processor_compliant if { controller_processor.compliant }
+
+controller_processor_compliant if controller_processor.compliant
 
 default data_transfers_compliant := false
-data_transfers_compliant if { data_transfers.compliant }
+
+data_transfers_compliant if data_transfers.compliant
 
 default cookies_tracking_compliant := false
-cookies_tracking_compliant if { cookies_tracking.compliant }
+
+cookies_tracking_compliant if cookies_tracking.compliant
 
 # =============================================================================
 # OVERALL COMPLIANCE
@@ -93,3 +97,20 @@ report := {
 		},
 	},
 }
+
+# Framework-key entrypoint: the product reads /v1/data/gdpr/main/compliance_report. This package
+# names its report `report`; expose it under the shared name with an explicit `compliant` and a
+# fail-closed default so the entrypoint is never undefined.
+default compliance_report := {
+	"framework_key": "gdpr",
+	"compliant": false,
+	"fail_closed": true,
+	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for gdpr; this is not a passing result"}],
+	"violation_count": 1,
+}
+
+compliance_report := object.union(report, {"framework_key": "gdpr", "compliant": _entrypoint_compliant})
+
+default _entrypoint_compliant := false
+
+_entrypoint_compliant if report.overall_compliant == true
