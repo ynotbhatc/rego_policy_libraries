@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AMI / NIST IR 7628 Rego Policies for Open Policy Agent (OPA)</title>
-<meta name="description" content="9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta name="description" content="12 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html">
 <meta property="og:title" content="AMI / NIST IR 7628 Rego Policies for Open Policy Agent (OPA)">
-<meta property="og:description" content="9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta property="og:description" content="12 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-critical-infrastructure-ami.html">
 <style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
@@ -47,10 +47,10 @@
 </head>
 <body>
 <h1>AMI / NIST IR 7628 — Rego Policies for OPA</h1>
-<p>9 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
+<p>12 open-source Rego policies encoding Advanced Metering Infrastructure and smart grid security. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
 
 <h2>What this is</h2>
-<p><strong>9 Rego policy files</strong> encoding Advanced Metering Infrastructure and smart grid security, part of the
+<p><strong>12 Rego policy files</strong> encoding Advanced Metering Infrastructure and smart grid security, part of the
 <a href="https://ynotbhatc.github.io/rego_policy_libraries/">Rego Policy Libraries</a> — a standalone, dependency-free
 collection of Open Policy Agent policies for published security and compliance
 standards. No orchestrator, no agent, no vendor runtime.</p>
@@ -73,7 +73,10 @@ differs.</p>
 <h2>Policy modules</h2>
 <ul>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/device_compliance/ami_device_compliance.rego"><code>ami_device_compliance.rego</code></a> <span style="opacity:.7">ami.device.compliance</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/device_compliance/ami_device_main.rego"><code>ami_device_main.rego</code></a> <span style="opacity:.7">ami_device.main</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/headend/ami_headend_main.rego"><code>ami_headend_main.rego</code></a> <span style="opacity:.7">ami_headend.main</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/headend/ami_headend_security.rego"><code>ami_headend_security.rego</code></a> <span style="opacity:.7">ami.headend.security</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/ami_nist_ir7628_main.rego"><code>ami_nist_ir7628_main.rego</code></a> <span style="opacity:.7">ami_nist_ir7628.main</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_access_control.rego"><code>nist_ir7628_access_control.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.access_control</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_audit.rego"><code>nist_ir7628_audit.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.audit</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/critical_infrastructure/ami/nist_ir_7628/nist_ir7628_complete.rego"><code>nist_ir7628_complete.rego</code></a> <span style="opacity:.7">ami.nist_ir7628.complete</span></li>
