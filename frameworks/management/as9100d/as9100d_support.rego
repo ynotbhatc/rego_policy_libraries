@@ -28,7 +28,9 @@ import rego.v1
 #
 # kind: attestation  -> input.as9100d.attestations["<id>"] == true (anything else is a violation)
 # kind: fact         -> evidence under input.as9100d.<evidence>; missing evidence is FAIL-CLOSED, present
-#                       evidence is checked and every gap is reported
+#                       evidence is checked and every gap is reported. A required field that is absent, null,
+#                       blank, of the wrong type or (for dates) unparseable is evidence missing: the row fails
+#                       and the violation names the field.
 
 clause := "7"
 
@@ -47,7 +49,7 @@ items := {
 	"7.4": {"title": "Communication — internal and external communications relevant to the QMS are determined: what, when, with whom, how and by whom", "kind": "attestation"},
 	"7.5.1": {"title": "Documented information — the information the standard requires and the organization needs for QMS effectiveness is maintained", "kind": "attestation"},
 	"7.5.2": {"title": "Creating and updating — documents carry identification, format and media controls and are reviewed and approved for suitability", "kind": "attestation"},
-	"7.5.3": {"title": "Control of documented information — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and customer-furnished information", "kind": "attestation"},
+	"7.5.3": {"title": "Control of documented information (7.5.3.1 and 7.5.3.2) — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and customer-furnished information", "kind": "attestation"},
 }
 
 default compliant := false
@@ -71,10 +73,11 @@ passed contains id if {
 	_attested(id)
 }
 
-# ── Reference date ───────────────────────────────────────────────────────────
+# ── Reference date and field tests ───────────────────────────────────────────
 # input.as9100d.as_of (RFC 3339 or YYYY-MM-DD) pins the evaluation date for reproducible reports; otherwise
-# the evaluation clock is used. Repeated in every clause module that needs it because the product uploads
-# one file at a time into an empty OPA server (scripts/check_per_file_load.py).
+# the evaluation clock is used. "Within the past year" is a rolling 365-day window ending on that date, not a
+# calendar or fiscal year. Repeated in every clause module that needs it because the product uploads one file
+# at a time into an empty OPA server (scripts/check_per_file_load.py).
 
 _now_ns := time.parse_rfc3339_ns(_rfc3339(input.as9100d.as_of)) if input.as9100d.as_of
 
@@ -94,60 +97,150 @@ _ns(d) := time.parse_rfc3339_ns(_rfc3339(d))
 
 _year_ns := ((365 * 24) * 3600) * 1000000000
 
-_within_past_year(d) if {
+# A date is valid only when it is a string that parses. A parse failure leaves _ns undefined, so every date test
+# is false for an absent, null, non-string or unparseable value and the row reports the gap instead of passing.
+_date(d) if {
 	is_string(d)
+	is_number(_ns(d))
+}
+
+_within_past_year(d) if {
+	_date(d)
 	_ns(d) <= _now_ns
 	_now_ns - _ns(d) <= _year_ns
 }
 
 _in_past(d) if {
-	is_string(d)
+	_date(d)
 	_ns(d) < _now_ns
 }
 
-_label(x) := object.get(x, "id", "<no id>")
+_not_future(d) if {
+	_date(d)
+	_ns(d) <= _now_ns
+}
 
-# Negated type tests on a possibly-missing key must go through object.get: `not is_string(x.k)` never fires
-# when k is absent (the ref is undefined before the negation is evaluated).
-_str(x, k) if is_string(object.get(x, k, null))
+_label(x) := x.id if _text(x, "id")
+
+_label(x) := "<no id>" if not _text(x, "id")
+
+# Field tests go through object.get: `not is_string(x.k)` never fires when k is absent (the ref is undefined
+# before the negation is evaluated). A required text field is a non-blank string, a required date parses and a
+# required flag is a boolean; anything else is evidence missing and the row fails naming the field.
+_text(x, k) if {
+	v := object.get(x, k, null)
+	is_string(v)
+	count(trim_space(v)) > 0
+}
+
+_has_date(x, k) if _date(object.get(x, k, null))
+
+_bool(x, k) if is_boolean(object.get(x, k, null))
+
+_shown(x, k) := object.get(x, k, "<missing>")
+
+# Identifiers used by more than one record of a list.
+_dup_ids(xs) := {id |
+	some i, a in xs
+	id := object.get(a, "id", null)
+	is_string(id)
+	some j, b in xs
+	i != j
+	object.get(b, "id", null) == id
+}
 
 # ── 7.1.5 Monitoring and measuring resources ─────────────────────────────────
 # input.as9100d.measuring_equipment: [{id, description, in_service: bool, calibration_due: date,
 #   calibrated_on: date, traceable: bool}]
+# At least one entry is required; there is no "none occurred" case because an aerospace QMS that measures
+# nothing is not credible, so an empty register fails both rows. Every entry needs a unique non-blank id, a
+# description and a boolean in_service. An in-service entry also needs a calibration_due that parses and has
+# not passed, a calibrated_on that parses and is not in the future, and traceable: true.
 
-_present("7.1.5.1") if is_array(input.as9100d.measuring_equipment)
+_equipment := input.as9100d.measuring_equipment
 
-_gaps["7.1.5.1"] contains "the measuring-equipment register is empty" if {
-	count(input.as9100d.measuring_equipment) == 0
+_present("7.1.5.1") if is_array(_equipment)
+
+_gaps["7.1.5.1"] contains "the measuring-equipment register is empty — at least one entry is required" if {
+	count(_equipment) == 0
 }
 
 _gaps["7.1.5.1"] contains r if {
-	some e in input.as9100d.measuring_equipment
-	not _str(e, "id")
-	r := sprintf("register entry %v has no identifier", [e])
+	some e in _equipment
+	not _text(e, "id")
+	r := sprintf("register entry %v has no identifier (id must be a non-blank string)", [e])
 }
 
 _gaps["7.1.5.1"] contains r if {
-	some e in input.as9100d.measuring_equipment
+	some id in _dup_ids(_equipment)
+	r := sprintf("identifier %v is used by more than one register entry (ids must be unique)", [id])
+}
+
+_gaps["7.1.5.1"] contains r if {
+	some e in _equipment
+	not _text(e, "description")
+	r := sprintf("register entry %v has no description", [_label(e)])
+}
+
+_gaps["7.1.5.1"] contains r if {
+	some e in _equipment
+	not _bool(e, "in_service")
+	r := sprintf("register entry %v does not state whether it is in service (in_service must be true or false, got %v)", [_label(e), _shown(e, "in_service")])
+}
+
+_gaps["7.1.5.1"] contains r if {
+	some e in _equipment
 	e.in_service == true
-	not _str(e, "calibration_due")
-	r := sprintf("in-service equipment %v has no calibration due date", [_label(e)])
+	not _has_date(e, "calibration_due")
+	r := sprintf("in-service equipment %v has no calibration due date that parses (calibration_due: %v)", [_label(e), _shown(e, "calibration_due")])
 }
 
-_present("7.1.5.2") if is_array(input.as9100d.measuring_equipment)
+_gaps["7.1.5.1"] contains r if {
+	some e in _equipment
+	e.in_service == true
+	not _has_date(e, "calibrated_on")
+	r := sprintf("in-service equipment %v has no last-calibration date that parses (calibrated_on: %v)", [_label(e), _shown(e, "calibrated_on")])
+}
+
+_present("7.1.5.2") if is_array(_equipment)
+
+_gaps["7.1.5.2"] contains "the measuring-equipment register is empty — no calibration status can be confirmed" if {
+	count(_equipment) == 0
+}
 
 _gaps["7.1.5.2"] contains r if {
-	some e in input.as9100d.measuring_equipment
+	some e in _equipment
+	not _bool(e, "in_service")
+	r := sprintf("equipment %v has no in_service status, so its calibration status cannot be determined", [_label(e)])
+}
+
+_gaps["7.1.5.2"] contains r if {
+	some e in _equipment
+	e.in_service == true
+	not _has_date(e, "calibration_due")
+	r := sprintf("in-service equipment %v cannot be shown to be within calibration (calibration_due: %v is missing or not a date)", [_label(e), _shown(e, "calibration_due")])
+}
+
+_gaps["7.1.5.2"] contains r if {
+	some e in _equipment
 	e.in_service == true
 	_in_past(e.calibration_due)
 	r := sprintf("calibration of in-service equipment %v was due %v and is overdue", [_label(e), e.calibration_due])
 }
 
 _gaps["7.1.5.2"] contains r if {
-	some e in input.as9100d.measuring_equipment
+	some e in _equipment
+	e.in_service == true
+	_has_date(e, "calibrated_on")
+	not _not_future(e.calibrated_on)
+	r := sprintf("in-service equipment %v records a calibration date in the future (calibrated_on: %v)", [_label(e), e.calibrated_on])
+}
+
+_gaps["7.1.5.2"] contains r if {
+	some e in _equipment
 	e.in_service == true
 	not e.traceable == true
-	r := sprintf("in-service equipment %v has no traceability to a measurement standard recorded", [_label(e)])
+	r := sprintf("in-service equipment %v has no traceability to a measurement standard recorded (traceable must be true)", [_label(e)])
 }
 
 violations contains msg if {

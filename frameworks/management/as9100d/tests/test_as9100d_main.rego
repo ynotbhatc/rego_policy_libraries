@@ -8,14 +8,14 @@ import data.as9100d_fixture_test as fx
 
 # ── Table integrity across clause modules ───────────────────────────────────
 
-test_seventy_rows_across_seven_clauses if {
-	count(main.items) == 70
+test_seventy_two_rows_across_seven_clauses if {
+	count(main.items) == 72
 	count({id | some id, it in main.items; it.kind == "fact"}) == 18
-	count({id | some id, it in main.items; it.kind == "attestation"}) == 52
+	count({id | some id, it in main.items; it.kind == "attestation"}) == 54
 }
 
 test_required_aerospace_additions_are_rows if {
-	required := {"8.1.1", "8.1.2", "8.1.3", "8.1.4", "8.4.1", "8.4.2", "8.4.3", "8.5.1.1", "8.5.1.2", "8.5.1.3", "8.5.2", "8.5.3", "8.5.6", "8.6", "8.7.1", "9.1.2", "9.2.1", "9.3.1", "10.2.1", "10.3", "7.1.5.2", "7.2", "7.5.3"}
+	required := {"8.1.1", "8.1.2", "8.3.4.1", "9.1.2-feedback", "8.1.3", "8.1.4", "8.4.1", "8.4.2", "8.4.3", "8.5.1.1", "8.5.1.2", "8.5.1.3", "8.5.2", "8.5.3", "8.5.6", "8.6", "8.7.1", "9.1.2", "9.2.1", "9.3.1", "10.2.1", "10.3", "7.1.5.2", "7.2", "7.5.3"}
 	count({id | some id in required; not main.items[id]}) == 0
 }
 
@@ -31,22 +31,22 @@ test_empty_input_is_non_compliant_with_every_row_failing if {
 	is_object(r)
 	r.compliant == false
 	r.clause_modules_loaded == 7
-	r.total == 70
+	r.total == 72
 	r.passed == 0
-	r.failed == 70
+	r.failed == 72
 	r.attested == 0
 	r.fact_evaluated == 0
-	r.violation_count == 70
+	r.violation_count == 72
 	r.as_of == "evaluation clock"
 	main.compliant == false with input as {}
-	count(main.violations) == 70 with input as {}
+	count(main.violations) == 72 with input as {}
 }
 
 test_empty_input_reports_every_clause_family if {
 	r := main.compliance_report with input as {}
 	{c | some c, _ in r.clauses} == {"4", "5", "6", "7", "8", "9", "10"}
-	r.clauses["8"].total == 30
-	r.clauses["8"].failed == 30
+	r.clauses["8"].total == 31
+	r.clauses["8"].failed == 31
 	r.clauses["8"].package == "as9100d.operation"
 	r.clauses["8"].compliant == false
 }
@@ -80,9 +80,9 @@ test_full_fixture_is_compliant if {
 	r := main.compliance_report with input as fx.full
 	r.compliant == true
 	r.violation_count == 0
-	r.passed == 70
+	r.passed == 72
 	r.failed == 0
-	r.attested == 52
+	r.attested == 54
 	r.fact_evaluated == 18
 	r.fact_passed == 18
 	r.as_of == "2026-11-11"
@@ -104,7 +104,7 @@ test_report_shape if {
 	r := main.compliance_report with input as fx.full
 	r.framework == "SAE AS9100D (9100:2016)"
 	startswith(r.standard, "SAE AS9100 Rev D")
-	r.attestation_items == 52
+	r.attestation_items == 54
 	r.fact_items == 18
 	is_set(r.violations)
 	is_object(r.clauses)

@@ -6,8 +6,8 @@
 #   source: sae
 #   domains: [aerospace, quality]
 #   coverage:
-#     checks: 11
-#     cited: 8
+#     checks: 12
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
@@ -26,9 +26,15 @@ import rego.v1
 # ISO 9001 is reproduced (both are licensed). Sources, the evidence contract and the roll-up live in
 # as9100d_main.rego. Query this clause alone at /v1/data/as9100d/performance/compliance_report.
 #
+# Clause 9.1.2 has two rows: "9.1.2" is the delivery-and-conformity KPI check decided from evidence and
+# "9.1.2-feedback" is the attested companion for customer feedback, complaints and corrective-action requests,
+# which no collector produces. The suffix marks a companion row; it is not a clause number of the standard.
+#
 # kind: attestation  -> input.as9100d.attestations["<id>"] == true (anything else is a violation)
 # kind: fact         -> evidence under input.as9100d.<evidence>; missing evidence is FAIL-CLOSED, present
-#                       evidence is checked and every gap is reported
+#                       evidence is checked and every gap is reported. A required field that is absent, null,
+#                       blank, of the wrong type or (for dates) unparseable is evidence missing: the row fails
+#                       and the violation names the field.
 
 clause := "9"
 
@@ -36,7 +42,8 @@ clause_name := "Performance evaluation"
 
 items := {
 	"9.1.1": {"title": "Monitoring and measurement — what is monitored, the methods, the timing and the evaluation of results are determined and QMS performance is evaluated", "kind": "attestation"},
-	"9.1.2": {"title": "Customer satisfaction — on-time delivery and product conformity are measured for the current period and compared with their targets", "kind": "fact", "evidence": "kpis"},
+	"9.1.2": {"title": "Customer satisfaction (delivery and conformity KPIs) — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets", "kind": "fact", "evidence": "kpis"},
+	"9.1.2-feedback": {"title": "Customer satisfaction (feedback) — customer feedback, complaints, corrective-action requests and customer-reported delivery and conformity results are collected, monitored and acted on (companion to the 9.1.2 KPI row)", "kind": "attestation"},
 	"9.1.3": {"title": "Analysis and evaluation — data on conformity, satisfaction, performance, planning, risk actions, suppliers and improvement needs is analysed", "kind": "attestation"},
 	"9.2.1": {"title": "Internal audit — at least one internal audit of the QMS has been completed within the past year", "kind": "fact", "evidence": "internal_audit"},
 	"9.2.2": {"title": "Audit programme — audits are planned with scope and criteria, results are reported to management and corrections follow", "kind": "fact", "evidence": "internal_audit"},
@@ -66,10 +73,11 @@ passed contains id if {
 	_attested(id)
 }
 
-# ── Reference date ───────────────────────────────────────────────────────────
+# ── Reference date and field tests ───────────────────────────────────────────
 # input.as9100d.as_of (RFC 3339 or YYYY-MM-DD) pins the evaluation date for reproducible reports; otherwise
-# the evaluation clock is used. Repeated in every clause module that needs it because the product uploads
-# one file at a time into an empty OPA server (scripts/check_per_file_load.py).
+# the evaluation clock is used. "Within the past year" is a rolling 365-day window ending on that date, not a
+# calendar or fiscal year. Repeated in every clause module that needs it because the product uploads one file
+# at a time into an empty OPA server (scripts/check_per_file_load.py).
 
 _now_ns := time.parse_rfc3339_ns(_rfc3339(input.as9100d.as_of)) if input.as9100d.as_of
 
@@ -89,42 +97,87 @@ _ns(d) := time.parse_rfc3339_ns(_rfc3339(d))
 
 _year_ns := ((365 * 24) * 3600) * 1000000000
 
-_within_past_year(d) if {
+# A date is valid only when it is a string that parses. A parse failure leaves _ns undefined, so every date test
+# is false for an absent, null, non-string or unparseable value and the row reports the gap instead of passing.
+_date(d) if {
 	is_string(d)
+	is_number(_ns(d))
+}
+
+_within_past_year(d) if {
+	_date(d)
 	_ns(d) <= _now_ns
 	_now_ns - _ns(d) <= _year_ns
 }
 
 _in_past(d) if {
-	is_string(d)
+	_date(d)
 	_ns(d) < _now_ns
 }
 
-_label(x) := object.get(x, "id", "<no id>")
+_not_future(d) if {
+	_date(d)
+	_ns(d) <= _now_ns
+}
 
-# Negated type tests on a possibly-missing key must go through object.get: `not is_string(x.k)` never fires
-# when k is absent (the ref is undefined before the negation is evaluated).
-_str(x, k) if is_string(object.get(x, k, null))
+_label(x) := x.id if _text(x, "id")
 
-# ── 9.1.2 On-time delivery and conformity ────────────────────────────────────
+_label(x) := "<no id>" if not _text(x, "id")
+
+# Field tests go through object.get: `not is_string(x.k)` never fires when k is absent (the ref is undefined
+# before the negation is evaluated). A required text field is a non-blank string, a required date parses and a
+# required flag is a boolean; anything else is evidence missing and the row fails naming the field.
+_text(x, k) if {
+	v := object.get(x, k, null)
+	is_string(v)
+	count(trim_space(v)) > 0
+}
+
+_has_date(x, k) if _date(object.get(x, k, null))
+
+_bool(x, k) if is_boolean(object.get(x, k, null))
+
+_shown(x, k) := object.get(x, k, "<missing>")
+
+# Identifiers used by more than one record of a list.
+_dup_ids(xs) := {id |
+	some i, a in xs
+	id := object.get(a, "id", null)
+	is_string(id)
+	some j, b in xs
+	i != j
+	object.get(b, "id", null) == id
+}
+
+# ── 9.1.2 Customer satisfaction — on-time delivery and conformity KPIs ───────
 # input.as9100d.kpis: {on_time_delivery: {value: number, target: number, period_end: date},
-#   conformity: {value, target, period_end}}
+#   conformity: {value: number, target: number, period_end: date}}
+# Each KPI needs a numeric value, a numeric target (a KPI without a target is unmeasured, not passing) and a
+# period_end that parses and lies within the rolling past year; the value must meet the target.
 
 _kpis := {"on_time_delivery", "conformity"}
+
+_kpi(k, f) := object.get(input.as9100d.kpis, [k, f], null)
 
 _present("9.1.2") if is_object(input.as9100d.kpis)
 
 _gaps["9.1.2"] contains r if {
 	some k in _kpis
-	not is_number(object.get(input.as9100d.kpis, [k, "value"], null))
-	r := sprintf("%v is not measured (kpis.%v.value is not a number)", [k, k])
+	not is_number(_kpi(k, "value"))
+	r := sprintf("%v is not measured (kpis.%v.value must be a number, got %v)", [k, k, _kpi(k, "value")])
 }
 
 _gaps["9.1.2"] contains r if {
 	some k in _kpis
-	v := input.as9100d.kpis[k].value
+	not is_number(_kpi(k, "target"))
+	r := sprintf("%v has no target (kpis.%v.target must be a number, got %v)", [k, k, _kpi(k, "target")])
+}
+
+_gaps["9.1.2"] contains r if {
+	some k in _kpis
+	v := _kpi(k, "value")
 	is_number(v)
-	t := input.as9100d.kpis[k].target
+	t := _kpi(k, "target")
 	is_number(t)
 	v < t
 	r := sprintf("%v is %v against a target of %v", [k, v, t])
@@ -132,9 +185,8 @@ _gaps["9.1.2"] contains r if {
 
 _gaps["9.1.2"] contains r if {
 	some k in _kpis
-	is_number(input.as9100d.kpis[k].value)
-	not _within_past_year(object.get(input.as9100d.kpis, [k, "period_end"], null))
-	r := sprintf("%v has no measurement period ending within the past year", [k])
+	not _within_past_year(_kpi(k, "period_end"))
+	r := sprintf("%v has no measurement period ending within the past year (kpis.%v.period_end: %v)", [k, k, _kpi(k, "period_end")])
 }
 
 # ── 9.2 Internal audit ───────────────────────────────────────────────────────
@@ -143,12 +195,12 @@ _gaps["9.1.2"] contains r if {
 
 _present("9.2.1") if is_array(input.as9100d.internal_audit.audits)
 
-_recent_audits contains a.id if {
+_recent_audits contains a if {
 	some a in input.as9100d.internal_audit.audits
-	_within_past_year(a.completed_on)
+	_within_past_year(object.get(a, "completed_on", null))
 }
 
-_gaps["9.2.1"] contains "no internal audit was completed within the past year" if {
+_gaps["9.2.1"] contains "no internal audit was completed within the past year (internal_audit.audits[].completed_on must be a date in the rolling 365-day window)" if {
 	count(_recent_audits) == 0
 }
 
@@ -164,8 +216,14 @@ _gaps["9.2.2"] contains "the audit programme has no planned audits (internal_aud
 
 _gaps["9.2.2"] contains r if {
 	some p in input.as9100d.internal_audit.programme.planned
-	not _str(p, "scope")
+	not _text(p, "scope")
 	r := sprintf("planned audit %v has no scope", [_label(p)])
+}
+
+_gaps["9.2.2"] contains r if {
+	some p in input.as9100d.internal_audit.programme.planned
+	not _has_date(p, "scheduled_on")
+	r := sprintf("planned audit %v has no scheduled date that parses (scheduled_on: %v)", [_label(p), _shown(p, "scheduled_on")])
 }
 
 _gaps["9.2.2"] contains r if {
@@ -181,10 +239,10 @@ _present("9.3.1") if is_array(input.as9100d.management_review.reviews)
 
 _recent_reviews contains m if {
 	some m in input.as9100d.management_review.reviews
-	_within_past_year(m.held_on)
+	_within_past_year(object.get(m, "held_on", null))
 }
 
-_gaps["9.3.1"] contains "no management review was held within the past year" if {
+_gaps["9.3.1"] contains "no management review was held within the past year (management_review.reviews[].held_on must be a date in the rolling 365-day window)" if {
 	count(_recent_reviews) == 0
 }
 
