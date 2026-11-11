@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.windows_11
 
 # DISA STIG — Microsoft Windows 11 Security Technical Implementation Guide — Master Aggregator
-# V2R8 | Release: 8 Benchmark Date: 01 Jul 2026
-# Coverage: 102 auto-derived registry rules across 3 generated modules; 154 rules of 256 not yet implemented (non-registry or complex).
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# V2R11 | Release: 11 Benchmark Date: 30 Sep 2026
+# Coverage: 117 auto-derived registry rules across 3 generated modules; 140 rules of 257 not yet implemented (non-registry or complex).
+# Rule IDs verified against the October 2026 SRG-STIG library on 2026-11-10.
 
 import rego.v1
 
@@ -49,8 +49,8 @@ fully_compliant if count(open_findings) == 0
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Microsoft Windows 11 Security Technical Implementation Guide",
-		"version": "V2R8",
-		"release": "Release: 8 Benchmark Date: 01 Jul 2026",
+		"version": "V2R11",
+		"release": "Release: 11 Benchmark Date: 30 Sep 2026",
 		"platform": "Windows 11",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

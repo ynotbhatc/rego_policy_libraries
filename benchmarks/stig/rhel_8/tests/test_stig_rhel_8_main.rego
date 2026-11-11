@@ -63,15 +63,15 @@ test_gate_transparent_when_facts_supplied if {
 	not contains(concat(" ", [f.rule_title | some f in report.violations]), "FAIL-CLOSED")
 }
 
-# Seeded violation: PermitRootLogin yes must surface RHEL-08-040160 (V-230555)
-# as an Open CAT I finding in the aggregated violations.
+# Seeded violation: PermitRootLogin yes must surface RHEL-08-010550 (V-230296)
+# as an Open CAT II finding in the aggregated violations.
 test_seeded_violation_surfaces_in_report if {
 	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "yes"}}
 	report.facts_supplied == true
 	report.compliant == false
 	some f in report.violations
-	f.stig_id == "RHEL-08-040160"
-	f.vuln_id == "V-230555"
-	f.severity == "CAT I"
+	f.stig_id == "RHEL-08-010550"
+	f.vuln_id == "V-230296"
+	f.severity == "CAT II"
 	f.status == "Open"
 }

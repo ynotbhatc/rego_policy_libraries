@@ -3,7 +3,7 @@
 # report fully non-compliant with an explicit finding, never a pass.
 
 # METADATA
-# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# title: "Framework-key entrypoint alias with the fail-closed gate — Microsoft Windows 11 Security Technical Implementation Guide"
 # custom:
 #   class: security
 #   framework: stig_windows_11
@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.windows_11.main
 
 import data.stig.windows_11

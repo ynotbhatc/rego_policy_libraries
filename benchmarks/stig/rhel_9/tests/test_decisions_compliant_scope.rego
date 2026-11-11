@@ -11,7 +11,7 @@ test_services_cat_ii_open_not_compliant if {
 }
 
 test_report_exposes_cat_i_compliant if {
-	r := data.stig.rhel_9.network.compliance_report with input as {}
+	r := data.stig.rhel_9.ssh_config.compliance_report with input as {}
 	r.cat_i_compliant == false
 	r.compliant == false
 }

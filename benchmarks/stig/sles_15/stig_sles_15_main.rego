@@ -3,7 +3,7 @@
 # report fully non-compliant with an explicit finding, never a pass.
 
 # METADATA
-# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# title: "The SUSE operating system must not allow unattended or automatic logon via SSH. — framework-key entrypoint alias (fail-closed)"
 # custom:
 #   class: security
 #   framework: stig_sles_15
@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.sles_15.main
 
 import data.stig.sles_15

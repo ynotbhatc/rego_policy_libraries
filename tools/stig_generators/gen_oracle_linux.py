@@ -19,6 +19,43 @@ REPO = os.path.join(HERE, "..", "..", "benchmarks", "stig")
 CATS = os.path.join(HERE, "catalogs")
 
 PLATFORMS = {
+    # RHEL 10 V1R2 from the RHEL 9 modules (same SRG lineage; the RHEL 9 titles are the DISA titles since
+    # the 2026-11-10 re-stamp, so the match is by exact title; every fuzzy pair is printed for review).
+    "rhel_10": {
+        "src": "rhel_9", "src_prefix": "RHEL-09", "src_name": "RHEL 9", "src_ident": "rhel_09",
+        "name": "RHEL 10", "ident": "rhel_10", "domains": "[linux, rhel]",
+        # reviewed against both check texts 2026-11-10: RHEL 10 reworded these (quotes, "login", spelled-out
+        # acronyms, "must generate audit records for ...") so the title match misses them; the fact is the same
+        "overrides": {
+            "account_auth:RHEL-09-611090": "RHEL-10-600220", "account_auth:RHEL-09-611100": "RHEL-10-600230",
+            "account_auth:RHEL-09-411010": "RHEL-10-600100", "account_auth:RHEL-09-611075": "RHEL-10-600210",
+            "account_auth:RHEL-09-411030": "RHEL-10-600130", "account_auth:RHEL-09-411110": "RHEL-10-600470",
+            "audit_logging:RHEL-09-653015": "RHEL-10-200661", "audit_logging:RHEL-09-654010": "RHEL-10-500300",
+            "audit_logging:RHEL-09-654020": "RHEL-10-500790", "audit_logging:RHEL-09-654015": "RHEL-10-500780",
+            "audit_logging:RHEL-09-654025": "RHEL-10-500310", "audit_logging:RHEL-09-654070": "RHEL-10-500390",
+            "audit_logging:RHEL-09-654150": "RHEL-10-500550", "audit_logging:RHEL-09-654080": "RHEL-10-500410",
+            "configuration_management:RHEL-09-211050": "RHEL-10-700960",
+            "configuration_management:RHEL-09-651010": "RHEL-10-200630",
+            "file_permissions:RHEL-09-232255": "RHEL-10-400290", "file_permissions:RHEL-09-232250": "RHEL-10-400285",
+            "file_permissions:RHEL-09-232075": "RHEL-10-400265", "file_permissions:RHEL-09-232270": "RHEL-10-400295",
+            "file_permissions:RHEL-09-232055": "RHEL-10-400245", "file_permissions:RHEL-09-232065": "RHEL-10-400255",
+            "file_permissions:RHEL-09-232020": "RHEL-10-400215", "file_permissions:RHEL-09-232200": "RHEL-10-400110",
+            "file_permissions:RHEL-09-232010": "RHEL-10-400205", "file_permissions:RHEL-09-232050": "RHEL-10-400240",
+            "network:RHEL-09-251015": "RHEL-10-200531", "network:RHEL-09-253075": "RHEL-10-800210",
+            "network:RHEL-09-253010": "RHEL-10-800080", "network:RHEL-09-253035": "RHEL-10-800130",
+            "network:RHEL-09-291040": "RHEL-10-700870", "network:RHEL-09-291035": "RHEL-10-700860",
+            "network:RHEL-09-251040": "RHEL-10-800020",
+            "services:RHEL-09-215060": "RHEL-10-200050", "services:RHEL-09-231040": "RHEL-10-701210",
+            "software_integrity:RHEL-09-652020": "RHEL-10-200641",
+            "ssh_config:RHEL-09-255075": "RHEL-10-300060", "ssh_config:RHEL-09-255040": "RHEL-10-700610",
+            "ssh_config:RHEL-09-255095": "RHEL-10-700660", "ssh_config:RHEL-09-255100": "RHEL-10-700930",
+            "ssh_config:RHEL-09-255160": "RHEL-10-700560", "ssh_config:RHEL-09-255145": "RHEL-10-700530",
+            "ssh_config:RHEL-09-255150": "RHEL-10-700540", "ssh_config:RHEL-09-255165": "RHEL-10-700570",
+            "ssh_config:RHEL-09-255155": "RHEL-10-700550",
+        },
+        # fuzzy match refused: RHEL 10 has no OpenSSL crypto-policy rule (the look-alike is the bind package)
+        "reject": {"pki_crypto:RHEL-09-672055"},
+    },
     "oracle_linux_9": {
         "src": "rhel_9", "src_prefix": "RHEL-09", "src_name": "RHEL 9", "src_ident": "rhel_09",
         "name": "Oracle Linux 9", "ident": "ol09", "domains": "[linux, oracle]",
@@ -26,42 +63,43 @@ PLATFORMS = {
         # the title match misses these; the LOGIC is the same requirement. Key = <section>:<RHEL id as written in
         # the module>. A value starting with "~" is a case-insensitive substring of the OL title that must match
         # exactly one rule (so a catalog change cannot silently re-point it).
+        # Keys are the RHEL 9 ids as stamped on 2026-11-10 (tools/stig_generators/stamp_catalog.py re-keyed the RHEL 9
+        # modules to the V2R10 catalog by the fact each block checks). Source blocks retired in that re-stamp no longer
+        # exist, so their overrides are gone: audit_logging:RHEL-09-653020, audit_logging:RHEL-09-654065, file_permissions:RHEL-09-232070, network:RHEL-09-251050, pki_crypto:RHEL-09-671010, pki_crypto:RHEL-09-672025, services:RHEL-09-291020, ssh_config:RHEL-09-255015.
+        # Regenerating oracle_linux_9 from the re-stamped RHEL 9 modules will drop the OL rules they produced.
         "overrides": {
-            "account_auth:RHEL-09-611015": "OL09-00-001055", "account_auth:RHEL-09-611020": "OL09-00-003020",
-            "account_auth:RHEL-09-611030": "OL09-00-001105", "account_auth:RHEL-09-611035": "OL09-00-001005",
-            "account_auth:RHEL-09-611040": "OL09-00-001015", "account_auth:RHEL-09-611045": "OL09-00-001020",
-            "account_auth:RHEL-09-611050": "OL09-00-001120", "account_auth:RHEL-09-611060": "OL09-00-001085",
-            "account_auth:RHEL-09-611075": "OL09-00-002416", "account_auth:RHEL-09-611085": "OL09-00-003001",
-            "account_auth:RHEL-09-611090": "OL09-00-003006",
-            "audit_logging:RHEL-09-653010": "OL09-00-000441", "audit_logging:RHEL-09-653015": "OL09-00-000770",
-            "audit_logging:RHEL-09-654040": "OL09-00-000500", "audit_logging:RHEL-09-654045": "OL09-00-000525",
-            "audit_logging:RHEL-09-654050": "OL09-00-000670", "audit_logging:RHEL-09-654060": "OL09-00-000690",
-            "audit_logging:RHEL-09-654065": "~immutable",
-            "configuration_management:RHEL-09-211015": "OL09-00-002107", "configuration_management:RHEL-09-211050": "OL09-00-000070",
-            "configuration_management:RHEL-09-212010": "OL09-00-000090", "configuration_management:RHEL-09-212020": "OL09-00-000256",
-            "configuration_management:RHEL-09-213010": "OL09-00-002423", "configuration_management:RHEL-09-213035": "OL09-00-002430",
-            "configuration_management:RHEL-09-214010": "~usb mass storage", "configuration_management:RHEL-09-214015": "OL09-00-000042",
-            "file_permissions:RHEL-09-232015": "OL09-00-002512", "file_permissions:RHEL-09-232020": "OL09-00-002511",
-            "file_permissions:RHEL-09-232025": "OL09-00-002548", "file_permissions:RHEL-09-232035": "OL09-00-002536",
-            "network:RHEL-09-251020": "OL09-00-006020", "network:RHEL-09-251025": "OL09-00-006032",
-            "network:RHEL-09-251035": "OL09-00-006031", "network:RHEL-09-251040": "OL09-00-006050",
-            "network:RHEL-09-251045": "OL09-00-006024", "network:RHEL-09-251050": "OL09-00-006041",
-            "network:RHEL-09-251055": "OL09-00-006001", "network:RHEL-09-251060": "OL09-00-000046",
-            "pki_crypto:RHEL-09-671010": "OL09-00-000241", "pki_crypto:RHEL-09-671020": "OL09-00-000930",
-            "pki_crypto:RHEL-09-672020": "OL09-00-000242", "pki_crypto:RHEL-09-672025": "OL09-00-000925",
-            "pki_crypto:RHEL-09-672045": "OL09-00-000910",
-            "services:RHEL-09-291025": "OL09-00-000135", "services:RHEL-09-291030": "OL09-00-000130",
-            "services:RHEL-09-291060": "OL09-00-000100",
-            "software_integrity:RHEL-09-251015": "OL09-00-000498", "software_integrity:RHEL-09-251025": "OL09-00-000302",
-            "software_integrity:RHEL-09-252035": "OL09-00-000351",
-            "ssh_config:RHEL-09-255015": "OL09-00-000251", "ssh_config:RHEL-09-255025": "OL09-00-000255",
-            "ssh_config:RHEL-09-255030": "OL09-00-002343", "ssh_config:RHEL-09-255065": "OL09-00-002348",
-            "ssh_config:RHEL-09-255045": "~terminated after 10 minutes", "ssh_config:RHEL-09-255050": "~terminate after becoming unresponsive",
-            "ssh_config:RHEL-09-255085": "~x11",
+            "account_auth:RHEL-09-611140": "OL09-00-001055", "account_auth:RHEL-09-411075": "OL09-00-003020",
+            "account_auth:RHEL-09-411110": "OL09-00-001105", "account_auth:RHEL-09-611110": "OL09-00-001005",
+            "account_auth:RHEL-09-611065": "OL09-00-001015", "account_auth:RHEL-09-411085": "OL09-00-001020",
+            "account_auth:RHEL-09-611100": "OL09-00-001120", "account_auth:RHEL-09-411050": "OL09-00-001085",
+            "account_auth:RHEL-09-411050": "OL09-00-002416", "account_auth:RHEL-09-411030": "OL09-00-003001",
+            "account_auth:RHEL-09-411110": "OL09-00-003006",
+            "audit_logging:RHEL-09-653055": "OL09-00-000441", "audit_logging:RHEL-09-653055": "OL09-00-000770",
+            "audit_logging:RHEL-09-654215": "OL09-00-000500", "audit_logging:RHEL-09-654240": "OL09-00-000525",
+            "audit_logging:RHEL-09-654150": "OL09-00-000670", "audit_logging:RHEL-09-654080": "OL09-00-000690",
+            "configuration_management:RHEL-09-271105": "OL09-00-002107", "configuration_management:RHEL-09-671010": "OL09-00-000070",
+            "configuration_management:RHEL-09-211020": "OL09-00-000090", "configuration_management:RHEL-09-255025": "OL09-00-000256",
+            "configuration_management:RHEL-09-213070": "OL09-00-002423", "configuration_management:RHEL-09-251045": "OL09-00-002430",
+            "configuration_management:RHEL-09-291010": "~usb mass storage", "configuration_management:RHEL-09-213055": "OL09-00-000042",
+            "file_permissions:RHEL-09-232255": "OL09-00-002512", "file_permissions:RHEL-09-232250": "OL09-00-002511",
+            "file_permissions:RHEL-09-232075": "OL09-00-002548", "file_permissions:RHEL-09-232055": "OL09-00-002536",
+            "network:RHEL-09-253015": "OL09-00-006020", "network:RHEL-09-253065": "OL09-00-006032",
+            "network:RHEL-09-253060": "OL09-00-006031", "network:RHEL-09-253010": "OL09-00-006050",
+            "network:RHEL-09-253035": "OL09-00-006024",
+            "network:RHEL-09-291040": "OL09-00-006001", "network:RHEL-09-291035": "OL09-00-000046", "pki_crypto:RHEL-09-611170": "OL09-00-000930",
+            "pki_crypto:RHEL-09-672020": "OL09-00-000242",
+            "pki_crypto:RHEL-09-631015": "OL09-00-000910",
+            "services:RHEL-09-215060": "OL09-00-000135", "services:RHEL-09-215015": "OL09-00-000130",
+            "services:RHEL-09-215025": "OL09-00-000100",
+            "software_integrity:RHEL-09-214025": "OL09-00-000498", "software_integrity:RHEL-09-651020": "OL09-00-000302",
+            "software_integrity:RHEL-09-652020": "OL09-00-000351", "ssh_config:RHEL-09-255075": "OL09-00-000255",
+            "ssh_config:RHEL-09-255040": "OL09-00-002343", "ssh_config:RHEL-09-255145": "OL09-00-002348",
+            "ssh_config:RHEL-09-255100": "~terminated after 10 minutes", "ssh_config:RHEL-09-255095": "~terminate after becoming unresponsive",
+            "ssh_config:RHEL-09-255155": "~x11",
         },
         # fuzzy title matches reviewed and refused: a different requirement that merely reads alike
-        "reject": {"audit_logging:RHEL-09-653020", "software_integrity:RHEL-09-252020", "account_auth:RHEL-09-611070",
-                   "file_permissions:RHEL-09-232070", "services:RHEL-09-291020", "ssh_config:RHEL-09-255020"},
+        "reject": {"software_integrity:RHEL-09-214020", "account_auth:RHEL-09-411085",
+                   "ssh_config:RHEL-09-255065"},
     },
     # Oracle Linux 8 V2R10 from the Oracle Linux 9 module above (105 of its 377 titles are OL 9 titles verbatim);
     # generate oracle_linux_9 first, this reads its output.
@@ -137,7 +175,7 @@ def derive(key, cfg):
             # Key on the finding's OWN rule_title, never on its stig_id: the RHEL 9 module's ids were found to
             # disagree with the current DISA catalog for 108 of 143 findings (2026-10-13), so the id cannot be
             # trusted to name the rule the logic implements; the title the author wrote next to the logic can.
-            lib_title = re.search(r'"rule_title": "([^"\n]*)"', body)
+            lib_title = re.search(r'"rule_title": "((?:[^"\\\n]|\\.)*)"', body)
             title_src = lib_title.group(1) if lib_title else (src["title"] if src else "")
             key2 = f"{sec}:{sid}"
             tgt, how = None, "exact"
@@ -173,7 +211,7 @@ def derive(key, cfg):
             b = re.sub(r"^# " + re.escape(tid) + r" \| " + re.escape(tgt["vuln_id"]) + r" \| CAT I{1,3}$",
                        f"# {tid} | {tgt['vuln_id']} | {sev}", b, count=1, flags=re.M)
             b = re.sub(r'"severity": "CAT I{1,3}"', f'"severity": "{sev}"', b)
-            b = re.sub(r'"rule_title": "[^"\n]*"', f'"rule_title": "{esc(tgt["title"])}"', b)
+            b = re.sub(r'"rule_title": "(?:[^"\\\n]|\\.)*"', f'"rule_title": "{esc(tgt["title"])}"', b)
             kept.append((tid, sev, t_ident, b))
         # helper closure: a kept rule may call a function/rule defined in a block that was dropped
         def chunks(text):
@@ -266,6 +304,7 @@ def derive(key, cfg):
         s = re.sub(r'"version": "V\d+R\d+"', f'"version": "{cat["version"]}"', s)
         s = re.sub(r'"release_date": "\d{4}-\d\d-\d\d"', f'"release_date": "{cat["status_date"]}"', s)
         s = re.sub(r"(?m)^#   coverage:\n(?:#     .*\n)+", "", s)   # the stamper re-adds the block
+        s = re.sub(r"(?m)^# Implemented: .*\n(?:# The remaining .*\n)?", "", s)   # the source's own note; ours is added below
         return s
     comp_src = [f for f in os.listdir(srcdir) if f.startswith("stig_") and f.endswith("_complete.rego")][0]
     comp = swap(open(os.path.join(srcdir, comp_src)).read())
@@ -303,5 +342,6 @@ def derive(key, cfg):
 
 
 if __name__ == "__main__":
-    for key, cfg in PLATFORMS.items():
-        derive(key, cfg)
+    keys = sys.argv[1:] or [k for k in PLATFORMS if k.startswith("oracle_")]
+    for key in keys:
+        derive(key, PLATFORMS[key])

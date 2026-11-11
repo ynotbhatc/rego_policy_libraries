@@ -6,18 +6,20 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 10
-#     cited: 9
-#     density: sized
-#     basis: size
+#     checks: 9
+#     cited: 8
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.network
 
 # DISA STIG for RHEL 8 - Network Configuration Module
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 
 import rego.v1
 
@@ -27,46 +29,48 @@ default compliant := false
 # CAT I
 # =============================================================================
 
-# RHEL-08-040000 (network) | V-230505 | CAT I - Firewall must be active
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
+
+# RHEL-08-040101 | V-244544 | CAT II - Firewall must be active
 default firewall_active := false
 
 firewall_active if input.firewall.active == true
 firewall_active if input.services.firewalld == "active"
 
-status_rhel_08_n_040000 := "Not_a_Finding" if firewall_active
+status_rhel_08_040101 := "Not_a_Finding" if firewall_active
 
 else := "Open"
-finding_rhel_08_n_040000 := {
-	"vuln_id": "V-230505",
-	"stig_id": "RHEL-08-040100",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must have firewalld installed",
-	"status": status_rhel_08_n_040000,
+
+finding_rhel_08_040101 := {
+	"vuln_id": "V-244544",
+	"stig_id": "RHEL-08-040101",
+	"severity": "CAT II",
+	"rule_title": "A firewall must be active on RHEL 8.",
+	"status": status_rhel_08_040101,
 	"fix_text": "systemctl enable --now firewalld",
 }
 
-# RHEL-08-040110 | V-230506 | CAT I - IP forwarding must be disabled
+# RHEL-08-040259 | V-250317 | CAT II - IP forwarding must be disabled
 default ip_forward_disabled := false
 
 ip_forward_disabled if input.kernel_params["net.ipv4.ip_forward"] == "0"
 
-status_rhel_08_040110 := "Not_a_Finding" if ip_forward_disabled
+status_rhel_08_040259 := "Not_a_Finding" if ip_forward_disabled
 
 else := "Open"
-finding_rhel_08_040110 := {
-	"vuln_id": "V-230506",
-	"stig_id": "RHEL-08-040110",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must not enable IPv4 packet forwarding unless system is a router",
-	"status": status_rhel_08_040110,
+
+finding_rhel_08_040259 := {
+	"vuln_id": "V-250317",
+	"stig_id": "RHEL-08-040259",
+	"severity": "CAT II",
+	"rule_title": "RHEL 8 must not enable IPv4 packet forwarding unless the system is a router.",
+	"status": status_rhel_08_040259,
 	"fix_text": "Set net.ipv4.ip_forward=0 in /etc/sysctl.d/99-stig.conf",
 }
 
-# =============================================================================
-# CAT II
-# =============================================================================
-
-# RHEL-08-040120 | V-230507 | CAT II - No ICMP redirects accepted
+# RHEL-08-040279 | V-244553 | CAT II - No ICMP redirects accepted
 default no_icmp_redirects := false
 
 no_icmp_redirects if {
@@ -74,124 +78,113 @@ no_icmp_redirects if {
 	input.kernel_params["net.ipv4.conf.default.accept_redirects"] == "0"
 }
 
-status_rhel_08_040120 := "Not_a_Finding" if no_icmp_redirects
+status_rhel_08_040279 := "Not_a_Finding" if no_icmp_redirects
 
 else := "Open"
-finding_rhel_08_040120 := {
-	"vuln_id": "V-230507",
-	"stig_id": "RHEL-08-040120",
+
+finding_rhel_08_040279 := {
+	"vuln_id": "V-244553",
+	"stig_id": "RHEL-08-040279",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must not accept ICMP redirect messages",
-	"status": status_rhel_08_040120,
+	"rule_title": "RHEL 8 must ignore IPv4 Internet Control Message Protocol (ICMP) redirect messages.",
+	"status": status_rhel_08_040279,
 	"fix_text": "Set net.ipv4.conf.all.accept_redirects=0",
 }
 
-# RHEL-08-040130 | V-230508 | CAT II - No ICMP redirects sent
+# RHEL-08-040220 | V-230536 | CAT II - No ICMP redirects sent
 default no_icmp_send := false
 
 no_icmp_send if {
 	input.kernel_params["net.ipv4.conf.all.send_redirects"] == "0"
 }
 
-status_rhel_08_040130 := "Not_a_Finding" if no_icmp_send
+status_rhel_08_040220 := "Not_a_Finding" if no_icmp_send
 
 else := "Open"
-finding_rhel_08_040130 := {
-	"vuln_id": "V-230508",
-	"stig_id": "RHEL-08-040130",
+
+finding_rhel_08_040220 := {
+	"vuln_id": "V-230536",
+	"stig_id": "RHEL-08-040220",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must not send ICMP redirects",
-	"status": status_rhel_08_040130,
+	"rule_title": "RHEL 8 must not allow IPv4 ICMP redirect messages.",
+	"status": status_rhel_08_040220,
 	"fix_text": "Set net.ipv4.conf.all.send_redirects=0",
 }
 
-# RHEL-08-040140 | V-230509 | CAT II - Source routing disabled
+# RHEL-08-040239 | V-244551 | CAT II - Source routing disabled
 default no_source_routing := false
 
 no_source_routing if {
 	input.kernel_params["net.ipv4.conf.all.accept_source_route"] == "0"
 }
 
-status_rhel_08_040140 := "Not_a_Finding" if no_source_routing
+status_rhel_08_040239 := "Not_a_Finding" if no_source_routing
 
 else := "Open"
-finding_rhel_08_040140 := {
-	"vuln_id": "V-230509",
-	"stig_id": "RHEL-08-040140",
+
+finding_rhel_08_040239 := {
+	"vuln_id": "V-244551",
+	"stig_id": "RHEL-08-040239",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must not forward IPv4 source-routed packets",
-	"status": status_rhel_08_040140,
+	"rule_title": "RHEL 8 must not forward IPv4 source-routed packets.",
+	"status": status_rhel_08_040239,
 	"fix_text": "Set net.ipv4.conf.all.accept_source_route=0",
 }
 
-# RHEL-08-040150 | V-230510 | CAT II - TCP syncookies enabled
-default tcp_syncookies := false
-
-tcp_syncookies if input.kernel_params["net.ipv4.tcp_syncookies"] == "1"
-
-status_rhel_08_040150 := "Not_a_Finding" if tcp_syncookies
-
-else := "Open"
-finding_rhel_08_040150 := {
-	"vuln_id": "V-230510",
-	"stig_id": "RHEL-08-040150",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must use TCP syncookies",
-	"status": status_rhel_08_040150,
-	"fix_text": "Set net.ipv4.tcp_syncookies=1",
-}
-
-# RHEL-08-040155 | V-230511 | CAT II - Bluetooth disabled
+# RHEL-08-040111 | V-230507 | CAT II - Bluetooth disabled
 default no_bluetooth := false
 
 no_bluetooth if input.kernel_modules.bluetooth.blacklisted == true
 no_bluetooth if input.services.bluetooth == "inactive"
 
-status_rhel_08_040155 := "Not_a_Finding" if no_bluetooth
+status_rhel_08_040111 := "Not_a_Finding" if no_bluetooth
 
 else := "Open"
-finding_rhel_08_040155 := {
-	"vuln_id": "V-230511",
-	"stig_id": "RHEL-08-040155",
+
+finding_rhel_08_040111 := {
+	"vuln_id": "V-230507",
+	"stig_id": "RHEL-08-040111",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must disable the Bluetooth kernel module",
-	"status": status_rhel_08_040155,
+	"rule_title": "RHEL 8 Bluetooth must be disabled.",
+	"status": status_rhel_08_040111,
 	"fix_text": "Blacklist bluetooth module",
 }
 
-# RHEL-08-040157 | V-230512 | CAT II - Wireless disabled
+# RHEL-08-040110 | V-230506 | CAT II - Wireless disabled
 default no_wireless := false
 
 no_wireless if not input.wireless_interfaces
 no_wireless if count(input.wireless_interfaces) == 0
 
-status_rhel_08_040157 := "Not_a_Finding" if no_wireless
+status_rhel_08_040110 := "Not_a_Finding" if no_wireless
 
 else := "Open"
-finding_rhel_08_040157 := {
-	"vuln_id": "V-230512",
-	"stig_id": "RHEL-08-040157",
+
+finding_rhel_08_040110 := {
+	"vuln_id": "V-230506",
+	"stig_id": "RHEL-08-040110",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must disable wireless network adapters",
-	"status": status_rhel_08_040157,
+	"rule_title": "RHEL 8 wireless network adapters must be disabled.",
+	"status": status_rhel_08_040110,
 	"fix_text": "Disable wireless interfaces",
 }
 
-# RHEL-08-040158 | V-230513 | CAT II - Reverse path filter
+# RHEL-08-040285 | V-230549 | CAT II - Reverse path filter
 default rp_filter := false
 
 rp_filter if input.kernel_params["net.ipv4.conf.all.rp_filter"] == "1"
 rp_filter if input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
 
-status_rhel_08_040158 := "Not_a_Finding" if rp_filter
+status_rhel_08_040285 := "Not_a_Finding" if rp_filter
 
 else := "Open"
-finding_rhel_08_040158 := {
-	"vuln_id": "V-230513",
-	"stig_id": "RHEL-08-040158",
+
+finding_rhel_08_040285 := {
+	"vuln_id": "V-230549",
+	"stig_id": "RHEL-08-040285",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 must enable reverse path filtering",
-	"status": status_rhel_08_040158,
+	"rule_title": "RHEL 8 must use reverse path filtering on all IPv4 interfaces.",
+	"status": status_rhel_08_040285,
 	"fix_text": "Set net.ipv4.conf.all.rp_filter=1",
 }
 
@@ -199,22 +192,26 @@ finding_rhel_08_040158 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_rhel_08_n_040000,
-	finding_rhel_08_040110,
-]
+# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
-	finding_rhel_08_040120,
-	finding_rhel_08_040130,
-	finding_rhel_08_040140,
-	finding_rhel_08_040150,
-	finding_rhel_08_040155,
-	finding_rhel_08_040157,
-	finding_rhel_08_040158,
+	finding_rhel_08_040101,
+	finding_rhel_08_040259,
+	finding_rhel_08_040279,
+	finding_rhel_08_040220,
+	finding_rhel_08_040239,
+	finding_rhel_08_040111,
+	finding_rhel_08_040110,
+	finding_rhel_08_040285,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

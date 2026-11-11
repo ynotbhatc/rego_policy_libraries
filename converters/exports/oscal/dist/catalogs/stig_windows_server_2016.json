@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "2764a734-5915-5995-a2af-886226b9b4f7",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_windows_server_2016 (DISA STIG for windows server 2016 - Simplified Complete Assessment)",
+   "title": "Rego Policy Libraries — stig_windows_server_2016 (DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -44,9 +44,3480 @@
   },
   "groups": [
    {
+    "id": "stig_windows_server_2016-registry_cc",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2016.registry_cc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2016/registry_cc.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000010",
+      "title": "The display of slide shows on the lock screen must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000010_stmt",
+        "name": "statement",
+        "prose": "The display of slide shows on the lock screen must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000030",
+      "title": "WDigest Authentication must be disabled on Windows Server 2016.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000030_stmt",
+        "name": "statement",
+        "prose": "WDigest Authentication must be disabled on Windows Server 2016."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000040",
+      "title": "Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000040_stmt",
+        "name": "statement",
+        "prose": "Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000050",
+      "title": "Source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000050_stmt",
+        "name": "statement",
+        "prose": "Source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000060",
+      "title": "Windows Server 2016 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000060_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000070",
+      "title": "Windows Server 2016 must be configured to ignore NetBIOS name release requests except from WINS servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000070_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to ignore NetBIOS name release requests except from WINS servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000080",
+      "title": "Insecure logons to an SMB server must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000080_stmt",
+        "name": "statement",
+        "prose": "Insecure logons to an SMB server must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000090",
+      "title": "Hardened UNC paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000090_stmt",
+        "name": "statement",
+        "prose": "Hardened UNC paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000100",
+      "title": "Command line data must be included in process creation events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000100_stmt",
+        "name": "statement",
+        "prose": "Command line data must be included in process creation events."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000110",
+      "title": "Windows Server 2016 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000110_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000140",
+      "title": "Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000140_stmt",
+        "name": "statement",
+        "prose": "Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000150",
+      "title": "Group Policy objects must be reprocessed even if they have not changed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000150_stmt",
+        "name": "statement",
+        "prose": "Group Policy objects must be reprocessed even if they have not changed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000160",
+      "title": "Downloading print driver packages over HTTP must be prevented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000160_stmt",
+        "name": "statement",
+        "prose": "Downloading print driver packages over HTTP must be prevented."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000170",
+      "title": "Printing over HTTP must be prevented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000170_stmt",
+        "name": "statement",
+        "prose": "Printing over HTTP must be prevented."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000180",
+      "title": "The network selection user interface (UI) must not be displayed on the logon screen.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000180_stmt",
+        "name": "statement",
+        "prose": "The network selection user interface (UI) must not be displayed on the logon screen."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000210",
+      "title": "Users must be prompted to authenticate when the system wakes from sleep (on battery).",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000210_stmt",
+        "name": "statement",
+        "prose": "Users must be prompted to authenticate when the system wakes from sleep (on battery)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000220",
+      "title": "Users must be prompted to authenticate when the system wakes from sleep (plugged in).",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000220_stmt",
+        "name": "statement",
+        "prose": "Users must be prompted to authenticate when the system wakes from sleep (plugged in)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000240",
+      "title": "The Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000240_stmt",
+        "name": "statement",
+        "prose": "The Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000250",
+      "title": "AutoPlay must be turned off for non-volume devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000250_stmt",
+        "name": "statement",
+        "prose": "AutoPlay must be turned off for non-volume devices."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000260",
+      "title": "The default AutoRun behavior must be configured to prevent AutoRun commands.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000260_stmt",
+        "name": "statement",
+        "prose": "The default AutoRun behavior must be configured to prevent AutoRun commands."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000270",
+      "title": "AutoPlay must be disabled for all drives.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000270_stmt",
+        "name": "statement",
+        "prose": "AutoPlay must be disabled for all drives."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000280",
+      "title": "Administrator accounts must not be enumerated during elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000280_stmt",
+        "name": "statement",
+        "prose": "Administrator accounts must not be enumerated during elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000290",
+      "title": "Windows Telemetry must be configured to Security or Basic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000290_stmt",
+        "name": "statement",
+        "prose": "Windows Telemetry must be configured to Security or Basic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000300",
+      "title": "The Application event log size must be configured to 32768 KB or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000300_stmt",
+        "name": "statement",
+        "prose": "The Application event log size must be configured to 32768 KB or greater."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000310",
+      "title": "The Security event log size must be configured to 196608 KB or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000310_stmt",
+        "name": "statement",
+        "prose": "The Security event log size must be configured to 196608 KB or greater."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000320",
+      "title": "The System event log size must be configured to 32768 KB or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000320_stmt",
+        "name": "statement",
+        "prose": "The System event log size must be configured to 32768 KB or greater."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000330",
+      "title": "Windows Server 2016 Windows SmartScreen must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000330_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 Windows SmartScreen must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000340",
+      "title": "Explorer Data Execution Prevention must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000340_stmt",
+        "name": "statement",
+        "prose": "Explorer Data Execution Prevention must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000350",
+      "title": "Turning off File Explorer heap termination on corruption must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000350_stmt",
+        "name": "statement",
+        "prose": "Turning off File Explorer heap termination on corruption must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000360",
+      "title": "File Explorer shell protocol must run in protected mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000360_stmt",
+        "name": "statement",
+        "prose": "File Explorer shell protocol must run in protected mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000370",
+      "title": "Passwords must not be saved in the Remote Desktop Client.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000370_stmt",
+        "name": "statement",
+        "prose": "Passwords must not be saved in the Remote Desktop Client."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000380",
+      "title": "Local drives must be prevented from sharing with Remote Desktop Session Hosts.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000380_stmt",
+        "name": "statement",
+        "prose": "Local drives must be prevented from sharing with Remote Desktop Session Hosts."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000390",
+      "title": "Remote Desktop Services must always prompt a client for passwords upon connection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000390_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Services must always prompt a client for passwords upon connection."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000400",
+      "title": "The Remote Desktop Session Host must require secure Remote Procedure Call (RPC) communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000400_stmt",
+        "name": "statement",
+        "prose": "The Remote Desktop Session Host must require secure Remote Procedure Call (RPC) communications."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000410",
+      "title": "Remote Desktop Services must be configured with the client connection encryption set to High Level.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000410_stmt",
+        "name": "statement",
+        "prose": "Remote Desktop Services must be configured with the client connection encryption set to High Level."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000420",
+      "title": "Attachments must be prevented from being downloaded from RSS feeds.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000420_stmt",
+        "name": "statement",
+        "prose": "Attachments must be prevented from being downloaded from RSS feeds."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000421",
+      "title": "The Windows Explorer Preview pane must be disabled for Windows Server 2016.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000421"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000421"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000421_stmt",
+        "name": "statement",
+        "prose": "The Windows Explorer Preview pane must be disabled for Windows Server 2016."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000430",
+      "title": "Basic authentication for RSS feeds over HTTP must not be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000430_stmt",
+        "name": "statement",
+        "prose": "Basic authentication for RSS feeds over HTTP must not be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000440",
+      "title": "Indexing of encrypted files must be turned off.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000440_stmt",
+        "name": "statement",
+        "prose": "Indexing of encrypted files must be turned off."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000450",
+      "title": "Users must be prevented from changing installation options.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000450_stmt",
+        "name": "statement",
+        "prose": "Users must be prevented from changing installation options."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000460",
+      "title": "The Windows Installer Always install with elevated privileges option must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000460_stmt",
+        "name": "statement",
+        "prose": "The Windows Installer Always install with elevated privileges option must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000470",
+      "title": "Users must be notified if a web-based program attempts to install software.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000470_stmt",
+        "name": "statement",
+        "prose": "Users must be notified if a web-based program attempts to install software."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000480",
+      "title": "Automatically signing in the last interactive user after a system-initiated restart must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000480"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000480"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000480_stmt",
+        "name": "statement",
+        "prose": "Automatically signing in the last interactive user after a system-initiated restart must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000490",
+      "title": "PowerShell script block logging must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000490"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000490"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000490_stmt",
+        "name": "statement",
+        "prose": "PowerShell script block logging must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000500",
+      "title": "The Windows Remote Management (WinRM) client must not use Basic authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000500_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) client must not use Basic authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000510",
+      "title": "The Windows Remote Management (WinRM) client must not allow unencrypted traffic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000510_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) client must not allow unencrypted traffic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000520",
+      "title": "The Windows Remote Management (WinRM) client must not use Digest authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000520_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) client must not use Digest authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000530",
+      "title": "The Windows Remote Management (WinRM) service must not use Basic authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000530_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) service must not use Basic authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000540",
+      "title": "The Windows Remote Management (WinRM) service must not allow unencrypted traffic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000540_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) service must not allow unencrypted traffic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000550",
+      "title": "The Windows Remote Management (WinRM) service must not store RunAs credentials.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000550"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000550"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000550_stmt",
+        "name": "statement",
+        "prose": "The Windows Remote Management (WinRM) service must not store RunAs credentials."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-CC-000555",
+      "title": "Windows Server 2016 must have PowerShell Transcription enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-CC-000555"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-CC-000555"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-CC-000555_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must have PowerShell Transcription enabled."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2016-registry_other",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2016.registry_other"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2016/registry_other.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2016-WN16-00-000411",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB server.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-00-000411"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-00-000411"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-00-000411_stmt",
+        "name": "statement",
+        "prose": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB server."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-00-000412",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB client.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-00-000412"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-00-000412"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-00-000412_stmt",
+        "name": "statement",
+        "prose": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB client."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-DC-000320",
+      "title": "Domain controllers must require LDAP access signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-DC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-DC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-DC-000320_stmt",
+        "name": "statement",
+        "prose": "Domain controllers must require LDAP access signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-DC-000330",
+      "title": "Domain controllers must be configured to allow reset of machine account passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-DC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-DC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-DC-000330_stmt",
+        "name": "statement",
+        "prose": "Domain controllers must be configured to allow reset of machine account passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000020",
+      "title": "Local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000020_stmt",
+        "name": "statement",
+        "prose": "Local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain systems."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000030",
+      "title": "Local users on domain-joined computers must not be enumerated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000030_stmt",
+        "name": "statement",
+        "prose": "Local users on domain-joined computers must not be enumerated."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000040",
+      "title": "Unauthenticated Remote Procedure Call (RPC) clients must be restricted from connecting to the RPC server.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000040_stmt",
+        "name": "statement",
+        "prose": "Unauthenticated Remote Procedure Call (RPC) clients must be restricted from connecting to the RPC server."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000050",
+      "title": "Caching of logon credentials must be limited.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000050_stmt",
+        "name": "statement",
+        "prose": "Caching of logon credentials must be limited."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000120",
+      "title": "Windows Server 2016 must be running Credential Guard on domain-joined member servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000120_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be running Credential Guard on domain-joined member servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-MS-000310",
+      "title": "Remote calls to the Security Account Manager (SAM) must be restricted to Administrators.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-MS-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-MS-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-MS-000310_stmt",
+        "name": "statement",
+        "prose": "Remote calls to the Security Account Manager (SAM) must be restricted to Administrators."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-UC-000030",
+      "title": "Zone information must be preserved when saving attachments.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-UC-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-UC-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#509152c4-0808-5932-b742-76b28349d8fd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-UC-000030_stmt",
+        "name": "statement",
+        "prose": "Zone information must be preserved when saving attachments."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2016-registry_so",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2016.registry_so"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2016/registry_so.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000020",
+      "title": "Local accounts with blank passwords must be restricted to prevent access from the network.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000020_stmt",
+        "name": "statement",
+        "prose": "Local accounts with blank passwords must be restricted to prevent access from the network."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000050",
+      "title": "Audit policy using subcategories must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000050_stmt",
+        "name": "statement",
+        "prose": "Audit policy using subcategories must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000080",
+      "title": "The setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000080_stmt",
+        "name": "statement",
+        "prose": "The setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000090",
+      "title": "The setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000090_stmt",
+        "name": "statement",
+        "prose": "The setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000100",
+      "title": "The setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000100_stmt",
+        "name": "statement",
+        "prose": "The setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000110",
+      "title": "The computer account password must not be prevented from being reset.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000110_stmt",
+        "name": "statement",
+        "prose": "The computer account password must not be prevented from being reset."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000120",
+      "title": "The maximum age for machine account passwords must be configured to 30 days or less.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000120_stmt",
+        "name": "statement",
+        "prose": "The maximum age for machine account passwords must be configured to 30 days or less."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000130",
+      "title": "Windows Server 2016 must be configured to require a strong session key.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000130_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to require a strong session key."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000140",
+      "title": "The machine inactivity limit must be set to 15 minutes, locking the system with the screen saver.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000140_stmt",
+        "name": "statement",
+        "prose": "The machine inactivity limit must be set to 15 minutes, locking the system with the screen saver."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000150",
+      "title": "The required legal notice must be configured to display before console logon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000150_stmt",
+        "name": "statement",
+        "prose": "The required legal notice must be configured to display before console logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000160",
+      "title": "The Windows dialog box title for the legal banner must be configured with the appropriate text.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000160_stmt",
+        "name": "statement",
+        "prose": "The Windows dialog box title for the legal banner must be configured with the appropriate text."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000180",
+      "title": "The Smart Card removal option must be configured to Force Logoff or Lock Workstation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000180_stmt",
+        "name": "statement",
+        "prose": "The Smart Card removal option must be configured to Force Logoff or Lock Workstation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000190",
+      "title": "The setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000190_stmt",
+        "name": "statement",
+        "prose": "The setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000200",
+      "title": "The setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000200_stmt",
+        "name": "statement",
+        "prose": "The setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000210",
+      "title": "Unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000210_stmt",
+        "name": "statement",
+        "prose": "Unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000230",
+      "title": "The setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000230_stmt",
+        "name": "statement",
+        "prose": "The setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000240",
+      "title": "The setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000240_stmt",
+        "name": "statement",
+        "prose": "The setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000260",
+      "title": "Anonymous enumeration of Security Account Manager (SAM) accounts must not be allowed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000260_stmt",
+        "name": "statement",
+        "prose": "Anonymous enumeration of Security Account Manager (SAM) accounts must not be allowed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000270",
+      "title": "Anonymous enumeration of shares must not be allowed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000270_stmt",
+        "name": "statement",
+        "prose": "Anonymous enumeration of shares must not be allowed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000290",
+      "title": "Windows Server 2016 must be configured to prevent anonymous users from having the same permissions as the Everyone group.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000290_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to prevent anonymous users from having the same permissions as the Everyone group."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000300",
+      "title": "Anonymous access to Named Pipes and Shares must be restricted.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000300_stmt",
+        "name": "statement",
+        "prose": "Anonymous access to Named Pipes and Shares must be restricted."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000320",
+      "title": "Services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000320_stmt",
+        "name": "statement",
+        "prose": "Services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000330",
+      "title": "NTLM must be prevented from falling back to a Null session.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000330_stmt",
+        "name": "statement",
+        "prose": "NTLM must be prevented from falling back to a Null session."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000340",
+      "title": "PKU2U authentication using online identities must be prevented.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000340_stmt",
+        "name": "statement",
+        "prose": "PKU2U authentication using online identities must be prevented."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000350",
+      "title": "Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000350_stmt",
+        "name": "statement",
+        "prose": "Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000360",
+      "title": "Windows Server 2016 must be configured to prevent the storage of the LAN Manager hash of passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000360_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to prevent the storage of the LAN Manager hash of passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000380",
+      "title": "The LAN Manager authentication level must be set to send NTLMv2 response only and to refuse LM and NTLM.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000380_stmt",
+        "name": "statement",
+        "prose": "The LAN Manager authentication level must be set to send NTLMv2 response only and to refuse LM and NTLM."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000390",
+      "title": "Windows Server 2016 must be configured to at least negotiate signing for LDAP client signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000390_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to at least negotiate signing for LDAP client signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000400",
+      "title": "Session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000400_stmt",
+        "name": "statement",
+        "prose": "Session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000410",
+      "title": "Session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000410_stmt",
+        "name": "statement",
+        "prose": "Session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000420",
+      "title": "Users must be required to enter a password to access private keys stored on the computer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000420_stmt",
+        "name": "statement",
+        "prose": "Users must be required to enter a password to access private keys stored on the computer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000430",
+      "title": "Windows Server 2016 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000430_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2016 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000450",
+      "title": "The default permissions of global system objects must be strengthened.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000450_stmt",
+        "name": "statement",
+        "prose": "The default permissions of global system objects must be strengthened."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000460",
+      "title": "User Account Control approval mode for the built-in Administrator must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000460_stmt",
+        "name": "statement",
+        "prose": "User Account Control approval mode for the built-in Administrator must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000470",
+      "title": "UIAccess applications must not be allowed to prompt for elevation without using the secure desktop.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000470_stmt",
+        "name": "statement",
+        "prose": "UIAccess applications must not be allowed to prompt for elevation without using the secure desktop."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000480",
+      "title": "User Account Control must, at a minimum, prompt administrators for consent on the secure desktop.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000480"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000480"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000480_stmt",
+        "name": "statement",
+        "prose": "User Account Control must, at a minimum, prompt administrators for consent on the secure desktop."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000490",
+      "title": "User Account Control must automatically deny standard user requests for elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000490"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000490"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000490_stmt",
+        "name": "statement",
+        "prose": "User Account Control must automatically deny standard user requests for elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000500",
+      "title": "User Account Control must be configured to detect application installations and prompt for elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000500_stmt",
+        "name": "statement",
+        "prose": "User Account Control must be configured to detect application installations and prompt for elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000510",
+      "title": "User Account Control must only elevate UIAccess applications that are installed in secure locations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000510_stmt",
+        "name": "statement",
+        "prose": "User Account Control must only elevate UIAccess applications that are installed in secure locations."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000520",
+      "title": "User Account Control must run all administrators in Admin Approval Mode, enabling UAC.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000520_stmt",
+        "name": "statement",
+        "prose": "User Account Control must run all administrators in Admin Approval Mode, enabling UAC."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2016-WN16-SO-000530",
+      "title": "User Account Control must virtualize file and registry write failures to per-user locations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN16-SO-000530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN16-SO-000530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2016.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8126b763-9195-581f-8194-a340c4426eb6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2016-WN16-SO-000530_stmt",
+        "name": "statement",
+        "prose": "User Account Control must virtualize file and registry write failures to per-user locations."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "stig_windows_server_2016-stig_windows_server_2016_complete",
     "class": "rego-module",
-    "title": "DISA STIG for windows server 2016 - Simplified Complete Assessment",
+    "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide — Master Aggregator",
     "props": [
      {
       "name": "rego-package",
@@ -66,181 +3537,16 @@
     ],
     "controls": [
      {
-      "id": "stig_windows_server_2016-WN22-PK-000010",
-      "title": "windows server 2016 must have the DoD Root CA certificates installed",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-PK-000010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-PK-000010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2016"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2016-WN22-PK-000010_stmt",
-        "name": "statement",
-        "prose": "windows server 2016 must have the DoD Root CA certificates installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2016-WN22-SO-000030",
-      "title": "The built-in guest account must be disabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-SO-000030"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-SO-000030"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2016"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2016-WN22-SO-000030_stmt",
-        "name": "statement",
-        "prose": "The built-in guest account must be disabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2016-WN22-00-000020",
-      "title": "The windows server 2016 system must use an antivirus program",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-00-000020"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-00-000020"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2016"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2016-WN22-00-000020_stmt",
-        "name": "statement",
-        "prose": "The windows server 2016 system must use an antivirus program"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2016-WN22-AC-000010",
-      "title": "Password history must be configured to 24 or more passwords",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-AC-000010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-AC-000010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2016"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2016-WN22-AC-000010_stmt",
-        "name": "statement",
-        "prose": "Password history must be configured to 24 or more passwords"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2016-WN22-AC-000040",
-      "title": "Minimum password length must be configured to 14 characters or more",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-AC-000040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-AC-000040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2016"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2016-WN22-AC-000040_stmt",
-        "name": "statement",
-        "prose": "Minimum password length must be configured to 14 characters or more"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2016-assessment_metadata",
+      "id": "stig_windows_server_2016-metadata",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "assessment_metadata"
+        "value": "metadata"
        },
        {
         "name": "alt-identifier",
-        "value": "assessment_metadata"
+        "value": "metadata"
        },
        {
         "name": "rego-package",
@@ -256,7 +3562,7 @@
       ],
       "parts": [
        {
-        "id": "stig_windows_server_2016-assessment_metadata_stmt",
+        "id": "stig_windows_server_2016-metadata_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body."
        }
@@ -264,16 +3570,16 @@
       "class": "security"
      },
      {
-      "id": "stig_windows_server_2016-compliance_summary",
+      "id": "stig_windows_server_2016-summary",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "compliance_summary"
+        "value": "summary"
        },
        {
         "name": "alt-identifier",
-        "value": "compliance_summary"
+        "value": "summary"
        },
        {
         "name": "rego-package",
@@ -289,7 +3595,7 @@
       ],
       "parts": [
        {
-        "id": "stig_windows_server_2016-compliance_summary_stmt",
+        "id": "stig_windows_server_2016-summary_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2016/stig_windows_server_2016_complete.rego (package stig.windows_server_2016); see the rule body."
        }
@@ -302,8 +3608,59 @@
   "back-matter": {
    "resources": [
     {
+     "uuid": "d074daa8-c0e0-5f25-9e86-2a7daf1f55a2",
+     "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2016.registry_cc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2016/registry_cc.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "509152c4-0808-5932-b742-76b28349d8fd",
+     "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2016.registry_other"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2016/registry_other.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "8126b763-9195-581f-8194-a340c4426eb6",
+     "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2016.registry_so"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2016/registry_so.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
      "uuid": "5c788866-a07a-5ff4-b31c-7d4a4c4803ed",
-     "title": "DISA STIG for windows server 2016 - Simplified Complete Assessment",
+     "title": "DISA STIG — Microsoft Windows Server 2016 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
        "name": "rego-package",

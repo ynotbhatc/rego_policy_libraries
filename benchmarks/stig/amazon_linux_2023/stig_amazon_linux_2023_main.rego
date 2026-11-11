@@ -3,7 +3,7 @@
 # report fully non-compliant with an explicit finding, never a pass.
 
 # METADATA
-# title: "Framework-key entrypoint alias with the fail-closed gate (pattern from"
+# title: "Amazon Linux 2023 must use a Linux Security Module configured to enforce limits on system services. — framework-key entrypoint alias (fail-closed)"
 # custom:
 #   class: security
 #   framework: stig_amazon_linux_2023
@@ -17,7 +17,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.amazon_linux_2023.main
 
 import data.stig.amazon_linux_2023

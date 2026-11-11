@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.cisco_ios_xe_router.core
 
 # DISA STIG — Cisco IOS XE Router NDM Security Technical Implementation Guide

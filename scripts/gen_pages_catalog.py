@@ -37,6 +37,7 @@ OVERRIDES = {
     "ubuntu_20_04": "Ubuntu 20.04", "windows_server_2022_modular": "Windows Server 2022",
     "windows_server_2019_modular": "Windows Server 2019", "windows_server_2025": "Windows Server 2025",
     "windows_11": "Windows 11", "windows_10": "Windows 10", "sles_15": "SLES 15",
+    "windows_10_modular": "Windows 10 Enterprise", "windows_11_modular": "Windows 11 Enterprise",
     "vmware_vsphere_8": "vSphere 8 ESXi", "ms_sql_2016": "SQL Server 2016",
     "postgresql_16": "PostgreSQL 16", "openshift_4": "OpenShift 4", "rke2": "RGS RKE2",
     "cisco_ios_xe_router": "Cisco IOS-XE", "apache_2_4_unix": "Apache 2.4",

@@ -396,6 +396,39 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-CC-000055",
+      "title": "Simultaneous connections to the internet or a Windows domain must be limited.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000055"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000055"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000055_stmt",
+        "name": "statement",
+        "prose": "Simultaneous connections to the internet or a Windows domain must be limited."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-CC-000060",
       "title": "Connections to non-domain networks when connected to a domain authenticated network must be blocked.",
       "props": [
@@ -594,6 +627,39 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-CC-000085",
+      "title": "Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000085"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000085"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000085_stmt",
+        "name": "statement",
+        "prose": "Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-CC-000090",
       "title": "Group Policy objects must be reprocessed even if they have not changed.",
       "props": [
@@ -721,6 +787,39 @@
         "id": "stig_windows_11-WN11-CC-000110_stmt",
         "name": "statement",
         "prose": "Printing over HTTP must be prevented."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000115",
+      "title": "Systems must at least attempt device authentication using certificates.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000115"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000115"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000115_stmt",
+        "name": "statement",
+        "prose": "Systems must at least attempt device authentication using certificates."
        }
       ],
       "class": "security"
@@ -1155,6 +1254,72 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-CC-000205",
+      "title": "Windows Telemetry must not be configured to Full.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000205"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000205"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000205_stmt",
+        "name": "statement",
+        "prose": "Windows Telemetry must not be configured to Full."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000206",
+      "title": "Windows Update must not obtain updates from other PCs on the internet.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000206"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000206"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000206_stmt",
+        "name": "statement",
+        "prose": "Windows Update must not obtain updates from other PCs on the internet."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-CC-000210",
       "title": "The Microsoft Defender SmartScreen for Explorer must be enabled.",
       "props": [
@@ -1183,6 +1348,39 @@
         "id": "stig_windows_11-WN11-CC-000210_stmt",
         "name": "statement",
         "prose": "The Microsoft Defender SmartScreen for Explorer must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000215",
+      "title": "Explorer Data Execution Prevention must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000215"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000215"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000215_stmt",
+        "name": "statement",
+        "prose": "Explorer Data Execution Prevention must be enabled."
        }
       ],
       "class": "security"
@@ -1221,6 +1419,72 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-CC-000225",
+      "title": "File Explorer shell protocol must run in protected mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000225"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000225"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000225_stmt",
+        "name": "statement",
+        "prose": "File Explorer shell protocol must run in protected mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000252",
+      "title": "Windows 11 must be configured to disable Windows Game Recording and Broadcasting.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000252"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000252"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000252_stmt",
+        "name": "statement",
+        "prose": "Windows 11 must be configured to disable Windows Game Recording and Broadcasting."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-CC-000255",
       "title": "The use of a hardware security device with Windows Hello for Business must be enabled.",
       "props": [
@@ -1249,6 +1513,39 @@
         "id": "stig_windows_11-WN11-CC-000255_stmt",
         "name": "statement",
         "prose": "The use of a hardware security device with Windows Hello for Business must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000260",
+      "title": "Windows 11 must be configured to require a minimum PIN length of six characters or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000260_stmt",
+        "name": "statement",
+        "prose": "Windows 11 must be configured to require a minimum PIN length of six characters or greater."
        }
       ],
       "class": "security"
@@ -1452,6 +1749,72 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-CC-000300",
+      "title": "Basic authentication for RSS feeds over HTTP must not be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000300_stmt",
+        "name": "statement",
+        "prose": "Basic authentication for RSS feeds over HTTP must not be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000305",
+      "title": "Indexing of encrypted files must be turned off.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000305"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000305"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000305_stmt",
+        "name": "statement",
+        "prose": "Indexing of encrypted files must be turned off."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-CC-000310",
       "title": "Users must be prevented from changing installation options.",
       "props": [
@@ -1513,6 +1876,39 @@
         "id": "stig_windows_11-WN11-CC-000315_stmt",
         "name": "statement",
         "prose": "The Windows Installer feature \"Always install with elevated privileges\" must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000320",
+      "title": "Users must be notified if a web-based program attempts to install software.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000320_stmt",
+        "name": "statement",
+        "prose": "Users must be notified if a web-based program attempts to install software."
        }
       ],
       "class": "security"
@@ -1810,6 +2206,72 @@
         "id": "stig_windows_11-WN11-CC-000360_stmt",
         "name": "statement",
         "prose": "The Windows Remote Management (WinRM) client must not use Digest authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000365",
+      "title": "Windows 11 must be configured to prevent Windows apps from being activated by voice while the system is locked.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000365"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000365"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000365_stmt",
+        "name": "statement",
+        "prose": "Windows 11 must be configured to prevent Windows apps from being activated by voice while the system is locked."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-CC-000366",
+      "title": "Windows 11 must be configured to prevent Windows apps from being activated by voice.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-CC-000366"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-CC-000366"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#bbdc07cc-0106-5010-a34d-a89497360307",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-CC-000366_stmt",
+        "name": "statement",
+        "prose": "Windows 11 must be configured to prevent Windows apps from being activated by voice."
        }
       ],
       "class": "security"
@@ -2622,39 +3084,6 @@
       "class": "security"
      },
      {
-      "id": "stig_windows_11-WN11-SO-000080",
-      "title": "The Windows message title for the legal notice must be configured.",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN11-SO-000080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN11-SO-000080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_11.registry_so"
-       }
-      ],
-      "links": [
-       {
-        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_11-WN11-SO-000080_stmt",
-        "name": "statement",
-        "prose": "The Windows message title for the legal notice must be configured."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_windows_11-WN11-SO-000085",
       "title": "Caching of logon credentials must be limited.",
       "props": [
@@ -3249,6 +3678,39 @@
       "class": "security"
      },
      {
+      "id": "stig_windows_11-WN11-SO-000230",
+      "title": "The system must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000230_stmt",
+        "name": "statement",
+        "prose": "The system must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_windows_11-WN11-SO-000240",
       "title": "The default permissions of global system objects must be increased.",
       "props": [
@@ -3310,6 +3772,39 @@
         "id": "stig_windows_11-WN11-SO-000245_stmt",
         "name": "statement",
         "prose": "User Account Control approval mode for the built-in Administrator must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_11-WN11-SO-000250",
+      "title": "User Account Control must prompt administrators for consent on the secure desktop.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN11-SO-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN11-SO-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_11.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#71176679-82fa-59f0-b07a-4af8d1b5b9cf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_11-WN11-SO-000250_stmt",
+        "name": "statement",
+        "prose": "User Account Control must prompt administrators for consent on the secure desktop."
        }
       ],
       "class": "security"
