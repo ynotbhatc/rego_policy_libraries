@@ -112,7 +112,6 @@ TABLE: dict[str, tuple[str, list[str]]] = {
     "benchmarks/stig/ubuntu_20_04": ("disa", ["linux", "ubuntu"]),
     "benchmarks/stig/ubuntu_22_04": ("disa", ["linux", "ubuntu"]),
     "benchmarks/stig/vmware_vsphere_8": ("disa", ["virtualization", "vmware"]),
-    "benchmarks/stig/windows_10": ("disa", ["windows"]),
     "benchmarks/stig/windows_11": ("disa", ["windows"]),
     "benchmarks/stig/windows_server_2016": ("disa", ["windows"]),
     "benchmarks/stig/windows_server_2019": ("disa", ["windows"]),
