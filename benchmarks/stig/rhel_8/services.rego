@@ -53,6 +53,7 @@ no_telnet_server if pkg_absent("telnet-server")
 status_rhel_08_040000 := "Not_a_Finding" if no_telnet_server
 
 else := "Open"
+
 finding_rhel_08_040000 := {
 	"vuln_id": "V-230491",
 	"stig_id": "RHEL-08-040000",
@@ -70,6 +71,7 @@ no_rsh_server if pkg_absent("rsh-server")
 status_rhel_08_040010 := "Not_a_Finding" if no_rsh_server
 
 else := "Open"
+
 finding_rhel_08_040010 := {
 	"vuln_id": "V-230492",
 	"stig_id": "RHEL-08-040010",
@@ -87,6 +89,7 @@ no_ypserv if pkg_absent("ypserv")
 status_rhel_08_040020 := "Not_a_Finding" if no_ypserv
 
 else := "Open"
+
 finding_rhel_08_040020 := {
 	"vuln_id": "V-230493",
 	"stig_id": "RHEL-08-040020",
@@ -104,6 +107,7 @@ no_tftp_server if pkg_absent("tftp-server")
 status_rhel_08_040030 := "Not_a_Finding" if no_tftp_server
 
 else := "Open"
+
 finding_rhel_08_040030 := {
 	"vuln_id": "V-230494",
 	"stig_id": "RHEL-08-040030",
@@ -125,6 +129,7 @@ autofs_disabled if service_disabled("autofs")
 status_rhel_08_040040 := "Not_a_Finding" if autofs_disabled
 
 else := "Open"
+
 finding_rhel_08_040040 := {
 	"vuln_id": "V-230495",
 	"stig_id": "RHEL-08-040040",
@@ -142,6 +147,7 @@ no_xinetd if pkg_absent("xinetd")
 status_rhel_08_040050 := "Not_a_Finding" if no_xinetd
 
 else := "Open"
+
 finding_rhel_08_040050 := {
 	"vuln_id": "V-230496",
 	"stig_id": "RHEL-08-040050",
@@ -160,6 +166,7 @@ bluetooth_disabled if input.kernel_modules.bluetooth.blacklisted == true
 status_rhel_08_040060 := "Not_a_Finding" if bluetooth_disabled
 
 else := "Open"
+
 finding_rhel_08_040060 := {
 	"vuln_id": "V-230497",
 	"stig_id": "RHEL-08-040060",
@@ -178,6 +185,7 @@ no_snmp if pkg_absent("net-snmp")
 status_rhel_08_040070 := "Not_a_Finding" if no_snmp
 
 else := "Open"
+
 finding_rhel_08_040070 := {
 	"vuln_id": "V-230498",
 	"stig_id": "RHEL-08-040070",
@@ -195,6 +203,7 @@ no_nfs if service_disabled("nfs-server")
 status_rhel_08_040080 := "Not_a_Finding" if no_nfs
 
 else := "Open"
+
 finding_rhel_08_040080 := {
 	"vuln_id": "V-230499",
 	"stig_id": "RHEL-08-040080",
@@ -212,6 +221,7 @@ no_avahi if service_disabled("avahi-daemon")
 status_rhel_08_040090 := "Not_a_Finding" if no_avahi
 
 else := "Open"
+
 finding_rhel_08_040090 := {
 	"vuln_id": "V-230500",
 	"stig_id": "RHEL-08-040090",

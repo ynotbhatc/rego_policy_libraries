@@ -8,6 +8,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — every framework key resolves at `/v1/data/<key>/main/compliance_report`
+
+- 38 framework-key bridge modules, one per product key whose package was named differently (every
+  `stig_*` key onto `stig.<platform>.main`, `cis_rhel10`, `cis_ubuntu_2004/2204/2404`,
+  `cis_windows_2019/2022`, `cis_openshift`, `nist_800_53`, `nist_csf`, `nist_ai_rmf`, `iso27001`, `cmmc`,
+  `nerc_cip`, `iec_62443`, `ami_device`, `ami_headend`, `ami_nist_ir7628`, `crypto_miner_detection`,
+  `sentinel_*`, `ai_governance`). Each lives in its framework's own directory so it ships in that bundle,
+  and fails closed: no facts → non-compliant with an explicit finding, and the report object is always
+  defined. Seven mains that named their report differently (`hipaa`, `gdpr`, `digital_sovereignty`, `sox`,
+  `fisma`, `pci_dss`, `soc2`) now also expose `compliance_report` with an explicit `compliant`.
+- `tests/framework_keys/test_keys.rego`: one test per product key (89) asserting the entrypoint resolves
+  on empty input, is an object and is not compliant. Keys with no library counterpart are not bridged and
+  are left for the product map to drop: `cis_cloud`, `cis_vmware`, `corporate`.
+- README counts restamped by `scripts/count_controls.py --check-readme` (22,661 checks, 922 policy files).
+
 ### Changed — PQC Readiness cites the final NIST IR 8547
 
 - `frameworks/federal/pqc/pqc_main.rego`: NIST finalized IR 8547, "Transition to Post-Quantum Cryptography

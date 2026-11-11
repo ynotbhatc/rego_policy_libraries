@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package ncsc_caf.b4_system_security
 
 import rego.v1

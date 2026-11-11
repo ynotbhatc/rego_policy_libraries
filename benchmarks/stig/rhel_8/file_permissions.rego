@@ -50,6 +50,7 @@ no_world_writable if count(input.file_permissions.world_writable_files) == 0
 status_rhel_08_010200 := "Not_a_Finding" if no_world_writable
 
 else := "Open"
+
 finding_rhel_08_010200 := {
 	"vuln_id": "V-230264",
 	"stig_id": "RHEL-08-010200",
@@ -67,6 +68,7 @@ no_unowned if count(input.file_permissions.unowned_files) == 0
 status_rhel_08_010210 := "Not_a_Finding" if no_unowned
 
 else := "Open"
+
 finding_rhel_08_010210 := {
 	"vuln_id": "V-230265",
 	"stig_id": "RHEL-08-010210",
@@ -88,6 +90,7 @@ passwd_perms if mode_within(input.file_permissions.etc_passwd.mode, "0644")
 status_rhel_08_010220 := "Not_a_Finding" if passwd_perms
 
 else := "Open"
+
 finding_rhel_08_010220 := {
 	"vuln_id": "V-230266",
 	"stig_id": "RHEL-08-010220",
@@ -106,6 +109,7 @@ shadow_perms if input.file_permissions.etc_shadow.mode == "000"
 status_rhel_08_010230 := "Not_a_Finding" if shadow_perms
 
 else := "Open"
+
 finding_rhel_08_010230 := {
 	"vuln_id": "V-230267",
 	"stig_id": "RHEL-08-010230",
@@ -123,6 +127,7 @@ group_perms if mode_within(input.file_permissions.etc_group.mode, "0644")
 status_rhel_08_010240 := "Not_a_Finding" if group_perms
 
 else := "Open"
+
 finding_rhel_08_010240 := {
 	"vuln_id": "V-230268",
 	"stig_id": "RHEL-08-010240",
@@ -140,6 +145,7 @@ no_suid_issues if count(input.file_permissions.undocumented_suid_files) == 0
 status_rhel_08_010250 := "Not_a_Finding" if no_suid_issues
 
 else := "Open"
+
 finding_rhel_08_010250 := {
 	"vuln_id": "V-230269",
 	"stig_id": "RHEL-08-010250",
@@ -157,6 +163,7 @@ lib_perms if input.file_permissions.library_files_ok == true
 status_rhel_08_010260 := "Not_a_Finding" if lib_perms
 
 else := "Open"
+
 finding_rhel_08_010260 := {
 	"vuln_id": "V-230270",
 	"stig_id": "RHEL-08-010260",
@@ -174,6 +181,7 @@ home_perms if count(input.file_permissions.insecure_home_dirs) == 0
 status_rhel_08_010270 := "Not_a_Finding" if home_perms
 
 else := "Open"
+
 finding_rhel_08_010270 := {
 	"vuln_id": "V-230271",
 	"stig_id": "RHEL-08-010270",

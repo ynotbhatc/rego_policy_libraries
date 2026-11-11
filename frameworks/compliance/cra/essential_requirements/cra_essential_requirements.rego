@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cra.essential_requirements
 
 import rego.v1

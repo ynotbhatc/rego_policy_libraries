@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.network
 
 # DISA STIG for RHEL 8 - Network Configuration Module
@@ -36,6 +36,7 @@ firewall_active if input.services.firewalld == "active"
 status_rhel_08_n_040000 := "Not_a_Finding" if firewall_active
 
 else := "Open"
+
 finding_rhel_08_n_040000 := {
 	"vuln_id": "V-230505",
 	"stig_id": "RHEL-08-040100",
@@ -53,6 +54,7 @@ ip_forward_disabled if input.kernel_params["net.ipv4.ip_forward"] == "0"
 status_rhel_08_040110 := "Not_a_Finding" if ip_forward_disabled
 
 else := "Open"
+
 finding_rhel_08_040110 := {
 	"vuln_id": "V-230506",
 	"stig_id": "RHEL-08-040110",
@@ -77,6 +79,7 @@ no_icmp_redirects if {
 status_rhel_08_040120 := "Not_a_Finding" if no_icmp_redirects
 
 else := "Open"
+
 finding_rhel_08_040120 := {
 	"vuln_id": "V-230507",
 	"stig_id": "RHEL-08-040120",
@@ -96,6 +99,7 @@ no_icmp_send if {
 status_rhel_08_040130 := "Not_a_Finding" if no_icmp_send
 
 else := "Open"
+
 finding_rhel_08_040130 := {
 	"vuln_id": "V-230508",
 	"stig_id": "RHEL-08-040130",
@@ -115,6 +119,7 @@ no_source_routing if {
 status_rhel_08_040140 := "Not_a_Finding" if no_source_routing
 
 else := "Open"
+
 finding_rhel_08_040140 := {
 	"vuln_id": "V-230509",
 	"stig_id": "RHEL-08-040140",
@@ -132,6 +137,7 @@ tcp_syncookies if input.kernel_params["net.ipv4.tcp_syncookies"] == "1"
 status_rhel_08_040150 := "Not_a_Finding" if tcp_syncookies
 
 else := "Open"
+
 finding_rhel_08_040150 := {
 	"vuln_id": "V-230510",
 	"stig_id": "RHEL-08-040150",
@@ -150,6 +156,7 @@ no_bluetooth if input.services.bluetooth == "inactive"
 status_rhel_08_040155 := "Not_a_Finding" if no_bluetooth
 
 else := "Open"
+
 finding_rhel_08_040155 := {
 	"vuln_id": "V-230511",
 	"stig_id": "RHEL-08-040155",
@@ -168,6 +175,7 @@ no_wireless if count(input.wireless_interfaces) == 0
 status_rhel_08_040157 := "Not_a_Finding" if no_wireless
 
 else := "Open"
+
 finding_rhel_08_040157 := {
 	"vuln_id": "V-230512",
 	"stig_id": "RHEL-08-040157",
@@ -186,6 +194,7 @@ rp_filter if input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
 status_rhel_08_040158 := "Not_a_Finding" if rp_filter
 
 else := "Open"
+
 finding_rhel_08_040158 := {
 	"vuln_id": "V-230513",
 	"stig_id": "RHEL-08-040158",

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8.ssh_config
 
 # DISA STIG for RHEL 8 - SSH Configuration Module
@@ -35,6 +35,7 @@ no_root_login if lower(input.ssh_config.PermitRootLogin) == "no"
 status_rhel_08_040160 := "Not_a_Finding" if no_root_login
 
 else := "Open"
+
 finding_rhel_08_040160 := {
 	"vuln_id": "V-230555",
 	"stig_id": "RHEL-08-040160",
@@ -57,6 +58,7 @@ ssh_fips_ciphers if {
 status_rhel_08_040170 := "Not_a_Finding" if ssh_fips_ciphers
 
 else := "Open"
+
 finding_rhel_08_040170 := {
 	"vuln_id": "V-230556",
 	"stig_id": "RHEL-08-040170",
@@ -78,6 +80,7 @@ no_empty_passwords if lower(input.ssh_config.PermitEmptyPasswords) == "no"
 status_rhel_08_040180 := "Not_a_Finding" if no_empty_passwords
 
 else := "Open"
+
 finding_rhel_08_040180 := {
 	"vuln_id": "V-230557",
 	"stig_id": "RHEL-08-040180",
@@ -95,6 +98,7 @@ max_auth_tries if to_number(input.ssh_config.MaxAuthTries) <= 4
 status_rhel_08_040190 := "Not_a_Finding" if max_auth_tries
 
 else := "Open"
+
 finding_rhel_08_040190 := {
 	"vuln_id": "V-230558",
 	"stig_id": "RHEL-08-040190",
@@ -115,6 +119,7 @@ client_alive if {
 status_rhel_08_040200 := "Not_a_Finding" if client_alive
 
 else := "Open"
+
 finding_rhel_08_040200 := {
 	"vuln_id": "V-230559",
 	"stig_id": "RHEL-08-040200",
@@ -137,6 +142,7 @@ ssh_fips_macs if {
 status_rhel_08_040210 := "Not_a_Finding" if ssh_fips_macs
 
 else := "Open"
+
 finding_rhel_08_040210 := {
 	"vuln_id": "V-230560",
 	"stig_id": "RHEL-08-040210",
@@ -154,6 +160,7 @@ ignore_rhosts if lower(input.ssh_config.IgnoreRhosts) == "yes"
 status_rhel_08_040220 := "Not_a_Finding" if ignore_rhosts
 
 else := "Open"
+
 finding_rhel_08_040220 := {
 	"vuln_id": "V-230561",
 	"stig_id": "RHEL-08-040220",
@@ -171,6 +178,7 @@ no_hostbased if lower(input.ssh_config.HostbasedAuthentication) == "no"
 status_rhel_08_040230 := "Not_a_Finding" if no_hostbased
 
 else := "Open"
+
 finding_rhel_08_040230 := {
 	"vuln_id": "V-230562",
 	"stig_id": "RHEL-08-040230",
@@ -188,6 +196,7 @@ use_pam if lower(input.ssh_config.UsePAM) == "yes"
 status_rhel_08_040240 := "Not_a_Finding" if use_pam
 
 else := "Open"
+
 finding_rhel_08_040240 := {
 	"vuln_id": "V-230563",
 	"stig_id": "RHEL-08-040240",
@@ -208,6 +217,7 @@ ssh_banner if {
 status_rhel_08_040250 := "Not_a_Finding" if ssh_banner
 
 else := "Open"
+
 finding_rhel_08_040250 := {
 	"vuln_id": "V-230564",
 	"stig_id": "RHEL-08-040250",
