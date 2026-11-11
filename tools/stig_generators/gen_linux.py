@@ -3,8 +3,11 @@
 
 Unlike the Windows registry family, Linux check-content is prose-heavy, so
 rule logic is hand-authored here as compact Rego expressions per stig_id;
-the generator stamps verified vuln_id/severity/title from the July 2026
-XCCDF catalogs and emits modules, orchestrator, and green-fixture tests.
+the generator stamps verified vuln_id/severity/title from the current
+XCCDF catalogs (tools/stig_generators/parse_xccdf.py; LIBRARY / VERIFIED below
+name the compilation and the date) and emits modules, orchestrator, alias and
+green-fixture tests, each with its METADATA block (custom.coverage is added by
+`make coverage`).
 A rule listed here but missing from the catalog aborts generation — IDs
 can never drift silently.
 
@@ -35,6 +38,10 @@ import json, os, re
 
 REPO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "benchmarks", "stig")
 CATS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "catalogs")
+
+LIBRARY = "October 2026 SRG-STIG library"
+VERIFIED = "2026-11-10"
+SEV = {"high": "CAT I", "medium": "CAT II", "low": "CAT III"}
 
 FIPS_SSH_CIPHERS = "aes256-ctr,aes192-ctr,aes128-ctr"
 FIPS_SSH_MACS = "hmac-sha2-512,hmac-sha2-256"
@@ -72,7 +79,7 @@ def crypto_not_overridden():
 
 PLATFORMS = {
   "ubuntu_22_04": {
-    "pkg": "ubuntu_22_04", "platform": "Canonical Ubuntu 22.04 LTS",
+    "pkg": "ubuntu_22_04", "platform": "Canonical Ubuntu 22.04 LTS", "domains": "[linux, ubuntu]",
     "rules": {
       "UBTU-22-211000": boolfact("os.vendor_supported"),
       "UBTU-22-211015": boolfact("systemd.ctrl_alt_del_masked"),
@@ -102,7 +109,7 @@ PLATFORMS = {
     },
   },
   "amazon_linux_2023": {
-    "pkg": "amazon_linux_2023", "platform": "Amazon Linux 2023",
+    "pkg": "amazon_linux_2023", "platform": "Amazon Linux 2023", "domains": "[linux, amazon-linux]",
     "rules": {
       "AZLX-23-000050": boolfact("fips.enabled"),
       "AZLX-23-000100": boolfact("storage.persistent_partitions_encrypted"),
@@ -131,7 +138,7 @@ PLATFORMS = {
     },
   },
   "sles_15": {
-    "pkg": "sles_15", "platform": "SUSE Linux Enterprise Server 15",
+    "pkg": "sles_15", "platform": "SUSE Linux Enterprise Server 15", "domains": "[linux, sles]",
     "rules": {
       "SLES-15-010000": boolfact("os.vendor_supported"),
       "SLES-15-010030": pkg_absent("vsftpd"),
@@ -164,6 +171,27 @@ PLATFORMS = {
     },
   },
 }
+
+# Ubuntu 24.04 LTS V1R7: the 22.04 logic table re-keyed by DISA rule title (reviewed 2026-11-10 against both
+# check texts; 16 titles identical after the version is normalised, 6 differ only in quoting or wording).
+# Only the sshd Ciphers and MACs values differ between the two STIGs and are set below.
+UBTU_22_TO_24 = {
+    "UBTU-22-211000": "UBTU-24-700400", "UBTU-22-211015": "UBTU-24-300026", "UBTU-22-212010": "UBTU-24-102000",
+    "UBTU-22-213010": "UBTU-24-600140", "UBTU-22-213015": "UBTU-24-600070", "UBTU-22-215030": "UBTU-24-100040",
+    "UBTU-22-215035": "UBTU-24-100030", "UBTU-22-255010": "UBTU-24-100800", "UBTU-22-255015": "UBTU-24-100810",
+    "UBTU-22-255025": "UBTU-24-300031", "UBTU-22-255030": "UBTU-24-600000", "UBTU-22-255035": "UBTU-24-600010",
+    "UBTU-22-255040": "UBTU-24-300022", "UBTU-22-255045": "UBTU-24-300023", "UBTU-22-255050": "UBTU-24-100820",
+    "UBTU-22-255055": "UBTU-24-100830", "UBTU-22-271030": "UBTU-24-300025", "UBTU-22-432015": "UBTU-24-600130",
+    "UBTU-22-611060": "UBTU-24-300028", "UBTU-22-611065": "UBTU-24-300027", "UBTU-22-612040": "UBTU-24-400370",
+    "UBTU-22-671010": "UBTU-24-600030",
+}
+PLATFORMS["ubuntu_24_04"] = {
+    "pkg": "ubuntu_24_04", "platform": "Canonical Ubuntu 24.04 LTS", "domains": "[linux, ubuntu]",
+    "rules": {new: PLATFORMS["ubuntu_22_04"]["rules"][old] for old, new in UBTU_22_TO_24.items()},
+}
+PLATFORMS["ubuntu_24_04"]["rules"]["UBTU-24-100820"] = sshd("Ciphers", "aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes128-ctr")
+PLATFORMS["ubuntu_24_04"]["rules"]["UBTU-24-100830"] = sshd("MACs", "hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256")
+
 
 def rego_ident(stig_id):
     return "r_" + re.sub(r"[^a-z0-9]+", "_", stig_id.lower()).strip("_")
@@ -208,6 +236,13 @@ ALIAS_TMPL = """# Framework-key entrypoint alias with the fail-closed gate (patt
 # stig_kubernetes_main.rego / rego PR #52 lineage): an empty input must
 # report fully non-compliant with an explicit finding, never a pass.
 
+# METADATA
+# title: "{title}"
+# custom:
+#   class: security
+#   framework: stig_{pkg}
+#   source: disa
+#   domains: {domains}
 package stig.{pkg}.main
 
 import data.stig.{pkg}
@@ -268,8 +303,14 @@ compliant := _compliant
 violations := _open_findings
 """
 
-def write_alias(outdir, key, pkg):
-    open(os.path.join(outdir, f"stig_{key}_main.rego"), "w").write(ALIAS_TMPL.format(pkg=pkg))
+def metadata(title, pkg, domains):
+    return ["# METADATA", f'# title: "{esc(title)}"', "# custom:", "#   class: security",
+            f"#   framework: stig_{pkg}", "#   source: disa", f"#   domains: {domains}"]
+
+
+def write_alias(outdir, key, pkg, title, domains):
+    open(os.path.join(outdir, f"stig_{key}_main.rego"), "w").write(
+        ALIAS_TMPL.format(pkg=pkg, title=esc(title), domains=domains))
 
 def main():
     for key, cfg in PLATFORMS.items():
@@ -278,22 +319,23 @@ def main():
         missing = [sid for sid in cfg["rules"] if sid not in bykey]
         if missing:
             raise SystemExit(f"{key}: rule IDs not in current XCCDF catalog: {missing}")
-        bench, release = cat["benchmark"], cat["release"]
-        ver = f"V{cat['version']}R{release.split('Release:')[1].split()[0]}" if "Release:" in release else f"V{cat['version']}"
+        bench, ver = cat["benchmark"], cat["version"]
+        release = f"Release: {cat['release']} Benchmark Date: {cat['release_date']}"
         outdir = os.path.join(REPO, key)
         os.makedirs(os.path.join(outdir, "tests"), exist_ok=True)
-        lines = [f"package stig.{cfg['pkg']}.core", "",
+        title = f"DISA STIG — {bench}"
+        lines = metadata(title, cfg["pkg"], cfg["domains"]) + [f"package stig.{cfg['pkg']}.core", "",
                  f"# DISA STIG — {bench}",
                  f"# {ver} | {release}",
                  f"# {len(cfg['rules'])} rules (all CAT I + selected CAT II). Rule IDs, severities and",
-                 "# titles verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03.",
+                 f"# titles verified against the {LIBRARY} XCCDF on {VERIFIED}.",
                  "# Input contract: see gen_linux.py header / tests fixture.",
                  "", "import rego.v1", ""]
         finds, fixture_entries = [], []
         cat1 = 0
         for sid in sorted(cfg["rules"]):
             body, fx = cfg["rules"][sid]
-            r = bykey[sid]
+            r = dict(bykey[sid], severity=SEV[bykey[sid]["severity"]])
             if r["severity"] == "CAT I": cat1 += 1
             ident = rego_ident(sid)
             lines.append(f"# {sid} | {r['vuln_id']} | {r['severity']}")
@@ -323,12 +365,12 @@ def main():
 
         # orchestrator
         total = len(cat["rules"])
-        o = [f"package stig.{cfg['pkg']}", "",
+        o = metadata(f"{title} — Master Aggregator", cfg["pkg"], cfg["domains"]) + [f"package stig.{cfg['pkg']}", "",
              f"# DISA STIG — {bench} — Master Aggregator",
              f"# {ver} | {release}",
              f"# Coverage: {len(cfg['rules'])} of {total} rules ({cat1} CAT I of "
-             f"{sum(1 for r in cat['rules'] if r['severity']=='CAT I')}); remainder is follow-up work.",
-             "# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.",
+             f"{sum(1 for r in cat['rules'] if r['severity']=='high')}); remainder is follow-up work.",
+             f"# Rule IDs verified against the {LIBRARY} on {VERIFIED}.",
              "", "import rego.v1", "",
              f"import data.stig.{cfg['pkg']}.core", "",
              "all_findings := core.findings", "",
@@ -384,7 +426,7 @@ def main():
              "\treport.summary.cat_i_open == 0",
              "}"]
         open(os.path.join(outdir, "tests", f"test_stig_{key}.rego"), "w").write("\n".join(t) + "\n")
-        write_alias(outdir, key, cfg["pkg"])
+        write_alias(outdir, key, cfg["pkg"], f"{title} — framework-key entrypoint alias (fail-closed)", cfg["domains"])
         print(f"{key}: {len(cfg['rules'])} rules ({cat1} CAT I) of {total} total")
 
 if __name__ == "__main__":

@@ -17,9 +17,9 @@
 package stig.sles_15.core
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide
-# V2R8 | Release: 8 Benchmark Date: 01 Jul 2026
+# V2R9 | Release: 9 Benchmark Date: 30 Sep 2026
 # 27 rules (all CAT I + selected CAT II). Rule IDs, severities and
-# titles verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03.
+# titles verified against the October 2026 SRG-STIG library XCCDF on 2026-11-10.
 # Input contract: see gen_linux.py header / tests fixture.
 
 import rego.v1
@@ -125,7 +125,7 @@ finding_r_sles_15_010160 := {
 	"vuln_id": "V-234816",
 	"stig_id": "SLES-15-010160",
 	"severity": "CAT I",
-	"rule_title": "The SUSE operating system must implement DOD-approved encryption to protect the confidentiality of SSH remote connections.",
+	"rule_title": "The SUSE operating system must implement DoW-approved encryption to protect the confidentiality of SSH remote connections.",
 	"status": status_r_sles_15_010160,
 }
 

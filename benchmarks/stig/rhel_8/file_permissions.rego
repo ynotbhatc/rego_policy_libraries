@@ -6,8 +6,8 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 9
-#     cited: 8
+#     checks: 4
+#     cited: 3
 #     density: section
 #     basis: role
 #     tested: true
@@ -17,7 +17,9 @@
 package stig.rhel_8.file_permissions
 
 # DISA STIG for RHEL 8 - File Permissions Module
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 
 import rego.v1
 
@@ -42,152 +44,61 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 # Offender lists: an absent list is missing evidence (no collector emits file_permissions.*),
 # so a rule only passes when the list is present and empty.
 
-# RHEL-08-010200 | V-230264 | CAT I - No world-writable files
-default no_world_writable := false
+# =============================================================================
+# CAT II - MEDIUM SEVERITY
+# =============================================================================
 
-no_world_writable if count(input.file_permissions.world_writable_files) == 0
-
-status_rhel_08_010200 := "Not_a_Finding" if no_world_writable
-
-else := "Open"
-
-finding_rhel_08_010200 := {
-	"vuln_id": "V-230264",
-	"stig_id": "RHEL-08-010200",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must have no world-writable files",
-	"status": status_rhel_08_010200,
-	"fix_text": "find / -xdev -type f -perm -002 -exec chmod o-w {} \\;",
-}
-
-# RHEL-08-010210 | V-230265 | CAT I - No unowned files
+# RHEL-08-010780 | V-230326 | CAT II - No unowned files
 default no_unowned := false
 
 no_unowned if count(input.file_permissions.unowned_files) == 0
 
-status_rhel_08_010210 := "Not_a_Finding" if no_unowned
+status_rhel_08_010780 := "Not_a_Finding" if no_unowned
 
 else := "Open"
 
-finding_rhel_08_010210 := {
-	"vuln_id": "V-230265",
-	"stig_id": "RHEL-08-010210",
-	"severity": "CAT I",
-	"rule_title": "RHEL 8 must have no files not owned by a valid user",
-	"status": status_rhel_08_010210,
+finding_rhel_08_010780 := {
+	"vuln_id": "V-230326",
+	"stig_id": "RHEL-08-010780",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 8 local files and directories must have a valid owner.",
+	"status": status_rhel_08_010780,
 	"fix_text": "find / -nouser -xdev",
 }
 
-# =============================================================================
-# CAT II
-# =============================================================================
-
-# RHEL-08-010220 | V-230266 | CAT II - /etc/passwd permissions 0644
-default passwd_perms := false
-
-passwd_perms if mode_within(input.file_permissions.etc_passwd.mode, "0644")
-
-status_rhel_08_010220 := "Not_a_Finding" if passwd_perms
-
-else := "Open"
-
-finding_rhel_08_010220 := {
-	"vuln_id": "V-230266",
-	"stig_id": "RHEL-08-010220",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 /etc/passwd must have mode 0644 or less",
-	"status": status_rhel_08_010220,
-	"fix_text": "chmod 0644 /etc/passwd",
-}
-
-# RHEL-08-010230 | V-230267 | CAT II - /etc/shadow permissions 0000
-default shadow_perms := false
-
-shadow_perms if input.file_permissions.etc_shadow.mode == "0000"
-shadow_perms if input.file_permissions.etc_shadow.mode == "000"
-
-status_rhel_08_010230 := "Not_a_Finding" if shadow_perms
-
-else := "Open"
-
-finding_rhel_08_010230 := {
-	"vuln_id": "V-230267",
-	"stig_id": "RHEL-08-010230",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 /etc/shadow must have mode 0000",
-	"status": status_rhel_08_010230,
-	"fix_text": "chmod 0000 /etc/shadow",
-}
-
-# RHEL-08-010240 | V-230268 | CAT II - /etc/group permissions 0644
-default group_perms := false
-
-group_perms if mode_within(input.file_permissions.etc_group.mode, "0644")
-
-status_rhel_08_010240 := "Not_a_Finding" if group_perms
-
-else := "Open"
-
-finding_rhel_08_010240 := {
-	"vuln_id": "V-230268",
-	"stig_id": "RHEL-08-010240",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 /etc/group must have mode 0644 or less",
-	"status": status_rhel_08_010240,
-	"fix_text": "chmod 0644 /etc/group",
-}
-
-# RHEL-08-010250 | V-230269 | CAT II - No undocumented SUID files
-default no_suid_issues := false
-
-no_suid_issues if count(input.file_permissions.undocumented_suid_files) == 0
-
-status_rhel_08_010250 := "Not_a_Finding" if no_suid_issues
-
-else := "Open"
-
-finding_rhel_08_010250 := {
-	"vuln_id": "V-230269",
-	"stig_id": "RHEL-08-010250",
-	"severity": "CAT II",
-	"rule_title": "RHEL 8 must have no unauthorized SUID/SGID executables",
-	"status": status_rhel_08_010250,
-	"fix_text": "find / -xdev -perm /6000 -type f",
-}
-
-# RHEL-08-010260 | V-230270 | CAT II - Library files permissions 0755
+# RHEL-08-010330 | V-230260 | CAT II - Library files permissions 0755
 default lib_perms := false
 
 lib_perms if input.file_permissions.library_files_ok == true
 
-status_rhel_08_010260 := "Not_a_Finding" if lib_perms
+status_rhel_08_010330 := "Not_a_Finding" if lib_perms
 
 else := "Open"
 
-finding_rhel_08_010260 := {
-	"vuln_id": "V-230270",
-	"stig_id": "RHEL-08-010260",
+finding_rhel_08_010330 := {
+	"vuln_id": "V-230260",
+	"stig_id": "RHEL-08-010330",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 library files must have mode 0755 or less",
-	"status": status_rhel_08_010260,
+	"rule_title": "RHEL 8 library files must have mode 755 or less permissive.",
+	"status": status_rhel_08_010330,
 	"fix_text": "find /lib /lib64 /usr/lib -perm /022 -exec chmod 755 {} \\;",
 }
 
-# RHEL-08-010270 | V-230271 | CAT II - Home directory permissions
+# RHEL-08-010730 | V-230321 | CAT II - Home directory permissions
 default home_perms := false
 
 home_perms if count(input.file_permissions.insecure_home_dirs) == 0
 
-status_rhel_08_010270 := "Not_a_Finding" if home_perms
+status_rhel_08_010730 := "Not_a_Finding" if home_perms
 
 else := "Open"
 
-finding_rhel_08_010270 := {
-	"vuln_id": "V-230271",
-	"stig_id": "RHEL-08-010270",
+finding_rhel_08_010730 := {
+	"vuln_id": "V-230321",
+	"stig_id": "RHEL-08-010730",
 	"severity": "CAT II",
-	"rule_title": "RHEL 8 home directories must have mode 0750 or less",
-	"status": status_rhel_08_010270,
+	"rule_title": "All RHEL 8 local interactive user home directories must have mode 0750 or less permissive.",
+	"status": status_rhel_08_010730,
 	"fix_text": "chmod 0750 /home/<username>",
 }
 
@@ -195,21 +106,21 @@ finding_rhel_08_010270 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_rhel_08_010200,
-	finding_rhel_08_010210,
-]
+# No CAT I rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
-	finding_rhel_08_010220,
-	finding_rhel_08_010230,
-	finding_rhel_08_010240,
-	finding_rhel_08_010250,
-	finding_rhel_08_010260,
-	finding_rhel_08_010270,
+	finding_rhel_08_010780,
+	finding_rhel_08_010330,
+	finding_rhel_08_010730,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings
