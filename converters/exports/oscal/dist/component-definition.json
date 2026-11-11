@@ -3480,7 +3480,7 @@
      {
       "uuid": "28d9e37f-3137-5a01-95c1-57e624af3d7a",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/as9100d.json",
-      "description": "Controls of as9100d evaluated by the Rego Policy Libraries (87 controls, 8 Rego modules).",
+      "description": "Controls of as9100d evaluated by the Rego Policy Libraries (88 controls, 8 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -3667,7 +3667,7 @@
        {
         "uuid": "79799d62-5e79-5234-8552-32561dad9a0a",
         "control-id": "as9100d-10.2.1",
-        "description": "Evaluated by Rego package as9100d.improvement (frameworks/management/as9100d/as9100d_improvement.rego): Nonconformity and corrective action — each corrective action record states the root cause, considers human factors and is closed or not yet overdue",
+        "description": "Evaluated by Rego package as9100d.improvement (frameworks/management/as9100d/as9100d_improvement.rego): Nonconformity and corrective action — each corrective action record states the root cause, considers human factors and is closed on a recorded date or open with a due date that has not passed",
         "props": [
          {
           "name": "label",
@@ -3692,7 +3692,7 @@
        {
         "uuid": "a41d0b8f-92b1-53d5-8d9e-a82406afab0c",
         "control-id": "as9100d-10.2.2",
-        "description": "Evaluated by Rego package as9100d.improvement (frameworks/management/as9100d/as9100d_improvement.rego): Corrective action records — each record references its nonconformity and closed records show an effectiveness review",
+        "description": "Evaluated by Rego package as9100d.improvement (frameworks/management/as9100d/as9100d_improvement.rego): Corrective action records — each record carries a unique identifier, references its nonconformity, and closed records show an effectiveness review",
         "props": [
          {
           "name": "label",
@@ -4067,7 +4067,7 @@
        {
         "uuid": "00eefe0e-5229-5a14-aaa7-89fad30780ed",
         "control-id": "as9100d-8.1.2",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Configuration management — approved baselines are recorded, changes to them are controlled and status accounting (drift) records carry a disposition",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Configuration management — approved baselines are recorded with an identified approver and date, changes to them are controlled and status accounting (drift) records name their baseline and carry a disposition",
         "props": [
          {
           "name": "label",
@@ -4192,7 +4192,7 @@
        {
         "uuid": "28770766-e504-549b-a28b-60c3564d488f",
         "control-id": "as9100d-8.2.3",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Review of requirements — requirements are reviewed before commitment, special requirements and critical items are identified and differences are resolved",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Review of requirements (8.2.3.1 and 8.2.3.2) — requirements are reviewed before commitment, special requirements and critical items are identified, differences are resolved and the review is recorded",
         "props": [
          {
           "name": "label",
@@ -4317,11 +4317,36 @@
        {
         "uuid": "a0e7071e-3422-5b1a-88b2-851b18d9c72b",
         "control-id": "as9100d-8.3.4",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Design and development controls — reviews, verification and validation are performed, with tests planned, witnessed and recorded against acceptance criteria",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Design and development controls — reviews, verification and validation are performed at the planned stages, problems are resolved and the results are retained",
         "props": [
          {
           "name": "label",
           "value": "8.3.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "as9100d.operation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/as9100d/as9100d_operation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "de5fdb36-69e6-533a-885f-263bc6c7cc5a",
+        "control-id": "as9100d-8.3.4.1",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Design and development verification and validation testing — tests are planned and reviewed, run against defined criteria on the configuration under test, witnessed where required and recorded with their results (aerospace addition)",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.3.4.1"
          },
          {
           "name": "rego-package",
@@ -4492,7 +4517,7 @@
        {
         "uuid": "dd05ae72-1002-5d01-81ed-5e844f8f37ee",
         "control-id": "as9100d-8.5.1.1",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Control of equipment, tools and software programs — production equipment, tooling and software are validated before use and maintained in a known state",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Control of equipment, tools and software programs — production equipment, tooling and software are identified, validated on a recorded date before use and maintained in a known state",
         "props": [
          {
           "name": "label",
@@ -4567,7 +4592,7 @@
        {
         "uuid": "8e69dacf-eb99-537e-a1ec-8cf1e10bf021",
         "control-id": "as9100d-8.5.2",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Identification and traceability — each unit or batch carries a unique identifier and its lot or serial record, so configuration and history can be reconstructed",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Identification and traceability — each unit or batch carries a unique identifier, its part number and its lot or serial record, so configuration and history can be reconstructed",
         "props": [
          {
           "name": "label",
@@ -4742,7 +4767,7 @@
        {
         "uuid": "e0145a2f-0693-5620-a4b7-107506b7c205",
         "control-id": "as9100d-8.7.2",
-        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Nonconformity records — each record describes the nonconformity, the action taken and the authority that decided the disposition",
+        "description": "Evaluated by Rego package as9100d.operation (frameworks/management/as9100d/as9100d_operation.rego): Nonconformity records — each record carries a unique identifier and describes the nonconformity, the action taken and the authority that decided the disposition",
         "props": [
          {
           "name": "label",
@@ -4867,7 +4892,7 @@
        {
         "uuid": "b8c3a639-6cd8-599f-8b5c-a01460550766",
         "control-id": "as9100d-9.1.2",
-        "description": "Evaluated by Rego package as9100d.performance (frameworks/management/as9100d/as9100d_performance.rego): Customer satisfaction — on-time delivery and product conformity are measured for the current period and compared with their targets",
+        "description": "Evaluated by Rego package as9100d.performance (frameworks/management/as9100d/as9100d_performance.rego): Customer satisfaction — on-time delivery and product conformity are measured for a period ending within the past year, each against a numeric target that the measured value meets, and customer feedback, complaints and corrective-action requests are attested as collected, monitored and acted on",
         "props": [
          {
           "name": "label",
@@ -5567,7 +5592,7 @@
        {
         "uuid": "ff96e785-7f38-5c9c-9d7e-58c842cf6654",
         "control-id": "as9100d-7.5.3",
-        "description": "Evaluated by Rego package as9100d.support (frameworks/management/as9100d/as9100d_support.rego): Control of documented information — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and customer-furnished information",
+        "description": "Evaluated by Rego package as9100d.support (frameworks/management/as9100d/as9100d_support.rego): Control of documented information (7.5.3.1 and 7.5.3.2) — availability, protection, distribution, access, change control, retention, disposition and the removal of obsolete documents are controlled, including external and customer-furnished information",
         "props": [
          {
           "name": "label",
