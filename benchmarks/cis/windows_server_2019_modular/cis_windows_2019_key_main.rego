@@ -5,6 +5,15 @@
 #   framework: cis_windows_server_2019_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package cis_windows_2019.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

@@ -5,6 +5,15 @@
 #   framework: enforcement_terraform
 #   source: aac
 #   domains: [iac, terraform]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: gate
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: n/a
+#     as_of: v2.4.2
 package sentinel_terraform.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package cis.rhel_10.main
 
 # Bridge: expose cis.rhel_10 under the /v1/data/<framework>/main/compliance_report

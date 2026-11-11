@@ -5,6 +5,15 @@
 #   framework: stig_sles_15
 #   source: disa
 #   domains: [linux, sles]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package stig_sles_15.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

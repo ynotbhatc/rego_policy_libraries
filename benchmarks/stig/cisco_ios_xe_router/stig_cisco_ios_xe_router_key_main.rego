@@ -5,6 +5,15 @@
 #   framework: stig_cisco_ios_xe_router
 #   source: disa
 #   domains: [network, cisco]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package stig_cisco_ios_xe_router.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

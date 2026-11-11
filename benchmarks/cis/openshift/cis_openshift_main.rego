@@ -5,6 +5,15 @@
 #   framework: cis_openshift
 #   source: cis
 #   domains: [kubernetes, openshift, container]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package cis_openshift.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

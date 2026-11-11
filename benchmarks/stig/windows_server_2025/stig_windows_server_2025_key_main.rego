@@ -5,6 +5,15 @@
 #   framework: stig_windows_server_2025
 #   source: disa
 #   domains: [windows]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.4.2
 package stig_windows_server_2025.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at
