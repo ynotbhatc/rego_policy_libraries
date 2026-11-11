@@ -8,6 +8,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — SAE AS9100D aerospace quality management (`frameworks/management/as9100d/`)
+
+- **First industry QMS standard in the library.** SAE AS9100 Rev D (IAQG 9100:2016, built on ISO 9001:2015) at
+  clause granularity: **70 rows** across clauses 4–10 in seven self-contained clause packages (`as9100d.context`,
+  `.leadership`, `.planning`, `.support`, `.operation`, `.performance`, `.improvement`) rolled up by `as9100d.main`
+  at `/v1/data/as9100d/main/compliance_report`. Every aerospace addition is a row: 8.1.1 operational risk
+  management, 8.1.2 configuration management, 8.1.3 product safety, 8.1.4 counterfeit parts, 8.4.1–8.4.3 external
+  providers and flow-down, 8.5.1.1 equipment/tools/software, 8.5.1.2 special processes, 8.5.1.3 first article
+  inspection, 8.5.2 traceability, 8.5.3 customer property, 8.5.6 control of changes, 8.6 release, 8.7 nonconforming
+  outputs, 9.1.2 on-time delivery and conformity, 9.2 internal audit, 9.3 management review, 10.2 root cause and
+  human factors, 10.3 continual improvement. **18 rows are decided from evidence** AAC already collects
+  (configuration baselines and drift dispositions, approved change records, SBOM/provenance against approved
+  sources, supplier register with status, past-year performance review and flow-down acknowledgement, lot/serial
+  traceability, validated tooling and software, calibration register with no overdue due dates, nonconformance
+  dispositions incl. customer authorization for use-as-is/repair, corrective actions with root cause, human factors
+  and overdue tracking, audit and management-review dates within the past year, OTD/conformity KPIs against
+  targets); **52 are attested** (`input.as9100d.attestations["<clause>"] == true`; `input.as9100d.as_of` pins the
+  date). Fail-closed: empty input fails all 70 rows with an explicit reason (`not attested` / `FAIL-CLOSED: no
+  evidence at input.as9100d.<path>`), unknown clause ids and a non-object attestations container are flagged, and a
+  clause module missing from the store is itself a violation. Clause numbers and short titles only — AS9100D and
+  ISO 9001 are licensed and no requirement text is reproduced; sources in the module header. 215 tests (one pass
+  and one fail case per row, evidence-missing and failing-evidence cases per fact row, full fixture, empty input,
+  report shape, roll-up, framework key). Vocabulary: source `sae`, domains `aerospace` and `quality`. Registry row
+  added: the successor is renamed IA9100 and follows ISO 9001:2026 (published 2026-09-16), no publication date yet.
+
 ### Changed — standards registry November 2026 sweep; CIS Controls citations harmonised to v8.1
 
 - `STANDARDS_UPDATE_REGISTRY.md` v1.1 (2026-11-11): every row checked against its watch source. All eight

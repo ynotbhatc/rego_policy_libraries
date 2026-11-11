@@ -1,8 +1,8 @@
 {
  "version": "2.4.2",
  "oscal-version": "1.2.3",
- "frameworks": 183,
- "controls": 19075,
+ "frameworks": 185,
+ "controls": 19459,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -31,6 +31,13 @@
    "controls": 27,
    "modules": 1,
    "uuid": "c56e6bbb-5544-553d-ba2a-73cadb777640"
+  },
+  {
+   "framework": "as9100d",
+   "file": "catalogs/as9100d.json",
+   "controls": 87,
+   "modules": 8,
+   "uuid": "4d64f572-d1db-525e-a9ec-7fb4df48b63b"
   },
   {
    "framework": "bnm_rmit",
@@ -532,7 +539,7 @@
   {
    "framework": "digital_sovereignty",
    "file": "catalogs/digital_sovereignty.json",
-   "controls": 285,
+   "controls": 286,
    "modules": 12,
    "uuid": "5da68920-22ef-529e-8388-f5ccfa8fb1ab"
   },
@@ -693,8 +700,8 @@
   {
    "framework": "fisma",
    "file": "catalogs/fisma.json",
-   "controls": 7,
-   "modules": 1,
+   "controls": 8,
+   "modules": 2,
    "uuid": "42c11626-3014-51b9-8497-d6860f3527e6"
   },
   {
@@ -707,7 +714,7 @@
   {
    "framework": "gdpr",
    "file": "catalogs/gdpr.json",
-   "controls": 66,
+   "controls": 67,
    "modules": 5,
    "uuid": "7eaa509e-885f-5e64-a8d3-0ec508a8a40d"
   },
@@ -728,8 +735,8 @@
   {
    "framework": "hipaa",
    "file": "catalogs/hipaa.json",
-   "controls": 318,
-   "modules": 10,
+   "controls": 319,
+   "modules": 11,
    "uuid": "5083837b-5f42-596d-86f8-e6cbfcef8a32"
   },
   {
@@ -994,7 +1001,7 @@
   {
    "framework": "pci_dss",
    "file": "catalogs/pci_dss.json",
-   "controls": 200,
+   "controls": 201,
    "modules": 14,
    "uuid": "30100f7d-e6fe-585d-b569-6ddc724cffc3"
   },
@@ -1036,14 +1043,14 @@
   {
    "framework": "soc2",
    "file": "catalogs/soc2.json",
-   "controls": 220,
+   "controls": 221,
    "modules": 12,
    "uuid": "56f5697b-764c-52da-a94a-c752a3cfb921"
   },
   {
    "framework": "sox",
    "file": "catalogs/sox.json",
-   "controls": 80,
+   "controls": 81,
    "modules": 3,
    "uuid": "129e37cf-7093-5c05-b80d-029de7830fd3"
   },
@@ -1125,16 +1132,23 @@
    "uuid": "fc220b1e-a1ee-54be-b2d4-20d85bf2b86f"
   },
   {
+   "framework": "stig_rhel_10",
+   "file": "catalogs/stig_rhel_10.json",
+   "controls": 116,
+   "modules": 10,
+   "uuid": "dfe99e7c-7135-5b03-ad8c-7fe9bf7dd5ed"
+  },
+  {
    "framework": "stig_rhel_8",
    "file": "catalogs/stig_rhel_8.json",
-   "controls": 83,
+   "controls": 63,
    "modules": 8,
    "uuid": "918f1dc2-34af-5748-b8c8-cbd4ff723fe6"
   },
   {
    "framework": "stig_rhel_9",
    "file": "catalogs/stig_rhel_9.json",
-   "controls": 155,
+   "controls": 122,
    "modules": 10,
    "uuid": "efe6b747-8770-5ce3-8a83-6476bcc428ba"
   },
@@ -1167,6 +1181,13 @@
    "uuid": "2b3ad4a8-fbb9-5e8a-a070-83bbcefcdc30"
   },
   {
+   "framework": "stig_ubuntu_24_04",
+   "file": "catalogs/stig_ubuntu_24_04.json",
+   "controls": 24,
+   "modules": 2,
+   "uuid": "059136cd-12fa-5fff-94e5-fc296942cbe1"
+  },
+  {
    "framework": "stig_vmware_vsphere_8",
    "file": "catalogs/stig_vmware_vsphere_8.json",
    "controls": 12,
@@ -1174,44 +1195,37 @@
    "uuid": "ff2049a9-0fec-5e9c-bc70-291f1054dbaf"
   },
   {
-   "framework": "stig_windows_10",
-   "file": "catalogs/stig_windows_10.json",
-   "controls": 7,
-   "modules": 1,
-   "uuid": "d76dd70b-9a50-5287-93b3-bd8c6d8dd145"
-  },
-  {
    "framework": "stig_windows_11",
    "file": "catalogs/stig_windows_11.json",
-   "controls": 104,
+   "controls": 119,
    "modules": 4,
    "uuid": "e54cd2d3-0887-5abf-b20f-ec60141e5e6b"
   },
   {
    "framework": "stig_windows_server_2016",
    "file": "catalogs/stig_windows_server_2016.json",
-   "controls": 7,
-   "modules": 1,
+   "controls": 105,
+   "modules": 4,
    "uuid": "2764a734-5915-5995-a2af-886226b9b4f7"
   },
   {
    "framework": "stig_windows_server_2019",
    "file": "catalogs/stig_windows_server_2019.json",
-   "controls": 7,
-   "modules": 1,
+   "controls": 106,
+   "modules": 4,
    "uuid": "ce9e7124-7c3a-5b64-9091-790844d94718"
   },
   {
    "framework": "stig_windows_server_2022",
    "file": "catalogs/stig_windows_server_2022.json",
-   "controls": 106,
+   "controls": 105,
    "modules": 4,
    "uuid": "2764a688-da8b-5f85-8ee3-dcbedb187aff"
   },
   {
    "framework": "stig_windows_server_2025",
    "file": "catalogs/stig_windows_server_2025.json",
-   "controls": 97,
+   "controls": 96,
    "modules": 4,
    "uuid": "fbf6c1de-b0d8-5419-9c02-3ef9b96bfda5"
   },

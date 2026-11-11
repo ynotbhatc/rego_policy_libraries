@@ -1,0 +1,926 @@
+{
+ "catalog": {
+  "uuid": "059136cd-12fa-5fff-94e5-fc296942cbe1",
+  "metadata": {
+   "title": "Rego Policy Libraries — stig_ubuntu_24_04 (DISA STIG — Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide)",
+   "last-modified": "2026-10-13T00:00:00Z",
+   "version": "2.4.2",
+   "oscal-version": "1.2.3",
+   "props": [
+    {
+     "name": "framework",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "stig_ubuntu_24_04"
+    },
+    {
+     "name": "generator",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "converters/exports/oscal/build.py"
+    },
+    {
+     "name": "authored-with",
+     "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+     "value": "Claude (Anthropic)"
+    }
+   ],
+   "links": [
+    {
+     "href": "https://github.com/ynotbhatc/rego_policy_libraries",
+     "rel": "canonical"
+    }
+   ],
+   "parties": [
+    {
+     "uuid": "98052357-d083-58d5-a2d2-6d94463e75a0",
+     "type": "organization",
+     "name": "Rego Policy Libraries (ynotbhatc)",
+     "links": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries"
+      }
+     ]
+    }
+   ]
+  },
+  "groups": [
+   {
+    "id": "stig_ubuntu_24_04-core",
+    "class": "rego-module",
+    "title": "DISA STIG — Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.ubuntu_24_04.core"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/ubuntu_24_04/core.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100030",
+      "title": "Ubuntu 24.04 LTS must not have the telnet package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100030_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must not have the telnet package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100040",
+      "title": "Ubuntu 24.04 LTS must not have the rsh-server package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100040_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must not have the rsh-server package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100800",
+      "title": "Ubuntu 24.04 LTS must have SSH installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100800"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100800"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100800_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must have SSH installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100810",
+      "title": "Ubuntu 24.04 LTS must use SSH to protect the confidentiality and integrity of transmitted information.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100810"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100810"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100810_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must use SSH to protect the confidentiality and integrity of transmitted information."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100820",
+      "title": "Ubuntu 24.04 LTS must configure the SSH daemon to use FIPS 140-3 approved ciphers to prevent the unauthorized disclosure of information and/or detect changes to information during transmission.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100820"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100820"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100820_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must configure the SSH daemon to use FIPS 140-3 approved ciphers to prevent the unauthorized disclosure of information and/or detect changes to information during transmission."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-100830",
+      "title": "Ubuntu 24.04 LTS must configure the SSH daemon to use Message Authentication Codes (MACs) employing FIPS 140-3 approved cryptographic hashes to prevent the unauthorized disclosure of information and/o",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-100830"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-100830"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-100830_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must configure the SSH daemon to use Message Authentication Codes (MACs) employing FIPS 140-3 approved cryptographic hashes to prevent the unauthorized disclosure of information and/or detect changes to "
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-102000",
+      "title": "Ubuntu 24.04 LTS when booted must require authentication upon booting into single-user and maintenance modes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-102000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-102000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-102000_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS when booted must require authentication upon booting into single-user and maintenance modes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300022",
+      "title": "Ubuntu 24.04 LTS must be configured so that remote X connections are disabled, unless to fulfill documented and validated mission requirements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300022"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300022"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300022_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must be configured so that remote X connections are disabled, unless to fulfill documented and validated mission requirements."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300023",
+      "title": "Ubuntu 24.04 LTS SSH daemon must prevent remote hosts from connecting to the proxy display.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300023"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300023"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300023_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS SSH daemon must prevent remote hosts from connecting to the proxy display."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300025",
+      "title": "Ubuntu 24.04 LTS must disable the x86 Ctrl-Alt-Delete key sequence if a graphical user interface is installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300025_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must disable the x86 Ctrl-Alt-Delete key sequence if a graphical user interface is installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300026",
+      "title": "Ubuntu 24.04 LTS must disable the x86 Ctrl-Alt-Delete key sequence.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300026"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300026"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300026_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must disable the x86 Ctrl-Alt-Delete key sequence."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300027",
+      "title": "Ubuntu 24.04 LTS must not have accounts configured with blank or null passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300027"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300027"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300027_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must not have accounts configured with blank or null passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300028",
+      "title": "Ubuntu 24.04 LTS must not allow accounts configured in Pluggable Authentication Modules (PAM) with blank or null passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300028"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300028"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300028_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must not allow accounts configured in Pluggable Authentication Modules (PAM) with blank or null passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-300031",
+      "title": "Ubuntu 24.04 LTS must not allow unattended or automatic login via SSH.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-300031"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-300031"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-300031_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must not allow unattended or automatic login via SSH."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-400370",
+      "title": "Ubuntu 24.04 LTS must map the authenticated identity to the user or group account for PKI-based authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-400370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-400370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-400370_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must map the authenticated identity to the user or group account for PKI-based authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600000",
+      "title": "Ubuntu 24.04 LTS must immediately terminate all network connections associated with SSH traffic after a period of inactivity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600000_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must immediately terminate all network connections associated with SSH traffic after a period of inactivity."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600010",
+      "title": "Ubuntu 24.04 LTS must immediately terminate all network connections associated with SSH traffic at the end of the session or after 10 minutes of inactivity.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600010_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must immediately terminate all network connections associated with SSH traffic at the end of the session or after 10 minutes of inactivity."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600030",
+      "title": "Ubuntu 24.04 LTS must implement NIST FIPS-validated cryptography to protect classified information and for the following: To provision digital signatures, to generate cryptographic hashes, and to prot",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600030_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must implement NIST FIPS-validated cryptography to protect classified information and for the following: To provision digital signatures, to generate cryptographic hashes, and to protect unclassified inf"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600070",
+      "title": "Ubuntu 24.04 LTS must disable kernel core dumps.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600070_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must disable kernel core dumps."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600130",
+      "title": "Ubuntu 24.04 LTS must ensure only users who need access to security functions are part of sudo group.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600130_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must ensure only users who need access to security functions are part of sudo group."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-600140",
+      "title": "Ubuntu 24.04 LTS must restrict access to the kernel message buffer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-600140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-600140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-600140_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must restrict access to the kernel message buffer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-UBTU-24-700400",
+      "title": "Ubuntu 24.04 LTS must be a vendor-supported release.",
+      "props": [
+       {
+        "name": "label",
+        "value": "UBTU-24-700400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "UBTU-24-700400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1e2e3aec-241b-54c5-94dc-76b91df671d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-UBTU-24-700400_stmt",
+        "name": "statement",
+        "prose": "Ubuntu 24.04 LTS must be a vendor-supported release."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_ubuntu_24_04-stig_ubuntu_24_04_complete",
+    "class": "rego-module",
+    "title": "Ubuntu 24.04 LTS must be a vendor-supported release. — Master Aggregator",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.ubuntu_24_04"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_ubuntu_24_04-metadata",
+      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego (package stig.ubuntu_24_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "metadata"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "metadata"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#453e8ac9-3bd7-559a-8414-34b1f305cedc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-metadata_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego (package stig.ubuntu_24_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_ubuntu_24_04-summary",
+      "title": "Implemented by a Rego rule in benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego (package stig.ubuntu_24_04); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "summary"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "summary"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.ubuntu_24_04"
+       }
+      ],
+      "links": [
+       {
+        "href": "#453e8ac9-3bd7-559a-8414-34b1f305cedc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_ubuntu_24_04-summary_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego (package stig.ubuntu_24_04); see the rule body."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   }
+  ],
+  "back-matter": {
+   "resources": [
+    {
+     "uuid": "1e2e3aec-241b-54c5-94dc-76b91df671d5",
+     "title": "DISA STIG — Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.ubuntu_24_04.core"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/ubuntu_24_04/core.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "453e8ac9-3bd7-559a-8414-34b1f305cedc",
+     "title": "Ubuntu 24.04 LTS must be a vendor-supported release. — Master Aggregator",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.ubuntu_24_04"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/ubuntu_24_04/stig_ubuntu_24_04_complete.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
