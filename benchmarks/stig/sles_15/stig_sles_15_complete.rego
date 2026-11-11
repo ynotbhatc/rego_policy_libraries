@@ -1,5 +1,5 @@
 # METADATA
-# title: "DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator"
+# title: "The SUSE operating system must not allow unattended or automatic logon via SSH. — Master Aggregator"
 # custom:
 #   class: security
 #   framework: stig_sles_15
@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.sles_15
 
 # DISA STIG — SUSE Linux Enterprise Server 15 Security Technical Implementation Guide — Master Aggregator
-# V2R8 | Release: 8 Benchmark Date: 01 Jul 2026
-# Coverage: 27 of 218 rules (25 CAT I of 26); remainder is follow-up work.
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# V2R9 | Release: 9 Benchmark Date: 30 Sep 2026
+# Coverage: 27 of 220 rules (25 CAT I of 26); remainder is follow-up work.
+# Rule IDs verified against the October 2026 SRG-STIG library on 2026-11-10.
 
 import rego.v1
 
@@ -41,8 +41,8 @@ fully_compliant if count(open_findings) == 0
 stig_assessment := {
 	"metadata": {
 		"stig_title": "SUSE Linux Enterprise Server 15 Security Technical Implementation Guide",
-		"version": "V2R8",
-		"release": "Release: 8 Benchmark Date: 01 Jul 2026",
+		"version": "V2R9",
+		"release": "Release: 9 Benchmark Date: 30 Sep 2026",
 		"platform": "SUSE Linux Enterprise Server 15",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

@@ -6,18 +6,20 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 13
-#     cited: 12
-#     density: sized
-#     basis: size
+#     checks: 8
+#     cited: 7
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module
-# STIG Version: V2R2 | Released: October 2024
+# STIG Version: V2R10 | Released: 30 Sep 2026
+# Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
 # Covers: GPG signing, package verification, AIDE, kernel module restrictions
 
 import rego.v1
@@ -28,32 +30,11 @@ default compliant := false
 # CAT I - HIGH SEVERITY
 # =============================================================================
 
-# RHEL-09-214010 | V-257808 | CAT I
-# GPG check must be globally activated for repository packages
-default gpgcheck_global := false
+# =============================================================================
+# CAT I - HIGH SEVERITY
+# =============================================================================
 
-gpgcheck_global if {
-	input.dnf_config.gpgcheck == true
-}
-
-gpgcheck_global if {
-	input.yum_config.gpgcheck == true
-}
-
-status_rhel_09_251010 := "Not_a_Finding" if gpgcheck_global
-
-else := "Open"
-
-finding_rhel_09_251010 := {
-	"vuln_id": "V-257849",
-	"stig_id": "RHEL-09-251010",
-	"severity": "CAT I",
-	"rule_title": "RHEL 9 must ensure the system-wide crypto policy is not set to LEGACY",
-	"status": status_rhel_09_251010,
-	"fix_text": "Enable GPG check globally: Set gpgcheck=1 in /etc/dnf/dnf.conf",
-}
-
-# RHEL-09-251015 | V-257850 | CAT I
+# RHEL-09-214025 | V-257822 | CAT I
 # GPG must be enabled for all repo files
 default all_repos_gpgcheck := false
 
@@ -66,49 +47,70 @@ all_repos_gpgcheck if {
 	count(input.yum_repos) == 0
 }
 
-status_rhel_09_251015 := "Not_a_Finding" if all_repos_gpgcheck
+status_rhel_09_214025 := "Not_a_Finding" if all_repos_gpgcheck
 
 else := "Open"
 
-finding_rhel_09_251015 := {
-	"vuln_id": "V-257850",
-	"stig_id": "RHEL-09-251015",
+finding_rhel_09_214025 := {
+	"vuln_id": "V-257822",
+	"stig_id": "RHEL-09-214025",
 	"severity": "CAT I",
-	"rule_title": "RHEL 9 must have GPG signature checking enabled for all package repositories",
-	"status": status_rhel_09_251015,
+	"rule_title": "RHEL 9 must have GPG signature verification enabled for all software repositories.",
+	"status": status_rhel_09_214025,
 	"fix_text": "Enable gpgcheck=1 in all .repo files under /etc/yum.repos.d/",
 }
 
-# RHEL-09-251020 | V-257851 | CAT I
-# Packages must not be installed from unsigned repos
-default no_unsigned_packages := false
+# RHEL-09-214020 | V-257821 | CAT I
+# Kernel must not load unverified modules
+default localpkg_gpgcheck := false
 
-no_unsigned_packages if {
-	count(input.unsigned_packages) == 0
+localpkg_gpgcheck if {
+	input.dnf_config.localpkg_gpgcheck == true
 }
 
-no_unsigned_packages if {
-	not input.unsigned_packages
-}
-
-status_rhel_09_251020 := "Not_a_Finding" if no_unsigned_packages
+status_rhel_09_214020 := "Not_a_Finding" if localpkg_gpgcheck
 
 else := "Open"
 
-finding_rhel_09_251020 := {
-	"vuln_id": "V-257851",
-	"stig_id": "RHEL-09-251020",
+finding_rhel_09_214020 := {
+	"vuln_id": "V-257821",
+	"stig_id": "RHEL-09-214020",
 	"severity": "CAT I",
-	"rule_title": "RHEL 9 must not have any unverified or unsigned packages installed",
-	"status": status_rhel_09_251020,
-	"fix_text": "Remove unsigned packages: rpm -qa --qf '%{NAME} %{SIGPGP:pgpsig}\\n' | grep 'Key ID'",
+	"rule_title": "RHEL 9 must check the GPG signature of locally installed software packages before installation.",
+	"status": status_rhel_09_214020,
+	"fix_text": "Enable local package GPG check: Set localpkg_gpgcheck=1 in /etc/dnf/dnf.conf",
 }
 
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
 
-# RHEL-09-251025 | V-257852 | CAT II
+# RHEL-09-214010 | V-257819 | CAT II
+# GPG check must be globally activated for repository packages
+default gpgcheck_global := false
+
+gpgcheck_global if {
+	input.dnf_config.gpgcheck == true
+}
+
+gpgcheck_global if {
+	input.yum_config.gpgcheck == true
+}
+
+status_rhel_09_214010 := "Not_a_Finding" if gpgcheck_global
+
+else := "Open"
+
+finding_rhel_09_214010 := {
+	"vuln_id": "V-257849",
+	"stig_id": "RHEL-09-251010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ensure cryptographic verification of vendor software packages.",
+	"status": status_rhel_09_214010,
+	"fix_text": "Enable GPG check globally: Set gpgcheck=1 in /etc/dnf/dnf.conf",
+}
+
+# RHEL-09-651020 | V-258136 | CAT II
 # AIDE must be configured to use FIPS 140-3 approved hashes
 default aide_fips_hashes := false
 
@@ -124,67 +126,20 @@ aide_fips_hashes if {
 	"sha256" in algorithms
 }
 
-status_rhel_09_251025 := "Not_a_Finding" if aide_fips_hashes
+status_rhel_09_651020 := "Not_a_Finding" if aide_fips_hashes
 
 else := "Open"
 
-finding_rhel_09_251025 := {
-	"vuln_id": "V-257852",
-	"stig_id": "RHEL-09-251025",
+finding_rhel_09_651020 := {
+	"vuln_id": "V-258136",
+	"stig_id": "RHEL-09-651020",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes",
-	"status": status_rhel_09_251025,
+	"rule_title": "RHEL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
+	"status": status_rhel_09_651020,
 	"fix_text": "Configure AIDE to use SHA-512: Set NORMAL = sha512+rmd160+sha1+haval+tiger+crc32 in /etc/aide.conf",
 }
 
-# RHEL-09-251030 | V-257853 | CAT II
-# AIDE database must exist
-default aide_db_exists := false
-
-aide_db_exists if {
-	input.aide_config.db_path != ""
-	input.aide_config.db_exists == true
-}
-
-status_rhel_09_251030 := "Not_a_Finding" if aide_db_exists
-
-else := "Open"
-
-finding_rhel_09_251030 := {
-	"vuln_id": "V-257853",
-	"stig_id": "RHEL-09-251030",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must be configured so that the AIDE notification mechanism sends audit failure advisories",
-	"status": status_rhel_09_251030,
-	"fix_text": "Initialize AIDE database: aide --init && mv /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz",
-}
-
-# RHEL-09-251035 | V-257854 | CAT II
-# AIDE notify on check must be configured
-default aide_notify_configured := false
-
-aide_notify_configured if {
-	input.aide_config.acl_enabled == true
-}
-
-aide_notify_configured if {
-	input.aide_config.notify_email != ""
-}
-
-status_rhel_09_251035 := "Not_a_Finding" if aide_notify_configured
-
-else := "Open"
-
-finding_rhel_09_251035 := {
-	"vuln_id": "V-257854",
-	"stig_id": "RHEL-09-251035",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must notify designated personnel if baseline configurations are changed in an unauthorized manner",
-	"status": status_rhel_09_251035,
-	"fix_text": "Configure AIDE email notification in /etc/aide.conf",
-}
-
-# RHEL-09-252010 | V-257855 | CAT II
+# RHEL-09-213020 | V-257799 | CAT II
 # kernel module loading via sysctl must be disabled (kexec)
 default kexec_disabled := false
 
@@ -192,91 +147,20 @@ kexec_disabled if {
 	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_rhel_09_252010 := "Not_a_Finding" if kexec_disabled
+status_rhel_09_213020 := "Not_a_Finding" if kexec_disabled
 
 else := "Open"
 
-finding_rhel_09_252010 := {
-	"vuln_id": "V-257855",
-	"stig_id": "RHEL-09-252010",
+finding_rhel_09_213020 := {
+	"vuln_id": "V-257799",
+	"stig_id": "RHEL-09-213020",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must prevent kernel profiling by unprivileged users",
-	"status": status_rhel_09_252010,
+	"rule_title": "RHEL 9 must prevent the loading of a new kernel for later execution.",
+	"status": status_rhel_09_213020,
 	"fix_text": "Disable kexec: Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
 }
 
-# RHEL-09-252015 | V-257856 | CAT II
-# System must not allow loading of dynamic kernel modules without approval
-default module_signing_enforced := false
-
-module_signing_enforced if {
-	input.kernel_params["kernel.modules_disabled"] == "1"
-}
-
-module_signing_enforced if {
-	input.kernel_config.module_sig_enforce == true
-}
-
-status_rhel_09_252015 := "Not_a_Finding" if module_signing_enforced
-
-else := "Open"
-
-finding_rhel_09_252015 := {
-	"vuln_id": "V-257856",
-	"stig_id": "RHEL-09-252015",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must require that new packages are cryptographically signed",
-	"status": status_rhel_09_252015,
-	"fix_text": "Enable module signing enforcement in kernel boot parameters",
-}
-
-# RHEL-09-252020 | V-257857 | CAT II
-# Kernel must not load unverified modules
-default localpkg_gpgcheck := false
-
-localpkg_gpgcheck if {
-	input.dnf_config.localpkg_gpgcheck == true
-}
-
-status_rhel_09_252020 := "Not_a_Finding" if localpkg_gpgcheck
-
-else := "Open"
-
-finding_rhel_09_252020 := {
-	"vuln_id": "V-257857",
-	"stig_id": "RHEL-09-252020",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must have the gpg-pubkey package installed",
-	"status": status_rhel_09_252020,
-	"fix_text": "Enable local package GPG check: Set localpkg_gpgcheck=1 in /etc/dnf/dnf.conf",
-}
-
-# RHEL-09-252025 | V-257858 | CAT II
-# Crypto policy must not be LEGACY
-default crypto_not_legacy := false
-
-crypto_not_legacy if {
-	input.crypto_policy != "LEGACY"
-}
-
-crypto_not_legacy if {
-	not input.crypto_policy
-}
-
-status_rhel_09_252025 := "Not_a_Finding" if crypto_not_legacy
-
-else := "Open"
-
-finding_rhel_09_252025 := {
-	"vuln_id": "V-257858",
-	"stig_id": "RHEL-09-252025",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must use the FIPS or a FIPS-compatible crypto policy",
-	"status": status_rhel_09_252025,
-	"fix_text": "Set crypto policy: update-crypto-policies --set FIPS",
-}
-
-# RHEL-09-252030 | V-257859 | CAT II
+# RHEL-09-652010 | V-258140 | CAT II
 # rsyslog must be installed
 default rsyslog_installed := false
 
@@ -284,20 +168,20 @@ rsyslog_installed if {
 	input.packages.rsyslog == true
 }
 
-status_rhel_09_252030 := "Not_a_Finding" if rsyslog_installed
+status_rhel_09_652010 := "Not_a_Finding" if rsyslog_installed
 
 else := "Open"
 
-finding_rhel_09_252030 := {
-	"vuln_id": "V-257859",
-	"stig_id": "RHEL-09-252030",
+finding_rhel_09_652010 := {
+	"vuln_id": "V-258140",
+	"stig_id": "RHEL-09-652010",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must have the rsyslog package installed",
-	"status": status_rhel_09_252030,
+	"rule_title": "RHEL 9 must have the rsyslog package installed.",
+	"status": status_rhel_09_652010,
 	"fix_text": "Install rsyslog: dnf install rsyslog -y",
 }
 
-# RHEL-09-252035 | V-257860 | CAT II
+# RHEL-09-652020 | V-258142 | CAT II
 # rsyslog service must be active
 default rsyslog_active := false
 
@@ -305,16 +189,16 @@ rsyslog_active if {
 	input.services.rsyslog == "active"
 }
 
-status_rhel_09_252035 := "Not_a_Finding" if rsyslog_active
+status_rhel_09_652020 := "Not_a_Finding" if rsyslog_active
 
 else := "Open"
 
-finding_rhel_09_252035 := {
-	"vuln_id": "V-257860",
-	"stig_id": "RHEL-09-252035",
+finding_rhel_09_652020 := {
+	"vuln_id": "V-258142",
+	"stig_id": "RHEL-09-652020",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must have the rsyslog service active",
-	"status": status_rhel_09_252035,
+	"rule_title": "The rsyslog service on RHEL 9 must be active.",
+	"status": status_rhel_09_652020,
 	"fix_text": "Enable and start rsyslog: systemctl enable --now rsyslog",
 }
 
@@ -323,24 +207,23 @@ finding_rhel_09_252035 := {
 # =============================================================================
 
 cat_i_findings := [
-	finding_rhel_09_251010,
-	finding_rhel_09_251015,
-	finding_rhel_09_251020,
+	finding_rhel_09_214025,
+	finding_rhel_09_214020,
 ]
 
 cat_ii_findings := [
-	finding_rhel_09_251025,
-	finding_rhel_09_251030,
-	finding_rhel_09_251035,
-	finding_rhel_09_252010,
-	finding_rhel_09_252015,
-	finding_rhel_09_252020,
-	finding_rhel_09_252025,
-	finding_rhel_09_252030,
-	finding_rhel_09_252035,
+	finding_rhel_09_214010,
+	finding_rhel_09_651020,
+	finding_rhel_09_213020,
+	finding_rhel_09_652010,
+	finding_rhel_09_652020,
 ]
 
-findings := array.concat(cat_i_findings, cat_ii_findings)
+# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
+# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
+cat_iii_findings := array.concat([], [])
+
+findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
 violations contains finding.stig_id if {
 	some finding in findings

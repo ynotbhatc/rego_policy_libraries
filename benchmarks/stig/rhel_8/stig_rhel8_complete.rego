@@ -13,13 +13,16 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.rhel_8
 
 # DISA STIG for RHEL 8 - Master Aggregator
-# STIG Version: V1R13 | Released: July 2024
+# STIG Version: V2R8 | Released: 01 Jul 2026
 # Endpoints: POST http://localhost:8181/v1/data/stig/rhel_8/stig_assessment
 #            POST http://localhost:8181/v1/data/stig/rhel_8/main/compliance_report  (fail-closed alias)
+
+# Implemented: 53 of 369 RHEL 8 V2R8 rules, stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10.
+# The remaining 316 are tracked follow-up, not silent absence.
 
 import rego.v1
 
@@ -81,8 +84,8 @@ fully_compliant if open_count == 0
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Red Hat Enterprise Linux 8 Security Technical Implementation Guide",
-		"version": "V1R13",
-		"release_date": "2024-07-24",
+		"version": "V2R8",
+		"release_date": "2026-05-20",
 		"platform": "RHEL 8",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 		"os_version": object.get(input, ["system_info", "os_version"], "unknown"),

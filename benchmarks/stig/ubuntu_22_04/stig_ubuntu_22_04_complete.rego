@@ -1,5 +1,5 @@
 # METADATA
-# title: "DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide — Master Aggregator"
+# title: "Ubuntu 22.04 LTS must implement NIST FIPS-validated cryptography to protect classified information and for the following: To provision digital signatures, to generate cryptographic hashes, and to protect unclassified inf — Master Aggregator"
 # custom:
 #   class: security
 #   framework: stig_ubuntu_22_04
@@ -13,13 +13,13 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.ubuntu_22_04
 
 # DISA STIG — Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide — Master Aggregator
-# V2R9 | Release: 9 Benchmark Date: 01 Jul 2026
-# Coverage: 22 of 188 rules (15 CAT I of 15); remainder is follow-up work.
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# V2R10 | Release: 10 Benchmark Date: 30 Sep 2026
+# Coverage: 22 of 191 rules (15 CAT I of 16); remainder is follow-up work.
+# Rule IDs verified against the October 2026 SRG-STIG library on 2026-11-10.
 
 import rego.v1
 
@@ -41,8 +41,8 @@ fully_compliant if count(open_findings) == 0
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Canonical Ubuntu 22.04 LTS Security Technical Implementation Guide",
-		"version": "V2R9",
-		"release": "Release: 9 Benchmark Date: 01 Jul 2026",
+		"version": "V2R10",
+		"release": "Release: 10 Benchmark Date: 30 Sep 2026",
 		"platform": "Canonical Ubuntu 22.04 LTS",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

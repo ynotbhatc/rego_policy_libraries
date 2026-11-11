@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.1
+#     as_of: v2.4.2
 package stig.ms_sql_2016.core
 
 # DISA STIG — MS SQL Server 2016 Instance Security Technical Implementation Guide
