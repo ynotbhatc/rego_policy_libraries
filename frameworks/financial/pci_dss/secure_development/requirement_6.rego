@@ -209,24 +209,43 @@ software_composition_analysis if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default secure_development_policies_established := false
+
 default secure_development_roles_defined := false
+
 default secure_sdlc_implemented := false
+
 default developer_security_training := false
+
 default preproduction_security_testing := false
+
 default bespoke_code_review := false
+
 default injection_attacks_prevented := false
+
 default xss_attacks_prevented := false
+
 default authentication_attacks_prevented := false
+
 default memory_corruption_prevented := false
+
 default automated_attack_detection := false
+
 default insecure_cryptography_prevented := false
+
 default security_patch_management := false
+
 default vulnerability_identification := false
+
 default software_inventory_maintained := false
+
 default waf_implemented := false
+
 default web_app_pen_testing := false
+
 default sast_dast_implemented := false
+
 default software_composition_analysis := false
+
 default pci_requirement_6_compliant := false
 
 # =================================================================
@@ -255,6 +274,7 @@ pci_requirement_6_compliant if {
 }
 
 default pci_requirement_6_score := 0
+
 default pci_requirement_6_findings := {}
 
 pci_requirement_6_score := score if {

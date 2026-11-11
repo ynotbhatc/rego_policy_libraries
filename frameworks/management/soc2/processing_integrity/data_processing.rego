@@ -29,29 +29,29 @@ import rego.v1
 default input_validation_implemented := false
 
 input_validation_implemented if {
-    input.data_processing.input_validation.enabled == true
-    input.data_processing.input_validation.data_type_checking == true
-    input.data_processing.input_validation.range_checking == true
-    input.data_processing.input_validation.format_validation == true
+	input.data_processing.input_validation.enabled == true
+	input.data_processing.input_validation.data_type_checking == true
+	input.data_processing.input_validation.range_checking == true
+	input.data_processing.input_validation.format_validation == true
 }
 
 # Data integrity checks are performed
 default data_integrity_checks_active := false
 
 data_integrity_checks_active if {
-    input.data_processing.integrity_checks.checksums.enabled == true
-    input.data_processing.integrity_checks.digital_signatures.enabled == true
-    input.data_processing.integrity_checks.hash_verification == true
+	input.data_processing.integrity_checks.checksums.enabled == true
+	input.data_processing.integrity_checks.digital_signatures.enabled == true
+	input.data_processing.integrity_checks.hash_verification == true
 }
 
 # Error handling and logging is comprehensive
 default error_handling_comprehensive := false
 
 error_handling_comprehensive if {
-    input.data_processing.error_handling.logging.enabled == true
-    input.data_processing.error_handling.logging.detailed == true
-    input.data_processing.error_handling.alerts.configured == true
-    input.data_processing.error_handling.recovery_procedures.documented == true
+	input.data_processing.error_handling.logging.enabled == true
+	input.data_processing.error_handling.logging.detailed == true
+	input.data_processing.error_handling.alerts.configured == true
+	input.data_processing.error_handling.recovery_procedures.documented == true
 }
 
 # =================================================================
@@ -62,27 +62,27 @@ error_handling_comprehensive if {
 default processing_authorization_required := false
 
 processing_authorization_required if {
-    input.data_processing.authorization.required == true
-    input.data_processing.authorization.approval_workflow == true
-    input.data_processing.authorization.audit_trail == true
+	input.data_processing.authorization.required == true
+	input.data_processing.authorization.approval_workflow == true
+	input.data_processing.authorization.audit_trail == true
 }
 
 # System access for processing is controlled
 default processing_access_controlled := false
 
 processing_access_controlled if {
-    input.data_processing.access_controls.role_based == true
-    input.data_processing.access_controls.least_privilege == true
-    input.data_processing.access_controls.regular_reviews == true
+	input.data_processing.access_controls.role_based == true
+	input.data_processing.access_controls.least_privilege == true
+	input.data_processing.access_controls.regular_reviews == true
 }
 
 # Processing activities are monitored
 default processing_activities_monitored := false
 
 processing_activities_monitored if {
-    input.data_processing.monitoring.real_time == true
-    input.data_processing.monitoring.anomaly_detection == true
-    input.data_processing.monitoring.threshold_alerts == true
+	input.data_processing.monitoring.real_time == true
+	input.data_processing.monitoring.anomaly_detection == true
+	input.data_processing.monitoring.threshold_alerts == true
 }
 
 # =================================================================
@@ -93,28 +93,28 @@ processing_activities_monitored if {
 default transaction_completeness_verified := false
 
 transaction_completeness_verified if {
-    input.data_processing.transactions.sequence_checking == true
-    input.data_processing.transactions.batch_totals == true
-    input.data_processing.transactions.reconciliation.enabled == true
-    input.data_processing.transactions.reconciliation.frequency_hours <= 24
+	input.data_processing.transactions.sequence_checking == true
+	input.data_processing.transactions.batch_totals == true
+	input.data_processing.transactions.reconciliation.enabled == true
+	input.data_processing.transactions.reconciliation.frequency_hours <= 24
 }
 
 # Data transmission integrity is maintained
 default data_transmission_integrity := false
 
 data_transmission_integrity if {
-    input.data_processing.transmission.encryption_in_transit == true
-    input.data_processing.transmission.message_authentication == true
-    input.data_processing.transmission.delivery_confirmation == true
+	input.data_processing.transmission.encryption_in_transit == true
+	input.data_processing.transmission.message_authentication == true
+	input.data_processing.transmission.delivery_confirmation == true
 }
 
 # Processing queues are monitored
 default processing_queues_monitored := false
 
 processing_queues_monitored if {
-    input.data_processing.queues.monitoring.enabled == true
-    input.data_processing.queues.dead_letter_handling == true
-    input.data_processing.queues.retention_policies.defined == true
+	input.data_processing.queues.monitoring.enabled == true
+	input.data_processing.queues.dead_letter_handling == true
+	input.data_processing.queues.retention_policies.defined == true
 }
 
 # =================================================================
@@ -125,29 +125,29 @@ processing_queues_monitored if {
 default container_workload_integrity := false
 
 container_workload_integrity if {
-    input.openshift.workloads.image_verification.enabled == true
-    input.openshift.workloads.admission_controllers.configured == true
-    input.openshift.workloads.security_policies.enforced == true
+	input.openshift.workloads.image_verification.enabled == true
+	input.openshift.workloads.admission_controllers.configured == true
+	input.openshift.workloads.security_policies.enforced == true
 }
 
 # Data processing pipelines are secured
 default data_pipelines_secured := false
 
 data_pipelines_secured if {
-    input.openshift.pipelines.rbac_enabled == true
-    input.openshift.pipelines.secrets_management.enabled == true
-    input.openshift.pipelines.audit_logging == true
-    input.openshift.pipelines.approval_gates.required == true
+	input.openshift.pipelines.rbac_enabled == true
+	input.openshift.pipelines.secrets_management.enabled == true
+	input.openshift.pipelines.audit_logging == true
+	input.openshift.pipelines.approval_gates.required == true
 }
 
 # Service mesh integrity controls
 default service_mesh_integrity := false
 
 service_mesh_integrity if {
-    input.openshift.service_mesh.enabled == true
-    input.openshift.service_mesh.mtls_enabled == true
-    input.openshift.service_mesh.traffic_policies.enforced == true
-    input.openshift.service_mesh.observability.enabled == true
+	input.openshift.service_mesh.enabled == true
+	input.openshift.service_mesh.mtls_enabled == true
+	input.openshift.service_mesh.traffic_policies.enforced == true
+	input.openshift.service_mesh.observability.enabled == true
 }
 
 # =================================================================
@@ -158,30 +158,30 @@ service_mesh_integrity if {
 default api_integrity_controls := false
 
 api_integrity_controls if {
-    input.applications.apis.input_validation == true
-    input.applications.apis.rate_limiting == true
-    input.applications.apis.authentication_required == true
-    input.applications.apis.response_validation == true
+	input.applications.apis.input_validation == true
+	input.applications.apis.rate_limiting == true
+	input.applications.apis.authentication_required == true
+	input.applications.apis.response_validation == true
 }
 
 # Database transaction integrity
 default database_transaction_integrity := false
 
 database_transaction_integrity if {
-    input.databases.transactions.acid_compliance == true
-    input.databases.transactions.rollback_capability == true
-    input.databases.transactions.deadlock_detection == true
-    input.databases.integrity_constraints.enforced == true
+	input.databases.transactions.acid_compliance == true
+	input.databases.transactions.rollback_capability == true
+	input.databases.transactions.deadlock_detection == true
+	input.databases.integrity_constraints.enforced == true
 }
 
 # Message processing integrity
 default message_processing_integrity := false
 
 message_processing_integrity if {
-    input.messaging.exactly_once_delivery.enabled == true
-    input.messaging.message_ordering.maintained == true
-    input.messaging.duplicate_detection.enabled == true
-    input.messaging.poison_message_handling == true
+	input.messaging.exactly_once_delivery.enabled == true
+	input.messaging.message_ordering.maintained == true
+	input.messaging.duplicate_detection.enabled == true
+	input.messaging.poison_message_handling == true
 }
 
 # =================================================================
@@ -192,19 +192,19 @@ message_processing_integrity if {
 default data_quality_checks_active := false
 
 data_quality_checks_active if {
-    input.data_quality.completeness_checks == true
-    input.data_quality.consistency_checks == true
-    input.data_quality.accuracy_validation == true
-    input.data_quality.timeliness_validation == true
+	input.data_quality.completeness_checks == true
+	input.data_quality.consistency_checks == true
+	input.data_quality.accuracy_validation == true
+	input.data_quality.timeliness_validation == true
 }
 
 # Data lineage is tracked
 default data_lineage_tracked := false
 
 data_lineage_tracked if {
-    input.data_lineage.tracking.enabled == true
-    input.data_lineage.transformation_logging == true
-    input.data_lineage.source_attribution == true
+	input.data_lineage.tracking.enabled == true
+	input.data_lineage.transformation_logging == true
+	input.data_lineage.source_attribution == true
 }
 
 # =================================================================
@@ -214,47 +214,47 @@ data_lineage_tracked if {
 default processing_integrity_controls_compliant := false
 
 processing_integrity_controls_compliant if {
-    input_validation_implemented
-    data_integrity_checks_active
-    error_handling_comprehensive
-    processing_authorization_required
-    processing_access_controlled
-    processing_activities_monitored
-    transaction_completeness_verified
-    data_transmission_integrity
-    processing_queues_monitored
+	input_validation_implemented
+	data_integrity_checks_active
+	error_handling_comprehensive
+	processing_authorization_required
+	processing_access_controlled
+	processing_activities_monitored
+	transaction_completeness_verified
+	data_transmission_integrity
+	processing_queues_monitored
 }
 
 default openshift_processing_compliant := false
 
 openshift_processing_compliant if {
-    container_workload_integrity
-    data_pipelines_secured
-    service_mesh_integrity
+	container_workload_integrity
+	data_pipelines_secured
+	service_mesh_integrity
 }
 
 default application_controls_compliant := false
 
 application_controls_compliant if {
-    api_integrity_controls
-    database_transaction_integrity
-    message_processing_integrity
+	api_integrity_controls
+	database_transaction_integrity
+	message_processing_integrity
 }
 
 default data_quality_compliant := false
 
 data_quality_compliant if {
-    data_quality_checks_active
-    data_lineage_tracked
+	data_quality_checks_active
+	data_lineage_tracked
 }
 
 default overall_processing_integrity_compliant := false
 
 overall_processing_integrity_compliant if {
-    processing_integrity_controls_compliant
-    openshift_processing_compliant
-    application_controls_compliant
-    data_quality_compliant
+	processing_integrity_controls_compliant
+	openshift_processing_compliant
+	application_controls_compliant
+	data_quality_compliant
 }
 
 # =================================================================
@@ -262,29 +262,29 @@ overall_processing_integrity_compliant if {
 # =================================================================
 
 processing_integrity_score := score if {
-    controls := [
-        input_validation_implemented,
-        data_integrity_checks_active,
-        error_handling_comprehensive,
-        processing_authorization_required,
-        processing_access_controlled,
-        processing_activities_monitored,
-        transaction_completeness_verified,
-        data_transmission_integrity,
-        processing_queues_monitored,
-        container_workload_integrity,
-        data_pipelines_secured,
-        service_mesh_integrity,
-        api_integrity_controls,
-        database_transaction_integrity,
-        message_processing_integrity,
-        data_quality_checks_active,
-        data_lineage_tracked
-    ]
-    
-    passed := count([control | control := controls[_]; control == true])
-    total := count(controls)
-    score := (passed / total) * 100
+	controls := [
+		input_validation_implemented,
+		data_integrity_checks_active,
+		error_handling_comprehensive,
+		processing_authorization_required,
+		processing_access_controlled,
+		processing_activities_monitored,
+		transaction_completeness_verified,
+		data_transmission_integrity,
+		processing_queues_monitored,
+		container_workload_integrity,
+		data_pipelines_secured,
+		service_mesh_integrity,
+		api_integrity_controls,
+		database_transaction_integrity,
+		message_processing_integrity,
+		data_quality_checks_active,
+		data_lineage_tracked,
+	]
+
+	passed := count([control | control := controls[_]; control == true])
+	total := count(controls)
+	score := (passed / total) * 100
 }
 
 # =================================================================
@@ -292,24 +292,24 @@ processing_integrity_score := score if {
 # =================================================================
 
 processing_integrity_findings := findings if {
-    findings := {
-        "input_validation_implemented": input_validation_implemented,
-        "data_integrity_checks_active": data_integrity_checks_active,
-        "error_handling_comprehensive": error_handling_comprehensive,
-        "processing_authorization_required": processing_authorization_required,
-        "processing_access_controlled": processing_access_controlled,
-        "processing_activities_monitored": processing_activities_monitored,
-        "transaction_completeness_verified": transaction_completeness_verified,
-        "data_transmission_integrity": data_transmission_integrity,
-        "processing_queues_monitored": processing_queues_monitored,
-        "container_workload_integrity": container_workload_integrity,
-        "data_pipelines_secured": data_pipelines_secured,
-        "service_mesh_integrity": service_mesh_integrity,
-        "api_integrity_controls": api_integrity_controls,
-        "database_transaction_integrity": database_transaction_integrity,
-        "message_processing_integrity": message_processing_integrity,
-        "data_quality_checks_active": data_quality_checks_active,
-        "data_lineage_tracked": data_lineage_tracked,
-        "overall_score": processing_integrity_score
-    }
+	findings := {
+		"input_validation_implemented": input_validation_implemented,
+		"data_integrity_checks_active": data_integrity_checks_active,
+		"error_handling_comprehensive": error_handling_comprehensive,
+		"processing_authorization_required": processing_authorization_required,
+		"processing_access_controlled": processing_access_controlled,
+		"processing_activities_monitored": processing_activities_monitored,
+		"transaction_completeness_verified": transaction_completeness_verified,
+		"data_transmission_integrity": data_transmission_integrity,
+		"processing_queues_monitored": processing_queues_monitored,
+		"container_workload_integrity": container_workload_integrity,
+		"data_pipelines_secured": data_pipelines_secured,
+		"service_mesh_integrity": service_mesh_integrity,
+		"api_integrity_controls": api_integrity_controls,
+		"database_transaction_integrity": database_transaction_integrity,
+		"message_processing_integrity": message_processing_integrity,
+		"data_quality_checks_active": data_quality_checks_active,
+		"data_lineage_tracked": data_lineage_tracked,
+		"overall_score": processing_integrity_score,
+	}
 }

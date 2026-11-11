@@ -417,6 +417,9 @@ report := {
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
 default foreign_access_request_policy := false
+
 default pam_deployed := false
+
 default privileged_access_review_current := false
+
 default remote_operations_controlled := false

@@ -42,7 +42,7 @@ violations := [v |
 		connection_ssl_violations,
 		postgresql_settings_violations,
 		replication_violations,
-		special_requirements_violations
+		special_requirements_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -58,37 +58,37 @@ compliance_report := {
 	"sections": {
 		"installation": {
 			"violations": count(installation_violations),
-			"controls": 12
+			"controls": 12,
 		},
 		"directory_file_permissions": {
 			"violations": count(directory_file_permissions_violations),
-			"controls": 18
+			"controls": 18,
 		},
 		"logging": {
 			"violations": count(logging_violations),
-			"controls": 24
+			"controls": 24,
 		},
 		"user_access": {
 			"violations": count(user_access_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"connection_ssl": {
 			"violations": count(connection_ssl_violations),
-			"controls": 22
+			"controls": 22,
 		},
 		"postgresql_settings": {
 			"violations": count(postgresql_settings_violations),
-			"controls": 38
+			"controls": 38,
 		},
 		"replication": {
 			"violations": count(replication_violations),
-			"controls": 14
+			"controls": 14,
 		},
 		"special_requirements": {
 			"violations": count(special_requirements_violations),
-			"controls": 8
-		}
-	}
+			"controls": 8,
+		},
+	},
 }
 
 # Section 1: Installation and Patches
@@ -105,7 +105,7 @@ installation_violations := [v |
 		["1.9: PostgreSQL backup and recovery procedures must be in place" | not backup_recovery_procedures],
 		["1.10: PostgreSQL monitoring must be explicitly configured" | not monitoring_configured],
 		["1.11: PostgreSQL timezone must match the approved value" | not timezone_set_appropriately],
-		["1.12: PostgreSQL locale settings must be explicitly configured" | not locale_settings_configured]
+		["1.12: PostgreSQL locale settings must be explicitly configured" | not locale_settings_configured],
 	]
 	v := arrays[_][_]
 ]
@@ -210,7 +210,7 @@ directory_file_permissions_violations := [v |
 		["2.15: pgpass files must have appropriate permissions" | not pgpass_file_permissions],
 		["2.16: service files must have appropriate permissions" | not service_file_permissions],
 		["2.17: script files must have appropriate permissions" | not script_file_permissions],
-		["2.18: extension files must have appropriate permissions" | not extension_file_permissions]
+		["2.18: extension files must have appropriate permissions" | not extension_file_permissions],
 	]
 	v := arrays[_][_]
 ]
@@ -365,7 +365,7 @@ logging_violations := [v |
 		["3.21: 'pgaudit.log' must match the approved value" | not pgaudit_log_correct],
 		["3.22: 'pgaudit.log_catalog' must be turned on" | not pgaudit_log_catalog_enabled],
 		["3.23: 'pgaudit.log_parameter' must be turned on" | not pgaudit_log_parameter_enabled],
-		["3.24: 'pgaudit.log_level' must match the approved value" | not pgaudit_log_level_correct]
+		["3.24: 'pgaudit.log_level' must match the approved value" | not pgaudit_log_level_correct],
 	]
 	v := arrays[_][_]
 ]
@@ -555,7 +555,7 @@ user_access_violations := [v |
 		["4.25: foreign data wrapper access must be controlled" | not fdw_access_controlled],
 		["4.26: language usage must be controlled" | not language_usage_controlled],
 		["4.27: large object access must be controlled" | not large_object_access_controlled],
-		["4.28: tablespace usage must be controlled" | not tablespace_usage_controlled]
+		["4.28: tablespace usage must be controlled" | not tablespace_usage_controlled],
 	]
 	v := arrays[_][_]
 ]
@@ -577,8 +577,10 @@ excessive_admin_privileges_revoked if {
 excessive_function_privileges_revoked if {
 	functions := input.postgresql.functions
 	public_functions := [f | f := functions[_]; "public" in f.execute_privileges]
-	dangerous_public_functions := [f | f := public_functions[_]; 
-		f.language in ["plpgsql", "c", "internal"]]
+	dangerous_public_functions := [f |
+		f := public_functions[_]
+		f.language in ["plpgsql", "c", "internal"]
+	]
 	count(dangerous_public_functions) == 0
 }
 
@@ -607,6 +609,7 @@ database_names_appropriate if {
 	databases := input.postgresql.databases
 	default_names := ["postgres", "template0", "template1"]
 	user_databases := [db | db := databases[_]; not db.name in default_names]
+
 	# whole name tokens only: "product_catalog" or "latest_orders" are not environment names
 	prod_names := [db | db := user_databases[_]; name_has_token(db.name, {"prod", "production"})]
 	test_names := [db | db := user_databases[_]; name_has_token(db.name, {"test"})]
@@ -628,17 +631,23 @@ version_not_identifiable if {
 
 role_based_auth_configured if {
 	auth_config := input.postgresql.authentication
-	role_based_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.auth_method in ["md5", "scram-sha-256"]]
+	role_based_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.auth_method in ["md5", "scram-sha-256"]
+	]
 	count(role_based_entries) > 0
 }
 
 password_auth_local_required if {
 	auth_config := input.postgresql.authentication
-	local_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.connection_type == "local"]
-	password_local_entries := [entry | entry := local_entries[_]; 
-		entry.auth_method in ["md5", "scram-sha-256"]]
+	local_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.connection_type == "local"
+	]
+	password_local_entries := [entry |
+		entry := local_entries[_]
+		entry.auth_method in ["md5", "scram-sha-256"]
+	]
 	count(password_local_entries) == count(local_entries)
 }
 
@@ -781,27 +790,35 @@ connection_ssl_violations := [v |
 		["5.19: client authentication must match the approved configuration" | not client_auth_configured],
 		["5.20: trust authentication must be not used" | not trust_auth_not_used],
 		["5.21: peer authentication must be used appropriately" | not peer_auth_appropriate],
-		["5.22: certificate authentication must be explicitly configured for appropriate connections" | not cert_auth_configured]
+		["5.22: certificate authentication must be explicitly configured for appropriate connections" | not cert_auth_configured],
 	]
 	v := arrays[_][_]
 ]
 
 local_socket_configured if {
 	auth_config := input.postgresql.authentication
-	local_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.connection_type == "local"]
+	local_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.connection_type == "local"
+	]
 	count(local_entries) > 0
-	appropriate_local := [entry | entry := local_entries[_]; 
-		entry.auth_method in ["peer", "md5", "scram-sha-256"]]
+	appropriate_local := [entry |
+		entry := local_entries[_]
+		entry.auth_method in ["peer", "md5", "scram-sha-256"]
+	]
 	count(appropriate_local) == count(local_entries)
 }
 
 host_tcp_configured if {
 	auth_config := input.postgresql.authentication
-	host_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.connection_type == "host"]
-	ssl_required_entries := [entry | entry := host_entries[_]; 
-		entry.ssl_required == true]
+	host_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.connection_type == "host"
+	]
+	ssl_required_entries := [entry |
+		entry := host_entries[_]
+		entry.ssl_required == true
+	]
 	count(ssl_required_entries) == count(host_entries)
 }
 
@@ -871,10 +888,14 @@ database_connection_restricted if {
 
 ip_address_restrictions_configured if {
 	auth_config := input.postgresql.authentication
-	host_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.connection_type == "host"]
-	wildcard_entries := [entry | entry := host_entries[_]; 
-		entry.address in ["0.0.0.0/0", "::/0", "all"]]
+	host_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.connection_type == "host"
+	]
+	wildcard_entries := [entry |
+		entry := host_entries[_]
+		entry.address in ["0.0.0.0/0", "::/0", "all"]
+	]
 	count(wildcard_entries) == 0
 }
 
@@ -911,33 +932,45 @@ connection_encryption_required if {
 
 client_auth_configured if {
 	auth_config := input.postgresql.authentication
-	strong_auth_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.auth_method in ["scram-sha-256", "cert", "ldap", "radius"]]
+	strong_auth_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.auth_method in ["scram-sha-256", "cert", "ldap", "radius"]
+	]
 	count(strong_auth_entries) > 0
 }
 
 trust_auth_not_used if {
 	auth_config := input.postgresql.authentication
-	trust_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.auth_method == "trust"]
+	trust_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.auth_method == "trust"
+	]
 	count(trust_entries) == 0
 }
 
 peer_auth_appropriate if {
 	auth_config := input.postgresql.authentication
-	peer_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.auth_method == "peer"]
-	local_peer_entries := [entry | entry := peer_entries[_]; 
-		entry.connection_type == "local"]
+	peer_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.auth_method == "peer"
+	]
+	local_peer_entries := [entry |
+		entry := peer_entries[_]
+		entry.connection_type == "local"
+	]
 	count(local_peer_entries) == count(peer_entries)
 }
 
 cert_auth_configured if {
 	auth_config := input.postgresql.authentication
-	cert_entries := [entry | entry := auth_config.pg_hba_entries[_]; 
-		entry.auth_method == "cert"]
-	ssl_cert_entries := [entry | entry := cert_entries[_]; 
-		entry.ssl_required == true]
+	cert_entries := [entry |
+		entry := auth_config.pg_hba_entries[_]
+		entry.auth_method == "cert"
+	]
+	ssl_cert_entries := [entry |
+		entry := cert_entries[_]
+		entry.ssl_required == true
+	]
 	count(ssl_cert_entries) == count(cert_entries)
 }
 
@@ -981,7 +1014,7 @@ postgresql_settings_violations := [v |
 		["6.35: 'cpu_operator_cost' must match the approved value" | not cpu_operator_cost_configured],
 		["6.36: 'vacuum_cost_delay' must match the approved configuration" | not vacuum_cost_delay_configured],
 		["6.37: 'autovacuum' must be turned on" | not autovacuum_enabled],
-		["6.38: 'track_counts' must be turned on" | not track_counts_enabled]
+		["6.38: 'track_counts' must be turned on" | not track_counts_enabled],
 	]
 	v := arrays[_][_]
 ]
@@ -1245,7 +1278,7 @@ replication_violations := [v |
 		["7.11: failover procedures must be documented and tested" | not failover_procedures_tested],
 		["7.12: point-in-time recovery must be explicitly configured" | not point_in_time_recovery_configured],
 		["7.13: backup encryption must be explicitly configured" | not backup_encryption_configured],
-		["7.14: backup retention policy must be enforced" | not backup_retention_enforced]
+		["7.14: backup retention policy must be enforced" | not backup_retention_enforced],
 	]
 	v := arrays[_][_]
 ]
@@ -1279,10 +1312,12 @@ streaming_replication_secure if {
 
 replication_users_secured if {
 	replication_users := input.postgresql.replication_users
-	secured_users := [u | u := replication_users[_]; 
-		u.password_authentication == true;
-		u.ssl_required == true;
-		u.limited_privileges == true]
+	secured_users := [u |
+		u := replication_users[_]
+		u.password_authentication == true
+		u.ssl_required == true
+		u.limited_privileges == true
+	]
 	count(secured_users) == count(replication_users)
 }
 
@@ -1358,7 +1393,7 @@ special_requirements_violations := [v |
 		["8.5: checked condition — PostgreSQL processes run with minimal privileges" | not processes_minimal_privileges],
 		["8.6: resource limits must be explicitly configured" | not resource_limits_configured],
 		["8.7: security monitoring must be implemented" | not security_monitoring_implemented],
-		["8.8: compliance requirements must be met" | not compliance_requirements_met]
+		["8.8: compliance requirements must be met" | not compliance_requirements_met],
 	]
 	v := arrays[_][_]
 ]

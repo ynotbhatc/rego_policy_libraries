@@ -206,7 +206,6 @@ ms_le(parts, i, _) if count(parts) <= i
 
 ms_le(parts, i, lim) if num(parts[i]) <= lim
 
-
 # {mode, pw_name, gr_name}: within max, root:root
 perm_ok(f, max) if {
 	mode_within(f.mode, max)

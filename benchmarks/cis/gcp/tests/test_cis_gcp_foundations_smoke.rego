@@ -9,4 +9,3 @@ test_cis_gcp_foundations_loads_on_empty_input if {
 	m := data.cis_gcp_foundations with input as {}
 	is_object(m)
 }
-

@@ -37,178 +37,178 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 
 # Helper to check if pwquality is configured
 pwquality_configured if {
-    input.pam.pwquality_installed
+	input.pam.pwquality_installed
 }
 
 # Helper to parse pwquality.conf
 pwquality_config := {key: value |
-    some line in split(input.pam.pwquality_conf_raw, "\n")
-    trimmed := trim_space(line)
-    not startswith(trimmed, "#")
-    trimmed != ""
-    parts := regex.split(`\s*=\s*`, trimmed)
-    count(parts) == 2
-    key := trim_space(parts[0])
-    value := trim_space(parts[1])
+	some line in split(input.pam.pwquality_conf_raw, "\n")
+	trimmed := trim_space(line)
+	not startswith(trimmed, "#")
+	trimmed != ""
+	parts := regex.split(`\s*=\s*`, trimmed)
+	count(parts) == 2
+	key := trim_space(parts[0])
+	value := trim_space(parts[1])
 }
 
 # Helper to check PAM files
 # Active (non-blank, non-comment) lines of a PAM file; commented-out directives never count.
 pam_active_lines(filename) := [trimmed |
-    some line in split(input.pam[filename], "\n")
-    trimmed := trim_space(line)
-    trimmed != ""
-    not startswith(trimmed, "#")
+	some line in split(input.pam[filename], "\n")
+	trimmed := trim_space(line)
+	trimmed != ""
+	not startswith(trimmed, "#")
 ]
 
 check_pam_file(filename, pattern) if {
-    some line in pam_active_lines(filename)
-    contains(line, pattern)
+	some line in pam_active_lines(filename)
+	contains(line, pattern)
 }
 
 violations contains msg if {
-    not pwquality_configured
-    msg := "CIS 5.4.1: pwquality package not installed"
+	not pwquality_configured
+	msg := "CIS 5.4.1: pwquality package not installed"
 }
 
 # CIS 5.4.1: password creation requirements must be explicitly configured
 violations contains msg if {
-    pwquality_configured
-    not pwquality_config.minlen
-    msg := "CIS 5.4.1.1: Password minimum length not configured in pwquality.conf"
+	pwquality_configured
+	not pwquality_config.minlen
+	msg := "CIS 5.4.1.1: Password minimum length not configured in pwquality.conf"
 }
 
 violations contains msg if {
-    pwquality_configured
-    pwquality_config.minlen
-    to_number(pwquality_config.minlen) < 14
-    msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be 14 or more", [pwquality_config.minlen])
+	pwquality_configured
+	pwquality_config.minlen
+	to_number(pwquality_config.minlen) < 14
+	msg := sprintf("CIS 5.4.1.1: Password minimum length is %s, should be 14 or more", [pwquality_config.minlen])
 }
 
 violations contains msg if {
-    pwquality_configured
-    not pwquality_config.minclass
-    not pwquality_config.dcredit
-    not pwquality_config.ucredit
-    not pwquality_config.lcredit
-    not pwquality_config.ocredit
-    msg := "CIS 5.4.1.2: Password complexity requirements not configured"
+	pwquality_configured
+	not pwquality_config.minclass
+	not pwquality_config.dcredit
+	not pwquality_config.ucredit
+	not pwquality_config.lcredit
+	not pwquality_config.ocredit
+	msg := "CIS 5.4.1.2: Password complexity requirements not configured"
 }
 
 violations contains msg if {
-    pwquality_configured
-    pwquality_config.minclass
-    to_number(pwquality_config.minclass) < 4
-    msg := sprintf("CIS 5.4.1.2: Password minclass is %s, should be 4", [pwquality_config.minclass])
+	pwquality_configured
+	pwquality_config.minclass
+	to_number(pwquality_config.minclass) < 4
+	msg := sprintf("CIS 5.4.1.2: Password minclass is %s, should be 4", [pwquality_config.minclass])
 }
 
 # CIS 5.4.2: lockout for failed password attempts must be explicitly configured
 violations contains msg if {
-    not check_pam_file("system_auth", "pam_faillock.so")
-    not check_pam_file("password_auth", "pam_faillock.so")
-    msg := "CIS 5.4.2: pam_faillock not configured in PAM"
+	not check_pam_file("system_auth", "pam_faillock.so")
+	not check_pam_file("password_auth", "pam_faillock.so")
+	msg := "CIS 5.4.2: pam_faillock not configured in PAM"
 }
 
 violations contains msg if {
-    check_pam_file("system_auth", "pam_faillock.so")
-    not check_pam_file("system_auth", "deny=")
-    msg := "CIS 5.4.2: Account lockout threshold (deny) not configured"
+	check_pam_file("system_auth", "pam_faillock.so")
+	not check_pam_file("system_auth", "deny=")
+	msg := "CIS 5.4.2: Account lockout threshold (deny) not configured"
 }
 
 violations contains msg if {
-    check_pam_file("system_auth", "pam_faillock.so")
-    not check_pam_file("system_auth", "unlock_time=")
-    msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
+	check_pam_file("system_auth", "pam_faillock.so")
+	not check_pam_file("system_auth", "unlock_time=")
+	msg := "CIS 5.4.2: Account lockout time (unlock_time) not configured"
 }
 
 # CIS 5.4.3: password reuse must be limited to named principals
 violations contains msg if {
-    not check_pam_file("system_auth", "remember=")
-    not check_pam_file("password_auth", "remember=")
-    msg := "CIS 5.4.3: Password reuse limitation not configured (remember parameter missing)"
+	not check_pam_file("system_auth", "remember=")
+	not check_pam_file("password_auth", "remember=")
+	msg := "CIS 5.4.3: Password reuse limitation not configured (remember parameter missing)"
 }
 
 violations contains msg if {
-    check_pam_file("system_auth", "remember=")
-    system_auth_line := [line |
-        some line in pam_active_lines("system_auth")
-        contains(line, "remember=")
-    ][0]
-    remember_match := regex.find_n(`remember=(\d+)`, system_auth_line, 1)
-    count(remember_match) > 0
-    remember_value := to_number(regex.find_n(`\d+`, remember_match[0], 1)[0])
-    remember_value < 5
-    msg := sprintf("CIS 5.4.3: Password remember value is %d, should be 5 or more", [remember_value])
+	check_pam_file("system_auth", "remember=")
+	system_auth_line := [line |
+		some line in pam_active_lines("system_auth")
+		contains(line, "remember=")
+	][0]
+	remember_match := regex.find_n(`remember=(\d+)`, system_auth_line, 1)
+	count(remember_match) > 0
+	remember_value := to_number(regex.find_n(`\d+`, remember_match[0], 1)[0])
+	remember_value < 5
+	msg := sprintf("CIS 5.4.3: Password remember value is %d, should be 5 or more", [remember_value])
 }
 
 # CIS 5.4.4: password hashing algorithm must be SHA-512 or yescrypt
 violations contains msg if {
-    not check_pam_file("system_auth", "sha512")
-    not check_pam_file("system_auth", "yescrypt")
-    not check_pam_file("password_auth", "sha512")
-    not check_pam_file("password_auth", "yescrypt")
-    msg := "CIS 5.4.4: Password hashing algorithm not set to SHA-512 or yescrypt"
+	not check_pam_file("system_auth", "sha512")
+	not check_pam_file("system_auth", "yescrypt")
+	not check_pam_file("password_auth", "sha512")
+	not check_pam_file("password_auth", "yescrypt")
+	msg := "CIS 5.4.4: Password hashing algorithm not set to SHA-512 or yescrypt"
 }
 
 # CIS 5.5: User Accounts and Environment
 
 # CIS 5.5.1: minimum days between password changes must be explicitly configured
 violations contains msg if {
-    input.pam.pass_min_days
-    to_number(input.pam.pass_min_days) < 1
-    msg := sprintf("CIS 5.5.1.1: PASS_MIN_DAYS is %s, should be 1 or more", [input.pam.pass_min_days])
+	input.pam.pass_min_days
+	to_number(input.pam.pass_min_days) < 1
+	msg := sprintf("CIS 5.5.1.1: PASS_MIN_DAYS is %s, should be 1 or more", [input.pam.pass_min_days])
 }
 
 # CIS 5.5.2: password expiration must be 365 days or less
 violations contains msg if {
-    input.pam.pass_max_days
-    to_number(input.pam.pass_max_days) > 365
-    msg := sprintf("CIS 5.5.1.2: PASS_MAX_DAYS is %s, should be 365 or less", [input.pam.pass_max_days])
+	input.pam.pass_max_days
+	to_number(input.pam.pass_max_days) > 365
+	msg := sprintf("CIS 5.5.1.2: PASS_MAX_DAYS is %s, should be 365 or less", [input.pam.pass_max_days])
 }
 
 # CIS 5.5.3: password expiration warning days must be 7 or more
 violations contains msg if {
-    input.pam.pass_warn_age
-    to_number(input.pam.pass_warn_age) < 7
-    msg := sprintf("CIS 5.5.1.3: PASS_WARN_AGE is %s, should be 7 or more", [input.pam.pass_warn_age])
+	input.pam.pass_warn_age
+	to_number(input.pam.pass_warn_age) < 7
+	msg := sprintf("CIS 5.5.1.3: PASS_WARN_AGE is %s, should be 7 or more", [input.pam.pass_warn_age])
 }
 
 # CIS 5.5.4: inactive password lock must be 30 days or less
 violations contains msg if {
-    input.pam.inactive_days
-    to_number(input.pam.inactive_days) > 30
-    msg := sprintf("CIS 5.5.1.4: Inactive password lock is %s days, should be 30 or less", [input.pam.inactive_days])
+	input.pam.inactive_days
+	to_number(input.pam.inactive_days) > 30
+	msg := sprintf("CIS 5.5.1.4: Inactive password lock is %s days, should be 30 or less", [input.pam.inactive_days])
 }
 
 # INACTIVE=-1 means the inactive lock is disabled
 violations contains msg if {
-    input.pam.inactive_days
-    to_number(input.pam.inactive_days) < 0
-    msg := sprintf("CIS 5.5.1.4: Inactive password lock is disabled (%s), should be 30 days or less", [input.pam.inactive_days])
+	input.pam.inactive_days
+	to_number(input.pam.inactive_days) < 0
+	msg := sprintf("CIS 5.5.1.4: Inactive password lock is disabled (%s), should be 30 days or less", [input.pam.inactive_days])
 }
 
 violations contains msg if {
-    not input.pam.inactive_days
-    msg := "CIS 5.5.1.4: Inactive password lock not configured"
+	not input.pam.inactive_days
+	msg := "CIS 5.5.1.4: Inactive password lock not configured"
 }
 
 # CIS 5.5.5: all users last password change date must be in the past
 violations contains msg if {
-    some user in input.pam.users_with_future_password_change
-    msg := sprintf("CIS 5.5.1.5: User %s has password change date in the future", [user])
+	some user in input.pam.users_with_future_password_change
+	msg := sprintf("CIS 5.5.1.5: User %s has password change date in the future", [user])
 }
 
 # CIS 5.5.2: system accounts must be secured
 violations contains msg if {
-    some account in input.pam.system_accounts_with_login_shell
-    msg := sprintf("CIS 5.5.2: System account %s has a login shell", [account])
+	some account in input.pam.system_accounts_with_login_shell
+	msg := sprintf("CIS 5.5.2: System account %s has a login shell", [account])
 }
 
 # CIS 5.5.3: default group for root must be GID 0
 violations contains msg if {
-    input.pam.root_gid
-    to_number(input.pam.root_gid) != 0
-    msg := sprintf("CIS 5.5.3: Root account GID is %s, should be 0", [input.pam.root_gid])
+	input.pam.root_gid
+	to_number(input.pam.root_gid) != 0
+	msg := sprintf("CIS 5.5.3: Root account GID is %s, should be 0", [input.pam.root_gid])
 }
 
 # 027 octal is 23: the umask must mask at least every bit 027 masks. Unparsable values fail.
@@ -216,35 +216,35 @@ umask_restrictive(u) if bits.and(octal(u), 23) == 23
 
 # CIS 5.5.4: default user umask must be 027 or more restrictive
 violations contains msg if {
-    input.pam.default_umask
-    not umask_restrictive(input.pam.default_umask)
-    msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
+	input.pam.default_umask
+	not umask_restrictive(input.pam.default_umask)
+	msg := sprintf("CIS 5.5.4: Default umask is %s, should be 027 or more restrictive", [input.pam.default_umask])
 }
 
 violations contains msg if {
-    not input.pam.default_umask
-    msg := "CIS 5.5.4: Default umask not configured"
+	not input.pam.default_umask
+	msg := "CIS 5.5.4: Default umask not configured"
 }
 
 # CIS 5.5.5: default user shell timeout must be explicitly configured
 violations contains msg if {
-    input.pam.tmout
-    to_number(input.pam.tmout) > 900
-    msg := sprintf("CIS 5.5.5: TMOUT is %s seconds, should be 900 or less", [input.pam.tmout])
+	input.pam.tmout
+	to_number(input.pam.tmout) > 900
+	msg := sprintf("CIS 5.5.5: TMOUT is %s seconds, should be 900 or less", [input.pam.tmout])
 }
 
 violations contains msg if {
-    input.pam.tmout
-    to_number(input.pam.tmout) == 0
-    msg := "CIS 5.5.5: TMOUT is disabled (0), should be 900 seconds or less"
+	input.pam.tmout
+	to_number(input.pam.tmout) == 0
+	msg := "CIS 5.5.5: TMOUT is disabled (0), should be 900 seconds or less"
 }
 
 violations contains msg if {
-    not input.pam.tmout
-    msg := "CIS 5.5.5: TMOUT not configured"
+	not input.pam.tmout
+	msg := "CIS 5.5.5: TMOUT not configured"
 }
 
 # Compliance check
 compliant if {
-    count(violations) == 0
+	count(violations) == 0
 }

@@ -43,7 +43,9 @@ all_repos_gpgcheck if {
 	count(input.yum_repos) == 0
 }
 
-status_ol09_00_000498 := "Not_a_Finding" if { all_repos_gpgcheck } else := "Open"
+status_ol09_00_000498 := "Not_a_Finding" if all_repos_gpgcheck
+
+else := "Open"
 
 finding_ol09_00_000498 := {
 	"vuln_id": "V-271525",
@@ -66,7 +68,9 @@ kexec_disabled if {
 	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_ol09_00_002407 := "Not_a_Finding" if { kexec_disabled } else := "Open"
+status_ol09_00_002407 := "Not_a_Finding" if kexec_disabled
+
+else := "Open"
 
 finding_ol09_00_002407 := {
 	"vuln_id": "V-271746",
@@ -85,7 +89,9 @@ rsyslog_installed if {
 	input.packages.rsyslog == true
 }
 
-status_ol09_00_000350 := "Not_a_Finding" if { rsyslog_installed } else := "Open"
+status_ol09_00_000350 := "Not_a_Finding" if rsyslog_installed
+
+else := "Open"
 
 finding_ol09_00_000350 := {
 	"vuln_id": "V-271508",
@@ -104,7 +110,9 @@ rsyslog_active if {
 	input.services.rsyslog == "active"
 }
 
-status_ol09_00_000351 := "Not_a_Finding" if { rsyslog_active } else := "Open"
+status_ol09_00_000351 := "Not_a_Finding" if rsyslog_active
+
+else := "Open"
 
 finding_ol09_00_000351 := {
 	"vuln_id": "V-271509",
@@ -119,9 +127,7 @@ finding_ol09_00_000351 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [
-	finding_ol09_00_000498,
-]
+cat_i_findings := [finding_ol09_00_000498]
 
 cat_ii_findings := [
 	finding_ol09_00_002407,

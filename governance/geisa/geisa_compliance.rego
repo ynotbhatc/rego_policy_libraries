@@ -51,8 +51,8 @@ import rego.v1
 # Authors: Tim Coulter, Claude (Anthropic)
 # ─────────────────────────────────────────────────────────────────────────────
 
-import data.governance.geisa.api
 import data.governance.geisa.adm
+import data.governance.geisa.api
 import data.governance.geisa.lee
 import data.governance.geisa.vee
 

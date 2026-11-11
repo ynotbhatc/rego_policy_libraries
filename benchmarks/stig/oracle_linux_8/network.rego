@@ -43,7 +43,9 @@ ip_forwarding_disabled if {
 	input.kernel_params["net.ipv4.ip_forward"] == "0"
 }
 
-status_ol08_00_040259 := "Not_a_Finding" if { ip_forwarding_disabled } else := "Open"
+status_ol08_00_040259 := "Not_a_Finding" if ip_forwarding_disabled
+
+else := "Open"
 
 finding_ol08_00_040259 := {
 	"vuln_id": "V-252662",
@@ -63,7 +65,9 @@ icmp_redirect_accept_disabled if {
 	input.kernel_params["net.ipv4.conf.default.accept_redirects"] == "0"
 }
 
-status_ol08_00_040279 := "Not_a_Finding" if { icmp_redirect_accept_disabled } else := "Open"
+status_ol08_00_040279 := "Not_a_Finding" if icmp_redirect_accept_disabled
+
+else := "Open"
 
 finding_ol08_00_040279 := {
 	"vuln_id": "V-248887",
@@ -83,7 +87,9 @@ icmp_redirect_send_disabled if {
 	input.kernel_params["net.ipv4.conf.default.send_redirects"] == "0"
 }
 
-status_ol08_00_040220 := "Not_a_Finding" if { icmp_redirect_send_disabled } else := "Open"
+status_ol08_00_040220 := "Not_a_Finding" if icmp_redirect_send_disabled
+
+else := "Open"
 
 finding_ol08_00_040220 := {
 	"vuln_id": "V-248877",
@@ -103,7 +109,9 @@ source_routing_disabled if {
 	input.kernel_params["net.ipv4.conf.default.accept_source_route"] == "0"
 }
 
-status_ol08_00_040240 := "Not_a_Finding" if { source_routing_disabled } else := "Open"
+status_ol08_00_040240 := "Not_a_Finding" if source_routing_disabled
+
+else := "Open"
 
 finding_ol08_00_040240 := {
 	"vuln_id": "V-248880",
@@ -126,7 +134,9 @@ rp_filter_enabled if {
 	input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
 }
 
-status_ol08_00_040285 := "Not_a_Finding" if { rp_filter_enabled } else := "Open"
+status_ol08_00_040285 := "Not_a_Finding" if rp_filter_enabled
+
+else := "Open"
 
 finding_ol08_00_040285 := {
 	"vuln_id": "V-248893",
@@ -156,7 +166,9 @@ ipv6_disabled_or_configured if {
 	input.kernel_params["net.ipv6.conf.all.accept_source_route"] == "0"
 }
 
-status_ol08_00_040280 := "Not_a_Finding" if { ipv6_disabled_or_configured } else := "Open"
+status_ol08_00_040280 := "Not_a_Finding" if ipv6_disabled_or_configured
+
+else := "Open"
 
 finding_ol08_00_040280 := {
 	"vuln_id": "V-248888",
@@ -181,7 +193,9 @@ wireless_disabled if {
 	count(input.wireless_interfaces) == 0
 }
 
-status_ol08_00_040110 := "Not_a_Finding" if { wireless_disabled } else := "Open"
+status_ol08_00_040110 := "Not_a_Finding" if wireless_disabled
+
+else := "Open"
 
 finding_ol08_00_040110 := {
 	"vuln_id": "V-248842",
@@ -197,14 +211,16 @@ finding_ol08_00_040110 := {
 default bluetooth_module_disabled := false
 
 bluetooth_module_disabled if {
-	input.kernel_modules["bluetooth"].blacklisted == true
+	input.kernel_modules.bluetooth.blacklisted == true
 }
 
 bluetooth_module_disabled if {
-	input.kernel_modules["bluetooth"].status == "disabled"
+	input.kernel_modules.bluetooth.status == "disabled"
 }
 
-status_ol08_00_040111 := "Not_a_Finding" if { bluetooth_module_disabled } else := "Open"
+status_ol08_00_040111 := "Not_a_Finding" if bluetooth_module_disabled
+
+else := "Open"
 
 finding_ol08_00_040111 := {
 	"vuln_id": "V-248843",
@@ -225,7 +241,9 @@ no_promiscuous_interfaces if {
 	count(input.promiscuous_interfaces) == 0
 }
 
-status_ol08_00_040330 := "Not_a_Finding" if { no_promiscuous_interfaces } else := "Open"
+status_ol08_00_040330 := "Not_a_Finding" if no_promiscuous_interfaces
+
+else := "Open"
 
 finding_ol08_00_040330 := {
 	"vuln_id": "V-248899",

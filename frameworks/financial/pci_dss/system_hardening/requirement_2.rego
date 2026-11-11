@@ -149,18 +149,31 @@ wireless_security_configured if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default system_hardening_policies_established := false
+
 default system_hardening_roles_defined := false
+
 default configuration_standards_maintained := false
+
 default default_passwords_changed := false
+
 default unnecessary_functionality_removed := false
+
 default single_primary_function_enforced := false
+
 default known_vulnerabilities_mitigated := false
+
 default hardening_standards_applied := false
+
 default os_hardening_complete := false
+
 default database_hardening_complete := false
+
 default network_device_hardening_complete := false
+
 default non_console_admin_access_encrypted := false
+
 default wireless_security_configured := false
+
 default pci_requirement_2_compliant := false
 
 # =================================================================
@@ -184,6 +197,7 @@ pci_requirement_2_compliant if {
 }
 
 default pci_requirement_2_score := 0
+
 default pci_requirement_2_findings := {}
 
 pci_requirement_2_score := score if {
@@ -225,12 +239,8 @@ pci_requirement_2_findings := {
 		"network_devices": network_device_hardening_complete,
 		"hardening_standards_applied": hardening_standards_applied,
 	},
-	"requirement_2_2_7": {
-		"non_console_admin_encrypted": non_console_admin_access_encrypted,
-	},
-	"requirement_2_3": {
-		"wireless_security": wireless_security_configured,
-	},
+	"requirement_2_2_7": {"non_console_admin_encrypted": non_console_admin_access_encrypted},
+	"requirement_2_3": {"wireless_security": wireless_security_configured},
 	"overall_score": pci_requirement_2_score,
 	"overall_compliant": pci_requirement_2_compliant,
 }

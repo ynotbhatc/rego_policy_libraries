@@ -20,20 +20,35 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default default_passwords_changed := false
+
 default login_attempt_limiting := false
+
 default malicious_code_prevention_implemented := false
+
 default malicious_code_response_documented := false
+
 default password_policy_enforced := false
+
 default patch_tracking_process := false
+
 default physical_io_ports_protected := false
+
 default ports_and_services_minimized := false
+
 default ports_and_services_policy := false
+
 default security_event_alerting := false
+
 default security_event_logging_enabled := false
+
 default security_log_review_current := false
+
 default security_patch_evaluation_timely := false
+
 default security_patches_applied := false
+
 default shared_accounts_minimized := false
+
 default unique_authentication_credentials := false
 
 # Date normaliser: ISO-8601 strings or epoch nanoseconds; anything else is
@@ -88,6 +103,7 @@ ports_minimized(system) if {
 # R1.3 - Protect physical I/O ports
 physical_io_ports_protected if {
 	bes_inventory_present
+
 	# Judge only high/medium systems: a low impact system is out of scope and must
 	# not make the whole requirement false.
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
@@ -124,7 +140,7 @@ security_patch_evaluation_timely if {
 
 patch_evaluated_timely(patch) if {
 	patch.evaluation.completed == true
-	evaluation_age_days := (date_ns(patch.evaluation.completion_date) - date_ns(patch.availability_date)) / (24 * 60 * 60 * 1000000000)
+	evaluation_age_days := (date_ns(patch.evaluation.completion_date) - date_ns(patch.availability_date)) / (((24 * 60) * 60) * 1000000000)
 	evaluation_age_days <= 35
 }
 
@@ -218,7 +234,7 @@ security_event_alerting if {
 # R4.3 - Review security event logs at least every 15 calendar months
 security_log_review_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.security_event_alerting.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 

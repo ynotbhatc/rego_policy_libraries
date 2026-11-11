@@ -24,7 +24,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # ---------------------------------------------------------------------------
 # Section 1 - Identity and Access Management (L2)
@@ -266,11 +266,11 @@ violations contains "CIS L2 7.3: 'Data disks' must be encrypted with Customer Ma
 l2_total_controls := 44
 
 compliance_report := {
-	"profile":           "level2",
-	"benchmark":         "CIS Microsoft Azure Foundations Benchmark v3.0.0",
-	"l2_controls":       l2_total_controls,
-	"l2_violations":     count(violations),
-	"l2_compliant":      compliant,
+	"profile": "level2",
+	"benchmark": "CIS Microsoft Azure Foundations Benchmark v3.0.0",
+	"l2_controls": l2_total_controls,
+	"l2_violations": count(violations),
+	"l2_compliant": compliant,
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated Azure workloads (FedRAMP High, PCI-DSS, HIPAA, HITRUST).",
 }

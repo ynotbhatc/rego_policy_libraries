@@ -21,36 +21,67 @@ import rego.v1
 # Every rule used as a value in the report object needs a neutral default,
 # otherwise a single failing check leaves the whole report undefined.
 default screen_lock_enabled := false
+
 default password_min_length := false
+
 default password_complexity := false
+
 default max_failed_password_attempts := false
+
 default auto_lock_timeout := false
+
 default password_history := false
+
 default password_expiration := false
+
 default device_encryption_enabled := false
+
 default sd_card_encryption := false
+
 default backup_encryption := false
+
 default unknown_sources_disabled := false
+
 default app_verification_enabled := false
+
 default unknown_sources_logging := false
+
 default play_protect_enabled := false
+
 default app_permissions_reviewed := false
+
 default developer_options_disabled := false
+
 default usb_debugging_disabled := false
+
 default adb_over_network_disabled := false
+
 default mock_locations_disabled := false
+
 default location_services_configured := false
+
 default bluetooth_secure := false
+
 default wifi_secure := false
+
 default nfc_configured := false
+
 default remote_wipe_enabled := false
+
 default device_admin_controlled := false
+
 default google_account_2fa := false
+
 default automatic_updates_enabled := false
+
 default safe_browsing_enabled := false
+
 default organizational_compliance := false
+
 default privacy_settings_configured := false
+
 default biometric_auth_secure := false
+
 default android_device_compliant := false
 
 # CIS Google Android Benchmark
@@ -58,272 +89,272 @@ default android_device_compliant := false
 
 # CIS 1.1 - screen lock must be turned on
 screen_lock_enabled if {
-    input.device_config.screen_lock.enabled == true
-    input.device_config.screen_lock.type in ["pattern", "pin", "password", "fingerprint", "face"]
+	input.device_config.screen_lock.enabled == true
+	input.device_config.screen_lock.type in ["pattern", "pin", "password", "fingerprint", "face"]
 }
 
 # CIS 1.2 - required value of minimum password length is 6 or greater
 password_min_length if {
-    input.device_config.password_policy.min_length >= 6
+	input.device_config.password_policy.min_length >= 6
 }
 
 # CIS 1.3 - password complexity requirements must be turned on
 password_complexity if {
-    input.device_config.password_policy.require_alphabetic == true
-    input.device_config.password_policy.require_numeric == true
-    input.device_config.password_policy.require_symbols == true
-    input.device_config.password_policy.require_uppercase == true
-    input.device_config.password_policy.require_lowercase == true
+	input.device_config.password_policy.require_alphabetic == true
+	input.device_config.password_policy.require_numeric == true
+	input.device_config.password_policy.require_symbols == true
+	input.device_config.password_policy.require_uppercase == true
+	input.device_config.password_policy.require_lowercase == true
 }
 
 # CIS 1.4 - required value of maximum failed password attempts is 10 or less
 max_failed_password_attempts if {
-    input.device_config.password_policy.max_failed_attempts <= 10
-    input.device_config.password_policy.max_failed_attempts > 0
+	input.device_config.password_policy.max_failed_attempts <= 10
+	input.device_config.password_policy.max_failed_attempts > 0
 }
 
 # CIS 1.5 - required value of auto-lock timeout is 5 minutes or less
 auto_lock_timeout if {
-    input.device_config.screen_lock.timeout_minutes <= 5
-    input.device_config.screen_lock.timeout_minutes > 0
+	input.device_config.screen_lock.timeout_minutes <= 5
+	input.device_config.screen_lock.timeout_minutes > 0
 }
 
 # CIS 1.6 - password history must be turned on
 password_history if {
-    input.device_config.password_policy.history_length >= 4
+	input.device_config.password_policy.history_length >= 4
 }
 
 # CIS 1.7 - required value of password expiration is 90 days or less
 password_expiration if {
-    input.device_config.password_policy.expiration_days <= 90
-    input.device_config.password_policy.expiration_days > 0
+	input.device_config.password_policy.expiration_days <= 90
+	input.device_config.password_policy.expiration_days > 0
 }
 
 # CIS 2.1 - device encryption must be turned on
 device_encryption_enabled if {
-    input.device_config.encryption.device_encrypted == true
-    input.device_config.encryption.encryption_algorithm in ["AES-256", "AES-128"]
+	input.device_config.encryption.device_encrypted == true
+	input.device_config.encryption.encryption_algorithm in ["AES-256", "AES-128"]
 }
 
 # CIS 2.2 - SD card encryption must be turned on
 sd_card_encryption if {
-    input.device_config.encryption.sd_card_encrypted == true
+	input.device_config.encryption.sd_card_encrypted == true
 }
 
 sd_card_encryption if {
-    # If no SD card is present, this control passes
-    input.device_config.sd_card_present == false
+	# If no SD card is present, this control passes
+	input.device_config.sd_card_present == false
 }
 
 # CIS 2.3 - backup encryption must be turned on
 backup_encryption if {
-    input.device_config.backup_settings.encryption_enabled == true
+	input.device_config.backup_settings.encryption_enabled == true
 }
 
 # CIS 3.1 - unknown sources installation must be turned off
 unknown_sources_disabled if {
-    input.device_config.app_settings.allow_unknown_sources == false
+	input.device_config.app_settings.allow_unknown_sources == false
 }
 
 # CIS 3.2 - app verification must be turned on
 app_verification_enabled if {
-    input.device_config.app_settings.verify_apps == true
+	input.device_config.app_settings.verify_apps == true
 }
 
 # CIS 3.3 - installation of apps from unknown sources must be logged
 unknown_sources_logging if {
-    input.device_config.app_settings.log_unknown_sources == true
+	input.device_config.app_settings.log_unknown_sources == true
 }
 
 # CIS 3.4 - Google Play Protect must be turned on
 play_protect_enabled if {
-    input.device_config.google_services.play_protect_enabled == true
-    input.device_config.google_services.play_protect_scan_apps == true
+	input.device_config.google_services.play_protect_enabled == true
+	input.device_config.google_services.play_protect_scan_apps == true
 }
 
 # CIS 3.5 - app permissions must be reviewed regularly
 app_permissions_reviewed if {
-    input.device_config.app_settings.permission_review_enabled == true
+	input.device_config.app_settings.permission_review_enabled == true
 }
 
 # CIS 4.1 - developer options must be turned off
 developer_options_disabled if {
-    input.device_config.developer_settings.enabled == false
+	input.device_config.developer_settings.enabled == false
 }
 
 # CIS 4.2 - USB debugging must be turned off
 usb_debugging_disabled if {
-    input.device_config.developer_settings.usb_debugging == false
+	input.device_config.developer_settings.usb_debugging == false
 }
 
 # CIS 4.3 - ADB over network must be turned off
 adb_over_network_disabled if {
-    input.device_config.developer_settings.adb_over_network == false
+	input.device_config.developer_settings.adb_over_network == false
 }
 
 # CIS 4.4 - mock locations must be turned off
 mock_locations_disabled if {
-    input.device_config.developer_settings.allow_mock_locations == false
+	input.device_config.developer_settings.allow_mock_locations == false
 }
 
 # CIS 5.1 - location services must be explicitly configured appropriately
 location_services_configured if {
-    input.device_config.location_settings.enabled == true
-    input.device_config.location_settings.high_accuracy_mode == false
-    input.device_config.location_settings.google_location_history == false
-    input.device_config.location_settings.google_location_sharing == false
+	input.device_config.location_settings.enabled == true
+	input.device_config.location_settings.high_accuracy_mode == false
+	input.device_config.location_settings.google_location_history == false
+	input.device_config.location_settings.google_location_sharing == false
 }
 
 # CIS 5.2 - Bluetooth must be explicitly configured securely
 bluetooth_secure if {
-    input.device_config.bluetooth_settings.enabled == true
-    input.device_config.bluetooth_settings.discoverable == false
-    input.device_config.bluetooth_settings.auto_pair == false
+	input.device_config.bluetooth_settings.enabled == true
+	input.device_config.bluetooth_settings.discoverable == false
+	input.device_config.bluetooth_settings.auto_pair == false
 }
 
 bluetooth_secure if {
-    # If Bluetooth is disabled, this is also secure
-    input.device_config.bluetooth_settings.enabled == false
+	# If Bluetooth is disabled, this is also secure
+	input.device_config.bluetooth_settings.enabled == false
 }
 
 # CIS 5.3 - Wi-Fi must be explicitly configured securely
 wifi_secure if {
-    input.device_config.wifi_settings.auto_connect_open_networks == false
-    input.device_config.wifi_settings.wifi_scanning_always_on == false
-    input.device_config.wifi_settings.network_notification == false
+	input.device_config.wifi_settings.auto_connect_open_networks == false
+	input.device_config.wifi_settings.wifi_scanning_always_on == false
+	input.device_config.wifi_settings.network_notification == false
 }
 
 # CIS 5.4 - NFC must be turned off when not needed
 nfc_configured if {
-    input.device_config.nfc_settings.enabled == false
+	input.device_config.nfc_settings.enabled == false
 }
 
 nfc_configured if {
-    # If NFC is enabled, ensure secure usage
-    input.device_config.nfc_settings.enabled == true
-    input.device_config.nfc_settings.android_beam == false
-    input.device_config.nfc_settings.secure_element_access == true
+	# If NFC is enabled, ensure secure usage
+	input.device_config.nfc_settings.enabled == true
+	input.device_config.nfc_settings.android_beam == false
+	input.device_config.nfc_settings.secure_element_access == true
 }
 
 # CIS 6.1 - remote wipe capability must be turned on
 remote_wipe_enabled if {
-    input.device_config.mdm_settings.remote_wipe_enabled == true
+	input.device_config.mdm_settings.remote_wipe_enabled == true
 }
 
 # CIS 6.2 - device administrator apps must be controlled
 device_admin_controlled if {
-    every admin in input.device_config.device_administrators {
-        admin.authorized == true
-    }
+	every admin in input.device_config.device_administrators {
+		admin.authorized == true
+	}
 }
 
 # CIS 6.3 - Google account two-factor authentication must be turned on
 google_account_2fa if {
-    input.device_config.google_account.two_factor_enabled == true
+	input.device_config.google_account.two_factor_enabled == true
 }
 
 # CIS 6.4 - automatic updates must be turned on
 automatic_updates_enabled if {
-    input.device_config.update_settings.auto_download == true
-    input.device_config.update_settings.auto_install_security == true
+	input.device_config.update_settings.auto_download == true
+	input.device_config.update_settings.auto_install_security == true
 }
 
 # CIS 6.5 - Google Safe Browsing must be turned on
 safe_browsing_enabled if {
-    input.device_config.browser_settings.safe_browsing == true
+	input.device_config.browser_settings.safe_browsing == true
 }
 
 # CIS 7.1 - checked condition — device compliance with organizational policies
 organizational_compliance if {
-    input.device_config.mdm_settings.enrolled == true
-    input.device_config.mdm_settings.policy_compliant == true
+	input.device_config.mdm_settings.enrolled == true
+	input.device_config.mdm_settings.policy_compliant == true
 }
 
 # CIS 7.2 - privacy settings must be explicitly configured appropriately
 privacy_settings_configured if {
-    input.device_config.privacy_settings.ad_personalization == false
-    input.device_config.privacy_settings.usage_reporting == false
-    input.device_config.privacy_settings.crash_reporting == false
+	input.device_config.privacy_settings.ad_personalization == false
+	input.device_config.privacy_settings.usage_reporting == false
+	input.device_config.privacy_settings.crash_reporting == false
 }
 
 # CIS 7.3 - biometric authentication must be explicitly configured securely
 biometric_auth_secure if {
-    input.device_config.biometric_settings.fallback_enabled == true
-    input.device_config.biometric_settings.require_confirmation == true
+	input.device_config.biometric_settings.fallback_enabled == true
+	input.device_config.biometric_settings.require_confirmation == true
 }
 
 biometric_auth_secure if {
-    # If biometric auth is not used, this passes
-    input.device_config.biometric_settings.enabled == false
+	# If biometric auth is not used, this passes
+	input.device_config.biometric_settings.enabled == false
 }
 
 # Aggregate Android device compliance
 android_device_compliant if {
-    screen_lock_enabled
-    password_min_length
-    password_complexity
-    max_failed_password_attempts
-    auto_lock_timeout
-    password_history
-    password_expiration
-    device_encryption_enabled
-    sd_card_encryption
-    backup_encryption
-    unknown_sources_disabled
-    app_verification_enabled
-    unknown_sources_logging
-    play_protect_enabled
-    app_permissions_reviewed
-    developer_options_disabled
-    usb_debugging_disabled
-    adb_over_network_disabled
-    mock_locations_disabled
-    location_services_configured
-    bluetooth_secure
-    wifi_secure
-    nfc_configured
-    remote_wipe_enabled
-    device_admin_controlled
-    google_account_2fa
-    automatic_updates_enabled
-    safe_browsing_enabled
-    organizational_compliance
-    privacy_settings_configured
-    biometric_auth_secure
+	screen_lock_enabled
+	password_min_length
+	password_complexity
+	max_failed_password_attempts
+	auto_lock_timeout
+	password_history
+	password_expiration
+	device_encryption_enabled
+	sd_card_encryption
+	backup_encryption
+	unknown_sources_disabled
+	app_verification_enabled
+	unknown_sources_logging
+	play_protect_enabled
+	app_permissions_reviewed
+	developer_options_disabled
+	usb_debugging_disabled
+	adb_over_network_disabled
+	mock_locations_disabled
+	location_services_configured
+	bluetooth_secure
+	wifi_secure
+	nfc_configured
+	remote_wipe_enabled
+	device_admin_controlled
+	google_account_2fa
+	automatic_updates_enabled
+	safe_browsing_enabled
+	organizational_compliance
+	privacy_settings_configured
+	biometric_auth_secure
 }
 
 # Detailed Android device compliance report
 android_device_compliance := {
-    "screen_lock_enabled": screen_lock_enabled,
-    "password_min_length": password_min_length,
-    "password_complexity": password_complexity,
-    "max_failed_password_attempts": max_failed_password_attempts,
-    "auto_lock_timeout": auto_lock_timeout,
-    "password_history": password_history,
-    "password_expiration": password_expiration,
-    "device_encryption_enabled": device_encryption_enabled,
-    "sd_card_encryption": sd_card_encryption,
-    "backup_encryption": backup_encryption,
-    "unknown_sources_disabled": unknown_sources_disabled,
-    "app_verification_enabled": app_verification_enabled,
-    "unknown_sources_logging": unknown_sources_logging,
-    "play_protect_enabled": play_protect_enabled,
-    "app_permissions_reviewed": app_permissions_reviewed,
-    "developer_options_disabled": developer_options_disabled,
-    "usb_debugging_disabled": usb_debugging_disabled,
-    "adb_over_network_disabled": adb_over_network_disabled,
-    "mock_locations_disabled": mock_locations_disabled,
-    "location_services_configured": location_services_configured,
-    "bluetooth_secure": bluetooth_secure,
-    "wifi_secure": wifi_secure,
-    "nfc_configured": nfc_configured,
-    "remote_wipe_enabled": remote_wipe_enabled,
-    "device_admin_controlled": device_admin_controlled,
-    "google_account_2fa": google_account_2fa,
-    "automatic_updates_enabled": automatic_updates_enabled,
-    "safe_browsing_enabled": safe_browsing_enabled,
-    "organizational_compliance": organizational_compliance,
-    "privacy_settings_configured": privacy_settings_configured,
-    "biometric_auth_secure": biometric_auth_secure,
-    "overall_compliant": android_device_compliant
+	"screen_lock_enabled": screen_lock_enabled,
+	"password_min_length": password_min_length,
+	"password_complexity": password_complexity,
+	"max_failed_password_attempts": max_failed_password_attempts,
+	"auto_lock_timeout": auto_lock_timeout,
+	"password_history": password_history,
+	"password_expiration": password_expiration,
+	"device_encryption_enabled": device_encryption_enabled,
+	"sd_card_encryption": sd_card_encryption,
+	"backup_encryption": backup_encryption,
+	"unknown_sources_disabled": unknown_sources_disabled,
+	"app_verification_enabled": app_verification_enabled,
+	"unknown_sources_logging": unknown_sources_logging,
+	"play_protect_enabled": play_protect_enabled,
+	"app_permissions_reviewed": app_permissions_reviewed,
+	"developer_options_disabled": developer_options_disabled,
+	"usb_debugging_disabled": usb_debugging_disabled,
+	"adb_over_network_disabled": adb_over_network_disabled,
+	"mock_locations_disabled": mock_locations_disabled,
+	"location_services_configured": location_services_configured,
+	"bluetooth_secure": bluetooth_secure,
+	"wifi_secure": wifi_secure,
+	"nfc_configured": nfc_configured,
+	"remote_wipe_enabled": remote_wipe_enabled,
+	"device_admin_controlled": device_admin_controlled,
+	"google_account_2fa": google_account_2fa,
+	"automatic_updates_enabled": automatic_updates_enabled,
+	"safe_browsing_enabled": safe_browsing_enabled,
+	"organizational_compliance": organizational_compliance,
+	"privacy_settings_configured": privacy_settings_configured,
+	"biometric_auth_secure": biometric_auth_secure,
+	"overall_compliant": android_device_compliant,
 }

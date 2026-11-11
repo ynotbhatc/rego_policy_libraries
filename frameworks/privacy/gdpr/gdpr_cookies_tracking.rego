@@ -20,21 +20,34 @@ import rego.v1
 
 # Defaults so report/details never collapse to {} on empty input
 default cookie_consent_mechanism := false
-default consent_quality := false
-default strictly_necessary_exempt := false
-default cookie_inventory := false
-default cookie_categories_compliant := false
-default cookie_notice := false
-default local_storage_compliant := false
-default fingerprinting_controlled := false
-default tracking_pixels_compliant := false
-default cmp_implementation := false
-default consent_records := false
-default email_marketing_consent := false
-default automated_decision_making := false
-default behavioural_advertising := false
-default childrens_data := false
 
+default consent_quality := false
+
+default strictly_necessary_exempt := false
+
+default cookie_inventory := false
+
+default cookie_categories_compliant := false
+
+default cookie_notice := false
+
+default local_storage_compliant := false
+
+default fingerprinting_controlled := false
+
+default tracking_pixels_compliant := false
+
+default cmp_implementation := false
+
+default consent_records := false
+
+default email_marketing_consent := false
+
+default automated_decision_making := false
+
+default behavioural_advertising := false
+
+default childrens_data := false
 
 # GDPR + ePrivacy Directive (2002/58/EC as amended by 2009/136/EC)
 # Controls for cookie consent, tracking technologies, and digital marketing
@@ -51,7 +64,7 @@ cookie_consent_mechanism if {
 	input.cookies.consent.mechanism.implemented == true
 	input.cookies.consent.mechanism.prior_to_placement == true
 	input.cookies.consent.mechanism.clearly_displayed == true
-	input.cookies.consent.mechanism.cookie_wall.not_used == true  # Pre-ticking / no cookie walls
+	input.cookies.consent.mechanism.cookie_wall.not_used == true # Pre-ticking / no cookie walls
 	input.cookies.consent.mechanism.decline_as_easy_as_accept == true
 }
 
@@ -239,6 +252,7 @@ compliant if {
 	consent_records
 	email_marketing_consent
 	local_storage_compliant
+
 	# decisions 2026-10-19: N/A branches pass only on an explicit `used == false` flag
 	fingerprinting_controlled
 	tracking_pixels_compliant

@@ -247,7 +247,7 @@ p_5_2_2 if {
 	mode_within(input.sudo.sudoers_mode, "0440")
 	input.sudo.sudoers_owner == "root"
 	input.sudo.sudoers_group == "root"
-	every f in input.sudo.sudoers_d_files { mode_within(f.mode, "0440"); f.owner == "root"; f.group == "root" }
+	every f in input.sudo.sudoers_d_files { mode_within(f.mode, "0440"); f.owner == "root"; f.group == "root"}
 }
 
 violations contains "5.2.2: evidence missing — sudo.sudoers_mode/sudoers_owner/sudoers_group/sudoers_d_files not collected" if not e_5_2_2
@@ -421,7 +421,7 @@ e_5_2_10 if {
 default p_5_2_10 := false
 
 p_5_2_10 if {
-	every t in sudo_timeouts { t >= 0; t <= 15 }
+	every t in sudo_timeouts { t >= 0; t <= 15}
 }
 
 violations contains "5.2.10: evidence missing — sudo.sudoers_content not collected" if not e_5_2_10

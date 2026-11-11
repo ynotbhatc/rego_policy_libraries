@@ -79,9 +79,11 @@ service_disabled(svc) if {
 # TFTP server must not be installed
 default tftp_server_absent := false
 
-tftp_server_absent if { pkg_absent("tftp-server") }
+tftp_server_absent if pkg_absent("tftp-server")
 
-status_ol08_00_040190 := "Not_a_Finding" if { tftp_server_absent } else := "Open"
+status_ol08_00_040190 := "Not_a_Finding" if tftp_server_absent
+
+else := "Open"
 
 finding_ol08_00_040190 := {
 	"vuln_id": "V-248873",
@@ -102,7 +104,9 @@ telnet_server_absent if {
 	pkg_absent("telnetd")
 }
 
-status_ol08_00_040000 := "Not_a_Finding" if { telnet_server_absent } else := "Open"
+status_ol08_00_040000 := "Not_a_Finding" if telnet_server_absent
+
+else := "Open"
 
 finding_ol08_00_040000 := {
 	"vuln_id": "V-248823",
@@ -121,10 +125,12 @@ finding_ol08_00_040000 := {
 # NFS server must not be running unless required
 default nfs_disabled := false
 
-nfs_disabled if { service_disabled("nfs-server") }
-nfs_disabled if { service_disabled("nfsd") }
+nfs_disabled if service_disabled("nfs-server")
+nfs_disabled if service_disabled("nfsd")
 
-status_ol08_00_040002 := "Not_a_Finding" if { nfs_disabled } else := "Open"
+status_ol08_00_040002 := "Not_a_Finding" if nfs_disabled
+
+else := "Open"
 
 finding_ol08_00_040002 := {
 	"vuln_id": "V-248825",
@@ -144,9 +150,7 @@ cat_i_findings := [
 	finding_ol08_00_040000,
 ]
 
-cat_ii_findings := [
-	finding_ol08_00_040002,
-]
+cat_ii_findings := [finding_ol08_00_040002]
 
 cat_iii_findings := []
 

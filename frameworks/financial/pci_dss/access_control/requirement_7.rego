@@ -123,15 +123,25 @@ access_control_system if {
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
 default access_control_policies_established := false
+
 default access_control_roles_defined := false
+
 default least_privilege_access_model := false
+
 default rbac_implemented := false
+
 default job_function_based_access := false
+
 default privileged_access_managed := false
+
 default third_party_access_managed := false
+
 default user_access_reviews := false
+
 default application_system_accounts_managed := false
+
 default access_control_system := false
+
 default pci_requirement_7_compliant := false
 
 # =================================================================
@@ -152,6 +162,7 @@ pci_requirement_7_compliant if {
 }
 
 default pci_requirement_7_score := 0
+
 default pci_requirement_7_findings := {}
 
 pci_requirement_7_score := score if {
@@ -186,9 +197,7 @@ pci_requirement_7_findings := {
 		"user_access_reviews": user_access_reviews,
 		"system_accounts": application_system_accounts_managed,
 	},
-	"requirement_7_3": {
-		"access_control_system": access_control_system,
-	},
+	"requirement_7_3": {"access_control_system": access_control_system},
 	"overall_score": pci_requirement_7_score,
 	"overall_compliant": pci_requirement_7_compliant,
 }

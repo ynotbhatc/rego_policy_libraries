@@ -82,7 +82,6 @@ violations := array.concat(
 	),
 )
 
-
 # 1 Initial Setup
 installation_violations := sort([m | some m in _v_installation])
 
@@ -265,7 +264,6 @@ octal(s) := n if {
 
 # true when mode grants nothing beyond max (both octal strings)
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
-
 
 # 1.1.1 (Manual, Level 1 - Webserver; Level 1 - Proxy; Level 1 - Loadbalancer) -- Manual in the workbook; decidable from configuration, so checked like Automated
 default r_1_1_1 := false
@@ -1349,15 +1347,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "installation"
+		"section": "installation",
 	},
 	"1.2.1": {
 		"title": "package manager repositories must match the approved configuration",
@@ -1366,15 +1364,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "attestation",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "installation"
+		"section": "installation",
 	},
 	"1.2.2": {
 		"title": "the latest software package must be present",
@@ -1383,15 +1381,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "installation"
+		"section": "installation",
 	},
 	"2.1.1": {
 		"title": "only required dynamic modules must be loaded",
@@ -1400,15 +1398,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "attestation",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "modules"
+		"section": "modules",
 	},
 	"2.2.1": {
 		"title": "NGINX must be run using a non-privileged, dedicated service account",
@@ -1417,15 +1415,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.2.2": {
 		"title": "the NGINX service account must be locked",
@@ -1434,15 +1432,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.2.3": {
 		"title": "the NGINX service account must use a non-login shell",
@@ -1451,15 +1449,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.3.1": {
 		"title": "NGINX directories and files must be owned by root",
@@ -1468,15 +1466,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.3.2": {
 		"title": "access to NGINX directories and files must be restricted",
@@ -1485,15 +1483,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.3.3": {
 		"title": "the NGINX process ID (PID) file must be secured",
@@ -1502,15 +1500,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.4.1": {
 		"title": "checked condition — NGINX only listens for network connections on authorized ports",
@@ -1519,15 +1517,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.4.2": {
 		"title": "requests for unknown host names must be rejected",
@@ -1536,15 +1534,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.4.3": {
 		"title": "keepalive_timeout must be 10 seconds or less, but not 0",
@@ -1553,15 +1551,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.4.4": {
 		"title": "required value of send_timeout is 10 seconds or less, but not 0",
@@ -1570,15 +1568,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.5.1": {
 		"title": "required value of server_tokens directive is `off`",
@@ -1587,15 +1585,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.5.2": {
 		"title": "checked condition — default error and index.html pages do not reference NGINX",
@@ -1604,15 +1602,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.5.3": {
 		"title": "hidden file serving must be turned off",
@@ -1621,15 +1619,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"2.5.4": {
 		"title": "checked condition — the NGINX reverse proxy does not enable information disclosure",
@@ -1637,14 +1635,14 @@ recommendations := {
 		"assessment": "Manual",
 		"profiles": [
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
-			"proxy"
+			"proxy",
 		],
-		"section": "configuration"
+		"section": "configuration",
 	},
 	"3.1": {
 		"title": "detailed logging must be turned on",
@@ -1653,15 +1651,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "logging"
+		"section": "logging",
 	},
 	"3.2": {
 		"title": "access logging must be turned on",
@@ -1670,15 +1668,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "logging"
+		"section": "logging",
 	},
 	"3.3": {
 		"title": "error logging must be turned on and set to the info logging level",
@@ -1687,15 +1685,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "logging"
+		"section": "logging",
 	},
 	"3.4": {
 		"title": "checked condition — proxies pass source IP information",
@@ -1703,14 +1701,14 @@ recommendations := {
 		"assessment": "Manual",
 		"profiles": [
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
-			"proxy"
+			"proxy",
 		],
-		"section": "logging"
+		"section": "logging",
 	},
 	"4.1.1": {
 		"title": "HTTP must be redirected to HTTPS",
@@ -1719,15 +1717,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.2": {
 		"title": "a trusted certificate and trust chain must be present",
@@ -1736,15 +1734,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.3": {
 		"title": "private key permissions must be restricted",
@@ -1753,15 +1751,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.4": {
 		"title": "only modern TLS protocols must be used",
@@ -1770,15 +1768,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.5": {
 		"title": "weak ciphers must be turned off",
@@ -1787,15 +1785,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.6": {
 		"title": "checked condition — awareness of TLS 1.3 new Diffie-Hellman parameters",
@@ -1804,15 +1802,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.7": {
 		"title": "Online Certificate Status Protocol (OCSP) stapling must be turned on",
@@ -1821,15 +1819,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.8": {
 		"title": "HTTP Strict Transport Security (HSTS) must be turned on",
@@ -1838,15 +1836,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.9": {
 		"title": "upstream server traffic must be authenticated with a client certificate",
@@ -1854,14 +1852,14 @@ recommendations := {
 		"assessment": "Manual",
 		"profiles": [
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
-			"proxy"
+			"proxy",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.10": {
 		"title": "the upstream traffic server certificate must be trusted",
@@ -1869,14 +1867,14 @@ recommendations := {
 		"assessment": "Manual",
 		"profiles": [
 			"Level 2 - Proxy",
-			"Level 2 - Loadbalancer"
+			"Level 2 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
-			"proxy"
+			"proxy",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.11": {
 		"title": "Secure Session Resumption must be turned on",
@@ -1885,28 +1883,24 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "ssl_tls"
+		"section": "ssl_tls",
 	},
 	"4.1.12": {
 		"title": "HTTP/3.0 must be used",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2 - Webserver"
-		],
+		"profiles": ["Level 2 - Webserver"],
 		"check": "configuration",
-		"applies_to": [
-			"webserver"
-		],
-		"section": "ssl_tls"
+		"applies_to": ["webserver"],
+		"section": "ssl_tls",
 	},
 	"5.1.1": {
 		"title": "checked condition — allow and deny filters limit access to specific IP addresses",
@@ -1915,15 +1909,15 @@ recommendations := {
 		"profiles": [
 			"Level 2 - Webserver",
 			"Level 2 - Proxy",
-			"Level 2 - Loadbalancer"
+			"Level 2 - Loadbalancer",
 		],
 		"check": "attestation",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "access_control"
+		"section": "access_control",
 	},
 	"5.1.2": {
 		"title": "only approved HTTP methods must be allowed",
@@ -1932,15 +1926,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "access_control"
+		"section": "access_control",
 	},
 	"5.2.1": {
 		"title": "timeout values for reading the client header and body must match the approved value",
@@ -1949,15 +1943,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "performance"
+		"section": "performance",
 	},
 	"5.2.2": {
 		"title": "the maximum request body size must match the approved value",
@@ -1966,15 +1960,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "performance"
+		"section": "performance",
 	},
 	"5.2.3": {
 		"title": "the maximum buffer size for URIs must be defined",
@@ -1983,15 +1977,15 @@ recommendations := {
 		"profiles": [
 			"Level 1 - Webserver",
 			"Level 1 - Proxy",
-			"Level 1 - Loadbalancer"
+			"Level 1 - Loadbalancer",
 		],
 		"check": "configuration",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "performance"
+		"section": "performance",
 	},
 	"5.2.4": {
 		"title": "the number of connections per IP address must be limited to named principals",
@@ -2000,15 +1994,15 @@ recommendations := {
 		"profiles": [
 			"Level 2 - Webserver",
 			"Level 2 - Proxy",
-			"Level 2 - Loadbalancer"
+			"Level 2 - Loadbalancer",
 		],
 		"check": "attestation",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "performance"
+		"section": "performance",
 	},
 	"5.2.5": {
 		"title": "rate limits by IP address must be set",
@@ -2017,57 +2011,44 @@ recommendations := {
 		"profiles": [
 			"Level 2 - Webserver",
 			"Level 2 - Proxy",
-			"Level 2 - Loadbalancer"
+			"Level 2 - Loadbalancer",
 		],
 		"check": "attestation",
 		"applies_to": [
 			"loadbalancer",
 			"proxy",
-			"webserver"
+			"webserver",
 		],
-		"section": "performance"
+		"section": "performance",
 	},
 	"5.3.1": {
 		"title": "X-Content-Type-Options header must be explicitly configured and enabled",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1 - Webserver"
-		],
+		"profiles": ["Level 1 - Webserver"],
 		"check": "configuration",
-		"applies_to": [
-			"webserver"
-		],
-		"section": "access_control"
+		"applies_to": ["webserver"],
+		"section": "access_control",
 	},
 	"5.3.2": {
 		"title": "Content Security Policy (CSP) must be turned on and configured properly",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2 - Webserver"
-		],
+		"profiles": ["Level 2 - Webserver"],
 		"check": "configuration",
-		"applies_to": [
-			"webserver"
-		],
-		"section": "access_control"
+		"applies_to": ["webserver"],
+		"section": "access_control",
 	},
 	"5.3.3": {
 		"title": "the Referrer Policy must be turned on and configured properly",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2 - Webserver"
-		],
+		"profiles": ["Level 2 - Webserver"],
 		"check": "configuration",
-		"applies_to": [
-			"webserver"
-		],
-		"section": "access_control"
-	}
+		"applies_to": ["webserver"],
+		"section": "access_control",
+	},
 }
-
 
 default _applicable_ids := set()
 

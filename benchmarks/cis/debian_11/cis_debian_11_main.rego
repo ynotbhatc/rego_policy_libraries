@@ -39,8 +39,8 @@ package cis_debian_11.main
 # derived/derived_from/applied_to so consumers can detect this.
 # See README.md in this directory.
 
-import rego.v1
 import data.cis_debian_11 as bench
+import rego.v1
 
 default _compliant := false
 

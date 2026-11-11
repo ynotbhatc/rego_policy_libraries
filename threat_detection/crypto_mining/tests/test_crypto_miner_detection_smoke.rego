@@ -9,4 +9,3 @@ test_crypto_miner_detection_loads_on_empty_input if {
 	m := data.security.crypto_miner_detection with input as {}
 	is_object(m)
 }
-

@@ -156,11 +156,13 @@ _tsda_ok(sev) if _pair_ok("ThreatSeverityDefaultAction", sev, {2, 3})
 
 # 1.3.1 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Spynet_LocalSettingOverrideSpynetReporting
 default r_1_3_1 := false
+
 r_1_3_1 if {
 	_admx_state("Spynet_LocalSettingOverrideSpynetReporting", "disabled")
 }
 
 default e_1_3_1 := false
+
 e_1_3_1 if {
 	_set("Spynet_LocalSettingOverrideSpynetReporting")
 }
@@ -178,11 +180,13 @@ violations contains "1.3.1: required value of 'Configure local setting override 
 
 # 1.3.2 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableBlockAtFirstSeen
 default r_1_3_2 := false
+
 r_1_3_2 if {
 	_admx_state("DisableBlockAtFirstSeen", "enabled")
 }
 
 default e_1_3_2 := false
+
 e_1_3_2 if {
 	_set("DisableBlockAtFirstSeen")
 }
@@ -200,11 +204,13 @@ violations contains "1.3.2: required value of 'Configure the 'Block at First Sig
 
 # 1.8.1 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/RealtimeProtection_DisableScanOnRealtimeEnable
 default r_1_8_1 := false
+
 r_1_8_1 if {
 	_admx_state("RealtimeProtection_DisableScanOnRealtimeEnable", "enabled")
 }
 
 default e_1_8_1 := false
+
 e_1_8_1 if {
 	_set("RealtimeProtection_DisableScanOnRealtimeEnable")
 }
@@ -222,11 +228,13 @@ violations contains "1.8.1: required value of 'Turn on process scanning whenever
 
 # 1.10.1 (Automated, Level 2 - Workstation) ./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Reporting_DisablegenericrePorts
 default r_1_10_1 := false
+
 r_1_10_1 if {
 	_admx_state("Reporting_DisablegenericrePorts", "disabled")
 }
 
 default e_1_10_1 := false
+
 e_1_10_1 if {
 	_set("Reporting_DisablegenericrePorts")
 }
@@ -244,11 +252,13 @@ violations contains "1.10.1: required value of 'Configure Watson events' is 'Dis
 
 # 1.14 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableRoutinelyTakingAction
 default r_1_14 := false
+
 r_1_14 if {
 	_admx_state("DisableRoutinelyTakingAction", "disabled")
 }
 
 default e_1_14 := false
+
 e_1_14 if {
 	_set("DisableRoutinelyTakingAction")
 }
@@ -266,11 +276,13 @@ violations contains "1.14: required value of 'Turn off routine remediation' is '
 
 # 2.1 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowArchiveScanning
 default r_2_1 := false
+
 r_2_1 if {
 	_int_in("AllowArchiveScanning", {1})
 }
 
 default e_2_1 := false
+
 e_2_1 if {
 	_set("AllowArchiveScanning")
 }
@@ -288,11 +300,13 @@ violations contains "2.1: required value of 'Allow Archive Scanning' is 'Allowed
 
 # 2.2 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowBehaviorMonitoring
 default r_2_2 := false
+
 r_2_2 if {
 	_int_in("AllowBehaviorMonitoring", {1})
 }
 
 default e_2_2 := false
+
 e_2_2 if {
 	_set("AllowBehaviorMonitoring")
 }
@@ -310,11 +324,13 @@ violations contains "2.2: required value of 'Allow Behavior Monitoring' is 'Allo
 
 # 2.3 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowCloudProtection
 default r_2_3 := false
+
 r_2_3 if {
 	_absent_or_int_in("AllowCloudProtection", {1})
 }
 
 default e_2_3 := false
+
 e_2_3 if {
 	count(_settings) > 0
 }
@@ -332,11 +348,13 @@ violations contains "2.3: required value of 'Allow Cloud Protection' is 'Allowed
 
 # 2.4 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowEmailScanning
 default r_2_4 := false
+
 r_2_4 if {
 	_int_in("AllowEmailScanning", {1})
 }
 
 default e_2_4 := false
+
 e_2_4 if {
 	_set("AllowEmailScanning")
 }
@@ -354,11 +372,13 @@ violations contains "2.4: required value of 'Allow Email Scanning' is 'Allowed'"
 
 # 2.5 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowFullScanRemovableDriveScanning
 default r_2_5 := false
+
 r_2_5 if {
 	_int_in("AllowFullScanRemovableDriveScanning", {1})
 }
 
 default e_2_5 := false
+
 e_2_5 if {
 	_set("AllowFullScanRemovableDriveScanning")
 }
@@ -376,11 +396,13 @@ violations contains "2.5: required value of 'Allow Full Scan Removable Drive Sca
 
 # 2.6 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowOnAccessProtection
 default r_2_6 := false
+
 r_2_6 if {
 	_int_in("AllowOnAccessProtection", {1})
 }
 
 default e_2_6 := false
+
 e_2_6 if {
 	_set("AllowOnAccessProtection")
 }
@@ -398,11 +420,13 @@ violations contains "2.6: required value of 'Allow On Access Protection' is 'All
 
 # 2.7 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowRealtimeMonitoring
 default r_2_7 := false
+
 r_2_7 if {
 	_int_in("AllowRealtimeMonitoring", {1})
 }
 
 default e_2_7 := false
+
 e_2_7 if {
 	_set("AllowRealtimeMonitoring")
 }
@@ -420,11 +444,13 @@ violations contains "2.7: required value of 'Allow Realtime Monitoring' is 'Allo
 
 # 2.8 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowIOAVProtection
 default r_2_8 := false
+
 r_2_8 if {
 	_int_in("AllowIOAVProtection", {1})
 }
 
 default e_2_8 := false
+
 e_2_8 if {
 	_set("AllowIOAVProtection")
 }
@@ -442,11 +468,13 @@ violations contains "2.8: required value of 'Allow scanning of all downloaded fi
 
 # 2.9 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AllowScriptScanning
 default r_2_9 := false
+
 r_2_9 if {
 	_int_in("AllowScriptScanning", {1})
 }
 
 default e_2_9 := false
+
 e_2_9 if {
 	_set("AllowScriptScanning")
 }
@@ -464,11 +492,13 @@ violations contains "2.9: required value of 'Allow Script Scanning' is 'Allowed'
 
 # 2.10 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_10 := false
+
 r_2_10 if {
 	_asr_ok("56a863a9-875e-4185-98a7-b882c64b5ce5", {1})
 }
 
 default e_2_10 := false
+
 e_2_10 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -486,11 +516,13 @@ violations contains "2.10: required value of 'ASR: Block abuse of exploited vuln
 
 # 2.11 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_11 := false
+
 r_2_11 if {
 	_asr_ok("7674ba52-37eb-4a4f-a9a1-f0f9a1619a2c", {1})
 }
 
 default e_2_11 := false
+
 e_2_11 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -508,11 +540,13 @@ violations contains "2.11: required value of 'ASR: Block Adobe Reader from creat
 
 # 2.12 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_12 := false
+
 r_2_12 if {
 	_asr_ok("d4f940ab-401b-4efc-aadc-ad5f3c50688a", {1, 2})
 }
 
 default e_2_12 := false
+
 e_2_12 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -530,11 +564,13 @@ violations contains "2.12: required value of 'ASR: Block all Office applications
 
 # 2.13 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_13 := false
+
 r_2_13 if {
 	_asr_ok("9e6c4e1f-7d60-472f-ba1a-a39ef669e4b2", {1})
 }
 
 default e_2_13 := false
+
 e_2_13 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -552,11 +588,13 @@ violations contains "2.13: required value of 'ASR: Block credential stealing fro
 
 # 2.14 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_14 := false
+
 r_2_14 if {
 	_asr_ok("be9ba2d9-53ea-4cdc-84e5-9b1eeee46550", {1})
 }
 
 default e_2_14 := false
+
 e_2_14 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -574,11 +612,13 @@ violations contains "2.14: required value of 'ASR: Block executable content from
 
 # 2.15 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_15 := false
+
 r_2_15 if {
 	_asr_ok("01443614-cd74-433a-b99e-2ecdc07bfc25", {1, 2})
 }
 
 default e_2_15 := false
+
 e_2_15 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -596,11 +636,13 @@ violations contains "2.15: required value of 'ASR: Block executable files from r
 
 # 2.16 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_16 := false
+
 r_2_16 if {
 	_asr_ok("5beb7efe-fd9a-4556-801d-275e5ffc04cc", {1, 2})
 }
 
 default e_2_16 := false
+
 e_2_16 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -618,11 +660,13 @@ violations contains "2.16: required value of 'ASR: Block execution of potentiall
 
 # 2.17 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_17 := false
+
 r_2_17 if {
 	_asr_ok("d3e037e1-3eb8-44c8-a917-57927947596d", {1})
 }
 
 default e_2_17 := false
+
 e_2_17 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -640,11 +684,13 @@ violations contains "2.17: required value of 'ASR: Block JavaScript or VBScript 
 
 # 2.18 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_18 := false
+
 r_2_18 if {
 	_asr_ok("3b576869-a4ec-4529-8536-b80a7769e899", {1})
 }
 
 default e_2_18 := false
+
 e_2_18 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -662,11 +708,13 @@ violations contains "2.18: required value of 'ASR: Block Office applications fro
 
 # 2.19 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_19 := false
+
 r_2_19 if {
 	_asr_ok("75668c1f-73b5-4cf0-bb93-3ecf5cb7cc84", {1})
 }
 
 default e_2_19 := false
+
 e_2_19 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -684,11 +732,13 @@ violations contains "2.19: required value of 'ASR: Block Office applications fro
 
 # 2.20 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_20 := false
+
 r_2_20 if {
 	_asr_ok("26190899-1602-49e8-8b27-eb1d0a1ce869", {1, 2})
 }
 
 default e_2_20 := false
+
 e_2_20 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -706,11 +756,13 @@ violations contains "2.20: required value of 'ASR: Block Office communication ap
 
 # 2.21 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_21 := false
+
 r_2_21 if {
 	_asr_ok("e6db77e5-3df2-4cf1-b95a-636979351e5b", {1})
 }
 
 default e_2_21 := false
+
 e_2_21 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -728,11 +780,13 @@ violations contains "2.21: required value of 'ASR: Block persistence through WMI
 
 # 2.22 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_22 := false
+
 r_2_22 if {
 	_asr_ok("d1e49aac-8f56-4280-b9ba-993a6d77406c", {1, 2})
 }
 
 default e_2_22 := false
+
 e_2_22 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -750,11 +804,13 @@ violations contains "2.22: required value of 'ASR: Block process creations origi
 
 # 2.23 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_23 := false
+
 r_2_23 if {
 	_asr_ok("33ddedf1-c6e0-47cb-833e-de6133960387", {1})
 }
 
 default e_2_23 := false
+
 e_2_23 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -772,11 +828,13 @@ violations contains "2.23: required value of 'ASR: Block rebooting machine in Sa
 
 # 2.24 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_24 := false
+
 r_2_24 if {
 	_asr_ok("b2b3f03d-6a65-4f7b-a9c7-1c7ef74a9ba4", {1})
 }
 
 default e_2_24 := false
+
 e_2_24 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -794,11 +852,13 @@ violations contains "2.24: required value of 'ASR: Block untrusted and unsigned 
 
 # 2.25 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_25 := false
+
 r_2_25 if {
 	_asr_ok("92e97fa1-2edf-4476-bdd6-9dd0b4dddc7b", {1})
 }
 
 default e_2_25 := false
+
 e_2_25 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -816,11 +876,13 @@ violations contains "2.25: required value of 'ASR: Block Win32 API calls from Of
 
 # 2.26 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules
 default r_2_26 := false
+
 r_2_26 if {
 	_asr_ok("c1db55ab-c21a-4637-bb3f-a12568109d35", {1, 2})
 }
 
 default e_2_26 := false
+
 e_2_26 if {
 	_set("AttackSurfaceReductionRules")
 }
@@ -838,11 +900,13 @@ violations contains "2.26: required value of 'ASR: Use advanced protection again
 
 # 2.27 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/CheckForSignaturesBeforeRunningScan
 default r_2_27 := false
+
 r_2_27 if {
 	_int_in("CheckForSignaturesBeforeRunningScan", {1})
 }
 
 default e_2_27 := false
+
 e_2_27 if {
 	_set("CheckForSignaturesBeforeRunningScan")
 }
@@ -860,11 +924,13 @@ violations contains "2.27: required value of 'Check For Signatures Before Runnin
 
 # 2.28 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/CloudBlockLevel
 default r_2_28 := false
+
 r_2_28 if {
 	_int_in("CloudBlockLevel", {2, 4, 6})
 }
 
 default e_2_28 := false
+
 e_2_28 if {
 	_set("CloudBlockLevel")
 }
@@ -882,11 +948,13 @@ violations contains "2.28: required value of 'Cloud Block Level' is Enabled: Hig
 
 # 2.29 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/CloudExtendedTimeout
 default r_2_29 := false
+
 r_2_29 if {
 	_int_at_least("CloudExtendedTimeout", 1)
 }
 
 default e_2_29 := false
+
 e_2_29 if {
 	_set("CloudExtendedTimeout")
 }
@@ -904,11 +972,13 @@ violations contains "2.29: required value of 'Cloud Extended Timeout' is '1 or h
 
 # 2.30 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/DaysUntilAggressiveCatchupQuickScan
 default r_2_30 := false
+
 r_2_30 if {
 	_int_in("DaysUntilAggressiveCatchupQuickScan", {7})
 }
 
 default e_2_30 := false
+
 e_2_30 if {
 	_set("DaysUntilAggressiveCatchupQuickScan")
 }
@@ -926,11 +996,13 @@ violations contains "2.30: required value of 'Days Until Aggressive Catchup Quic
 
 # 2.31 (Automated, Level 2 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/EnableConvertWarnToBlock
 default r_2_31 := false
+
 r_2_31 if {
 	_int_in("EnableConvertWarnToBlock", {1})
 }
 
 default e_2_31 := false
+
 e_2_31 if {
 	_set("EnableConvertWarnToBlock")
 }
@@ -948,11 +1020,13 @@ violations contains "2.31: required value of 'Enable Convert Warn To Block' is '
 
 # 2.32 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/Reporting/EnableDynamicSignatureDroppedEventReporting
 default r_2_32 := false
+
 r_2_32 if {
 	_int_in("EnableDynamicSignatureDroppedEventReporting", {1})
 }
 
 default e_2_32 := false
+
 e_2_32 if {
 	_set("EnableDynamicSignatureDroppedEventReporting")
 }
@@ -970,11 +1044,13 @@ violations contains "2.32: required value of 'Enable Dynamic Signature Dropped E
 
 # 2.33 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/EnableFileHashComputation
 default r_2_33 := false
+
 r_2_33 if {
 	_int_in("EnableFileHashComputation", {1})
 }
 
 default e_2_33 := false
+
 e_2_33 if {
 	_set("EnableFileHashComputation")
 }
@@ -992,11 +1068,13 @@ violations contains "2.33: required value of 'Enable File Hash Computation' is '
 
 # 2.34 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/EnableNetworkProtection
 default r_2_34 := false
+
 r_2_34 if {
 	_int_in("EnableNetworkProtection", {1})
 }
 
 default e_2_34 := false
+
 e_2_34 if {
 	_set("EnableNetworkProtection")
 }
@@ -1014,11 +1092,13 @@ violations contains "2.34: required value of 'Enable Network Protection' is 'Ena
 
 # 2.35 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/HideExclusionsFromLocalUsers
 default r_2_35 := false
+
 r_2_35 if {
 	_int_in("HideExclusionsFromLocalUsers", {1})
 }
 
 default e_2_35 := false
+
 e_2_35 if {
 	_set("HideExclusionsFromLocalUsers")
 }
@@ -1036,11 +1116,13 @@ violations contains "2.35: required value of 'Hide Exclusions From Local Users' 
 
 # 2.36 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/OobeEnableRtpAndSigUpdate
 default r_2_36 := false
+
 r_2_36 if {
 	_int_in("OobeEnableRtpAndSigUpdate", {1})
 }
 
 default e_2_36 := false
+
 e_2_36 if {
 	_set("OobeEnableRtpAndSigUpdate")
 }
@@ -1058,11 +1140,13 @@ violations contains "2.36: required value of 'Oobe Enable Rtp And Sig Update' is
 
 # 2.37 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/PUAProtection
 default r_2_37 := false
+
 r_2_37 if {
 	_int_in("PUAProtection", {1})
 }
 
 default e_2_37 := false
+
 e_2_37 if {
 	_set("PUAProtection")
 }
@@ -1080,11 +1164,13 @@ violations contains "2.37: required value of 'PUA Protection' is 'PUA Protection
 
 # 2.38 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/QuickScanIncludeExclusions
 default r_2_38 := false
+
 r_2_38 if {
 	_int_in("QuickScanIncludeExclusions", {1})
 }
 
 default e_2_38 := false
+
 e_2_38 if {
 	_set("QuickScanIncludeExclusions")
 }
@@ -1102,11 +1188,13 @@ violations contains "2.38: required value of 'Quick Scan Include Exclusions' is 
 
 # 2.39 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/RealTimeScanDirection
 default r_2_39 := false
+
 r_2_39 if {
 	_int_in("RealTimeScanDirection", {0})
 }
 
 default e_2_39 := false
+
 e_2_39 if {
 	_set("RealTimeScanDirection")
 }
@@ -1124,11 +1212,13 @@ violations contains "2.39: required value of 'Real Time Scan Direction' is 'Moni
 
 # 2.40 (Automated, Level 2 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionAggressiveness
 default r_2_40 := false
+
 r_2_40 if {
 	_int_in("RemoteEncryptionProtectionAggressiveness", {1, 2})
 }
 
 default e_2_40 := false
+
 e_2_40 if {
 	_set("RemoteEncryptionProtectionAggressiveness")
 }
@@ -1146,11 +1236,13 @@ violations contains "2.40: required value of 'Remote Encryption Protection Aggre
 
 # 2.41 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionConfiguredState
 default r_2_41 := false
+
 r_2_41 if {
 	_int_in("RemoteEncryptionProtectionConfiguredState", {1, 2})
 }
 
 default e_2_41 := false
+
 e_2_41 if {
 	_set("RemoteEncryptionProtectionConfiguredState")
 }
@@ -1168,11 +1260,13 @@ violations contains "2.41: required value of 'Remote Encryption Protection Confi
 
 # 2.42 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScanParameter
 default r_2_42 := false
+
 r_2_42 if {
 	_int_in("ScanParameter", {1, 2})
 }
 
 default e_2_42 := false
+
 e_2_42 if {
 	_set("ScanParameter")
 }
@@ -1190,11 +1284,13 @@ violations contains "2.42: required value of 'Scan Parameter' is 'Quick Scan' or
 
 # 2.43 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleQuickScanTime
 default r_2_43 := false
+
 r_2_43 if {
 	_int_at_least("ScheduleQuickScanTime", 1)
 }
 
 default e_2_43 := false
+
 e_2_43 if {
 	_set("ScheduleQuickScanTime")
 }
@@ -1212,11 +1308,13 @@ violations contains "2.43: required value of 'Schedule Quick Scan Time' is '1' o
 
 # 2.44 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanTime
 default r_2_44 := false
+
 r_2_44 if {
 	_int_at_least("ScheduleScanTime", 1)
 }
 
 default e_2_44 := false
+
 e_2_44 if {
 	_set("ScheduleScanTime")
 }
@@ -1234,11 +1332,13 @@ violations contains "2.44: required value of 'Schedule Scan Time' is '1' or high
 
 # 2.45 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanDay
 default r_2_45 := false
+
 r_2_45 if {
 	_int_between("ScheduleScanDay", 0, 7)
 }
 
 default e_2_45 := false
+
 e_2_45 if {
 	_set("ScheduleScanDay")
 }
@@ -1256,11 +1356,13 @@ violations contains "2.45: required value of 'Schedule Scan Day' is 'Enabled: 0'
 
 # 2.46 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/SignatureUpdateInterval
 default r_2_46 := false
+
 r_2_46 if {
 	_int_between("SignatureUpdateInterval", 1, 4)
 }
 
 default e_2_46 := false
+
 e_2_46 if {
 	_set("SignatureUpdateInterval")
 }
@@ -1278,11 +1380,13 @@ violations contains "2.46: required value of 'Signature Update Interval' is '4' 
 
 # 2.47 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/SubmitSamplesConsent
 default r_2_47 := false
+
 r_2_47 if {
 	_int_in("SubmitSamplesConsent", {1, 3})
 }
 
 default e_2_47 := false
+
 e_2_47 if {
 	_set("SubmitSamplesConsent")
 }
@@ -1300,11 +1404,13 @@ violations contains "2.47: required value of 'Submit Samples Consent' is 'Enable
 
 # 2.48 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction
 default r_2_48 := false
+
 r_2_48 if {
 	_tsda_ok("2")
 }
 
 default e_2_48 := false
+
 e_2_48 if {
 	_set("ThreatSeverityDefaultAction")
 }
@@ -1322,11 +1428,13 @@ violations contains "2.48: required value of 'Remediation action for Moderate se
 
 # 2.49 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction
 default r_2_49 := false
+
 r_2_49 if {
 	_tsda_ok("4")
 }
 
 default e_2_49 := false
+
 e_2_49 if {
 	_set("ThreatSeverityDefaultAction")
 }
@@ -1344,11 +1452,13 @@ violations contains "2.49: required value of 'Remediation action for High severi
 
 # 2.50 (Automated, Level 1 - Workstation) ./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction
 default r_2_50 := false
+
 r_2_50 if {
 	_tsda_ok("5")
 }
 
 default e_2_50 := false
+
 e_2_50 if {
 	_set("ThreatSeverityDefaultAction")
 }
@@ -1369,562 +1479,452 @@ violations contains "CIS Intune Defender Antivirus: FAIL-CLOSED - facts 'input.i
 }
 
 sections := {
- "1": "Microsoft Defender Antivirus",
- "2": "Defender"
+	"1": "Microsoft Defender Antivirus",
+	"2": "Defender",
 }
 
 # id -> CIS title, level, status, profile, and the CSP setting it reads (name and full OMA-URI)
 recommendations := {
- "1.3.1": {
-  "title": "required value of 'Configure local setting override for reporting to Microsoft MAPS' is 'Disabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "Spynet_LocalSettingOverrideSpynetReporting",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Spynet_LocalSettingOverrideSpynetReporting"
- },
- "1.3.2": {
-  "title": "required value of 'Configure the 'Block at First Sight' feature' is 'Enabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "DisableBlockAtFirstSeen",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableBlockAtFirstSeen"
- },
- "1.8.1": {
-  "title": "required value of 'Turn on process scanning whenever real-time protection is enabled' is 'Enabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "RealtimeProtection_DisableScanOnRealtimeEnable",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/RealtimeProtection_DisableScanOnRealtimeEnable"
- },
- "1.10.1": {
-  "title": "required value of 'Configure Watson events' is 'Disabled'",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Workstation"
-  ],
-  "setting": "Reporting_DisablegenericrePorts",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Reporting_DisablegenericrePorts"
- },
- "1.14": {
-  "title": "required value of 'Turn off routine remediation' is 'Disabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "DisableRoutinelyTakingAction",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableRoutinelyTakingAction"
- },
- "2.1": {
-  "title": "required value of 'Allow Archive Scanning' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowArchiveScanning",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowArchiveScanning"
- },
- "2.2": {
-  "title": "required value of 'Allow Behavior Monitoring' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowBehaviorMonitoring",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowBehaviorMonitoring"
- },
- "2.3": {
-  "title": "required value of 'Allow Cloud Protection' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowCloudProtection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowCloudProtection"
- },
- "2.4": {
-  "title": "required value of 'Allow Email Scanning' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowEmailScanning",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowEmailScanning"
- },
- "2.5": {
-  "title": "required value of 'Allow Full Scan Removable Drive Scanning' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowFullScanRemovableDriveScanning",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowFullScanRemovableDriveScanning"
- },
- "2.6": {
-  "title": "required value of 'Allow On Access Protection' is 'Allow'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowOnAccessProtection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowOnAccessProtection"
- },
- "2.7": {
-  "title": "required value of 'Allow Realtime Monitoring' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowRealtimeMonitoring",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowRealtimeMonitoring"
- },
- "2.8": {
-  "title": "required value of 'Allow scanning of all downloaded files and attachments' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowIOAVProtection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowIOAVProtection"
- },
- "2.9": {
-  "title": "required value of 'Allow Script Scanning' is 'Allowed'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AllowScriptScanning",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowScriptScanning"
- },
- "2.10": {
-  "title": "required value of 'ASR: Block abuse of exploited vulnerable signed drivers' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.11": {
-  "title": "required value of 'ASR: Block Adobe Reader from creating child processes' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.12": {
-  "title": "required value of 'ASR: Block all Office applications from creating child processes' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.13": {
-  "title": "required value of 'ASR: Block credential stealing from the Windows local security authority subsystem' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.14": {
-  "title": "required value of 'ASR: Block executable content from email client and webmail' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.15": {
-  "title": "required value of 'ASR: Block executable files from running unless they meet a prevalence, age, or trusted list criterion' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.16": {
-  "title": "required value of 'ASR: Block execution of potentially obfuscated scripts' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.17": {
-  "title": "required value of 'ASR: Block JavaScript or VBScript from launching downloaded executable content' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.18": {
-  "title": "required value of 'ASR: Block Office applications from creating executable content' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.19": {
-  "title": "required value of 'ASR: Block Office applications from injecting code into other processes' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.20": {
-  "title": "required value of 'ASR: Block Office communication application from creating child processes' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.21": {
-  "title": "required value of 'ASR: Block persistence through WMI event subscription' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.22": {
-  "title": "required value of 'ASR: Block process creations originating from PSExec and WMI commands' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.23": {
-  "title": "required value of 'ASR: Block rebooting machine in Safe Mode' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.24": {
-  "title": "required value of 'ASR: Block untrusted and unsigned processes that run from USB' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.25": {
-  "title": "required value of 'ASR: Block Win32 API calls from Office macros' is 'Block'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.26": {
-  "title": "required value of 'ASR: Use advanced protection against ransomware' is 'Audit' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "AttackSurfaceReductionRules",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules"
- },
- "2.27": {
-  "title": "required value of 'Check For Signatures Before Running Scan' is 'Enabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "CheckForSignaturesBeforeRunningScan",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CheckForSignaturesBeforeRunningScan"
- },
- "2.28": {
-  "title": "required value of 'Cloud Block Level' is Enabled: High blocking level' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "CloudBlockLevel",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CloudBlockLevel"
- },
- "2.29": {
-  "title": "required value of 'Cloud Extended Timeout' is '1 or higher, but not 0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "CloudExtendedTimeout",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CloudExtendedTimeout"
- },
- "2.30": {
-  "title": "required value of 'Days Until Aggressive Catchup Quick Scan' is '7' days",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "DaysUntilAggressiveCatchupQuickScan",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/DaysUntilAggressiveCatchupQuickScan"
- },
- "2.31": {
-  "title": "required value of 'Enable Convert Warn To Block' is 'Warn verdicts are converted to block'",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Workstation"
-  ],
-  "setting": "EnableConvertWarnToBlock",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/EnableConvertWarnToBlock"
- },
- "2.32": {
-  "title": "required value of 'Enable Dynamic Signature Dropped Event Reporting' is 'Dynamic Security intelligence update events will be reported.'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "EnableDynamicSignatureDroppedEventReporting",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/Reporting/EnableDynamicSignatureDroppedEventReporting"
- },
- "2.33": {
-  "title": "required value of 'Enable File Hash Computation' is 'Enable'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "EnableFileHashComputation",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/EnableFileHashComputation"
- },
- "2.34": {
-  "title": "required value of 'Enable Network Protection' is 'Enabled (block mode)'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "EnableNetworkProtection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/EnableNetworkProtection"
- },
- "2.35": {
-  "title": "required value of 'Hide Exclusions From Local Users' is 'Enabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "HideExclusionsFromLocalUsers",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/HideExclusionsFromLocalUsers"
- },
- "2.36": {
-  "title": "required value of 'Oobe Enable Rtp And Sig Update' is 'Enabled'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "OobeEnableRtpAndSigUpdate",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/OobeEnableRtpAndSigUpdate"
- },
- "2.37": {
-  "title": "required value of 'PUA Protection' is 'PUA Protection on'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "PUAProtection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/PUAProtection"
- },
- "2.38": {
-  "title": "required value of 'Quick Scan Include Exclusions' is '1'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "QuickScanIncludeExclusions",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/QuickScanIncludeExclusions"
- },
- "2.39": {
-  "title": "required value of 'Real Time Scan Direction' is 'Monitor all files bi-directional'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "RealTimeScanDirection",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/RealTimeScanDirection"
- },
- "2.40": {
-  "title": "required value of 'Remote Encryption Protection Aggressiveness' is 'Medium' or higher",
-  "level": 2,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 2 - Workstation"
-  ],
-  "setting": "RemoteEncryptionProtectionAggressiveness",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionAggressiveness"
- },
- "2.41": {
-  "title": "required value of 'Remote Encryption Protection Configured State' is 'Audit: Generate EDR detections without blocking' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "RemoteEncryptionProtectionConfiguredState",
-  "oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionConfiguredState"
- },
- "2.42": {
-  "title": "required value of 'Scan Parameter' is 'Quick Scan' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ScanParameter",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScanParameter"
- },
- "2.43": {
-  "title": "required value of 'Schedule Quick Scan Time' is '1' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ScheduleQuickScanTime",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleQuickScanTime"
- },
- "2.44": {
-  "title": "required value of 'Schedule Scan Time' is '1' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ScheduleScanTime",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanTime"
- },
- "2.45": {
-  "title": "required value of 'Schedule Scan Day' is 'Enabled: 0' or higher, but not '8'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ScheduleScanDay",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanDay"
- },
- "2.46": {
-  "title": "required value of 'Signature Update Interval' is '4' or fewer, but not '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "SignatureUpdateInterval",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/SignatureUpdateInterval"
- },
- "2.47": {
-  "title": "required value of 'Submit Samples Consent' is 'Enabled: Send safe samples automatically' or higher",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "SubmitSamplesConsent",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/SubmitSamplesConsent"
- },
- "2.48": {
-  "title": "required value of 'Remediation action for Moderate severity threats' is 'Quarantine or Remove'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ThreatSeverityDefaultAction",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction"
- },
- "2.49": {
-  "title": "required value of 'Remediation action for High severity threats' is 'Quarantine or Remove'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ThreatSeverityDefaultAction",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction"
- },
- "2.50": {
-  "title": "required value of 'Remediation action for Severe threats' is 'Quarantine or Remove'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - Workstation"
-  ],
-  "setting": "ThreatSeverityDefaultAction",
-  "oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction"
- }
+	"1.3.1": {
+		"title": "required value of 'Configure local setting override for reporting to Microsoft MAPS' is 'Disabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "Spynet_LocalSettingOverrideSpynetReporting",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Spynet_LocalSettingOverrideSpynetReporting",
+	},
+	"1.3.2": {
+		"title": "required value of 'Configure the 'Block at First Sight' feature' is 'Enabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "DisableBlockAtFirstSeen",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableBlockAtFirstSeen",
+	},
+	"1.8.1": {
+		"title": "required value of 'Turn on process scanning whenever real-time protection is enabled' is 'Enabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "RealtimeProtection_DisableScanOnRealtimeEnable",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/RealtimeProtection_DisableScanOnRealtimeEnable",
+	},
+	"1.10.1": {
+		"title": "required value of 'Configure Watson events' is 'Disabled'",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Workstation"],
+		"setting": "Reporting_DisablegenericrePorts",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/Reporting_DisablegenericrePorts",
+	},
+	"1.14": {
+		"title": "required value of 'Turn off routine remediation' is 'Disabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "DisableRoutinelyTakingAction",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/ADMX_MicrosoftDefenderAntivirus/DisableRoutinelyTakingAction",
+	},
+	"2.1": {
+		"title": "required value of 'Allow Archive Scanning' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowArchiveScanning",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowArchiveScanning",
+	},
+	"2.2": {
+		"title": "required value of 'Allow Behavior Monitoring' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowBehaviorMonitoring",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowBehaviorMonitoring",
+	},
+	"2.3": {
+		"title": "required value of 'Allow Cloud Protection' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowCloudProtection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowCloudProtection",
+	},
+	"2.4": {
+		"title": "required value of 'Allow Email Scanning' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowEmailScanning",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowEmailScanning",
+	},
+	"2.5": {
+		"title": "required value of 'Allow Full Scan Removable Drive Scanning' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowFullScanRemovableDriveScanning",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowFullScanRemovableDriveScanning",
+	},
+	"2.6": {
+		"title": "required value of 'Allow On Access Protection' is 'Allow'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowOnAccessProtection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowOnAccessProtection",
+	},
+	"2.7": {
+		"title": "required value of 'Allow Realtime Monitoring' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowRealtimeMonitoring",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowRealtimeMonitoring",
+	},
+	"2.8": {
+		"title": "required value of 'Allow scanning of all downloaded files and attachments' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowIOAVProtection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowIOAVProtection",
+	},
+	"2.9": {
+		"title": "required value of 'Allow Script Scanning' is 'Allowed'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AllowScriptScanning",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AllowScriptScanning",
+	},
+	"2.10": {
+		"title": "required value of 'ASR: Block abuse of exploited vulnerable signed drivers' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.11": {
+		"title": "required value of 'ASR: Block Adobe Reader from creating child processes' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.12": {
+		"title": "required value of 'ASR: Block all Office applications from creating child processes' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.13": {
+		"title": "required value of 'ASR: Block credential stealing from the Windows local security authority subsystem' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.14": {
+		"title": "required value of 'ASR: Block executable content from email client and webmail' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.15": {
+		"title": "required value of 'ASR: Block executable files from running unless they meet a prevalence, age, or trusted list criterion' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.16": {
+		"title": "required value of 'ASR: Block execution of potentially obfuscated scripts' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.17": {
+		"title": "required value of 'ASR: Block JavaScript or VBScript from launching downloaded executable content' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.18": {
+		"title": "required value of 'ASR: Block Office applications from creating executable content' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.19": {
+		"title": "required value of 'ASR: Block Office applications from injecting code into other processes' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.20": {
+		"title": "required value of 'ASR: Block Office communication application from creating child processes' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.21": {
+		"title": "required value of 'ASR: Block persistence through WMI event subscription' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.22": {
+		"title": "required value of 'ASR: Block process creations originating from PSExec and WMI commands' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.23": {
+		"title": "required value of 'ASR: Block rebooting machine in Safe Mode' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.24": {
+		"title": "required value of 'ASR: Block untrusted and unsigned processes that run from USB' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.25": {
+		"title": "required value of 'ASR: Block Win32 API calls from Office macros' is 'Block'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.26": {
+		"title": "required value of 'ASR: Use advanced protection against ransomware' is 'Audit' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "AttackSurfaceReductionRules",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/AttackSurfaceReductionRules",
+	},
+	"2.27": {
+		"title": "required value of 'Check For Signatures Before Running Scan' is 'Enabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "CheckForSignaturesBeforeRunningScan",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CheckForSignaturesBeforeRunningScan",
+	},
+	"2.28": {
+		"title": "required value of 'Cloud Block Level' is Enabled: High blocking level' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "CloudBlockLevel",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CloudBlockLevel",
+	},
+	"2.29": {
+		"title": "required value of 'Cloud Extended Timeout' is '1 or higher, but not 0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "CloudExtendedTimeout",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/CloudExtendedTimeout",
+	},
+	"2.30": {
+		"title": "required value of 'Days Until Aggressive Catchup Quick Scan' is '7' days",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "DaysUntilAggressiveCatchupQuickScan",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/DaysUntilAggressiveCatchupQuickScan",
+	},
+	"2.31": {
+		"title": "required value of 'Enable Convert Warn To Block' is 'Warn verdicts are converted to block'",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Workstation"],
+		"setting": "EnableConvertWarnToBlock",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/EnableConvertWarnToBlock",
+	},
+	"2.32": {
+		"title": "required value of 'Enable Dynamic Signature Dropped Event Reporting' is 'Dynamic Security intelligence update events will be reported.'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "EnableDynamicSignatureDroppedEventReporting",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/Reporting/EnableDynamicSignatureDroppedEventReporting",
+	},
+	"2.33": {
+		"title": "required value of 'Enable File Hash Computation' is 'Enable'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "EnableFileHashComputation",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/EnableFileHashComputation",
+	},
+	"2.34": {
+		"title": "required value of 'Enable Network Protection' is 'Enabled (block mode)'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "EnableNetworkProtection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/EnableNetworkProtection",
+	},
+	"2.35": {
+		"title": "required value of 'Hide Exclusions From Local Users' is 'Enabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "HideExclusionsFromLocalUsers",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/HideExclusionsFromLocalUsers",
+	},
+	"2.36": {
+		"title": "required value of 'Oobe Enable Rtp And Sig Update' is 'Enabled'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "OobeEnableRtpAndSigUpdate",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/OobeEnableRtpAndSigUpdate",
+	},
+	"2.37": {
+		"title": "required value of 'PUA Protection' is 'PUA Protection on'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "PUAProtection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/PUAProtection",
+	},
+	"2.38": {
+		"title": "required value of 'Quick Scan Include Exclusions' is '1'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "QuickScanIncludeExclusions",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/QuickScanIncludeExclusions",
+	},
+	"2.39": {
+		"title": "required value of 'Real Time Scan Direction' is 'Monitor all files bi-directional'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "RealTimeScanDirection",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/RealTimeScanDirection",
+	},
+	"2.40": {
+		"title": "required value of 'Remote Encryption Protection Aggressiveness' is 'Medium' or higher",
+		"level": 2,
+		"assessment": "Automated",
+		"profiles": ["Level 2 - Workstation"],
+		"setting": "RemoteEncryptionProtectionAggressiveness",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionAggressiveness",
+	},
+	"2.41": {
+		"title": "required value of 'Remote Encryption Protection Configured State' is 'Audit: Generate EDR detections without blocking' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "RemoteEncryptionProtectionConfiguredState",
+		"oma_uri": "./Device/Vendor/MSFT/Defender/Configuration/BehavioralNetworkBlocks/RemoteEncryptionProtection/RemoteEncryptionProtectionConfiguredState",
+	},
+	"2.42": {
+		"title": "required value of 'Scan Parameter' is 'Quick Scan' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ScanParameter",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScanParameter",
+	},
+	"2.43": {
+		"title": "required value of 'Schedule Quick Scan Time' is '1' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ScheduleQuickScanTime",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleQuickScanTime",
+	},
+	"2.44": {
+		"title": "required value of 'Schedule Scan Time' is '1' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ScheduleScanTime",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanTime",
+	},
+	"2.45": {
+		"title": "required value of 'Schedule Scan Day' is 'Enabled: 0' or higher, but not '8'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ScheduleScanDay",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ScheduleScanDay",
+	},
+	"2.46": {
+		"title": "required value of 'Signature Update Interval' is '4' or fewer, but not '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "SignatureUpdateInterval",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/SignatureUpdateInterval",
+	},
+	"2.47": {
+		"title": "required value of 'Submit Samples Consent' is 'Enabled: Send safe samples automatically' or higher",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "SubmitSamplesConsent",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/SubmitSamplesConsent",
+	},
+	"2.48": {
+		"title": "required value of 'Remediation action for Moderate severity threats' is 'Quarantine or Remove'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ThreatSeverityDefaultAction",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction",
+	},
+	"2.49": {
+		"title": "required value of 'Remediation action for High severity threats' is 'Quarantine or Remove'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ThreatSeverityDefaultAction",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction",
+	},
+	"2.50": {
+		"title": "required value of 'Remediation action for Severe threats' is 'Quarantine or Remove'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - Workstation"],
+		"setting": "ThreatSeverityDefaultAction",
+		"oma_uri": "./Device/Vendor/MSFT/Policy/Config/Defender/ThreatSeverityDefaultAction",
+	},
 }
 
 compliance_report := {

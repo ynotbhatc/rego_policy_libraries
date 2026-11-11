@@ -43,7 +43,9 @@ ctrl_alt_del_disabled if {
 	input.kernel_params["kernel.ctrl-alt-del"] == "0"
 }
 
-status_ol09_00_002413 := "Not_a_Finding" if { ctrl_alt_del_disabled } else := "Open"
+status_ol09_00_002413 := "Not_a_Finding" if ctrl_alt_del_disabled
+
+else := "Open"
 
 finding_ol09_00_002413 := {
 	"vuln_id": "V-271752",
@@ -62,7 +64,9 @@ fips_mode_enabled if {
 	input.fips_mode == true
 }
 
-status_ol09_00_000070 := "Not_a_Finding" if { fips_mode_enabled } else := "Open"
+status_ol09_00_000070 := "Not_a_Finding" if fips_mode_enabled
+
+else := "Open"
 
 finding_ol09_00_000070 := {
 	"vuln_id": "V-271454",
@@ -85,7 +89,9 @@ crypto_policy_fips if {
 	input.crypto_policy == "FIPS:OSPP"
 }
 
-status_ol09_00_000060 := "Not_a_Finding" if { crypto_policy_fips } else := "Open"
+status_ol09_00_000060 := "Not_a_Finding" if crypto_policy_fips
+
+else := "Open"
 
 finding_ol09_00_000060 := {
 	"vuln_id": "V-271452",
@@ -112,7 +118,9 @@ ctrl_alt_del_graphical_disabled if {
 	not input.packages["gnome-desktop3"]
 }
 
-status_ol09_00_002107 := "Not_a_Finding" if { ctrl_alt_del_graphical_disabled } else := "Open"
+status_ol09_00_002107 := "Not_a_Finding" if ctrl_alt_del_graphical_disabled
+
+else := "Open"
 
 finding_ol09_00_002107 := {
 	"vuln_id": "V-271677",
@@ -131,7 +139,9 @@ selinux_targeted if {
 	input.selinux.policy == "targeted"
 }
 
-status_ol09_00_000065 := "Not_a_Finding" if { selinux_targeted } else := "Open"
+status_ol09_00_000065 := "Not_a_Finding" if selinux_targeted
+
+else := "Open"
 
 finding_ol09_00_000065 := {
 	"vuln_id": "V-271453",
@@ -150,7 +160,9 @@ grub_password_set if {
 	input.grub_config.password_set == true
 }
 
-status_ol09_00_001115 := "Not_a_Finding" if { grub_password_set } else := "Open"
+status_ol09_00_001115 := "Not_a_Finding" if grub_password_set
+
+else := "Open"
 
 finding_ol09_00_001115 := {
 	"vuln_id": "V-271635",
@@ -173,7 +185,9 @@ login_banner_set if {
 	contains(input.login_banner.issue, "authorized users only")
 }
 
-status_ol09_00_000090 := "Not_a_Finding" if { login_banner_set } else := "Open"
+status_ol09_00_000090 := "Not_a_Finding" if login_banner_set
+
+else := "Open"
 
 finding_ol09_00_000090 := {
 	"vuln_id": "V-271455",
@@ -193,7 +207,9 @@ ssh_banner_set if {
 	input.ssh_config.Banner != "none"
 }
 
-status_ol09_00_000256 := "Not_a_Finding" if { ssh_banner_set } else := "Open"
+status_ol09_00_000256 := "Not_a_Finding" if ssh_banner_set
+
+else := "Open"
 
 finding_ol09_00_000256 := {
 	"vuln_id": "V-271487",
@@ -212,7 +228,9 @@ aslr_enabled if {
 	input.kernel_params["kernel.randomize_va_space"] == "2"
 }
 
-status_ol09_00_002423 := "Not_a_Finding" if { aslr_enabled } else := "Open"
+status_ol09_00_002423 := "Not_a_Finding" if aslr_enabled
+
+else := "Open"
 
 finding_ol09_00_002423 := {
 	"vuln_id": "V-271761",
@@ -231,7 +249,9 @@ dmesg_restricted if {
 	input.kernel_params["kernel.dmesg_restrict"] == "1"
 }
 
-status_ol09_00_002406 := "Not_a_Finding" if { dmesg_restricted } else := "Open"
+status_ol09_00_002406 := "Not_a_Finding" if dmesg_restricted
+
+else := "Open"
 
 finding_ol09_00_002406 := {
 	"vuln_id": "V-271745",
@@ -250,7 +270,9 @@ perf_event_restricted if {
 	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
 }
 
-status_ol09_00_002410 := "Not_a_Finding" if { perf_event_restricted } else := "Open"
+status_ol09_00_002410 := "Not_a_Finding" if perf_event_restricted
+
+else := "Open"
 
 finding_ol09_00_002410 := {
 	"vuln_id": "V-271749",
@@ -269,7 +291,9 @@ bpf_restricted if {
 	input.kernel_params["kernel.unprivileged_bpf_disabled"] == "1"
 }
 
-status_ol09_00_002428 := "Not_a_Finding" if { bpf_restricted } else := "Open"
+status_ol09_00_002428 := "Not_a_Finding" if bpf_restricted
+
+else := "Open"
 
 finding_ol09_00_002428 := {
 	"vuln_id": "V-271766",
@@ -288,7 +312,9 @@ bpf_jit_hardened if {
 	input.kernel_params["net.core.bpf_jit_harden"] == "2"
 }
 
-status_ol09_00_002430 := "Not_a_Finding" if { bpf_jit_hardened } else := "Open"
+status_ol09_00_002430 := "Not_a_Finding" if bpf_jit_hardened
+
+else := "Open"
 
 finding_ol09_00_002430 := {
 	"vuln_id": "V-271768",
@@ -311,7 +337,9 @@ usb_storage_disabled if {
 	input.kernel_modules["usb-storage"].blacklisted == true
 }
 
-status_ol09_00_000047 := "Not_a_Finding" if { usb_storage_disabled } else := "Open"
+status_ol09_00_000047 := "Not_a_Finding" if usb_storage_disabled
+
+else := "Open"
 
 finding_ol09_00_000047 := {
 	"vuln_id": "V-271450",
@@ -334,7 +362,9 @@ firewire_disabled if {
 	input.kernel_modules["firewire-core"].blacklisted == true
 }
 
-status_ol09_00_000042 := "Not_a_Finding" if { firewire_disabled } else := "Open"
+status_ol09_00_000042 := "Not_a_Finding" if firewire_disabled
+
+else := "Open"
 
 finding_ol09_00_000042 := {
 	"vuln_id": "V-271445",
@@ -353,7 +383,9 @@ aide_cron_configured if {
 	input.aide_config.cron_job == true
 }
 
-status_ol09_00_000301 := "Not_a_Finding" if { aide_cron_configured } else := "Open"
+status_ol09_00_000301 := "Not_a_Finding" if aide_cron_configured
+
+else := "Open"
 
 finding_ol09_00_000301 := {
 	"vuln_id": "V-271497",
@@ -372,7 +404,9 @@ aide_installed if {
 	input.packages.aide == true
 }
 
-status_ol09_00_000302 := "Not_a_Finding" if { aide_installed } else := "Open"
+status_ol09_00_000302 := "Not_a_Finding" if aide_installed
+
+else := "Open"
 
 finding_ol09_00_000302 := {
 	"vuln_id": "V-271498",
@@ -393,7 +427,9 @@ tmp_separate_partition if {
 	mount.device != "tmpfs"
 }
 
-status_ol09_00_000004 := "Not_a_Finding" if { tmp_separate_partition } else := "Open"
+status_ol09_00_000004 := "Not_a_Finding" if tmp_separate_partition
+
+else := "Open"
 
 finding_ol09_00_000004 := {
 	"vuln_id": "V-271434",
@@ -414,7 +450,9 @@ tmp_nodev if {
 	"nodev" in mount.options
 }
 
-status_ol09_00_002070 := "Not_a_Finding" if { tmp_nodev } else := "Open"
+status_ol09_00_002070 := "Not_a_Finding" if tmp_nodev
+
+else := "Open"
 
 finding_ol09_00_002070 := {
 	"vuln_id": "V-271666",
@@ -435,7 +473,9 @@ tmp_nosuid if {
 	"nosuid" in mount.options
 }
 
-status_ol09_00_002071 := "Not_a_Finding" if { tmp_nosuid } else := "Open"
+status_ol09_00_002071 := "Not_a_Finding" if tmp_nosuid
+
+else := "Open"
 
 finding_ol09_00_002071 := {
 	"vuln_id": "V-271667",
@@ -456,7 +496,9 @@ tmp_noexec if {
 	"noexec" in mount.options
 }
 
-status_ol09_00_002072 := "Not_a_Finding" if { tmp_noexec } else := "Open"
+status_ol09_00_002072 := "Not_a_Finding" if tmp_noexec
+
+else := "Open"
 
 finding_ol09_00_002072 := {
 	"vuln_id": "V-271668",
@@ -480,7 +522,9 @@ var_log_separate if {
 	mount.mount == "/var/log"
 }
 
-status_ol09_00_000006 := "Not_a_Finding" if { var_log_separate } else := "Open"
+status_ol09_00_000006 := "Not_a_Finding" if var_log_separate
+
+else := "Open"
 
 finding_ol09_00_000006 := {
 	"vuln_id": "V-271436",
@@ -522,9 +566,7 @@ cat_ii_findings := [
 	finding_ol09_00_002072,
 ]
 
-cat_iii_findings := [
-	finding_ol09_00_000006,
-]
+cat_iii_findings := [finding_ol09_00_000006]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

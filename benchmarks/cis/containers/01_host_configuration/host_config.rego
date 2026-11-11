@@ -25,151 +25,151 @@ import rego.v1
 default separate_partition_for_containers := false
 
 separate_partition_for_containers if {
-    input.docker_partition.exists == true
-    input.docker_partition.mount_point == "/var/lib/docker"
+	input.docker_partition.exists == true
+	input.docker_partition.mount_point == "/var/lib/docker"
 }
 
 # CIS 1.2 - only trusted users must be allowed to control Docker daemon
 default trusted_docker_users := false
 
 trusted_docker_users if {
-    # evidence required: an absent member list must not pass (empty list is fine)
-    is_array(input.docker_group_members)
-    count([user | user := input.docker_group_members[_]; not user in input.trusted_users]) == 0
+	# evidence required: an absent member list must not pass (empty list is fine)
+	is_array(input.docker_group_members)
+	count([user | user := input.docker_group_members[_]; not user in input.trusted_users]) == 0
 }
 
 # CIS 1.3 - auditing must be explicitly configured for the Docker daemon
 default docker_daemon_auditing := false
 
 docker_daemon_auditing if {
-    "/usr/bin/dockerd" in input.audit_rules
+	"/usr/bin/dockerd" in input.audit_rules
 }
 
 # CIS 1.4 - auditing must be explicitly configured for Docker files and directories
 default docker_files_auditing := false
 
 docker_files_auditing if {
-    every path in [
-        "/var/lib/docker",
-        "/etc/docker",
-        "/lib/systemd/system/docker.service",
-        "/lib/systemd/system/docker.socket",
-        "/etc/default/docker",
-        "/etc/sysconfig/docker",
-        "/usr/bin/docker-containerd",
-        "/usr/bin/docker-runc"
-    ] {
-        path in input.audit_rules
-    }
+	every path in [
+		"/var/lib/docker",
+		"/etc/docker",
+		"/lib/systemd/system/docker.service",
+		"/lib/systemd/system/docker.socket",
+		"/etc/default/docker",
+		"/etc/sysconfig/docker",
+		"/usr/bin/docker-containerd",
+		"/usr/bin/docker-runc",
+	] {
+		path in input.audit_rules
+	}
 }
 
 # CIS 1.5 - auditing must be explicitly configured for /etc/default/docker
 default default_docker_auditing := false
 
 default_docker_auditing if {
-    "/etc/default/docker" in input.audit_rules
+	"/etc/default/docker" in input.audit_rules
 }
 
 # CIS 1.6 - auditing must be explicitly configured for /etc/sysconfig/docker
 default sysconfig_docker_auditing := false
 
 sysconfig_docker_auditing if {
-    "/etc/sysconfig/docker" in input.audit_rules
+	"/etc/sysconfig/docker" in input.audit_rules
 }
 
 # CIS 1.7 - auditing must be explicitly configured for /etc/docker/daemon.json
 default daemon_json_auditing := false
 
 daemon_json_auditing if {
-    "/etc/docker/daemon.json" in input.audit_rules
+	"/etc/docker/daemon.json" in input.audit_rules
 }
 
 # CIS 1.8 - auditing must be explicitly configured for /usr/bin/docker-containerd
 default containerd_auditing := false
 
 containerd_auditing if {
-    "/usr/bin/docker-containerd" in input.audit_rules
+	"/usr/bin/docker-containerd" in input.audit_rules
 }
 
 # CIS 1.9 - auditing must be explicitly configured for /usr/bin/docker-runc
 default runc_auditing := false
 
 runc_auditing if {
-    "/usr/bin/docker-runc" in input.audit_rules
+	"/usr/bin/docker-runc" in input.audit_rules
 }
 
 # CIS 1.10 - auditing must be explicitly configured for /usr/bin/docker
 default docker_binary_auditing := false
 
 docker_binary_auditing if {
-    "/usr/bin/docker" in input.audit_rules
+	"/usr/bin/docker" in input.audit_rules
 }
 
 # CIS 1.11 - auditing must be explicitly configured for /var/lib/docker
 default docker_lib_auditing := false
 
 docker_lib_auditing if {
-    "/var/lib/docker" in input.audit_rules
+	"/var/lib/docker" in input.audit_rules
 }
 
 # CIS 1.12 - auditing must be explicitly configured for /etc/docker
 default docker_etc_auditing := false
 
 docker_etc_auditing if {
-    "/etc/docker" in input.audit_rules
+	"/etc/docker" in input.audit_rules
 }
 
 # CIS 1.13 - auditing must be explicitly configured for docker.service
 default docker_service_auditing := false
 
 docker_service_auditing if {
-    some path in input.audit_rules
-    contains(path, "docker.service")
+	some path in input.audit_rules
+	contains(path, "docker.service")
 }
 
 # CIS 1.14 - auditing must be explicitly configured for docker.socket
 default docker_socket_auditing := false
 
 docker_socket_auditing if {
-    some path in input.audit_rules
-    contains(path, "docker.socket")
+	some path in input.audit_rules
+	contains(path, "docker.socket")
 }
 
 # Aggregate Docker host compliance
 default docker_host_compliant := false
 
 docker_host_compliant if {
-    separate_partition_for_containers
-    trusted_docker_users
-    docker_daemon_auditing
-    docker_files_auditing
-    default_docker_auditing
-    sysconfig_docker_auditing
-    daemon_json_auditing
-    containerd_auditing
-    runc_auditing
-    docker_binary_auditing
-    docker_lib_auditing
-    docker_etc_auditing
-    docker_service_auditing
-    docker_socket_auditing
+	separate_partition_for_containers
+	trusted_docker_users
+	docker_daemon_auditing
+	docker_files_auditing
+	default_docker_auditing
+	sysconfig_docker_auditing
+	daemon_json_auditing
+	containerd_auditing
+	runc_auditing
+	docker_binary_auditing
+	docker_lib_auditing
+	docker_etc_auditing
+	docker_service_auditing
+	docker_socket_auditing
 }
 
 # Detailed Docker host compliance report
 docker_host_compliance := {
-    "separate_partition_for_containers": separate_partition_for_containers,
-    "trusted_docker_users": trusted_docker_users,
-    "docker_daemon_auditing": docker_daemon_auditing,
-    "docker_files_auditing": docker_files_auditing,
-    "default_docker_auditing": default_docker_auditing,
-    "sysconfig_docker_auditing": sysconfig_docker_auditing,
-    "daemon_json_auditing": daemon_json_auditing,
-    "containerd_auditing": containerd_auditing,
-    "runc_auditing": runc_auditing,
-    "docker_binary_auditing": docker_binary_auditing,
-    "docker_lib_auditing": docker_lib_auditing,
-    "docker_etc_auditing": docker_etc_auditing,
-    "docker_service_auditing": docker_service_auditing,
-    "docker_socket_auditing": docker_socket_auditing,
-    "overall_compliant": docker_host_compliant
+	"separate_partition_for_containers": separate_partition_for_containers,
+	"trusted_docker_users": trusted_docker_users,
+	"docker_daemon_auditing": docker_daemon_auditing,
+	"docker_files_auditing": docker_files_auditing,
+	"default_docker_auditing": default_docker_auditing,
+	"sysconfig_docker_auditing": sysconfig_docker_auditing,
+	"daemon_json_auditing": daemon_json_auditing,
+	"containerd_auditing": containerd_auditing,
+	"runc_auditing": runc_auditing,
+	"docker_binary_auditing": docker_binary_auditing,
+	"docker_lib_auditing": docker_lib_auditing,
+	"docker_etc_auditing": docker_etc_auditing,
+	"docker_service_auditing": docker_service_auditing,
+	"docker_socket_auditing": docker_socket_auditing,
+	"overall_compliant": docker_host_compliant,
 }

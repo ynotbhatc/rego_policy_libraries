@@ -80,13 +80,15 @@ test_missing_event_rule_is_4_6 if {
 
 test_every_recommendation_has_a_rule if {
 	# the 54 ids the benchmark carries must each appear in a violation on a broken tenancy
-	broken := {"oci": {"iam": {"password_policy": {}, "users": [{"name": "x", "console_password": true, "is_tenancy_admin": true, "api_keys": [{"age_days": 200}, {"age_days": 1}], "customer_secret_keys": [{"age_days": 200}], "auth_tokens": [{"age_days": 200}], "db_passwords": [{"age_days": 200}], "last_activity_days": 90, "active": true}], "policies": [{"name": "p", "statements": ["Allow group Devs to manage all-resources in tenancy", "Allow group Devs to manage groups in tenancy", "Allow group Devs to manage buckets in tenancy"]}], "dynamic_groups": [], "compartments": [{"name": "root", "root": true}], "root_compartment_resources": ["ocid1.instance.x"]},
+	broken := {"oci": {
+		"iam": {"password_policy": {}, "users": [{"name": "x", "console_password": true, "is_tenancy_admin": true, "api_keys": [{"age_days": 200}, {"age_days": 1}], "customer_secret_keys": [{"age_days": 200}], "auth_tokens": [{"age_days": 200}], "db_passwords": [{"age_days": 200}], "last_activity_days": 90, "active": true}], "policies": [{"name": "p", "statements": ["Allow group Devs to manage all-resources in tenancy", "Allow group Devs to manage groups in tenancy", "Allow group Devs to manage buckets in tenancy"]}], "dynamic_groups": [], "compartments": [{"name": "root", "root": true}], "root_compartment_resources": ["ocid1.instance.x"]},
 		"network": {"security_lists": [{"vcn": "v", "is_default": true, "ingress": [{"source": "0.0.0.0/0", "protocol": "all"}]}], "security_groups": [{"ingress": [{"source": "0.0.0.0/0", "protocol": "all"}]}], "subnets": [{"flow_logs_enabled": false}]},
 		"integration_instances": [{"network_access": "public"}], "analytics_instances": [{"network_access": "public"}], "autonomous_databases": [{"network_access": "public"}],
 		"compute": {"instances": [{}]}, "tagging": {"default_tags": []}, "notifications": {"topics": []}, "events": {"rules": []}, "cloud_guard": {"enabled": false},
 		"kms": {"keys": [{"customer_managed": true, "rotation_interval_days": 730}]},
 		"object_storage": {"buckets": [{"public_access_type": "ObjectRead", "kms_key_id": "", "versioning": "Disabled", "write_logging_enabled": false}]},
-		"block_storage": {"volumes": [{"kms_key_id": ""}], "boot_volumes": [{"kms_key_id": ""}]}, "file_storage": {"file_systems": [{"kms_key_id": ""}]}}}
+		"block_storage": {"volumes": [{"kms_key_id": ""}], "boot_volumes": [{"kms_key_id": ""}]}, "file_storage": {"file_systems": [{"kms_key_id": ""}]},
+	}}
 	v := main.violations with input as broken
 	ids := {id | some m in v; id := split(m, ":")[0]}
 	count(ids) == 54

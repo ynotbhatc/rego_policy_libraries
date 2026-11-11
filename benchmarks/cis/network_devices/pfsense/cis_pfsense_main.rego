@@ -32,8 +32,8 @@ package cis_pfsense.main
 #    the 33 recommendations; it is still counted, never hard-coded, so it
 #    cannot overstate coverage. See "controls_basis" in the report.
 
-import rego.v1
 import data.cis_pfsense as bench
+import rego.v1
 
 default _compliant := false
 

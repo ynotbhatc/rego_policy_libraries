@@ -32,15 +32,15 @@ package stig.oracle_linux_8
 
 import rego.v1
 
-import data.stig.oracle_linux_8.configuration_management
-import data.stig.oracle_linux_8.services
-import data.stig.oracle_linux_8.software_integrity
-import data.stig.oracle_linux_8.file_permissions
-import data.stig.oracle_linux_8.audit_logging
-import data.stig.oracle_linux_8.ssh_config
 import data.stig.oracle_linux_8.account_auth
+import data.stig.oracle_linux_8.audit_logging
+import data.stig.oracle_linux_8.configuration_management
+import data.stig.oracle_linux_8.file_permissions
 import data.stig.oracle_linux_8.network
 import data.stig.oracle_linux_8.pki_crypto
+import data.stig.oracle_linux_8.services
+import data.stig.oracle_linux_8.software_integrity
+import data.stig.oracle_linux_8.ssh_config
 
 # =============================================================================
 # MODULE FINDING SETS

@@ -57,6 +57,7 @@ test_empty_findings_yields_empty_rollup if {
 # Contract: the SHIPPED crosswalk is present and non-trivial.
 test_shipped_crosswalk_populated if {
 	count(data.crosswalk.stig_800_53.map) > 1000
+
 	# a known RHEL 9 rule maps to at least one well-formed 800-53 control
 	some ctrl in data.crosswalk.stig_800_53.map["RHEL-09-255010"]
 	regex.match(`^[A-Z]{2}-[0-9]+$`, ctrl)

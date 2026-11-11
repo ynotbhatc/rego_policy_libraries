@@ -124,11 +124,13 @@ no_unauthorized_role(r) if {
 
 # 1.1 (Manual, Level 1 - RDBMS)
 default r_1_1 := false
+
 r_1_1 if {
 	input.oracle.patches.latest_cpu_applied == true
 }
 
 default e_1_1 := false
+
 e_1_1 if {
 	is_boolean(input.oracle.patches.latest_cpu_applied)
 }
@@ -144,11 +146,13 @@ violations contains "1.1: Appropriate Version/Patches For Oracle Software must b
 
 # 2.1.1 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_1_1 := false
+
 r_2_1_1 if {
 	input.oracle.listener.extproc_configured == false
 }
 
 default e_2_1_1 := false
+
 e_2_1_1 if {
 	is_boolean(input.oracle.listener.extproc_configured)
 }
@@ -164,11 +168,13 @@ violations contains "2.1.1: 'listener.ora' must not contain 'extproc'" if {
 
 # 2.1.2 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_1_2 := false
+
 r_2_1_2 if {
 	upper(object.get(input.oracle.listener_ora, "ACCEPT_MD5_CERTS", "FALSE")) != "TRUE"
 }
 
 default e_2_1_2 := false
+
 e_2_1_2 if {
 	is_object(input.oracle.listener_ora)
 	count(input.oracle.listener_ora) > 0
@@ -185,11 +191,13 @@ violations contains "2.1.2: 'ACCEPT_MD5_CERTS' must match the approved configura
 
 # 2.1.3 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_1_3 := false
+
 r_2_1_3 if {
 	upper(object.get(input.oracle.listener_ora, "ACCEPT_SHA1_CERTS", "FALSE")) != "TRUE"
 }
 
 default e_2_1_3 := false
+
 e_2_1_3 if {
 	is_object(input.oracle.listener_ora)
 	count(input.oracle.listener_ora) > 0
@@ -206,11 +214,13 @@ violations contains "2.1.3: 'ACCEPT_SHA1_CERTS' must match the approved configur
 
 # 2.1.4 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_1_4 := false
+
 r_2_1_4 if {
 	upper(object.get(input.oracle.listener_ora, "ALLOWED_WEAK_CERT_ALGORITHMS", "FALSE")) != "TRUE"
 }
 
 default e_2_1_4 := false
+
 e_2_1_4 if {
 	is_object(input.oracle.listener_ora)
 	count(input.oracle.listener_ora) > 0
@@ -227,11 +237,13 @@ violations contains "2.1.4: 'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset" if {
 
 # 2.2.1 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_1 := false
+
 r_2_2_1 if {
 	upper(object.get(input.oracle.sqlnet, "ACCEPT_MD5_CERTS", "FALSE")) != "TRUE"
 }
 
 default e_2_2_1 := false
+
 e_2_2_1 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -248,11 +260,13 @@ violations contains "2.2.1: 'ACCEPT_MD5_CERTS' must be unset" if {
 
 # 2.2.2 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_2 := false
+
 r_2_2_2 if {
 	upper(object.get(input.oracle.sqlnet, "ACCEPT_SHA1_CERTS", "FALSE")) != "TRUE"
 }
 
 default e_2_2_2 := false
+
 e_2_2_2 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -269,11 +283,13 @@ violations contains "2.2.2: 'ACCEPT_SHA1_CERTS' must be unset" if {
 
 # 2.2.3 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_3 := false
+
 r_2_2_3 if {
 	upper(object.get(input.oracle.sqlnet, "ALLOWED_WEAK_CERT_ALGORITHMS", "FALSE")) != "TRUE"
 }
 
 default e_2_2_3 := false
+
 e_2_2_3 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -290,11 +306,13 @@ violations contains "2.2.3: 'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset" if {
 
 # 2.2.4 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_4 := false
+
 r_2_2_4 if {
 	upper(input.oracle.sqlnet["SQLNET.ALLOWED_LOGON_VERSION_CLIENT"]) == "12A"
 }
 
 default e_2_2_4 := false
+
 e_2_2_4 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -311,11 +329,13 @@ violations contains "2.2.4: required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIE
 
 # 2.2.5 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_5 := false
+
 r_2_2_5 if {
 	upper(input.oracle.sqlnet["SQLNET.ALLOWED_LOGON_VERSION_SERVER"]) == "12A"
 }
 
 default e_2_2_5 := false
+
 e_2_2_5 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -332,11 +352,13 @@ violations contains "2.2.5: required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERV
 
 # 2.2.6 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_6 := false
+
 r_2_2_6 if {
 	upper(input.oracle.sqlnet["SQLNET.ENCRYPTION_CLIENT"]) == "REQUIRED"
 }
 
 default e_2_2_6 := false
+
 e_2_2_6 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -353,11 +375,13 @@ violations contains "2.2.6: required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQU
 
 # 2.2.7 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_7 := false
+
 r_2_2_7 if {
 	upper(input.oracle.sqlnet["SQLNET.ENCRYPTION_SERVER"]) == "REQUIRED"
 }
 
 default e_2_2_7 := false
+
 e_2_2_7 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -374,11 +398,13 @@ violations contains "2.2.7: required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQ
 
 # 2.2.8 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_8 := false
+
 r_2_2_8 if {
 	upper(input.oracle.sqlnet["SQLNET.ENCRYPTION_TYPES_CLIENT"]) == "AES256"
 }
 
 default e_2_2_8 := false
+
 e_2_2_8 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -395,11 +421,13 @@ violations contains "2.2.8: required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' i
 
 # 2.2.9 (Manual, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_9 := false
+
 r_2_2_9 if {
 	upper(input.oracle.sqlnet["SQLNET.ENCRYPTION_TYPES_SERVER"]) == "AES256"
 }
 
 default e_2_2_9 := false
+
 e_2_2_9 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -416,11 +444,13 @@ violations contains "2.2.9: required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' i
 
 # 2.2.10 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_10 := false
+
 r_2_2_10 if {
 	upper(input.oracle.sqlnet["SQLNET.CRYPTO_CHECKSUM_CLIENT"]) == "REQUIRED"
 }
 
 default e_2_2_10 := false
+
 e_2_2_10 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -437,11 +467,13 @@ violations contains "2.2.10: required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' i
 
 # 2.2.11 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_11 := false
+
 r_2_2_11 if {
 	upper(input.oracle.sqlnet["SQLNET.CRYPTO_CHECKSUM_SERVER"]) == "REQUIRED"
 }
 
 default e_2_2_11 := false
+
 e_2_2_11 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -458,11 +490,13 @@ violations contains "2.2.11: required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' i
 
 # 2.2.12 (Automated, Level 1 - RDBMS On Linux Host OS; Level 1 - RDBMS On Windows Server Host OS)
 default r_2_2_12 := false
+
 r_2_2_12 if {
-	upper(input.oracle.sqlnet["SSL_CERT_REVOCATION"]) == "REQUIRED"
+	upper(input.oracle.sqlnet.SSL_CERT_REVOCATION) == "REQUIRED"
 }
 
 default e_2_2_12 := false
+
 e_2_2_12 if {
 	is_object(input.oracle.sqlnet)
 	count(input.oracle.sqlnet) > 0
@@ -479,11 +513,13 @@ violations contains "2.2.12: required value of 'SSL_CERT_REVOCATION' is 'REQUIRE
 
 # 2.3.1 (Automated, Level 1 - RDBMS)
 default r_2_3_1 := false
+
 r_2_3_1 if {
 	upper(object.get(input.oracle.parameters, "background_core_dump", "")) != "FULL"
 }
 
 default e_2_3_1 := false
+
 e_2_3_1 if {
 	is_object(input.oracle.parameters)
 	count(input.oracle.parameters) > 0
@@ -500,11 +536,13 @@ violations contains "2.3.1: 'BACKGROUND_CORE_DUMP' must not be 'Full'" if {
 
 # 2.3.2 (Automated, Level 1 - RDBMS)
 default r_2_3_2 := false
+
 r_2_3_2 if {
 	upper(object.get(input.oracle.parameters, "shadow_core_dump", "")) != "FULL"
 }
 
 default e_2_3_2 := false
+
 e_2_3_2 if {
 	is_object(input.oracle.parameters)
 	count(input.oracle.parameters) > 0
@@ -521,11 +559,13 @@ violations contains "2.3.2: 'SHADOW_CORE_DUMP' must not be 'Full'" if {
 
 # 2.3.3 (Automated, Level 1 - RDBMS)
 default r_2_3_3 := false
+
 r_2_3_3 if {
-	upper(input.oracle.parameters["mle_prog_languages"]) == "OFF"
+	upper(input.oracle.parameters.mle_prog_languages) == "OFF"
 }
 
 default e_2_3_3 := false
+
 e_2_3_3 if {
 	"mle_prog_languages" in object.keys(input.oracle.parameters)
 }
@@ -541,11 +581,13 @@ violations contains "2.3.3: required value of 'MLE_PROG_LANGUAGES' is 'OFF'" if 
 
 # 2.3.4 (Automated, Level 1 - RDBMS)
 default r_2_3_4 := false
+
 r_2_3_4 if {
-	upper(input.oracle.parameters["allow_group_access_to_sga"]) == "FALSE"
+	upper(input.oracle.parameters.allow_group_access_to_sga) == "FALSE"
 }
 
 default e_2_3_4 := false
+
 e_2_3_4 if {
 	"allow_group_access_to_sga" in object.keys(input.oracle.parameters)
 }
@@ -561,6 +603,7 @@ violations contains "2.3.4: required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FA
 
 # 2.3.5 (Manual, Level 1 - RDBMS)
 default r_2_3_5 := false
+
 r_2_3_5 if {
 	input.oracle.attest.underscore_parameters_reviewed == true
 }
@@ -571,11 +614,13 @@ violations contains "2.3.5: Undocumented (Underscore) Parameters Not Set To 'DEF
 
 # 2.3.6 (Automated, Level 1 - RDBMS)
 default r_2_3_6 := false
+
 r_2_3_6 if {
-	upper(input.oracle.parameters["os_roles"]) == "FALSE"
+	upper(input.oracle.parameters.os_roles) == "FALSE"
 }
 
 default e_2_3_6 := false
+
 e_2_3_6 if {
 	"os_roles" in object.keys(input.oracle.parameters)
 }
@@ -591,11 +636,13 @@ violations contains "2.3.6: required value of 'OS_ROLES' is 'FALSE'" if {
 
 # 2.3.7 (Automated, Level 1 - RDBMS)
 default r_2_3_7 := false
+
 r_2_3_7 if {
-	upper(input.oracle.parameters["remote_os_roles"]) == "FALSE"
+	upper(input.oracle.parameters.remote_os_roles) == "FALSE"
 }
 
 default e_2_3_7 := false
+
 e_2_3_7 if {
 	"remote_os_roles" in object.keys(input.oracle.parameters)
 }
@@ -611,11 +658,13 @@ violations contains "2.3.7: required value of 'REMOTE_OS_ROLES' is 'FALSE'" if {
 
 # 2.3.8 (Automated, Level 1 - RDBMS)
 default r_2_3_8 := false
+
 r_2_3_8 if {
-	to_number(input.oracle.parameters["sec_max_failed_login_attempts"]) <= 3
+	to_number(input.oracle.parameters.sec_max_failed_login_attempts) <= 3
 }
 
 default e_2_3_8 := false
+
 e_2_3_8 if {
 	"sec_max_failed_login_attempts" in object.keys(input.oracle.parameters)
 }
@@ -631,11 +680,13 @@ violations contains "2.3.8: required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is
 
 # 2.3.9 (Automated, Level 1 - RDBMS)
 default r_2_3_9 := false
+
 r_2_3_9 if {
-	upper(input.oracle.parameters["sec_protocol_error_further_action"]) in {"(DROP,3)", "(DROP, 3)"}
+	upper(input.oracle.parameters.sec_protocol_error_further_action) in {"(DROP,3)", "(DROP, 3)"}
 }
 
 default e_2_3_9 := false
+
 e_2_3_9 if {
 	"sec_protocol_error_further_action" in object.keys(input.oracle.parameters)
 }
@@ -651,11 +702,13 @@ violations contains "2.3.9: required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION
 
 # 2.3.10 (Automated, Level 1 - RDBMS)
 default r_2_3_10 := false
+
 r_2_3_10 if {
-	upper(input.oracle.parameters["sec_protocol_error_trace_action"]) == "LOG"
+	upper(input.oracle.parameters.sec_protocol_error_trace_action) == "LOG"
 }
 
 default e_2_3_10 := false
+
 e_2_3_10 if {
 	"sec_protocol_error_trace_action" in object.keys(input.oracle.parameters)
 }
@@ -671,11 +724,13 @@ violations contains "2.3.10: required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION'
 
 # 2.3.11 (Automated, Level 1 - RDBMS)
 default r_2_3_11 := false
+
 r_2_3_11 if {
-	upper(input.oracle.parameters["sec_return_server_release_banner"]) == "FALSE"
+	upper(input.oracle.parameters.sec_return_server_release_banner) == "FALSE"
 }
 
 default e_2_3_11 := false
+
 e_2_3_11 if {
 	"sec_return_server_release_banner" in object.keys(input.oracle.parameters)
 }
@@ -691,11 +746,13 @@ violations contains "2.3.11: required value of 'SEC_RETURN_SERVER_RELEASE_BANNER
 
 # 2.3.12 (Automated, Level 1 - RDBMS)
 default r_2_3_12 := false
+
 r_2_3_12 if {
-	upper(input.oracle.parameters["remote_login_passwordfile"]) == "NONE"
+	upper(input.oracle.parameters.remote_login_passwordfile) == "NONE"
 }
 
 default e_2_3_12 := false
+
 e_2_3_12 if {
 	"remote_login_passwordfile" in object.keys(input.oracle.parameters)
 }
@@ -711,11 +768,13 @@ violations contains "2.3.12: required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'N
 
 # 2.3.13 (Automated, Level 1 - RDBMS)
 default r_2_3_13 := false
+
 r_2_3_13 if {
 	object.get(input.oracle.parameters, "remote_listener", "") == ""
 }
 
 default e_2_3_13 := false
+
 e_2_3_13 if {
 	is_object(input.oracle.parameters)
 	count(input.oracle.parameters) > 0
@@ -732,11 +791,13 @@ violations contains "2.3.13: 'REMOTE_LISTENER' must be blank" if {
 
 # 2.3.14 (Automated, Level 1 - RDBMS)
 default r_2_3_14 := false
+
 r_2_3_14 if {
-	upper(input.oracle.parameters["resource_limit"]) == "TRUE"
+	upper(input.oracle.parameters.resource_limit) == "TRUE"
 }
 
 default e_2_3_14 := false
+
 e_2_3_14 if {
 	"resource_limit" in object.keys(input.oracle.parameters)
 }
@@ -752,11 +813,13 @@ violations contains "2.3.14: required value of 'RESOURCE_LIMIT' is 'TRUE'" if {
 
 # 3.1 (Automated, Level 1 - RDBMS)
 default r_3_1 := false
+
 r_3_1 if {
 	profiles_every_le("FAILED_LOGIN_ATTEMPTS", 5)
 }
 
 default e_3_1 := false
+
 e_3_1 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -773,11 +836,13 @@ violations contains "3.1: 'FAILED_LOGIN_ATTEMPTS' must be at most '5'" if {
 
 # 3.2 (Automated, Level 1 - RDBMS)
 default r_3_2 := false
+
 r_3_2 if {
 	profiles_every_ge("PASSWORD_LOCK_TIME", 1)
 }
 
 default e_3_2 := false
+
 e_3_2 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -794,11 +859,13 @@ violations contains "3.2: 'PASSWORD_LOCK_TIME' must be at least '1'" if {
 
 # 3.3 (Automated, Level 1 - RDBMS)
 default r_3_3 := false
+
 r_3_3 if {
 	profiles_every_life_plus_grace_le(365)
 }
 
 default e_3_3 := false
+
 e_3_3 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -815,11 +882,13 @@ violations contains "3.3: 'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at 
 
 # 3.4 (Automated, Level 1 - RDBMS)
 default r_3_4 := false
+
 r_3_4 if {
 	profiles_every_eq("PASSWORD_REUSE_MAX", "UNLIMITED")
 }
 
 default e_3_4 := false
+
 e_3_4 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -836,11 +905,13 @@ violations contains "3.4: required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'"
 
 # 3.5 (Automated, Level 1 - RDBMS)
 default r_3_5 := false
+
 r_3_5 if {
 	profiles_every_set("PASSWORD_VERIFY_FUNCTION")
 }
 
 default e_3_5 := false
+
 e_3_5 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -857,6 +928,7 @@ violations contains "3.5: 'PASSWORD_VERIFY_FUNCTION' must be set for All Profile
 
 # 3.6 (Manual, Level 1 - RDBMS)
 default r_3_6 := false
+
 r_3_6 if {
 	input.oracle.attest.password_verify_function_meets_cis == true
 }
@@ -867,11 +939,13 @@ violations contains "3.6: 'PASSWORD_VERIFY_FUNCTION' must match the approved con
 
 # 3.7 (Automated, Level 1 - RDBMS)
 default r_3_7 := false
+
 r_3_7 if {
 	profiles_every_le("PASSWORD_ROLLOVER_TIME", 0)
 }
 
 default e_3_7 := false
+
 e_3_7 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -888,11 +962,13 @@ violations contains "3.7: required value of 'PASSWORD_ROLLOVER_TIME' is '0'" if 
 
 # 3.8 (Automated, Level 1 - RDBMS)
 default r_3_8 := false
+
 r_3_8 if {
 	profiles_every_le("INACTIVE_ACCOUNT_TIME", 120)
 }
 
 default e_3_8 := false
+
 e_3_8 if {
 	is_object(input.oracle.profiles)
 	count(input.oracle.profiles) > 0
@@ -909,11 +985,13 @@ violations contains "3.8: 'INACTIVE_ACCOUNT_TIME' must be at most '120'" if {
 
 # 4.1 (Automated, Level 1 - RDBMS)
 default r_4_1 := false
+
 r_4_1 if {
 	count(input.oracle.users_with_default_password) == 0
 }
 
 default e_4_1 := false
+
 e_4_1 if {
 	is_array(input.oracle.users_with_default_password)
 }
@@ -929,11 +1007,13 @@ violations contains "4.1: All Default Passwords must be Changed" if {
 
 # 4.2 (Automated, Level 1 - RDBMS)
 default r_4_2 := false
+
 r_4_2 if {
 	count(input.oracle.custom_oracle_maintained_users) == 0
 }
 
 default e_4_2 := false
+
 e_4_2 if {
 	is_array(input.oracle.custom_oracle_maintained_users)
 }
@@ -949,6 +1029,7 @@ violations contains "4.2: checked condition — No Custom 'ORACLE_MAINTAINED' Us
 
 # 4.3 (Manual, Level 1 - RDBMS)
 default r_4_3 := false
+
 r_4_3 if {
 	input.oracle.attest.ras_users_reviewed == true
 }
@@ -959,11 +1040,13 @@ violations contains "4.3: The Users Created Through Real Application Security re
 
 # 4.4 (Automated, Level 1 - RDBMS)
 default r_4_4 := false
+
 r_4_4 if {
 	count(input.oracle.users_with_old_password_versions) == 0
 }
 
 default e_4_4 := false
+
 e_4_4 if {
 	is_array(input.oracle.users_with_old_password_versions)
 }
@@ -979,11 +1062,13 @@ violations contains "4.4: Old Password Versions must be Not Used" if {
 
 # 4.5 (Automated, Level 1 - RDBMS)
 default r_4_5 := false
+
 r_4_5 if {
 	input.oracle.password_file_format == "12.2"
 }
 
 default e_4_5 := false
+
 e_4_5 if {
 	is_string(input.oracle.password_file_format)
 }
@@ -999,11 +1084,13 @@ violations contains "4.5: The Latest Version of The Password File must be Used" 
 
 # 4.6 (Automated, Level 1 - RDBMS)
 default r_4_6 := false
+
 r_4_6 if {
 	count(input.oracle.pwfile_users_not_on_all_instances) == 0
 }
 
 default e_4_6 := false
+
 e_4_6 if {
 	is_array(input.oracle.pwfile_users_not_on_all_instances)
 }
@@ -1019,11 +1106,13 @@ violations contains "4.6: Users In Different RAC Instances must be Identical In 
 
 # 4.7 (Automated, Level 1 - RDBMS)
 default r_4_7 := false
+
 r_4_7 if {
 	count(input.oracle.public_db_links) == 0
 }
 
 default e_4_7 := false
+
 e_4_7 if {
 	is_array(input.oracle.public_db_links)
 }
@@ -1039,11 +1128,13 @@ violations contains "4.7: checked condition — No Public Database Links Exist" 
 
 # 4.8 (Automated, Level 1 - RDBMS)
 default r_4_8 := false
+
 r_4_8 if {
 	count(input.oracle.db_links_with_legacy_password_encryption) == 0
 }
 
 default e_4_8 := false
+
 e_4_8 if {
 	is_array(input.oracle.db_links_with_legacy_password_encryption)
 }
@@ -1059,11 +1150,13 @@ violations contains "4.8: Database Link Passwords must be Using The Latest Encry
 
 # 5.1 (Automated, Level 1 - RDBMS)
 default r_5_1 := false
+
 r_5_1 if {
 	count(input.oracle.audit.unaudited_system_actions) == 0
 }
 
 default e_5_1 := false
+
 e_5_1 if {
 	is_array(input.oracle.audit.unaudited_system_actions)
 }
@@ -1079,11 +1172,13 @@ violations contains "5.1: All Auditable System Actions Commands must be Audited"
 
 # 5.2 (Automated, Level 1 - RDBMS)
 default r_5_2 := false
+
 r_5_2 if {
 	every a in ["LOGON", "LOGOFF"] { a in input.oracle.audit.enabled_options }
 }
 
 default e_5_2 := false
+
 e_5_2 if {
 	is_array(input.oracle.audit.enabled_options)
 }
@@ -1099,11 +1194,13 @@ violations contains "5.2: the 'LOGON' AND 'LOGOFF' Actions Audit must be turned 
 
 # 5.3 (Automated, Level 1 - RDBMS)
 default r_5_3 := false
+
 r_5_3 if {
 	every a in ["DBMS_AW", "DBMS_CRYPTO", "DBMS_FGA", "DBMS_JAVA_TEST", "DBMS_JOB", "DBMS_LOGMNR", "DBMS_NETWORK_ACL_ADMIN", "DBMS_REDACT", "DBMS_REDEFINITION", "DBMS_RLS", "DBMS_SCHEDULER", "DBMS_SQL_TRANSLATOR", "DBMS_SYS_SQL", "DBMS_TSDP_MANAGE", "DBMS_TSDP_PROTECT", "DBMS_XMLGEN", "DBMS_XMLSTORE", "OWA_UTIL"] { a in input.oracle.audit.audited_packages }
 }
 
 default e_5_3 := false
+
 e_5_3 if {
 	is_array(input.oracle.audit.audited_packages)
 }
@@ -1119,11 +1216,13 @@ violations contains "5.3: Critical Packages must be Audited" if {
 
 # 5.4 (Automated, Level 1 - RDBMS)
 default r_5_4 := false
+
 r_5_4 if {
 	every a in ["EXPORT"] { a in input.oracle.audit.enabled_options }
 }
 
 default e_5_4 := false
+
 e_5_4 if {
 	is_array(input.oracle.audit.enabled_options)
 }
@@ -1139,11 +1238,13 @@ violations contains "5.4: All Export Activities must be Audited" if {
 
 # 5.5 (Automated, Level 1 - RDBMS)
 default r_5_5 := false
+
 r_5_5 if {
 	every a in ["SYS", "SYSBACKUP", "SYSDG", "SYSKM", "SYSRAC", "PUBLIC"] { a in input.oracle.audit.all_actions_audited_users }
 }
 
 default e_5_5 := false
+
 e_5_5 if {
 	is_array(input.oracle.audit.all_actions_audited_users)
 }
@@ -1159,11 +1260,13 @@ violations contains "5.5: The Use Of SYS* Privileges must be Audited" if {
 
 # 6.1.1 (Automated, Level 1 - RDBMS)
 default r_6_1_1 := false
+
 r_6_1_1 if {
 	no_unauthorized_sys_priv_like("ANY")
 }
 
 default e_6_1_1 := false
+
 e_6_1_1 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1179,11 +1282,13 @@ violations contains "6.1.1: '%ANY%' must be removed from unauthorized 'GRANTEE'"
 
 # 6.1.2 (Automated, Level 1 - RDBMS)
 default r_6_1_2 := false
+
 r_6_1_2 if {
 	count([g | some g in input.oracle.grants.sys_privs; g.admin_option == true; _unauthorized(g)]) == 0
 }
 
 default e_6_1_2 := false
+
 e_6_1_2 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1199,12 +1304,14 @@ violations contains "6.1.2: Admin Privileges must be removed from unauthorized '
 
 # 6.1.3 (Automated, Level 1 - RDBMS)
 default r_6_1_3 := false
+
 r_6_1_3 if {
 	no_unauthorized_sys_priv("EXPORT FULL DATABASE")
 	no_unauthorized_sys_priv("IMPORT FULL DATABASE")
 }
 
 default e_6_1_3 := false
+
 e_6_1_3 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1220,11 +1327,13 @@ violations contains "6.1.3: 'IMPORT' And 'EXPORT' 'FULL DATABASE' must be remove
 
 # 6.1.4 (Automated, Level 1 - RDBMS)
 default r_6_1_4 := false
+
 r_6_1_4 if {
 	no_unauthorized_sys_priv("CREATE EXTERNAL JOB")
 }
 
 default e_6_1_4 := false
+
 e_6_1_4 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1240,11 +1349,13 @@ violations contains "6.1.4: 'CREATE EXTERNAL JOB' must be removed from unauthori
 
 # 6.1.5 (Automated, Level 1 - RDBMS)
 default r_6_1_5 := false
+
 r_6_1_5 if {
 	no_unauthorized_sys_priv("BECOME USER")
 }
 
 default e_6_1_5 := false
+
 e_6_1_5 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1260,11 +1371,13 @@ violations contains "6.1.5: 'BECOME USER' must be removed from unauthorized 'GRA
 
 # 6.1.6 (Automated, Level 1 - RDBMS)
 default r_6_1_6 := false
+
 r_6_1_6 if {
 	no_unauthorized_sys_priv("TEXT DATASTORE ACCESS")
 }
 
 default e_6_1_6 := false
+
 e_6_1_6 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1280,6 +1393,7 @@ violations contains "6.1.6: 'TEXT DATASTORE ACCESS' must be removed from unautho
 
 # 6.1.7 (Automated, Level 1 - RDBMS)
 default r_6_1_7 := false
+
 r_6_1_7 if {
 	no_unauthorized_sys_priv("CREATE PUBLIC DATABASE LINK")
 	no_unauthorized_sys_priv("ALTER PUBLIC DATABASE LINK")
@@ -1287,6 +1401,7 @@ r_6_1_7 if {
 }
 
 default e_6_1_7 := false
+
 e_6_1_7 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1302,11 +1417,13 @@ violations contains "6.1.7: 'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK'
 
 # 6.1.8 (Automated, Level 1 - RDBMS)
 default r_6_1_8 := false
+
 r_6_1_8 if {
 	no_unauthorized_sys_priv("LOGMINING")
 }
 
 default e_6_1_8 := false
+
 e_6_1_8 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1322,11 +1439,13 @@ violations contains "6.1.8: 'LOGMINING' must be removed from unauthorized 'GRANT
 
 # 6.1.9 (Automated, Level 1 - RDBMS)
 default r_6_1_9 := false
+
 r_6_1_9 if {
 	no_unauthorized_sys_priv("ALTER SYSTEM")
 }
 
 default e_6_1_9 := false
+
 e_6_1_9 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1342,11 +1461,13 @@ violations contains "6.1.9: 'ALTER SYSTEM' must be removed from unauthorized 'GR
 
 # 6.1.10 (Automated, Level 1 - RDBMS)
 default r_6_1_10 := false
+
 r_6_1_10 if {
 	no_unauthorized_sys_priv("CREATE LIBRARY")
 }
 
 default e_6_1_10 := false
+
 e_6_1_10 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1362,11 +1483,13 @@ violations contains "6.1.10: 'CREATE LIBRARY' must be removed from unauthorized 
 
 # 6.1.11 (Automated, Level 1 - RDBMS)
 default r_6_1_11 := false
+
 r_6_1_11 if {
 	count([g | some g in input.oracle.grants.sys_privs; _unauthorized(g)]) == 0
 }
 
 default e_6_1_11 := false
+
 e_6_1_11 if {
 	is_array(input.oracle.grants.sys_privs)
 }
@@ -1382,11 +1505,13 @@ violations contains "6.1.11: All `SYSTEM` Privileges must be removed from unauth
 
 # 6.2.1 (Automated, Level 1 - RDBMS)
 default r_6_2_1 := false
+
 r_6_2_1 if {
 	no_unauthorized_role("DBA")
 }
 
 default e_6_2_1 := false
+
 e_6_2_1 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1402,11 +1527,13 @@ violations contains "6.2.1: 'DBA' must be removed from unauthorized 'GRANTEE'" i
 
 # 6.2.2 (Automated, Level 1 - RDBMS)
 default r_6_2_2 := false
+
 r_6_2_2 if {
 	no_unauthorized_role("EXP_FULL_DATABASE")
 }
 
 default e_6_2_2 := false
+
 e_6_2_2 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1422,11 +1549,13 @@ violations contains "6.2.2: 'EXP_FULL_DATABASE' must be removed from unauthorize
 
 # 6.2.3 (Automated, Level 1 - RDBMS)
 default r_6_2_3 := false
+
 r_6_2_3 if {
 	no_unauthorized_role("IMP_FULL_DATABASE")
 }
 
 default e_6_2_3 := false
+
 e_6_2_3 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1442,11 +1571,13 @@ violations contains "6.2.3: 'IMP_FULL_DATABASE' must be removed from unauthorize
 
 # 6.2.4 (Automated, Level 1 - RDBMS)
 default r_6_2_4 := false
+
 r_6_2_4 if {
 	no_unauthorized_role("DATAPUMP_EXP_FULL_DATABASE")
 }
 
 default e_6_2_4 := false
+
 e_6_2_4 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1462,11 +1593,13 @@ violations contains "6.2.4: 'DATAPUMP_EXP_FULL_DATABASE' must be removed from un
 
 # 6.2.5 (Automated, Level 1 - RDBMS)
 default r_6_2_5 := false
+
 r_6_2_5 if {
 	no_unauthorized_role("DATAPUMP_IMP_FULL_DATABASE")
 }
 
 default e_6_2_5 := false
+
 e_6_2_5 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1482,11 +1615,13 @@ violations contains "6.2.5: 'DATAPUMP_IMP_FULL_DATABASE' must be removed from un
 
 # 6.2.6 (Automated, Level 1 - RDBMS)
 default r_6_2_6 := false
+
 r_6_2_6 if {
 	no_unauthorized_role("DV_ADMIN")
 }
 
 default e_6_2_6 := false
+
 e_6_2_6 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1502,11 +1637,13 @@ violations contains "6.2.6: 'DV_ADMIN' must be removed from unauthorized 'GRANTE
 
 # 6.2.7 (Automated, Level 1 - RDBMS)
 default r_6_2_7 := false
+
 r_6_2_7 if {
 	no_unauthorized_role("DV_AUDIT_CLEANUP")
 }
 
 default e_6_2_7 := false
+
 e_6_2_7 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1522,11 +1659,13 @@ violations contains "6.2.7: 'DV_AUDIT_CLEANUP' must be removed from unauthorized
 
 # 6.2.8 (Automated, Level 1 - RDBMS)
 default r_6_2_8 := false
+
 r_6_2_8 if {
 	no_unauthorized_role("OLAP_DBA")
 }
 
 default e_6_2_8 := false
+
 e_6_2_8 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1542,11 +1681,13 @@ violations contains "6.2.8: 'OLAP_DBA' must be removed from unauthorized 'GRANTE
 
 # 6.2.9 (Automated, Level 1 - RDBMS)
 default r_6_2_9 := false
+
 r_6_2_9 if {
 	no_unauthorized_role("LBAC_DBA")
 }
 
 default e_6_2_9 := false
+
 e_6_2_9 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1562,11 +1703,13 @@ violations contains "6.2.9: 'LBAC_DBA' must be removed from unauthorized 'GRANTE
 
 # 6.2.10 (Automated, Level 1 - RDBMS)
 default r_6_2_10 := false
+
 r_6_2_10 if {
 	no_unauthorized_role("JAVA_ADMIN")
 }
 
 default e_6_2_10 := false
+
 e_6_2_10 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1582,11 +1725,13 @@ violations contains "6.2.10: 'JAVA_ADMIN' must be removed from unauthorized 'GRA
 
 # 6.2.11 (Automated, Level 1 - RDBMS)
 default r_6_2_11 := false
+
 r_6_2_11 if {
 	no_unauthorized_role("JAVASYSPRIVS")
 }
 
 default e_6_2_11 := false
+
 e_6_2_11 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1602,11 +1747,13 @@ violations contains "6.2.11: 'JAVASYSPRIVS' must be removed from unauthorized 'G
 
 # 6.2.12 (Automated, Level 1 - RDBMS)
 default r_6_2_12 := false
+
 r_6_2_12 if {
 	no_unauthorized_role("LOGSTDBY_ADMINISTRATOR")
 }
 
 default e_6_2_12 := false
+
 e_6_2_12 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1622,11 +1769,13 @@ violations contains "6.2.12: 'LOGSTDBY_ADMINISTRATOR' must be removed from unaut
 
 # 6.2.13 (Automated, Level 1 - RDBMS)
 default r_6_2_13 := false
+
 r_6_2_13 if {
 	no_unauthorized_role("SQL_FIREWALL_ADMIN")
 }
 
 default e_6_2_13 := false
+
 e_6_2_13 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1642,11 +1791,13 @@ violations contains "6.2.13: 'SQL_FIREWALL_ADMIN' must be removed from unauthori
 
 # 6.2.14 (Automated, Level 1 - RDBMS)
 default r_6_2_14 := false
+
 r_6_2_14 if {
 	no_unauthorized_role("MAINTPLAN_APP")
 }
 
 default e_6_2_14 := false
+
 e_6_2_14 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1662,11 +1813,13 @@ violations contains "6.2.14: 'MAINTPLAN_APP' must be removed from unauthorized '
 
 # 6.2.15 (Automated, Level 1 - RDBMS)
 default r_6_2_15 := false
+
 r_6_2_15 if {
 	no_unauthorized_role("JAVADEBUGPRIV")
 }
 
 default e_6_2_15 := false
+
 e_6_2_15 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1682,11 +1835,13 @@ violations contains "6.2.15: 'JAVADEBUGPRIV' must be removed from unauthorized '
 
 # 6.2.16 (Automated, Level 1 - RDBMS)
 default r_6_2_16 := false
+
 r_6_2_16 if {
 	no_unauthorized_role("DV_PATCH_ADMIN")
 }
 
 default e_6_2_16 := false
+
 e_6_2_16 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1702,11 +1857,13 @@ violations contains "6.2.16: 'DV_PATCH_ADMIN' must be removed from unauthorized 
 
 # 6.2.17 (Automated, Level 1 - RDBMS)
 default r_6_2_17 := false
+
 r_6_2_17 if {
 	no_unauthorized_role("DV_POLICY_OWNER")
 }
 
 default e_6_2_17 := false
+
 e_6_2_17 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1722,11 +1879,13 @@ violations contains "6.2.17: 'DV_POLICY_OWNER' must be removed from unauthorized
 
 # 6.2.18 (Automated, Level 1 - RDBMS)
 default r_6_2_18 := false
+
 r_6_2_18 if {
 	no_unauthorized_role("AUDIT_ADMIN")
 }
 
 default e_6_2_18 := false
+
 e_6_2_18 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1742,11 +1901,13 @@ violations contains "6.2.18: AUDIT_ADMIN' must be removed from unauthorized 'GRA
 
 # 6.2.19 (Automated, Level 1 - RDBMS)
 default r_6_2_19 := false
+
 r_6_2_19 if {
 	no_unauthorized_role("AUDIT_VIEWER")
 }
 
 default e_6_2_19 := false
+
 e_6_2_19 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1762,11 +1923,13 @@ violations contains "6.2.19: 'AUDIT_VIEWER' must be removed from unauthorized 'G
 
 # 6.2.20 (Automated, Level 1 - RDBMS)
 default r_6_2_20 := false
+
 r_6_2_20 if {
 	no_unauthorized_role("PDB_DBA")
 }
 
 default e_6_2_20 := false
+
 e_6_2_20 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1782,11 +1945,13 @@ violations contains "6.2.20: 'PDB_DBA' must be removed from unauthorized 'GRANTE
 
 # 6.2.21 (Automated, Level 1 - RDBMS)
 default r_6_2_21 := false
+
 r_6_2_21 if {
 	no_unauthorized_role("SELECT_CATALOG_ROLE")
 }
 
 default e_6_2_21 := false
+
 e_6_2_21 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1802,11 +1967,13 @@ violations contains "6.2.21: 'SELECT_CATALOG_ROLE' must be removed from unauthor
 
 # 6.2.22 (Automated, Level 1 - RDBMS)
 default r_6_2_22 := false
+
 r_6_2_22 if {
 	no_unauthorized_role("EXECUTE_CATALOG_ROLE")
 }
 
 default e_6_2_22 := false
+
 e_6_2_22 if {
 	is_array(input.oracle.grants.role_privs)
 }
@@ -1822,6 +1989,7 @@ violations contains "6.2.22: 'EXECUTE_CATALOG_ROLE' must be removed from unautho
 
 # 6.3.1 (Manual, Level 1 - RDBMS)
 default r_6_3_1 := false
+
 r_6_3_1 if {
 	input.oracle.attest.schema_privileges_reviewed == true
 }
@@ -1832,11 +2000,13 @@ violations contains "6.3.1: 'CDB_SCHEMA_PRIVS' must not carry privileges beyond 
 
 # 6.4.1 (Automated, Level 1 - RDBMS)
 default r_6_4_1 := false
+
 r_6_4_1 if {
 	count([g | some g in input.oracle.grants.tab_privs; g.owner == "SYS"; g.table_name in ["CDB_LOCAL_ADMINAUTH$", "DEFAULT_PWD$", "ENC$", "HISTGRM$", "HIST_HEAD$", "LINK$", "PDB_SYNC$", "SCHEDULER$_CREDENTIAL", "USER$", "USER_HISTORY$", "XS$VERIFIERS"]; g.privilege == "ALL"]) == 0
 }
 
 default e_6_4_1 := false
+
 e_6_4_1 if {
 	is_array(input.oracle.grants.tab_privs)
 }
@@ -1852,6 +2022,7 @@ violations contains "6.4.1: 'ALL' must be revoked on 'Sensitive' Tables" if {
 
 # 6.5.1 (Manual, Level 1 - RDBMS)
 default r_6_5_1 := false
+
 r_6_5_1 if {
 	input.oracle.attest.column_privileges_reviewed == true
 }
@@ -1862,6 +2033,7 @@ violations contains "6.5.1: 'DBA_COL_PRIVS' must be removed from unauthorized 'G
 
 # 6.6.1 (Manual, Level 1 - RDBMS)
 default r_6_6_1 := false
+
 r_6_6_1 if {
 	input.oracle.attest.proxy_user_privileges_reviewed == true
 }
@@ -1872,6 +2044,7 @@ violations contains "6.6.1: Proxy User Privileges must be removed from unauthori
 
 # 6.7.1 (Manual, Level 1 - RDBMS)
 default r_6_7_1 := false
+
 r_6_7_1 if {
 	input.oracle.attest.custom_java_privileges_reviewed == true
 }
@@ -1882,6 +2055,7 @@ violations contains "6.7.1: Custom Java Privileges must be removed from unauthor
 
 # 6.8.1 (Manual, Level 1 - RDBMS)
 default r_6_8_1 := false
+
 r_6_8_1 if {
 	input.oracle.attest.directory_object_access_reviewed == true
 }
@@ -1892,6 +2066,7 @@ violations contains "6.8.1: Directory Object Access must be removed from unautho
 
 # 6.8.2 (Manual, Level 1 - RDBMS)
 default r_6_8_2 := false
+
 r_6_8_2 if {
 	input.oracle.attest.directory_object_privileges_reviewed == true
 }
@@ -1902,6 +2077,7 @@ violations contains "6.8.2: Directory Objects Privileges requires a recorded rev
 
 # 6.8.3 (Manual, Level 1 - RDBMS)
 default r_6_8_3 := false
+
 r_6_8_3 if {
 	input.oracle.attest.external_table_preprocessors_reviewed == true
 }
@@ -1912,6 +2088,7 @@ violations contains "6.8.3: External Tables With Preprocessor requires a recorde
 
 # 6.8.4 (Manual, Level 1 - RDBMS)
 default r_6_8_4 := false
+
 r_6_8_4 if {
 	input.oracle.attest.external_tables_reviewed == true
 }
@@ -1925,784 +2102,628 @@ violations contains "CIS Oracle 26ai: FAIL-CLOSED - facts 'input.oracle' were no
 }
 
 sections := {
- "1": "Oracle Database Installation and Patching Requirements",
- "2": "Oracle Parameter Settings",
- "3": "Oracle Connection and Login Restrictions",
- "4": "Users",
- "5": "Unified Auditing",
- "6": "Privileges & Grants & ACLs"
+	"1": "Oracle Database Installation and Patching Requirements",
+	"2": "Oracle Parameter Settings",
+	"3": "Oracle Connection and Login Restrictions",
+	"4": "Users",
+	"5": "Unified Auditing",
+	"6": "Privileges & Grants & ACLs",
 }
 
 # id -> CIS title, level, Automated/Manual status and the workbook profiles it belongs to
 recommendations := {
- "1.1": {
-  "title": "Appropriate Version/Patches For Oracle Software must be present",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.1.1": {
-  "title": "'listener.ora' must not contain 'extproc'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.1.2": {
-  "title": "'ACCEPT_MD5_CERTS' must match the approved configuration",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.1.3": {
-  "title": "'ACCEPT_SHA1_CERTS' must match the approved configuration",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.1.4": {
-  "title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.1": {
-  "title": "'ACCEPT_MD5_CERTS' must be unset",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.2": {
-  "title": "'ACCEPT_SHA1_CERTS' must be unset",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.3": {
-  "title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.4": {
-  "title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.5": {
-  "title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.6": {
-  "title": "required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.7": {
-  "title": "required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.8": {
-  "title": "required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.9": {
-  "title": "required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.10": {
-  "title": "required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.11": {
-  "title": "required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.2.12": {
-  "title": "required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS On Linux Host OS",
-   "Level 1 - RDBMS On Windows Server Host OS"
-  ]
- },
- "2.3.1": {
-  "title": "'BACKGROUND_CORE_DUMP' must not be 'Full'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.2": {
-  "title": "'SHADOW_CORE_DUMP' must not be 'Full'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.3": {
-  "title": "required value of 'MLE_PROG_LANGUAGES' is 'OFF'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.4": {
-  "title": "required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.5": {
-  "title": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.6": {
-  "title": "required value of 'OS_ROLES' is 'FALSE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.7": {
-  "title": "required value of 'REMOTE_OS_ROLES' is 'FALSE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.8": {
-  "title": "required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.9": {
-  "title": "required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.10": {
-  "title": "required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.11": {
-  "title": "required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.12": {
-  "title": "required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.13": {
-  "title": "'REMOTE_LISTENER' must be blank",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "2.3.14": {
-  "title": "required value of 'RESOURCE_LIMIT' is 'TRUE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.1": {
-  "title": "'FAILED_LOGIN_ATTEMPTS' must be at most '5'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.2": {
-  "title": "'PASSWORD_LOCK_TIME' must be at least '1'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.3": {
-  "title": "'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.4": {
-  "title": "required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.5": {
-  "title": "'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.6": {
-  "title": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.7": {
-  "title": "required value of 'PASSWORD_ROLLOVER_TIME' is '0'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "3.8": {
-  "title": "'INACTIVE_ACCOUNT_TIME' must be at most '120'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.1": {
-  "title": "All Default Passwords must be Changed",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.2": {
-  "title": "checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.3": {
-  "title": "The Users Created Through Real Application Security requires a recorded review",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.4": {
-  "title": "Old Password Versions must be Not Used",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.5": {
-  "title": "The Latest Version of The Password File must be Used",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.6": {
-  "title": "Users In Different RAC Instances must be Identical In PW Files",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.7": {
-  "title": "checked condition — No Public Database Links Exist",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "4.8": {
-  "title": "Database Link Passwords must be Using The Latest Encryption",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "5.1": {
-  "title": "All Auditable System Actions Commands must be Audited",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "5.2": {
-  "title": "the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "5.3": {
-  "title": "Critical Packages must be Audited",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "5.4": {
-  "title": "All Export Activities must be Audited",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "5.5": {
-  "title": "The Use Of SYS* Privileges must be Audited",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.1": {
-  "title": "'%ANY%' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.2": {
-  "title": "Admin Privileges must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.3": {
-  "title": "'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.4": {
-  "title": "'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.5": {
-  "title": "'BECOME USER' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.6": {
-  "title": "'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.7": {
-  "title": "'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.8": {
-  "title": "'LOGMINING' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.9": {
-  "title": "'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.10": {
-  "title": "'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.1.11": {
-  "title": "All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.1": {
-  "title": "'DBA' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.2": {
-  "title": "'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.3": {
-  "title": "'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.4": {
-  "title": "'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.5": {
-  "title": "'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.6": {
-  "title": "'DV_ADMIN' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.7": {
-  "title": "'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.8": {
-  "title": "'OLAP_DBA' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.9": {
-  "title": "'LBAC_DBA' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.10": {
-  "title": "'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.11": {
-  "title": "'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.12": {
-  "title": "'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.13": {
-  "title": "'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.14": {
-  "title": "'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.15": {
-  "title": "'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.16": {
-  "title": "'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.17": {
-  "title": "'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.18": {
-  "title": "AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.19": {
-  "title": "'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.20": {
-  "title": "'PDB_DBA' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.21": {
-  "title": "'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.2.22": {
-  "title": "'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.3.1": {
-  "title": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.4.1": {
-  "title": "'ALL' must be revoked on 'Sensitive' Tables",
-  "level": 1,
-  "assessment": "Automated",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.5.1": {
-  "title": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.6.1": {
-  "title": "Proxy User Privileges must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.7.1": {
-  "title": "Custom Java Privileges must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.8.1": {
-  "title": "Directory Object Access must be removed from unauthorized 'GRANTEE'",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.8.2": {
-  "title": "Directory Objects Privileges requires a recorded review",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.8.3": {
-  "title": "External Tables With Preprocessor requires a recorded review",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- },
- "6.8.4": {
-  "title": "External Tables requires a recorded review",
-  "level": 1,
-  "assessment": "Manual",
-  "profiles": [
-   "Level 1 - RDBMS"
-  ]
- }
+	"1.1": {
+		"title": "Appropriate Version/Patches For Oracle Software must be present",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.1.1": {
+		"title": "'listener.ora' must not contain 'extproc'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.1.2": {
+		"title": "'ACCEPT_MD5_CERTS' must match the approved configuration",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.1.3": {
+		"title": "'ACCEPT_SHA1_CERTS' must match the approved configuration",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.1.4": {
+		"title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.1": {
+		"title": "'ACCEPT_MD5_CERTS' must be unset",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.2": {
+		"title": "'ACCEPT_SHA1_CERTS' must be unset",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.3": {
+		"title": "'ALLOWED_WEAK_CERT_ALGORITHMS' must be unset",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.4": {
+		"title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_CLIENT' is 12a",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.5": {
+		"title": "required value of 'SQLNET.ALLOWED_LOGON_VERSION_SERVER' is 12a",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.6": {
+		"title": "required value of 'SQLNET.ENCRYPTION_CLIENT is 'REQUIRED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.7": {
+		"title": "required value of 'SQLNET.ENCRYPTION_SERVER' is 'REQUIRED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.8": {
+		"title": "required value of 'SQLNET.ENCRYPTION_TYPES_CLIENT' is 'AES256'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.9": {
+		"title": "required value of 'SQLNET.ENCRYPTION_TYPES_SERVER' is AES256",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.10": {
+		"title": "required value of 'SQLNET.CRYPTO_CHECKSUM_CLIENT' is 'REQUIRED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.11": {
+		"title": "required value of 'SQLNET.CRYPTO_CHECKSUM_SERVER' is 'REQUIRED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.2.12": {
+		"title": "required value of 'SSL_CERT_REVOCATION' is 'REQUIRED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": [
+			"Level 1 - RDBMS On Linux Host OS",
+			"Level 1 - RDBMS On Windows Server Host OS",
+		],
+	},
+	"2.3.1": {
+		"title": "'BACKGROUND_CORE_DUMP' must not be 'Full'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.2": {
+		"title": "'SHADOW_CORE_DUMP' must not be 'Full'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.3": {
+		"title": "required value of 'MLE_PROG_LANGUAGES' is 'OFF'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.4": {
+		"title": "required value of 'ALLOW_GROUP_ACCESS_TO_SGA' is `FALSE`",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.5": {
+		"title": "Undocumented (Underscore) Parameters Not Set To 'DEFAULT' Values requires a recorded review",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.6": {
+		"title": "required value of 'OS_ROLES' is 'FALSE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.7": {
+		"title": "required value of 'REMOTE_OS_ROLES' is 'FALSE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.8": {
+		"title": "required value of 'SEC_MAX_FAILED_LOGIN_ATTEMPTS' is '3' Or Less",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.9": {
+		"title": "required value of 'SEC_PROTOCOL_ERROR_FURTHER_ACTION' is '(DROP,3)'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.10": {
+		"title": "required value of 'SEC_PROTOCOL_ERROR_TRACE_ACTION' is 'LOG'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.11": {
+		"title": "required value of 'SEC_RETURN_SERVER_RELEASE_BANNER' is 'FALSE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.12": {
+		"title": "required value of 'REMOTE_LOGIN_PASSWORDFILE' is 'NONE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.13": {
+		"title": "'REMOTE_LISTENER' must be blank",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"2.3.14": {
+		"title": "required value of 'RESOURCE_LIMIT' is 'TRUE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.1": {
+		"title": "'FAILED_LOGIN_ATTEMPTS' must be at most '5'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.2": {
+		"title": "'PASSWORD_LOCK_TIME' must be at least '1'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.3": {
+		"title": "'PASSWORD_LIFE_TIME + PASSWORD_GRACE_TIME' must be at most '365'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.4": {
+		"title": "required value of 'PASSWORD_REUSE_MAX' is 'UNLIMITED'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.5": {
+		"title": "'PASSWORD_VERIFY_FUNCTION' must be set for All Profiles",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.6": {
+		"title": "'PASSWORD_VERIFY_FUNCTION' must match the approved configuration",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.7": {
+		"title": "required value of 'PASSWORD_ROLLOVER_TIME' is '0'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"3.8": {
+		"title": "'INACTIVE_ACCOUNT_TIME' must be at most '120'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.1": {
+		"title": "All Default Passwords must be Changed",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.2": {
+		"title": "checked condition — No Custom 'ORACLE_MAINTAINED' Users Exist",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.3": {
+		"title": "The Users Created Through Real Application Security requires a recorded review",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.4": {
+		"title": "Old Password Versions must be Not Used",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.5": {
+		"title": "The Latest Version of The Password File must be Used",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.6": {
+		"title": "Users In Different RAC Instances must be Identical In PW Files",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.7": {
+		"title": "checked condition — No Public Database Links Exist",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"4.8": {
+		"title": "Database Link Passwords must be Using The Latest Encryption",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"5.1": {
+		"title": "All Auditable System Actions Commands must be Audited",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"5.2": {
+		"title": "the 'LOGON' AND 'LOGOFF' Actions Audit must be turned on",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"5.3": {
+		"title": "Critical Packages must be Audited",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"5.4": {
+		"title": "All Export Activities must be Audited",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"5.5": {
+		"title": "The Use Of SYS* Privileges must be Audited",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.1": {
+		"title": "'%ANY%' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.2": {
+		"title": "Admin Privileges must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.3": {
+		"title": "'IMPORT' And 'EXPORT' 'FULL DATABASE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.4": {
+		"title": "'CREATE EXTERNAL JOB' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.5": {
+		"title": "'BECOME USER' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.6": {
+		"title": "'TEXT DATASTORE ACCESS' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.7": {
+		"title": "'CREATE', 'ALTER', And 'DROP' 'PUBLIC DATABASE LINK' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.8": {
+		"title": "'LOGMINING' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.9": {
+		"title": "'ALTER SYSTEM' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.10": {
+		"title": "'CREATE LIBRARY' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.1.11": {
+		"title": "All `SYSTEM` Privileges must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.1": {
+		"title": "'DBA' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.2": {
+		"title": "'EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.3": {
+		"title": "'IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.4": {
+		"title": "'DATAPUMP_EXP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.5": {
+		"title": "'DATAPUMP_IMP_FULL_DATABASE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.6": {
+		"title": "'DV_ADMIN' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.7": {
+		"title": "'DV_AUDIT_CLEANUP' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.8": {
+		"title": "'OLAP_DBA' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.9": {
+		"title": "'LBAC_DBA' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.10": {
+		"title": "'JAVA_ADMIN' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.11": {
+		"title": "'JAVASYSPRIVS' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.12": {
+		"title": "'LOGSTDBY_ADMINISTRATOR' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.13": {
+		"title": "'SQL_FIREWALL_ADMIN' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.14": {
+		"title": "'MAINTPLAN_APP' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.15": {
+		"title": "'JAVADEBUGPRIV' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.16": {
+		"title": "'DV_PATCH_ADMIN' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.17": {
+		"title": "'DV_POLICY_OWNER' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.18": {
+		"title": "AUDIT_ADMIN' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.19": {
+		"title": "'AUDIT_VIEWER' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.20": {
+		"title": "'PDB_DBA' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.21": {
+		"title": "'SELECT_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.2.22": {
+		"title": "'EXECUTE_CATALOG_ROLE' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.3.1": {
+		"title": "'CDB_SCHEMA_PRIVS' must not carry privileges beyond the approved set",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.4.1": {
+		"title": "'ALL' must be revoked on 'Sensitive' Tables",
+		"level": 1,
+		"assessment": "Automated",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.5.1": {
+		"title": "'DBA_COL_PRIVS' must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.6.1": {
+		"title": "Proxy User Privileges must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.7.1": {
+		"title": "Custom Java Privileges must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.8.1": {
+		"title": "Directory Object Access must be removed from unauthorized 'GRANTEE'",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.8.2": {
+		"title": "Directory Objects Privileges requires a recorded review",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.8.3": {
+		"title": "External Tables With Preprocessor requires a recorded review",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
+	"6.8.4": {
+		"title": "External Tables requires a recorded review",
+		"level": 1,
+		"assessment": "Manual",
+		"profiles": ["Level 1 - RDBMS"],
+	},
 }
 
 compliance_report := {

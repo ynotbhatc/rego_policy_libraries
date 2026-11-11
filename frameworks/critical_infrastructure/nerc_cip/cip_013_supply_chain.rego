@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default cip_senior_manager_approved := false
+
 default incident_coordination_process := false
+
 default incident_response_coordination_established := false
+
 default software_authenticity_verification_process := false
+
 default supply_chain_cyber_security_plan_implemented := false
+
 default supply_chain_monitoring_implemented := false
+
 default supply_chain_plan_review_current := false
+
 default vendor_contracts_include_security_requirements := false
+
 default vendor_incident_notification_process := false
+
 default vendor_remote_access_controlled := false
+
 default vendor_risk_assessments_performed := false
+
 default vendor_vulnerability_notification_process := false
 
 # CIP-013-2: Supply Chain Risk Management
@@ -115,7 +126,7 @@ date_ns(v) := v if is_number(v)
 vendor_risk_assessment_current(vendor) if {
 	assessment := input.vendor_risk_assessments[vendor.vendor_id]
 	assessment.completed == true
-	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (((24 * 60) * 60) * 1000000000)
 	assessment_age_days <= 1095 # 3 years
 	assessment.risks_identified == true
 	assessment.mitigation_plan_exists == true
@@ -193,7 +204,7 @@ vendor_notification_monitoring if {
 # 15 calendar months of the last review and after triggered events
 supply_chain_plan_review_current if {
 	last_review_ns := date_ns(input.supply_chain_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -201,7 +212,7 @@ supply_chain_plan_review_current if {
 cip_senior_manager_approved if {
 	input.supply_chain_plan.cip_senior_manager_approved == true
 	approval_ns := date_ns(input.supply_chain_plan.approval_date)
-	approval_age_days := (time.now_ns() - approval_ns) / (24 * 60 * 60 * 1000000000)
+	approval_age_days := (time.now_ns() - approval_ns) / (((24 * 60) * 60) * 1000000000)
 	approval_age_days <= 455
 }
 
