@@ -153,7 +153,7 @@ _date_ns(s) := t if {
 }
 
 _age_days(s) := d if {
-	d := floor((_now_ns - _date_ns(s)) / (24 * 60 * 60 * 1000000000))
+	d := floor((_now_ns - _date_ns(s)) / (((24 * 60) * 60) * 1000000000))
 }
 
 # MANUAL-CHECK: SECUPD-A_a.3

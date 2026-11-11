@@ -6,14 +6,14 @@
 #   source: nist
 #   domains: [us-federal]
 #   coverage:
-#     checks: 1
-#     cited: 1
+#     checks: 0
+#     cited: 0
 #     density: orchestrator
 #     basis: role
 #     tested: true
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.4.1
 package fisma.main
 
 import rego.v1

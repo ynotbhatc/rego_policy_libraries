@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default active_vulnerability_monitoring := false
+
 default authenticated_scanning_used := false
+
 default baseline_configurations_established := false
+
 default change_management_process_documented := false
+
 default configuration_changes_authorized := false
+
 default configuration_monitoring_timely := false
+
 default post_change_assessment := false
+
 default software_integrity_verification := false
+
 default transient_asset_config_managed := false
+
 default unauthorized_change_monitoring := false
+
 default vulnerability_assessments_performed := false
+
 default vulnerability_remediation_tracked := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -80,6 +91,7 @@ baseline_configuration_exists(system) if {
 	baseline.current == true
 	baseline.authorized == true
 	baseline.change_controlled == true
+
 	# Baseline must include: OS/firmware, commercially available software, custom software,
 	# logical network accessible ports, security patches
 	baseline.includes_os_firmware == true
@@ -109,6 +121,7 @@ change_control_adequate(change) if {
 # R1.4 - Monitor for unauthorized changes to baseline configuration
 unauthorized_change_monitoring if {
 	bes_inventory_present
+
 	# Judge only high/medium systems: a low impact system is out of scope and must
 	# not make the whole requirement false.
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
@@ -143,7 +156,7 @@ configuration_monitoring_timely if {
 	bes_inventory_present
 	every system in [s | some s in input.bes_cyber_systems; s.impact_categorization in ["high", "medium"]] {
 		sys_monitoring := input.configuration_monitoring[system.system_id]
-		review_age_days := (time.now_ns() - date_ns(sys_monitoring.last_review_date)) / (24 * 60 * 60 * 1000000000)
+		review_age_days := (time.now_ns() - date_ns(sys_monitoring.last_review_date)) / (((24 * 60) * 60) * 1000000000)
 		review_age_days <= 35
 	}
 }
@@ -165,7 +178,7 @@ vulnerability_assessments_performed if {
 
 vulnerability_assessment_current(system) if {
 	assessment := input.vulnerability_assessments[system.system_id]
-	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (24 * 60 * 60 * 1000000000)
+	assessment_age_days := (time.now_ns() - date_ns(assessment.completion_date)) / (((24 * 60) * 60) * 1000000000)
 	assessment_age_days <= 455 # 15 calendar months
 	assessment.documented == true
 	assessment.remediation_plan_exists == true

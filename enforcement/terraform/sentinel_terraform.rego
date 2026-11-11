@@ -36,19 +36,19 @@ required_tags := {"Environment", "Owner", "CostCenter"}
 
 # A tag is present only when it exists and is not null (a null value is as good as missing)
 tag_present(change, tag) if {
-    tags := object.get(change.change.after, "tags", {})
-    tags[tag] != null
+	tags := object.get(change.change.after, "tags", {})
+	tags[tag] != null
 }
 
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]           # tags don't matter for deletions
-    some required_tag in required_tags
-    not tag_present(change, required_tag)
-    msg := sprintf(
-        "SENTINEL-TF-001: Resource '%v' (%v) is missing required tag '%v'",
-        [change.address, change.type, required_tag]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"] # tags don't matter for deletions
+	some required_tag in required_tags
+	not tag_present(change, required_tag)
+	msg := sprintf(
+		"SENTINEL-TF-001: Resource '%v' (%v) is missing required tag '%v'",
+		[change.address, change.type, required_tag],
+	)
 }
 
 # =============================================================================
@@ -75,39 +75,39 @@ world_cidr_present(rule, "::/0") if rule.ipv6_cidr_blocks[_] == "::/0"
 covers_port(rule, _) if lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"-1", "all"}
 
 covers_port(rule, port) if {
-    lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"", "tcp", "6", "udp", "17"}
-    rule.from_port <= port
-    rule.to_port >= port
+	lower(sprintf("%v", [object.get(rule, "protocol", "")])) in {"", "tcp", "6", "udp", "17"}
+	rule.from_port <= port
+	rule.to_port >= port
 }
 
 # aws_security_group inline ingress rules
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    change.type == "aws_security_group"
-    some rule in object.get(change.change.after, "ingress", [])
-    open_to_world(rule)
-    some port in sensitive_ports
-    covers_port(rule, port)
-    msg := sprintf(
-        "SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to %v",
-        [change.address, port, world_cidrs(rule)]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	change.type == "aws_security_group"
+	some rule in object.get(change.change.after, "ingress", [])
+	open_to_world(rule)
+	some port in sensitive_ports
+	covers_port(rule, port)
+	msg := sprintf(
+		"SENTINEL-TF-002: Security group '%v' exposes sensitive port %v to %v",
+		[change.address, port, world_cidrs(rule)],
+	)
 }
 
 # aws_security_group_rule resources
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    change.type == "aws_security_group_rule"
-    object.get(change.change.after, "type", "") == "ingress"
-    open_to_world(change.change.after)
-    some port in sensitive_ports
-    covers_port(change.change.after, port)
-    msg := sprintf(
-        "SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to %v",
-        [change.address, port, world_cidrs(change.change.after)]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	change.type == "aws_security_group_rule"
+	object.get(change.change.after, "type", "") == "ingress"
+	open_to_world(change.change.after)
+	some port in sensitive_ports
+	covers_port(change.change.after, port)
+	msg := sprintf(
+		"SENTINEL-TF-002: Security group rule '%v' exposes sensitive port %v to %v",
+		[change.address, port, world_cidrs(change.change.after)],
+	)
 }
 
 # =============================================================================
@@ -117,15 +117,15 @@ violations contains msg if {
 approved_regions := {"us-east-1", "us-east-2", "us-west-2", "eu-west-1"}
 
 violations contains msg if {
-    some change in input.resource_changes
-    change.change.actions != ["delete"]
-    region := object.get(change.change.after, "region", "")
-    region != ""
-    not approved_regions[region]
-    msg := sprintf(
-        "SENTINEL-TF-003: Resource '%v' uses unapproved region '%v' (allowed: %v)",
-        [change.address, region, concat(", ", approved_regions)]
-    )
+	some change in input.resource_changes
+	change.change.actions != ["delete"]
+	region := object.get(change.change.after, "region", "")
+	region != ""
+	not approved_regions[region]
+	msg := sprintf(
+		"SENTINEL-TF-003: Resource '%v' uses unapproved region '%v' (allowed: %v)",
+		[change.address, region, concat(", ", approved_regions)],
+	)
 }
 
 # =============================================================================
@@ -135,13 +135,13 @@ violations contains msg if {
 default allow := false
 
 allow if {
-    count(violations) == 0
+	count(violations) == 0
 }
 
 result := {
-    "policy":          "Sentinel — Terraform Plan",
-    "allow":           allow,
-    "violation_count": count(violations),
-    "violations":      [v | some v in violations],
-    "required_tags":   [t | some t in required_tags],
+	"policy": "Sentinel — Terraform Plan",
+	"allow": allow,
+	"violation_count": count(violations),
+	"violations": [v | some v in violations],
+	"required_tags": [t | some t in required_tags],
 }

@@ -42,7 +42,7 @@ violations := [v |
 		privileges_roles_violations,
 		fine_grained_access_violations,
 		encryption_violations,
-		network_security_violations
+		network_security_violations,
 	]
 	v := arrays[_][_]
 ]
@@ -58,37 +58,37 @@ compliance_report := {
 	"sections": {
 		"installation_configuration": {
 			"violations": count(installation_configuration_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"listener": {
 			"violations": count(listener_violations),
-			"controls": 18
+			"controls": 18,
 		},
 		"logging_auditing": {
 			"violations": count(logging_auditing_violations),
-			"controls": 32
+			"controls": 32,
 		},
 		"user_accounts": {
 			"violations": count(user_accounts_violations),
-			"controls": 24
+			"controls": 24,
 		},
 		"privileges_roles": {
 			"violations": count(privileges_roles_violations),
-			"controls": 28
+			"controls": 28,
 		},
 		"fine_grained_access": {
 			"violations": count(fine_grained_access_violations),
-			"controls": 22
+			"controls": 22,
 		},
 		"encryption": {
 			"violations": count(encryption_violations),
-			"controls": 16
+			"controls": 16,
 		},
 		"network_security": {
 			"violations": count(network_security_violations),
-			"controls": 10
-		}
-	}
+			"controls": 10,
+		},
+	},
 }
 
 # Section 1: Installation and Configuration
@@ -121,7 +121,7 @@ installation_configuration_violations := [v |
 		["1.25: SEC_PROTOCOL_ERROR_FURTHER_ACTION parameter must match the approved value" | not sec_protocol_error_further_action_set],
 		["1.26: required value of parameter SEC_RETURN_SERVER_RELEASE_BANNER is FALSE" | not sec_return_server_release_banner_false],
 		["1.27: required value of parameter GLOBAL_NAMES is TRUE" | not global_names_true],
-		["1.28: database character set must use an approved value" | not database_character_set_appropriate]
+		["1.28: database character set must use an approved value" | not database_character_set_appropriate],
 	]
 	v := arrays[_][_]
 ]
@@ -178,7 +178,8 @@ on_system_partition(path, partitions) if {
 
 data_files_non_system_partitions if {
 	data_files := input.oracle.data_files
-	data_on_system := [df | df := data_files[_]
+	data_on_system := [df |
+		df := data_files[_]
 		on_system_partition(df.path, ["", "/usr", "/var", "/etc"])
 	]
 	count(data_on_system) == 0
@@ -246,9 +247,11 @@ sample_schemas_removed if {
 database_links_secured if {
 	db_links := input.oracle.database_links
 	public_links := [link | link := db_links[_]; link.owner == "PUBLIC"]
-	insecure_links := [link | link := db_links[_]; 
-		link.password_stored == true; 
-		link.encrypted == false]
+	insecure_links := [link |
+		link := db_links[_]
+		link.password_stored == true
+		link.encrypted == false
+	]
 	count(public_links) == 0
 	count(insecure_links) == 0
 }
@@ -349,7 +352,7 @@ listener_violations := [v |
 		["2.15: SQLNET.AUTHENTICATION_GSSAPI_SERVICE parameter must match the approved value" | not sqlnet_gssapi_service_correct],
 		["2.16: required value of parameter SQLNET.CRYPTO_SEED is configured" | not sqlnet_crypto_seed_configured],
 		["2.17: connection timeout must be explicitly configured" | not connection_timeout_configured],
-		["2.18: listener must be explicitly configured for SSL/TLS" | not listener_ssl_configured]
+		["2.18: listener must be explicitly configured for SSL/TLS" | not listener_ssl_configured],
 	]
 	v := arrays[_][_]
 ]
@@ -503,7 +506,7 @@ logging_auditing_violations := [v |
 		["3.29: database link operations must be audited" | not database_link_operations_audited],
 		["3.30: external procedure operations must be audited" | not external_procedure_operations_audited],
 		["3.31: network operations must be audited" | not network_operations_audited],
-		["3.32: SQL*Loader operations must be audited" | not sql_loader_operations_audited]
+		["3.32: SQL*Loader operations must be audited" | not sql_loader_operations_audited],
 	]
 	v := arrays[_][_]
 ]
@@ -516,6 +519,7 @@ audit_sys_operations_true if {
 audit_trail_appropriate if {
 	parameters := input.oracle.init_parameters
 	audit_trail := parameters.audit_trail
+
 	# Oracle reports "DB, EXTENDED"; ignore whitespace and case
 	normalized := upper(regex.replace(audit_trail, `\s+`, ""))
 	normalized in ["DB", "OS", "DB,EXTENDED", "XML,EXTENDED"]
@@ -525,6 +529,7 @@ audit_file_dest_dedicated if {
 	parameters := input.oracle.init_parameters
 	audit_file_dest := parameters.audit_file_dest
 	audit_file_dest != ""
+
 	# any absolute directory other than the default <base>/admin/<sid>/adump
 	startswith(audit_file_dest, "/")
 	not regex.match(`^/.*/admin/[^/]+/adump/?$`, audit_file_dest)
@@ -590,6 +595,7 @@ sensitive_data_access_auditing if {
 	sensitive_tables := input.oracle.sensitive_tables
 	audited_tables := [policy.table_name | policy := fga_policies[_]]
 	unaudited_sensitive := [table | table := sensitive_tables[_]; not table in audited_tables]
+
 	# an empty sensitive-table inventory is not evidence of anything: require a declared inventory
 	count(sensitive_tables) > 0
 	count(unaudited_sensitive) == 0
@@ -736,15 +742,17 @@ user_accounts_violations := [v |
 		["4.21: Administrative Account Usage must be Monitored" | not admin_account_usage_monitored],
 		["4.22: Emergency Account Procedures must be Defined" | not emergency_account_procedures_defined],
 		["4.23: Account Lifecycle Management must be Implemented" | not account_lifecycle_management_implemented],
-		["4.24: Shared Account Usage must be Eliminated or Controlled" | not shared_account_usage_controlled]
+		["4.24: Shared Account Usage must be Eliminated or Controlled" | not shared_account_usage_controlled],
 	]
 	v := arrays[_][_]
 ]
 
 default_passwords_changed if {
 	default_accounts := input.oracle.default_accounts
-	accounts_with_default_passwords := [acc | acc := default_accounts[_]; 
-		acc.password_changed == false]
+	accounts_with_default_passwords := [acc |
+		acc := default_accounts[_]
+		acc.password_changed == false
+	]
 	count(accounts_with_default_passwords) == 0
 }
 
@@ -757,17 +765,21 @@ sample_data_users_removed if {
 
 unnecessary_accounts_removed if {
 	accounts := input.oracle.accounts
-	unnecessary_accounts := [acc | acc := accounts[_]; 
-		acc.necessary == false; 
-		acc.status == "OPEN"]
+	unnecessary_accounts := [acc |
+		acc := accounts[_]
+		acc.necessary == false
+		acc.status == "OPEN"
+	]
 	count(unnecessary_accounts) == 0
 }
 
 unneeded_default_accounts_locked if {
 	default_accounts := input.oracle.default_accounts
-	unneeded_accounts := [acc | acc := default_accounts[_]; 
-		acc.needed == false; 
-		acc.status != "LOCKED"]
+	unneeded_accounts := [acc |
+		acc := default_accounts[_]
+		acc.needed == false
+		acc.status != "LOCKED"
+	]
 	count(unneeded_accounts) == 0
 }
 
@@ -814,8 +826,10 @@ strong_authentication_used if {
 
 db_auth_not_used_for_apps if {
 	app_accounts := input.oracle.application_accounts
-	db_auth_app_accounts := [acc | acc := app_accounts[_]; 
-		acc.authentication_method == "DATABASE"]
+	db_auth_app_accounts := [acc |
+		acc := app_accounts[_]
+		acc.authentication_method == "DATABASE"
+	]
 	count(db_auth_app_accounts) == 0
 }
 
@@ -917,10 +931,12 @@ shared_account_usage_controlled if {
 shared_account_usage_controlled if {
 	shared_accounts := input.oracle.shared_accounts
 	count(shared_accounts) > 0
-	controlled_shared := [acc | acc := shared_accounts[_]; 
-		acc.justified == true; 
-		acc.monitored == true; 
-		acc.access_controlled == true]
+	controlled_shared := [acc |
+		acc := shared_accounts[_]
+		acc.justified == true
+		acc.monitored == true
+		acc.access_controlled == true
+	]
 	count(controlled_shared) == count(shared_accounts)
 }
 
@@ -954,7 +970,7 @@ privileges_roles_violations := [v |
 		["5.25: Administrative Privilege Usage must be Logged" | not admin_privilege_usage_logged],
 		["5.26: Application Context Usage must be Secured" | not application_context_secured],
 		["5.27: Virtual Private Database Policies must be Implemented" | not vpd_policies_implemented],
-		["5.28: Definer Rights must be Used Appropriately" | not definer_rights_appropriate]
+		["5.28: Definer Rights must be Used Appropriately" | not definer_rights_appropriate],
 	]
 	v := arrays[_][_]
 ]
@@ -980,16 +996,20 @@ dba_roles_protected if {
 
 custom_dba_roles_least_privilege if {
 	custom_admin_roles := input.oracle.custom_admin_roles
-	least_privilege_roles := [role | role := custom_admin_roles[_]; 
-		role.follows_least_privilege == true]
+	least_privilege_roles := [role |
+		role := custom_admin_roles[_]
+		role.follows_least_privilege == true
+	]
 	count(least_privilege_roles) == count(custom_admin_roles)
 }
 
 all_roles_password_protected if {
 	roles := input.oracle.roles
 	non_system_roles := [role | role := roles[_]; not role.system_role]
-	password_protected_roles := [role | role := non_system_roles[_]; 
-		role.password_protected == true]
+	password_protected_roles := [role |
+		role := non_system_roles[_]
+		role.password_protected == true
+	]
 	count(password_protected_roles) == count(non_system_roles)
 }
 
@@ -1001,57 +1021,73 @@ no_roles_granted_to_public if {
 
 admin_privileges_granted_appropriately if {
 	admin_privilege_grants := input.oracle.admin_privilege_grants
-	inappropriate_grants := [grant | grant := admin_privilege_grants[_]; 
-		grant.justified == false]
+	inappropriate_grants := [grant |
+		grant := admin_privilege_grants[_]
+		grant.justified == false
+	]
 	count(inappropriate_grants) == 0
 }
 
 grant_any_role_restricted if {
 	system_privileges := input.oracle.system_privileges
-	grant_any_role_grants := [priv | priv := system_privileges[_]; 
-		priv.privilege == "GRANT ANY ROLE"]
+	grant_any_role_grants := [priv |
+		priv := system_privileges[_]
+		priv.privilege == "GRANT ANY ROLE"
+	]
 	count(grant_any_role_grants) == 0
 }
 
 grant_any_privilege_restricted if {
 	system_privileges := input.oracle.system_privileges
-	grant_any_privilege_grants := [priv | priv := system_privileges[_]; 
-		priv.privilege == "GRANT ANY PRIVILEGE"]
+	grant_any_privilege_grants := [priv |
+		priv := system_privileges[_]
+		priv.privilege == "GRANT ANY PRIVILEGE"
+	]
 	count(grant_any_privilege_grants) == 0
 }
 
 grant_any_object_privilege_restricted if {
 	system_privileges := input.oracle.system_privileges
-	grant_any_object_privilege_grants := [priv | priv := system_privileges[_]; 
-		priv.privilege == "GRANT ANY OBJECT PRIVILEGE"]
+	grant_any_object_privilege_grants := [priv |
+		priv := system_privileges[_]
+		priv.privilege == "GRANT ANY OBJECT PRIVILEGE"
+	]
 	count(grant_any_object_privilege_grants) == 0
 }
 
 system_privileges_granted_appropriately if {
 	system_privilege_grants := input.oracle.system_privilege_grants
-	inappropriate_system_grants := [grant | grant := system_privilege_grants[_]; 
-		grant.justified == false]
+	inappropriate_system_grants := [grant |
+		grant := system_privilege_grants[_]
+		grant.justified == false
+	]
 	count(inappropriate_system_grants) == 0
 }
 
 object_privileges_granted_appropriately if {
 	object_privilege_grants := input.oracle.object_privilege_grants
-	inappropriate_object_grants := [grant | grant := object_privilege_grants[_]; 
-		grant.justified == false]
+	inappropriate_object_grants := [grant |
+		grant := object_privilege_grants[_]
+		grant.justified == false
+	]
 	count(inappropriate_object_grants) == 0
 }
 
 with_admin_option_restricted if {
 	admin_option_grants := input.oracle.admin_option_grants
-	inappropriate_admin_option := [grant | grant := admin_option_grants[_]; 
-		grant.justified == false]
+	inappropriate_admin_option := [grant |
+		grant := admin_option_grants[_]
+		grant.justified == false
+	]
 	count(inappropriate_admin_option) == 0
 }
 
 with_grant_option_restricted if {
 	grant_option_grants := input.oracle.grant_option_grants
-	inappropriate_grant_option := [grant | grant := grant_option_grants[_]; 
-		grant.justified == false]
+	inappropriate_grant_option := [grant |
+		grant := grant_option_grants[_]
+		grant.justified == false
+	]
 	count(inappropriate_grant_option) == 0
 }
 
@@ -1070,29 +1106,37 @@ application_roles_used if {
 
 database_link_privileges_restricted if {
 	database_link_privileges := input.oracle.database_link_privileges
-	public_link_privileges := [priv | priv := database_link_privileges[_]; 
-		priv.grantee == "PUBLIC"]
+	public_link_privileges := [priv |
+		priv := database_link_privileges[_]
+		priv.grantee == "PUBLIC"
+	]
 	count(public_link_privileges) == 0
 }
 
 directory_object_privileges_restricted if {
 	directory_privileges := input.oracle.directory_privileges
-	public_directory_privileges := [priv | priv := directory_privileges[_]; 
-		priv.grantee == "PUBLIC"]
+	public_directory_privileges := [priv |
+		priv := directory_privileges[_]
+		priv.grantee == "PUBLIC"
+	]
 	count(public_directory_privileges) == 0
 }
 
 java_privileges_restricted if {
 	java_privileges := input.oracle.java_privileges
-	public_java_privileges := [priv | priv := java_privileges[_]; 
-		priv.grantee == "PUBLIC"]
+	public_java_privileges := [priv |
+		priv := java_privileges[_]
+		priv.grantee == "PUBLIC"
+	]
 	count(public_java_privileges) == 0
 }
 
 external_procedure_privileges_restricted if {
 	external_proc_privileges := input.oracle.external_procedure_privileges
-	public_external_proc_privileges := [priv | priv := external_proc_privileges[_]; 
-		priv.grantee == "PUBLIC"]
+	public_external_proc_privileges := [priv |
+		priv := external_proc_privileges[_]
+		priv.grantee == "PUBLIC"
+	]
 	count(public_external_proc_privileges) == 0
 }
 
@@ -1172,7 +1216,7 @@ fine_grained_access_violations := [v |
 		["6.19: DBMS_SCHEDULER Security must be explicitly configured" | not dbms_scheduler_security_configured],
 		["6.20: Advanced Queuing Security must be explicitly configured" | not aq_security_configured],
 		["6.21: XML Security must be explicitly configured" | not xml_security_configured],
-		["6.22: JSON Security must be explicitly configured" | not json_security_configured]
+		["6.22: JSON Security must be explicitly configured" | not json_security_configured],
 	]
 	v := arrays[_][_]
 ]
@@ -1186,9 +1230,11 @@ vpd_configured_sensitive_data if {
 
 application_contexts_secure if {
 	app_contexts := input.oracle.application_contexts
-	secure_contexts := [ctx | ctx := app_contexts[_]; 
-		ctx.secure_application_role == true; 
-		ctx.properly_validated == true]
+	secure_contexts := [ctx |
+		ctx := app_contexts[_]
+		ctx.secure_application_role == true
+		ctx.properly_validated == true
+	]
 	count(secure_contexts) == count(app_contexts)
 }
 
@@ -1232,8 +1278,10 @@ views_restrict_data_access if {
 synonyms_used_appropriately if {
 	synonyms := input.oracle.synonyms
 	public_synonyms := [syn | syn := synonyms[_]; syn.type == "PUBLIC"]
-	inappropriate_public_synonyms := [syn | syn := public_synonyms[_]; 
-		syn.security_reviewed == false]
+	inappropriate_public_synonyms := [syn |
+		syn := public_synonyms[_]
+		syn.security_reviewed == false
+	]
 	count(inappropriate_public_synonyms) == 0
 }
 
@@ -1367,7 +1415,7 @@ encryption_violations := [v |
 		["7.13: Application-Level Encryption must be Considered" | not application_level_encryption_considered],
 		["7.14: Encryption Compliance Requirements must be Met" | not encryption_compliance_requirements_met],
 		["7.15: Encryption Performance Impact must be Monitored" | not encryption_performance_monitored],
-		["7.16: checked condition — Hardware Security Module (HSM) Integration" | not hsm_integration]
+		["7.16: checked condition — Hardware Security Module (HSM) Integration" | not hsm_integration],
 	]
 	v := arrays[_][_]
 ]
@@ -1404,11 +1452,11 @@ strong_encryption_algorithms if {
 	encryption_algorithms := input.oracle.encryption_algorithms
 	weak_algorithms := ["DES", "3DES", "RC4", "MD5"]
 	strong_algorithms := ["AES256", "SHA256", "SHA384", "SHA512"]
-	
+
 	algorithms_in_use := encryption_algorithms.algorithms_in_use
 	weak_in_use := [alg | alg := weak_algorithms[_]; alg in algorithms_in_use]
 	strong_in_use := [alg | alg := strong_algorithms[_]; alg in algorithms_in_use]
-	
+
 	count(weak_in_use) == 0
 	count(strong_in_use) > 0
 }
@@ -1507,7 +1555,7 @@ network_security_violations := [v |
 		["8.7: Strong Authentication must be Used for Network Connections" | not strong_network_authentication],
 		["8.8: Kerberos Authentication must be explicitly configured Where Appropriate" | not kerberos_auth_configured],
 		["8.9: SSL/TLS must be explicitly configured for Database Connections" | not ssl_tls_configured],
-		["8.10: checked condition — Network Monitoring and Intrusion Detection" | not network_monitoring_ids]
+		["8.10: checked condition — Network Monitoring and Intrusion Detection" | not network_monitoring_ids],
 	]
 	v := arrays[_][_]
 ]
@@ -1556,11 +1604,11 @@ strong_network_authentication if {
 	network_auth := input.oracle.network_authentication
 	strong_methods := ["KERBEROS", "PKI", "RADIUS"]
 	weak_methods := ["NONE", "PASSWORD"]
-	
+
 	methods_in_use := network_auth.methods_in_use
 	strong_in_use := [method | method := methods_in_use[_]; method in strong_methods]
 	weak_in_use := [method | method := methods_in_use[_]; method in weak_methods]
-	
+
 	count(strong_in_use) > 0
 	count(weak_in_use) == 0
 }

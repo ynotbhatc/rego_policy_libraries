@@ -8,310 +8,260 @@ import data.stig.kubernetes
 # collected evidence) one evidence-missing test per rule, plus empty-input fail-closed tests.
 
 green_fixture := {
-		"controller_manager": {
-			"flags": {
-				"tls-min-version": "VersionTLS12",
-				"use-service-account-credentials": "true",
-				"bind-address": "127.0.0.1",
-				"profiling": "false",
-				"root-ca-file": "/etc/kubernetes/pki/ca.crt"
-			}
+	"controller_manager": {"flags": {
+		"tls-min-version": "VersionTLS12",
+		"use-service-account-credentials": "true",
+		"bind-address": "127.0.0.1",
+		"profiling": "false",
+		"root-ca-file": "/etc/kubernetes/pki/ca.crt",
+	}},
+	"scheduler": {"flags": {
+		"tls-min-version": "VersionTLS12",
+		"bind-address": "127.0.0.1",
+	}},
+	"api_server": {
+		"flags": {
+			"tls-min-version": "VersionTLS12",
+			"authorization-mode": "Node,RBAC",
+			"secure-port": "6443",
+			"anonymous-auth": "false",
+			"audit-log-path": "/var/log/kubernetes/audit/audit.log",
+			"audit-policy-file": "/etc/kubernetes/audit-policy.yaml",
+			"encryption-provider-config": "/etc/kubernetes/enc/encryption-config.yaml",
+			"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+			"client-ca-file": "/etc/kubernetes/pki/ca.crt",
+			"tls-cert-file": "/etc/kubernetes/pki/apiserver.crt",
+			"tls-private-key-file": "/etc/kubernetes/pki/apiserver.key",
+			"etcd-cafile": "/etc/kubernetes/pki/etcd/ca.crt",
+			"etcd-certfile": "/etc/kubernetes/pki/apiserver-etcd-client.crt",
+			"etcd-keyfile": "/etc/kubernetes/pki/apiserver-etcd-client.key",
+			"enable-admission-plugins": "NodeRestriction,ValidatingAdmissionWebhook,PodSecurity",
+			"admission-control-config-file": "/etc/kubernetes/psa/admission.yaml",
+			"request-timeout": "60s",
+			"kubelet-client-certificate": "/etc/kubernetes/pki/apiserver-kubelet-client.crt",
+			"kubelet-client-key": "/etc/kubernetes/pki/apiserver-kubelet-client.key",
+			"audit-log-maxsize": "100",
+			"audit-log-maxbackup": "10",
+			"audit-log-maxage": "30",
 		},
-		"scheduler": {
-			"flags": {
-				"tls-min-version": "VersionTLS12",
-				"bind-address": "127.0.0.1"
-			}
+		"audit_policy": {
+			"apiVersion": "audit.k8s.io/v1",
+			"kind": "Policy",
+			"rules": [{"level": "RequestResponse"}],
 		},
-		"api_server": {
-			"flags": {
-				"tls-min-version": "VersionTLS12",
-				"authorization-mode": "Node,RBAC",
-				"secure-port": "6443",
-				"anonymous-auth": "false",
-				"audit-log-path": "/var/log/kubernetes/audit/audit.log",
-				"audit-policy-file": "/etc/kubernetes/audit-policy.yaml",
-				"encryption-provider-config": "/etc/kubernetes/enc/encryption-config.yaml",
-				"tls-cipher-suites": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-				"client-ca-file": "/etc/kubernetes/pki/ca.crt",
-				"tls-cert-file": "/etc/kubernetes/pki/apiserver.crt",
-				"tls-private-key-file": "/etc/kubernetes/pki/apiserver.key",
-				"etcd-cafile": "/etc/kubernetes/pki/etcd/ca.crt",
-				"etcd-certfile": "/etc/kubernetes/pki/apiserver-etcd-client.crt",
-				"etcd-keyfile": "/etc/kubernetes/pki/apiserver-etcd-client.key",
-				"enable-admission-plugins": "NodeRestriction,ValidatingAdmissionWebhook,PodSecurity",
-				"admission-control-config-file": "/etc/kubernetes/psa/admission.yaml",
-				"request-timeout": "60s",
-				"kubelet-client-certificate": "/etc/kubernetes/pki/apiserver-kubelet-client.crt",
-				"kubelet-client-key": "/etc/kubernetes/pki/apiserver-kubelet-client.key",
-				"audit-log-maxsize": "100",
-				"audit-log-maxbackup": "10",
-				"audit-log-maxage": "30"
-			},
-			"audit_policy": {
-				"apiVersion": "audit.k8s.io/v1",
-				"kind": "Policy",
-				"rules": [
-					{
-						"level": "RequestResponse"
-					}
-				]
-			},
-			"encryption_config": {
-				"resources": [
-					{
-						"resources": [
-							"secrets"
-						],
-						"providers": [
-							"aescbc",
-							"identity"
-						]
-					}
-				]
-			}
+		"encryption_config": {"resources": [{
+			"resources": ["secrets"],
+			"providers": [
+				"aescbc",
+				"identity",
+			],
+		}]},
+	},
+	"etcd": {"flags": {
+		"auto-tls": "false",
+		"peer-auto-tls": "false",
+		"client-cert-auth": "true",
+		"peer-client-cert-auth": "true",
+		"key-file": "/etc/kubernetes/pki/etcd/server.key",
+		"cert-file": "/etc/kubernetes/pki/etcd/server.crt",
+		"peer-cert-file": "/etc/kubernetes/pki/etcd/peer.crt",
+		"peer-key-file": "/etc/kubernetes/pki/etcd/peer.key",
+	}},
+	"cluster": {
+		"namespace_resources": {
+			"default": ["service/kubernetes"],
+			"kube-public": [],
+			"kube-node-lease": [],
 		},
-		"etcd": {
-			"flags": {
-				"auto-tls": "false",
-				"peer-auto-tls": "false",
-				"client-cert-auth": "true",
-				"peer-client-cert-auth": "true",
-				"key-file": "/etc/kubernetes/pki/etcd/server.key",
-				"cert-file": "/etc/kubernetes/pki/etcd/server.crt",
-				"peer-cert-file": "/etc/kubernetes/pki/etcd/peer.crt",
-				"peer-key-file": "/etc/kubernetes/pki/etcd/peer.key"
-			}
-		},
-		"cluster": {
-			"namespace_resources": {
-				"default": [
-					"service/kubernetes"
-				],
-				"kube-public": [],
-				"kube-node-lease": []
-			},
-			"dashboard_pods": [],
-			"version": "v1.30.2",
-			"images": [
-				"registry.k8s.io/kube-apiserver:v1.30.2",
-				"registry.k8s.io/etcd:3.5.12-0"
-			]
-		},
-		"collection_status": {
-			"namespace_resources": "ok",
-			"worker_nodes": "ok",
-			"dashboard_pods": "ok",
-			"kubectl_client_versions": "ok",
-			"user_pod_host_ports": "ok",
-			"secret_env_scan": "ok",
-			"images": "ok"
-		},
-		"kubelet": {
-			"flags": {
-				"config": "/var/lib/kubelet/config.yaml"
-			},
-			"config": {
-				"readOnlyPort": 0,
-				"authentication": {
-					"anonymous": {
-						"enabled": false
-					},
-					"x509": {
-						"clientCAFile": "/etc/kubernetes/pki/ca.crt"
-					}
-				},
-				"authorization": {
-					"mode": "Webhook"
-				},
-				"streamingConnectionIdleTimeout": "5m0s",
-				"tlsPrivateKeyFile": "/var/lib/kubelet/pki/kubelet.key",
-				"tlsCertFile": "/var/lib/kubelet/pki/kubelet.crt",
-				"protectKernelDefaults": true
-			}
-		},
-		"worker_nodes": [
-			{
-				"name": "worker-1",
-				"sshd_active": false,
-				"sshd_enabled": false
-			}
+		"dashboard_pods": [],
+		"version": "v1.30.2",
+		"images": [
+			"registry.k8s.io/kube-apiserver:v1.30.2",
+			"registry.k8s.io/etcd:3.5.12-0",
 		],
-		"kubectl": {
-			"client_versions": [
-				"v1.30.2"
-			]
+	},
+	"collection_status": {
+		"namespace_resources": "ok",
+		"worker_nodes": "ok",
+		"dashboard_pods": "ok",
+		"kubectl_client_versions": "ok",
+		"user_pod_host_ports": "ok",
+		"secret_env_scan": "ok",
+		"images": "ok",
+	},
+	"kubelet": {
+		"flags": {"config": "/var/lib/kubelet/config.yaml"},
+		"config": {
+			"readOnlyPort": 0,
+			"authentication": {
+				"anonymous": {"enabled": false},
+				"x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
+			},
+			"authorization": {"mode": "Webhook"},
+			"streamingConnectionIdleTimeout": "5m0s",
+			"tlsPrivateKeyFile": "/var/lib/kubelet/pki/kubelet.key",
+			"tlsCertFile": "/var/lib/kubelet/pki/kubelet.crt",
+			"protectKernelDefaults": true,
 		},
-		"files": {
-			"manifests": [
-				{
-					"path": "/etc/kubernetes/manifests/kube-apiserver.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/manifests/kube-apiserver.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/manifests/kube-controller-manager.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/manifests/kube-scheduler.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kubelet_config_file": [
-				{
-					"path": "/var/lib/kubelet/config.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"etcd_data": [
-				{
-					"path": "/var/lib/etcd/member",
-					"mode": "0600",
-					"owner": "etcd",
-					"group": "etcd"
-				}
-			],
-			"control_plane_confs": [
-				{
-					"path": "/etc/kubernetes/admin.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/admin.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/scheduler.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/controller-manager.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kube_proxy_kubeconfig": [
-				{
-					"path": "/var/lib/kube-proxy/kubeconfig.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kubelet_client_ca": [
-				{
-					"path": "/etc/kubernetes/pki/ca.crt",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"pki": [
-				{
-					"path": "/etc/kubernetes/pki/ca.crt",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/pki/ca.key",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/pki/apiserver.crt",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/pki/apiserver.key",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kubelet_kubeconfig": [
-				{
-					"path": "/etc/kubernetes/kubelet.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/etc/kubernetes/kubelet.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kubeadm_conf": [
-				{
-					"path": "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			],
-			"kubelet_config_yaml": [
-				{
-					"path": "/var/lib/kubelet/config.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				},
-				{
-					"path": "/var/lib/kubelet/config.yaml",
-					"mode": "0600",
-					"owner": "root",
-					"group": "root"
-				}
-			]
-		},
-		"attest": {
-			"api_server_pps_ppsm_cal_compliant": true,
-			"scheduler_pps_ppsm_cal_compliant": true,
-			"controller_manager_pps_ppsm_cal_compliant": true,
-			"etcd_pps_ppsm_cal_compliant": true,
-			"sensitive_data_only_in_secrets": true,
-			"secret_access_need_to_know": true,
-			"no_user_pods_in_system_namespaces": true,
-			"pod_security_admission_least_privilege": true
-		},
-		"workloads": {
-			"user_pod_host_ports": [
-				30080
-			]
-		},
-		"secrets": {
-			"env_var_usage_count": 0
-		},
-		"kube_proxy": {
-			"running": true
-		}
-	}
+	},
+	"worker_nodes": [{
+		"name": "worker-1",
+		"sshd_active": false,
+		"sshd_enabled": false,
+	}],
+	"kubectl": {"client_versions": ["v1.30.2"]},
+	"files": {
+		"manifests": [
+			{
+				"path": "/etc/kubernetes/manifests/kube-apiserver.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/manifests/kube-apiserver.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/manifests/kube-controller-manager.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/manifests/kube-scheduler.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+		],
+		"kubelet_config_file": [{
+			"path": "/var/lib/kubelet/config.yaml",
+			"mode": "0600",
+			"owner": "root",
+			"group": "root",
+		}],
+		"etcd_data": [{
+			"path": "/var/lib/etcd/member",
+			"mode": "0600",
+			"owner": "etcd",
+			"group": "etcd",
+		}],
+		"control_plane_confs": [
+			{
+				"path": "/etc/kubernetes/admin.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/admin.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/scheduler.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/controller-manager.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+		],
+		"kube_proxy_kubeconfig": [{
+			"path": "/var/lib/kube-proxy/kubeconfig.conf",
+			"mode": "0600",
+			"owner": "root",
+			"group": "root",
+		}],
+		"kubelet_client_ca": [{
+			"path": "/etc/kubernetes/pki/ca.crt",
+			"mode": "0600",
+			"owner": "root",
+			"group": "root",
+		}],
+		"pki": [
+			{
+				"path": "/etc/kubernetes/pki/ca.crt",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/pki/ca.key",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/pki/apiserver.crt",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/pki/apiserver.key",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+		],
+		"kubelet_kubeconfig": [
+			{
+				"path": "/etc/kubernetes/kubelet.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/etc/kubernetes/kubelet.conf",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+		],
+		"kubeadm_conf": [{
+			"path": "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf",
+			"mode": "0600",
+			"owner": "root",
+			"group": "root",
+		}],
+		"kubelet_config_yaml": [
+			{
+				"path": "/var/lib/kubelet/config.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+			{
+				"path": "/var/lib/kubelet/config.yaml",
+				"mode": "0600",
+				"owner": "root",
+				"group": "root",
+			},
+		],
+	},
+	"attest": {
+		"api_server_pps_ppsm_cal_compliant": true,
+		"scheduler_pps_ppsm_cal_compliant": true,
+		"controller_manager_pps_ppsm_cal_compliant": true,
+		"etcd_pps_ppsm_cal_compliant": true,
+		"sensitive_data_only_in_secrets": true,
+		"secret_access_need_to_know": true,
+		"no_user_pods_in_system_namespaces": true,
+		"pod_security_admission_least_privilege": true,
+	},
+	"workloads": {"user_pod_host_ports": [30080]},
+	"secrets": {"env_var_usage_count": 0},
+	"kube_proxy": {"running": true},
+}
 
 test_report_wellformed_on_empty_input if {
 	report := kubernetes.stig_assessment with input as {}

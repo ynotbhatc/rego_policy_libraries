@@ -5,15 +5,6 @@
 #   framework: stig_openshift_4
 #   source: disa
 #   domains: [kubernetes, openshift, container]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package stig_openshift_4.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

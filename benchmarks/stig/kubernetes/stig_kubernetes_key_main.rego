@@ -5,15 +5,6 @@
 #   framework: stig_kubernetes
 #   source: disa
 #   domains: [kubernetes, container]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package stig_kubernetes.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

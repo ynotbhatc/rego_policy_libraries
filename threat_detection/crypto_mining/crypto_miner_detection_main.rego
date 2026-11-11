@@ -5,15 +5,6 @@
 #   framework: crypto_mining
 #   source: aac
 #   domains: [threat, cryptomining]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package crypto_miner_detection.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

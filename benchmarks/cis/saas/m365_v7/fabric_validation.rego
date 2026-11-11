@@ -159,9 +159,7 @@ compliance_report := {
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
-	"evidence_strength": {
-		"section": "collected from the Fabric admin API. CIS documents these as portal steps plus a CIS-supplied helper function; the API returns the same tenantSettings the portal displays. A setting that is enabled but scoped to named security groups is treated as restricted, which is what the benchmark accepts.",
-	},
+	"evidence_strength": {"section": "collected from the Fabric admin API. CIS documents these as portal steps plus a CIS-supplied helper function; the API returns the same tenantSettings the portal displays. A setting that is enabled but scoped to named security groups is treated as restricted, which is what the benchmark accepts."},
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

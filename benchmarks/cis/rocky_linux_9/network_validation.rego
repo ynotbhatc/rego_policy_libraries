@@ -43,9 +43,7 @@ sysctl_violations contains "CIS 3.x: evidence missing — sysctl_parameters.anal
 has_items(x) if count(x) > 0
 
 # CIS 3.x: Kernel sysctl parameters
-sysctl_violations contains sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [
-	param.parameter, param.current_value, param.expected_value, param.description,
-]) if {
+sysctl_violations contains sprintf("CIS 3.x: Kernel parameter '%s' has incorrect value (current: %s, expected: %s) - %s", [param.parameter, param.current_value, param.expected_value, param.description]) if {
 	some param in input.sysctl_parameters.non_compliant_params
 }
 

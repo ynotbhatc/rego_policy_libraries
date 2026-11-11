@@ -67,7 +67,8 @@ test_main_empty_input_reports_104_violations if {
 
 test_main_shall_should_partition if {
 	r := main.compliance_report with input as {}
-	(r.shall_violation_count + r.should_violation_count) == r.violation_count
+	r.shall_violation_count + r.should_violation_count == r.violation_count
+
 	# Verified split from the baseline documents' machine-readable
 	# criticality comments: 59 SHALL, 45 SHOULD.
 	r.shall_violation_count == 59

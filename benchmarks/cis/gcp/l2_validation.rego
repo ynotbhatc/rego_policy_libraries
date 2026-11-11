@@ -29,7 +29,7 @@ import data.cis_gcp_foundations as bench
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 l2_ids := {id | some id, c in bench.controls; c.level == 2}
 
@@ -51,11 +51,11 @@ failing_l2_controls := {id | some v in bench.violations; id := control_id(v); id
 l2_total_controls := count(l2_ids)
 
 compliance_report := {
-	"profile":           "level2",
-	"benchmark":         "CIS Google Cloud Platform Foundation Benchmark v5.0.0",
-	"l2_controls":       l2_total_controls,
-	"l2_violations":     count(failing_l2_controls),
-	"l2_compliant":      compliant,
+	"profile": "level2",
+	"benchmark": "CIS Google Cloud Platform Foundation Benchmark v5.0.0",
+	"l2_controls": l2_total_controls,
+	"l2_violations": count(failing_l2_controls),
+	"l2_compliant": compliant,
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated GCP workloads (FedRAMP High, PCI-DSS, HIPAA, DoD).",
 }

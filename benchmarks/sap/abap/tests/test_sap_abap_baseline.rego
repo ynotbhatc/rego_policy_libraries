@@ -354,6 +354,7 @@ test_critical_profile_evaluates_only_p1 if {
 	r := main.compliance_report with input as {"sap": {"abap": {"profile": "critical"}}}
 	r.profile == "critical"
 	r.controls_evaluated == count({c.id | some _, c in registry.checks; c.assessable; c.level == "critical"})
+
 	# a p2 check is out of profile, not a violation
 	r.results["PWDPOL-A_e.1"] == "out_of_profile"
 	r.results["PWDPOL-A_a.1"] == "violation"
@@ -407,7 +408,7 @@ test_baseline_projection_covers_every_check_once if {
 	count(all) == count(registry.checks)
 	count({id | some id in all}) == count(registry.checks)
 	p.summary.references == count(p.references)
-	p.summary.compliant + p.summary.violation + p.summary.not_assessable == p.summary.references
+	(p.summary.compliant + p.summary.violation) + p.summary.not_assessable == p.summary.references
 }
 
 test_baseline_projection_requirement_with_no_assessable_check_is_not_assessable if {

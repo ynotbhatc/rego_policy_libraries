@@ -20,4 +20,3 @@ test_network_validation_fail_closed_on_empty_input if {
 	report := data.cis_amazon_linux_2023.network.report with input as {}
 	not object.get(report, "compliant", false) == true
 }
-

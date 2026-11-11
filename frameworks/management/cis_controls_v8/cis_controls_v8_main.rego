@@ -91,7 +91,7 @@ compliant if count(all_violations) == 0
 
 compliance_report := {
 	"framework": "CIS Controls v8.1",
-	"standard_total": 153,   # CIS Controls v8.1: safeguards per control on cisecurity.org/controls/cis-controls-navigator (5+7+14+12+6+8+7+12+7+7+5+8+11+9+7+14+9+5)
+	"standard_total": 153, # CIS Controls v8.1: safeguards per control on cisecurity.org/controls/cis-controls-navigator (5+7+14+12+6+8+7+12+7+7+5+8+11+9+7+14+9+5)
 	"controls_evaluated": count(reports),
 	"total_safeguards": count(all_safeguards),
 	"violations": all_violations,

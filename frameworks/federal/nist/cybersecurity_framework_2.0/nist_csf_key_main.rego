@@ -5,15 +5,6 @@
 #   framework: nist_cybersecurity_framework_2_0
 #   source: nist
 #   domains: [us-federal, security-controls]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package nist_csf.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

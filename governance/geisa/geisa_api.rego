@@ -104,7 +104,7 @@ violations contains "API: manifest.applicationId must be non-empty" if {
 
 # ─── Output ──────────────────────────────────────────────────────────────────
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
 	"pillar": "API",

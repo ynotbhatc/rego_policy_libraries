@@ -232,9 +232,7 @@ compliance_report := {
 	],
 	"facts_present": collected,
 	"unavailable_facts": unavailable,
-	"evidence_strength": {
-		"section": "collected with the cmdlets CIS documents (Get-CsTeamsClientConfiguration, Get-CsTenantFederationConfiguration, Get-CsTeamsMeetingPolicy, Get-CsTeamsMessagingPolicy), all verified present in the execution environment. Meeting and messaging policies are evaluated across ALL policies, not only Global, because a permissive non-global policy still governs the users it is assigned to.",
-	},
+	"evidence_strength": {"section": "collected with the cmdlets CIS documents (Get-CsTeamsClientConfiguration, Get-CsTenantFederationConfiguration, Get-CsTeamsMeetingPolicy, Get-CsTeamsMessagingPolicy), all verified present in the execution environment. Meeting and messaging policies are evaluated across ALL policies, not only Global, because a permissive non-global policy still governs the users it is assigned to."},
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

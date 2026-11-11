@@ -81,11 +81,17 @@ compliant if {
 	count(violations) == 0
 }
 
-_vee_status := "not_required" if { not _vee_required }
+_vee_status := "not_required" if not _vee_required
 
-_vee_status := "required_and_compliant" if { _vee_required; count(violations) == 0 }
+_vee_status := "required_and_compliant" if {
+	_vee_required
+	count(violations) == 0
+}
 
-_vee_status := "required_and_non_compliant" if { _vee_required; count(violations) > 0 }
+_vee_status := "required_and_non_compliant" if {
+	_vee_required
+	count(violations) > 0
+}
 
 compliance_report := {
 	"pillar": "VEE",

@@ -39,8 +39,8 @@ package cis_rocky_linux_9.main
 # derived/derived_from/applied_to so consumers can detect this.
 # See README.md in this directory.
 
-import rego.v1
 import data.cis_rocky_linux_9 as bench
+import rego.v1
 
 default _compliant := false
 

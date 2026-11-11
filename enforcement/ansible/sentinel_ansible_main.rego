@@ -5,15 +5,6 @@
 #   framework: enforcement_ansible
 #   source: aac
 #   domains: [ansible]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: gate
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: n/a
-#     as_of: v2.4.2
 package sentinel_ansible.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

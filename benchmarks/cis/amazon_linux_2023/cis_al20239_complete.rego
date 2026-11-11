@@ -22,20 +22,20 @@ package cis_amazon_linux_2023
 
 import rego.v1
 
-import data.cis_amazon_linux_2023.filesystem
-import data.cis_amazon_linux_2023.logging
-import data.cis_amazon_linux_2023.file_permissions
-import data.cis_amazon_linux_2023.services
-import data.cis_amazon_linux_2023.network
-import data.cis_amazon_linux_2023.ssh
 import data.cis_amazon_linux_2023.auditd
-import data.cis_amazon_linux_2023.pam
-import data.cis_amazon_linux_2023.sudo
-import data.cis_amazon_linux_2023.selinux
-import data.cis_amazon_linux_2023.user_group
-import data.cis_amazon_linux_2023.cron
 import data.cis_amazon_linux_2023.boot_security
+import data.cis_amazon_linux_2023.cron
+import data.cis_amazon_linux_2023.file_permissions
+import data.cis_amazon_linux_2023.filesystem
 import data.cis_amazon_linux_2023.initial_setup
+import data.cis_amazon_linux_2023.logging
+import data.cis_amazon_linux_2023.network
+import data.cis_amazon_linux_2023.pam
+import data.cis_amazon_linux_2023.selinux
+import data.cis_amazon_linux_2023.services
+import data.cis_amazon_linux_2023.ssh
+import data.cis_amazon_linux_2023.sudo
+import data.cis_amazon_linux_2023.user_group
 
 # =============================================================================
 # MAIN COMPLIANCE RULE

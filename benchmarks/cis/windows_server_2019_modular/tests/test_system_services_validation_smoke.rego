@@ -20,4 +20,3 @@ test_system_services_validation_fail_closed_on_empty_input if {
 	report := data.cis_windows_server_2019.system_services.report with input as {}
 	not object.get(report, "compliant", false) == true
 }
-

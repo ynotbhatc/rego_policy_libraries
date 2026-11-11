@@ -24,7 +24,7 @@ import rego.v1
 
 default compliant := false
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 # ---------------------------------------------------------------------------
 # Section 1 - Identity and Access Management (L2)
@@ -252,11 +252,11 @@ port_in_range(port_range, ports) if {
 l2_total_controls := 40
 
 compliance_report := {
-	"profile":           "level2",
-	"benchmark":         "CIS Amazon Web Services Foundations Benchmark v7.0.0",
-	"l2_controls":       l2_total_controls,
-	"l2_violations":     count(violations),
-	"l2_compliant":      compliant,
+	"profile": "level2",
+	"benchmark": "CIS Amazon Web Services Foundations Benchmark v7.0.0",
+	"l2_controls": l2_total_controls,
+	"l2_violations": count(violations),
+	"l2_compliant": compliant,
 	"l2_violation_list": [v | some v in violations],
 	"note": "Level 2 controls supplement Level 1. Intended for regulated cloud workloads (FedRAMP High, PCI-DSS, HIPAA, DoD).",
 }

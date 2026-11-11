@@ -83,7 +83,6 @@ violations := [v |
 	some v in a
 ]
 
-
 # 2.1 / 2.3 / 2.5 System settings, SNMP, high availability
 system_settings_violations := sort([m | some m in _v_system_settings])
 
@@ -214,7 +213,6 @@ _quarantine_stitch(s) if {
 	some a in _names(object.get(s, "actions", []))
 	contains(lower(a), "quarantine")
 }
-
 
 # 1.1 (Automated, Level 1)
 default r_1_1 := false
@@ -644,7 +642,7 @@ _v_system_settings contains "2.3.1: only SNMPv3 must be turned on" if {
 default r_2_3_2 := false
 
 r_2_3_2 if {
-	every u in input.fortigate_config.system.snmp.user { hs := _names(object.get(u, "notify_hosts", [])); count(hs) > 0; not "0.0.0.0" in hs }
+	every u in input.fortigate_config.system.snmp.user { hs := _names(object.get(u, "notify_hosts", [])); count(hs) > 0; not "0.0.0.0" in hs}
 }
 
 default e_2_3_2 := false
@@ -1686,644 +1684,515 @@ recommendations := {
 		"title": "DNS server must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "network"
+		"section": "network",
 	},
 	"1.2": {
 		"title": "intra-zone traffic must be not always allowed",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "network"
+		"section": "network",
 	},
 	"1.3": {
 		"title": "all management related services on WAN port must be turned off",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "network"
+		"section": "network",
 	},
 	"2.1.1": {
 		"title": "'Pre-Login Banner' must be populated",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.2": {
 		"title": "'Post-Login-Banner' must be populated",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.3": {
 		"title": "timezone must match the approved configuration",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.4": {
 		"title": "correct system time must be explicitly configured through NTP",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.5": {
 		"title": "hostname must be set",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.6": {
 		"title": "the latest firmware must be present",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "attestation",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.7": {
 		"title": "USB Firmware and configuration installation must be turned off",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.8": {
 		"title": "static keys for TLS must be turned off",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.9": {
 		"title": "Global Strong Encryption must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.10": {
 		"title": "checked condition — management GUI listens on secure TLS version",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.11": {
 		"title": "CDN must be turned on for improved GUI performance",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.12": {
 		"title": "single CPU core overloaded event must be logged",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.1.13": {
 		"title": "Hostname must be Not Displayed On Login GUI",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.2.1": {
 		"title": "'Password Policy' must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.2.2": {
 		"title": "administrator password retries and lockout time must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.3.1": {
 		"title": "only SNMPv3 must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.3.2": {
 		"title": "only trusted hosts in SNMPv3 may be permitted",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.3.3": {
 		"title": "SNMPv3 Query Per User must be turned off",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.3.4": {
 		"title": "checked condition — Enabling SNMP trap for memory usage",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.4.1": {
 		"title": "default admin user and create one with other name must be removed",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.2": {
 		"title": "checked condition — all the login accounts having specific trusted hosts enabled",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.3": {
 		"title": "admin accounts with different privileges must have their correct profiles assigned",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "attestation",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.4": {
 		"title": "Admin idle timeout time must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.5": {
 		"title": "only encrypted access channels must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.6": {
 		"title": "Local-in Policies must be applied",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.7": {
 		"title": "default Admin ports must be changed",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.4.8": {
 		"title": "checked condition — Virtual patching on the local-in management interface",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "administration"
+		"section": "administration",
 	},
 	"2.5.1": {
 		"title": "High Availability configuration must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.5.2": {
 		"title": "\"Monitor Interfaces\" for High Availability devices must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.5.3": {
 		"title": "HA Reserved Management Interface must be explicitly configured",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"2.5.4": {
 		"title": "High Availability Group-ID must be explicitly configured",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "system_settings"
+		"section": "system_settings",
 	},
 	"3.1": {
 		"title": "unused policies must be reviewed regularly",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "attestation",
-		"section": "firewall"
+		"section": "firewall",
 	},
 	"3.2": {
 		"title": "checked condition — policies do not use \"ALL\" as Service",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "firewall"
+		"section": "firewall",
 	},
 	"3.3": {
 		"title": "checked condition — firewall policy denying all traffic to/from Tor, malicious server, or scanner IP addresses using ISDB",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "firewall"
+		"section": "firewall",
 	},
 	"3.4": {
 		"title": "logging must be turned on for all firewall policies",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "firewall"
+		"section": "firewall",
 	},
 	"4.1.1": {
 		"title": "Botnet connections must be detected and recorded",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.1.2": {
 		"title": "IPS Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.1": {
 		"title": "Antivirus Definition Push Updates must be explicitly configured",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.2": {
 		"title": "Antivirus Security Profile to Policies must be applied",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.3": {
 		"title": "Outbreak Prevention Database must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.4": {
 		"title": "AI /heuristic based malware detection must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.5": {
 		"title": "grayware detection on antivirus must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.6": {
 		"title": "inline scanning with FortiGuard AI-Based Sandbox Service must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.2.7": {
 		"title": "CDR for proxy mode on XLSB, OpenOffice, and RTF files must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.3.1": {
 		"title": "Botnet C&C Domain Blocking DNS Filter must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.3.2": {
 		"title": "checked condition — DNS Filter logs all DNS queries and responses",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.3.3": {
 		"title": "DNS Filter Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.4.1": {
 		"title": "a Web Filtering Profile must exist",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.5.1": {
 		"title": "high risk categories on Application Control must be blocked",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.5.2": {
 		"title": "applications running on non-default ports must be blocked",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.5.3": {
 		"title": "all Application Control related traffic must be logged",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"4.5.4": {
 		"title": "Application Control Security Profile to Policies must be applied",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_profiles"
+		"section": "security_profiles",
 	},
 	"5.1.1": {
 		"title": "Compromised Host Quarantine must be turned on",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "security_fabric"
+		"section": "security_fabric",
 	},
 	"5.2.1.1": {
 		"title": "Security Fabric must be explicitly configured",
 		"level": 2,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "security_fabric"
+		"section": "security_fabric",
 	},
 	"6.1.1": {
 		"title": "a Trusted Signed Certificate for VPN Portal must be applied",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "vpn"
+		"section": "vpn",
 	},
 	"6.1.2": {
 		"title": "Limited TLS Versions for SSL VPN must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "vpn"
+		"section": "vpn",
 	},
 	"7.1.1": {
 		"title": "Event Logging must be turned on",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "logging"
+		"section": "logging",
 	},
 	"7.2.1": {
 		"title": "checked condition — Centralized Logging and Reporting",
 		"level": 2,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 2"
-		],
+		"profiles": ["Level 2"],
 		"check": "configuration",
-		"section": "logging"
+		"section": "logging",
 	},
 	"7.3.1": {
 		"title": "Log Transmission to FortiAnalyzer / FortiManager must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Automated",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "logging"
+		"section": "logging",
 	},
 	"7.3.2": {
 		"title": "Log Transmission to Syslog must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "logging"
+		"section": "logging",
 	},
 	"7.3.3": {
 		"title": "Log Transmission to Syslog must be encrypted in transit or at rest",
 		"level": 1,
 		"assessment": "Manual",
-		"profiles": [
-			"Level 1"
-		],
+		"profiles": ["Level 1"],
 		"check": "configuration",
-		"section": "logging"
-	}
+		"section": "logging",
+	},
 }
-
 
 _failed_ids := {id | some v in violations; id := split(v, ":")[0]}
 

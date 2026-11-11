@@ -81,7 +81,7 @@ violations contains "GEISA: FAIL-CLOSED - facts 'input.container' were not suppl
 	not input.container
 }
 
-compliant if { count(violations) == 0 }
+compliant if count(violations) == 0
 
 compliance_report := {
 	"pillar": "LEE",

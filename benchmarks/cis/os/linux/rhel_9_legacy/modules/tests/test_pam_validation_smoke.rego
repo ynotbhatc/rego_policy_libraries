@@ -9,4 +9,3 @@ test_pam_validation_loads_on_empty_input if {
 	m := data.cis_rhel9.pam_validation with input as {}
 	is_object(m)
 }
-

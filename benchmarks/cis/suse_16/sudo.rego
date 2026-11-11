@@ -345,7 +345,7 @@ default p_5_2_6 := false
 
 p_5_2_6 if {
 	count(sudo_timeouts) > 0
-	every t in sudo_timeouts { t >= 0; t <= 15 }
+	every t in sudo_timeouts { t >= 0; t <= 15}
 }
 
 p_5_2_6 if {

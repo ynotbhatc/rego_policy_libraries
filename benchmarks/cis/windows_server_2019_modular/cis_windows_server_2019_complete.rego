@@ -18,14 +18,14 @@
 #     as_of: v2.4.2
 package cis_windows_server_2019
 
-import data.cis_windows_server_2019.attestation
 import data.cis_windows_server_2019.account_policies
-import data.cis_windows_server_2019.local_policies
-import data.cis_windows_server_2019.system_services
-import data.cis_windows_server_2019.firewall
-import data.cis_windows_server_2019.advanced_audit
 import data.cis_windows_server_2019.admin_templates_computer
 import data.cis_windows_server_2019.admin_templates_user
+import data.cis_windows_server_2019.advanced_audit
+import data.cis_windows_server_2019.attestation
+import data.cis_windows_server_2019.firewall
+import data.cis_windows_server_2019.local_policies
+import data.cis_windows_server_2019.system_services
 import rego.v1
 
 BENCHMARK_TOTAL_CONTROLS := 400
@@ -89,7 +89,9 @@ section_compliance := {r.name: {
 	"passed": count(r.passed),
 	"failed": count(r.failed),
 	"not_assessed": count(r.not_assessed),
-} | some r in section_reports}
+} |
+	some r in section_reports
+}
 
 # ---------------------------------------------------------------------------------------------------------------
 # The contract ansible/playbooks/cis_windows_server_2019_assessment.yml reads:

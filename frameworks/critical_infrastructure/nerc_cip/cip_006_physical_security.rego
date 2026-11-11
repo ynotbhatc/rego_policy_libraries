@@ -20,16 +20,27 @@ import rego.v1
 
 # fail-closed: these booleans are referenced by the report and must be false, not undefined, without facts
 default eacms_physically_protected := false
+
 default pacs_physically_protected := false
+
 default physical_access_alerting_configured := false
+
 default physical_access_authorization_reviewed := false
+
 default physical_access_controls_implemented := false
+
 default physical_access_monitoring_enabled := false
+
 default physical_security_perimeters_defined := false
+
 default physical_security_plan_current := false
+
 default pca_physically_protected := false
+
 default physical_security_plan_documented := false
+
 default standalone_assets_protected := false
+
 default visitor_control_program_established := false
 
 # Date normaliser: DATA_SOURCES.md documents ISO-8601 strings; epoch nanoseconds
@@ -62,7 +73,7 @@ physical_security_plan_documented if {
 
 physical_security_plan_current if {
 	last_review_ns := time.parse_rfc3339_ns(input.physical_security_plan.last_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455 # 15 calendar months
 }
 
@@ -150,6 +161,7 @@ standalone_assets_protected if {
 
 standalone_assets_protected if {
 	is_array(input.standalone_bes_cyber_assets)
+
 	# Judge only high/medium assets; a low impact asset is out of scope.
 	every asset in [a | some a in input.standalone_bes_cyber_assets; a.impact_categorization in ["high", "medium"]] {
 		asset.physical_protection_documented == true
@@ -196,13 +208,13 @@ pca_physically_protected if {
 # R3 - Perform quarterly reviews of Physical Security Plan and access controls
 quarterly_review_performed if {
 	last_review_ns := time.parse_rfc3339_ns(input.physical_security_plan.last_quarterly_review_date)
-	review_age_days := (time.now_ns() - last_review_ns) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - last_review_ns) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 92
 }
 
 # Physical access authorization reviewed at least every 15 calendar months
 physical_access_review_current(person) if {
-	review_age_days := (time.now_ns() - date_ns(person.physical_access_authorization.last_review_date)) / (24 * 60 * 60 * 1000000000)
+	review_age_days := (time.now_ns() - date_ns(person.physical_access_authorization.last_review_date)) / (((24 * 60) * 60) * 1000000000)
 	review_age_days <= 455
 }
 
@@ -213,6 +225,7 @@ physical_access_authorization_reviewed if {
 	violations := [person |
 		person := input.personnel[_]
 		person.access_level == "authorized_unescorted_physical_access"
+
 		# A missing or unparseable last_review_date is not current.
 		not physical_access_review_current(person)
 	]

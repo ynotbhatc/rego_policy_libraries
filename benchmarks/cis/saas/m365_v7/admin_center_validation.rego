@@ -190,7 +190,6 @@ violation contains msg if {
 	msg := "CIS 1.1.1: administrative accounts were not collected, so whether they are cloud-only could not be established -- section 1 was not evaluated (this is not a pass)"
 }
 
-
 # ── Section 1 controls sourced from Exchange Online PowerShell ────────
 # 1.3.6 and 1.3.9 are section 1 controls whose settings live on
 # Get-OrganizationConfig, which the Exchange collector already fetches.

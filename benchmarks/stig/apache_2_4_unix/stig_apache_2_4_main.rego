@@ -5,15 +5,6 @@
 #   framework: stig_apache_2_4_unix
 #   source: disa
 #   domains: [web-server]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package stig_apache_2_4.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

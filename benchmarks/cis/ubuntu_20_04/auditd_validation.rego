@@ -66,8 +66,8 @@ permission_violations contains msg if {
 
 # CIS 4.1.1.1: audit must be present
 service_violations contains msg if {
-	not input.packages["auditd"]
-	not input.packages["audit"]
+	not input.packages.auditd
+	not input.packages.audit
 	msg := "CIS 4.1.1.1: auditd package not installed"
 }
 

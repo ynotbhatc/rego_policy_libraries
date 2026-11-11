@@ -5,15 +5,6 @@
 #   framework: ami
 #   source: nist
 #   domains: [ot, energy, smart-grid]
-#   coverage:
-#     checks: 0
-#     cited: 0
-#     density: orchestrator
-#     basis: role
-#     tested: false
-#     entrypoint: compliance_report
-#     guard: self
-#     as_of: v2.4.2
 package ami_device.main
 
 # Framework-key entrypoint bridge. The product addresses every framework by key at

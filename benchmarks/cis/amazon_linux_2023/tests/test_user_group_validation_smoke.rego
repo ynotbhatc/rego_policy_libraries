@@ -9,4 +9,3 @@ test_user_group_validation_loads_on_empty_input if {
 	m := data.cis_amazon_linux_2023.user_group with input as {}
 	is_object(m)
 }
-

@@ -25,7 +25,6 @@ package supply_chain.ssdf_genai
 
 import rego.v1
 
-
 # AI contributions must be attested. If there are no AI contributions, the
 # control is vacuously satisfied.
 default ai_attested := false

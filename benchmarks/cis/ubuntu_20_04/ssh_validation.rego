@@ -52,7 +52,9 @@ all_active_lines := [l |
 	l := trim_space(line)
 	l != ""
 	not startswith(l, "#")
-] if is_string(input.ssh.sshd_config_raw)
+] if {
+	is_string(input.ssh.sshd_config_raw)
+}
 
 match_indexes := [i | some i, l in all_active_lines; regex.match(`(?i)^match\s`, l)]
 
@@ -70,7 +72,9 @@ directive_values(name) := [trim_space(m[1]) |
 first_value(name) := lower(directive_values(name)[0])
 
 # effective value, or a sentinel when the directive is absent (so `not … in {…}` sees a value)
-effective_value(name) := first_value(name) if count(directive_values(name)) > 0 else := "<unset>"
+effective_value(name) := first_value(name) if count(directive_values(name)) > 0
+
+else := "<unset>"
 
 # comma-separated algorithm list of the effective directive, '+' prefix stripped
 alg_tokens(name) := {t |
