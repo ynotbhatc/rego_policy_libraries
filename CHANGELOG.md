@@ -8,6 +8,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — README rewritten for people
+
+- The front page is now 120 lines: what the library is, a two-minute try-out that shows the fail-closed result,
+  how the entrypoint and report work, the eight-row inventory, a "find your way in" table and the links out. The
+  framework coverage table and the CIS, IEC 62443, TSA and NERC-CIP sections moved unchanged to
+  `docs/FRAMEWORKS.md`; the directory tree and loading options to `docs/TAXONOMY.md`; the list of other
+  Rego projects to `docs/COMMUNITY.md`. Every figure CI checks stays on the page.
+
 ### Changed — generated site pages and converter exports caught up with main
 
 - `scripts/build_site.py`, `make oscal`, `make crosswalk`, `make xccdf` and the Gatekeeper `build.py` were re-run so
