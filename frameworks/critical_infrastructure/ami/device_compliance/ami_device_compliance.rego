@@ -8,8 +8,8 @@
 #   coverage:
 #     checks: 1
 #     cited: 0
-#     density: stub
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
