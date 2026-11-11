@@ -8,6 +8,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — metadata vocabulary covers SUSE 16, OPNsense and Intune Defender Antivirus
+
+- `scripts/metadata_vocabulary.json` gains the domains `suse`, `opnsense`, `endpoint`, `intune` and `antivirus`,
+  which 28 modules already used; `make metadata` now fails only on the two `enforcement/git/` files that have
+  no METADATA block (a protected path, left for an approved commit).
+
 ### Changed — standards registry November 2026 sweep; CIS Controls citations harmonised to v8.1
 
 - `STANDARDS_UPDATE_REGISTRY.md` v1.1 (2026-11-11): every row checked against its watch source. All eight
