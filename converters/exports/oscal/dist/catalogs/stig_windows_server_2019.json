@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "ce9e7124-7c3a-5b64-9091-790844d94718",
   "metadata": {
-   "title": "Rego Policy Libraries — stig_windows_server_2019 (DISA STIG for windows server 2019 - Simplified Complete Assessment)",
+   "title": "Rego Policy Libraries — stig_windows_server_2019 (DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide)",
    "last-modified": "2026-10-13T00:00:00Z",
    "version": "2.4.2",
    "oscal-version": "1.2.3",
@@ -44,9 +44,3513 @@
   },
   "groups": [
    {
+    "id": "stig_windows_server_2019-registry_cc",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2019.registry_cc"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2019/registry_cc.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000010",
+      "title": "Windows Server 2019 must prevent the display of slide shows on the lock screen.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000010_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent the display of slide shows on the lock screen."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000020",
+      "title": "Windows Server 2019 must have WDigest Authentication disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000020_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must have WDigest Authentication disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000030",
+      "title": "Windows Server 2019 Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000030_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Internet Protocol version 6 (IPv6) source routing must be configured to the highest protection level to prevent IP source routing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000040",
+      "title": "Windows Server 2019 source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000040_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 source routing must be configured to the highest protection level to prevent Internet Protocol (IP) source routing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000050",
+      "title": "Windows Server 2019 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000050_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to prevent Internet Control Message Protocol (ICMP) redirects from overriding Open Shortest Path First (OSPF)-generated routes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000060",
+      "title": "Windows Server 2019 must be configured to ignore NetBIOS name release requests except from WINS servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000060_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to ignore NetBIOS name release requests except from WINS servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000070",
+      "title": "Windows Server 2019 insecure logons to an SMB server must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000070_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 insecure logons to an SMB server must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000080",
+      "title": "Windows Server 2019 hardened Universal Naming Convention (UNC) paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000080_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 hardened Universal Naming Convention (UNC) paths must be defined to require mutual authentication and integrity for at least the \\\\*\\SYSVOL and \\\\*\\NETLOGON shares."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000090",
+      "title": "Windows Server 2019 command line data must be included in process creation events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000090_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 command line data must be included in process creation events."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000100",
+      "title": "Windows Server 2019 must be configured to enable Remote host allows delegation of non-exportable credentials.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000100_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to enable Remote host allows delegation of non-exportable credentials."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000110",
+      "title": "Windows Server 2019 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000110_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000130",
+      "title": "Windows Server 2019 Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000130_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Early Launch Antimalware, Boot-Start Driver Initialization Policy must prevent boot drivers identified as bad."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000140",
+      "title": "Windows Server 2019 group policy objects must be reprocessed even if they have not changed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000140_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 group policy objects must be reprocessed even if they have not changed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000150",
+      "title": "Windows Server 2019 downloading print driver packages over HTTP must be turned off.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000150_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 downloading print driver packages over HTTP must be turned off."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000160",
+      "title": "Windows Server 2019 printing over HTTP must be turned off.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000160_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 printing over HTTP must be turned off."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000170",
+      "title": "Windows Server 2019 network selection user interface (UI) must not be displayed on the logon screen.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000170_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 network selection user interface (UI) must not be displayed on the logon screen."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000180",
+      "title": "Windows Server 2019 users must be prompted to authenticate when the system wakes from sleep (on battery).",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000180_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 users must be prompted to authenticate when the system wakes from sleep (on battery)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000190",
+      "title": "Windows Server 2019 users must be prompted to authenticate when the system wakes from sleep (plugged in).",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000190_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 users must be prompted to authenticate when the system wakes from sleep (plugged in)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000200",
+      "title": "Windows Server 2019 Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000200_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Application Compatibility Program Inventory must be prevented from collecting data and sending the information to Microsoft."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000210",
+      "title": "Windows Server 2019 Autoplay must be turned off for non-volume devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000210"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000210"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000210_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Autoplay must be turned off for non-volume devices."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000220",
+      "title": "Windows Server 2019 default AutoRun behavior must be configured to prevent AutoRun commands.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000220_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 default AutoRun behavior must be configured to prevent AutoRun commands."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000230",
+      "title": "Windows Server 2019 AutoPlay must be disabled for all drives.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000230_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 AutoPlay must be disabled for all drives."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000240",
+      "title": "Windows Server 2019 administrator accounts must not be enumerated during elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000240_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 administrator accounts must not be enumerated during elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000250",
+      "title": "Windows Server 2019 Telemetry must be configured to Security or Basic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000250_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Telemetry must be configured to Security or Basic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000260",
+      "title": "Windows Server 2019 Windows Update must not obtain updates from other PCs on the Internet.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000260_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Update must not obtain updates from other PCs on the Internet."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000270",
+      "title": "Windows Server 2019 Application event log size must be configured to 32768 KB or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000270_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Application event log size must be configured to 32768 KB or greater."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000280",
+      "title": "Windows Server 2019 security event log size must be configured to a value that holds at least one week's worth of audit records.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000280_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 security event log size must be configured to a value that holds at least one week's worth of audit records."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000290",
+      "title": "Windows Server 2019 System event log size must be configured to 32768 KB or greater.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000290_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 System event log size must be configured to 32768 KB or greater."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000300",
+      "title": "Windows Server 2019 Windows Defender SmartScreen must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000300_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Defender SmartScreen must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000310",
+      "title": "Windows Server 2019 Explorer Data Execution Prevention must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000310_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Explorer Data Execution Prevention must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000320",
+      "title": "Windows Server 2019 Turning off File Explorer heap termination on corruption must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000320_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Turning off File Explorer heap termination on corruption must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000330",
+      "title": "Windows Server 2019 File Explorer shell protocol must run in protected mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000330_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 File Explorer shell protocol must run in protected mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000340",
+      "title": "Windows Server 2019 must not save passwords in the Remote Desktop Client.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000340_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must not save passwords in the Remote Desktop Client."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000350",
+      "title": "Windows Server 2019 Remote Desktop Services must prevent drive redirection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000350_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Remote Desktop Services must prevent drive redirection."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000360",
+      "title": "Windows Server 2019 Remote Desktop Services must always prompt a client for passwords upon connection.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000360_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Remote Desktop Services must always prompt a client for passwords upon connection."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000370",
+      "title": "Windows Server 2019 Remote Desktop Services must require secure Remote Procedure Call (RPC) communications.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000370_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Remote Desktop Services must require secure Remote Procedure Call (RPC) communications."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000380",
+      "title": "Windows Server 2019 Remote Desktop Services must be configured with the client connection encryption set to High Level.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000380_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Remote Desktop Services must be configured with the client connection encryption set to High Level."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000390",
+      "title": "Windows Server 2019 must prevent attachments from being downloaded from RSS feeds.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000390_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent attachments from being downloaded from RSS feeds."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000400",
+      "title": "Windows Server 2019 must disable Basic authentication for RSS feeds over HTTP.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000400_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must disable Basic authentication for RSS feeds over HTTP."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000410",
+      "title": "Windows Server 2019 must prevent Indexing of encrypted files.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000410_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent Indexing of encrypted files."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000420",
+      "title": "Windows Server 2019 must prevent users from changing installation options.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000420_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent users from changing installation options."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000430",
+      "title": "Windows Server 2019 must disable the Windows Installer Always install with elevated privileges option.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000430_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must disable the Windows Installer Always install with elevated privileges option."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000440",
+      "title": "Windows Server 2019 users must be notified if a web-based program attempts to install software.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000440_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 users must be notified if a web-based program attempts to install software."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000450",
+      "title": "Windows Server 2019 must disable automatically signing in the last interactive user after a system-initiated restart.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000450_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must disable automatically signing in the last interactive user after a system-initiated restart."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000460",
+      "title": "Windows Server 2019 PowerShell script block logging must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000460_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 PowerShell script block logging must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000470",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) client must not use Basic authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000470"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000470"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000470_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) client must not use Basic authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000480",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) client must not allow unencrypted traffic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000480"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000480"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000480_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) client must not allow unencrypted traffic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000490",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) client must not use Digest authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000490"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000490"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000490_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) client must not use Digest authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000500",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) service must not use Basic authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000500"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000500"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000500_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) service must not use Basic authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000510",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) service must not allow unencrypted traffic.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000510"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000510"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000510_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) service must not allow unencrypted traffic."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000520",
+      "title": "Windows Server 2019 Windows Remote Management (WinRM) service must not store RunAs credentials.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000520"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000520"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000520_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Windows Remote Management (WinRM) service must not store RunAs credentials."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-CC-000530",
+      "title": "Windows Server 2019 must have PowerShell Transcription enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-CC-000530"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-CC-000530"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_cc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#29341313-bb9e-52c0-aade-33f85d607acd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-CC-000530_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must have PowerShell Transcription enabled."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2019-registry_other",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2019.registry_other"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2019/registry_other.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2019-WN19-00-000390",
+      "title": "Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-00-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-00-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-00-000390_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB server."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-00-000400",
+      "title": "Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB client.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-00-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-00-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-00-000400_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must have the Server Message Block (SMB) v1 protocol disabled on the SMB client."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-DC-000320",
+      "title": "Windows Server 2019 domain controllers must require LDAP access signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-DC-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-DC-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-DC-000320_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 domain controllers must require LDAP access signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-DC-000330",
+      "title": "Windows Server 2019 domain controllers must be configured to allow reset of machine account passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-DC-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-DC-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-DC-000330_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 domain controllers must be configured to allow reset of machine account passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000020",
+      "title": "Windows Server 2019 local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain-joined member servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000020_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain-joined member servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000030",
+      "title": "Windows Server 2019 local users on domain-joined member servers must not be enumerated.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000030"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000030"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000030_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 local users on domain-joined member servers must not be enumerated."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000040",
+      "title": "Windows Server 2019 must restrict unauthenticated Remote Procedure Call (RPC) clients from connecting to the RPC server on domain-joined member servers and standalone or nondomain-joined systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000040_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must restrict unauthenticated Remote Procedure Call (RPC) clients from connecting to the RPC server on domain-joined member servers and standalone or nondomain-joined systems."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000050",
+      "title": "Windows Server 2019 must limit the caching of logon credentials to four or less on domain-joined member servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000050_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must limit the caching of logon credentials to four or less on domain-joined member servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000060",
+      "title": "Windows Server 2019 must restrict remote calls to the Security Account Manager (SAM) to Administrators on domain-joined member servers and standalone or nondomain-joined systems.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000060_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must restrict remote calls to the Security Account Manager (SAM) to Administrators on domain-joined member servers and standalone or nondomain-joined systems."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-MS-000140",
+      "title": "Windows Server 2019 must be running Credential Guard on domain-joined member servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-MS-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-MS-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-MS-000140_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be running Credential Guard on domain-joined member servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-UC-000010",
+      "title": "Windows Server 2019 must preserve zone information when saving attachments.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-UC-000010"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-UC-000010"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_other"
+       }
+      ],
+      "links": [
+       {
+        "href": "#f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-UC-000010_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must preserve zone information when saving attachments."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
+    "id": "stig_windows_server_2019-registry_so",
+    "class": "rego-module",
+    "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "stig.windows_server_2019.registry_so"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "benchmarks/stig/windows_server_2019/registry_so.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "security"
+     }
+    ],
+    "controls": [
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000020",
+      "title": "Windows Server 2019 must prevent local accounts with blank passwords from being used from the network.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000020_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent local accounts with blank passwords from being used from the network."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000050",
+      "title": "Windows Server 2019 must force audit policy subcategory settings to override audit policy category settings.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000050_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must force audit policy subcategory settings to override audit policy category settings."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000060",
+      "title": "Windows Server 2019 setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000060_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Domain member: Digitally encrypt or sign secure channel data (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000070",
+      "title": "Windows Server 2019 setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000070_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Domain member: Digitally encrypt secure channel data (when possible) must be configured to enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000080",
+      "title": "Windows Server 2019 setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000080_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Domain member: Digitally sign secure channel data (when possible) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000090",
+      "title": "Windows Server 2019 computer account password must not be prevented from being reset.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000090"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000090"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000090_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 computer account password must not be prevented from being reset."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000100",
+      "title": "Windows Server 2019 maximum age for machine account passwords must be configured to 30 days or less.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000100_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 maximum age for machine account passwords must be configured to 30 days or less."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000110",
+      "title": "Windows Server 2019 must be configured to require a strong session key.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000110"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000110"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000110_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to require a strong session key."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000120",
+      "title": "Windows Server 2019 machine inactivity limit must be set to 15 minutes or less, locking the system with the screen saver.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000120"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000120"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000120_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 machine inactivity limit must be set to 15 minutes or less, locking the system with the screen saver."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000130",
+      "title": "Windows Server 2019 required legal notice must be configured to display before console logon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000130_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 required legal notice must be configured to display before console logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000140",
+      "title": "Windows Server 2019 title for legal banner dialog box must be configured with the appropriate text.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000140_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 title for legal banner dialog box must be configured with the appropriate text."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000150",
+      "title": "Windows Server 2019 Smart Card removal option must be configured to Force Logoff or Lock Workstation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000150_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Smart Card removal option must be configured to Force Logoff or Lock Workstation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000160",
+      "title": "Windows Server 2019 setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000160_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Microsoft network client: Digitally sign communications (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000170",
+      "title": "Windows Server 2019 setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000170"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000170"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000170_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Microsoft network client: Digitally sign communications (if server agrees) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000180",
+      "title": "Windows Server 2019 unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000180"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000180"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000180_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 unencrypted passwords must not be sent to third-party Server Message Block (SMB) servers."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000190",
+      "title": "Windows Server 2019 setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000190"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000190"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000190_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000200",
+      "title": "Windows Server 2019 setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000200_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 setting Microsoft network server: Digitally sign communications (if client agrees) must be configured to Enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000220",
+      "title": "Windows Server 2019 must not allow anonymous enumeration of Security Account Manager (SAM) accounts.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000220_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must not allow anonymous enumeration of Security Account Manager (SAM) accounts."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000230",
+      "title": "Windows Server 2019 must not allow anonymous enumeration of shares.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000230"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000230"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000230_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must not allow anonymous enumeration of shares."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000240",
+      "title": "Windows Server 2019 must be configured to prevent anonymous users from having the same permissions as the Everyone group.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000240_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to prevent anonymous users from having the same permissions as the Everyone group."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000250",
+      "title": "Windows Server 2019 must restrict anonymous access to Named Pipes and Shares.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000250"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000250"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000250_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must restrict anonymous access to Named Pipes and Shares."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000260",
+      "title": "Windows Server 2019 services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000260"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000260"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000260_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 services using Local System that use Negotiate when reverting to NTLM authentication must use the computer identity instead of authenticating anonymously."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000270",
+      "title": "Windows Server 2019 must prevent NTLM from falling back to a Null session.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000270"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000270"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000270_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent NTLM from falling back to a Null session."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000280",
+      "title": "Windows Server 2019 must prevent PKU2U authentication using online identities.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000280_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must prevent PKU2U authentication using online identities."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000290",
+      "title": "Windows Server 2019 Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000290"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000290"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000290_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000300",
+      "title": "Windows Server 2019 must be configured to prevent the storage of the LAN Manager hash of passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000300_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to prevent the storage of the LAN Manager hash of passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000310",
+      "title": "Windows Server 2019 LAN Manager authentication level must be configured to send NTLMv2 response only and to refuse LM and NTLM.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000310"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000310"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000310_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 LAN Manager authentication level must be configured to send NTLMv2 response only and to refuse LM and NTLM."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000320",
+      "title": "Windows Server 2019 must be configured to at least negotiate signing for LDAP client signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000320"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000320"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000320_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to at least negotiate signing for LDAP client signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000330",
+      "title": "Windows Server 2019 session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000330"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000330"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000330_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 session security for NTLM SSP-based clients must be configured to require NTLMv2 session security and 128-bit encryption."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000340",
+      "title": "Windows Server 2019 session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000340_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 session security for NTLM SSP-based servers must be configured to require NTLMv2 session security and 128-bit encryption."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000350",
+      "title": "Windows Server 2019 users must be required to enter a password to access private keys stored on the computer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000350_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 users must be required to enter a password to access private keys stored on the computer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000360",
+      "title": "Windows Server 2019 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000360_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000370",
+      "title": "Windows Server 2019 default permissions of global system objects must be strengthened.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000370_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 default permissions of global system objects must be strengthened."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000380",
+      "title": "Windows Server 2019 User Account Control approval mode for the built-in Administrator must be enabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000380"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000380"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000380_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control approval mode for the built-in Administrator must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000390",
+      "title": "Windows Server 2019 UIAccess applications must not be allowed to prompt for elevation without using the secure desktop.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000390"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000390"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000390_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 UIAccess applications must not be allowed to prompt for elevation without using the secure desktop."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000400",
+      "title": "Windows Server 2019 User Account Control must, at a minimum, prompt administrators for consent on the secure desktop.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000400_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control must, at a minimum, prompt administrators for consent on the secure desktop."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000410",
+      "title": "Windows Server 2019 User Account Control must automatically deny standard user requests for elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000410_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control must automatically deny standard user requests for elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000420",
+      "title": "Windows Server 2019 User Account Control must be configured to detect application installations and prompt for elevation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000420_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control must be configured to detect application installations and prompt for elevation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000430",
+      "title": "Windows Server 2019 User Account Control (UAC) must only elevate UIAccess applications that are installed in secure locations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000430_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control (UAC) must only elevate UIAccess applications that are installed in secure locations."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000440",
+      "title": "Windows Server 2019 User Account Control must run all administrators in Admin Approval Mode, enabling UAC.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000440"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000440"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000440_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control must run all administrators in Admin Approval Mode, enabling UAC."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_windows_server_2019-WN19-SO-000450",
+      "title": "Windows Server 2019 User Account Control (UAC) must virtualize file and registry write failures to per-user locations.",
+      "props": [
+       {
+        "name": "label",
+        "value": "WN19-SO-000450"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "WN19-SO-000450"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.windows_server_2019.registry_so"
+       }
+      ],
+      "links": [
+       {
+        "href": "#30510490-7240-5c8f-9c7c-1f058744050f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_windows_server_2019-WN19-SO-000450_stmt",
+        "name": "statement",
+        "prose": "Windows Server 2019 User Account Control (UAC) must virtualize file and registry write failures to per-user locations."
+       }
+      ],
+      "class": "security"
+     }
+    ]
+   },
+   {
     "id": "stig_windows_server_2019-stig_windows_server_2019_complete",
     "class": "rego-module",
-    "title": "DISA STIG for windows server 2019 - Simplified Complete Assessment",
+    "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide — Master Aggregator",
     "props": [
      {
       "name": "rego-package",
@@ -66,181 +3570,16 @@
     ],
     "controls": [
      {
-      "id": "stig_windows_server_2019-WN22-PK-000010",
-      "title": "windows server 2019 must have the DoD Root CA certificates installed",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-PK-000010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-PK-000010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2019"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8bf10165-1823-5942-92a1-67eb0bca99ce",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2019-WN22-PK-000010_stmt",
-        "name": "statement",
-        "prose": "windows server 2019 must have the DoD Root CA certificates installed"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2019-WN22-SO-000030",
-      "title": "The built-in guest account must be disabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-SO-000030"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-SO-000030"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2019"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8bf10165-1823-5942-92a1-67eb0bca99ce",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2019-WN22-SO-000030_stmt",
-        "name": "statement",
-        "prose": "The built-in guest account must be disabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2019-WN22-00-000020",
-      "title": "The windows server 2019 system must use an antivirus program",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-00-000020"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-00-000020"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2019"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8bf10165-1823-5942-92a1-67eb0bca99ce",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2019-WN22-00-000020_stmt",
-        "name": "statement",
-        "prose": "The windows server 2019 system must use an antivirus program"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2019-WN22-AC-000010",
-      "title": "Password history must be configured to 24 or more passwords",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-AC-000010"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-AC-000010"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2019"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8bf10165-1823-5942-92a1-67eb0bca99ce",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2019-WN22-AC-000010_stmt",
-        "name": "statement",
-        "prose": "Password history must be configured to 24 or more passwords"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2019-WN22-AC-000040",
-      "title": "Minimum password length must be configured to 14 characters or more",
-      "props": [
-       {
-        "name": "label",
-        "value": "WN22-AC-000040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "WN22-AC-000040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.windows_server_2019"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8bf10165-1823-5942-92a1-67eb0bca99ce",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_windows_server_2019-WN22-AC-000040_stmt",
-        "name": "statement",
-        "prose": "Minimum password length must be configured to 14 characters or more"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_windows_server_2019-assessment_metadata",
+      "id": "stig_windows_server_2019-metadata",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "assessment_metadata"
+        "value": "metadata"
        },
        {
         "name": "alt-identifier",
-        "value": "assessment_metadata"
+        "value": "metadata"
        },
        {
         "name": "rego-package",
@@ -256,7 +3595,7 @@
       ],
       "parts": [
        {
-        "id": "stig_windows_server_2019-assessment_metadata_stmt",
+        "id": "stig_windows_server_2019-metadata_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
        }
@@ -264,16 +3603,16 @@
       "class": "security"
      },
      {
-      "id": "stig_windows_server_2019-compliance_summary",
+      "id": "stig_windows_server_2019-summary",
       "title": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "compliance_summary"
+        "value": "summary"
        },
        {
         "name": "alt-identifier",
-        "value": "compliance_summary"
+        "value": "summary"
        },
        {
         "name": "rego-package",
@@ -289,7 +3628,7 @@
       ],
       "parts": [
        {
-        "id": "stig_windows_server_2019-compliance_summary_stmt",
+        "id": "stig_windows_server_2019-summary_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/stig/windows_server_2019/stig_windows_server_2019_complete.rego (package stig.windows_server_2019); see the rule body."
        }
@@ -302,8 +3641,59 @@
   "back-matter": {
    "resources": [
     {
+     "uuid": "29341313-bb9e-52c0-aade-33f85d607acd",
+     "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2019.registry_cc"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2019/registry_cc.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "f896c8ec-ff26-5def-9e5b-0f7cdbb157e1",
+     "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2019.registry_other"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2019/registry_other.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "30510490-7240-5c8f-9c7c-1f058744050f",
+     "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "stig.windows_server_2019.registry_so"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.4.2/benchmarks/stig/windows_server_2019/registry_so.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
      "uuid": "8bf10165-1823-5942-92a1-67eb0bca99ce",
-     "title": "DISA STIG for windows server 2019 - Simplified Complete Assessment",
+     "title": "DISA STIG — Microsoft Windows Server 2019 Security Technical Implementation Guide — Master Aggregator",
      "props": [
       {
        "name": "rego-package",

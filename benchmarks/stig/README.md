@@ -12,30 +12,26 @@ Per-platform STIG implementations. Every platform directory carries:
 - tests: empty-input smoke + green-fixture full-closure (+ alias fail-closed)
 
 **Rule IDs are verified against the current DISA SRG-STIG Library
-Compilation before stamping** (the Linux platforms against the October 2026 library, verified
-2026-11-10; the four Oracle platforms against the October 2026 library, verified 2026-10-13; the
-Windows and application platforms against the July 2026 library, verified 2026-09-03; Kubernetes V2R6 and
-RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21).
+Compilation before stamping** (July 2026 library, verified 2026-09-03; the
+four Oracle platforms against the October 2026 library, verified 2026-10-13; Kubernetes V2R6 and
+RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21; the five Windows
+platforms against the October 2026 library, verified 2026-11-10).
 Coverage per platform is stated honestly in each aggregator header —
 implemented-of-total; the remainder is tracked follow-up, not silent absence.
 STIGs ride a quarterly release cycle — see `STANDARDS_UPDATE_REGISTRY.md`.
 
-## Linux platforms (October 2026 library, verified 2026-11-10)
+## Windows platforms (October 2026 library, verified 2026-11-10)
 
-| Platform | Rules | How it was built |
-|---|---|---|
-| `rhel_9` (RHEL-09, V2R10) | 104 of 445 | Hand-maintained modules, **re-stamped by what each rule checks** (`tools/stig_generators/stamp_catalog.py`): every finding was reviewed against the V2R10 check text and carries the stig_id, vuln_id, severity and title of the DISA rule its logic implements; 39 findings whose fact has no V2R10 rule (or duplicated another block) were removed. The remaining 341 rules are tracked follow-up. |
-| `rhel_8` (RHEL-08, V2R8) | 53 of 369 | Same re-stamp; 20 findings removed (the RHEL 8 STIG has no `/etc/passwd`, `/etc/shadow`, `/etc/group` mode rules and no sshd IgnoreRhosts / HostbasedAuthentication / UsePAM rules). The remaining 316 are tracked follow-up. Note DISA no longer ships RHEL 8 in the compilation; V2R8 is the last standalone release. |
-| `rhel_10` (RHEL-10, V1R2) | 98 of 434 | Derived from the RHEL 9 modules by DISA rule title (`tools/stig_generators/gen_oracle_linux.py rhel_10`): 45 reviewed overrides where RHEL 10 reworded the title, 1 look-alike refused; 6 RHEL 9 rules have no RHEL 10 counterpart. The remaining 336 are tracked follow-up. |
-| `ubuntu_22_04` (UBTU-22, V2R10) | 22 of 191 | Generated from the hand-authored logic table (`tools/stig_generators/gen_linux.py`), all 15 CAT I plus selected CAT II; catalog id hard-gate. |
-| `ubuntu_24_04` (UBTU-24, V1R7) | 22 of 195 | The Ubuntu 22.04 table re-keyed by DISA rule title (`UBTU_22_TO_24` in `gen_linux.py`); only the sshd Ciphers and MACs values differ. 15 of 17 CAT I. |
-| `amazon_linux_2023` (AZLX-23, V1R5) | 23 of 187 | Generated from the logic table; 19 of 21 CAT I. |
-| `sles_15` (SLES-15, V2R9) | 27 of 220 | Generated from the logic table; 25 of 26 CAT I. |
+| Platform | STIG | Rules | How it was built |
+|---|---|---|---|
+| `windows_11` | V2R11, 30 Sep 2026 | 117 of 257 | `tools/stig_generators/gen_windows.py`: every rule whose check is one or more registry value blocks, read as DISA writes them (exact, `in {…}` for "X, Y, or Z", `<=`/`>=` bounds, "excluding 0", "or if the Value Name does not exist" as a second rule body, numeric REG_SZ by `to_number`). The remainder are non-registry checks (audit policy, user rights, services, certificates, documentation) — tracked follow-up. |
+| `windows_server_2016` | V2R10, 15 Jan 2025 | 103 of 273 | Same generator. Returned to the DISA library (it was marked sunset against the July 2026 compilation); replaces the 5-finding hand-written stub, whose ids were Server 2022's. |
+| `windows_server_2019` | V3R9, 01 Jul 2026 | 104 of 282 | Same generator; same return and same replaced stub. |
+| `windows_server_2022` | V2R11, 30 Sep 2026 | 103 of 277 | Same generator. |
+| `windows_server_2025` | V1R4, 30 Sep 2026 | 94 of 291 | Same generator. WN25-DC-000320 moved under an unchanged title: the check now reads `LDAPServerEnforceIntegrity = 1`, not `LDAPServerIntegrity = 2`. |
 
-The RHEL 9 id defect recorded on 2026-10-13 (ids naming a different rule than the logic) is closed by the
-re-stamp: `stamp_catalog.py` keys every finding on its fact, prints every mapping, and refuses a title match
-by similarity alone. A rule whose logic checks only `net.ipv4.conf.all.*` is stamped on DISA's `all` rule;
-the `default.*` rule is uncovered, not invented.
+Every generated rule's `stig_id`, `vuln_id`, severity and title come from the XCCDF; the rule
+bodies are derived, not copied. Windows 10 left the library (final V3R6) — see `SUNSET.md`.
 
 ## Oracle platforms (October 2026 library)
 
@@ -48,12 +44,10 @@ the `default.*` rule is uncovered, not invented.
 
 All four join the 800-53 spine (`crosswalk/stig_800_53/data.json`, every catalog rule, via the CCI list).
 
-**Closed 2026-11-10:** the RHEL 9 modules' `stig_id`/`vuln_id` values disagreed with the
-RHEL 9 catalog for 108 of 143 findings (the title next to the logic named a different DISA rule
-than the id did); the Oracle derivation keyed on the title for exactly this reason. The re-stamp
-above fixed the ids, and `gen_oracle_linux.py`'s override keys were moved to the stamped ids (8 keys
-whose source blocks were retired are gone, so a future Oracle regeneration drops the rules they produced;
-the Oracle modules are unchanged in this release).
+**Known defect, tracked:** the RHEL 9 modules' `stig_id`/`vuln_id` values disagree with
+the current RHEL 9 catalog for 108 of 143 findings (the title next to the logic names a
+different DISA rule than the id does). The Oracle derivation keys on the title, not the id,
+for exactly this reason. Re-stamping the RHEL 9 ids by title is the next STIG item.
 
 ## Kubernetes and RKE2 (every rule, verified 2026-10-21)
 
@@ -79,12 +73,11 @@ CCI has no Rev 5 mapping in the CCI list). `openshift_4` remains partial (CAT I 
 
 ## Sunset platforms (absent from the current DISA library)
 
-`windows_10`, `windows_server_2016`, `windows_server_2019`, `ubuntu_20_04` —
-see `SUNSET.md` in each directory. Content frozen for historical assessments;
-successors named per file.
+`windows_10` — removed 2026-11-10, see [`SUNSET.md`](SUNSET.md) (DISA's final release is V3R6).
+`ubuntu_20_04` — see `SUNSET.md` in its directory; content frozen for historical assessments.
+`windows_server_2016` and `windows_server_2019` were listed here against the July 2026
+compilation; the October 2026 library ships both (V2R10, V3R9) and they are generated platforms again.
 
-Observed in the October 2026 library: RHEL 8 is no longer shipped in the compilation
-(`rhel_8` here is stamped from the last standalone release, V2R8); RHEL 10 is (added here from the
-standalone V1R2 zip — if the compilation carries a later release, re-run `parse_xccdf.py` and
-`gen_oracle_linux.py rhel_10`); WebLogic 12c and Oracle HTTP Server have left the library (the
-standalone WebLogic 12c V2R2 zip is still served).
+Observed in the October 2026 library (not yet acted on): RHEL 8 is no longer
+shipped (RHEL 10 V1R3 is); WebLogic 12c and Oracle HTTP Server have left the
+library (the standalone WebLogic 12c V2R2 zip is still served).

@@ -23,11 +23,15 @@ green_fixture := {"registry": {
 	},
 	"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Netbt\\Parameters": {"NoNameReleaseOnDemand": 1},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LanmanWorkstation": {"AllowInsecureGuestAuth": 0},
-	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths": {"\\\\*\\NETLOGON": "RequireMutualAuthentication=1, RequireIntegrity=1"},
+	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkProvider\\HardenedPaths": {
+		"\\\\*\\NETLOGON": "RequireMutualAuthentication=1, RequireIntegrity=1",
+		"\\\\*\\SYSVOL": "RequireMutualAuthentication=1, RequireIntegrity=1",
+	},
 	"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit": {"ProcessCreationIncludeCmdLine_Enabled": 1},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CredentialsDelegation": {"AllowProtectedCreds": 1},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeviceGuard": {
 		"EnableVirtualizationBasedSecurity": 1,
+		"RequirePlatformSecurityFeatures": 1,
 		"LsaCfgFlags": 1,
 	},
 	"HKLM\\SYSTEM\\CurrentControlSet\\Policies\\EarlyLaunch": {"DriverLoadPolicy": 1},
@@ -84,7 +88,6 @@ green_fixture := {"registry": {
 		"LocalAccountTokenFilterPolicy": 0,
 		"InactivityTimeoutSecs": 900,
 		"LegalNoticeText": "See message text below",
-		"LegalNoticeCaption": "See message title options below",
 		"FilterAdministratorToken": 1,
 		"EnableUIADesktopToggle": 0,
 		"ConsentPromptBehaviorAdmin": 2,
@@ -120,8 +123,8 @@ green_fixture := {"registry": {
 	},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Rpc": {"RestrictRemoteClients": 1},
 	"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon": {
-		"CachedLogonsCount": "4 (or less)",
-		"scremoveoption": "1 (Lock Workstation) or 2 (Force Logoff)",
+		"CachedLogonsCount": "4",
+		"scremoveoption": "1",
 	},
 	"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa": {
 		"RestrictRemoteSAM": "O:BAG:BAD:(A;;RC;;;BA)",
@@ -243,7 +246,6 @@ registry_rule_ids := {
 	"WN22-SO-000110",
 	"WN22-SO-000120",
 	"WN22-SO-000130",
-	"WN22-SO-000140",
 	"WN22-SO-000150",
 	"WN22-SO-000160",
 	"WN22-SO-000170",
