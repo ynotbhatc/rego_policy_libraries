@@ -8,6 +8,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — generated site pages and converter exports caught up with main
+
+- `scripts/build_site.py`, `make oscal`, `make crosswalk`, `make xccdf` and the Gatekeeper `build.py` were re-run so
+  the committed site (new STIG and AS9100D pages, sitemap, llms.txt), the OSCAL/crosswalk dists and the Gatekeeper
+  template match the modules on main; `make check-converters` passes again.
+
 ### Added — SAE AS9100D aerospace quality management (`frameworks/management/as9100d/`)
 
 - **First industry QMS standard in the library.** SAE AS9100 Rev D (IAQG 9100:2016, built on ISO 9001:2015) at
