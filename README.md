@@ -66,7 +66,7 @@ This library gives you a **complete, working policy set on day one**, covering 3
 | Network devices — Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| **DISA STIGs — 26 platforms** (RHEL 8/9, **Oracle Linux 8/9**, **Windows 11, Windows Server 2016/2019/2022/2025 (October 2026 library)**, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (the five Windows platforms and Oracle from the October 2026 library, Windows verified 2026-11-10; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21; the rest July 2026); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
+| **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, **Windows 11, Windows Server 2016/2019/2022/2025 (October 2026 library)**, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (the five Windows platforms and Oracle from the October 2026 library, Windows verified 2026-11-10; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21; the rest July 2026); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
 | NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
@@ -154,7 +154,7 @@ Every implemented standard is tracked in [`STANDARDS_UPDATE_REGISTRY.md`](STANDA
 
 | Domain | Policies | Coverage |
 |--------|----------|----------|
-| **CIS Benchmarks + DISA STIGs** | 468 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 26 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
+| **CIS Benchmarks + DISA STIGs** | 467 | 30+ platforms: Linux, Windows, cloud, containers, **managed Kubernetes (EKS/AKS/GKE)**, databases, web servers, network devices, VMware, mobile, and SaaS (M365) — plus **DISA STIGs for 26 platforms**. CIS benchmark versions updated to May 2026 releases; **Level 2 hardening profiles** for high-value targets (RHEL 9, Ubuntu 22.04, Windows Server 2022) |
 | **Federal & K8s hardening baselines** | 19 | **CISA SCuBA M365** (104 policies, 7 products, BOD 25-01), **NSA/CISA Kubernetes Hardening v1.2** (43 controls), **Kubernetes Pod Security Standards** (baseline + restricted, evaluated against actual Pod manifests) |
 | **Application suite baselines** | 7 | **SAP Security Baseline Template v2.6 (ABAP)** — registry of all 355 checks SAP publishes (SAP-samples, Apache-2.0), 138 decided from host facts, projections onto the Baseline requirements, the DSAG S/4HANA audit guide and NIST CSF 2.0 |
 | **Regulatory Frameworks** | 381 | ISO 27001, SOC 2, PCI-DSS, SOX, FISMA, FedRAMP, CMMC, GDPR, HIPAA, NERC-CIP, IEC 62443, DORA, NIS2, NY DFS, SEC Cyber, SWIFT CSP, HITRUST, TISAX, CFR Part 11, NCSC CAF, Digital Sovereignty, CSA CCM v4.0, ISO 27701, NIST SP 800-171 r3, CCPA/CPRA, TSA Pipeline SDs, GLBA, CISA CPG 2.0, ITAR, COBIT 2019, FERPA, COPPA (2025 amendments), **CIS Controls v8.1**, **Zero Trust (CISA ZTMM v2.0)**, **NIST SSDF**, **FBI CJIS**, **ACSC Essential Eight**, **IRS Pub 1075**, **UK Cyber Essentials**, **BSI C5:2020** |
@@ -273,7 +273,7 @@ rego_policy_libraries/
 │   │   ├── databases/           # MySQL 8, Oracle 19c, PostgreSQL 13/14/15
 │   │   ├── web_servers/         # Apache 2.4, Nginx 1.20
 │   │   └── network/             # Cisco IOS, Juniper Junos, Palo Alto, Fortinet, Arista
-│   ├── stig/                    # DISA STIGs — 26 platforms (Linux, Windows, K8s/RKE2/OpenShift,
+│   ├── stig/                    # DISA STIGs — 25 platforms (Linux, Windows, K8s/RKE2/OpenShift,
 │   │                            # databases, Apache, Cisco IOS-XE, vSphere)
 │   ├── scuba/m365/              # CISA SCuBA M365 baselines — 104 policies, 7 products (BOD 25-01)
 │   ├── nsa_cisa/kubernetes/     # NSA/CISA Kubernetes Hardening Guidance v1.2 — 43 controls
