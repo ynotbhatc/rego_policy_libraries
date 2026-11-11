@@ -62,6 +62,12 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   `gen_fortigate.py <out.json> benchmarks/cis/network_devices/fortinet`: CIS NGINX Benchmark v3.1.0
   (44 recommendations) and CIS FortiGate 7.4.x Benchmark v1.0.1 (64). Shared emitter: `cis_genlib.py`.
 
+- `dump_workbook.py <workbook.xlsx> <out.json>`, then `gen_apache.py <out.json> benchmarks/cis/apache`: CIS Apache HTTP
+  Server 2.4 Benchmark v2.4.0, all 86 recommendations (57 Level 1, 29 Level 2) into the existing `cis.apache_2_4`
+  package. 6 judgement recommendations are attestations; the other 80 are decided from collected facts (directives,
+  `<Directory>` blocks, modules, permissions, probes) and fail closed with an evidence-missing message. Sections 11
+  (SELinux) and 12 (AppArmor) are selected by `input.apache.platform.mac`. Run `opa fmt -w` afterwards.
+
 - `gen_rhel_9.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0,
   352 recommendations, written into the existing rhel_9 package paths (14 section packages, roll-up
   `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
