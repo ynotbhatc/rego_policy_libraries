@@ -242,4 +242,5 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"total_controls": max([_sum("total"), count(violations)]),
 }

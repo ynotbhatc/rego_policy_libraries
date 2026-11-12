@@ -273,9 +273,22 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for digital_sovereignty; this is not a passing result"}],
 	"violation_count": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(report, {"framework_key": "digital_sovereignty", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls. The eleven domain modules carry 140
+# violation rules between them; the total never drops below the finding count.
+_declared_controls := 140
+
+total_controls := max([_declared_controls, count(all_violations)])
+
+compliance_report := object.union(report, {
+	"framework_key": "digital_sovereignty",
+	"compliant": _entrypoint_compliant,
+	"violations": all_violations,
+	"violation_count": count(all_violations),
+	"total_controls": total_controls,
+})
 
 default _entrypoint_compliant := false
 
