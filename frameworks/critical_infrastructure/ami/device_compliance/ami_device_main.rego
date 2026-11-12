@@ -10,7 +10,7 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
@@ -41,7 +41,10 @@ _target_compliant if _t.compliant == true
 
 default _target_violations := []
 
-_target_violations := [v | some v in _t.violations]
+# The module publishes its findings as all_violations (per-device messages
+# flattened); it has no `violations` rule, so reading that dropped every
+# device finding and a tampered meter reported compliant=false with 0 violations.
+_target_violations := [v | some v in _t.all_violations]
 
 _violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
 
@@ -59,11 +62,22 @@ default _upstream := {}
 
 _upstream := _t.compliance_report
 
+# Checks evaluated per device: firmware (4), certificate (3), key management
+# (2), communications (3), tamper and secure boot (4). Keep in step with the
+# module. One control set per device assessed, one set when nothing was, and
+# never fewer controls than findings: the store derives passed = total - failed.
+_controls_per_device := 16
+
+_devices := object.get(_upstream, "total_devices", 0)
+
+total_controls := max([_controls_per_device * max([_devices, 1]), count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "ami_device",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 
