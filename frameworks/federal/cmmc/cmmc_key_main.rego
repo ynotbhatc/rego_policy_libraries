@@ -59,11 +59,18 @@ default _upstream := {}
 
 _upstream := {"framework_key": "cmmc"}
 
+# Control universe for the product's passed = total - failed arithmetic: one finding per CMMC practice across the fourteen domains (188 on empty input).
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 188
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "cmmc",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

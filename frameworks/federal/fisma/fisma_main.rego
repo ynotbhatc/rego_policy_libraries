@@ -632,9 +632,19 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for fisma; this is not a passing result"}],
 	"violation_count": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(fisma_assessment, {"framework_key": "fisma", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls: the seven RMF steps are the units this
+# assessment decides on; the total never drops below the finding count.
+total_controls := max([7, count(fisma_violations)])
+
+compliance_report := object.union(fisma_assessment, {
+	"framework_key": "fisma",
+	"compliant": _entrypoint_compliant,
+	"violation_count": count(fisma_violations),
+	"total_controls": total_controls,
+})
 
 default _entrypoint_compliant := false
 
