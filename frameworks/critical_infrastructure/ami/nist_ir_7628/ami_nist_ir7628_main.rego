@@ -10,7 +10,7 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
