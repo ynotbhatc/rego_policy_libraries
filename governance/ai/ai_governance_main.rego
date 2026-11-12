@@ -59,11 +59,18 @@ default _upstream := {}
 
 _upstream := {"framework_key": "ai_governance"}
 
+# Control universe for the product's passed = total - failed arithmetic: the bridge reports the upstream allow/deny decision as one control.
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 1
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "ai_governance",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

@@ -705,9 +705,30 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for sox; this is not a passing result"}],
 	"violation_count": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(overall_sox_assessment, {"framework_key": "sox", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls: the six sections' findings in one list,
+# against the 35 attested checks this module evaluates; the total never drops below the finding count.
+_violations := array.concat(
+	array.concat(sox_detailed_findings.section_302_findings, sox_detailed_findings.section_404_findings),
+	array.concat(
+		array.concat(sox_detailed_findings.section_409_findings, sox_detailed_findings.itgc_findings),
+		array.concat(sox_detailed_findings.application_control_findings, sox_detailed_findings.management_findings),
+	),
+)
+
+_declared_controls := 35
+
+total_controls := max([_declared_controls, count(_violations)])
+
+compliance_report := object.union(overall_sox_assessment, {
+	"framework_key": "sox",
+	"compliant": _entrypoint_compliant,
+	"violations": _violations,
+	"violation_count": count(_violations),
+	"total_controls": total_controls,
+})
 
 default _entrypoint_compliant := false
 

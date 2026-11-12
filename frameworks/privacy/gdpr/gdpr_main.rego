@@ -107,9 +107,30 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for gdpr; this is not a passing result"}],
 	"violation_count": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(report, {"framework_key": "gdpr", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls: the four modules are the units this
+# aggregator decides on, so a failing module is one finding and total_controls is the module count.
+_module_violations := [{"control": name, "title": sprintf("GDPR module %v is not compliant", [name])} |
+	some name, ok in {
+		"core_gdpr": core_compliant,
+		"controller_processor": controller_processor_compliant,
+		"data_transfers": data_transfers_compliant,
+		"cookies_and_tracking": cookies_tracking_compliant,
+	}
+	not ok
+]
+
+compliance_report := object.union(report, {
+	"framework_key": "gdpr",
+	"compliant": _entrypoint_compliant,
+	"violations": _module_violations,
+	"violation_count": count(_module_violations),
+	"total_controls": _declared_controls,
+})
+
+_declared_controls := 4
 
 default _entrypoint_compliant := false
 

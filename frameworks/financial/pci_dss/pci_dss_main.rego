@@ -248,9 +248,38 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for pci_dss; this is not a passing result"}],
 	"violation_count": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(pci_dss_detailed_findings, {"framework_key": "pci_dss", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls: the twelve requirements are the units this
+# aggregator decides on, so a failing requirement is one finding and total_controls is 12.
+_requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0 %v is not compliant", [name])} |
+	some name, ok in {
+		"req_1_network_security": requirement_1_compliant,
+		"req_2_system_hardening": requirement_2_compliant,
+		"req_3_stored_data": requirement_3_compliant,
+		"req_4_transmission_security": requirement_4_compliant,
+		"req_5_malware_protection": requirement_5_compliant,
+		"req_6_secure_development": requirement_6_compliant,
+		"req_7_access_restriction": requirement_7_compliant,
+		"req_8_authentication": requirement_8_compliant,
+		"req_9_physical_access": requirement_9_compliant,
+		"req_10_logging_monitoring": requirement_10_compliant,
+		"req_11_security_testing": requirement_11_compliant,
+		"req_12_governance": requirement_12_compliant,
+	}
+	not ok
+]
+
+compliance_report := object.union(pci_dss_detailed_findings, {
+	"framework_key": "pci_dss",
+	"compliant": _entrypoint_compliant,
+	"violations": _requirement_violations,
+	"violation_count": count(_requirement_violations),
+	"total_controls": _declared_controls,
+})
+
+_declared_controls := 12
 
 default _entrypoint_compliant := false
 

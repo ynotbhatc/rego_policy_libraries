@@ -10,7 +10,7 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
@@ -59,11 +59,19 @@ default _upstream := {}
 
 _upstream := _t.compliance_assessment
 
+# SG.AC (6), SG.AU (5), SG.IA (4), SG.SC (6), SG.CM (5), SG.IR (6) controls
+# across the six family modules. Keep in step with the modules. Never fewer
+# controls than findings: the store derives passed = total - failed.
+_declared_controls := 32
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "ami_nist_ir7628",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 
