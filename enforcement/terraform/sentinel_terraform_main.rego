@@ -59,11 +59,18 @@ default _upstream := {}
 
 _upstream := _t.result
 
+# Control universe for the product's passed = total - failed arithmetic: four violation rules in sentinel.terraform.
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 4
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "sentinel_terraform",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

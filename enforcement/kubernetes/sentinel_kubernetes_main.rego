@@ -59,11 +59,18 @@ default _upstream := {}
 
 _upstream := {"framework_key": "sentinel_kubernetes"}
 
+# Control universe for the product's passed = total - failed arithmetic: twenty-one checks in sentinel.kubernetes (coverage stamp).
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 21
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "sentinel_kubernetes",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

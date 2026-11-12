@@ -8,6 +8,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — every framework key reports total_controls and a violations list
+
+- The product's generic assessment playbook refuses a report without `total_controls` and derives
+  passed = total - failed from it. Nineteen of the 90 framework keys returned a report without it (the ten
+  `#275` bridges plus as9100d, digital_sovereignty, fisma, gdpr, hipaa, pci_dss, soc2, sox and tsa_pipeline),
+  and gdpr, pci_dss and sox had no `violations` list at all, so a failing run stored zero findings. Every key
+  now carries a numeric `total_controls` (the module's control universe, never below the finding count, the
+  pattern #286 set for the AMI keys), a `violations` array and `violation_count`; the fail-closed default
+  reports count as one control with one finding. gdpr and pci_dss name the failing module or requirement;
+  hipaa lists every part's findings against the sum of the parts' control totals; sox lists the six sections'
+  findings against its 35 attested checks; tsa_pipeline's `total_requirements_evaluated` is now the real
+  rule count (153; the literal 112 was below the 129 findings an empty run raises).
+- `tests/framework_keys/test_keys.rego` asserts the contract for every key on empty input, so a key that
+  drops `total_controls` or `violations` fails CI by name. Still open: 32 keys (every STIG key, by its two
+  input-contract notices; ccpa, eu_ai_act, iso27001, nist_800_171, swift_csp and others by more) raise more
+  findings than their declared `total_controls` on empty input, so passed = total - failed goes negative
+  there; flooring those modules at the finding count is the next change, after which the test gates it.
+
 ### Changed — README rewritten for people
 
 - The front page is now 120 lines: what the library is, a two-minute try-out that shows the fail-closed result,

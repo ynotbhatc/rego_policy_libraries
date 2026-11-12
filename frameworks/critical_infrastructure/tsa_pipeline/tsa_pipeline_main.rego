@@ -247,6 +247,10 @@ pipeline_type := input.pipeline_type
 
 # ── Complete compliance report ───────────────────────────────────────────────
 
+# Control universe: the twelve section modules carry 153 violation rules between them. The report's
+# total never drops below the finding count (129 fire with no facts).
+_declared_controls := 153
+
 compliance_report := {
 	"framework": "TSA Pipeline Security Directives",
 	"directives": [
@@ -265,7 +269,8 @@ compliance_report := {
 	"total_sections": total_sections,
 	"passing_sections": passing_sections,
 	"section_compliance_score": section_compliance_score,
-	"total_requirements_evaluated": 112,
+	"total_requirements_evaluated": _declared_controls,
+	"total_controls": max([_declared_controls, count(all_violations)]),
 	"violation_count": count(all_violations),
 	"violations": all_violations,
 	"sections": {

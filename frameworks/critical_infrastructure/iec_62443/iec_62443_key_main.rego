@@ -59,11 +59,18 @@ default _upstream := {}
 
 _upstream := _t.iec_62443_compliance_report
 
+# Control universe for the product's passed = total - failed arithmetic: one finding per IEC 62443-2-1 / -3-3 requirement (58 on empty input).
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 58
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "iec_62443",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 
