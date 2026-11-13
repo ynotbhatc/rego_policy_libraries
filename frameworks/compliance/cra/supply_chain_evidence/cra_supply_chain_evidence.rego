@@ -54,7 +54,7 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	slsa_finding("SBOM components missing PURL")
+	slsa_finding("SBOM components are missing PURL")
 	msg := "CRA Annex I Part II (1) (via SLSA): SBOM components missing PURL (Package URL) identifiers — top-level dependencies not unambiguously documented"
 }
 
@@ -95,7 +95,8 @@ violation contains msg if {
 
 violation contains msg if {
 	slsa_finding("Dependencies:")
-	slsa_finding("critical CVE with no exemption")
+	slsa_finding("has critical CVE")
+	slsa_finding("with no exemption")
 	msg := "CRA Art.13(6) + Annex I Part II (2) (via SLSA): Critical CVE in third-party component with no documented exemption — remediation process obligation triggered"
 }
 
