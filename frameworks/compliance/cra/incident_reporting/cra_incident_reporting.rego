@@ -103,6 +103,46 @@ violation contains msg if {
 	msg := "CRA Art.14(4)(c): final incident report not submitted within 1 month of the incident notification"
 }
 
+# ── Evidence missing: a timing clock that was not supplied cannot be assumed met ─
+
+violation contains "CRA Art.14(2)(a): evidence missing — hours_since_aware_of_vuln not collected; early warning timeliness cannot be verified" if {
+	input.incident_reporting.actively_exploited_vuln_known == true
+	not is_number(object.get(input, ["incident_reporting", "hours_since_aware_of_vuln"], null))
+	not input.incident_reporting.early_warning_sent
+}
+
+violation contains "CRA Art.14(2)(b): evidence missing — hours_since_aware_of_vuln not collected; vulnerability notification timeliness cannot be verified" if {
+	input.incident_reporting.actively_exploited_vuln_known == true
+	not is_number(object.get(input, ["incident_reporting", "hours_since_aware_of_vuln"], null))
+	not input.incident_reporting.vulnerability_notification_sent
+}
+
+violation contains "CRA Art.14(2)(c): evidence missing — days_since_corrective_measure_available not collected; final report timeliness cannot be verified" if {
+	input.incident_reporting.actively_exploited_vuln_known == true
+	input.incident_reporting.corrective_measure_available == true
+	not is_number(object.get(input, ["incident_reporting", "days_since_corrective_measure_available"], null))
+	not input.incident_reporting.final_vuln_report_sent
+}
+
+violation contains "CRA Art.14(4)(a): evidence missing — hours_since_aware_of_incident not collected; early warning timeliness cannot be verified" if {
+	input.incident_reporting.severe_incident_occurred == true
+	not is_number(object.get(input, ["incident_reporting", "hours_since_aware_of_incident"], null))
+	not input.incident_reporting.incident_early_warning_sent
+}
+
+violation contains "CRA Art.14(4)(b): evidence missing — hours_since_aware_of_incident not collected; incident notification timeliness cannot be verified" if {
+	input.incident_reporting.severe_incident_occurred == true
+	not is_number(object.get(input, ["incident_reporting", "hours_since_aware_of_incident"], null))
+	not input.incident_reporting.incident_notification_sent
+}
+
+violation contains "CRA Art.14(4)(c): evidence missing — days_since_incident_notification not collected; final report timeliness cannot be verified" if {
+	input.incident_reporting.severe_incident_occurred == true
+	input.incident_reporting.incident_notification_sent == true
+	not is_number(object.get(input, ["incident_reporting", "days_since_incident_notification"], null))
+	not input.incident_reporting.incident_final_report_sent
+}
+
 # ── Art. 14(8) — informing impacted users ──────────────────────────────────
 
 violation contains msg if {

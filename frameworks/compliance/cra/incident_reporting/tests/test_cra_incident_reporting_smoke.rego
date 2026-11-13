@@ -20,3 +20,16 @@ test_cra_incident_reporting_fail_closed_on_empty_input if {
 	report := data.cra.incident_reporting.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# Semantic review 2026-11-13: unsent early warning with no timing evidence must raise a finding.
+test_exploited_vuln_without_timing_evidence_raises_finding if {
+	v := data.cra.incident_reporting.violation with input as {"incident_reporting": {"actively_exploited_vuln_known": true, "early_warning_sent": false}}
+	some m in v
+	startswith(m, "CRA Art.14(2)(a): evidence missing")
+}
+
+test_severe_incident_without_timing_evidence_raises_finding if {
+	v := data.cra.incident_reporting.violation with input as {"incident_reporting": {"severe_incident_occurred": true, "incident_early_warning_sent": false}}
+	some m in v
+	startswith(m, "CRA Art.14(4)(a): evidence missing")
+}
