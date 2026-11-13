@@ -672,3 +672,54 @@ test_key_tsa_pipeline if {
 
 # The key list and this file must stay in step.
 test_key_list_is_nonempty if count(keys) > 0
+
+# 2026-11-13 (semantic review): six bridges read `_t.compliant` / `_t.violations`, names their target package
+# never defined, so every real finding was dropped and a clean host could never be compliant. With some
+# facts supplied (so the fail-closed notice is not added) the bridge must carry the target's findings.
+test_bridge_carries_findings_cis_rhel10 if {
+	r := data.cis_rhel10.main.compliance_report with input as {"probe": true}
+	t := data.cis.rhel_10.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2004 if {
+	r := data.cis_ubuntu_2004.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_20_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2204 if {
+	r := data.cis_ubuntu_2204.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_22_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2404 if {
+	r := data.cis_ubuntu_2404.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_24_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_windows_2019 if {
+	r := data.cis_windows_2019.main.compliance_report with input as {"probe": true}
+	t := data.cis_windows_server_2019.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_windows_2022 if {
+	r := data.cis_windows_2022.main.compliance_report with input as {"probe": true}
+	t := data.cis_windows_server_2022.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
