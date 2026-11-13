@@ -44,8 +44,12 @@ violations contains violation if {
 # FILESYSTEM MODULE CHECKS
 # =============================================================================
 
+filesystem_module_violations contains "CIS 1.1.1.x: evidence missing - disabled_filesystem_modules not collected" if {
+	not is_object(object.get(input, "disabled_filesystem_modules", null))
+}
+
 filesystem_module_violations contains violation if {
-	input.disabled_filesystem_modules
+	is_object(object.get(input, "disabled_filesystem_modules", null))
 	some module in ["cramfs", "squashfs", "udf"]
 	not module_disabled(module)
 	violation := sprintf("CIS 1.1.1.x: Filesystem module '%s' is not disabled", [module])
