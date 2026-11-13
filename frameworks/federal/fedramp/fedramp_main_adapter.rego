@@ -6,10 +6,10 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 7
-#     cited: 7
-#     density: section
-#     basis: role
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

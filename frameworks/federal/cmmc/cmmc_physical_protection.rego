@@ -6,7 +6,7 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 24
+#     checks: 30
 #     cited: 6
 #     density: sized
 #     basis: size

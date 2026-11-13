@@ -6,8 +6,8 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 34
-#     cited: 19
+#     checks: 38
+#     cited: 22
 #     density: orchestrator
 #     basis: role
 #     tested: true

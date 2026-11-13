@@ -6,7 +6,7 @@
 #   source: nerc
 #   domains: [ot, energy, bulk-electric]
 #   coverage:
-#     checks: 46
+#     checks: 60
 #     cited: 16
 #     density: orchestrator
 #     basis: role

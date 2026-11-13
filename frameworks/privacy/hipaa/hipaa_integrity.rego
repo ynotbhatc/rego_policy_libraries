@@ -6,7 +6,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 19
+#     checks: 22
 #     cited: 3
 #     density: sized
 #     basis: size

@@ -6,7 +6,7 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 27
+#     checks: 30
 #     cited: 10
 #     density: sized
 #     basis: size

@@ -6,7 +6,7 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 12
+#     checks: 18
 #     cited: 9
 #     density: sized
 #     basis: size

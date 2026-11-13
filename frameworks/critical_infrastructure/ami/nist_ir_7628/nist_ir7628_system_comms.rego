@@ -6,7 +6,7 @@
 #   source: nist
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 8
+#     checks: 9
 #     cited: 6
 #     density: section
 #     basis: role

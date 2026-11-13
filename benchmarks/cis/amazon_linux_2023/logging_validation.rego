@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 15
+#     checks: 16
 #     cited: 11
 #     density: sized
 #     basis: size

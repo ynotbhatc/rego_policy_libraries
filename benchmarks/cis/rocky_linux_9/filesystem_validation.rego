@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 5
+#     checks: 6
 #     cited: 3
 #     density: section
 #     basis: role

@@ -6,9 +6,9 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 9
+#     checks: 15
 #     cited: 0
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report

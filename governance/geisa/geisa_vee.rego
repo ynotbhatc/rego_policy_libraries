@@ -6,7 +6,7 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 3
+#     checks: 4
 #     cited: 0
 #     density: sparse
 #     basis: size

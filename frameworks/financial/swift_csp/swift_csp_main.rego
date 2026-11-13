@@ -6,10 +6,10 @@
 #   source: swift
 #   domains: [financial, banking]
 #   coverage:
-#     checks: 43
+#     checks: 45
 #     cited: 23
 #     expected: 32
-#     found: 43
+#     found: 45
 #     scope: directory
 #     density: full
 #     basis: declared-total

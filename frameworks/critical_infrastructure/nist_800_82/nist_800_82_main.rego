@@ -8,7 +8,7 @@
 #   coverage:
 #     checks: 36
 #     cited: 24
-#     expected: 32
+#     expected: 35
 #     found: 36
 #     scope: directory
 #     density: full

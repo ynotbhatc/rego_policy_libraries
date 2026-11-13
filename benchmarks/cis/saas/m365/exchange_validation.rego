@@ -26,7 +26,7 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 14
+#     checks: 20
 #     cited: 7
 #     density: sized
 #     basis: size

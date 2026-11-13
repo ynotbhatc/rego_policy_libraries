@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 16
+#     checks: 18
 #     cited: 4
 #     density: sized
 #     basis: size

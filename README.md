@@ -4,7 +4,7 @@ Ready-to-run compliance checks for [Open Policy Agent](https://www.openpolicyage
 
 It covers the benchmarks and regulations most teams are asked about: CIS Benchmarks and DISA STIGs for Linux, Windows, cloud, containers, databases and network gear; NIST, ISO 27001, SOC 2, PCI DSS, HIPAA, GDPR, NERC CIP, IEC 62443, FedRAMP, CMMC, the EU AI Act, and regional rules from the UK, EU, India, Japan, Singapore, Malaysia, Hong Kong and Australia. The full list is in [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md).
 
-**953 production-ready Rego policies** (2,264 including tests) holding **23,776 control-level checks** across 185 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
+**953 production-ready Rego policies** (2,265 including tests) holding **24,009 control-level checks** across 185 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
 
 [![control-level checks](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
