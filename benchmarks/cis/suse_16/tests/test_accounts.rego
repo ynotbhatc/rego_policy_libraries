@@ -366,3 +366,14 @@ test_5_4_3_4_hollow_evidence_not_a_pass if {
 	vs := data.cis_suse16.accounts.violations with input as {"pam": {"profile_d_raw": ""}}
 	count([v | some v in vs; startswith(v, "5.4.3.4: ")]) > 0
 }
+
+# Semantic review 2026-11-13: a stricter umask than 027 is compliant ("or more restrictive").
+test_5_4_3_4_umask_077_passes if {
+	vs := data.cis_suse16.accounts.violations with input as {"pam": {"profile_d_raw": "umask 077"}}
+	count([v | some v in vs; startswith(v, "5.4.3.4: ")]) == 0
+}
+
+test_5_4_3_4_mixed_umask_fails if {
+	vs := data.cis_suse16.accounts.violations with input as {"pam": {"profile_d_raw": "umask 077\numask 022"}}
+	count([v | some v in vs; startswith(v, "5.4.3.4: ")]) > 0
+}
