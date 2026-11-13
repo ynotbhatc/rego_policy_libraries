@@ -8,6 +8,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — six framework-key bridges dropped every finding (semantic review 2026-11-13)
+
+- `cis_rhel10`, `cis_ubuntu_2004`, `cis_ubuntu_2204`, `cis_ubuntu_2404`, `cis_windows_2019` and `cis_windows_2022`
+  read `compliant` and `violations` from their target package, which only defines them inside
+  `compliance_report`. With facts supplied the bridged report showed `violations: []`, `violation_count: 0` and
+  `compliant: false`, whatever the host looked like. They now read the target report's fields, and
+  `tests/framework_keys/test_keys.rego` asserts each one carries its target's findings.
+
 ### Fixed — checks that passed silently when their evidence was missing
 
 - In Rego `not f(input.missing)` is undefined, not true, so the rule never fires. All 164 such sites were
