@@ -60,6 +60,11 @@ violation_1_1_1 contains msg if {
 # ── 1.1.2 — Two-to-four Global Administrators designated ────────────────
 
 violation_1_1_2 contains msg if {
+	not is_array(object.get(input, "global_admins", null))
+	msg := "CIS 1.1.2: evidence missing — global_admins not collected"
+}
+
+violation_1_1_2 contains msg if {
 	count(input.global_admins) < 2
 	msg := sprintf("CIS 1.1.2: Only %d Global Administrator(s); CIS requires at least 2 for redundancy", [count(input.global_admins)])
 }
@@ -74,6 +79,11 @@ violation_1_1_2 contains msg if {
 global_admins_without_strong_mfa contains admin if {
 	some admin in input.global_admins
 	admin.has_strong_mfa == false
+}
+
+violation_1_1_3 contains msg if {
+	not is_array(object.get(input, "global_admins", null))
+	msg := "CIS 1.1.3: evidence missing — global_admins not collected"
 }
 
 violation_1_1_3 contains msg if {
