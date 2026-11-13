@@ -251,6 +251,12 @@ config_violations contains msg if {
 }
 
 config_violations contains msg if {
+	ssh_set("logingracetime")
+	ssh_seconds("logingracetime") == 0
+	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds", [ssh_value("logingracetime")])
+}
+
+config_violations contains msg if {
 	not ssh_set("logingracetime")
 	msg := "CIS 5.2.18: SSH LoginGraceTime is not configured (sshd default is 120 seconds, should be 60 or less)"
 }
