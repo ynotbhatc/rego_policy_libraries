@@ -288,6 +288,9 @@ def op_from_title(title, value):
         return "ge", value
     if re.search(r"or (fewer|less)", t):
         return ("le_not0" if "but not" in t else "le"), value
+    if re.search(r"or '?not installed'?\s*$", t):
+        # a service row ("... 'Disabled' or 'Not Installed'"): an uninstalled service has no Start value to read
+        return "eq_or_absent", value
     return "eq", value
 
 

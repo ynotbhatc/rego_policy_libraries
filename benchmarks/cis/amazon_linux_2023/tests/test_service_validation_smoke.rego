@@ -25,3 +25,15 @@ test_service_validation_violations_on_empty_input if {
 	v := data.cis_amazon_linux_2023.services.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: message fields that are absent must not drop the finding.
+test_chronyd_no_sources_without_counts_still_flagged if {
+	v := data.cis_amazon_linux_2023.services.time_sync_violations with input as {"time_synchronization": {"active_service": "chronyd"}, "chronyd": {"service_active": true, "service_enabled": true, "has_time_sources": false}}
+	some x in v
+	contains(x, "no time sources")
+}
+
+test_unnecessary_service_without_risk_level_still_flagged if {
+	v := data.cis_amazon_linux_2023.services.unnecessary_service_violations with input as {"unnecessary_services": {"non_compliant": [{"service": "telnet.socket", "active": true}]}}
+	count(v) > 0
+}

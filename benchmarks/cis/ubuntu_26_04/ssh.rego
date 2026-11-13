@@ -167,7 +167,8 @@ sshd_first(key) := vs[0] if {
 # configuration was not collected (a raw sshd_config misses /usr/etc/ssh and sshd_config.d)
 sshd_value(key) := sshd_first(key)
 
-sshd_list(key) := [trim_space(x) | some x in split(lower(sshd_value(key)), ",")]
+# `Ciphers +aes128-cbc` appends to the defaults and `^` prepends: the named algorithm is enabled either way.
+sshd_list(key) := [trim_left(trim_space(x), "+^") | some x in split(lower(sshd_value(key)), ",")]
 
 # seconds from an sshd time value ("60", "60s", "1m")
 sshd_seconds(v) := to_number(v) if regex.match(`^[0-9]+$`, v)

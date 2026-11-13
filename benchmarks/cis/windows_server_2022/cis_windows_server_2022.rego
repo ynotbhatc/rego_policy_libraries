@@ -22,6 +22,9 @@ package cis_windows_server_2022_legacy
 
 import rego.v1
 
+# A numeric fact counts only when it is present and numeric; anything else fails the control.
+number_at_least(v, n) if to_number(v) >= n
+
 # Main compliance rule - all controls must pass
 compliant if {
 	count(violations) == 0
@@ -57,19 +60,19 @@ account_policy_violations := [v |
 # 1.1 Password Policy Violations
 password_policy_violations := [
 "1.1.1: required value of 'Enforce password history' is '24 or more password(s)'" |
-	to_number(input.password_policy.enforce_password_history) < 24
+	not number_at_least(object.get(input, ["password_policy", "enforce_password_history"], null), 24)
 ]
 
 # 1.2 Account Lockout Policy Violations
 account_lockout_violations := [
 "1.2.1: required value of 'Account lockout duration' is '15 or more minute(s)'" |
-	to_number(input.account_lockout_policy.account_lockout_duration) < 15
+	not number_at_least(object.get(input, ["account_lockout_policy", "account_lockout_duration"], null), 15)
 ]
 
 # 1.3 Kerberos Policy Violations
 kerberos_policy_violations := [
 "1.3.1: required value of 'Enforce user logon restrictions' is 'Enabled'" |
-	input.kerberos_policy.enforce_user_logon_restrictions != "Enabled"
+	object.get(input, ["kerberos_policy", "enforce_user_logon_restrictions"], null) != "Enabled"
 ]
 
 # Section 2: Local Policies
@@ -85,13 +88,13 @@ local_policy_violations := [v |
 # 2.1 Audit Policy Violations
 audit_policy_violations := [
 "2.2.1: required value of 'Audit: Force audit policy subcategory settings' is 'Enabled'" |
-	input.security_options.audit_force_audit_policy_subcategory_settings != "Enabled"
+	object.get(input, ["security_options", "audit_force_audit_policy_subcategory_settings"], null) != "Enabled"
 ]
 
 # 2.2 User Rights Assignment Violations
 user_rights_violations := [
 "2.2.3: required value of 'Access Credential Manager as a trusted caller' is 'No One'" |
-	count(input.user_rights.access_credential_manager_as_trusted_caller) > 0
+	count(object.get(input, ["user_rights", "access_credential_manager_as_trusted_caller"], ["evidence missing"])) > 0
 ]
 
 authenticated_users_network_access if {
@@ -136,7 +139,7 @@ deny_rdp_properly_configured if {
 # 2.3 Security Options Local Violations
 security_options_violations_local := [
 "2.3.1: required value of 'Accounts: Administrator account status' is 'Disabled'" |
-	input.security_options.accounts_administrator_account_status != "Disabled"
+	object.get(input, ["security_options", "accounts_administrator_account_status"], null) != "Disabled"
 ]
 
 # Section 3: Event Log
@@ -153,25 +156,25 @@ event_log_violations := [v |
 # 3.1 Application Log Violations
 application_log_violations := [
 "3.1.1: required value of 'Application: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
-	input.event_log.application.control_event_log_behavior != "Disabled"
+	object.get(input, ["event_log", "application", "control_event_log_behavior"], null) != "Disabled"
 ]
 
 # 3.2 Security Log Violations
 security_log_violations := [
 "3.2.1: required value of 'Security: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
-	input.event_log.security.control_event_log_behavior != "Disabled"
+	object.get(input, ["event_log", "security", "control_event_log_behavior"], null) != "Disabled"
 ]
 
 # 3.3 Setup Log Violations
 setup_log_violations := [
 "3.3.1: required value of 'Setup: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
-	input.event_log.setup.control_event_log_behavior != "Disabled"
+	object.get(input, ["event_log", "setup", "control_event_log_behavior"], null) != "Disabled"
 ]
 
 # 3.4 System Log Violations
 system_log_violations := [
 "3.4.1: required value of 'System: Control Event Log behavior when the log file reaches its maximum size' is 'Disabled'" |
-	input.event_log.system.control_event_log_behavior != "Disabled"
+	object.get(input, ["event_log", "system", "control_event_log_behavior"], null) != "Disabled"
 ]
 
 # Section 4: Restricted Groups
@@ -188,19 +191,19 @@ administrators_group_properly_configured if {
 # Section 5: System Services
 system_services_violations := [
 "5.1: required value of 'Computer Browser (Browser)' is 'Disabled'" |
-	input.system_services.computer_browser != "Disabled"
+	object.get(input, ["system_services", "computer_browser"], null) != "Disabled"
 ]
 
 # Section 6: Registry
 registry_violations := [
 "6.1: required value of 'Apply UAC restrictions to local accounts on network logons' is 'Enabled'" |
-	input.registry.apply_uac_restrictions_to_local_accounts != "Enabled"
+	object.get(input, ["registry", "apply_uac_restrictions_to_local_accounts"], null) != "Enabled"
 ]
 
 # Section 7: Security Options
 security_options_violations := [
 "7.1: required value of 'Interactive logon: Do not display last user name' is 'Enabled'" |
-	input.security_options.interactive_logon_do_not_display_last_user_name != "Enabled"
+	object.get(input, ["security_options", "interactive_logon_do_not_display_last_user_name"], null) != "Enabled"
 ]
 
 # Section 8: Advanced Audit Policy Configuration
@@ -222,61 +225,61 @@ advanced_audit_violations := [v |
 # 8.1 Account Logon Audit Violations
 account_logon_audit_violations := [
 "8.1.1: required value of 'Audit Credential Validation' is 'Success and Failure'" |
-	input.advanced_audit_policy.account_logon.audit_credential_validation != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "account_logon", "audit_credential_validation"], null) != "Success and Failure"
 ]
 
 # 8.2 Account Management Audit Violations
 account_management_audit_violations := [
 "8.2.1: required value of 'Audit Application Group Management' is 'Success and Failure'" |
-	input.advanced_audit_policy.account_management.audit_application_group_management != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "account_management", "audit_application_group_management"], null) != "Success and Failure"
 ]
 
 # 8.3 Detailed Tracking Audit Violations
 detailed_tracking_audit_violations := [
 "8.3.1: required value of 'Audit DPAPI Activity' is 'Success and Failure'" |
-	input.advanced_audit_policy.detailed_tracking.audit_dpapi_activity != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "detailed_tracking", "audit_dpapi_activity"], null) != "Success and Failure"
 ]
 
 # 8.4 DS Access Audit Violations
 ds_access_audit_violations := [
 "8.4.1: required value of 'Audit Directory Service Access' is 'Success and Failure'" |
-	input.advanced_audit_policy.ds_access.audit_directory_service_access != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "ds_access", "audit_directory_service_access"], null) != "Success and Failure"
 ]
 
 # 8.5 Logon/Logoff Audit Violations
 logon_logoff_audit_violations := [
 "8.5.1: required value of 'Audit Account Lockout' is 'Success and Failure'" |
-	input.advanced_audit_policy.logon_logoff.audit_account_lockout != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "logon_logoff", "audit_account_lockout"], null) != "Success and Failure"
 ]
 
 # 8.6 Object Access Audit Violations
 object_access_audit_violations := [
 "8.6.1: required value of 'Audit Application Generated' is 'Success and Failure'" |
-	input.advanced_audit_policy.object_access.audit_application_generated != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "object_access", "audit_application_generated"], null) != "Success and Failure"
 ]
 
 # 8.7 Policy Change Audit Violations
 policy_change_audit_violations := [
 "8.7.1: required value of 'Audit Audit Policy Change' is 'Success and Failure'" |
-	input.advanced_audit_policy.policy_change.audit_audit_policy_change != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "policy_change", "audit_audit_policy_change"], null) != "Success and Failure"
 ]
 
 # 8.8 Privilege Use Audit Violations
 privilege_use_audit_violations := [
 "8.8.1: required value of 'Audit Non Sensitive Privilege Use' is 'Success and Failure'" |
-	input.advanced_audit_policy.privilege_use.audit_non_sensitive_privilege_use != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "privilege_use", "audit_non_sensitive_privilege_use"], null) != "Success and Failure"
 ]
 
 # 8.9 System Audit Violations
 system_audit_violations := [
 "8.9.1: required value of 'Audit IPSec Driver' is 'Success and Failure'" |
-	input.advanced_audit_policy.system.audit_ipsec_driver != "Success and Failure"
+	object.get(input, ["advanced_audit_policy", "system", "audit_ipsec_driver"], null) != "Success and Failure"
 ]
 
 # Section 9: Windows Defender Antivirus (New for Server 2022)
 windows_defender_violations := [
 "9.1.1: required value of 'Configure Attack Surface Reduction rules' is 'Enabled'" |
-	input.windows_defender.configure_attack_surface_reduction_rules != "Enabled"
+	object.get(input, ["windows_defender", "configure_attack_surface_reduction_rules"], null) != "Enabled"
 ]
 
 asr_rules_properly_configured if {

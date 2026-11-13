@@ -153,8 +153,8 @@ violations contains v if {
 		"domain": "geopolitical_sovereignty",
 		"control": "GT-002",
 		"severity": "high",
-		"trigger_id": t.trigger_id,
-		"description": concat("", ["Geopolitical event trigger has no documented response procedure: ", t.trigger_id, " (", t.event_type, ")"]),
+		"trigger_id": object.get(t, "trigger_id", "unknown"),
+		"description": concat("", ["Geopolitical event trigger has no documented response procedure: ", object.get(t, "trigger_id", "unknown"), " (", object.get(t, "event_type", "unknown"), ")"]),
 		"remediation": "Document response procedure and activation criteria for each defined geopolitical event trigger",
 	}
 }
@@ -167,8 +167,8 @@ violations contains v if {
 		"domain": "geopolitical_sovereignty",
 		"control": "GT-002",
 		"severity": "high",
-		"trigger_id": t.trigger_id,
-		"description": concat("", ["Geopolitical event trigger has no activation criteria defined: ", t.trigger_id, " (", t.event_type, ")"]),
+		"trigger_id": object.get(t, "trigger_id", "unknown"),
+		"description": concat("", ["Geopolitical event trigger has no activation criteria defined: ", object.get(t, "trigger_id", "unknown"), " (", object.get(t, "event_type", "unknown"), ")"]),
 		"remediation": "Define clear activation criteria (e.g., sanctions designation, conflict outbreak) for each trigger type",
 	}
 }
@@ -181,8 +181,21 @@ violations contains v if {
 		"domain": "geopolitical_sovereignty",
 		"control": "GT-003",
 		"severity": "high",
-		"description": concat("", ["No data egress procedure documented for country exit: ", p.country]),
+		"description": concat("", ["No data egress procedure documented for country exit: ", object.get(p, "country", "unknown")]),
 		"remediation": "Document data egress and infrastructure withdrawal procedure for each country where operations exist",
+	}
+}
+
+violations contains v if {
+	not country_exit_procedures_documented
+	p := input.geopolitical_risk.country_exit_procedures[_]
+	not p.infrastructure_withdrawal_plan == true
+	v := {
+		"domain": "geopolitical_sovereignty",
+		"control": "GT-003",
+		"severity": "high",
+		"description": concat("", ["No infrastructure withdrawal plan documented for country exit: ", object.get(p, "country", "unknown")]),
+		"remediation": "Document an infrastructure withdrawal plan for each country where operations exist",
 	}
 }
 
@@ -243,6 +256,10 @@ report := {
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
 default geopolitical_risk_register_current := false
+
+default geopolitical_event_triggers_documented := false
+
+default country_exit_procedures_documented := false
 
 default regulatory_change_monitoring_active := false
 

@@ -490,7 +490,7 @@ e_6_1_2_7 if {
 default p_6_1_2_7 := false
 
 p_6_1_2_7 if {
-	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(load=\"?(imtcp|imudp|imptcp|imrelp)\"?\\)|^input\\(type=\"?(imtcp|imudp|imptcp|imrelp)\"?|^\\$ModLoad\\s+(imtcp|imudp|imptcp|imrelp)\\b|^\\$(InputTCPServerRun|UDPServerRun|InputPTCPServerRun|InputRELPServerRun)\\b)")
+	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(\\s*load\\s*=\\s*\"?(imtcp|imudp|imptcp|imrelp)\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?(imtcp|imudp|imptcp|imrelp)\"?|^\\$ModLoad\\s+(imtcp|imudp|imptcp|imrelp)\\b|^\\$(InputTCPServerRun|UDPServerRun|InputPTCPServerRun|InputRELPServerRun)\\b)")
 }
 
 p_6_1_2_7 if {
@@ -560,9 +560,19 @@ e_6_1_2_11 if {
 
 default p_6_1_2_11 := false
 
+# TLS forwarding must be present and no forwarding may bypass it: every omfwd action is TLS and no
+# legacy `selector @host` / `selector @@host` line exists.
+non_tls_omfwd_action if {
+	some b in rsyslog_actions
+	regex.match(`(?i)type\s*=\s*"?omfwd"?`, b)
+	not tls_forward_ok(b)
+}
+
 p_6_1_2_11 if {
 	some a in rsyslog_actions
 	tls_forward_ok(a)
+	not non_tls_omfwd_action
+	not regex_in_text(input.rsyslog.config_raw, `^[^#\s]\S*\s+@{1,2}\S`)
 }
 
 violations contains "6.1.2.11: evidence missing — rsyslog.config_raw not collected" if not e_6_1_2_11

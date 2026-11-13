@@ -25,3 +25,10 @@ test_nist_ir7628_audit_violations_on_empty_input if {
 	v := data.ami.nist_ir7628.audit.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing retention_days must raise the retention finding.
+test_missing_retention_days_raises_finding if {
+	v := data.ami.nist_ir7628.audit.violations with input as {"audit": {"storage": {}}}
+	some a in v
+	contains(a, "log retention is")
+}

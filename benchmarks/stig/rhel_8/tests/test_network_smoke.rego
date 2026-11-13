@@ -25,3 +25,9 @@ test_network_violations_on_empty_input if {
 	v := data.stig.rhel_8.network.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_rhel_08_040110 if {
+	data.stig.rhel_8.network.status_rhel_08_040110 == "Open" with input as {"x": 1}
+}

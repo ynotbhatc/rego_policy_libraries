@@ -100,3 +100,12 @@ test_single_bad_fact_opens_a_finding if {
 	f.stig_id == "MYS8-00-005200"
 	f.status == "Open"
 }
+
+# Semantic review 2026-11-13: an empty user list is missing evidence, not a vacuous pass.
+test_password_storage_open_on_empty_user_list if {
+	data.stig.oracle_mysql_8.core.status_r_mys8_00_005100 == "Open" with input as {"mysql": {"users": []}}
+}
+
+test_password_storage_passes_with_hashing_plugin if {
+	data.stig.oracle_mysql_8.core.status_r_mys8_00_005100 == "Not_a_Finding" with input as {"mysql": {"users": [{"user": "app", "host": "%", "plugin": "caching_sha2_password"}]}}
+}

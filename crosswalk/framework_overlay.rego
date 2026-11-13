@@ -82,11 +82,14 @@ _coverage_for(fwmap) := {
 		_control_status[c] == "gap"
 	])
 
-	# not_covered: framework controls whose spine controls were never evaluated
+	# not_covered: every framework control that is neither satisfied nor a gap, so the three lists always
+	# partition controls_total. That includes controls whose spine controls were never evaluated and controls
+	# only partly evaluated (some satisfied, some never evaluated), which cannot be claimed satisfied.
 	notcov := sort([fc |
 		some fc
-		ctrls := fwmap[fc]
-		not _any_evaluated(ctrls)
+		fwmap[fc]
+		not fc in sat
+		not fc in gaps
 	])
 }
 

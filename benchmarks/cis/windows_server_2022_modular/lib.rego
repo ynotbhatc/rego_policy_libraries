@@ -174,6 +174,12 @@ _cmp(v, "ne", want) if {
 	_str(v) != lower(want)
 }
 
+# "Disabled or Not Installed": a service that is not installed has no Start value at all, which is as compliant
+# as Start = 4. Only used by rows whose title says "or Not Installed"; the facts must still have been collected.
+_cmp(v, "eq_or_absent", want) if _num(v) == _num(want)
+
+_cmp(v, "eq_or_absent", _) if _empty(v)
+
 # the audit procedure lists every accepted value ("`1` or `2`")
 _cmp(v, "in", want) if _num(v) in {x | some x in want}
 

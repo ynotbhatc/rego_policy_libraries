@@ -798,3 +798,21 @@ test_unknown_and_rev2_style_ids_are_rejected if {
 	some v in r.violations
 	contains(v, "unknown requirement id 3.1.1")
 }
+
+test_failed_controls_counts_distinct_requirements if {
+	# 03.13.08 carries three Rev 2 fact checks; all three failing is ONE failed control.
+	r := main.compliance_report with input as _green
+		with data.nist.sp800_171.media_protection.media_transport_encryption as false
+		with data.nist.sp800_171.system_communications.transmission_encryption as false
+		with data.nist.sp800_171.system_communications.cui_at_rest_protection as false
+	r.compliant == false
+	r.violation_count == 3
+	r.failed_controls == 1
+	r.requirements_satisfied == 96
+}
+
+test_failed_controls_equals_total_on_empty_input if {
+	r := main.compliance_report with input as {}
+	r.failed_controls == r.total_controls
+	r.violation_count > r.failed_controls
+}

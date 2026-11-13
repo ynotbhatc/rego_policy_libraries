@@ -37,3 +37,11 @@ test_metadata_picked_up_from_input if {
 	r.sector == "banking"
 	r.assessed_at == "2026-06-26"
 }
+
+# Semantic review 2026-11-13: total_controls must cover every violation rule.
+test_empty_input_failed_controls_equal_violation_count if {
+	r := data.nis2.main.compliance_report with input as {}
+	r.total_controls == 35
+	r.failed_controls == r.violation_count
+	r.failed_controls <= r.total_controls
+}

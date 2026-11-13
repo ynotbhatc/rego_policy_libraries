@@ -56,9 +56,14 @@ docker_daemon_violations := [
 # Section 3: Docker daemon configuration files
 daemon_config_violations := [
 "3.1: required value of the docker.service file ownership is root:root" |
-	input.host.file_permissions["docker.service"].owner != "root"
-	input.host.file_permissions["docker.service"].group != "root"
+	not docker_service_root_owned
 ]
+
+# Both owner and group must be root; a missing entry or attribute is not compliant.
+docker_service_root_owned if {
+	input.host.file_permissions["docker.service"].owner == "root"
+	input.host.file_permissions["docker.service"].group == "root"
+}
 
 # Section 4: Container Images and Build File
 container_images_violations := [

@@ -25,3 +25,12 @@ test_nist_ir7628_system_comms_violations_on_empty_input if {
 	v := data.ami.nist_ir7628.system_comms.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing tls_version / enabled_ciphers must raise findings.
+test_missing_encryption_block_raises_tls_and_cipher_findings if {
+	v := data.ami.nist_ir7628.system_comms.violations with input as {"system_comms": {}}
+	some a in v
+	contains(a, "TLS version")
+	some b in v
+	contains(b, "enabled_ciphers not collected")
+}

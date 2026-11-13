@@ -291,3 +291,19 @@ test_6_1_3_1_hollow_evidence_not_a_pass if {
 	vs := data.cis_ubuntu_26_04.logging.violations with input as {"log_file_permissions": {"analysis": []}}
 	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) > 0
 }
+
+# Semantic review 2026-11-13: module(load="imtcp" ...params) and `input( type=` are remote-receive configuration.
+test_remote_receive_module_with_params_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "module(load=\"imtcp\" MaxSessions=\"500\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) > 0
+}
+
+test_remote_receive_input_with_space_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "input( type=\"imtcp\" port=\"514\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) > 0
+}
+
+test_remote_receive_absent_not_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "*.* /var/log/messages\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) == 0
+}

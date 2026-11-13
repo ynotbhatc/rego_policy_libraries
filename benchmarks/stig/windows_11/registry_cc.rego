@@ -703,7 +703,7 @@ status_r_wn11_cc_000204 := "Open" if not r_wn11_cc_000204
 default r_wn11_cc_000205 := false
 
 r_wn11_cc_000205 if {
-	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection"].AllowTelemetry == 0
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection"].AllowTelemetry in {0, 1}
 }
 
 finding_r_wn11_cc_000205 := {
@@ -721,7 +721,7 @@ status_r_wn11_cc_000205 := "Open" if not r_wn11_cc_000205
 default r_wn11_cc_000206 := false
 
 r_wn11_cc_000206 if {
-	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config"].DODownloadMode == 0
+	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config"].DODownloadMode in {0, 1}
 }
 
 finding_r_wn11_cc_000206 := {
@@ -848,7 +848,7 @@ status_r_wn11_cc_000225 := "Open" if not r_wn11_cc_000225
 default r_wn11_cc_000252 := false
 
 r_wn11_cc_000252 if {
-	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR\\  (For GPO-managed systems)"].AllowGameDVR == 0
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR"].AllowGameDVR == 0
 }
 
 finding_r_wn11_cc_000252 := {
@@ -884,7 +884,7 @@ status_r_wn11_cc_000255 := "Open" if not r_wn11_cc_000255
 default r_wn11_cc_000260 := false
 
 r_wn11_cc_000260 if {
-	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity\\  (For GPO-managed systems)"].MinimumPINLength >= 6
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity"].MinimumPINLength >= 6
 }
 
 finding_r_wn11_cc_000260 := {
@@ -1040,7 +1040,7 @@ status_r_wn11_cc_000300 := "Open" if not r_wn11_cc_000300
 default r_wn11_cc_000305 := false
 
 r_wn11_cc_000305 if {
-	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\  (For GPO-managed systems)"].AllowIndexingEncryptedStoresOrItems == 0
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search"].AllowIndexingEncryptedStoresOrItems == 0
 }
 
 finding_r_wn11_cc_000305 := {

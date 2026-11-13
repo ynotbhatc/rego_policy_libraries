@@ -95,6 +95,10 @@ _repo_id := id if {
 	trimmed := trim_prefix(_scm_url, "git@")
 	id := replace(trim_suffix(trimmed, ".git"), ":", "/")
 } else := id if {
+	startswith(_scm_url, "ssh://")
+	stripped := regex.replace(_scm_url, "^ssh://([^@/]+@)?", "")
+	id := trim_suffix(stripped, ".git")
+} else := id if {
 	regex.match("^https?://", _scm_url)
 	stripped := regex.replace(_scm_url, "^https?://", "")
 	id := trim_suffix(stripped, ".git")
@@ -103,9 +107,9 @@ _repo_id := id if {
 _sc_violations contains msg if {
 	_sc_cfg.require_https
 	_scm_url != ""
-	startswith(_scm_url, "git@")
+	not startswith(_scm_url, "https://")
 	msg := sprintf(
-		"Project source '%s' uses SSH — HTTPS is required so access is brokered by a managed credential.",
+		"Project source '%s' does not use HTTPS (ssh://, git@ and http:// are rejected) — HTTPS is required so access is brokered by a managed credential.",
 		[_scm_url],
 	)
 }

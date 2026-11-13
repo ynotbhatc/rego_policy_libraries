@@ -321,20 +321,26 @@ violations contains msg if {
 
 # ── Prototype and Test Vehicle Protection (PD) — AL 2/3 ──────────────────────
 
+# PD checks apply at AL 2 and 3. A missing or non-numeric assessment_level is not evidence of AL 1, so they
+# apply by default (fail closed); only an explicit numeric level below 2 skips them.
+_prototype_protection_applies if not is_number(object.get(input, "assessment_level", null))
+
+_prototype_protection_applies if input.assessment_level >= 2
+
 violations contains msg if {
-	input.assessment_level >= 2
+	_prototype_protection_applies
 	not input.prototype_protection.handling.procedures_documented
 	msg := "TISAX PD AL2: Prototype handling procedures not documented — physical protection of pre-series vehicles not defined"
 }
 
 violations contains msg if {
-	input.assessment_level >= 2
+	_prototype_protection_applies
 	not input.prototype_protection.photography.controls
 	msg := "TISAX PD AL2: Photography and recording controls not established for prototype/test vehicle environments"
 }
 
 violations contains msg if {
-	input.assessment_level >= 2
+	_prototype_protection_applies
 	not input.prototype_protection.transport.secured
 	msg := "TISAX PD AL2: Secure transport procedures not established for prototypes and test vehicles"
 }

@@ -318,6 +318,11 @@ reason(h, label, "stale_not_targeted") := sprintf(
 	[label, stale_after_hours, age(h)],
 )
 
+# A non-object record (string, null, number) must still yield a result row (classified invalid_record).
+host_provider(h) := object.get(h, "provider", "none") if is_object(h)
+
+else := "none"
+
 # ── Results ─────────────────────────────────────────────────────────────────
 
 host_results := [r |
@@ -328,7 +333,7 @@ host_results := [r |
 		"state": s,
 		"finding": s in finding_states,
 		"advisory": s in advisory_states,
-		"provider": object.get(h, "provider", "none"),
+		"provider": host_provider(h),
 		"provider_state": provider_state(h),
 		"reason": reason(h, host_label(h, i), s),
 	}

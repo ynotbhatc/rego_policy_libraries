@@ -42,8 +42,24 @@ violations := [v |
 # Section 1: Control Plane Security Configuration
 control_plane_violations := [
 "1.1.1: the API server pod specification file permissions must be set to 644 or more restrictive" |
-	input.control_plane.api_server_pod_spec_permissions > 644
+	not mode_ok(input.control_plane.api_server_pod_spec_permissions)
 ]
+
+# Modes are carried as octal digits written as a number (644, 600) or a string
+# ("0644"). 644 or more restrictive means no permission bit outside 0o644.
+mode_ok(m) if {
+	n := to_number(m)
+	n >= 0
+	n <= 777
+	n == round(n)
+	d1 := floor(n / 100)
+	d2 := floor((n - (d1 * 100)) / 10)
+	d3 := (n - (d1 * 100)) - (d2 * 10)
+	d1 <= 7
+	d2 <= 7
+	d3 <= 7
+	bits.and(((d1 * 64) + (d2 * 8)) + d3, bits.negate(420)) == 0
+}
 
 # API Server Configuration
 
@@ -67,9 +83,13 @@ weak_cipher(cipher) if {
 # Section 2: etcd
 etcd_violations := [
 "2.1: the --cert-file and --key-file arguments must be set as appropriate" |
-	not input.etcd.cert_file
-	not input.etcd.key_file
+	not etcd_tls_files_set
 ]
+
+etcd_tls_files_set if {
+	input.etcd.cert_file
+	input.etcd.key_file
+}
 
 # Section 3: Control Plane Configuration
 control_plane_config_violations := [
@@ -82,7 +102,7 @@ control_plane_config_violations := [
 worker_nodes_violations := [
 "4.1.1: the kubelet service file permissions must be set to 644 or more restrictive" |
 	node := input.worker_nodes[_]
-	node.kubelet_service_permissions > 644
+	not mode_ok(node.kubelet_service_permissions)
 ]
 
 # Kubelet Configuration

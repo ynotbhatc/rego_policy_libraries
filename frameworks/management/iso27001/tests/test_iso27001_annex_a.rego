@@ -9,6 +9,7 @@ import data.iso27001
 
 # Facts that satisfy every check of the five fact modules (generated from the modules' own comparisons).
 _facts := {
+	"outsourced_development": {"used": false},
 	"acceptance_testing": {
 		"criteria_defined": true,
 		"documentation_complete": true,
@@ -937,8 +938,8 @@ test_attestations_alone_satisfy_only_attested_controls if {
 	r.compliant == false
 	not _has(r, "FAIL-CLOSED")
 
-	# A.8.30 (outsourced development) passes with no facts: the module treats absent outsourcing as satisfied
-	r.controls_satisfied == 59
+	# A.8.30 (outsourced development) needs an explicit outsourced_development.used == false fact (a missing fact is not evidence), so it is not satisfied here
+	r.controls_satisfied == 58
 }
 
 test_facts_alone_fail_closed if {
@@ -980,4 +981,35 @@ test_2013_era_ids_are_violations if {
 	r.violation_count == 2
 	_has(r, "A.9.1.1 is an ISO/IEC 27001:2013 Annex A id")
 	_has(r, "A.12 is an ISO/IEC 27001:2013 Annex A id")
+}
+
+# Semantic review 2026-11-13 regression tests.
+test_semrev_outsourced_development_missing_fact_is_not_satisfied if {
+	inp := json.remove(_green, ["/outsourced_development"])
+	r := iso27001.compliance_report with input as inp
+	r.compliant == false
+	r.annex_a["A.8.30"].satisfied == false
+}
+
+test_semrev_weak_algorithm_spellings_fail if {
+	some alg in ["SHA-1", "sha1", "TLSv1.0", "3des", "Md5", "SSLv3"]
+	inp := json.patch(_green, [{"op": "replace", "path": "/cryptography/algorithms_in_use", "value": [alg]}])
+	r := iso27001.compliance_report with input as inp
+	r.compliant == false
+	r.annex_a["A.8.24"].satisfied == false
+}
+
+test_semrev_weak_tls_labels_fail_and_modern_labels_pass if {
+	weak := json.patch(_green, [{"op": "replace", "path": "/encryption/data_in_transit/minimum_tls_version", "value": "TLSv1.0"}])
+	r := iso27001.compliance_report with input as weak
+	r.compliant == false
+	ok := json.patch(_green, [{"op": "replace", "path": "/encryption/data_in_transit/minimum_tls_version", "value": "TLSv1.2"}])
+	r2 := iso27001.compliance_report with input as ok
+	r2.compliant == true
+}
+
+test_semrev_public_services_weak_tls_label_fails if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/public_services/encryption/minimum_tls_version", "value": "SSLv3"}])
+	r := iso27001.compliance_report with input as inp
+	r.compliant == false
 }

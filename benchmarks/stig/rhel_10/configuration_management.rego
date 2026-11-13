@@ -136,6 +136,7 @@ ctrl_alt_del_graphical_disabled if {
 }
 
 ctrl_alt_del_graphical_disabled if {
+	is_object(input.packages)
 	not input.packages["gnome-desktop3"]
 }
 
@@ -577,7 +578,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# `compliant`: no open finding at ANY category (CAT I, II or III), as in the RHEL 8/9 modules.
+# `cat_i_compliant`: the CAT-I-only meaning, for gating on the critical subset.
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	count(open_all_findings) == 0
+}
+
+default cat_i_compliant := false
+
+cat_i_compliant if {
 	count(open_cat_i) == 0
 }
 
@@ -588,4 +599,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }

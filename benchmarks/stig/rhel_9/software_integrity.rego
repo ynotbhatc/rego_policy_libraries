@@ -39,7 +39,7 @@ default compliant := false
 default all_repos_gpgcheck := false
 
 all_repos_gpgcheck if {
-	count([r | some r in input.yum_repos; r.gpgcheck != true]) == 0
+	count([r | some r in input.yum_repos; object.get(r, "gpgcheck", false) != true]) == 0
 	count(input.yum_repos) > 0
 }
 

@@ -454,7 +454,7 @@ e_6_1_2_6 if {
 default p_6_1_2_6 := false
 
 p_6_1_2_6 if {
-	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(load=\"?im(tcp|udp)\"?\\)|^input\\(type=\"?im(tcp|udp)\"?|^\\$ModLoad\\s+im(tcp|udp)\\b|^\\$(InputTCPServerRun|UDPServerRun)\\b)")
+	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(\\s*load\\s*=\\s*\"?im(tcp|udp)\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?im(tcp|udp)\"?|^\\$ModLoad\\s+im(tcp|udp)\\b|^\\$(InputTCPServerRun|UDPServerRun)\\b)")
 }
 
 violations contains "6.1.2.6: evidence missing — rsyslog.config_raw not collected" if not e_6_1_2_6

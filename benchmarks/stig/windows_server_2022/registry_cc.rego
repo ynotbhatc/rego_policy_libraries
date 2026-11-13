@@ -475,7 +475,7 @@ status_r_wn22_cc_000250 := "Open" if not r_wn22_cc_000250
 default r_wn22_cc_000260 := false
 
 r_wn22_cc_000260 if {
-	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization"].DODownloadMode == 0
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization"].DODownloadMode in {0, 1, 2, 99}
 }
 
 finding_r_wn22_cc_000260 := {

@@ -37193,7 +37193,7 @@
        {
         "uuid": "b78dd9df-69a3-5ef7-845f-ccf4e668145c",
         "control-id": "cis_amazon_linux_2023-CIS-1.1.1.x",
-        "description": "Evaluated by Rego package cis_amazon_linux_2023.filesystem (benchmarks/cis/amazon_linux_2023/filesystem_validation.rego): Filesystem module '%s' is not disabled (loaded: %v, disabled: %v)",
+        "description": "Evaluated by Rego package cis_amazon_linux_2023.filesystem (benchmarks/cis/amazon_linux_2023/filesystem_validation.rego): evidence missing - disabled_filesystem_modules.modules not collected",
         "props": [
          {
           "name": "label",
@@ -38018,7 +38018,7 @@
        {
         "uuid": "4cb49ee0-b613-5747-b500-6b62541c5ecf",
         "control-id": "cis_amazon_linux_2023-CIS-4.2.1.5",
-        "description": "Evaluated by Rego package cis_amazon_linux_2023.logging (benchmarks/cis/amazon_linux_2023/logging_validation.rego): No rsyslog logging rules configured",
+        "description": "Evaluated by Rego package cis_amazon_linux_2023.logging (benchmarks/cis/amazon_linux_2023/logging_validation.rego): evidence missing - rsyslog.logging_rules_count not collected",
         "props": [
          {
           "name": "label",
@@ -109049,7 +109049,7 @@
        {
         "uuid": "b3b8338e-96cd-561b-b965-a1585fd8002a",
         "control-id": "cis_rhel_8-CIS-L2-3.3.2",
-        "description": "Evaluated by Rego package cis_rhel8.l2 (benchmarks/cis/rhel_8/l2_validation.rego): IPv6 redirects accepted",
+        "description": "Evaluated by Rego package cis_rhel8.l2 (benchmarks/cis/rhel_8/l2_validation.rego): evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected",
         "props": [
          {
           "name": "label",
@@ -109474,7 +109474,7 @@
        {
         "uuid": "8ba64e0a-b4e6-5308-a7ea-096241296619",
         "control-id": "cis_rhel_8-CIS-4.2.1.5",
-        "description": "Evaluated by Rego package cis_rhel8.logging (benchmarks/cis/rhel_8/logging_validation.rego): No rsyslog logging rules configured",
+        "description": "Evaluated by Rego package cis_rhel8.logging (benchmarks/cis/rhel_8/logging_validation.rego): evidence missing - rsyslog.logging_rules_count not collected",
         "props": [
          {
           "name": "label",
@@ -116363,7 +116363,7 @@
        {
         "uuid": "c6d2fe9c-46fe-549c-bc57-fd80f26d9744",
         "control-id": "cis_rhel_9-1.2.2.1",
-        "description": "Evaluated by Rego package cis_rhel9.initial_setup (benchmarks/cis/rhel_9/initial_setup_validation.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)",
+        "description": "Evaluated by Rego package cis_rhel9.initial_setup (benchmarks/cis/rhel_9/initial_setup_validation.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be present)",
         "props": [
          {
           "name": "label",
@@ -123202,7 +123202,7 @@
        {
         "uuid": "e1eae5b4-635c-5639-b449-a38102e63ba7",
         "control-id": "cis_rocky_linux_8-CIS-1.1.1.x",
-        "description": "Evaluated by Rego package cis_rocky_linux_8.filesystem (benchmarks/cis/rocky_linux_8/filesystem_validation.rego): Filesystem module '%s' is not disabled",
+        "description": "Evaluated by Rego package cis_rocky_linux_8.filesystem (benchmarks/cis/rocky_linux_8/filesystem_validation.rego): evidence missing - disabled_filesystem_modules not collected",
         "props": [
          {
           "name": "label",
@@ -123877,7 +123877,7 @@
        {
         "uuid": "f039a6dd-f535-538c-a8ca-f13b0ead6879",
         "control-id": "cis_rocky_linux_8-CIS-4.2.1.5",
-        "description": "Evaluated by Rego package cis_rocky_linux_8.logging (benchmarks/cis/rocky_linux_8/logging_validation.rego): No rsyslog logging rules configured",
+        "description": "Evaluated by Rego package cis_rocky_linux_8.logging (benchmarks/cis/rocky_linux_8/logging_validation.rego): evidence missing - rsyslog.logging_rules_count not collected",
         "props": [
          {
           "name": "label",
@@ -127941,7 +127941,7 @@
        {
         "uuid": "3f732449-debd-5639-ace0-d4fb6e4299d6",
         "control-id": "cis_rocky_linux_9-CIS-1.1.1.x",
-        "description": "Evaluated by Rego package cis_rocky_linux_9.filesystem (benchmarks/cis/rocky_linux_9/filesystem_validation.rego): Filesystem module '%s' is not disabled",
+        "description": "Evaluated by Rego package cis_rocky_linux_9.filesystem (benchmarks/cis/rocky_linux_9/filesystem_validation.rego): evidence missing - disabled_filesystem_modules not collected",
         "props": [
          {
           "name": "label",
@@ -128641,7 +128641,7 @@
        {
         "uuid": "d8057fb7-fa4b-581f-aaa9-ef70b354e499",
         "control-id": "cis_rocky_linux_9-CIS-4.2.1.5",
-        "description": "Evaluated by Rego package cis_rocky_linux_9.logging (benchmarks/cis/rocky_linux_9/logging_validation.rego): No rsyslog logging rules configured",
+        "description": "Evaluated by Rego package cis_rocky_linux_9.logging (benchmarks/cis/rocky_linux_9/logging_validation.rego): evidence missing - rsyslog.logging_rules_count not collected",
         "props": [
          {
           "name": "label",
@@ -131393,7 +131393,7 @@
      {
       "uuid": "a90c8a00-f517-5017-adf9-ead81feba1c3",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/cis_saas.json",
-      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (295 controls, 17 Rego modules).",
+      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (297 controls, 17 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -131780,7 +131780,7 @@
        {
         "uuid": "37fe5964-bc97-5c6c-9243-1a97df0b4713",
         "control-id": "cis_saas-CIS-4.5.1",
-        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): domain %q has no SPF record published; spoofed mail will not be rejected",
+        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): evidence missing — verified_domains not collected",
         "props": [
          {
           "name": "label",
@@ -131805,7 +131805,7 @@
        {
         "uuid": "d01361be-66d0-5916-9772-00fae2f3a47e",
         "control-id": "cis_saas-CIS-4.6.1",
-        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated",
+        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): evidence missing — verified_domains not collected",
         "props": [
          {
           "name": "label",
@@ -131830,7 +131830,7 @@
        {
         "uuid": "4da6ad68-bc02-5b5b-890c-997f296d4519",
         "control-id": "cis_saas-CIS-4.7.1",
-        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): domain %q has no DMARC record; recipients have no policy guidance on what to do with failed SPF/DKIM",
+        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): evidence missing — verified_domains not collected",
         "props": [
          {
           "name": "label",
@@ -131855,7 +131855,7 @@
        {
         "uuid": "458ca1e5-2a4c-5fb0-861b-612e2e2480aa",
         "control-id": "cis_saas-CIS-4.8.1",
-        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail",
+        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): evidence missing — secure_score_controls row for this control not collected",
         "props": [
          {
           "name": "label",
@@ -131880,7 +131880,7 @@
        {
         "uuid": "b7d306f7-060b-585c-ad0c-108699c10817",
         "control-id": "cis_saas-CIS-4.11.1",
-        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks",
+        "description": "Evaluated by Rego package cis_m365.exchange (benchmarks/cis/saas/m365/exchange_validation.rego): evidence missing — secure_score_controls row for this control not collected",
         "props": [
          {
           "name": "label",
@@ -132405,7 +132405,7 @@
        {
         "uuid": "5ae3088b-2266-5685-bca7-44cc558c6e95",
         "control-id": "cis_saas-CIS-1.1.2",
-        "description": "Evaluated by Rego package cis_m365.identity (benchmarks/cis/saas/m365/identity_validation.rego): Only %d Global Administrator(s); CIS requires at least 2 for redundancy",
+        "description": "Evaluated by Rego package cis_m365.identity (benchmarks/cis/saas/m365/identity_validation.rego): evidence missing — global_admins not collected",
         "props": [
          {
           "name": "label",
@@ -132430,7 +132430,7 @@
        {
         "uuid": "90975aa6-f55d-565b-b63e-b07813411924",
         "control-id": "cis_saas-CIS-1.1.3",
-        "description": "Evaluated by Rego package cis_m365.identity (benchmarks/cis/saas/m365/identity_validation.rego): Global Administrator %q lacks a strong MFA method",
+        "description": "Evaluated by Rego package cis_m365.identity (benchmarks/cis/saas/m365/identity_validation.rego): evidence missing — global_admins not collected",
         "props": [
          {
           "name": "label",
@@ -137405,11 +137405,36 @@
        {
         "uuid": "53210cb6-279e-5663-b15a-e11a27f54697",
         "control-id": "cis_saas-cis_m365_v7.fabric-2",
-        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)",
         "props": [
          {
           "name": "label",
           "value": "cis_m365_v7.fabric#2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cbb22967-55d5-5720-96ca-f9d486e567f7",
+        "control-id": "cis_saas-cis_m365_v7.fabric-3",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.fabric#3"
          },
          {
           "name": "rego-package",
@@ -138230,11 +138255,36 @@
        {
         "uuid": "2d7d3797-c371-584e-a05d-0c84b6b83e44",
         "control-id": "cis_saas-cis_m365_v7.sharepoint-1",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)",
         "props": [
          {
           "name": "label",
           "value": "cis_m365_v7.sharepoint#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.sharepoint"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ff18ee2b-9be8-5f7b-a151-0711c3bcfb3a",
+        "control-id": "cis_saas-cis_m365_v7.sharepoint-2",
+        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.sharepoint#2"
          },
          {
           "name": "rego-package",
@@ -145933,7 +145983,7 @@
        {
         "uuid": "f8cc87f4-98ff-5d0b-8374-5db6c4d18fee",
         "control-id": "cis_suse_16-1.2.2.1",
-        "description": "Evaluated by Rego package cis_suse16.package_management (benchmarks/cis/suse_16/package_management.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)",
+        "description": "Evaluated by Rego package cis_suse16.package_management (benchmarks/cis/suse_16/package_management.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be present)",
         "props": [
          {
           "name": "label",
@@ -148647,7 +148697,7 @@
        {
         "uuid": "74754e0b-a8cc-5093-99ac-ad21d93d74c9",
         "control-id": "cis_ubuntu_20_04-CIS-1.6.1.3",
-        "description": "Evaluated by Rego package cis_ubuntu_20_04.apparmor (benchmarks/cis/ubuntu_20_04/apparmor_validation.rego): %d AppArmor profiles are not loaded",
+        "description": "Evaluated by Rego package cis_ubuntu_20_04.apparmor (benchmarks/cis/ubuntu_20_04/apparmor_validation.rego): evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -148672,7 +148722,7 @@
        {
         "uuid": "614a7b6d-b1ce-5eea-ada8-65a08d1f7c43",
         "control-id": "cis_ubuntu_20_04-CIS-1.6.1.4",
-        "description": "Evaluated by Rego package cis_ubuntu_20_04.apparmor (benchmarks/cis/ubuntu_20_04/apparmor_validation.rego): %d AppArmor profiles are in complain mode (should be enforce)",
+        "description": "Evaluated by Rego package cis_ubuntu_20_04.apparmor (benchmarks/cis/ubuntu_20_04/apparmor_validation.rego): evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -149097,7 +149147,7 @@
        {
         "uuid": "41d31118-2939-536d-ae02-7afab17d7944",
         "control-id": "cis_ubuntu_20_04-CIS-1.5.1",
-        "description": "Evaluated by Rego package cis_ubuntu_20_04.boot_security (benchmarks/cis/ubuntu_20_04/boot_security_validation.rego): Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)",
+        "description": "Evaluated by Rego package cis_ubuntu_20_04.boot_security (benchmarks/cis/ubuntu_20_04/boot_security_validation.rego): evidence missing — process_hardening.core_dumps_enabled not collected",
         "props": [
          {
           "name": "label",
@@ -149147,7 +149197,7 @@
        {
         "uuid": "74411934-7519-5571-8d8b-fbc4522e15c8",
         "control-id": "cis_ubuntu_20_04-CIS-1.5.3",
-        "description": "Evaluated by Rego package cis_ubuntu_20_04.boot_security (benchmarks/cis/ubuntu_20_04/boot_security_validation.rego): prelink is installed - remove it as it can reduce ASLR effectiveness",
+        "description": "Evaluated by Rego package cis_ubuntu_20_04.boot_security (benchmarks/cis/ubuntu_20_04/boot_security_validation.rego): evidence missing — process_hardening.prelink_installed not collected",
         "props": [
          {
           "name": "label",
@@ -152986,7 +153036,7 @@
        {
         "uuid": "e0c70922-88f4-5a16-a924-611d55875931",
         "control-id": "cis_ubuntu_22_04-CIS-1.6.1.3",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.apparmor (benchmarks/cis/ubuntu_22_04/apparmor_validation.rego): %d AppArmor profiles are not loaded",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.apparmor (benchmarks/cis/ubuntu_22_04/apparmor_validation.rego): evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -153011,7 +153061,7 @@
        {
         "uuid": "995245af-e215-5477-92af-869f4b54971c",
         "control-id": "cis_ubuntu_22_04-CIS-1.6.1.4",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.apparmor (benchmarks/cis/ubuntu_22_04/apparmor_validation.rego): %d AppArmor profiles are in complain mode (should be enforce)",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.apparmor (benchmarks/cis/ubuntu_22_04/apparmor_validation.rego): evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -155311,7 +155361,7 @@
        {
         "uuid": "bbfa9509-e6ed-5ef3-8d84-4d2ecedbc5fe",
         "control-id": "cis_ubuntu_22_04-CIS-L2-3.3.2",
-        "description": "Evaluated by Rego package cis_ubuntu_2204.l2 (benchmarks/cis/ubuntu_22_04/l2_validation.rego): IPv6 redirects accepted",
+        "description": "Evaluated by Rego package cis_ubuntu_2204.l2 (benchmarks/cis/ubuntu_22_04/l2_validation.rego): evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected",
         "props": [
          {
           "name": "label",
@@ -158350,7 +158400,7 @@
        {
         "uuid": "efb53270-8df1-59f7-ba22-69d0ee4f02aa",
         "control-id": "cis_ubuntu_24_04-CIS-1.6.1.3",
-        "description": "Evaluated by Rego package cis_ubuntu_24_04.apparmor (benchmarks/cis/ubuntu_24_04/apparmor_validation.rego): %d AppArmor profiles are not loaded",
+        "description": "Evaluated by Rego package cis_ubuntu_24_04.apparmor (benchmarks/cis/ubuntu_24_04/apparmor_validation.rego): evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -158375,7 +158425,7 @@
        {
         "uuid": "95d95afe-7567-53ab-a171-217a56639539",
         "control-id": "cis_ubuntu_24_04-CIS-1.6.1.4",
-        "description": "Evaluated by Rego package cis_ubuntu_24_04.apparmor (benchmarks/cis/ubuntu_24_04/apparmor_validation.rego): %d AppArmor profiles are in complain mode (should be enforce)",
+        "description": "Evaluated by Rego package cis_ubuntu_24_04.apparmor (benchmarks/cis/ubuntu_24_04/apparmor_validation.rego): evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected",
         "props": [
          {
           "name": "label",
@@ -158800,7 +158850,7 @@
        {
         "uuid": "9d9d6157-eb56-5d35-b819-d50c118d15db",
         "control-id": "cis_ubuntu_24_04-CIS-1.5.1",
-        "description": "Evaluated by Rego package cis_ubuntu_24_04.boot_security (benchmarks/cis/ubuntu_24_04/boot_security_validation.rego): Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)",
+        "description": "Evaluated by Rego package cis_ubuntu_24_04.boot_security (benchmarks/cis/ubuntu_24_04/boot_security_validation.rego): evidence missing — process_hardening.core_dumps_enabled not collected",
         "props": [
          {
           "name": "label",
@@ -158850,7 +158900,7 @@
        {
         "uuid": "f72fd2df-4ec2-55f6-adeb-9260699b977f",
         "control-id": "cis_ubuntu_24_04-CIS-1.5.3",
-        "description": "Evaluated by Rego package cis_ubuntu_24_04.boot_security (benchmarks/cis/ubuntu_24_04/boot_security_validation.rego): prelink is installed - remove it as it can reduce ASLR effectiveness",
+        "description": "Evaluated by Rego package cis_ubuntu_24_04.boot_security (benchmarks/cis/ubuntu_24_04/boot_security_validation.rego): evidence missing — process_hardening.prelink_installed not collected",
         "props": [
          {
           "name": "label",
@@ -160650,7 +160700,7 @@
        {
         "uuid": "ce2b1b64-1983-53dc-ba66-8bcbaa64da20",
         "control-id": "cis_ubuntu_24_04-CIS-L2-3.3.2",
-        "description": "Evaluated by Rego package cis_ubuntu_2404.l2 (benchmarks/cis/ubuntu_24_04/l2_validation.rego): IPv6 redirects accepted",
+        "description": "Evaluated by Rego package cis_ubuntu_2404.l2 (benchmarks/cis/ubuntu_24_04/l2_validation.rego): evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected",
         "props": [
          {
           "name": "label",
@@ -169639,7 +169689,7 @@
        {
         "uuid": "1ddfd3c2-ebd5-5f1d-90a2-9945137c1242",
         "control-id": "cis_ubuntu_26_04-1.2.2.1",
-        "description": "Evaluated by Rego package cis_ubuntu_26_04.package_management (benchmarks/cis/ubuntu_26_04/package_management.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)",
+        "description": "Evaluated by Rego package cis_ubuntu_26_04.package_management (benchmarks/cis/ubuntu_26_04/package_management.rego): manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be present)",
         "props": [
          {
           "name": "label",
@@ -259013,7 +259063,7 @@
      {
       "uuid": "584036ed-720e-5b2e-a018-8427ea8de9b7",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/digital_sovereignty.json",
-      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (286 controls, 12 Rego modules).",
+      "description": "Controls of digital_sovereignty evaluated by the Rego Policy Libraries (298 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -264973,6 +265023,156 @@
         ]
        },
        {
+        "uuid": "8ad1fe20-9a2b-5d4a-9c62-94d8118ad01a",
+        "control-id": "digital_sovereignty-OS-011",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-011"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "32189c5b-2269-5d53-8bb5-caf162fea05a",
+        "control-id": "digital_sovereignty-OS-012",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-012"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "66f945e3-5190-550c-8fff-3036d4365fb1",
+        "control-id": "digital_sovereignty-OS-013",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-013"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0adf6184-70d5-5d28-8a57-e64e85bf2896",
+        "control-id": "digital_sovereignty-OS-014",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-014"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9428be40-0055-59ec-8ee6-abf98a1e6bd1",
+        "control-id": "digital_sovereignty-OS-015",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Implemented by a Rego rule in frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego (package digital_sovereignty.operational_sovereignty); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-015"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9f71fb45-c666-543b-97d0-333ad1c9536c",
+        "control-id": "digital_sovereignty-OS-016",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): Just-in-time privileged provisioning not enabled (standing privileges remain)",
+        "props": [
+         {
+          "name": "label",
+          "value": "OS-016"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "e103cfe6-2ef3-5123-9371-82133510bc60",
         "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-1",
         "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-001 privileged personnel vetted",
@@ -265205,6 +265405,156 @@
          {
           "name": "label",
           "value": "digital_sovereignty.operational_sovereignty#10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "29739bfe-f01c-55f8-98b9-1866cca68d09",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-11",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-011 vendor access logged",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e0cc7620-6eae-52ae-b889-06cde0d48270",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-12",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-012 vendor jit access",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#12"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9706cb7a-05bf-59e9-aee0-1407958068d5",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-13",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-013 foreign vendor access controlled",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "981ccf65-0182-57c3-869d-2116b77807d9",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-14",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-014 support personnel in jurisdiction",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#14"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d275a402-1a1a-5dd8-b283-1746a522c072",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-15",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-015 foreign disclosure clause",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#15"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "digital_sovereignty.operational_sovereignty"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5dc80b2f-6466-50e7-abe9-9f71dfd5592b",
+        "control-id": "digital_sovereignty-digital_sovereignty.operational_sovereignty-16",
+        "description": "Evaluated by Rego package digital_sovereignty.operational_sovereignty (frameworks/sovereignty/digital_sovereignty/operational_sovereignty.rego): OS-016 jit provisioning",
+        "props": [
+         {
+          "name": "label",
+          "value": "digital_sovereignty.operational_sovereignty#16"
          },
          {
           "name": "rego-package",
@@ -286499,7 +286849,7 @@
        {
         "uuid": "5336a513-53c0-53d8-8e33-a8621fc756c1",
         "control-id": "eu_ai_act-Article-27",
-        "description": "Evaluated by Rego package eu_ai_act.governance (governance/eu_ai_act/eu_ai_act_governance.rego): Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights",
+        "description": "Evaluated by Rego package eu_ai_act.governance (governance/eu_ai_act/eu_ai_act_governance.rego): evidence missing — fria.assessment_required not collected; FRIA applicability undetermined",
         "props": [
          {
           "name": "label",
@@ -288629,7 +288979,7 @@
      {
       "uuid": "aa91a960-81a3-5fc8-8f64-1f984bb18675",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/fedramp.json",
-      "description": "Controls of fedramp evaluated by the Rego Policy Libraries (25 controls, 1 Rego modules).",
+      "description": "Controls of fedramp evaluated by the Rego Policy Libraries (29 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -288641,7 +288991,7 @@
        {
         "uuid": "a6d77eaa-962a-51f0-b886-695f4d8b89ee",
         "control-id": "fedramp-fedramp-1",
-        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data.",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: evidence missing or invalid — input.impact_level must be one of low, moderate, high. Moderate and High checks (CA-8, IR-8, PE-3(1), CP-7, SR-2, SR-4, PS-3) are applied until the impact level is declared.",
         "props": [
          {
           "name": "label",
@@ -288666,7 +289016,7 @@
        {
         "uuid": "2bef2991-d618-5bfd-83e5-150e5d43265b",
         "control-id": "fedramp-fedramp-2",
-        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB).",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data.",
         "props": [
          {
           "name": "label",
@@ -288691,11 +289041,36 @@
        {
         "uuid": "cd506a5d-5502-5119-a9e9-5b144977e328",
         "control-id": "fedramp-fedramp-3",
-        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration.",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB).",
         "props": [
          {
           "name": "label",
           "value": "fedramp#3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "fedramp"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/fedramp/fedramp_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "41396977-5ac0-5917-b655-68d433dcc4e9",
+        "control-id": "fedramp-fedramp-4",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration.",
+        "props": [
+         {
+          "name": "label",
+          "value": "fedramp#4"
          },
          {
           "name": "rego-package",
@@ -288739,13 +289114,13 @@
         ]
        },
        {
-        "uuid": "41396977-5ac0-5917-b655-68d433dcc4e9",
-        "control-id": "fedramp-fedramp-4",
+        "uuid": "76e5139d-0b9d-517b-ba4f-5ec67a95d478",
+        "control-id": "fedramp-fedramp-5",
         "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: FIPS 140-2 validation level must be at least Level 1. Level 2 is required for sensitive applications.",
         "props": [
          {
           "name": "label",
-          "value": "fedramp#4"
+          "value": "fedramp#5"
          },
          {
           "name": "rego-package",
@@ -288789,13 +289164,13 @@
         ]
        },
        {
-        "uuid": "76e5139d-0b9d-517b-ba4f-5ec67a95d478",
-        "control-id": "fedramp-fedramp-5",
+        "uuid": "e1b6da6d-c232-5c17-8078-775abac854c4",
+        "control-id": "fedramp-fedramp-6",
         "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized.",
         "props": [
          {
           "name": "label",
-          "value": "fedramp#5"
+          "value": "fedramp#6"
          },
          {
           "name": "rego-package",
@@ -288814,13 +289189,13 @@
         ]
        },
        {
-        "uuid": "e1b6da6d-c232-5c17-8078-775abac854c4",
-        "control-id": "fedramp-fedramp-6",
+        "uuid": "2f9a7cb1-9a83-5c1a-bc48-f102fb141a34",
+        "control-id": "fedramp-fedramp-7",
         "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories.",
         "props": [
          {
           "name": "label",
-          "value": "fedramp#6"
+          "value": "fedramp#7"
          },
          {
           "name": "rego-package",
@@ -289171,6 +289546,81 @@
          {
           "name": "label",
           "value": "data_residency"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "fedramp"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/fedramp/fedramp_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "40328bd4-278a-5f71-bc7c-dc03ebb77fa3",
+        "control-id": "fedramp-high",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "high"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "fedramp"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/fedramp/fedramp_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c90acb55-8698-5bcf-9f5d-7c394c021a0e",
+        "control-id": "fedramp-impact_level",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "impact_level"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "fedramp"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/fedramp/fedramp_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "87508b42-9503-51ee-9c0c-c7c6e1a1784c",
+        "control-id": "fedramp-moderate_high",
+        "description": "Evaluated by Rego package fedramp (frameworks/federal/fedramp/fedramp_main.rego): Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "moderate_high"
          },
          {
           "name": "rego-package",
@@ -294102,7 +294552,7 @@
      {
       "uuid": "62ef6e4b-a86e-50a8-9b0d-dcf41d13df7c",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/geisa.json",
-      "description": "Controls of geisa evaluated by the Rego Policy Libraries (93 controls, 5 Rego modules).",
+      "description": "Controls of geisa evaluated by the Rego Policy Libraries (100 controls, 5 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -294619,6 +295069,156 @@
          {
           "name": "label",
           "value": "governance.geisa.api#9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ff5558d2-ecad-57dc-a303-cf0fe262d15c",
+        "control-id": "geisa-governance.geisa.api-10",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — discovery_response.status_code not collected (must be a number)",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ce53a18b-9373-5789-b469-62e30b56b943",
+        "control-id": "geisa-governance.geisa.api-11",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "05fdac91-f159-53b6-aa5a-b1d288ef1df7",
+        "control-id": "geisa-governance.geisa.api-12",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#12"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6d98b609-f8d1-549c-956c-7b5d8245b177",
+        "control-id": "geisa-governance.geisa.api-13",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2c844543-ceed-5b98-8cc0-5f60dc238049",
+        "control-id": "geisa-governance.geisa.api-14",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — manifest.permissions.mqtt.publish not collected",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#14"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.api"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_api.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c5ef6901-bc7a-5ccc-87c4-1408715406d8",
+        "control-id": "geisa-governance.geisa.api-15",
+        "description": "Evaluated by Rego package governance.geisa.api (governance/geisa/geisa_api.rego): API: evidence missing — manifest.permissions.mqtt.subscribe not collected",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.api#15"
          },
          {
           "name": "rego-package",
@@ -296389,7 +296989,7 @@
        {
         "uuid": "072e2cb5-c32d-5f30-9b67-f72e040860ec",
         "control-id": "geisa-governance.geisa.vee-2",
-        "description": "Evaluated by Rego package governance.geisa.vee (governance/geisa/geisa_vee.rego): VEE: discovery_response.pillars.vee is true but container input is missing",
+        "description": "Evaluated by Rego package governance.geisa.vee (governance/geisa/geisa_vee.rego): VEE: discovery_response.pillars.vee is true but evidence missing — container.runtime not collected",
         "props": [
          {
           "name": "label",
@@ -296414,11 +297014,36 @@
        {
         "uuid": "13ee138f-4af3-58be-bc02-b3d27f2f6451",
         "control-id": "geisa-governance.geisa.vee-3",
-        "description": "Evaluated by Rego package governance.geisa.vee (governance/geisa/geisa_vee.rego): GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant",
+        "description": "Evaluated by Rego package governance.geisa.vee (governance/geisa/geisa_vee.rego): VEE: discovery_response.pillars.vee is true but container input is missing",
         "props": [
          {
           "name": "label",
           "value": "governance.geisa.vee#3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance.geisa.vee"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/geisa/geisa_vee.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "917da5ae-9863-5462-bae2-62655dd980a2",
+        "control-id": "geisa-governance.geisa.vee-4",
+        "description": "Evaluated by Rego package governance.geisa.vee (governance/geisa/geisa_vee.rego): GEISA: FAIL-CLOSED - facts 'input.container' were not supplied; this module cannot be evaluated and is reported non-compliant",
+        "props": [
+         {
+          "name": "label",
+          "value": "governance.geisa.vee#4"
          },
          {
           "name": "rego-package",
@@ -308547,7 +309172,7 @@
      {
       "uuid": "c12e22b7-160c-55f7-8668-f08be50a5183",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/iec_62443.json",
-      "description": "Controls of iec_62443 evaluated by the Rego Policy Libraries (130 controls, 12 Rego modules).",
+      "description": "Controls of iec_62443 evaluated by the Rego Policy Libraries (132 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -309564,6 +310189,56 @@
          {
           "name": "label",
           "value": "iec_62443.fr2#9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr2"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0392bff3-d91b-54af-98b6-e30ad6f24542",
+        "control-id": "iec_62443-IEC-62443-SR-2.7-UC",
+        "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): evidence missing — input.ics_systems not collected, so this requirement cannot be verified",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 SR 2.7 (UC)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr2"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "74deed96-8bdc-5ad7-98cc-cb6201ecfc7d",
+        "control-id": "iec_62443-IEC-62443-SR-2.12-UC",
+        "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): evidence missing — input.ics_systems not collected, so this requirement cannot be verified",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 SR 2.12 (UC)"
          },
          {
           "name": "rego-package",
@@ -334738,7 +335413,7 @@
        {
         "uuid": "d53bb897-68f3-50bc-b155-55d97b299a99",
         "control-id": "nerc_cip-CIP-014",
-        "description": "Evaluated by Rego package nerc_cip_main (frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego): Physical Security of Transmission Stations",
+        "description": "Evaluated by Rego package nerc_cip_main (frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego): Transmission station security assessment not completed (or not collected)",
         "props": [
          {
           "name": "label",
@@ -334763,7 +335438,7 @@
        {
         "uuid": "5d0dd647-0044-54d6-8a70-a48f2d966cdc",
         "control-id": "nerc_cip-CIP-015",
-        "description": "Evaluated by Rego package nerc_cip_main (frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego): Internal Network Security Monitoring",
+        "description": "Evaluated by Rego package nerc_cip_main (frameworks/critical_infrastructure/nerc_cip/nerc_cip_main.rego): Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 R1/R2/R3 findings",
         "props": [
          {
           "name": "label",
@@ -401225,7 +401900,7 @@
      {
       "uuid": "3d8e5c41-9614-51e6-92dd-a6aa1dd406d3",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/catalogs/nist_sp_800_53.json",
-      "description": "Controls of nist_sp_800_53 evaluated by the Rego Policy Libraries (114 controls, 7 Rego modules).",
+      "description": "Controls of nist_sp_800_53 evaluated by the Rego Policy Libraries (120 controls, 7 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -402267,6 +402942,156 @@
          {
           "name": "label",
           "value": "NIST AC-22"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "edae7c6c-83c3-53c2-b286-8c84d9c24327",
+        "control-id": "nist_sp_800_53-NIST-AC-15",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Automated marking missing security labels, classification marking, or handling caveats",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-15"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7db3afc8-df2f-55a3-bfe2-510a0d4df764",
+        "control-id": "nist_sp_800_53-NIST-AC-16",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Security attributes not bound, associated, and preserved in transmission",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-16"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f90024e6-7b86-5700-a6f2-c74298e4602e",
+        "control-id": "nist_sp_800_53-NIST-AC-21",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Information sharing lacks discretion limits, automated guidance, or preserved security attributes",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-21"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d36ebd48-fad2-58b8-8707-983adce6d46c",
+        "control-id": "nist_sp_800_53-NIST-AC-23",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Data mining protection lacks detection techniques, warnings, or response procedures",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-23"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9882ed4c-b54d-5c2a-bc93-56523e58a8bd",
+        "control-id": "nist_sp_800_53-NIST-AC-24",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Access control decisions not based on security attributes, consistently enforced, or documented",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-24"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "05998e0d-e1a8-5ea7-83e8-290dffd9f7a4",
+        "control-id": "nist_sp_800_53-NIST-AC-25",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): Reference monitor not tamper-proof, always-invoked, and small enough to verify",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-25"
          },
          {
           "name": "rego-package",
@@ -487139,7 +487964,7 @@
      {
       "uuid": "e6574641-007c-5311-be03-fab5ea7722e4",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/profiles/fedramp_rev5_high.json",
-      "description": "FedRAMP Rev 5 High baseline: the library evaluates 119 of 410 controls with at least one check (115/191 base controls, 4/219 enhancements). Controls not listed are not evaluated.",
+      "description": "FedRAMP Rev 5 High baseline: the library evaluates 120 of 410 controls with at least one check (116/191 base controls, 4/219 enhancements). Controls not listed are not evaluated.",
       "props": [
        {
         "name": "baseline",
@@ -487487,6 +488312,28 @@
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "nist_sp_800_53:NIST AC-20"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "5e7b75b8-8d73-5fa6-b474-036d6c749657",
+        "control-id": "ac-21",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AC-21"
          },
          {
           "name": "mapping-sources",
@@ -493583,7 +494430,7 @@
      {
       "uuid": "b6b841c5-c2c1-5c84-8cf4-f6f8ba90ac12",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/profiles/fedramp_rev5_moderate.json",
-      "description": "FedRAMP Rev 5 Moderate baseline: the library evaluates 114 of 323 controls with at least one check (110/181 base controls, 4/142 enhancements). Controls not listed are not evaluated.",
+      "description": "FedRAMP Rev 5 Moderate baseline: the library evaluates 115 of 323 controls with at least one check (111/181 base controls, 4/142 enhancements). Controls not listed are not evaluated.",
       "props": [
        {
         "name": "baseline",
@@ -493909,6 +494756,28 @@
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "nist_sp_800_53:NIST AC-20"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "5befe78a-e2b1-5488-918c-eaba97d119b5",
+        "control-id": "ac-21",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AC-21"
          },
          {
           "name": "mapping-sources",
@@ -496105,7 +496974,7 @@
      {
       "uuid": "3125aa0a-2d84-5c80-bf15-1db39352714b",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/profiles/nist_800_53_rev5_high.json",
-      "description": "NIST SP 800-53 Rev 5 High baseline: the library evaluates 116 of 370 controls with at least one check (112/188 base controls, 4/182 enhancements). Controls not listed are not evaluated.",
+      "description": "NIST SP 800-53 Rev 5 High baseline: the library evaluates 117 of 370 controls with at least one check (113/188 base controls, 4/182 enhancements). Controls not listed are not evaluated.",
       "props": [
        {
         "name": "baseline",
@@ -496453,6 +497322,28 @@
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "nist_sp_800_53:NIST AC-20"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "f661f972-505d-56f6-a084-bcc468f57697",
+        "control-id": "ac-21",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AC-21"
          },
          {
           "name": "mapping-sources",
@@ -500511,7 +501402,7 @@
      {
       "uuid": "22ced638-20b6-5d66-b447-aff8756d9e1c",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.4.2/converters/exports/oscal/dist/profiles/nist_800_53_rev5_moderate.json",
-      "description": "NIST SP 800-53 Rev 5 Moderate baseline: the library evaluates 111 of 287 controls with at least one check (107/177 base controls, 4/110 enhancements). Controls not listed are not evaluated.",
+      "description": "NIST SP 800-53 Rev 5 Moderate baseline: the library evaluates 112 of 287 controls with at least one check (108/177 base controls, 4/110 enhancements). Controls not listed are not evaluated.",
       "props": [
        {
         "name": "baseline",
@@ -500837,6 +501728,28 @@
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "nist_sp_800_53:NIST AC-20"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "290c6b0b-549b-5c51-8717-7306391253b6",
+        "control-id": "ac-21",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AC-21"
          },
          {
           "name": "mapping-sources",

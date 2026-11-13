@@ -101,3 +101,17 @@ test_violation_count_matches_rule_count if {
 	not identity.compliant with input as inp
 	identity.compliance_report.violation_count >= 2 with input as inp
 }
+
+# Semantic review 2026-11-13 regressions.
+test_missing_global_admins_violates_1_1_2_and_1_1_3 if {
+	inp := {"conditional_access_policies": [{"state": "enabled", "grant_controls": {"builtInControls": ["mfa"]}}]}
+	v := data.cis_m365.identity.violations with input as inp
+	count({m | some m in v; startswith(m, "CIS 1.1.2:")}) == 1
+	count({m | some m in v; startswith(m, "CIS 1.1.3:")}) == 1
+}
+
+test_admins_present_no_evidence_missing if {
+	inp := {"global_admins": [{"display_name": "a", "has_strong_mfa": true}, {"display_name": "b", "has_strong_mfa": true}]}
+	v := data.cis_m365.identity.violations with input as inp
+	count({m | some m in v; contains(m, "evidence missing")}) == 0
+}

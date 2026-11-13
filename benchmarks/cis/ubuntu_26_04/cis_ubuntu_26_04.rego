@@ -4751,7 +4751,15 @@ missing_inputs := {name: [k | some k in section_inputs[name]; not input[k]] | so
 
 not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
 
-assessment_coverage_percentage := round(((count(section_inputs) - count(not_assessed_sections)) * 100) / count(section_inputs))
+# Only sections with controls applicable to the selected profile can leave controls unassessed: a section
+# whose controls all belong to the other level (auditd at Level 1) must not add NOT ASSESSED noise or dilute coverage.
+applicable_sections := {name | some name, _ in section_inputs; count(section_ids(name)) > 0}
+
+not_assessed_applicable_sections := sort([name | some name in applicable_sections; not section_assessed(name)])
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round(((count(applicable_sections) - count(not_assessed_applicable_sections)) * 100) / count(applicable_sections)) if count(applicable_sections) > 0
 
 # =============================================================================
 # SECTIONS (controls applicable to the selected profile)

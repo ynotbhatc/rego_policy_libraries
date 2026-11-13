@@ -40,7 +40,7 @@ import data.cis_ubuntu_24_04.user_group
 
 # CIS Level 2 additional controls
 # Activated when input.profile == "level2"
-import data.cis_ubuntu_24_04.l2
+import data.cis_ubuntu_2404.l2
 
 # =============================================================================
 # OVERALL COMPLIANCE STATUS
@@ -64,6 +64,7 @@ compliant if {
 	cron.compliant
 	boot_security.compliant
 	file_permissions.compliant
+	l2_compliant
 }
 
 # =============================================================================
@@ -94,8 +95,8 @@ violations_array_2 := array.concat(
 	),
 )
 
-# Final aggregation of all violations
-violations := array.concat(violations_array_1, violations_array_2)
+# Final aggregation of all violations (Level 2 findings only when input.profile == "level2")
+violations := array.concat(array.concat(violations_array_1, violations_array_2), l2_violations_active)
 
 # =============================================================================
 # COMPLIANCE SUMMARY

@@ -6,7 +6,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 21
+#     checks: 22
 #     cited: 4
 #     density: sized
 #     basis: size
@@ -83,11 +83,23 @@ violation_transmission_security contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_tls contains msg if {
-	input.tls.minimum_version in {"TLSv1.0", "TLSv1.1"}
+	input.tls.minimum_version
+	not _tls_version_acceptable(input.tls.minimum_version)
 	msg := sprintf(
 		"HIPAA 164.312(e)(2)(ii): Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended.",
 		[input.tls.minimum_version],
 	)
+}
+
+# Accepts 1.2 / 1.3 with optional "TLS", "TLSv", "v" prefixes and spaces (string or number).
+_tls_version_acceptable(v) if {
+	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
+}
+
+violation_tls contains msg if {
+	not is_string(object.get(input, ["tls", "minimum_version"], null))
+	not is_number(object.get(input, ["tls", "minimum_version"], null))
+	msg := "HIPAA 164.312(e)(2)(ii): evidence missing — tls.minimum_version not collected. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended."
 }
 
 violation_tls contains msg if {

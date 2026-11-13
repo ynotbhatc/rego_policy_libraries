@@ -96,10 +96,21 @@ _violations := array.concat(_bench_violations, [_no_facts_msg]) if not _facts_su
 
 _violations := _bench_violations if _facts_supplied
 
+# One control can raise many findings: count distinct control ids, not messages.
+# Messages start "CIS 5.3.2: ..." or "5.3.2: ..."; a message without an id counts as its own control.
+_violation_control_id(v) := m[0][1] if {
+	m := regex.find_all_string_submatch_n(`^(?:CIS\s+)?(?:L[12]\s+)?([0-9]+(?:\.[0-9]+)*)`, v, 1)
+	count(m) > 0
+}
+
+_violation_control_id(v) := v if not regex.match(`^(?:CIS\s+)?(?:L[12]\s+)?[0-9]+`, v)
+
+_failing_control_ids := {_violation_control_id(v) | some v in _bench_violations}
+
 # No facts => every control is unverified, which counts as failed, not passed.
 _failed := _total_controls if not _facts_supplied
 
-_failed := count(_bench_violations) if _facts_supplied
+_failed := min([_total_controls, count(_failing_control_ids)]) if _facts_supplied
 
 # Clamp: more violations than known controls must not yield a negative count.
 _passed := max([0, _total_controls - _failed])

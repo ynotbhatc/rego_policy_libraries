@@ -231,11 +231,8 @@ wireless_disabled if {
 }
 
 wireless_disabled if {
+	is_array(input.wireless_interfaces)
 	count(input.wireless_interfaces) == 0
-}
-
-wireless_disabled if {
-	not input.wireless_interfaces
 }
 
 status_rhel_09_291040 := "Not_a_Finding" if wireless_disabled
@@ -281,11 +278,8 @@ finding_rhel_09_291035 := {
 default no_promiscuous_interfaces := false
 
 no_promiscuous_interfaces if {
+	is_array(input.promiscuous_interfaces)
 	count(input.promiscuous_interfaces) == 0
-}
-
-no_promiscuous_interfaces if {
-	not input.promiscuous_interfaces
 }
 
 status_rhel_09_251040 := "Not_a_Finding" if no_promiscuous_interfaces

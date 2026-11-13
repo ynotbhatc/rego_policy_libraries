@@ -162,7 +162,7 @@ violations contains msg if {
 
 ok_SECUPD_A_a_5 if {
 	v := fact("cryptolib", "CCL")
-	regex.match(`^(8\.5\.39|8\.5\.[456789]\d|8\.[6789]\.\d+|8\.\d{2,}\.\d+)[ ].*`, v)
+	ver_ge(v, "8.5.39")
 }
 
 # STDUSR-A_a.6 [critical] Profile parameter: login/no_automatic_user_sapstar = 1 (no login with hardcoded automatic user SAP*)

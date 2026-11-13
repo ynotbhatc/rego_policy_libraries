@@ -29,7 +29,7 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 15
+#     checks: 16
 #     cited: 13
 #     density: sized
 #     basis: size
@@ -129,6 +129,21 @@ ALL_SETTING_CONTROLS := object.union(SETTING_CONTROLS, {
 	"BlockResourceKeyAuthentication": "9.1.9",
 	"tenant_settings": "9.1.1",
 })
+
+# A setting the collector neither returned nor reported unavailable was not evaluated.
+violation contains msg if {
+	collected
+	some name, control in ALL_SETTING_CONTROLS
+	name != "tenant_settings"
+	not unavailable[name]
+	not unavailable.tenant_settings
+	not setting_present(name)
+	msg := sprintf("CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)", [control, name])
+}
+
+setting_present(name) if {
+	_ := settings[name]
+}
 
 violation contains msg if {
 	some key, reason in unavailable

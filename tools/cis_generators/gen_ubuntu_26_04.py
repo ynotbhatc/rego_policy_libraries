@@ -628,7 +628,7 @@ put("1.2.1.8", "/etc/apt/sources.list.d directory", dir_access(["apt", "sources_
 put("1.2.1.9", "files in /etc/apt/sources.list.d", access_list(["apt", "sources_list_d_files"], "0644", ["root"], ["root"],
                                                                sample="/etc/apt/sources.list.d/ubuntu.sources", nonempty=False))
 SL = ["apt", "sources_list_raw"]
-_s = put("1.2.1.10", "https in /etc/apt/sources.list", text_has(SL, "(?i)^deb\\s+http://", False,
+_s = put("1.2.1.10", "https in /etc/apt/sources.list", text_has(SL, "(?i)^deb(-src)?\\s+(\\[[^\\]]*\\]\\s*)?http://", False,
                                                                 "deb https://archive.example.com/ubuntu resolute main",
                                                                 "deb http://archive.example.com/ubuntu resolute main"))
 _s.ev_alts.append(['input.apt.sources_list_exists == false'])
@@ -636,7 +636,7 @@ _s.passes.append(['input.apt.sources_list_exists == false'])
 _s.reads.append(["apt", "sources_list_exists"])
 _s.field = "apt.sources_list_raw/sources_list_exists"
 put("1.2.1.11", "https in /etc/apt/sources.list.d", text_has(
-    ["apt", "sources_list_d_raw"], "(?i)^(deb\\s+http://|URIs:\\s+http://)", False,
+    ["apt", "sources_list_d_raw"], "(?i)^(deb(-src)?\\s+(\\[[^\\]]*\\]\\s*)?http://|URIs:\\s+(\\S+\\s+)*http://)", False,
     "Types: deb\nURIs: https://archive.example.com/ubuntu\nSigned-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg",
     "Types: deb\nURIs: http://archive.example.com/ubuntu"))
 put("1.2.1.12", "AllowInsecureRepositories", apt_opt("Acquire::AllowInsecureRepositories", ["0", "false"]))
@@ -1328,7 +1328,7 @@ put("6.1.2.4", "rsyslog logging is configured", attest("rsyslog_logging_reviewed
 put("6.1.2.5", "remote log host", attest("rsyslog_remote_host_configured"))
 RC = ["rsyslog", "config_raw"]
 put("6.1.2.6", "receive logs", text_has(RC,
-    "(?i)(^module\\(load=\"?im(tcp|udp)\"?\\)|^input\\(type=\"?im(tcp|udp)\"?|^\\$ModLoad\\s+im(tcp|udp)\\b|^\\$(InputTCPServerRun|UDPServerRun)\\b)",
+    "(?i)(^module\\(\\s*load\\s*=\\s*\"?im(tcp|udp)\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?im(tcp|udp)\"?|^\\$ModLoad\\s+im(tcp|udp)\\b|^\\$(InputTCPServerRun|UDPServerRun)\\b)",
     False, "*.* /var/log/syslog", 'module(load="imudp")'))
 put("6.1.2.7", "logrotate", attest("logrotate_reviewed"))
 put("6.1.2.8", "rsyslog-gnutls", pkg_present("rsyslog-gnutls"))
@@ -1648,9 +1648,14 @@ chrony_only if {
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 
+# Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
+# 0.0.0.0 is the wildcard address (all interfaces), not loopback.
+mta_loopback_tokens := {"127.0.0.1", "::1", "[::1]", "localhost", "loopback-only"}
+
 mta_interfaces_open if {
 	is_string(input.mta.inet_interfaces)
-	not regex.match(`(0\.0\.0\.0|::1|loopback-only|localhost)`, lower(input.mta.inet_interfaces))
+	some tok in regex.split(`[\s,]+`, trim_space(lower(input.mta.inet_interfaces)))
+	not tok in mta_loopback_tokens
 }
 ''',
     "firewall": r'''
@@ -2137,6 +2142,16 @@ def emit_control(rid, rec, spec):
     return out
 
 
+# Reviewed helper bodies for the one module that calls them. Every module carries a copy of HELPERS; only
+# ssh calls sshd_list, so only its copy has the reviewed body and the unused copies keep the original text.
+SSHD_LIST_OLD = '''sshd_list(key) := [trim_space(x) | some x in split(lower(sshd_value(key)), ",")]'''
+SSHD_LIST_NEW = '''# `Ciphers +aes128-cbc` appends to the defaults and `^` prepends: the named algorithm is enabled either way.
+sshd_list(key) := [trim_left(trim_space(x), "+^") | some x in split(lower(sshd_value(key)), ",")]'''
+if HELPERS.count(SSHD_LIST_OLD) != 1:
+    raise SystemExit("HELPERS no longer holds the sshd_list line the ssh override replaces")
+HELPER_OVERRIDES = {"ssh": HELPERS.replace(SSHD_LIST_OLD, SSHD_LIST_NEW)}
+
+
 def emit_module(name, title, ids, recs):
     lines = [header(f"{BENCH} — {title}", len(ids)).rstrip("\n"), f"package cis_ubuntu_26_04.{name}", "",
              f"# {BENCH}, {title}.",
@@ -2147,12 +2162,103 @@ def emit_module(name, title, ids, recs):
              "default compliant := false", "",
              "compliant if count(violations) == 0", "",
              f"controls := {json.dumps(sorted(ids, key=sort_key))}", ""]
-    lines += HELPERS.strip("\n").split("\n") + [""]
+    lines += HELPER_OVERRIDES.get(name, HELPERS).strip("\n").split("\n") + [""]
     if name in EXTRA:
         lines += EXTRA[name].strip("\n").split("\n") + [""]
     for rid in ids:
         lines += emit_control(rid, recs[rid], L[rid])
     return "\n".join(lines).rstrip("\n") + "\n"
+
+
+# Regression tests from the 2026-11-13 semantic review, appended to the generated test file of the module
+# they are keyed by. They pin the reviewed logic above: change them only together with that logic.
+REGRESSION_TESTS = {
+    'logging': r'''
+# Semantic review 2026-11-13: module(load="imtcp" ...params) and `input( type=` are remote-receive configuration.
+test_remote_receive_module_with_params_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "module(load=\"imtcp\" MaxSessions=\"500\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) > 0
+}
+
+test_remote_receive_input_with_space_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "input( type=\"imtcp\" port=\"514\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) > 0
+}
+
+test_remote_receive_absent_not_flagged if {
+	vs := data.cis_ubuntu_26_04.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "*.* /var/log/messages\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.6: not met")]) == 0
+}
+''',
+    'package_management': r'''
+# Semantic review 2026-11-13: option blocks and later URIs must not hide plain-http repositories.
+test_https_check_sees_http_with_option_block if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_raw": "deb [arch=amd64 signed-by=/usr/share/keyrings/k.gpg] http://archive.ubuntu.com/ubuntu noble main\n"}}
+	"1.2.1.10: not met — repositories must be set to https in /etc/apt/sources.list" in vs
+}
+
+test_https_check_sees_second_http_uri_in_deb822 if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_d_raw": "URIs: https://a.example.com/ubuntu http://b.example.com/ubuntu\nSuites: noble\n"}}
+	"1.2.1.11: not met — repositories must be set to https in /etc/apt/sources.list.d directory" in vs
+}
+
+test_https_check_accepts_https_with_option_block if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_raw": "deb [arch=amd64] https://archive.ubuntu.com/ubuntu noble main\n", "sources_list_d_raw": "URIs: https://a.example.com/ubuntu\nSuites: noble\n"}}
+	not "1.2.1.10: not met — repositories must be set to https in /etc/apt/sources.list" in vs
+	not "1.2.1.11: not met — repositories must be set to https in /etc/apt/sources.list.d directory" in vs
+}
+''',
+    'services': r'''
+# Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
+test_mta_inet_interfaces_wildcard_address_flagged if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "0.0.0.0"}}
+	"2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_127_0_0_1_accepted if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "127.0.0.1"}}
+	not "2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_mixed_list_flagged if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
+	"2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+''',
+    'ssh': r'''
+# Semantic review 2026-11-13: the `+` append syntax enables the named weak algorithm.
+test_5_1_7_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nciphers +aes128-cbc"}}
+	"5.1.7: not met — sshd Ciphers must be explicitly configured" in vs
+}
+
+test_5_1_17_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nmacs +hmac-md5"}}
+	"5.1.17: not met — sshd MACs must be explicitly configured" in vs
+}
+
+test_5_1_13_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nkexalgorithms +diffie-hellman-group1-sha1"}}
+	count([v | some v in vs; startswith(v, "5.1.13: not met")]) > 0
+}
+''',
+    'cis_ubuntu_26_04_main': r'''
+# Semantic review 2026-11-13: a section with no applicable controls at the selected profile adds no NOT ASSESSED message.
+test_no_not_assessed_message_for_section_without_applicable_controls if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"ssh": {"sshd_config_raw": "permitrootlogin no"}, "profile": "level1_server"}
+	"auditd" in r.sections_not_assessed
+	every v in r.violations {
+		not startswith(v, "NOT ASSESSED: auditd")
+	}
+}
+
+test_not_assessed_message_kept_for_applicable_section if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"ssh": {"sshd_config_raw": "permitrootlogin no"}, "profile": "level1_server"}
+	some v in r.violations
+	startswith(v, "NOT ASSESSED: ")
+}
+''',
+}
 
 
 def emit_tests(name, ids, recs):
@@ -2182,6 +2288,8 @@ def emit_tests(name, ids, recs):
         if miss and not s.hollow_ok and hollow(s.tp) != s.tp:  # present-but-hollow facts (blank strings, empty lists) never pass
             lines += [f"test_{k}_hollow_evidence_not_a_pass if {{", f"\tvs := {mod} with input as {J(hollow(s.tp))}",
                       f"\tcount([v | some v in vs; startswith(v, {pre})]) > 0", "}", ""]
+    if name in REGRESSION_TESTS:
+        lines += REGRESSION_TESTS[name].strip("\n").split("\n") + [""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
@@ -2268,7 +2376,15 @@ missing_inputs := {{name: [k | some k in section_inputs[name]; not input[k]] | s
 
 not_assessed_sections := sort([name | some name, _ in section_inputs; not section_assessed(name)])
 
-assessment_coverage_percentage := round(((count(section_inputs) - count(not_assessed_sections)) * 100) / count(section_inputs))
+# Only sections with controls applicable to the selected profile can leave controls unassessed: a section
+# whose controls all belong to the other level (auditd at Level 1) must not add NOT ASSESSED noise or dilute coverage.
+applicable_sections := {{name | some name, _ in section_inputs; count(section_ids(name)) > 0}}
+
+not_assessed_applicable_sections := sort([name | some name in applicable_sections; not section_assessed(name)])
+
+default assessment_coverage_percentage := 0
+
+assessment_coverage_percentage := round(((count(applicable_sections) - count(not_assessed_applicable_sections)) * 100) / count(applicable_sections)) if count(applicable_sections) > 0
 
 # =============================================================================
 # SECTIONS (controls applicable to the selected profile)
@@ -2338,7 +2454,11 @@ default _missing_inputs := {{}}
 
 _missing_inputs := bench.missing_inputs
 
-_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed]
+default _not_assessed_applicable := []
+
+_not_assessed_applicable := bench.not_assessed_applicable_sections
+
+_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed_applicable]
 
 default _sections := {{}}
 
@@ -2472,6 +2592,7 @@ def emit_rollup_tests(recs):
               "\tcount([v | some v in vs; startswith(v, \"6.2.1.1: \")]) == 0",
               "\tvs2 := data.cis_ubuntu_26_04.all_violations with input as {\"profile\": \"level2_server\"}",
               "\tcount([v | some v in vs2; startswith(v, \"6.2.1.1: \")]) > 0", "}", ""]
+    lines += REGRESSION_TESTS['cis_ubuntu_26_04_main'].strip("\n").split("\n") + [""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 

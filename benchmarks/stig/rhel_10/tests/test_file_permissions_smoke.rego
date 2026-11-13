@@ -20,3 +20,10 @@ test_file_permissions_violations_on_empty_input if {
 	v := data.stig.rhel_10.file_permissions.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: a CAT II-only module is not compliant while a finding is open.
+test_compliant_false_when_cat_ii_open if {
+	r := data.stig.rhel_10.file_permissions.compliance_report with input as {"x": 1}
+	r.compliant == false
+	r.cat_i_compliant == true
+}

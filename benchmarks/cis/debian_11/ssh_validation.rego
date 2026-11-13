@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 35
+#     checks: 36
 #     cited: 23
 #     density: sized
 #     basis: size
@@ -275,6 +275,12 @@ config_violations contains msg if {
 	v := directive("LoginGraceTime")
 	seconds(v) > 60
 	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (%d seconds), should be 60 or less", [v, seconds(v)])
+}
+
+config_violations contains msg if {
+	v := directive("LoginGraceTime")
+	seconds(v) == 0
+	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds", [v])
 }
 
 config_violations contains msg if {

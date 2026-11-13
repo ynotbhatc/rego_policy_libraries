@@ -1460,7 +1460,7 @@ put("6.1.2.6", "rsyslog work directory", gate(access(["rsyslog", "work_dir", "mo
                                                      ["rsyslog", "work_dir", "group"], "0700", ["root"], ["root"]), *RNI))
 RC = ["rsyslog", "config_raw"]   # new (the mapper already reads it): effective rsyslog configuration text
 put("6.1.2.7", "not configured as a log server", gate(text_has(
-    RC, "(?i)(^module\\(load=\"?(imtcp|imudp|imptcp|imrelp)\"?\\)|^input\\(type=\"?(imtcp|imudp|imptcp|imrelp)\"?|"
+    RC, "(?i)(^module\\(\\s*load\\s*=\\s*\"?(imtcp|imudp|imptcp|imrelp)\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?(imtcp|imudp|imptcp|imrelp)\"?|"
         "^\\$ModLoad\\s+(imtcp|imudp|imptcp|imrelp)\\b|^\\$(InputTCPServerRun|UDPServerRun|InputPTCPServerRun|InputRELPServerRun)\\b)",
     False, "*.* /var/log/messages", 'module(load="imtcp")'), *RNI))
 put("6.1.2.8", "logging rules", attest("rsyslog_logging_rules_reviewed"))
@@ -1471,10 +1471,22 @@ put("6.1.2.10", "TLS network stream driver", custom(
     "packages[rsyslog-gnutls,rsyslog-openssl]", {"packages": {"rsyslog-gnutls": True, "rsyslog-openssl": False}},
     {"packages": {"rsyslog-gnutls": False, "rsyslog-openssl": False}},
     reads=[["packages", "rsyslog-gnutls"], ["packages", "rsyslog-openssl"]]))
-put("6.1.2.11", "forwarding uses TLS", custom(
-    [f'text_collected({ref(RC)})'], [['some a in rsyslog_actions', 'tls_forward_ok(a)']], dotted(RC),
+_s = put("6.1.2.11", "forwarding uses TLS", custom(
+    [f'text_collected({ref(RC)})'],
+    [['some a in rsyslog_actions', 'tls_forward_ok(a)', 'not non_tls_omfwd_action',
+      f'not regex_in_text({ref(RC)}, `^[^#\\s]\\S*\\s+@{{1,2}}\\S`)']], dotted(RC),
     nest(RC, 'action(type="omfwd" target="loghost.example.com" port="6514" protocol="tcp"\n  StreamDriver="gtls" StreamDriverMode="1" StreamDriverAuthMode="x509/name")'),
     nest(RC, 'action(type="omfwd" target="loghost.example.com" port="514" protocol="tcp")'), reads=[RC]))
+# helper emitted with the control, between its `default p_...` and the pass rule
+_s.pass_helpers = r'''
+# TLS forwarding must be present and no forwarding may bypass it: every omfwd action is TLS and no
+# legacy `selector @host` / `selector @@host` line exists.
+non_tls_omfwd_action if {
+	some b in rsyslog_actions
+	regex.match(`(?i)type\s*=\s*"?omfwd"?`, b)
+	not tls_forward_ok(b)
+}
+'''
 put("6.1.2.12", "TLS CA certificate", attest("rsyslog_tls_ca_configured"))
 put("6.1.2.13", "TLS client certificate", attest("rsyslog_tls_client_cert_configured"))
 put("6.1.2.14", "logrotate", attest("logrotate_reviewed"))
@@ -1776,9 +1788,14 @@ selinux_config_mode := input.ansible_facts.ansible_selinux.config_mode if {
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 
+# Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
+# 0.0.0.0 is the wildcard address (all interfaces), not loopback.
+mta_loopback_tokens := {"127.0.0.1", "::1", "[::1]", "localhost", "loopback-only"}
+
 mta_interfaces_open if {
 	is_string(input.mta.inet_interfaces)
-	not regex.match(`(0\.0\.0\.0|::1|loopback-only|localhost)`, lower(input.mta.inet_interfaces))
+	some tok in regex.split(`[\s,]+`, trim_space(lower(input.mta.inet_interfaces)))
+	not tok in mta_loopback_tokens
 }
 ''',
     "network": r'''
@@ -2206,8 +2223,10 @@ def header(title, checks, entry="none", density="sized", basis="size", extra="")
 '''
 
 
-def rule_block(name, alts):
+def rule_block(name, alts, helpers=None):
     out = [f"default {name} := false", ""]
+    if helpers:  # rules the pass rule calls and that belong to this one control
+        out += helpers.strip("\n").split("\n") + [""]
     for a in alts:
         out.append(f"{name} if {{")
         out += [f"\t{c}" for c in a]
@@ -2254,7 +2273,7 @@ def emit_control(rid, rec, spec):
         ev += [a_ev for a_ev, _ in alts]
         passes += [[f"not ep_{k}"] + a_p for _, a_p in alts]
     out += rule_block(f"e_{k}", evidence_alts(ev))
-    out += rule_block(f"p_{k}", passes)
+    out += rule_block(f"p_{k}", passes, getattr(spec, "pass_helpers", None))
     miss = f"{rid}: evidence missing — {spec.field} not collected"
     fail = f"{rid}: not met — {rec['title']}"
     out += [f"violations contains {J(miss)} if not e_{k}", "",
@@ -2331,6 +2350,57 @@ def good_input(ids):
     return g
 
 
+# Regression tests from the 2026-11-13 semantic review, appended to the generated test file of the module
+# they are keyed by. They pin the reviewed logic above: change them only together with that logic.
+REGRESSION_TESTS = {
+    'logging': r'''
+# Semantic review 2026-11-13: module(load="imtcp" ...params) and `input( type=` are remote-receive configuration.
+test_remote_receive_module_with_params_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "module(load=\"imtcp\" MaxSessions=\"500\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_input_with_space_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "input( type=\"imtcp\" port=\"514\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_absent_not_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "*.* /var/log/messages\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) == 0
+}
+
+# Semantic review 2026-11-13: one TLS action does not excuse other plaintext forwarding.
+test_6_1_2_11_legacy_plaintext_forwarding_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"config_raw": "*.* @@loghost.example.com:514\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
+	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
+
+test_6_1_2_11_second_non_tls_omfwd_action_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"config_raw": "action(type=\"omfwd\" target=\"a.example.com\" port=\"514\" protocol=\"tcp\")\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
+	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
+''',
+    'services': r'''
+# Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
+test_mta_inet_interfaces_wildcard_address_flagged if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "0.0.0.0"}}
+	"2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_127_0_0_1_accepted if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "127.0.0.1"}}
+	not "2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_mixed_list_flagged if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
+	"2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+''',
+}
+
+
 def emit_tests(name, ids):
     lines = [f"package {PKG}.{name}_test", "", "import rego.v1", "",
              f"# Generated by {GEN}: a pass and a fail case for every recommendation, plus an evidence-missing",
@@ -2365,6 +2435,8 @@ def emit_tests(name, ids):
               f"test_v3_{name}_violations_carry_section_ids if {{",
               f"\tvs := {mod} with input as {{}}",
               f"\tevery v in vs {{ split(v, \":\")[0] in {json.dumps(sorted(ids, key=sort_key))} }}", "}", ""]
+    if name in REGRESSION_TESTS:
+        lines += REGRESSION_TESTS[name].strip("\n").split("\n") + [""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
