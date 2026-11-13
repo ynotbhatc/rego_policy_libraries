@@ -35,7 +35,7 @@ default compliant := false
 default all_repos_gpgcheck := false
 
 all_repos_gpgcheck if {
-	count([r | some r in input.yum_repos; r.gpgcheck != true]) == 0
+	count([r | some r in input.yum_repos; object.get(r, "gpgcheck", false) != true]) == 0
 	count(input.yum_repos) > 0
 }
 
@@ -229,7 +229,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# `compliant`: no open finding at ANY category (CAT I, II or III), as in the RHEL 8/9 modules.
+# `cat_i_compliant`: the CAT-I-only meaning, for gating on the critical subset.
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	count(open_all_findings) == 0
+}
+
+default cat_i_compliant := false
+
+cat_i_compliant if {
 	count(open_cat_i) == 0
 }
 
@@ -240,4 +250,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }

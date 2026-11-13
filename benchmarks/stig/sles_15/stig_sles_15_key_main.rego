@@ -43,9 +43,25 @@ default _target_violations := []
 
 _target_violations := [v | some v in _t.violations]
 
-_violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
+# The upstream .main report already carries its own FAIL-CLOSED finding when no facts are
+# supplied; add the bridge's only when it does not, so the condition is counted once.
+default _upstream_has_fail_closed := false
 
-_violations := _target_violations if _facts_supplied
+_upstream_has_fail_closed if {
+	some v in _target_violations
+	startswith(object.get(v, "rule_title", ""), "FAIL-CLOSED")
+}
+
+default _add_bridge_finding := false
+
+_add_bridge_finding if {
+	not _facts_supplied
+	not _upstream_has_fail_closed
+}
+
+_violations := array.concat(_target_violations, [_no_facts_finding]) if _add_bridge_finding
+
+_violations := _target_violations if not _add_bridge_finding
 
 default _compliant := false
 

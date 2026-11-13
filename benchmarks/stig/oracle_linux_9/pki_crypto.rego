@@ -60,11 +60,8 @@ finding_ol09_00_000241 := {
 default crypto_policy_not_overridden := false
 
 crypto_policy_not_overridden if {
+	is_array(input.crypto_policy_overrides)
 	count(input.crypto_policy_overrides) == 0
-}
-
-crypto_policy_not_overridden if {
-	not input.crypto_policy_overrides
 }
 
 status_ol09_00_000242 := "Not_a_Finding" if crypto_policy_not_overridden

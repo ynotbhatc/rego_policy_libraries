@@ -144,6 +144,7 @@ ctrl_alt_del_graphical_disabled if {
 }
 
 ctrl_alt_del_graphical_disabled if {
+	is_object(input.packages)
 	not input.packages["gnome-desktop3"]
 }
 

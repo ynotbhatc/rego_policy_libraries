@@ -106,6 +106,7 @@ ssh_protocol_2 if {
 }
 
 ssh_protocol_2 if {
+	is_object(input.ssh_config) # collected
 	not input.ssh_config.Protocol # Protocol 2 is default in OpenSSH 7+
 }
 
@@ -151,6 +152,7 @@ default ssh_client_alive_count_ok := false
 
 ssh_client_alive_count_ok if {
 	count_max := to_number(input.ssh_config.ClientAliveCountMax)
+	count_max > 0 # 0 disables connection termination in sshd
 	count_max <= 1
 }
 
