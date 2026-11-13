@@ -705,6 +705,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for sox; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -727,6 +728,7 @@ compliance_report := object.union(overall_sox_assessment, {
 	"compliant": _entrypoint_compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"failed_controls": min([total_controls, count(_violations)]),
 	"total_controls": total_controls,
 })
 

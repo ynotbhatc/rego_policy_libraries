@@ -330,6 +330,7 @@ compliance_report := {
 	# generic violations array so the universal report shape is satisfied).
 	"violations": array.concat([v | some v in mandatory_violations], [v | some v in advisory_violations]),
 	"violation_count": count(mandatory_violations) + count(advisory_violations),
+	"failed_controls": min([32, count(mandatory_violations) + count(advisory_violations)]),
 	"total_controls": 32,
 	"mandatory_violations": mandatory_violations,
 	"mandatory_violation_count": count(mandatory_violations),

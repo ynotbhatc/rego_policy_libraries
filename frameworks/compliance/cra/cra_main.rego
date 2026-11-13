@@ -166,6 +166,7 @@ compliance_report := {
 	"total_controls": total_controls,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([total_controls, count(violations)]),
 	"module_summary": {
 		"essential_requirements": {"violations": count(er_v), "compliant": count(er_v) == 0},
 		"vulnerability_handling": {"violations": count(vh_v), "compliant": count(vh_v) == 0},

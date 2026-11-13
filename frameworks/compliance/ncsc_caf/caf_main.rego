@@ -188,6 +188,7 @@ compliance_report := {
 	"total_controls": 23,
 	"violations": [],
 	"violation_count": 0,
+	"failed_controls": min([23, 0]),
 	"framework": "NCSC Cyber Assessment Framework 4.0",
 	"version": "4.0",
 	"phase": "Phase 1 + Phase 2",

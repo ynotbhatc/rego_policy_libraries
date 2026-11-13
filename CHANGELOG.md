@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — every framework key reports failed_controls, never above total_controls
+
+- `total_controls` stays the control count. Findings can outnumber controls (fail-closed and input-contract
+  notices are findings, not controls), which is why 32 keys showed more findings than controls on empty input.
+  The 55 keys that had no `failed_controls` now report one, capped at `total_controls`; the other 35 already did.
+  Consumers derive passed = `total_controls` - `failed_controls`, not total minus the finding count.
+- `tests/framework_keys/test_keys.rego` asserts a numeric `failed_controls` between 0 and `total_controls` for
+  all 90 keys. This closes the item left open under the `total_controls` entry below.
+
 ### Fixed — every framework key reports total_controls and a violations list
 
 - The product's generic assessment playbook refuses a report without `total_controls` and derives
