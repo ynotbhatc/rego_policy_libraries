@@ -166,3 +166,29 @@ test_fresh_approval_still_allows if {
 	d := ai_governance.decision with input as inp with time.now_ns as 2000
 	d == "allow_with_logging"
 }
+
+# Semantic review 2026-11-13: a disabled AI system must never be allowed.
+test_disabled_ai_system_denied if {
+	inp := {"action": "view_dashboard", "ai_system": {"id": "x", "role": "ai_reader", "enabled": false}, "context": {"environment": "development"}}
+	ai_governance.decision == "deny" with input as inp
+}
+
+test_enabled_ai_system_read_allowed if {
+	inp := {"action": "view_dashboard", "ai_system": {"id": "x", "role": "ai_reader", "enabled": true}, "context": {"environment": "development"}}
+	ai_governance.decision == "allow" with input as inp
+}
+
+test_main_bridge_allow_is_compliant if {
+	inp := {"action": "view_dashboard", "ai_system": {"id": "x", "role": "ai_reader", "enabled": true}, "context": {"environment": "development"}}
+	r := data.ai_governance.main.compliance_report with input as inp
+	r.compliant == true
+	r.violation_count == 0
+	r.failed_controls == 0
+}
+
+test_main_bridge_disabled_is_noncompliant if {
+	inp := {"action": "view_dashboard", "ai_system": {"id": "x", "role": "ai_reader", "enabled": false}, "context": {"environment": "development"}}
+	r := data.ai_governance.main.compliance_report with input as inp
+	r.compliant == false
+	r.failed_controls == 1
+}
