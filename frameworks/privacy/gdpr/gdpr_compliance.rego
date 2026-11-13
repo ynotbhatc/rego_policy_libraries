@@ -276,15 +276,23 @@ default compliant := false
 compliant if {
 	lawful_basis_established
 	consent_management
+	special_category_data
 	right_of_access
+	right_to_rectification
 	right_to_erasure
+	right_to_portability
+	right_to_object
 	privacy_by_design
 	dpia_process
+	dpo_requirements
 	records_of_processing
 	breach_notification
+	international_transfers
 	encryption_pseudonymisation
 	ongoing_confidentiality_integrity
+	restore_and_test
 	data_retention
+	data_minimisation
 	processor_agreements
 }
 
