@@ -339,3 +339,30 @@ test_v3_logging_violations_carry_section_ids if {
 	vs := data.cis_rhel9.logging.violations with input as {}
 	every v in vs { split(v, ":")[0] in ["6.1.1.1", "6.1.1.2", "6.1.1.3", "6.1.1.4", "6.1.1.5", "6.1.2.1", "6.1.2.2", "6.1.2.3", "6.1.2.4", "6.1.2.5", "6.1.2.6", "6.1.2.7", "6.1.2.8", "6.1.2.9", "6.1.2.10", "6.1.2.11", "6.1.2.12", "6.1.2.13", "6.1.2.14", "6.1.3.1"] }
 }
+
+# Semantic review 2026-11-13: module(load="imtcp" ...params) and `input( type=` are remote-receive configuration.
+test_remote_receive_module_with_params_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "module(load=\"imtcp\" MaxSessions=\"500\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_input_with_space_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "input( type=\"imtcp\" port=\"514\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_absent_not_flagged if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "*.* /var/log/messages\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) == 0
+}
+
+# Semantic review 2026-11-13: one TLS action does not excuse other plaintext forwarding.
+test_6_1_2_11_legacy_plaintext_forwarding_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"config_raw": "*.* @@loghost.example.com:514\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
+	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
+
+test_6_1_2_11_second_non_tls_omfwd_action_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"config_raw": "action(type=\"omfwd\" target=\"a.example.com\" port=\"514\" protocol=\"tcp\")\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
+	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
