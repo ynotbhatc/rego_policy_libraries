@@ -192,6 +192,19 @@ violations contains "IEC 62443 SR 4.1 (DC): evidence missing - input.target_sl n
 	not is_number(object.get(input, "target_sl", null))
 }
 
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 4.2 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 4.3 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
 compliant if count(violations) == 0
 
 fr4_passing_srs := count([sr |

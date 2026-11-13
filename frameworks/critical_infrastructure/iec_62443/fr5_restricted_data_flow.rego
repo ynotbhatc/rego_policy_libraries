@@ -235,6 +235,19 @@ violations contains msg if {
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 5.4 (RDF): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 5.3 (RDF): evidence missing — input.network not collected, so this requirement cannot be verified" if {
+	not input.network
+}
+
 compliant if count(violations) == 0
 
 fr5_passing_srs := count([sr |

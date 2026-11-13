@@ -388,6 +388,47 @@ violations contains msg if {
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 1.1 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.2 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.7 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.10 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.11 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.12 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.13 (IAC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 1.8 (IAC): evidence missing — input.authentication not collected, so this requirement cannot be verified" if {
+	not input.authentication
+}
+
+violations contains "IEC 62443 SR 1.9 (IAC): evidence missing — input.authentication not collected, so this requirement cannot be verified" if {
+	not input.authentication
+}
+
 compliant if count(violations) == 0
 
 fr1_passing_srs := count([sr |

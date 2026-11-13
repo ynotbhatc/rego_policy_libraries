@@ -302,6 +302,39 @@ violations contains msg if {
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 3.1 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.2 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.3 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.5 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.6 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.7 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 3.8 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
 compliant if count(violations) == 0
 
 fr3_passing_srs := count([sr |
