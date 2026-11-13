@@ -193,7 +193,8 @@ status_r_wn16_so_000140 := "Open" if not r_wn16_so_000140
 default r_wn16_so_000150 := false
 
 r_wn16_so_000150 if {
-	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText == "See message text below"
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText)
+	trim_space(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText) != ""
 }
 
 finding_r_wn16_so_000150 := {
@@ -211,7 +212,8 @@ status_r_wn16_so_000150 := "Open" if not r_wn16_so_000150
 default r_wn16_so_000160 := false
 
 r_wn16_so_000160 if {
-	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeCaption == "See message title options below"
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeCaption)
+	trim_space(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeCaption) != ""
 }
 
 finding_r_wn16_so_000160 := {
@@ -661,7 +663,7 @@ status_r_wn16_so_000470 := "Open" if not r_wn16_so_000470
 default r_wn16_so_000480 := false
 
 r_wn16_so_000480 if {
-	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].ConsentPromptBehaviorAdmin == 2
+	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].ConsentPromptBehaviorAdmin in {2, 1}
 }
 
 finding_r_wn16_so_000480 := {
