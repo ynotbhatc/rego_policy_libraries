@@ -63,6 +63,11 @@ violation_4_1_1 contains msg if {
 	msg := "CIS 4.1.1: mailbox audit state not evaluable via Graph; verify tenant-wide setting via Exchange admin center"
 }
 
+violation_4_1_1 contains msg if {
+	not input.mailbox_audit_summary
+	msg := "CIS 4.1.1: evidence missing — mailbox_audit_summary not collected"
+}
+
 # ── 4.5.1 — SPF record on every verified non-Microsoft domain ──────
 
 # Microsoft's onmicrosoft.com domain auto-publishes SPF via Microsoft
@@ -74,6 +79,11 @@ customer_domains contains d if {
 }
 
 violation_4_5_1 contains msg if {
+	not is_array(object.get(input, "verified_domains", null))
+	msg := "CIS 4.5.1: evidence missing — verified_domains not collected"
+}
+
+violation_4_5_1 contains msg if {
 	some d in customer_domains
 	not d.spf_present
 	msg := sprintf("CIS 4.5.1: domain %q has no SPF record published; spoofed mail will not be rejected", [d.id])
@@ -82,12 +92,22 @@ violation_4_5_1 contains msg if {
 # ── 4.6.1 — DKIM signing for every verified non-Microsoft domain ──
 
 violation_4_6_1 contains msg if {
+	not is_array(object.get(input, "verified_domains", null))
+	msg := "CIS 4.6.1: evidence missing — verified_domains not collected"
+}
+
+violation_4_6_1 contains msg if {
 	some d in customer_domains
 	not d.dkim_present
 	msg := sprintf("CIS 4.6.1: domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated", [d.id])
 }
 
 # ── 4.7.1 — DMARC policy for every verified non-Microsoft domain ──
+
+violation_4_7_1 contains msg if {
+	not is_array(object.get(input, "verified_domains", null))
+	msg := "CIS 4.7.1: evidence missing — verified_domains not collected"
+}
 
 violation_4_7_1 contains msg if {
 	some d in customer_domains
@@ -108,6 +128,11 @@ external_tag_control := c if {
 }
 
 violation_4_8_1 contains msg if {
+	not external_tag_control
+	msg := "CIS 4.8.1: evidence missing — secure_score_controls row for this control not collected"
+}
+
+violation_4_8_1 contains msg if {
 	external_tag_control
 	external_tag_control.implementation_status != "Implemented"
 	msg := "CIS 4.8.1: External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail"
@@ -118,6 +143,11 @@ violation_4_8_1 contains msg if {
 smtp_auth_control := c if {
 	some c in input.secure_score_controls
 	c.id == "SMTPAuthDisabled"
+}
+
+violation_4_11_1 contains msg if {
+	not smtp_auth_control
+	msg := "CIS 4.11.1: evidence missing — secure_score_controls row for this control not collected"
 }
 
 violation_4_11_1 contains msg if {

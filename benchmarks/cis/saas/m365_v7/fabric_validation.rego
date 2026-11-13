@@ -130,6 +130,21 @@ ALL_SETTING_CONTROLS := object.union(SETTING_CONTROLS, {
 	"tenant_settings": "9.1.1",
 })
 
+# A setting the collector neither returned nor reported unavailable was not evaluated.
+violation contains msg if {
+	collected
+	some name, control in ALL_SETTING_CONTROLS
+	name != "tenant_settings"
+	not unavailable[name]
+	not unavailable.tenant_settings
+	not setting_present(name)
+	msg := sprintf("CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)", [control, name])
+}
+
+setting_present(name) if {
+	_ := settings[name]
+}
+
 violation contains msg if {
 	some key, reason in unavailable
 	control := object.get(ALL_SETTING_CONTROLS, key, "9.1.1")

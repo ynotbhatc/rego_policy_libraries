@@ -173,7 +173,7 @@ violation contains msg if {
 violation contains msg if {
 	available("meeting_policies")
 	some p in meeting_policies
-	p.MeetingChatEnabledType == "EnabledExceptAnonymous"
+	p.AllowExternalNonTrustedMeetingChat == true
 	msg := sprintf("CIS 8.5.8: meeting policy '%s' leaves external meeting chat on", [p.Identity])
 }
 

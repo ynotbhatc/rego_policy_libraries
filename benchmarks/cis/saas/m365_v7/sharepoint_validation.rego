@@ -49,7 +49,7 @@ default compliant := false
 
 # Sharing capability values, most to least permissive. The benchmark wants
 # anything other than the fully-external settings.
-PERMISSIVE_SHARING := {"ExternalUserAndGuestSharing", "ExistingExternalUserSharingOnly"}
+PERMISSIVE_SHARING := {"ExternalUserAndGuestSharing"}
 ANONYMOUS_SHARING := "ExternalUserAndGuestSharing"
 
 default unavailable := {}
@@ -173,6 +173,20 @@ PROPERTY_CONTROLS := {
 	"DefaultLinkPermission": "7.2.11",
 	"DisallowInfectedFileDownload": "7.3.1",
 	"tenant": "7.2.1",
+}
+
+# A property the collector neither returned nor reported unavailable was not evaluated.
+violation contains msg if {
+	collected
+	some key, control in PROPERTY_CONTROLS
+	key != "tenant"
+	not unavailable[key]
+	not property_present(key)
+	msg := sprintf("CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)", [control, key])
+}
+
+property_present(key) if {
+	_ := tenant[key]
 }
 
 violation contains msg if {

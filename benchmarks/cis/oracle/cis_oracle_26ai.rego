@@ -1284,7 +1284,16 @@ violations contains "6.1.1: '%ANY%' must be removed from unauthorized 'GRANTEE'"
 default r_6_1_2 := false
 
 r_6_1_2 if {
-	count([g | some g in input.oracle.grants.sys_privs; g.admin_option == true; _unauthorized(g)]) == 0
+	count([g | some g in input.oracle.grants.sys_privs; _admin_option(g); _unauthorized(g)]) == 0
+	count([g | some g in object.get(input, ["oracle", "grants", "role_privs"], []); _admin_option(g); _unauthorized(g)]) == 0
+}
+
+# ADMIN_OPTION arrives as the view's 'YES'/'NO' (or Y/N) or as a boolean.
+_admin_option(g) if g.admin_option == true
+
+_admin_option(g) if {
+	is_string(g.admin_option)
+	upper(g.admin_option) in {"YES", "Y"}
 }
 
 default e_6_1_2 := false
