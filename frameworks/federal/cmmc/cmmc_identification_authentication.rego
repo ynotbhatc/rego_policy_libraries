@@ -48,7 +48,6 @@ default compliant_3_5_2 := false
 
 compliant_3_5_2 if {
 	input.identity.authentication_required == true
-	input.identity.password_auth_enabled == true
 }
 
 violation_3_5_2 contains msg if {
@@ -243,7 +242,7 @@ violation_3_5_11 contains msg if {
 # Aggregate compliance
 # ---------------------------------------------------------------------------
 
-all_violations := array.concat(
+base_violations := array.concat(
 	array.concat(
 		array.concat(
 			[v | some v in violation_3_5_1],
@@ -274,6 +273,81 @@ all_violations := array.concat(
 		),
 	),
 )
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing or failing must surface a violation, so that the domain verdict
+#   (count(all_violations) == 0) can never be true while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	not compliant_3_5_1
+	count(violation_3_5_1) == 0
+	msg := "3.5.1: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_2
+	count(violation_3_5_2) == 0
+	msg := "3.5.2: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_3
+	count(violation_3_5_3) == 0
+	msg := "3.5.3: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_4
+	count(violation_3_5_4) == 0
+	msg := "3.5.4: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_5
+	count(violation_3_5_5) == 0
+	msg := "3.5.5: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_6
+	count(violation_3_5_6) == 0
+	msg := "3.5.6: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_7
+	count(violation_3_5_7) == 0
+	msg := "3.5.7: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_8
+	count(violation_3_5_8) == 0
+	msg := "3.5.8: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_9
+	count(violation_3_5_9) == 0
+	msg := "3.5.9: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_10
+	count(violation_3_5_10) == 0
+	msg := "3.5.10: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_5_11
+	count(violation_3_5_11) == 0
+	msg := "3.5.11: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.5.1", "level": 1, "compliant": compliant_3_5_1},

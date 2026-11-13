@@ -173,7 +173,7 @@ violation_3_10_6 contains msg if {
 # Aggregate
 # ---------------------------------------------------------------------------
 
-all_violations := array.concat(
+base_violations := array.concat(
 	array.concat(
 		[v | some v in violation_3_10_1],
 		[v | some v in violation_3_10_2],
@@ -189,6 +189,51 @@ all_violations := array.concat(
 		),
 	),
 )
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing or failing must surface a violation, so that the domain verdict
+#   (count(all_violations) == 0) can never be true while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	not compliant_3_10_1
+	count(violation_3_10_1) == 0
+	msg := "3.10.1: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_10_2
+	count(violation_3_10_2) == 0
+	msg := "3.10.2: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_10_3
+	count(violation_3_10_3) == 0
+	msg := "3.10.3: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_10_4
+	count(violation_3_10_4) == 0
+	msg := "3.10.4: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_10_5
+	count(violation_3_10_5) == 0
+	msg := "3.10.5: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_10_6
+	count(violation_3_10_6) == 0
+	msg := "3.10.6: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.10.1", "level": 1, "compliant": compliant_3_10_1},
