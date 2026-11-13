@@ -112,13 +112,40 @@ violation_3_2_3 contains msg if {
 # Aggregate compliance
 # ---------------------------------------------------------------------------
 
-all_violations := array.concat(
+base_violations := array.concat(
 	[v | some v in violation_3_2_1],
 	array.concat(
 		[v | some v in violation_3_2_2],
 		[v | some v in violation_3_2_3],
 	),
 )
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing or failing must surface a violation, so that the domain verdict
+#   (count(all_violations) == 0) can never be true while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	not compliant_3_2_1
+	count(violation_3_2_1) == 0
+	msg := "3.2.1: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_2_2
+	count(violation_3_2_2) == 0
+	msg := "3.2.2: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_2_3
+	count(violation_3_2_3) == 0
+	msg := "3.2.3: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.2.1", "level": 2, "compliant": compliant_3_2_1},

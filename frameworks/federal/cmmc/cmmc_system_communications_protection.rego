@@ -193,7 +193,7 @@ default compliant_3_13_8 := false
 compliant_3_13_8 if {
 	input.scp.encryption_in_transit == true
 	input.scp.fips_validated_tls == true
-	input.scp.tls_min_version == "1.2"
+	input.scp.tls_min_version in {"1.2", "1.3"}
 }
 
 violation_3_13_8 contains msg if {
@@ -443,10 +443,115 @@ all_violations_13_16 := array.concat(
 	),
 )
 
-all_violations := array.concat(
+base_violations := array.concat(
 	array.concat(all_violations_1_4, all_violations_5_8),
 	array.concat(all_violations_9_12, all_violations_13_16),
 )
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing or failing must surface a violation, so that the domain verdict
+#   (count(all_violations) == 0) can never be true while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	not compliant_3_13_1
+	count(violation_3_13_1) == 0
+	msg := "3.13.1: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_2
+	count(violation_3_13_2) == 0
+	msg := "3.13.2: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_3
+	count(violation_3_13_3) == 0
+	msg := "3.13.3: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_4
+	count(violation_3_13_4) == 0
+	msg := "3.13.4: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_5
+	count(violation_3_13_5) == 0
+	msg := "3.13.5: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_6
+	count(violation_3_13_6) == 0
+	msg := "3.13.6: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_7
+	count(violation_3_13_7) == 0
+	msg := "3.13.7: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_8
+	count(violation_3_13_8) == 0
+	msg := "3.13.8: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_9
+	count(violation_3_13_9) == 0
+	msg := "3.13.9: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_10
+	count(violation_3_13_10) == 0
+	msg := "3.13.10: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_11
+	count(violation_3_13_11) == 0
+	msg := "3.13.11: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_12
+	count(violation_3_13_12) == 0
+	msg := "3.13.12: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_13
+	count(violation_3_13_13) == 0
+	msg := "3.13.13: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_14
+	count(violation_3_13_14) == 0
+	msg := "3.13.14: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_15
+	count(violation_3_13_15) == 0
+	msg := "3.13.15: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_13_16
+	count(violation_3_13_16) == 0
+	msg := "3.13.16: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.13.1", "level": 1, "compliant": compliant_3_13_1},
