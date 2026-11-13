@@ -49,8 +49,8 @@ rsyslog_violations contains "CIS 4.2.1.2: rsyslog service is not enabled" if {
 }
 
 # CIS 4.2.1.3: journald forwards to rsyslog
-journald_violations contains sprintf("CIS 4.2.1.3: journald not configured to forward to rsyslog (ForwardToSyslog: %s)", [input.journald.forward_to_syslog]) if {
-	input.journald.forward_to_syslog != "yes"
+journald_violations contains sprintf("CIS 4.2.1.3: journald not configured to forward to rsyslog (ForwardToSyslog: %s)", [object.get(input, ["journald", "forward_to_syslog"], "not collected")]) if {
+	object.get(input, ["journald", "forward_to_syslog"], "") != "yes"
 }
 
 # CIS 4.2.1.4: rsyslog default file permissions
@@ -59,6 +59,10 @@ rsyslog_violations contains sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not sec
 }
 
 # CIS 4.2.1.5: Logging configured
+rsyslog_violations contains "CIS 4.2.1.5: evidence missing - rsyslog.logging_rules_count not collected" if {
+	object.get(input, ["rsyslog", "logging_rules_count"], null) == null
+}
+
 rsyslog_violations contains "CIS 4.2.1.5: No rsyslog logging rules configured" if {
 	input.rsyslog.logging_rules_count == 0
 }
@@ -75,13 +79,13 @@ rsyslog_violations contains "CIS 4.2.1.6: rsyslog not configured to send logs to
 }
 
 # CIS 4.2.2.1: journald compression
-journald_violations contains sprintf("CIS 4.2.2.1: journald compression not enabled (Compress: %s)", [input.journald.compress_enabled]) if {
-	input.journald.compress_enabled != "yes"
+journald_violations contains sprintf("CIS 4.2.2.1: journald compression not enabled (Compress: %s)", [object.get(input, ["journald", "compress_enabled"], "not collected")]) if {
+	object.get(input, ["journald", "compress_enabled"], "") != "yes"
 }
 
 # CIS 4.2.2.2: journald persistent storage
-journald_violations contains sprintf("CIS 4.2.2.2: journald not configured for persistent storage (Storage: %s)", [input.journald.storage_mode]) if {
-	input.journald.storage_mode != "persistent"
+journald_violations contains sprintf("CIS 4.2.2.2: journald not configured for persistent storage (Storage: %s)", [object.get(input, ["journald", "storage_mode"], "not collected")]) if {
+	object.get(input, ["journald", "storage_mode"], "") != "persistent"
 }
 
 # CIS 4.2.2.3: systemd-journald active
@@ -101,7 +105,7 @@ log_file_violations contains sprintf("CIS 4.2.3: Log file '%s' has incorrect per
 	file.exists
 }
 
-log_file_violations contains sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, file.mode, file.issue]) if {
+log_file_violations contains sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [file.file, object.get(file, "mode", "unknown"), object.get(file, "issue", "unknown")]) if {
 	count(object.get(input, ["excessive_permissions", "files"], [])) > 0
 	some file in input.excessive_permissions.files
 }

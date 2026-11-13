@@ -26,3 +26,24 @@ test_sudoers_mode_looser_flagged if {
 		sudoers_mode_violation(m)
 	}
 }
+
+# Semantic review 2026-11-13: #includedir is a directive, negated Defaults do not count.
+test_includedir_directive_accepted if {
+	v := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults use_pty\n#includedir /etc/sudoers.d\n"}}
+	not "CIS 5.3: sudoers should include /etc/sudoers.d directory" in v
+}
+
+test_includedir_missing_flagged if {
+	v := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults use_pty\n"}}
+	"CIS 5.3: sudoers should include /etc/sudoers.d directory" in v
+}
+
+test_negated_use_pty_flagged if {
+	v := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults !use_pty\n"}}
+	"CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)" in v
+}
+
+test_negated_logfile_flagged if {
+	v := data.cis_rhel8.sudo.violations with input as {"sudo": {"installed": true, "sudoers_content": "Defaults use_pty\nDefaults !logfile=/var/log/sudo.log\n"}}
+	"CIS 5.3.3: sudo logfile not configured (Defaults logfile= missing)" in v
+}

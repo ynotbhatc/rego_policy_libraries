@@ -183,6 +183,11 @@ config_violations contains sprintf("CIS 5.2.15: SSH ClientAliveInterval is %v se
 	interval > 300
 }
 
+# 0 disables the idle timeout (no keepalive probes), so it does not satisfy 5.2.15.
+config_violations contains "CIS 5.2.15: SSH ClientAliveInterval is 0 (idle timeout disabled, should be 1-300 seconds)" if {
+	to_number(sshd_config.clientaliveinterval) == 0
+}
+
 config_violations contains "CIS 5.2.15: SSH ClientAliveInterval not configured" if {
 	not sshd_config.clientaliveinterval
 }
@@ -196,6 +201,20 @@ config_violations contains sprintf("CIS 5.2.15: SSH ClientAliveCountMax is %v (s
 config_violations contains sprintf("CIS 5.2.16: SSH LoginGraceTime is %v seconds (should be 60 or less)", [grace]) if {
 	grace := to_number(sshd_config.logingracetime)
 	grace > 60
+}
+
+# 0 never drops an unresponsive session (keepalive probes are sent but never counted), so it does not satisfy 5.2.15.
+config_violations contains "CIS 5.2.15: SSH ClientAliveCountMax is 0 (unresponsive sessions are never dropped, should be 1-3)" if {
+	to_number(sshd_config.clientalivecountmax) == 0
+}
+
+# 0 disables the login grace limit (unlimited wait), so it does not satisfy 5.2.16.
+config_violations contains "CIS 5.2.16: SSH LoginGraceTime is 0 (no limit, should be 1-60 seconds)" if {
+	to_number(sshd_config.logingracetime) == 0
+}
+
+config_violations contains "CIS 5.2.16: SSH LoginGraceTime not configured (sshd default is 120 seconds, should be 60 or less)" if {
+	not sshd_config.logingracetime
 }
 
 # CIS 5.2.17 - Banner
