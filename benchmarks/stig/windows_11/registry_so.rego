@@ -193,7 +193,8 @@ status_r_wn11_so_000070 := "Open" if not r_wn11_so_000070
 default r_wn11_so_000075 := false
 
 r_wn11_so_000075 if {
-	input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText == "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only."
+	is_string(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText)
+	trim_space(input.registry["HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"].LegalNoticeText) != ""
 }
 
 finding_r_wn11_so_000075 := {
@@ -535,7 +536,7 @@ status_r_wn11_so_000220 := "Open" if not r_wn11_so_000220
 default r_wn11_so_000230 := false
 
 r_wn11_so_000230 if {
-	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy\\  (For GPO-managed systems)"].Enabled == 1
+	input.registry["HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy"].Enabled == 1
 }
 
 finding_r_wn11_so_000230 := {
