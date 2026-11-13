@@ -20,3 +20,13 @@ test_teams_validation_fail_closed_on_empty_input if {
 	report := data.cis_m365_v7.teams.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# Semantic review 2026-11-13 regressions.
+_has(v, id) := count({m | some m in v; startswith(m, id)}) > 0
+
+test_8_5_8_follows_external_chat_flag_not_8_5_5_value if {
+	ok := data.cis_m365_v7.teams.violation with input as {"teams": {"collected": true, "meeting_policies": [{"Identity": "Global", "MeetingChatEnabledType": "EnabledExceptAnonymous", "AllowExternalNonTrustedMeetingChat": false}]}}
+	not _has(ok, "CIS 8.5.8:")
+	bad := data.cis_m365_v7.teams.violation with input as {"teams": {"collected": true, "meeting_policies": [{"Identity": "Global", "MeetingChatEnabledType": "Disabled", "AllowExternalNonTrustedMeetingChat": true}]}}
+	_has(bad, "CIS 8.5.8:")
+}
