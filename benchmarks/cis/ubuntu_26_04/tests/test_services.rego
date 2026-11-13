@@ -467,3 +467,19 @@ test_2_2_6_evidence_missing if {
 	vs := data.cis_ubuntu_26_04.services.violations with input as {"packages": {"audit": true}}
 	"2.2.6: evidence missing — packages[ftp,tnftp,atftp,inetutils-ftp,ftp-ssl] not collected" in vs
 }
+
+# Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
+test_mta_inet_interfaces_wildcard_address_flagged if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "0.0.0.0"}}
+	"2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_127_0_0_1_accepted if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "127.0.0.1"}}
+	not "2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_mixed_list_flagged if {
+	vs := data.cis_ubuntu_26_04.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
+	"2.1.22: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}

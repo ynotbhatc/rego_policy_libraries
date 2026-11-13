@@ -27,11 +27,32 @@ sudo_installed if {
 	input.sudo.installed
 }
 
+# `Defaults use_pty` style flag: set on a Defaults line, never negated (`!use_pty`).
+# Substring matching would accept "Defaults !use_pty".
+sudoers_default_flag_set(flag) if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?%s\s*(,|#|$)`, [flag]), line)
+	not sudoers_default_flag_negated(flag)
+}
+
+sudoers_default_flag_negated(flag) if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(sprintf(`^\s*Defaults\s+([^#]*,\s*)?!\s*%s\s*(,|#|$)`, [flag]), line)
+}
+
+# `#includedir` and `@includedir` are directives, not comments.
+sudoers_includes_sudoers_d if {
+	some line in split(input.sudo.sudoers_content, "\n")
+	regex.match(`^\s*[#@]includedir\s+/etc/sudoers\.d/?\s*$`, line)
+}
+
+# Option value set on a non-comment line and not negated (`!logfile`).
 sudoers_has_option(option) if {
 	some line in split(input.sudo.sudoers_content, "\n")
 	trimmed := trim_space(line)
 	not startswith(trimmed, "#")
 	contains(trimmed, option)
+	not contains(trimmed, concat("", ["!", option]))
 }
 
 # CIS 5.3.1: sudo installed
@@ -43,7 +64,7 @@ violations contains msg if {
 # CIS 5.3.2: sudo uses pty
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("use_pty")
+	not sudoers_default_flag_set("use_pty")
 	msg := "CIS 5.3.2: sudo not configured to use pty (Defaults use_pty missing)"
 }
 
@@ -123,8 +144,7 @@ violations contains msg if {
 
 violations contains msg if {
 	sudo_installed
-	not sudoers_has_option("#includedir /etc/sudoers.d")
-	not sudoers_has_option("@includedir /etc/sudoers.d")
+	not sudoers_includes_sudoers_d
 	msg := "CIS 5.3: sudoers should include /etc/sudoers.d directory"
 }
 

@@ -34,3 +34,12 @@ test_metadata_picked_up_from_input if {
 	r.entity_name == "PharmaCo"
 	r.system_name == "Trial-Master"
 }
+
+# Semantic review 2026-11-13: section buckets must not double-list 11.100/11.300 under 11.10/11.30.
+test_section_summary_buckets_do_not_overlap if {
+	r := data.cfr_part_11.main.compliance_report with input as {}
+	count(r.section_summary.s11_10_closed_systems) == 22
+	count(r.section_summary.s11_30_open_systems) == 2
+	count(r.section_summary.s11_100_general_esig) == 3
+	count(r.section_summary.s11_300_id_codes) == 5
+}

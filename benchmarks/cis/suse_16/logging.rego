@@ -456,7 +456,7 @@ e_6_1_2_7 if {
 default p_6_1_2_7 := false
 
 p_6_1_2_7 if {
-	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(load=\"?imtcp\"?\\)|^input\\(type=\"?imtcp\"?|^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)")
+	not regex_in_text(input.rsyslog.config_raw, "(?i)(^module\\(\\s*load\\s*=\\s*\"?imtcp\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?imtcp\"?|^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)")
 }
 
 violations contains "6.1.2.7: evidence missing — rsyslog.config_raw not collected" if not e_6_1_2_7

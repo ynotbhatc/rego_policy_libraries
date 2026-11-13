@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 10
+#     checks: 12
 #     cited: 4
 #     density: sized
 #     basis: size
@@ -56,6 +56,11 @@ service_violations contains msg if {
 }
 
 # CIS 1.6.1.3: all AppArmor Profiles must be in enforce or complain mode
+profile_violations contains "CIS 1.6.1.3: evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected" if {
+	object.get(input, ["apparmor", "unloaded_profiles"], null) == null
+	not is_array(object.get(input, ["apparmor", "profiles"], null))
+}
+
 profile_violations contains msg if {
 	input.apparmor.unloaded_profiles > 0
 	msg := sprintf("CIS 1.6.1.3: %d AppArmor profiles are not loaded", [input.apparmor.unloaded_profiles])
@@ -68,6 +73,11 @@ profile_violations contains msg if {
 }
 
 # CIS 1.6.1.4: all AppArmor Profiles must be enforcing
+profile_violations contains "CIS 1.6.1.4: evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected" if {
+	object.get(input, ["apparmor", "complain_profiles"], null) == null
+	not is_array(object.get(input, ["apparmor", "profiles"], null))
+}
+
 profile_violations contains msg if {
 	input.apparmor.complain_profiles > 0
 	msg := sprintf("CIS 1.6.1.4: %d AppArmor profiles are in complain mode (should be enforce)", [input.apparmor.complain_profiles])

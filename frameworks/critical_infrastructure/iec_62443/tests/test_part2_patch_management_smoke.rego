@@ -25,3 +25,16 @@ test_part2_patch_management_violations_on_empty_input if {
 	v := data.iec_62443.part2_3.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: unnamed systems and missing firmware flag still raise findings.
+test_unnamed_ics_system_still_violates if {
+	v := data.iec_62443.part2_3.violations with input as {"ics_systems": [{"patch_status_documented": false, "os_version_current": false}]}
+	some m in v
+	contains(m, "<unnamed>")
+}
+
+test_missing_firmware_flag_raises_finding if {
+	v := data.iec_62443.part2_3.violations with input as {"ics_systems": [{"name": "plc"}]}
+	some m in v
+	contains(m, "firmware is not current")
+}

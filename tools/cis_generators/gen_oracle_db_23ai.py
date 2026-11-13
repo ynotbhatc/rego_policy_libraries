@@ -126,6 +126,14 @@ _unauthorized(g) if {
 	not g.grantee in input.oracle.authorized_grantees
 }
 
+# ADMIN_OPTION arrives as the view's 'YES'/'NO' (or Y/N) or as a boolean.
+_admin_option(g) if g.admin_option == true
+
+_admin_option(g) if {
+	is_string(g.admin_option)
+	upper(g.admin_option) in {"YES", "Y"}
+}
+
 no_unauthorized_sys_priv(priv) if {
 	is_array(input.oracle.grants.sys_privs)
 	count([g | some g in input.oracle.grants.sys_privs; g.privilege == priv; _unauthorized(g)]) == 0
@@ -176,7 +184,7 @@ RULES = {
     "5.4": audit_opts(["EXPORT"]),
     "5.5": (['every u in {"SYS", "SYSBACKUP", "SYSDG", "SYSKM", "SYSRAC", "PUBLIC"} { u in input.oracle.audit.all_actions_audited_users }'],
             [("oracle.audit.all_actions_audited_users", ["SYS", "SYSBACKUP", "SYSDG", "SYSKM", "SYSRAC", "PUBLIC"])]),
-    "6.1.1": sys_priv_like("ANY"), "6.1.2": (['is_array(input.oracle.grants.sys_privs)', 'count([g | some g in input.oracle.grants.sys_privs; g.admin_option == true; _unauthorized(g)]) == 0'], []),
+    "6.1.1": sys_priv_like("ANY"), "6.1.2": (['is_array(input.oracle.grants.sys_privs)', 'count([g | some g in input.oracle.grants.sys_privs; _admin_option(g); _unauthorized(g)]) == 0', 'count([g | some g in object.get(input, ["oracle", "grants", "role_privs"], []); _admin_option(g); _unauthorized(g)]) == 0'], []),
     "6.1.3": (['no_unauthorized_sys_priv("EXPORT FULL DATABASE")', 'no_unauthorized_sys_priv("IMPORT FULL DATABASE")'], []),
     "6.1.4": sys_priv("CREATE EXTERNAL JOB"), "6.1.5": sys_priv("BECOME USER"), "6.1.6": sys_priv("TEXT DATASTORE ACCESS"),
     "6.1.8": sys_priv("LOGMINING"), "6.1.9": sys_priv("ALTER SYSTEM"), "6.1.10": sys_priv("CREATE LIBRARY"),
@@ -202,6 +210,21 @@ def recommendations(text):
     for m in re.finditer(r"(?m)^\s*(\d+(?:\.\d+){1,3})\s+(Ensure .+?)\s*\((Automated|Manual)\)", t):
         out.setdefault(m.group(1), (re.sub(r"\s+", " ", m.group(2)).strip(), m.group(3)))
     return out
+
+
+def admin_option_tests(msg):
+    """6.1.2 regressions: ADMIN_OPTION as the view's 'YES'/'NO' strings, and a role granted WITH ADMIN OPTION.
+    `msg` is the quoted violation message. Same function as in gen_oracle_db_26ai.py (not imported: that file needs openpyxl)."""
+    def patch(lst, key, value, flag):
+        row = {"grantee": "APP", key: value, "oracle_maintained": "N", "admin_option": flag}
+        return "\tbad := json.patch(green, " + json.dumps([{"op": "replace", "path": f"/oracle/grants/{lst}", "value": [row]}]) + ")"
+    return ["# Semantic review 2026-11-13 regressions: ADMIN_OPTION arrives as 'YES', and role grants are examined.",
+            "test_6_1_2_fail_admin_option_yes_string if {", patch("sys_privs", "privilege", "CREATE SESSION", "YES"),
+            f"\t{msg} in b.violations with input as bad", "}", "",
+            "test_6_1_2_pass_admin_option_no_string if {", patch("sys_privs", "privilege", "CREATE SESSION", "NO"),
+            "\tv := b.violations with input as bad", '\tcount([m | some m in v; startswith(m, "6.1.2:")]) == 0', "}", "",
+            "test_6_1_2_fail_role_priv_admin_option if {", patch("role_privs", "granted_role", "CONNECT", "YES"),
+            f"\t{msg} in b.violations with input as bad", "}", ""]
 
 
 def ident(rid):
@@ -293,6 +316,7 @@ def main(txt):
          "test_every_recommendation_fires_without_facts if {",
          '\tv := b.violations with input as {"oracle": {}}',
          "\tids := {id | some m in v; id := split(m, \":\")[0]}", f"\tcount(ids) >= {len(ids)}", "}", ""]
+    T += admin_option_tests(json.dumps(f"6.1.2: {recs['6.1.2'][0]}"))
     (OUT / "tests" / "test_cis_oracle_23ai.rego").parent.mkdir(exist_ok=True)
     (OUT / "tests" / "test_cis_oracle_23ai.rego").write_text("\n".join(T))
     print(f"cis_oracle_23ai: {len(ids)} recommendations ({sum(1 for r in recs.values() if r[1] == 'Automated')} Automated, "

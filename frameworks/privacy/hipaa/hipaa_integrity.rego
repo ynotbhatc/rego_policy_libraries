@@ -6,7 +6,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 19
+#     checks: 22
 #     cited: 3
 #     density: sized
 #     basis: size
@@ -56,6 +56,16 @@ violation_data_integrity contains msg if {
 	msg := sprintf(
 		"HIPAA 164.312(c)(1): System '%v' integrity checks run every %v hours. Daily or more frequent checks are required for ePHI.",
 		[phi_system.name, phi_system.integrity_check_frequency_hours],
+	)
+}
+
+violation_data_integrity contains msg if {
+	some phi_system in input.phi_systems
+	phi_system.integrity_checking_enabled
+	not is_number(object.get(phi_system, "integrity_check_frequency_hours", null))
+	msg := sprintf(
+		"HIPAA 164.312(c)(1): evidence missing — integrity_check_frequency_hours not collected for system '%v'.",
+		[object.get(phi_system, "name", "unknown")],
 	)
 }
 
@@ -112,6 +122,12 @@ violation_backup contains msg if {
 }
 
 violation_backup contains msg if {
+	input.backup.regular_backups_enabled
+	not is_number(object.get(input, ["backup", "backup_frequency_hours"], null))
+	msg := "HIPAA 164.312(c)(1): evidence missing — backup.backup_frequency_hours not collected. Backup cadence cannot be verified."
+}
+
+violation_backup contains msg if {
 	not input.backup.offsite_or_cloud_backup
 	msg := "HIPAA 164.312(c)(1): ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
 }
@@ -133,6 +149,12 @@ violation_backup contains msg if {
 # ---------------------------------------------------------------------------
 # Destruction of ePHI
 # ---------------------------------------------------------------------------
+
+violation_backup contains msg if {
+	input.backup.restore_tested
+	not is_number(object.get(input, ["backup", "restore_test_days"], null))
+	msg := "HIPAA 164.312(c)(1): evidence missing — backup.restore_test_days not collected. Restore-test recency cannot be verified."
+}
 
 violation_destruction contains msg if {
 	not input.integrity.secure_deletion_policy

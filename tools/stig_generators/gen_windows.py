@@ -62,7 +62,7 @@ HEAD_RE = re.compile(
 VALUE_RE = re.compile(
     r"Value Name:\s*(?P<name>[^\r\n]+?)\s*[\r\n]+"
     r"(?:\s*Value Type:\s*(?P<type2>REG_[A-Z_]+)\s*|\s*Type:\s*(?P<type>REG_[A-Z_]+)\s*)"
-    r"Value:\s*(?P<value>[^\r\n]+)", re.IGNORECASE)
+    r"Value:\s*(?P<value>[^\r\n]+(?:\r?\n[ \t]*0x[0-9a-fA-F]+[^\r\n]*)*)", re.IGNORECASE)
 VALUE_NAME_RE = re.compile(r"Value Name:", re.IGNORECASE)
 
 
@@ -117,13 +117,26 @@ def parse_values(value):
     return {"nums": nums, "op": op, "exclude_zero": exclude_zero, "allow_absent": allow_absent}
 
 
+def clean_path(path):
+    """DISA pads paths with prose and stray spaces ("\\  (For GPO-managed systems)", "\\SOFTWARE\\ Policies"):
+    drop trailing parenthetical prose and whitespace around separators so the key can match a fact."""
+    path = re.sub(r"\\\s*\(.*$", "", path.strip())
+    path = re.sub(r"\s*\\\s*", r"\\", path)
+    return path.strip().rstrip("\\")
+
+
+# Banner / title values DISA gives as prose ("See message text below" + the banner on the next
+# lines). A host's real banner can never equal that prose, so these are checked as a non-empty string.
+FREE_TEXT_VALUES = {"LegalNoticeText", "LegalNoticeCaption"}
+
+
 def _one_block(block, mode):
     hive, path, name, t2, t, value = block
     rtype = (t or t2).upper()
     hive = HIVE_ALIAS.get(hive.upper())
     if not hive:
         return None
-    path = path.strip().rstrip("\\")
+    path = clean_path(path)
     name = name.strip()
     value = value.strip()
     key = hive + path
@@ -135,6 +148,8 @@ def _one_block(block, mode):
             return None
         return dict(key=key, name=name, mode="dword", type=rtype, **pv)
     if rtype in ("REG_SZ", "REG_EXPAND_SZ"):
+        if name in FREE_TEXT_VALUES:
+            return {"key": key, "name": name, "mode": "nonempty", "type": rtype}
         v = value.splitlines()[0].strip()
         pv = parse_values(v)
         if pv:
@@ -260,6 +275,11 @@ def gen_platform(cat_key, pkg, title_prefix, existing_modules):
                 ref = f'input.registry["{key}"]["{name}"]'
                 if dd["mode"] == "absent":
                     body.append(f"\tnot {ref}")
+                    continue
+                if dd["mode"] == "nonempty":
+                    body.append(f"\tis_string({ref})")
+                    body.append(f'\ttrim_space({ref}) != ""')
+                    fixture_reg.setdefault(dd["key"], {})[dd["name"]] = "<banner text as configured>"
                     continue
                 if dd["mode"] == "sz":
                     body.append(f'\t{ref} == "{esc(dd["str"])}"')

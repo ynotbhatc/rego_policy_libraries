@@ -6,10 +6,10 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 7
-#     cited: 7
-#     density: section
-#     basis: role
+#     checks: 10
+#     cited: 10
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -55,6 +55,9 @@ area_summary := {
 	"continuous_monitoring": {"violations": count(f.violation_conmon), "compliant": count(f.violation_conmon) == 0},
 	"third_party_assessment": {"violations": count(f.violation_3pao), "compliant": count(f.violation_3pao) == 0},
 	"supply_chain": {"violations": count(f.violation_scrm), "compliant": count(f.violation_scrm) == 0},
+	"moderate_high": {"violations": count(f.violation_moderate_high), "compliant": count(f.violation_moderate_high) == 0},
+	"high": {"violations": count(f.violation_high), "compliant": count(f.violation_high) == 0},
+	"impact_level": {"violations": count(f.violation_impact_level), "compliant": count(f.violation_impact_level) == 0},
 }
 
 # FedRAMP control counts vary by impact level (Low: ~125, Moderate: ~325,

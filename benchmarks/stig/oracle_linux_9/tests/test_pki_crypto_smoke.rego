@@ -25,3 +25,9 @@ test_pki_crypto_violations_on_empty_input if {
 	v := data.stig.oracle_linux_9.pki_crypto.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_ol09_00_000242 if {
+	data.stig.oracle_linux_9.pki_crypto.status_ol09_00_000242 == "Open" with input as {"x": 1}
+}

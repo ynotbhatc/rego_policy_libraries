@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 11
+#     checks: 12
 #     cited: 9
 #     density: sized
 #     basis: size
@@ -46,6 +46,10 @@ violations := array.concat(
 # =============================================================================
 # CIS 1.1.1.x - DISABLED FILESYSTEM MODULES
 # =============================================================================
+
+filesystem_module_violations contains "CIS 1.1.1.x: evidence missing - disabled_filesystem_modules.modules not collected" if {
+	count(object.get(object.get(input, "disabled_filesystem_modules", {}), "modules", [])) == 0
+}
 
 filesystem_module_violations contains violation if {
 	some module in input.disabled_filesystem_modules.modules

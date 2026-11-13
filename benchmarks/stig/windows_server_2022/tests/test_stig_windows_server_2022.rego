@@ -87,7 +87,7 @@ green_fixture := {"registry": {
 		"DisableAutomaticRestartSignOn": 1,
 		"LocalAccountTokenFilterPolicy": 0,
 		"InactivityTimeoutSecs": 900,
-		"LegalNoticeText": "See message text below",
+		"LegalNoticeText": "<banner text as configured>",
 		"FilterAdministratorToken": 1,
 		"EnableUIADesktopToggle": 0,
 		"ConsentPromptBehaviorAdmin": 2,

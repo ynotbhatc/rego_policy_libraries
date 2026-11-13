@@ -40,7 +40,7 @@ test_compliant_input_no_violations if {
 test_discovery_response_not_object if {
 	test_input := json.patch(compliant_input, [{"op": "replace", "path": "/discovery_response", "value": "not-an-object"}])
 	api.violations["API: platform discovery response missing or not an object"] with input as test_input
-	count(api.violations) == 1 with input as test_input
+	count(api.violations) == 4 with input as test_input
 	not api.compliant with input as test_input
 }
 
@@ -109,7 +109,7 @@ test_application_id_not_string if {
 		},
 	}
 	api.violations["API: manifest.applicationId must be set"] with input as test_input
-	count(api.violations) == 1 with input as test_input
+	count(api.violations) == 3 with input as test_input
 }
 
 # ─── Violation 9: applicationId must be non-empty ────────────────────────────
@@ -128,7 +128,7 @@ test_application_id_empty if {
 		},
 	}
 	api.violations["API: manifest.applicationId must be non-empty"] with input as test_input
-	count(api.violations) == 1 with input as test_input
+	count(api.violations) == 3 with input as test_input
 }
 
 # ─── Report object is populated even on empty input ──────────────────────────
@@ -144,4 +144,16 @@ test_compliance_report_populated_on_empty_input if {
 	report.app_id == "unknown"
 	report.geisa_version == "unknown"
 	report.platform_discovery_status == 0
+}
+
+# Semantic review 2026-11-13: absent evidence must fail closed, not pass.
+test_empty_discovery_response_not_compliant if {
+	test_input := {
+		"manifest": {"applicationId": "com.x.app"},
+		"discovery_response": {},
+	}
+	not api.compliant with input as test_input
+	api.violations["API: evidence missing — discovery_response.status_code not collected (must be a number)"] with input as test_input
+	api.violations["API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')"] with input as test_input
+	api.violations["API: evidence missing — manifest.permissions.mqtt.publish not collected"] with input as test_input
 }

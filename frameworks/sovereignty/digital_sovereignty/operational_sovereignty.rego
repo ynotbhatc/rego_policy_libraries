@@ -6,8 +6,8 @@
 #   source: aac
 #   domains: [sovereignty, data-residency]
 #   coverage:
-#     checks: 22
-#     cited: 12
+#     checks: 34
+#     cited: 18
 #     density: sized
 #     basis: size
 #     tested: true
@@ -242,8 +242,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-001",
 		"severity": "critical",
-		"person_id": p.person_id,
-		"description": concat("", ["Privileged personnel not currently vetted: ", p.person_id, " (", p.role, ")"]),
+		"person_id": object.get(p, "person_id", "unknown"),
+		"description": concat("", ["Privileged personnel not currently vetted: ", object.get(p, "person_id", "unknown"), " (", object.get(p, "role", "unknown"), ")"]),
 		"remediation": "Complete background vetting for all privileged/admin personnel",
 	}
 }
@@ -257,8 +257,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-002",
 		"severity": "high",
-		"person_id": p.person_id,
-		"description": concat("", ["Privileged personnel located outside approved jurisdiction: ", p.person_id, " in ", p.location_country]),
+		"person_id": object.get(p, "person_id", "unknown"),
+		"description": concat("", ["Privileged personnel located outside approved jurisdiction: ", object.get(p, "person_id", "unknown"), " in ", object.get(p, "location_country", "unknown")]),
 		"remediation": "Restrict privileged access to personnel located in approved jurisdictions or implement compensating controls",
 	}
 }
@@ -272,8 +272,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-003",
 		"severity": "critical",
-		"person_id": p.person_id,
-		"description": concat("", ["Privileged access held by person with foreign government connection: ", p.person_id]),
+		"person_id": object.get(p, "person_id", "unknown"),
+		"description": concat("", ["Privileged access held by person with foreign government connection: ", object.get(p, "person_id", "unknown")]),
 		"remediation": "Revoke privileged access pending review; implement compensating controls",
 	}
 }
@@ -287,8 +287,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-004",
 		"severity": "critical",
-		"vendor_id": va.vendor_id,
-		"description": concat("", ["Vendor access to sensitive data is not monitored: ", va.vendor_name]),
+		"vendor_id": object.get(va, "vendor_id", "unknown"),
+		"description": concat("", ["Vendor access to sensitive data is not monitored: ", object.get(va, "vendor_name", "unknown")]),
 		"remediation": "Implement session monitoring and recording for all vendor access to sensitive systems",
 	}
 }
@@ -302,8 +302,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-005",
 		"severity": "high",
-		"vendor_id": va.vendor_id,
-		"description": concat("", ["Vendor can access sensitive data without explicit approval: ", va.vendor_name]),
+		"vendor_id": object.get(va, "vendor_id", "unknown"),
+		"description": concat("", ["Vendor can access sensitive data without explicit approval: ", object.get(va, "vendor_name", "unknown")]),
 		"remediation": "Implement just-in-time access with approval workflow for all vendor access",
 	}
 }
@@ -316,8 +316,8 @@ violations contains v if {
 		"domain": "operational_sovereignty",
 		"control": "OS-006",
 		"severity": "high",
-		"vendor_id": sc.vendor_id,
-		"description": concat("", ["Support contract does not include right to refuse foreign government access: ", sc.vendor_name]),
+		"vendor_id": object.get(sc, "vendor_id", "unknown"),
+		"description": concat("", ["Support contract does not include right to refuse foreign government access: ", object.get(sc, "vendor_name", "unknown")]),
 		"remediation": "Renegotiate contract to include explicit right to refuse or challenge foreign government access requests",
 	}
 }
@@ -366,6 +366,91 @@ violations contains v if {
 	}
 }
 
+violations contains v if {
+	not vendor_access_logged
+	va := input.vendor_access[_]
+	not va.sessions_logged == true
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-011",
+		"severity": "high",
+		"vendor_id": object.get(va, "vendor_id", "unknown"),
+		"description": concat("", ["Vendor access sessions are not logged: ", object.get(va, "vendor_name", "unknown")]),
+		"remediation": "Log all vendor access sessions to a tamper-evident store inside the approved jurisdiction",
+	}
+}
+
+violations contains v if {
+	not vendor_jit_access_implemented
+	va := input.vendor_access[_]
+	va.data_classification_accessed in ["sensitive", "restricted", "sovereign"]
+	not va.just_in_time_access == true
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-012",
+		"severity": "medium",
+		"vendor_id": object.get(va, "vendor_id", "unknown"),
+		"description": concat("", ["Vendor access to sensitive data is not just-in-time: ", object.get(va, "vendor_name", "unknown")]),
+		"remediation": "Provision vendor access just-in-time with automatic expiry",
+	}
+}
+
+violations contains v if {
+	not foreign_vendor_sovereign_access_controlled
+	va := input.vendor_access[_]
+	va.data_classification_accessed in ["sovereign", "restricted"]
+	not va.vendor_hq_country in input.approved_jurisdictions
+	not va.access_requires_approval == true
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-013",
+		"severity": "critical",
+		"vendor_id": object.get(va, "vendor_id", "unknown"),
+		"description": concat("", ["Foreign-headquartered vendor can access sovereign/restricted data without approval: ", object.get(va, "vendor_name", "unknown")]),
+		"remediation": "Require explicit approval for foreign-headquartered vendor access to sovereign data",
+	}
+}
+
+violations contains v if {
+	not support_personnel_in_jurisdiction
+	sc := input.support_contracts[_]
+	not sc.support_personnel_location in input.approved_jurisdictions
+	not sc.data_handling_agreement == true
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-014",
+		"severity": "high",
+		"vendor_id": object.get(sc, "vendor_id", "unknown"),
+		"description": concat("", ["Support personnel outside approved jurisdictions with no data handling agreement: ", object.get(sc, "vendor_name", "unknown")]),
+		"remediation": "Locate support personnel in approved jurisdictions or put a data handling agreement in place",
+	}
+}
+
+violations contains v if {
+	not foreign_disclosure_clause_in_contracts
+	sc := input.support_contracts[_]
+	not sc.foreign_government_disclosure_clause == true
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-015",
+		"severity": "high",
+		"vendor_id": object.get(sc, "vendor_id", "unknown"),
+		"description": concat("", ["Support contract has no foreign government disclosure clause: ", object.get(sc, "vendor_name", "unknown")]),
+		"remediation": "Add a clause specifying how foreign government disclosure requests are handled",
+	}
+}
+
+violations contains v if {
+	not jit_provisioning_enabled
+	v := {
+		"domain": "operational_sovereignty",
+		"control": "OS-016",
+		"severity": "medium",
+		"description": "Just-in-time privileged provisioning not enabled (standing privileges remain)",
+		"remediation": "Enable just-in-time provisioning for privileged access",
+	}
+}
+
 # =============================================================================
 # OVERALL COMPLIANCE
 # =============================================================================
@@ -405,10 +490,16 @@ report := {
 		"OS-008_foreign_access_request_policy": foreign_access_request_policy,
 		"OS-009_remote_ops_controlled": remote_operations_controlled,
 		"OS-010_privileged_access_review": privileged_access_review_current,
+		"OS-011_vendor_access_logged": vendor_access_logged,
+		"OS-012_vendor_jit_access": vendor_jit_access_implemented,
+		"OS-013_foreign_vendor_access_controlled": foreign_vendor_sovereign_access_controlled,
+		"OS-014_support_personnel_in_jurisdiction": support_personnel_in_jurisdiction,
+		"OS-015_foreign_disclosure_clause": foreign_disclosure_clause_in_contracts,
+		"OS-016_jit_provisioning": jit_provisioning_enabled,
 	},
 	"personnel_summary": {
 		"total_privileged": count([p | p := input.personnel[_]; p.access_level in ["admin", "privileged"]]),
-		"in_jurisdiction": count([p | p := input.personnel[_]; p.access_level in ["admin", "privileged"]; p.location_country in input.approved_jurisdictions]),
+		"in_jurisdiction": count([p | p := input.personnel[_]; p.access_level in ["admin", "privileged"]; object.get(p, "location_country", "unknown") in input.approved_jurisdictions]),
 		"vetted": count([p | p := input.personnel[_]; p.vetting_current == true]),
 	},
 	"violations": violations,
@@ -416,6 +507,30 @@ report := {
 }
 
 # Defaults for control rules — ensure report never collapses to {} on absent facts
+default privileged_personnel_vetted := false
+
+default privileged_personnel_in_jurisdiction := false
+
+default no_foreign_connected_privileged_access := false
+
+default vendor_access_monitored := false
+
+default vendor_access_logged := false
+
+default vendor_access_requires_approval := false
+
+default vendor_jit_access_implemented := false
+
+default foreign_vendor_sovereign_access_controlled := false
+
+default support_personnel_in_jurisdiction := false
+
+default right_to_refuse_foreign_access := false
+
+default foreign_disclosure_clause_in_contracts := false
+
+default jit_provisioning_enabled := false
+
 default foreign_access_request_policy := false
 
 default pam_deployed := false

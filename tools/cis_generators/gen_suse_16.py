@@ -1016,6 +1016,9 @@ L["5.3.2.1.3"] = custom(
     reads=[FL])
 PQ = ["pam", "pwquality_conf_raw"]
 L["5.3.2.2.1"] = conf(PQ, "dictcheck", 'num(v) != 0', "dictcheck = 1", "dictcheck = 0")
+L["5.3.2.2.1"].passes = [[
+    '# pwquality defaults to dictcheck=1: an absent directive is compliant, any explicit 0 is not.',
+    f'every v in conf_values({ref(PQ)}, "dictcheck") {{ num(v) != 0 }}']]
 L["5.3.2.2.2"] = conf(PQ, "difok", 'num(v) >= 2', "difok = 2", "difok = 1")
 L["5.3.2.2.3"] = conf(PQ, "minlen", 'num(v) >= 14', "minlen = 14", "minlen = 8")
 L["5.3.2.2.4"] = custom(
@@ -1132,7 +1135,11 @@ L["5.4.3.2"] = custom(['input.pam.tmout != null'], [['num(input.pam.tmout) > 0',
 L["5.4.3.3"] = custom(['input.pam.default_umask != null'], [['umask_ok(sprintf("%v", [input.pam.default_umask]))']],
                       "pam.default_umask", {"pam": {"default_umask": "027"}}, {"pam": {"default_umask": "022"}},
                       reads=[["pam", "default_umask"]])
-L["5.4.3.4"] = text_has(["pam", "profile_d_raw"], "(?i)^umask\\s+0?027\\b", True, "umask 027", "umask 022")
+# 027 "or more restrictive": every umask line must be at least as strict (077 passes, a later 022 fails)
+PDR = ["pam", "profile_d_raw"]
+L["5.4.3.4"] = custom([f'is_string({ref(PDR)})'],
+                      [[f'vals := umask_values({ref(PDR)})', 'count(vals) > 0', 'every u in vals { umask_ok(u) }']],
+                      dotted(PDR), nest(PDR, "umask 027"), nest(PDR, "umask 022"), reads=[PDR])
 
 # 6.1 logging (mapper journald / rsyslog fields)
 L["6.1.1.1"] = boolean(["journald", "service_active"], True)
@@ -1165,7 +1172,7 @@ L["6.1.2.4"] = custom(['is_boolean(input.rsyslog.installed)'],
 L["6.1.2.5"] = attest("rsyslog_logging_reviewed")
 L["6.1.2.6"] = attest("rsyslog_remote_host_configured")
 RC = ["rsyslog", "config_raw"]
-L["6.1.2.7"] = text_has(RC, "(?i)(^module\\(load=\"?imtcp\"?\\)|^input\\(type=\"?imtcp\"?|^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)",
+L["6.1.2.7"] = text_has(RC, "(?i)(^module\\(\\s*load\\s*=\\s*\"?imtcp\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?imtcp\"?|^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)",
                         False, "*.* /var/log/messages", 'module(load="imtcp")')
 L["6.1.2.8"] = attest("logrotate_reviewed")
 L["6.1.2.9"] = pkg_present("rsyslog-module-gtls")
@@ -1445,9 +1452,14 @@ pam_motd_ok(l) if {
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 
+# Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
+# 0.0.0.0 is the wildcard address (all interfaces), not loopback.
+mta_loopback_tokens := {"127.0.0.1", "::1", "[::1]", "localhost", "loopback-only"}
+
 mta_interfaces_open if {
 	is_string(input.mta.inet_interfaces)
-	not regex.match(`(0\.0\.0\.0|::1|loopback-only|localhost)`, lower(input.mta.inet_interfaces))
+	some tok in regex.split(`[\s,]+`, trim_space(lower(input.mta.inet_interfaces)))
+	not tok in mta_loopback_tokens
 }
 ''',
     "firewall": r'''
@@ -1880,6 +1892,65 @@ def emit_module(name, title, ids, recs):
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
+# Regression tests from the 2026-11-13 semantic review, appended to the generated test file of the module
+# they are keyed by. They pin the reviewed logic above: change them only together with that logic.
+REGRESSION_TESTS = {
+    'accounts': r'''
+# Semantic review 2026-11-13: a stricter umask than 027 is compliant ("or more restrictive").
+test_5_4_3_4_umask_077_passes if {
+	vs := data.cis_suse16.accounts.violations with input as {"pam": {"profile_d_raw": "umask 077"}}
+	count([v | some v in vs; startswith(v, "5.4.3.4: ")]) == 0
+}
+
+test_5_4_3_4_mixed_umask_fails if {
+	vs := data.cis_suse16.accounts.violations with input as {"pam": {"profile_d_raw": "umask 077\numask 022"}}
+	count([v | some v in vs; startswith(v, "5.4.3.4: ")]) > 0
+}
+''',
+    'logging': r'''
+# Semantic review 2026-11-13: module(load="imtcp" ...params) and `input( type=` are remote-receive configuration.
+test_remote_receive_module_with_params_flagged if {
+	vs := data.cis_suse16.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "module(load=\"imtcp\" MaxSessions=\"500\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_input_with_space_flagged if {
+	vs := data.cis_suse16.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "input( type=\"imtcp\" port=\"514\")\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) > 0
+}
+
+test_remote_receive_absent_not_flagged if {
+	vs := data.cis_suse16.logging.violations with input as {"rsyslog": {"installed": true, "config_raw": "*.* /var/log/messages\n"}}
+	count([v | some v in vs; startswith(v, "6.1.2.7: not met")]) == 0
+}
+''',
+    'pam': r'''
+# Semantic review 2026-11-13: dictcheck defaults to 1, so an absent directive is compliant.
+test_5_3_2_2_1_absent_directive_passes if {
+	vs := data.cis_suse16.pam.violations with input as {"pam": {"pwquality_conf_raw": "# dictcheck = 1\nminlen = 14\n"}}
+	count([v | some v in vs; startswith(v, "5.3.2.2.1: ")]) == 0
+}
+''',
+    'services': r'''
+# Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
+test_mta_inet_interfaces_wildcard_address_flagged if {
+	vs := data.cis_suse16.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "0.0.0.0"}}
+	"2.1.21: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_127_0_0_1_accepted if {
+	vs := data.cis_suse16.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "127.0.0.1"}}
+	not "2.1.21: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_mixed_list_flagged if {
+	vs := data.cis_suse16.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
+	"2.1.21: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+''',
+}
+
+
 def emit_tests(name, ids, recs):
     lines = [f"package cis_suse16.{name}_test", "", "import rego.v1", "",
              "# Generated by tools/cis_generators/gen_suse_16.py: a pass and a fail case for every recommendation,",
@@ -1907,6 +1978,8 @@ def emit_tests(name, ids, recs):
         if miss and not s.hollow_ok and hollow(s.tp) != s.tp:  # present-but-hollow facts (blank strings, empty lists) never pass
             lines += [f"test_{k}_hollow_evidence_not_a_pass if {{", f"\tvs := {mod} with input as {J(hollow(s.tp))}",
                       f"\tcount([v | some v in vs; startswith(v, {pre})]) > 0", "}", ""]
+    if name in REGRESSION_TESTS:
+        lines += REGRESSION_TESTS[name].strip("\n").split("\n") + [""]
     return "\n".join(lines).rstrip("\n") + "\n"
 
 

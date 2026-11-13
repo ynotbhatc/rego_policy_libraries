@@ -6,7 +6,7 @@
 #   source: nist
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 8
+#     checks: 9
 #     cited: 6
 #     density: section
 #     basis: role
@@ -65,6 +65,10 @@ no_prohibited_ciphers_enabled if {
 	count(configured & prohibited_ciphers) == 0
 }
 
+has_enabled_ciphers_evidence if {
+	is_array(input.system_comms.encryption.enabled_ciphers)
+}
+
 # SG.SC-8: RF mesh network encryption
 rf_mesh_encrypted if {
 	input.system_comms.rf_mesh.encrypted == true
@@ -109,13 +113,18 @@ violations contains msg if {
 
 violations contains msg if {
 	not tls_version_compliant
-	msg := sprintf("SG.SC-8: TLS version '%v' is not approved — use TLS 1.2 or TLS 1.3", [input.system_comms.encryption.tls_version])
+	msg := sprintf("SG.SC-8: TLS version '%v' is not approved — use TLS 1.2 or TLS 1.3", [object.get(input, ["system_comms", "encryption", "tls_version"], "not collected")])
 }
 
 violations contains msg if {
 	not no_prohibited_ciphers_enabled
 	bad := {cipher | cipher := input.system_comms.encryption.enabled_ciphers[_]; cipher in prohibited_ciphers}
 	msg := sprintf("SG.SC-8: Prohibited cipher suites are enabled: %v", [bad])
+}
+
+violations contains msg if {
+	not has_enabled_ciphers_evidence
+	msg := "SG.SC-8: evidence missing — system_comms.encryption.enabled_ciphers not collected"
 }
 
 violations contains msg if {

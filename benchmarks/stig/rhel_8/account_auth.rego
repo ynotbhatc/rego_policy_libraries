@@ -36,8 +36,10 @@ default compliant := false
 # RHEL-08-010121 | V-251706 | CAT I - No empty passwords
 default no_empty_passwords := false
 
-no_empty_passwords if not input.local_accounts_with_empty_passwords
-no_empty_passwords if count(input.local_accounts_with_empty_passwords) == 0
+no_empty_passwords if {
+	is_array(input.local_accounts_with_empty_passwords)
+	count(input.local_accounts_with_empty_passwords) == 0
+}
 
 status_rhel_08_010121 := "Not_a_Finding" if no_empty_passwords
 
@@ -196,8 +198,10 @@ finding_rhel_08_020260 := {
 # RHEL-08-020240 | V-230371 | CAT II - No duplicate UIDs
 default no_dup_uids := false
 
-no_dup_uids if not input.duplicate_uids
-no_dup_uids if count(input.duplicate_uids) == 0
+no_dup_uids if {
+	is_array(input.duplicate_uids)
+	count(input.duplicate_uids) == 0
+}
 
 status_rhel_08_020240 := "Not_a_Finding" if no_dup_uids
 

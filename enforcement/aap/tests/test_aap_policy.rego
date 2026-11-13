@@ -356,3 +356,28 @@ test_all_decisions_return_pac_contract if {
 		is_array(d.violations)
 	} with input as _base_input
 }
+
+# Semantic review 2026-11-13: require_https must reject ssh:// and http:// URLs.
+test_require_https_rejects_ssh_scheme if {
+	r := policy.source_control with input as {"project": {"scm_url": "ssh://git@github.com/org/repo.git", "scm_branch": "main"}}
+		with data.aac.aap.config.source_control as {"require_https": true, "allowed_repos": ["github.com/org/*"]}
+	r.allowed == false
+}
+
+test_require_https_rejects_http_scheme if {
+	r := policy.source_control with input as {"project": {"scm_url": "http://github.com/org/repo.git", "scm_branch": "main"}}
+		with data.aac.aap.config.source_control as {"require_https": true, "allowed_repos": ["github.com/org/*"]}
+	r.allowed == false
+}
+
+test_ssh_scheme_checked_against_allowlist_when_https_not_required if {
+	r := policy.source_control with input as {"project": {"scm_url": "ssh://git@github.com/evil/repo.git", "scm_branch": "main"}}
+		with data.aac.aap.config.source_control as {"require_https": false, "allowed_repos": ["github.com/org/*"]}
+	r.allowed == false
+}
+
+test_https_url_still_allowed if {
+	r := policy.source_control with input as {"project": {"scm_url": "https://github.com/org/repo.git", "scm_branch": "main"}}
+		with data.aac.aap.config.source_control as {"require_https": true, "allowed_repos": ["github.com/org/*"]}
+	r.allowed == true
+}

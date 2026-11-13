@@ -6,7 +6,7 @@
 #   source: eu
 #   domains: [ai, eu]
 #   coverage:
-#     checks: 27
+#     checks: 30
 #     cited: 10
 #     density: sized
 #     basis: size
@@ -63,6 +63,20 @@ violations contains msg if {
 violations contains msg if {
 	not input.eu_ai_act.governance.deployer.input_data_relevance_verified == true
 	msg := "Article 26.5: Deployer has not verified that input data is relevant and sufficiently representative for the intended purpose of the high-risk AI system"
+}
+
+# Fail-closed: an applicability flag that was not collected means the obligation's scope is undetermined, so it
+# cannot be treated as "not applicable".
+violations contains "Article 26.9 / Article 27: evidence missing — deployer.high_risk_public_or_private_sector not collected; FRIA applicability undetermined" if {
+	not is_boolean(object.get(input, ["eu_ai_act", "governance", "deployer", "high_risk_public_or_private_sector"], null))
+}
+
+violations contains "Article 26.8: evidence missing — deployer.annex_iii_use_case not collected; EU database registration applicability undetermined" if {
+	not is_boolean(object.get(input, ["eu_ai_act", "governance", "deployer", "annex_iii_use_case"], null))
+}
+
+violations contains "Article 27: evidence missing — fria.assessment_required not collected; FRIA applicability undetermined" if {
+	not is_boolean(object.get(input, ["eu_ai_act", "governance", "fria", "assessment_required"], null))
 }
 
 # =============================================================================

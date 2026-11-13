@@ -76,7 +76,14 @@ entry_matches(entry, v) if {
 	object.get(entry, "framework", "*") in {input_framework, "*"}
 	cid := object.get(entry, "control_id", "")
 	cid != ""
-	contains(violation_text(v), cid)
+	_contains_id(violation_text(v), cid)
+}
+
+# Token-boundary match: the control id must not be a fragment of a longer id
+# (a waiver for 5.2.1 must not waive 5.2.10, 15.2.1 or 5.2.1.3).
+_contains_id(text, cid) if {
+	esc := regex.replace(cid, `[.\\+*?()|\[\]{}^$]`, `\$0`)
+	regex.match(sprintf(`(^|[^0-9A-Za-z.])%s($|[^0-9A-Za-z.]|\.($|[^0-9A-Za-z]))`, [esc]), text)
 }
 
 # ── Decision sets ─────────────────────────────────────────────────────────────

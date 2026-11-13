@@ -495,3 +495,19 @@ test_v3_services_violations_carry_section_ids if {
 	vs := data.cis_rhel9.services.violations with input as {}
 	every v in vs { split(v, ":")[0] in ["2.1.1", "2.1.2", "2.1.3", "2.1.4", "2.1.5", "2.1.6", "2.1.7", "2.1.8", "2.1.9", "2.1.10", "2.1.11", "2.1.12", "2.1.13", "2.1.14", "2.1.15", "2.1.16", "2.1.17", "2.1.18", "2.1.19", "2.1.20", "2.1.21", "2.1.22", "2.1.23", "2.2.1", "2.2.2", "2.2.3", "2.2.4", "2.3.1", "2.3.2", "2.3.3"] }
 }
+
+# Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
+test_mta_inet_interfaces_wildcard_address_flagged if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "0.0.0.0"}}
+	"2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_127_0_0_1_accepted if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "127.0.0.1"}}
+	not "2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+
+test_mta_inet_interfaces_mixed_list_flagged if {
+	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
+	"2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}

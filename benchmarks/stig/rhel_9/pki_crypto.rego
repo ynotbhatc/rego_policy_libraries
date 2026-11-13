@@ -39,11 +39,8 @@ default compliant := false
 default crypto_policy_not_overridden := false
 
 crypto_policy_not_overridden if {
+	is_array(input.crypto_policy_overrides)
 	count(input.crypto_policy_overrides) == 0
-}
-
-crypto_policy_not_overridden if {
-	not input.crypto_policy_overrides
 }
 
 status_rhel_09_672020 := "Not_a_Finding" if crypto_policy_not_overridden
@@ -68,7 +65,7 @@ openssl_system_policy if {
 }
 
 openssl_system_policy if {
-	not input.openssl_config.legacy_override
+	input.openssl_config.legacy_override == false
 }
 
 status_rhel_09_672055 := "Not_a_Finding" if openssl_system_policy

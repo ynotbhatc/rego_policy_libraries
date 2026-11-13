@@ -4,7 +4,7 @@ Ready-to-run compliance checks for [Open Policy Agent](https://www.openpolicyage
 
 It covers the benchmarks and regulations most teams are asked about: CIS Benchmarks and DISA STIGs for Linux, Windows, cloud, containers, databases and network gear; NIST, ISO 27001, SOC 2, PCI DSS, HIPAA, GDPR, NERC CIP, IEC 62443, FedRAMP, CMMC, the EU AI Act, and regional rules from the UK, EU, India, Japan, Singapore, Malaysia, Hong Kong and Australia. The full list is in [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md).
 
-**953 production-ready Rego policies** (2,264 including tests) holding **23,776 control-level checks** across 185 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
+**953 production-ready Rego policies** (2,265 including tests) holding **24,009 control-level checks** across 185 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
 
 [![control-level checks](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
@@ -104,7 +104,7 @@ Every framework, its path and what it covers: [docs/FRAMEWORKS.md](docs/FRAMEWOR
 
 ## Machine-readable outputs
 
-The evaluation output and the policy source generate the artefacts an authorisation package needs, validated in CI against the OSCAL 1.2.3 schemas and committed under [`converters/exports/oscal/dist/`](converters/exports/oscal/): catalogs (one per framework, 185 catalogs, 19,379 controls, each with the Rego file that evaluates it), NIST and FedRAMP profiles, a component definition, and assessment results built from any `compliance_report` run. SARIF and OCSF exports sit beside them. Control mappings come only from authoritative tables (DISA's CCI map, NIST's baselines), never by hand. [`converters/README.md`](converters/README.md) lists every packaging target, interchange format and per-engine generator (WASM, signed bundles, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler).
+The evaluation output and the policy source generate the artefacts an authorisation package needs, validated in CI against the OSCAL 1.2.3 schemas and committed under [`converters/exports/oscal/dist/`](converters/exports/oscal/): catalogs (one per framework, 185 catalogs, 19,412 controls, each with the Rego file that evaluates it), NIST and FedRAMP profiles, a component definition, and assessment results built from any `compliance_report` run. SARIF and OCSF exports sit beside them. Control mappings come only from authoritative tables (DISA's CCI map, NIST's baselines), never by hand. [`converters/README.md`](converters/README.md) lists every packaging target, interchange format and per-engine generator (WASM, signed bundles, Ansible, SCAP, InSpec, Wazuh, CEL/Kyverno, Azure Policy, AWS Config, Steampipe, Sentinel, Sigma, Prowler).
 
 ## Requirements
 

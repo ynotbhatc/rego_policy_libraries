@@ -878,7 +878,7 @@ status_r_wn16_cc_000480 := "Open" if not r_wn16_cc_000480
 default r_wn16_cc_000490 := false
 
 r_wn16_cc_000490 if {
-	input.registry["HKLM\\SOFTWARE\\ Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging"].EnableScriptBlockLogging == 1
+	input.registry["HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging"].EnableScriptBlockLogging == 1
 }
 
 finding_r_wn16_cc_000490 := {

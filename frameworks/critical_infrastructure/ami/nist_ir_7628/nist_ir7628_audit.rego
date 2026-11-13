@@ -101,7 +101,7 @@ violations contains msg if {
 
 violations contains msg if {
 	not log_retention_sufficient
-	msg := sprintf("SG.AU-5: Audit log retention is %d days — minimum 365 required", [input.audit.storage.retention_days])
+	msg := sprintf("SG.AU-5: Audit log retention is %d days — minimum 365 required", [object.get(input, ["audit", "storage", "retention_days"], 0)])
 }
 
 violations contains msg if {

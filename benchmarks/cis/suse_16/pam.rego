@@ -318,8 +318,8 @@ e_5_3_2_2_1 if {
 default p_5_3_2_2_1 := false
 
 p_5_3_2_2_1 if {
-	v := conf_last(input.pam.pwquality_conf_raw, "dictcheck")
-	num(v) != 0
+	# pwquality defaults to dictcheck=1: an absent directive is compliant, any explicit 0 is not.
+	every v in conf_values(input.pam.pwquality_conf_raw, "dictcheck") { num(v) != 0 }
 }
 
 violations contains "5.3.2.2.1: evidence missing — pam.pwquality_conf_raw not collected" if not e_5_3_2_2_1

@@ -153,8 +153,10 @@ finding_rhel_08_040111 := {
 # RHEL-08-040110 | V-230506 | CAT II - Wireless disabled
 default no_wireless := false
 
-no_wireless if not input.wireless_interfaces
-no_wireless if count(input.wireless_interfaces) == 0
+no_wireless if {
+	is_array(input.wireless_interfaces)
+	count(input.wireless_interfaces) == 0
+}
 
 status_rhel_08_040110 := "Not_a_Finding" if no_wireless
 

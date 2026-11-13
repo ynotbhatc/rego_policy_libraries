@@ -342,3 +342,19 @@ test_report_compliant_on_full_input if {
 	count(report) > 0
 	report.compliant == true
 }
+
+# compliant must include every computed control (semantic review 2026-11-13)
+test_not_compliant_when_dpo_mandatory_unappointed if {
+	bad := object.union(full_input, {"gdpr": {"dpo": {"mandatory": true, "appointed": false}}})
+	not pkg.compliant with input as bad
+}
+
+test_not_compliant_when_transfer_without_safeguards if {
+	bad := object.union(full_input, {"gdpr": {"international_transfers": {"occur": true, "adequacy_decision_or_safeguards": false}}})
+	not pkg.compliant with input as bad
+}
+
+test_not_compliant_when_restore_testing_missing if {
+	bad := object.union(full_input, {"gdpr": {"technical_measures": {"restore": {"timely_restoration_capability": false}}}})
+	not pkg.compliant with input as bad
+}

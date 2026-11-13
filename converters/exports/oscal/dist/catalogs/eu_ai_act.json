@@ -137,6 +137,11 @@
         "id": "eu_ai_act-Article-26.9-Article-27_stmt",
         "name": "statement",
         "prose": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI system in public or private sector context"
+       },
+       {
+        "id": "eu_ai_act-Article-26.9-Article-27_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — deployer.high_risk_public_or_private_sector not collected; FRIA applicability undetermined"
        }
       ],
       "class": "governance"
@@ -170,6 +175,11 @@
         "id": "eu_ai_act-Article-26.8_stmt",
         "name": "statement",
         "prose": "Deployer's use of Annex III high-risk AI system not registered in the EU database for high-risk AI systems"
+       },
+       {
+        "id": "eu_ai_act-Article-26.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — deployer.annex_iii_use_case not collected; EU database registration applicability undetermined"
        }
       ],
       "class": "governance"
@@ -242,7 +252,7 @@
      },
      {
       "id": "eu_ai_act-Article-27",
-      "title": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights",
+      "title": "evidence missing — fria.assessment_required not collected; FRIA applicability undetermined",
       "props": [
        {
         "name": "label",
@@ -268,25 +278,30 @@
        {
         "id": "eu_ai_act-Article-27_stmt",
         "name": "statement",
-        "prose": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights"
+        "prose": "evidence missing — fria.assessment_required not collected; FRIA applicability undetermined"
        },
        {
         "id": "eu_ai_act-Article-27_obj.1",
         "name": "assessment-objective",
-        "prose": "FRIA completed but affected fundamental rights (dignity, non-discrimination, privacy, fair trial, etc.) not specifically identified and assessed"
+        "prose": "Fundamental Rights Impact Assessment (FRIA) not conducted before deploying high-risk AI in contexts affecting natural persons' rights"
        },
        {
         "id": "eu_ai_act-Article-27_obj.2",
         "name": "assessment-objective",
-        "prose": "Process for notifying affected persons about the high-risk AI deployment and their rights not established as part of the FRIA"
+        "prose": "FRIA completed but affected fundamental rights (dignity, non-discrimination, privacy, fair trial, etc.) not specifically identified and assessed"
        },
        {
         "id": "eu_ai_act-Article-27_obj.3",
         "name": "assessment-objective",
-        "prose": "FRIA results not available to competent authorities upon request; assessments must be retained and accessible for regulatory review"
+        "prose": "Process for notifying affected persons about the high-risk AI deployment and their rights not established as part of the FRIA"
        },
        {
         "id": "eu_ai_act-Article-27_obj.4",
+        "name": "assessment-objective",
+        "prose": "FRIA results not available to competent authorities upon request; assessments must be retained and accessible for regulatory review"
+       },
+       {
+        "id": "eu_ai_act-Article-27_obj.5",
         "name": "assessment-objective",
         "prose": "FRIA did not result in identification of risk mitigation measures for identified fundamental rights impacts"
        }

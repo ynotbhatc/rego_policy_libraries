@@ -6,7 +6,7 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 30
+#     checks: 37
 #     cited: 7
 #     density: sized
 #     basis: size
@@ -234,7 +234,58 @@ all_violations_5_7 := array.concat(
 	),
 )
 
-all_violations := array.concat(all_violations_1_4, all_violations_5_7)
+base_violations := array.concat(all_violations_1_4, all_violations_5_7)
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing or failing must surface a violation, so that the domain verdict
+#   (count(all_violations) == 0) can never be true while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	not compliant_3_14_1
+	count(violation_3_14_1) == 0
+	msg := "3.14.1: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_2
+	count(violation_3_14_2) == 0
+	msg := "3.14.2: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_3
+	count(violation_3_14_3) == 0
+	msg := "3.14.3: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_4
+	count(violation_3_14_4) == 0
+	msg := "3.14.4: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_5
+	count(violation_3_14_5) == 0
+	msg := "3.14.5: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_6
+	count(violation_3_14_6) == 0
+	msg := "3.14.6: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+violation_unmet contains msg if {
+	not compliant_3_14_7
+	count(violation_3_14_7) == 0
+	msg := "3.14.7: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+}
+
+all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.14.1", "level": 1, "compliant": compliant_3_14_1},

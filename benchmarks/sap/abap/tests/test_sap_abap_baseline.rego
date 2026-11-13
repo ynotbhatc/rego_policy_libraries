@@ -479,3 +479,24 @@ test_dsag_parameter_mapping_names_only_assessed_parameters if {
 		p in params
 	}
 }
+
+# Semantic review 2026-11-13: SECUPD-A_a.5 accepts the bare CCL version the input contract documents.
+test_cryptolib_bare_version_passes_a5 if {
+	inp := {"sap": {"abap": {"profile": "critical", "cryptolib": {"CCL": "8.5.50"}}}}
+	vs := main.violations with input as inp
+	not "SECUPD-A_a.5" in {substring(m, 0, indexof(m, ":")) | some m in vs}
+}
+
+test_cryptolib_old_and_new_major_a5 if {
+	old := main.results["SECUPD-A_a.5"] with input as {"sap": {"abap": {"profile": "critical", "cryptolib": {"CCL": "8.5.38"}}}}
+	new := main.results["SECUPD-A_a.5"] with input as {"sap": {"abap": {"profile": "critical", "cryptolib": {"CCL": "9.0.1"}}}}
+	old == "violation"
+	new == "compliant"
+}
+
+# Semantic review 2026-11-13: the unrecognised-profile finding gets a detail row too.
+test_violation_details_include_input_finding if {
+	d := main.violation_details with input as {"sap": {"abap": {"profile": "bogus"}}}
+	some row in d
+	row.id == "SAP-INPUT"
+}

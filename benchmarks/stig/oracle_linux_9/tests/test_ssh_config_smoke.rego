@@ -25,3 +25,19 @@ test_ssh_config_violations_on_empty_input if {
 	v := data.stig.oracle_linux_9.ssh_config.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_ol09_00_000251 if {
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_000251 == "Open" with input as {"x": 1}
+}
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_client_alive_count_zero_open if {
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002346 == "Open" with input as {"ssh_config": {"ClientAliveCountMax": "0"}}
+}
+
+test_client_alive_count_one_pass if {
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002346 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveCountMax": "1"}}
+}

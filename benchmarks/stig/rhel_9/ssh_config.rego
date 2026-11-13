@@ -229,6 +229,7 @@ default ssh_client_alive_count_ok := false
 
 ssh_client_alive_count_ok if {
 	count_max := to_number(input.ssh_config.ClientAliveCountMax)
+	count_max > 0 # 0 disables connection termination in sshd
 	count_max <= 1
 }
 

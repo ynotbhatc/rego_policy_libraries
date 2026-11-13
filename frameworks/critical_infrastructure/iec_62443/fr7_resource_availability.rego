@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 27
+#     checks: 31
 #     cited: 8
 #     density: sized
 #     basis: size
@@ -345,6 +345,27 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 7.2 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 7.5 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 7.6 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 7.7 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
 
 compliant if count(violations) == 0
 

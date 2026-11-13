@@ -2014,7 +2014,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-1.1.1.x",
-      "title": "Filesystem module '%s' is not disabled",
+      "title": "evidence missing - disabled_filesystem_modules not collected",
       "props": [
        {
         "name": "label",
@@ -2040,6 +2040,11 @@
        {
         "id": "cis_rocky_linux_9-CIS-1.1.1.x_stmt",
         "name": "statement",
+        "prose": "evidence missing - disabled_filesystem_modules not collected"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-1.1.1.x_obj.1",
+        "name": "assessment-objective",
         "prose": "Filesystem module '%s' is not disabled"
        }
       ],
@@ -3046,7 +3051,7 @@
      },
      {
       "id": "cis_rocky_linux_9-CIS-4.2.1.5",
-      "title": "No rsyslog logging rules configured",
+      "title": "evidence missing - rsyslog.logging_rules_count not collected",
       "props": [
        {
         "name": "label",
@@ -3072,10 +3077,15 @@
        {
         "id": "cis_rocky_linux_9-CIS-4.2.1.5_stmt",
         "name": "statement",
-        "prose": "No rsyslog logging rules configured"
+        "prose": "evidence missing - rsyslog.logging_rules_count not collected"
        },
        {
         "id": "cis_rocky_linux_9-CIS-4.2.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "No rsyslog logging rules configured"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-4.2.1.5_obj.2",
         "name": "assessment-objective",
         "prose": "Insufficient rsyslog logging rules (%d rules, expected at least 4)"
        }
@@ -5915,12 +5925,22 @@
        {
         "id": "cis_rocky_linux_9-CIS-5.2.15_obj.1",
         "name": "assessment-objective",
-        "prose": "SSH ClientAliveInterval not configured"
+        "prose": "SSH ClientAliveInterval is 0 (idle timeout disabled, should be 1-300 seconds)"
        },
        {
         "id": "cis_rocky_linux_9-CIS-5.2.15_obj.2",
         "name": "assessment-objective",
+        "prose": "SSH ClientAliveInterval not configured"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-5.2.15_obj.3",
+        "name": "assessment-objective",
         "prose": "SSH ClientAliveCountMax is %v (should be 3 or less)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-5.2.15_obj.4",
+        "name": "assessment-objective",
+        "prose": "SSH ClientAliveCountMax is 0 (unresponsive sessions are never dropped, should be 1-3)"
        }
       ],
       "class": "security"
@@ -5954,6 +5974,16 @@
         "id": "cis_rocky_linux_9-CIS-5.2.16_stmt",
         "name": "statement",
         "prose": "SSH LoginGraceTime is %v seconds (should be 60 or less)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-5.2.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is 0 (no limit, should be 1-60 seconds)"
+       },
+       {
+        "id": "cis_rocky_linux_9-CIS-5.2.16_obj.2",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime not configured (sshd default is 120 seconds, should be 60 or less)"
        }
       ],
       "class": "security"

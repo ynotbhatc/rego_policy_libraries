@@ -425,3 +425,48 @@ test_infrastructure_compliance_rules_reach_their_packages if {
 	not main.network_infrastructure_compliant with input as {}
 	not main.applications_services_compliant with input as {}
 }
+
+# Semantic review 2026-11-13: the real compliance_report is defined for non-compliant input, and
+# `compliant` cannot be true while violations is non-empty.
+test_compliance_report_real_on_empty_input if {
+	r := main.compliance_report with input as {}
+	not r.fail_closed
+	r.compliant == false
+	r.violation_count == 5
+	r.total_controls == 5
+	r.failed_controls == 5
+}
+
+test_overall_soc2_compliant_defaults_false if {
+	main.overall_soc2_compliant == false with input as {}
+}
+
+test_subservice_oversight_passes_with_current_soc_report if {
+	main.subservice_organization_oversight with input as {"soc2": {"subservice_organizations": [{"name": "aws", "soc_report": {"current": true}}]}}
+}
+
+test_subservice_oversight_fails_when_one_org_lacks_current_report if {
+	not main.subservice_organization_oversight with input as {"soc2": {"subservice_organizations": [
+		{"name": "aws", "soc_report": {"current": true}},
+		{"name": "vendor-b", "soc_report": {"current": false}},
+	]}}
+}
+
+# Optional TSC failing while overall is true must not report compliant (compliant tracks violations).
+test_report_not_compliant_when_violations_listed if {
+	r := main.compliance_report with input as {}
+	r.violation_count > 0
+	r.compliant == false
+}
+
+test_report_not_compliant_when_overall_true_but_tsc_fails if {
+	r := main.compliance_report with input as {}
+		with data.soc2.main.overall_soc2_compliant as true
+		with data.soc2.main.availability_compliant as false
+		with data.soc2.main.security_compliant as true
+		with data.soc2.main.confidentiality_compliant as true
+		with data.soc2.main.processing_integrity_compliant as true
+		with data.soc2.main.privacy_compliant as true
+	r.violation_count == 1
+	r.compliant == false
+}

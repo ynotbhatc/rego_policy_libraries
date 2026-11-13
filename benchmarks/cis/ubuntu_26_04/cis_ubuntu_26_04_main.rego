@@ -52,7 +52,11 @@ default _missing_inputs := {}
 
 _missing_inputs := bench.missing_inputs
 
-_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed]
+default _not_assessed_applicable := []
+
+_not_assessed_applicable := bench.not_assessed_applicable_sections
+
+_not_assessed_msgs := [sprintf("NOT ASSESSED: %s — required input not collected: %s", [name, concat(", ", _missing_inputs[name])]) | some name in _not_assessed_applicable]
 
 default _sections := {}
 

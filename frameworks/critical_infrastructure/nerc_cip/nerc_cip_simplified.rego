@@ -90,9 +90,17 @@ cybersecurity_policies_established if {
 
 # CIP-004: Personnel & Training
 personnel_risk_assessment_compliant if {
+	personnel_records_present
 	personnel_with_access_have_assessments
 	cybersecurity_training_completed
 }
+
+# Evidence: a high/medium-impact BES system requires personnel records.
+personnel_records_present if {
+	count(object.get(input, "personnel", [])) > 0
+}
+
+personnel_records_present if not has_high_medium_systems
 
 personnel_with_access_have_assessments if {
 	violations := [person |
@@ -118,21 +126,33 @@ electronic_security_perimeter_compliant if {
 	electronic_access_points_controlled
 }
 
-electronic_security_perimeters_documented if {
-	high_and_medium_systems := [system |
-		system := input.bes_cyber_systems[_]
-		system.impact_categorization in ["high", "medium"]
-	]
+# High/medium-impact systems drive the perimeter, access-point, physical-control
+# and personnel evidence requirements. Absence of those records is a finding.
+high_medium_systems := [system |
+	some system in object.get(input, "bes_cyber_systems", [])
+	system.impact_categorization in ["high", "medium"]
+]
 
+has_high_medium_systems if count(high_medium_systems) > 0
+
+esp_documented(system_id) if {
+	input.electronic_security_perimeters[system_id].documented == true
+}
+
+psp_defined(system_id) if {
+	input.physical_security_perimeters[system_id].boundary_defined == true
+}
+
+electronic_security_perimeters_documented if {
 	violations := [system |
-		system := high_and_medium_systems[_]
-		esp := input.electronic_security_perimeters[system.system_id]
-		not esp.documented == true
+		some system in high_medium_systems
+		not esp_documented(object.get(system, "system_id", ""))
 	]
 	count(violations) == 0
 }
 
 electronic_access_points_controlled if {
+	count(object.get(input, "electronic_access_points", [])) > 0 # evidence missing otherwise
 	violations := [eap |
 		eap := input.electronic_access_points[_]
 		not eap.access_control.enabled == true
@@ -145,6 +165,11 @@ electronic_access_points_controlled if {
 	count(violations2) == 0
 }
 
+electronic_access_points_controlled if {
+	not has_high_medium_systems
+	not input.electronic_access_points
+}
+
 # CIP-006: Physical Security
 physical_security_compliant if {
 	physical_security_perimeters_defined
@@ -152,20 +177,15 @@ physical_security_compliant if {
 }
 
 physical_security_perimeters_defined if {
-	high_and_medium_systems := [system |
-		system := input.bes_cyber_systems[_]
-		system.impact_categorization in ["high", "medium"]
-	]
-
 	violations := [system |
-		system := high_and_medium_systems[_]
-		psp := input.physical_security_perimeters[system.system_id]
-		not psp.boundary_defined == true
+		some system in high_medium_systems
+		not psp_defined(object.get(system, "system_id", ""))
 	]
 	count(violations) == 0
 }
 
 physical_access_controls_implemented if {
+	count(object.get(input, "physical_access_controls", [])) > 0 # evidence missing otherwise
 	violations := [control |
 		control := input.physical_access_controls[_]
 		not control.authentication_required == true
@@ -176,6 +196,11 @@ physical_access_controls_implemented if {
 		not control.monitoring_enabled == true
 	]
 	count(violations2) == 0
+}
+
+physical_access_controls_implemented if {
+	not has_high_medium_systems
+	not input.physical_access_controls
 }
 
 # NERC CIP Compliance Scoring

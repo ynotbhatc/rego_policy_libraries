@@ -46,9 +46,10 @@ finding_v_254241_guest_account := {
 	"status": guest_account_status,
 }
 
-guest_account_status := "Open" if {
-	input.local_accounts.guest.enabled == true
-} else := "Not_a_Finding"
+# Fail closed: Not_a_Finding only when the collector reports the guest account disabled.
+guest_account_status := "Not_a_Finding" if {
+	input.local_accounts.guest.enabled == false
+} else := "Open"
 
 finding_v_254243_antivirus := {
 	"vuln_id": "V-238243",
@@ -74,9 +75,9 @@ finding_v_254247_password_history := {
 	"status": password_history_status,
 }
 
-password_history_status := "Open" if {
-	input.password_policy.password_history_size < 24
-} else := "Not_a_Finding"
+password_history_status := "Not_a_Finding" if {
+	input.password_policy.password_history_size >= 24
+} else := "Open"
 
 finding_v_254250_password_length := {
 	"vuln_id": "V-238250",
@@ -86,9 +87,9 @@ finding_v_254250_password_length := {
 	"status": password_length_status,
 }
 
-password_length_status := "Open" if {
-	input.password_policy.minimum_password_length < 14
-} else := "Not_a_Finding"
+password_length_status := "Not_a_Finding" if {
+	input.password_policy.minimum_password_length >= 14
+} else := "Open"
 
 # =============================================================================
 # AGGREGATE ALL FINDINGS

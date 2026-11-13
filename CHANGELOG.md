@@ -10,7 +10,57 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [2.5.0] - 2026-11-13
 
-The November 2026 freshen-up: formatting sweep, every framework key resolves fail-closed and reports `total_controls`, DISA STIGs on the October 2026 library (RHEL 8/9/10, Ubuntu 22.04/24.04, Amazon Linux 2023, SLES 15, Windows 11, Server 2016/2019/2022/2025), CIS Windows 10/11 Enterprise, CIS Apache 2.4 v2.4.0, CIS MCP Server complete, SAP Security Baseline, AS9100D, the standards-registry sweep, regenerated exports. Entries below were collected under Unreleased since 2.4.2.
+The November 2026 freshen-up: formatting sweep, every framework key resolves fail-closed and reports `total_controls` and `failed_controls`, a line-by-line semantic review of the 690 modules never reviewed (172 defects fixed, generators corrected at the source), DISA STIGs on the October 2026 library (RHEL 8/9/10, Ubuntu 22.04/24.04, Amazon Linux 2023, SLES 15, Windows 11, Server 2016/2019/2022/2025), CIS Windows 10/11 Enterprise, CIS Apache 2.4 v2.4.0, CIS MCP Server complete, SAP Security Baseline, AS9100D, the standards-registry sweep, regenerated exports. Entries below were collected under Unreleased since 2.4.2.
+
+### Fixed — line-by-line semantic review of the 690 modules never reviewed (2026-11-13)
+
+Seventeen reviewers read every policy module outside the October review (691 files, about 206,000 lines); 518
+were clean. Of 186 findings, 172 were reproduced with a probe and fixed, each with a regression test (463 new
+tests); the rest are recorded as decisions. Rules now fail closed: a control whose evidence is missing raises
+an "evidence missing" finding. Counted checks rise from 23,776 to 24,009, almost all of it those rules.
+
+- **CIS Linux.** SSH timeouts no longer accept 0 (RHEL 8, Rocky 8/9, Amazon Linux 2023, Ubuntu 20.04 to 24.04,
+  Debian 11); the mail-agent local-only check treats 127.0.0.1 as loopback and 0.0.0.0 as open, and the rsyslog
+  remote-receive check matches `imtcp` loaded with parameters (RHEL 9, SUSE 16, Ubuntu 26.04); the RHEL 8
+  sudoers include-directory check can match; Ubuntu 22.04/24.04 and RHEL 8 apply the Level 2 profile;
+  `failed_controls` counts distinct control ids in nine legacy mains.
+- **CIS other.** Kubernetes 2.1, Docker 3.1 and PAN-OS 3.1 fire on either wrong value; Kubernetes file modes are
+  compared as octal bits; Azure, AWS and Microsoft 365 checks fail closed on missing fields; Entra 5.2.2.3 and
+  5.2.2.8, SharePoint sharing and Teams 8.5.8 corrected; Windows 10/11 "Disabled or Not Installed" service rows
+  accept an absent service; Windows Server 2016 and the legacy 2022 module fail closed.
+- **DISA STIG, Windows.** Legal-notice rules require a non-empty banner instead of comparing to placeholder text;
+  polluted registry paths cleaned (four Windows 11 rules, one Server 2016 rule); multi-line values parsed, which
+  corrects AllowTelemetry, DODownloadMode and ConsentPromptBehaviorAdmin. Fixed in `gen_windows.py`.
+- **DISA STIG, Linux and databases.** RHEL 8/9/10 CAT I rules fail closed on missing facts; RHEL 10 `compliant`
+  means no open finding at any category (`cat_i_compliant` is separate); ClientAliveCountMax 0 no longer passes;
+  RHEL 8 ciphers and MACs must all be in the approved set. Oracle Linux 8/9: seven rules that decided on an
+  unrelated setting now read the setting their title names. Provisional until rebuilt from DISA's XCCDF; twelve
+  more rules there are flagged. OpenShift 4: six controls with no matching fact report Open.
+- **Federal.** FedRAMP treats a missing impact level as a finding and runs the Moderate/High checks; eight CMMC
+  domain files can no longer be compliant while a practice fails; NIST 800-53 AC-15/16/21/23/24/25 have
+  violation rules; NIST 800-171 `failed_controls` counts distinct requirements.
+- **Privacy, management, financial.** GDPR `compliant` covers all computed controls; HIPAA audit retention is
+  2,190 days, TLS below 1.2 fails, numeric thresholds fail closed; SOC 2 produces its report on a failing run;
+  PCI DSS `compliant` agrees with the overall flag; CIS Controls 15.3/15.4 are IG2; ISO 27001 weak-algorithm
+  matching is normalised.
+- **Critical infrastructure.** NERC CIP: a high- or medium-impact system with no ESP, PSP, access-point,
+  physical-control or personnel records is not compliant, CIP-002/014/015 findings are listed, and records
+  without an id keep their violation. IEC 62443: empty input scores 0 of 51 SRs (was 32). AMI, CRA, digital
+  sovereignty and CFR Part 11 corrections.
+- **Governance and enforcement.** A disabled AI system is denied; GEISA API checks fail closed; waiver matching
+  respects control-id boundaries; provider sources must be https; crypto-miner and Ansible findings are no
+  longer dropped when a name is missing.
+
+### Fixed — generators reproduce the fixes (root cause)
+
+- The defects above that sat in generated modules came from the generators' logic tables and templates, and a
+  patched output is undone by the next regeneration. `gen_rhel_9.py`, `gen_suse_16.py`, `gen_ubuntu_26_04.py`,
+  `gen_windows_10.py`, `gen_windows_11.py` (with `windows_lib.rego.tmpl`) and `tools/stig_generators/gen_windows.py`
+  were fixed and re-run against their sources: each now reproduces the committed module. `import_sap_baseline.py`
+  gains a per-check override table that aborts if SAP's upstream condition changes; both Oracle generators emit
+  the corrected 6.1.2. Regression tests the generators would have deleted are emitted by the generators.
+- Known and not yet fixed: the CIS Windows Server 2019/2022 generators delete every `.rego` in their directory,
+  including the framework-key bridges, and `gen_oracle_linux.py` still derives rules by title.
 
 ### Fixed — six framework-key bridges dropped every finding (semantic review 2026-11-13)
 

@@ -6,10 +6,10 @@
 #   source: swift
 #   domains: [financial, banking]
 #   coverage:
-#     checks: 43
+#     checks: 45
 #     cited: 23
 #     expected: 32
-#     found: 43
+#     found: 45
 #     scope: directory
 #     density: full
 #     basis: declared-total
@@ -86,6 +86,11 @@ violations contains msg if {
 	msg := "SWIFT CSP 1.3(M): SWIFT VMs not isolated from non-SWIFT VMs on shared infrastructure"
 }
 
+violations contains msg if {
+	not is_boolean(object.get(input, ["infrastructure", "virtualised"], null))
+	msg := "SWIFT CSP 1.3(M): evidence missing — infrastructure.virtualised not collected; applicability of virtualisation platform security cannot be determined"
+}
+
 # Control 1.4 — Restriction of Internet Access (M)
 violations contains msg if {
 	not input.network.internet_access.restricted_from_swift_zone
@@ -159,6 +164,11 @@ violations contains msg if {
 	input.outsourcing.swift_activities == true
 	not input.outsourcing.service_provider.cscf_compliant
 	msg := "SWIFT CSP 2.8(M): Outsourced SWIFT service provider not confirmed as CSCF compliant"
+}
+
+violations contains msg if {
+	not is_boolean(object.get(input, ["outsourcing", "swift_activities"], null))
+	msg := "SWIFT CSP 2.8(M): evidence missing — outsourcing.swift_activities not collected; applicability of outsourced activity protection cannot be determined"
 }
 
 # ── Objective 2: Know and Limit Access ───────────────────────────────────────

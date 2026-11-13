@@ -78,18 +78,14 @@ finding_ol09_00_000070 := {
 }
 
 # OL09-00-000060 | V-271452 | CAT I
-# System crypto policy must be FIPS
-default crypto_policy_fips := false
+# SELinux must be enforcing (Linux Security Module enforcing limits on system services)
+default selinux_enforcing := false
 
-crypto_policy_fips if {
-	input.crypto_policy == "FIPS"
+selinux_enforcing if {
+	input.selinux.status == "enforcing"
 }
 
-crypto_policy_fips if {
-	input.crypto_policy == "FIPS:OSPP"
-}
-
-status_ol09_00_000060 := "Not_a_Finding" if crypto_policy_fips
+status_ol09_00_000060 := "Not_a_Finding" if selinux_enforcing
 
 else := "Open"
 
@@ -99,7 +95,7 @@ finding_ol09_00_000060 := {
 	"severity": "CAT I",
 	"rule_title": "OL 9 must use a Linux Security Module configured to enforce limits on system services.",
 	"status": status_ol09_00_000060,
-	"fix_text": "Set the crypto policy: update-crypto-policies --set FIPS",
+	"fix_text": "Set SELinux to enforcing: setenforce 1 and SELINUX=enforcing in /etc/selinux/config",
 }
 
 # =============================================================================
@@ -115,6 +111,7 @@ ctrl_alt_del_graphical_disabled if {
 }
 
 ctrl_alt_del_graphical_disabled if {
+	is_object(input.packages)
 	not input.packages["gnome-desktop3"]
 }
 
@@ -263,14 +260,14 @@ finding_ol09_00_002406 := {
 }
 
 # OL09-00-002410 | V-271749 | CAT II
-# kernel.perf_event_paranoid must be set to 2
-default perf_event_restricted := false
+# kernel.yama.ptrace_scope must be set to 1 or higher
+default ptrace_restricted := false
 
-perf_event_restricted if {
-	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
+ptrace_restricted if {
+	to_number(input.kernel_params["kernel.yama.ptrace_scope"]) >= 1
 }
 
-status_ol09_00_002410 := "Not_a_Finding" if perf_event_restricted
+status_ol09_00_002410 := "Not_a_Finding" if ptrace_restricted
 
 else := "Open"
 
@@ -280,18 +277,18 @@ finding_ol09_00_002410 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must restrict usage of ptrace to descendant processes.",
 	"status": status_ol09_00_002410,
-	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.yama.ptrace_scope=1 in /etc/sysctl.d/99-stig.conf",
 }
 
 # OL09-00-002428 | V-271766 | CAT II
-# kernel.unprivileged_bpf_disabled must be set to 1
-default bpf_restricted := false
+# kernel.kexec_load_disabled must be set to 1
+default kexec_load_disabled := false
 
-bpf_restricted if {
-	input.kernel_params["kernel.unprivileged_bpf_disabled"] == "1"
+kexec_load_disabled if {
+	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_ol09_00_002428 := "Not_a_Finding" if bpf_restricted
+status_ol09_00_002428 := "Not_a_Finding" if kexec_load_disabled
 
 else := "Open"
 
@@ -301,7 +298,7 @@ finding_ol09_00_002428 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must prevent the loading of a new kernel for later execution.",
 	"status": status_ol09_00_002428,
-	"fix_text": "Set kernel.unprivileged_bpf_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
 }
 
 # OL09-00-002430 | V-271768 | CAT II
@@ -397,14 +394,20 @@ finding_ol09_00_000301 := {
 }
 
 # OL09-00-000302 | V-271498 | CAT II
-# AIDE must be installed
-default aide_installed := false
+# AIDE must be configured to use FIPS 140-3 approved hashes
+default aide_fips_hashes := false
 
-aide_installed if {
-	input.packages.aide == true
+aide_fips_hashes if {
+	some algorithm in input.aide_config.hash_algorithms
+	algorithm == "sha512"
 }
 
-status_ol09_00_000302 := "Not_a_Finding" if aide_installed
+aide_fips_hashes if {
+	some algorithm in input.aide_config.hash_algorithms
+	algorithm == "sha256"
+}
+
+status_ol09_00_000302 := "Not_a_Finding" if aide_fips_hashes
 
 else := "Open"
 
@@ -414,7 +417,7 @@ finding_ol09_00_000302 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
 	"status": status_ol09_00_000302,
-	"fix_text": "Install AIDE: dnf install aide -y && aide --init",
+	"fix_text": "Configure AIDE to use sha512 (or sha256) in /etc/aide.conf and re-run aide --init",
 }
 
 # OL09-00-000004 | V-271434 | CAT II
@@ -441,16 +444,16 @@ finding_ol09_00_000004 := {
 }
 
 # OL09-00-002070 | V-271666 | CAT II
-# /tmp must have nodev option
-default tmp_nodev := false
+# /home (file systems containing user home directories) must have nodev option
+default home_nodev := false
 
-tmp_nodev if {
+home_nodev if {
 	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
+	mount.mount == "/home"
 	"nodev" in mount.options
 }
 
-status_ol09_00_002070 := "Not_a_Finding" if tmp_nodev
+status_ol09_00_002070 := "Not_a_Finding" if home_nodev
 
 else := "Open"
 
@@ -460,20 +463,20 @@ finding_ol09_00_002070 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must prevent device files from being interpreted on file systems that contain user home directories.",
 	"status": status_ol09_00_002070,
-	"fix_text": "Add nodev option to /tmp in /etc/fstab",
+	"fix_text": "Add nodev option to /home in /etc/fstab",
 }
 
 # OL09-00-002071 | V-271667 | CAT II
-# /tmp must have nosuid option
-default tmp_nosuid := false
+# /home (file systems containing user home directories) must have nosuid option
+default home_nosuid := false
 
-tmp_nosuid if {
+home_nosuid if {
 	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
+	mount.mount == "/home"
 	"nosuid" in mount.options
 }
 
-status_ol09_00_002071 := "Not_a_Finding" if tmp_nosuid
+status_ol09_00_002071 := "Not_a_Finding" if home_nosuid
 
 else := "Open"
 
@@ -483,20 +486,20 @@ finding_ol09_00_002071 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories.",
 	"status": status_ol09_00_002071,
-	"fix_text": "Add nosuid option to /tmp in /etc/fstab",
+	"fix_text": "Add nosuid option to /home in /etc/fstab",
 }
 
 # OL09-00-002072 | V-271668 | CAT II
-# /tmp must have noexec option
-default tmp_noexec := false
+# /home (file systems containing user home directories) must have noexec option
+default home_noexec := false
 
-tmp_noexec if {
+home_noexec if {
 	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
+	mount.mount == "/home"
 	"noexec" in mount.options
 }
 
-status_ol09_00_002072 := "Not_a_Finding" if tmp_noexec
+status_ol09_00_002072 := "Not_a_Finding" if home_noexec
 
 else := "Open"
 
@@ -506,7 +509,7 @@ finding_ol09_00_002072 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must prevent code from being executed on file systems that contain user home directories.",
 	"status": status_ol09_00_002072,
-	"fix_text": "Add noexec option to /tmp in /etc/fstab",
+	"fix_text": "Add noexec option to /home in /etc/fstab",
 }
 
 # =============================================================================

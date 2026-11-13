@@ -25,3 +25,13 @@ test_ssh_config_violations_on_empty_input if {
 	v := data.stig.rhel_9.ssh_config.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_client_alive_count_zero_open if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255095 == "Open" with input as {"ssh_config": {"ClientAliveCountMax": "0"}}
+}
+
+test_client_alive_count_one_pass if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255095 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveCountMax": "1"}}
+}

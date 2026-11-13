@@ -23,6 +23,13 @@ Translation scope (v1 — what a collector can read on the host without RFC or D
 Every other store (user tables, authorizations, audit slots, RFC destinations, clients ...) is listed in the
 registry as not assessable with the store named, so a projection never silently omits it.
 
+Per-check overrides (CONDITION_OVERRIDES below, keyed by SAP check id): where SAP's published condition is
+stricter than the fact a collector supplies, the entry replaces the translated condition of that one check (the
+rule's id, level, message and fact lookup are still generated). Each entry also records the translation it replaces; if SAP changes the
+upstream condition the run aborts, so an override is re-read instead of silently outliving its reason. Today:
+    SECUPD-A_a.5   CommonCryptoLib minimum version: SAP's regex needs a trailing blank after the version (the
+                   CSA store pads it); the input contract supplies the bare version, so compare versions.
+
 Hand-written rules live in sap_abap_baseline_manual.rego; a `# MANUAL-CHECK: <id>` comment there claims the id,
 and this importer marks it `basis: hand_written` instead of generating (or giving up on) it.
 
@@ -53,6 +60,15 @@ NAME_VALUE_STORES = {
 # Stores a host collector can read as files but whose checks are line/record shaped: hand-written only.
 FILE_STORES = {"GW_SECINFO", "GW_REGINFO", "GW_PRXINFO", "MS_SECINFO"}
 PRIORITY = {"p1": ("critical", "critical"), "p2": ("standard", "high"), "p3": ("extended", "medium")}
+# check id -> {"replaces": the DNF translate() yields for SAP's condition today, "dnf": the DNF emitted instead,
+#              "why": the reason, for the reader of this table}. A DNF is a list of conjunctions of (negated, rego expr).
+CONDITION_OVERRIDES = {
+    "SECUPD-A_a.5": {
+        "replaces": [[(False, r"regex.match(`^(8\.5\.39|8\.5\.[456789]\d|8\.[6789]\.\d+|8\.\d{2,}\.\d+)[ ].*`, v)")]],
+        "dnf": [[(False, 'ver_ge(v, "8.5.39")')]],
+        "why": "SAP's regex requires a blank after the version and stops at major 8; compared as a version instead.",
+    },
+}
 REQ_RE = re.compile(r"SAP Security Baseline requirement:\s+([A-Z]+-[A-Z])\s*:\s*(.+)")
 PRIO_RE = re.compile(r"^\[(p[123])-(CRITICAL|STANDARD|EXTENDED)\]\s*(.*)$", re.S)
 
@@ -502,6 +518,11 @@ def build(source: pathlib.Path, commit: str, manual_ids: set[str]):
                             dnf.append(conj)
                 if len(exprs) > 1:
                     stats["variants_or"] += 1
+                override = CONDITION_OVERRIDES.get(cid)
+                if override:
+                    if dnf != override["replaces"]:
+                        raise SystemExit(f"{cid}: SAP's condition changed ({dnf!r}); re-read CONDITION_OVERRIDES")
+                    dnf = override["dnf"]
                 not_found_ok = any(r["not_found"] == "positive" for r in nv_rows)
                 row.update(assessable=True, basis=basis, parameter=name,
                            parameter_match="exact" if kind == "exact" else "regex")

@@ -32,7 +32,7 @@ def _good(op, value):
 def _bad(op, value):
     if op == "in":
         return max(value) + 1
-    if op == "eq":
+    if op in ("eq", "eq_or_absent"):
         return value + 1 if isinstance(value, int) else "BROKEN"
     if op in ("ge", "ge_or_forever"):
         return value - 1

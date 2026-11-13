@@ -42,7 +42,14 @@ violations := [v |
 ]
 
 # Section 1: Management Interface
-management_interface_violations := [
+management_interface_violations := array.concat(_mgmt_user_violations, _mgmt_user_evidence_missing)
+
+_mgmt_user_evidence_missing := [
+"1.1: evidence missing — panos_config.mgt_config.users.entry not collected" |
+	not input.panos_config.mgt_config.users.entry
+]
+
+_mgmt_user_violations := [
 "1.1: 'Permitted IP Addresses' must be set for all administrative users" |
 	admin := input.panos_config.mgt_config.users.entry[_]
 	not admin.client_certificate_only
@@ -55,7 +62,14 @@ certificate_based_admin_configured if {
 }
 
 # Section 2: Authentication
-authentication_violations := [
+authentication_violations := array.concat(_auth_profile_violations, _auth_profile_evidence_missing)
+
+_auth_profile_evidence_missing := [
+"2.1: evidence missing — panos_config.mgt_config.users.entry not collected" |
+	not input.panos_config.mgt_config.users.entry
+]
+
+_auth_profile_violations := [
 "2.1: an authentication profile must be set for each administrator" |
 	admin := input.panos_config.mgt_config.users.entry[_]
 	not admin.authentication_profile
@@ -64,10 +78,13 @@ authentication_violations := [
 # Section 3: Admin Access
 admin_access_violations := [
 "3.1: required value of 'Maximum number of concurrent administrators' is a value lower than 10" |
-	max_admins := input.panos_config.mgt_config.max_concurrent_admins
-	not max_admins
-	max_admins >= 10
+	not max_admins_below_ten
 ]
+
+# A missing or non-numeric limit is not compliant (fail closed).
+max_admins_below_ten if {
+	input.panos_config.mgt_config.max_concurrent_admins < 10
+}
 
 # Section 4: Security Services
 security_services_violations := [
