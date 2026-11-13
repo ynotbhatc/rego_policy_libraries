@@ -269,3 +269,12 @@ test_mixed_estate_counts if {
 	r.violation_count == 1
 	r.compliant == false
 }
+
+# Semantic review 2026-11-13: a non-object host record is classified invalid_record, not silently dropped.
+test_non_object_host_record_is_invalid_record_finding if {
+	inp := {"hosts": ["garbage", {"name": "a", "in_inventory": true, "hours_since_evaluated": 1}]}
+	r := main.host_results with input as inp
+	count(r) == 2
+	r[0].state == "invalid_record"
+	not main.compliant with input as inp
+}

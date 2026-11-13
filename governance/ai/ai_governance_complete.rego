@@ -56,6 +56,7 @@ default decision := "deny"
 
 # Allow without logging for read-only operations
 decision := "allow" if {
+	authorization.ai_system_valid
 	authorization.authorized
 	authorization.emergency_ok
 	context.context_valid
@@ -64,6 +65,7 @@ decision := "allow" if {
 
 # Allow with logging for low-risk operations
 decision := "allow_with_logging" if {
+	authorization.ai_system_valid
 	authorization.authorized
 	authorization.emergency_ok
 	context.context_valid
@@ -75,6 +77,7 @@ decision := "allow_with_logging" if {
 # constraints: dual control minimum + justification — no lone-approver or
 # lone-emergency path to the jewels.
 decision := "allow_with_logging" if {
+	authorization.ai_system_valid
 	authorization.authorized
 	authorization.emergency_ok
 	context.context_valid
@@ -86,6 +89,7 @@ decision := "allow_with_logging" if {
 
 # Pending approval for medium/high/critical without approval
 decision := "pending_approval" if {
+	authorization.ai_system_valid
 	authorization.authorized
 	authorization.emergency_ok
 	context.context_valid

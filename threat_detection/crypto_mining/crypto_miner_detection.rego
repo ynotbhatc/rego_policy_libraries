@@ -165,43 +165,43 @@ miner_cron_detected contains job if {
 violations contains msg if {
 	count(miner_process_detected) > 0
 	some process in miner_process_detected
-	msg := sprintf("CRITICAL: Crypto miner process detected - %s (PID: %v)", [process.name, process.pid])
+	msg := sprintf("CRITICAL: Crypto miner process detected - %s (PID: %v)", [object.get(process, "name", "unknown"), object.get(process, "pid", "unknown")])
 }
 
 violations contains msg if {
 	count(miner_package_detected) > 0
 	some pkg in miner_package_detected
-	msg := sprintf("HIGH: Crypto miner package installed - %s", [pkg.name])
+	msg := sprintf("HIGH: Crypto miner package installed - %s", [object.get(pkg, "name", "unknown")])
 }
 
 violations contains msg if {
 	count(mining_pool_connection) > 0
 	some conn in mining_pool_connection
-	msg := sprintf("CRITICAL: Connection to mining pool detected - %s:%v", [conn.remote_host, conn.remote_port])
+	msg := sprintf("CRITICAL: Connection to mining pool detected - %s:%v", [object.get(conn, "remote_host", "unknown"), object.get(conn, "remote_port", "unknown")])
 }
 
 violations contains msg if {
 	count(suspicious_port_connection) > 0
 	some conn in suspicious_port_connection
-	msg := sprintf("MEDIUM: Suspicious connection on mining port - %s:%v", [conn.remote_host, conn.remote_port])
+	msg := sprintf("MEDIUM: Suspicious connection on mining port - %s:%v", [object.get(conn, "remote_host", "unknown"), object.get(conn, "remote_port", "unknown")])
 }
 
 violations contains msg if {
 	count(miner_service_detected) > 0
 	some svc in miner_service_detected
-	msg := sprintf("CRITICAL: Crypto miner systemd service detected - %s", [svc.name])
+	msg := sprintf("CRITICAL: Crypto miner systemd service detected - %s", [object.get(svc, "name", "unknown")])
 }
 
 violations contains msg if {
 	count(miner_cron_detected) > 0
 	some job in miner_cron_detected
-	msg := sprintf("HIGH: Crypto miner cron job detected - %s", [job.command])
+	msg := sprintf("HIGH: Crypto miner cron job detected - %s", [object.get(job, "command", "unknown")])
 }
 
 violations contains msg if {
 	count(miner_config_detected) > 0
 	some file in miner_config_detected
-	msg := sprintf("MEDIUM: Crypto miner configuration file detected - %s", [file.path])
+	msg := sprintf("MEDIUM: Crypto miner configuration file detected - %s", [object.get(file, "path", "unknown")])
 }
 
 # =============================================================================
