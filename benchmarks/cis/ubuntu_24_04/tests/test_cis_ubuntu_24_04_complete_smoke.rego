@@ -14,3 +14,21 @@ test_cis_ubuntu_24_04_complete_violations_on_empty_input if {
 	v := data.cis_ubuntu_24_04.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: the Level 2 profile must reach the roll-up (import path was wrong).
+test_level2_profile_adds_l2_violations if {
+	v := data.cis_ubuntu_24_04.violations with input as {"profile": "level2"}
+	some x in v
+	startswith(x, "CIS L2")
+}
+
+test_level2_profile_blocks_compliant if {
+	not data.cis_ubuntu_24_04.compliant with input as {"profile": "level2"}
+}
+
+test_level1_profile_has_no_l2_violations if {
+	v := data.cis_ubuntu_24_04.violations with input as {"profile": "level1"}
+	every x in v {
+		not startswith(x, "CIS L2")
+	}
+}
