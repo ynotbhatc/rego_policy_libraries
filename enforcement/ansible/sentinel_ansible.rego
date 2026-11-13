@@ -49,7 +49,7 @@ violations contains msg if {
 	play.name == ""
 	msg := sprintf(
 		"SENTINEL-ANS-001: Play '%v' has an empty 'name' field",
-		[play.name],
+		[object.get(play, "name", "(unnamed)")],
 	)
 }
 
@@ -76,7 +76,7 @@ violations contains msg if {
 	object.get(input, "sentinel_environment", "production") == "production"
 	msg := sprintf(
 		"SENTINEL-ANS-002: Play '%v' targets all hosts — use an explicit group or limit in production",
-		[play.name],
+		[object.get(play, "name", "(unnamed)")],
 	)
 }
 
@@ -97,7 +97,7 @@ violations contains msg if {
 	not startswith(var_value, "{{") # vault references are allowed
 	msg := sprintf(
 		"SENTINEL-ANS-003: Play '%v' has potential hardcoded secret in var '%v' — use Ansible Vault",
-		[play.name, var_key],
+		[object.get(play, "name", "(unnamed)"), var_key],
 	)
 }
 
@@ -113,7 +113,7 @@ violations contains msg if {
 	count(task_tags) == 0
 	msg := sprintf(
 		"SENTINEL-ANS-004: Task '%v' in play '%v' has no tags — tags required for selective execution and audit",
-		[task_name, play.name],
+		[task_name, object.get(play, "name", "(unnamed)")],
 	)
 }
 

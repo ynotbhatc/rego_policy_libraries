@@ -120,3 +120,15 @@ test_result_is_populated_object_on_empty_input if {
 	r.violations == []
 	count(r) == 4
 }
+
+# Semantic review 2026-11-13: an unnamed play must still get ANS-002/003/004 findings.
+test_unnamed_play_still_gets_findings if {
+	inp := {"plays": [{"hosts": "all", "vars": {"db_password": "hunter2"}, "tasks": [{"name": "t"}]}]}
+	v := data.sentinel.ansible.violations with input as inp
+	some a in v
+	startswith(a, "SENTINEL-ANS-002")
+	some b in v
+	startswith(b, "SENTINEL-ANS-003")
+	some c in v
+	startswith(c, "SENTINEL-ANS-004")
+}
