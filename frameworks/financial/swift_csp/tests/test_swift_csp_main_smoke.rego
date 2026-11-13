@@ -25,3 +25,21 @@ test_swift_csp_main_violations_on_empty_input if {
 	v := data.swift_csp.main.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: applicability flags fail closed when absent.
+test_semrev_missing_virtualised_flag_raises_1_3 if {
+	v := data.swift_csp.main.violations with input as {"outsourcing": {"swift_activities": false}}
+	some m in v
+	startswith(m, "SWIFT CSP 1.3(M): evidence missing")
+}
+
+test_semrev_missing_swift_activities_flag_raises_2_8 if {
+	v := data.swift_csp.main.violations with input as {"infrastructure": {"virtualised": false}}
+	some m in v
+	startswith(m, "SWIFT CSP 2.8(M): evidence missing")
+}
+
+test_semrev_explicit_not_applicable_flags_raise_no_applicability_finding if {
+	v := data.swift_csp.main.violations with input as {"infrastructure": {"virtualised": false}, "outsourcing": {"swift_activities": false}}
+	count([m | some m in v; contains(m, "evidence missing")]) == 0
+}
