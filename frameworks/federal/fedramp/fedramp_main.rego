@@ -46,6 +46,28 @@ import rego.v1
 # =============================================================================
 
 # ---------------------------------------------------------------------------
+# Impact level normalisation (fail closed)
+#   A missing, non-string or unrecognised impact_level is itself a finding and
+#   the stricter Moderate/High checks are applied rather than skipped.
+# ---------------------------------------------------------------------------
+
+default impact_level_norm := "unknown"
+
+impact_level_norm := lower(trim_space(input.impact_level)) if {
+	is_string(input.impact_level)
+	lower(trim_space(input.impact_level)) in {"low", "moderate", "high"}
+}
+
+applies_moderate_high if impact_level_norm in {"moderate", "high", "unknown"}
+
+applies_high if impact_level_norm in {"high", "unknown"}
+
+violation_impact_level contains msg if {
+	impact_level_norm == "unknown"
+	msg := "FedRAMP: evidence missing or invalid — input.impact_level must be one of low, moderate, high. Moderate and High checks (CA-8, IR-8, PE-3(1), CP-7, SR-2, SR-4, PS-3) are applied until the impact level is declared."
+}
+
+# ---------------------------------------------------------------------------
 # FedRAMP Authorization Status
 # ---------------------------------------------------------------------------
 
@@ -124,7 +146,7 @@ violation_data_residency contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_personnel contains msg if {
-	input.impact_level in {"moderate", "high"}
+	applies_moderate_high
 	some person in input.personnel
 	person.admin_access == true
 	not person.us_person
@@ -226,25 +248,25 @@ violation_3pao contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_moderate_high contains msg if {
-	input.impact_level in {"moderate", "high"}
+	applies_moderate_high
 	not input.cloud_service.penetration_test_annual
 	msg := "FedRAMP CA-8: Annual penetration testing is not configured. Moderate and High systems require annual pen testing."
 }
 
 violation_moderate_high contains msg if {
-	input.impact_level in {"moderate", "high"}
+	applies_moderate_high
 	not input.cloud_service.incident_response_plan_approved
 	msg := "FedRAMP IR-8: Incident response plan has not been reviewed and approved. Moderate/High systems require an approved IR plan."
 }
 
 violation_high contains msg if {
-	input.impact_level == "high"
+	applies_high
 	not input.cloud_service.redundant_processing
 	msg := "FedRAMP CP-7: High-impact systems require alternative processing sites. No redundant processing site is configured."
 }
 
 violation_high contains msg if {
-	input.impact_level == "high"
+	applies_high
 	not input.cloud_service.two_person_rule_for_critical_ops
 	msg := "FedRAMP PE-3(1): High-impact systems require two-person rule for critical operations. Implement dual authorization."
 }
@@ -254,13 +276,13 @@ violation_high contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_scrm contains msg if {
-	input.impact_level in {"moderate", "high"}
+	applies_moderate_high
 	not input.supply_chain.risk_management_plan
 	msg := "FedRAMP SR-2: No supply chain risk management plan. Moderate and High systems must assess and manage supply chain risks."
 }
 
 violation_scrm contains msg if {
-	input.impact_level in {"moderate", "high"}
+	applies_moderate_high
 	some component in input.supply_chain.components
 	not component.provenance_verified
 	msg := sprintf(
@@ -293,7 +315,10 @@ all_violations := array.concat(
 					[v | some v in violation_moderate_high],
 					[v | some v in violation_high],
 				),
-				[v | some v in violation_scrm],
+				array.concat(
+					[v | some v in violation_scrm],
+					[v | some v in violation_impact_level],
+				),
 			),
 		),
 	),
@@ -309,11 +334,15 @@ passing_areas := count([a |
 		count(violation_personnel) == 0,
 		count(violation_conmon) == 0,
 		count(violation_3pao) == 0,
+		count(violation_moderate_high) == 0,
+		count(violation_high) == 0,
+		count(violation_scrm) == 0,
+		count(violation_impact_level) == 0,
 	][_]
 	a == true
 ])
 
-compliance_score := round((passing_areas / 6) * 100)
+compliance_score := round((passing_areas / 10) * 100)
 
 fedramp_compliance_report := {
 	"standard": "FedRAMP",
@@ -350,6 +379,18 @@ fedramp_compliance_report := {
 		"supply_chain": {
 			"compliant": count(violation_scrm) == 0,
 			"violations": violation_scrm,
+		},
+		"moderate_high": {
+			"compliant": count(violation_moderate_high) == 0,
+			"violations": violation_moderate_high,
+		},
+		"high": {
+			"compliant": count(violation_high) == 0,
+			"violations": violation_high,
+		},
+		"impact_level": {
+			"compliant": count(violation_impact_level) == 0,
+			"violations": violation_impact_level,
 		},
 	},
 }
