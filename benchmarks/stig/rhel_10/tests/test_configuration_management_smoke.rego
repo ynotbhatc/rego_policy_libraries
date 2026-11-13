@@ -25,3 +25,9 @@ test_configuration_management_violations_on_empty_input if {
 	v := data.stig.rhel_10.configuration_management.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_rhel_10_700830 if {
+	data.stig.rhel_10.configuration_management.status_rhel_10_700830 == "Open" with input as {"x": 1}
+}

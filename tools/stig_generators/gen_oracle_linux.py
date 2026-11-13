@@ -284,10 +284,15 @@ def derive(key, cfg):
         o += ["findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))", "",
               "violations contains finding.stig_id if {", "\tsome finding in findings", '\tfinding.status == "Open"', "}", "",
               "open_cat_i contains f if {", "\tsome f in cat_i_findings", '\tf.status == "Open"', "}", "",
-              "compliant if {", "\tcount(open_cat_i) == 0", "}", "",
+              "# `compliant`: no open finding at ANY category (CAT I, II or III), as in the RHEL 8/9 modules.",
+              "# `cat_i_compliant`: the CAT-I-only meaning, for gating on the critical subset.",
+              'open_all_findings := [f | some f in findings; f.status == "Open"]', "",
+              "compliant if {", "\tcount(open_all_findings) == 0", "}", "",
+              "default cat_i_compliant := false", "",
+              "cat_i_compliant if {", "\tcount(open_cat_i) == 0", "}", "",
               "compliance_report := {", f'\t"module": "{sec}",', '\t"total_findings": count(findings),',
               '\t"open_findings": count(violations),', '\t"cat_i_open": count(open_cat_i),', '\t"findings": findings,',
-              '\t"compliant": compliant,', "}", ""]
+              '\t"compliant": compliant,', '\t"cat_i_compliant": cat_i_compliant,', "}", ""]
         open(os.path.join(outdir, f"{sec}.rego"), "w").write("\n".join(o))
     n_rules = sum(1 for v in emitted.values() for k in v if k[1] != "HELPERS")
     seen = {f"{sec}:{sid}" for sec in sections for sid in BLOCK.findall(open(os.path.join(srcdir, f"{sec}.rego")).read()) for sid in [sid[0]]}

@@ -35,11 +35,8 @@ default compliant := false
 default crypto_policy_not_overridden := false
 
 crypto_policy_not_overridden if {
+	is_array(input.crypto_policy_overrides)
 	count(input.crypto_policy_overrides) == 0
-}
-
-crypto_policy_not_overridden if {
-	not input.crypto_policy_overrides
 }
 
 status_rhel_10_300090 := "Not_a_Finding" if crypto_policy_not_overridden
@@ -156,7 +153,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# `compliant`: no open finding at ANY category (CAT I, II or III), as in the RHEL 8/9 modules.
+# `cat_i_compliant`: the CAT-I-only meaning, for gating on the critical subset.
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	count(open_all_findings) == 0
+}
+
+default cat_i_compliant := false
+
+cat_i_compliant if {
 	count(open_cat_i) == 0
 }
 
@@ -167,4 +174,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }

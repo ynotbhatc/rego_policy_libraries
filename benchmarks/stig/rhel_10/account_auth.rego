@@ -111,11 +111,8 @@ finding_rhel_10_600410 := {
 default no_empty_password_hashes := false
 
 no_empty_password_hashes if {
+	is_array(input.local_accounts_with_empty_passwords)
 	count(input.local_accounts_with_empty_passwords) == 0
-}
-
-no_empty_password_hashes if {
-	not input.local_accounts_with_empty_passwords
 }
 
 status_rhel_10_600460 := "Not_a_Finding" if no_empty_password_hashes
@@ -339,11 +336,8 @@ finding_rhel_10_600160 := {
 default no_duplicate_uids := false
 
 no_duplicate_uids if {
+	is_array(input.duplicate_uids)
 	count(input.duplicate_uids) == 0
-}
-
-no_duplicate_uids if {
-	not input.duplicate_uids
 }
 
 status_rhel_10_600130 := "Not_a_Finding" if no_duplicate_uids
@@ -364,11 +358,8 @@ finding_rhel_10_600130 := {
 default no_duplicate_gids := false
 
 no_duplicate_gids if {
+	is_array(input.duplicate_gids)
 	count(input.duplicate_gids) == 0
-}
-
-no_duplicate_gids if {
-	not input.duplicate_gids
 }
 
 status_rhel_10_600470 := "Not_a_Finding" if no_duplicate_gids
@@ -421,7 +412,17 @@ open_cat_i contains f if {
 	f.status == "Open"
 }
 
+# `compliant`: no open finding at ANY category (CAT I, II or III), as in the RHEL 8/9 modules.
+# `cat_i_compliant`: the CAT-I-only meaning, for gating on the critical subset.
+open_all_findings := [f | some f in findings; f.status == "Open"]
+
 compliant if {
+	count(open_all_findings) == 0
+}
+
+default cat_i_compliant := false
+
+cat_i_compliant if {
 	count(open_cat_i) == 0
 }
 
@@ -432,4 +433,5 @@ compliance_report := {
 	"cat_i_open": count(open_cat_i),
 	"findings": findings,
 	"compliant": compliant,
+	"cat_i_compliant": cat_i_compliant,
 }

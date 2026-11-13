@@ -25,3 +25,13 @@ test_software_integrity_violations_on_empty_input if {
 	v := data.stig.rhel_10.software_integrity.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_repo_without_gpgcheck_key_open if {
+	data.stig.rhel_10.software_integrity.status_rhel_10_001050 == "Open" with input as {"yum_repos": [{"name": "a"}]}
+}
+
+test_repo_gpgcheck_true_pass if {
+	data.stig.rhel_10.software_integrity.status_rhel_10_001050 == "Not_a_Finding" with input as {"yum_repos": [{"name": "a", "gpgcheck": true}]}
+}
