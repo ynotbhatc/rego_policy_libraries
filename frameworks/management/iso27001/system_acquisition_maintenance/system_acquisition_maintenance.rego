@@ -84,7 +84,7 @@ public_network_services_secure if {
 	input.public_services.authentication.strong_auth_required == true
 	input.public_services.authentication.multi_factor_enabled == true
 	input.public_services.encryption.tls_enforced == true
-	input.public_services.encryption.minimum_tls_version >= "1.2"
+	_tls_version_acceptable(input.public_services.encryption.minimum_tls_version)
 	input.public_services.integrity.message_signing == true
 	input.public_services.integrity.transaction_verification == true
 	input.public_services.fraud_prevention.controls_implemented == true
@@ -93,6 +93,11 @@ public_network_services_secure if {
 	input.public_services.input_validation.enabled == true
 	input.public_services.input_validation.sanitization == true
 	input.public_services.input_validation.parameterized_queries == true
+}
+
+# TLS minimum version: accepts 1.2 / 1.3 with optional "TLS", "TLSv", "v" prefixes (string or number).
+_tls_version_acceptable(v) if {
+	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
 }
 
 # A.14.1.3 - Protecting application services transactions (2022: A.8.26)
@@ -193,8 +198,8 @@ secure_development_environment if {
 
 # A.14.2.7 - Outsourced development (2022: A.8.30)
 outsourced_development if {
-	# If outsourcing is not used, this control is satisfied
-	not input.outsourced_development.used
+	# If outsourcing is explicitly not used, this control is satisfied; a missing fact is not evidence
+	input.outsourced_development.used == false
 } else if {
 	input.outsourced_development.contracts.security_requirements == true
 	input.outsourced_development.contracts.code_ownership_defined == true
