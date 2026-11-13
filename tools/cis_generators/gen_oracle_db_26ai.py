@@ -232,6 +232,14 @@ _unauthorized(g) if {
 	not g.grantee in input.oracle.authorized_grantees
 }
 
+# ADMIN_OPTION arrives as the view's 'YES'/'NO' (or Y/N) or as a boolean.
+_admin_option(g) if g.admin_option == true
+
+_admin_option(g) if {
+	is_string(g.admin_option)
+	upper(g.admin_option) in {"YES", "Y"}
+}
+
 no_unauthorized_sys_priv(priv) if {
 	is_array(input.oracle.grants.sys_privs)
 	count([g | some g in input.oracle.grants.sys_privs; g.privilege == priv; _unauthorized(g)]) == 0
@@ -302,7 +310,9 @@ RULES = {
     "5.4": audit_list("oracle.audit.enabled_options", ["EXPORT"], ["LOGON", "LOGOFF"]),
     "5.5": audit_list("oracle.audit.all_actions_audited_users", SYS_USERS, SYS_USERS[:-1]),
     "6.1.1": sys_privs(['no_unauthorized_sys_priv_like("ANY")'], ["SELECT ANY TABLE"]),
-    "6.1.2": sys_privs(['count([g | some g in input.oracle.grants.sys_privs; g.admin_option == true; _unauthorized(g)]) == 0'],
+    # 6.1.2: ADMIN_OPTION = 'YES' on a system privilege or on a granted role (role_privs absent = no role rows)
+    "6.1.2": sys_privs(['count([g | some g in input.oracle.grants.sys_privs; _admin_option(g); _unauthorized(g)]) == 0',
+                        'count([g | some g in object.get(input, ["oracle", "grants", "role_privs"], []); _admin_option(g); _unauthorized(g)]) == 0'],
                        ["CREATE SESSION"], admin_option=True),
     "6.1.3": sys_priv("EXPORT FULL DATABASE", "IMPORT FULL DATABASE"),
     "6.1.4": sys_priv("CREATE EXTERNAL JOB"), "6.1.5": sys_priv("BECOME USER"), "6.1.6": sys_priv("TEXT DATASTORE ACCESS"),
@@ -337,6 +347,21 @@ def ident(rid):
 
 def rego_str(s):
     return json.dumps(s, ensure_ascii=False)  # a JSON string literal is a valid Rego string literal
+
+
+def admin_option_tests(msg):
+    """6.1.2 regressions: ADMIN_OPTION as the view's 'YES'/'NO' strings, and a role granted WITH ADMIN OPTION.
+    `msg` is the quoted violation message. gen_oracle_db_23ai.py carries the same function."""
+    def patch(lst, key, value, flag):
+        row = {"grantee": "APP", key: value, "oracle_maintained": "N", "admin_option": flag}
+        return "\tbad := json.patch(green, " + json.dumps([{"op": "replace", "path": f"/oracle/grants/{lst}", "value": [row]}]) + ")"
+    return ["# Semantic review 2026-11-13 regressions: ADMIN_OPTION arrives as 'YES', and role grants are examined.",
+            "test_6_1_2_fail_admin_option_yes_string if {", patch("sys_privs", "privilege", "CREATE SESSION", "YES"),
+            f"\t{msg} in b.violations with input as bad", "}", "",
+            "test_6_1_2_pass_admin_option_no_string if {", patch("sys_privs", "privilege", "CREATE SESSION", "NO"),
+            "\tv := b.violations with input as bad", '\tcount([m | some m in v; startswith(m, "6.1.2:")]) == 0', "}", "",
+            "test_6_1_2_fail_role_priv_admin_option if {", patch("role_privs", "granted_role", "CONNECT", "YES"),
+            f"\t{msg} in b.violations with input as bad", "}", ""]
 
 
 def read_workbook(path):
@@ -491,6 +516,7 @@ def main(xlsx):
         if s["kind"] != "attest":
             T += [f"test_{i}_evidence_missing if {{", f"\tbad := json.patch(green, {json.dumps(s['miss'], ensure_ascii=False)})",
                   f"\t{rego_str(rid + ': evidence missing — ' + s['field'] + ' not collected')} in b.violations with input as bad", "}", ""]
+    T += admin_option_tests(rego_str("6.1.2: " + recs["6.1.2"]["title"]))
     (OUT / "tests").mkdir(exist_ok=True)
     (OUT / "tests" / "test_cis_oracle_26ai.rego").write_text("\n".join(T))
     print(f"cis_oracle_26ai: {len(ids)} recommendations ({n_auto} Automated, {n_manual} Manual, {n_attest} attested) "
