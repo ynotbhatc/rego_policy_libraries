@@ -14,3 +14,14 @@ test_filesystem_validation_violations_on_empty_input if {
 	v := data.cis_rocky_linux_8.filesystem.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: a missing disabled_filesystem_modules fact must not pass.
+test_missing_disabled_filesystem_modules_flagged if {
+	v := data.cis_rocky_linux_8.filesystem.filesystem_module_violations with input as {}
+	"CIS 1.1.1.x: evidence missing - disabled_filesystem_modules not collected" in v
+}
+
+test_disabled_filesystem_modules_present_not_flagged if {
+	v := data.cis_rocky_linux_8.filesystem.filesystem_module_violations with input as {"disabled_filesystem_modules": {"cramfs": true, "squashfs": true, "udf": true}}
+	count(v) == 0
+}
