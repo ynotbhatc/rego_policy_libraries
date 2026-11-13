@@ -75,3 +75,16 @@ test_seeded_violation_surfaces_in_report if {
 	f.severity == "CAT II"
 	f.status == "Open"
 }
+
+# Semantic review 2026-11-13: the no-facts condition is reported once, not once by the .main
+# report and again by the key bridge.
+test_bridge_does_not_double_count_no_facts if {
+	r := data.stig_rhel8.main.compliance_report with input as {}
+	fc := [v | some v in r.violations; _is_fail_closed(v)]
+	count(fc) == 1
+	r.violation_count == count(r.violations)
+}
+
+_is_fail_closed(v) if startswith(object.get(v, "rule_title", ""), "FAIL-CLOSED")
+
+_is_fail_closed(v) if object.get(v, "control", "") == "FAIL-CLOSED"
