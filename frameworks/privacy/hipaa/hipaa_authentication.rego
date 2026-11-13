@@ -74,6 +74,26 @@ violation_password_policy contains msg if {
 }
 
 violation_password_policy contains msg if {
+	not is_number(object.get(input, ["password_policy", "minimum_length"], null))
+	msg := "HIPAA 164.312(d): evidence missing — password_policy.minimum_length not collected. Password length requirement cannot be verified."
+}
+
+violation_password_policy contains msg if {
+	not is_number(object.get(input, ["password_policy", "max_age_days"], null))
+	msg := "HIPAA 164.312(d): evidence missing — password_policy.max_age_days not collected. Password maximum age requirement cannot be verified."
+}
+
+violation_password_policy contains msg if {
+	not is_number(object.get(input, ["password_policy", "history_count"], null))
+	msg := "HIPAA 164.312(d): evidence missing — password_policy.history_count not collected. Password history requirement cannot be verified."
+}
+
+violation_password_policy contains msg if {
+	not is_number(object.get(input, ["password_policy", "lockout_threshold"], null))
+	msg := "HIPAA 164.312(d): evidence missing — password_policy.lockout_threshold not collected. Password lockout threshold requirement cannot be verified."
+}
+
+violation_password_policy contains msg if {
 	not input.password_policy.complexity_required
 	msg := "HIPAA 164.312(d): Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
 }
