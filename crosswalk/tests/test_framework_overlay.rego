@@ -66,3 +66,19 @@ test_no_framework_maps_is_safe if {
 	s.frameworks_reported == []
 	count(s.spine.satisfied) > 0 # spine still works with no overlays
 }
+
+# Semantic review 2026-11-13: a framework control mapped to one evaluated and one never-evaluated spine
+# control must land in not_covered, so satisfied + gaps + not_covered always equals controls_total.
+test_partially_evaluated_control_is_not_covered if {
+	fw := {"demo_partial": {
+		"name": "Partial FW",
+		"source": "test",
+		"status": "authoritative",
+		"map": {"REQ-P": ["SC-28", "CP-9"]},
+	}}
+	cov := framework_overlay.coverage.demo_partial with input as {"findings": findings}
+		with data.crosswalk.stig_800_53.map as sample_stig_map
+		with data.crosswalk.framework_maps.maps as fw
+	cov.not_covered == ["REQ-P"]
+	(count(cov.satisfied) + count(cov.gaps)) + count(cov.not_covered) == cov.controls_total
+}
