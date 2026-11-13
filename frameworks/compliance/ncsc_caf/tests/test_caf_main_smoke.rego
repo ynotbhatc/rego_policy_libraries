@@ -20,3 +20,10 @@ test_caf_main_fail_closed_on_empty_input if {
 	report := data.ncsc_caf.main.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# 2026-11-13: the report carried a hardcoded empty findings list.
+test_failing_run_lists_one_finding_per_outcome_not_achieved if {
+	r := data.ncsc_caf.main.compliance_report with input as {}
+	r.violation_count == 23
+	"NCSC CAF A3.a: contributing outcome is not achieved" in r.violations
+}

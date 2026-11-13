@@ -8,9 +8,40 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
-## [2.5.0] - 2026-11-12
+## [2.5.0] - 2026-11-13
 
 The November 2026 freshen-up: formatting sweep, every framework key resolves fail-closed and reports `total_controls`, DISA STIGs on the October 2026 library (RHEL 8/9/10, Ubuntu 22.04/24.04, Amazon Linux 2023, SLES 15, Windows 11, Server 2016/2019/2022/2025), CIS Windows 10/11 Enterprise, CIS Apache 2.4 v2.4.0, CIS MCP Server complete, SAP Security Baseline, AS9100D, the standards-registry sweep, regenerated exports. Entries below were collected under Unreleased since 2.4.2.
+
+### Fixed — six framework-key bridges dropped every finding (semantic review 2026-11-13)
+
+- `cis_rhel10`, `cis_ubuntu_2004`, `cis_ubuntu_2204`, `cis_ubuntu_2404`, `cis_windows_2019` and `cis_windows_2022`
+  read `compliant` and `violations` from their target package, which only defines them inside
+  `compliance_report`. With facts supplied the bridged report showed `violations: []`, `violation_count: 0` and
+  `compliant: false`, whatever the host looked like. They now read the target report's fields, and
+  `tests/framework_keys/test_keys.rego` asserts each one carries its target's findings.
+
+### Fixed — checks that passed silently when their evidence was missing
+
+- In Rego `not f(input.missing)` is undefined, not true, so the rule never fires. All 164 such sites were
+  classified by whether their control raises a finding on empty input: 59 were guarded by an evidence-missing
+  rule, 39 sit in pass predicates that already fail closed, and 68 were silent. Those 68 now read the fact with
+  `object.get` and fail closed: the auditd boot-parameter and log-retention checks (4.1.1.3, 4.1.1.4, 4.1.2.1,
+  4.1.2.3) in CIS RHEL 8, Rocky 8/9, Amazon Linux 2023 and Ubuntu 20.04/22.04/24.04; rsyslog file-create mode
+  and sudoers mode in Debian 11, RHEL 8 and Ubuntu 24.04; CIS OCI 1.4 and 1.5; five CIS Windows Server 2016
+  advanced-audit entries; and the SLSA gate, where a verified signature with no signing identity, or
+  provenance with no builder id, raised nothing.
+- `csa_ccm` and `ncsc_caf` carried a hardcoded empty `violations` list, so a failing run stored no findings.
+  csa_ccm now lists the sixteen domain modules' findings and ncsc_caf one finding per contributing outcome
+  that is not achieved.
+
+### Fixed — every framework key reports failed_controls, never above total_controls
+
+- `total_controls` stays the control count. Findings can outnumber controls (fail-closed and input-contract
+  notices are findings, not controls), which is why 32 keys showed more findings than controls on empty input.
+  The 55 keys that had no `failed_controls` now report one, capped at `total_controls`; the other 35 already did.
+  Consumers derive passed = `total_controls` - `failed_controls`, not total minus the finding count.
+- `tests/framework_keys/test_keys.rego` asserts a numeric `failed_controls` between 0 and `total_controls` for
+  all 90 keys. This closes the item left open under the `total_controls` entry below.
 
 ### Fixed — every framework key reports total_controls and a violations list
 

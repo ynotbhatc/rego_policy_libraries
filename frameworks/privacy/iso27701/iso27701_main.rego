@@ -60,6 +60,7 @@ compliance_report := {
 		),
 	),
 	"violation_count": ((count(pims_requirements.violations) + count(pii_controller.violations)) + count(pii_processor.violations)) + count(data_subject_rights.violations),
+	"failed_controls": min([134, ((count(pims_requirements.violations) + count(pii_controller.violations)) + count(pii_processor.violations)) + count(data_subject_rights.violations)]),
 	"standard": "ISO/IEC 27701:2019 — Privacy Information Management System",
 	"overall_compliant": overall_compliant,
 	"modules_passing": modules_passing,

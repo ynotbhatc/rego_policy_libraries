@@ -107,6 +107,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for gdpr; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -127,6 +128,7 @@ compliance_report := object.union(report, {
 	"compliant": _entrypoint_compliant,
 	"violations": _module_violations,
 	"violation_count": count(_module_violations),
+	"failed_controls": min([_declared_controls, count(_module_violations)]),
 	"total_controls": _declared_controls,
 })
 

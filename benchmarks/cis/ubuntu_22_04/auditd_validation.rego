@@ -90,7 +90,7 @@ config_violations contains msg if {
 
 # CIS 4.1.1.4: audit_backlog_limit must be sufficient
 config_violations contains msg if {
-	not contains(input.bootloader.grub_config, "audit_backlog_limit")
+	not contains(object.get(input, ["bootloader", "grub_config"], ""), "audit_backlog_limit")
 	msg := "CIS 4.1.1.4: audit_backlog_limit not configured (should be 8192 or higher)"
 }
 

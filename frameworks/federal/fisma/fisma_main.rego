@@ -632,6 +632,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for fisma; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -643,6 +644,7 @@ compliance_report := object.union(fisma_assessment, {
 	"framework_key": "fisma",
 	"compliant": _entrypoint_compliant,
 	"violation_count": count(fisma_violations),
+	"failed_controls": min([total_controls, count(fisma_violations)]),
 	"total_controls": total_controls,
 })
 

@@ -299,6 +299,7 @@ compliance_report := {
 	"total_controls": 32,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([32, count(violations)]),
 	"area_summary": area_summary,
 	"scope_note": "Program-level assessment of an educational agency/institution's FERPA obligations. Inputs are attestation/GRC facts, not device facts; a caller must wire an authoritative source (GRC export or attestation intake) before treating results as evidence.",
 }

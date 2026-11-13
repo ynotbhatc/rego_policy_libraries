@@ -346,5 +346,6 @@ compliance_report := {
 	"total_controls": 40,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([40, count(violations)]),
 	"section_summary": section_summary,
 }
