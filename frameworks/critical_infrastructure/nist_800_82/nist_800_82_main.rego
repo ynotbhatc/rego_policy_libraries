@@ -296,10 +296,10 @@ compliance_report := {
 	"sector": sector,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
-	"total_controls": 32,
+	"total_controls": 35,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([32, count(violations)]),
+	"failed_controls": min([35, count(violations)]),
 	"ot_overlay": {
 		"source": "NIST SP 800-82 Rev. 3, Appendix F, Table 22 (Control baselines)",
 		"target_impact": target_impact,

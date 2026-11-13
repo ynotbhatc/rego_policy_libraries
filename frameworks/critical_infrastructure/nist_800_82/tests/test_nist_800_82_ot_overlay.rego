@@ -86,6 +86,6 @@ test_existing_checks_unchanged_on_empty_input if {
 	v := data.nist_800_82.main.violations with input as {}
 	count(v) == 35
 	report := data.nist_800_82.main.compliance_report with input as {}
-	report.total_controls == 32
+	report.total_controls == 35
 	report.compliant == false
 }

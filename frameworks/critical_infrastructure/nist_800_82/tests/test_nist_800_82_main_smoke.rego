@@ -25,3 +25,11 @@ test_nist_800_82_main_violations_on_empty_input if {
 	v := data.nist_800_82.main.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: total_controls covers all 35 control violation rules.
+test_empty_input_failed_controls_cover_every_control if {
+	r := data.nist_800_82.main.compliance_report with input as {}
+	r.total_controls == 35
+	r.failed_controls == 35
+	r.failed_controls <= r.total_controls
+}

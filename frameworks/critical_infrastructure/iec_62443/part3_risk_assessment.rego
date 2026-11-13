@@ -102,7 +102,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	count(input.zones) == 0
+	count(object.get(input, "zones", [])) == 0
 	msg := "IEC 62443-3-2 ZCR 2: No security zones defined. The IACS must be divided into security zones based on criticality, function, and required security level."
 }
 
@@ -111,7 +111,7 @@ violations contains msg if {
 	not zone.risk_assessment_documented
 	msg := sprintf(
 		"IEC 62443-3-2 ZCR 2: Zone '%v' has no documented risk assessment. Each zone must have a zone-specific risk assessment driving its target security level assignment.",
-		[zone.name],
+		[object.get(zone, "name", "<unnamed>")],
 	)
 }
 
@@ -129,7 +129,7 @@ violations contains msg if {
 	not zone.security_level_defined
 	msg := sprintf(
 		"IEC 62443-3-2 ZCR 3: Zone '%v' does not have a defined security level. All zones must have an explicit SL-T (1–4) based on the zone risk assessment.",
-		[zone.name],
+		[object.get(zone, "name", "<unnamed>")],
 	)
 }
 
@@ -140,7 +140,7 @@ violations contains msg if {
 	zone.security_level < 2
 	msg := sprintf(
 		"IEC 62443-3-2 ZCR 3: High-criticality zone '%v' has Security Level %v. High-criticality IACS zones should have SL-T of at least 2 (SL 3 or 4 recommended for BES and safety-critical systems).",
-		[zone.name, zone.security_level],
+		[object.get(zone, "name", "<unnamed>"), zone.security_level],
 	)
 }
 

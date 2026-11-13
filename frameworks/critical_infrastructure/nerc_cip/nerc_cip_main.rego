@@ -42,6 +42,25 @@ all_bes_cyber_systems_categorized if {
 	count(input.bes_cyber_systems) > 0
 }
 
+# Findings for every CIP-002 gate, so compliant=false never has an empty list.
+cip_002_violations contains "CIP-002: evidence missing — bes_cyber_systems not collected" if {
+	count(object.get(input, "bes_cyber_systems", [])) == 0
+}
+
+cip_002_violations contains msg if {
+	some s in object.get(input, "bes_cyber_systems", [])
+	not s.impact_level in {"high", "medium", "low"}
+	msg := sprintf("CIP-002: BES Cyber System %v has no valid impact categorization (high/medium/low)", [object.get(s, "system_id", "unknown")])
+}
+
+cip_002_violations contains "CIP-002: Categorization criteria not defined" if {
+	not input.categorization_documentation.criteria_defined == true
+}
+
+cip_002_violations contains "CIP-002: Categorization methodology not documented" if {
+	not input.categorization_documentation.methodology_documented == true
+}
+
 default cip_002_compliant := false
 
 cip_002_compliant if {
@@ -84,13 +103,17 @@ cip_003_compliant if {
 personnel_violations contains msg if {
 	some person in input.personnel
 	not person.training_completed == true
-	msg := sprintf("CIP-004: Person %v has not completed CIP training", [person.person_id])
+	msg := sprintf("CIP-004: Person %v has not completed CIP training", [object.get(person, "person_id", "unknown")])
 }
 
 personnel_violations contains msg if {
 	some person in input.personnel
 	not person.risk_assessment_completed == true
-	msg := sprintf("CIP-004: Person %v has no completed risk assessment", [person.person_id])
+	msg := sprintf("CIP-004: Person %v has no completed risk assessment", [object.get(person, "person_id", "unknown")])
+}
+
+personnel_violations contains "CIP-004: evidence missing — personnel records not collected" if {
+	count(object.get(input, "personnel", [])) == 0
 }
 
 default cip_004_compliant := false
@@ -107,13 +130,17 @@ cip_004_compliant if {
 security_perimeter_violations contains msg if {
 	some eap in input.electronic_access_points
 	not eap.deny_by_default == true
-	msg := sprintf("CIP-005: EAP %v does not enforce deny-by-default", [eap.eap_id])
+	msg := sprintf("CIP-005: EAP %v does not enforce deny-by-default", [object.get(eap, "eap_id", "unknown")])
 }
 
 security_perimeter_violations contains msg if {
 	some eap in input.electronic_access_points
 	not eap.authenticated == true
-	msg := sprintf("CIP-005: EAP %v does not require authentication", [eap.eap_id])
+	msg := sprintf("CIP-005: EAP %v does not require authentication", [object.get(eap, "eap_id", "unknown")])
+}
+
+security_perimeter_violations contains "CIP-005: evidence missing — electronic_access_points not collected" if {
+	count(object.get(input, "electronic_access_points", [])) == 0
 }
 
 default cip_005_compliant := false
@@ -135,6 +162,10 @@ physical_security_violations contains msg if {
 physical_security_violations contains msg if {
 	not input.visitor_control_program.escort_procedures == true
 	msg := "CIP-006: Visitor escort procedures not defined"
+}
+
+physical_security_violations contains "CIP-006: evidence missing — physical_security_perimeters not collected" if {
+	count(object.get(input, "physical_security_perimeters", {})) == 0
 }
 
 default cip_006_compliant := false
@@ -165,6 +196,12 @@ system_security_violations contains msg if {
 	some sys_id, sac in input.system_access_controls
 	not sac.authentication_required == true
 	msg := sprintf("CIP-007: %v does not require authentication", [sys_id])
+}
+
+system_security_violations contains msg if {
+	some k in ["patch_management", "malicious_code_protection"]
+	count(object.get(input, k, {})) == 0
+	msg := sprintf("CIP-007: evidence missing — %s not collected", [k])
 }
 
 system_security_management_compliant if {
@@ -227,6 +264,12 @@ recovery_plan_violations contains msg if {
 	msg := sprintf("CIP-009: %v backup procedures not documented", [sys_id])
 }
 
+recovery_plan_violations contains msg if {
+	some k in ["recovery_plans", "backup_procedures"]
+	count(object.get(input, k, {})) == 0
+	msg := sprintf("CIP-009: evidence missing — %s not collected", [k])
+}
+
 recovery_plans_compliant if {
 	count(recovery_plan_violations) == 0
 	count(object.keys(input.recovery_plans)) > 0
@@ -253,6 +296,12 @@ config_management_violations contains msg if {
 	some sys_id, va in input.vulnerability_assessments
 	not va.performed == true
 	msg := sprintf("CIP-010: %v vulnerability assessment not performed", [sys_id])
+}
+
+config_management_violations contains msg if {
+	some k in ["baseline_configurations", "vulnerability_assessments"]
+	count(object.get(input, k, {})) == 0
+	msg := sprintf("CIP-010: evidence missing — %s not collected", [k])
 }
 
 configuration_change_management_compliant if {
@@ -310,13 +359,17 @@ comms_protection_violations contains msg if {
 comms_protection_violations contains msg if {
 	some link in input.control_center_communications.links
 	not link.encrypted == true
-	msg := sprintf("CIP-012: Link %v is not encrypted", [link.link_id])
+	msg := sprintf("CIP-012: Link %v is not encrypted", [object.get(link, "link_id", "unknown")])
 }
 
 comms_protection_violations contains msg if {
 	some link in input.control_center_communications.links
 	not link.authenticated == true
-	msg := sprintf("CIP-012: Link %v is not authenticated", [link.link_id])
+	msg := sprintf("CIP-012: Link %v is not authenticated", [object.get(link, "link_id", "unknown")])
+}
+
+comms_protection_violations contains "CIP-012: evidence missing — control_center_communications.links not collected" if {
+	count(object.get(input, ["control_center_communications", "links"], [])) == 0
 }
 
 communication_protection_implemented if {
@@ -366,6 +419,14 @@ cip_013_compliant if {
 
 default cip_014_compliant := false
 
+cip_014_violations contains "CIP-014: Transmission station security assessment not completed (or not collected)" if {
+	not input.transmission_security_assessments.completed == true
+}
+
+cip_014_violations contains "CIP-014: Transmission security assessment not verified by an unaffiliated third party (or not collected)" if {
+	not input.transmission_security_assessments.third_party_verified == true
+}
+
 cip_014_compliant if {
 	input.transmission_security_assessments.completed == true
 	input.transmission_security_assessments.third_party_verified == true
@@ -376,6 +437,10 @@ cip_014_compliant if {
 # =============================================================================
 
 default cip_015_compliant := false
+
+cip_015_violations contains "CIP-015: Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 R1/R2/R3 findings" if {
+	not nerc_cip_cip015.cip_015_compliant
+}
 
 cip_015_compliant if {
 	nerc_cip_cip015.cip_015_compliant
@@ -466,7 +531,13 @@ all_violations := array.concat(
 			),
 		),
 	),
-	[],
+	array.concat(
+		[v | v := cip_002_violations[_]],
+		array.concat(
+			[v | v := cip_014_violations[_]],
+			[v | v := cip_015_violations[_]],
+		),
+	),
 )
 
 nerc_cip_violations := all_violations
