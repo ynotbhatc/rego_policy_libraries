@@ -106,3 +106,14 @@ test_controls_checked_reflects_inputs if {
 	r2.controls_checked.sbom == true
 	r2.controls_checked.provenance == true
 }
+
+# 2026-11-13: `not f(input.missing)` is undefined, so a missing signing identity or builder id raised nothing.
+test_missing_signing_identity_is_a_violation if {
+	v := data.supply_chain.slsa.violations with input as {"artifact": {"signed": true, "signature_verified": true}}
+	has_prefix(v, "Signing: Signing identity not from an a")
+}
+
+test_missing_builder_id_is_a_violation if {
+	v := data.supply_chain.slsa.violations with input as {"provenance": {"exists": true}}
+	has_prefix(v, "Provenance: Builder identity not in app")
+}

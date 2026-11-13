@@ -37,11 +37,11 @@ _no_facts_finding := {
 
 default _target_compliant := false
 
-_target_compliant if _t.compliant == true
+_target_compliant if _t.compliance_report.compliant == true
 
 default _target_violations := []
 
-_target_violations := [v | some v in _t.violations]
+_target_violations := [v | some v in _t.compliance_report.violations]
 
 _violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
 

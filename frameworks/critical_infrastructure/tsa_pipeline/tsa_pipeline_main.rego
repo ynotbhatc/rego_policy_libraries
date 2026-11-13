@@ -272,6 +272,7 @@ compliance_report := {
 	"total_requirements_evaluated": _declared_controls,
 	"total_controls": max([_declared_controls, count(all_violations)]),
 	"violation_count": count(all_violations),
+	"failed_controls": min([max([_declared_controls, count(all_violations)]), count(all_violations)]),
 	"violations": all_violations,
 	"sections": {
 		"SD01_II_B_cybersecurity_coordinator": {

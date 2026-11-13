@@ -168,5 +168,6 @@ compliance_report := {
 	"total_controls": 18,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([18, count(violations)]),
 	"scope_note": "Attestation of governance-system existence at objective-cluster granularity. COBIT capability-level maturity assessment is not machine-assessable and is not claimed here. Technical substance behind APO13/DSS05 is assessed by the ISO 27001, NIST CSF, and CIS modules.",
 }

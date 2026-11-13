@@ -241,6 +241,7 @@ compliance_report := {
 	"total_controls": 399,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([399, count(violations)]),
 	"pillar_summary": {
 		"ict_risk_management": pillar1_violations,
 		"incident_reporting": pillar2_violations,

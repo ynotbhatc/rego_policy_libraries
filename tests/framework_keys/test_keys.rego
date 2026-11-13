@@ -22,17 +22,18 @@ keys := {
 }
 
 # One test per product key: the entrypoint resolves on empty input, is an object, is not compliant,
-# and meets the product contract the generic assessment playbook reads: a numeric total_controls and
-# a violations list. A key that collapses to undefined fails its own test, so the failure names the key.
-#
-# Not gated yet: total_controls >= count(violations) (the store derives passed = total - failed). On
-# 2026-11-12, 32 keys raise more findings than their declared total on empty input (every STIG key by
-# two input-contract notices; ccpa, eu_ai_act, iso27001, nist_800_171 and swift_csp by more). Floor those
-# modules at the finding count, then add the third line to _contract.
+# and meets the product contract: a numeric total_controls (the control count, not the finding count),
+# a violations list, and a numeric failed_controls that never exceeds total_controls. Findings can
+# outnumber controls (fail-closed and input-contract notices are findings, not controls), so the product
+# derives passed = total_controls - failed_controls, never total - count(violations). A key that
+# collapses to undefined fails its own test, so the failure names the key.
 
 _contract(r) if {
 	is_number(r.total_controls)
 	_listlike(r.violations)
+	is_number(r.failed_controls)
+	r.failed_controls >= 0
+	r.failed_controls <= r.total_controls
 }
 
 _listlike(x) if is_array(x)
@@ -671,3 +672,54 @@ test_key_tsa_pipeline if {
 
 # The key list and this file must stay in step.
 test_key_list_is_nonempty if count(keys) > 0
+
+# 2026-11-13 (semantic review): six bridges read `_t.compliant` / `_t.violations`, names their target package
+# never defined, so every real finding was dropped and a clean host could never be compliant. With some
+# facts supplied (so the fail-closed notice is not added) the bridge must carry the target's findings.
+test_bridge_carries_findings_cis_rhel10 if {
+	r := data.cis_rhel10.main.compliance_report with input as {"probe": true}
+	t := data.cis.rhel_10.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2004 if {
+	r := data.cis_ubuntu_2004.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_20_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2204 if {
+	r := data.cis_ubuntu_2204.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_22_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_ubuntu_2404 if {
+	r := data.cis_ubuntu_2404.main.compliance_report with input as {"probe": true}
+	t := data.cis_ubuntu_24_04.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_windows_2019 if {
+	r := data.cis_windows_2019.main.compliance_report with input as {"probe": true}
+	t := data.cis_windows_server_2019.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}
+
+test_bridge_carries_findings_cis_windows_2022 if {
+	r := data.cis_windows_2022.main.compliance_report with input as {"probe": true}
+	t := data.cis_windows_server_2022.main.compliance_report with input as {"probe": true}
+	count(t.violations) > 0
+	count(r.violations) == count(t.violations)
+	r.violation_count == count(t.violations)
+}

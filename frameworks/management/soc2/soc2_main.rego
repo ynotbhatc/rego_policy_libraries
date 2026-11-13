@@ -408,6 +408,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for soc2; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -424,6 +425,7 @@ compliance_report := {
 	},
 	"violations": [c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)],
 	"violation_count": count([c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)]),
+	"failed_controls": min([_declared_controls, count([c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)])]),
 	"total_controls": _declared_controls,
 }
 
