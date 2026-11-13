@@ -20,3 +20,10 @@ test_cis_debian_11_main_fail_closed_on_empty_input if {
 	report := data.cis_debian_11.main.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# Semantic review 2026-11-13: failed_controls counts distinct control ids, not violation messages.
+test_failed_controls_counts_distinct_control_ids if {
+	report := data.cis_debian_11.main.compliance_report with input as {"x": 1}
+		with data.cis_debian_11.violations as ["CIS 5.2.1: first finding", "CIS 5.2.1: second finding", "CIS 5.2.2: other control"]
+	report.failed_controls == 2
+}
