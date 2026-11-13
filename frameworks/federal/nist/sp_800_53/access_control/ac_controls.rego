@@ -344,6 +344,36 @@ violation contains msg if {
 	msg := "NIST AC-22: Publicly accessible content lacks review/removal process"
 }
 
+violation contains msg if {
+	not automated_marking
+	msg := "NIST AC-15: Automated marking missing security labels, classification marking, or handling caveats"
+}
+
+violation contains msg if {
+	not security_attributes
+	msg := "NIST AC-16: Security attributes not bound, associated, and preserved in transmission"
+}
+
+violation contains msg if {
+	not information_sharing_control
+	msg := "NIST AC-21: Information sharing lacks discretion limits, automated guidance, or preserved security attributes"
+}
+
+violation contains msg if {
+	not data_mining_protection
+	msg := "NIST AC-23: Data mining protection lacks detection techniques, warnings, or response procedures"
+}
+
+violation contains msg if {
+	not access_control_decisions
+	msg := "NIST AC-24: Access control decisions not based on security attributes, consistently enforced, or documented"
+}
+
+violation contains msg if {
+	not reference_monitor
+	msg := "NIST AC-25: Reference monitor not tamper-proof, always-invoked, and small enough to verify"
+}
+
 default compliant := false
 
 compliant if count(violation) == 0
@@ -351,7 +381,7 @@ compliant if count(violation) == 0
 compliance_report := {
 	"family": "AC",
 	"name": "Access Control",
-	"controls_evaluated": 18,
+	"controls_evaluated": 24,
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

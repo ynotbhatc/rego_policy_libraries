@@ -20,3 +20,11 @@ test_au_controls_fail_closed_on_empty_input if {
 	report := data.nist.sp800_53.audit_accountability.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# semantic review 2026-11-13: AU-11 must fire when au_controls is absent altogether.
+test_review_au11_fires_without_au_controls_block if {
+	r := data.nist.sp800_53.audit_accountability.compliance_report with input as {}
+	some v in r.violations
+	startswith(v, "NIST AU-11:")
+	r.violation_count == 12
+}
