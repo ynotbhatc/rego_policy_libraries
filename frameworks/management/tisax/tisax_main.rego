@@ -370,6 +370,7 @@ compliance_report := {
 	"total_controls": 51,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([51, count(violations)]),
 	"domain_summary": {
 		"isms_management": [v | some v in violations; contains(v, "ISA 1.")],
 		"security_organization": [v | some v in violations; contains(v, "ISA 2.")],

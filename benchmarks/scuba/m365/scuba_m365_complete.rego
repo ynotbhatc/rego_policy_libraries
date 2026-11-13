@@ -131,6 +131,7 @@ compliance_report := {
 	"accounting_balanced": accounting_balanced,
 	"violations": all_violations,
 	"violation_count": count(all_violations),
+	"failed_controls": min([BASELINE_TOTAL_POLICIES, count(all_violations)]),
 	"shall_violation_count": shall_violation_count,
 	"should_violation_count": should_violation_count,
 	"product_summary": product_summary,

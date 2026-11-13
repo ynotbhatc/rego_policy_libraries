@@ -188,5 +188,6 @@ compliance_report := {
 	"total_controls": 17,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([17, count(violations)]),
 	"scope_note": "Covers the assessable data-safeguarding slice of ITAR. Licensing decisions, TAA/MLA agreements, and jurisdiction rulings are legal process outside technical assessment. Pair with NIST SP 800-171 for technical control depth on the same systems.",
 }

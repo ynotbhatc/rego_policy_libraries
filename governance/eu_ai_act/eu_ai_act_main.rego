@@ -237,6 +237,7 @@ compliance_report := {
 	"total_controls": 5,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([5, count(violations)]),
 	"standard": "EU Artificial Intelligence Act — Regulation (EU) 2024/1689",
 	"compliant": compliant,
 	"overall_compliant": overall_compliant,
