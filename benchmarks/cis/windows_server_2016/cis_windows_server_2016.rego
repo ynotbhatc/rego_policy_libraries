@@ -216,31 +216,31 @@ account_management_audit_violations := [
 # 8.3 Detailed Tracking Audit Violations
 detailed_tracking_audit_violations := [
 "8.3.1: required entries for 'Audit PNP Activity' include 'Success'" |
-	not contains(input.advanced_audit_policy.detailed_tracking.audit_pnp_activity, "Success")
+	not contains(object.get(input, ["advanced_audit_policy", "detailed_tracking", "audit_pnp_activity"], ""), "Success")
 ]
 
 # 8.4 DS Access Audit Violations
 ds_access_audit_violations := [
 "8.4.1: required entries for 'Audit Directory Service Changes' include 'Success'" |
-	not contains(input.advanced_audit_policy.ds_access.audit_directory_service_changes, "Success")
+	not contains(object.get(input, ["advanced_audit_policy", "ds_access", "audit_directory_service_changes"], ""), "Success")
 ]
 
 # 8.5 Logon/Logoff Audit Violations
 logon_logoff_audit_violations := [
 "8.5.1: required entries for 'Audit Account Lockout' include 'Success'" |
-	not contains(input.advanced_audit_policy.logon_logoff.audit_account_lockout, "Success")
+	not contains(object.get(input, ["advanced_audit_policy", "logon_logoff", "audit_account_lockout"], ""), "Success")
 ]
 
 # 8.6 Object Access Audit Violations
 object_access_audit_violations := [
 "8.6.1: required entries for 'Audit Detailed File Share' include 'Failure'" |
-	not contains(input.advanced_audit_policy.object_access.audit_detailed_file_share, "Failure")
+	not contains(object.get(input, ["advanced_audit_policy", "object_access", "audit_detailed_file_share"], ""), "Failure")
 ]
 
 # 8.7 Policy Change Audit Violations
 policy_change_audit_violations := [
 "8.7.1: required entries for 'Audit Audit Policy Change' include 'Success'" |
-	not contains(input.advanced_audit_policy.policy_change.audit_audit_policy_change, "Success")
+	not contains(object.get(input, ["advanced_audit_policy", "policy_change", "audit_audit_policy_change"], ""), "Success")
 ]
 
 # 8.8 Privilege Use Audit Violations

@@ -54,8 +54,8 @@ journald_violations contains sprintf("CIS 4.2.1.3: journald not configured to fo
 }
 
 # CIS 4.2.1.4: rsyslog default file permissions
-rsyslog_violations contains sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode]) if {
-	not mode_within(input.rsyslog.file_create_mode, "0640")
+rsyslog_violations contains sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [object.get(input, ["rsyslog", "file_create_mode"], "not collected")]) if {
+	not mode_within(object.get(input, ["rsyslog", "file_create_mode"], ""), "0640")
 }
 
 # CIS 4.2.1.5: Logging configured

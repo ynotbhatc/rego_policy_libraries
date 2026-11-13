@@ -8,6 +8,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — checks that passed silently when their evidence was missing
+
+- In Rego `not f(input.missing)` is undefined, not true, so the rule never fires. All 164 such sites were
+  classified by whether their control raises a finding on empty input: 59 were guarded by an evidence-missing
+  rule, 39 sit in pass predicates that already fail closed, and 68 were silent. Those 68 now read the fact with
+  `object.get` and fail closed: the auditd boot-parameter and log-retention checks (4.1.1.3, 4.1.1.4, 4.1.2.1,
+  4.1.2.3) in CIS RHEL 8, Rocky 8/9, Amazon Linux 2023 and Ubuntu 20.04/22.04/24.04; rsyslog file-create mode
+  and sudoers mode in Debian 11, RHEL 8 and Ubuntu 24.04; CIS OCI 1.4 and 1.5; five CIS Windows Server 2016
+  advanced-audit entries; and the SLSA gate, where a verified signature with no signing identity, or
+  provenance with no builder id, raised nothing.
+- `csa_ccm` and `ncsc_caf` carried a hardcoded empty `violations` list, so a failing run stored no findings.
+  csa_ccm now lists the sixteen domain modules' findings and ncsc_caf one finding per contributing outcome
+  that is not achieved.
+
 ### Fixed — every framework key reports total_controls and a violations list
 
 - The product's generic assessment playbook refuses a report without `total_controls` and derives

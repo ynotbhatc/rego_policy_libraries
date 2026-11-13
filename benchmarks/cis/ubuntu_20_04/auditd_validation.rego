@@ -92,7 +92,7 @@ config_violations contains msg if {
 
 # CIS 4.1.1.4: audit_backlog_limit must be sufficient
 config_violations contains msg if {
-	not contains(input.bootloader.grub_config, "audit_backlog_limit")
+	not contains(object.get(input, ["bootloader", "grub_config"], ""), "audit_backlog_limit")
 	msg := "CIS 4.1.1.4: audit_backlog_limit not configured (should be 8192 or higher)"
 }
 
@@ -115,16 +115,16 @@ config_violations contains msg if {
 
 # CIS 4.1.2.3: system must be turned off when audit logs are full
 config_violations contains msg if {
-	not contains(input.auditd.config, "space_left_action = email")
-	not contains(input.auditd.config, "space_left_action = exec")
-	not contains(input.auditd.config, "space_left_action = single")
-	not contains(input.auditd.config, "space_left_action = halt")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = email")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = exec")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = single")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = halt")
 	msg := "CIS 4.1.2.3: space_left_action not appropriate (should be email, exec, single, or halt)"
 }
 
 config_violations contains msg if {
-	not contains(input.auditd.config, "admin_space_left_action = single")
-	not contains(input.auditd.config, "admin_space_left_action = halt")
+	not contains(object.get(input, ["auditd", "config"], ""), "admin_space_left_action = single")
+	not contains(object.get(input, ["auditd", "config"], ""), "admin_space_left_action = halt")
 	msg := "CIS 4.1.2.3: admin_space_left_action not appropriate (should be single or halt)"
 }
 

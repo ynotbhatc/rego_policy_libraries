@@ -28,3 +28,14 @@ test_auditd_log_mode_octal_not_decimal if {
 	v := data.cis_rhel8.auditd.permission_violations with input as {"auditd": {"log_permissions": {"mode": "0604"}}}
 	count(v) == 1
 }
+
+# 2026-11-13: `not contains(input.missing, …)` is undefined, so these controls passed silently with no evidence.
+test_missing_grub_and_auditd_config_fail_closed if {
+	v := data.cis_rhel8.auditd.config_violations with input as {}
+	some a in v
+	startswith(a, "CIS 4.1.1.3:")
+	some b in v
+	startswith(b, "CIS 4.1.2.1:")
+	some c in v
+	startswith(c, "CIS 4.1.2.3:")
+}

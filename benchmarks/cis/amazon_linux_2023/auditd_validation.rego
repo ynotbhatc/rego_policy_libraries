@@ -80,7 +80,7 @@ service_violations contains "CIS 4.1.1.2: auditd service not running" if {
 # =============================================================================
 
 config_violations contains "CIS 4.1.1.3: audit=1 not set in bootloader configuration" if {
-	not contains(input.bootloader.grub_config, "audit=1")
+	not contains(object.get(input, ["bootloader", "grub_config"], ""), "audit=1")
 }
 
 # =============================================================================
@@ -88,7 +88,7 @@ config_violations contains "CIS 4.1.1.3: audit=1 not set in bootloader configura
 # =============================================================================
 
 config_violations contains "CIS 4.1.1.4: audit_backlog_limit not sufficient (should be 8192 or higher)" if {
-	not contains(input.bootloader.grub_config, "audit_backlog_limit")
+	not contains(object.get(input, ["bootloader", "grub_config"], ""), "audit_backlog_limit")
 }
 
 # =============================================================================
@@ -96,7 +96,7 @@ config_violations contains "CIS 4.1.1.4: audit_backlog_limit not sufficient (sho
 # =============================================================================
 
 config_violations contains "CIS 4.1.2.1: max_log_file not configured in auditd.conf" if {
-	not contains(input.auditd.config, "max_log_file")
+	not contains(object.get(input, ["auditd", "config"], ""), "max_log_file")
 }
 
 # =============================================================================
@@ -116,15 +116,15 @@ config_violations contains "CIS 4.1.2.2: max_log_file_action set to ignore (no a
 # =============================================================================
 
 config_violations contains "CIS 4.1.2.3: space_left_action not appropriate (should be email, exec, single, or halt)" if {
-	not contains(input.auditd.config, "space_left_action = email")
-	not contains(input.auditd.config, "space_left_action = exec")
-	not contains(input.auditd.config, "space_left_action = single")
-	not contains(input.auditd.config, "space_left_action = halt")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = email")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = exec")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = single")
+	not contains(object.get(input, ["auditd", "config"], ""), "space_left_action = halt")
 }
 
 config_violations contains "CIS 4.1.2.3: admin_space_left_action not appropriate" if {
-	not contains(input.auditd.config, "admin_space_left_action = single")
-	not contains(input.auditd.config, "admin_space_left_action = halt")
+	not contains(object.get(input, ["auditd", "config"], ""), "admin_space_left_action = single")
+	not contains(object.get(input, ["auditd", "config"], ""), "admin_space_left_action = halt")
 }
 
 # =============================================================================

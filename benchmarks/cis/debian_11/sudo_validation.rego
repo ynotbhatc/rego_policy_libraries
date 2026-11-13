@@ -112,8 +112,8 @@ violations contains msg if {
 }
 
 violations contains msg if {
-	not mode_within(input.sudo.sudoers_mode, "0440")
-	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [input.sudo.sudoers_mode])
+	not mode_within(object.get(input, ["sudo", "sudoers_mode"], ""), "0440")
+	msg := sprintf("CIS 5.3.8: /etc/sudoers has mode %s, should be 0440", [object.get(input, ["sudo", "sudoers_mode"], "not collected")])
 }
 
 report := {
