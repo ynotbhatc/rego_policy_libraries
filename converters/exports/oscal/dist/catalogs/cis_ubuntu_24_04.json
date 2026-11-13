@@ -167,7 +167,7 @@
      },
      {
       "id": "cis_ubuntu_24_04-CIS-1.6.1.3",
-      "title": "%d AppArmor profiles are not loaded",
+      "title": "evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected",
       "props": [
        {
         "name": "label",
@@ -193,10 +193,15 @@
        {
         "id": "cis_ubuntu_24_04-CIS-1.6.1.3_stmt",
         "name": "statement",
-        "prose": "%d AppArmor profiles are not loaded"
+        "prose": "evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.6.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d AppArmor profiles are not loaded"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-1.6.1.3_obj.2",
         "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is not loaded"
        }
@@ -205,7 +210,7 @@
      },
      {
       "id": "cis_ubuntu_24_04-CIS-1.6.1.4",
-      "title": "%d AppArmor profiles are in complain mode (should be enforce)",
+      "title": "evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected",
       "props": [
        {
         "name": "label",
@@ -231,10 +236,15 @@
        {
         "id": "cis_ubuntu_24_04-CIS-1.6.1.4_stmt",
         "name": "statement",
-        "prose": "%d AppArmor profiles are in complain mode (should be enforce)"
+        "prose": "evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.6.1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "%d AppArmor profiles are in complain mode (should be enforce)"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-1.6.1.4_obj.2",
         "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is in complain mode, should be enforce"
        }
@@ -855,20 +865,25 @@
        {
         "id": "cis_ubuntu_24_04-CIS-1.4.2_obj.2",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file is owned by %s, should be root"
+        "prose": "evidence missing — grub.config_owner not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.4.2_obj.3",
         "name": "assessment-objective",
-        "prose": "evidence missing — grub_config_mode not collected"
+        "prose": "GRUB configuration file is owned by %s, should be root"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.4.2_obj.4",
         "name": "assessment-objective",
-        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+        "prose": "evidence missing — grub_config_mode not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.4.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "GRUB configuration file has mode %s, should be 0400 or 0600"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-1.4.2_obj.6",
         "name": "assessment-objective",
         "prose": "GRUB configuration file is not owned by root"
        }
@@ -910,7 +925,7 @@
      },
      {
       "id": "cis_ubuntu_24_04-CIS-1.5.1",
-      "title": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)",
+      "title": "evidence missing — process_hardening.core_dumps_enabled not collected",
       "props": [
        {
         "name": "label",
@@ -940,15 +955,20 @@
        {
         "id": "cis_ubuntu_24_04-CIS-1.5.1_stmt",
         "name": "statement",
-        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
+        "prose": "evidence missing — process_hardening.core_dumps_enabled not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.5.1_obj.1",
         "name": "assessment-objective",
-        "prose": "fs.suid_dumpable is %s, should be 0"
+        "prose": "Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.5.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "fs.suid_dumpable is %v, should be 0 (or was not collected)"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-1.5.1_obj.3",
         "name": "assessment-objective",
         "prose": "Core dumps are not restricted (hard limit should be 0)"
        }
@@ -999,7 +1019,7 @@
      },
      {
       "id": "cis_ubuntu_24_04-CIS-1.5.3",
-      "title": "prelink is installed - remove it as it can reduce ASLR effectiveness",
+      "title": "evidence missing — process_hardening.prelink_installed not collected",
       "props": [
        {
         "name": "label",
@@ -1029,10 +1049,15 @@
        {
         "id": "cis_ubuntu_24_04-CIS-1.5.3_stmt",
         "name": "statement",
-        "prose": "prelink is installed - remove it as it can reduce ASLR effectiveness"
+        "prose": "evidence missing — process_hardening.prelink_installed not collected"
        },
        {
         "id": "cis_ubuntu_24_04-CIS-1.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "prelink is installed - remove it as it can reduce ASLR effectiveness"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-1.5.3_obj.2",
         "name": "assessment-objective",
         "prose": "prelink is installed (disables ASLR effectiveness)"
        }
@@ -3569,6 +3594,11 @@
        {
         "id": "cis_ubuntu_24_04-CIS-L2-1.5.4_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing - kernel.suid_dumpable not collected"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-1.5.4_obj.2",
+        "name": "assessment-objective",
         "prose": "Hard core dump limit not set to 0 in limits.conf"
        }
       ],
@@ -3805,14 +3835,24 @@
        {
         "id": "cis_ubuntu_24_04-CIS-L2-3.3.1_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing - sysctl net.ipv6.conf.all.accept_ra not collected"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.1_obj.2",
+        "name": "assessment-objective",
         "prose": "IPv6 router advertisements not disabled (default)"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - sysctl net.ipv6.conf.default.accept_ra not collected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_ubuntu_24_04-CIS-L2-3.3.2",
-      "title": "IPv6 redirects accepted",
+      "title": "evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected",
       "props": [
        {
         "name": "label",
@@ -3838,6 +3878,11 @@
        {
         "id": "cis_ubuntu_24_04-CIS-L2-3.3.2_stmt",
         "name": "statement",
+        "prose": "evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-3.3.2_obj.1",
+        "name": "assessment-objective",
         "prose": "IPv6 redirects accepted"
        }
       ],
@@ -4108,6 +4153,11 @@
         "id": "cis_ubuntu_24_04-CIS-L2-5.2.8_obj.1",
         "name": "assessment-objective",
         "prose": "LoginGraceTime exceeds 60 seconds"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-5.2.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "LoginGraceTime is 0 (no limit)"
        }
       ],
       "class": "security"
@@ -4212,6 +4262,11 @@
         "id": "cis_ubuntu_24_04-CIS-L2-6.1.11_stmt",
         "name": "statement",
         "prose": "Unowned files found on filesystem"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - file_system.unowned_files not collected"
        }
       ],
       "class": "security"
@@ -4245,6 +4300,11 @@
         "id": "cis_ubuntu_24_04-CIS-L2-6.1.12_stmt",
         "name": "statement",
         "prose": "Ungrouped files found on filesystem"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.12_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - file_system.ungrouped_files not collected"
        }
       ],
       "class": "security"
@@ -4278,6 +4338,11 @@
         "id": "cis_ubuntu_24_04-CIS-L2-6.1.13_stmt",
         "name": "statement",
         "prose": "Unexpected SUID executables found"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.13_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - file_system.unexpected_suid_files not collected"
        }
       ],
       "class": "security"
@@ -4311,6 +4376,11 @@
         "id": "cis_ubuntu_24_04-CIS-L2-6.1.14_stmt",
         "name": "statement",
         "prose": "Unexpected SGID executables found"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-L2-6.1.14_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - file_system.unexpected_sgid_files not collected"
        }
       ],
       "class": "security"
@@ -7061,6 +7131,11 @@
         "id": "cis_ubuntu_24_04-CIS-5.2.18_stmt",
         "name": "statement",
         "prose": "SSH LoginGraceTime is %s seconds, should be 60 or less"
+       },
+       {
+        "id": "cis_ubuntu_24_04-CIS-5.2.18_obj.1",
+        "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds"
        }
       ],
       "class": "security"

@@ -3230,6 +3230,11 @@
         "id": "cra-CRA-Art.14-2-a_stmt",
         "name": "statement",
         "prose": "no early warning submitted to the CSIRT coordinator and ENISA within 24h of awareness (current: %dh)"
+       },
+       {
+        "id": "cra-CRA-Art.14-2-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — hours_since_aware_of_vuln not collected; early warning timeliness cannot be verified"
        }
       ],
       "class": "compliance"
@@ -3263,6 +3268,11 @@
         "id": "cra-CRA-Art.14-2-b_stmt",
         "name": "statement",
         "prose": "no vulnerability notification submitted within 72h of awareness (current: %dh)"
+       },
+       {
+        "id": "cra-CRA-Art.14-2-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — hours_since_aware_of_vuln not collected; vulnerability notification timeliness cannot be verified"
        }
       ],
       "class": "compliance"
@@ -3296,6 +3306,11 @@
         "id": "cra-CRA-Art.14-2-c_stmt",
         "name": "statement",
         "prose": "final vulnerability report not submitted within 14 days of a corrective/mitigating measure becoming available (current: %dd)"
+       },
+       {
+        "id": "cra-CRA-Art.14-2-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — days_since_corrective_measure_available not collected; final report timeliness cannot be verified"
        }
       ],
       "class": "compliance"
@@ -3329,6 +3344,11 @@
         "id": "cra-CRA-Art.14-4-a_stmt",
         "name": "statement",
         "prose": "severe incident early warning not submitted to the CSIRT coordinator and ENISA within 24h of awareness"
+       },
+       {
+        "id": "cra-CRA-Art.14-4-a_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — hours_since_aware_of_incident not collected; early warning timeliness cannot be verified"
        }
       ],
       "class": "compliance"
@@ -3362,6 +3382,11 @@
         "id": "cra-CRA-Art.14-4-b_stmt",
         "name": "statement",
         "prose": "severe incident notification not submitted within 72h of awareness"
+       },
+       {
+        "id": "cra-CRA-Art.14-4-b_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — hours_since_aware_of_incident not collected; incident notification timeliness cannot be verified"
        }
       ],
       "class": "compliance"
@@ -3395,6 +3420,11 @@
         "id": "cra-CRA-Art.14-4-c_stmt",
         "name": "statement",
         "prose": "final incident report not submitted within 1 month of the incident notification"
+       },
+       {
+        "id": "cra-CRA-Art.14-4-c_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — days_since_incident_notification not collected; final report timeliness cannot be verified"
        }
       ],
       "class": "compliance"

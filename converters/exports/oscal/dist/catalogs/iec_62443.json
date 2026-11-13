@@ -127,6 +127,11 @@
         "id": "iec_62443-IEC-62443-SR-1.1-IAC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not enforce unique user identification. Every human user must have a unique identifier."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.1-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -226,6 +231,11 @@
         "id": "iec_62443-IEC-62443-SR-1.2-IAC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not authenticate software processes or devices. Device-to-device authentication is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.2-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -487,6 +497,11 @@
         "id": "iec_62443-IEC-62443-SR-1.7-IAC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' does not enforce password complexity. Passwords must include uppercase, lowercase, digits, and special characters."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.7-IAC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -586,6 +601,11 @@
         "id": "iec_62443-IEC-62443-SR-1.8-IAC_stmt",
         "name": "statement",
         "prose": "Certificate revocation checking (CRL/OCSP) is not implemented. Revoked certificates must be detected and rejected."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.8-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.authentication not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -619,6 +639,11 @@
         "id": "iec_62443-IEC-62443-SR-1.9-IAC_stmt",
         "name": "statement",
         "prose": "Public key authentication uses weak cryptographic algorithms. Use RSA 2048+, ECDSA 256+, or equivalent strength algorithms."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.9-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.authentication not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -652,6 +677,11 @@
         "id": "iec_62443-IEC-62443-SR-1.10-IAC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' displays authenticator feedback in plaintext. Authentication information (passwords, tokens) must be obscured during entry."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.10-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -690,6 +720,11 @@
         "id": "iec_62443-IEC-62443-SR-1.11-IAC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' has no account lockout policy. Account lockout after failed attempts is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.11-IAC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -756,6 +791,11 @@
         "id": "iec_62443-IEC-62443-SR-1.12-IAC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not display a system use notification. A warning banner indicating authorized use only must be displayed before login."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.12-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -789,6 +829,11 @@
         "id": "iec_62443-IEC-62443-SR-1.13-IAC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' has uncontrolled remote access. Remote access via untrusted networks must use VPN, jump host, or equivalent controls."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-1.13-IAC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -988,6 +1033,11 @@
         "id": "iec_62443-IEC-62443-SR-2.2-UC_obj.1",
         "name": "assessment-objective",
         "prose": "Wireless connections on ICS system '%v' are not monitored. Wireless activity must be continuously monitored for unauthorized access."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.2-UC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1026,6 +1076,11 @@
         "id": "iec_62443-IEC-62443-SR-2.3-UC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' does not control removable media. Removable media must be scanned for malware before use and restricted to authorized devices."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.3-UC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1092,6 +1147,11 @@
         "id": "iec_62443-IEC-62443-SR-2.4-UC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not control mobile code execution. Scripts, active content, and macros must be restricted to explicitly authorized code."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.4-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1163,6 +1223,11 @@
         "id": "iec_62443-IEC-62443-SR-2.5-UC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' does not enforce session locking. Automatic session lock after inactivity is required."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.5-UC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1229,6 +1294,11 @@
         "id": "iec_62443-IEC-62443-SR-2.6-UC_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not support remote session termination. Authorized users must be able to terminate remote sessions at any time."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.6-UC_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1333,6 +1403,11 @@
         "id": "iec_62443-IEC-62443-SR-2.8-UC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' audit logs are missing required fields. Logs must include: event type, timestamp, source identity, outcome, and affected resource."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-2.8-UC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1516,6 +1591,72 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.7-UC",
+      "title": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.7 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.7 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6c5797ee-ec04-5ef0-90d0-eb688011724d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.7-UC_stmt",
+        "name": "statement",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-SR-2.12-UC",
+      "title": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 SR 2.12 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 SR 2.12 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6c5797ee-ec04-5ef0-90d0-eb688011724d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-SR-2.12-UC_stmt",
+        "name": "statement",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -1570,6 +1711,11 @@
         "id": "iec_62443-IEC-62443-SR-3.1-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not protect communication integrity. IACS communications must use mechanisms (checksums, MACs, digital signatures) to detect unauthorized modification."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.1-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1669,6 +1815,11 @@
         "id": "iec_62443-IEC-62443-SR-3.2-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' malware definitions are not current. Malware signatures must be updated at least weekly, or more frequently if the system is Internet-connected."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.2-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1735,6 +1886,11 @@
         "id": "iec_62443-IEC-62443-SR-3.3-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' has no security function verification process. Security controls must be periodically tested to confirm they operate as intended."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.3-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1882,6 +2038,11 @@
         "id": "iec_62443-IEC-62443-SR-3.5-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not validate inputs. All external inputs (HMI, APIs, data feeds) must be validated to prevent injection attacks and unexpected behavior."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.5-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1915,6 +2076,11 @@
         "id": "iec_62443-IEC-62443-SR-3.6-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not enforce output range checking. Control outputs must remain within safe operational bounds even under error or attack conditions."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.6-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1953,6 +2119,11 @@
         "id": "iec_62443-IEC-62443-SR-3.7-SI_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' error messages expose sensitive system information. Error messages must be sanitized before display to operators."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.7-SI_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -1986,6 +2157,11 @@
         "id": "iec_62443-IEC-62443-SR-3.8-SI_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not protect session integrity. Session tokens must be cryptographically protected against hijacking and replay attacks."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-3.8-SI_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -2294,6 +2470,11 @@
         "id": "iec_62443-IEC-62443-SR-4.2-DC_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' does not clear sensitive data from memory on deallocation. Cryptographic keys, passwords, and process data must be zeroed before memory is released."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.2-DC_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -2375,6 +2556,11 @@
         "id": "iec_62443-IEC-62443-SR-4.3-DC_obj.3",
         "name": "assessment-objective",
         "prose": "ICS system '%v' uses deprecated cryptographic ciphers (DES, 3DES, RC4, MD5). These must be replaced with currently approved algorithms."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-4.3-DC_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -2660,6 +2846,11 @@
         "id": "iec_62443-IEC-62443-SR-5.3-RDF_stmt",
         "name": "statement",
         "prose": "Zone '%v' (SL %v) permits unrestricted general-purpose communications (email, instant messaging). These must be restricted or prohibited within high-security IACS zones."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.3-RDF_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.network not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -2726,6 +2917,11 @@
         "id": "iec_62443-IEC-62443-SR-5.4-RDF_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not partition IACS applications from general-purpose applications. Business applications must not run on the same platform as control applications."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.4-RDF_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -3294,6 +3490,11 @@
         "id": "iec_62443-IEC-62443-SR-7.2-RA_stmt",
         "name": "statement",
         "prose": "ICS system '%v' does not monitor resource usage. CPU, memory, disk, and network resource utilization must be monitored with alerts for degraded capacity."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.2-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -3522,6 +3723,11 @@
         "id": "iec_62443-IEC-62443-SR-7.5-RA_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' emergency power backup has not been tested. UPS/generator systems must be tested at least semi-annually to verify runtime and automatic switchover."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.5-RA_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -3588,6 +3794,11 @@
         "id": "iec_62443-IEC-62443-SR-7.6-RA_stmt",
         "name": "statement",
         "prose": "ICS system '%v' has no documented configuration baseline. A hardened baseline configuration must be documented and enforced."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.6-RA_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"
@@ -3659,6 +3870,11 @@
         "id": "iec_62443-IEC-62443-SR-7.7-RA_obj.1",
         "name": "assessment-objective",
         "prose": "ICS system '%v' OS has not been hardened. Remove unnecessary OS components, disable unused features, and apply a hardening standard (CIS benchmark or equivalent)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-7.7-RA_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
        }
       ],
       "class": "ot"

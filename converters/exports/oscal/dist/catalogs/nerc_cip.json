@@ -622,6 +622,26 @@
        {
         "id": "nerc_cip-CIP-002_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing — bes_cyber_systems not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-002_obj.2",
+        "name": "assessment-objective",
+        "prose": "BES Cyber System %v has no valid impact categorization (high/medium/low)"
+       },
+       {
+        "id": "nerc_cip-CIP-002_obj.3",
+        "name": "assessment-objective",
+        "prose": "Categorization criteria not defined"
+       },
+       {
+        "id": "nerc_cip-CIP-002_obj.4",
+        "name": "assessment-objective",
+        "prose": "Categorization methodology not documented"
+       },
+       {
+        "id": "nerc_cip-CIP-002_obj.5",
+        "name": "assessment-objective",
         "prose": "BES Cyber System Categorization"
        }
       ],
@@ -8432,6 +8452,11 @@
        {
         "id": "nerc_cip-CIP-004_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — personnel records not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-004_obj.3",
+        "name": "assessment-objective",
         "prose": "Personnel and Training"
        }
       ],
@@ -8475,6 +8500,11 @@
        {
         "id": "nerc_cip-CIP-005_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — electronic_access_points not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-005_obj.3",
+        "name": "assessment-objective",
         "prose": "Electronic Security Perimeters"
        }
       ],
@@ -8517,6 +8547,11 @@
        },
        {
         "id": "nerc_cip-CIP-006_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — physical_security_perimeters not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-006_obj.3",
         "name": "assessment-objective",
         "prose": "Physical Security of BES Cyber Systems"
        }
@@ -8565,6 +8600,11 @@
        },
        {
         "id": "nerc_cip-CIP-007_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — %s not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-007_obj.4",
         "name": "assessment-objective",
         "prose": "Systems Security Management"
        }
@@ -8662,6 +8702,11 @@
        {
         "id": "nerc_cip-CIP-009_obj.3",
         "name": "assessment-objective",
+        "prose": "evidence missing — %s not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-009_obj.4",
+        "name": "assessment-objective",
         "prose": "Recovery Plans for BES Cyber Systems"
        }
       ],
@@ -8704,6 +8749,11 @@
        },
        {
         "id": "nerc_cip-CIP-010_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — %s not collected"
+       },
+       {
+        "id": "nerc_cip-CIP-010_obj.3",
         "name": "assessment-objective",
         "prose": "Configuration Change Management"
        }
@@ -8801,10 +8851,15 @@
        {
         "id": "nerc_cip-CIP-012_obj.2",
         "name": "assessment-objective",
-        "prose": "Communications Between Control Centers"
+        "prose": "evidence missing — control_center_communications.links not collected"
        },
        {
         "id": "nerc_cip-CIP-012_obj.3",
+        "name": "assessment-objective",
+        "prose": "Communications Between Control Centers"
+       },
+       {
+        "id": "nerc_cip-CIP-012_obj.4",
         "name": "assessment-objective",
         "prose": "Link %v is not encrypted"
        }
@@ -8861,7 +8916,7 @@
      },
      {
       "id": "nerc_cip-CIP-014",
-      "title": "Physical Security of Transmission Stations",
+      "title": "Transmission station security assessment not completed (or not collected)",
       "props": [
        {
         "name": "label",
@@ -8887,6 +8942,16 @@
        {
         "id": "nerc_cip-CIP-014_stmt",
         "name": "statement",
+        "prose": "Transmission station security assessment not completed (or not collected)"
+       },
+       {
+        "id": "nerc_cip-CIP-014_obj.1",
+        "name": "assessment-objective",
+        "prose": "Transmission security assessment not verified by an unaffiliated third party (or not collected)"
+       },
+       {
+        "id": "nerc_cip-CIP-014_obj.2",
+        "name": "assessment-objective",
         "prose": "Physical Security of Transmission Stations"
        }
       ],
@@ -8894,7 +8959,7 @@
      },
      {
       "id": "nerc_cip-CIP-015",
-      "title": "Internal Network Security Monitoring",
+      "title": "Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 R1/R2/R3 findings",
       "props": [
        {
         "name": "label",
@@ -8920,6 +8985,11 @@
        {
         "id": "nerc_cip-CIP-015_stmt",
         "name": "statement",
+        "prose": "Internal Network Security Monitoring requirements not met — see nerc_cip_cip015 R1/R2/R3 findings"
+       },
+       {
+        "id": "nerc_cip-CIP-015_obj.1",
+        "name": "assessment-objective",
         "prose": "Internal Network Security Monitoring"
        }
       ],
