@@ -1,58 +1,14 @@
 name: OPA Policy Validation
 
+# No path filter: the ruleset on main requires the "Check and Test Rego Policies" status, and a
+# workflow that skips on docs-only changes never reports it, so CHANGELOG, registry and docs PRs
+# sat BLOCKED until an admin merged them by hand. Running the suite on every PR (about twelve
+# minutes) is cheaper than that.
 on:
   push:
     branches: [main]
-    paths:
-      - 'scripts/coverage_stamp.py'
-      - 'scripts/rego_ast.py'
-      - 'scripts/inventory_controls.py'
-      - 'scripts/build_site.py'
-      - 'scripts/gen_pages_catalog.py'
-      - 'compare/**'
-      - 'largest-policy-library.html'
-      - 'sitemap.xml'
-      - '.github/workflows/converters.yml'
-      - 'docs/ci-examples/**'
-      - 'converters/**'
-      - 'scripts/count_controls.py'
-      - 'Makefile'
-      - 'README.md'
-      - '**/*.rego'
-      - '.github/workflows/opa-test.yml'
-      - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
-      - 'scripts/check_cis_ids.py'
-      - 'scripts/check_cis_coverage.py'
-      - 'scripts/check_cis_verbatim.py'
-      - 'scripts/cis_verbatim_allowlist.txt'
-      - '**/data/cis_*_index.json'
-      - 'docs/ENGINE_COMPATIBILITY.md'
   pull_request:
     branches: [main]
-    paths:
-      - 'scripts/coverage_stamp.py'
-      - 'scripts/rego_ast.py'
-      - 'scripts/inventory_controls.py'
-      - 'scripts/build_site.py'
-      - 'scripts/gen_pages_catalog.py'
-      - 'compare/**'
-      - 'largest-policy-library.html'
-      - 'sitemap.xml'
-      - '.github/workflows/converters.yml'
-      - 'docs/ci-examples/**'
-      - 'converters/**'
-      - 'scripts/count_controls.py'
-      - 'Makefile'
-      - 'README.md'
-      - '**/*.rego'
-      - '.github/workflows/opa-test.yml'
-      - '.github/workflows/publish-ghcr.yml'   # required check must run on publish-workflow PRs or they stay BLOCKED
-      - 'scripts/check_cis_ids.py'
-      - 'scripts/check_cis_coverage.py'
-      - 'scripts/check_cis_verbatim.py'
-      - 'scripts/cis_verbatim_allowlist.txt'
-      - '**/data/cis_*_index.json'
-      - 'docs/ENGINE_COMPATIBILITY.md'
 
 permissions:
   contents: read

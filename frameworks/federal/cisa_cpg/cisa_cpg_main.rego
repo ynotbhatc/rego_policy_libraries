@@ -275,6 +275,7 @@ compliance_report := {
 	"total_controls": 34,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([34, count(violations)]),
 	"function_summary": function_summary,
 	"version_mapping_note": "Goal IDs follow CPG 2.0. For assessments recorded against v1.0.1 IDs, consult the v1.0.1-to-2.0 mapping table in the CPG 2.0 report (e.g. old 1.A Asset Inventory = new 2.A; old 2.H MFA = new 3.F).",
 }

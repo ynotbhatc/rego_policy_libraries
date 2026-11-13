@@ -140,11 +140,11 @@ violations contains "1.3: checked condition — IAM administrators cannot update
 }
 
 violations contains "1.4: checked condition — IAM password policy requires minimum length of 14 or greater" if {
-	not object.get(input.oci.iam.password_policy, "minimum_length", 0) >= 14
+	not object.get(object.get(input, ["oci", "iam", "password_policy"], {}), "minimum_length", 0) >= 14
 }
 
 violations contains "1.5: checked condition — IAM password policy expires passwords within 365 days" if {
-	not object.get(input.oci.iam.password_policy, "max_age_days", 99999) <= 365
+	not object.get(object.get(input, ["oci", "iam", "password_policy"], {}), "max_age_days", 99999) <= 365
 }
 
 violations contains "1.6: checked condition — IAM password policy prevents password reuse" if {

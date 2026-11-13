@@ -61,7 +61,7 @@ violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
 	input.initial_setup.gdm_screen_lock_enabled
-	not has_key(input.initial_setup, "gdm_idle_delay")
+	not has_key(object.get(input, ["initial_setup"], {}), "gdm_idle_delay")
 	msg := "CIS 1.8.4: evidence missing — initial_setup.gdm_idle_delay not collected"
 }
 

@@ -10,7 +10,7 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: compliance_report
 #     guard: self
 #     as_of: v2.4.2
@@ -59,11 +59,20 @@ default _upstream := {}
 
 _upstream := _t.compliance_report
 
+# HEADEND-API-1..5, HEADEND-DB-1..6, HEADEND-AUD-1..4, HEADEND-NET-1..3,
+# HEADEND-PATCH-1. Keep in step with the module. Never fewer controls than
+# findings: the store derives passed = total - failed.
+_declared_controls := 19
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "ami_headend",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"failed_controls": min([total_controls, count(_violations)]),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

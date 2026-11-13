@@ -2,7 +2,7 @@
 
 <!-- Moved out of README.md on 2026-11-11 so the front page stays short. Content unchanged except headings. -->
 
-Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../STANDARDS_UPDATE_REGISTRY.md): pinned version, upstream revision cadence and watch URL.
+Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../STANDARDS_UPDATE_REGISTRY.md): pinned version, upstream revision cadence and watch URL. What moved upstream each month, and what the library did about it, is written up in [`sweeps/`](sweeps/README.md).
 
 ## Coverage at a glance
 

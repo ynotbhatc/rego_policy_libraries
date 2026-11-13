@@ -136,9 +136,30 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for hipaa; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
+	"total_controls": 1,
 }
 
-compliance_report := object.union(report, {"framework_key": "hipaa", "compliant": _entrypoint_compliant})
+# The product reads violations, violation_count and total_controls: every part's findings in one list, and
+# the sum of the parts' control totals, never below the finding count.
+_violations := array.concat(
+	array.concat([v | some v in part160.violations], [v | some v in part162.violations]),
+	array.concat(
+		array.concat([v | some v in security_rule.violations], [v | some v in hitech.violations]),
+		[v | some v in privacy_rule.violations],
+	),
+)
+
+total_controls := max([sum([s.controls | some _, s in sections]), count(_violations)])
+
+compliance_report := object.union(report, {
+	"framework_key": "hipaa",
+	"compliant": _entrypoint_compliant,
+	"violations": _violations,
+	"violation_count": count(_violations),
+	"failed_controls": min([total_controls, count(_violations)]),
+	"total_controls": total_controls,
+})
 
 default _entrypoint_compliant := false
 

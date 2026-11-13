@@ -59,11 +59,19 @@ default _upstream := {}
 
 _upstream := _t.report
 
+# Control universe for the product's passed = total - failed arithmetic: thirty violation rules across the CIP standards in nerc_cip_main (16 fire with no facts).
+# Never below the finding count, so a fail-closed run cannot report more failures than controls.
+_declared_controls := 30
+
+total_controls := max([_declared_controls, count(_violations)])
+
 compliance_report := object.union(_upstream, {
 	"framework_key": "nerc_cip",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"failed_controls": min([total_controls, count(_violations)]),
+	"total_controls": total_controls,
 	"facts_supplied": _facts_supplied,
 })
 

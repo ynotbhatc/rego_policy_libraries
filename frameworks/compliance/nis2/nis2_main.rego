@@ -280,6 +280,7 @@ compliance_report := {
 	"total_controls": 34,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([34, count(violations)]),
 	"article_summary": {
 		"art_20_governance": [v | some v in violations; contains(v, "Art.20")],
 		"art_21a_risk_policies": [v | some v in violations; contains(v, "Art.21(2)(a)")],

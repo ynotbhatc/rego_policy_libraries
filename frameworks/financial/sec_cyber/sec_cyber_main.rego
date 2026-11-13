@@ -197,6 +197,7 @@ compliance_report := {
 	"total_controls": 22,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([22, count(violations)]),
 	"section_summary": {
 		"item_105_8k_disclosure": [v | some v in violations; contains(v, "Item 1.05")],
 		"annual_10k_disclosure": [v | some v in violations; contains(v, "§229.106(b)")],

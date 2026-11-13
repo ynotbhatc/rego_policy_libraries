@@ -184,10 +184,19 @@ default _principle_d1 := {"compliant": false}
 
 _principle_d1 := d1_response_recovery.compliance_report
 
+# One finding per contributing outcome that is not fully achieved. The report used to carry a hardcoded
+# empty list, so a failing run stored no findings.
+_violations := sort([msg |
+	some co, status in all_co_achievements
+	status != "achieved"
+	msg := sprintf("NCSC CAF %s: contributing outcome is %s", [co, replace(status, "_", " ")])
+])
+
 compliance_report := {
 	"total_controls": 23,
-	"violations": [],
-	"violation_count": 0,
+	"violations": _violations,
+	"violation_count": count(_violations),
+	"failed_controls": min([23, count(_violations)]),
 	"framework": "NCSC Cyber Assessment Framework 4.0",
 	"version": "4.0",
 	"phase": "Phase 1 + Phase 2",
