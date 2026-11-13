@@ -47,6 +47,10 @@ violations := array.concat(
 # CIS 1.1.1.x - DISABLED FILESYSTEM MODULES
 # =============================================================================
 
+filesystem_module_violations contains "CIS 1.1.1.x: evidence missing - disabled_filesystem_modules.modules not collected" if {
+	count(object.get(object.get(input, "disabled_filesystem_modules", {}), "modules", [])) == 0
+}
+
 filesystem_module_violations contains violation if {
 	some module in input.disabled_filesystem_modules.modules
 	not module.compliant
