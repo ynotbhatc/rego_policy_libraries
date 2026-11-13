@@ -1906,6 +1906,6 @@ compliance_report := {
 	"withdrawn": withdrawn,
 	"retired_rev2_checks": retired_rev2_checks,
 	"violation_count": count(violations),
-	"failed_controls": min([count(requirements), count(violations)]),
+	"failed_controls": count({id | some id, _ in requirements; not _satisfied(id)}),
 	"violations": violations,
 }
