@@ -64,6 +64,7 @@ compliance_report := object.union(_upstream, {
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"failed_controls": min([object.get(_upstream, "total_controls", count(_violations)), count(_violations)]),
 	"facts_supplied": _facts_supplied,
 })
 

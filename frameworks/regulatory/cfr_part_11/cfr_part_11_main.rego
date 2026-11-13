@@ -313,6 +313,7 @@ compliance_report := {
 	"total_controls": 43,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([43, count(violations)]),
 	"section_summary": {
 		"s11_10_closed_systems": [v | some v in violations; contains(v, "11.10")],
 		"s11_30_open_systems": [v | some v in violations; contains(v, "11.30")],

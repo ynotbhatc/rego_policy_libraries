@@ -162,6 +162,7 @@ compliance_report := {
 	"total_controls": 197,
 	"violations": _violations,
 	"violation_count": count(_violations),
+	"failed_controls": min([197, count(_violations)]),
 	"standard": "CSA Cloud Controls Matrix (CCM) v4.0",
 	"overall_compliant": overall_compliant,
 	"domains_passing": domains_passing,

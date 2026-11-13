@@ -435,6 +435,7 @@ compliance_report := {
 	"total_controls": 59,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([59, count(violations)]),
 	"category_summary": {
 		"security_mgmt_program": [v | some v in violations; contains(v, "CSF 00.")],
 		"access_control": [v | some v in violations; contains(v, "CSF 01.")],

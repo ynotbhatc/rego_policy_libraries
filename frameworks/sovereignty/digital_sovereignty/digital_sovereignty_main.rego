@@ -273,6 +273,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for digital_sovereignty; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -287,6 +288,7 @@ compliance_report := object.union(report, {
 	"compliant": _entrypoint_compliant,
 	"violations": all_violations,
 	"violation_count": count(all_violations),
+	"failed_controls": min([total_controls, count(all_violations)]),
 	"total_controls": total_controls,
 })
 

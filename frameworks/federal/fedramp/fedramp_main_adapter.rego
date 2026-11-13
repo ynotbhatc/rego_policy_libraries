@@ -74,6 +74,7 @@ compliance_report := {
 	"compliant": compliant,
 	"violations": violations,
 	"violation_count": count(violations),
+	"failed_controls": min([total_controls, count(violations)]),
 	"total_controls": total_controls,
 	"area_summary": area_summary,
 }

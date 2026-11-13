@@ -248,6 +248,7 @@ default compliance_report := {
 	"fail_closed": true,
 	"violations": [{"control": "FAIL-CLOSED", "title": "no report produced for pci_dss; this is not a passing result"}],
 	"violation_count": 1,
+	"failed_controls": 1,
 	"total_controls": 1,
 }
 
@@ -276,6 +277,7 @@ compliance_report := object.union(pci_dss_detailed_findings, {
 	"compliant": _entrypoint_compliant,
 	"violations": _requirement_violations,
 	"violation_count": count(_requirement_violations),
+	"failed_controls": min([_declared_controls, count(_requirement_violations)]),
 	"total_controls": _declared_controls,
 })
 

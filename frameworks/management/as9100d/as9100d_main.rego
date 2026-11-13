@@ -241,6 +241,7 @@ compliance_report := {
 	"clauses": clauses,
 	"compliant": compliant,
 	"violation_count": count(violations),
+	"failed_controls": min([max([_sum("total"), count(violations)]), count(violations)]),
 	"violations": violations,
 	"total_controls": max([_sum("total"), count(violations)]),
 }

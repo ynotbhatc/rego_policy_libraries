@@ -22,17 +22,18 @@ keys := {
 }
 
 # One test per product key: the entrypoint resolves on empty input, is an object, is not compliant,
-# and meets the product contract the generic assessment playbook reads: a numeric total_controls and
-# a violations list. A key that collapses to undefined fails its own test, so the failure names the key.
-#
-# Not gated yet: total_controls >= count(violations) (the store derives passed = total - failed). On
-# 2026-11-12, 32 keys raise more findings than their declared total on empty input (every STIG key by
-# two input-contract notices; ccpa, eu_ai_act, iso27001, nist_800_171 and swift_csp by more). Floor those
-# modules at the finding count, then add the third line to _contract.
+# and meets the product contract: a numeric total_controls (the control count, not the finding count),
+# a violations list, and a numeric failed_controls that never exceeds total_controls. Findings can
+# outnumber controls (fail-closed and input-contract notices are findings, not controls), so the product
+# derives passed = total_controls - failed_controls, never total - count(violations). A key that
+# collapses to undefined fails its own test, so the failure names the key.
 
 _contract(r) if {
 	is_number(r.total_controls)
 	_listlike(r.violations)
+	is_number(r.failed_controls)
+	r.failed_controls >= 0
+	r.failed_controls <= r.total_controls
 }
 
 _listlike(x) if is_array(x)

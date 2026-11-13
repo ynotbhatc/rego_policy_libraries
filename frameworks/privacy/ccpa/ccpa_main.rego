@@ -78,6 +78,7 @@ compliance_report := {
 		),
 	),
 	"violation_count": ((count(consumer_rights.violations) + count(business_obligations.violations)) + (count(sensitive_data.violations) + count(data_practices.violations))) + ((count(cybersecurity_audits.violations) + count(risk_assessments.violations)) + count(admt.violations)),
+	"failed_controls": min([7, ((count(consumer_rights.violations) + count(business_obligations.violations)) + (count(sensitive_data.violations) + count(data_practices.violations))) + ((count(cybersecurity_audits.violations) + count(risk_assessments.violations)) + count(admt.violations))]),
 	"standard": "CCPA/CPRA — California Consumer Privacy Act (as amended by CPRA 2023) + 2025 CPPA Regulations (cybersecurity audits, risk assessments, ADMT; effective 2026-01-01)",
 	"overall_compliant": overall_compliant,
 	"modules_passing": modules_passing,
