@@ -12,13 +12,24 @@ Per-platform STIG implementations. Every platform directory carries:
 - tests: empty-input smoke + green-fixture full-closure (+ alias fail-closed)
 
 **Rule IDs are verified against the current DISA SRG-STIG Library
-Compilation before stamping** (July 2026 library, verified 2026-09-03; the
-four Oracle platforms against the October 2026 library, verified 2026-10-13; Kubernetes V2R6 and
-RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21; the five Windows
-platforms against the October 2026 library, verified 2026-11-10).
-Coverage per platform is stated honestly in each aggregator header —
+Compilation before stamping** (October 2026 library: the seven Linux platforms and the five
+Windows platforms verified 2026-11-10, the four Oracle platforms verified 2026-10-13; Kubernetes
+V2R6 and RGS RKE2 V2R7 against DISA's standalone STIG zips, verified 2026-10-21).
+Coverage per platform is stated in each aggregator header —
 implemented-of-total; the remainder is tracked follow-up, not silent absence.
 STIGs ride a quarterly release cycle — see `STANDARDS_UPDATE_REGISTRY.md`.
+
+## Linux platforms (October 2026 library, verified 2026-11-10)
+
+| Directory | STIG | Rules | How |
+|---|---|---|---|
+| `rhel_9` | V2R10, 30 Sep 2026 | 104 of 445 | Re-stamped by what each rule checks (`tools/stig_generators/stamp_catalog.py`): every finding keyed on its fact against the V2R10 check text; 39 findings with no V2R10 rule removed. |
+| `rhel_8` | V2R8, 01 Jul 2026 | 53 of 369 | Same re-stamp. RHEL 8 is absent from the October 2026 compilation (the standalone zip is still served), so treat V2R8 as its final release. |
+| `rhel_10` | V1R2, 01 Jul 2026 | 98 of 434 | Derived from the re-stamped RHEL 9 modules by DISA rule title (`gen_oracle_linux.py rhel_10`, 45 reviewed overrides). The October compilation lists V1R3; re-stamp pending. |
+| `ubuntu_22_04` | V2R10, 30 Sep 2026 | 22 of 191 | `tools/stig_generators/gen_linux.py`, catalog id hard-gate. |
+| `ubuntu_24_04` | V1R7, 30 Sep 2026 | 22 of 195 | The 22.04 logic table re-keyed by title (`UBTU_22_TO_24`); sshd Ciphers and MACs from the 24.04 check text. |
+| `amazon_linux_2023` | V1R5, 30 Sep 2026 | 23 of 187 | `gen_linux.py`. |
+| `sles_15` | V2R9, 30 Sep 2026 | 27 of 220 | `gen_linux.py`. |
 
 ## Windows platforms (October 2026 library, verified 2026-11-10)
 
@@ -44,10 +55,10 @@ bodies are derived, not copied. Windows 10 left the library (final V3R6) — see
 
 All four join the 800-53 spine (`crosswalk/stig_800_53/data.json`, every catalog rule, via the CCI list).
 
-**Known defect, tracked:** the RHEL 9 modules' `stig_id`/`vuln_id` values disagree with
-the current RHEL 9 catalog for 108 of 143 findings (the title next to the logic names a
-different DISA rule than the id does). The Oracle derivation keys on the title, not the id,
-for exactly this reason. Re-stamping the RHEL 9 ids by title is the next STIG item.
+**Resolved 2026-11-10:** the RHEL 9 modules' `stig_id`/`vuln_id` values had disagreed with
+the catalog for 108 of 143 findings. Both RHEL 9 and RHEL 8 were re-stamped by what each rule
+checks (`tools/stig_generators/stamp_catalog.py`), and the Oracle overrides were re-keyed to
+the stamped ids (53 keys moved, 8 removed). The Oracle modules themselves are unchanged.
 
 ## Kubernetes and RKE2 (every rule, verified 2026-10-21)
 
@@ -78,6 +89,7 @@ CCI has no Rev 5 mapping in the CCI list). `openshift_4` remains partial (CAT I 
 `windows_server_2016` and `windows_server_2019` were listed here against the July 2026
 compilation; the October 2026 library ships both (V2R10, V3R9) and they are generated platforms again.
 
-Observed in the October 2026 library (not yet acted on): RHEL 8 is no longer
-shipped (RHEL 10 V1R3 is); WebLogic 12c and Oracle HTTP Server have left the
-library (the standalone WebLogic 12c V2R2 zip is still served).
+Observed in the October 2026 compilation: RHEL 8 is no longer shipped (the module stays on the
+standalone V2R8 zip); RHEL 10 is listed at V1R3 against the module's V1R2 (re-stamp pending);
+WebLogic 12c and Oracle HTTP Server have left the library (the standalone WebLogic 12c V2R2 zip
+is still served).
