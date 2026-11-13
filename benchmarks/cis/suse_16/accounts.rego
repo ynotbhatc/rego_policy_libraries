@@ -633,7 +633,9 @@ e_5_4_3_4 if {
 default p_5_4_3_4 := false
 
 p_5_4_3_4 if {
-	regex_in_text(input.pam.profile_d_raw, "(?i)^umask\\s+0?027\\b")
+	vals := umask_values(input.pam.profile_d_raw)
+	count(vals) > 0
+	every u in vals { umask_ok(u) }
 }
 
 violations contains "5.4.3.4: evidence missing — pam.profile_d_raw not collected" if not e_5_4_3_4

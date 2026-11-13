@@ -25,3 +25,15 @@ test_apparmor_validation_violations_on_empty_input if {
 	v := data.cis_ubuntu_20_04.apparmor.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing profile facts must not pass 1.6.1.3 / 1.6.1.4.
+test_missing_profile_facts_flagged if {
+	v := data.cis_ubuntu_20_04.apparmor.profile_violations with input as {}
+	"CIS 1.6.1.3: evidence missing - apparmor.unloaded_profiles (or apparmor.profiles) not collected" in v
+	"CIS 1.6.1.4: evidence missing - apparmor.complain_profiles (or apparmor.profiles) not collected" in v
+}
+
+test_present_profile_counts_not_flagged_missing if {
+	v := data.cis_ubuntu_20_04.apparmor.profile_violations with input as {"apparmor": {"unloaded_profiles": 0, "complain_profiles": 0}}
+	count(v) == 0
+}

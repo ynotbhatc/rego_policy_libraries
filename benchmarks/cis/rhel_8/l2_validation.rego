@@ -85,6 +85,10 @@ violations contains "CIS L2 1.5.4: Core dumps not restricted (fs.suid_dumpable !
 	input.kernel.suid_dumpable != 0
 }
 
+violations contains "CIS L2 1.5.4: evidence missing - kernel.suid_dumpable not collected" if {
+	object.get(input, ["kernel", "suid_dumpable"], null) == null
+}
+
 violations contains "CIS L2 1.5.4: Hard core dump limit not set to 0 in limits.conf" if {
 	not input.kernel.core_hard_limit_zero
 }
@@ -121,8 +125,16 @@ violations contains "CIS L2 3.3.1: IPv6 router advertisements not disabled" if {
 	input.sysctl["net.ipv6.conf.all.accept_ra"] != 0
 }
 
+violations contains "CIS L2 3.3.1: evidence missing - sysctl net.ipv6.conf.all.accept_ra not collected" if {
+	object.get(input, ["sysctl", "net.ipv6.conf.all.accept_ra"], null) == null
+}
+
 violations contains "CIS L2 3.3.2: IPv6 redirects accepted" if {
 	input.sysctl["net.ipv6.conf.all.accept_redirects"] != 0
+}
+
+violations contains "CIS L2 3.3.2: evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected" if {
+	object.get(input, ["sysctl", "net.ipv6.conf.all.accept_redirects"], null) == null
 }
 
 # ---------------------------------------------------------------------------
@@ -173,7 +185,7 @@ sshd_config := {key: value |
 }
 
 violations contains "CIS L2 5.2.7: AllowTcpForwarding not set to 'no'" if {
-	sshd_config.allowtcpforwarding != "no"
+	object.get(sshd_config, "allowtcpforwarding", "yes") != "no"
 }
 
 violations contains "CIS L2 5.2.8: LoginGraceTime not configured or exceeds 60s" if {
@@ -182,6 +194,11 @@ violations contains "CIS L2 5.2.8: LoginGraceTime not configured or exceeds 60s"
 
 violations contains "CIS L2 5.2.8: LoginGraceTime exceeds 60 seconds" if {
 	to_number(sshd_config.logingracetime) > 60
+}
+
+# 0 disables the grace limit (unlimited wait).
+violations contains "CIS L2 5.2.8: LoginGraceTime is 0 (no limit)" if {
+	to_number(sshd_config.logingracetime) == 0
 }
 
 # ---------------------------------------------------------------------------

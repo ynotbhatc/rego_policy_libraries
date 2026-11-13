@@ -413,7 +413,7 @@ e_1_2_1_10 if {
 default p_1_2_1_10 := false
 
 p_1_2_1_10 if {
-	not regex_in_text(input.apt.sources_list_raw, "(?i)^deb\\s+http://")
+	not regex_in_text(input.apt.sources_list_raw, "(?i)^deb(-src)?\\s+(\\[[^\\]]*\\]\\s*)?http://")
 }
 
 p_1_2_1_10 if {
@@ -438,7 +438,7 @@ e_1_2_1_11 if {
 default p_1_2_1_11 := false
 
 p_1_2_1_11 if {
-	not regex_in_text(input.apt.sources_list_d_raw, "(?i)^(deb\\s+http://|URIs:\\s+http://)")
+	not regex_in_text(input.apt.sources_list_d_raw, "(?i)^(deb(-src)?\\s+(\\[[^\\]]*\\]\\s*)?http://|URIs:\\s+(\\S+\\s+)*http://)")
 }
 
 violations contains "1.2.1.11: evidence missing — apt.sources_list_d_raw not collected" if not e_1_2_1_11

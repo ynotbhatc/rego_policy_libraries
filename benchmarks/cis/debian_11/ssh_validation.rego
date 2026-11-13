@@ -278,6 +278,12 @@ config_violations contains msg if {
 }
 
 config_violations contains msg if {
+	v := directive("LoginGraceTime")
+	seconds(v) == 0
+	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds", [v])
+}
+
+config_violations contains msg if {
 	not directive("LoginGraceTime")
 	msg := "CIS 5.2.18: SSH LoginGraceTime is not set (sshd default is 120 seconds, should be 60 or less)"
 }

@@ -237,6 +237,12 @@ config_violations contains msg if {
 	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s seconds, should be 60 or less", [v])
 }
 
+config_violations contains msg if {
+	v := sshd_value("logingracetime")
+	sshd_number(v) == 0
+	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds", [v])
+}
+
 # CIS 5.2.19: SSH Idle Timeout Interval must be explicitly configured
 config_violations contains msg if {
 	config_collected

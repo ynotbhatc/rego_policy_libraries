@@ -194,9 +194,14 @@ valid_shells := {s |
 # postfix inet_interfaces (when collected): "all" or a non-loopback value listens off-host
 mta_interfaces_open if regex.match(`\ball\b`, lower(input.mta.inet_interfaces))
 
+# Every token must be loopback: a list such as "localhost, 192.0.2.10" listens off-host, and
+# 0.0.0.0 is the wildcard address (all interfaces), not loopback.
+mta_loopback_tokens := {"127.0.0.1", "::1", "[::1]", "localhost", "loopback-only"}
+
 mta_interfaces_open if {
 	is_string(input.mta.inet_interfaces)
-	not regex.match(`(0\.0\.0\.0|::1|loopback-only|localhost)`, lower(input.mta.inet_interfaces))
+	some tok in regex.split(`[\s,]+`, trim_space(lower(input.mta.inet_interfaces)))
+	not tok in mta_loopback_tokens
 }
 
 # 2.1.1 (Automated; Level 1 - Server, Level 2 - Workstation)

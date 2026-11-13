@@ -81,8 +81,8 @@ rsyslog_violations contains violation if {
 # =============================================================================
 
 journald_violations contains violation if {
-	input.journald.forward_to_syslog != "yes"
-	violation := sprintf("CIS 4.2.1.3: journald is not configured to forward to rsyslog (ForwardToSyslog: %s)", [input.journald.forward_to_syslog])
+	object.get(input, ["journald", "forward_to_syslog"], "") != "yes"
+	violation := sprintf("CIS 4.2.1.3: journald is not configured to forward to rsyslog (ForwardToSyslog: %s)", [object.get(input, ["journald", "forward_to_syslog"], "not collected")])
 }
 
 # =============================================================================
@@ -102,6 +102,10 @@ rsyslog_violations contains violation if {
 # =============================================================================
 # CIS 4.2.1.5 - LOGGING CONFIGURED
 # =============================================================================
+
+rsyslog_violations contains "CIS 4.2.1.5: evidence missing - rsyslog.logging_rules_count not collected" if {
+	object.get(input, ["rsyslog", "logging_rules_count"], null) == null
+}
 
 rsyslog_violations contains violation if {
 	input.rsyslog.logging_rules_count == 0
@@ -132,8 +136,8 @@ rsyslog_violations contains violation if {
 # =============================================================================
 
 journald_violations contains violation if {
-	input.journald.compress_enabled != "yes"
-	violation := sprintf("CIS 4.2.2.1: journald compression is not enabled (Compress: %s)", [input.journald.compress_enabled])
+	object.get(input, ["journald", "compress_enabled"], "") != "yes"
+	violation := sprintf("CIS 4.2.2.1: journald compression is not enabled (Compress: %s)", [object.get(input, ["journald", "compress_enabled"], "not collected")])
 }
 
 # =============================================================================
@@ -141,8 +145,8 @@ journald_violations contains violation if {
 # =============================================================================
 
 journald_violations contains violation if {
-	input.journald.storage_mode != "persistent"
-	violation := sprintf("CIS 4.2.2.2: journald is not configured for persistent storage (Storage: %s)", [input.journald.storage_mode])
+	object.get(input, ["journald", "storage_mode"], "") != "persistent"
+	violation := sprintf("CIS 4.2.2.2: journald is not configured for persistent storage (Storage: %s)", [object.get(input, ["journald", "storage_mode"], "not collected")])
 }
 
 # =============================================================================
@@ -179,8 +183,8 @@ log_file_violations contains violation if {
 	some file in input.excessive_permissions.files
 	violation := sprintf("CIS 4.2.3: Log file '%s' has excessive permissions (mode: %s, issue: %s)", [
 		file.file,
-		file.mode,
-		file.issue,
+		object.get(file, "mode", "unknown"),
+		object.get(file, "issue", "unknown"),
 	])
 }
 

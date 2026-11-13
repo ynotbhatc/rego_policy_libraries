@@ -79,3 +79,18 @@ test_level2_violation_hidden_in_level1_profile if {
 	vs2 := data.cis_ubuntu_26_04.all_violations with input as {"profile": "level2_server"}
 	count([v | some v in vs2; startswith(v, "6.2.1.1: ")]) > 0
 }
+
+# Semantic review 2026-11-13: a section with no applicable controls at the selected profile adds no NOT ASSESSED message.
+test_no_not_assessed_message_for_section_without_applicable_controls if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"ssh": {"sshd_config_raw": "permitrootlogin no"}, "profile": "level1_server"}
+	"auditd" in r.sections_not_assessed
+	every v in r.violations {
+		not startswith(v, "NOT ASSESSED: auditd")
+	}
+}
+
+test_not_assessed_message_kept_for_applicable_section if {
+	r := data.cis_ubuntu_26_04.main.compliance_report with input as {"ssh": {"sshd_config_raw": "permitrootlogin no"}, "profile": "level1_server"}
+	some v in r.violations
+	startswith(v, "NOT ASSESSED: ")
+}

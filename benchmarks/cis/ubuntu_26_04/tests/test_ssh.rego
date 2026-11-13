@@ -497,3 +497,19 @@ test_5_1_24_hollow_evidence_not_a_pass if {
 	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": ""}}
 	count([v | some v in vs; startswith(v, "5.1.24: ")]) > 0
 }
+
+# Semantic review 2026-11-13: the `+` append syntax enables the named weak algorithm.
+test_5_1_7_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nciphers +aes128-cbc"}}
+	"5.1.7: not met — sshd Ciphers must be explicitly configured" in vs
+}
+
+test_5_1_17_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nmacs +hmac-md5"}}
+	"5.1.17: not met — sshd MACs must be explicitly configured" in vs
+}
+
+test_5_1_13_plus_append_syntax_flagged if {
+	vs := data.cis_ubuntu_26_04.ssh.violations with input as {"ssh": {"sshd_config_raw": "port 22\nkexalgorithms +diffie-hellman-group1-sha1"}}
+	count([v | some v in vs; startswith(v, "5.1.13: not met")]) > 0
+}

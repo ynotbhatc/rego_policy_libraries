@@ -122,6 +122,10 @@ violations contains "CIS L2 1.5.4: Core dumps not restricted (fs.suid_dumpable !
 	input.kernel.suid_dumpable != 0
 }
 
+violations contains "CIS L2 1.5.4: evidence missing - kernel.suid_dumpable not collected" if {
+	object.get(input, ["kernel", "suid_dumpable"], null) == null
+}
+
 violations contains "CIS L2 1.5.4: Hard core dump limit not set to 0 in limits.conf" if {
 	not input.kernel.core_hard_limit_zero
 }
@@ -162,12 +166,24 @@ violations contains "CIS L2 3.3.1: IPv6 router advertisements not disabled (all)
 	input.sysctl["net.ipv6.conf.all.accept_ra"] != 0
 }
 
+violations contains "CIS L2 3.3.1: evidence missing - sysctl net.ipv6.conf.all.accept_ra not collected" if {
+	object.get(input, ["sysctl", "net.ipv6.conf.all.accept_ra"], null) == null
+}
+
 violations contains "CIS L2 3.3.1: IPv6 router advertisements not disabled (default)" if {
 	input.sysctl["net.ipv6.conf.default.accept_ra"] != 0
 }
 
+violations contains "CIS L2 3.3.1: evidence missing - sysctl net.ipv6.conf.default.accept_ra not collected" if {
+	object.get(input, ["sysctl", "net.ipv6.conf.default.accept_ra"], null) == null
+}
+
 violations contains "CIS L2 3.3.2: IPv6 redirects accepted" if {
 	input.sysctl["net.ipv6.conf.all.accept_redirects"] != 0
+}
+
+violations contains "CIS L2 3.3.2: evidence missing - sysctl net.ipv6.conf.all.accept_redirects not collected" if {
+	object.get(input, ["sysctl", "net.ipv6.conf.all.accept_redirects"], null) == null
 }
 
 # ---------------------------------------------------------------------------
@@ -222,7 +238,7 @@ sshd_config := {key: value |
 }
 
 violations contains "CIS L2 5.2.7: AllowTcpForwarding not set to 'no'" if {
-	sshd_config.allowtcpforwarding != "no"
+	object.get(sshd_config, "allowtcpforwarding", "yes") != "no"
 }
 
 violations contains "CIS L2 5.2.8: LoginGraceTime not configured" if {
@@ -231,6 +247,10 @@ violations contains "CIS L2 5.2.8: LoginGraceTime not configured" if {
 
 violations contains "CIS L2 5.2.8: LoginGraceTime exceeds 60 seconds" if {
 	to_number(sshd_config.logingracetime) > 60
+}
+
+violations contains "CIS L2 5.2.8: LoginGraceTime is 0 (no limit)" if {
+	to_number(sshd_config.logingracetime) == 0
 }
 
 violations contains "CIS L2 5.2.22: MaxSessions exceeds 10" if {
@@ -257,16 +277,32 @@ violations contains "CIS L2 6.1.11: Unowned files found on filesystem" if {
 	count(input.file_system.unowned_files) > 0
 }
 
+violations contains "CIS L2 6.1.11: evidence missing - file_system.unowned_files not collected" if {
+	not is_array(object.get(input, ["file_system", "unowned_files"], null))
+}
+
 violations contains "CIS L2 6.1.12: Ungrouped files found on filesystem" if {
 	count(input.file_system.ungrouped_files) > 0
+}
+
+violations contains "CIS L2 6.1.12: evidence missing - file_system.ungrouped_files not collected" if {
+	not is_array(object.get(input, ["file_system", "ungrouped_files"], null))
 }
 
 violations contains "CIS L2 6.1.13: Unexpected SUID executables found" if {
 	count(input.file_system.unexpected_suid_files) > 0
 }
 
+violations contains "CIS L2 6.1.13: evidence missing - file_system.unexpected_suid_files not collected" if {
+	not is_array(object.get(input, ["file_system", "unexpected_suid_files"], null))
+}
+
 violations contains "CIS L2 6.1.14: Unexpected SGID executables found" if {
 	count(input.file_system.unexpected_sgid_files) > 0
+}
+
+violations contains "CIS L2 6.1.14: evidence missing - file_system.unexpected_sgid_files not collected" if {
+	not is_array(object.get(input, ["file_system", "unexpected_sgid_files"], null))
 }
 
 # ---------------------------------------------------------------------------

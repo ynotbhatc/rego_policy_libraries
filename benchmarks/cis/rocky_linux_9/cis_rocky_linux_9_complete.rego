@@ -173,7 +173,8 @@ overall_status := "compliant" if {
 	compliance_percentage >= 80
 } else := "critical"
 
-# Risk levels
+# Risk levels. Violations are message strings (no severity field), so the severity
+# buckets stay empty; the overall level falls back to finding volume.
 critical_risks := [v |
 	some v in all_violations
 	v.severity == "critical"
@@ -190,7 +191,13 @@ overall_risk_level := "critical" if {
 	count(high_risks) > 5
 } else := "medium" if {
 	count(high_risks) > 0
-} else := "low"
+} else := "low" if {
+	count(all_violations) == 0
+} else := "medium" if {
+	count(all_violations) <= 10
+} else := "high" if {
+	count(all_violations) <= 50
+} else := "critical"
 
 # =============================================================================
 # EXECUTIVE SUMMARY
@@ -225,12 +232,21 @@ compliance_assessment := {
 # RECOMMENDATIONS
 # =============================================================================
 
+# Violations are message strings ("CIS 5.3.2: ..."); derive the control id from the prefix.
 generate_recommendations := [recommendation |
 	some violation in all_violations
+	control := _violation_control(violation)
 	recommendation := {
-		"control": violation.control,
-		"title": violation.title,
-		"severity": violation.severity,
-		"remediation": sprintf("Review and implement CIS Rocky Linux 9 control %s: %s", [violation.control, violation.title]),
+		"control": control,
+		"title": violation,
+		"severity": "unrated",
+		"remediation": sprintf("Review and implement CIS %s control %s: %s", ["Rocky Linux 9", control, violation]),
 	}
 ]
+
+_violation_control(v) := m[0][1] if {
+	m := regex.find_all_string_submatch_n(`^(?:CIS\s+)?(?:L[12]\s+)?([0-9]+(?:\.[0-9]+)*)`, v, 1)
+	count(m) > 0
+}
+
+_violation_control(v) := "unknown" if not regex.match(`^(?:CIS\s+)?(?:L[12]\s+)?[0-9]+`, v)
