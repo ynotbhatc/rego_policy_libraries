@@ -47,3 +47,11 @@ test_single_gap_counts_one_violation if {
 	r.violation_count == 1
 	r.compliant == false
 }
+
+# Semantic review 2026-11-13: CIS v8.1 IG sizes are 56 / 130 / 153 (15.3 and 15.4 are IG2).
+test_semrev_ig_sizes_match_cis_v8_1 if {
+	r := data.cis_controls_v8.main.compliance_report with input as {}
+	r.implementation_groups.ig1.safeguards == 56
+	r.implementation_groups.ig2.safeguards == 130
+	r.implementation_groups.ig3.safeguards == 153
+}

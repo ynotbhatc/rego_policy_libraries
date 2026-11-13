@@ -208,7 +208,7 @@ data_at_rest_encrypted if {
 # Data in transit encryption
 data_in_transit_encrypted if {
 	input.encryption.data_in_transit.tls_enforced == true
-	input.encryption.data_in_transit.minimum_tls_version >= "1.2"
+	_tls_version_acceptable(input.encryption.data_in_transit.minimum_tls_version)
 	input.encryption.data_in_transit.certificate_validation == true
 	input.encryption.data_in_transit.perfect_forward_secrecy == true
 
@@ -321,10 +321,19 @@ algorithm_compliance if {
 
 # Weak algorithms disabled
 weak_algorithms_disabled if {
-	weak_algorithms := ["MD5", "SHA1", "DES", "3DES", "RC4", "SSL", "TLS1.0", "TLS1.1"]
+	# Check no weak algorithms are in use; spellings are normalised (case, "-", "_", spaces) so SHA-1, sha1,
+	# TLSv1.0 and 3des are all recognised.
+	count([alg | some alg in input.cryptography.algorithms_in_use; _weak_algorithm(alg)]) == 0
+}
 
-	# Check no weak algorithms are in use (simplified check)
-	count([alg | alg := input.cryptography.algorithms_in_use[_]; alg in weak_algorithms]) == 0
+_weak_algorithm(alg) if {
+	norm := lower(replace(replace(replace(sprintf("%v", [alg]), "-", ""), "_", ""), " ", ""))
+	regex.match(`^(md5|sha1|des|3des|tripledes|desede|rc4|ssl(v?[23])?|tlsv?1(\.?[01])?)$`, norm)
+}
+
+# TLS minimum version: accepts 1.2 / 1.3 with optional "TLS", "TLSv", "v" prefixes (string or number).
+_tls_version_acceptable(v) if {
+	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
 }
 
 # Quantum resistance planning

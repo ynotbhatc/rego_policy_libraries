@@ -100,6 +100,11 @@ violation_emergency_access contains msg if {
 	)
 }
 
+violation_emergency_access contains msg if {
+	not is_number(object.get(input, ["access_controls", "emergency_accounts_reviewed_days"], null))
+	msg := "HIPAA 164.312(a)(2)(ii): evidence missing — access_controls.emergency_accounts_reviewed_days not collected. Emergency account review cadence cannot be verified."
+}
+
 control_a2ii_compliant if {
 	count(violation_emergency_access) == 0
 }
@@ -124,8 +129,14 @@ violation_automatic_logoff contains msg if {
 }
 
 violation_automatic_logoff contains msg if {
-	input.session.screen_lock_enabled == false
-	msg := "HIPAA 164.312(a)(2)(iii): Screen lock is not enabled. Unattended workstations accessing ePHI must lock automatically."
+	input.session.automatic_logoff_enabled
+	not is_number(object.get(input, ["session", "inactivity_timeout_minutes"], null))
+	msg := "HIPAA 164.312(a)(2)(iii): evidence missing — session.inactivity_timeout_minutes not collected. Automatic logoff timeout cannot be verified."
+}
+
+violation_automatic_logoff contains msg if {
+	object.get(input, ["session", "screen_lock_enabled"], false) != true
+	msg := "HIPAA 164.312(a)(2)(iii): Screen lock is not enabled or evidence missing (session.screen_lock_enabled not collected). Unattended workstations accessing ePHI must lock automatically."
 }
 
 control_a2iii_compliant if {
@@ -169,6 +180,11 @@ violation_encryption contains msg if {
 	)
 }
 
+violation_encryption contains msg if {
+	not is_number(object.get(input, ["encryption", "key_rotation_days"], null))
+	msg := "HIPAA 164.312(a)(2)(iv): evidence missing — encryption.key_rotation_days not collected. Key rotation cadence cannot be verified."
+}
+
 control_a2iv_compliant if {
 	count(violation_encryption) == 0
 }
@@ -199,6 +215,16 @@ violation_rbac contains msg if {
 	msg := sprintf(
 		"HIPAA 164.312(a)(1): User '%v' ePHI access has not been reviewed in %v days (maximum: 90 days).",
 		[user.username, user.last_access_review_days],
+	)
+}
+
+violation_rbac contains msg if {
+	some user in input.users
+	user.phi_access == true
+	not is_number(object.get(user, "last_access_review_days", null))
+	msg := sprintf(
+		"HIPAA 164.312(a)(1): evidence missing — last_access_review_days not collected for ePHI user '%v'.",
+		[object.get(user, "username", "unknown")],
 	)
 }
 

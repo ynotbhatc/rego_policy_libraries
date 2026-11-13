@@ -25,3 +25,11 @@ test_hitrust_main_violations_on_empty_input if {
 	v := data.hitrust.main.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: CSF 04, 10 and 11 violations land in a category_summary bucket.
+test_semrev_category_summary_covers_csf_04_10_11 if {
+	r := data.hitrust.main.compliance_report with input as {}
+	count(r.category_summary.security_policy) > 0
+	count(r.category_summary.system_acquisition_development) > 0
+	count(r.category_summary.information_access) > 0
+}
