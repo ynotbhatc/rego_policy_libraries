@@ -47,15 +47,25 @@ violations contains "CIS L2 1.8: checked condition — IAM password policy requi
 }
 
 violations contains "CIS L2 1.9: checked condition — IAM password policy requires minimum length of 14 or greater" if {
-	input.iam.password_policy.min_length < 14
+	not password_min_length_ok
 }
+
+password_min_length_ok if input.iam.password_policy.min_length >= 14
 
 violations contains "CIS L2 1.10: checked condition — IAM password policy prevents password reuse — 24 passwords" if {
-	input.iam.password_policy.reuse_prevention < 24
+	not password_reuse_ok
 }
 
+password_reuse_ok if input.iam.password_policy.reuse_prevention >= 24
+
 violations contains "CIS L2 1.11: checked condition — IAM password policy expires passwords within 365 days" if {
-	input.iam.password_policy.max_age_days > 365
+	not password_expiry_within_365
+}
+
+# max_age_days of 0 (or absent) means passwords never expire: not compliant.
+password_expiry_within_365 if {
+	input.iam.password_policy.max_age_days > 0
+	input.iam.password_policy.max_age_days <= 365
 }
 
 violations contains "CIS L2 1.14: access keys must be rotated every 90 days or less" if {
@@ -224,6 +234,19 @@ violations contains "CIS L2 5.1: checked condition — no Network ACLs allow ing
 	port_in_range(rule.port_range, [22, 3389])
 }
 
+# Allow-all entries (protocol -1, or no port range reported) cover every port.
+violations contains "CIS L2 5.1: checked condition — no Network ACLs allow ingress from 0.0.0.0/0 to remote server administration ports" if {
+	some nacl in input.vpc.network_acls
+	some rule in nacl.inbound_rules
+	rule.cidr == "0.0.0.0/0"
+	rule.action == "allow"
+	all_ports_covered(rule)
+}
+
+all_ports_covered(rule) if not rule.port_range
+
+all_ports_covered(rule) if rule.protocol in {"-1", -1, "all"}
+
 violations contains "CIS L2 5.3: checked condition — the default security group of every VPC restricts all traffic" if {
 	some vpc in input.vpc.vpcs
 	vpc.default_security_group_allows_traffic
@@ -249,7 +272,7 @@ port_in_range(port_range, ports) if {
 # Compliance report
 # ---------------------------------------------------------------------------
 
-l2_total_controls := 40
+l2_total_controls := 41
 
 compliance_report := {
 	"profile": "level2",
