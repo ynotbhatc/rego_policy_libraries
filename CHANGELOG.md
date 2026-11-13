@@ -8,6 +8,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — metadata vocabulary covers SUSE 16, OPNsense and Intune Defender Antivirus
+
+- `scripts/metadata_vocabulary.json` gains the domains `suse`, `opnsense`, `endpoint`, `intune` and `antivirus`,
+  which 28 modules already used; `make metadata` now fails only on the two `enforcement/git/` files that have
+  no METADATA block (a protected path, left for an approved commit).
+
 ## [2.5.0] - 2026-11-13
 
 The November 2026 freshen-up: formatting sweep, every framework key resolves fail-closed and reports `total_controls` and `failed_controls`, a line-by-line semantic review of the 690 modules never reviewed (172 defects fixed, generators corrected at the source), DISA STIGs on the October 2026 library (RHEL 8/9/10, Ubuntu 22.04/24.04, Amazon Linux 2023, SLES 15, Windows 11, Server 2016/2019/2022/2025), CIS Windows 10/11 Enterprise, CIS Apache 2.4 v2.4.0, CIS MCP Server complete, SAP Security Baseline, AS9100D, the standards-registry sweep, regenerated exports. Entries below were collected under Unreleased since 2.4.2.
