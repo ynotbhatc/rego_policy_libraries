@@ -62,10 +62,16 @@ resource_lock_admin_role_exists if {
 # Section 2: Microsoft Defender for Cloud
 security_center_violations := [
 "2.1: required value of Microsoft Defender for Cloud is 'On' for Servers" |
+	not defender_servers_standard
+]
+
+# Defender for Servers is on only when a VirtualMachines plan reports Standard;
+# no plan reported means it is not enabled (fail closed).
+defender_servers_standard if {
 	plan := input.defender_plans[_]
 	plan.resource_type == "VirtualMachines"
-	plan.pricing_tier != "Standard"
-]
+	plan.pricing_tier == "Standard"
+}
 
 # Section 3: Storage Accounts
 storage_violations := [
@@ -102,9 +108,41 @@ networking_violations := [
 	rule := nsg.security_rules[_]
 	rule.direction == "Inbound"
 	rule.access == "Allow"
-	rule.destination_port_range == "3389"
-	"0.0.0.0/0" in rule.source_address_prefixes
+	rdp_port_covered(rule)
+	internet_source(rule)
 ]
+
+internet_sources := {"0.0.0.0/0", "*", "Internet", "Any", "<nw>/0", "::/0"}
+
+internet_source(rule) if {
+	some p in rule.source_address_prefixes
+	p in internet_sources
+}
+
+internet_source(rule) if rule.source_address_prefix in internet_sources
+
+rdp_port_covered(rule) if rdp_port_in_range(rule.destination_port_range)
+
+rdp_port_covered(rule) if {
+	some r in rule.destination_port_ranges
+	rdp_port_in_range(r)
+}
+
+rdp_port_in_range(r) if r == "*"
+
+rdp_port_in_range(r) if {
+	r != "*"
+	not contains(r, "-")
+	to_number(r) == 3389
+}
+
+rdp_port_in_range(r) if {
+	contains(r, "-")
+	bounds := split(r, "-")
+	count(bounds) == 2
+	to_number(bounds[0]) <= 3389
+	3389 <= to_number(bounds[1])
+}
 
 # Section 7: Virtual Machines
 virtual_machines_violations := [

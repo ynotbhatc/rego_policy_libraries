@@ -58,8 +58,10 @@ violations contains "CIS L2 1.4.1: required value of 'Restrict access to Azure A
 }
 
 violations contains "CIS L2 1.5.1: required value of 'Number of methods required to reset' is '2'" if {
-	input.aad.sspr_methods_required < 2
+	not sspr_methods_ok
 }
+
+sspr_methods_ok if input.aad.sspr_methods_required >= 2
 
 violations contains "CIS L2 1.6.1: Privileged Identity Management must be used to manage role assignments" if {
 	not input.aad.pim_enabled
@@ -198,8 +200,10 @@ violations contains "CIS L2 5.1.1: checked condition — audit profile captures 
 }
 
 violations contains "CIS L2 5.1.2: required value of diagnostic logging retention policy is 365 days or more" if {
-	input.monitor.log_retention_days < 365
+	not monitor_retention_ok
 }
+
+monitor_retention_ok if input.monitor.log_retention_days >= 365
 
 violations contains "CIS L2 5.2.1: checked condition — activity log alert exists for Create Policy Assignment" if {
 	not input.monitor.alerts.create_policy_assignment
@@ -232,8 +236,13 @@ violations contains "CIS L2 6.3: required value of Network Watcher is 'Enabled'"
 
 violations contains "CIS L2 6.4: Network Security Group Flow Log retention must be greater than 90 days" if {
 	some nsg in input.network.nsgs
-	nsg.flow_log_retention_days < 90
+	not flow_log_retention_ok(nsg)
 }
+
+# 0 means retain forever in Azure; otherwise strictly greater than 90 days.
+flow_log_retention_ok(nsg) if nsg.flow_log_retention_days == 0
+
+flow_log_retention_ok(nsg) if nsg.flow_log_retention_days > 90
 
 violations contains "CIS L2 6.5: Network Security Group Flow logs must be captured and sent to Log Analytics" if {
 	some nsg in input.network.nsgs
