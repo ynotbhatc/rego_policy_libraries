@@ -310,7 +310,7 @@ PLATFORMS = {
             "MYS8-00-004900": attest("mysql.attest.pki_identity_mapped_to_accounts"),
             "MYS8-00-005000": both(my_plugin_active("validate_password"), my_var_num_ge("validate_password.length", 15, "15"),
                                    my_var_in("validate_password.policy", ["MEDIUM", "STRONG"], "STRONG")),
-            "MYS8-00-005100": (['every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
+            "MYS8-00-005100": (['count(input.mysql.users) > 0', 'every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }'],
                                [("BOOL", "mysql.users", [{"user": "app", "host": "%", "plugin": "caching_sha2_password"}])]),
             "MYS8-00-005200": MY_TLS,
             "MYS8-00-005300": attest("mysql.attest.authentication_feedback_obscured"),

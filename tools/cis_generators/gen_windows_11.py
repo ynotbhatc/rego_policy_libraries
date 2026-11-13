@@ -74,6 +74,9 @@ def configure():
     })
     w10.TITLE_WORDS = words
 
+    # 5.6 is a plain "Disabled" row in Windows 11; the first "or Not Installed" service row is 5.3
+    w10.NOT_INSTALLED_EXAMPLE = "5.3"
+
     # the lib and lib-test headers name the generator that wrote them
     w10.LIB_CHANGES = [(a, b.replace("windows_10_modular", w10.DIR).replace("gen_windows_10.py", "gen_windows_11.py"))
                        for a, b in w10.LIB_CHANGES]

@@ -668,13 +668,18 @@
         "id": "cis_saas-CIS-4.1.1_obj.1",
         "name": "assessment-objective",
         "prose": "mailbox audit state not evaluable via Graph; verify tenant-wide setting via Exchange admin center"
+       },
+       {
+        "id": "cis_saas-CIS-4.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — mailbox_audit_summary not collected"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-CIS-4.5.1",
-      "title": "domain %q has no SPF record published; spoofed mail will not be rejected",
+      "title": "evidence missing — verified_domains not collected",
       "props": [
        {
         "name": "label",
@@ -700,6 +705,11 @@
        {
         "id": "cis_saas-CIS-4.5.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — verified_domains not collected"
+       },
+       {
+        "id": "cis_saas-CIS-4.5.1_obj.1",
+        "name": "assessment-objective",
         "prose": "domain %q has no SPF record published; spoofed mail will not be rejected"
        }
       ],
@@ -707,7 +717,7 @@
      },
      {
       "id": "cis_saas-CIS-4.6.1",
-      "title": "domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated",
+      "title": "evidence missing — verified_domains not collected",
       "props": [
        {
         "name": "label",
@@ -733,6 +743,11 @@
        {
         "id": "cis_saas-CIS-4.6.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — verified_domains not collected"
+       },
+       {
+        "id": "cis_saas-CIS-4.6.1_obj.1",
+        "name": "assessment-objective",
         "prose": "domain %q has no DKIM CNAME selectors; outbound mail can't be cryptographically authenticated"
        }
       ],
@@ -740,7 +755,7 @@
      },
      {
       "id": "cis_saas-CIS-4.7.1",
-      "title": "domain %q has no DMARC record; recipients have no policy guidance on what to do with failed SPF/DKIM",
+      "title": "evidence missing — verified_domains not collected",
       "props": [
        {
         "name": "label",
@@ -766,6 +781,11 @@
        {
         "id": "cis_saas-CIS-4.7.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — verified_domains not collected"
+       },
+       {
+        "id": "cis_saas-CIS-4.7.1_obj.1",
+        "name": "assessment-objective",
         "prose": "domain %q has no DMARC record; recipients have no policy guidance on what to do with failed SPF/DKIM"
        }
       ],
@@ -773,7 +793,7 @@
      },
      {
       "id": "cis_saas-CIS-4.8.1",
-      "title": "External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail",
+      "title": "evidence missing — secure_score_controls row for this control not collected",
       "props": [
        {
         "name": "label",
@@ -799,6 +819,11 @@
        {
         "id": "cis_saas-CIS-4.8.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — secure_score_controls row for this control not collected"
+       },
+       {
+        "id": "cis_saas-CIS-4.8.1_obj.1",
+        "name": "assessment-objective",
         "prose": "External sender tagging is not enabled; users won't see the visual cue distinguishing external from internal mail"
        }
       ],
@@ -806,7 +831,7 @@
      },
      {
       "id": "cis_saas-CIS-4.11.1",
-      "title": "SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks",
+      "title": "evidence missing — secure_score_controls row for this control not collected",
       "props": [
        {
         "name": "label",
@@ -832,6 +857,11 @@
        {
         "id": "cis_saas-CIS-4.11.1_stmt",
         "name": "statement",
+        "prose": "evidence missing — secure_score_controls row for this control not collected"
+       },
+       {
+        "id": "cis_saas-CIS-4.11.1_obj.1",
+        "name": "assessment-objective",
         "prose": "SMTP AUTH is enabled at the tenant level; legacy basic auth on SMTP submission permits credential-stuffing attacks"
        }
       ],
@@ -1570,7 +1600,7 @@
      },
      {
       "id": "cis_saas-CIS-1.1.2",
-      "title": "Only %d Global Administrator(s); CIS requires at least 2 for redundancy",
+      "title": "evidence missing — global_admins not collected",
       "props": [
        {
         "name": "label",
@@ -1596,10 +1626,15 @@
        {
         "id": "cis_saas-CIS-1.1.2_stmt",
         "name": "statement",
-        "prose": "Only %d Global Administrator(s); CIS requires at least 2 for redundancy"
+        "prose": "evidence missing — global_admins not collected"
        },
        {
         "id": "cis_saas-CIS-1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Only %d Global Administrator(s); CIS requires at least 2 for redundancy"
+       },
+       {
+        "id": "cis_saas-CIS-1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "%d Global Administrators is too many; CIS requires no more than 4 to limit blast radius"
        }
@@ -1608,7 +1643,7 @@
      },
      {
       "id": "cis_saas-CIS-1.1.3",
-      "title": "Global Administrator %q lacks a strong MFA method",
+      "title": "evidence missing — global_admins not collected",
       "props": [
        {
         "name": "label",
@@ -1638,15 +1673,20 @@
        {
         "id": "cis_saas-CIS-1.1.3_stmt",
         "name": "statement",
-        "prose": "Global Administrator %q lacks a strong MFA method"
+        "prose": "evidence missing — global_admins not collected"
        },
        {
         "id": "cis_saas-CIS-1.1.3_obj.1",
         "name": "assessment-objective",
-        "prose": "only %d global admin(s) designated; fewer than two risks lockout with no second administrator"
+        "prose": "Global Administrator %q lacks a strong MFA method"
        },
        {
         "id": "cis_saas-CIS-1.1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "only %d global admin(s) designated; fewer than two risks lockout with no second administrator"
+       },
+       {
+        "id": "cis_saas-CIS-1.1.3_obj.3",
         "name": "assessment-objective",
         "prose": "%d global admins designated; more than four widens standing privilege beyond what the benchmark permits"
        }
@@ -8608,7 +8648,7 @@
      },
      {
       "id": "cis_saas-cis_m365_v7.fabric-2",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)",
       "props": [
        {
         "name": "label",
@@ -8633,6 +8673,39 @@
       "parts": [
        {
         "id": "cis_saas-cis_m365_v7.fabric-2_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.fabric-3",
+      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.fabric#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.fabric#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.fabric"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c54049e-0baa-514f-a4e1-1a225811089c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.fabric-3_stmt",
         "name": "statement",
         "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
        }
@@ -9779,7 +9852,7 @@
      },
      {
       "id": "cis_saas-cis_m365_v7.sharepoint-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)",
       "props": [
        {
         "name": "label",
@@ -9804,6 +9877,39 @@
       "parts": [
        {
         "id": "cis_saas-cis_m365_v7.sharepoint-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.sharepoint-2",
+      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.sharepoint#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.sharepoint#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.sharepoint"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c9774d82-a20a-54db-80f2-76e5be09a03b",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.sharepoint-2_stmt",
         "name": "statement",
         "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
        }

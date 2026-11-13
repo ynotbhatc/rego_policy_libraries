@@ -65,6 +65,7 @@ ctrl_alt_del_graphical_disabled if {
 }
 
 ctrl_alt_del_graphical_disabled if {
+	is_object(input.packages)
 	not input.packages["gnome-desktop3"]
 }
 
@@ -86,18 +87,14 @@ finding_ol08_00_040171 := {
 # =============================================================================
 
 # OL08-00-010170 | V-248548 | CAT II
-# System crypto policy must be FIPS
-default crypto_policy_fips := false
+# SELinux must be enforcing (Linux Security Module enforcing limits on system services)
+default selinux_enforcing := false
 
-crypto_policy_fips if {
-	input.crypto_policy == "FIPS"
+selinux_enforcing if {
+	input.selinux.status == "enforcing"
 }
 
-crypto_policy_fips if {
-	input.crypto_policy == "FIPS:OSPP"
-}
-
-status_ol08_00_010170 := "Not_a_Finding" if crypto_policy_fips
+status_ol08_00_010170 := "Not_a_Finding" if selinux_enforcing
 
 else := "Open"
 
@@ -107,7 +104,7 @@ finding_ol08_00_010170 := {
 	"severity": "CAT II",
 	"rule_title": "OL 8 must use a Linux Security Module configured to enforce limits on system services.",
 	"status": status_ol08_00_010170,
-	"fix_text": "Set the crypto policy: update-crypto-policies --set FIPS",
+	"fix_text": "Set SELinux to enforcing: setenforce 1 and SELINUX=enforcing in /etc/selinux/config",
 }
 
 # OL08-00-010450 | V-248596 | CAT II
@@ -200,14 +197,14 @@ finding_ol08_00_010430 := {
 }
 
 # OL08-00-040282 | V-248890 | CAT II
-# kernel.perf_event_paranoid must be set to 2
-default perf_event_restricted := false
+# kernel.yama.ptrace_scope must be set to 1 or higher
+default ptrace_restricted := false
 
-perf_event_restricted if {
-	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
+ptrace_restricted if {
+	to_number(input.kernel_params["kernel.yama.ptrace_scope"]) >= 1
 }
 
-status_ol08_00_040282 := "Not_a_Finding" if perf_event_restricted
+status_ol08_00_040282 := "Not_a_Finding" if ptrace_restricted
 
 else := "Open"
 
@@ -217,18 +214,18 @@ finding_ol08_00_040282 := {
 	"severity": "CAT II",
 	"rule_title": "OL 8 must restrict the use of \"ptrace\" to descendant processes.",
 	"status": status_ol08_00_040282,
-	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.yama.ptrace_scope=1 in /etc/sysctl.d/99-stig.conf",
 }
 
 # OL08-00-010372 | V-248576 | CAT II
-# kernel.unprivileged_bpf_disabled must be set to 1
-default bpf_restricted := false
+# kernel.kexec_load_disabled must be set to 1
+default kexec_load_disabled := false
 
-bpf_restricted if {
-	input.kernel_params["kernel.unprivileged_bpf_disabled"] == "1"
+kexec_load_disabled if {
+	input.kernel_params["kernel.kexec_load_disabled"] == "1"
 }
 
-status_ol08_00_010372 := "Not_a_Finding" if bpf_restricted
+status_ol08_00_010372 := "Not_a_Finding" if kexec_load_disabled
 
 else := "Open"
 
@@ -238,7 +235,7 @@ finding_ol08_00_010372 := {
 	"severity": "CAT II",
 	"rule_title": "OL 8 must prevent the loading of a new kernel for later execution.",
 	"status": status_ol08_00_010372,
-	"fix_text": "Set kernel.unprivileged_bpf_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
 }
 
 # OL08-00-040286 | V-248894 | CAT II
@@ -332,16 +329,16 @@ finding_ol08_00_010543 := {
 }
 
 # OL08-00-010570 | V-248616 | CAT II
-# /tmp must have nosuid option
-default tmp_nosuid := false
+# /home (file systems containing user home directories) must have nosuid option
+default home_nosuid := false
 
-tmp_nosuid if {
+home_nosuid if {
 	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
+	mount.mount == "/home"
 	"nosuid" in mount.options
 }
 
-status_ol08_00_010570 := "Not_a_Finding" if tmp_nosuid
+status_ol08_00_010570 := "Not_a_Finding" if home_nosuid
 
 else := "Open"
 
@@ -351,20 +348,20 @@ finding_ol08_00_010570 := {
 	"severity": "CAT II",
 	"rule_title": "OL 8 must prevent files with the setuid and setgid bit set from being executed on file systems that contain user home directories.",
 	"status": status_ol08_00_010570,
-	"fix_text": "Add nosuid option to /tmp in /etc/fstab",
+	"fix_text": "Add nosuid option to /home in /etc/fstab",
 }
 
 # OL08-00-010590 | V-248620 | CAT II
-# /tmp must have noexec option
-default tmp_noexec := false
+# /home (file systems containing user home directories) must have noexec option
+default home_noexec := false
 
-tmp_noexec if {
+home_noexec if {
 	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
+	mount.mount == "/home"
 	"noexec" in mount.options
 }
 
-status_ol08_00_010590 := "Not_a_Finding" if tmp_noexec
+status_ol08_00_010590 := "Not_a_Finding" if home_noexec
 
 else := "Open"
 
@@ -374,7 +371,7 @@ finding_ol08_00_010590 := {
 	"severity": "CAT II",
 	"rule_title": "OL 8 file systems that contain user home directories must not execute binary files.",
 	"status": status_ol08_00_010590,
-	"fix_text": "Add noexec option to /tmp in /etc/fstab",
+	"fix_text": "Add noexec option to /home in /etc/fstab",
 }
 
 # =============================================================================

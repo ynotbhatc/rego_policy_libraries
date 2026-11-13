@@ -25,3 +25,16 @@ test_stig_postgresql_16_main_violations_on_empty_input if {
 	v := data.stig.postgresql_16.main.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: the no-facts condition is reported once, not once by the .main
+# report and again by the key bridge.
+test_bridge_does_not_double_count_no_facts if {
+	r := data.stig_postgresql_16.main.compliance_report with input as {}
+	fc := [v | some v in r.violations; _is_fail_closed(v)]
+	count(fc) == 1
+	r.violation_count == count(r.violations)
+}
+
+_is_fail_closed(v) if startswith(object.get(v, "rule_title", ""), "FAIL-CLOSED")
+
+_is_fail_closed(v) if object.get(v, "control", "") == "FAIL-CLOSED"

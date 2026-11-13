@@ -25,3 +25,20 @@ test_tisax_main_violations_on_empty_input if {
 	v := data.tisax.main.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: PD checks apply when assessment_level is absent; explicit AL1 skips them.
+test_semrev_pd_checks_apply_without_assessment_level if {
+	v := data.tisax.main.violations with input as {}
+	some m in v
+	startswith(m, "TISAX PD AL2: Prototype handling")
+}
+
+test_semrev_pd_checks_skipped_for_explicit_al1 if {
+	v := data.tisax.main.violations with input as {"assessment_level": 1}
+	count([m | some m in v; startswith(m, "TISAX PD AL2")]) == 0
+}
+
+test_semrev_pd_checks_apply_for_al2 if {
+	v := data.tisax.main.violations with input as {"assessment_level": 2}
+	count([m | some m in v; startswith(m, "TISAX PD AL2")]) == 3
+}

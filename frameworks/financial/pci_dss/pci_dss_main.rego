@@ -272,12 +272,20 @@ _requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0 %v 
 	not ok
 ]
 
+# CDE scope and program management gate overall_pci_dss_compliant, so a gap there is listed too (control ids stay literal).
+_scope_program_violations := array.concat(
+	[v | not cde_scope_defined; v := {"control": "cde_scope", "title": "PCI DSS v4.0 CDE scope is not defined and documented (cde_scope)"}],
+	[v | not pci_program_management; v := {"control": "program_management", "title": "PCI DSS v4.0 program management is not established (program_management)"}],
+)
+
+_all_violations := array.concat(_requirement_violations, _scope_program_violations)
+
 compliance_report := object.union(pci_dss_detailed_findings, {
 	"framework_key": "pci_dss",
 	"compliant": _entrypoint_compliant,
-	"violations": _requirement_violations,
-	"violation_count": count(_requirement_violations),
-	"failed_controls": min([_declared_controls, count(_requirement_violations)]),
+	"violations": _all_violations,
+	"violation_count": count(_all_violations),
+	"failed_controls": min([_declared_controls, count(_all_violations)]),
 	"total_controls": _declared_controls,
 })
 
@@ -285,4 +293,7 @@ _declared_controls := 12
 
 default _entrypoint_compliant := false
 
-_entrypoint_compliant if pci_dss_detailed_findings.requirements_passing == pci_dss_detailed_findings.requirements_total
+_entrypoint_compliant if {
+	pci_dss_detailed_findings.requirements_passing == pci_dss_detailed_findings.requirements_total
+	overall_pci_dss_compliant
+}

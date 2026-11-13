@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 31
+#     checks: 32
 #     cited: 23
 #     density: sized
 #     basis: size
@@ -248,6 +248,12 @@ config_violations contains msg if {
 	ssh_set("logingracetime")
 	not login_grace_ok
 	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s seconds, should be 60 or less", [ssh_value("logingracetime")])
+}
+
+config_violations contains msg if {
+	ssh_set("logingracetime")
+	ssh_seconds("logingracetime") == 0
+	msg := sprintf("CIS 5.2.18: SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds", [ssh_value("logingracetime")])
 }
 
 config_violations contains msg if {

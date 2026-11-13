@@ -118,8 +118,8 @@ violation contains msg if {
 # CIS 5.1.6.3 -- guest invitations limited to admins and inviters.
 violation contains msg if {
 	available("authorization_policy")
-	not input.entra.authorization_policy.allow_invites_from in {"adminsAndGuestInviters", "none"}
-	msg := sprintf("CIS 5.1.6.3: guest user invitations are not limited -- allowInvitesFrom is '%s', so ordinary members can invite external guests", [input.entra.authorization_policy.allow_invites_from])
+	not object.get(input, ["entra", "authorization_policy", "allow_invites_from"], "not reported") in {"adminsAndGuestInviters", "none"}
+	msg := sprintf("CIS 5.1.6.3: guest user invitations are not limited -- allowInvitesFrom is '%s', so ordinary members can invite external guests", [object.get(input, ["entra", "authorization_policy", "allow_invites_from"], "not reported")])
 }
 
 # ── Authentication methods policy ─────────────────────────────────────
@@ -229,12 +229,18 @@ all_user_mfa_enforced if {
 
 default legacy_auth_blocked := false
 
-legacy_auth_blocked if {
+# Legacy authentication is blocked only when BOTH legacy client types
+# (Exchange ActiveSync and other clients: IMAP, SMTP, POP) are blocked.
+legacy_client_blocked(client) if {
 	some p in enabled_policies
-	some c in p.conditions.clientAppTypes
-	c in {"exchangeActiveSync", "other"}
+	client in p.conditions.clientAppTypes
 	some g in p.grant_controls.builtInControls
 	g == "block"
+}
+
+legacy_auth_blocked if {
+	legacy_client_blocked("exchangeActiveSync")
+	legacy_client_blocked("other")
 }
 
 violation contains msg if {
@@ -329,6 +335,7 @@ signin_risk_blocked if {
 	levels := object.get(p, ["conditions", "signInRiskLevels"], [])
 	"high" in levels
 	"medium" in levels
+	"block" in object.get(p, ["grant_controls", "builtInControls"], [])
 }
 
 violation contains msg if {

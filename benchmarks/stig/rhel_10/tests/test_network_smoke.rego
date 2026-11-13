@@ -20,3 +20,21 @@ test_network_violations_on_empty_input if {
 	v := data.stig.rhel_10.network.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_rhel_10_700870 if {
+	data.stig.rhel_10.network.status_rhel_10_700870 == "Open" with input as {"x": 1}
+}
+
+test_missing_evidence_open_status_rhel_10_800020 if {
+	data.stig.rhel_10.network.status_rhel_10_800020 == "Open" with input as {"x": 1}
+}
+
+# Semantic review 2026-11-13: `compliant` means no open finding at any category (RHEL 8/9 meaning);
+# the CAT-I-only flag is kept as cat_i_compliant.
+test_compliant_false_when_cat_ii_open if {
+	r := data.stig.rhel_10.network.compliance_report with input as {"x": 1}
+	r.compliant == false
+	r.cat_i_compliant == true
+}

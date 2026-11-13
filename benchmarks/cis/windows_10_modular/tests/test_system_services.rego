@@ -542,3 +542,18 @@ test_5_45_fails_when_its_facts_do_not_comply if {
 test_5_45_evidence_missing_is_not_a_pass if {
 	data.cis_windows_10.lib.results["5.45"] == "not_assessed" with input as json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["registry"])
 }
+
+# Semantic review 2026-11-13 regressions: a service that is not installed has no Start value.
+test_5_6_not_installed_passes if {
+	absent := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["registry/HKLM\\SYSTEM\\CurrentControlSet\\Services\\IISADMIN"])
+	data.cis_windows_10.lib.results["5.6"] == "pass" with input as absent
+}
+
+test_5_6_installed_but_enabled_still_fails if {
+	data.cis_windows_10.lib.results["5.6"] == "fail" with input as object.union(data.cis_windows_10.fixtures_test.fixture_all, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\IISADMIN": {"Start": 2}}})
+}
+
+test_5_1_plain_disabled_row_absent_still_fails if {
+	absent := json.remove(data.cis_windows_10.fixtures_test.fixture_all, ["registry/HKLM\\SYSTEM\\CurrentControlSet\\Services\\BTAGService"])
+	data.cis_windows_10.lib.results["5.1"] == "fail" with input as absent
+}

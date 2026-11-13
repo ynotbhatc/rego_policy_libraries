@@ -81,7 +81,7 @@ green_fixture := {"registry": {
 		"MSAOptional": 1,
 		"DisableAutomaticRestartSignOn": 1,
 		"InactivityTimeoutSecs": 900,
-		"LegalNoticeText": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.",
+		"LegalNoticeText": "<banner text as configured>",
 		"FilterAdministratorToken": 1,
 		"ConsentPromptBehaviorAdmin": 2,
 		"ConsentPromptBehaviorUser": 0,
@@ -103,14 +103,14 @@ green_fixture := {"registry": {
 		"AllowTelemetry": 0,
 	},
 	"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config": {"DODownloadMode": 0},
-	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR\\  (For GPO-managed systems)": {"AllowGameDVR": 0},
+	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR": {"AllowGameDVR": 0},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork": {"RequireSecurityDevice": 1},
-	"HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity\\  (For GPO-managed systems)": {"MinimumPINLength": 6},
+	"HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity": {"MinimumPINLength": 6},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Internet Explorer\\Feeds": {
 		"DisableEnclosureDownload": 1,
 		"AllowBasicAuthInClear": 0,
 	},
-	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\  (For GPO-managed systems)": {"AllowIndexingEncryptedStoresOrItems": 0},
+	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowIndexingEncryptedStoresOrItems": 0},
 	"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Installer": {
 		"EnableUserControl": 0,
 		"AlwaysInstallElevated": 0,
@@ -182,7 +182,7 @@ green_fixture := {"registry": {
 		"NTLMMinClientSec": 537395200,
 		"NTLMMinServerSec": 537395200,
 	},
-	"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy\\  (For GPO-managed systems)": {"Enabled": 1},
+	"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy": {"Enabled": 1},
 	"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager": {"ProtectionMode": 1},
 }}
 
@@ -315,4 +315,50 @@ registry_rule_ids := {
 	"WN11-SO-000265",
 	"WN11-SO-000270",
 	"WN11-SO-000275",
+}
+
+# Semantic review 2026-11-13 (group D): generator derivation defects.
+
+test_legal_notice_real_banner_is_not_a_finding if {
+	data.stig.windows_11.registry_so.r_wn11_so_000075 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:"}}}
+}
+
+test_legal_notice_missing_is_open if {
+	data.stig.windows_11.registry_so.r_wn11_so_000075 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {}}}
+}
+
+test_legal_notice_blank_is_open if {
+	data.stig.windows_11.registry_so.r_wn11_so_000075 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "  "}}}
+}
+
+test_delivery_optimization_lan_mode_passes if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000206 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config": {"DODownloadMode": 1}}}
+}
+
+test_delivery_optimization_internet_mode_is_open if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000206 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DeliveryOptimization\\Config": {"DODownloadMode": 3}}}
+}
+
+test_telemetry_basic_is_not_a_finding if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000205 == true with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"AllowTelemetry": 1}}}
+}
+
+test_telemetry_full_is_open if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000205 == false with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection": {"AllowTelemetry": 3}}}
+}
+
+test_fips_clean_path_passes if {
+	data.stig.windows_11.registry_so.r_wn11_so_000230 == true with input as {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\FIPSAlgorithmPolicy": {"Enabled": 1}}}
+}
+
+test_gamedvr_clean_path_passes if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000252 == true with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR": {"AllowGameDVR": 0}}}
+}
+
+test_pin_length_clean_path_passes if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000260 == true with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\PassportForWork\\PINComplexity": {"MinimumPINLength": 6}}}
+}
+
+test_search_encrypted_items_clean_path_passes if {
+	data.stig.windows_11.registry_cc.r_wn11_cc_000305 == true with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {"AllowIndexingEncryptedStoresOrItems": 0}}}
 }

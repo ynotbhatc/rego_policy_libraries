@@ -79,7 +79,7 @@ violations contains msg if {
 	not system.patch_status_documented
 	msg := sprintf(
 		"IEC 62443-2-3: Patch status for ICS system '%v' is not documented. Every IACS component must have a documented patch status, including exceptions and compensating controls for unpatched vulnerabilities.",
-		[system.name],
+		[object.get(system, "name", "<unnamed>")],
 	)
 }
 
@@ -148,16 +148,16 @@ violations contains msg if {
 	not system.os_version_current
 	msg := sprintf(
 		"IEC 62443-2-3: ICS system '%v' is running an outdated OS version. Unsupported or unpatched operating systems represent unacceptable risk in an IACS environment.",
-		[system.name],
+		[object.get(system, "name", "<unnamed>")],
 	)
 }
 
 violations contains msg if {
 	some system in input.ics_systems
-	system.firmware_version_current == false
+	not system.firmware_version_current
 	msg := sprintf(
 		"IEC 62443-2-3: ICS system '%v' firmware is not current. Outdated firmware may contain unmitigated vulnerabilities — apply vendor-recommended firmware updates following the patch testing process.",
-		[system.name],
+		[object.get(system, "name", "<unnamed>")],
 	)
 }
 

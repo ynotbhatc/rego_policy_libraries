@@ -25,3 +25,16 @@ test_part3_risk_assessment_violations_on_empty_input if {
 	v := data.iec_62443.part3_2.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: absent zones key and unnamed zones still raise findings.
+test_missing_zones_key_raises_no_zones_finding if {
+	v := data.iec_62443.part3_2.violations with input as {"risk_assessment": {"zones_and_conduits_defined": true}}
+	some m in v
+	contains(m, "No security zones defined")
+}
+
+test_unnamed_zone_still_violates if {
+	v := data.iec_62443.part3_2.violations with input as {"zones": [{"risk_assessment_documented": false}]}
+	some m in v
+	contains(m, "<unnamed>")
+}

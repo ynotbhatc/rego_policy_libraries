@@ -6,9 +6,9 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 9
+#     checks: 15
 #     cited: 0
-#     density: sparse
+#     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
@@ -100,6 +100,31 @@ violations contains "API: manifest.applicationId must be set" if {
 violations contains "API: manifest.applicationId must be non-empty" if {
 	is_string(input.manifest.applicationId)
 	count(input.manifest.applicationId) == 0
+}
+
+# Fail-closed: absent evidence must not pass.
+violations contains "API: evidence missing — discovery_response.status_code not collected (must be a number)" if {
+	not is_number(object.get(input, ["discovery_response", "status_code"], null))
+}
+
+violations contains "API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)" if {
+	not is_number(object.get(input, ["discovery_response", "geisa_version", "major"], null))
+}
+
+violations contains "API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)" if {
+	not is_boolean(object.get(input, ["discovery_response", "pillars", "api"], null))
+}
+
+violations contains "API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')" if {
+	not is_array(object.get(input, ["manifest", "geisa", "uses"], null))
+}
+
+violations contains "API: evidence missing — manifest.permissions.mqtt.publish not collected" if {
+	not is_array(object.get(input, ["manifest", "permissions", "mqtt", "publish"], null))
+}
+
+violations contains "API: evidence missing — manifest.permissions.mqtt.subscribe not collected" if {
+	not is_array(object.get(input, ["manifest", "permissions", "mqtt", "subscribe"], null))
 }
 
 # ─── Output ──────────────────────────────────────────────────────────────────

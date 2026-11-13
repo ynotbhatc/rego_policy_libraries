@@ -25,11 +25,9 @@ package stig.openshift_4.core
 import rego.v1
 
 # CNTR-OS-000010 | V-257505 | CAT II
+# Evidence missing — TLS for container image transport (no image-registry/transport TLS fact in the openshift contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000010 := false
-
-r_cntr_os_000010 if {
-	input.openshift.oauth_idle_timeout_configured == true
-}
 
 finding_r_cntr_os_000010 := {
 	"vuln_id": "V-257505",
@@ -43,11 +41,9 @@ status_r_cntr_os_000010 := "Not_a_Finding" if r_cntr_os_000010
 status_r_cntr_os_000010 := "Open" if not r_cntr_os_000010
 
 # CNTR-OS-000030 | V-257507 | CAT II
+# Evidence missing — centralized user management (no identity-provider/central-auth fact in the openshift contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000030 := false
-
-r_cntr_os_000030 if {
-	input.openshift.cluster_logging_forwarding_configured == true
-}
 
 finding_r_cntr_os_000030 := {
 	"vuln_id": "V-257507",
@@ -97,11 +93,9 @@ status_r_cntr_os_000170 := "Not_a_Finding" if r_cntr_os_000170
 status_r_cntr_os_000170 := "Open" if not r_cntr_os_000170
 
 # CNTR-OS-000320 | V-257534 | CAT II
+# Evidence missing — logon UID immutability (no auditd loginuid-immutable fact in the rhcos contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000320 := false
-
-r_cntr_os_000320 if {
-	input.openshift.api_server_audit_profile_set == true
-}
 
 finding_r_cntr_os_000320 := {
 	"vuln_id": "V-257534",
@@ -169,11 +163,9 @@ status_r_cntr_os_000510 := "Not_a_Finding" if r_cntr_os_000510
 status_r_cntr_os_000510 := "Open" if not r_cntr_os_000510
 
 # CNTR-OS-000560 | V-257548 | CAT II
+# Evidence missing — page poisoning (init_on_alloc/init_on_free kernel argument; no such fact in the rhcos contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000560 := false
-
-r_cntr_os_000560 if {
-	input.openshift.etcd_encryption_enabled == true
-}
 
 finding_r_cntr_os_000560 := {
 	"vuln_id": "V-257548",
@@ -205,11 +197,9 @@ status_r_cntr_os_000660 := "Not_a_Finding" if r_cntr_os_000660
 status_r_cntr_os_000660 := "Open" if not r_cntr_os_000660
 
 # CNTR-OS-000720 | V-257560 | CAT II
+# Evidence missing — access-restriction enforcement auditing (no suitable fact in the contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000720 := false
-
-r_cntr_os_000720 if {
-	input.rhcos.chrony_configured == true
-}
 
 finding_r_cntr_os_000720 := {
 	"vuln_id": "V-257560",
@@ -223,11 +213,9 @@ status_r_cntr_os_000720 := "Not_a_Finding" if r_cntr_os_000720
 status_r_cntr_os_000720 := "Open" if not r_cntr_os_000720
 
 # CNTR-OS-000860 | V-257568 | CAT II
+# Evidence missing — nonexecutable data / NX protection on RHCOS (no such fact in the rhcos contract): the fact this rule used before tested a different setting,
+# so it now reports Open until a matching fact is collected.
 default r_cntr_os_000860 := false
-
-r_cntr_os_000860 if {
-	input.openshift.image_source_policy_configured == true
-}
 
 finding_r_cntr_os_000860 := {
 	"vuln_id": "V-257568",
@@ -244,7 +232,7 @@ status_r_cntr_os_000860 := "Open" if not r_cntr_os_000860
 default r_cntr_os_000930 := false
 
 r_cntr_os_000930 if {
-	input.openshift.network_policy_default_deny == true
+	input.openshift.api_server_audit_profile_set == true
 }
 
 finding_r_cntr_os_000930 := {

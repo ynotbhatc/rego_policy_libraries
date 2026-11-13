@@ -36,11 +36,13 @@ default compliant := false
 # RHEL-08-010291 | V-230252 | CAT I - SSH must use FIPS ciphers
 default ssh_fips_ciphers := false
 
+# DoD-approved set per the rule's fix text; every listed cipher must be in it.
+approved_ciphers := {"aes256-ctr", "aes192-ctr", "aes128-ctr"}
+
 ssh_fips_ciphers if {
-	ciphers := input.ssh_config.Ciphers
-	not contains(ciphers, "3des")
-	not contains(ciphers, "arcfour")
-	not contains(ciphers, "blowfish")
+	ciphers := split(input.ssh_config.Ciphers, ",")
+	count(ciphers) > 0
+	count([c | some c in ciphers; not trim_space(c) in approved_ciphers]) == 0
 }
 
 status_rhel_08_010291 := "Not_a_Finding" if ssh_fips_ciphers
@@ -77,11 +79,12 @@ finding_rhel_08_020330 := {
 # RHEL-08-010290 | V-230251 | CAT I - SSH must use FIPS MACs
 default ssh_fips_macs := false
 
+approved_macs := {"hmac-sha2-512", "hmac-sha2-256", "hmac-sha2-512-etm@openssh.com", "hmac-sha2-256-etm@openssh.com"}
+
 ssh_fips_macs if {
-	macs := input.ssh_config.MACs
-	contains(macs, "hmac-sha2")
-	not contains(macs, "hmac-md5")
-	not contains(macs, "hmac-sha1")
+	macs := split(input.ssh_config.MACs, ",")
+	count(macs) > 0
+	count([m | some m in macs; not trim_space(m) in approved_macs]) == 0
 }
 
 status_rhel_08_010290 := "Not_a_Finding" if ssh_fips_macs

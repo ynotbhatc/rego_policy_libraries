@@ -35,7 +35,7 @@ default compliant := false
 default all_repos_gpgcheck := false
 
 all_repos_gpgcheck if {
-	count([r | some r in input.yum_repos; r.gpgcheck != true]) == 0
+	count([r | some r in input.yum_repos; object.get(r, "gpgcheck", false) != true]) == 0
 	count(input.yum_repos) > 0
 }
 
@@ -61,14 +61,14 @@ finding_ol09_00_000498 := {
 # =============================================================================
 
 # OL09-00-002407 | V-271746 | CAT II
-# kernel module loading via sysctl must be disabled (kexec)
-default kexec_disabled := false
+# kernel.perf_event_paranoid must be set to 2 or higher (kernel profiling by nonprivileged users)
+default perf_event_restricted := false
 
-kexec_disabled if {
-	input.kernel_params["kernel.kexec_load_disabled"] == "1"
+perf_event_restricted if {
+	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
 }
 
-status_ol09_00_002407 := "Not_a_Finding" if kexec_disabled
+status_ol09_00_002407 := "Not_a_Finding" if perf_event_restricted
 
 else := "Open"
 
@@ -78,7 +78,7 @@ finding_ol09_00_002407 := {
 	"severity": "CAT II",
 	"rule_title": "OL 9 must prevent kernel profiling by nonprivileged users.",
 	"status": status_ol09_00_002407,
-	"fix_text": "Disable kexec: Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
 }
 
 # OL09-00-000350 | V-271508 | CAT II

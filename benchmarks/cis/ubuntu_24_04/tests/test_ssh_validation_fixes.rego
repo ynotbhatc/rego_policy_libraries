@@ -118,3 +118,17 @@ test_ssh_config_mode_octal if {
 	data.cis_ubuntu_24_04.ssh.compliant with input as object.union(good, {"ssh": {"sshd_config_mode": "0400"}})
 	not data.cis_ubuntu_24_04.ssh.compliant with input as object.union(good, {"ssh": {"sshd_config_mode": "0644"}})
 }
+
+# Semantic review 2026-11-13: LoginGraceTime 0 disables the limit and must not pass.
+test_logingracetime_zero_flagged if {
+	v := data.cis_ubuntu_24_04.ssh.config_violations with input as {"ssh": {"sshd_config_raw": "port 22\nlogingracetime 0\n"}}
+	some x in v
+	contains(x, "LoginGraceTime is 0")
+}
+
+test_logingracetime_sixty_not_flagged_as_zero if {
+	v := data.cis_ubuntu_24_04.ssh.config_violations with input as {"ssh": {"sshd_config_raw": "port 22\nlogingracetime 60\n"}}
+	every x in v {
+		not contains(x, "LoginGraceTime is 0")
+	}
+}

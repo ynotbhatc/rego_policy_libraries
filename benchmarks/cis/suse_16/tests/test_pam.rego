@@ -377,3 +377,9 @@ test_5_3_2_4_4_hollow_evidence_not_a_pass if {
 	vs := data.cis_suse16.pam.violations with input as {"pam": {"system_auth": ""}}
 	count([v | some v in vs; startswith(v, "5.3.2.4.4: ")]) > 0
 }
+
+# Semantic review 2026-11-13: dictcheck defaults to 1, so an absent directive is compliant.
+test_5_3_2_2_1_absent_directive_passes if {
+	vs := data.cis_suse16.pam.violations with input as {"pam": {"pwquality_conf_raw": "# dictcheck = 1\nminlen = 14\n"}}
+	count([v | some v in vs; startswith(v, "5.3.2.2.1: ")]) == 0
+}

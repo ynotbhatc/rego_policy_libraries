@@ -25,3 +25,17 @@ test_account_auth_violations_on_empty_input if {
 	v := data.stig.rhel_9.account_auth.violations with input as {}
 	count(v) > 0
 }
+
+# Semantic review 2026-11-13: missing evidence must not pass.
+
+test_missing_evidence_open_status_rhel_09_611155 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611155 == "Open" with input as {"x": 1}
+}
+
+test_missing_evidence_open_status_rhel_09_411030 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411030 == "Open" with input as {"x": 1}
+}
+
+test_missing_evidence_open_status_rhel_09_411110 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411110 == "Open" with input as {"x": 1}
+}

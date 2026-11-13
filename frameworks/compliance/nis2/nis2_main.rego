@@ -8,7 +8,7 @@
 #   coverage:
 #     checks: 35
 #     cited: 14
-#     expected: 34
+#     expected: 35
 #     found: 35
 #     scope: directory
 #     density: full
@@ -277,10 +277,10 @@ compliance_report := {
 	"entity_category": entity_category,
 	"assessed_at": assessed_at,
 	"compliant": compliant,
-	"total_controls": 34,
+	"total_controls": 35,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([34, count(violations)]),
+	"failed_controls": min([35, count(violations)]),
 	"article_summary": {
 		"art_20_governance": [v | some v in violations; contains(v, "Art.20")],
 		"art_21a_risk_policies": [v | some v in violations; contains(v, "Art.21(2)(a)")],

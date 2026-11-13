@@ -41,7 +41,7 @@ _target_compliant if _t.decision != "deny"
 
 default _target_violations := []
 
-_target_violations := [v | some v in [{"control": "ai_governance.decision", "title": "decision was deny", "decision": _t.decision}]]
+_target_violations := [v | _t.decision == "deny"; v := {"control": "ai_governance.decision", "title": "decision was deny", "decision": _t.decision}]
 
 _violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
 

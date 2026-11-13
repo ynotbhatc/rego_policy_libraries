@@ -111,11 +111,8 @@ finding_rhel_09_411075 := {
 default no_empty_password_hashes := false
 
 no_empty_password_hashes if {
+	is_array(input.local_accounts_with_empty_passwords)
 	count(input.local_accounts_with_empty_passwords) == 0
-}
-
-no_empty_password_hashes if {
-	not input.local_accounts_with_empty_passwords
 }
 
 status_rhel_09_611155 := "Not_a_Finding" if no_empty_password_hashes
@@ -339,11 +336,8 @@ finding_rhel_09_411050 := {
 default no_duplicate_uids := false
 
 no_duplicate_uids if {
+	is_array(input.duplicate_uids)
 	count(input.duplicate_uids) == 0
-}
-
-no_duplicate_uids if {
-	not input.duplicate_uids
 }
 
 status_rhel_09_411030 := "Not_a_Finding" if no_duplicate_uids
@@ -364,11 +358,8 @@ finding_rhel_09_411030 := {
 default no_duplicate_gids := false
 
 no_duplicate_gids if {
+	is_array(input.duplicate_gids)
 	count(input.duplicate_gids) == 0
-}
-
-no_duplicate_gids if {
-	not input.duplicate_gids
 }
 
 status_rhel_09_411110 := "Not_a_Finding" if no_duplicate_gids

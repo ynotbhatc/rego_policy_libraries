@@ -203,11 +203,14 @@ vendor_management_program if {
 }
 
 # Subservice organization oversight
+# No subservice organizations: pass. Otherwise every listed organization must carry a current SOC report.
+# The key must be present (a missing list is not evidence of "none").
 subservice_organization_oversight if {
-	count(input.soc2.subservice_organizations) == 0
-	# OR if subservice organizations exist:
-	# all([org.soc_report.current == true | org := input.soc2.subservice_organizations[_]])
+	orgs := input.soc2.subservice_organizations
+	count([org | some org in orgs; not _subservice_org_overseen(org)]) == 0
 }
+
+_subservice_org_overseen(org) if org.soc_report.current == true
 
 # =================================================================
 # CHANGE MANAGEMENT
@@ -308,6 +311,8 @@ infrastructure_compliant if {
 }
 
 # Overall SOC 2 compliance
+default overall_soc2_compliant := false
+
 overall_soc2_compliant if {
 	security_compliant
 	core_soc2_requirements_met
@@ -415,7 +420,7 @@ default compliance_report := {
 compliance_report := {
 	"framework_key": "soc2",
 	"standard": "SOC 2 Trust Services Criteria",
-	"compliant": overall_soc2_compliant == true,
+	"compliant": _soc2_report_compliant,
 	"trust_services": {
 		"security": security_compliant == true,
 		"availability": availability_compliant == true,
@@ -432,6 +437,14 @@ compliance_report := {
 # The five trust-services categories are the units this report decides on (a rule, not a literal, so the
 # coverage stamp does not read it as a declared standard size).
 _declared_controls := 5
+
+# The report is compliant only when the overall assessment passes AND no trust-services violation is listed.
+default _soc2_report_compliant := false
+
+_soc2_report_compliant if {
+	overall_soc2_compliant == true
+	count([c | some c in ["security", "availability", "confidentiality", "processing_integrity", "privacy"]; not _soc2_ok(c)]) == 0
+}
 
 _soc2_ok("security") if security_compliant == true
 _soc2_ok("availability") if availability_compliant == true

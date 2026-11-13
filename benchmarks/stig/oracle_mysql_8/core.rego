@@ -837,6 +837,7 @@ status_r_mys8_00_005000 := "Open" if not r_mys8_00_005000
 default r_mys8_00_005100 := false
 
 r_mys8_00_005100 if {
+	count(input.mysql.users) > 0
 	every u in input.mysql.users { u.plugin in {"caching_sha2_password", "sha256_password"} }
 }
 

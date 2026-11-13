@@ -6,7 +6,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 21
+#     checks: 23
 #     cited: 1
 #     density: sized
 #     basis: size
@@ -100,11 +100,16 @@ violation_audit_content contains msg if {
 # ---------------------------------------------------------------------------
 
 violation_audit_retention contains msg if {
-	input.audit_logging.retention_days < 365
+	input.audit_logging.retention_days < 2190
 	msg := sprintf(
 		"HIPAA 164.312(b): Audit log retention is %v days. HIPAA requires minimum 6 years (2190 days) for audit documentation.",
 		[input.audit_logging.retention_days],
 	)
+}
+
+violation_audit_retention contains msg if {
+	not is_number(object.get(input, ["audit_logging", "retention_days"], null))
+	msg := "HIPAA 164.312(b): evidence missing — audit_logging.retention_days not collected. HIPAA requires minimum 6 years (2190 days) for audit documentation."
 }
 
 violation_audit_retention contains msg if {
@@ -136,6 +141,11 @@ violation_audit_review contains msg if {
 		"HIPAA 164.312(b): Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly.",
 		[input.monitoring.audit_review_frequency_days],
 	)
+}
+
+violation_audit_review contains msg if {
+	not is_number(object.get(input, ["monitoring", "audit_review_frequency_days"], null))
+	msg := "HIPAA 164.312(b): evidence missing — monitoring.audit_review_frequency_days not collected. Logs for ePHI systems should be reviewed at least weekly."
 }
 
 violation_audit_review contains msg if {

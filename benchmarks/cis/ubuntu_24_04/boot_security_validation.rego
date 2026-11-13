@@ -6,7 +6,7 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 15
+#     checks: 18
 #     cited: 10
 #     density: sized
 #     basis: size
@@ -68,6 +68,10 @@ grub_violations contains msg if {
 	msg := sprintf("CIS 1.4.2: GRUB configuration file has mode %s, should be 0400 or 0600", [input.grub.config_mode])
 }
 
+grub_violations contains "CIS 1.4.2: evidence missing — grub.config_owner not collected" if {
+	object.get(object.get(input, "grub", {}), "config_owner", null) == null
+}
+
 grub_violations contains msg if {
 	input.grub.config_owner != "root"
 	msg := sprintf("CIS 1.4.2: GRUB configuration file is owned by %s, should be root", [input.grub.config_owner])
@@ -80,14 +84,23 @@ grub_violations contains msg if {
 }
 
 # CIS 1.5.1: Core dumps restricted
+core_dumps_known if is_boolean(input.process_hardening.core_dumps_enabled)
+
+process_hardening_violations contains msg if {
+	not core_dumps_known
+	msg := "CIS 1.5.1: evidence missing — process_hardening.core_dumps_enabled not collected"
+}
+
 process_hardening_violations contains msg if {
 	input.process_hardening.core_dumps_enabled
 	msg := "CIS 1.5.1: Core dumps are not restricted (/etc/security/limits.conf * hard core 0 missing)"
 }
 
+suid_dumpable_zero if sprintf("%v", [input.process_hardening.fs_suid_dumpable]) == "0"
+
 process_hardening_violations contains msg if {
-	input.process_hardening.fs_suid_dumpable != "0"
-	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %s, should be 0", [input.process_hardening.fs_suid_dumpable])
+	not suid_dumpable_zero
+	msg := sprintf("CIS 1.5.1: fs.suid_dumpable is %v, should be 0 (or was not collected)", [object.get(input, ["process_hardening", "fs_suid_dumpable"], "<missing>")])
 }
 
 # CIS 1.5.2: ASLR enabled
@@ -97,6 +110,13 @@ process_hardening_violations contains msg if {
 }
 
 # CIS 1.5.3: prelink disabled
+prelink_known if is_boolean(input.process_hardening.prelink_installed)
+
+process_hardening_violations contains msg if {
+	not prelink_known
+	msg := "CIS 1.5.3: evidence missing — process_hardening.prelink_installed not collected"
+}
+
 process_hardening_violations contains msg if {
 	input.process_hardening.prelink_installed
 	msg := "CIS 1.5.3: prelink is installed - remove it as it can reduce ASLR effectiveness"

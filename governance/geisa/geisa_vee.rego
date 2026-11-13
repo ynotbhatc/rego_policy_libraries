@@ -6,7 +6,7 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 3
+#     checks: 4
 #     cited: 0
 #     density: sparse
 #     basis: size
@@ -55,6 +55,12 @@ violations contains "VEE: discovery_response.pillars.vee is true but container.r
 	is_object(_container)
 	is_string(_container.runtime)
 	not _container.runtime in _vee_capable_runtimes
+}
+
+violations contains "VEE: discovery_response.pillars.vee is true but evidence missing — container.runtime not collected" if {
+	_vee_required
+	is_object(_container)
+	not is_string(object.get(_container, "runtime", null))
 }
 
 violations contains "VEE: discovery_response.pillars.vee is true but container input is missing" if {

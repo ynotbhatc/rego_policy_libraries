@@ -148,3 +148,20 @@ test_every_recommendation_fires_without_facts if {
 	ids := {id | some m in v; id := split(m, ":")[0]}
 	count(ids) >= 87
 }
+
+# Semantic review 2026-11-13 regressions: ADMIN_OPTION arrives as 'YES', and role grants are examined.
+test_6_1_2_fail_admin_option_yes_string if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/sys_privs", "value": [{"grantee": "APP", "privilege": "CREATE SESSION", "oracle_maintained": "N", "admin_option": "YES"}]}])
+	"6.1.2: Admin Privileges must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
+}
+
+test_6_1_2_pass_admin_option_no_string if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/sys_privs", "value": [{"grantee": "APP", "privilege": "CREATE SESSION", "oracle_maintained": "N", "admin_option": "NO"}]}])
+	v := b.violations with input as bad
+	count([m | some m in v; startswith(m, "6.1.2:")]) == 0
+}
+
+test_6_1_2_fail_role_priv_admin_option if {
+	bad := json.patch(green, [{"op": "replace", "path": "/oracle/grants/role_privs", "value": [{"grantee": "APP", "granted_role": "CONNECT", "oracle_maintained": "N", "admin_option": "YES"}]}])
+	"6.1.2: Admin Privileges must be removed from unauthorized 'GRANTEE'" in b.violations with input as bad
+}

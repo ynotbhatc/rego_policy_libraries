@@ -147,6 +147,11 @@
         "id": "hipaa-HIPAA-164.312-a-2-ii_obj.2",
         "name": "assessment-objective",
         "prose": "Emergency access accounts have not been reviewed in %v days (maximum: 90 days)."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-ii_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — access_controls.emergency_accounts_reviewed_days not collected. Emergency account review cadence cannot be verified."
        }
       ],
       "class": "compliance"
@@ -189,7 +194,12 @@
        {
         "id": "hipaa-HIPAA-164.312-a-2-iii_obj.2",
         "name": "assessment-objective",
-        "prose": "Screen lock is not enabled. Unattended workstations accessing ePHI must lock automatically."
+        "prose": "evidence missing — session.inactivity_timeout_minutes not collected. Automatic logoff timeout cannot be verified."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iii_obj.3",
+        "name": "assessment-objective",
+        "prose": "Screen lock is not enabled or evidence missing (session.screen_lock_enabled not collected). Unattended workstations accessing ePHI must lock automatically."
        }
       ],
       "class": "compliance"
@@ -238,6 +248,11 @@
         "id": "hipaa-HIPAA-164.312-a-2-iv_obj.3",
         "name": "assessment-objective",
         "prose": "Encryption keys have not been rotated in %v days. Annual rotation is recommended."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-2-iv_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — encryption.key_rotation_days not collected. Key rotation cadence cannot be verified."
        }
       ],
       "class": "compliance"
@@ -281,6 +296,11 @@
         "id": "hipaa-HIPAA-164.312-a-1_obj.2",
         "name": "assessment-objective",
         "prose": "User '%v' ePHI access has not been reviewed in %v days (maximum: 90 days)."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-a-1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — last_access_review_days not collected for ePHI user '%v'."
        }
       ],
       "class": "compliance"
@@ -768,40 +788,50 @@
        {
         "id": "hipaa-HIPAA-164.312-b_obj.7",
         "name": "assessment-objective",
-        "prose": "Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
+        "prose": "evidence missing — audit_logging.retention_days not collected. HIPAA requires minimum 6 years (2190 days) for audit documentation."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.8",
         "name": "assessment-objective",
-        "prose": "Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
+        "prose": "Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.9",
         "name": "assessment-objective",
-        "prose": "Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
+        "prose": "Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.10",
         "name": "assessment-objective",
-        "prose": "Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly."
+        "prose": "Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.11",
         "name": "assessment-objective",
-        "prose": "No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
+        "prose": "Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.12",
         "name": "assessment-objective",
-        "prose": "No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
+        "prose": "evidence missing — monitoring.audit_review_frequency_days not collected. Logs for ePHI systems should be reviewed at least weekly."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.13",
         "name": "assessment-objective",
-        "prose": "No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
+        "prose": "No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
        },
        {
         "id": "hipaa-HIPAA-164.312-b_obj.14",
+        "name": "assessment-objective",
+        "prose": "No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.15",
+        "name": "assessment-objective",
+        "prose": "No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-b_obj.16",
         "name": "assessment-objective",
         "prose": "no ePHI systems in scope (input.phi_systems is empty) — cannot certify Audit Controls. Declare the ePHI systems to be evaluated."
        }
@@ -1083,55 +1113,75 @@
        {
         "id": "hipaa-HIPAA-164.312-d_obj.5",
         "name": "assessment-objective",
-        "prose": "Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
+        "prose": "evidence missing — password_policy.minimum_length not collected. Password length requirement cannot be verified."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.6",
         "name": "assessment-objective",
-        "prose": "Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days."
+        "prose": "evidence missing — password_policy.max_age_days not collected. Password maximum age requirement cannot be verified."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.7",
         "name": "assessment-objective",
-        "prose": "Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse."
+        "prose": "evidence missing — password_policy.history_count not collected. Password history requirement cannot be verified."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.8",
         "name": "assessment-objective",
-        "prose": "Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems."
+        "prose": "evidence missing — password_policy.lockout_threshold not collected. Password lockout threshold requirement cannot be verified."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.9",
         "name": "assessment-objective",
-        "prose": "Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
+        "prose": "Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.10",
         "name": "assessment-objective",
-        "prose": "User '%v' is using a default password. Default passwords must be changed before ePHI system access."
+        "prose": "Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.11",
         "name": "assessment-objective",
-        "prose": "User '%v' has a non-expiring password and ePHI access. Password expiration must be enforced for all ePHI users."
+        "prose": "Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.12",
         "name": "assessment-objective",
-        "prose": "Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA."
+        "prose": "Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.13",
         "name": "assessment-objective",
-        "prose": "Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
+        "prose": "Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.14",
         "name": "assessment-objective",
-        "prose": "Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
+        "prose": "User '%v' is using a default password. Default passwords must be changed before ePHI system access."
        },
        {
         "id": "hipaa-HIPAA-164.312-d_obj.15",
+        "name": "assessment-objective",
+        "prose": "User '%v' has a non-expiring password and ePHI access. Password expiration must be enforced for all ePHI users."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.16",
+        "name": "assessment-objective",
+        "prose": "Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.17",
+        "name": "assessment-objective",
+        "prose": "Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.18",
+        "name": "assessment-objective",
+        "prose": "Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-d_obj.19",
         "name": "assessment-objective",
         "prose": "Service account '%v' with ePHI access uses password authentication. Service accounts should use certificate-based authentication."
        }
@@ -2290,45 +2340,60 @@
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.2",
         "name": "assessment-objective",
-        "prose": "No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
+        "prose": "evidence missing — integrity_check_frequency_hours not collected for system '%v'."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.3",
         "name": "assessment-objective",
-        "prose": "Archived ePHI is not write-protected. Historical records must be protected from modification."
+        "prose": "No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.4",
         "name": "assessment-objective",
-        "prose": "Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
+        "prose": "Archived ePHI is not write-protected. Historical records must be protected from modification."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.5",
         "name": "assessment-objective",
-        "prose": "ePHI is backed up every %v hours. Daily backups are the recommended minimum."
+        "prose": "Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.6",
         "name": "assessment-objective",
-        "prose": "ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
+        "prose": "ePHI is backed up every %v hours. Daily backups are the recommended minimum."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.7",
         "name": "assessment-objective",
-        "prose": "ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
+        "prose": "evidence missing — backup.backup_frequency_hours not collected. Backup cadence cannot be verified."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.8",
         "name": "assessment-objective",
-        "prose": "ePHI backup restore test is %v days old. Test restoration at least quarterly."
+        "prose": "ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.9",
         "name": "assessment-objective",
-        "prose": "No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
+        "prose": "ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
        },
        {
         "id": "hipaa-HIPAA-164.312-c-1_obj.10",
+        "name": "assessment-objective",
+        "prose": "ePHI backup restore test is %v days old. Test restoration at least quarterly."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.11",
+        "name": "assessment-objective",
+        "prose": "evidence missing — backup.restore_test_days not collected. Restore-test recency cannot be verified."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.12",
+        "name": "assessment-objective",
+        "prose": "No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-c-1_obj.13",
         "name": "assessment-objective",
         "prose": "Media containing ePHI is being reused without sanitization. Media must be sanitized before reuse."
        }
@@ -10921,25 +10986,30 @@
        {
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.1",
         "name": "assessment-objective",
-        "prose": "Weak cipher suite '%v' is enabled. Remove all weak ciphers from TLS configuration."
+        "prose": "evidence missing — tls.minimum_version not collected. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended."
        },
        {
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.2",
         "name": "assessment-objective",
-        "prose": "TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
+        "prose": "Weak cipher suite '%v' is enabled. Remove all weak ciphers from TLS configuration."
        },
        {
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.3",
         "name": "assessment-objective",
-        "prose": "TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure."
+        "prose": "TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
        },
        {
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.4",
         "name": "assessment-objective",
-        "prose": "APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
+        "prose": "TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure."
        },
        {
         "id": "hipaa-HIPAA-164.312-e-2-ii_obj.5",
+        "name": "assessment-objective",
+        "prose": "APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
+       },
+       {
+        "id": "hipaa-HIPAA-164.312-e-2-ii_obj.6",
         "name": "assessment-objective",
         "prose": "ePHI is sent via email without encryption enforcement. Require S/MIME or PGP for all ePHI email."
        }

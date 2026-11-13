@@ -6,7 +6,7 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 14
+#     checks: 16
 #     cited: 3
 #     density: sized
 #     basis: size
@@ -190,6 +190,19 @@ violations contains "IEC 62443 SR 4.1 (DC): FAIL-CLOSED - facts 'input.ics_syste
 # SL-dependent requirements are gated on target_sl; without it they never run.
 violations contains "IEC 62443 SR 4.1 (DC): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
 	not is_number(object.get(input, "target_sl", null))
+}
+
+# ---------------------------------------------------------------------------
+# Evidence missing: a requirement with no evidence cannot be reported as passing
+# (semantic review 2026-11-13)
+# ---------------------------------------------------------------------------
+
+violations contains "IEC 62443 SR 4.2 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
+}
+
+violations contains "IEC 62443 SR 4.3 (DC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
+	count(object.get(input, "ics_systems", [])) == 0
 }
 
 compliant if count(violations) == 0

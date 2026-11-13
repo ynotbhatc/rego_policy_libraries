@@ -273,4 +273,4 @@ p_1_2_2_1 if {
 	input.attest.updates_installed == true
 }
 
-violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be installed)" if not p_1_2_2_1
+violations contains "1.2.2.1: manual review not attested — set attest.updates_installed to true once reviewed (updates, patches, and additional security software must be present)" if not p_1_2_2_1

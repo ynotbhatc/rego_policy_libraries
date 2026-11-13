@@ -237,7 +237,7 @@ violation_details := [{"id": id, "level": c.level, "severity": c.severity, "requ
 	i := indexof(msg, ": ")
 	i > 0
 	id := substring(msg, 0, i)
-	c := registry.checks[id]
+	c := object.get(registry.checks, id, {"level": "unknown", "severity": "high", "requirement": "SAP-INPUT"})
 ]
 
 not_assessable := [{"id": id, "level": c.level, "reason": c.reason, "stores": c.stores} |

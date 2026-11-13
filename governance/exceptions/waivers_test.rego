@@ -95,3 +95,22 @@ test_empty_violations_yields_empty_decision if {
 	d.waived_count == 0
 	d.active_violations == []
 }
+
+# Semantic review 2026-11-13: a waiver for a control id must not waive longer ids that contain it.
+test_waiver_does_not_match_longer_control_ids if {
+	d := exceptions.decision with data.waivers as {"entries": [active_entry]}
+		with input as {"host": "web01", "framework": "cis_rhel9", "violations": [
+			"CIS 5.2.10: other control",
+			"CIS 15.2.1: other control",
+			"CIS 5.2.1.3: other control",
+			"CIS 5.2.1: SSH PermitRootLogin must be disabled",
+		]}
+	d.waived_count == 1
+	count(d.active_violations) == 3
+}
+
+test_waiver_matches_id_followed_by_sentence_period if {
+	d := exceptions.decision with data.waivers as {"entries": [active_entry]}
+		with input as {"host": "web01", "framework": "cis_rhel9", "violations": ["Failed CIS 5.2.1. Fix it"]}
+	d.waived_count == 1
+}

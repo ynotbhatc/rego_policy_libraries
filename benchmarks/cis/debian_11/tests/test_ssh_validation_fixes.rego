@@ -105,3 +105,17 @@ test_missing_key_evidence_violates if {
 test_missing_config_mode_violates if {
 	not data.cis_debian_11.ssh.compliant with input as json.patch(good, [{"op": "remove", "path": "/ssh/sshd_config_mode"}])
 }
+
+# Semantic review 2026-11-13: LoginGraceTime 0 disables the limit and must not pass.
+test_logingracetime_zero_flagged if {
+	v := data.cis_debian_11.ssh.config_violations with input as {"ssh": {"sshd_config_raw": "port 22\nlogingracetime 0\n"}}
+	some x in v
+	contains(x, "LoginGraceTime is 0")
+}
+
+test_logingracetime_sixty_not_flagged_as_zero if {
+	v := data.cis_debian_11.ssh.config_violations with input as {"ssh": {"sshd_config_raw": "port 22\nlogingracetime 60\n"}}
+	every x in v {
+		not contains(x, "LoginGraceTime is 0")
+	}
+}

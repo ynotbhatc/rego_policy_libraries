@@ -32,3 +32,37 @@ test_no_registry_facts_is_open if {
 	not registry_cc.r_wn16_cc_000140 with input as {}
 	not registry_cc.r_wn16_cc_000140 with input as {"registry": {}}
 }
+
+# Semantic review 2026-11-13 (group D): generator derivation defects.
+
+test_legal_notice_real_banner_is_not_a_finding if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000150 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:"}}}
+}
+
+test_legal_notice_missing_is_open if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000150 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {}}}
+}
+
+test_legal_notice_blank_is_open if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000150 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeText": "  "}}}
+}
+
+test_legal_caption_org_title_is_not_a_finding if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000160 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"LegalNoticeCaption": "DoD Notice and Consent Banner"}}}
+}
+
+test_legal_caption_missing_is_open if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000160 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {}}}
+}
+
+test_uac_admin_prompt_credentials_secure_desktop_passes if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000480 == true with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorAdmin": 1}}}
+}
+
+test_uac_admin_prompt_without_secure_desktop_is_open if {
+	data.stig.windows_server_2016.registry_so.r_wn16_so_000480 == false with input as {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System": {"ConsentPromptBehaviorAdmin": 5}}}
+}
+
+test_script_block_logging_clean_path_passes if {
+	data.stig.windows_server_2016.registry_cc.r_wn16_cc_000490 == true with input as {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\PowerShell\\ScriptBlockLogging": {"EnableScriptBlockLogging": 1}}}
+}

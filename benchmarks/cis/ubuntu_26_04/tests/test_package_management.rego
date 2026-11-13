@@ -308,3 +308,20 @@ test_1_2_2_1_fail if {
 	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"attest": {"updates_installed": false}}
 	count([v | some v in vs; startswith(v, "1.2.2.1: ")]) > 0
 }
+
+# Semantic review 2026-11-13: option blocks and later URIs must not hide plain-http repositories.
+test_https_check_sees_http_with_option_block if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_raw": "deb [arch=amd64 signed-by=/usr/share/keyrings/k.gpg] http://archive.ubuntu.com/ubuntu noble main\n"}}
+	"1.2.1.10: not met — repositories must be set to https in /etc/apt/sources.list" in vs
+}
+
+test_https_check_sees_second_http_uri_in_deb822 if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_d_raw": "URIs: https://a.example.com/ubuntu http://b.example.com/ubuntu\nSuites: noble\n"}}
+	"1.2.1.11: not met — repositories must be set to https in /etc/apt/sources.list.d directory" in vs
+}
+
+test_https_check_accepts_https_with_option_block if {
+	vs := data.cis_ubuntu_26_04.package_management.violations with input as {"apt": {"sources_list_raw": "deb [arch=amd64] https://archive.ubuntu.com/ubuntu noble main\n", "sources_list_d_raw": "URIs: https://a.example.com/ubuntu\nSuites: noble\n"}}
+	not "1.2.1.10: not met — repositories must be set to https in /etc/apt/sources.list" in vs
+	not "1.2.1.11: not met — repositories must be set to https in /etc/apt/sources.list.d directory" in vs
+}

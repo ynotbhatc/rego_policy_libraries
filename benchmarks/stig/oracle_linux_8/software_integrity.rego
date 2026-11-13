@@ -56,14 +56,14 @@ finding_ol08_00_010561 := {
 # =============================================================================
 
 # OL08-00-010376 | V-248580 | CAT III
-# kernel module loading via sysctl must be disabled (kexec)
-default kexec_disabled := false
+# kernel.perf_event_paranoid must be set to 2 or higher (kernel profiling by nonprivileged users)
+default perf_event_restricted := false
 
-kexec_disabled if {
-	input.kernel_params["kernel.kexec_load_disabled"] == "1"
+perf_event_restricted if {
+	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
 }
 
-status_ol08_00_010376 := "Not_a_Finding" if kexec_disabled
+status_ol08_00_010376 := "Not_a_Finding" if perf_event_restricted
 
 else := "Open"
 
@@ -73,7 +73,7 @@ finding_ol08_00_010376 := {
 	"severity": "CAT III",
 	"rule_title": "OL 8 must prevent kernel profiling by nonprivileged users.",
 	"status": status_ol08_00_010376,
-	"fix_text": "Disable kexec: Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
 }
 
 # =============================================================================

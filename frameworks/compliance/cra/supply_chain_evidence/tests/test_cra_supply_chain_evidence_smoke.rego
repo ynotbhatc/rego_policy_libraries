@@ -20,3 +20,16 @@ test_cra_supply_chain_evidence_fail_closed_on_empty_input if {
 	report := data.cra.supply_chain_evidence.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# Semantic review 2026-11-13: bridge must match the strings SLSA really emits.
+test_cra_bridge_purl_and_critical_cve_fire if {
+	inp := {
+		"sbom": {"present": true, "components": [{"name": "a"}]},
+		"dependencies": [{"name": "lib", "version": "1.0.0", "vulnerabilities": [{"cve_id": "CVE-2024-1", "severity": "critical", "cvss_score": 9.8}]}],
+	}
+	v := data.cra.supply_chain_evidence.violation with input as inp
+	some m in v
+	contains(m, "missing PURL")
+	some m2 in v
+	contains(m2, "Critical CVE in third-party component with no documented exemption")
+}

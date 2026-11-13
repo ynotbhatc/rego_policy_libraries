@@ -67,7 +67,7 @@
     "controls": [
      {
       "id": "fedramp-fedramp-1",
-      "title": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data.",
+      "title": "FedRAMP: evidence missing or invalid — input.impact_level must be one of low, moderate, high. Moderate and High checks (CA-8, IR-8, PE-3(1), CP-7, SR-2, SR-4, PS-3) are applied until the impact level ",
       "props": [
        {
         "name": "label",
@@ -93,14 +93,14 @@
        {
         "id": "fedramp-fedramp-1_stmt",
         "name": "statement",
-        "prose": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data."
+        "prose": "FedRAMP: evidence missing or invalid — input.impact_level must be one of low, moderate, high. Moderate and High checks (CA-8, IR-8, PE-3(1), CP-7, SR-2, SR-4, PS-3) are applied until the impact level is declared."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp-fedramp-2",
-      "title": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB).",
+      "title": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data.",
       "props": [
        {
         "name": "label",
@@ -126,14 +126,14 @@
        {
         "id": "fedramp-fedramp-2_stmt",
         "name": "statement",
-        "prose": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB)."
+        "prose": "FedRAMP: Service is not FedRAMP authorized and not in process. Federal agencies may only use FedRAMP authorized cloud services for federal data."
        }
       ],
       "class": "compliance"
      },
      {
       "id": "fedramp-fedramp-3",
-      "title": "FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration.",
+      "title": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB).",
       "props": [
        {
         "name": "label",
@@ -158,6 +158,39 @@
       "parts": [
        {
         "id": "fedramp-fedramp-3_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Authorization type '%v' is not valid. Must be ATO (Agency) or P-ATO (JAB)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-4",
+      "title": "FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-4_stmt",
         "name": "statement",
         "prose": "FedRAMP: ATO/P-ATO expires in %v days. Initiate renewal at least 90 days before expiration."
        }
@@ -198,16 +231,16 @@
       "class": "compliance"
      },
      {
-      "id": "fedramp-fedramp-4",
+      "id": "fedramp-fedramp-5",
       "title": "FedRAMP: FIPS 140-2 validation level must be at least Level 1. Level 2 is required for sensitive applications.",
       "props": [
        {
         "name": "label",
-        "value": "fedramp#4"
+        "value": "fedramp#5"
        },
        {
         "name": "alt-identifier",
-        "value": "fedramp#4"
+        "value": "fedramp#5"
        },
        {
         "name": "rego-package",
@@ -223,7 +256,7 @@
       ],
       "parts": [
        {
-        "id": "fedramp-fedramp-4_stmt",
+        "id": "fedramp-fedramp-5_stmt",
         "name": "statement",
         "prose": "FedRAMP: FIPS 140-2 validation level must be at least Level 1. Level 2 is required for sensitive applications."
        }
@@ -264,41 +297,8 @@
       "class": "compliance"
      },
      {
-      "id": "fedramp-fedramp-5",
-      "title": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized.",
-      "props": [
-       {
-        "name": "label",
-        "value": "fedramp#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "fedramp#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "fedramp"
-       }
-      ],
-      "links": [
-       {
-        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "fedramp-fedramp-5_stmt",
-        "name": "statement",
-        "prose": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "fedramp-fedramp-6",
-      "title": "FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories.",
+      "title": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized.",
       "props": [
        {
         "name": "label",
@@ -323,6 +323,39 @@
       "parts": [
        {
         "id": "fedramp-fedramp-6_stmt",
+        "name": "statement",
+        "prose": "FedRAMP: Federal data stored in non-US location '%v'. FedRAMP requires federal data to remain within US territories unless explicitly authorized."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-fedramp-7",
+      "title": "FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "fedramp#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "fedramp#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-fedramp-7_stmt",
         "name": "statement",
         "prose": "FedRAMP: Federal data processed in non-US location '%v'. Data processing must occur within US territories."
        }
@@ -866,6 +899,132 @@
        },
        {
         "id": "fedramp-data_residency_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-high",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "high"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "high"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c9fb18f4-104b-51f2-9249-911b2951b75e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-high_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-high_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-impact_level",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "impact_level"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "impact_level"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c9fb18f4-104b-51f2-9249-911b2951b75e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-impact_level_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-impact_level_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "fedramp-moderate_high",
+      "title": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "moderate_high"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "moderate_high"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "fedramp"
+       }
+      ],
+      "links": [
+       {
+        "href": "#174cff4a-c4f1-5f24-bca1-c09d75ab5297",
+        "rel": "implementation"
+       },
+       {
+        "href": "#c9fb18f4-104b-51f2-9249-911b2951b75e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "fedramp-moderate_high_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main.rego (package fedramp); see the rule body."
+       },
+       {
+        "id": "fedramp-moderate_high_obj.1",
         "name": "assessment-objective",
         "prose": "Implemented by a Rego rule in frameworks/federal/fedramp/fedramp_main_adapter.rego (package fedramp.main); see the rule body."
        }

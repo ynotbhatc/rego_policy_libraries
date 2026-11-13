@@ -5630,6 +5630,11 @@
        {
         "id": "cis_debian_11-CIS-5.2.18_obj.2",
         "name": "assessment-objective",
+        "prose": "SSH LoginGraceTime is %s (0 disables the limit), should be 1-60 seconds"
+       },
+       {
+        "id": "cis_debian_11-CIS-5.2.18_obj.3",
+        "name": "assessment-objective",
         "prose": "SSH LoginGraceTime is not set (sshd default is 120 seconds, should be 60 or less)"
        }
       ],

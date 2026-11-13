@@ -23,8 +23,8 @@ import rego.v1
 safeguards := {
 	"15.1": {"ig": 1, "title": "Establish and Maintain an Inventory of Service Providers"},
 	"15.2": {"ig": 2, "title": "Establish and Maintain a Service Provider Management Policy"},
-	"15.3": {"ig": 3, "title": "Classify Service Providers"}, # FIDELITY: unsure — IG2 vs IG3
-	"15.4": {"ig": 3, "title": "Service-provider contracts must include security requirements"},
+	"15.3": {"ig": 2, "title": "Classify Service Providers"},
+	"15.4": {"ig": 2, "title": "Service-provider contracts must include security requirements"},
 	"15.5": {"ig": 3, "title": "Assess Service Providers"},
 	"15.6": {"ig": 3, "title": "Monitor Service Providers"},
 	"15.7": {"ig": 3, "title": "Securely Decommission Service Providers"},
