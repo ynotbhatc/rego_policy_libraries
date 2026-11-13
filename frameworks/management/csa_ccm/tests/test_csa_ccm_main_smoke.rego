@@ -20,3 +20,11 @@ test_csa_ccm_main_fail_closed_on_empty_input if {
 	report := data.csa_ccm.main.compliance_report with input as {}
 	not object.get(report, "compliant", false) == true
 }
+
+# 2026-11-13: the report carried a hardcoded empty findings list.
+test_failing_run_lists_the_domain_findings if {
+	r := data.csa_ccm.main.compliance_report with input as {}
+	r.compliant == false
+	r.violation_count == count(r.violations)
+	r.violation_count > 100
+}

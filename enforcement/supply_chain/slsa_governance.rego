@@ -115,7 +115,7 @@ violations contains "Signing: Artifact signature verification failed" if {
 violations contains "Signing: Signing identity not from an approved OIDC provider" if {
 	input.artifact.signed
 	input.artifact.signature_verified
-	not approved_signing_identity(input.artifact.signing_identity)
+	not approved_signing_identity(object.get(input, ["artifact", "signing_identity"], ""))
 }
 
 approved_oidc_providers := {
@@ -272,7 +272,7 @@ violations contains "Provenance: Provenance predicate type not SLSA v1.0" if {
 
 violations contains "Provenance: Builder identity not in approved builder registry" if {
 	input.provenance.exists
-	not approved_builder(input.provenance.run_details.builder.id)
+	not approved_builder(object.get(input, ["provenance", "run_details", "builder", "id"], ""))
 }
 
 approved_builders := {

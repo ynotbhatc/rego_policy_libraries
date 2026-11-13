@@ -132,13 +132,37 @@ overall_compliant if {
 	endpoint_management.compliant
 }
 
+# Every domain module's findings in one sorted list. The report used to carry a hardcoded empty list, so a
+# failing run stored no findings.
+_violations := sort({v |
+	some d in [
+		application_security.violations,
+		audit_assurance.violations,
+		business_continuity.violations,
+		change_control.violations,
+		cryptography.violations,
+		data_security.violations,
+		endpoint_management.violations,
+		governance.violations,
+		human_resources.violations,
+		identity_access.violations,
+		incident_management.violations,
+		infrastructure.violations,
+		interoperability.violations,
+		logging_monitoring.violations,
+		supply_chain.violations,
+		threat_vulnerability.violations,
+	]
+	some v in d
+})
+
 compliance_report := {
 	"framework": "Cloud Security Alliance Cloud Controls Matrix (CSA CCM)",
 	"compliant": overall_compliant,
 	"total_controls": 197,
-	"violations": [],
-	"violation_count": 0,
-	"failed_controls": min([197, 0]),
+	"violations": _violations,
+	"violation_count": count(_violations),
+	"failed_controls": min([197, count(_violations)]),
 	"standard": "CSA Cloud Controls Matrix (CCM) v4.0",
 	"overall_compliant": overall_compliant,
 	"domains_passing": domains_passing,

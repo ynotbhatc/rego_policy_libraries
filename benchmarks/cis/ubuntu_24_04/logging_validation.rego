@@ -71,9 +71,8 @@ journald_violations contains msg if {
 
 # CIS 4.2.1.4: rsyslog default file permissions
 rsyslog_violations contains msg if {
-	input.rsyslog.file_create_mode
-	not mode_within(input.rsyslog.file_create_mode, "0640")
-	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [input.rsyslog.file_create_mode])
+	not mode_within(object.get(input, ["rsyslog", "file_create_mode"], ""), "0640")
+	msg := sprintf("CIS 4.2.1.4: rsyslog FileCreateMode not secure (current: %s, expected: 0640 or 0600)", [object.get(input, ["rsyslog", "file_create_mode"], "not collected")])
 }
 
 # CIS 4.2.1.5: Logging configured
