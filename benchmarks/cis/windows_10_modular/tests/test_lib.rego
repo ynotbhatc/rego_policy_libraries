@@ -81,6 +81,15 @@ test_a_missing_value_fails if {
 	status(reg("eq", 1)) == "fail" with input as {"cis_profile": ms, "registry": {"HKLM\\Other": {"V": 1}}}
 }
 
+# a service that is not installed has no key: compliant for an "or Not Installed" row, never for a plain one
+test_eq_or_absent_accepts_the_value_or_no_value if {
+	status(reg("eq_or_absent", 4)) == "pass" with input as with_value(4)
+	status(reg("eq_or_absent", 4)) == "pass" with input as with_value("4")
+	status(reg("eq_or_absent", 4)) == "pass" with input as {"cis_profile": ms, "registry": {"HKLM\\Other": {"V": 1}}}
+	status(reg("eq_or_absent", 4)) == "fail" with input as with_value(2)
+	status(reg("eq_or_absent", 4)) == "not_assessed" with input as {"cis_profile": ms, "secedit": {"system_access": {"A": 1}}}
+}
+
 test_registry_not_collected_is_not_assessed if {
 	status(reg("eq", 1)) == "not_assessed" with input as {"cis_profile": ms, "secedit": {"system_access": {"A": 1}}}
 }

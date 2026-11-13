@@ -21,6 +21,10 @@ workbook:
     value that must not exist or be blank, a value that must be anything other than one number).
   * Two evaluator additions: a numeric "must not equal" comparison and a `reg_key_values` kind (every listed
     string must appear among the values of one registry key).
+  * The service rows whose title ends "or Not Installed" take the template's `eq_or_absent` comparison (chosen
+    from the title in gen_windows_server_2022.op_from_title): a service that is not installed has no Start
+    value, and that is as compliant as Start = 4. tests/test_system_services.rego ends with regression tests for
+    one such row and one plain "Disabled" row.
 
 Writes benchmarks/cis/windows_10_modular/ (section modules, lib.rego, attestation, aggregation, main, data/ index
 and collector manifest, README.md, tests/). The run aborts on any count, status, section, logic or title-keyword
@@ -53,6 +57,11 @@ DIR = "windows_10_modular"
 TOTAL_RECS = 501
 INDEX_NAME = "cis_windows_10_v5_0_index.json"
 GENERATOR = "tools/cis_generators/gen_windows_10.py"
+# Regression tests for the "Disabled or Not Installed" service rows (op `eq_or_absent`, chosen from the title by
+# the 2022 generator's op_from_title): one such row, and one plain "Disabled" row that must still fail when its
+# value is absent. gen_windows_11.py overrides the first, because the ids shift.
+NOT_INSTALLED_EXAMPLE = "5.6"
+PLAIN_DISABLED_EXAMPLE = "5.1"
 
 EQ, NE, GE, LE, LE_NOT0, GE_OR_FOREVER, RANGE, SET = "eq", "ne", "ge", "le", "le_not0", "ge_or_forever", "range", "set"
 
@@ -521,6 +530,30 @@ def _first(order, recs, checks, tag, kinds_not=("manual",)):
     return next((rid for rid in order if recs[rid]["profiles"] == [tag] and checks[rid]["kind"] not in kinds_not), None)
 
 
+def _not_installed_tests(checks, fx):
+    """A service that is not installed has no key under Services: an "or Not Installed" row passes, a plain row fails."""
+    rid, plain = NOT_INSTALLED_EXAMPLE, PLAIN_DISABLED_EXAMPLE
+    c, p = checks[rid], checks[plain]
+    if (c["kind"], c["op"], c["value"]) != ("reg", "eq_or_absent", 4) or (p["kind"], p["op"], p["value"]) != ("reg", "eq", 4):
+        sys.exit(f"{rid} / {plain}: no longer an 'or Not Installed' service row and a plain 'Disabled' one")
+    t, tp = rid.replace(".", "_"), plain.replace(".", "_")
+    return f"""# Semantic review 2026-11-13 regressions: a service that is not installed has no Start value.
+test_{t}_not_installed_passes if {{
+	absent := json.remove({fx}, [{json.dumps("registry/" + c["path"])}])
+	data.{PKG}.lib.results["{rid}"] == "pass" with input as absent
+}}
+
+test_{t}_installed_but_enabled_still_fails if {{
+	data.{PKG}.lib.results["{rid}"] == "fail" with input as object.union({fx}, {json.dumps({"registry": {c["path"]: {c["name"]: 2}}})})
+}}
+
+test_{tp}_plain_disabled_row_absent_still_fails if {{
+	absent := json.remove({fx}, [{json.dumps("registry/" + p["path"])}])
+	data.{PKG}.lib.results["{plain}"] == "fail" with input as absent
+}}
+"""
+
+
 def tests(recs, checks):
     order = sorted(recs, key=lambda i: [int(p) for p in i.split(".")])
     sections = base.SECTIONS
@@ -556,6 +589,8 @@ test_{t}_evidence_missing_is_not_a_pass if {{
 	data.{PKG}.lib.results["{rid}"] == "not_assessed" with input as json.remove({fx}, ["{INPUT_REMOVE[c['kind']]}"])
 }}
 """)
+        if sec_no == NOT_INSTALLED_EXAMPLE.split(".")[0]:
+            body.append(_not_installed_tests(checks, fx))
         files[f"test_{name}.rego"] = "\n".join(body)
 
     total = len(recs)
