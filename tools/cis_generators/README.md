@@ -86,5 +86,15 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
   contract. Aborts on any count, status, logic or title-keyword mismatch with the workbook.
 
+- `gen_amazon_linux_2023.py <workbook.xlsx> [fields.json]`: CIS Amazon Linux 2023 Benchmark v1.0.0,
+  all 243 recommendations (217 Automated, 26 Manual; 179 Level 1, 64 Level 2 Server), replacing the earlier
+  hand-written sample in `benchmarks/cis/amazon_linux_2023/` (14 section packages, roll-up
+  `cis_amazon_linux_2023`, bridge `cis_amazon_linux_2023.main`, deprecated view `cis.amazon_linux_2023`).
+  Imports `gen_rhel_9.py` (reader, builders, helpers, per-control emitter) without changing it. Where an audit
+  procedure checks the same thing as a RHEL 9 v3.0.0 recommendation, that logic entry is reused through
+  `rh(<rhel id>, <keyword>)`, which checks the RHEL 9 keyword too; the mapping is by audit procedure, not by
+  id. Same Linux fact contract as rhel_9. Aborts on any count, status, profile, logic or title-keyword
+  mismatch with the workbook. Run `opa fmt -w benchmarks/cis/amazon_linux_2023` afterwards.
+
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
