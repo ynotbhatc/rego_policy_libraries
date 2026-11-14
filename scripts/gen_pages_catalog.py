@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Generate the GitHub Pages catalog (index.html) from the repository tree.
 
+scripts/build_site.py runs this first on every site build (CI runs it on every pull request), so
+the homepage is regenerated with the rest of the site. The headline figures come from
+build_site.figures(), the same README line and docs/metrics.json that CI verifies.
+
 Walks the policy directories, counts non-test .rego files per framework, and emits a
 browse-by-standard catalog with live coverage counts and one-click links to each module.
 Run from the repo root:  python3 scripts/gen_pages_catalog.py
@@ -9,8 +13,11 @@ The counts are read from the working tree, so the published catalog stays curren
 this in CI or before a release and commit the regenerated index.html.
 """
 import os
+import pathlib
 import re
-import subprocess
+import sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 REPO = "ynotbhatc/rego_policy_libraries"
 BRANCH = "main"
@@ -104,8 +111,13 @@ SECTIONS = [
 
 
 def main():
-    total = count_policies("benchmarks") + count_policies("frameworks") + \
-        count_policies("governance") + count_policies("enforcement") + count_policies("threat_detection")
+    # Headline figures are not counted here: they are the ones CI verifies (README count line and
+    # docs/metrics.json, via build_site.figures), so the homepage cannot disagree with the README again.
+    from build_site import GITHUB, SITE, SITE_NAME, figures, social_head
+    os.chdir(pathlib.Path(__file__).resolve().parent.parent)
+    fig = figures()
+    total, checks = fig["files"], fig["checks"]
+    stig_platforms = fig["stig_platforms"] or str(len(children("benchmarks/stig")))
     framework_count = sum(len(children(b)) for _, _, b in SECTIONS)
 
     cards = []
@@ -129,14 +141,33 @@ def main():
       </div>
     </section>''')
 
+    title = f"{SITE_NAME} — Browse {total} OPA Compliance Policies by Standard"
+    desc = (f"Browse {total} production-ready Open Policy Agent (OPA) Rego policies holding {checks} control-level checks, "
+            f"by standard: CIS Benchmarks, DISA STIGs, NIST, NERC-CIP, IEC 62443, ISO 27001, SOC 2, PCI-DSS, EU AI Act: "
+            f"{framework_count} standards in all. Apache 2.0, Rego v1, OCI-ready.")
+    jsonld = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": SITE_NAME,
+        "description": desc,
+        "url": f"{SITE}/",
+        "codeRepository": GITHUB,
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "programmingLanguage": "Rego",
+        "runtimePlatform": "Open Policy Agent",
+    }
+    if fig["version"]:
+        jsonld["version"] = fig["version"]
+    head = "\n".join("  " + line for line in social_head(title, desc, f"{SITE}/", jsonld).splitlines())
     html = f'''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="{GSV}" />
-  <title>Rego Policy Libraries — Browse {total}+ OPA Compliance Policies by Standard</title>
-  <meta name="description" content="Browse {total}+ production-ready Open Policy Agent (OPA) Rego policies by standard: CIS Benchmarks, DISA STIGs, NIST, NERC-CIP, IEC 62443, ISO 27001, SOC 2, PCI-DSS, EU AI Act: {framework_count}+ standards in all. Apache 2.0, Rego v1, OCI-ready.">
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+{head}
   <style>
     :root {{ --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }}
     * {{ box-sizing:border-box; }}
@@ -178,11 +209,12 @@ def main():
   <header>
     <div class="wrap">
       <h1>Rego Policy Libraries</h1>
-      <p class="tag">Browse {total}+ production-ready OPA Rego policies by standard — load one framework or the whole library. Rego v1, vendor-neutral, fail-closed, Apache&nbsp;2.0.</p>
+      <p class="tag">Browse {total} production-ready OPA Rego policies by standard — load one framework or the whole library. Rego v1, vendor-neutral, fail-closed, Apache&nbsp;2.0.</p>
       <div class="stats">
-        <div class="stat"><b>{total}+</b><span>Policies</span></div>
-        <div class="stat"><b>{framework_count}+</b><span>Standards</span></div>
-        <div class="stat"><b>13</b><span>DISA STIG platforms</span></div>
+        <div class="stat"><b>{total}</b><span>Policies</span></div>
+        <div class="stat"><b>{checks}</b><span>Control-level checks</span></div>
+        <div class="stat"><b>{framework_count}</b><span>Standards</span></div>
+        <div class="stat"><b>{stig_platforms}</b><span>DISA STIG platforms</span></div>
         <div class="stat"><b>v1</b><span>Rego syntax</span></div>
       </div>
       <div class="cta">
@@ -200,8 +232,11 @@ def main():
     <p class="empty" id="empty">No standard matches that filter.</p>
 {chr(10).join(cards)}
     <footer>
-      Part of the <a href="https://github.com/ynotbhatc/compliance">Ansible Automated Compliance (AAC)</a> platform ·
+      Part of the <a href="https://github.com/Ansible-Automated-Compliance/aac">Ansible Automated Compliance (AAC)</a> platform ·
       Apache 2.0 · generated from the repository tree, so counts stay current ·
+      <a href="standard/">One page per standard</a> ·
+      <a href="largest-policy-library.html">How big, measured</a> ·
+      <a href="llms.txt">llms.txt</a> ·
       <a href="https://github.com/{REPO}/blob/{BRANCH}/CONTRIBUTING.md">Contributing</a> ·
       <a href="https://github.com/{REPO}/issues?q=is%3Aopen+label%3A%22good+first+issue%22">Good first issues</a>
     </footer>

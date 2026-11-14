@@ -1,0 +1,1009 @@
+{
+  "profile": "level2_server",
+  "ansible_facts": {
+    "ansible_mounts": [
+      {
+        "mount": "/",
+        "fstype": "xfs",
+        "options": "rw,relatime,seclabel"
+      },
+      {
+        "mount": "/boot",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      },
+      {
+        "mount": "/home",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      },
+      {
+        "mount": "/var",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      },
+      {
+        "mount": "/var/tmp",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      },
+      {
+        "mount": "/var/log",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      },
+      {
+        "mount": "/var/log/audit",
+        "fstype": "xfs",
+        "options": "rw,nodev,nosuid,noexec,relatime,seclabel"
+      }
+    ],
+    "ansible_fqdn": "web01.example.com",
+    "ansible_hostname": "web01",
+    "ansible_distribution": "RedHat",
+    "ansible_distribution_version": "9.4",
+    "ansible_kernel": "5.14.0-427.13.1.el9_4.x86_64",
+    "ansible_architecture": "x86_64",
+    "ansible_default_ipv4": {
+      "address": "192.0.2.10",
+      "interface": "ens192",
+      "gateway": "192.0.2.1"
+    }
+  },
+  "packages": {
+    "audit": true,
+    "audit-libs": true,
+    "rsyslog-gnutls": true,
+    "rsyslog-openssl": false,
+    "bluez": false,
+    "firewalld": true,
+    "iptables-services": false,
+    "ufw": false,
+    "autofs": false,
+    "avahi": false,
+    "cockpit-ws": false,
+    "dhcp-server": false,
+    "bind": false,
+    "dnsmasq": false,
+    "samba": false,
+    "vsftpd": false,
+    "dovecot": false,
+    "cyrus-imapd": false,
+    "nfs-utils": false,
+    "cups": false,
+    "rpcbind": true,
+    "rsync-daemon": false,
+    "net-snmp": false,
+    "telnet-server": false,
+    "tftp-server": false,
+    "squid": false,
+    "httpd": false,
+    "nginx": true,
+    "xorg-x11-server-common": false,
+    "xorg-x11-server-Xwayland": false,
+    "ftp": false,
+    "openldap-clients": false,
+    "telnet": false,
+    "tftp": false
+  },
+  "services": {
+    "sshd.service": {
+      "state": "running",
+      "status": "enabled"
+    },
+    "auditd.service": {
+      "state": "running",
+      "status": "enabled"
+    },
+    "systemd-journal-remote.socket": {
+      "state": "inactive",
+      "status": "not-found"
+    },
+    "systemd-journal-remote.service": {
+      "state": "inactive",
+      "status": "not-found"
+    },
+    "firewalld.service": {
+      "state": "running",
+      "status": "enabled"
+    },
+    "nftables.service": {
+      "state": "inactive",
+      "status": "not-found"
+    },
+    "rpcbind.socket": {
+      "state": "running",
+      "status": "enabled"
+    },
+    "rpcbind.service": {
+      "state": "running",
+      "status": "enabled"
+    },
+    "nginx.service": {
+      "state": "running",
+      "status": "enabled"
+    }
+  },
+  "bootloader": {
+    "grub_config": "GRUB_TIMEOUT=5\nGRUB_CMDLINE_LINUX=\"crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root audit=1\"\nGRUB_DISABLE_RECOVERY=\"true\"\nGRUB_ENABLE_BLSCFG=true"
+  },
+  "auditd": {
+    "config": "log_file = /var/log/audit/audit.log\nlog_group = root\nlog_format = ENRICHED\nmax_log_file = 8\nmax_log_file_action = rotate\nspace_left = 75\nspace_left_action = email\naction_mail_acct = root\nadmin_space_left = 50\nadmin_space_left_action = single\ndisk_full_action = halt\ndisk_error_action = syslog",
+    "active_rules": [
+      "-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=scope",
+      "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=scope",
+      "-a always,exit -F arch=b64 -S execve,execveat -C euid!=uid -F auid!=unset -F key=user_emulation",
+      "-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=sudo_log_file",
+      "-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=time-change",
+      "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=time-change",
+      "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/hostname -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/NetworkManager/system-connections -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/etc/NetworkManager -F perm=wa -F key=system-locale",
+      "-a always,exit -S all -F path=/usr/bin/su -F perm=x -F key=privileged",
+      "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=access",
+      "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=access",
+      "-a always,exit -S all -F path=/etc/group -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/nsswitch.conf -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/pam.conf -F perm=wa -F key=identity",
+      "-a always,exit -S all -F path=/etc/pam.d -F perm=wa -F key=identity",
+      "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=perm_mod",
+      "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=perm_mod",
+      "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=perm_mod",
+      "-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=session",
+      "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=session",
+      "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=session",
+      "-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=logins",
+      "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=logins",
+      "-a always,exit -F arch=b64 -S unlink,unlinkat -F auid>=1000 -F auid!=unset -F key=delete",
+      "-a always,exit -F arch=b64 -S rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=delete",
+      "-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=MAC-policy",
+      "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=MAC-policy",
+      "-a always,exit -S all -F path=/var/lib/selinux -F perm=wa -F key=MAC-policy",
+      "-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F key=perm_chng",
+      "-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F key=perm_chng",
+      "-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F key=perm_chng",
+      "-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F key=usermod",
+      "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F key=kernel_modules",
+      "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=unset -F key=kernel_modules",
+      "-a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=unset -F key=kernel_modules",
+      "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/bin/passwd -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/bin/chage -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/bin/mount -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/bin/umount -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/bin/crontab -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged",
+      "-a always,exit -S all -F path=/usr/sbin/unix_chkpwd -F perm=x -F auid>=1000 -F auid!=unset -F key=privileged"
+    ],
+    "privileged_commands": [
+      "/usr/bin/su",
+      "/usr/bin/sudo",
+      "/usr/bin/passwd",
+      "/usr/bin/chage",
+      "/usr/bin/mount",
+      "/usr/bin/umount",
+      "/usr/bin/crontab",
+      "/usr/sbin/unix_chkpwd"
+    ],
+    "rules": [
+      "-D",
+      "-c",
+      "-e 2"
+    ],
+    "augenrules_check": "/sbin/augenrules: No change",
+    "log_dir_permissions": {
+      "mode": "0750"
+    },
+    "log_permissions": {
+      "mode": "0600",
+      "pw_name": "root",
+      "gr_name": "root"
+    },
+    "config_permissions": [
+      {
+        "stat": {
+          "path": "/etc/audit/auditd.conf",
+          "mode": "0640",
+          "pw_name": "root",
+          "gr_name": "root"
+        }
+      }
+    ],
+    "tools_permissions": [
+      {
+        "stat": {
+          "path": "/usr/sbin/auditctl",
+          "mode": "0755",
+          "pw_name": "root",
+          "gr_name": "root"
+        }
+      }
+    ]
+  },
+  "sudo": {
+    "sudoers_content": "Defaults use_pty\nDefaults !visiblepw\nDefaults timestamp_timeout=15\nDefaults timestamp_type=tty\nDefaults env_reset\nDefaults secure_path = /sbin:/bin:/usr/sbin:/usr/bin\nroot ALL=(ALL) ALL\n%wheel ALL=(ALL) ALL",
+    "installed": true,
+    "sudoers_mode": "0440",
+    "sudoers_owner": "root",
+    "sudoers_group": "root",
+    "sudoers_d_files": [
+      {
+        "path": "/etc/sudoers.d/webadmin",
+        "mode": "0440",
+        "owner": "root",
+        "group": "root"
+      }
+    ],
+    "sudoers_d_dir": {
+      "mode": "0750",
+      "owner": "root",
+      "group": "root"
+    },
+    "logfile_exists": false,
+    "su_restricted": true
+  },
+  "boot_security": {
+    "grub_password_set": false,
+    "grub_password_hashed": false,
+    "grub_cfg_mode": "0600",
+    "grub_cfg_owner": "root",
+    "grub_cfg_group": "root",
+    "grub_files": [
+      {
+        "path": "/boot/grub2/grub.cfg",
+        "mode": "0600",
+        "owner": "root",
+        "group": "root"
+      },
+      {
+        "path": "/boot/grub2/grubenv",
+        "mode": "0600",
+        "owner": "root",
+        "group": "root"
+      }
+    ],
+    "rescue_auth_required": true,
+    "emergency_auth_required": true,
+    "kernel_args": [
+      "ro crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root audit=1"
+    ],
+    "core_dumps_disabled_limits": true,
+    "systemd_coredump_process_size_max": "0",
+    "systemd_coredump_storage": "none",
+    "aide_installed": true,
+    "aide_cron_configured": false,
+    "aide_timer_configured": false,
+    "aide_audit_tool_options": {
+      "auditctl": "p+i+n+u+g+s+b+acl+xattrs+sha512",
+      "auditd": "p+i+n+u+g+s+b+acl+xattrs+sha512",
+      "ausearch": "p+i+n+u+g+s+b+acl+xattrs+sha512",
+      "aureport": "p+i+n+u+g+s+b+acl+xattrs+sha512",
+      "autrace": "p+i+n+u+g+s+b+acl+xattrs+sha512",
+      "augenrules": "p+i+n+u+g+s+b+acl+xattrs+sha512"
+    },
+    "aide_report_urls": [
+      "syslog:LOG_LOCAL0"
+    ]
+  },
+  "sysctl_parameters": {
+    "analysis": [
+      {
+        "parameter": "fs.protected_hardlinks",
+        "current_value": "1"
+      },
+      {
+        "parameter": "fs.protected_symlinks",
+        "current_value": "1"
+      },
+      {
+        "parameter": "fs.suid_dumpable",
+        "current_value": "0"
+      },
+      {
+        "parameter": "kernel.dmesg_restrict",
+        "current_value": "1"
+      },
+      {
+        "parameter": "kernel.kptr_restrict",
+        "current_value": "1"
+      },
+      {
+        "parameter": "kernel.randomize_va_space",
+        "current_value": "2"
+      },
+      {
+        "parameter": "kernel.yama.ptrace_scope",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.ip_forward",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.forwarding",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.forwarding",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.send_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.send_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.icmp_ignore_bogus_error_responses",
+        "current_value": "1"
+      },
+      {
+        "parameter": "net.ipv4.icmp_echo_ignore_broadcasts",
+        "current_value": "1"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.accept_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.accept_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.secure_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.secure_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.rp_filter",
+        "current_value": "1"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.rp_filter",
+        "current_value": "1"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.accept_source_route",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.accept_source_route",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.log_martians",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.log_martians",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.tcp_syncookies",
+        "current_value": "1"
+      },
+      {
+        "parameter": "net.ipv4.conf.all.route_localnet",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv4.conf.default.route_localnet",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.all.forwarding",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.default.forwarding",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.all.accept_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.default.accept_redirects",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.all.accept_source_route",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.default.accept_source_route",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.all.accept_ra",
+        "current_value": "0"
+      },
+      {
+        "parameter": "net.ipv6.conf.default.accept_ra",
+        "current_value": "0"
+      }
+    ],
+    "persisted": {
+      "fs.protected_hardlinks": "1",
+      "fs.protected_symlinks": "1",
+      "fs.suid_dumpable": "0",
+      "kernel.dmesg_restrict": "1",
+      "kernel.kptr_restrict": "1",
+      "kernel.randomize_va_space": "2",
+      "kernel.yama.ptrace_scope": "0",
+      "net.ipv4.ip_forward": "0",
+      "net.ipv4.conf.all.forwarding": "0",
+      "net.ipv4.conf.default.forwarding": "0",
+      "net.ipv4.conf.all.send_redirects": "0",
+      "net.ipv4.conf.default.send_redirects": "0",
+      "net.ipv4.icmp_ignore_bogus_error_responses": "1",
+      "net.ipv4.icmp_echo_ignore_broadcasts": "1",
+      "net.ipv4.conf.all.accept_redirects": "0",
+      "net.ipv4.conf.default.accept_redirects": "0",
+      "net.ipv4.conf.all.secure_redirects": "0",
+      "net.ipv4.conf.default.secure_redirects": "0",
+      "net.ipv4.conf.all.rp_filter": "1",
+      "net.ipv4.conf.default.rp_filter": "1",
+      "net.ipv4.conf.all.accept_source_route": "0",
+      "net.ipv4.conf.default.accept_source_route": "0",
+      "net.ipv4.conf.all.log_martians": "0",
+      "net.ipv4.conf.default.log_martians": "0",
+      "net.ipv4.tcp_syncookies": "1",
+      "net.ipv4.conf.all.route_localnet": "0",
+      "net.ipv4.conf.default.route_localnet": "0",
+      "net.ipv6.conf.all.forwarding": "0",
+      "net.ipv6.conf.default.forwarding": "0",
+      "net.ipv6.conf.all.accept_redirects": "0",
+      "net.ipv6.conf.default.accept_redirects": "0",
+      "net.ipv6.conf.all.accept_source_route": "0",
+      "net.ipv6.conf.default.accept_source_route": "0",
+      "net.ipv6.conf.all.accept_ra": "0",
+      "net.ipv6.conf.default.accept_ra": "0"
+    }
+  },
+  "cron": {
+    "crond_enabled": true,
+    "crond_running": true,
+    "crontab_mode": "0644",
+    "crontab_owner": "root",
+    "crontab_group": "root",
+    "cron_hourly_mode": "0700",
+    "cron_hourly_owner": "root",
+    "cron_hourly_group": "root",
+    "cron_daily_mode": "0700",
+    "cron_daily_owner": "root",
+    "cron_daily_group": "root",
+    "cron_weekly_mode": "0700",
+    "cron_weekly_owner": "root",
+    "cron_weekly_group": "root",
+    "cron_monthly_mode": "0700",
+    "cron_monthly_owner": "root",
+    "cron_monthly_group": "root",
+    "cron_yearly_mode": "0700",
+    "cron_yearly_owner": "root",
+    "cron_yearly_group": "root",
+    "cron_d_mode": "0700",
+    "cron_d_owner": "root",
+    "cron_d_group": "root",
+    "cron_allow_exists": true,
+    "cron_allow_mode": "0640",
+    "cron_allow_owner": "root",
+    "cron_allow_group": "root",
+    "cron_deny_exists": false,
+    "at_allow_exists": true,
+    "at_allow_mode": "0640",
+    "at_allow_owner": "root",
+    "at_allow_group": "root",
+    "at_deny_exists": false
+  },
+  "critical_files": {
+    "analysis": [
+      {
+        "file": "/etc/passwd",
+        "exists": true,
+        "actual_mode": "0644",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/passwd-",
+        "exists": true,
+        "actual_mode": "0644",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/group",
+        "exists": true,
+        "actual_mode": "0644",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/group-",
+        "exists": true,
+        "actual_mode": "0644",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/shadow",
+        "exists": true,
+        "actual_mode": "0000",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/shadow-",
+        "exists": true,
+        "actual_mode": "0000",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/gshadow",
+        "exists": true,
+        "actual_mode": "0000",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/gshadow-",
+        "exists": true,
+        "actual_mode": "0000",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/shells",
+        "exists": true,
+        "actual_mode": "0644",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/security/opasswd",
+        "exists": true,
+        "actual_mode": "0600",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/etc/security/opasswd.old",
+        "exists": false
+      }
+    ]
+  },
+  "world_writable": {
+    "files": [
+      "/var/www/html/uploads/import.csv"
+    ],
+    "count": 1
+  },
+  "sticky_bit": {
+    "world_writable_without_sticky": []
+  },
+  "unowned_files": {
+    "files": [],
+    "count": 0
+  },
+  "ungrouped_files": {
+    "files": [],
+    "count": 0
+  },
+  "attest": {
+    "suid_sgid_files_reviewed": true,
+    "unused_filesystem_modules_reviewed": true,
+    "gpg_keys_reviewed": true,
+    "repositories_reviewed": true,
+    "updates_installed": true,
+    "crypto_policy_chacha20_ssh_reviewed": true,
+    "crypto_policy_etm_ssh_reviewed": true,
+    "journald_rotation_reviewed": true,
+    "journald_file_access_reviewed": true,
+    "rsyslog_logging_rules_reviewed": true,
+    "rsyslog_remote_host_configured": true,
+    "rsyslog_tls_ca_configured": true,
+    "rsyslog_tls_client_cert_configured": true,
+    "logrotate_reviewed": true,
+    "ipv6_status_identified": true,
+    "firewalld_loopback_traffic_configured": true,
+    "firewalld_loopback_source_traffic_configured": true,
+    "firewalld_services_ports_reviewed": true,
+    "firewalld_default_zone_drop": true,
+    "password_complexity_reviewed": true,
+    "minimum_password_days_reviewed": true,
+    "no_unconfined_services": true,
+    "listening_services_approved": true
+  },
+  "disabled_filesystem_modules": {
+    "modules": [
+      {
+        "module": "cramfs",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "freevxfs",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "hfs",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "hfsplus",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "jffs2",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "overlay",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "squashfs",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "udf",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "firewire-core",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "usb-storage",
+        "disabled": true,
+        "loaded": false
+      }
+    ]
+  },
+  "mount_options": {
+    "tmp": {
+      "exists": true,
+      "has_nodev": true,
+      "has_nosuid": true,
+      "has_noexec": true
+    },
+    "dev_shm": {
+      "exists": true,
+      "has_nodev": true,
+      "has_nosuid": true,
+      "has_noexec": false
+    }
+  },
+  "initial_setup": {
+    "global_gpgcheck_enabled": true,
+    "repos_without_gpgcheck": [],
+    "enabled_repos": [
+      "rhel-9-for-x86_64-baseos-rpms",
+      "rhel-9-for-x86_64-appstream-rpms"
+    ],
+    "dnf_conf_raw": "[main]\ngpgcheck=1\nrepo_gpgcheck=1\ninstallonly_limit=3\nclean_requirements_on_remove=True\nbest=True\nskip_if_unavailable=False\ninstall_weak_deps=False",
+    "crypto_policy": "DEFAULT:PQ",
+    "motd_exists": true,
+    "motd_contains_sensitive_info": false,
+    "issue_exists": true,
+    "issue_contains_sensitive_info": true,
+    "issue_net_exists": true,
+    "issue_net_contains_sensitive_info": false,
+    "motd_mode": "0644",
+    "motd_owner": "root",
+    "motd_group": "root",
+    "issue_mode": "0644",
+    "issue_owner": "root",
+    "issue_group": "root",
+    "issue_net_mode": "0644",
+    "issue_net_owner": "root",
+    "issue_net_group": "root",
+    "gdm_installed": false
+  },
+  "crypto_policy": {
+    "current_pol_raw": "hash = SHA2-256 SHA2-384 SHA2-512\nsign = ECDSA-SHA2-256 RSA-PSS-SHA2-256 RSA-SHA2-256\nhash@RPM = SHA2-256 SHA1\nsha1_in_certs = 0\nmac = HMAC-SHA2-256 UMAC-128\ncipher = AES-256-GCM AES-128-GCM\ncipher@openssh-server = AES-256-GCM AES-128-GCM",
+    "pq_module_available": true
+  },
+  "journald": {
+    "service_active": true,
+    "forward_to_syslog": "yes"
+  },
+  "rsyslog": {
+    "installed": true,
+    "service_enabled": true,
+    "service_active": true,
+    "file_create_mode": "0640",
+    "config_files": [
+      {
+        "path": "/etc/rsyslog.conf",
+        "mode": "0640",
+        "owner": "root",
+        "group": "root"
+      }
+    ],
+    "d_dir": {
+      "mode": "0755",
+      "owner": "root",
+      "group": "root"
+    },
+    "work_dir": {
+      "mode": "0700",
+      "owner": "root",
+      "group": "root"
+    },
+    "config_raw": "$FileCreateMode 0640\n*.info;mail.none;authpriv.none;cron.none /var/log/messages\nauthpriv.* /var/log/secure\ncron.* /var/log/cron\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"
+  },
+  "log_file_permissions": {
+    "analysis": [
+      {
+        "file": "/var/log/messages",
+        "actual_mode": "0600",
+        "actual_owner": "root",
+        "actual_group": "root"
+      },
+      {
+        "file": "/var/log/wtmp",
+        "actual_mode": "0664",
+        "actual_owner": "root",
+        "actual_group": "utmp"
+      }
+    ]
+  },
+  "wireless_interfaces": {
+    "has_wireless": false,
+    "modules": []
+  },
+  "disabled_network_modules": {
+    "modules": [
+      {
+        "module": "dccp",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "tipc",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "rds",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "sctp",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "atm",
+        "disabled": true,
+        "loaded": false
+      },
+      {
+        "module": "can",
+        "disabled": true,
+        "loaded": false
+      }
+    ]
+  },
+  "firewall": {
+    "backend": "nftables",
+    "zones": [
+      {
+        "name": "public",
+        "interfaces": [
+          "ens192"
+        ],
+        "target": "default",
+        "permanent_target": "default",
+        "icmp_block_inversion": false,
+        "icmp_blocks": [
+          "timestamp-reply",
+          "timestamp-request"
+        ]
+      },
+      {
+        "name": "trusted",
+        "interfaces": [
+          "lo"
+        ],
+        "target": "ACCEPT",
+        "permanent_target": "ACCEPT",
+        "icmp_block_inversion": false,
+        "icmp_blocks": []
+      }
+    ],
+    "log_denied": "off"
+  },
+  "pam": {
+    "package_versions": {
+      "pam": "1.5.1-14.el9",
+      "authselect": "1.2.6-1.el9",
+      "libpwquality": "1.4.4-8.el9"
+    },
+    "authselect_profile": "sssd",
+    "authselect_check_valid": true,
+    "system_auth": "auth        required      pam_faillock.so preauth silent\nauth        sufficient    pam_unix.so\nauth        required      pam_faillock.so authfail\naccount     required      pam_faillock.so\naccount     required      pam_unix.so\npassword    requisite     pam_pwquality.so local_users_only\npassword    required      pam_pwhistory.so use_authtok\npassword    sufficient    pam_unix.so sha512 shadow use_authtok\nsession     required      pam_unix.so",
+    "password_auth": "auth        required      pam_faillock.so preauth silent\nauth        sufficient    pam_unix.so\nauth        required      pam_faillock.so authfail\naccount     required      pam_faillock.so\naccount     required      pam_unix.so\npassword    requisite     pam_pwquality.so local_users_only\npassword    required      pam_pwhistory.so use_authtok\npassword    sufficient    pam_unix.so sha512 shadow use_authtok\nsession     required      pam_unix.so",
+    "faillock_conf_raw": "deny = 5\nunlock_time = 900\neven_deny_root\nroot_unlock_time = 60",
+    "pwquality_conf_raw": "difok = 2\nminlen = 8\nminclass = 4\nmaxrepeat = 3\nmaxsequence = 3\ndictcheck = 1\nenforce_for_root",
+    "pwhistory_conf_raw": "remember = 24",
+    "pass_max_days": 99999,
+    "pass_warn_age": 7,
+    "encrypt_method": "SHA512",
+    "inactive_days": 30,
+    "system_accounts_with_login_shell": [],
+    "tmout": 0,
+    "tmout_readonly_exported": false,
+    "login_defs_umask": "027",
+    "default_umask": "027"
+  },
+  "user_group": {
+    "shadow_entries": [
+      {
+        "user": "root",
+        "has_password": true,
+        "max_days": 365,
+        "warn_days": 7,
+        "inactive": 30,
+        "last_change": 20390
+      },
+      {
+        "user": "webadmin",
+        "has_password": true,
+        "max_days": 365,
+        "warn_days": 7,
+        "inactive": 30,
+        "last_change": 20371
+      },
+      {
+        "user": "deploy",
+        "has_password": true,
+        "max_days": 99999,
+        "warn_days": 7,
+        "inactive": 30,
+        "last_change": 20402
+      }
+    ],
+    "uid_zero_accounts": [
+      "root"
+    ],
+    "gid_zero_accounts": [
+      "root",
+      "sync"
+    ],
+    "gid_zero_groups": [
+      "root"
+    ],
+    "root_password_status": "PS",
+    "root_path": "/usr/sbin:/usr/bin",
+    "root_path_nonexistent_dirs": [],
+    "root_path_writable_dirs": [],
+    "root_path_entries": [
+      {
+        "path": "/usr/bin",
+        "owner": "root",
+        "mode": "0755"
+      }
+    ],
+    "root_umask": "0027",
+    "unlocked_accounts_without_shell": [],
+    "shells_content": "/bin/bash\n/bin/sh",
+    "users_without_shadow": [],
+    "users_with_empty_password": [],
+    "passwd_groups_not_in_group_file": [],
+    "duplicate_uids": {},
+    "duplicate_gids": {},
+    "duplicate_usernames": {},
+    "duplicate_groupnames": {},
+    "users_without_home_directory": [],
+    "users_not_owning_home": [],
+    "home_dirs_too_permissive": [
+      {
+        "user": "deploy",
+        "home": "/home/deploy",
+        "mode": "0755"
+      }
+    ],
+    "users_with_netrc": [],
+    "users_with_forward": [],
+    "users_with_rhosts": [],
+    "dotfiles_group_or_world_writable": []
+  },
+  "selinux": {
+    "installed": true,
+    "grub_cmdline": "GRUB_TIMEOUT=5\nGRUB_CMDLINE_LINUX=\"crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root audit=1\"\nGRUB_DISABLE_RECOVERY=\"true\"\nGRUB_ENABLE_BLSCFG=true",
+    "policy": "targeted",
+    "mode": "enforcing",
+    "config_mode": "enforcing",
+    "mcstrans_installed": false,
+    "setroubleshoot_installed": false
+  },
+  "mta": {
+    "has_mta": true,
+    "non_loopback_listeners": [],
+    "inet_interfaces": "loopback-only"
+  },
+  "gui": {
+    "environment_installed": false,
+    "default_target": "multi-user.target"
+  },
+  "chronyd": {
+    "installed": true,
+    "servers_configured": 0,
+    "pools_configured": 1,
+    "sysconfig_options": "-F 2"
+  },
+  "ssh": {
+    "config_permissions": {
+      "mode": "0600",
+      "pw_name": "root",
+      "gr_name": "root"
+    },
+    "dropin_permissions": [
+      {
+        "mode": "0600",
+        "pw_name": "root",
+        "gr_name": "root",
+        "path": "/etc/ssh/sshd_config.d/50-redhat.conf"
+      }
+    ],
+    "dropin_dir_permissions": {
+      "mode": "0700",
+      "pw_name": "root",
+      "gr_name": "root"
+    },
+    "private_key_permissions": [
+      {
+        "stat": {
+          "path": "/etc/ssh/ssh_host_ed25519_key",
+          "mode": "0600",
+          "pw_name": "root",
+          "gr_name": "root"
+        }
+      },
+      {
+        "stat": {
+          "path": "/etc/ssh/ssh_host_rsa_key",
+          "mode": "0640",
+          "pw_name": "root",
+          "gr_name": "ssh_keys"
+        }
+      }
+    ],
+    "public_key_permissions": [
+      {
+        "path": "/etc/ssh/ssh_host_ed25519_key.pub",
+        "mode": "0644",
+        "pw_name": "root",
+        "gr_name": "root"
+      }
+    ],
+    "sshd_config_raw": "port 22\naddressfamily inet\nlistenaddress 192.0.2.10:22\nciphers aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes128-ctr\nkexalgorithms curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp521\nmacs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256\nallowgroups sshusers\nbanner /etc/issue.net\nclientaliveinterval 15\nclientalivecountmax 3\ndisableforwarding no\ngssapiauthentication no\nhostbasedauthentication no\nignorerhosts yes\nlogingracetime 60\nloglevel VERBOSE\nmaxauthtries 6\nmaxstartups 10:30:60\nmaxsessions 10\npermitemptypasswords no\npermitrootlogin yes\npermituserenvironment no\nusepam yes\npubkeyauthentication yes\npasswordauthentication no",
+    "banner_contains_sensitive_info": false
+  }
+}

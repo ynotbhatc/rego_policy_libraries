@@ -8,6 +8,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — a first run that scans something real
+
+- `examples/rhel9/facts.json`: facts for one fictional RHEL 9 web server that the CIS RHEL 9 benchmark evaluates
+  to a mixed result (352 controls, 327 pass, 25 fail for ordinary reasons such as root SSH login, a short
+  password length and an unscheduled AIDE check). The README's first command now evaluates it; the no-facts
+  fail-closed run comes second. `examples/rhel9/check.sh` asserts the exact result so the sample cannot rot.
+
+### Fixed — site figures, search metadata, FedRAMP page
+
+- The homepage said 864+ policies because nothing ran its generator; `build_site.py` now runs it and takes every
+  figure from the counted metrics. Every page carries a canonical link, Open Graph and Twitter tags; the
+  homepage carries SoftwareSourceCode structured data; the sitemap has a date per page; FedRAMP has a standard
+  page; the footer links the public AAC repository and `llms.txt`. `llms.txt` gains a quickstart, the
+  entrypoint convention, the report fields and the bundle reference. Gatekeeper package metadata restamped to
+  2.5.0.
+
 ### Fixed — metadata vocabulary covers SUSE 16, OPNsense and Intune Defender Antivirus
 
 - `scripts/metadata_vocabulary.json` gains the domains `suse`, `opnsense`, `endpoint`, `intune` and `antivirus`,

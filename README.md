@@ -16,29 +16,51 @@ It covers the benchmarks and regulations most teams are asked about: CIS Benchma
 git clone https://github.com/ynotbhatc/rego_policy_libraries.git
 cd rego_policy_libraries
 
-# Ask the CIS RHEL 9 benchmark for a report with no facts at all
-opa eval -d benchmarks/cis/rhel_9 -f pretty 'data.cis_rhel9.main.compliance_report'
+# Evaluate one sample RHEL 9 server against the CIS RHEL 9 benchmark
+opa eval -d benchmarks/cis/rhel_9 -i examples/rhel9/facts.json -f pretty 'data.cis_rhel9.main.compliance_report'
 ```
 
-You get a report that is **not** compliant:
+The sample is a fictional web server, `web01.example.com`, that is mostly hardened and has the gaps a real host tends to have. The report says so (trimmed):
 
 ```
+"compliance_percentage": 92.898,
 "compliant": false,
-"compliance_percentage": 0,
-"total_controls": 263,
-"failed_controls": 263,
+"failed_controls": 25,
+"passed_controls": 327,
+"profile": "level2_server",
+"total_controls": 352,
 "violations": [
-  "FAIL-CLOSED: no facts supplied for cis_rhel9 — the assessment could not be evaluated. ...",
-  "1.1.1.1: evidence missing — disabled_filesystem_modules.modules[cramfs] not collected",
+  "1.4.1: not met — bootloader password must be set",
+  "2.1.12: not met — rpcbind services must not be running",
+  "5.1.21: not met — sshd PermitRootLogin must be turned off",
+  "5.3.3.2.2: not met — password length must be explicitly configured",
+  "6.2.3.21: not met — an audit rule must record successful file system mounts",
+  "6.3.2: not met — filesystem integrity must be regularly checked",
+  "7.1.11: not met — world writable files and directories must be secured",
   ...
 ]
 ```
 
-That is the one rule every framework here follows: no facts means non-compliant with a reason, never a silent pass. Feed it real facts and the same query returns the real result.
+Every violation starts with the control id, so the list is the to-do list. What is in the sample and how to change it: [examples/rhel9/](examples/rhel9/). Point `-i` at your own facts file to assess your own host.
+
+Now run it with no facts at all:
 
 ```bash
-opa eval -d benchmarks/cis/rhel_9 -i facts.json -f pretty 'data.cis_rhel9.main.compliance_report'
+opa eval -d benchmarks/cis/rhel_9 -f pretty 'data.cis_rhel9.main.compliance_report'
 ```
+
+```
+"compliant": false,
+"failed_controls": 263,
+"total_controls": 263,
+"violations": [
+  "1.1.1.1: evidence missing — disabled_filesystem_modules.modules[cramfs] not collected",
+  ...
+  "FAIL-CLOSED: no facts supplied for cis_rhel9 — the assessment could not be evaluated. This is NOT a passing result; check that fact collection ran and produced input."
+]
+```
+
+That is the one rule every framework here follows: no facts means non-compliant with a reason, never a silent pass. (The count is 263 here because the default profile is Level 1 server; the sample asks for Level 2 server, all 352 recommendations.)
 
 Prefer a running server? Pull the pre-built bundle instead of cloning:
 
@@ -46,8 +68,9 @@ Prefer a running server? Pull the pre-built bundle instead of cloning:
 oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest
 podman run -d --name opa -p 8181:8181 -v "$(pwd)/bundle.tar.gz:/bundle.tar.gz:ro" \
   openpolicyagent/opa:1.10.0 run --server --addr :8181 --bundle /bundle.tar.gz
+# the data API wants the facts wrapped as {"input": ...}; the sample file is in this repository
 curl -s -X POST http://localhost:8181/v1/data/cis_rhel9/main/compliance_report \
-  -H 'Content-Type: application/json' -d @facts.json
+  -H 'Content-Type: application/json' -d "{\"input\": $(cat examples/rhel9/facts.json)}"
 ```
 
 Wiring it into a CI job, Conftest, Gatekeeper or Kubewarden: [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md).
@@ -101,6 +124,8 @@ Every framework, its path and what it covers: [docs/FRAMEWORKS.md](docs/FRAMEWOR
 | Writing or fixing a policy | [CONTRIBUTING.md](CONTRIBUTING.md), [CLAUDE.md](CLAUDE.md) for the house rules, `make test` |
 | Preparing an audit or an authorisation package | [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md) for scope, the OSCAL exports below for evidence |
 | Using it from another engine or format | [`converters/`](converters/) |
+
+For language models and other tools that read plain text, the site publishes a short summary of the library: [llms.txt](https://ynotbhatc.github.io/rego_policy_libraries/llms.txt).
 
 ## Machine-readable outputs
 
