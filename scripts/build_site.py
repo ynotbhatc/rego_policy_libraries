@@ -120,7 +120,7 @@ def figures():
     return {
         "checks": checks or "24,009",
         "files": grab(r"\*\*([0-9][0-9,]+) production-ready Rego policies") or "953",
-        "catalogs": grab(r"control-level checks across ([0-9]+) framework catalogs"),
+        "catalogs": grab(r"control-level checks\*{0,2} across ([0-9]+) framework catalogs"),
         "stig_platforms": grab(r"DISA STIGs — ([0-9]+) platforms"),
         "version": m_ver.group(1) if m_ver else None,
     }
@@ -374,6 +374,7 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
     scope = f"{checks} control-level checks in {files_n} policy files"
     if catalogs:
         scope += f", mapped to {catalogs} framework catalogs"
+    version_line = f"release {fig['version']}" if fig["version"] else "the current release"
     standards = "\n".join(f"- [{n}]({SITE}/standard/{s}.html): {c} policy files"
                           for s, n, c in sorted(built, key=lambda x: x[1]))
     (ROOT / "llms.txt").write_text(f"""# Rego Policy Libraries
@@ -393,7 +394,32 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 - [Size and coverage comparison](https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/COMPARISON.md): units, sources and dates for each figure
 - [Repository](https://github.com/ynotbhatc/rego_policy_libraries): source, tests, CHANGELOG
 - [Monthly standards sweeps](https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/sweeps/README.md): what changed upstream and what the library did about it
-- OCI bundle: `ghcr.io/ynotbhatc/rego_policy_libraries:latest`
+- [Sample facts for one RHEL 9 server]({REPO}/examples/rhel9/README.md): the input shape, and what a mixed result looks like
+
+## Quickstart
+
+```bash
+git clone https://github.com/ynotbhatc/rego_policy_libraries.git
+cd rego_policy_libraries
+opa eval -d benchmarks/cis/rhel_9 -i examples/rhel9/facts.json -f pretty 'data.cis_rhel9.main.compliance_report'
+```
+
+That evaluates a fictional server against CIS RHEL 9 v3.0.0 and returns 352 controls, 25 of them failing,
+each named in `violations`. Drop `-i examples/rhel9/facts.json` and every control fails with a FAIL-CLOSED notice.
+
+## How to query it
+
+- Entrypoint, the same for every framework: `data.<key>.main.compliance_report`, where `<key>` is the
+  framework key (`cis_rhel9`, `stig_rhel9`, `nist_800_53`, `pci_dss`, ...). Over the OPA REST API:
+  `POST /v1/data/<key>/main/compliance_report` with the facts as `{{"input": ...}}`.
+- Input: a JSON document of collected facts. Policies read only `input`; they do no I/O and need no data documents.
+- Report fields: `compliant` (boolean), `total_controls`, `failed_controls` (integers) and `violations`
+  (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
+  `compliance_percentage` and per-section results.
+- Missing evidence fails: a control whose facts were not collected reports "evidence missing"; it never passes by default.
+- Size at {version_line}: {scope}.
+- Release bundle (OCI, built with OPA 1.10.0): `ghcr.io/ynotbhatc/rego_policy_libraries:<version>`, for example
+  `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
 ## Standards
 
