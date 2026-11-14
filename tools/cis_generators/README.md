@@ -76,6 +76,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   table, and the rest (Debian audit wording, both-architecture syscall rules, 6 new recommendations) are written
   in the script. Same input contract as ubuntu_26_04 plus five facts listed in the module README. Aborts on any
   count, id, status or title-keyword mismatch; formats its own output with `opa fmt`.
+- `gen_debian_13.py <workbook.xlsx> [fields.json]`: CIS Debian Linux 13 Benchmark v1.1.1, 350
+  recommendations (333 Automated, 17 Manual) across 21 section packages, into `benchmarks/cis/debian_13/`
+  (key `cis_debian_13`). The workbook has the ids, statuses and profiles of Ubuntu 26.04 LTS v1.0.0, so the
+  script imports `gen_ubuntu_26_04.py` unmodified (reader, builders, logic table, emitters) and holds only
+  what differs: 6.2.3.2 (`execve` and `execveat`, both architectures), the os-release ID in the banner
+  checks, `violation_count` in the report, and Debian test fixtures. Every workbook check runs again against
+  the Debian workbook (count, status, per-profile counts, a title keyword per logic entry); any mismatch
+  aborts. Same input contract as ubuntu_26_04. Needs `opa` on the PATH: the output is passed through `opa fmt`.
 
 - `gen_sql_server_2025.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2025 Benchmark v1.0.0,
   49 recommendations; Database Engine and AWS RDS profiles (`input.cis_profile.platform`).
