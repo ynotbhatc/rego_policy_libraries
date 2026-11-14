@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 38
-#     cited: 38
+#     checks: 76
+#     cited: 39
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.auditd
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 5.2: System Auditing (auditd).

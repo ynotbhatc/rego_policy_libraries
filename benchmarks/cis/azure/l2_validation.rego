@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_azure.l2
 
 # CIS Microsoft Azure Foundations Benchmark v7.0.0 - Level 2 additional recommendations.

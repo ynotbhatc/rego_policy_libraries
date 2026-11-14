@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 243
-#     cited: 243
+#     checks: 245
+#     cited: 245
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: self
-#     as_of: v2.4.2
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_amazon_linux_2023
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0: roll-up of the 14 section packages.

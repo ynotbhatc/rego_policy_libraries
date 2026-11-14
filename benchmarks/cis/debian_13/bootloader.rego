@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 2
+#     checks: 4
 #     cited: 2
-#     density: sized
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.bootloader
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Section 1.4: Bootloader.

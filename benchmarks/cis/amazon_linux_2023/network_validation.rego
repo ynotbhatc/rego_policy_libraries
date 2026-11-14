@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 25
-#     cited: 25
+#     checks: 48
+#     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.network
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 3: Network Configuration, Host Based Firewall.

@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "69ec6dfc-872b-560b-a79f-56f7b2855c73",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_docker (CIS Docker Benchmark v1.8.0)",
+   "title": "Rego Policy Libraries — cis_docker (CIS Docker Benchmark v1.9.0)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "cis_docker-cis_docker_benchmark",
     "class": "rego-module",
-    "title": "CIS Docker Benchmark v1.8.0",
+    "title": "CIS Docker Benchmark v1.9.0",
     "props": [
      {
       "name": "rego-package",
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "cis_docker-container_images",
+      "id": "cis_docker-cis_docker-1",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "container_images"
+        "value": "cis_docker#1"
        },
        {
         "name": "alt-identifier",
-        "value": "container_images"
+        "value": "cis_docker#1"
        },
        {
         "name": "rego-package",
@@ -91,7 +91,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-container_images_stmt",
+        "id": "cis_docker-cis_docker-1_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -99,16 +99,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-container_runtime",
+      "id": "cis_docker-cis_docker-2",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "container_runtime"
+        "value": "cis_docker#2"
        },
        {
         "name": "alt-identifier",
-        "value": "container_runtime"
+        "value": "cis_docker#2"
        },
        {
         "name": "rego-package",
@@ -124,7 +124,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-container_runtime_stmt",
+        "id": "cis_docker-cis_docker-2_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -132,16 +132,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-daemon_config",
+      "id": "cis_docker-cis_docker-3",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "daemon_config"
+        "value": "cis_docker#3"
        },
        {
         "name": "alt-identifier",
-        "value": "daemon_config"
+        "value": "cis_docker#3"
        },
        {
         "name": "rego-package",
@@ -157,7 +157,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-daemon_config_stmt",
+        "id": "cis_docker-cis_docker-3_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -165,16 +165,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-docker_daemon",
+      "id": "cis_docker-cis_docker-4",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "docker_daemon"
+        "value": "cis_docker#4"
        },
        {
         "name": "alt-identifier",
-        "value": "docker_daemon"
+        "value": "cis_docker#4"
        },
        {
         "name": "rego-package",
@@ -190,7 +190,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-docker_daemon_stmt",
+        "id": "cis_docker-cis_docker-4_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -198,16 +198,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-docker_security",
+      "id": "cis_docker-cis_docker-5",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "docker_security"
+        "value": "cis_docker#5"
        },
        {
         "name": "alt-identifier",
-        "value": "docker_security"
+        "value": "cis_docker#5"
        },
        {
         "name": "rego-package",
@@ -223,7 +223,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-docker_security_stmt",
+        "id": "cis_docker-cis_docker-5_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -231,16 +231,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-host_config",
+      "id": "cis_docker-cis_docker-6",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "host_config"
+        "value": "cis_docker#6"
        },
        {
         "name": "alt-identifier",
-        "value": "host_config"
+        "value": "cis_docker#6"
        },
        {
         "name": "rego-package",
@@ -256,7 +256,7 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-host_config_stmt",
+        "id": "cis_docker-cis_docker-6_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
        }
@@ -264,16 +264,16 @@
       "class": "security"
      },
      {
-      "id": "cis_docker-swarm_config",
+      "id": "cis_docker-cis_docker-7",
       "title": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "swarm_config"
+        "value": "cis_docker#7"
        },
        {
         "name": "alt-identifier",
-        "value": "swarm_config"
+        "value": "cis_docker#7"
        },
        {
         "name": "rego-package",
@@ -289,9 +289,3870 @@
       ],
       "parts": [
        {
-        "id": "cis_docker-swarm_config_stmt",
+        "id": "cis_docker-cis_docker-7_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/docker/cis_docker_benchmark.rego (package cis_docker); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.1",
+      "title": "the Docker data root must be its own mount point",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.1_stmt",
+        "name": "statement",
+        "prose": "the Docker data root must be its own mount point"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.10",
+      "title": "an audit rule must cover the /etc/default/docker file",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.10_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the /etc/default/docker file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.11",
+      "title": "an audit rule must cover the daemon.json file",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.11_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the daemon.json file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.12",
+      "title": "an audit rule must cover the containerd config.toml file",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.12_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd config.toml file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.13",
+      "title": "an audit rule must cover the /etc/sysconfig/docker file",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.13_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the /etc/sysconfig/docker file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.14",
+      "title": "an audit rule must cover the containerd binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.14_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.15",
+      "title": "an audit rule must cover the containerd-shim binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.15_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd-shim binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.16",
+      "title": "an audit rule must cover the containerd-shim-runc-v1 binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.16_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd-shim-runc-v1 binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.17",
+      "title": "an audit rule must cover the containerd-shim-runc-v2 binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.17_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd-shim-runc-v2 binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.18",
+      "title": "an audit rule must cover the runc binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.18_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the runc binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.2",
+      "title": "every member of the docker group must be on the approved list",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.2_stmt",
+        "name": "statement",
+        "prose": "every member of the docker group must be on the approved list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.3",
+      "title": "an audit rule must cover the dockerd binary",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.3_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the dockerd binary"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.4",
+      "title": "an audit rule must cover the containerd runtime directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.4_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd runtime directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.5",
+      "title": "an audit rule must cover the Docker data root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.5_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the Docker data root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.6",
+      "title": "an audit rule must cover the Docker configuration directory",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.6_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the Docker configuration directory"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.7",
+      "title": "an audit rule must cover the docker.service unit file",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.7_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the docker.service unit file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.8",
+      "title": "an audit rule must cover the containerd socket",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.8_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the containerd socket"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.1.9",
+      "title": "an audit rule must cover the Docker socket",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.1.9_stmt",
+        "name": "statement",
+        "prose": "an audit rule must cover the Docker socket"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.2.1",
+      "title": "the container host must be hardened to its own OS baseline",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.2.1_stmt",
+        "name": "statement",
+        "prose": "the container host must be hardened to its own OS baseline"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-1.2.2",
+      "title": "the Docker engine version must be free of known critical and high vulnerabilities",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-1.2.2_stmt",
+        "name": "statement",
+        "prose": "the Docker engine version must be free of known critical and high vulnerabilities"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.1",
+      "title": "the Docker daemon must run rootless unless a rootful daemon is attested as required",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.1_stmt",
+        "name": "statement",
+        "prose": "the Docker daemon must run rootless unless a rootful daemon is attested as required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.10",
+      "title": "user namespace remapping must be on",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.10_stmt",
+        "name": "statement",
+        "prose": "user namespace remapping must be on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.11",
+      "title": "the daemon must keep the default cgroup parent unless another is attested as reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.11_stmt",
+        "name": "statement",
+        "prose": "the daemon must keep the default cgroup parent unless another is attested as reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.12",
+      "title": "the devicemapper base device size must not be overridden",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.12_stmt",
+        "name": "statement",
+        "prose": "the devicemapper base device size must not be overridden"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.13",
+      "title": "an authorization plugin must be configured for client commands",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.13_stmt",
+        "name": "statement",
+        "prose": "an authorization plugin must be configured for client commands"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.14",
+      "title": "the daemon must use a remote logging driver or central log shipping must be attested",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.14_stmt",
+        "name": "statement",
+        "prose": "the daemon must use a remote logging driver or central log shipping must be attested"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.15",
+      "title": "the daemon must set no-new-privileges for containers",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.15_stmt",
+        "name": "statement",
+        "prose": "the daemon must set no-new-privileges for containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.16",
+      "title": "live restore must be on",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.16_stmt",
+        "name": "statement",
+        "prose": "live restore must be on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.17",
+      "title": "the userland proxy must be off",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.17_stmt",
+        "name": "statement",
+        "prose": "the userland proxy must be off"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.18",
+      "title": "seccomp must be on with a custom daemon profile or the built-in profile attested as sufficient",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.18_stmt",
+        "name": "statement",
+        "prose": "seccomp must be on with a custom daemon profile or the built-in profile attested as sufficient"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.19",
+      "title": "the engine must not run with experimental features",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.19_stmt",
+        "name": "statement",
+        "prose": "the engine must not run with experimental features"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.2",
+      "title": "inter-container traffic on the default bridge network must be off",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.2_stmt",
+        "name": "statement",
+        "prose": "inter-container traffic on the default bridge network must be off"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.3",
+      "title": "the daemon log level must be info",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.3_stmt",
+        "name": "statement",
+        "prose": "the daemon log level must be info"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.4",
+      "title": "the daemon must keep managing iptables rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.4_stmt",
+        "name": "statement",
+        "prose": "the daemon must keep managing iptables rules"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.5",
+      "title": "insecure registries must not be configured beyond loopback",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.5_stmt",
+        "name": "statement",
+        "prose": "insecure registries must not be configured beyond loopback"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.6",
+      "title": "the storage driver must not be aufs",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.6_stmt",
+        "name": "statement",
+        "prose": "the storage driver must not be aufs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.7",
+      "title": "the storage driver must not be devicemapper",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.7_stmt",
+        "name": "statement",
+        "prose": "the storage driver must not be devicemapper"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.8",
+      "title": "a daemon listening on TCP must verify client certificates (tlsverify, CA, cert, key)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.8_stmt",
+        "name": "statement",
+        "prose": "a daemon listening on TCP must verify client certificates (tlsverify, CA, cert, key)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-2.9",
+      "title": "default ulimits must be set on the daemon or the defaults attested as suitable",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-2.9_stmt",
+        "name": "statement",
+        "prose": "default ulimits must be set on the daemon or the defaults attested as suitable"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.1",
+      "title": "the docker.service unit file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.1_stmt",
+        "name": "statement",
+        "prose": "the docker.service unit file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.10",
+      "title": "the daemon TLS CA certificate must have mode 444 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.10_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS CA certificate must have mode 444 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.11",
+      "title": "the daemon TLS server certificate must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.11_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS server certificate must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.12",
+      "title": "the daemon TLS server certificate must have mode 444 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.12_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS server certificate must have mode 444 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.13",
+      "title": "the daemon TLS server key must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.13_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS server key must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.14",
+      "title": "the daemon TLS server key must have mode 400 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.14_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS server key must have mode 400 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.15",
+      "title": "the Docker socket must be owned by root:docker",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.15_stmt",
+        "name": "statement",
+        "prose": "the Docker socket must be owned by root:docker"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.16",
+      "title": "the Docker socket must have mode 660 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.16_stmt",
+        "name": "statement",
+        "prose": "the Docker socket must have mode 660 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.17",
+      "title": "the daemon.json file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.17_stmt",
+        "name": "statement",
+        "prose": "the daemon.json file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.18",
+      "title": "the daemon.json file must have mode 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.18_stmt",
+        "name": "statement",
+        "prose": "the daemon.json file must have mode 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.19",
+      "title": "the /etc/default/docker file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.19_stmt",
+        "name": "statement",
+        "prose": "the /etc/default/docker file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.2",
+      "title": "the docker.service unit file must have mode 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.2_stmt",
+        "name": "statement",
+        "prose": "the docker.service unit file must have mode 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.20",
+      "title": "the /etc/default/docker file must have mode 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.20_stmt",
+        "name": "statement",
+        "prose": "the /etc/default/docker file must have mode 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.21",
+      "title": "the /etc/sysconfig/docker file must have mode 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.21_stmt",
+        "name": "statement",
+        "prose": "the /etc/sysconfig/docker file must have mode 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.22",
+      "title": "the /etc/sysconfig/docker file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.22_stmt",
+        "name": "statement",
+        "prose": "the /etc/sysconfig/docker file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.23",
+      "title": "the containerd socket must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.23_stmt",
+        "name": "statement",
+        "prose": "the containerd socket must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.24",
+      "title": "the containerd socket must have mode 660 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.24_stmt",
+        "name": "statement",
+        "prose": "the containerd socket must have mode 660 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.3",
+      "title": "the docker.socket unit file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.3_stmt",
+        "name": "statement",
+        "prose": "the docker.socket unit file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.4",
+      "title": "the docker.socket unit file must have mode 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.4_stmt",
+        "name": "statement",
+        "prose": "the docker.socket unit file must have mode 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.5",
+      "title": "the /etc/docker directory must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.5_stmt",
+        "name": "statement",
+        "prose": "the /etc/docker directory must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.6",
+      "title": "the /etc/docker directory must have mode 755 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.6_stmt",
+        "name": "statement",
+        "prose": "the /etc/docker directory must have mode 755 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.7",
+      "title": "registry certificate files must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.7_stmt",
+        "name": "statement",
+        "prose": "registry certificate files must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.8",
+      "title": "registry certificate files must have mode 444 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.8_stmt",
+        "name": "statement",
+        "prose": "registry certificate files must have mode 444 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-3.9",
+      "title": "the daemon TLS CA certificate must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-3.9_stmt",
+        "name": "statement",
+        "prose": "the daemon TLS CA certificate must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.1",
+      "title": "the main process of a running container must not run as uid 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.1_stmt",
+        "name": "statement",
+        "prose": "the main process of a running container must not run as uid 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.10",
+      "title": "packages installed into images must be authenticity-checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.10_stmt",
+        "name": "statement",
+        "prose": "packages installed into images must be authenticity-checked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.11",
+      "title": "signatures of signed artifacts must be verified before use",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.11_stmt",
+        "name": "statement",
+        "prose": "signatures of signed artifacts must be verified before use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.2",
+      "title": "base images must come from sources the organisation trusts",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.2_stmt",
+        "name": "statement",
+        "prose": "base images must come from sources the organisation trusts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.3",
+      "title": "images must carry only the packages the workload needs",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.3_stmt",
+        "name": "statement",
+        "prose": "images must carry only the packages the workload needs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.4",
+      "title": "images must be vulnerability-scanned and rebuilt with security patches",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.4_stmt",
+        "name": "statement",
+        "prose": "images must be vulnerability-scanned and rebuilt with security patches"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.5",
+      "title": "every image must define a health check",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.5_stmt",
+        "name": "statement",
+        "prose": "every image must define a health check"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.6",
+      "title": "an image build step must not refresh the package index without installing in the same step",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.6_stmt",
+        "name": "statement",
+        "prose": "an image build step must not refresh the package index without installing in the same step"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.7",
+      "title": "images must hold no setuid or setgid files unless the list is attested as reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.7_stmt",
+        "name": "statement",
+        "prose": "images must hold no setuid or setgid files unless the list is attested as reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.8",
+      "title": "image build steps must not use ADD (the base root filesystem layer aside)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.8_stmt",
+        "name": "statement",
+        "prose": "image build steps must not use ADD (the base root filesystem layer aside)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-4.9",
+      "title": "image build steps must not embed secrets",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-4.9_stmt",
+        "name": "statement",
+        "prose": "image build steps must not embed secrets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.1",
+      "title": "swarm mode must be inactive unless it is attested as required",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.1_stmt",
+        "name": "statement",
+        "prose": "swarm mode must be inactive unless it is attested as required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.10",
+      "title": "containers must not share the host's network namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.10_stmt",
+        "name": "statement",
+        "prose": "containers must not share the host's network namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.11",
+      "title": "every container must have a memory limit",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.11_stmt",
+        "name": "statement",
+        "prose": "every container must have a memory limit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.12",
+      "title": "every container must have CPU shares set away from the default",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.12_stmt",
+        "name": "statement",
+        "prose": "every container must have CPU shares set away from the default"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.13",
+      "title": "the root filesystem of every container must be read-only",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.13_stmt",
+        "name": "statement",
+        "prose": "the root filesystem of every container must be read-only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.14",
+      "title": "published container ports must bind a specific host address, not the wildcard",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.14_stmt",
+        "name": "statement",
+        "prose": "published container ports must bind a specific host address, not the wildcard"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.15",
+      "title": "a container restart policy must be off or on-failure with at most 5 retries",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.15_stmt",
+        "name": "statement",
+        "prose": "a container restart policy must be off or on-failure with at most 5 retries"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.16",
+      "title": "containers must not share the host's process namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.16_stmt",
+        "name": "statement",
+        "prose": "containers must not share the host's process namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.17",
+      "title": "containers must not share the host's IPC namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.17_stmt",
+        "name": "statement",
+        "prose": "containers must not share the host's IPC namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.18",
+      "title": "containers must not be given host devices outside the allowed list",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.18_stmt",
+        "name": "statement",
+        "prose": "containers must not be given host devices outside the allowed list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.19",
+      "title": "containers must not override ulimits unless the overrides are attested as reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.19_stmt",
+        "name": "statement",
+        "prose": "containers must not override ulimits unless the overrides are attested as reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.2",
+      "title": "every container must run under an AppArmor profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.2_stmt",
+        "name": "statement",
+        "prose": "every container must run under an AppArmor profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.20",
+      "title": "container mounts must not use shared propagation",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.20_stmt",
+        "name": "statement",
+        "prose": "container mounts must not use shared propagation"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.21",
+      "title": "containers must not share the host's UTS namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.21_stmt",
+        "name": "statement",
+        "prose": "containers must not share the host's UTS namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.22",
+      "title": "containers must not run with seccomp unconfined",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.22_stmt",
+        "name": "statement",
+        "prose": "containers must not run with seccomp unconfined"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.23",
+      "title": "the audit trail must hold no docker exec run with the privileged option",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.23_stmt",
+        "name": "statement",
+        "prose": "the audit trail must hold no docker exec run with the privileged option"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.24",
+      "title": "the audit trail must hold no docker exec run as root",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.24_stmt",
+        "name": "statement",
+        "prose": "the audit trail must hold no docker exec run as root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.25",
+      "title": "containers must run under the default cgroup parent",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.25_stmt",
+        "name": "statement",
+        "prose": "containers must run under the default cgroup parent"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.26",
+      "title": "every container must run with no-new-privileges (its own option or the daemon default)",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.26_stmt",
+        "name": "statement",
+        "prose": "every container must run with no-new-privileges (its own option or the daemon default)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.27",
+      "title": "every running container must report a health status",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.27_stmt",
+        "name": "statement",
+        "prose": "every running container must report a health status"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.28",
+      "title": "images must be pulled fresh before use, not taken from a stale local cache",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.28_stmt",
+        "name": "statement",
+        "prose": "images must be pulled fresh before use, not taken from a stale local cache"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.29",
+      "title": "every running container must have a PIDs limit",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.29_stmt",
+        "name": "statement",
+        "prose": "every running container must have a PIDs limit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.3",
+      "title": "every container must run with SELinux labels",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.3_stmt",
+        "name": "statement",
+        "prose": "every container must run with SELinux labels"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.30",
+      "title": "containers must not attach to a network on the docker0 bridge",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.30_stmt",
+        "name": "statement",
+        "prose": "containers must not attach to a network on the docker0 bridge"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.31",
+      "title": "containers must not share the host's user namespace",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.31_stmt",
+        "name": "statement",
+        "prose": "containers must not share the host's user namespace"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.32",
+      "title": "containers must not mount the Docker socket",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.32_stmt",
+        "name": "statement",
+        "prose": "containers must not mount the Docker socket"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.4",
+      "title": "containers must drop NET_RAW and add only capabilities on the allowed list",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.4_stmt",
+        "name": "statement",
+        "prose": "containers must drop NET_RAW and add only capabilities on the allowed list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.5",
+      "title": "containers must not run privileged",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.5_stmt",
+        "name": "statement",
+        "prose": "containers must not run privileged"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.6",
+      "title": "containers must not mount sensitive host system directories read-write",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.6_stmt",
+        "name": "statement",
+        "prose": "containers must not mount sensitive host system directories read-write"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.7",
+      "title": "running containers must not run an SSH server",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.7_stmt",
+        "name": "statement",
+        "prose": "running containers must not run an SSH server"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.8",
+      "title": "containers must not publish host ports below 1024 outside the allowed list",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.8_stmt",
+        "name": "statement",
+        "prose": "containers must not publish host ports below 1024 outside the allowed list"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-5.9",
+      "title": "containers must publish only the ports the workload needs",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-5.9_stmt",
+        "name": "statement",
+        "prose": "containers must publish only the ports the workload needs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-6.1",
+      "title": "the host must hold no unused images unless they are attested as reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-6.1_stmt",
+        "name": "statement",
+        "prose": "the host must hold no unused images unless they are attested as reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-6.2",
+      "title": "the host must hold no stopped containers unless they are attested as reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-6.2_stmt",
+        "name": "statement",
+        "prose": "the host must hold no stopped containers unless they are attested as reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.1",
+      "title": "the number of swarm managers must be the minimum the cluster needs",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.1_stmt",
+        "name": "statement",
+        "prose": "the number of swarm managers must be the minimum the cluster needs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.2",
+      "title": "swarm ports 2377 and 7946 must listen on a specific address, not the wildcard",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.2_stmt",
+        "name": "statement",
+        "prose": "swarm ports 2377 and 7946 must listen on a specific address, not the wildcard"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.3",
+      "title": "every overlay network must be encrypted",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.3_stmt",
+        "name": "statement",
+        "prose": "every overlay network must be encrypted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.4",
+      "title": "swarm services must take their secrets from Docker secrets",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.4_stmt",
+        "name": "statement",
+        "prose": "swarm services must take their secrets from Docker secrets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.5",
+      "title": "swarm manager auto-lock must be on",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.5_stmt",
+        "name": "statement",
+        "prose": "swarm manager auto-lock must be on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.6",
+      "title": "the swarm unlock key must be rotated on the organisation's schedule",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.6_stmt",
+        "name": "statement",
+        "prose": "the swarm unlock key must be rotated on the organisation's schedule"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.7",
+      "title": "the swarm node certificate lifetime must be within the allowed maximum (90 days unless set)",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.7_stmt",
+        "name": "statement",
+        "prose": "the swarm node certificate lifetime must be within the allowed maximum (90 days unless set)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.8",
+      "title": "the swarm root CA certificate must be rotated on the organisation's schedule",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.8_stmt",
+        "name": "statement",
+        "prose": "the swarm root CA certificate must be rotated on the organisation's schedule"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_docker-7.9",
+      "title": "the swarm data path address must differ from the management address",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_docker"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5392aa88-21c0-5192-8cec-51f5759eeb14",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_docker-7.9_stmt",
+        "name": "statement",
+        "prose": "the swarm data path address must differ from the management address"
        }
       ],
       "class": "security"
@@ -303,7 +4164,7 @@
    "resources": [
     {
      "uuid": "5392aa88-21c0-5192-8cec-51f5759eeb14",
-     "title": "CIS Docker Benchmark v1.8.0",
+     "title": "CIS Docker Benchmark v1.9.0",
      "props": [
       {
        "name": "rego-package",

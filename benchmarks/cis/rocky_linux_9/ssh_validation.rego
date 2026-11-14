@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 23
-#     cited: 23
+#     checks: 47
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.ssh
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Section 5.1: SSH Server.

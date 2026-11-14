@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 19
-#     cited: 19
+#     checks: 39
+#     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.boot_security
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Sections 1.4, 1.5, 6.3: Bootloader, Process Hardening, Integrity Checking (AIDE).

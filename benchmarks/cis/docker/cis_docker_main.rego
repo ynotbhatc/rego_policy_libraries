@@ -10,10 +10,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: true
+#     tested: false
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_docker.main
 
 # OPA query path: /v1/data/cis_docker/main/compliance_report (the framework key cis_docker).

@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 350
+#     found: 355
+#     scope: directory
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.main
 
 # Bridge: expose cis_debian_13 under the /v1/data/<framework>/main/compliance_report convention, with the

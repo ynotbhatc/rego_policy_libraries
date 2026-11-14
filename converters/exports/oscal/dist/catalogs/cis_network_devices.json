@@ -87,6 +87,10 @@
        {
         "href": "#40b4034a-cc55-5640-832b-442748bc15a5",
         "rel": "implementation"
+       },
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -94,6 +98,11 @@
         "id": "cis_network_devices-1.1.1.1_stmt",
         "name": "statement",
         "prose": "checked condition — the Management VRF Exists"
+       },
+       {
+        "id": "cis_network_devices-1.1.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "system, config, User-ID, HIP-match and IP-tag logs must all forward to a valid syslog server profile"
        }
       ],
       "class": "security"
@@ -122,6 +131,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#60718953-5cc3-5074-bb64-bdb34f5df800",
         "rel": "implementation"
        }
@@ -134,6 +147,11 @@
        },
        {
         "id": "cis_network_devices-1.1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "a login banner must be configured"
+       },
+       {
+        "id": "cis_network_devices-1.1.2_obj.2",
         "name": "assessment-objective",
         "prose": "SSH v1 explicitly enabled — disable immediately"
        }
@@ -164,6 +182,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#60718953-5cc3-5074-bb64-bdb34f5df800",
         "rel": "implementation"
        }
@@ -176,6 +198,11 @@
        },
        {
         "id": "cis_network_devices-1.1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "logging under high dataplane load must be turned on"
+       },
+       {
+        "id": "cis_network_devices-1.1.3_obj.2",
         "name": "assessment-objective",
         "prose": "SSH password authentication enabled — require key-based auth"
        }
@@ -1148,6 +1175,10 @@
        {
         "href": "#40b4034a-cc55-5640-832b-442748bc15a5",
         "rel": "implementation"
+       },
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -1155,6 +1186,11 @@
         "id": "cis_network_devices-2.8_stmt",
         "name": "statement",
         "prose": "Telnet access"
+       },
+       {
+        "id": "cis_network_devices-2.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "a rule must block msrpc from the User-ID agent toward every untrusted zone"
        }
       ],
       "class": "security"
@@ -3961,6 +3997,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -3978,6 +4018,11 @@
        },
        {
         "id": "cis_network_devices-3.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "HA must be on with an HA2 data link and session synchronization"
+       },
+       {
+        "id": "cis_network_devices-3.1_obj.3",
         "name": "assessment-objective",
         "prose": "required value of 'Local Account status' is 'Disabled'"
        }
@@ -4012,6 +4057,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -4040,10 +4089,15 @@
        {
         "id": "cis_network_devices-3.2_obj.4",
         "name": "assessment-objective",
-        "prose": "required value of Login Protection Threshold is 30 or less"
+        "prose": "HA must fail over on link or path monitoring (failure condition any)"
        },
        {
         "id": "cis_network_devices-3.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "required value of Login Protection Threshold is 30 or less"
+       },
+       {
+        "id": "cis_network_devices-3.2_obj.6",
         "name": "assessment-objective",
         "prose": "login protection threshold is above 30 or not a positive number"
        }
@@ -4078,6 +4132,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -4096,10 +4154,15 @@
        {
         "id": "cis_network_devices-3.3_obj.2",
         "name": "assessment-objective",
-        "prose": "required value of Allow access again after time is 300 or more second"
+        "prose": "HA passive link state must be auto and preemption must be off"
        },
        {
         "id": "cis_network_devices-3.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "required value of Allow access again after time is 300 or more second"
+       },
+       {
+        "id": "cis_network_devices-3.3_obj.4",
         "name": "assessment-objective",
         "prose": "login protection block time is unset (120 s default) or under 300 seconds"
        }
@@ -5210,10 +5273,6 @@
        {
         "href": "#2b0064c4-5ec4-5766-a14f-30fd48dcfd8b",
         "rel": "implementation"
-       },
-       {
-        "href": "#2c367878-6877-5460-930a-bf509523fa97",
-        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5221,11 +5280,6 @@
         "id": "cis_network_devices-logging_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
-       },
-       {
-        "id": "cis_network_devices-logging_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
       ],
       "class": "security"
@@ -5318,6 +5372,10 @@
        {
         "href": "#2b0064c4-5ec4-5766-a14f-30fd48dcfd8b",
         "rel": "implementation"
+       },
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -5325,6 +5383,11 @@
         "id": "cis_network_devices-security_profiles_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/fortinet/cis_fortinet_fortigate.rego (package cis_fortinet_fortigate); see the rule body."
+       },
+       {
+        "id": "cis_network_devices-security_profiles_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
       ],
       "class": "security"
@@ -5958,6 +6021,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -5981,10 +6048,15 @@
        {
         "id": "cis_network_devices-2.1_obj.3",
         "name": "assessment-objective",
-        "prose": "required value of Sessions Timeout is less than or equal to 10 Minutes"
+        "prose": "traffic from trusted zones must carry a mapped user name"
        },
        {
         "id": "cis_network_devices-2.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "required value of Sessions Timeout is less than or equal to 10 Minutes"
+       },
+       {
+        "id": "cis_network_devices-2.1_obj.5",
         "name": "assessment-objective",
         "prose": "webConfigurator session timeout is blank (240 min default), 0 (never) or over 10 minutes"
        }
@@ -6015,6 +6087,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -6033,10 +6109,15 @@
        {
         "id": "cis_network_devices-2.2_obj.2",
         "name": "assessment-objective",
-        "prose": "checked condition — LDAP or RADIUS server configured"
+        "prose": "User-ID client (WMI) probing must be off"
        },
        {
         "id": "cis_network_devices-2.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "checked condition — LDAP or RADIUS server configured"
+       },
+       {
+        "id": "cis_network_devices-2.2_obj.4",
         "name": "assessment-objective",
         "prose": "no LDAP or RADIUS authentication server configured"
        }
@@ -6067,6 +6148,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -6085,10 +6170,15 @@
        {
         "id": "cis_network_devices-2.3_obj.2",
         "name": "assessment-objective",
-        "prose": "Console Menu must be Password Protected"
+        "prose": "User-ID must be on only for trusted internal zones"
        },
        {
         "id": "cis_network_devices-2.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "Console Menu must be Password Protected"
+       },
+       {
+        "id": "cis_network_devices-2.3_obj.4",
         "name": "assessment-objective",
         "prose": "console menu is not password protected"
        }
@@ -6119,6 +6209,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -6131,6 +6225,11 @@
        },
        {
         "id": "cis_network_devices-2.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "with User-ID on, the user mapping must name its trusted networks as include entries"
+       },
+       {
+        "id": "cis_network_devices-2.4_obj.2",
         "name": "assessment-objective",
         "prose": "all default accounts must be either disabled or utilize strong passwords"
        }
@@ -6544,6 +6643,10 @@
         "rel": "implementation"
        },
        {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       },
+       {
         "href": "#3cdaa391-b4cd-5f20-9fc3-648631193e28",
         "rel": "implementation"
        }
@@ -6562,15 +6665,20 @@
        {
         "id": "cis_network_devices-6.1_obj.2",
         "name": "assessment-objective",
-        "prose": "syslog must be explicitly configured"
+        "prose": "antivirus decoders must reset both ends for signature and WildFire actions (imap and pop3 may alert)"
        },
        {
         "id": "cis_network_devices-6.1_obj.3",
         "name": "assessment-objective",
-        "prose": "evidence missing — input.syslog / input.syslogd not collected"
+        "prose": "syslog must be explicitly configured"
        },
        {
         "id": "cis_network_devices-6.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — input.syslog / input.syslogd not collected"
+       },
+       {
+        "id": "cis_network_devices-6.1_obj.5",
         "name": "assessment-objective",
         "prose": "remote syslog is not enabled or has no remote server"
        }
@@ -6599,6 +6707,10 @@
        {
         "href": "#1576909f-0fd1-513f-957b-16fbeab89519",
         "rel": "implementation"
+       },
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -6611,6 +6723,11 @@
         "id": "cis_network_devices-6.2_obj.1",
         "name": "assessment-objective",
         "prose": "management-plane deny rule %s does not log matched packets"
+       },
+       {
+        "id": "cis_network_devices-6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "every allow rule must carry an antivirus profile"
        }
       ],
       "class": "security"
@@ -6637,6 +6754,10 @@
        {
         "href": "#1576909f-0fd1-513f-957b-16fbeab89519",
         "rel": "implementation"
+       },
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
        }
       ],
       "parts": [
@@ -6654,6 +6775,11 @@
         "id": "cis_network_devices-6.3_obj.2",
         "name": "assessment-objective",
         "prose": "no enabled remote syslog destination configured"
+       },
+       {
+        "id": "cis_network_devices-6.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "an anti-spyware profile must reset critical, high and medium threats of any category"
        }
       ],
       "class": "security"
@@ -6930,7 +7056,7 @@
    {
     "id": "cis_network_devices-cis_palo_alto_panos",
     "class": "rego-module",
-    "title": "CIS Palo Alto PAN-OS Benchmark v1.2.0",
+    "title": "CIS Palo Alto Firewall 11 Benchmark v1.2.1",
     "props": [
      {
       "name": "rego-package",
@@ -6950,16 +7076,16 @@
     ],
     "controls": [
      {
-      "id": "cis_network_devices-admin_access",
-      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "id": "cis_network_devices-1.1.1.2",
+      "title": "system, config, User-ID, HIP-match and IP-tag logs must all send traps to an SNMP v3 trap profile",
       "props": [
        {
         "name": "label",
-        "value": "admin_access"
+        "value": "1.1.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "admin_access"
+        "value": "1.1.1.2"
        },
        {
         "name": "rego-package",
@@ -6975,7 +7101,2152 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-admin_access_stmt",
+        "id": "cis_network_devices-1.1.1.2_stmt",
+        "name": "statement",
+        "prose": "system, config, User-ID, HIP-match and IP-tag logs must all send traps to an SNMP v3 trap profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2.1",
+      "title": "management interface permitted IPs must be limited to the management hosts",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2.1_stmt",
+        "name": "statement",
+        "prose": "management interface permitted IPs must be limited to the management hosts"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2.2",
+      "title": "interface management profiles offering SSH, HTTPS or SNMP must restrict permitted IPs",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2.2_stmt",
+        "name": "statement",
+        "prose": "interface management profiles offering SSH, HTTPS or SNMP must restrict permitted IPs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2.3",
+      "title": "the management interface must not offer HTTP or Telnet",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2.3_stmt",
+        "name": "statement",
+        "prose": "the management interface must not offer HTTP or Telnet"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2.4",
+      "title": "interface management profiles must not offer HTTP or Telnet",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2.4_stmt",
+        "name": "statement",
+        "prose": "interface management profiles must not offer HTTP or Telnet"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.2.5",
+      "title": "the web admin interface certificate must be valid and trusted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.2.5_stmt",
+        "name": "statement",
+        "prose": "the web admin interface certificate must be valid and trusted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.1",
+      "title": "admin password complexity must be enforced with username inclusion blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.1_stmt",
+        "name": "statement",
+        "prose": "admin password complexity must be enforced with username inclusion blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.10",
+      "title": "password profiles must not be weaker than the global rules (expiry 1 to 90 days)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.10_stmt",
+        "name": "statement",
+        "prose": "password profiles must not be weaker than the global rules (expiry 1 to 90 days)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.2",
+      "title": "admin passwords must be at least 12 characters long",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.2_stmt",
+        "name": "statement",
+        "prose": "admin passwords must be at least 12 characters long"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.3",
+      "title": "admin passwords must contain at least 1 upper-case letter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.3_stmt",
+        "name": "statement",
+        "prose": "admin passwords must contain at least 1 upper-case letter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.4",
+      "title": "admin passwords must contain at least 1 lower-case letter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.4_stmt",
+        "name": "statement",
+        "prose": "admin passwords must contain at least 1 lower-case letter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.5",
+      "title": "admin passwords must contain at least 1 digit",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.5_stmt",
+        "name": "statement",
+        "prose": "admin passwords must contain at least 1 digit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.6",
+      "title": "admin passwords must contain at least 1 special character",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.6_stmt",
+        "name": "statement",
+        "prose": "admin passwords must contain at least 1 special character"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.7",
+      "title": "admin passwords must expire within 1 to 90 days",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.7_stmt",
+        "name": "statement",
+        "prose": "admin passwords must expire within 1 to 90 days"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.8",
+      "title": "a new admin password must differ from the old one by at least 3 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.8_stmt",
+        "name": "statement",
+        "prose": "a new admin password must differ from the old one by at least 3 characters"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.3.9",
+      "title": "admin passwords must not repeat any of the last 24",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.3.9_stmt",
+        "name": "statement",
+        "prose": "admin passwords must not repeat any of the last 24"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.4.1",
+      "title": "management idle timeout must be 1 to 10 minutes",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.4.1_stmt",
+        "name": "statement",
+        "prose": "management idle timeout must be 1 to 10 minutes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.4.2",
+      "title": "authentication profiles must lock out after failed attempts for a non-zero time",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.4.2_stmt",
+        "name": "statement",
+        "prose": "authentication profiles must lock out after failed attempts for a non-zero time"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.5.1",
+      "title": "SNMP polling must use version 3",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.5.1_stmt",
+        "name": "statement",
+        "prose": "SNMP polling must use version 3"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.6.1",
+      "title": "the update server identity must be verified",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.6.1_stmt",
+        "name": "statement",
+        "prose": "the update server identity must be verified"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.6.2",
+      "title": "two distinct NTP servers must be configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.6.2_stmt",
+        "name": "statement",
+        "prose": "two distinct NTP servers must be configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.6.3",
+      "title": "the remote access VPN certificate and its TLS minimum must be valid",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.6.3_stmt",
+        "name": "statement",
+        "prose": "the remote access VPN certificate and its TLS minimum must be valid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-1.7.1",
+      "title": "IKEv2 VPN gateways must use a post-quantum pre-shared key",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-1.7.1_stmt",
+        "name": "statement",
+        "prose": "IKEv2 VPN gateways must use a post-quantum pre-shared key"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.5",
+      "title": "the User-ID agent account must hold only the minimal group memberships",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.5_stmt",
+        "name": "statement",
+        "prose": "the User-ID agent account must hold only the minimal group memberships"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.6",
+      "title": "the User-ID service account must be denied interactive logon",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.6_stmt",
+        "name": "statement",
+        "prose": "the User-ID service account must be denied interactive logon"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-2.7",
+      "title": "the User-ID service account must have no remote access rights",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-2.7_stmt",
+        "name": "statement",
+        "prose": "the User-ID service account must have no remote access rights"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.1",
+      "title": "antivirus content must download and install hourly",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.1_stmt",
+        "name": "statement",
+        "prose": "antivirus content must download and install hourly"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-4.2",
+      "title": "application and threat content must download and install at least daily",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-4.2_stmt",
+        "name": "statement",
+        "prose": "application and threat content must download and install at least daily"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.1",
+      "title": "WildFire upload size limits must be at or above the defaults",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.1_stmt",
+        "name": "statement",
+        "prose": "WildFire upload size limits must be at or above the defaults"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.2",
+      "title": "every allow rule must carry a WildFire analysis profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.2_stmt",
+        "name": "statement",
+        "prose": "every allow rule must carry a WildFire analysis profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.3",
+      "title": "decrypted content must be forwarded to WildFire",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.3_stmt",
+        "name": "statement",
+        "prose": "decrypted content must be forwarded to WildFire"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.4",
+      "title": "WildFire session information must include every field",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.4_stmt",
+        "name": "statement",
+        "prose": "WildFire session information must include every field"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.5",
+      "title": "WildFire logs must be forwarded to an alerting destination",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.5_stmt",
+        "name": "statement",
+        "prose": "WildFire logs must be forwarded to an alerting destination"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.6",
+      "title": "WildFire content must update in real time",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.6_stmt",
+        "name": "statement",
+        "prose": "WildFire content must update in real time"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.7",
+      "title": "the WildFire public cloud region must be the approved one",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.7_stmt",
+        "name": "statement",
+        "prose": "the WildFire public cloud region must be the approved one"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-5.8",
+      "title": "WildFire profiles must block PE files through inline cloud analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-5.8_stmt",
+        "name": "statement",
+        "prose": "WildFire profiles must block PE files through inline cloud analysis"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.10",
+      "title": "URL filtering profiles must log (alert) every category they let through",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.10_stmt",
+        "name": "statement",
+        "prose": "URL filtering profiles must log (alert) every category they let through"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.11",
+      "title": "URL filtering profiles must log User-Agent, Referer and X-Forwarded-For on every page",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.11_stmt",
+        "name": "statement",
+        "prose": "URL filtering profiles must log User-Agent, Referer and X-Forwarded-For on every page"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.12",
+      "title": "every allow rule toward the Internet must carry a URL filtering profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.12_stmt",
+        "name": "statement",
+        "prose": "every allow rule toward the Internet must carry a URL filtering profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.13",
+      "title": "a data filtering profile must alert on sensitive data patterns above a threshold",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.13_stmt",
+        "name": "statement",
+        "prose": "a data filtering profile must alert on sensitive data patterns above a threshold"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.14",
+      "title": "every allow rule to or from the Internet must carry a data filtering profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.14_stmt",
+        "name": "statement",
+        "prose": "every allow rule to or from the Internet must carry a data filtering profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.15",
+      "title": "untrusted zones must have a zone protection profile answering SYN floods with SYN cookies",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.15_stmt",
+        "name": "statement",
+        "prose": "untrusted zones must have a zone protection profile answering SYN floods with SYN cookies"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.16",
+      "title": "untrusted zones must have zone protection flood limits on for every flood type",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.16_stmt",
+        "name": "statement",
+        "prose": "untrusted zones must have zone protection flood limits on for every flood type"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.17",
+      "title": "every zone must have zone protection with TCP and UDP port scan and host sweep detection on",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.17_stmt",
+        "name": "statement",
+        "prose": "every zone must have zone protection with TCP and UDP port scan and host sweep detection on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.18",
+      "title": "every zone must have zone protection dropping spoofed, mismatched-overlap, source-routed and malformed packets",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.18_stmt",
+        "name": "statement",
+        "prose": "every zone must have zone protection dropping spoofed, mismatched-overlap, source-routed and malformed packets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.19",
+      "title": "URL filtering profiles must block or continue credential submission and keep credential detection on",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.19_stmt",
+        "name": "statement",
+        "prose": "URL filtering profiles must block or continue credential submission and keep credential detection on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.20",
+      "title": "the antivirus WildFire inline ML action must reset both ends (imap and pop3 may alert)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.20_stmt",
+        "name": "statement",
+        "prose": "the antivirus WildFire inline ML action must reset both ends (imap and pop3 may alert)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.21",
+      "title": "antivirus WildFire inline ML must be on for every file model",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.21_stmt",
+        "name": "statement",
+        "prose": "antivirus WildFire inline ML must be on for every file model"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.22",
+      "title": "with Advanced Threat Prevention, vulnerability profiles must run inline cloud analysis (models alert)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.22_stmt",
+        "name": "statement",
+        "prose": "with Advanced Threat Prevention, vulnerability profiles must run inline cloud analysis (models alert)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.23",
+      "title": "with an advanced license, URL filtering profiles must run local and cloud inline categorization",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.23_stmt",
+        "name": "statement",
+        "prose": "with an advanced license, URL filtering profiles must run local and cloud inline categorization"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.24",
+      "title": "with Advanced Threat Prevention, anti-spyware profiles must run inline cloud analysis (models reset both)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.24_stmt",
+        "name": "statement",
+        "prose": "with Advanced Threat Prevention, anti-spyware profiles must run inline cloud analysis (models reset both)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.25",
+      "title": "with DNS Security, anti-spyware profiles must sinkhole every DNS Security category (C2 with extended capture)",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.25_stmt",
+        "name": "statement",
+        "prose": "with DNS Security, anti-spyware profiles must sinkhole every DNS Security category (C2 with extended capture)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.4",
+      "title": "anti-spyware profiles in use must sinkhole the Palo Alto DNS list with IPv4 and IPv6 sinkhole addresses",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.4_stmt",
+        "name": "statement",
+        "prose": "anti-spyware profiles in use must sinkhole the Palo Alto DNS list with IPv4 and IPv6 sinkhole addresses"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.5",
+      "title": "every allow rule toward the Internet must carry an anti-spyware profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.5_stmt",
+        "name": "statement",
+        "prose": "every allow rule toward the Internet must carry an anti-spyware profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.6",
+      "title": "a vulnerability profile must block critical and high threats and keep at least the default action below",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.6_stmt",
+        "name": "statement",
+        "prose": "a vulnerability profile must block critical and high threats and keep at least the default action below"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.7",
+      "title": "every allow rule must carry a vulnerability protection profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.7_stmt",
+        "name": "statement",
+        "prose": "every allow rule must carry a vulnerability protection profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.8",
+      "title": "a PAN-DB URL filtering license must be active",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.8_stmt",
+        "name": "statement",
+        "prose": "a PAN-DB URL filtering license must be active"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-6.9",
+      "title": "URL filtering profiles must block or override every organisation-designated category",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-6.9_stmt",
+        "name": "statement",
+        "prose": "URL filtering profiles must block or override every organisation-designated category"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.1",
+      "title": "allow rules from an untrusted to a more trusted zone must name the application and the service",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.1_stmt",
+        "name": "statement",
+        "prose": "allow rules from an untrusted to a more trusted zone must name the application and the service"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.2",
+      "title": "allow rules must not use service any",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.2_stmt",
+        "name": "statement",
+        "prose": "allow rules must not use service any"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.3",
+      "title": "deny rules must block traffic to and from the Palo Alto malicious, high-risk, Tor-exit and bulletproof IP lists",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.3_stmt",
+        "name": "statement",
+        "prose": "deny rules must block traffic to and from the Palo Alto malicious, high-risk, Tor-exit and bulletproof IP lists"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-7.4",
+      "title": "the intrazone and interzone default rules must log at session end",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-7.4_stmt",
+        "name": "statement",
+        "prose": "the intrazone and interzone default rules must log at session end"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-8.1",
+      "title": "an SSL forward proxy decryption rule must cover traffic toward the Internet",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-8.1_stmt",
+        "name": "statement",
+        "prose": "an SSL forward proxy decryption rule must cover traffic toward the Internet"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-8.2",
+      "title": "inbound TLS to published servers must pass through SSL inbound inspection",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-8.2_stmt",
+        "name": "statement",
+        "prose": "inbound TLS to published servers must pass through SSL inbound inspection"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-8.3",
+      "title": "the decryption certificate must be trusted and valid",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-8.3_stmt",
+        "name": "statement",
+        "prose": "the decryption certificate must be trusted and valid"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-decryption",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "decryption"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "decryption"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-decryption_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -6983,16 +9254,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-authentication",
+      "id": "cis_network_devices-device_setup",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "authentication"
+        "value": "device_setup"
        },
        {
         "name": "alt-identifier",
-        "value": "authentication"
+        "value": "device_setup"
        },
        {
         "name": "rego-package",
@@ -7008,7 +9279,7 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-authentication_stmt",
+        "id": "cis_network_devices-device_setup_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -7016,16 +9287,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-device_management",
+      "id": "cis_network_devices-dynamic_updates",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "device_management"
+        "value": "dynamic_updates"
        },
        {
         "name": "alt-identifier",
-        "value": "device_management"
+        "value": "dynamic_updates"
        },
        {
         "name": "rego-package",
@@ -7041,7 +9312,7 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-device_management_stmt",
+        "id": "cis_network_devices-dynamic_updates_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -7049,16 +9320,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-management_interface",
+      "id": "cis_network_devices-high_availability",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "management_interface"
+        "value": "high_availability"
        },
        {
         "name": "alt-identifier",
-        "value": "management_interface"
+        "value": "high_availability"
        },
        {
         "name": "rego-package",
@@ -7074,7 +9345,7 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-management_interface_stmt",
+        "id": "cis_network_devices-high_availability_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -7082,16 +9353,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-network_security",
+      "id": "cis_network_devices-security_policies",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "network_security"
+        "value": "security_policies"
        },
        {
         "name": "alt-identifier",
-        "value": "network_security"
+        "value": "security_policies"
        },
        {
         "name": "rego-package",
@@ -7107,7 +9378,7 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-network_security_stmt",
+        "id": "cis_network_devices-security_policies_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -7115,16 +9386,16 @@
       "class": "security"
      },
      {
-      "id": "cis_network_devices-security_services",
+      "id": "cis_network_devices-user_identification",
       "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "security_services"
+        "value": "user_identification"
        },
        {
         "name": "alt-identifier",
-        "value": "security_services"
+        "value": "user_identification"
        },
        {
         "name": "rego-package",
@@ -7140,7 +9411,40 @@
       ],
       "parts": [
        {
-        "id": "cis_network_devices-security_services_stmt",
+        "id": "cis_network_devices-user_identification_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_network_devices-wildfire",
+      "title": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "wildfire"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "wildfire"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_palo_alto_panos"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2c367878-6877-5460-930a-bf509523fa97",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_network_devices-wildfire_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in benchmarks/cis/network_devices/palo_alto/cis_palo_alto_panos.rego (package cis_palo_alto_panos); see the rule body."
        }
@@ -7995,7 +10299,7 @@
     },
     {
      "uuid": "2c367878-6877-5460-930a-bf509523fa97",
-     "title": "CIS Palo Alto PAN-OS Benchmark v1.2.0",
+     "title": "CIS Palo Alto Firewall 11 Benchmark v1.2.1",
      "props": [
       {
        "name": "rego-package",

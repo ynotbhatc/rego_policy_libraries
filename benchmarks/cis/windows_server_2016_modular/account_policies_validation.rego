@@ -7,6 +7,15 @@
 #   framework: cis_windows_server_2016_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 9
+#     cited: 9
+#     density: section
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis_windows_server_2016.account_policies
 
 import data.cis_windows_server_2016.lib

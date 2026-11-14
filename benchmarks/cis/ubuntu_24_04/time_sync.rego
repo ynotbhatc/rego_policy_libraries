@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 6
+#     checks: 12
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_24_04.time_sync
 
 # CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1, Section 2.3: Time Synchronization.

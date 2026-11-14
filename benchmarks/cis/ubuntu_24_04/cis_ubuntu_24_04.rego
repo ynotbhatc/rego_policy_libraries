@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 332
-#     cited: 332
-#     density: orchestrator
+#     checks: 5
+#     cited: 5
+#     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: self
-#     as_of: v2.4.2
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_ubuntu_24_04
 
 # CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1: roll-up of the 21 section packages.

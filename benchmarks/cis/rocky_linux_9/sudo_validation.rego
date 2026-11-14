@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 25
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.sudo
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Section 5.2: Privilege Escalation.

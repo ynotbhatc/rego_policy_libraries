@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [cloud, azure]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 128
+#     cited: 128
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 
 package cis_azure
 

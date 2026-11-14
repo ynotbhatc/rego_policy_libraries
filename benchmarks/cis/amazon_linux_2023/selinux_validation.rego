@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 8
-#     cited: 8
+#     checks: 16
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.selinux
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 1.6: Mandatory Access Control (SELinux).

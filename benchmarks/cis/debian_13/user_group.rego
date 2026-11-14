@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 11
+#     checks: 22
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.user_group
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Section 7.2: Local User and Group Settings.

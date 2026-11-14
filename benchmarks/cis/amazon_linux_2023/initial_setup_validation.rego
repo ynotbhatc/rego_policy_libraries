@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 21
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.initial_setup
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Sections 1.2, 1.7-1.9: Software Updates, Banners, Patching, Crypto Policy.

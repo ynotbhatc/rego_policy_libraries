@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 10
+#     checks: 20
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_12.banners
 
 # CIS Debian Linux 12 Benchmark v2.0.1, Section 1.6: Command Line Warning Banners.

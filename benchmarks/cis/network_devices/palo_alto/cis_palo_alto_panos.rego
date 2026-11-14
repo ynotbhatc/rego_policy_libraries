@@ -6,14 +6,17 @@
 #   source: cis
 #   domains: [network, palo-alto]
 #   coverage:
-#     checks: 79
-#     cited: 79
-#     density: sized
-#     basis: size
+#     checks: 87
+#     cited: 87
+#     expected: 79
+#     found: 87
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_palo_alto_panos
 
 # CIS Palo Alto Firewall 11 Benchmark v1.2.1

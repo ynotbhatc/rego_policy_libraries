@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 9
-#     cited: 9
+#     checks: 19
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.cron
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 4.1: Job Schedulers.

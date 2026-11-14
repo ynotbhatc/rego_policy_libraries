@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 331
-#     cited: 331
-#     density: orchestrator
+#     checks: 5
+#     cited: 5
+#     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: self
-#     as_of: v2.4.2
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_debian_12
 
 # CIS Debian Linux 12 Benchmark v2.0.1: roll-up of the 21 section packages.

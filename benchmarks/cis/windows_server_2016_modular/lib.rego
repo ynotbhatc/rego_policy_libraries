@@ -17,6 +17,15 @@
 #   framework: cis_windows_server_2016_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: true
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_windows_server_2016.lib
 
 import rego.v1

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 26
-#     cited: 26
+#     checks: 48
+#     cited: 27
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.initial_setup
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Sections 1.2, 1.6-1.8: Package Management, Crypto Policy, Banners, GNOME Display Manager.

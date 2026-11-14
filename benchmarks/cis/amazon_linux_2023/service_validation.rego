@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 24
-#     cited: 24
+#     checks: 48
+#     cited: 25
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.services
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 2: Time Synchronization, Special Purpose Services, Service Clients.

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 7
+#     checks: 14
 #     cited: 7
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_24_04.sudo
 
 # CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1, Section 5.2: Privilege Escalation.

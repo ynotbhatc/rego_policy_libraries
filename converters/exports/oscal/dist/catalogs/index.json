@@ -1,8 +1,8 @@
 {
  "version": "2.5.0",
  "oscal-version": "1.2.3",
- "frameworks": 185,
- "controls": 19412,
+ "frameworks": 187,
+ "controls": 21210,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -98,8 +98,8 @@
   {
    "framework": "cis_amazon_linux_2023",
    "file": "catalogs/cis_amazon_linux_2023.json",
-   "controls": 202,
-   "modules": 16,
+   "controls": 246,
+   "modules": 3,
    "uuid": "f516b947-01e4-5404-9f53-61ef1959942f"
   },
   {
@@ -119,8 +119,8 @@
   {
    "framework": "cis_azure",
    "file": "catalogs/cis_azure.json",
-   "controls": 53,
-   "modules": 2,
+   "controls": 130,
+   "modules": 3,
    "uuid": "814132a9-6150-5237-bb70-55a947bd5a6d"
   },
   {
@@ -159,9 +159,23 @@
    "uuid": "20a9c08d-fec1-54a6-be36-4bff79e656e8"
   },
   {
+   "framework": "cis_debian_12",
+   "file": "catalogs/cis_debian_12.json",
+   "controls": 336,
+   "modules": 22,
+   "uuid": "fb8607c0-9e26-5596-ba22-ca23f4d8f37f"
+  },
+  {
+   "framework": "cis_debian_13",
+   "file": "catalogs/cis_debian_13.json",
+   "controls": 355,
+   "modules": 22,
+   "uuid": "6d2d4f4f-6c62-540b-8710-10f1f14b4156"
+  },
+  {
    "framework": "cis_docker",
    "file": "catalogs/cis_docker.json",
-   "controls": 7,
+   "controls": 124,
    "modules": 1,
    "uuid": "69ec6dfc-872b-560b-a79f-56f7b2855c73"
   },
@@ -196,8 +210,8 @@
   {
    "framework": "cis_kubernetes",
    "file": "catalogs/cis_kubernetes.json",
-   "controls": 48,
-   "modules": 2,
+   "controls": 144,
+   "modules": 1,
    "uuid": "df6b622d-fbe8-5248-b0a6-867d7ddc8107"
   },
   {
@@ -231,7 +245,7 @@
   {
    "framework": "cis_network_devices",
    "file": "catalogs/cis_network_devices.json",
-   "controls": 204,
+   "controls": 270,
    "modules": 8,
    "uuid": "275b0b3c-f7fd-5994-939d-854cb627b613"
   },
@@ -322,8 +336,8 @@
   {
    "framework": "cis_rocky_linux_9",
    "file": "catalogs/cis_rocky_linux_9.json",
-   "controls": 190,
-   "modules": 14,
+   "controls": 359,
+   "modules": 16,
    "uuid": "b8d31760-3b38-525a-8402-d74b29a80dbe"
   },
   {
@@ -364,8 +378,8 @@
   {
    "framework": "cis_ubuntu_24_04",
    "file": "catalogs/cis_ubuntu_24_04.json",
-   "controls": 214,
-   "modules": 16,
+   "controls": 337,
+   "modules": 22,
    "uuid": "304fb896-ffd3-5cf5-a8c1-d2d27b5add5c"
   },
   {
@@ -404,11 +418,11 @@
    "uuid": "ec1390ac-6672-503e-83cb-e5e979738ffb"
   },
   {
-   "framework": "cis_windows_server_2016",
-   "file": "catalogs/cis_windows_server_2016.json",
-   "controls": 8,
-   "modules": 1,
-   "uuid": "47f86989-e87c-58e6-a2df-6c7a7ff171fb"
+   "framework": "cis_windows_server_2016_modular",
+   "file": "catalogs/cis_windows_server_2016_modular.json",
+   "controls": 423,
+   "modules": 9,
+   "uuid": "907f7471-1182-5ba8-bcea-6b709d82c79e"
   },
   {
    "framework": "cis_windows_server_2019_modular",

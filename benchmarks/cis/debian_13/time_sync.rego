@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 6
+#     checks: 12
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.time_sync
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Section 2.3: Time Synchronization.

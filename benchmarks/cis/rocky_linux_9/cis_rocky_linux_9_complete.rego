@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 352
-#     cited: 352
+#     checks: 5
+#     cited: 5
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: self
-#     as_of: v2.4.2
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_rocky_linux_9
 
 # CIS Rocky Linux 9 Benchmark v3.0.0: roll-up of the 14 section packages.

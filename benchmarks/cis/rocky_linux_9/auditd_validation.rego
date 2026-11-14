@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 54
-#     cited: 54
+#     checks: 109
+#     cited: 55
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.auditd
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Section 6.2: System Auditing (auditd).

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 16
-#     cited: 16
+#     checks: 31
+#     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.pam
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Sections 4.4-4.6: authselect, PAM, User Accounts and Environment.

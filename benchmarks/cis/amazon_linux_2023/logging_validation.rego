@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 19
-#     cited: 19
+#     checks: 27
+#     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.logging
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Sections 5.1, 5.3: System Logging (rsyslog, journald), logrotate.

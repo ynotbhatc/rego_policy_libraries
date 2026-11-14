@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 29
+#     checks: 57
 #     cited: 29
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.services
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Sections 2.1-2.2: Server and Client Services.

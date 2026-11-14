@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 16
+#     checks: 30
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.package_management
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Section 1.2: Package Management (apt).

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 35
+#     checks: 69
 #     cited: 35
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_12.network
 
 # CIS Debian Linux 12 Benchmark v2.0.1, Section 3: Network.

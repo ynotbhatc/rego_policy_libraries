@@ -10,12 +10,12 @@
 #   coverage:
 #     checks: 0
 #     cited: 0
-#     density: orchestrator
+#     density: unrecognised
 #     basis: role
-#     tested: true
+#     tested: false
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.amazon_linux_2023
 
 # DEPRECATED. Kept only because the compliance repo's cis_amazon_linux_2023_assessment.yml still POSTs to

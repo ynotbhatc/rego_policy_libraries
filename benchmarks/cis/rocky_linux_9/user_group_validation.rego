@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 9
-#     cited: 9
+#     checks: 19
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.user_group
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Section 7.2: Local User and Group Settings.

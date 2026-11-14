@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, amazon-linux]
 #   coverage:
-#     checks: 6
-#     cited: 6
+#     checks: 13
+#     cited: 7
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_amazon_linux_2023.sudo
 
 # CIS Amazon Linux 2023 Benchmark v1.0.0, Section 4.3: Privilege Escalation.

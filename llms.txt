@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 24,009 control-level checks in 953 policy files, mapped to 185 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 27,215 control-level checks in 1,017 policy files, mapped to 185 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -38,7 +38,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
   (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
   `compliance_percentage` and per-section results.
 - Missing evidence fails: a control whose facts were not collected reports "evidence missing"; it never passes by default.
-- Size at release 2.5.0: 24,009 control-level checks in 953 policy files, mapped to 185 framework catalogs.
+- Size at release 2.5.0: 27,215 control-level checks in 1,017 policy files, mapped to 185 framework catalogs.
 - Release bundle (OCI, built with OPA 1.10.0): `ghcr.io/ynotbhatc/rego_policy_libraries:<version>`, for example
   `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
@@ -56,14 +56,14 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 - [CIS Amazon Linux 2023](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-amazon-linux-2023.html): 17 policy files
 - [CIS Debian 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-debian-11.html): 16 policy files
 - [CIS Microsoft 365](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-saas.html): 18 policy files
-- [CIS Network Devices](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-network-devices.html): 11 policy files
+- [CIS Network Devices](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-network-devices.html): 12 policy files
 - [CIS RHEL 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-8.html): 16 policy files
 - [CIS RHEL 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rhel-9.html): 21 policy files
 - [CIS Rocky Linux 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-8.html): 15 policy files
-- [CIS Rocky Linux 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-9.html): 15 policy files
+- [CIS Rocky Linux 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-rocky-linux-9.html): 17 policy files
 - [CIS Ubuntu 20.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-20-04.html): 17 policy files
 - [CIS Ubuntu 22.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-22-04.html): 18 policy files
-- [CIS Ubuntu 24.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-24-04.html): 18 policy files
+- [CIS Ubuntu 24.04](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-ubuntu-24-04.html): 24 policy files
 - [CMMC](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-cmmc.html): 16 policy files
 - [CSA CCM](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-csa-ccm.html): 17 policy files
 - [Cis Controls V8](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-cis-controls-v8.html): 19 policy files
@@ -73,6 +73,8 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 - [Cyber Essentials](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-regional-cyber-essentials.html): 6 policy files
 - [DORA](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-financial-dora.html): 4 policy files
 - [Databases](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-databases.html): 5 policy files
+- [Debian 12](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-debian-12.html): 23 policy files
+- [Debian 13](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-debian-13.html): 23 policy files
 - [Digital Sovereignty](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-sovereignty-digital-sovereignty.html): 12 policy files
 - [EU AI Act](https://ynotbhatc.github.io/rego_policy_libraries/standard/governance-eu-ai-act.html): 6 policy files
 - [EU Cyber Resilience Act](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-compliance-cra.html): 18 policy files
@@ -116,6 +118,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 - [Windows 11](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-11.html): 6 policy files
 - [Windows 11 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-11-modular.html): 11 policy files
 - [Windows Server 2016](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2016.html): 5 policy files
+- [Windows Server 2016 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2016-modular.html): 11 policy files
 - [Windows Server 2019](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2019.html): 5 policy files
 - [Windows Server 2019 Modular](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-windows-server-2019-modular.html): 12 policy files
 - [Windows Server 2022](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-windows-server-2022.html): 6 policy files

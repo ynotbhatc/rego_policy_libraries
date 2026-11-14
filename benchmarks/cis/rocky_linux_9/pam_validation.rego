@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 43
-#     cited: 43
+#     checks: 85
+#     cited: 44
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_9.pam
 
 # CIS Rocky Linux 9 Benchmark v3.0.0, Sections 5.3-5.4: Pluggable Authentication Modules, User Accounts and Environment.

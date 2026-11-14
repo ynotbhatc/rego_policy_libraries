@@ -10,10 +10,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: true
+#     tested: false
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_kubernetes.main
 
 # OPA query path: /v1/data/cis_kubernetes/main/compliance_report (the framework key's entrypoint).

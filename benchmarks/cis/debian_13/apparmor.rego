@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 4
+#     checks: 8
 #     cited: 4
-#     density: sized
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_13.apparmor
 
 # CIS Debian Linux 13 Benchmark v1.1.1, Section 1.3: Mandatory Access Control (AppArmor).
