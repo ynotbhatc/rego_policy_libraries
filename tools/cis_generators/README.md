@@ -127,6 +127,16 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   STIG module's input contract (flag maps, kubelet configuration, `files.<group>` with octal bit-mask modes) and fail
   closed; 37 judgement items are attestations. Aborts on any id, count, status, profile or title-keyword mismatch
   with the workbook. Run `opa fmt -w` afterwards.
+- `dump_workbook.py <workbook.xlsx> <out.json>`, then `gen_docker.py <out.json> benchmarks/cis/docker`: CIS Docker Benchmark
+  v1.9.0, all 117 recommendations (23 Automated, 94 Manual; 78 Level 1 and 30 Level 2 Docker on Linux, 9 Docker Swarm),
+  replacing the old v1.8.0 module under the same `cis_docker` package and `cis_docker.main` entrypoint. 103 are decided
+  from collected facts (`docker info`/`version`, effective daemon settings, `docker inspect` per container, image and
+  network, octal modes and ownership of the daemon files, `auditctl -l` rules shared with the Linux modules, swarm
+  listeners) and fail closed; 14 judgement recommendations are attestations. `input.cis_profile` selects the level, and
+  the Swarm recommendations apply from the collected swarm state, which the report states in `swarm_profile`. The
+  generator has its own loader (this workbook has no Combined Profiles sheet) and owns `docker_helpers.rego.tmpl`, the
+  helper block it emits. Every logic entry carries a title keyword; the run aborts on any count, id, status, profile
+  or keyword mismatch. Run `opa fmt -w` afterwards.
 
 - `gen_rhel_9.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0,
   352 recommendations, written into the existing rhel_9 package paths (14 section packages, roll-up
