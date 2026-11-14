@@ -62,6 +62,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   ufw, Ubuntu unit names). Each logic entry carries a title keyword; the run aborts on any count, status,
   logic or keyword mismatch with the workbook.
 
+- `gen_debian_12.py <workbook.xlsx> [fields.json]`: CIS Debian Linux 12 Benchmark v2.0.1, 331 recommendations
+  (316 Automated, 15 Manual) across the same 21 section packages, into the new `benchmarks/cis/debian_12/`
+  (key `cis_debian_12`). Imports `gen_ubuntu_26_04.py`'s reader, builders, helpers and emitters without changing
+  it: recommendations whose Debian 12 audit matches the Ubuntu one reuse its logic, by id or through a renumbering
+  table, and the rest (Debian audit wording, both-architecture syscall rules, 6 new recommendations) are written
+  in the script. Same input contract as ubuntu_26_04 plus five facts listed in the module README. Aborts on any
+  count, id, status or title-keyword mismatch; formats its own output with `opa fmt`.
+
 - `gen_sql_server_2025.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2025 Benchmark v1.0.0,
   49 recommendations; Database Engine and AWS RDS profiles (`input.cis_profile.platform`).
 
