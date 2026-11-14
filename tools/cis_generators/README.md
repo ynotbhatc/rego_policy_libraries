@@ -86,5 +86,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
   contract. Aborts on any count, status, logic or title-keyword mismatch with the workbook.
 
+- `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
+  recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
+  `cis_rocky_linux_9`. Holds no logic of its own: it configures `gen_rhel_9.py` (`configure()`: output
+  directory, package, METADATA framework and domains, no extended-hardening modules, a `violation_count`
+  report field) and runs its reader, logic table and emitter against the Rocky workbook. On top of the
+  count, status, logic and title-keyword checks it aborts unless a digest of every id, status, profile and
+  audit procedure equals the one the logic table was written from, so the shared logic is verified against
+  the Rocky workbook, not assumed.
+
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
