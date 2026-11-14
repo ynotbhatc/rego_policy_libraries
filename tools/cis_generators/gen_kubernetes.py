@@ -1166,26 +1166,67 @@ test_report_contract_on_empty_input if {{
 	r.version == "{VERSION}"
 }}
 
-_profile_total(p) := r.total_controls if r := bridge.compliance_report with input as {{"cis_profile": p}}
+# One test per profile, each with a literal input: a helper that evaluates the report `with input as` its own
+# parameter cannot be compiled by `opa build -t wasm`.
 
-_profile_failed(p) := r.failed_controls if r := bridge.compliance_report with input as {{"cis_profile": p}}
-
-test_profile_totals if {{
-	_profile_total({{"level": 1}}) == {M1 + W1}
-	_profile_total({{"level": 2}}) == {N}
-	_profile_total({{"level": 1, "role": "master"}}) == {M1}
-	_profile_total({{"level": 2, "role": "master"}}) == {M1 + M2}
-	_profile_total({{"role": "control_plane"}}) == {M1 + M2}
-	_profile_total({{"level": 1, "role": "worker"}}) == {W1}
-	_profile_total({{"level": 2, "role": "Worker"}}) == {W1 + W2}
-	_profile_total({{"level": 3, "role": "edge"}}) == {N}
+test_profile_total_l1 if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 1}}}}
+	r.total_controls == {M1 + W1}
 }}
 
-test_profile_fails_only_what_is_in_scope if {{
-	_profile_failed({{"level": 1, "role": "master"}}) == {M1}
-	_profile_failed({{"level": 2, "role": "master"}}) == {M1 + M2}
-	_profile_failed({{"level": 1, "role": "worker"}}) == {W1}
-	_profile_failed({{"level": 2, "role": "worker"}}) == {W1 + W2}
+test_profile_total_l2 if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 2}}}}
+	r.total_controls == {N}
+}}
+
+test_profile_total_l1_master if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 1, "role": "master"}}}}
+	r.total_controls == {M1}
+}}
+
+test_profile_total_l2_master if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 2, "role": "master"}}}}
+	r.total_controls == {M1 + M2}
+}}
+
+test_profile_total_control_plane if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"role": "control_plane"}}}}
+	r.total_controls == {M1 + M2}
+}}
+
+test_profile_total_l1_worker if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 1, "role": "worker"}}}}
+	r.total_controls == {W1}
+}}
+
+test_profile_total_l2_worker_mixed_case if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 2, "role": "Worker"}}}}
+	r.total_controls == {W1 + W2}
+}}
+
+test_profile_total_unknown_level_and_role if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 3, "role": "edge"}}}}
+	r.total_controls == {N}
+}}
+
+test_profile_fails_only_what_is_in_scope_l1_master if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 1, "role": "master"}}}}
+	r.failed_controls == {M1}
+}}
+
+test_profile_fails_only_what_is_in_scope_l2_master if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 2, "role": "master"}}}}
+	r.failed_controls == {M1 + M2}
+}}
+
+test_profile_fails_only_what_is_in_scope_l1_worker if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 1, "role": "worker"}}}}
+	r.failed_controls == {W1}
+}}
+
+test_profile_fails_only_what_is_in_scope_l2_worker if {{
+	r := bridge.compliance_report with input as {{"cis_profile": {{"level": 2, "role": "worker"}}}}
+	r.failed_controls == {W1 + W2}
 }}
 
 test_worker_role_does_not_count_master_recommendations if {{

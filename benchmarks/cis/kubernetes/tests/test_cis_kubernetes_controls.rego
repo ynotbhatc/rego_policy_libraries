@@ -356,26 +356,67 @@ test_report_contract_on_empty_input if {
 	r.version == "v2.1.0"
 }
 
-_profile_total(p) := r.total_controls if r := bridge.compliance_report with input as {"cis_profile": p}
+# One test per profile, each with a literal input: a helper that evaluates the report `with input as` its own
+# parameter cannot be compiled by `opa build -t wasm`.
 
-_profile_failed(p) := r.failed_controls if r := bridge.compliance_report with input as {"cis_profile": p}
-
-test_profile_totals if {
-	_profile_total({"level": 1}) == 118
-	_profile_total({"level": 2}) == 134
-	_profile_total({"level": 1, "role": "master"}) == 93
-	_profile_total({"level": 2, "role": "master"}) == 108
-	_profile_total({"role": "control_plane"}) == 108
-	_profile_total({"level": 1, "role": "worker"}) == 25
-	_profile_total({"level": 2, "role": "Worker"}) == 26
-	_profile_total({"level": 3, "role": "edge"}) == 134
+test_profile_total_l1 if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 1}}
+	r.total_controls == 118
 }
 
-test_profile_fails_only_what_is_in_scope if {
-	_profile_failed({"level": 1, "role": "master"}) == 93
-	_profile_failed({"level": 2, "role": "master"}) == 108
-	_profile_failed({"level": 1, "role": "worker"}) == 25
-	_profile_failed({"level": 2, "role": "worker"}) == 26
+test_profile_total_l2 if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 2}}
+	r.total_controls == 134
+}
+
+test_profile_total_l1_master if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 1, "role": "master"}}
+	r.total_controls == 93
+}
+
+test_profile_total_l2_master if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 2, "role": "master"}}
+	r.total_controls == 108
+}
+
+test_profile_total_control_plane if {
+	r := bridge.compliance_report with input as {"cis_profile": {"role": "control_plane"}}
+	r.total_controls == 108
+}
+
+test_profile_total_l1_worker if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 1, "role": "worker"}}
+	r.total_controls == 25
+}
+
+test_profile_total_l2_worker_mixed_case if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 2, "role": "Worker"}}
+	r.total_controls == 26
+}
+
+test_profile_total_unknown_level_and_role if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 3, "role": "edge"}}
+	r.total_controls == 134
+}
+
+test_profile_fails_only_what_is_in_scope_l1_master if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 1, "role": "master"}}
+	r.failed_controls == 93
+}
+
+test_profile_fails_only_what_is_in_scope_l2_master if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 2, "role": "master"}}
+	r.failed_controls == 108
+}
+
+test_profile_fails_only_what_is_in_scope_l1_worker if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 1, "role": "worker"}}
+	r.failed_controls == 25
+}
+
+test_profile_fails_only_what_is_in_scope_l2_worker if {
+	r := bridge.compliance_report with input as {"cis_profile": {"level": 2, "role": "worker"}}
+	r.failed_controls == 26
 }
 
 test_worker_role_does_not_count_master_recommendations if {
