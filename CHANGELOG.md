@@ -60,8 +60,13 @@ closed; they never pass). New fact paths per module:
 - **Palo Alto**: `input.panos_config` is `show config running` converted to JSON, plus `licenses[]` and the operator
   lists `site.{untrusted_zones,internet_zones,url_block_categories}`. The old `mgt_config.users.entry` shape is not read.
 - **Windows Server 2016**: the 2019/2022 modular contract (`registry`, `registry_users`, `audit_policy`, `secedit`,
-  `attestations`, `cis_profile`). The product's framework catalog must point `cis_windows_server_2016` at the new
-  directory `benchmarks/cis/windows_server_2016_modular`.
+  `attestations`, `cis_profile`). The product names the old directory in three places, which must point at
+  `benchmarks/cis/windows_server_2016_modular` in the PR that bumps the library pin: `ansible/vars/framework_catalog.yml`,
+  `ansible/playbooks/seed_framework_catalog.yml` and `ansible/playbooks/load_opa_policies.yml`. The framework key
+  `cis_windows_server_2016` and its entrypoint are unchanged. No other product file reads a removed package; the
+  Amazon Linux 2023 playbook's legacy `cis.amazon_linux_2023.violations` and `compliance_summary` paths still resolve.
+- **Known naming drift, to settle before the collector is written:** Ubuntu 24.04 reads `netplan.dir_exists` and
+  Debian 12 reads `auditd.netplan_dir_exists` for the same fact.
 
 ### Fixed — generators no longer delete files they did not write
 
@@ -71,6 +76,11 @@ closed; they never pass). New fact paths per module:
   (`gen_windows_server_2022.py`, `_2019.py`, `_2016.py`, `gen_windows_10.py`, which Windows 11 reuses). Every generator
   in this batch follows the same rule.
 - CIS Azure 9.2.4 accepts a TLS 1.3 storage minimum (it required exactly TLS 1.2).
+- The XCCDF section export accepted bare recommendation numbers only from modules on a workbook-verified list,
+  so five replaced platforms dropped out of it; the ten workbook-generated directories are now on the list (33
+  platforms, 7,047 sections, was 29).
+- `cis_debian_12` and `cis_debian_13` are in `tests/framework_keys/test_keys.rego`, so the per-key report contract
+  covers them.
 
 ### Added — a first run that scans something real
 
