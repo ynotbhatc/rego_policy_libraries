@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "df6b622d-fbe8-5248-b0a6-867d7ddc8107",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_kubernetes (CIS Kubernetes Benchmark v2.0.0)",
+   "title": "Rego Policy Libraries — cis_kubernetes (CIS Kubernetes Benchmark v2.1.0)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -44,9 +44,9 @@
   },
   "groups": [
    {
-    "id": "cis_kubernetes-cis_kubernetes_benchmark",
+    "id": "cis_kubernetes-cis_kubernetes",
     "class": "rego-module",
-    "title": "CIS Kubernetes Benchmark v2.0.0",
+    "title": "CIS Kubernetes Benchmark v2.1.0",
     "props": [
      {
       "name": "rego-package",
@@ -56,7 +56,7 @@
      {
       "name": "rego-file",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego"
+      "value": "benchmarks/cis/kubernetes/cis_kubernetes.rego"
      },
      {
       "name": "class",
@@ -66,8 +66,4595 @@
     ],
     "controls": [
      {
+      "id": "cis_kubernetes-cis_kubernetes-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_kubernetes#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_kubernetes#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-cis_kubernetes-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-cis_kubernetes-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_kubernetes#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_kubernetes#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-cis_kubernetes-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-cis_kubernetes-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_kubernetes#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_kubernetes#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-cis_kubernetes-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-cis_kubernetes-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_kubernetes#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_kubernetes#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-cis_kubernetes-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-cis_kubernetes-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_kubernetes#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_kubernetes#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-cis_kubernetes-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes.rego (package cis_kubernetes); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.1",
+      "title": "kube-apiserver static pod manifest mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.1_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver static pod manifest mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.10",
+      "title": "every CNI configuration file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.10_stmt",
+        "name": "statement",
+        "prose": "every CNI configuration file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.11",
+      "title": "etcd data directory mode must be 700 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.11_stmt",
+        "name": "statement",
+        "prose": "etcd data directory mode must be 700 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.12",
+      "title": "etcd data directory must be owned by etcd:etcd",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.12_stmt",
+        "name": "statement",
+        "prose": "etcd data directory must be owned by etcd:etcd"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.13",
+      "title": "admin.conf (and super-admin.conf when present) mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.13_stmt",
+        "name": "statement",
+        "prose": "admin.conf (and super-admin.conf when present) mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.14",
+      "title": "admin.conf (and super-admin.conf when present) must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.14_stmt",
+        "name": "statement",
+        "prose": "admin.conf (and super-admin.conf when present) must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.15",
+      "title": "scheduler.conf mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.15_stmt",
+        "name": "statement",
+        "prose": "scheduler.conf mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.16",
+      "title": "scheduler.conf must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.16_stmt",
+        "name": "statement",
+        "prose": "scheduler.conf must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.17",
+      "title": "controller-manager.conf mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.17_stmt",
+        "name": "statement",
+        "prose": "controller-manager.conf mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.18",
+      "title": "controller-manager.conf must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.18_stmt",
+        "name": "statement",
+        "prose": "controller-manager.conf must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.19",
+      "title": "every file and directory under the Kubernetes PKI directory must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.19_stmt",
+        "name": "statement",
+        "prose": "every file and directory under the Kubernetes PKI directory must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.2",
+      "title": "kube-apiserver static pod manifest must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.2_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver static pod manifest must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.20",
+      "title": "every Kubernetes PKI .crt file mode must be 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.20_stmt",
+        "name": "statement",
+        "prose": "every Kubernetes PKI .crt file mode must be 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.21",
+      "title": "every Kubernetes PKI .key file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.21_stmt",
+        "name": "statement",
+        "prose": "every Kubernetes PKI .key file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.3",
+      "title": "kube-controller-manager static pod manifest mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.3_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager static pod manifest mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.4",
+      "title": "kube-controller-manager static pod manifest must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.4_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager static pod manifest must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.5",
+      "title": "kube-scheduler static pod manifest mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.5_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler static pod manifest mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.6",
+      "title": "kube-scheduler static pod manifest must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.6_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler static pod manifest must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.7",
+      "title": "etcd static pod manifest mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.7_stmt",
+        "name": "statement",
+        "prose": "etcd static pod manifest mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.8",
+      "title": "etcd static pod manifest must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.8_stmt",
+        "name": "statement",
+        "prose": "etcd static pod manifest must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.1.9",
+      "title": "every CNI configuration file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.1.9_stmt",
+        "name": "statement",
+        "prose": "every CNI configuration file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.1",
+      "title": "anonymous requests to kube-apiserver must be disabled or limited to health endpoints",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.1_stmt",
+        "name": "statement",
+        "prose": "anonymous requests to kube-apiserver must be disabled or limited to health endpoints"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.10",
+      "title": "kube-apiserver --enable-admission-plugins must exclude AlwaysAdmit",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.10_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --enable-admission-plugins must exclude AlwaysAdmit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.11",
+      "title": "kube-apiserver --enable-admission-plugins must list AlwaysPullImages",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.11_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --enable-admission-plugins must list AlwaysPullImages"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.12",
+      "title": "kube-apiserver --disable-admission-plugins must exclude ServiceAccount",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.12_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --disable-admission-plugins must exclude ServiceAccount"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.13",
+      "title": "kube-apiserver --disable-admission-plugins must exclude NamespaceLifecycle",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.13_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --disable-admission-plugins must exclude NamespaceLifecycle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.14",
+      "title": "kube-apiserver --enable-admission-plugins must list NodeRestriction",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.14_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --enable-admission-plugins must list NodeRestriction"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.15",
+      "title": "kube-apiserver --profiling must be false",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.15_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --profiling must be false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.16",
+      "title": "kube-apiserver --audit-log-path must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.16_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --audit-log-path must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.17",
+      "title": "kube-apiserver --audit-log-maxage must be 30 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.17_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --audit-log-maxage must be 30 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.18",
+      "title": "kube-apiserver --audit-log-maxbackup must be 10 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.18_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --audit-log-maxbackup must be 10 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.19",
+      "title": "kube-apiserver --audit-log-maxsize must be 100 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.19_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --audit-log-maxsize must be 100 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.2",
+      "title": "kube-apiserver --token-auth-file must be absent",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.2_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --token-auth-file must be absent"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.20",
+      "title": "kube-apiserver --request-timeout must be absent, or a positive duration attested as suitable (attest.api_request_timeout_appropriate)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.20_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --request-timeout must be absent, or a positive duration attested as suitable (attest.api_request_timeout_appropriate)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.21",
+      "title": "kube-apiserver --service-account-lookup must be true when given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.21_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --service-account-lookup must be true when given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.22",
+      "title": "kube-apiserver --service-account-key-file must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.22_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --service-account-key-file must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.23",
+      "title": "kube-apiserver --etcd-certfile and --etcd-keyfile must both be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.23_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --etcd-certfile and --etcd-keyfile must both be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.24",
+      "title": "kube-apiserver --tls-cert-file and --tls-private-key-file must both be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.24_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --tls-cert-file and --tls-private-key-file must both be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.25",
+      "title": "kube-apiserver --client-ca-file must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.25_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --client-ca-file must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.26",
+      "title": "kube-apiserver --etcd-cafile must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.26_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --etcd-cafile must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.27",
+      "title": "kube-apiserver --encryption-provider-config must be given and the file must cover secrets",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.27_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --encryption-provider-config must be given and the file must cover secrets"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.28",
+      "title": "every EncryptionConfiguration resource entry must write with aescbc, kms or secretbox",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.28_stmt",
+        "name": "statement",
+        "prose": "every EncryptionConfiguration resource entry must write with aescbc, kms or secretbox"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.29",
+      "title": "kube-apiserver --tls-cipher-suites must be given and hold only the strong suites",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.29_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --tls-cipher-suites must be given and hold only the strong suites"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.3",
+      "title": "kube-apiserver --enable-admission-plugins must list DenyServiceExternalIPs",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.3_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --enable-admission-plugins must list DenyServiceExternalIPs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.30",
+      "title": "kube-apiserver --service-account-extend-token-expiration must be false",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.30_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --service-account-extend-token-expiration must be false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.4",
+      "title": "kube-apiserver --kubelet-client-certificate and --kubelet-client-key must both be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.4_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --kubelet-client-certificate and --kubelet-client-key must both be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.5",
+      "title": "kube-apiserver --kubelet-certificate-authority must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.5_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --kubelet-certificate-authority must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.6",
+      "title": "kube-apiserver --authorization-mode must be given and must exclude AlwaysAllow",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.6_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --authorization-mode must be given and must exclude AlwaysAllow"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.7",
+      "title": "kube-apiserver --authorization-mode must list Node",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.7_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --authorization-mode must list Node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.8",
+      "title": "kube-apiserver --authorization-mode must list RBAC",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.8_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --authorization-mode must list RBAC"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.2.9",
+      "title": "kube-apiserver --enable-admission-plugins must list EventRateLimit",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.2.9_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --enable-admission-plugins must list EventRateLimit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.1",
+      "title": "kube-controller-manager --terminated-pod-gc-threshold must be given as a positive number",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.1_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --terminated-pod-gc-threshold must be given as a positive number"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.2",
+      "title": "kube-controller-manager --profiling must be false",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.2_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --profiling must be false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.3",
+      "title": "kube-controller-manager --use-service-account-credentials must be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.3_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --use-service-account-credentials must be true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.4",
+      "title": "kube-controller-manager --service-account-private-key-file must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.4_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --service-account-private-key-file must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.5",
+      "title": "kube-controller-manager --root-ca-file must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.5_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --root-ca-file must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.6",
+      "title": "kube-controller-manager feature gate RotateKubeletServerCertificate must not be switched off",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.6_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager feature gate RotateKubeletServerCertificate must not be switched off"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.3.7",
+      "title": "kube-controller-manager --bind-address must be a loopback address",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.3.7_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager --bind-address must be a loopback address"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.4.1",
+      "title": "kube-scheduler --profiling must be false",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.4.1_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler --profiling must be false"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-1.4.2",
+      "title": "kube-scheduler --bind-address must be a loopback address",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-1.4.2_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler --bind-address must be a loopback address"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.1",
+      "title": "etcd --cert-file and --key-file must both be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.1_stmt",
+        "name": "statement",
+        "prose": "etcd --cert-file and --key-file must both be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.2",
+      "title": "etcd --client-cert-auth must be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.2_stmt",
+        "name": "statement",
+        "prose": "etcd --client-cert-auth must be true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.3",
+      "title": "etcd --auto-tls must not be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.3_stmt",
+        "name": "statement",
+        "prose": "etcd --auto-tls must not be true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.4",
+      "title": "etcd --peer-cert-file and --peer-key-file must both be given (single-member etcd excepted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.4_stmt",
+        "name": "statement",
+        "prose": "etcd --peer-cert-file and --peer-key-file must both be given (single-member etcd excepted)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.5",
+      "title": "etcd --peer-client-cert-auth must be true (single-member etcd excepted)",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.5_stmt",
+        "name": "statement",
+        "prose": "etcd --peer-client-cert-auth must be true (single-member etcd excepted)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.6",
+      "title": "etcd --peer-auto-tls must not be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.6_stmt",
+        "name": "statement",
+        "prose": "etcd --peer-auto-tls must not be true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-2.7",
+      "title": "etcd --trusted-ca-file must be given and must differ from kube-apiserver --client-ca-file",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-2.7_stmt",
+        "name": "statement",
+        "prose": "etcd --trusted-ca-file must be given and must differ from kube-apiserver --client-ca-file"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-3.1.1",
+      "title": "users must not sign in with client certificates",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-3.1.1_stmt",
+        "name": "statement",
+        "prose": "users must not sign in with client certificates"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-3.1.2",
+      "title": "users must not sign in with service account tokens",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-3.1.2_stmt",
+        "name": "statement",
+        "prose": "users must not sign in with service account tokens"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-3.1.3",
+      "title": "users must not sign in with bootstrap tokens",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-3.1.3_stmt",
+        "name": "statement",
+        "prose": "users must not sign in with bootstrap tokens"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-3.2.1",
+      "title": "kube-apiserver --audit-policy-file must be given and the file must hold a Policy with rules",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-3.2.1_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver --audit-policy-file must be given and the file must hold a Policy with rules"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-3.2.2",
+      "title": "the audit policy must be reviewed against the security events it has to record",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-3.2.2_stmt",
+        "name": "statement",
+        "prose": "the audit policy must be reviewed against the security events it has to record"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.1",
+      "title": "every kubelet service unit and drop-in file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.1_stmt",
+        "name": "statement",
+        "prose": "every kubelet service unit and drop-in file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.10",
+      "title": "kubelet configuration file must be owned by root:root when --config is used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.10_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file must be owned by root:root when --config is used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.11",
+      "title": "kubelet --config-dir directory must be root:root 755 or stricter and its .conf files root:root 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.11_stmt",
+        "name": "statement",
+        "prose": "kubelet --config-dir directory must be root:root 755 or stricter and its .conf files root:root 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.2",
+      "title": "every kubelet service unit and drop-in file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.2_stmt",
+        "name": "statement",
+        "prose": "every kubelet service unit and drop-in file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.3",
+      "title": "kube-proxy kubeconfig mode must be 600 or stricter while kube-proxy runs",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.3_stmt",
+        "name": "statement",
+        "prose": "kube-proxy kubeconfig mode must be 600 or stricter while kube-proxy runs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.4",
+      "title": "kube-proxy kubeconfig must be owned by root:root while kube-proxy runs",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.4_stmt",
+        "name": "statement",
+        "prose": "kube-proxy kubeconfig must be owned by root:root while kube-proxy runs"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.5",
+      "title": "kubelet kubeconfig mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.5_stmt",
+        "name": "statement",
+        "prose": "kubelet kubeconfig mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.6",
+      "title": "kubelet kubeconfig must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.6_stmt",
+        "name": "statement",
+        "prose": "kubelet kubeconfig must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.7",
+      "title": "kubelet client CA file mode must be 644 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.7_stmt",
+        "name": "statement",
+        "prose": "kubelet client CA file mode must be 644 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.8",
+      "title": "kubelet client CA file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.8_stmt",
+        "name": "statement",
+        "prose": "kubelet client CA file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.1.9",
+      "title": "kubelet configuration file mode must be 600 or stricter when --config is used",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.1.9_stmt",
+        "name": "statement",
+        "prose": "kubelet configuration file mode must be 600 or stricter when --config is used"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.1",
+      "title": "kubelet anonymous authentication must be off (--anonymous-auth or authentication.anonymous.enabled)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.1_stmt",
+        "name": "statement",
+        "prose": "kubelet anonymous authentication must be off (--anonymous-auth or authentication.anonymous.enabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.10",
+      "title": "kubelet client certificate rotation must not be switched off (--rotate-certificates, rotateCertificates)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.10_stmt",
+        "name": "statement",
+        "prose": "kubelet client certificate rotation must not be switched off (--rotate-certificates, rotateCertificates)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.11",
+      "title": "kubelet serving certificate rotation must be on (serverTLSBootstrap, --rotate-server-certificates or the RotateKubeletServerCertificate gate)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.11_stmt",
+        "name": "statement",
+        "prose": "kubelet serving certificate rotation must be on (serverTLSBootstrap, --rotate-server-certificates or the RotateKubeletServerCertificate gate)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.12",
+      "title": "kubelet TLS cipher suites must be given and hold only the strong suites (--tls-cipher-suites or tlsCipherSuites)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.12_stmt",
+        "name": "statement",
+        "prose": "kubelet TLS cipher suites must be given and hold only the strong suites (--tls-cipher-suites or tlsCipherSuites)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.13",
+      "title": "kubelet pod PID limit must be a positive number (--pod-max-pids or podPidsLimit)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.13_stmt",
+        "name": "statement",
+        "prose": "kubelet pod PID limit must be a positive number (--pod-max-pids or podPidsLimit)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.14",
+      "title": "kubelet default seccomp profile must be on (--seccomp-default or seccompDefault)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.14_stmt",
+        "name": "statement",
+        "prose": "kubelet default seccomp profile must be on (--seccomp-default or seccompDefault)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.2",
+      "title": "kubelet authorization mode must be given and must not be AlwaysAllow (--authorization-mode or authorization.mode)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.2_stmt",
+        "name": "statement",
+        "prose": "kubelet authorization mode must be given and must not be AlwaysAllow (--authorization-mode or authorization.mode)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.3",
+      "title": "kubelet client CA file must be given (--client-ca-file or authentication.x509.clientCAFile)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.3_stmt",
+        "name": "statement",
+        "prose": "kubelet client CA file must be given (--client-ca-file or authentication.x509.clientCAFile)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.4",
+      "title": "kubelet read-only port must be 0 (--read-only-port, or readOnlyPort in the configuration file)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.4_stmt",
+        "name": "statement",
+        "prose": "kubelet read-only port must be 0 (--read-only-port, or readOnlyPort in the configuration file)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.5",
+      "title": "kubelet streaming connection idle timeout must not be 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.5_stmt",
+        "name": "statement",
+        "prose": "kubelet streaming connection idle timeout must not be 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.6",
+      "title": "kubelet iptables utility chains must stay on (--make-iptables-util-chains, makeIPTablesUtilChains)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.6_stmt",
+        "name": "statement",
+        "prose": "kubelet iptables utility chains must stay on (--make-iptables-util-chains, makeIPTablesUtilChains)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.7",
+      "title": "kubelet --hostname-override must be absent",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.7_stmt",
+        "name": "statement",
+        "prose": "kubelet --hostname-override must be absent"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.8",
+      "title": "kubelet eventRecordQPS must be reviewed as suited to the cluster's event volume",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.8_stmt",
+        "name": "statement",
+        "prose": "kubelet eventRecordQPS must be reviewed as suited to the cluster's event volume"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.2.9",
+      "title": "kubelet serving certificate and key must be given (--tls-cert-file/--tls-private-key-file or tlsCertFile/tlsPrivateKeyFile)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.2.9_stmt",
+        "name": "statement",
+        "prose": "kubelet serving certificate and key must be given (--tls-cert-file/--tls-private-key-file or tlsCertFile/tlsPrivateKeyFile)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-4.3.1",
+      "title": "kube-proxy metrics endpoint must bind to loopback only (--metrics-bind-address, metricsBindAddress)",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-4.3.1_stmt",
+        "name": "statement",
+        "prose": "kube-proxy metrics endpoint must bind to loopback only (--metrics-bind-address, metricsBindAddress)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.1",
+      "title": "every cluster-admin binding must be reviewed as needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.1_stmt",
+        "name": "statement",
+        "prose": "every cluster-admin binding must be reviewed as needed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.10",
+      "title": "rights on nodes/proxy must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.10_stmt",
+        "name": "statement",
+        "prose": "rights on nodes/proxy must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.11",
+      "title": "rights on certificatesigningrequests/approval must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.11_stmt",
+        "name": "statement",
+        "prose": "rights on certificatesigningrequests/approval must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.12",
+      "title": "rights on validating and mutating webhook configurations must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.12_stmt",
+        "name": "statement",
+        "prose": "rights on validating and mutating webhook configurations must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.13",
+      "title": "the right to create serviceaccounts/token must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.13_stmt",
+        "name": "statement",
+        "prose": "the right to create serviceaccounts/token must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.14",
+      "title": "principals bound to nodes/proxy must be reviewed for a move to the fine-grained kubelet subresources",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.14_stmt",
+        "name": "statement",
+        "prose": "principals bound to nodes/proxy must be reviewed for a move to the fine-grained kubelet subresources"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.2",
+      "title": "get, list and watch rights on Secrets must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.2_stmt",
+        "name": "statement",
+        "prose": "get, list and watch rights on Secrets must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.3",
+      "title": "wildcards in Role and ClusterRole rules must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.3_stmt",
+        "name": "statement",
+        "prose": "wildcards in Role and ClusterRole rules must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.4",
+      "title": "the right to create Pods must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.4_stmt",
+        "name": "statement",
+        "prose": "the right to create Pods must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.5",
+      "title": "every namespace's default ServiceAccount must have token automount off and no added role bindings",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.5_stmt",
+        "name": "statement",
+        "prose": "every namespace's default ServiceAccount must have token automount off and no added role bindings"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.6",
+      "title": "Pods and ServiceAccounts that mount an API token must be reviewed as needing it",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.6_stmt",
+        "name": "statement",
+        "prose": "Pods and ServiceAccounts that mount an API token must be reviewed as needing it"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.7",
+      "title": "credentials in the system:masters group must not be in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.7_stmt",
+        "name": "statement",
+        "prose": "credentials in the system:masters group must not be in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.8",
+      "title": "bind, impersonate and escalate rights must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.8_stmt",
+        "name": "statement",
+        "prose": "bind, impersonate and escalate rights must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.1.9",
+      "title": "the right to create PersistentVolumes must be reviewed and kept small",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.1.9_stmt",
+        "name": "statement",
+        "prose": "the right to create PersistentVolumes must be reviewed and kept small"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.1",
+      "title": "a pod admission policy mechanism must be active in the cluster",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.1_stmt",
+        "name": "statement",
+        "prose": "a pod admission policy mechanism must be active in the cluster"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.10",
+      "title": "admission policy must keep Windows hostProcess containers out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.10_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep Windows hostProcess containers out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.11",
+      "title": "admission policy must keep hostPath volumes out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.11_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep hostPath volumes out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.12",
+      "title": "admission policy must keep hostPort use out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.12_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep hostPort use out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.13",
+      "title": "admission policy must keep unmasked procMount containers out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.13_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep unmasked procMount containers out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.2",
+      "title": "admission policy must keep privileged containers out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.2_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep privileged containers out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.3",
+      "title": "admission policy must keep hostPID pods out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.3_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep hostPID pods out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.4",
+      "title": "admission policy must keep hostIPC pods out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.4_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep hostIPC pods out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.5",
+      "title": "admission policy must keep hostNetwork pods out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.5_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep hostNetwork pods out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.6",
+      "title": "admission policy must keep allowPrivilegeEscalation containers out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.6_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep allowPrivilegeEscalation containers out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.7",
+      "title": "admission policy must keep containers running as UID 0 out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.7_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep containers running as UID 0 out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.8",
+      "title": "admission policy must keep the NET_RAW capability out except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.8_stmt",
+        "name": "statement",
+        "prose": "admission policy must keep the NET_RAW capability out except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.2.9",
+      "title": "admission policy must require containers to drop capabilities except where approved",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.2.9_stmt",
+        "name": "statement",
+        "prose": "admission policy must require containers to drop capabilities except where approved"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.3.1",
+      "title": "the CNI plugin in use must enforce ingress and egress NetworkPolicy",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.3.1_stmt",
+        "name": "statement",
+        "prose": "the CNI plugin in use must enforce ingress and egress NetworkPolicy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.3.2",
+      "title": "every namespace must have at least one NetworkPolicy",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.3.2_stmt",
+        "name": "statement",
+        "prose": "every namespace must have at least one NetworkPolicy"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.4.1",
+      "title": "workloads must not read Secrets through environment variables",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.4.1_stmt",
+        "name": "statement",
+        "prose": "workloads must not read Secrets through environment variables"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.4.2",
+      "title": "an external secret store must be evaluated and the decision recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.4.2_stmt",
+        "name": "statement",
+        "prose": "an external secret store must be evaluated and the decision recorded"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.5.1",
+      "title": "image provenance admission control must be in place and reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.5.1_stmt",
+        "name": "statement",
+        "prose": "image provenance admission control must be in place and reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.6.1",
+      "title": "namespaces must be reviewed as the administrative boundaries in use",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.6.1_stmt",
+        "name": "statement",
+        "prose": "namespaces must be reviewed as the administrative boundaries in use"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.6.2",
+      "title": "pod definitions must be reviewed for the RuntimeDefault seccomp profile",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.6.2_stmt",
+        "name": "statement",
+        "prose": "pod definitions must be reviewed for the RuntimeDefault seccomp profile"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.6.3",
+      "title": "pod and container security contexts must be reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.6.3_stmt",
+        "name": "statement",
+        "prose": "pod and container security contexts must be reviewed"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_kubernetes-5.6.4",
+      "title": "the default namespace must hold nothing but the kubernetes Service",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_kubernetes"
+       }
+      ],
+      "links": [
+       {
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_kubernetes-5.6.4_stmt",
+        "name": "statement",
+        "prose": "the default namespace must hold nothing but the kubernetes Service"
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_kubernetes-control_plane",
-      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body.",
+      "title": "Control plane components",
       "props": [
        {
         "name": "label",
@@ -85,7 +4672,7 @@
       ],
       "links": [
        {
-        "href": "#acca57d9-8faf-5f55-821b-79ea0154ee53",
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
         "rel": "implementation"
        }
       ],
@@ -93,14 +4680,14 @@
        {
         "id": "cis_kubernetes-control_plane_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body."
+        "prose": "Control plane components"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_kubernetes-control_plane_config",
-      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body.",
+      "title": "Control plane configuration",
       "props": [
        {
         "name": "label",
@@ -118,7 +4705,7 @@
       ],
       "links": [
        {
-        "href": "#acca57d9-8faf-5f55-821b-79ea0154ee53",
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
         "rel": "implementation"
        }
       ],
@@ -126,14 +4713,14 @@
        {
         "id": "cis_kubernetes-control_plane_config_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body."
+        "prose": "Control plane configuration"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_kubernetes-etcd",
-      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body.",
+      "title": "etcd",
       "props": [
        {
         "name": "label",
@@ -151,7 +4738,7 @@
       ],
       "links": [
        {
-        "href": "#acca57d9-8faf-5f55-821b-79ea0154ee53",
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
         "rel": "implementation"
        }
       ],
@@ -159,14 +4746,14 @@
        {
         "id": "cis_kubernetes-etcd_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body."
+        "prose": "etcd"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_kubernetes-policies",
-      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body.",
+      "title": "Policies",
       "props": [
        {
         "name": "label",
@@ -184,7 +4771,7 @@
       ],
       "links": [
        {
-        "href": "#acca57d9-8faf-5f55-821b-79ea0154ee53",
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
         "rel": "implementation"
        }
       ],
@@ -192,14 +4779,14 @@
        {
         "id": "cis_kubernetes-policies_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body."
+        "prose": "Policies"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_kubernetes-worker_nodes",
-      "title": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body.",
+      "title": "Worker nodes",
       "props": [
        {
         "name": "label",
@@ -217,7 +4804,7 @@
       ],
       "links": [
        {
-        "href": "#acca57d9-8faf-5f55-821b-79ea0154ee53",
+        "href": "#40fe17d5-c0ff-5292-bde9-91729201cae8",
         "rel": "implementation"
        }
       ],
@@ -225,1450 +4812,7 @@
        {
         "id": "cis_kubernetes-worker_nodes_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego (package cis_kubernetes); see the rule body."
-       }
-      ],
-      "class": "security"
-     }
-    ]
-   },
-   {
-    "id": "cis_kubernetes-l2_validation",
-    "class": "rego-module",
-    "title": "CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "cis_kubernetes.l2"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/kubernetes/l2_validation.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "security"
-     }
-    ],
-    "controls": [
-     {
-      "id": "cis_kubernetes-CIS-L2",
-      "title": "evidence missing — %s not collected",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2_stmt",
-        "name": "statement",
-        "prose": "evidence missing — %s not collected"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.1",
-      "title": "API server anonymous-auth flag must be false",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.1_stmt",
-        "name": "statement",
-        "prose": "API server anonymous-auth flag must be false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.5",
-      "title": "API server --kubelet-certificate-authority set",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.5_stmt",
-        "name": "statement",
-        "prose": "API server --kubelet-certificate-authority set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.10",
-      "title": "API server admission control: EventRateLimit enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.10_stmt",
-        "name": "statement",
-        "prose": "API server admission control: EventRateLimit enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.11",
-      "title": "API server admission control: AlwaysPullImages enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.11_stmt",
-        "name": "statement",
-        "prose": "API server admission control: AlwaysPullImages enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.13",
-      "title": "API server --disable-admission-plugins must not include SecurityContextDeny if PodSecurity admitted",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.13_stmt",
-        "name": "statement",
-        "prose": "API server --disable-admission-plugins must not include SecurityContextDeny if PodSecurity admitted"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.18",
-      "title": "API server --insecure-bind-address not set",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.18_stmt",
-        "name": "statement",
-        "prose": "API server --insecure-bind-address not set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.19",
-      "title": "API server --insecure-port set to 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.19"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.19"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.19_stmt",
-        "name": "statement",
-        "prose": "API server --insecure-port set to 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.22",
-      "title": "API server --audit-log-maxage set to 30 or more days",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.22_stmt",
-        "name": "statement",
-        "prose": "API server --audit-log-maxage set to 30 or more days"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.23",
-      "title": "API server --audit-log-maxbackup set to 10 or more files",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.23"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.23"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.23_stmt",
-        "name": "statement",
-        "prose": "API server --audit-log-maxbackup set to 10 or more files"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.24",
-      "title": "API server --audit-log-maxsize set to 100 MB or more",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.24"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.24"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.24_stmt",
-        "name": "statement",
-        "prose": "API server --audit-log-maxsize set to 100 MB or more"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.25",
-      "title": "API server audit policy file configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.25"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.25"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.25_stmt",
-        "name": "statement",
-        "prose": "API server audit policy file configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.27",
-      "title": "API server --service-account-lookup set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.27"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.27"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.27_stmt",
-        "name": "statement",
-        "prose": "API server --service-account-lookup set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.31",
-      "title": "API server --encryption-provider-config set (secrets encrypted at rest)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.31"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.31"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.31_stmt",
-        "name": "statement",
-        "prose": "API server --encryption-provider-config set (secrets encrypted at rest)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.2.32",
-      "title": "API server encryption provider uses aescbc or kms (not identity)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.2.32"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.2.32"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.2.32_stmt",
-        "name": "statement",
-        "prose": "API server encryption provider uses aescbc or kms (not identity)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.3.2",
-      "title": "Controller manager --profiling flag set to false",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.3.2_stmt",
-        "name": "statement",
-        "prose": "Controller manager --profiling flag set to false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.3.4",
-      "title": "Controller manager --use-service-account-credentials set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.3.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.3.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.3.4_stmt",
-        "name": "statement",
-        "prose": "Controller manager --use-service-account-credentials set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.3.6",
-      "title": "Controller manager RotateKubeletServerCertificate feature gate enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.3.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.3.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.3.6_stmt",
-        "name": "statement",
-        "prose": "Controller manager RotateKubeletServerCertificate feature gate enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-1.4.1",
-      "title": "Scheduler --profiling flag set to false",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 1.4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 1.4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-1.4.1_stmt",
-        "name": "statement",
-        "prose": "Scheduler --profiling flag set to false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-2.1",
-      "title": "etcd --cert-file and --key-file set for client TLS",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-2.1_stmt",
-        "name": "statement",
-        "prose": "etcd --cert-file and --key-file set for client TLS"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-2.2",
-      "title": "etcd --client-cert-auth set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-2.2_stmt",
-        "name": "statement",
-        "prose": "etcd --client-cert-auth set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-2.6",
-      "title": "etcd --peer-cert-file and --peer-key-file configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-2.6_stmt",
-        "name": "statement",
-        "prose": "etcd --peer-cert-file and --peer-key-file configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-2.7",
-      "title": "etcd --peer-client-cert-auth set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 2.7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 2.7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-2.7_stmt",
-        "name": "statement",
-        "prose": "etcd --peer-client-cert-auth set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-3.2.1",
-      "title": "Audit log policy covers metadata level for all API groups",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 3.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 3.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-3.2.1_stmt",
-        "name": "statement",
-        "prose": "Audit log policy covers metadata level for all API groups"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-3.2.2",
-      "title": "Audit log policy captures RequestResponse for sensitive resources",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 3.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 3.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-3.2.2_stmt",
-        "name": "statement",
-        "prose": "Audit log policy captures RequestResponse for sensitive resources"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.1",
-      "title": "Kubelet --anonymous-auth set to false",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.1_stmt",
-        "name": "statement",
-        "prose": "Kubelet --anonymous-auth set to false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.5",
-      "title": "Kubelet --streaming-connection-idle-timeout must not be set to 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.5_stmt",
-        "name": "statement",
-        "prose": "Kubelet --streaming-connection-idle-timeout must not be set to 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.6",
-      "title": "Kubelet --protect-kernel-defaults set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.6_stmt",
-        "name": "statement",
-        "prose": "Kubelet --protect-kernel-defaults set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.9",
-      "title": "Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.9_stmt",
-        "name": "statement",
-        "prose": "Kubelet --event-qps must be 0 or at least 5 (appropriate event capture)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.10",
-      "title": "Kubelet --tls-cert-file and --tls-private-key-file set",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.10_stmt",
-        "name": "statement",
-        "prose": "Kubelet --tls-cert-file and --tls-private-key-file set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.11",
-      "title": "Kubelet --rotate-certificates set to true",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.11_stmt",
-        "name": "statement",
-        "prose": "Kubelet --rotate-certificates set to true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-4.2.12",
-      "title": "Kubelet RotateKubeletServerCertificate feature gate enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 4.2.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 4.2.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-4.2.12_stmt",
-        "name": "statement",
-        "prose": "Kubelet RotateKubeletServerCertificate feature gate enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.1.3",
-      "title": "Minimize wildcard use in ClusterRoles and Roles",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.1.3_stmt",
-        "name": "statement",
-        "prose": "Minimize wildcard use in ClusterRoles and Roles"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.2",
-      "title": "Minimize admission of privileged containers",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.2_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of privileged containers"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.3",
-      "title": "Minimize admission of containers wishing to share host PID namespace",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.3_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of containers wishing to share host PID namespace"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.4",
-      "title": "Minimize admission of containers wishing to share host IPC namespace",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.4_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of containers wishing to share host IPC namespace"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.5",
-      "title": "Minimize admission of containers with host network",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.5_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of containers with host network"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.6",
-      "title": "Minimize admission of containers with allowPrivilegeEscalation",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.6_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of containers with allowPrivilegeEscalation"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.2.9",
-      "title": "Minimize admission of containers with added capabilities",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.2.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.2.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.2.9_stmt",
-        "name": "statement",
-        "prose": "Minimize admission of containers with added capabilities"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.3.2",
-      "title": "All namespaces should have a Network Policy defined",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.3.2_stmt",
-        "name": "statement",
-        "prose": "All namespaces should have a Network Policy defined"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.4.1",
-      "title": "Prefer using Secrets as files over Secrets as environment variables",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.4.1_stmt",
-        "name": "statement",
-        "prose": "Prefer using Secrets as files over Secrets as environment variables"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.7.2",
-      "title": "checked condition — admission of containers with securityContext allowPrivilegeEscalation=false",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.7.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.7.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.7.2_stmt",
-        "name": "statement",
-        "prose": "checked condition — admission of containers with securityContext allowPrivilegeEscalation=false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_kubernetes-CIS-L2-5.7.3",
-      "title": "Apply Security Context to Pods and Containers",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS L2 5.7.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS L2 5.7.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_kubernetes.l2"
-       }
-      ],
-      "links": [
-       {
-        "href": "#37338331-9ed2-5537-8948-8744bf9bbbf7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_kubernetes-CIS-L2-5.7.3_stmt",
-        "name": "statement",
-        "prose": "Apply Security Context to Pods and Containers"
+        "prose": "Worker nodes"
        }
       ],
       "class": "security"
@@ -1679,8 +4823,8 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "acca57d9-8faf-5f55-821b-79ea0154ee53",
-     "title": "CIS Kubernetes Benchmark v2.0.0",
+     "uuid": "40fe17d5-c0ff-5292-bde9-91729201cae8",
+     "title": "CIS Kubernetes Benchmark v2.1.0",
      "props": [
       {
        "name": "rego-package",
@@ -1690,24 +4834,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/kubernetes/cis_kubernetes_benchmark.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "37338331-9ed2-5537-8948-8744bf9bbbf7",
-     "title": "CIS Kubernetes Benchmark v1.10.0 - Level 2 Additional Controls",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "cis_kubernetes.l2"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/kubernetes/l2_validation.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/kubernetes/cis_kubernetes.rego",
        "media-type": "text/plain"
       }
      ]
