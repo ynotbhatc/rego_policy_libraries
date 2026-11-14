@@ -20,14 +20,21 @@ import html
 import json
 import pathlib
 import re
+import subprocess
 import sys
 from collections import defaultdict
+from datetime import date
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://ynotbhatc.github.io/rego_policy_libraries"
 REPO = "https://github.com/ynotbhatc/rego_policy_libraries/blob/main"
+GITHUB = "https://github.com/ynotbhatc/rego_policy_libraries"
+SITE_NAME = "Rego Policy Libraries"
 OUTDIR = ROOT / "standard"
 MIN_POLICIES = 4          # below this a page is too thin to be worth indexing
+# ...unless the standard is one people search for by name. File count is a poor proxy for size:
+# FedRAMP is two files (the baselines and the adapter) and was silently skipped, so its URL 404ed.
+ALWAYS = {"frameworks/federal/fedramp"}
 
 # Display names and search-intent descriptions for the standards that people
 # actually search for. Anything not listed falls back to a derived title.
@@ -95,6 +102,58 @@ def slug(key):
     return key.replace("/", "-").replace("_", "-")
 
 
+def figures():
+    """The published figures, from the two places count_controls.py --check-readme verifies in CI:
+    docs/metrics.json (control-level checks) and the README count line. Nothing here is typed by hand."""
+    readme = (ROOT / "README.md").read_text(errors="ignore")
+
+    def grab(pattern):
+        m = re.search(pattern, readme)
+        return m.group(1) if m else None
+
+    checks = grab(r"\*\*([0-9][0-9,]+) control-level checks")
+    try:
+        checks = json.loads((ROOT / "docs" / "metrics.json").read_text())["message"]
+    except (OSError, ValueError, KeyError):
+        pass
+    m_ver = re.search(r"^## \[(\d+\.\d+\.\d+)\]", (ROOT / "CHANGELOG.md").read_text(errors="ignore"), re.M)
+    return {
+        "checks": checks or "24,009",
+        "files": grab(r"\*\*([0-9][0-9,]+) production-ready Rego policies") or "953",
+        "catalogs": grab(r"control-level checks across ([0-9]+) framework catalogs"),
+        "stig_platforms": grab(r"DISA STIGs — ([0-9]+) platforms"),
+        "version": m_ver.group(1) if m_ver else None,
+    }
+
+
+def lastmod(*paths):
+    """Date of the last commit that touched any of the paths; the build date when git cannot say."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", *paths], cwd=ROOT,
+                             capture_output=True, text=True, timeout=30).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        out = ""
+    return out if re.fullmatch(r"\d{4}-\d{2}-\d{2}", out) else date.today().isoformat()
+
+
+def social_head(title, desc, canonical, jsonld=None):
+    """Canonical link, Open Graph and Twitter card tags, and optional JSON-LD. Text only: no images, no scripts
+    that run, no tracking."""
+    t, d = html.escape(title), html.escape(desc)
+    out = f"""<link rel="canonical" href="{canonical}">
+<meta property="og:title" content="{t}">
+<meta property="og:description" content="{d}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{canonical}">
+<meta property="og:site_name" content="{SITE_NAME}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{t}">
+<meta name="twitter:description" content="{d}">"""
+    if jsonld:
+        out += '\n<script type="application/ld+json">\n' + json.dumps(jsonld, indent=2).replace("</", "<\\/") + "\n</script>"
+    return out
+
+
 def page(title, desc, canonical, body, css):
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -103,11 +162,7 @@ def page(title, desc, canonical, body, css):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="{canonical}">
-<meta property="og:title" content="{html.escape(title)}">
-<meta property="og:description" content="{html.escape(desc)}">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{canonical}">
+{social_head(title, desc, canonical)}
 <style>{css}</style>
 </head>
 <body>
@@ -118,6 +173,10 @@ def page(title, desc, canonical, body, css):
 
 
 def main():
+    # the homepage first: it is generated too, and its CSS is what every other page reuses
+    import gen_pages_catalog
+    gen_pages_catalog.main()
+
     css = (ROOT / "index.html").read_text()
     m = re.search(r"<style>(.*?)</style>", css, re.S)
     css = m.group(1).strip() if m else ""
@@ -135,8 +194,9 @@ def main():
 
     OUTDIR.mkdir(exist_ok=True)
     built = []
+    modified = {}   # page url -> <lastmod>
     for key, files in sorted(groups.items()):
-        if len(files) < MIN_POLICIES:
+        if len(files) < MIN_POLICIES and key not in ALWAYS:
             continue
         name, blurb = NAMES.get(key, (key.split("/")[-1].replace("_", " ").title(),
                                       f"{key} policies"))
@@ -196,13 +256,11 @@ first contribution — each is small, self-contained, and either passes
 """
         (OUTDIR / f"{s}.html").write_text(page(title, desc, canonical, body, css))
         built.append((s, name, len(files)))
+        modified[canonical] = lastmod(key)
 
     # the positioning page: answers "largest policy library" directly, with structured data
-    count_line = (ROOT / "README.md").read_text(errors="ignore")
-    m_checks = re.search(r"\*\*([0-9][0-9,]+) control-level checks", count_line)
-    checks = m_checks.group(1) if m_checks else "14,318"
-    m_files = re.search(r"\*\*([0-9][0-9,]+) production-ready Rego policies", count_line)
-    files_n = m_files.group(1) if m_files else "770"
+    fig = figures()
+    checks, files_n = fig["checks"], fig["files"]
     landing_title = "The Largest Open Policy Library: " + checks + " Executable Compliance Checks in OPA Rego"
     landing_desc = ("The largest open library of executable compliance policy anyone can verify: " + checks +
                     " control-level checks across " + str(len(built)) + " standards (CIS, DISA STIG, NIST, ISO 27001, SOC 2, "
@@ -294,11 +352,16 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
     compare_urls = [f"{SITE}/compare/{c[0]}.html" for c in COMPETITORS]
 
     # sitemap
+    # <lastmod> is the last commit that touched what the page is made from: the policy directory for a
+    # standard page, the policy trees for the homepage, and this script plus the README count line for the rest.
+    policy_trees = ["benchmarks", "frameworks", "governance", "enforcement", "threat_detection"]
+    modified[f"{SITE}/"] = lastmod(*policy_trees, "scripts/gen_pages_catalog.py")
+    generated = lastmod("scripts/build_site.py", "README.md", "docs/metrics.json")
     urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html"] + compare_urls + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
-        sm.append(f"  <url><loc>{u}</loc></url>")
+        sm.append(f"  <url><loc>{u}</loc><lastmod>{modified.get(u, generated)}</lastmod></url>")
     sm.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n")
 
@@ -307,8 +370,7 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
 
     # llms.txt (llmstxt.org): a plain-text summary for LLM crawlers. Every figure is read from the
     # same README line count_controls.py --check-readme verifies, so it cannot drift from the tree.
-    m_cat = re.search(r"control-level checks across ([0-9]+) framework catalogs", count_line)
-    catalogs = m_cat.group(1) if m_cat else None
+    catalogs = fig["catalogs"]
     scope = f"{checks} control-level checks in {files_n} policy files"
     if catalogs:
         scope += f", mapped to {catalogs} framework catalogs"
