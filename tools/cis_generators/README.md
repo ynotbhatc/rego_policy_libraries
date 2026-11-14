@@ -81,6 +81,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   `<Directory>` blocks, modules, permissions, probes) and fail closed with an evidence-missing message. Sections 11
   (SELinux) and 12 (AppArmor) are selected by `input.apache.platform.mac`. Run `opa fmt -w` afterwards.
 
+- `dump_workbook.py <workbook.xlsx> <out.json>`, then `gen_kubernetes.py <out.json> benchmarks/cis/kubernetes`: CIS
+  Kubernetes Benchmark v2.1.0, all 134 recommendations (65 Automated, 69 Manual) across the Level 1/Level 2 Master
+  Node and Worker Node profiles, which `input.cis_profile` (`level`, `role`) selects. Replaces the earlier hand-written
+  module in place and keeps the `cis_kubernetes.main` entrypoint. 97 are decided from facts on the DISA Kubernetes
+  STIG module's input contract (flag maps, kubelet configuration, `files.<group>` with octal bit-mask modes) and fail
+  closed; 37 judgement items are attestations. Aborts on any id, count, status, profile or title-keyword mismatch
+  with the workbook. Run `opa fmt -w` afterwards.
+
 - `gen_rhel_9.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0,
   352 recommendations, written into the existing rhel_9 package paths (14 section packages, roll-up
   `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
