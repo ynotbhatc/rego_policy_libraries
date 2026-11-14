@@ -1192,6 +1192,11 @@ sku_collected(x) if is_string(p(x, "sku").name)
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
+# Storage minimum TLS (9.2.4): the benchmark asks for TLS 1.2; a stricter minimum (TLS 1.3) also meets it.
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_2")
+
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_3")
+
 truthy(v) if v == true
 
 truthy(v) if {
@@ -4393,11 +4398,11 @@ _messages contains "9.2.4: evidence missing — input.storage_accounts not colle
 	not _ev_9_2_4
 }
 
-_messages contains sprintf("9.2.4: required value of the 'Minimum TLS version' for Storage Accounts is 'Version 1.2' — storage account %v does not set the minimum TLS version to TLS1_2", [nm(x)]) if {
+_messages contains sprintf("9.2.4: required value of the 'Minimum TLS version' for Storage Accounts is 'Version 1.2' — storage account %v does not set the minimum TLS version to TLS1_2 or later", [nm(x)]) if {
 	_in_scope("9.2.4")
 	_ev_9_2_4
 	some x in input.storage_accounts
-	not p_ieq(x, "minimumTlsVersion", "TLS1_2")
+	not storage_min_tls_ok(x)
 }
 
 # 9.2.5 (Automated, Level 1)

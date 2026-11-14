@@ -26,6 +26,11 @@ sku_collected(x) if is_string(p(x, "sku").name)
 
 p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
 
+# Storage minimum TLS (9.2.4): the benchmark asks for TLS 1.2; a stricter minimum (TLS 1.3) also meets it.
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_2")
+
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_3")
+
 truthy(v) if v == true
 
 truthy(v) if {

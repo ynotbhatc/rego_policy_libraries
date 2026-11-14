@@ -639,7 +639,7 @@ for _cid, _kw, _body, _what, _fail in [
          "does not default to Microsoft Entra authorization in the portal", rm(f"/{SA}/1/defaultToOAuthAuthentication")),
         ("9.2.3", "secure transfer", "not https_only(x)", "accepts requests over plain HTTP",
          add(f"/{SA}/0/enableHttpsTrafficOnly", False)),
-        ("9.2.4", "minimum tls version", 'not p_ieq(x, "minimumTlsVersion", "TLS1_2")', "does not set the minimum TLS version to TLS1_2",
+        ("9.2.4", "minimum tls version", 'not storage_min_tls_ok(x)', "does not set the minimum TLS version to TLS1_2 or later",
          add(f"/{SA}/0/minimumTlsVersion", "TLS1_0")),
         ("9.2.5", "blob anonymous access", 'not p_false(x, "allowBlobPublicAccess")', "does not have anonymous blob access disabled",
          rm(f"/{SA}/1/allowBlobPublicAccess"))]:
@@ -1209,6 +1209,18 @@ test_missing_property_is_a_finding if {
 	vs := b.violations with input as inp
 	_has_id(vs, "9.2.4")
 	_has_id(vs, "8.3.8")
+}
+
+test_storage_tls13_minimum_meets_9_2_4 if {
+	inp := json.patch(green, [{"op": "replace", "path": "/storage_accounts/0/minimumTlsVersion", "value": "TLS1_3"}])
+	vs := b.violations with input as inp
+	not _has_id(vs, "9.2.4")
+}
+
+test_storage_tls11_minimum_fails_9_2_4 if {
+	inp := json.patch(green, [{"op": "replace", "path": "/storage_accounts/0/minimumTlsVersion", "value": "TLS1_1"}])
+	vs := b.violations with input as inp
+	_has_id(vs, "9.2.4")
 }
 
 test_nested_properties_shape if {

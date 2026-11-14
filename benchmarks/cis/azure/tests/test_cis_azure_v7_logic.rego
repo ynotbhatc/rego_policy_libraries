@@ -110,6 +110,18 @@ test_missing_property_is_a_finding if {
 	_has_id(vs, "8.3.8")
 }
 
+test_storage_tls13_minimum_meets_9_2_4 if {
+	inp := json.patch(green, [{"op": "replace", "path": "/storage_accounts/0/minimumTlsVersion", "value": "TLS1_3"}])
+	vs := b.violations with input as inp
+	not _has_id(vs, "9.2.4")
+}
+
+test_storage_tls11_minimum_fails_9_2_4 if {
+	inp := json.patch(green, [{"op": "replace", "path": "/storage_accounts/0/minimumTlsVersion", "value": "TLS1_1"}])
+	vs := b.violations with input as inp
+	_has_id(vs, "9.2.4")
+}
+
 test_nested_properties_shape if {
 	inp := json.patch(green, [{"op": "add", "path": "/storage_accounts", "value": [{
 		"name": "starm", "kind": "StorageV2", "properties": {
