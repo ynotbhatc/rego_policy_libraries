@@ -160,6 +160,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   `rh(<rhel id>, <keyword>)`, which checks the RHEL 9 keyword too; the mapping is by audit procedure, not by
   id. Same Linux fact contract as rhel_9. Aborts on any count, status, profile, logic or title-keyword
   mismatch with the workbook. Run `opa fmt -w benchmarks/cis/amazon_linux_2023` afterwards.
+- `gen_azure.py <workbook.xlsx | dump.json> benchmarks/cis/azure`: CIS Microsoft Azure Foundations Benchmark v7.0.0,
+  all 128 recommendations (100 Automated, 28 Manual; 73 Level 1, 55 Level 2), replacing the v3.0.0 module in place
+  (engine `cis_azure`, entrypoint `cis_azure.main`, Level 2 view `cis_azure.l2`). Reads the workbook through
+  `dump_workbook.py` and the `cis_genlib.py` reader; helper rules are in `azure_lib.rego.tmpl`. The input is one list
+  per Azure service (storage accounts, key vaults, NSGs, Defender plans, diagnostic settings, Entra settings, ...):
+  an empty list passes, an absent list is evidence missing, a resource without the audited property is a finding.
+  The 28 Manual recommendations are attestations. `input.cis_profile.level` selects Level 1 or Level 1 + 2. Each logic
+  entry carries a title keyword; the run aborts on any count, id, status or keyword mismatch, and runs `opa fmt -w`.
 
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
