@@ -62,6 +62,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   ufw, Ubuntu unit names). Each logic entry carries a title keyword; the run aborts on any count, status,
   logic or keyword mismatch with the workbook.
 
+- `gen_ubuntu_24_04.py <workbook.xlsx> [fields.json]`: CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1,
+  332 recommendations (317 Automated, 15 Manual) into `benchmarks/cis/ubuntu_24_04/`, in the ubuntu_26_04
+  layout and on its input contract. Imports `gen_ubuntu_26_04.py` for the reader, builders, helpers and
+  emitters and holds only the 24.04 differences: the renumbering table, the 26.04 entries 24.04 lacks, and the
+  entries written from the 24.04 audit procedures (both-architecture audit rules, Automated post-quantum key
+  exchange, ListenAddress and so on). Same abort rules as the 26.04 generator. Writes only generated files:
+  the hand-written `cis_ubuntu_2404_key_main.rego` bridge and README stay. Run `opa fmt -w` afterwards.
+
 - `gen_sql_server_2025.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2025 Benchmark v1.0.0,
   49 recommendations; Database Engine and AWS RDS profiles (`input.cis_profile.platform`).
 

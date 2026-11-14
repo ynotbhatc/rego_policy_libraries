@@ -121,7 +121,7 @@ test_amazon2023_detects_violations_on_empty_input if {
 
 # --- derived policy sets must stay flagged -----------------------------------
 #
-# debian_11, rocky_linux_9 and ubuntu_24_04 contain copies of another
+# debian_11 and rocky_linux_9 contain copies of another
 # platform's controls (verified byte-identical by diff). They must never
 # advertise a benchmark version they do not implement, and consumers must be
 # able to detect the derivation programmatically.
@@ -129,7 +129,6 @@ test_amazon2023_detects_violations_on_empty_input if {
 derived_reports := [
 	data.cis_debian_11.main.compliance_report,
 	data.cis_rocky_linux_9.main.compliance_report,
-	data.cis_ubuntu_24_04.main.compliance_report,
 ]
 
 test_derived_sets_are_flagged if {
@@ -144,7 +143,13 @@ test_derived_sets_are_flagged if {
 test_derived_sets_do_not_claim_own_benchmark if {
 	not contains(data.cis_debian_11.main.compliance_report.benchmark, "CIS Debian")
 	not contains(data.cis_rocky_linux_9.main.compliance_report.benchmark, "CIS Rocky Linux 9")
-	not contains(data.cis_ubuntu_24_04.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
+}
+
+# ubuntu_24_04 is no longer derived: it is generated from the CIS Ubuntu 24.04 v2.0.1 workbook.
+test_ubuntu2404_is_the_real_benchmark if {
+	r := data.cis_ubuntu_24_04.main.compliance_report
+	not "derived" in object.keys(r)
+	r.benchmark == "CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1"
 }
 
 # --- fail-closed on missing facts -------------------------------------------
