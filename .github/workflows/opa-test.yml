@@ -80,9 +80,11 @@ jobs:
           [ "$rc" -eq 1 ] || { echo "::error::evaluate.sh exit $rc, expected 1 (non-compliant) on empty facts"; exit 1; }
           rm -f report.json
 
-      - name: Converters — build wasm and run the round-trip test (skips without a wasm engine)
+      - name: Converters — build the per-class wasm bundles and run the round-trip test (skips without a wasm engine)
         run: |
-          make wasm
+          # Per-class bundles only: the combined "all" bundle peaks near the runner's 16 GB and was
+          # killed on the OPA 1.10.0 leg. converters.yml still builds it on every release tag.
+          make wasm-classes
           python3 -m pip install -q jsonschema
           make check-converters 2>&1 | tee /tmp/cc.log
           ! grep -q '^SKIP schema validation' /tmp/cc.log
