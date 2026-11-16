@@ -121,16 +121,12 @@ test_amazon2023_detects_violations_on_empty_input if {
 
 # --- derived policy sets must stay flagged -----------------------------------
 #
-# debian_11, rocky_linux_9 and ubuntu_24_04 contain copies of another
+# debian_11 contains a copy of another
 # platform's controls (verified byte-identical by diff). They must never
 # advertise a benchmark version they do not implement, and consumers must be
 # able to detect the derivation programmatically.
 
-derived_reports := [
-	data.cis_debian_11.main.compliance_report,
-	data.cis_rocky_linux_9.main.compliance_report,
-	data.cis_ubuntu_24_04.main.compliance_report,
-]
+derived_reports := [data.cis_debian_11.main.compliance_report]
 
 test_derived_sets_are_flagged if {
 	every r in derived_reports {
@@ -143,8 +139,22 @@ test_derived_sets_are_flagged if {
 
 test_derived_sets_do_not_claim_own_benchmark if {
 	not contains(data.cis_debian_11.main.compliance_report.benchmark, "CIS Debian")
-	not contains(data.cis_rocky_linux_9.main.compliance_report.benchmark, "CIS Rocky Linux 9")
-	not contains(data.cis_ubuntu_24_04.main.compliance_report.benchmark, "CIS Ubuntu Linux 24.04")
+}
+
+# ubuntu_24_04 is no longer derived: it is generated from the CIS Ubuntu 24.04 v2.0.1 workbook.
+test_ubuntu2404_is_the_real_benchmark if {
+	r := data.cis_ubuntu_24_04.main.compliance_report
+	not "derived" in object.keys(r)
+	r.benchmark == "CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1"
+}
+
+# rocky_linux_9 was a derived set (a copy of rocky_linux_8) until it was rebuilt from the CIS Rocky Linux 9
+# v3.0.0 workbook; it now names its own benchmark and carries no derivation flag.
+test_rocky9_is_its_own_benchmark if {
+	r := data.cis_rocky_linux_9.main.compliance_report
+	r.benchmark == "CIS Rocky Linux 9 Benchmark v3.0.0"
+	not "derived" in object.keys(r)
+	r.standard_total == 352
 }
 
 # --- fail-closed on missing facts -------------------------------------------

@@ -37,6 +37,11 @@ WORKBOOK_VERIFIED = (
     "benchmarks/cis/postgresql/cis_postgresql_17.rego",
     "benchmarks/cis/network_devices/arista/", "benchmarks/cis/network_devices/pfsense/",
     "benchmarks/cis/network_devices/opnsense/", "benchmarks/cis/network_devices/fortinet/",
+    # workbook batch 1 (2026-11-14): generated from the CIS workbooks, ids checked by the generators
+    "benchmarks/cis/rocky_linux_9/", "benchmarks/cis/ubuntu_24_04/", "benchmarks/cis/debian_12/",
+    "benchmarks/cis/debian_13/", "benchmarks/cis/amazon_linux_2023/", "benchmarks/cis/kubernetes/",
+    "benchmarks/cis/docker/", "benchmarks/cis/azure/", "benchmarks/cis/network_devices/palo_alto/",
+    "benchmarks/cis/windows_server_2016_modular/",
 )
 
 

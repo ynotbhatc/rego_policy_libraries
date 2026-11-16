@@ -1,0 +1,411 @@
+# ── profile and applicability ────────────────────────────────────────────────
+default _level := 2
+
+_level := 1 if input.cis_profile.level in {1, "1"}
+
+default _level_defaulted := true
+
+_level_defaulted := false if input.cis_profile.level in {1, 2, "1", "2"}
+
+# swarm state as collected: "inactive", "active", "pending", "locked", "error"; "unknown" when not collected
+default _swarm_state := "unknown"
+
+_swarm_state := lower(s) if {
+	s := input.docker.info.Swarm.LocalNodeState
+	is_string(s)
+	trim_space(s) != ""
+}
+
+default _swarm_selection := "auto"
+
+_swarm_selection := "forced_in" if input.cis_profile.swarm == true
+
+_swarm_selection := "forced_out" if input.cis_profile.swarm == false
+
+default _swarm_applies := false
+
+_swarm_applies if _swarm_selection == "forced_in"
+
+_swarm_applies if {
+	_swarm_selection == "auto"
+	_swarm_state != "inactive"
+}
+
+_swarm_reason := "input.cis_profile.swarm is true: Swarm recommendations apply" if _swarm_selection == "forced_in"
+
+_swarm_reason := "input.cis_profile.swarm is false: Swarm recommendations left out by the operator" if _swarm_selection == "forced_out"
+
+_swarm_reason := "swarm mode is inactive on this engine: Swarm recommendations do not apply" if {
+	_swarm_selection == "auto"
+	_swarm_state == "inactive"
+}
+
+_swarm_reason := "swarm state was not collected (docker.info.Swarm.LocalNodeState): Swarm recommendations apply" if {
+	_swarm_selection == "auto"
+	_swarm_state == "unknown"
+}
+
+_swarm_reason := sprintf("swarm mode is %s on this engine: Swarm recommendations apply", [_swarm_state]) if {
+	_swarm_selection == "auto"
+	not _swarm_state in {"inactive", "unknown"}
+}
+
+default _swarm_role := "unknown"
+
+_swarm_role := "manager" if input.docker.info.Swarm.ControlAvailable == true
+
+_swarm_role := "worker" if input.docker.info.Swarm.ControlAvailable == false
+
+swarm_profile := {
+	"state": _swarm_state,
+	"selection": _swarm_selection,
+	"applicable": _swarm_applies,
+	"role": _swarm_role,
+	"reason": _swarm_reason,
+}
+
+_known_mac := {"selinux", "apparmor", "none"}
+
+default _mac := {"selinux", "apparmor"}
+
+_mac := {m} - {"none"} if {
+	m := lower(input.docker.platform.mac)
+	m in _known_mac
+}
+
+_applies(id) if {
+	r := recommendations[id]
+	r.level <= _level
+	_swarm_ok(r)
+	_mac_ok(r)
+}
+
+_swarm_ok(r) if r.swarm == false
+
+_swarm_ok(r) if {
+	r.swarm == true
+	_swarm_applies
+	_manager_ok(r)
+}
+
+_manager_ok(r) if r.manager_only == false
+
+_manager_ok(_) if _swarm_role != "worker"
+
+_mac_ok(r) if not r.mac
+
+_mac_ok(r) if r.mac in _mac
+
+# ── evidence presence ────────────────────────────────────────────────────────
+default _audit_collected := false
+
+_audit_collected if is_array(input.auditd.active_rules)
+
+default _daemon_collected := false
+
+_daemon_collected if is_object(input.docker.daemon)
+
+default _networks_collected := false
+
+_networks_collected if is_array(input.docker.networks)
+
+default _containers_collected := false
+
+_containers_collected if is_array(input.docker.containers)
+
+default _images_collected := false
+
+_images_collected if is_array(input.docker.images)
+
+# ── small helpers ────────────────────────────────────────────────────────────
+_nonempty(s) if {
+	is_string(s)
+	trim_space(s) != ""
+}
+
+# docker prints an unset list as null; anything that is neither a list nor null stays undefined (fails closed)
+_as_list(x) := x if is_array(x)
+
+_as_list(x) := [] if is_null(x)
+
+_policy(name, dflt) := object.get(input, ["docker", "policy", name], dflt)
+
+# ── audit rules ──────────────────────────────────────────────────────────────
+# live rules only: a commented-out line is not a rule
+_audit_rules := [trim_space(r) |
+	some r in input.auditd.active_rules
+	is_string(r)
+	not startswith(trim_space(r), "#")
+]
+
+_path_forms(p) := {p, concat("", [p, "/"])}
+
+# a rule names the path as a whole token (-w <path>, -F path=<path>, -F dir=<path>, -F exe=<path>),
+# so /usr/bin/containerd is not satisfied by a rule for /usr/bin/containerd-shim
+_audited(p) if {
+	_nonempty(p)
+	q := _strip_slash(p)
+	some r in _audit_rules
+	some t in regex.split(`\s+`, r)
+	_token_path(t) in _path_forms(q)
+}
+
+_token_path(t) := t if startswith(t, "/")
+
+_token_path(t) := v if {
+	some pre in ["path=", "dir=", "exe="]
+	startswith(t, pre)
+	v := trim_prefix(t, pre)
+}
+
+_strip_slash(p) := p if p == "/"
+
+_strip_slash(p) := trim_right(p, "/") if p != "/"
+
+_fpath(k, _) := input.docker.files[k].path if _nonempty(input.docker.files[k].path)
+
+_fpath(k, dflt) := dflt if not _nonempty(object.get(input, ["docker", "files", k, "path"], ""))
+
+_absent(k) if input.docker.files[k].exists == false
+
+# the target is not on this host (collected fact), or a live rule covers it
+_audit_ok(k, _) if _absent(k)
+
+_audit_ok(k, dflt) if {
+	not _absent(k)
+	_audited(_fpath(k, dflt))
+}
+
+# ── files ────────────────────────────────────────────────────────────────────
+_file_known(k) if is_boolean(input.docker.files[k].exists)
+
+_owned(k, _, _) if _absent(k)
+
+_owned(k, o, g) if {
+	x := input.docker.files[k]
+	x.exists == true
+	x.owner == o
+	x.group == g
+}
+
+_mode_ok(k, _) if _absent(k)
+
+_mode_ok(k, most) if {
+	x := input.docker.files[k]
+	x.exists == true
+	mode_within(x.mode, most)
+}
+
+# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond most (both octal strings): a bit mask, never a string or decimal comparison
+mode_within(mode, most) if bits.and(octal(mode), bits.and(bits.negate(octal(most)), 4095)) == 0
+
+# ── daemon ───────────────────────────────────────────────────────────────────
+_d(k, dflt) := object.get(input.docker.daemon, k, dflt)
+
+_daemon_tcp if {
+	some h in _as_list(_d("hosts", []))
+	startswith(lower(trim_space(h)), "tcp://")
+}
+
+_loopback_cidrs := {"127.0.0.0/8", "::1/128"}
+
+_remote_log_drivers := {"syslog", "gelf", "fluentd", "awslogs", "splunk", "gcplogs"}
+
+# docker info SecurityOptions entries look like "name=seccomp,profile=builtin"
+_secopt(name) if {
+	some o in input.docker.info.SecurityOptions
+	some part in split(o, ",")
+	trim_space(part) == concat("", ["name=", name])
+}
+
+_seccomp_unconfined if {
+	some o in input.docker.info.SecurityOptions
+	ps := {trim_space(p) | some p in split(o, ",")}
+	"name=seccomp" in ps
+	"profile=unconfined" in ps
+}
+
+# ── networks ─────────────────────────────────────────────────────────────────
+_options(n) := n.Options if is_object(n.Options)
+
+_options(n) := {} if not is_object(n.Options)
+
+_opt(n, k) := lower(sprintf("%v", [object.get(_options(n), k, "")]))
+
+_has_opt(n, k) if k in object.keys(_options(n))
+
+_default_bridges := [n | some n in input.docker.networks; n.Name == "bridge"]
+
+_overlays := [n | some n in input.docker.networks; lower(n.Driver) == "overlay"]
+
+_docker0_networks := {n.Name |
+	some n in input.docker.networks
+	_opt(n, "com.docker.network.bridge.name") == "docker0"
+}
+
+# ── containers and images ────────────────────────────────────────────────────
+_containers := input.docker.containers
+
+# everything not explicitly stopped: a container with no State is treated as running (fails closed)
+_running := [c | some c in input.docker.containers; not c.State.Running == false]
+
+_images := input.docker.images
+
+_cname(c) := trim_left(c.Name, "/") if _nonempty(c.Name)
+
+_cname(c) := c.Id if {
+	not _nonempty(object.get(c, "Name", ""))
+	_nonempty(c.Id)
+}
+
+_cname(c) := "unnamed container" if {
+	not _nonempty(object.get(c, "Name", ""))
+	not _nonempty(object.get(c, "Id", ""))
+}
+
+_first_tag(i) := t if {
+	ts := object.get(i, "RepoTags", [])
+	is_array(ts)
+	count(ts) > 0
+	t := ts[0]
+}
+
+default _first_tag(_) := ""
+
+_iname(i) := _first_tag(i) if _nonempty(_first_tag(i))
+
+_iname(i) := i.Id if {
+	not _nonempty(_first_tag(i))
+	_nonempty(i.Id)
+}
+
+_iname(i) := "unnamed image" if {
+	not _nonempty(_first_tag(i))
+	not _nonempty(object.get(i, "Id", ""))
+}
+
+_caps(hc, k) := {trim_prefix(upper(trim_space(x)), "CAP_") | some x in _as_list(object.get(hc, k, []))}
+
+_allowed_caps := {trim_prefix(upper(trim_space(x)), "CAP_") | some x in _policy("allowed_added_capabilities", [])}
+
+_allowed_devices := {x | some x in _policy("allowed_host_devices", [])}
+
+_allowed_ports := {to_number(x) | some x in _policy("allowed_privileged_ports", [])}
+
+_allowed_mounts := {_strip_slash(x) | some x in _policy("allowed_sensitive_mounts", [])}
+
+_sensitive_dirs := {"/", "/boot", "/dev", "/etc", "/lib", "/proc", "/sys", "/usr"}
+
+# a read-write (or RW not reported) mount whose host source is a sensitive directory or lies below one
+_sensitive_mount(m) if {
+	_nonempty(m.Source)
+	s := _strip_slash(m.Source)
+	not s in _allowed_mounts
+	_under_sensitive(s)
+	not m.RW == false
+}
+
+_under_sensitive(s) if s in _sensitive_dirs
+
+_under_sensitive(s) if {
+	some d in _sensitive_dirs - {"/"}
+	startswith(s, concat("", [d, "/"]))
+}
+
+_is_docker_sock(m) if regex.match(`(^|/)docker\.sock$`, m.Source)
+
+_is_sshd(p) if not is_string(p)
+
+_is_sshd(p) if regex.match(`(^|[/\s])sshd([\s:]|$)`, p)
+
+# published host bindings of a container; undefined when Ports was not collected (fails closed)
+_bindings(c) := [b |
+	some _, bs in c.NetworkSettings.Ports
+	is_array(bs)
+	some b in bs
+] if is_object(c.NetworkSettings.Ports)
+
+_host_port_ok(b) if {
+	regex.match(`^[0-9]+$`, b.HostPort)
+	to_number(b.HostPort) >= 1024
+}
+
+_host_port_ok(b) if {
+	regex.match(`^[0-9]+$`, b.HostPort)
+	to_number(b.HostPort) in _allowed_ports
+}
+
+_wildcard_addrs := {"", "*", "0.0.0.0", "::", "[::]", "0.0.0.0/0", "::/0"}
+
+_addr_specific(a) if {
+	is_string(a)
+	not lower(trim_space(a)) in _wildcard_addrs
+}
+
+_host_ip_specific(b) if _addr_specific(b.HostIp)
+
+_secopts(c) := _as_list(object.get(c.HostConfig, "SecurityOpt", []))
+
+# "seccomp=unconfined", "seccomp:unconfined", "label=disable", "label:disable"
+_opt_is(o, k, v) if {
+	ps := regex.split(`[=:]`, lower(trim_space(o)))
+	ps[0] == k
+	ps[1] == v
+}
+
+_nnp_on(c) if {
+	some o in _secopts(c)
+	lower(trim_space(o)) == "no-new-privileges"
+}
+
+_nnp_on(c) if {
+	some o in _secopts(c)
+	_opt_is(o, "no-new-privileges", "true")
+}
+
+_nnp_off(c) if {
+	some o in _secopts(c)
+	_opt_is(o, "no-new-privileges", "false")
+}
+
+# a build step that refreshes the package index (apt, apk) without installing or upgrading in the same step
+_update_alone(h) if not is_string(h)
+
+_update_alone(h) if {
+	l := lower(h)
+	regex.match(`(^|[^a-z0-9_-])(apt-get|apt|apk)\s+(-\S+\s+)*update([^a-z0-9_-]|$)`, l)
+	not regex.match(`(^|[^a-z0-9_-])(install|add|upgrade|dist-upgrade|full-upgrade)([^a-z0-9_-]|$)`, l)
+}
+
+# an ADD instruction in the image history; the layer that unpacks the base root filesystem is the one accepted use
+_add_step(h) if not is_string(h)
+
+_add_step(h) if {
+	regex.match(`(^|#\(nop\)\s+)ADD\s`, h)
+	not _base_layer_add(h)
+}
+
+# the step that unpacks a base root filesystem into "/": classic "#(nop) ADD file:<hex> in / " or BuildKit "ADD rootfs.tar.gz / # buildkit"
+_base_layer_add(h) if {
+	t := trim_space(regex.replace(h, `\s#\s*buildkit\s*$`, ""))
+	endswith(t, " /")
+}
+
+_used_image_ids := {c.Image | some c in input.docker.containers}
+
+_unused_images := {i.Id |
+	some i in input.docker.images
+	not i.Id in _used_image_ids
+}
+
+_max_node_cert_ns := _policy("max_node_cert_expiry_days", 90) * 86400000000000
+

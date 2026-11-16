@@ -8,6 +8,80 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — ten CIS benchmarks rebuilt or added from their workbooks (batch 1, 2026-11-14)
+
+Every module below is generated from the CIS workbook by a script in `tools/cis_generators/`. Each generator aborts on
+any mismatch with the workbook in recommendation count, id, Automated/Manual status, profile or title keyword, writes
+only files it generated, and carries no CIS text (ids and status only; our own wording). Automated recommendations are
+decided from collected facts and fail closed with an "evidence missing" finding; judgement items are attestations.
+
+| Module | Benchmark | Recommendations | Replaces |
+|---|---|---|---|
+| `benchmarks/cis/rocky_linux_9/` | CIS Rocky Linux 9 v3.0.0 | 352 | a copy of the Rocky 8 module |
+| `benchmarks/cis/ubuntu_24_04/` | CIS Ubuntu Linux 24.04 LTS v2.0.1 | 332 | a copy of the Ubuntu 22.04 module |
+| `benchmarks/cis/debian_12/` | CIS Debian Linux 12 v2.0.1 | 331 | new (`cis_debian_12`) |
+| `benchmarks/cis/debian_13/` | CIS Debian Linux 13 v1.1.1 | 350 | new (`cis_debian_13`) |
+| `benchmarks/cis/amazon_linux_2023/` | CIS Amazon Linux 2023 v1.0.0 | 243 | a six-control sample |
+| `benchmarks/cis/kubernetes/` | CIS Kubernetes v2.1.0 | 134 | v1.10.0 label, under ten rules |
+| `benchmarks/cis/docker/` | CIS Docker v1.9.0 | 117 | v1.8.0 label, a handful of rules |
+| `benchmarks/cis/azure/` | CIS Microsoft Azure Foundations v7.0.0 | 128 | v3.0.0, far fewer rules than declared |
+| `benchmarks/cis/network_devices/palo_alto/` | CIS Palo Alto Firewall 11 v1.2.1 | 79 | a handful of rules |
+| `benchmarks/cis/windows_server_2016_modular/` | CIS Microsoft Windows Server 2016 v4.0.0 | 422 | `benchmarks/cis/windows_server_2016/` (about 45 checks), removed |
+
+Framework keys and `.main.compliance_report` entrypoints are unchanged for every replaced module. Rocky Linux 9 and
+RHEL 9 v3.0.0 are identical benchmarks, so `gen_rocky_linux_9.py` configures `gen_rhel_9.py` and aborts if the two
+workbooks ever diverge. Debian 13 v1.1.1 and Ubuntu 26.04 v1.0.0 have the same 350 ids and titles and differ in one
+audit procedure (6.2.3.2), so `gen_debian_13.py` overrides only that rule.
+
+### Breaking — input contract changes for collectors
+
+Replaced modules read new facts. Until a collector supplies them, those controls report "evidence missing" (they fail
+closed; they never pass). New fact paths per module:
+
+- **Ubuntu 24.04, Debian 12** (on top of the Ubuntu 26.04 contract): `initial_setup.motd_extra_files[]`,
+  `ssh.openssh_version`, `packages.sudo-ldap`, `sudo.default_timestamp_timeout`, `netplan.dir_exists` (Ubuntu) /
+  `auditd.netplan_dir_exists` (Debian); `auditd.tools` must include all six tools, `autrace` among them.
+- **Amazon Linux 2023** (on top of the RHEL 9 contract): `firewall.nft_ruleset_raw`, `firewall.default_zone`,
+  `ssh.crypto_policy_override_raw`, `pam.su_config_raw`, `pam.libuser_conf_raw`, `user_group.group_members`,
+  `user_group.shadow_entries[].min_days`, `user_group.home_dotfiles[]`, `cron.{cron,at}_{allow,deny}_*`,
+  `boot_security.kernel_args`, and `services["rpcbind.socket"]` / `services["systemd-journal-remote.socket"]` (Ansible's
+  `service_facts` does not list socket units). The legacy `cis.amazon_linux_2023.compliance_summary` view the product's
+  assessment playbook calls is kept and agrees with `.main`.
+- **Kubernetes** (on top of the Kubernetes STIG contract): `api_server.authentication_config`, `etcd.member_count`,
+  `kube_proxy.{flags,config}`, `files.{cni,kubelet_service,kubelet_config_dir}`, `service_accounts.default[]`,
+  `network_policies.namespaces_without_policy[]`, `collection_status.{default_service_accounts,network_policies}`.
+  Profile: `input.cis_profile.{level,role}`.
+- **Docker**: everything under `input.docker` (docker info and version, effective daemon settings, inspect lists for
+  networks, containers and images, daemon file ownership and modes, swarm state, `docker.policy`), plus the shared
+  `auditd.active_rules[]`. Profile: `input.cis_profile.{level,swarm}`.
+- **Azure**: per-service resource lists (identity and role assignments, diagnostic settings and alerts, NSGs,
+  application gateways, Front Door, network watchers and flow logs, Defender pricings and contacts, VMs, Key Vaults with
+  keys/secrets/certificates, Managed HSMs, Bastion, public IPs, storage accounts). None of the v3 paths is read.
+- **Palo Alto**: `input.panos_config` is `show config running` converted to JSON, plus `licenses[]` and the operator
+  lists `site.{untrusted_zones,internet_zones,url_block_categories}`. The old `mgt_config.users.entry` shape is not read.
+- **Windows Server 2016**: the 2019/2022 modular contract (`registry`, `registry_users`, `audit_policy`, `secedit`,
+  `attestations`, `cis_profile`). The product names the old directory in three places, which must point at
+  `benchmarks/cis/windows_server_2016_modular` in the PR that bumps the library pin: `ansible/vars/framework_catalog.yml`,
+  `ansible/playbooks/seed_framework_catalog.yml` and `ansible/playbooks/load_opa_policies.yml`. The framework key
+  `cis_windows_server_2016` and its entrypoint are unchanged. No other product file reads a removed package; the
+  Amazon Linux 2023 playbook's legacy `cis.amazon_linux_2023.violations` and `compliance_summary` paths still resolve.
+- **Known naming drift, to settle before the collector is written:** Ubuntu 24.04 reads `netplan.dir_exists` and
+  Debian 12 reads `auditd.netplan_dir_exists` for the same fact.
+
+### Fixed — generators no longer delete files they did not write
+
+- The CIS Windows generators removed every `.rego` in their directory before writing, which would have deleted the
+  framework-key bridges `cis_windows_2019_key_main.rego` and `cis_windows_2022_key_main.rego`. They now delete and
+  overwrite only files whose header names the generating script, and abort rather than touch anything else
+  (`gen_windows_server_2022.py`, `_2019.py`, `_2016.py`, `gen_windows_10.py`, which Windows 11 reuses). Every generator
+  in this batch follows the same rule.
+- CIS Azure 9.2.4 accepts a TLS 1.3 storage minimum (it required exactly TLS 1.2).
+- The XCCDF section export accepted bare recommendation numbers only from modules on a workbook-verified list,
+  so five replaced platforms dropped out of it; the ten workbook-generated directories are now on the list (33
+  platforms, 7,047 sections, was 29).
+- `cis_debian_12` and `cis_debian_13` are in `tests/framework_keys/test_keys.rego`, so the per-key report contract
+  covers them.
+
 ### Added — a first run that scans something real
 
 - `examples/rhel9/facts.json`: facts for one fictional RHEL 9 web server that the CIS RHEL 9 benchmark evaluates

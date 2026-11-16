@@ -1,0 +1,777 @@
+# ── helpers ───────────────────────────────────────────────────────────────────────────
+
+# Property read. The Azure CLI flattens an ARM resource's "properties" object; Resource Graph and
+# the REST API keep it nested. p(x, k) reads either shape and is undefined when the property is
+# absent or null, so callers decide what an uncollected property means (always a finding).
+p(x, k) := v if {
+	v := x[k]
+	not is_null(v)
+}
+
+p(x, k) := v if {
+	is_null(object.get(x, k, null))
+	v := x.properties[k]
+	not is_null(v)
+}
+
+# Presence tests for `not` positions: a builtin call on an undefined argument is undefined, so
+# `not is_array(x.k)` would never fire when x.k is absent.
+has_list(x, k) if is_array(object.get(x, k, null))
+
+has_obj(x, k) if is_object(object.get(x, k, null))
+
+has_str(x, k) if is_string(object.get(x, k, null))
+
+sku_collected(x) if is_string(p(x, "sku").name)
+
+p_ieq(x, k, want) if lower(sprintf("%v", [p(x, k)])) == lower(want)
+
+# Storage minimum TLS (9.2.4): the benchmark asks for TLS 1.2; a stricter minimum (TLS 1.3) also meets it.
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_2")
+
+storage_min_tls_ok(x) if p_ieq(x, "minimumTlsVersion", "TLS1_3")
+
+truthy(v) if v == true
+
+truthy(v) if {
+	is_string(v)
+	lower(trim_space(v)) == "true"
+}
+
+p_true(x, k) if truthy(p(x, k))
+
+p_false(x, k) if p(x, k) == false
+
+p_false(x, k) if lower(trim_space(p(x, k))) == "false"
+
+nonempty(s) if {
+	is_string(s)
+	trim_space(s) != ""
+}
+
+p_nonempty(x, k) if nonempty(p(x, k))
+
+p_array(x, k) if is_array(p(x, k))
+
+# Resource name for messages; a resource without one is still reported, never skipped.
+nm(x) := n if {
+	n := x.name
+	is_string(n)
+} else := i if {
+	i := x.id
+	is_string(i)
+} else := "<unnamed>"
+
+last_segment(s) := parts[count(parts) - 1] if parts := split(trim_suffix(s, "/"), "/")
+
+same_id(a, b) if lower(trim_suffix(trim_space(a), "/")) == lower(trim_suffix(trim_space(b), "/"))
+
+# ── identity ──────────────────────────────────────────────────────────────────────────
+
+nm_user(x) := n if {
+	n := x.userPrincipalName
+	is_string(n)
+} else := nm(x)
+
+mfa_on(x) if lower(x.perUserMfaState) in {"enabled", "enforced"}
+
+role_name(r) := n if {
+	n := p(r, "roleName")
+	is_string(n)
+} else := nm(r)
+
+role_collected(r) if {
+	is_array(p(r, "permissions"))
+	is_array(p(r, "assignableScopes"))
+}
+
+sp_name(x) := n if {
+	n := x.displayName
+	is_string(n)
+} else := nm(x)
+
+assignee(a) := n if {
+	n := a.principalName
+	nonempty(n)
+} else := i if {
+	i := a.principalId
+	is_string(i)
+} else := "a principal"
+
+assignment_collected(a) if {
+	is_string(a.roleDefinitionName)
+	is_string(a.scope)
+}
+
+# ── scopes and role assignments ───────────────────────────────────────────────────────
+
+subscription_scope(s) if {
+	t := lower(trim_suffix(trim_space(s), "/"))
+	regex.match(`^/subscriptions/[^/]+$`, t)
+	_subscription_matches(t)
+}
+
+# When input.subscription_id is supplied the scope must be that subscription.
+_subscription_matches(_) if not has_str(input, "subscription_id")
+
+_subscription_matches(t) if t == concat("", ["/subscriptions/", lower(input.subscription_id)])
+
+role_is(a, role) if lower(a.roleDefinitionName) == lower(role)
+
+# Principals holding Owner directly at a subscription scope, per scope.
+subscription_owners := {scope: owners |
+	some a0 in input.role_assignments
+	subscription_scope(a0.scope)
+	scope := lower(trim_suffix(trim_space(a0.scope), "/"))
+	owners := {_principal(a) |
+		some a in input.role_assignments
+		role_is(a, "Owner")
+		lower(trim_suffix(trim_space(a.scope), "/")) == scope
+	}
+}
+
+_principal(a) := a.principalId if is_string(a.principalId)
+
+_principal(a) := a.principalName if {
+	not has_str(a, "principalId")
+	is_string(a.principalName)
+}
+
+conditioned(a) if nonempty(a.condition)
+
+custom_role(r) if not p_ieq(r, "roleType", "BuiltInRole")
+
+role_actions(r) := {act |
+	some perm in p(r, "permissions")
+	some act in perm.actions
+}
+
+wide_assignable_scope(s) if trim_space(s) == "/"
+
+wide_assignable_scope(s) if regex.match(`^/subscriptions/[^/]+$`, lower(trim_suffix(trim_space(s), "/")))
+
+default tenant_id := ""
+
+tenant_id := lower(t) if {
+	t := input.tenant_id
+	nonempty(t)
+} else := lower(t) if {
+	t := p(input.management_group_hierarchy_settings, "tenantId")
+	nonempty(t)
+}
+
+default_management_group_not_root if {
+	tenant_id != ""
+	g := p(input.management_group_hierarchy_settings, "defaultManagementGroup")
+	nonempty(g)
+	lower(last_segment(g)) != tenant_id
+}
+
+# A role-holding service principal is free of client secrets when its own credential list is
+# empty and, for an application registered in this tenant, the application's list is empty too.
+sp_secrets_collected(sp) if is_array(sp.passwordCredentials)
+
+sp_needs_app_credentials(sp) if {
+	lower(sp.servicePrincipalType) == "application"
+	not _foreign_app(sp)
+}
+
+_foreign_app(sp) if {
+	tenant_id != ""
+	nonempty(sp.appOwnerOrganizationId)
+	lower(sp.appOwnerOrganizationId) != tenant_id
+}
+
+# ── diagnostic settings and activity log alerts ───────────────────────────────────────
+
+_destinations := ["workspaceId", "storageAccountId", "eventHubAuthorizationRuleId", "marketplacePartnerId", "serviceBusRuleId"]
+
+has_destination(s) if {
+	some k in _destinations
+	p_nonempty(s, k)
+}
+
+enabled_logs(s) := [l |
+	some l in p(s, "logs")
+	l.enabled == true
+]
+
+exporting_setting(s) if {
+	has_destination(s)
+	count(enabled_logs(s)) > 0
+}
+
+subscription_category_logged(cat) if {
+	some s in input.subscription_diagnostic_settings
+	has_destination(s)
+	some l in enabled_logs(s)
+	lower(l.category) == lower(cat)
+}
+
+_audit_log(l) if lower(l.categoryGroup) in {"audit", "alllogs"}
+
+_audit_log(l) if lower(l.category) == "auditevent"
+
+# res.diagnostic_settings: the resource's diagnostic settings, joined by the collector.
+audit_logging_on(res) if {
+	some s in res.diagnostic_settings
+	has_destination(s)
+	some l in enabled_logs(s)
+	_audit_log(l)
+}
+
+alert_conditions(a) := c if {
+	c := p(a, "condition").allOf
+	is_array(c)
+}
+
+alert_enabled(a) if p_true(a, "enabled")
+
+alert_has_action_group(a) if count(p(a, "actions").actionGroups) > 0
+
+alert_covers_subscription(a) if {
+	some s in p(a, "scopes")
+	subscription_scope(s)
+}
+
+alert_scope_ok(a, _) if alert_covers_subscription(a)
+
+# Recommendations that allow a narrower rule scope accept it only with the recorded scoping
+# decision attested: input.attest.activity_log_alert_scopes_recorded == true.
+alert_scope_ok(a, true) if {
+	input.attest.activity_log_alert_scopes_recorded == true
+	count(p(a, "scopes")) > 0
+}
+
+_cond_field(c) := lower(c.field)
+
+_admin_cond_ok(c) if _cond_field(c) == "operationname"
+
+_admin_cond_ok(c) if {
+	_cond_field(c) == "category"
+	lower(c.equals) == "administrative"
+}
+
+# The rule fires on exactly this operation: one operationName condition, and nothing else
+# beyond the Administrative category that could narrow it.
+admin_alert(a, op) if {
+	conds := alert_conditions(a)
+	ops := [c | some c in conds; _cond_field(c) == "operationname"]
+	count(ops) == 1
+	lower(ops[0].equals) == lower(op)
+	every c in conds {
+		_admin_cond_ok(c)
+	}
+}
+
+operation_alerted(op, narrow_ok) if {
+	some a in input.activity_log_alerts
+	alert_enabled(a)
+	admin_alert(a, op)
+	alert_scope_ok(a, narrow_ok)
+	alert_has_action_group(a)
+}
+
+_incident_type_cond(c) if _cond_field(c) == "properties.incidenttype"
+
+_incident_type_cond(c) if {
+	is_array(c.anyOf)
+	count(c.anyOf) > 0
+	every x in c.anyOf {
+		lower(x.field) == "properties.incidenttype"
+	}
+}
+
+_service_health_cond_ok(c) if _cond_field(c) == "category"
+
+# Limiting the event types is accepted only with the recorded decision attested.
+_service_health_cond_ok(c) if {
+	input.attest.service_health_event_types_recorded == true
+	_incident_type_cond(c)
+}
+
+service_health_alerted if {
+	some a in input.activity_log_alerts
+	alert_enabled(a)
+	conds := alert_conditions(a)
+	some c in conds
+	_cond_field(c) == "category"
+	lower(c.equals) == "servicehealth"
+	every c2 in conds {
+		_service_health_cond_ok(c2)
+	}
+	alert_covers_subscription(a)
+	alert_has_action_group(a)
+}
+
+# ── network security groups ───────────────────────────────────────────────────────────
+
+_items(v) := v if is_array(v)
+
+_items(v) := [v] if is_string(v)
+
+_items(v) := [v] if is_number(v)
+
+# Strings of a scalar-or-list property; a comma separated value counts as a list.
+_strs(v) := [t |
+	some raw in _items(v)
+	some x in split(sprintf("%v", [raw]), ",")
+	t := lower(trim_space(x))
+	t != ""
+]
+
+rule_values(r, keys) := {s |
+	some k in keys
+	some s in _strs(p(r, k))
+}
+
+rule_sources(r) := rule_values(r, ["sourceAddressPrefix", "sourceAddressPrefixes"])
+
+rule_destinations(r) := rule_values(r, ["destinationAddressPrefix", "destinationAddressPrefixes"])
+
+rule_source_ports(r) := rule_values(r, ["sourcePortRange", "sourcePortRanges"])
+
+rule_ports(r) := rule_values(r, ["destinationPortRange", "destinationPortRanges"])
+
+rule_field(r, k) := lower(trim_space(p(r, k)))
+
+# Sources that mean "anywhere": *, Internet, Any, 0.0.0.0/0, ::/0 (and any other /0 prefix).
+open_source(s) if lower(trim_space(s)) in {"*", "internet", "any", "0.0.0.0/0", "::/0"}
+
+open_source(s) if endswith(trim_space(s), "/0")
+
+any_token(s) if lower(trim_space(s)) in {"*", "any"}
+
+port_hit(s, _) if any_token(s)
+
+port_hit(s, port) if {
+	regex.match(`^[0-9]+$`, trim_space(s))
+	to_number(trim_space(s)) == port
+}
+
+port_hit(s, port) if {
+	m := regex.find_all_string_submatch_n(`^([0-9]+)\s*-\s*([0-9]+)$`, trim_space(s), 1)[0]
+	to_number(m[1]) <= port
+	port <= to_number(m[2])
+}
+
+nsg_rules_collected(n) if is_array(nsg_rules(n))
+
+nsg_rules(n) := rs if {
+	rs := p(n, "securityRules")
+	is_array(rs)
+}
+
+_has_source(r) if count(rule_sources(r)) > 0
+
+_has_source(r) if count(p(r, "sourceApplicationSecurityGroups")) > 0
+
+# The properties the exposure checks read are all present on the rule.
+rule_complete(r) if {
+	is_string(p(r, "access"))
+	is_string(p(r, "direction"))
+	is_string(p(r, "protocol"))
+	count(rule_ports(r)) > 0
+	_has_source(r)
+}
+
+internet_inbound_allow(r, protocols, ports) if {
+	rule_field(r, "access") == "allow"
+	rule_field(r, "direction") == "inbound"
+	rule_field(r, "protocol") in protocols
+	some s in rule_sources(r)
+	open_source(s)
+	some ps in rule_ports(r)
+	some port in ports
+	port_hit(ps, port)
+}
+
+_any_in(vals) if {
+	some v in vals
+	any_token(v)
+}
+
+deny_all(r) if {
+	rule_field(r, "access") == "deny"
+	any_token(rule_field(r, "protocol"))
+	_any_in(rule_sources(r))
+	_any_in(rule_source_ports(r))
+	_any_in(rule_destinations(r))
+	_any_in(rule_ports(r))
+}
+
+allow_priorities(n, direction) := [pr |
+	some r in nsg_rules(n)
+	rule_field(r, "access") == "allow"
+	rule_field(r, "direction") == direction
+	pr := p(r, "priority")
+	is_number(pr)
+]
+
+# A deny-all rule in this direction that is evaluated after every custom allow rule and before
+# the platform default rules (priority number above the highest custom allow).
+deny_all_after_allows(n, direction) if {
+	some r in nsg_rules(n)
+	deny_all(r)
+	rule_field(r, "direction") == direction
+	pr := p(r, "priority")
+	is_number(pr)
+	every a in allow_priorities(n, direction) {
+		pr > a
+	}
+}
+
+# ── virtual networks, gateways, flow logs ─────────────────────────────────────────────
+
+_platform_subnets := {"gatewaysubnet", "azurefirewallsubnet", "azurefirewallmanagementsubnet", "routeserversubnet"}
+
+_no_outbound_check_subnets := _platform_subnets | {"azurebastionsubnet"}
+
+vnet_subnets(v) := s if {
+	s := p(v, "subnets")
+	is_array(s)
+}
+
+nsg_subnets(v) := [s |
+	some s in vnet_subnets(v)
+	not lower(nm(s)) in _platform_subnets
+]
+
+# Subnets whose default outbound access is checked: not platform subnets, not delegated.
+outbound_subnets(v) := [s |
+	some s in vnet_subnets(v)
+	not lower(nm(s)) in _no_outbound_check_subnets
+	not _delegated(s)
+]
+
+_delegated(s) if count(p(s, "delegations")) > 0
+
+subnet_has_nsg(s) if nonempty(p(s, "networkSecurityGroup").id)
+
+norm_region(r) := lower(replace(r, " ", ""))
+
+watcher_ok(region) if {
+	some w in input.network_watchers
+	norm_region(w.location) == norm_region(region)
+	p_ieq(w, "provisioningState", "Succeeded")
+}
+
+nsg_flow_log(f) if contains(lower(p(f, "targetResourceId")), "/networksecuritygroups/")
+
+flow_log_target_collected(f) if nonempty(p(f, "targetResourceId"))
+
+retention_days(f) := d if {
+	d := p(f, "retentionPolicy").days
+	is_number(d)
+}
+
+# 0 keeps the logs with no retention limit; otherwise at least 90 days.
+retention_ok(f) if retention_days(f) == 0
+
+retention_ok(f) if retention_days(f) >= 90
+
+nsg_flow_log_ok(f) if {
+	p_true(f, "enabled")
+	retention_ok(f)
+}
+
+p2s_configured(g) if is_object(p(g, "vpnClientConfiguration"))
+
+# The property is collected when the key is present (null = no point-to-site configuration).
+p2s_collected(g) if "vpnClientConfiguration" in object.keys(g)
+
+p2s_collected(g) if "vpnClientConfiguration" in object.keys(object.get(g, "properties", {}))
+
+p2s_entra_only(g) if {
+	types := p(g, "vpnClientConfiguration").vpnAuthenticationTypes
+	is_array(types)
+	{upper(t) | some t in types} == {"AAD"}
+}
+
+# ── application gateway and front door ────────────────────────────────────────────────
+
+# Every SSL policy on a gateway: its own and that of each SSL profile.
+gateway_ssl_policies(g) := array.concat(
+	[pol | pol := p(g, "sslPolicy"); is_object(pol)],
+	[pol | some prof in p(g, "sslProfiles"); pol := p(prof, "sslPolicy"); is_object(pol)],
+)
+
+weak_ssl_policy(pol) if lower(pol.minProtocolVersion) in {"tlsv1_0", "tlsv1_1"}
+
+weak_ssl_policy(pol) if lower(pol.policyName) in {"appgwsslpolicy20150501", "appgwsslpolicy20170401"}
+
+_has_policy_values(pol) if {
+	some k in ["policyType", "policyName", "minProtocolVersion", "cipherSuites"]
+	not is_null(object.get(pol, k, null))
+}
+
+tls13_only(pol) if lower(pol.minProtocolVersion) == "tlsv1_3"
+
+gateway_ssl_profiles(g) := [prof | some prof in p(g, "sslProfiles")]
+
+gateway_tls13(g) if {
+	tls13_only(p(g, "sslPolicy"))
+	every prof in gateway_ssl_profiles(g) {
+		_profile_tls13(prof)
+	}
+}
+
+_profile_tls13(prof) if tls13_only(p(prof, "sslPolicy"))
+
+_profile_tls13(prof) if not _profile_has_values(prof)
+
+_profile_has_values(prof) if _has_policy_values(p(prof, "sslPolicy"))
+
+gateway_waf_id(g) := id if {
+	id := p(g, "firewallPolicy").id
+	nonempty(id)
+}
+
+gateway_waf_policy(g) := pol if {
+	some pol in input.application_gateway_waf_policies
+	same_id(pol.id, gateway_waf_id(g))
+}
+
+bot_protection_on(pol) if {
+	some rs in p(pol, "managedRules").managedRuleSets
+	lower(rs.ruleSetType) == "microsoft_botmanagerruleset"
+	count(_disabled_bad_bot_rules(pol)) == 0
+}
+
+_disabled_bad_bot_rules(pol) := [r |
+	some rs in p(pol, "managedRules").managedRuleSets
+	some o in rs.ruleGroupOverrides
+	lower(o.ruleGroupName) == "knownbadbots"
+	some r in o.rules
+	lower(r.state) == "disabled"
+]
+
+request_body_check_on(pol) if p(pol, "policySettings").requestBodyCheck == true
+
+# Front Door profile: endpoints[], custom_domains[] and security_policies[] joined by the collector.
+front_door_collected(f) if {
+	is_array(f.endpoints)
+	is_array(f.custom_domains)
+	is_array(f.security_policies)
+}
+
+front_door_domain_ids(f) := {lower(d.id) |
+	some k in ["endpoints", "custom_domains"]
+	some d in f[k]
+}
+
+_policy_parameters(sp) := x if {
+	x := p(sp, "parameters")
+	is_object(x)
+}
+
+front_door_waf_enabled(id) if {
+	some w in input.front_door_waf_policies
+	same_id(w.id, id)
+	p_ieq(p(w, "policySettings"), "enabledState", "Enabled")
+}
+
+front_door_domain_protected(f, domain_id) if {
+	some sp in f.security_policies
+	params := _policy_parameters(sp)
+	some a in params.associations
+	some d in a.domains
+	lower(d.id) == domain_id
+	front_door_waf_enabled(params.wafPolicy.id)
+}
+
+# ── Defender for Cloud ────────────────────────────────────────────────────────────────
+
+plan_standard(name) if {
+	some x in input.defender_pricings
+	lower(x.name) == lower(name)
+	p_ieq(x, "pricingTier", "Standard")
+}
+
+plan_subplan(name, sub) if {
+	some x in input.defender_pricings
+	lower(x.name) == lower(name)
+	p_ieq(x, "subPlan", sub)
+}
+
+plan_extension_on(name, ext) if {
+	some x in input.defender_pricings
+	lower(x.name) == lower(name)
+	some e in p(x, "extensions")
+	lower(e.name) == lower(ext)
+	truthy(e.isEnabled)
+}
+
+defender_setting_on(name) if {
+	some s in input.defender_settings
+	lower(s.name) == lower(name)
+	p_true(s, "enabled")
+}
+
+default_contacts := [c |
+	some c in input.security_contacts
+	lower(c.name) == "default"
+]
+
+contact_notifies_owners(c) if {
+	p_true(c, "isEnabled")
+	r := p(c, "notificationsByRole")
+	lower(r.state) == "on"
+	some role in r.roles
+	lower(role) == "owner"
+}
+
+contact_alert_severity_set(c) if {
+	a := p(c, "alertNotifications")
+	lower(a.state) == "on"
+	nonempty(a.minimalSeverity)
+}
+
+contact_alert_severity_set(c) if {
+	some s in p(c, "notificationsSources")
+	lower(s.sourceType) == "alert"
+	nonempty(s.minimalSeverity)
+}
+
+contact_attack_path_set(c) if {
+	some s in p(c, "notificationsSources")
+	lower(s.sourceType) == "attackpath"
+	nonempty(s.minimalRiskLevel)
+}
+
+agentless_scanning_on if {
+	plan_standard("VirtualMachines")
+	plan_subplan("VirtualMachines", "P2")
+	plan_extension_on("VirtualMachines", "AgentlessVmScanning")
+}
+
+agentless_scanning_on if {
+	plan_standard("CloudPosture")
+	plan_extension_on("CloudPosture", "AgentlessVmScanning")
+}
+
+contact_has_emails(c) if p_nonempty(c, "emails")
+
+contact_has_emails(c) if {
+	some e in p(c, "emails")
+	nonempty(e)
+}
+
+vm_assessment_modes(vm) := {lower(m) |
+	some k in ["windowsConfiguration", "linuxConfiguration"]
+	m := p(vm, "osProfile")[k].patchSettings.assessmentMode
+	is_string(m)
+}
+
+# ── Key Vault and Managed HSM ─────────────────────────────────────────────────────────
+
+kv_rbac(v) if p_true(v, "enableRbacAuthorization")
+
+kv_premium(v) if lower(p(v, "sku").name) == "premium"
+
+# Keys, secrets and certificates are checked unless explicitly disabled.
+item_in_scope(k) if object.get(object.get(k, "attributes", {}), "enabled", true) != false
+
+has_expiry(k) if {
+	some f in ["expires", "exp"]
+	_set(k.attributes[f])
+}
+
+_set(v) if nonempty(v)
+
+_set(v) if {
+	is_number(v)
+	v > 0
+}
+
+key_type(k) := upper(k.kty) if is_string(k.kty)
+
+key_type(k) := upper(k.key.kty) if {
+	not has_str(k, "kty")
+	is_string(k.key.kty)
+}
+
+hsm_backed(k) if endswith(key_type(k), "-HSM")
+
+_rotate_action(a) if lower(a.action) == "rotate"
+
+_rotate_action(a) if lower(a.action.type) == "rotate"
+
+_has_trigger(a, f) if nonempty(a[f])
+
+_has_trigger(a, f) if nonempty(a.trigger[f])
+
+_policy_expiry(rp) if nonempty(rp.expiresIn)
+
+_policy_expiry(rp) if nonempty(rp.attributes.expiryTime)
+
+_rotation_trigger(a, _) if _has_trigger(a, "timeAfterCreate")
+
+_rotation_trigger(a, rp) if {
+	_has_trigger(a, "timeBeforeExpiry")
+	_policy_expiry(rp)
+}
+
+# k.rotation_policy: the key's rotation policy, joined by the collector.
+auto_rotation(k) if {
+	rp := k.rotation_policy
+	some a in rp.lifetimeActions
+	_rotate_action(a)
+	_rotation_trigger(a, rp)
+}
+
+cert_validity(c) := m if {
+	m := c.policy.x509CertificateProperties.validityInMonths
+	is_number(m)
+} else := m if {
+	m := c.policy.x509_props.validity_months
+	is_number(m)
+}
+
+cert_validity_ok(c) if cert_validity(c) <= 12
+
+kv_mode_known(v) if is_boolean(p(v, "enableRbacAuthorization"))
+
+kv_access_policy(v) if p(v, "enableRbacAuthorization") == false
+
+kv_network_restricted(v) if p_ieq(v, "publicNetworkAccess", "Disabled")
+
+kv_network_restricted(v) if lower(p(v, "networkAcls").defaultAction) == "deny"
+
+approved_private_endpoint(v) if {
+	some c in p(v, "privateEndpointConnections")
+	lower(p(c, "privateLinkServiceConnectionState").status) == "approved"
+}
+
+has_private_endpoint(v) if count(p(v, "privateEndpointConnections")) > 0
+
+# ── bastion, public IPs, storage ──────────────────────────────────────────────────────
+
+shareable_link_capable(b) if lower(p(b, "sku").name) in {"standard", "premium"}
+
+nat_gateway_ip(ip) if nonempty(p(ip, "natGateway").id)
+
+ddos_protected(ip) if lower(p(ip, "ddosSettings").protectionMode) == "enabled"
+
+# ip.ddos_protection_status: `az network public-ip ddos-protection show`, joined by the collector.
+ddos_protected(ip) if truthy(ip.ddos_protection_status.isWorkloadProtected)
+
+blob_account(sa) if not p_ieq(sa, "kind", "FileStorage")
+
+blob_soft_delete_ok(sa) if {
+	pol := p(sa.blob_service_properties, "deleteRetentionPolicy")
+	pol.enabled == true
+	pol.days >= 7
+}
+
+storage_default_deny(sa) if lower(p(sa, "publicNetworkAccess")) in {"disabled", "securedbyperimeter"}
+
+storage_default_deny(sa) if {
+	some k in ["networkRuleSet", "networkAcls"]
+	lower(p(sa, k).defaultAction) == "deny"
+}
+
+https_only(sa) if {
+	some k in ["enableHttpsTrafficOnly", "supportsHttpsTrafficOnly"]
+	p_true(sa, k)
+}

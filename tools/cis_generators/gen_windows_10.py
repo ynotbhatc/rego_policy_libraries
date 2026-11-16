@@ -987,14 +987,13 @@ def generate(workbook):
             if s in text:
                 sys.exit(f"{name}: still mentions {s!r}")
 
-    for old in list(out.glob("*.rego")) + list((out / "tests").glob("*.rego")):
-        old.unlink()
+    base.remove_generated(out, GENERATOR)  # only this generator's files; hand-written ones stay
     (out / "data").mkdir(parents=True, exist_ok=True)
     (out / "tests").mkdir(exist_ok=True)
     for name, text in files.items():
-        (out / name).write_text(text)
+        base.write_generated(out / name, text, GENERATOR)
     for name, text in test_files.items():
-        (out / "tests" / name).write_text(text)
+        base.write_generated(out / "tests" / name, text, GENERATOR)
     (out / "data" / INDEX_NAME).write_text(json.dumps(base.index_doc(recs, section_names), indent=2) + "\n")
     (out / "data" / "collector_manifest.json").write_text(
         json.dumps({"collector_manifest": manifest(checks)}, indent=2) + "\n")

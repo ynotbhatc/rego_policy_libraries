@@ -2,10 +2,11 @@ package framework_keys_test
 
 import rego.v1
 
-# Every key the compliance product's opa_framework_map and framework catalog can evaluate.
+# Every key the compliance product's opa_framework_map and framework catalog can evaluate, plus library keys
+# the product does not map yet (cis_debian_12, cis_debian_13), so every entrypoint meets the same contract.
 keys := {
 	"ai_governance", "ami_device", "ami_headend", "ami_nist_ir7628", "as9100d", "ccpa", "cfr_part_11",
-	"cis_aks", "cis_amazon_linux_2023", "cis_aws", "cis_azure", "cis_debian_11", "cis_docker",
+	"cis_aks", "cis_amazon_linux_2023", "cis_aws", "cis_azure", "cis_debian_11", "cis_debian_12", "cis_debian_13", "cis_docker",
 	"cis_eks", "cis_gcp", "cis_gke", "cis_kubernetes", "cis_openshift", "cis_pfsense", "cis_rhel10",
 	"cis_rhel8", "cis_rhel9", "cis_rocky_linux_8", "cis_rocky_linux_9", "cis_ubuntu_2004",
 	"cis_ubuntu_2204", "cis_ubuntu_2404", "cis_vyos", "cis_windows_2019", "cis_windows_2022",
@@ -119,6 +120,20 @@ test_key_cis_azure if {
 
 test_key_cis_debian_11 if {
 	r := data.cis_debian_11.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_cis_debian_12 if {
+	r := data.cis_debian_12.main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
+	_contract(r)
+}
+
+test_key_cis_debian_13 if {
+	r := data.cis_debian_13.main.compliance_report with input as {}
 	is_object(r)
 	r.compliant == false
 	_contract(r)
