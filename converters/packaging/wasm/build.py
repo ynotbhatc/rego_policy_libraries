@@ -10,7 +10,11 @@ Kubernetes admission package, discovered from the tree so nothing goes stale.
 Output: out/<class>.tar.gz (policy.wasm + data + .manifest), out/manifest.json
 (entrypoints, sha256, size per bundle). Run from anywhere:
 
-    python3 converters/packaging/wasm/build.py [--out DIR] [--classes security,compliance,ot]
+    python3 converters/packaging/wasm/build.py [--out DIR] [--classes security,compliance,ot] [--no-all]
+
+--no-all skips the combined bundle. Pull-request CI uses it: the combined build peaks near
+the 16 GB of a GitHub-hosted runner, while each per-class bundle stays at or under ~10 GB.
+The release workflow (converters.yml) still builds and publishes the combined bundle.
 """
 from __future__ import annotations
 import argparse, hashlib, json, pathlib, re, subprocess, sys
@@ -81,6 +85,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(pathlib.Path(__file__).resolve().parent / "out"))
     ap.add_argument("--classes", default="")
+    ap.add_argument("--no-all", action="store_true", help="skip the combined bundle (pull-request CI)")
     a = ap.parse_args()
     out = pathlib.Path(a.out); out.mkdir(parents=True, exist_ok=True)
     by_class = discover()
@@ -91,9 +96,10 @@ def main():
         r = build(classes, container, out, by_class)
         if r:
             manifest["bundles"].append(r)
-    r = build(list(by_class), "all", out, by_class)
-    if r:
-        manifest["bundles"].append(r)
+    if not a.no_all:
+        r = build(list(by_class), "all", out, by_class)
+        if r:
+            manifest["bundles"].append(r)
     (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     for b in manifest["bundles"]:
         print(f"{b['bundle']:<24} {len(b['entrypoints']):>4} entrypoints  {b['bytes']/1e6:6.1f} MB  {b['sha256'][:12]}")
