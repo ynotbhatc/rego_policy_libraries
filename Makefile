@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm coverage check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm wasm-classes coverage check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -42,6 +42,10 @@ count:
 
 wasm:
 	@python3 converters/packaging/wasm/build.py
+
+# per-class bundles only (pull-request CI; the combined bundle is built at release)
+wasm-classes:
+	@python3 converters/packaging/wasm/build.py --no-all
 
 oscal:
 	@python3 converters/exports/oscal/build.py
