@@ -1,6 +1,6 @@
 # CIS Microsoft Windows Server 2016 Benchmark v4.0.0
 
-**Version:** v1.0 · generated 2026-11-14 by `tools/cis_generators/gen_windows_server_2016.py` from the CIS workbook
+**Version:** v1.1 · generated 2026-11-17 by `tools/cis_generators/gen_windows_server_2016.py` from the CIS workbook
 
 All 422 recommendations: 420 evaluated from facts, and the 2 that CIS marks Manual (1.2.3, 2.3.11.6) reported
 as requiring operator attestation. `data/cis_windows_server_2016_v4_0_index.json` enumerates the benchmark (ids, Automated or
@@ -86,6 +86,10 @@ Specific to this release:
   allowed on any member server and never required.
 - 2.3.10.1 is read from the secedit export (`LSAAnonymousNameLookup` = 0) as in the 2019 and 2022 modules. The
   v4.0.0 workbook names a registry value for it that later releases dropped; the option is not registry policy.
+- 2.2.27 states the member-server deny-RDP right as an exact list; it is evaluated as "to include" (both
+  principals must be denied, denying more is allowed), because a shorter deny list is the weaker state.
+- 18.5.12 (security log warning threshold) and 18.3.6 (LAPS password age) are upper bounds that 0 does not
+  satisfy: 0 turns the warning off, and is not a valid password age.
 - 2.3.10.7 passes only when no named pipe is listed; the legacy Computer Browser exception is not modelled.
 - 18.10.93.4.2: the feature-update deferral period passes at 180 days or more.
 

@@ -169,590 +169,590 @@ test_6_2_2_4_hollow_evidence_not_a_pass if {
 }
 
 test_6_2_3_1_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.1: ")]) == 0
 }
 
 test_6_2_3_1_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.1: ")]) > 0
-	not "6.2.3.1: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.1: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_1_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.1: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
+	"6.2.3.1: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_1_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.1: ")]) > 0
 }
 
 test_6_2_3_2_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.2: ")]) == 0
 }
 
 test_6_2_3_2_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.2: ")]) > 0
-	not "6.2.3.2: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.2: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_2_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.2: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
+	"6.2.3.2: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_2_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.2: ")]) > 0
 }
 
 test_6_2_3_3_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/log/sudo.log -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
 	count([v | some v in vs; startswith(v, "6.2.3.3: ")]) == 0
 }
 
 test_6_2_3_3_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/other.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/log/other.log -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/other.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
 	count([v | some v in vs; startswith(v, "6.2.3.3: ")]) > 0
-	not "6.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" in vs
+	not "6.2.3.3: evidence missing — auditd.rules/active_rules/sudo.sudoers_content not collected" in vs
 }
 
 test_6_2_3_3_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	"6.2.3.3: evidence missing — auditd.rules/active_rules/sudo.sudoers_content not collected" in vs
 }
 
 test_6_2_3_3_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}, "sudo": {"sudoers_content": ""}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}, "sudo": {"sudoers_content": ""}}
 	count([v | some v in vs; startswith(v, "6.2.3.3: ")]) > 0
 }
 
 test_6_2_3_4_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.4: ")]) == 0
 }
 
 test_6_2_3_4_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.4: ")]) > 0
-	not "6.2.3.4: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.4: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_4_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.4: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
+	"6.2.3.4: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_4_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.4: ")]) > 0
 }
 
 test_6_2_3_5_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.5: ")]) == 0
 }
 
 test_6_2_3_5_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.5: ")]) > 0
-	not "6.2.3.5: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.5: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_5_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.5: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"]}}
+	"6.2.3.5: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_5_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.5: ")]) > 0
 }
 
 test_6_2_3_6_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/issue.net -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/issue.net -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/issue.net -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.6: ")]) == 0
 }
 
 test_6_2_3_6_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.6: ")]) > 0
-	not "6.2.3.6: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.6: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_6_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.6: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/issue.net -F perm=wa -F key=k"]}}
+	"6.2.3.6: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_6_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.6: ")]) > 0
 }
 
 test_6_2_3_7_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/hostname -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/hostname -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/hostname -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.7: ")]) == 0
 }
 
 test_6_2_3_7_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.7: ")]) > 0
-	not "6.2.3.7: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.7: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_7_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.7: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/hostname -F perm=wa -F key=k"]}}
+	"6.2.3.7: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_7_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.7: ")]) > 0
 }
 
 test_6_2_3_8_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.8: ")]) == 0
 }
 
 test_6_2_3_8_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.8: ")]) > 0
-	not "6.2.3.8: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.8: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_8_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.8: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/networks -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"]}}
+	"6.2.3.8: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_8_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.8: ")]) > 0
 }
 
 test_6_2_3_9_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/netplan -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "rules": ["-a always,exit -F arch=b64 -F path=/etc/netplan -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/netplan -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: ")]) == 0
 }
 
 test_6_2_3_9_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "rules": ["-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/network -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: ")]) > 0
-	not "6.2.3.9: evidence missing — auditd.netplan_dir_exists/auditd.active_rules not collected" in vs
+	not "6.2.3.9: evidence missing — auditd.netplan_dir_exists/auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_9_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
-	"6.2.3.9: evidence missing — auditd.netplan_dir_exists/auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/netplan -F perm=wa -F key=k"]}}
+	"6.2.3.9: evidence missing — auditd.netplan_dir_exists/auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_9_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"netplan_dir_exists": true, "rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: ")]) > 0
 }
 
 test_6_2_3_10_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.10: ")]) == 0
 }
 
 test_6_2_3_10_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.10: ")]) > 0
-	not "6.2.3.10: evidence missing — auditd.active_rules/privileged_commands not collected" in vs
+	not "6.2.3.10: evidence missing — auditd.rules/active_rules/privileged_commands not collected" in vs
 }
 
 test_6_2_3_10_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.10: evidence missing — auditd.active_rules/privileged_commands not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su"]}}
+	"6.2.3.10: evidence missing — auditd.rules/active_rules/privileged_commands not collected" in vs
 }
 
 test_6_2_3_10_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": [], "privileged_commands": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": [], "privileged_commands": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.10: ")]) > 0
 }
 
 test_6_2_3_11_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.11: ")]) == 0
 }
 
 test_6_2_3_11_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.11: ")]) > 0
-	not "6.2.3.11: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.11: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_11_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.11: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=k"]}}
+	"6.2.3.11: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_11_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.11: ")]) > 0
 }
 
 test_6_2_3_12_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/passwd -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/passwd -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/passwd -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.12: ")]) == 0
 }
 
 test_6_2_3_12_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.12: ")]) > 0
-	not "6.2.3.12: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.12: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_12_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.12: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/passwd -F perm=wa -F key=k"]}}
+	"6.2.3.12: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_12_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.12: ")]) > 0
 }
 
 test_6_2_3_13_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.13: ")]) == 0
 }
 
 test_6_2_3_13_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.13: ")]) > 0
-	not "6.2.3.13: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.13: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_13_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.13: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=k"]}}
+	"6.2.3.13: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_13_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.13: ")]) > 0
 }
 
 test_6_2_3_14_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.14: ")]) == 0
 }
 
 test_6_2_3_14_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.14: ")]) > 0
-	not "6.2.3.14: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.14: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_14_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.14: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
+	"6.2.3.14: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_14_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.14: ")]) > 0
 }
 
 test_6_2_3_15_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/nsswitch.conf -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/nsswitch.conf -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/nsswitch.conf -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.15: ")]) == 0
 }
 
 test_6_2_3_15_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.15: ")]) > 0
-	not "6.2.3.15: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.15: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_15_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.15: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/nsswitch.conf -F perm=wa -F key=k"]}}
+	"6.2.3.15: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_15_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.15: ")]) > 0
 }
 
 test_6_2_3_16_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/pam.d -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/pam.d -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/pam.d -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.16: ")]) == 0
 }
 
 test_6_2_3_16_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.16: ")]) > 0
-	not "6.2.3.16: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.16: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_16_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.16: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/pam.conf -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/pam.d -F perm=wa -F key=k"]}}
+	"6.2.3.16: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_16_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.16: ")]) > 0
 }
 
 test_6_2_3_17_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.17: ")]) == 0
 }
 
 test_6_2_3_17_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.17: ")]) > 0
-	not "6.2.3.17: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.17: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_17_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.17: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"6.2.3.17: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_17_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.17: ")]) > 0
 }
 
 test_6_2_3_18_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.18: ")]) == 0
 }
 
 test_6_2_3_18_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.18: ")]) > 0
-	not "6.2.3.18: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.18: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_18_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.18: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"6.2.3.18: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_18_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.18: ")]) > 0
 }
 
 test_6_2_3_19_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) == 0
 }
 
 test_6_2_3_19_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) > 0
-	not "6.2.3.19: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_19_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.19: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"6.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_19_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) > 0
 }
 
 test_6_2_3_20_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/btmp -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/btmp -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/btmp -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.20: ")]) == 0
 }
 
 test_6_2_3_20_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.20: ")]) > 0
-	not "6.2.3.20: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.20: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_20_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.20: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/log/btmp -F perm=wa -F key=k"]}}
+	"6.2.3.20: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_20_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.20: ")]) > 0
 }
 
 test_6_2_3_21_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/run/faillock -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/run/faillock -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/run/faillock -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.21: ")]) == 0
 }
 
 test_6_2_3_21_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.21: ")]) > 0
-	not "6.2.3.21: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.21: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_21_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.21: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/var/run/faillock -F perm=wa -F key=k"]}}
+	"6.2.3.21: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_21_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.21: ")]) > 0
 }
 
 test_6_2_3_22_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.22: ")]) == 0
 }
 
 test_6_2_3_22_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.22: ")]) > 0
-	not "6.2.3.22: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.22: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_22_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.22: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat,renameat2 -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"6.2.3.22: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_22_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.22: ")]) > 0
 }
 
 test_6_2_3_23_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/apparmor.d -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/apparmor.d -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/apparmor.d -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.23: ")]) == 0
 }
 
 test_6_2_3_23_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.23: ")]) > 0
-	not "6.2.3.23: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.23: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_23_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.23: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/etc/apparmor -F perm=wa -F key=k", "-a always,exit -F arch=b64 -F path=/etc/apparmor.d -F perm=wa -F key=k"]}}
+	"6.2.3.23: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_23_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.23: ")]) > 0
 }
 
 test_6_2_3_24_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -k k"], "active_rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) == 0
 }
 
 test_6_2_3_24_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chcon -F perm=x -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chcon -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chcon -F perm=x -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) > 0
-	not "6.2.3.24: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.24: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_24_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.24: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	"6.2.3.24: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_24_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) > 0
 }
 
 test_6_2_3_25_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -k k"], "active_rules": ["-a always,exit -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.25: ")]) == 0
 }
 
 test_6_2_3_25_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/setfacl -F perm=x -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/setfacl -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/setfacl -F perm=x -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.25: ")]) > 0
-	not "6.2.3.25: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.25: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_25_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.25: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	"6.2.3.25: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_25_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.25: ")]) > 0
 }
 
 test_6_2_3_26_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -k k"], "active_rules": ["-a always,exit -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.26: ")]) == 0
 }
 
 test_6_2_3_26_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chacl -F perm=x -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chacl -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chacl -F perm=x -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.26: ")]) > 0
-	not "6.2.3.26: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.26: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_26_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.26: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	"6.2.3.26: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_26_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.26: ")]) > 0
 }
 
 test_6_2_3_27_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -k k"], "active_rules": ["-a always,exit -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.27: ")]) == 0
 }
 
 test_6_2_3_27_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/usermod -F perm=x -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/usermod -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/usermod -F perm=x -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.27: ")]) > 0
-	not "6.2.3.27: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.27: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_27_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.27: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	"6.2.3.27: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_27_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.27: ")]) > 0
 }
 
 test_6_2_3_28_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k k"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) == 0
 }
 
 test_6_2_3_28_fail if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -F path=/usr/bin/kmod -F perm=x -F key=k"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -F path=/usr/bin/kmod -F perm=x -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -F path=/usr/bin/kmod -F perm=x -F key=k"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) > 0
-	not "6.2.3.28: evidence missing — auditd.active_rules not collected" in vs
+	not "6.2.3.28: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_28_evidence_missing if {
-	vs := data.cis_debian_12.auditd.violations with input as {}
-	"6.2.3.28: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k k"]}}
+	"6.2.3.28: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_6_2_3_28_hollow_evidence_not_a_pass if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) > 0
 }
 
@@ -999,24 +999,24 @@ test_6_2_4_10_hollow_evidence_not_a_pass if {
 
 # Debian 12 expects both architectures on syscall rules: a b64-only rule is not enough.
 test_6_2_3_19_b64_only_flagged if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
 }
 
 # The loaded-rules spelling (auid!=-1, -F key=) is the same rule.
 test_6_2_3_19_auditctl_spelling_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) == 0
 }
 
 # An execution watch without the auid filters (legacy -w form) does not satisfy the Debian 12 audit.
 test_6_2_3_24_legacy_watch_flagged if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /usr/bin/chcon -p x -k perm_chng"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /usr/bin/chcon -p x -k perm_chng"], "active_rules": ["-w /usr/bin/chcon -p x -k perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: not met")]) > 0
 }
 
 test_6_2_3_24_auditctl_listing_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) == 0
 }
 
@@ -1027,12 +1027,39 @@ test_6_2_3_9_no_netplan_directory_passes if {
 }
 
 test_6_2_3_9_legacy_watch_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /etc/netplan -p wa -k system-locale"], "active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: ")]) == 0
 }
 
 # 6.2.3.23: the directory watches may be written with a trailing slash.
 test_6_2_3_23_trailing_slash_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"], "active_rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.23: ")]) == 0
+}
+
+# 6.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules).
+test_6_2_3_19_running_only_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_19_on_disk_only_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_9_running_rule_only_is_missing if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.9: evidence missing")]) > 0
+}
+
+# 6.2.3.28: both architectures on disk, the arch=b64 module rule in the running rules.
+test_6_2_3_28_b64_running_both_on_disk_passes if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) == 0
+}
+
+test_6_2_3_28_b64_only_on_disk_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: not met")]) > 0
 }

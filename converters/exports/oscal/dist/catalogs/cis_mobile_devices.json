@@ -1091,9 +1091,9 @@
     ]
    },
    {
-    "id": "cis_mobile_devices-ios_security",
+    "id": "cis_mobile_devices-cis_mobile_ios",
     "class": "rego-module",
-    "title": "CIS Apple iOS Benchmark",
+    "title": "CIS Apple iOS 27 Benchmark v1.0.0",
     "props": [
      {
       "name": "rego-package",
@@ -1103,7 +1103,7 @@
      {
       "name": "rego-file",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "benchmarks/cis/mobile_devices/ios/ios_security.rego"
+      "value": "benchmarks/cis/mobile_devices/ios/cis_mobile_ios.rego"
      },
      {
       "name": "class",
@@ -1113,16 +1113,16 @@
     ],
     "controls": [
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-1",
-      "title": "advertising tracking disabled",
+      "id": "cis_mobile_devices-2.1.1",
+      "title": "the profile must carry a consent message",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#1"
+        "value": "2.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#1"
+        "value": "2.1.1"
        },
        {
         "name": "rego-package",
@@ -1132,30 +1132,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-1_stmt",
+        "id": "cis_mobile_devices-2.1.1_stmt",
         "name": "statement",
-        "prose": "advertising tracking disabled"
+        "prose": "the profile must carry a consent message"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-2",
-      "title": "airdrop disabled",
+      "id": "cis_mobile_devices-2.1.2",
+      "title": "end-user profile removal must stay allowed",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#2"
+        "value": "2.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#2"
+        "value": "2.1.2"
        },
        {
         "name": "rego-package",
@@ -1165,30 +1165,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-2_stmt",
+        "id": "cis_mobile_devices-2.1.2_stmt",
         "name": "statement",
-        "prose": "airdrop disabled"
+        "prose": "end-user profile removal must stay allowed"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-3",
-      "title": "app installation restricted",
+      "id": "cis_mobile_devices-2.2.1.1",
+      "title": "Siri must be blocked on the lock screen",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#3"
+        "value": "2.2.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#3"
+        "value": "2.2.1.1"
        },
        {
         "name": "rego-package",
@@ -1198,30 +1198,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-3_stmt",
+        "id": "cis_mobile_devices-2.2.1.1_stmt",
         "name": "statement",
-        "prose": "app installation restricted"
+        "prose": "Siri must be blocked on the lock screen"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-4",
-      "title": "auto lock enabled",
+      "id": "cis_mobile_devices-2.2.1.10",
+      "title": "Handoff must be blocked",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#4"
+        "value": "2.2.1.10"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#4"
+        "value": "2.2.1.10"
        },
        {
         "name": "rego-package",
@@ -1231,30 +1231,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-4_stmt",
+        "id": "cis_mobile_devices-2.2.1.10_stmt",
         "name": "statement",
-        "prose": "auto lock enabled"
+        "prose": "Handoff must be blocked"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-5",
-      "title": "device supervised",
+      "id": "cis_mobile_devices-2.2.1.11",
+      "title": "diagnostic and usage data must not be sent to Apple",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#5"
+        "value": "2.2.1.11"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#5"
+        "value": "2.2.1.11"
        },
        {
         "name": "rego-package",
@@ -1264,30 +1264,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-5_stmt",
+        "id": "cis_mobile_devices-2.2.1.11_stmt",
         "name": "statement",
-        "prose": "device supervised"
+        "prose": "diagnostic and usage data must not be sent to Apple"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-6",
-      "title": "diagnostic data disabled",
+      "id": "cis_mobile_devices-2.2.1.12",
+      "title": "Apple Watch wrist detection must be forced",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#6"
+        "value": "2.2.1.12"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#6"
+        "value": "2.2.1.12"
        },
        {
         "name": "rego-package",
@@ -1297,30 +1297,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-6_stmt",
+        "id": "cis_mobile_devices-2.2.1.12_stmt",
         "name": "statement",
-        "prose": "diagnostic data disabled"
+        "prose": "Apple Watch wrist detection must be forced"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-7",
-      "title": "encrypted backups enabled",
+      "id": "cis_mobile_devices-2.2.1.13",
+      "title": "Control Center must be hidden on the lock screen",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#7"
+        "value": "2.2.1.13"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#7"
+        "value": "2.2.1.13"
        },
        {
         "name": "rego-package",
@@ -1330,30 +1330,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-7_stmt",
+        "id": "cis_mobile_devices-2.2.1.13_stmt",
         "name": "statement",
-        "prose": "encrypted backups enabled"
+        "prose": "Control Center must be hidden on the lock screen"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-8",
-      "title": "icloud backup disabled",
+      "id": "cis_mobile_devices-2.2.1.14",
+      "title": "Notification Center must be hidden on the lock screen",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#8"
+        "value": "2.2.1.14"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#8"
+        "value": "2.2.1.14"
        },
        {
         "name": "rego-package",
@@ -1363,30 +1363,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-8_stmt",
+        "id": "cis_mobile_devices-2.2.1.14_stmt",
         "name": "statement",
-        "prose": "icloud backup disabled"
+        "prose": "Notification Center must be hidden on the lock screen"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-9",
-      "title": "icloud drive disabled",
+      "id": "cis_mobile_devices-2.2.1.2",
+      "title": "managed apps must not sync data to iCloud",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#9"
+        "value": "2.2.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#9"
+        "value": "2.2.1.2"
        },
        {
         "name": "rego-package",
@@ -1396,30 +1396,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-9_stmt",
+        "id": "cis_mobile_devices-2.2.1.2_stmt",
         "name": "statement",
-        "prose": "icloud drive disabled"
+        "prose": "managed apps must not sync data to iCloud"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-10",
-      "title": "icloud keychain disabled",
+      "id": "cis_mobile_devices-2.2.1.3",
+      "title": "backups must be forced to encrypt",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#10"
+        "value": "2.2.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#10"
+        "value": "2.2.1.3"
        },
        {
         "name": "rego-package",
@@ -1429,30 +1429,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-10_stmt",
+        "id": "cis_mobile_devices-2.2.1.3_stmt",
         "name": "statement",
-        "prose": "icloud keychain disabled"
+        "prose": "backups must be forced to encrypt"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-11",
-      "title": "location services configured",
+      "id": "cis_mobile_devices-2.2.1.4",
+      "title": "Apple personalized advertising must be blocked",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#11"
+        "value": "2.2.1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#11"
+        "value": "2.2.1.4"
        },
        {
         "name": "rego-package",
@@ -1462,30 +1462,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-11_stmt",
+        "id": "cis_mobile_devices-2.2.1.4_stmt",
         "name": "statement",
-        "prose": "location services configured"
+        "prose": "Apple personalized advertising must be blocked"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-12",
-      "title": "max failed attempts",
+      "id": "cis_mobile_devices-2.2.1.5",
+      "title": "the user must not be able to accept untrusted TLS certificates",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#12"
+        "value": "2.2.1.5"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#12"
+        "value": "2.2.1.5"
        },
        {
         "name": "rego-package",
@@ -1495,30 +1495,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-12_stmt",
+        "id": "cis_mobile_devices-2.2.1.5_stmt",
         "name": "statement",
-        "prose": "max failed attempts"
+        "prose": "the user must not be able to accept untrusted TLS certificates"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-13",
-      "title": "mdm removal restricted",
+      "id": "cis_mobile_devices-2.2.1.6",
+      "title": "automatic date and time must be forced",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#13"
+        "value": "2.2.1.6"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#13"
+        "value": "2.2.1.6"
        },
        {
         "name": "rego-package",
@@ -1528,30 +1528,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-13_stmt",
+        "id": "cis_mobile_devices-2.2.1.6_stmt",
         "name": "statement",
-        "prose": "mdm removal restricted"
+        "prose": "automatic date and time must be forced"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-14",
-      "title": "notification previews disabled when locked",
+      "id": "cis_mobile_devices-2.2.1.7",
+      "title": "documents must not open from managed into unmanaged destinations",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#14"
+        "value": "2.2.1.7"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#14"
+        "value": "2.2.1.7"
        },
        {
         "name": "rego-package",
@@ -1561,30 +1561,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-14_stmt",
+        "id": "cis_mobile_devices-2.2.1.7_stmt",
         "name": "statement",
-        "prose": "notification previews disabled when locked"
+        "prose": "documents must not open from managed into unmanaged destinations"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-15",
-      "title": "passcode alphanumeric",
+      "id": "cis_mobile_devices-2.2.1.8",
+      "title": "documents must not open from unmanaged into managed destinations",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#15"
+        "value": "2.2.1.8"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#15"
+        "value": "2.2.1.8"
        },
        {
         "name": "rego-package",
@@ -1594,30 +1594,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-15_stmt",
+        "id": "cis_mobile_devices-2.2.1.8_stmt",
         "name": "statement",
-        "prose": "passcode alphanumeric"
+        "prose": "documents must not open from unmanaged into managed destinations"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-16",
-      "title": "passcode complex characters",
+      "id": "cis_mobile_devices-2.2.1.9",
+      "title": "AirDrop must be treated as an unmanaged destination",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#16"
+        "value": "2.2.1.9"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#16"
+        "value": "2.2.1.9"
        },
        {
         "name": "rego-package",
@@ -1627,30 +1627,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-16_stmt",
+        "id": "cis_mobile_devices-2.2.1.9_stmt",
         "name": "statement",
-        "prose": "passcode complex characters"
+        "prose": "AirDrop must be treated as an unmanaged destination"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-17",
-      "title": "passcode enabled",
+      "id": "cis_mobile_devices-2.2.2.1",
+      "title": "Safari fraud warning must be forced",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#17"
+        "value": "2.2.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#17"
+        "value": "2.2.2.1"
        },
        {
         "name": "rego-package",
@@ -1660,30 +1660,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-17_stmt",
+        "id": "cis_mobile_devices-2.2.2.1_stmt",
         "name": "statement",
-        "prose": "passcode enabled"
+        "prose": "Safari fraud warning must be forced"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-18",
-      "title": "passcode history",
+      "id": "cis_mobile_devices-2.2.2.2",
+      "title": "Safari must accept cookies only from visited or the current site",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#18"
+        "value": "2.2.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#18"
+        "value": "2.2.2.2"
        },
        {
         "name": "rego-package",
@@ -1693,30 +1693,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-18_stmt",
+        "id": "cis_mobile_devices-2.2.2.2_stmt",
         "name": "statement",
-        "prose": "passcode history"
+        "prose": "Safari must accept cookies only from visited or the current site"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-19",
-      "title": "passcode max age",
+      "id": "cis_mobile_devices-2.3.1",
+      "title": "managed Safari web domains must be configured for the organisation",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#19"
+        "value": "2.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#19"
+        "value": "2.3.1"
        },
        {
         "name": "rego-package",
@@ -1726,30 +1726,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-19_stmt",
+        "id": "cis_mobile_devices-2.3.1_stmt",
         "name": "statement",
-        "prose": "passcode max age"
+        "prose": "managed Safari web domains must be configured for the organisation"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-20",
-      "title": "passcode min length",
+      "id": "cis_mobile_devices-2.4.1",
+      "title": "simple passcodes must be blocked",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#20"
+        "value": "2.4.1"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#20"
+        "value": "2.4.1"
        },
        {
         "name": "rego-package",
@@ -1759,30 +1759,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-20_stmt",
+        "id": "cis_mobile_devices-2.4.1_stmt",
         "name": "statement",
-        "prose": "passcode min length"
+        "prose": "simple passcodes must be blocked"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-21",
-      "title": "safari secure",
+      "id": "cis_mobile_devices-2.4.2",
+      "title": "an alphanumeric passcode must be required",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#21"
+        "value": "2.4.2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#21"
+        "value": "2.4.2"
        },
        {
         "name": "rego-package",
@@ -1792,30 +1792,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-21_stmt",
+        "id": "cis_mobile_devices-2.4.2_stmt",
         "name": "statement",
-        "prose": "safari secure"
+        "prose": "an alphanumeric passcode must be required"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-22",
-      "title": "siri disabled when locked",
+      "id": "cis_mobile_devices-2.4.3",
+      "title": "the passcode must be at least 6 characters",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#22"
+        "value": "2.4.3"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#22"
+        "value": "2.4.3"
        },
        {
         "name": "rego-package",
@@ -1825,30 +1825,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-22_stmt",
+        "id": "cis_mobile_devices-2.4.3_stmt",
         "name": "statement",
-        "prose": "siri disabled when locked"
+        "prose": "the passcode must be at least 6 characters"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-23",
-      "title": "spotlight suggestions disabled",
+      "id": "cis_mobile_devices-2.4.4",
+      "title": "auto-lock must be set and no longer than 2 minutes",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#23"
+        "value": "2.4.4"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#23"
+        "value": "2.4.4"
        },
        {
         "name": "rego-package",
@@ -1858,30 +1858,30 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-23_stmt",
+        "id": "cis_mobile_devices-2.4.4_stmt",
         "name": "statement",
-        "prose": "spotlight suggestions disabled"
+        "prose": "auto-lock must be set and no longer than 2 minutes"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_mobile_devices-cis.mobile.ios-24",
-      "title": "untrusted tls blocked",
+      "id": "cis_mobile_devices-2.4.5",
+      "title": "the device lock grace period must be immediate",
       "props": [
        {
         "name": "label",
-        "value": "cis.mobile.ios#24"
+        "value": "2.4.5"
        },
        {
         "name": "alt-identifier",
-        "value": "cis.mobile.ios#24"
+        "value": "2.4.5"
        },
        {
         "name": "rego-package",
@@ -1891,15 +1891,2688 @@
       ],
       "links": [
        {
-        "href": "#f6405f72-730e-5ecf-9f58-1892f6af7fbf",
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "cis_mobile_devices-cis.mobile.ios-24_stmt",
+        "id": "cis_mobile_devices-2.4.5_stmt",
         "name": "statement",
-        "prose": "untrusted tls blocked"
+        "prose": "the device lock grace period must be immediate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.4.6",
+      "title": "failed passcode attempts must be limited to 6",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.4.6_stmt",
+        "name": "statement",
+        "prose": "failed passcode attempts must be limited to 6"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.5.1",
+      "title": "Wi-Fi MAC randomization must be disabled where the network needs it",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.5.1_stmt",
+        "name": "statement",
+        "prose": "Wi-Fi MAC randomization must be disabled where the network needs it"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.6.1",
+      "title": "a VPN (per-app or system-wide) must be configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.6.1_stmt",
+        "name": "statement",
+        "prose": "a VPN (per-app or system-wide) must be configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.7.1",
+      "title": "mail messages must not be movable out of the managed account",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.7.1_stmt",
+        "name": "statement",
+        "prose": "mail messages must not be movable out of the managed account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.7.2",
+      "title": "Mail Drop must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.7.2_stmt",
+        "name": "statement",
+        "prose": "Mail Drop must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.8.1",
+      "title": "every managed app must have a notification setting",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.8.1_stmt",
+        "name": "statement",
+        "prose": "every managed app must have a notification setting"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.1",
+      "title": "external intelligence integrations and their sign-in must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.1_stmt",
+        "name": "statement",
+        "prose": "external intelligence integrations and their sign-in must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.2",
+      "title": "Notes transcription and summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.2_stmt",
+        "name": "statement",
+        "prose": "Notes transcription and summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.3",
+      "title": "Mail summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.3_stmt",
+        "name": "statement",
+        "prose": "Mail summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.4",
+      "title": "Writing Tools must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.4_stmt",
+        "name": "statement",
+        "prose": "Writing Tools must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.5",
+      "title": "Safari summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.5_stmt",
+        "name": "statement",
+        "prose": "Safari summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-2.9.6",
+      "title": "Mail smart replies must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.9.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.9.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-2.9.6_stmt",
+        "name": "statement",
+        "prose": "Mail smart replies must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.1.1",
+      "title": "the profile must not be removable by the user",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.1.1_stmt",
+        "name": "statement",
+        "prose": "the profile must not be removable by the user"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.1",
+      "title": "external intelligence integrations and their sign-in must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.1_stmt",
+        "name": "statement",
+        "prose": "external intelligence integrations and their sign-in must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.2",
+      "title": "Notes transcription and summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.2_stmt",
+        "name": "statement",
+        "prose": "Notes transcription and summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.3",
+      "title": "Mail summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.3_stmt",
+        "name": "statement",
+        "prose": "Mail summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.4",
+      "title": "Writing Tools must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.4_stmt",
+        "name": "statement",
+        "prose": "Writing Tools must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.5",
+      "title": "Safari summaries must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.5_stmt",
+        "name": "statement",
+        "prose": "Safari summaries must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.10.6",
+      "title": "Mail smart replies must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.10.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.10.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.10.6_stmt",
+        "name": "statement",
+        "prose": "Mail smart replies must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.1",
+      "title": "screenshots and screen recording must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.1_stmt",
+        "name": "statement",
+        "prose": "screenshots and screen recording must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.10",
+      "title": "Apple personalized advertising must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.10_stmt",
+        "name": "statement",
+        "prose": "Apple personalized advertising must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.11",
+      "title": "Erase All Content and Settings must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.11_stmt",
+        "name": "statement",
+        "prose": "Erase All Content and Settings must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.12",
+      "title": "the user must not be able to accept untrusted TLS certificates",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.12_stmt",
+        "name": "statement",
+        "prose": "the user must not be able to accept untrusted TLS certificates"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.13",
+      "title": "trusting new enterprise app authors must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.13_stmt",
+        "name": "statement",
+        "prose": "trusting new enterprise app authors must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.14",
+      "title": "installing configuration profiles must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.14_stmt",
+        "name": "statement",
+        "prose": "installing configuration profiles must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.15",
+      "title": "adding VPN configurations must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.15_stmt",
+        "name": "statement",
+        "prose": "adding VPN configurations must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.16",
+      "title": "automatic date and time must be forced",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.16_stmt",
+        "name": "statement",
+        "prose": "automatic date and time must be forced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.17",
+      "title": "changing per-app cellular data settings must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.17_stmt",
+        "name": "statement",
+        "prose": "changing per-app cellular data settings must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.18",
+      "title": "USB accessories must be blocked while the device is locked (USB restricted mode kept on)",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.18_stmt",
+        "name": "statement",
+        "prose": "USB accessories must be blocked while the device is locked (USB restricted mode kept on)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.19",
+      "title": "pairing with hosts other than Configurator must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.19_stmt",
+        "name": "statement",
+        "prose": "pairing with hosts other than Configurator must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.2",
+      "title": "Siri must be blocked on the lock screen",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.2_stmt",
+        "name": "statement",
+        "prose": "Siri must be blocked on the lock screen"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.20",
+      "title": "documents must not open from managed into unmanaged destinations",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.20_stmt",
+        "name": "statement",
+        "prose": "documents must not open from managed into unmanaged destinations"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.21",
+      "title": "documents must not open from unmanaged into managed destinations",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.21_stmt",
+        "name": "statement",
+        "prose": "documents must not open from unmanaged into managed destinations"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.22",
+      "title": "AirDrop must be treated as an unmanaged destination",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.22_stmt",
+        "name": "statement",
+        "prose": "AirDrop must be treated as an unmanaged destination"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.23",
+      "title": "Handoff must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.23_stmt",
+        "name": "statement",
+        "prose": "Handoff must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.24",
+      "title": "diagnostic and usage data must not be sent to Apple",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.24_stmt",
+        "name": "statement",
+        "prose": "diagnostic and usage data must not be sent to Apple"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.25",
+      "title": "biometric authentication must be required before AutoFill",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.25_stmt",
+        "name": "statement",
+        "prose": "biometric authentication must be required before AutoFill"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.26",
+      "title": "Apple Watch wrist detection must be forced",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.26_stmt",
+        "name": "statement",
+        "prose": "Apple Watch wrist detection must be forced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.27",
+      "title": "setting up new nearby devices must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.27_stmt",
+        "name": "statement",
+        "prose": "setting up new nearby devices must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.28",
+      "title": "proximity password sharing requests must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.28_stmt",
+        "name": "statement",
+        "prose": "proximity password sharing requests must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.29",
+      "title": "password sharing must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.29_stmt",
+        "name": "statement",
+        "prose": "password sharing must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.3",
+      "title": "iCloud backup must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.3_stmt",
+        "name": "statement",
+        "prose": "iCloud backup must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.30",
+      "title": "Control Center must be hidden on the lock screen",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.30_stmt",
+        "name": "statement",
+        "prose": "Control Center must be hidden on the lock screen"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.31",
+      "title": "Notification Center must be hidden on the lock screen",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.31_stmt",
+        "name": "statement",
+        "prose": "Notification Center must be hidden on the lock screen"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.4",
+      "title": "iCloud documents and data must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.4_stmt",
+        "name": "statement",
+        "prose": "iCloud documents and data must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.5",
+      "title": "iCloud Keychain must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.5_stmt",
+        "name": "statement",
+        "prose": "iCloud Keychain must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.6",
+      "title": "managed apps must not sync data to iCloud",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.6_stmt",
+        "name": "statement",
+        "prose": "managed apps must not sync data to iCloud"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.7",
+      "title": "USB drive access in Files must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.7_stmt",
+        "name": "statement",
+        "prose": "USB drive access in Files must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.8",
+      "title": "network drive access in Files must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.8_stmt",
+        "name": "statement",
+        "prose": "network drive access in Files must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.1.9",
+      "title": "backups must be forced to encrypt",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.1.9_stmt",
+        "name": "statement",
+        "prose": "backups must be forced to encrypt"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.2.1",
+      "title": "Safari fraud warning must be forced",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.2.1_stmt",
+        "name": "statement",
+        "prose": "Safari fraud warning must be forced"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.2.2.2",
+      "title": "Safari must accept cookies only from visited or the current site",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.2.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.2.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.2.2.2_stmt",
+        "name": "statement",
+        "prose": "Safari must accept cookies only from visited or the current site"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.3.1",
+      "title": "managed Safari web domains must be configured for the organisation",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.3.1_stmt",
+        "name": "statement",
+        "prose": "managed Safari web domains must be configured for the organisation"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.1",
+      "title": "simple passcodes must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.1_stmt",
+        "name": "statement",
+        "prose": "simple passcodes must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.2",
+      "title": "an alphanumeric passcode must be required",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.2_stmt",
+        "name": "statement",
+        "prose": "an alphanumeric passcode must be required"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.3",
+      "title": "the passcode must be at least 6 characters",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.3_stmt",
+        "name": "statement",
+        "prose": "the passcode must be at least 6 characters"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.4",
+      "title": "auto-lock must be set and no longer than 2 minutes",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.4_stmt",
+        "name": "statement",
+        "prose": "auto-lock must be set and no longer than 2 minutes"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.5",
+      "title": "the device lock grace period must be immediate",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.5_stmt",
+        "name": "statement",
+        "prose": "the device lock grace period must be immediate"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.4.6",
+      "title": "failed passcode attempts must be limited to 6",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.4.6_stmt",
+        "name": "statement",
+        "prose": "failed passcode attempts must be limited to 6"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.5.1",
+      "title": "Wi-Fi MAC randomization must be disabled where the network needs it",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.5.1_stmt",
+        "name": "statement",
+        "prose": "Wi-Fi MAC randomization must be disabled where the network needs it"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.6.1",
+      "title": "a VPN (per-app or system-wide) must be configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.6.1_stmt",
+        "name": "statement",
+        "prose": "a VPN (per-app or system-wide) must be configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.7.1",
+      "title": "mail messages must not be movable out of the managed account",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.7.1_stmt",
+        "name": "statement",
+        "prose": "mail messages must not be movable out of the managed account"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.7.2",
+      "title": "Mail Drop must be blocked",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.7.2_stmt",
+        "name": "statement",
+        "prose": "Mail Drop must be blocked"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.8.1",
+      "title": "every managed app must have a notification setting",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.8.1_stmt",
+        "name": "statement",
+        "prose": "every managed app must have a notification setting"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-3.9.1",
+      "title": "a return-if-found lock screen message must be configured",
+      "props": [
+       {
+        "name": "label",
+        "value": "3.9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "3.9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-3.9.1_stmt",
+        "name": "statement",
+        "prose": "a return-if-found lock screen message must be configured"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.1",
+      "title": "Manage Sharing and Access must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.1_stmt",
+        "name": "statement",
+        "prose": "Manage Sharing and Access must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.2",
+      "title": "Emergency Reset must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.2_stmt",
+        "name": "statement",
+        "prose": "Emergency Reset must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.3",
+      "title": "Lockdown Mode must be reviewed for the user",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.3_stmt",
+        "name": "statement",
+        "prose": "Lockdown Mode must be reviewed for the user"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.4",
+      "title": "App Privacy Report must be turned on",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.4_stmt",
+        "name": "statement",
+        "prose": "App Privacy Report must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.5",
+      "title": "AirPrint use must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.5_stmt",
+        "name": "statement",
+        "prose": "AirPrint use must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.1.6",
+      "title": "Stolen Device Protection must be turned on",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.1.6_stmt",
+        "name": "statement",
+        "prose": "Stolen Device Protection must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.10",
+      "title": "iPhone Mirroring must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.10_stmt",
+        "name": "statement",
+        "prose": "iPhone Mirroring must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.11",
+      "title": "RCS messaging must be turned on where available",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.11_stmt",
+        "name": "statement",
+        "prose": "RCS messaging must be turned on where available"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.2",
+      "title": "the device must show no sign of jailbreak or compromise",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.2_stmt",
+        "name": "statement",
+        "prose": "the device must show no sign of jailbreak or compromise"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.3",
+      "title": "automatic iOS update installation must be turned on",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.3_stmt",
+        "name": "statement",
+        "prose": "automatic iOS update installation must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.4",
+      "title": "the device must be on the current iOS release",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.4_stmt",
+        "name": "statement",
+        "prose": "the device must be on the current iOS release"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.5",
+      "title": "iCloud Private Relay must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.5_stmt",
+        "name": "statement",
+        "prose": "iCloud Private Relay must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.6",
+      "title": "Mail Privacy Protection must be reviewed on the device",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.6_stmt",
+        "name": "statement",
+        "prose": "Mail Privacy Protection must be reviewed on the device"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.7",
+      "title": "automatic app update downloads must be turned on",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.7_stmt",
+        "name": "statement",
+        "prose": "automatic app update downloads must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.8",
+      "title": "Find My iPhone, Find My network and Send Last Location must be turned on",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.8_stmt",
+        "name": "statement",
+        "prose": "Find My iPhone, Find My network and Send Last Location must be turned on"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_mobile_devices-4.9",
+      "title": "high-value targets must use the latest device hardware generation",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis.mobile.ios"
+       }
+      ],
+      "links": [
+       {
+        "href": "#001f6090-2911-5838-8406-d758c3cb0b07",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_mobile_devices-4.9_stmt",
+        "name": "statement",
+        "prose": "high-value targets must use the latest device hardware generation"
        }
       ],
       "class": "security"
@@ -1927,8 +4600,8 @@
      ]
     },
     {
-     "uuid": "f6405f72-730e-5ecf-9f58-1892f6af7fbf",
-     "title": "CIS Apple iOS Benchmark",
+     "uuid": "001f6090-2911-5838-8406-d758c3cb0b07",
+     "title": "CIS Apple iOS 27 Benchmark v1.0.0",
      "props": [
       {
        "name": "rego-package",
@@ -1938,7 +4611,7 @@
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/mobile_devices/ios/ios_security.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/benchmarks/cis/mobile_devices/ios/cis_mobile_ios.rego",
        "media-type": "text/plain"
       }
      ]

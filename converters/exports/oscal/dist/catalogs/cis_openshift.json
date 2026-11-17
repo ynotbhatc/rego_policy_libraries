@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "ce0f7c1d-7507-5a56-9edc-a0982b5640a0",
   "metadata": {
-   "title": "Rego Policy Libraries — cis_openshift (Cis Openshift 4)",
+   "title": "Rego Policy Libraries — cis_openshift (CIS Red Hat OpenShift Container Platform Benchmark v2.0.0)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "cis_openshift-cis_openshift_4",
     "class": "rego-module",
-    "title": "Cis Openshift 4",
+    "title": "CIS Red Hat OpenShift Container Platform Benchmark v2.0.0",
     "props": [
      {
       "name": "rego-package",
@@ -66,8 +66,173 @@
     ],
     "controls": [
      {
+      "id": "cis_openshift-cis_openshift_4-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_openshift_4#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_openshift_4#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-cis_openshift_4-1_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-cis_openshift_4-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_openshift_4#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_openshift_4#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-cis_openshift_4-2_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-cis_openshift_4-3",
+      "title": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_openshift_4#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_openshift_4#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-cis_openshift_4-3_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-cis_openshift_4-4",
+      "title": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_openshift_4#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_openshift_4#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-cis_openshift_4-4_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-cis_openshift_4-5",
+      "title": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_openshift_4#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_openshift_4#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-cis_openshift_4-5_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/openshift/cis_openshift_4.rego (package cis_openshift_4); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "cis_openshift-1.1.1",
-      "title": "the API server pod specification file permissions must be set to 644 or more restrictive",
+      "title": "kube-apiserver static pod specification file mode must be 600 or stricter",
       "props": [
        {
         "name": "label",
@@ -93,278 +258,14 @@
        {
         "id": "cis_openshift-1.1.1_stmt",
         "name": "statement",
-        "prose": "the API server pod specification file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.2",
-      "title": "required value of the API server pod specification file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.2_stmt",
-        "name": "statement",
-        "prose": "required value of the API server pod specification file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.3",
-      "title": "the controller manager pod specification file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.3_stmt",
-        "name": "statement",
-        "prose": "the controller manager pod specification file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.4",
-      "title": "required value of the controller manager pod specification file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.4_stmt",
-        "name": "statement",
-        "prose": "required value of the controller manager pod specification file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.5",
-      "title": "the scheduler pod specification file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.5_stmt",
-        "name": "statement",
-        "prose": "the scheduler pod specification file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.6",
-      "title": "required value of the scheduler pod specification file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.6_stmt",
-        "name": "statement",
-        "prose": "required value of the scheduler pod specification file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.7",
-      "title": "the etcd pod specification file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.7_stmt",
-        "name": "statement",
-        "prose": "the etcd pod specification file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.8",
-      "title": "required value of the etcd pod specification file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.8_stmt",
-        "name": "statement",
-        "prose": "required value of the etcd pod specification file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-1.1.9",
-      "title": "the Container Network Interface file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.1.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.1.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-1.1.9_stmt",
-        "name": "statement",
-        "prose": "the Container Network Interface file permissions must be set to 644 or more restrictive"
+        "prose": "kube-apiserver static pod specification file mode must be 600 or stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.10",
-      "title": "required value of the Container Network Interface file ownership is root:root",
+      "title": "multus and openshift-sdn files must be owned by root:root and Open vSwitch files by openvswitch:openvswitch",
       "props": [
        {
         "name": "label",
@@ -390,14 +291,14 @@
        {
         "id": "cis_openshift-1.1.10_stmt",
         "name": "statement",
-        "prose": "required value of the Container Network Interface file ownership is root:root"
+        "prose": "multus and openshift-sdn files must be owned by root:root and Open vSwitch files by openvswitch:openvswitch"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.11",
-      "title": "the etcd data directory permissions must be set to 700 or more restrictive",
+      "title": "etcd data directory (/var/lib/etcd/member) mode must be 700 or stricter",
       "props": [
        {
         "name": "label",
@@ -423,14 +324,14 @@
        {
         "id": "cis_openshift-1.1.11_stmt",
         "name": "statement",
-        "prose": "the etcd data directory permissions must be set to 700 or more restrictive"
+        "prose": "etcd data directory (/var/lib/etcd/member) mode must be 700 or stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.12",
-      "title": "required value of the etcd data directory ownership is etcd:etcd",
+      "title": "etcd data directory (/var/lib/etcd/member) must be owned by root:root",
       "props": [
        {
         "name": "label",
@@ -456,14 +357,14 @@
        {
         "id": "cis_openshift-1.1.12_stmt",
         "name": "statement",
-        "prose": "required value of the etcd data directory ownership is etcd:etcd"
+        "prose": "etcd data directory (/var/lib/etcd/member) must be owned by root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.13",
-      "title": "the admin.conf file permissions must be set to 644 or more restrictive",
+      "title": "/etc/kubernetes/kubeconfig mode must be 600 or stricter on every node",
       "props": [
        {
         "name": "label",
@@ -489,14 +390,14 @@
        {
         "id": "cis_openshift-1.1.13_stmt",
         "name": "statement",
-        "prose": "the admin.conf file permissions must be set to 644 or more restrictive"
+        "prose": "/etc/kubernetes/kubeconfig mode must be 600 or stricter on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.14",
-      "title": "required value of the admin.conf file ownership is root:root",
+      "title": "/etc/kubernetes/kubeconfig must be owned by root:root on every node",
       "props": [
        {
         "name": "label",
@@ -522,14 +423,14 @@
        {
         "id": "cis_openshift-1.1.14_stmt",
         "name": "statement",
-        "prose": "required value of the admin.conf file ownership is root:root"
+        "prose": "/etc/kubernetes/kubeconfig must be owned by root:root on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.15",
-      "title": "the scheduler.conf file permissions must be set to 644 or more restrictive",
+      "title": "kube-scheduler kubeconfig mode must be 600 or stricter",
       "props": [
        {
         "name": "label",
@@ -555,14 +456,14 @@
        {
         "id": "cis_openshift-1.1.15_stmt",
         "name": "statement",
-        "prose": "the scheduler.conf file permissions must be set to 644 or more restrictive"
+        "prose": "kube-scheduler kubeconfig mode must be 600 or stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.16",
-      "title": "required value of the scheduler.conf file ownership is root:root",
+      "title": "kube-scheduler kubeconfig must be owned by root:root",
       "props": [
        {
         "name": "label",
@@ -588,14 +489,14 @@
        {
         "id": "cis_openshift-1.1.16_stmt",
         "name": "statement",
-        "prose": "required value of the scheduler.conf file ownership is root:root"
+        "prose": "kube-scheduler kubeconfig must be owned by root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.17",
-      "title": "the controller-manager.conf file permissions must be set to 644 or more restrictive",
+      "title": "kube-controller-manager kubeconfig mode must be 600 or stricter",
       "props": [
        {
         "name": "label",
@@ -621,14 +522,14 @@
        {
         "id": "cis_openshift-1.1.17_stmt",
         "name": "statement",
-        "prose": "the controller-manager.conf file permissions must be set to 644 or more restrictive"
+        "prose": "kube-controller-manager kubeconfig mode must be 600 or stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.18",
-      "title": "required value of the controller-manager.conf file ownership is root:root",
+      "title": "kube-controller-manager kubeconfig must be owned by root:root",
       "props": [
        {
         "name": "label",
@@ -654,14 +555,14 @@
        {
         "id": "cis_openshift-1.1.18_stmt",
         "name": "statement",
-        "prose": "required value of the controller-manager.conf file ownership is root:root"
+        "prose": "kube-controller-manager kubeconfig must be owned by root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.19",
-      "title": "required value of the OpenShift PKI directory and file ownership is root:root",
+      "title": "every file and directory under the static pod secrets trees must be owned by root:root",
       "props": [
        {
         "name": "label",
@@ -687,14 +588,47 @@
        {
         "id": "cis_openshift-1.1.19_stmt",
         "name": "statement",
-        "prose": "required value of the OpenShift PKI directory and file ownership is root:root"
+        "prose": "every file and directory under the static pod secrets trees must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.2",
+      "title": "kube-apiserver static pod specification file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.2_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver static pod specification file must be owned by root:root"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.20",
-      "title": "the OpenShift PKI certificate file permissions must be set to 644 or more restrictive",
+      "title": "every static pod .crt file mode must be 600 or stricter",
       "props": [
        {
         "name": "label",
@@ -720,14 +654,14 @@
        {
         "id": "cis_openshift-1.1.20_stmt",
         "name": "statement",
-        "prose": "the OpenShift PKI certificate file permissions must be set to 644 or more restrictive"
+        "prose": "every static pod .crt file mode must be 600 or stricter"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-1.1.21",
-      "title": "the OpenShift PKI key file permissions must be set to 600",
+      "title": "every static pod .key file mode must be 600 or stricter",
       "props": [
        {
         "name": "label",
@@ -753,14 +687,1466 @@
        {
         "id": "cis_openshift-1.1.21_stmt",
         "name": "statement",
-        "prose": "the OpenShift PKI key file permissions must be set to 600"
+        "prose": "every static pod .key file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.3",
+      "title": "kube-controller-manager static pod specification file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.3_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager static pod specification file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.4",
+      "title": "kube-controller-manager static pod specification file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.4_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager static pod specification file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.5",
+      "title": "kube-scheduler static pod specification file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.5_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler static pod specification file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.6",
+      "title": "kube-scheduler static pod specification file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.6_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler static pod specification file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.7",
+      "title": "etcd static pod specification file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.7_stmt",
+        "name": "statement",
+        "prose": "etcd static pod specification file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.8",
+      "title": "etcd static pod specification file must be owned by root:root",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.8_stmt",
+        "name": "statement",
+        "prose": "etcd static pod specification file must be owned by root:root"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.1.9",
+      "title": "every multus, openshift-sdn and Open vSwitch file mode must be 600 or stricter",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.1.9_stmt",
+        "name": "statement",
+        "prose": "every multus, openshift-sdn and Open vSwitch file mode must be 600 or stricter"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.1",
+      "title": "ClusterRoleBindings for system:unauthenticated must be only the built-in set, or be attested (attest.unauthenticated_bindings_reviewed)",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.1_stmt",
+        "name": "statement",
+        "prose": "ClusterRoleBindings for system:unauthenticated must be only the built-in set, or be attested (attest.unauthenticated_bindings_reviewed)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.10",
+      "title": "kube-apiserver enable-admission-plugins must list ServiceAccount",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.10_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must list ServiceAccount"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.11",
+      "title": "kube-apiserver enable-admission-plugins must list NamespaceLifecycle",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.11_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must list NamespaceLifecycle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.12",
+      "title": "kube-apiserver enable-admission-plugins must list security.openshift.io/SecurityContextConstraint",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.12_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must list security.openshift.io/SecurityContextConstraint"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.13",
+      "title": "kube-apiserver enable-admission-plugins must list NodeRestriction",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.13_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must list NodeRestriction"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.14",
+      "title": "InsecureBindAddress must not be switched on and the API server endpoints must serve on 6443 (kube) and 8443 (openshift) only",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.14_stmt",
+        "name": "statement",
+        "prose": "InsecureBindAddress must not be switched on and the API server endpoints must serve on 6443 (kube) and 8443 (openshift) only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.15",
+      "title": "the kube-apiserver endpoints must serve on port 6443 only",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.15_stmt",
+        "name": "statement",
+        "prose": "the kube-apiserver endpoints must serve on port 6443 only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.16",
+      "title": "the kube-apiserver serving bind address must be 0.0.0.0:6443 and its container must expose port 6443 only",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.16_stmt",
+        "name": "statement",
+        "prose": "the kube-apiserver serving bind address must be 0.0.0.0:6443 and its container must expose port 6443 only"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.17",
+      "title": "the kube-apiserver metrics endpoint must refuse unauthenticated and unprivileged requests and answer a cluster administrator",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.17_stmt",
+        "name": "statement",
+        "prose": "the kube-apiserver metrics endpoint must refuse unauthenticated and unprivileged requests and answer a cluster administrator"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.18",
+      "title": "kube-apiserver and openshift-apiserver audit-log-path must be their default audit.log paths and both logs must exist",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.18_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver and openshift-apiserver audit-log-path must be their default audit.log paths and both logs must exist"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.19",
+      "title": "API audit logs must be forwarded to a store outside the cluster",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.19_stmt",
+        "name": "statement",
+        "prose": "API audit logs must be forwarded to a store outside the cluster"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.2",
+      "title": "kube-apiserver must hold a kubelet client certificate and key, kubelet-https must not be false, and the openshift-apiserver serving-cert must be a TLS secret",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.2_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver must hold a kubelet client certificate and key, kubelet-https must not be false, and the openshift-apiserver serving-cert must be a TLS secret"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.20",
+      "title": "kube-apiserver audit-log-maxbackup must be 10 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.20_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver audit-log-maxbackup must be 10 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.21",
+      "title": "kube-apiserver audit-log-maxsize must be 100 or more",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.21_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver audit-log-maxsize must be 100 or more"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.22",
+      "title": "kube-apiserver min-request-timeout must be 3600",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.22_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver min-request-timeout must be 3600"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.23",
+      "title": "kube-apiserver service-account-lookup must be true when given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.23_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver service-account-lookup must be true when given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.24",
+      "title": "kube-apiserver serviceAccountPublicKeyFiles must list the sa-token-signing-certs and bound-sa-token-signing-certs directories",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.24_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver serviceAccountPublicKeyFiles must list the sa-token-signing-certs and bound-sa-token-signing-certs directories"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.25",
+      "title": "kube-apiserver etcd-certfile and etcd-keyfile must be the cluster-managed etcd-client pair",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.25_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver etcd-certfile and etcd-keyfile must be the cluster-managed etcd-client pair"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.26",
+      "title": "kube-apiserver tls-cert-file and tls-private-key-file must be the service-network-serving-certkey pair",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.26_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver tls-cert-file and tls-private-key-file must be the service-network-serving-certkey pair"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.27",
+      "title": "kube-apiserver client-ca-file (or servingInfo.clientCA) must be the cluster-managed client-ca bundle",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.27_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver client-ca-file (or servingInfo.clientCA) must be the cluster-managed client-ca bundle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.28",
+      "title": "kube-apiserver etcd-cafile must be the etcd-serving-ca bundle",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.28_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver etcd-cafile must be the etcd-serving-ca bundle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.29",
+      "title": "the OpenShift API server Encrypted condition must report EncryptionCompleted",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.29_stmt",
+        "name": "statement",
+        "prose": "the OpenShift API server Encrypted condition must report EncryptionCompleted"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.3",
+      "title": "kube-apiserver must hold a kubelet client certificate and key and the openshift-apiserver serving-cert must be a TLS secret",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.3_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver must hold a kubelet client certificate and key and the openshift-apiserver serving-cert must be a TLS secret"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.30",
+      "title": "the TLS security profile must not be Old and the API servers, OAuth server and default ingress must require TLS 1.2 or later",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.30_stmt",
+        "name": "statement",
+        "prose": "the TLS security profile must not be Old and the API servers, OAuth server and default ingress must require TLS 1.2 or later"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.31",
+      "title": "the kube-apiserver operator must carry no unsupportedConfigOverrides",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.31_stmt",
+        "name": "statement",
+        "prose": "the kube-apiserver operator must carry no unsupportedConfigOverrides"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.4",
+      "title": "kube-apiserver kubelet-certificate-authority must be given",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.4_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver kubelet-certificate-authority must be given"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.5",
+      "title": "kube-apiserver authorization-mode must be given and must exclude AlwaysAllow",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.5_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver authorization-mode must be given and must exclude AlwaysAllow"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.6",
+      "title": "kube-apiserver authorization-mode must list RBAC",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.6_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver authorization-mode must list RBAC"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.7",
+      "title": "the APIPriorityAndFairness feature gate must not be switched off in the kube-apiserver observed configuration",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.7_stmt",
+        "name": "statement",
+        "prose": "the APIPriorityAndFairness feature gate must not be switched off in the kube-apiserver observed configuration"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.8",
+      "title": "kube-apiserver enable-admission-plugins must exclude AlwaysAdmit",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.8_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must exclude AlwaysAdmit"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.2.9",
+      "title": "kube-apiserver enable-admission-plugins must exclude AlwaysPullImages",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.2.9_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver enable-admission-plugins must exclude AlwaysPullImages"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.3.1",
+      "title": "the kube-controller-manager probes must use healthz and its metrics endpoint must refuse unauthenticated and unprivileged requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.3.1_stmt",
+        "name": "statement",
+        "prose": "the kube-controller-manager probes must use healthz and its metrics endpoint must refuse unauthenticated and unprivileged requests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.3.2",
+      "title": "kube-controller-manager use-service-account-credentials must be true",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.3.2_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager use-service-account-credentials must be true"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.3.3",
+      "title": "kube-controller-manager service-account-private-key-file must be the cluster-managed key",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.3.3_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager service-account-private-key-file must be the cluster-managed key"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.3.4",
+      "title": "kube-controller-manager root-ca-file must be the serviceaccount-ca bundle",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.3.4_stmt",
+        "name": "statement",
+        "prose": "kube-controller-manager root-ca-file must be the serviceaccount-ca bundle"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.4.1",
+      "title": "the kube-scheduler probes must use healthz and its metrics endpoint must refuse unauthenticated and unprivileged requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.4.1_stmt",
+        "name": "statement",
+        "prose": "the kube-scheduler probes must use healthz and its metrics endpoint must refuse unauthenticated and unprivileged requests"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-1.4.2",
+      "title": "kube-scheduler must run without bind-address or port arguments and its pod-IP metrics endpoint must refuse unauthenticated and unprivileged requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-1.4.2_stmt",
+        "name": "statement",
+        "prose": "kube-scheduler must run without bind-address or port arguments and its pod-IP metrics endpoint must refuse unauthenticated and unprivileged requests"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.1",
-      "title": "the --cert-file and --key-file arguments must be set as appropriate",
+      "title": "every etcd member must be started with --cert-file and --key-file",
       "props": [
        {
         "name": "label",
@@ -786,14 +2172,14 @@
        {
         "id": "cis_openshift-2.1_stmt",
         "name": "statement",
-        "prose": "the --cert-file and --key-file arguments must be set as appropriate"
+        "prose": "every etcd member must be started with --cert-file and --key-file"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.2",
-      "title": "required value of the --client-cert-auth argument is true",
+      "title": "every etcd member must run with --client-cert-auth=true",
       "props": [
        {
         "name": "label",
@@ -819,14 +2205,14 @@
        {
         "id": "cis_openshift-2.2_stmt",
         "name": "statement",
-        "prose": "required value of the --client-cert-auth argument is true"
+        "prose": "every etcd member must run with --client-cert-auth=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.3",
-      "title": "the --auto-tls argument must not be true",
+      "title": "etcd members must not run with --auto-tls=true",
       "props": [
        {
         "name": "label",
@@ -852,14 +2238,14 @@
        {
         "id": "cis_openshift-2.3_stmt",
         "name": "statement",
-        "prose": "the --auto-tls argument must not be true"
+        "prose": "etcd members must not run with --auto-tls=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.4",
-      "title": "the --peer-cert-file and --peer-key-file arguments must be set as appropriate",
+      "title": "every etcd member must be started with --peer-cert-file and --peer-key-file",
       "props": [
        {
         "name": "label",
@@ -885,14 +2271,14 @@
        {
         "id": "cis_openshift-2.4_stmt",
         "name": "statement",
-        "prose": "the --peer-cert-file and --peer-key-file arguments must be set as appropriate"
+        "prose": "every etcd member must be started with --peer-cert-file and --peer-key-file"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.5",
-      "title": "required value of the --peer-client-cert-auth argument is true",
+      "title": "every etcd member must run with --peer-client-cert-auth=true",
       "props": [
        {
         "name": "label",
@@ -918,14 +2304,14 @@
        {
         "id": "cis_openshift-2.5_stmt",
         "name": "statement",
-        "prose": "required value of the --peer-client-cert-auth argument is true"
+        "prose": "every etcd member must run with --peer-client-cert-auth=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.6",
-      "title": "the --peer-auto-tls argument must not be true",
+      "title": "etcd members must not run with --peer-auto-tls=true",
       "props": [
        {
         "name": "label",
@@ -951,14 +2337,14 @@
        {
         "id": "cis_openshift-2.6_stmt",
         "name": "statement",
-        "prose": "the --peer-auto-tls argument must not be true"
+        "prose": "etcd members must not run with --peer-auto-tls=true"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-2.7",
-      "title": "a unique Certificate Authority must be used for etcd",
+      "title": "every etcd member must trust the etcd-serving-ca bundle for clients and the etcd-peer-client-ca bundle for peers",
       "props": [
        {
         "name": "label",
@@ -984,14 +2370,14 @@
        {
         "id": "cis_openshift-2.7_stmt",
         "name": "statement",
-        "prose": "a unique Certificate Authority must be used for etcd"
+        "prose": "every etcd member must trust the etcd-serving-ca bundle for clients and the etcd-peer-client-ca bundle for peers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-3.1.1",
-      "title": "required value of the --anonymous-auth argument is false",
+      "title": "users must sign in through a configured identity provider: one or more identity providers, a User bound to cluster-admin, and no kubeadmin secret",
       "props": [
        {
         "name": "label",
@@ -1017,22 +2403,22 @@
        {
         "id": "cis_openshift-3.1.1_stmt",
         "name": "statement",
-        "prose": "required value of the --anonymous-auth argument is false"
+        "prose": "users must sign in through a configured identity provider: one or more identity providers, a User bound to cluster-admin, and no kubeadmin secret"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-3.1.2",
-      "title": "the --basic-auth-file argument must be unset",
+      "id": "cis_openshift-3.2.1",
+      "title": "the API server audit profile must not be None, audit logs must be returned for both API servers, and the audit configuration must be attested as reviewed (attest.audit_retention_reviewed)",
       "props": [
        {
         "name": "label",
-        "value": "3.1.2"
+        "value": "3.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.2"
+        "value": "3.2.1"
        },
        {
         "name": "rego-package",
@@ -1048,24 +2434,24 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-3.1.2_stmt",
+        "id": "cis_openshift-3.2.1_stmt",
         "name": "statement",
-        "prose": "the --basic-auth-file argument must be unset"
+        "prose": "the API server audit profile must not be None, audit logs must be returned for both API servers, and the audit configuration must be attested as reviewed (attest.audit_retention_reviewed)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-3.1.3",
-      "title": "required value of parameter the --token-auth-file is not set",
+      "id": "cis_openshift-3.2.2",
+      "title": "the audit policies must be reviewed against the security events they have to record",
       "props": [
        {
         "name": "label",
-        "value": "3.1.3"
+        "value": "3.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "3.1.3"
+        "value": "3.2.2"
        },
        {
         "name": "rego-package",
@@ -1081,1072 +2467,16 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-3.1.3_stmt",
+        "id": "cis_openshift-3.2.2_stmt",
         "name": "statement",
-        "prose": "required value of parameter the --token-auth-file is not set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.4",
-      "title": "required value of the --kubelet-https argument is true",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.4_stmt",
-        "name": "statement",
-        "prose": "required value of the --kubelet-https argument is true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.5",
-      "title": "the --kubelet-client-certificate and --kubelet-client-key arguments must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.5_stmt",
-        "name": "statement",
-        "prose": "the --kubelet-client-certificate and --kubelet-client-key arguments must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.6",
-      "title": "the --kubelet-certificate-authority argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.6_stmt",
-        "name": "statement",
-        "prose": "the --kubelet-certificate-authority argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.7",
-      "title": "the --authorization-mode argument must not be AlwaysAllow",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.7_stmt",
-        "name": "statement",
-        "prose": "the --authorization-mode argument must not be AlwaysAllow"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.8",
-      "title": "checked condition — the --authorization-mode argument includes Node",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.8_stmt",
-        "name": "statement",
-        "prose": "checked condition — the --authorization-mode argument includes Node"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.9",
-      "title": "checked condition — the --authorization-mode argument includes RBAC",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.9_stmt",
-        "name": "statement",
-        "prose": "checked condition — the --authorization-mode argument includes RBAC"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.10",
-      "title": "the admission control plugin EventRateLimit must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.10_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin EventRateLimit must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.11",
-      "title": "the admission control plugin AlwaysAdmit must be unset",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.11"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.11"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.11_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin AlwaysAdmit must be unset"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.12",
-      "title": "the admission control plugin AlwaysPullImages must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.12"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.12"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.12_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin AlwaysPullImages must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.13",
-      "title": "the admission control plugin SecurityContextDeny must be set if PodSecurityPolicy is not used",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.13"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.13"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.13_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin SecurityContextDeny must be set if PodSecurityPolicy is not used"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.14",
-      "title": "the admission control plugin ServiceAccount must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.14_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin ServiceAccount must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.15",
-      "title": "the admission control plugin NamespaceLifecycle must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.15"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.15"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.15_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin NamespaceLifecycle must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.16",
-      "title": "the admission control plugin PodSecurityPolicy must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.16"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.16"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.16_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin PodSecurityPolicy must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.17",
-      "title": "the admission control plugin NodeRestriction must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.17"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.17"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.17_stmt",
-        "name": "statement",
-        "prose": "the admission control plugin NodeRestriction must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.18",
-      "title": "the --insecure-bind-address argument must be unset",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.18"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.18"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.18_stmt",
-        "name": "statement",
-        "prose": "the --insecure-bind-address argument must be unset"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.19",
-      "title": "required value of the --insecure-port argument is 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.19"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.19"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.19_stmt",
-        "name": "statement",
-        "prose": "required value of the --insecure-port argument is 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.20",
-      "title": "the --secure-port argument must not be 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.20"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.20"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.20_stmt",
-        "name": "statement",
-        "prose": "the --secure-port argument must not be 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.21",
-      "title": "required value of the --profiling argument is false",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.21"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.21"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.21_stmt",
-        "name": "statement",
-        "prose": "required value of the --profiling argument is false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.22",
-      "title": "the --audit-log-path argument must be set",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.22"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.22"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.22_stmt",
-        "name": "statement",
-        "prose": "the --audit-log-path argument must be set"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.23",
-      "title": "required value of the --audit-log-maxage argument is 30 or as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.23"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.23"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.23_stmt",
-        "name": "statement",
-        "prose": "required value of the --audit-log-maxage argument is 30 or as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.24",
-      "title": "required value of the --audit-log-maxbackup argument is 10 or as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.24"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.24"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.24_stmt",
-        "name": "statement",
-        "prose": "required value of the --audit-log-maxbackup argument is 10 or as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.25",
-      "title": "required value of the --audit-log-maxsize argument is 100 or as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.25"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.25"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.25_stmt",
-        "name": "statement",
-        "prose": "required value of the --audit-log-maxsize argument is 100 or as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.26",
-      "title": "the --request-timeout argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.26"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.26"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.26_stmt",
-        "name": "statement",
-        "prose": "the --request-timeout argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.27",
-      "title": "required value of the --service-account-lookup argument is true",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.27"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.27"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.27_stmt",
-        "name": "statement",
-        "prose": "required value of the --service-account-lookup argument is true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.28",
-      "title": "the --service-account-key-file argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.28"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.28"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.28_stmt",
-        "name": "statement",
-        "prose": "the --service-account-key-file argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.29",
-      "title": "the --etcd-certfile and --etcd-keyfile arguments must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.29"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.29"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.29_stmt",
-        "name": "statement",
-        "prose": "the --etcd-certfile and --etcd-keyfile arguments must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.30",
-      "title": "the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.30"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.30"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.30_stmt",
-        "name": "statement",
-        "prose": "the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.31",
-      "title": "the --client-ca-file argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.31"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.31"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.31_stmt",
-        "name": "statement",
-        "prose": "the --client-ca-file argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.32",
-      "title": "the --etcd-cafile argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.32"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.32"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.32_stmt",
-        "name": "statement",
-        "prose": "the --etcd-cafile argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.33",
-      "title": "the --encryption-provider-config argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.33"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.33"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.33_stmt",
-        "name": "statement",
-        "prose": "the --encryption-provider-config argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.34",
-      "title": "encryption providers must be appropriately configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.34"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.34"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.34_stmt",
-        "name": "statement",
-        "prose": "encryption providers must be appropriately configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-3.1.35",
-      "title": "checked condition — the API Server only makes use of Strong Cryptographic Ciphers",
-      "props": [
-       {
-        "name": "label",
-        "value": "3.1.35"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "3.1.35"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-3.1.35_stmt",
-        "name": "statement",
-        "prose": "checked condition — the API Server only makes use of Strong Cryptographic Ciphers"
+        "prose": "the audit policies must be reviewed against the security events they have to record"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.1.1",
-      "title": "the kubelet service file permissions must be set to 644 or more restrictive",
+      "title": "kubelet.service mode must be 644 or stricter on every node",
       "props": [
        {
         "name": "label",
@@ -2172,278 +2502,14 @@
        {
         "id": "cis_openshift-4.1.1_stmt",
         "name": "statement",
-        "prose": "the kubelet service file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.2",
-      "title": "required value of the kubelet service file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.2_stmt",
-        "name": "statement",
-        "prose": "required value of the kubelet service file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.3",
-      "title": "the proxy kubeconfig file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.3_stmt",
-        "name": "statement",
-        "prose": "the proxy kubeconfig file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.4",
-      "title": "required value of the proxy kubeconfig file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.4_stmt",
-        "name": "statement",
-        "prose": "required value of the proxy kubeconfig file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.5",
-      "title": "the kubelet.conf file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.5_stmt",
-        "name": "statement",
-        "prose": "the kubelet.conf file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.6",
-      "title": "required value of the kubelet.conf file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.6_stmt",
-        "name": "statement",
-        "prose": "required value of the kubelet.conf file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.7",
-      "title": "the certificate authorities file permissions must be set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.7_stmt",
-        "name": "statement",
-        "prose": "the certificate authorities file permissions must be set to 644 or more restrictive"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.8",
-      "title": "required value of the client certificate authorities file ownership is root:root",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.8_stmt",
-        "name": "statement",
-        "prose": "required value of the client certificate authorities file ownership is root:root"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.1.9",
-      "title": "the kubelet configuration file must have permissions set to 644 or more restrictive",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.1.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.1.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.1.9_stmt",
-        "name": "statement",
-        "prose": "the kubelet configuration file must have permissions set to 644 or more restrictive"
+        "prose": "kubelet.service mode must be 644 or stricter on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.1.10",
-      "title": "required value of the kubelet configuration file ownership is root:root",
+      "title": "the kubelet config.json must be owned by root:root on every node",
       "props": [
        {
         "name": "label",
@@ -2469,14 +2535,278 @@
        {
         "id": "cis_openshift-4.1.10_stmt",
         "name": "statement",
-        "prose": "required value of the kubelet configuration file ownership is root:root"
+        "prose": "the kubelet config.json must be owned by root:root on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.2",
+      "title": "kubelet.service must be owned by root:root on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.2_stmt",
+        "name": "statement",
+        "prose": "kubelet.service must be owned by root:root on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.3",
+      "title": "kube-proxy-config.yaml in the sdn pods must be mode 644 or stricter while kube-proxy runs there",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.3_stmt",
+        "name": "statement",
+        "prose": "kube-proxy-config.yaml in the sdn pods must be mode 644 or stricter while kube-proxy runs there"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.4",
+      "title": "kube-proxy-config.yaml in the sdn pods must be owned by root:root while kube-proxy runs there",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.4_stmt",
+        "name": "statement",
+        "prose": "kube-proxy-config.yaml in the sdn pods must be owned by root:root while kube-proxy runs there"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.5",
+      "title": "/etc/kubernetes/kubelet.conf mode must be 644 or stricter on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.5_stmt",
+        "name": "statement",
+        "prose": "/etc/kubernetes/kubelet.conf mode must be 644 or stricter on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.6",
+      "title": "/etc/kubernetes/kubelet.conf must be owned by root:root on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.6_stmt",
+        "name": "statement",
+        "prose": "/etc/kubernetes/kubelet.conf must be owned by root:root on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.7",
+      "title": "the kubelet client CA file mode must be 644 or stricter on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.7_stmt",
+        "name": "statement",
+        "prose": "the kubelet client CA file mode must be 644 or stricter on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.8",
+      "title": "the kubelet client CA file must be owned by root:root on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.8_stmt",
+        "name": "statement",
+        "prose": "the kubelet client CA file must be owned by root:root on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.1.9",
+      "title": "the kubelet config.json mode must be 600 or stricter on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.1.9_stmt",
+        "name": "statement",
+        "prose": "the kubelet config.json mode must be 600 or stricter on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.2.1",
-      "title": "required value of the anonymous-auth argument is false",
+      "title": "kubelet eviction and image garbage collection thresholds must be reviewed as suited to the nodes",
       "props": [
        {
         "name": "label",
@@ -2502,278 +2832,14 @@
        {
         "id": "cis_openshift-4.2.1_stmt",
         "name": "statement",
-        "prose": "required value of the anonymous-auth argument is false"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.2",
-      "title": "the --authorization-mode argument must not be AlwaysAllow",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.2_stmt",
-        "name": "statement",
-        "prose": "the --authorization-mode argument must not be AlwaysAllow"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.3",
-      "title": "the --client-ca-file argument must be set as appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.3_stmt",
-        "name": "statement",
-        "prose": "the --client-ca-file argument must be set as appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.4",
-      "title": "required value of the --read-only-port argument is 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.4_stmt",
-        "name": "statement",
-        "prose": "required value of the --read-only-port argument is 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.5",
-      "title": "the --streaming-connection-idle-timeout argument must not be 0",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.5_stmt",
-        "name": "statement",
-        "prose": "the --streaming-connection-idle-timeout argument must not be 0"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.6",
-      "title": "required value of the --protect-kernel-defaults argument is true",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.6_stmt",
-        "name": "statement",
-        "prose": "required value of the --protect-kernel-defaults argument is true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.7",
-      "title": "required value of the --make-iptables-util-chains argument is true",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.7"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.7"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.7_stmt",
-        "name": "statement",
-        "prose": "required value of the --make-iptables-util-chains argument is true"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.8",
-      "title": "the --hostname-override argument must be unset",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.8"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.8"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.8_stmt",
-        "name": "statement",
-        "prose": "the --hostname-override argument must be unset"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-4.2.9",
-      "title": "required value of the --event-qps argument is 0 or a level which ensures appropriate event capture",
-      "props": [
-       {
-        "name": "label",
-        "value": "4.2.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "4.2.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-4.2.9_stmt",
-        "name": "statement",
-        "prose": "required value of the --event-qps argument is 0 or a level which ensures appropriate event capture"
+        "prose": "kubelet eviction and image garbage collection thresholds must be reviewed as suited to the nodes"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.2.10",
-      "title": "the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate",
+      "title": "kubelet rotateCertificates must be true on every node",
       "props": [
        {
         "name": "label",
@@ -2799,14 +2865,14 @@
        {
         "id": "cis_openshift-4.2.10_stmt",
         "name": "statement",
-        "prose": "the --tls-cert-file and --tls-private-key-file arguments must be set as appropriate"
+        "prose": "kubelet rotateCertificates must be true on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.2.11",
-      "title": "the --rotate-certificates argument must not be false",
+      "title": "kubelet featureGates.RotateKubeletServerCertificate and rotateCertificates must be true on every node",
       "props": [
        {
         "name": "label",
@@ -2832,14 +2898,14 @@
        {
         "id": "cis_openshift-4.2.11_stmt",
         "name": "statement",
-        "prose": "the --rotate-certificates argument must not be false"
+        "prose": "kubelet featureGates.RotateKubeletServerCertificate and rotateCertificates must be true on every node"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-4.2.12",
-      "title": "required value of the RotateKubeletServerCertificate argument is true",
+      "title": "the API servers, OAuth server and default ingress must offer only strong cipher suites",
       "props": [
        {
         "name": "label",
@@ -2865,22 +2931,22 @@
        {
         "id": "cis_openshift-4.2.12_stmt",
         "name": "statement",
-        "prose": "required value of the RotateKubeletServerCertificate argument is true"
+        "prose": "the API servers, OAuth server and default ingress must offer only strong cipher suites"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-4.2.13",
-      "title": "checked condition — the Kubelet only makes use of Strong Cryptographic Ciphers",
+      "id": "cis_openshift-4.2.2",
+      "title": "kubelet anonymous authentication must be off on every node (authentication.anonymous.enabled)",
       "props": [
        {
         "name": "label",
-        "value": "4.2.13"
+        "value": "4.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "4.2.13"
+        "value": "4.2.2"
        },
        {
         "name": "rego-package",
@@ -2896,16 +2962,247 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-4.2.13_stmt",
+        "id": "cis_openshift-4.2.2_stmt",
         "name": "statement",
-        "prose": "checked condition — the Kubelet only makes use of Strong Cryptographic Ciphers"
+        "prose": "kubelet anonymous authentication must be off on every node (authentication.anonymous.enabled)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.3",
+      "title": "kubelet authorization.mode must be given and must not be AlwaysAllow on any node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.3_stmt",
+        "name": "statement",
+        "prose": "kubelet authorization.mode must be given and must not be AlwaysAllow on any node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.4",
+      "title": "kubelet authentication.x509.clientCAFile must be /etc/kubernetes/kubelet-ca.crt on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.4_stmt",
+        "name": "statement",
+        "prose": "kubelet authentication.x509.clientCAFile must be /etc/kubernetes/kubelet-ca.crt on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.5",
+      "title": "kube-apiserver kubelet-read-only-port must be 0",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.5_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver kubelet-read-only-port must be 0"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.6",
+      "title": "kubelet streamingConnectionIdleTimeout must not be 0 on any node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.6_stmt",
+        "name": "statement",
+        "prose": "kubelet streamingConnectionIdleTimeout must not be 0 on any node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.7",
+      "title": "kubelet makeIPTablesUtilChains must be true on every node",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.7_stmt",
+        "name": "statement",
+        "prose": "kubelet makeIPTablesUtilChains must be true on every node"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.8",
+      "title": "kubelet kubeAPIQPS must be reviewed as suited to the cluster's event volume",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.8_stmt",
+        "name": "statement",
+        "prose": "kubelet kubeAPIQPS must be reviewed as suited to the cluster's event volume"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-4.2.9",
+      "title": "kube-apiserver kubelet-client-certificate and kubelet-client-key must include the kubelet-client pair",
+      "props": [
+       {
+        "name": "label",
+        "value": "4.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "4.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-4.2.9_stmt",
+        "name": "statement",
+        "prose": "kube-apiserver kubelet-client-certificate and kubelet-client-key must include the kubelet-client pair"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.1",
-      "title": "the cluster-admin role must be only used where required",
+      "title": "the kubeadmin secret must be removed and every cluster-admin binding must be attested as needed (attest.cluster_admin_bindings_reviewed)",
       "props": [
        {
         "name": "label",
@@ -2931,14 +3228,14 @@
        {
         "id": "cis_openshift-5.1.1_stmt",
         "name": "statement",
-        "prose": "the cluster-admin role must be only used where required"
+        "prose": "the kubeadmin secret must be removed and every cluster-admin binding must be attested as needed (attest.cluster_admin_bindings_reviewed)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.2",
-      "title": "Minimize access to secrets",
+      "title": "get, list and watch rights on Secrets must be reviewed and kept small",
       "props": [
        {
         "name": "label",
@@ -2964,14 +3261,14 @@
        {
         "id": "cis_openshift-5.1.2_stmt",
         "name": "statement",
-        "prose": "Minimize access to secrets"
+        "prose": "get, list and watch rights on Secrets must be reviewed and kept small"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.3",
-      "title": "wildcard use in Roles and ClusterRoles must be held to the smallest scope the platform allows",
+      "title": "wildcards in Role and ClusterRole rules must be reviewed and kept small",
       "props": [
        {
         "name": "label",
@@ -2997,14 +3294,14 @@
        {
         "id": "cis_openshift-5.1.3_stmt",
         "name": "statement",
-        "prose": "wildcard use in Roles and ClusterRoles must be held to the smallest scope the platform allows"
+        "prose": "wildcards in Role and ClusterRole rules must be reviewed and kept small"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.4",
-      "title": "access to create pods must be held to the smallest scope the platform allows",
+      "title": "the right to create Pods must be reviewed and kept small",
       "props": [
        {
         "name": "label",
@@ -3030,14 +3327,14 @@
        {
         "id": "cis_openshift-5.1.4_stmt",
         "name": "statement",
-        "prose": "access to create pods must be held to the smallest scope the platform allows"
+        "prose": "the right to create Pods must be reviewed and kept small"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.5",
-      "title": "default service accounts must be not actively used",
+      "title": "workloads must not run under a project's default ServiceAccount except where reviewed",
       "props": [
        {
         "name": "label",
@@ -3063,14 +3360,14 @@
        {
         "id": "cis_openshift-5.1.5_stmt",
         "name": "statement",
-        "prose": "default service accounts must be not actively used"
+        "prose": "workloads must not run under a project's default ServiceAccount except where reviewed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.1.6",
-      "title": "Service Account Tokens must be only mounted where necessary",
+      "title": "Pods and ServiceAccounts that mount an API token must be reviewed as needing it",
       "props": [
        {
         "name": "label",
@@ -3096,14 +3393,14 @@
        {
         "id": "cis_openshift-5.1.6_stmt",
         "name": "statement",
-        "prose": "Service Account Tokens must be only mounted where necessary"
+        "prose": "Pods and ServiceAccounts that mount an API token must be reviewed as needing it"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.1",
-      "title": "admission of privileged containers must be held to the smallest scope the platform allows",
+      "title": "one or more SCCs must refuse privileged containers",
       "props": [
        {
         "name": "label",
@@ -3129,14 +3426,47 @@
        {
         "id": "cis_openshift-5.2.1_stmt",
         "name": "statement",
-        "prose": "admission of privileged containers must be held to the smallest scope the platform allows"
+        "prose": "one or more SCCs must refuse privileged containers"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_openshift-5.2.10",
+      "title": "users and groups with access to privileged or host-level SCCs must be reviewed as needing it",
+      "props": [
+       {
+        "name": "label",
+        "value": "5.2.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "5.2.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_openshift_4"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_openshift-5.2.10_stmt",
+        "name": "statement",
+        "prose": "users and groups with access to privileged or host-level SCCs must be reviewed as needing it"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.2",
-      "title": "admission of containers wishing to share the host process ID namespace must be held to the smallest scope the platform allows",
+      "title": "one or more SCCs must refuse the host PID namespace (allowHostPID false)",
       "props": [
        {
         "name": "label",
@@ -3162,14 +3492,14 @@
        {
         "id": "cis_openshift-5.2.2_stmt",
         "name": "statement",
-        "prose": "admission of containers wishing to share the host process ID namespace must be held to the smallest scope the platform allows"
+        "prose": "one or more SCCs must refuse the host PID namespace (allowHostPID false)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.3",
-      "title": "admission of containers wishing to share the host IPC namespace must be held to the smallest scope the platform allows",
+      "title": "one or more SCCs must refuse the host IPC namespace",
       "props": [
        {
         "name": "label",
@@ -3195,14 +3525,14 @@
        {
         "id": "cis_openshift-5.2.3_stmt",
         "name": "statement",
-        "prose": "admission of containers wishing to share the host IPC namespace must be held to the smallest scope the platform allows"
+        "prose": "one or more SCCs must refuse the host IPC namespace"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.4",
-      "title": "admission of containers wishing to share the host network namespace must be held to the smallest scope the platform allows",
+      "title": "one or more SCCs must refuse the host network namespace",
       "props": [
        {
         "name": "label",
@@ -3228,14 +3558,14 @@
        {
         "id": "cis_openshift-5.2.4_stmt",
         "name": "statement",
-        "prose": "admission of containers wishing to share the host network namespace must be held to the smallest scope the platform allows"
+        "prose": "one or more SCCs must refuse the host network namespace"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.5",
-      "title": "admission of containers with allowPrivilegeEscalation must be held to the smallest scope the platform allows",
+      "title": "one or more SCCs must set allowPrivilegeEscalation to false",
       "props": [
        {
         "name": "label",
@@ -3261,14 +3591,14 @@
        {
         "id": "cis_openshift-5.2.5_stmt",
         "name": "statement",
-        "prose": "admission of containers with allowPrivilegeEscalation must be held to the smallest scope the platform allows"
+        "prose": "one or more SCCs must set allowPrivilegeEscalation to false"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.6",
-      "title": "Minimize the admission of root containers",
+      "title": "one or more SCCs must require MustRunAsNonRoot",
       "props": [
        {
         "name": "label",
@@ -3294,14 +3624,14 @@
        {
         "id": "cis_openshift-5.2.6_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of root containers"
+        "prose": "one or more SCCs must require MustRunAsNonRoot"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.7",
-      "title": "Minimize the admission of containers with the NET_RAW capability",
+      "title": "one or more SCCs must drop ALL capabilities",
       "props": [
        {
         "name": "label",
@@ -3327,14 +3657,14 @@
        {
         "id": "cis_openshift-5.2.7_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers with the NET_RAW capability"
+        "prose": "one or more SCCs must drop ALL capabilities"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.8",
-      "title": "Minimize the admission of containers with added capabilities",
+      "title": "one or more SCCs must allow no added capabilities and one or more must add none by default",
       "props": [
        {
         "name": "label",
@@ -3360,14 +3690,14 @@
        {
         "id": "cis_openshift-5.2.8_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers with added capabilities"
+        "prose": "one or more SCCs must allow no added capabilities and one or more must add none by default"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.2.9",
-      "title": "Minimize the admission of containers with capabilities assigned",
+      "title": "one or more SCCs must drop ALL capabilities from containers",
       "props": [
        {
         "name": "label",
@@ -3393,14 +3723,14 @@
        {
         "id": "cis_openshift-5.2.9_stmt",
         "name": "statement",
-        "prose": "Minimize the admission of containers with capabilities assigned"
+        "prose": "one or more SCCs must drop ALL capabilities from containers"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.3.1",
-      "title": "checked condition — the CNI in use supports Network Policies",
+      "title": "the cluster network plugin must be confirmed to enforce ingress and egress NetworkPolicy",
       "props": [
        {
         "name": "label",
@@ -3426,14 +3756,14 @@
        {
         "id": "cis_openshift-5.3.1_stmt",
         "name": "statement",
-        "prose": "checked condition — the CNI in use supports Network Policies"
+        "prose": "the cluster network plugin must be confirmed to enforce ingress and egress NetworkPolicy"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.3.2",
-      "title": "all Namespaces must have Network Policies defined",
+      "title": "every namespace must have at least one NetworkPolicy",
       "props": [
        {
         "name": "label",
@@ -3459,14 +3789,14 @@
        {
         "id": "cis_openshift-5.3.2_stmt",
         "name": "statement",
-        "prose": "all Namespaces must have Network Policies defined"
+        "prose": "every namespace must have at least one NetworkPolicy"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.4.1",
-      "title": "Prefer using secrets as files over secrets as environment variables",
+      "title": "workloads must not read Secrets through environment variables",
       "props": [
        {
         "name": "label",
@@ -3492,14 +3822,14 @@
        {
         "id": "cis_openshift-5.4.1_stmt",
         "name": "statement",
-        "prose": "Prefer using secrets as files over secrets as environment variables"
+        "prose": "workloads must not read Secrets through environment variables"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.4.2",
-      "title": "external secret storage must be evaluated and the decision recorded",
+      "title": "an external secret store must be evaluated and the decision recorded",
       "props": [
        {
         "name": "label",
@@ -3525,14 +3855,14 @@
        {
         "id": "cis_openshift-5.4.2_stmt",
         "name": "statement",
-        "prose": "external secret storage must be evaluated and the decision recorded"
+        "prose": "an external secret store must be evaluated and the decision recorded"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.5.1",
-      "title": "Configure Image Provenance using ImagePolicyWebhook admission controller",
+      "title": "image.config registrySources must be set and attested as appropriate (attest.image_provenance_reviewed)",
       "props": [
        {
         "name": "label",
@@ -3558,14 +3888,14 @@
        {
         "id": "cis_openshift-5.5.1_stmt",
         "name": "statement",
-        "prose": "Configure Image Provenance using ImagePolicyWebhook admission controller"
+        "prose": "image.config registrySources must be set and attested as appropriate (attest.image_provenance_reviewed)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.7.1",
-      "title": "administrative boundaries between resources using namespaces must exist",
+      "title": "the non-system namespaces must be reviewed as the administrative boundaries in use",
       "props": [
        {
         "name": "label",
@@ -3591,14 +3921,14 @@
        {
         "id": "cis_openshift-5.7.1_stmt",
         "name": "statement",
-        "prose": "administrative boundaries between resources using namespaces must exist"
+        "prose": "the non-system namespaces must be reviewed as the administrative boundaries in use"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.7.2",
-      "title": "required value of the seccomp profile is docker/default in your pod definitions",
+      "title": "every non-system pod must set a pod seccompProfile",
       "props": [
        {
         "name": "label",
@@ -3624,14 +3954,14 @@
        {
         "id": "cis_openshift-5.7.2_stmt",
         "name": "statement",
-        "prose": "required value of the seccomp profile is docker/default in your pod definitions"
+        "prose": "every non-system pod must set a pod seccompProfile"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.7.3",
-      "title": "Apply Security Context to Your Pods and Containers",
+      "title": "pods on the privileged SCC or on no SCC must be reviewed",
       "props": [
        {
         "name": "label",
@@ -3657,14 +3987,14 @@
        {
         "id": "cis_openshift-5.7.3_stmt",
         "name": "statement",
-        "prose": "Apply Security Context to Your Pods and Containers"
+        "prose": "pods on the privileged SCC or on no SCC must be reviewed"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_openshift-5.7.4",
-      "title": "default namespace must not be used",
+      "title": "the default namespace must hold nothing but the kubernetes and openshift Services",
       "props": [
        {
         "name": "label",
@@ -3690,22 +4020,22 @@
        {
         "id": "cis_openshift-5.7.4_stmt",
         "name": "statement",
-        "prose": "default namespace must not be used"
+        "prose": "the default namespace must hold nothing but the kubernetes and openshift Services"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-6.1.1",
-      "title": "OpenShift Network Policies must be in place",
+      "id": "cis_openshift-control_plane",
+      "title": "Control plane components",
       "props": [
        {
         "name": "label",
-        "value": "6.1.1"
+        "value": "control_plane"
        },
        {
         "name": "alt-identifier",
-        "value": "6.1.1"
+        "value": "control_plane"
        },
        {
         "name": "rego-package",
@@ -3721,24 +4051,24 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-6.1.1_stmt",
+        "id": "cis_openshift-control_plane_stmt",
         "name": "statement",
-        "prose": "OpenShift Network Policies must be in place"
+        "prose": "Control plane components"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-6.1.2",
-      "title": "network segmentation must be applied",
+      "id": "cis_openshift-control_plane_config",
+      "title": "Control plane configuration",
       "props": [
        {
         "name": "label",
-        "value": "6.1.2"
+        "value": "control_plane_config"
        },
        {
         "name": "alt-identifier",
-        "value": "6.1.2"
+        "value": "control_plane_config"
        },
        {
         "name": "rego-package",
@@ -3754,24 +4084,24 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-6.1.2_stmt",
+        "id": "cis_openshift-control_plane_config_stmt",
         "name": "statement",
-        "prose": "network segmentation must be applied"
+        "prose": "Control plane configuration"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-6.1.3",
-      "title": "traffic between nodes and masters must be encrypted",
+      "id": "cis_openshift-etcd",
+      "title": "etcd",
       "props": [
        {
         "name": "label",
-        "value": "6.1.3"
+        "value": "etcd"
        },
        {
         "name": "alt-identifier",
-        "value": "6.1.3"
+        "value": "etcd"
        },
        {
         "name": "rego-package",
@@ -3787,24 +4117,24 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-6.1.3_stmt",
+        "id": "cis_openshift-etcd_stmt",
         "name": "statement",
-        "prose": "traffic between nodes and masters must be encrypted"
+        "prose": "etcd"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-6.1.4",
-      "title": "traffic between pods must be encrypted when required",
+      "id": "cis_openshift-policies",
+      "title": "Policies",
       "props": [
        {
         "name": "label",
-        "value": "6.1.4"
+        "value": "policies"
        },
        {
         "name": "alt-identifier",
-        "value": "6.1.4"
+        "value": "policies"
        },
        {
         "name": "rego-package",
@@ -3820,24 +4150,24 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-6.1.4_stmt",
+        "id": "cis_openshift-policies_stmt",
         "name": "statement",
-        "prose": "traffic between pods must be encrypted when required"
+        "prose": "Policies"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_openshift-6.2.1",
-      "title": "Ingress Controllers must have appropriate security configurations",
+      "id": "cis_openshift-worker_nodes",
+      "title": "Worker nodes",
       "props": [
        {
         "name": "label",
-        "value": "6.2.1"
+        "value": "worker_nodes"
        },
        {
         "name": "alt-identifier",
-        "value": "6.2.1"
+        "value": "worker_nodes"
        },
        {
         "name": "rego-package",
@@ -3853,1362 +4183,9 @@
       ],
       "parts": [
        {
-        "id": "cis_openshift-6.2.1_stmt",
+        "id": "cis_openshift-worker_nodes_stmt",
         "name": "statement",
-        "prose": "Ingress Controllers must have appropriate security configurations"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-6.2.2",
-      "title": "Routes must have appropriate security configurations",
-      "props": [
-       {
-        "name": "label",
-        "value": "6.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "6.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-6.2.2_stmt",
-        "name": "statement",
-        "prose": "Routes must have appropriate security configurations"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-6.2.3",
-      "title": "external traffic must be properly controlled",
-      "props": [
-       {
-        "name": "label",
-        "value": "6.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "6.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-6.2.3_stmt",
-        "name": "statement",
-        "prose": "external traffic must be properly controlled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-6.3.1",
-      "title": "Service Mesh must be explicitly configured securely when used",
-      "props": [
-       {
-        "name": "label",
-        "value": "6.3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "6.3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-6.3.1_stmt",
-        "name": "statement",
-        "prose": "Service Mesh must be explicitly configured securely when used"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-6.3.2",
-      "title": "sidecar injection must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "6.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "6.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-6.3.2_stmt",
-        "name": "statement",
-        "prose": "sidecar injection must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.1.1",
-      "title": "OpenShift identity providers must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.1.1_stmt",
-        "name": "statement",
-        "prose": "OpenShift identity providers must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.1.2",
-      "title": "LDAP/Active Directory integration must be secure",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.1.2_stmt",
-        "name": "statement",
-        "prose": "LDAP/Active Directory integration must be secure"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.1.3",
-      "title": "OAuth configuration must be secure",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.1.3_stmt",
-        "name": "statement",
-        "prose": "OAuth configuration must be secure"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.1.4",
-      "title": "service account authentication must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.1.4_stmt",
-        "name": "statement",
-        "prose": "service account authentication must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.2.1",
-      "title": "multi-factor authentication must be turned on where possible",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.2.1_stmt",
-        "name": "statement",
-        "prose": "multi-factor authentication must be turned on where possible"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.2.2",
-      "title": "strong password policies must be enforced",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.2.2_stmt",
-        "name": "statement",
-        "prose": "strong password policies must be enforced"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.2.3",
-      "title": "session timeouts must be appropriately configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.2.3_stmt",
-        "name": "statement",
-        "prose": "session timeouts must be appropriately configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.3.1",
-      "title": "certificate-based authentication must be used where appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.3.1_stmt",
-        "name": "statement",
-        "prose": "certificate-based authentication must be used where appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-7.3.2",
-      "title": "certificate rotation must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "7.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "7.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-7.3.2_stmt",
-        "name": "statement",
-        "prose": "certificate rotation must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.1.1",
-      "title": "RBAC must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.1.1_stmt",
-        "name": "statement",
-        "prose": "RBAC must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.1.2",
-      "title": "role bindings must be reviewed regularly",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.1.2_stmt",
-        "name": "statement",
-        "prose": "role bindings must be reviewed regularly"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.1.3",
-      "title": "cluster role bindings must be minimized",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.1.3_stmt",
-        "name": "statement",
-        "prose": "cluster role bindings must be minimized"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.2.1",
-      "title": "Security Context Constraints must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.2.1_stmt",
-        "name": "statement",
-        "prose": "Security Context Constraints must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.2.2",
-      "title": "checked condition — custom SCCs follow security best practices",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.2.2_stmt",
-        "name": "statement",
-        "prose": "checked condition — custom SCCs follow security best practices"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.2.3",
-      "title": "privileged SCCs must be restricted",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.2.3_stmt",
-        "name": "statement",
-        "prose": "privileged SCCs must be restricted"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.3.1",
-      "title": "admission controllers must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.3.1_stmt",
-        "name": "statement",
-        "prose": "admission controllers must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-8.3.2",
-      "title": "custom admission controllers must be secure",
-      "props": [
-       {
-        "name": "label",
-        "value": "8.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "8.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-8.3.2_stmt",
-        "name": "statement",
-        "prose": "custom admission controllers must be secure"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.1.1",
-      "title": "audit logging must be turned on",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.1.1_stmt",
-        "name": "statement",
-        "prose": "audit logging must be turned on"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.1.2",
-      "title": "audit log retention must be explicitly configured appropriately",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.1.2_stmt",
-        "name": "statement",
-        "prose": "audit log retention must be explicitly configured appropriately"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.1.3",
-      "title": "audit logs must be stored securely",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.1.3_stmt",
-        "name": "statement",
-        "prose": "audit logs must be stored securely"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.2.1",
-      "title": "application logging must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.2.1_stmt",
-        "name": "statement",
-        "prose": "application logging must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.2.2",
-      "title": "log aggregation must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.2.2_stmt",
-        "name": "statement",
-        "prose": "log aggregation must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.2.3",
-      "title": "sensitive information must be not logged",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.2.3_stmt",
-        "name": "statement",
-        "prose": "sensitive information must be not logged"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.3.1",
-      "title": "log monitoring and alerting must be explicitly configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.3.1_stmt",
-        "name": "statement",
-        "prose": "log monitoring and alerting must be explicitly configured"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.3.2",
-      "title": "security events must be properly logged and alerted",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.3.2_stmt",
-        "name": "statement",
-        "prose": "security events must be properly logged and alerted"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.4.1",
-      "title": "logs must be backed up regularly",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.4.1_stmt",
-        "name": "statement",
-        "prose": "logs must be backed up regularly"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-9.4.2",
-      "title": "log integrity must be maintained",
-      "props": [
-       {
-        "name": "label",
-        "value": "9.4.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "9.4.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-9.4.2_stmt",
-        "name": "statement",
-        "prose": "log integrity must be maintained"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.1.1",
-      "title": "secrets must be not stored in container images",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.1.1_stmt",
-        "name": "statement",
-        "prose": "secrets must be not stored in container images"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.1.2",
-      "title": "secrets must be properly encrypted at rest",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.1.2_stmt",
-        "name": "statement",
-        "prose": "secrets must be properly encrypted at rest"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.1.3",
-      "title": "secrets must be encrypted in transit",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.1.3_stmt",
-        "name": "statement",
-        "prose": "secrets must be encrypted in transit"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.2.1",
-      "title": "secret rotation must match the approved configuration",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.2.1_stmt",
-        "name": "statement",
-        "prose": "secret rotation must match the approved configuration"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.2.2",
-      "title": "secret access must be logged and monitored",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.2.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.2.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.2.2_stmt",
-        "name": "statement",
-        "prose": "secret access must be logged and monitored"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.2.3",
-      "title": "secret lifecycle management must be implemented",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.2.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.2.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.2.3_stmt",
-        "name": "statement",
-        "prose": "secret lifecycle management must be implemented"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.3.1",
-      "title": "external secret management systems must be used when appropriate",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.3.1_stmt",
-        "name": "statement",
-        "prose": "external secret management systems must be used when appropriate"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.3.2",
-      "title": "secret injection must be done securely",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.3.2_stmt",
-        "name": "statement",
-        "prose": "secret injection must be done securely"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.4.1",
-      "title": "certificate management must be automated",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.4.1_stmt",
-        "name": "statement",
-        "prose": "certificate management must be automated"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_openshift-10.4.2",
-      "title": "certificate expiration monitoring must be explicitly configured",
-      "props": [
-       {
-        "name": "label",
-        "value": "10.4.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "10.4.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_openshift_4"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a134e88b-77ef-5904-b1bc-97cfcfb99309",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_openshift-10.4.2_stmt",
-        "name": "statement",
-        "prose": "certificate expiration monitoring must be explicitly configured"
+        "prose": "Worker nodes"
        }
       ],
       "class": "security"
@@ -5220,7 +4197,7 @@
    "resources": [
     {
      "uuid": "a134e88b-77ef-5904-b1bc-97cfcfb99309",
-     "title": "Cis Openshift 4",
+     "title": "CIS Red Hat OpenShift Container Platform Benchmark v2.0.0",
      "props": [
       {
        "name": "rego-package",

@@ -195,26 +195,63 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 	e.current_value != null
 ]
 
-# 6.1.3.1: per-file expectations by file name, from the benchmark's audit script (max mode, owners, groups)
-log_rule(b) := ["0664", {"root"}, {"root", "utmp"}] if {
-	regex.match(`^((lastlog|wtmp|btmp)([.-].*)?|README)$`, b)
-} else := ["0644", {"root", "syslog"}, {"root", "adm"}] if {
-	regex.match(`^(cloud-init\.log|localmessages|waagent\.log)`, b)
-} else := ["0640", {"root", "syslog"}, {"root", "adm"}] if {
-	regex.match(`^(secure([.-].*)?|auth\.log|syslog|messages)$`, b)
-} else := ["0660", {"root", "SSSD"}, {"root", "SSSD"}] if {
-	b in {"SSSD", "sssd"}
-} else := ["0660", {"root"}, {"root", "gdm", "gdm3"}] if {
-	b in {"gdm", "gdm3"}
-} else := ["0640", {"root"}, {"root", "systemd-journal"}] if {
-	regex.match(`\.journal~?$`, b)
-} else := ["0640", {"root", "syslog"}, {"root", "adm"}]
+# 6.1.3.1: the benchmark's log file classes. Package-manager logs are matched on the full path, the others on the
+# file name; a file in none of them is held to the general expectations or, when its owner is a service account
+# (login shell not in /etc/shells), to that account's own group.
+log_base(p) := regex.replace(p, `^.*/`, "")
 
+log_class(p) := "package" if {
+	regex.match(`^/var/log/(apt/[^/]+|dnf\.[^/]*|dnf5\.log|hawkey\.log[^/]*|zypp/[^/]+|zypper\.log[^/]*|yum\.log[^/]*)$`, p)
+} else := "login" if {
+	regex.match(`^(wtmp|btmp|lastlog)`, log_base(p))
+} else := "journal" if {
+	regex.match(`\.journal~?$`, log_base(p))
+} else := "cloud" if {
+	regex.match(`^(cloud-init\.log|localmessages|waagent\.log)`, log_base(p))
+} else := "general" if {
+	regex.match(`^(messages|syslog|secure.*|auth\.log)$`, log_base(p))
+} else := "other"
+
+# class -> [max mode, owners, groups]
+log_spec := {
+	"package": ["0644", {"root"}, {"root", "adm"}],
+	"login": ["0664", {"root"}, {"root", "utmp"}],
+	"journal": ["0640", {"root"}, {"root", "systemd-journal"}],
+	"cloud": ["0644", {"root", "syslog"}, {"root", "adm"}],
+	"general": ["0640", {"root", "syslog"}, {"root", "adm"}],
+	"other": ["0640", {"root", "syslog"}, {"root", "adm"}],
+}
+
+log_spec_ok(f) if {
+	s := log_spec[log_class(f.file)]
+	mode_within(f.actual_mode, s[0])
+	f.actual_owner in s[1]
+	f.actual_group in s[2]
+}
+
+log_file_ok(f) if log_spec_ok(f)
+
+# a log of a service account (not root): owned by it, group its own group, root or adm, 0640 or stricter
 log_file_ok(f) if {
-	r := log_rule(regex.replace(f.file, `^.*/`, ""))
-	mode_within(f.actual_mode, r[0])
-	f.actual_owner in r[1]
-	f.actual_group in r[2]
+	log_class(f.file) == "other"
+	mode_within(f.actual_mode, "0640")
+	f.actual_owner != "root"
+	f.owner_has_login_shell == false
+	f.actual_group in {f.owner_primary_group, "root", "adm"}
+}
+
+# the owner facts are needed only for an unnamed file the general expectations do not accept
+log_owner_facts_ok(f) if log_class(f.file) != "other"
+
+log_owner_facts_ok(f) if log_spec_ok(f)
+
+log_owner_facts_ok(f) if f.actual_owner == "root"
+
+log_owner_facts_ok(f) if f.owner_has_login_shell == true
+
+log_owner_facts_ok(f) if {
+	f.owner_has_login_shell == false
+	is_string(f.owner_primary_group)
 }
 
 # rsyslog action(...) bodies of the collected configuration (comments dropped, lines joined)
@@ -619,6 +656,7 @@ default e_6_1_3_1 := false
 e_6_1_3_1 if {
 	is_array(input.log_file_permissions.analysis)
 	count(input.log_file_permissions.analysis) > 0
+	every f in input.log_file_permissions.analysis { log_owner_facts_ok(f) }
 }
 
 default p_6_1_3_1 := false

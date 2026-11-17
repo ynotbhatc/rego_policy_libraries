@@ -1,0 +1,637 @@
+# ── helpers (aws_lib.rego.tmpl) ───────────────────────────────────────────────────────
+
+# Reference time: input.assessment_time (RFC 3339) when supplied and valid, otherwise the clock.
+default now_ns := 0
+
+now_ns := time.parse_rfc3339_ns(input.assessment_time) if {
+	is_string(input.assessment_time)
+	time.parse_rfc3339_ns(input.assessment_time)
+}
+
+now_ns := time.now_ns() if not _has_assessment_time
+
+_has_assessment_time if {
+	is_string(input.assessment_time)
+	time.parse_rfc3339_ns(input.assessment_time)
+}
+
+day_ns := 86400000000000
+
+# Age in whole days of an RFC 3339 timestamp; undefined when the value is not a parsable timestamp.
+age_days(ts) := floor((now_ns - time.parse_rfc3339_ns(ts)) / day_ns) if {
+	is_string(ts)
+	time.parse_rfc3339_ns(ts)
+}
+
+has_str(x, k) if is_string(object.get(x, k, null))
+
+has_list(x, k) if is_array(object.get(x, k, null))
+
+has_obj(x, k) if is_object(object.get(x, k, null))
+
+nonempty(s) if {
+	is_string(s)
+	trim_space(s) != ""
+}
+
+# Booleans as the CLI prints them (true) or as the credential report prints them ("true").
+truthy(v) if v == true
+
+truthy(v) if {
+	is_string(v)
+	lower(trim_space(v)) == "true"
+}
+
+falsy(v) if v == false
+
+falsy(v) if {
+	is_string(v)
+	lower(trim_space(v)) == "false"
+}
+
+# One value or a list of values, as IAM documents allow.
+as_list(v) := v if is_array(v)
+
+as_list(v) := [v] if {
+	not is_array(v)
+	not is_null(v)
+}
+
+# Resource name for messages.
+nm(x, k) := n if {
+	n := x[k]
+	is_string(n)
+} else := "<unnamed>"
+
+# A region's record: every regional resource carries the "region" the collector read it from.
+region_of(x) := r if {
+	r := x.region
+	is_string(r)
+} else := ""
+
+# ── IAM documents ─────────────────────────────────────────────────────────────────────
+
+# A policy document may arrive as an object or as the JSON string the API returns.
+doc(d) := d if is_object(d)
+
+doc(d) := o if {
+	is_string(d)
+	o := json.unmarshal(d)
+	is_object(o)
+}
+
+statements(d) := as_list(object.get(doc(d), "Statement", []))
+
+stmt_effect(s, e) if lower(object.get(s, "Effect", "")) == lower(e)
+
+# Principal "*" or {"AWS": "*"}.
+principal_any(s) if s.Principal == "*"
+
+principal_any(s) if "*" in as_list(object.get(object.get(s, "Principal", {}), "AWS", []))
+
+principal_service(s) := {lower(v) | some v in as_list(object.get(object.get(s, "Principal", {}), "Service", []))}
+
+action_set(s) := {lower(a) | some a in as_list(object.get(s, "Action", []))}
+
+resource_list(s) := as_list(object.get(s, "Resource", []))
+
+# Condition values for an operator and key (names are case-insensitive); each value is a string.
+cond_values(s, op, key) := {sprintf("%v", [v]) |
+	some o, kv in object.get(s, "Condition", {})
+	lower(o) == op
+	some k, vals in kv
+	lower(k) == key
+	some v in as_list(vals)
+}
+
+cond_values_any_op(s, ops, key) := {sprintf("%v", [v]) |
+	some o, kv in object.get(s, "Condition", {})
+	lower(o) in ops
+	some k, vals in kv
+	lower(k) == key
+	some v in as_list(vals)
+}
+
+# ── network rules ─────────────────────────────────────────────────────────────────────
+
+# Ports administered remotely: 22 and 3389 unless the operator names others.
+admin_ports := ports if {
+	ports := input.remote_admin_ports
+	is_array(ports)
+	count(ports) > 0
+} else := [22, 3389]
+
+proto_norm(p) := "6" if lower(sprintf("%v", [p])) in {"6", "tcp"}
+
+proto_norm(p) := "17" if lower(sprintf("%v", [p])) in {"17", "udp"}
+
+proto_norm(p) := "-1" if lower(sprintf("%v", [p])) in {"-1", "all"}
+
+proto_norm(p) := lower(sprintf("%v", [p])) if not lower(sprintf("%v", [p])) in {"6", "tcp", "17", "udp", "-1", "all"}
+
+# A security group permission covers a port: protocol -1 is every port; otherwise the range must include it.
+perm_covers(perm, _) if proto_norm(perm.IpProtocol) == "-1"
+
+perm_covers(perm, port) if {
+	proto_norm(perm.IpProtocol) != "-1"
+	perm.FromPort <= port
+	perm.ToPort >= port
+}
+
+perm_collected(perm) if {
+	has_str(perm, "IpProtocol")
+	proto_norm(perm.IpProtocol) == "-1"
+}
+
+perm_collected(perm) if {
+	has_str(perm, "IpProtocol")
+	is_number(perm.FromPort)
+	is_number(perm.ToPort)
+}
+
+perm_open_v4(perm) if {
+	some r in object.get(perm, "IpRanges", [])
+	r.CidrIp == "0.0.0.0/0"
+}
+
+perm_open_v6(perm) if {
+	some r in object.get(perm, "Ipv6Ranges", [])
+	r.CidrIpv6 == "::/0"
+}
+
+# Protocols that carry an administration port.
+perm_tcp_udp_all(perm) if proto_norm(perm.IpProtocol) in {"6", "17", "-1"}
+
+# Network ACL entries.
+nacl_entry_covers(e, _, _) if proto_norm(e.Protocol) == "-1"
+
+nacl_entry_covers(e, proto, port) if {
+	proto_norm(e.Protocol) == proto
+	e.PortRange.From <= port
+	e.PortRange.To >= port
+}
+
+nacl_entry_covers(e, proto, _) if {
+	proto_norm(e.Protocol) == proto
+	not has_obj(e, "PortRange")
+}
+
+nacl_ingress(e) if falsy(e.Egress)
+
+nacl_entry_collected(e) if {
+	is_number(e.RuleNumber)
+	is_string(e.RuleAction)
+	is_string(e.Protocol)
+	is_boolean(e.Egress)
+}
+
+nacl_allow_protos(e) := {"6", "17"} if proto_norm(e.Protocol) == "-1"
+
+nacl_allow_protos(e) := {proto_norm(e.Protocol)} if proto_norm(e.Protocol) in {"6", "17"}
+
+# An earlier (lower-numbered) ingress deny from 0.0.0.0/0 that covers the protocol and port.
+nacl_shadowed(acl, allow, proto, port) if {
+	some d in acl.Entries
+	nacl_ingress(d)
+	lower(d.RuleAction) == "deny"
+	d.CidrBlock == "0.0.0.0/0"
+	d.RuleNumber < allow.RuleNumber
+	nacl_entry_covers(d, proto, port)
+}
+
+nacl_exposed(acl, port) := {e.RuleNumber |
+	some e in acl.Entries
+	nacl_ingress(e)
+	lower(e.RuleAction) == "allow"
+	e.CidrBlock == "0.0.0.0/0"
+	some proto in nacl_allow_protos(e)
+	nacl_entry_covers(e, proto, port)
+	not nacl_shadowed(acl, e, proto, port)
+}
+
+# ── CloudTrail ────────────────────────────────────────────────────────────────────────
+
+basic_selectors(t) := as_list(object.get(object.get(t, "event_selectors", {}), "EventSelectors", []))
+
+advanced_selectors(t) := as_list(object.get(object.get(t, "event_selectors", {}), "AdvancedEventSelectors", []))
+
+# Field selector values of an advanced selector.
+adv_field(sel, name) := vals if {
+	some fs in sel.FieldSelectors
+	fs.Field == name
+	vals := {lower(v) | some v in as_list(object.get(fs, "Equals", []))}
+}
+
+adv_fields(sel) := {fs.Field | some fs in sel.FieldSelectors}
+
+# Advanced selector logging every S3 object event of the wanted direction (read / write), with no narrowing.
+s3_adv_covers(sel, direction) if {
+	adv_field(sel, "eventCategory") == {"data"}
+	adv_field(sel, "resources.type") == {"aws::s3::object"}
+	adv_fields(sel) - {"eventCategory", "resources.type", "readOnly"} == set()
+	adv_read_ok(sel, direction)
+}
+
+adv_read_ok(sel, _) if not "readOnly" in adv_fields(sel)
+
+adv_read_ok(sel, "read") if adv_field(sel, "readOnly") == {"true"}
+
+adv_read_ok(sel, "write") if adv_field(sel, "readOnly") == {"false"}
+
+# Basic selector: all current and future buckets, the wanted direction.
+s3_basic_covers(sel, direction) if {
+	some dr in object.get(sel, "DataResources", [])
+	dr.Type == "AWS::S3::Object"
+	"arn:aws:s3" in as_list(object.get(dr, "Values", []))
+	basic_rw_ok(sel, direction)
+}
+
+basic_rw_ok(sel, _) if lower(object.get(sel, "ReadWriteType", "")) == "all"
+
+basic_rw_ok(sel, "read") if lower(object.get(sel, "ReadWriteType", "")) == "readonly"
+
+basic_rw_ok(sel, "write") if lower(object.get(sel, "ReadWriteType", "")) == "writeonly"
+
+trail_logs_s3(t, direction) if {
+	some sel in advanced_selectors(t)
+	s3_adv_covers(sel, direction)
+}
+
+trail_logs_s3(t, direction) if {
+	some sel in basic_selectors(t)
+	s3_basic_covers(sel, direction)
+}
+
+trail_selectors_collected(t) if is_object(object.get(t, "event_selectors", null))
+
+bedrock_types_logged(t) := {ty |
+	some sel in advanced_selectors(t)
+	adv_field(sel, "eventCategory") == {"data"}
+	some ty0 in adv_field(sel, "resources.type")
+	startswith(ty0, "aws::bedrock::")
+	ty := ty0
+}
+
+trail_covers_region(t, _) if truthy(t.IsMultiRegionTrail)
+
+trail_covers_region(t, r) if t.HomeRegion == r
+
+# ── misc ──────────────────────────────────────────────────────────────────────────────
+
+all_four_blocked(c) if {
+	is_object(c)
+	every k in ["BlockPublicAcls", "IgnorePublicAcls", "BlockPublicPolicy", "RestrictPublicBuckets"] {
+		c[k] == true
+	}
+}
+
+# Account id owning an ARN.
+arn_account(a) := parts[4] if parts := split(a, ":")
+
+arn_service(a) := parts[2] if parts := split(a, ":")
+
+arn_resource(a) := concat(":", array.slice(parts, 5, count(parts))) if {
+	parts := split(a, ":")
+	count(parts) >= 6
+}
+
+# Names of the regions the assessment covers (aws ec2 describe-regions).
+region_names := {r.RegionName | some r in input.regions}
+
+# Regions where Amazon Bedrock is operated, as stated by the collector.
+bedrock_regions := {r | some r in input.bedrock_regions}
+
+# ── IAM and credential report ─────────────────────────────────────────────────────────
+
+root_mfa_ok if input.account_summary.AccountMFAEnabled == 1
+
+root_mfa_ok if input.account_summary.AccountPasswordPresent == 0
+
+key_active(x, n) if truthy(x[sprintf("access_key_%s_active", [n])])
+
+# Days since a credential was last used; a credential never used is measured from its creation (key rotation date,
+# user creation time for the password).
+pw_idle_days(x) := d if {
+	d := age_days(x.password_last_used)
+} else := d if {
+	d := age_days(x.user_creation_time)
+}
+
+key_idle_days(x, n) := d if {
+	d := age_days(x[sprintf("access_key_%s_last_used_date", [n])])
+} else := d if {
+	d := age_days(x[sprintf("access_key_%s_last_rotated", [n])])
+}
+
+key_rotation_days(x, n) := age_days(x[sprintf("access_key_%s_last_rotated", [n])])
+
+admin_statement(s) if {
+	stmt_effect(s, "Allow")
+	"*" in as_list(object.get(s, "Action", []))
+	"*" in resource_list(s)
+}
+
+admin_policy(p) if {
+	some s in statements(p.DefaultVersionDocument)
+	admin_statement(s)
+}
+
+policy_doc_ok(p) if is_object(doc(p.DefaultVersionDocument))
+
+support_role_attached if count(input.support_policy_entities.PolicyRoles) > 0
+
+live(i) if lower(object.get(object.get(i, "State", {}), "Name", "")) != "terminated"
+
+profile_has_role(arn) if {
+	some p in input.iam_instance_profiles
+	p.Arn == arn
+	count(p.Roles) > 0
+}
+
+region_has_active_analyzer(r) if {
+	some a in input.access_analyzers
+	region_of(a) == r
+	a.status == "ACTIVE"
+	upper(a.type) in {"ACCOUNT", "ORGANIZATION"}
+}
+
+# ── S3 ────────────────────────────────────────────────────────────────────────────────
+
+action_covers_s3(s) if "s3:*" in action_set(s)
+
+action_covers_s3(s) if "*" in action_set(s)
+
+resource_covers_objects(s, _) if {
+	some r in resource_list(s)
+	r == "*"
+}
+
+resource_covers_objects(s, name) if {
+	some r in resource_list(s)
+	startswith(r, "arn:")
+	endswith(r, concat("", [":::", name, "/*"]))
+}
+
+http_denied(s) if "false" in cond_values(s, "bool", "aws:securetransport")
+
+http_denied(s) if {
+	some v in cond_values(s, "numericlessthan", "s3:tlsversion")
+	to_number(v) >= 1.2
+}
+
+bucket_denies_http(b) if {
+	some s in statements(b.policy)
+	stmt_effect(s, "Deny")
+	principal_any(s)
+	action_covers_s3(s)
+	resource_covers_objects(s, b.Name)
+	http_denied(s)
+}
+
+account_bpa_ok if all_four_blocked(object.get(input, "s3_account_public_access_block", null))
+
+# Protocols that carry no port range (ESP, GRE, ...) are collected without one.
+perm_collected(perm) if {
+	has_str(perm, "IpProtocol")
+	not proto_norm(perm.IpProtocol) in {"6", "17", "-1", "1", "58", "icmp", "icmpv6"}
+}
+
+# ── AWS Config, Security Hub, EBS, flow logs ──────────────────────────────────────────
+
+region_has_recorder(r) if {
+	some c in input.config_recorders
+	region_of(c) == r
+}
+
+any_global_recorder if {
+	some c in input.config_recorders
+	c.recordingGroup.includeGlobalResourceTypes == true
+}
+
+recorder_ok(c) if {
+	some s in input.config_recorder_status
+	s.name == c.name
+	region_of(s) == region_of(c)
+	s.recording == true
+	s.lastStatus == "SUCCESS"
+}
+
+region_has_hub(r) if {
+	some h in input.securityhub_hubs
+	region_of(h) == r
+	nonempty(h.SubscribedAt)
+}
+
+region_ebs_encrypted(r) if {
+	some e in input.ebs_encryption_by_default
+	region_of(e) == r
+	truthy(e.EbsEncryptionByDefault)
+}
+
+vpc_has_flow_log(v) if {
+	some f in input.flow_logs
+	f.ResourceId == v.VpcId
+	upper(f.FlowLogStatus) == "ACTIVE"
+}
+
+imds_v2(i) if {
+	i.MetadataOptions.HttpTokens == "required"
+	i.MetadataOptions.State == "applied"
+}
+
+imds_field(i, k) := v if {
+	v := i.MetadataOptions[k]
+	is_string(v)
+} else := "not collected"
+
+# ── Bedrock ───────────────────────────────────────────────────────────────────────────
+
+bedrock_trust_stmt(s) if {
+	stmt_effect(s, "Allow")
+	action_set(s) & {"sts:assumerole", "sts:*", "*"} != set()
+	principal_service(s) & {"bedrock.amazonaws.com", "bedrock-agentcore.amazonaws.com"} != set()
+}
+
+role_doc_ok(r) if {
+	is_object(doc(r.AssumeRolePolicyDocument))
+	has_str(r, "Arn")
+}
+
+source_account_ok(r, s) if {
+	v := cond_values_any_op(s, {"stringequals", "stringlike"}, "aws:sourceaccount")
+	count(v) > 0
+	every a in v {
+		a == arn_account(r.Arn)
+	}
+}
+
+source_arn_pinned(a, acct) if {
+	arn_service(a) in {"bedrock", "bedrock-agentcore"}
+	arn_account(a) == acct
+	res := arn_resource(a)
+	not startswith(res, "*")
+	ty := split(res, "/")[0]
+	ty != ""
+	not contains(ty, "*")
+}
+
+source_arn_ok(r, s) if {
+	v := cond_values_any_op(s, {"arnequals", "arnlike", "stringequals", "stringlike"}, "aws:sourcearn")
+	count(v) > 0
+	every a in v {
+		source_arn_pinned(a, arn_account(r.Arn))
+	}
+}
+
+strength_on(v) if {
+	is_string(v)
+	upper(v) != "NONE"
+	trim_space(v) != ""
+}
+
+harmful_types := {"HATE", "INSULTS", "SEXUAL", "VIOLENCE", "MISCONDUCT"}
+
+has_filters(g) if {
+	is_array(g.contentPolicy.filters)
+	count(g.contentPolicy.filters) > 0
+}
+
+prompt_attack_ok(g) if {
+	some f in g.contentPolicy.filters
+	upper(f.type) == "PROMPT_ATTACK"
+	strength_on(f.inputStrength)
+}
+
+required_bedrock_types := {lower(v) | some v in input.bedrock_resource_types_in_use}
+
+region_has_bedrock_trail(r) if {
+	some t in input.cloudtrail_trails
+	trail_covers_region(t, r)
+	truthy(t.status.IsLogging)
+	count(bedrock_types_logged(t)) > 0
+	required_bedrock_types - bedrock_types_logged(t) == set()
+}
+
+logging_cfgs(r) := [l.loggingConfig |
+	some l in input.bedrock_invocation_logging
+	region_of(l) == r
+	is_object(l.loggingConfig)
+	count(l.loggingConfig) > 0
+]
+
+logging_destination_ok(c) if {
+	nonempty(c.cloudWatchConfig.logGroupName)
+	nonempty(c.cloudWatchConfig.roleArn)
+}
+
+logging_destination_ok(c) if nonempty(c.s3Config.bucketName)
+
+modality_on(c, m) if truthy(c[sprintf("%sDataDeliveryEnabled", [m])])
+
+kb_logging_ok(kb) if {
+	some s in input.log_delivery_sources
+	region_of(s) == region_of(kb)
+	s.logType == "APPLICATION_LOGS"
+	kb.knowledgeBaseArn in s.resourceArns
+	some d in input.log_deliveries
+	region_of(d) == region_of(s)
+	d.deliverySourceName == s.name
+	nonempty(d.deliveryDestinationArn)
+}
+
+req_endpoints(q) := [e |
+	some e in input.vpc_endpoints
+	e.VpcId == q.vpc_id
+	e.ServiceName == q.service_name
+	upper(e.VpcEndpointType) == "INTERFACE"
+	lower(e.State) == "available"
+]
+
+default_endpoint_policy(e) if {
+	some s in statements(e.PolicyDocument)
+	stmt_effect(s, "Allow")
+	principal_any(s)
+	"*" in as_list(object.get(s, "Action", []))
+}
+
+endpoint_policy_restricted(e) if {
+	is_object(doc(e.PolicyDocument))
+	not default_endpoint_policy(e)
+}
+
+job_vpc_ok(j) if {
+	count(j.vpcConfig.subnetIds) > 0
+	count(j.vpcConfig.securityGroupIds) > 0
+}
+
+explicit_tables(s) := [t |
+	some t in input.route_tables
+	some a in t.Associations
+	a.SubnetId == s
+]
+
+main_tables(s) := [t |
+	some sn in input.subnets
+	sn.SubnetId == s
+	some t in input.route_tables
+	t.VpcId == sn.VpcId
+	some a in t.Associations
+	truthy(a.Main)
+]
+
+subnet_tables(s) := explicit_tables(s) if count(explicit_tables(s)) > 0
+
+subnet_tables(s) := main_tables(s) if count(explicit_tables(s)) == 0
+
+dest_default(r) if r.DestinationCidrBlock == "0.0.0.0/0"
+
+dest_default(r) if r.DestinationIpv6CidrBlock == "::/0"
+
+out_target(r) if startswith(object.get(r, "GatewayId", ""), "igw-")
+
+out_target(r) if startswith(object.get(r, "NatGatewayId", ""), "nat-")
+
+default_route_out(t) if {
+	some r in t.Routes
+	dest_default(r)
+	out_target(r)
+}
+
+kb_collection_name(kb) := c.name if {
+	arn := kb.storageConfiguration.opensearchServerlessConfiguration.collectionArn
+	id := split(arn_resource(arn), "/")[1]
+	some c in input.opensearch_serverless_collections
+	c.id == id
+}
+
+policy_rules(pol) := pol.policy if is_array(pol.policy)
+
+policy_rules(pol) := o if {
+	is_string(pol.policy)
+	o := json.unmarshal(pol.policy)
+	is_array(o)
+}
+
+matching_rules(n) := [rule |
+	some pol in input.opensearch_serverless_network_policies
+	some rule in policy_rules(pol)
+	some rr in rule.Rules
+	rr.ResourceType == "collection"
+	some res in rr.Resource
+	glob.match(res, ["/"], concat("", ["collection/", n]))
+]
+
+private_bedrock_rule(n) if {
+	some rule in matching_rules(n)
+	falsy(rule.AllowFromPublic)
+	"bedrock.amazonaws.com" in rule.SourceServices
+}
+
+model_vpc_ok(m) if {
+	count(m.VpcConfig.SecurityGroupIds) > 0
+	count(m.VpcConfig.Subnets) > 0
+}
+
+pw_min_length_ok if input.password_policy.MinimumPasswordLength >= 14
+
+pw_reuse_ok if input.password_policy.PasswordReusePrevention >= 24

@@ -1,8 +1,8 @@
 {
  "version": "2.5.0",
  "oscal-version": "1.2.3",
- "frameworks": 187,
- "controls": 21210,
+ "frameworks": 190,
+ "controls": 22258,
  "catalogs": [
   {
    "framework": "aca_155_260",
@@ -91,9 +91,16 @@
   {
    "framework": "cis_aks",
    "file": "catalogs/cis_aks.json",
-   "controls": 56,
+   "controls": 58,
    "modules": 1,
    "uuid": "081ccd1c-de27-5dbc-a862-b9018cc1c024"
+  },
+  {
+   "framework": "cis_aks_automatic",
+   "file": "catalogs/cis_aks_automatic.json",
+   "controls": 37,
+   "modules": 1,
+   "uuid": "f8835190-9927-598c-bc58-620c80545da3"
   },
   {
    "framework": "cis_amazon_linux_2023",
@@ -112,8 +119,8 @@
   {
    "framework": "cis_aws",
    "file": "catalogs/cis_aws.json",
-   "controls": 61,
-   "modules": 2,
+   "controls": 96,
+   "modules": 3,
    "uuid": "ba59c687-5154-516d-bf0f-6e3dda7916e3"
   },
   {
@@ -224,7 +231,7 @@
   {
    "framework": "cis_mobile_devices",
    "file": "catalogs/cis_mobile_devices.json",
-   "controls": 55,
+   "controls": 136,
    "modules": 2,
    "uuid": "ddd1f247-3e9a-5774-85e9-b1be0c57f776"
   },
@@ -245,8 +252,8 @@
   {
    "framework": "cis_network_devices",
    "file": "catalogs/cis_network_devices.json",
-   "controls": 270,
-   "modules": 8,
+   "controls": 314,
+   "modules": 9,
    "uuid": "275b0b3c-f7fd-5994-939d-854cb627b613"
   },
   {
@@ -266,7 +273,7 @@
   {
    "framework": "cis_openshift",
    "file": "catalogs/cis_openshift.json",
-   "controls": 156,
+   "controls": 125,
    "modules": 1,
    "uuid": "ce0f7c1d-7507-5a56-9edc-a0982b5640a0"
   },
@@ -315,8 +322,8 @@
   {
    "framework": "cis_rhel_8",
    "file": "catalogs/cis_rhel_8.json",
-   "controls": 227,
-   "modules": 15,
+   "controls": 329,
+   "modules": 16,
    "uuid": "99de36a1-ca1e-5968-bfc5-2a954f7e7708"
   },
   {
@@ -329,8 +336,8 @@
   {
    "framework": "cis_rocky_linux_8",
    "file": "catalogs/cis_rocky_linux_8.json",
-   "controls": 188,
-   "modules": 14,
+   "controls": 329,
+   "modules": 16,
    "uuid": "830f2f1c-f186-5dac-8a60-ad3d37b962d9"
   },
   {
@@ -346,6 +353,13 @@
    "controls": 297,
    "modules": 17,
    "uuid": "e153f820-0b16-5c9a-91e0-02027b2cb5ea"
+  },
+  {
+   "framework": "cis_sql_server_2022",
+   "file": "catalogs/cis_sql_server_2022.json",
+   "controls": 49,
+   "modules": 1,
+   "uuid": "f3a66584-6ac7-5ad9-8e73-bd6ee83e131e"
   },
   {
    "framework": "cis_sql_server_2025",
@@ -371,8 +385,8 @@
   {
    "framework": "cis_ubuntu_22_04",
    "file": "catalogs/cis_ubuntu_22_04.json",
-   "controls": 214,
-   "modules": 16,
+   "controls": 311,
+   "modules": 22,
    "uuid": "a1a42f81-7c4a-5bca-a913-104d7d9fd719"
   },
   {
@@ -392,8 +406,8 @@
   {
    "framework": "cis_vmware",
    "file": "catalogs/cis_vmware.json",
-   "controls": 96,
-   "modules": 1,
+   "controls": 158,
+   "modules": 2,
    "uuid": "598cb879-f083-5917-943f-6d559e781f12"
   },
   {
@@ -444,6 +458,13 @@
    "controls": 408,
    "modules": 8,
    "uuid": "deb15e0e-f912-551e-8c8d-422ec15738e9"
+  },
+  {
+   "framework": "cis_windows_server_2025_modular",
+   "file": "catalogs/cis_windows_server_2025_modular.json",
+   "controls": 429,
+   "modules": 9,
+   "uuid": "21562be7-7374-58cc-952e-436aefcb122e"
   },
   {
    "framework": "cisa_cpg",

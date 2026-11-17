@@ -257,3 +257,38 @@ test_complete_attestation_passes if {{
 }}
 """
     return files
+
+
+def regression_tests(pkg, fx, recs, checks, deny_ids, not0_ids, head):
+    """test_regressions.rego: pins the deny rights stated as an exact list (denying fewer principals fails,
+    denying more passes) and the "or fewer" bounds that 0 does not meet. `fx` is the fixtures package path."""
+    def role(rid):
+        return "ms" if _applies(recs[rid]["profiles"], "MS") else "dc"
+
+    out = [head + f"package {pkg}.regressions_test\n\nimport rego.v1\n"]
+    for rid in sorted(deny_ids, key=lambda i: [int(p) for p in i.split(".")]):
+        c = checks[rid]
+        if c["kind"] != "rights" or c["mode"] != "include" or not c["privilege"].startswith("SeDeny") or len(c["sids"]) < 2:
+            raise SystemExit(f"{rid}: expected a deny right of two or more principals evaluated as 'to include'")
+        if OUTSIDER in c["sids"]:
+            raise SystemExit(f"{rid}: the superset case needs a principal the recommendation does not name")
+        cases = [("fail", []), ("fail", c["sids"][:1]), ("pass", list(c["sids"])), ("pass", list(c["sids"]) + [OUTSIDER])]
+        lines = [f'\tdata.{pkg}.lib.results["{rid}"] == "{want}" with input as object.union({fx}.fixture_{role(rid)}, '
+                 f'{json.dumps({"secedit": {"privilege_rights": {c["privilege"]: held}}})})' for want, held in cases]
+        out.append(f"""
+# {rid} is a deny right stated as an exact list: denying no one or fewer principals fails, every named principal
+# passes, and denying more passes.
+test_{rid.replace(".", "_")}_deny_right_needs_every_named_principal if {{
+""" + "\n".join(lines) + "\n}\n")
+    for rid in sorted(not0_ids, key=lambda i: [int(p) for p in i.split(".")]):
+        c = checks[rid]
+        if c["kind"] != "reg" or c["op"] != "le_not0" or not isinstance(c["value"], int) or c["value"] < 2:
+            raise SystemExit(f"{rid}: expected a single registry value with an 'or fewer, but not 0' bound")
+        cases = [("fail", 0), ("pass", 1), ("pass", c["value"]), ("fail", c["value"] + 1)]
+        lines = [f'\tdata.{pkg}.lib.results["{rid}"] == "{want}" with input as object.union({fx}.fixture_{role(rid)}, '
+                 f'{json.dumps({"registry": {c["path"]: {c["name"]: v}}})})' for want, v in cases]
+        out.append(f"""
+# {rid} is an upper bound that 0 does not meet: 0 is not a configured value for {c["name"]}.
+test_{rid.replace(".", "_")}_zero_is_not_within_the_bound if {{
+""" + "\n".join(lines) + "\n}\n")
+    return "".join(out)

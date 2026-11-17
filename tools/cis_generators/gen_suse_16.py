@@ -1213,20 +1213,37 @@ L["6.2.2.4"] = custom([f'is_string({ref(AC)})'],
                         'lower(conf_last(input.auditd.config, "admin_space_left_action")) in {"single", "halt"}']],
                       dotted(AC), nest(AC, "space_left_action = email\nadmin_space_left_action = single"),
                       nest(AC, "space_left_action = ignore\nadmin_space_left_action = single"), reads=[AC])
-AR = ["auditd", "active_rules"]
+# 6.2.3 audit rules. Every audit procedure of 6.2.3.1-6.2.3.32 reads the running rules (auditctl -l:
+# auditd.active_rules) AND the on-disk rules (/etc/audit/rules.d/*.rules: auditd.rules); a rule is required in both.
+# Architectures follow the procedure's "verify" text: arch=b64 for 6.2.3.16-6.2.3.18, any architecture elsewhere
+# (the verify text names none; arch=b32 appears in no 6.2.3 procedure of this benchmark).
+AR = ["auditd", "active_rules"]   # running rules (auditctl -l)
+ARD = ["auditd", "rules"]         # on-disk rules (/etc/audit/rules.d/*.rules)
+SRCS = json.dumps(["rules", "active_rules"])
 W = "-a always,exit -F arch=b64 -F path={p} -F perm={perm} -F key=k"
 S64 = "-a always,exit -F arch=b64 -S {s} {extra}-F key=k"
 AUID = "-F auid>=1000 -F auid!=unset "
+AUDIT_EV = [f'is_array({ref(ARD)})', f'is_array({ref(AR)})']
 
 
-def audit(watches=(), syscalls=(), good_extra=(), raw_rules=None):
-    """watches: [(path, perm)]; syscalls: [(names, [field regexes])]. Rules are matched on tokens."""
+def both(lines):
+    return {"auditd": {"rules": list(lines), "active_rules": list(lines)}}
+
+
+def audit(watches=(), syscalls=(), good_extra=(), raw_rules=None, arch=None):
+    """watches: [(path, perm)]; syscalls: [(names, [field regexes])]. Rules are matched on tokens, in the on-disk
+    AND the running rules. arch: None (any architecture) or "b64" (every syscall rule on that architecture)."""
     conds, good = [], []
     for p, perm in watches:
-        conds.append(f'audit_watch({json.dumps(p)}, {json.dumps(perm)})')
+        conds.append(f'every src in {SRCS} {{ audit_src_watch(src, {json.dumps(p)}, {json.dumps(perm)}) }}')
         good.append(W.format(p=p, perm=perm))
     for names, fields in syscalls:
-        conds.append(f'every s in {json.dumps(names)} {{ audit_syscall(s, {json.dumps(fields)}) }}')
+        if arch:
+            conds.append(f'every src in {SRCS} {{ every s in {json.dumps(names)} '
+                         f'{{ audit_src_syscall(src, s, {json.dumps(fields)}, {json.dumps(arch)}) }} }}')
+        else:
+            conds.append(f'every src in {SRCS} {{ every s in {json.dumps(names)} '
+                         f'{{ audit_src_syscall_any(src, s, {json.dumps(fields)}) }} }}')
         extra = ""
         for f in fields:
             extra += {"auid": AUID, "euid": "-C euid!=uid -F auid!=unset ", "eacces": "-F exit=-EACCES " + AUID,
@@ -1234,28 +1251,34 @@ def audit(watches=(), syscalls=(), good_extra=(), raw_rules=None):
         good.append(S64.format(s=",".join(names), extra=extra))
     good += list(good_extra)
     bad = good[:-1]
-    return custom([f'is_array({ref(AR)})'], [conds], dotted(AR), nest(AR, good), nest(AR, bad), reads=[AR])
+    return custom(AUDIT_EV, [conds], "auditd.rules/active_rules", both(good), both(bad),
+                  {"auditd": {"active_rules": good}}, reads=[ARD, AR])
 
 
 L["6.2.3.1"] = audit([("/etc/sudoers", "wa"), ("/etc/sudoers.d", "wa")])
 L["6.2.3.2"] = audit(syscalls=[(["execve"], ["euid"])])
 L["6.2.3.3"] = custom(
-    [f'is_array({ref(AR)})', f'is_string({ref(SU)})'], [['some f in sudo_logfiles', 'audit_watch(f, "wa")']],
-    "auditd.active_rules/sudo.sudoers_content",
+    AUDIT_EV + [f'is_string({ref(SU)})'],
+    [['some f in sudo_logfiles', f'every src in {SRCS} {{ audit_src_watch(src, f, "wa") }}']],
+    "auditd.rules/active_rules/sudo.sudoers_content",
+    merge(both([W.format(p="/var/log/sudo.log", perm="wa")]), nest(SU, 'Defaults logfile="/var/log/sudo.log"')),
+    merge(both([W.format(p="/var/log/other.log", perm="wa")]), nest(SU, 'Defaults logfile="/var/log/sudo.log"')),
     merge(nest(AR, [W.format(p="/var/log/sudo.log", perm="wa")]), nest(SU, 'Defaults logfile="/var/log/sudo.log"')),
-    merge(nest(AR, [W.format(p="/var/log/other.log", perm="wa")]), nest(SU, 'Defaults logfile="/var/log/sudo.log"')),
-    reads=[AR, SU])
+    reads=[ARD, AR, SU])
 L["6.2.3.4"] = audit([("/etc/localtime", "wa")], [(["adjtimex", "settimeofday", "clock_settime"], [])])
 L["6.2.3.5"] = audit(syscalls=[(["sethostname", "setdomainname"], [])])
 L["6.2.3.6"] = audit([("/etc/issue", "wa"), ("/etc/issue.net", "wa")])
 L["6.2.3.7"] = audit([("/etc/hosts", "wa"), ("/etc/hostname", "wa")])
 L["6.2.3.8"] = audit([("/etc/NetworkManager", "wa")])
+_PCW = [W.format(p="/usr/bin/su", perm="x")]
 L["6.2.3.9"] = custom(
-    [f'is_array({ref(AR)})', 'is_array(input.auditd.privileged_commands)', 'count(input.auditd.privileged_commands) > 0'],
-    [['every c in input.auditd.privileged_commands { audit_watch(c, "x") }']], "auditd.active_rules/privileged_commands",
-    {"auditd": {"active_rules": [W.format(p="/usr/bin/su", perm="x")], "privileged_commands": ["/usr/bin/su"]}},
-    {"auditd": {"active_rules": [W.format(p="/usr/bin/su", perm="x")], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}},
-    reads=[AR, ["auditd", "privileged_commands"]])
+    AUDIT_EV + ['is_array(input.auditd.privileged_commands)', 'count(input.auditd.privileged_commands) > 0'],
+    [[f'every c in input.auditd.privileged_commands {{ every src in {SRCS} {{ audit_src_watch(src, c, "x") }} }}']],
+    "auditd.rules/active_rules/privileged_commands",
+    {"auditd": {"rules": _PCW, "active_rules": _PCW, "privileged_commands": ["/usr/bin/su"]}},
+    {"auditd": {"rules": _PCW, "active_rules": _PCW, "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}},
+    {"auditd": {"active_rules": _PCW, "privileged_commands": ["/usr/bin/su"]}},
+    reads=[ARD, AR, ["auditd", "privileged_commands"]])
 L["6.2.3.10"] = audit(syscalls=[(["creat", "open", "openat", "truncate", "ftruncate"], ["eacces"]),
                                 (["creat", "open", "openat", "truncate", "ftruncate"], ["eperm"])])
 L["6.2.3.11"] = audit([("/etc/group", "wa")])
@@ -1263,9 +1286,9 @@ L["6.2.3.12"] = audit([("/etc/passwd", "wa")])
 L["6.2.3.13"] = audit([("/etc/gshadow", "wa"), ("/etc/shadow", "wa")])
 L["6.2.3.14"] = audit([("/etc/security/opasswd", "wa")])
 L["6.2.3.15"] = audit([("/etc/pam.d", "wa")])
-L["6.2.3.16"] = audit(syscalls=[(["chmod", "fchmod", "fchmodat", "fchmodat2"], ["auid"])])
-L["6.2.3.17"] = audit(syscalls=[(["chown", "fchown", "lchown", "fchownat"], ["auid"])])
-L["6.2.3.18"] = audit(syscalls=[(["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"], ["auid"])])
+L["6.2.3.16"] = audit(syscalls=[(["chmod", "fchmod", "fchmodat", "fchmodat2"], ["auid"])], arch="b64")
+L["6.2.3.17"] = audit(syscalls=[(["chown", "fchown", "lchown", "fchownat"], ["auid"])], arch="b64")
+L["6.2.3.18"] = audit(syscalls=[(["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"], ["auid"])], arch="b64")
 L["6.2.3.19"] = audit(syscalls=[(["mount"], ["auid"])])
 L["6.2.3.20"] = audit([("/var/run/utmp", "wa"), ("/var/log/wtmp", "wa"), ("/var/log/btmp", "wa")])
 L["6.2.3.21"] = audit([("/var/log/lastlog", "wa"), ("/var/run/faillock", "wa")])
@@ -1280,7 +1303,6 @@ L["6.2.3.29"] = audit([("/usr/bin/kmod", "x")])
 L["6.2.3.30"] = audit(syscalls=[(["init_module", "finit_module"], ["auid"])])
 L["6.2.3.31"] = audit(syscalls=[(["delete_module"], ["auid"])])
 L["6.2.3.32"] = audit(syscalls=[(["create_module", "query_module"], ["auid"])])
-ARD = ["auditd", "rules"]   # on-disk rules (/etc/audit/rules.d)
 L["6.2.3.33"] = custom([f'is_array({ref(ARD)})'], [['some l in input.auditd.rules', 'regex.match(`^\\s*-c\\s*$`, l)']],
                        dotted(ARD), nest(ARD, ["-D", "-c", "-e 2"]), nest(ARD, ["-D", "-e 2"]), reads=[ARD])
 L["6.2.3.34"] = custom([f'is_array({ref(ARD)})'], [['audit_last_e == "2"']], dotted(ARD),
@@ -1626,13 +1648,6 @@ log_file_ok(f) if {
 }
 ''',
     "auditd": r'''
-audit_rule_lines := [l |
-	some r in input.auditd.active_rules
-	l := trim_space(r)
-	l != ""
-	not startswith(l, "#")
-]
-
 audit_toks(l) := regex.split(`\s+`, l)
 
 audit_path_tok(l, p) if {
@@ -1659,8 +1674,17 @@ audit_perm(l) := toks[i + 1] if {
 	t == "-p"
 }
 
-audit_watch(p, perm) if {
-	some l in audit_rule_lines
+# 6.2.3: the rules of one source: "rules" (on disk, /etc/audit/rules.d/*.rules) or "active_rules" (auditctl -l)
+audit_src_lines(src) := [l |
+	some r in input.auditd[src]
+	is_string(r)
+	l := trim_space(r)
+	l != ""
+	not startswith(l, "#")
+]
+
+audit_src_watch(src, p, perm) if {
+	some l in audit_src_lines(src)
 	audit_path_tok(l, p)
 	pv := audit_perm(l)
 	every i in numbers.range(0, count(perm) - 1) { contains(pv, substring(perm, i, 1)) }
@@ -1697,9 +1721,18 @@ audit_field(l, "eperm") if {
 	regex.match(audit_unset, l)
 }
 
-audit_syscall(s, fields) if {
-	some l in audit_rule_lines
+# a syscall rule of any architecture
+audit_src_syscall_any(src, s, fields) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	s in line_syscalls(l)
+	every f in fields { audit_field(l, f) }
+}
+
+audit_src_syscall(src, s, fields, arch) if {
+	some l in audit_src_lines(src)
+	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["arch=", arch]) in audit_toks(l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
 }
@@ -1895,6 +1928,39 @@ def emit_module(name, title, ids, recs):
 # Regression tests from the 2026-11-13 semantic review, appended to the generated test file of the module
 # they are keyed by. They pin the reviewed logic above: change them only together with that logic.
 REGRESSION_TESTS = {
+    'auditd': r'''
+# 6.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules).
+test_6_2_3_19_both_sources_pass if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) == 0
+}
+
+test_6_2_3_19_running_only_flagged if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"rules": [], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_19_on_disk_only_flagged if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_19_on_disk_not_collected_is_missing if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	"6.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
+}
+
+# 6.2.3.16-6.2.3.18: the verify text names the arch=b64 rule; a b32-only rule does not meet it.
+test_6_2_3_16_b32_only_flagged if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat,fchmodat2 -F auid>=1000 -F auid!=unset -k perm_mod"], "active_rules": ["-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat,fchmodat2 -F auid>=1000 -F auid!=unset -k perm_mod"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.16: not met")]) > 0
+}
+
+test_6_2_3_16_b64_passes if {
+	vs := data.cis_suse16.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat,fchmodat2 -F auid>=1000 -F auid!=unset -k perm_mod"], "active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat,fchmodat2 -F auid>=1000 -F auid!=unset -k perm_mod"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.16: ")]) == 0
+}
+''',
     'accounts': r'''
 # Semantic review 2026-11-13: a stricter umask than 027 is compliant ("or more restrictive").
 test_5_4_3_4_umask_077_passes if {

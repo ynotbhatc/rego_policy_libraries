@@ -627,44 +627,40 @@ put("5.2.2.3", "disabled when audit logs are full", custom(
       'lower(conf_last(input.auditd.config, "admin_space_left_action")) in {"halt", "single"}']],
     dotted(AC), nest(AC, "space_left_action = email\naction_mail_acct = root\nadmin_space_left_action = single"),
     nest(AC, "space_left_action = email\naction_mail_acct = root\nadmin_space_left_action = suspend"), reads=[AC]))
-audit = R.audit
+# 5.2.3: every audit procedure reads the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules);
+# R.audit requires a rule in both. Syscall rules: arch=b64 and arch=b32 wherever the procedure lists both (all
+# syscall ids but 5.2.3.19, whose module syscalls are listed for arch=b64 only).
+audit, B, SRC = R.audit, R.B, R.SRC
 put("5.2.3.1", "sudoers", rh("6.2.3.1", "/etc/sudoers"))
-put("5.2.3.2", "actions as another user", audit(syscalls=[(["execve"], ["euid"])]))
+put("5.2.3.2", "actions as another user", audit(syscalls=[(["execve"], ["euid"], B)]))
 put("5.2.3.3", "modify the sudo log file", rh("6.2.3.3", "sudo log file"))
 put("5.2.3.4", "date and time", rh("6.2.3.4", "date and time"))
 put("5.2.3.5", "network environment", audit(
     [("/etc/issue", "wa"), ("/etc/issue.net", "wa"), ("/etc/hosts", "wa"), ("/etc/sysconfig/network", "wa"),
-     ("/etc/sysconfig/network-scripts", "wa")], [(["sethostname", "setdomainname"], [])]))
-put("5.2.3.6", "privileged commands", rh("6.2.3.10", "privileged commands"))
+     ("/etc/sysconfig/network-scripts", "wa")], [(["sethostname", "setdomainname"], [], B)]))
+# 5.2.3.6: both scripts only look for each privileged program's path in the rules (no field filters, unlike RHEL 9
+# 6.2.3.10); the earlier check's perm x watch is kept, now in both rule sources
+_s = put("5.2.3.6", "privileged commands", rh("6.2.3.10", "privileged commands"))
+_s.passes = [[f'every c in {ref(R.PC)} {{ every src in {SRC} {{ audit_src_watch(src, c, "x") }} }}']]
 put("5.2.3.7", "unsuccessful file access", rh("6.2.3.11", "unsuccessful file access"))
 put("5.2.3.8", "user/group information", audit([("/etc/group", "wa"), ("/etc/passwd", "wa"), ("/etc/gshadow", "wa"),
                                                  ("/etc/shadow", "wa"), ("/etc/security/opasswd", "wa")]))
 put("5.2.3.9", "discretionary access control", audit(syscalls=[
-    (["chmod", "fchmod", "fchmodat"], ["auid"]), (["chown", "fchown", "lchown", "fchownat"], ["auid"]),
-    (["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"], ["auid"])]))
-put("5.2.3.10", "file system mounts", audit(syscalls=[(["mount"], ["auid"])]))
+    (["chmod", "fchmod", "fchmodat"], ["auid"], B), (["chown", "fchown", "lchown", "fchownat"], ["auid"], B),
+    (["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"], ["auid"], B)]))
+put("5.2.3.10", "file system mounts", audit(syscalls=[(["mount"], ["auid"], B)]))
 put("5.2.3.11", "session initiation", rh("6.2.3.22", "session initiation"))
 put("5.2.3.12", "login and logout", rh("6.2.3.23", "login and logout"))
-put("5.2.3.13", "file deletion events", audit(syscalls=[(["unlink", "unlinkat", "rename", "renameat"], ["auid"])]))
+put("5.2.3.13", "file deletion events", audit(syscalls=[(["unlink", "unlinkat", "rename", "renameat"], ["auid"], B)]))
 put("5.2.3.14", "Mandatory Access Controls", audit([("/etc/selinux", "wa"), ("/usr/share/selinux", "wa")]))
-XW = "-a always,exit -S all -F path={p} -F perm=x -F auid>=1000 -F auid!=unset -F key=k"
-
-
-def exec_audit(path, syscalls=None):
-    """an always,exit rule on <path> with perm x, auid>=1000 and auid!=unset on the same line (+ syscalls)"""
-    base = audit(syscalls=[syscalls]) if syscalls else None
-    conds = [f'audit_exec_watch({json.dumps(path)})'] + (base.passes[0] if base else [])
-    good = [XW.format(p=path)] + (base.tp["auditd"]["active_rules"] if base else [])
-    bad = [XW.format(p=path).replace("-F auid>=1000 -F auid!=unset ", "")] + good[1:]
-    return custom([f'is_array({ref(R.AR)})', f'count({ref(R.AR)}) > 0'], [conds], dotted(R.AR), nest(R.AR, good),
-                  nest(R.AR, bad), reads=[R.AR])
-
-
+# 5.2.3.15-5.2.3.19: an always,exit rule on the executable with perm x, auid>=1000 and auid!=unset on the same
+# line (R.audit execs), in both rule sources
 for rid, cmd, path in [("5.2.3.15", "chcon", "/usr/bin/chcon"), ("5.2.3.16", "setfacl", "/usr/bin/setfacl"),
                        ("5.2.3.17", "chacl", "/usr/bin/chacl"), ("5.2.3.18", "usermod", "/usr/sbin/usermod")]:
-    put(rid, f"use the {cmd} command", exec_audit(path))
-put("5.2.3.19", "kernel module loading", exec_audit(
-    "/usr/bin/kmod", (["init_module", "finit_module", "delete_module", "create_module", "query_module"], ["auid"])))
+    put(rid, f"use the {cmd} command", audit(execs=[path]))
+put("5.2.3.19", "kernel module loading", audit(
+    execs=["/usr/bin/kmod"],
+    syscalls=[(["init_module", "finit_module", "delete_module", "create_module", "query_module"], ["auid"], ("b64",))]))
 put("5.2.3.20", "immutable", rh("6.2.3.35", "immutable"))
 put("5.2.3.21", "running and on disk", attest("audit_rules_running_match_disk"))
 put("5.2.4.1", "audit log files are mode 0640", rh("6.2.4.2", "log files mode"))
@@ -856,16 +852,6 @@ dotfile_ok(f) if {
 }
 ''',
     "auditd": r'''
-# an always,exit rule on <p> with perm x and both auid filters on the same line
-audit_exec_watch(p) if {
-	some l in audit_rule_lines
-	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
-	audit_path_tok(l, p)
-	contains(audit_perm(l), "x")
-	regex.match(`auid>=1000(\s|$)`, l)
-	regex.match(audit_unset, l)
-}
-
 # one boot entry's kernel arguments carry audit_backlog_limit >= 8192
 backlog_ok(a) if {
 	some t in regex.split(`\s+`, trim_space(a))
@@ -990,7 +976,34 @@ def emit_tests(name, ids):
               f"test_{name}_violations_carry_section_ids if {{",
               f"\tvs := {mod} with input as {{}}",
               f"\tevery v in vs {{ split(v, \":\")[0] in {json.dumps(sorted(ids, key=sort_key))} }}", "}", ""]
+    if name in REGRESSION_TESTS:
+        lines += REGRESSION_TESTS[name].strip("\n").split("\n") + [""]
     return "\n".join(lines).rstrip("\n") + "\n"
+
+
+# Regression tests appended to the generated test file of the module they are keyed by.
+_M = "-a always,exit -F arch={a} -S mount -F auid>=1000 -F auid!=unset -k mounts"
+_K = ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -k kernel_modules",
+      "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k kernel_modules"]
+
+
+def _rt(name, inp, rid, want):
+    cond = {"pass": f'count([v | some v in vs; startswith(v, "{rid}: ")]) == 0',
+            "fail": f'count([v | some v in vs; startswith(v, "{rid}: not met")]) > 0'}[want]
+    return f"test_{name} if {{\n\tvs := data.{{PKG}}.auditd.violations with input as {J(inp)}\n\t{cond}\n}}\n"
+
+
+REGRESSION_TESTS = {"auditd": "\n".join([
+    "# 5.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules),",
+    "# a syscall rule for arch=b64 AND arch=b32 where the audit lists both (5.2.3.19: b64 only).",
+    _rt("mount_rule_both_sources_both_arches_passes", {"auditd": {"rules": [_M.format(a="b64"), _M.format(a="b32")], "active_rules": [_M.format(a="b64"), _M.format(a="b32")]}}, "5.2.3.10", "pass"),
+    _rt("mount_rule_running_only_fails", {"auditd": {"rules": ["-e 2"], "active_rules": [_M.format(a="b64"), _M.format(a="b32")]}}, "5.2.3.10", "fail"),
+    _rt("mount_rule_on_disk_only_fails", {"auditd": {"rules": [_M.format(a="b64"), _M.format(a="b32")], "active_rules": ["-e 2"]}}, "5.2.3.10", "fail"),
+    _rt("mount_rule_b64_only_fails", {"auditd": {"rules": [_M.format(a="b64")], "active_rules": [_M.format(a="b64")]}}, "5.2.3.10", "fail"),
+    _rt("module_syscalls_b64_only_passes", {"auditd": {"rules": _K, "active_rules": _K}}, "5.2.3.19", "pass"),
+    _rt("privileged_command_watch_form_passes", {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-w /usr/bin/su -p x -k privileged"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}, "5.2.3.6", "pass"),
+    _rt("privileged_command_running_only_fails", {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-e 2"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}, "5.2.3.6", "fail"),
+]).replace("{PKG}", PKG)}
 
 
 PROFILES = {"level1_server": 1, "level2_server": 2}
@@ -1476,6 +1489,8 @@ Facts this module reads beyond that contract:
 - 5.1.1.4 / 5.1.1.7: Amazon Linux 2023 ships without rsyslog; a collected `rsyslog.installed == false` is
   evidence (5.1.1.7 passes, 5.1.1.4 is not met until rsyslog with a 0640 `$FileCreateMode` is in use).
 - 5.1.3: this benchmark's own file table (no 0644 allowance for `cloud-init.log`, `localmessages`, `waagent.log`).
+- 5.2.3.6: each privileged program needs a perm x rule on its path (the audit greps for the path only), not
+  the RHEL 9 always,exit rule with both auid filters.
 - 5.2.3.15-5.2.3.19: the `perm=x` rules must carry both auid filters on the same line.
 - 6.2.11: a `.netrc` with correct access passes (the audit only warns); `.bash_history` must be 0600.
 - 3.4.2.7: where nftables.service is enabled, the input and forward base chains must exist with policy drop.

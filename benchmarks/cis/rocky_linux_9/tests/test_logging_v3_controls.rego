@@ -308,7 +308,7 @@ test_6_1_2_14_fail if {
 }
 
 test_6_1_3_1_pass if {
-	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0600", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"}]}}
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0600", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"}, {"file": "/var/log/dnf.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
 	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) == 0
 }
 
@@ -330,7 +330,7 @@ test_6_1_3_1_hollow_evidence_not_a_pass if {
 
 # every recommendation of the section satisfied at once (the inputs above merged)
 test_v3_logging_section_compliant_on_merged_good_input if {
-	vs := data.cis_rocky_linux_9.logging.violations with input as {"journald": {"service_active": true, "forward_to_syslog": "yes"}, "services": {"sshd.service": {"state": "running", "status": "enabled"}, "systemd-journal-remote.socket": {"state": "inactive", "status": "not-found"}, "systemd-journal-remote.service": {"state": "inactive", "status": "not-found"}}, "attest": {"journald_rotation_reviewed": true, "journald_file_access_reviewed": true, "rsyslog_logging_rules_reviewed": true, "rsyslog_remote_host_configured": true, "rsyslog_tls_ca_configured": true, "rsyslog_tls_client_cert_configured": true, "logrotate_reviewed": true}, "rsyslog": {"installed": true, "service_enabled": true, "service_active": true, "file_create_mode": "0640", "config_files": [{"path": "/etc/rsyslog.conf", "mode": "0640", "owner": "root", "group": "root"}], "d_dir": {"mode": "0755", "owner": "root", "group": "root"}, "work_dir": {"mode": "0700", "owner": "root", "group": "root"}, "config_raw": "*.* /var/log/messages\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}, "packages": {"rsyslog-gnutls": true, "rsyslog-openssl": false}, "log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0600", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"}]}}
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"journald": {"service_active": true, "forward_to_syslog": "yes"}, "services": {"sshd.service": {"state": "running", "status": "enabled"}, "systemd-journal-remote.socket": {"state": "inactive", "status": "not-found"}, "systemd-journal-remote.service": {"state": "inactive", "status": "not-found"}}, "attest": {"journald_rotation_reviewed": true, "journald_file_access_reviewed": true, "rsyslog_logging_rules_reviewed": true, "rsyslog_remote_host_configured": true, "rsyslog_tls_ca_configured": true, "rsyslog_tls_client_cert_configured": true, "logrotate_reviewed": true}, "rsyslog": {"installed": true, "service_enabled": true, "service_active": true, "file_create_mode": "0640", "config_files": [{"path": "/etc/rsyslog.conf", "mode": "0640", "owner": "root", "group": "root"}], "d_dir": {"mode": "0755", "owner": "root", "group": "root"}, "work_dir": {"mode": "0700", "owner": "root", "group": "root"}, "config_raw": "*.* /var/log/messages\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}, "packages": {"rsyslog-gnutls": true, "rsyslog-openssl": false}, "log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0600", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"}, {"file": "/var/log/dnf.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}, {"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
 	count(vs) == 0
 }
 
@@ -365,4 +365,40 @@ test_6_1_2_11_legacy_plaintext_forwarding_fails if {
 test_6_1_2_11_second_non_tls_omfwd_action_fails if {
 	vs := data.cis_rocky_linux_9.logging.violations with input as {"rsyslog": {"config_raw": "action(type=\"omfwd\" target=\"a.example.com\" port=\"514\" protocol=\"tcp\")\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
 	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
+
+# 6.1.3.1 class table: a service-account log (owner without a login shell) may carry that account's own group.
+test_6_1_3_1_service_account_log_own_group_passes if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) == 0
+}
+
+test_6_1_3_1_service_account_log_foreign_group_fails if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "wheel", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_login_shell_owner_fails if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/app.log", "actual_mode": "0640", "actual_owner": "alice", "actual_group": "alice", "owner_has_login_shell": true}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_service_account_without_owner_facts_is_missing if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony"}]}}
+	"6.1.3.1: evidence missing — log_file_permissions.analysis not collected" in vs
+}
+
+test_6_1_3_1_named_log_owned_by_service_account_fails if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_package_manager_log_0644_passes if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/dnf.librepo.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) == 0
+}
+
+test_6_1_3_1_general_log_0644_fails if {
+	vs := data.cis_rocky_linux_9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/boot.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
 }

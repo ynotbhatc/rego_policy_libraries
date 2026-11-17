@@ -8,6 +8,86 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — sixteen CIS benchmarks rebuilt or added from their workbooks (batch 2, 2026-11-17)
+
+Each module is generated from the benchmark's own workbook by a generator under `tools/cis_generators/` that aborts on any
+count, id, status, profile or title-keyword mismatch. Every recommendation has a rule; Automated recommendations are decided
+from collected facts and fail closed ("evidence missing") when a fact is absent; Manual ones are attestations unless their
+audit procedure names an exact value. No benchmark text is copied.
+
+| Benchmark | Version | Recommendations | Key / entrypoint | Was |
+|---|---|---:|---|---|
+| Red Hat Enterprise Linux 8 | v4.0.0 | 322 | `cis_rhel8` | hand-copied module |
+| Rocky Linux 8 | v3.0.0 | 322 | `cis_rocky_linux_8` | hand-copied module (workbook identical to RHEL 8 v4.0.0) |
+| Ubuntu Linux 22.04 LTS | v3.0.0 | 306 | `cis_ubuntu_2204` | hand-copied module |
+| Windows Server 2025 | v2.1.1 | 428 | `cis_windows_server_2025` | new |
+| SQL Server 2022 | v1.3.0 | 48 | `cis.sql_server_2022` | new |
+| PostgreSQL 16 | v1.1.0 | 71 | `cis_postgresql_16` | new |
+| PostgreSQL 18 | v1.0.0 | 72 | `cis_postgresql_18` | new |
+| AWS Foundations | v7.1.0 | 94 | `cis_aws` | 19 hand-written controls |
+| Azure Kubernetes Service | v2.1.0 | 50 | `cis_aks` | v1.8.0, 56 controls on a boolean contract |
+| AKS Automatic | v1.0.0 | 33 | `cis_aks_automatic` | new |
+| OpenShift Container Platform | v2.0.0 | 115 | `cis_openshift` | declared 156 controls |
+| VMware ESXi 8.0 | v1.4.0 | 134 | `cis_vmware_esxi` | `cis_esxi_8`, 96 hand-written checks, no entrypoint |
+| VMware ESXi 9.0 | v1.0.0 | 134 | `cis_vmware_esxi_9` | new (workbook identical to ESXi 8.0 v1.4.0) |
+| Cisco IOS XE 17.x | v2.2.2 | 84 | `cis_cisco_ios_xe_17` | new |
+| Apple iOS 27 | v1.0.0 | 105 | `cis.mobile.ios` | unversioned module, 24 checks |
+
+PostgreSQL 17 was checked against its v1.1.0 workbook and already matched; the `cis_postgresql` key stays on 17. The
+PostgreSQL generators now share one core (`gen_postgresql.py`).
+
+Library size after this batch: 1,052 policies (2,388 `.rego` files including tests), 29,157 control-level checks,
+36,142 tests, 190 OSCAL catalogs / 22,258 controls, XCCDF id export for 42 platforms.
+
+### Breaking — input contract changes for collectors (batch 2)
+
+- **`cis_aks`**: the `input.cis_aks.*` booleans are gone; the module reads `aks.cluster` (the `az aks show` object),
+  `pod_security.*`, `service_accounts.unneeded_token_mounts` and the Kubernetes module's kubelet and file facts.
+- **`cis_aws`**: there was no shared AWS fact contract; every path is new and is listed in the header of
+  `cis_aws_foundations.rego`.
+- **`cis_openshift`**: reads parsed operator configmaps and cluster resources under `openshift.*`, per-member etcd flags and
+  per-node kubelet config; the old `input.openshift.master_node…` shape is gone.
+- **`cis_rhel8`, `cis_rocky_linux_8`, `cis_ubuntu_2204`**: the audit-rule recommendations require the rule in both the
+  on-disk rules (`auditd.rules`) and the running rules; RHEL 8 also needs `sshd -T` output evaluated with the crypto-policy
+  options. New paths are listed in each module's README.
+- **ESXi**: package `cis_esxi_8` is replaced by `cis_vmware_esxi` with a `.main` entrypoint and facts under `input.esxi`.
+- **iOS**: `input.device_config` is replaced by `input.ios_profile` (configuration-profile payload keys, checked against
+  Apple's device-management schema).
+- **Cisco IOS XE**: `input.ios_xe_config` carries top-level lines, sections and banner text.
+
+### Fixed — defects found while building batch 2
+
+- **OpenShift**: the module reported the larger of 156 and the finding count; it now reports the 115 recommendations of
+  v2.0.0. The default namespace allows exactly the two platform Services the audit names. Component flags match either
+  the hyphen or the underscore spelling, so `--bind_address` no longer slips past a check written for `--bind-address`.
+- **AWS Foundations**: 4.2 and 4.5 fail when the account has no CloudTrail trail (they passed with nothing to check).
+- **Apple iOS**: the Safari cookie recommendation accepted the unrestricted setting and rejected "websites visited"; the
+  lock-screen notifications check read a key Apple does not define.
+- **Windows Server 2016, 2019, 2022 — deny rights (fail-open).** The member-server control "Deny log on through Remote
+  Desktop Services" (2016 2.2.27; 2019 and 2022 2.2.26) is stated as an exact list, and the shared derivation read that as
+  "only these principals", so a host that denied no one passed. Every named principal must now be denied; denying more is
+  allowed. Each generator pins the ids this rule may affect and aborts on any other.
+- **Windows Server 2016, 2019, 2022 — zero passed two thresholds.** The security log warning threshold (2016 18.5.12;
+  2019 and 2022 18.5.11) accepted 0, which generates no warning. The LAPS password age (2016 18.3.6; 2019 and 2022
+  18.9.26.6) accepted 0, which is outside the configurable range.
+- **RHEL 9, Rocky 9 — audit log group (6.2.4.4)** accepted group `audit` and an unset `log_group`; both the file group and
+  `log_group` must be root or adm.
+- **RHEL 9, Rocky 9 — log file access (6.1.3.1)** lacked the service-account and package-manager classes of the v3.0.0
+  table (a 0644 `dnf.log` failed wrongly; a service-account log was not classed). README, SSSD and gdm logs are no
+  longer special cases.
+- **Audit rules were checked in the running rule set only** on RHEL 9, Rocky 9, Amazon Linux 2023, Ubuntu 24.04 and 26.04,
+  Debian 12 and 13 and SUSE 16, and several syscall checks ignored architecture. Each rule is now required on disk and
+  running where the audit procedure reads both, and for b32 and b64 exactly where the procedure names both.
+  RHEL 9 6.2.3.10 requires an execution rule with both auid filters for every privileged command.
+
+### Breaking — audit-rule facts (RHEL 9 family, Ubuntu, Debian, SUSE, Amazon Linux 2023)
+
+`auditd.rules` (the lines of `/etc/audit/rules.d/*.rules`) must be collected separately from `auditd.active_rules`
+(`auditctl -l`). A collector that supplies only the running rules now gets "evidence missing" on the audit-rule
+recommendations; one that fills both from the same text passes without proving the on-disk state. RHEL 9 and Rocky 9
+6.1.3.1 also read `log_file_permissions.analysis[].owner_has_login_shell` and `.owner_primary_group`.
+`examples/rhel9/facts.json` carries on-disk and 32-bit rules to match and still reports 25 of 352 controls failing.
+
 ### Added — ten CIS benchmarks rebuilt or added from their workbooks (batch 1, 2026-11-14)
 
 Every module below is generated from the CIS workbook by a script in `tools/cis_generators/`. Each generator aborts on

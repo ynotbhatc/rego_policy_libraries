@@ -110,7 +110,10 @@ if _unused:
 D13_TESTS = {
     "auditd": r'''
 test_6_2_3_2_execve_without_execveat_flagged if {
-	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"active_rules": [
+	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"rules": [
+		"-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=user_emulation",
+		"-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=user_emulation",
+	], "active_rules": [
 		"-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=user_emulation",
 		"-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=user_emulation",
 	]}}
@@ -118,12 +121,15 @@ test_6_2_3_2_execve_without_execveat_flagged if {
 }
 
 test_6_2_3_2_single_arch_flagged if {
-	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation"]}}
+	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation"], "active_rules": ["-a always,exit -F arch=b64 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.2: not met")]) == 1
 }
 
 test_6_2_3_2_auditctl_form_accepted if {
-	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"active_rules": [
+	vs := data.cis_debian_13.auditd.violations with input as {"auditd": {"rules": [
+		"-a always,exit -F arch=b64 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation",
+		"-a always,exit -F arch=b32 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation",
+	], "active_rules": [
 		"-a always,exit -F arch=b64 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation",
 		"-a always,exit -F arch=b32 -S execve,execveat -C uid!=euid -F auid!=-1 -F key=user_emulation",
 	]}}

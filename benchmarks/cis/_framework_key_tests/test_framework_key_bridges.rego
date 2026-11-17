@@ -54,6 +54,8 @@ test_ubuntu2604_report_populated if count(data.cis_ubuntu_26_04.main.compliance_
 
 test_sql_server_2025_report_populated if count(data.cis.sql_server_2025.main.compliance_report) > 0
 
+test_sql_server_2022_report_populated if count(data.cis.sql_server_2022.main.compliance_report) > 0
+
 test_intune_defender_av_report_populated if count(data.cis.intune_defender_antivirus.main.compliance_report) > 0
 
 # --- counts are internally consistent and non-negative ----------------------
@@ -78,6 +80,7 @@ reports := [
 	data.cis_suse16.main.compliance_report,
 	data.cis_ubuntu_26_04.main.compliance_report,
 	data.cis.sql_server_2025.main.compliance_report,
+	data.cis.sql_server_2022.main.compliance_report,
 	data.cis.intune_defender_antivirus.main.compliance_report,
 	data.cis_postgresql.main.compliance_report,
 ]

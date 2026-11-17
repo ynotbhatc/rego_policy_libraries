@@ -71,6 +71,8 @@ Facts this module reads beyond that contract:
 - 5.1.1.4 / 5.1.1.7: Amazon Linux 2023 ships without rsyslog; a collected `rsyslog.installed == false` is
   evidence (5.1.1.7 passes, 5.1.1.4 is not met until rsyslog with a 0640 `$FileCreateMode` is in use).
 - 5.1.3: this benchmark's own file table (no 0644 allowance for `cloud-init.log`, `localmessages`, `waagent.log`).
+- 5.2.3.6: each privileged program needs a perm x rule on its path (the audit greps for the path only), not
+  the RHEL 9 always,exit rule with both auid filters.
 - 5.2.3.15-5.2.3.19: the `perm=x` rules must carry both auid filters on the same line.
 - 6.2.11: a `.netrc` with correct access passes (the audit only warns); `.bash_history` must be 0600.
 - 3.4.2.7: where nftables.service is enabled, the input and forward base chains must exist with policy drop.

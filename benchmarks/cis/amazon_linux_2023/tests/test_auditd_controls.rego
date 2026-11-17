@@ -148,401 +148,401 @@ test_5_2_2_3_hollow_evidence_not_a_pass if {
 }
 
 test_5_2_3_1_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.1: ")]) == 0
 }
 
 test_5_2_3_1_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.1: ")]) > 0
-	not "5.2.3.1: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.1: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_1_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.1: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k"]}}
+	"5.2.3.1: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_1_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.1: ")]) > 0
 }
 
 test_5_2_3_2_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.2: ")]) == 0
 }
 
 test_5_2_3_2_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-e 2"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.2: ")]) > 0
-	not "5.2.3.2: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.2: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_2_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.2: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k"]}}
+	"5.2.3.2: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_2_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.2: ")]) > 0
 }
 
 test_5_2_3_3_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
 	count([v | some v in vs; startswith(v, "5.2.3.3: ")]) == 0
 }
 
 test_5_2_3_3_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/other.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/log/other.log -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/log/other.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
 	count([v | some v in vs; startswith(v, "5.2.3.3: ")]) > 0
-	not "5.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" in vs
+	not "5.2.3.3: evidence missing — auditd.rules/active_rules/sudo.sudoers_content not collected" in vs
 }
 
 test_5_2_3_3_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k"]}}
-	"5.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k"]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}}
+	"5.2.3.3: evidence missing — auditd.rules/active_rules/sudo.sudoers_content not collected" in vs
 }
 
 test_5_2_3_3_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}, "sudo": {"sudoers_content": ""}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}, "sudo": {"sudoers_content": ""}}
 	count([v | some v in vs; startswith(v, "5.2.3.3: ")]) > 0
 }
 
 test_5_2_3_4_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.4: ")]) == 0
 }
 
 test_5_2_3_4_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.4: ")]) > 0
-	not "5.2.3.4: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.4: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_4_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.4: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k"]}}
+	"5.2.3.4: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_4_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.4: ")]) > 0
 }
 
 test_5_2_3_5_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.5: ")]) == 0
 }
 
 test_5_2_3_5_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.5: ")]) > 0
-	not "5.2.3.5: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.5: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_5_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.5: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k"]}}
+	"5.2.3.5: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_5_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.5: ")]) > 0
 }
 
 test_5_2_3_6_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "privileged_commands": ["/usr/bin/su"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.6: ")]) == 0
 }
 
 test_5_2_3_6_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F key=k"], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.6: ")]) > 0
-	not "5.2.3.6: evidence missing — auditd.active_rules/privileged_commands not collected" in vs
+	not "5.2.3.6: evidence missing — auditd.rules/active_rules/privileged_commands not collected" in vs
 }
 
 test_5_2_3_6_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F key=k"]}}
-	"5.2.3.6: evidence missing — auditd.active_rules/privileged_commands not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.6: evidence missing — auditd.rules/active_rules/privileged_commands not collected" in vs
 }
 
 test_5_2_3_6_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": [], "privileged_commands": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": [], "privileged_commands": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.6: ")]) > 0
 }
 
 test_5_2_3_7_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.7: ")]) == 0
 }
 
 test_5_2_3_7_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.7: ")]) > 0
-	not "5.2.3.7: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.7: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_7_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.7: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.7: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_7_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.7: ")]) > 0
 }
 
 test_5_2_3_8_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.8: ")]) == 0
 }
 
 test_5_2_3_8_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.8: ")]) > 0
-	not "5.2.3.8: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.8: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_8_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.8: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k"]}}
+	"5.2.3.8: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_8_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.8: ")]) > 0
 }
 
 test_5_2_3_9_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.9: ")]) == 0
 }
 
 test_5_2_3_9_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.9: ")]) > 0
-	not "5.2.3.9: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.9: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_9_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.9: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.9: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_9_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.9: ")]) > 0
 }
 
 test_5_2_3_10_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.10: ")]) == 0
 }
 
 test_5_2_3_10_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-e 2"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.10: ")]) > 0
-	not "5.2.3.10: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.10: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_10_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.10: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.10: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_10_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.10: ")]) > 0
 }
 
 test_5_2_3_11_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.11: ")]) == 0
 }
 
 test_5_2_3_11_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.11: ")]) > 0
-	not "5.2.3.11: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.11: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_11_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.11: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k"]}}
+	"5.2.3.11: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_11_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.11: ")]) > 0
 }
 
 test_5_2_3_12_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.12: ")]) == 0
 }
 
 test_5_2_3_12_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.12: ")]) > 0
-	not "5.2.3.12: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.12: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_12_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.12: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k"]}}
+	"5.2.3.12: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_12_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.12: ")]) > 0
 }
 
 test_5_2_3_13_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.13: ")]) == 0
 }
 
 test_5_2_3_13_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-e 2"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.13: ")]) > 0
-	not "5.2.3.13: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.13: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_13_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.13: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.13: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_13_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.13: ")]) > 0
 }
 
 test_5_2_3_14_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.14: ")]) == 0
 }
 
 test_5_2_3_14_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k"], "active_rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.14: ")]) > 0
-	not "5.2.3.14: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.14: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_14_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.14: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k"]}}
+	"5.2.3.14: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_14_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.14: ")]) > 0
 }
 
 test_5_2_3_15_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.15: ")]) == 0
 }
 
 test_5_2_3_15_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-e 2"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.15: ")]) > 0
-	not "5.2.3.15: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.15: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_15_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.15: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.15: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_15_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.15: ")]) > 0
 }
 
 test_5_2_3_16_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.16: ")]) == 0
 }
 
 test_5_2_3_16_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-e 2"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.16: ")]) > 0
-	not "5.2.3.16: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.16: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_16_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.16: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.16: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_16_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.16: ")]) > 0
 }
 
 test_5_2_3_17_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.17: ")]) == 0
 }
 
 test_5_2_3_17_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-e 2"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.17: ")]) > 0
-	not "5.2.3.17: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.17: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_17_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.17: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.17: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_17_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.17: ")]) > 0
 }
 
 test_5_2_3_18_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.18: ")]) == 0
 }
 
 test_5_2_3_18_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-e 2"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.18: ")]) > 0
-	not "5.2.3.18: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.18: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_18_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.18: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.18: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_18_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.18: ")]) > 0
 }
 
 test_5_2_3_19_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.19: ")]) == 0
 }
 
 test_5_2_3_19_fail if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"]}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.19: ")]) > 0
-	not "5.2.3.19: evidence missing — auditd.active_rules not collected" in vs
+	not "5.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_19_evidence_missing if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
-	"5.2.3.19: evidence missing — auditd.active_rules not collected" in vs
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"]}}
+	"5.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
 }
 
 test_5_2_3_19_hollow_evidence_not_a_pass if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"active_rules": []}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
 	count([v | some v in vs; startswith(v, "5.2.3.19: ")]) > 0
 }
 
@@ -789,7 +789,7 @@ test_5_2_4_10_hollow_evidence_not_a_pass if {
 
 # every recommendation of the section satisfied at once (the inputs above merged)
 test_auditd_section_compliant_on_merged_good_input if {
-	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"packages": {"audit": true}, "boot_security": {"kernel_args": ["ro audit=1 audit_backlog_limit=8192"]}, "services": {"sshd.service": {"state": "running", "status": "enabled"}, "auditd.service": {"state": "running", "status": "enabled"}}, "auditd": {"config": "max_log_file = 8\nmax_log_file_action = keep_logs\nspace_left_action = email\naction_mail_acct = root\nadmin_space_left_action = single\nlog_group = root", "active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -S all -F path=/usr/bin/su -F perm=x -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"], "privileged_commands": ["/usr/bin/su"], "rules": ["-D", "-c", "-e 2"], "log_permissions": {"mode": "0600", "pw_name": "root", "gr_name": "root"}, "log_dir_permissions": {"mode": "0750"}, "config_permissions": [{"stat": {"path": "/etc/audit/auditd.conf", "mode": "0640", "pw_name": "root", "gr_name": "root"}}], "tools_permissions": [{"stat": {"path": "/usr/sbin/auditctl", "mode": "0755", "pw_name": "root", "gr_name": "root"}}]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}, "attest": {"audit_rules_running_match_disk": true}}
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"packages": {"audit": true}, "boot_security": {"kernel_args": ["ro audit=1 audit_backlog_limit=8192"]}, "services": {"sshd.service": {"state": "running", "status": "enabled"}, "auditd.service": {"state": "running", "status": "enabled"}}, "auditd": {"config": "max_log_file = 8\nmax_log_file_action = keep_logs\nspace_left_action = email\naction_mail_acct = root\nadmin_space_left_action = single\nlog_group = root", "rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k", "-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k", "-D", "-c", "-e 2"], "active_rules": ["-a always,exit -S all -F path=/etc/sudoers -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sudoers.d -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -C euid!=uid -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/log/sudo.log -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/localtime -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -F arch=b32 -S adjtimex,settimeofday,clock_settime -F key=k", "-a always,exit -S all -F path=/etc/issue -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/issue.net -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/hosts -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/sysconfig/network-scripts -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S sethostname,setdomainname -F key=k", "-a always,exit -F arch=b32 -S sethostname,setdomainname -F key=k", "-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S creat,open,openat,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/group -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/passwd -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/gshadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/shadow -F perm=wa -F key=k", "-a always,exit -S all -F path=/etc/security/opasswd -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/var/run/utmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/wtmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/btmp -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/log/lastlog -F perm=wa -F key=k", "-a always,exit -S all -F path=/var/run/faillock -F perm=wa -F key=k", "-a always,exit -F arch=b64 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S unlink,unlinkat,rename,renameat -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/etc/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/share/selinux -F perm=wa -F key=k", "-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -F key=k"], "privileged_commands": ["/usr/bin/su"], "log_permissions": {"mode": "0600", "pw_name": "root", "gr_name": "root"}, "log_dir_permissions": {"mode": "0750"}, "config_permissions": [{"stat": {"path": "/etc/audit/auditd.conf", "mode": "0640", "pw_name": "root", "gr_name": "root"}}], "tools_permissions": [{"stat": {"path": "/usr/sbin/auditctl", "mode": "0755", "pw_name": "root", "gr_name": "root"}}]}, "sudo": {"sudoers_content": "Defaults logfile=\"/var/log/sudo.log\""}, "attest": {"audit_rules_running_match_disk": true}}
 	count(vs) == 0
 }
 
@@ -797,4 +797,41 @@ test_auditd_section_compliant_on_merged_good_input if {
 test_auditd_violations_carry_section_ids if {
 	vs := data.cis_amazon_linux_2023.auditd.violations with input as {}
 	every v in vs { split(v, ":")[0] in ["5.2.1.1", "5.2.1.2", "5.2.1.3", "5.2.1.4", "5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.3.1", "5.2.3.2", "5.2.3.3", "5.2.3.4", "5.2.3.5", "5.2.3.6", "5.2.3.7", "5.2.3.8", "5.2.3.9", "5.2.3.10", "5.2.3.11", "5.2.3.12", "5.2.3.13", "5.2.3.14", "5.2.3.15", "5.2.3.16", "5.2.3.17", "5.2.3.18", "5.2.3.19", "5.2.3.20", "5.2.3.21", "5.2.4.1", "5.2.4.2", "5.2.4.3", "5.2.4.4", "5.2.4.5", "5.2.4.6", "5.2.4.7", "5.2.4.8", "5.2.4.9", "5.2.4.10"] }
+}
+
+# 5.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules),
+# a syscall rule for arch=b64 AND arch=b32 where the audit lists both (5.2.3.19: b64 only).
+test_mount_rule_both_sources_both_arches_passes if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.10: ")]) == 0
+}
+
+test_mount_rule_running_only_fails if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.10: not met")]) > 0
+}
+
+test_mount_rule_on_disk_only_fails if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-e 2"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.10: not met")]) > 0
+}
+
+test_mount_rule_b64_only_fails if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.10: not met")]) > 0
+}
+
+test_module_syscalls_b64_only_passes if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module,create_module,query_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=unset -k kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.19: ")]) == 0
+}
+
+test_privileged_command_watch_form_passes if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-w /usr/bin/su -p x -k privileged"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.6: ")]) == 0
+}
+
+test_privileged_command_running_only_fails if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-e 2"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}
+	count([v | some v in vs; startswith(v, "5.2.3.6: not met")]) > 0
 }
