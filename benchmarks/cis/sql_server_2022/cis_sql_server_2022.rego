@@ -5,6 +5,18 @@
 #   framework: cis_sql_server_2022
 #   source: cis
 #   domains: [database, mssql]
+#   coverage:
+#     checks: 97
+#     cited: 49
+#     expected: 48
+#     found: 49
+#     scope: module
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis.sql_server_2022
 
 # CIS Microsoft SQL Server 2022 Benchmark v1.3.0.

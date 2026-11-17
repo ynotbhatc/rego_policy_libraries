@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 105
 #     cited: 105
-#     density: sized
-#     basis: size
+#     expected: 105
+#     found: 105
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.mobile.ios
 
 # CIS Apple iOS 27 Benchmark v1.0.0.

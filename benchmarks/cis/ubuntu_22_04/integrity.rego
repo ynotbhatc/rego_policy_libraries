@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 3
+#     checks: 6
 #     cited: 3
-#     density: sized
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.integrity
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 6.3: Integrity Checking (AIDE).

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 32
-#     cited: 32
+#     checks: 64
+#     cited: 33
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_8.services
 
 # CIS Rocky Linux 8 Benchmark v3.0.0, Sections 2.1-2.3: Server Services, Client Services, Time Synchronization.

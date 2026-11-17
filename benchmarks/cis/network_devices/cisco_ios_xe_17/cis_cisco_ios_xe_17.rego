@@ -6,14 +6,17 @@
 #   source: cis
 #   domains: [network, cisco]
 #   coverage:
-#     checks: 84
-#     cited: 84
-#     density: sized
-#     basis: size
+#     checks: 87
+#     cited: 87
+#     expected: 84
+#     found: 87
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_cisco_ios_xe_17
 
 # CIS Cisco IOS XE 17.x Benchmark v2.2.2

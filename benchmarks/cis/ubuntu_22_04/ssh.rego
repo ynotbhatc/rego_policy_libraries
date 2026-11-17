@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 22
+#     checks: 44
 #     cited: 22
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.ssh
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 5.1: SSH Server.

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 28
+#     checks: 55
 #     cited: 28
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.services
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Sections 2.1-2.2: Server and Client Services.

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rocky]
 #   coverage:
-#     checks: 37
-#     cited: 37
+#     checks: 74
+#     cited: 38
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rocky_linux_8.filesystem
 
 # CIS Rocky Linux 8 Benchmark v3.0.0, Section 1.1: Filesystem.

@@ -7,6 +7,15 @@
 #   framework: cis_windows_server_2025_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 2
+#     cited: 0
+#     density: section
+#     basis: role
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis_windows_server_2025.attestation
 
 import data.cis_windows_server_2025.lib

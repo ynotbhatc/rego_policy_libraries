@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 25
-#     cited: 25
+#     checks: 45
+#     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.initial_setup
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Sections 1.2, 1.6-1.8: Package Management, Crypto Policy, Banners, GNOME Display Manager.

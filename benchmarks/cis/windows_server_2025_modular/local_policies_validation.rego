@@ -7,6 +7,15 @@
 #   framework: cis_windows_server_2025_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 117
+#     cited: 117
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis_windows_server_2025.local_policies
 
 import data.cis_windows_server_2025.lib

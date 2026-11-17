@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 37
-#     cited: 37
+#     checks: 74
+#     cited: 38
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.filesystem
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Section 1.1: Filesystem.

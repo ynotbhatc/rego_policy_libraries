@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 8
+#     checks: 16
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.selinux
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Section 1.3: Mandatory Access Control (SELinux).

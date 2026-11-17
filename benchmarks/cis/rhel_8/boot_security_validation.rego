@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 15
-#     cited: 15
+#     checks: 31
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.boot_security
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Sections 1.4, 1.5, 6.1: Bootloader, Process Hardening, Integrity Checking (AIDE).

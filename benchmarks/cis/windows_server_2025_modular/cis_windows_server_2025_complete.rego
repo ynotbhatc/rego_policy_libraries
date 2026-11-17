@@ -7,6 +7,15 @@
 #   framework: cis_windows_server_2025_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 1
+#     cited: 1
+#     density: orchestrator
+#     basis: role
+#     tested: true
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_windows_server_2025
 
 import data.cis_windows_server_2025.account_policies

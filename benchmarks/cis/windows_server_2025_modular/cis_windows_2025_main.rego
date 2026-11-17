@@ -7,6 +7,18 @@
 #   framework: cis_windows_server_2025_modular
 #   source: cis
 #   domains: [windows]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     expected: 428
+#     found: 427
+#     scope: directory
+#     density: full
+#     basis: declared-total
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis_windows_server_2025.main
 
 import data.cis_windows_server_2025 as bench

@@ -5,6 +5,15 @@
 #   framework: cis_sql_server_2022
 #   source: cis
 #   domains: [database, mssql]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: orchestrator
+#     basis: role
+#     tested: false
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
 package cis.sql_server_2022.main
 
 # OPA query path: /v1/data/cis/sql_server_2022/main/compliance_report

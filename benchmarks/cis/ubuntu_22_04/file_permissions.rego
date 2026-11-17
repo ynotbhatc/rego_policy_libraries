@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 13
+#     checks: 25
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.file_permissions
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 7.1: System File and Directory Access.

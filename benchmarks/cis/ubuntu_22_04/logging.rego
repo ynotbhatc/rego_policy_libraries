@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 19
+#     checks: 32
 #     cited: 19
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.logging
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 6.1: System Logging.

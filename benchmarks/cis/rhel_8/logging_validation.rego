@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 19
-#     cited: 19
+#     checks: 33
+#     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.logging
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Section 6.2: System Logging (journald, rsyslog).

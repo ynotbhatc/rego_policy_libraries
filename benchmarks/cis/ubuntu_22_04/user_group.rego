@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 10
+#     checks: 20
 #     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.user_group
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 7.2: Local User and Group Settings.

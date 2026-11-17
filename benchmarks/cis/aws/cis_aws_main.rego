@@ -8,12 +8,15 @@
 #   coverage:
 #     checks: 1
 #     cited: 0
-#     density: orchestrator
-#     basis: role
+#     expected: 94
+#     found: 94
+#     scope: directory
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_aws.main
 
 import rego.v1

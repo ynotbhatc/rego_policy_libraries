@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 65
-#     cited: 65
-#     density: orchestrator
+#     checks: 1
+#     cited: 0
+#     density: section
 #     basis: role
-#     tested: true
+#     tested: false
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.l2
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0: the Level 2 - Server recommendations, i.e. what the level2_server profile adds to level1_server.

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 41
-#     cited: 41
+#     checks: 81
+#     cited: 42
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.pam
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Sections 5.3-5.4: Pluggable Authentication Modules, User Accounts and Environment.

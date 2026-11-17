@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 42
-#     cited: 42
+#     checks: 81
+#     cited: 43
 #     density: sized
 #     basis: size
 #     tested: true
-#     entrypoint: none
+#     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel8.network
 
 # CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, Sections 3-4: Network, Host Based Firewall (firewalld).

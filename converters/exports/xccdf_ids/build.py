@@ -42,6 +42,13 @@ WORKBOOK_VERIFIED = (
     "benchmarks/cis/debian_13/", "benchmarks/cis/amazon_linux_2023/", "benchmarks/cis/kubernetes/",
     "benchmarks/cis/docker/", "benchmarks/cis/azure/", "benchmarks/cis/network_devices/palo_alto/",
     "benchmarks/cis/windows_server_2016_modular/",
+    # workbook batch 2 (2026-11-17): generated from the CIS workbooks, ids checked by the generators
+    "benchmarks/cis/rhel_8/", "benchmarks/cis/rocky_linux_8/", "benchmarks/cis/ubuntu_22_04/",
+    "benchmarks/cis/windows_server_2025_modular/", "benchmarks/cis/sql_server_2022/",
+    "benchmarks/cis/postgresql_16/", "benchmarks/cis/postgresql_18/", "benchmarks/cis/aws/",
+    "benchmarks/cis/aks/", "benchmarks/cis/aks_automatic/", "benchmarks/cis/openshift/",
+    "benchmarks/cis/vmware/esxi/", "benchmarks/cis/vmware/esxi_9/",
+    "benchmarks/cis/network_devices/cisco_ios_xe_17/", "benchmarks/cis/mobile_devices/ios/",
 )
 
 

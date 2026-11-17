@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 2
+#     checks: 4
 #     cited: 2
-#     density: sized
-#     basis: size
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_22_04.bootloader
 
 # CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, Section 1.4: Bootloader.

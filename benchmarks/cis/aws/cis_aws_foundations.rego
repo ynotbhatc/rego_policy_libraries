@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [cloud, aws]
 #   coverage:
-#     checks: 0
-#     cited: 0
+#     checks: 94
+#     cited: 94
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 
 package cis_aws
 

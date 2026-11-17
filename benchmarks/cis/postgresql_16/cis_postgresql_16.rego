@@ -6,17 +6,17 @@
 #   source: cis
 #   domains: [database, postgresql]
 #   coverage:
-#     checks: 71
-#     cited: 71
+#     checks: 79
+#     cited: 79
 #     expected: 71
-#     found: 71
+#     found: 79
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis.postgresql_16
 
 # CIS PostgreSQL 16 Benchmark v1.1.0

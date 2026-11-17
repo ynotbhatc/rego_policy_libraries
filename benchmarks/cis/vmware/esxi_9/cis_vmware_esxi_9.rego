@@ -6,14 +6,17 @@
 #   source: cis
 #   domains: [virtualization, vmware]
 #   coverage:
-#     checks: 134
-#     cited: 134
-#     density: sized
-#     basis: size
+#     checks: 142
+#     cited: 142
+#     expected: 134
+#     found: 142
+#     scope: module
+#     density: full
+#     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_vmware_esxi_9
 
 # CIS VMware ESXi 9.0 Benchmark v1.0.0

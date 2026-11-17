@@ -10,10 +10,10 @@
 #     cited: 0
 #     density: orchestrator
 #     basis: role
-#     tested: true
+#     tested: false
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_vmware_esxi_9.main
 
 # OPA query path: /v1/data/cis_vmware_esxi_9/main/compliance_report
