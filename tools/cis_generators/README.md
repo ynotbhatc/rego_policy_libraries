@@ -85,6 +85,15 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   entries written from the 24.04 audit procedures (both-architecture audit rules, Automated post-quantum key
   exchange, ListenAddress and so on). Same abort rules as the 26.04 generator. Writes only generated files:
   the hand-written `cis_ubuntu_2404_key_main.rego` bridge and README stay. Run `opa fmt -w` afterwards.
+- `gen_ubuntu_22_04.py <workbook.xlsx> [fields.json]`: CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0, 306
+  recommendations (290 Automated, 16 Manual), replacing the earlier hand-written `benchmarks/cis/ubuntu_22_04/`
+  under the same `cis_ubuntu_22_04.main` entrypoint and `cis_ubuntu_2204` framework key. Imports
+  `gen_ubuntu_26_04.py` (reader, builders, helpers, emitters) and `gen_ubuntu_24_04.py` (logic table), both
+  unmodified. Recommendations whose 22.04 audit procedure matches the 24.04 one take its logic by id or through a
+  renumbering table. The rest are written from the 22.04 audits: audit rules required on disk and running with a
+  key, a declared `logging_method` for the journald/rsyslog pair, separate GDM settings and lock checks, and the
+  pam_pwhistory arguments. Same abort rules as the 24.04 generator. Formats its own output with `opa fmt`; the
+  key bridge and the README are kept by hand.
 - `gen_debian_12.py <workbook.xlsx> [fields.json]`: CIS Debian Linux 12 Benchmark v2.0.1, 331 recommendations
   (316 Automated, 15 Manual) across the same 21 section packages, into the new `benchmarks/cis/debian_12/`
   (key `cis_debian_12`). Imports `gen_ubuntu_26_04.py`'s reader, builders, helpers and emitters without changing
