@@ -262,13 +262,13 @@ test_empty_resource_lists_pass if {
 	not _has_id(vs, "4.7")
 }
 
-test_no_trail_fails_data_event_checks if {
+test_no_trail_fails_every_trail_check if {
 	inp := json.patch(green, [{"op": "add", "path": "/cloudtrail_trails", "value": []}])
 	vs := b.violations with input as inp
+	_has_id(vs, "4.2")
+	_has_id(vs, "4.5")
 	_has_id(vs, "4.8")
 	_has_id(vs, "4.9")
-	not _has_id(vs, "4.2")
-	not _has_id(vs, "4.5")
 }
 
 test_s3_policy_none_fails if {

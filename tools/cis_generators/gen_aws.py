@@ -439,7 +439,8 @@ F("3.3.1", "efs", ["efs_file_systems"],
 
 # Section 4: logging
 F("4.2", "log file validation", ["cloudtrail_trails"],
-  [("trail %s has log file validation off or not reported", ['nm(x, "Name")'],
+  [("no trail was collected, so no log file is validated", [], ["count(input.cloudtrail_trails) == 0"]),
+   ("trail %s has log file validation off or not reported", ['nm(x, "Name")'],
     [each("cloudtrail_trails"), "not truthy(object.get(x, \"LogFileValidationEnabled\", null))"])],
   add("/cloudtrail_trails/0/LogFileValidationEnabled", False))
 F("4.3", "aws config", ["regions", "config_recorders", "config_recorder_status"],
@@ -452,7 +453,8 @@ F("4.3", "aws config", ["regions", "config_recorders", "config_recorder_status"]
     [each("config_recorders"), "not recorder_ok(x)"])],
   add("/config_recorders/0/recordingGroup/allSupported", False))
 F("4.5", "encrypted at rest", ["cloudtrail_trails"],
-  [("trail %s has no KMS key for log encryption", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not nonempty(object.get(x, \"KmsKeyId\", null))"])],
+  [("no trail was collected, so no trail log is encrypted with a KMS key", [], ["count(input.cloudtrail_trails) == 0"]),
+   ("trail %s has no KMS key for log encryption", ['nm(x, "Name")'], [each("cloudtrail_trails"), "not nonempty(object.get(x, \"KmsKeyId\", null))"])],
   add("/cloudtrail_trails/0/KmsKeyId", ""))
 F("4.6", "rotation", ["kms_keys"],
   [("customer symmetric key %s has rotation off or not reported", ['nm(x, "KeyId")'],
@@ -1261,7 +1263,7 @@ def logic_tests():
         _case("empty_resource_lists_pass", [add("/rds_instances", []), add("/efs_file_systems", []), add("/s3_buckets", []),
                                             add("/ec2_instances", []), add("/iam_users", []), add("/vpcs", [])],
               [], ["3.2.1", "3.3.1", "3.1.1", "3.1.4", "6.7", "2.13", "4.7"]),
-        _case("no_trail_fails_data_event_checks", [add("/cloudtrail_trails", [])], ["4.8", "4.9"], ["4.2", "4.5"]),
+        _case("no_trail_fails_every_trail_check", [add("/cloudtrail_trails", [])], ["4.2", "4.5", "4.8", "4.9"]),
         _case("s3_policy_none_fails", [add("/s3_buckets/0/policy", None)], ["3.1.1"]),
         _case("s3_policy_tls_minimum_passes", [add("/s3_buckets/0/policy", {"Statement": [
             {"Effect": "Deny", "Principal": {"AWS": "*"}, "Action": ["s3:*"], "Resource": "arn:aws:s3:::app-data/*",

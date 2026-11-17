@@ -2371,6 +2371,12 @@ _messages contains "4.2: evidence missing — input.cloudtrail_trails not collec
 	not _ev_4_2
 }
 
+_messages contains "4.2: CloudTrail validates log file integrity — no trail was collected, so no log file is validated" if {
+	_in_scope("4.2")
+	_ev_4_2
+	count(input.cloudtrail_trails) == 0
+}
+
 _messages contains sprintf("4.2: CloudTrail validates log file integrity — trail %s has log file validation off or not reported", [nm(x, "Name")]) if {
 	_in_scope("4.2")
 	_ev_4_2
@@ -2435,6 +2441,12 @@ _ev_4_5 if {
 _messages contains "4.5: evidence missing — input.cloudtrail_trails not collected" if {
 	_in_scope("4.5")
 	not _ev_4_5
+}
+
+_messages contains "4.5: CloudTrail logs are encrypted with a KMS key — no trail was collected, so no trail log is encrypted with a KMS key" if {
+	_in_scope("4.5")
+	_ev_4_5
+	count(input.cloudtrail_trails) == 0
 }
 
 _messages contains sprintf("4.5: CloudTrail logs are encrypted with a KMS key — trail %s has no KMS key for log encryption", [nm(x, "Name")]) if {

@@ -49,7 +49,7 @@ One account per evaluation. Each inventory is a list of the resources the collec
 
 - 3.2.3 reads the `PubliclyAccessible` flag; the audit's subnet route-table walk is not performed.
 - 6.5 checks the default groups' rules; the audit's group-membership view is not.
-- 4.2 and 4.5 pass when there are no trails (the audit is per trail); 4.8, 4.9 and 7.4.1 do not.
+- 4.2, 4.5, 4.8, 4.9 and 7.4.1 all fail when no trail exists: an account without a trail validates and encrypts nothing.
 - 2.16 treats terminated instances as out of scope.
 
 Regenerate: `/usr/bin/python3 tools/cis_generators/gen_aws.py <workbook.xlsx> benchmarks/cis/aws`
