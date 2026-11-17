@@ -251,15 +251,20 @@ put("6.1.2.6", "receive logs", u.text_has(u.RC,
     "(?i)(^module\\(\\s*load\\s*=\\s*\"?imtcp\"?[\\s,)]|^input\\(\\s*type\\s*=\\s*\"?imtcp\"?|^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)",
     False, "*.* /var/log/syslog", 'module(load="imtcp")'))
 
-# 6.2.3 audit rules. Debian 12 expects syscall rules for both arch=b32 and arch=b64, and the execution
-# watches (chcon, setfacl, chacl, usermod, kmod) as `-a always,exit` rules carrying the auid filters.
+# 6.2.3 audit rules. Every Debian 12 audit procedure reads the running rules (auditd.active_rules) AND the on-disk
+# rules (auditd.rules); u.audit requires a rule in both. Debian 12 expects syscall rules for both arch=b32 and
+# arch=b64 (6.2.3.28: both on disk, the arch=b64 module rule in the running rules), and the execution watches
+# (chcon, setfacl, chacl, usermod, kmod) as `-a always,exit` rules carrying the auid filters.
 EXEC = "-a always,exit -F path={p} -F perm=x -F auid>=1000 -F auid!=unset -k k"
+SRCS = json.dumps(list(u.SRCS))
 
 
-def audit_exec(path, extra_conds=(), extra_good=()):
+def audit_exec(path, extra_conds=(), extra_good=(), extra_good_running=None):
     good = list(extra_good) + [EXEC.format(p=path)]
-    return custom([f'is_array({ref(AR)})'], [list(extra_conds) + [f'audit_exec_auid({json.dumps(path)})']], dotted(AR),
-                  nest(AR, good), nest(AR, list(extra_good) + [u.W.format(p=path, perm="x")]), reads=[AR])
+    run = good if extra_good_running is None else list(extra_good_running) + [EXEC.format(p=path)]
+    return custom(u.AUDIT_EV, [list(extra_conds) + [f'every src in {SRCS} {{ audit_src_exec(src, {json.dumps(path)}) }}']],
+                  u.AUDIT_FIELD, {"auditd": {"rules": good, "active_rules": run}},
+                  u.both(list(extra_good) + [u.W.format(p=path, perm="x")]), nest(AR, run), reads=[u.ARD, AR])
 
 
 take("6.2.3.1", kw="sudoers")
@@ -270,13 +275,14 @@ put("6.2.3.5", "sethostname", audit(syscalls=[(["sethostname", "setdomainname"],
 put("6.2.3.8", "/etc/network and /etc/networks", audit([("/etc/networks", "wa"), ("/etc/network", "wa")]))
 # 6.2.3.9: passes when /etc/netplan does not exist (auditd.netplan_dir_exists false)
 NPD = ["auditd", "netplan_dir_exists"]
-_np = 'audit_watch("/etc/netplan", "wa")'
+_np = f'every src in {SRCS} {{ audit_src_watch(src, "/etc/netplan", "wa") }}'
 put("6.2.3.9", "/etc/netplan", custom(
-    None, [[f'{ref(NPD)} == false'], [_np]], "auditd.netplan_dir_exists/auditd.active_rules",
-    merge(nest(NPD, True), nest(AR, [u.W.format(p="/etc/netplan", perm="wa")])),
-    merge(nest(NPD, True), nest(AR, [u.W.format(p="/etc/network", perm="wa")])), nest(AR, []),
-    reads=[NPD, AR],
-    ev_alts=[[f'{ref(NPD)} == false'], [f'{ref(NPD)} == true', f'is_array({ref(AR)})'], [_np]]))
+    None, [[f'{ref(NPD)} == false'], [_np]], "auditd.netplan_dir_exists/auditd.rules/active_rules",
+    merge(nest(NPD, True), u.both([u.W.format(p="/etc/netplan", perm="wa")])),
+    merge(nest(NPD, True), u.both([u.W.format(p="/etc/network", perm="wa")])),
+    nest(AR, [u.W.format(p="/etc/netplan", perm="wa")]),
+    reads=[NPD, u.ARD, AR],
+    ev_alts=[[f'{ref(NPD)} == false'], [f'{ref(NPD)} == true'] + u.AUDIT_EV, [_np]]))
 _acc = ["creat", "open", "openat", "truncate", "ftruncate"]
 put("6.2.3.17", "unsuccessful file access", audit(syscalls=[(_acc, ["eacces"]), (_acc, ["eperm"])], arches=True))
 put("6.2.3.18", "discretionary access control", audit(syscalls=[
@@ -291,8 +297,10 @@ for _rid, _kw, _p in [("6.2.3.24", "chcon", "/usr/bin/chcon"), ("6.2.3.25", "set
 # 6.2.3.28: the module syscalls that exist on current kernels (the loaded-rules listing the benchmark shows
 # is the arch=b64 rule) plus the kmod execution rule
 _km = ["init_module", "finit_module", "delete_module"]
+_KARCH = {"rules": ("b32", "b64"), "active_rules": ("b64",)}
 put("6.2.3.28", "kernel module loading", audit_exec(
-    "/usr/bin/kmod", [f'every s in {json.dumps(_km)} {{ audit_syscall_arch(s, ["auid"], "b64") }}'],
+    "/usr/bin/kmod", u.syscall_conds(_km, ["auid"], _KARCH),
+    [u.S64.format(arch=a, s=",".join(_km + ["create_module", "query_module"]), extra=u.AUID) for a in ("b64", "b32")],
     [u.S64.format(arch="b64", s=",".join(_km + ["create_module", "query_module"]), extra=u.AUID)]))
 
 # 6.2.4.8-6.2.4.10: the six audit tools the Debian 12 audit stats (autrace included) must all be in
@@ -357,16 +365,6 @@ openssh_ge_9_9 if {
 kex_has(prefix) if {
 	some x in sshd_list("kexalgorithms")
 	startswith(x, prefix)
-}
-'''
-EXTRA["auditd"] += r'''
-# an `-a always,exit` rule on the executable with perm x and the auid filters (a bare -w watch has none)
-audit_exec_auid(p) if {
-	some l in audit_rule_lines
-	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
-	audit_path_tok(l, p)
-	contains(audit_perm(l), "x")
-	audit_field(l, "auid")
 }
 '''
 _DOT_OLD = 'not b in {".forward", ".rhosts"}'
@@ -474,24 +472,24 @@ test_5_2_4_commented_nopasswd_ignored if {
     "auditd": r'''
 # Debian 12 expects both architectures on syscall rules: a b64-only rule is not enough.
 test_6_2_3_19_b64_only_flagged if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
 }
 
 # The loaded-rules spelling (auid!=-1, -F key=) is the same rule.
 test_6_2_3_19_auditctl_spelling_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) == 0
 }
 
 # An execution watch without the auid filters (legacy -w form) does not satisfy the Debian 12 audit.
 test_6_2_3_24_legacy_watch_flagged if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /usr/bin/chcon -p x -k perm_chng"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /usr/bin/chcon -p x -k perm_chng"], "active_rules": ["-w /usr/bin/chcon -p x -k perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: not met")]) > 0
 }
 
 test_6_2_3_24_auditctl_listing_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) == 0
 }
 
@@ -502,14 +500,41 @@ test_6_2_3_9_no_netplan_directory_passes if {
 }
 
 test_6_2_3_9_legacy_watch_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /etc/netplan -p wa -k system-locale"], "active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: ")]) == 0
 }
 
 # 6.2.3.23: the directory watches may be written with a trailing slash.
 test_6_2_3_23_trailing_slash_accepted if {
-	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"]}}
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"], "active_rules": ["-w /etc/apparmor/ -p wa -k MAC-policy", "-w /etc/apparmor.d/ -p wa -k MAC-policy"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.23: ")]) == 0
+}
+
+# 6.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules).
+test_6_2_3_19_running_only_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": [], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_19_on_disk_only_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_6_2_3_9_running_rule_only_is_missing if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/netplan -p wa -k system-locale"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.9: evidence missing")]) > 0
+}
+
+# 6.2.3.28: both architectures on disk, the arch=b64 module rule in the running rules.
+test_6_2_3_28_b64_running_both_on_disk_passes if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) == 0
+}
+
+test_6_2_3_28_b64_only_on_disk_flagged if {
+	vs := data.cis_debian_12.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: not met")]) > 0
 }
 ''',
     "banners": r'''

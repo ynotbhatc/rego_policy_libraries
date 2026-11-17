@@ -17,7 +17,7 @@ test_cron_yearly_present_bad_mode_fails if {
 }
 
 test_sudo_without_logfile_is_a_finding_not_missing_evidence if {
-	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/sudoers -p wa -k scope"]}, "sudo": {"sudoers_content": "Defaults env_reset\nroot ALL=(ALL) ALL"}}
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-w /etc/sudoers -p wa -k scope"], "active_rules": ["-w /etc/sudoers -p wa -k scope"]}, "sudo": {"sudoers_content": "Defaults env_reset\nroot ALL=(ALL) ALL"}}
 	any_starts(vs, "6.2.3.3:")
 	not any_starts(vs, "6.2.3.3: evidence missing")
 }

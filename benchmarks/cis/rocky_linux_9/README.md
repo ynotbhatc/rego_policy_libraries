@@ -72,7 +72,11 @@ The shared Linux input contract of the RHEL 9 module; no fact path is specific t
 `boot_security`, `bootloader`, `chronyd`, `client_packages`, `autofs`, `mta`, `gui`, `x11`, `webserver`,
 `cron`, `sysctl_parameters`, `ipv6`, `wireless_interfaces`, `firewall`, `ssh`, `sudo`, `pam`, `user_group`,
 `rsyslog`, `journald`, `log_file_permissions`, `auditd`, `critical_files`, `world_writable`, `unowned_files`,
-`ungrouped_files`, and `attest` for the Manual recommendations. The optional second argument of the generator
+`ungrouped_files`, and `attest` for the Manual recommendations. The audit-rule checks (6.2.3.1-6.2.3.33) need
+both `auditd.rules` (on-disk rules, /etc/audit/rules.d/*.rules) and `auditd.active_rules` (`auditctl -l`),
+collected separately; 6.1.3.1 reads `owner_has_login_shell` and `owner_primary_group` on each
+`log_file_permissions.analysis` entry that is neither a named log class nor root-owned with root/adm group.
+The optional second argument of the generator
 writes the input paths each recommendation reads, and a passing input per section.
 
 ## Regenerating

@@ -191,6 +191,7 @@ valid_shells := {s |
 	not regex.match(`/nologin$`, s)
 }
 
+# running rules only (auditctl -l), kept for the audit22_* checks; the 6.2.3 checks here use audit_src_*
 audit_rule_lines := [l |
 	some r in input.auditd.active_rules
 	l := trim_space(r)
@@ -224,8 +225,17 @@ audit_perm(l) := toks[i + 1] if {
 	t == "-p"
 }
 
-audit_watch(p, perm) if {
-	some l in audit_rule_lines
+# 6.2.3: the rules of one source: "rules" (on disk, /etc/audit/rules.d/*.rules) or "active_rules" (auditctl -l)
+audit_src_lines(src) := [l |
+	some r in input.auditd[src]
+	is_string(r)
+	l := trim_space(r)
+	l != ""
+	not startswith(l, "#")
+]
+
+audit_src_watch(src, p, perm) if {
+	some l in audit_src_lines(src)
 	audit_path_tok(l, p)
 	pv := audit_perm(l)
 	every i in numbers.range(0, count(perm) - 1) { contains(pv, substring(perm, i, 1)) }
@@ -262,8 +272,9 @@ audit_field(l, "eperm") if {
 	regex.match(audit_unset, l)
 }
 
-audit_syscall(s, fields) if {
-	some l in audit_rule_lines
+# a syscall rule of any architecture
+audit_src_syscall_any(src, s, fields) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
@@ -290,12 +301,21 @@ audit_log_group_bad if {
 	not lower(v) in {"root", "adm"}
 }
 
-audit_syscall_arch(s, fields, arch) if {
-	some l in audit_rule_lines
+audit_src_syscall(src, s, fields, arch) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
 	concat("", ["arch=", arch]) in audit_toks(l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
+}
+
+# an always,exit rule on an executable's path with perm x and the auid filters (a bare -w watch has none)
+audit_src_exec(src, p) if {
+	some l in audit_src_lines(src)
+	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	audit_path_tok(l, p)
+	contains(audit_perm(l), "x")
+	audit_field(l, "auid")
 }
 
 # `linux` lines of /boot/grub/grub.cfg
@@ -309,15 +329,6 @@ grub_linux_lines := [l |
 audit_tool_reported(n) if {
 	some f in input.auditd.tools
 	regex.replace(f.path, `^.*/`, "") == n
-}
-
-# an always,exit rule on an executable's path with perm x and the auid filters
-audit_exec_rule(p) if {
-	some l in audit_rule_lines
-	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
-	audit_path_tok(l, p)
-	contains(audit_perm(l), "x")
-	audit_field(l, "auid")
 }
 
 # on-disk rules (/etc/audit/rules.d/*.rules), active lines

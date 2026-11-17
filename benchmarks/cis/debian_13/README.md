@@ -31,6 +31,9 @@ recommendations the same way as Ubuntu 26.04 LTS v1.0.0; the logic differs in tw
 - 6.2.3.2 requires an audit rule covering `execve` and `execveat`, for both `arch=b32` and `arch=b64`.
 - 1.6.1 to 1.6.5 reject banner text that names the os-release ID, `debian`.
 
+The audit-rule checks (6.2.3) need both `auditd.rules` (the lines of /etc/audit/rules.d/*.rules) and
+`auditd.active_rules` (`auditctl -l`), collected separately: each rule is required in both.
+
 The report also carries `violation_count`.
 
 ## Regenerate

@@ -196,8 +196,9 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 ]
 
 # ── helpers of the RHEL 9 checks reused here (auditd) ──
-audit_rule_lines := [l |
-	some r in input.auditd.active_rules
+# 6.2.3: the rules of one source: "rules" (on disk, /etc/audit/rules.d/*.rules) or "active_rules" (auditctl -l)
+audit_src_lines(src) := [l |
+	some r in input.auditd[src]
 	l := trim_space(r)
 	l != ""
 	not startswith(l, "#")
@@ -229,8 +230,8 @@ audit_perm(l) := toks[i + 1] if {
 	t == "-p"
 }
 
-audit_watch(p, perm) if {
-	some l in audit_rule_lines
+audit_src_watch(src, p, perm) if {
+	some l in audit_src_lines(src)
 	audit_path_tok(l, p)
 	pv := audit_perm(l)
 	every i in numbers.range(0, count(perm) - 1) { contains(pv, substring(perm, i, 1)) }
@@ -267,11 +268,21 @@ audit_field(l, "eperm") if {
 	regex.match(audit_unset, l)
 }
 
-audit_syscall(s, fields) if {
-	some l in audit_rule_lines
+audit_src_syscall(src, s, fields, arch) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["arch=", arch]) in audit_toks(l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
+}
+
+# an always,exit rule on the executable p with perm x, auid>=1000 and auid!=unset
+audit_src_exec(src, p) if {
+	some l in audit_src_lines(src)
+	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["path=", p]) in audit_toks(l)
+	contains(audit_perm(l), "x")
+	audit_field(l, "auid")
 }
 
 # the last `-e` line of the on-disk rules decides the enabled flag
@@ -299,21 +310,6 @@ grub_cmdline_tokens := [t |
 grub_cmdline_has(re) if {
 	some t in grub_cmdline_tokens
 	regex.match(re, t)
-}
-
-# log_group unset: auditd's default root applies
-audit_log_group_ok if not conf_last(input.auditd.config, "log_group")
-
-audit_log_group_ok if lower(conf_last(input.auditd.config, "log_group")) in {"root", "audit"}
-
-# an always,exit rule on <p> with perm x and both auid filters on the same line
-audit_exec_watch(p) if {
-	some l in audit_rule_lines
-	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
-	audit_path_tok(l, p)
-	contains(audit_perm(l), "x")
-	regex.match(`auid>=1000(\s|$)`, l)
-	regex.match(audit_unset, l)
 }
 
 # one boot entry's kernel arguments carry audit_backlog_limit >= 8192
@@ -482,6 +478,8 @@ violations contains "5.2.2.3: not met — system must be turned off when audit l
 default e_5_2_3_1 := false
 
 e_5_2_3_1 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -489,11 +487,11 @@ e_5_2_3_1 if {
 default p_5_2_3_1 := false
 
 p_5_2_3_1 if {
-	audit_watch("/etc/sudoers", "wa")
-	audit_watch("/etc/sudoers.d", "wa")
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/sudoers", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/sudoers.d", "wa") }
 }
 
-violations contains "5.2.3.1: evidence missing — auditd.active_rules not collected" if not e_5_2_3_1
+violations contains "5.2.3.1: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_1
 
 violations contains "5.2.3.1: not met — an audit rule must record changes to system administration scope (sudoers)" if {
 	e_5_2_3_1
@@ -505,6 +503,8 @@ violations contains "5.2.3.1: not met — an audit rule must record changes to s
 default e_5_2_3_2 := false
 
 e_5_2_3_2 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -512,10 +512,10 @@ e_5_2_3_2 if {
 default p_5_2_3_2 := false
 
 p_5_2_3_2 if {
-	every s in ["execve"] { audit_syscall(s, ["euid"]) }
+	every src in ["rules", "active_rules"] { every s in ["execve"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["euid"], a) } } }
 }
 
-violations contains "5.2.3.2: evidence missing — auditd.active_rules not collected" if not e_5_2_3_2
+violations contains "5.2.3.2: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_2
 
 violations contains "5.2.3.2: not met — actions as another user must be always logged" if {
 	e_5_2_3_2
@@ -527,6 +527,8 @@ violations contains "5.2.3.2: not met — actions as another user must be always
 default e_5_2_3_3 := false
 
 e_5_2_3_3 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 	text_collected(input.sudo.sudoers_content)
@@ -536,10 +538,10 @@ default p_5_2_3_3 := false
 
 p_5_2_3_3 if {
 	count(sudo_logfiles) > 0
-	every f in sudo_logfiles { audit_watch(f, "wa") }
+	every f in sudo_logfiles { every src in ["rules", "active_rules"] { audit_src_watch(src, f, "wa") } }
 }
 
-violations contains "5.2.3.3: evidence missing — auditd.active_rules/sudo.sudoers_content not collected" if not e_5_2_3_3
+violations contains "5.2.3.3: evidence missing — auditd.rules/active_rules/sudo.sudoers_content not collected" if not e_5_2_3_3
 
 violations contains "5.2.3.3: not met — an audit rule must record events that modify the sudo log file" if {
 	e_5_2_3_3
@@ -551,6 +553,8 @@ violations contains "5.2.3.3: not met — an audit rule must record events that 
 default e_5_2_3_4 := false
 
 e_5_2_3_4 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -558,11 +562,11 @@ e_5_2_3_4 if {
 default p_5_2_3_4 := false
 
 p_5_2_3_4 if {
-	audit_watch("/etc/localtime", "wa")
-	every s in ["adjtimex", "settimeofday", "clock_settime"] { audit_syscall(s, []) }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/localtime", "wa") }
+	every src in ["rules", "active_rules"] { every s in ["adjtimex", "settimeofday", "clock_settime"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, [], a) } } }
 }
 
-violations contains "5.2.3.4: evidence missing — auditd.active_rules not collected" if not e_5_2_3_4
+violations contains "5.2.3.4: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_4
 
 violations contains "5.2.3.4: not met — an audit rule must record events that modify date and time information" if {
 	e_5_2_3_4
@@ -574,6 +578,8 @@ violations contains "5.2.3.4: not met — an audit rule must record events that 
 default e_5_2_3_5 := false
 
 e_5_2_3_5 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -581,15 +587,15 @@ e_5_2_3_5 if {
 default p_5_2_3_5 := false
 
 p_5_2_3_5 if {
-	audit_watch("/etc/issue", "wa")
-	audit_watch("/etc/issue.net", "wa")
-	audit_watch("/etc/hosts", "wa")
-	audit_watch("/etc/sysconfig/network", "wa")
-	audit_watch("/etc/sysconfig/network-scripts", "wa")
-	every s in ["sethostname", "setdomainname"] { audit_syscall(s, []) }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/issue", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/issue.net", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/hosts", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/sysconfig/network", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/sysconfig/network-scripts", "wa") }
+	every src in ["rules", "active_rules"] { every s in ["sethostname", "setdomainname"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, [], a) } } }
 }
 
-violations contains "5.2.3.5: evidence missing — auditd.active_rules not collected" if not e_5_2_3_5
+violations contains "5.2.3.5: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_5
 
 violations contains "5.2.3.5: not met — an audit rule must record events that modify the system's network environment" if {
 	e_5_2_3_5
@@ -601,6 +607,8 @@ violations contains "5.2.3.5: not met — an audit rule must record events that 
 default e_5_2_3_6 := false
 
 e_5_2_3_6 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 	is_array(input.auditd.privileged_commands)
@@ -610,10 +618,10 @@ e_5_2_3_6 if {
 default p_5_2_3_6 := false
 
 p_5_2_3_6 if {
-	every c in input.auditd.privileged_commands { audit_watch(c, "x") }
+	every c in input.auditd.privileged_commands { every src in ["rules", "active_rules"] { audit_src_watch(src, c, "x") } }
 }
 
-violations contains "5.2.3.6: evidence missing — auditd.active_rules/privileged_commands not collected" if not e_5_2_3_6
+violations contains "5.2.3.6: evidence missing — auditd.rules/active_rules/privileged_commands not collected" if not e_5_2_3_6
 
 violations contains "5.2.3.6: not met — an audit rule must record use of privileged commands" if {
 	e_5_2_3_6
@@ -625,6 +633,8 @@ violations contains "5.2.3.6: not met — an audit rule must record use of privi
 default e_5_2_3_7 := false
 
 e_5_2_3_7 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -632,11 +642,11 @@ e_5_2_3_7 if {
 default p_5_2_3_7 := false
 
 p_5_2_3_7 if {
-	every s in ["creat", "open", "openat", "truncate", "ftruncate"] { audit_syscall(s, ["eacces"]) }
-	every s in ["creat", "open", "openat", "truncate", "ftruncate"] { audit_syscall(s, ["eperm"]) }
+	every src in ["rules", "active_rules"] { every s in ["creat", "open", "openat", "truncate", "ftruncate"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["eacces"], a) } } }
+	every src in ["rules", "active_rules"] { every s in ["creat", "open", "openat", "truncate", "ftruncate"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["eperm"], a) } } }
 }
 
-violations contains "5.2.3.7: evidence missing — auditd.active_rules not collected" if not e_5_2_3_7
+violations contains "5.2.3.7: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_7
 
 violations contains "5.2.3.7: not met — an audit rule must record unsuccessful file access attempts" if {
 	e_5_2_3_7
@@ -648,6 +658,8 @@ violations contains "5.2.3.7: not met — an audit rule must record unsuccessful
 default e_5_2_3_8 := false
 
 e_5_2_3_8 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -655,14 +667,14 @@ e_5_2_3_8 if {
 default p_5_2_3_8 := false
 
 p_5_2_3_8 if {
-	audit_watch("/etc/group", "wa")
-	audit_watch("/etc/passwd", "wa")
-	audit_watch("/etc/gshadow", "wa")
-	audit_watch("/etc/shadow", "wa")
-	audit_watch("/etc/security/opasswd", "wa")
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/group", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/passwd", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/gshadow", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/shadow", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/security/opasswd", "wa") }
 }
 
-violations contains "5.2.3.8: evidence missing — auditd.active_rules not collected" if not e_5_2_3_8
+violations contains "5.2.3.8: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_8
 
 violations contains "5.2.3.8: not met — an audit rule must record events that modify user/group information" if {
 	e_5_2_3_8
@@ -674,6 +686,8 @@ violations contains "5.2.3.8: not met — an audit rule must record events that 
 default e_5_2_3_9 := false
 
 e_5_2_3_9 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -681,12 +695,12 @@ e_5_2_3_9 if {
 default p_5_2_3_9 := false
 
 p_5_2_3_9 if {
-	every s in ["chmod", "fchmod", "fchmodat"] { audit_syscall(s, ["auid"]) }
-	every s in ["chown", "fchown", "lchown", "fchownat"] { audit_syscall(s, ["auid"]) }
-	every s in ["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"] { audit_syscall(s, ["auid"]) }
+	every src in ["rules", "active_rules"] { every s in ["chmod", "fchmod", "fchmodat"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
+	every src in ["rules", "active_rules"] { every s in ["chown", "fchown", "lchown", "fchownat"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
+	every src in ["rules", "active_rules"] { every s in ["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr", "fremovexattr"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
 }
 
-violations contains "5.2.3.9: evidence missing — auditd.active_rules not collected" if not e_5_2_3_9
+violations contains "5.2.3.9: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_9
 
 violations contains "5.2.3.9: not met — an audit rule must record discretionary access control permission modification events" if {
 	e_5_2_3_9
@@ -698,6 +712,8 @@ violations contains "5.2.3.9: not met — an audit rule must record discretionar
 default e_5_2_3_10 := false
 
 e_5_2_3_10 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -705,10 +721,10 @@ e_5_2_3_10 if {
 default p_5_2_3_10 := false
 
 p_5_2_3_10 if {
-	every s in ["mount"] { audit_syscall(s, ["auid"]) }
+	every src in ["rules", "active_rules"] { every s in ["mount"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
 }
 
-violations contains "5.2.3.10: evidence missing — auditd.active_rules not collected" if not e_5_2_3_10
+violations contains "5.2.3.10: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_10
 
 violations contains "5.2.3.10: not met — an audit rule must record successful file system mounts" if {
 	e_5_2_3_10
@@ -720,6 +736,8 @@ violations contains "5.2.3.10: not met — an audit rule must record successful 
 default e_5_2_3_11 := false
 
 e_5_2_3_11 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -727,12 +745,12 @@ e_5_2_3_11 if {
 default p_5_2_3_11 := false
 
 p_5_2_3_11 if {
-	audit_watch("/var/run/utmp", "wa")
-	audit_watch("/var/log/wtmp", "wa")
-	audit_watch("/var/log/btmp", "wa")
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/var/run/utmp", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/var/log/wtmp", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/var/log/btmp", "wa") }
 }
 
-violations contains "5.2.3.11: evidence missing — auditd.active_rules not collected" if not e_5_2_3_11
+violations contains "5.2.3.11: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_11
 
 violations contains "5.2.3.11: not met — an audit rule must record session initiation information" if {
 	e_5_2_3_11
@@ -744,6 +762,8 @@ violations contains "5.2.3.11: not met — an audit rule must record session ini
 default e_5_2_3_12 := false
 
 e_5_2_3_12 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -751,11 +771,11 @@ e_5_2_3_12 if {
 default p_5_2_3_12 := false
 
 p_5_2_3_12 if {
-	audit_watch("/var/log/lastlog", "wa")
-	audit_watch("/var/run/faillock", "wa")
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/var/log/lastlog", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/var/run/faillock", "wa") }
 }
 
-violations contains "5.2.3.12: evidence missing — auditd.active_rules not collected" if not e_5_2_3_12
+violations contains "5.2.3.12: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_12
 
 violations contains "5.2.3.12: not met — an audit rule must record login and logout events" if {
 	e_5_2_3_12
@@ -767,6 +787,8 @@ violations contains "5.2.3.12: not met — an audit rule must record login and l
 default e_5_2_3_13 := false
 
 e_5_2_3_13 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -774,10 +796,10 @@ e_5_2_3_13 if {
 default p_5_2_3_13 := false
 
 p_5_2_3_13 if {
-	every s in ["unlink", "unlinkat", "rename", "renameat"] { audit_syscall(s, ["auid"]) }
+	every src in ["rules", "active_rules"] { every s in ["unlink", "unlinkat", "rename", "renameat"] { every a in ["b32", "b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
 }
 
-violations contains "5.2.3.13: evidence missing — auditd.active_rules not collected" if not e_5_2_3_13
+violations contains "5.2.3.13: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_13
 
 violations contains "5.2.3.13: not met — an audit rule must record file deletion events by users" if {
 	e_5_2_3_13
@@ -789,6 +811,8 @@ violations contains "5.2.3.13: not met — an audit rule must record file deleti
 default e_5_2_3_14 := false
 
 e_5_2_3_14 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -796,11 +820,11 @@ e_5_2_3_14 if {
 default p_5_2_3_14 := false
 
 p_5_2_3_14 if {
-	audit_watch("/etc/selinux", "wa")
-	audit_watch("/usr/share/selinux", "wa")
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/etc/selinux", "wa") }
+	every src in ["rules", "active_rules"] { audit_src_watch(src, "/usr/share/selinux", "wa") }
 }
 
-violations contains "5.2.3.14: evidence missing — auditd.active_rules not collected" if not e_5_2_3_14
+violations contains "5.2.3.14: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_14
 
 violations contains "5.2.3.14: not met — an audit rule must record events that modify the system's Mandatory Access Controls" if {
 	e_5_2_3_14
@@ -812,6 +836,8 @@ violations contains "5.2.3.14: not met — an audit rule must record events that
 default e_5_2_3_15 := false
 
 e_5_2_3_15 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -819,10 +845,10 @@ e_5_2_3_15 if {
 default p_5_2_3_15 := false
 
 p_5_2_3_15 if {
-	audit_exec_watch("/usr/bin/chcon")
+	every src in ["rules", "active_rules"] { audit_src_exec(src, "/usr/bin/chcon") }
 }
 
-violations contains "5.2.3.15: evidence missing — auditd.active_rules not collected" if not e_5_2_3_15
+violations contains "5.2.3.15: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_15
 
 violations contains "5.2.3.15: not met — successful and unsuccessful attempts to use the chcon command must be recorded" if {
 	e_5_2_3_15
@@ -834,6 +860,8 @@ violations contains "5.2.3.15: not met — successful and unsuccessful attempts 
 default e_5_2_3_16 := false
 
 e_5_2_3_16 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -841,10 +869,10 @@ e_5_2_3_16 if {
 default p_5_2_3_16 := false
 
 p_5_2_3_16 if {
-	audit_exec_watch("/usr/bin/setfacl")
+	every src in ["rules", "active_rules"] { audit_src_exec(src, "/usr/bin/setfacl") }
 }
 
-violations contains "5.2.3.16: evidence missing — auditd.active_rules not collected" if not e_5_2_3_16
+violations contains "5.2.3.16: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_16
 
 violations contains "5.2.3.16: not met — successful and unsuccessful attempts to use the setfacl command must be recorded" if {
 	e_5_2_3_16
@@ -856,6 +884,8 @@ violations contains "5.2.3.16: not met — successful and unsuccessful attempts 
 default e_5_2_3_17 := false
 
 e_5_2_3_17 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -863,10 +893,10 @@ e_5_2_3_17 if {
 default p_5_2_3_17 := false
 
 p_5_2_3_17 if {
-	audit_exec_watch("/usr/bin/chacl")
+	every src in ["rules", "active_rules"] { audit_src_exec(src, "/usr/bin/chacl") }
 }
 
-violations contains "5.2.3.17: evidence missing — auditd.active_rules not collected" if not e_5_2_3_17
+violations contains "5.2.3.17: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_17
 
 violations contains "5.2.3.17: not met — successful and unsuccessful attempts to use the chacl command must be recorded" if {
 	e_5_2_3_17
@@ -878,6 +908,8 @@ violations contains "5.2.3.17: not met — successful and unsuccessful attempts 
 default e_5_2_3_18 := false
 
 e_5_2_3_18 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -885,10 +917,10 @@ e_5_2_3_18 if {
 default p_5_2_3_18 := false
 
 p_5_2_3_18 if {
-	audit_exec_watch("/usr/sbin/usermod")
+	every src in ["rules", "active_rules"] { audit_src_exec(src, "/usr/sbin/usermod") }
 }
 
-violations contains "5.2.3.18: evidence missing — auditd.active_rules not collected" if not e_5_2_3_18
+violations contains "5.2.3.18: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_18
 
 violations contains "5.2.3.18: not met — successful and unsuccessful attempts to use the usermod command must be recorded" if {
 	e_5_2_3_18
@@ -900,6 +932,8 @@ violations contains "5.2.3.18: not met — successful and unsuccessful attempts 
 default e_5_2_3_19 := false
 
 e_5_2_3_19 if {
+	is_array(input.auditd.rules)
+	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
 	count(input.auditd.active_rules) > 0
 }
@@ -907,11 +941,11 @@ e_5_2_3_19 if {
 default p_5_2_3_19 := false
 
 p_5_2_3_19 if {
-	audit_exec_watch("/usr/bin/kmod")
-	every s in ["init_module", "finit_module", "delete_module", "create_module", "query_module"] { audit_syscall(s, ["auid"]) }
+	every src in ["rules", "active_rules"] { audit_src_exec(src, "/usr/bin/kmod") }
+	every src in ["rules", "active_rules"] { every s in ["init_module", "finit_module", "delete_module", "create_module", "query_module"] { every a in ["b64"] { audit_src_syscall(src, s, ["auid"], a) } } }
 }
 
-violations contains "5.2.3.19: evidence missing — auditd.active_rules not collected" if not e_5_2_3_19
+violations contains "5.2.3.19: evidence missing — auditd.rules/active_rules not collected" if not e_5_2_3_19
 
 violations contains "5.2.3.19: not met — an audit rule must record kernel module loading unloading and modification" if {
 	e_5_2_3_19

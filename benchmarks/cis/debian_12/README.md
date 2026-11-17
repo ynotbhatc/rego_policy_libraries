@@ -68,8 +68,12 @@ The fact contract is the `ubuntu_26_04` module's, so one collector feeds both. D
 | `ssh.openssh_version` | 5.1.23 | OpenSSH server version, `9.2` or `OpenSSH_9.2p1` |
 | `auditd.netplan_dir_exists` | 6.2.3.9 | whether /etc/netplan exists (absent directory passes) |
 
+The audit-rule checks (6.2.3) need both `auditd.rules` (the lines of /etc/audit/rules.d/*.rules) and
+`auditd.active_rules` (`auditctl -l`), collected separately: each rule is required in both.
+
 Where the Debian 12 audit differs from Ubuntu 26.04, the check follows Debian 12: syscall audit rules are
-required for both `arch=b32` and `arch=b64`; the chcon, setfacl, chacl, usermod and kmod rules must be
+required for both `arch=b32` and `arch=b64` (6.2.3.28: both on disk, the `arch=b64` module rule in the running
+rules); the chcon, setfacl, chacl, usermod and kmod rules must be
 `-a always,exit` rules carrying the `auid` filters; 4.1.5 accepts `disabled (routed)`; 1.3.1.2 reads only the
 grub `linux` lines; 1.3.1.3 requires every loaded profile in enforce mode; 5.1.24 requires every effective
 `ListenAddress` to be a private (RFC 1918, IPv6 ULA) or loopback address; 6.2.4.8-6.2.4.10 and 6.3.3 include
