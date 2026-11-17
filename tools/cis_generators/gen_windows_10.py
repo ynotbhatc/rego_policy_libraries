@@ -219,6 +219,7 @@ def configure():
     base.REGISTRY_OVERRIDES = {k: v for k, v in REGISTRY_OVERRIDES.items()}
     base.SIDS = {**base.SIDS, **EXTRA_SIDS}
     base.PRIVILEGES = {**base.PRIVILEGES, **EXTRA_PRIVILEGES}
+    base.DENY_IS_SET_TO = set()  # no user right here is a deny right stated with "is set to" (see check_deny_rights)
     base.HEADER, base.METADATA = header(), metadata("{title}")  # the 2022 emitters .format() these
     base.ATTESTATION_BODY = _rename(_sub(base.ATTESTATION_BODY, [
         ("# In the selected profile. With the server role unknown, a recommendation for either role is in scope.\n",
@@ -962,7 +963,9 @@ def generate(workbook):
         if words not in recs[rid]["title"]:
             sys.exit(f"{rid}: title no longer matches the hand-written logic ({recs[rid]['title']!r})")
 
+    base.DENY_SEEN.clear()
     checks = {rid: derive(rec) for rid, rec in recs.items()}
+    base.check_deny_rights()
     for rid, c in checks.items():
         names = ([c["name"]] if "name" in c else []) + [i[1] for i in c.get("items", [])]
         for n in names:

@@ -1,6 +1,6 @@
 # CIS Microsoft Windows Server 2022 Benchmark v5.1.0
 
-**Version:** v1.0 · generated 2026-10-15 by `tools/cis_generators/gen_windows_server_2022.py` from the CIS workbook
+**Version:** v1.1 · generated 2026-10-15, revised 2026-11-17, by `tools/cis_generators/gen_windows_server_2022.py` from the CIS workbook
 
 All 408 recommendations: 406 evaluated from facts, and the 2 that CIS marks Manual (1.2.3, 2.3.11.6) reported
 as requiring operator attestation. CI checks every cited id and its wording against the benchmark's enumeration
@@ -65,14 +65,17 @@ benchmark's state is a configured value, not the operating system default.
   (and negatives), "between 5 and 14" a range, otherwise equality. Where the audit procedure lists several
   accepted values ("`1` or `2`", 14 recommendations, mostly titles ending "or higher"), any of them passes. Numbers held as `REG_SZ` compare numerically.
   "Is configured" text values (logon banner, firewall log path) pass when non-empty. Per-user values must hold in
-  every loaded user hive.
+  every loaded user hive. 18.5.11 (security log warning threshold) and 18.9.26.6 (LAPS password age) are "or
+  fewer" bounds that 0 does not satisfy: 0 turns the warning off, and is not a valid password age.
 - **Account policy and secedit-backed security options** (13): the `[System Access]` key named in
   `SECEDIT` in the generator. `LockoutDuration` 0 (the workbook: locked out until an administrator unlocks)
   or -1 passes the "15 or more minutes" recommendation. Names are compared without secedit's double quotes.
 - **User rights** (48): Microsoft's privilege constants and well-known SIDs. "Is set to" lists the only principals
   allowed to hold the right: a host that grants it to fewer (for example no Hyper-V group on a host without
   Hyper-V) passes, one that grants it to anyone else fails. "To include" (the deny rights) needs every named
-  principal. "No One" needs an empty assignment.
+  principal. "No One" needs an empty assignment. 2.2.26 states the member-server deny-RDP right as an exact list;
+  it is evaluated as "to include" (both principals must be denied, denying more is allowed), because a shorter
+  deny list is the weaker state.
 - **Audit policy** (34): the subcategory GUID from the audit procedure. The setting is a minimum: "Success" passes
   on Success or Success and Failure.
 

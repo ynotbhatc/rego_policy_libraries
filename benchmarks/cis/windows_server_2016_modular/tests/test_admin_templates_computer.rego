@@ -40,7 +40,7 @@ test_18_3_5_fails_when_its_facts_do_not_comply if {
 }
 
 test_18_3_6_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2016.lib.results["18.3.6"] == "fail" with input as object.union(data.cis_windows_server_2016_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft Services\\AdmPwd": {"PasswordAgeDays": 31}}})
+	data.cis_windows_server_2016.lib.results["18.3.6"] == "fail" with input as object.union(data.cis_windows_server_2016_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Policies\\Microsoft Services\\AdmPwd": {"PasswordAgeDays": 0}}})
 }
 
 test_18_4_1_fails_when_its_facts_do_not_comply if {
@@ -120,7 +120,7 @@ test_18_5_11_fails_when_its_facts_do_not_comply if {
 }
 
 test_18_5_12_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2016.lib.results["18.5.12"] == "fail" with input as object.union(data.cis_windows_server_2016_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 91}}})
+	data.cis_windows_server_2016.lib.results["18.5.12"] == "fail" with input as object.union(data.cis_windows_server_2016_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 0}}})
 }
 
 test_18_6_4_1_fails_when_its_facts_do_not_comply if {

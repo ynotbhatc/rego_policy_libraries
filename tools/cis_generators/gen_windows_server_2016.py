@@ -64,7 +64,7 @@ TOTAL_RECS = 422
 INDEX_NAME = "cis_windows_server_2016_v4_0_index.json"
 GENERATOR = "tools/cis_generators/gen_windows_server_2016.py"
 MAIN_FILE = "cis_windows_2016_main.rego"
-README_DATE = "2026-11-14"  # a constant, so regenerating is deterministic; change it with the README version
+README_DATE = "2026-11-17"  # a constant, so regenerating is deterministic; change it with the README version
 
 EQ, NE, GE, LE_NOT0, GE_OR_FOREVER = base.EQ, base.NE, base.GE, base.LE_NOT0, base.GE_OR_FOREVER
 
@@ -103,6 +103,11 @@ REGISTRY_OVERRIDES = {
     "2.3.7.7": ("reg", "range", [5, 14]),
     "18.5.9": ("reg", "le", 5),                # ScreenSaverGracePeriod is REG_SZ holding a number
     "18.10.57.3.10.1": ("reg", "le_not0", 900000),
+    # "or fewer" bounds that 0 does not meet (the 2022 table's 18.5.11 and 18.9.26.6): 0 is the default for the
+    # security log warning threshold and means no warning event is generated; the LAPS password age accepts 1-365
+    # days, so 0 is not a configured age
+    "18.5.12": ("reg", "le_not0", 90),
+    "18.3.6": ("reg", "le_not0", 30),
     # the value must not exist (or, for the MULTI_SZ, be empty)
     "2.3.5.2": ("reg_absent", None, None),
     "2.3.10.12": ("reg_absent", None, None),
@@ -152,13 +157,22 @@ TITLE_WORDS = {
     "2.3.10.12": "accessed anonymously",
     "2.3.11.6": "Force logoff when logon hours expire",
     "18.3.1": "LAPS AdmPwd GPO Extension",
+    "18.3.6": "Password Age (Days)",
     "18.5.9": "ScreenSaverGracePeriod",
+    "18.5.12": "(WarningLevel)",
     "18.9.19.7": "background refresh of Group Policy",
     "18.10.43.16": "potentially unwanted applications",
     "18.10.57.3.10.1": "active but idle",
     "18.10.93.4.2": "180 or more days",
     "19.7.8.5": "Spotlight collection",
 }
+
+# Deny rights this workbook states with "is set to" (an exact list): evaluated as "to include" by the shared
+# derivation, and the run aborts unless exactly these ids are affected.
+DENY_IS_SET_TO = {"2.2.27"}
+
+# "or fewer, but not 0" registry rows test_regressions.rego pins.
+ZERO_BOUND_IDS = {"18.3.6", "18.5.12"}
 
 TIER = re.compile(r"\((L1|L2|NG)\) ")
 
@@ -388,7 +402,7 @@ def readme(recs, section_names, checks):
         for label, role in (("Member server", "MS"), ("Domain controller", "DC")))
     return f"""# {BENCHMARK} v{VERSION}
 
-**Version:** v1.0 · generated {README_DATE} by `{GENERATOR}` from the CIS workbook
+**Version:** v1.1 · generated {README_DATE} by `{GENERATOR}` from the CIS workbook
 
 All {len(recs)} recommendations: {len(recs) - len(manual)} evaluated from facts, and the {len(manual)} that CIS marks Manual ({", ".join(manual)}) reported
 as requiring operator attestation. `data/{INDEX_NAME}` enumerates the benchmark (ids, Automated or
@@ -467,6 +481,10 @@ Specific to this release:
   allowed on any member server and never required.
 - 2.3.10.1 is read from the secedit export (`LSAAnonymousNameLookup` = 0) as in the 2019 and 2022 modules. The
   v{VERSION} workbook names a registry value for it that later releases dropped; the option is not registry policy.
+- 2.2.27 states the member-server deny-RDP right as an exact list; it is evaluated as "to include" (both
+  principals must be denied, denying more is allowed), because a shorter deny list is the weaker state.
+- 18.5.12 (security log warning threshold) and 18.3.6 (LAPS password age) are upper bounds that 0 does not
+  satisfy: 0 turns the warning off, and is not a valid password age.
 - 2.3.10.7 passes only when no named pipe is listed; the legacy Computer Browser exception is not modelled.
 - 18.10.93.4.2: the feature-update deferral period passes at 180 days or more.
 
@@ -507,6 +525,7 @@ def configure():
     g19.SECEDIT, g19.MANUAL, g19.REGISTRY_OVERRIDES = SECEDIT, MANUAL, REGISTRY_OVERRIDES
     g19.SIDS = dict(base.SIDS)
     g19.EXTRA_PRIVILEGES, g19.TITLE_WORDS = EXTRA_PRIVILEGES, TITLE_WORDS
+    g19.DENY_IS_SET_TO, g19.ZERO_BOUND_IDS = DENY_IS_SET_TO, ZERO_BOUND_IDS
     g19.KEEP_TESTS = set()
     g19.STALE = ("2022", "_2019", "2019_", "2019 Benchmark", "5.1.0", "5.0.0", "408")
     g19.load, g19.derive = load, derive

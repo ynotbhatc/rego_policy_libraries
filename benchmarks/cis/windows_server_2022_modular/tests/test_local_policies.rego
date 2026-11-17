@@ -104,7 +104,7 @@ test_2_2_25_fails_when_its_facts_do_not_comply if {
 }
 
 test_2_2_26_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2022.lib.results["2.2.26"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": ["S-1-5-32-546", "S-1-5-113", "S-1-1-0"]}}})
+	data.cis_windows_server_2022.lib.results["2.2.26"] == "fail" with input as object.union(data.cis_windows_server_2022.fixtures_test.fixture_ms, {"secedit": {"privilege_rights": {"SeDenyRemoteInteractiveLogonRight": []}}})
 }
 
 test_2_2_27_fails_when_its_facts_do_not_comply if {
