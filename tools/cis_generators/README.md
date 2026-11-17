@@ -124,6 +124,13 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 - `gen_sql_server_2025.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2025 Benchmark v1.0.0,
   49 recommendations; Database Engine and AWS RDS profiles (`input.cis_profile.platform`).
 
+- `gen_sql_server_2022.py <workbook.xlsx> <repo root>`: CIS Microsoft SQL Server 2022 Benchmark v1.3.0,
+  48 recommendations (key `cis_sql_server_2022`). The workbook matches SQL Server 2025 v1.0.0 minus 3.15, so the
+  script imports `gen_sql_server_2025.py` unmodified (reader, logic table, helpers) and holds only what differs:
+  no 3.15, a title keyword per logic entry, per-profile counts, and the report bridge (`failed_controls`).
+  Any count, id, status, profile or keyword mismatch aborts. Same input contract as sql_server_2025;
+  needs `opa` on the PATH for `opa fmt`.
+
 - `gen_intune_defender_antivirus.py <workbook.xlsx> <repo root>`: CIS Microsoft Intune for Microsoft
   Defender Antivirus Benchmark v1.0.0, 55 recommendations keyed by CSP setting name.
 
