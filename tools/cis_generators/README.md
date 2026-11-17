@@ -136,6 +136,16 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 
 - `gen_postgresql_17.py <workbook.xlsx> <benchmarks/cis/postgresql>`: CIS PostgreSQL 17 Benchmark v1.1.0,
   72 recommendations; per-control logic lives in `postgresql_17_spec.py`. Run `opa fmt -w` afterwards.
+  The three PostgreSQL generators (`gen_postgresql_16.py`, `_17.py`, `_18.py`) are one-line wrappers over
+  `gen_postgresql.py <version> <workbook.xlsx> <out_dir>`. The 17 logic table is the shared base;
+  `postgresql_versions.py` records, per version, the recommendations that are dropped or decided differently
+  (16: no 4.10, 4.8/6.8/6.10 diverge; 18: 3.1.20, 4.8, 6.2, 6.8, 6.10 diverge) and the install paths. 16 (71
+  recommendations, CIS PostgreSQL 16 Benchmark v1.1.0) and 18 (72, v1.0.0) are written into their own
+  directories `benchmarks/cis/postgresql_16` and `postgresql_18` (module, `cis_postgresql_<v>_main.rego`
+  bridge under the key `cis_postgresql_<v>`, generated tests, README); 17 keeps its place in
+  `benchmarks/cis/postgresql`. Same `input.postgresql` fact contract; the new facts are listed in each
+  module's README and header. Ids and Automated/Manual status are checked against the workbook, and the run
+  aborts on any difference. Run `opa fmt -w` afterwards.
 
 - `dump_workbook.py <workbook.xlsx> <out.json>`, then `gen_nginx.py <out.json> benchmarks/cis/nginx` or
   `gen_fortigate.py <out.json> benchmarks/cis/network_devices/fortinet`: CIS NGINX Benchmark v3.1.0
