@@ -168,6 +168,12 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   both-architecture audit rules, ...) is written from the RHEL 8 audit procedures. Aborts on any count, status,
   logic or title-keyword mismatch, and unless a digest of every id, status, profile and audit procedure equals the
   one the table was written from. Run `opa fmt -w benchmarks/cis/rhel_8` afterwards.
+- `gen_rocky_linux_8.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 8 Benchmark v3.0.0, 322 recommendations
+  (299 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_8/`, package `cis_rocky_linux_8`, replacing the
+  earlier hand-written module. Holds no logic of its own: it configures `gen_rhel_8.py` (output directory, package,
+  METADATA framework and domains); the Rocky workbook has the same ids, titles, statuses, profiles and audit
+  procedures as RHEL 8 v4.0.0, which the run verifies through the RHEL 8 audit digest. Run
+  `opa fmt -w benchmarks/cis/rocky_linux_8` afterwards.
 - `gen_amazon_linux_2023.py <workbook.xlsx> [fields.json]`: CIS Amazon Linux 2023 Benchmark v1.0.0,
   all 243 recommendations (217 Automated, 26 Manual; 179 Level 1, 64 Level 2 Server), replacing the earlier
   hand-written sample in `benchmarks/cis/amazon_linux_2023/` (14 section packages, roll-up
