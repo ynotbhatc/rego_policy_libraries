@@ -179,3 +179,12 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
+
+- `dump_workbook.py <workbook.xlsx> <out.json>`, then `gen_aks.py aks|automatic <out.json> <module dir>`: CIS Azure
+  Kubernetes Service (AKS) Benchmark v2.1.0 (50 recommendations, 25 Automated / 25 Manual; `benchmarks/cis/aks`, replacing
+  the old v1.8.0 module under the same `cis_aks` key) and CIS AKS Automatic Benchmark v1.0.0 (33 recommendations, 12 / 21;
+  `benchmarks/cis/aks_automatic`, key `cis_aks_automatic`). One logic table with a per-benchmark id map, because the
+  workbooks number a few checks differently (HTTPS 5.4.5 vs 5.4.4, Entra authorization 5.5.2 vs 5.5.1) and Automatic
+  drops the node and network-plugin sections. Cluster checks read the `az aks show` object (`aks.cluster`); node checks
+  reuse the Kubernetes module's kubelet and `files.<group>` contract; `input.cis_profile.level` selects Level 1 or 2.
+  Aborts on any id, count, status, profile or title-keyword mismatch. Run `opa fmt -w` afterwards.
