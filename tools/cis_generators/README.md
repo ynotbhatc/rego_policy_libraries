@@ -159,6 +159,15 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   count, status, logic and title-keyword checks it aborts unless a digest of every id, status, profile and
   audit procedure equals the one the logic table was written from, so the shared logic is verified against
   the Rocky workbook, not assumed.
+- `gen_rhel_8.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0, all 322
+  recommendations (299 Automated, 23 Manual), replacing the earlier hand-written module in `benchmarks/cis/rhel_8/`
+  under the same packages (`cis_rhel8.<section>`, roll-up `cis_rhel8`, bridge `cis_rhel8.main`, Level 2 view
+  `cis_rhel8.l2`) and section keys. Imports `gen_rhel_9.py` (reader, builders, helpers, emitters) without changing
+  it; a RHEL 9 logic entry is reused through `same(<rhel 8 id>, <rhel 9 id>)` only where the audit procedures check
+  the same thing, and the rest (crypto policy, sshd crypto policy, journald/rsyslog method, both-source and
+  both-architecture audit rules, ...) is written from the RHEL 8 audit procedures. Aborts on any count, status,
+  logic or title-keyword mismatch, and unless a digest of every id, status, profile and audit procedure equals the
+  one the table was written from. Run `opa fmt -w benchmarks/cis/rhel_8` afterwards.
 - `gen_amazon_linux_2023.py <workbook.xlsx> [fields.json]`: CIS Amazon Linux 2023 Benchmark v1.0.0,
   all 243 recommendations (217 Automated, 26 Manual; 179 Level 1, 64 Level 2 Server), replacing the earlier
   hand-written sample in `benchmarks/cis/amazon_linux_2023/` (14 section packages, roll-up
