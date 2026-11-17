@@ -92,7 +92,7 @@ test_18_5_10_fails_when_its_facts_do_not_comply if {
 }
 
 test_18_5_11_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2019.lib.results["18.5.11"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 91}}})
+	data.cis_windows_server_2019.lib.results["18.5.11"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SYSTEM\\CurrentControlSet\\Services\\Eventlog\\Security": {"WarningLevel": 0}}})
 }
 
 test_18_6_4_1_fails_when_its_facts_do_not_comply if {
@@ -368,7 +368,7 @@ test_18_9_26_5_fails_when_its_facts_do_not_comply if {
 }
 
 test_18_9_26_6_fails_when_its_facts_do_not_comply if {
-	data.cis_windows_server_2019.lib.results["18.9.26.6"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordAgeDays": 31}}})
+	data.cis_windows_server_2019.lib.results["18.9.26.6"] == "fail" with input as object.union(data.cis_windows_server_2019_tests.fixtures_test.fixture_ms, {"registry": {"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\LAPS": {"PasswordAgeDays": 0}}})
 }
 
 test_18_9_26_7_fails_when_its_facts_do_not_comply if {

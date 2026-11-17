@@ -103,7 +103,7 @@ REGISTRY_OVERRIDES = {
     "2.3.7.6": ("reg", "le", 4),               # CachedLogonsCount is REG_SZ holding a number
     "2.3.7.7": ("reg", "range", [5, 14]),
     "18.10.57.3.10.1": ("reg", "le_not0", 900000),
-    # Not in the 2022 table, which reads these as plain "or fewer": 0 is the default for 18.5.11 and means no
+    # "or fewer" bounds that 0 does not meet (as in the 2022 table): 0 is the default for 18.5.11 and means no
     # warning event is generated; 18.9.26.6 accepts 1-365 days, so 0 is not a configured age. Neither passes.
     "18.5.11": ("reg", "le_not0", 90),
     "18.9.26.6": ("reg", "le_not0", 30),
@@ -152,10 +152,9 @@ TITLE_WORDS = {
     "18.9.41.2": "SAM change password RPC",
 }
 
-# Deny rights the workbook states with "is set to" (an exact list) rather than "to include"; evaluated as "to
-# include" (see derive). The run aborts unless exactly these ids are affected.
+# Deny rights the workbook states with "is set to" (an exact list) rather than "to include"; the shared derivation
+# (base.derive_rights) evaluates them as "to include", and the run aborts unless exactly these ids are affected.
 DENY_IS_SET_TO = {"2.2.26"}
-DENY_SEEN: set = set()
 
 TIER = re.compile(r"^\((L1|L2|NG|BL)\) ")
 ROLE_SUFFIX = re.compile(r"\((DC|MS) [Oo]nly\)")
@@ -211,13 +210,6 @@ def derive(rec):
         rest = ROLE_SUFFIX.sub("", m.group(1)).strip() if m else None
         if rest:
             sys.exit(f"{rec['id']}: the user-rights title continues past its principal list")
-        # A deny right "is set to" a list: denying fewer principals is the weaker state, so every named principal
-        # must be denied and denying more is allowed ("only" would pass a host that denies no one).
-        if check["privilege"].startswith("SeDeny") and check["mode"] == "only":
-            if rec["id"] not in DENY_IS_SET_TO:
-                sys.exit(f"{rec['id']}: a deny right stated with 'is set to' that DENY_IS_SET_TO does not list")
-            check["mode"] = "include"
-            DENY_SEEN.add(rec["id"])
     return check
 
 
@@ -502,6 +494,8 @@ def configure():
     g19.SECEDIT, g19.MANUAL, g19.REGISTRY_OVERRIDES = SECEDIT, MANUAL, REGISTRY_OVERRIDES
     g19.SIDS = dict(SIDS)
     g19.EXTRA_PRIVILEGES, g19.TITLE_WORDS = EXTRA_PRIVILEGES, TITLE_WORDS
+    g19.DENY_IS_SET_TO = DENY_IS_SET_TO
+    g19.REGRESSION_TESTS = False  # test_main_smoke.rego below pins 2.2.26; 18.5.11 / 18.9.26.6 by their row tests
     g19.KEEP_TESTS = set()
     g19.STALE = ("2022", "_2019", "2019_", "2019 Benchmark", "2016", "5.1.0", "5.0.0", "4.0.0", "408", "422")
     g19.load, g19.derive = load, derive
@@ -518,8 +512,6 @@ def main():
     if hand - set(TITLE_WORDS):
         sys.exit(f"hand-written entries without a title keyword: {sorted(hand - set(TITLE_WORDS))}")
     recs, section_names, checks = g19.generate(sys.argv[1])
-    if DENY_SEEN != DENY_IS_SET_TO:
-        sys.exit(f"deny rights stated with 'is set to': table {sorted(DENY_IS_SET_TO)}, workbook {sorted(DENY_SEEN)}")
     (base.OUT / "README.md").write_text(readme(recs, section_names, checks))
     # the emitted Rego is not in `opa fmt` layout; format it so a second run changes nothing
     if shutil.which("opa"):

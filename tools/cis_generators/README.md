@@ -67,6 +67,12 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   Hand-written files in a module directory, such as the framework-key bridges `cis_windows_2019_key_main.rego`
   and `cis_windows_2022_key_main.rego`, are left in place, and a generator aborts rather than overwrite one.
 
+  User rights are derived once, in `gen_windows_server_2022.derive_rights`, for every Windows generator. A deny
+  right (`SeDeny*`) that a workbook states with "is set to" is evaluated as "to include": every named principal
+  must be denied and denying more is allowed, since a shorter deny list is the weaker state. Each generator lists
+  the ids it expects in `DENY_IS_SET_TO` (2016: 2.2.27; 2019, 2022, 2025: 2.2.26; Windows 10/11: none) and aborts
+  if any other id is affected or a listed one is not.
+
 - `gen_windows_10.py <workbook.xlsx>`: CIS Microsoft Windows 10 Enterprise Benchmark v5.0.0, 501
   recommendations (499 Automated, 2 Manual) -- 337 Level 1, 102 Level 2, 49 BitLocker and 13 Next Generation
   Windows Security, the last two opt-in. The 2022 generator's reader, derivation and fixture builder with the
