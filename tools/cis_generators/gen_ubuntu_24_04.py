@@ -195,9 +195,12 @@ put24("6.1.2.6", "receive logs", base.text_has(
         "^\\$ModLoad\\s+imtcp\\b|^\\$InputTCPServerRun\\b)",
     False, "*.* /var/log/syslog", 'module(load="imtcp")'))
 
-# 6.2.3 audit rules. The 24.04 audit lists every syscall rule for arch=b64 and arch=b32, so both are required;
-# file watches may be written `-w <path> -p wa` or `-F path=<path> -F perm=wa`.
+# 6.2.3 audit rules. Every 24.04 audit procedure reads the running rules (auditd.active_rules) AND the on-disk rules
+# (auditd.rules); base.audit requires a rule in both. The 24.04 audit lists every syscall rule for arch=b64 and
+# arch=b32, so both are required (6.2.3.28: both on disk, the arch=b64 rule in the running rules); file watches may
+# be written `-w <path> -p wa` or `-F path=<path> -F perm=wa`.
 audit = base.audit
+SRCS = json.dumps(list(base.SRCS))
 put24("6.2.3.1", "sudoers", audit([("/etc/sudoers", "wa"), ("/etc/sudoers.d", "wa")]))
 put24("6.2.3.2", "another user", audit(syscalls=[(["execve"], ["euid"])], arches=True))
 put24("6.2.3.4", "date and time", audit([("/etc/localtime", "wa")],
@@ -222,9 +225,10 @@ EXEC_OK = "-a always,exit -F path={p} -F perm=x -F auid>=1000 -F auid!=unset -F 
 
 
 def audit_exec(path):
-    """use of one command: an always,exit rule on its path with perm=x and the auid filters"""
-    return custom([f'is_array({ref(AR)})'], [[f'audit_exec_rule({json.dumps(path)})']], dotted(AR),
-                  nest(AR, [EXEC_OK.format(p=path)]), nest(AR, [f"-w {path} -p x -k k"]), reads=[AR])
+    """use of one command: an always,exit rule on its path with perm=x and the auid filters, in both rule sources"""
+    return custom(base.AUDIT_EV, [[f'every src in {SRCS} {{ audit_src_exec(src, {json.dumps(path)}) }}']],
+                  base.AUDIT_FIELD, base.both([EXEC_OK.format(p=path)]), base.both([f"-w {path} -p x -k k"]),
+                  nest(AR, [EXEC_OK.format(p=path)]), reads=[base.ARD, AR])
 
 
 put24("6.2.3.24", "chcon", audit_exec("/usr/bin/chcon"))
@@ -235,12 +239,13 @@ put24("6.2.3.27", "usermod", audit_exec("/usr/sbin/usermod"))
 # query_module, which the example output also lists, are not required: they no longer exist in the kernel and
 # auditctl refuses them on arm64.
 _KMOD = ["init_module", "finit_module", "delete_module"]
-_kmod_rules = [base.S64.format(arch=a, s=",".join(_KMOD), extra=base.AUID) for a in ("b32", "b64")]
+_KARCH = {"rules": ("b32", "b64"), "active_rules": ("b64",)}
+_kmod_rules = base.syscall_good(_KMOD, ["auid"], _KARCH)
 put24("6.2.3.28", "kernel module loading", custom(
-    [f'is_array({ref(AR)})'],
-    [[f'every s in {json.dumps(_KMOD)} {{ every a in ["b32", "b64"] {{ audit_syscall_arch(s, ["auid"], a) }} }}',
-      'audit_exec_rule("/usr/bin/kmod")']], dotted(AR),
-    nest(AR, _kmod_rules + [EXEC_OK.format(p="/usr/bin/kmod")]), nest(AR, _kmod_rules), reads=[AR]))
+    base.AUDIT_EV,
+    [base.syscall_conds(_KMOD, ["auid"], _KARCH) + [f'every src in {SRCS} {{ audit_src_exec(src, "/usr/bin/kmod") }}']],
+    base.AUDIT_FIELD, base.both(_kmod_rules + [EXEC_OK.format(p="/usr/bin/kmod")]), base.both(_kmod_rules),
+    nest(AR, _kmod_rules + [EXEC_OK.format(p="/usr/bin/kmod")]), reads=[base.ARD, AR]))
 
 # 6.3.3: 24.04 still ships autrace, so six audit tools
 TOOLS = ["auditctl", "auditd", "ausearch", "aureport", "autrace", "augenrules"]
@@ -332,14 +337,6 @@ audit_tool_reported(n) if {
 	regex.replace(f.path, `^.*/`, "") == n
 }
 
-# an always,exit rule on an executable's path with perm x and the auid filters
-audit_exec_rule(p) if {
-	some l in audit_rule_lines
-	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
-	audit_path_tok(l, p)
-	contains(audit_perm(l), "x")
-	audit_field(l, "auid")
-}
 '''
 
 # ── regression tests appended to the generated test files (keyed by module; 24.04 ids) ───────────
@@ -484,23 +481,23 @@ test_timestamp_timeout_commented_entry_is_not_configuration if {
     "auditd": r'''
 # Syscall rules are required for both architectures.
 test_mount_rule_for_b64_only_flagged if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=mounts"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -F key=mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
 }
 
 test_mount_rule_for_both_arches_passes if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.19: ")]) == 0
 }
 
 # A longer path is a different watch: /etc/networks does not cover /etc/network.
 test_networks_watch_alone_flagged if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/networks -p wa -k system-locale"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-w /etc/networks -p wa -k system-locale"], "active_rules": ["-w /etc/networks -p wa -k system-locale"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.8: not met")]) > 0
 }
 
 test_network_watches_in_w_form_pass if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-w /etc/networks -p wa -k system-locale", "-w /etc/network -p wa -k system-locale"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-w /etc/networks -p wa -k system-locale", "-w /etc/network -p wa -k system-locale"], "active_rules": ["-w /etc/networks -p wa -k system-locale", "-w /etc/network -p wa -k system-locale"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.8: ")]) == 0
 }
 
@@ -511,19 +508,46 @@ test_netplan_directory_absent_passes if {
 }
 
 test_netplan_directory_present_without_rule_flagged if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"netplan": {"dir_exists": true}, "auditd": {"active_rules": ["-w /etc/hosts -p wa"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"netplan": {"dir_exists": true}, "auditd": {"rules": ["-w /etc/hosts -p wa"], "active_rules": ["-w /etc/hosts -p wa"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.9: not met")]) > 0
 }
 
 # Command-use rules carry the auid filters; the running configuration prints `-S all`.
 test_chcon_rule_as_printed_by_auditctl_passes if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: ")]) == 0
 }
 
 test_chcon_rule_without_auid_filters_flagged if {
-	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F key=perm_chng"]}}
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F key=perm_chng"], "active_rules": ["-a always,exit -F path=/usr/bin/chcon -F perm=x -F key=perm_chng"]}}
 	count([v | some v in vs; startswith(v, "6.2.3.24: not met")]) > 0
+}
+
+# 6.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules).
+test_mount_rules_running_only_flagged if {
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": [], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_mount_rules_on_disk_only_flagged if {
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.19: not met")]) > 0
+}
+
+test_mount_rules_on_disk_not_collected_is_missing if {
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"]}}
+	"6.2.3.19: evidence missing — auditd.rules/active_rules not collected" in vs
+}
+
+# 6.2.3.28: both architectures on disk, the arch=b64 module rule in the running rules.
+test_module_rules_b64_running_both_on_disk_passes if {
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -F arch=b32 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: ")]) == 0
+}
+
+test_module_rules_b64_only_on_disk_flagged if {
+	vs := data.cis_ubuntu_24_04.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"], "active_rules": ["-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -F auid>=1000 -F auid!=unset -k kernel_modules", "-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=kernel_modules"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.28: not met")]) > 0
 }
 ''',
     "apparmor": r'''

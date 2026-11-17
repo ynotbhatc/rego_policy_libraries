@@ -75,12 +75,15 @@ Two lists carry one more entry than on 26.04: `aide.audit_tool_options` and `aud
 `autrace`. 6.2.4.8 to 6.2.4.10 require an `auditd.tools` entry for each of the six tools (matched on the file
 name), so a list without one is missing evidence, not a pass.
 `ssh.sshd_config_raw` must be the output of `sshd -T` for 5.1.24, which reads every `listenaddress` line.
+The audit-rule checks (6.2.3) need both `auditd.rules` (the lines of /etc/audit/rules.d/*.rules) and
+`auditd.active_rules` (`auditctl -l`), collected separately: each rule is required in both.
 
 ## Where 24.04 differs from 26.04
 
 - 1.3.1.3 reads the counters the 24.04 audit names: profiles loaded, in enforce mode and in complain mode,
   and unconfined processes.
-- Audit syscall rules (6.2.3.2, .4, .5, .17, .18, .19, .22, .28) are required for `arch=b64` and `arch=b32`.
+- Audit syscall rules (6.2.3.2, .4, .5, .17, .18, .19, .22, .28) are required for `arch=b64` and `arch=b32`
+  (6.2.3.28: both in the on-disk rules, the `arch=b64` module rule in the running rules, as the audit lists them).
 - Command-use rules (6.2.3.24 to 6.2.3.27 and the `kmod` rule of 6.2.3.28) need `perm=x` with the
   `auid>=1000` and `auid!=unset` filters.
 - 5.1.23 (post-quantum key exchange) is Automated: `sntrup761x25519-sha512` offered, plus
