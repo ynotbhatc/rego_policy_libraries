@@ -260,3 +260,11 @@ public Prowler mapping of v3.1.0 and needs no generator.
   drops the node and network-plugin sections. Cluster checks read the `az aks show` object (`aks.cluster`); node checks
   reuse the Kubernetes module's kubelet and `files.<group>` contract; `input.cis_profile.level` selects Level 1 or 2.
   Aborts on any id, count, status, profile or title-keyword mismatch. Run `opa fmt -w` afterwards.
+- `gen_esxi.py <8|9> <workbook.json> <out dir>`: CIS VMware ESXi 8.0 Benchmark v1.4.0 (`benchmarks/cis/vmware/esxi`, key
+  `cis_vmware_esxi`, replacing the hand-written `cis_esxi_8` module) and CIS VMware ESXi 9.0 Benchmark v1.0.0
+  (`benchmarks/cis/vmware/esxi_9`, key `cis_vmware_esxi_9`), 134 recommendations each (38 Automated, 96 Manual; 116
+  Level 1, 18 Level 2), from the workbook JSON made by `dump_workbook.py`. The two workbooks carry the same ids, status,
+  profiles and audit procedures, so one logic table serves both and only the key, package and label differ. Checks read
+  the advanced-setting, service, lockdown, firewall, vSwitch, sshd and per-VM facts the audit procedures query (contract
+  in the module header); 94 are decided from facts and 40 judgement items are attestation booleans. Aborts on any
+  count, id, status, profile or title-keyword mismatch.
