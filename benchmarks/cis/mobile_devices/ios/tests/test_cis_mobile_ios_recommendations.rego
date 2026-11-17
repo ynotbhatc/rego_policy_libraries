@@ -24,9 +24,9 @@ green_end_user := {
 			"allowDiagnosticSubmission": false,
 			"forceWatchWristDetection": true,
 			"allowLockScreenControlCenter": false,
-			"allowLockScreenNotificationView": false,
+			"allowLockScreenNotificationsView": false,
 			"safariForceFraudWarning": true,
-			"safariAcceptCookies": 2,
+			"safariAcceptCookies": 1,
 			"allowExternalIntelligenceIntegrations": false,
 			"allowExternalIntelligenceIntegrationsSignIn": false,
 			"allowNotesTranscription": false,
@@ -115,9 +115,9 @@ green_institutional := {
 			"allowDiagnosticSubmission": false,
 			"forceWatchWristDetection": true,
 			"allowLockScreenControlCenter": false,
-			"allowLockScreenNotificationView": false,
+			"allowLockScreenNotificationsView": false,
 			"safariForceFraudWarning": true,
-			"safariAcceptCookies": 2,
+			"safariAcceptCookies": 1,
 			"allowExternalIntelligenceIntegrations": false,
 			"allowExternalIntelligenceIntegrationsSignIn": false,
 			"allowNotesTranscription": false,
@@ -559,15 +559,15 @@ test_2_2_1_14_pass if {
 }
 
 test_2_2_1_14_fail if {
-	inp := json.patch(green_end_user, [{"op": "replace", "path": "/ios_profile/restrictions/allowLockScreenNotificationView", "value": true}])
+	inp := json.patch(green_end_user, [{"op": "replace", "path": "/ios_profile/restrictions/allowLockScreenNotificationsView", "value": true}])
 	vs := b.violations with input as inp
 	"2.2.1.14: Notification Center must be hidden on the lock screen" in vs
 }
 
 test_2_2_1_14_evidence_missing if {
-	inp := json.patch(green_end_user, [{"op": "remove", "path": "/ios_profile/restrictions/allowLockScreenNotificationView"}])
+	inp := json.patch(green_end_user, [{"op": "remove", "path": "/ios_profile/restrictions/allowLockScreenNotificationsView"}])
 	vs := b.violations with input as inp
-	"2.2.1.14: evidence missing — ios_profile.restrictions.allowLockScreenNotificationView not collected" in vs
+	"2.2.1.14: evidence missing — ios_profile.restrictions.allowLockScreenNotificationsView not collected" in vs
 	not "2.2.1.14: Notification Center must be hidden on the lock screen" in vs
 }
 
@@ -597,7 +597,7 @@ test_2_2_2_2_pass if {
 }
 
 test_2_2_2_2_fail if {
-	inp := json.patch(green_end_user, [{"op": "replace", "path": "/ios_profile/restrictions/safariAcceptCookies", "value": 0}])
+	inp := json.patch(green_end_user, [{"op": "replace", "path": "/ios_profile/restrictions/safariAcceptCookies", "value": 2}])
 	vs := b.violations with input as inp
 	"2.2.2.2: Safari must accept cookies only from visited or the current site" in vs
 }
@@ -1543,15 +1543,15 @@ test_3_2_1_31_pass if {
 }
 
 test_3_2_1_31_fail if {
-	inp := json.patch(green_institutional, [{"op": "replace", "path": "/ios_profile/restrictions/allowLockScreenNotificationView", "value": true}])
+	inp := json.patch(green_institutional, [{"op": "replace", "path": "/ios_profile/restrictions/allowLockScreenNotificationsView", "value": true}])
 	vs := b.violations with input as inp
 	"3.2.1.31: Notification Center must be hidden on the lock screen" in vs
 }
 
 test_3_2_1_31_evidence_missing if {
-	inp := json.patch(green_institutional, [{"op": "remove", "path": "/ios_profile/restrictions/allowLockScreenNotificationView"}])
+	inp := json.patch(green_institutional, [{"op": "remove", "path": "/ios_profile/restrictions/allowLockScreenNotificationsView"}])
 	vs := b.violations with input as inp
-	"3.2.1.31: evidence missing — ios_profile.restrictions.allowLockScreenNotificationView not collected" in vs
+	"3.2.1.31: evidence missing — ios_profile.restrictions.allowLockScreenNotificationsView not collected" in vs
 	not "3.2.1.31: Notification Center must be hidden on the lock screen" in vs
 }
 
@@ -1581,7 +1581,7 @@ test_3_2_2_2_pass if {
 }
 
 test_3_2_2_2_fail if {
-	inp := json.patch(green_institutional, [{"op": "replace", "path": "/ios_profile/restrictions/safariAcceptCookies", "value": 0}])
+	inp := json.patch(green_institutional, [{"op": "replace", "path": "/ios_profile/restrictions/safariAcceptCookies", "value": 2}])
 	vs := b.violations with input as inp
 	"3.2.2.2: Safari must accept cookies only from visited or the current site" in vs
 }

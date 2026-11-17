@@ -110,11 +110,13 @@ def mail(k, want):
             "fail": [{"op": "add", "path": ptr("mail_accounts", "0", k), "value": not want}], "miss": rm(ptr("mail_accounts")), "g": []}
 
 
+# Apple's restrictions payload: safariAcceptCookies 0 = block all, 1 = current website only, 1.5 = websites
+# visited, 2 = the unrestricted default. The recommendation accepts the two middle settings only.
 def cookies():
     p = R("safariAcceptCookies")
-    return {"kind": "fact", "ev": [f"is_number({p})"], "label": "ios_profile.restrictions.safariAcceptCookies", "ok": [[f"{p} in {{1, 2}}"]],
-            "fail": rep(ptr("restrictions", "safariAcceptCookies"), 0), "miss": rm(ptr("restrictions", "safariAcceptCookies")),
-            "g": [("restrictions", "safariAcceptCookies", 2)]}
+    return {"kind": "fact", "ev": [f"is_number({p})"], "label": "ios_profile.restrictions.safariAcceptCookies", "ok": [[f"{p} in {{1, 1.5}}"]],
+            "fail": rep(ptr("restrictions", "safariAcceptCookies"), 2), "miss": rm(ptr("restrictions", "safariAcceptCookies")),
+            "g": [("restrictions", "safariAcceptCookies", 1)]}
 
 
 def removal(want):
@@ -148,7 +150,7 @@ S = {
     "diag": ("diagnostic", "diagnostic and usage data must not be sent to Apple", rflag("allowDiagnosticSubmission", False)),
     "wrist": ("wrist detection", "Apple Watch wrist detection must be forced", rflag("forceWatchWristDetection", True)),
     "lock_cc": ("control center", "Control Center must be hidden on the lock screen", rflag("allowLockScreenControlCenter", False)),
-    "lock_nc": ("notification center", "Notification Center must be hidden on the lock screen", rflag("allowLockScreenNotificationView", False)),
+    "lock_nc": ("notification center", "Notification Center must be hidden on the lock screen", rflag("allowLockScreenNotificationsView", False)),
     "fraud": ("fraud warning", "Safari fraud warning must be forced", rflag("safariForceFraudWarning", True)),
     "cookies": ("cookies", "Safari must accept cookies only from visited or the current site", cookies()),
     "simple": ("simple value", "simple passcodes must be blocked", flag("passcode", "allowSimple", False)),

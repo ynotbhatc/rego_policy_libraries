@@ -441,16 +441,16 @@ _v_2 contains "2.2.1.13: Control Center must be hidden on the lock screen" if {
 default r_2_2_1_14 := false
 
 r_2_2_1_14 if {
-	input.ios_profile.restrictions.allowLockScreenNotificationView == false
+	input.ios_profile.restrictions.allowLockScreenNotificationsView == false
 }
 
 default e_2_2_1_14 := false
 
 e_2_2_1_14 if {
-	is_boolean(input.ios_profile.restrictions.allowLockScreenNotificationView)
+	is_boolean(input.ios_profile.restrictions.allowLockScreenNotificationsView)
 }
 
-_v_2 contains "2.2.1.14: evidence missing — ios_profile.restrictions.allowLockScreenNotificationView not collected" if {
+_v_2 contains "2.2.1.14: evidence missing — ios_profile.restrictions.allowLockScreenNotificationsView not collected" if {
 	_applies("2.2.1.14")
 	not e_2_2_1_14
 }
@@ -489,7 +489,7 @@ _v_2 contains "2.2.2.1: Safari fraud warning must be forced" if {
 default r_2_2_2_2 := false
 
 r_2_2_2_2 if {
-	input.ios_profile.restrictions.safariAcceptCookies in {1, 2}
+	input.ios_profile.restrictions.safariAcceptCookies in {1, 1.5}
 }
 
 default e_2_2_2_2 := false
@@ -1647,16 +1647,16 @@ _v_3 contains "3.2.1.30: Control Center must be hidden on the lock screen" if {
 default r_3_2_1_31 := false
 
 r_3_2_1_31 if {
-	input.ios_profile.restrictions.allowLockScreenNotificationView == false
+	input.ios_profile.restrictions.allowLockScreenNotificationsView == false
 }
 
 default e_3_2_1_31 := false
 
 e_3_2_1_31 if {
-	is_boolean(input.ios_profile.restrictions.allowLockScreenNotificationView)
+	is_boolean(input.ios_profile.restrictions.allowLockScreenNotificationsView)
 }
 
-_v_3 contains "3.2.1.31: evidence missing — ios_profile.restrictions.allowLockScreenNotificationView not collected" if {
+_v_3 contains "3.2.1.31: evidence missing — ios_profile.restrictions.allowLockScreenNotificationsView not collected" if {
 	_applies("3.2.1.31")
 	not e_3_2_1_31
 }
@@ -1695,7 +1695,7 @@ _v_3 contains "3.2.2.1: Safari fraud warning must be forced" if {
 default r_3_2_2_2 := false
 
 r_3_2_2_2 if {
-	input.ios_profile.restrictions.safariAcceptCookies in {1, 2}
+	input.ios_profile.restrictions.safariAcceptCookies in {1, 1.5}
 }
 
 default e_3_2_2_2 := false
