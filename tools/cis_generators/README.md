@@ -268,3 +268,10 @@ public Prowler mapping of v3.1.0 and needs no generator.
   the advanced-setting, service, lockdown, firewall, vSwitch, sshd and per-VM facts the audit procedures query (contract
   in the module header); 94 are decided from facts and 40 judgement items are attestation booleans. Aborts on any
   count, id, status, profile or title-keyword mismatch.
+- `gen_cisco_ios_xe_17.py <workbook.json> <out dir>`: CIS Cisco IOS XE 17.x Benchmark v2.2.2, all 84
+  recommendations (51 Automated, 33 Manual; 75 Level 1, 9 Level 2), from `dump_workbook.py` output of the CIS
+  workbook. Same single-roll-up layout, keyword-per-id abort checks, evidence-missing messages and generated
+  tests as `gen_palo_alto.py`. The audits are `show running-config` matches, so the fact contract is the parsed
+  running configuration (`input.ios_xe_config.{lines,sections,banners}`); every pattern is anchored on a command
+  word so comments, `no` forms and longer commands never match. 20 judgement items are attestations. Writes
+  `benchmarks/cis/network_devices/cisco_ios_xe_17/` (the existing generic-IOS Cisco modules are untouched).
