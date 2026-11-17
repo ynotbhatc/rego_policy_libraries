@@ -1505,11 +1505,19 @@ non_tls_omfwd_action if {
 put("6.1.2.12", "TLS CA certificate", attest("rsyslog_tls_ca_configured"))
 put("6.1.2.13", "TLS client certificate", attest("rsyslog_tls_client_cert_configured"))
 put("6.1.2.14", "logrotate", attest("logrotate_reviewed"))
+# 6.1.3.1: the benchmark's log file classes (EXTRA["logging"]). A file outside the named classes that the general
+# expectations do not accept is judged as a service-account log, which needs two per-entry facts (new):
+# owner_has_login_shell (the owner's shell is listed in /etc/shells) and owner_primary_group (the owner's group);
+# without them that entry is evidence missing, never a pass.
 LF = ["log_file_permissions", "analysis"]
 put("6.1.3.1", "access to all logfiles", custom(
-    [f'is_array({ref(LF)})', f'count({ref(LF)}) > 0'], [[f'every f in {ref(LF)} {{ log_file_ok(f) }}']], dotted(LF),
+    [f'is_array({ref(LF)})', f'count({ref(LF)}) > 0', f'every f in {ref(LF)} {{ log_owner_facts_ok(f) }}'],
+    [[f'every f in {ref(LF)} {{ log_file_ok(f) }}']], dotted(LF),
     nest(LF, [{"file": "/var/log/messages", "actual_mode": "0600", "actual_owner": "root", "actual_group": "root"},
-              {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"}]),
+              {"file": "/var/log/wtmp", "actual_mode": "0664", "actual_owner": "root", "actual_group": "utmp"},
+              {"file": "/var/log/dnf.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"},
+              {"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony",
+               "actual_group": "chrony", "owner_has_login_shell": False, "owner_primary_group": "chrony"}]),
     nest(LF, [{"file": "/var/log/messages", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}]),
     reads=[LF]))
 
@@ -1545,69 +1553,95 @@ put("6.2.2.4", "low on space", custom(
       'lower(conf_last(input.auditd.config, "admin_space_left_action")) in {"single", "halt"}']],
     dotted(AC), nest(AC, "space_left_action = email\nadmin_space_left_action = single"),
     nest(AC, "space_left_action = ignore\nadmin_space_left_action = single"), reads=[AC]))
-AR = ["auditd", "active_rules"]
+# 6.2.3 audit rules. Every RHEL 9 audit procedure of 6.2.3.1-6.2.3.33 reads the on-disk rules (/etc/audit/rules.d/
+# *.rules: auditd.rules) AND the running rules (auditctl -l: auditd.active_rules); a rule is required in both.
+# Syscall rules name their architectures explicitly: the audit lists arch=b64 and arch=b32 for every syscall id.
+AR = ["auditd", "active_rules"]   # running rules (auditctl -l)
+ARD = ["auditd", "rules"]         # on-disk rules (/etc/audit/rules.d/*.rules)
+SRC = '["rules", "active_rules"]'
+B = ("b32", "b64")
 W = "-a always,exit -S all -F path={p} -F perm={perm} -F key=k"
-S64 = "-a always,exit -F arch=b64 -S {s} {extra}-F key=k"
+S64 = "-a always,exit -F arch={a} -S {s} {extra}-F key=k"
+XW = "-a always,exit -S all -F path={p} -F perm=x -F auid>=1000 -F auid!=unset -F key=k"
 AUID = "-F auid>=1000 -F auid!=unset "
+AUDIT_EV = [f'is_array({ref(ARD)})', f'count({ref(ARD)}) > 0', f'is_array({ref(AR)})', f'count({ref(AR)}) > 0']
+AUDIT_FIELD = "auditd.rules/active_rules"
+AUDIT_FX = {"auid": AUID, "euid": "-C euid!=uid -F auid!=unset ", "eacces": "-F exit=-EACCES " + AUID,
+            "eperm": "-F exit=-EPERM " + AUID}
 
 
-def audit(watches=(), syscalls=()):
-    """watches: [(path, perm)]; syscalls: [(names, [field kinds])]. Rules are matched on tokens."""
+def audit(watches=(), syscalls=(), execs=()):
+    """watches: [(path, perm)]; syscalls: [(names, [field kinds], arches)] (arches explicit, e.g. B or ("b64",));
+    execs: [path] (an always,exit rule with perm x and auid>=1000 / auid!=unset). Every rule is required in the
+    on-disk AND the running rules. Good rules are listed watches, executables, then syscall rules (b64 before b32),
+    so the failing case (last rule dropped) is a missing b32 rule wherever two architectures are required."""
     conds, good = [], []
     for p, perm in watches:
-        conds.append(f'audit_watch({json.dumps(p)}, {json.dumps(perm)})')
+        conds.append(f'every src in {SRC} {{ audit_src_watch(src, {json.dumps(p)}, {json.dumps(perm)}) }}')
         good.append(W.format(p=p, perm=perm))
-    for names, fields in syscalls:
-        conds.append(f'every s in {json.dumps(names)} {{ audit_syscall(s, {json.dumps(fields)}) }}')
-        extra = "".join({"auid": AUID, "euid": "-C euid!=uid -F auid!=unset ", "eacces": "-F exit=-EACCES " + AUID,
-                         "eperm": "-F exit=-EPERM " + AUID}[f] for f in fields)
-        good.append(S64.format(s=",".join(names), extra=extra))
-    return custom([f'is_array({ref(AR)})', f'count({ref(AR)}) > 0'], [conds], dotted(AR), nest(AR, good),
-                  nest(AR, good[:-1] or ["-e 2"]), reads=[AR])
+    for p in execs:
+        conds.append(f'every src in {SRC} {{ audit_src_exec(src, {json.dumps(p)}) }}')
+        good.append(XW.format(p=p))
+    for names, fields, arches in syscalls:
+        if not arches or set(arches) - set(B):
+            raise SystemExit(f"audit(): syscalls {names} need explicit architectures")
+        conds.append(f'every src in {SRC} {{ every s in {json.dumps(names)} {{ every a in {json.dumps(sorted(arches))} '
+                     f'{{ audit_src_syscall(src, s, {json.dumps(fields)}, a) }} }} }}')
+        extra = "".join(AUDIT_FX[f] for f in fields)
+        good += [S64.format(a=a, s=",".join(names), extra=extra) for a in sorted(arches, reverse=True)]
+    bad = good[:-1] or ["-e 2"]
+    return custom(AUDIT_EV, [conds], AUDIT_FIELD, {"auditd": {"rules": good, "active_rules": good}},
+                  {"auditd": {"rules": bad, "active_rules": bad}}, {"auditd": {"active_rules": good}}, reads=[ARD, AR])
 
 
 SU_ = ["sudo", "sudoers_content"]
 put("6.2.3.1", "/etc/sudoers file", audit([("/etc/sudoers", "wa"), ("/etc/sudoers.d", "wa")]))
-put("6.2.3.2", "actions as another user", audit(syscalls=[(["execve", "execveat"], ["euid"])]))
+put("6.2.3.2", "actions as another user", audit(syscalls=[(["execve", "execveat"], ["euid"], B)]))
+_SUW = [W.format(p="/var/log/sudo.log", perm="wa")]
+_SUO = [W.format(p="/var/log/other.log", perm="wa")]
 put("6.2.3.3", "modify the sudo log file", custom(
     # sudoers collected with no `Defaults logfile` is a finding (nothing to watch), not missing evidence
-    [f'is_array({ref(AR)})', f'count({ref(AR)}) > 0', f'text_collected({ref(SU_)})'],
-    [['count(sudo_logfiles) > 0', 'every f in sudo_logfiles { audit_watch(f, "wa") }']],
-    "auditd.active_rules/sudo.sudoers_content",
-    merge(nest(AR, [W.format(p="/var/log/sudo.log", perm="wa")]), nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
-    merge(nest(AR, [W.format(p="/var/log/other.log", perm="wa")]), nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
-    nest(AR, [W.format(p="/var/log/sudo.log", perm="wa")]), reads=[AR, SU_]))
-put("6.2.3.4", "date and time", audit([("/etc/localtime", "wa")], [(["adjtimex", "settimeofday", "clock_settime"], [])]))
-put("6.2.3.5", "sethostname and setdomainname", audit(syscalls=[(["sethostname", "setdomainname"], [])]))
+    AUDIT_EV + [f'text_collected({ref(SU_)})'],
+    [['count(sudo_logfiles) > 0', f'every f in sudo_logfiles {{ every src in {SRC} {{ audit_src_watch(src, f, "wa") }} }}']],
+    "auditd.rules/active_rules/sudo.sudoers_content",
+    merge({"auditd": {"rules": _SUW, "active_rules": _SUW}}, nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
+    merge({"auditd": {"rules": _SUO, "active_rules": _SUO}}, nest(SU_, 'Defaults logfile="/var/log/sudo.log"')),
+    merge(nest(AR, _SUW), nest(SU_, 'Defaults logfile="/var/log/sudo.log"')), reads=[ARD, AR, SU_]))
+put("6.2.3.4", "date and time", audit([("/etc/localtime", "wa")], [(["adjtimex", "settimeofday", "clock_settime"], [], B)]))
+put("6.2.3.5", "sethostname and setdomainname", audit(syscalls=[(["sethostname", "setdomainname"], [], B)]))
 put("6.2.3.6", "/etc/issue and /etc/issue.net", audit([("/etc/issue", "wa"), ("/etc/issue.net", "wa")]))
 put("6.2.3.7", "/etc/hosts and /etc/hostname", audit([("/etc/hosts", "wa"), ("/etc/hostname", "wa")]))
 put("6.2.3.8", "/etc/sysconfig/network", audit([("/etc/sysconfig/network", "wa"),
                                                 ("/etc/NetworkManager/system-connections", "wa")]))
 put("6.2.3.9", "/etc/NetworkManager directory", audit([("/etc/NetworkManager", "wa")]))
+# 6.2.3.10: both scripts accept, per setuid/setgid program, only an always,exit rule on its path with perm=x,
+# auid>=UID_MIN and auid!=unset (a `-w` watch does not qualify); UID_MIN is taken as 1000, as in the other ids
 PC = ["auditd", "privileged_commands"]   # new: setuid/setgid binaries on local filesystems
+_PCG = [XW.format(p="/usr/bin/su")]
 put("6.2.3.10", "privileged commands", custom(
-    [f'is_array({ref(AR)})', f'count({ref(AR)}) > 0', f'is_array({ref(PC)})', f'count({ref(PC)}) > 0'],
-    [[f'every c in {ref(PC)} {{ audit_watch(c, "x") }}']], "auditd.active_rules/privileged_commands",
-    {"auditd": {"active_rules": [W.format(p="/usr/bin/su", perm="x")], "privileged_commands": ["/usr/bin/su"]}},
-    {"auditd": {"active_rules": [W.format(p="/usr/bin/su", perm="x")], "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}},
-    {"auditd": {"active_rules": [W.format(p="/usr/bin/su", perm="x")]}}, reads=[AR, PC]))
-put("6.2.3.11", "unsuccessful file access", audit(syscalls=[(["creat", "open", "openat", "truncate", "ftruncate"], ["eacces"]),
-                                                            (["creat", "open", "openat", "truncate", "ftruncate"], ["eperm"])]))
+    AUDIT_EV + [f'is_array({ref(PC)})', f'count({ref(PC)}) > 0'],
+    [[f'every c in {ref(PC)} {{ every src in {SRC} {{ audit_src_exec(src, c) }} }}']],
+    "auditd.rules/active_rules/privileged_commands",
+    {"auditd": {"rules": _PCG, "active_rules": _PCG, "privileged_commands": ["/usr/bin/su"]}},
+    {"auditd": {"rules": _PCG, "active_rules": _PCG, "privileged_commands": ["/usr/bin/su", "/usr/bin/passwd"]}},
+    {"auditd": {"rules": _PCG, "active_rules": _PCG}}, reads=[ARD, AR, PC]))
+put("6.2.3.11", "unsuccessful file access", audit(syscalls=[(["creat", "open", "openat", "truncate", "ftruncate"], ["eacces"], B),
+                                                            (["creat", "open", "openat", "truncate", "ftruncate"], ["eperm"], B)]))
 put("6.2.3.12", "modify /etc/group", audit([("/etc/group", "wa")]))
 put("6.2.3.13", "modify /etc/passwd", audit([("/etc/passwd", "wa")]))
 put("6.2.3.14", "/etc/shadow and /etc/gshadow", audit([("/etc/shadow", "wa"), ("/etc/gshadow", "wa")]))
 put("6.2.3.15", "modify /etc/security/opasswd", audit([("/etc/security/opasswd", "wa")]))
 put("6.2.3.16", "/etc/nsswitch.conf", audit([("/etc/nsswitch.conf", "wa")]))
 put("6.2.3.17", "/etc/pam.conf and /etc/pam.d/", audit([("/etc/pam.conf", "wa"), ("/etc/pam.d", "wa")]))
-put("6.2.3.18", "chmod,fchmod,fchmodat", audit(syscalls=[(["chmod", "fchmod", "fchmodat"], ["auid"])]))
-put("6.2.3.19", "chown,fchown,lchown,fchownat", audit(syscalls=[(["chown", "fchown", "lchown", "fchownat"], ["auid"])]))
+put("6.2.3.18", "chmod,fchmod,fchmodat", audit(syscalls=[(["chmod", "fchmod", "fchmodat"], ["auid"], B)]))
+put("6.2.3.19", "chown,fchown,lchown,fchownat", audit(syscalls=[(["chown", "fchown", "lchown", "fchownat"], ["auid"], B)]))
 put("6.2.3.20", "setxattr", audit(syscalls=[(["setxattr", "lsetxattr", "fsetxattr", "removexattr", "lremovexattr",
-                                              "fremovexattr"], ["auid"])]))
-put("6.2.3.21", "file system mounts", audit(syscalls=[(["mount"], ["auid"])]))
+                                              "fremovexattr"], ["auid"], B)]))
+put("6.2.3.21", "file system mounts", audit(syscalls=[(["mount"], ["auid"], B)]))
 put("6.2.3.22", "session initiation", audit([("/var/run/utmp", "wa"), ("/var/log/wtmp", "wa"), ("/var/log/btmp", "wa")]))
 put("6.2.3.23", "login and logout", audit([("/var/log/lastlog", "wa"), ("/var/run/faillock", "wa")]))
-put("6.2.3.24", "unlink file deletion", audit(syscalls=[(["unlink", "unlinkat"], ["auid"])]))
-put("6.2.3.25", "rename file deletion", audit(syscalls=[(["rename", "renameat", "renameat2"], ["auid"])]))
+put("6.2.3.24", "unlink file deletion", audit(syscalls=[(["unlink", "unlinkat"], ["auid"], B)]))
+put("6.2.3.25", "rename file deletion", audit(syscalls=[(["rename", "renameat", "renameat2"], ["auid"], B)]))
 put("6.2.3.26", "Mandatory Access Controls", audit([("/etc/selinux", "wa"), ("/usr/share/selinux", "wa"),
                                                     ("/var/lib/selinux", "wa")]))
 put("6.2.3.27", "chcon", audit([("/usr/bin/chcon", "x")]))
@@ -1615,9 +1649,8 @@ put("6.2.3.28", "setfacl", audit([("/usr/bin/setfacl", "x")]))
 put("6.2.3.29", "chacl", audit([("/usr/bin/chacl", "x")]))
 put("6.2.3.30", "usermod", audit([("/usr/sbin/usermod", "x")]))
 put("6.2.3.31", "kernel module loading", audit([("/usr/bin/kmod", "x")]))
-put("6.2.3.32", "init_module", audit(syscalls=[(["init_module", "finit_module"], ["auid"])]))
-put("6.2.3.33", "delete_module", audit(syscalls=[(["delete_module"], ["auid"])]))
-ARD = ["auditd", "rules"]   # on-disk rules (/etc/audit/rules.d)
+put("6.2.3.32", "init_module", audit(syscalls=[(["init_module", "finit_module"], ["auid"], B)]))
+put("6.2.3.33", "delete_module", audit(syscalls=[(["delete_module"], ["auid"], B)]))
 put("6.2.3.34", "regardless of errors", custom(
     [f'is_array({ref(ARD)})', f'count({ref(ARD)}) > 0'], [['some l in input.auditd.rules', 'regex.match(`^\\s*-c\\s*$`, l)']],
     dotted(ARD), nest(ARD, ["-D", "-c", "-e 2"]), nest(ARD, ["-D", "-e 2"]), reads=[ARD]))
@@ -1641,11 +1674,14 @@ put("6.2.4.2", "log files mode", custom([f'{LP}mode != null'], [[f'mode_within({
 put("6.2.4.3", "log files owner", custom([f'{LP}pw_name != null'], [[f'{LP}pw_name == "root"']], "auditd.log_permissions.pw_name",
                                          {"auditd": {"log_permissions": {"pw_name": "root"}}},
                                          {"auditd": {"log_permissions": {"pw_name": "adm"}}}, reads=[["auditd", "log_permissions", "pw_name"]]))
+# 6.2.4.4: log files group root or adm AND log_group in auditd.conf set to root or adm (the audit expects the
+# grep to return one of them, so an unset log_group fails)
 put("6.2.4.4", "log files group owner", custom(
     [f'{LP}gr_name != null', f'text_collected({ref(AC)})'],
-    [[f'{LP}gr_name in {{"root", "audit"}}', 'audit_log_group_ok']], "auditd.log_permissions.gr_name/auditd.config",
-    {"auditd": {"log_permissions": {"gr_name": "root"}, "config": "log_group = root"}},
-    {"auditd": {"log_permissions": {"gr_name": "root"}, "config": "log_group = adm"}},
+    [[f'{LP}gr_name in {{"root", "adm"}}', 'lower(conf_last(input.auditd.config, "log_group")) in {"root", "adm"}']],
+    "auditd.log_permissions.gr_name/auditd.config",
+    {"auditd": {"log_permissions": {"gr_name": "adm"}, "config": "log_group = adm"}},
+    {"auditd": {"log_permissions": {"gr_name": "root"}, "config": "log_group = audit"}},
     {"auditd": {"log_permissions": {"gr_name": "root"}}}, reads=[["auditd", "log_permissions", "gr_name"], AC]))
 for rid, kw, path, cond, key, badv in [
         ("6.2.4.5", "configuration files mode", ["auditd", "config_permissions"], 'mode_within(f.stat.mode, "0640")', "mode", "0644"),
@@ -2016,26 +2052,63 @@ umask_ok(u) if {
 
 ''',
     "logging": r'''
-# 6.1.3.1: per-file expectations by file name, from the benchmark's audit script (max mode, owners, groups)
-log_rule(b) := ["0664", {"root"}, {"root", "utmp"}] if {
-	regex.match(`^((lastlog|wtmp|btmp)([.-].*)?|README)$`, b)
-} else := ["0644", {"root", "syslog"}, {"root", "adm"}] if {
-	regex.match(`^(cloud-init\.log|localmessages|waagent\.log)`, b)
-} else := ["0640", {"root", "syslog"}, {"root", "adm"}] if {
-	regex.match(`^(secure([.-].*)?|auth\.log|syslog|messages)$`, b)
-} else := ["0660", {"root", "SSSD"}, {"root", "SSSD"}] if {
-	b in {"SSSD", "sssd"}
-} else := ["0660", {"root"}, {"root", "gdm", "gdm3"}] if {
-	b in {"gdm", "gdm3"}
-} else := ["0640", {"root"}, {"root", "systemd-journal"}] if {
-	regex.match(`\.journal~?$`, b)
-} else := ["0640", {"root", "syslog"}, {"root", "adm"}]
+# 6.1.3.1: the benchmark's log file classes. Package-manager logs are matched on the full path, the others on the
+# file name; a file in none of them is held to the general expectations or, when its owner is a service account
+# (login shell not in /etc/shells), to that account's own group.
+log_base(p) := regex.replace(p, `^.*/`, "")
 
+log_class(p) := "package" if {
+	regex.match(`^/var/log/(apt/[^/]+|dnf\.[^/]*|dnf5\.log|hawkey\.log[^/]*|zypp/[^/]+|zypper\.log[^/]*|yum\.log[^/]*)$`, p)
+} else := "login" if {
+	regex.match(`^(wtmp|btmp|lastlog)`, log_base(p))
+} else := "journal" if {
+	regex.match(`\.journal~?$`, log_base(p))
+} else := "cloud" if {
+	regex.match(`^(cloud-init\.log|localmessages|waagent\.log)`, log_base(p))
+} else := "general" if {
+	regex.match(`^(messages|syslog|secure.*|auth\.log)$`, log_base(p))
+} else := "other"
+
+# class -> [max mode, owners, groups]
+log_spec := {
+	"package": ["0644", {"root"}, {"root", "adm"}],
+	"login": ["0664", {"root"}, {"root", "utmp"}],
+	"journal": ["0640", {"root"}, {"root", "systemd-journal"}],
+	"cloud": ["0644", {"root", "syslog"}, {"root", "adm"}],
+	"general": ["0640", {"root", "syslog"}, {"root", "adm"}],
+	"other": ["0640", {"root", "syslog"}, {"root", "adm"}],
+}
+
+log_spec_ok(f) if {
+	s := log_spec[log_class(f.file)]
+	mode_within(f.actual_mode, s[0])
+	f.actual_owner in s[1]
+	f.actual_group in s[2]
+}
+
+log_file_ok(f) if log_spec_ok(f)
+
+# a log of a service account (not root): owned by it, group its own group, root or adm, 0640 or stricter
 log_file_ok(f) if {
-	r := log_rule(regex.replace(f.file, `^.*/`, ""))
-	mode_within(f.actual_mode, r[0])
-	f.actual_owner in r[1]
-	f.actual_group in r[2]
+	log_class(f.file) == "other"
+	mode_within(f.actual_mode, "0640")
+	f.actual_owner != "root"
+	f.owner_has_login_shell == false
+	f.actual_group in {f.owner_primary_group, "root", "adm"}
+}
+
+# the owner facts are needed only for an unnamed file the general expectations do not accept
+log_owner_facts_ok(f) if log_class(f.file) != "other"
+
+log_owner_facts_ok(f) if log_spec_ok(f)
+
+log_owner_facts_ok(f) if f.actual_owner == "root"
+
+log_owner_facts_ok(f) if f.owner_has_login_shell == true
+
+log_owner_facts_ok(f) if {
+	f.owner_has_login_shell == false
+	is_string(f.owner_primary_group)
 }
 
 # rsyslog action(...) bodies of the collected configuration (comments dropped, lines joined)
@@ -2052,8 +2125,9 @@ tls_forward_ok(a) if {
 }
 ''',
     "auditd": r'''
-audit_rule_lines := [l |
-	some r in input.auditd.active_rules
+# 6.2.3: the rules of one source: "rules" (on disk, /etc/audit/rules.d/*.rules) or "active_rules" (auditctl -l)
+audit_src_lines(src) := [l |
+	some r in input.auditd[src]
 	l := trim_space(r)
 	l != ""
 	not startswith(l, "#")
@@ -2085,8 +2159,8 @@ audit_perm(l) := toks[i + 1] if {
 	t == "-p"
 }
 
-audit_watch(p, perm) if {
-	some l in audit_rule_lines
+audit_src_watch(src, p, perm) if {
+	some l in audit_src_lines(src)
 	audit_path_tok(l, p)
 	pv := audit_perm(l)
 	every i in numbers.range(0, count(perm) - 1) { contains(pv, substring(perm, i, 1)) }
@@ -2123,11 +2197,21 @@ audit_field(l, "eperm") if {
 	regex.match(audit_unset, l)
 }
 
-audit_syscall(s, fields) if {
-	some l in audit_rule_lines
+audit_src_syscall(src, s, fields, arch) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["arch=", arch]) in audit_toks(l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
+}
+
+# an always,exit rule on the executable p with perm x, auid>=1000 and auid!=unset
+audit_src_exec(src, p) if {
+	some l in audit_src_lines(src)
+	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["path=", p]) in audit_toks(l)
+	contains(audit_perm(l), "x")
+	audit_field(l, "auid")
 }
 
 # the last `-e` line of the on-disk rules decides the enabled flag
@@ -2157,10 +2241,6 @@ grub_cmdline_has(re) if {
 	regex.match(re, t)
 }
 
-# log_group unset: auditd's default root applies
-audit_log_group_ok if not conf_last(input.auditd.config, "log_group")
-
-audit_log_group_ok if lower(conf_last(input.auditd.config, "log_group")) in {"root", "audit"}
 ''',
 }
 
@@ -2394,6 +2474,117 @@ test_6_1_2_11_legacy_plaintext_forwarding_fails if {
 test_6_1_2_11_second_non_tls_omfwd_action_fails if {
 	vs := data.cis_rhel9.logging.violations with input as {"rsyslog": {"config_raw": "action(type=\"omfwd\" target=\"a.example.com\" port=\"514\" protocol=\"tcp\")\naction(type=\"omfwd\" target=\"loghost.example.com\" port=\"6514\" protocol=\"tcp\"\n  StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"}}
 	count([v | some v in vs; startswith(v, "6.1.2.11: ")]) > 0
+}
+
+# 6.1.3.1 class table: a service-account log (owner without a login shell) may carry that account's own group.
+test_6_1_3_1_service_account_log_own_group_passes if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) == 0
+}
+
+test_6_1_3_1_service_account_log_foreign_group_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "wheel", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_login_shell_owner_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/app.log", "actual_mode": "0640", "actual_owner": "alice", "actual_group": "alice", "owner_has_login_shell": true}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_service_account_without_owner_facts_is_missing if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/chrony/measurements.log", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony"}]}}
+	"6.1.3.1: evidence missing — log_file_permissions.analysis not collected" in vs
+}
+
+test_6_1_3_1_named_log_owned_by_service_account_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/messages", "actual_mode": "0640", "actual_owner": "chrony", "actual_group": "chrony", "owner_has_login_shell": false, "owner_primary_group": "chrony"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+
+test_6_1_3_1_package_manager_log_0644_passes if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/dnf.librepo.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: ")]) == 0
+}
+
+test_6_1_3_1_general_log_0644_fails if {
+	vs := data.cis_rhel9.logging.violations with input as {"log_file_permissions": {"analysis": [{"file": "/var/log/boot.log", "actual_mode": "0644", "actual_owner": "root", "actual_group": "root"}]}}
+	count([v | some v in vs; startswith(v, "6.1.3.1: not met")]) > 0
+}
+''',
+    'auditd': r'''
+# 6.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules), and a
+# syscall rule for arch=b64 AND arch=b32.
+test_6_2_3_21_both_sources_both_arches_passes if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: ")]) == 0
+}
+
+test_6_2_3_21_running_only_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: not met")]) > 0
+}
+
+test_6_2_3_21_on_disk_only_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-e 2"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: not met")]) > 0
+}
+
+test_6_2_3_21_b64_only_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=unset -k mounts"], "active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: not met")]) > 0
+}
+
+test_6_2_3_21_on_disk_not_collected_is_missing if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"active_rules": ["-a always,exit -F arch=b64 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts", "-a always,exit -F arch=b32 -S mount -F auid>=1000 -F auid!=-1 -F key=mounts"]}}
+	"6.2.3.21: evidence missing — auditd.rules/active_rules not collected" in vs
+}
+
+test_6_2_3_12_watch_running_only_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-e 2"], "active_rules": ["-w /etc/group -p wa -k identity"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.12: not met")]) > 0
+}
+
+test_6_2_3_12_legacy_watch_in_both_passes if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": ["-w /etc/group -p wa -k identity"], "active_rules": ["-w /etc/group -p wa -k identity"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.12: ")]) == 0
+}
+
+# 6.2.3.10: a `-w` watch is not the always,exit rule with perm=x and both auid filters the scripts look for.
+test_6_2_3_10_watch_form_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-w /usr/bin/su -p x -k privileged"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.10: not met")]) > 0
+}
+
+test_6_2_3_10_missing_auid_filter_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-a always,exit -F path=/usr/bin/su -F perm=x -F auid!=unset -k privileged"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid!=-1 -F key=privileged"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.10: not met")]) > 0
+}
+
+test_6_2_3_10_rule_in_both_passes if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-a always,exit -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -k privileged"], "active_rules": ["-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged"]}}
+	count([v | some v in vs; startswith(v, "6.2.3.10: ")]) == 0
+}
+
+# 6.2.4.4: group and log_group root or adm only; an unset log_group does not return root or adm.
+test_6_2_4_4_group_audit_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "audit"}, "config": "log_group = root"}}
+	count([v | some v in vs; startswith(v, "6.2.4.4: not met")]) > 0
+}
+
+test_6_2_4_4_log_group_audit_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "root"}, "config": "log_group = audit"}}
+	count([v | some v in vs; startswith(v, "6.2.4.4: not met")]) > 0
+}
+
+test_6_2_4_4_log_group_unset_fails if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "root"}, "config": "log_file = /var/log/audit/audit.log"}}
+	count([v | some v in vs; startswith(v, "6.2.4.4: not met")]) > 0
+}
+
+test_6_2_4_4_adm_passes if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "adm"}, "config": "log_group = adm"}}
+	count([v | some v in vs; startswith(v, "6.2.4.4: ")]) == 0
 }
 ''',
     'services': r'''

@@ -195,8 +195,9 @@ sysctl_running(p) := [sprintf("%v", [e.current_value]) |
 	e.current_value != null
 ]
 
-audit_rule_lines := [l |
-	some r in input.auditd.active_rules
+# 6.2.3: the rules of one source: "rules" (on disk, /etc/audit/rules.d/*.rules) or "active_rules" (auditctl -l)
+audit_src_lines(src) := [l |
+	some r in input.auditd[src]
 	l := trim_space(r)
 	l != ""
 	not startswith(l, "#")
@@ -228,8 +229,8 @@ audit_perm(l) := toks[i + 1] if {
 	t == "-p"
 }
 
-audit_watch(p, perm) if {
-	some l in audit_rule_lines
+audit_src_watch(src, p, perm) if {
+	some l in audit_src_lines(src)
 	audit_path_tok(l, p)
 	pv := audit_perm(l)
 	every i in numbers.range(0, count(perm) - 1) { contains(pv, substring(perm, i, 1)) }
@@ -266,11 +267,21 @@ audit_field(l, "eperm") if {
 	regex.match(audit_unset, l)
 }
 
-audit_syscall(s, fields) if {
-	some l in audit_rule_lines
+audit_src_syscall(src, s, fields, arch) if {
+	some l in audit_src_lines(src)
 	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["arch=", arch]) in audit_toks(l)
 	s in line_syscalls(l)
 	every f in fields { audit_field(l, f) }
+}
+
+# an always,exit rule on the executable p with perm x, auid>=1000 and auid!=unset
+audit_src_exec(src, p) if {
+	some l in audit_src_lines(src)
+	regex.match(`^-a\s+(always,exit|exit,always)(\s|$)`, l)
+	concat("", ["path=", p]) in audit_toks(l)
+	contains(audit_perm(l), "x")
+	audit_field(l, "auid")
 }
 
 # the last `-e` line of the on-disk rules decides the enabled flag
@@ -299,11 +310,6 @@ grub_cmdline_has(re) if {
 	some t in grub_cmdline_tokens
 	regex.match(re, t)
 }
-
-# log_group unset: auditd's default root applies
-audit_log_group_ok if not conf_last(input.auditd.config, "log_group")
-
-audit_log_group_ok if lower(conf_last(input.auditd.config, "log_group")) in {"root", "audit"}
 
 # 6.3.3: rules of one source, "rules" (on disk) or "active_rules" (auditctl -l); each matched rule needs a key
 audit8_lines(src) := [l |

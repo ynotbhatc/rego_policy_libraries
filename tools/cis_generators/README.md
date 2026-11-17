@@ -197,7 +197,12 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
 - `gen_rhel_9.py <workbook.xlsx> [fields.json]`: CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0,
   352 recommendations, written into the existing rhel_9 package paths (14 section packages, roll-up
   `cis_rhel9`, bridge `cis_rhel9.main`, Level 2 view `cis_rhel9.l2`) on the shared Linux mapper
-  contract. Aborts on any count, status, logic or title-keyword mismatch with the workbook.
+  contract. Aborts on any count, status, logic or title-keyword mismatch with the workbook. Audit rules
+  (6.2.3.1-6.2.3.33) are required in the on-disk rules (`auditd.rules`, /etc/audit/rules.d/*.rules) AND the
+  running rules (`auditd.active_rules`, `auditctl -l`), syscall rules for the architectures the audit lists
+  (`audit()` takes them explicitly per syscall entry); 6.1.3.1 judges `log_file_permissions.analysis` by the
+  benchmark's class table, with the per-entry `owner_has_login_shell` and `owner_primary_group` for
+  service-account logs. `gen_amazon_linux_2023.py` uses the same `audit()` builder.
 
 - `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
   recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
