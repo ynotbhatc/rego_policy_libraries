@@ -248,6 +248,13 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   Bedrock guardrails and logging, ...); regional resources carry a `region`, "every region" checks read `input.regions`,
   and a missing fact is "evidence missing", never a pass. The 50 Manual recommendations are attestations. Each logic entry
   carries a title keyword; the run aborts on any count, id, status, profile or keyword mismatch, and runs `opa fmt -w`.
+- `gen_ios_27.py <workbook.xlsx> <repo root>`: CIS Apple iOS 27 Benchmark v1.0.0, all 105 recommendations
+  (122 id-profile rows: Level 1/2 x end-user / institutionally owned; some ids sit in both ownerships), replacing the
+  earlier hand-written module in place under `cis.mobile.ios` (entrypoint `cis.mobile.ios.main`). 80 are decided from
+  configuration-profile payload keys under `input.ios_profile` and fail closed; 25 on-device or judgement items are
+  attestations. `input.cis_profile.ownership` and `level` select the profile. Every logic entry carries a title
+  keyword; the run aborts on any count, id, status, profile or keyword mismatch. Needs openpyxl
+  (`/usr/bin/python3` on the Mac); run `opa fmt -w benchmarks/cis/mobile_devices/ios` afterwards.
 
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
