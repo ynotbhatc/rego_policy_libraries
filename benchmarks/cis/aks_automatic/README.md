@@ -1,6 +1,6 @@
 # CIS Azure Kubernetes Service Automatic (AKS Automatic) Benchmark v1.0.0
 
-**Version:** v1.0 · generated 2026-11-17 by `tools/cis_generators/gen_aks.py cis_aks_automatic` from the CIS workbook
+**Version:** v1.0 · generated 2026-11-17 by `tools/cis_generators/gen_aks.py automatic` from the CIS workbook
 
 Every one of the 33 recommendations (12 Automated, 21 Manual). 14 are decided from collected facts, 2 of them Manual in
 the workbook because their audit is a configuration comparison. The other 19 need a person's judgement (RBAC reviews,
