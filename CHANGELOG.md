@@ -37,7 +37,7 @@ PostgreSQL 17 was checked against its v1.1.0 workbook and already matched; the `
 PostgreSQL generators now share one core (`gen_postgresql.py`).
 
 Library size after this batch: 1,052 policies (2,388 `.rego` files including tests), 29,157 control-level checks,
-36,044 tests, 190 OSCAL catalogs / 22,258 controls, XCCDF id export for 42 platforms.
+36,142 tests, 190 OSCAL catalogs / 22,258 controls, XCCDF id export for 42 platforms.
 
 ### Breaking — input contract changes for collectors (batch 2)
 
