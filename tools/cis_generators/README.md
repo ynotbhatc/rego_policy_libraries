@@ -177,5 +177,14 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   The 28 Manual recommendations are attestations. `input.cis_profile.level` selects Level 1 or Level 1 + 2. Each logic
   entry carries a title keyword; the run aborts on any count, id, status or keyword mismatch, and runs `opa fmt -w`.
 
+- `gen_aws.py <workbook.xlsx | dump.json> benchmarks/cis/aws`: CIS Amazon Web Services Foundations Benchmark v7.1.0,
+  all 94 recommendations (44 Automated, 50 Manual; 49 Level 1, 45 Level 2), replacing the earlier hand-written module in
+  place (engine `cis_aws`, entrypoint `cis_aws.main`, Level 2 view `cis_aws.l2`). Built on the `gen_azure.py` layout with
+  its own helper template `aws_lib.rego.tmpl` and its own short titles. The input is one inventory per AWS service in CLI
+  output shapes (credential report rows, IAM policy documents, security groups, network ACLs, trails and event selectors,
+  Bedrock guardrails and logging, ...); regional resources carry a `region`, "every region" checks read `input.regions`,
+  and a missing fact is "evidence missing", never a pass. The 50 Manual recommendations are attestations. Each logic entry
+  carries a title keyword; the run aborts on any count, id, status, profile or keyword mismatch, and runs `opa fmt -w`.
+
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
