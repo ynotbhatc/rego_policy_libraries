@@ -642,7 +642,8 @@ test_5_2_least_privileged_scc_needed if {
 }
 
 test_5_7_4_only_the_platform_services if {
-	not _has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/openshift-apiserver"}])
+	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/openshift-apiserver"}])
+	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/kubernetes-dashboard"}])
 	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "deployment/kubernetes-dashboard"}])
 }
 
@@ -650,6 +651,26 @@ test_composite_checks_need_their_attestation if {
 	_has_id(b.violations, "3.2.1") with input as _patched([{"op": "remove", "path": "/attest/audit_retention_reviewed"}])
 	_has_id(b.violations, "5.1.1") with input as _patched([{"op": "remove", "path": "/attest/cluster_admin_bindings_reviewed"}])
 	_has_id(b.violations, "5.5.1") with input as _patched([{"op": "add", "path": "/attest/image_provenance_reviewed", "value": false}])
+}
+
+test_underscore_flag_spellings_are_the_same_flag if {
+	# kube-scheduler args: --bind_address and --port are the flags the check refuses
+	_has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--bind_address=0.0.0.0"}])
+	_has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--port"}])
+	not _has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--secure-port=10259"}])
+
+	# apiServerArguments: an underscore key is the same argument, and two spellings are ambiguous
+	_has_id(b.violations, "1.2.8") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable_admission_plugins", "value": ["AlwaysAdmit"]}, {"op": "remove", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable-admission-plugins"}])
+	_has_id(b.violations, "1.2.9") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable_admission_plugins", "value": ["NodeRestriction"]}])
+	_has_id(b.violations, "1.2.23") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/service_account_lookup", "value": ["false"]}])
+	not _has_id(b.violations, "1.2.20") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/audit_log_maxbackup", "value": ["10"]}, {"op": "remove", "path": "/openshift/kube_apiserver_config/apiServerArguments/audit-log-maxbackup"}])
+
+	# extendedArguments and the operator's observed arguments
+	_has_id(b.violations, "1.3.2") with input as _patched([{"op": "add", "path": "/openshift/kube_controller_manager_config/extendedArguments/use_service_account_credentials", "value": ["false"]}])
+	_has_id(b.violations, "1.2.14") with input as _patched([{"op": "add", "path": "/openshift/kubeapiserver/spec/observedConfig/apiServerArguments/feature_gates", "value": ["InsecureBindAddress=true"]}, {"op": "remove", "path": "/openshift/kubeapiserver/spec/observedConfig/apiServerArguments/feature-gates"}])
+
+	# etcd command lines
+	_has_id(b.violations, "2.3") with input as _patched([{"op": "add", "path": "/etcd/members/0/flags/auto_tls", "value": "true"}])
 }
 
 test_metrics_probe_codes if {

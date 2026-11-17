@@ -184,19 +184,28 @@ _obj(name) := o if {
 
 _collected(name) if _obj(name)
 
-# <field>[<name>] of a parsed OpenShift config file as a list of strings: [] when the argument is absent, undefined
-# when the file was not collected or the value is not a list of strings (a malformed value fails every check).
-_arg(o, field, name) := [] if {
-	m := object.get(_obj(o), field, {})
+# Argument maps become component flags, and the flag parser treats "_" and "-" alike, so argument names are
+# normalised ("--a_b" == "a-b"). _named_list reads <name> from such a map as a list of strings: [] when no key
+# normalises to it, undefined when two keys do (ambiguous) or the value is not a list of strings, so a malformed
+# or ambiguous value fails every check.
+_norm(k) := replace(trim_left(k, "-"), "_", "-")
+
+_named_list(m, name) := [] if {
 	is_object(m)
-	not name in object.keys(m)
+	count([k | some k, _ in m; _norm(k) == name]) == 0
 }
 
-_arg(o, field, name) := l if {
-	l := _obj(o)[field][name]
+_named_list(m, name) := l if {
+	is_object(m)
+	ks := [k | some k, _ in m; _norm(k) == name]
+	count(ks) == 1
+	l := m[ks[0]]
 	is_array(l)
 	every x in l { is_string(x) }
 }
+
+# <field>[<name>] of a parsed OpenShift config file; undefined when the file was not collected
+_arg(o, field, name) := _named_list(object.get(_obj(o), field, {}), name)
 
 _kas(name) := _arg("kube_apiserver_config", "apiServerArguments", name)
 
@@ -242,17 +251,7 @@ _all_true(l) if {
 _absent_or_true(l) if every x in l { _bool(x) == "true" }
 
 # feature gates of the kube-apiserver operator's observed configuration ("Name=bool" entries)
-_op_args(name) := [] if {
-	m := object.get(_obj("kubeapiserver"), ["spec", "observedConfig", "apiServerArguments"], {})
-	is_object(m)
-	not name in object.keys(m)
-}
-
-_op_args(name) := l if {
-	l := _obj("kubeapiserver").spec.observedConfig.apiServerArguments[name]
-	is_array(l)
-	every x in l { is_string(x) }
-}
+_op_args(name) := _named_list(object.get(_obj("kubeapiserver"), ["spec", "observedConfig", "apiServerArguments"], {}), name)
 
 _gate_vals(name) := [_gate_val(p) |
 	some e in _list_set(_op_args("feature-gates"))
@@ -340,9 +339,15 @@ _container_tokens(o, cname) := toks if {
 	toks := [t | some a in words; is_string(a); some t in regex.split(`\s+`, trim_space(a)); t != ""]
 }
 
+# the flag name of a "--name=value" or "--name" token, normalised like the flag parser does; undefined for a
+# token that is not a flag
+_flag_name(t) := _norm(split(t, "=")[0]) if startswith(t, "-")
+
+_bind_or_port_flag(t) if _flag_name(t) in {"bind-address", "port"}
+
 _scheduler_no_bind_or_port if {
 	toks := _container_tokens("kube_scheduler_pod", "kube-scheduler")
-	every t in toks { not regex.match(`^--?(bind-address|port)(=|$)`, t) }
+	every t in toks { not _bind_or_port_flag(t) }
 }
 
 # ── TLS ──────────────────────────────────────────────────────────────────────
@@ -380,8 +385,7 @@ _etcd_members_collected if {
 	every m in ms { is_object(m.flags) }
 }
 
-# etcd normalises flag names ("--a_b" == "a-b"); a value is read only when exactly one key normalises to it
-_norm(k) := replace(trim_left(k, "-"), "_", "-")
+# etcd flag names are normalised with _norm ("--a_b" == "a-b"); a value is read only when exactly one key matches
 
 _mkeys(m, name) := [k | some k, _ in m.flags; _norm(k) == name]
 
@@ -441,10 +445,8 @@ _scc_collected if {
 	input.collection_status.scc == "ok"
 }
 
-_default_ns_allowed(r) if {
-	is_string(r)
-	regex.match(`^(?i)service/[^/]*(openshift|kubernetes)[^/]*$`, r)
-}
+# the audit names exactly two objects as expected in the default namespace: the kubernetes and openshift Services
+_default_ns_allowed(r) if r in {"service/kubernetes", "service/openshift"}
 
 _unauthenticated_default := __UNAUTH__
 
@@ -1045,7 +1047,8 @@ test_5_2_least_privileged_scc_needed if {
 }
 
 test_5_7_4_only_the_platform_services if {
-	not _has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/openshift-apiserver"}])
+	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/openshift-apiserver"}])
+	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "service/kubernetes-dashboard"}])
 	_has_id(b.violations, "5.7.4") with input as _patched([{"op": "add", "path": "/cluster/namespace_resources/default/-", "value": "deployment/kubernetes-dashboard"}])
 }
 
@@ -1053,6 +1056,23 @@ test_composite_checks_need_their_attestation if {
 	_has_id(b.violations, "3.2.1") with input as _patched([{"op": "remove", "path": "/attest/audit_retention_reviewed"}])
 	_has_id(b.violations, "5.1.1") with input as _patched([{"op": "remove", "path": "/attest/cluster_admin_bindings_reviewed"}])
 	_has_id(b.violations, "5.5.1") with input as _patched([{"op": "add", "path": "/attest/image_provenance_reviewed", "value": false}])
+}
+
+test_underscore_flag_spellings_are_the_same_flag if {
+	# kube-scheduler args: --bind_address and --port are the flags the check refuses
+	_has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--bind_address=0.0.0.0"}])
+	_has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--port"}])
+	not _has_id(b.violations, "1.4.2") with input as _patched([{"op": "add", "path": "/openshift/kube_scheduler_pod/spec/containers/0/args/-", "value": "--secure-port=10259"}])
+	# apiServerArguments: an underscore key is the same argument, and two spellings are ambiguous
+	_has_id(b.violations, "1.2.8") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable_admission_plugins", "value": ["AlwaysAdmit"]}, {"op": "remove", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable-admission-plugins"}])
+	_has_id(b.violations, "1.2.9") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/enable_admission_plugins", "value": ["NodeRestriction"]}])
+	_has_id(b.violations, "1.2.23") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/service_account_lookup", "value": ["false"]}])
+	not _has_id(b.violations, "1.2.20") with input as _patched([{"op": "add", "path": "/openshift/kube_apiserver_config/apiServerArguments/audit_log_maxbackup", "value": ["10"]}, {"op": "remove", "path": "/openshift/kube_apiserver_config/apiServerArguments/audit-log-maxbackup"}])
+	# extendedArguments and the operator's observed arguments
+	_has_id(b.violations, "1.3.2") with input as _patched([{"op": "add", "path": "/openshift/kube_controller_manager_config/extendedArguments/use_service_account_credentials", "value": ["false"]}])
+	_has_id(b.violations, "1.2.14") with input as _patched([{"op": "add", "path": "/openshift/kubeapiserver/spec/observedConfig/apiServerArguments/feature_gates", "value": ["InsecureBindAddress=true"]}, {"op": "remove", "path": "/openshift/kubeapiserver/spec/observedConfig/apiServerArguments/feature-gates"}])
+	# etcd command lines
+	_has_id(b.violations, "2.3") with input as _patched([{"op": "add", "path": "/etcd/members/0/flags/auto_tls", "value": "true"}])
 }
 
 test_metrics_probe_codes if {
