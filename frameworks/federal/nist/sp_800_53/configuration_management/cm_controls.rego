@@ -40,7 +40,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not input.cm_controls.security_impact_analysis.performed
-	msg := "NIST CM-4: Security impact analysis not performed before changes are deployed"
+	msg := "NIST CM-4: Impact analysis (security and privacy) not performed before changes are implemented"
 }
 
 violation contains msg if {
@@ -80,10 +80,13 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"CM-1", "CM-2", "CM-3", "CM-4", "CM-5", "CM-6", "CM-7", "CM-8", "CM-9", "CM-10", "CM-11"}
+
 compliance_report := {
 	"family": "CM",
 	"name": "Configuration Management",
-	"controls_evaluated": 11,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

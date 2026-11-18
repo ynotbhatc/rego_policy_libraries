@@ -30,7 +30,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not input.au_controls.event_logging.enabled
-	msg := "NIST AU-2: Auditable events not identified or logging not enabled"
+	msg := "NIST AU-2: Event types for logging not identified or event logging not enabled"
 }
 
 violation contains msg if {
@@ -58,9 +58,12 @@ violation contains msg if {
 	msg := "NIST AU-7: Audit record reduction/report-generation tooling unavailable"
 }
 
+# AU-8 Time Stamps: internal clocks generate time stamps in UTC, with a fixed UTC offset, or with the
+# offset recorded. Synchronisation to an authoritative source was AU-8(1), withdrawn in Rev 5 and moved to
+# SC-45(1) (evaluated in the SC family); au_controls.time_stamps.synchronized is no longer read here.
 violation contains msg if {
-	not input.au_controls.time_stamps.synchronized
-	msg := "NIST AU-8: Audit record time stamps not synchronized to authoritative source"
+	not input.au_controls.time_stamps.utc_or_offset_recorded == true
+	msg := "NIST AU-8: Audit record time stamps not evidenced as UTC, fixed UTC offset, or recorded offset (input.au_controls.time_stamps.utc_or_offset_recorded)"
 }
 
 violation contains msg if {
@@ -73,14 +76,28 @@ violation contains msg if {
 	msg := "NIST AU-10: Non-repudiation of actions by individuals not implemented"
 }
 
+# AU-11 Audit Record Retention: "Retain audit records for [ODP time period] ...". NIST fixes no period;
+# the organisation supplies it as input.au_controls.odp.retention_period_days. Either value missing is
+# reported as missing evidence.
+_au11_retained := object.get(input, ["au_controls", "retention_period_days"], null)
+
+_au11_odp := object.get(input, ["au_controls", "odp", "retention_period_days"], null)
+
+_au11_missing contains "input.au_controls.retention_period_days" if not is_number(_au11_retained)
+
+_au11_missing contains "input.au_controls.odp.retention_period_days (organization-defined period)" if not is_number(_au11_odp)
+
 violation contains msg if {
-	# object.get defaults missing/undefined to 0 so the rule still fires
-	# when retention_period_days is absent (otherwise the undefined comparison
-	# silently skips the control and skews the violation count).
-	object.get(input, ["au_controls", "retention_period_days"], 0) < 365
+	count(_au11_missing) > 0
+	msg := sprintf("NIST AU-11: evidence missing — %s not collected", [concat(", ", sort(_au11_missing))])
+}
+
+violation contains msg if {
+	count(_au11_missing) == 0
+	_au11_retained < _au11_odp
 	msg := sprintf(
-		"NIST AU-11: Audit record retention %d days is below 365-day minimum",
-		[object.get(input, ["au_controls", "retention_period_days"], 0)],
+		"NIST AU-11: Audit record retention %v days is below the organization-defined %v days",
+		[_au11_retained, _au11_odp],
 	)
 }
 
@@ -91,10 +108,13 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"AU-1", "AU-2", "AU-3", "AU-4", "AU-5", "AU-6", "AU-7", "AU-8", "AU-9", "AU-10", "AU-11", "AU-12"}
+
 compliance_report := {
 	"family": "AU",
 	"name": "Audit and Accountability",
-	"controls_evaluated": 12,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

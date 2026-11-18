@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.5.0
+#     as_of: v2.4.2
 package fedramp.main
 
 import data.fedramp as f
@@ -28,7 +28,7 @@ import rego.v1
 #   /v1/data/fedramp/main/compliance_report
 #
 # The upstream module's fedramp_compliance_report references input fields
-# (impact_level, etc.) directly, so it goes undefined on empty input.
+# (impact_level, etc.) directly.
 # We compute the area summary here from the upstream violation_* sets so
 # the adapter's compliance_report is always defined.
 
@@ -47,36 +47,38 @@ violations := f.all_violations
 
 # Per-area summaries — recomputed locally instead of pulling from the
 # upstream report (which is input-dependent).
-area_summary := {
-	"authorization": {"violations": count(f.violation_authorization), "compliant": count(f.violation_authorization) == 0},
-	"cryptography": {"violations": count(f.violation_crypto), "compliant": count(f.violation_crypto) == 0},
-	"data_residency": {"violations": count(f.violation_data_residency), "compliant": count(f.violation_data_residency) == 0},
-	"personnel_security": {"violations": count(f.violation_personnel), "compliant": count(f.violation_personnel) == 0},
-	"continuous_monitoring": {"violations": count(f.violation_conmon), "compliant": count(f.violation_conmon) == 0},
-	"third_party_assessment": {"violations": count(f.violation_3pao), "compliant": count(f.violation_3pao) == 0},
-	"supply_chain": {"violations": count(f.violation_scrm), "compliant": count(f.violation_scrm) == 0},
-	"moderate_high": {"violations": count(f.violation_moderate_high), "compliant": count(f.violation_moderate_high) == 0},
-	"high": {"violations": count(f.violation_high), "compliant": count(f.violation_high) == 0},
-	"impact_level": {"violations": count(f.violation_impact_level), "compliant": count(f.violation_impact_level) == 0},
-}
+area_summary := {name: {"violations": count(area), "compliant": count(area) == 0} | some name, area in f.assessment_areas}
 
-# FedRAMP control counts vary by impact level (Low: ~125, Moderate: ~325,
-# High: ~421). Reported here as the baseline summary.
-default total_controls := 325 # Moderate baseline (most common for cloud services)
+# total_controls is the number of checks this module evaluates at the declared impact level (10 at Low,
+# 11 at Moderate, 12 at High or when the level is not declared, plus PS-3(3) when the agency sets a
+# US-person criterion). It is NOT the FedRAMP baseline size: that is baseline_size, reported beside it
+# (Rev 5: Low 156, Moderate 323, High 410, LI-SaaS 156), so the evaluated count is never read as coverage.
+total_controls := count(f.applicable_checks)
 
-total_controls := 125 if impact_level == "low"
-total_controls := 421 if impact_level == "high"
+default kev_note := "KEV due dates were not assessed: no continuous_monitoring.kev_findings supplied (not a pass, not a violation)"
+
+kev_note := "KEV due dates assessed from continuous_monitoring.kev_findings" if f.kev_assessed
+
+failed_controls := count(f.failed_checks)
 
 compliance_report := {
 	"framework": "FedRAMP",
 	"regulation": "Federal Risk and Authorization Management Program",
-	"baseline": "NIST SP 800-53 Rev 5 + FedRAMP overlays",
+	"baseline": "NIST SP 800-53 Rev 5 + FedRAMP Rev 5 baselines (selected checks only, not a full baseline assessment)",
 	"impact_level": impact_level,
+	"impact_level_normalized": f.impact_level_norm,
 	"assessed_at": assessed_at,
 	"compliant": compliant,
 	"violations": violations,
 	"violation_count": count(violations),
-	"failed_controls": min([total_controls, count(violations)]),
+	"failed_controls": failed_controls,
+	"failed_control_ids": sort(f.failed_checks),
 	"total_controls": total_controls,
+	"controls_evaluated": sort(f.applicable_checks),
+	"baseline_size": f.baseline_size,
+	"kev_assessed": f.kev_assessed,
+	"kev_note": kev_note,
+	"baseline_sizes": f.baseline_sizes,
+	"coverage_note": "total_controls counts the checks this module evaluates; baseline_size is the number of controls the FedRAMP Rev 5 baseline selects at this impact level (null when the level is not declared). The module does not evaluate the baseline.",
 	"area_summary": area_summary,
 }

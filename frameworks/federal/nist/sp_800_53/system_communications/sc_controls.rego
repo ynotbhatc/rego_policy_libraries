@@ -20,6 +20,57 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — System and Communications Protection (SC) Family
 # Boundary protection, transmission confidentiality/integrity, key management.
+#
+# Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0.
+# Evaluated: SC-1, SC-2, SC-3, SC-5, SC-7, SC-8, SC-8(1), SC-10, SC-12, SC-13, SC-15, SC-17, SC-18,
+# SC-20, SC-21, SC-23, SC-28, SC-28(1), SC-45, SC-45(1) (20 ids). SC-19 (Voice over Internet Protocol) is WITHDRAWN in Rev 5
+# ("Technology-specific; addressed as any other technology or protocol") and is not assessed.
+#
+# SC-8 and SC-28 protect "the [Selection: confidentiality; integrity]" of information: the selection is an
+# organization-defined parameter and the mechanism is the organisation's choice. Cryptography is the
+# enhancement SC-8(1) / SC-28(1), evaluated as its own control.
+
+_sc := object.get(input, "sc_controls", {})
+
+_valid_properties := {"confidentiality", "integrity"}
+
+# The organisation's SC-8 selection, when supplied as a non-empty list of confidentiality / integrity.
+_sc8_selection := {p | some p in object.get(_sc, ["transmission_protection", "odp", "properties"], [])}
+
+_sc8_selection_valid if {
+	count(_sc8_selection) > 0
+	every p in _sc8_selection {
+		p in _valid_properties
+	}
+}
+
+# Without a valid selection both properties are required: protecting both satisfies any selection.
+default sc8_required_properties := {"confidentiality", "integrity"}
+
+sc8_required_properties := _sc8_selection if _sc8_selection_valid
+
+_sc8_protected contains "confidentiality" if object.get(_sc, ["transmission_confidentiality", "protected"], false) == true
+
+_sc8_protected contains "confidentiality" if object.get(_sc, ["transmission_confidentiality", "encrypted"], false) == true
+
+_sc8_protected contains "integrity" if object.get(_sc, ["transmission_integrity", "protected"], false) == true
+
+_sc8_protected contains "integrity" if object.get(_sc, ["transmission_integrity", "cryptographic"], false) == true
+
+_sc8_1_crypto contains "confidentiality" if object.get(_sc, ["transmission_confidentiality", "encrypted"], false) == true
+
+_sc8_1_crypto contains "integrity" if object.get(_sc, ["transmission_integrity", "cryptographic"], false) == true
+
+sc8_unprotected := sc8_required_properties - _sc8_protected
+
+sc8_1_uncovered := sc8_required_properties - _sc8_1_crypto
+
+_sc28 := object.get(_sc, "protection_of_info_at_rest", {})
+
+# SC-28 base: protection by the organisation's chosen mechanism (protected) or by encryption (encrypted).
+sc28_protected if object.get(_sc28, "protected", false) == true
+
+sc28_protected if object.get(_sc28, "encrypted", false) == true
 
 default compliant := false
 
@@ -49,13 +100,19 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	not input.sc_controls.transmission_confidentiality.encrypted
-	msg := "NIST SC-8: Transmission confidentiality not protected via cryptographic mechanisms"
+	count(sc8_unprotected) > 0
+	msg := sprintf(
+		"NIST SC-8: Transmission confidentiality and integrity — selected properties %v not evidenced as protected (unprotected or not collected: %v; selection from input.sc_controls.transmission_protection.odp.properties, both when not supplied)",
+		[sort(sc8_required_properties), sort(sc8_unprotected)],
+	)
 }
 
 violation contains msg if {
-	not input.sc_controls.transmission_integrity.protected
-	msg := "NIST SC-8(1): Transmission integrity not protected via cryptographic mechanisms"
+	count(sc8_1_uncovered) > 0
+	msg := sprintf(
+		"NIST SC-8(1): Cryptographic protection — cryptographic mechanisms not evidenced for transmitted-information properties %v (confidentiality: input.sc_controls.transmission_confidentiality.encrypted; integrity: input.sc_controls.transmission_integrity.cryptographic)",
+		[sort(sc8_1_uncovered)],
+	)
 }
 
 violation contains msg if {
@@ -68,9 +125,38 @@ violation contains msg if {
 	msg := "NIST SC-12: Cryptographic key management process not documented"
 }
 
+# SC-13: the organisation determines the cryptographic uses and the types of cryptography required for
+# each (ODP). NIST does not fix FIPS validation in the catalog text; FedRAMP's parameter does, and that
+# lives in the FedRAMP module. Here every organization-required standard must be evidenced as implemented.
+_sc13 := object.get(_sc, "cryptographic_protection", {})
+
+_sc13_missing contains "input.sc_controls.cryptographic_protection.odp.required_standards (organization-defined types of cryptography)" if {
+	not _nonempty_array(object.get(_sc13, ["odp", "required_standards"], null))
+}
+
+_sc13_missing contains "input.sc_controls.cryptographic_protection.standards_implemented" if {
+	not is_array(object.get(_sc13, "standards_implemented", null))
+}
+
+_nonempty_array(x) if {
+	is_array(x)
+	count(x) > 0
+}
+
+sc13_unmet contains s if {
+	count(_sc13_missing) == 0
+	some s in _sc13.odp.required_standards
+	not s in _sc13.standards_implemented
+}
+
 violation contains msg if {
-	not input.sc_controls.cryptographic_protection.fips_validated
-	msg := "NIST SC-13: Cryptographic mechanisms not FIPS-validated"
+	count(_sc13_missing) > 0
+	msg := sprintf("NIST SC-13: evidence missing — %s not collected", [concat(", ", sort(_sc13_missing))])
+}
+
+violation contains msg if {
+	count(sc13_unmet) > 0
+	msg := sprintf("NIST SC-13: Organization-required cryptography not implemented: %v", [sort(sc13_unmet)])
 }
 
 violation contains msg if {
@@ -89,13 +175,13 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	not input.sc_controls.voip.controls_enforced
-	msg := "NIST SC-19: VoIP usage restrictions and implementation guidance not enforced"
+	not input.sc_controls.secure_dns.dnssec_enforced
+	msg := "NIST SC-20: Authoritative name resolution does not provide origin authentication and integrity artifacts (DNSSEC signing not evidenced: input.sc_controls.secure_dns.dnssec_enforced)"
 }
 
 violation contains msg if {
 	not input.sc_controls.secure_dns.dnssec_enforced
-	msg := "NIST SC-20/21: Secure name/address resolution (DNSSEC) not enforced"
+	msg := "NIST SC-21: Recursive or caching resolver does not validate origin and integrity of responses (DNSSEC validation not evidenced: input.sc_controls.secure_dns.dnssec_enforced)"
 }
 
 violation contains msg if {
@@ -103,17 +189,51 @@ violation contains msg if {
 	msg := "NIST SC-23: Session authenticity not protected (session ID randomness, timeouts)"
 }
 
+_sc28_collected if is_boolean(object.get(_sc28, "protected", null))
+
+_sc28_collected if is_boolean(object.get(_sc28, "encrypted", null))
+
 violation contains msg if {
-	not input.sc_controls.protection_of_info_at_rest.encrypted
-	msg := "NIST SC-28: Information at rest not protected via encryption"
+	not sc28_protected
+	_sc28_collected
+	msg := "NIST SC-28: Information at rest is not protected by the organization-chosen mechanism (input.sc_controls.protection_of_info_at_rest.protected) or by encryption (.encrypted)"
+}
+
+violation contains msg if {
+	not sc28_protected
+	not _sc28_collected
+	msg := "NIST SC-28: evidence missing — protection of information at rest not evidenced by the organization-chosen mechanism (input.sc_controls.protection_of_info_at_rest.protected) or by encryption (.encrypted)"
+}
+
+violation contains msg if {
+	object.get(_sc28, "encrypted", false) != true
+	msg := "NIST SC-28(1): Cryptographic protection of information at rest not evidenced (input.sc_controls.protection_of_info_at_rest.encrypted is not true)"
 }
 
 compliant if count(violation) == 0
 
+# SC-45 System Time Synchronization and SC-45(1) Synchronization with Authoritative Time Source (SC-45(1)
+# is where Rev 5 moved the withdrawn AU-8(1)).
+violation contains msg if {
+	not object.get(_sc, ["time_synchronization", "clocks_synchronized"], false) == true
+	msg := "NIST SC-45: System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)"
+}
+
+violation contains msg if {
+	not object.get(_sc, ["time_synchronization", "authoritative_source_synchronized"], false) == true
+	msg := "NIST SC-45(1): Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)"
+}
+
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {
+	"SC-1", "SC-2", "SC-3", "SC-5", "SC-7", "SC-8", "SC-8(1)", "SC-10", "SC-12",
+	"SC-13", "SC-15", "SC-17", "SC-18", "SC-20", "SC-21", "SC-23", "SC-28", "SC-28(1)", "SC-45", "SC-45(1)",
+}
+
 compliance_report := {
 	"family": "SC",
 	"name": "System and Communications Protection",
-	"controls_evaluated": 17,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,
