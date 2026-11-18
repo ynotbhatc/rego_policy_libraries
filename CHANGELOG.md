@@ -8,6 +8,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 Rev 5: all 20 control families
+
+The NIST 800-53 module evaluated 7 of the 20 Rev 5 families. It now aggregates all 20. Thirteen new family
+modules (AT, CA, CP, MA, MP, PE, PL, PM, PS, PT, RA, SA, SR) cover every active base control in their family,
+157 controls, with ids and titles checked against NIST's OSCAL catalog (release 5.2.0, the same catalog the
+OSCAL export uses). The module now evaluates 266 ids: 249 of the 300 base controls plus 17 enhancements. The
+51 base controls still missing are in the original families (AC, AU, CM, IA, SC, SI).
+
+- Every new control fails closed: absent evidence, null, or the wrong type is "evidence missing", never a pass.
+  Booleans pass only on `true`; every numeric comparison is guarded with `is_number`.
+- Organization-defined frequencies and periods compare the observed value with the organisation's ODP, as
+  IR-2 and IR-3 already did.
+- Organizational controls with no machine-checkable evidence (much of PM, PE and PS) require an attestation
+  `{attested: true, by, date}` at `input.<fam>_controls.<name>.attestation`.
+- New fact roots for collectors: `input.{at,ca,cp,ma,mp,pe,pl,pm,ps,pt,ra,sa,sr}_controls`. Each control's fact
+  paths are documented above its rule. Until a collector supplies them, those controls report evidence missing.
+- `compliance_report.coverage` reports 20 families, 266 ids and 249 base controls; the label "partial: 7 of 20
+  families" is gone.
+
 ### Fixed — CIS Microsoft 365 v7: a control no longer passes on a missing field or a wrong shape
 
 Nine defects found while checking the collector against the policy. Each let a control pass, or stay silent, when it should not.

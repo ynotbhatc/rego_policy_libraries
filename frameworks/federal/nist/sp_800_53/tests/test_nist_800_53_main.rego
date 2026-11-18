@@ -5,7 +5,7 @@ import rego.v1
 import data.nist.sp800_53.main
 
 # Minimal "everything-passes" input — every required key set to true.
-fully_compliant_input := {
+_original_families_input := {
 	"assessment_date": "2026-06-26",
 	"ac_controls": {
 		"policy": {"documented": true, "disseminated": true, "reviewed_updated": true},
@@ -117,6 +117,23 @@ fully_compliant_input := {
 	},
 }
 
+# Every family passes: the original seven families' fixture plus each new family's own all-pass fixture.
+fully_compliant_input := object.union(_original_families_input, object.union_n([
+	data.nist.sp800_53.awareness_training_logic_test._pass,
+	data.nist.sp800_53.assessment_authorization_logic_test._pass,
+	data.nist.sp800_53.contingency_planning_logic_test._pass,
+	data.nist.sp800_53.maintenance_logic_test._pass,
+	data.nist.sp800_53.media_protection_logic_test._pass,
+	data.nist.sp800_53.physical_environmental_logic_test._pass,
+	data.nist.sp800_53.planning_logic_test._pass,
+	data.nist.sp800_53.program_management_logic_test._pass,
+	data.nist.sp800_53.personnel_security_logic_test._pass,
+	data.nist.sp800_53.pii_processing_transparency_logic_test._pass,
+	data.nist.sp800_53.risk_assessment_logic_test._pass,
+	data.nist.sp800_53.system_services_acquisition_logic_test._pass,
+	data.nist.sp800_53.supply_chain_risk_logic_test._pass,
+]))
+
 test_compliance_report_returns_object if {
 	r := main.compliance_report with input as fully_compliant_input
 	r.framework == "NIST SP 800-53 Rev 5"
@@ -149,7 +166,7 @@ test_family_summary_present if {
 
 test_total_controls_equals_evaluated_ids if {
 	main.total_controls == count(main.evaluated_controls)
-	main.total_controls == 109
+	main.total_controls == 266
 }
 
 test_empty_input_every_evaluated_id_fails_once if {
@@ -161,7 +178,7 @@ test_empty_input_every_evaluated_id_fails_once if {
 
 test_failed_never_exceeds_total_on_partial_input if {
 	r := main.compliance_report with input as {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}
-	r.failed_controls == 108
+	r.failed_controls == 265
 	r.failed_controls <= r.total_controls
 }
 
@@ -179,18 +196,19 @@ test_compliant_input_has_zero_failed if {
 	r.compliant == true
 }
 
-test_coverage_states_partial_scope if {
+test_coverage_states_scope if {
 	r := main.compliance_report with input as {}
 	r.coverage.baseline_assessment == false
-	r.coverage.controls_evaluated == 109
+	r.coverage.controls_evaluated == 266
+	r.coverage.base_controls_evaluated == 249
 	r.coverage.catalog_families == 20
-	count(r.coverage.families_evaluated) == 7
+	count(r.coverage.families_evaluated) == 20
 }
 
 test_bridge_failed_controls_bounded if {
 	r := data.nist_800_53.main.compliance_report with input as {}
-	r.total_controls == 109
-	r.failed_controls == 109
+	r.total_controls == 266
+	r.failed_controls == 266
 	r.compliant == false
 }
 
