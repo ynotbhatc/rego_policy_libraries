@@ -75,10 +75,46 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
-# Helper: check if audit rule exists
-audit_rule_exists(pattern) if {
-	some rule in input.audit_rules
-	contains(rule, pattern)
+# input.audit_rules: the loaded rules, one string per line of `auditctl -l`
+_audit_lines := [l | some l in input.audit_rules; is_string(l)]
+
+_tokens(line) := [t | some t in parts; t != ""] if parts := split(line, " ")
+
+_syscalls(toks) := {s | some i, t in toks; t == "-S"; v := toks[i + 1]; parts := split(v, ","); some s in parts}
+
+_exit_rule(toks) if "always,exit" in toks
+
+_exit_rule(toks) if "exit,always" in toks
+
+# every syscall in `needed` is audited for `arch` by an always,exit rule that also carries every token in `fields`
+_syscalls_audited(arch, needed, fields) if {
+	a := concat("=", ["arch", arch])
+	every s in needed {
+		some line in _audit_lines
+		toks := _tokens(line)
+		_exit_rule(toks)
+		a in toks
+		s in _syscalls(toks)
+		every f in fields {
+			f in toks
+		}
+	}
+}
+
+# a rule watches exactly `path`: `-w <path>` or an always,exit rule with `-F path=<path>`
+_path_audited(path) if {
+	some line in _audit_lines
+	toks := _tokens(line)
+	some i, t in toks
+	t == "-w"
+	toks[i + 1] == path
+}
+
+_path_audited(path) if {
+	some line in _audit_lines
+	toks := _tokens(line)
+	_exit_rule(toks)
+	concat("=", ["path", path]) in toks
 }
 
 # =============================================================================
@@ -86,11 +122,14 @@ audit_rule_exists(pattern) if {
 # =============================================================================
 
 # RHEL-09-653015 | V-258152 | CAT II
-# auditd service must be running
+# systemctl is-active auditd
+missing_rhel_09_653015 := [concat(".", p) | some p in [["services", "auditd"]]; not _collected(p)]
+
 default auditd_active := false
 
 auditd_active if {
-	input.services.auditd == "active"
+	count(missing_rhel_09_653015) == 0
+	_kw(["services", "auditd"]) == "active"
 }
 
 status_rhel_09_653015 := "Not_a_Finding" if auditd_active
@@ -99,7 +138,9 @@ else := "Open"
 
 detail_rhel_09_653015 := "RHEL-09-653015: Not_a_Finding" if auditd_active
 
-else := "RHEL-09-653015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653015", concat(", ", missing_rhel_09_653015)]) if count(missing_rhel_09_653015) > 0
+
+else := "RHEL-09-653015: check failed — auditd.service must be active (running)"
 
 finding_rhel_09_653015 := {
 	"vuln_id": "V-258152",
@@ -113,12 +154,18 @@ finding_rhel_09_653015 := {
 }
 
 # RHEL-09-653055 | V-258160 | CAT II
-# Audit log storage must be sufficient (max_log_file_action must not be ignore)
+# max_log_file_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653055 := [concat(".", p) | some p in [["auditd_config", "max_log_file_action"]]; not _collected(p)]
+
 default audit_storage_ok := false
 
 audit_storage_ok if {
-	input.auditd_config.max_log_file_action != "ignore"
-	input.auditd_config.max_log_file_action != "IGNORE"
+	count(missing_rhel_09_653055) == 0
+	_kw(["auditd_config", "max_log_file_action"]) in {"rotate", "single"}
+}
+
+audit_storage_ok if {
+	_attested("rhel_09_653055_storage_action")
 }
 
 status_rhel_09_653055 := "Not_a_Finding" if audit_storage_ok
@@ -127,27 +174,34 @@ else := "Open"
 
 detail_rhel_09_653055 := "RHEL-09-653055: Not_a_Finding" if audit_storage_ok
 
-else := "RHEL-09-653055: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653055", concat(", ", missing_rhel_09_653055)]) if count(missing_rhel_09_653055) > 0
+
+else := "RHEL-09-653055: check failed — max_log_file_action in /etc/audit/auditd.conf must be ROTATE or SINGLE, or the SA must attest that the system takes appropriate action when the audit files reach maximum size (input.attest.rhel_09_653055_storage_action)"
 
 finding_rhel_09_653055 := {
 	"vuln_id": "V-258160",
 	"stig_id": "RHEL-09-653055",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_653055,
 	"detail": detail_rhel_09_653055,
-	"fix_text": "Set max_log_file_action = keep_logs in /etc/audit/auditd.conf",
+	"fix_text": "Set max_log_file_action = ROTATE in /etc/audit/auditd.conf",
 }
 
 # RHEL-09-653025 | V-258154 | CAT II
-# Admin space left action must be configured
+# disk_full_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653025 := [concat(".", p) | some p in [["auditd_config", "disk_full_action"]]; not _collected(p)]
+
 default admin_space_left_action_ok := false
 
 admin_space_left_action_ok if {
-	action := input.auditd_config.admin_space_left_action
-	action != "ignore"
-	action != "IGNORE"
+	count(missing_rhel_09_653025) == 0
+	_kw(["auditd_config", "disk_full_action"]) in {"syslog", "single", "halt"}
+}
+
+admin_space_left_action_ok if {
+	_attested("rhel_09_653025_disk_full_action")
 }
 
 status_rhel_09_653025 := "Not_a_Finding" if admin_space_left_action_ok
@@ -156,31 +210,34 @@ else := "Open"
 
 detail_rhel_09_653025 := "RHEL-09-653025: Not_a_Finding" if admin_space_left_action_ok
 
-else := "RHEL-09-653025: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653025", concat(", ", missing_rhel_09_653025)]) if count(missing_rhel_09_653025) > 0
+
+else := "RHEL-09-653025: check failed — disk_full_action in /etc/audit/auditd.conf must be SYSLOG or SINGLE or HALT, or the SA must attest that the system takes appropriate action when the audit storage volume is full (input.attest.rhel_09_653025_disk_full_action)"
 
 finding_rhel_09_653025 := {
 	"vuln_id": "V-258154",
 	"stig_id": "RHEL-09-653025",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_653025,
 	"detail": detail_rhel_09_653025,
-	"fix_text": "Set admin_space_left_action = single in /etc/audit/auditd.conf",
+	"fix_text": "Set disk_full_action = SYSLOG in /etc/audit/auditd.conf",
 }
 
 # RHEL-09-653040 | V-258157 | CAT II
-# space_left_action must notify admin
+# space_left_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653040 := [concat(".", p) | some p in [["auditd_config", "space_left_action"]]; not _collected(p)]
+
 default space_left_action_ok := false
 
 space_left_action_ok if {
-	action := input.auditd_config.space_left_action
-	action == "email"
+	count(missing_rhel_09_653040) == 0
+	_kw(["auditd_config", "space_left_action"]) in {"email"}
 }
 
 space_left_action_ok if {
-	action := input.auditd_config.space_left_action
-	action == "syslog"
+	_attested("rhel_09_653040_realtime_alerts")
 }
 
 status_rhel_09_653040 := "Not_a_Finding" if space_left_action_ok
@@ -189,25 +246,34 @@ else := "Open"
 
 detail_rhel_09_653040 := "RHEL-09-653040: Not_a_Finding" if space_left_action_ok
 
-else := "RHEL-09-653040: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653040", concat(", ", missing_rhel_09_653040)]) if count(missing_rhel_09_653040) > 0
+
+else := "RHEL-09-653040: check failed — space_left_action in /etc/audit/auditd.conf must be EMAIL, or the SA must attest that real-time alerts to the SA and ISSO are configured at 75 percent of audit storage (input.attest.rhel_09_653040_realtime_alerts)"
 
 finding_rhel_09_653040 := {
 	"vuln_id": "V-258157",
 	"stig_id": "RHEL-09-653040",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_653040,
 	"detail": detail_rhel_09_653040,
-	"fix_text": "Set space_left_action = email in /etc/audit/auditd.conf",
+	"fix_text": "Set space_left_action = EMAIL in /etc/audit/auditd.conf",
 }
 
 # RHEL-09-654010 | V-258176 | CAT II
-# Audit rules: execve (b64) must be audited
+# execve rules (auditctl -l) for both arches and both setuid/setgid conditions
+missing_rhel_09_654010 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_execve_b64 := false
 
 audit_execve_b64 if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S execve")
+	count(missing_rhel_09_654010) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"execve"}, {"uid!=euid", "euid=0"})
+	_syscalls_audited("b32", {"execve"}, {"gid!=egid", "egid=0"})
+	_syscalls_audited("b64", {"execve"}, {"uid!=euid", "euid=0"})
+	_syscalls_audited("b64", {"execve"}, {"gid!=egid", "egid=0"})
 }
 
 status_rhel_09_654010 := "Not_a_Finding" if audit_execve_b64
@@ -216,7 +282,9 @@ else := "Open"
 
 detail_rhel_09_654010 := "RHEL-09-654010: Not_a_Finding" if audit_execve_b64
 
-else := "RHEL-09-654010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654010", concat(", ", missing_rhel_09_654010)]) if count(missing_rhel_09_654010) > 0
+
+else := "RHEL-09-654010: check failed — execve must be audited for b32 and b64 with -C uid!=euid -F euid=0 and -C gid!=egid -F egid=0 (all four rules)"
 
 finding_rhel_09_654010 := {
 	"vuln_id": "V-258176",
@@ -226,15 +294,20 @@ finding_rhel_09_654010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654010,
 	"detail": detail_rhel_09_654010,
-	"fix_text": "Add audit rule: -a always,exit -F arch=b64 -S execve -k exec_commands",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # RHEL-09-654020 | V-258178 | CAT II
-# Audit rules: chown must be audited
+# always,exit rules for the chown family, both arches (auditctl -l)
+missing_rhel_09_654020 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_chown := false
 
 audit_chown if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S chown")
+	count(missing_rhel_09_654020) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"chown", "fchown", "fchownat", "lchown"}, set())
+	_syscalls_audited("b64", {"chown", "fchown", "fchownat", "lchown"}, set())
 }
 
 status_rhel_09_654020 := "Not_a_Finding" if audit_chown
@@ -243,7 +316,9 @@ else := "Open"
 
 detail_rhel_09_654020 := "RHEL-09-654020: Not_a_Finding" if audit_chown
 
-else := "RHEL-09-654020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654020", concat(", ", missing_rhel_09_654020)]) if count(missing_rhel_09_654020) > 0
+
+else := "RHEL-09-654020: check failed — chown, fchown, fchownat and lchown must be audited for both b32 and b64"
 
 finding_rhel_09_654020 := {
 	"vuln_id": "V-258178",
@@ -253,15 +328,20 @@ finding_rhel_09_654020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654020,
 	"detail": detail_rhel_09_654020,
-	"fix_text": "Add audit rule for chown: -a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # RHEL-09-654015 | V-258177 | CAT II
-# Audit rules: chmod must be audited
+# always,exit rules for the chmod family, both arches (auditctl -l)
+missing_rhel_09_654015 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_chmod := false
 
 audit_chmod if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S chmod")
+	count(missing_rhel_09_654015) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"chmod", "fchmod", "fchmodat"}, set())
+	_syscalls_audited("b64", {"chmod", "fchmod", "fchmodat"}, set())
 }
 
 status_rhel_09_654015 := "Not_a_Finding" if audit_chmod
@@ -270,7 +350,9 @@ else := "Open"
 
 detail_rhel_09_654015 := "RHEL-09-654015: Not_a_Finding" if audit_chmod
 
-else := "RHEL-09-654015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654015", concat(", ", missing_rhel_09_654015)]) if count(missing_rhel_09_654015) > 0
+
+else := "RHEL-09-654015: check failed — chmod, fchmod and fchmodat must be audited for both b32 and b64"
 
 finding_rhel_09_654015 := {
 	"vuln_id": "V-258177",
@@ -280,15 +362,20 @@ finding_rhel_09_654015 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654015,
 	"detail": detail_rhel_09_654015,
-	"fix_text": "Add audit rule for chmod: -a always,exit -F arch=b64 -S chmod,fchmod,fchmodat",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # RHEL-09-654025 | V-258179 | CAT II
-# Audit rules: setxattr must be audited
+# always,exit rules for the xattr family, both arches (auditctl -l)
+missing_rhel_09_654025 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_setxattr := false
 
 audit_setxattr if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S setxattr")
+	count(missing_rhel_09_654025) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, set())
+	_syscalls_audited("b64", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, set())
 }
 
 status_rhel_09_654025 := "Not_a_Finding" if audit_setxattr
@@ -297,7 +384,9 @@ else := "Open"
 
 detail_rhel_09_654025 := "RHEL-09-654025: Not_a_Finding" if audit_setxattr
 
-else := "RHEL-09-654025: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654025", concat(", ", missing_rhel_09_654025)]) if count(missing_rhel_09_654025) > 0
+
+else := "RHEL-09-654025: check failed — setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr and lremovexattr must be audited for both b32 and b64"
 
 finding_rhel_09_654025 := {
 	"vuln_id": "V-258179",
@@ -307,21 +396,22 @@ finding_rhel_09_654025 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654025,
 	"detail": detail_rhel_09_654025,
-	"fix_text": "Add audit rules for xattr operations",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # RHEL-09-654070 | V-258188 | CAT II
-# Audit rules: open with EACCES must be audited
+# always,exit rules for the open/truncate family with exit=-EPERM and exit=-EACCES, both arches
+missing_rhel_09_654070 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_open_failure := false
 
 audit_open_failure if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S open")
-	audit_rule_exists("-F exit=-EACCES")
-}
-
-audit_open_failure if {
-	audit_rule_exists("EACCES")
-	audit_rule_exists("EPERM")
+	count(missing_rhel_09_654070) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EPERM"})
+	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EACCES"})
+	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EPERM"})
+	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EACCES"})
 }
 
 status_rhel_09_654070 := "Not_a_Finding" if audit_open_failure
@@ -330,7 +420,9 @@ else := "Open"
 
 detail_rhel_09_654070 := "RHEL-09-654070: Not_a_Finding" if audit_open_failure
 
-else := "RHEL-09-654070: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654070", concat(", ", missing_rhel_09_654070)]) if count(missing_rhel_09_654070) > 0
+
+else := "RHEL-09-654070: check failed — truncate, ftruncate, creat, open, openat and open_by_handle_at must be audited for both arches with -F exit=-EPERM and -F exit=-EACCES"
 
 finding_rhel_09_654070 := {
 	"vuln_id": "V-258188",
@@ -340,15 +432,19 @@ finding_rhel_09_654070 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654070,
 	"detail": detail_rhel_09_654070,
-	"fix_text": "Add audit rules for failed file access: -a always,exit -F arch=b64 -S open -F exit=-EACCES -k access",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # RHEL-09-654215 | V-258217 | CAT II
-# Audit rules: sudoers modification must be audited
+# a loaded rule (auditctl -l) on exactly /etc/sudoers: -w /etc/sudoers or -F path=/etc/sudoers
+missing_rhel_09_654215 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_sudoers := false
 
 audit_sudoers if {
-	audit_rule_exists("-w /etc/sudoers")
+	count(missing_rhel_09_654215) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/sudoers")
 }
 
 status_rhel_09_654215 := "Not_a_Finding" if audit_sudoers
@@ -357,7 +453,9 @@ else := "Open"
 
 detail_rhel_09_654215 := "RHEL-09-654215: Not_a_Finding" if audit_sudoers
 
-else := "RHEL-09-654215: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654215", concat(", ", missing_rhel_09_654215)]) if count(missing_rhel_09_654215) > 0
+
+else := "RHEL-09-654215: check failed — a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/)"
 
 finding_rhel_09_654215 := {
 	"vuln_id": "V-258217",
@@ -367,15 +465,19 @@ finding_rhel_09_654215 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654215,
 	"detail": detail_rhel_09_654215,
-	"fix_text": "Add audit rule: -w /etc/sudoers -p wa -k sudoers_change",
+	"fix_text": "Add an audit rule for /etc/sudoers to /etc/audit/rules.d/ and load it (augenrules --load)",
 }
 
 # RHEL-09-654240 | V-258222 | CAT II
-# Audit rules: /etc/passwd modification must be audited
+# a loaded rule (auditctl -l) on exactly /etc/passwd: -w /etc/passwd or -F path=/etc/passwd
+missing_rhel_09_654240 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_passwd_file := false
 
 audit_passwd_file if {
-	audit_rule_exists("-w /etc/passwd")
+	count(missing_rhel_09_654240) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/passwd")
 }
 
 status_rhel_09_654240 := "Not_a_Finding" if audit_passwd_file
@@ -384,7 +486,9 @@ else := "Open"
 
 detail_rhel_09_654240 := "RHEL-09-654240: Not_a_Finding" if audit_passwd_file
 
-else := "RHEL-09-654240: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654240", concat(", ", missing_rhel_09_654240)]) if count(missing_rhel_09_654240) > 0
+
+else := "RHEL-09-654240: check failed — a loaded audit rule must watch /etc/passwd"
 
 finding_rhel_09_654240 := {
 	"vuln_id": "V-258222",
@@ -394,19 +498,19 @@ finding_rhel_09_654240 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654240,
 	"detail": detail_rhel_09_654240,
-	"fix_text": "Add audit rule: -w /etc/passwd -p wa -k usermod",
+	"fix_text": "Add an audit rule for /etc/passwd to /etc/audit/rules.d/ and load it (augenrules --load)",
 }
 
 # RHEL-09-654150 | V-258204 | CAT II
-# Audit rules: privileged command use must be audited
+# a loaded rule (auditctl -l) on exactly /usr/bin/sudo: -w /usr/bin/sudo or -F path=/usr/bin/sudo
+missing_rhel_09_654150 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_privileged_cmds := false
 
 audit_privileged_cmds if {
-	audit_rule_exists("-a always,exit -F path=/usr/bin/sudo")
-}
-
-audit_privileged_cmds if {
-	audit_rule_exists("privileged")
+	count(missing_rhel_09_654150) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/sudo")
 }
 
 status_rhel_09_654150 := "Not_a_Finding" if audit_privileged_cmds
@@ -415,7 +519,9 @@ else := "Open"
 
 detail_rhel_09_654150 := "RHEL-09-654150: Not_a_Finding" if audit_privileged_cmds
 
-else := "RHEL-09-654150: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654150", concat(", ", missing_rhel_09_654150)]) if count(missing_rhel_09_654150) > 0
+
+else := "RHEL-09-654150: check failed — a loaded audit rule must audit execution of /usr/bin/sudo"
 
 finding_rhel_09_654150 := {
 	"vuln_id": "V-258204",
@@ -425,19 +531,20 @@ finding_rhel_09_654150 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654150,
 	"detail": detail_rhel_09_654150,
-	"fix_text": "Add audit rule: -a always,exit -F path=/usr/bin/sudo -F perm=x -k priv_cmd",
+	"fix_text": "Add an audit rule for /usr/bin/sudo to /etc/audit/rules.d/ and load it (augenrules --load)",
 }
 
 # RHEL-09-654080 | V-258190 | CAT II
-# Audit rules: module loading/unloading must be audited
+# always,exit rules for init_module and finit_module, both arches (auditctl -l)
+missing_rhel_09_654080 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
 default audit_modules := false
 
 audit_modules if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S finit_module")
-}
-
-audit_modules if {
-	audit_rule_exists("-a always,exit -F arch=b64 -S init_module")
+	count(missing_rhel_09_654080) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"init_module", "finit_module"}, set())
+	_syscalls_audited("b64", {"init_module", "finit_module"}, set())
 }
 
 status_rhel_09_654080 := "Not_a_Finding" if audit_modules
@@ -446,7 +553,9 @@ else := "Open"
 
 detail_rhel_09_654080 := "RHEL-09-654080: Not_a_Finding" if audit_modules
 
-else := "RHEL-09-654080: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654080", concat(", ", missing_rhel_09_654080)]) if count(missing_rhel_09_654080) > 0
+
+else := "RHEL-09-654080: check failed — init_module and finit_module must be audited for both b32 and b64"
 
 finding_rhel_09_654080 := {
 	"vuln_id": "V-258190",
@@ -456,7 +565,7 @@ finding_rhel_09_654080 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654080,
 	"detail": detail_rhel_09_654080,
-	"fix_text": "Add audit rules for module operations",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
 # =============================================================================

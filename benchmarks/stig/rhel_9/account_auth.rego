@@ -80,24 +80,35 @@ _attested(key) if input.attest[key] == true
 # =============================================================================
 
 # RHEL-09-611165 | V-258122 | CAT II
-# Multifactor authentication must be used
+# pam_cert_auth as configured in /etc/sssd/sssd.conf or /etc/sssd/conf.d/ (null when missing or commented out)
+missing_rhel_09_611165 := [concat(".", p) | some p in [["sssd", "pam_cert_auth"]]; not _collected(p)]
+
 default mfa_enabled := false
 
 mfa_enabled if {
-	input.pam_config.mfa_enabled == true
+	count(missing_rhel_09_611165) == 0
+	_kw(["sssd", "pam_cert_auth"]) == "true"
 }
 
-mfa_enabled if {
-	input.pam_config.sssd_mfa == true
+default na_rhel_09_611165 := false
+
+na_rhel_09_611165 if {
+	_attested("rhel_09_611165_alternate_mfa")
 }
 
 status_rhel_09_611165 := "Not_a_Finding" if mfa_enabled
+
+else := "Not_Applicable" if na_rhel_09_611165
 
 else := "Open"
 
 detail_rhel_09_611165 := "RHEL-09-611165: Not_a_Finding" if mfa_enabled
 
-else := "RHEL-09-611165: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-611165: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_611165
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611165", concat(", ", missing_rhel_09_611165)]) if count(missing_rhel_09_611165) > 0
+
+else := "RHEL-09-611165: check failed — pam_cert_auth = True must be set (uncommented) in /etc/sssd/sssd.conf or /etc/sssd/conf.d/"
 
 finding_rhel_09_611165 := {
 	"vuln_id": "V-258122",
@@ -107,19 +118,18 @@ finding_rhel_09_611165 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611165,
 	"detail": detail_rhel_09_611165,
-	"fix_text": "Configure MFA via SSSD with smart card or PIV authentication",
+	"fix_text": "Set pam_cert_auth = True in the [pam] section of /etc/sssd/sssd.conf (or a conf.d drop-in) and restart sssd",
 }
 
 # RHEL-09-611140 | V-258117 | CAT II
-# Passwords must be hashed with SHA-512
+# ENCRYPT_METHOD as configured in /etc/login.defs (null when missing or commented out)
+missing_rhel_09_611140 := [concat(".", p) | some p in [["login_defs", "ENCRYPT_METHOD"]]; not _collected(p)]
+
 default password_sha512 := false
 
 password_sha512 if {
-	input.password_policy.sha512 == true
-}
-
-password_sha512 if {
-	input.pam_config.password_hash == "sha512"
+	count(missing_rhel_09_611140) == 0
+	_str(["login_defs", "ENCRYPT_METHOD"]) == "SHA512"
 }
 
 status_rhel_09_611140 := "Not_a_Finding" if password_sha512
@@ -128,7 +138,9 @@ else := "Open"
 
 detail_rhel_09_611140 := "RHEL-09-611140: Not_a_Finding" if password_sha512
 
-else := "RHEL-09-611140: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611140", concat(", ", missing_rhel_09_611140)]) if count(missing_rhel_09_611140) > 0
+
+else := "RHEL-09-611140: check failed — ENCRYPT_METHOD in /etc/login.defs must be SHA512"
 
 finding_rhel_09_611140 := {
 	"vuln_id": "V-258117",
@@ -138,16 +150,20 @@ finding_rhel_09_611140 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611140,
 	"detail": detail_rhel_09_611140,
-	"fix_text": "Configure PAM to use SHA-512: Set password sufficient pam_unix.so sha512 in /etc/pam.d/system-auth",
+	"fix_text": "Set ENCRYPT_METHOD SHA512 in /etc/login.defs",
 }
 
 # RHEL-09-411075 | V-258054 | CAT II
-# Accounts must be locked after failed login attempts
+# deny as configured in /etc/security/faillock.conf
+missing_rhel_09_411075 := [concat(".", p) | some p in [["faillock_conf", "deny"]]; not _collected(p)]
+
 default account_lockout_enabled := false
 
 account_lockout_enabled if {
-	input.pam_config.lockout_attempts <= 3
-	input.pam_config.lockout_attempts > 0
+	count(missing_rhel_09_411075) == 0
+	n := _num(["faillock_conf", "deny"])
+	n >= 1
+	n <= 3
 }
 
 status_rhel_09_411075 := "Not_a_Finding" if account_lockout_enabled
@@ -156,7 +172,9 @@ else := "Open"
 
 detail_rhel_09_411075 := "RHEL-09-411075: Not_a_Finding" if account_lockout_enabled
 
-else := "RHEL-09-411075: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411075", concat(", ", missing_rhel_09_411075)]) if count(missing_rhel_09_411075) > 0
+
+else := "RHEL-09-411075: check failed — deny in /etc/security/faillock.conf must be 1 to 3 (not 0)"
 
 finding_rhel_09_411075 := {
 	"vuln_id": "V-258054",
@@ -166,16 +184,20 @@ finding_rhel_09_411075 := {
 	"check_type": "machine",
 	"status": status_rhel_09_411075,
 	"detail": detail_rhel_09_411075,
-	"fix_text": "Configure pam_faillock: deny=3 in /etc/security/faillock.conf",
+	"fix_text": "Set deny = 3 in /etc/security/faillock.conf",
 }
 
 # RHEL-09-611155 | V-258120 | CAT II
-# System must not have empty passwords in /etc/shadow
+# accounts whose /etc/shadow password field is empty (awk -F: '!$2 {print $1}' /etc/shadow)
+missing_rhel_09_611155 := [concat(".", p) | some p in [["local_accounts_with_empty_passwords"]]; not _collected(p)]
+
 default no_empty_password_hashes := false
 
 no_empty_password_hashes if {
-	is_array(input.local_accounts_with_empty_passwords)
-	count(input.local_accounts_with_empty_passwords) == 0
+	count(missing_rhel_09_611155) == 0
+	accts := input.local_accounts_with_empty_passwords
+	is_array(accts)
+	count(accts) == 0
 }
 
 status_rhel_09_611155 := "Not_a_Finding" if no_empty_password_hashes
@@ -184,7 +206,9 @@ else := "Open"
 
 detail_rhel_09_611155 := "RHEL-09-611155: Not_a_Finding" if no_empty_password_hashes
 
-else := "RHEL-09-611155: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611155", concat(", ", missing_rhel_09_611155)]) if count(missing_rhel_09_611155) > 0
+
+else := "RHEL-09-611155: check failed — no /etc/shadow entry may have an empty password field"
 
 finding_rhel_09_611155 := {
 	"vuln_id": "V-258120",
@@ -194,15 +218,19 @@ finding_rhel_09_611155 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611155,
 	"detail": detail_rhel_09_611155,
-	"fix_text": "Lock accounts with empty passwords: passwd -l <username>",
+	"fix_text": "Lock or set a password for each listed account: passwd -l <username>",
 }
 
 # RHEL-09-611090 | V-258107 | CAT II
-# Password minimum length must be 15
+# effective minlen from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611090 := [concat(".", p) | some p in [["password_policy", "minlen"]]; not _collected(p)]
+
 default password_minlen := false
 
 password_minlen if {
-	input.password_policy.minlen >= 15
+	count(missing_rhel_09_611090) == 0
+	n := _num(["password_policy", "minlen"])
+	n >= 15
 }
 
 status_rhel_09_611090 := "Not_a_Finding" if password_minlen
@@ -211,7 +239,9 @@ else := "Open"
 
 detail_rhel_09_611090 := "RHEL-09-611090: Not_a_Finding" if password_minlen
 
-else := "RHEL-09-611090: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611090", concat(", ", missing_rhel_09_611090)]) if count(missing_rhel_09_611090) > 0
+
+else := "RHEL-09-611090: check failed — minlen in /etc/security/pwquality.conf(.d) must be 15 or greater"
 
 finding_rhel_09_611090 := {
 	"vuln_id": "V-258107",
@@ -221,19 +251,19 @@ finding_rhel_09_611090 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611090,
 	"detail": detail_rhel_09_611090,
-	"fix_text": "Set minlen=15 in /etc/security/pwquality.conf",
+	"fix_text": "Set minlen = 15 in /etc/security/pwquality.conf",
 }
 
 # RHEL-09-611110 | V-258111 | CAT II
-# Password must require at least 1 uppercase character
+# effective ucredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611110 := [concat(".", p) | some p in [["password_policy", "ucredit"]]; not _collected(p)]
+
 default password_uppercase := false
 
 password_uppercase if {
-	input.password_policy.ucredit <= -1
-}
-
-password_uppercase if {
-	input.password_policy.minclass >= 4
+	count(missing_rhel_09_611110) == 0
+	n := _num(["password_policy", "ucredit"])
+	n <= -1
 }
 
 status_rhel_09_611110 := "Not_a_Finding" if password_uppercase
@@ -242,7 +272,9 @@ else := "Open"
 
 detail_rhel_09_611110 := "RHEL-09-611110: Not_a_Finding" if password_uppercase
 
-else := "RHEL-09-611110: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611110", concat(", ", missing_rhel_09_611110)]) if count(missing_rhel_09_611110) > 0
+
+else := "RHEL-09-611110: check failed — ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character)"
 
 finding_rhel_09_611110 := {
 	"vuln_id": "V-258111",
@@ -252,19 +284,19 @@ finding_rhel_09_611110 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611110,
 	"detail": detail_rhel_09_611110,
-	"fix_text": "Set ucredit=-1 in /etc/security/pwquality.conf",
+	"fix_text": "Set ucredit = -1 in /etc/security/pwquality.conf",
 }
 
 # RHEL-09-611065 | V-258102 | CAT II
-# Password must require at least 1 lowercase character
+# effective lcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611065 := [concat(".", p) | some p in [["password_policy", "lcredit"]]; not _collected(p)]
+
 default password_lowercase := false
 
 password_lowercase if {
-	input.password_policy.lcredit <= -1
-}
-
-password_lowercase if {
-	input.password_policy.minclass >= 4
+	count(missing_rhel_09_611065) == 0
+	n := _num(["password_policy", "lcredit"])
+	n <= -1
 }
 
 status_rhel_09_611065 := "Not_a_Finding" if password_lowercase
@@ -273,7 +305,9 @@ else := "Open"
 
 detail_rhel_09_611065 := "RHEL-09-611065: Not_a_Finding" if password_lowercase
 
-else := "RHEL-09-611065: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611065", concat(", ", missing_rhel_09_611065)]) if count(missing_rhel_09_611065) > 0
+
+else := "RHEL-09-611065: check failed — lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character)"
 
 finding_rhel_09_611065 := {
 	"vuln_id": "V-258102",
@@ -283,19 +317,19 @@ finding_rhel_09_611065 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611065,
 	"detail": detail_rhel_09_611065,
-	"fix_text": "Set lcredit=-1 in /etc/security/pwquality.conf",
+	"fix_text": "Set lcredit = -1 in /etc/security/pwquality.conf",
 }
 
 # RHEL-09-611070 | V-258103 | CAT II
-# Password must require at least 1 numeric character
+# effective dcredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611070 := [concat(".", p) | some p in [["password_policy", "dcredit"]]; not _collected(p)]
+
 default password_numeric := false
 
 password_numeric if {
-	input.password_policy.dcredit <= -1
-}
-
-password_numeric if {
-	input.password_policy.minclass >= 4
+	count(missing_rhel_09_611070) == 0
+	n := _num(["password_policy", "dcredit"])
+	n <= -1
 }
 
 status_rhel_09_611070 := "Not_a_Finding" if password_numeric
@@ -304,7 +338,9 @@ else := "Open"
 
 detail_rhel_09_611070 := "RHEL-09-611070: Not_a_Finding" if password_numeric
 
-else := "RHEL-09-611070: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611070", concat(", ", missing_rhel_09_611070)]) if count(missing_rhel_09_611070) > 0
+
+else := "RHEL-09-611070: check failed — dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character)"
 
 finding_rhel_09_611070 := {
 	"vuln_id": "V-258103",
@@ -314,15 +350,19 @@ finding_rhel_09_611070 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611070,
 	"detail": detail_rhel_09_611070,
-	"fix_text": "Set dcredit=-1 in /etc/security/pwquality.conf",
+	"fix_text": "Set dcredit = -1 in /etc/security/pwquality.conf",
 }
 
 # RHEL-09-611100 | V-258109 | CAT II
-# Password must require at least 1 special character
+# effective ocredit from /etc/security/pwquality.conf and pwquality.conf.d/*.conf
+missing_rhel_09_611100 := [concat(".", p) | some p in [["password_policy", "ocredit"]]; not _collected(p)]
+
 default password_special := false
 
 password_special if {
-	input.password_policy.ocredit <= -1
+	count(missing_rhel_09_611100) == 0
+	n := _num(["password_policy", "ocredit"])
+	n <= -1
 }
 
 status_rhel_09_611100 := "Not_a_Finding" if password_special
@@ -331,7 +371,9 @@ else := "Open"
 
 detail_rhel_09_611100 := "RHEL-09-611100: Not_a_Finding" if password_special
 
-else := "RHEL-09-611100: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611100", concat(", ", missing_rhel_09_611100)]) if count(missing_rhel_09_611100) > 0
+
+else := "RHEL-09-611100: check failed — ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character)"
 
 finding_rhel_09_611100 := {
 	"vuln_id": "V-258109",
@@ -341,16 +383,20 @@ finding_rhel_09_611100 := {
 	"check_type": "machine",
 	"status": status_rhel_09_611100,
 	"detail": detail_rhel_09_611100,
-	"fix_text": "Set ocredit=-1 in /etc/security/pwquality.conf",
+	"fix_text": "Set ocredit = -1 in /etc/security/pwquality.conf",
 }
 
 # RHEL-09-411010 | V-258041 | CAT II
-# Password maximum age must be 60 days or less
+# PASS_MAX_DAYS as configured in /etc/login.defs
+missing_rhel_09_411010 := [concat(".", p) | some p in [["password_policy", "maxdays"]]; not _collected(p)]
+
 default password_maxage := false
 
 password_maxage if {
-	input.password_policy.maxdays <= 60
-	input.password_policy.maxdays > 0
+	count(missing_rhel_09_411010) == 0
+	n := _num(["password_policy", "maxdays"])
+	n >= 1
+	n <= 180
 }
 
 status_rhel_09_411010 := "Not_a_Finding" if password_maxage
@@ -359,7 +405,9 @@ else := "Open"
 
 detail_rhel_09_411010 := "RHEL-09-411010: Not_a_Finding" if password_maxage
 
-else := "RHEL-09-411010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411010", concat(", ", missing_rhel_09_411010)]) if count(missing_rhel_09_411010) > 0
+
+else := "RHEL-09-411010: check failed — PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)"
 
 finding_rhel_09_411010 := {
 	"vuln_id": "V-258041",
@@ -369,15 +417,19 @@ finding_rhel_09_411010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_411010,
 	"detail": detail_rhel_09_411010,
-	"fix_text": "Set PASS_MAX_DAYS 60 in /etc/login.defs",
+	"fix_text": "Set PASS_MAX_DAYS 180 in /etc/login.defs",
 }
 
 # RHEL-09-611075 | V-258104 | CAT II
-# Password minimum age must be 1 day
+# PASS_MIN_DAYS as configured in /etc/login.defs
+missing_rhel_09_611075 := [concat(".", p) | some p in [["password_policy", "mindays"]]; not _collected(p)]
+
 default password_minage := false
 
 password_minage if {
-	input.password_policy.mindays >= 1
+	count(missing_rhel_09_611075) == 0
+	n := _num(["password_policy", "mindays"])
+	n >= 1
 }
 
 status_rhel_09_611075 := "Not_a_Finding" if password_minage
@@ -386,7 +438,9 @@ else := "Open"
 
 detail_rhel_09_611075 := "RHEL-09-611075: Not_a_Finding" if password_minage
 
-else := "RHEL-09-611075: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611075", concat(", ", missing_rhel_09_611075)]) if count(missing_rhel_09_611075) > 0
+
+else := "RHEL-09-611075: check failed — PASS_MIN_DAYS in /etc/login.defs must be 1 or greater"
 
 finding_rhel_09_611075 := {
 	"vuln_id": "V-258104",
@@ -400,20 +454,37 @@ finding_rhel_09_611075 := {
 }
 
 # RHEL-09-411085 | V-258056 | CAT II
-# Account lockout time must be at least 15 minutes
+# fail_interval as configured in /etc/security/faillock.conf
+missing_rhel_09_411085 := [concat(".", p) | some p in [["faillock_conf", "fail_interval"]]; not _collected(p)]
+
 default lockout_duration_ok := false
 
 lockout_duration_ok if {
-	input.pam_config.lockout_time >= 900 # 900 seconds = 15 minutes
+	count(missing_rhel_09_411085) == 0
+	n := _num(["faillock_conf", "fail_interval"])
+	n >= 1
+	n <= 900
+}
+
+default na_rhel_09_411085 := false
+
+na_rhel_09_411085 if {
+	_attested("rhel_09_411085_central_lockout")
 }
 
 status_rhel_09_411085 := "Not_a_Finding" if lockout_duration_ok
+
+else := "Not_Applicable" if na_rhel_09_411085
 
 else := "Open"
 
 detail_rhel_09_411085 := "RHEL-09-411085: Not_a_Finding" if lockout_duration_ok
 
-else := "RHEL-09-411085: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-411085: Not_Applicable — the SA demonstrated an approved centralized account management method that locks after three failures in 15 minutes" if na_rhel_09_411085
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411085", concat(", ", missing_rhel_09_411085)]) if count(missing_rhel_09_411085) > 0
+
+else := "RHEL-09-411085: check failed — fail_interval in /etc/security/faillock.conf must be 900 or less (not 0)"
 
 finding_rhel_09_411085 := {
 	"vuln_id": "V-258056",
@@ -423,16 +494,20 @@ finding_rhel_09_411085 := {
 	"check_type": "machine",
 	"status": status_rhel_09_411085,
 	"detail": detail_rhel_09_411085,
-	"fix_text": "Set unlock_time=900 in /etc/security/faillock.conf",
+	"fix_text": "Set fail_interval = 900 in /etc/security/faillock.conf",
 }
 
 # RHEL-09-411050 | V-258049 | CAT II
-# Inactive accounts must be disabled after 35 days
+# INACTIVE as configured in /etc/default/useradd
+missing_rhel_09_411050 := [concat(".", p) | some p in [["password_policy", "inactive_days"]]; not _collected(p)]
+
 default inactive_lock_ok := false
 
 inactive_lock_ok if {
-	input.password_policy.inactive_days <= 35
-	input.password_policy.inactive_days >= 0
+	count(missing_rhel_09_411050) == 0
+	n := _num(["password_policy", "inactive_days"])
+	n >= 0
+	n <= 35
 }
 
 status_rhel_09_411050 := "Not_a_Finding" if inactive_lock_ok
@@ -441,7 +516,9 @@ else := "Open"
 
 detail_rhel_09_411050 := "RHEL-09-411050: Not_a_Finding" if inactive_lock_ok
 
-else := "RHEL-09-411050: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411050", concat(", ", missing_rhel_09_411050)]) if count(missing_rhel_09_411050) > 0
+
+else := "RHEL-09-411050: check failed — INACTIVE in /etc/default/useradd must be 0 to 35 (not -1)"
 
 finding_rhel_09_411050 := {
 	"vuln_id": "V-258049",
@@ -455,12 +532,16 @@ finding_rhel_09_411050 := {
 }
 
 # RHEL-09-411030 | V-258045 | CAT II
-# No duplicate UIDs should exist
+# accounts printed by awk -F: 'list[$3]++{print $1, $3}' /etc/passwd, each {name, uid, interactive}
+missing_rhel_09_411030 := [concat(".", p) | some p in [["duplicate_uid_accounts"]]; not _collected(p)]
+
 default no_duplicate_uids := false
 
 no_duplicate_uids if {
-	is_array(input.duplicate_uids)
-	count(input.duplicate_uids) == 0
+	count(missing_rhel_09_411030) == 0
+	accts := input.duplicate_uid_accounts
+	is_array(accts)
+	count([a | some a in accts; not a.interactive == false]) == 0
 }
 
 status_rhel_09_411030 := "Not_a_Finding" if no_duplicate_uids
@@ -469,7 +550,9 @@ else := "Open"
 
 detail_rhel_09_411030 := "RHEL-09-411030: Not_a_Finding" if no_duplicate_uids
 
-else := "RHEL-09-411030: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411030", concat(", ", missing_rhel_09_411030)]) if count(missing_rhel_09_411030) > 0
+
+else := "RHEL-09-411030: check failed — no interactive account in /etc/passwd may share its UID with another account"
 
 finding_rhel_09_411030 := {
 	"vuln_id": "V-258045",
@@ -479,16 +562,20 @@ finding_rhel_09_411030 := {
 	"check_type": "machine",
 	"status": status_rhel_09_411030,
 	"detail": detail_rhel_09_411030,
-	"fix_text": "Identify and resolve duplicate UIDs: awk -F: '{print $3}' /etc/passwd | sort -n | uniq -d",
+	"fix_text": "Give each interactive account a unique UID (usermod -u) and fix file ownership",
 }
 
 # RHEL-09-411110 | V-258061 | CAT II
-# No duplicate GIDs should exist
+# GIDs printed by cut -d : -f 3 /etc/group | uniq -d
+missing_rhel_09_411110 := [concat(".", p) | some p in [["duplicate_gids"]]; not _collected(p)]
+
 default no_duplicate_gids := false
 
 no_duplicate_gids if {
-	is_array(input.duplicate_gids)
-	count(input.duplicate_gids) == 0
+	count(missing_rhel_09_411110) == 0
+	gids := input.duplicate_gids
+	is_array(gids)
+	count(gids) == 0
 }
 
 status_rhel_09_411110 := "Not_a_Finding" if no_duplicate_gids
@@ -497,7 +584,9 @@ else := "Open"
 
 detail_rhel_09_411110 := "RHEL-09-411110: Not_a_Finding" if no_duplicate_gids
 
-else := "RHEL-09-411110: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411110", concat(", ", missing_rhel_09_411110)]) if count(missing_rhel_09_411110) > 0
+
+else := "RHEL-09-411110: check failed — no GID may appear twice in /etc/group"
 
 finding_rhel_09_411110 := {
 	"vuln_id": "V-258061",
@@ -507,7 +596,7 @@ finding_rhel_09_411110 := {
 	"check_type": "machine",
 	"status": status_rhel_09_411110,
 	"detail": detail_rhel_09_411110,
-	"fix_text": "Identify and resolve duplicate GIDs",
+	"fix_text": "Give each group a unique GID (groupmod -g)",
 }
 
 # =============================================================================
