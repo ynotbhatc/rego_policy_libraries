@@ -25,6 +25,11 @@ import rego.v1
 # Implement hardware, software, and/or procedural mechanisms that record and
 # examine activity in information systems that contain or use ePHI.
 #
+# The regulation states the two functions (record, examine) and no event list, log fields, retention period,
+# review interval or tooling. Those library choices are reported in `advisories`, which is not cited to
+# 45 CFR and does not affect `compliant`. (The six-year retention in 164.316(b)(2)(i) applies to the
+# documentation 164.316 requires, not to audit logs as such.)
+#
 # Input shape:
 #   input.audit_logging         - audit logging configuration
 #   input.audit_logs[]          - audit log entries/metadata
@@ -64,107 +69,119 @@ required_audit_events := {
 	"password_change",
 }
 
-violation_audit_content contains msg if {
+advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.audit_logging_enabled
 	some required_event in required_audit_events
 	not required_event in phi_system.audited_events
 	msg := sprintf(
-		"HIPAA 164.312(b): ePHI system '%v' does not audit event type '%v'.",
+		"Advisory (library practice, not a 45 CFR requirement): ePHI system '%v' does not audit event type '%v'.",
 		[phi_system.name, required_event],
 	)
 }
 
-violation_audit_content contains msg if {
+advisories contains msg if {
 	not input.audit_logging.includes_user_id
-	msg := "HIPAA 164.312(b): Audit logs do not capture user identity. Logs must identify who performed each action."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture user identity. Logs must identify who performed each action."
 }
 
-violation_audit_content contains msg if {
+advisories contains msg if {
 	not input.audit_logging.includes_timestamp
-	msg := "HIPAA 164.312(b): Audit logs do not include timestamps. All log entries must be timestamped."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not include timestamps. All log entries must be timestamped."
 }
 
-violation_audit_content contains msg if {
+advisories contains msg if {
 	not input.audit_logging.includes_source_ip
-	msg := "HIPAA 164.312(b): Audit logs do not capture source IP address. Network source must be recorded for ePHI access."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture source IP address. Network source must be recorded for ePHI access."
 }
 
-violation_audit_content contains msg if {
+advisories contains msg if {
 	not input.audit_logging.includes_action_type
-	msg := "HIPAA 164.312(b): Audit logs do not capture action type (read/write/delete). Action type must be recorded."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs do not capture action type (read/write/delete). Action type must be recorded."
 }
 
 # ---------------------------------------------------------------------------
 # Audit log retention
 # ---------------------------------------------------------------------------
 
-violation_audit_retention contains msg if {
+advisories contains msg if {
+	is_number(input.audit_logging.retention_days)
 	input.audit_logging.retention_days < 2190
 	msg := sprintf(
-		"HIPAA 164.312(b): Audit log retention is %v days. HIPAA requires minimum 6 years (2190 days) for audit documentation.",
+		"Advisory (library practice, not a 45 CFR requirement): Audit log retention is %v days. HIPAA requires minimum 6 years (2190 days) for audit documentation.",
 		[input.audit_logging.retention_days],
 	)
 }
 
-violation_audit_retention contains msg if {
+advisories contains msg if {
 	not is_number(object.get(input, ["audit_logging", "retention_days"], null))
-	msg := "HIPAA 164.312(b): evidence missing — audit_logging.retention_days not collected. HIPAA requires minimum 6 years (2190 days) for audit documentation."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — audit_logging.retention_days not collected. HIPAA requires minimum 6 years (2190 days) for audit documentation."
 }
 
-violation_audit_retention contains msg if {
+advisories contains msg if {
 	not input.audit_logging.offsite_backup_enabled
-	msg := "HIPAA 164.312(b): Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not backed up offsite. Log integrity requires backup to prevent tampering or loss."
 }
 
 # ---------------------------------------------------------------------------
 # Audit log integrity
 # ---------------------------------------------------------------------------
 
-violation_audit_integrity contains msg if {
+advisories contains msg if {
 	not input.audit_logging.tamper_evident
-	msg := "HIPAA 164.312(b): Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not tamper-evident. Logs must be protected from modification or deletion."
 }
 
-violation_audit_integrity contains msg if {
+advisories contains msg if {
 	not input.audit_logging.centralized
-	msg := "HIPAA 164.312(b): Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Audit logs are not centralized. Distributed logs increase the risk of incomplete collection and tampering."
 }
 
 # ---------------------------------------------------------------------------
 # Audit log review
 # ---------------------------------------------------------------------------
 
-violation_audit_review contains msg if {
+advisories contains msg if {
+	is_number(input.monitoring.audit_review_frequency_days)
 	input.monitoring.audit_review_frequency_days > 7
 	msg := sprintf(
-		"HIPAA 164.312(b): Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly.",
+		"Advisory (library practice, not a 45 CFR requirement): Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly.",
 		[input.monitoring.audit_review_frequency_days],
 	)
 }
 
-violation_audit_review contains msg if {
-	not is_number(object.get(input, ["monitoring", "audit_review_frequency_days"], null))
-	msg := "HIPAA 164.312(b): evidence missing — monitoring.audit_review_frequency_days not collected. Logs for ePHI systems should be reviewed at least weekly."
+# 164.312(b) requires mechanisms that record AND examine activity. Examination is evidenced by a review being
+# performed or by a positive review interval; the weekly interval itself is a library advisory.
+_review_evidenced if input.monitoring.audit_review_performed == true
+
+_review_evidenced if {
+	x := object.get(input, ["monitoring", "audit_review_frequency_days"], null)
+	is_number(x)
+	x > 0
 }
 
 violation_audit_review contains msg if {
+	not _review_evidenced
+	msg := "HIPAA 164.312(b): evidence missing — no examination of recorded activity is evidenced (monitoring.audit_review_performed or a positive monitoring.audit_review_frequency_days)."
+}
+
+advisories contains msg if {
 	not input.monitoring.automated_alerting_enabled
-	msg := "HIPAA 164.312(b): No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No automated alerting on audit log anomalies. Suspicious ePHI access should trigger immediate alerts."
 }
 
-violation_audit_review contains msg if {
+advisories contains msg if {
 	not input.monitoring.unauthorized_access_alerts
-	msg := "HIPAA 164.312(b): No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No alerts configured for unauthorized ePHI access attempts. Failed access attempts must be monitored."
 }
 
 # ---------------------------------------------------------------------------
 # Audit log for after-hours access
 # ---------------------------------------------------------------------------
 
-violation_after_hours contains msg if {
+advisories contains msg if {
 	not input.monitoring.after_hours_access_alerts
-	msg := "HIPAA 164.312(b): No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No monitoring for after-hours ePHI access. Unusual access times are a key indicator of unauthorized activity."
 }
 
 # ---------------------------------------------------------------------------
@@ -172,11 +189,7 @@ violation_after_hours contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if some msg in violation_audit_enabled
-violations contains msg if some msg in violation_audit_content
-violations contains msg if some msg in violation_audit_retention
-violations contains msg if some msg in violation_audit_integrity
 violations contains msg if some msg in violation_audit_review
-violations contains msg if some msg in violation_after_hours
 
 # Fail-closed: no ePHI systems in scope → cannot certify this safeguard
 violations contains msg if {
@@ -201,11 +214,9 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 	"controls": {
 		"audit_enabled": count(violation_audit_enabled) == 0,
-		"audit_content": count(violation_audit_content) == 0,
-		"audit_retention": count(violation_audit_retention) == 0,
-		"audit_integrity": count(violation_audit_integrity) == 0,
 		"audit_review": count(violation_audit_review) == 0,
 	},
 }

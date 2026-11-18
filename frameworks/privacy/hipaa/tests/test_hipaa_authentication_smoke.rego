@@ -32,26 +32,38 @@ test_semrev_baseline_clean if {
 	count(data.hipaa.authentication.violations) == 0 with input as fx.full_input
 }
 
-test_semrev_password_length_missing_fails if {
+test_semrev_password_length_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["password_policy"]), {"password_policy": object.remove(fx.full_input.password_policy, ["minimum_length"])})
-	v := data.hipaa.authentication.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.authentication.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.authentication.violations) == 0 with input as inp
 }
 
-test_semrev_password_max_age_missing_fails if {
+test_semrev_password_max_age_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["password_policy"]), {"password_policy": object.remove(fx.full_input.password_policy, ["max_age_days"])})
-	v := data.hipaa.authentication.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.authentication.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.authentication.violations) == 0 with input as inp
 }
 
-test_semrev_password_history_missing_fails if {
+test_semrev_password_history_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["password_policy"]), {"password_policy": object.remove(fx.full_input.password_policy, ["history_count"])})
-	v := data.hipaa.authentication.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.authentication.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.authentication.violations) == 0 with input as inp
 }
 
-test_semrev_password_lockout_threshold_missing_fails if {
+test_semrev_password_lockout_threshold_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["password_policy"]), {"password_policy": object.remove(fx.full_input.password_policy, ["lockout_threshold"])})
-	v := data.hipaa.authentication.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.authentication.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.authentication.violations) == 0 with input as inp
 }

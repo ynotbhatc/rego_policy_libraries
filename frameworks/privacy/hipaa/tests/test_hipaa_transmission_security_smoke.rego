@@ -32,14 +32,20 @@ test_semrev_baseline_clean if {
 	count(data.hipaa.transmission_security.violations) == 0 with input as fx.full_input
 }
 
-test_semrev_tls_sslv3_fails if {
+test_semrev_tls_sslv3_is_advisory_only if {
 	inp := object.union(fx.full_input, {"tls": {"minimum_version": "SSLv3"}})
-	v := data.hipaa.transmission_security.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.transmission_security.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.transmission_security.violations) == 0 with input as inp
 }
 
-test_semrev_tls_minimum_missing_fails if {
+test_semrev_tls_minimum_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["tls"]), {"tls": object.remove(fx.full_input.tls, ["minimum_version"])})
-	v := data.hipaa.transmission_security.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.transmission_security.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.transmission_security.violations) == 0 with input as inp
 }

@@ -30,7 +30,6 @@ account_data_protection_policies if {
 	input.pci.data_protection.policies.documented == true
 	input.pci.data_protection.policies.approved == true
 	input.pci.data_protection.policies.current == true
-	input.pci.data_protection.policies.reviewed_annually == true
 }
 
 # Data protection roles and responsibilities

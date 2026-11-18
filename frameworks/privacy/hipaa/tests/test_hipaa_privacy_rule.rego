@@ -84,3 +84,34 @@ test_business_associate_only_scope if {
 	r.applicable == 13
 	r.compliant == true
 }
+
+# Audit 2026-11-17 follow-up: 164.530(b)(2) says "within a reasonable period" and sets no annual refresher.
+test_new_hire_training_within_reasonable_period_without_annual_refresher_passes if {
+	inp := object.union(fx.full_input, {"hipaa": {"privacy": {"workforce": {"training": {
+		"new_hires": {"within_30_days": false, "within_reasonable_period": true},
+		"frequency": {"annual": false},
+	}}}}})
+	count(data.hipaa.privacy_rule.violations) == 0 with input as inp
+	count(data.hipaa.privacy_rule.advisories) == 1 with input as inp
+}
+
+test_new_hire_training_not_evidenced_fails if {
+	inp := object.union(fx.full_input, {"hipaa": {"privacy": {"workforce": {"training": {"new_hires": {"within_30_days": false}}}}}})
+	some v in data.hipaa.privacy_rule.violations with input as inp
+	startswith(v, "HIPAA 164.530(b)(2)")
+}
+
+# 164.520(c): facility posting and web posting apply only where the entity has a delivery site / a website.
+test_npp_no_site_no_website_declared_passes if {
+	inp := object.union(fx.full_input, {"hipaa": {"privacy": {"npp": {
+		"posted_in_facility": false, "no_physical_service_delivery_site": true,
+		"available_on_website": false, "no_customer_service_website": true,
+	}}}})
+	count(data.hipaa.privacy_rule.violations) == 0 with input as inp
+}
+
+test_npp_not_posted_and_site_not_declared_fails if {
+	inp := object.union(fx.full_input, {"hipaa": {"privacy": {"npp": {"posted_in_facility": false}}}})
+	some v in data.hipaa.privacy_rule.violations with input as inp
+	startswith(v, "HIPAA 164.520(c)")
+}

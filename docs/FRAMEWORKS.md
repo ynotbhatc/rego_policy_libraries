@@ -31,7 +31,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | FedRAMP Rev 5 | `frameworks/federal/fedramp/` | Partial: authorization status plus 10–12 FedRAMP Rev 5 baseline controls with FedRAMP parameter values (CA-2, CA-6, CA-7, CA-8, IR-8, PS-3, RA-2, RA-5, SC-13, SR-2; CP-7 at Moderate/High; SA-9(5) at High). Not a baseline assessment: the Rev 5 baselines select 156 (Low, LI-SaaS) / 323 (Moderate) / 410 (High) controls, reported as `baseline_size` beside the evaluated `total_controls` |
 | ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |
 | SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
-| PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
+| PCI DSS v4.0.1 | `frameworks/financial/pci_dss/` | All 12 requirements (one roll-up per requirement; numeric parameters checked against PCI SSC public SAQ D and FAQs; superseded 6.4.1 not gating) |
 | SOX ITGC | `frameworks/financial/sox/` | Full |
 | HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | Full |
 | GDPR | `frameworks/privacy/gdpr/` | Full |

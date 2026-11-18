@@ -45,6 +45,15 @@
 #   attestation  20 controls with no fact check: input.hipaa.specifications["<id>"] == true. For an addressable
 #                specification, true attests the § 164.306(d)(3) decision was made and implemented (the
 #                specification, or a documented equivalent alternative).
+#   addressable  any of the 22 addressable rows (fact-decided or attested) is also satisfied by a documented
+#                § 164.306(d)(3)(ii)(B) decision, input.hipaa.addressable_decisions["<id>"] =
+#                {"not_reasonable_and_appropriate_documented": true, and either
+#                 "equivalent_alternative_implemented": true or "no_reasonable_alternative_documented": true}.
+#                Implementing the specification (the fact check) OR that decision satisfies the row; neither is
+#                a violation. A decision supplied for a required specification, a standard or an unknown id is
+#                an input-contract violation and never satisfies the row (§ 164.306(d)(2)). Technical rows also
+#                need input.phi_systems non-empty. Statuses were re-checked against the eCFR current text of
+#                §§ 164.308-164.316 on 2026-11-17 (22 addressable, 24 required, as tabled below).
 #   164.308(a)(1)(i), 164.308(a)(3)(i), 164.308(a)(5)(ii)(A), 164.308(a)(7)(i), 164.310(a)(1), 164.310(d)(1),
 #   164.314(a)(1), 164.314(a)(2)(i), 164.314(a)(2)(ii), 164.314(a)(2)(iii), 164.314(b)(1), 164.314(b)(2)(i),
 #   164.314(b)(2)(ii), 164.314(b)(2)(iii), 164.314(b)(2)(iv), 164.316(a), 164.316(b)(1), 164.316(b)(2)(i),
@@ -226,7 +235,7 @@ nist_800_66_r2_key_activities := {
 
 # Which rows are decided by facts, and by which facts.
 fact_basis := {
-	"164.308(a)(1)(ii)(A)": "input.hipaa.administrative.security_management.risk_analysis.{conducted,documented} true and frequency_months <= 12",
+	"164.308(a)(1)(ii)(A)": "input.hipaa.administrative.security_management.risk_analysis.{conducted,documented}",
 	"164.308(a)(1)(ii)(B)": "input.hipaa.administrative.security_management.risk_management.implemented",
 	"164.308(a)(1)(ii)(C)": "input.hipaa.administrative.security_management.sanction_policy.established",
 	"164.308(a)(1)(ii)(D)": "input.hipaa.administrative.security_management.activity_review.conducted",
@@ -238,25 +247,25 @@ fact_basis := {
 	"164.308(a)(4)(ii)(A)": "input.hipaa.administrative.access_management.isolating_clearinghouse_functions.addressed",
 	"164.308(a)(4)(ii)(B)": "input.hipaa.administrative.access_management.access_authorization.implemented",
 	"164.308(a)(4)(ii)(C)": "input.hipaa.administrative.access_management.access_establishment.implemented",
-	"164.308(a)(5)(i)": "input.hipaa.administrative.training.{program.implemented,new_hires.required} true and frequency_months <= 12",
+	"164.308(a)(5)(i)": "input.hipaa.administrative.training.{program.implemented,new_hires.required}",
 	"164.308(a)(5)(ii)(B)": "input.hipaa.administrative.training.malicious_software.covered",
 	"164.308(a)(5)(ii)(C)": "input.hipaa.administrative.training.log_in_monitoring.covered",
 	"164.308(a)(5)(ii)(D)": "input.hipaa.administrative.training.password_management.covered",
-	"164.308(a)(6)(i)": "input.hipaa.administrative.incident_response.{breach_notification.procedures_defined,forensic_capability.available}",
+	"164.308(a)(6)(i)": "input.hipaa.administrative.incident_response.response_procedures.implemented (policies and procedures to address security incidents)",
 	"164.308(a)(6)(ii)": "input.hipaa.administrative.incident_response.{response_procedures.implemented,reporting.implemented}",
 	"164.308(a)(7)(ii)(A)": "input.hipaa.administrative.contingency.data_backup.plan_implemented",
 	"164.308(a)(7)(ii)(B)": "input.hipaa.administrative.contingency.disaster_recovery.plan_implemented",
 	"164.308(a)(7)(ii)(C)": "input.hipaa.administrative.contingency.emergency_mode.plan_implemented",
-	"164.308(a)(7)(ii)(D)": "input.hipaa.administrative.contingency.testing.performed true and testing.frequency_months <= 12",
+	"164.308(a)(7)(ii)(D)": "input.hipaa.administrative.contingency.testing.performed",
 	"164.308(a)(7)(ii)(E)": "input.hipaa.administrative.contingency.applications.criticality_analysis_performed",
-	"164.308(a)(8)": "input.hipaa.administrative.evaluation.{periodic_technical.performed,environmental_operations_changes.trigger_review} true and frequency_months <= 12",
-	"164.308(b)(1)": "input.hipaa.administrative.business_associates.{contracts.required,inventory.maintained,compliance.monitored}",
+	"164.308(a)(8)": "input.hipaa.administrative.evaluation.{periodic_technical.performed,environmental_operations_changes.trigger_review}",
+	"164.308(b)(1)": "input.hipaa.administrative.business_associates.contracts.required",
 	"164.308(b)(3)": "input.hipaa.administrative.business_associates.contracts.phi_safeguards.required",
 	"164.310(a)(2)(i)": "input.hipaa.physical.facility_access.contingency_operations.addressed",
 	"164.310(a)(2)(ii)": "input.hipaa.physical.facility_access.facility_security_plan.implemented",
 	"164.310(a)(2)(iii)": "input.hipaa.physical.facility_access.access_control.implemented",
 	"164.310(a)(2)(iv)": "input.hipaa.physical.facility_access.maintenance_records.tracked",
-	"164.310(b)": "input.hipaa.physical.workstation_use.{policies.implemented,physical_access.restricted,screen_lock.configured}",
+	"164.310(b)": "input.hipaa.physical.workstation_use.policies.implemented",
 	"164.310(c)": "input.hipaa.physical.workstation_security.{physical_safeguards.implemented,ephi_access.restricted}",
 	"164.310(d)(2)(i)": "input.hipaa.physical.device_media.disposal.{procedures_implemented,ephi_wiped}",
 	"164.310(d)(2)(ii)": "input.hipaa.physical.device_media.media_reuse.sanitization_implemented",
@@ -307,7 +316,6 @@ _le(x, n) if {
 _fact_pass contains "164.308(a)(1)(ii)(A)" if {
 	_adm.security_management.risk_analysis.conducted == true
 	_adm.security_management.risk_analysis.documented == true
-	_le(_adm.security_management.risk_analysis.frequency_months, 12)
 }
 
 _fact_pass contains "164.308(a)(1)(ii)(B)" if _adm.security_management.risk_management.implemented == true
@@ -341,7 +349,6 @@ _fact_pass contains "164.308(a)(4)(ii)(C)" if _adm.access_management.access_esta
 
 _fact_pass contains "164.308(a)(5)(i)" if {
 	_adm.training.program.implemented == true
-	_le(_adm.training.frequency_months, 12)
 	_adm.training.new_hires.required == true
 }
 
@@ -351,10 +358,7 @@ _fact_pass contains "164.308(a)(5)(ii)(C)" if _adm.training.log_in_monitoring.co
 
 _fact_pass contains "164.308(a)(5)(ii)(D)" if _adm.training.password_management.covered == true
 
-_fact_pass contains "164.308(a)(6)(i)" if {
-	_adm.incident_response.breach_notification.procedures_defined == true
-	_adm.incident_response.forensic_capability.available == true
-}
+_fact_pass contains "164.308(a)(6)(i)" if _adm.incident_response.response_procedures.implemented == true
 
 _fact_pass contains "164.308(a)(6)(ii)" if {
 	_adm.incident_response.response_procedures.implemented == true
@@ -369,22 +373,16 @@ _fact_pass contains "164.308(a)(7)(ii)(C)" if _adm.contingency.emergency_mode.pl
 
 _fact_pass contains "164.308(a)(7)(ii)(D)" if {
 	_adm.contingency.testing.performed == true
-	_le(_adm.contingency.testing.frequency_months, 12)
 }
 
 _fact_pass contains "164.308(a)(7)(ii)(E)" if _adm.contingency.applications.criticality_analysis_performed == true
 
 _fact_pass contains "164.308(a)(8)" if {
 	_adm.evaluation.periodic_technical.performed == true
-	_le(_adm.evaluation.frequency_months, 12)
 	_adm.evaluation.environmental_operations_changes.trigger_review == true
 }
 
-_fact_pass contains "164.308(b)(1)" if {
-	_adm.business_associates.contracts.required == true
-	_adm.business_associates.inventory.maintained == true
-	_adm.business_associates.compliance.monitored == true
-}
+_fact_pass contains "164.308(b)(1)" if _adm.business_associates.contracts.required == true
 
 _fact_pass contains "164.308(b)(3)" if _adm.business_associates.contracts.phi_safeguards.required == true
 
@@ -396,10 +394,45 @@ _fact_pass contains "164.310(a)(2)(iii)" if _phy.facility_access.access_control.
 
 _fact_pass contains "164.310(a)(2)(iv)" if _phy.facility_access.maintenance_records.tracked == true
 
-_fact_pass contains "164.310(b)" if {
-	_phy.workstation_use.policies.implemented == true
-	_phy.workstation_use.physical_access.restricted == true
-	_phy.workstation_use.screen_lock.configured == true
+_fact_pass contains "164.310(b)" if _phy.workstation_use.policies.implemented == true
+
+# -----------------------------------------------------------------------------
+# Advisories: library practice the regulation does not state (annual cadences for risk analysis, training,
+# contingency-plan testing and evaluation; forensic capability; BA inventory and monitoring; workstation
+# screen lock). Not cited to 45 CFR; they do not affect `compliant` (audit 2026-11-17 follow-up).
+# -----------------------------------------------------------------------------
+_adv := "Advisory (library practice, not a 45 CFR requirement): "
+
+_annual_paths := {
+	"risk analysis": ["security_management", "risk_analysis", "frequency_months"],
+	"security awareness training": ["training", "frequency_months"],
+	"contingency plan testing": ["contingency", "testing", "frequency_months"],
+	"evaluation": ["evaluation", "frequency_months"],
+}
+
+advisories contains msg if {
+	some what, path in _annual_paths
+	not _le(object.get(_adm, path, null), 12)
+	msg := sprintf("%vthe library suggests %v at least every 12 months; administrative.%v is %v", [_adv, what, concat(".", path), object.get(_adm, path, "not collected")])
+}
+
+advisories contains msg if {
+	not _adm.incident_response.forensic_capability.available == true
+	msg := concat("", [_adv, "forensic capability for security incidents is not evidenced (administrative.incident_response.forensic_capability.available)"])
+}
+
+advisories contains msg if {
+	some k in ["inventory", "compliance"]
+	f := {"inventory": "maintained", "compliance": "monitored"}[k]
+	not _adm.business_associates[k][f] == true
+	msg := sprintf("%vbusiness associate %v %v is not evidenced (administrative.business_associates.%v.%v)", [_adv, k, f, k, f])
+}
+
+advisories contains msg if {
+	some k in ["physical_access", "screen_lock"]
+	f := {"physical_access": "restricted", "screen_lock": "configured"}[k]
+	not _phy.workstation_use[k][f] == true
+	msg := sprintf("%vworkstation %v %v is not evidenced (physical.workstation_use.%v.%v)", [_adv, k, f, k, f])
 }
 
 _fact_pass contains "164.310(c)" if {
@@ -611,6 +644,55 @@ _satisfied(id) if {
 	_attested(id)
 }
 
+# § 164.306(d)(3)(ii)(B): an addressable specification not implemented, with the reason documented and an
+# equivalent alternative implemented (or the absence of a reasonable alternative documented).
+_decisions := d if {
+	d := object.get(input, ["hipaa", "addressable_decisions"], {})
+	is_object(d)
+}
+
+_alternative_documented(id) if {
+	specifications[id].status == "addressable"
+	d := _decisions[id]
+	is_object(d)
+	d.not_reasonable_and_appropriate_documented == true
+	_alternative_or_none(d)
+}
+
+_alternative_or_none(d) if d.equivalent_alternative_implemented == true
+
+_alternative_or_none(d) if d.no_reasonable_alternative_documented == true
+
+_scope_ok_for(id) if not technical_rows[id]
+
+_scope_ok_for(_) if _ephi_scope_declared
+
+_satisfied(id) if {
+	applicable[id]
+	_alternative_documented(id)
+	_scope_ok_for(id)
+}
+
+violations contains msg if {
+	some id, _ in _decisions
+	not specifications[id]
+	msg := sprintf("HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries", [id])
+}
+
+violations contains msg if {
+	some id, _ in _decisions
+	specifications[id].status != "addressable"
+	msg := sprintf("HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented", [id, specifications[id].status])
+}
+
+violations contains "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object" if {
+	not is_object(object.get(input, ["hipaa", "addressable_decisions"], {}))
+}
+
+_alternative_bool(id) if _alternative_documented(id)
+
+else := false
+
 _unmet(id) := sprintf("fact check failed - %v", [fact_basis[id]]) if fact_basis[id]
 
 else := sprintf("not attested - input.hipaa.specifications[\"%v\"] must be true", [id])
@@ -654,6 +736,7 @@ row_status[id] := s if {
 		"basis": _basis(id),
 		"attested": _attested_bool(id),
 		"satisfied": _satisfied_bool(id),
+		"addressed_by_alternative": _alternative_bool(id),
 	}
 }
 
@@ -694,6 +777,7 @@ report := {
 	"standards": count({id | some id; r := specifications[id]; r.status == "standard"}),
 	"required_specifications": count({id | some id; r := specifications[id]; r.status == "required"}),
 	"addressable_specifications": count({id | some id; r := specifications[id]; r.status == "addressable"}),
+	"addressed_by_alternative": sort([id | some id, _ in applicable; _alternative_documented(id)]),
 	"fact_evaluated": count(fact_basis),
 	"attested": count(specifications) - count(fact_basis),
 	"applicable": _n_applicable,
@@ -707,4 +791,5 @@ report := {
 	"technical_modules": technical_module_reports,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 }

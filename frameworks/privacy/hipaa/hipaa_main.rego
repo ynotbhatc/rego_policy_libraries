@@ -117,8 +117,24 @@ sections := {
 	"privacy_rule": _part(privacy_rule_compliant, privacy_rule.report),
 }
 
+# Library practice the regulation does not state, from every module that reports it. Never part of
+# `compliant` or the violation count (audit 2026-11-17).
+_advisory_sets := [
+	data.hipaa.access_control.advisories,
+	data.hipaa.audit_controls.advisories,
+	data.hipaa.authentication.advisories,
+	data.hipaa.integrity.advisories,
+	data.hipaa.transmission_security.advisories,
+	security_rule.advisories,
+	privacy_rule.advisories,
+	hitech.advisories,
+]
+
+advisories := {a | some set in _advisory_sets; some a in set}
+
 report := {
 	"standard": "HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164) + HITECH Act",
+	"advisories": advisories,
 	"overall_compliant": overall_compliant,
 	"compliant": overall_compliant,
 	"domains": sections,

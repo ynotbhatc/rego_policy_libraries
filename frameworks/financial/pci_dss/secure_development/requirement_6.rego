@@ -1,7 +1,7 @@
-# PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software
+# PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software"
+# title: "PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software"
 # custom:
 #   class: compliance
 #   framework: pci_dss
@@ -20,15 +20,27 @@ package pci_dss.secure_development.requirement_6
 
 import rego.v1
 
+# Parameters checked on 2026-11-17 against PCI SSC's public SAQ D for Service Providers (v4.0) rows 6.1.1-6.5.6
+# and FAQ 1593 (6.4.1 superseded by 6.4.2). The 6.3.3 critical-only window follows v4.0.1 per secondary
+# sources and is used only to relax. Implementation choices the standard does not require (WAF rule sets,
+# SAST/DAST, SCA licence checks, a 30-day scan cadence, specific coding techniques) do not gate
+# pci_requirement_6_compliant; they remain as informational rules (audit 2026-11-17 follow-up).
+
+_num_le(x, n) if {
+	is_number(x)
+	x <= n
+}
+
 # =================================================================
 # 6.1 - Processes and mechanisms for secure systems and software
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 secure_development_policies_established if {
 	input.pci.secure_development.policies.documented == true
 	input.pci.secure_development.policies.approved == true
 	input.pci.secure_development.policies.current == true
-	input.pci.secure_development.policies.reviewed_annually == true
 }
 
 secure_development_roles_defined if {
@@ -51,8 +63,7 @@ secure_sdlc_implemented if {
 # Developer security training
 developer_security_training if {
 	input.pci.developer_training.secure_coding.conducted == true
-	input.pci.developer_training.frequency_months <= 12
-	input.pci.developer_training.owasp_top10.covered == true
+	_num_le(input.pci.developer_training.frequency_months, 12) # 6.2.2 at least once every 12 months
 	input.pci.developer_training.records.maintained == true
 }
 
@@ -77,6 +88,10 @@ bespoke_code_review if {
 # =================================================================
 
 # Injection attacks prevention (SQLi, command injection, LDAP injection, etc.)
+# 6.2.4: techniques or other methods are defined and in use for this attack class; the listed techniques are
+# one way, input.pci.secure_coding.injection.techniques_defined_and_in_use the other.
+injection_attacks_prevented if input.pci.secure_coding.injection.techniques_defined_and_in_use == true
+
 injection_attacks_prevented if {
 	input.pci.secure_coding.sql_injection.input_validation == true
 	input.pci.secure_coding.sql_injection.parameterized_queries == true
@@ -85,6 +100,10 @@ injection_attacks_prevented if {
 }
 
 # XSS attack prevention
+# 6.2.4: techniques or other methods are defined and in use for this attack class; the listed techniques are
+# one way, input.pci.secure_coding.xss.techniques_defined_and_in_use the other.
+xss_attacks_prevented if input.pci.secure_coding.xss.techniques_defined_and_in_use == true
+
 xss_attacks_prevented if {
 	input.pci.secure_coding.xss.output_encoding == true
 	input.pci.secure_coding.xss.input_validation == true
@@ -92,6 +111,10 @@ xss_attacks_prevented if {
 }
 
 # Authentication / session management attacks prevented
+# 6.2.4: techniques or other methods are defined and in use for this attack class; the listed techniques are
+# one way, input.pci.secure_coding.authentication.techniques_defined_and_in_use the other.
+authentication_attacks_prevented if input.pci.secure_coding.authentication.techniques_defined_and_in_use == true
+
 authentication_attacks_prevented if {
 	input.pci.secure_coding.authentication.secure_session_management == true
 	input.pci.secure_coding.authentication.session_fixation.prevented == true
@@ -100,6 +123,10 @@ authentication_attacks_prevented if {
 }
 
 # Memory corruption attacks prevented
+# 6.2.4: techniques or other methods are defined and in use for this attack class; the listed techniques are
+# one way, input.pci.secure_coding.memory.techniques_defined_and_in_use the other.
+memory_corruption_prevented if input.pci.secure_coding.memory.techniques_defined_and_in_use == true
+
 memory_corruption_prevented if {
 	input.pci.secure_coding.memory.buffer_overflow.prevented == true
 	input.pci.secure_coding.memory.heap_spray.mitigated == true
@@ -107,6 +134,10 @@ memory_corruption_prevented if {
 }
 
 # Insecure cryptography usage prevented
+# 6.2.4: techniques or other methods are defined and in use for this attack class; the listed techniques are
+# one way, input.pci.secure_coding.cryptography.techniques_defined_and_in_use the other.
+insecure_cryptography_prevented if input.pci.secure_coding.cryptography.techniques_defined_and_in_use == true
+
 insecure_cryptography_prevented if {
 	input.pci.secure_coding.cryptography.weak_algorithms.not_used == true
 	input.pci.secure_coding.cryptography.approved_libraries.used == true
@@ -117,22 +148,36 @@ insecure_cryptography_prevented if {
 # 6.3 - Security vulnerabilities are identified and addressed
 # =================================================================
 
-# Security patch management
+# Security patch management (6.3.3). PCI DSS v4.0.1 limits the one-month installation window to patches for
+# critical vulnerabilities (v4.0 also named high-security patches); all other applicable patches are
+# installed within a time frame the entity determines. Either the former high-within-30-days evidence or
+# evidence that the entity-defined time frame is met satisfies the second condition.
+_other_patches_timely if input.pci.patch_management.high_patches.applied_within_30_days == true
+
+_other_patches_timely if input.pci.patch_management.other_patches.entity_defined_timeframe.met == true
+
 security_patch_management if {
 	input.pci.patch_management.process.documented == true
 	input.pci.patch_management.critical_patches.applied_within_30_days == true
-	input.pci.patch_management.high_patches.applied_within_30_days == true
+	_other_patches_timely
 	input.pci.patch_management.testing.required_before_deployment == true
 	input.pci.patch_management.rollback.procedures_defined == true
 }
 
 # Vulnerability identification for in-scope systems
-vulnerability_identification if {
-	input.pci.vulnerability_management.scanning.internal.performed == true
-	input.pci.vulnerability_management.scanning.external.performed == true
-	input.pci.vulnerability_management.scanning.frequency_days <= 30
+# 6.3.1: new vulnerabilities identified from industry-recognised sources (CERT alerts among them) and given a
+# risk ranking that identifies at least high-risk and critical ones. Scanning cadence is 11.3 (every three
+# months), not 6.3.1; the former 30-day scan check no longer gates this control.
+_industry_sources_monitored if input.pci.vulnerability_management.industry_sources.monitored == true
+
+_industry_sources_monitored if {
 	input.pci.vulnerability_management.cve_tracking.enabled == true
 	input.pci.vulnerability_management.nvd.monitored == true
+}
+
+vulnerability_identification if {
+	_industry_sources_monitored
+	input.pci.vulnerability_management.risk_ranking.assigned == true
 }
 
 # =================================================================
@@ -142,16 +187,14 @@ vulnerability_identification if {
 software_inventory_maintained if {
 	input.pci.software_inventory.bespoke.documented == true
 	input.pci.software_inventory.third_party.documented == true
-	input.pci.software_inventory.versions.tracked == true
-	input.pci.software_inventory.vulnerabilities.tracked == true
-	input.pci.software_inventory.regularly_reviewed == true
 }
 
 # =================================================================
 # 6.4 - Public-facing web applications are protected against attacks
 # =================================================================
 
-# Web Application Firewall (WAF) in place
+# Web Application Firewall (WAF) with specific rule sets: one way to meet 6.4.2, not a requirement. Reported
+# for information; it does not gate requirement 6.
 waf_implemented if {
 	# Only required if public-facing web apps are in scope
 	input.pci.public_web_apps.in_scope == false
@@ -171,24 +214,32 @@ automated_attack_detection if {
 } else if {
 	input.pci.public_web_apps.in_scope
 	input.pci.automated_detection.waf_or_vapt.implemented == true
-	input.pci.automated_detection.active_blocking.enabled == true
+	_blocks_or_alerts
 	input.pci.automated_detection.logging.configured == true
 }
 
-# Penetration testing of web applications
+# 6.4.2: configured to block web-based attacks OR to alert with immediate investigation.
+_blocks_or_alerts if input.pci.automated_detection.active_blocking.enabled == true
+
+_blocks_or_alerts if input.pci.automated_detection.alerts.immediately_investigated == true
+
+# Penetration testing / review of web applications: the 6.4.1 "review or automated solution" path,
+# superseded by 6.4.2 after 31 March 2025 (PCI SSC FAQ 1593). Reported for information only; it no longer
+# gates pci_requirement_6_compliant or counts in the score. 6.4.2 is automated_attack_detection above.
 web_app_pen_testing if {
 	input.pci.public_web_apps.in_scope == false
 } else if {
 	input.pci.public_web_apps.in_scope
 	input.pci.penetration_testing.web_app.performed == true
-	input.pci.penetration_testing.web_app.frequency_months <= 12
+	_num_le(input.pci.penetration_testing.web_app.frequency_months, 12)
 	input.pci.penetration_testing.web_app.owasp_top10.tested == true
 	input.pci.penetration_testing.web_app.remediation.tracked == true
 	input.pci.penetration_testing.web_app.qualified_personnel == true
 }
 
 # =================================================================
-# Static and Dynamic Application Security Testing
+# Static and Dynamic Application Security Testing, software composition analysis: not PCI DSS requirements
+# (6.2.3 code review and 6.3.2 inventory are). Informational; they do not gate requirement 6.
 # =================================================================
 
 sast_dast_implemented if {
@@ -267,10 +318,7 @@ pci_requirement_6_compliant if {
 	security_patch_management
 	vulnerability_identification
 	software_inventory_maintained
-	waf_implemented
-	web_app_pen_testing
-	sast_dast_implemented
-	software_composition_analysis
+	automated_attack_detection
 }
 
 default pci_requirement_6_score := 0
@@ -293,10 +341,7 @@ pci_requirement_6_score := score if {
 		security_patch_management,
 		vulnerability_identification,
 		software_inventory_maintained,
-		waf_implemented,
-		web_app_pen_testing,
-		sast_dast_implemented,
-		software_composition_analysis,
+		automated_attack_detection,
 	]
 	passed := count([c | some c in controls; c == true])
 	total := count(controls)
@@ -327,11 +372,11 @@ pci_requirement_6_findings := {
 		"software_inventory": software_inventory_maintained,
 	},
 	"requirement_6_4": {
-		"waf_implemented": waf_implemented,
 		"automated_attack_detection": automated_attack_detection,
-		"web_app_pen_testing": web_app_pen_testing,
+		"web_app_pen_testing_6_4_1_superseded": web_app_pen_testing,
 	},
-	"enhanced_controls": {
+	"informational_not_required": {
+		"waf_with_rule_sets": waf_implemented,
 		"sast_dast": sast_dast_implemented,
 		"software_composition_analysis": software_composition_analysis,
 	},
