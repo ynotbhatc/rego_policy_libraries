@@ -168,6 +168,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
+	is_number(input.tls.certificate_expiry_days)
 	input.tls.certificate_expiry_days < 30
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure.",

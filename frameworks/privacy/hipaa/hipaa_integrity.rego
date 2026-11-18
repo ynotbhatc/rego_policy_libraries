@@ -88,6 +88,7 @@ violation_data_integrity contains msg if {
 advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.integrity_checking_enabled
+	is_number(phi_system.integrity_check_frequency_hours)
 	phi_system.integrity_check_frequency_hours > 24
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): System '%v' integrity checks run every %v hours. Daily or more frequent checks are required for ePHI.",
@@ -157,6 +158,7 @@ advisories contains msg if {
 
 advisories contains msg if {
 	input.backup.regular_backups_enabled
+	is_number(input.backup.backup_frequency_hours)
 	input.backup.backup_frequency_hours > 24
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): ePHI is backed up every %v hours. Daily backups are the recommended minimum.",
@@ -182,6 +184,7 @@ advisories contains msg if {
 
 advisories contains msg if {
 	input.backup.restore_tested
+	is_number(input.backup.restore_test_days)
 	input.backup.restore_test_days > 90
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): ePHI backup restore test is %v days old. Test restoration at least quarterly.",

@@ -128,6 +128,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
+	is_number(input.access_controls.emergency_accounts_reviewed_days)
 	input.access_controls.emergency_accounts_reviewed_days > 90
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): emergency access accounts have not been reviewed in %v days (library practice: 90 days).",
@@ -158,6 +159,7 @@ violation_automatic_logoff contains msg if {
 # minutes is the evidence. Longer than 15 minutes is a library advisory only.
 advisories contains msg if {
 	input.session.automatic_logoff_enabled
+	is_number(input.session.inactivity_timeout_minutes)
 	input.session.inactivity_timeout_minutes > 15
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): automatic logoff timeout is %v minutes; the library suggests at most 15 minutes for systems with ePHI access.",
@@ -219,6 +221,7 @@ advisories contains msg if {
 # Key rotation: 45 CFR 164.312(a)(2)(iv) sets no rotation period. Kept as a library advisory, not cited to
 # the regulation and not part of `compliant` (audit 2026-11-17, finding 6).
 advisories contains msg if {
+	is_number(input.encryption.key_rotation_days)
 	input.encryption.key_rotation_days > 365
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): encryption keys have not been rotated in %v days; the library suggests annual rotation.",
@@ -265,6 +268,7 @@ advisories contains msg if {
 advisories contains msg if {
 	some user in input.users
 	user.phi_access == true
+	is_number(user.last_access_review_days)
 	user.last_access_review_days > 90
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): user '%v' ePHI access has not been reviewed in %v days (library practice: 90 days).",

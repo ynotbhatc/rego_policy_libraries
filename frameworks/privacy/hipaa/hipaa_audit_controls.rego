@@ -105,6 +105,7 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
+	is_number(input.audit_logging.retention_days)
 	input.audit_logging.retention_days < 2190
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Audit log retention is %v days. HIPAA requires minimum 6 years (2190 days) for audit documentation.",
@@ -141,6 +142,7 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
+	is_number(input.monitoring.audit_review_frequency_days)
 	input.monitoring.audit_review_frequency_days > 7
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Audit logs are reviewed every %v days. Logs for ePHI systems should be reviewed at least weekly.",

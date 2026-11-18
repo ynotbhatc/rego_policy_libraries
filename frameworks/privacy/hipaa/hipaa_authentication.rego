@@ -71,6 +71,7 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
+	is_number(input.password_policy.minimum_length)
 	input.password_policy.minimum_length < 12
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Minimum password length is %v characters. HIPAA guidance recommends minimum 12 characters for ePHI systems.",
@@ -104,6 +105,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
+	is_number(input.password_policy.max_age_days)
 	input.password_policy.max_age_days > 90
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days.",
@@ -112,6 +114,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
+	is_number(input.password_policy.history_count)
 	input.password_policy.history_count < 12
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse.",
@@ -120,6 +123,7 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
+	is_number(input.password_policy.lockout_threshold)
 	input.password_policy.lockout_threshold > 5
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems.",

@@ -126,3 +126,12 @@ test_report_carries_advisories_and_alternatives if {
 	is_set(r.advisories)
 	count(r.addressed_by_alternative) == 0
 }
+
+# String values are not numbers: "900" must not be read as a rotation age (OPA orders strings above numbers).
+test_string_rotation_age_is_reported_as_not_collected if {
+	inp := object.union(fx.full_input, {"encryption": {"key_rotation_days": "900"}})
+	adv := ac.advisories with input as inp
+	count(adv) == 1
+	some a in adv
+	contains(a, "key_rotation_days not collected")
+}
