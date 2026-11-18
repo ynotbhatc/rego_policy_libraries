@@ -33,7 +33,7 @@ content — tooling that regenerates it from DISA's own XCCDF data.
 - `parse_xccdf.py <key>=<Manual-xccdf.xml> …` — the parse loop as a script: writes
   `catalogs/<key>.json` (benchmark, version, release date, rules with full check
   text and CCI idents). Catalogs are gitignored; regenerate from the compilation.
-- `gen_oracle_linux.py` — derives `oracle_linux_9` from the RHEL 9 modules and
+- `gen_oracle_linux.py` — **retired 2026-11-18 (refuses to run)**; it derived `oracle_linux_9` from the RHEL 9 modules and
   `oracle_linux_8` from those, by DISA rule title (never by the library's own
   stig_id — see the RHEL 9 id defect in `benchmarks/stig/README.md`). Every
   fuzzy pair is printed; reviewed overrides and refusals live in `PLATFORMS`.
@@ -52,7 +52,7 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   Rewrites ids, vuln ids, severities, titles, `status_`/`finding_` names, the CAT grouping and the
   aggregation lists; renames the ids in the section tests and reports tests that name a retired rule.
   A block that is neither mapped nor an exact title match aborts the run with the closest titles.
-- `gen_oracle_linux.py rhel_10` — RHEL 10 V1R2 derived from the re-stamped RHEL 9 modules the same way
+- (retired) `gen_oracle_linux.py rhel_10` — RHEL 10 V1R2 derived from the re-stamped RHEL 9 modules the same way
   as Oracle Linux (no argument still means the two Oracle platforms).
 - `gen_linux.py` also emits `ubuntu_24_04` (the 22.04 table re-keyed via `UBTU_22_TO_24`) and now reads
   the current catalog shape (`version` "V2R10", `release` "10", `release_date`, raw `severity`), writes
@@ -70,8 +70,16 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   `make coverage` block) and the aggregation tail are carried over from the file; output is formatted with
   `opa fmt`, so `opa` must be on PATH.
   `stamp_catalog.py rhel_9` is refused from now on (its MAP keys on the pre-stamp ids).
-- The derived modules (`gen_oracle_linux.py`: oracle_linux_9, oracle_linux_8, rhel_10) copy the RHEL 9 blocks;
-  they pick up the reviewed logic, and its input contract, the next time they are regenerated.
+- Other Linux platforms (2026-11-18): `gen_rhel9.py <platform>` generates `oracle_linux_9` (table `ol9_rules.py`)
+  with the same machinery and the same generated tests. A platform table is built rule by rule against the
+  platform's OWN check text (`linux_stig_table.py`): `T.reuse(<id>, <RHEL 9 id>)` only where the check is the
+  same check as the reviewed RHEL 9 rule (same setting, file or command, expected value and comparison; the
+  RHEL 9 id, rule ident and attestation keys are rewritten to the platform's), `T.R(...)` for the platform's own
+  logic. A section carries only the helpers its rules reference. The generator refuses a non-RHEL 9 module that
+  still contains a RHEL 9 id or key. A rule whose green state is its Not Applicable clause (e.g. the TFTP
+  secure-mode rule beside "tftp-server not installed") declares `green_na`: the shared fixture holds the N/A
+  state and the rule's pass fixture is applied on top in its own tests.
+  The by-title derivation (`gen_oracle_linux.py`) put ids on the wrong settings and is retired: it exits 1.
 
 ## Lessons encoded
 
