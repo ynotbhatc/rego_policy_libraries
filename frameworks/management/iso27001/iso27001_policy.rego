@@ -66,7 +66,7 @@
 #     A.8.20  communications_security.network_controls (A.13.1.1), communications_security.network_management_secure
 #     A.8.21  communications_security.network_services_secure (A.13.1.2)
 #     A.8.22  communications_security.network_segregation (A.13.1.3)
-#     A.8.24  cryptography.cryptographic_policy (A.10.1.1, attestation), cryptography.key_management (A.10.1.2, attestation), cryptography.data_encryption (mixed), cryptography.digital_signatures (attestation), cryptography.algorithm_compliance (observed)
+#     A.8.24  cryptography.cryptographic_policy (A.10.1.1, attestation), cryptography.key_management (A.10.1.2, attestation against the organisation's own key-lifetime rule), cryptography.algorithm_compliance (observed against the organisation's approved list)
 #     A.8.25  system_acquisition_maintenance.secure_development_policy (A.14.2.1)
 #     A.8.26  system_acquisition_maintenance.public_network_services_secure (A.14.1.2), system_acquisition_maintenance.transaction_protection (A.14.1.3)
 #     A.8.27  system_acquisition_maintenance.secure_engineering_principles (A.14.2.5)
@@ -89,6 +89,12 @@
 #                A.7.13, A.7.14, A.8.1, A.8.9, A.8.10, A.8.11, A.8.12, A.8.14, A.8.23, A.8.28
 #   unmapped      module checks that gate neither their own module nor a control here (listed in
 #                 unmapped_fact_rules; they still appear in each module's compliance_details).
+# Organisation-defined values: periods, counts and percentages the fact modules compare against
+# (password length and history, review intervals, session and idle timeouts, failed-logon limit, log and
+# backup retention, backup-test interval, antivirus coverage and signature age, clock drift, scan
+# interval, patch times, penetration-test interval, maximum key lifetime) are the organisation's own
+# stated values in input.iso27001.org_defined.<name>; the library fixes none. A missing value fails
+# the check that needs it.
 # Missing or non-object input.iso27001.annex_a is a FAIL-CLOSED violation; a failed fact check, a
 # non-true attestation, an unknown id or a 2013-era id is a violation.
 #
@@ -1159,14 +1165,13 @@ fact_checks := {
 	"A.8.21": [{"pkg": "communications_security", "rule": "network_services_secure", "iso2013": "A.13.1.2"}],
 	"A.8.22": [{"pkg": "communications_security", "rule": "network_segregation", "iso2013": "A.13.1.3"}],
 	# evidence: what the check reads — "attestation" (statements the assessed party makes
-	# about its own policy or process, as flags or declared values), "observed" (values
-	# collected from systems: algorithms in use) or "mixed" (both; data_encryption reads
-	# the TLS minimum version and SSH protocol version beside process flags).
+	# about its own policy or process, as flags or declared values) or "observed" (values
+	# collected from systems: algorithms in use, compared with the organisation's own list).
+	# data_encryption and digital_signatures no longer decide A.8.24 (specific mechanisms the
+	# public descriptions of 8.24 do not name); they are listed in unmapped_fact_rules.
 	"A.8.24": [
 		{"pkg": "cryptography", "rule": "cryptographic_policy", "iso2013": "A.10.1.1", "evidence": "attestation"},
 		{"pkg": "cryptography", "rule": "key_management", "iso2013": "A.10.1.2", "evidence": "attestation"},
-		{"pkg": "cryptography", "rule": "data_encryption", "iso2013": "", "evidence": "mixed"},
-		{"pkg": "cryptography", "rule": "digital_signatures", "iso2013": "", "evidence": "attestation"},
 		{"pkg": "cryptography", "rule": "algorithm_compliance", "iso2013": "", "evidence": "observed"},
 	],
 	"A.8.25": [{"pkg": "system_acquisition_maintenance", "rule": "secure_development_policy", "iso2013": "A.14.2.1"}],
@@ -1199,6 +1204,10 @@ unmapped_fact_rules := [
 	"communications_security.dns_security",
 	"cryptography.hsm_usage",
 	"cryptography.quantum_resistance_planned", # advisory: post-quantum planning is not an A.8.24 condition
+	"cryptography.data_encryption", # advisory: specific mechanisms (pinning, payload encryption, key escrow ...)
+	"cryptography.digital_signatures", # advisory: code/document signing, OCSP, PKI
+	"cryptography.key_management_mechanisms", # advisory: HSM, key-operation audit logs, automated rotation
+	"cryptography.weak_algorithms_disabled", # advisory: the library's weak-algorithm list
 	"system_acquisition_maintenance.data_generation_control",
 	"system_acquisition_maintenance.cicd_security",
 	"system_acquisition_maintenance.sca_controls",

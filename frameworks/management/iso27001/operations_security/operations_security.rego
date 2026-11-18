@@ -18,6 +18,25 @@ package iso27001.operations_security
 
 import rego.v1
 
+# Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described
+# as fixing periods, counts or percentages, and the licensed text was not read; the limits this module
+# used to hard-code are now the organisation's own stated values, read from
+# input.iso27001.org_defined.<name>. The observed value is compared with it; either one missing or not
+# a number fails the check (is_number guards: OPA orders null below numbers, strings above).
+_odp(name) := v if {
+	v := input.iso27001.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
 # Defaults so report/details never collapse to {} on empty input
 default operating_procedures_documented := false
 
@@ -133,10 +152,10 @@ malware_protection if {
 	input.malware_protection.antivirus.real_time_enabled == true
 	input.malware_protection.antivirus.signatures_current == true
 	input.malware_protection.antivirus.scheduled_scans == true
-	input.malware_protection.antivirus.coverage_percentage >= 95
+	_at_least(["malware_protection", "antivirus", "coverage_percentage"], "antivirus_min_coverage_percentage")
 
 	# Signature currency
-	input.malware_protection.antivirus.signature_age_days <= 3
+	_at_most(["malware_protection", "antivirus", "signature_age_days"], "antivirus_max_signature_age_days")
 
 	# Additional controls
 	input.malware_protection.email_scanning == true
@@ -177,11 +196,11 @@ backup_management if {
 
 	# Retention
 	input.backup.retention.defined == true
-	input.backup.retention.minimum_days >= 30
+	_at_least(["backup", "retention", "minimum_days"], "backup_retention_days")
 
 	# Restore testing
 	input.backup.testing.restore_tests_performed == true
-	input.backup.testing.frequency_days <= 90
+	_at_most(["backup", "testing", "frequency_days"], "backup_test_interval_days")
 }
 
 # =============================================================================
@@ -200,7 +219,7 @@ event_logging if {
 
 	# Log retention
 	input.logging.retention.enabled == true
-	input.logging.retention.minimum_days >= 90
+	_at_least(["logging", "retention", "minimum_days"], "event_log_retention_days")
 
 	# Log integrity
 	input.logging.integrity.tamper_protection == true
@@ -236,7 +255,7 @@ clock_synchronization if {
 	input.clock_sync.drift_monitored == true
 
 	# Maximum drift threshold
-	input.clock_sync.max_drift_seconds <= 1
+	_at_most(["clock_sync", "max_drift_seconds"], "max_clock_drift_seconds")
 }
 
 # =============================================================================
@@ -264,14 +283,14 @@ software_installation_control if {
 # A.12.6.1 - Management of technical vulnerabilities (2022: A.8.8)
 vulnerability_management if {
 	input.vulnerability_management.scanning.regular_scans == true
-	input.vulnerability_management.scanning.frequency_days <= 30
+	_at_most(["vulnerability_management", "scanning", "frequency_days"], "vulnerability_scan_interval_days")
 	input.vulnerability_management.scanning.authenticated_scans == true
 	input.vulnerability_management.scanning.covers_all_systems == true
 
 	# Patch management
 	input.vulnerability_management.patching.policy_defined == true
-	input.vulnerability_management.patching.critical_patch_sla_days <= 7
-	input.vulnerability_management.patching.high_patch_sla_days <= 30
+	_at_most(["vulnerability_management", "patching", "critical_patch_sla_days"], "critical_patch_days")
+	_at_most(["vulnerability_management", "patching", "high_patch_sla_days"], "high_patch_days")
 	input.vulnerability_management.patching.testing_required == true
 	input.vulnerability_management.patching.automated_where_possible == true
 
