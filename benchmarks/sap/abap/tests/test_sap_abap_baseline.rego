@@ -500,3 +500,13 @@ test_violation_details_include_input_finding if {
 	some row in d
 	row.id == "SAP-INPUT"
 }
+
+# A check title may carry literal percent signs (a log-file pattern such as %y-%m-%d). They must reach the message
+# as text: unescaped, sprintf reads them as verbs, prints %!verb(MISSING) and swallows the state value.
+test_no_message_has_a_broken_format_verb if {
+	msgs := data.sap_abap_baseline.main.violations with input as {}
+	count(msgs) > 0
+	every m in msgs {
+		not contains(m, "%!")
+	}
+}

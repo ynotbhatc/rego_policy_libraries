@@ -341,7 +341,7 @@ ok_AUDIT_A_c_3a if {
 violations contains msg if {
 	level_in_profile("standard")
 	not ok_AUDIT_A_c_3b
-	msg := sprintf("AUDIT-A_c.3b: Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)", [state("profile_parameters", "icm/security_log")])
+	msg := sprintf("AUDIT-A_c.3b: Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%%dev_icm_sec-%%y-%%m-%%d%%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)", [state("profile_parameters", "icm/security_log")])
 }
 
 ok_AUDIT_A_c_3b if {

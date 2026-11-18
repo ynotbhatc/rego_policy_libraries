@@ -15,6 +15,7 @@ has(prefix, inp) if {
 	startswith(x, prefix)
 }
 
+# regal ignore:rule-shadows-builtin
 glob(o) := json.patch(g, [{"op": "add", "path": "/fortigate_config/system/global", "value": o}])
 
 test_missing_ssl_versions_flagged if has("2.1.10:", {"fortigate_config": {"system": {"global": {}}}})

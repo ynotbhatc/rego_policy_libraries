@@ -1,0 +1,35 @@
+# Regal configuration for CI: the bugs category only.
+#
+# The default configuration (.regal/config.yaml) reports every category and is what `regal lint` uses locally; on this
+# library it lists about 28,000 findings, almost all style. CI gates on the one category that can mean a wrong result
+# and starts from a clean tree, so a new finding fails the pull request.
+#
+#   regal lint --config-file .regal/ci.yaml benchmarks frameworks governance threat_detection crosswalk enforcement tests
+rules:
+  default:
+    level: ignore
+  bugs:
+    default:
+      level: error
+    # Hygiene, not defects, with hundreds of existing instances:
+    var-shadows-builtin:          # helper arguments named max, min, time (mode_within(mode, max), ...)
+      level: ignore
+    leaked-internal-reference:    # tests reach into a module's _private rules on purpose
+      level: ignore
+    redundant-existence-check:    # a bare reference before its use; harmless
+      level: ignore
+    redundant-loop-count:         # count(x) > 0 before `some v in x`; harmless
+      level: ignore
+    # Generated code, reviewed: the Windows comparison helper is defined per operator with a literal in the head
+    # (_cmp(v, "eq", want)), and the firewall applicability rule ends in a literal `true`.
+    inconsistent-args:
+      ignore:
+        files:
+          - "benchmarks/cis/windows_*_modular/lib.rego"
+    constant-condition:
+      ignore:
+        files:
+          - "benchmarks/cis/rhel_8/network_validation.rego"
+          - "benchmarks/cis/rhel_9/network_validation.rego"
+          - "benchmarks/cis/rocky_linux_8/network_validation.rego"
+          - "benchmarks/cis/rocky_linux_9/network_validation.rego"

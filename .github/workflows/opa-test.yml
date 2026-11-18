@@ -58,6 +58,22 @@ jobs:
         run: |
           opa check --strict benchmarks frameworks governance threat_detection crosswalk enforcement
 
+      - name: Regal — the bugs category must stay clean (.regal/ci.yaml)
+        # One leg is enough: the linter does not depend on the OPA version under test.
+        if: matrix.opa == '1.22.0'
+        env:
+          REGAL_VERSION: "0.36.1"
+          REGAL_SHA256: "75509b89de9d2fa12ac30157cc7269e7abc61e8c4c407a29ce897b681a78f8a4"
+        run: |
+          curl -fsSL -o regal_Linux_x86_64 \
+            "https://github.com/open-policy-agent/regal/releases/download/v${REGAL_VERSION}/regal_Linux_x86_64"
+          echo "${REGAL_SHA256}  regal_Linux_x86_64" | sha256sum -c -
+          chmod +x regal_Linux_x86_64
+          sudo mv regal_Linux_x86_64 /usr/local/bin/regal
+          regal version
+          regal lint --config-file .regal/ci.yaml \
+            benchmarks frameworks governance threat_detection crosswalk enforcement tests
+
       - name: Per-file load — every module must compile on its own when uploaded one file at a time
         run: |
           # The product loads the library with one PUT /v1/policies per non-test file

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_10.services
 
 # DISA STIG for RHEL 10 - Services Module
@@ -56,7 +56,7 @@ service_disabled(svc) if input.services[svc] in {"inactive", "masked"}
 # FTP server must not be running
 default ftp_server_disabled := false
 
-# title: the vsftpd package must not be installed (an inactive ftpd service is not enough)
+# The vsftpd package must not be installed (an inactive ftpd service is not enough).
 ftp_server_disabled if pkg_absent("vsftpd")
 
 status_rhel_10_200090 := "Not_a_Finding" if ftp_server_disabled

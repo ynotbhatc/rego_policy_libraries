@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package corporate.access.control
 
 import rego.v1
@@ -179,6 +179,7 @@ role_assignments_justified if {
 	count(unjustified_assignments) == 0
 }
 
+# regal ignore:argument-always-wildcard
 role_assignment_justified(_, role) if {
 	role.business_justification
 	role.approved_by
