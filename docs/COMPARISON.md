@@ -1,4 +1,4 @@
-# How big is this library, honestly?
+# How big is this library, measured?
 
 **Other projects measured 2026-10-12; this library re-measured 2026-11-17 on `main` after v2.5.0.** Every number below for
 another project was taken from that project's public repository on the first date (file counts by type), or from its
