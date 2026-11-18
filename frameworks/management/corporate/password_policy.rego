@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package corporate.password
 
 import rego.v1
@@ -130,10 +130,6 @@ days_since_last_change := (time.now_ns() - date_ns(input.user.last_password_chan
 # Roles not listed below get the general 90-day rule (previously undefined, which
 # made password_expired undefined and the age check pass).
 default maximum_password_age := 90
-
-maximum_password_age := 90 if {
-	input.user.role in ["standard", "contractor", "guest"]
-}
 
 maximum_password_age := 60 if {
 	input.user.role in ["admin", "privileged", "service_account"]

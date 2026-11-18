@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package digital_sovereignty.dora_sovereignty
 
 import rego.v1
@@ -151,6 +151,7 @@ critical_ict_register_maintained if {
 # The provider list is the evidence for DORA-011/012/013: when it is absent (or
 # not a list) the controls cannot pass. An explicitly empty list means the entity
 # has no critical ICT providers.
+# regal ignore:rule-shadows-builtin
 providers := object.get(object.get(input, "dora", {}), "critical_ict_providers", null)
 
 # NOTE: `provider.field != true` is undefined when the field is ABSENT, which

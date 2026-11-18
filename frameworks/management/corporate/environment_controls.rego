@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package corporate.environment.controls
 
 import rego.v1
@@ -163,6 +163,8 @@ data_flow_permitted(flow) if {
 data_flow_permitted(flow) if {
 	flow.source_environment == "production"
 	flow.destination_environment == "development"
+
+	# regal ignore:constant-condition
 	false # Never permitted
 }
 
@@ -281,6 +283,7 @@ privileged_roles := {
 	"production_admin", "system_admin", "network_admin",
 }
 
+# regal ignore:argument-always-wildcard
 privileged_access_controls_adequate(user, env, _) if {
 	user_access := user.environment_access[env]
 	user_access.mfa_enabled == true

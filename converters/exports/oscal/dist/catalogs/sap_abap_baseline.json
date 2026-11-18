@@ -958,7 +958,7 @@
      },
      {
       "id": "sap_abap_baseline-AUDIT-A_c.3b",
-      "title": "Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)",
+      "title": "Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%%dev_icm_sec-%%y-%%m-%%d%%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)",
       "props": [
        {
         "name": "label",
@@ -984,7 +984,7 @@
        {
         "id": "sap_abap_baseline-AUDIT-A_c.3b_stmt",
         "name": "statement",
-        "prose": "Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)"
+        "prose": "Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%%dev_icm_sec-%%y-%%m-%%d%%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)"
        }
       ],
       "class": "security"

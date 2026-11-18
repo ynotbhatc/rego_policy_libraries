@@ -8,6 +8,7 @@ has(prefix, inp) if {
 	startswith(x, prefix)
 }
 
+# regal ignore:rule-shadows-builtin
 net := {"it_ot_segmentation": true, "network_inventory_documented": true, "dmz_implemented": true, "wireless_policy_documented": true, "direct_internet_connectivity_to_ics": false}
 
 test_absent_zones_flagged if {

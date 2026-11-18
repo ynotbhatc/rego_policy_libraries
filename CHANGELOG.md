@@ -8,6 +8,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — Regal in CI, bugs category only
+
+- `.regal/ci.yaml` turns every Regal category off except `bugs` and CI lints the library with it on the OPA 1.22.0 leg
+  (Regal 0.36.1, pinned by checksum). The tree starts clean, so a new bug-class finding fails the pull request. The
+  default `.regal/config.yaml` is unchanged and still reports every category for local use (about 28,000 findings,
+  almost all style). Four hygiene rules with hundreds of existing instances are off in CI and named in the file with
+  the reason; two generated patterns are excluded by path.
+
+### Fixed — CI: the OPA 1.10.0 leg was killed before it ran the tests
+
+- After batch 2 the runner was shut down during the per-class wasm build on the OPA 1.10.0 leg (main at `ea38b446` and
+  the following pull request), so that leg's `opa test` never ran and the required check went red. The bundle build
+  now runs on the 1.22.0 leg only; the round-trip and `dist/` staleness checks still run on both.
+
+### Fixed — findings from the first full Regal run (2026-11-17)
+
+- **SAP ABAP baseline, AUDIT-A_c.3b:** the check title carries a log-file pattern with literal percent signs, which
+  `sprintf` read as verbs: the message printed `%!d(...)` fragments and lost the collected state. The importer
+  (`scripts/import_sap_baseline.py`) now escapes percent signs in titles; a test fails if any message carries a
+  broken verb.
+- Removed two branches that only restated their rule's default (FedRAMP `total_controls` for moderate, the corporate
+  90-day password age), and reworded a comment in the RHEL 9 and RHEL 10 STIG services modules that Regal read as a
+  stray metadata annotation. No result changes.
+
 ### Added — sixteen CIS benchmarks rebuilt or added from their workbooks (batch 2, 2026-11-17)
 
 Each module is generated from the benchmark's own workbook by a generator under `tools/cis_generators/` that aborts on any

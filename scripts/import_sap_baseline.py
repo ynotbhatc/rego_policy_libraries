@@ -554,7 +554,7 @@ def emit_rule(cid, text, level, fact_key, kind, name, dnf, not_found_ok, nvarian
             "violations contains msg if {",
             f"\tlevel_in_profile({rego_str(level)})",
             f"\tnot {ident}",
-            f"\tmsg := sprintf({rego_str(cid + ': ' + short + ' (%s)')}, [state({rego_str(fact_key)}, {rego_str(name)})])",
+            f"\tmsg := sprintf({rego_str(cid + ': ' + short.replace('%', '%%') + ' (%s)')}, [state({rego_str(fact_key)}, {rego_str(name)})])",
             "}",
         ]
         if not_found_ok:
@@ -567,7 +567,7 @@ def emit_rule(cid, text, level, fact_key, kind, name, dnf, not_found_ok, nvarian
             "violations contains msg if {",
             f"\tlevel_in_profile({rego_str(level)})",
             f"\tnot {ident}",
-            f"\tmsg := sprintf({rego_str(cid + ': ' + short + ' (%s)')}, [pattern_state({rego_str(fact_key)}, {rego_regex(name)})])",
+            f"\tmsg := sprintf({rego_str(cid + ': ' + short.replace('%', '%%') + ' (%s)')}, [pattern_state({rego_str(fact_key)}, {rego_regex(name)})])",
             "}",
         ]
         if not_found_ok:

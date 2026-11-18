@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package fedramp.main
 
 import data.fedramp as f
@@ -65,7 +65,6 @@ area_summary := {
 default total_controls := 325 # Moderate baseline (most common for cloud services)
 
 total_controls := 125 if impact_level == "low"
-total_controls := 325 if impact_level == "moderate"
 total_controls := 421 if impact_level == "high"
 
 compliance_report := {

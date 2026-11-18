@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package fisma.ato
 
 import rego.v1
@@ -302,6 +302,7 @@ incident_response_coordination if {
 # branch covers falls through to DENY (fail closed).
 default ato_decision_recommendation := "DENY"
 
+# regal ignore:rule-assigns-default
 ato_decision_recommendation := "DENY" if {
 	input.ato.risk_assessment.residual_risk.overall_risk_level in ["high", "very_high"]
 } else := "DENY" if {

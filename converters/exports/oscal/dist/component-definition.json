@@ -488986,7 +488986,7 @@
        {
         "uuid": "e5faef93-9171-53fa-be44-dfd3efa98cf3",
         "control-id": "sap_abap_baseline-AUDIT-A_c.3b",
-        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%dev_icm_sec-%y-%m-%d%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)",
+        "description": "Evaluated by Rego package sap_abap_baseline.main (benchmarks/sap/abap/sap_abap_baseline_checks.rego): Profile parameter: icm/security_log set as expected (see Note 3581719) (LOGFILE=%%dev_icm_sec-%%y-%%m-%%d%%z,LEVEL=3,MAXFILES=7,MAXSIZEKB=50000,SWITCHTF=day,FORMA... (%s)",
         "props": [
          {
           "name": "label",
