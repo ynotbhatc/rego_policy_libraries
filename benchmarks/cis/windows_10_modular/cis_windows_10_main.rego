@@ -117,4 +117,6 @@ compliance_report := {
 		"balanced": _accounted == bench.BENCHMARK_TOTAL_CONTROLS,
 	},
 	"no_collector_path": attestation.compliance_report,
+	"control_results": bench.control_results,
+	"control_result_counts": bench.control_result_counts,
 }

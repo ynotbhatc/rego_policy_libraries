@@ -67,6 +67,21 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   Hand-written files in a module directory, such as the framework-key bridges `cis_windows_2019_key_main.rego`
   and `cis_windows_2022_key_main.rego`, are left in place, and a generator aborts rather than overwrite one.
 
+  Per-control results (all six Windows generators): `compliance_report.control_results` holds one object per
+  recommendation in natural id order, `{id, status, basis, in_scope, profile, evidence}`, and
+  `control_result_counts` the count per status. Status is one of `pass`, `fail`, `evidence_missing` (the row's
+  `not_assessed`: facts not collected, or no server role for a role-specific row), `not_attested` (a Manual
+  recommendation in scope without an admissible attestation) and `not_applicable` (outside `input.cis_profile`).
+  `profile` is the row's tier/role tags (`L1_MS`, `L2_DC`, `NG_MS`; `L1`, `L2`, `BL`, `NG` on Windows 10/11) and
+  `evidence` the input paths the row reads (`secedit.privilege_rights.<right>`, `registry.<HKLM path>.<value>`,
+  `audit_policy.<GUID>`, `attestations`). The static part is the `CONTROL_INDEX` literal that
+  `gen_windows_server_2022.control_index` appends to the aggregation module; only the status is computed at
+  evaluation time, from the section rows' statuses and the attestation ledger. `test_control_results.rego`
+  (`gen_windows_server_2022_tests.control_results_tests`) checks the invariants: exactly the benchmark ids in order;
+  in-scope count = `total_controls`; fail + evidence_missing + not_attested = `failed_controls`; a control is
+  failing exactly when a violation message cites its id, with the matching kind; nothing passes on empty input;
+  the compliant fixtures yield only pass and not_applicable.
+
   User rights are derived once, in `gen_windows_server_2022.derive_rights`, for every Windows generator. A deny
   right (`SeDeny*`) that a workbook states with "is set to" is evaluated as "to include": every named principal
   must be denied and denying more is allowed, since a shorter deny list is the weaker state. Each generator lists
