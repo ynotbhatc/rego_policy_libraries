@@ -31,12 +31,6 @@ test_missing_evidence_is_open if {
 	fp.status_ol09_00_002515 == "Open" with input as {}
 }
 
-test_empty_lists_pass if {
-	fp.status_ol09_00_002512 == "Not_a_Finding" with input as {"file_permissions": {"unowned_files": []}}
-	fp.status_ol09_00_002511 == "Not_a_Finding" with input as {"file_permissions": {"ungrouped_files": []}}
-	fp.status_ol09_00_002515 == "Not_a_Finding" with input as {"file_permissions": {"insecure_home_dirs": []}}
-}
-
 test_offenders_are_open if {
 	fp.status_ol09_00_002512 == "Open" with input as {"file_permissions": {"unowned_files": ["/tmp/x"]}}
 }

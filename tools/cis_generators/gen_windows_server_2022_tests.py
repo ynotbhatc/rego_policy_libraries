@@ -256,6 +256,25 @@ test_complete_attestation_passes if {{
 	r.compliant == true
 }}
 """
+    # control_results contract: invariants on empty input, mixed partial input, both compliant fixtures, and
+    # every role x level x next_generation selection without facts
+    first_reg = next(rid for rid in order if checks[rid]["kind"] == "reg" and _applies(recs[rid]["profiles"], "MS"))
+    mixed = [("mixed_partial_input", f'object.union(json.remove({fx}.fixture_ms, ["audit_policy", "attestations"]), '
+                                     f'{json.dumps(_facts(checks[first_reg], False))})'),
+             ("role_not_supplied", f'json.remove({fx}.fixture_ms, ["cis_profile/role"])')]
+    compliant = [("fixture_ms", f"{fx}.fixture_ms"), ("fixture_dc", f"{fx}.fixture_dc")]
+    roles = {"MS": "member_server", "DC": "domain_controller"}
+    scopes = []
+    for role in ("MS", "DC"):
+        for lv in (1, 2):
+            for ng in (False, True):
+                tiers = {"L1"} | ({"L2"} if lv == 2 else set()) | ({"NG"} if ng else set())
+                n = sum(1 for rid in recs if any(p.split("_")[0] in tiers and p.split("_")[1] == role
+                                                 for p in recs[rid]["profiles"]))
+                prof = {"role": roles[role], "level": lv, "next_generation": ng}
+                scopes.append((f"{role.lower()}_level{lv}{'_ng' if ng else ''}",
+                               json.dumps({"cis_profile": prof}), n))
+    files["test_control_results.rego"] = control_results_tests(pkg, recs, head, mixed, compliant, scopes)
     return files
 
 
@@ -292,3 +311,90 @@ test_{rid.replace(".", "_")}_deny_right_needs_every_named_principal if {{
 test_{rid.replace(".", "_")}_zero_is_not_within_the_bound if {{
 """ + "\n".join(lines) + "\n}\n")
     return "".join(out)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# control_results contract tests (shared by every Windows generator)
+# ---------------------------------------------------------------------------------------------------------------
+
+def natural(ids):
+    return sorted(ids, key=lambda i: [int(p) for p in i.split(".")])
+
+
+def control_results_tests(pkg, recs, head, mixed, compliant, scopes):
+    """The invariants of compliance_report.control_results, one test each, for the module `pkg`.
+
+    mixed: [(label, rego input expression)] evaluated for invariants 2 and 3 (empty input is always added);
+    compliant: [(label, expression)] fully compliant fixtures (invariant 5);
+    scopes: [(label, expression, expected in-scope count or None)] profile selections (invariant 2)."""
+    m = f"data.{pkg}.main.compliance_report"
+    ids = natural(recs)
+    out = [head + f"package {pkg}.control_results_test\n\nimport rego.v1\n",
+           "# control_results: one result per recommendation; statuses agree with total_controls, failed_controls and",
+           "# the violation messages. Message kinds: '-- found:' fail, '-- NOT ASSESSED:' evidence missing, the Manual",
+           "# attestation messages not attested. Section-level NOT ASSESSED and FAIL-CLOSED lines cite no id.\n",
+           'FAILING := {"fail", "evidence_missing", "not_attested"}\n',
+           "# both wordings of the not-assessed suffix the Windows generators emit\n_missing(m) if contains(m, \" -- NOT ASSESSED: \")\n",
+           "_missing(m) if contains(m, \" -- evidence missing — \")\n",
+           "_kind(m) := \"evidence_missing\" if _missing(m)\n",
+           "_kind(m) := \"fail\" if {\n\tcontains(m, \" -- found: \")\n\tnot _missing(m)\n}\n",
+           "_kind(m) := \"not_attested\" if {\n\tcontains(m, \"(this is not a pass)\")\n\tnot contains(m, \" -- found: \")\n"
+           "\tnot _missing(m)\n}\n",
+           "# [id, kind] for every violation that cites a recommendation id",
+           "cited(vs) := {[id, k] |\n\tsome v in vs\n\tis_string(v)\n"
+           "\tms := regex.find_all_string_submatch_n(`^CIS ([0-9]+(?:\\.[0-9]+)*): `, v, 1)\n"
+           "\tcount(ms) == 1\n\tid := ms[0][1]\n\tk := _kind(v)\n}\n",
+           "failing(rs) := {[r.id, r.status] | some r in rs; r.status in FAILING}\n",
+           f"test_control_results_are_exactly_the_benchmark_ids_in_order if {{\n\tr := {m} with input as {{}}\n"
+           f"\t[c.id | some c in r.control_results] == {json.dumps(ids)}\n}}\n",
+           f"test_control_results_fields_and_statuses if {{\n\tr := {m} with input as {{}}\n"
+           "\tevery c in r.control_results {\n"
+           '\t\tc.status in {"pass", "fail", "evidence_missing", "not_attested", "not_applicable"}\n'
+           '\t\tc.basis in {"evidence", "attestation"}\n'
+           '\t\tc.in_scope == (c.status != "not_applicable")\n'
+           "\t\tis_array(c.profile)\n\t\tcount(c.profile) > 0\n"
+           '\t\tevery k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence"} }\n'
+           "\t}\n}\n"]
+    cases = [("empty_input", "{}")] + list(mixed) + list(compliant)
+    for label, expr in cases:
+        out.append(f"""test_control_results_agree_with_totals_{label} if {{
+	r := {m} with input as {expr}
+	count([c | some c in r.control_results; c.in_scope]) == r.total_controls
+	count([c | some c in r.control_results; c.status in FAILING]) == r.failed_controls
+	count([c | some c in r.control_results; c.status == "pass"]) == r.passed_controls
+	sum([n | some n in r.control_result_counts]) == {len(ids)}
+	every s, n in r.control_result_counts {{ n == count([c | some c in r.control_results; c.status == s]) }}
+}}
+
+test_control_results_agree_with_violations_{label} if {{
+	r := {m} with input as {expr}
+	cited(r.violations) == failing(r.control_results)
+}}
+
+test_control_results_evidence_known_{label} if {{
+	r := {m} with input as {expr}
+	every c in r.control_results {{ count(object.get(c, "evidence", [])) > 0 }}
+}}
+""")
+    out.append(f"""test_control_results_empty_input_nothing_passes if {{
+	r := {m} with input as {{}}
+	every c in r.control_results {{ c.status in {{"evidence_missing", "not_attested", "not_applicable"}} }}
+	r.control_result_counts.pass == 0
+}}
+""")
+    for label, expr in compliant:
+        out.append(f"""test_control_results_compliant_{label}_only_pass_or_not_applicable if {{
+	r := {m} with input as {expr}
+	every c in r.control_results {{ c.status in {{"pass", "not_applicable"}} }}
+	r.control_result_counts.pass == r.total_controls
+}}
+""")
+    for label, expr, n in scopes:
+        want = f"\tr.total_controls == {n}\n" if n is not None else ""
+        out.append(f"""test_control_results_scope_{label} if {{
+	r := {m} with input as {expr}
+{want}	count([c | some c in r.control_results; c.in_scope]) == r.total_controls
+	count([c | some c in r.control_results; c.status in FAILING]) == r.failed_controls
+}}
+""")
+    return "\n".join(out)

@@ -103,11 +103,6 @@
         "id": "cis_saas-CIS-2.1.1_obj.1",
         "name": "assessment-objective",
         "prose": "Safe Links policy '%s' does not enable Safe Links for Office applications, so links in documents are not rewritten or checked at click time"
-       },
-       {
-        "id": "cis_saas-CIS-2.1.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "Defender policy facts were not collected, so whether Safe Links for Office applications is enabled could not be established (this is not a pass)"
        }
       ],
       "class": "security"
@@ -370,11 +365,6 @@
         "id": "cis_saas-CIS-2.1.8_obj.1",
         "name": "assessment-objective",
         "prose": "no SPF record published for domain '%s' -- receivers cannot distinguish legitimate senders from spoofed mail"
-       },
-       {
-        "id": "cis_saas-CIS-2.1.8_obj.2",
-        "name": "assessment-objective",
-        "prose": "verified-domain facts not collected -- SPF, DKIM and DMARC controls could not be evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -1589,11 +1579,6 @@
         "id": "cis_saas-CIS-1.1.1_obj.1",
         "name": "assessment-objective",
         "prose": "administrative account '%s' is synced from on-premises, not cloud-only -- an on-prem compromise reaches this privileged account"
-       },
-       {
-        "id": "cis_saas-CIS-1.1.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "administrative accounts were not collected, so whether they are cloud-only could not be established -- section 1 was not evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -2000,11 +1985,6 @@
         "id": "cis_saas-CIS-3.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "unified audit log search returned no records -- audit logging is not enabled, so tenant activity is not retained for investigation"
-       },
-       {
-        "id": "cis_saas-CIS-3.1.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "audit log facts not collected -- control could not be evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -2080,11 +2060,6 @@
         "id": "cis_saas-CIS-3.2.1_obj.1",
         "name": "assessment-objective",
         "prose": "no DLP policy is enabled and enforcing -- a policy in Test mode reports matches but does not prevent the data loss it detects"
-       },
-       {
-        "id": "cis_saas-CIS-3.2.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "Purview DLP facts were not collected, so whether DLP policies are enabled could not be established (this is not a pass)"
        }
       ],
       "class": "security"
@@ -2528,11 +2503,6 @@
         "id": "cis_saas-CIS-6.1.1_obj.2",
         "name": "assessment-objective",
         "prose": "AuditDisabled is True organizationally, so mailbox auditing is off tenant-wide and mailbox actions are not recorded"
-       },
-       {
-        "id": "cis_saas-CIS-6.1.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "Exchange Online facts were not collected, so whether AuditDisabled is organizationally False could not be established -- section 6 was not evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -3004,11 +2974,6 @@
         "id": "cis_saas-CIS-7.2.1_obj.1",
         "name": "assessment-objective",
         "prose": "legacy authentication protocols are permitted, so modern authentication is not required for SharePoint applications and clients can bypass Conditional Access"
-       },
-       {
-        "id": "cis_saas-CIS-7.2.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "SharePoint tenant facts were not collected, so whether modern authentication is required could not be established -- section 7 was not evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -3447,6 +3412,16 @@
         "id": "cis_saas-CIS-1.3.2_stmt",
         "name": "statement",
         "prose": "no idle session timeout policy is configured; the benchmark requires %d hours or less for unmanaged devices"
+       },
+       {
+        "id": "cis_saas-CIS-1.3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "no active idle session timeout policy signs users out of Microsoft 365 web apps within %d hours (the organisation-default policy is absent or its timeout is longer)"
+       },
+       {
+        "id": "cis_saas-CIS-1.3.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "no enabled Conditional Access policy applies app enforced restrictions to browser sessions of Office 365 for all users, so the idle session timeout does not reach unmanaged devices"
        }
       ],
       "class": "security"
@@ -3551,336 +3526,6 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-activity_based_timeout",
-      "title": "1.3.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "activity_based_timeout"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "activity_based_timeout"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-activity_based_timeout_stmt",
-        "name": "statement",
-        "prose": "1.3.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-admin_licenses",
-      "title": "1.1.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "admin_licenses"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "admin_licenses"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-admin_licenses_stmt",
-        "name": "statement",
-        "prose": "1.1.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-admin_sync_state",
-      "title": "1.1.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "admin_sync_state"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "admin_sync_state"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-admin_sync_state_stmt",
-        "name": "statement",
-        "prose": "1.1.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-apps_and_services",
-      "title": "1.3.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "apps_and_services"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "apps_and_services"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-apps_and_services_stmt",
-        "name": "statement",
-        "prose": "1.3.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-domains",
-      "title": "1.3.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "domains"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "domains"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-domains_stmt",
-        "name": "statement",
-        "prose": "1.3.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-forms",
-      "title": "1.3.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "forms"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "forms"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-forms_stmt",
-        "name": "statement",
-        "prose": "1.3.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-global_admins",
-      "title": "1.1.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "global_admins"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "global_admins"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-global_admins_stmt",
-        "name": "statement",
-        "prose": "1.1.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-groups",
-      "title": "1.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "groups"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "groups"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-groups_stmt",
-        "name": "statement",
-        "prose": "1.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-service_principals",
-      "title": "1.3.7",
-      "props": [
-       {
-        "name": "label",
-        "value": "service_principals"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "service_principals"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-service_principals_stmt",
-        "name": "statement",
-        "prose": "1.3.7"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-cis_m365_v7.admin_center-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_m365_v7.admin_center#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_m365_v7.admin_center#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-cis_m365_v7.admin_center-1_stmt",
-        "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-CIS-1.3.6",
       "title": "the customer lockbox feature is not enabled, so Microsoft support can access tenant content without explicit per-request approval",
       "props": [
@@ -3909,11 +3554,6 @@
         "id": "cis_saas-CIS-1.3.6_stmt",
         "name": "statement",
         "prose": "the customer lockbox feature is not enabled, so Microsoft support can access tenant content without explicit per-request approval"
-       },
-       {
-        "id": "cis_saas-CIS-1.3.6_obj.1",
-        "name": "assessment-objective",
-        "prose": "whether the customer lockbox feature is enabled could not be evaluated -- %s (this is not a pass)"
        }
       ],
       "class": "security"
@@ -3980,11 +3620,6 @@
         "id": "cis_saas-CIS-1.3.3_stmt",
         "name": "statement",
         "prose": "external sharing of calendars is available -- sharing policy '%s' is enabled, so users can share calendars with people outside the organization"
-       },
-       {
-        "id": "cis_saas-CIS-1.3.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "whether external calendar sharing is available could not be evaluated -- %s (this is not a pass)"
        }
       ],
       "class": "security"
@@ -4023,31 +3658,21 @@
         "id": "cis_saas-CIS-1.2.2_obj.1",
         "name": "assessment-objective",
         "prose": "whether sign-in to shared mailbox '%s' is blocked could not be evaluated -- no directory account matched its object id (this is not a pass)"
-       },
-       {
-        "id": "cis_saas-CIS-1.2.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "whether sign-in to shared mailboxes is blocked could not be evaluated -- the shared mailbox list is unavailable: %s (this is not a pass)"
-       },
-       {
-        "id": "cis_saas-CIS-1.2.2_obj.3",
-        "name": "assessment-objective",
-        "prose": "whether sign-in to shared mailboxes is blocked could not be evaluated -- directory sign-in state is unavailable: %s (this is not a pass)"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_saas-1.2.2",
-      "title": "whether sign-in to shared mailboxes is blocked",
+      "id": "cis_saas-cis_m365_v7.admin_center-1",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/admin_center_validation.rego (package cis_m365_v7.admin_center); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "1.2.2"
+        "value": "cis_m365_v7.admin_center#1"
        },
        {
         "name": "alt-identifier",
-        "value": "1.2.2"
+        "value": "cis_m365_v7.admin_center#1"
        },
        {
         "name": "rego-package",
@@ -4063,141 +3688,9 @@
       ],
       "parts": [
        {
-        "id": "cis_saas-1.2.2_stmt",
+        "id": "cis_saas-cis_m365_v7.admin_center-1_stmt",
         "name": "statement",
-        "prose": "whether sign-in to shared mailboxes is blocked"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-1.3.3",
-      "title": "whether external calendar sharing is available",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.3.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.3.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-1.3.3_stmt",
-        "name": "statement",
-        "prose": "whether external calendar sharing is available"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-1.3.6",
-      "title": "whether the customer lockbox feature is enabled",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.3.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.3.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-1.3.6_stmt",
-        "name": "statement",
-        "prose": "whether the customer lockbox feature is enabled"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-1.3.9",
-      "title": "whether shared bookings pages are restricted to select users",
-      "props": [
-       {
-        "name": "label",
-        "value": "1.3.9"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "1.3.9"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-1.3.9_stmt",
-        "name": "statement",
-        "prose": "whether shared bookings pages are restricted to select users"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-cis_m365_v7.admin_center-2",
-      "title": "CIS %s: %s could not be evaluated -- Exchange facts were not collected (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_m365_v7.admin_center#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_m365_v7.admin_center#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.admin_center"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c8945089-2e2a-5a63-887e-dc7e4e9b4362",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-cis_m365_v7.admin_center-2_stmt",
-        "name": "statement",
-        "prose": "CIS %s: %s could not be evaluated -- Exchange facts were not collected (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/admin_center_validation.rego (package cis_m365_v7.admin_center); see the rule body."
        }
       ],
       "class": "security"
@@ -4228,7 +3721,7 @@
     "controls": [
      {
       "id": "cis_saas-cis_m365_v7.attestation-1",
-      "title": "CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)",
+      "title": "CIS %s: %s -- attested as not met (observed false) by %s on %s, evidence %s",
       "props": [
        {
         "name": "label",
@@ -4254,14 +3747,14 @@
        {
         "id": "cis_saas-cis_m365_v7.attestation-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)"
+        "prose": "CIS %s: %s -- attested as not met (observed false) by %s on %s, evidence %s"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-cis_m365_v7.attestation-2",
-      "title": "CIS %s: %s -- an attestation was supplied but is missing attested_by, attested_on or evidence_ref, so it is not admissible evidence (this is not a pass)",
+      "title": "CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)",
       "props": [
        {
         "name": "label",
@@ -4287,14 +3780,14 @@
        {
         "id": "cis_saas-cis_m365_v7.attestation-2_stmt",
         "name": "statement",
-        "prose": "CIS %s: %s -- an attestation was supplied but is missing attested_by, attested_on or evidence_ref, so it is not admissible evidence (this is not a pass)"
+        "prose": "CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-cis_m365_v7.attestation-3",
-      "title": "CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)",
+      "title": "CIS %s: %s -- an attestation was supplied but is missing observed (true or false), attested_by, evidence_ref or a valid attested_on date (YYYY-MM-DD), so it is not admissible evidence (this is not a p",
       "props": [
        {
         "name": "label",
@@ -4320,14 +3813,14 @@
        {
         "id": "cis_saas-cis_m365_v7.attestation-3_stmt",
         "name": "statement",
-        "prose": "CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)"
+        "prose": "CIS %s: %s -- an attestation was supplied but is missing observed (true or false), attested_by, evidence_ref or a valid attested_on date (YYYY-MM-DD), so it is not admissible evidence (this is not a pass)"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-cis_m365_v7.attestation-4",
-      "title": "CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)",
+      "title": "CIS %s: %s -- the attestation is dated in the future, so it is not admissible evidence (this is not a pass)",
       "props": [
        {
         "name": "label",
@@ -4352,6 +3845,105 @@
       "parts": [
        {
         "id": "cis_saas-cis_m365_v7.attestation-4_stmt",
+        "name": "statement",
+        "prose": "CIS %s: %s -- the attestation is dated in the future, so it is not admissible evidence (this is not a pass)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.attestation-5",
+      "title": "ignored attestation: the attestation for control_id '%v' decides nothing -- attestations are accepted only for the %d ledger controls this library cannot evaluate from collected evidence; it does not ",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.attestation#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.attestation#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.attestation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f8b6134-6dcf-535f-b827-e58a6260f3fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.attestation-5_stmt",
+        "name": "statement",
+        "prose": "ignored attestation: the attestation for control_id '%v' decides nothing -- attestations are accepted only for the %d ledger controls this library cannot evaluate from collected evidence; it does not change any control's status"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.attestation-6",
+      "title": "CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.attestation#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.attestation#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.attestation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f8b6134-6dcf-535f-b827-e58a6260f3fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.attestation-6_stmt",
+        "name": "statement",
+        "prose": "CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.attestation-7",
+      "title": "CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.attestation#7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.attestation#7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.attestation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7f8b6134-6dcf-535f-b827-e58a6260f3fb",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.attestation-7_stmt",
         "name": "statement",
         "prose": "CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)"
        }
@@ -4384,7 +3976,7 @@
     "controls": [
      {
       "id": "cis_saas-CIS-2.1.9",
-      "title": "DKIM not enabled for domain '%s' -- outbound mail carries no cryptographic origin signature",
+      "title": "DKIM not enabled for domain '%s' -- no DKIM selector record is published, so outbound mail carries no verifiable origin signature",
       "props": [
        {
         "name": "label",
@@ -4410,7 +4002,22 @@
        {
         "id": "cis_saas-CIS-2.1.9_stmt",
         "name": "statement",
-        "prose": "DKIM not enabled for domain '%s' -- outbound mail carries no cryptographic origin signature"
+        "prose": "DKIM not enabled for domain '%s' -- no DKIM selector record is published, so outbound mail carries no verifiable origin signature"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.9_obj.1",
+        "name": "assessment-objective",
+        "prose": "DKIM not enabled for domain '%s' -- no DKIM signing configuration exists for it, so Exchange Online does not sign its mail"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "DKIM not enabled for domain '%s' -- its DKIM signing configuration is disabled"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "DKIM signing for domain '%s' is enabled but its status is '%s', not Valid, so mail is not signed"
        }
       ],
       "class": "security"
@@ -4449,16 +4056,16 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-CIS-2.1.8-2.1.9-2.1.10",
-      "title": "SPF, DKIM and DMARC for domain '%s' could not be evaluated -- %s (this is not a pass)",
+      "id": "cis_saas-cis_m365_v7.defender-1",
+      "title": "CIS %s: evidence missing -- the %s record of domain '%s' could not be evaluated: %v (this is not a pass)",
       "props": [
        {
         "name": "label",
-        "value": "CIS 2.1.8/2.1.9/2.1.10"
+        "value": "cis_m365_v7.defender#1"
        },
        {
         "name": "alt-identifier",
-        "value": "CIS 2.1.8/2.1.9/2.1.10"
+        "value": "cis_m365_v7.defender#1"
        },
        {
         "name": "rego-package",
@@ -4474,9 +4081,9 @@
       ],
       "parts": [
        {
-        "id": "cis_saas-CIS-2.1.8-2.1.9-2.1.10_stmt",
+        "id": "cis_saas-cis_m365_v7.defender-1_stmt",
         "name": "statement",
-        "prose": "SPF, DKIM and DMARC for domain '%s' could not be evaluated -- %s (this is not a pass)"
+        "prose": "CIS %s: evidence missing -- the %s record of domain '%s' could not be evaluated: %v (this is not a pass)"
        }
       ],
       "class": "security"
@@ -4543,6 +4150,11 @@
         "id": "cis_saas-CIS-2.1.11_stmt",
         "name": "statement",
         "prose": "malware filter policy '%s' filters %d file types; comprehensive attachment filtering expects at least %d"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.11_obj.1",
+        "name": "assessment-objective",
+        "prose": "malware filter policy '%s' lists file types but its attachment filtering is off, so the list does not block anything"
        }
       ],
       "class": "security"
@@ -4648,7 +4260,7 @@
      },
      {
       "id": "cis_saas-CIS-2.1.15",
-      "title": "outbound spam policy '%s' has no external recipient-per-hour limit, so a compromised mailbox can send without a throttle",
+      "title": "outbound spam policy '%s' sets %s to %v; a limit above 0 and no higher than %d is expected, so a compromised mailbox is not throttled",
       "props": [
        {
         "name": "label",
@@ -4674,14 +4286,24 @@
        {
         "id": "cis_saas-CIS-2.1.15_stmt",
         "name": "statement",
-        "prose": "outbound spam policy '%s' has no external recipient-per-hour limit, so a compromised mailbox can send without a throttle"
+        "prose": "outbound spam policy '%s' sets %s to %v; a limit above 0 and no higher than %d is expected, so a compromised mailbox is not throttled"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.15_obj.1",
+        "name": "assessment-objective",
+        "prose": "outbound spam policy '%s' takes the action '%s' when a message limit is reached, so the sender is not restricted from sending mail"
+       },
+       {
+        "id": "cis_saas-CIS-2.1.15_obj.2",
+        "name": "assessment-objective",
+        "prose": "outbound spam policy '%s' notifies nobody when a sender exceeds the message limits"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-CIS-2.4.2",
-      "title": "no EOP protection policy rule exists, so priority accounts do not have strict protection applied",
+      "title": "no %s rule for the Strict preset security policy exists, so priority accounts do not have strict protection applied",
       "props": [
        {
         "name": "label",
@@ -4707,7 +4329,17 @@
        {
         "id": "cis_saas-CIS-2.4.2_stmt",
         "name": "statement",
-        "prose": "no EOP protection policy rule exists, so priority accounts do not have strict protection applied"
+        "prose": "no %s rule for the Strict preset security policy exists, so priority accounts do not have strict protection applied"
+       },
+       {
+        "id": "cis_saas-CIS-2.4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "the %s rule of the Strict preset security policy is '%s', so strict protection is not applied"
+       },
+       {
+        "id": "cis_saas-CIS-2.4.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "the %s rule of the Strict preset security policy names no recipients (SentTo, SentToMemberOf, RecipientDomainIs), so no priority account receives strict protection"
        }
       ],
       "class": "security"
@@ -4746,411 +4378,6 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-anti_phish_policies",
-      "title": "2.1.7",
-      "props": [
-       {
-        "name": "label",
-        "value": "anti_phish_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "anti_phish_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-anti_phish_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.7"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-atp_policy_for_o365",
-      "title": "2.1.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "atp_policy_for_o365"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "atp_policy_for_o365"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-atp_policy_for_o365_stmt",
-        "name": "statement",
-        "prose": "2.1.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-connection_filter_policies",
-      "title": "2.1.12",
-      "props": [
-       {
-        "name": "label",
-        "value": "connection_filter_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "connection_filter_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-connection_filter_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.12"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-content_filter_policies",
-      "title": "2.1.14",
-      "props": [
-       {
-        "name": "label",
-        "value": "content_filter_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "content_filter_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-content_filter_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.14"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-email_tenant_settings",
-      "title": "2.4.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "email_tenant_settings"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "email_tenant_settings"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-email_tenant_settings_stmt",
-        "name": "statement",
-        "prose": "2.4.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-eop_protection_rules",
-      "title": "2.4.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "eop_protection_rules"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "eop_protection_rules"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-eop_protection_rules_stmt",
-        "name": "statement",
-        "prose": "2.4.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-malware_filter_policies",
-      "title": "2.1.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "malware_filter_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "malware_filter_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-malware_filter_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-outbound_spam_policies",
-      "title": "2.1.6",
-      "props": [
-       {
-        "name": "label",
-        "value": "outbound_spam_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "outbound_spam_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       },
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-outbound_spam_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.6"
-       },
-       {
-        "id": "cis_saas-outbound_spam_policies_obj.1",
-        "name": "assessment-objective",
-        "prose": "6.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-priority_account_alerts",
-      "title": "2.4.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "priority_account_alerts"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "priority_account_alerts"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-priority_account_alerts_stmt",
-        "name": "statement",
-        "prose": "2.4.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-safe_attachment_policies",
-      "title": "2.1.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "safe_attachment_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "safe_attachment_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-safe_attachment_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-safe_links_policies",
-      "title": "2.1.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "safe_links_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "safe_links_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-safe_links_policies_stmt",
-        "name": "statement",
-        "prose": "2.1.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-teams_protection_policy",
-      "title": "2.4.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "teams_protection_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "teams_protection_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.defender"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c990e5a2-0ce8-5ec4-8114-2f57b67cd726",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-teams_protection_policy_stmt",
-        "name": "statement",
-        "prose": "2.4.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-CIS-2.4.1",
       "title": "priority account protection is not enabled for the tenant, so accounts tagged as priority receive no differentiated protection",
       "props": [
@@ -5183,27 +4410,22 @@
        {
         "id": "cis_saas-CIS-2.4.1_obj.1",
         "name": "assessment-objective",
-        "prose": "no alert policy monitors priority accounts for phishing email detected at delivery -- a high-severity, inbound, priority-tagged alert with a notification recipient is required"
-       },
-       {
-        "id": "cis_saas-CIS-2.4.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "no alert policy monitors priority accounts for detected malware in email -- a high-severity, inbound, priority-tagged alert with a notification recipient is required"
+        "prose": "no alert policy monitors priority accounts for %s -- a high-severity, inbound, priority-tagged alert with a notification recipient is required"
        }
       ],
       "class": "security"
      },
      {
-      "id": "cis_saas-cis_m365_v7.defender-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "id": "cis_saas-cis_m365_v7.defender-2",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/defender_validation.rego (package cis_m365_v7.defender); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "cis_m365_v7.defender#1"
+        "value": "cis_m365_v7.defender#2"
        },
        {
         "name": "alt-identifier",
-        "value": "cis_m365_v7.defender#1"
+        "value": "cis_m365_v7.defender#2"
        },
        {
         "name": "rego-package",
@@ -5219,9 +4441,9 @@
       ],
       "parts": [
        {
-        "id": "cis_saas-cis_m365_v7.defender-1_stmt",
+        "id": "cis_saas-cis_m365_v7.defender-2_stmt",
         "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/defender_validation.rego (package cis_m365_v7.defender); see the rule body."
        }
       ],
       "class": "security"
@@ -5279,11 +4501,6 @@
         "id": "cis_saas-CIS-5.1.2.2_stmt",
         "name": "statement",
         "prose": "users can register applications; any user can create an app registration and consent-phish other users"
-       },
-       {
-        "id": "cis_saas-CIS-5.1.2.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Entra facts were not collected, so whether users can register applications could not be established -- section 5 was not evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -5389,7 +4606,7 @@
      },
      {
       "id": "cis_saas-CIS-5.1.5.1",
-      "title": "user consent to apps accessing company data on their behalf is still permitted; consent should be routed to an administrator",
+      "title": "user consent to apps accessing company data on their behalf is still permitted (permission grant policy '%s'); consent should be routed to an administrator",
       "props": [
        {
         "name": "label",
@@ -5415,7 +4632,7 @@
        {
         "id": "cis_saas-CIS-5.1.5.1_stmt",
         "name": "statement",
-        "prose": "user consent to apps accessing company data on their behalf is still permitted; consent should be routed to an administrator"
+        "prose": "user consent to apps accessing company data on their behalf is still permitted (permission grant policy '%s'); consent should be routed to an administrator"
        }
       ],
       "class": "security"
@@ -6841,7 +6058,7 @@
      },
      {
       "id": "cis_saas-CIS-5.1.3.4",
-      "title": "users can create Microsoft 365 groups in Azure portals, APIs or PowerShell with no restricting group -- group membership drives access, so unmanaged creation undermines authorization",
+      "title": "users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- EnableGroupCreation is True; group membership drives access, so unmanaged creation undermines authorization",
       "props": [
        {
         "name": "label",
@@ -6867,601 +6084,12 @@
        {
         "id": "cis_saas-CIS-5.1.3.4_stmt",
         "name": "statement",
-        "prose": "users can create Microsoft 365 groups in Azure portals, APIs or PowerShell with no restricting group -- group membership drives access, so unmanaged creation undermines authorization"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-access_reviews",
-      "title": "5.3.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "access_reviews"
+        "prose": "users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- EnableGroupCreation is True; group membership drives access, so unmanaged creation undermines authorization"
        },
        {
-        "name": "alt-identifier",
-        "value": "access_reviews"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-access_reviews_stmt",
-        "name": "statement",
-        "prose": "5.3.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-admin_consent_request_policy",
-      "title": "5.1.5.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "admin_consent_request_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "admin_consent_request_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-admin_consent_request_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.5.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-app_management_policy",
-      "title": "5.1.5.3",
-      "props": [
-       {
-        "name": "label",
-        "value": "app_management_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "app_management_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-app_management_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.5.3"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-authentication_methods_policy",
-      "title": "5.2.3.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "authentication_methods_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "authentication_methods_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-authentication_methods_policy_stmt",
-        "name": "statement",
-        "prose": "5.2.3.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-authorization_policy",
-      "title": "5.1.2.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "authorization_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "authorization_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-authorization_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.2.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-b2b_management_policy",
-      "title": "5.1.6.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "b2b_management_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "b2b_management_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-b2b_management_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.6.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-conditional_access_policies",
-      "title": "5.2.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "conditional_access_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "conditional_access_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-conditional_access_policies_stmt",
-        "name": "statement",
-        "prose": "5.2.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-device_registration_policy",
-      "title": "5.1.4.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "device_registration_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "device_registration_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-device_registration_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.4.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-group_settings",
-      "title": "5.2.3.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "group_settings"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "group_settings"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-group_settings_stmt",
-        "name": "statement",
-        "prose": "5.2.3.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-laps_policy",
-      "title": "5.1.4.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "laps_policy"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "laps_policy"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-laps_policy_stmt",
-        "name": "statement",
-        "prose": "5.1.4.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-mfa_registration_report",
-      "title": "5.2.3.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "mfa_registration_report"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "mfa_registration_report"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-mfa_registration_report_stmt",
-        "name": "statement",
-        "prose": "5.2.3.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-named_locations",
-      "title": "5.2.2.14",
-      "props": [
-       {
-        "name": "label",
-        "value": "named_locations"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "named_locations"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-named_locations_stmt",
-        "name": "statement",
-        "prose": "5.2.2.14"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-on_premises_synchronization",
-      "title": "5.1.8.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "on_premises_synchronization"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "on_premises_synchronization"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-on_premises_synchronization_stmt",
-        "name": "statement",
-        "prose": "5.1.8.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-per_user_mfa",
-      "title": "5.1.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "per_user_mfa"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "per_user_mfa"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-per_user_mfa_stmt",
-        "name": "statement",
-        "prose": "5.1.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10",
-      "title": "5.3.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10_stmt",
-        "name": "statement",
-        "prose": "5.3.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814",
-      "title": "5.3.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814_stmt",
-        "name": "statement",
-        "prose": "5.3.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-pim_role_assignments",
-      "title": "5.3.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "pim_role_assignments"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "pim_role_assignments"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-pim_role_assignments_stmt",
-        "name": "statement",
-        "prose": "5.3.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-cis_m365_v7.entra-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_m365_v7.entra#1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_m365_v7.entra#1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.entra"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-cis_m365_v7.entra-1_stmt",
-        "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "id": "cis_saas-CIS-5.1.3.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- no Group.Unified directory setting exists, so the default (EnableGroupCreation True) applies to every user"
        }
       ],
       "class": "security"
@@ -7510,8 +6138,107 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-cis_m365_v7.entra-2",
+      "id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.entra"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.entra"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.entra-1",
       "title": "CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally",
+      "props": [
+       {
+        "name": "label",
+        "value": "cis_m365_v7.entra#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cis_m365_v7.entra#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_m365_v7.entra"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eb7253f3-0699-5619-8d04-ddf18675ecfe",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_saas-cis_m365_v7.entra-1_stmt",
+        "name": "statement",
+        "prose": "CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_saas-cis_m365_v7.entra-2",
+      "title": "CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing",
       "props": [
        {
         "name": "label",
@@ -7537,14 +6264,14 @@
        {
         "id": "cis_saas-cis_m365_v7.entra-2_stmt",
         "name": "statement",
-        "prose": "CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally"
+        "prose": "CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-cis_m365_v7.entra-3",
-      "title": "CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -7570,7 +6297,7 @@
        {
         "id": "cis_saas-cis_m365_v7.entra-3_stmt",
         "name": "statement",
-        "prose": "CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body."
        }
       ],
       "class": "security"
@@ -7865,7 +6592,7 @@
      },
      {
       "id": "cis_saas-CIS-6.3.2",
-      "title": "OWA mailbox policy '%s' permits adding personal accounts and third-party storage in Outlook on the web",
+      "title": "the default OWA mailbox policy '%s' has %s True, so users can add personal accounts to Outlook alongside their work mailbox",
       "props": [
        {
         "name": "label",
@@ -7891,278 +6618,14 @@
        {
         "id": "cis_saas-CIS-6.3.2_stmt",
         "name": "statement",
-        "prose": "OWA mailbox policy '%s' permits adding personal accounts and third-party storage in Outlook on the web"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-audit_bypass_associations",
-      "title": "6.1.3",
-      "props": [
-       {
-        "name": "label",
-        "value": "audit_bypass_associations"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "audit_bypass_associations"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-audit_bypass_associations_stmt",
-        "name": "statement",
-        "prose": "6.1.3"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-external_in_outlook",
-      "title": "6.2.3",
-      "props": [
-       {
-        "name": "label",
-        "value": "external_in_outlook"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "external_in_outlook"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-external_in_outlook_stmt",
-        "name": "statement",
-        "prose": "6.2.3"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-mailbox_audit",
-      "title": "6.1.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "mailbox_audit"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "mailbox_audit"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-mailbox_audit_stmt",
-        "name": "statement",
-        "prose": "6.1.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-organization_config",
-      "title": "6.1.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "organization_config"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "organization_config"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-organization_config_stmt",
-        "name": "statement",
-        "prose": "6.1.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-owa_mailbox_policies",
-      "title": "6.5.3",
-      "props": [
-       {
-        "name": "label",
-        "value": "owa_mailbox_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "owa_mailbox_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-owa_mailbox_policies_stmt",
-        "name": "statement",
-        "prose": "6.5.3"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-role_assignment_policies",
-      "title": "6.3.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "role_assignment_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "role_assignment_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-role_assignment_policies_stmt",
-        "name": "statement",
-        "prose": "6.3.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-transport_config",
-      "title": "6.5.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "transport_config"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "transport_config"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-transport_config_stmt",
-        "name": "statement",
-        "prose": "6.5.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-transport_rules",
-      "title": "6.2.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "transport_rules"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "transport_rules"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.exchange"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5e953c72-f624-5933-8586-df7f1764bbbb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-transport_rules_stmt",
-        "name": "statement",
-        "prose": "6.2.2"
+        "prose": "the default OWA mailbox policy '%s' has %s True, so users can add personal accounts to Outlook alongside their work mailbox"
        }
       ],
       "class": "security"
      },
      {
       "id": "cis_saas-cis_m365_v7.exchange-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/exchange_validation.rego (package cis_m365_v7.exchange); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -8188,7 +6651,7 @@
        {
         "id": "cis_saas-cis_m365_v7.exchange-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/exchange_validation.rego (package cis_m365_v7.exchange); see the rule body."
        }
       ],
       "class": "security"
@@ -8648,7 +7111,7 @@
      },
      {
       "id": "cis_saas-cis_m365_v7.fabric-2",
-      "title": "CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/fabric_validation.rego (package cis_m365_v7.fabric); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -8674,73 +7137,7 @@
        {
         "id": "cis_saas-cis_m365_v7.fabric-2_stmt",
         "name": "statement",
-        "prose": "CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-cis_m365_v7.fabric-3",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_m365_v7.fabric#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_m365_v7.fabric#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.fabric"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e0c1bd0f-03a9-5174-840a-1c98f5c937fb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-cis_m365_v7.fabric-3_stmt",
-        "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-CIS-9.1.1",
-      "title": "Fabric tenant settings were not collected, so whether guest user access is restricted could not be established -- section 9 was not evaluated (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "CIS 9.1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CIS 9.1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.fabric"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e0c1bd0f-03a9-5174-840a-1c98f5c937fb",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-CIS-9.1.1_stmt",
-        "name": "statement",
-        "prose": "Fabric tenant settings were not collected, so whether guest user access is restricted could not be established -- section 9 was not evaluated (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/fabric_validation.rego (package cis_m365_v7.fabric); see the rule body."
        }
       ],
       "class": "security"
@@ -8798,11 +7195,6 @@
         "id": "cis_saas-CIS-4.1_stmt",
         "name": "statement",
         "prose": "devices not targeted by a compliance policy are marked compliant rather than 'not compliant' -- an unmanaged device satisfies device-compliance Conditional Access by default"
-       },
-       {
-        "id": "cis_saas-CIS-4.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "Intune facts were not collected, so whether devices without a compliance policy are marked 'not compliant' could not be established -- section 4 was not evaluated (this is not a pass). Requires the DeviceManagementConfiguration.Read.All application permission."
        }
       ],
       "class": "security"
@@ -8846,74 +7238,8 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-device_management_settings",
-      "title": "4.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "device_management_settings"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "device_management_settings"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.intune"
-       }
-      ],
-      "links": [
-       {
-        "href": "#531655f4-9aa0-5608-a4ec-95a010e66331",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-device_management_settings_stmt",
-        "name": "statement",
-        "prose": "4.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-enrollment_configurations",
-      "title": "4.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "enrollment_configurations"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "enrollment_configurations"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.intune"
-       }
-      ],
-      "links": [
-       {
-        "href": "#531655f4-9aa0-5608-a4ec-95a010e66331",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-enrollment_configurations_stmt",
-        "name": "statement",
-        "prose": "4.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-cis_m365_v7.intune-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/intune_validation.rego (package cis_m365_v7.intune); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -8939,7 +7265,7 @@
        {
         "id": "cis_saas-cis_m365_v7.intune-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/intune_validation.rego (package cis_m365_v7.intune); see the rule body."
        }
       ],
       "class": "security"
@@ -9035,74 +7361,8 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-dlp_policies",
-      "title": "3.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "dlp_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "dlp_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.purview"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b25788f9-2efa-596b-8511-7400922463b1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-dlp_policies_stmt",
-        "name": "statement",
-        "prose": "3.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-label_policies",
-      "title": "3.3.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "label_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "label_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.purview"
-       }
-      ],
-      "links": [
-       {
-        "href": "#b25788f9-2efa-596b-8511-7400922463b1",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-label_policies_stmt",
-        "name": "statement",
-        "prose": "3.3.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-cis_m365_v7.purview-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/purview_validation.rego (package cis_m365_v7.purview); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -9128,7 +7388,7 @@
        {
         "id": "cis_saas-cis_m365_v7.purview-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/purview_validation.rego (package cis_m365_v7.purview); see the rule body."
        }
       ],
       "class": "security"
@@ -9455,404 +7715,8 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-DefaultLinkPermission",
-      "title": "7.2.11",
-      "props": [
-       {
-        "name": "label",
-        "value": "DefaultLinkPermission"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DefaultLinkPermission"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-DefaultLinkPermission_stmt",
-        "name": "statement",
-        "prose": "7.2.11"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-DefaultSharingLinkType",
-      "title": "7.2.7",
-      "props": [
-       {
-        "name": "label",
-        "value": "DefaultSharingLinkType"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DefaultSharingLinkType"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-DefaultSharingLinkType_stmt",
-        "name": "statement",
-        "prose": "7.2.7"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-DisallowInfectedFileDownload",
-      "title": "7.3.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "DisallowInfectedFileDownload"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "DisallowInfectedFileDownload"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-DisallowInfectedFileDownload_stmt",
-        "name": "statement",
-        "prose": "7.3.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-EmailAttestationRequired",
-      "title": "7.2.10",
-      "props": [
-       {
-        "name": "label",
-        "value": "EmailAttestationRequired"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "EmailAttestationRequired"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-EmailAttestationRequired_stmt",
-        "name": "statement",
-        "prose": "7.2.10"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-EnableAzureADB2BIntegration",
-      "title": "7.2.2",
-      "props": [
-       {
-        "name": "label",
-        "value": "EnableAzureADB2BIntegration"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "EnableAzureADB2BIntegration"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-EnableAzureADB2BIntegration_stmt",
-        "name": "statement",
-        "prose": "7.2.2"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-ExternalUserExpirationRequired",
-      "title": "7.2.9",
-      "props": [
-       {
-        "name": "label",
-        "value": "ExternalUserExpirationRequired"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ExternalUserExpirationRequired"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-ExternalUserExpirationRequired_stmt",
-        "name": "statement",
-        "prose": "7.2.9"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-LegacyAuthProtocolsEnabled",
-      "title": "7.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "LegacyAuthProtocolsEnabled"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "LegacyAuthProtocolsEnabled"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-LegacyAuthProtocolsEnabled_stmt",
-        "name": "statement",
-        "prose": "7.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-OneDriveSharingCapability",
-      "title": "7.2.4",
-      "props": [
-       {
-        "name": "label",
-        "value": "OneDriveSharingCapability"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OneDriveSharingCapability"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-OneDriveSharingCapability_stmt",
-        "name": "statement",
-        "prose": "7.2.4"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-PreventExternalUsersFromResharing",
-      "title": "7.2.5",
-      "props": [
-       {
-        "name": "label",
-        "value": "PreventExternalUsersFromResharing"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "PreventExternalUsersFromResharing"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-PreventExternalUsersFromResharing_stmt",
-        "name": "statement",
-        "prose": "7.2.5"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-SharingCapability",
-      "title": "7.2.3",
-      "props": [
-       {
-        "name": "label",
-        "value": "SharingCapability"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SharingCapability"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-SharingCapability_stmt",
-        "name": "statement",
-        "prose": "7.2.3"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-SharingDomainRestrictionMode",
-      "title": "7.2.8",
-      "props": [
-       {
-        "name": "label",
-        "value": "SharingDomainRestrictionMode"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SharingDomainRestrictionMode"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-SharingDomainRestrictionMode_stmt",
-        "name": "statement",
-        "prose": "7.2.8"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-tenant",
-      "title": "7.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "tenant"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "tenant"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-tenant_stmt",
-        "name": "statement",
-        "prose": "7.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-cis_m365_v7.sharepoint-1",
-      "title": "CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/sharepoint_validation.rego (package cis_m365_v7.sharepoint); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -9878,40 +7742,7 @@
        {
         "id": "cis_saas-cis_m365_v7.sharepoint-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-cis_m365_v7.sharepoint-2",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
-      "props": [
-       {
-        "name": "label",
-        "value": "cis_m365_v7.sharepoint#2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "cis_m365_v7.sharepoint#2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.sharepoint"
-       }
-      ],
-      "links": [
-       {
-        "href": "#94864452-3e38-58be-8e4e-b35084120432",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-cis_m365_v7.sharepoint-2_stmt",
-        "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/sharepoint_validation.rego (package cis_m365_v7.sharepoint); see the rule body."
        }
       ],
       "class": "security"
@@ -9969,11 +7800,6 @@
         "id": "cis_saas-CIS-8.1.1_stmt",
         "name": "statement",
         "prose": "external file sharing in Teams permits '%s'; only approved cloud storage services should be enabled"
-       },
-       {
-        "id": "cis_saas-CIS-8.1.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "Teams facts were not collected, so whether external file sharing is limited to approved cloud storage services could not be established -- section 8 was not evaluated (this is not a pass)"
        }
       ],
       "class": "security"
@@ -10013,7 +7839,7 @@
      },
      {
       "id": "cis_saas-CIS-8.2.1",
-      "title": "external domains are not restricted in the Teams admin center -- federation is open to every domain rather than an allow list",
+      "title": "external domains are not restricted in the Teams admin center -- federation is open to every known domain rather than an allow list",
       "props": [
        {
         "name": "label",
@@ -10039,7 +7865,7 @@
        {
         "id": "cis_saas-CIS-8.2.1_stmt",
         "name": "statement",
-        "prose": "external domains are not restricted in the Teams admin center -- federation is open to every domain rather than an allow list"
+        "prose": "external domains are not restricted in the Teams admin center -- federation is open to every known domain rather than an allow list"
        }
       ],
       "class": "security"
@@ -10474,140 +8300,8 @@
       "class": "security"
      },
      {
-      "id": "cis_saas-client_configuration",
-      "title": "8.1.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "client_configuration"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "client_configuration"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.teams"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8a79314-9100-54d6-a4f8-6cc6e403763b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-client_configuration_stmt",
-        "name": "statement",
-        "prose": "8.1.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-federation_configuration",
-      "title": "8.2.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "federation_configuration"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "federation_configuration"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.teams"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8a79314-9100-54d6-a4f8-6cc6e403763b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-federation_configuration_stmt",
-        "name": "statement",
-        "prose": "8.2.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-meeting_policies",
-      "title": "8.5.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "meeting_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "meeting_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.teams"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8a79314-9100-54d6-a4f8-6cc6e403763b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-meeting_policies_stmt",
-        "name": "statement",
-        "prose": "8.5.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "cis_saas-messaging_policies",
-      "title": "8.6.1",
-      "props": [
-       {
-        "name": "label",
-        "value": "messaging_policies"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "messaging_policies"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "cis_m365_v7.teams"
-       }
-      ],
-      "links": [
-       {
-        "href": "#a8a79314-9100-54d6-a4f8-6cc6e403763b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "cis_saas-messaging_policies_stmt",
-        "name": "statement",
-        "prose": "8.6.1"
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "cis_saas-cis_m365_v7.teams-1",
-      "title": "CIS %s: could not be evaluated -- %s (this is not a pass)",
+      "title": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/teams_validation.rego (package cis_m365_v7.teams); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -10633,7 +8327,7 @@
        {
         "id": "cis_saas-cis_m365_v7.teams-1_stmt",
         "name": "statement",
-        "prose": "CIS %s: could not be evaluated -- %s (this is not a pass)"
+        "prose": "Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/teams_validation.rego (package cis_m365_v7.teams); see the rule body."
        }
       ],
       "class": "security"

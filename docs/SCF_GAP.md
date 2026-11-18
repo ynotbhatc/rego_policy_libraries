@@ -18,7 +18,7 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries (after v2.5.0) |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 29,499 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
+| Controls / checks | 1,591 controls in 34 domains | 29,274 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
 | Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 190 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 25 STIG platforms |
@@ -27,7 +27,7 @@ against SCF by count and not only by kind.
 "Profile variants" are rows SCF lists separately but that are one source document with a selection applied: the
 CIS Controls implementation groups, GovRAMP and FedRAMP impact levels, the nine PCI DSS SAQs, the DEF STAN 05-138
 risk levels, the NIST 800-53B baselines, the 800-82 OT overlays, the 800-161 levels and the CMMC levels. We model
-those as profile gates inside one module (as `dcc`, `cis_controls_v8` and `pqc` already do), so the honest unit of
+those as profile gates inside one module (as `dcc`, `cis_controls_v8` and `pqc` already do), so the accurate unit of
 comparison is the distinct document.
 
 ## Where we stand against SCF's 234 documents

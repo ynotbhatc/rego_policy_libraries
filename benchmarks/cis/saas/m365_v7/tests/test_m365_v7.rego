@@ -9,6 +9,15 @@ import data.cis_m365_v7.purview
 import data.cis_m365_v7.sharepoint
 import rego.v1
 
+# the message cites the control id: "CIS 2.1.2: ..." or "CIS 2.1.2/2.1.3/2.1.11: ..."
+_cites(v, id) if {
+	is_string(v)
+	ms := regex.find_all_string_submatch_n(`^CIS ([0-9]+(?:\.[0-9]+)+(?:/[0-9]+(?:\.[0-9]+)+)*): `, v, 1)
+	count(ms) == 1
+	ids := split(ms[0][1], "/")
+	id in ids
+}
+
 # ── Fail-closed behaviour ─────────────────────────────────────────────
 # The defect class this library exists to avoid is a green result that was
 # never actually established. Absent facts must produce a violation and a
@@ -19,10 +28,13 @@ test_admin_center_absent_facts_is_not_a_pass if {
 	r.compliant == false
 	r.facts_present == false
 
-	# admin_center's own 1.1.1 not-collected catch (1) plus the four
-	# Exchange-sourced controls (1.2.2/1.3.3/1.3.6/1.3.9) now reported as
-	# not-evaluated when Exchange facts are absent, rather than passing silently.
-	count(r.violations) == 5
+	# every control of the section, the four Exchange-sourced ones included
+	# (1.2.2/1.3.3/1.3.6/1.3.9), is named by an evidence-missing message
+	every c in r.controls {
+		some v in r.violations
+		_cites(v, c)
+		contains(v, "(this is not a pass)")
+	}
 }
 
 test_defender_absent_facts_is_not_a_pass if {
@@ -68,7 +80,7 @@ test_1_1_3_too_few_global_admins if {
 	r := admin_center.compliance_report with input as admins(1)
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 1.1.3:")
+	_cites(v, "1.1.3")
 }
 
 test_1_1_3_too_many_global_admins if {
@@ -83,7 +95,7 @@ test_1_1_3_three_global_admins_passes if {
 	# flagged. This minimal input carries no Exchange facts, so the
 	# Exchange-sourced controls correctly report as not-evaluated (the report
 	# is not globally clean); assert 1.1.3 specifically passes.
-	count([v | some v in r.violations; contains(v, "CIS 1.1.3:")]) == 0
+	count([v | some v in r.violations; _cites(v, "1.1.3")]) == 0
 }
 
 test_graph_only_mode_exchange_controls_are_not_a_silent_pass if {
@@ -93,7 +105,7 @@ test_graph_only_mode_exchange_controls_are_not_a_silent_pass if {
 	r := admin_center.compliance_report with input as admins(3)
 	every c in ["1.2.2", "1.3.3", "1.3.6", "1.3.9"] {
 		some v in r.violations
-		startswith(v, sprintf("CIS %s:", [c]))
+		_cites(v, c)
 		contains(v, "Exchange facts were not collected")
 	}
 }
@@ -110,19 +122,19 @@ domains(spf, dkim, dmarc) := {"exchange": {"verified_domains": [{
 test_2_1_8_missing_spf if {
 	r := defender.compliance_report with input as domains(false, true, true)
 	some v in r.violations
-	contains(v, "CIS 2.1.8:")
+	_cites(v, "2.1.8")
 }
 
 test_2_1_9_missing_dkim if {
 	r := defender.compliance_report with input as domains(true, false, true)
 	some v in r.violations
-	contains(v, "CIS 2.1.9:")
+	_cites(v, "2.1.9")
 }
 
 test_2_1_10_missing_dmarc if {
 	r := defender.compliance_report with input as domains(true, true, false)
 	some v in r.violations
-	contains(v, "CIS 2.1.10:")
+	_cites(v, "2.1.10")
 }
 
 test_2_1_domain_dns_unavailable_is_not_a_false_violation if {
@@ -150,9 +162,9 @@ test_2_1_initial_domain_excluded_from_dns_controls if {
 		"spf_present": false, "dkim_present": false, "dmarc_present": false,
 	}]}}
 	every v in r.violations {
-		not contains(v, "CIS 2.1.8:")
-		not contains(v, "CIS 2.1.9:")
-		not contains(v, "CIS 2.1.10:")
+		not _cites(v, "2.1.8")
+		not _cites(v, "2.1.9")
+		not _cites(v, "2.1.10")
 	}
 }
 
@@ -160,12 +172,27 @@ test_mail_authentication_controls_satisfied if {
 	# A domains-only fixture establishes SPF/DKIM/DMARC and nothing else.
 	# With 17 controls in the section it cannot make the whole section
 	# compliant, so assert on the three controls it actually covers.
-	r := defender.compliance_report with input as domains(true, true, true)
+	r := defender.compliance_report with input as object.union(domains(true, true, true), {"defender": {
+		"collected": true, "unavailable": {},
+		"dkim_signing_configs": [{"Domain": "example.com", "Enabled": true, "Status": "Valid"}],
+	}})
 	every v in r.violations {
-		not contains(v, "CIS 2.1.8:")
-		not contains(v, "CIS 2.1.9:")
-		not contains(v, "CIS 2.1.10:")
+		not _cites(v, "2.1.8")
+		not _cites(v, "2.1.9")
+		not _cites(v, "2.1.10")
 	}
+}
+
+# a published selector CNAME alone does not show that Exchange Online signs the
+# domain: without the signing configuration 2.1.9 is evidence missing, not a pass
+test_2_1_9_cname_without_signing_config_is_evidence_missing if {
+	r := data.cis_m365_v7.main.compliance_report with input as domains(true, true, true)
+	some c in r.control_results
+	c.id == "2.1.9"
+	c.status == "evidence_missing"
+	some v in r.violations
+	_cites(v, "2.1.9")
+	contains(v, "(this is not a pass)")
 }
 
 # ── CIS 3.1.1 -- unified audit log ────────────────────────────────────
@@ -174,7 +201,7 @@ test_3_1_1_audit_log_unavailable if {
 	r := purview.compliance_report with input as {"purview": {"audit_log_accessible": false}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 3.1.1:")
+	_cites(v, "3.1.1")
 }
 
 test_3_1_1_audit_log_available_satisfies_its_control if {
@@ -182,7 +209,7 @@ test_3_1_1_audit_log_available_satisfies_its_control if {
 	# audit-log-only fixture cannot make the section compliant. Assert on
 	# the control it actually establishes.
 	r := purview.compliance_report with input as {"purview": {"audit_log_accessible": true}}
-	every v in r.violations { not contains(v, "CIS 3.1.1:") }
+	every v in r.violations { not _cites(v, "3.1.1") }
 }
 
 # ── CIS 5.2.2.x / 5.3.1 -- Conditional Access and PIM ─────────────────
@@ -219,19 +246,19 @@ block_legacy := {
 test_5_2_2_2_no_mfa_for_all_users if {
 	r := entra.compliance_report with input as ca_tenant([mfa_admins, block_legacy], true)
 	some v in r.violations
-	contains(v, "CIS 5.2.2.2:")
+	_cites(v, "5.2.2.2")
 }
 
 test_5_2_2_3_legacy_auth_not_blocked if {
 	r := entra.compliance_report with input as ca_tenant([mfa_all_users, mfa_admins], true)
 	some v in r.violations
-	contains(v, "CIS 5.2.2.3:")
+	_cites(v, "5.2.2.3")
 }
 
 test_5_3_1_pim_not_in_use if {
 	r := entra.compliance_report with input as ca_tenant([mfa_all_users, mfa_admins, block_legacy], false)
 	some v in r.violations
-	contains(v, "CIS 5.3.1:")
+	_cites(v, "5.3.1")
 }
 
 test_entra_conditional_access_controls_satisfied if {
@@ -240,9 +267,9 @@ test_entra_conditional_access_controls_satisfied if {
 	# controls stop firing, which is what this fixture establishes.
 	r := entra.compliance_report with input as ca_tenant([mfa_all_users, mfa_admins, block_legacy], true)
 	every v in r.violations {
-		not contains(v, "CIS 5.2.2.1:")
-		not contains(v, "CIS 5.2.2.2:")
-		not contains(v, "CIS 5.2.2.3:")
+		not _cites(v, "5.2.2.1")
+		not _cites(v, "5.2.2.2")
+		not _cites(v, "5.2.2.3")
 	}
 }
 
@@ -251,7 +278,7 @@ test_disabled_policy_does_not_satisfy_control if {
 	disabled := object.union(mfa_all_users, {"state": "disabled"})
 	r := entra.compliance_report with input as ca_tenant([disabled], true)
 	some v in r.violations
-	contains(v, "CIS 5.2.2.2:")
+	_cites(v, "5.2.2.2")
 }
 
 # ── CIS 6.1.1 -- mailbox auditing ─────────────────────────────────────
@@ -264,7 +291,7 @@ test_6_1_1_audit_disabled_read_directly if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 6.1.1:")
+	_cites(v, "6.1.1")
 }
 
 test_6_5_4_smtp_auth_enabled if {
@@ -273,7 +300,7 @@ test_6_5_4_smtp_auth_enabled if {
 		"transport_config": {"SmtpClientAuthenticationDisabled": false},
 	}}
 	some v in r.violations
-	contains(v, "CIS 6.5.4:")
+	_cites(v, "6.5.4")
 }
 
 test_6_1_3_audit_bypass_flagged if {
@@ -282,7 +309,7 @@ test_6_1_3_audit_bypass_flagged if {
 		"audit_bypass_associations": [{"Identity": "svc@c.com"}],
 	}}
 	some v in r.violations
-	contains(v, "CIS 6.1.3:")
+	_cites(v, "6.1.3")
 }
 
 test_6_2_2_scl_bypass_whitelist_flagged if {
@@ -294,7 +321,7 @@ test_6_2_2_scl_bypass_whitelist_flagged if {
 		}],
 	}}
 	some v in r.violations
-	contains(v, "CIS 6.2.2:")
+	_cites(v, "6.2.2")
 }
 
 test_6_1_2_declares_its_sampling_limit if {
@@ -315,25 +342,25 @@ sp(props) := {"sharepoint": {
 test_7_2_1_legacy_auth_enabled if {
 	r := sharepoint.compliance_report with input as sp({"LegacyAuthProtocolsEnabled": true})
 	some v in r.violations
-	contains(v, "CIS 7.2.1:")
+	_cites(v, "7.2.1")
 }
 
 test_7_2_6_most_permissive_sharing if {
 	r := sharepoint.compliance_report with input as sp({"SharingCapability": "ExternalUserAndGuestSharing"})
 	some v in r.violations
-	contains(v, "CIS 7.2.6:")
+	_cites(v, "7.2.6")
 }
 
 test_7_2_7_anonymous_default_link if {
 	r := sharepoint.compliance_report with input as sp({"DefaultSharingLinkType": "AnonymousAccess"})
 	some v in r.violations
-	contains(v, "CIS 7.2.7:")
+	_cites(v, "7.2.7")
 }
 
 test_7_2_11_default_link_permission_edit if {
 	r := sharepoint.compliance_report with input as sp({"DefaultLinkPermission": "Edit"})
 	some v in r.violations
-	contains(v, "CIS 7.2.11:")
+	_cites(v, "7.2.11")
 }
 
 test_sharepoint_hardened_passes if {
@@ -363,7 +390,7 @@ test_7_2_8_missing_property_blocks_its_control if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 7.2.8:")
+	_cites(v, "7.2.8")
 	contains(v, "not a pass")
 }
 
@@ -378,8 +405,14 @@ test_sharepoint_declares_the_cmdlet_deviation if {
 test_orchestrator_reports_partial_coverage_honestly if {
 	r := main.compliance_report with input as {}
 	r.benchmark_total_controls == 160
-	r.controls_evaluated == 144
-	r.controls_not_evaluated == 16
+	r.implemented_controls == 144
+
+	# nothing was evaluated for an empty input
+	r.controls_evaluated == 0
+	r.controls_not_evaluated == 160
+	r.evaluated_control_ids == []
+	r.total_controls == 160
+	r.failed_controls == 160
 	count(r.sections_not_evaluated) == 0
 }
 
@@ -417,24 +450,24 @@ test_1_1_1_on_prem_synced_admin if {
 		"global_admin_count": 3,
 	})
 	some v in r.violations
-	contains(v, "CIS 1.1.1:")
+	_cites(v, "1.1.1")
 }
 
 test_1_2_1_public_group_flagged if {
 	r := ac.compliance_report with input as ac_input({"public_groups": [{"display_name": "All Co"}]})
 	some v in r.violations
-	contains(v, "CIS 1.2.1:")
+	_cites(v, "1.2.1")
 }
 
 test_1_3_1_password_expiry_configured if {
 	r := ac.compliance_report with input as ac_input({"domains": [{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 90}]})
 	some v in r.violations
-	contains(v, "CIS 1.3.1:")
+	_cites(v, "1.3.1")
 }
 
 test_1_3_1_never_expires_passes if {
 	r := ac.compliance_report with input as ac_input({"domains": [{"id": "c.com", "is_verified": true, "password_validity_period_in_days": 2147483647}]})
-	every v in r.violations { not contains(v, "CIS 1.3.1:") }
+	every v in r.violations { not _cites(v, "1.3.1") }
 }
 
 # The whole point of the `unavailable` contract: a denied endpoint must
@@ -446,7 +479,7 @@ test_unavailable_fact_raises_the_blocked_control if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 1.3.1:")
+	_cites(v, "1.3.1")
 	contains(v, "not a pass")
 }
 
@@ -464,7 +497,7 @@ test_4_1_secure_by_default_off if {
 		"enrollment_platform_restrictions": [{"display_name": "d", "platforms": {}}],
 	}}
 	some v in r.violations
-	contains(v, "CIS 4.1:")
+	_cites(v, "4.1")
 }
 
 test_4_2_personal_enrollment_permitted if {
@@ -473,7 +506,7 @@ test_4_2_personal_enrollment_permitted if {
 		"enrollment_platform_restrictions": [{"display_name": "Default", "platforms": {"iosRestriction": {"personal_device_enrollment_blocked": false}}}],
 	}}
 	some v in r.violations
-	contains(v, "CIS 4.2:")
+	_cites(v, "4.2")
 }
 
 test_intune_missing_permission_is_not_a_pass if {
@@ -507,7 +540,7 @@ test_uncollectable_controls_are_reported_not_omitted if {
 # mentions.
 
 test_the_six_gap_controls_are_evaluated_not_merely_listed if {
-	ids := {c | some c in main.compliance_report.evaluated_control_ids}
+	ids := {c | some c in main.compliance_report.implemented_control_ids}
 	every cid in ["1.2.2", "1.3.3", "2.4.1", "5.1.6.1", "5.3.4", "5.3.5"] {
 		cid in ids
 	}
@@ -531,7 +564,7 @@ test_1_3_3_enabled_sharing_policy_violates if {
 		ex({"sharing_policies": [{"Name": "Default Sharing Policy", "Enabled": true}]}),
 	)
 	some v in r.violations
-	contains(v, "CIS 1.3.3:")
+	_cites(v, "1.3.3")
 	contains(v, "Default Sharing Policy")
 }
 
@@ -542,13 +575,13 @@ test_1_3_3_checks_every_policy_not_just_the_default if {
 		{"Name": "Partners", "Enabled": true, "Default": false},
 	]}))
 	some v in r.violations
-	contains(v, "CIS 1.3.3:")
+	_cites(v, "1.3.3")
 	contains(v, "Partners")
 }
 
 test_1_3_3_all_policies_disabled_passes if {
 	r := ac.compliance_report with input as object.union(ac_input({}), ex({"sharing_policies": [{"Name": "Default Sharing Policy", "Enabled": false}]}))
-	every v in r.violations { not contains(v, "CIS 1.3.3:") }
+	every v in r.violations { not _cites(v, "1.3.3") }
 }
 
 test_1_3_3_unavailable_is_not_a_pass if {
@@ -557,7 +590,7 @@ test_1_3_3_unavailable_is_not_a_pass if {
 		"unavailable": {"sharing_policies": "insufficient permissions"},
 	}})
 	some v in r.violations
-	contains(v, "CIS 1.3.3:")
+	_cites(v, "1.3.3")
 	contains(v, "this is not a pass")
 }
 
@@ -569,7 +602,7 @@ test_1_2_2_enabled_shared_mailbox_violates if {
 		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
 	)
 	some v in r.violations
-	contains(v, "CIS 1.2.2:")
+	_cites(v, "1.2.2")
 	contains(v, "shared@x.com")
 }
 
@@ -578,7 +611,7 @@ test_1_2_2_blocked_shared_mailbox_passes if {
 		ac_input({"user_sign_in_state": {"obj-1": {"account_enabled": false}}}),
 		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
 	)
-	every v in r.violations { not contains(v, "CIS 1.2.2:") }
+	every v in r.violations { not _cites(v, "1.2.2") }
 }
 
 test_1_2_2_unmatched_account_is_unevaluated_not_passed if {
@@ -589,7 +622,7 @@ test_1_2_2_unmatched_account_is_unevaluated_not_passed if {
 		ex({"shared_mailboxes": [{"UserPrincipalName": "orphan@x.com", "ExternalDirectoryObjectId": "obj-missing"}]}),
 	)
 	some v in r.violations
-	contains(v, "CIS 1.2.2:")
+	_cites(v, "1.2.2")
 	contains(v, "no directory account matched")
 }
 
@@ -599,7 +632,7 @@ test_1_2_2_missing_sign_in_state_is_not_a_pass if {
 		ex({"shared_mailboxes": [{"UserPrincipalName": "shared@x.com", "ExternalDirectoryObjectId": "obj-1"}]}),
 	)
 	some v in r.violations
-	contains(v, "CIS 1.2.2:")
+	_cites(v, "1.2.2")
 	contains(v, "this is not a pass")
 }
 
@@ -620,7 +653,7 @@ test_2_4_1_tenant_toggle_off_violates if {
 		"priority_account_alerts": [good_alert("Phish"), good_alert("Malware")],
 	})
 	some v in r.violations
-	contains(v, "CIS 2.4.1:")
+	_cites(v, "2.4.1")
 	contains(v, "not enabled for the tenant")
 }
 
@@ -631,7 +664,7 @@ test_2_4_1_toggle_on_but_no_alerts_still_violates if {
 		"priority_account_alerts": [],
 	})
 	some v in r.violations
-	contains(v, "CIS 2.4.1:")
+	_cites(v, "2.4.1")
 	contains(v, "phishing")
 }
 
@@ -641,7 +674,7 @@ test_2_4_1_requires_both_phish_and_malware_alerts if {
 		"priority_account_alerts": [good_alert("Phish")],
 	})
 	some v in r.violations
-	contains(v, "CIS 2.4.1:")
+	_cites(v, "2.4.1")
 	contains(v, "malware")
 	every v in r.violations { not contains(v, "phishing email detected") }
 }
@@ -651,7 +684,7 @@ test_2_4_1_fully_configured_passes if {
 		"email_tenant_settings": {"EnablePriorityAccountProtection": true},
 		"priority_account_alerts": [good_alert("Phish"), good_alert("Malware")],
 	})
-	every v in r.violations { not contains(v, "CIS 2.4.1:") }
+	every v in r.violations { not _cites(v, "2.4.1") }
 }
 
 test_2_4_1_disabled_alert_does_not_count_as_passing if {
@@ -661,7 +694,7 @@ test_2_4_1_disabled_alert_does_not_count_as_passing if {
 		"priority_account_alerts": [disabled, good_alert("Malware")],
 	})
 	some v in r.violations
-	contains(v, "CIS 2.4.1:")
+	_cites(v, "2.4.1")
 	contains(v, "phishing")
 }
 
@@ -672,7 +705,7 @@ test_2_4_1_low_severity_alert_does_not_count if {
 		"priority_account_alerts": [good_alert("Phish"), low],
 	})
 	some v in r.violations
-	contains(v, "CIS 2.4.1:")
+	_cites(v, "2.4.1")
 	contains(v, "malware")
 }
 
@@ -683,7 +716,7 @@ en(extra) := {"entra": object.union({"collected": true, "unavailable": {}}, extr
 test_5_1_6_1_no_policy_violates if {
 	r := entra.compliance_report with input as en({"b2b_management_policy": {"policy_present": false}})
 	some v in r.violations
-	contains(v, "CIS 5.1.6.1:")
+	_cites(v, "5.1.6.1")
 }
 
 test_5_1_6_1_allow_list_present_passes if {
@@ -691,7 +724,7 @@ test_5_1_6_1_allow_list_present_passes if {
 		"policy_present": true, "allowed_domains": ["contoso.com"],
 		"allowed_domains_present": true, "blocked_domains_present": false,
 	}})
-	every v in r.violations { not contains(v, "CIS 5.1.6.1:") }
+	every v in r.violations { not _cites(v, "5.1.6.1") }
 }
 
 test_5_1_6_1_empty_allow_list_is_compliant if {
@@ -701,7 +734,7 @@ test_5_1_6_1_empty_allow_list_is_compliant if {
 		"policy_present": true, "allowed_domains": [],
 		"allowed_domains_present": true, "blocked_domains_present": false,
 	}})
-	every v in r.violations { not contains(v, "CIS 5.1.6.1:") }
+	every v in r.violations { not _cites(v, "5.1.6.1") }
 }
 
 test_5_1_6_1_absent_allow_list_violates if {
@@ -710,7 +743,7 @@ test_5_1_6_1_absent_allow_list_violates if {
 		"blocked_domains_present": false,
 	}})
 	some v in r.violations
-	contains(v, "CIS 5.1.6.1:")
+	_cites(v, "5.1.6.1")
 	contains(v, "no AllowedDomains")
 }
 
@@ -720,7 +753,7 @@ test_5_1_6_1_block_list_violates_even_with_an_allow_list if {
 		"allowed_domains_present": true, "blocked_domains_present": true,
 	}})
 	some v in r.violations
-	contains(v, "CIS 5.1.6.1:")
+	_cites(v, "5.1.6.1")
 	contains(v, "BlockedDomains")
 }
 
@@ -733,14 +766,14 @@ PRA_KEY := "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
 test_5_3_4_approval_not_required_violates if {
 	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": false, "primary_approver_count": 0}})
 	some v in r.violations
-	contains(v, "CIS 5.3.4:")
+	_cites(v, "5.3.4")
 	contains(v, "Global Administrator")
 }
 
 test_5_3_5_approval_not_required_violates if {
 	r := entra.compliance_report with input as en({PRA_KEY: {"is_approval_required": false, "primary_approver_count": 0}})
 	some v in r.violations
-	contains(v, "CIS 5.3.5:")
+	_cites(v, "5.3.5")
 	contains(v, "Privileged Role Administrator")
 }
 
@@ -748,13 +781,13 @@ test_5_3_4_approval_required_with_no_approvers_violates if {
 	# A requirement that nobody can satisfy gates nothing.
 	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": true, "primary_approver_count": 0}})
 	some v in r.violations
-	contains(v, "CIS 5.3.4:")
+	_cites(v, "5.3.4")
 	contains(v, "no approvers are assigned")
 }
 
 test_5_3_4_approval_required_with_approvers_passes if {
 	r := entra.compliance_report with input as en({GA_KEY: {"is_approval_required": true, "primary_approver_count": 2}})
-	every v in r.violations { not contains(v, "CIS 5.3.4:") }
+	every v in r.violations { not _cites(v, "5.3.4") }
 }
 
 test_5_3_4_role_not_governed_by_pim_is_not_a_pass if {
@@ -763,7 +796,7 @@ test_5_3_4_role_not_governed_by_pim_is_not_a_pass if {
 		"unavailable": {GA_KEY: "no roleManagementPolicyAssignment for the Global Administrator role -- PIM does not govern its activation (blocks 5.3.4)"},
 	}}
 	some v in r.violations
-	contains(v, "CIS 5.3.4:")
+	_cites(v, "5.3.4")
 	contains(v, "this is not a pass")
 }
 
@@ -771,7 +804,7 @@ test_buckets_do_not_overlap if {
 	att_ids := {cid | some cid, _ in att.REQUIRES_ATTESTATION}
 	unres := {cid | some cid, _ in att.UNRESOLVED}
 	notimpl := {cid | some cid, _ in att.NOT_IMPLEMENTED}
-	evaluated := {cid | some cid in main.compliance_report.evaluated_control_ids}
+	evaluated := {cid | some cid in main.compliance_report.implemented_control_ids}
 	count(att_ids & unres) == 0
 	count(att_ids & notimpl) == 0
 	count(unres & notimpl) == 0
@@ -794,24 +827,24 @@ test_coverage_accounting_is_published_not_just_asserted if {
 
 test_complete_attestation_satisfies_the_control if {
 	r := att.compliance_report with input as {"attestations": [{
-		"control_id": "5.2.4.1", "observed": "All",
+		"control_id": "5.2.4.1", "observed": true,
 		"attested_by": "operator@example.com", "attested_on": "2026-08-14",
 		"evidence_ref": "screenshot-001.png",
 	}]}
-	every v in r.violations { not contains(v, "CIS 5.2.4.1:") }
+	every v in r.violations { not _cites(v, "5.2.4.1") }
 }
 
 test_attestation_missing_provenance_is_inadmissible if {
-	r := att.compliance_report with input as {"attestations": [{"control_id": "5.2.4.1", "observed": "All", "attested_by": "operator@example.com"}]}
+	r := att.compliance_report with input as {"attestations": [{"control_id": "5.2.4.1", "observed": true, "attested_by": "operator@example.com"}]}
 	some v in r.violations
-	contains(v, "CIS 5.2.4.1:")
+	_cites(v, "5.2.4.1")
 	contains(v, "not admissible")
 }
 
 # null, blank or non-string provenance is present but is not evidence.
 _attestation_with(field, value) := {"attestations": [object.union(
 	{
-		"control_id": "5.2.4.1", "observed": "All",
+		"control_id": "5.2.4.1", "observed": true,
 		"attested_by": "operator@example.com", "attested_on": "2026-08-14",
 		"evidence_ref": "screenshot-001.png",
 	},
@@ -822,7 +855,7 @@ test_attestation_null_evidence_ref_is_inadmissible if {
 	r := att.compliance_report with input as _attestation_with("evidence_ref", null)
 	not "5.2.4.1" in r.attested_control_ids
 	some v in r.violations
-	contains(v, "CIS 5.2.4.1:")
+	_cites(v, "5.2.4.1")
 	contains(v, "not admissible")
 }
 
@@ -895,13 +928,13 @@ test_authorization_policy_cluster_silent_when_hardened if {
 test_5_2_3_5_weak_methods_enabled if {
 	r := entra.compliance_report with input as entra_input({"weak_methods_enabled": ["sms"]})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.5:")
+	_cites(v, "5.2.3.5")
 }
 
 test_5_2_3_7_email_otp_enabled if {
 	r := entra.compliance_report with input as entra_input({"email_otp_state": "enabled"})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.7:")
+	_cites(v, "5.2.3.7")
 }
 
 test_5_2_3_4_member_not_mfa_capable if {
@@ -910,7 +943,7 @@ test_5_2_3_4_member_not_mfa_capable if {
 		"members_not_mfa_capable": [{"user_principal_name": "a@c.com"}],
 	}})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.4:")
+	_cites(v, "5.2.3.4")
 }
 
 test_5_1_2_1_legacy_per_user_mfa_flagged if {
@@ -920,20 +953,20 @@ test_5_1_2_1_legacy_per_user_mfa_flagged if {
 		"api_version": "beta",
 	}})
 	some v in r.violations
-	contains(v, "CIS 5.1.2.1:")
+	_cites(v, "5.1.2.1")
 }
 
 # 5.1.8.1 only applies to hybrid tenants -- a cloud-only tenant must not
 # be marked non-compliant for a control that does not apply to it.
 test_5_1_8_1_not_raised_for_cloud_only_tenant if {
 	r := entra.compliance_report with input as entra_input({"on_premises_sync": {"configured": false, "password_sync_enabled": null}})
-	every v in r.violations { not contains(v, "CIS 5.1.8.1:") }
+	every v in r.violations { not _cites(v, "5.1.8.1") }
 }
 
 test_5_1_8_1_raised_for_hybrid_without_hash_sync if {
 	r := entra.compliance_report with input as entra_input({"on_premises_sync": {"configured": true, "password_sync_enabled": false}})
 	some v in r.violations
-	contains(v, "CIS 5.1.8.1:")
+	_cites(v, "5.1.8.1")
 }
 
 test_entra_declares_the_beta_evidence_caveat if {
@@ -948,7 +981,7 @@ test_entra_unavailable_fact_names_the_blocked_control if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 5.1.2.2:")
+	_cites(v, "5.1.2.2")
 	contains(v, "not a pass")
 }
 
@@ -961,30 +994,56 @@ teams_input(extra) := {"teams": object.union({"collected": true, "unavailable": 
 test_8_1_1_unapproved_storage_provider if {
 	r := teams.compliance_report with input as teams_input({"client_configuration": {"AllowDropBox": true}})
 	some v in r.violations
-	contains(v, "CIS 8.1.1:")
+	_cites(v, "8.1.1")
 }
 
 test_8_2_2_unmanaged_teams_users_allowed if {
 	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowTeamsConsumer": true}})
 	some v in r.violations
-	contains(v, "CIS 8.2.2:")
+	_cites(v, "8.2.2")
 }
 
-test_8_2_1_open_federation_with_no_allow_list if {
+# An empty allow list blocks every external domain, which the benchmark accepts
+# ("Block all external domains"); AllowAllKnownDomains is the open state.
+test_8_2_1_empty_allow_list_blocks_all_and_passes if {
 	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": []}})
-	some v in r.violations
-	contains(v, "CIS 8.2.1:")
+	every v in r.violations { not _cites(v, "8.2.1") }
+	"8.2.1" in teams.decidable with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": []}})
+}
+
+test_8_2_1_allow_all_known_domains_fails if {
+	every shape in ["AllowAllKnownDomains", {"AllowAllKnownDomains": {}}] {
+		r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": shape}})
+		some v in r.violations
+		_cites(v, "8.2.1")
+		not contains(v, "(this is not a pass)")
+	}
+}
+
+test_8_2_1_allow_list_object_passes if {
+	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": {"AllowedDomain": [{"Domain": "partner.example"}]}}})
+	every v in r.violations { not _cites(v, "8.2.1") }
+}
+
+# a shape that cannot be told apart (null, an empty object) is evidence missing, not a pass
+test_8_2_1_unreadable_allowed_domains_is_evidence_missing if {
+	every shape in [null, {}, "Domain=partner.example"] {
+		r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": shape}})
+		some v in r.violations
+		_cites(v, "8.2.1")
+		contains(v, "(this is not a pass)")
+	}
 }
 
 test_8_2_1_not_raised_when_an_allow_list_exists if {
 	r := teams.compliance_report with input as teams_input({"federation_configuration": {"AllowFederatedUsers": true, "AllowedDomains": ["partner.com"]}})
-	every v in r.violations { not contains(v, "CIS 8.2.1:") }
+	every v in r.violations { not _cites(v, "8.2.1") }
 }
 
 test_8_5_1_anonymous_join_in_global_policy if {
 	r := teams.compliance_report with input as teams_input({"meeting_policies": [{"Identity": "Global", "AllowAnonymousUsersToJoinMeeting": true}]})
 	some v in r.violations
-	contains(v, "CIS 8.5.1:")
+	_cites(v, "8.5.1")
 }
 
 # The reason all policies are checked, not just Global: a hardened Global
@@ -995,20 +1054,20 @@ test_permissive_non_global_policy_is_not_masked_by_a_clean_global if {
 		{"Identity": "Tag:Contractors", "AllowAnonymousUsersToJoinMeeting": true},
 	]})
 	some v in r.violations
-	contains(v, "CIS 8.5.1:")
+	_cites(v, "8.5.1")
 	contains(v, "Contractors")
 }
 
 test_8_5_4_pstn_bypasses_lobby if {
 	r := teams.compliance_report with input as teams_input({"meeting_policies": [{"Identity": "Global", "AllowPSTNUsersToBypassLobby": true}]})
 	some v in r.violations
-	contains(v, "CIS 8.5.4:")
+	_cites(v, "8.5.4")
 }
 
 test_8_6_1_security_reporting_disabled if {
 	r := teams.compliance_report with input as teams_input({"messaging_policies": [{"Identity": "Global", "AllowSecurityEndUserReporting": false}]})
 	some v in r.violations
-	contains(v, "CIS 8.6.1:")
+	_cites(v, "8.6.1")
 }
 
 test_teams_absent_facts_is_not_a_pass if {
@@ -1023,7 +1082,7 @@ test_teams_unavailable_fact_names_the_blocked_control if {
 		"unavailable": {"meeting_policies": "Teams PowerShell module is not installed"},
 	}}
 	some v in r.violations
-	contains(v, "CIS 8.5.1:")
+	_cites(v, "8.5.1")
 	contains(v, "not a pass")
 }
 
@@ -1045,37 +1104,37 @@ def_input(extra) := {"defender": object.union({"collected": true, "unavailable":
 test_2_1_1_safe_links_not_enabled_for_office if {
 	r := defender.compliance_report with input as def_input({"safe_links_policies": [{"Name": "Default", "EnableSafeLinksForOffice": false}]})
 	some v in r.violations
-	contains(v, "CIS 2.1.1:")
+	_cites(v, "2.1.1")
 }
 
 test_2_1_2_attachment_type_filter_disabled if {
 	r := defender.compliance_report with input as def_input({"malware_filter_policies": [{"Identity": "Default", "EnableFileFilter": false}]})
 	some v in r.violations
-	contains(v, "CIS 2.1.2:")
+	_cites(v, "2.1.2")
 }
 
 test_2_1_4_no_safe_attachments_policy if {
 	r := defender.compliance_report with input as def_input({"safe_attachment_policies": []})
 	some v in r.violations
-	contains(v, "CIS 2.1.4:")
+	_cites(v, "2.1.4")
 }
 
 test_2_1_12_ip_allow_list_in_use if {
 	r := defender.compliance_report with input as def_input({"connection_filter_policies": [{"Name": "Default", "IPAllowList": ["203.0.113.10"]}]})
 	some v in r.violations
-	contains(v, "CIS 2.1.12:")
+	_cites(v, "2.1.12")
 }
 
 test_2_1_14_allowed_sender_domains if {
 	r := defender.compliance_report with input as def_input({"content_filter_policies": [{"Name": "Default", "AllowedSenderDomains": ["partner.com"]}]})
 	some v in r.violations
-	contains(v, "CIS 2.1.14:")
+	_cites(v, "2.1.14")
 }
 
 test_2_4_4_teams_zap_off if {
 	r := defender.compliance_report with input as def_input({"teams_protection_policy": {"ZapEnabled": false}})
 	some v in r.violations
-	contains(v, "CIS 2.4.4:")
+	_cites(v, "2.4.4")
 }
 
 # A tenant without Defender for Office 365 has no ATP cmdlets at all. That
@@ -1088,7 +1147,7 @@ test_tenant_without_defender_reports_unevaluable_not_compliant if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 2.1.4:")
+	_cites(v, "2.1.4")
 	contains(v, "not a pass")
 }
 
@@ -1103,7 +1162,7 @@ pv(extra) := {"purview_ps": object.union({"collected": true, "unavailable": {}},
 test_3_2_1_no_enforcing_dlp_policy if {
 	r := purview.compliance_report with input as pv({"dlp_policies": []})
 	some v in r.violations
-	contains(v, "CIS 3.2.1:")
+	_cites(v, "3.2.1")
 }
 
 # A policy in Test mode reports matches but prevents nothing, so it must
@@ -1111,19 +1170,19 @@ test_3_2_1_no_enforcing_dlp_policy if {
 test_3_2_1_test_mode_policy_does_not_satisfy_the_control if {
 	r := purview.compliance_report with input as pv({"dlp_policies": [{"Name": "Pilot", "Enabled": true, "Mode": "TestWithNotifications"}]})
 	some v in r.violations
-	contains(v, "CIS 3.2.1:")
+	_cites(v, "3.2.1")
 }
 
 test_3_2_2_dlp_does_not_cover_teams if {
 	r := purview.compliance_report with input as pv({"dlp_policies": [{"Name": "Default", "Enabled": true, "Mode": "Enforce", "TeamsLocation": []}]})
 	some v in r.violations
-	contains(v, "CIS 3.2.2:")
+	_cites(v, "3.2.2")
 }
 
 test_3_3_1_no_published_label_policy if {
 	r := purview.compliance_report with input as pv({"label_policies": []})
 	some v in r.violations
-	contains(v, "CIS 3.3.1:")
+	_cites(v, "3.3.1")
 }
 
 test_purview_ps_unavailable_is_not_a_pass if {
@@ -1132,7 +1191,7 @@ test_purview_ps_unavailable_is_not_a_pass if {
 		"unavailable": {"dlp_policies": "purview access denied (blocks 3.2.1, 3.2.2, 3.2.3)"},
 	}}
 	some v in r.violations
-	contains(v, "CIS 3.2.1:")
+	_cites(v, "3.2.1")
 	contains(v, "not a pass")
 }
 
@@ -1144,7 +1203,7 @@ test_1_3_6_customer_lockbox_disabled if {
 		"exchange": {"collected": true, "unavailable": {}, "organization_config": {"CustomerLockBoxEnabled": false}},
 	}
 	some v in r.violations
-	contains(v, "CIS 1.3.6:")
+	_cites(v, "1.3.6")
 }
 
 test_1_3_9_bookings_without_auth if {
@@ -1153,7 +1212,7 @@ test_1_3_9_bookings_without_auth if {
 		"exchange": {"collected": true, "unavailable": {}, "organization_config": {"BookingsEnabled": true, "BookingsAuthEnabled": false}},
 	}
 	some v in r.violations
-	contains(v, "CIS 1.3.9:")
+	_cites(v, "1.3.9")
 }
 
 # ── Section 9 -- Fabric ───────────────────────────────────────────────
@@ -1165,7 +1224,7 @@ fab(settings) := {"fabric": {"collected": true, "unavailable": {}, "settings": s
 test_9_1_4_publish_to_web_open_to_whole_org if {
 	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": true, "enabled_security_groups": []}})
 	some v in r.violations
-	contains(v, "CIS 9.1.4:")
+	_cites(v, "9.1.4")
 }
 
 # Fabric settings are not simple booleans: enabled-but-scoped to named
@@ -1173,12 +1232,12 @@ test_9_1_4_publish_to_web_open_to_whole_org if {
 # violation would flood a correctly-configured tenant with false findings.
 test_enabled_but_scoped_to_a_security_group_is_accepted if {
 	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": true, "enabled_security_groups": [{"name": "BI-Publishers"}]}})
-	every v in r.violations { not contains(v, "CIS 9.1.4:") }
+	every v in r.violations { not _cites(v, "9.1.4") }
 }
 
 test_9_1_4_disabled_outright_is_accepted if {
 	r := fabric.compliance_report with input as fab({"PublishToWeb": {"enabled": false}})
-	every v in r.violations { not contains(v, "CIS 9.1.4:") }
+	every v in r.violations { not _cites(v, "9.1.4") }
 }
 
 # 9.1.6 and 9.1.9 are the inverse of the others -- they are protections,
@@ -1186,13 +1245,13 @@ test_9_1_4_disabled_outright_is_accepted if {
 test_9_1_6_sensitivity_labels_disabled if {
 	r := fabric.compliance_report with input as fab({"EimInformationProtectionEdit": {"enabled": false}})
 	some v in r.violations
-	contains(v, "CIS 9.1.6:")
+	_cites(v, "9.1.6")
 }
 
 test_9_1_9_resource_key_auth_not_blocked if {
 	r := fabric.compliance_report with input as fab({"BlockResourceKeyAuthentication": {"enabled": false}})
 	some v in r.violations
-	contains(v, "CIS 9.1.9:")
+	_cites(v, "9.1.9")
 }
 
 # The Fabric-specific failure an operator will actually hit: valid token,
@@ -1204,7 +1263,7 @@ test_service_principal_not_enabled_for_fabric_apis if {
 	}}
 	r.compliant == false
 	some v in r.violations
-	contains(v, "CIS 9.1.1:")
+	_cites(v, "9.1.1")
 	contains(v, "not a pass")
 }
 
@@ -1215,7 +1274,7 @@ test_missing_setting_blocks_its_control if {
 		"settings": {},
 	}}
 	some v in r.violations
-	contains(v, "CIS 9.1.7:")
+	_cites(v, "9.1.7")
 }
 
 test_fabric_absent_facts_is_not_a_pass if {
@@ -1295,14 +1354,14 @@ test_disabled_policy_satisfies_no_conditional_access_control if {
 	disabled := object.union(hardened_ca, {"state": "disabled"})
 	r := entra.compliance_report with input as ca_full([disabled], trusted_locations)
 	some v in r.violations
-	contains(v, "CIS 5.2.2.4:")
+	_cites(v, "5.2.2.4")
 }
 
 test_report_only_policy_satisfies_nothing if {
 	ro := object.union(hardened_ca, {"state": "enabledForReportingButNotEnforced"})
 	r := entra.compliance_report with input as ca_full([ro], trusted_locations)
 	some v in r.violations
-	contains(v, "CIS 5.2.2.16:")
+	_cites(v, "5.2.2.16")
 }
 
 test_5_2_2_x_declares_the_undocumented_path if {
@@ -1315,19 +1374,19 @@ test_5_2_2_x_declares_the_undocumented_path if {
 test_5_1_4_1_device_join_open_to_all if {
 	r := entra.compliance_report with input as entra_input({"device_registration": {"azure_ad_join_allowed_to_join": "all"}})
 	some v in r.violations
-	contains(v, "CIS 5.1.4.1:")
+	_cites(v, "5.1.4.1")
 }
 
 test_5_1_4_3_global_admin_as_local_admin if {
 	r := entra.compliance_report with input as entra_input({"device_registration": {"local_admin_global_admins_enabled": true}})
 	some v in r.violations
-	contains(v, "CIS 5.1.4.3:")
+	_cites(v, "5.1.4.3")
 }
 
 test_5_1_4_5_laps_disabled if {
 	r := entra.compliance_report with input as entra_input({"laps_enabled": false})
 	some v in r.violations
-	contains(v, "CIS 5.1.4.5:")
+	_cites(v, "5.1.4.5")
 }
 
 # The app management policy expresses restrictions as a list of rules,
@@ -1335,24 +1394,24 @@ test_5_1_4_5_laps_disabled if {
 test_5_1_5_3_disabled_restriction_does_not_satisfy_the_control if {
 	r := entra.compliance_report with input as entra_input({"app_management": {"password_credentials": [{"restrictionType": "passwordAddition", "state": "disabled"}]}})
 	some v in r.violations
-	contains(v, "CIS 5.1.5.3:")
+	_cites(v, "5.1.5.3")
 }
 
 test_5_1_5_3_enabled_restriction_satisfies_the_control if {
 	r := entra.compliance_report with input as entra_input({"app_management": {"password_credentials": [{"restrictionType": "passwordAddition", "state": "enabled"}]}})
-	every v in r.violations { not contains(v, "CIS 5.1.5.3:") }
+	every v in r.violations { not _cites(v, "5.1.5.3") }
 }
 
 test_5_3_2_no_guest_access_review if {
 	r := entra.compliance_report with input as entra_input({"access_reviews": [{"id": "r1", "scope_query": "/roleAssignments", "status": "InProgress"}]})
 	some v in r.violations
-	contains(v, "CIS 5.3.2:")
+	_cites(v, "5.3.2")
 }
 
 test_5_3_3_no_privileged_role_access_review if {
 	r := entra.compliance_report with input as entra_input({"access_reviews": [{"id": "r1", "scope_query": "/groups/guests", "status": "InProgress"}]})
 	some v in r.violations
-	contains(v, "CIS 5.3.3:")
+	_cites(v, "5.3.3")
 }
 
 # A beta sub-resource older tenants do not expose must block its control,
@@ -1363,7 +1422,7 @@ test_missing_laps_endpoint_blocks_its_control_rather_than_failing_it if {
 		"unavailable": {"laps_policy": "not found (/policies/deviceRegistrationPolicy/localAdminPassword)"},
 	}}
 	some v in r.violations
-	contains(v, "CIS 5.1.4.5:")
+	_cites(v, "5.1.4.5")
 	contains(v, "not a pass")
 }
 
@@ -1377,7 +1436,7 @@ test_5_2_3_1_number_matching_disabled if {
 		"show_geographic_location_state": "enabled",
 	}})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.1:")
+	_cites(v, "5.2.3.1")
 }
 
 test_5_2_3_1_fully_hardened_authenticator_passes if {
@@ -1387,19 +1446,19 @@ test_5_2_3_1_fully_hardened_authenticator_passes if {
 		"show_app_information_state": "enabled",
 		"show_geographic_location_state": "enabled",
 	}})
-	every v in r.violations { not contains(v, "CIS 5.2.3.1:") }
+	every v in r.violations { not _cites(v, "5.2.3.1") }
 }
 
 test_5_2_3_8_lockout_threshold_too_high if {
 	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": true, "threshold": "25", "duration_seconds": "60"}})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.8:")
+	_cites(v, "5.2.3.8")
 }
 
 test_5_2_3_9_lockout_duration_too_short if {
 	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": true, "threshold": "10", "duration_seconds": "30"}})
 	some v in r.violations
-	contains(v, "CIS 5.2.3.9:")
+	_cites(v, "5.2.3.9")
 }
 
 # A tenant that has never set these has no LockoutThreshold value at all.
@@ -1408,18 +1467,44 @@ test_5_2_3_9_lockout_duration_too_short if {
 test_absent_lockout_settings_do_not_fabricate_a_finding if {
 	r := entra.compliance_report with input as entra_input({"lockout": {"settings_present": false}})
 	every v in r.violations {
-		not contains(v, "CIS 5.2.3.8:")
-		not contains(v, "CIS 5.2.3.9:")
+		not _cites(v, "5.2.3.8")
+		not _cites(v, "5.2.3.9")
 	}
 }
 
 test_5_1_3_4_unrestricted_group_creation if {
 	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": "True", "allowed_group_id": ""}})
 	some v in r.violations
-	contains(v, "CIS 5.1.3.4:")
+	_cites(v, "5.1.3.4")
 }
 
-test_5_1_3_4_group_creation_restricted_to_a_group_passes if {
+# GroupCreationAllowedGroupId only applies while EnableGroupCreation is False:
+# with creation on, every user can still create groups
+test_5_1_3_4_group_creation_on_with_an_allowed_group_still_fails if {
 	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": "True", "allowed_group_id": "0000-group"}})
-	every v in r.violations { not contains(v, "CIS 5.1.3.4:") }
+	some v in r.violations
+	_cites(v, "5.1.3.4")
+	not contains(v, "(this is not a pass)")
+}
+
+test_5_1_3_4_creation_off_passes if {
+	every enabled in ["False", false] {
+		r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": enabled, "allowed_group_id": "0000-group"}})
+		every v in r.violations { not _cites(v, "5.1.3.4") }
+	}
+}
+
+# no Group.Unified setting object: the default (EnableGroupCreation True) applies
+test_5_1_3_4_no_setting_object_fails if {
+	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": false}})
+	some v in r.violations
+	_cites(v, "5.1.3.4")
+	contains(v, "no Group.Unified directory setting exists")
+}
+
+test_5_1_3_4_unreadable_enabled_is_evidence_missing if {
+	r := entra.compliance_report with input as entra_input({"group_creation": {"settings_present": true, "enabled": 1}})
+	some v in r.violations
+	_cites(v, "5.1.3.4")
+	contains(v, "(this is not a pass)")
 }

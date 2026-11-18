@@ -544,3 +544,81 @@ violations contains "2.4.2.1: not met — access to at must be explicitly config
 	e_2_4_2_1
 	not p_2_4_2_1
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_2_4_1_1 := "evidence_missing" if {
+	not e_2_4_1_1
+} else := "pass" if {
+	p_2_4_1_1
+} else := "fail"
+
+s_2_4_1_2 := "evidence_missing" if {
+	not e_2_4_1_2
+} else := "pass" if {
+	p_2_4_1_2
+} else := "fail"
+
+s_2_4_1_3 := "evidence_missing" if {
+	not e_2_4_1_3
+} else := "pass" if {
+	p_2_4_1_3
+} else := "fail"
+
+s_2_4_1_4 := "evidence_missing" if {
+	not e_2_4_1_4
+} else := "pass" if {
+	p_2_4_1_4
+} else := "fail"
+
+s_2_4_1_5 := "evidence_missing" if {
+	not e_2_4_1_5
+} else := "pass" if {
+	p_2_4_1_5
+} else := "fail"
+
+s_2_4_1_6 := "evidence_missing" if {
+	not e_2_4_1_6
+} else := "pass" if {
+	p_2_4_1_6
+} else := "fail"
+
+s_2_4_1_7 := "evidence_missing" if {
+	not e_2_4_1_7
+} else := "pass" if {
+	p_2_4_1_7
+} else := "fail"
+
+s_2_4_1_8 := "evidence_missing" if {
+	not e_2_4_1_8
+} else := "pass" if {
+	p_2_4_1_8
+} else := "fail"
+
+s_2_4_1_9 := "evidence_missing" if {
+	not e_2_4_1_9
+} else := "pass" if {
+	p_2_4_1_9
+} else := "fail"
+
+s_2_4_2_1 := "evidence_missing" if {
+	not e_2_4_2_1
+} else := "pass" if {
+	p_2_4_2_1
+} else := "fail"
+
+control_status := {
+	"2.4.1.1": s_2_4_1_1,
+	"2.4.1.2": s_2_4_1_2,
+	"2.4.1.3": s_2_4_1_3,
+	"2.4.1.4": s_2_4_1_4,
+	"2.4.1.5": s_2_4_1_5,
+	"2.4.1.6": s_2_4_1_6,
+	"2.4.1.7": s_2_4_1_7,
+	"2.4.1.8": s_2_4_1_8,
+	"2.4.1.9": s_2_4_1_9,
+	"2.4.2.1": s_2_4_2_1,
+}

@@ -73,6 +73,10 @@ BUCKETS = {
     "not_implemented": "attestation.NOT_IMPLEMENTED",
 }
 
+# the input-independent list of implemented controls, read in place of the
+# evaluated bucket when the package defines it
+IMPLEMENTED = "main.implemented_control_ids"
+
 
 def sort_key(control_id: str):
     """Order ids numerically per component: 5.3.10 sorts after 5.3.9."""
@@ -112,6 +116,13 @@ def collect(opa: str, policy_dir: pathlib.Path, package: str):
     found, undefined = {}, []
     for name, path in BUCKETS.items():
         value = opa_eval(opa, policy_dir, f"data.{package}.{path}")
+        # the m365 report states what it implements separately from what one
+        # input evaluated (evaluated_control_ids depends on the input and is
+        # empty without one); prefer the static list where a package has it
+        if name == "evaluated":
+            static = opa_eval(opa, policy_dir, f"data.{package}.{IMPLEMENTED}")
+            if static is not None:
+                value = static
         if value is None:
             undefined.append((name, f"data.{package}.{path}"))
             found[name] = set()

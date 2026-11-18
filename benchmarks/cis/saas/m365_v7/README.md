@@ -1,6 +1,6 @@
 # CIS Microsoft 365 Foundations Benchmark v7.0.0 — Rego Library
 
-**Version:** v1.2
+**Version:** v1.3
 **Benchmark:** CIS Microsoft 365 Foundations Benchmark **v7.0.0** (released 2026-05-20)
 **Coverage:** 144 of 160 recommendations evaluated (90%); the remaining 16
 are each claimed by a named bucket — see [COVERAGE.md](COVERAGE.md)
@@ -77,6 +77,39 @@ pdftotext -layout CIS_Microsoft_365_Foundations_Benchmark_v7.0.0.pdf m365_v7.txt
 python3 parse_m365_v7.py m365_v7.txt
 ```
 
+## Per-control results
+
+`compliance_report.control_results` has one object per recommendation, all 160 in natural id order:
+`{id, status, basis, in_scope, profile, evidence}`. `control_result_counts` counts each status, and
+`control_results_profile` states the scope that was applied.
+
+| status | meaning here |
+|---|---|
+| `pass` | a section evaluated it from collected facts, its gate held and no violation names it; or a ledger control that was attested (`basis: attestation`) |
+| `fail` | a violation of its section names it and is not an evidence message |
+| `evidence_missing` | its section's gate says a fact it reads was not collected, is not a list where a list is read, or lacks a field the control compares; an evidence message ("CIS <id>: evidence missing -- ... (this is not a pass)") always names it. Also a not-implemented ledger control (none today), because it is not evaluated at all |
+| `not_attested` | one of the 16 ledger controls without an admissible attestation. That is the six that require attestation and the ten whose collectability is unresolved; CIS marks all 16 Manual. A ledger control attested with `observed: false` is `fail` |
+| `not_applicable` | outside `input.cis_profile` |
+
+Each section file declares `decidable` (the controls whose facts were all collected, with the type each
+rule compares) and `CONTROL_EVIDENCE` (the input paths each control reads) beside its rules. Every control
+that is not decidable is named by an evidence message: a section that was not collected or an
+`unavailable` key names every control it blocks, one message per control ("CIS 2.1.3: evidence missing --
+defender.unavailable.malware_filter_policies: ..."), and any other gap names the control and its paths. So every control whose status is not `pass` is named by a
+violation; `tests/test_control_results.rego` asserts that on empty and on mixed input.
+
+`total_controls` (in scope for the profile) and `failed_controls` (fail + evidence_missing +
+not_attested) follow the library contract; `controls_evaluated` / `evaluated_control_ids` are the
+controls decided from evidence for this input (0 on empty input), `implemented_controls` /
+`implemented_control_ids` the static 144.
+
+Scope: `input.cis_profile` is `{licence: "E3" | "E5", level: 1 | 2}`. With no profile it is E5 Level 2,
+which puts all 160 in scope (E3 L1 100, E3 L2 137, E5 L1 114). The profile changes only
+`control_results`; `violations` and the other fields are the same with or without it.
+
+`control_index.rego` (ids and licence/level tags) is written from `data/cis_m365_v7_index.json` by
+`tools/cis_generators/gen_m365_v7_control_index.py`.
+
 ## Input contract
 
 Facts come from the `aac.m365` Ansible collection in the AAC compliance
@@ -87,13 +120,24 @@ was obtained, only that the shape matches.
 Every module is **fail-closed**: absent facts produce a violation saying
 the control could not be evaluated. A missing fact never reads as a pass.
 
+Facts read since v1.3 (the collector follows): `defender.dkim_signing_configs[]`
+{Domain or Name, Enabled, Status} (2.1.9), `defender.malware_filter_policies[].FileTypes`
+(2.1.11; `FileTypeFilter` only as a fallback), `defender.outbound_spam_policies[]`
+`RecipientLimitInternalPerHour`, `RecipientLimitPerDay`, `ActionWhenThresholdReached`,
+`NotifyOutboundSpamRecipients` (2.1.15), `defender.eop_protection_rules[]` and the new
+`defender.atp_protection_rules[]` {Name or Identity, State, SentTo, SentToMemberOf,
+RecipientDomainIs} (2.4.2), `admin_center.activity_based_timeout_policies[].definition` and
+`.is_organization_default` (1.3.2, which also reads `entra.conditional_access_policies`),
+`exchange.owa_mailbox_policies[]` `IsDefault`, `PersonalAccountsEnabled`,
+`PersonalAccountCalendarsEnabled` (6.3.2). `attestations[].observed` must be a boolean.
+
 ## Tests
 
 ```bash
 opa test benchmarks/cis/saas/m365_v7/ benchmarks/cis/saas/m365_v7/tests/ -v
 ```
 
-144 tests covering each control's violation path, its passing path, the
+Tests cover each control's violation path, its passing path, the
 fail-closed path, and the orchestrator's coverage accounting.
 
 Tests alone cannot establish coverage — they assert against the ids the

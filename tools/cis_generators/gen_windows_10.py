@@ -767,6 +767,16 @@ test_{t}_unattested_is_a_violation if {{
 """)
     files["test_attestation.rego"] = "\n".join(attest)
 
+    # control_results contract: invariants on empty input, a mixed partial input, the compliant fixture, and every
+    # level x bitlocker x next_generation selection without facts
+    first_reg = next(rid for rid in order if checks[rid]["kind"] == "reg")
+    mixed = [("mixed_partial_input", f'object.union(json.remove({fx}, ["audit_policy", "attestations"]), '
+                                     f'{json.dumps(_facts(checks[first_reg], False))})')]
+    scopes = [(f"level{lv}{'_bitlocker' if bl else ''}{'_ng' if ng else ''}",
+               json.dumps({"cis_profile": {"level": lv, "bitlocker": bl, "next_generation": ng}}), _scope(recs, lv, bl, ng))
+              for lv in (1, 2) for bl in (False, True) for ng in (False, True)]
+    files["test_control_results.rego"] = basetests.control_results_tests(
+        PKG, recs, head, mixed, [("fixture_all", fx)], scopes)
     files["test_lib.rego"] = lib_tests()
     return files
 
@@ -977,7 +987,7 @@ def generate(workbook):
         in_sec = {rid: r for rid, r in recs.items() if r["section"] == sec}
         files[f"{base.SECTIONS[sec]}_validation.rego"] = base.section_module(sec, section_names[sec], in_sec, checks)
     files["attestation_validation.rego"] = base.attestation_module(recs)
-    files[f"{PKG}_complete.rego"] = complete_module(recs)
+    files[f"{PKG}_complete.rego"] = complete_module(recs) + base.control_index(recs, checks)
     files[f"{PKG}_main.rego"] = main_module()
     files["lib.rego"] = lib_text()
     test_files = tests(recs, checks)

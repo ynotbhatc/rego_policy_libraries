@@ -18,7 +18,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_windows_server_2022.main
 
 import data.cis_windows_server_2022 as bench
@@ -118,4 +118,6 @@ compliance_report := {
 		"balanced": _accounted == bench.BENCHMARK_TOTAL_CONTROLS,
 	},
 	"no_collector_path": attestation.compliance_report,
+	"control_results": bench.control_results,
+	"control_result_counts": bench.control_result_counts,
 }

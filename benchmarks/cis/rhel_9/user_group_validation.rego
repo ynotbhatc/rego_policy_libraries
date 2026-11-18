@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.user_group
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 7.2: Local User and Group Settings.
@@ -392,4 +392,75 @@ violations contains "7.2.9: evidence missing — user_group.users_with_netrc/use
 violations contains "7.2.9: not met — local interactive user dot files access must be explicitly configured" if {
 	e_7_2_9
 	not p_7_2_9
+}
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_7_2_1 := "evidence_missing" if {
+	not e_7_2_1
+} else := "pass" if {
+	p_7_2_1
+} else := "fail"
+
+s_7_2_2 := "evidence_missing" if {
+	not e_7_2_2
+} else := "pass" if {
+	p_7_2_2
+} else := "fail"
+
+s_7_2_3 := "evidence_missing" if {
+	not e_7_2_3
+} else := "pass" if {
+	p_7_2_3
+} else := "fail"
+
+s_7_2_4 := "evidence_missing" if {
+	not e_7_2_4
+} else := "pass" if {
+	p_7_2_4
+} else := "fail"
+
+s_7_2_5 := "evidence_missing" if {
+	not e_7_2_5
+} else := "pass" if {
+	p_7_2_5
+} else := "fail"
+
+s_7_2_6 := "evidence_missing" if {
+	not e_7_2_6
+} else := "pass" if {
+	p_7_2_6
+} else := "fail"
+
+s_7_2_7 := "evidence_missing" if {
+	not e_7_2_7
+} else := "pass" if {
+	p_7_2_7
+} else := "fail"
+
+s_7_2_8 := "evidence_missing" if {
+	not e_7_2_8
+} else := "pass" if {
+	p_7_2_8
+} else := "fail"
+
+s_7_2_9 := "evidence_missing" if {
+	not e_7_2_9
+} else := "pass" if {
+	p_7_2_9
+} else := "fail"
+
+control_status := {
+	"7.2.1": s_7_2_1,
+	"7.2.2": s_7_2_2,
+	"7.2.3": s_7_2_3,
+	"7.2.4": s_7_2_4,
+	"7.2.5": s_7_2_5,
+	"7.2.6": s_7_2_6,
+	"7.2.7": s_7_2_7,
+	"7.2.8": s_7_2_8,
+	"7.2.9": s_7_2_9,
 }

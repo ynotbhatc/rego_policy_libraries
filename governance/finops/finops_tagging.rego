@@ -6,14 +6,14 @@
 #   source: finops-foundation
 #   domains: [finops, cost]
 #   coverage:
-#     checks: 19
+#     checks: 20
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package finops.tagging
 
 # FinOps / Cost Governance — Resource Tagging & Organization Policy
@@ -253,6 +253,19 @@ violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds 
 	budget > 0
 	actual := object.get(input.current_spend, cost_center, 0)
 	actual > budget * 1.1
+}
+
+# A budget or spend that is not a number cannot be compared (a string budget makes `budget * 1.1` undefined, so
+# neither rule above or below would fire).
+violations contains sprintf("Budget: Cost center '%s' budget %v or current spend %v is not a number", [cost_center, budget, actual]) if {
+	some cost_center, budget in input.budget_registry
+	actual := object.get(input.current_spend, cost_center, 0)
+	not _both_numbers(budget, actual)
+}
+
+_both_numbers(a, b) if {
+	is_number(a)
+	is_number(b)
 }
 
 # A zero (or negative) budget cannot be expressed as a percentage; any spend over it is still a violation.

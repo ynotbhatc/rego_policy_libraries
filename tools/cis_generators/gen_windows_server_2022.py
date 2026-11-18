@@ -620,7 +620,90 @@ section_compliance := {r.name: {
 	"failed": count(r.failed),
 	"not_assessed": count(r.not_assessed),
 } | some r in section_reports}
+
+# ---------------------------------------------------------------------------------------------------------------
+# control_results: one object per recommendation of the benchmark (section rows and the Manual ledger) in natural
+# id order, with its status, basis, scope, profile tags and the input paths its decision reads. CONTROL_INDEX (the
+# static part: id, basis, profile, evidence) is written by the generator below this body; only the status is
+# computed here, from the per-row statuses above (no row is evaluated twice) and the attestation ledger, so it
+# cannot disagree with total_controls, failed_controls or the violations. Status mapping: pass -> pass,
+# fail -> fail, not_assessed (its facts were not collected, or the profile cannot place a role-specific row)
+# -> evidence_missing, not_applicable -> not_applicable. A Manual recommendation is pass when attested,
+# not_attested when in scope and unattested (or its attestation is incomplete), not_applicable outside the
+# profile. No benchmark text is carried.
+# ---------------------------------------------------------------------------------------------------------------
+
+CONTROL_STATUSES := ["pass", "fail", "evidence_missing", "not_attested", "not_applicable"]
+
+_row_status := {"pass": "pass", "fail": "fail", "not_assessed": "evidence_missing", "not_applicable": "not_applicable"}
+
+_attested_status(cid) := "pass" if cid in attestation.passed_ids
+
+_attested_status(cid) := "not_attested" if {
+	cid in attestation.in_scope_ids
+	not cid in attestation.passed_ids
+}
+
+_attested_status(cid) := "not_applicable" if not cid in attestation.in_scope_ids
+
+_status(e) := s if {
+	e.basis == "evidence"
+	row := results[e.id]
+	s := _row_status[row]
+}
+
+_status(e) := s if {
+	e.basis == "attestation"
+	s := _attested_status(e.id)
+}
+
+control_results := [r |
+	some e in CONTROL_INDEX
+	s := _status(e)
+	r := object.union(e, {"status": s, "in_scope": s != "not_applicable"})
+]
+
+_statuses := [r.status | some r in control_results]
+
+control_result_counts := {s: n |
+	some s in CONTROL_STATUSES
+	n := count([x | some x in _statuses; x == s])
+}
 """
+
+
+def evidence_paths(c):
+    """The input paths a check row reads, in the module's dotted notation (a registry path is kept whole)."""
+    k = c["kind"]
+    if k in ("reg", "reg_absent"):
+        return [f"registry.{c['path']}.{c['name']}"]
+    if k == "reg_all":
+        return sorted({f"registry.{i[0]}.{i[1]}" for i in c["items"]})
+    if k == "reg_key_values":
+        return [f"registry.{c['path']}"]
+    if k == "ureg":
+        return [f"registry_users.<user SID>.{c['path']}.{c['name']}"]
+    if k == "secedit":
+        return [f"secedit.system_access.{c['key']}"]
+    if k == "rights":
+        return [f"secedit.privilege_rights.{c['privilege']}"]
+    if k == "auditpol":
+        return [f"audit_policy.{c['guid']}"]
+    if k == "manual":
+        return ["attestations"]
+    sys.exit(f"control_index: no evidence path known for check kind {k!r}")
+
+
+def control_index(recs, checks):
+    """CONTROL_INDEX, appended to the aggregation module: the static half of control_results (no benchmark text)."""
+    rows = []
+    for rid in sorted(recs, key=lambda i: [int(p) for p in i.split(".")]):
+        c = checks[rid]
+        rows.append({"id": rid, "basis": "attestation" if c["kind"] == "manual" else "evidence",
+                     "profile": recs[rid]["profiles"], "evidence": evidence_paths(c)})
+    body = ",\n".join("\t" + json.dumps(r, sort_keys=True) for r in rows)
+    return ("\n# The static half of control_results, one entry per recommendation in natural id order (written by the\n"
+            f"# generator from its recommendation table and check rows).\nCONTROL_INDEX := [\n{body},\n]\n")
 
 
 def main_module():
@@ -722,6 +805,8 @@ compliance_report := {
 		"balanced": _accounted == bench.BENCHMARK_TOTAL_CONTROLS,
 	},
 	"no_collector_path": attestation.compliance_report,
+	"control_results": bench.control_results,
+	"control_result_counts": bench.control_result_counts,
 }
 """
 
@@ -853,7 +938,8 @@ def main():
         write_generated(OUT / f"{SECTIONS[sec]}_validation.rego",
                         section_module(sec, section_names[sec], in_sec, checks), me)
     write_generated(OUT / "attestation_validation.rego", attestation_module(recs), me)
-    write_generated(OUT / "cis_windows_server_2022_complete.rego", complete_module(section_names), me)
+    write_generated(OUT / "cis_windows_server_2022_complete.rego",
+                    complete_module(section_names) + control_index(recs, checks), me)
     write_generated(OUT / "cis_windows_2022_main.rego", main_module(), me)
     lib = (pathlib.Path(__file__).parent / "windows_lib.rego.tmpl").read_text()
     lib = lib.replace("{{SECTIONS}}", "\n".join(f'\t"{p}": data.{PKG}.{p}.SECTION,' for p in SECTIONS.values()))

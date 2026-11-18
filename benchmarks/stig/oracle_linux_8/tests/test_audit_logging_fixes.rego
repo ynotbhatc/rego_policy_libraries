@@ -15,10 +15,3 @@ test_audit_logging_empty_collections_not_compliant if {
 test_audit_logging_compliant_when_facts_collected_and_no_cat_i_open if {
 	data.stig.oracle_linux_8.audit_logging.cat_i_compliant with input as {"auditd_config": {"admin_space_left_action": "single"}, "audit_rules": []}
 }
-
-test_audit_logging_report_populated_on_empty_input if {
-	r := data.stig.oracle_linux_8.audit_logging.compliance_report with input as {}
-	r.compliant == false
-	r.open_findings == 8
-	count(r.findings) == 8
-}

@@ -56,7 +56,7 @@ test_no_facts_finding_is_explicit if {
 # The gate must be transparent once real facts arrive: a genuine assessment
 # must still score normally, not stay pinned at zero.
 test_gate_transparent_when_facts_supplied if {
-	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "no"}}
+	report := main.compliance_report with input as {"selinux": {"getenforce": "Enforcing", "config_selinux": "enforcing"}}
 	report.facts_supplied == true
 	report.compliance_percentage > 0
 	report.passed_controls > 0

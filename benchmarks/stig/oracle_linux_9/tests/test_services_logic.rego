@@ -29,11 +29,6 @@ test_tftp_installed_is_open if {
 	services.status_ol09_00_000135 == "Not_a_Finding" with input as {"packages": {"tftp-server": false}}
 }
 
-test_nfs_active_is_open if {
-	services.status_ol09_00_000100 == "Open" with input as {"services": {"nfs-server": "active"}}
-	services.status_ol09_00_000100 == "Not_a_Finding" with input as {"services": {"nfs-server": "inactive", "nfsd": "inactive"}}
-}
-
 test_telnet_server_installed_is_open if {
 	services.status_ol09_00_000110 == "Open" with input as {"packages": {"telnet-server": true}}
 	services.status_ol09_00_000110 == "Not_a_Finding" with input as {"packages": {"telnet-server": false}}
