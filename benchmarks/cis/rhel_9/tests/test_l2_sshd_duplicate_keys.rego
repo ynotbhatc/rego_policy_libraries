@@ -16,7 +16,11 @@ test_sshd_config_tolerates_repeated_directives if {
 	count(split(cfg.listenaddress, ",")) == 2
 }
 
+# The module evaluates (a conflict error would leave `v` undefined and fail this) and stays fail-closed: the
+# sshd text carries nothing these checks read, so their evidence is reported missing rather than passed.
 test_module_evaluates_with_repeated_directives if {
 	v := data.cis_rhel9.l2.violations with input as {"ssh": {"sshd_config_raw": _raw}}
-	count(v) >= 0
+	count(v) > 0
+	some x in v
+	startswith(x, "1.1.1.6:")
 }

@@ -12,7 +12,10 @@ import rego.v1
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
-pb(tasks) := {"path": "example.yml", "plays": [{
+# RFC 5737 documentation addresses stand in for the deployment's lab addresses
+denylist := ["192.0.2.62", "192.0.2.26"]
+
+pb(tasks) := {"path": "example.yml", "lab_addresses": denylist, "plays": [{
 	"name": "Example play",
 	"hosts": "localhost",
 	"tasks": tasks,
@@ -88,10 +91,10 @@ test_named_play_passes if {
 # and a connection parameter.
 
 test_lab_address_in_play_vars_violates if {
-	v := hygiene.violation with input as {"path": "caf.yml", "plays": [{
+	v := hygiene.violation with input as {"path": "caf.yml", "lab_addresses": denylist, "plays": [{
 		"name": "CAF",
 		"hosts": "localhost",
-		"vars": {"opa_server_url": "http://192.168.4.62:8182"},
+		"vars": {"opa_server_url": "http://192.0.2.62:8182"},
 	}]}
 	has(v, "AAC-ANS-003")
 }
@@ -99,7 +102,7 @@ test_lab_address_in_play_vars_violates if {
 test_lab_address_in_connection_param_violates if {
 	v := hygiene.violation with input as pb([{
 		"name": "Store",
-		"community.postgresql.postgresql_query": {"login_host": "192.168.4.62"},
+		"community.postgresql.postgresql_query": {"login_host": "192.0.2.62"},
 	}])
 	has(v, "AAC-ANS-003")
 }
@@ -108,18 +111,54 @@ test_lab_address_in_connection_param_violates if {
 test_lab_address_found_at_depth if {
 	v := hygiene.violation with input as pb([{
 		"name": "Nested",
-		"uri": {"body": {"config": {"syslog": {"host": "192.168.4.26"}}}},
+		"uri": {"body": {"config": {"syslog": {"host": "192.0.2.26"}}}},
 	}])
 	has(v, "AAC-ANS-003")
 }
 
 test_templated_endpoint_passes if {
-	v := hygiene.violation with input as {"path": "ok.yml", "plays": [{
+	v := hygiene.violation with input as {"path": "ok.yml", "lab_addresses": denylist, "plays": [{
 		"name": "CAF",
 		"hosts": "localhost",
 		"vars": {"opa_server_url": "{{ opa_compliance_url }}"},
 	}]}
 	not has(v, "AAC-ANS-003")
+}
+
+test_templated_endpoint_passes_report_is_compliant if {
+	r := hygiene.compliance_report with input as {"path": "ok.yml", "lab_addresses": denylist, "plays": [{
+		"name": "CAF",
+		"hosts": "localhost",
+		"vars": {"opa_server_url": "{{ opa_compliance_url }}"},
+	}]}
+	r.compliant == true
+}
+
+# The policy carries no addresses: without a denylist the check cannot pass a playbook.
+test_no_denylist_fails_closed_even_for_a_clean_playbook if {
+	pbk := {"path": "x.yml", "plays": [{"name": "p", "hosts": "localhost", "vars": {"h": "192.0.2.62"}}]}
+	r := hygiene.compliance_report with input as pbk
+	r.compliant == false
+	some v in r.violations
+	contains(v, "AAC-ANS-003: x.yml: evidence missing")
+}
+
+test_empty_denylist_fails_closed if {
+	v := hygiene.violation with input as {"path": "x.yml", "lab_addresses": [], "plays": [{"name": "p", "hosts": "localhost"}]}
+	has(v, "evidence missing — no address denylist")
+}
+
+test_denylist_from_data_is_used if {
+	v := hygiene.violation with input as {"path": "x.yml", "plays": [{"name": "p", "hosts": "localhost", "vars": {"h": "192.0.2.62"}}]}
+		with data.aac.hygiene.lab_addresses as ["192.0.2.62"]
+	has(v, "lab address 192.0.2.62")
+	not has(v, "evidence missing")
+}
+
+test_input_denylist_wins_over_data if {
+	v := hygiene.violation with input as {"path": "x.yml", "lab_addresses": ["192.0.2.99"], "plays": [{"name": "p", "hosts": "localhost", "vars": {"h": "192.0.2.62"}}]}
+		with data.aac.hygiene.lab_addresses as ["192.0.2.62"]
+	not has(v, "lab address 192.0.2.62")
 }
 
 test_lab_address_list_is_overridable if {

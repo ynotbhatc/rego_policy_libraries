@@ -3,7 +3,7 @@ package aac.repo.hygiene_fixes_test
 import data.aac.repo.hygiene
 import rego.v1
 
-pb(tasks) := {"path": "example.yml", "plays": [{"name": "Example play", "hosts": "localhost", "tasks": tasks}]}
+pb(tasks) := {"path": "example.yml", "lab_addresses": ["192.0.2.62"], "plays": [{"name": "Example play", "hosts": "localhost", "tasks": tasks}]}
 
 has(violations, code) if {
 	some v in violations

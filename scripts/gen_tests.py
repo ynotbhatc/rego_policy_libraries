@@ -31,10 +31,11 @@ def gen(rel, pkg, names):
     entry = "compliance_report" if "compliance_report" in names else ("report" if "report" in names else None)
     if entry:
         L += [f"test_{stem}_report_wellformed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tis_object(report)", "\tcount(report) > 0", "}", "",
-              f"test_{stem}_fail_closed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tnot object.get(report, \"compliant\", false) == true", "}", ""]
+              f"test_{stem}_fail_closed_on_empty_input if {{", f"\treport := data.{pkg}.{entry} with input as {{}}", "\tobject.get(report, \"compliant\", null) == false", "}", ""]
     elif "compliant" in names:
-        # `not <ref>` is true when the ref is undefined or false; object.get on a package object trips the type checker
-        L += [f"test_{stem}_fail_closed_on_empty_input if {{", f"\tnot data.{pkg}.compliant with input as {{}}", "}", ""]
+        # `not <ref>` is true when the ref is undefined, which would pass a module that forgot `compliant`; assert the
+        # value is false (an undefined ref makes `== false` undefined, so the test fails and the finding is recorded)
+        L += [f"test_{stem}_fail_closed_on_empty_input if {{", f"\tdata.{pkg}.compliant == false with input as {{}}", "}", ""]
     if "violations" in names:
         L += [f"test_{stem}_violations_on_empty_input if {{", f"\tv := data.{pkg}.violations with input as {{}}", "\tcount(v) > 0", "}", ""]
     return "\n".join(L)
@@ -67,6 +68,11 @@ def main():
         tfile.write_text(gen(rel, pkg, names))
         written[rel] = tfile
     print(f"wrote {len(written)} smoke tests")
+    if not written:
+        # the report below describes only the modules this run wrote tests for; with none to write it would
+        # overwrite docs/TEST_GENERATION.md with all-zero tables
+        print("no untested modules: docs/TEST_GENERATION.md left as it is")
+        return 0
     findings = collections.defaultdict(list); defects = []
     for attempt in range(4):
         passed, failed, text = run_tests(None)
@@ -85,7 +91,8 @@ def main():
                 if name in failed:
                     if kind == "loads_on_empty_input":
                         defects.append(rel); tfile.unlink(missing_ok=True); src = ""; touched += 1; break
-                    src = re.sub(rf"(?ms)^{re.escape(rule)} if \{{.*?^\}}\n\n?", "", src)
+                    # leave a marker where the expectation was, so the test file itself says what the module does not do
+                    src = re.sub(rf"(?ms)^{re.escape(rule)} if \{{.*?^\}}\n\n?", f"# NOT MET (dropped by gen_tests.py): {kind} -- see docs/TEST_GENERATION.md\n\n", src)
                     findings[kind].append(rel); touched += 1
             if src:
                 tfile.write_text(src)

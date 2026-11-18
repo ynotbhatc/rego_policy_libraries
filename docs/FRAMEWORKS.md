@@ -8,7 +8,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 
 | Standard / Framework | Path | Controls / Requirements |
 |---------------------|------|------------------------|
-| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| **CIS RHEL 9 v3.0.0** | `benchmarks/cis/rhel_9/` | All 352 recommendations, generated from the benchmark's workbook (20 modules, including three STIG/NIST extension modules that are not benchmark recommendations); the deprecated v1.0.0 `cis.rhel_9` package was removed |
 | CIS RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
 | CIS RHEL 10 | `benchmarks/cis/rhel_10/` | Full |
 | CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/ubuntu_*/` | Full |
@@ -16,7 +16,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | CIS Debian 11 | `benchmarks/cis/debian_11/` | Full |
 | CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | CIS Windows Server 2022 v5.1.0 | `benchmarks/cis/windows_server_2022_modular/` | Full: all 408 recommendations (406 evaluated, 2 Manual by attestation), member server and domain controller, Level 1/2 and Next Generation profiles |
-| CIS Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified: a copy of the old 2022 module's numbering, not checked against the CIS Windows Server 2019 benchmark |
+| CIS Windows Server 2019 v5.0.0 | `benchmarks/cis/windows_server_2019_modular/` | Full: all 400 recommendations (398 evaluated, 2 Manual by attestation), generated from the benchmark's workbook; Level 1/2 and Next Generation profiles |
 | CIS Windows 10 Enterprise v5.0.0 | `benchmarks/cis/windows_10_modular/` | Full: all 501 recommendations (499 evaluated, 2 Manual by attestation), Level 1/2, BitLocker and Next Generation profiles |
 | CIS Windows 11 Enterprise v5.1.0 | `benchmarks/cis/windows_11_modular/` | Full: all 535 recommendations (533 evaluated, 2 Manual by attestation), Level 1/2 and BitLocker profiles |
 | CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
@@ -109,7 +109,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 
 | Platform | Path | Controls |
 |----------|------|----------|
-| **RHEL 9** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| **RHEL 9** | `benchmarks/cis/rhel_9/` | v3.0.0, all 352 recommendations (20 modules) |
 | RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
 | Ubuntu 22.04 | `benchmarks/cis/ubuntu_22_04/` | Full |
 | Ubuntu 20.04 / 24.04 | `benchmarks/cis/ubuntu_20_04/` | Full |
@@ -117,7 +117,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | Rocky Linux 8 / 9 | `benchmarks/cis/rocky_linux_8/` | Full |
 | Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | Windows Server 2022 | `benchmarks/cis/windows_server_2022_modular/` | Full (v5.1.0, 408 recommendations) |
-| Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified |
+| Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | Full (v5.0.0, 400 recommendations) |
 | AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |

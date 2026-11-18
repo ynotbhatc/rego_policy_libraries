@@ -7,7 +7,11 @@ test_compliance_report_defined_on_empty_input if {
 	r := main.compliance_report with input as {}
 	r.framework == "FDA 21 CFR Part 11"
 	is_number(r.total_controls)
-	count(r.violations) >= 0
+
+	# empty input must fail closed: the report carries the violations that make it non-compliant
+	r.compliant == false
+	count(r.violations) > 0
+	r.failed_controls <= r.total_controls
 }
 
 test_non_compliant_on_empty_input if {

@@ -28,7 +28,12 @@ What is stamped (custom.coverage):
              none          the module is silent on empty input and nothing above it catches that: fail-open
              n/a           overlays, gates and modules with no report or violations rule
   entrypoint compliance_report | report | none
-  as_of      library version the scan was made at (CHANGELOG)
+  as_of      the library version (latest release heading in CHANGELOG) at which this module's stamp content last
+             changed. It is NOT "the version of the last scan": a re-scan that finds the same checks, cited, expected,
+             found, scope, density, basis, tested, entrypoint and guard keeps the existing as_of, so a normal
+             re-stamp touches only the modules whose numbers moved and does not rewrite ~830 files at each release.
+             --check fails on an as_of that is missing, malformed or newer than the changelog's latest release;
+             a stamp whose content moved is stale in any case (and gets the current version when re-stamped).
 Nothing here is an opinion about quality; it is what the parser sees, and --check keeps it true.
 """
 from __future__ import annotations
@@ -218,6 +223,10 @@ def stamp(root=ROOT):
         m = CUSTOM_RE.search(src)
         if not m:
             skipped.append(rel); continue
+        # as_of records when the stamp content last changed: keep the existing value while nothing else moved
+        old = parse_stamp(src)
+        if old and old.get("as_of") and all(old.get(k) == _want(cov).get(k) for k in KEYS if k != "as_of" and (cov.get(k) is not None or old.get(k) is not None)):
+            cov = dict(cov, as_of=old["as_of"])
         block = render_block(cov)
         # remove every existing coverage block wherever it sits (a misplaced one from an earlier run included),
         # then write exactly one inside the custom block
@@ -227,6 +236,15 @@ def stamp(root=ROOT):
         if new_src != src:
             p.write_text(new_src); changed += 1
     return rows, changed, skipped
+
+
+def _want(cov):
+    return {k: (str(cov[k]).lower() if isinstance(cov[k], bool) else str(cov[k])) for k in KEYS if cov.get(k) is not None}
+
+
+def _ver_tuple(v):
+    m = re.fullmatch(r"v(\d+)\.(\d+)\.(\d+)", v or "")
+    return tuple(int(x) for x in m.groups()) if m else None
 
 
 def parse_stamp(src):
@@ -256,6 +274,13 @@ def check(root=ROOT):
         diff = {k: (got.get(k), want[k]) for k in want if got.get(k) != want[k] and k != "as_of"}
         if diff:
             stale.append((rel, diff))
+            continue
+        # content is current, so as_of must be the version it last changed at: well-formed and not from the future
+        got_v, cur_v = _ver_tuple(got.get("as_of")), _ver_tuple(cov.get("as_of"))
+        if got_v is None:
+            stale.append((rel, f"as_of {got.get('as_of')!r} is missing or not vX.Y.Z"))
+        elif cur_v and got_v > cur_v:
+            stale.append((rel, f"as_of {got.get('as_of')} is newer than the latest release {cov['as_of']}"))
     return stale
 
 

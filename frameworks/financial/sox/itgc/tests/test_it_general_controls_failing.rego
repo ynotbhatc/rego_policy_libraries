@@ -21,8 +21,10 @@ test_findings_populated_for_failing_controls if {
 }
 
 test_one_false_check_still_scores if {
-	s := data.sox.itgc.itgc_compliance_score with data.sox.itgc.access_controls as {"implemented": true}
-	is_number(s)
+	# one of the four access-control checks failing (family score 0.75) contributes 0.75 / 7 of the score: a failure
+	# lowers the score without zeroing it, and the other six families still count
+	s := data.sox.itgc.itgc_compliance_score with data.sox.itgc.access_controls_score as 0.75
+	abs(s - ((0.75 / 7) * 100)) < 0.001
 }
 
 test_financial_family_gates_verdict if {
