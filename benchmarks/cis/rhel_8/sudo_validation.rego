@@ -357,3 +357,60 @@ violations contains "5.2.7: not met — access to the su command must be restric
 	e_5_2_7
 	not p_5_2_7
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_5_2_1 := "evidence_missing" if {
+	not e_5_2_1
+} else := "pass" if {
+	p_5_2_1
+} else := "fail"
+
+s_5_2_2 := "evidence_missing" if {
+	not e_5_2_2
+} else := "pass" if {
+	p_5_2_2
+} else := "fail"
+
+s_5_2_3 := "evidence_missing" if {
+	not e_5_2_3
+} else := "pass" if {
+	p_5_2_3
+} else := "fail"
+
+s_5_2_4 := "evidence_missing" if {
+	not e_5_2_4
+} else := "pass" if {
+	p_5_2_4
+} else := "fail"
+
+s_5_2_5 := "evidence_missing" if {
+	not e_5_2_5
+} else := "pass" if {
+	p_5_2_5
+} else := "fail"
+
+s_5_2_6 := "evidence_missing" if {
+	not e_5_2_6
+} else := "pass" if {
+	p_5_2_6
+} else := "fail"
+
+s_5_2_7 := "evidence_missing" if {
+	not e_5_2_7
+} else := "pass" if {
+	p_5_2_7
+} else := "fail"
+
+control_status := {
+	"5.2.1": s_5_2_1,
+	"5.2.2": s_5_2_2,
+	"5.2.3": s_5_2_3,
+	"5.2.4": s_5_2_4,
+	"5.2.5": s_5_2_5,
+	"5.2.6": s_5_2_6,
+	"5.2.7": s_5_2_7,
+}

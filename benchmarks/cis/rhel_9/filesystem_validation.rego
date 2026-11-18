@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.filesystem
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 1.1: Filesystem.
@@ -1121,4 +1121,269 @@ violations contains "1.1.2.7.4: evidence missing — ansible_facts.ansible_mount
 violations contains "1.1.2.7.4: not met — /var/log/audit must be mounted with the noexec option" if {
 	e_1_1_2_7_4
 	not p_1_1_2_7_4
+}
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_1_1_1_1 := "evidence_missing" if {
+	not e_1_1_1_1
+} else := "pass" if {
+	p_1_1_1_1
+} else := "fail"
+
+s_1_1_1_2 := "evidence_missing" if {
+	not e_1_1_1_2
+} else := "pass" if {
+	p_1_1_1_2
+} else := "fail"
+
+s_1_1_1_3 := "evidence_missing" if {
+	not e_1_1_1_3
+} else := "pass" if {
+	p_1_1_1_3
+} else := "fail"
+
+s_1_1_1_4 := "evidence_missing" if {
+	not e_1_1_1_4
+} else := "pass" if {
+	p_1_1_1_4
+} else := "fail"
+
+s_1_1_1_5 := "evidence_missing" if {
+	not e_1_1_1_5
+} else := "pass" if {
+	p_1_1_1_5
+} else := "fail"
+
+s_1_1_1_6 := "evidence_missing" if {
+	not e_1_1_1_6
+} else := "pass" if {
+	p_1_1_1_6
+} else := "fail"
+
+s_1_1_1_7 := "evidence_missing" if {
+	not e_1_1_1_7
+} else := "pass" if {
+	p_1_1_1_7
+} else := "fail"
+
+s_1_1_1_8 := "evidence_missing" if {
+	not e_1_1_1_8
+} else := "pass" if {
+	p_1_1_1_8
+} else := "fail"
+
+s_1_1_1_9 := "evidence_missing" if {
+	not e_1_1_1_9
+} else := "pass" if {
+	p_1_1_1_9
+} else := "fail"
+
+s_1_1_1_10 := "evidence_missing" if {
+	not e_1_1_1_10
+} else := "pass" if {
+	p_1_1_1_10
+} else := "fail"
+
+s_1_1_1_11 := "pass" if {
+	p_1_1_1_11
+} else := "not_attested"
+
+s_1_1_2_1_1 := "evidence_missing" if {
+	not e_1_1_2_1_1
+} else := "pass" if {
+	p_1_1_2_1_1
+} else := "fail"
+
+s_1_1_2_1_2 := "evidence_missing" if {
+	not e_1_1_2_1_2
+} else := "pass" if {
+	p_1_1_2_1_2
+} else := "fail"
+
+s_1_1_2_1_3 := "evidence_missing" if {
+	not e_1_1_2_1_3
+} else := "pass" if {
+	p_1_1_2_1_3
+} else := "fail"
+
+s_1_1_2_1_4 := "evidence_missing" if {
+	not e_1_1_2_1_4
+} else := "pass" if {
+	p_1_1_2_1_4
+} else := "fail"
+
+s_1_1_2_2_1 := "evidence_missing" if {
+	not e_1_1_2_2_1
+} else := "pass" if {
+	p_1_1_2_2_1
+} else := "fail"
+
+s_1_1_2_2_2 := "evidence_missing" if {
+	not e_1_1_2_2_2
+} else := "pass" if {
+	p_1_1_2_2_2
+} else := "fail"
+
+s_1_1_2_2_3 := "evidence_missing" if {
+	not e_1_1_2_2_3
+} else := "pass" if {
+	p_1_1_2_2_3
+} else := "fail"
+
+s_1_1_2_2_4 := "evidence_missing" if {
+	not e_1_1_2_2_4
+} else := "pass" if {
+	p_1_1_2_2_4
+} else := "fail"
+
+s_1_1_2_3_1 := "evidence_missing" if {
+	not e_1_1_2_3_1
+} else := "pass" if {
+	p_1_1_2_3_1
+} else := "fail"
+
+s_1_1_2_3_2 := "evidence_missing" if {
+	not e_1_1_2_3_2
+} else := "pass" if {
+	p_1_1_2_3_2
+} else := "fail"
+
+s_1_1_2_3_3 := "evidence_missing" if {
+	not e_1_1_2_3_3
+} else := "pass" if {
+	p_1_1_2_3_3
+} else := "fail"
+
+s_1_1_2_4_1 := "evidence_missing" if {
+	not e_1_1_2_4_1
+} else := "pass" if {
+	p_1_1_2_4_1
+} else := "fail"
+
+s_1_1_2_4_2 := "evidence_missing" if {
+	not e_1_1_2_4_2
+} else := "pass" if {
+	p_1_1_2_4_2
+} else := "fail"
+
+s_1_1_2_4_3 := "evidence_missing" if {
+	not e_1_1_2_4_3
+} else := "pass" if {
+	p_1_1_2_4_3
+} else := "fail"
+
+s_1_1_2_5_1 := "evidence_missing" if {
+	not e_1_1_2_5_1
+} else := "pass" if {
+	p_1_1_2_5_1
+} else := "fail"
+
+s_1_1_2_5_2 := "evidence_missing" if {
+	not e_1_1_2_5_2
+} else := "pass" if {
+	p_1_1_2_5_2
+} else := "fail"
+
+s_1_1_2_5_3 := "evidence_missing" if {
+	not e_1_1_2_5_3
+} else := "pass" if {
+	p_1_1_2_5_3
+} else := "fail"
+
+s_1_1_2_5_4 := "evidence_missing" if {
+	not e_1_1_2_5_4
+} else := "pass" if {
+	p_1_1_2_5_4
+} else := "fail"
+
+s_1_1_2_6_1 := "evidence_missing" if {
+	not e_1_1_2_6_1
+} else := "pass" if {
+	p_1_1_2_6_1
+} else := "fail"
+
+s_1_1_2_6_2 := "evidence_missing" if {
+	not e_1_1_2_6_2
+} else := "pass" if {
+	p_1_1_2_6_2
+} else := "fail"
+
+s_1_1_2_6_3 := "evidence_missing" if {
+	not e_1_1_2_6_3
+} else := "pass" if {
+	p_1_1_2_6_3
+} else := "fail"
+
+s_1_1_2_6_4 := "evidence_missing" if {
+	not e_1_1_2_6_4
+} else := "pass" if {
+	p_1_1_2_6_4
+} else := "fail"
+
+s_1_1_2_7_1 := "evidence_missing" if {
+	not e_1_1_2_7_1
+} else := "pass" if {
+	p_1_1_2_7_1
+} else := "fail"
+
+s_1_1_2_7_2 := "evidence_missing" if {
+	not e_1_1_2_7_2
+} else := "pass" if {
+	p_1_1_2_7_2
+} else := "fail"
+
+s_1_1_2_7_3 := "evidence_missing" if {
+	not e_1_1_2_7_3
+} else := "pass" if {
+	p_1_1_2_7_3
+} else := "fail"
+
+s_1_1_2_7_4 := "evidence_missing" if {
+	not e_1_1_2_7_4
+} else := "pass" if {
+	p_1_1_2_7_4
+} else := "fail"
+
+control_status := {
+	"1.1.1.1": s_1_1_1_1,
+	"1.1.1.2": s_1_1_1_2,
+	"1.1.1.3": s_1_1_1_3,
+	"1.1.1.4": s_1_1_1_4,
+	"1.1.1.5": s_1_1_1_5,
+	"1.1.1.6": s_1_1_1_6,
+	"1.1.1.7": s_1_1_1_7,
+	"1.1.1.8": s_1_1_1_8,
+	"1.1.1.9": s_1_1_1_9,
+	"1.1.1.10": s_1_1_1_10,
+	"1.1.1.11": s_1_1_1_11,
+	"1.1.2.1.1": s_1_1_2_1_1,
+	"1.1.2.1.2": s_1_1_2_1_2,
+	"1.1.2.1.3": s_1_1_2_1_3,
+	"1.1.2.1.4": s_1_1_2_1_4,
+	"1.1.2.2.1": s_1_1_2_2_1,
+	"1.1.2.2.2": s_1_1_2_2_2,
+	"1.1.2.2.3": s_1_1_2_2_3,
+	"1.1.2.2.4": s_1_1_2_2_4,
+	"1.1.2.3.1": s_1_1_2_3_1,
+	"1.1.2.3.2": s_1_1_2_3_2,
+	"1.1.2.3.3": s_1_1_2_3_3,
+	"1.1.2.4.1": s_1_1_2_4_1,
+	"1.1.2.4.2": s_1_1_2_4_2,
+	"1.1.2.4.3": s_1_1_2_4_3,
+	"1.1.2.5.1": s_1_1_2_5_1,
+	"1.1.2.5.2": s_1_1_2_5_2,
+	"1.1.2.5.3": s_1_1_2_5_3,
+	"1.1.2.5.4": s_1_1_2_5_4,
+	"1.1.2.6.1": s_1_1_2_6_1,
+	"1.1.2.6.2": s_1_1_2_6_2,
+	"1.1.2.6.3": s_1_1_2_6_3,
+	"1.1.2.6.4": s_1_1_2_6_4,
+	"1.1.2.7.1": s_1_1_2_7_1,
+	"1.1.2.7.2": s_1_1_2_7_2,
+	"1.1.2.7.3": s_1_1_2_7_3,
+	"1.1.2.7.4": s_1_1_2_7_4,
 }

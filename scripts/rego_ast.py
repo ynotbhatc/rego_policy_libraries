@@ -18,6 +18,13 @@ import json, re, subprocess, pathlib, concurrent.futures as cf
 BODY_NAMES = {"violations", "violation", "deny", "warn", "findings", "finding"}
 INCLUDE = re.compile(r"(check|notice|consent|obligation|security|breach|retention|right|transfer|government|lawful|flag|field|timing|submission|report|auditor|certification|sdf|children|appeal|exception|opt_out|access|registration|vasp|reporting|coordination|logging|annexure|requirement|control|item|standard|ksi|activit|component)", re.I)
 EXCLUDE = re.compile(r"^(sections|chapters|groups|first_report_deadline|notification_clocks|rules_commencement|dated_obligations|compliance_report|availability_targets|penalty|legacy|_in)$")
+# The per-control result contract (control_results, its static CONTROL_INDEX of id / basis / profile / evidence
+# and the per-section status maps) restates controls that are already counted from their violation rules. It is
+# reporting, not checking: counting it would raise the headline count without adding a check.
+REPORTING = re.compile(r"^(CONTROL_INDEX|CONTROL_EVIDENCE|CONTROL_STATUSES|CONTROL_SCOPE|control_status|control_results"
+                       r"|control_result_counts|control_results_profile|_control_results|_control_result_counts"
+                       r"|_control_result_statuses|_control_evidence|_section_controls|decidable|_decidable"
+                       r"|MEETING_POLICY_FIELDS|FEDERATION_FIELDS|AUTHENTICATOR_FEATURES|SHAREPOINT_CONTROL_PROPERTIES)$")
 SCAFFOLD = re.compile(r"^(report|.*_report|.*_metadata|metadata|summary)$")
 ID_KEY = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ -]*$")
 TEST_RE = re.compile(r"(^|/)(test_|.*_test\.rego$)")
@@ -281,6 +288,8 @@ def items(ast):
     out = []
     for r in ast.get("rules", []):
         h = r["head"]; name = rule_name(r) or ""
+        if REPORTING.match(name):
+            continue
         if "key" in h and (name in BODY_NAMES or name.endswith(SET_SUFFIXES) or name.startswith(("violation_", "violations_", "deny_"))):
             obj = _violation_object(r)
             if obj is not None:

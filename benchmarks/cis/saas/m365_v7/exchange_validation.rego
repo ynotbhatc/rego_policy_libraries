@@ -234,3 +234,89 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+CONTROL_EVIDENCE := {
+	"6.1.1": ["exchange.organization_config.AuditDisabled"],
+	"6.1.2": ["exchange.mailbox_audit.audit_disabled"],
+	"6.1.3": ["exchange.audit_bypass_associations"],
+	"6.2.1": ["exchange.outbound_spam_policies[].AutoForwardingMode", "exchange.transport_rules[].RedirectMessageTo", "exchange.transport_rules[].State"],
+	"6.2.2": ["exchange.transport_rules[].SenderDomainIs", "exchange.transport_rules[].SetSCL", "exchange.transport_rules[].State"],
+	"6.2.3": ["exchange.external_in_outlook[].Enabled"],
+	"6.3.1": ["exchange.role_assignment_policies[].AssignedRoles"],
+	"6.3.2": ["exchange.owa_mailbox_policies[].AdditionalStorageProvidersAvailable"],
+	"6.5.1": ["exchange.organization_config.OAuth2ClientProfileEnabled"],
+	"6.5.2": ["exchange.organization_config.MailTipsAllTipsEnabled"],
+	"6.5.3": ["exchange.owa_mailbox_policies[].AdditionalStorageProvidersAvailable"],
+	"6.5.4": ["exchange.transport_config.SmtpClientAuthenticationDisabled"],
+	"6.5.5": ["exchange.organization_config.RejectDirectSend"],
+}
+
+_org_carries(field) if {
+	available("organization_config")
+	is_boolean(input.exchange.organization_config[field])
+}
+
+_listed(key) if {
+	available(key)
+	is_array(input.exchange[key])
+}
+
+decidable contains "6.1.1" if _org_carries("AuditDisabled")
+
+decidable contains "6.5.1" if _org_carries("OAuth2ClientProfileEnabled")
+
+decidable contains "6.5.2" if _org_carries("MailTipsAllTipsEnabled")
+
+decidable contains "6.5.5" if _org_carries("RejectDirectSend")
+
+decidable contains "6.5.4" if {
+	available("transport_config")
+	is_boolean(input.exchange.transport_config.SmtpClientAuthenticationDisabled)
+}
+
+decidable contains "6.1.3" if _listed("audit_bypass_associations")
+
+decidable contains "6.1.2" if {
+	available("mailbox_audit")
+	is_array(input.exchange.mailbox_audit.audit_disabled)
+}
+
+# a forwarding mode the rule cannot read compares as undefined, never as not "Off"
+decidable contains "6.2.1" if {
+	_listed("outbound_spam_policies")
+	every p in input.exchange.outbound_spam_policies {
+		is_string(p.AutoForwardingMode)
+	}
+	_listed("transport_rules")
+}
+
+decidable contains "6.2.2" if _listed("transport_rules")
+
+decidable contains "6.2.3" if {
+	_listed("external_in_outlook")
+	every e in input.exchange.external_in_outlook {
+		is_boolean(e.Enabled)
+	}
+}
+
+decidable contains "6.3.1" if {
+	_listed("role_assignment_policies")
+	every p in input.exchange.role_assignment_policies {
+		is_array(p.AssignedRoles)
+	}
+}
+
+decidable contains id if {
+	some id in ["6.3.2", "6.5.3"]
+	_listed("owa_mailbox_policies")
+	every p in input.exchange.owa_mailbox_policies {
+		is_boolean(p.AdditionalStorageProvidersAvailable)
+	}
+}

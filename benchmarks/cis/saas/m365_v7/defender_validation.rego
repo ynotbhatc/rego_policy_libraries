@@ -338,3 +338,94 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+CONTROL_EVIDENCE := {
+	"2.1.1": ["defender.safe_links_policies[].EnableSafeLinksForOffice"],
+	"2.1.2": ["defender.malware_filter_policies[].EnableFileFilter"],
+	"2.1.3": ["defender.malware_filter_policies[].EnableInternalSenderAdminNotifications"],
+	"2.1.4": ["defender.safe_attachment_policies[].Enable"],
+	"2.1.5": ["defender.atp_policy_for_o365.EnableATPForSPOTeamsODB"],
+	"2.1.6": ["defender.outbound_spam_policies[].NotifyOutboundSpam"],
+	"2.1.7": ["defender.anti_phish_policies[].Enabled"],
+	"2.1.8": ["exchange.verified_domains[].dns_unavailable", "exchange.verified_domains[].is_initial", "exchange.verified_domains[].spf_present"],
+	"2.1.9": ["exchange.verified_domains[].dkim_present", "exchange.verified_domains[].dns_unavailable", "exchange.verified_domains[].is_initial"],
+	"2.1.10": ["exchange.verified_domains[].dmarc_present", "exchange.verified_domains[].dns_unavailable", "exchange.verified_domains[].is_initial"],
+	"2.1.11": ["defender.malware_filter_policies[].FileTypeFilter"],
+	"2.1.12": ["defender.connection_filter_policies[].IPAllowList"],
+	"2.1.13": ["defender.connection_filter_policies[].EnableSafeList"],
+	"2.1.14": ["defender.content_filter_policies[].AllowedSenderDomains"],
+	"2.1.15": ["defender.outbound_spam_policies[].RecipientLimitExternalPerHour"],
+	"2.4.1": ["defender.email_tenant_settings.EnablePriorityAccountProtection", "defender.priority_account_alerts"],
+	"2.4.2": ["defender.eop_protection_rules"],
+	"2.4.4": ["defender.teams_protection_policy.ZapEnabled"],
+}
+
+# every listed policy must carry the boolean its rule compares: a policy
+# without the field would never match "== false" and so read as a pass
+_policies_carry(key, field) if {
+	policy_available(key)
+	is_array(input.defender[key])
+	every p in input.defender[key] {
+		is_boolean(p[field])
+	}
+}
+
+# fields the rules read through object.get with a default are decided by
+# that default (an absent list is an empty one), as the rules state
+_policies_listed(key) if {
+	policy_available(key)
+	is_array(input.defender[key])
+}
+
+decidable contains id if {
+	some id in ["2.1.8", "2.1.9", "2.1.10"]
+	facts_present
+}
+
+decidable contains "2.1.1" if _policies_carry("safe_links_policies", "EnableSafeLinksForOffice")
+
+decidable contains "2.1.2" if _policies_carry("malware_filter_policies", "EnableFileFilter")
+
+decidable contains "2.1.3" if _policies_carry("malware_filter_policies", "EnableInternalSenderAdminNotifications")
+
+decidable contains "2.1.4" if _policies_carry("safe_attachment_policies", "Enable")
+
+decidable contains "2.1.5" if {
+	policy_available("atp_policy_for_o365")
+	is_boolean(input.defender.atp_policy_for_o365.EnableATPForSPOTeamsODB)
+}
+
+decidable contains "2.1.6" if _policies_carry("outbound_spam_policies", "NotifyOutboundSpam")
+
+decidable contains "2.1.7" if _policies_carry("anti_phish_policies", "Enabled")
+
+decidable contains "2.1.11" if _policies_listed("malware_filter_policies")
+
+decidable contains "2.1.12" if _policies_listed("connection_filter_policies")
+
+decidable contains "2.1.13" if _policies_carry("connection_filter_policies", "EnableSafeList")
+
+decidable contains "2.1.14" if _policies_listed("content_filter_policies")
+
+decidable contains "2.1.15" if _policies_listed("outbound_spam_policies")
+
+decidable contains "2.4.1" if {
+	policy_available("email_tenant_settings")
+	policy_available("priority_account_alerts")
+	is_boolean(input.defender.email_tenant_settings.EnablePriorityAccountProtection)
+	is_array(input.defender.priority_account_alerts)
+}
+
+decidable contains "2.4.2" if _policies_listed("eop_protection_rules")
+
+decidable contains "2.4.4" if {
+	policy_available("teams_protection_policy")
+	is_boolean(input.defender.teams_protection_policy.ZapEnabled)
+}

@@ -367,3 +367,65 @@ violations contains "1.3.1.8: not met — SETroubleshoot must not be present" if
 	e_1_3_1_8
 	not p_1_3_1_8
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_1_3_1_1 := "evidence_missing" if {
+	not e_1_3_1_1
+} else := "pass" if {
+	p_1_3_1_1
+} else := "fail"
+
+s_1_3_1_2 := "evidence_missing" if {
+	not e_1_3_1_2
+} else := "pass" if {
+	p_1_3_1_2
+} else := "fail"
+
+s_1_3_1_3 := "evidence_missing" if {
+	not e_1_3_1_3
+} else := "pass" if {
+	p_1_3_1_3
+} else := "fail"
+
+s_1_3_1_4 := "evidence_missing" if {
+	not e_1_3_1_4
+} else := "pass" if {
+	p_1_3_1_4
+} else := "fail"
+
+s_1_3_1_5 := "evidence_missing" if {
+	not e_1_3_1_5
+} else := "pass" if {
+	p_1_3_1_5
+} else := "fail"
+
+s_1_3_1_6 := "pass" if {
+	p_1_3_1_6
+} else := "not_attested"
+
+s_1_3_1_7 := "evidence_missing" if {
+	not e_1_3_1_7
+} else := "pass" if {
+	p_1_3_1_7
+} else := "fail"
+
+s_1_3_1_8 := "evidence_missing" if {
+	not e_1_3_1_8
+} else := "pass" if {
+	p_1_3_1_8
+} else := "fail"
+
+control_status := {
+	"1.3.1.1": s_1_3_1_1,
+	"1.3.1.2": s_1_3_1_2,
+	"1.3.1.3": s_1_3_1_3,
+	"1.3.1.4": s_1_3_1_4,
+	"1.3.1.5": s_1_3_1_5,
+	"1.3.1.6": s_1_3_1_6,
+	"1.3.1.7": s_1_3_1_7,
+	"1.3.1.8": s_1_3_1_8,
+}

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.boot_security
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Sections 1.4, 1.5, 6.3: Bootloader, Process Hardening, Integrity Checking (AIDE).
@@ -724,4 +724,145 @@ violations contains "6.3.4: evidence missing — boot_security.aide_report_urls 
 violations contains "6.3.4: not met — report_url must be explicitly configured" if {
 	e_6_3_4
 	not p_6_3_4
+}
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_1_4_1 := "evidence_missing" if {
+	not e_1_4_1
+} else := "pass" if {
+	p_1_4_1
+} else := "fail"
+
+s_1_4_2 := "evidence_missing" if {
+	not e_1_4_2
+} else := "pass" if {
+	p_1_4_2
+} else := "fail"
+
+s_1_4_3 := "evidence_missing" if {
+	not e_1_4_3
+} else := "pass" if {
+	p_1_4_3
+} else := "fail"
+
+s_1_4_4 := "evidence_missing" if {
+	not e_1_4_4
+} else := "pass" if {
+	p_1_4_4
+} else := "fail"
+
+s_1_4_5 := "evidence_missing" if {
+	not e_1_4_5
+} else := "pass" if {
+	p_1_4_5
+} else := "fail"
+
+s_1_5_1 := "evidence_missing" if {
+	not e_1_5_1
+} else := "pass" if {
+	p_1_5_1
+} else := "fail"
+
+s_1_5_2 := "evidence_missing" if {
+	not e_1_5_2
+} else := "pass" if {
+	p_1_5_2
+} else := "fail"
+
+s_1_5_3 := "evidence_missing" if {
+	not e_1_5_3
+} else := "pass" if {
+	p_1_5_3
+} else := "fail"
+
+s_1_5_4 := "evidence_missing" if {
+	not e_1_5_4
+} else := "pass" if {
+	p_1_5_4
+} else := "fail"
+
+s_1_5_5 := "evidence_missing" if {
+	not e_1_5_5
+} else := "pass" if {
+	p_1_5_5
+} else := "fail"
+
+s_1_5_6 := "evidence_missing" if {
+	not e_1_5_6
+} else := "pass" if {
+	p_1_5_6
+} else := "fail"
+
+s_1_5_7 := "evidence_missing" if {
+	not e_1_5_7
+} else := "pass" if {
+	p_1_5_7
+} else := "fail"
+
+s_1_5_8 := "evidence_missing" if {
+	not e_1_5_8
+} else := "pass" if {
+	p_1_5_8
+} else := "fail"
+
+s_1_5_9 := "evidence_missing" if {
+	not e_1_5_9
+} else := "pass" if {
+	p_1_5_9
+} else := "fail"
+
+s_1_5_10 := "evidence_missing" if {
+	not e_1_5_10
+} else := "pass" if {
+	p_1_5_10
+} else := "fail"
+
+s_6_3_1 := "evidence_missing" if {
+	not e_6_3_1
+} else := "pass" if {
+	p_6_3_1
+} else := "fail"
+
+s_6_3_2 := "evidence_missing" if {
+	not e_6_3_2
+} else := "pass" if {
+	p_6_3_2
+} else := "fail"
+
+s_6_3_3 := "evidence_missing" if {
+	not e_6_3_3
+} else := "pass" if {
+	p_6_3_3
+} else := "fail"
+
+s_6_3_4 := "evidence_missing" if {
+	not e_6_3_4
+} else := "pass" if {
+	p_6_3_4
+} else := "fail"
+
+control_status := {
+	"1.4.1": s_1_4_1,
+	"1.4.2": s_1_4_2,
+	"1.4.3": s_1_4_3,
+	"1.4.4": s_1_4_4,
+	"1.4.5": s_1_4_5,
+	"1.5.1": s_1_5_1,
+	"1.5.2": s_1_5_2,
+	"1.5.3": s_1_5_3,
+	"1.5.4": s_1_5_4,
+	"1.5.5": s_1_5_5,
+	"1.5.6": s_1_5_6,
+	"1.5.7": s_1_5_7,
+	"1.5.8": s_1_5_8,
+	"1.5.9": s_1_5_9,
+	"1.5.10": s_1_5_10,
+	"6.3.1": s_6_3_1,
+	"6.3.2": s_6_3_2,
+	"6.3.3": s_6_3_3,
+	"6.3.4": s_6_3_4,
 }

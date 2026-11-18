@@ -737,3 +737,266 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+_AP := "entra.authorization_policy."
+
+_CA := ["entra.conditional_access_policies"]
+
+CONTROL_EVIDENCE := {
+	"5.1.2.1": ["entra.per_user_mfa.legacy_per_user_mfa"],
+	"5.1.2.2": [concat("", [_AP, "allowed_to_create_apps"])],
+	"5.1.2.3": [concat("", [_AP, "allowed_to_create_tenants"])],
+	"5.1.3.1": [concat("", [_AP, "allowed_to_create_security_groups"])],
+	"5.1.3.4": ["entra.group_creation.allowed_group_id", "entra.group_creation.enabled", "entra.group_creation.settings_present"],
+	"5.1.4.1": ["entra.device_registration.azure_ad_join_allowed_to_join"],
+	"5.1.4.2": ["entra.device_registration.user_device_quota"],
+	"5.1.4.3": ["entra.device_registration.local_admin_global_admins_enabled"],
+	"5.1.4.4": ["entra.device_registration.local_admin_registering_user_enabled"],
+	"5.1.4.5": ["entra.laps_enabled"],
+	"5.1.4.6": [concat("", [_AP, "allowed_to_read_bitlocker_keys_for_owned_device"])],
+	"5.1.5.1": [concat("", [_AP, "permission_grant_policy_ids_assigned"])],
+	"5.1.5.2": ["entra.admin_consent_workflow_enabled"],
+	"5.1.5.3": ["entra.app_management.password_credentials"],
+	"5.1.5.4": ["entra.app_management.password_credentials"],
+	"5.1.5.5": ["entra.app_management.password_credentials"],
+	"5.1.5.6": ["entra.app_management.key_credentials"],
+	"5.1.6.1": ["entra.b2b_management_policy.allowed_domains_present", "entra.b2b_management_policy.blocked_domains_present", "entra.b2b_management_policy.policy_present"],
+	"5.1.6.2": [concat("", [_AP, "guest_user_role_id"])],
+	"5.1.6.3": [concat("", [_AP, "allow_invites_from"])],
+	"5.1.8.1": ["entra.on_premises_sync.configured", "entra.on_premises_sync.password_sync_enabled"],
+	"5.2.2.1": _CA, "5.2.2.2": _CA, "5.2.2.3": _CA, "5.2.2.4": _CA, "5.2.2.5": _CA, "5.2.2.6": _CA,
+	"5.2.2.7": _CA, "5.2.2.8": _CA, "5.2.2.9": _CA, "5.2.2.10": _CA, "5.2.2.11": _CA, "5.2.2.12": _CA,
+	"5.2.2.13": _CA, "5.2.2.16": _CA, "5.2.2.17": _CA,
+	"5.2.2.14": ["entra.named_locations[].is_trusted"],
+	"5.2.2.15": ["entra.named_locations[].countries_and_regions"],
+	"5.2.3.1": ["entra.authenticator.number_matching_state", "entra.authenticator.show_app_information_state", "entra.authenticator.show_geographic_location_state", "entra.authenticator.state"],
+	"5.2.3.2": ["entra.password_protection.custom_banned_list"],
+	"5.2.3.3": ["entra.password_protection.on_premises_check_enabled"],
+	"5.2.3.4": ["entra.mfa_registration.members_not_mfa_capable"],
+	"5.2.3.5": ["entra.weak_methods_enabled"],
+	"5.2.3.6": ["entra.system_preferred_mfa_state"],
+	"5.2.3.7": ["entra.email_otp_state"],
+	"5.2.3.8": ["entra.lockout.settings_present", "entra.lockout.threshold"],
+	"5.2.3.9": ["entra.lockout.duration_seconds", "entra.lockout.settings_present"],
+	"5.2.3.10": ["entra.authenticator.companion_app_allowed_state"],
+	"5.3.1": ["entra.pim_available"],
+	"5.3.2": ["entra.access_reviews[].scope_query"],
+	"5.3.3": ["entra.access_reviews[].scope_query"],
+	"5.3.4": ["entra.pim_approval_62e90394-69f5-4237-9190-012177145e10.is_approval_required", "entra.pim_approval_62e90394-69f5-4237-9190-012177145e10.primary_approver_count"],
+	"5.3.5": ["entra.pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814.is_approval_required", "entra.pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814.primary_approver_count"],
+}
+
+_present(obj, key) if {
+	v := object.get(obj, key, null)
+	v != null
+}
+
+_AP_BOOLEANS := {
+	"5.1.2.2": "allowed_to_create_apps",
+	"5.1.2.3": "allowed_to_create_tenants",
+	"5.1.3.1": "allowed_to_create_security_groups",
+	"5.1.4.6": "allowed_to_read_bitlocker_keys_for_owned_device",
+}
+
+decidable contains id if {
+	some id, field in _AP_BOOLEANS
+	available("authorization_policy")
+	is_boolean(input.entra.authorization_policy[field])
+}
+
+decidable contains "5.1.5.1" if {
+	available("authorization_policy")
+	is_array(input.entra.authorization_policy.permission_grant_policy_ids_assigned)
+}
+
+decidable contains "5.1.6.2" if {
+	available("authorization_policy")
+	is_string(input.entra.authorization_policy.guest_user_role_id)
+}
+
+# an absent allow_invites_from reads as "not reported" and fails
+decidable contains "5.1.6.3" if available("authorization_policy")
+
+decidable contains "5.2.3.5" if {
+	available("authentication_methods_policy")
+	is_array(input.entra.weak_methods_enabled)
+}
+
+decidable contains "5.2.3.6" if {
+	available("authentication_methods_policy")
+	is_string(input.entra.system_preferred_mfa_state)
+}
+
+decidable contains "5.2.3.7" if {
+	available("authentication_methods_policy")
+	is_string(input.entra.email_otp_state)
+}
+
+AUTHENTICATOR_FEATURES := ["number_matching_state", "show_app_information_state", "show_geographic_location_state"]
+
+decidable contains "5.2.3.1" if {
+	available("authentication_methods_policy")
+	is_string(input.entra.authenticator.state)
+	input.entra.authenticator.state != "enabled"
+}
+
+decidable contains "5.2.3.1" if {
+	available("authentication_methods_policy")
+	input.entra.authenticator.state == "enabled"
+	every feature in AUTHENTICATOR_FEATURES {
+		_present(input.entra.authenticator, feature)
+	}
+}
+
+decidable contains "5.2.3.10" if {
+	available("authentication_methods_policy")
+	is_string(input.entra.authenticator.companion_app_allowed_state)
+}
+
+decidable contains "5.1.5.2" if {
+	available("admin_consent_request_policy")
+	is_boolean(input.entra.admin_consent_workflow_enabled)
+}
+
+decidable contains "5.1.8.1" if {
+	available("on_premises_synchronization")
+	input.entra.on_premises_sync.configured == false
+}
+
+decidable contains "5.1.8.1" if {
+	available("on_premises_synchronization")
+	input.entra.on_premises_sync.configured == true
+	is_boolean(input.entra.on_premises_sync.password_sync_enabled)
+}
+
+decidable contains "5.2.3.2" if {
+	available("group_settings")
+	is_string(input.entra.password_protection.custom_banned_list)
+}
+
+decidable contains "5.2.3.3" if {
+	available("group_settings")
+	_present(input.entra.password_protection, "on_premises_check_enabled")
+}
+
+# no lockout / group-creation directory setting object: the rules apply no check (the tenant runs on the
+# service defaults), so only the settings_present flag itself has to have been collected
+_setting_decidable(obj, _) if {
+	available("group_settings")
+	input.entra[obj].settings_present == false
+}
+
+_setting_decidable(obj, fields) if {
+	available("group_settings")
+	input.entra[obj].settings_present == true
+	every f in fields {
+		_present(input.entra[obj], f)
+	}
+}
+
+decidable contains "5.2.3.8" if _setting_decidable("lockout", ["threshold"])
+
+decidable contains "5.2.3.9" if _setting_decidable("lockout", ["duration_seconds"])
+
+decidable contains "5.1.3.4" if _setting_decidable("group_creation", ["allowed_group_id", "enabled"])
+
+decidable contains "5.2.3.4" if {
+	available("mfa_registration_report")
+	is_array(input.entra.mfa_registration.members_not_mfa_capable)
+}
+
+decidable contains "5.1.2.1" if {
+	available("per_user_mfa")
+	is_array(input.entra.per_user_mfa.legacy_per_user_mfa)
+}
+
+# a policy list the rules cannot read leaves every requirement unmet, which the rules report as failures
+decidable contains id if {
+	some id in [
+		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
+		"5.2.2.9", "5.2.2.10", "5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.16", "5.2.2.17",
+	]
+	available("conditional_access_policies")
+	is_array(input.entra.conditional_access_policies)
+}
+
+decidable contains id if {
+	some id in ["5.2.2.14", "5.2.2.15"]
+	available("named_locations")
+	is_array(input.entra.named_locations)
+}
+
+decidable contains "5.3.1" if {
+	available("pim_role_assignments")
+	is_boolean(input.entra.pim_available)
+}
+
+decidable contains "5.1.4.1" if {
+	available("device_registration_policy")
+	_present(input.entra.device_registration, "azure_ad_join_allowed_to_join")
+}
+
+# an absent quota reads as 0 and passes, so the quota itself must have been collected
+decidable contains "5.1.4.2" if {
+	available("device_registration_policy")
+	_present(input.entra.device_registration, "user_device_quota")
+}
+
+decidable contains "5.1.4.3" if {
+	available("device_registration_policy")
+	is_boolean(input.entra.device_registration.local_admin_global_admins_enabled)
+}
+
+decidable contains "5.1.4.4" if {
+	available("device_registration_policy")
+	_present(input.entra.device_registration, "local_admin_registering_user_enabled")
+}
+
+decidable contains "5.1.4.5" if {
+	available("laps_policy")
+	is_boolean(input.entra.laps_enabled)
+}
+
+decidable contains id if {
+	some id in ["5.1.5.3", "5.1.5.4", "5.1.5.5", "5.1.5.6"]
+	available("app_management_policy")
+	is_object(input.entra.app_management)
+}
+
+decidable contains id if {
+	some id in ["5.3.2", "5.3.3"]
+	available("access_reviews")
+	is_array(input.entra.access_reviews)
+}
+
+decidable contains "5.1.6.1" if {
+	available("b2b_management_policy")
+	b2b.policy_present == false
+}
+
+decidable contains "5.1.6.1" if {
+	available("b2b_management_policy")
+	b2b.policy_present == true
+	is_boolean(b2b.allowed_domains_present)
+	is_boolean(b2b.blocked_domains_present)
+}
+
+decidable contains meta.control if {
+	some key, meta in PIM_APPROVAL_CONTROLS
+	available(key)
+	input.entra[key].is_approval_required == false
+}
+
+decidable contains meta.control if {
+	some key, meta in PIM_APPROVAL_CONTROLS
+	available(key)
+	input.entra[key].is_approval_required == true
+	is_number(input.entra[key].primary_approver_count)
+}

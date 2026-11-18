@@ -67,6 +67,21 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   Hand-written files in a module directory, such as the framework-key bridges `cis_windows_2019_key_main.rego`
   and `cis_windows_2022_key_main.rego`, are left in place, and a generator aborts rather than overwrite one.
 
+  Per-control results (all six Windows generators): `compliance_report.control_results` holds one object per
+  recommendation in natural id order, `{id, status, basis, in_scope, profile, evidence}`, and
+  `control_result_counts` the count per status. Status is one of `pass`, `fail`, `evidence_missing` (the row's
+  `not_assessed`: facts not collected, or no server role for a role-specific row), `not_attested` (a Manual
+  recommendation in scope without an admissible attestation) and `not_applicable` (outside `input.cis_profile`).
+  `profile` is the row's tier/role tags (`L1_MS`, `L2_DC`, `NG_MS`; `L1`, `L2`, `BL`, `NG` on Windows 10/11) and
+  `evidence` the input paths the row reads (`secedit.privilege_rights.<right>`, `registry.<HKLM path>.<value>`,
+  `audit_policy.<GUID>`, `attestations`). The static part is the `CONTROL_INDEX` literal that
+  `gen_windows_server_2022.control_index` appends to the aggregation module; only the status is computed at
+  evaluation time, from the section rows' statuses and the attestation ledger. `test_control_results.rego`
+  (`gen_windows_server_2022_tests.control_results_tests`) checks the invariants: exactly the benchmark ids in order;
+  in-scope count = `total_controls`; fail + evidence_missing + not_attested = `failed_controls`; a control is
+  failing exactly when a violation message cites its id, with the matching kind; nothing passes on empty input;
+  the compliant fixtures yield only pass and not_applicable.
+
   User rights are derived once, in `gen_windows_server_2022.derive_rights`, for every Windows generator. A deny
   right (`SeDeny*`) that a workbook states with "is set to" is evaluated as "to include": every named principal
   must be denied and denying more is allowed, since a shorter deny list is the weaker state. Each generator lists
@@ -217,6 +232,15 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   benchmark's class table, with the per-entry `owner_has_login_shell` and `owner_primary_group` for
   service-account logs. `gen_amazon_linux_2023.py` uses the same `audit()` builder.
 
+  Per-control results (rhel_9, rocky_linux_9, rhel_8, rocky_linux_8): `emit_module` writes, beside each
+  section's violation rules, a status rule per recommendation read from the same predicates (`evidence_missing`
+  when `not e_<id>`, `pass` when `p_<id>`, `fail` otherwise; Manual: `pass` when attested, else `not_attested`) and a
+  `control_status` map; the roll-up adds `CONTROL_INDEX` (id, basis, the workbook profile names, the logic entry's
+  `reads` as dotted input paths) and applies profile scope (`not_applicable` outside `applicable_ids`); the main
+  report carries `control_results` and `control_result_counts`. `test_<pkg>_control_results.rego` checks the same
+  invariants as the Windows modules (ids and order, totals, failing iff cited with the matching message kind, empty
+  input, a compliant fixture merged from every logic entry's passing input, a mixed input with every status).
+  `emit_control` is unchanged, so `gen_amazon_linux_2023.py` output does not change.
 - `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
   recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
   `cis_rocky_linux_9`. Holds no logic of its own: it configures `gen_rhel_9.py` (`configure()`: output
@@ -273,6 +297,11 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   attestations. `input.cis_profile.ownership` and `level` select the profile. Every logic entry carries a title
   keyword; the run aborts on any count, id, status, profile or keyword mismatch. Needs openpyxl
   (`/usr/bin/python3` on the Mac); run `opa fmt -w benchmarks/cis/mobile_devices/ios` afterwards.
+
+- `gen_m365_v7_control_index.py` (no arguments): writes `benchmarks/cis/saas/m365_v7/control_index.rego`, the 160
+  recommendation ids of CIS Microsoft 365 Foundations v7.0.0 in natural order with their E3/E5 level tags, from the
+  module's committed keyword digest `data/cis_m365_v7_index.json`, for the per-control results of that hand-written
+  module (see its README). Aborts unless the digest lists 160 distinct ids, each with a known tag.
 
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.

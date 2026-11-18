@@ -158,3 +158,32 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+
+CONTROL_EVIDENCE := {
+	"3.1.1": ["purview.audit_log_accessible"],
+	"3.2.1": ["purview_ps.dlp_policies[].Enabled", "purview_ps.dlp_policies[].Mode"],
+	"3.2.2": ["purview_ps.dlp_policies[].Enabled", "purview_ps.dlp_policies[].Mode", "purview_ps.dlp_policies[].TeamsLocation"],
+	"3.2.3": ["purview_ps.dlp_policies[].Enabled", "purview_ps.dlp_policies[].Mode", "purview_ps.dlp_policies[].Workload"],
+	"3.3.1": ["purview_ps.label_policies[].Enabled"],
+}
+
+decidable contains "3.1.1" if facts_present
+
+decidable contains id if {
+	some id in ["3.2.1", "3.2.2", "3.2.3"]
+	ps_available("dlp_policies")
+	is_array(input.purview_ps.dlp_policies)
+}
+
+decidable contains "3.3.1" if {
+	ps_available("label_policies")
+	is_array(input.purview_ps.label_policies)
+}

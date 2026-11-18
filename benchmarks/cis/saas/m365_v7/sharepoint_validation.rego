@@ -40,7 +40,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.sharepoint
 
 import rego.v1
@@ -222,4 +222,38 @@ compliance_report := {
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,
+}
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+SHAREPOINT_CONTROL_PROPERTIES := {
+	"7.2.1": "LegacyAuthProtocolsEnabled",
+	"7.2.2": "EnableAzureADB2BIntegration",
+	"7.2.3": "SharingCapability",
+	"7.2.4": "OneDriveSharingCapability",
+	"7.2.5": "PreventExternalUsersFromResharing",
+	"7.2.6": "SharingCapability",
+	"7.2.7": "DefaultSharingLinkType",
+	"7.2.8": "SharingDomainRestrictionMode",
+	"7.2.9": "ExternalUserExpirationRequired",
+	"7.2.10": "EmailAttestationRequired",
+	"7.2.11": "DefaultLinkPermission",
+	"7.3.1": "DisallowInfectedFileDownload",
+}
+
+CONTROL_EVIDENCE := {id: [path] |
+	some id, prop in SHAREPOINT_CONTROL_PROPERTIES
+	path := concat(".", ["sharepoint", "tenant", prop])
+}
+
+# the rule's own gate (the property was returned and not reported unavailable), and not null
+decidable contains id if {
+	some id, prop in SHAREPOINT_CONTROL_PROPERTIES
+	available(prop)
+	tenant[prop] != null
 }

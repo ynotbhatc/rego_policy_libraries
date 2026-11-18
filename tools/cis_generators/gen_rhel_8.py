@@ -892,6 +892,7 @@ def main(argv=None):
     files[f"{PKG}_main.rego"] = R.emit_main(recs)
     files["l2_validation.rego"] = R.emit_l2(recs)
     files[f"tests/test_{PKG}_rollup.rego"] = R.emit_rollup_tests(recs)
+    files[f"tests/test_{PKG}_control_results.rego"] = R.emit_control_results_tests(recs, by_mod)
     files = {k: v.replace("data.cis_rhel8.", f"data.{PKG}.") for k, v in files.items()}
     for old, new in reword():
         if not any(old in t for t in files.values()):

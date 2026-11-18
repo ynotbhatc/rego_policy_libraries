@@ -116,3 +116,32 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+
+CONTROL_EVIDENCE := {
+	"4.1": ["intune.secure_by_default"],
+	"4.2": ["intune.enrollment_platform_restrictions[].platforms.*.personal_device_enrollment_blocked"],
+}
+
+decidable contains "4.1" if {
+	available("device_management_settings")
+	is_boolean(input.intune.secure_by_default)
+}
+
+decidable contains "4.2" if {
+	available("enrollment_configurations")
+	is_array(input.intune.enrollment_platform_restrictions)
+	every r in input.intune.enrollment_platform_restrictions {
+		is_object(r.platforms)
+		every _, settings in r.platforms {
+			is_boolean(settings.personal_device_enrollment_blocked)
+		}
+	}
+}

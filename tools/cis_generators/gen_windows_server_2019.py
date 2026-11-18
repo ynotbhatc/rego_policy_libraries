@@ -738,7 +738,7 @@ def generate(workbook):
         in_sec = {rid: r for rid, r in recs.items() if r["section"] == sec}
         files[f"{base.SECTIONS[sec]}_validation.rego"] = section_module_fn(sec, section_names[sec], in_sec, checks)
     files["attestation_validation.rego"] = base.attestation_module(recs)
-    files[f"{PKG}_complete.rego"] = complete_module()
+    files[f"{PKG}_complete.rego"] = complete_module() + base.control_index(recs, checks)
     files[MAIN_FILE] = main_module()
     files["lib.rego"] = lib_text()
     tests = generate_tests(recs, checks)
