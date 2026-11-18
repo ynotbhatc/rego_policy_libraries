@@ -352,9 +352,21 @@ violation contains msg if {
 	msg := "NIST AC-2: Account management lacks automated tooling, approval, reviews, or timely removal"
 }
 
+_ac3_any_collected if {
+	some m in _ac3_model_fields
+	is_boolean(object.get(input, ["ac_controls", "access_enforcement", m], null))
+}
+
 violation contains msg if {
 	not access_enforcement
-	msg := "NIST AC-3: evidence missing — no approved access control policy is evidenced as enforced (input.ac_controls.access_enforcement: none of mandatory_access_control, discretionary_access_control, role_based_access_control, attribute_based_access_control is true)"
+	not _ac3_any_collected
+	msg := "NIST AC-3: evidence missing — no approved access control policy is evidenced as enforced (input.ac_controls.access_enforcement: none of mandatory_access_control, discretionary_access_control, role_based_access_control, attribute_based_access_control collected)"
+}
+
+violation contains msg if {
+	not access_enforcement
+	_ac3_any_collected
+	msg := "NIST AC-3: No approved access control policy is enforced (input.ac_controls.access_enforcement: none of mandatory_access_control, discretionary_access_control, role_based_access_control, attribute_based_access_control is true)"
 }
 
 violation contains msg if {

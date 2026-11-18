@@ -29,7 +29,9 @@ test_ac3_mac_without_dac_or_rbac_passes if {
 
 test_ac3_no_model_enforced_fails if {
 	r := _ac({"access_enforcement": {"mandatory_access_control": false, "role_based_access_control": false}})
-	count(_finding(r, "AC-3")) == 1
+	f := _finding(r, "AC-3")
+	count(f) == 1
+	not contains(f[0], "evidence missing")
 }
 
 test_ac3_missing_evidence_fails if {

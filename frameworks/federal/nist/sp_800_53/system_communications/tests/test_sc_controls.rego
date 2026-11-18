@@ -104,7 +104,9 @@ test_sc28_encryption_satisfies_base_and_enhancement if {
 
 test_sc28_unprotected_fails if {
 	r := _sc({"protection_of_info_at_rest": {"protected": false, "encrypted": false}})
-	count(_finding(r, "SC-28")) == 1
+	f := _finding(r, "SC-28")
+	count(f) == 1
+	not contains(f[0], "evidence missing")
 }
 
 test_sc28_missing_evidence_fails if {

@@ -160,8 +160,19 @@ violation contains msg if {
 	msg := "NIST SC-23: Session authenticity not protected (session ID randomness, timeouts)"
 }
 
+_sc28_collected if is_boolean(object.get(_sc28, "protected", null))
+
+_sc28_collected if is_boolean(object.get(_sc28, "encrypted", null))
+
 violation contains msg if {
 	not sc28_protected
+	_sc28_collected
+	msg := "NIST SC-28: Information at rest is not protected by the organization-chosen mechanism (input.sc_controls.protection_of_info_at_rest.protected) or by encryption (.encrypted)"
+}
+
+violation contains msg if {
+	not sc28_protected
+	not _sc28_collected
 	msg := "NIST SC-28: evidence missing — protection of information at rest not evidenced by the organization-chosen mechanism (input.sc_controls.protection_of_info_at_rest.protected) or by encryption (.encrypted)"
 }
 

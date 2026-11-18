@@ -186,3 +186,12 @@ test_policy_report_defined_when_compliant if {
 	r.checks_evaluated == 10
 	r.baseline_size == 156
 }
+
+test_us_person_criterion_not_applied_at_low if {
+	inp := object.union(_at("low"), {
+		"personnel": [{"name": "fn1", "admin_access": true, "background_check_completed": true, "us_person": false}],
+		"personnel_requirements": {"us_persons_required_for_admin": true},
+	})
+	not "PS-3(3)" in fedramp.applicable_checks with input as inp
+	fedramp.fedramp_compliant with input as inp
+}

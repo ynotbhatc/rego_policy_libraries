@@ -41,7 +41,8 @@ import rego.v1
 #   NSA-approved cryptography"; SA-9(5) (High only) U.S./U.S. Territories or U.S. jurisdiction.
 # Baseline membership used for gating (same profiles): CA-2, CA-6, CA-7, CA-8, IR-8, PS-3, RA-2, RA-5,
 # SC-13, SR-2 at every level; CP-7 Moderate and High; SA-9(5) Moderate and High, with a FedRAMP-fixed
-# location only at High; PS-3(3) Moderate and High with agency-defined screening criteria.
+# location only at High; PS-3(3) Moderate and High with agency-defined screening criteria (evaluated at
+# Moderate/High only, and only when the agency sets the US-person criterion).
 #
 # Input shape:
 #   input.impact_level            - "low", "moderate", or "high"
@@ -95,7 +96,10 @@ _checks_conditional contains "CP-7" if applies_moderate_high
 
 _checks_conditional contains "SA-9(5)" if _applies_sa_9_5
 
-_checks_conditional contains "PS-3(3)" if _us_persons_required
+_checks_conditional contains "PS-3(3)" if {
+	applies_moderate_high
+	_us_persons_required
+}
 
 applicable_checks := _checks_all_levels | _checks_conditional
 
@@ -217,6 +221,7 @@ violation_personnel contains msg if {
 }
 
 violation_personnel contains msg if {
+	applies_moderate_high
 	_us_persons_required
 	some person in object.get(input, "personnel", [])
 	person.admin_access == true
@@ -267,7 +272,10 @@ violation_conmon contains msg if {
 }
 
 # FedRAMP's RA-5 parameter names high-risk (30 days), moderate-risk (90) and low-risk (180) tiers and no
-# separate critical tier, so critical findings are held to the high-risk 30 days.
+# separate critical tier, so critical findings are held to the high-risk 30 days. Caveat: FedRAMP's RA-5
+# guidance says a CISA Known Exploited Vulnerabilities (KEV) catalog due date takes precedence; KEV dates
+# are often shorter than 30 days and this module has no KEV input, so a KEV-listed vulnerability can pass
+# here and still be late for FedRAMP.
 violation_conmon contains msg if {
 	some field in ["high_vulnerabilities_open_days", "critical_vulnerabilities_open_days"]
 	is_number(_cm[field])
