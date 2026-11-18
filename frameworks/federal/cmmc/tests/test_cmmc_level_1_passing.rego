@@ -2,33 +2,9 @@ package cmmc_test
 
 import rego.v1
 
-# Decisions 2026-10-19: Level 1 is judged from each domain's Level 1 practices
-# (level_1_passing), not from the whole-domain compliant flag, which includes
-# Level 2 practices.
-
-l1_ok := {"compliant": false, "passing": 0, "violations": ["L2 only"], "level_1_passing": true}
-
-l1_bad := {"compliant": true, "passing": 0, "violations": [], "level_1_passing": false}
-
-test_level_1_ignores_level_2_failures_in_domain if {
-	data.cmmc.cmmc_level_1_compliant with data.cmmc.ac_report as l1_ok
-		with data.cmmc.ia_report as l1_ok
-		with data.cmmc.pe_report as l1_ok
-		with data.cmmc.sc_report as l1_ok
-		with data.cmmc.si_report as l1_ok
-}
-
-test_level_1_fails_when_a_domain_level_1_practice_fails if {
-	not data.cmmc.cmmc_level_1_compliant with data.cmmc.ac_report as l1_ok
-		with data.cmmc.ia_report as l1_ok
-		with data.cmmc.pe_report as l1_bad
-		with data.cmmc.sc_report as l1_ok
-		with data.cmmc.si_report as l1_ok
-}
-
-test_level_1_false_on_empty_input if {
-	not data.cmmc.cmmc_level_1_compliant with input as {}
-}
+# Each domain's level_1_passing reads only its Level 1 practices. The Level 1
+# verdict of the framework itself is scored in data.cmmc from the registry
+# (tests/test_cmmc_scoring.rego).
 
 mixed(l1_compliant) := [
 	{"id": "a", "level": 1, "compliant": true},
@@ -54,6 +30,19 @@ test_sc_level_1_passing_ignores_level_2_practice if {
 test_si_level_1_passing_ignores_level_2_practice if {
 	data.cmmc.system_information_integrity.level_1_passing with data.cmmc.system_information_integrity.practices as mixed(true)
 	not data.cmmc.system_information_integrity.level_1_passing with data.cmmc.system_information_integrity.practices as mixed(false)
+}
+
+test_mp_level_1_passing_ignores_level_2_practice if {
+	data.cmmc.media_protection.level_1_passing with data.cmmc.media_protection.practices as mixed(true)
+	not data.cmmc.media_protection.level_1_passing with data.cmmc.media_protection.practices as mixed(false)
+}
+
+# The Level 1 tags in the domain files match the FAR 52.204-21 mapping.
+test_domain_level_1_tags_match_registry if {
+	reports := data.cmmc.domain_reports with input as {}
+	tagged := {p.id | some r in reports; some p in r.practices; p.level == 1}
+	registry := {n | some x in data.cmmc.level_1_requirements; some n in x.nist}
+	tagged == registry
 }
 
 test_domain_reports_expose_level_1_passing if {

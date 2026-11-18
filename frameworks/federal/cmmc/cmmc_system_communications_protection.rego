@@ -18,6 +18,31 @@ package cmmc.system_communications_protection
 
 import rego.v1
 
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
+
 # =============================================================================
 # CMMC 2.0 — Domain 3.13: System and Communications Protection
 # NIST SP 800-171 Rev 2 — 16 Practices
@@ -217,7 +242,7 @@ default compliant_3_13_9 := false
 
 compliant_3_13_9 if {
 	input.scp.session_timeout_enabled == true
-	input.scp.network_session_timeout_minutes <= 30
+	_at_most(["scp", "network_session_timeout_minutes"], "network_session_inactivity_minutes")
 }
 
 violation_3_13_9 contains msg if {
@@ -225,9 +250,17 @@ violation_3_13_9 contains msg if {
 	msg := "3.13.9: Network sessions are not terminated after a period of inactivity"
 }
 
+violation_3_13_9 contains "3.13.9: evidence missing - input.org_defined.network_session_inactivity_minutes (organisation-defined value, NIST SP 800-171A 3.13.9[a]) not supplied or not a number" if {
+	not _odp("network_session_inactivity_minutes")
+}
+
+violation_3_13_9 contains "3.13.9: evidence missing - input.scp.network_session_timeout_minutes not collected or not a number" if {
+	not _actual(["scp", "network_session_timeout_minutes"])
+}
+
 violation_3_13_9 contains msg if {
-	input.scp.network_session_timeout_minutes > 30
-	msg := sprintf("3.13.9: Network session timeout is %v minutes (must be ≤30)", [input.scp.network_session_timeout_minutes])
+	_actual(["scp", "network_session_timeout_minutes"]) > _odp("network_session_inactivity_minutes")
+	msg := sprintf("3.13.9: network connections terminated after %v minutes of inactivity, beyond the organisation-defined %v minutes", [_actual(["scp", "network_session_timeout_minutes"]), _odp("network_session_inactivity_minutes")])
 }
 
 # 3.13.10 — Establish and manage cryptographic keys when cryptography is
@@ -598,5 +631,6 @@ compliance_report := {
 	"failing": 16 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 	"level_1_passing": level_1_passing,
 }

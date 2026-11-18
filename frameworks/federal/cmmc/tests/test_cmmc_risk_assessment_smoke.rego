@@ -23,7 +23,7 @@ test_cmmc_risk_assessment_fail_closed_on_empty_input if {
 
 # --- semantic review 2026-11-13: domain verdict must agree with practices ---
 
-good_input_review := {"risk": {"risk_assessment_conducted": true, "risk_assessment_frequency_days": 365, "risk_assessment_documented": true, "vulnerability_scanning_enabled": true, "scan_frequency_days": 30, "scan_results_reviewed": true, "new_vuln_scan_triggered": true, "vuln_remediation_policy": true, "critical_vuln_remediation_days": 15, "high_vuln_remediation_days": 30, "remediation_tracked": true}}
+good_input_review := {"org_defined": data.cmmc_test_fixtures.org_defined, "risk": {"risk_assessment_conducted": true, "risk_assessment_frequency_days": 365, "risk_assessment_documented": true, "vulnerability_scanning_enabled": true, "scan_frequency_days": 30, "scan_results_reviewed": true, "new_vuln_scan_triggered": true, "vuln_remediation_policy": true, "critical_vuln_remediation_days": 15, "high_vuln_remediation_days": 30, "remediation_tracked": true}}
 
 test_review_good_input_compliant if {
 	r := data.cmmc.risk_assessment.compliance_report with input as good_input_review
@@ -32,7 +32,7 @@ test_review_good_input_compliant if {
 }
 
 test_review_scan_frequency_missing if {
-	r := data.cmmc.risk_assessment.compliance_report with input as {"risk": {"risk_assessment_conducted": true, "risk_assessment_frequency_days": 365, "risk_assessment_documented": true, "vulnerability_scanning_enabled": true, "scan_results_reviewed": true, "new_vuln_scan_triggered": true, "vuln_remediation_policy": true, "critical_vuln_remediation_days": 15, "high_vuln_remediation_days": 30, "remediation_tracked": true}}
+	r := data.cmmc.risk_assessment.compliance_report with input as {"org_defined": data.cmmc_test_fixtures.org_defined, "risk": {"risk_assessment_conducted": true, "risk_assessment_frequency_days": 365, "risk_assessment_documented": true, "vulnerability_scanning_enabled": true, "scan_results_reviewed": true, "new_vuln_scan_triggered": true, "vuln_remediation_policy": true, "critical_vuln_remediation_days": 15, "high_vuln_remediation_days": 30, "remediation_tracked": true}}
 	r.failing > 0
 	not r.compliant
 	count(r.violations) > 0

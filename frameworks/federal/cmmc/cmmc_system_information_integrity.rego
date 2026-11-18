@@ -18,6 +18,31 @@ package cmmc.system_information_integrity
 
 import rego.v1
 
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
+
 # =============================================================================
 # CMMC 2.0 — Domain 3.14: System and Information Integrity
 # NIST SP 800-171 Rev 2 — 7 Practices
@@ -30,7 +55,7 @@ default compliant_3_14_1 := false
 compliant_3_14_1 if {
 	input.integrity.flaw_remediation_policy == true
 	input.integrity.patch_management_program == true
-	input.integrity.critical_patch_days <= 30
+	_at_most(["integrity", "critical_patch_days"], "flaw_correction_days")
 }
 
 violation_3_14_1 contains msg if {
@@ -43,9 +68,17 @@ violation_3_14_1 contains msg if {
 	msg := "3.14.1: No patch management program to identify and remediate system vulnerabilities"
 }
 
+violation_3_14_1 contains "3.14.1: evidence missing - input.org_defined.flaw_correction_days (organisation-defined value, NIST SP 800-171A 3.14.1[e]) not supplied or not a number" if {
+	not _odp("flaw_correction_days")
+}
+
+violation_3_14_1 contains "3.14.1: evidence missing - input.integrity.critical_patch_days not collected or not a number" if {
+	not _actual(["integrity", "critical_patch_days"])
+}
+
 violation_3_14_1 contains msg if {
-	input.integrity.critical_patch_days > 30
-	msg := sprintf("3.14.1: Critical patches applied within %v days (must be ≤30)", [input.integrity.critical_patch_days])
+	_actual(["integrity", "critical_patch_days"]) > _odp("flaw_correction_days")
+	msg := sprintf("3.14.1: system flaws corrected within %v days, beyond the organisation-specified %v days", [_actual(["integrity", "critical_patch_days"]), _odp("flaw_correction_days")])
 }
 
 # 3.14.2 — Provide protection from malicious code at appropriate locations
@@ -74,7 +107,7 @@ violation_3_14_2 contains msg if {
 }
 
 # 3.14.3 — Monitor system security alerts and advisories and take action in
-#           response. (L1)
+#           response. (L2)
 default compliant_3_14_3 := false
 
 compliant_3_14_3 if {
@@ -100,21 +133,17 @@ violation_3_14_3 contains msg if {
 
 # 3.14.4 — Update malicious code protection mechanisms when new releases are
 #           available. (L1)
+#           R2 3.14.4 requires updates "when new releases are available"; it sets no
+#           hourly limit, so the former 24-hour limit is removed (auto-update decides).
 default compliant_3_14_4 := false
 
 compliant_3_14_4 if {
 	input.integrity.antimalware_auto_update == true
-	input.integrity.signature_update_frequency_hours <= 24
 }
 
 violation_3_14_4 contains msg if {
 	not input.integrity.antimalware_auto_update
 	msg := "3.14.4: Anti-malware signatures are not automatically updated when new releases are available"
-}
-
-violation_3_14_4 contains msg if {
-	input.integrity.signature_update_frequency_hours > 24
-	msg := sprintf("3.14.4: Anti-malware signatures updated every %v hours (must be ≤24)", [input.integrity.signature_update_frequency_hours])
 }
 
 # 3.14.5 — Perform periodic scans of organizational systems and real-time scans
@@ -124,7 +153,8 @@ default compliant_3_14_5 := false
 
 compliant_3_14_5 if {
 	input.integrity.periodic_system_scans == true
-	input.integrity.scan_frequency_days <= 7
+	_at_most(["integrity", "scan_frequency_days"], "malware_scan_interval_days")
+	_periodic_ok("malware_scan_interval_days")
 	input.integrity.realtime_file_scanning == true
 	input.integrity.download_scanning_enabled == true
 }
@@ -134,9 +164,22 @@ violation_3_14_5 contains msg if {
 	msg := "3.14.5: Periodic anti-malware scans of CUI systems are not performed"
 }
 
+violation_3_14_5 contains "3.14.5: evidence missing - input.org_defined.malware_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.14.5[a]) not supplied or not a number" if {
+	not _odp("malware_scan_interval_days")
+}
+
+violation_3_14_5 contains "3.14.5: evidence missing - input.integrity.scan_frequency_days not collected or not a number" if {
+	not _actual(["integrity", "scan_frequency_days"])
+}
+
 violation_3_14_5 contains msg if {
-	input.integrity.scan_frequency_days > 7
-	msg := sprintf("3.14.5: System scans run every %v days (must be at least weekly)", [input.integrity.scan_frequency_days])
+	_actual(["integrity", "scan_frequency_days"]) > _odp("malware_scan_interval_days")
+	msg := sprintf("3.14.5: periodic malicious code scans run every %v days, beyond the organisation-defined interval of %v days", [_actual(["integrity", "scan_frequency_days"]), _odp("malware_scan_interval_days")])
+}
+
+violation_3_14_5 contains msg if {
+	_odp("malware_scan_interval_days") > 365
+	msg := sprintf("3.14.5: the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year", [_odp("malware_scan_interval_days")])
 }
 
 violation_3_14_5 contains msg if {
@@ -290,7 +333,7 @@ all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 practices := [
 	{"id": "3.14.1", "level": 1, "compliant": compliant_3_14_1},
 	{"id": "3.14.2", "level": 1, "compliant": compliant_3_14_2},
-	{"id": "3.14.3", "level": 1, "compliant": compliant_3_14_3},
+	{"id": "3.14.3", "level": 2, "compliant": compliant_3_14_3},
 	{"id": "3.14.4", "level": 1, "compliant": compliant_3_14_4},
 	{"id": "3.14.5", "level": 1, "compliant": compliant_3_14_5},
 	{"id": "3.14.6", "level": 2, "compliant": compliant_3_14_6},
@@ -323,5 +366,6 @@ compliance_report := {
 	"failing": 7 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 	"level_1_passing": level_1_passing,
 }

@@ -18,6 +18,25 @@ package iso27001.system_acquisition_maintenance
 
 import rego.v1
 
+# Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described
+# as fixing periods, counts or percentages, and the licensed text was not read; the limits this module
+# used to hard-code are now the organisation's own stated values, read from
+# input.iso27001.org_defined.<name>. The observed value is compared with it; either one missing or not
+# a number fails the check (is_number guards: OPA orders null below numbers, strings above).
+_odp(name) := v if {
+	v := input.iso27001.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
 # Defaults so report/details never collapse to {} on empty input
 default security_requirements_defined := false
 
@@ -230,7 +249,7 @@ security_testing if {
 	input.security_testing.dependency_scanning.blocking_on_critical == true
 
 	# Frequency
-	input.security_testing.penetration_testing.frequency_days <= 365
+	_at_most(["security_testing", "penetration_testing", "frequency_days"], "penetration_test_interval_days")
 }
 
 # A.14.2.9 - System acceptance testing (2022: A.8.29)

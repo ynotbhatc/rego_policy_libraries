@@ -79,7 +79,25 @@ cryptographic_controls if {
 	key_management
 }
 
+# What decides A.8.24 here (2026-11-17). ISO/IEC 27002:2022 is licensed and its text was not read;
+# public descriptions of 8.24 say rules for the effective use of cryptography, including cryptographic
+# key management, are defined and implemented. Only that is scored:
+#   cryptographic_policy  the rules for use exist (policy statements, attested)
+#   key_management        the key lifecycle (generation, distribution and storage, use and rotation,
+#                         destruction) follows the organisation's own documented rules; key lifetime is
+#                         compared with the organisation's stated maximum
+#                         (input.iso27001.org_defined.max_key_lifetime_days)
+#   algorithm_compliance  every algorithm in use is on the organisation's approved list
+# Specific mechanisms the public descriptions do not name are reported as non-scoring advisories
+# (compliance_details.advisory): HSM key storage, audit logging of key operations, automated rotation,
+# encrypted key backups, data_encryption (TLS pinning, payload encryption, key escrow, filesystem and
+# database encryption), digital_signatures (code and document signing, OCSP, PKI), the library's
+# weak-algorithm list and post-quantum planning.
+
 # A.10.1.1 - Policy on the use of cryptographic controls (2022: A.8.24)
+# Evidence kind: attestation. Every value read is a statement the assessed party
+# makes about its own policy (flags and the list of approved algorithms); nothing
+# here is observed on a system. iso27001.fact_checks labels it so.
 cryptographic_policy if {
 	input.cryptography.policy.documented == true
 	input.cryptography.policy.approved == true
@@ -147,24 +165,32 @@ key_distribution_secure if {
 	input.key_management.distribution.authentication_required == true
 	input.key_management.distribution.integrity_protected == true
 
-	input.key_management.storage.hardware_security_modules == true
 	input.key_management.storage.access_controlled == true
-	input.key_management.storage.audit_logged == true
-	input.key_management.storage.backup_encrypted == true
 }
 
 # Controlled key usage and rotation
 key_usage_controlled if {
 	input.key_management.usage.purpose_specific == true
 	input.key_management.usage.access_restricted == true
-	input.key_management.usage.audit_logged == true
 
 	input.key_management.rotation.regular_schedule == true
-	input.key_management.rotation.automated_process == true
 	input.key_management.rotation.emergency_procedures == true
 
-	# Rotation should occur at least annually
-	input.key_management.rotation.max_lifetime_days <= 365
+	# Key lifetime within the organisation's own stated maximum (no library-chosen period)
+	is_number(input.key_management.rotation.max_lifetime_days)
+	is_number(input.iso27001.org_defined.max_key_lifetime_days)
+	input.key_management.rotation.max_lifetime_days <= input.iso27001.org_defined.max_key_lifetime_days
+}
+
+# Advisory (non-scoring): key-management mechanisms 8.24 is not publicly described as requiring.
+default key_management_mechanisms := false
+
+key_management_mechanisms if {
+	input.key_management.storage.hardware_security_modules == true
+	input.key_management.storage.audit_logged == true
+	input.key_management.storage.backup_encrypted == true
+	input.key_management.usage.audit_logged == true
+	input.key_management.rotation.automated_process == true
 }
 
 # Secure key destruction
@@ -172,7 +198,6 @@ key_destruction_secure if {
 	input.key_management.destruction.secure_deletion == true
 	input.key_management.destruction.verification_required == true
 	input.key_management.destruction.documented_process == true
-	input.key_management.destruction.audit_logged == true
 }
 
 # Data encryption requirements (2022: A.8.24)
@@ -307,17 +332,27 @@ pki_implementation if {
 }
 
 # Cryptographic algorithm compliance (2022: A.8.24)
+# Post-quantum migration planning is not part of this decision: A.8.24 is about
+# rules for the effective use of cryptography, including key management, and
+# public descriptions of the control do not name post-quantum planning. It is
+# reported separately as a non-scoring advisory (quantum_resistance_planned,
+# listed in iso27001.unmapped_fact_rules).
 algorithm_compliance if {
-	# Only approved algorithms should be used
+	# The organisation's rules are the yardstick: every algorithm in use is on its approved list.
+	# (The library's weak-algorithm list is an advisory: weak_algorithms_disabled.)
+	is_array(input.cryptography.algorithms_in_use)
+	is_array(input.cryptography.approved_algorithms)
 	count(input.cryptography.algorithms_in_use) > 0
 	count(input.cryptography.approved_algorithms) > 0
-
-	# Weak algorithms should be disabled
-	weak_algorithms_disabled
-
-	# Quantum-resistant considerations
-	quantum_resistance_planned
+	count(unapproved_algorithms_in_use) == 0
 }
+
+_norm_alg(a) := lower(replace(replace(replace(sprintf("%v", [a]), "-", ""), "_", ""), " ", ""))
+
+unapproved_algorithms_in_use := [a |
+	some a in input.cryptography.algorithms_in_use
+	not _norm_alg(a) in {_norm_alg(b) | some b in input.cryptography.approved_algorithms}
+]
 
 # Weak algorithms disabled
 weak_algorithms_disabled if {
@@ -336,7 +371,7 @@ _tls_version_acceptable(v) if {
 	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
 }
 
-# Quantum resistance planning
+# Quantum resistance planning — ADVISORY, decides no control (see algorithm_compliance)
 quantum_resistance_planned if {
 	input.cryptography.quantum_resistance.assessment_completed == true
 	input.cryptography.quantum_resistance.migration_plan == true
@@ -353,11 +388,9 @@ hsm_usage if {
 	input.hsm.fips_140_2_level >= 2
 }
 
-# Overall cryptography compliance
+# Overall cryptography compliance: the A.8.24 scoring checks only (see header)
 compliant if {
 	cryptographic_controls
-	data_encryption
-	digital_signatures
 	algorithm_compliance
 }
 
@@ -383,8 +416,16 @@ compliance_details := {
 	},
 	"algorithm_compliance": {
 		"approved_only": algorithm_compliance,
-		"weak_disabled": weak_algorithms_disabled,
-		"quantum_ready": quantum_resistance_planned,
+		"unapproved_in_use": unapproved_algorithms_in_use,
+	},
+	"advisory": {
+		"scoring": false,
+		"quantum_resistance_planned": quantum_resistance_planned,
+		"key_management_mechanisms": key_management_mechanisms,
+		"data_encryption": data_encryption,
+		"digital_signatures": digital_signatures,
+		"weak_algorithms_disabled": weak_algorithms_disabled,
+		"hsm_usage": hsm_usage,
 	},
 	"hsm_usage": hsm_usage,
 	"overall_compliant": compliant,

@@ -1,8 +1,13 @@
-# SOC 2 Trust Service Criteria - Privacy (P1.0)
+# SOC 2 Trust Services Criteria - Privacy category: category-level checks (not scored by criterion)
+# Category-level checks: the section headings below are this module's own grouping, not AICPA
+# criterion ids (several headings here used ids such as P1.2, P1.3 or C1.3, which are not the
+# criteria of those numbers or do not exist). data.soc2.main reports this category as one
+# category-level verdict that is advisory only; data.soc2.main scores this category's criteria from its own checks. Several checks here hard-code parameter
+# values the criteria do not fix.
 # Data Privacy Controls and Personal Information Management
 
 # METADATA
-# title: "SOC 2 Trust Service Criteria - Privacy (P1.0)"
+# title: "SOC 2 Trust Services Criteria - Privacy category, category-level checks (not scored by criterion)"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -22,7 +27,7 @@ package soc2.privacy.data_privacy
 import rego.v1
 
 # =================================================================
-# P1.1 - Privacy - Personal Information Collection
+# Privacy - Personal Information Collection
 # =================================================================
 
 # Personal information collection is governed by policies
@@ -56,7 +61,7 @@ data_subject_rights_supported if {
 }
 
 # =================================================================
-# P1.2 - Privacy - Personal Information Use and Retention
+# Privacy - Personal Information Use and Retention
 # =================================================================
 
 # Personal information use is restricted
@@ -89,7 +94,7 @@ data_accuracy_controls if {
 }
 
 # =================================================================
-# P1.3 - Privacy - Personal Information Disclosure
+# Privacy - Personal Information Disclosure
 # =================================================================
 
 # Third-party data sharing is controlled

@@ -65,7 +65,7 @@ violation_3_8_2 contains msg if {
 	msg := "3.8.2: No maintained list of users authorized to access CUI media"
 }
 
-# 3.8.3 — Sanitize or destroy system media before disposal or reuse. (L2)
+# 3.8.3 — Sanitize or destroy system media before disposal or reuse. (L1: MP.L1-b.1.vii)
 default compliant_3_8_3 := false
 
 compliant_3_8_3 if {
@@ -242,12 +242,12 @@ all_violations_5_9 := array.concat(
 	),
 )
 
-all_violations := array.concat(all_violations_1_4, all_violations_5_9)
+base_violations := array.concat(all_violations_1_4, all_violations_5_9)
 
 practices := [
 	{"id": "3.8.1", "level": 2, "compliant": compliant_3_8_1},
 	{"id": "3.8.2", "level": 2, "compliant": compliant_3_8_2},
-	{"id": "3.8.3", "level": 2, "compliant": compliant_3_8_3},
+	{"id": "3.8.3", "level": 1, "compliant": compliant_3_8_3},
 	{"id": "3.8.4", "level": 2, "compliant": compliant_3_8_4},
 	{"id": "3.8.5", "level": 2, "compliant": compliant_3_8_5},
 	{"id": "3.8.6", "level": 2, "compliant": compliant_3_8_6},
@@ -256,11 +256,38 @@ practices := [
 	{"id": "3.8.9", "level": 2, "compliant": compliant_3_8_9},
 ]
 
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing must surface a violation, so the domain verdict can never be true
+#   while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	some p in practices
+	not p.compliant == true
+	count([v | some v in base_violations; startswith(v, sprintf("%v:", [p.id]))]) == 0
+	msg := sprintf("%v: evidence missing or requirement not met — all facts required by this practice must be present and passing", [p.id])
+}
+
+all_violations := array.concat(base_violations, sort(violation_unmet))
+
 passing_count := count([p | some p in practices; p.compliant == true])
 
 default compliant := false
 
 compliant if count(all_violations) == 0
+
+# Level 1 practices only (FAR 52.204-21(b)(1)(vii) = 3.8.3).
+default level_1_passing := false
+
+level_1_passing if {
+	level_1_practices := [p | some p in practices; p.level == 1]
+	count(level_1_practices) > 0
+	every p in level_1_practices {
+		p.compliant == true
+	}
+}
 
 compliance_report := {
 	"domain": "Media Protection",
@@ -270,4 +297,6 @@ compliance_report := {
 	"failing": 9 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
+	"level_1_passing": level_1_passing,
 }
