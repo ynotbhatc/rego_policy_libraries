@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 23
-#     cited: 22
+#     checks: 26
+#     cited: 25
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_9.configuration_management
 
 # DISA STIG for Oracle Linux 9 - Configuration Management Module

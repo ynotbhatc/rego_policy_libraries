@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 11
-#     cited: 10
+#     checks: 13
+#     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_9.file_permissions
 
 # DISA STIG for Oracle Linux 9 - File Permissions Module

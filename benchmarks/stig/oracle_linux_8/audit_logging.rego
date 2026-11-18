@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 9
-#     cited: 8
-#     density: section
-#     basis: role
+#     checks: 14
+#     cited: 13
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_8.audit_logging
 
 # DISA STIG for Oracle Linux 8 - Audit Logging Module

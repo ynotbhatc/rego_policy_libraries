@@ -66,39 +66,6 @@
     ],
     "controls": [
      {
-      "id": "stig_oracle_linux_9-OL09-00-001055",
-      "title": "OL 9 must be configured to use the shadow file to store only encrypted representations of passwords.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-001055"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-001055"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-001055_stmt",
-        "name": "statement",
-        "prose": "OL 9 must be configured to use the shadow file to store only encrypted representations of passwords."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-003020",
       "title": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur.",
       "props": [
@@ -132,39 +99,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-001130",
-      "title": "OL 9 must not have accounts configured with blank or null passwords.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-001130"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-001130"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-001130_stmt",
-        "name": "statement",
-        "prose": "OL 9 must not have accounts configured with blank or null passwords."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-001105",
       "title": "OL 9 passwords must be created with a minimum of 15 characters.",
       "props": [
@@ -193,39 +127,6 @@
         "id": "stig_oracle_linux_9-OL09-00-001105_stmt",
         "name": "statement",
         "prose": "OL 9 passwords must be created with a minimum of 15 characters."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-001005",
-      "title": "OL 9 must enforce password complexity by requiring that at least one uppercase character be used.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-001005"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-001005"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-001005_stmt",
-        "name": "statement",
-        "prose": "OL 9 must enforce password complexity by requiring that at least one uppercase character be used."
        }
       ],
       "class": "security"
@@ -330,16 +231,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-001085",
-      "title": "OL 9 passwords for new users or password changes must have a 24-hour minimum password lifetime restriction in /etc/login.defs.",
+      "id": "stig_oracle_linux_9-OL09-00-001095",
+      "title": "OL 9 user account passwords for new users or password changes must have a 180-day maximum password lifetime restriction in /etc/login.defs.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-001085"
+        "value": "OL09-00-001095"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-001085"
+        "value": "OL09-00-001095"
        },
        {
         "name": "rego-package",
@@ -355,24 +256,24 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-001085_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-001095_stmt",
         "name": "statement",
-        "prose": "OL 9 passwords for new users or password changes must have a 24-hour minimum password lifetime restriction in /etc/login.defs."
+        "prose": "OL 9 user account passwords for new users or password changes must have a 180-day maximum password lifetime restriction in /etc/login.defs."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-002416",
+      "id": "stig_oracle_linux_9-OL09-00-003065",
       "title": "OL 9 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-002416"
+        "value": "OL09-00-003065"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-002416"
+        "value": "OL09-00-003065"
        },
        {
         "name": "rego-package",
@@ -388,7 +289,7 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-002416_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-003065_stmt",
         "name": "statement",
         "prose": "OL 9 must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity."
        }
@@ -457,6 +358,204 @@
         "id": "stig_oracle_linux_9-OL09-00-003006_stmt",
         "name": "statement",
         "prose": "OL 9 groups must have unique Group ID (GID)."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001055",
+      "title": "OL 9 must be configured to use the shadow file to store only encrypted representations of passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001055"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001055"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001055_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured to use the shadow file to store only encrypted representations of passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001005",
+      "title": "OL 9 must enforce password complexity by requiring that at least one uppercase character be used.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001005"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001005"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001005_stmt",
+        "name": "statement",
+        "prose": "OL 9 must enforce password complexity by requiring that at least one uppercase character be used."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001085",
+      "title": "OL 9 passwords for new users or password changes must have a 24-hour minimum password lifetime restriction in /etc/login.defs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001085"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001085"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001085_stmt",
+        "name": "statement",
+        "prose": "OL 9 passwords for new users or password changes must have a 24-hour minimum password lifetime restriction in /etc/login.defs."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001130",
+      "title": "OL 9 must not have accounts configured with blank or null passwords.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001130_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not have accounts configured with blank or null passwords."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002416",
+      "title": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002416"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002416"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002416_stmt",
+        "name": "statement",
+        "prose": "OL 9 must automatically lock an account when three unsuccessful logon attempts occur during a 15-minute time period."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000925",
+      "title": "OL 9 must enable certificate-based smart card authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000925"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000925"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#28f97172-70d9-5468-b2c3-9f2d4cdee0b4",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000925_stmt",
+        "name": "statement",
+        "prose": "OL 9 must enable certificate-based smart card authentication."
        }
       ],
       "class": "security"
@@ -618,6 +717,39 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_9-OL09-00-000870",
+      "title": "OL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000870"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000870"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000870_stmt",
+        "name": "statement",
+        "prose": "OL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-OL09-00-000715",
       "title": "OL 9 must audit uses of the execve system call.",
       "props": [
@@ -646,39 +778,6 @@
         "id": "stig_oracle_linux_9-OL09-00-000715_stmt",
         "name": "statement",
         "prose": "OL 9 must audit uses of the execve system call."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-000645",
-      "title": "OL 9 must audit all uses of the chown, fchown, fchownat, and lchown system calls.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000645"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000645"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000645_stmt",
-        "name": "statement",
-        "prose": "OL 9 must audit all uses of the chown, fchown, fchownat, and lchown system calls."
        }
       ],
       "class": "security"
@@ -717,6 +816,105 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_9-OL09-00-000635",
+      "title": "OL 9 must audit all uses of the truncate, ftruncate, creat, open, openat, and open_by_handle_at system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000635"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000635"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000635_stmt",
+        "name": "statement",
+        "prose": "OL 9 must audit all uses of the truncate, ftruncate, creat, open, openat, and open_by_handle_at system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000690",
+      "title": "OL 9 must audit all uses of the init_module and finit_module system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000690"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000690"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000690_stmt",
+        "name": "statement",
+        "prose": "OL 9 must audit all uses of the init_module and finit_module system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000645",
+      "title": "OL 9 must audit all uses of the chown, fchown, fchownat, and lchown system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000645"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000645"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000645_stmt",
+        "name": "statement",
+        "prose": "OL 9 must audit all uses of the chown, fchown, fchownat, and lchown system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-OL09-00-000545",
       "title": "OL 9 must audit all uses of the setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr, and lremovexattr system calls.",
       "props": [
@@ -745,39 +943,6 @@
         "id": "stig_oracle_linux_9-OL09-00-000545_stmt",
         "name": "statement",
         "prose": "OL 9 must audit all uses of the setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr, and lremovexattr system calls."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-000500",
-      "title": "OL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000500"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000500"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#90b9c898-0048-529d-a138-d63c60896a49",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000500_stmt",
-        "name": "statement",
-        "prose": "OL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers."
        }
       ],
       "class": "security"
@@ -849,16 +1014,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000690",
-      "title": "OL 9 must audit all uses of the init_module and finit_module system calls.",
+      "id": "stig_oracle_linux_9-OL09-00-000500",
+      "title": "OL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000690"
+        "value": "OL09-00-000500"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000690"
+        "value": "OL09-00-000500"
        },
        {
         "name": "rego-package",
@@ -874,9 +1039,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000690_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000500_stmt",
         "name": "statement",
-        "prose": "OL 9 must audit all uses of the init_module and finit_module system calls."
+        "prose": "OL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers."
        }
       ],
       "class": "security"
@@ -972,39 +1137,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000070",
-      "title": "OL 9 must enable FIPS mode.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000070"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000070"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000070_stmt",
-        "name": "statement",
-        "prose": "OL 9 must enable FIPS mode."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-000060",
       "title": "OL 9 must use a Linux Security Module configured to enforce limits on system services.",
       "props": [
@@ -1038,16 +1170,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-002107",
-      "title": "OL 9 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot.",
+      "id": "stig_oracle_linux_9-OL09-00-000241",
+      "title": "OL 9 must implement a FIPS 140-3 compliant systemwide cryptographic policy.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-002107"
+        "value": "OL09-00-000241"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-002107"
+        "value": "OL09-00-000241"
        },
        {
         "name": "rego-package",
@@ -1063,24 +1195,24 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-002107_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000241_stmt",
         "name": "statement",
-        "prose": "OL 9 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot."
+        "prose": "OL 9 must implement a FIPS 140-3 compliant systemwide cryptographic policy."
        }
       ],
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000065",
-      "title": "OL 9 must enable the SELinux targeted policy.",
+      "id": "stig_oracle_linux_9-OL09-00-000070",
+      "title": "OL 9 must enable FIPS mode.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000065"
+        "value": "OL09-00-000070"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000065"
+        "value": "OL09-00-000070"
        },
        {
         "name": "rego-package",
@@ -1096,42 +1228,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000065_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000070_stmt",
         "name": "statement",
-        "prose": "OL 9 must enable the SELinux targeted policy."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-001115",
-      "title": "OL 9 must require authentication upon booting into single-user and maintenance modes.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-001115"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-001115"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-001115_stmt",
-        "name": "statement",
-        "prose": "OL 9 must require authentication upon booting into single-user and maintenance modes."
+        "prose": "OL 9 must enable FIPS mode."
        }
       ],
       "class": "security"
@@ -1170,204 +1269,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000256",
-      "title": "OL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a SSH logon.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000256"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000256"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000256_stmt",
-        "name": "statement",
-        "prose": "OL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a SSH logon."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002423",
-      "title": "OL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002423"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002423"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002423_stmt",
-        "name": "statement",
-        "prose": "OL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002406",
-      "title": "OL 9 must restrict access to the kernel message buffer.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002406"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002406"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002406_stmt",
-        "name": "statement",
-        "prose": "OL 9 must restrict access to the kernel message buffer."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002410",
-      "title": "OL 9 must restrict usage of ptrace to descendant processes.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002410"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002410"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002410_stmt",
-        "name": "statement",
-        "prose": "OL 9 must restrict usage of ptrace to descendant processes."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002428",
-      "title": "OL 9 must prevent the loading of a new kernel for later execution.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002428"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002428"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002428_stmt",
-        "name": "statement",
-        "prose": "OL 9 must prevent the loading of a new kernel for later execution."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002430",
-      "title": "OL 9 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002430"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002430"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002430_stmt",
-        "name": "statement",
-        "prose": "OL 9 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-000047",
       "title": "OL 9 must be configured to disable USB mass storage.",
       "props": [
@@ -1396,39 +1297,6 @@
         "id": "stig_oracle_linux_9-OL09-00-000047_stmt",
         "name": "statement",
         "prose": "OL 9 must be configured to disable USB mass storage."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-000042",
-      "title": "OL 9 must be configured to disable the FireWire kernel module.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000042"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000042"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000042_stmt",
-        "name": "statement",
-        "prose": "OL 9 must be configured to disable the FireWire kernel module."
        }
       ],
       "class": "security"
@@ -1467,16 +1335,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000302",
-      "title": "OL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
+      "id": "stig_oracle_linux_9-OL09-00-002407",
+      "title": "OL 9 must prevent kernel profiling by nonprivileged users.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000302"
+        "value": "OL09-00-002407"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000302"
+        "value": "OL09-00-002407"
        },
        {
         "name": "rego-package",
@@ -1492,42 +1360,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000302_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-002407_stmt",
         "name": "statement",
-        "prose": "OL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-000004",
-      "title": "OL 9 must use a separate file system for /tmp.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000004"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000004"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000004_stmt",
-        "name": "statement",
-        "prose": "OL 9 must use a separate file system for /tmp."
+        "prose": "OL 9 must prevent kernel profiling by nonprivileged users."
        }
       ],
       "class": "security"
@@ -1627,6 +1462,435 @@
         "id": "stig_oracle_linux_9-OL09-00-002072_stmt",
         "name": "statement",
         "prose": "OL 9 must prevent code from being executed on file systems that contain user home directories."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000065",
+      "title": "OL 9 must enable the SELinux targeted policy.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000065"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000065"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000065_stmt",
+        "name": "statement",
+        "prose": "OL 9 must enable the SELinux targeted policy."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002423",
+      "title": "OL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002423"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002423"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002423_stmt",
+        "name": "statement",
+        "prose": "OL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002406",
+      "title": "OL 9 must restrict access to the kernel message buffer.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002406"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002406"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002406_stmt",
+        "name": "statement",
+        "prose": "OL 9 must restrict access to the kernel message buffer."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000004",
+      "title": "OL 9 must use a separate file system for /tmp.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000004"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000004"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000004_stmt",
+        "name": "statement",
+        "prose": "OL 9 must use a separate file system for /tmp."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002107",
+      "title": "OL 9 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002107"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002107"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002107_stmt",
+        "name": "statement",
+        "prose": "OL 9 must disable the ability of a user to accidentally press Ctrl-Alt-Del and cause a system to shut down or reboot."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002409",
+      "title": "OL 9 must disable access to network bpf system call from nonprivileged processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002409"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002409"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002409_stmt",
+        "name": "statement",
+        "prose": "OL 9 must disable access to network bpf system call from nonprivileged processes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002430",
+      "title": "OL 9 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002430_stmt",
+        "name": "statement",
+        "prose": "OL 9 must enable hardening for the Berkeley Packet Filter (BPF) just-in-time compiler."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-001115",
+      "title": "OL 9 must require authentication upon booting into single-user and maintenance modes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-001115"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-001115"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-001115_stmt",
+        "name": "statement",
+        "prose": "OL 9 must require authentication upon booting into single-user and maintenance modes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000256",
+      "title": "OL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a SSH logon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000256"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000256"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000256_stmt",
+        "name": "statement",
+        "prose": "OL 9 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a SSH logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000042",
+      "title": "OL 9 must be configured to disable the FireWire kernel module.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000042"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000042"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000042_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured to disable the FireWire kernel module."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000300",
+      "title": "OL 9 must have the Advanced Intrusion Detection Environment (AIDE) package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000300"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000300"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000300_stmt",
+        "name": "statement",
+        "prose": "OL 9 must have the Advanced Intrusion Detection Environment (AIDE) package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002410",
+      "title": "OL 9 must restrict usage of ptrace to descendant processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002410"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002410"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002410_stmt",
+        "name": "statement",
+        "prose": "OL 9 must restrict usage of ptrace to descendant processes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000002",
+      "title": "OL 9 must use a separate file system for the system audit data path.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000002"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000002"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#43f6109e-a163-58fe-bcbd-03d722a5abe8",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000002_stmt",
+        "name": "statement",
+        "prose": "OL 9 must use a separate file system for the system audit data path."
        }
       ],
       "class": "security"
@@ -1755,171 +2019,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-002511",
-      "title": "OL 9 local files and directories must have a valid group owner.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002511"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002511"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002511_stmt",
-        "name": "statement",
-        "prose": "OL 9 local files and directories must have a valid group owner."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002548",
-      "title": "OL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002548"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002548"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002548_stmt",
-        "name": "statement",
-        "prose": "OL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002552",
-      "title": "OL 9 /etc/shadow file must be owned by root.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002552"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002552"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002552_stmt",
-        "name": "statement",
-        "prose": "OL 9 /etc/shadow file must be owned by root."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002536",
-      "title": "OL 9 /etc/group file must have mode 0644 or less permissive to prevent unauthorized access.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002536"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002536"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002536_stmt",
-        "name": "statement",
-        "prose": "OL 9 /etc/group file must have mode 0644 or less permissive to prevent unauthorized access."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002540",
-      "title": "OL 9 /etc/gshadow file must be owned by root.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002540"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002540"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.file_permissions"
-       }
-      ],
-      "links": [
-       {
-        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002540_stmt",
-        "name": "statement",
-        "prose": "OL 9 /etc/gshadow file must be owned by root."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-002525",
       "title": "OL 9 library files must have mode 0755 or less permissive.",
       "props": [
@@ -2019,6 +2118,171 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_9-OL09-00-002511",
+      "title": "OL 9 local files and directories must have a valid group owner.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002511"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002511"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002511_stmt",
+        "name": "statement",
+        "prose": "OL 9 local files and directories must have a valid group owner."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002548",
+      "title": "OL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002548"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002548"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002548_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002555",
+      "title": "OL 9 /etc/shadow file must have mode 0000 to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002555"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002555"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002555_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/shadow file must have mode 0000 to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002536",
+      "title": "OL 9 /etc/group file must have mode 0644 or less permissive to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002536"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002536"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002536_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/group file must have mode 0644 or less permissive to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002542",
+      "title": "OL 9 /etc/gshadow file must have mode 0000 or less permissive to prevent unauthorized access.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002542"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002542"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002542_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/gshadow file must have mode 0000 or less permissive to prevent unauthorized access."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-OL09-00-002515",
       "title": "OL 9 local interactive user home directories must have mode 0750 or less permissive.",
       "props": [
@@ -2047,6 +2311,72 @@
         "id": "stig_oracle_linux_9-OL09-00-002515_stmt",
         "name": "statement",
         "prose": "OL 9 local interactive user home directories must have mode 0750 or less permissive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002540",
+      "title": "OL 9 /etc/gshadow file must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002540"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002540"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002540_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/gshadow file must be owned by root."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002552",
+      "title": "OL 9 /etc/shadow file must be owned by root.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002552"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002552"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.file_permissions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4bbe239c-dba9-54b6-8856-82d55b77e71a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002552_stmt",
+        "name": "statement",
+        "prose": "OL 9 /etc/shadow file must be owned by root."
        }
       ],
       "class": "security"
@@ -2109,105 +2439,6 @@
     ],
     "controls": [
      {
-      "id": "stig_oracle_linux_9-OL09-00-000220",
-      "title": "OL 9 must have the firewalld package installed.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000220"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000220"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000220_stmt",
-        "name": "statement",
-        "prose": "OL 9 must have the firewalld package installed."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006028",
-      "title": "OL 9 must not enable IPv4 packet forwarding unless the system is a router.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006028"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006028"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006028_stmt",
-        "name": "statement",
-        "prose": "OL 9 must not enable IPv4 packet forwarding unless the system is a router."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006020",
-      "title": "OL 9 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006020"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006020"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006020_stmt",
-        "name": "statement",
-        "prose": "OL 9 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-006032",
       "title": "OL 9 must not send Internet Control Message Protocol (ICMP) redirects.",
       "props": [
@@ -2241,16 +2472,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-006042",
-      "title": "OL 9 must not forward IPv6 source-routed packets.",
+      "id": "stig_oracle_linux_9-OL09-00-000221",
+      "title": "OL 9 must be configured so that the firewalld service is active.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-006042"
+        "value": "OL09-00-000221"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-006042"
+        "value": "OL09-00-000221"
        },
        {
         "name": "rego-package",
@@ -2266,174 +2497,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-006042_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000221_stmt",
         "name": "statement",
-        "prose": "OL 9 must not forward IPv6 source-routed packets."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006031",
-      "title": "OL 9 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006031"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006031"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006031_stmt",
-        "name": "statement",
-        "prose": "OL 9 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006050",
-      "title": "OL 9 must be configured to use TCP syncookies.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006050"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006050"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006050_stmt",
-        "name": "statement",
-        "prose": "OL 9 must be configured to use TCP syncookies."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006024",
-      "title": "OL 9 must use reverse path filtering on all IPv4 interfaces.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006024"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006024"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006024_stmt",
-        "name": "statement",
-        "prose": "OL 9 must use reverse path filtering on all IPv4 interfaces."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006041",
-      "title": "OL 9 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006041"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006041"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006041_stmt",
-        "name": "statement",
-        "prose": "OL 9 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-006001",
-      "title": "OL 9 wireless network adapters must be disabled.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-006001"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-006001"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-006001_stmt",
-        "name": "statement",
-        "prose": "OL 9 wireless network adapters must be disabled."
+        "prose": "OL 9 must be configured so that the firewalld service is active."
        }
       ],
       "class": "security"
@@ -2505,6 +2571,336 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_9-OL09-00-006028",
+      "title": "OL 9 must not enable IPv4 packet forwarding unless the system is a router.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006028"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006028"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006028_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not enable IPv4 packet forwarding unless the system is a router."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006050",
+      "title": "OL 9 must be configured to use TCP syncookies.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006050_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured to use TCP syncookies."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006020",
+      "title": "OL 9 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006020_stmt",
+        "name": "statement",
+        "prose": "OL 9 must ignore Internet Protocol version 4 (IPv4) Internet Control Message Protocol (ICMP) redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006021",
+      "title": "OL 9 must not forward Internet Protocol version 4 (IPv4) source-routed packets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006021"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006021"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006021_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not forward Internet Protocol version 4 (IPv4) source-routed packets."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006031",
+      "title": "OL 9 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006031"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006031"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006031_stmt",
+        "name": "statement",
+        "prose": "OL 9 must limit the number of bogus Internet Control Message Protocol (ICMP) response errors logs."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006001",
+      "title": "OL 9 wireless network adapters must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006001"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006001"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006001_stmt",
+        "name": "statement",
+        "prose": "OL 9 wireless network adapters must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006024",
+      "title": "OL 9 must use reverse path filtering on all IPv4 interfaces.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006024"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006024"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006024_stmt",
+        "name": "statement",
+        "prose": "OL 9 must use reverse path filtering on all IPv4 interfaces."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000220",
+      "title": "OL 9 must have the firewalld package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000220"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000220"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000220_stmt",
+        "name": "statement",
+        "prose": "OL 9 must have the firewalld package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006041",
+      "title": "OL 9 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006041"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006041"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006041_stmt",
+        "name": "statement",
+        "prose": "OL 9 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-006042",
+      "title": "OL 9 must not forward IPv6 source-routed packets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-006042"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-006042"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3269cace-8034-5a33-8bf4-8e338aadc845",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-006042_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not forward IPv6 source-routed packets."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-stig.oracle_linux_9.network-1",
       "title": "Implemented by a Rego rule in benchmarks/stig/oracle_linux_9/network.rego (package stig.oracle_linux_9.network); see the rule body.",
       "props": [
@@ -2562,16 +2958,16 @@
     ],
     "controls": [
      {
-      "id": "stig_oracle_linux_9-OL09-00-000241",
-      "title": "OL 9 must implement a FIPS 140-3 compliant systemwide cryptographic policy.",
+      "id": "stig_oracle_linux_9-OL09-00-002424",
+      "title": "OL9 must implement DoW-approved encryption in the OpenSSL package.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000241"
+        "value": "OL09-00-002424"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000241"
+        "value": "OL09-00-002424"
        },
        {
         "name": "rego-package",
@@ -2587,9 +2983,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000241_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-002424_stmt",
         "name": "statement",
-        "prose": "OL 9 must implement a FIPS 140-3 compliant systemwide cryptographic policy."
+        "prose": "OL9 must implement DoW-approved encryption in the OpenSSL package."
        }
       ],
       "class": "security"
@@ -2661,16 +3057,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000925",
-      "title": "OL 9 must enable certificate-based smart card authentication.",
+      "id": "stig_oracle_linux_9-OL09-00-000900",
+      "title": "OL 9, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000925"
+        "value": "OL09-00-000900"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000925"
+        "value": "OL09-00-000900"
        },
        {
         "name": "rego-package",
@@ -2686,9 +3082,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000925_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000900_stmt",
         "name": "statement",
-        "prose": "OL 9 must enable certificate-based smart card authentication."
+        "prose": "OL 9, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor."
        }
       ],
       "class": "security"
@@ -2722,6 +3118,39 @@
         "id": "stig_oracle_linux_9-OL09-00-000910_stmt",
         "name": "statement",
         "prose": "OL 9 must map the authenticated identity to the user or group account for PKI-based authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002160",
+      "title": "OL 9 must be able to directly initiate a session lock for all connection types using smart card when the smart card is removed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002160"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002160"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad3d321b-6d1b-537d-90c8-77bf0ffaeaa1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002160_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be able to directly initiate a session lock for all connection types using smart card when the smart card is removed."
        }
       ],
       "class": "security"
@@ -2784,6 +3213,39 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_9-OL09-00-000130",
+      "title": "OL 9 must not have a File Transfer Protocol (FTP) server package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000130"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000130"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f5fbc5-2627-52bf-a5ed-44e996a69b1e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000130_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not have a File Transfer Protocol (FTP) server package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-OL09-00-000135",
       "title": "OL 9 must not have a Trivial File Transfer Protocol (TFTP) server package installed.",
       "props": [
@@ -2817,16 +3279,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000130",
-      "title": "OL 9 must not have a File Transfer Protocol (FTP) server package installed.",
+      "id": "stig_oracle_linux_9-OL09-00-002000",
+      "title": "The OL 9 file system automounter must be disabled.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000130"
+        "value": "OL09-00-002000"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000130"
+        "value": "OL09-00-002000"
        },
        {
         "name": "rego-package",
@@ -2842,9 +3304,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000130_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-002000_stmt",
         "name": "statement",
-        "prose": "OL 9 must not have a File Transfer Protocol (FTP) server package installed."
+        "prose": "The OL 9 file system automounter must be disabled."
        }
       ],
       "class": "security"
@@ -2883,39 +3345,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000125",
-      "title": "OL 9 must not have the tuned package installed.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000125"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000125"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#e9f5fbc5-2627-52bf-a5ed-44e996a69b1e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000125_stmt",
-        "name": "statement",
-        "prose": "OL 9 must not have the tuned package installed."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_9-OL09-00-000100",
       "title": "OL 9 must not have the nfs-utils package installed.",
       "props": [
@@ -2944,6 +3373,72 @@
         "id": "stig_oracle_linux_9-OL09-00-000100_stmt",
         "name": "statement",
         "prose": "OL 9 must not have the nfs-utils package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002426",
+      "title": "OL 9 Trivial File Transfer Protocol (TFTP) daemon must be configured to operate in secure mode if the TFTP server is required.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002426"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002426"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f5fbc5-2627-52bf-a5ed-44e996a69b1e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002426_stmt",
+        "name": "statement",
+        "prose": "OL 9 Trivial File Transfer Protocol (TFTP) daemon must be configured to operate in secure mode if the TFTP server is required."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000125",
+      "title": "OL 9 must not have the tuned package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000125"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000125"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e9f5fbc5-2627-52bf-a5ed-44e996a69b1e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000125_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not have the tuned package installed."
        }
       ],
       "class": "security"
@@ -3006,6 +3501,72 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_9-OL09-00-000496",
+      "title": "OL 9 must check the GPG signature of locally installed software packages before installation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000496"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000496"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1858934c-db92-58b8-ba81-47427d4bc58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000496_stmt",
+        "name": "statement",
+        "prose": "OL 9 must check the GPG signature of locally installed software packages before installation."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000497",
+      "title": "OL 9 must check the GPG signature of software packages originating from external software repositories before installation.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000497"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000497"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1858934c-db92-58b8-ba81-47427d4bc58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000497_stmt",
+        "name": "statement",
+        "prose": "OL 9 must check the GPG signature of software packages originating from external software repositories before installation."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_9-OL09-00-000498",
       "title": "OL 9 must have GPG signature verification enabled for all software repositories.",
       "props": [
@@ -3039,16 +3600,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-002407",
-      "title": "OL 9 must prevent kernel profiling by nonprivileged users.",
+      "id": "stig_oracle_linux_9-OL09-00-002428",
+      "title": "OL 9 must prevent the loading of a new kernel for later execution.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-002407"
+        "value": "OL09-00-002428"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-002407"
+        "value": "OL09-00-002428"
        },
        {
         "name": "rego-package",
@@ -3064,9 +3625,75 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-002407_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-002428_stmt",
         "name": "statement",
-        "prose": "OL 9 must prevent kernel profiling by nonprivileged users."
+        "prose": "OL 9 must prevent the loading of a new kernel for later execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000351",
+      "title": "OL 9 must be configured so that the rsyslog service is active.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000351"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000351"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1858934c-db92-58b8-ba81-47427d4bc58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000351_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured so that the rsyslog service is active."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000302",
+      "title": "OL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000302"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000302"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1858934c-db92-58b8-ba81-47427d4bc58d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000302_stmt",
+        "name": "statement",
+        "prose": "OL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories."
        }
       ],
       "class": "security"
@@ -3105,16 +3732,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_9-OL09-00-000351",
-      "title": "OL 9 must be configured so that the rsyslog service is active.",
+      "id": "stig_oracle_linux_9-OL09-00-000499",
+      "title": "OL 9 must ensure cryptographic verification of vendor software packages.",
       "props": [
        {
         "name": "label",
-        "value": "OL09-00-000351"
+        "value": "OL09-00-000499"
        },
        {
         "name": "alt-identifier",
-        "value": "OL09-00-000351"
+        "value": "OL09-00-000499"
        },
        {
         "name": "rego-package",
@@ -3130,9 +3757,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_9-OL09-00-000351_stmt",
+        "id": "stig_oracle_linux_9-OL09-00-000499_stmt",
         "name": "statement",
-        "prose": "OL 9 must be configured so that the rsyslog service is active."
+        "prose": "OL 9 must ensure cryptographic verification of vendor software packages."
        }
       ],
       "class": "security"
@@ -3194,6 +3821,39 @@
      }
     ],
     "controls": [
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000254",
+      "title": "OL 9 SSH server must be configured to use only ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000254"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000254"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000254_stmt",
+        "name": "statement",
+        "prose": "OL 9 SSH server must be configured to use only ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
+       }
+      ],
+      "class": "security"
+     },
      {
       "id": "stig_oracle_linux_9-OL09-00-000255",
       "title": "OL 9 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections",
@@ -3289,171 +3949,6 @@
         "id": "stig_oracle_linux_9-OL09-00-002344_stmt",
         "name": "statement",
         "prose": "OL 9 must enable the Pluggable Authentication Module (PAM) interface for SSHD."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002345",
-      "title": "OL 9 must not permit direct logons to the root account using remote access via SSH.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002345"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002345"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002345_stmt",
-        "name": "statement",
-        "prose": "OL 9 must not permit direct logons to the root account using remote access via SSH."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-000251",
-      "title": "OL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-000251"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-000251"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-000251_stmt",
-        "name": "statement",
-        "prose": "OL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002357",
-      "title": "OL 9 must not allow a noncertificate trusted host SSH logon to the system.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002357"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002357"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002357_stmt",
-        "name": "statement",
-        "prose": "OL 9 must not allow a noncertificate trusted host SSH logon to the system."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002347",
-      "title": "OL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002347"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002347"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002347_stmt",
-        "name": "statement",
-        "prose": "OL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_9-OL09-00-002346",
-      "title": "OL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL09-00-002346"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL09-00-002346"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_9-OL09-00-002346_stmt",
-        "name": "statement",
-        "prose": "OL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
        }
       ],
       "class": "security"
@@ -3586,6 +4081,204 @@
         "id": "stig_oracle_linux_9-OL09-00-002352_stmt",
         "name": "statement",
         "prose": "OL 9 SSH daemon must display the date and time of the last successful account logon upon an SSH logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002350",
+      "title": "OL 9 SSH daemon must disable remote X connections for interactive users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002350_stmt",
+        "name": "statement",
+        "prose": "OL 9 SSH daemon must disable remote X connections for interactive users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002357",
+      "title": "OL 9 must not allow a noncertificate trusted host SSH logon to the system.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002357"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002357"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002357_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not allow a noncertificate trusted host SSH logon to the system."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002346",
+      "title": "OL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002346"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002346"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002346_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002347",
+      "title": "OL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002347"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002347"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002347_stmt",
+        "name": "statement",
+        "prose": "OL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-002345",
+      "title": "OL 9 must not permit direct logons to the root account using remote access via SSH.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-002345"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-002345"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-002345_stmt",
+        "name": "statement",
+        "prose": "OL 9 must not permit direct logons to the root account using remote access via SSH."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_9-OL09-00-000251",
+      "title": "OL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL09-00-000251"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL09-00-000251"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#337d00f6-dbc3-5cac-b21a-92ca80299e61",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_9-OL09-00-000251_stmt",
+        "name": "statement",
+        "prose": "OL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission."
        }
       ],
       "class": "security"

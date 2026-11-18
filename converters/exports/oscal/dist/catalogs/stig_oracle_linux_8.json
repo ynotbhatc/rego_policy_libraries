@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "stig_oracle_linux_8-OL08-00-020330",
-      "title": "OL 8 must not allow accounts configured with blank or null passwords.",
+      "id": "stig_oracle_linux_8-OL08-00-010121",
+      "title": "The OL 8 operating system must not have accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-020330"
+        "value": "OL08-00-010121"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-020330"
+        "value": "OL08-00-010121"
        },
        {
         "name": "rego-package",
@@ -91,9 +91,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-020330_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-010121_stmt",
         "name": "statement",
-        "prose": "OL 8 must not allow accounts configured with blank or null passwords."
+        "prose": "The OL 8 operating system must not have accounts configured with blank or null passwords."
        }
       ],
       "class": "security"
@@ -132,72 +132,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-020011",
-      "title": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-020011"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-020011"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8031dac3-5e48-5097-9905-58b3d276c70e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-020011_stmt",
-        "name": "statement",
-        "prose": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-020230",
-      "title": "OL 8 passwords must have a minimum of 15 characters.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-020230"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-020230"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.account_auth"
-       }
-      ],
-      "links": [
-       {
-        "href": "#8031dac3-5e48-5097-9905-58b3d276c70e",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-020230_stmt",
-        "name": "statement",
-        "prose": "OL 8 passwords must have a minimum of 15 characters."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_8-OL08-00-020190",
       "title": "OL 8 passwords for new users or password changes must have a 24 hours/one day minimum password lifetime restriction in \"/etc/login.defs\".",
       "props": [
@@ -226,6 +160,105 @@
         "id": "stig_oracle_linux_8-OL08-00-020190_stmt",
         "name": "statement",
         "prose": "OL 8 passwords for new users or password changes must have a 24 hours/one day minimum password lifetime restriction in \"/etc/login.defs\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-020200",
+      "title": "OL 8 user account passwords must have a 180-day maximum password lifetime restriction.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-020200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-020200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8031dac3-5e48-5097-9905-58b3d276c70e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-020200_stmt",
+        "name": "statement",
+        "prose": "OL 8 user account passwords must have a 180-day maximum password lifetime restriction."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-020240",
+      "title": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-020240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-020240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8031dac3-5e48-5097-9905-58b3d276c70e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-020240_stmt",
+        "name": "statement",
+        "prose": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-020011",
+      "title": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-020011"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-020011"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.account_auth"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8031dac3-5e48-5097-9905-58b3d276c70e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-020011_stmt",
+        "name": "statement",
+        "prose": "OL 8 systems, versions 8.2 and above, must automatically lock an account when three unsuccessful logon attempts occur."
        }
       ],
       "class": "security"
@@ -264,16 +297,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-020240",
-      "title": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users.",
+      "id": "stig_oracle_linux_8-OL08-00-020230",
+      "title": "OL 8 passwords must have a minimum of 15 characters.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-020240"
+        "value": "OL08-00-020230"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-020240"
+        "value": "OL08-00-020230"
        },
        {
         "name": "rego-package",
@@ -289,9 +322,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-020240_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-020230_stmt",
         "name": "statement",
-        "prose": "OL 8 duplicate User IDs (UIDs) must not exist for interactive users."
+        "prose": "OL 8 passwords must have a minimum of 15 characters."
        }
       ],
       "class": "security"
@@ -486,6 +519,72 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-030181",
+      "title": "OL 8 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030181"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030181"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eed0529-282e-598f-9772-3875468ea18e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030181_stmt",
+        "name": "statement",
+        "prose": "OL 8 audit records must contain information to establish what type of events occurred, the source of events, where events occurred, and the outcome of events."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-030731",
+      "title": "OL 8 must notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030731"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030731"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eed0529-282e-598f-9772-3875468ea18e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030731_stmt",
+        "name": "statement",
+        "prose": "OL 8 must notify the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume 75 percent utilization."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-030060",
       "title": "The OL 8 audit system must take appropriate action when the audit storage volume is full.",
       "props": [
@@ -514,6 +613,39 @@
         "id": "stig_oracle_linux_8-OL08-00-030060_stmt",
         "name": "statement",
         "prose": "The OL 8 audit system must take appropriate action when the audit storage volume is full."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-030000",
+      "title": "The OL 8 audit system must be configured to audit the execution of privileged functions and prevent all software from executing at higher privilege levels than users executing the software.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eed0529-282e-598f-9772-3875468ea18e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030000_stmt",
+        "name": "statement",
+        "prose": "The OL 8 audit system must be configured to audit the execution of privileged functions and prevent all software from executing at higher privilege levels than users executing the software."
        }
       ],
       "class": "security"
@@ -618,6 +750,72 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_8-OL08-00-030420",
+      "title": "OL 8 must generate audit records for any use of the \"truncate\", \"ftruncate\", \"creat\", \"open\", \"openat\", and \"open_by_handle_at\" system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030420"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030420"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eed0529-282e-598f-9772-3875468ea18e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030420_stmt",
+        "name": "statement",
+        "prose": "OL 8 must generate audit records for any use of the \"truncate\", \"ftruncate\", \"creat\", \"open\", \"openat\", and \"open_by_handle_at\" system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-030360",
+      "title": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5eed0529-282e-598f-9772-3875468ea18e",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030360_stmt",
+        "name": "statement",
+        "prose": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-030171",
       "title": "OL 8 must generate audit records for all account creations, modifications, disabling, and termination events that affect \"/etc/sudoers\".",
       "props": [
@@ -717,16 +915,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-030360",
-      "title": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls.",
+      "id": "stig_oracle_linux_8-OL08-00-030040",
+      "title": "The OL 8 System must take appropriate action when an audit processing failure occurs.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-030360"
+        "value": "OL08-00-030040"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-030360"
+        "value": "OL08-00-030040"
        },
        {
         "name": "rego-package",
@@ -742,9 +940,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-030360_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-030040_stmt",
         "name": "statement",
-        "prose": "OL 8 must generate audit records for any use of the \"init_module\" and \"finit_module\" system calls."
+        "prose": "The OL 8 System must take appropriate action when an audit processing failure occurs."
        }
       ],
       "class": "security"
@@ -840,6 +1038,138 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_8-OL08-00-010150",
+      "title": "OL 8 operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010150"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010150"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010150_stmt",
+        "name": "statement",
+        "prose": "OL 8 operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010020",
+      "title": "OL 8 must implement NIST FIPS-validated cryptography for the following: To provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in acc",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010020"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010020"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010020_stmt",
+        "name": "statement",
+        "prose": "OL 8 must implement NIST FIPS-validated cryptography for the following: To provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010182",
+      "title": "OL 8 must implement NIST FIPS-validated cryptography for the following: To provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in acc",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010182"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010182"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010182_stmt",
+        "name": "statement",
+        "prose": "OL 8 must implement NIST FIPS-validated cryptography for the following: To provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010140",
+      "title": "OL 8 operating systems booted with United Extensible Firmware Interface (UEFI) must require authentication upon booting into single-user mode and maintenance.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010140"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010140"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010140_stmt",
+        "name": "statement",
+        "prose": "OL 8 operating systems booted with United Extensible Firmware Interface (UEFI) must require authentication upon booting into single-user mode and maintenance."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-040171",
       "title": "The x86 Ctrl-Alt-Delete key sequence in OL 8 must be disabled if a graphical user interface is installed.",
       "props": [
@@ -868,6 +1198,237 @@
         "id": "stig_oracle_linux_8-OL08-00-040171_stmt",
         "name": "statement",
         "prose": "The x86 Ctrl-Alt-Delete key sequence in OL 8 must be disabled if a graphical user interface is installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010060",
+      "title": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010060"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010060"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010060_stmt",
+        "name": "statement",
+        "prose": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010430",
+      "title": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010430"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010430"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010430_stmt",
+        "name": "statement",
+        "prose": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040286",
+      "title": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040286"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040286"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040286_stmt",
+        "name": "statement",
+        "prose": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040281",
+      "title": "OL 8 must disable access to the network \"bpf\" syscall from unprivileged processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040281"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040281"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040281_stmt",
+        "name": "statement",
+        "prose": "OL 8 must disable access to the network \"bpf\" syscall from unprivileged processes."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040080",
+      "title": "OL 8 must be configured to disable the ability to use USB mass storage devices.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040080_stmt",
+        "name": "statement",
+        "prose": "OL 8 must be configured to disable the ability to use USB mass storage devices."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010360",
+      "title": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organ",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010360"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010360"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010360_stmt",
+        "name": "statement",
+        "prose": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organizationally defined frequency."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040282",
+      "title": "OL 8 must restrict the use of \"ptrace\" to descendant processes.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040282"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040282"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040282_stmt",
+        "name": "statement",
+        "prose": "OL 8 must restrict the use of \"ptrace\" to descendant processes."
        }
       ],
       "class": "security"
@@ -939,39 +1500,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-010060",
-      "title": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010060"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010060"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010060_stmt",
-        "name": "statement",
-        "prose": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via a command line user logon."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_8-OL08-00-010040",
       "title": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via an SSH logon.",
       "props": [
@@ -1000,204 +1528,6 @@
         "id": "stig_oracle_linux_8-OL08-00-010040_stmt",
         "name": "statement",
         "prose": "OL 8 must display the Standard Mandatory DoW Notice and Consent Banner before granting local or remote access to the system via an SSH logon."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-010430",
-      "title": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010430"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010430"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010430_stmt",
-        "name": "statement",
-        "prose": "OL 8 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-040282",
-      "title": "OL 8 must restrict the use of \"ptrace\" to descendant processes.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040282"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040282"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040282_stmt",
-        "name": "statement",
-        "prose": "OL 8 must restrict the use of \"ptrace\" to descendant processes."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-010372",
-      "title": "OL 8 must prevent the loading of a new kernel for later execution.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010372"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010372"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010372_stmt",
-        "name": "statement",
-        "prose": "OL 8 must prevent the loading of a new kernel for later execution."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-040286",
-      "title": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040286"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040286"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040286_stmt",
-        "name": "statement",
-        "prose": "OL 8 must enable hardening for the Berkeley Packet Filter Just-in-time compiler."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-040080",
-      "title": "OL 8 must be configured to disable the ability to use USB mass storage devices.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040080"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040080"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040080_stmt",
-        "name": "statement",
-        "prose": "OL 8 must be configured to disable the ability to use USB mass storage devices."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-010360",
-      "title": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organ",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010360"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010360"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.configuration_management"
-       }
-      ],
-      "links": [
-       {
-        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010360_stmt",
-        "name": "statement",
-        "prose": "The OL 8 file integrity tool must notify the system administrator (SA) when changes to the baseline configuration or anomalies in the operation of any security functions are discovered within an organizationally defined frequency."
        }
       ],
       "class": "security"
@@ -1335,6 +1665,39 @@
       "class": "security"
      },
      {
+      "id": "stig_oracle_linux_8-OL08-00-010376",
+      "title": "OL 8 must prevent kernel profiling by nonprivileged users.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010376"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010376"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010376_stmt",
+        "name": "statement",
+        "prose": "OL 8 must prevent kernel profiling by nonprivileged users."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-040026",
       "title": "OL 8 must disable IEEE 1394 (FireWire) Support.",
       "props": [
@@ -1396,6 +1759,39 @@
         "id": "stig_oracle_linux_8-OL08-00-010541_stmt",
         "name": "statement",
         "prose": "OL 8 must use a separate file system for \"/var/log\"."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010542",
+      "title": "OL 8 must use a separate file system for the system audit data path.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010542"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010542"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7b62aa31-60ae-50fb-8dfb-86e4477859d5",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010542_stmt",
+        "name": "statement",
+        "prose": "OL 8 must use a separate file system for the system audit data path."
        }
       ],
       "class": "security"
@@ -1713,6 +2109,39 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-040285",
+      "title": "OL 8 must use reverse path filtering on all IPv4 interfaces.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040285"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040285"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040285_stmt",
+        "name": "statement",
+        "prose": "OL 8 must use reverse path filtering on all IPv4 interfaces."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-040259",
       "title": "OL 8 must not enable IPv4 packet forwarding unless the system is a router.",
       "props": [
@@ -1812,16 +2241,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-040240",
-      "title": "OL 8 must not forward IPv6 source-routed packets.",
+      "id": "stig_oracle_linux_8-OL08-00-040239",
+      "title": "OL 8 must not forward IPv4 source-routed packets.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-040240"
+        "value": "OL08-00-040239"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-040240"
+        "value": "OL08-00-040239"
        },
        {
         "name": "rego-package",
@@ -1837,75 +2266,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-040240_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-040239_stmt",
         "name": "statement",
-        "prose": "OL 8 must not forward IPv6 source-routed packets."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-040285",
-      "title": "OL 8 must use reverse path filtering on all IPv4 interfaces.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040285"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040285"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040285_stmt",
-        "name": "statement",
-        "prose": "OL 8 must use reverse path filtering on all IPv4 interfaces."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-040280",
-      "title": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040280"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040280"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040280_stmt",
-        "name": "statement",
-        "prose": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages."
+        "prose": "OL 8 must not forward IPv4 source-routed packets."
        }
       ],
       "class": "security"
@@ -1944,39 +2307,6 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-040111",
-      "title": "OL 8 Bluetooth must be disabled.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-040111"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-040111"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.network"
-       }
-      ],
-      "links": [
-       {
-        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-040111_stmt",
-        "name": "statement",
-        "prose": "OL 8 Bluetooth must be disabled."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_oracle_linux_8-OL08-00-040330",
       "title": "OL 8 network interfaces must not be in promiscuous mode.",
       "props": [
@@ -2005,6 +2335,138 @@
         "id": "stig_oracle_linux_8-OL08-00-040330_stmt",
         "name": "statement",
         "prose": "OL 8 network interfaces must not be in promiscuous mode."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040280",
+      "title": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040280"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040280"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040280_stmt",
+        "name": "statement",
+        "prose": "OL 8 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040240",
+      "title": "OL 8 must not forward IPv6 source-routed packets.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040240"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040240"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040240_stmt",
+        "name": "statement",
+        "prose": "OL 8 must not forward IPv6 source-routed packets."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040101",
+      "title": "A firewall must be active on OL 8.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040101"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040101"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040101_stmt",
+        "name": "statement",
+        "prose": "A firewall must be active on OL 8."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040111",
+      "title": "OL 8 Bluetooth must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040111"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040111"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.network"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3b0b1a97-eb45-5230-9c28-5f527f2219d7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040111_stmt",
+        "name": "statement",
+        "prose": "OL 8 Bluetooth must be disabled."
        }
       ],
       "class": "security"
@@ -2067,6 +2529,39 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-010293",
+      "title": "OL 8 must implement DoW-approved encryption in the OpenSSL package.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010293"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010293"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a018247-dfad-50f6-9ba2-2aef266363c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010293_stmt",
+        "name": "statement",
+        "prose": "OL 8 must implement DoW-approved encryption in the OpenSSL package."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-010183",
       "title": "OL 8 cryptographic policy must not be overridden.",
       "props": [
@@ -2100,16 +2595,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-010400",
-      "title": "OL 8 must implement certificate status checking for multifactor authentication.",
+      "id": "stig_oracle_linux_8-OL08-00-010090",
+      "title": "OL 8, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-010400"
+        "value": "OL08-00-010090"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-010400"
+        "value": "OL08-00-010090"
        },
        {
         "name": "rego-package",
@@ -2125,9 +2620,42 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-010400_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-010090_stmt",
         "name": "statement",
-        "prose": "OL 8 must implement certificate status checking for multifactor authentication."
+        "prose": "OL 8, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-020050",
+      "title": "OL 8 must be able to initiate directly a session lock for all connection types using smartcard when the smartcard is removed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-020050"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-020050"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a018247-dfad-50f6-9ba2-2aef266363c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-020050_stmt",
+        "name": "statement",
+        "prose": "OL 8 must be able to initiate directly a session lock for all connection types using smartcard when the smartcard is removed."
        }
       ],
       "class": "security"
@@ -2161,6 +2689,39 @@
         "id": "stig_oracle_linux_8-OL08-00-020090_stmt",
         "name": "statement",
         "prose": "OL 8 must map the authenticated identity to the user or group account for PKI-based authentication."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010400",
+      "title": "OL 8 must implement certificate status checking for multifactor authentication.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010400"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010400"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.pki_crypto"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a018247-dfad-50f6-9ba2-2aef266363c7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010400_stmt",
+        "name": "statement",
+        "prose": "OL 8 must implement certificate status checking for multifactor authentication."
        }
       ],
       "class": "security"
@@ -2223,6 +2784,39 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-040000",
+      "title": "OL 8 must not have the telnet-server package installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040000"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040000"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6808c096-b9ad-5de1-b4af-83588e5986ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040000_stmt",
+        "name": "statement",
+        "prose": "OL 8 must not have the telnet-server package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-040190",
       "title": "The Trivial File Transfer Protocol (TFTP) server package must not be installed if not required for OL 8 operational support.",
       "props": [
@@ -2256,16 +2850,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-040000",
-      "title": "OL 8 must not have the telnet-server package installed.",
+      "id": "stig_oracle_linux_8-OL08-00-040360",
+      "title": "A File Transfer Protocol (FTP) server package must not be installed unless mission essential on OL 8.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-040000"
+        "value": "OL08-00-040360"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-040000"
+        "value": "OL08-00-040360"
        },
        {
         "name": "rego-package",
@@ -2281,9 +2875,75 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-040000_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-040360_stmt",
         "name": "statement",
-        "prose": "OL 8 must not have the telnet-server package installed."
+        "prose": "A File Transfer Protocol (FTP) server package must not be installed unless mission essential on OL 8."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040070",
+      "title": "The OL 8 file system automounter must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040070"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040070"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6808c096-b9ad-5de1-b4af-83588e5986ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040070_stmt",
+        "name": "statement",
+        "prose": "The OL 8 file system automounter must be disabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040350",
+      "title": "If the Trivial File Transfer Protocol (TFTP) server is required, the OL 8 TFTP daemon must be configured to operate in secure mode.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040350"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040350"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#6808c096-b9ad-5de1-b4af-83588e5986ed",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040350_stmt",
+        "name": "statement",
+        "prose": "If the Trivial File Transfer Protocol (TFTP) server is required, the OL 8 TFTP daemon must be configured to operate in secure mode."
        }
       ],
       "class": "security"
@@ -2379,6 +3039,171 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-010371",
+      "title": "OL 8 must prevent the installation of software, patches, service packs, device drivers, or operating system components of local packages without verification they have been digitally signed using a ce",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010371"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010371"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010371_stmt",
+        "name": "statement",
+        "prose": "OL 8 must prevent the installation of software, patches, service packs, device drivers, or operating system components of local packages without verification they have been digitally signed using a certificate that is issued by a Certificate Authority (CA) that is recognized and approved by the organization."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010370",
+      "title": "YUM must be configured to prevent the installation of patches, service packs, device drivers, or OL 8 system components that have not been digitally signed using a certificate that is recognized and a",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010370"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010370"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010370_stmt",
+        "name": "statement",
+        "prose": "YUM must be configured to prevent the installation of patches, service packs, device drivers, or OL 8 system components that have not been digitally signed using a certificate that is recognized and approved by the organization."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-030670",
+      "title": "OL 8 must have the packages required for offloading audit logs installed.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-030670"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-030670"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-030670_stmt",
+        "name": "statement",
+        "prose": "OL 8 must have the packages required for offloading audit logs installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010372",
+      "title": "OL 8 must prevent the loading of a new kernel for later execution.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010372"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010372"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010372_stmt",
+        "name": "statement",
+        "prose": "OL 8 must prevent the loading of a new kernel for later execution."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010019",
+      "title": "OL 8 must ensure cryptographic verification of vendor software packages.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010019"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010019"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.software_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010019_stmt",
+        "name": "statement",
+        "prose": "OL 8 must ensure cryptographic verification of vendor software packages."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-010561",
       "title": "OL 8 must have the rsyslog service enabled and active.",
       "props": [
@@ -2407,39 +3232,6 @@
         "id": "stig_oracle_linux_8-OL08-00-010561_stmt",
         "name": "statement",
         "prose": "OL 8 must have the rsyslog service enabled and active."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-010376",
-      "title": "OL 8 must prevent kernel profiling by nonprivileged users.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010376"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010376"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.software_integrity"
-       }
-      ],
-      "links": [
-       {
-        "href": "#c2336244-3ec2-5586-b3a5-26879fc540ae",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010376_stmt",
-        "name": "statement",
-        "prose": "OL 8 must prevent kernel profiling by nonprivileged users."
        }
       ],
       "class": "security"
@@ -2502,6 +3294,39 @@
     ],
     "controls": [
      {
+      "id": "stig_oracle_linux_8-OL08-00-010291",
+      "title": "The OL 8 SSH server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010291"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010291"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de821f25-34aa-5ca3-9887-0cf64b055412",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010291_stmt",
+        "name": "statement",
+        "prose": "The OL 8 SSH server must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connections."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_oracle_linux_8-OL08-00-010290",
       "title": "The OL 8 SSH server must be configured to use only Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH server connect",
       "props": [
@@ -2535,16 +3360,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-010550",
-      "title": "OL 8 must not permit direct logons to the root account using remote access via SSH.",
+      "id": "stig_oracle_linux_8-OL08-00-020330",
+      "title": "OL 8 must not allow accounts configured with blank or null passwords.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-010550"
+        "value": "OL08-00-020330"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-010550"
+        "value": "OL08-00-020330"
        },
        {
         "name": "rego-package",
@@ -2560,9 +3385,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-010550_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-020330_stmt",
         "name": "statement",
-        "prose": "OL 8 must not permit direct logons to the root account using remote access via SSH."
+        "prose": "OL 8 must not allow accounts configured with blank or null passwords."
        }
       ],
       "class": "security"
@@ -2601,16 +3426,16 @@
       "class": "security"
      },
      {
-      "id": "stig_oracle_linux_8-OL08-00-010201",
-      "title": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+      "id": "stig_oracle_linux_8-OL08-00-010550",
+      "title": "OL 8 must not permit direct logons to the root account using remote access via SSH.",
       "props": [
        {
         "name": "label",
-        "value": "OL08-00-010201"
+        "value": "OL08-00-010550"
        },
        {
         "name": "alt-identifier",
-        "value": "OL08-00-010201"
+        "value": "OL08-00-010550"
        },
        {
         "name": "rego-package",
@@ -2626,42 +3451,9 @@
       ],
       "parts": [
        {
-        "id": "stig_oracle_linux_8-OL08-00-010201_stmt",
+        "id": "stig_oracle_linux_8-OL08-00-010550_stmt",
         "name": "statement",
-        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_oracle_linux_8-OL08-00-010200",
-      "title": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
-      "props": [
-       {
-        "name": "label",
-        "value": "OL08-00-010200"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "OL08-00-010200"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.oracle_linux_8.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#de821f25-34aa-5ca3-9887-0cf64b055412",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_oracle_linux_8-OL08-00-010200_stmt",
-        "name": "statement",
-        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
+        "prose": "OL 8 must not permit direct logons to the root account using remote access via SSH."
        }
       ],
       "class": "security"
@@ -2761,6 +3553,105 @@
         "id": "stig_oracle_linux_8-OL08-00-020350_stmt",
         "name": "statement",
         "prose": "OL 8 must display the date and time of the last successful account logon upon an SSH logon."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-040340",
+      "title": "OL 8 remote X connections for interactive users must be disabled unless to fulfill documented and validated mission requirements.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-040340"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-040340"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de821f25-34aa-5ca3-9887-0cf64b055412",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-040340_stmt",
+        "name": "statement",
+        "prose": "OL 8 remote X connections for interactive users must be disabled unless to fulfill documented and validated mission requirements."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010201",
+      "title": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010201"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010201"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de821f25-34aa-5ca3-9887-0cf64b055412",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010201_stmt",
+        "name": "statement",
+        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_oracle_linux_8-OL08-00-010200",
+      "title": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "OL08-00-010200"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "OL08-00-010200"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.oracle_linux_8.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#de821f25-34aa-5ca3-9887-0cf64b055412",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_oracle_linux_8-OL08-00-010200_stmt",
+        "name": "statement",
+        "prose": "OL 8 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
        }
       ],
       "class": "security"

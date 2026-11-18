@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 5
-#     cited: 4
+#     checks: 9
+#     cited: 8
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_9.software_integrity
 
 # DISA STIG for Oracle Linux 9 - Software Integrity Module

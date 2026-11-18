@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 4
-#     cited: 3
+#     checks: 7
+#     cited: 6
 #     density: section
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_8.pki_crypto
 
 # DISA STIG for Oracle Linux 8 - PKI and Cryptography Module

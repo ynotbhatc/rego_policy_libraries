@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 23
-#     cited: 22
+#     checks: 25
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_10.configuration_management
 
 # DISA STIG for RHEL 10 - Configuration Management Module

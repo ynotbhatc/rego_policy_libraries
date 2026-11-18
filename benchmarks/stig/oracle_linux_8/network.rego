@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, oracle]
 #   coverage:
-#     checks: 10
-#     cited: 9
+#     checks: 12
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.oracle_linux_8.network
 
 # DISA STIG for Oracle Linux 8 - Network Configuration Module
