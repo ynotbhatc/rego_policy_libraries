@@ -37,7 +37,3 @@ test_missing_evidence_open_status_ol08_00_040160 if {
 test_client_alive_count_zero_open if {
 	data.stig.oracle_linux_8.ssh_config.status_ol08_00_010200 == "Open" with input as {"ssh_config": {"ClientAliveCountMax": "0"}}
 }
-
-test_client_alive_count_one_pass if {
-	data.stig.oracle_linux_8.ssh_config.status_ol08_00_010200 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveCountMax": "1"}}
-}

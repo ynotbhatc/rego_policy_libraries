@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
-"""Derive the Oracle Linux STIG modules from the RHEL modules by DISA rule title.
+"""RETIRED 2026-11-18: derived the Oracle Linux / RHEL 10 STIG modules from the RHEL modules by DISA rule title.
 
-    python3 tools/stig_generators/gen_oracle_linux.py            # oracle_linux_9 from rhel_9
+A title match is not a check match: it put ids on the wrong settings and copied RHEL 9 logic onto checks that
+differ (another file, package, expected value or tool). oracle_linux_9, oracle_linux_8 and rhel_10 are generated
+by gen_rhel9.py <platform> from reviewed per-platform tables (ol9_rules.py, ol8_rules.py, rhel10_rules.py) built
+against each platform's own check text. This script refuses to run; it is kept for its history only.
+
+    python3 tools/stig_generators/gen_oracle_linux.py            # (was) oracle_linux_9 from rhel_9
 
 Oracle Linux and RHEL STIGs are written from the same SRG and share rule text almost
 verbatim (OL9 V1R7: 354 of 450 titles identical to RHEL 9 V2R10 after the OS name is
@@ -347,6 +352,5 @@ def derive(key, cfg):
 
 
 if __name__ == "__main__":
-    keys = sys.argv[1:] or [k for k in PLATFORMS if k.startswith("oracle_")]
-    for key in keys:
-        derive(key, PLATFORMS[key])
+    # retired: never regenerate these platforms by title again (see the module docstring)
+    raise SystemExit("gen_oracle_linux.py is retired (2026-11-18): run gen_rhel9.py oracle_linux_9 | oracle_linux_8 | rhel_10")
