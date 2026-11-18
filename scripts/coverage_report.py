@@ -15,6 +15,7 @@ or it does not. See CONTRIBUTING.md for the pattern.
 import collections
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -31,8 +32,11 @@ def package_of(p: pathlib.Path) -> str:
 
 
 def main() -> int:
-    regos = [p for p in ROOT.rglob("*.rego")
-             if not any(part in SKIP for part in p.relative_to(ROOT).parts)]
+    # Tracked files only, so ignored build output (converters/packaging/*/out) never counts; CI sees the same set.
+    tracked = subprocess.run(["git", "-C", str(ROOT), "ls-files", "-co", "--exclude-standard", "*.rego"],
+                             capture_output=True, text=True, check=True).stdout.split()
+    regos = [ROOT / f for f in tracked
+             if (ROOT / f).is_file() and not any(part in SKIP for part in pathlib.Path(f).parts)]
     policies = [p for p in regos if not is_test(p)]
     tests = [p for p in regos if is_test(p)]
 
