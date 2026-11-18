@@ -8,6 +8,25 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — CIS Microsoft 365 v7: a control no longer passes on a missing field or a wrong shape
+
+Nine defects found while checking the collector against the policy. Each let a control pass, or stay silent, when it should not.
+
+- **Fail closed per field and per shape.** A collected value that is not a list, or a compared field that is absent or of the wrong type, is evidence missing for the controls that read it. Every control that is not a pass now has its own message naming its id; on empty input the module reports 160 violations (was 31) and `failed_controls == total_controls == 160`. A compliant tenant still reports 0.
+- **`total_controls` and `failed_controls`** added to the main report. `controls_evaluated` and `evaluated_control_ids` now reflect the input; the static list moved to `implemented_control_ids`.
+- **Attestations:** `observed` must be a boolean and `false` is a failure; only ledger ids can be attested (an attestation for any other id is a finding and changes nothing); `attested_on` must be a date that is not in the future.
+- **Semantics corrected from Microsoft's documentation:** 2.1.2 / 2.1.11 read `FileTypes`; 6.3.2 reads the default OWA policy's personal-account settings; 5.1.5.1 counts only self-service permission-grant policies as user consent; 2.1.9 needs the DKIM signing configuration enabled, not only the published CNAMEs; 1.3.2 compares the timeout value; 2.4.2 needs enabled strict-preset rules; 5.1.3.4 treats an absent group setting as the permissive default; 8.2.1 reads the allow-list object Teams returns; 2.1.15 checks limits, action and notification.
+- An unrecognised `unavailable` key is its own finding and is no longer attributed to a control.
+
+**Breaking:** new fact paths (`defender.dkim_signing_configs`, `defender.atp_protection_rules`, malware-filter `FileTypes`, outbound-spam limits, timeout-policy `definition`, OWA `IsDefault` and personal-account fields) and `attestations[].observed` as a boolean; see the module README. Violation counts rise on tenants whose collector does not yet supply them.
+
+**Count:** control-level checks fall by 76: 67 lookup-table rows had been counted as checks, 29 literal gap messages went, 20 checks were added.
+
+### Fixed — CIS RHEL 9 / Rocky 9 / RHEL 8 / Rocky 8 / Amazon Linux 2023: audit-rule and file-sweep evidence
+
+- A collected but empty audit-rules list fails the audit-rule controls (it was evidence missing).
+- World-writable and unowned-file sweeps: files found fail whether or not the sweep finished; only "nothing found, sweep truncated" is evidence missing. An unfinished empty sweep no longer passes.
+
 ### Added — per-control results: every control's outcome, passes included
 
 Auditors asked for a record of what passed, not only what failed. `compliance_report` now carries `control_results`:
