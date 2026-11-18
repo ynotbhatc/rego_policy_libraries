@@ -8,7 +8,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 
 | Standard / Framework | Path | Controls / Requirements |
 |---------------------|------|------------------------|
-| **CIS RHEL 9 v2.0.0** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| **CIS RHEL 9 v3.0.0** | `benchmarks/cis/rhel_9/` | All 352 recommendations, generated from the benchmark's workbook (20 modules, including three STIG/NIST extension modules that are not benchmark recommendations); the deprecated v1.0.0 `cis.rhel_9` package was removed |
 | CIS RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
 | CIS RHEL 10 | `benchmarks/cis/rhel_10/` | Full |
 | CIS Ubuntu 22.04/24.04/20.04 | `benchmarks/cis/ubuntu_*/` | Full |
@@ -16,7 +16,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | CIS Debian 11 | `benchmarks/cis/debian_11/` | Full |
 | CIS Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | CIS Windows Server 2022 v5.1.0 | `benchmarks/cis/windows_server_2022_modular/` | Full: all 408 recommendations (406 evaluated, 2 Manual by attestation), member server and domain controller, Level 1/2 and Next Generation profiles |
-| CIS Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified: a copy of the old 2022 module's numbering, not checked against the CIS Windows Server 2019 benchmark |
+| CIS Windows Server 2019 v5.0.0 | `benchmarks/cis/windows_server_2019_modular/` | Full: all 400 recommendations (398 evaluated, 2 Manual by attestation), generated from the benchmark's workbook; Level 1/2 and Next Generation profiles |
 | CIS Windows 10 Enterprise v5.0.0 | `benchmarks/cis/windows_10_modular/` | Full: all 501 recommendations (499 evaluated, 2 Manual by attestation), Level 1/2, BitLocker and Next Generation profiles |
 | CIS Windows 11 Enterprise v5.1.0 | `benchmarks/cis/windows_11_modular/` | Full: all 535 recommendations (533 evaluated, 2 Manual by attestation), Level 1/2 and BitLocker profiles |
 | CIS Microsoft 365 Foundations v7 (SaaS) | `benchmarks/cis/saas/m365_v7/` | 9 sections: Entra, Exchange, Defender, Purview, SharePoint, Teams, Intune, Fabric, Admin Center |
@@ -25,12 +25,14 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library; Oracle from October 2026; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
-| NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
+| NIST 800-53 Rev 5 | `frameworks/federal/nist/sp_800_53/` | Partial: 7 of 20 families (AC, AU, CM, IA, IR, SC, SI), 109 controls and enhancements (92 base, 17 enhancements, each enhancement its own finding) of the 1,014 active in the Rev 5 catalog (release 5.2.0); not a Low/Moderate/High baseline assessment; withdrawn AC-15 and SC-19 not assessed; organization-defined parameters (AC-7, AC-11, AC-14, AU-11, IR-2, IR-3, SC-13, IA-7) supplied as input |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
-| FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
-| ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |
-| SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
-| PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
+| FISMA | `frameworks/federal/` | Full |
+| FedRAMP Rev 5 | `frameworks/federal/fedramp/` | Partial: authorization status plus 10–12 FedRAMP Rev 5 baseline controls with FedRAMP parameter values (CA-2, CA-6, CA-7, CA-8, IR-8, PS-3, RA-2, RA-5, SC-13, SR-2; CP-7 at Moderate/High; SA-9(5) at High). Not a baseline assessment: the Rev 5 baselines select 156 (Low, LI-SaaS) / 323 (Moderate) / 410 (High) controls, reported as `baseline_size` beside the evaluated `total_controls` |
+| CMMC (32 CFR Part 170): Level 1 = the 15 FAR 52.204-21(b)(1) requirements (AC.L1-b.1.i … SI.L1-b.1.xv), Level 2 = the 110 NIST SP 800-171 Rev 2 requirements (AC.L2-3.1.1 …) | `frameworks/federal/cmmc/` | Levels 1 and 2 scored per practice (15 / 110); Level 3 (24 NIST SP 800-172 requirements) not evaluated |
+| ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 decided by sub-module checks, many of which read attested flags rather than observed values; 58 attested) | `frameworks/management/iso27001/` | Full |
+| SOC 2 (AICPA Trust Services Criteria 2017, points of focus 2022) | `frameworks/management/soc2/` | 12 of the 33 common criteria scored by id (CC1.2, CC1.4, CC3.2, CC6.1, CC6.2, CC6.3, CC6.6, CC7.2, CC7.4, CC8.1, CC9.1, CC9.2); idle timeout, log retention and review interval compared with the entity's own commitments; for the optional categories in scope, 16 criteria scored by id (A1.1-A1.3, C1.1-C1.2, PI1.2-PI1.3, P3.1, P3.2, P4.1, P4.2, P5.1, P5.2, P6.1, P6.6, P7.1) with entity commitments for retention, recovery-test interval and breach-notice times; category-module verdicts are advisory |
+| PCI DSS v4.0.1 | `frameworks/financial/pci_dss/` | All 12 requirements (one roll-up per requirement; numeric parameters checked against PCI SSC public SAQ D and FAQs; superseded 6.4.1 not gating) |
 | SOX ITGC | `frameworks/financial/sox/` | Full |
 | HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | Full |
 | GDPR | `frameworks/privacy/gdpr/` | Full |
@@ -80,7 +82,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | **COPPA (16 CFR Part 312, 2025 amendments)** | `frameworks/privacy/coppa/` | 21 controls incl. separate third-party-disclosure consent, retention policy, written infosec program |
 | **CIS Controls v8.1** | `frameworks/management/cis_controls_v8/` | 18 Critical Security Controls, 153 safeguards, cumulative IG1 ⊆ IG2 ⊆ IG3 scoring — distinct from the CIS *Benchmarks* above |
 | **Zero Trust — CISA ZTMM v2.0 + NIST SP 800-207** | `frameworks/federal/zero_trust/` | 83 criteria across the 5 pillars + 3 cross-cutting capabilities |
-| **PQC Readiness (FIPS 203/204/205, EO 14412, CNSA 2.0) + NIST CSWP 39-upd1 crypto agility** | `frameworks/federal/pqc/` | 67 CSWP 39 practice rows (June 2026 update, implementer and cloud gates) beside 15 profile-gated controls (general/federal/nss) + data-driven algorithm classification over a supplied crypto inventory (HNDL, IR 8547 deprecation, CNSA 2.0) |
+| **PQC Readiness (FIPS 203/204/205, EO 14412, CNSA 2.0) + NIST CSWP 39-upd1 crypto agility** | `frameworks/federal/pqc/` | 67 CSWP 39 practice rows (June 2026 update, implementer and cloud gates) beside 15 profile-gated controls (general/federal/nss) + data-driven classification of every row of a required, non-empty crypto inventory as quantum-vulnerable, post-quantum (FIPS 203/204/205, SP 800-208, pre-standard Kyber/Dilithium/SPHINCS+, pending FN-DSA/HQC), hybrid, identifiable-but-not-NIST (sntrup761 hybrid, ChaCha20, UMAC, Camellia: reported in general, a finding under federal/nss per FIPS 140-3 / CNSA 2.0), symmetric/hash or unrecognised (unrecognised, missing and empty inventories are findings; IR 8547 deprecation, SP 800-131A undersized keys, 112-bit legacy and SHA-1 status); report carries total_controls/failed_controls per control (13/18/22 by profile) |
 | **BNM Risk Management in Technology (Malaysia, Sep 2026)** | `frameworks/financial/bnm_rmit/` | 99 mandatory S paragraphs of Part B §§8–15; cloud, third-party, NCII and digital-services paragraphs gated by declared flags; 2027 dated obligations and the 4-hour / 120-minute availability targets in the report |
 | **HKMA SPM TM-G-1 + TM-C-1 (Hong Kong)** | `frameworks/financial/hkma_trm/` | 67 controls: TM-G-1 §§2–7 technology risk management plus the TM-C-1 cyber duties (incident reporting, C-RAF, STDB, CISP); WLAN, outsourcing and overseas-IT paragraphs gated by declared flags |
 | **APRA CPS 234 Information Security (Australia, 2019)** | `frameworks/financial/apra_cps234/` | one control per requirement paragraph 13–36; third-party paragraphs gated by a declared flag; 72-hour incident and 10-business-day weakness clocks in the report |
@@ -109,7 +111,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 
 | Platform | Path | Controls |
 |----------|------|----------|
-| **RHEL 9** | `benchmarks/cis/rhel_9/` | 17 modules · **224+ control IDs** ✅ |
+| **RHEL 9** | `benchmarks/cis/rhel_9/` | v3.0.0, all 352 recommendations (20 modules) |
 | RHEL 8 | `benchmarks/cis/rhel_8/` | Full |
 | Ubuntu 22.04 | `benchmarks/cis/ubuntu_22_04/` | Full |
 | Ubuntu 20.04 / 24.04 | `benchmarks/cis/ubuntu_20_04/` | Full |
@@ -117,7 +119,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | Rocky Linux 8 / 9 | `benchmarks/cis/rocky_linux_8/` | Full |
 | Amazon Linux 2023 | `benchmarks/cis/amazon_linux_2023/` | Full |
 | Windows Server 2022 | `benchmarks/cis/windows_server_2022_modular/` | Full (v5.1.0, 408 recommendations) |
-| Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | IDs unverified |
+| Windows Server 2019 | `benchmarks/cis/windows_server_2019_modular/` | Full (v5.0.0, 400 recommendations) |
 | AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | MySQL / Oracle / PostgreSQL | `benchmarks/cis/databases/` | Full |

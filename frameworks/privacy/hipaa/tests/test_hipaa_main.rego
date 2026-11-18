@@ -20,3 +20,11 @@ test_hipaa_main_one_module_failing_fails_overall if {
 	r.overall_compliant == false
 	r.domains_passing == 4
 }
+
+# Audit 2026-11-17: advisories are collected but never decide compliance.
+test_advisories_collected_without_affecting_compliance if {
+	inp := object.union(fx.full_input, {"encryption": {"key_rotation_days": 900}, "tls": {"mutual_tls_for_phi_apis": false}})
+	r := data.hipaa.main.compliance_report with input as inp
+	r.compliant == true
+	count(r.advisories) == 2
+}

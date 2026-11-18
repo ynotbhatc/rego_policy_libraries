@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "388b07fc-7b3b-5a84-ba6c-b4aeca7f1117",
   "metadata": {
-   "title": "Rego Policy Libraries — pci_dss (PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data)",
+   "title": "Rego Policy Libraries — pci_dss (PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "pci_dss-requirement_7",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
+    "title": "PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data",
     "props": [
      {
       "name": "rego-package",
@@ -400,7 +400,7 @@
    {
     "id": "pci_dss-requirement_8",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
+    "title": "PCI DSS v4.0.1 Requirement 8 - Identify Users and Authenticate Access to System Components",
     "props": [
      {
       "name": "rego-package",
@@ -454,7 +454,7 @@
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-2",
-      "title": "unique user ids",
+      "title": "idle session reauthentication",
       "props": [
        {
         "name": "label",
@@ -480,14 +480,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-2_stmt",
         "name": "statement",
-        "prose": "unique user ids"
+        "prose": "idle session reauthentication"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-3",
-      "title": "vendor accounts",
+      "title": "unique user ids",
       "props": [
        {
         "name": "label",
@@ -513,14 +513,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-3_stmt",
         "name": "statement",
-        "prose": "vendor accounts"
+        "prose": "unique user ids"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-4",
-      "title": "factors protected",
+      "title": "vendor accounts",
       "props": [
        {
         "name": "label",
@@ -546,14 +546,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-4_stmt",
         "name": "statement",
-        "prose": "factors protected"
+        "prose": "vendor accounts"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-5",
-      "title": "first use change",
+      "title": "factors protected",
       "props": [
        {
         "name": "label",
@@ -579,14 +579,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-5_stmt",
         "name": "statement",
-        "prose": "first use change"
+        "prose": "factors protected"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-6",
-      "title": "password requirements",
+      "title": "first use change",
       "props": [
        {
         "name": "label",
@@ -612,14 +612,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-6_stmt",
         "name": "statement",
-        "prose": "password requirements"
+        "prose": "first use change"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-7",
-      "title": "all cde access",
+      "title": "password requirements",
       "props": [
        {
         "name": "label",
@@ -645,14 +645,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-7_stmt",
         "name": "statement",
-        "prose": "all cde access"
+        "prose": "password requirements"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-8",
-      "title": "cde admin",
+      "title": "service provider customer password lifetime 8 3 10 1",
       "props": [
        {
         "name": "label",
@@ -678,14 +678,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-8_stmt",
         "name": "statement",
-        "prose": "cde admin"
+        "prose": "service provider customer password lifetime 8 3 10 1"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-9",
-      "title": "remote access",
+      "title": "single factor password lifetime",
       "props": [
        {
         "name": "label",
@@ -711,14 +711,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-9_stmt",
         "name": "statement",
-        "prose": "remote access"
+        "prose": "single factor password lifetime"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-10",
-      "title": "replay resistant",
+      "title": "all cde access",
       "props": [
        {
         "name": "label",
@@ -744,14 +744,14 @@
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-10_stmt",
         "name": "statement",
-        "prose": "replay resistant"
+        "prose": "all cde access"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.access_control.requirement_8-11",
-      "title": "system secure",
+      "title": "cde admin",
       "props": [
        {
         "name": "label",
@@ -776,6 +776,105 @@
       "parts": [
        {
         "id": "pci_dss-pci_dss.access_control.requirement_8-11_stmt",
+        "name": "statement",
+        "prose": "cde admin"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-12",
+      "title": "remote access",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7792e3a7-8984-53ae-8d9a-d03f89b3bf4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-12_stmt",
+        "name": "statement",
+        "prose": "remote access"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-13",
+      "title": "replay resistant",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7792e3a7-8984-53ae-8d9a-d03f89b3bf4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-13_stmt",
+        "name": "statement",
+        "prose": "replay resistant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.access_control.requirement_8-14",
+      "title": "system secure",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.access_control.requirement_8#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.access_control.requirement_8#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.access_control.requirement_8"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7792e3a7-8984-53ae-8d9a-d03f89b3bf4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.access_control.requirement_8-14_stmt",
         "name": "statement",
         "prose": "system secure"
        }
@@ -1933,7 +2032,7 @@
    {
     "id": "pci_dss-requirement_4",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
+    "title": "PCI DSS v4.0.1 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
     "props": [
      {
       "name": "rego-package",
@@ -2353,7 +2452,7 @@
    {
     "id": "pci_dss-requirement_12",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
+    "title": "PCI DSS v4.0.1 Requirement 12 - Support Information Security with Organizational",
     "props": [
      {
       "name": "rego-package",
@@ -3004,7 +3103,7 @@
    {
     "id": "pci_dss-requirement_10",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
+    "title": "PCI DSS v4.0.1 Requirement 10 - Log and Monitor All Access to System Components",
     "props": [
      {
       "name": "rego-package",
@@ -3391,7 +3490,7 @@
    {
     "id": "pci_dss-requirement_5",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
+    "title": "PCI DSS v4.0.1 Requirement 5 - Protect All Systems and Networks from Malicious Software",
     "props": [
      {
       "name": "rego-package",
@@ -3597,10 +3696,6 @@
        {
         "href": "#c8378400-d333-58f2-a117-b7c52fa10352",
         "rel": "implementation"
-       },
-       {
-        "href": "#8adc71f4-1e05-5cc2-8282-d9990107d8dd",
-        "rel": "implementation"
        }
       ],
       "parts": [
@@ -3608,11 +3703,6 @@
         "id": "pci_dss-enhanced_controls_stmt",
         "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/malware_protection/requirement_5.rego (package pci_dss.malware_protection.requirement_5); see the rule body."
-       },
-       {
-        "id": "pci_dss-enhanced_controls_obj.1",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
        }
       ],
       "class": "compliance"
@@ -4561,7 +4651,7 @@
    {
     "id": "pci_dss-pci_dss_main",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
+    "title": "PCI DSS v4.0.1 - Main Aggregation Policy (All 12 Requirements)",
     "props": [
      {
       "name": "rego-package",
@@ -5146,7 +5236,7 @@
    {
     "id": "pci_dss-requirement_9",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
+    "title": "PCI DSS v4.0.1 Requirement 9 - Restrict Physical Access to Cardholder Data",
     "props": [
      {
       "name": "rego-package",
@@ -5566,7 +5656,7 @@
    {
     "id": "pci_dss-requirement_6",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
+    "title": "PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software",
     "props": [
      {
       "name": "rego-package",
@@ -5587,7 +5677,7 @@
     "controls": [
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-1",
-      "title": "code review",
+      "title": "sast dast",
       "props": [
        {
         "name": "label",
@@ -5613,14 +5703,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-1_stmt",
         "name": "statement",
-        "prose": "code review"
+        "prose": "sast dast"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-2",
-      "title": "developer training",
+      "title": "software composition analysis",
       "props": [
        {
         "name": "label",
@@ -5646,14 +5736,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-2_stmt",
         "name": "statement",
-        "prose": "developer training"
+        "prose": "software composition analysis"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-3",
-      "title": "preproduction testing",
+      "title": "waf with rule sets",
       "props": [
        {
         "name": "label",
@@ -5679,14 +5769,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-3_stmt",
         "name": "statement",
-        "prose": "preproduction testing"
+        "prose": "waf with rule sets"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-4",
-      "title": "secure sdlc",
+      "title": "code review",
       "props": [
        {
         "name": "label",
@@ -5712,14 +5802,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-4_stmt",
         "name": "statement",
-        "prose": "secure sdlc"
+        "prose": "code review"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-5",
-      "title": "auth attacks prevented",
+      "title": "developer training",
       "props": [
        {
         "name": "label",
@@ -5745,14 +5835,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-5_stmt",
         "name": "statement",
-        "prose": "auth attacks prevented"
+        "prose": "developer training"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-6",
-      "title": "injection prevented",
+      "title": "preproduction testing",
       "props": [
        {
         "name": "label",
@@ -5778,14 +5868,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-6_stmt",
         "name": "statement",
-        "prose": "injection prevented"
+        "prose": "preproduction testing"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-7",
-      "title": "insecure crypto prevented",
+      "title": "secure sdlc",
       "props": [
        {
         "name": "label",
@@ -5811,14 +5901,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-7_stmt",
         "name": "statement",
-        "prose": "insecure crypto prevented"
+        "prose": "secure sdlc"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-8",
-      "title": "memory corruption prevented",
+      "title": "auth attacks prevented",
       "props": [
        {
         "name": "label",
@@ -5844,14 +5934,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-8_stmt",
         "name": "statement",
-        "prose": "memory corruption prevented"
+        "prose": "auth attacks prevented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-9",
-      "title": "xss prevented",
+      "title": "injection prevented",
       "props": [
        {
         "name": "label",
@@ -5877,14 +5967,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-9_stmt",
         "name": "statement",
-        "prose": "xss prevented"
+        "prose": "injection prevented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-10",
-      "title": "patch management",
+      "title": "insecure crypto prevented",
       "props": [
        {
         "name": "label",
@@ -5910,14 +6000,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-10_stmt",
         "name": "statement",
-        "prose": "patch management"
+        "prose": "insecure crypto prevented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-11",
-      "title": "software inventory",
+      "title": "memory corruption prevented",
       "props": [
        {
         "name": "label",
@@ -5943,14 +6033,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-11_stmt",
         "name": "statement",
-        "prose": "software inventory"
+        "prose": "memory corruption prevented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-12",
-      "title": "vulnerability identification",
+      "title": "xss prevented",
       "props": [
        {
         "name": "label",
@@ -5976,14 +6066,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-12_stmt",
         "name": "statement",
-        "prose": "vulnerability identification"
+        "prose": "xss prevented"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-13",
-      "title": "automated attack detection",
+      "title": "patch management",
       "props": [
        {
         "name": "label",
@@ -6009,14 +6099,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-13_stmt",
         "name": "statement",
-        "prose": "automated attack detection"
+        "prose": "patch management"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-14",
-      "title": "waf implemented",
+      "title": "software inventory",
       "props": [
        {
         "name": "label",
@@ -6042,14 +6132,14 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-14_stmt",
         "name": "statement",
-        "prose": "waf implemented"
+        "prose": "software inventory"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "pci_dss-pci_dss.secure_development.requirement_6-15",
-      "title": "web app pen testing",
+      "title": "vulnerability identification",
       "props": [
        {
         "name": "label",
@@ -6075,7 +6165,40 @@
        {
         "id": "pci_dss-pci_dss.secure_development.requirement_6-15_stmt",
         "name": "statement",
-        "prose": "web app pen testing"
+        "prose": "vulnerability identification"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-informational_not_required",
+      "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "informational_not_required"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "informational_not_required"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.secure_development.requirement_6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8adc71f4-1e05-5cc2-8282-d9990107d8dd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-informational_not_required_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/financial/pci_dss/secure_development/requirement_6.rego (package pci_dss.secure_development.requirement_6); see the rule body."
        }
       ],
       "class": "compliance"
@@ -6250,7 +6373,7 @@
    {
     "id": "pci_dss-requirement_11",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
+    "title": "PCI DSS v4.0.1 Requirement 11 - Test Security of Systems and Networks Regularly",
     "props": [
      {
       "name": "rego-package",
@@ -6269,6 +6392,105 @@
      }
     ],
     "controls": [
+     {
+      "id": "pci_dss-pci_dss.security_testing.requirement_11-1",
+      "title": "authenticated internal scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.security_testing.requirement_11#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.security_testing.requirement_11#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e638969f-d9e3-5cc2-9ffe-abab603a3879",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.security_testing.requirement_11-1_stmt",
+        "name": "statement",
+        "prose": "authenticated internal scanning"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.security_testing.requirement_11-2",
+      "title": "external scanning asv",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.security_testing.requirement_11#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.security_testing.requirement_11#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e638969f-d9e3-5cc2-9ffe-abab603a3879",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.security_testing.requirement_11-2_stmt",
+        "name": "statement",
+        "prose": "external scanning asv"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pci_dss-pci_dss.security_testing.requirement_11-3",
+      "title": "internal scanning",
+      "props": [
+       {
+        "name": "label",
+        "value": "pci_dss.security_testing.requirement_11#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "pci_dss.security_testing.requirement_11#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pci_dss.security_testing.requirement_11"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e638969f-d9e3-5cc2-9ffe-abab603a3879",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pci_dss-pci_dss.security_testing.requirement_11-3_stmt",
+        "name": "statement",
+        "prose": "internal scanning"
+       }
+      ],
+      "class": "compliance"
+     },
      {
       "id": "pci_dss-requirement_11_1",
       "title": "Implemented by a Rego rule in frameworks/financial/pci_dss/security_testing/requirement_11.rego (package pci_dss.security_testing.requirement_11); see the rule body.",
@@ -6472,7 +6694,7 @@
    {
     "id": "pci_dss-requirement_2",
     "class": "rego-module",
-    "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
+    "title": "PCI DSS v4.0.1 Requirement 2 - Apply Secure Configurations to All System Components",
     "props": [
      {
       "name": "rego-package",
@@ -7026,7 +7248,7 @@
    "resources": [
     {
      "uuid": "476c7ba7-0ff0-5376-abe9-da22a9cc74e4",
-     "title": "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data",
+     "title": "PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data",
      "props": [
       {
        "name": "rego-package",
@@ -7043,7 +7265,7 @@
     },
     {
      "uuid": "7792e3a7-8984-53ae-8d9a-d03f89b3bf4d",
-     "title": "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components",
+     "title": "PCI DSS v4.0.1 Requirement 8 - Identify Users and Authenticate Access to System Components",
      "props": [
       {
        "name": "rego-package",
@@ -7077,7 +7299,7 @@
     },
     {
      "uuid": "db2aacc2-a186-57d5-ba36-b9047d02e51b",
-     "title": "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
+     "title": "PCI DSS v4.0.1 Requirement 4 - Protect Cardholder Data with Strong Cryptography",
      "props": [
       {
        "name": "rego-package",
@@ -7094,7 +7316,7 @@
     },
     {
      "uuid": "d53b68c9-0b7e-597e-ac7e-21d8e86fd9dc",
-     "title": "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational",
+     "title": "PCI DSS v4.0.1 Requirement 12 - Support Information Security with Organizational",
      "props": [
       {
        "name": "rego-package",
@@ -7111,7 +7333,7 @@
     },
     {
      "uuid": "0c0ef261-474c-5ec6-8ef2-3eded251783b",
-     "title": "PCI DSS v4.0 Requirement 10 - Log and Monitor All Access to System Components",
+     "title": "PCI DSS v4.0.1 Requirement 10 - Log and Monitor All Access to System Components",
      "props": [
       {
        "name": "rego-package",
@@ -7128,7 +7350,7 @@
     },
     {
      "uuid": "c8378400-d333-58f2-a117-b7c52fa10352",
-     "title": "PCI DSS v4.0 Requirement 5 - Protect All Systems and Networks from Malicious Software",
+     "title": "PCI DSS v4.0.1 Requirement 5 - Protect All Systems and Networks from Malicious Software",
      "props": [
       {
        "name": "rego-package",
@@ -7179,7 +7401,7 @@
     },
     {
      "uuid": "57bc86ac-fd9c-5db6-b522-d4afef138cdf",
-     "title": "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)",
+     "title": "PCI DSS v4.0.1 - Main Aggregation Policy (All 12 Requirements)",
      "props": [
       {
        "name": "rego-package",
@@ -7196,7 +7418,7 @@
     },
     {
      "uuid": "0408de57-2d8f-5fdf-bed9-5da9cfafac5c",
-     "title": "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data",
+     "title": "PCI DSS v4.0.1 Requirement 9 - Restrict Physical Access to Cardholder Data",
      "props": [
       {
        "name": "rego-package",
@@ -7213,7 +7435,7 @@
     },
     {
      "uuid": "8adc71f4-1e05-5cc2-8282-d9990107d8dd",
-     "title": "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software",
+     "title": "PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software",
      "props": [
       {
        "name": "rego-package",
@@ -7230,7 +7452,7 @@
     },
     {
      "uuid": "e638969f-d9e3-5cc2-9ffe-abab603a3879",
-     "title": "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly",
+     "title": "PCI DSS v4.0.1 Requirement 11 - Test Security of Systems and Networks Regularly",
      "props": [
       {
        "name": "rego-package",
@@ -7247,7 +7469,7 @@
     },
     {
      "uuid": "6bd879aa-033e-5b33-9a8f-a1c5dd20c099",
-     "title": "PCI DSS v4.0 Requirement 2 - Apply Secure Configurations to All System Components",
+     "title": "PCI DSS v4.0.1 Requirement 2 - Apply Secure Configurations to All System Components",
      "props": [
       {
        "name": "rego-package",

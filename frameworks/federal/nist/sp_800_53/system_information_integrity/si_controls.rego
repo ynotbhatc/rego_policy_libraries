@@ -85,10 +85,13 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"SI-1", "SI-2", "SI-3", "SI-4", "SI-5", "SI-6", "SI-7", "SI-8", "SI-10", "SI-11", "SI-12", "SI-16"}
+
 compliance_report := {
 	"family": "SI",
 	"name": "System and Information Integrity",
-	"controls_evaluated": 12,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

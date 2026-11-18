@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 9
+#     checks: 10
 #     cited: 2
-#     density: section
-#     basis: role
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.personnel_security
 
 import rego.v1
@@ -83,7 +83,7 @@ violation_3_9_2 contains msg if {
 # Aggregate
 # ---------------------------------------------------------------------------
 
-all_violations := array.concat(
+base_violations := array.concat(
 	[v | some v in violation_3_9_1],
 	[v | some v in violation_3_9_2],
 )
@@ -92,6 +92,22 @@ practices := [
 	{"id": "3.9.1", "level": 2, "compliant": compliant_3_9_1},
 	{"id": "3.9.2", "level": 2, "compliant": compliant_3_9_2},
 ]
+
+# ---------------------------------------------------------------------------
+# Unmet practices without a specific finding (fail closed)
+#   A practice whose compliant_N rule is false because a required fact is
+#   missing must surface a violation, so the domain verdict can never be true
+#   while a practice fails.
+# ---------------------------------------------------------------------------
+
+violation_unmet contains msg if {
+	some p in practices
+	not p.compliant == true
+	count([v | some v in base_violations; startswith(v, sprintf("%v:", [p.id]))]) == 0
+	msg := sprintf("%v: evidence missing or requirement not met — all facts required by this practice must be present and passing", [p.id])
+}
+
+all_violations := array.concat(base_violations, sort(violation_unmet))
 
 passing_count := count([p | some p in practices; p.compliant == true])
 
@@ -107,4 +123,5 @@ compliance_report := {
 	"failing": 2 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 }

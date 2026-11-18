@@ -32,16 +32,22 @@ test_semrev_baseline_clean if {
 	count(data.hipaa.audit_controls.violations) == 0 with input as fx.full_input
 }
 
-test_semrev_audit_retention_400_days_fails if {
+test_semrev_audit_retention_400_days_is_advisory_only if {
 	inp := object.union(fx.full_input, {"audit_logging": {"retention_days": 400}})
-	v := data.hipaa.audit_controls.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.audit_controls.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.audit_controls.violations) == 0 with input as inp
 }
 
-test_semrev_audit_retention_missing_fails if {
+test_semrev_audit_retention_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["audit_logging"]), {"audit_logging": object.remove(fx.full_input.audit_logging, ["retention_days"])})
-	v := data.hipaa.audit_controls.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.audit_controls.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.audit_controls.violations) == 0 with input as inp
 }
 
 test_semrev_audit_review_frequency_missing_fails if {

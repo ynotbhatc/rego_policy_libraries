@@ -21,10 +21,11 @@ test_ac_controls_fail_closed_on_empty_input if {
 	not object.get(report, "compliant", false) == true
 }
 
-# semantic review 2026-11-13: AC-15/16/21/23/24/25 must reach the violation set.
+# semantic review 2026-11-13: AC-16/21/23/24/25 must reach the violation set. AC-15 is withdrawn in
+# Rev 5 (incorporated into MP-3) and must NOT (audit 2026-11-17); see test_ac_controls.rego.
 test_review_unattested_controls_raise_violations if {
 	r := data.nist.sp800_53.access_control.compliance_report with input as {}
-	every id in ["AC-15", "AC-16", "AC-21", "AC-23", "AC-24", "AC-25"] {
+	every id in ["AC-16", "AC-21", "AC-23", "AC-24", "AC-25"] {
 		some v in r.violations
 		startswith(v, concat("", ["NIST ", id, ":"]))
 	}
@@ -34,7 +35,6 @@ test_review_reference_monitor_failure_alone_is_noncompliant if {
 	good := {
 		"policy": {"documented": true, "disseminated": true, "reviewed_updated": true},
 		"procedures": {"implementation_documented": true},
-		"automated_marking": {"security_labels": true, "classification_marking": true, "handling_caveats": true},
 		"security_attributes": {"attribute_binding": true, "attribute_association": true, "transmission_preservation": true},
 		"information_sharing": {"user_discretion_limited": true, "automated_guidance": true, "security_attributes_preserved": true},
 		"data_mining": {"detection_techniques": true, "warning_notifications": true, "response_procedures": true},

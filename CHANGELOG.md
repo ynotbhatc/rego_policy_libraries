@@ -8,6 +8,61 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed — external audit of 2026-11-17: standards accuracy in the hand-written frameworks
+
+An external read-only audit of `main` at `ea38b446` listed twenty findings. Each was reproduced before it was changed, and
+every requirement, threshold, count or id changed here was checked against a public primary source (cited in the module).
+Where a standard is licensed and its text could not be read, the module now claims less.
+
+- **Post-quantum readiness (Critical).** The module reported compliant when the cryptographic inventory was omitted, and
+  an asset whose algorithm matched neither list (`Dilithium3`) passed unseen. A missing, malformed or empty inventory is
+  now a finding; every asset is classified (quantum-vulnerable, post-quantum, hybrid, symmetric or hash, known but not
+  NIST-approved, unrecognised) by whole-name matching; an unrecognised name is a finding. RSA, DSA and DH below 2048 bits
+  and ECC below 224 fail in every profile whatever the migration plan says (SP 800-131A Rev. 2). Algorithms that are not
+  NIST-approved fail the `federal` and `nss` profiles only. The report gains `total_controls` and `failed_controls`.
+- **NIST SP 800-53 Rev 5.** Withdrawn AC-15 and SC-19 no longer produce findings. AC-3 passes on any one evidenced
+  access-control model. Organisation-defined parameters (AC-7, AC-11, AC-14, AU-11, IR-2, IR-3) are compared with the
+  organisation's own values. Enhancements are evaluated as their own ids (SC-8(1), SC-28(1), ten AC enhancements, SC-45
+  and SC-45(1)), so a base control cannot fail on an enhancement. FIPS validation is no longer hard-required here. The
+  report declares what it evaluates: 109 ids (92 base controls and 17 enhancements of 1,014) in 7 of 20 families, and
+  failed controls can no longer exceed the total. The label no longer says "all control families".
+- **FedRAMP.** Baseline sizes corrected from the Rev 4 figures to Rev 5 (Low 156, Moderate 323, High 410). The report
+  separates the baseline size from the 10 to 12 checks the module evaluates, and was undefined whenever the result was
+  non-compliant. Citations and impact-level gating follow the Rev 5 profiles; RA-5 has the 30 / 90 / 180-day parameters
+  and an optional known-exploited-vulnerabilities input; SHA-1 is judged by usage. Five evidence fields that passed when
+  absent are now findings.
+- **PCI DSS, relabelled v4.0.1.** 8.3.4 lockout is not more than 10 attempts (was 6). 8.3.9 applies only where a password
+  is the sole factor and accepts dynamic analysis. Rules stricter than the standard no longer gate (a 30-day scan
+  cadence, SAST/DAST, WAF rule sets, EDR, SIEM features and others); three frequencies come from the entity's targeted
+  risk analysis; anti-malware log retention of 360 days no longer passes for 12 months. 8.2.8, 8.3.10.1 and 11.3.1.2 are
+  added. Every numeric threshold in the family is type-checked: a string used to pass.
+- **HIPAA.** Addressable implementation specifications can be met by implementing them or by a documented decision with
+  an equivalent alternative (45 CFR 164.306(d)(3)). Periods, frequencies and mechanisms the regulation does not state
+  (key rotation, password and session rules, TLS versions, backup cadences and many more) moved to a non-scoring
+  `advisories` output that is not cited to the regulation.
+- **CMMC.** Access control, configuration management and incident response fail closed when their inventories are
+  missing. Practices are scored once each against one registry: 15 at Level 1 (FAR 52.204-21 ids per 32 CFR 170.14),
+  110 at Level 2; Level 3 is reported as not evaluated. Eighteen hard-coded values became organisation-defined.
+- **ISO/IEC 27001.** A.8.24 no longer requires a post-quantum plan or specific mechanisms (HSM storage, pinning, key
+  escrow); those are advisories. Library-chosen numbers in eleven controls are compared with the organisation's values.
+- **SOC 2.** The report scores Trust Services Criteria by id (12 common criteria, plus 16 for in-scope categories) and
+  compares idle timeout, log retention and similar values with the entity's own commitments.
+- **Tests and tooling.** Four tests that asserted `count(...) >= 0` now assert something that can fail; the smoke-test
+  generator no longer treats a missing `compliant` field as fail-closed; the coverage stamp's `as_of` changes only when
+  a module's numbers change and is checked; the repo-hygiene control takes its address denylist from input or data.
+- **Removed.** The deprecated `cis.rhel_9` v1.0.0 module (six controls); use `cis_rhel9`.
+- **Documentation.** Stale figures and versions in `docs/COMPARISON.md`, `COVERAGE.md`, `FRAMEWORKS.md`, `SCF_GAP.md` and
+  `TEST_GENERATION.md` corrected. `docs/COMPARISON.md` states what the check count is and is not: a per-file measure,
+  not a count of distinct requirements (CIS RHEL 9 contributes 746 and cites 352 recommendation ids).
+
+### Breaking — inputs and report shapes changed by the audit fixes
+
+PQC, NIST 800-53, FedRAMP, PCI DSS, HIPAA, CMMC, ISO 27001 and SOC 2 each read new inputs (organisation-defined values
+and commitments, alternative-measure decisions, evidence that used to be optional) and report different totals. FedRAMP
+`total_controls` now means checks evaluated, not baseline size. HIPAA, PCI DSS requirement 6 and SOC 2 report fewer
+violations than before, because rules the standards do not contain no longer score. `data.cis.rhel_9` no longer
+resolves. The repo-hygiene control fails when no address denylist is supplied. Each module's header lists its inputs.
+
 ### Added — Regal in CI, bugs category only
 
 - `.regal/ci.yaml` turns every Regal category off except `bugs` and CI lints the library with it on the OPA 1.22.0 leg

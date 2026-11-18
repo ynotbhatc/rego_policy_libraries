@@ -11,7 +11,7 @@ test_empty_ir_without_level_not_compliant if {
 test_missing_level_flagged if {
 	v := data.cmmc.incident_response.violations with input as {"incident_response": full}
 	some x in v
-	contains(x, "FAIL-CLOSED - facts 'input.cmmc_level'")
+	contains(x, "FAIL-CLOSED - input.cmmc_level was not supplied")
 }
 
 test_full_ir_at_level2_compliant if data.cmmc.incident_response.compliant with input as {"cmmc_level": 2, "incident_response": full}

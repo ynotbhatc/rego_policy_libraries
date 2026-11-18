@@ -19,8 +19,9 @@
 #   this module always evaluated them: business associate direct liability and HITECH business associate
 #   agreements (42 U.S.C. §17934), corrective-action readiness (42 U.S.C. §17939 enforcement), electronic access
 #   and the out-of-pocket restriction (42 U.S.C. §17935), and the EHR security / meaningful-use checks (HITECH
-#   EHR incentive provisions, administered by CMS, not part of 45 CFR Subchapter C). Each failing check is a
-#   violation, as before. penalty_awareness, accounting_ehr_expansion and hitech_minimum_necessary never gated the
+#   EHR incentive provisions, administered by CMS, not part of 45 CFR Subchapter C). The BA, BAA, electronic
+#   access and out-of-pocket checks are violations; CAP readiness and the two CMS EHR-incentive checks are
+#   `advisories` (not HIPAA obligations; no effect on `compliant`) since the 2026-11-17 audit follow-up. penalty_awareness, accounting_ehr_expansion and hitech_minimum_necessary never gated the
 #   verdict and are dropped, with the old report sub-objects (no reader exists).
 #
 # Fail-closed: missing or non-object input.hipaa.subpart_d is a FAIL-CLOSED violation; a failed fact, a non-true
@@ -36,17 +37,17 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 29
-#     cited: 20
+#     checks: 26
+#     cited: 19
 #     expected: 17
-#     found: 20
+#     found: 19
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.hitech
 
 import rego.v1
@@ -261,7 +262,9 @@ violations contains "HITECH 42 U.S.C. §17934: business associate agreements do 
 	not baa_hitech_compliant
 }
 
-violations contains "HITECH 42 U.S.C. §17939: corrective action plan readiness, internal compliance monitoring, audit response and OCR cooperation are not evidenced (input.hitech.enforcement.*)" if {
+# 42 U.S.C. §17939 sets the enforcement scheme (penalties, State AG actions); it does not require the entity to
+# hold a CAP template or an audit-response procedure. Library advisory, not part of `compliant`.
+advisories contains "Advisory (library practice, not a statutory or 45 CFR requirement): corrective action plan readiness, internal compliance monitoring, audit response and OCR cooperation are not evidenced (input.hitech.enforcement.*)" if {
 	not cap_readiness
 }
 
@@ -273,11 +276,15 @@ violations contains "HITECH 42 U.S.C. §17935: the out-of-pocket restriction on 
 	not out_of_pocket_restriction
 }
 
-violations contains "HITECH EHR incentive provisions: EHR security controls (unique user id, emergency access, automatic logoff, encryption, tamper-evident audit log, data authentication) are not evidenced (input.hitech.ehr.*)" if {
+# The EHR incentive (meaningful use / Promoting Interoperability) measures are CMS program conditions, not
+# HIPAA obligations; as mandatory checks they also made addressable Security Rule specifications (automatic
+# logoff, encryption, data authentication) mandatory. The Security Rule itself is evaluated in
+# hipaa.security_rule. Library advisories, not part of `compliant` (audit 2026-11-17 follow-up).
+advisories contains "Advisory (CMS EHR incentive program measure, not a HIPAA requirement): EHR security controls (unique user id, emergency access, automatic logoff, encryption, tamper-evident audit log, data authentication) are not evidenced (input.hitech.ehr.*)" if {
 	not ehr_security_controls
 }
 
-violations contains "HITECH EHR incentive provisions: meaningful-use security risk analysis, updates and correction of deficiencies are not evidenced (input.hitech.meaningful_use.*)" if {
+advisories contains "Advisory (CMS EHR incentive program measure, not a HIPAA requirement): meaningful-use security risk analysis, updates and correction of deficiencies are not evidenced (input.hitech.meaningful_use.*)" if {
 	not meaningful_use_security
 }
 
@@ -429,4 +436,5 @@ report := {
 	"out_of_scope": out_of_scope,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 }

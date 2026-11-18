@@ -165,6 +165,11 @@
         "id": "enforcement_ansible-AAC-ANS-003_stmt",
         "name": "statement",
         "prose": "%s: lab address %s at %v — resolve through site_config (opa_*_url, pg_host, grafana_url, aac_host)"
+       },
+       {
+        "id": "enforcement_ansible-AAC-ANS-003_obj.1",
+        "name": "assessment-objective",
+        "prose": "%s: evidence missing — no address denylist supplied (input.lab_addresses or data.aac.hygiene.lab_addresses), so lab addresses were not checked"
        }
       ],
       "class": "enforcement"

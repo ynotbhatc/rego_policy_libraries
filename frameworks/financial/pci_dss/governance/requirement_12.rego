@@ -1,8 +1,8 @@
-# PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational
+# PCI DSS v4.0.1 Requirement 12 - Support Information Security with Organizational
 # Policies and Programs
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 12 - Support Information Security with Organizational"
+# title: "PCI DSS v4.0.1 Requirement 12 - Support Information Security with Organizational"
 # custom:
 #   class: compliance
 #   framework: pci_dss

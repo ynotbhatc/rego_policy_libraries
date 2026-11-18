@@ -6,17 +6,42 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 15
+#     checks: 17
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.awareness_training
 
 import rego.v1
+
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
 
 # =============================================================================
 # CMMC 2.0 — Domain 3.2: Awareness & Training
@@ -34,7 +59,7 @@ default compliant_3_2_1 := false
 compliant_3_2_1 if {
 	input.training.security_awareness_program == true
 	input.training.all_users_trained == true
-	input.training.training_frequency_days <= 365
+	_at_most(["training", "training_frequency_days"], "awareness_training_interval_days")
 }
 
 violation_3_2_1 contains msg if {
@@ -47,9 +72,17 @@ violation_3_2_1 contains msg if {
 	msg := "3.2.1: Not all users have completed security awareness training"
 }
 
+violation_3_2_1 contains "3.2.1: evidence missing - input.org_defined.awareness_training_interval_days (organisation-defined value, NIST SP 800-171A (R2 3.2.1 names no period)) not supplied or not a number" if {
+	not _odp("awareness_training_interval_days")
+}
+
+violation_3_2_1 contains "3.2.1: evidence missing - input.training.training_frequency_days not collected or not a number" if {
+	not _actual(["training", "training_frequency_days"])
+}
+
 violation_3_2_1 contains msg if {
-	input.training.training_frequency_days > 365
-	msg := sprintf("3.2.1: Security awareness training interval (%v days) exceeds annual requirement", [input.training.training_frequency_days])
+	_actual(["training", "training_frequency_days"]) > _odp("awareness_training_interval_days")
+	msg := sprintf("3.2.1: security awareness delivered every %v days, beyond the organisation-defined interval of %v days", [_actual(["training", "training_frequency_days"]), _odp("awareness_training_interval_days")])
 }
 
 # ---------------------------------------------------------------------------
@@ -167,4 +200,5 @@ compliance_report := {
 	"failing": 3 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 }

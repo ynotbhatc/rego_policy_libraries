@@ -6,14 +6,14 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 22
-#     cited: 4
-#     density: sized
-#     basis: size
+#     checks: 8
+#     cited: 3
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.transmission_security
 
 import rego.v1
@@ -25,9 +25,11 @@ import rego.v1
 # Implement technical security measures to guard against unauthorized access
 # to ePHI transmitted over electronic communications networks.
 #
-# Required:    164.312(e)(1) - Transmission security
+# Standard:    164.312(e)(1) - Transmission security
 # Addressable: 164.312(e)(2)(i)  - Integrity controls
 #              164.312(e)(2)(ii) - Encryption
+# Findings about the absence of encryption in transit are cited to (e)(2)(ii), the addressable
+# specification, not to the (e)(1) standard, so the 164.306(d)(3) alternative applies to them.
 #
 # Input shape:
 #   input.network               - network configuration
@@ -38,11 +40,49 @@ import rego.v1
 #   input.api                   - API security configuration
 # =============================================================================
 
+_addressable_ids := {"164.312(e)(2)(i)", "164.312(e)(2)(ii)"}
+
+# Addressable specifications (45 CFR 164.306(d)(3)): implemented, or documented as not reasonable and
+# appropriate together with an equivalent alternative measure (or documentation that none is reasonable
+# and appropriate), read from input.hipaa.addressable_decisions["<cfr id>"] =
+#   {"not_reasonable_and_appropriate_documented": true,
+#    "equivalent_alternative_implemented": true  OR  "no_reasonable_alternative_documented": true}
+# A finding cited to an addressable paragraph with that decision evidenced is not a violation (listed in
+# addressed_by_alternative); with neither path evidenced the finding stands (fail closed).
+_decision(id) := d if {
+	d := object.get(input, ["hipaa", "addressable_decisions", id], null)
+	is_object(d)
+}
+
+_alternative_documented(id) if {
+	id in _addressable_ids
+	d := _decision(id)
+	d.not_reasonable_and_appropriate_documented == true
+	_alternative_or_none(d)
+}
+
+_alternative_or_none(d) if d.equivalent_alternative_implemented == true
+
+_alternative_or_none(d) if d.no_reasonable_alternative_documented == true
+
+_cited(msg) := trim_space(split(trim_prefix(msg, "HIPAA "), ":")[0])
+
+_kept(msg) if not _alternative_documented(_cited(msg))
+
+addressed_by_alternative contains id if {
+	some id in _addressable_ids
+	_alternative_documented(id)
+}
+
 # ---------------------------------------------------------------------------
 # Deprecated protocols — never acceptable for ePHI
 # ---------------------------------------------------------------------------
 
-deprecated_protocols := {"SSLv2", "SSLv3", "TLSv1.0", "TLSv1.1", "HTTP", "FTP", "Telnet", "SMTP_plaintext"}
+# Plaintext protocols carry ePHI unencrypted (164.312(e)(2)(ii)); old SSL/TLS versions are encryption the
+# library considers weak, which the regulation does not grade (advisory).
+plaintext_protocols := {"HTTP", "FTP", "Telnet", "SMTP_plaintext"}
+
+deprecated_protocols := {"SSLv2", "SSLv3", "TLSv1.0", "TLSv1.1"} | plaintext_protocols
 
 weak_ciphers := {
 	"RC4", "DES", "3DES", "EXPORT", "NULL", "ANON",
@@ -58,7 +98,7 @@ violation_transmission_security contains msg if {
 	some phi_system in input.phi_systems
 	not phi_system.transmission_encrypted
 	msg := sprintf(
-		"HIPAA 164.312(e)(1): System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
+		"HIPAA 164.312(e)(2)(ii): System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
 		[phi_system.name],
 	)
 }
@@ -66,27 +106,38 @@ violation_transmission_security contains msg if {
 violation_transmission_security contains msg if {
 	some phi_system in input.phi_systems
 	some protocol in phi_system.protocols_in_use
-	protocol in deprecated_protocols
+	protocol in plaintext_protocols
 	msg := sprintf(
-		"HIPAA 164.312(e)(1): System '%v' uses deprecated protocol '%v' for ePHI transmission. Use TLS 1.2 or higher.",
+		"HIPAA 164.312(e)(2)(ii): System '%v' uses unencrypted protocol '%v' for ePHI transmission.",
 		[phi_system.name, protocol],
 	)
 }
 
-violation_transmission_security contains msg if {
+advisories contains msg if {
+	some phi_system in input.phi_systems
+	some protocol in phi_system.protocols_in_use
+	protocol in deprecated_protocols
+	not protocol in plaintext_protocols
+	msg := sprintf(
+		"Advisory (library practice, not a 45 CFR requirement): system '%v' uses '%v'; the library suggests TLS 1.2 or higher.",
+		[phi_system.name, protocol],
+	)
+}
+
+advisories contains msg if {
 	not input.network.phi_network_segmented
-	msg := "HIPAA 164.312(e)(1): Network carrying ePHI is not segmented. ePHI traffic should be isolated from general network traffic."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Network carrying ePHI is not segmented. ePHI traffic should be isolated from general network traffic."
 }
 
 # ---------------------------------------------------------------------------
 # TLS Configuration
 # ---------------------------------------------------------------------------
 
-violation_tls contains msg if {
-	input.tls.minimum_version
+advisories contains msg if {
+	object.get(input, ["tls", "minimum_version"], null) != null
 	not _tls_version_acceptable(input.tls.minimum_version)
 	msg := sprintf(
-		"HIPAA 164.312(e)(2)(ii): Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended.",
+		"Advisory (library practice, not a 45 CFR requirement): Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended.",
 		[input.tls.minimum_version],
 	)
 }
@@ -96,61 +147,62 @@ _tls_version_acceptable(v) if {
 	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
 }
 
-violation_tls contains msg if {
+advisories contains msg if {
 	not is_string(object.get(input, ["tls", "minimum_version"], null))
 	not is_number(object.get(input, ["tls", "minimum_version"], null))
-	msg := "HIPAA 164.312(e)(2)(ii): evidence missing — tls.minimum_version not collected. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — tls.minimum_version not collected. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended."
 }
 
-violation_tls contains msg if {
+advisories contains msg if {
 	some cipher in input.tls.enabled_ciphers
 	cipher in weak_ciphers
 	msg := sprintf(
-		"HIPAA 164.312(e)(2)(ii): Weak cipher suite '%v' is enabled. Remove all weak ciphers from TLS configuration.",
+		"Advisory (library practice, not a 45 CFR requirement): Weak cipher suite '%v' is enabled. Remove all weak ciphers from TLS configuration.",
 		[cipher],
 	)
 }
 
-violation_tls contains msg if {
+advisories contains msg if {
 	not input.tls.certificate_expiry_monitoring
-	msg := "HIPAA 164.312(e)(2)(ii): TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
+	msg := "Advisory (library practice, not a 45 CFR requirement): TLS certificate expiry is not monitored. Expired certificates break encrypted ePHI transmission."
 }
 
-violation_tls contains msg if {
+advisories contains msg if {
+	is_number(input.tls.certificate_expiry_days)
 	input.tls.certificate_expiry_days < 30
 	msg := sprintf(
-		"HIPAA 164.312(e)(2)(ii): TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure.",
+		"Advisory (library practice, not a 45 CFR requirement): TLS certificate expires in %v days. Renew immediately to prevent unencrypted ePHI exposure.",
 		[input.tls.certificate_expiry_days],
 	)
 }
 
-violation_tls contains msg if {
+advisories contains msg if {
 	not input.tls.mutual_tls_for_phi_apis
-	msg := "HIPAA 164.312(e)(2)(ii): APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
+	msg := "Advisory (library practice, not a 45 CFR requirement): APIs transmitting ePHI do not use mutual TLS (mTLS). mTLS provides stronger authentication for ePHI endpoints."
 }
 
 # ---------------------------------------------------------------------------
 # VPN Requirements
 # ---------------------------------------------------------------------------
 
-violation_vpn contains msg if {
+advisories contains msg if {
 	input.network.remote_phi_access_enabled
 	not input.vpn.required_for_remote_phi_access
-	msg := "HIPAA 164.312(e)(1): Remote ePHI access is permitted without VPN. VPN or equivalent encrypted tunnel is required."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Remote ePHI access is permitted without VPN. VPN or equivalent encrypted tunnel is required."
 }
 
-violation_vpn contains msg if {
+advisories contains msg if {
 	input.vpn.required_for_remote_phi_access
 	input.vpn.protocol in {"PPTP", "L2TP_no_ipsec"}
 	msg := sprintf(
-		"HIPAA 164.312(e)(1): VPN protocol '%v' is insecure. Use IKEv2/IPsec, OpenVPN, or WireGuard.",
+		"Advisory (library practice, not a 45 CFR requirement): VPN protocol '%v' is insecure. Use IKEv2/IPsec, OpenVPN, or WireGuard.",
 		[input.vpn.protocol],
 	)
 }
 
-violation_vpn contains msg if {
+advisories contains msg if {
 	input.vpn.split_tunneling_enabled
-	msg := "HIPAA 164.312(e)(1): VPN split tunneling is enabled. ePHI traffic must route entirely through the encrypted VPN tunnel."
+	msg := "Advisory (library practice, not a 45 CFR requirement): VPN split tunneling is enabled. ePHI traffic must route entirely through the encrypted VPN tunnel."
 }
 
 # ---------------------------------------------------------------------------
@@ -158,17 +210,20 @@ violation_vpn contains msg if {
 # Ensure ePHI is not improperly modified during transmission
 # ---------------------------------------------------------------------------
 
+# 164.312(e)(2)(i): measures ensuring transmitted ePHI is not improperly modified without detection. Message
+# authentication is one; a direct statement of the implemented measure is the other.
 violation_transmission_integrity contains msg if {
-	not input.network.message_authentication_enabled
-	msg := "HIPAA 164.312(e)(2)(i): Message authentication (MAC/HMAC) is not enabled for ePHI transmission. Transmission integrity cannot be verified."
+	not input.network.message_authentication_enabled == true
+	not input.network.transmission_integrity_controls_implemented == true
+	msg := "HIPAA 164.312(e)(2)(i): no measure ensuring transmitted ePHI is not improperly modified without detection is evidenced (network.message_authentication_enabled or network.transmission_integrity_controls_implemented not true)."
 }
 
-violation_transmission_integrity contains msg if {
+advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.api_endpoint == true
 	not phi_system.request_signing_enabled
 	msg := sprintf(
-		"HIPAA 164.312(e)(2)(i): API endpoint '%v' transmitting ePHI does not use request signing. Implement HMAC or digital signatures.",
+		"Advisory (library practice, not a 45 CFR requirement): API endpoint '%v' transmitting ePHI does not use request signing. Implement HMAC or digital signatures.",
 		[phi_system.name],
 	)
 }
@@ -180,24 +235,33 @@ violation_transmission_integrity contains msg if {
 violation_email contains msg if {
 	input.email.phi_sent_via_email
 	not input.email.encrypted_email_required
-	msg := "HIPAA 164.312(e)(2)(ii): ePHI is sent via email without encryption enforcement. Require S/MIME or PGP for all ePHI email."
+	msg := "HIPAA 164.312(e)(2)(ii): ePHI is sent via email without encryption enforcement."
 }
 
-violation_email contains msg if {
+advisories contains msg if {
 	input.email.phi_sent_via_email
 	not input.email.dlp_enabled
-	msg := "HIPAA 164.312(e)(1): Data Loss Prevention (DLP) is not enabled on email. DLP prevents accidental unencrypted ePHI transmission."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Data Loss Prevention (DLP) is not enabled on email. DLP prevents accidental unencrypted ePHI transmission."
 }
 
 # ---------------------------------------------------------------------------
 # All violations
 # ---------------------------------------------------------------------------
 
-violations contains msg if some msg in violation_transmission_security
-violations contains msg if some msg in violation_tls
-violations contains msg if some msg in violation_vpn
-violations contains msg if some msg in violation_transmission_integrity
-violations contains msg if some msg in violation_email
+violations contains msg if {
+	some msg in violation_transmission_security
+	_kept(msg)
+}
+
+violations contains msg if {
+	some msg in violation_transmission_integrity
+	_kept(msg)
+}
+
+violations contains msg if {
+	some msg in violation_email
+	_kept(msg)
+}
 
 # Fail-closed: no ePHI systems in scope → cannot certify this safeguard
 violations contains msg if {
@@ -222,10 +286,10 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
+	"addressed_by_alternative": addressed_by_alternative,
 	"controls": {
 		"transmission_encrypted": count(violation_transmission_security) == 0,
-		"tls_configuration": count(violation_tls) == 0,
-		"vpn_required": count(violation_vpn) == 0,
 		"transmission_integrity": count(violation_transmission_integrity) == 0,
 		"email_protection": count(violation_email) == 0,
 	},

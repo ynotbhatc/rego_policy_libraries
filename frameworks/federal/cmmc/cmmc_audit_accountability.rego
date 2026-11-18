@@ -6,17 +6,42 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 41
+#     checks: 47
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.audit_accountability
 
 import rego.v1
+
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
 
 # =============================================================================
 # CMMC 2.0 — Domain 3.3: Audit & Accountability
@@ -33,7 +58,7 @@ default compliant_3_3_1 := false
 
 compliant_3_3_1 if {
 	input.audit.logging_enabled == true
-	input.audit.log_retention_days >= 90
+	_at_least(["audit", "log_retention_days"], "audit_log_retention_days")
 	input.audit.auditd_active == true
 }
 
@@ -42,9 +67,17 @@ violation_3_3_1 contains msg if {
 	msg := "3.3.1: System audit logging is not enabled"
 }
 
+violation_3_3_1 contains "3.3.1: evidence missing - input.org_defined.audit_log_retention_days (organisation-defined value, NIST SP 800-171A 3.3.1[e]) not supplied or not a number" if {
+	not _odp("audit_log_retention_days")
+}
+
+violation_3_3_1 contains "3.3.1: evidence missing - input.audit.log_retention_days not collected or not a number" if {
+	not _actual(["audit", "log_retention_days"])
+}
+
 violation_3_3_1 contains msg if {
-	input.audit.log_retention_days < 90
-	msg := sprintf("3.3.1: Audit log retention (%v days) is less than 90 days", [input.audit.log_retention_days])
+	_actual(["audit", "log_retention_days"]) < _odp("audit_log_retention_days")
+	msg := sprintf("3.3.1: audit records retained %v days, less than the organisation-defined %v days", [_actual(["audit", "log_retention_days"]), _odp("audit_log_retention_days")])
 }
 
 violation_3_3_1 contains msg if {
@@ -88,7 +121,7 @@ default compliant_3_3_3 := false
 
 compliant_3_3_3 if {
 	input.audit.event_review_process == true
-	input.audit.last_review_days_ago <= 365
+	_at_most(["audit", "last_review_days_ago"], "audit_event_review_interval_days")
 }
 
 violation_3_3_3 contains msg if {
@@ -96,9 +129,17 @@ violation_3_3_3 contains msg if {
 	msg := "3.3.3: No documented process for reviewing and updating logged audit events"
 }
 
+violation_3_3_3 contains "3.3.3: evidence missing - input.org_defined.audit_event_review_interval_days (organisation-defined value, NIST SP 800-171A 3.3.3[a]) not supplied or not a number" if {
+	not _odp("audit_event_review_interval_days")
+}
+
+violation_3_3_3 contains "3.3.3: evidence missing - input.audit.last_review_days_ago not collected or not a number" if {
+	not _actual(["audit", "last_review_days_ago"])
+}
+
 violation_3_3_3 contains msg if {
-	input.audit.last_review_days_ago > 365
-	msg := sprintf("3.3.3: Audit event review last performed %v days ago (must be annual)", [input.audit.last_review_days_ago])
+	_actual(["audit", "last_review_days_ago"]) > _odp("audit_event_review_interval_days")
+	msg := sprintf("3.3.3: logged event types last reviewed %v days ago, beyond the organisation-defined review interval of %v days", [_actual(["audit", "last_review_days_ago"]), _odp("audit_event_review_interval_days")])
 }
 
 # ---------------------------------------------------------------------------
@@ -237,7 +278,30 @@ default compliant_3_3_9 := false
 compliant_3_3_9 if {
 	input.audit.management_restricted == true
 	count(input.audit.audit_admins) > 0
-	count(input.audit.audit_admins) <= 5
+	_admins_within_defined_subset
+}
+
+# 3.3.9: the subset of privileged users is organisation-defined (NIST SP 800-171A
+# 3.3.9[a]); the former fixed maximum of 5 is replaced by membership of that subset.
+_defined_subset := {u | some u in input.org_defined.audit_logging_managers} if is_array(input.org_defined.audit_logging_managers)
+
+_admins_within_defined_subset if {
+	_defined_subset
+	is_array(input.audit.audit_admins)
+	every a in input.audit.audit_admins {
+		a in _defined_subset
+	}
+}
+
+violation_3_3_9 contains "3.3.9: evidence missing - input.org_defined.audit_logging_managers (organisation-defined subset of privileged users, NIST SP 800-171A 3.3.9[a]) not supplied or not an array" if {
+	not is_array(object.get(input, ["org_defined", "audit_logging_managers"], null))
+}
+
+violation_3_3_9 contains msg if {
+	_defined_subset
+	some a in input.audit.audit_admins
+	not a in _defined_subset
+	msg := sprintf("3.3.9: '%v' manages audit logging but is not in the organisation-defined subset of privileged users", [a])
 }
 
 violation_3_3_9 contains msg if {
@@ -369,4 +433,5 @@ compliance_report := {
 	"failing": 9 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 }

@@ -2509,16 +2509,16 @@
     ],
     "controls": [
      {
-      "id": "pqc-pqc.main-1",
-      "title": "PQC Input Contract: unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)",
+      "id": "pqc-data.input_contract_and_inventory_evidence",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#1"
+        "value": "data.input_contract_and_inventory_evidence"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#1"
+        "value": "data.input_contract_and_inventory_evidence"
        },
        {
         "name": "rego-package",
@@ -2534,24 +2534,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-1_stmt",
+        "id": "pqc-data.input_contract_and_inventory_evidence_stmt",
         "name": "statement",
-        "prose": "PQC Input Contract: unrecognized profile %v — must be one of general, federal, nss (profile-gated checks were NOT evaluated)"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-OMB-M-26-15",
-      "title": "Automated cryptographic inventory (systems, protocols, libraries, certificates) is not complete",
+      "id": "pqc-inventory.complete",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "PQC OMB M-26-15"
+        "value": "inventory.complete"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC OMB M-26-15"
+        "value": "inventory.complete"
        },
        {
         "name": "rego-package",
@@ -2567,34 +2567,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-PQC-OMB-M-26-15_stmt",
+        "id": "pqc-inventory.complete_stmt",
         "name": "statement",
-        "prose": "Automated cryptographic inventory (systems, protocols, libraries, certificates) is not complete"
-       },
-       {
-        "id": "pqc-PQC-OMB-M-26-15_obj.1",
-        "name": "assessment-objective",
-        "prose": "Cryptographic inventory has not been refreshed within the last year"
-       },
-       {
-        "id": "pqc-PQC-OMB-M-26-15_obj.2",
-        "name": "assessment-objective",
-        "prose": "TLS endpoints do not support PQC key establishment (hybrid ML-KEM groups acceptable)"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-NIST-IR-8547",
-      "title": "Data with long confidentiality lifetimes has not been identified for harvest-now-decrypt-later risk prioritization",
+      "id": "pqc-inventory.refreshed_within_year",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "PQC NIST IR 8547"
+        "value": "inventory.refreshed_within_year"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC NIST IR 8547"
+        "value": "inventory.refreshed_within_year"
        },
        {
         "name": "rego-package",
@@ -2610,29 +2600,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-PQC-NIST-IR-8547_stmt",
+        "id": "pqc-inventory.refreshed_within_year_stmt",
         "name": "statement",
-        "prose": "Data with long confidentiality lifetimes has not been identified for harvest-now-decrypt-later risk prioritization"
-       },
-       {
-        "id": "pqc-PQC-NIST-IR-8547_obj.1",
-        "name": "assessment-objective",
-        "prose": "Asset '%s' uses quantum-vulnerable algorithm '%s' for %s with no PQC migration planned (deprecated after 2030, disallowed after 2035)"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-EO-14412",
-      "title": "No prioritized, milestoned PQC migration plan exists",
+      "id": "pqc-inventory.hndl_data_identified",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "PQC EO 14412"
+        "value": "inventory.hndl_data_identified"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC EO 14412"
+        "value": "inventory.hndl_data_identified"
        },
        {
         "name": "rego-package",
@@ -2648,39 +2633,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-PQC-EO-14412_stmt",
+        "id": "pqc-inventory.hndl_data_identified_stmt",
         "name": "statement",
-        "prose": "No prioritized, milestoned PQC migration plan exists"
-       },
-       {
-        "id": "pqc-PQC-EO-14412_obj.1",
-        "name": "assessment-objective",
-        "prose": "Key-establishment migration to ML-KEM (FIPS 203) for high-value/high-impact systems is not on track for 2030-12-31"
-       },
-       {
-        "id": "pqc-PQC-EO-14412_obj.2",
-        "name": "assessment-objective",
-        "prose": "Digital-signature migration to ML-DSA/SLH-DSA (FIPS 204/205) for high-value/high-impact systems is not on track for 2031-12-31"
-       },
-       {
-        "id": "pqc-PQC-EO-14412_obj.3",
-        "name": "assessment-objective",
-        "prose": "FIPS PQC requirements are not flowed down to covered contractors and vendors"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-pqc.main-2",
-      "title": "PQC Input Contract: crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)",
+      "id": "pqc-inventory.migration_plan_exists",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#2"
+        "value": "inventory.migration_plan_exists"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#2"
+        "value": "inventory.migration_plan_exists"
        },
        {
         "name": "rego-package",
@@ -2696,24 +2666,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-2_stmt",
+        "id": "pqc-inventory.migration_plan_exists_stmt",
         "name": "statement",
-        "prose": "PQC Input Contract: crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-pqc.main-3",
-      "title": "PQC Input Contract: crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required",
+      "id": "pqc-data.unrecognised_algorithm",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#3"
+        "value": "data.unrecognised_algorithm"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#3"
+        "value": "data.unrecognised_algorithm"
        },
        {
         "name": "rego-package",
@@ -2729,24 +2699,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-3_stmt",
+        "id": "pqc-data.unrecognised_algorithm_stmt",
         "name": "statement",
-        "prose": "PQC Input Contract: crypto_inventory[%v] is malformed — asset, algorithm (single token), and a valid usage (key_establishment|signature|symmetric|hashing) are required"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-FIPS-180-4",
-      "title": "Asset '%s' uses broken hash algorithm '%s', which is disallowed for all cryptographic use",
+      "id": "pqc-data.quantum_vulnerable_migration",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "PQC FIPS 180-4"
+        "value": "data.quantum_vulnerable_migration"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC FIPS 180-4"
+        "value": "data.quantum_vulnerable_migration"
        },
        {
         "name": "rego-package",
@@ -2762,24 +2732,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-PQC-FIPS-180-4_stmt",
+        "id": "pqc-data.quantum_vulnerable_migration_stmt",
         "name": "statement",
-        "prose": "Asset '%s' uses broken hash algorithm '%s', which is disallowed for all cryptographic use"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-pqc.main-4",
-      "title": "PQC Crypto-Agility: Cryptographic algorithms cannot be replaced without application redesign",
+      "id": "pqc-data.undersized_public_key",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#4"
+        "value": "data.undersized_public_key"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#4"
+        "value": "data.undersized_public_key"
        },
        {
         "name": "rego-package",
@@ -2795,24 +2765,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-4_stmt",
+        "id": "pqc-data.undersized_public_key_stmt",
         "name": "statement",
-        "prose": "PQC Crypto-Agility: Cryptographic algorithms cannot be replaced without application redesign"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-pqc.main-5",
-      "title": "PQC Crypto-Agility: No maintained inventory of cryptographic libraries and their PQC support status",
+      "id": "pqc-data.nist_approved_only",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#5"
+        "value": "data.nist_approved_only"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#5"
+        "value": "data.nist_approved_only"
        },
        {
         "name": "rego-package",
@@ -2828,24 +2798,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-5_stmt",
+        "id": "pqc-data.nist_approved_only_stmt",
         "name": "statement",
-        "prose": "PQC Crypto-Agility: No maintained inventory of cryptographic libraries and their PQC support status"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-pqc.main-6",
-      "title": "PQC Crypto-Agility: Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked",
+      "id": "pqc-data.legacy_112_bit_hash",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "pqc.main#6"
+        "value": "data.legacy_112_bit_hash"
        },
        {
         "name": "alt-identifier",
-        "value": "pqc.main#6"
+        "value": "data.legacy_112_bit_hash"
        },
        {
         "name": "rego-package",
@@ -2861,24 +2831,24 @@
       ],
       "parts": [
        {
-        "id": "pqc-pqc.main-6_stmt",
+        "id": "pqc-data.legacy_112_bit_hash_stmt",
         "name": "statement",
-        "prose": "PQC Crypto-Agility: Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "pqc-PQC-CNSA-2.0",
-      "title": "Software/firmware signing does not use ML-DSA-87, LMS, or XMSS (SP 800-208)",
+      "id": "pqc-data.disallowed_symmetric_or_hash",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
       "props": [
        {
         "name": "label",
-        "value": "PQC CNSA 2.0"
+        "value": "data.disallowed_symmetric_or_hash"
        },
        {
         "name": "alt-identifier",
-        "value": "PQC CNSA 2.0"
+        "value": "data.disallowed_symmetric_or_hash"
        },
        {
         "name": "rego-package",
@@ -2894,24 +2864,372 @@
       ],
       "parts": [
        {
-        "id": "pqc-PQC-CNSA-2.0_stmt",
+        "id": "pqc-data.disallowed_symmetric_or_hash_stmt",
         "name": "statement",
-        "prose": "Software/firmware signing does not use ML-DSA-87, LMS, or XMSS (SP 800-208)"
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-agility.algorithms_replaceable",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "agility.algorithms_replaceable"
        },
        {
-        "id": "pqc-PQC-CNSA-2.0_obj.1",
-        "name": "assessment-objective",
-        "prose": "New NSS acquisitions do not require CNSA 2.0 algorithm support (mandatory from 2027-01-01)"
+        "name": "alt-identifier",
+        "value": "agility.algorithms_replaceable"
        },
        {
-        "id": "pqc-PQC-CNSA-2.0_obj.2",
-        "name": "assessment-objective",
-        "prose": "VPN/router/network equipment is not on track for CNSA 2.0 exclusive use by 2030"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-agility.algorithms_replaceable_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-agility.library_inventory_maintained",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "agility.library_inventory_maintained"
        },
        {
-        "id": "pqc-PQC-CNSA-2.0_obj.3",
-        "name": "assessment-objective",
-        "prose": "Symmetric/hash usage is not restricted to AES-256 and SHA-384/SHA-512"
+        "name": "alt-identifier",
+        "value": "agility.library_inventory_maintained"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-agility.library_inventory_maintained_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-agility.vendor_roadmaps_tracked",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "agility.vendor_roadmaps_tracked"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "agility.vendor_roadmaps_tracked"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-agility.vendor_roadmaps_tracked_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-federal.key_establishment_migration_on_track",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "federal.key_establishment_migration_on_track"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "federal.key_establishment_migration_on_track"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-federal.key_establishment_migration_on_track_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-federal.signature_migration_on_track",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "federal.signature_migration_on_track"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "federal.signature_migration_on_track"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-federal.signature_migration_on_track_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-federal.tls_endpoints_support_pqc_kem",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "federal.tls_endpoints_support_pqc_kem"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "federal.tls_endpoints_support_pqc_kem"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-federal.tls_endpoints_support_pqc_kem_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-federal.contractor_fips_pqc_required",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "federal.contractor_fips_pqc_required"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "federal.contractor_fips_pqc_required"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-federal.contractor_fips_pqc_required_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-nss.sw_fw_signing_cnsa",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nss.sw_fw_signing_cnsa"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nss.sw_fw_signing_cnsa"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-nss.sw_fw_signing_cnsa_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-nss.acquisitions_require_cnsa",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nss.acquisitions_require_cnsa"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nss.acquisitions_require_cnsa"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-nss.acquisitions_require_cnsa_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-nss.network_equipment_on_track",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nss.network_equipment_on_track"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nss.network_equipment_on_track"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-nss.network_equipment_on_track_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "pqc-nss.symmetric_cnsa_compliant",
+      "title": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nss.symmetric_cnsa_compliant"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nss.symmetric_cnsa_compliant"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "pqc.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#aff00b5e-155d-5976-8dea-7ee12e8e44a7",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "pqc-nss.symmetric_cnsa_compliant_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/pqc/pqc_main.rego (package pqc.main); see the rule body."
        }
       ],
       "class": "compliance"

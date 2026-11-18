@@ -130,7 +130,7 @@ technical := {
 	"session": {"automatic_logoff_enabled": true, "inactivity_timeout_minutes": 10, "screen_lock_enabled": true},
 	"encryption": {"key_management_policy_documented": true, "key_rotation_days": 90},
 	"integrity": {
-		"change_management_process": true, "checksum_or_hash_enabled": true,
+		"change_management_process": true, "checksum_or_hash_enabled": true, "policies_and_procedures_implemented": true,
 		"digital_signatures_for_phi_export": true, "hash_algorithm": "SHA-256",
 		"media_reuse_without_sanitization": false, "secure_deletion_policy": true,
 		"write_protection_on_archived_phi": true,

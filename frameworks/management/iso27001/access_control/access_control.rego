@@ -18,6 +18,25 @@ package iso27001.access_control
 
 import rego.v1
 
+# Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described
+# as fixing periods, counts or percentages, and the licensed text was not read; the limits this module
+# used to hard-code are now the organisation's own stated values, read from
+# input.iso27001.org_defined.<name>. The observed value is compared with it; either one missing or not
+# a number fails the check (is_number guards: OPA orders null below numbers, strings above).
+_odp(name) := v if {
+	v := input.iso27001.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
 # Defaults so report/details never collapse to {} on empty input
 default business_requirements_met := false
 
@@ -130,10 +149,10 @@ secret_authentication_management if {
 }
 
 password_policy_compliant if {
-	input.authentication.password_policy.min_length >= 8
+	_at_least(["authentication", "password_policy", "min_length"], "password_min_length")
 	input.authentication.password_policy.complexity_required == true
 	input.authentication.password_policy.expiry_enabled == true
-	input.authentication.password_policy.history_count >= 12
+	_at_least(["authentication", "password_policy", "history_count"], "password_history_count")
 	input.authentication.password_policy.lockout_enabled == true
 }
 
@@ -158,7 +177,7 @@ access_rights_review if {
 	input.access_review.remediation_tracked == true
 
 	# Reviews should be at least quarterly
-	input.access_review.frequency_days <= 120
+	_at_most(["access_review", "frequency_days"], "access_review_interval_days")
 }
 
 # A.9.2.6 - Removal or adjustment of access rights (2022: A.5.18)
@@ -212,10 +231,10 @@ secure_logon_procedures if {
 	input.logon.warning_message_displayed == true
 
 	# Session timeout should be reasonable (max 30 minutes)
-	input.logon.session_timeout_minutes <= 30
+	_at_most(["logon", "session_timeout_minutes"], "session_timeout_minutes")
 
 	# Failed attempt lockout should be strict
-	input.logon.max_failed_attempts <= 5
+	_at_most(["logon", "max_failed_attempts"], "max_failed_logon_attempts")
 }
 
 # A.9.4.3 - Password management system (2022: A.5.17)

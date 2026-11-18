@@ -64,7 +64,9 @@ test_empty_input_reports_all_failing if {
 
 test_empty_input_report_is_defined if {
 	# report must resolve (not undefined/null) even with no facts
-	is_object(main.compliance_report) with input as {}
+	r := main.compliance_report with input as {}
+	is_object(r)
+	r.compliant == false
 }
 
 # ── A single missing control fails exactly one check ──────────────────────────

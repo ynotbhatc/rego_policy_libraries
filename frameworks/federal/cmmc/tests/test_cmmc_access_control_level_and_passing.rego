@@ -14,7 +14,7 @@ test_missing_cmmc_level_fails_closed if {
 	not data.cmmc.access_control.compliant with input as inp
 	v := data.cmmc.access_control.violations with input as inp
 	some x in v
-	contains(x, "FAIL-CLOSED - facts 'input.cmmc_level'")
+	contains(x, "FAIL-CLOSED - input.cmmc_level was not supplied")
 }
 
 test_level_present_has_no_fail_closed_violation if {
@@ -30,6 +30,12 @@ test_passing_counts_practices_not_violations if {
 		{"username": "b", "authorized": false, "system_access": true},
 	]}
 	r := data.cmmc.access_control.compliance_report with input as inp
-	r.violation_count == 4
-	r.passing == 19
+
+	# 3.1.1 x2 (one per user), 3.1.2, 3.1.20, 3.1.22 (no cui_systems)
+	r.violation_count == 5
+
+	# Level 1 assessed: the four Level 1 practices fail; the 18 Level 2 practices
+	# are not decided at Level 1, so none of the 22 is passing.
+	r.passing == 0
+	r.total_practices == 22
 }
