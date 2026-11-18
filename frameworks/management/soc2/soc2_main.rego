@@ -1,9 +1,10 @@
 # SOC 2 - AICPA Trust Services Criteria: criterion-level report for 12 of the 33 common criteria
 # (CC1.2, CC1.4, CC3.2, CC6.1, CC6.2, CC6.3, CC6.6, CC7.2, CC7.4, CC8.1, CC9.1, CC9.2), plus
-# category-level verdicts for the optional categories in scope. See "CRITERION-LEVEL REPORT".
+# up to 16 criteria of the optional categories in scope (A1.1-A1.3, C1.1-C1.2, PI1.2-PI1.3, P3.1,
+# P3.2, P4.1, P4.2, P5.1, P5.2, P6.1, P6.6, P7.1). See "CRITERION-LEVEL REPORT".
 
 # METADATA
-# title: "SOC 2 Trust Services Criteria - 12 common criteria scored by id, optional categories category-level"
+# title: "SOC 2 Trust Services Criteria - 12 common criteria and up to 16 optional-category criteria scored by id"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -473,19 +474,18 @@ soc2_detailed_findings := findings if {
 #   CC9.2 vendors and partners       vendor_management_program, subservice_organization_oversight
 # The other 21 common criteria have no check and are not claimed.
 #
-# Not scored by criterion: the four optional categories (availability,
-# confidentiality, processing integrity, privacy). Their modules hard-code
-# parameter values the criteria do not fix and their headings do not follow
-# the criterion numbering, so they are reported as category-level verdicts:
-# each category the entity puts in scope (input.soc2.categories_in_scope) must
-# pass, and a missing scope list is a finding (all four are then assessed).
+# Optional categories: the criteria listed under "optional categories" below are
+# scored for each category the entity puts in scope (input.soc2.categories_in_scope);
+# a missing scope list is a finding and all four are then assessed. The category
+# modules' own verdicts hard-code values the criteria do not fix and decide nothing
+# (advisory.categories).
 # The infrastructure modules and the OpenShift platform checks decide no
 # criterion and are reported under `advisory`.
 # The system description inputs (service commitments, system boundaries) are
 # description-criteria prerequisites, not trust services criteria: they block
 # compliance when missing but are not counted as criteria.
 
-criteria_checks := {
+_common_criteria_checks := {
 	"CC1.2": {"management_oversight": management_oversight},
 	"CC1.4": {"hr_controls_effective": hr_controls_effective},
 	"CC3.2": {"risk_assessment_established": risk_assessment_established, "risk_monitoring_active": risk_monitoring_active},
@@ -512,6 +512,209 @@ criteria_checks := {
 	"CC9.2": {"vendor_management_program": vendor_management_program, "subservice_organization_oversight": subservice_organization_oversight},
 }
 
+# --- optional categories: criteria scored when the category is in scope ---
+#
+# Each criterion is decided by checks written here against the category inputs,
+# holding no value the criteria do not fix: where a period or limit is needed it
+# is the entity's commitment (input.soc2.commitments.<key>) compared with the
+# observed value, both guarded with is_number. The category modules' own checks
+# (which hard-code values such as 99.9 % uptime, 80 % CPU warnings, daily
+# backups, 2000 ms, 24-hour reconciliation, 72-hour breach notice, and
+# mechanisms such as digital signatures, DLP or a four-tier classification) are
+# not scored: they appear under advisory.categories.
+#   A1.1 capacity managed             capacity monitoring and forecasting, infrastructure monitoring with alerts
+#   A1.2 backup / recovery infra      automated backups, off-site copies, retention >= commitment
+#   A1.3 recovery plan tested         recovery test interval <= commitment
+#   C1.1 confidential info identified classification defines confidential information; access by classification
+#   C1.2 confidential info disposed   documented disposal procedure with verified completion
+#   PI1.2 inputs                      input validation (type, range, format)
+#   PI1.3 processing                  authorised processing with audit trail; error handling and recovery
+#   P3.1 collection                   documented collection policy, purpose, minimisation
+#   P3.2 explicit consent             explicit consent required and tracked
+#   P4.1 use limited                  purpose limitation, compatible use only
+#   P4.2 retention                    documented retention policy and schedules
+#   P5.1 access                       data-subject access requests supported
+#   P5.2 correction                   rectification supported
+#   P6.1 disclosure to third parties  documented agreements and due diligence
+#   P6.6 breach notification          documented procedure; notice times <= commitments
+#   P7.1 quality                      accuracy verification and correction procedures
+# Not mapped (no check): PI1.1, PI1.4, PI1.5, P1.1, P2.1, P6.2-P6.5, P6.7, P8.1.
+
+_commitment(key) := v if {
+	v := input.soc2.commitments[key]
+	is_number(v)
+}
+
+_observed(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+default backup_recovery_infrastructure := false
+
+backup_recovery_infrastructure if {
+	input.backup.automated_backups.enabled == true
+	input.backup.offsite_storage.enabled == true
+	_observed(["backup", "retention", "days"]) >= _commitment("backup_retention_days")
+}
+
+default recovery_plan_tested := false
+
+recovery_plan_tested if _observed(["backup", "recovery_testing", "frequency_days"]) <= _commitment("recovery_test_interval_days")
+
+default capacity_managed := false
+
+capacity_managed if {
+	input.capacity_management.monitoring.enabled == true
+	input.capacity_management.forecasting.enabled == true
+	input.monitoring.infrastructure.enabled == true
+	input.monitoring.alerts.configured == true
+}
+
+default confidential_information_identified := false
+
+confidential_information_identified if {
+	input.data_classification.system_defined == true
+	input.data_classification.categories.confidential.defined == true
+	input.data_classification.access_controls.role_based == true
+	input.data_classification.access_controls.need_to_know == true
+}
+
+default confidential_information_disposed := false
+
+confidential_information_disposed if {
+	input.data_disposal.procedures.documented == true
+	input.data_disposal.verification.completion_verified == true
+}
+
+default processing_inputs_controlled := false
+
+processing_inputs_controlled if {
+	input.data_processing.input_validation.enabled == true
+	input.data_processing.input_validation.data_type_checking == true
+	input.data_processing.input_validation.range_checking == true
+	input.data_processing.input_validation.format_validation == true
+}
+
+default processing_controlled := false
+
+processing_controlled if {
+	input.data_processing.authorization.required == true
+	input.data_processing.authorization.audit_trail == true
+	input.data_processing.error_handling.logging.enabled == true
+	input.data_processing.error_handling.recovery_procedures.documented == true
+}
+
+default pi_collection_consistent := false
+
+pi_collection_consistent if {
+	input.privacy.collection.policy_documented == true
+	input.privacy.collection.purpose_limitation == true
+	input.privacy.collection.data_minimization == true
+}
+
+default explicit_consent_obtained := false
+
+explicit_consent_obtained if {
+	input.privacy.consent.explicit_consent_required == true
+	input.privacy.consent.consent_tracking.enabled == true
+}
+
+default pi_use_limited := false
+
+pi_use_limited if {
+	input.privacy.use.purpose_limitation == true
+	input.privacy.use.compatible_use_only == true
+}
+
+default pi_retained_per_schedule := false
+
+pi_retained_per_schedule if {
+	input.privacy.retention.policies_documented == true
+	input.privacy.retention.retention_schedules.defined == true
+}
+
+default pi_access_granted := false
+
+pi_access_granted if input.privacy.data_subject_rights.access_request.supported == true
+
+default pi_correction_supported := false
+
+pi_correction_supported if input.privacy.data_subject_rights.rectification.supported == true
+
+default pi_third_party_disclosure_controlled := false
+
+pi_third_party_disclosure_controlled if {
+	input.privacy.third_party_sharing.documented_agreements == true
+	input.privacy.third_party_sharing.due_diligence_performed == true
+}
+
+default breach_notification_within_commitments := false
+
+breach_notification_within_commitments if {
+	input.privacy.breach_notification.procedures_documented == true
+	_observed(["privacy", "breach_notification", "timeline_compliance", "authorities"]) <= _commitment("breach_notice_hours_authorities")
+	_observed(["privacy", "breach_notification", "timeline_compliance", "individuals"]) <= _commitment("breach_notice_hours_individuals")
+}
+
+default pi_quality_maintained := false
+
+pi_quality_maintained if {
+	input.privacy.data_quality.accuracy_verification == true
+	input.privacy.data_quality.correction_procedures == true
+}
+
+_optional_criteria_checks := {
+	"availability": {
+		"A1.1": {"capacity_managed": capacity_managed},
+		"A1.2": {"backup_recovery_infrastructure": backup_recovery_infrastructure},
+		"A1.3": {"recovery_plan_tested": recovery_plan_tested},
+	},
+	"confidentiality": {
+		"C1.1": {"confidential_information_identified": confidential_information_identified},
+		"C1.2": {"confidential_information_disposed": confidential_information_disposed},
+	},
+	"processing_integrity": {
+		"PI1.2": {"processing_inputs_controlled": processing_inputs_controlled},
+		"PI1.3": {"processing_controlled": processing_controlled},
+	},
+	"privacy": {
+		"P3.1": {"pi_collection_consistent": pi_collection_consistent},
+		"P3.2": {"explicit_consent_obtained": explicit_consent_obtained},
+		"P4.1": {"pi_use_limited": pi_use_limited},
+		"P4.2": {"pi_retained_per_schedule": pi_retained_per_schedule},
+		"P5.1": {"pi_access_granted": pi_access_granted},
+		"P5.2": {"pi_correction_supported": pi_correction_supported},
+		"P6.1": {"pi_third_party_disclosure_controlled": pi_third_party_disclosure_controlled},
+		"P6.6": {"breach_notification_within_commitments": breach_notification_within_commitments},
+		"P7.1": {"pi_quality_maintained": pi_quality_maintained},
+	},
+}
+
+_in_scope_criteria := {c: checks |
+	some cat in categories_in_scope
+	some c, checks in _optional_criteria_checks[cat]
+}
+
+criteria_checks := object.union(_common_criteria_checks, _in_scope_criteria)
+
+# Evidence findings for the optional-category commitments (criterion id literal in each message).
+category_evidence_findings contains "A1.2: evidence missing - input.soc2.commitments.backup_retention_days (the entity's stated value) not supplied or not a number" if not _commitment("backup_retention_days")
+
+category_evidence_findings contains "A1.2: evidence missing - input.backup.retention.days not collected or not a number" if not _observed(["backup", "retention", "days"])
+
+category_evidence_findings contains "A1.3: evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number" if not _commitment("recovery_test_interval_days")
+
+category_evidence_findings contains "A1.3: evidence missing - input.backup.recovery_testing.frequency_days not collected or not a number" if not _observed(["backup", "recovery_testing", "frequency_days"])
+
+category_evidence_findings contains "P6.6: evidence missing - input.soc2.commitments.breach_notice_hours_authorities (the entity's stated value) not supplied or not a number" if not _commitment("breach_notice_hours_authorities")
+
+category_evidence_findings contains "P6.6: evidence missing - input.soc2.commitments.breach_notice_hours_individuals (the entity's stated value) not supplied or not a number" if not _commitment("breach_notice_hours_individuals")
+
+category_evidence_findings contains "P6.6: evidence missing - input.privacy.breach_notification.timeline_compliance.authorities not collected or not a number" if not _observed(["privacy", "breach_notification", "timeline_compliance", "authorities"])
+
+category_evidence_findings contains "P6.6: evidence missing - input.privacy.breach_notification.timeline_compliance.individuals not collected or not a number" if not _observed(["privacy", "breach_notification", "timeline_compliance", "individuals"])
+
 _failed_checks(c) := sort([k | some k, ok in criteria_checks[c]; ok != true])
 
 failed_criteria := {c | some c, _ in criteria_checks; count(_failed_checks(c)) > 0}
@@ -521,7 +724,10 @@ criteria_status[c] := {"satisfied": count(_failed_checks(c)) == 0, "checks": che
 }
 
 # Findings a check emits about missing evidence, by criterion prefix ("CC6.6: ...").
-_evidence_for(c) := sort([m | some m in access_controls.evidence_findings; startswith(m, sprintf("%v:", [c]))])
+_evidence_for(c) := sort([m |
+	some m in (access_controls.evidence_findings | category_evidence_findings)
+	startswith(m, sprintf("%v:", [c]))
+])
 
 # One literal finding per scored criterion (the id is part of the message text),
 # then one detail line per failed check.
@@ -549,6 +755,38 @@ criteria_findings contains "SOC 2 CC9.1: criterion not met - at least one mapped
 
 criteria_findings contains "SOC 2 CC9.2: criterion not met - at least one mapped check failed (criteria[\"CC9.2\"].failed_checks)" if "CC9.2" in failed_criteria
 
+criteria_findings contains "SOC 2 A1.1: criterion not met - at least one mapped check failed (criteria[\"A1.1\"].failed_checks)" if "A1.1" in failed_criteria
+
+criteria_findings contains "SOC 2 A1.2: criterion not met - at least one mapped check failed (criteria[\"A1.2\"].failed_checks)" if "A1.2" in failed_criteria
+
+criteria_findings contains "SOC 2 A1.3: criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)" if "A1.3" in failed_criteria
+
+criteria_findings contains "SOC 2 C1.1: criterion not met - at least one mapped check failed (criteria[\"C1.1\"].failed_checks)" if "C1.1" in failed_criteria
+
+criteria_findings contains "SOC 2 C1.2: criterion not met - at least one mapped check failed (criteria[\"C1.2\"].failed_checks)" if "C1.2" in failed_criteria
+
+criteria_findings contains "SOC 2 PI1.2: criterion not met - at least one mapped check failed (criteria[\"PI1.2\"].failed_checks)" if "PI1.2" in failed_criteria
+
+criteria_findings contains "SOC 2 PI1.3: criterion not met - at least one mapped check failed (criteria[\"PI1.3\"].failed_checks)" if "PI1.3" in failed_criteria
+
+criteria_findings contains "SOC 2 P3.1: criterion not met - at least one mapped check failed (criteria[\"P3.1\"].failed_checks)" if "P3.1" in failed_criteria
+
+criteria_findings contains "SOC 2 P3.2: criterion not met - at least one mapped check failed (criteria[\"P3.2\"].failed_checks)" if "P3.2" in failed_criteria
+
+criteria_findings contains "SOC 2 P4.1: criterion not met - at least one mapped check failed (criteria[\"P4.1\"].failed_checks)" if "P4.1" in failed_criteria
+
+criteria_findings contains "SOC 2 P4.2: criterion not met - at least one mapped check failed (criteria[\"P4.2\"].failed_checks)" if "P4.2" in failed_criteria
+
+criteria_findings contains "SOC 2 P5.1: criterion not met - at least one mapped check failed (criteria[\"P5.1\"].failed_checks)" if "P5.1" in failed_criteria
+
+criteria_findings contains "SOC 2 P5.2: criterion not met - at least one mapped check failed (criteria[\"P5.2\"].failed_checks)" if "P5.2" in failed_criteria
+
+criteria_findings contains "SOC 2 P6.1: criterion not met - at least one mapped check failed (criteria[\"P6.1\"].failed_checks)" if "P6.1" in failed_criteria
+
+criteria_findings contains "SOC 2 P6.6: criterion not met - at least one mapped check failed (criteria[\"P6.6\"].failed_checks)" if "P6.6" in failed_criteria
+
+criteria_findings contains "SOC 2 P7.1: criterion not met - at least one mapped check failed (criteria[\"P7.1\"].failed_checks)" if "P7.1" in failed_criteria
+
 criteria_findings contains msg if {
 	some c in failed_criteria
 	some k in _failed_checks(c)
@@ -561,7 +799,7 @@ criteria_findings contains msg if {
 	msg := sprintf("SOC 2 %v", [m])
 }
 
-# --- optional categories (category-level, not scored by criterion) ---
+# --- scope of the optional categories ---
 
 _optional_categories := {"availability", "confidentiality", "processing_integrity", "privacy"}
 
@@ -574,11 +812,6 @@ categories_in_scope := {c | some c in _scope_list; c in _optional_categories} if
 
 else := _optional_categories
 
-_category_ok("availability") if availability_compliant == true
-_category_ok("confidentiality") if confidentiality_compliant == true
-_category_ok("processing_integrity") if processing_integrity_compliant == true
-_category_ok("privacy") if privacy_compliant == true
-
 prerequisite_findings contains "SOC 2 scope: evidence missing - input.soc2.categories_in_scope not supplied (an array naming the optional categories in the entity's report); all four optional categories are assessed" if {
 	not _scope_list
 }
@@ -587,12 +820,6 @@ prerequisite_findings contains msg if {
 	some c in _scope_list
 	not c in _optional_categories
 	msg := sprintf("SOC 2 scope: unknown category %v - the optional categories are availability, confidentiality, processing_integrity, privacy (security is always in scope)", [c])
-}
-
-prerequisite_findings contains msg if {
-	some c in categories_in_scope
-	not _category_ok(c)
-	msg := sprintf("SOC 2 %v (category in scope, category-level verdict, not scored by criterion): the %v module did not pass", [c, c])
 }
 
 prerequisite_findings contains "SOC 2 description prerequisite: service commitments are not shown defined (input.soc2.service_commitments)" if {
@@ -616,6 +843,13 @@ advisory := {
 	"scoring": false,
 	"openshift_security": access_controls.openshift_security_compliant,
 	"platform_evidence_findings": sort([m | some m in access_controls.evidence_findings; startswith(m, "platform:")]),
+	"categories": {
+		"note": "category-module verdicts; they hard-code values the criteria do not fix and decide no criterion",
+		"availability": availability_compliant,
+		"confidentiality": confidentiality_compliant,
+		"processing_integrity": processing_integrity_compliant,
+		"privacy": privacy_compliant,
+	},
 	"infrastructure": {
 		"network": network_infrastructure_compliant,
 		"security": security_infrastructure_compliant,
@@ -638,7 +872,7 @@ default compliance_report := {
 compliance_report := {
 	"framework_key": "soc2",
 	"standard": "SOC 2 - AICPA Trust Services Criteria (TSP section 100, 2017, points of focus revised 2022)",
-	"scope_note": "Scores 12 of the 33 common criteria (listed in criteria); the optional categories are category-level verdicts, not scored by criterion",
+	"scope_note": "Scores 12 of the 33 common criteria plus the mapped criteria of the optional categories in scope (listed in criteria); category-module verdicts are advisory",
 	"compliant": _soc2_report_compliant,
 	"total_controls": count(criteria_checks),
 	"failed_controls": count(failed_criteria),

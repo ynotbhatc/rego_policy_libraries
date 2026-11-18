@@ -16,17 +16,19 @@ _cc_ids := {
 
 test_scored_criteria_are_real_common_criteria if {
 	count(_cc_ids) == 33
-	ids := {c | some c, _ in main.criteria_checks}
+	ids := {c | some c, _ in main._common_criteria_checks}
 	count(ids) == 12
 	every c in ids {
 		c in _cc_ids
 	}
 }
 
-test_empty_input_scores_twelve_criteria_all_failed if {
+test_empty_input_scores_all_mapped_criteria_all_failed if {
 	r := main.compliance_report with input as {}
-	r.total_controls == 12
-	r.failed_controls == 12
+
+	# no scope list: all four optional categories are assessed (12 common + 16 optional criteria)
+	r.total_controls == 28
+	r.failed_controls == 28
 	r.compliant == false
 	"SOC 2 CC6.6: check security.remote_access_secured not satisfied" in r.violations
 	"SOC 2 CC6.6: evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number" in r.violations
@@ -111,7 +113,7 @@ test_cluster_admin_limit_is_the_entity_commitment if {
 
 # --- report scoring ---
 
-_all_pass := {c: {"check": true} | some c, _ in main.criteria_checks}
+_all_pass := {c: {"check": true} | some c, _ in main._common_criteria_checks}
 
 test_all_criteria_pass_with_scope_and_description_is_compliant if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": []}}
@@ -156,4 +158,82 @@ test_out_of_scope_category_does_not_block if {
 		with main.privacy_compliant as true
 		with main.availability_compliant as false
 	r.compliant == true
+}
+
+# --- optional categories (follow-up 2026-11-17) ---
+
+_optional_ids := {
+	"A1.1", "A1.2", "A1.3", "C1.1", "C1.2", "PI1.1", "PI1.2", "PI1.3", "PI1.4", "PI1.5", "P1.1", "P2.1",
+	"P3.1", "P3.2", "P4.1", "P4.2", "P4.3", "P5.1", "P5.2", "P6.1", "P6.2", "P6.3", "P6.4", "P6.5",
+	"P6.6", "P6.7", "P7.1", "P8.1",
+}
+
+test_optional_criteria_ids_are_real_tsc_ids if {
+	count(_optional_ids) == 28
+	every crits in main._optional_criteria_checks {
+		every c, _ in crits {
+			c in _optional_ids
+		}
+	}
+}
+
+test_only_in_scope_categories_add_criteria if {
+	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
+	r.total_controls == 15
+	r.categories_in_scope == ["availability"]
+	r2 := main.compliance_report with input as {"soc2": {"categories_in_scope": []}}
+	r2.total_controls == 12
+}
+
+test_category_module_verdict_does_not_decide_compliance if {
+	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
+		with main._common_criteria_checks as _all_pass
+		with main.service_commitments_defined as true
+		with main.system_boundaries_defined as true
+		with main.capacity_managed as true
+		with main.backup_recovery_infrastructure as true
+		with main.recovery_plan_tested as true
+		with main.availability_compliant as false
+	r.compliant == true
+	r.advisory.categories.availability == false
+}
+
+_backup(retention, commit_ret, test_days, commit_test) := {
+	"backup": {"automated_backups": {"enabled": true}, "offsite_storage": {"enabled": true}, "retention": {"days": retention}, "recovery_testing": {"frequency_days": test_days}},
+	"soc2": {"commitments": {"backup_retention_days": commit_ret, "recovery_test_interval_days": commit_test}},
+}
+
+test_a1_2_and_a1_3_use_the_entity_commitments if {
+	main.backup_recovery_infrastructure with input as _backup(14, 14, 180, 180)
+	main.recovery_plan_tested with input as _backup(14, 14, 180, 180)
+	not main.backup_recovery_infrastructure with input as _backup(14, 30, 180, 180)
+	not main.recovery_plan_tested with input as _backup(14, 14, 180, 90)
+}
+
+test_a1_commitments_missing_fail_closed if {
+	inp := json.remove(_backup(14, 14, 180, 180), ["/soc2/commitments"])
+	not main.backup_recovery_infrastructure with input as inp
+	not main.recovery_plan_tested with input as inp
+	f := main.category_evidence_findings with input as inp
+	"A1.3: evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number" in f
+	not main.recovery_plan_tested with input as json.patch(_backup(14, 14, 180, 180), [{"op": "replace", "path": "/backup/recovery_testing/frequency_days", "value": null}])
+}
+
+_breach(auth, ind, c_auth, c_ind) := {
+	"privacy": {"breach_notification": {"procedures_documented": true, "timeline_compliance": {"authorities": auth, "individuals": ind}}},
+	"soc2": {"commitments": {"breach_notice_hours_authorities": c_auth, "breach_notice_hours_individuals": c_ind}},
+}
+
+test_p6_6_breach_notice_against_commitment_not_72_hours if {
+	main.breach_notification_within_commitments with input as _breach(96, 120, 96, 120)
+	not main.breach_notification_within_commitments with input as _breach(96, 120, 48, 120)
+	not main.breach_notification_within_commitments with input as json.remove(_breach(24, 24, 72, 72), ["/soc2/commitments"])
+}
+
+test_in_scope_criterion_failure_is_reported_by_id if {
+	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
+	r.compliant == false
+	"A1.3" in r.failed_criteria
+	"SOC 2 A1.3: criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)" in r.violations
+	"SOC 2 A1.3: evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number" in r.violations
 }

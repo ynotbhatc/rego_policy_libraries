@@ -432,8 +432,8 @@ test_compliance_report_real_on_empty_input if {
 	r := main.compliance_report with input as {}
 	not r.fail_closed
 	r.compliant == false
-	r.total_controls == 12
-	r.failed_controls == 12
+	r.total_controls == 28
+	r.failed_controls == 28
 	r.violation_count > r.failed_controls
 }
 
@@ -459,9 +459,8 @@ test_report_not_compliant_when_violations_listed if {
 	r.compliant == false
 }
 
-test_report_not_compliant_when_an_in_scope_category_fails if {
+test_report_not_compliant_when_an_in_scope_category_criterion_fails if {
 	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
-		with data.soc2.main.availability_compliant as false
 	r.compliant == false
-	"SOC 2 availability (category in scope, category-level verdict, not scored by criterion): the availability module did not pass" in r.violations
+	"A1.1" in r.failed_criteria
 }

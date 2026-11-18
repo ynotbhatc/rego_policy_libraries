@@ -2,7 +2,7 @@
 # Category-level checks: the section headings below are this module's own grouping, not AICPA
 # criterion ids (several headings here used ids such as P1.2, P1.3 or C1.3, which are not the
 # criteria of those numbers or do not exist). data.soc2.main reports this category as one
-# category-level verdict and does not score it by criterion. Several checks hard-code parameter
+# category-level verdict that is advisory only; data.soc2.main scores this category's criteria from its own checks. Several checks here hard-code parameter
 # values the criteria do not fix.
 # Data Confidentiality and Protection Controls
 
