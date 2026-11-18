@@ -2403,7 +2403,82 @@ def emit_module(name, ids, recs):
         lines += EXTRA[name].strip("\n").split("\n") + [""]
     for rid in ids:
         lines += emit_control(rid, recs[rid], L[rid])
+    lines += emit_status_block(ids)
     return "\n".join(lines).rstrip("\n") + "\n"
+
+
+def emit_status(rid, spec):
+    """s_<id>: the recommendation's status, from the same e_<id> / p_<id> the violation rules above read."""
+    k = idkey(rid)
+    if spec.manual:
+        return [f's_{k} := "pass" if {{', f"\tp_{k}", '} else := "not_attested"', ""]
+    return [f's_{k} := "evidence_missing" if {{', f"\tnot e_{k}", '} else := "pass" if {', f"\tp_{k}",
+            '} else := "fail"', ""]
+
+
+def emit_status_block(ids):
+    out = ["# Per-recommendation status for the roll-up's control_results, read from the same predicates as the",
+           "# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing",
+           "# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile",
+           "# scope is applied in the roll-up.", ""]
+    for rid in ids:
+        out += emit_status(rid, L[rid])
+    out += ["control_status := {"] + [f'\t"{rid}": s_{idkey(rid)},' for rid in ids] + ["}", ""]
+    return out
+
+
+def evidence_paths(rid):
+    """The input paths the recommendation's decision reads (the logic entry's reads), dotted."""
+    paths = sorted({".".join(str(x) for x in p) for p in L[rid].reads})
+    if not paths:
+        raise SystemExit(f"{rid}: the logic entry names no input path it reads")
+    return paths
+
+
+def control_index(recs):
+    rows = [{"id": rid, "basis": "attestation" if L[rid].manual else "evidence",
+             "profile": recs[rid]["profiles"], "evidence": evidence_paths(rid)} for rid in sorted(recs, key=sort_key)]
+    return "CONTROL_INDEX := [\n" + ",\n".join("\t" + json.dumps(r, sort_keys=True, ensure_ascii=False)
+                                               for r in rows) + ",\n]\n"
+
+
+CONTROL_RESULTS_BLOCK = """# =============================================================================
+# PER-CONTROL RESULTS: one object per recommendation, natural id order
+# =============================================================================
+#
+# control_results[i] = {{id, status, basis, in_scope, profile, evidence}}. CONTROL_INDEX is the static half
+# (written by the generator from the workbook's profiles and each logic entry's input paths; no benchmark text);
+# the status is each section's control_status, or not_applicable outside the selected profile. It is read from
+# the predicates the violation rules use, so it agrees with failed_controls and the violations by construction.
+
+CONTROL_STATUSES := ["pass", "fail", "evidence_missing", "not_attested", "not_applicable"]
+
+control_status := object.union_n([
+{statuses}
+])
+
+{index}
+_control_result_status(e) := "not_applicable" if not e.id in applicable_ids
+
+_control_result_status(e) := s if {{
+	e.id in applicable_ids
+	s := control_status[e.id]
+}}
+
+control_results := [r |
+	some e in CONTROL_INDEX
+	s := _control_result_status(e)
+	r := object.union(e, {{"status": s, "in_scope": s != "not_applicable"}})
+]
+
+_control_result_statuses := [r.status | some r in control_results]
+
+control_result_counts := {{s: n |
+	some s in CONTROL_STATUSES
+	n := count([x | some x in _control_result_statuses; x == s])
+}}
+
+"""
 
 
 def merge_good(a, b, path=()):
@@ -2955,6 +3030,9 @@ generate_recommendations contains recommendation if {{
 	}}
 }}
 '''
+    statuses = ",\n".join(f"\t{n}.control_status" for n, *_ in SECTIONS)
+    text = text.replace(EXT_RULES, CONTROL_RESULTS_BLOCK.format(statuses=statuses, index=control_index(recs))
+                        + EXT_RULES, 1)
     if not EXTENDED:  # a directory without the extended-hardening modules: drop their imports and rules
         imports_at, rules_at = text.index(EXT_IMPORTS), text.index(EXT_RULES)
         end = text.index("\n\n", imports_at) + 2
@@ -3053,6 +3131,14 @@ default _percentage := 0
 
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
+default _control_results := []
+
+_control_results := bench.control_results
+
+default _control_result_counts := {{}}
+
+_control_result_counts := bench.control_result_counts
+
 compliance_report := {{
 	"framework": "{PKG}",
 	"benchmark": "{BENCH}",
@@ -3071,6 +3157,8 @@ compliance_report := {{
 	"sections_not_assessed": _not_assessed,
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
+	"control_results": _control_results,
+	"control_result_counts": _control_result_counts,
 {extra}}}
 '''
 
@@ -3140,7 +3228,8 @@ def emit_rollup_tests(recs):
               for p, (kind, lv) in PROFILES.items()}
     keys = ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis",
             "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant",
-            "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage"]
+            "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage",
+            "control_results", "control_result_counts"]
     keys += [k for k, _ in REPORT_EXTRA]
     m = f"data.{PKG}.main.compliance_report"
     lines = [f"package {PKG}.main_test", "", "import rego.v1", "",
@@ -3191,6 +3280,73 @@ def emit_rollup_tests(recs):
     return "\n".join(lines).rstrip("\n") + "\n"
 
 
+def emit_control_results_tests(recs, by_mod):
+    """Invariants of main.compliance_report.control_results, per profile, on empty, mixed and compliant input."""
+    m = f"data.{PKG}.main.compliance_report"
+    ids = sorted(recs, key=sort_key)
+    counts = {p: sum(1 for r in recs.values() if (level(r["profiles"], kind) or 99) <= lv)
+              for p, (kind, lv) in PROFILES.items()}
+    good = good_input(ids)
+    # mixed: one section's input keys removed, one Manual recommendation unattested, one Automated one failing
+    gone_sec = [n for n, *_ in SECTIONS if SECTION_INPUTS.get(n)][-1]
+    gone = sorted(SECTION_INPUTS[gone_sec])
+    manual = next(rid for rid in ids if L[rid].manual)
+    failing = next(rid for rid in ids if not L[rid].manual and isinstance(L[rid].tf, dict) and L[rid].tf
+                   and section_of(rid) != gone_sec)
+    lines = [f"package {PKG}.control_results_test", "", "import rego.v1", "",
+             f"# Generated by {GEN}: the control_results contract of {PKG}.main.compliance_report.", "",
+             f"fixture_compliant := {J(good)}", "",
+             'FAILING := {"fail", "evidence_missing", "not_attested"}', "",
+             '_kind(v) := "evidence_missing" if contains(v, ": evidence missing — ")', "",
+             '_kind(v) := "not_attested" if contains(v, ": manual review not attested")', "",
+             '_kind(v) := "fail" if contains(v, ": not met — ")', "",
+             "# [id, kind] of every violation that cites a recommendation id",
+             "cited(vs) := {[id, k] |", "\tsome v in vs", "\tis_string(v)",
+             "\tms := regex.find_all_string_submatch_n(`^([0-9]+(?:\\.[0-9]+)*): `, v, 1)",
+             "\tcount(ms) == 1", "\tid := ms[0][1]", "\tk := _kind(v)", "}", "",
+             "failing(rs) := {[r.id, r.status] | some r in rs; r.status in FAILING}", "",
+             "test_control_results_are_exactly_the_benchmark_ids_in_order if {",
+             f"\tr := {m} with input as {{}}", f"\t[c.id | some c in r.control_results] == {J(ids)}", "}", "",
+             "test_control_results_fields_and_statuses if {",
+             f"\tr := {m} with input as {{\"profile\": \"level2_workstation\"}}",
+             "\tevery c in r.control_results {",
+             '\t\tc.status in {"pass", "fail", "evidence_missing", "not_attested", "not_applicable"}',
+             '\t\tc.basis in {"evidence", "attestation"}', '\t\tc.in_scope == (c.status != "not_applicable")',
+             "\t\tis_array(c.profile)", "\t\tcount(c.profile) > 0",
+             '\t\tevery k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence"} }',
+             "\t\tcount(c.evidence) > 0", "\t}", "}", "",
+             ]
+    mixed_expr = (f'object.union(object.union(json.remove(fixture_compliant, {J(gone)}), {J(L[failing].tf)}), '
+                  f'{{"attest": {{{J(L[manual].name)}: false}}}})')
+    agree = ["\tcount([c | some c in r.control_results; c.in_scope]) == r.total_controls",
+             "\tcount([c | some c in r.control_results; c.status in FAILING]) == r.failed_controls",
+             '\tcount([c | some c in r.control_results; c.status == "pass"]) == r.passed_controls',
+             f"\tsum([x | some x in r.control_result_counts]) == {len(ids)}",
+             "\tcited(r.violations) == failing(r.control_results)"]
+    # A full report on the merged fixture is the slowest evaluation in the module under `opa test` (about a second
+    # alone, several when tests run in parallel), so it runs twice: compliant under level2_server, which puts every
+    # recommendation in scope, and mixed under level1_server (scope + every failing status). Every profile's scope
+    # is checked on empty input.
+    for prof, n in counts.items():
+        lines += [f"test_control_results_{prof}_empty_input if {{", f'\tr := {m} with input as {{"profile": "{prof}"}}',
+                  f"\tr.total_controls == {n}"] + agree + [
+                  '\tevery c in r.control_results { c.status in {"evidence_missing", "not_attested", "not_applicable"} }',
+                  "}", ""]
+    if counts["level2_server"] != len(ids):
+        raise SystemExit("level2_server no longer puts every recommendation in scope: extend the compliant test")
+    lines += ["test_control_results_compliant_fixture_every_recommendation_passes if {",
+              f'\tr := {m} with input as object.union(fixture_compliant, {{"profile": "level2_server"}})',
+              f"\tr.total_controls == {len(ids)}"] + agree + [
+              '\tevery c in r.control_results { c.status == "pass" }', "}", "",
+              "test_control_results_mixed_input_every_status if {",
+              f'\tr := {m} with input as object.union({mixed_expr}, {{"profile": "level1_server"}})',
+              f"\tr.total_controls == {counts['level1_server']}"] + agree + [
+              "\tr.control_result_counts.pass > 0", "\tr.control_result_counts.fail > 0",
+              "\tr.control_result_counts.evidence_missing > 0", "\tr.control_result_counts.not_attested > 0",
+              "\tr.control_result_counts.not_applicable > 0", "}", ""]
+    return "\n".join(lines).rstrip("\n") + "\n"
+
+
 def write(path, text):
     for old, new in REWORD:
         text = text.replace(old, new)
@@ -3228,6 +3384,7 @@ def main(argv=None):
     write(OUT / f"{PKG}_main.rego", emit_main(recs))
     write(OUT / "l2_validation.rego", emit_l2(recs))
     write(OUT / "tests" / f"test_{PKG}_v3_rollup.rego", emit_rollup_tests(recs))
+    write(OUT / "tests" / f"test_{PKG}_control_results.rego", emit_control_results_tests(recs, by_mod))
     if len(argv) > 2:  # input paths each control reads + merged passing inputs (gap analysis, compat tests)
         pathlib.Path(argv[2]).write_text(json.dumps(
             {"reads": {rid: [".".join(p) for p in L[rid].reads] for rid in sorted(recs, key=sort_key)},

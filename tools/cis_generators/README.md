@@ -232,6 +232,15 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   benchmark's class table, with the per-entry `owner_has_login_shell` and `owner_primary_group` for
   service-account logs. `gen_amazon_linux_2023.py` uses the same `audit()` builder.
 
+  Per-control results (rhel_9, rocky_linux_9, rhel_8, rocky_linux_8): `emit_module` writes, beside each
+  section's violation rules, a status rule per recommendation read from the same predicates (`evidence_missing`
+  when `not e_<id>`, `pass` when `p_<id>`, `fail` otherwise; Manual: `pass` when attested, else `not_attested`) and a
+  `control_status` map; the roll-up adds `CONTROL_INDEX` (id, basis, the workbook profile names, the logic entry's
+  `reads` as dotted input paths) and applies profile scope (`not_applicable` outside `applicable_ids`); the main
+  report carries `control_results` and `control_result_counts`. `test_<pkg>_control_results.rego` checks the same
+  invariants as the Windows modules (ids and order, totals, failing iff cited with the matching message kind, empty
+  input, a compliant fixture merged from every logic entry's passing input, a mixed input with every status).
+  `emit_control` is unchanged, so `gen_amazon_linux_2023.py` output does not change.
 - `gen_rocky_linux_9.py <workbook.xlsx> [fields.json]`: CIS Rocky Linux 9 Benchmark v3.0.0, 352
   recommendations (329 Automated, 23 Manual) into `benchmarks/cis/rocky_linux_9/`, package
   `cis_rocky_linux_9`. Holds no logic of its own: it configures `gen_rhel_9.py` (`configure()`: output

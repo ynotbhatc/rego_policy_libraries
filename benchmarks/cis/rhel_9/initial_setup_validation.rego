@@ -859,3 +859,183 @@ violations contains "1.8.7: not met — Wayland must be explicitly configured" i
 	e_1_8_7
 	not p_1_8_7
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_1_2_1_1 := "pass" if {
+	p_1_2_1_1
+} else := "not_attested"
+
+s_1_2_1_2 := "evidence_missing" if {
+	not e_1_2_1_2
+} else := "pass" if {
+	p_1_2_1_2
+} else := "fail"
+
+s_1_2_1_3 := "evidence_missing" if {
+	not e_1_2_1_3
+} else := "pass" if {
+	p_1_2_1_3
+} else := "fail"
+
+s_1_2_1_4 := "pass" if {
+	p_1_2_1_4
+} else := "not_attested"
+
+s_1_2_1_5 := "evidence_missing" if {
+	not e_1_2_1_5
+} else := "pass" if {
+	p_1_2_1_5
+} else := "fail"
+
+s_1_2_2_1 := "pass" if {
+	p_1_2_2_1
+} else := "not_attested"
+
+s_1_6_1 := "evidence_missing" if {
+	not e_1_6_1
+} else := "pass" if {
+	p_1_6_1
+} else := "fail"
+
+s_1_6_2 := "evidence_missing" if {
+	not e_1_6_2
+} else := "pass" if {
+	p_1_6_2
+} else := "fail"
+
+s_1_6_3 := "evidence_missing" if {
+	not e_1_6_3
+} else := "pass" if {
+	p_1_6_3
+} else := "fail"
+
+s_1_6_4 := "evidence_missing" if {
+	not e_1_6_4
+} else := "pass" if {
+	p_1_6_4
+} else := "fail"
+
+s_1_6_5 := "pass" if {
+	p_1_6_5
+} else := "not_attested"
+
+s_1_6_6 := "pass" if {
+	p_1_6_6
+} else := "not_attested"
+
+s_1_6_7 := "evidence_missing" if {
+	not e_1_6_7
+} else := "pass" if {
+	p_1_6_7
+} else := "fail"
+
+s_1_7_1 := "evidence_missing" if {
+	not e_1_7_1
+} else := "pass" if {
+	p_1_7_1
+} else := "fail"
+
+s_1_7_2 := "evidence_missing" if {
+	not e_1_7_2
+} else := "pass" if {
+	p_1_7_2
+} else := "fail"
+
+s_1_7_3 := "evidence_missing" if {
+	not e_1_7_3
+} else := "pass" if {
+	p_1_7_3
+} else := "fail"
+
+s_1_7_4 := "evidence_missing" if {
+	not e_1_7_4
+} else := "pass" if {
+	p_1_7_4
+} else := "fail"
+
+s_1_7_5 := "evidence_missing" if {
+	not e_1_7_5
+} else := "pass" if {
+	p_1_7_5
+} else := "fail"
+
+s_1_7_6 := "evidence_missing" if {
+	not e_1_7_6
+} else := "pass" if {
+	p_1_7_6
+} else := "fail"
+
+s_1_8_1 := "evidence_missing" if {
+	not e_1_8_1
+} else := "pass" if {
+	p_1_8_1
+} else := "fail"
+
+s_1_8_2 := "evidence_missing" if {
+	not e_1_8_2
+} else := "pass" if {
+	p_1_8_2
+} else := "fail"
+
+s_1_8_3 := "evidence_missing" if {
+	not e_1_8_3
+} else := "pass" if {
+	p_1_8_3
+} else := "fail"
+
+s_1_8_4 := "evidence_missing" if {
+	not e_1_8_4
+} else := "pass" if {
+	p_1_8_4
+} else := "fail"
+
+s_1_8_5 := "evidence_missing" if {
+	not e_1_8_5
+} else := "pass" if {
+	p_1_8_5
+} else := "fail"
+
+s_1_8_6 := "evidence_missing" if {
+	not e_1_8_6
+} else := "pass" if {
+	p_1_8_6
+} else := "fail"
+
+s_1_8_7 := "evidence_missing" if {
+	not e_1_8_7
+} else := "pass" if {
+	p_1_8_7
+} else := "fail"
+
+control_status := {
+	"1.2.1.1": s_1_2_1_1,
+	"1.2.1.2": s_1_2_1_2,
+	"1.2.1.3": s_1_2_1_3,
+	"1.2.1.4": s_1_2_1_4,
+	"1.2.1.5": s_1_2_1_5,
+	"1.2.2.1": s_1_2_2_1,
+	"1.6.1": s_1_6_1,
+	"1.6.2": s_1_6_2,
+	"1.6.3": s_1_6_3,
+	"1.6.4": s_1_6_4,
+	"1.6.5": s_1_6_5,
+	"1.6.6": s_1_6_6,
+	"1.6.7": s_1_6_7,
+	"1.7.1": s_1_7_1,
+	"1.7.2": s_1_7_2,
+	"1.7.3": s_1_7_3,
+	"1.7.4": s_1_7_4,
+	"1.7.5": s_1_7_5,
+	"1.7.6": s_1_7_6,
+	"1.8.1": s_1_8_1,
+	"1.8.2": s_1_8_2,
+	"1.8.3": s_1_8_3,
+	"1.8.4": s_1_8_4,
+	"1.8.5": s_1_8_5,
+	"1.8.6": s_1_8_6,
+	"1.8.7": s_1_8_7,
+}

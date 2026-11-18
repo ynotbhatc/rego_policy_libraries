@@ -1244,3 +1244,219 @@ violations contains "2.3.3: not met — chrony must be not run as the root user"
 	e_2_3_3
 	not p_2_3_3
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_2_1_1 := "evidence_missing" if {
+	not e_2_1_1
+} else := "pass" if {
+	p_2_1_1
+} else := "fail"
+
+s_2_1_2 := "evidence_missing" if {
+	not e_2_1_2
+} else := "pass" if {
+	p_2_1_2
+} else := "fail"
+
+s_2_1_3 := "evidence_missing" if {
+	not e_2_1_3
+} else := "pass" if {
+	p_2_1_3
+} else := "fail"
+
+s_2_1_4 := "evidence_missing" if {
+	not e_2_1_4
+} else := "pass" if {
+	p_2_1_4
+} else := "fail"
+
+s_2_1_5 := "evidence_missing" if {
+	not e_2_1_5
+} else := "pass" if {
+	p_2_1_5
+} else := "fail"
+
+s_2_1_6 := "evidence_missing" if {
+	not e_2_1_6
+} else := "pass" if {
+	p_2_1_6
+} else := "fail"
+
+s_2_1_7 := "evidence_missing" if {
+	not e_2_1_7
+} else := "pass" if {
+	p_2_1_7
+} else := "fail"
+
+s_2_1_8 := "evidence_missing" if {
+	not e_2_1_8
+} else := "pass" if {
+	p_2_1_8
+} else := "fail"
+
+s_2_1_9 := "evidence_missing" if {
+	not e_2_1_9
+} else := "pass" if {
+	p_2_1_9
+} else := "fail"
+
+s_2_1_10 := "evidence_missing" if {
+	not e_2_1_10
+} else := "pass" if {
+	p_2_1_10
+} else := "fail"
+
+s_2_1_11 := "evidence_missing" if {
+	not e_2_1_11
+} else := "pass" if {
+	p_2_1_11
+} else := "fail"
+
+s_2_1_12 := "evidence_missing" if {
+	not e_2_1_12
+} else := "pass" if {
+	p_2_1_12
+} else := "fail"
+
+s_2_1_13 := "evidence_missing" if {
+	not e_2_1_13
+} else := "pass" if {
+	p_2_1_13
+} else := "fail"
+
+s_2_1_14 := "evidence_missing" if {
+	not e_2_1_14
+} else := "pass" if {
+	p_2_1_14
+} else := "fail"
+
+s_2_1_15 := "evidence_missing" if {
+	not e_2_1_15
+} else := "pass" if {
+	p_2_1_15
+} else := "fail"
+
+s_2_1_16 := "evidence_missing" if {
+	not e_2_1_16
+} else := "pass" if {
+	p_2_1_16
+} else := "fail"
+
+s_2_1_17 := "evidence_missing" if {
+	not e_2_1_17
+} else := "pass" if {
+	p_2_1_17
+} else := "fail"
+
+s_2_1_18 := "evidence_missing" if {
+	not e_2_1_18
+} else := "pass" if {
+	p_2_1_18
+} else := "fail"
+
+s_2_1_19 := "evidence_missing" if {
+	not e_2_1_19
+} else := "pass" if {
+	p_2_1_19
+} else := "fail"
+
+s_2_1_20 := "evidence_missing" if {
+	not e_2_1_20
+} else := "pass" if {
+	p_2_1_20
+} else := "fail"
+
+s_2_1_21 := "evidence_missing" if {
+	not e_2_1_21
+} else := "pass" if {
+	p_2_1_21
+} else := "fail"
+
+s_2_1_22 := "evidence_missing" if {
+	not e_2_1_22
+} else := "pass" if {
+	p_2_1_22
+} else := "fail"
+
+s_2_1_23 := "pass" if {
+	p_2_1_23
+} else := "not_attested"
+
+s_2_2_1 := "evidence_missing" if {
+	not e_2_2_1
+} else := "pass" if {
+	p_2_2_1
+} else := "fail"
+
+s_2_2_2 := "evidence_missing" if {
+	not e_2_2_2
+} else := "pass" if {
+	p_2_2_2
+} else := "fail"
+
+s_2_2_3 := "evidence_missing" if {
+	not e_2_2_3
+} else := "pass" if {
+	p_2_2_3
+} else := "fail"
+
+s_2_2_4 := "evidence_missing" if {
+	not e_2_2_4
+} else := "pass" if {
+	p_2_2_4
+} else := "fail"
+
+s_2_3_1 := "evidence_missing" if {
+	not e_2_3_1
+} else := "pass" if {
+	p_2_3_1
+} else := "fail"
+
+s_2_3_2 := "evidence_missing" if {
+	not e_2_3_2
+} else := "pass" if {
+	p_2_3_2
+} else := "fail"
+
+s_2_3_3 := "evidence_missing" if {
+	not e_2_3_3
+} else := "pass" if {
+	p_2_3_3
+} else := "fail"
+
+control_status := {
+	"2.1.1": s_2_1_1,
+	"2.1.2": s_2_1_2,
+	"2.1.3": s_2_1_3,
+	"2.1.4": s_2_1_4,
+	"2.1.5": s_2_1_5,
+	"2.1.6": s_2_1_6,
+	"2.1.7": s_2_1_7,
+	"2.1.8": s_2_1_8,
+	"2.1.9": s_2_1_9,
+	"2.1.10": s_2_1_10,
+	"2.1.11": s_2_1_11,
+	"2.1.12": s_2_1_12,
+	"2.1.13": s_2_1_13,
+	"2.1.14": s_2_1_14,
+	"2.1.15": s_2_1_15,
+	"2.1.16": s_2_1_16,
+	"2.1.17": s_2_1_17,
+	"2.1.18": s_2_1_18,
+	"2.1.19": s_2_1_19,
+	"2.1.20": s_2_1_20,
+	"2.1.21": s_2_1_21,
+	"2.1.22": s_2_1_22,
+	"2.1.23": s_2_1_23,
+	"2.2.1": s_2_2_1,
+	"2.2.2": s_2_2_2,
+	"2.2.3": s_2_2_3,
+	"2.2.4": s_2_2_4,
+	"2.3.1": s_2_3_1,
+	"2.3.2": s_2_3_2,
+	"2.3.3": s_2_3_3,
+}

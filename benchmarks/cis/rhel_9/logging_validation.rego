@@ -671,3 +671,137 @@ violations contains "6.1.3.1: not met — access to all logfiles must have been 
 	e_6_1_3_1
 	not p_6_1_3_1
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_6_1_1_1 := "evidence_missing" if {
+	not e_6_1_1_1
+} else := "pass" if {
+	p_6_1_1_1
+} else := "fail"
+
+s_6_1_1_2 := "evidence_missing" if {
+	not e_6_1_1_2
+} else := "pass" if {
+	p_6_1_1_2
+} else := "fail"
+
+s_6_1_1_3 := "evidence_missing" if {
+	not e_6_1_1_3
+} else := "pass" if {
+	p_6_1_1_3
+} else := "fail"
+
+s_6_1_1_4 := "pass" if {
+	p_6_1_1_4
+} else := "not_attested"
+
+s_6_1_1_5 := "pass" if {
+	p_6_1_1_5
+} else := "not_attested"
+
+s_6_1_2_1 := "evidence_missing" if {
+	not e_6_1_2_1
+} else := "pass" if {
+	p_6_1_2_1
+} else := "fail"
+
+s_6_1_2_2 := "evidence_missing" if {
+	not e_6_1_2_2
+} else := "pass" if {
+	p_6_1_2_2
+} else := "fail"
+
+s_6_1_2_3 := "evidence_missing" if {
+	not e_6_1_2_3
+} else := "pass" if {
+	p_6_1_2_3
+} else := "fail"
+
+s_6_1_2_4 := "evidence_missing" if {
+	not e_6_1_2_4
+} else := "pass" if {
+	p_6_1_2_4
+} else := "fail"
+
+s_6_1_2_5 := "evidence_missing" if {
+	not e_6_1_2_5
+} else := "pass" if {
+	p_6_1_2_5
+} else := "fail"
+
+s_6_1_2_6 := "evidence_missing" if {
+	not e_6_1_2_6
+} else := "pass" if {
+	p_6_1_2_6
+} else := "fail"
+
+s_6_1_2_7 := "evidence_missing" if {
+	not e_6_1_2_7
+} else := "pass" if {
+	p_6_1_2_7
+} else := "fail"
+
+s_6_1_2_8 := "pass" if {
+	p_6_1_2_8
+} else := "not_attested"
+
+s_6_1_2_9 := "pass" if {
+	p_6_1_2_9
+} else := "not_attested"
+
+s_6_1_2_10 := "evidence_missing" if {
+	not e_6_1_2_10
+} else := "pass" if {
+	p_6_1_2_10
+} else := "fail"
+
+s_6_1_2_11 := "evidence_missing" if {
+	not e_6_1_2_11
+} else := "pass" if {
+	p_6_1_2_11
+} else := "fail"
+
+s_6_1_2_12 := "pass" if {
+	p_6_1_2_12
+} else := "not_attested"
+
+s_6_1_2_13 := "pass" if {
+	p_6_1_2_13
+} else := "not_attested"
+
+s_6_1_2_14 := "pass" if {
+	p_6_1_2_14
+} else := "not_attested"
+
+s_6_1_3_1 := "evidence_missing" if {
+	not e_6_1_3_1
+} else := "pass" if {
+	p_6_1_3_1
+} else := "fail"
+
+control_status := {
+	"6.1.1.1": s_6_1_1_1,
+	"6.1.1.2": s_6_1_1_2,
+	"6.1.1.3": s_6_1_1_3,
+	"6.1.1.4": s_6_1_1_4,
+	"6.1.1.5": s_6_1_1_5,
+	"6.1.2.1": s_6_1_2_1,
+	"6.1.2.2": s_6_1_2_2,
+	"6.1.2.3": s_6_1_2_3,
+	"6.1.2.4": s_6_1_2_4,
+	"6.1.2.5": s_6_1_2_5,
+	"6.1.2.6": s_6_1_2_6,
+	"6.1.2.7": s_6_1_2_7,
+	"6.1.2.8": s_6_1_2_8,
+	"6.1.2.9": s_6_1_2_9,
+	"6.1.2.10": s_6_1_2_10,
+	"6.1.2.11": s_6_1_2_11,
+	"6.1.2.12": s_6_1_2_12,
+	"6.1.2.13": s_6_1_2_13,
+	"6.1.2.14": s_6_1_2_14,
+	"6.1.3.1": s_6_1_3_1,
+}
