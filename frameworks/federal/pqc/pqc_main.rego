@@ -103,14 +103,14 @@
 #   source: nist
 #   domains: [us-federal, cryptography]
 #   coverage:
-#     checks: 20
-#     cited: 5
+#     checks: 22
+#     cited: 22
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package pqc.main
 
 import rego.v1

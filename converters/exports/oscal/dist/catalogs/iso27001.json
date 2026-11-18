@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "98ec66bd-a428-5486-af43-1b9ade6989ff",
   "metadata": {
-   "title": "Rego Policy Libraries — iso27001 (ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control)",
+   "title": "Rego Policy Libraries — iso27001 (Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "iso27001-access_control",
     "class": "rego-module",
-    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control",
+    "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
     "props": [
      {
       "name": "rego-package",
@@ -499,7 +499,7 @@
    {
     "id": "iso27001-communications_security",
     "class": "rego-module",
-    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.13 Communications security",
+    "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
     "props": [
      {
       "name": "rego-package",
@@ -907,7 +907,7 @@
     "controls": [
      {
       "id": "iso27001-iso27001.cryptography-1",
-      "title": "at rest",
+      "title": "data encryption",
       "props": [
        {
         "name": "label",
@@ -933,14 +933,14 @@
        {
         "id": "iso27001-iso27001.cryptography-1_stmt",
         "name": "statement",
-        "prose": "at rest"
+        "prose": "data encryption"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-2",
-      "title": "backup",
+      "title": "digital signatures",
       "props": [
        {
         "name": "label",
@@ -966,14 +966,14 @@
        {
         "id": "iso27001-iso27001.cryptography-2_stmt",
         "name": "statement",
-        "prose": "backup"
+        "prose": "digital signatures"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-3",
-      "title": "database",
+      "title": "hsm usage",
       "props": [
        {
         "name": "label",
@@ -999,14 +999,14 @@
        {
         "id": "iso27001-iso27001.cryptography-3_stmt",
         "name": "statement",
-        "prose": "database"
+        "prose": "hsm usage"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-4",
-      "title": "in transit",
+      "title": "key management mechanisms",
       "props": [
        {
         "name": "label",
@@ -1032,14 +1032,14 @@
        {
         "id": "iso27001-iso27001.cryptography-4_stmt",
         "name": "statement",
-        "prose": "in transit"
+        "prose": "key management mechanisms"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-5",
-      "title": "certificate management",
+      "title": "quantum resistance planned",
       "props": [
        {
         "name": "label",
@@ -1065,14 +1065,14 @@
        {
         "id": "iso27001-iso27001.cryptography-5_stmt",
         "name": "statement",
-        "prose": "certificate management"
+        "prose": "quantum resistance planned"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-6",
-      "title": "pki",
+      "title": "weak algorithms disabled",
       "props": [
        {
         "name": "label",
@@ -1098,14 +1098,14 @@
        {
         "id": "iso27001-iso27001.cryptography-6_stmt",
         "name": "statement",
-        "prose": "pki"
+        "prose": "weak algorithms disabled"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-7",
-      "title": "signature implementation",
+      "title": "at rest",
       "props": [
        {
         "name": "label",
@@ -1131,14 +1131,14 @@
        {
         "id": "iso27001-iso27001.cryptography-7_stmt",
         "name": "statement",
-        "prose": "signature implementation"
+        "prose": "at rest"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-8",
-      "title": "destruction",
+      "title": "backup",
       "props": [
        {
         "name": "label",
@@ -1164,14 +1164,14 @@
        {
         "id": "iso27001-iso27001.cryptography-8_stmt",
         "name": "statement",
-        "prose": "destruction"
+        "prose": "backup"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-9",
-      "title": "distribution storage",
+      "title": "database",
       "props": [
        {
         "name": "label",
@@ -1197,14 +1197,14 @@
        {
         "id": "iso27001-iso27001.cryptography-9_stmt",
         "name": "statement",
-        "prose": "distribution storage"
+        "prose": "database"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-10",
-      "title": "generation",
+      "title": "in transit",
       "props": [
        {
         "name": "label",
@@ -1230,14 +1230,14 @@
        {
         "id": "iso27001-iso27001.cryptography-10_stmt",
         "name": "statement",
-        "prose": "generation"
+        "prose": "in transit"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "iso27001-iso27001.cryptography-11",
-      "title": "usage rotation",
+      "title": "certificate management",
       "props": [
        {
         "name": "label",
@@ -1263,7 +1263,238 @@
        {
         "id": "iso27001-iso27001.cryptography-11_stmt",
         "name": "statement",
+        "prose": "certificate management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-12",
+      "title": "pki",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-12_stmt",
+        "name": "statement",
+        "prose": "pki"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-13",
+      "title": "signature implementation",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#13"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#13"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-13_stmt",
+        "name": "statement",
+        "prose": "signature implementation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-14",
+      "title": "destruction",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#14"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#14"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-14_stmt",
+        "name": "statement",
+        "prose": "destruction"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-15",
+      "title": "distribution storage",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-15_stmt",
+        "name": "statement",
+        "prose": "distribution storage"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-16",
+      "title": "generation",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-16_stmt",
+        "name": "statement",
+        "prose": "generation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-iso27001.cryptography-17",
+      "title": "usage rotation",
+      "props": [
+       {
+        "name": "label",
+        "value": "iso27001.cryptography#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iso27001.cryptography#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-iso27001.cryptography-17_stmt",
+        "name": "statement",
         "prose": "usage rotation"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27001-advisory",
+      "title": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "advisory"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "advisory"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27001.cryptography"
+       }
+      ],
+      "links": [
+       {
+        "href": "#7a27918a-dc56-50cb-8dea-bad4a28b088a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27001-advisory_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/management/iso27001/cryptography/cryptography.rego (package iso27001.cryptography); see the rule body."
        }
       ],
       "class": "compliance"
@@ -4998,7 +5229,7 @@
    {
     "id": "iso27001-operations_security",
     "class": "rego-module",
-    "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.12 Operations security",
+    "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
     "props": [
      {
       "name": "rego-package",
@@ -5517,7 +5748,7 @@
    {
     "id": "iso27001-system_acquisition_maintenance",
     "class": "rego-module",
-    "title": "The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check",
+    "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
     "props": [
      {
       "name": "rego-package",
@@ -6071,7 +6302,7 @@
    "resources": [
     {
      "uuid": "7cd29206-9695-5548-bda8-2d3455ce8c28",
-     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.9 Access control",
+     "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
      "props": [
       {
        "name": "rego-package",
@@ -6088,7 +6319,7 @@
     },
     {
      "uuid": "ccdd4faf-7f06-51dc-a2cd-a38815397d4a",
-     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.13 Communications security",
+     "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
      "props": [
       {
        "name": "rego-package",
@@ -6139,7 +6370,7 @@
     },
     {
      "uuid": "d6992ac4-0a67-52cc-9c46-4401a2a76e92",
-     "title": "ISO/IEC 27001 fact checks, written against the ISO/IEC 27001:2013 Annex A group A.12 Operations security",
+     "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
      "props": [
       {
        "name": "rego-package",
@@ -6156,7 +6387,7 @@
     },
     {
      "uuid": "e73ba7fb-f540-5163-96aa-edd7e44fc36a",
-     "title": "The 2013 ids in the comments below are kept for traceability; the 2022 Annex A control each check",
+     "title": "Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described",
      "props": [
       {
        "name": "rego-package",

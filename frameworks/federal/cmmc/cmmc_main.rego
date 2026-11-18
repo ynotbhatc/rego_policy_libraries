@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 15
-#     cited: 1
+#     checks: 49
+#     cited: 17
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: n/a
-#     as_of: v2.4.2
+#     guard: self
+#     as_of: v2.5.0
 package cmmc
 
 import rego.v1

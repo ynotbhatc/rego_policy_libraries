@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "cmmc-CMMC-AC.L1-3.1.1",
-      "title": "Unauthorized user '%v' has system access. Access must be limited to authorized users only.",
+      "id": "cmmc-CMMC-AC.L1-b.1.i-AC.L2-3.1.1",
+      "title": "evidence missing - input.users not collected (absent, not an array or empty); access cannot be shown limited to authorized users",
       "props": [
        {
         "name": "label",
-        "value": "CMMC AC.L1-3.1.1"
+        "value": "CMMC AC.L1-b.1.i / AC.L2-3.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "CMMC AC.L1-3.1.1"
+        "value": "CMMC AC.L1-b.1.i / AC.L2-3.1.1"
        },
        {
         "name": "rego-package",
@@ -91,24 +91,39 @@
       ],
       "parts": [
        {
-        "id": "cmmc-CMMC-AC.L1-3.1.1_stmt",
+        "id": "cmmc-CMMC-AC.L1-b.1.i-AC.L2-3.1.1_stmt",
         "name": "statement",
+        "prose": "evidence missing - input.users not collected (absent, not an array or empty); access cannot be shown limited to authorized users"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L1-b.1.i-AC.L2-3.1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - user '%v' has no boolean 'authorized'"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L1-b.1.i-AC.L2-3.1.1_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - user '%v' has no boolean 'system_access'"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L1-b.1.i-AC.L2-3.1.1_obj.3",
+        "name": "assessment-objective",
         "prose": "Unauthorized user '%v' has system access. Access must be limited to authorized users only."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cmmc-CMMC-AC.L1-3.1.2",
-      "title": "Least privilege access is not enforced. Users must be limited to transactions necessary for their role.",
+      "id": "cmmc-CMMC-AC.L1-b.1.ii-AC.L2-3.1.2",
+      "title": "Access is not shown limited to the transactions and functions authorized users are permitted to execute (input.access_controls.least_privilege_enforced is not true).",
       "props": [
        {
         "name": "label",
-        "value": "CMMC AC.L1-3.1.2"
+        "value": "CMMC AC.L1-b.1.ii / AC.L2-3.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "CMMC AC.L1-3.1.2"
+        "value": "CMMC AC.L1-b.1.ii / AC.L2-3.1.2"
        },
        {
         "name": "rego-package",
@@ -124,24 +139,24 @@
       ],
       "parts": [
        {
-        "id": "cmmc-CMMC-AC.L1-3.1.2_stmt",
+        "id": "cmmc-CMMC-AC.L1-b.1.ii-AC.L2-3.1.2_stmt",
         "name": "statement",
-        "prose": "Least privilege access is not enforced. Users must be limited to transactions necessary for their role."
+        "prose": "Access is not shown limited to the transactions and functions authorized users are permitted to execute (input.access_controls.least_privilege_enforced is not true)."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cmmc-CMMC-AC.L1-3.1.20",
-      "title": "External system connections are not controlled. All connections to external systems must be verified and controlled.",
+      "id": "cmmc-CMMC-AC.L1-b.1.iii-AC.L2-3.1.20",
+      "title": "External system connections are not shown verified and controlled (input.access_controls.external_connections_controlled is not true).",
       "props": [
        {
         "name": "label",
-        "value": "CMMC AC.L1-3.1.20"
+        "value": "CMMC AC.L1-b.1.iii / AC.L2-3.1.20"
        },
        {
         "name": "alt-identifier",
-        "value": "CMMC AC.L1-3.1.20"
+        "value": "CMMC AC.L1-b.1.iii / AC.L2-3.1.20"
        },
        {
         "name": "rego-package",
@@ -157,24 +172,24 @@
       ],
       "parts": [
        {
-        "id": "cmmc-CMMC-AC.L1-3.1.20_stmt",
+        "id": "cmmc-CMMC-AC.L1-b.1.iii-AC.L2-3.1.20_stmt",
         "name": "statement",
-        "prose": "External system connections are not controlled. All connections to external systems must be verified and controlled."
+        "prose": "External system connections are not shown verified and controlled (input.access_controls.external_connections_controlled is not true)."
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cmmc-CMMC-AC.L1-3.1.22",
-      "title": "CUI system '%v' is publicly accessible without CUI posting controls.",
+      "id": "cmmc-CMMC-AC.L1-b.1.iv-AC.L2-3.1.22",
+      "title": "evidence missing - input.cui_systems not collected (absent, not an array or empty); publicly accessible systems cannot be identified",
       "props": [
        {
         "name": "label",
-        "value": "CMMC AC.L1-3.1.22"
+        "value": "CMMC AC.L1-b.1.iv / AC.L2-3.1.22"
        },
        {
         "name": "alt-identifier",
-        "value": "CMMC AC.L1-3.1.22"
+        "value": "CMMC AC.L1-b.1.iv / AC.L2-3.1.22"
        },
        {
         "name": "rego-package",
@@ -190,9 +205,19 @@
       ],
       "parts": [
        {
-        "id": "cmmc-CMMC-AC.L1-3.1.22_stmt",
+        "id": "cmmc-CMMC-AC.L1-b.1.iv-AC.L2-3.1.22_stmt",
         "name": "statement",
-        "prose": "CUI system '%v' is publicly accessible without CUI posting controls."
+        "prose": "evidence missing - input.cui_systems not collected (absent, not an array or empty); publicly accessible systems cannot be identified"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L1-b.1.iv-AC.L2-3.1.22_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - system '%v' has no boolean 'publicly_accessible'"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L1-b.1.iv-AC.L2-3.1.22_obj.2",
+        "name": "assessment-objective",
+        "prose": "System '%v' is publicly accessible without controls on the information posted or processed on it."
        }
       ],
       "class": "compliance"
@@ -265,7 +290,7 @@
      },
      {
       "id": "cmmc-CMMC-AC.L2-3.1.5",
-      "title": "Privileged user '%v' has no documented justification. Least privilege must be enforced with documented need.",
+      "title": "evidence missing - input.users not collected (absent, not an array or empty); privileged accounts cannot be reviewed",
       "props": [
        {
         "name": "label",
@@ -291,6 +316,16 @@
        {
         "id": "cmmc-CMMC-AC.L2-3.1.5_stmt",
         "name": "statement",
+        "prose": "evidence missing - input.users not collected (absent, not an array or empty); privileged accounts cannot be reviewed"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.5_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - user '%v' has no boolean 'privileged'"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.5_obj.2",
+        "name": "assessment-objective",
         "prose": "Privileged user '%v' has no documented justification. Least privilege must be enforced with documented need."
        }
       ],
@@ -298,7 +333,7 @@
      },
      {
       "id": "cmmc-CMMC-AC.L2-3.1.6",
-      "title": "Privileged user '%v' does not have a separate non-privileged account for routine tasks.",
+      "title": "evidence missing - input.users not collected (absent, not an array or empty); use of non-privileged accounts cannot be shown",
       "props": [
        {
         "name": "label",
@@ -324,6 +359,16 @@
        {
         "id": "cmmc-CMMC-AC.L2-3.1.6_stmt",
         "name": "statement",
+        "prose": "evidence missing - input.users not collected (absent, not an array or empty); use of non-privileged accounts cannot be shown"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - user '%v' has no boolean 'privileged'"
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.6_obj.2",
+        "name": "assessment-objective",
         "prose": "Privileged user '%v' does not have a separate non-privileged account for routine tasks."
        }
       ],
@@ -363,8 +408,74 @@
       "class": "compliance"
      },
      {
+      "id": "cmmc-CMMC-AC.L2-3.1.8",
+      "title": "Unsuccessful logon attempts are not shown limited (input.access_controls.unsuccessful_logon_attempts_limited is not true).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.8_stmt",
+        "name": "statement",
+        "prose": "Unsuccessful logon attempts are not shown limited (input.access_controls.unsuccessful_logon_attempts_limited is not true)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-AC.L2-3.1.9",
+      "title": "Privacy and security notices are not shown displayed (input.access_controls.privacy_security_notices_displayed is not true).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.9_stmt",
+        "name": "statement",
+        "prose": "Privacy and security notices are not shown displayed (input.access_controls.privacy_security_notices_displayed is not true)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-CMMC-AC.L2-3.1.10",
-      "title": "Session lock timeout is %v minutes. Maximum 15 minutes of inactivity before lock is required.",
+      "title": "evidence missing - input.session.lock_timeout_minutes not collected (not a number); session lock cannot be shown.",
       "props": [
        {
         "name": "label",
@@ -390,7 +501,17 @@
        {
         "id": "cmmc-CMMC-AC.L2-3.1.10_stmt",
         "name": "statement",
-        "prose": "Session lock timeout is %v minutes. Maximum 15 minutes of inactivity before lock is required."
+        "prose": "evidence missing - input.session.lock_timeout_minutes not collected (not a number); session lock cannot be shown."
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.10_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.org_defined.session_lock_minutes (organisation-defined period of inactivity, NIST SP 800-171A 3.1.10[a]) not supplied or not a number."
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.10_obj.2",
+        "name": "assessment-objective",
+        "prose": "Session lock timeout is %v minutes, beyond the organisation-defined %v minutes of inactivity."
        }
       ],
       "class": "compliance"
@@ -561,8 +682,46 @@
       "class": "compliance"
      },
      {
+      "id": "cmmc-CMMC-AC.L2-3.1.16",
+      "title": "evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless authorization cannot be decided.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.16_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless authorization cannot be decided."
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.16_obj.1",
+        "name": "assessment-objective",
+        "prose": "Wireless access is not shown authorized before connections are allowed (input.access_controls.wireless_access_authorized is not true)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-CMMC-AC.L2-3.1.17",
-      "title": "Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required.",
+      "title": "evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless protection cannot be decided.",
       "props": [
        {
         "name": "label",
@@ -588,6 +747,11 @@
        {
         "id": "cmmc-CMMC-AC.L2-3.1.17_stmt",
         "name": "statement",
+        "prose": "evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless protection cannot be decided."
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.17_obj.1",
+        "name": "assessment-objective",
         "prose": "Wireless access to CUI systems is not encrypted. WPA3 or equivalent is required."
        }
       ],
@@ -628,7 +792,7 @@
      },
      {
       "id": "cmmc-CMMC-AC.L2-3.1.19",
-      "title": "Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required.",
+      "title": "evidence missing - input.access_controls.mobile_device_cui_access not collected (not a boolean); mobile-device encryption cannot be decided.",
       "props": [
        {
         "name": "label",
@@ -654,14 +818,52 @@
        {
         "id": "cmmc-CMMC-AC.L2-3.1.19_stmt",
         "name": "statement",
+        "prose": "evidence missing - input.access_controls.mobile_device_cui_access not collected (not a boolean); mobile-device encryption cannot be decided."
+       },
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.19_obj.1",
+        "name": "assessment-objective",
         "prose": "Mobile devices accessing CUI do not enforce encryption. Full-device encryption is required."
        }
       ],
       "class": "compliance"
      },
      {
+      "id": "cmmc-CMMC-AC.L2-3.1.21",
+      "title": "Use of portable storage devices on external systems is not shown limited (input.access_controls.portable_storage_external_use_limited is not true).",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC AC.L2-3.1.21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC AC.L2-3.1.21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-AC.L2-3.1.21_stmt",
+        "name": "statement",
+        "prose": "Use of portable storage devices on external systems is not shown limited (input.access_controls.portable_storage_external_use_limited is not true)."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-cmmc.access_control-1",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.1",
       "props": [
        {
         "name": "label",
@@ -687,14 +889,14 @@
        {
         "id": "cmmc-cmmc.access_control-1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.1"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-2",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.10",
       "props": [
        {
         "name": "label",
@@ -720,14 +922,14 @@
        {
         "id": "cmmc-cmmc.access_control-2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.10"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-3",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.11",
       "props": [
        {
         "name": "label",
@@ -753,14 +955,14 @@
        {
         "id": "cmmc-cmmc.access_control-3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.11"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-4",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.12",
       "props": [
        {
         "name": "label",
@@ -786,14 +988,14 @@
        {
         "id": "cmmc-cmmc.access_control-4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.12"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-5",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.13",
       "props": [
        {
         "name": "label",
@@ -819,14 +1021,14 @@
        {
         "id": "cmmc-cmmc.access_control-5_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.13"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-6",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.14",
       "props": [
        {
         "name": "label",
@@ -852,14 +1054,14 @@
        {
         "id": "cmmc-cmmc.access_control-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.14"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-7",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.15",
       "props": [
        {
         "name": "label",
@@ -885,14 +1087,14 @@
        {
         "id": "cmmc-cmmc.access_control-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.15"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-8",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.16",
       "props": [
        {
         "name": "label",
@@ -918,14 +1120,14 @@
        {
         "id": "cmmc-cmmc.access_control-8_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.16"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-9",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.17",
       "props": [
        {
         "name": "label",
@@ -951,14 +1153,14 @@
        {
         "id": "cmmc-cmmc.access_control-9_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.17"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-10",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.18",
       "props": [
        {
         "name": "label",
@@ -984,14 +1186,14 @@
        {
         "id": "cmmc-cmmc.access_control-10_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.18"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-11",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.19",
       "props": [
        {
         "name": "label",
@@ -1017,14 +1219,14 @@
        {
         "id": "cmmc-cmmc.access_control-11_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.19"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-12",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.2",
       "props": [
        {
         "name": "label",
@@ -1050,14 +1252,14 @@
        {
         "id": "cmmc-cmmc.access_control-12_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.2"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-13",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.20",
       "props": [
        {
         "name": "label",
@@ -1083,14 +1285,14 @@
        {
         "id": "cmmc-cmmc.access_control-13_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.20"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-14",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.21",
       "props": [
        {
         "name": "label",
@@ -1116,14 +1318,14 @@
        {
         "id": "cmmc-cmmc.access_control-14_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.21"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-15",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.22",
       "props": [
        {
         "name": "label",
@@ -1149,14 +1351,14 @@
        {
         "id": "cmmc-cmmc.access_control-15_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.22"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-16",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.3",
       "props": [
        {
         "name": "label",
@@ -1182,14 +1384,14 @@
        {
         "id": "cmmc-cmmc.access_control-16_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.3"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-17",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.4",
       "props": [
        {
         "name": "label",
@@ -1215,14 +1417,14 @@
        {
         "id": "cmmc-cmmc.access_control-17_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.4"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-18",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.5",
       "props": [
        {
         "name": "label",
@@ -1248,14 +1450,14 @@
        {
         "id": "cmmc-cmmc.access_control-18_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.5"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-19",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.6",
       "props": [
        {
         "name": "label",
@@ -1281,14 +1483,14 @@
        {
         "id": "cmmc-cmmc.access_control-19_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.6"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.access_control-20",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "title": "3.1.7",
       "props": [
        {
         "name": "label",
@@ -1314,22 +1516,22 @@
        {
         "id": "cmmc-cmmc.access_control-20_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+        "prose": "3.1.7"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "cmmc-CMMC-AC.L2-3.1.1",
-      "title": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "id": "cmmc-cmmc.access_control-21",
+      "title": "3.1.8",
       "props": [
        {
         "name": "label",
-        "value": "CMMC AC.L2-3.1.1"
+        "value": "cmmc.access_control#21"
        },
        {
         "name": "alt-identifier",
-        "value": "CMMC AC.L2-3.1.1"
+        "value": "cmmc.access_control#21"
        },
        {
         "name": "rego-package",
@@ -1345,9 +1547,207 @@
       ],
       "parts": [
        {
-        "id": "cmmc-CMMC-AC.L2-3.1.1_stmt",
+        "id": "cmmc-cmmc.access_control-21_stmt",
         "name": "statement",
-        "prose": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
+        "prose": "3.1.8"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-22",
+      "title": "3.1.9",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-22_stmt",
+        "name": "statement",
+        "prose": "3.1.9"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-23",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-23_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-24",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-24_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-25",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-25_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-26",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-26_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_access_control.rego (package cmmc.access_control); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.access_control-27",
+      "title": "CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the Level 2 access-control practices were not evaluated and the domain is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.access_control#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.access_control#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d098417d-8535-5c36-8b10-1b69c6910dd0",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.access_control-27_stmt",
+        "name": "statement",
+        "prose": "CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the Level 2 access-control practices were not evaluated and the domain is reported non-compliant"
        }
       ],
       "class": "compliance"
@@ -1409,15 +1809,25 @@
        {
         "id": "cmmc-3.3.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Audit log retention (%v days) is less than 90 days"
+        "prose": "evidence missing - input.org_defined.audit_log_retention_days (organisation-defined value, NIST SP 800-171A 3.3.1[e]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.3.1_obj.2",
         "name": "assessment-objective",
-        "prose": "auditd service is not active"
+        "prose": "evidence missing - input.audit.log_retention_days not collected or not a number"
        },
        {
         "id": "cmmc-3.3.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "audit records retained %v days, less than the organisation-defined %v days"
+       },
+       {
+        "id": "cmmc-3.3.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "auditd service is not active"
+       },
+       {
+        "id": "cmmc-3.3.1_obj.5",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -1505,10 +1915,20 @@
        {
         "id": "cmmc-3.3.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Audit event review last performed %v days ago (must be annual)"
+        "prose": "evidence missing - input.org_defined.audit_event_review_interval_days (organisation-defined value, NIST SP 800-171A 3.3.3[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.3.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.audit.last_review_days_ago not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.3.3_obj.3",
+        "name": "assessment-objective",
+        "prose": "logged event types last reviewed %v days ago, beyond the organisation-defined review interval of %v days"
+       },
+       {
+        "id": "cmmc-3.3.3_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -1747,7 +2167,7 @@
      },
      {
       "id": "cmmc-3.3.9",
-      "title": "Audit log management is not restricted to privileged users",
+      "title": "evidence missing - input.org_defined.audit_logging_managers (organisation-defined subset of privileged users, NIST SP 800-171A 3.3.9[a]) not supplied or not an array",
       "props": [
        {
         "name": "label",
@@ -1773,15 +2193,25 @@
        {
         "id": "cmmc-3.3.9_stmt",
         "name": "statement",
-        "prose": "Audit log management is not restricted to privileged users"
+        "prose": "evidence missing - input.org_defined.audit_logging_managers (organisation-defined subset of privileged users, NIST SP 800-171A 3.3.9[a]) not supplied or not an array"
        },
        {
         "id": "cmmc-3.3.9_obj.1",
         "name": "assessment-objective",
-        "prose": "No designated privileged users for audit management"
+        "prose": "'%v' manages audit logging but is not in the organisation-defined subset of privileged users"
        },
        {
         "id": "cmmc-3.3.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "Audit log management is not restricted to privileged users"
+       },
+       {
+        "id": "cmmc-3.3.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "No designated privileged users for audit management"
+       },
+       {
+        "id": "cmmc-3.3.9_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -1850,10 +2280,20 @@
        {
         "id": "cmmc-3.2.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Security awareness training interval (%v days) exceeds annual requirement"
+        "prose": "evidence missing - input.org_defined.awareness_training_interval_days (organisation-defined value, NIST SP 800-171A (R2 3.2.1 names no period)) not supplied or not a number"
        },
        {
         "id": "cmmc-3.2.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.training.training_frequency_days not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.2.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "security awareness delivered every %v days, beyond the organisation-defined interval of %v days"
+       },
+       {
+        "id": "cmmc-3.2.1_obj.5",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -2009,11 +2449,6 @@
         "id": "cmmc-CMMC-CM.L2-3.4.1_stmt",
         "name": "statement",
         "prose": "System '%v' has no documented baseline configuration. Baselines must be established for all CUI systems."
-       },
-       {
-        "id": "cmmc-CMMC-CM.L2-3.4.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.systems not supplied or empty; per-system configuration checks cannot be evaluated"
        }
       ],
       "class": "compliance"
@@ -2184,6 +2619,11 @@
         "id": "cmmc-CMMC-CM.L2-3.4.6_stmt",
         "name": "statement",
         "prose": "System '%v' has unnecessary services running: %v. Disable all non-essential services."
+       },
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - system '%v' has no 'unnecessary_services' list; least functionality cannot be shown"
        }
       ],
       "class": "compliance"
@@ -2222,6 +2662,11 @@
         "id": "cmmc-CMMC-CM.L2-3.4.7_obj.1",
         "name": "assessment-objective",
         "prose": "Unauthorized software detected on '%v': %v. Remove or authorize these programs."
+       },
+       {
+        "id": "cmmc-CMMC-CM.L2-3.4.7_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - system '%v' has no 'unauthorized_software' list; nonessential programs cannot be shown restricted"
        }
       ],
       "class": "compliance"
@@ -2294,7 +2739,7 @@
      },
      {
       "id": "cmmc-cmmc.configuration_management-1",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.1",
       "props": [
        {
         "name": "label",
@@ -2320,14 +2765,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.1"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-2",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.2",
       "props": [
        {
         "name": "label",
@@ -2353,14 +2798,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.2"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-3",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.3",
       "props": [
        {
         "name": "label",
@@ -2386,14 +2831,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-3_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.3"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-4",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.4",
       "props": [
        {
         "name": "label",
@@ -2419,14 +2864,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-4_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.4"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-5",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.5",
       "props": [
        {
         "name": "label",
@@ -2452,14 +2897,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-5_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.5"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-6",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.6",
       "props": [
        {
         "name": "label",
@@ -2485,14 +2930,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-6_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.6"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-7",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.7",
       "props": [
        {
         "name": "label",
@@ -2518,14 +2963,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-7_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.7"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-8",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.8",
       "props": [
        {
         "name": "label",
@@ -2551,14 +2996,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-8_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.8"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-9",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
+      "title": "3.4.9",
       "props": [
        {
         "name": "label",
@@ -2584,14 +3029,14 @@
        {
         "id": "cmmc-cmmc.configuration_management-9_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+        "prose": "3.4.9"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.configuration_management-10",
-      "title": "CMMC CM: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -2617,7 +3062,73 @@
        {
         "id": "cmmc-cmmc.configuration_management-10_stmt",
         "name": "statement",
-        "prose": "CMMC CM: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_configuration_management.rego (package cmmc.configuration_management); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-11",
+      "title": "CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the configuration-management practices were not evaluated and the domain is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#11"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#11"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ef52f501-4dd0-5579-8d6a-739828f3aeaf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-11_stmt",
+        "name": "statement",
+        "prose": "CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the configuration-management practices were not evaluated and the domain is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.configuration_management-12",
+      "title": "CMMC CM.L2-%v: evidence missing - input.systems not supplied, not an array or empty; per-system configuration checks cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.configuration_management#12"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.configuration_management#12"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.configuration_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ef52f501-4dd0-5579-8d6a-739828f3aeaf",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.configuration_management-12_stmt",
+        "name": "statement",
+        "prose": "CMMC CM.L2-%v: evidence missing - input.systems not supplied, not an array or empty; per-system configuration checks cannot be evaluated"
        }
       ],
       "class": "compliance"
@@ -2841,10 +3352,20 @@
        {
         "id": "cmmc-3.5.5_obj.1",
         "name": "assessment-objective",
-        "prose": "Inactive accounts disabled after %v days (must be ≤35)"
+        "prose": "evidence missing - input.org_defined.identifier_reuse_period_days (organisation-defined value, NIST SP 800-171A 3.5.5[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.5.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.identity.identifier_reuse_prevented_days not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.5.5_obj.3",
+        "name": "assessment-objective",
+        "prose": "identifiers can be reused after %v days, sooner than the organisation-defined period of %v days"
+       },
+       {
+        "id": "cmmc-3.5.5_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -2889,6 +3410,21 @@
        {
         "id": "cmmc-3.5.6_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing - input.org_defined.identifier_inactivity_days (organisation-defined value, NIST SP 800-171A 3.5.6[a]) not supplied or not a number"
+       },
+       {
+        "id": "cmmc-3.5.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.identity.inactive_account_disable_days not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.5.6_obj.4",
+        "name": "assessment-objective",
+        "prose": "identifiers disabled after %v days of inactivity, beyond the organisation-defined period of %v days"
+       },
+       {
+        "id": "cmmc-3.5.6_obj.5",
+        "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
       ],
@@ -2896,7 +3432,7 @@
      },
      {
       "id": "cmmc-3.5.7",
-      "title": "Minimum password length %v is less than required 12 characters",
+      "title": "evidence missing - input.org_defined.password_min_length (organisation-defined value, NIST SP 800-171A 3.5.7[a]) not supplied or not a number",
       "props": [
        {
         "name": "label",
@@ -2922,25 +3458,35 @@
        {
         "id": "cmmc-3.5.7_stmt",
         "name": "statement",
-        "prose": "Minimum password length %v is less than required 12 characters"
+        "prose": "evidence missing - input.org_defined.password_min_length (organisation-defined value, NIST SP 800-171A 3.5.7[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.5.7_obj.1",
         "name": "assessment-objective",
-        "prose": "Password policy does not require uppercase characters"
+        "prose": "evidence missing - input.identity.password_min_length not collected or not a number"
        },
        {
         "id": "cmmc-3.5.7_obj.2",
         "name": "assessment-objective",
-        "prose": "Password policy does not require numeric characters"
+        "prose": "minimum password length %v is below the organisation-defined %v"
        },
        {
         "id": "cmmc-3.5.7_obj.3",
         "name": "assessment-objective",
-        "prose": "Password policy does not require special characters"
+        "prose": "Password policy does not require uppercase characters"
        },
        {
         "id": "cmmc-3.5.7_obj.4",
+        "name": "assessment-objective",
+        "prose": "Password policy does not require numeric characters"
+       },
+       {
+        "id": "cmmc-3.5.7_obj.5",
+        "name": "assessment-objective",
+        "prose": "Password policy does not require special characters"
+       },
+       {
+        "id": "cmmc-3.5.7_obj.6",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -2949,7 +3495,7 @@
      },
      {
       "id": "cmmc-3.5.8",
-      "title": "Password history only prevents reuse of %v passwords (minimum 5 required)",
+      "title": "evidence missing - input.org_defined.password_history_generations (organisation-defined value, NIST SP 800-171A 3.5.8[a]) not supplied or not a number",
       "props": [
        {
         "name": "label",
@@ -2975,10 +3521,20 @@
        {
         "id": "cmmc-3.5.8_stmt",
         "name": "statement",
-        "prose": "Password history only prevents reuse of %v passwords (minimum 5 required)"
+        "prose": "evidence missing - input.org_defined.password_history_generations (organisation-defined value, NIST SP 800-171A 3.5.8[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.5.8_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.identity.password_history_count not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.5.8_obj.2",
+        "name": "assessment-objective",
+        "prose": "password reuse prohibited for %v generations, fewer than the organisation-specified %v"
+       },
+       {
+        "id": "cmmc-3.5.8_obj.3",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -3017,11 +3573,6 @@
        },
        {
         "id": "cmmc-3.5.9_obj.1",
-        "name": "assessment-objective",
-        "prose": "Temporary passwords expire after %v hours (must be ≤24)"
-       },
-       {
-        "id": "cmmc-3.5.9_obj.2",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -3187,16 +3738,6 @@
         "id": "cmmc-CMMC-IR.L2-3.6.1_obj.2",
         "name": "assessment-objective",
         "prose": "Incident response plan is %v days old. Plans must be reviewed and updated annually."
-       },
-       {
-        "id": "cmmc-CMMC-IR.L2-3.6.1_obj.3",
-        "name": "assessment-objective",
-        "prose": "FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant"
-       },
-       {
-        "id": "cmmc-CMMC-IR.L2-3.6.1_obj.4",
-        "name": "assessment-objective",
-        "prose": "FAIL-CLOSED - facts 'input.incident_response' were not supplied; this module cannot be evaluated and is reported non-compliant"
        }
       ],
       "class": "compliance"
@@ -3274,7 +3815,7 @@
      },
      {
       "id": "cmmc-cmmc.incident_response-1",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "title": "3.6.1",
       "props": [
        {
         "name": "label",
@@ -3300,14 +3841,14 @@
        {
         "id": "cmmc-cmmc.incident_response-1_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+        "prose": "3.6.1"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.incident_response-2",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "title": "3.6.2",
       "props": [
        {
         "name": "label",
@@ -3333,14 +3874,14 @@
        {
         "id": "cmmc-cmmc.incident_response-2_stmt",
         "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+        "prose": "3.6.2"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc.incident_response-3",
-      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "title": "3.6.3",
       "props": [
        {
         "name": "label",
@@ -3366,7 +3907,106 @@
        {
         "id": "cmmc-cmmc.incident_response-3_stmt",
         "name": "statement",
+        "prose": "3.6.3"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.incident_response-4",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4a7f9606-cc5b-58f1-9c70-d6b46e7d4638",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-4_stmt",
+        "name": "statement",
         "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_incident_response.rego (package cmmc.incident_response); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.incident_response-5",
+      "title": "CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the incident-response practices were not evaluated and the domain is reported non-compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4a7f9606-cc5b-58f1-9c70-d6b46e7d4638",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-5_stmt",
+        "name": "statement",
+        "prose": "CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the incident-response practices were not evaluated and the domain is reported non-compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.incident_response-6",
+      "title": "CMMC IR.L2-%v: evidence missing - input.incident_response not supplied (or not an object); this practice cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.incident_response#6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.incident_response#6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#4a7f9606-cc5b-58f1-9c70-d6b46e7d4638",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.incident_response-6_stmt",
+        "name": "statement",
+        "prose": "CMMC IR.L2-%v: evidence missing - input.incident_response not supplied (or not an object); this practice cannot be evaluated"
        }
       ],
       "class": "compliance"
@@ -3376,7 +4016,7 @@
    {
     "id": "cmmc-cmmc_main",
     "class": "rego-module",
-    "title": "CMMC 2.0 — Master Compliance Orchestrator",
+    "title": "CMMC (32 CFR Part 170) — Level 1 / Level 2 practice scoring over the fourteen domain modules",
     "props": [
      {
       "name": "rego-package",
@@ -3396,8 +4036,503 @@
     ],
     "controls": [
      {
+      "id": "cmmc-AC.L1-b.1.i",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC.L1-b.1.i"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC.L1-b.1.i"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-AC.L1-b.1.i_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-AC.L1-b.1.ii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC.L1-b.1.ii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC.L1-b.1.ii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-AC.L1-b.1.ii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-AC.L1-b.1.iii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC.L1-b.1.iii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC.L1-b.1.iii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-AC.L1-b.1.iii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-AC.L1-b.1.iv",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "AC.L1-b.1.iv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "AC.L1-b.1.iv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-AC.L1-b.1.iv_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-IA.L1-b.1.v",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA.L1-b.1.v"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA.L1-b.1.v"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-IA.L1-b.1.v_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-IA.L1-b.1.vi",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "IA.L1-b.1.vi"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IA.L1-b.1.vi"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-IA.L1-b.1.vi_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-MP.L1-b.1.vii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "MP.L1-b.1.vii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "MP.L1-b.1.vii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-MP.L1-b.1.vii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-PE.L1-b.1.viii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PE.L1-b.1.viii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PE.L1-b.1.viii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-PE.L1-b.1.viii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-PE.L1-b.1.ix",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "PE.L1-b.1.ix"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PE.L1-b.1.ix"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-PE.L1-b.1.ix_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SC.L1-b.1.x",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC.L1-b.1.x"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC.L1-b.1.x"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SC.L1-b.1.x_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SC.L1-b.1.xi",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SC.L1-b.1.xi"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SC.L1-b.1.xi"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SC.L1-b.1.xi_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SI.L1-b.1.xii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SI.L1-b.1.xii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SI.L1-b.1.xii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SI.L1-b.1.xii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SI.L1-b.1.xiii",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SI.L1-b.1.xiii"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SI.L1-b.1.xiii"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SI.L1-b.1.xiii_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SI.L1-b.1.xiv",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SI.L1-b.1.xiv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SI.L1-b.1.xiv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SI.L1-b.1.xiv_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-SI.L1-b.1.xv",
+      "title": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "SI.L1-b.1.xv"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "SI.L1-b.1.xv"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-SI.L1-b.1.xv_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/cmmc/cmmc_main.rego (package cmmc); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
       "id": "cmmc-cmmc-1",
-      "title": "3.10 physical protection",
+      "title": "3.1",
       "props": [
        {
         "name": "label",
@@ -3423,14 +4558,14 @@
        {
         "id": "cmmc-cmmc-1_stmt",
         "name": "statement",
-        "prose": "3.10 physical protection"
+        "prose": "3.1"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-2",
-      "title": "3.11 risk assessment",
+      "title": "3.10",
       "props": [
        {
         "name": "label",
@@ -3456,14 +4591,14 @@
        {
         "id": "cmmc-cmmc-2_stmt",
         "name": "statement",
-        "prose": "3.11 risk assessment"
+        "prose": "3.10"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-3",
-      "title": "3.12 security assessment",
+      "title": "3.11",
       "props": [
        {
         "name": "label",
@@ -3489,14 +4624,14 @@
        {
         "id": "cmmc-cmmc-3_stmt",
         "name": "statement",
-        "prose": "3.12 security assessment"
+        "prose": "3.11"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-4",
-      "title": "3.13 system communications",
+      "title": "3.12",
       "props": [
        {
         "name": "label",
@@ -3522,14 +4657,14 @@
        {
         "id": "cmmc-cmmc-4_stmt",
         "name": "statement",
-        "prose": "3.13 system communications"
+        "prose": "3.12"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-5",
-      "title": "3.14 system information integrity",
+      "title": "3.13",
       "props": [
        {
         "name": "label",
@@ -3555,14 +4690,14 @@
        {
         "id": "cmmc-cmmc-5_stmt",
         "name": "statement",
-        "prose": "3.14 system information integrity"
+        "prose": "3.13"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-6",
-      "title": "3.1 access control",
+      "title": "3.14",
       "props": [
        {
         "name": "label",
@@ -3588,14 +4723,14 @@
        {
         "id": "cmmc-cmmc-6_stmt",
         "name": "statement",
-        "prose": "3.1 access control"
+        "prose": "3.14"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-7",
-      "title": "3.2 awareness training",
+      "title": "3.2",
       "props": [
        {
         "name": "label",
@@ -3621,14 +4756,14 @@
        {
         "id": "cmmc-cmmc-7_stmt",
         "name": "statement",
-        "prose": "3.2 awareness training"
+        "prose": "3.2"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-8",
-      "title": "3.3 audit accountability",
+      "title": "3.3",
       "props": [
        {
         "name": "label",
@@ -3654,14 +4789,14 @@
        {
         "id": "cmmc-cmmc-8_stmt",
         "name": "statement",
-        "prose": "3.3 audit accountability"
+        "prose": "3.3"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-9",
-      "title": "3.4 configuration management",
+      "title": "3.4",
       "props": [
        {
         "name": "label",
@@ -3687,14 +4822,14 @@
        {
         "id": "cmmc-cmmc-9_stmt",
         "name": "statement",
-        "prose": "3.4 configuration management"
+        "prose": "3.4"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-10",
-      "title": "3.5 identification authentication",
+      "title": "3.5",
       "props": [
        {
         "name": "label",
@@ -3720,14 +4855,14 @@
        {
         "id": "cmmc-cmmc-10_stmt",
         "name": "statement",
-        "prose": "3.5 identification authentication"
+        "prose": "3.5"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-11",
-      "title": "3.6 incident response",
+      "title": "3.6",
       "props": [
        {
         "name": "label",
@@ -3753,14 +4888,14 @@
        {
         "id": "cmmc-cmmc-11_stmt",
         "name": "statement",
-        "prose": "3.6 incident response"
+        "prose": "3.6"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-12",
-      "title": "3.7 maintenance",
+      "title": "3.7",
       "props": [
        {
         "name": "label",
@@ -3786,14 +4921,14 @@
        {
         "id": "cmmc-cmmc-12_stmt",
         "name": "statement",
-        "prose": "3.7 maintenance"
+        "prose": "3.7"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-13",
-      "title": "3.8 media protection",
+      "title": "3.8",
       "props": [
        {
         "name": "label",
@@ -3819,14 +4954,14 @@
        {
         "id": "cmmc-cmmc-13_stmt",
         "name": "statement",
-        "prose": "3.8 media protection"
+        "prose": "3.8"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "cmmc-cmmc-14",
-      "title": "3.9 personnel security",
+      "title": "3.9",
       "props": [
        {
         "name": "label",
@@ -3851,6 +4986,633 @@
       "parts": [
        {
         "id": "cmmc-cmmc-14_stmt",
+        "name": "statement",
+        "prose": "3.9"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-15",
+      "title": "CMMC %s: %s",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#15"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#15"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-15_stmt",
+        "name": "statement",
+        "prose": "CMMC %s: %s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-16",
+      "title": "CMMC %s: evidence missing or requirement not met - NIST SP 800-171 R2 %s is not shown satisfied by the collected facts",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-16_stmt",
+        "name": "statement",
+        "prose": "CMMC %s: evidence missing or requirement not met - NIST SP 800-171 R2 %s is not shown satisfied by the collected facts"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-17",
+      "title": "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#17"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#17"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-17_stmt",
+        "name": "statement",
+        "prose": "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-CMMC-Level-3",
+      "title": "not evaluated - the %d NIST SP 800-172 requirements of 32 CFR 170.14(c)(4) (%s) have no fact model in this library; the 110 Level 2 practices were evaluated and Level 3 cannot be reported compliant",
+      "props": [
+       {
+        "name": "label",
+        "value": "CMMC Level 3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CMMC Level 3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-CMMC-Level-3_stmt",
+        "name": "statement",
+        "prose": "not evaluated - the %d NIST SP 800-172 requirements of 32 CFR 170.14(c)(4) (%s) have no fact model in this library; the 110 Level 2 practices were evaluated and Level 3 cannot be reported compliant"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-18",
+      "title": "CMMC unscored finding (names no practice): %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#18"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#18"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-18_stmt",
+        "name": "statement",
+        "prose": "CMMC unscored finding (names no practice): %v"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-19",
+      "title": "3.10 physical protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#19"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#19"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-19_stmt",
+        "name": "statement",
+        "prose": "3.10 physical protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-20",
+      "title": "3.11 risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#20"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#20"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-20_stmt",
+        "name": "statement",
+        "prose": "3.11 risk assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-21",
+      "title": "3.12 security assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-21_stmt",
+        "name": "statement",
+        "prose": "3.12 security assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-22",
+      "title": "3.13 system communications",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#22"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#22"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-22_stmt",
+        "name": "statement",
+        "prose": "3.13 system communications"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-23",
+      "title": "3.14 system information integrity",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#23"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#23"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-23_stmt",
+        "name": "statement",
+        "prose": "3.14 system information integrity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-24",
+      "title": "3.1 access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#24"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#24"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-24_stmt",
+        "name": "statement",
+        "prose": "3.1 access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-25",
+      "title": "3.2 awareness training",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-25_stmt",
+        "name": "statement",
+        "prose": "3.2 awareness training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-26",
+      "title": "3.3 audit accountability",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#26"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#26"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-26_stmt",
+        "name": "statement",
+        "prose": "3.3 audit accountability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-27",
+      "title": "3.4 configuration management",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#27"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#27"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-27_stmt",
+        "name": "statement",
+        "prose": "3.4 configuration management"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-28",
+      "title": "3.5 identification authentication",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#28"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#28"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-28_stmt",
+        "name": "statement",
+        "prose": "3.5 identification authentication"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-29",
+      "title": "3.6 incident response",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#29"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#29"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-29_stmt",
+        "name": "statement",
+        "prose": "3.6 incident response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-30",
+      "title": "3.7 maintenance",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#30"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#30"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-30_stmt",
+        "name": "statement",
+        "prose": "3.7 maintenance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-31",
+      "title": "3.8 media protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#31"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#31"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-31_stmt",
+        "name": "statement",
+        "prose": "3.8 media protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc-32",
+      "title": "3.9 personnel security",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc#32"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc#32"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc-32_stmt",
         "name": "statement",
         "prose": "3.9 personnel security"
        }
@@ -4153,6 +5915,39 @@
         "id": "cmmc-3.7.6_obj.1",
         "name": "assessment-objective",
         "prose": "Escort is not required for maintenance personnel in CUI areas"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.maintenance-1",
+      "title": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.maintenance#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.maintenance#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.maintenance"
+       }
+      ],
+      "links": [
+       {
+        "href": "#77ce72e7-7e1f-5634-b0a7-e67cdba1626a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.maintenance-1_stmt",
+        "name": "statement",
+        "prose": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
       ],
       "class": "compliance"
@@ -4542,6 +6337,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.media_protection-1",
+      "title": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.media_protection#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.media_protection#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.media_protection"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ba5b577b-20c9-51e3-802e-6eee6585251a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.media_protection-1_stmt",
+        "name": "statement",
+        "prose": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -4654,6 +6482,39 @@
         "id": "cmmc-3.9.2_obj.3",
         "name": "assessment-objective",
         "prose": "CUI access privileges are not reviewed when personnel transfer roles"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "cmmc-cmmc.personnel_security-1",
+      "title": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing",
+      "props": [
+       {
+        "name": "label",
+        "value": "cmmc.personnel_security#1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "cmmc.personnel_security#1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cmmc.personnel_security"
+       }
+      ],
+      "links": [
+       {
+        "href": "#3cc7896c-8ad2-5f7d-a640-f3122a88a0df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cmmc-cmmc.personnel_security-1_stmt",
+        "name": "statement",
+        "prose": "%v: evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
       ],
       "class": "compliance"
@@ -4859,15 +6720,25 @@
        {
         "id": "cmmc-3.10.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Physical access logs retained for %v days (minimum 90 days required)"
+        "prose": "evidence missing - input.org_defined.physical_access_log_retention_days (organisation-defined value, NIST SP 800-171A (R2 3.10.4 names no period)) not supplied or not a number"
        },
        {
         "id": "cmmc-3.10.4_obj.2",
         "name": "assessment-objective",
-        "prose": "Physical access audit logs are not reviewed on a regular basis"
+        "prose": "evidence missing - input.physical.access_log_retention_days not collected or not a number"
        },
        {
         "id": "cmmc-3.10.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "physical access logs retained %v days, less than the organisation-defined %v days"
+       },
+       {
+        "id": "cmmc-3.10.4_obj.4",
+        "name": "assessment-objective",
+        "prose": "Physical access audit logs are not reviewed on a regular basis"
+       },
+       {
+        "id": "cmmc-3.10.4_obj.5",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -5027,15 +6898,30 @@
        {
         "id": "cmmc-3.11.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Risk assessment conducted every %v days (must be at least annually)"
+        "prose": "evidence missing - input.org_defined.risk_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.11.1[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.11.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Risk assessment results are not documented"
+        "prose": "evidence missing - input.risk.risk_assessment_frequency_days not collected or not a number"
        },
        {
         "id": "cmmc-3.11.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "risk assessed every %v days, beyond the organisation-defined interval of %v days"
+       },
+       {
+        "id": "cmmc-3.11.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year"
+       },
+       {
+        "id": "cmmc-3.11.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "Risk assessment results are not documented"
+       },
+       {
+        "id": "cmmc-3.11.1_obj.6",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -5075,20 +6961,35 @@
        {
         "id": "cmmc-3.11.2_obj.1",
         "name": "assessment-objective",
-        "prose": "Vulnerability scans run every %v days (must be at least monthly)"
+        "prose": "evidence missing - input.org_defined.vulnerability_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.11.2[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.11.2_obj.2",
         "name": "assessment-objective",
-        "prose": "Vulnerability scan results are not reviewed and acted upon"
+        "prose": "evidence missing - input.risk.scan_frequency_days not collected or not a number"
        },
        {
         "id": "cmmc-3.11.2_obj.3",
         "name": "assessment-objective",
-        "prose": "New vulnerability disclosures do not trigger additional scans"
+        "prose": "vulnerability scans run every %v days, beyond the organisation-defined interval of %v days"
        },
        {
         "id": "cmmc-3.11.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.5",
+        "name": "assessment-objective",
+        "prose": "Vulnerability scan results are not reviewed and acted upon"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.6",
+        "name": "assessment-objective",
+        "prose": "New vulnerability disclosures do not trigger additional scans"
+       },
+       {
+        "id": "cmmc-3.11.2_obj.7",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -5128,20 +7029,40 @@
        {
         "id": "cmmc-3.11.3_obj.1",
         "name": "assessment-objective",
-        "prose": "Critical vulnerabilities remediated within %v days (must be ≤15)"
+        "prose": "evidence missing - input.org_defined.critical_vulnerability_remediation_days (organisation-defined value, NIST SP 800-171A (R2 3.11.3: in accordance with risk assessments)) not supplied or not a number"
        },
        {
         "id": "cmmc-3.11.3_obj.2",
         "name": "assessment-objective",
-        "prose": "High vulnerabilities remediated within %v days (must be ≤30)"
+        "prose": "evidence missing - input.risk.critical_vuln_remediation_days not collected or not a number"
        },
        {
         "id": "cmmc-3.11.3_obj.3",
         "name": "assessment-objective",
-        "prose": "Vulnerability remediation status is not tracked to closure"
+        "prose": "critical vulnerabilities remediated within %v days, beyond the organisation's risk-based %v days"
        },
        {
         "id": "cmmc-3.11.3_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.org_defined.high_vulnerability_remediation_days (organisation-defined value, NIST SP 800-171A (R2 3.11.3: in accordance with risk assessments)) not supplied or not a number"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.5",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.risk.high_vuln_remediation_days not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.6",
+        "name": "assessment-objective",
+        "prose": "high vulnerabilities remediated within %v days, beyond the organisation's risk-based %v days"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.7",
+        "name": "assessment-objective",
+        "prose": "Vulnerability remediation status is not tracked to closure"
+       },
+       {
+        "id": "cmmc-3.11.3_obj.8",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -5205,15 +7126,30 @@
        {
         "id": "cmmc-3.12.1_obj.1",
         "name": "assessment-objective",
-        "prose": "Security control assessments conducted every %v days (must be at least annually)"
+        "prose": "evidence missing - input.org_defined.control_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.12.1[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.12.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Security control assessment results are not documented"
+        "prose": "evidence missing - input.assessment.assessment_frequency_days not collected or not a number"
        },
        {
         "id": "cmmc-3.12.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "security controls assessed every %v days, beyond the organisation-defined interval of %v days"
+       },
+       {
+        "id": "cmmc-3.12.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year"
+       },
+       {
+        "id": "cmmc-3.12.1_obj.5",
+        "name": "assessment-objective",
+        "prose": "Security control assessment results are not documented"
+       },
+       {
+        "id": "cmmc-3.12.1_obj.6",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -5800,10 +7736,20 @@
        {
         "id": "cmmc-3.13.9_obj.1",
         "name": "assessment-objective",
-        "prose": "Network session timeout is %v minutes (must be ≤30)"
+        "prose": "evidence missing - input.org_defined.network_session_inactivity_minutes (organisation-defined value, NIST SP 800-171A 3.13.9[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.13.9_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.scp.network_session_timeout_minutes not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.13.9_obj.3",
+        "name": "assessment-objective",
+        "prose": "network connections terminated after %v minutes of inactivity, beyond the organisation-defined %v minutes"
+       },
+       {
+        "id": "cmmc-3.13.9_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -6203,10 +8149,20 @@
        {
         "id": "cmmc-3.14.1_obj.2",
         "name": "assessment-objective",
-        "prose": "Critical patches applied within %v days (must be ≤30)"
+        "prose": "evidence missing - input.org_defined.flaw_correction_days (organisation-defined value, NIST SP 800-171A 3.14.1[e]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.14.1_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.integrity.critical_patch_days not collected or not a number"
+       },
+       {
+        "id": "cmmc-3.14.1_obj.4",
+        "name": "assessment-objective",
+        "prose": "system flaws corrected within %v days, beyond the organisation-specified %v days"
+       },
+       {
+        "id": "cmmc-3.14.1_obj.5",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -6342,11 +8298,6 @@
        {
         "id": "cmmc-3.14.4_obj.1",
         "name": "assessment-objective",
-        "prose": "Anti-malware signatures updated every %v hours (must be ≤24)"
-       },
-       {
-        "id": "cmmc-3.14.4_obj.2",
-        "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
       ],
@@ -6385,20 +8336,35 @@
        {
         "id": "cmmc-3.14.5_obj.1",
         "name": "assessment-objective",
-        "prose": "System scans run every %v days (must be at least weekly)"
+        "prose": "evidence missing - input.org_defined.malware_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.14.5[a]) not supplied or not a number"
        },
        {
         "id": "cmmc-3.14.5_obj.2",
         "name": "assessment-objective",
-        "prose": "Real-time scanning of files is not performed when files are opened or executed"
+        "prose": "evidence missing - input.integrity.scan_frequency_days not collected or not a number"
        },
        {
         "id": "cmmc-3.14.5_obj.3",
         "name": "assessment-objective",
-        "prose": "Files downloaded from external sources are not scanned before use"
+        "prose": "periodic malicious code scans run every %v days, beyond the organisation-defined interval of %v days"
        },
        {
         "id": "cmmc-3.14.5_obj.4",
+        "name": "assessment-objective",
+        "prose": "the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.5",
+        "name": "assessment-objective",
+        "prose": "Real-time scanning of files is not performed when files are opened or executed"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.6",
+        "name": "assessment-objective",
+        "prose": "Files downloaded from external sources are not scanned before use"
+       },
+       {
+        "id": "cmmc-3.14.5_obj.7",
         "name": "assessment-objective",
         "prose": "evidence missing or requirement not met — all facts required by this practice must be present and passing"
        }
@@ -6620,7 +8586,7 @@
     },
     {
      "uuid": "a7c1c7e9-28f8-5e43-8de1-20b2cbe63f4d",
-     "title": "CMMC 2.0 — Master Compliance Orchestrator",
+     "title": "CMMC (32 CFR Part 170) — Level 1 / Level 2 practice scoring over the fourteen domain modules",
      "props": [
       {
        "name": "rego-package",

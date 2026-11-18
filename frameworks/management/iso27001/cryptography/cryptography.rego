@@ -6,14 +6,14 @@
 #   source: iso
 #   domains: [isms]
 #   coverage:
-#     checks: 15
-#     cited: 4
+#     checks: 22
+#     cited: 5
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iso27001.cryptography
 
 import rego.v1

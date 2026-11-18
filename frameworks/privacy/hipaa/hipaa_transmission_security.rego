@@ -6,14 +6,14 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 22
-#     cited: 4
-#     density: sized
-#     basis: size
+#     checks: 8
+#     cited: 3
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.transmission_security
 
 import rego.v1

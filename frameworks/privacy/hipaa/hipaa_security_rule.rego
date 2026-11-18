@@ -81,7 +81,7 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 73
+#     checks: 76
 #     cited: 68
 #     expected: 68
 #     found: 68
@@ -91,7 +91,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.security_rule
 
 import rego.v1

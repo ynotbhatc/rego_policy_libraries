@@ -37,17 +37,17 @@
 #   source: hhs
 #   domains: [privacy, healthcare]
 #   coverage:
-#     checks: 29
-#     cited: 20
+#     checks: 26
+#     cited: 19
 #     expected: 17
-#     found: 20
+#     found: 19
 #     scope: module
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package hipaa.hitech
 
 import rego.v1

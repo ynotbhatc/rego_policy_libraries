@@ -6,14 +6,14 @@
 #   source: fedramp
 #   domains: [us-federal, cloud]
 #   coverage:
-#     checks: 38
-#     cited: 22
+#     checks: 40
+#     cited: 13
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package fedramp
 
 import rego.v1

@@ -6,14 +6,14 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 17
-#     cited: 17
+#     checks: 22
+#     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package nist.sp800_53.system_communications
 
 import rego.v1

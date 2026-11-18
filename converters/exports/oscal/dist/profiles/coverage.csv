@@ -1,7 +1,7 @@
 baseline_key,control_id,kind,covered,check_count,checks,sources
 fedramp_rev5_high,ac-1,base,yes,2,cjis:AC-1;nist_sp_800_53:NIST AC-1,label-is-800-53;nist-800-53-module
 fedramp_rev5_high,ac-2,base,yes,21,cjis:AC-2;nist_sp_800_53:NIST AC-2;stig_kubernetes:CNTR-K8-000220;stig_kubernetes:CNTR-K8-000700;stig_ms_sql_2016:SQL6-D0-003700;stig_openshift_4:CNTR-OS-000030;stig_openshift_4:CNTR-OS-000460;stig_oracle_database_19c:O19C-00-000800;stig_oracle_database_19c:O19C-00-012500;stig_oracle_linux_8:OL08-00-030150;stig_oracle_linux_8:OL08-00-030171;stig_oracle_linux_9:OL09-00-000500;stig_oracle_linux_9:OL09-00-000525;stig_oracle_mysql_8:MYS8-00-000100;stig_postgresql_16:CD16-00-000200;stig_rhel_8:RHEL-08-020260;stig_rhel_9:RHEL-09-411050;stig_rhel_9:RHEL-09-654215;stig_rhel_9:RHEL-09-654240;stig_rke2:CNTR-R2-000030;stig_rke2:CNTR-R2-000060,label-is-800-53;nist-800-53-module;stig-cci
-fedramp_rev5_high,ac-2.1,enhancement,no,0,,
+fedramp_rev5_high,ac-2.1,enhancement,yes,1,nist_sp_800_53:NIST AC-2(1),nist-800-53-module
 fedramp_rev5_high,ac-2.2,enhancement,no,0,,
 fedramp_rev5_high,ac-2.3,enhancement,no,0,,
 fedramp_rev5_high,ac-2.4,enhancement,no,0,,
@@ -17,8 +17,8 @@ fedramp_rev5_high,ac-4.4,enhancement,no,0,,
 fedramp_rev5_high,ac-4.21,enhancement,no,0,,
 fedramp_rev5_high,ac-5,base,yes,2,cjis:AC-5;nist_sp_800_53:NIST AC-5,label-is-800-53;nist-800-53-module
 fedramp_rev5_high,ac-6,base,yes,18,cjis:AC-6;nist_sp_800_53:NIST AC-6;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-001000;stig_oracle_linux_9:OL09-00-000715;stig_oracle_linux_9:OL09-00-002413;stig_oracle_mysql_8:MYS8-00-010600;stig_oracle_mysql_8:MYS8-00-010700;stig_rhel_8:RHEL-08-030000;stig_rhel_9:RHEL-09-211050;stig_rhel_9:RHEL-09-654010;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-001130;stig_windows_11:WN11-SO-000167;stig_windows_server_2022:WN22-MS-000060;stig_windows_server_2025:WN25-MS-000060,label-is-800-53;nist-800-53-module;stig-cci
-fedramp_rev5_high,ac-6.1,enhancement,no,0,,
-fedramp_rev5_high,ac-6.2,enhancement,no,0,,
+fedramp_rev5_high,ac-6.1,enhancement,yes,1,nist_sp_800_53:NIST AC-6(1),nist-800-53-module
+fedramp_rev5_high,ac-6.2,enhancement,yes,1,nist_sp_800_53:NIST AC-6(2),nist-800-53-module
 fedramp_rev5_high,ac-6.3,enhancement,no,0,,
 fedramp_rev5_high,ac-6.5,enhancement,no,0,,
 fedramp_rev5_high,ac-6.7,enhancement,no,0,,
@@ -29,16 +29,16 @@ fedramp_rev5_high,ac-7,base,yes,12,cjis:AC-7;nist_sp_800_53:NIST AC-7;stig_opens
 fedramp_rev5_high,ac-8,base,yes,12,nist_sp_800_53:NIST AC-8;stig_oracle_linux_8:OL08-00-010040;stig_oracle_linux_8:OL08-00-010060;stig_oracle_linux_9:OL09-00-000090;stig_oracle_linux_9:OL09-00-000256;stig_rhel_8:RHEL-08-010040;stig_rhel_8:RHEL-08-010060;stig_rhel_9:RHEL-09-211020;stig_rhel_9:RHEL-09-255025;stig_windows_11:WN11-SO-000075;stig_windows_server_2022:WN22-SO-000130;stig_windows_server_2025:WN25-SO-000130,nist-800-53-module;stig-cci
 fedramp_rev5_high,ac-10,base,yes,5,nist_sp_800_53:NIST AC-10;stig_oracle_database_19c:O19C-00-000100;stig_oracle_database_19c:O19C-00-000200;stig_oracle_mysql_8:MYS8-00-000200;stig_vmware_vsphere_8:ESXI-80-000008,nist-800-53-module;stig-cci
 fedramp_rev5_high,ac-11,base,yes,5,nist_sp_800_53:NIST AC-11;stig_rhel_9:RHEL-09-271045;stig_windows_11:WN11-CC-000365;stig_windows_server_2022:WN22-SO-000120;stig_windows_server_2025:WN25-SO-000120,nist-800-53-module;stig-cci
-fedramp_rev5_high,ac-11.1,enhancement,no,0,,
+fedramp_rev5_high,ac-11.1,enhancement,yes,1,nist_sp_800_53:NIST AC-11(1),nist-800-53-module
 fedramp_rev5_high,ac-12,base,yes,13,nist_sp_800_53:NIST AC-12;stig_apache_2_4_unix:AS24-U1-000650;stig_oracle_database_19c:O19C-00-000300;stig_oracle_linux_8:OL08-00-010200;stig_oracle_linux_8:OL08-00-010201;stig_oracle_linux_9:OL09-00-002346;stig_oracle_linux_9:OL09-00-002347;stig_oracle_mysql_8:MYS8-00-011100;stig_rhel_9:RHEL-09-255095;stig_rhel_9:RHEL-09-255100;stig_sles_15:SLES-15-010280;stig_vmware_vsphere_8:ESXI-80-000068;stig_windows_11:WN11-SO-000070,nist-800-53-module;stig-cci
 fedramp_rev5_high,ac-14,base,yes,1,nist_sp_800_53:NIST AC-14,nist-800-53-module
 fedramp_rev5_high,ac-17,base,yes,41,nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380,nist-800-53-module;stig-cci
-fedramp_rev5_high,ac-17.1,enhancement,no,0,,
-fedramp_rev5_high,ac-17.2,enhancement,no,0,,
+fedramp_rev5_high,ac-17.1,enhancement,yes,1,nist_sp_800_53:NIST AC-17(1),nist-800-53-module
+fedramp_rev5_high,ac-17.2,enhancement,yes,1,nist_sp_800_53:NIST AC-17(2),nist-800-53-module
 fedramp_rev5_high,ac-17.3,enhancement,no,0,,
 fedramp_rev5_high,ac-17.4,enhancement,no,0,,
 fedramp_rev5_high,ac-18,base,yes,9,nist_sp_800_53:NIST AC-18;stig_oracle_linux_8:OL08-00-040110;stig_oracle_linux_8:OL08-00-040111;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-006001;stig_rhel_8:RHEL-08-040110;stig_rhel_8:RHEL-08-040111;stig_rhel_9:RHEL-09-291035;stig_rhel_9:RHEL-09-291040,nist-800-53-module;stig-cci
-fedramp_rev5_high,ac-18.1,enhancement,no,0,,
+fedramp_rev5_high,ac-18.1,enhancement,yes,1,nist_sp_800_53:NIST AC-18(1),nist-800-53-module
 fedramp_rev5_high,ac-18.3,enhancement,no,0,,
 fedramp_rev5_high,ac-18.4,enhancement,no,0,,
 fedramp_rev5_high,ac-18.5,enhancement,no,0,,
@@ -350,16 +350,16 @@ fedramp_rev5_high,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_linux_
 fedramp_rev5_high,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
 fedramp_rev5_high,sc-17,base,yes,2,nist_sp_800_53:NIST SC-17;stig_oracle_database_19c:O19C-00-020400,nist-800-53-module;stig-cci
 fedramp_rev5_high,sc-18,base,yes,1,nist_sp_800_53:NIST SC-18,nist-800-53-module
-fedramp_rev5_high,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-fedramp_rev5_high,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+fedramp_rev5_high,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+fedramp_rev5_high,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 fedramp_rev5_high,sc-22,base,no,0,,
 fedramp_rev5_high,sc-23,base,yes,23,nist_sp_800_53:NIST SC-23;stig_apache_2_4_unix:AS24-U1-000030;stig_apache_2_4_unix:AS24-U1-000520;stig_kubernetes:CNTR-K8-001400;stig_kubernetes:CNTR-K8-001410;stig_kubernetes:CNTR-K8-001420;stig_kubernetes:CNTR-K8-001430;stig_kubernetes:CNTR-K8-001440;stig_kubernetes:CNTR-K8-001450;stig_kubernetes:CNTR-K8-001460;stig_kubernetes:CNTR-K8-001470;stig_kubernetes:CNTR-K8-001480;stig_kubernetes:CNTR-K8-001490;stig_kubernetes:CNTR-K8-001500;stig_kubernetes:CNTR-K8-001510;stig_kubernetes:CNTR-K8-001520;stig_kubernetes:CNTR-K8-001530;stig_kubernetes:CNTR-K8-001540;stig_kubernetes:CNTR-K8-001550;stig_openshift_4:CNTR-OS-000510;stig_oracle_mysql_8:MYS8-00-007000;stig_oracle_mysql_8:MYS8-00-011900;stig_rke2:CNTR-R2-000010,nist-800-53-module;stig-cci
 fedramp_rev5_high,sc-24,base,yes,2,stig_oracle_database_19c:O19C-00-016700;stig_ubuntu_22_04:UBTU-22-213015,stig-cci
 fedramp_rev5_high,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-fedramp_rev5_high,sc-28.1,enhancement,no,0,,
+fedramp_rev5_high,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 fedramp_rev5_high,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
-fedramp_rev5_high,sc-45,base,yes,1,stig_vmware_vsphere_8:ESXI-80-000124,stig-cci
-fedramp_rev5_high,sc-45.1,enhancement,no,0,,
+fedramp_rev5_high,sc-45,base,yes,2,nist_sp_800_53:NIST SC-45;stig_vmware_vsphere_8:ESXI-80-000124,nist-800-53-module;stig-cci
+fedramp_rev5_high,sc-45.1,enhancement,yes,1,nist_sp_800_53:NIST SC-45(1),nist-800-53-module
 fedramp_rev5_high,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 fedramp_rev5_high,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci
 fedramp_rev5_high,si-2.2,enhancement,no,0,,
@@ -542,11 +542,11 @@ fedramp_rev5_li_saas,sc-8.1,enhancement,yes,1,nist_sp_800_53:NIST SC-8(1),nist-8
 fedramp_rev5_li_saas,sc-12,base,yes,5,cjis:SC-12;nist_sp_800_53:NIST SC-12;stig_kubernetes:CNTR-K8-002620;stig_kubernetes:CNTR-K8-002630;stig_kubernetes:CNTR-K8-002640,label-is-800-53;nist-800-53-module;stig-cci
 fedramp_rev5_li_saas,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_linux_2023:AZLX-23-001195;stig_amazon_linux_2023:AZLX-23-001270;stig_amazon_linux_2023:AZLX-23-001285;stig_openshift_4:CNTR-OS-000510;stig_oracle_database_19c:O19C-00-016000;stig_oracle_linux_8:OL08-00-010183;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000241;stig_oracle_linux_9:OL09-00-000242;stig_oracle_mysql_8:MYS8-00-011500;stig_oracle_mysql_8:MYS8-00-011600;stig_oracle_mysql_8:MYS8-00-011700;stig_oracle_mysql_8:MYS8-00-011800;stig_postgresql_16:CD16-00-008300;stig_rhel_9:RHEL-09-215105;stig_rhel_9:RHEL-09-671010;stig_rhel_9:RHEL-09-672020;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010035;stig_sles_15:SLES-15-010045;stig_sles_15:SLES-15-010046;stig_sles_15:SLES-15-010510;stig_ubuntu_22_04:UBTU-22-671010;stig_windows_11:WN11-SO-000230;stig_windows_server_2022:WN22-SO-000360;stig_windows_server_2025:WN25-SO-000360,nist-800-53-module;stig-cci
 fedramp_rev5_li_saas,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
-fedramp_rev5_li_saas,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-fedramp_rev5_li_saas,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+fedramp_rev5_li_saas,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+fedramp_rev5_li_saas,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 fedramp_rev5_li_saas,sc-22,base,no,0,,
 fedramp_rev5_li_saas,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-fedramp_rev5_li_saas,sc-28.1,enhancement,no,0,,
+fedramp_rev5_li_saas,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 fedramp_rev5_li_saas,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
 fedramp_rev5_li_saas,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 fedramp_rev5_li_saas,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci
@@ -698,11 +698,11 @@ fedramp_rev5_low,sc-8.1,enhancement,yes,1,nist_sp_800_53:NIST SC-8(1),nist-800-5
 fedramp_rev5_low,sc-12,base,yes,5,cjis:SC-12;nist_sp_800_53:NIST SC-12;stig_kubernetes:CNTR-K8-002620;stig_kubernetes:CNTR-K8-002630;stig_kubernetes:CNTR-K8-002640,label-is-800-53;nist-800-53-module;stig-cci
 fedramp_rev5_low,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_linux_2023:AZLX-23-001195;stig_amazon_linux_2023:AZLX-23-001270;stig_amazon_linux_2023:AZLX-23-001285;stig_openshift_4:CNTR-OS-000510;stig_oracle_database_19c:O19C-00-016000;stig_oracle_linux_8:OL08-00-010183;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000241;stig_oracle_linux_9:OL09-00-000242;stig_oracle_mysql_8:MYS8-00-011500;stig_oracle_mysql_8:MYS8-00-011600;stig_oracle_mysql_8:MYS8-00-011700;stig_oracle_mysql_8:MYS8-00-011800;stig_postgresql_16:CD16-00-008300;stig_rhel_9:RHEL-09-215105;stig_rhel_9:RHEL-09-671010;stig_rhel_9:RHEL-09-672020;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010035;stig_sles_15:SLES-15-010045;stig_sles_15:SLES-15-010046;stig_sles_15:SLES-15-010510;stig_ubuntu_22_04:UBTU-22-671010;stig_windows_11:WN11-SO-000230;stig_windows_server_2022:WN22-SO-000360;stig_windows_server_2025:WN25-SO-000360,nist-800-53-module;stig-cci
 fedramp_rev5_low,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
-fedramp_rev5_low,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-fedramp_rev5_low,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+fedramp_rev5_low,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+fedramp_rev5_low,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 fedramp_rev5_low,sc-22,base,no,0,,
 fedramp_rev5_low,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-fedramp_rev5_low,sc-28.1,enhancement,no,0,,
+fedramp_rev5_low,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 fedramp_rev5_low,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
 fedramp_rev5_low,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 fedramp_rev5_low,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci
@@ -723,7 +723,7 @@ fedramp_rev5_low,sr-11.2,enhancement,no,0,,
 fedramp_rev5_low,sr-12,base,no,0,,
 fedramp_rev5_moderate,ac-1,base,yes,2,cjis:AC-1;nist_sp_800_53:NIST AC-1,label-is-800-53;nist-800-53-module
 fedramp_rev5_moderate,ac-2,base,yes,21,cjis:AC-2;nist_sp_800_53:NIST AC-2;stig_kubernetes:CNTR-K8-000220;stig_kubernetes:CNTR-K8-000700;stig_ms_sql_2016:SQL6-D0-003700;stig_openshift_4:CNTR-OS-000030;stig_openshift_4:CNTR-OS-000460;stig_oracle_database_19c:O19C-00-000800;stig_oracle_database_19c:O19C-00-012500;stig_oracle_linux_8:OL08-00-030150;stig_oracle_linux_8:OL08-00-030171;stig_oracle_linux_9:OL09-00-000500;stig_oracle_linux_9:OL09-00-000525;stig_oracle_mysql_8:MYS8-00-000100;stig_postgresql_16:CD16-00-000200;stig_rhel_8:RHEL-08-020260;stig_rhel_9:RHEL-09-411050;stig_rhel_9:RHEL-09-654215;stig_rhel_9:RHEL-09-654240;stig_rke2:CNTR-R2-000030;stig_rke2:CNTR-R2-000060,label-is-800-53;nist-800-53-module;stig-cci
-fedramp_rev5_moderate,ac-2.1,enhancement,no,0,,
+fedramp_rev5_moderate,ac-2.1,enhancement,yes,1,nist_sp_800_53:NIST AC-2(1),nist-800-53-module
 fedramp_rev5_moderate,ac-2.2,enhancement,no,0,,
 fedramp_rev5_moderate,ac-2.3,enhancement,no,0,,
 fedramp_rev5_moderate,ac-2.4,enhancement,no,0,,
@@ -737,8 +737,8 @@ fedramp_rev5_moderate,ac-4,base,yes,2,cjis:AC-4;nist_sp_800_53:NIST AC-4,label-i
 fedramp_rev5_moderate,ac-4.21,enhancement,no,0,,
 fedramp_rev5_moderate,ac-5,base,yes,2,cjis:AC-5;nist_sp_800_53:NIST AC-5,label-is-800-53;nist-800-53-module
 fedramp_rev5_moderate,ac-6,base,yes,18,cjis:AC-6;nist_sp_800_53:NIST AC-6;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-001000;stig_oracle_linux_9:OL09-00-000715;stig_oracle_linux_9:OL09-00-002413;stig_oracle_mysql_8:MYS8-00-010600;stig_oracle_mysql_8:MYS8-00-010700;stig_rhel_8:RHEL-08-030000;stig_rhel_9:RHEL-09-211050;stig_rhel_9:RHEL-09-654010;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-001130;stig_windows_11:WN11-SO-000167;stig_windows_server_2022:WN22-MS-000060;stig_windows_server_2025:WN25-MS-000060,label-is-800-53;nist-800-53-module;stig-cci
-fedramp_rev5_moderate,ac-6.1,enhancement,no,0,,
-fedramp_rev5_moderate,ac-6.2,enhancement,no,0,,
+fedramp_rev5_moderate,ac-6.1,enhancement,yes,1,nist_sp_800_53:NIST AC-6(1),nist-800-53-module
+fedramp_rev5_moderate,ac-6.2,enhancement,yes,1,nist_sp_800_53:NIST AC-6(2),nist-800-53-module
 fedramp_rev5_moderate,ac-6.5,enhancement,no,0,,
 fedramp_rev5_moderate,ac-6.7,enhancement,no,0,,
 fedramp_rev5_moderate,ac-6.9,enhancement,no,0,,
@@ -746,16 +746,16 @@ fedramp_rev5_moderate,ac-6.10,enhancement,no,0,,
 fedramp_rev5_moderate,ac-7,base,yes,12,cjis:AC-7;nist_sp_800_53:NIST AC-7;stig_openshift_4:CNTR-OS-000460;stig_oracle_linux_8:OL08-00-020011;stig_oracle_linux_8:OL08-00-020013;stig_oracle_linux_9:OL09-00-002416;stig_oracle_linux_9:OL09-00-003020;stig_rhel_8:RHEL-08-020010;stig_rhel_8:RHEL-08-020012;stig_rhel_9:RHEL-09-411075;stig_rhel_9:RHEL-09-411085;stig_windows_11:WN11-SO-000075,label-is-800-53;nist-800-53-module;stig-cci
 fedramp_rev5_moderate,ac-8,base,yes,12,nist_sp_800_53:NIST AC-8;stig_oracle_linux_8:OL08-00-010040;stig_oracle_linux_8:OL08-00-010060;stig_oracle_linux_9:OL09-00-000090;stig_oracle_linux_9:OL09-00-000256;stig_rhel_8:RHEL-08-010040;stig_rhel_8:RHEL-08-010060;stig_rhel_9:RHEL-09-211020;stig_rhel_9:RHEL-09-255025;stig_windows_11:WN11-SO-000075;stig_windows_server_2022:WN22-SO-000130;stig_windows_server_2025:WN25-SO-000130,nist-800-53-module;stig-cci
 fedramp_rev5_moderate,ac-11,base,yes,5,nist_sp_800_53:NIST AC-11;stig_rhel_9:RHEL-09-271045;stig_windows_11:WN11-CC-000365;stig_windows_server_2022:WN22-SO-000120;stig_windows_server_2025:WN25-SO-000120,nist-800-53-module;stig-cci
-fedramp_rev5_moderate,ac-11.1,enhancement,no,0,,
+fedramp_rev5_moderate,ac-11.1,enhancement,yes,1,nist_sp_800_53:NIST AC-11(1),nist-800-53-module
 fedramp_rev5_moderate,ac-12,base,yes,13,nist_sp_800_53:NIST AC-12;stig_apache_2_4_unix:AS24-U1-000650;stig_oracle_database_19c:O19C-00-000300;stig_oracle_linux_8:OL08-00-010200;stig_oracle_linux_8:OL08-00-010201;stig_oracle_linux_9:OL09-00-002346;stig_oracle_linux_9:OL09-00-002347;stig_oracle_mysql_8:MYS8-00-011100;stig_rhel_9:RHEL-09-255095;stig_rhel_9:RHEL-09-255100;stig_sles_15:SLES-15-010280;stig_vmware_vsphere_8:ESXI-80-000068;stig_windows_11:WN11-SO-000070,nist-800-53-module;stig-cci
 fedramp_rev5_moderate,ac-14,base,yes,1,nist_sp_800_53:NIST AC-14,nist-800-53-module
 fedramp_rev5_moderate,ac-17,base,yes,41,nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380,nist-800-53-module;stig-cci
-fedramp_rev5_moderate,ac-17.1,enhancement,no,0,,
-fedramp_rev5_moderate,ac-17.2,enhancement,no,0,,
+fedramp_rev5_moderate,ac-17.1,enhancement,yes,1,nist_sp_800_53:NIST AC-17(1),nist-800-53-module
+fedramp_rev5_moderate,ac-17.2,enhancement,yes,1,nist_sp_800_53:NIST AC-17(2),nist-800-53-module
 fedramp_rev5_moderate,ac-17.3,enhancement,no,0,,
 fedramp_rev5_moderate,ac-17.4,enhancement,no,0,,
 fedramp_rev5_moderate,ac-18,base,yes,9,nist_sp_800_53:NIST AC-18;stig_oracle_linux_8:OL08-00-040110;stig_oracle_linux_8:OL08-00-040111;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-006001;stig_rhel_8:RHEL-08-040110;stig_rhel_8:RHEL-08-040111;stig_rhel_9:RHEL-09-291035;stig_rhel_9:RHEL-09-291040,nist-800-53-module;stig-cci
-fedramp_rev5_moderate,ac-18.1,enhancement,no,0,,
+fedramp_rev5_moderate,ac-18.1,enhancement,yes,1,nist_sp_800_53:NIST AC-18(1),nist-800-53-module
 fedramp_rev5_moderate,ac-18.3,enhancement,no,0,,
 fedramp_rev5_moderate,ac-19,base,yes,1,nist_sp_800_53:NIST AC-19,nist-800-53-module
 fedramp_rev5_moderate,ac-19.5,enhancement,no,0,,
@@ -999,15 +999,15 @@ fedramp_rev5_moderate,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_li
 fedramp_rev5_moderate,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
 fedramp_rev5_moderate,sc-17,base,yes,2,nist_sp_800_53:NIST SC-17;stig_oracle_database_19c:O19C-00-020400,nist-800-53-module;stig-cci
 fedramp_rev5_moderate,sc-18,base,yes,1,nist_sp_800_53:NIST SC-18,nist-800-53-module
-fedramp_rev5_moderate,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-fedramp_rev5_moderate,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+fedramp_rev5_moderate,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+fedramp_rev5_moderate,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 fedramp_rev5_moderate,sc-22,base,no,0,,
 fedramp_rev5_moderate,sc-23,base,yes,23,nist_sp_800_53:NIST SC-23;stig_apache_2_4_unix:AS24-U1-000030;stig_apache_2_4_unix:AS24-U1-000520;stig_kubernetes:CNTR-K8-001400;stig_kubernetes:CNTR-K8-001410;stig_kubernetes:CNTR-K8-001420;stig_kubernetes:CNTR-K8-001430;stig_kubernetes:CNTR-K8-001440;stig_kubernetes:CNTR-K8-001450;stig_kubernetes:CNTR-K8-001460;stig_kubernetes:CNTR-K8-001470;stig_kubernetes:CNTR-K8-001480;stig_kubernetes:CNTR-K8-001490;stig_kubernetes:CNTR-K8-001500;stig_kubernetes:CNTR-K8-001510;stig_kubernetes:CNTR-K8-001520;stig_kubernetes:CNTR-K8-001530;stig_kubernetes:CNTR-K8-001540;stig_kubernetes:CNTR-K8-001550;stig_openshift_4:CNTR-OS-000510;stig_oracle_mysql_8:MYS8-00-007000;stig_oracle_mysql_8:MYS8-00-011900;stig_rke2:CNTR-R2-000010,nist-800-53-module;stig-cci
 fedramp_rev5_moderate,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-fedramp_rev5_moderate,sc-28.1,enhancement,no,0,,
+fedramp_rev5_moderate,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 fedramp_rev5_moderate,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
-fedramp_rev5_moderate,sc-45,base,yes,1,stig_vmware_vsphere_8:ESXI-80-000124,stig-cci
-fedramp_rev5_moderate,sc-45.1,enhancement,no,0,,
+fedramp_rev5_moderate,sc-45,base,yes,2,nist_sp_800_53:NIST SC-45;stig_vmware_vsphere_8:ESXI-80-000124,nist-800-53-module;stig-cci
+fedramp_rev5_moderate,sc-45.1,enhancement,yes,1,nist_sp_800_53:NIST SC-45(1),nist-800-53-module
 fedramp_rev5_moderate,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 fedramp_rev5_moderate,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci
 fedramp_rev5_moderate,si-2.2,enhancement,no,0,,
@@ -1046,7 +1046,7 @@ fedramp_rev5_moderate,sr-11.2,enhancement,no,0,,
 fedramp_rev5_moderate,sr-12,base,no,0,,
 nist_800_53_rev5_high,ac-1,base,yes,2,cjis:AC-1;nist_sp_800_53:NIST AC-1,label-is-800-53;nist-800-53-module
 nist_800_53_rev5_high,ac-2,base,yes,21,cjis:AC-2;nist_sp_800_53:NIST AC-2;stig_kubernetes:CNTR-K8-000220;stig_kubernetes:CNTR-K8-000700;stig_ms_sql_2016:SQL6-D0-003700;stig_openshift_4:CNTR-OS-000030;stig_openshift_4:CNTR-OS-000460;stig_oracle_database_19c:O19C-00-000800;stig_oracle_database_19c:O19C-00-012500;stig_oracle_linux_8:OL08-00-030150;stig_oracle_linux_8:OL08-00-030171;stig_oracle_linux_9:OL09-00-000500;stig_oracle_linux_9:OL09-00-000525;stig_oracle_mysql_8:MYS8-00-000100;stig_postgresql_16:CD16-00-000200;stig_rhel_8:RHEL-08-020260;stig_rhel_9:RHEL-09-411050;stig_rhel_9:RHEL-09-654215;stig_rhel_9:RHEL-09-654240;stig_rke2:CNTR-R2-000030;stig_rke2:CNTR-R2-000060,label-is-800-53;nist-800-53-module;stig-cci
-nist_800_53_rev5_high,ac-2.1,enhancement,no,0,,
+nist_800_53_rev5_high,ac-2.1,enhancement,yes,1,nist_sp_800_53:NIST AC-2(1),nist-800-53-module
 nist_800_53_rev5_high,ac-2.2,enhancement,no,0,,
 nist_800_53_rev5_high,ac-2.3,enhancement,no,0,,
 nist_800_53_rev5_high,ac-2.4,enhancement,no,0,,
@@ -1059,8 +1059,8 @@ nist_800_53_rev5_high,ac-4,base,yes,2,cjis:AC-4;nist_sp_800_53:NIST AC-4,label-i
 nist_800_53_rev5_high,ac-4.4,enhancement,no,0,,
 nist_800_53_rev5_high,ac-5,base,yes,2,cjis:AC-5;nist_sp_800_53:NIST AC-5,label-is-800-53;nist-800-53-module
 nist_800_53_rev5_high,ac-6,base,yes,18,cjis:AC-6;nist_sp_800_53:NIST AC-6;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-001000;stig_oracle_linux_9:OL09-00-000715;stig_oracle_linux_9:OL09-00-002413;stig_oracle_mysql_8:MYS8-00-010600;stig_oracle_mysql_8:MYS8-00-010700;stig_rhel_8:RHEL-08-030000;stig_rhel_9:RHEL-09-211050;stig_rhel_9:RHEL-09-654010;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-001130;stig_windows_11:WN11-SO-000167;stig_windows_server_2022:WN22-MS-000060;stig_windows_server_2025:WN25-MS-000060,label-is-800-53;nist-800-53-module;stig-cci
-nist_800_53_rev5_high,ac-6.1,enhancement,no,0,,
-nist_800_53_rev5_high,ac-6.2,enhancement,no,0,,
+nist_800_53_rev5_high,ac-6.1,enhancement,yes,1,nist_sp_800_53:NIST AC-6(1),nist-800-53-module
+nist_800_53_rev5_high,ac-6.2,enhancement,yes,1,nist_sp_800_53:NIST AC-6(2),nist-800-53-module
 nist_800_53_rev5_high,ac-6.3,enhancement,no,0,,
 nist_800_53_rev5_high,ac-6.5,enhancement,no,0,,
 nist_800_53_rev5_high,ac-6.7,enhancement,no,0,,
@@ -1070,16 +1070,16 @@ nist_800_53_rev5_high,ac-7,base,yes,12,cjis:AC-7;nist_sp_800_53:NIST AC-7;stig_o
 nist_800_53_rev5_high,ac-8,base,yes,12,nist_sp_800_53:NIST AC-8;stig_oracle_linux_8:OL08-00-010040;stig_oracle_linux_8:OL08-00-010060;stig_oracle_linux_9:OL09-00-000090;stig_oracle_linux_9:OL09-00-000256;stig_rhel_8:RHEL-08-010040;stig_rhel_8:RHEL-08-010060;stig_rhel_9:RHEL-09-211020;stig_rhel_9:RHEL-09-255025;stig_windows_11:WN11-SO-000075;stig_windows_server_2022:WN22-SO-000130;stig_windows_server_2025:WN25-SO-000130,nist-800-53-module;stig-cci
 nist_800_53_rev5_high,ac-10,base,yes,5,nist_sp_800_53:NIST AC-10;stig_oracle_database_19c:O19C-00-000100;stig_oracle_database_19c:O19C-00-000200;stig_oracle_mysql_8:MYS8-00-000200;stig_vmware_vsphere_8:ESXI-80-000008,nist-800-53-module;stig-cci
 nist_800_53_rev5_high,ac-11,base,yes,5,nist_sp_800_53:NIST AC-11;stig_rhel_9:RHEL-09-271045;stig_windows_11:WN11-CC-000365;stig_windows_server_2022:WN22-SO-000120;stig_windows_server_2025:WN25-SO-000120,nist-800-53-module;stig-cci
-nist_800_53_rev5_high,ac-11.1,enhancement,no,0,,
+nist_800_53_rev5_high,ac-11.1,enhancement,yes,1,nist_sp_800_53:NIST AC-11(1),nist-800-53-module
 nist_800_53_rev5_high,ac-12,base,yes,13,nist_sp_800_53:NIST AC-12;stig_apache_2_4_unix:AS24-U1-000650;stig_oracle_database_19c:O19C-00-000300;stig_oracle_linux_8:OL08-00-010200;stig_oracle_linux_8:OL08-00-010201;stig_oracle_linux_9:OL09-00-002346;stig_oracle_linux_9:OL09-00-002347;stig_oracle_mysql_8:MYS8-00-011100;stig_rhel_9:RHEL-09-255095;stig_rhel_9:RHEL-09-255100;stig_sles_15:SLES-15-010280;stig_vmware_vsphere_8:ESXI-80-000068;stig_windows_11:WN11-SO-000070,nist-800-53-module;stig-cci
 nist_800_53_rev5_high,ac-14,base,yes,1,nist_sp_800_53:NIST AC-14,nist-800-53-module
 nist_800_53_rev5_high,ac-17,base,yes,41,nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380,nist-800-53-module;stig-cci
-nist_800_53_rev5_high,ac-17.1,enhancement,no,0,,
-nist_800_53_rev5_high,ac-17.2,enhancement,no,0,,
+nist_800_53_rev5_high,ac-17.1,enhancement,yes,1,nist_sp_800_53:NIST AC-17(1),nist-800-53-module
+nist_800_53_rev5_high,ac-17.2,enhancement,yes,1,nist_sp_800_53:NIST AC-17(2),nist-800-53-module
 nist_800_53_rev5_high,ac-17.3,enhancement,no,0,,
 nist_800_53_rev5_high,ac-17.4,enhancement,no,0,,
 nist_800_53_rev5_high,ac-18,base,yes,9,nist_sp_800_53:NIST AC-18;stig_oracle_linux_8:OL08-00-040110;stig_oracle_linux_8:OL08-00-040111;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-006001;stig_rhel_8:RHEL-08-040110;stig_rhel_8:RHEL-08-040111;stig_rhel_9:RHEL-09-291035;stig_rhel_9:RHEL-09-291040,nist-800-53-module;stig-cci
-nist_800_53_rev5_high,ac-18.1,enhancement,no,0,,
+nist_800_53_rev5_high,ac-18.1,enhancement,yes,1,nist_sp_800_53:NIST AC-18(1),nist-800-53-module
 nist_800_53_rev5_high,ac-18.3,enhancement,no,0,,
 nist_800_53_rev5_high,ac-18.4,enhancement,no,0,,
 nist_800_53_rev5_high,ac-18.5,enhancement,no,0,,
@@ -1364,13 +1364,13 @@ nist_800_53_rev5_high,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_li
 nist_800_53_rev5_high,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
 nist_800_53_rev5_high,sc-17,base,yes,2,nist_sp_800_53:NIST SC-17;stig_oracle_database_19c:O19C-00-020400,nist-800-53-module;stig-cci
 nist_800_53_rev5_high,sc-18,base,yes,1,nist_sp_800_53:NIST SC-18,nist-800-53-module
-nist_800_53_rev5_high,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-nist_800_53_rev5_high,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+nist_800_53_rev5_high,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+nist_800_53_rev5_high,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 nist_800_53_rev5_high,sc-22,base,no,0,,
 nist_800_53_rev5_high,sc-23,base,yes,23,nist_sp_800_53:NIST SC-23;stig_apache_2_4_unix:AS24-U1-000030;stig_apache_2_4_unix:AS24-U1-000520;stig_kubernetes:CNTR-K8-001400;stig_kubernetes:CNTR-K8-001410;stig_kubernetes:CNTR-K8-001420;stig_kubernetes:CNTR-K8-001430;stig_kubernetes:CNTR-K8-001440;stig_kubernetes:CNTR-K8-001450;stig_kubernetes:CNTR-K8-001460;stig_kubernetes:CNTR-K8-001470;stig_kubernetes:CNTR-K8-001480;stig_kubernetes:CNTR-K8-001490;stig_kubernetes:CNTR-K8-001500;stig_kubernetes:CNTR-K8-001510;stig_kubernetes:CNTR-K8-001520;stig_kubernetes:CNTR-K8-001530;stig_kubernetes:CNTR-K8-001540;stig_kubernetes:CNTR-K8-001550;stig_openshift_4:CNTR-OS-000510;stig_oracle_mysql_8:MYS8-00-007000;stig_oracle_mysql_8:MYS8-00-011900;stig_rke2:CNTR-R2-000010,nist-800-53-module;stig-cci
 nist_800_53_rev5_high,sc-24,base,yes,2,stig_oracle_database_19c:O19C-00-016700;stig_ubuntu_22_04:UBTU-22-213015,stig-cci
 nist_800_53_rev5_high,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-nist_800_53_rev5_high,sc-28.1,enhancement,no,0,,
+nist_800_53_rev5_high,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 nist_800_53_rev5_high,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
 nist_800_53_rev5_high,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 nist_800_53_rev5_high,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci
@@ -1542,8 +1542,8 @@ nist_800_53_rev5_low,sc-7,base,yes,3,cjis:SC-7;nist_sp_800_53:NIST SC-7;stig_kub
 nist_800_53_rev5_low,sc-12,base,yes,5,cjis:SC-12;nist_sp_800_53:NIST SC-12;stig_kubernetes:CNTR-K8-002620;stig_kubernetes:CNTR-K8-002630;stig_kubernetes:CNTR-K8-002640,label-is-800-53;nist-800-53-module;stig-cci
 nist_800_53_rev5_low,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazon_linux_2023:AZLX-23-001195;stig_amazon_linux_2023:AZLX-23-001270;stig_amazon_linux_2023:AZLX-23-001285;stig_openshift_4:CNTR-OS-000510;stig_oracle_database_19c:O19C-00-016000;stig_oracle_linux_8:OL08-00-010183;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000241;stig_oracle_linux_9:OL09-00-000242;stig_oracle_mysql_8:MYS8-00-011500;stig_oracle_mysql_8:MYS8-00-011600;stig_oracle_mysql_8:MYS8-00-011700;stig_oracle_mysql_8:MYS8-00-011800;stig_postgresql_16:CD16-00-008300;stig_rhel_9:RHEL-09-215105;stig_rhel_9:RHEL-09-671010;stig_rhel_9:RHEL-09-672020;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010035;stig_sles_15:SLES-15-010045;stig_sles_15:SLES-15-010046;stig_sles_15:SLES-15-010510;stig_ubuntu_22_04:UBTU-22-671010;stig_windows_11:WN11-SO-000230;stig_windows_server_2022:WN22-SO-000360;stig_windows_server_2025:WN25-SO-000360,nist-800-53-module;stig-cci
 nist_800_53_rev5_low,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
-nist_800_53_rev5_low,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-nist_800_53_rev5_low,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+nist_800_53_rev5_low,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+nist_800_53_rev5_low,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 nist_800_53_rev5_low,sc-22,base,no,0,,
 nist_800_53_rev5_low,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
 nist_800_53_rev5_low,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
@@ -1565,7 +1565,7 @@ nist_800_53_rev5_low,sr-11.2,enhancement,no,0,,
 nist_800_53_rev5_low,sr-12,base,no,0,,
 nist_800_53_rev5_moderate,ac-1,base,yes,2,cjis:AC-1;nist_sp_800_53:NIST AC-1,label-is-800-53;nist-800-53-module
 nist_800_53_rev5_moderate,ac-2,base,yes,21,cjis:AC-2;nist_sp_800_53:NIST AC-2;stig_kubernetes:CNTR-K8-000220;stig_kubernetes:CNTR-K8-000700;stig_ms_sql_2016:SQL6-D0-003700;stig_openshift_4:CNTR-OS-000030;stig_openshift_4:CNTR-OS-000460;stig_oracle_database_19c:O19C-00-000800;stig_oracle_database_19c:O19C-00-012500;stig_oracle_linux_8:OL08-00-030150;stig_oracle_linux_8:OL08-00-030171;stig_oracle_linux_9:OL09-00-000500;stig_oracle_linux_9:OL09-00-000525;stig_oracle_mysql_8:MYS8-00-000100;stig_postgresql_16:CD16-00-000200;stig_rhel_8:RHEL-08-020260;stig_rhel_9:RHEL-09-411050;stig_rhel_9:RHEL-09-654215;stig_rhel_9:RHEL-09-654240;stig_rke2:CNTR-R2-000030;stig_rke2:CNTR-R2-000060,label-is-800-53;nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,ac-2.1,enhancement,no,0,,
+nist_800_53_rev5_moderate,ac-2.1,enhancement,yes,1,nist_sp_800_53:NIST AC-2(1),nist-800-53-module
 nist_800_53_rev5_moderate,ac-2.2,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-2.3,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-2.4,enhancement,no,0,,
@@ -1575,8 +1575,8 @@ nist_800_53_rev5_moderate,ac-3,base,yes,39,cjis:AC-3;nist_sp_800_53:NIST AC-3;st
 nist_800_53_rev5_moderate,ac-4,base,yes,2,cjis:AC-4;nist_sp_800_53:NIST AC-4,label-is-800-53;nist-800-53-module
 nist_800_53_rev5_moderate,ac-5,base,yes,2,cjis:AC-5;nist_sp_800_53:NIST AC-5,label-is-800-53;nist-800-53-module
 nist_800_53_rev5_moderate,ac-6,base,yes,18,cjis:AC-6;nist_sp_800_53:NIST AC-6;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-001000;stig_oracle_linux_9:OL09-00-000715;stig_oracle_linux_9:OL09-00-002413;stig_oracle_mysql_8:MYS8-00-010600;stig_oracle_mysql_8:MYS8-00-010700;stig_rhel_8:RHEL-08-030000;stig_rhel_9:RHEL-09-211050;stig_rhel_9:RHEL-09-654010;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-001130;stig_windows_11:WN11-SO-000167;stig_windows_server_2022:WN22-MS-000060;stig_windows_server_2025:WN25-MS-000060,label-is-800-53;nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,ac-6.1,enhancement,no,0,,
-nist_800_53_rev5_moderate,ac-6.2,enhancement,no,0,,
+nist_800_53_rev5_moderate,ac-6.1,enhancement,yes,1,nist_sp_800_53:NIST AC-6(1),nist-800-53-module
+nist_800_53_rev5_moderate,ac-6.2,enhancement,yes,1,nist_sp_800_53:NIST AC-6(2),nist-800-53-module
 nist_800_53_rev5_moderate,ac-6.5,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-6.7,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-6.9,enhancement,no,0,,
@@ -1584,16 +1584,16 @@ nist_800_53_rev5_moderate,ac-6.10,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-7,base,yes,12,cjis:AC-7;nist_sp_800_53:NIST AC-7;stig_openshift_4:CNTR-OS-000460;stig_oracle_linux_8:OL08-00-020011;stig_oracle_linux_8:OL08-00-020013;stig_oracle_linux_9:OL09-00-002416;stig_oracle_linux_9:OL09-00-003020;stig_rhel_8:RHEL-08-020010;stig_rhel_8:RHEL-08-020012;stig_rhel_9:RHEL-09-411075;stig_rhel_9:RHEL-09-411085;stig_windows_11:WN11-SO-000075,label-is-800-53;nist-800-53-module;stig-cci
 nist_800_53_rev5_moderate,ac-8,base,yes,12,nist_sp_800_53:NIST AC-8;stig_oracle_linux_8:OL08-00-010040;stig_oracle_linux_8:OL08-00-010060;stig_oracle_linux_9:OL09-00-000090;stig_oracle_linux_9:OL09-00-000256;stig_rhel_8:RHEL-08-010040;stig_rhel_8:RHEL-08-010060;stig_rhel_9:RHEL-09-211020;stig_rhel_9:RHEL-09-255025;stig_windows_11:WN11-SO-000075;stig_windows_server_2022:WN22-SO-000130;stig_windows_server_2025:WN25-SO-000130,nist-800-53-module;stig-cci
 nist_800_53_rev5_moderate,ac-11,base,yes,5,nist_sp_800_53:NIST AC-11;stig_rhel_9:RHEL-09-271045;stig_windows_11:WN11-CC-000365;stig_windows_server_2022:WN22-SO-000120;stig_windows_server_2025:WN25-SO-000120,nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,ac-11.1,enhancement,no,0,,
+nist_800_53_rev5_moderate,ac-11.1,enhancement,yes,1,nist_sp_800_53:NIST AC-11(1),nist-800-53-module
 nist_800_53_rev5_moderate,ac-12,base,yes,13,nist_sp_800_53:NIST AC-12;stig_apache_2_4_unix:AS24-U1-000650;stig_oracle_database_19c:O19C-00-000300;stig_oracle_linux_8:OL08-00-010200;stig_oracle_linux_8:OL08-00-010201;stig_oracle_linux_9:OL09-00-002346;stig_oracle_linux_9:OL09-00-002347;stig_oracle_mysql_8:MYS8-00-011100;stig_rhel_9:RHEL-09-255095;stig_rhel_9:RHEL-09-255100;stig_sles_15:SLES-15-010280;stig_vmware_vsphere_8:ESXI-80-000068;stig_windows_11:WN11-SO-000070,nist-800-53-module;stig-cci
 nist_800_53_rev5_moderate,ac-14,base,yes,1,nist_sp_800_53:NIST AC-14,nist-800-53-module
 nist_800_53_rev5_moderate,ac-17,base,yes,41,nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380,nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,ac-17.1,enhancement,no,0,,
-nist_800_53_rev5_moderate,ac-17.2,enhancement,no,0,,
+nist_800_53_rev5_moderate,ac-17.1,enhancement,yes,1,nist_sp_800_53:NIST AC-17(1),nist-800-53-module
+nist_800_53_rev5_moderate,ac-17.2,enhancement,yes,1,nist_sp_800_53:NIST AC-17(2),nist-800-53-module
 nist_800_53_rev5_moderate,ac-17.3,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-17.4,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-18,base,yes,9,nist_sp_800_53:NIST AC-18;stig_oracle_linux_8:OL08-00-040110;stig_oracle_linux_8:OL08-00-040111;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-006001;stig_rhel_8:RHEL-08-040110;stig_rhel_8:RHEL-08-040111;stig_rhel_9:RHEL-09-291035;stig_rhel_9:RHEL-09-291040,nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,ac-18.1,enhancement,no,0,,
+nist_800_53_rev5_moderate,ac-18.1,enhancement,yes,1,nist_sp_800_53:NIST AC-18(1),nist-800-53-module
 nist_800_53_rev5_moderate,ac-18.3,enhancement,no,0,,
 nist_800_53_rev5_moderate,ac-19,base,yes,1,nist_sp_800_53:NIST AC-19,nist-800-53-module
 nist_800_53_rev5_moderate,ac-19.5,enhancement,no,0,,
@@ -1813,12 +1813,12 @@ nist_800_53_rev5_moderate,sc-13,base,yes,27,nist_sp_800_53:NIST SC-13;stig_amazo
 nist_800_53_rev5_moderate,sc-15,base,yes,1,nist_sp_800_53:NIST SC-15,nist-800-53-module
 nist_800_53_rev5_moderate,sc-17,base,yes,2,nist_sp_800_53:NIST SC-17;stig_oracle_database_19c:O19C-00-020400,nist-800-53-module;stig-cci
 nist_800_53_rev5_moderate,sc-18,base,yes,1,nist_sp_800_53:NIST SC-18,nist-800-53-module
-nist_800_53_rev5_moderate,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
-nist_800_53_rev5_moderate,sc-21,base,yes,1,nist_sp_800_53:NIST SC-20/21,nist-800-53-module
+nist_800_53_rev5_moderate,sc-20,base,yes,1,nist_sp_800_53:NIST SC-20,nist-800-53-module
+nist_800_53_rev5_moderate,sc-21,base,yes,1,nist_sp_800_53:NIST SC-21,nist-800-53-module
 nist_800_53_rev5_moderate,sc-22,base,no,0,,
 nist_800_53_rev5_moderate,sc-23,base,yes,23,nist_sp_800_53:NIST SC-23;stig_apache_2_4_unix:AS24-U1-000030;stig_apache_2_4_unix:AS24-U1-000520;stig_kubernetes:CNTR-K8-001400;stig_kubernetes:CNTR-K8-001410;stig_kubernetes:CNTR-K8-001420;stig_kubernetes:CNTR-K8-001430;stig_kubernetes:CNTR-K8-001440;stig_kubernetes:CNTR-K8-001450;stig_kubernetes:CNTR-K8-001460;stig_kubernetes:CNTR-K8-001470;stig_kubernetes:CNTR-K8-001480;stig_kubernetes:CNTR-K8-001490;stig_kubernetes:CNTR-K8-001500;stig_kubernetes:CNTR-K8-001510;stig_kubernetes:CNTR-K8-001520;stig_kubernetes:CNTR-K8-001530;stig_kubernetes:CNTR-K8-001540;stig_kubernetes:CNTR-K8-001550;stig_openshift_4:CNTR-OS-000510;stig_oracle_mysql_8:MYS8-00-007000;stig_oracle_mysql_8:MYS8-00-011900;stig_rke2:CNTR-R2-000010,nist-800-53-module;stig-cci
 nist_800_53_rev5_moderate,sc-28,base,yes,13,nist_sp_800_53:NIST SC-28;stig_amazon_linux_2023:AZLX-23-000100;stig_cisco_ios_xe_router:CISC-ND-000620;stig_kubernetes:CNTR-K8-001163;stig_ms_sql_2016:SQL6-D0-009500;stig_oracle_database_19c:O19C-00-016800;stig_oracle_database_19c:O19C-00-016900;stig_oracle_mysql_8:MYS8-00-007200;stig_oracle_mysql_8:MYS8-00-012000;stig_oracle_mysql_8:MYS8-00-012100;stig_postgresql_16:CD16-00-005200;stig_postgresql_16:CD16-00-008500;stig_sles_15:SLES-15-010330,nist-800-53-module;stig-cci
-nist_800_53_rev5_moderate,sc-28.1,enhancement,no,0,,
+nist_800_53_rev5_moderate,sc-28.1,enhancement,yes,1,nist_sp_800_53:NIST SC-28(1),nist-800-53-module
 nist_800_53_rev5_moderate,sc-39,base,yes,1,stig_rke2:CNTR-R2-000970,stig-cci
 nist_800_53_rev5_moderate,si-1,base,yes,1,nist_sp_800_53:NIST SI-1,nist-800-53-module
 nist_800_53_rev5_moderate,si-2,base,yes,8,nist_sp_800_53:NIST SI-2;stig_amazon_linux_2023:AZLX-23-000130;stig_kubernetes:CNTR-K8-002700;stig_oracle_database_19c:O19C-00-018600;stig_oracle_mysql_8:MYS8-00-012300;stig_rke2:CNTR-R2-001580;stig_rke2:CNTR-R2-001620;stig_sles_15:SLES-15-010000,nist-800-53-module;stig-cci

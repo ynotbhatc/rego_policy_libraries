@@ -11,14 +11,14 @@
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 4
-#     cited: 1
+#     checks: 85
+#     cited: 61
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package soc2.main
 
 import rego.v1

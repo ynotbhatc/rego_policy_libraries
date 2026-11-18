@@ -24,14 +24,14 @@
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 13
-#     cited: 0
+#     checks: 22
+#     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package soc2.security.access_controls
 
 import rego.v1
