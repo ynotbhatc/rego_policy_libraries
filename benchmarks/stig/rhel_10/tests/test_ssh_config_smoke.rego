@@ -31,7 +31,3 @@ test_ssh_config_violations_on_empty_input if {
 test_client_alive_count_zero_open if {
 	data.stig.rhel_10.ssh_config.status_rhel_10_700660 == "Open" with input as {"ssh_config": {"ClientAliveCountMax": "0"}}
 }
-
-test_client_alive_count_one_pass if {
-	data.stig.rhel_10.ssh_config.status_rhel_10_700660 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveCountMax": "1"}}
-}

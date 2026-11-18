@@ -17,15 +17,15 @@
 package stig.rhel_10
 
 # DISA STIG for RHEL 10 - Master Aggregator
-# STIG Version: V1R2 | Released: 01 Jul 2026
+# STIG Version: V1R3 | Released: 30 Sep 2026
 # Aggregates all modules: configuration_management, services, software_integrity,
 #   file_permissions, audit_logging, ssh_config, account_auth, network, pki_crypto
 #
 # Endpoints: POST http://localhost:8181/v1/data/stig/rhel_10/stig_assessment
 #            POST http://localhost:8181/v1/data/stig/rhel_10/main/compliance_report  (fail-closed alias)
 
-# Implemented: 98 of 434 RHEL 10 V1R2 rules — those whose DISA title matches a rule the
-# RHEL 9 modules implement. The remaining 336 are tracked follow-up, not silent absence.
+# Implemented: 100 of 435 V1R3 rules, each from the reviewed table rhel10_rules.py
+# (tools/stig_generators/gen_rhel9.py rhel_10). The remaining 335 are tracked follow-up, not silent absence.
 
 import rego.v1
 
@@ -155,7 +155,7 @@ module_status := {
 stig_assessment := {
 	"metadata": {
 		"stig_title": "Red Hat Enterprise Linux 10 Security Technical Implementation Guide",
-		"version": "V1R2",
+		"version": "V1R3",
 		"release_date": "2026-05-14",
 		"platform": "RHEL 10",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
