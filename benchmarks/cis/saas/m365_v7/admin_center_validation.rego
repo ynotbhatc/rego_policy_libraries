@@ -351,3 +351,121 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+
+CONTROL_EVIDENCE := {
+	"1.1.1": ["admin_center.global_admins[].on_premises_sync_enabled"],
+	"1.1.3": ["admin_center.global_admin_count"],
+	"1.1.4": ["admin_center.global_admins[].licenses[].sku_part_number"],
+	"1.2.1": ["admin_center.public_groups"],
+	"1.2.2": ["admin_center.user_sign_in_state", "exchange.shared_mailboxes[].ExternalDirectoryObjectId"],
+	"1.3.1": ["admin_center.domains[].is_verified", "admin_center.domains[].password_validity_period_in_days"],
+	"1.3.2": ["admin_center.activity_based_timeout_policies"],
+	"1.3.3": ["exchange.sharing_policies[].Enabled"],
+	"1.3.4": ["admin_center.user_owned_apps_and_services.is_office_store_enabled"],
+	"1.3.5": ["admin_center.forms.is_internal_phishing_protection_enabled"],
+	"1.3.6": ["exchange.organization_config.CustomerLockBoxEnabled"],
+	"1.3.7": ["admin_center.third_party_storage_service_principals[].account_enabled"],
+	"1.3.9": ["exchange.organization_config.BookingsAuthEnabled", "exchange.organization_config.BookingsEnabled"],
+}
+
+# an empty list of admins is decidable (1.1.3 then fails on the count);
+# a cloud-only account may carry a null sync flag, which the rule reads as
+# not synced, so 1.1.1 gates on the list only
+decidable contains "1.1.1" if {
+	available("global_admins")
+	is_array(input.admin_center.global_admins)
+}
+
+decidable contains "1.1.4" if {
+	available("global_admins")
+	is_array(input.admin_center.global_admins)
+	every a in input.admin_center.global_admins {
+		is_array(a.licenses)
+	}
+}
+
+decidable contains "1.1.3" if {
+	available("global_admins")
+	is_number(input.admin_center.global_admin_count)
+}
+
+decidable contains "1.2.1" if {
+	available("groups")
+	is_array(input.admin_center.public_groups)
+}
+
+decidable contains "1.3.1" if {
+	available("domains")
+	is_array(input.admin_center.domains)
+	every d in input.admin_center.domains {
+		_domain_decidable(d)
+	}
+}
+
+_domain_decidable(d) if d.is_verified == false
+
+_domain_decidable(d) if {
+	d.is_verified == true
+	is_number(d.password_validity_period_in_days)
+}
+
+decidable contains "1.3.2" if {
+	available("activity_based_timeout")
+	is_array(input.admin_center.activity_based_timeout_policies)
+}
+
+decidable contains "1.3.4" if {
+	available("apps_and_services")
+	is_boolean(input.admin_center.user_owned_apps_and_services.is_office_store_enabled)
+}
+
+decidable contains "1.3.5" if {
+	available("forms")
+	is_boolean(input.admin_center.forms.is_internal_phishing_protection_enabled)
+}
+
+decidable contains "1.3.7" if {
+	available("service_principals")
+	is_array(input.admin_center.third_party_storage_service_principals)
+}
+
+decidable contains "1.3.6" if {
+	exchange_org_available
+	is_boolean(input.exchange.organization_config.CustomerLockBoxEnabled)
+}
+
+decidable contains "1.3.9" if {
+	exchange_org_available
+	input.exchange.organization_config.BookingsEnabled == false
+}
+
+decidable contains "1.3.9" if {
+	exchange_org_available
+	input.exchange.organization_config.BookingsEnabled == true
+	is_boolean(input.exchange.organization_config.BookingsAuthEnabled)
+}
+
+decidable contains "1.3.3" if {
+	sharing_policies_available
+	is_array(input.exchange.sharing_policies)
+	every policy in input.exchange.sharing_policies {
+		is_boolean(policy.Enabled)
+	}
+}
+
+decidable contains "1.2.2" if {
+	shared_mailboxes_available
+	sign_in_state_available
+	is_array(input.exchange.shared_mailboxes)
+	every mailbox in input.exchange.shared_mailboxes {
+		is_string(mailbox.ExternalDirectoryObjectId)
+	}
+}

@@ -1231,3 +1231,308 @@ violations contains "5.4.3.4: not met — default user umask must be explicitly 
 	e_5_4_3_4
 	not p_5_4_3_4
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_5_3_1_1 := "evidence_missing" if {
+	not e_5_3_1_1
+} else := "pass" if {
+	p_5_3_1_1
+} else := "fail"
+
+s_5_3_1_2 := "evidence_missing" if {
+	not e_5_3_1_2
+} else := "pass" if {
+	p_5_3_1_2
+} else := "fail"
+
+s_5_3_1_3 := "evidence_missing" if {
+	not e_5_3_1_3
+} else := "pass" if {
+	p_5_3_1_3
+} else := "fail"
+
+s_5_3_2_1 := "evidence_missing" if {
+	not e_5_3_2_1
+} else := "pass" if {
+	p_5_3_2_1
+} else := "fail"
+
+s_5_3_2_2 := "evidence_missing" if {
+	not e_5_3_2_2
+} else := "pass" if {
+	p_5_3_2_2
+} else := "fail"
+
+s_5_3_2_3 := "evidence_missing" if {
+	not e_5_3_2_3
+} else := "pass" if {
+	p_5_3_2_3
+} else := "fail"
+
+s_5_3_2_4 := "evidence_missing" if {
+	not e_5_3_2_4
+} else := "pass" if {
+	p_5_3_2_4
+} else := "fail"
+
+s_5_3_2_5 := "evidence_missing" if {
+	not e_5_3_2_5
+} else := "pass" if {
+	p_5_3_2_5
+} else := "fail"
+
+s_5_3_3_1_1 := "evidence_missing" if {
+	not e_5_3_3_1_1
+} else := "pass" if {
+	p_5_3_3_1_1
+} else := "fail"
+
+s_5_3_3_1_2 := "evidence_missing" if {
+	not e_5_3_3_1_2
+} else := "pass" if {
+	p_5_3_3_1_2
+} else := "fail"
+
+s_5_3_3_1_3 := "evidence_missing" if {
+	not e_5_3_3_1_3
+} else := "pass" if {
+	p_5_3_3_1_3
+} else := "fail"
+
+s_5_3_3_2_1 := "evidence_missing" if {
+	not e_5_3_3_2_1
+} else := "pass" if {
+	p_5_3_3_2_1
+} else := "fail"
+
+s_5_3_3_2_2 := "evidence_missing" if {
+	not e_5_3_3_2_2
+} else := "pass" if {
+	p_5_3_3_2_2
+} else := "fail"
+
+s_5_3_3_2_3 := "pass" if {
+	p_5_3_3_2_3
+} else := "not_attested"
+
+s_5_3_3_2_4 := "evidence_missing" if {
+	not e_5_3_3_2_4
+} else := "pass" if {
+	p_5_3_3_2_4
+} else := "fail"
+
+s_5_3_3_2_5 := "evidence_missing" if {
+	not e_5_3_3_2_5
+} else := "pass" if {
+	p_5_3_3_2_5
+} else := "fail"
+
+s_5_3_3_2_6 := "evidence_missing" if {
+	not e_5_3_3_2_6
+} else := "pass" if {
+	p_5_3_3_2_6
+} else := "fail"
+
+s_5_3_3_2_7 := "evidence_missing" if {
+	not e_5_3_3_2_7
+} else := "pass" if {
+	p_5_3_3_2_7
+} else := "fail"
+
+s_5_3_3_3_1 := "evidence_missing" if {
+	not e_5_3_3_3_1
+} else := "pass" if {
+	p_5_3_3_3_1
+} else := "fail"
+
+s_5_3_3_3_2 := "evidence_missing" if {
+	not e_5_3_3_3_2
+} else := "pass" if {
+	p_5_3_3_3_2
+} else := "fail"
+
+s_5_3_3_3_3 := "evidence_missing" if {
+	not e_5_3_3_3_3
+} else := "pass" if {
+	p_5_3_3_3_3
+} else := "fail"
+
+s_5_3_3_4_1 := "evidence_missing" if {
+	not e_5_3_3_4_1
+} else := "pass" if {
+	p_5_3_3_4_1
+} else := "fail"
+
+s_5_3_3_4_2 := "evidence_missing" if {
+	not e_5_3_3_4_2
+} else := "pass" if {
+	p_5_3_3_4_2
+} else := "fail"
+
+s_5_3_3_4_3 := "evidence_missing" if {
+	not e_5_3_3_4_3
+} else := "pass" if {
+	p_5_3_3_4_3
+} else := "fail"
+
+s_5_3_3_4_4 := "evidence_missing" if {
+	not e_5_3_3_4_4
+} else := "pass" if {
+	p_5_3_3_4_4
+} else := "fail"
+
+s_5_4_1_1 := "evidence_missing" if {
+	not e_5_4_1_1
+} else := "pass" if {
+	p_5_4_1_1
+} else := "fail"
+
+s_5_4_1_2 := "pass" if {
+	p_5_4_1_2
+} else := "not_attested"
+
+s_5_4_1_3 := "evidence_missing" if {
+	not e_5_4_1_3
+} else := "pass" if {
+	p_5_4_1_3
+} else := "fail"
+
+s_5_4_1_4 := "evidence_missing" if {
+	not e_5_4_1_4
+} else := "pass" if {
+	p_5_4_1_4
+} else := "fail"
+
+s_5_4_1_5 := "evidence_missing" if {
+	not e_5_4_1_5
+} else := "pass" if {
+	p_5_4_1_5
+} else := "fail"
+
+s_5_4_1_6 := "evidence_missing" if {
+	not e_5_4_1_6
+} else := "pass" if {
+	p_5_4_1_6
+} else := "fail"
+
+s_5_4_2_1 := "evidence_missing" if {
+	not e_5_4_2_1
+} else := "pass" if {
+	p_5_4_2_1
+} else := "fail"
+
+s_5_4_2_2 := "evidence_missing" if {
+	not e_5_4_2_2
+} else := "pass" if {
+	p_5_4_2_2
+} else := "fail"
+
+s_5_4_2_3 := "evidence_missing" if {
+	not e_5_4_2_3
+} else := "pass" if {
+	p_5_4_2_3
+} else := "fail"
+
+s_5_4_2_4 := "evidence_missing" if {
+	not e_5_4_2_4
+} else := "pass" if {
+	p_5_4_2_4
+} else := "fail"
+
+s_5_4_2_5 := "evidence_missing" if {
+	not e_5_4_2_5
+} else := "pass" if {
+	p_5_4_2_5
+} else := "fail"
+
+s_5_4_2_6 := "evidence_missing" if {
+	not e_5_4_2_6
+} else := "pass" if {
+	p_5_4_2_6
+} else := "fail"
+
+s_5_4_2_7 := "evidence_missing" if {
+	not e_5_4_2_7
+} else := "pass" if {
+	p_5_4_2_7
+} else := "fail"
+
+s_5_4_2_8 := "evidence_missing" if {
+	not e_5_4_2_8
+} else := "pass" if {
+	p_5_4_2_8
+} else := "fail"
+
+s_5_4_3_1 := "evidence_missing" if {
+	not e_5_4_3_1
+} else := "pass" if {
+	p_5_4_3_1
+} else := "fail"
+
+s_5_4_3_2 := "evidence_missing" if {
+	not e_5_4_3_2
+} else := "pass" if {
+	p_5_4_3_2
+} else := "fail"
+
+s_5_4_3_3 := "evidence_missing" if {
+	not e_5_4_3_3
+} else := "pass" if {
+	p_5_4_3_3
+} else := "fail"
+
+s_5_4_3_4 := "evidence_missing" if {
+	not e_5_4_3_4
+} else := "pass" if {
+	p_5_4_3_4
+} else := "fail"
+
+control_status := {
+	"5.3.1.1": s_5_3_1_1,
+	"5.3.1.2": s_5_3_1_2,
+	"5.3.1.3": s_5_3_1_3,
+	"5.3.2.1": s_5_3_2_1,
+	"5.3.2.2": s_5_3_2_2,
+	"5.3.2.3": s_5_3_2_3,
+	"5.3.2.4": s_5_3_2_4,
+	"5.3.2.5": s_5_3_2_5,
+	"5.3.3.1.1": s_5_3_3_1_1,
+	"5.3.3.1.2": s_5_3_3_1_2,
+	"5.3.3.1.3": s_5_3_3_1_3,
+	"5.3.3.2.1": s_5_3_3_2_1,
+	"5.3.3.2.2": s_5_3_3_2_2,
+	"5.3.3.2.3": s_5_3_3_2_3,
+	"5.3.3.2.4": s_5_3_3_2_4,
+	"5.3.3.2.5": s_5_3_3_2_5,
+	"5.3.3.2.6": s_5_3_3_2_6,
+	"5.3.3.2.7": s_5_3_3_2_7,
+	"5.3.3.3.1": s_5_3_3_3_1,
+	"5.3.3.3.2": s_5_3_3_3_2,
+	"5.3.3.3.3": s_5_3_3_3_3,
+	"5.3.3.4.1": s_5_3_3_4_1,
+	"5.3.3.4.2": s_5_3_3_4_2,
+	"5.3.3.4.3": s_5_3_3_4_3,
+	"5.3.3.4.4": s_5_3_3_4_4,
+	"5.4.1.1": s_5_4_1_1,
+	"5.4.1.2": s_5_4_1_2,
+	"5.4.1.3": s_5_4_1_3,
+	"5.4.1.4": s_5_4_1_4,
+	"5.4.1.5": s_5_4_1_5,
+	"5.4.1.6": s_5_4_1_6,
+	"5.4.2.1": s_5_4_2_1,
+	"5.4.2.2": s_5_4_2_2,
+	"5.4.2.3": s_5_4_2_3,
+	"5.4.2.4": s_5_4_2_4,
+	"5.4.2.5": s_5_4_2_5,
+	"5.4.2.6": s_5_4_2_6,
+	"5.4.2.7": s_5_4_2_7,
+	"5.4.2.8": s_5_4_2_8,
+	"5.4.3.1": s_5_4_3_1,
+	"5.4.3.2": s_5_4_3_2,
+	"5.4.3.3": s_5_4_3_3,
+	"5.4.3.4": s_5_4_3_4,
+}

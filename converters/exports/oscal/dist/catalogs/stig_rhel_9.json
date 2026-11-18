@@ -618,138 +618,6 @@
     ],
     "controls": [
      {
-      "id": "stig_rhel_9-RHEL-09-653015",
-      "title": "RHEL 9 audit service must be enabled.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-653015"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-653015"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-653015_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 audit service must be enabled."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_9-RHEL-09-653055",
-      "title": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-653055"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-653055"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-653055_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_9-RHEL-09-653025",
-      "title": "RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-653025"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-653025"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-653025_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 audit system must take appropriate action when the audit storage volume is full."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_9-RHEL-09-653040",
-      "title": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-653040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-653040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.audit_logging"
-       }
-      ],
-      "links": [
-       {
-        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-653040_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_rhel_9-RHEL-09-654010",
       "title": "RHEL 9 must audit uses of the \"execve\" system call.",
       "props": [
@@ -915,6 +783,39 @@
       "class": "security"
      },
      {
+      "id": "stig_rhel_9-RHEL-09-654080",
+      "title": "RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-654080"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-654080"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-654080_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 must audit all uses of the init_module and finit_module system calls."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_rhel_9-RHEL-09-654215",
       "title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
       "props": [
@@ -1014,16 +915,16 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_9-RHEL-09-654080",
-      "title": "RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+      "id": "stig_rhel_9-RHEL-09-653015",
+      "title": "RHEL 9 audit service must be enabled.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-09-654080"
+        "value": "RHEL-09-653015"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-09-654080"
+        "value": "RHEL-09-653015"
        },
        {
         "name": "rego-package",
@@ -1039,9 +940,108 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_9-RHEL-09-654080_stmt",
+        "id": "stig_rhel_9-RHEL-09-653015_stmt",
         "name": "statement",
-        "prose": "RHEL 9 must audit all uses of the init_module and finit_module system calls."
+        "prose": "RHEL 9 audit service must be enabled."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-653055",
+      "title": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-653055"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-653055"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-653055_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-653025",
+      "title": "RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-653025"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-653025"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-653025_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 audit system must take appropriate action when the audit storage volume is full."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-653040",
+      "title": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-653040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-653040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.audit_logging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#915d8d1f-cad1-5b7e-b316-cb4c4b9d1108",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-653040_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization."
        }
       ],
       "class": "security"
@@ -3114,39 +3114,6 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_9-RHEL-09-231040",
-      "title": "The RHEL 9 file system automounter must be disabled.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-231040"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-231040"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.services"
-       }
-      ],
-      "links": [
-       {
-        "href": "#fcd88bd5-c785-5896-bfe6-5c74a4c82138",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-231040_stmt",
-        "name": "statement",
-        "prose": "The RHEL 9 file system automounter must be disabled."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_rhel_9-RHEL-09-215025",
       "title": "RHEL 9 must not have the nfs-utils package installed.",
       "props": [
@@ -3175,6 +3142,39 @@
         "id": "stig_rhel_9-RHEL-09-215025_stmt",
         "name": "statement",
         "prose": "RHEL 9 must not have the nfs-utils package installed."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-231040",
+      "title": "The RHEL 9 file system automounter must be disabled.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-231040"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-231040"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.services"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fcd88bd5-c785-5896-bfe6-5c74a4c82138",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-231040_stmt",
+        "name": "statement",
+        "prose": "The RHEL 9 file system automounter must be disabled."
        }
       ],
       "class": "security"
@@ -3303,16 +3303,16 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_9-RHEL-09-251010",
+      "id": "stig_rhel_9-RHEL-09-214010",
       "title": "RHEL 9 must ensure cryptographic verification of vendor software packages.",
       "props": [
        {
         "name": "label",
-        "value": "RHEL-09-251010"
+        "value": "RHEL-09-214010"
        },
        {
         "name": "alt-identifier",
-        "value": "RHEL-09-251010"
+        "value": "RHEL-09-214010"
        },
        {
         "name": "rego-package",
@@ -3328,7 +3328,7 @@
       ],
       "parts": [
        {
-        "id": "stig_rhel_9-RHEL-09-251010_stmt",
+        "id": "stig_rhel_9-RHEL-09-214010_stmt",
         "name": "statement",
         "prose": "RHEL 9 must ensure cryptographic verification of vendor software packages."
        }
@@ -3723,72 +3723,6 @@
       "class": "security"
      },
      {
-      "id": "stig_rhel_9-RHEL-09-255100",
-      "title": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-255100"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-255100"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#347ae656-c7af-5b19-9112-272bf692a669",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-255100_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_rhel_9-RHEL-09-255095",
-      "title": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
-      "props": [
-       {
-        "name": "label",
-        "value": "RHEL-09-255095"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "RHEL-09-255095"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.rhel_9.ssh_config"
-       }
-      ],
-      "links": [
-       {
-        "href": "#347ae656-c7af-5b19-9112-272bf692a669",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_rhel_9-RHEL-09-255095_stmt",
-        "name": "statement",
-        "prose": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_rhel_9-RHEL-09-255160",
       "title": "RHEL 9 SSH daemon must perform strict mode checking of home directory configuration files.",
       "props": [
@@ -3949,6 +3883,72 @@
         "id": "stig_rhel_9-RHEL-09-255155_stmt",
         "name": "statement",
         "prose": "RHEL 9 SSH daemon must disable remote X connections for interactive users."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-255100",
+      "title": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-255100"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-255100"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#347ae656-c7af-5b19-9112-272bf692a669",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-255100_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_rhel_9-RHEL-09-255095",
+      "title": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+      "props": [
+       {
+        "name": "label",
+        "value": "RHEL-09-255095"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "RHEL-09-255095"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.rhel_9.ssh_config"
+       }
+      ],
+      "links": [
+       {
+        "href": "#347ae656-c7af-5b19-9112-272bf692a669",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_rhel_9-RHEL-09-255095_stmt",
+        "name": "statement",
+        "prose": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive."
        }
       ],
       "class": "security"

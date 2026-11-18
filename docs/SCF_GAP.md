@@ -27,7 +27,7 @@ against SCF by count and not only by kind.
 "Profile variants" are rows SCF lists separately but that are one source document with a selection applied: the
 CIS Controls implementation groups, GovRAMP and FedRAMP impact levels, the nine PCI DSS SAQs, the DEF STAN 05-138
 risk levels, the NIST 800-53B baselines, the 800-82 OT overlays, the 800-161 levels and the CMMC levels. We model
-those as profile gates inside one module (as `dcc`, `cis_controls_v8` and `pqc` already do), so the honest unit of
+those as profile gates inside one module (as `dcc`, `cis_controls_v8` and `pqc` already do), so the accurate unit of
 comparison is the distinct document.
 
 ## Where we stand against SCF's 234 documents

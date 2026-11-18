@@ -17,6 +17,31 @@ direction, 18 were incomplete, 11 failed open, 3 mishandled Not Applicable), 31 
 per rule (621 tests). The input contract changed (new fact paths and `input.attest.<key>` attestations, listed in the
 generator table); the collector must follow. `stamp_catalog.py rhel_9` is refused. The derived rhel_10 / Oracle Linux
 modules are unchanged until they are regenerated.
+### Added — per-control results: every control's outcome, passes included
+
+Auditors asked for a record of what passed, not only what failed. `compliance_report` now carries `control_results`:
+one object per recommendation, in id order, with `id`, `status`, `basis` (`evidence` or `attestation`), `in_scope`,
+`profile` and `evidence` (the input paths the decision reads), plus `control_result_counts`.
+
+| Status | Meaning |
+|---|---|
+| `pass` | evaluated from evidence and met, or attested |
+| `fail` | evaluated and not met |
+| `evidence_missing` | a fact the control needs was not collected |
+| `not_attested` | a Manual recommendation with no attestation |
+| `not_applicable` | outside the selected profile, level or role |
+
+- **Modules:** CIS Windows Server 2016, 2019, 2022 and 2025, Windows 10 and 11; RHEL 9, Rocky Linux 9, RHEL 8 and Rocky
+  Linux 8; Microsoft 365 Foundations v7. Generated at the source for the Windows and RHEL families.
+- **Additive:** no existing report field or total changes. Generated tests hold the list to the benchmark's own
+  enumeration (no id missing or duplicated), to `total_controls` and `failed_controls`, and to the violations; on empty
+  input no control is a pass.
+- **Microsoft 365:** `input.cis_profile {licence: "E3"|"E5", level: 1|2}` scopes the list (default E5 Level 2, all 160).
+  The 16 controls the module does not evaluate from facts are `not_attested` until attested. Building the list showed
+  that 93 controls raise no violation of their own when one of their facts is missing (the section-level message was
+  the only signal); they are `evidence_missing` in the list. Five gates that let a control pass with its fact missing
+  were closed (1.1.4, 1.2.2, 1.3.1, 1.3.3, 5.1.3.4).
+- **Count unchanged:** the control counter skips the reporting constructs, so the headline stays at 29,297.
 
 ### Fixed — external audit of 2026-11-17: standards accuracy in the hand-written frameworks
 

@@ -179,3 +179,28 @@ compliance_report := {
 	"violation_count": count(violation),
 	"compliant": compliant,
 }
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+CONTROL_EVIDENCE := {id: paths |
+	some name, id in ALL_SETTING_CONTROLS
+	name != "tenant_settings"
+	paths := _setting_paths(name)
+}
+
+# the ten settings judged by restricted() also read the security-group scope
+_setting_paths(name) := [concat(".", ["fabric", "settings", name, "enabled"]), concat(".", ["fabric", "settings", name, "enabled_security_groups"])] if SETTING_CONTROLS[name]
+
+_setting_paths(name) := [concat(".", ["fabric", "settings", name, "enabled"])] if not SETTING_CONTROLS[name]
+
+decidable contains id if {
+	some name, id in ALL_SETTING_CONTROLS
+	name != "tenant_settings"
+	available(name)
+	is_boolean(settings[name].enabled)
+}

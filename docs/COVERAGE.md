@@ -7,7 +7,7 @@
 ## Why this file exists
 
 This library is maintained on a best-effort basis and it is free. Publishing
-the gap is cheaper than hiding it, and it is the most honest answer to
+the gap is cheaper than hiding it, and it is a direct answer to
 "where can I help?" — every uncovered policy below is a real, bounded,
 mergeable contribution.
 
