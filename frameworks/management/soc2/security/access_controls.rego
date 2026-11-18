@@ -64,17 +64,31 @@ _observed_path := {
 	"max_high_vulnerabilities": "input.openshift.image_security.vulnerability_threshold.high",
 }
 
-# Findings for a missing commitment or a missing observed value, keyed by criterion.
+# Findings for a missing commitment or a missing observed value. The criterion id is
+# literal in each message (CC6.2, CC6.6, CC7.2); the platform thresholds cite none.
+
+evidence_findings contains "CC6.6: evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number" if not _commitment("max_idle_minutes")
+
+evidence_findings contains "CC6.6: evidence missing - input.remote_access.session_timeout.max_idle_minutes not collected or not a number" if not is_number(_observed.max_idle_minutes)
+
+evidence_findings contains "CC7.2: evidence missing - input.soc2.commitments.log_retention_days (the entity's stated value) not supplied or not a number" if not _commitment("log_retention_days")
+
+evidence_findings contains "CC7.2: evidence missing - input.access_controls.access_logging.retention_days not collected or not a number" if not is_number(_observed.log_retention_days)
+
+evidence_findings contains "CC6.2: evidence missing - input.soc2.commitments.access_review_interval_days (the entity's stated value) not supplied or not a number" if not _commitment("access_review_interval_days")
+
+evidence_findings contains "CC6.2: evidence missing - input.access_controls.periodic_reviews.frequency_days not collected or not a number" if not is_number(_observed.access_review_interval_days)
+
 evidence_findings contains msg if {
-	some key, crit in _commitment_keys
+	some key in {"max_cluster_admins", "max_critical_vulnerabilities", "max_high_vulnerabilities"}
 	not _commitment(key)
-	msg := sprintf("%v: evidence missing - input.soc2.commitments.%v (the entity's stated value) not supplied or not a number", [crit, key])
+	msg := sprintf("platform: evidence missing - input.soc2.commitments.%v (the entity's stated value) not supplied or not a number", [key])
 }
 
 evidence_findings contains msg if {
-	some key, path in _observed_path
+	some key in {"max_critical_vulnerabilities", "max_high_vulnerabilities"}
 	not is_number(_observed[key])
-	msg := sprintf("%v: evidence missing - %v not collected or not a number", [_commitment_keys[key], path])
+	msg := sprintf("platform: evidence missing - %v not collected or not a number", [_observed_path[key]])
 }
 
 evidence_findings contains msg if {

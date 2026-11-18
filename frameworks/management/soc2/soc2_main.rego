@@ -523,6 +523,32 @@ criteria_status[c] := {"satisfied": count(_failed_checks(c)) == 0, "checks": che
 # Findings a check emits about missing evidence, by criterion prefix ("CC6.6: ...").
 _evidence_for(c) := sort([m | some m in access_controls.evidence_findings; startswith(m, sprintf("%v:", [c]))])
 
+# One literal finding per scored criterion (the id is part of the message text),
+# then one detail line per failed check.
+criteria_findings contains "SOC 2 CC1.2: criterion not met - at least one mapped check failed (criteria[\"CC1.2\"].failed_checks)" if "CC1.2" in failed_criteria
+
+criteria_findings contains "SOC 2 CC1.4: criterion not met - at least one mapped check failed (criteria[\"CC1.4\"].failed_checks)" if "CC1.4" in failed_criteria
+
+criteria_findings contains "SOC 2 CC3.2: criterion not met - at least one mapped check failed (criteria[\"CC3.2\"].failed_checks)" if "CC3.2" in failed_criteria
+
+criteria_findings contains "SOC 2 CC6.1: criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)" if "CC6.1" in failed_criteria
+
+criteria_findings contains "SOC 2 CC6.2: criterion not met - at least one mapped check failed (criteria[\"CC6.2\"].failed_checks)" if "CC6.2" in failed_criteria
+
+criteria_findings contains "SOC 2 CC6.3: criterion not met - at least one mapped check failed (criteria[\"CC6.3\"].failed_checks)" if "CC6.3" in failed_criteria
+
+criteria_findings contains "SOC 2 CC6.6: criterion not met - at least one mapped check failed (criteria[\"CC6.6\"].failed_checks)" if "CC6.6" in failed_criteria
+
+criteria_findings contains "SOC 2 CC7.2: criterion not met - at least one mapped check failed (criteria[\"CC7.2\"].failed_checks)" if "CC7.2" in failed_criteria
+
+criteria_findings contains "SOC 2 CC7.4: criterion not met - at least one mapped check failed (criteria[\"CC7.4\"].failed_checks)" if "CC7.4" in failed_criteria
+
+criteria_findings contains "SOC 2 CC8.1: criterion not met - at least one mapped check failed (criteria[\"CC8.1\"].failed_checks)" if "CC8.1" in failed_criteria
+
+criteria_findings contains "SOC 2 CC9.1: criterion not met - at least one mapped check failed (criteria[\"CC9.1\"].failed_checks)" if "CC9.1" in failed_criteria
+
+criteria_findings contains "SOC 2 CC9.2: criterion not met - at least one mapped check failed (criteria[\"CC9.2\"].failed_checks)" if "CC9.2" in failed_criteria
+
 criteria_findings contains msg if {
 	some c in failed_criteria
 	some k in _failed_checks(c)

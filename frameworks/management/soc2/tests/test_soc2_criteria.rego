@@ -134,6 +134,8 @@ test_two_failed_checks_fail_one_criterion_once if {
 	r.failed_controls == 1
 	r.failed_criteria == ["CC6.1"]
 	r.criteria["CC6.1"].failed_checks == ["a", "b"]
+	"SOC 2 CC6.1: criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)" in r.violations
+	"SOC 2 CC6.1: check a not satisfied" in r.violations
 }
 
 test_missing_scope_assesses_all_optional_categories if {
