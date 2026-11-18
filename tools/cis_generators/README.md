@@ -298,6 +298,11 @@ digest. See CONTRIBUTING.md, "No verbatim CIS benchmark text."
   keyword; the run aborts on any count, id, status, profile or keyword mismatch. Needs openpyxl
   (`/usr/bin/python3` on the Mac); run `opa fmt -w benchmarks/cis/mobile_devices/ios` afterwards.
 
+- `gen_m365_v7_control_index.py` (no arguments): writes `benchmarks/cis/saas/m365_v7/control_index.rego`, the 160
+  recommendation ids of CIS Microsoft 365 Foundations v7.0.0 in natural order with their E3/E5 level tags, from the
+  module's committed keyword digest `data/cis_m365_v7_index.json`, for the per-control results of that hand-written
+  module (see its README). Aborts unless the digest lists 160 distinct ids, each with a known tag.
+
 The CIS OCI Foundations module (`benchmarks/cis/oci/`) is hand-written from the
 public Prowler mapping of v3.1.0 and needs no generator.
 

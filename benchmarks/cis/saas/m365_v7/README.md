@@ -77,6 +77,33 @@ pdftotext -layout CIS_Microsoft_365_Foundations_Benchmark_v7.0.0.pdf m365_v7.txt
 python3 parse_m365_v7.py m365_v7.txt
 ```
 
+## Per-control results
+
+`compliance_report.control_results` has one object per recommendation, all 160 in natural id order:
+`{id, status, basis, in_scope, profile, evidence}`. `control_result_counts` counts each status, and
+`control_results_profile` states the scope that was applied.
+
+| status | meaning here |
+|---|---|
+| `pass` | a section evaluated it from collected facts, its gate held and no violation names it; or a ledger control that was attested (`basis: attestation`) |
+| `fail` | a violation of its section names it and is not an evidence message |
+| `evidence_missing` | its section's gate says a fact it reads was not collected, or an evidence message ("... (this is not a pass)") names it; also a not-implemented ledger control (none today), because it is not evaluated at all |
+| `not_attested` | one of the 16 ledger controls without an admissible attestation. That is the six that require attestation and the ten whose collectability is unresolved; CIS marks all 16 Manual |
+| `not_applicable` | outside `input.cis_profile` |
+
+Each section file declares `decidable` (the controls whose facts were all collected) and
+`CONTROL_EVIDENCE` (the input paths each control reads) beside its rules. Many rules are silent when
+their fact is missing, and each section reports a missing collection with one message naming one id. So
+a control can be `evidence_missing` with no violation that names it. On empty input that is 129 of the
+160; `tests/test_control_results.rego` pins the exact sets.
+
+Scope: `input.cis_profile` is `{licence: "E3" | "E5", level: 1 | 2}`. With no profile it is E5 Level 2,
+which puts all 160 in scope (E3 L1 100, E3 L2 137, E5 L1 114). The profile changes only
+`control_results`; `violations` and the other fields are the same with or without it.
+
+`control_index.rego` (ids and licence/level tags) is written from `data/cis_m365_v7_index.json` by
+`tools/cis_generators/gen_m365_v7_control_index.py`.
+
 ## Input contract
 
 Facts come from the `aac.m365` Ansible collection in the AAC compliance

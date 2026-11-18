@@ -37,6 +37,7 @@ package cis_m365_v7.main
 
 import data.cis_m365_v7.admin_center
 import data.cis_m365_v7.attestation
+import data.cis_m365_v7.control_index
 import data.cis_m365_v7.defender
 import data.cis_m365_v7.entra
 import data.cis_m365_v7.exchange
@@ -109,6 +110,181 @@ assessed_controls_compliant if {
 	count(all_violations) == 0
 }
 
+# ── Per-control results ──────────────────────────────────────────────
+# control_results: one object per recommendation of the benchmark (all
+# 160, natural id order; CONTROL_INDEX in control_index.rego), each
+# {id, status, basis, in_scope, profile, evidence}. No benchmark text.
+#
+# A control a section evaluates is
+#   fail              when a violation of its section cites it and is not
+#                     an evidence message;
+#   evidence_missing  when its section's gate (`decidable`) says a fact it
+#                     reads was not collected, or an evidence message (the
+#                     ones ending "(this is not a pass)") cites it;
+#   pass              otherwise.
+# The gate is what keeps an absent fact from reading as a pass: several
+# rules are silent when their fact is missing, so the absence of a
+# violation alone is not evidence. A ledger control (attestation module)
+# is pass with basis attestation when attested. Unattested, the ones that
+# require attestation and the ones whose collectability is unresolved are
+# not_attested: all sixteen are recommendations the benchmark marks Manual
+# and the module accepts an attestation for, so neither is a pass. A
+# not-implemented one (automatable, the collector does not make the call
+# yet; none today) is evidence_missing: it is not evaluated at all.
+#
+# Scope: input.cis_profile.licence ("E3" | "E5") and .level (1 | 2) select
+# the recommendations of that licence tier up to that level; the others
+# are not_applicable. Absent, the profile is E5 Level 2, which includes
+# all 160, so a caller that sends no profile sees every control. Only
+# control_results reads the profile: violations and the other fields are
+# unchanged by it.
+
+CONTROL_STATUSES := ["pass", "fail", "evidence_missing", "not_attested", "not_applicable"]
+
+_decidable := (((((((admin_center.decidable | defender.decidable) | purview.decidable) | intune.decidable) | entra.decidable) | exchange.decidable) | sharepoint.decidable) | teams.decidable) | fabric.decidable
+
+_control_evidence := object.union_n([
+	admin_center.CONTROL_EVIDENCE,
+	defender.CONTROL_EVIDENCE,
+	purview.CONTROL_EVIDENCE,
+	intune.CONTROL_EVIDENCE,
+	entra.CONTROL_EVIDENCE,
+	exchange.CONTROL_EVIDENCE,
+	sharepoint.CONTROL_EVIDENCE,
+	teams.CONTROL_EVIDENCE,
+	fabric.CONTROL_EVIDENCE,
+])
+
+_section_controls := {c | some c in evaluated_controls}
+
+_ledger_ids := (object.keys(attestation.REQUIRES_ATTESTATION) | object.keys(attestation.UNRESOLVED)) | object.keys(attestation.NOT_IMPLEMENTED)
+
+_message_kind(v) := "evidence_missing" if contains(v, "(this is not a pass)")
+
+_message_kind(v) := "fail" if not contains(v, "(this is not a pass)")
+
+# [id, kind] for each section violation; a message may cite several ids
+# joined by "/" (the SPF / DKIM / DMARC message cites three)
+_cited := {[id, kind] |
+	some r in section_reports
+	some v in r.violations
+	ms := regex.find_all_string_submatch_n(`^CIS ([0-9]+(?:\.[0-9]+)+(?:/[0-9]+(?:\.[0-9]+)+)*): `, v, 1)
+	count(ms) == 1
+	cited_ids := split(ms[0][1], "/")
+	some id in cited_ids
+	kind := _message_kind(v)
+}
+
+_failed_ids := {pair[0] | some pair in _cited; pair[1] == "fail"}
+
+_unevaluated_ids := {pair[0] | some pair in _cited; pair[1] == "evidence_missing"}
+
+_section_status(id) := "fail" if {
+	id in _failed_ids
+} else := "evidence_missing" if {
+	not id in _decidable
+} else := "evidence_missing" if {
+	id in _unevaluated_ids
+} else := "pass"
+
+_ledger_status(id) := "pass" if {
+	id in attestation.attested_ids
+} else := "not_attested" if {
+	not attestation.NOT_IMPLEMENTED[id]
+} else := "evidence_missing"
+
+_raw_status[id] := _section_status(id) if some id in _section_controls
+
+_raw_status[id] := _ledger_status(id) if some id in _ledger_ids
+
+_basis(id) := "evidence" if {
+	id in _section_controls
+} else := "attestation" if {
+	not attestation.NOT_IMPLEMENTED[id]
+} else := "attestation" if {
+	id in attestation.attested_ids
+} else := "evidence"
+
+# section controls: the paths their gate reads; ledger controls decided by attestation: the attestation list;
+# an unattested not-implemented control has no known path (omitted)
+_evidence(id) := _control_evidence[id] if id in _section_controls
+
+_evidence(id) := ["attestations"] if {
+	not id in _section_controls
+	_basis(id) == "attestation"
+}
+
+default _cis_profile := {}
+
+_cis_profile := p if {
+	p := input.cis_profile
+	is_object(p)
+}
+
+default _licence := "E5"
+
+_licence := l if {
+	l := _cis_profile.licence
+	l in {"E3", "E5"}
+}
+
+default _level := 2
+
+_level := l if {
+	l := _cis_profile.level
+	l in {1, 2}
+}
+
+default _profile_defaulted := true
+
+_profile_defaulted := false if {
+	_cis_profile.licence in {"E3", "E5"}
+	_cis_profile.level in {1, 2}
+}
+
+control_results_profile := {
+	"licence": _licence,
+	"level": _level,
+	"defaulted": _profile_defaulted,
+	"input": "input.cis_profile {licence: E3|E5, level: 1|2}; default E5 Level 2 (all 160 in scope)",
+}
+
+_in_scope(id) if {
+	lowest := control_index.CONTROL_SCOPE[id][_licence]
+	lowest <= _level
+}
+
+# two rules, not an else chain: an in-scope id without a status must drop out (and fail the id test), never
+# read as not_applicable
+_status(id) := "not_applicable" if not _in_scope(id)
+
+_status(id) := s if {
+	_in_scope(id)
+	s := _raw_status[id]
+}
+
+_with_evidence(base, id) := r if {
+	ev := _evidence(id)
+	r := object.union(base, {"evidence": ev})
+}
+
+_with_evidence(base, id) := base if not _evidence(id)
+
+control_results := [r |
+	some e in control_index.CONTROL_INDEX
+	s := _status(e.id)
+	b := _basis(e.id)
+	base := object.union(e, {"status": s, "basis": b, "in_scope": s != "not_applicable"})
+	r := _with_evidence(base, e.id)
+]
+
+_control_result_statuses := [r.status | some r in control_results]
+
+control_result_counts := {s: n |
+	some s in CONTROL_STATUSES
+	n := count([x | some x in _control_result_statuses; x == s])
+}
+
 compliance_report := {
 	"benchmark": "CIS Microsoft 365 Foundations Benchmark",
 	"benchmark_version": "7.0.0",
@@ -130,4 +306,8 @@ compliance_report := {
 	# were evaluated", NOT "the tenant meets the benchmark".
 	"assessed_controls_compliant": assessed_controls_compliant,
 	"interpretation": "This is a partial assessment. assessed_controls_compliant covers only evaluated_control_ids and must not be read as benchmark compliance.",
+	# one result per recommendation (all 160): see the block above
+	"control_results": control_results,
+	"control_result_counts": control_result_counts,
+	"control_results_profile": control_results_profile,
 }
