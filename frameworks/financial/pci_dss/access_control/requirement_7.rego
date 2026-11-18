@@ -1,8 +1,8 @@
-# PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data
+# PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data
 # by Business Need to Know
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data"
+# title: "PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data"
 # custom:
 #   class: compliance
 #   framework: pci_dss
@@ -21,15 +21,23 @@ package pci_dss.access_control.requirement_7
 
 import rego.v1
 
+# Numbers are compared only when they are numbers: OPA orders every string above every number, so a string
+# such as "5" would otherwise satisfy `>= 12` (audit 2026-11-17 follow-up).
+_num_le(x, n) if {
+	is_number(x)
+	x <= n
+}
+
 # =================================================================
 # 7.1 - Processes and mechanisms for restricting access
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 access_control_policies_established if {
 	input.pci.access_control.policies.documented == true
 	input.pci.access_control.policies.approved == true
 	input.pci.access_control.policies.current == true
-	input.pci.access_control.policies.reviewed_annually == true
 }
 
 access_control_roles_defined if {
@@ -91,9 +99,8 @@ third_party_access_managed if {
 
 user_access_reviews if {
 	input.pci.access_review.performed == true
-	input.pci.access_review.frequency_months <= 6
+	_num_le(input.pci.access_review.frequency_months, 6)
 	input.pci.access_review.all_accounts.included == true
-	input.pci.access_review.privileged_accounts.reviewed_quarterly == true
 	input.pci.access_review.results.documented == true
 	input.pci.access_review.inappropriate_access.removed == true
 }

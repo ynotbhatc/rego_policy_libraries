@@ -6,14 +6,14 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 11
+#     checks: 12
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.incident_response
 
 import rego.v1
@@ -74,18 +74,24 @@ violation_ir_3 contains msg if {
 	msg := "CMMC IR.L2-3.6.3: No tabletop exercise completed. Incident response capability must be tested through exercises."
 }
 
-violations contains msg if some msg in violation_ir_1
-violations contains msg if some msg in violation_ir_2
-violations contains msg if some msg in violation_ir_3
+_by_practice := {"3.6.1": violation_ir_1, "3.6.2": violation_ir_2, "3.6.3": violation_ir_3}
+
+violations contains msg if {
+	some vs in _by_practice
+	some msg in vs
+}
 
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 # Every IR practice is gated on cmmc_level >= 2; without the level nothing runs.
-violations contains "CMMC IR.L2-3.6.1: FAIL-CLOSED - facts 'input.cmmc_level' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
+# This finding names no practice (data.cmmc reports the missing level itself).
+violations contains "CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the incident-response practices were not evaluated and the domain is reported non-compliant" if {
 	not input.cmmc_level
 }
 
-violations contains "CMMC IR.L2-3.6.1: FAIL-CLOSED - facts 'input.incident_response' were not supplied; this module cannot be evaluated and is reported non-compliant" if {
-	not input.incident_response
+violations contains msg if {
+	not is_object(object.get(input, "incident_response", null))
+	some id in ["3.6.1", "3.6.2", "3.6.3"]
+	msg := sprintf("CMMC IR.L2-%v: evidence missing - input.incident_response not supplied (or not an object); this practice cannot be evaluated", [id])
 }
 
 # fail-closed: non-empty violations (including the no-facts notice) make this false, never undefined
@@ -93,11 +99,25 @@ default compliant := false
 
 compliant if count(violations) == 0
 
+_ids := ["3.6.1", "3.6.2", "3.6.3"]
+
+practices := [{"id": id, "level": 2, "compliant": _practice_ok(id)} | some id in _ids]
+
+_practice_ok(id) if {
+	input.cmmc_level >= 2
+	is_object(object.get(input, "incident_response", null))
+	count(_by_practice[id]) == 0
+}
+
+else := false
+
 compliance_report := {
 	"domain": "Incident Response (IR)",
 	"cmmc_level": object.get(input, "cmmc_level", 0),
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
-	"passing": 3 - count(violations),
+	"practices": practices,
+	"total_practices": count(practices),
+	"passing": count([p | some p in practices; p.compliant == true]),
 }

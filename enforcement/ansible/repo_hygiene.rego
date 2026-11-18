@@ -26,7 +26,11 @@
 # Input shape (one playbook per evaluation):
 #   input.path           string  — repo-relative path, for the message
 #   input.plays[]        array   — the parsed playbook
-#   input.lab_addresses  array   — optional; addresses to treat as lab-specific
+#   input.lab_addresses  array   — the denylist for AAC-ANS-003: addresses that must not appear in a playbook.
+#                                  The policy ships no addresses of its own. When input.lab_addresses is absent the
+#                                  denylist is read from data.aac.hygiene.lab_addresses (the caller's bundle data);
+#                                  when neither supplies a non-empty list the gate reports AAC-ANS-003 and is not
+#                                  compliant, because a check with nothing to look for would otherwise pass.
 #
 # OPA query path: /v1/data/aac/repo/hygiene/violation
 
@@ -38,22 +42,29 @@
 #   source: aac
 #   domains: [ansible]
 #   coverage:
-#     checks: 6
+#     checks: 7
 #     cited: 5
 #     density: gate
 #     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package aac.repo.hygiene
 
 import rego.v1
 
-# Overridable so a deployment can supply its own list without editing policy.
-default lab_addresses := ["192.168.4.62", "192.168.4.26"]
-
-lab_addresses := input.lab_addresses
+# The denylist is the caller's: input.lab_addresses, else data.aac.hygiene.lab_addresses. The addresses are
+# deployment-specific (the lab's) and are deliberately not written in this repository.
+lab_addresses := addrs if {
+	is_array(input.lab_addresses)
+	count(input.lab_addresses) > 0
+	addrs := input.lab_addresses
+} else := addrs if {
+	is_array(data.aac.hygiene.lab_addresses)
+	count(data.aac.hygiene.lab_addresses) > 0
+	addrs := data.aac.hygiene.lab_addresses
+} else := []
 
 path_label := input.path
 
@@ -126,6 +137,15 @@ violation contains msg if {
 	msg := sprintf(
 		"AAC-ANS-003: %s: lab address %s at %v — resolve through site_config (opa_*_url, pg_host, grafana_url, aac_host)",
 		[path_label, addr, p],
+	)
+}
+
+# Fail closed: with no denylist the check above looks for nothing and would pass every playbook.
+violation contains msg if {
+	count(lab_addresses) == 0
+	msg := sprintf(
+		"AAC-ANS-003: %s: evidence missing — no address denylist supplied (input.lab_addresses or data.aac.hygiene.lab_addresses), so lab addresses were not checked",
+		[path_label],
 	)
 }
 

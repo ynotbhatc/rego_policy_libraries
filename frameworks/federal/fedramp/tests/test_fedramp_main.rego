@@ -18,32 +18,67 @@ test_violations_emitted_on_empty_input if {
 	count(main.violations) > 0 with input as {}
 }
 
-test_default_impact_level_is_moderate if {
+test_unknown_impact_level_reports_no_baseline_size if {
 	r := main.compliance_report with input as {}
 	r.impact_level == "unknown"
-	r.total_controls == 325
+	r.baseline_size == null
+	r.total_controls == 12 # every check, Moderate/High ones included, until the level is declared
 }
 
-test_low_impact_drops_total_controls if {
+# Rev 5 baseline sizes (FedRAMP OSCAL profiles): 156 / 323 / 410 — reported as baseline_size, never as
+# total_controls, which is the number of checks this module evaluates.
+test_low_reports_rev5_baseline_size_and_evaluated_count if {
 	r := main.compliance_report with input as {"impact_level": "low"}
 	r.impact_level == "low"
-	r.total_controls == 125
+	r.baseline_size == 156
+	r.total_controls == 10
 }
 
-test_high_impact_raises_total_controls if {
+test_moderate_reports_rev5_baseline_size_and_evaluated_count if {
+	r := main.compliance_report with input as {"impact_level": "moderate"}
+	r.baseline_size == 323
+	r.total_controls == 11
+}
+
+test_high_reports_rev5_baseline_size_and_evaluated_count if {
 	r := main.compliance_report with input as {"impact_level": "high"}
-	r.impact_level == "high"
-	r.total_controls == 421
+	r.baseline_size == 410
+	r.total_controls == 12
+}
+
+test_baseline_sizes_table if {
+	r := main.compliance_report with input as {}
+	r.baseline_sizes == {"low": 156, "moderate": 323, "high": 410, "li_saas": 156}
+}
+
+test_failed_controls_counts_ids_not_findings if {
+	# three admins without background checks are three PS-3 findings but one failed control
+	inp := object.union(low_good_input, {
+		"impact_level": "low",
+		"personnel": [
+			{"name": "a", "admin_access": true},
+			{"name": "b", "admin_access": true},
+			{"name": "c", "admin_access": true},
+		],
+	})
+	r := main.compliance_report with input as inp
+	r.violation_count == 3
+	r.failed_controls == 1
+	r.failed_control_ids == ["PS-3"]
+	r.failed_controls <= r.total_controls
 }
 
 low_good_input := {
 	"authorization": {"fedramp_authorized": true, "authorization_type": "ATO", "ato_expiry_days": 300, "assessed_by_3pao": true, "last_3pao_assessment_days": 100},
-	"cryptography": {"fips_140_validated": true, "fips_validation_level": 2, "algorithms_in_use": ["AES-256"]},
+	"cryptography": {"fips_140_validated": true, "algorithms_in_use": ["AES-256"]},
 	"continuous_monitoring": {
 		"program_documented": true, "monthly_vulnerability_scans": true, "last_vulnerability_scan_days": 5,
 		"monthly_os_scan": true, "web_app_scan_enabled": true, "database_scan_enabled": true,
-		"monthly_ato_report_submitted": true,
+		"monthly_ato_report_submitted": true, "high_vulnerabilities_open_days": 0, "critical_vulnerabilities_open_days": 0, "moderate_vulnerabilities_open_days": 45, "low_vulnerabilities_open_days": 100,
 	},
+	"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true},
+	"supply_chain": {"risk_management_plan": true},
+	"personnel": [{"name": "admin1", "admin_access": true, "background_check_completed": true}],
 }
 
 test_missing_impact_level_is_finding_and_strict_checks_run if {
@@ -52,28 +87,29 @@ test_missing_impact_level_is_finding_and_strict_checks_run if {
 	some v in r.violations
 	contains(v, "impact_level")
 	some w in r.violations
-	contains(w, "CA-8")
+	contains(w, "CP-7")
 }
 
 test_mixed_case_impact_level_not_skipped if {
 	r := main.compliance_report with input as object.union(low_good_input, {"impact_level": "Moderate"})
 	some w in r.violations
-	contains(w, "CA-8")
+	contains(w, "CP-7")
 	count([x | some x in r.violations; contains(x, "must be one of")]) == 0
 }
 
 test_low_impact_good_input_compliant if {
 	r := main.compliance_report with input as object.union(low_good_input, {"impact_level": "low"})
 	r.compliant
+	r.failed_controls == 0
 }
 
 test_high_only_failures_reflected_in_area_summary if {
 	inp := object.union(low_good_input, {
 		"impact_level": "high",
-		"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true},
-		"supply_chain": {"risk_management_plan": true},
+		"cloud_service": {"redundant_processing": true},
 	})
 	r := main.compliance_report with input as inp
 	not r.compliant
-	r.area_summary.high.compliant == false
+	r.area_summary.data_residency.compliant == false
+	r.failed_control_ids == ["SA-9(5)"]
 }

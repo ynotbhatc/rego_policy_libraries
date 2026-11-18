@@ -41,7 +41,7 @@ _target_compliant if _t.compliant == true
 
 default _target_violations := []
 
-_target_violations := [v | some v in _t.all_violations]
+_target_violations := _t.violations
 
 _violations := array.concat(_target_violations, [_no_facts_finding]) if not _facts_supplied
 
@@ -59,21 +59,34 @@ default _upstream := {}
 
 _upstream := {"framework_key": "cmmc"}
 
-# Control universe for the product's passed = total - failed arithmetic: one finding per CMMC practice across the fourteen domains (188 on empty input).
-# Never below the finding count, so a fail-closed run cannot report more failures than controls.
-_declared_controls := 188
+# One source of truth: data.cmmc (cmmc_main.rego) decides the practices of the
+# assessed level (15 at Level 1, 110 at Level 2 and at Level 3, where the 24
+# Level 3 requirements are reported as not evaluated) and counts each failed
+# practice once, so failed_controls <= total_controls by construction.
+default total_controls := 110
 
-total_controls := max([_declared_controls, count(_violations)])
+total_controls := _t.practices_evaluated
+
+default _failed := 110
+
+_failed := _t.practices_failed
 
 compliance_report := object.union(_upstream, {
 	"framework_key": "cmmc",
 	"compliant": _compliant,
 	"violations": _violations,
 	"violation_count": count(_violations),
-	"failed_controls": min([total_controls, count(_violations)]),
+	"failed_controls": _failed,
 	"total_controls": total_controls,
+	"assessed_level": object.get(input, "cmmc_level", null),
+	"standard_sizes": _t.standard_sizes,
+	"failed_practices": _failed_practices,
 	"facts_supplied": _facts_supplied,
 })
+
+default _failed_practices := []
+
+_failed_practices := sort(_t.failed_practices)
 
 compliant := _compliant
 

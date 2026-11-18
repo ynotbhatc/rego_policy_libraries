@@ -6,17 +6,42 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 21
+#     checks: 24
 #     cited: 4
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.security_assessment
 
 import rego.v1
+
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
 
 # =============================================================================
 # CMMC 2.0 — Domain 3.12: Security Assessment
@@ -29,7 +54,8 @@ default compliant_3_12_1 := false
 
 compliant_3_12_1 if {
 	input.assessment.security_controls_assessed == true
-	input.assessment.assessment_frequency_days <= 365
+	_at_most(["assessment", "assessment_frequency_days"], "control_assessment_interval_days")
+	_periodic_ok("control_assessment_interval_days")
 	input.assessment.assessment_results_documented == true
 }
 
@@ -38,9 +64,22 @@ violation_3_12_1 contains msg if {
 	msg := "3.12.1: Security controls in CUI systems have not been periodically assessed"
 }
 
+violation_3_12_1 contains "3.12.1: evidence missing - input.org_defined.control_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.12.1[a]) not supplied or not a number" if {
+	not _odp("control_assessment_interval_days")
+}
+
+violation_3_12_1 contains "3.12.1: evidence missing - input.assessment.assessment_frequency_days not collected or not a number" if {
+	not _actual(["assessment", "assessment_frequency_days"])
+}
+
 violation_3_12_1 contains msg if {
-	input.assessment.assessment_frequency_days > 365
-	msg := sprintf("3.12.1: Security control assessments conducted every %v days (must be at least annually)", [input.assessment.assessment_frequency_days])
+	_actual(["assessment", "assessment_frequency_days"]) > _odp("control_assessment_interval_days")
+	msg := sprintf("3.12.1: security controls assessed every %v days, beyond the organisation-defined interval of %v days", [_actual(["assessment", "assessment_frequency_days"]), _odp("control_assessment_interval_days")])
+}
+
+violation_3_12_1 contains msg if {
+	_odp("control_assessment_interval_days") > 365
+	msg := sprintf("3.12.1: the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year", [_odp("control_assessment_interval_days")])
 }
 
 violation_3_12_1 contains msg if {
@@ -200,4 +239,5 @@ compliance_report := {
 	"failing": 4 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 }

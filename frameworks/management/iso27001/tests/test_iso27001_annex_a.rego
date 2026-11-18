@@ -7,9 +7,20 @@ import data.iso27001
 # ISO/IEC 27001:2022 Annex A (= ISO/IEC 27002:2022 clauses 5-8): table shape, the iso27002 view, fail-closed
 # evaluation, fact-evaluated vs attested basis, and the input contract (unknown and 2013-era ids).
 
+_org_defined := {
+	"password_min_length": 8, "password_history_count": 12, "access_review_interval_days": 120,
+	"session_timeout_minutes": 30, "max_failed_logon_attempts": 5, "remote_idle_timeout_minutes": 30,
+	"network_log_retention_days": 90, "antivirus_min_coverage_percentage": 95, "antivirus_max_signature_age_days": 3,
+	"backup_retention_days": 30, "backup_test_interval_days": 90, "event_log_retention_days": 90,
+	"max_clock_drift_seconds": 1, "vulnerability_scan_interval_days": 30, "critical_patch_days": 7,
+	"high_patch_days": 30, "penetration_test_interval_days": 365, "max_key_lifetime_days": 365,
+}
+
 # Facts that satisfy every check of the five fact modules (generated from the modules' own comparisons).
 _facts := {
 	"outsourced_development": {"used": false},
+	# The organisation's own stated values (test values equal to the limits the modules hard-coded before 2026-11-17)
+	"iso27001": {"org_defined": _org_defined},
 	"acceptance_testing": {
 		"criteria_defined": true,
 		"documentation_complete": true,
@@ -991,25 +1002,128 @@ test_semrev_outsourced_development_missing_fact_is_not_satisfied if {
 	r.annex_a["A.8.30"].satisfied == false
 }
 
+# 2026-11-17: the organisation's approved list is the yardstick; the library's weak list is advisory.
 test_semrev_weak_algorithm_spellings_fail if {
 	some alg in ["SHA-1", "sha1", "TLSv1.0", "3des", "Md5", "SSLv3"]
 	inp := json.patch(_green, [{"op": "replace", "path": "/cryptography/algorithms_in_use", "value": [alg]}])
 	r := iso27001.compliance_report with input as inp
 	r.compliant == false
 	r.annex_a["A.8.24"].satisfied == false
+	d := data.iso27001.cryptography.compliance_details with input as inp
+	d.advisory.weak_algorithms_disabled == false
 }
 
-test_semrev_weak_tls_labels_fail_and_modern_labels_pass if {
+# 2026-11-17: the TLS minimum version is part of data_encryption, a non-scoring advisory for A.8.24
+# (a specific mechanism the public descriptions of 8.24 do not name); it is still reported.
+test_semrev_weak_tls_labels_are_advisory_for_a824 if {
 	weak := json.patch(_green, [{"op": "replace", "path": "/encryption/data_in_transit/minimum_tls_version", "value": "TLSv1.0"}])
 	r := iso27001.compliance_report with input as weak
-	r.compliant == false
+	r.annex_a["A.8.24"].satisfied == true
+	d := data.iso27001.cryptography.compliance_details with input as weak
+	d.advisory.data_encryption == false
 	ok := json.patch(_green, [{"op": "replace", "path": "/encryption/data_in_transit/minimum_tls_version", "value": "TLSv1.2"}])
-	r2 := iso27001.compliance_report with input as ok
-	r2.compliant == true
+	d2 := data.iso27001.cryptography.compliance_details with input as ok
+	d2.advisory.data_encryption == true
 }
 
 test_semrev_public_services_weak_tls_label_fails if {
 	inp := json.patch(_green, [{"op": "replace", "path": "/public_services/encryption/minimum_tls_version", "value": "SSLv3"}])
 	r := iso27001.compliance_report with input as inp
 	r.compliant == false
+}
+
+# Audit 2026-11-17 finding 8: post-quantum planning is not an A.8.24 condition.
+test_a824_passes_without_post_quantum_plan if {
+	inp := json.remove(_green, ["/cryptography/quantum_resistance"])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == true
+	r.annex_a["A.8.24"].fact_checks_failed == []
+	r.compliant == true
+}
+
+test_post_quantum_plan_is_advisory_only if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/cryptography/quantum_resistance/migration_plan", "value": false}])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == true
+	d := data.iso27001.cryptography.compliance_details with input as inp
+	d.advisory.scoring == false
+	d.advisory.quantum_resistance_planned == false
+	"cryptography.quantum_resistance_planned" in r.unmapped_fact_rules
+}
+
+test_a824_algorithm_inventory_missing_is_not_satisfied if {
+	inp := json.remove(_green, ["/cryptography/algorithms_in_use"])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == false
+	r.annex_a["A.8.24"].fact_checks_failed == ["cryptography.algorithm_compliance"]
+}
+
+test_a824_checks_are_labelled_by_evidence_kind if {
+	r := iso27001.compliance_report with input as _green
+	r.annex_a["A.8.24"].fact_check_evidence == {
+		"cryptography.cryptographic_policy": "attestation",
+		"cryptography.key_management": "attestation",
+		"cryptography.algorithm_compliance": "observed",
+	}
+}
+
+# Mechanisms the public descriptions of 8.24 do not name are advisory: removing them keeps A.8.24.
+test_a824_mechanisms_are_advisory_only if {
+	inp := json.patch(_green, [
+		{"op": "replace", "path": "/key_management/storage/hardware_security_modules", "value": false},
+		{"op": "replace", "path": "/key_management/rotation/automated_process", "value": false},
+		{"op": "replace", "path": "/api/certificate_pinning", "value": false},
+		{"op": "replace", "path": "/backup/encryption/key_escrow", "value": false},
+		{"op": "replace", "path": "/digital_signatures/code_signing", "value": false},
+		{"op": "replace", "path": "/pki/certificate_revocation/ocsp_enabled", "value": false},
+	])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == true
+	d := data.iso27001.cryptography.compliance_details with input as inp
+	d.advisory.scoring == false
+	d.advisory.key_management_mechanisms == false
+	d.advisory.data_encryption == false
+	d.advisory.digital_signatures == false
+}
+
+test_a824_key_lifetime_against_the_organisations_rule if {
+	long := json.patch(_green, [{"op": "replace", "path": "/key_management/rotation/max_lifetime_days", "value": 730}])
+	r := iso27001.compliance_report with input as long
+	r.annex_a["A.8.24"].satisfied == false
+	allowed := json.patch(long, [{"op": "replace", "path": "/iso27001/org_defined/max_key_lifetime_days", "value": 730}])
+	r2 := iso27001.compliance_report with input as allowed
+	r2.annex_a["A.8.24"].satisfied == true
+	missing := json.remove(_green, ["/iso27001/org_defined/max_key_lifetime_days"])
+	r3 := iso27001.compliance_report with input as missing
+	r3.annex_a["A.8.24"].satisfied == false
+}
+
+test_a824_algorithm_not_on_the_organisations_list_fails if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/cryptography/algorithms_in_use", "value": ["AES", "ChaCha20"]}])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == false
+	d := data.iso27001.cryptography.compliance_details with input as inp
+	d.algorithm_compliance.unapproved_in_use == ["ChaCha20"]
+	ok := json.patch(inp, [{"op": "replace", "path": "/cryptography/approved_algorithms", "value": ["aes", "chacha-20"]}])
+	r2 := iso27001.compliance_report with input as ok
+	r2.annex_a["A.8.24"].satisfied == true
+}
+
+# Other modules: library-chosen limits are now the organisation's stated values.
+test_org_defined_values_replace_library_limits if {
+	short := json.patch(_green, [{"op": "replace", "path": "/iso27001/org_defined/password_min_length", "value": 16}])
+	r := iso27001.compliance_report with input as short
+	r.compliant == false
+	looser := json.patch(_green, [
+		{"op": "replace", "path": "/logon/session_timeout_minutes", "value": 60},
+		{"op": "replace", "path": "/iso27001/org_defined/session_timeout_minutes", "value": 60},
+	])
+	r2 := iso27001.compliance_report with input as looser
+	r2.annex_a["A.8.5"].satisfied == true
+	missing := json.remove(_green, ["/iso27001/org_defined/event_log_retention_days"])
+	r3 := iso27001.compliance_report with input as missing
+	r3.annex_a["A.8.15"].satisfied == false
+	strval := json.patch(_green, [{"op": "replace", "path": "/clock_sync/max_drift_seconds", "value": "0"}])
+	r4 := iso27001.compliance_report with input as strval
+	r4.annex_a["A.8.17"].satisfied == false
 }

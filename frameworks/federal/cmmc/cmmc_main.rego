@@ -1,306 +1,404 @@
 # METADATA
-# title: "CMMC 2.0 — Master Compliance Orchestrator"
+# title: "CMMC (32 CFR Part 170) — Level 1 / Level 2 practice scoring over the fourteen domain modules"
 # custom:
 #   class: compliance
 #   framework: cmmc
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 15
-#     cited: 1
+#     checks: 49
+#     cited: 17
 #     density: orchestrator
 #     basis: role
 #     tested: true
 #     entrypoint: none
-#     guard: n/a
-#     as_of: v2.4.2
+#     guard: self
+#     as_of: v2.5.0
 package cmmc
 
 import rego.v1
 
 # =============================================================================
-# CMMC 2.0 — Master Compliance Orchestrator
-# Cybersecurity Maturity Model Certification
-# DoD Defense Federal Acquisition Regulation Supplement (DFARS)
-# NIST SP 800-171 Rev 2 — 14 Domains, 110 Practices
+# CMMC Program — 32 CFR Part 170 (final rule, effective 2024-12-16)
 #
-# Domains:
-#   3.1  AC  — Access Control                  (22 practices, L1+L2)
-#   3.2  AT  — Awareness & Training            (3 practices,  L2)
-#   3.3  AU  — Audit & Accountability          (9 practices,  L2)
-#   3.4  CM  — Configuration Management        (9 practices,  L2)
-#   3.5  IA  — Identification & Authentication (11 practices, L1+L2)
-#   3.6  IR  — Incident Response               (3 practices,  L2)
-#   3.7  MA  — Maintenance                     (6 practices,  L2)
-#   3.8  MP  — Media Protection                (9 practices,  L2)
-#   3.9  PS  — Personnel Security              (2 practices,  L2)
-#   3.10 PE  — Physical Protection             (6 practices,  L1+L2)
-#   3.11 RM  — Risk Assessment                 (3 practices,  L2)
-#   3.12 CA  — Security Assessment             (4 practices,  L2)
-#   3.13 SC  — System & Comm. Protection       (16 practices, L1+L2)
-#   3.14 SI  — System & Info. Integrity        (7 practices,  L1+L2)
+# What a level is (32 CFR 170.14(c), eCFR, read 2026-11-17):
+#   Level 1  the 15 basic safeguarding requirements of FAR 52.204-21(b)(1)(i)-(xv)
+#   Level 2  the 110 security requirements of NIST SP 800-171 Rev 2
+#   Level 3  24 selected NIST SP 800-172 requirements (170.14(c)(4) Table 1),
+#            assessed on top of a Final Level 2 (C3PAO) status
+#
+# Requirement ids (170.14(c)(1)): DD.L#-REQ, where REQ is the FAR 52.204-21
+# paragraph number at Level 1 (AC.L1-b.1.i ... SI.L1-b.1.xv), the NIST SP
+# 800-171 R2 requirement number at Level 2 (AC.L2-3.1.1 ... SI.L2-3.14.7) and the
+# NIST SP 800-172 number at Level 3 (AC.L3-3.1.2e ...). The DoD CIO assessment
+# guides (Level 1 and Level 2, version 2.13, September 2024) use the same ids.
+# The CMMC 2.0 model documents of 2021 numbered Level 1 as 17 practices with
+# 800-171 numbers (AC.L1-3.1.1, PE.L1-3.10.3 ...); those ids are superseded and
+# are not used here.
+#
+# Source of truth for counting: the three registries below. The domain modules
+# evaluate NIST SP 800-171 R2 requirements (their findings start with the
+# requirement number, "3.5.1: ..." or "CMMC AC.L2-3.1.3: ..."); this package
+# maps them to the practices of the assessed level:
+#   - a Level 2 practice is satisfied when its domain reports the requirement
+#     compliant and no finding names it;
+#   - a Level 1 requirement is satisfied when every 800-171 R2 requirement that
+#     carries the same safeguard is satisfied (b.1.ix = 3.10.3 + 3.10.4 + 3.10.5);
+#   - failed practices are counted once per practice, however many findings
+#     name it, so failed <= total by construction;
+#   - total = the practices of the assessed level that this package evaluates
+#     (15 at Level 1, 110 at Level 2; Level 3 evaluates the 110 Level 2
+#     practices and reports the 24 Level 3 requirements as not evaluated).
+# Fail-closed: a missing or invalid input.cmmc_level, Level 3, or a domain
+# finding that names no requirement is an input-contract finding and the report
+# is non-compliant; with no valid level every practice is reported failed.
 # =============================================================================
 
 # ---------------------------------------------------------------------------
-# Domain compliance reports (delegated to submodules)
+# Registries
 # ---------------------------------------------------------------------------
 
-# Default-safe: on empty input the submodule compliance_report rules are
-# undefined; without these defaults the aggregate object literal collapses.
-# The stub carries the only fields consumers read: compliant, passing, violations.
-default ac_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
+# Domain abbreviation of each NIST SP 800-171 R2 family (32 CFR 170.14(b)).
+families := {
+	"3.1": "AC", "3.2": "AT", "3.3": "AU", "3.4": "CM", "3.5": "IA", "3.6": "IR", "3.7": "MA",
+	"3.8": "MP", "3.9": "PS", "3.10": "PE", "3.11": "RA", "3.12": "CA", "3.13": "SC", "3.14": "SI",
+}
+
+# Level 2: the 110 NIST SP 800-171 R2 requirement numbers (generated from
+# frameworks/federal/nist/sp_800_171_r2, the NIST CPRT export).
+level_2_requirements := [
+	"3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5", "3.1.6", "3.1.7", "3.1.8", "3.1.9", "3.1.10", "3.1.11", "3.1.12", "3.1.13", "3.1.14", "3.1.15", "3.1.16", "3.1.17", "3.1.18", "3.1.19", "3.1.20", "3.1.21", "3.1.22",
+	"3.2.1", "3.2.2", "3.2.3",
+	"3.3.1", "3.3.2", "3.3.3", "3.3.4", "3.3.5", "3.3.6", "3.3.7", "3.3.8", "3.3.9",
+	"3.4.1", "3.4.2", "3.4.3", "3.4.4", "3.4.5", "3.4.6", "3.4.7", "3.4.8", "3.4.9",
+	"3.5.1", "3.5.2", "3.5.3", "3.5.4", "3.5.5", "3.5.6", "3.5.7", "3.5.8", "3.5.9", "3.5.10", "3.5.11",
+	"3.6.1", "3.6.2", "3.6.3",
+	"3.7.1", "3.7.2", "3.7.3", "3.7.4", "3.7.5", "3.7.6",
+	"3.8.1", "3.8.2", "3.8.3", "3.8.4", "3.8.5", "3.8.6", "3.8.7", "3.8.8", "3.8.9",
+	"3.9.1", "3.9.2",
+	"3.10.1", "3.10.2", "3.10.3", "3.10.4", "3.10.5", "3.10.6",
+	"3.11.1", "3.11.2", "3.11.3",
+	"3.12.1", "3.12.2", "3.12.3", "3.12.4",
+	"3.13.1", "3.13.2", "3.13.3", "3.13.4", "3.13.5", "3.13.6", "3.13.7", "3.13.8", "3.13.9", "3.13.10", "3.13.11", "3.13.12", "3.13.13", "3.13.14", "3.13.15", "3.13.16",
+	"3.14.1", "3.14.2", "3.14.3", "3.14.4", "3.14.5", "3.14.6", "3.14.7",
+]
+
+# Level 1: FAR 52.204-21(b)(1) paragraphs and the NIST SP 800-171 R2 requirements
+# that state the same safeguard (the R2 text matches the FAR text paragraph for
+# paragraph; (ix) is split over three R2 requirements).
+level_1_requirements := [
+	{"id": "AC.L1-b.1.i", "nist": ["3.1.1"]},
+	{"id": "AC.L1-b.1.ii", "nist": ["3.1.2"]},
+	{"id": "AC.L1-b.1.iii", "nist": ["3.1.20"]},
+	{"id": "AC.L1-b.1.iv", "nist": ["3.1.22"]},
+	{"id": "IA.L1-b.1.v", "nist": ["3.5.1"]},
+	{"id": "IA.L1-b.1.vi", "nist": ["3.5.2"]},
+	{"id": "MP.L1-b.1.vii", "nist": ["3.8.3"]},
+	{"id": "PE.L1-b.1.viii", "nist": ["3.10.1"]},
+	{"id": "PE.L1-b.1.ix", "nist": ["3.10.3", "3.10.4", "3.10.5"]},
+	{"id": "SC.L1-b.1.x", "nist": ["3.13.1"]},
+	{"id": "SC.L1-b.1.xi", "nist": ["3.13.5"]},
+	{"id": "SI.L1-b.1.xii", "nist": ["3.14.1"]},
+	{"id": "SI.L1-b.1.xiii", "nist": ["3.14.2"]},
+	{"id": "SI.L1-b.1.xiv", "nist": ["3.14.4"]},
+	{"id": "SI.L1-b.1.xv", "nist": ["3.14.5"]},
+]
+
+# Level 3: 32 CFR 170.14(c)(4) Table 1. Listed so the report can name them; no
+# fact model exists for them in this library, so they are never scored as met.
+level_3_requirements := [
+	"AC.L3-3.1.2e", "AC.L3-3.1.3e", "AT.L3-3.2.1e", "AT.L3-3.2.2e", "CM.L3-3.4.1e", "CM.L3-3.4.2e",
+	"CM.L3-3.4.3e", "IA.L3-3.5.1e", "IA.L3-3.5.3e", "IR.L3-3.6.1e", "IR.L3-3.6.2e", "PS.L3-3.9.2e",
+	"RA.L3-3.11.1e", "RA.L3-3.11.2e", "RA.L3-3.11.3e", "RA.L3-3.11.4e", "RA.L3-3.11.5e", "RA.L3-3.11.6e",
+	"RA.L3-3.11.7e", "CA.L3-3.12.1e", "SC.L3-3.13.4e", "SI.L3-3.14.1e", "SI.L3-3.14.3e", "SI.L3-3.14.6e",
+]
+
+# Sizes of each level in the regulation (not the evaluated counts; see report).
+standard_sizes := {"level_1": 15, "level_2": 110, "level_3": 24}
+
+# ---------------------------------------------------------------------------
+# Domain reports (delegated to submodules)
+# ---------------------------------------------------------------------------
+
+# Default-safe: on empty input a submodule report may be undefined; the stub
+# carries the fields read here and decides nothing as met.
+default ac_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 ac_report := data.cmmc.access_control.compliance_report
 
-default at_report := {"compliant": false, "passing": 0, "violations": []}
+default at_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 at_report := data.cmmc.awareness_training.compliance_report
 
-default au_report := {"compliant": false, "passing": 0, "violations": []}
+default au_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 au_report := data.cmmc.audit_accountability.compliance_report
 
-default cm_report := {"compliant": false, "passing": 0, "violations": []}
+default cm_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 cm_report := data.cmmc.configuration_management.compliance_report
 
-default ia_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
+default ia_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 ia_report := data.cmmc.identification_authentication.compliance_report
 
-default ir_report := {"compliant": false, "passing": 0, "violations": []}
+default ir_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 ir_report := data.cmmc.incident_response.compliance_report
 
-default ma_report := {"compliant": false, "passing": 0, "violations": []}
+default ma_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 ma_report := data.cmmc.maintenance.compliance_report
 
-default mp_report := {"compliant": false, "passing": 0, "violations": []}
+default mp_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 mp_report := data.cmmc.media_protection.compliance_report
 
-default ps_report := {"compliant": false, "passing": 0, "violations": []}
+default ps_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 ps_report := data.cmmc.personnel_security.compliance_report
 
-default pe_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
+default pe_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 pe_report := data.cmmc.physical_protection.compliance_report
 
-default rm_report := {"compliant": false, "passing": 0, "violations": []}
+default rm_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 rm_report := data.cmmc.risk_assessment.compliance_report
 
-default ca_report := {"compliant": false, "passing": 0, "violations": []}
+default ca_report := {"compliant": false, "passing": 0, "violations": [], "practices": []}
 
 ca_report := data.cmmc.security_assessment.compliance_report
 
-default sc_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
+default sc_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 sc_report := data.cmmc.system_communications_protection.compliance_report
 
-default si_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": []}
+default si_report := {"compliant": false, "level_1_passing": false, "passing": 0, "violations": [], "practices": []}
 
 si_report := data.cmmc.system_information_integrity.compliance_report
 
-# ---------------------------------------------------------------------------
-# Aggregate violations across all 14 domains
-# ---------------------------------------------------------------------------
-
-# Convert set-based violations (legacy modules) to arrays
-ac_violations := [v | some v in data.cmmc.access_control.violations]
-cm_violations := [v | some v in data.cmmc.configuration_management.violations]
-ir_violations := [v | some v in data.cmmc.incident_response.violations]
-
-# New modules expose violations as arrays via compliance_report
-at_violations := at_report.violations
-au_violations := au_report.violations
-ia_violations := ia_report.violations
-ma_violations := ma_report.violations
-mp_violations := mp_report.violations
-ps_violations := ps_report.violations
-pe_violations := pe_report.violations
-rm_violations := rm_report.violations
-ca_violations := ca_report.violations
-sc_violations := sc_report.violations
-si_violations := si_report.violations
-
-# Aggregate in pairs (array.concat takes exactly 2 args)
-violations_ac_at := array.concat(ac_violations, at_violations)
-violations_au_cm := array.concat(au_violations, cm_violations)
-violations_ia_ir := array.concat(ia_violations, ir_violations)
-violations_ma_mp := array.concat(ma_violations, mp_violations)
-violations_ps_pe := array.concat(ps_violations, pe_violations)
-violations_rm_ca := array.concat(rm_violations, ca_violations)
-violations_sc_si := array.concat(sc_violations, si_violations)
-
-violations_group1 := array.concat(violations_ac_at, violations_au_cm)
-violations_group2 := array.concat(violations_ia_ir, violations_ma_mp)
-violations_group3 := array.concat(violations_ps_pe, violations_rm_ca)
-
-violations_half1 := array.concat(violations_group1, violations_group2)
-violations_half2 := array.concat(violations_group3, violations_sc_si)
-
-all_violations := array.concat(violations_half1, violations_half2)
-
-# ---------------------------------------------------------------------------
-# Domain compliance booleans
-# ---------------------------------------------------------------------------
-
-default ac_compliant := false
-
-ac_compliant if ac_report.compliant == true
-
-default at_compliant := false
-
-at_compliant if at_report.compliant == true
-
-default au_compliant := false
-
-au_compliant if au_report.compliant == true
-
-default cm_compliant := false
-
-cm_compliant if cm_report.compliant == true
-
-default ia_compliant := false
-
-ia_compliant if ia_report.compliant == true
-
-default ir_compliant := false
-
-ir_compliant if ir_report.compliant == true
-
-default ma_compliant := false
-
-ma_compliant if ma_report.compliant == true
-
-default mp_compliant := false
-
-mp_compliant if mp_report.compliant == true
-
-default ps_compliant := false
-
-ps_compliant if ps_report.compliant == true
-
-default pe_compliant := false
-
-pe_compliant if pe_report.compliant == true
-
-default rm_compliant := false
-
-rm_compliant if rm_report.compliant == true
-
-default ca_compliant := false
-
-ca_compliant if ca_report.compliant == true
-
-default sc_compliant := false
-
-sc_compliant if sc_report.compliant == true
-
-default si_compliant := false
-
-si_compliant if si_report.compliant == true
-
-# ---------------------------------------------------------------------------
-# Scoring
-# ---------------------------------------------------------------------------
-
-domain_results := [
-	ac_compliant,
-	at_compliant,
-	au_compliant,
-	cm_compliant,
-	ia_compliant,
-	ir_compliant,
-	ma_compliant,
-	mp_compliant,
-	ps_compliant,
-	pe_compliant,
-	rm_compliant,
-	ca_compliant,
-	sc_compliant,
-	si_compliant,
-]
-
-passing_domains := count([d | some d in domain_results; d == true])
-total_domains := 14
-
-compliance_score := round((passing_domains / total_domains) * 100)
-
-# ---------------------------------------------------------------------------
-# Practice counts across all domains
-# ---------------------------------------------------------------------------
-
-total_practices := 110 # NIST SP 800-171 Rev 2 total
-
-practices_passing := sum([
-	ac_report.passing, at_report.passing, au_report.passing,
-	cm_report.passing, ia_report.passing, ir_report.passing, ma_report.passing,
-	mp_report.passing, ps_report.passing, pe_report.passing, rm_report.passing,
-	ca_report.passing, sc_report.passing, si_report.passing,
-])
-
-practices_failing := total_practices - practices_passing
-
-# ---------------------------------------------------------------------------
-# Overall compliance
-# ---------------------------------------------------------------------------
-
-default cmmc_level_1_compliant := false
-
-cmmc_level_1_compliant if {
-	# Level 1 practices: AC (3.1.1-3.1.2), IA (3.5.1-3.5.2),
-	#                    MP (none at L1), PE (3.10.1-3.10.2),
-	#                    SC (3.13.1, 3.13.5), SI (3.14.1-3.14.5)
-	ac_report.level_1_passing == true
-	ia_report.level_1_passing == true
-	pe_report.level_1_passing == true
-	sc_report.level_1_passing == true
-	si_report.level_1_passing == true
+# Family -> domain report.
+domain_reports := {
+	"3.1": ac_report, "3.2": at_report, "3.3": au_report, "3.4": cm_report, "3.5": ia_report,
+	"3.6": ir_report, "3.7": ma_report, "3.8": mp_report, "3.9": ps_report, "3.10": pe_report,
+	"3.11": rm_report, "3.12": ca_report, "3.13": sc_report, "3.14": si_report,
 }
 
-# A domain whose report is undefined contributes [] violations through its
-# default stub, so violations alone cannot fail the aggregate: every domain's own
-# compliant flag must also hold.
-all_domains_compliant if passing_domains == total_domains
+# Every domain finding, in family order (domain modules expose sets or arrays).
+all_violations := [m | some f in _family_order; some m in domain_reports[f].violations]
 
-default cmmc_level_2_compliant := false
+_family_order := ["3.1", "3.2", "3.3", "3.4", "3.5", "3.6", "3.7", "3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
-cmmc_level_2_compliant if {
-	count(all_violations) == 0
-	all_domains_compliant
+# ---------------------------------------------------------------------------
+# Assessed level
+# ---------------------------------------------------------------------------
+
+# A number 1, 2 or 3; "2" (string), 0, 4 or absent is not a level.
+assessed_level := input.cmmc_level if {
+	is_number(input.cmmc_level)
+	input.cmmc_level in {1, 2, 3}
 }
+
+default level_valid := false
+
+level_valid if assessed_level
+
+# ---------------------------------------------------------------------------
+# Requirement status (NIST SP 800-171 R2 numbers)
+# ---------------------------------------------------------------------------
+
+# Written with intermediate bindings: OPA 1.22.0 fails with eval_internal_error ("split called with operand that
+# requires evaluation") when the nested call is inlined into the comprehension that indexes domain_reports.
+_family(r) := fam if {
+	parts := split(r, ".")
+	head := array.slice(parts, 0, 2)
+	fam := concat(".", head)
+}
+
+# The requirement number a domain finding names: "3.5.1: ...", "CMMC AC.L2-3.1.3: ..."
+# or "CMMC AC.L1-b.1.i / AC.L2-3.1.1: ...".
+finding_requirement(m) := x[0][1] if {
+	is_string(m)
+	x := regex.find_all_string_submatch_n(`^(?:CMMC [A-Z]{2}\.L[12]-(?:b\.1\.[ivx]+ / [A-Z]{2}\.L2-)?)?(3\.[0-9]{1,2}\.[0-9]{1,2}):`, m, 1)
+	count(x) == 1
+}
+
+_requirement_findings(r) := found if {
+	fam := _family(r)
+	found := [m | some m in domain_reports[fam].violations; finding_requirement(m) == r]
+}
+
+_domain_reports_compliant(r) if {
+	some p in domain_reports[_family(r)].practices
+	p.id == r
+	p.compliant == true
+}
+
+# Satisfied only on positive evidence: a valid level, the domain's own verdict
+# for the requirement, and no finding naming it.
+requirement_satisfied(r) if {
+	level_valid
+	_domain_reports_compliant(r)
+	count(_requirement_findings(r)) == 0
+}
+
+_all_satisfied(rs) if {
+	every r in rs {
+		requirement_satisfied(r)
+	}
+}
+
+level_2_id(r) := sprintf("%s.L2-%s", [families[_family(r)], r])
+
+# ---------------------------------------------------------------------------
+# Practices of the assessed level
+# ---------------------------------------------------------------------------
+
+_level_1_scope := [{"id": x.id, "nist": x.nist} | some x in level_1_requirements]
+
+_level_2_scope := [{"id": level_2_id(r), "nist": [r]} | some r in level_2_requirements]
+
+# Without a valid level the Level 2 set is reported (all failed): it contains
+# every Level 1 safeguard, so nothing a Level 1 assessment needs is hidden.
+practice_scope := _level_1_scope if assessed_level == 1
+
+else := _level_2_scope
+
+practice_status[x.id] := {"nist_sp_800_171_r2": x.nist, "satisfied": _satisfied_bool(x.nist)} if {
+	some x in practice_scope
+}
+
+_satisfied_bool(rs) if _all_satisfied(rs)
+
+else := false
+
+failed_practices := {x.id | some x in practice_scope; not _all_satisfied(x.nist)}
+
+practices_evaluated := count(practice_scope)
+
+practices_failed := count(failed_practices)
+
+practices_passing := practices_evaluated - practices_failed
+
+# ---------------------------------------------------------------------------
+# Findings
+# ---------------------------------------------------------------------------
+
+_strip(m) := regex.replace(m, `^[^:]+:\s*`, "")
+
+# Domain findings restated under the practice id of the assessed level.
+practice_findings contains msg if {
+	some x in practice_scope
+	some r in x.nist
+	some m in _requirement_findings(r)
+	msg := sprintf("CMMC %s: %s", [x.id, _strip(m)])
+}
+
+# A requirement the domain does not report compliant but names in no finding.
+practice_findings contains msg if {
+	level_valid
+	some x in practice_scope
+	some r in x.nist
+	not requirement_satisfied(r)
+	count(_requirement_findings(r)) == 0
+	msg := sprintf("CMMC %s: evidence missing or requirement not met - NIST SP 800-171 R2 %s is not shown satisfied by the collected facts", [x.id, r])
+}
+
+input_contract_findings contains "CMMC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not the number 1, 2 or 3; the assessed level is unknown, so no practice is decided and every practice is reported failed" if {
+	not level_valid
+}
+
+input_contract_findings contains msg if {
+	assessed_level == 3
+	msg := sprintf("CMMC Level 3: not evaluated - the %d NIST SP 800-172 requirements of 32 CFR 170.14(c)(4) (%s) have no fact model in this library; the 110 Level 2 practices were evaluated and Level 3 cannot be reported compliant", [count(level_3_requirements), concat(", ", level_3_requirements)])
+}
+
+# A finding that names no NIST SP 800-171 R2 requirement cannot be scored; it
+# still blocks compliance.
+input_contract_findings contains msg if {
+	level_valid
+	some m in all_violations
+	not finding_requirement(m)
+	msg := sprintf("CMMC unscored finding (names no practice): %v", [m])
+}
+
+violations := array.concat(sort(input_contract_findings), sort(practice_findings))
+
+# ---------------------------------------------------------------------------
+# Verdicts
+# ---------------------------------------------------------------------------
 
 default compliant := false
 
 compliant if {
-	count(all_violations) == 0
-	all_domains_compliant
+	level_valid
+	assessed_level != 3
+	practices_failed == 0
+	count(input_contract_findings) == 0
 }
+
+# Level 1 and Level 2 verdicts on the same facts, independent of the level
+# assessed (a valid level is still required: see requirement_satisfied).
+default cmmc_level_1_compliant := false
+
+cmmc_level_1_compliant if {
+	every x in level_1_requirements {
+		_all_satisfied(x.nist)
+	}
+}
+
+default cmmc_level_2_compliant := false
+
+cmmc_level_2_compliant if {
+	assessed_level >= 2
+	_all_satisfied(level_2_requirements)
+}
+
+# ---------------------------------------------------------------------------
+# Domain booleans (informational; a domain module judges all of its
+# requirements, Level 1 and Level 2 alike)
+# ---------------------------------------------------------------------------
+
+domain_results := [_domain_ok(f) | some f in _family_order]
+
+_domain_ok(f) if domain_reports[f].compliant == true
+
+else := false
+
+passing_domains := count([d | some d in domain_results; d == true])
+
+total_domains := 14
+
+compliance_score := round((practices_passing / practices_evaluated) * 100)
 
 # ---------------------------------------------------------------------------
 # Full report
 # ---------------------------------------------------------------------------
 
 cmmc_compliance_report := {
-	"standard": "CMMC 2.0",
+	"standard": "CMMC Program (32 CFR Part 170)",
 	"regulation": "32 CFR Part 170 / DFARS 252.204-7021",
+	"level_1_source": "FAR 52.204-21(b)(1)",
 	"nist_sp": "NIST SP 800-171 Rev 2",
+	"assessed_level": object.get(input, "cmmc_level", null),
+	"level_valid": level_valid,
 	"compliant": compliant,
 	"level_1_compliant": cmmc_level_1_compliant,
 	"level_2_compliant": cmmc_level_2_compliant,
+	"level_3_evaluated": false,
+	"standard_sizes": standard_sizes,
 	"compliance_score": compliance_score,
 	"total_domains": total_domains,
 	"domains_passing": passing_domains,
 	"domains_failing": total_domains - passing_domains,
-	"total_practices": total_practices,
+	"total_practices": practices_evaluated,
 	"practices_passing": practices_passing,
-	"practices_failing": practices_failing,
-	"total_violations": count(all_violations),
-	"violations": all_violations,
+	"practices_failing": practices_failed,
+	"failed_practices": sort(failed_practices),
+	"practices": practice_status,
+	"total_violations": count(violations),
+	"violations": violations,
 	"domains": {
 		"3.1_access_control": ac_report,
 		"3.2_awareness_training": at_report,

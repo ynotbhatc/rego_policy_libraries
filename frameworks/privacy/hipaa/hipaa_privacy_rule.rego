@@ -251,7 +251,7 @@ fact_basis := {
 	"164.514(d)(4)": "input.hipaa.privacy.minimum_necessary.requests.limited_to_needed",
 	"164.514(f)(2)": "input.hipaa.privacy.prohibited.fundraising.opt_out_provided and input.hipaa.privacy.rights.opt_out.fundraising",
 	"164.520(b)": "input.hipaa.privacy.npp.{documented,plain_language,includes_uses_and_disclosures,includes_individual_rights,includes_complaint_process,includes_contact_info,reviewed_and_updated_as_needed}",
-	"164.520(c)": "input.hipaa.privacy.npp.{provided_at_first_service,posted_in_facility,available_on_website}",
+	"164.520(c)": "input.hipaa.privacy.npp.provided_at_first_service, posted_in_facility (or no_physical_service_delivery_site), available_on_website (or no_customer_service_website)",
 	"164.522(a)(1)": "input.hipaa.privacy.rights.restrictions.{process_defined,out_of_pocket_payment.must_honor}",
 	"164.522(b)(1)": "input.hipaa.privacy.rights.confidential_communications.{process_defined,reasonable_requests_accommodated}",
 	"164.524(b)": "input.hipaa.privacy.rights.access.{process_defined,response_within_30_days,extension_allowed_30_days}",
@@ -265,7 +265,7 @@ fact_basis := {
 	"164.530(a)(1)": "input.hipaa.privacy.privacy_officer.{designated,contact_info.published}",
 	"164.530(a)(2)": "input.hipaa.privacy.privacy_officer.responsibilities.documented",
 	"164.530(b)(1)": "input.hipaa.privacy.workforce.training.{all_staff.completed,role_specific.implemented}",
-	"164.530(b)(2)": "input.hipaa.privacy.workforce.training.{documented,new_hires.within_30_days,frequency.annual,records.maintained}",
+	"164.530(b)(2)": "input.hipaa.privacy.workforce.training.{documented,records.maintained} and new hires trained within a reasonable period (new_hires.within_reasonable_period, or the former new_hires.within_30_days)",
 	"164.530(d)(1)": "input.hipaa.privacy.complaints.{process.documented,contact_info.published,hhs_complaint_right.communicated,investigation.conducted}",
 	"164.530(d)(2)": "input.hipaa.privacy.complaints.log.maintained",
 	"164.530(e)(1)": "input.hipaa.privacy.sanctions.{policy.documented,applied_to_all_workforce,violations.investigated,consistent_application}",
@@ -350,10 +350,21 @@ _fact_pass contains "164.520(b)" if {
 	_p.npp.reviewed_and_updated_as_needed == true
 }
 
+# 164.520(c)(2)(iii) posting applies to a provider with a physical service delivery site and (c)(3) web
+# posting to an entity that maintains a website about its services: each is met by doing it or by
+# declaring the condition absent (npp.no_physical_service_delivery_site / npp.no_customer_service_website).
+_npp_posted if _p.npp.posted_in_facility == true
+
+_npp_posted if _p.npp.no_physical_service_delivery_site == true
+
+_npp_on_web if _p.npp.available_on_website == true
+
+_npp_on_web if _p.npp.no_customer_service_website == true
+
 _fact_pass contains "164.520(c)" if {
 	_p.npp.provided_at_first_service == true
-	_p.npp.posted_in_facility == true
-	_p.npp.available_on_website == true
+	_npp_posted
+	_npp_on_web
 }
 
 _fact_pass contains "164.522(a)(1)" if {
@@ -414,9 +425,19 @@ _fact_pass contains "164.530(b)(1)" if {
 
 _fact_pass contains "164.530(b)(2)" if {
 	_p.workforce.training.documented == true
-	_p.workforce.training.new_hires.within_30_days == true
-	_p.workforce.training.frequency.annual == true
+	_new_hires_trained
 	_p.workforce.training.records.maintained == true
+}
+
+# 164.530(b)(2)(i)(B): new workforce members are trained "within a reasonable period of time" - the
+# regulation sets neither 30 days nor an annual refresher. 30 days remains accepted evidence; the annual
+# refresher is a library advisory (audit 2026-11-17 follow-up).
+_new_hires_trained if _p.workforce.training.new_hires.within_reasonable_period == true
+
+_new_hires_trained if _p.workforce.training.new_hires.within_30_days == true
+
+advisories contains "Advisory (library practice, not a 45 CFR requirement): no annual privacy training refresher is evidenced (hipaa.privacy.workforce.training.frequency.annual); 164.530(b)(2) requires retraining only when functions are affected by a material change" if {
+	not _p.workforce.training.frequency.annual == true
 }
 
 _fact_pass contains "164.530(d)(1)" if {
@@ -620,4 +641,5 @@ report := {
 	"out_of_scope": out_of_scope,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 }

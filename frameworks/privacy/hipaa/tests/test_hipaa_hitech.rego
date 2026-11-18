@@ -21,9 +21,11 @@ test_empty_input_fails_closed if {
 	some v in r.violations
 	contains(v, "FAIL-CLOSED - attestations 'input.hipaa.subpart_d'")
 
-	# 4 scope flags + no role + missing container + 3 rows binding any entity + 7 HITECH statutory checks
+	# 4 scope flags + no role + missing container + 3 rows binding any entity + 4 HITECH statutory checks
+	# (CAP readiness and the two CMS EHR-incentive checks are advisories since the 2026-11-17 audit follow-up)
 	r.applicable == 3
-	r.violation_count == 16
+	r.violation_count == 13
+	count(r.advisories) == 3
 }
 
 test_all_green_is_compliant if {
@@ -58,11 +60,23 @@ test_breach_fact_lands_on_its_citation if {
 }
 
 test_statutory_check_still_gates if {
-	inp := object.union(fx.full_input, {"hitech": {"meaningful_use": {"security_updates": {"implemented": false}}}})
+	inp := object.union(fx.full_input, {"hitech": {"patient_rights": {"out_of_pocket": {"restriction_honored": false}}}})
 	v := ht.violations with input as inp
 	count(v) == 1
 	some m in v
-	startswith(m, "HITECH EHR incentive provisions: meaningful-use")
+	startswith(m, "HITECH 42 U.S.C. §17935: the out-of-pocket restriction")
+}
+
+# Audit 2026-11-17 follow-up: CMS EHR-incentive measures and CAP readiness are not HIPAA obligations.
+test_ehr_incentive_and_cap_checks_are_advisories_only if {
+	inp := object.union(fx.full_input, {"hitech": {
+		"meaningful_use": {"security_updates": {"implemented": false}},
+		"ehr": {"encryption": {"at_rest": false}},
+		"enforcement": {"cap_template": {"available": false}},
+	}})
+	count(ht.violations) == 0 with input as inp
+	count(ht.advisories) == 3 with input as inp
+	ht.compliant with input as inp
 }
 
 test_business_associate_only_scope if {

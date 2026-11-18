@@ -1,8 +1,8 @@
-# PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)
+# PCI DSS v4.0.1 - Main Aggregation Policy (All 12 Requirements)
 # Comprehensive PCI DSS compliance assessment for payment card industry
 
 # METADATA
-# title: "PCI DSS v4.0 - Main Aggregation Policy (All 12 Requirements)"
+# title: "PCI DSS v4.0.1 - Main Aggregation Policy (All 12 Requirements)"
 # custom:
 #   class: compliance
 #   framework: pci_dss
@@ -90,17 +90,23 @@ requirement_12_compliant if requirement_12.pci_requirement_12_compliant # Govern
 # PCI DSS LEVEL DETERMINATION
 # =================================================================
 
+# Card-brand merchant levels (not a PCI DSS requirement). A non-numeric volume gives "Unknown".
+_vol := v if {
+	v := input.pci.transaction_volume.annual
+	is_number(v)
+}
+
 pci_validation_level := level if {
-	input.pci.transaction_volume.annual >= 6000000
+	_vol >= 6000000
 	level := "Level 1"
 } else := level if {
-	input.pci.transaction_volume.annual >= 1000000
+	_vol >= 1000000
 	level := "Level 2"
 } else := level if {
-	input.pci.transaction_volume.annual >= 20000
+	_vol >= 20000
 	level := "Level 3"
 } else := level if {
-	input.pci.transaction_volume.annual < 20000
+	_vol < 20000
 	level := "Level 4"
 } else := "Unknown"
 
@@ -198,7 +204,7 @@ pci_dss_compliance_score := score if {
 # =================================================================
 
 pci_dss_detailed_findings := {
-	"standard": "PCI DSS v4.0",
+	"standard": "PCI DSS v4.0.1",
 	"validation_level": pci_validation_level,
 	"requirements_passing": requirements_passing,
 	"requirements_total": 12,
@@ -254,7 +260,7 @@ default compliance_report := {
 
 # The product reads violations, violation_count and total_controls: the twelve requirements are the units this
 # aggregator decides on, so a failing requirement is one finding and total_controls is 12.
-_requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0 %v is not compliant", [name])} |
+_requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0.1 %v is not compliant", [name])} |
 	some name, ok in {
 		"req_1_network_security": requirement_1_compliant,
 		"req_2_system_hardening": requirement_2_compliant,
@@ -274,8 +280,8 @@ _requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0 %v 
 
 # CDE scope and program management gate overall_pci_dss_compliant, so a gap there is listed too (control ids stay literal).
 _scope_program_violations := array.concat(
-	[v | not cde_scope_defined; v := {"control": "cde_scope", "title": "PCI DSS v4.0 CDE scope is not defined and documented (cde_scope)"}],
-	[v | not pci_program_management; v := {"control": "program_management", "title": "PCI DSS v4.0 program management is not established (program_management)"}],
+	[v | not cde_scope_defined; v := {"control": "cde_scope", "title": "PCI DSS v4.0.1 CDE scope is not defined and documented (cde_scope)"}],
+	[v | not pci_program_management; v := {"control": "program_management", "title": "PCI DSS v4.0.1 program management is not established (program_management)"}],
 )
 
 _all_violations := array.concat(_requirement_violations, _scope_program_violations)

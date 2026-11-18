@@ -1,8 +1,13 @@
-# SOC 2 Trust Service Criteria - Processing Integrity (PI1.0)
+# SOC 2 Trust Services Criteria - Processing Integrity category: category-level checks (not scored by criterion)
+# Category-level checks: the section headings below are this module's own grouping, not AICPA
+# criterion ids (several headings here used ids such as P1.2, P1.3 or C1.3, which are not the
+# criteria of those numbers or do not exist). data.soc2.main reports this category as one
+# category-level verdict that is advisory only; data.soc2.main scores this category's criteria from its own checks. Several checks here hard-code parameter
+# values the criteria do not fix.
 # Data Processing Integrity and Validation
 
 # METADATA
-# title: "SOC 2 Trust Service Criteria - Processing Integrity (PI1.0)"
+# title: "SOC 2 Trust Services Criteria - Processing Integrity category, category-level checks (not scored by criterion)"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -22,7 +27,7 @@ package soc2.processing_integrity.data_processing
 import rego.v1
 
 # =================================================================
-# PI1.1 - Processing Integrity - Data Processing is Complete and Accurate
+# Processing Integrity - Data Processing is Complete and Accurate
 # =================================================================
 
 # Input validation controls are implemented
@@ -55,7 +60,7 @@ error_handling_comprehensive if {
 }
 
 # =================================================================
-# PI1.2 - Processing Integrity - Data Processing is Authorized
+# Processing Integrity - Data Processing is Authorized
 # =================================================================
 
 # Processing authorization is required
@@ -86,7 +91,7 @@ processing_activities_monitored if {
 }
 
 # =================================================================
-# PI1.3 - Processing Integrity - Data Processing is Complete
+# Processing Integrity - Data Processing is Complete
 # =================================================================
 
 # Transaction completeness is verified

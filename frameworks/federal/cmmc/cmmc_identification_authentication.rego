@@ -6,17 +6,42 @@
 #   source: dod
 #   domains: [us-federal, defense]
 #   coverage:
-#     checks: 45
+#     checks: 53
 #     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cmmc.identification_authentication
 
 import rego.v1
+
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
 
 # =============================================================================
 # CMMC 2.0 — Domain 3.5: Identification & Authentication
@@ -88,13 +113,14 @@ violation_3_5_4 contains msg if {
 	msg := "3.5.4: Replay-resistant authentication is not implemented for network access"
 }
 
-# 3.5.5 — Employ automated tools or mechanisms to enforce CUI account
-#          management, including disabling accounts after inactivity. (L2)
+# 3.5.5 — Prevent reuse of identifiers for a defined period. (L2)
+#          The period is organisation-defined (NIST SP 800-171A 3.5.5[a]). The
+#          inactivity check that sat here belongs to 3.5.6 and is decided there.
 default compliant_3_5_5 := false
 
 compliant_3_5_5 if {
 	input.identity.automated_account_management == true
-	input.identity.inactive_account_disable_days <= 35
+	_at_least(["identity", "identifier_reuse_prevented_days"], "identifier_reuse_period_days")
 }
 
 violation_3_5_5 contains msg if {
@@ -102,9 +128,17 @@ violation_3_5_5 contains msg if {
 	msg := "3.5.5: No automated tool enforcing account management policies"
 }
 
+violation_3_5_5 contains "3.5.5: evidence missing - input.org_defined.identifier_reuse_period_days (organisation-defined value, NIST SP 800-171A 3.5.5[a]) not supplied or not a number" if {
+	not _odp("identifier_reuse_period_days")
+}
+
+violation_3_5_5 contains "3.5.5: evidence missing - input.identity.identifier_reuse_prevented_days not collected or not a number" if {
+	not _actual(["identity", "identifier_reuse_prevented_days"])
+}
+
 violation_3_5_5 contains msg if {
-	input.identity.inactive_account_disable_days > 35
-	msg := sprintf("3.5.5: Inactive accounts disabled after %v days (must be ≤35)", [input.identity.inactive_account_disable_days])
+	_actual(["identity", "identifier_reuse_prevented_days"]) < _odp("identifier_reuse_period_days")
+	msg := sprintf("3.5.5: identifiers can be reused after %v days, sooner than the organisation-defined period of %v days", [_actual(["identity", "identifier_reuse_prevented_days"]), _odp("identifier_reuse_period_days")])
 }
 
 # 3.5.6 — Manage system identifiers by disabling the user identifier after a
@@ -113,7 +147,7 @@ default compliant_3_5_6 := false
 
 compliant_3_5_6 if {
 	input.identity.identifier_management_policy == true
-	input.identity.inactive_account_disable_days <= 35
+	_at_most(["identity", "inactive_account_disable_days"], "identifier_inactivity_days")
 	input.identity.terminated_accounts_disabled_immediately == true
 }
 
@@ -127,21 +161,42 @@ violation_3_5_6 contains msg if {
 	msg := "3.5.6: Terminated user accounts are not disabled immediately upon separation"
 }
 
+violation_3_5_6 contains "3.5.6: evidence missing - input.org_defined.identifier_inactivity_days (organisation-defined value, NIST SP 800-171A 3.5.6[a]) not supplied or not a number" if {
+	not _odp("identifier_inactivity_days")
+}
+
+violation_3_5_6 contains "3.5.6: evidence missing - input.identity.inactive_account_disable_days not collected or not a number" if {
+	not _actual(["identity", "inactive_account_disable_days"])
+}
+
+violation_3_5_6 contains msg if {
+	_actual(["identity", "inactive_account_disable_days"]) > _odp("identifier_inactivity_days")
+	msg := sprintf("3.5.6: identifiers disabled after %v days of inactivity, beyond the organisation-defined period of %v days", [_actual(["identity", "inactive_account_disable_days"]), _odp("identifier_inactivity_days")])
+}
+
 # 3.5.7 — Enforce a minimum password complexity and change when new passwords
 #          are created. (L2)
 default compliant_3_5_7 := false
 
 compliant_3_5_7 if {
-	input.identity.password_min_length >= 12
+	_at_least(["identity", "password_min_length"], "password_min_length")
 	input.identity.password_complexity_uppercase == true
 	input.identity.password_complexity_lowercase == true
 	input.identity.password_complexity_numbers == true
 	input.identity.password_complexity_special == true
 }
 
+violation_3_5_7 contains "3.5.7: evidence missing - input.org_defined.password_min_length (organisation-defined value, NIST SP 800-171A 3.5.7[a]) not supplied or not a number" if {
+	not _odp("password_min_length")
+}
+
+violation_3_5_7 contains "3.5.7: evidence missing - input.identity.password_min_length not collected or not a number" if {
+	not _actual(["identity", "password_min_length"])
+}
+
 violation_3_5_7 contains msg if {
-	input.identity.password_min_length < 12
-	msg := sprintf("3.5.7: Minimum password length %v is less than required 12 characters", [input.identity.password_min_length])
+	_actual(["identity", "password_min_length"]) < _odp("password_min_length")
+	msg := sprintf("3.5.7: minimum password length %v is below the organisation-defined %v", [_actual(["identity", "password_min_length"]), _odp("password_min_length")])
 }
 
 violation_3_5_7 contains msg if {
@@ -163,30 +218,34 @@ violation_3_5_7 contains msg if {
 default compliant_3_5_8 := false
 
 compliant_3_5_8 if {
-	input.identity.password_history_count >= 5
+	_at_least(["identity", "password_history_count"], "password_history_generations")
+}
+
+violation_3_5_8 contains "3.5.8: evidence missing - input.org_defined.password_history_generations (organisation-defined value, NIST SP 800-171A 3.5.8[a]) not supplied or not a number" if {
+	not _odp("password_history_generations")
+}
+
+violation_3_5_8 contains "3.5.8: evidence missing - input.identity.password_history_count not collected or not a number" if {
+	not _actual(["identity", "password_history_count"])
 }
 
 violation_3_5_8 contains msg if {
-	input.identity.password_history_count < 5
-	msg := sprintf("3.5.8: Password history only prevents reuse of %v passwords (minimum 5 required)", [input.identity.password_history_count])
+	_actual(["identity", "password_history_count"]) < _odp("password_history_generations")
+	msg := sprintf("3.5.8: password reuse prohibited for %v generations, fewer than the organisation-specified %v", [_actual(["identity", "password_history_count"]), _odp("password_history_generations")])
 }
 
 # 3.5.9 — Allow temporary password use with an immediate change requirement. (L2)
+#          R2 3.5.9 requires the immediate change; it sets no expiry for a
+#          temporary password, so the former 24-hour expiry limit is removed.
 default compliant_3_5_9 := false
 
 compliant_3_5_9 if {
 	input.identity.temp_password_change_on_first_login == true
-	input.identity.temp_password_expiry_hours <= 24
 }
 
 violation_3_5_9 contains msg if {
 	not input.identity.temp_password_change_on_first_login
 	msg := "3.5.9: Temporary passwords do not require immediate change on first use"
-}
-
-violation_3_5_9 contains msg if {
-	input.identity.temp_password_expiry_hours > 24
-	msg := sprintf("3.5.9: Temporary passwords expire after %v hours (must be ≤24)", [input.identity.temp_password_expiry_hours])
 }
 
 # 3.5.10 — Store and transmit only cryptographically protected passwords. (L2)
@@ -389,5 +448,6 @@ compliance_report := {
 	"failing": 11 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 	"level_1_passing": level_1_passing,
 }

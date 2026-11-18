@@ -18,6 +18,25 @@ package iso27001.communications_security
 
 import rego.v1
 
+# Organisation-defined values (2026-11-17). ISO/IEC 27002:2022 controls are not publicly described
+# as fixing periods, counts or percentages, and the licensed text was not read; the limits this module
+# used to hard-code are now the organisation's own stated values, read from
+# input.iso27001.org_defined.<name>. The observed value is compared with it; either one missing or not
+# a number fails the check (is_number guards: OPA orders null below numbers, strings above).
+_odp(name) := v if {
+	v := input.iso27001.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
 # Defaults so report/details never collapse to {} on empty input
 default network_controls := false
 
@@ -173,7 +192,7 @@ remote_access_secure if {
 	# Remote session controls
 	input.remote_access.sessions.logging_enabled == true
 	input.remote_access.sessions.activity_monitored == true
-	input.remote_access.sessions.idle_timeout_minutes <= 30
+	_at_most(["remote_access", "sessions", "idle_timeout_minutes"], "remote_idle_timeout_minutes")
 
 	# Endpoint requirements
 	input.remote_access.endpoints.compliance_check == true
@@ -190,7 +209,7 @@ network_monitoring if {
 	input.network_monitoring.alert_thresholds_configured == true
 
 	# Log retention
-	input.network_monitoring.log_retention_days >= 90
+	_at_least(["network_monitoring", "log_retention_days"], "network_log_retention_days")
 }
 
 # DNS security

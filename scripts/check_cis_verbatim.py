@@ -5,7 +5,11 @@ CIS benchmark text is not redistributed with this Apache-2.0 library. The
 house style is the control id plus original wording (see
 benchmarks/cis/saas/m365_v7/ and tools/cis_generators/neutralize.py). The
 benchmark's own recommendations are almost all imperative sentences that
-start with "Ensure" or "Ensure that". This script flags that shape.
+start with "Ensure" or "Ensure that". This script flags that shape, including
+a whole title sentence inside single quotes.
+
+Known limit: it is a shape check, not a text diff. A copied sentence that does not
+start with "Ensure" passes, because the workbooks are licensed and are not in the repo.
 
 Allowlist: scripts/cis_verbatim_allowlist.txt, one regular expression per
 line, searched against "relative/path:line contents".
@@ -20,6 +24,10 @@ import re
 import sys
 
 TITLE = re.compile(r"(?<![A-Za-z0-9_])Ensure(?:\s+that)?\s+\S")
+# A single-quoted span is a setting name we keep ('Ensure' on its own, a registry value) unless it is itself a
+# sentence in the title shape: "Ensure", optional "that", then at least three more words. Quoting a whole
+# recommendation title does not make it ours.
+QUOTED_TITLE = re.compile(r"Ensure(?:\s+that)?(?:\s+\S+){3,}")
 SKIP_DIRS = {".git"}
 
 
@@ -52,7 +60,7 @@ def scan(policy_root: pathlib.Path, repo: pathlib.Path, patterns: list[re.Patter
             lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
         for n, line in enumerate(lines, 1):
             # Setting names we keep are quoted. A title is unquoted "Ensure".
-            visible = re.sub(r"'[^']*'", "''", line)
+            visible = re.sub(r"'([^']*)'", lambda m: m.group(0) if QUOTED_TITLE.match(m.group(1)) else "''", line)
             if not TITLE.search(visible):
                 continue
             key = f"{rel}:{line}"

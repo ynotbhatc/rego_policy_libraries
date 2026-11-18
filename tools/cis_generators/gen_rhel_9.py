@@ -20,8 +20,8 @@ v2.0.0 control, the v2.0.0 field name and shape are reused. Fields the mapper do
 per control in the optional fields.json output.
 
 The STIG/NIST extended-hardening modules in the same directory (authorized_keys, certificate_validation,
-storage_encryption) and the deprecated legacy package cis.rhel_9 are not CIS v3.0.0 recommendations and
-are not generated.
+storage_encryption) are not CIS v3.0.0 recommendations and are not generated. (The deprecated legacy
+package cis.rhel_9 was removed from the tree.)
 
 Rules of the generated code:
   * every Automated recommendation evaluates real facts; facts not collected =>

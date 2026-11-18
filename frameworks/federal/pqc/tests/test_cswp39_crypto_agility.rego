@@ -72,7 +72,9 @@ test_empty_input_fails_closed if {
 
 test_empty_input_pqc_main_counts_unchanged if {
 	r := main.compliance_report with input as {}
-	r.violation_count == 7
+
+	# 7 base booleans + crypto_inventory evidence missing; CSWP 39 adds none.
+	r.violation_count == 8
 	r.crypto_agility_cswp39.compliant == false
 }
 

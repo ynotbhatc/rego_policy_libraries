@@ -29,7 +29,7 @@ import rego.v1
 import data.pci_dss.main
 
 pci_dss_assessment := {
-	"framework": "PCI DSS v4.0",
+	"framework": "PCI DSS v4.0.1",
 	"compliant": main.overall_pci_dss_compliant,
 	"score": round((100 * main.requirements_passing) / 12),
 	"requirements_passing": main.requirements_passing,

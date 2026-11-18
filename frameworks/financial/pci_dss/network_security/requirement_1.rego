@@ -26,11 +26,12 @@ import rego.v1
 # =================================================================
 
 # Network security policies and procedures are established
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 network_security_policies_established if {
 	input.pci.network_security.policies.documented == true
 	input.pci.network_security.policies.approved == true
 	input.pci.network_security.policies.current == true
-	input.pci.network_security.policies.reviewed_annually == true
 }
 
 # Network security roles and responsibilities are defined
