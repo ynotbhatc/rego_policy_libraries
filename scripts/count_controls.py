@@ -65,6 +65,19 @@ if "--check-readme" in sys.argv:
         all_rego = sum(1 for f in root.rglob("*.rego") if ".git" not in f.parts and "node_modules" not in f.parts and "out" not in f.parts)
     expect(".rego files including tests", quote(r"\(([0-9,]+) including tests", "the including-tests count"), all_rego)
 
+    # docs/COMPARISON.md quotes the same counter output (claim line and table row); it went stale once, so it is checked too
+    cmp_path = root / "docs" / "COMPARISON.md"
+    cmp_text = cmp_path.read_text(errors="ignore") if cmp_path.exists() else ""
+    m_cmp = re.search(r"\*\*([0-9,]+) files, ([0-9,]+) control-level checks\*\*", cmp_text)
+    m_claim = re.search(r"control-level count: ([0-9,]+) checks across ([0-9,]+) policy files", cmp_text)
+    if not m_cmp or not m_claim:
+        problems.append("docs/COMPARISON.md no longer states its table row ('**N files, N control-level checks**') or its claim line ('control-level count: N checks across N policy files')")
+    else:
+        for label, got, want in (("table row files", m_cmp.group(1), len(rels)), ("table row checks", m_cmp.group(2), total),
+                                 ("claim line checks", m_claim.group(1), total), ("claim line files", m_claim.group(2), len(rels))):
+            if int(got.replace(",", "")) != want:
+                problems.append(f"docs/COMPARISON.md {label}: page says {got}, tree says {want:,}")
+
     def under(*prefixes):
         return sum(1 for r in rels if any(r == pfx or r.startswith(pfx + "/") for pfx in prefixes))
     rows = {
