@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**978 of 1052 policy files have tests (93%).** 1411 test files, 74 policies still uncovered.
+**978 of 1052 policy files have tests (93%).** 1415 test files, 74 policies still uncovered.
 
 ## Why this file exists
 

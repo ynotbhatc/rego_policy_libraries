@@ -4,7 +4,7 @@
 In Rego a string sorts above every number and null below every number, so an unguarded `x >= 2` passes on
 "1" and `x <= 30` passes on null. This lint finds comparisons of a value against a numeric literal where the
 same rule body neither calls is_number(<value>) nor binds the value from a numeric expression (count, sum,
-to_number, time.*, ...). Existing occurrences are recorded in scripts/numeric_guard_baseline.txt; CI fails on
+to_number, time.*, ..., or a helper in the same package whose every clause checks is_number or calls to_number). Existing occurrences are recorded in scripts/numeric_guard_baseline.txt; CI fails on
 any new one, so the baseline only shrinks.
 
     python3 scripts/check_numeric_guards.py               # summary
@@ -24,8 +24,30 @@ NUMERIC = re.compile(r'(count|sum|max|min|to_number|time\.|units\.|abs|round|cei
 SKIP_DIRS = ("converters/", ".github/", "tests/")
 
 
+HEAD = re.compile(r"^([A-Za-z_]\w*)\(")
+
+
+def guarded_helpers():
+    """Functions whose every clause checks is_number or calls to_number, per directory (a package is a directory)."""
+    clauses = collections.defaultdict(list)
+    for p in ROOT.rglob("*.rego"):
+        lines = p.read_text(errors="ignore").splitlines()
+        start, depth = 0, 0
+        for i, line in enumerate(lines):
+            depth += line.count("{") - line.count("}")
+            if depth != 0:
+                continue
+            block, start = "\n".join(lines[start:i + 1]).strip(), i + 1
+            block = "\n".join(l for l in block.splitlines() if not l.lstrip().startswith("#"))
+            m = HEAD.match(block)
+            if m:
+                clauses[(p.parent, m[1])].append(bool(re.search(r"\b(is_number|to_number)\(", block)))
+    return {k for k, v in clauses.items() if v and all(v)}
+
+
 def scan():
     hits = []
+    helpers = guarded_helpers()
     for p in sorted(ROOT.rglob("*.rego")):
         rel = p.relative_to(ROOT).as_posix()
         if "/tests/" in rel or rel.startswith(SKIP_DIRS) or re.search(r"(^|/)test_|_test\.rego$", rel):
@@ -47,6 +69,9 @@ def scan():
                     continue
                 bound = re.search(r"\b" + re.escape(lhs) + r"\s*:?=\s*(.+)", text)
                 if bound and NUMERIC.match(bound.group(1).strip()):
+                    continue
+                call = re.match(r"([A-Za-z_]\w*)\(", bound.group(1).strip()) if bound else None
+                if call and (p.parent, call[1]) in helpers:
                     continue
                 hits.append(f"{rel}\t{b.strip()}")
     return hits
