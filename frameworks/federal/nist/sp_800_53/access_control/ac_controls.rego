@@ -19,7 +19,17 @@ package nist.sp800_53.access_control
 import rego.v1
 
 # NIST SP 800-53 Rev 5 - Access Control (AC) Family
-# Security controls for managing access to information systems
+# Security controls for managing access to information systems.
+#
+# Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0
+# (usnistgov/oscal-content, nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json).
+# Evaluated here: AC-1..AC-12, AC-11(1), AC-14, AC-16..AC-25 (24 ids). Not evaluated: AC-13 (withdrawn,
+# incorporated into AC-2 and AU-6) and AC-15 (withdrawn, "incorporated into MP-3" Media Marking; this
+# library has no MP family module, so AC-15 is not assessed and never produces a finding).
+#
+# Organization-defined parameters (ODPs) are not fixed by the base control. Where a check compares a
+# configured value with an ODP (AC-7, AC-11, AC-14) the organisation supplies the ODP value under
+# `.odp` / `organization_approved_functions`; a missing ODP is reported as missing evidence, never a pass.
 
 # AC-1: Access Control Policy and Procedures
 access_control_policy if {
@@ -37,12 +47,23 @@ account_management if {
 	input.ac_controls.account_management.timely_removal == true
 }
 
-# AC-3: Access Enforcement
-access_enforcement if {
-	input.ac_controls.access_enforcement.mandatory_access_control == true
-	input.ac_controls.access_enforcement.discretionary_access_control == true
-	input.ac_controls.access_enforcement.role_based_access_control == true
+# AC-3: Access Enforcement — "Enforce approved authorizations for logical access ... in accordance with
+# applicable access control policies." The base control does not name a model: MAC, DAC, RBAC and ABAC are
+# the separate enhancements AC-3(3), AC-3(4), AC-3(7) and AC-3(13). The check passes when at least one
+# access control policy model the organisation chose is evidenced as enforced; none evidenced is a finding.
+_ac3_model_fields := [
+	"mandatory_access_control",
+	"discretionary_access_control",
+	"role_based_access_control",
+	"attribute_based_access_control",
+]
+
+ac3_enforced_models contains m if {
+	some m in _ac3_model_fields
+	object.get(input, ["ac_controls", "access_enforcement", m], false) == true
 }
+
+access_enforcement if count(ac3_enforced_models) > 0
 
 # AC-4: Information Flow Enforcement
 information_flow_enforcement if {
@@ -65,11 +86,46 @@ least_privilege if {
 	input.ac_controls.least_privilege.non_privileged_access_default == true
 }
 
-# AC-7: Unsuccessful Logon Attempts
+# AC-7: Unsuccessful Logon Attempts — "Enforce a limit of [ODP number] consecutive invalid logon attempts
+# ... and automatically [ODP action] when the maximum number of unsuccessful attempts is exceeded."
+# The limit and the lockout period are organization-defined, not fixed by NIST. The organisation supplies
+# them under input.ac_controls.logon_attempts.odp: max_attempts (required) and lockout_duration in minutes
+# (only when the chosen action is a timed lock).
+_ac7 := object.get(input, ["ac_controls", "logon_attempts"], {})
+
+_ac7_odp_max := object.get(_ac7, ["odp", "max_attempts"], null)
+
+_ac7_odp_lock := object.get(_ac7, ["odp", "lockout_duration"], null)
+
+ac7_evidence_missing contains "input.ac_controls.logon_attempts.odp.max_attempts (organization-defined limit)" if {
+	not is_number(_ac7_odp_max)
+}
+
+ac7_evidence_missing contains "input.ac_controls.logon_attempts.maximum_attempts" if {
+	not is_number(object.get(_ac7, "maximum_attempts", null))
+}
+
+ac7_evidence_missing contains "input.ac_controls.logon_attempts.lockout_configured" if {
+	not is_boolean(object.get(_ac7, "lockout_configured", null))
+}
+
+ac7_evidence_missing contains "input.ac_controls.logon_attempts.lockout_duration" if {
+	is_number(_ac7_odp_lock)
+	not is_number(object.get(_ac7, "lockout_duration", null))
+}
+
+_ac7_lock_ok if not is_number(_ac7_odp_lock)
+
+_ac7_lock_ok if {
+	is_number(_ac7_odp_lock)
+	_ac7.lockout_duration >= _ac7_odp_lock
+}
+
 unsuccessful_logon_attempts if {
-	input.ac_controls.logon_attempts.lockout_configured == true
-	input.ac_controls.logon_attempts.maximum_attempts <= 5
-	input.ac_controls.logon_attempts.lockout_duration >= 15
+	count(ac7_evidence_missing) == 0
+	_ac7.lockout_configured == true
+	_ac7.maximum_attempts <= _ac7_odp_max
+	_ac7_lock_ok
 }
 
 # AC-8: System Use Notification
@@ -93,12 +149,30 @@ concurrent_session_control if {
 	input.ac_controls.session_control.per_device_limits == true
 }
 
-# AC-11: Session Lock
-session_lock if {
-	input.ac_controls.session_lock.inactivity_timeout <= 900 # 15 minutes
-	input.ac_controls.session_lock.pattern_hiding == true
-	input.ac_controls.session_lock.authentication_required == true
+# AC-11: Device Lock (Rev 5 title; "Session Lock" was the Rev 4 title) — lock after an organization-defined
+# period of inactivity and retain the lock until the user re-authenticates. The period is an ODP supplied
+# as input.ac_controls.session_lock.odp.inactivity_timeout (seconds, same unit as inactivity_timeout).
+# Pattern hiding is the enhancement AC-11(1), evaluated separately.
+_ac11 := object.get(input, ["ac_controls", "session_lock"], {})
+
+_ac11_odp := object.get(_ac11, ["odp", "inactivity_timeout"], null)
+
+ac11_evidence_missing contains "input.ac_controls.session_lock.odp.inactivity_timeout (organization-defined period)" if {
+	not is_number(_ac11_odp)
 }
+
+ac11_evidence_missing contains "input.ac_controls.session_lock.inactivity_timeout" if {
+	not is_number(object.get(_ac11, "inactivity_timeout", null))
+}
+
+session_lock if {
+	count(ac11_evidence_missing) == 0
+	_ac11.inactivity_timeout <= _ac11_odp
+	_ac11.authentication_required == true
+}
+
+# AC-11(1): Pattern-hiding Displays
+pattern_hiding_display if _ac11.pattern_hiding == true
 
 # AC-12: Session Termination
 session_termination if {
@@ -107,19 +181,33 @@ session_termination if {
 	input.ac_controls.session_termination.administrative_termination == true
 }
 
-# AC-14: Permitted Actions without Identification or Authentication
-permitted_actions_restricted if {
-	count(input.ac_controls.permitted_actions.unauthenticated_functions) <= 2
-	every action in input.ac_controls.permitted_actions.unauthenticated_functions {
-		action in ["system_status", "public_information"]
-	}
+# AC-14: Permitted Actions Without Identification or Authentication — the organisation identifies the
+# permitted user actions (ODP) and documents the rationale in the security plan. The approved list is
+# supplied as organization_approved_functions; every observed unauthenticated function must be on it.
+_ac14 := object.get(input, ["ac_controls", "permitted_actions"], {})
+
+ac14_evidence_missing contains "input.ac_controls.permitted_actions.unauthenticated_functions" if {
+	not is_array(object.get(_ac14, "unauthenticated_functions", null))
 }
 
-# AC-15: Automated Marking
-automated_marking if {
-	input.ac_controls.automated_marking.security_labels == true
-	input.ac_controls.automated_marking.classification_marking == true
-	input.ac_controls.automated_marking.handling_caveats == true
+ac14_evidence_missing contains "input.ac_controls.permitted_actions.organization_approved_functions (organization-defined)" if {
+	not is_array(object.get(_ac14, "organization_approved_functions", null))
+}
+
+ac14_evidence_missing contains "input.ac_controls.permitted_actions.rationale_documented" if {
+	not is_boolean(object.get(_ac14, "rationale_documented", null))
+}
+
+ac14_unapproved_functions contains f if {
+	count(ac14_evidence_missing) == 0
+	some f in _ac14.unauthenticated_functions
+	not f in _ac14.organization_approved_functions
+}
+
+permitted_actions_restricted if {
+	count(ac14_evidence_missing) == 0
+	count(ac14_unapproved_functions) == 0
+	_ac14.rationale_documented == true
 }
 
 # AC-16: Security Attributes
@@ -205,9 +293,9 @@ nist_sp800_53_ac_compliant if {
 	previous_logon_notification
 	concurrent_session_control
 	session_lock
+	pattern_hiding_display
 	session_termination
 	permitted_actions_restricted
-	automated_marking
 	security_attributes
 	remote_access_control
 	wireless_access_control
@@ -233,9 +321,9 @@ nist_sp800_53_ac_compliance := {
 	"previous_logon_notification": previous_logon_notification,
 	"concurrent_session_control": concurrent_session_control,
 	"session_lock": session_lock,
+	"pattern_hiding_display": pattern_hiding_display,
 	"session_termination": session_termination,
 	"permitted_actions_restricted": permitted_actions_restricted,
-	"automated_marking": automated_marking,
 	"security_attributes": security_attributes,
 	"remote_access_control": remote_access_control,
 	"wireless_access_control": wireless_access_control,
@@ -266,7 +354,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not access_enforcement
-	msg := "NIST AC-3: Access enforcement does not implement MAC, DAC, and RBAC"
+	msg := "NIST AC-3: evidence missing — no approved access control policy is evidenced as enforced (input.ac_controls.access_enforcement: none of mandatory_access_control, discretionary_access_control, role_based_access_control, attribute_based_access_control is true)"
 }
 
 violation contains msg if {
@@ -285,8 +373,17 @@ violation contains msg if {
 }
 
 violation contains msg if {
+	count(ac7_evidence_missing) > 0
+	msg := sprintf("NIST AC-7: evidence missing — %s not collected", [concat(", ", sort(ac7_evidence_missing))])
+}
+
+violation contains msg if {
+	count(ac7_evidence_missing) == 0
 	not unsuccessful_logon_attempts
-	msg := "NIST AC-7: Logon attempts not lockout-controlled (max 5 attempts, 15-min lockout)"
+	msg := sprintf(
+		"NIST AC-7: Unsuccessful logon attempts not limited as the organization defined (limit %v, configured %v; lockout action configured: %v; lockout %v min, organization-defined %v)",
+		[_ac7_odp_max, _ac7.maximum_attempts, _ac7.lockout_configured, object.get(_ac7, "lockout_duration", "n/a"), object.get(_ac7, ["odp", "lockout_duration"], "n/a")],
+	)
 }
 
 violation contains msg if {
@@ -305,8 +402,22 @@ violation contains msg if {
 }
 
 violation contains msg if {
+	count(ac11_evidence_missing) > 0
+	msg := sprintf("NIST AC-11: evidence missing — %s not collected", [concat(", ", sort(ac11_evidence_missing))])
+}
+
+violation contains msg if {
+	count(ac11_evidence_missing) == 0
 	not session_lock
-	msg := "NIST AC-11: Session lock missing (inactivity timeout ≤15 min + pattern hiding required)"
+	msg := sprintf(
+		"NIST AC-11: Device lock not initiated within the organization-defined inactivity period or not retained until re-authentication (timeout %vs, organization-defined %vs)",
+		[_ac11.inactivity_timeout, _ac11_odp],
+	)
+}
+
+violation contains msg if {
+	not pattern_hiding_display
+	msg := "NIST AC-11(1): Device lock does not conceal previously visible information (input.ac_controls.session_lock.pattern_hiding is not true)"
 }
 
 violation contains msg if {
@@ -315,8 +426,17 @@ violation contains msg if {
 }
 
 violation contains msg if {
+	count(ac14_evidence_missing) > 0
+	msg := sprintf("NIST AC-14: evidence missing — %s not collected", [concat(", ", sort(ac14_evidence_missing))])
+}
+
+violation contains msg if {
+	count(ac14_evidence_missing) == 0
 	not permitted_actions_restricted
-	msg := "NIST AC-14: Permitted unauthenticated actions exceed approved list"
+	msg := sprintf(
+		"NIST AC-14: Unauthenticated actions not limited to the organization-approved list or rationale not documented (unapproved: %v; rationale documented: %v)",
+		[sort(ac14_unapproved_functions), _ac14.rationale_documented],
+	)
 }
 
 violation contains msg if {
@@ -345,13 +465,8 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	not automated_marking
-	msg := "NIST AC-15: Automated marking missing security labels, classification marking, or handling caveats"
-}
-
-violation contains msg if {
 	not security_attributes
-	msg := "NIST AC-16: Security attributes not bound, associated, and preserved in transmission"
+	msg := "NIST AC-16: Security and privacy attributes not bound, associated, and preserved in transmission"
 }
 
 violation contains msg if {
@@ -378,10 +493,16 @@ default compliant := false
 
 compliant if count(violation) == 0
 
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {
+	"AC-1", "AC-2", "AC-3", "AC-4", "AC-5", "AC-6", "AC-7", "AC-8", "AC-9", "AC-10", "AC-11", "AC-11(1)",
+	"AC-12", "AC-14", "AC-16", "AC-17", "AC-18", "AC-19", "AC-20", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
+}
+
 compliance_report := {
 	"family": "AC",
 	"name": "Access Control",
-	"controls_evaluated": 24,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

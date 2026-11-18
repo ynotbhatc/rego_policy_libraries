@@ -58,19 +58,24 @@ violation contains msg if {
 	msg := "NIST IA-5: Authenticator management lacks complexity/lifetime enforcement"
 }
 
-violation contains msg if {
+# IA-5(1) Password-based Authentication: passwords transmitted only over cryptographically protected
+# channels and stored in a protected (approved salted key-derivation) form. One finding for the enhancement.
+_ia5_1_gaps contains "transmitted only over cryptographically protected channels (input.ia_controls.authenticator_management.encrypted_in_transit)" if {
 	not input.ia_controls.authenticator_management.encrypted_in_transit
-	msg := "NIST IA-5(1): Authenticators not protected in transit"
+}
+
+_ia5_1_gaps contains "stored cryptographically protected (input.ia_controls.authenticator_management.encrypted_at_rest)" if {
+	not input.ia_controls.authenticator_management.encrypted_at_rest
 }
 
 violation contains msg if {
-	not input.ia_controls.authenticator_management.encrypted_at_rest
-	msg := "NIST IA-5(1): Stored authenticators not cryptographically protected at rest"
+	count(_ia5_1_gaps) > 0
+	msg := sprintf("NIST IA-5(1): Password-based authentication — not evidenced: %s", [concat("; ", sort(_ia5_1_gaps))])
 }
 
 violation contains msg if {
 	not input.ia_controls.authenticator_feedback.obscured
-	msg := "NIST IA-6: Authenticator feedback (e.g., password entry) is not obscured"
+	msg := "NIST IA-6: Authentication feedback (e.g., password entry) is not obscured"
 }
 
 violation contains msg if {
@@ -85,10 +90,13 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"IA-1", "IA-2", "IA-2(1)", "IA-2(2)", "IA-3", "IA-4", "IA-5", "IA-5(1)", "IA-6", "IA-7", "IA-8"}
+
 compliance_report := {
 	"family": "IA",
 	"name": "Identification and Authentication",
-	"controls_evaluated": 12,
+	"controls_evaluated": count(evaluated_controls),
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,

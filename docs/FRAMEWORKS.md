@@ -25,7 +25,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
 | **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library; Oracle from October 2026; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
-| NIST 800-53 rev5 | `frameworks/federal/nist/sp_800_53/` | All control families |
+| NIST 800-53 Rev 5 | `frameworks/federal/nist/sp_800_53/` | Partial: 7 of 20 families (AC, AU, CM, IA, IR, SC, SI), 97 controls and enhancements of the 1,014 active in the Rev 5 catalog (release 5.2.0); not a Low/Moderate/High baseline assessment; withdrawn AC-15 and SC-19 not assessed; organization-defined parameters (AC-7, AC-11, AC-14, AU-11) supplied as input |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
 | ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |

@@ -1,5 +1,5 @@
 # METADATA
-# title: "NIST SP 800-53 Rev 5 — Master orchestrator"
+# title: "NIST SP 800-53 Rev 5 — partial catalog check: 97 controls and enhancements in 7 of 20 families"
 # custom:
 #   class: compliance
 #   framework: nist_sp_800_53
@@ -25,6 +25,17 @@ import rego.v1
 # expected by ansible/playbooks/generic_framework_assessment.yml.
 #
 # OPA endpoint: POST <opa_security>/v1/data/nist_800_53/main/compliance_report
+#
+# Coverage (checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0, which is also the
+# catalog behind this repo's converters/exports/oscal profiles, commit 78650f02): the catalog has 20
+# families and 1,014 controls and enhancements that are not withdrawn (300 base controls). This module
+# evaluates 97 of them — 91 base controls and 6 enhancements (AC-11(1), IA-2(1), IA-2(2), IA-5(1), SC-8(1),
+# SC-28(1)) — in 7 families. It is not a Low / Moderate / High baseline assessment; a compliant result
+# means "no finding in the 97 evaluated ids", nothing more. Withdrawn controls (AC-15, SC-19) are not
+# assessed.
+#
+# Report contract: total_controls is the number of ids evaluated; failed_controls is the number of
+# distinct ids with a finding (each evaluated id produces at most one finding), so failed <= total.
 #
 # Families currently aggregated (others may be added incrementally):
 #   AC — Access Control
@@ -63,9 +74,25 @@ all_violations := array.concat(_acm_ia_ir_sc, si_v)
 
 violations := all_violations
 
-# Controls evaluated across all aggregated families. Update when new
-# families are wired in.
-total_controls := 91 # AC(18) + AU(12) + CM(11) + IA(12) + IR(9) + SC(17) + SI(12)
+# Controls and enhancements evaluated across all aggregated families. Update when new families are wired
+# in; tests/test_nist_800_53_main.rego asserts it equals the union of the families' evaluated_controls.
+total_controls := 97 # AC(24) + AU(12) + CM(11) + IA(11) + IR(9) + SC(18) + SI(12)
+
+evaluated_controls := (((((ac.evaluated_controls | au.evaluated_controls) | cm.evaluated_controls) | ia.evaluated_controls) | ir.evaluated_controls) | sc.evaluated_controls) | si.evaluated_controls
+
+# Control ids named by a finding: the "NIST <FAM>-<n>[/<n>][(<e>)]:" prefix every family message carries.
+_finding_ids(msg) := {id |
+	some m in regex.find_all_string_submatch_n(`^NIST ([A-Z]{2})-([0-9]+(?:/[0-9]+)*)(\([0-9]+\))?:`, msg, 1)
+	some n in split(m[2], "/")
+	id := concat("", [m[1], "-", n, m[3]])
+}
+
+failed_control_ids := {id |
+	some v in violations
+	some id in _finding_ids(v)
+}
+
+failed_controls := count(failed_control_ids & evaluated_controls)
 
 compliant if count(violations) == 0
 
@@ -79,9 +106,23 @@ assessed_at := input.assessment_date
 compliance_report := {
 	"framework": "NIST SP 800-53 Rev 5",
 	"version": "Rev 5",
-	"regulation": "FISMA / FedRAMP baseline reference catalog",
+	"regulation": "NIST SP 800-53 Rev 5 control catalog — partial: 97 of 1,014 active controls and enhancements, 7 of 20 families; not a baseline assessment",
 	"assessed_at": assessed_at,
 	"total_controls": total_controls,
+	"failed_controls": failed_controls,
+	"failed_control_ids": sort(failed_control_ids),
+	"coverage": {
+		"catalog": "NIST SP 800-53 Rev 5, OSCAL release 5.2.0",
+		"catalog_families": 20,
+		"catalog_active_controls_and_enhancements": 1014,
+		"catalog_active_base_controls": 300,
+		"families_evaluated": ["AC", "AU", "CM", "IA", "IR", "SC", "SI"],
+		"controls_evaluated": total_controls,
+		"base_controls_evaluated": 91,
+		"enhancements_evaluated": 6,
+		"withdrawn_not_assessed": ["AC-15", "SC-19"],
+		"baseline_assessment": false,
+	},
 	"violations": violations,
 	"violation_count": count(violations),
 	"compliant": compliant,
