@@ -85,6 +85,7 @@ check-no-data:
 
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
+	@python3 scripts/check_numeric_guards.py --check
 	@python3 scripts/coverage_report.py --check
 
 # The product loads this library with one PUT /v1/policies per file into an empty

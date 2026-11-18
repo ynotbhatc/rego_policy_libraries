@@ -195,6 +195,15 @@ violations contains sprintf("Dependencies: %s@%s has known CVE %s (CVSS %.1f —
 	not vuln_exempt(vuln)
 }
 
+# A vulnerability whose CVSS score is not a number cannot be ruled below the 7.0 threshold (null sorts below
+# every number, so `null >= 7.0` is false and the finding above would silently not fire).
+violations contains sprintf("Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored", [dep.name, dep.version, object.get(vuln, "cve_id", "unknown"), object.get(vuln, "cvss_score", null)]) if {
+	some dep in input.dependencies
+	some vuln in dep.vulnerabilities
+	not is_number(object.get(vuln, "cvss_score", null))
+	not vuln_exempt(vuln)
+}
+
 violations contains sprintf("Dependencies: %s@%s has critical CVE %s with no exemption", [dep.name, dep.version, vuln.cve_id]) if {
 	some dep in input.dependencies
 	some vuln in dep.vulnerabilities
