@@ -43,11 +43,12 @@ _num_ge(x, n) if {
 # 8.1 - Processes and mechanisms for user identification/authentication
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 authentication_policies_established if {
 	input.pci.authentication.policies.documented == true
 	input.pci.authentication.policies.approved == true
 	input.pci.authentication.policies.current == true
-	input.pci.authentication.policies.reviewed_annually == true
 }
 
 authentication_roles_defined if {
@@ -162,6 +163,45 @@ single_factor_password_lifetime if {
 	_num_le(input.pci.passwords.max_age_days, 90)
 }
 
+# 8.3.10.1 (service providers only; future-dated in v4.0, in force since 31 March 2025, superseding 8.3.10 per
+# FAQ 1593): where passwords are the only factor for CUSTOMER user access, a change at least every 90 days or
+# dynamic posture analysis. Not applicable to merchants or to consumer users accessing their own card data.
+#   input.pci.entity.service_provider == false                 -> not applicable, passes
+#   input.pci.passwords.customer_accounts.single_factor_only    -> false: not applicable; true: 90 days or
+#                                                                  dynamic analysis; absent: only 90-day
+#                                                                  evidence passes, otherwise fails closed
+_cust := object.get(input, ["pci", "passwords", "customer_accounts"], {})
+
+_customer_rotation_90 if {
+	_num_ge(_cust.max_age_days, 1)
+	_num_le(_cust.max_age_days, 90)
+}
+
+service_provider_customer_password_lifetime if input.pci.entity.service_provider == false
+
+service_provider_customer_password_lifetime if {
+	input.pci.entity.service_provider == true
+	_cust.single_factor_only == false
+}
+
+service_provider_customer_password_lifetime if {
+	input.pci.entity.service_provider == true
+	_cust.single_factor_only == true
+	_customer_rotation_90
+}
+
+service_provider_customer_password_lifetime if {
+	input.pci.entity.service_provider == true
+	_cust.single_factor_only == true
+	_cust.dynamic_posture_analysis.implemented == true
+}
+
+service_provider_customer_password_lifetime if {
+	input.pci.entity.service_provider == true
+	not is_boolean(object.get(_cust, "single_factor_only", null))
+	_customer_rotation_90
+}
+
 # 8.3.5 first-time and reset values are unique and changed immediately after first use.
 first_use_password_change if {
 	input.pci.passwords.first_use.change_required == true
@@ -271,6 +311,8 @@ default idle_session_reauthentication := false
 
 default single_factor_password_lifetime := false
 
+default service_provider_customer_password_lifetime := false
+
 default first_use_password_change := false
 
 default authentication_factors_protected := false
@@ -302,6 +344,7 @@ pci_requirement_8_compliant if {
 	idle_session_reauthentication
 	password_requirements
 	single_factor_password_lifetime
+	service_provider_customer_password_lifetime
 	first_use_password_change
 	authentication_factors_protected
 	mfa_for_cde_admin
@@ -326,6 +369,7 @@ pci_requirement_8_score := score if {
 		idle_session_reauthentication,
 		password_requirements,
 		single_factor_password_lifetime,
+		service_provider_customer_password_lifetime,
 		first_use_password_change,
 		authentication_factors_protected,
 		mfa_for_cde_admin,
@@ -354,6 +398,7 @@ pci_requirement_8_findings := {
 	"requirement_8_3": {
 		"password_requirements": password_requirements,
 		"single_factor_password_lifetime": single_factor_password_lifetime,
+		"service_provider_customer_password_lifetime_8_3_10_1": service_provider_customer_password_lifetime,
 		"first_use_change": first_use_password_change,
 		"factors_protected": authentication_factors_protected,
 	},

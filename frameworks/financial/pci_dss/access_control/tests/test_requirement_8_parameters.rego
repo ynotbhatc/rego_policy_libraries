@@ -201,3 +201,31 @@ test_auditor_case_mfa_estate_lockout_10_meets_8_3 if {
 	r8.password_requirements with input as inp
 	r8.single_factor_password_lifetime with input as inp
 }
+
+# --- 8.3.10.1 service providers, customer accounts (SAQ D for Service Providers row 8.3.10.1) ---------------
+
+_sp(cust) := {"pci": {"entity": {"service_provider": true}, "passwords": {"customer_accounts": cust}}}
+
+test_8_3_10_1_merchant_not_applicable if {
+	r8.service_provider_customer_password_lifetime with input as {"pci": {"entity": {"service_provider": false}}}
+}
+
+test_8_3_10_1_customers_use_mfa_passes if r8.service_provider_customer_password_lifetime with input as _sp({"single_factor_only": false})
+
+test_8_3_10_1_single_factor_90_days_passes if {
+	r8.service_provider_customer_password_lifetime with input as _sp({"single_factor_only": true, "max_age_days": 90})
+}
+
+test_8_3_10_1_single_factor_dynamic_analysis_passes if {
+	r8.service_provider_customer_password_lifetime with input as _sp({"single_factor_only": true, "dynamic_posture_analysis": {"implemented": true}})
+}
+
+test_8_3_10_1_single_factor_180_days_fails if {
+	not r8.service_provider_customer_password_lifetime with input as _sp({"single_factor_only": true, "max_age_days": 180})
+}
+
+test_8_3_10_1_factor_unknown_no_evidence_fails if not r8.service_provider_customer_password_lifetime with input as _sp({})
+
+test_8_3_10_1_entity_type_missing_fails if {
+	not r8.service_provider_customer_password_lifetime with input as {"pci": {"passwords": {"customer_accounts": {"single_factor_only": false}}}}
+}

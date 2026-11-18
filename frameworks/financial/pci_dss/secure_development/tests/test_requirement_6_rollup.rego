@@ -32,12 +32,12 @@ test_failing_automated_attack_detection_6_4_2_blocks_compliance if {
 	not data.pci_dss.secure_development.requirement_6.pci_requirement_6_compliant with data.pci_dss.secure_development.requirement_6.secure_development_policies_established as true with data.pci_dss.secure_development.requirement_6.secure_development_roles_defined as true with data.pci_dss.secure_development.requirement_6.secure_sdlc_implemented as true with data.pci_dss.secure_development.requirement_6.developer_security_training as true with data.pci_dss.secure_development.requirement_6.preproduction_security_testing as true with data.pci_dss.secure_development.requirement_6.bespoke_code_review as true with data.pci_dss.secure_development.requirement_6.injection_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.xss_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.authentication_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.memory_corruption_prevented as true with data.pci_dss.secure_development.requirement_6.insecure_cryptography_prevented as true with data.pci_dss.secure_development.requirement_6.security_patch_management as true with data.pci_dss.secure_development.requirement_6.vulnerability_identification as true with data.pci_dss.secure_development.requirement_6.software_inventory_maintained as true with data.pci_dss.secure_development.requirement_6.waf_implemented as true with data.pci_dss.secure_development.requirement_6.sast_dast_implemented as true with data.pci_dss.secure_development.requirement_6.software_composition_analysis as true
 }
 
-test_failing_sast_dast_implemented_blocks_compliance if {
-	not data.pci_dss.secure_development.requirement_6.pci_requirement_6_compliant with data.pci_dss.secure_development.requirement_6.secure_development_policies_established as true with data.pci_dss.secure_development.requirement_6.secure_development_roles_defined as true with data.pci_dss.secure_development.requirement_6.secure_sdlc_implemented as true with data.pci_dss.secure_development.requirement_6.developer_security_training as true with data.pci_dss.secure_development.requirement_6.preproduction_security_testing as true with data.pci_dss.secure_development.requirement_6.bespoke_code_review as true with data.pci_dss.secure_development.requirement_6.injection_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.xss_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.authentication_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.memory_corruption_prevented as true with data.pci_dss.secure_development.requirement_6.insecure_cryptography_prevented as true with data.pci_dss.secure_development.requirement_6.security_patch_management as true with data.pci_dss.secure_development.requirement_6.vulnerability_identification as true with data.pci_dss.secure_development.requirement_6.software_inventory_maintained as true with data.pci_dss.secure_development.requirement_6.waf_implemented as true with data.pci_dss.secure_development.requirement_6.automated_attack_detection as true with data.pci_dss.secure_development.requirement_6.software_composition_analysis as true
+test_failing_sast_dast_does_not_block_compliance_not_a_requirement if {
+	data.pci_dss.secure_development.requirement_6.pci_requirement_6_compliant with data.pci_dss.secure_development.requirement_6.secure_development_policies_established as true with data.pci_dss.secure_development.requirement_6.secure_development_roles_defined as true with data.pci_dss.secure_development.requirement_6.secure_sdlc_implemented as true with data.pci_dss.secure_development.requirement_6.developer_security_training as true with data.pci_dss.secure_development.requirement_6.preproduction_security_testing as true with data.pci_dss.secure_development.requirement_6.bespoke_code_review as true with data.pci_dss.secure_development.requirement_6.injection_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.xss_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.authentication_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.memory_corruption_prevented as true with data.pci_dss.secure_development.requirement_6.insecure_cryptography_prevented as true with data.pci_dss.secure_development.requirement_6.security_patch_management as true with data.pci_dss.secure_development.requirement_6.vulnerability_identification as true with data.pci_dss.secure_development.requirement_6.software_inventory_maintained as true with data.pci_dss.secure_development.requirement_6.waf_implemented as true with data.pci_dss.secure_development.requirement_6.automated_attack_detection as true with data.pci_dss.secure_development.requirement_6.software_composition_analysis as true
 }
 
-test_failing_software_composition_analysis_blocks_compliance if {
-	not data.pci_dss.secure_development.requirement_6.pci_requirement_6_compliant with data.pci_dss.secure_development.requirement_6.secure_development_policies_established as true with data.pci_dss.secure_development.requirement_6.secure_development_roles_defined as true with data.pci_dss.secure_development.requirement_6.secure_sdlc_implemented as true with data.pci_dss.secure_development.requirement_6.developer_security_training as true with data.pci_dss.secure_development.requirement_6.preproduction_security_testing as true with data.pci_dss.secure_development.requirement_6.bespoke_code_review as true with data.pci_dss.secure_development.requirement_6.injection_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.xss_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.authentication_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.memory_corruption_prevented as true with data.pci_dss.secure_development.requirement_6.insecure_cryptography_prevented as true with data.pci_dss.secure_development.requirement_6.security_patch_management as true with data.pci_dss.secure_development.requirement_6.vulnerability_identification as true with data.pci_dss.secure_development.requirement_6.software_inventory_maintained as true with data.pci_dss.secure_development.requirement_6.waf_implemented as true with data.pci_dss.secure_development.requirement_6.automated_attack_detection as true with data.pci_dss.secure_development.requirement_6.sast_dast_implemented as true
+test_failing_sca_does_not_block_compliance_not_a_requirement if {
+	data.pci_dss.secure_development.requirement_6.pci_requirement_6_compliant with data.pci_dss.secure_development.requirement_6.secure_development_policies_established as true with data.pci_dss.secure_development.requirement_6.secure_development_roles_defined as true with data.pci_dss.secure_development.requirement_6.secure_sdlc_implemented as true with data.pci_dss.secure_development.requirement_6.developer_security_training as true with data.pci_dss.secure_development.requirement_6.preproduction_security_testing as true with data.pci_dss.secure_development.requirement_6.bespoke_code_review as true with data.pci_dss.secure_development.requirement_6.injection_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.xss_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.authentication_attacks_prevented as true with data.pci_dss.secure_development.requirement_6.memory_corruption_prevented as true with data.pci_dss.secure_development.requirement_6.insecure_cryptography_prevented as true with data.pci_dss.secure_development.requirement_6.security_patch_management as true with data.pci_dss.secure_development.requirement_6.vulnerability_identification as true with data.pci_dss.secure_development.requirement_6.software_inventory_maintained as true with data.pci_dss.secure_development.requirement_6.waf_implemented as true with data.pci_dss.secure_development.requirement_6.automated_attack_detection as true with data.pci_dss.secure_development.requirement_6.sast_dast_implemented as true
 }
 
 test_waf_implemented_missing_scope_flag_does_not_pass if {
@@ -93,3 +93,54 @@ test_6_3_3_non_critical_evidence_missing_fails if {
 test_6_3_3_critical_late_fails if {
 	not data.pci_dss.secure_development.requirement_6.security_patch_management with input as _patch({"critical_patches": {"applied_within_30_days": false}, "other_patches": {"entity_defined_timeframe": {"met": true}}})
 }
+
+# --- behaviour on the evidence schema (audit 2026-11-17 follow-up) -----------------------------------
+
+_r6 := data.pci_dss.secure_development.requirement_6
+
+test_6_2_2_annual_training_without_owasp_flag_passes if {
+	_r6.developer_security_training with input as {"pci": {"developer_training": {"secure_coding": {"conducted": true}, "frequency_months": 12, "records": {"maintained": true}}}}
+}
+
+test_6_2_2_thirteen_months_fails if {
+	not _r6.developer_security_training with input as {"pci": {"developer_training": {"secure_coding": {"conducted": true}, "frequency_months": 13, "records": {"maintained": true}}}}
+}
+
+test_6_2_2_string_frequency_fails if {
+	not _r6.developer_security_training with input as {"pci": {"developer_training": {"secure_coding": {"conducted": true}, "frequency_months": "6", "records": {"maintained": true}}}}
+}
+
+test_6_2_4_defined_techniques_pass_without_prescribed_ones if {
+	_r6.xss_attacks_prevented with input as {"pci": {"secure_coding": {"xss": {"techniques_defined_and_in_use": true}}}}
+	_r6.authentication_attacks_prevented with input as {"pci": {"secure_coding": {"authentication": {"techniques_defined_and_in_use": true}}}}
+}
+
+test_6_2_4_no_evidence_fails if not _r6.injection_attacks_prevented with input as {}
+
+test_6_3_1_sources_and_ranking_pass_without_30_day_scans if {
+	_r6.vulnerability_identification with input as {"pci": {"vulnerability_management": {"industry_sources": {"monitored": true}, "risk_ranking": {"assigned": true}}}}
+}
+
+test_6_3_1_no_risk_ranking_fails if {
+	not _r6.vulnerability_identification with input as {"pci": {"vulnerability_management": {"industry_sources": {"monitored": true}}}}
+}
+
+test_6_3_2_bespoke_and_third_party_inventory_passes if {
+	_r6.software_inventory_maintained with input as {"pci": {"software_inventory": {"bespoke": {"documented": true}, "third_party": {"documented": true}}}}
+}
+
+test_6_3_2_third_party_missing_fails if {
+	not _r6.software_inventory_maintained with input as {"pci": {"software_inventory": {"bespoke": {"documented": true}}}}
+}
+
+_waap(extra) := {"pci": {"public_web_apps": {"in_scope": true}, "automated_detection": object.union({"waf_or_vapt": {"implemented": true}, "logging": {"configured": true}}, extra)}}
+
+test_6_4_2_alert_with_immediate_investigation_passes if {
+	_r6.automated_attack_detection with input as _waap({"alerts": {"immediately_investigated": true}})
+}
+
+test_6_4_2_blocking_passes if _r6.automated_attack_detection with input as _waap({"active_blocking": {"enabled": true}})
+
+test_6_4_2_neither_block_nor_alert_fails if not _r6.automated_attack_detection with input as _waap({})
+
+test_6_4_2_scope_flag_missing_fails if not _r6.automated_attack_detection with input as {}

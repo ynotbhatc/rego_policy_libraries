@@ -34,7 +34,8 @@ _internal(freq) := {"pci": {"vuln_scanning": {"internal": {
 
 test_11_3_1_quarterly_passes if r11.internal_vulnerability_scanning with input as _internal(90)
 
-test_11_3_1_four_months_fails if not r11.internal_vulnerability_scanning with input as _internal(91)
+# PCI SSC FAQ 1087: 90 days is the maximum time between quarterly scans.
+test_11_3_1_ninety_one_days_fails if not r11.internal_vulnerability_scanning with input as _internal(91)
 
 test_11_3_1_frequency_missing_fails if {
 	not r11.internal_vulnerability_scanning with input as {"pci": {"vuln_scanning": {"internal": {"performed": true}}}}
@@ -155,3 +156,22 @@ test_empty_input_not_compliant_and_zero_score if {
 	not r11.pci_requirement_11_compliant with input as {}
 	r11.pci_requirement_11_score == 0 with input as {}
 }
+
+# --- 11.3.1.2 authenticated internal scanning (SAQ D row 11.3.1.2) ---------------------------------------
+
+_auth(accounts) := {"pci": {"vuln_scanning": {"internal": {"authenticated": {
+	"performed": true, "non_credentialed_systems_documented": true, "sufficient_privileges": true,
+	"scan_accounts": accounts,
+}}}}}
+
+test_11_3_1_2_managed_scan_accounts_pass if r11.authenticated_internal_scanning with input as _auth({"managed_per_8_2_2": true})
+
+test_11_3_1_2_non_interactive_scan_accounts_pass if {
+	r11.authenticated_internal_scanning with input as _auth({"interactive_login_possible": false})
+}
+
+test_11_3_1_2_unmanaged_interactive_accounts_fail if {
+	not r11.authenticated_internal_scanning with input as _auth({"interactive_login_possible": true})
+}
+
+test_11_3_1_2_missing_fails if not r11.authenticated_internal_scanning with input as {}

@@ -23,7 +23,9 @@ import rego.v1
 # Frequencies were checked on 2026-11-17 against PCI SSC's public SAQ D for Service Providers (v4.0) rows
 # 11.2.1, 11.3.1, 11.3.1.1, 11.3.2, 11.4.2-11.4.6, 11.5.1, 11.5.2 and 11.6.1, and the v4.0 -> v4.0.1
 # change to 6.3.3 (one-month installation applies to critical patches only). The standard's text is
-# licensed and is not reproduced; ids and parameter values are facts. Numbers are compared only when they
+# licensed and is not reproduced; ids and parameter values are facts. "Every three months" is checked as at
+# most 90 days: PCI SSC FAQ 1087 (July 2023) treats three months, or 90 days, as the maximum time between
+# quarterly scans (the 90-92 day figure seen elsewhere is secondary and not used). Numbers are compared only when they
 # are numbers (OPA orders every string above every number).
 
 _num_le(x, n) if {
@@ -35,11 +37,12 @@ _num_le(x, n) if {
 # 11.1 - Processes and mechanisms for testing security
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 security_testing_policies_established if {
 	input.pci.security_testing.policies.documented == true
 	input.pci.security_testing.policies.approved == true
 	input.pci.security_testing.policies.current == true
-	input.pci.security_testing.policies.reviewed_annually == true
 }
 
 security_testing_roles_defined if {
@@ -71,6 +74,20 @@ internal_vulnerability_scanning if {
 	input.pci.vuln_scanning.internal.after_significant_changes == true
 	input.pci.vuln_scanning.internal.high_and_critical.remediated == true
 	input.pci.vuln_scanning.internal.rescans.performed == true
+}
+
+# 11.3.1.2 (future-dated in v4.0, in force since 31 March 2025): internal scans are authenticated. Systems that
+# cannot accept credentials are documented, sufficient privileges are used, and scan accounts that can log in
+# interactively are managed per 8.2.2 (or cannot log in interactively).
+_scan_accounts_ok if input.pci.vuln_scanning.internal.authenticated.scan_accounts.managed_per_8_2_2 == true
+
+_scan_accounts_ok if input.pci.vuln_scanning.internal.authenticated.scan_accounts.interactive_login_possible == false
+
+authenticated_internal_scanning if {
+	input.pci.vuln_scanning.internal.authenticated.performed == true
+	input.pci.vuln_scanning.internal.authenticated.non_credentialed_systems_documented == true
+	input.pci.vuln_scanning.internal.authenticated.sufficient_privileges == true
+	_scan_accounts_ok
 }
 
 # External vulnerability scanning by ASV
@@ -198,6 +215,8 @@ default internal_vulnerability_scanning := false
 
 default external_vulnerability_scanning := false
 
+default authenticated_internal_scanning := false
+
 default vulnerability_remediation := false
 
 default penetration_testing := false
@@ -223,6 +242,7 @@ pci_requirement_11_compliant if {
 	security_testing_roles_defined
 	wireless_access_point_testing
 	internal_vulnerability_scanning
+	authenticated_internal_scanning
 	external_vulnerability_scanning
 	vulnerability_remediation
 	penetration_testing
@@ -243,6 +263,7 @@ pci_requirement_11_score := score if {
 		security_testing_roles_defined,
 		wireless_access_point_testing,
 		internal_vulnerability_scanning,
+		authenticated_internal_scanning,
 		external_vulnerability_scanning,
 		vulnerability_remediation,
 		penetration_testing,
@@ -265,6 +286,7 @@ pci_requirement_11_findings := {
 	"requirement_11_2": {"wireless_ap_testing": wireless_access_point_testing},
 	"requirement_11_3": {
 		"internal_scanning": internal_vulnerability_scanning,
+		"authenticated_internal_scanning": authenticated_internal_scanning,
 		"external_scanning_asv": external_vulnerability_scanning,
 		"vulnerability_remediation": vulnerability_remediation,
 	},
