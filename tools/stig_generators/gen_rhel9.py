@@ -164,11 +164,16 @@ def block(sid, r, spec):
     o += [f'status_{i} := "Not_a_Finding" if {name}', ""]
     if spec.get("na"):
         o += [f'else := "Not_Applicable" if na_{i}', ""]
-    o += ['else := "Open"', "", f'detail_{i} := "{sid}: Not_a_Finding" if {name}', ""]
+    o += ['else := "Not_Reviewed"' if spec.get("manual") else 'else := "Open"', "", f'detail_{i} := "{sid}: Not_a_Finding" if {name}', ""]
     if spec.get("na"):
         o += [f'else := "{sid}: Not_Applicable — {esc(spec["na_expect"])}" if na_{i}', ""]
     o += [f'else := sprintf("%s: evidence missing — %s not collected", ["{sid}", concat(", ", missing_{i})]) if count(missing_{i}) > 0',
-          "", f'else := "{sid}: check failed — {esc(spec["expect"])}"', ""]
+          ""]
+    if spec.get("manual"):
+        # a documentation / organizational review the facts cannot decide: Not_Reviewed until attested
+        o += [f'else := "{sid}: Not_Reviewed — {esc(spec["expect"])}"', ""]
+    else:
+        o += [f'else := "{sid}: check failed — {esc(spec["expect"])}"', ""]
     o += [f"finding_{i} := {{", f'\t"vuln_id": "{r["vuln_id"]}",', f'\t"stig_id": "{sid}",',
           f'\t"severity": "{sev}",', f'\t"rule_title": "{title}",', f'\t"check_type": "{kind}",',
           f'\t"status": status_{i},', f'\t"detail": detail_{i},', f'\t"fix_text": "{esc(spec["fix"])}",', "}", ""]
