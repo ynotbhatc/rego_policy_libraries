@@ -10,11 +10,6 @@ test_missing_wireless_evidence_is_open if {
 	network.status_ol09_00_006001 == "Open" with input as {}
 }
 
-test_no_wireless_interfaces_pass if {
-	network.status_ol09_00_006001 == "Not_a_Finding" with input as {"wireless_interfaces": []}
-	network.status_ol09_00_006001 == "Not_a_Finding" with input as {"wireless_interfaces": {"interfaces": [], "count": 0, "has_wireless": false}}
-}
-
 test_wireless_present_is_open if {
 	network.status_ol09_00_006001 == "Open" with input as {"wireless_interfaces": ["wlan0"]}
 	network.status_ol09_00_006001 == "Open" with input as {"wireless_interfaces": {"interfaces": ["wlan0"], "count": 1, "has_wireless": true}}

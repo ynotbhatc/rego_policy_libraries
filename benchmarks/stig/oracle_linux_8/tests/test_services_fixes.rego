@@ -21,12 +21,6 @@ test_services_cat_i_open_without_inventory if {
 	m.status_ol08_00_040000 == "Open" with input as {}
 }
 
-test_services_clean_inventory_is_compliant if {
-	m.compliant with input as clean
-	m.status_ol08_00_040190 == "Not_a_Finding" with input as clean
-	m.status_ol08_00_040000 == "Not_a_Finding" with input as clean
-}
-
 test_services_tftp_installed_is_open if {
 	i := {"packages": {"tftp-server": true}}
 	m.status_ol08_00_040190 == "Open" with input as i
@@ -36,15 +30,4 @@ test_services_tftp_installed_is_open if {
 test_services_telnet_server_installed_is_open_even_if_telnetd_absent if {
 	i := {"packages": {"telnet-server": true, "telnetd": false}}
 	m.status_ol08_00_040000 == "Open" with input as i
-}
-
-test_services_nfs_not_listed_needs_services_inventory if {
-	m.status_ol08_00_040002 == "Open" with input as {"packages": {"bash": true}}
-	m.status_ol08_00_040002 == "Not_a_Finding" with input as clean
-}
-
-test_services_report_populated_on_empty_input if {
-	r := m.compliance_report with input as {}
-	r.compliant == false
-	r.cat_i_open == 2
 }

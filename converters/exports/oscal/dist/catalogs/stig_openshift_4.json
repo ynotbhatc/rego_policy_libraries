@@ -132,6 +132,72 @@
       "class": "security"
      },
      {
+      "id": "stig_openshift_4-CNTR-OS-000460",
+      "title": "OpenShift must use FIPS validated LDAP or OpenIDConnect.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000460"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000460"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4471d58-fb20-5deb-ac45-fe13def0318f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000460_stmt",
+        "name": "statement",
+        "prose": "OpenShift must use FIPS validated LDAP or OpenIDConnect."
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "stig_openshift_4-CNTR-OS-000660",
+      "title": "Container images instantiated by OpenShift must execute using least privileges.",
+      "props": [
+       {
+        "name": "label",
+        "value": "CNTR-OS-000660"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CNTR-OS-000660"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "stig.openshift_4.core"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d4471d58-fb20-5deb-ac45-fe13def0318f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "stig_openshift_4-CNTR-OS-000660_stmt",
+        "name": "statement",
+        "prose": "Container images instantiated by OpenShift must execute using least privileges."
+       }
+      ],
+      "class": "security"
+     },
+     {
       "id": "stig_openshift_4-CNTR-OS-000090",
       "title": "OpenShift role-based access controls (RBAC) must be enforced.",
       "props": [
@@ -264,39 +330,6 @@
       "class": "security"
      },
      {
-      "id": "stig_openshift_4-CNTR-OS-000460",
-      "title": "OpenShift must use FIPS validated LDAP or OpenIDConnect.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CNTR-OS-000460"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CNTR-OS-000460"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.openshift_4.core"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4471d58-fb20-5deb-ac45-fe13def0318f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_openshift_4-CNTR-OS-000460_stmt",
-        "name": "statement",
-        "prose": "OpenShift must use FIPS validated LDAP or OpenIDConnect."
-       }
-      ],
-      "class": "security"
-     },
-     {
       "id": "stig_openshift_4-CNTR-OS-000510",
       "title": "OpenShift must protect authenticity of communications sessions with the use of FIPS-validated 140-2 or 140-3 validated cryptography.",
       "props": [
@@ -358,39 +391,6 @@
         "id": "stig_openshift_4-CNTR-OS-000560_stmt",
         "name": "statement",
         "prose": "OpenShift must prevent unauthorized and unintended information transfer via shared system resources and enable page poisoning."
-       }
-      ],
-      "class": "security"
-     },
-     {
-      "id": "stig_openshift_4-CNTR-OS-000660",
-      "title": "Container images instantiated by OpenShift must execute using least privileges.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CNTR-OS-000660"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CNTR-OS-000660"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "stig.openshift_4.core"
-       }
-      ],
-      "links": [
-       {
-        "href": "#d4471d58-fb20-5deb-ac45-fe13def0318f",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "stig_openshift_4-CNTR-OS-000660_stmt",
-        "name": "statement",
-        "prose": "Container images instantiated by OpenShift must execute using least privileges."
        }
       ],
       "class": "security"
@@ -532,7 +532,7 @@
    {
     "id": "stig_openshift_4-stig_openshift_4_complete",
     "class": "rego-module",
-    "title": "V2R6 | Release: 6 Benchmark Date: 01 Jul 2026",
+    "title": "V2R7 | Released: 30 Sep 2026",
     "props": [
      {
       "name": "rego-package",
@@ -641,7 +641,7 @@
     },
     {
      "uuid": "2a0022ee-3a75-5155-9244-ebc09507507b",
-     "title": "V2R6 | Release: 6 Benchmark Date: 01 Jul 2026",
+     "title": "V2R7 | Released: 30 Sep 2026",
      "props": [
       {
        "name": "rego-package",
