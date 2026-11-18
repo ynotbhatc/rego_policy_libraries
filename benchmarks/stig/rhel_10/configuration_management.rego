@@ -142,7 +142,10 @@ _aide_notifies if _attested("rhel_10_200633_notification")
 aide_hash_names := {"md5", "sha1", "sha256", "sha512", "rmd160", "tiger", "haval", "gost", "crc32", "whirlpool", "crc32b", "stribog256", "stribog512", "sha512_256"}
 
 # the hash names used on an uncommented aide.conf line (`NAME = a+b+sha512`, or a bare selection line)
-_aide_line_hashes(l) := {h | some p in regex.split(`[+=\s]+`, lower(l)); h := trim_space(p); h in aide_hash_names}
+_aide_line_hashes(l) := {h | some p in parts; h := trim_space(p); h in aide_hash_names} if {
+	ll := lower(l)
+	parts := regex.split(`[+=\s]+`, ll)
+}
 
 # =============================================================================
 # CAT I - HIGH SEVERITY

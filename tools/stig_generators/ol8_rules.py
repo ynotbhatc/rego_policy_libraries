@@ -131,7 +131,7 @@ T.R("configuration_management", "OL08-00-010450", "selinux_targeted", [("selinux
 
 T.R("configuration_management", "OL08-00-010020", "fips_mode_enabled",
     [("fips", "mode_setup_check"), ("grub", "kernelopts"), ("fips", "fips_enabled")],
-    [['out := _str(["fips", "mode_setup_check"])', 'some l in split(out, "\\n")',
+    [['out := _str(["fips", "mode_setup_check"])', 'ls := split(out, "\\n")', 'some l in ls',
       'regex.match(`^FIPS mode is enabled\\.?$`, trim_space(l))',
       'opts := split(_str(["grub", "kernelopts"]), " ")', '"fips=1" in opts', '_str(["fips", "fips_enabled"]) == "1"']],
     {"fips": {"mode_setup_check": "FIPS mode is enabled.", "fips_enabled": "1"},
@@ -158,7 +158,7 @@ T.reuse("OL08-00-010182", "RHEL-09-215105",
                + ", nothing with SHA1 or below 224 bits; min_rsa_size must be at least 2048")
 
 T.R("pki_crypto", "OL08-00-010183", "crypto_policy_not_overridden", [("crypto_policy_check", "is_applied")],
-    [['out := _str(["crypto_policy_check", "is_applied"])', 'some l in split(out, "\\n")',
+    [['out := _str(["crypto_policy_check", "is_applied"])', 'ls := split(out, "\\n")', 'some l in ls',
       'trim_space(l) == "The configured policy is applied"']],
     {"crypto_policy_check": {"is_applied": "The configured policy is applied"}},
     [{"crypto_policy_check": {"is_applied": "The configured policy is NOT applied"}}],
@@ -325,7 +325,10 @@ _fstab_entry(mp) := e if {
 }
 
 # the fstab entry's options as exact tokens
-_fstab_opts(e) := {o | some x in split(e.options, ","); o := trim_space(x)} if is_string(e.options)''')
+_fstab_opts(e) := {o | some x in parts; o := trim_space(x)} if {
+	is_string(e.options)
+	parts := split(e.options, ",")
+}''')
 FSTAB = [{"mount_point": "/", "fs_type": "xfs", "options": "defaults"},
          {"mount_point": "/tmp", "fs_type": "xfs", "options": "defaults,nodev,nosuid,noexec"},
          {"mount_point": "/var/log", "fs_type": "xfs", "options": "defaults,nodev,nosuid,noexec"},

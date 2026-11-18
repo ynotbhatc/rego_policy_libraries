@@ -138,7 +138,10 @@ _fstab_entry(mp) := e if {
 }
 
 # the fstab entry's options as exact tokens
-_fstab_opts(e) := {o | some x in split(e.options, ","); o := trim_space(x)} if is_string(e.options)
+_fstab_opts(e) := {o | some x in parts; o := trim_space(x)} if {
+	is_string(e.options)
+	parts := split(e.options, ",")
+}
 
 # =============================================================================
 # CAT I - HIGH SEVERITY
@@ -228,7 +231,8 @@ default fips_mode_enabled := false
 fips_mode_enabled if {
 	count(missing_ol08_00_010020) == 0
 	out := _str(["fips", "mode_setup_check"])
-	some l in split(out, "\n")
+	ls := split(out, "\n")
+	some l in ls
 	regex.match(`^FIPS mode is enabled\.?$`, trim_space(l))
 	opts := split(_str(["grub", "kernelopts"]), " ")
 	"fips=1" in opts

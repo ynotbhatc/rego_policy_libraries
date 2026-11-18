@@ -99,7 +99,8 @@ _r10_ssh_first(kw) := lower(trim_space(e.value)) if {
 
 # input.sshd_runtime[<keyword lower-case>]: the value sshd -T prints
 _r10_ssh_runtime(kw) := lower(trim_space(v)) if {
-	v := input.sshd_runtime[lower(kw)]
+	k := lower(kw)
+	v := input.sshd_runtime[k]
 	is_string(v)
 }''')
 
@@ -179,7 +180,10 @@ T.helpers("configuration_management", r'''
 aide_hash_names := {"md5", "sha1", "sha256", "sha512", "rmd160", "tiger", "haval", "gost", "crc32", "whirlpool", "crc32b", "stribog256", "stribog512", "sha512_256"}
 
 # the hash names used on an uncommented aide.conf line (`NAME = a+b+sha512`, or a bare selection line)
-_aide_line_hashes(l) := {h | some p in regex.split(`[+=\s]+`, lower(l)); h := trim_space(p); h in aide_hash_names}''')
+_aide_line_hashes(l) := {h | some p in parts; h := trim_space(p); h in aide_hash_names} if {
+	ll := lower(l)
+	parts := regex.split(`[+=\s]+`, ll)
+}''')
 T.R("configuration_management", "RHEL-10-200632", "aide_sha512", [("aide", "rule_lines")],
     [["lines := input.aide.rule_lines", "is_array(lines)", "count(lines) > 0",
       'used := {h | some l in lines; is_string(l); hs := _aide_line_hashes(l); some h in hs}', '"sha512" in used', 'used == {"sha512"}']],

@@ -268,7 +268,8 @@ default fips_mode_enabled := false
 fips_mode_enabled if {
 	count(missing_ol09_00_000070) == 0
 	out := _str(["fips", "mode_setup_check"])
-	some l in split(out, "\n")
+	ls := split(out, "\n")
+	some l in ls
 	regex.match(`^FIPS mode is enabled\.?$`, trim_space(l))
 }
 

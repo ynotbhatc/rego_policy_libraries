@@ -75,14 +75,15 @@ _nodes := ns if {
 }
 
 # kernel arguments of a node: the tokens of its /boot/loader/entries/*.conf options lines
-_kargs(n) := {t | some l in n.boot_entries_options; is_string(l); some t in split(trim_space(l), " "); t != ""}
+_kargs(n) := {t | some l in n.boot_entries_options; is_string(l); s := trim_space(l); parts := split(s, " "); some t in parts; t != ""}
 
 # an audit rule line compared token for token (`-F key=x` is `-k x`; auid!=-1 / 4294967295 are auid!=unset)
-_rule_norm(l) := concat(" ", [t | some t in split(x, " "); t != ""]) if {
+_rule_norm(l) := concat(" ", [t | some t in parts; t != ""]) if {
 	is_string(l)
 	a := replace(trim_space(l), " -F key=", " -k ")
 	b := replace(a, "auid!=-1", "auid!=unset")
 	x := replace(b, "auid!=4294967295", "auid!=unset")
+	parts := split(x, " ")
 }
 
 _node_rules(n) := {r | some l in n.audit_rules; r := _rule_norm(l)}
@@ -185,7 +186,7 @@ _scc_privileged(s) if s.allowPrivilegedContainer == true
 
 _scc_privileged(s) if object.get(s, ["runAsUser", "type"], "") != "MustRunAsRange"
 
-_scc_subjects(s) := {x | some k in ["users", "groups"]; some x in object.get(s, k, [])}
+_scc_subjects(s) := {x | some k in ["users", "groups"]; xs := object.get(s, k, []); some x in xs}
 
 _scc_offender(s) if {
 	_scc_privileged(s)
@@ -196,7 +197,8 @@ _scc_offender(s) if {
 # system:authenticated belongs only on the restricted profile
 _scc_offender(s) if {
 	not s.metadata.name in {"restricted", "restricted-v2"}
-	"system:authenticated" in object.get(s, "groups", [])
+	groups := object.get(s, "groups", [])
+	"system:authenticated" in groups
 }
 
 # OpenShift Virtualization on a cluster older than 4.18 (input.openshift.cluster_version "4.17.3")

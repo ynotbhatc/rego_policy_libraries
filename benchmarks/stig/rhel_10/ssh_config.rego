@@ -102,7 +102,8 @@ _r10_ssh_first(kw) := lower(trim_space(e.value)) if {
 
 # input.sshd_runtime[<keyword lower-case>]: the value sshd -T prints
 _r10_ssh_runtime(kw) := lower(trim_space(v)) if {
-	v := input.sshd_runtime[lower(kw)]
+	k := lower(kw)
+	v := input.sshd_runtime[k]
 	is_string(v)
 }
 

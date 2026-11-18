@@ -153,7 +153,8 @@ default crypto_policy_not_overridden := false
 crypto_policy_not_overridden if {
 	count(missing_ol08_00_010183) == 0
 	out := _str(["crypto_policy_check", "is_applied"])
-	some l in split(out, "\n")
+	ls := split(out, "\n")
+	some l in ls
 	trim_space(l) == "The configured policy is applied"
 }
 

@@ -168,7 +168,8 @@ default crypto_policy_not_overridden := false
 crypto_policy_not_overridden if {
 	count(missing_ol09_00_000242) == 0
 	out := _str(["crypto_policy_check", "pass_output"])
-	lines := [l | some x in split(out, "\n"); l := trim_space(x); l != ""]
+	raw := split(out, "\n")
+	lines := [l | some x in raw; l := trim_space(x); l != ""]
 	count(lines) > 0
 	lines[count(lines) - 1] == "PASS"
 	backends := input.crypto_backends
