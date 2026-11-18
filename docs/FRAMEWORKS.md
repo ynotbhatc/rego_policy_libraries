@@ -69,7 +69,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | **GLBA Safeguards Rule (16 CFR 314)** | `frameworks/financial/glba/` | All §314.4 elements + §314.5 breach notification (2024), small-institution exemption modeled |
 | **CISA CPG 2.0 (Oct 2025)** | `frameworks/federal/cisa_cpg/` | All 34 goals, six CSF-2.0 functions incl. GOVERN, per-function rollup |
 | **ISO/IEC 42001:2023 (AIMS)** | `governance/iso_42001/` | Clauses 4–10 + Annex A groups — completes the AI trio with EU AI Act + NIST AI RMF |
-| **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing scoped out honestly |
+| **ITAR (22 CFR 120–130)** | `frameworks/regulatory/itar/` | Data-safeguarding slice: deemed exports, §120.54 encryption carve-out, DDTC hygiene — legal/licensing explicitly scoped out |
 | **COBIT 2019** | `frameworks/management/cobit/` | Governance-system attestation across EDM/APO/BAI/DSS/MEA — maturity assessment explicitly disclaimed |
 | **CISA SCuBA M365** | `benchmarks/scuba/m365/` | All 104 baseline policies across 7 products (Entra ID, Defender, EXO, Power BI, Power Platform, SharePoint/OneDrive, Teams); SHALL/SHOULD criticality reported; BOD 25-01 |
 | **CIS Amazon EKS v1.8.0** | `benchmarks/cis/eks/` | 49 controls (kubescape-mapped coverage; gaps stated in header) |

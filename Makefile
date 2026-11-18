@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm wasm-classes coverage check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -79,9 +79,14 @@ coverage:
 	@echo "=== Stamping custom.coverage into every module's METADATA + docs/COVERAGE_SCAN.md ==="
 	@python3 scripts/coverage_stamp.py --report docs/COVERAGE_SCAN.md
 
+# no data never passes: the generated test must list every compliance_report entrypoint
+check-no-data:
+	@python3 scripts/check_no_data_fails.py --check-test
+
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check
+	@python3 scripts/coverage_report.py --check
 
 # The product loads this library with one PUT /v1/policies per file into an empty
 # server; a module that only compiles next to its siblings is rejected there even
@@ -98,7 +103,7 @@ metadata:
 check-cis-verbatim:
 	@python3 scripts/check_cis_verbatim.py benchmarks/cis
 
-check: lint test metadata check-coverage check-per-file-load check-cis-verbatim
+check: lint test metadata check-no-data check-coverage check-per-file-load check-cis-verbatim
 
 OPA_SECURITY_URL  ?= http://localhost:8181
 OPA_COMPLIANCE_URL ?= http://localhost:8182

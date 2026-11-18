@@ -4,6 +4,7 @@
 Run from the repository root:
 
     python3 scripts/coverage_report.py > COVERAGE.md
+    python3 scripts/coverage_report.py --check   # CI (via make check-coverage): fail if COVERAGE.md is stale
 
 The untested list is a work queue, not an accusation. Every entry is a small,
 self-contained, verifiable contribution: copy the shape of an existing test,
@@ -51,8 +52,8 @@ def main() -> int:
       f"{len(tests)} test files, {len(untested)} policies still uncovered.\n")
     w("## Why this file exists\n")
     w("This library is maintained on a best-effort basis and it is free. Publishing")
-    w("the gap is cheaper than hiding it, and it is the most honest answer to")
-    w("\"where can I help?\" — every uncovered policy below is a real, bounded,")
+    w("the gap is cheaper than hiding it, and it answers \"where can I help?\"")
+    w("directly — every uncovered policy below is a real, bounded,")
     w("mergeable contribution.\n")
     w("**Each one is small.** Copy the shape of a test that already exists next to")
     w("a covered policy, write cases for the violations the policy defines, and run")
@@ -84,7 +85,15 @@ def main() -> int:
             w(f"- `{name}`")
         w("\n</details>\n")
 
-    print("\n".join(out))
+    text = "\n".join(out) + "\n"
+    if "--check" in sys.argv:
+        current = (ROOT / "COVERAGE.md").read_text() if (ROOT / "COVERAGE.md").exists() else ""
+        if current != text:
+            print("COVERAGE.md is stale; run: python3 scripts/coverage_report.py > COVERAGE.md")
+            return 1
+        print(f"COVERAGE.md current: {covered} of {total} policy files have tests")
+        return 0
+    sys.stdout.write(text)
     return 0
 
 

@@ -3,7 +3,7 @@
 
 CIS-CAT Pro and the CIS XCCDF benchmarks name a rule
     xccdf_org.cisecurity.benchmarks_rule_<section number>_<Title_with_underscores>
-The section number is the join key we can state honestly: our CIS controls carry it ("CIS 1.3.1"), the title
+The section number is the join key we can state with certainty: our CIS controls carry it ("CIS 1.3.1"), the title
 we do not have (the benchmark PDFs are licensed), so dist/cis_xccdf_ids.csv gives, per CIS control the library
 evaluates: platform, Rego package, benchmark name and version the module declares, the section number, our
 OSCAL control id, and the XCCDF rule-id prefix to join on (`startswith`). Modules that are DERIVED from a

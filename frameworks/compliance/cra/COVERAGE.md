@@ -128,7 +128,7 @@ Member States also set their own additional penalties, and may impose periodic p
 
 ### What the framework does NOT do
 
-Honest scoping — the framework is a self-assessment tool, not a magic compliance machine:
+Scope — the framework is a self-assessment tool, not a magic compliance machine:
 
 - **It does not replace notified body assessment.** Important Class II and Critical products require third-party conformity assessment under Article 32. The framework helps you arrive at that assessment with a clean baseline; it does not perform the assessment.
 - **It does not generate technical documentation.** Annex VII still requires you to write the documentation. The framework checks that you have the right elements; it does not produce them.
