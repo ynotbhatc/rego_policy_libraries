@@ -74,7 +74,7 @@ low_good_input := {
 	"continuous_monitoring": {
 		"program_documented": true, "monthly_vulnerability_scans": true, "last_vulnerability_scan_days": 5,
 		"monthly_os_scan": true, "web_app_scan_enabled": true, "database_scan_enabled": true,
-		"monthly_ato_report_submitted": true, "high_vulnerabilities_open_days": 0, "critical_vulnerabilities_open_days": 0,
+		"monthly_ato_report_submitted": true, "high_vulnerabilities_open_days": 0, "critical_vulnerabilities_open_days": 0, "moderate_vulnerabilities_open_days": 45, "low_vulnerabilities_open_days": 100,
 	},
 	"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true},
 	"supply_chain": {"risk_management_plan": true},

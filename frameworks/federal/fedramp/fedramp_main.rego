@@ -37,7 +37,8 @@ import rego.v1
 #
 # Parameter values used below are FedRAMP's Rev 5 set-parameters in those profiles:
 #   CA-2 / CA-8 at least annually; RA-5 monthly OS/infrastructure, web application (incl. APIs) and
-#   database scans, high-risk vulnerabilities mitigated within 30 days; SC-13 "FIPS-validated or
+#   database scans, high / moderate / low-risk vulnerabilities mitigated within 30 / 90 / 180 days
+#   (KEV due dates take precedence when supplied); SC-13 "FIPS-validated or
 #   NSA-approved cryptography"; SA-9(5) (High only) U.S./U.S. Territories or U.S. jurisdiction.
 # Baseline membership used for gating (same profiles): CA-2, CA-6, CA-7, CA-8, IR-8, PS-3, RA-2, RA-5,
 # SC-13, SR-2 at every level; CP-7 Moderate and High; SA-9(5) Moderate and High, with a FedRAMP-fixed
@@ -47,8 +48,11 @@ import rego.v1
 # Input shape:
 #   input.impact_level            - "low", "moderate", or "high"
 #   input.authorization           - ATO/P-ATO status, 3PAO assessment
-#   input.cryptography            - fips_140_validated / nsa_approved, algorithms_in_use[]
-#   input.continuous_monitoring   - ConMon program and RA-5 scanning facts
+#   input.cryptography            - fips_140_validated / nsa_approved, algorithms_in_use[] (string or
+#                                   {"algorithm", "usage"})
+#   input.continuous_monitoring   - ConMon program and RA-5 scanning facts; open-days per risk tier;
+#                                   optional kev_findings[] (cve, due_date, remediated)
+#   input.assessment_date         - YYYY-MM-DD, the "today" for KEV due dates (else evaluation time)
 #   input.cloud_service           - penetration_test_annual, incident_response_plan_approved, redundant_processing
 #   input.supply_chain            - risk_management_plan
 #   input.personnel[]             - admin personnel (admin_access, background_check_completed, us_person)
@@ -158,12 +162,55 @@ violation_crypto contains msg if {
 	msg := "FedRAMP SC-13: evidence missing — input.cryptography.algorithms_in_use not collected"
 }
 
+# Algorithm status per NIST SP 800-131A Rev. 2 (March 2019) unless noted:
+#   DES        - not approved (FIPS 46-3 withdrawn 2005)
+#   3DES/TDEA  - two-key TDEA encryption disallowed; three-key TDEA encryption "Deprecated through 2023,
+#                Disallowed after 2023" (§2, Table 1); decryption is legacy use only
+#   SKIPJACK   - disallowed for applying cryptographic protection (§2)
+#   RSA-1024   - RSA len(n) < 2048 disallowed for digital signature generation (§3, Table 2) and key
+#                establishment (< 112 bits of security strength)
+#   RC4, MD5   - never NIST-approved algorithms (no FIPS or SP approval)
+#   SHA-1      - disallowed for digital signature generation except where NIST protocol guidance allows;
+#                legacy use for signature verification; acceptable for non-signature uses (§9). It is
+#                therefore judged by its stated usage, and a SHA-1 entry without a usage is missing evidence.
+# Entries in algorithms_in_use are a string ("AES-256") or {"algorithm": "SHA1", "usage": "..."}.
+_disallowed_algorithms := {"DES", "3DES", "2TDEA", "3TDEA", "TDEA", "SKIPJACK", "RC4", "MD5", "RSA-1024"}
+
+_algo_name(a) := a if is_string(a)
+
+_algo_name(a) := object.get(a, "algorithm", "") if is_object(a)
+
+_algo_usage(a) := object.get(a, "usage", null) if is_object(a)
+
+_algo_usage(a) := null if is_string(a)
+
+_sha1_names := {"SHA1", "SHA-1"}
+
+_sha1_allowed_usages := {"signature_verification", "hmac", "kdf", "rng", "non_signature"}
+
 violation_crypto contains msg if {
 	some algo in object.get(_crypto, "algorithms_in_use", [])
-	algo in {"DES", "3DES", "RC4", "MD5", "SHA1", "RSA-1024"}
+	upper(_algo_name(algo)) in _disallowed_algorithms
 	msg := sprintf(
-		"FedRAMP SC-13: Cryptographic algorithm '%v' is not approved for federal use. Use NIST-approved algorithms in FIPS-validated modules (or NSA-approved cryptography; CNSA 2.0 for national security systems).",
-		[algo],
+		"FedRAMP SC-13: Cryptographic algorithm '%v' is not approved or is disallowed for applying protection (NIST SP 800-131A Rev. 2). Use NIST-approved algorithms in FIPS-validated modules, or NSA-approved cryptography.",
+		[_algo_name(algo)],
+	)
+}
+
+violation_crypto contains msg if {
+	some algo in object.get(_crypto, "algorithms_in_use", [])
+	upper(_algo_name(algo)) in _sha1_names
+	_algo_usage(algo) == "signature_generation"
+	msg := "FedRAMP SC-13: SHA-1 used for digital signature generation, which NIST SP 800-131A Rev. 2 disallows outside protocol-specific allowances."
+}
+
+violation_crypto contains msg if {
+	some algo in object.get(_crypto, "algorithms_in_use", [])
+	upper(_algo_name(algo)) in _sha1_names
+	not _algo_usage(algo) in (_sha1_allowed_usages | {"signature_generation"})
+	msg := sprintf(
+		"FedRAMP SC-13: evidence missing — usage of SHA-1 not stated (entry %v); SP 800-131A Rev. 2 allows SHA-1 only for signature verification (legacy) and non-signature uses. State usage as one of %v.",
+		[algo, sort(_sha1_allowed_usages | {"signature_generation"})],
 	)
 }
 
@@ -257,7 +304,7 @@ violation_conmon contains msg if {
 }
 
 violation_conmon contains msg if {
-	some field in ["last_vulnerability_scan_days", "high_vulnerabilities_open_days", "critical_vulnerabilities_open_days"]
+	some field in ["last_vulnerability_scan_days", "high_vulnerabilities_open_days", "critical_vulnerabilities_open_days", "moderate_vulnerabilities_open_days", "low_vulnerabilities_open_days"]
 	not is_number(object.get(_cm, field, null))
 	msg := sprintf("FedRAMP RA-5: evidence missing — input.continuous_monitoring.%s not collected", [field])
 }
@@ -271,18 +318,56 @@ violation_conmon contains msg if {
 	)
 }
 
-# FedRAMP's RA-5 parameter names high-risk (30 days), moderate-risk (90) and low-risk (180) tiers and no
-# separate critical tier, so critical findings are held to the high-risk 30 days. Caveat: FedRAMP's RA-5
-# guidance says a CISA Known Exploited Vulnerabilities (KEV) catalog due date takes precedence; KEV dates
-# are often shorter than 30 days and this module has no KEV input, so a KEV-listed vulnerability can pass
-# here and still be late for FedRAMP.
+# FedRAMP's RA-5 parameter (ra-05_odp.03, identical at Low / Moderate / High): "high-risk vulnerabilities
+# mitigated within thirty (30) days from date of discovery; moderate-risk ... ninety (90) days ...; low risk
+# ... one hundred and eighty (180) days". There is no separate critical tier, so critical findings are held
+# to the high-risk 30 days. The oldest open finding of each tier is compared with its limit.
+_ra5_limits := {
+	"critical_vulnerabilities_open_days": 30,
+	"high_vulnerabilities_open_days": 30,
+	"moderate_vulnerabilities_open_days": 90,
+	"low_vulnerabilities_open_days": 180,
+}
+
 violation_conmon contains msg if {
-	some field in ["high_vulnerabilities_open_days", "critical_vulnerabilities_open_days"]
+	some field, limit in _ra5_limits
 	is_number(_cm[field])
-	_cm[field] > 30
+	_cm[field] > limit
 	msg := sprintf(
-		"FedRAMP RA-5: %v = %v days. FedRAMP requires high-risk vulnerabilities (critical included) to be mitigated within 30 days of discovery.",
-		[field, _cm[field]],
+		"FedRAMP RA-5: %v = %v days. FedRAMP's RA-5 parameter requires mitigation within %v days of discovery for this risk tier (critical held to the high-risk tier).",
+		[field, _cm[field], limit],
+	)
+}
+
+# CISA Known Exploited Vulnerabilities (KEV): FedRAMP's RA-5 guidance says a KEV-listed vulnerability is
+# remediated by its KEV due date. Optional input continuous_monitoring.kev_findings = [{"cve", "due_date"
+# (YYYY-MM-DD), "remediated"}]; "today" is input.assessment_date (YYYY-MM-DD) or the evaluation time.
+# A KEV item past its due date is a finding whatever the 30-day parameter says. Without kev_findings the
+# report says KEV due dates were not assessed (kev_assessed: false) — neither a pass nor a violation.
+default kev_assessed := false
+
+kev_assessed if is_array(object.get(_cm, "kev_findings", null))
+
+_today_ns := time.parse_ns("2006-01-02", input.assessment_date) if is_string(input.assessment_date)
+
+_today_ns := time.now_ns() if not is_string(input.assessment_date)
+
+violation_conmon contains msg if {
+	kev_assessed
+	some k in _cm.kev_findings
+	not is_string(object.get(k, "due_date", null))
+	msg := sprintf("FedRAMP RA-5: evidence missing — due_date not collected for KEV finding %v", [object.get(k, "cve", "unknown")])
+}
+
+violation_conmon contains msg if {
+	kev_assessed
+	some k in _cm.kev_findings
+	not k.remediated == true
+	due := time.parse_ns("2006-01-02", k.due_date)
+	_today_ns > due
+	msg := sprintf(
+		"FedRAMP RA-5: KEV-listed %v is unremediated past its CISA KEV due date %v. KEV due dates take precedence over the 30-day parameter.",
+		[object.get(k, "cve", "unknown"), k.due_date],
 	)
 }
 
@@ -389,6 +474,7 @@ fedramp_compliance_report := {
 	"checks_evaluated": count(applicable_checks),
 	"checks_failed": count(failed_checks),
 	"baseline_size": baseline_size,
+	"kev_assessed": kev_assessed,
 	"total_violations": count(all_violations),
 	"violations": all_violations,
 	"areas": {name: {"compliant": count(area) == 0, "violations": area} | some name, area in assessment_areas},

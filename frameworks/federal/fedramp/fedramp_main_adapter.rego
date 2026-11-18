@@ -55,6 +55,10 @@ area_summary := {name: {"violations": count(area), "compliant": count(area) == 0
 # (Rev 5: Low 156, Moderate 323, High 410, LI-SaaS 156), so the evaluated count is never read as coverage.
 total_controls := count(f.applicable_checks)
 
+default kev_note := "KEV due dates were not assessed: no continuous_monitoring.kev_findings supplied (not a pass, not a violation)"
+
+kev_note := "KEV due dates assessed from continuous_monitoring.kev_findings" if f.kev_assessed
+
 failed_controls := count(f.failed_checks)
 
 compliance_report := {
@@ -72,6 +76,8 @@ compliance_report := {
 	"total_controls": total_controls,
 	"controls_evaluated": sort(f.applicable_checks),
 	"baseline_size": f.baseline_size,
+	"kev_assessed": f.kev_assessed,
+	"kev_note": kev_note,
 	"baseline_sizes": f.baseline_sizes,
 	"coverage_note": "total_controls counts the checks this module evaluates; baseline_size is the number of controls the FedRAMP Rev 5 baseline selects at this impact level (null when the level is not declared). The module does not evaluate the baseline.",
 	"area_summary": area_summary,

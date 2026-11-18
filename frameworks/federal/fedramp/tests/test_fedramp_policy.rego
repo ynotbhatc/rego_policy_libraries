@@ -12,7 +12,7 @@ good := {
 	"continuous_monitoring": {
 		"program_documented": true, "monthly_ato_report_submitted": true,
 		"monthly_vulnerability_scans": true, "monthly_os_scan": true, "web_app_scan_enabled": true, "database_scan_enabled": true,
-		"last_vulnerability_scan_days": 10, "high_vulnerabilities_open_days": 12, "critical_vulnerabilities_open_days": 3,
+		"last_vulnerability_scan_days": 10, "high_vulnerabilities_open_days": 12, "critical_vulnerabilities_open_days": 3, "moderate_vulnerabilities_open_days": 45, "low_vulnerabilities_open_days": 100,
 	},
 	"cloud_service": {"penetration_test_annual": true, "incident_response_plan_approved": true, "redundant_processing": true},
 	"supply_chain": {"risk_management_plan": true},
@@ -194,4 +194,93 @@ test_us_person_criterion_not_applied_at_low if {
 	})
 	not "PS-3(3)" in fedramp.applicable_checks with input as inp
 	fedramp.fedramp_compliant with input as inp
+}
+
+# --- RA-5 risk tiers (FedRAMP ra-05_odp.03: 30 / 90 / 180 days) -----------------------
+
+test_ra5_moderate_tier_90_days if {
+	not "RA-5" in _ids(object.union(_at("low"), {"continuous_monitoring": {"moderate_vulnerabilities_open_days": 90}}))
+	f := _findings(object.union(_at("low"), {"continuous_monitoring": {"moderate_vulnerabilities_open_days": 91}}), "RA-5")
+	count(f) == 1
+	contains(f[0], "90 days")
+}
+
+test_ra5_low_tier_180_days if {
+	not "RA-5" in _ids(object.union(_at("low"), {"continuous_monitoring": {"low_vulnerabilities_open_days": 180}}))
+	"RA-5" in _ids(object.union(_at("low"), {"continuous_monitoring": {"low_vulnerabilities_open_days": 181}}))
+}
+
+test_ra5_missing_tier_ages_are_missing_evidence if {
+	inp := json.remove(_at("low"), ["continuous_monitoring/moderate_vulnerabilities_open_days", "continuous_monitoring/low_vulnerabilities_open_days"])
+	f := _findings(inp, "RA-5")
+	count(f) == 2
+	every m in f {
+		contains(m, "evidence missing")
+	}
+}
+
+# --- KEV ---------------------------------------------------------------------------
+
+_kev(items) := object.union(_at("low"), {"assessment_date": "2026-11-17", "continuous_monitoring": {"kev_findings": items}})
+
+test_kev_not_supplied_is_not_assessed_not_a_finding if {
+	fedramp.fedramp_compliant with input as _at("low")
+	not fedramp.kev_assessed with input as _at("low")
+	r := data.fedramp.main.compliance_report with input as _at("low")
+	r.kev_assessed == false
+	contains(r.kev_note, "not assessed")
+}
+
+test_kev_past_due_fails_even_within_30_days if {
+	# 10 days open (inside the 30-day parameter) but past its KEV due date
+	inp := object.union(_kev([{"cve": "CVE-2026-0001", "due_date": "2026-11-10", "remediated": false}]), {"continuous_monitoring": {"critical_vulnerabilities_open_days": 10}})
+	f := _findings(inp, "RA-5")
+	count(f) == 1
+	contains(f[0], "CVE-2026-0001")
+}
+
+test_kev_not_yet_due_passes if {
+	inp := _kev([{"cve": "CVE-2026-0002", "due_date": "2026-12-01", "remediated": false}])
+	fedramp.fedramp_compliant with input as inp
+	fedramp.kev_assessed with input as inp
+}
+
+test_kev_remediated_past_due_passes if {
+	fedramp.fedramp_compliant with input as _kev([{"cve": "CVE-2026-0003", "due_date": "2026-01-01", "remediated": true}])
+}
+
+test_kev_missing_due_date_is_missing_evidence if {
+	f := _findings(_kev([{"cve": "CVE-2026-0004", "remediated": false}]), "RA-5")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+# --- SP 800-131A Rev. 2 algorithm status ------------------------------------------
+
+_algos(list) := object.union(_at("low"), {"cryptography": {"algorithms_in_use": list}})
+
+test_disallowed_algorithms_fail if {
+	every a in ["DES", "3DES", "SKIPJACK", "RC4", "MD5", "RSA-1024"] {
+		count(_findings(_algos(["AES-256", a]), "SC-13")) == 1
+	}
+}
+
+test_sha1_signature_generation_fails if {
+	f := _findings(_algos([{"algorithm": "SHA-1", "usage": "signature_generation"}]), "SC-13")
+	count(f) == 1
+	contains(f[0], "signature generation")
+}
+
+test_sha1_allowed_uses_pass if {
+	not "SC-13" in _ids(_algos([{"algorithm": "SHA1", "usage": "hmac"}, {"algorithm": "SHA-1", "usage": "signature_verification"}]))
+}
+
+test_sha1_without_usage_is_missing_evidence if {
+	f := _findings(_algos(["SHA1"]), "SC-13")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_object_entries_for_approved_algorithms_pass if {
+	not "SC-13" in _ids(_algos([{"algorithm": "AES-256", "usage": "encryption"}, "SHA-384"]))
 }
