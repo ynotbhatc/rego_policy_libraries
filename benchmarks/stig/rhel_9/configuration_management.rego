@@ -104,6 +104,37 @@ _weak_hash(h) if {
 	bits < 224
 }
 
+# the Standard Mandatory DoW Notice and Consent Banner, from the RHEL-09-211020 check text (whitespace-normalised)
+dod_banner := "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."
+
+# text with every run of whitespace collapsed to one space and the ends trimmed
+_squash(s) := regex.replace(trim_space(s), `\s+`, " ")
+
+# the mount entry for a mount point; undefined unless the mount list was collected and the entry is there
+_mount(point) := m if {
+	mounts := input.filesystem_mounts
+	is_array(mounts)
+	some m in mounts
+	m.mount == point
+}
+
+# a kernel module is disabled the way the check requires: an uncommented `install <mod> /bin/false` and
+# `blacklist <mod>` in /etc/modprobe.conf or /etc/modprobe.d/* (input.modprobe[<mod>] = {install, blacklisted})
+_module_disabled(mod) if {
+	m := input.modprobe[mod]
+	m.install == "/bin/false"
+	m.blacklisted == true
+}
+
+# the AIDE job mails its result, or the SA attests to another notification path
+_aide_notifies if {
+	some l in input.aide.schedule
+	contains(l, "aide")
+	contains(l, "mail")
+}
+
+_aide_notifies if _attested("rhel_09_651015_notification")
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -249,25 +280,35 @@ finding_rhel_09_215105 := {
 # =============================================================================
 
 # RHEL-09-271105 | V-258031 | CAT II
-# The Ctrl-Alt-Delete graphical key sequence must be disabled
+# gsettings get org.gnome.settings-daemon.plugins.media-keys logout; no GUI installed is Not Applicable
+missing_rhel_09_271105 := [concat(".", p) | some p in [["gnome", "media_keys_logout"]]; not _collected(p)]
+
 default ctrl_alt_del_graphical_disabled := false
 
 ctrl_alt_del_graphical_disabled if {
-	input.dconf_settings["org/gnome/settings-daemon/plugins/media-keys/logout"] == "''"
+	count(missing_rhel_09_271105) == 0
+	_str(["gnome", "media_keys_logout"]) in {"['']", "@as []"}
 }
 
-ctrl_alt_del_graphical_disabled if {
-	is_object(input.packages)
-	not input.packages["gnome-desktop3"]
+default na_rhel_09_271105 := false
+
+na_rhel_09_271105 if {
+	input.gui_installed == false
 }
 
 status_rhel_09_271105 := "Not_a_Finding" if ctrl_alt_del_graphical_disabled
+
+else := "Not_Applicable" if na_rhel_09_271105
 
 else := "Open"
 
 detail_rhel_09_271105 := "RHEL-09-271105: Not_a_Finding" if ctrl_alt_del_graphical_disabled
 
-else := "RHEL-09-271105: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-271105: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271105
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271105", concat(", ", missing_rhel_09_271105)]) if count(missing_rhel_09_271105) > 0
+
+else := "RHEL-09-271105: check failed — gsettings get org.gnome.settings-daemon.plugins.media-keys logout must return [''] (no logout key sequence)"
 
 finding_rhel_09_271105 := {
 	"vuln_id": "V-258031",
@@ -277,15 +318,18 @@ finding_rhel_09_271105 := {
 	"check_type": "machine",
 	"status": status_rhel_09_271105,
 	"detail": detail_rhel_09_271105,
-	"fix_text": "Disable Ctrl-Alt-Del in GNOME: gsettings set org.gnome.settings-daemon.plugins.media-keys logout ''",
+	"fix_text": "Set logout='' under [org/gnome/settings-daemon/plugins/media-keys] in /etc/dconf/db/local.d/ and run dconf update",
 }
 
 # RHEL-09-431015 | V-258079 | CAT II
-# SELinux policy must be targeted
+# Loaded policy name from sestatus
+missing_rhel_09_431015 := [concat(".", p) | some p in [["selinux", "policy"]]; not _collected(p)]
+
 default selinux_targeted := false
 
 selinux_targeted if {
-	input.selinux.policy == "targeted"
+	count(missing_rhel_09_431015) == 0
+	_str(["selinux", "policy"]) == "targeted"
 }
 
 status_rhel_09_431015 := "Not_a_Finding" if selinux_targeted
@@ -294,7 +338,9 @@ else := "Open"
 
 detail_rhel_09_431015 := "RHEL-09-431015: Not_a_Finding" if selinux_targeted
 
-else := "RHEL-09-431015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-431015", concat(", ", missing_rhel_09_431015)]) if count(missing_rhel_09_431015) > 0
+
+else := "RHEL-09-431015: check failed — sestatus Loaded policy name must be targeted"
 
 finding_rhel_09_431015 := {
 	"vuln_id": "V-258079",
@@ -304,15 +350,19 @@ finding_rhel_09_431015 := {
 	"check_type": "machine",
 	"status": status_rhel_09_431015,
 	"detail": detail_rhel_09_431015,
-	"fix_text": "Configure SELinux policy: Set SELINUXTYPE=targeted in /etc/selinux/config",
+	"fix_text": "Set SELINUXTYPE=targeted in /etc/selinux/config and reboot",
 }
 
 # RHEL-09-212010 | V-257787 | CAT II
-# GRUB bootloader must be password protected
+# the GRUB2_PASSWORD value from /boot/grub2/user.cfg, else /boot/efi/EFI/redhat/user.cfg (null if absent or commented)
+missing_rhel_09_212010 := [concat(".", p) | some p in [["grub", "user_cfg_password"]]; not _collected(p)]
+
 default grub_password_set := false
 
 grub_password_set if {
-	input.grub_config.password_set == true
+	count(missing_rhel_09_212010) == 0
+	s := _str(["grub", "user_cfg_password"])
+	startswith(s, "grub.pbkdf2.sha512")
 }
 
 status_rhel_09_212010 := "Not_a_Finding" if grub_password_set
@@ -321,7 +371,9 @@ else := "Open"
 
 detail_rhel_09_212010 := "RHEL-09-212010: Not_a_Finding" if grub_password_set
 
-else := "RHEL-09-212010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212010", concat(", ", missing_rhel_09_212010)]) if count(missing_rhel_09_212010) > 0
+
+else := "RHEL-09-212010: check failed — GRUB2_PASSWORD in /boot/grub2/user.cfg (or the legacy /boot/efi/EFI/redhat/user.cfg) must begin with grub.pbkdf2.sha512"
 
 finding_rhel_09_212010 := {
 	"vuln_id": "V-257787",
@@ -331,19 +383,19 @@ finding_rhel_09_212010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_212010,
 	"detail": detail_rhel_09_212010,
-	"fix_text": "Configure a bootloader password: grub2-setpassword",
+	"fix_text": "Set a bootloader password: grub2-setpassword",
 }
 
 # RHEL-09-211020 | V-257779 | CAT II
-# Must display the Standard Mandatory DoD Notice on login banner
+# content of /etc/issue, compared with the banner text in the check (whitespace runs collapsed)
+missing_rhel_09_211020 := [concat(".", p) | some p in [["login_banner", "issue"]]; not _collected(p)]
+
 default login_banner_set := false
 
 login_banner_set if {
-	contains(input.login_banner.issue, "You are accessing a U.S. Government")
-}
-
-login_banner_set if {
-	contains(input.login_banner.issue, "authorized users only")
+	count(missing_rhel_09_211020) == 0
+	s := _str(["login_banner", "issue"])
+	_squash(s) == dod_banner
 }
 
 status_rhel_09_211020 := "Not_a_Finding" if login_banner_set
@@ -352,7 +404,9 @@ else := "Open"
 
 detail_rhel_09_211020 := "RHEL-09-211020: Not_a_Finding" if login_banner_set
 
-else := "RHEL-09-211020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211020", concat(", ", missing_rhel_09_211020)]) if count(missing_rhel_09_211020) > 0
+
+else := "RHEL-09-211020: check failed — /etc/issue must contain exactly the Standard Mandatory DoW Notice and Consent Banner (whitespace aside)"
 
 finding_rhel_09_211020 := {
 	"vuln_id": "V-257779",
@@ -362,16 +416,20 @@ finding_rhel_09_211020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_211020,
 	"detail": detail_rhel_09_211020,
-	"fix_text": "Configure /etc/issue with the DoD warning banner text",
+	"fix_text": "Replace /etc/issue with the Standard Mandatory DoW Notice and Consent Banner text",
 }
 
 # RHEL-09-255025 | V-257981 | CAT II
-# SSH must display banner before granting access
+# effective sshd Banner keyword (sshd -T or the config files sshd -dd reads)
+missing_rhel_09_255025 := [concat(".", p) | some p in [["ssh_config", "Banner"]]; not _collected(p)]
+
 default ssh_banner_set := false
 
 ssh_banner_set if {
-	input.ssh_config.Banner != ""
-	input.ssh_config.Banner != "none"
+	count(missing_rhel_09_255025) == 0
+	b := _kw(["ssh_config", "Banner"])
+	b != ""
+	b != "none"
 }
 
 status_rhel_09_255025 := "Not_a_Finding" if ssh_banner_set
@@ -380,7 +438,9 @@ else := "Open"
 
 detail_rhel_09_255025 := "RHEL-09-255025: Not_a_Finding" if ssh_banner_set
 
-else := "RHEL-09-255025: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255025", concat(", ", missing_rhel_09_255025)]) if count(missing_rhel_09_255025) > 0
+
+else := "RHEL-09-255025: check failed — sshd must have an uncommented Banner keyword naming the banner file"
 
 finding_rhel_09_255025 := {
 	"vuln_id": "V-257981",
@@ -390,15 +450,24 @@ finding_rhel_09_255025 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255025,
 	"detail": detail_rhel_09_255025,
-	"fix_text": "Configure Banner in /etc/ssh/sshd_config to point to /etc/issue",
+	"fix_text": "Set Banner /etc/issue in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-213070 | V-257809 | CAT II
-# kernel.randomize_va_space must be set to 2
+# runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps
+missing_rhel_09_213070 := [concat(".", p) | some p in [["kernel_params", "kernel.randomize_va_space"], ["sysctl_config", "kernel.randomize_va_space"]]; not _collected(p)]
+
 default aslr_enabled := false
 
 aslr_enabled if {
-	input.kernel_params["kernel.randomize_va_space"] == "2"
+	count(missing_rhel_09_213070) == 0
+	_str(["kernel_params", "kernel.randomize_va_space"]) == "2"
+	vals := input.sysctl_config["kernel.randomize_va_space"]
+	is_array(vals)
+	count(vals) > 0
+	every v in vals {
+		sprintf("%v", [v]) == "2"
+	}
 }
 
 status_rhel_09_213070 := "Not_a_Finding" if aslr_enabled
@@ -407,7 +476,9 @@ else := "Open"
 
 detail_rhel_09_213070 := "RHEL-09-213070: Not_a_Finding" if aslr_enabled
 
-else := "RHEL-09-213070: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213070", concat(", ", missing_rhel_09_213070)]) if count(missing_rhel_09_213070) > 0
+
+else := "RHEL-09-213070: check failed — kernel.randomize_va_space must be 2 at runtime and in every sysctl configuration file that sets it (none conflicting)"
 
 finding_rhel_09_213070 := {
 	"vuln_id": "V-257809",
@@ -417,15 +488,18 @@ finding_rhel_09_213070 := {
 	"check_type": "machine",
 	"status": status_rhel_09_213070,
 	"detail": detail_rhel_09_213070,
-	"fix_text": "Set kernel.randomize_va_space=2 in /etc/sysctl.d/99-stig.conf and run sysctl -p",
+	"fix_text": "Set kernel.randomize_va_space = 2 in /etc/sysctl.d/99-kernel_randomize_va_space.conf and run sysctl --system",
 }
 
 # RHEL-09-213010 | V-257797 | CAT II
-# kernel.dmesg_restrict must be set to 1
+# runtime kernel.dmesg_restrict (sysctl)
+missing_rhel_09_213010 := [concat(".", p) | some p in [["kernel_params", "kernel.dmesg_restrict"]]; not _collected(p)]
+
 default dmesg_restricted := false
 
 dmesg_restricted if {
-	input.kernel_params["kernel.dmesg_restrict"] == "1"
+	count(missing_rhel_09_213010) == 0
+	_str(["kernel_params", "kernel.dmesg_restrict"]) == "1"
 }
 
 status_rhel_09_213010 := "Not_a_Finding" if dmesg_restricted
@@ -434,7 +508,9 @@ else := "Open"
 
 detail_rhel_09_213010 := "RHEL-09-213010: Not_a_Finding" if dmesg_restricted
 
-else := "RHEL-09-213010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213010", concat(", ", missing_rhel_09_213010)]) if count(missing_rhel_09_213010) > 0
+
+else := "RHEL-09-213010: check failed — kernel.dmesg_restrict must be 1"
 
 finding_rhel_09_213010 := {
 	"vuln_id": "V-257797",
@@ -444,15 +520,18 @@ finding_rhel_09_213010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_213010,
 	"detail": detail_rhel_09_213010,
-	"fix_text": "Set kernel.dmesg_restrict=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.dmesg_restrict = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-213015 | V-257798 | CAT II
-# kernel.perf_event_paranoid must be set to 2
+# runtime kernel.perf_event_paranoid (sysctl)
+missing_rhel_09_213015 := [concat(".", p) | some p in [["kernel_params", "kernel.perf_event_paranoid"]]; not _collected(p)]
+
 default perf_event_restricted := false
 
 perf_event_restricted if {
-	to_number(input.kernel_params["kernel.perf_event_paranoid"]) >= 2
+	count(missing_rhel_09_213015) == 0
+	_str(["kernel_params", "kernel.perf_event_paranoid"]) == "2"
 }
 
 status_rhel_09_213015 := "Not_a_Finding" if perf_event_restricted
@@ -461,7 +540,9 @@ else := "Open"
 
 detail_rhel_09_213015 := "RHEL-09-213015: Not_a_Finding" if perf_event_restricted
 
-else := "RHEL-09-213015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213015", concat(", ", missing_rhel_09_213015)]) if count(missing_rhel_09_213015) > 0
+
+else := "RHEL-09-213015: check failed — kernel.perf_event_paranoid must be 2"
 
 finding_rhel_09_213015 := {
 	"vuln_id": "V-257798",
@@ -471,15 +552,18 @@ finding_rhel_09_213015 := {
 	"check_type": "machine",
 	"status": status_rhel_09_213015,
 	"detail": detail_rhel_09_213015,
-	"fix_text": "Set kernel.perf_event_paranoid=2 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.perf_event_paranoid = 2 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-213075 | V-257810 | CAT II
-# kernel.unprivileged_bpf_disabled must be set to 1
+# runtime kernel.unprivileged_bpf_disabled (sysctl)
+missing_rhel_09_213075 := [concat(".", p) | some p in [["kernel_params", "kernel.unprivileged_bpf_disabled"]]; not _collected(p)]
+
 default bpf_restricted := false
 
 bpf_restricted if {
-	input.kernel_params["kernel.unprivileged_bpf_disabled"] == "1"
+	count(missing_rhel_09_213075) == 0
+	_str(["kernel_params", "kernel.unprivileged_bpf_disabled"]) == "1"
 }
 
 status_rhel_09_213075 := "Not_a_Finding" if bpf_restricted
@@ -488,7 +572,9 @@ else := "Open"
 
 detail_rhel_09_213075 := "RHEL-09-213075: Not_a_Finding" if bpf_restricted
 
-else := "RHEL-09-213075: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213075", concat(", ", missing_rhel_09_213075)]) if count(missing_rhel_09_213075) > 0
+
+else := "RHEL-09-213075: check failed — kernel.unprivileged_bpf_disabled must be 1"
 
 finding_rhel_09_213075 := {
 	"vuln_id": "V-257810",
@@ -498,15 +584,18 @@ finding_rhel_09_213075 := {
 	"check_type": "machine",
 	"status": status_rhel_09_213075,
 	"detail": detail_rhel_09_213075,
-	"fix_text": "Set kernel.unprivileged_bpf_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.unprivileged_bpf_disabled = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-251045 | V-257942 | CAT II
-# net.core.bpf_jit_harden must be set to 2
+# runtime net.core.bpf_jit_harden (sysctl)
+missing_rhel_09_251045 := [concat(".", p) | some p in [["kernel_params", "net.core.bpf_jit_harden"]]; not _collected(p)]
+
 default bpf_jit_hardened := false
 
 bpf_jit_hardened if {
-	input.kernel_params["net.core.bpf_jit_harden"] == "2"
+	count(missing_rhel_09_251045) == 0
+	_str(["kernel_params", "net.core.bpf_jit_harden"]) == "2"
 }
 
 status_rhel_09_251045 := "Not_a_Finding" if bpf_jit_hardened
@@ -515,7 +604,9 @@ else := "Open"
 
 detail_rhel_09_251045 := "RHEL-09-251045: Not_a_Finding" if bpf_jit_hardened
 
-else := "RHEL-09-251045: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251045", concat(", ", missing_rhel_09_251045)]) if count(missing_rhel_09_251045) > 0
+
+else := "RHEL-09-251045: check failed — net.core.bpf_jit_harden must be 2"
 
 finding_rhel_09_251045 := {
 	"vuln_id": "V-257942",
@@ -525,19 +616,22 @@ finding_rhel_09_251045 := {
 	"check_type": "machine",
 	"status": status_rhel_09_251045,
 	"detail": detail_rhel_09_251045,
-	"fix_text": "Set net.core.bpf_jit_harden=2 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.core.bpf_jit_harden = 2 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-291010 | V-258034 | CAT II
-# USB storage kernel module must be disabled
+# uncommented modprobe lines for usb-storage: input.modprobe["usb-storage"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_291010 := [concat(".", p) | some p in [["modprobe", "usb-storage"]]; not _collected(p)]
+
 default usb_storage_disabled := false
 
 usb_storage_disabled if {
-	input.kernel_modules["usb-storage"].status == "disabled"
+	count(missing_rhel_09_291010) == 0
+	_module_disabled("usb-storage")
 }
 
 usb_storage_disabled if {
-	input.kernel_modules["usb-storage"].blacklisted == true
+	_attested("rhel_09_291010_usb_storage_documented")
 }
 
 status_rhel_09_291010 := "Not_a_Finding" if usb_storage_disabled
@@ -546,29 +640,34 @@ else := "Open"
 
 detail_rhel_09_291010 := "RHEL-09-291010: Not_a_Finding" if usb_storage_disabled
 
-else := "RHEL-09-291010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291010", concat(", ", missing_rhel_09_291010)]) if count(missing_rhel_09_291010) > 0
+
+else := "RHEL-09-291010: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install usb-storage /bin/false' and 'blacklist usb-storage', or its use must be documented with the ISSO (input.attest.rhel_09_291010_usb_storage_documented)"
 
 finding_rhel_09_291010 := {
 	"vuln_id": "V-258034",
 	"stig_id": "RHEL-09-291010",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must be configured to disable USB mass storage.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_291010,
 	"detail": detail_rhel_09_291010,
-	"fix_text": "Disable USB storage: echo 'install usb-storage /bin/false' >> /etc/modprobe.d/usb-storage.conf",
+	"fix_text": "Add 'install usb-storage /bin/false' and 'blacklist usb-storage' to /etc/modprobe.d/usb-storage.conf",
 }
 
 # RHEL-09-213055 | V-257806 | CAT II
-# Firewire kernel module must be disabled
+# uncommented modprobe lines for firewire-core: input.modprobe["firewire-core"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_213055 := [concat(".", p) | some p in [["modprobe", "firewire-core"]]; not _collected(p)]
+
 default firewire_disabled := false
 
 firewire_disabled if {
-	input.kernel_modules["firewire-core"].status == "disabled"
+	count(missing_rhel_09_213055) == 0
+	_module_disabled("firewire-core")
 }
 
 firewire_disabled if {
-	input.kernel_modules["firewire-core"].blacklisted == true
+	_attested("rhel_09_213055_firewire_documented")
 }
 
 status_rhel_09_213055 := "Not_a_Finding" if firewire_disabled
@@ -577,25 +676,40 @@ else := "Open"
 
 detail_rhel_09_213055 := "RHEL-09-213055: Not_a_Finding" if firewire_disabled
 
-else := "RHEL-09-213055: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213055", concat(", ", missing_rhel_09_213055)]) if count(missing_rhel_09_213055) > 0
+
+else := "RHEL-09-213055: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install firewire-core /bin/false' and 'blacklist firewire-core', or its use must be documented with the ISSO (input.attest.rhel_09_213055_firewire_documented)"
 
 finding_rhel_09_213055 := {
 	"vuln_id": "V-257806",
 	"stig_id": "RHEL-09-213055",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must be configured to disable the FireWire kernel module.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_213055,
 	"detail": detail_rhel_09_213055,
-	"fix_text": "Disable Firewire: echo 'install firewire-core /bin/false' >> /etc/modprobe.d/firewire.conf",
+	"fix_text": "Add 'install firewire-core /bin/false' and 'blacklist firewire-core' to /etc/modprobe.d/firewire-core.conf",
 }
 
 # RHEL-09-651015 | V-258135 | CAT II
-# AIDE integrity checking cron job must exist
+# the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA
+missing_rhel_09_651015 := [concat(".", p) | some p in [["packages", "aide"], ["aide", "schedule"]]; not _collected(p)]
+
 default aide_cron_configured := false
 
 aide_cron_configured if {
-	input.aide_config.cron_job == true
+	count(missing_rhel_09_651015) == 0
+	input.packages.aide == true
+	lines := input.aide.schedule
+	is_array(lines)
+	some l in lines
+	contains(l, "aide")
+	contains(l, "--check")
+	_aide_notifies
+}
+
+aide_cron_configured if {
+	_attested("rhel_09_651015_other_tool")
 }
 
 status_rhel_09_651015 := "Not_a_Finding" if aide_cron_configured
@@ -604,25 +718,34 @@ else := "Open"
 
 detail_rhel_09_651015 := "RHEL-09-651015: Not_a_Finding" if aide_cron_configured
 
-else := "RHEL-09-651015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651015", concat(", ", missing_rhel_09_651015)]) if count(missing_rhel_09_651015) > 0
+
+else := "RHEL-09-651015: check failed — a cron job (/etc/cron.*, /etc/crontab, /var/spool/cron/root) must run aide --check and notify designated personnel (mail in the job, or input.attest.rhel_09_651015_notification); another integrity tool must be attested (input.attest.rhel_09_651015_other_tool)"
 
 finding_rhel_09_651015 := {
 	"vuln_id": "V-258135",
 	"stig_id": "RHEL-09-651015",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_651015,
 	"detail": detail_rhel_09_651015,
-	"fix_text": "Configure AIDE cron job: echo '0 5 * * * /usr/sbin/aide --check' >> /etc/cron.d/aide",
+	"fix_text": "Add /etc/cron.daily/aide running /usr/sbin/aide --check | /bin/mail -s \"$HOSTNAME - Daily aide integrity check run\" root@sysname.mil",
 }
 
 # RHEL-09-651010 | V-258134 | CAT II
-# AIDE must be installed
+# aide package installed (dnf list installed aide)
+missing_rhel_09_651010 := [concat(".", p) | some p in [["packages", "aide"]]; not _collected(p)]
+
 default aide_installed := false
 
 aide_installed if {
+	count(missing_rhel_09_651010) == 0
 	input.packages.aide == true
+}
+
+aide_installed if {
+	_attested("rhel_09_651010_alternate_fic")
 }
 
 status_rhel_09_651010 := "Not_a_Finding" if aide_installed
@@ -631,27 +754,30 @@ else := "Open"
 
 detail_rhel_09_651010 := "RHEL-09-651010: Not_a_Finding" if aide_installed
 
-else := "RHEL-09-651010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651010", concat(", ", missing_rhel_09_651010)]) if count(missing_rhel_09_651010) > 0
+
+else := "RHEL-09-651010: check failed — the aide package must be installed, or the SA must attest how file integrity checks are performed (input.attest.rhel_09_651010_alternate_fic)"
 
 finding_rhel_09_651010 := {
 	"vuln_id": "V-258134",
 	"stig_id": "RHEL-09-651010",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must have the AIDE package installed.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_651010,
 	"detail": detail_rhel_09_651010,
-	"fix_text": "Install AIDE: dnf install aide -y && aide --init",
+	"fix_text": "Install AIDE: dnf install aide, then initialise it (aide --init)",
 }
 
 # RHEL-09-231015 | V-257844 | CAT II
-# /tmp must be on a separate partition
+# the mount table (findmnt / mount): a separate entry for /tmp
+missing_rhel_09_231015 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
 default tmp_separate_partition := false
 
 tmp_separate_partition if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
-	mount.device != "tmpfs"
+	count(missing_rhel_09_231015) == 0
+	_mount("/tmp")
 }
 
 status_rhel_09_231015 := "Not_a_Finding" if tmp_separate_partition
@@ -660,7 +786,9 @@ else := "Open"
 
 detail_rhel_09_231015 := "RHEL-09-231015: Not_a_Finding" if tmp_separate_partition
 
-else := "RHEL-09-231015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231015", concat(", ", missing_rhel_09_231015)]) if count(missing_rhel_09_231015) > 0
+
+else := "RHEL-09-231015: check failed — a separate file system must be mounted on /tmp"
 
 finding_rhel_09_231015 := {
 	"vuln_id": "V-257844",
@@ -670,26 +798,30 @@ finding_rhel_09_231015 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231015,
 	"detail": detail_rhel_09_231015,
-	"fix_text": "Configure /tmp on a separate partition in /etc/fstab",
+	"fix_text": "Create a separate file system for /tmp and mount it in /etc/fstab",
 }
 
 # RHEL-09-231045 | V-257850 | CAT II
-# /tmp must have nodev option
-default tmp_nodev := false
+# the /home entry of the mount table must carry nodev; no separate /home is a finding
+missing_rhel_09_231045 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
 
-tmp_nodev if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
-	"nodev" in mount.options
+default home_nodev := false
+
+home_nodev if {
+	count(missing_rhel_09_231045) == 0
+	m := _mount("/home")
+	"nodev" in m.options
 }
 
-status_rhel_09_231045 := "Not_a_Finding" if tmp_nodev
+status_rhel_09_231045 := "Not_a_Finding" if home_nodev
 
 else := "Open"
 
-detail_rhel_09_231045 := "RHEL-09-231045: Not_a_Finding" if tmp_nodev
+detail_rhel_09_231045 := "RHEL-09-231045: Not_a_Finding" if home_nodev
 
-else := "RHEL-09-231045: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231045", concat(", ", missing_rhel_09_231045)]) if count(missing_rhel_09_231045) > 0
+
+else := "RHEL-09-231045: check failed — /home must be a separate file system mounted with nodev (home directories under / are a finding)"
 
 finding_rhel_09_231045 := {
 	"vuln_id": "V-257850",
@@ -699,26 +831,30 @@ finding_rhel_09_231045 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231045,
 	"detail": detail_rhel_09_231045,
-	"fix_text": "Add nodev option to /tmp in /etc/fstab",
+	"fix_text": "Mount /home with the nodev option in /etc/fstab",
 }
 
 # RHEL-09-231050 | V-257851 | CAT II
-# /tmp must have nosuid option
-default tmp_nosuid := false
+# the /home entry of the mount table must carry nosuid; no separate /home is a finding
+missing_rhel_09_231050 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
 
-tmp_nosuid if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
-	"nosuid" in mount.options
+default home_nosuid := false
+
+home_nosuid if {
+	count(missing_rhel_09_231050) == 0
+	m := _mount("/home")
+	"nosuid" in m.options
 }
 
-status_rhel_09_231050 := "Not_a_Finding" if tmp_nosuid
+status_rhel_09_231050 := "Not_a_Finding" if home_nosuid
 
 else := "Open"
 
-detail_rhel_09_231050 := "RHEL-09-231050: Not_a_Finding" if tmp_nosuid
+detail_rhel_09_231050 := "RHEL-09-231050: Not_a_Finding" if home_nosuid
 
-else := "RHEL-09-231050: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231050", concat(", ", missing_rhel_09_231050)]) if count(missing_rhel_09_231050) > 0
+
+else := "RHEL-09-231050: check failed — /home must be a separate file system mounted with nosuid (home directories under / are a finding)"
 
 finding_rhel_09_231050 := {
 	"vuln_id": "V-257851",
@@ -728,26 +864,30 @@ finding_rhel_09_231050 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231050,
 	"detail": detail_rhel_09_231050,
-	"fix_text": "Add nosuid option to /tmp in /etc/fstab",
+	"fix_text": "Mount /home with the nosuid option in /etc/fstab",
 }
 
 # RHEL-09-231055 | V-257852 | CAT II
-# /tmp must have noexec option
-default tmp_noexec := false
+# the /home entry of the mount table must carry noexec; no separate /home is a finding
+missing_rhel_09_231055 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
 
-tmp_noexec if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/tmp"
-	"noexec" in mount.options
+default home_noexec := false
+
+home_noexec if {
+	count(missing_rhel_09_231055) == 0
+	m := _mount("/home")
+	"noexec" in m.options
 }
 
-status_rhel_09_231055 := "Not_a_Finding" if tmp_noexec
+status_rhel_09_231055 := "Not_a_Finding" if home_noexec
 
 else := "Open"
 
-detail_rhel_09_231055 := "RHEL-09-231055: Not_a_Finding" if tmp_noexec
+detail_rhel_09_231055 := "RHEL-09-231055: Not_a_Finding" if home_noexec
 
-else := "RHEL-09-231055: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231055", concat(", ", missing_rhel_09_231055)]) if count(missing_rhel_09_231055) > 0
+
+else := "RHEL-09-231055: check failed — /home must be a separate file system mounted with noexec (home directories under / are a finding)"
 
 finding_rhel_09_231055 := {
 	"vuln_id": "V-257852",
@@ -757,7 +897,7 @@ finding_rhel_09_231055 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231055,
 	"detail": detail_rhel_09_231055,
-	"fix_text": "Add noexec option to /tmp in /etc/fstab",
+	"fix_text": "Mount /home with the noexec option in /etc/fstab",
 }
 
 # =============================================================================
@@ -765,12 +905,14 @@ finding_rhel_09_231055 := {
 # =============================================================================
 
 # RHEL-09-231025 | V-257846 | CAT III
-# /var/log must be a separate partition
+# the mount table (findmnt / mount): a separate entry for /var/log
+missing_rhel_09_231025 := [concat(".", p) | some p in [["filesystem_mounts"]]; not _collected(p)]
+
 default var_log_separate := false
 
 var_log_separate if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/var/log"
+	count(missing_rhel_09_231025) == 0
+	_mount("/var/log")
 }
 
 status_rhel_09_231025 := "Not_a_Finding" if var_log_separate
@@ -779,7 +921,9 @@ else := "Open"
 
 detail_rhel_09_231025 := "RHEL-09-231025: Not_a_Finding" if var_log_separate
 
-else := "RHEL-09-231025: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231025", concat(", ", missing_rhel_09_231025)]) if count(missing_rhel_09_231025) > 0
+
+else := "RHEL-09-231025: check failed — a separate file system must be mounted on /var/log"
 
 finding_rhel_09_231025 := {
 	"vuln_id": "V-257846",
@@ -789,16 +933,20 @@ finding_rhel_09_231025 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231025,
 	"detail": detail_rhel_09_231025,
-	"fix_text": "Configure /var/log on a separate partition",
+	"fix_text": "Create a separate file system for /var/log and mount it in /etc/fstab",
 }
 
 # RHEL-09-231030 | V-257847 | CAT III
-# /var/log/audit must be a separate partition
+# the audit data path is the directory of auditd.conf log_file; it must be its own mount
+missing_rhel_09_231030 := [concat(".", p) | some p in [["filesystem_mounts"], ["auditd_config", "log_file"]]; not _collected(p)]
+
 default var_log_audit_separate := false
 
 var_log_audit_separate if {
-	some mount in input.filesystem_mounts
-	mount.mount == "/var/log/audit"
+	count(missing_rhel_09_231030) == 0
+	f := _str(["auditd_config", "log_file"])
+	dir := regex.replace(f, `/[^/]*$`, "")
+	_mount(dir)
 }
 
 status_rhel_09_231030 := "Not_a_Finding" if var_log_audit_separate
@@ -807,7 +955,9 @@ else := "Open"
 
 detail_rhel_09_231030 := "RHEL-09-231030: Not_a_Finding" if var_log_audit_separate
 
-else := "RHEL-09-231030: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231030", concat(", ", missing_rhel_09_231030)]) if count(missing_rhel_09_231030) > 0
+
+else := "RHEL-09-231030: check failed — the directory of auditd log_file (the audit data path) must be a separate mounted file system"
 
 finding_rhel_09_231030 := {
 	"vuln_id": "V-257847",
@@ -817,7 +967,7 @@ finding_rhel_09_231030 := {
 	"check_type": "machine",
 	"status": status_rhel_09_231030,
 	"detail": detail_rhel_09_231030,
-	"fix_text": "Configure /var/log/audit on a separate partition",
+	"fix_text": "Create a separate file system for the audit data path (e.g. /var/log/audit) and mount it in /etc/fstab",
 }
 
 # =============================================================================

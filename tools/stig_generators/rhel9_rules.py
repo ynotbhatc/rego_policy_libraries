@@ -505,3 +505,197 @@ for sid, name, key, allowed, att, what in (
       comment=f"{key} as configured in /etc/audit/auditd.conf",
       attest_alts=[[f'_attested("{att}")']],
       pass_cases=[{"auditd_config": {key: a}} for a in allowed[1:]] + [{"auditd_config": {key: "ignore"}, "attest": {att: True}}])
+
+
+# ── configuration_management ────────────────────────────────────────────────────────────────────
+import json as _json, os as _os, re as _re
+
+_CAT = {r["stig_id"]: r for r in _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "catalogs", "rhel_9.json")))["rules"]}
+# the banner text is the value the check compares against, taken from the check itself (whitespace-normalised)
+DOD_BANNER = " ".join(_re.search(r'"(You are accessing.*?details\.)"', _CAT["RHEL-09-211020"]["check"], _re.S).group(1).split())
+
+helpers("configuration_management", r'''
+# the Standard Mandatory DoW Notice and Consent Banner, from the RHEL-09-211020 check text (whitespace-normalised)
+dod_banner := "''' + DOD_BANNER.replace("\\", "\\\\").replace('"', '\\"') + r'''"
+
+# text with every run of whitespace collapsed to one space and the ends trimmed
+_squash(s) := regex.replace(trim_space(s), `\s+`, " ")
+
+# the mount entry for a mount point; undefined unless the mount list was collected and the entry is there
+_mount(point) := m if {
+	mounts := input.filesystem_mounts
+	is_array(mounts)
+	some m in mounts
+	m.mount == point
+}''')
+
+MODULE_HELPER = r'''
+# a kernel module is disabled the way the check requires: an uncommented `install <mod> /bin/false` and
+# `blacklist <mod>` in /etc/modprobe.conf or /etc/modprobe.d/* (input.modprobe[<mod>] = {install, blacklisted})
+_module_disabled(mod) if {
+	m := input.modprobe[mod]
+	m.install == "/bin/false"
+	m.blacklisted == true
+}'''
+
+R("configuration_management", "RHEL-09-271105", "ctrl_alt_del_graphical_disabled",
+  [("gnome", "media_keys_logout")],
+  [['_str(["gnome", "media_keys_logout"]) in {"[\'\']", "@as []"}']],
+  {"gnome": {"media_keys_logout": "['']"}},
+  [{"gnome": {"media_keys_logout": "['<Control><Alt>Delete']"}}],
+  "gsettings get org.gnome.settings-daemon.plugins.media-keys logout must return [''] (no logout key sequence)",
+  "Set logout='' under [org/gnome/settings-daemon/plugins/media-keys] in /etc/dconf/db/local.d/ and run dconf update",
+  comment="gsettings get org.gnome.settings-daemon.plugins.media-keys logout; no GUI installed is Not Applicable",
+  na=[["input.gui_installed == false"]], na_expect="no graphical user interface is installed",
+  na_cases=[{"gnome": {"media_keys_logout": None}, "gui_installed": False}])
+
+R("configuration_management", "RHEL-09-431015", "selinux_targeted",
+  [("selinux", "policy")], [['_str(["selinux", "policy"]) == "targeted"']],
+  {"selinux": {"policy": "targeted"}}, [{"selinux": {"policy": "mls"}}],
+  "sestatus Loaded policy name must be targeted", "Set SELINUXTYPE=targeted in /etc/selinux/config and reboot",
+  comment="Loaded policy name from sestatus")
+
+R("configuration_management", "RHEL-09-212010", "grub_password_set",
+  [("grub", "user_cfg_password")],
+  [['s := _str(["grub", "user_cfg_password"])', 'startswith(s, "grub.pbkdf2.sha512")']],
+  {"grub": {"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF"}},
+  [{"grub": {"user_cfg_password": "plaintext"}}, {"grub": {"user_cfg_password": ""}}],
+  "GRUB2_PASSWORD in /boot/grub2/user.cfg (or the legacy /boot/efi/EFI/redhat/user.cfg) must begin with grub.pbkdf2.sha512",
+  "Set a bootloader password: grub2-setpassword",
+  comment="the GRUB2_PASSWORD value from /boot/grub2/user.cfg, else /boot/efi/EFI/redhat/user.cfg (null if absent or commented)")
+
+R("configuration_management", "RHEL-09-211020", "login_banner_set",
+  [("login_banner", "issue")],
+  [['s := _str(["login_banner", "issue"])', "_squash(s) == dod_banner"]],
+  {"login_banner": {"issue": DOD_BANNER}},
+  [{"login_banner": {"issue": "Authorized users only. All activity may be monitored."}},
+   {"login_banner": {"issue": DOD_BANNER.replace("USG-authorized use only", "authorized use only")}}],
+  "/etc/issue must contain exactly the Standard Mandatory DoW Notice and Consent Banner (whitespace aside)",
+  "Replace /etc/issue with the Standard Mandatory DoW Notice and Consent Banner text",
+  comment="content of /etc/issue, compared with the banner text in the check (whitespace runs collapsed)",
+  pass_cases=[{"login_banner": {"issue": DOD_BANNER.replace(" -", "\n-") + "\n"}}])
+
+R("configuration_management", "RHEL-09-255025", "ssh_banner_set",
+  [("ssh_config", "Banner")],
+  [['b := _kw(["ssh_config", "Banner"])', 'b != ""', 'b != "none"']],
+  {"ssh_config": {"Banner": "/etc/issue"}}, [{"ssh_config": {"Banner": "none"}}],
+  "sshd must have an uncommented Banner keyword naming the banner file",
+  "Set Banner /etc/issue in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+  comment="effective sshd Banner keyword (sshd -T or the config files sshd -dd reads)")
+
+R("configuration_management", "RHEL-09-213070", "aslr_enabled",
+  [("kernel_params", "kernel.randomize_va_space"), ("sysctl_config", "kernel.randomize_va_space")],
+  [['_str(["kernel_params", "kernel.randomize_va_space"]) == "2"',
+    'vals := input.sysctl_config["kernel.randomize_va_space"]', "is_array(vals)", "count(vals) > 0",
+    'every v in vals {\n\tsprintf("%v", [v]) == "2"\n}']],
+  {"kernel_params": {"kernel.randomize_va_space": "2"}, "sysctl_config": {"kernel.randomize_va_space": ["2"]}},
+  [{"kernel_params": {"kernel.randomize_va_space": "1"}}, {"sysctl_config": {"kernel.randomize_va_space": []}},
+   {"sysctl_config": {"kernel.randomize_va_space": ["2", "0"]}}],
+  "kernel.randomize_va_space must be 2 at runtime and in every sysctl configuration file that sets it (none conflicting)",
+  "Set kernel.randomize_va_space = 2 in /etc/sysctl.d/99-kernel_randomize_va_space.conf and run sysctl --system",
+  comment="runtime value (sysctl) and every value configured in the sysctl.d / sysctl.conf files the check greps")
+
+
+def sysctl_rule(sec, sid, name, key, want, bad, expect, fix, **kw):
+    R(sec, sid, name, [("kernel_params", key)], [[f'_str(["kernel_params", "{key}"]) == "{want}"']],
+      {"kernel_params": {key: want}}, [{"kernel_params": {key: b}} for b in bad],
+      expect, fix, comment=f"runtime {key} (sysctl)", pass_cases=kw.pop("pass_cases", [{"kernel_params": {key: int(want)}}]), **kw)
+
+
+sysctl_rule("configuration_management", "RHEL-09-213010", "dmesg_restricted", "kernel.dmesg_restrict", "1", ["0"],
+            "kernel.dmesg_restrict must be 1", "Set kernel.dmesg_restrict = 1 in /etc/sysctl.d/ and run sysctl --system")
+sysctl_rule("configuration_management", "RHEL-09-213015", "perf_event_restricted", "kernel.perf_event_paranoid", "2", ["1", "3"],
+            "kernel.perf_event_paranoid must be 2", "Set kernel.perf_event_paranoid = 2 in /etc/sysctl.d/ and run sysctl --system")
+sysctl_rule("configuration_management", "RHEL-09-213075", "bpf_restricted", "kernel.unprivileged_bpf_disabled", "1", ["0", "2"],
+            "kernel.unprivileged_bpf_disabled must be 1", "Set kernel.unprivileged_bpf_disabled = 1 in /etc/sysctl.d/ and run sysctl --system")
+sysctl_rule("configuration_management", "RHEL-09-251045", "bpf_jit_hardened", "net.core.bpf_jit_harden", "2", ["1"],
+            "net.core.bpf_jit_harden must be 2", "Set net.core.bpf_jit_harden = 2 in /etc/sysctl.d/ and run sysctl --system")
+
+
+def module_rule(sec, sid, name, mod, att):
+    R(sec, sid, name, [("modprobe", mod)], [[f'_module_disabled("{mod}")']],
+      {"modprobe": {mod: {"install": "/bin/false", "blacklisted": True}}},
+      [{"modprobe": {mod: {"install": "/bin/false", "blacklisted": False}}}, {"modprobe": {mod: {"install": None, "blacklisted": True}}}],
+      f"/etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install {mod} /bin/false' and 'blacklist {mod}', "
+      f"or its use must be documented with the ISSO (input.attest.{att})",
+      f"Add 'install {mod} /bin/false' and 'blacklist {mod}' to /etc/modprobe.d/{mod}.conf",
+      comment=f"uncommented modprobe lines for {mod}: input.modprobe[\"{mod}\"] = {{install: <command>, blacklisted: bool}}",
+      attest_alts=[[f'_attested("{att}")']],
+      pass_cases=[{"modprobe": {mod: {"install": "/bin/true", "blacklisted": False}}, "attest": {att: True}}])
+    if "_module_disabled(mod) if" not in SECTION_HELPERS.get(sec, ""):
+        helpers(sec, MODULE_HELPER)
+
+
+module_rule("configuration_management", "RHEL-09-291010", "usb_storage_disabled", "usb-storage", "rhel_09_291010_usb_storage_documented")
+module_rule("configuration_management", "RHEL-09-213055", "firewire_disabled", "firewire-core", "rhel_09_213055_firewire_documented")
+
+R("configuration_management", "RHEL-09-651015", "aide_cron_configured",
+  [("packages", "aide"), ("aide", "schedule")],
+  [["input.packages.aide == true", "lines := input.aide.schedule", "is_array(lines)",
+    "some l in lines", 'contains(l, "aide")', 'contains(l, "--check")', "_aide_notifies"]],
+  {"packages": {"aide": True}, "aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"]}},
+  [{"aide": {"schedule": []}}, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check"]}}],
+  "a cron job (/etc/cron.*, /etc/crontab, /var/spool/cron/root) must run aide --check and notify designated personnel "
+  "(mail in the job, or input.attest.rhel_09_651015_notification); another integrity tool must be attested (input.attest.rhel_09_651015_other_tool)",
+  "Add /etc/cron.daily/aide running /usr/sbin/aide --check | /bin/mail -s \"$HOSTNAME - Daily aide integrity check run\" root@sysname.mil",
+  comment="the cron lines that run AIDE (input.aide.schedule) and how their results reach the SA",
+  attest_alts=[['_attested("rhel_09_651015_other_tool")']],
+  pass_cases=[{"aide": {"schedule": ["/etc/crontab: 30 04 * * * root /usr/sbin/aide --check"]}, "attest": {"rhel_09_651015_notification": True}}])
+helpers("configuration_management", r'''
+# the AIDE job mails its result, or the SA attests to another notification path
+_aide_notifies if {
+	some l in input.aide.schedule
+	contains(l, "aide")
+	contains(l, "mail")
+}
+
+_aide_notifies if _attested("rhel_09_651015_notification")''')
+
+R("configuration_management", "RHEL-09-651010", "aide_installed",
+  [("packages", "aide")], [["input.packages.aide == true"]],
+  {"packages": {"aide": True}}, [{"packages": {"aide": False}}],
+  "the aide package must be installed, or the SA must attest how file integrity checks are performed (input.attest.rhel_09_651010_alternate_fic)",
+  "Install AIDE: dnf install aide, then initialise it (aide --init)",
+  comment="aide package installed (dnf list installed aide)",
+  attest_alts=[['_attested("rhel_09_651010_alternate_fic")']],
+  pass_cases=[{"packages": {"aide": False}, "attest": {"rhel_09_651010_alternate_fic": True}}])
+
+MOUNTS = [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]},
+          {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]},
+          {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]},
+          {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]
+
+
+def without(point):
+    return [m for m in MOUNTS if m["mount"] != point]
+
+
+for sid, name, point in (("RHEL-09-231015", "tmp_separate_partition", "/tmp"),
+                         ("RHEL-09-231025", "var_log_separate", "/var/log")):
+    R("configuration_management", sid, name, [("filesystem_mounts",)], [[f'_mount("{point}")']],
+      {"filesystem_mounts": MOUNTS}, [{"filesystem_mounts": without(point)}],
+      f"a separate file system must be mounted on {point}", f"Create a separate file system for {point} and mount it in /etc/fstab",
+      comment=f"the mount table (findmnt / mount): a separate entry for {point}",
+      pass_cases=[{"filesystem_mounts": without(point) + [{"mount": point, "device": "tmpfs", "fstype": "tmpfs", "options": ["rw"]}]}]
+      if point == "/tmp" else [])
+
+for sid, name, opt in (("RHEL-09-231045", "tmp_nodev", "nodev"), ("RHEL-09-231050", "tmp_nosuid", "nosuid"),
+                       ("RHEL-09-231055", "tmp_noexec", "noexec")):
+    R("configuration_management", sid, name.replace("tmp_", "home_"), [("filesystem_mounts",)],
+      [['m := _mount("/home")', f'"{opt}" in m.options']],
+      {"filesystem_mounts": MOUNTS},
+      [{"filesystem_mounts": without("/home") + [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs",
+                                                  "options": [o for o in ["rw", "nodev", "nosuid", "noexec"] if o != opt]}]},
+       {"filesystem_mounts": without("/home")}],
+      f"/home must be a separate file system mounted with {opt} (home directories under / are a finding)",
+      f"Mount /home with the {opt} option in /etc/fstab",
+      comment=f"the /home entry of the mount table must carry {opt}; no separate /home is a finding")
+
+R("configuration_management", "RHEL-09-231030", "var_log_audit_separate",
+  [("filesystem_mounts",), ("auditd_config", "log_file")],
+  [['f := _str(["auditd_config", "log_file"])', r'dir := regex.replace(f, `/[^/]*$`, "")', "_mount(dir)"]],
+  {"filesystem_mounts": MOUNTS, "auditd_config": {"log_file": "/var/log/audit/audit.log"}},
+  [{"filesystem_mounts": without("/var/log/audit")}, {"auditd_config": {"log_file": "/srv/audit/audit.log"}}],
+  "the directory of auditd log_file (the audit data path) must be a separate mounted file system",
+  "Create a separate file system for the audit data path (e.g. /var/log/audit) and mount it in /etc/fstab",
+  comment="the audit data path is the directory of auditd.conf log_file; it must be its own mount")
