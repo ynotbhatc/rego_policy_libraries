@@ -212,9 +212,27 @@ test_other_section_field_cases if {
 # D7: a gap names every control it blocks; an unknown key is attributed to none
 test_gap_names_every_blocked_control if {
 	vs := data.cis_m365_v7.defender.violation with input as {"defender": {"collected": true, "unavailable": {"malware_filter_policies": "denied"}}}
-	some v in vs
-	startswith(v, "CIS 2.1.2/2.1.3/2.1.11: evidence missing -- ")
-	contains(v, "(this is not a pass)")
+	every id in ["2.1.2", "2.1.3", "2.1.11"] {
+		some v in vs
+		startswith(v, sprintf("CIS %s: evidence missing -- defender.unavailable.malware_filter_policies: denied", [id]))
+		contains(v, "(this is not a pass)")
+	}
+}
+
+# the product derives passed = total_controls - violation_count: every control that is not a pass must
+# add at least one violation, or a gap would be counted as a pass
+test_violation_count_never_below_failed_controls if {
+	every inp in [
+		{},
+		json.remove(F, ["defender"]),
+		json.remove(F, ["entra", "teams", "attestations"]),
+		object.union(F, {"defender": {"unavailable": {"malware_filter_policies": "denied"}}}),
+		object.union(F, {"sharepoint": {"unavailable": {"tenant": "denied"}}}),
+		object.union(F, {"exchange": {"verified_domains": [{"id": "contoso.example", "dns_unavailable": "denied"}]}}),
+	] {
+		r := data.cis_m365_v7.main.compliance_report with input as inp
+		r.violation_count >= r.failed_controls
+	}
 }
 
 test_unknown_unavailable_key_is_not_attributed_to_a_control if {

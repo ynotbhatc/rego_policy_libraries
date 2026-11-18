@@ -156,7 +156,9 @@ violation contains msg if {
 violation contains msg if {
 	some d in customer_domains
 	d.dns_unavailable
-	msg := sprintf("CIS 2.1.8/2.1.9/2.1.10: SPF, DKIM and DMARC for domain '%s' could not be evaluated -- %v (this is not a pass)", [object.get(d, "id", "(unnamed)"), d.dns_unavailable])
+	some pair in [["2.1.8", "SPF"], ["2.1.9", "DKIM"], ["2.1.10", "DMARC"]]
+	[id, record] := pair
+	msg := sprintf("CIS %s: evidence missing -- the %s record of domain '%s' could not be evaluated: %v (this is not a pass)", [id, record, object.get(d, "id", "(unnamed)"), d.dns_unavailable])
 }
 
 # ── Defender policy controls (Exchange Online PowerShell) ─────────────
@@ -684,11 +686,12 @@ _gap_ids contains id if {
 	some id in g[0]
 }
 
-# a source gap names the controls it leaves undecided
-_evidence_gaps contains _gap(ids, g[1]) if {
-	some g in _source_gaps
-	ids := [id | some id in g[0]; not id in decidable]
-	count(ids) > 0
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
 }
 
 _evidence_gaps contains msg if {

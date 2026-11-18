@@ -2,7 +2,7 @@
 #
 # control_results: every one of the 160 recommendations in natural order; statuses agree with the violations
 # wherever a violation names the control, and every control that is not a pass is named by one (a gap message
-# names every control it blocks, "CIS 2.1.2/2.1.3/2.1.11: evidence missing -- ..."). total_controls and
+# names every control it blocks, one message per control). total_controls and
 # failed_controls follow the library contract: total = in-scope controls, failed = fail + evidence_missing +
 # not_attested.
 package cis_m365_v7.control_results_test

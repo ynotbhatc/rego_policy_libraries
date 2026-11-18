@@ -371,11 +371,12 @@ _gap_ids contains id if {
 	some id in g[0]
 }
 
-# a source gap names the controls it leaves undecided
-_evidence_gaps contains _gap(ids, g[1]) if {
-	some g in _source_gaps
-	ids := [id | some id in g[0]; not id in decidable]
-	count(ids) > 0
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
 }
 
 _evidence_gaps contains msg if {

@@ -94,8 +94,8 @@ python3 parse_m365_v7.py m365_v7.txt
 Each section file declares `decidable` (the controls whose facts were all collected, with the type each
 rule compares) and `CONTROL_EVIDENCE` (the input paths each control reads) beside its rules. Every control
 that is not decidable is named by an evidence message: a section that was not collected or an
-`unavailable` key names every control it blocks ("CIS 2.1.2/2.1.3/2.1.11: evidence missing -- ..."), and
-any other gap names the control and its paths. So every control whose status is not `pass` is named by a
+`unavailable` key names every control it blocks, one message per control ("CIS 2.1.3: evidence missing --
+defender.unavailable.malware_filter_policies: ..."), and any other gap names the control and its paths. So every control whose status is not `pass` is named by a
 violation; `tests/test_control_results.rego` asserts that on empty and on mixed input.
 
 `total_controls` (in scope for the profile) and `failed_controls` (fail + evidence_missing +

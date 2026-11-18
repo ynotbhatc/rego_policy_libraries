@@ -130,8 +130,9 @@ Two caveats remain, both surfaced at runtime under `evidence_strength`:
 - **Fail-closed everywhere, per field.** A control is evidence missing --
   and a violation says so by id, "CIS <id>: evidence missing -- ... (this is
   not a pass)" -- when its section was not collected, when a fact key it
-  reads is in `unavailable` (the message names every control that key
-  blocks, e.g. "CIS 2.1.2/2.1.3/2.1.11: ..."), when a list it iterates is
+  reads is in `unavailable` (one message for every control that key
+  blocks: the malware filter gap names 2.1.2, 2.1.3 and 2.1.11, so the
+  violation count is never below `failed_controls`), when a list it iterates is
   not a list, or when a field it compares is absent or of the wrong type.
   Absent facts never read as a pass, and a wrong shape is never read as a
   failure either. An `unavailable` key no module reads is reported on its
