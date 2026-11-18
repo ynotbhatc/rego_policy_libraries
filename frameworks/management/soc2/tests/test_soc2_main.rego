@@ -426,15 +426,15 @@ test_infrastructure_compliance_rules_reach_their_packages if {
 	not main.applications_services_compliant with input as {}
 }
 
-# Semantic review 2026-11-13: the real compliance_report is defined for non-compliant input, and
-# `compliant` cannot be true while violations is non-empty.
+# The real compliance_report is defined for non-compliant input and scores criteria
+# (audit 2026-11-17 finding 9; see tests/test_soc2_criteria.rego).
 test_compliance_report_real_on_empty_input if {
 	r := main.compliance_report with input as {}
 	not r.fail_closed
 	r.compliant == false
-	r.violation_count == 5
-	r.total_controls == 5
-	r.failed_controls == 5
+	r.total_controls == 12
+	r.failed_controls == 12
+	r.violation_count > r.failed_controls
 }
 
 test_overall_soc2_compliant_defaults_false if {
@@ -459,14 +459,9 @@ test_report_not_compliant_when_violations_listed if {
 	r.compliant == false
 }
 
-test_report_not_compliant_when_overall_true_but_tsc_fails if {
-	r := main.compliance_report with input as {}
-		with data.soc2.main.overall_soc2_compliant as true
+test_report_not_compliant_when_an_in_scope_category_fails if {
+	r := main.compliance_report with input as {"soc2": {"categories_in_scope": ["availability"]}}
 		with data.soc2.main.availability_compliant as false
-		with data.soc2.main.security_compliant as true
-		with data.soc2.main.confidentiality_compliant as true
-		with data.soc2.main.processing_integrity_compliant as true
-		with data.soc2.main.privacy_compliant as true
-	r.violation_count == 1
 	r.compliant == false
+	"SOC 2 availability (category in scope, category-level verdict, not scored by criterion): the availability module did not pass" in r.violations
 }

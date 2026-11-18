@@ -30,7 +30,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | FISMA / FedRAMP | `frameworks/federal/` | Full |
 | CMMC (32 CFR Part 170): Level 1 = the 15 FAR 52.204-21(b)(1) requirements (AC.L1-b.1.i … SI.L1-b.1.xv), Level 2 = the 110 NIST SP 800-171 Rev 2 requirements (AC.L2-3.1.1 …) | `frameworks/federal/cmmc/` | Levels 1 and 2 scored per practice (15 / 110); Level 3 (24 NIST SP 800-172 requirements) not evaluated |
 | ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 decided by sub-module checks, many of which read attested flags rather than observed values; 58 attested) | `frameworks/management/iso27001/` | Full |
-| SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
+| SOC 2 (AICPA Trust Services Criteria 2017, points of focus 2022) | `frameworks/management/soc2/` | 12 of the 33 common criteria scored by id (CC1.2, CC1.4, CC3.2, CC6.1, CC6.2, CC6.3, CC6.6, CC7.2, CC7.4, CC8.1, CC9.1, CC9.2); idle timeout, log retention and review interval compared with the entity's own commitments; availability, confidentiality, processing integrity and privacy are category-level verdicts, not scored by criterion |
 | PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
 | SOX ITGC | `frameworks/financial/sox/` | Full |
 | HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | Full |

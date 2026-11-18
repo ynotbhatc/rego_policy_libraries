@@ -1,8 +1,13 @@
-# SOC 2 Trust Service Criteria - Availability (A1.0)
+# SOC 2 Trust Services Criteria - Availability category: category-level checks (not scored by criterion)
+# Category-level checks: the section headings below are this module's own grouping, not AICPA
+# criterion ids (several headings here used ids such as P1.2, P1.3 or C1.3, which are not the
+# criteria of those numbers or do not exist). data.soc2.main reports this category as one
+# category-level verdict and does not score it by criterion. Several checks hard-code parameter
+# values the criteria do not fix.
 # System Availability and Performance Monitoring
 
 # METADATA
-# title: "SOC 2 Trust Service Criteria - Availability (A1.0)"
+# title: "SOC 2 Trust Services Criteria - Availability category, category-level checks (not scored by criterion)"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -22,7 +27,7 @@ package soc2.availability.system_availability
 import rego.v1
 
 # =================================================================
-# A1.1 - Availability - System Availability Commitments
+# Availability - System Availability Commitments
 # =================================================================
 
 # System availability meets service level commitments
@@ -56,7 +61,7 @@ capacity_planning_implemented if {
 }
 
 # =================================================================
-# A1.2 - Availability - System Operation and Maintenance
+# Availability - System Operation and Maintenance
 # =================================================================
 
 # Preventive maintenance is scheduled

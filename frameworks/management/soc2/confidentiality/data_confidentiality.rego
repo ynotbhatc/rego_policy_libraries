@@ -1,8 +1,13 @@
-# SOC 2 Trust Service Criteria - Confidentiality (C1.0)
+# SOC 2 Trust Services Criteria - Confidentiality category: category-level checks (not scored by criterion)
+# Category-level checks: the section headings below are this module's own grouping, not AICPA
+# criterion ids (several headings here used ids such as P1.2, P1.3 or C1.3, which are not the
+# criteria of those numbers or do not exist). data.soc2.main reports this category as one
+# category-level verdict and does not score it by criterion. Several checks hard-code parameter
+# values the criteria do not fix.
 # Data Confidentiality and Protection Controls
 
 # METADATA
-# title: "SOC 2 Trust Service Criteria - Confidentiality (C1.0)"
+# title: "SOC 2 Trust Services Criteria - Confidentiality category, category-level checks (not scored by criterion)"
 # custom:
 #   class: compliance
 #   framework: soc2
@@ -22,7 +27,7 @@ package soc2.confidentiality.data_confidentiality
 import rego.v1
 
 # =================================================================
-# C1.1 - Confidentiality - Information is Protected
+# Confidentiality - Information is Protected
 # =================================================================
 
 # Data classification system is implemented
@@ -55,7 +60,7 @@ data_handling_procedures_documented if {
 }
 
 # =================================================================
-# C1.2 - Confidentiality - Information is Protected in Transit
+# Confidentiality - Information is Protected in Transit
 # =================================================================
 
 # TLS version as a number. Accepts 1.2 / "1.2" / "TLSv1.2" / "TLS 1.3"; a plain `>= 1.2` would
@@ -100,7 +105,7 @@ api_transmission_security if {
 }
 
 # =================================================================
-# C1.3 - Confidentiality - Information is Protected at Rest
+# Confidentiality - Information is Protected at Rest
 # =================================================================
 
 # Encryption at rest is implemented
