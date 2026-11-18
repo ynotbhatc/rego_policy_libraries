@@ -70,7 +70,8 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   `make coverage` block) and the aggregation tail are carried over from the file; output is formatted with
   `opa fmt`, so `opa` must be on PATH.
   `stamp_catalog.py rhel_9` is refused from now on (its MAP keys on the pre-stamp ids).
-- Other Linux platforms (2026-11-18): `gen_rhel9.py <platform>` generates `oracle_linux_9` (table `ol9_rules.py`)
+- Other Linux platforms (2026-11-18): `gen_rhel9.py <platform>` generates `oracle_linux_9` (table `ol9_rules.py`) and
+  `oracle_linux_8` (`ol8_rules.py`, which may also reuse reviewed OL 9 specs)
   with the same machinery and the same generated tests. A platform table is built rule by rule against the
   platform's OWN check text (`linux_stig_table.py`): `T.reuse(<id>, <RHEL 9 id>)` only where the check is the
   same check as the reviewed RHEL 9 rule (same setting, file or command, expected value and comparison; the

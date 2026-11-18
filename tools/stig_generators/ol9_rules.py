@@ -387,3 +387,4 @@ for sid, key, name in [("OL09-00-006041", "net.ipv6.conf.all.accept_redirects", 
         na_cases=[{"kernel_params": {key: None}, "ipv6_disabled": True}])
 
 RULES, SECTION_HELPERS = T.finish()
+OWN_HELPERS = T.extra

@@ -24,8 +24,8 @@ package stig.oracle_linux_8
 # Endpoints: POST http://localhost:8181/v1/data/stig/oracle_linux_8/stig_assessment
 #            POST http://localhost:8181/v1/data/stig/oracle_linux_8/main/compliance_report  (fail-closed alias)
 
-# Implemented: 93 of 450 Oracle Linux 8 V1R7 rules — those whose DISA title matches a rule the
-# RHEL 9 modules implement. The remaining 357 are tracked follow-up, not silent absence.
+# Implemented: 95 of 378 V2R10 rules, each from the reviewed table ol8_rules.py
+# (tools/stig_generators/gen_rhel9.py oracle_linux_8). The remaining 283 are tracked follow-up, not silent absence.
 
 # Implemented: 68 of 378 Oracle Linux 8 V2R10 rules — those whose DISA title matches a rule the
 # Oracle Linux 9 modules implement. The remaining 310 are tracked follow-up, not silent absence.

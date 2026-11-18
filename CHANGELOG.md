@@ -18,6 +18,18 @@ per rule (621 tests). The input contract changed (new fact paths and `input.atte
 generator table); the collector must follow. `stamp_catalog.py rhel_9` is refused. The derived rhel_10 / Oracle Linux
 modules are unchanged until they are regenerated.
 
+### Fixed — DISA STIG Oracle Linux 8 V2R10: rebuilt from its own check text
+
+`benchmarks/stig/oracle_linux_8` had been derived by title from the derived Oracle Linux 9 module. Every rule was
+matched against the OL 8 V2R10 check text: 62 rules reuse reviewed RHEL 9 or OL 9 logic where the check is the same,
+33 have OL 8 logic written from its text. OL 8 reads audit rules from `/etc/audit/audit.rules` (new path
+`input.audit_rules_file`), mounts from `/etc/fstab` (`input.fstab`, `input.home_dir_mount_points`), sshd and pwquality
+settings from every file with conflicting values a finding (`input.sshd_config_lines`, `input.pwquality_values`);
+the faillock rules apply to 8.2 and above (`input.os_release.version_id`) and fail_interval must be 900 or more as OL 8
+words it; OCSP uses ocsp_dgst=sha1; the vendor key is the Oracle OSS group key. Six ids the derivation had attached
+to another setting now read their own (sendmail package, sshd active, IPv6 source routing, OCSP status checking,
+faillock fail_interval, sshd PermitEmptyPasswords). 95 of 378 rules (was 68), 587 generated tests.
+
 ### Fixed — DISA STIG Oracle Linux 9 V1R7: rebuilt from its own check text
 
 `benchmarks/stig/oracle_linux_9` had been derived from the RHEL 9 modules by rule title and still carried the

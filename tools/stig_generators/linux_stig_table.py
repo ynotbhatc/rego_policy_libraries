@@ -42,16 +42,26 @@ def ident(sid):
 
 class Table:
     def __init__(self, sources=(rhel9_rules,)):
+        """sources: modules with RULES / SECTION_HELPERS whose specs may be reused (RHEL 9, or another platform's
+        reviewed table); a reused spec keeps the sections' helper names, so those modules' helpers are pooled."""
         self.RULES = {}
         self.src = {}
         self.extra = {}       # section -> helper text written for this platform
         self.pool = {}        # section -> [(name, paragraph)] in source order
         for mod in sources:
             self.src.update(mod.RULES)
-            for sec, text in mod.SECTION_HELPERS.items():
-                self.pool.setdefault(sec, []).extend(_chunks(text))
+            # a platform table exports only the helpers it wrote (OWN_HELPERS); the RHEL 9 ones come from rhel9_rules
+            for sec, text in getattr(mod, "OWN_HELPERS", mod.SECTION_HELPERS).items():
+                seen = {p for _, p in self.pool.get(sec, [])}
+                # a platform table's helpers repeat the RHEL 9 helpers it pulled: pool each paragraph once
+                self.pool.setdefault(sec, []).extend(c for c in _chunks(text) if c[1] not in seen)
 
-    def helpers(self, sec, text):
+    def helpers(self, sec, text, replace=False):
+        """Platform helpers for a section. replace=True drops the source helpers of the same names first (the
+        platform reads another fact under the same helper, e.g. OL 8 audit rules from /etc/audit/audit.rules)."""
+        if replace:
+            names = {n for n, _ in _chunks(text)}
+            self.pool[sec] = [(n, p) for n, p in self.pool.get(sec, []) if n not in names]
         self.extra[sec] = (self.extra.get(sec, "").strip() + "\n\n" + text.strip()).strip()
 
     def R(self, sec, sid, name, ev, alts, green, bad, expect, fix, comment="", kind="machine", attest_alts=(), na=(),
