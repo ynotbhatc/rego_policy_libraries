@@ -4,7 +4,12 @@
 #   FIPS 203 (ML-KEM), FIPS 204 (ML-DSA), FIPS 205 (SLH-DSA) — final Aug 2024
 #   NIST SP 800-208 (LMS/XMSS stateful hash-based signatures, firmware signing)
 #   NIST IR 8545 (Mar 2025): HQC selected as the KEM alternative to ML-KEM
-#   NIST SP 800-131A Rev. 2 (Table 1): TDEA encryption disallowed after 2023
+#   NIST SP 800-131A Rev. 2 (Table 1): TDEA encryption disallowed after 2023;
+#     Tables 2, 4, 5: RSA/DSA/DH < 2048 bits and ECC < 224 bits disallowed
+#   NIST SP 800-57 Part 1 Rev. 5 Table 2: 112-bit strength = RSA/FFC 2048,
+#     ECC 224–255
+#   FIPS 140-3: applies to federal agencies (and their contractors) that use
+#     cryptography to protect sensitive information (federal/nss profiles)
 #   Algorithm vocabulary re-verified 2026-11-17 against the IR 8547 final PDF
 #   (https://nvlpubs.nist.gov/nistpubs/ir/2026/NIST.IR.8547.pdf, Tables 2–8,
 #   §2.1) and https://csrc.nist.gov/projects/post-quantum-cryptography
@@ -169,12 +174,36 @@ compliant if {
 #   sha1        SHA-1 — IR 8547 Table 8 note 4: deprecated for all remaining
 #               applications, disallowed in FIPS-validated modules after 2030
 #   not_approved MD5, MD4, MD2, DES, RC4, RC2 — not NIST-approved primitives
+#   pq_non_nist post-quantum, NOT a NIST scheme: sntrup761 (Streamlined NTRU
+#               Prime, OpenSSH's sntrup761x25519-sha512 hybrid)
+#   sym_non_nist symmetric ciphers / MACs that are widely deployed but not
+#               NIST-approved: ChaCha20(-Poly1305), Poly1305, Camellia, ARIA,
+#               UMAC-64/128 — not quantum-vulnerable at these key sizes
 #   neutral     modes, encodings and naming filler that are never an algorithm
 #               on their own (GCM, HMAC, PSS, WITH, TLS, DRAFT00, SK, ...)
 #
-# Not in the vocabulary, therefore UNRECOGNISED (classify manually): anything
-# the cited NIST guidance does not assess, e.g. ChaCha20-Poly1305, Camellia,
-# OpenSSH's sntrup761x25519, Classic McEliece, FrodoKEM.
+# UNRECOGNISED means the classifier cannot tell what the name is (a typo, an
+# annotation glued on, a scheme outside this vocabulary such as Classic
+# McEliece or FrodoKEM): a finding in every profile.
+#
+# "Not NIST-approved" (token classes pq_pre, pq_pending, pq_non_nist,
+# sym_non_nist) is NOT the same as unrecognised and is profile-dependent:
+#   general  reported (inventory_assets_not_nist_approved, per-row
+#            not_nist_approved) but not a violation — the general profile's
+#            sources (FIPS 203–205, SP 800-208, IR 8547) define the
+#            transition, they do not require that only NIST algorithms be used
+#   federal  violation (control data.nist_approved_only): FIPS 140-3 "is
+#            applicable to all Federal agencies that use cryptographic-based
+#            security systems to protect sensitive information" (and to
+#            contractors operating systems for them) — only approved
+#            algorithms protect sensitive information in an approved mode
+#            (https://csrc.nist.gov/pubs/fips/140-3/final)
+#   nss      violation, same control: CNSA 2.0 limits NSS to ML-KEM-1024,
+#            ML-DSA-87, LMS/XMSS, AES-256, SHA-384/512 — a non-NIST
+#            algorithm is outside it by definition
+# A hybrid whose PQC part is approved (X25519MLKEM768) is not "not NIST-
+# approved": IR 8547 §4.1.2 lets a composite be FIPS 140-validated when one
+# input comes from an approved scheme.
 _tokens := [
 	# post-quantum, FIPS-approved
 	["pq", `MLKEM(?:1024|768|512)?`],
@@ -191,6 +220,9 @@ _tokens := [
 	["pq_pending", `FNDSA(?:1024|512)?`],
 	["pq_pending", `FALCON(?:1024|512)?`],
 	["pq_pending", `HQC(?:128|192|256)?`],
+	# post-quantum component that is NOT a NIST scheme: Streamlined NTRU Prime
+	# (OpenSSH sntrup761x25519-sha512, hybrid with X25519)
+	["pq_non_nist", `SNTRUP761`],
 	# quantum-vulnerable public-key
 	["qv", `RSAENCRYPTION`],
 	["qv", `RSA(?:SSA|ES)?\d*`],
@@ -241,11 +273,22 @@ _tokens := [
 	["hash", `SHA512`],
 	["hash", `SHA384`],
 	["hash", `SHA256(?:192)?`],
+	["hash", `SHA2(?:256|384|512)`],
 	["legacy112", `SHA224`],
 	["legacy112", `SHA3224`],
 	["hash", `SHA3(?:256|384|512)`],
 	["hash", `SHAKE(?:128|256)`],
 	["sha1", `SHA1`],
+	# widely deployed symmetric ciphers / MACs that are not NIST-approved
+	# (OpenSSH chacha20-poly1305@openssh.com, umac-64/128; TLS
+	# CHACHA20-POLY1305; Camellia, ARIA). 128-bit-or-more keys/tags, so not
+	# quantum-vulnerable; not in FIPS 197 / SP 800-38* / FIPS 198-1.
+	["sym_non_nist", `XCHACHA20(?:POLY1305)?`],
+	["sym_non_nist", `CHACHA20(?:POLY1305)?`],
+	["sym_non_nist", `POLY1305`],
+	["sym_non_nist", `CAMELLIA(?:128|192|256)?`],
+	["sym_non_nist", `ARIA(?:128|192|256)?`],
+	["sym_non_nist", `UMAC(?:64|128)`],
 	# neutral filler — never an algorithm on its own
 	["neutral", `SHA2`],
 	["neutral", `SHA3`],
@@ -275,6 +318,7 @@ _tokens := [
 	["neutral", `DRAFT\d*`],
 	["neutral", `SK`],
 	["neutral", `ID`],
+	["neutral", `ETM`],
 	["neutral", `UNKNOWN`],
 ]
 
@@ -291,6 +335,8 @@ _classes(alg) := {_token_class(tok) | some tok in regex.find_n(_token_re, _norm(
 
 _pq_classes := {"pq", "pq_pre", "pq_pending"}
 
+_not_nist_classes := {"pq_pre", "pq_pending", "pq_non_nist", "sym_non_nist"}
+
 _recognised(alg) if {
 	n := _norm(alg)
 	n != ""
@@ -299,11 +345,22 @@ _recognised(alg) if {
 }
 
 # One class per asset: quantum_vulnerable | post_quantum | hybrid |
-# symmetric_or_hash | unrecognised. A hybrid has a post-quantum and a
+# hybrid_non_nist | post_quantum_non_nist | symmetric_or_hash |
+# symmetric_non_nist | unrecognised. A hybrid has a post-quantum and a
 # quantum-vulnerable component (e.g. X25519MLKEM768); IR 8547 §4.1.2 accepts
-# a composite as long as one input is an approved scheme.
+# a composite as long as one input is an approved scheme. A hybrid whose only
+# post-quantum part is a non-NIST scheme (sntrup761x25519) is hybrid_non_nist.
 _asset_class(alg) := "unrecognised" if {
 	not _recognised(alg)
+} else := "hybrid_non_nist" if {
+	c := _classes(alg)
+	"pq_non_nist" in c
+	"qv" in c
+	count(c & _pq_classes) == 0
+} else := "post_quantum_non_nist" if {
+	c := _classes(alg)
+	"pq_non_nist" in c
+	count(c & _pq_classes) == 0
 } else := "hybrid" if {
 	c := _classes(alg)
 	"qv" in c
@@ -312,9 +369,105 @@ _asset_class(alg) := "unrecognised" if {
 	count(_classes(alg) & _pq_classes) > 0
 } else := "quantum_vulnerable" if {
 	"qv" in _classes(alg)
+} else := "symmetric_non_nist" if {
+	"sym_non_nist" in _classes(alg)
 } else := "symmetric_or_hash"
 
+# Contains a primitive that is identifiable but not NIST-approved. A hybrid
+# with an approved PQC part is exempt (IR 8547 §4.1.2).
+_not_nist_approved(alg) if {
+	_recognised(alg)
+	count(_classes(alg) & _not_nist_classes) > 0
+	not _asset_class(alg) == "hybrid"
+}
+
+_not_nist_approved(alg) if {
+	_asset_class(alg) == "hybrid"
+	c := _classes(alg)
+	not "pq" in c
+}
+
+_not_nist_approved(alg) if {
+	_asset_class(alg) == "hybrid"
+	"sym_non_nist" in _classes(alg)
+}
+
+# ── Public-key size (classical security strength) ───────────────────────────
+#
+# NIST SP 800-57 Part 1 Rev. 5 Table 2: 112-bit security = RSA k = 2048,
+# FFC (DSA/DH/MQV) L = 2048, ECC f = 224–255. NIST SP 800-131A Rev. 2
+# Table 2 (signature generation: RSA len(n) < 2048, ECDSA len(n) < 224, DSA
+# L < 2048 disallowed), Table 4 (DH/MQV: len(p) < 2048 or EC len(n) < 224
+# disallowed) and Table 5 (RSA key agreement/transport len(n) < 2048
+# disallowed). Sizes are read from the name; a name without one (RSA-unknown,
+# ECDSA, ECDH) yields no size ("not collected"), never a guess.
+_ifc_min := 2048
+
+_ffc_min := 2048
+
+_ecc_min := 224
+
+# Oakley/MODP group number → modulus bits (RFC 2409 §6, RFC 3526).
+_dh_group_bits := {"1": 768, "2": 1024, "5": 1536, "14": 2048, "15": 3072, "16": 4096, "17": 6144, "18": 8192}
+
+_num(pat, tok) := to_number(regex.find_all_string_submatch_n(pat, tok, 1)[0][1])
+
+_tok_size(tok) := {"family": "IFC", "bits": _num(`^RSA(?:SSA|ES)?(\d+)$`, tok)} if regex.match(`^RSA(?:SSA|ES)?\d+$`, tok)
+
+_tok_size(tok) := {"family": "FFC", "bits": _num(`^DSA(\d+)$`, tok)} if regex.match(`^DSA\d+$`, tok)
+
+_tok_size(tok) := {"family": "FFC", "bits": _num(`^(?:FF)?DHE?(\d+)$`, tok)} if regex.match(`^(?:FF)?DHE?\d+$`, tok)
+
+_tok_size(tok) := {"family": "FFC", "bits": _dh_group_bits[g]} if {
+	regex.match(`^(?:FF)?DHE?GROUP\d+$`, tok)
+	g := regex.find_all_string_submatch_n(`^(?:FF)?DHE?GROUP(\d+)$`, tok, 1)[0][1]
+}
+
+_tok_size(tok) := {"family": "FFC", "bits": _num(`^MODP(\d+)$`, tok)} if regex.match(`^MODP\d+$`, tok)
+
+_tok_size(tok) := {"family": "FFC", "bits": _num(`^ELGAMAL(\d+)$`, tok)} if regex.match(`^ELGAMAL\d+$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": _num(`^SEC[PT](\d+)[RK]\d$`, tok)} if regex.match(`^SEC[PT]\d+[RK]\d$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": _num(`^(?:NIST)?P(\d+)$`, tok)} if regex.match(`^(?:NIST)?P\d+$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": _num(`^PRIME(\d+)V\d$`, tok)} if regex.match(`^PRIME\d+V\d$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": _num(`^BRAINPOOLP(\d+)[RT]\d$`, tok)} if regex.match(`^BRAINPOOLP\d+[RT]\d$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": _num(`^ECC(\d+)$`, tok)} if regex.match(`^ECC\d+$`, tok)
+
+_tok_size(tok) := {"family": "ECC", "bits": 255} if tok in {"X25519", "ED25519", "ED25519PH", "ED25519CTX", "CURVE25519"}
+
+_tok_size(tok) := {"family": "ECC", "bits": 448} if tok in {"X448", "ED448", "ED448PH", "CURVE448"}
+
+_key_sizes(alg) := {sz |
+	some tok in regex.find_n(_token_re, _norm(alg), -1)
+	_token_class(tok) == "qv"
+	sz := _tok_size(tok)
+}
+
+_family_min := {"IFC": _ifc_min, "FFC": _ffc_min, "ECC": _ecc_min}
+
+# Only a purely quantum-vulnerable asset: a hybrid's classical part may be
+# weaker because the approved PQC input carries it (IR 8547 §4.1.2).
+_undersized(alg) if {
+	_asset_class(alg) == "quantum_vulnerable"
+	some sz in _key_sizes(alg)
+	sz.bits < _family_min[sz.family]
+}
+
+_public_key_bits(alg) := sort([sz.bits | some sz in _key_sizes(alg)]) if {
+	"qv" in _classes(alg)
+	count(_key_sizes(alg)) > 0
+} else := "not collected" if {
+	_recognised(alg)
+	"qv" in _classes(alg)
+} else := "not applicable"
+
 _is_pqc(alg) if _asset_class(alg) in {"post_quantum", "hybrid"}
+
+_size_not_collected(alg) if _public_key_bits(alg) == "not collected"
 
 _is_vulnerable(alg) if _asset_class(alg) == "quantum_vulnerable"
 
@@ -343,7 +496,7 @@ _valid_item(item) if {
 	item.usage in {"key_establishment", "signature", "symmetric", "hashing"}
 }
 
-violations contains msg if {
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
 	profile := input.pqc.profile
 	not profile in {"general", "federal", "nss"}
 	msg := sprintf(
@@ -352,24 +505,28 @@ violations contains msg if {
 	)
 }
 
+# Every finding carries the control it fails, so failed_controls is counted
+# per control rather than per message.
+violations := {f.msg | some f in _findings}
+
 # ── Inventory & prioritization (OMB M-26-15) ─────────────────────────────────
 
-violations contains msg if {
+_findings contains {"control": "inventory.complete", "msg": msg} if {
 	not input.pqc.inventory.complete == true
 	msg := "PQC OMB M-26-15: Automated cryptographic inventory (systems, protocols, libraries, certificates) is not complete"
 }
 
-violations contains msg if {
+_findings contains {"control": "inventory.refreshed_within_year", "msg": msg} if {
 	not input.pqc.inventory.refreshed_within_year == true
 	msg := "PQC OMB M-26-15: Cryptographic inventory has not been refreshed within the last year"
 }
 
-violations contains msg if {
+_findings contains {"control": "inventory.hndl_data_identified", "msg": msg} if {
 	not input.pqc.inventory.hndl_data_identified == true
 	msg := "PQC NIST IR 8547: Data with long confidentiality lifetimes has not been identified for harvest-now-decrypt-later risk prioritization"
 }
 
-violations contains msg if {
+_findings contains {"control": "inventory.migration_plan_exists", "msg": msg} if {
 	not input.pqc.inventory.migration_plan_exists == true
 	msg := "PQC EO 14412: No prioritized, milestoned PQC migration plan exists"
 }
@@ -398,23 +555,23 @@ default _inv_rows := []
 
 _inv_rows := _inv_raw if is_array(_inv_raw)
 
-violations contains msg if {
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
 	_inv_raw == null
 	msg := "PQC Evidence missing — input.pqc.crypto_inventory not collected (no cryptographic asset was classified; the data-driven algorithm checks were NOT evaluated)"
 }
 
-violations contains msg if {
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
 	_inv_raw != null
 	not is_array(_inv_raw)
 	msg := "PQC Input Contract: crypto_inventory must be an array of asset records (data-driven algorithm checks were NOT evaluated)"
 }
 
-violations contains msg if {
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
 	_inv_raw == []
 	msg := "PQC Evidence missing — input.pqc.crypto_inventory is empty: no cryptographic asset was assessed (an inventory that lists no TLS, SSH, certificate or signing algorithm means collection did not happen)"
 }
 
-violations contains msg if {
+_findings contains {"control": "data.input_contract_and_inventory_evidence", "msg": msg} if {
 	some i, item in _inv_rows
 	not _valid_item(item)
 	msg := sprintf(
@@ -425,7 +582,7 @@ violations contains msg if {
 
 # Every well-formed row must classify. An algorithm name the vocabulary does
 # not fully consume is reported by asset — never silently passed.
-violations contains msg if {
+_findings contains {"control": "data.unrecognised_algorithm", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_asset_class(item.algorithm) == "unrecognised"
@@ -440,7 +597,7 @@ violations contains msg if {
 # organisations may continue using these while they migrate, so a recorded
 # migration (`== true`, not bare truthiness: the string "no" must not count)
 # clears the finding. Hybrids are not quantum-vulnerable.
-violations contains msg if {
+_findings contains {"control": "data.quantum_vulnerable_migration", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_is_vulnerable(item.algorithm)
@@ -451,10 +608,34 @@ violations contains msg if {
 	)
 }
 
+# Below 112 bits of classical security: already disallowed, so a PQC
+# migration plan does not clear it (SP 800-131A Rev. 2 Tables 2, 4, 5).
+_findings contains {"control": "data.undersized_public_key", "msg": msg} if {
+	some item in _inv_rows
+	_valid_item(item)
+	_undersized(item.algorithm)
+	msg := sprintf(
+		"PQC NIST SP 800-131A Rev. 2: Asset '%s' uses '%s', a public-key size below 112 bits of classical security (RSA/DSA/DH under 2048 bits, ECC under 224 bits), which is already disallowed — a PQC migration plan does not clear it",
+		[item.asset, item.algorithm],
+	)
+}
+
+# Federal and NSS profiles only — see the profile table above the vocabulary.
+_findings contains {"control": "data.nist_approved_only", "msg": msg} if {
+	_federal_profile
+	some item in _inv_rows
+	_valid_item(item)
+	_not_nist_approved(item.algorithm)
+	msg := sprintf(
+		"PQC FIPS 140-3 (profile %v): Asset '%s' uses '%s' (%s), which contains an algorithm that is not NIST-approved (pre-standard, not-yet-published or non-NIST scheme) — federal and NSS systems protecting sensitive information must use approved algorithms",
+		[input.pqc.profile, item.asset, item.algorithm, _asset_class(item.algorithm)],
+	)
+}
+
 # 112-bit-security hashes (SHA-224, SHA-512/224, SHA3-224): IR 8547 §4.1.3
 # — "will be disallowed in 2030"; same migration treatment as vulnerable
 # public-key algorithms.
-violations contains msg if {
+_findings contains {"control": "data.legacy_112_bit_hash", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_has_class(item.algorithm, "legacy112")
@@ -467,7 +648,7 @@ violations contains msg if {
 
 # TDEA is already past its disallowance date for encryption, so a migration
 # plan does not clear it. NIST SP 800-131A Rev. 2 Table 1.
-violations contains msg if {
+_findings contains {"control": "data.disallowed_symmetric_or_hash", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_has_class(item.algorithm, "tdea")
@@ -479,7 +660,7 @@ violations contains msg if {
 
 # SHA-1, in any usage (a "sha1WithRSAEncryption" or "DH-group14-sha1" row
 # uses SHA-1 too). IR 8547 Table 8 note 4.
-violations contains msg if {
+_findings contains {"control": "data.disallowed_symmetric_or_hash", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_has_class(item.algorithm, "sha1")
@@ -489,7 +670,7 @@ violations contains msg if {
 	)
 }
 
-violations contains msg if {
+_findings contains {"control": "data.disallowed_symmetric_or_hash", "msg": msg} if {
 	some item in _inv_rows
 	_valid_item(item)
 	_has_class(item.algorithm, "not_approved")
@@ -501,42 +682,42 @@ violations contains msg if {
 
 # ── Crypto-agility ───────────────────────────────────────────────────────────
 
-violations contains msg if {
+_findings contains {"control": "agility.algorithms_replaceable", "msg": msg} if {
 	not input.pqc.agility.algorithms_replaceable == true
 	msg := "PQC Crypto-Agility: Cryptographic algorithms cannot be replaced without application redesign"
 }
 
-violations contains msg if {
+_findings contains {"control": "agility.library_inventory_maintained", "msg": msg} if {
 	not input.pqc.agility.library_inventory_maintained == true
 	msg := "PQC Crypto-Agility: No maintained inventory of cryptographic libraries and their PQC support status"
 }
 
-violations contains msg if {
+_findings contains {"control": "agility.vendor_roadmaps_tracked", "msg": msg} if {
 	not input.pqc.agility.vendor_roadmaps_tracked == true
 	msg := "PQC Crypto-Agility: Vendor PQC roadmaps and FIPS 140-3 PQC validation status are not tracked"
 }
 
 # ── Federal timeline (EO 14412 / OMB M-26-15) — profile federal or nss ──────
 
-violations contains msg if {
+_findings contains {"control": "federal.key_establishment_migration_on_track", "msg": msg} if {
 	_federal_profile
 	not input.pqc.federal.key_establishment_migration_on_track == true
 	msg := "PQC EO 14412: Key-establishment migration to ML-KEM (FIPS 203) for high-value/high-impact systems is not on track for 2030-12-31"
 }
 
-violations contains msg if {
+_findings contains {"control": "federal.signature_migration_on_track", "msg": msg} if {
 	_federal_profile
 	not input.pqc.federal.signature_migration_on_track == true
 	msg := "PQC EO 14412: Digital-signature migration to ML-DSA/SLH-DSA (FIPS 204/205) for high-value/high-impact systems is not on track for 2031-12-31"
 }
 
-violations contains msg if {
+_findings contains {"control": "federal.tls_endpoints_support_pqc_kem", "msg": msg} if {
 	_federal_profile
 	not input.pqc.federal.tls_endpoints_support_pqc_kem == true
 	msg := "PQC OMB M-26-15: TLS endpoints do not support PQC key establishment (hybrid ML-KEM groups acceptable)"
 }
 
-violations contains msg if {
+_findings contains {"control": "federal.contractor_fips_pqc_required", "msg": msg} if {
 	_federal_profile
 	not input.pqc.federal.contractor_fips_pqc_required == true
 	msg := "PQC EO 14412: FIPS PQC requirements are not flowed down to covered contractors and vendors"
@@ -544,25 +725,25 @@ violations contains msg if {
 
 # ── CNSA 2.0 (NSS) — profile nss only ────────────────────────────────────────
 
-violations contains msg if {
+_findings contains {"control": "nss.sw_fw_signing_cnsa", "msg": msg} if {
 	_nss_profile
 	not input.pqc.nss.sw_fw_signing_cnsa == true
 	msg := "PQC CNSA 2.0: Software/firmware signing does not use ML-DSA-87, LMS, or XMSS (SP 800-208)"
 }
 
-violations contains msg if {
+_findings contains {"control": "nss.acquisitions_require_cnsa", "msg": msg} if {
 	_nss_profile
 	not input.pqc.nss.acquisitions_require_cnsa == true
 	msg := "PQC CNSA 2.0: New NSS acquisitions do not require CNSA 2.0 algorithm support (mandatory from 2027-01-01)"
 }
 
-violations contains msg if {
+_findings contains {"control": "nss.network_equipment_on_track", "msg": msg} if {
 	_nss_profile
 	not input.pqc.nss.network_equipment_on_track == true
 	msg := "PQC CNSA 2.0: VPN/router/network equipment is not on track for CNSA 2.0 exclusive use by 2030"
 }
 
-violations contains msg if {
+_findings contains {"control": "nss.symmetric_cnsa_compliant", "msg": msg} if {
 	_nss_profile
 	not input.pqc.nss.symmetric_cnsa_compliant == true
 	msg := "PQC CNSA 2.0: Symmetric/hash usage is not restricted to AES-256 and SHA-384/SHA-512"
@@ -597,28 +778,75 @@ _count_class(cls) := count([item | some item in _valid_rows; _asset_class(item.a
 
 _count_token_class(cls) := count([item | some item in _valid_rows; _has_class(item.algorithm, cls)])
 
-_inventory_classification := [{"asset": item.asset, "algorithm": item.algorithm, "class": _asset_class(item.algorithm)} |
+_inventory_classification := [{
+	"asset": item.asset,
+	"algorithm": item.algorithm,
+	"class": _asset_class(item.algorithm),
+	"not_nist_approved": _not_nist_approved_flag(item.algorithm),
+	"public_key_bits": _public_key_bits(item.algorithm),
+} |
 	some item in _valid_rows
 ]
+
+_not_nist_approved_flag(alg) if _not_nist_approved(alg)
+
+else := false
 
 default _profile := "general"
 
 _profile := input.pqc.profile
 
-# Controls actually evaluated for the active profile: 7 base boolean
-# + 5 data-driven rule classes (inventory evidence & input contract,
-# unrecognised algorithm, quantum-vulnerable public-key, 112-bit legacy
-# hash, disallowed or deprecated symmetric/hash primitive: TDEA, SHA-1,
-# non-approved) + 4 federal, + 4 more for nss.
-default _federal_controls := 0
+# Controls evaluated for the active profile. general: 7 attested booleans +
+# 6 data-driven controls = 13; federal: + 4 federal booleans + the
+# NIST-approved-only control = 18; nss: + 4 CNSA booleans = 22.
+_base_controls := {
+	"inventory.complete", "inventory.refreshed_within_year",
+	"inventory.hndl_data_identified", "inventory.migration_plan_exists",
+	"agility.algorithms_replaceable", "agility.library_inventory_maintained",
+	"agility.vendor_roadmaps_tracked",
+	"data.input_contract_and_inventory_evidence", "data.unrecognised_algorithm",
+	"data.quantum_vulnerable_migration", "data.undersized_public_key",
+	"data.legacy_112_bit_hash", "data.disallowed_symmetric_or_hash",
+}
 
-_federal_controls := 4 if _federal_profile
+_federal_control_ids := {
+	"federal.key_establishment_migration_on_track", "federal.signature_migration_on_track",
+	"federal.tls_endpoints_support_pqc_kem", "federal.contractor_fips_pqc_required",
+	"data.nist_approved_only",
+}
 
-default _nss_controls := 0
+_nss_control_ids := {
+	"nss.sw_fw_signing_cnsa", "nss.acquisitions_require_cnsa",
+	"nss.network_equipment_on_track", "nss.symmetric_cnsa_compliant",
+}
 
-_nss_controls := 4 if _nss_profile
+default _federal_set := set()
 
-_controls_evaluated := (12 + _federal_controls) + _nss_controls
+_federal_set := _federal_control_ids if _federal_profile
+
+default _nss_set := set()
+
+_nss_set := _nss_control_ids if _nss_profile
+
+_controls := (_base_controls | _federal_set) | _nss_set
+
+_controls_evaluated := count(_controls)
+
+# Without a usable inventory no data-driven control was evaluated, so every
+# one of them counts as failed (not met), not only the evidence control.
+_inventory_unusable if _inv_raw == null
+
+_inventory_unusable if not is_array(_inv_raw)
+
+_inventory_unusable if _inv_raw == []
+
+_failed_control_ids := {f.control | some f in _findings} | {c |
+	_inventory_unusable
+	some c in _controls
+	startswith(c, "data.")
+}
+
+_failed_controls := count(_failed_control_ids & _controls)
 
 compliance_report := {
 	"framework": "Post-Quantum Cryptography Readiness",
@@ -628,12 +856,18 @@ compliance_report := {
 		"NIST SP 800-208",
 		"NIST IR 8547 (final, 2026-10-27)",
 		"NIST IR 8545 (HQC selection, Mar 2025)",
+		"NIST SP 800-131A Rev. 2",
+		"NIST SP 800-57 Part 1 Rev. 5",
+		"FIPS 140-3 (federal/nss profiles)",
 		"EO 14412 (2026-06-22)",
 		"OMB M-26-15",
 		"NSA CNSA 2.0",
 	],
 	"profile": _profile,
 	"controls_evaluated": _controls_evaluated,
+	"total_controls": _controls_evaluated,
+	"failed_controls": _failed_controls,
+	"failed_control_ids": sort([c | some c in (_failed_control_ids & _controls)]),
 	"inventory_assets_total": _inventory_total,
 	"inventory_assets_pqc": count(_pqc_assets),
 	"inventory_assets_quantum_vulnerable": count(_vulnerable_assets),
@@ -642,6 +876,12 @@ compliance_report := {
 	"inventory_assets_unrecognised": _count_class("unrecognised"),
 	"inventory_assets_pqc_pre_standard": _count_token_class("pq_pre"),
 	"inventory_assets_pqc_pending_standard": _count_token_class("pq_pending"),
+	"inventory_assets_hybrid_non_nist": _count_class("hybrid_non_nist"),
+	"inventory_assets_post_quantum_non_nist": _count_class("post_quantum_non_nist"),
+	"inventory_assets_symmetric_non_nist": _count_class("symmetric_non_nist"),
+	"inventory_assets_not_nist_approved": count([item | some item in _valid_rows; _not_nist_approved(item.algorithm)]),
+	"inventory_assets_undersized_public_key": count([item | some item in _valid_rows; _undersized(item.algorithm)]),
+	"inventory_assets_public_key_size_not_collected": count([item | some item in _valid_rows; _size_not_collected(item.algorithm)]),
 	"inventory_classification": _inventory_classification,
 	"violations": violations,
 	"violation_count": count(violations),

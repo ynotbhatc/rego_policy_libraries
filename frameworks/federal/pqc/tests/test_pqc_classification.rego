@@ -71,7 +71,7 @@ test_one_pqc_row_is_compliant if {
 
 test_dilithium3_classified_post_quantum_pre_standard if {
 	r := main.compliance_report with input as with_inv([row("signer", "Dilithium3", "signature", false)])
-	r.inventory_classification == [{"asset": "signer", "algorithm": "Dilithium3", "class": "post_quantum"}]
+	r.inventory_classification == [{"asset": "signer", "algorithm": "Dilithium3", "class": "post_quantum", "not_nist_approved": true, "public_key_bits": "not applicable"}]
 	r.inventory_assets_pqc == 1
 	r.inventory_assets_pqc_pre_standard == 1
 	r.inventory_assets_quantum_vulnerable == 0
@@ -146,6 +146,20 @@ expected := {
 	"SHA3-512": "symmetric_or_hash",
 	"SHAKE128": "symmetric_or_hash",
 	"3DES": "symmetric_or_hash",
+	"hmac-sha2-256-etm@openssh.com": "symmetric_or_hash",
+	"hmac-sha2-512": "symmetric_or_hash",
+	"aes256-gcm@openssh.com": "symmetric_or_hash",
+	"aes128-ctr": "symmetric_or_hash",
+	# identifiable, not NIST-approved
+	"chacha20-poly1305@openssh.com": "symmetric_non_nist",
+	"ChaCha20-Poly1305": "symmetric_non_nist",
+	"umac-128-etm@openssh.com": "symmetric_non_nist",
+	"umac-64@openssh.com": "symmetric_non_nist",
+	"CAMELLIA-256-GCM": "symmetric_non_nist",
+	"ARIA-128-GCM": "symmetric_non_nist",
+	"sntrup761x25519-sha512@openssh.com": "hybrid_non_nist",
+	"sntrup761x25519-sha512": "hybrid_non_nist",
+	"sntrup761": "post_quantum_non_nist",
 	# unrecognised: typo parameter set, annotation glued on, filler only,
 	# and algorithms the cited NIST guidance does not assess
 	"ML-KEM-786": "unrecognised",
@@ -153,8 +167,8 @@ expected := {
 	"RSA2048PLANNED": "unrecognised",
 	"GCM": "unrecognised",
 	"unknown": "unrecognised",
-	"ChaCha20-Poly1305": "unrecognised",
-	"sntrup761x25519-sha512@openssh.com": "unrecognised",
+	"Classic-McEliece-348864": "unrecognised",
+	"FrodoKEM-640-AES": "unrecognised",
 	"": "unrecognised",
 }
 
@@ -264,4 +278,183 @@ test_pending_standard_counted_not_flagged if {
 	r.compliant == true
 	r.inventory_assets_pqc_pending_standard == 2
 	r.inventory_assets_pqc == 2
+}
+
+# ── Follow-up: non-NIST algorithms by profile ────────────────────────────────
+
+federal_attested := json.patch(attested, [
+	{"op": "replace", "path": "/pqc/profile", "value": "federal"},
+	{"op": "add", "path": "/pqc/federal", "value": {
+		"key_establishment_migration_on_track": true,
+		"signature_migration_on_track": true,
+		"tls_endpoints_support_pqc_kem": true,
+		"contractor_fips_pqc_required": true,
+	}},
+])
+
+nss_attested := json.patch(federal_attested, [
+	{"op": "replace", "path": "/pqc/profile", "value": "nss"},
+	{"op": "add", "path": "/pqc/nss", "value": {
+		"sw_fw_signing_cnsa": true,
+		"acquisitions_require_cnsa": true,
+		"network_equipment_on_track": true,
+		"symmetric_cnsa_compliant": true,
+	}},
+])
+
+prof_inv(fixture, rows) := json.patch(fixture, [{"op": "add", "path": "/pqc/crypto_inventory", "value": rows}])
+
+non_nist_rows := [
+	row("host:sshd", "sntrup761x25519-sha512@openssh.com", "key_establishment", false),
+	row("host:sshd-cipher", "chacha20-poly1305@openssh.com", "symmetric", false),
+	row("host:sshd-mac", "umac-128-etm@openssh.com", "symmetric", false),
+]
+
+test_non_nist_reported_not_failed_in_general if {
+	r := main.compliance_report with input as with_inv(non_nist_rows)
+	r.compliant == true
+	r.inventory_assets_unrecognised == 0
+	r.inventory_assets_hybrid_non_nist == 1
+	r.inventory_assets_symmetric_non_nist == 2
+	r.inventory_assets_not_nist_approved == 3
+	r.inventory_assets_pqc == 0
+	r.inventory_assets_quantum_vulnerable == 0
+}
+
+test_non_nist_fails_federal_per_row if {
+	r := main.compliance_report with input as prof_inv(federal_attested, non_nist_rows)
+	r.compliant == false
+	count(r.violations) == 3
+	every msg in r.violations {
+		contains(msg, "FIPS 140-3 (profile federal)")
+		contains(msg, "not NIST-approved")
+	}
+	r.failed_control_ids == ["data.nist_approved_only"]
+}
+
+test_non_nist_fails_nss if {
+	r := main.compliance_report with input as prof_inv(nss_attested, [row("tls", "ChaCha20-Poly1305", "symmetric", false)])
+	r.compliant == false
+	r.failed_control_ids == ["data.nist_approved_only"]
+}
+
+test_approved_hybrid_is_not_non_nist_in_federal if {
+	r := main.compliance_report with input as prof_inv(federal_attested, [row("edge", "X25519MLKEM768", "key_establishment", false)])
+	r.compliant == true
+	r.inventory_assets_not_nist_approved == 0
+}
+
+test_pre_standard_fails_federal_only if {
+	rows := [row("edge", "X25519Kyber768Draft00", "key_establishment", false)]
+	main.compliance_report.compliant == true with input as with_inv(rows)
+	rf := main.compliance_report with input as prof_inv(federal_attested, rows)
+	rf.compliant == false
+	rf.failed_control_ids == ["data.nist_approved_only"]
+}
+
+test_unparseable_is_unrecognised_in_every_profile if {
+	rows := [row("odd", "RSA2048PLANNED", "signature", true)]
+	every fixture in [attested, federal_attested, nss_attested] {
+		r := main.compliance_report with input as prof_inv(fixture, rows)
+		r.compliant == false
+		"data.unrecognised_algorithm" in r.failed_control_ids
+	}
+}
+
+# ── Follow-up: undersized public keys ────────────────────────────────────────
+
+undersized := ["RSA-1024", "rsa1536", "DSA-1024", "DH-group1-sha1", "DH-group2-sha1", "ffdhe1024", "ECDSA-P192", "secp160r1", "prime192v1", "brainpoolP160r1"]
+
+test_undersized_flagged_even_with_plan if {
+	every alg in undersized {
+		v := main.violations with input as with_inv([row("weak", alg, "signature", true)])
+		some msg in v
+		contains(msg, "below 112 bits of classical security")
+		contains(msg, sprintf("'%s'", [alg]))
+	}
+}
+
+test_undersized_distinct_from_migration_message if {
+	v := main.violations with input as with_inv([row("weak", "RSA-1024", "key_establishment", false)])
+	count(v) == 2
+	count({m | some m in v; contains(m, "below 112 bits")}) == 1
+	count({m | some m in v; contains(m, "no PQC migration planned")}) == 1
+}
+
+test_minimum_sizes_not_undersized if {
+	rows := [
+		row("a", "RSA-2048", "signature", true), row("b", "DSA-2048", "signature", true),
+		row("c", "DH-group14-sha256", "key_establishment", true), row("d", "ECDSA-P224", "signature", true),
+		row("e", "secp256r1", "key_establishment", true), row("f", "X25519", "key_establishment", true),
+		row("g", "ffdhe2048", "key_establishment", true),
+	]
+	r := main.compliance_report with input as with_inv(rows)
+	r.compliant == true
+	r.inventory_assets_undersized_public_key == 0
+}
+
+test_size_not_collected_keeps_migration_behaviour if {
+	r := main.compliance_report with input as with_inv([row("k", "RSA-unknown", "signature", true)])
+	r.compliant == true
+	r.inventory_classification[0].public_key_bits == "not collected"
+	r.inventory_assets_public_key_size_not_collected == 1
+	v := main.violations with input as with_inv([row("k", "RSA-unknown", "signature", false)])
+	count(v) == 1
+	some msg in v
+	contains(msg, "no PQC migration planned")
+}
+
+test_public_key_bits_reported if {
+	r := main.compliance_report with input as with_inv([row("k", "ECDSA-P384", "signature", true), row("m", "ML-KEM-768", "key_establishment", false)])
+	{c.algorithm: c.public_key_bits | some c in r.inventory_classification} == {"ECDSA-P384": [384], "ML-KEM-768": "not applicable"}
+}
+
+# A hybrid's classical half is not judged alone (IR 8547 §4.1.2).
+test_hybrid_with_small_curve_not_undersized if {
+	r := main.compliance_report with input as with_inv([row("h", "SECP192R1MLKEM768", "key_establishment", false)])
+	r.inventory_assets_undersized_public_key == 0
+	r.compliant == true
+}
+
+# ── Follow-up: total_controls / failed_controls contract ─────────────────────
+
+test_contract_on_empty_input if {
+	r := main.compliance_report with input as {}
+	is_number(r.total_controls)
+	is_number(r.failed_controls)
+	r.total_controls == 13
+	r.failed_controls == r.total_controls
+	r.compliant == false
+	is_set(r.violations)
+}
+
+test_contract_empty_input_federal_and_nss if {
+	rf := main.compliance_report with input as {"pqc": {"profile": "federal"}}
+	rf.total_controls == 18
+	rf.failed_controls == 18
+	rn := main.compliance_report with input as {"pqc": {"profile": "nss"}}
+	rn.total_controls == 22
+	rn.failed_controls == 22
+}
+
+test_contract_missing_inventory_fails_every_data_control if {
+	r := main.compliance_report with input as attested
+	r.failed_controls == 6
+	every c in r.failed_control_ids {
+		startswith(c, "data.")
+	}
+}
+
+test_contract_counts_per_control_not_per_message if {
+	rows := [ok_row, row("a", "RSA-2048", "signature", false), row("b", "ECDSA-P256", "signature", false)]
+	r := main.compliance_report with input as with_inv(rows)
+	count(r.violations) == 2
+	r.failed_controls == 1
+	r.failed_control_ids == ["data.quantum_vulnerable_migration"]
+}
+
+test_contract_clean_has_zero_failed if {
+	r := main.compliance_report with input as with_inv([ok_row])
+	r.failed_controls == 0
+	r.total_controls == 13
 }
