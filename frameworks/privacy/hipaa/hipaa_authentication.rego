@@ -60,7 +60,6 @@ advisories contains msg if {
 }
 
 advisories contains msg if {
-	input.mfa.methods_allowed
 	"sms" in input.mfa.methods_allowed
 	not input.mfa.stronger_method_also_available
 	msg := "Advisory (library practice, not a 45 CFR requirement): SMS-only MFA is configured. SMS is susceptible to SIM swapping. Offer TOTP or hardware key as alternatives."

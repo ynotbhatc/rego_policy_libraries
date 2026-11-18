@@ -134,7 +134,7 @@ advisories contains msg if {
 # ---------------------------------------------------------------------------
 
 advisories contains msg if {
-	input.tls.minimum_version
+	object.get(input, ["tls", "minimum_version"], null) != null
 	not _tls_version_acceptable(input.tls.minimum_version)
 	msg := sprintf(
 		"Advisory (library practice, not a 45 CFR requirement): Minimum TLS version is %v. TLS 1.2 is the minimum acceptable; TLS 1.3 is recommended.",
