@@ -208,7 +208,13 @@ level_valid if assessed_level
 # Requirement status (NIST SP 800-171 R2 numbers)
 # ---------------------------------------------------------------------------
 
-_family(r) := concat(".", array.slice(split(r, "."), 0, 2))
+# Written with intermediate bindings: OPA 1.22.0 fails with eval_internal_error ("split called with operand that
+# requires evaluation") when the nested call is inlined into the comprehension that indexes domain_reports.
+_family(r) := fam if {
+	parts := split(r, ".")
+	head := array.slice(parts, 0, 2)
+	fam := concat(".", head)
+}
 
 # The requirement number a domain finding names: "3.5.1: ...", "CMMC AC.L2-3.1.3: ..."
 # or "CMMC AC.L1-b.1.i / AC.L2-3.1.1: ...".
@@ -218,7 +224,10 @@ finding_requirement(m) := x[0][1] if {
 	count(x) == 1
 }
 
-_requirement_findings(r) := [m | some m in domain_reports[_family(r)].violations; finding_requirement(m) == r]
+_requirement_findings(r) := found if {
+	fam := _family(r)
+	found := [m | some m in domain_reports[fam].violations; finding_requirement(m) == r]
+}
 
 _domain_reports_compliant(r) if {
 	some p in domain_reports[_family(r)].practices
