@@ -39,10 +39,6 @@ level_1_facts := {
 
 at_level(n) := object.union(level_1_facts, {"cmmc_level": n})
 
-report(inp) := r if {
-	r := data.cmmc.main.compliance_report with input as inp
-}
-
 # --- registries ---------------------------------------------------------------
 
 test_registry_sizes_match_32_cfr_170_14 if {
@@ -77,7 +73,7 @@ reviewer_case := {"cmmc_level": 1, "access_controls": {"least_privilege_enforced
 
 test_reviewer_case_level_1_without_users_is_not_compliant if {
 	not data.cmmc.access_control.compliant with input as reviewer_case
-	r := report(reviewer_case)
+	r := data.cmmc.main.compliance_report with input as reviewer_case
 	r.compliant == false
 	r.total_controls == 15
 	"AC.L1-b.1.i" in r.failed_practices
@@ -89,7 +85,7 @@ test_reviewer_case_level_1_without_users_is_not_compliant if {
 # --- Level 1 --------------------------------------------------------------------
 
 test_level_1_full_facts_compliant_without_level_2_facts if {
-	r := report(at_level(1))
+	r := data.cmmc.main.compliance_report with input as at_level(1)
 	r.compliant == true
 	r.total_controls == 15
 	r.failed_controls == 0
@@ -102,7 +98,7 @@ test_level_1_one_safeguard_split_over_three_requirements_counts_once if {
 		{"op": "replace", "path": "/physical/visitor_escort_required", "value": false},
 		{"op": "remove", "path": "/physical/physical_access_audit_logs"},
 	])
-	r := report(inp)
+	r := data.cmmc.main.compliance_report with input as inp
 	r.compliant == false
 	r.total_controls == 15
 	r.failed_controls == 1
@@ -114,7 +110,7 @@ test_two_findings_for_one_practice_count_once if {
 		{"username": "a", "authorized": false, "system_access": true},
 		{"username": "b", "authorized": false, "system_access": true},
 	]})
-	r := report(inp)
+	r := data.cmmc.main.compliance_report with input as inp
 	r.failed_controls == 1
 	r.failed_practices == ["AC.L1-b.1.i"]
 	count([v | some v in r.violations; startswith(v, "CMMC AC.L1-b.1.i: Unauthorized user")]) == 2
@@ -122,7 +118,7 @@ test_two_findings_for_one_practice_count_once if {
 
 test_user_without_authorized_fact_fails_closed if {
 	inp := object.union(at_level(1), {"users": [{"username": "a", "system_access": true}]})
-	r := report(inp)
+	r := data.cmmc.main.compliance_report with input as inp
 	r.failed_practices == ["AC.L1-b.1.i"]
 	some v in r.violations
 	v == "CMMC AC.L1-b.1.i: evidence missing - user 'a' has no boolean 'authorized'"
@@ -130,7 +126,7 @@ test_user_without_authorized_fact_fails_closed if {
 
 test_media_sanitization_is_a_level_1_practice if {
 	inp := json.patch(at_level(1), [{"op": "remove", "path": "/media"}])
-	r := report(inp)
+	r := data.cmmc.main.compliance_report with input as inp
 	r.failed_practices == ["MP.L1-b.1.vii"]
 	not data.cmmc.cmmc_level_1_compliant with input as inp
 }
@@ -138,7 +134,7 @@ test_media_sanitization_is_a_level_1_practice if {
 # --- Level 2 --------------------------------------------------------------------
 
 test_level_2_scores_110_practices_by_level_2_id if {
-	r := report(at_level(2))
+	r := data.cmmc.main.compliance_report with input as at_level(2)
 	r.total_controls == 110
 	r.compliant == false
 
@@ -159,12 +155,14 @@ test_level_2_every_finding_names_a_practice if {
 	count(vs) > 0
 	reqs := {r | some r in data.cmmc.level_2_requirements}
 	every v in vs {
-		data.cmmc.finding_requirement(v) in reqs
+		# same pattern as cmmc.finding_requirement; inlined so the file checks on its own
+		x := regex.find_all_string_submatch_n(`^(?:CMMC [A-Z]{2}\.L[12]-(?:b\.1\.[ivx]+ / [A-Z]{2}\.L2-)?)?(3\.[0-9]{1,2}\.[0-9]{1,2}):`, v, 1)
+		x[0][1] in reqs
 	}
 }
 
 test_level_2_failed_never_exceeds_total if {
-	r := report({"cmmc_level": 2})
+	r := data.cmmc.main.compliance_report with input as {"cmmc_level": 2}
 	r.total_controls == 110
 	r.failed_controls == 110
 	count(r.violations) > r.failed_controls
@@ -173,7 +171,7 @@ test_level_2_failed_never_exceeds_total if {
 # --- level contract -------------------------------------------------------------
 
 test_missing_level_fails_every_practice if {
-	r := report(level_1_facts)
+	r := data.cmmc.main.compliance_report with input as level_1_facts
 	r.compliant == false
 	r.total_controls == 110
 	r.failed_controls == 110
@@ -182,13 +180,13 @@ test_missing_level_fails_every_practice if {
 }
 
 test_string_level_is_not_a_level if {
-	r := report(object.union(level_1_facts, {"cmmc_level": "1"}))
+	r := data.cmmc.main.compliance_report with input as object.union(level_1_facts, {"cmmc_level": "1"})
 	r.compliant == false
 	r.failed_controls == r.total_controls
 }
 
 test_level_3_is_reported_not_evaluated if {
-	r := report(at_level(3))
+	r := data.cmmc.main.compliance_report with input as at_level(3)
 	r.compliant == false
 	r.total_controls == 110
 	some v in r.violations
@@ -198,7 +196,7 @@ test_level_3_is_reported_not_evaluated if {
 }
 
 test_empty_input_report_contract if {
-	r := report({})
+	r := data.cmmc.main.compliance_report with input as {}
 	r.compliant == false
 	r.total_controls == 110
 	r.failed_controls == 110
@@ -210,7 +208,7 @@ test_empty_input_report_contract if {
 
 test_key_report_and_orchestrator_agree if {
 	every inp in [{}, reviewer_case, at_level(1), at_level(2), at_level(3)] {
-		r := report(inp)
+		r := data.cmmc.main.compliance_report with input as inp
 		n := data.cmmc.practices_evaluated with input as inp
 		f := data.cmmc.practices_failed with input as inp
 		r.total_controls == n

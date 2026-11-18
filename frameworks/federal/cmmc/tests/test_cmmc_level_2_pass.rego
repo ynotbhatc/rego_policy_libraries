@@ -309,12 +309,8 @@ level_2_facts := {
 	}],
 }
 
-report(inp) := r if {
-	r := data.cmmc.main.compliance_report with input as inp
-}
-
 test_level_2_all_facts_compliant if {
-	r := report(level_2_facts)
+	r := data.cmmc.main.compliance_report with input as level_2_facts
 	r.compliant == true
 	r.total_controls == 110
 	r.failed_controls == 0
@@ -324,20 +320,20 @@ test_level_2_all_facts_compliant if {
 }
 
 test_level_2_same_facts_at_level_1_compliant if {
-	r := report(object.union(level_2_facts, {"cmmc_level": 1}))
+	r := data.cmmc.main.compliance_report with input as object.union(level_2_facts, {"cmmc_level": 1})
 	r.compliant == true
 	r.total_controls == 15
 	r.failed_controls == 0
 }
 
 test_level_2_without_user_inventory_fails_three_practices if {
-	r := report(json.remove(level_2_facts, ["/users"]))
+	r := data.cmmc.main.compliance_report with input as json.remove(level_2_facts, ["/users"])
 	r.compliant == false
 	r.failed_practices == ["AC.L2-3.1.1", "AC.L2-3.1.5", "AC.L2-3.1.6"]
 }
 
 test_level_3_never_compliant_even_with_all_level_2_facts if {
-	r := report(object.union(level_2_facts, {"cmmc_level": 3}))
+	r := data.cmmc.main.compliance_report with input as object.union(level_2_facts, {"cmmc_level": 3})
 	r.compliant == false
 	r.total_controls == 110
 	r.failed_controls == 0
