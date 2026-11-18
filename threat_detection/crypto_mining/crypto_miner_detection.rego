@@ -220,10 +220,13 @@ violations contains "FAIL-CLOSED - no facts supplied (running_processes, install
 	not _facts_present
 }
 
-default compliant := true
+# Fail closed: compliant only when the rule below proves it. (Was
+# `default compliant := true` overridden by a false-if-violations rule, which
+# was safe only while the missing-facts violation existed.)
+default compliant := false
 
-compliant := false if {
-	count(violations) > 0
+compliant if {
+	count(violations) == 0
 }
 
 # Risk level based on findings - using helper booleans to avoid recursion
