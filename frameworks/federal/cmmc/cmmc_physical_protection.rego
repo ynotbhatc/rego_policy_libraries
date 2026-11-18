@@ -49,7 +49,7 @@ violation_3_10_1 contains msg if {
 }
 
 # 3.10.2 — Protect and monitor the physical facility and support infrastructure
-#           for organizational systems. (L1)
+#           for organizational systems. (L2)
 default compliant_3_10_2 := false
 
 compliant_3_10_2 if {
@@ -73,7 +73,7 @@ violation_3_10_2 contains msg if {
 	msg := "3.10.2: Environmental controls (temperature, humidity, fire suppression) not implemented"
 }
 
-# 3.10.3 — Escort visitors and monitor visitor activity. (L2)
+# 3.10.3 — Escort visitors and monitor visitor activity. (L1: PE.L1-b.1.ix)
 default compliant_3_10_3 := false
 
 compliant_3_10_3 if {
@@ -97,7 +97,7 @@ violation_3_10_3 contains msg if {
 	msg := "3.10.3: Visitors are not issued distinguishing badges or credentials"
 }
 
-# 3.10.4 — Maintain audit logs of physical access. (L2)
+# 3.10.4 — Maintain audit logs of physical access. (L1: PE.L1-b.1.ix)
 default compliant_3_10_4 := false
 
 compliant_3_10_4 if {
@@ -121,7 +121,7 @@ violation_3_10_4 contains msg if {
 	msg := "3.10.4: Physical access audit logs are not reviewed on a regular basis"
 }
 
-# 3.10.5 — Control and manage physical access devices. (L2)
+# 3.10.5 — Control and manage physical access devices. (L1: PE.L1-b.1.ix)
 default compliant_3_10_5 := false
 
 compliant_3_10_5 if {
@@ -237,10 +237,10 @@ all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 
 practices := [
 	{"id": "3.10.1", "level": 1, "compliant": compliant_3_10_1},
-	{"id": "3.10.2", "level": 1, "compliant": compliant_3_10_2},
-	{"id": "3.10.3", "level": 2, "compliant": compliant_3_10_3},
-	{"id": "3.10.4", "level": 2, "compliant": compliant_3_10_4},
-	{"id": "3.10.5", "level": 2, "compliant": compliant_3_10_5},
+	{"id": "3.10.2", "level": 2, "compliant": compliant_3_10_2},
+	{"id": "3.10.3", "level": 1, "compliant": compliant_3_10_3},
+	{"id": "3.10.4", "level": 1, "compliant": compliant_3_10_4},
+	{"id": "3.10.5", "level": 1, "compliant": compliant_3_10_5},
 	{"id": "3.10.6", "level": 2, "compliant": compliant_3_10_6},
 ]
 
@@ -270,5 +270,6 @@ compliance_report := {
 	"failing": 6 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 	"level_1_passing": level_1_passing,
 }

@@ -74,7 +74,7 @@ violation_3_14_2 contains msg if {
 }
 
 # 3.14.3 — Monitor system security alerts and advisories and take action in
-#           response. (L1)
+#           response. (L2)
 default compliant_3_14_3 := false
 
 compliant_3_14_3 if {
@@ -290,7 +290,7 @@ all_violations := array.concat(base_violations, [m | some m in violation_unmet])
 practices := [
 	{"id": "3.14.1", "level": 1, "compliant": compliant_3_14_1},
 	{"id": "3.14.2", "level": 1, "compliant": compliant_3_14_2},
-	{"id": "3.14.3", "level": 1, "compliant": compliant_3_14_3},
+	{"id": "3.14.3", "level": 2, "compliant": compliant_3_14_3},
 	{"id": "3.14.4", "level": 1, "compliant": compliant_3_14_4},
 	{"id": "3.14.5", "level": 1, "compliant": compliant_3_14_5},
 	{"id": "3.14.6", "level": 2, "compliant": compliant_3_14_6},
@@ -323,5 +323,6 @@ compliance_report := {
 	"failing": 7 - passing_count,
 	"compliant": compliant,
 	"violations": all_violations,
+	"practices": practices,
 	"level_1_passing": level_1_passing,
 }
