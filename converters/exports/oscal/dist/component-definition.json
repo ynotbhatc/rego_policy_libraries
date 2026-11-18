@@ -173060,7 +173060,7 @@
      {
       "uuid": "ca89850e-e999-56ce-a012-fb615ee468a7",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_saas.json",
-      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (297 controls, 17 Rego modules).",
+      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (228 controls, 17 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -175345,256 +175345,6 @@
         ]
        },
        {
-        "uuid": "eb4124d1-f7ca-5c88-96fc-7faffa6499ae",
-        "control-id": "cis_saas-activity_based_timeout",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.3.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "activity_based_timeout"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "86e9384a-efb1-50ed-ab69-6230d16ac30f",
-        "control-id": "cis_saas-admin_licenses",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.1.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "admin_licenses"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "d4543281-a612-5e56-bfd5-9b5ebea70ca9",
-        "control-id": "cis_saas-admin_sync_state",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.1.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "admin_sync_state"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "34667183-62ea-5238-b40e-0ac10b9e0cf8",
-        "control-id": "cis_saas-apps_and_services",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.3.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "apps_and_services"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "5f970bf0-1980-5ebb-91ce-bd084ea84e4f",
-        "control-id": "cis_saas-domains",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.3.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "domains"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "de0ecb3f-6590-594f-a91b-fccc921ee79b",
-        "control-id": "cis_saas-forms",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.3.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "forms"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "7f9d88d6-fb6e-51c0-9225-85b81f7d6c13",
-        "control-id": "cis_saas-global_admins",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.1.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "global_admins"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "205e9766-6d0f-5fcd-923c-43cc08ce9245",
-        "control-id": "cis_saas-groups",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "groups"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "b02bbdab-00fa-575f-9e9e-ed554cb06451",
-        "control-id": "cis_saas-service_principals",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): 1.3.7",
-        "props": [
-         {
-          "name": "label",
-          "value": "service_principals"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "33ef7966-bb46-5349-b371-7a1b38855d01",
-        "control-id": "cis_saas-cis_m365_v7.admin_center-1",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "cis_m365_v7.admin_center#1"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "1570aa3c-fdf5-5b6c-b330-7471032396a5",
         "control-id": "cis_saas-CIS-1.3.6",
         "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): the customer lockbox feature is not enabled, so Microsoft support can access tenant content without explicit per-request approval",
@@ -175695,113 +175445,13 @@
         ]
        },
        {
-        "uuid": "c83e8cad-ebe1-5c9d-ae21-837f5997b3c7",
-        "control-id": "cis_saas-1.2.2",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): whether sign-in to shared mailboxes is blocked",
+        "uuid": "33ef7966-bb46-5349-b371-7a1b38855d01",
+        "control-id": "cis_saas-cis_m365_v7.admin_center-1",
+        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/admin_center_validation.rego (package cis_m365_v7.admin_center); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "1.2.2"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "c5ba8ed8-13e4-531a-aade-60e9bc0c6b1f",
-        "control-id": "cis_saas-1.3.3",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): whether external calendar sharing is available",
-        "props": [
-         {
-          "name": "label",
-          "value": "1.3.3"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "8afa1160-12cb-5cc6-ada2-562623d97c8c",
-        "control-id": "cis_saas-1.3.6",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): whether the customer lockbox feature is enabled",
-        "props": [
-         {
-          "name": "label",
-          "value": "1.3.6"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "47c6d941-7290-5b25-b303-882e0e0bc52c",
-        "control-id": "cis_saas-1.3.9",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): whether shared bookings pages are restricted to select users",
-        "props": [
-         {
-          "name": "label",
-          "value": "1.3.9"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.admin_center"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/admin_center_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "169fd818-25a4-5f09-bdb8-d09bce3a288b",
-        "control-id": "cis_saas-cis_m365_v7.admin_center-2",
-        "description": "Evaluated by Rego package cis_m365_v7.admin_center (benchmarks/cis/saas/m365_v7/admin_center_validation.rego): CIS %s: %s could not be evaluated -- Exchange facts were not collected (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "cis_m365_v7.admin_center#2"
+          "value": "cis_m365_v7.admin_center#1"
          },
          {
           "name": "rego-package",
@@ -175822,7 +175472,7 @@
        {
         "uuid": "f4b5e43b-780b-5a4e-b134-d567be5a024e",
         "control-id": "cis_saas-cis_m365_v7.attestation-1",
-        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- attested as not met (observed false) by %s on %s, evidence %s",
         "props": [
          {
           "name": "label",
@@ -175847,7 +175497,7 @@
        {
         "uuid": "1f212547-4029-5bf9-b3b4-d673907a6a96",
         "control-id": "cis_saas-cis_m365_v7.attestation-2",
-        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- an attestation was supplied but is missing attested_by, attested_on or evidence_ref, so it is not admissible evidence (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)",
         "props": [
          {
           "name": "label",
@@ -175872,7 +175522,7 @@
        {
         "uuid": "b0366d0d-502f-55d5-8517-d0b642d573cf",
         "control-id": "cis_saas-cis_m365_v7.attestation-3",
-        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- an attestation was supplied but is missing observed (true or false), attested_by, evidence_ref or a valid attested_on date (YYYY-MM-DD), so it is not admissible evidence (this is not a pass)",
         "props": [
          {
           "name": "label",
@@ -175897,7 +175547,7 @@
        {
         "uuid": "b2643580-5998-54f3-8d33-4a55a567186e",
         "control-id": "cis_saas-cis_m365_v7.attestation-4",
-        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- the attestation is dated in the future, so it is not admissible evidence (this is not a pass)",
         "props": [
          {
           "name": "label",
@@ -175920,9 +175570,84 @@
         ]
        },
        {
+        "uuid": "fdc534ee-ce37-5b14-b1b7-856553299c80",
+        "control-id": "cis_saas-cis_m365_v7.attestation-5",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): ignored attestation: the attestation for control_id '%v' decides nothing -- attestations are accepted only for the %d ledger controls this library cannot evaluate from collected evidence; it does not change any control's status",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.attestation#5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1515cf0f-bcf0-57b0-83aa-e451492efa15",
+        "control-id": "cis_saas-cis_m365_v7.attestation-6",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.attestation#6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4e2d1426-594a-5e95-aae5-4c2915550d67",
+        "control-id": "cis_saas-cis_m365_v7.attestation-7",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.attestation#7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "e5559a0f-c161-515c-b436-e0ee03ac743b",
         "control-id": "cis_saas-CIS-2.1.9",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): DKIM not enabled for domain '%s' -- outbound mail carries no cryptographic origin signature",
+        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): DKIM not enabled for domain '%s' -- no DKIM selector record is published, so outbound mail carries no verifiable origin signature",
         "props": [
          {
           "name": "label",
@@ -175970,13 +175695,13 @@
         ]
        },
        {
-        "uuid": "0cba3fac-cb74-508b-88b1-e01e7de280a3",
-        "control-id": "cis_saas-CIS-2.1.8-2.1.9-2.1.10",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): SPF, DKIM and DMARC for domain '%s' could not be evaluated -- %s (this is not a pass)",
+        "uuid": "66938177-a37e-52ac-be38-4ec8a3a332a7",
+        "control-id": "cis_saas-cis_m365_v7.defender-1",
+        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): CIS %s: evidence missing -- the %s record of domain '%s' could not be evaluated: %v (this is not a pass)",
         "props": [
          {
           "name": "label",
-          "value": "CIS 2.1.8/2.1.9/2.1.10"
+          "value": "cis_m365_v7.defender#1"
          },
          {
           "name": "rego-package",
@@ -176122,7 +175847,7 @@
        {
         "uuid": "96a95a30-caa5-5c0f-864c-fc743dbfb1ea",
         "control-id": "cis_saas-CIS-2.1.15",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): outbound spam policy '%s' has no external recipient-per-hour limit, so a compromised mailbox can send without a throttle",
+        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): outbound spam policy '%s' sets %s to %v; a limit above 0 and no higher than %d is expected, so a compromised mailbox is not throttled",
         "props": [
          {
           "name": "label",
@@ -176147,7 +175872,7 @@
        {
         "uuid": "be89c4d7-4865-5b81-9503-8c96d30a1f37",
         "control-id": "cis_saas-CIS-2.4.2",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): no EOP protection policy rule exists, so priority accounts do not have strict protection applied",
+        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): no %s rule for the Strict preset security policy exists, so priority accounts do not have strict protection applied",
         "props": [
          {
           "name": "label",
@@ -176195,306 +175920,6 @@
         ]
        },
        {
-        "uuid": "4144fbd2-f86d-5bda-a305-a4859c1f11e0",
-        "control-id": "cis_saas-anti_phish_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.7",
-        "props": [
-         {
-          "name": "label",
-          "value": "anti_phish_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "45c4a7aa-f4dd-5bc5-8414-0f1abf46033f",
-        "control-id": "cis_saas-atp_policy_for_o365",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "atp_policy_for_o365"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "4eab3e4a-ec7a-5272-8055-3d9b26499f9d",
-        "control-id": "cis_saas-connection_filter_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.12",
-        "props": [
-         {
-          "name": "label",
-          "value": "connection_filter_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "129d96e2-fbb0-5aa7-a2e2-3c1e78d34356",
-        "control-id": "cis_saas-content_filter_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.14",
-        "props": [
-         {
-          "name": "label",
-          "value": "content_filter_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "ca766551-026b-5ebb-8c16-b512416c1ed1",
-        "control-id": "cis_saas-email_tenant_settings",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.4.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "email_tenant_settings"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "ddcbd05f-6146-5a4b-8453-0cc193553302",
-        "control-id": "cis_saas-eop_protection_rules",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.4.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "eop_protection_rules"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "704f5535-bed2-5355-b58b-709829a4b46b",
-        "control-id": "cis_saas-malware_filter_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "malware_filter_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "2b61c3ae-511b-5dd3-bcc2-e52235908064",
-        "control-id": "cis_saas-outbound_spam_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.6",
-        "props": [
-         {
-          "name": "label",
-          "value": "outbound_spam_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "6f7f1eab-4a4d-5de0-b7ed-235bf0bb85f6",
-        "control-id": "cis_saas-priority_account_alerts",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.4.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "priority_account_alerts"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "c68b6297-43ed-5fc8-94d3-ee91eb59edac",
-        "control-id": "cis_saas-safe_attachment_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "safe_attachment_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "f34d0fea-a7a3-5cdd-be47-d9fb31b8e3af",
-        "control-id": "cis_saas-safe_links_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.1.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "safe_links_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "6751be7a-e1f1-58e0-a649-ac7a0f8a83e0",
-        "control-id": "cis_saas-teams_protection_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): 2.4.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "teams_protection_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.defender"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/defender_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "4d87a1e0-a036-5121-9116-d76aedc01f6d",
         "control-id": "cis_saas-CIS-2.4.1",
         "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): priority account protection is not enabled for the tenant, so accounts tagged as priority receive no differentiated protection",
@@ -176520,13 +175945,13 @@
         ]
        },
        {
-        "uuid": "66938177-a37e-52ac-be38-4ec8a3a332a7",
-        "control-id": "cis_saas-cis_m365_v7.defender-1",
-        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "uuid": "b0e92c77-4559-5e64-aafc-aa8f96918d9b",
+        "control-id": "cis_saas-cis_m365_v7.defender-2",
+        "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/defender_validation.rego (package cis_m365_v7.defender); see the rule body.",
         "props": [
          {
           "name": "label",
-          "value": "cis_m365_v7.defender#1"
+          "value": "cis_m365_v7.defender#2"
          },
          {
           "name": "rego-package",
@@ -176647,7 +176072,7 @@
        {
         "uuid": "0ac8398b-762e-563e-9af5-1de9bc6fddd3",
         "control-id": "cis_saas-CIS-5.1.5.1",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): user consent to apps accessing company data on their behalf is still permitted; consent should be routed to an administrator",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): user consent to apps accessing company data on their behalf is still permitted (permission grant policy '%s'); consent should be routed to an administrator",
         "props": [
          {
           "name": "label",
@@ -177747,461 +177172,11 @@
        {
         "uuid": "7fbd59b4-457c-52c7-bbeb-7292e852ee32",
         "control-id": "cis_saas-CIS-5.1.3.4",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): users can create Microsoft 365 groups in Azure portals, APIs or PowerShell with no restricting group -- group membership drives access, so unmanaged creation undermines authorization",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- EnableGroupCreation is True; group membership drives access, so unmanaged creation undermines authorization",
         "props": [
          {
           "name": "label",
           "value": "CIS 5.1.3.4"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "172dbe79-305a-51a4-965d-2fe8440f1a9a",
-        "control-id": "cis_saas-access_reviews",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.3.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "access_reviews"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "747da828-838c-57ab-a4fb-511bb6107f91",
-        "control-id": "cis_saas-admin_consent_request_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.5.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "admin_consent_request_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "4e8c41ef-394b-5855-9c3f-d910fd17e0cd",
-        "control-id": "cis_saas-app_management_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.5.3",
-        "props": [
-         {
-          "name": "label",
-          "value": "app_management_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "ef3dc9d0-40dc-5dcc-adf3-d7983a7a7c29",
-        "control-id": "cis_saas-authentication_methods_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.2.3.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "authentication_methods_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "2507a606-3e62-5580-8093-f8eccb033e25",
-        "control-id": "cis_saas-authorization_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.2.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "authorization_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "1c1cfd6e-83db-5ba8-b1a5-62bf5ff1c2a8",
-        "control-id": "cis_saas-b2b_management_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.6.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "b2b_management_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "4e9944c7-bf23-5999-8e1c-f07e47bab7ed",
-        "control-id": "cis_saas-conditional_access_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.2.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "conditional_access_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "89d5ff5d-8016-5962-9b68-c6122a32c6a0",
-        "control-id": "cis_saas-device_registration_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.4.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "device_registration_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "5cda5e69-d9c3-5960-9a9c-34a6b4e057d8",
-        "control-id": "cis_saas-group_settings",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.2.3.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "group_settings"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "0278644b-985c-5a3e-994a-591de01d21b5",
-        "control-id": "cis_saas-laps_policy",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.4.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "laps_policy"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "5118c2b0-ebb5-52a1-b245-e151fa7c88a7",
-        "control-id": "cis_saas-mfa_registration_report",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.2.3.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "mfa_registration_report"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "b3f4eadb-2f25-5c6a-97f5-0c3e9064c25c",
-        "control-id": "cis_saas-named_locations",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.2.2.14",
-        "props": [
-         {
-          "name": "label",
-          "value": "named_locations"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "4ba6479b-a068-5eb7-afc3-41c8fb791968",
-        "control-id": "cis_saas-on_premises_synchronization",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.8.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "on_premises_synchronization"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "cae036e0-18bd-5c50-97f4-a2a6bff9c8a2",
-        "control-id": "cis_saas-per_user_mfa",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.1.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "per_user_mfa"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "6a8d7353-e944-515f-9a30-4fda88069626",
-        "control-id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.3.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "a4851af9-e260-508e-946c-dff7180f2a95",
-        "control-id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.3.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "dd9bfc81-aea2-5137-91d9-169959375bc4",
-        "control-id": "cis_saas-pim_role_assignments",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): 5.3.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "pim_role_assignments"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.entra"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "e1dc88cc-267c-58d9-a906-3fa050073da7",
-        "control-id": "cis_saas-cis_m365_v7.entra-1",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "cis_m365_v7.entra#1"
          },
          {
           "name": "rego-package",
@@ -178245,9 +177220,84 @@
         ]
        },
        {
+        "uuid": "6a8d7353-e944-515f-9a30-4fda88069626",
+        "control-id": "cis_saas-pim_approval_62e90394-69f5-4237-9190-012177145e10",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "pim_approval_62e90394-69f5-4237-9190-012177145e10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.entra"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a4851af9-e260-508e-946c-dff7180f2a95",
+        "control-id": "cis_saas-pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.entra"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e1dc88cc-267c-58d9-a906-3fa050073da7",
+        "control-id": "cis_saas-cis_m365_v7.entra-1",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally",
+        "props": [
+         {
+          "name": "label",
+          "value": "cis_m365_v7.entra#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.entra"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "1ffedd4e-d762-58eb-9380-1b0eb54fa595",
         "control-id": "cis_saas-cis_m365_v7.entra-2",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): CIS %s: activating the %s role does not require approval, so an eligible principal can elevate unilaterally",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing",
         "props": [
          {
           "name": "label",
@@ -178272,7 +177322,7 @@
        {
         "uuid": "d6b5b009-80e1-58b5-9fe0-b139c0f40ca6",
         "control-id": "cis_saas-cis_m365_v7.entra-3",
-        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): CIS %s: activating the %s role requires approval but no approvers are assigned, so the requirement gates nothing",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/entra_validation.rego (package cis_m365_v7.entra); see the rule body.",
         "props": [
          {
           "name": "label",
@@ -178497,7 +177547,7 @@
        {
         "uuid": "ec4d9a98-5a9a-5508-99ed-635dc86bd230",
         "control-id": "cis_saas-CIS-6.3.2",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): OWA mailbox policy '%s' permits adding personal accounts and third-party storage in Outlook on the web",
+        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): the default OWA mailbox policy '%s' has %s True, so users can add personal accounts to Outlook alongside their work mailbox",
         "props": [
          {
           "name": "label",
@@ -178520,209 +177570,9 @@
         ]
        },
        {
-        "uuid": "a56e9ba6-19fa-58ab-9c93-514867e7f41f",
-        "control-id": "cis_saas-audit_bypass_associations",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.1.3",
-        "props": [
-         {
-          "name": "label",
-          "value": "audit_bypass_associations"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "9a11f0ff-7880-5548-bb4e-00ee724f8ab1",
-        "control-id": "cis_saas-external_in_outlook",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.2.3",
-        "props": [
-         {
-          "name": "label",
-          "value": "external_in_outlook"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "8c10a7b1-5490-5f5d-83c7-c000917114df",
-        "control-id": "cis_saas-mailbox_audit",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.1.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "mailbox_audit"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "1c32dd98-d38f-504f-88e7-7f3af2e361ba",
-        "control-id": "cis_saas-organization_config",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.1.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "organization_config"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "c0c92a96-e1c7-5e76-b55c-c178e4b7fae1",
-        "control-id": "cis_saas-owa_mailbox_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.5.3",
-        "props": [
-         {
-          "name": "label",
-          "value": "owa_mailbox_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "f3ad457a-6b4e-5c8c-91b7-903e56f30564",
-        "control-id": "cis_saas-role_assignment_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.3.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "role_assignment_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "e7be6c83-a520-5b36-ba91-295a49e1cdbb",
-        "control-id": "cis_saas-transport_config",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.5.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "transport_config"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "d0e78d9b-c71d-5316-a6c9-1fb47fccaa7a",
-        "control-id": "cis_saas-transport_rules",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): 6.2.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "transport_rules"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.exchange"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/exchange_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "3744ffa3-2437-5c53-b51c-0db045abe256",
         "control-id": "cis_saas-cis_m365_v7.exchange-1",
-        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/exchange_validation.rego (package cis_m365_v7.exchange); see the rule body.",
         "props": [
          {
           "name": "label",
@@ -179072,61 +177922,11 @@
        {
         "uuid": "c63d3eec-82fa-54f1-a560-a3f6322d56c2",
         "control-id": "cis_saas-cis_m365_v7.fabric-2",
-        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/fabric_validation.rego (package cis_m365_v7.fabric); see the rule body.",
         "props": [
          {
           "name": "label",
           "value": "cis_m365_v7.fabric#2"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.fabric"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "1bc49fd1-48ee-5a96-b7ce-7ddef8f3bc6c",
-        "control-id": "cis_saas-cis_m365_v7.fabric-3",
-        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "cis_m365_v7.fabric#3"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.fabric"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "57679b53-e839-5b9c-8826-28a2ca5a1803",
-        "control-id": "cis_saas-CIS-9.1.1",
-        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): Fabric tenant settings were not collected, so whether guest user access is restricted could not be established -- section 9 was not evaluated (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "CIS 9.1.1"
          },
          {
           "name": "rego-package",
@@ -179195,59 +177995,9 @@
         ]
        },
        {
-        "uuid": "68b07d38-45d2-5796-b703-2b6a133c4211",
-        "control-id": "cis_saas-device_management_settings",
-        "description": "Evaluated by Rego package cis_m365_v7.intune (benchmarks/cis/saas/m365_v7/intune_validation.rego): 4.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "device_management_settings"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.intune"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/intune_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "14432925-a05e-5977-b763-9f57789cb53f",
-        "control-id": "cis_saas-enrollment_configurations",
-        "description": "Evaluated by Rego package cis_m365_v7.intune (benchmarks/cis/saas/m365_v7/intune_validation.rego): 4.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "enrollment_configurations"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.intune"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/intune_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "eddf35d5-20d7-5130-9ad4-7ef6ddf28668",
         "control-id": "cis_saas-cis_m365_v7.intune-1",
-        "description": "Evaluated by Rego package cis_m365_v7.intune (benchmarks/cis/saas/m365_v7/intune_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.intune (benchmarks/cis/saas/m365_v7/intune_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/intune_validation.rego (package cis_m365_v7.intune); see the rule body.",
         "props": [
          {
           "name": "label",
@@ -179320,59 +178070,9 @@
         ]
        },
        {
-        "uuid": "4edc869b-51a5-505f-bd78-8f8dd631ed08",
-        "control-id": "cis_saas-dlp_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.purview (benchmarks/cis/saas/m365_v7/purview_validation.rego): 3.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "dlp_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.purview"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/purview_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "5472827e-53fc-5d13-bcbd-f3cf600ffcb6",
-        "control-id": "cis_saas-label_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.purview (benchmarks/cis/saas/m365_v7/purview_validation.rego): 3.3.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "label_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.purview"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/purview_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "8f51d976-2724-5c93-a5ce-7589fd94e048",
         "control-id": "cis_saas-cis_m365_v7.purview-1",
-        "description": "Evaluated by Rego package cis_m365_v7.purview (benchmarks/cis/saas/m365_v7/purview_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.purview (benchmarks/cis/saas/m365_v7/purview_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/purview_validation.rego (package cis_m365_v7.purview); see the rule body.",
         "props": [
          {
           "name": "label",
@@ -179620,338 +178320,13 @@
         ]
        },
        {
-        "uuid": "f9aa6dfa-70bb-5274-9e2f-2abf6d4b51bc",
-        "control-id": "cis_saas-DefaultLinkPermission",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.11",
-        "props": [
-         {
-          "name": "label",
-          "value": "DefaultLinkPermission"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "1b1fe520-d909-592d-b0c0-10e59bbb27a3",
-        "control-id": "cis_saas-DefaultSharingLinkType",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.7",
-        "props": [
-         {
-          "name": "label",
-          "value": "DefaultSharingLinkType"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "15d67350-4633-5cd7-9f39-0f87a8a60a02",
-        "control-id": "cis_saas-DisallowInfectedFileDownload",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.3.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "DisallowInfectedFileDownload"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "79160e86-0508-56c0-ab98-ef7ace640d4f",
-        "control-id": "cis_saas-EmailAttestationRequired",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.10",
-        "props": [
-         {
-          "name": "label",
-          "value": "EmailAttestationRequired"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "bf64c9d0-9753-5a7e-a12a-94235c26f146",
-        "control-id": "cis_saas-EnableAzureADB2BIntegration",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.2",
-        "props": [
-         {
-          "name": "label",
-          "value": "EnableAzureADB2BIntegration"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "fdb08897-d620-5dc8-8c05-0a1305b93515",
-        "control-id": "cis_saas-ExternalUserExpirationRequired",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.9",
-        "props": [
-         {
-          "name": "label",
-          "value": "ExternalUserExpirationRequired"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "548f6d89-6680-5a64-aa95-d16ff861eafa",
-        "control-id": "cis_saas-LegacyAuthProtocolsEnabled",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "LegacyAuthProtocolsEnabled"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "5d7196e7-e0a9-53b4-bed8-6c2fdedf1610",
-        "control-id": "cis_saas-OneDriveSharingCapability",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.4",
-        "props": [
-         {
-          "name": "label",
-          "value": "OneDriveSharingCapability"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "7aa6f426-55db-5026-9f6d-a5aa28ec384e",
-        "control-id": "cis_saas-PreventExternalUsersFromResharing",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.5",
-        "props": [
-         {
-          "name": "label",
-          "value": "PreventExternalUsersFromResharing"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "3213a760-805a-58d6-bc94-6ec072afdf84",
-        "control-id": "cis_saas-SharingCapability",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.3",
-        "props": [
-         {
-          "name": "label",
-          "value": "SharingCapability"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "9d1c4571-0b43-5b25-b890-cdd80fd9c0c2",
-        "control-id": "cis_saas-SharingDomainRestrictionMode",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.8",
-        "props": [
-         {
-          "name": "label",
-          "value": "SharingDomainRestrictionMode"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "8ca80a16-bf3c-5393-ae4c-d910a2d0edda",
-        "control-id": "cis_saas-tenant",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): 7.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "tenant"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "401f0c5e-5553-5d5c-abf2-fd75445f0528",
         "control-id": "cis_saas-cis_m365_v7.sharepoint-1",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/sharepoint_validation.rego (package cis_m365_v7.sharepoint); see the rule body.",
         "props": [
          {
           "name": "label",
           "value": "cis_m365_v7.sharepoint#1"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.sharepoint"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/sharepoint_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "30efad82-7999-5869-83d7-eac4cc7c76ee",
-        "control-id": "cis_saas-cis_m365_v7.sharepoint-2",
-        "description": "Evaluated by Rego package cis_m365_v7.sharepoint (benchmarks/cis/saas/m365_v7/sharepoint_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
-        "props": [
-         {
-          "name": "label",
-          "value": "cis_m365_v7.sharepoint#2"
          },
          {
           "name": "rego-package",
@@ -180022,7 +178397,7 @@
        {
         "uuid": "1998adf7-f866-5907-89e3-4f6b8bd4fc4e",
         "control-id": "cis_saas-CIS-8.2.1",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): external domains are not restricted in the Teams admin center -- federation is open to every domain rather than an allow list",
+        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): external domains are not restricted in the Teams admin center -- federation is open to every known domain rather than an allow list",
         "props": [
          {
           "name": "label",
@@ -180370,109 +178745,9 @@
         ]
        },
        {
-        "uuid": "4b570776-c809-5ec3-95f3-1604d4c56b35",
-        "control-id": "cis_saas-client_configuration",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): 8.1.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "client_configuration"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.teams"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/teams_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "8bd6b1df-c5e8-586d-b5a8-a322929954ce",
-        "control-id": "cis_saas-federation_configuration",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): 8.2.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "federation_configuration"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.teams"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/teams_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "728d75fd-dc25-549b-bcc1-10b8e2544a10",
-        "control-id": "cis_saas-meeting_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): 8.5.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "meeting_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.teams"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/teams_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "d5e305c1-2249-5c69-adb2-2fd1cdf39a7a",
-        "control-id": "cis_saas-messaging_policies",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): 8.6.1",
-        "props": [
-         {
-          "name": "label",
-          "value": "messaging_policies"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cis_m365_v7.teams"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/cis/saas/m365_v7/teams_validation.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "039fcb64-4339-5b12-a73e-01a0320e94a5",
         "control-id": "cis_saas-cis_m365_v7.teams-1",
-        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): CIS %s: could not be evaluated -- %s (this is not a pass)",
+        "description": "Evaluated by Rego package cis_m365_v7.teams (benchmarks/cis/saas/m365_v7/teams_validation.rego): Implemented by a Rego rule in benchmarks/cis/saas/m365_v7/teams_validation.rego (package cis_m365_v7.teams); see the rule body.",
         "props": [
          {
           "name": "label",

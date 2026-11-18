@@ -38,14 +38,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 76
-#     cited: 68
+#     checks: 59
+#     cited: 53
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.entra
 
 import rego.v1

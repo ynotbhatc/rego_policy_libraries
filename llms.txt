@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 29,297 control-level checks in 1,052 policy files, mapped to 190 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 29,221 control-level checks in 1,052 policy files, mapped to 190 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -38,7 +38,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
   (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
   `compliance_percentage` and per-section results.
 - Missing evidence fails: a control whose facts were not collected reports "evidence missing"; it never passes by default.
-- Size at release 2.5.0: 29,297 control-level checks in 1,052 policy files, mapped to 190 framework catalogs.
+- Size at release 2.5.0: 29,221 control-level checks in 1,052 policy files, mapped to 190 framework catalogs.
 - Release bundle (OCI, built with OPA 1.10.0): `ghcr.io/ynotbhatc/rego_policy_libraries:<version>`, for example
   `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
