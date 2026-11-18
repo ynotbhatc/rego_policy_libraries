@@ -20,6 +20,17 @@ package pci_dss.security_testing.requirement_11
 
 import rego.v1
 
+# Frequencies were checked on 2026-11-17 against PCI SSC's public SAQ D for Service Providers (v4.0) rows
+# 11.2.1, 11.3.1, 11.3.1.1, 11.3.2, 11.4.2-11.4.6, 11.5.1, 11.5.2 and 11.6.1, and the v4.0 -> v4.0.1
+# change to 6.3.3 (one-month installation applies to critical patches only). The standard's text is
+# licensed and is not reproduced; ids and parameter values are facts. Numbers are compared only when they
+# are numbers (OPA orders every string above every number).
+
+_num_le(x, n) if {
+	is_number(x)
+	x <= n
+}
+
 # =================================================================
 # 11.1 - Processes and mechanisms for testing security
 # =================================================================
@@ -43,7 +54,7 @@ security_testing_roles_defined if {
 wireless_access_point_testing if {
 	input.pci.wireless.authorized_access_points.inventoried == true
 	input.pci.wireless.rogue_detection.implemented == true
-	input.pci.wireless.rogue_detection.frequency_days <= 90
+	_num_le(input.pci.wireless.rogue_detection.frequency_days, 90)
 	input.pci.wireless.unauthorized_access_points.alerts.configured == true
 	input.pci.wireless.unauthorized_access_points.response.documented == true
 }
@@ -55,7 +66,7 @@ wireless_access_point_testing if {
 # Internal vulnerability scanning
 internal_vulnerability_scanning if {
 	input.pci.vuln_scanning.internal.performed == true
-	input.pci.vuln_scanning.internal.frequency_days <= 90
+	_num_le(input.pci.vuln_scanning.internal.frequency_days, 90)
 	input.pci.vuln_scanning.internal.qualified_personnel == true
 	input.pci.vuln_scanning.internal.after_significant_changes == true
 	input.pci.vuln_scanning.internal.high_and_critical.remediated == true
@@ -65,16 +76,22 @@ internal_vulnerability_scanning if {
 # External vulnerability scanning by ASV
 external_vulnerability_scanning if {
 	input.pci.vuln_scanning.external.performed == true
-	input.pci.vuln_scanning.external.frequency_days <= 90
+	_num_le(input.pci.vuln_scanning.external.frequency_days, 90)
 	input.pci.vuln_scanning.external.asv.approved == true
 	input.pci.vuln_scanning.external.passing_scan.achieved == true
 	input.pci.vuln_scanning.external.after_significant_changes == true
 }
 
-# Vulnerability scan remediation
+# Vulnerability scan remediation: 11.3.1 high-risk and critical vulnerabilities are resolved and rescans
+# confirm it (no fixed number of days; resolving within 30 days is evidence of it), 11.3.1.1 all others
+# addressed per the entity's targeted risk analysis.
+_resolved(sev) if input.pci.vuln_remediation[sev].resolved == true
+
+_resolved(sev) if input.pci.vuln_remediation[sev].within_30_days == true
+
 vulnerability_remediation if {
-	input.pci.vuln_remediation.critical.within_30_days == true
-	input.pci.vuln_remediation.high.within_30_days == true
+	_resolved("critical")
+	_resolved("high")
 	input.pci.vuln_remediation.medium.risk_based_timeline == true
 	input.pci.vuln_remediation.tracking.implemented == true
 	input.pci.vuln_remediation.verification.rescan_after_fix == true
@@ -86,7 +103,7 @@ vulnerability_remediation if {
 
 penetration_testing if {
 	input.pci.pen_testing.performed == true
-	input.pci.pen_testing.frequency_months <= 12
+	_num_le(input.pci.pen_testing.frequency_months, 12)
 	input.pci.pen_testing.after_significant_infrastructure_changes == true
 	input.pci.pen_testing.qualified.independent_tester == true
 	input.pci.pen_testing.scope.network_layer == true
@@ -102,10 +119,21 @@ pen_test_remediation if {
 	input.pci.pen_testing.results.retained == true
 }
 
-# Segmentation testing
+# Segmentation testing: only where segmentation is used to isolate the CDE. 11.4.5 at least every 12
+# months; 11.4.6 (service providers only) at least every six months. A 6-month cadence meets both, so it
+# passes without the entity type; a 7-12 month cadence needs input.pci.entity.service_provider == false.
+_segmentation_frequency_ok if _num_le(input.pci.segmentation_testing.frequency_months, 6)
+
+_segmentation_frequency_ok if {
+	_num_le(input.pci.segmentation_testing.frequency_months, 12)
+	input.pci.entity.service_provider == false
+}
+
+segmentation_testing if input.pci.segmentation_testing.segmentation_used == false
+
 segmentation_testing if {
 	input.pci.segmentation_testing.performed == true
-	input.pci.segmentation_testing.frequency_months <= 6
+	_segmentation_frequency_ok
 	input.pci.segmentation_testing.penetration_testing_method == true
 	input.pci.segmentation_testing.confirms_isolation == true
 	input.pci.segmentation_testing.after_segmentation_changes == true
@@ -121,7 +149,6 @@ ids_ips_deployed if {
 	input.pci.ids_ips.coverage.all_cde_network_traffic == true
 	input.pci.ids_ips.signatures.current == true
 	input.pci.ids_ips.alerts.configured == true
-	input.pci.ids_ips.monitoring.real_time == true
 	input.pci.ids_ips.personnel.responds_to_alerts == true
 }
 
@@ -134,7 +161,7 @@ file_integrity_monitoring if {
 	input.pci.fim.configuration_files.covered == true
 	input.pci.fim.alerts.immediate == true
 	input.pci.fim.comparison.against_baseline == true
-	input.pci.fim.frequency_days <= 7
+	_num_le(input.pci.fim.frequency_days, 7)
 }
 
 # =================================================================
@@ -148,11 +175,16 @@ payment_page_integrity if {
 	input.pci.ecommerce.payment_pages.in_scope
 	input.pci.ecommerce.payment_pages.integrity_monitoring == true
 	input.pci.ecommerce.payment_pages.change_detection.implemented == true
-	input.pci.ecommerce.payment_pages.change_detection.frequency_days <= 7
+	_payment_page_frequency_ok
 	input.pci.ecommerce.payment_pages.script_inventory.maintained == true
-	input.pci.ecommerce.payment_pages.content_security_policy.implemented == true
 	input.pci.ecommerce.payment_pages.alerts.configured == true
 }
+
+# 11.6.1 runs at least once every seven days OR at the frequency of the entity's targeted risk analysis.
+# (A content security policy is one technique, not a requirement, and no longer gates this control.)
+_payment_page_frequency_ok if _num_le(input.pci.ecommerce.payment_pages.change_detection.frequency_days, 7)
+
+_payment_page_frequency_ok if input.pci.ecommerce.payment_pages.change_detection.tra_frequency_met == true
 
 # Every control referenced by the score, findings and roll-up has a default so a failing
 # control reports false instead of making the whole score/findings undefined.
