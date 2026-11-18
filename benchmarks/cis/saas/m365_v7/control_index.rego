@@ -14,7 +14,7 @@
 #     cited: 0
 #     density: unrecognised
 #     basis: role
-#     tested: false
+#     tested: true
 #     entrypoint: none
 #     guard: n/a
 #     as_of: v2.5.0
