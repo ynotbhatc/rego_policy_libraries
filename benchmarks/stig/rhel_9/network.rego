@@ -75,24 +75,27 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
+# a kernel module is disabled the way the check requires: an uncommented `install <mod> /bin/false` and
+# `blacklist <mod>` in /etc/modprobe.conf or /etc/modprobe.d/* (input.modprobe[<mod>] = {install, blacklisted})
+_module_disabled(mod) if {
+	m := input.modprobe[mod]
+	m.install == "/bin/false"
+	m.blacklisted == true
+}
+
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
 
 # RHEL-09-251015 | V-257936 | CAT II
-# Firewall must be active
+# systemctl is-active firewalld
+missing_rhel_09_251015 := [concat(".", p) | some p in [["services", "firewalld"]]; not _collected(p)]
+
 default firewall_active := false
 
 firewall_active if {
-	input.firewall.active == true
-}
-
-firewall_active if {
-	input.services.firewalld == "active"
-}
-
-firewall_active if {
-	input.services.nftables == "active"
+	count(missing_rhel_09_251015) == 0
+	_kw(["services", "firewalld"]) == "active"
 }
 
 status_rhel_09_251015 := "Not_a_Finding" if firewall_active
@@ -101,7 +104,9 @@ else := "Open"
 
 detail_rhel_09_251015 := "RHEL-09-251015: Not_a_Finding" if firewall_active
 
-else := "RHEL-09-251015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251015", concat(", ", missing_rhel_09_251015)]) if count(missing_rhel_09_251015) > 0
+
+else := "RHEL-09-251015: check failed — firewalld must be active (systemctl is-active firewalld)"
 
 finding_rhel_09_251015 := {
 	"vuln_id": "V-257936",
@@ -115,16 +120,18 @@ finding_rhel_09_251015 := {
 }
 
 # RHEL-09-253075 | V-257970 | CAT II
-# IP forwarding must be disabled
+# runtime net.ipv4.conf.all.forwarding (sysctl)
+missing_rhel_09_253075 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.forwarding"]]; not _collected(p)]
+
 default ip_forwarding_disabled := false
 
 ip_forwarding_disabled if {
-	input.kernel_params["net.ipv4.ip_forward"] == "0"
-	input.network_config.ipv4_forwarding == false
+	count(missing_rhel_09_253075) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.forwarding"]) == "0"
 }
 
 ip_forwarding_disabled if {
-	input.kernel_params["net.ipv4.ip_forward"] == "0"
+	_attested("rhel_09_253075_router_documented")
 }
 
 status_rhel_09_253075 := "Not_a_Finding" if ip_forwarding_disabled
@@ -133,26 +140,30 @@ else := "Open"
 
 detail_rhel_09_253075 := "RHEL-09-253075: Not_a_Finding" if ip_forwarding_disabled
 
-else := "RHEL-09-253075: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253075", concat(", ", missing_rhel_09_253075)]) if count(missing_rhel_09_253075) > 0
+
+else := "RHEL-09-253075: check failed — net.ipv4.conf.all.forwarding must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253075_router_documented)"
 
 finding_rhel_09_253075 := {
 	"vuln_id": "V-257970",
 	"stig_id": "RHEL-09-253075",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must not enable IPv4 packet forwarding unless the system is a router.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_253075,
 	"detail": detail_rhel_09_253075,
-	"fix_text": "Disable IP forwarding: Set net.ipv4.ip_forward=0 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.conf.all.forwarding = 0 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253015 | V-257958 | CAT II
-# ICMP redirects must not be accepted (IPv4)
+# runtime net.ipv4.conf.all.accept_redirects (sysctl)
+missing_rhel_09_253015 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.accept_redirects"]]; not _collected(p)]
+
 default icmp_redirect_accept_disabled := false
 
 icmp_redirect_accept_disabled if {
-	input.kernel_params["net.ipv4.conf.all.accept_redirects"] == "0"
-	input.kernel_params["net.ipv4.conf.default.accept_redirects"] == "0"
+	count(missing_rhel_09_253015) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.accept_redirects"]) == "0"
 }
 
 status_rhel_09_253015 := "Not_a_Finding" if icmp_redirect_accept_disabled
@@ -161,7 +172,9 @@ else := "Open"
 
 detail_rhel_09_253015 := "RHEL-09-253015: Not_a_Finding" if icmp_redirect_accept_disabled
 
-else := "RHEL-09-253015: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253015", concat(", ", missing_rhel_09_253015)]) if count(missing_rhel_09_253015) > 0
+
+else := "RHEL-09-253015: check failed — net.ipv4.conf.all.accept_redirects must be 0"
 
 finding_rhel_09_253015 := {
 	"vuln_id": "V-257958",
@@ -171,16 +184,22 @@ finding_rhel_09_253015 := {
 	"check_type": "machine",
 	"status": status_rhel_09_253015,
 	"detail": detail_rhel_09_253015,
-	"fix_text": "Set net.ipv4.conf.all.accept_redirects=0 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.conf.all.accept_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253065 | V-257968 | CAT II
-# ICMP redirects must not be sent
+# runtime net.ipv4.conf.all.send_redirects (sysctl)
+missing_rhel_09_253065 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.send_redirects"]]; not _collected(p)]
+
 default icmp_redirect_send_disabled := false
 
 icmp_redirect_send_disabled if {
-	input.kernel_params["net.ipv4.conf.all.send_redirects"] == "0"
-	input.kernel_params["net.ipv4.conf.default.send_redirects"] == "0"
+	count(missing_rhel_09_253065) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.send_redirects"]) == "0"
+}
+
+icmp_redirect_send_disabled if {
+	_attested("rhel_09_253065_redirects_documented")
 }
 
 status_rhel_09_253065 := "Not_a_Finding" if icmp_redirect_send_disabled
@@ -189,26 +208,30 @@ else := "Open"
 
 detail_rhel_09_253065 := "RHEL-09-253065: Not_a_Finding" if icmp_redirect_send_disabled
 
-else := "RHEL-09-253065: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253065", concat(", ", missing_rhel_09_253065)]) if count(missing_rhel_09_253065) > 0
+
+else := "RHEL-09-253065: check failed — net.ipv4.conf.all.send_redirects must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253065_redirects_documented)"
 
 finding_rhel_09_253065 := {
 	"vuln_id": "V-257968",
 	"stig_id": "RHEL-09-253065",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must not send Internet Control Message Protocol (ICMP) redirects.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_253065,
 	"detail": detail_rhel_09_253065,
-	"fix_text": "Set net.ipv4.conf.all.send_redirects=0 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.conf.all.send_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253020 | V-257959 | CAT II
-# Source routing must be disabled
+# runtime net.ipv4.conf.all.accept_source_route (sysctl)
+missing_rhel_09_253020 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.accept_source_route"]]; not _collected(p)]
+
 default source_routing_disabled := false
 
 source_routing_disabled if {
-	input.kernel_params["net.ipv4.conf.all.accept_source_route"] == "0"
-	input.kernel_params["net.ipv4.conf.default.accept_source_route"] == "0"
+	count(missing_rhel_09_253020) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.accept_source_route"]) == "0"
 }
 
 status_rhel_09_253020 := "Not_a_Finding" if source_routing_disabled
@@ -217,7 +240,9 @@ else := "Open"
 
 detail_rhel_09_253020 := "RHEL-09-253020: Not_a_Finding" if source_routing_disabled
 
-else := "RHEL-09-253020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253020", concat(", ", missing_rhel_09_253020)]) if count(missing_rhel_09_253020) > 0
+
+else := "RHEL-09-253020: check failed — net.ipv4.conf.all.accept_source_route must be 0"
 
 finding_rhel_09_253020 := {
 	"vuln_id": "V-257959",
@@ -227,15 +252,18 @@ finding_rhel_09_253020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_253020,
 	"detail": detail_rhel_09_253020,
-	"fix_text": "Set net.ipv4.conf.all.accept_source_route=0 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.conf.all.accept_source_route = 0 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253060 | V-257967 | CAT II
-# Bogus ICMP responses must be ignored
+# runtime net.ipv4.icmp_ignore_bogus_error_responses (sysctl)
+missing_rhel_09_253060 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.icmp_ignore_bogus_error_responses"]]; not _collected(p)]
+
 default icmp_bogus_error_responses := false
 
 icmp_bogus_error_responses if {
-	input.kernel_params["net.ipv4.icmp_ignore_bogus_error_responses"] == "1"
+	count(missing_rhel_09_253060) == 0
+	_str(["kernel_params", "net.ipv4.icmp_ignore_bogus_error_responses"]) == "1"
 }
 
 status_rhel_09_253060 := "Not_a_Finding" if icmp_bogus_error_responses
@@ -244,7 +272,9 @@ else := "Open"
 
 detail_rhel_09_253060 := "RHEL-09-253060: Not_a_Finding" if icmp_bogus_error_responses
 
-else := "RHEL-09-253060: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253060", concat(", ", missing_rhel_09_253060)]) if count(missing_rhel_09_253060) > 0
+
+else := "RHEL-09-253060: check failed — net.ipv4.icmp_ignore_bogus_error_responses must be 1"
 
 finding_rhel_09_253060 := {
 	"vuln_id": "V-257967",
@@ -254,15 +284,18 @@ finding_rhel_09_253060 := {
 	"check_type": "machine",
 	"status": status_rhel_09_253060,
 	"detail": detail_rhel_09_253060,
-	"fix_text": "Set net.ipv4.icmp_ignore_bogus_error_responses=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.icmp_ignore_bogus_error_responses = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253010 | V-257957 | CAT II
-# IPv4 TCP syncookies must be enabled
+# runtime net.ipv4.tcp_syncookies (sysctl)
+missing_rhel_09_253010 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.tcp_syncookies"]]; not _collected(p)]
+
 default tcp_syncookies_enabled := false
 
 tcp_syncookies_enabled if {
-	input.kernel_params["net.ipv4.tcp_syncookies"] == "1"
+	count(missing_rhel_09_253010) == 0
+	_str(["kernel_params", "net.ipv4.tcp_syncookies"]) == "1"
 }
 
 status_rhel_09_253010 := "Not_a_Finding" if tcp_syncookies_enabled
@@ -271,7 +304,9 @@ else := "Open"
 
 detail_rhel_09_253010 := "RHEL-09-253010: Not_a_Finding" if tcp_syncookies_enabled
 
-else := "RHEL-09-253010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253010", concat(", ", missing_rhel_09_253010)]) if count(missing_rhel_09_253010) > 0
+
+else := "RHEL-09-253010: check failed — net.ipv4.tcp_syncookies must be 1"
 
 finding_rhel_09_253010 := {
 	"vuln_id": "V-257957",
@@ -281,19 +316,18 @@ finding_rhel_09_253010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_253010,
 	"detail": detail_rhel_09_253010,
-	"fix_text": "Set net.ipv4.tcp_syncookies=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.tcp_syncookies = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-253035 | V-257962 | CAT II
-# Reverse path filter must be enabled
+# runtime net.ipv4.conf.all.rp_filter (sysctl)
+missing_rhel_09_253035 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.rp_filter"]]; not _collected(p)]
+
 default rp_filter_enabled := false
 
 rp_filter_enabled if {
-	input.kernel_params["net.ipv4.conf.all.rp_filter"] == "1"
-}
-
-rp_filter_enabled if {
-	input.kernel_params["net.ipv4.conf.all.rp_filter"] == "2"
+	count(missing_rhel_09_253035) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.rp_filter"]) == "1"
 }
 
 status_rhel_09_253035 := "Not_a_Finding" if rp_filter_enabled
@@ -302,7 +336,9 @@ else := "Open"
 
 detail_rhel_09_253035 := "RHEL-09-253035: Not_a_Finding" if rp_filter_enabled
 
-else := "RHEL-09-253035: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253035", concat(", ", missing_rhel_09_253035)]) if count(missing_rhel_09_253035) > 0
+
+else := "RHEL-09-253035: check failed — net.ipv4.conf.all.rp_filter must be 1"
 
 finding_rhel_09_253035 := {
 	"vuln_id": "V-257962",
@@ -312,51 +348,70 @@ finding_rhel_09_253035 := {
 	"check_type": "machine",
 	"status": status_rhel_09_253035,
 	"detail": detail_rhel_09_253035,
-	"fix_text": "Set net.ipv4.conf.all.rp_filter=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set net.ipv4.conf.all.rp_filter = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-291040 | V-258040 | CAT II
-# Wireless interfaces must be disabled unless mission requires
+# configured wireless devices (nmcli device status, TYPE wifi); no physical radio is Not Applicable
+missing_rhel_09_291040 := [concat(".", p) | some p in [["wireless_interfaces"]]; not _collected(p)]
+
 default wireless_disabled := false
 
 wireless_disabled if {
-	input.network_config.wireless_disabled == true
+	count(missing_rhel_09_291040) == 0
+	ifs := input.wireless_interfaces
+	is_array(ifs)
+	count(ifs) == 0
 }
 
 wireless_disabled if {
-	is_array(input.wireless_interfaces)
-	count(input.wireless_interfaces) == 0
+	_attested("rhel_09_291040_wireless_approved")
+}
+
+default na_rhel_09_291040 := false
+
+na_rhel_09_291040 if {
+	input.wireless_radios_present == false
 }
 
 status_rhel_09_291040 := "Not_a_Finding" if wireless_disabled
+
+else := "Not_Applicable" if na_rhel_09_291040
 
 else := "Open"
 
 detail_rhel_09_291040 := "RHEL-09-291040: Not_a_Finding" if wireless_disabled
 
-else := "RHEL-09-291040: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-291040: Not_Applicable — the system has no physical wireless network radios" if na_rhel_09_291040
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291040", concat(", ", missing_rhel_09_291040)]) if count(missing_rhel_09_291040) > 0
+
+else := "RHEL-09-291040: check failed — no wireless interface may be configured unless documented and approved by the ISSO (input.attest.rhel_09_291040_wireless_approved)"
 
 finding_rhel_09_291040 := {
 	"vuln_id": "V-258040",
 	"stig_id": "RHEL-09-291040",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 wireless network adapters must be disabled.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_291040,
 	"detail": detail_rhel_09_291040,
-	"fix_text": "Disable wireless: nmcli radio wifi off or disable in NetworkManager",
+	"fix_text": "Disable the wireless interfaces: nmcli radio all off",
 }
 
 # RHEL-09-291035 | V-258039 | CAT II
-# Bluetooth kernel module must be disabled
+# uncommented modprobe lines for bluetooth: input.modprobe["bluetooth"] = {install: <command>, blacklisted: bool}
+missing_rhel_09_291035 := [concat(".", p) | some p in [["modprobe", "bluetooth"]]; not _collected(p)]
+
 default bluetooth_module_disabled := false
 
 bluetooth_module_disabled if {
-	input.kernel_modules.bluetooth.blacklisted == true
+	count(missing_rhel_09_291035) == 0
+	_module_disabled("bluetooth")
 }
 
 bluetooth_module_disabled if {
-	input.kernel_modules.bluetooth.status == "disabled"
+	_attested("rhel_09_291035_bluetooth_documented")
 }
 
 status_rhel_09_291035 := "Not_a_Finding" if bluetooth_module_disabled
@@ -365,26 +420,36 @@ else := "Open"
 
 detail_rhel_09_291035 := "RHEL-09-291035: Not_a_Finding" if bluetooth_module_disabled
 
-else := "RHEL-09-291035: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291035", concat(", ", missing_rhel_09_291035)]) if count(missing_rhel_09_291035) > 0
+
+else := "RHEL-09-291035: check failed — /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install bluetooth /bin/false' and 'blacklist bluetooth', or its use must be documented with the ISSO (input.attest.rhel_09_291035_bluetooth_documented)"
 
 finding_rhel_09_291035 := {
 	"vuln_id": "V-258039",
 	"stig_id": "RHEL-09-291035",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 Bluetooth must be disabled.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_291035,
 	"detail": detail_rhel_09_291035,
-	"fix_text": "Blacklist bluetooth: echo 'install bluetooth /bin/false' >> /etc/modprobe.d/bluetooth.conf",
+	"fix_text": "Add 'install bluetooth /bin/false' and 'blacklist bluetooth' to /etc/modprobe.d/bluetooth.conf",
 }
 
 # RHEL-09-251040 | V-257941 | CAT II
-# Network interfaces must not be in promiscuous mode
+# interfaces flagged PROMISC by ip link
+missing_rhel_09_251040 := [concat(".", p) | some p in [["promiscuous_interfaces"]]; not _collected(p)]
+
 default no_promiscuous_interfaces := false
 
 no_promiscuous_interfaces if {
-	is_array(input.promiscuous_interfaces)
-	count(input.promiscuous_interfaces) == 0
+	count(missing_rhel_09_251040) == 0
+	ifs := input.promiscuous_interfaces
+	is_array(ifs)
+	count(ifs) == 0
+}
+
+no_promiscuous_interfaces if {
+	_attested("rhel_09_251040_promisc_approved")
 }
 
 status_rhel_09_251040 := "Not_a_Finding" if no_promiscuous_interfaces
@@ -393,17 +458,19 @@ else := "Open"
 
 detail_rhel_09_251040 := "RHEL-09-251040: Not_a_Finding" if no_promiscuous_interfaces
 
-else := "RHEL-09-251040: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251040", concat(", ", missing_rhel_09_251040)]) if count(missing_rhel_09_251040) > 0
+
+else := "RHEL-09-251040: check failed — no interface may be in promiscuous mode unless approved by the ISSO and documented (input.attest.rhel_09_251040_promisc_approved)"
 
 finding_rhel_09_251040 := {
 	"vuln_id": "V-257941",
 	"stig_id": "RHEL-09-251040",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 network interfaces must not be in promiscuous mode.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_251040,
 	"detail": detail_rhel_09_251040,
-	"fix_text": "Disable promiscuous mode: ip link set <interface> promisc off",
+	"fix_text": "Turn promiscuous mode off: ip link set dev <if> multicast off promisc off",
 }
 
 # =============================================================================

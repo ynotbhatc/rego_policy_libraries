@@ -760,3 +760,99 @@ R("configuration_management", "RHEL-09-231030", "var_log_audit_separate",
   "the directory of auditd log_file (the audit data path) must be a separate mounted file system",
   "Create a separate file system for the audit data path (e.g. /var/log/audit) and mount it in /etc/fstab",
   comment="the audit data path is the directory of auditd.conf log_file; it must be its own mount")
+
+
+# ── file_permissions ────────────────────────────────────────────────────────────────────────────
+def empty_list_rule(sec, sid, name, path, sample, expect, fix, comment, **kw):
+    p = '["' + '", "'.join(path) + '"]'
+    R(sec, sid, name, [tuple(path)],
+      [[f"xs := object.get(input, {p}, null)", "is_array(xs)", "count(xs) == 0"]],
+      nest(path, []), [nest(path, [sample])], expect, fix, comment=comment, **kw)
+
+
+empty_list_rule("file_permissions", "RHEL-09-232255", "no_unowned_files", ["file_permissions", "unowned_files"], "/srv/x",
+                "no local file or directory may lack a valid owner", "Assign an owner to each listed file: chown <user> <file>",
+                "files found by find <local mounts> -xdev -nouser")
+empty_list_rule("file_permissions", "RHEL-09-232250", "no_ungrouped_files", ["file_permissions", "ungrouped_files"], "/srv/x",
+                "no local file or directory may lack a valid group", "Assign a group to each listed file: chgrp <group> <file>",
+                "files found by find <local mounts> -xdev -nogroup")
+
+for sid, name, key, mx, bad in (("RHEL-09-232075", "passwd_permissions_ok", "etc_passwd", "0644", "0664"),
+                                ("RHEL-09-232270", "shadow_permissions_ok", "etc_shadow", "0000", "0400"),
+                                ("RHEL-09-232055", "group_permissions_ok", "etc_group", "0644", "0666"),
+                                ("RHEL-09-232065", "gshadow_permissions_ok", "etc_gshadow", "0000", "0640")):
+    f = "/etc/" + key[4:]
+    R("file_permissions", sid, name, [("file_permissions", key, "mode")],
+      [[f'mode_within(input.file_permissions.{key}.mode, "{mx}")']],
+      {"file_permissions": {key: {"mode": mx}}}, [{"file_permissions": {key: {"mode": bad}}}, {"file_permissions": {key: {"mode": "rw-r--r--"}}}],
+      f"{f} must have mode {mx}" + (" or less permissive" if mx != "0000" else ""), f"chmod {mx} {f}",
+      comment=f"mode of {f} (stat -c %a) as an octal string",
+      pass_cases=[{"file_permissions": {key: {"mode": "0" if mx == "0000" else "600"}}}])
+
+empty_list_rule("file_permissions", "RHEL-09-232020", "lib_permissions_ok", ["file_permissions", "library_files_group_or_world_writable"],
+                "/usr/lib64/libx.so.1 0775", "no shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 may be group- or world-writable",
+                "chmod 755 each listed library file", "output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022")
+empty_list_rule("file_permissions", "RHEL-09-232200", "lib_dirs_owned_root", ["file_permissions", "library_files_not_owned_by_root"],
+                "/usr/lib64/libx.so.1 nobody", "every shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 must be owned by root",
+                "chown root each listed library file", "output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root")
+empty_list_rule("file_permissions", "RHEL-09-232010", "sys_commands_permissions_ok", ["file_permissions", "system_commands_group_or_world_writable"],
+                "/usr/local/bin/tool", "no system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin may be group- or world-writable",
+                "chmod 755 each listed command", "output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022")
+
+R("file_permissions", "RHEL-09-232050", "home_dir_permissions_ok", [("file_permissions", "interactive_home_dirs")],
+  [["dirs := input.file_permissions.interactive_home_dirs", "is_array(dirs)",
+    'every d in dirs {\n\tmode_within(d.mode, "0750")\n}']],
+  {"file_permissions": {"interactive_home_dirs": [{"path": "/home/disauser", "mode": "700"}]}},
+  [{"file_permissions": {"interactive_home_dirs": [{"path": "/home/disauser", "mode": "755"}]}},
+   {"file_permissions": {"interactive_home_dirs": [{"path": "/home/disauser"}]}}],
+  "the home directory of every local interactive user (UID >= 1000, login shell not nologin) must have mode 0750 or less permissive",
+  "chmod 0750 each listed home directory",
+  comment="stat -L -c '%a %n' of each interactive user's home directory: [{path, mode}]",
+  pass_cases=[{"file_permissions": {"interactive_home_dirs": []}}])
+
+
+# ── network ─────────────────────────────────────────────────────────────────────────────────────
+R("network", "RHEL-09-251015", "firewall_active", [("services", "firewalld")],
+  [['_kw(["services", "firewalld"]) == "active"']],
+  {"services": {"firewalld": "active"}}, [{"services": {"firewalld": "inactive"}}, {"services": {"firewalld": "inactive", "nftables": "active"}}],
+  "firewalld must be active (systemctl is-active firewalld)", "Enable firewalld: systemctl enable --now firewalld",
+  comment="systemctl is-active firewalld")
+
+for sid, name, key, want, att in (
+        ("RHEL-09-253075", "ip_forwarding_disabled", "net.ipv4.conf.all.forwarding", "0", "rhel_09_253075_router_documented"),
+        ("RHEL-09-253015", "icmp_redirect_accept_disabled", "net.ipv4.conf.all.accept_redirects", "0", None),
+        ("RHEL-09-253065", "icmp_redirect_send_disabled", "net.ipv4.conf.all.send_redirects", "0", "rhel_09_253065_redirects_documented"),
+        ("RHEL-09-253020", "source_routing_disabled", "net.ipv4.conf.all.accept_source_route", "0", None),
+        ("RHEL-09-253060", "icmp_bogus_error_responses", "net.ipv4.icmp_ignore_bogus_error_responses", "1", None),
+        ("RHEL-09-253010", "tcp_syncookies_enabled", "net.ipv4.tcp_syncookies", "1", None),
+        ("RHEL-09-253035", "rp_filter_enabled", "net.ipv4.conf.all.rp_filter", "1", None)):
+    bad = ["1"] if want == "0" else (["0", "2"] if key.endswith("rp_filter") else ["0"])
+    extra = {}
+    if att:
+        extra = dict(attest_alts=[[f'_attested("{att}")']],
+                     pass_cases=[{"kernel_params": {key: int(want)}}, {"kernel_params": {key: "1"}, "attest": {att: True}}])
+    sysctl_rule("network", sid, name, key, want, bad,
+                f"{key} must be {want}" + (f", or the setting must be documented with the ISSO as an operational requirement (input.attest.{att})" if att else ""),
+                f"Set {key} = {want} in /etc/sysctl.d/ and run sysctl --system", **extra)
+
+R("network", "RHEL-09-291040", "wireless_disabled", [("wireless_interfaces",)],
+  [["ifs := input.wireless_interfaces", "is_array(ifs)", "count(ifs) == 0"]],
+  {"wireless_interfaces": []}, [{"wireless_interfaces": ["wlp7s0"]}],
+  "no wireless interface may be configured unless documented and approved by the ISSO (input.attest.rhel_09_291040_wireless_approved)",
+  "Disable the wireless interfaces: nmcli radio all off",
+  comment="configured wireless devices (nmcli device status, TYPE wifi); no physical radio is Not Applicable",
+  attest_alts=[['_attested("rhel_09_291040_wireless_approved")']],
+  na=[["input.wireless_radios_present == false"]], na_expect="the system has no physical wireless network radios",
+  na_cases=[{"wireless_interfaces": None, "wireless_radios_present": False}],
+  pass_cases=[{"wireless_interfaces": ["wlp7s0"], "attest": {"rhel_09_291040_wireless_approved": True}}])
+
+module_rule("network", "RHEL-09-291035", "bluetooth_module_disabled", "bluetooth", "rhel_09_291035_bluetooth_documented")
+
+R("network", "RHEL-09-251040", "no_promiscuous_interfaces", [("promiscuous_interfaces",)],
+  [["ifs := input.promiscuous_interfaces", "is_array(ifs)", "count(ifs) == 0"]],
+  {"promiscuous_interfaces": []}, [{"promiscuous_interfaces": ["eth0"]}],
+  "no interface may be in promiscuous mode unless approved by the ISSO and documented (input.attest.rhel_09_251040_promisc_approved)",
+  "Turn promiscuous mode off: ip link set dev <if> multicast off promisc off",
+  comment="interfaces flagged PROMISC by ip link",
+  attest_alts=[['_attested("rhel_09_251040_promisc_approved")']],
+  pass_cases=[{"promiscuous_interfaces": ["eth0"], "attest": {"rhel_09_251040_promisc_approved": True}}])

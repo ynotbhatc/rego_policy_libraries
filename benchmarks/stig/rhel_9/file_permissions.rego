@@ -92,12 +92,16 @@ mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max))
 # =============================================================================
 
 # RHEL-09-232255 | V-257931 | CAT II
-# No unowned files or directories
+# files found by find <local mounts> -xdev -nouser
+missing_rhel_09_232255 := [concat(".", p) | some p in [["file_permissions", "unowned_files"]]; not _collected(p)]
+
 default no_unowned_files := false
 
 no_unowned_files if {
-	is_array(input.file_permissions.unowned_files)
-	count(input.file_permissions.unowned_files) == 0
+	count(missing_rhel_09_232255) == 0
+	xs := object.get(input, ["file_permissions", "unowned_files"], null)
+	is_array(xs)
+	count(xs) == 0
 }
 
 status_rhel_09_232255 := "Not_a_Finding" if no_unowned_files
@@ -106,7 +110,9 @@ else := "Open"
 
 detail_rhel_09_232255 := "RHEL-09-232255: Not_a_Finding" if no_unowned_files
 
-else := "RHEL-09-232255: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232255", concat(", ", missing_rhel_09_232255)]) if count(missing_rhel_09_232255) > 0
+
+else := "RHEL-09-232255: check failed — no local file or directory may lack a valid owner"
 
 finding_rhel_09_232255 := {
 	"vuln_id": "V-257931",
@@ -116,16 +122,20 @@ finding_rhel_09_232255 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232255,
 	"detail": detail_rhel_09_232255,
-	"fix_text": "Find and remediate unowned files: find / -nouser -xdev -print",
+	"fix_text": "Assign an owner to each listed file: chown <user> <file>",
 }
 
 # RHEL-09-232250 | V-257930 | CAT II
-# No ungrouped files or directories
+# files found by find <local mounts> -xdev -nogroup
+missing_rhel_09_232250 := [concat(".", p) | some p in [["file_permissions", "ungrouped_files"]]; not _collected(p)]
+
 default no_ungrouped_files := false
 
 no_ungrouped_files if {
-	is_array(input.file_permissions.ungrouped_files)
-	count(input.file_permissions.ungrouped_files) == 0
+	count(missing_rhel_09_232250) == 0
+	xs := object.get(input, ["file_permissions", "ungrouped_files"], null)
+	is_array(xs)
+	count(xs) == 0
 }
 
 status_rhel_09_232250 := "Not_a_Finding" if no_ungrouped_files
@@ -134,7 +144,9 @@ else := "Open"
 
 detail_rhel_09_232250 := "RHEL-09-232250: Not_a_Finding" if no_ungrouped_files
 
-else := "RHEL-09-232250: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232250", concat(", ", missing_rhel_09_232250)]) if count(missing_rhel_09_232250) > 0
+
+else := "RHEL-09-232250: check failed — no local file or directory may lack a valid group"
 
 finding_rhel_09_232250 := {
 	"vuln_id": "V-257930",
@@ -144,14 +156,17 @@ finding_rhel_09_232250 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232250,
 	"detail": detail_rhel_09_232250,
-	"fix_text": "Find and remediate ungrouped files: find / -nogroup -xdev -print",
+	"fix_text": "Assign a group to each listed file: chgrp <group> <file>",
 }
 
 # RHEL-09-232075 | V-257895 | CAT II
-# /etc/passwd must have mode 0644 or less
+# mode of /etc/passwd (stat -c %a) as an octal string
+missing_rhel_09_232075 := [concat(".", p) | some p in [["file_permissions", "etc_passwd", "mode"]]; not _collected(p)]
+
 default passwd_permissions_ok := false
 
 passwd_permissions_ok if {
+	count(missing_rhel_09_232075) == 0
 	mode_within(input.file_permissions.etc_passwd.mode, "0644")
 }
 
@@ -161,7 +176,9 @@ else := "Open"
 
 detail_rhel_09_232075 := "RHEL-09-232075: Not_a_Finding" if passwd_permissions_ok
 
-else := "RHEL-09-232075: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232075", concat(", ", missing_rhel_09_232075)]) if count(missing_rhel_09_232075) > 0
+
+else := "RHEL-09-232075: check failed — /etc/passwd must have mode 0644 or less permissive"
 
 finding_rhel_09_232075 := {
 	"vuln_id": "V-257895",
@@ -171,14 +188,17 @@ finding_rhel_09_232075 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232075,
 	"detail": detail_rhel_09_232075,
-	"fix_text": "Fix /etc/passwd permissions: chmod 0644 /etc/passwd",
+	"fix_text": "chmod 0644 /etc/passwd",
 }
 
 # RHEL-09-232270 | V-257934 | CAT II
-# /etc/shadow must have mode 0000
+# mode of /etc/shadow (stat -c %a) as an octal string
+missing_rhel_09_232270 := [concat(".", p) | some p in [["file_permissions", "etc_shadow", "mode"]]; not _collected(p)]
+
 default shadow_permissions_ok := false
 
 shadow_permissions_ok if {
+	count(missing_rhel_09_232270) == 0
 	mode_within(input.file_permissions.etc_shadow.mode, "0000")
 }
 
@@ -188,7 +208,9 @@ else := "Open"
 
 detail_rhel_09_232270 := "RHEL-09-232270: Not_a_Finding" if shadow_permissions_ok
 
-else := "RHEL-09-232270: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232270", concat(", ", missing_rhel_09_232270)]) if count(missing_rhel_09_232270) > 0
+
+else := "RHEL-09-232270: check failed — /etc/shadow must have mode 0000"
 
 finding_rhel_09_232270 := {
 	"vuln_id": "V-257934",
@@ -198,14 +220,17 @@ finding_rhel_09_232270 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232270,
 	"detail": detail_rhel_09_232270,
-	"fix_text": "Fix /etc/shadow permissions: chmod 0000 /etc/shadow",
+	"fix_text": "chmod 0000 /etc/shadow",
 }
 
 # RHEL-09-232055 | V-257891 | CAT II
-# /etc/group must have mode 0644 or less
+# mode of /etc/group (stat -c %a) as an octal string
+missing_rhel_09_232055 := [concat(".", p) | some p in [["file_permissions", "etc_group", "mode"]]; not _collected(p)]
+
 default group_permissions_ok := false
 
 group_permissions_ok if {
+	count(missing_rhel_09_232055) == 0
 	mode_within(input.file_permissions.etc_group.mode, "0644")
 }
 
@@ -215,7 +240,9 @@ else := "Open"
 
 detail_rhel_09_232055 := "RHEL-09-232055: Not_a_Finding" if group_permissions_ok
 
-else := "RHEL-09-232055: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232055", concat(", ", missing_rhel_09_232055)]) if count(missing_rhel_09_232055) > 0
+
+else := "RHEL-09-232055: check failed — /etc/group must have mode 0644 or less permissive"
 
 finding_rhel_09_232055 := {
 	"vuln_id": "V-257891",
@@ -225,14 +252,17 @@ finding_rhel_09_232055 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232055,
 	"detail": detail_rhel_09_232055,
-	"fix_text": "Fix /etc/group permissions: chmod 0644 /etc/group",
+	"fix_text": "chmod 0644 /etc/group",
 }
 
 # RHEL-09-232065 | V-257893 | CAT II
-# /etc/gshadow must have mode 0000
+# mode of /etc/gshadow (stat -c %a) as an octal string
+missing_rhel_09_232065 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow", "mode"]]; not _collected(p)]
+
 default gshadow_permissions_ok := false
 
 gshadow_permissions_ok if {
+	count(missing_rhel_09_232065) == 0
 	mode_within(input.file_permissions.etc_gshadow.mode, "0000")
 }
 
@@ -242,7 +272,9 @@ else := "Open"
 
 detail_rhel_09_232065 := "RHEL-09-232065: Not_a_Finding" if gshadow_permissions_ok
 
-else := "RHEL-09-232065: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232065", concat(", ", missing_rhel_09_232065)]) if count(missing_rhel_09_232065) > 0
+
+else := "RHEL-09-232065: check failed — /etc/gshadow must have mode 0000"
 
 finding_rhel_09_232065 := {
 	"vuln_id": "V-257893",
@@ -252,15 +284,20 @@ finding_rhel_09_232065 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232065,
 	"detail": detail_rhel_09_232065,
-	"fix_text": "Fix /etc/gshadow permissions: chmod 0000 /etc/gshadow",
+	"fix_text": "chmod 0000 /etc/gshadow",
 }
 
 # RHEL-09-232020 | V-257884 | CAT II
-# Library files must have mode 0755 or less
+# output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' -perm /022
+missing_rhel_09_232020 := [concat(".", p) | some p in [["file_permissions", "library_files_group_or_world_writable"]]; not _collected(p)]
+
 default lib_permissions_ok := false
 
 lib_permissions_ok if {
-	input.file_permissions.library_files_ok == true
+	count(missing_rhel_09_232020) == 0
+	xs := object.get(input, ["file_permissions", "library_files_group_or_world_writable"], null)
+	is_array(xs)
+	count(xs) == 0
 }
 
 status_rhel_09_232020 := "Not_a_Finding" if lib_permissions_ok
@@ -269,7 +306,9 @@ else := "Open"
 
 detail_rhel_09_232020 := "RHEL-09-232020: Not_a_Finding" if lib_permissions_ok
 
-else := "RHEL-09-232020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232020", concat(", ", missing_rhel_09_232020)]) if count(missing_rhel_09_232020) > 0
+
+else := "RHEL-09-232020: check failed — no shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 may be group- or world-writable"
 
 finding_rhel_09_232020 := {
 	"vuln_id": "V-257884",
@@ -279,15 +318,20 @@ finding_rhel_09_232020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232020,
 	"detail": detail_rhel_09_232020,
-	"fix_text": "Fix library permissions: find /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type f -exec chmod 755 {} \\;",
+	"fix_text": "chmod 755 each listed library file",
 }
 
 # RHEL-09-232200 | V-257920 | CAT II
-# Library dirs must be owned by root
+# output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -user root
+missing_rhel_09_232200 := [concat(".", p) | some p in [["file_permissions", "library_files_not_owned_by_root"]]; not _collected(p)]
+
 default lib_dirs_owned_root := false
 
 lib_dirs_owned_root if {
-	input.file_permissions.library_dirs_owned_root == true
+	count(missing_rhel_09_232200) == 0
+	xs := object.get(input, ["file_permissions", "library_files_not_owned_by_root"], null)
+	is_array(xs)
+	count(xs) == 0
 }
 
 status_rhel_09_232200 := "Not_a_Finding" if lib_dirs_owned_root
@@ -296,7 +340,9 @@ else := "Open"
 
 detail_rhel_09_232200 := "RHEL-09-232200: Not_a_Finding" if lib_dirs_owned_root
 
-else := "RHEL-09-232200: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232200", concat(", ", missing_rhel_09_232200)]) if count(missing_rhel_09_232200) > 0
+
+else := "RHEL-09-232200: check failed — every shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 must be owned by root"
 
 finding_rhel_09_232200 := {
 	"vuln_id": "V-257920",
@@ -306,15 +352,20 @@ finding_rhel_09_232200 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232200,
 	"detail": detail_rhel_09_232200,
-	"fix_text": "Fix library ownership: find /lib /lib64 /usr/lib /usr/lib64 ! -user root -exec chown root {} \\;",
+	"fix_text": "chown root each listed library file",
 }
 
 # RHEL-09-232010 | V-257882 | CAT II
-# System commands must have mode 0755 or less
+# output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin -perm /022
+missing_rhel_09_232010 := [concat(".", p) | some p in [["file_permissions", "system_commands_group_or_world_writable"]]; not _collected(p)]
+
 default sys_commands_permissions_ok := false
 
 sys_commands_permissions_ok if {
-	input.file_permissions.system_commands_ok == true
+	count(missing_rhel_09_232010) == 0
+	xs := object.get(input, ["file_permissions", "system_commands_group_or_world_writable"], null)
+	is_array(xs)
+	count(xs) == 0
 }
 
 status_rhel_09_232010 := "Not_a_Finding" if sys_commands_permissions_ok
@@ -323,7 +374,9 @@ else := "Open"
 
 detail_rhel_09_232010 := "RHEL-09-232010: Not_a_Finding" if sys_commands_permissions_ok
 
-else := "RHEL-09-232010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232010", concat(", ", missing_rhel_09_232010)]) if count(missing_rhel_09_232010) > 0
+
+else := "RHEL-09-232010: check failed — no system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin may be group- or world-writable"
 
 finding_rhel_09_232010 := {
 	"vuln_id": "V-257882",
@@ -333,16 +386,22 @@ finding_rhel_09_232010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232010,
 	"detail": detail_rhel_09_232010,
-	"fix_text": "Fix system command permissions: find /bin /sbin /usr/bin /usr/sbin -perm /022 -exec chmod 755 {} \\;",
+	"fix_text": "chmod 755 each listed command",
 }
 
 # RHEL-09-232050 | V-257890 | CAT II
-# All interactive local users must have home dir permissions set to 0750 or less
+# stat -L -c '%a %n' of each interactive user's home directory: [{path, mode}]
+missing_rhel_09_232050 := [concat(".", p) | some p in [["file_permissions", "interactive_home_dirs"]]; not _collected(p)]
+
 default home_dir_permissions_ok := false
 
 home_dir_permissions_ok if {
-	is_array(input.file_permissions.insecure_home_dirs)
-	count(input.file_permissions.insecure_home_dirs) == 0
+	count(missing_rhel_09_232050) == 0
+	dirs := input.file_permissions.interactive_home_dirs
+	is_array(dirs)
+	every d in dirs {
+		mode_within(d.mode, "0750")
+	}
 }
 
 status_rhel_09_232050 := "Not_a_Finding" if home_dir_permissions_ok
@@ -351,7 +410,9 @@ else := "Open"
 
 detail_rhel_09_232050 := "RHEL-09-232050: Not_a_Finding" if home_dir_permissions_ok
 
-else := "RHEL-09-232050: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232050", concat(", ", missing_rhel_09_232050)]) if count(missing_rhel_09_232050) > 0
+
+else := "RHEL-09-232050: check failed — the home directory of every local interactive user (UID >= 1000, login shell not nologin) must have mode 0750 or less permissive"
 
 finding_rhel_09_232050 := {
 	"vuln_id": "V-257890",
@@ -361,7 +422,7 @@ finding_rhel_09_232050 := {
 	"check_type": "machine",
 	"status": status_rhel_09_232050,
 	"detail": detail_rhel_09_232050,
-	"fix_text": "Fix home directory permissions: chmod 0750 /home/<username>",
+	"fix_text": "chmod 0750 each listed home directory",
 }
 
 # =============================================================================
