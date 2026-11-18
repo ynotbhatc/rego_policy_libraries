@@ -102,7 +102,25 @@ UNRESOLVED := {
 # loaded on its own (scripts/check_per_file_load.py).
 NOT_IMPLEMENTED := object.union({}, {})
 
-attestations := object.get(input, "attestations", [])
+# Input: input.attestations[] - {control_id, observed, attested_by, attested_on, evidence_ref}
+#
+# An attestation is ADMISSIBLE when all of these hold:
+#   control_id    is one of the ledger ids above (a control the library does not
+#                 evaluate from evidence). An attestation for an evaluated id or
+#                 an id the benchmark does not have is reported as a finding of
+#                 its own and never changes any control's status.
+#   observed      is a boolean: true attests that the requirement is met, false
+#                 that it was checked and is NOT met (a failure, not a pass).
+#   attested_by, evidence_ref  are non-empty strings.
+#   attested_on   is a date, YYYY-MM-DD or an RFC 3339 timestamp, that is not in
+#                 the future. The benchmark states no period after which an
+#                 attestation lapses, so none is applied here.
+# Several admissible attestations for one id: any observed false makes it fail.
+default attestations := []
+
+attestations := input.attestations if is_array(input.attestations)
+
+_ledger_ids := (object.keys(REQUIRES_ATTESTATION) | object.keys(UNRESOLVED)) | object.keys(NOT_IMPLEMENTED)
 
 # Each field must be a non-empty string. A bare `a.evidence_ref` in a rule
 # body only fails on false or undefined, so null, "" and numbers used to
@@ -112,37 +130,109 @@ _given(v) if {
 	trim_space(v) != ""
 }
 
-attested_ids := {a.control_id |
-	some a in attestations
-	_given(a.attested_by)
-	_given(a.attested_on)
-	_given(a.evidence_ref)
+# attested_on as nanoseconds since the epoch; undefined when it is not a date
+_attested_ns(v) := time.parse_ns("2006-01-02", v) if {
+	is_string(v)
+	regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}$`, v)
 }
 
-# An attestation missing any of who/when/evidence is not an attestation.
+_attested_ns(v) := time.parse_rfc3339_ns(v) if {
+	is_string(v)
+	regex.match(`^[0-9]{4}-[0-9]{2}-[0-9]{2}T`, v)
+}
+
+_future(a) if _attested_ns(a.attested_on) > time.now_ns()
+
+_for_ledger(a) if {
+	is_string(a.control_id)
+	a.control_id in _ledger_ids
+}
+
+_admissible(a) if {
+	_for_ledger(a)
+	is_boolean(a.observed)
+	_given(a.attested_by)
+	_given(a.evidence_ref)
+	is_number(_attested_ns(a.attested_on))
+	not _future(a)
+}
+
+failed_ids := {a.control_id |
+	some a in attestations
+	_admissible(a)
+	a.observed == false
+}
+
+attested_ids := {a.control_id |
+	some a in attestations
+	_admissible(a)
+	a.observed == true
+	not a.control_id in failed_ids
+}
+
+# a ledger control an admissible attestation decided, either way
+_decided_ids := attested_ids | failed_ids
+
+# A ledger attestation missing any of who/when/evidence/observed, or with a
+# date that is not a date, is not an attestation.
 incomplete_ids := {a.control_id |
 	some a in attestations
-	not a.control_id in attested_ids
+	_for_ledger(a)
+	not _admissible(a)
+	not _future(a)
+	not a.control_id in _decided_ids
+}
+
+future_ids := {a.control_id |
+	some a in attestations
+	_for_ledger(a)
+	_future(a)
+	not a.control_id in _decided_ids
+}
+
+_subject(cid) := object.get(REQUIRES_ATTESTATION, cid, object.get(UNRESOLVED, cid, object.get(NOT_IMPLEMENTED, [cid, "subject"], "control")))
+
+# ── Attested as not met ───────────────────────────────────────────────
+# Not an evidence gap: the operator checked and recorded a failure.
+violation contains msg if {
+	some a in attestations
+	_admissible(a)
+	a.observed == false
+	msg := sprintf("CIS %s: %s -- attested as not met (observed false) by %s on %s, evidence %s", [a.control_id, _subject(a.control_id), a.attested_by, a.attested_on, a.evidence_ref])
 }
 
 # ── Un-attested controls that genuinely cannot be collected ───────────
 violation contains msg if {
 	some cid, subject in REQUIRES_ATTESTATION
-	not cid in attested_ids
+	not cid in _decided_ids
 	msg := sprintf("CIS %s: %s -- no app-only read path exists, so this control requires operator attestation and none has been recorded (this is not a pass)", [cid, subject])
 }
 
 violation contains msg if {
 	some cid in incomplete_ids
-	subject := object.get(REQUIRES_ATTESTATION, cid, object.get(UNRESOLVED, cid, object.get(NOT_IMPLEMENTED, [cid, "subject"], "control")))
-	msg := sprintf("CIS %s: %s -- an attestation was supplied but is missing attested_by, attested_on or evidence_ref, so it is not admissible evidence (this is not a pass)", [cid, subject])
+	msg := sprintf("CIS %s: %s -- an attestation was supplied but is missing observed (true or false), attested_by, evidence_ref or a valid attested_on date (YYYY-MM-DD), so it is not admissible evidence (this is not a pass)", [cid, _subject(cid)])
+}
+
+violation contains msg if {
+	some cid in future_ids
+	msg := sprintf("CIS %s: %s -- the attestation is dated in the future, so it is not admissible evidence (this is not a pass)", [cid, _subject(cid)])
+}
+
+# An attestation for a control the library evaluates from evidence, or for an
+# id the ledger does not hold, decides nothing. It is reported without a "CIS
+# <id>:" prefix (it starts "ignored attestation:") so no tool attributes it to
+# that control's result.
+violation contains msg if {
+	some a in attestations
+	not _for_ledger(a)
+	msg := sprintf("ignored attestation: the attestation for control_id '%v' decides nothing -- attestations are accepted only for the %d ledger controls this library cannot evaluate from collected evidence; it does not change any control's status", [object.get(a, "control_id", null), count(_ledger_ids)])
 }
 
 # ── Controls parked pending a live-tenant probe ───────────────────────
 # Reported separately so they are never mistaken for verified limits.
 violation contains msg if {
 	some cid, subject in UNRESOLVED
-	not cid in attested_ids
+	not cid in _decided_ids
 	msg := sprintf("CIS %s: %s -- collectability is unresolved pending a live-tenant probe; not yet evaluated (this is not a pass)", [cid, subject])
 }
 
@@ -152,7 +242,7 @@ violation contains msg if {
 # the benchmark had 154 recommendations.
 violation contains msg if {
 	some cid, entry in NOT_IMPLEMENTED
-	not cid in attested_ids
+	not cid in _decided_ids
 	msg := sprintf("CIS %s: %s -- automatable, but the collector does not make the call yet, so this control was not evaluated (this is not a pass)", [cid, entry.subject])
 }
 
@@ -173,6 +263,8 @@ compliance_report := {
 	"not_implemented_count": count(NOT_IMPLEMENTED),
 	"attested_control_ids": attested_ids,
 	"attested_count": count(attested_ids),
+	# admissible attestations that record the requirement as not met
+	"attested_failed_control_ids": failed_ids,
 	# Evidence provenance must survive into the report: an auditor has to
 	# be able to tell a measured result from a human assertion.
 	"evidence_source": "attested",
