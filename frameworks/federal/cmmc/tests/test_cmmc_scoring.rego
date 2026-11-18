@@ -8,6 +8,7 @@ import rego.v1
 
 # Facts for the 17 NIST SP 800-171 R2 requirements that carry the 15 Level 1 safeguards.
 level_1_facts := {
+	"org_defined": data.cmmc_test_fixtures.org_defined,
 	"users": [{"username": "alice", "authorized": true, "system_access": true}],
 	"cui_systems": [{"name": "web", "publicly_accessible": true, "cui_posting_controls": true}],
 	"access_controls": {"least_privilege_enforced": true, "external_connections_controlled": true},

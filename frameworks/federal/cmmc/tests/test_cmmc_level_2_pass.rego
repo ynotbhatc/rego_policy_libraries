@@ -6,6 +6,7 @@ import rego.v1
 # (built from the comparisons the domain modules make, values at the modules'
 # own limits). Proves compliant is reachable at Level 2 with real facts.
 level_2_facts := {
+	"org_defined": data.cmmc_test_fixtures.org_defined,
 	"access_controls": {
 		"least_privilege_enforced": true,
 		"external_connections_controlled": true,
@@ -82,6 +83,7 @@ level_2_facts := {
 		"user_install_controlled": true,
 	},
 	"identity": {
+		"identifier_reuse_prevented_days": 400,
 		"unique_user_accounts": true,
 		"shared_accounts_documented": true,
 		"service_accounts_identified": true,

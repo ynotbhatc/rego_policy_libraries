@@ -18,6 +18,31 @@ package cmmc.risk_assessment
 
 import rego.v1
 
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
+
 # =============================================================================
 # CMMC 2.0 — Domain 3.11: Risk Assessment
 # NIST SP 800-171 Rev 2 — 3 Practices
@@ -30,7 +55,8 @@ default compliant_3_11_1 := false
 
 compliant_3_11_1 if {
 	input.risk.risk_assessment_conducted == true
-	input.risk.risk_assessment_frequency_days <= 365
+	_at_most(["risk", "risk_assessment_frequency_days"], "risk_assessment_interval_days")
+	_periodic_ok("risk_assessment_interval_days")
 	input.risk.risk_assessment_documented == true
 }
 
@@ -39,9 +65,22 @@ violation_3_11_1 contains msg if {
 	msg := "3.11.1: No periodic risk assessment has been conducted for CUI systems"
 }
 
+violation_3_11_1 contains "3.11.1: evidence missing - input.org_defined.risk_assessment_interval_days (organisation-defined value, NIST SP 800-171A 3.11.1[a]) not supplied or not a number" if {
+	not _odp("risk_assessment_interval_days")
+}
+
+violation_3_11_1 contains "3.11.1: evidence missing - input.risk.risk_assessment_frequency_days not collected or not a number" if {
+	not _actual(["risk", "risk_assessment_frequency_days"])
+}
+
 violation_3_11_1 contains msg if {
-	input.risk.risk_assessment_frequency_days > 365
-	msg := sprintf("3.11.1: Risk assessment conducted every %v days (must be at least annually)", [input.risk.risk_assessment_frequency_days])
+	_actual(["risk", "risk_assessment_frequency_days"]) > _odp("risk_assessment_interval_days")
+	msg := sprintf("3.11.1: risk assessed every %v days, beyond the organisation-defined interval of %v days", [_actual(["risk", "risk_assessment_frequency_days"]), _odp("risk_assessment_interval_days")])
+}
+
+violation_3_11_1 contains msg if {
+	_odp("risk_assessment_interval_days") > 365
+	msg := sprintf("3.11.1: the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year", [_odp("risk_assessment_interval_days")])
 }
 
 violation_3_11_1 contains msg if {
@@ -56,7 +95,8 @@ default compliant_3_11_2 := false
 
 compliant_3_11_2 if {
 	input.risk.vulnerability_scanning_enabled == true
-	input.risk.scan_frequency_days <= 30
+	_at_most(["risk", "scan_frequency_days"], "vulnerability_scan_interval_days")
+	_periodic_ok("vulnerability_scan_interval_days")
 	input.risk.scan_results_reviewed == true
 	input.risk.new_vuln_scan_triggered == true
 }
@@ -66,9 +106,22 @@ violation_3_11_2 contains msg if {
 	msg := "3.11.2: Vulnerability scanning is not enabled for CUI systems"
 }
 
+violation_3_11_2 contains "3.11.2: evidence missing - input.org_defined.vulnerability_scan_interval_days (organisation-defined value, NIST SP 800-171A 3.11.2[a]) not supplied or not a number" if {
+	not _odp("vulnerability_scan_interval_days")
+}
+
+violation_3_11_2 contains "3.11.2: evidence missing - input.risk.scan_frequency_days not collected or not a number" if {
+	not _actual(["risk", "scan_frequency_days"])
+}
+
 violation_3_11_2 contains msg if {
-	input.risk.scan_frequency_days > 30
-	msg := sprintf("3.11.2: Vulnerability scans run every %v days (must be at least monthly)", [input.risk.scan_frequency_days])
+	_actual(["risk", "scan_frequency_days"]) > _odp("vulnerability_scan_interval_days")
+	msg := sprintf("3.11.2: vulnerability scans run every %v days, beyond the organisation-defined interval of %v days", [_actual(["risk", "scan_frequency_days"]), _odp("vulnerability_scan_interval_days")])
+}
+
+violation_3_11_2 contains msg if {
+	_odp("vulnerability_scan_interval_days") > 365
+	msg := sprintf("3.11.2: the organisation-defined interval of %v days exceeds one year; 32 CFR 170.14(d) limits a periodic interval to one year", [_odp("vulnerability_scan_interval_days")])
 }
 
 violation_3_11_2 contains msg if {
@@ -86,8 +139,8 @@ default compliant_3_11_3 := false
 
 compliant_3_11_3 if {
 	input.risk.vuln_remediation_policy == true
-	input.risk.critical_vuln_remediation_days <= 15
-	input.risk.high_vuln_remediation_days <= 30
+	_at_most(["risk", "critical_vuln_remediation_days"], "critical_vulnerability_remediation_days")
+	_at_most(["risk", "high_vuln_remediation_days"], "high_vulnerability_remediation_days")
 	input.risk.remediation_tracked == true
 }
 
@@ -96,14 +149,30 @@ violation_3_11_3 contains msg if {
 	msg := "3.11.3: No vulnerability remediation policy aligned to risk assessment"
 }
 
-violation_3_11_3 contains msg if {
-	input.risk.critical_vuln_remediation_days > 15
-	msg := sprintf("3.11.3: Critical vulnerabilities remediated within %v days (must be ≤15)", [input.risk.critical_vuln_remediation_days])
+violation_3_11_3 contains "3.11.3: evidence missing - input.org_defined.critical_vulnerability_remediation_days (organisation-defined value, NIST SP 800-171A (R2 3.11.3: in accordance with risk assessments)) not supplied or not a number" if {
+	not _odp("critical_vulnerability_remediation_days")
+}
+
+violation_3_11_3 contains "3.11.3: evidence missing - input.risk.critical_vuln_remediation_days not collected or not a number" if {
+	not _actual(["risk", "critical_vuln_remediation_days"])
 }
 
 violation_3_11_3 contains msg if {
-	input.risk.high_vuln_remediation_days > 30
-	msg := sprintf("3.11.3: High vulnerabilities remediated within %v days (must be ≤30)", [input.risk.high_vuln_remediation_days])
+	_actual(["risk", "critical_vuln_remediation_days"]) > _odp("critical_vulnerability_remediation_days")
+	msg := sprintf("3.11.3: critical vulnerabilities remediated within %v days, beyond the organisation's risk-based %v days", [_actual(["risk", "critical_vuln_remediation_days"]), _odp("critical_vulnerability_remediation_days")])
+}
+
+violation_3_11_3 contains "3.11.3: evidence missing - input.org_defined.high_vulnerability_remediation_days (organisation-defined value, NIST SP 800-171A (R2 3.11.3: in accordance with risk assessments)) not supplied or not a number" if {
+	not _odp("high_vulnerability_remediation_days")
+}
+
+violation_3_11_3 contains "3.11.3: evidence missing - input.risk.high_vuln_remediation_days not collected or not a number" if {
+	not _actual(["risk", "high_vuln_remediation_days"])
+}
+
+violation_3_11_3 contains msg if {
+	_actual(["risk", "high_vuln_remediation_days"]) > _odp("high_vulnerability_remediation_days")
+	msg := sprintf("3.11.3: high vulnerabilities remediated within %v days, beyond the organisation's risk-based %v days", [_actual(["risk", "high_vuln_remediation_days"]), _odp("high_vulnerability_remediation_days")])
 }
 
 violation_3_11_3 contains msg if {

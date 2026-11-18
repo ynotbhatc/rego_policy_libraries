@@ -18,6 +18,31 @@ package cmmc.physical_protection
 
 import rego.v1
 
+# Organisation-defined parameters. Where NIST SP 800-171 R2 leaves a period,
+# frequency or count to the organisation ("a defined period", "periodically",
+# "a specified number"; NIST SP 800-171A objectives "... is defined"), the
+# organisation's value is read from input.org_defined.<name> and the observed
+# value is compared with it. Either one missing, or not a number, is a finding.
+# is_number guards every comparison: OPA orders null below numbers and strings
+# above them.
+_odp(name) := v if {
+	v := input.org_defined[name]
+	is_number(v)
+}
+
+_actual(path) := v if {
+	v := object.get(input, path, null)
+	is_number(v)
+}
+
+_at_most(path, name) if _actual(path) <= _odp(name)
+
+_at_least(path, name) if _actual(path) >= _odp(name)
+
+# 32 CFR 170.14(d): "periodically" means an organisation-defined interval of no
+# more than one year.
+_periodic_ok(name) if _odp(name) <= 365
+
 # =============================================================================
 # CMMC 2.0 — Domain 3.10: Physical Protection
 # NIST SP 800-171 Rev 2 — 6 Practices
@@ -102,7 +127,7 @@ default compliant_3_10_4 := false
 
 compliant_3_10_4 if {
 	input.physical.physical_access_audit_logs == true
-	input.physical.access_log_retention_days >= 90
+	_at_least(["physical", "access_log_retention_days"], "physical_access_log_retention_days")
 	input.physical.access_logs_reviewed_regularly == true
 }
 
@@ -111,9 +136,17 @@ violation_3_10_4 contains msg if {
 	msg := "3.10.4: Audit logs of physical access to CUI areas are not maintained"
 }
 
+violation_3_10_4 contains "3.10.4: evidence missing - input.org_defined.physical_access_log_retention_days (organisation-defined value, NIST SP 800-171A (R2 3.10.4 names no period)) not supplied or not a number" if {
+	not _odp("physical_access_log_retention_days")
+}
+
+violation_3_10_4 contains "3.10.4: evidence missing - input.physical.access_log_retention_days not collected or not a number" if {
+	not _actual(["physical", "access_log_retention_days"])
+}
+
 violation_3_10_4 contains msg if {
-	input.physical.access_log_retention_days < 90
-	msg := sprintf("3.10.4: Physical access logs retained for %v days (minimum 90 days required)", [input.physical.access_log_retention_days])
+	_actual(["physical", "access_log_retention_days"]) < _odp("physical_access_log_retention_days")
+	msg := sprintf("3.10.4: physical access logs retained %v days, less than the organisation-defined %v days", [_actual(["physical", "access_log_retention_days"]), _odp("physical_access_log_retention_days")])
 }
 
 violation_3_10_4 contains msg if {

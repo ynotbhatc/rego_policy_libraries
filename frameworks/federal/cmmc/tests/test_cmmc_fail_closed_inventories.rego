@@ -63,7 +63,7 @@ test_ac_missing_session_lock_value_fails_3_1_10 if {
 	v := data.cmmc.access_control.violations with input as {"cmmc_level": 2, "session": {}}
 	some a in v
 	startswith(a, "CMMC AC.L2-3.1.10: evidence missing")
-	v2 := data.cmmc.access_control.violations with input as {"cmmc_level": 2, "session": {"lock_timeout_minutes": 10}}
+	v2 := data.cmmc.access_control.violations with input as {"cmmc_level": 2, "session": {"lock_timeout_minutes": 10}, "org_defined": {"session_lock_minutes": 10}}
 	every b in v2 {
 		not startswith(b, "CMMC AC.L2-3.1.10")
 	}

@@ -214,9 +214,10 @@ violation_l2_ac_1_9 contains msg if {
 	msg := "CMMC AC.L2-3.1.9: Privacy and security notices are not shown displayed (input.access_controls.privacy_security_notices_displayed is not true)."
 }
 
-# AC.L2-3.1.10 — Use session lock
-# The inactivity period is kept at 15 minutes as before (see the module notes); a
-# missing value is a finding, not a pass.
+# AC.L2-3.1.10 — Use session lock with pattern-hiding displays after a period of inactivity.
+# The period is organisation-defined (NIST SP 800-171A 3.1.10[a]): the observed
+# lock timeout is compared with input.org_defined.session_lock_minutes; either
+# missing is a finding.
 violation_l2_ac_1_10 contains msg if {
 	input.cmmc_level >= 2
 	not is_number(object.get(input, ["session", "lock_timeout_minutes"], null))
@@ -225,10 +226,18 @@ violation_l2_ac_1_10 contains msg if {
 
 violation_l2_ac_1_10 contains msg if {
 	input.cmmc_level >= 2
-	input.session.lock_timeout_minutes > 15
+	not is_number(object.get(input, ["org_defined", "session_lock_minutes"], null))
+	msg := "CMMC AC.L2-3.1.10: evidence missing - input.org_defined.session_lock_minutes (organisation-defined period of inactivity, NIST SP 800-171A 3.1.10[a]) not supplied or not a number."
+}
+
+violation_l2_ac_1_10 contains msg if {
+	input.cmmc_level >= 2
+	is_number(input.session.lock_timeout_minutes)
+	is_number(input.org_defined.session_lock_minutes)
+	input.session.lock_timeout_minutes > input.org_defined.session_lock_minutes
 	msg := sprintf(
-		"CMMC AC.L2-3.1.10: Session lock timeout is %v minutes. Maximum 15 minutes of inactivity before lock is required.",
-		[input.session.lock_timeout_minutes],
+		"CMMC AC.L2-3.1.10: Session lock timeout is %v minutes, beyond the organisation-defined %v minutes of inactivity.",
+		[input.session.lock_timeout_minutes, input.org_defined.session_lock_minutes],
 	)
 }
 
