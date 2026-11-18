@@ -33,8 +33,8 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 27
-#     cited: 24
+#     checks: 13
+#     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
@@ -54,7 +54,7 @@ ANONYMOUS_SHARING := "ExternalUserAndGuestSharing"
 
 default unavailable := {}
 
-unavailable := input.sharepoint.unavailable
+unavailable := input.sharepoint.unavailable if is_object(input.sharepoint.unavailable)
 
 default collected := false
 
@@ -62,7 +62,9 @@ collected if {
 	input.sharepoint.collected == true
 }
 
-tenant := object.get(input, ["sharepoint", "tenant"], {})
+default tenant := {}
+
+tenant := input.sharepoint.tenant if is_object(input.sharepoint.tenant)
 
 # A control is evaluable only when the collector actually returned the
 # property it depends on. A property that PnP did not return is recorded
@@ -71,6 +73,7 @@ tenant := object.get(input, ["sharepoint", "tenant"], {})
 available(prop) if {
 	collected
 	not unavailable[prop]
+	not unavailable.tenant
 	_ := tenant[prop]
 }
 
@@ -157,49 +160,6 @@ violation contains msg if {
 	msg := "CIS 7.3.1: Office 365 SharePoint infected files are not disallowed for download, so a file Defender has flagged can still be retrieved"
 }
 
-# ── Fail closed ───────────────────────────────────────────────────────
-# The collector records every expected-but-absent property, naming the
-# controls it blocks. Surface each as its own violation.
-PROPERTY_CONTROLS := {
-	"LegacyAuthProtocolsEnabled": "7.2.1",
-	"EnableAzureADB2BIntegration": "7.2.2",
-	"SharingCapability": "7.2.3",
-	"OneDriveSharingCapability": "7.2.4",
-	"PreventExternalUsersFromResharing": "7.2.5",
-	"DefaultSharingLinkType": "7.2.7",
-	"SharingDomainRestrictionMode": "7.2.8",
-	"ExternalUserExpirationRequired": "7.2.9",
-	"EmailAttestationRequired": "7.2.10",
-	"DefaultLinkPermission": "7.2.11",
-	"DisallowInfectedFileDownload": "7.3.1",
-	"tenant": "7.2.1",
-}
-
-# A property the collector neither returned nor reported unavailable was not evaluated.
-violation contains msg if {
-	collected
-	some key, control in PROPERTY_CONTROLS
-	key != "tenant"
-	not unavailable[key]
-	not property_present(key)
-	msg := sprintf("CIS %s: evidence missing -- SharePoint tenant property '%s' not collected (this is not a pass)", [control, key])
-}
-
-property_present(key) if {
-	_ := tenant[key]
-}
-
-violation contains msg if {
-	some key, reason in unavailable
-	control := object.get(PROPERTY_CONTROLS, key, "7.2.1")
-	msg := sprintf("CIS %s: could not be evaluated -- %s (this is not a pass)", [control, reason])
-}
-
-violation contains msg if {
-	not collected
-	msg := "CIS 7.2.1: SharePoint tenant facts were not collected, so whether modern authentication is required could not be established -- section 7 was not evaluated (this is not a pass)"
-}
-
 compliant if {
 	collected
 	count(violation) == 0
@@ -251,9 +211,82 @@ CONTROL_EVIDENCE := {id: [path] |
 	path := concat(".", ["sharepoint", "tenant", prop])
 }
 
-# the rule's own gate (the property was returned and not reported unavailable), and not null
+# the tenant properties that are enum strings; the others are booleans. A value
+# of the wrong type (an enum sent as a number, a null) is not read.
+STRING_PROPERTIES := {"SharingCapability", "OneDriveSharingCapability", "DefaultSharingLinkType", "SharingDomainRestrictionMode", "DefaultLinkPermission"}
+
+_typed(v, prop) if {
+	prop in STRING_PROPERTIES
+	is_string(v)
+}
+
+_typed(v, prop) if {
+	not prop in STRING_PROPERTIES
+	is_boolean(v)
+}
+
+# the rule's own gate (the property was returned and not reported unavailable), with its type
 decidable contains id if {
 	some id, prop in SHAREPOINT_CONTROL_PROPERTIES
 	available(prop)
-	tenant[prop] != null
+	_typed(tenant[prop], prop)
 }
+
+# ── Evidence gaps, reported by control id ─────────────────────────────
+# A gap names every control it blocks (SharingCapability blocks 7.2.3 and
+# 7.2.6), so the per-control results and an exporter reading the ids agree on
+# what was not evaluated. An unavailable key that is neither "tenant" nor a
+# property read here is reported on its own, attributed to no control.
+FACT_CONTROLS := object.union(
+	{prop: ids |
+		some _, prop in SHAREPOINT_CONTROL_PROPERTIES
+		ids := _natural_sort({id | some id, p in SHAREPOINT_CONTROL_PROPERTIES; p == prop})
+	},
+	{"tenant": _section_controls},
+)
+
+_section_controls := _natural_sort(object.keys(CONTROL_EVIDENCE))
+
+# ids in benchmark order (7.2.2 before 7.2.10)
+_natural_sort(ids) := [pair[1] | some pair in sort([[key, id] |
+	some id in ids
+	parts := split(id, ".")
+	key := concat(".", [sprintf("%03d", [to_number(x)]) | some x in parts])
+])]
+
+_gap(ids, why) := sprintf("CIS %s: evidence missing -- %s (this is not a pass)", [concat("/", ids), why])
+
+_source_gaps contains [_section_controls, "SharePoint tenant facts were not collected (sharepoint.collected is not true)"] if not collected
+
+_source_gaps contains [FACT_CONTROLS[key], sprintf("sharepoint.unavailable.%s: %v", [key, reason])] if {
+	collected
+	some key, reason in unavailable
+}
+
+_gap_ids contains id if {
+	some g in _source_gaps
+	some id in g[0]
+}
+
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
+}
+
+_evidence_gaps contains msg if {
+	some key, reason in unavailable
+	not FACT_CONTROLS[key]
+	msg := sprintf("M365 section 7 (SharePoint): unrecognised unavailable key '%s' (%v) -- this module reads no property of that name, so it is attributed to no control (this is not a pass)", [key, reason])
+}
+
+_evidence_gaps contains _gap([id], why) if {
+	some id, paths in CONTROL_EVIDENCE
+	not id in decidable
+	not id in _gap_ids
+	why := sprintf("%s not collected or not of the expected type", [concat(", ", paths)])
+}
+
+violation contains msg if some msg in _evidence_gaps

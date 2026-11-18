@@ -1564,7 +1564,9 @@ W = "-a always,exit -S all -F path={p} -F perm={perm} -F key=k"
 S64 = "-a always,exit -F arch={a} -S {s} {extra}-F key=k"
 XW = "-a always,exit -S all -F path={p} -F perm=x -F auid>=1000 -F auid!=unset -F key=k"
 AUID = "-F auid>=1000 -F auid!=unset "
-AUDIT_EV = [f'is_array({ref(ARD)})', f'count({ref(ARD)}) > 0', f'is_array({ref(AR)})', f'count({ref(AR)}) > 0']
+# collected = both are lists. An empty list is collected ("auditctl -l" printing "No rules", an empty rules.d):
+# the required rule is then absent, which is a failure, not missing evidence
+AUDIT_EV = [f'is_array({ref(ARD)})', f'is_array({ref(AR)})']
 AUDIT_FIELD = "auditd.rules/active_rules"
 AUDIT_FX = {"auid": AUID, "euid": "-C euid!=uid -F auid!=unset ", "eacces": "-F exit=-EACCES " + AUID,
             "eperm": "-F exit=-EPERM " + AUID}
@@ -1652,12 +1654,13 @@ put("6.2.3.31", "kernel module loading", audit([("/usr/bin/kmod", "x")]))
 put("6.2.3.32", "init_module", audit(syscalls=[(["init_module", "finit_module"], ["auid"], B)]))
 put("6.2.3.33", "delete_module", audit(syscalls=[(["delete_module"], ["auid"], B)]))
 put("6.2.3.34", "regardless of errors", custom(
-    [f'is_array({ref(ARD)})', f'count({ref(ARD)}) > 0'], [['some l in input.auditd.rules', 'regex.match(`^\\s*-c\\s*$`, l)']],
+    [f'is_array({ref(ARD)})'], [['some l in input.auditd.rules', 'regex.match(`^\\s*-c\\s*$`, l)']],
     dotted(ARD), nest(ARD, ["-D", "-c", "-e 2"]), nest(ARD, ["-D", "-e 2"]), reads=[ARD]))
-put("6.2.3.35", "immutable", custom([f'is_array({ref(ARD)})', f'count({ref(ARD)}) > 0'], [['audit_last_e == "2"']], dotted(ARD),
+put("6.2.3.35", "immutable", custom([f'is_array({ref(ARD)})'], [['audit_last_e == "2"']], dotted(ARD),
                                     nest(ARD, ["-D", "-c", "-e 2"]), nest(ARD, ["-D", "-e 1"]), reads=[ARD]))
-# active_rules and rules are filled from the same collected text by the mapper, so comparing them proves
-# nothing: the on-disk/running comparison is its own collected fact (`augenrules --check`)
+# the on-disk/running comparison is its own collected fact (`augenrules --check`): it is what the benchmark's
+# audit runs, rather than a comparison of the two rule lists (auditd.rules and auditd.active_rules, which the
+# collector gathers separately from rules.d and `auditctl -l`)
 AG = ["auditd", "augenrules_check"]
 put("6.2.3.36", "running and on disk", custom(
     [f'text_collected({ref(AG)})'], [[f'regex.match(`(?i)^\\s*(/usr)?/sbin/augenrules:\\s*no change\\s*$`, {ref(AG)})']],
@@ -1735,24 +1738,38 @@ _old = {"file": "/etc/security/opasswd.old", "exists": False}
 _op.tp = {"critical_files": {"analysis": _op.tp["critical_files"]["analysis"] + [_old]}}
 _op.tf = {"critical_files": {"analysis": _op.tf["critical_files"]["analysis"] + [_old]}}
 put("7.1.10", "access to /etc/security/opasswd", _op)
+# 7.1.11 / 7.1.12: any file found is a failure whether or not the sweep finished (the collector sends the true
+# count and a sample of at most 100 paths with truncated false; a sweep that timed out sends truncated true with
+# the paths found so far). Only "nothing found and the sweep did not finish" is missing evidence.
+def sweep_ev(lists, counts):
+    """ev_alts: the offender lists collected, and either a sweep that finished or something found"""
+    base = [f'is_array({x})' for x in lists]
+    finished = [f'not {c.rsplit(".", 1)[0]}.truncated == true' for c in counts]
+    found = [[f'count({x}) > 0'] for x in lists] + [[f'is_number(object.get({c.rsplit(".", 1)[0]}, "count", 0))',
+                                                      f'object.get({c.rsplit(".", 1)[0]}, "count", 0) > 0'] for c in counts]
+    return [base + finished] + [base + f for f in found]
+
+
+_WW = sweep_ev(["input.world_writable.files", "input.sticky_bit.world_writable_without_sticky"], ["input.world_writable.count"])
 put("7.1.11", "world writable files", custom(
-    ['is_array(input.world_writable.files)', 'not input.world_writable.truncated == true',
-     'is_array(input.sticky_bit.world_writable_without_sticky)'],
+    _WW[0],
     [['count(input.world_writable.files) == 0', 'object.get(input.world_writable, "count", 0) == 0',
       'count(input.sticky_bit.world_writable_without_sticky) == 0']],
     "world_writable.files/sticky_bit.world_writable_without_sticky",
     {"world_writable": {"files": [], "count": 0}, "sticky_bit": {"world_writable_without_sticky": []}},
     {"world_writable": {"files": ["/opt/app/data.txt"], "count": 1}, "sticky_bit": {"world_writable_without_sticky": []}},
     {"world_writable": {"files": [], "count": 0}},
-    reads=[["world_writable", "files"], ["sticky_bit", "world_writable_without_sticky"]]))
+    reads=[["world_writable", "files"], ["sticky_bit", "world_writable_without_sticky"]], ev_alts=_WW))
+_UO = sweep_ev(["input.unowned_files.files", "input.ungrouped_files.files"],
+               ["input.unowned_files.count", "input.ungrouped_files.count"])
 put("7.1.12", "without an owner and a group", custom(
-    ['is_array(input.unowned_files.files)', 'is_array(input.ungrouped_files.files)'],
+    _UO[0],
     [['count(input.unowned_files.files) == 0', 'count(input.ungrouped_files.files) == 0',
       'object.get(input.unowned_files, "count", 0) == 0', 'object.get(input.ungrouped_files, "count", 0) == 0']],
     "unowned_files.files/ungrouped_files.files",
     {"unowned_files": {"files": [], "count": 0}, "ungrouped_files": {"files": [], "count": 0}},
     {"unowned_files": {"files": [], "count": 0}, "ungrouped_files": {"files": ["/srv/orphan"], "count": 1}},
-    reads=[["unowned_files", "files"], ["ungrouped_files", "files"]]))
+    reads=[["unowned_files", "files"], ["ungrouped_files", "files"]], ev_alts=_UO))
 put("7.1.13", "SUID and SGID", attest("suid_sgid_files_reviewed"))
 
 
@@ -2661,6 +2678,35 @@ test_6_2_4_4_adm_passes if {
 	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "adm"}, "config": "log_group = adm"}}
 	count([v | some v in vs; startswith(v, "6.2.4.4: ")]) == 0
 }
+# a collected, empty rule list (auditctl -l printing "No rules", an empty rules.d) is a failure, not missing evidence
+test_6_2_3_1_collected_empty_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.1: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.1: evidence missing")]) == 0
+}
+
+test_6_2_3_21_collected_empty_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.21: evidence missing")]) == 0
+}
+
+test_6_2_3_34_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.34: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.34: evidence missing")]) == 0
+}
+
+test_6_2_3_35_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.35: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.35: evidence missing")]) == 0
+}
+
+test_6_2_3_1_rules_not_a_list_is_evidence_missing if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": "No rules", "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.1: evidence missing")]) > 0
+}
 ''',
     'services': r'''
 # Semantic review 2026-11-13: 0.0.0.0 is the wildcard address, 127.0.0.1 is loopback, every token must be loopback.
@@ -2677,6 +2723,43 @@ test_mta_inet_interfaces_127_0_0_1_accepted if {
 test_mta_inet_interfaces_mixed_list_flagged if {
 	vs := data.cis_rhel9.services.violations with input as {"mta": {"has_mta": true, "non_loopback_listeners": [], "inet_interfaces": "localhost, 192.0.2.10"}}
 	"2.1.19: not met — mail transfer agents must be explicitly configured for local-only mode" in vs
+}
+''',
+    'file_permissions': r'''
+# 7.1.11 / 7.1.12: files found fail whether or not the sweep finished; only nothing found and an unfinished sweep is
+# missing evidence
+test_7_1_11_more_than_100_files_not_truncated_fails if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"world_writable": {"files": ["/srv/ww/0", "/srv/ww/1", "/srv/ww/2", "/srv/ww/3", "/srv/ww/4", "/srv/ww/5", "/srv/ww/6", "/srv/ww/7", "/srv/ww/8", "/srv/ww/9", "/srv/ww/10", "/srv/ww/11", "/srv/ww/12", "/srv/ww/13", "/srv/ww/14", "/srv/ww/15", "/srv/ww/16", "/srv/ww/17", "/srv/ww/18", "/srv/ww/19", "/srv/ww/20", "/srv/ww/21", "/srv/ww/22", "/srv/ww/23", "/srv/ww/24", "/srv/ww/25", "/srv/ww/26", "/srv/ww/27", "/srv/ww/28", "/srv/ww/29", "/srv/ww/30", "/srv/ww/31", "/srv/ww/32", "/srv/ww/33", "/srv/ww/34", "/srv/ww/35", "/srv/ww/36", "/srv/ww/37", "/srv/ww/38", "/srv/ww/39", "/srv/ww/40", "/srv/ww/41", "/srv/ww/42", "/srv/ww/43", "/srv/ww/44", "/srv/ww/45", "/srv/ww/46", "/srv/ww/47", "/srv/ww/48", "/srv/ww/49", "/srv/ww/50", "/srv/ww/51", "/srv/ww/52", "/srv/ww/53", "/srv/ww/54", "/srv/ww/55", "/srv/ww/56", "/srv/ww/57", "/srv/ww/58", "/srv/ww/59", "/srv/ww/60", "/srv/ww/61", "/srv/ww/62", "/srv/ww/63", "/srv/ww/64", "/srv/ww/65", "/srv/ww/66", "/srv/ww/67", "/srv/ww/68", "/srv/ww/69", "/srv/ww/70", "/srv/ww/71", "/srv/ww/72", "/srv/ww/73", "/srv/ww/74", "/srv/ww/75", "/srv/ww/76", "/srv/ww/77", "/srv/ww/78", "/srv/ww/79", "/srv/ww/80", "/srv/ww/81", "/srv/ww/82", "/srv/ww/83", "/srv/ww/84", "/srv/ww/85", "/srv/ww/86", "/srv/ww/87", "/srv/ww/88", "/srv/ww/89", "/srv/ww/90", "/srv/ww/91", "/srv/ww/92", "/srv/ww/93", "/srv/ww/94", "/srv/ww/95", "/srv/ww/96", "/srv/ww/97", "/srv/ww/98", "/srv/ww/99"], "count": 250, "truncated": false}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "7.1.11: not met")]) > 0
+	count([v | some v in vs; startswith(v, "7.1.11: evidence missing")]) == 0
+}
+
+test_7_1_11_count_without_sample_fails if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"world_writable": {"files": [], "count": 250, "truncated": false}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "7.1.11: not met")]) > 0
+}
+
+test_7_1_11_found_in_an_unfinished_sweep_fails if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"world_writable": {"files": ["/opt/app/data.txt"], "count": 1, "truncated": true}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "7.1.11: not met")]) > 0
+	count([v | some v in vs; startswith(v, "7.1.11: evidence missing")]) == 0
+}
+
+test_7_1_11_nothing_found_in_an_unfinished_sweep_is_evidence_missing if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"world_writable": {"files": [], "count": 0, "truncated": true}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "7.1.11: evidence missing")]) > 0
+	count([v | some v in vs; startswith(v, "7.1.11: not met")]) == 0
+}
+
+test_7_1_12_found_in_an_unfinished_sweep_fails if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"unowned_files": {"files": ["/srv/orphan"], "count": 1, "truncated": true}, "ungrouped_files": {"files": [], "count": 0}}
+	count([v | some v in vs; startswith(v, "7.1.12: not met")]) > 0
+	count([v | some v in vs; startswith(v, "7.1.12: evidence missing")]) == 0
+}
+
+test_7_1_12_nothing_found_in_an_unfinished_sweep_is_evidence_missing if {
+	vs := data.cis_rhel9.file_permissions.violations with input as {"unowned_files": {"files": [], "count": 0, "truncated": true}, "ungrouped_files": {"files": [], "count": 0}}
+	count([v | some v in vs; startswith(v, "7.1.12: evidence missing")]) > 0
 }
 ''',
 }

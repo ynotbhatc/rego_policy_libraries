@@ -29,14 +29,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 16
-#     cited: 13
+#     checks: 14
+#     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.fabric
 
 import rego.v1
@@ -45,7 +45,7 @@ default compliant := false
 
 default unavailable := {}
 
-unavailable := input.fabric.unavailable
+unavailable := input.fabric.unavailable if is_object(input.fabric.unavailable)
 
 default collected := false
 
@@ -53,7 +53,9 @@ collected if {
 	input.fabric.collected == true
 }
 
-settings := object.get(input, ["fabric", "settings"], {})
+default settings := {}
+
+settings := input.fabric.settings if is_object(input.fabric.settings)
 
 available(name) if {
 	collected
@@ -70,8 +72,15 @@ restricted(name) if {
 
 restricted(name) if {
 	settings[name].enabled == true
-	count(object.get(settings[name], "enabled_security_groups", [])) > 0
+	count(_groups(settings[name])) > 0
 }
+
+# the security groups a setting is scoped to: absent or null means none (the
+# API omits the list for a setting that applies to the whole organisation);
+# any other non-list value is not read
+_groups(s) := object.get(s, "enabled_security_groups", []) if is_array(object.get(s, "enabled_security_groups", []))
+
+_groups(s) := [] if object.get(s, "enabled_security_groups", []) == null
 
 SETTING_CONTROLS := {
 	"AllowGuestUserToAccessSharedContent": "9.1.1",
@@ -103,6 +112,8 @@ SETTING_SUBJECTS := {
 violation contains msg if {
 	some name, control in SETTING_CONTROLS
 	available(name)
+	is_boolean(settings[name].enabled)
+	is_array(_groups(settings[name]))
 	not restricted(name)
 	msg := sprintf("CIS %s: %s (Fabric tenant setting '%s' is enabled for the whole organization)", [control, SETTING_SUBJECTS[name], name])
 }
@@ -123,38 +134,12 @@ violation contains msg if {
 	msg := "CIS 9.1.9: 'Block ResourceKey Authentication' is not enabled, so streaming datasets can be pushed with a resource key instead of an identity"
 }
 
-# ── Fail closed ───────────────────────────────────────────────────────
+# every setting this module reads, with its control
 ALL_SETTING_CONTROLS := object.union(SETTING_CONTROLS, {
 	"EimInformationProtectionEdit": "9.1.6",
 	"BlockResourceKeyAuthentication": "9.1.9",
 	"tenant_settings": "9.1.1",
 })
-
-# A setting the collector neither returned nor reported unavailable was not evaluated.
-violation contains msg if {
-	collected
-	some name, control in ALL_SETTING_CONTROLS
-	name != "tenant_settings"
-	not unavailable[name]
-	not unavailable.tenant_settings
-	not setting_present(name)
-	msg := sprintf("CIS %s: evidence missing -- Fabric tenant setting '%s' not collected (this is not a pass)", [control, name])
-}
-
-setting_present(name) if {
-	_ := settings[name]
-}
-
-violation contains msg if {
-	some key, reason in unavailable
-	control := object.get(ALL_SETTING_CONTROLS, key, "9.1.1")
-	msg := sprintf("CIS %s: could not be evaluated -- %s (this is not a pass)", [control, reason])
-}
-
-violation contains msg if {
-	not collected
-	msg := "CIS 9.1.1: Fabric tenant settings were not collected, so whether guest user access is restricted could not be established -- section 9 was not evaluated (this is not a pass)"
-}
 
 compliant if {
 	collected
@@ -203,4 +188,71 @@ decidable contains id if {
 	name != "tenant_settings"
 	available(name)
 	is_boolean(settings[name].enabled)
+	_scope_readable(name)
 }
+
+_scope_readable(name) if not SETTING_CONTROLS[name]
+
+_scope_readable(name) if {
+	SETTING_CONTROLS[name]
+	is_array(_groups(settings[name]))
+}
+
+# ── Evidence gaps, reported by control id ─────────────────────────────
+# A gap names every control it blocks ("tenant_settings" blocks all twelve),
+# so the per-control results and an exporter reading the ids agree on what was
+# not evaluated. An unavailable key that is neither "tenant_settings" nor a
+# setting read here is reported on its own, attributed to no control.
+FACT_CONTROLS := object.union(
+	{name: [id] |
+		some name, id in ALL_SETTING_CONTROLS
+		name != "tenant_settings"
+	},
+	{"tenant_settings": _section_controls},
+)
+
+_section_controls := _natural_sort(object.keys(CONTROL_EVIDENCE))
+
+# ids in benchmark order (9.1.2 before 9.1.10)
+_natural_sort(ids) := [pair[1] | some pair in sort([[key, id] |
+	some id in ids
+	parts := split(id, ".")
+	key := concat(".", [sprintf("%03d", [to_number(x)]) | some x in parts])
+])]
+
+_gap(ids, why) := sprintf("CIS %s: evidence missing -- %s (this is not a pass)", [concat("/", ids), why])
+
+_source_gaps contains [_section_controls, "Fabric tenant settings were not collected (fabric.collected is not true)"] if not collected
+
+_source_gaps contains [FACT_CONTROLS[key], sprintf("fabric.unavailable.%s: %v", [key, reason])] if {
+	collected
+	some key, reason in unavailable
+}
+
+_gap_ids contains id if {
+	some g in _source_gaps
+	some id in g[0]
+}
+
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
+}
+
+_evidence_gaps contains msg if {
+	some key, reason in unavailable
+	not FACT_CONTROLS[key]
+	msg := sprintf("M365 section 9 (Fabric): unrecognised unavailable key '%s' (%v) -- this module reads no setting of that name, so it is attributed to no control (this is not a pass)", [key, reason])
+}
+
+_evidence_gaps contains _gap([id], why) if {
+	some id, paths in CONTROL_EVIDENCE
+	not id in decidable
+	not id in _gap_ids
+	why := sprintf("%s not collected or not of the expected type", [concat(", ", paths)])
+}
+
+violation contains msg if some msg in _evidence_gaps

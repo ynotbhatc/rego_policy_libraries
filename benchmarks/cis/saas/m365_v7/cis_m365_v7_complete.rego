@@ -73,19 +73,37 @@ all_violations := array.concat(
 	[v | some v in attestation.violation],
 )
 
+# The controls a section module implements -- what the library CAN evaluate
+# from collected evidence. Static: it does not depend on the input.
 evaluated_controls := [c |
 	some r in section_reports
 	some c in r.controls
 ]
 
-controls_evaluated := count(evaluated_controls)
+implemented_control_ids := evaluated_controls
+
+implemented_controls := count(implemented_control_ids)
+
+# The controls actually evaluated for THIS input: a section control whose
+# result was decided from collected evidence (pass or fail). A control whose
+# evidence is missing was not evaluated, whatever the library implements; on
+# empty input this is 0.
+evaluated_control_ids := [e.id |
+	some e in control_index.CONTROL_INDEX
+	e.id in _section_controls
+	_raw_status[e.id] in {"pass", "fail"}
+]
+
+controls_evaluated := count(evaluated_control_ids)
 
 controls_not_evaluated := BENCHMARK_TOTAL_CONTROLS - controls_evaluated
 
-# The four buckets must partition the benchmark. Anything not evaluated
+# The four buckets must partition the benchmark. Anything not implemented
 # has to be claimed by a named reason -- an unclaimed control is one the
-# report does not mention at all, which reads exactly like a pass.
-accounted_controls := ((controls_evaluated + count(attestation.REQUIRES_ATTESTATION)) + count(attestation.UNRESOLVED)) + count(attestation.NOT_IMPLEMENTED)
+# report does not mention at all, which reads exactly like a pass. The
+# partition is about what the library implements, so it counts
+# implemented_controls, not the input-dependent controls_evaluated.
+accounted_controls := ((implemented_controls + count(attestation.REQUIRES_ATTESTATION)) + count(attestation.UNRESOLVED)) + count(attestation.NOT_IMPLEMENTED)
 
 default accounting_balanced := false
 
@@ -95,7 +113,8 @@ accounting_balanced if {
 
 coverage_accounting := {
 	"benchmark_total": BENCHMARK_TOTAL_CONTROLS,
-	"evaluated": controls_evaluated,
+	# the implemented controls (kept under its original name)
+	"evaluated": implemented_controls,
 	"requires_attestation": count(attestation.REQUIRES_ATTESTATION),
 	"unresolved": count(attestation.UNRESOLVED),
 	"not_implemented": count(attestation.NOT_IMPLEMENTED),
@@ -187,7 +206,9 @@ _section_status(id) := "fail" if {
 	id in _unevaluated_ids
 } else := "pass"
 
-_ledger_status(id) := "pass" if {
+_ledger_status(id) := "fail" if {
+	id in attestation.failed_ids
+} else := "pass" if {
 	id in attestation.attested_ids
 } else := "not_attested" if {
 	not attestation.NOT_IMPLEMENTED[id]
@@ -203,6 +224,8 @@ _basis(id) := "evidence" if {
 	not attestation.NOT_IMPLEMENTED[id]
 } else := "attestation" if {
 	id in attestation.attested_ids
+} else := "attestation" if {
+	id in attestation.failed_ids
 } else := "evidence"
 
 # section controls: the paths their gate reads; ledger controls decided by attestation: the attestation list;
@@ -280,6 +303,16 @@ control_results := [r |
 
 _control_result_statuses := [r.status | some r in control_results]
 
+# total_controls: the recommendations in scope for input.cis_profile (160 with
+# no profile). failed_controls: those of them that are fail, evidence_missing
+# or not_attested -- everything in scope that is not a pass. On empty input
+# failed_controls == total_controls.
+FAILING_STATUSES := {"fail", "evidence_missing", "not_attested"}
+
+total_controls := count([r | some r in control_results; r.in_scope])
+
+failed_controls := count([r | some r in control_results; r.in_scope; r.status in FAILING_STATUSES])
+
 control_result_counts := {s: n |
 	some s in CONTROL_STATUSES
 	n := count([x | some x in _control_result_statuses; x == s])
@@ -290,10 +323,16 @@ compliance_report := {
 	"benchmark_version": "7.0.0",
 	"benchmark_released": "2026-05-20",
 	"benchmark_total_controls": BENCHMARK_TOTAL_CONTROLS,
+	"total_controls": total_controls,
+	"failed_controls": failed_controls,
+	# what was evaluated for this input (decided pass or fail from evidence)
 	"controls_evaluated": controls_evaluated,
 	"controls_not_evaluated": controls_not_evaluated,
 	"coverage_percentage": round((controls_evaluated * 100) / BENCHMARK_TOTAL_CONTROLS),
-	"evaluated_control_ids": evaluated_controls,
+	"evaluated_control_ids": evaluated_control_ids,
+	# what the library implements, whatever the input
+	"implemented_controls": implemented_controls,
+	"implemented_control_ids": implemented_control_ids,
 	"coverage_accounting": coverage_accounting,
 	"sections_evaluated": section_reports,
 	"sections_not_evaluated": not_evaluated,

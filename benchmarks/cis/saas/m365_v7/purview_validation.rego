@@ -27,19 +27,24 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 10
-#     cited: 7
-#     density: sized
-#     basis: size
+#     checks: 6
+#     cited: 5
+#     density: section
+#     basis: role
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.purview
 
 import rego.v1
 
 default compliant := false
+
+# Every rule below compares a field only when it has the type the rule expects
+# and iterates a list only when it is a list; a missing field or a wrong shape
+# leaves the control out of `decidable`, and the evidence rules at the end of
+# the file report it by id. It is never read as a pass or as a failure.
 
 default facts_present := false
 
@@ -48,23 +53,19 @@ facts_present if {
 }
 
 # CIS 3.1.1 -- unified audit log search must be enabled. If the audit log
-# cannot be searched, there is no record for an investigator to read.
+# cannot be read the control is unevaluable, not compliant. The fact is a
+# probe of the Entra directoryAudits endpoint (it returned at least one
+# record); the benchmark itself reads UnifiedAuditLogIngestionEnabled from
+# Get-AdminAuditLogConfig (Exchange Online PowerShell), which the collector
+# does not call yet, so a pass here is the probe's, not the benchmark's.
 violation contains msg if {
-	facts_present
-	not input.purview.audit_log_accessible
+	input.purview.audit_log_accessible == false
 	msg := "CIS 3.1.1: unified audit log search returned no records -- audit logging is not enabled, so tenant activity is not retained for investigation"
 }
 
-violation contains msg if {
-	not facts_present
-	msg := "CIS 3.1.1: audit log facts not collected -- control could not be evaluated (this is not a pass)"
-}
-
-# ── DLP and sensitivity labels (Security & Compliance PowerShell) ─────
-
 default ps_unavailable := {}
 
-ps_unavailable := input.purview_ps.unavailable
+ps_unavailable := input.purview_ps.unavailable if is_object(input.purview_ps.unavailable)
 
 default ps_collected := false
 
@@ -77,67 +78,92 @@ ps_available(key) if {
 	not ps_unavailable[key]
 }
 
-dlp_policies := object.get(input, ["purview_ps", "dlp_policies"], [])
-
-label_policies := object.get(input, ["purview_ps", "label_policies"], [])
-
-# A policy in Test mode reports matches but enforces nothing, so it does
-# not satisfy a control asking for DLP to be enabled.
-enforcing(p) if {
-	p.Enabled == true
-	not startswith(lower(object.get(p, "Mode", "")), "test")
+_ps_list(key) := input.purview_ps[key] if {
+	ps_available(key)
+	is_array(input.purview_ps[key])
 }
 
-# CIS 3.2.1 -- DLP policies enabled.
+dlp_policies := _ps_list("dlp_policies")
+
+label_policies := _ps_list("label_policies")
+
+# A DLP policy enforces when it is enabled and not in a Test mode. Mode must
+# be read: an absent Mode used to default to "" and count as enforcing.
+enforcing(p) if {
+	p.Enabled == true
+	is_string(p.Mode)
+	not startswith(lower(p.Mode), "test")
+}
+
+_dlp_readable(p) if {
+	is_boolean(p.Enabled)
+	is_string(p.Mode)
+}
+
+# TeamsLocation: a list of locations; null is no location
+_teams_locations(p) := p.TeamsLocation if is_array(p.TeamsLocation)
+
+_teams_locations(p) := [] if object.get(p, "TeamsLocation", false) == null
+
+# Workload: a comma-separated string or a list of strings
+_workloads(p) := [p.Workload] if is_string(p.Workload)
+
+_workloads(p) := [w | some w in p.Workload; is_string(w)] if is_array(p.Workload)
+
+_covers_teams(p) if {
+	enforcing(p)
+	count(_teams_locations(p)) > 0
+}
+
+_covers_copilot(p) if {
+	enforcing(p)
+	some w in _workloads(p)
+	contains(lower(w), "copilot")
+}
+
+# a control that asks for SOME qualifying policy fails only when every policy
+# could be read and none qualifies
+_dlp_all_readable(extra) if {
+	every p in dlp_policies {
+		_dlp_readable(p)
+		_dlp_field_readable(p, extra)
+	}
+}
+
+_dlp_field_readable(_, "") := true
+
+_dlp_field_readable(p, "TeamsLocation") if is_array(_teams_locations(p))
+
+_dlp_field_readable(p, "Workload") if is_array(_workloads(p))
+
 violation contains msg if {
-	ps_available("dlp_policies")
+	_dlp_all_readable("")
 	count([p | some p in dlp_policies; enforcing(p)]) == 0
 	msg := "CIS 3.2.1: no DLP policy is enabled and enforcing -- a policy in Test mode reports matches but does not prevent the data loss it detects"
 }
 
-# CIS 3.2.2 -- DLP covers Microsoft Teams.
 violation contains msg if {
-	ps_available("dlp_policies")
-	count([p |
-		some p in dlp_policies
-		enforcing(p)
-		count(object.get(p, "TeamsLocation", [])) > 0
-	]) == 0
+	_dlp_all_readable("TeamsLocation")
+	count([p | some p in dlp_policies; _covers_teams(p)]) == 0
 	msg := "CIS 3.2.2: no enabled DLP policy covers Microsoft Teams, so sensitive content shared in chats and channels is not inspected"
 }
 
-# CIS 3.2.3 -- DLP published for Copilot.
 violation contains msg if {
-	ps_available("dlp_policies")
-	count([p |
-		some p in dlp_policies
-		enforcing(p)
-		contains(lower(object.get(p, "Workload", "")), "copilot")
-	]) == 0
+	_dlp_all_readable("Workload")
+	count([p | some p in dlp_policies; _covers_copilot(p)]) == 0
 	msg := "CIS 3.2.3: no DLP policy is published for Copilot users, so content Copilot can surface is not covered by data loss prevention"
 }
 
-# CIS 3.3.1 -- sensitivity label policies published.
+_labels_readable if {
+	every p in label_policies {
+		is_boolean(p.Enabled)
+	}
+}
+
 violation contains msg if {
-	ps_available("label_policies")
+	_labels_readable
 	count([p | some p in label_policies; p.Enabled == true]) == 0
 	msg := "CIS 3.3.1: no Information Protection sensitivity label policy is published, so users have no labels to classify content with"
-}
-
-PURVIEW_PS_CONTROLS := {
-	"dlp_policies": "3.2.1",
-	"label_policies": "3.3.1",
-}
-
-violation contains msg if {
-	some key, reason in ps_unavailable
-	control := object.get(PURVIEW_PS_CONTROLS, key, "3.2.1")
-	msg := sprintf("CIS %s: could not be evaluated -- %s (this is not a pass)", [control, reason])
-}
-
-violation contains msg if {
-	not ps_collected
-	msg := "CIS 3.2.1: Purview DLP facts were not collected, so whether DLP policies are enabled could not be established (this is not a pass)"
 }
 
 compliant if {
@@ -162,11 +188,11 @@ compliance_report := {
 # ── Per-control results ──────────────────────────────────────────────
 # `decidable` holds the controls of this section whose facts were all
 # collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
-# = every element of a list). The main report marks a control that is not
-# decidable "evidence_missing" even where no violation above names it: an
-# absent fact must never read as a pass. Each gate restates the condition
-# of its rule above; change them together.
-
+# = every element of a list). A control that is not decidable is reported
+# by id as evidence missing (rules at the end of the file) and the main
+# report marks it "evidence_missing": an absent fact must never read as a
+# pass. Each gate restates the condition of its rule above; change them
+# together.
 CONTROL_EVIDENCE := {
 	"3.1.1": ["purview.audit_log_accessible"],
 	"3.2.1": ["purview_ps.dlp_policies[].Enabled", "purview_ps.dlp_policies[].Mode"],
@@ -177,13 +203,79 @@ CONTROL_EVIDENCE := {
 
 decidable contains "3.1.1" if facts_present
 
-decidable contains id if {
-	some id in ["3.2.1", "3.2.2", "3.2.3"]
-	ps_available("dlp_policies")
-	is_array(input.purview_ps.dlp_policies)
+# some qualifying policy decides on its own; otherwise every policy must be readable
+decidable contains "3.2.1" if {
+	some p in dlp_policies
+	enforcing(p)
 }
 
-decidable contains "3.3.1" if {
-	ps_available("label_policies")
-	is_array(input.purview_ps.label_policies)
+decidable contains "3.2.1" if _dlp_all_readable("")
+
+decidable contains "3.2.2" if {
+	some p in dlp_policies
+	_covers_teams(p)
 }
+
+decidable contains "3.2.2" if _dlp_all_readable("TeamsLocation")
+
+decidable contains "3.2.3" if {
+	some p in dlp_policies
+	_covers_copilot(p)
+}
+
+decidable contains "3.2.3" if _dlp_all_readable("Workload")
+
+decidable contains "3.3.1" if {
+	some p in label_policies
+	p.Enabled == true
+}
+
+decidable contains "3.3.1" if _labels_readable
+
+# ── Evidence gaps, reported by control id ─────────────────────────────
+# A gap names every control it blocks, so the per-control results and an
+# exporter reading the ids agree on what was not evaluated. A key this module
+# does not know is reported on its own, attributed to no control.
+FACT_CONTROLS := {
+	"dlp_policies": ["3.2.1", "3.2.2", "3.2.3"],
+	"label_policies": ["3.3.1"],
+}
+
+PS_CONTROLS := ["3.2.1", "3.2.2", "3.2.3", "3.3.1"]
+
+_gap(ids, why) := sprintf("CIS %s: evidence missing -- %s (this is not a pass)", [concat("/", ids), why])
+
+_source_gaps contains [PS_CONTROLS, "Purview DLP and label facts were not collected (purview_ps.collected is not true)"] if not ps_collected
+
+_source_gaps contains [FACT_CONTROLS[key], sprintf("purview_ps.unavailable.%s: %v", [key, reason])] if {
+	ps_collected
+	some key, reason in ps_unavailable
+}
+
+_gap_ids contains id if {
+	some g in _source_gaps
+	some id in g[0]
+}
+
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
+}
+
+_evidence_gaps contains msg if {
+	some key, reason in ps_unavailable
+	not FACT_CONTROLS[key]
+	msg := sprintf("M365 section 3 (Purview): unrecognised unavailable key '%s' (%v) -- this module reads no fact of that name, so it is attributed to no control (this is not a pass)", [key, reason])
+}
+
+_evidence_gaps contains _gap([id], why) if {
+	some id, paths in CONTROL_EVIDENCE
+	not id in decidable
+	not id in _gap_ids
+	why := sprintf("%s not collected or not of the expected type", [concat(", ", paths)])
+}
+
+violation contains msg if some msg in _evidence_gaps

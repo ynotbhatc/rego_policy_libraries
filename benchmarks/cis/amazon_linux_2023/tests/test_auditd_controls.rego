@@ -835,3 +835,16 @@ test_privileged_command_running_only_fails if {
 	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-e 2"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}
 	count([v | some v in vs; startswith(v, "5.2.3.6: not met")]) > 0
 }
+
+# a collected, empty rule list (auditctl -l printing "No rules", an empty rules.d) is a failure, not missing evidence
+test_5_2_3_1_collected_empty_rules_fail if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "5.2.3.1: not met")]) > 0
+	count([v | some v in vs; startswith(v, "5.2.3.1: evidence missing")]) == 0
+}
+
+test_5_2_3_20_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "5.2.3.20: not met")]) > 0
+	count([v | some v in vs; startswith(v, "5.2.3.20: evidence missing")]) == 0
+}
