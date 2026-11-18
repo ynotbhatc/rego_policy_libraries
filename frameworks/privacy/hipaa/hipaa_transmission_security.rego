@@ -25,9 +25,11 @@ import rego.v1
 # Implement technical security measures to guard against unauthorized access
 # to ePHI transmitted over electronic communications networks.
 #
-# Required:    164.312(e)(1) - Transmission security
+# Standard:    164.312(e)(1) - Transmission security
 # Addressable: 164.312(e)(2)(i)  - Integrity controls
 #              164.312(e)(2)(ii) - Encryption
+# Findings about the absence of encryption in transit are cited to (e)(2)(ii), the addressable
+# specification, not to the (e)(1) standard, so the 164.306(d)(3) alternative applies to them.
 #
 # Input shape:
 #   input.network               - network configuration
@@ -37,6 +39,40 @@ import rego.v1
 #   input.email                 - email configuration
 #   input.api                   - API security configuration
 # =============================================================================
+
+_addressable_ids := {"164.312(e)(2)(i)", "164.312(e)(2)(ii)"}
+
+# Addressable specifications (45 CFR 164.306(d)(3)): implemented, or documented as not reasonable and
+# appropriate together with an equivalent alternative measure (or documentation that none is reasonable
+# and appropriate), read from input.hipaa.addressable_decisions["<cfr id>"] =
+#   {"not_reasonable_and_appropriate_documented": true,
+#    "equivalent_alternative_implemented": true  OR  "no_reasonable_alternative_documented": true}
+# A finding cited to an addressable paragraph with that decision evidenced is not a violation (listed in
+# addressed_by_alternative); with neither path evidenced the finding stands (fail closed).
+_decision(id) := d if {
+	d := object.get(input, ["hipaa", "addressable_decisions", id], null)
+	is_object(d)
+}
+
+_alternative_documented(id) if {
+	id in _addressable_ids
+	d := _decision(id)
+	d.not_reasonable_and_appropriate_documented == true
+	_alternative_or_none(d)
+}
+
+_alternative_or_none(d) if d.equivalent_alternative_implemented == true
+
+_alternative_or_none(d) if d.no_reasonable_alternative_documented == true
+
+_cited(msg) := trim_space(split(trim_prefix(msg, "HIPAA "), ":")[0])
+
+_kept(msg) if not _alternative_documented(_cited(msg))
+
+addressed_by_alternative contains id if {
+	some id in _addressable_ids
+	_alternative_documented(id)
+}
 
 # ---------------------------------------------------------------------------
 # Deprecated protocols — never acceptable for ePHI
@@ -58,7 +94,7 @@ violation_transmission_security contains msg if {
 	some phi_system in input.phi_systems
 	not phi_system.transmission_encrypted
 	msg := sprintf(
-		"HIPAA 164.312(e)(1): System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
+		"HIPAA 164.312(e)(2)(ii): System '%v' transmits ePHI without encryption. All ePHI in transit must be protected.",
 		[phi_system.name],
 	)
 }
@@ -68,7 +104,7 @@ violation_transmission_security contains msg if {
 	some protocol in phi_system.protocols_in_use
 	protocol in deprecated_protocols
 	msg := sprintf(
-		"HIPAA 164.312(e)(1): System '%v' uses deprecated protocol '%v' for ePHI transmission. Use TLS 1.2 or higher.",
+		"HIPAA 164.312(e)(2)(ii): System '%v' uses deprecated protocol '%v' for ePHI transmission. Use TLS 1.2 or higher.",
 		[phi_system.name, protocol],
 	)
 }
@@ -193,11 +229,27 @@ violation_email contains msg if {
 # All violations
 # ---------------------------------------------------------------------------
 
-violations contains msg if some msg in violation_transmission_security
-violations contains msg if some msg in violation_tls
+violations contains msg if {
+	some msg in violation_transmission_security
+	_kept(msg)
+}
+
+violations contains msg if {
+	some msg in violation_tls
+	_kept(msg)
+}
+
 violations contains msg if some msg in violation_vpn
-violations contains msg if some msg in violation_transmission_integrity
-violations contains msg if some msg in violation_email
+
+violations contains msg if {
+	some msg in violation_transmission_integrity
+	_kept(msg)
+}
+
+violations contains msg if {
+	some msg in violation_email
+	_kept(msg)
+}
 
 # Fail-closed: no ePHI systems in scope → cannot certify this safeguard
 violations contains msg if {
@@ -222,6 +274,7 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"addressed_by_alternative": addressed_by_alternative,
 	"controls": {
 		"transmission_encrypted": count(violation_transmission_security) == 0,
 		"tls_configuration": count(violation_tls) == 0,

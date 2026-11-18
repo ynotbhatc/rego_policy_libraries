@@ -25,7 +25,7 @@ import rego.v1
 # Implement policies and procedures to protect ePHI from improper alteration
 # or destruction.
 #
-# Required:   164.312(c)(1) - Integrity controls
+# Standard:    164.312(c)(1) - Integrity (a standard; its one implementation specification is (c)(2))
 # Addressable: 164.312(c)(2) - Mechanism to authenticate ePHI
 #
 # Input shape:
@@ -34,6 +34,40 @@ import rego.v1
 #   input.transmission          - data in transit controls
 #   input.backup                - backup and recovery configuration
 # =============================================================================
+
+_addressable_ids := {"164.312(c)(2)"}
+
+# Addressable specifications (45 CFR 164.306(d)(3)): implemented, or documented as not reasonable and
+# appropriate together with an equivalent alternative measure (or documentation that none is reasonable
+# and appropriate), read from input.hipaa.addressable_decisions["<cfr id>"] =
+#   {"not_reasonable_and_appropriate_documented": true,
+#    "equivalent_alternative_implemented": true  OR  "no_reasonable_alternative_documented": true}
+# A finding cited to an addressable paragraph with that decision evidenced is not a violation (listed in
+# addressed_by_alternative); with neither path evidenced the finding stands (fail closed).
+_decision(id) := d if {
+	d := object.get(input, ["hipaa", "addressable_decisions", id], null)
+	is_object(d)
+}
+
+_alternative_documented(id) if {
+	id in _addressable_ids
+	d := _decision(id)
+	d.not_reasonable_and_appropriate_documented == true
+	_alternative_or_none(d)
+}
+
+_alternative_or_none(d) if d.equivalent_alternative_implemented == true
+
+_alternative_or_none(d) if d.no_reasonable_alternative_documented == true
+
+_cited(msg) := trim_space(split(trim_prefix(msg, "HIPAA "), ":")[0])
+
+_kept(msg) if not _alternative_documented(_cited(msg))
+
+addressed_by_alternative contains id if {
+	some id in _addressable_ids
+	_alternative_documented(id)
+}
 
 # ---------------------------------------------------------------------------
 # 164.312(c)(1) — Integrity Controls (Required)
@@ -171,9 +205,20 @@ violation_destruction contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if some msg in violation_data_integrity
-violations contains msg if some msg in violation_phi_authentication
+
+violations contains msg if {
+	some msg in violation_phi_authentication
+	_kept(msg)
+}
+
 violations contains msg if some msg in violation_backup
 violations contains msg if some msg in violation_destruction
+
+_phi_authentication_ok if count(violation_phi_authentication) == 0
+
+_phi_authentication_ok if _alternative_documented("164.312(c)(2)")
+
+default _phi_authentication_ok := false
 
 # Fail-closed: no ePHI systems in scope → cannot certify this safeguard
 violations contains msg if {
@@ -198,9 +243,10 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"addressed_by_alternative": addressed_by_alternative,
 	"controls": {
 		"data_integrity": count(violation_data_integrity) == 0,
-		"phi_authentication": count(violation_phi_authentication) == 0,
+		"phi_authentication": _phi_authentication_ok,
 		"backup_recovery": count(violation_backup) == 0,
 		"secure_destruction": count(violation_destruction) == 0,
 	},

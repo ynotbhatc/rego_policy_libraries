@@ -45,6 +45,15 @@
 #   attestation  20 controls with no fact check: input.hipaa.specifications["<id>"] == true. For an addressable
 #                specification, true attests the § 164.306(d)(3) decision was made and implemented (the
 #                specification, or a documented equivalent alternative).
+#   addressable  any of the 22 addressable rows (fact-decided or attested) is also satisfied by a documented
+#                § 164.306(d)(3)(ii)(B) decision, input.hipaa.addressable_decisions["<id>"] =
+#                {"not_reasonable_and_appropriate_documented": true, and either
+#                 "equivalent_alternative_implemented": true or "no_reasonable_alternative_documented": true}.
+#                Implementing the specification (the fact check) OR that decision satisfies the row; neither is
+#                a violation. A decision supplied for a required specification, a standard or an unknown id is
+#                an input-contract violation and never satisfies the row (§ 164.306(d)(2)). Technical rows also
+#                need input.phi_systems non-empty. Statuses were re-checked against the eCFR current text of
+#                §§ 164.308-164.316 on 2026-11-17 (22 addressable, 24 required, as tabled below).
 #   164.308(a)(1)(i), 164.308(a)(3)(i), 164.308(a)(5)(ii)(A), 164.308(a)(7)(i), 164.310(a)(1), 164.310(d)(1),
 #   164.314(a)(1), 164.314(a)(2)(i), 164.314(a)(2)(ii), 164.314(a)(2)(iii), 164.314(b)(1), 164.314(b)(2)(i),
 #   164.314(b)(2)(ii), 164.314(b)(2)(iii), 164.314(b)(2)(iv), 164.316(a), 164.316(b)(1), 164.316(b)(2)(i),
@@ -611,6 +620,55 @@ _satisfied(id) if {
 	_attested(id)
 }
 
+# § 164.306(d)(3)(ii)(B): an addressable specification not implemented, with the reason documented and an
+# equivalent alternative implemented (or the absence of a reasonable alternative documented).
+_decisions := d if {
+	d := object.get(input, ["hipaa", "addressable_decisions"], {})
+	is_object(d)
+}
+
+_alternative_documented(id) if {
+	specifications[id].status == "addressable"
+	d := _decisions[id]
+	is_object(d)
+	d.not_reasonable_and_appropriate_documented == true
+	_alternative_or_none(d)
+}
+
+_alternative_or_none(d) if d.equivalent_alternative_implemented == true
+
+_alternative_or_none(d) if d.no_reasonable_alternative_documented == true
+
+_scope_ok_for(id) if not technical_rows[id]
+
+_scope_ok_for(_) if _ephi_scope_declared
+
+_satisfied(id) if {
+	applicable[id]
+	_alternative_documented(id)
+	_scope_ok_for(id)
+}
+
+violations contains msg if {
+	some id, _ in _decisions
+	not specifications[id]
+	msg := sprintf("HIPAA Security Rule Input Contract: addressable decision for unknown id %v - ids are the 45 CFR citations this module carries", [id])
+}
+
+violations contains msg if {
+	some id, _ in _decisions
+	specifications[id].status != "addressable"
+	msg := sprintf("HIPAA Security Rule Input Contract: addressable decision supplied for %v, which is %v, not addressable; 45 CFR 164.306(d)(2) requires it to be implemented", [id, specifications[id].status])
+}
+
+violations contains "HIPAA Security Rule Input Contract: input.hipaa.addressable_decisions is not an object" if {
+	not is_object(object.get(input, ["hipaa", "addressable_decisions"], {}))
+}
+
+_alternative_bool(id) if _alternative_documented(id)
+
+else := false
+
 _unmet(id) := sprintf("fact check failed - %v", [fact_basis[id]]) if fact_basis[id]
 
 else := sprintf("not attested - input.hipaa.specifications[\"%v\"] must be true", [id])
@@ -654,6 +712,7 @@ row_status[id] := s if {
 		"basis": _basis(id),
 		"attested": _attested_bool(id),
 		"satisfied": _satisfied_bool(id),
+		"addressed_by_alternative": _alternative_bool(id),
 	}
 }
 
@@ -694,6 +753,7 @@ report := {
 	"standards": count({id | some id; r := specifications[id]; r.status == "standard"}),
 	"required_specifications": count({id | some id; r := specifications[id]; r.status == "required"}),
 	"addressable_specifications": count({id | some id; r := specifications[id]; r.status == "addressable"}),
+	"addressed_by_alternative": sort([id | some id, _ in applicable; _alternative_documented(id)]),
 	"fact_evaluated": count(fact_basis),
 	"attested": count(specifications) - count(fact_basis),
 	"applicable": _n_applicable,

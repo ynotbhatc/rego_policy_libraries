@@ -32,10 +32,13 @@ test_semrev_baseline_clean if {
 	count(data.hipaa.access_control.violations) == 0 with input as fx.full_input
 }
 
-test_semrev_emergency_review_missing_fails if {
+# Audit 2026-11-17: the 90-day emergency-account review period is a library practice, not 45 CFR text; a
+# missing value is an advisory, not a violation.
+test_emergency_review_missing_is_advisory_not_violation if {
 	inp := object.union(object.remove(fx.full_input, ["access_controls"]), {"access_controls": object.remove(fx.full_input.access_controls, ["emergency_accounts_reviewed_days"])})
-	v := data.hipaa.access_control.violations with input as inp
-	count(v) > 0
+	count(data.hipaa.access_control.violations) == 0 with input as inp
+	some a in data.hipaa.access_control.advisories with input as inp
+	contains(a, "emergency_accounts_reviewed_days")
 }
 
 test_semrev_logoff_timeout_missing_fails if {
@@ -50,8 +53,10 @@ test_semrev_screen_lock_missing_fails if {
 	count(v) > 0
 }
 
-test_semrev_key_rotation_missing_fails if {
+# Audit 2026-11-17: 164.312(a)(2)(iv) contains no key-rotation period; missing rotation data is an advisory.
+test_key_rotation_missing_is_advisory_not_violation if {
 	inp := object.union(object.remove(fx.full_input, ["encryption"]), {"encryption": object.remove(fx.full_input.encryption, ["key_rotation_days"])})
-	v := data.hipaa.access_control.violations with input as inp
-	count(v) > 0
+	count(data.hipaa.access_control.violations) == 0 with input as inp
+	some a in data.hipaa.access_control.advisories with input as inp
+	contains(a, "key_rotation_days")
 }

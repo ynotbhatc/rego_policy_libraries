@@ -251,11 +251,17 @@ test_attestation_does_not_decide_a_fact_row if {
 }
 
 test_technical_finding_lands_on_the_cited_specification if {
-	inp := object.union(_fx.full_input, {"session": {"inactivity_timeout_minutes": 30}})
+	inp := object.union(_fx.full_input, {"session": {"inactivity_timeout_minutes": 0}})
 	v := sr.violations with input as inp
 	count(v) == 1
 	some m in v
 	startswith(m, "HIPAA 164.312(a)(2)(iii) Automatic logoff (addressable): fact check failed")
+}
+
+# Audit 2026-11-17: a 30-minute predetermined logoff meets 164.312(a)(2)(iii); the 15-minute ceiling is advisory.
+test_thirty_minute_logoff_is_not_a_violation if {
+	inp := object.union(_fx.full_input, {"session": {"inactivity_timeout_minutes": 30}})
+	count(sr.violations) == 0 with input as inp
 }
 
 test_uncited_technical_finding_lands_on_the_standard if {
