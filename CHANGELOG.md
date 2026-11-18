@@ -16,6 +16,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   almost all style). Four hygiene rules with hundreds of existing instances are off in CI and named in the file with
   the reason; two generated patterns are excluded by path.
 
+### Fixed — CI: the OPA 1.10.0 leg was killed before it ran the tests
+
+- After batch 2 the runner was shut down during the per-class wasm build on the OPA 1.10.0 leg (main at `ea38b446` and
+  the following pull request), so that leg's `opa test` never ran and the required check went red. The bundle build
+  now runs on the 1.22.0 leg only; the round-trip and `dist/` staleness checks still run on both.
+
 ### Fixed — findings from the first full Regal run (2026-11-17)
 
 - **SAP ABAP baseline, AUDIT-A_c.3b:** the check title carries a log-file pattern with literal percent signs, which
