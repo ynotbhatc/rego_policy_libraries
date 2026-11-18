@@ -68,7 +68,7 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   mutations). Fail-closed: an absent evidence path makes the finding Open with "evidence missing — <path> not
   collected". Catalog id hard-gate as in the other generators. Each section's METADATA header (including the
   `make coverage` block) and the aggregation tail are carried over from the file; output is formatted with
-  `opa fmt`, so `opa` must be on PATH. Rules not yet reviewed are carried verbatim from `rhel9_legacy.py`.
+  `opa fmt`, so `opa` must be on PATH.
   `stamp_catalog.py rhel_9` is refused from now on (its MAP keys on the pre-stamp ids).
 - The derived modules (`gen_oracle_linux.py`: oracle_linux_9, oracle_linux_8, rhel_10) copy the RHEL 9 blocks;
   they pick up the reviewed logic, and its input contract, the next time they are regenerated.

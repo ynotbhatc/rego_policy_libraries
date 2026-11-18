@@ -24,15 +24,35 @@ green_fixture := {
 		},
 	],
 	"crypto_policy_check": {"output": "The configured policy matches the generated policy"},
+	"gnome": {"smartcard_removal_action": "'lock-screen'"},
 	"openssl_cnf": {"lines": [
 		"[ crypto_policy ]",
 		".include = /etc/crypto-policies/back-ends/opensslcnf.config",
 	]},
+	"sssd": {
+		"certificate_verification": "ocsp_dgst=sha512",
+		"certmap_rules": [{
+			"domains": "testing.test",
+			"maprule": "(userCertificate;binary={cert!bin})",
+			"matchrule": "<SAN>.*EDIPI@mil",
+			"section": "certmap/testing.test/rule_name",
+		}],
+	},
+	"sssd_ca_db": {"certificates": [{
+		"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+		"not_after": "2099-12-30T18:46:41Z",
+		"not_before": "2012-03-20T18:46:41Z",
+		"subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+	}]},
 }
 
 test_every_finding_open_on_empty_input if {
 	fs := data.stig.rhel_9.pki_crypto.findings with input as {}
 	count([f | some f in fs; f.status != "Open"]) == 0
+}
+
+test_section_compliant_on_green_fixture if {
+	data.stig.rhel_9.pki_crypto.compliant with input as green_fixture
 }
 
 test_rhel_09_672020_pass if {
@@ -101,4 +121,106 @@ test_rhel_09_672055_evidence_missing_1 if {
 	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_672055 with input as json.remove(green_fixture, [["openssl_cnf", "lines"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-672055: evidence missing — openssl_cnf.lines")
+}
+
+test_rhel_09_611170_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611170 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611170_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": "no_ocsp"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: check failed")
+}
+
+test_rhel_09_611170_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": "ocsp_dgst=sha1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: check failed")
+}
+
+test_rhel_09_611170_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as json.remove(green_fixture, [["sssd", "certificate_verification"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: evidence missing — sssd.certificate_verification")
+}
+
+test_rhel_09_611170_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": null}, "attest": {"rhel_09_611170_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_631010_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_631010_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "not_before": "2012-03-20T18:46:41Z", "not_after": "2020-01-01T00:00:00Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_2 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer": "CN = Example Corp Root CA", "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as json.remove(green_fixture, [["sssd_ca_db", "certificates"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: evidence missing — sssd_ca_db.certificates")
+}
+
+test_rhel_09_631010_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": null, "attest": {"rhel_09_631010_alternate_mfa": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_271045_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_271045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_271045_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271045 with input as object.union(green_fixture, {"gnome": {"smartcard_removal_action": "'none'"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271045: check failed")
+}
+
+test_rhel_09_271045_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271045 with input as json.remove(green_fixture, [["gnome", "smartcard_removal_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-271045: evidence missing — gnome.smartcard_removal_action")
+}
+
+test_rhel_09_271045_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_271045 with input as object.union(green_fixture, {"gnome": {"smartcard_removal_action": null}, "gui_installed": false})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_631015_pass if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_631015_fail_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631015 with input as object.union(green_fixture, {"sssd": {"certmap_rules": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631015: check failed")
+}
+
+test_rhel_09_631015_evidence_missing_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631015 with input as json.remove(green_fixture, [["sssd", "certmap_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631015: evidence missing — sssd.certmap_rules")
+}
+
+test_rhel_09_631015_not_applicable_1 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631015 with input as object.union(green_fixture, {"sssd": {"certmap_rules": null}, "attest": {"rhel_09_631015_alternate_mfa": true}})
+	f.status == "Not_Applicable"
 }

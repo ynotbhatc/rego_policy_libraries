@@ -588,6 +588,22 @@ test_rhel_09_231015_pass_2 if {
 	data.stig.rhel_9.configuration_management.status_rhel_09_231015 == "Not_a_Finding" with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log", "device": "/dev/mapper/rhel-var_log", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/tmp", "device": "tmpfs", "fstype": "tmpfs", "options": ["rw"]}]})
 }
 
+test_rhel_09_231025_pass if {
+	data.stig.rhel_9.configuration_management.status_rhel_09_231025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_231025_fail_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231025 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231025: check failed")
+}
+
+test_rhel_09_231025_evidence_missing_1 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231025 with input as json.remove(green_fixture, [["filesystem_mounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-231025: evidence missing — filesystem_mounts")
+}
+
 test_rhel_09_231045_pass if {
 	data.stig.rhel_9.configuration_management.status_rhel_09_231045 == "Not_a_Finding" with input as green_fixture
 }
@@ -652,22 +668,6 @@ test_rhel_09_231055_evidence_missing_1 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231055 with input as json.remove(green_fixture, [["filesystem_mounts"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-231055: evidence missing — filesystem_mounts")
-}
-
-test_rhel_09_231025_pass if {
-	data.stig.rhel_9.configuration_management.status_rhel_09_231025 == "Not_a_Finding" with input as green_fixture
-}
-
-test_rhel_09_231025_fail_1 if {
-	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231025 with input as object.union(green_fixture, {"filesystem_mounts": [{"mount": "/tmp", "device": "/dev/mapper/rhel-tmp", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/home", "device": "/dev/mapper/rhel-home", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}, {"mount": "/var/log/audit", "device": "/dev/mapper/rhel-var_log_audit", "fstype": "xfs", "options": ["rw", "nodev", "nosuid", "noexec"]}]})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-231025: check failed")
-}
-
-test_rhel_09_231025_evidence_missing_1 if {
-	f := data.stig.rhel_9.configuration_management.finding_rhel_09_231025 with input as json.remove(green_fixture, [["filesystem_mounts"]])
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-231025: evidence missing — filesystem_mounts")
 }
 
 test_rhel_09_231030_pass if {

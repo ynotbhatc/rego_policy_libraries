@@ -8,12 +8,21 @@ A spec (see R below):
   na / na_expect / na_cases : the check text's Not Applicable clause, as explicit evidence
   green   : fixture patch that passes      bad : list of patches (object.union onto green) that fail
   expect  : what the check requires (the Open detail)      fix : fix text      kind : machine | machine+attestation
-Rules not yet moved here are carried verbatim from the hand-maintained module (rhel9_legacy.py).
+Every rule the hand-maintained module implemented (104 of 445) is here; the block order in each module follows this file.
 """
-from rhel9_legacy import LEGACY, LEGACY_HELPERS
 
-SECTION_HELPERS = dict(LEGACY_HELPERS)
-RULES = {sid: dict(spec, legacy=True) for sid, spec in LEGACY.items()}
+SECTION_HELPERS = {"file_permissions": r'''# Parse an octal permission string ("644", "0644", "0o644") to an integer; undefined if not octal.
+octal(s) := n if {
+	t := trim_prefix(lower(trim_space(sprintf("%v", [s]))), "0o")
+	regex.match(`^[0-7]{1,4}$`, t)
+	p := concat("", [substring("0000", 0, 4 - count(t)), t])
+	ds := [to_number(substring(p, i, 1)) | some i in numbers.range(0, 3)]
+	n := ((ds[0] * 512) + (ds[1] * 64)) + ((ds[2] * 8) + ds[3])
+}
+
+# true when mode grants nothing beyond max (both octal strings)
+mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0'''}
+RULES = {}
 
 
 def helpers(sec, text):
@@ -22,11 +31,11 @@ def helpers(sec, text):
 
 def R(sec, sid, name, ev, alts, green, bad, expect, fix, comment="", kind="machine", attest_alts=(), na=(),
       na_expect="", na_cases=(), pass_cases=()):
-    assert sid in RULES and RULES[sid]["sec"] == sec, sid
+    assert sid not in RULES, f"{sid} defined twice"
     if attest_alts and kind == "machine":
         kind = "machine+attestation"
     RULES[sid] = dict(sec=sec, name=name, ev=[tuple(e) for e in ev], alts=alts, green=green, bad=list(bad),
-                      expect=expect, fix=fix, comment=comment or RULES[sid].get("comment", ""), kind=kind,
+                      expect=expect, fix=fix, comment=comment, kind=kind,
                       attest_alts=list(attest_alts), na=list(na), na_expect=na_expect, na_cases=list(na_cases),
                       pass_cases=list(pass_cases))
 
@@ -362,7 +371,7 @@ R("account_auth", "RHEL-09-411110", "no_duplicate_gids",
 
 
 # ── audit_logging ───────────────────────────────────────────────────────────────────────────────
-SECTION_HELPERS["audit_logging"] = r'''
+helpers("audit_logging", r'''
 # input.audit_rules: the loaded rules, one string per line of `auditctl -l`
 _audit_lines := [l | some l in input.audit_rules; is_string(l)]
 
@@ -447,7 +456,7 @@ _path_field_ok(f, _) if startswith(f, "perm=")
 
 _path_field_ok(f, _) if f in ({"auid>=1000"} | auid_unset)
 
-_path_field_ok(f, _) if _field_ok(f, set())'''
+_path_field_ok(f, _) if _field_ok(f, set())''')
 
 
 def sc_line(arch, calls, extra="", auid=True):
@@ -856,3 +865,190 @@ R("network", "RHEL-09-251040", "no_promiscuous_interfaces", [("promiscuous_inter
   comment="interfaces flagged PROMISC by ip link",
   attest_alts=[['_attested("rhel_09_251040_promisc_approved")']],
   pass_cases=[{"promiscuous_interfaces": ["eth0"], "attest": {"rhel_09_251040_promisc_approved": True}}])
+
+
+# ── pki_crypto ──────────────────────────────────────────────────────────────────────────────────
+def alt_mfa(sid):
+    key = f"{ident_of(sid)}_alternate_mfa"
+    return dict(na=[[f'_attested("{key}")']], na_expect="the SA demonstrated an approved alternate multifactor authentication method",
+                na_key=key)
+
+
+def ident_of(sid):
+    return sid.lower().replace("-", "_")
+
+
+m = alt_mfa("RHEL-09-611170")
+R("pki_crypto", "RHEL-09-611170", "cert_revocation_check", [("sssd", "certificate_verification")],
+  [['s := _str(["sssd", "certificate_verification"])', 'contains(s, "ocsp_dgst=sha512")']],
+  {"sssd": {"certificate_verification": "ocsp_dgst=sha512"}},
+  [{"sssd": {"certificate_verification": "no_ocsp"}}, {"sssd": {"certificate_verification": "ocsp_dgst=sha1"}}],
+  "certificate_verification in the [sssd] section must include ocsp_dgst=sha512, or the SA must show how certificate status "
+  "checking is implemented (input.attest.rhel_09_611170_status_checking)",
+  "Set certificate_verification = ocsp_dgst=sha512 in the [sssd] section of /etc/sssd/sssd.conf",
+  comment="certificate_verification from the [sssd] section of sssd.conf / conf.d (uncommented)",
+  attest_alts=[['_attested("rhel_09_611170_status_checking")']], na=m["na"], na_expect=m["na_expect"],
+  na_cases=[{"sssd": {"certificate_verification": None}, "attest": {m["na_key"]: True}}])
+
+helpers("pki_crypto", r'''
+# a DoD root CA certificate from /etc/sssd/pki/sssd_auth_ca_db.pem that is inside its validity period
+# (input.sssd_ca_db.certificates: [{issuer, subject, not_before, not_after}], dates RFC 3339)
+_dod_root_valid(c) if {
+	is_string(c.issuer)
+	contains(c.issuer, "O = U.S. Government")
+	regex.match(`CN = DoD Root CA [0-9]+`, c.issuer)
+	nb := time.parse_rfc3339_ns(c.not_before)
+	na := time.parse_rfc3339_ns(c.not_after)
+	now := time.now_ns()
+	nb <= now
+	now < na
+}''')
+
+m = alt_mfa("RHEL-09-631010")
+DOD_CA = {"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+          "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+          "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}
+R("pki_crypto", "RHEL-09-631010", "dod_ca_trusted", [("sssd_ca_db", "certificates")],
+  [["certs := input.sssd_ca_db.certificates", "is_array(certs)", "some c in certs", "_dod_root_valid(c)"]],
+  {"sssd_ca_db": {"certificates": [DOD_CA]}},
+  [{"sssd_ca_db": {"certificates": [dict(DOD_CA, not_after="2020-01-01T00:00:00Z")]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, issuer="CN = Example Corp Root CA")]}},
+   {"sssd_ca_db": {"certificates": []}}],
+  "/etc/sssd/pki/sssd_auth_ca_db.pem must hold a DoD-issued root CA certificate within its validity dates",
+  "Install the DoD root CA bundle as /etc/sssd/pki/sssd_auth_ca_db.pem",
+  comment="certificates in /etc/sssd/pki/sssd_auth_ca_db.pem (openssl x509 -text): issuer and validity",
+  na=m["na"], na_expect=m["na_expect"], na_cases=[{"sssd_ca_db": None, "attest": {m["na_key"]: True}}])
+
+R("pki_crypto", "RHEL-09-271045", "smartcard_lock_on_removal", [("gnome", "smartcard_removal_action")],
+  [['s := _str(["gnome", "smartcard_removal_action"])', "trim(s, \"'\") == \"lock-screen\""]],
+  {"gnome": {"smartcard_removal_action": "'lock-screen'"}}, [{"gnome": {"smartcard_removal_action": "'none'"}}],
+  "gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action must return 'lock-screen'",
+  "Set removal-action='lock-screen' under [org/gnome/settings-daemon/peripherals/smartcard] in /etc/dconf/db/local.d/ and run dconf update",
+  comment="gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action; no GUI is Not Applicable",
+  na=[["input.gui_installed == false"]], na_expect="no graphical user interface is installed",
+  na_cases=[{"gnome": {"smartcard_removal_action": None}, "gui_installed": False}])
+
+m = alt_mfa("RHEL-09-631015")
+R("pki_crypto", "RHEL-09-631015", "cert_user_mapping", [("sssd", "certmap_rules")],
+  [["rules := input.sssd.certmap_rules", "is_array(rules)", "some r in rules",
+    'is_string(r.maprule)', 'trim_space(r.maprule) != ""']],
+  {"sssd": {"certmap_rules": [{"section": "certmap/testing.test/rule_name", "matchrule": "<SAN>.*EDIPI@mil",
+                               "maprule": "(userCertificate;binary={cert!bin})", "domains": "testing.test"}]}},
+  [{"sssd": {"certmap_rules": []}}],
+  "sssd.conf / conf.d must have a [certmap/...] section mapping certificates to accounts, or the SA must show how certificates "
+  "are mapped (input.attest.rhel_09_631015_certificate_mapping)",
+  "Add a [certmap/<domain>/<rule>] section with matchrule and maprule to /etc/sssd/sssd.conf",
+  comment="[certmap/...] sections of sssd.conf and conf.d: [{section, matchrule, maprule, domains}]",
+  attest_alts=[['_attested("rhel_09_631015_certificate_mapping")']], na=m["na"], na_expect=m["na_expect"],
+  na_cases=[{"sssd": {"certmap_rules": None}, "attest": {m["na_key"]: True}}])
+
+
+# ── services ────────────────────────────────────────────────────────────────────────────────────
+for sid, name, pkg in (("RHEL-09-215040", "telnet_server_absent", "telnet-server"), ("RHEL-09-215025", "nfs_disabled", "nfs-utils")):
+    R("services", sid, name, [("packages", pkg)], [[f'input.packages["{pkg}"] == false']],
+      {"packages": {pkg: False}}, [{"packages": {pkg: True}}],
+      f"the {pkg} package must not be installed", f"Remove the package: dnf remove {pkg}",
+      comment=f"the {pkg} package must not be installed (dnf list --installed {pkg})")
+
+R("services", "RHEL-09-231040", "autofs_disabled", [("unit_enabled", "autofs")],
+  [['_kw(["unit_enabled", "autofs"]) in {"masked", "disabled", "not-found"}']],
+  {"unit_enabled": {"autofs": "masked"}}, [{"unit_enabled": {"autofs": "enabled"}}, {"unit_enabled": {"autofs": "static"}}],
+  "systemctl is-enabled autofs must return masked, disabled or not-found",
+  "Disable and mask the automounter: systemctl mask --now autofs.service",
+  comment="systemctl is-enabled autofs (input.unit_enabled[<unit>] is that command's output)",
+  pass_cases=[{"unit_enabled": {"autofs": "disabled"}}, {"unit_enabled": {"autofs": "not-found"}}])
+
+
+# ── software_integrity ──────────────────────────────────────────────────────────────────────────
+RH_KEYS = {"567E347AD0044ADE55BA8A5F199E2F91FD431D51": "release key 2", "7E4624258C406535D56D6F135054E4A45A6340B3": "auxiliary key 3"}
+helpers("software_integrity", r'''
+# Red Hat RHEL 9 package-signing key fingerprints, from the RHEL-09-214010 check text
+redhat_key_fingerprints := ''' + "{" + ", ".join(f'"{k}"' for k in RH_KEYS) + "}" + r'''
+
+_fpr(s) := upper(replace(s, " ", "")) if is_string(s)
+
+# an installed gpg-pubkey whose summary names the Red Hat key `label`
+_rh_key_installed(label) if {
+	some s in input.rpm_gpg_pubkeys
+	is_string(s)
+	contains(lower(s), "red hat")
+	contains(s, label)
+}
+
+# an AIDE rule line (uncommented selection / group definition) that uses sha512
+_aide_sha512(l) if {
+	is_string(l)
+	parts := regex.split(`[=+ ]+`, trim_space(l))
+	"sha512" in parts
+}''')
+
+R("software_integrity", "RHEL-09-214010", "gpgcheck_global",
+  [("rpm_gpg_pubkeys",), ("redhat_release_key_file", "fingerprints")],
+  [['_rh_key_installed("(release key 2)")', '_rh_key_installed("(auxiliary key 3)")',
+    "fps := input.redhat_release_key_file.fingerprints", "is_array(fps)",
+    "installed := {f | some x in fps; f := _fpr(x)}",
+    "every k in redhat_key_fingerprints {\n\tk in installed\n}"]],
+  {"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key",
+                       "Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key"],
+   "redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
+                                                "7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3"]}},
+  [{"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key"]},
+   {"redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
+                                                 "0000 0000 0000 0000 0000  0000 0000 0000 0000 0000"]}}],
+  "Red Hat GPG keys 'release key 2' and 'auxiliary key 3' must be installed and /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release "
+  "must carry fingerprints 567E347AD0044ADE55BA8A5F199E2F91FD431D51 and 7E4624258C406535D56D6F135054E4A45A6340B3",
+  "Install the Red Hat keys: rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (from a verified redhat-release package)",
+  comment="installed gpg-pubkey summaries and the fingerprints in /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (null if the file is missing)")
+
+R("software_integrity", "RHEL-09-651020", "aide_fips_hashes", [("aide", "rule_lines")],
+  [["lines := input.aide.rule_lines", "is_array(lines)", "count(lines) > 0",
+    "every l in lines {\n\t_aide_sha512(l)\n}"]],
+  {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]}},
+  [{"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux", "NORMAL=p+i+n+u+g+s+m+sha256"]}},
+   {"aide": {"rule_lines": []}}],
+  "every uncommented selection line in /etc/aide.conf must use sha512, or another tool using FIPS 140-3 hashes must be attested "
+  "(input.attest.rhel_09_651020_other_tool)",
+  "Add sha512 to every uncommented selection line in /etc/aide.conf",
+  comment="the uncommented rule / selection lines of /etc/aide.conf",
+  attest_alts=[['_attested("rhel_09_651020_other_tool")']])
+
+sysctl_rule("software_integrity", "RHEL-09-213020", "kexec_disabled", "kernel.kexec_load_disabled", "1", ["0"],
+            "kernel.kexec_load_disabled must be 1", "Set kernel.kexec_load_disabled = 1 in /etc/sysctl.d/ and run sysctl --system")
+
+R("software_integrity", "RHEL-09-652010", "rsyslog_installed", [("packages", "rsyslog")], [["input.packages.rsyslog == true"]],
+  {"packages": {"rsyslog": True}}, [{"packages": {"rsyslog": False}}],
+  "the rsyslog package must be installed", "Install rsyslog: dnf install rsyslog", comment="rsyslog package installed")
+
+R("software_integrity", "RHEL-09-652020", "rsyslog_active", [("services", "rsyslog")], [['_kw(["services", "rsyslog"]) == "active"']],
+  {"services": {"rsyslog": "active"}}, [{"services": {"rsyslog": "inactive"}}],
+  "rsyslog must be active (systemctl is-active rsyslog)", "Enable rsyslog: systemctl enable --now rsyslog",
+  comment="systemctl is-active rsyslog")
+
+
+# ── ssh_config ──────────────────────────────────────────────────────────────────────────────────
+for sid, key, name, want, bad in (("RHEL-09-255045", "PermitRootLogin", "ssh_no_root_login", "no", ["yes", "forced-commands-only", "prohibit-password"]),
+                                  ("RHEL-09-255080", "HostbasedAuthentication", "ssh_no_hostbased_auth", "no", ["yes"]),
+                                  ("RHEL-09-255160", "StrictModes", "ssh_strict_modes", "yes", ["no"]),
+                                  ("RHEL-09-255145", "IgnoreRhosts", "ssh_ignore_rhosts", "yes", ["no"]),
+                                  ("RHEL-09-255150", "IgnoreUserKnownHosts", "ssh_ignore_user_known_hosts", "yes", ["no"]),
+                                  ("RHEL-09-255165", "PrintLastLog", "ssh_print_last_log", "yes", ["no"])):
+    R("ssh_config", sid, name, [("ssh_config", key)], [[f'_kw(["ssh_config", "{key}"]) == "{want}"']],
+      {"ssh_config": {key: want}}, [{"ssh_config": {key: b}} for b in bad],
+      f"sshd {key} must be {want}", f"Set {key} {want} in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+      comment=f"effective sshd {key} (case-insensitive) must be {want}",
+      pass_cases=[{"ssh_config": {key: want.upper()}}])
+
+R("ssh_config", "RHEL-09-255155", "ssh_no_x11", [("ssh_config", "X11Forwarding")], [['_kw(["ssh_config", "X11Forwarding"]) == "no"']],
+  {"ssh_config": {"X11Forwarding": "no"}}, [{"ssh_config": {"X11Forwarding": "yes"}}],
+  "sshd X11Forwarding must be no, unless X11 forwarding is documented with the ISSO (input.attest.rhel_09_255155_x11_documented)",
+  "Set X11Forwarding no in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+  comment="effective sshd X11Forwarding", attest_alts=[['_attested("rhel_09_255155_x11_documented")']],
+  pass_cases=[{"ssh_config": {"X11Forwarding": "yes"}, "attest": {"rhel_09_255155_x11_documented": True}}])
+
+num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_config", "ClientAliveInterval"], 1, 600, 600, [601, 0, "10m"],
+         "sshd ClientAliveInterval must be set to 600 or less (0 disables it)",
+         "Set ClientAliveInterval 600 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+         "effective sshd ClientAliveInterval (sshd -T)")
+num_rule("ssh_config", "RHEL-09-255095", "ssh_client_alive_count_ok", ["ssh_config", "ClientAliveCountMax"], 1, 1, 1, [0, 3],
+         "sshd ClientAliveCountMax must be 1", "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+         "effective sshd ClientAliveCountMax (sshd -T)")

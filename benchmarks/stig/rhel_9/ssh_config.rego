@@ -75,32 +75,6 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
-# Approved ciphers for FIPS compliance
-approved_ciphers := {
-	"aes256-gcm@openssh.com",
-	"aes128-gcm@openssh.com",
-	"aes256-ctr",
-	"aes192-ctr",
-	"aes128-ctr",
-}
-
-# Approved MACs
-approved_macs := {
-	"hmac-sha2-512",
-	"hmac-sha2-256",
-	"hmac-sha2-512-etm@openssh.com",
-	"hmac-sha2-256-etm@openssh.com",
-}
-
-# Approved key exchange algorithms
-approved_kex := {
-	"ecdh-sha2-nistp256",
-	"ecdh-sha2-nistp384",
-	"ecdh-sha2-nistp521",
-	"diffie-hellman-group-exchange-sha256",
-	"diffie-hellman-group14-sha256",
-}
-
 # DISA's lists for the opensshserver crypto-policy back-end (RHEL-09-255065 / RHEL-09-255075)
 fips_ssh_ciphers := {"aes256-gcm@openssh.com", "aes256-ctr", "aes128-gcm@openssh.com", "aes128-ctr"}
 
@@ -257,15 +231,14 @@ finding_rhel_09_255050 := {
 # =============================================================================
 
 # RHEL-09-255045 | V-257985 | CAT II
-# SSH must not permit root login
+# effective sshd PermitRootLogin (case-insensitive) must be no
+missing_rhel_09_255045 := [concat(".", p) | some p in [["ssh_config", "PermitRootLogin"]]; not _collected(p)]
+
 default ssh_no_root_login := false
 
 ssh_no_root_login if {
-	lower(input.ssh_config.PermitRootLogin) == "no"
-}
-
-ssh_no_root_login if {
-	lower(input.ssh_config.PermitRootLogin) == "forced-commands-only"
+	count(missing_rhel_09_255045) == 0
+	_kw(["ssh_config", "PermitRootLogin"]) == "no"
 }
 
 status_rhel_09_255045 := "Not_a_Finding" if ssh_no_root_login
@@ -274,7 +247,9 @@ else := "Open"
 
 detail_rhel_09_255045 := "RHEL-09-255045: Not_a_Finding" if ssh_no_root_login
 
-else := "RHEL-09-255045: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255045", concat(", ", missing_rhel_09_255045)]) if count(missing_rhel_09_255045) > 0
+
+else := "RHEL-09-255045: check failed — sshd PermitRootLogin must be no"
 
 finding_rhel_09_255045 := {
 	"vuln_id": "V-257985",
@@ -284,15 +259,18 @@ finding_rhel_09_255045 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255045,
 	"detail": detail_rhel_09_255045,
-	"fix_text": "Set PermitRootLogin no in /etc/ssh/sshd_config",
+	"fix_text": "Set PermitRootLogin no in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255080 | V-257992 | CAT II
-# SSH must not allow host-based authentication
+# effective sshd HostbasedAuthentication (case-insensitive) must be no
+missing_rhel_09_255080 := [concat(".", p) | some p in [["ssh_config", "HostbasedAuthentication"]]; not _collected(p)]
+
 default ssh_no_hostbased_auth := false
 
 ssh_no_hostbased_auth if {
-	lower(input.ssh_config.HostbasedAuthentication) == "no"
+	count(missing_rhel_09_255080) == 0
+	_kw(["ssh_config", "HostbasedAuthentication"]) == "no"
 }
 
 status_rhel_09_255080 := "Not_a_Finding" if ssh_no_hostbased_auth
@@ -301,7 +279,9 @@ else := "Open"
 
 detail_rhel_09_255080 := "RHEL-09-255080: Not_a_Finding" if ssh_no_hostbased_auth
 
-else := "RHEL-09-255080: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255080", concat(", ", missing_rhel_09_255080)]) if count(missing_rhel_09_255080) > 0
+
+else := "RHEL-09-255080: check failed — sshd HostbasedAuthentication must be no"
 
 finding_rhel_09_255080 := {
 	"vuln_id": "V-257992",
@@ -311,73 +291,18 @@ finding_rhel_09_255080 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255080,
 	"detail": detail_rhel_09_255080,
-	"fix_text": "Set HostbasedAuthentication no in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255100 | V-257996 | CAT II
-# SSH ClientAliveInterval must be 600 or less
-default ssh_client_alive_interval_ok := false
-
-ssh_client_alive_interval_ok if {
-	interval := to_number(input.ssh_config.ClientAliveInterval)
-	interval <= 600
-	interval > 0
-}
-
-status_rhel_09_255100 := "Not_a_Finding" if ssh_client_alive_interval_ok
-
-else := "Open"
-
-detail_rhel_09_255100 := "RHEL-09-255100: Not_a_Finding" if ssh_client_alive_interval_ok
-
-else := "RHEL-09-255100: Open — logic not yet reviewed against the V2R10 check text"
-
-finding_rhel_09_255100 := {
-	"vuln_id": "V-257996",
-	"stig_id": "RHEL-09-255100",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
-	"check_type": "machine",
-	"status": status_rhel_09_255100,
-	"detail": detail_rhel_09_255100,
-	"fix_text": "Set ClientAliveInterval 600 in /etc/ssh/sshd_config",
-}
-
-# RHEL-09-255095 | V-257995 | CAT II
-# SSH ClientAliveCountMax must be 1 or less
-default ssh_client_alive_count_ok := false
-
-ssh_client_alive_count_ok if {
-	count_max := to_number(input.ssh_config.ClientAliveCountMax)
-	count_max > 0 # 0 disables connection termination in sshd
-	count_max <= 1
-}
-
-status_rhel_09_255095 := "Not_a_Finding" if ssh_client_alive_count_ok
-
-else := "Open"
-
-detail_rhel_09_255095 := "RHEL-09-255095: Not_a_Finding" if ssh_client_alive_count_ok
-
-else := "RHEL-09-255095: Open — logic not yet reviewed against the V2R10 check text"
-
-finding_rhel_09_255095 := {
-	"vuln_id": "V-257995",
-	"stig_id": "RHEL-09-255095",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
-	"check_type": "machine",
-	"status": status_rhel_09_255095,
-	"detail": detail_rhel_09_255095,
-	"fix_text": "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config",
+	"fix_text": "Set HostbasedAuthentication no in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255160 | V-258008 | CAT II
-# SSH must use strict mode
+# effective sshd StrictModes (case-insensitive) must be yes
+missing_rhel_09_255160 := [concat(".", p) | some p in [["ssh_config", "StrictModes"]]; not _collected(p)]
+
 default ssh_strict_modes := false
 
 ssh_strict_modes if {
-	lower(input.ssh_config.StrictModes) == "yes"
+	count(missing_rhel_09_255160) == 0
+	_kw(["ssh_config", "StrictModes"]) == "yes"
 }
 
 status_rhel_09_255160 := "Not_a_Finding" if ssh_strict_modes
@@ -386,7 +311,9 @@ else := "Open"
 
 detail_rhel_09_255160 := "RHEL-09-255160: Not_a_Finding" if ssh_strict_modes
 
-else := "RHEL-09-255160: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255160", concat(", ", missing_rhel_09_255160)]) if count(missing_rhel_09_255160) > 0
+
+else := "RHEL-09-255160: check failed — sshd StrictModes must be yes"
 
 finding_rhel_09_255160 := {
 	"vuln_id": "V-258008",
@@ -396,15 +323,18 @@ finding_rhel_09_255160 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255160,
 	"detail": detail_rhel_09_255160,
-	"fix_text": "Set StrictModes yes in /etc/ssh/sshd_config",
+	"fix_text": "Set StrictModes yes in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255145 | V-258005 | CAT II
-# SSH must disable rhosts authentication
+# effective sshd IgnoreRhosts (case-insensitive) must be yes
+missing_rhel_09_255145 := [concat(".", p) | some p in [["ssh_config", "IgnoreRhosts"]]; not _collected(p)]
+
 default ssh_ignore_rhosts := false
 
 ssh_ignore_rhosts if {
-	lower(input.ssh_config.IgnoreRhosts) == "yes"
+	count(missing_rhel_09_255145) == 0
+	_kw(["ssh_config", "IgnoreRhosts"]) == "yes"
 }
 
 status_rhel_09_255145 := "Not_a_Finding" if ssh_ignore_rhosts
@@ -413,7 +343,9 @@ else := "Open"
 
 detail_rhel_09_255145 := "RHEL-09-255145: Not_a_Finding" if ssh_ignore_rhosts
 
-else := "RHEL-09-255145: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255145", concat(", ", missing_rhel_09_255145)]) if count(missing_rhel_09_255145) > 0
+
+else := "RHEL-09-255145: check failed — sshd IgnoreRhosts must be yes"
 
 finding_rhel_09_255145 := {
 	"vuln_id": "V-258005",
@@ -423,15 +355,18 @@ finding_rhel_09_255145 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255145,
 	"detail": detail_rhel_09_255145,
-	"fix_text": "Set IgnoreRhosts yes in /etc/ssh/sshd_config",
+	"fix_text": "Set IgnoreRhosts yes in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255150 | V-258006 | CAT II
-# SSH must not allow .shosts
+# effective sshd IgnoreUserKnownHosts (case-insensitive) must be yes
+missing_rhel_09_255150 := [concat(".", p) | some p in [["ssh_config", "IgnoreUserKnownHosts"]]; not _collected(p)]
+
 default ssh_ignore_user_known_hosts := false
 
 ssh_ignore_user_known_hosts if {
-	lower(input.ssh_config.IgnoreUserKnownHosts) == "yes"
+	count(missing_rhel_09_255150) == 0
+	_kw(["ssh_config", "IgnoreUserKnownHosts"]) == "yes"
 }
 
 status_rhel_09_255150 := "Not_a_Finding" if ssh_ignore_user_known_hosts
@@ -440,7 +375,9 @@ else := "Open"
 
 detail_rhel_09_255150 := "RHEL-09-255150: Not_a_Finding" if ssh_ignore_user_known_hosts
 
-else := "RHEL-09-255150: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255150", concat(", ", missing_rhel_09_255150)]) if count(missing_rhel_09_255150) > 0
+
+else := "RHEL-09-255150: check failed — sshd IgnoreUserKnownHosts must be yes"
 
 finding_rhel_09_255150 := {
 	"vuln_id": "V-258006",
@@ -450,15 +387,18 @@ finding_rhel_09_255150 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255150,
 	"detail": detail_rhel_09_255150,
-	"fix_text": "Set IgnoreUserKnownHosts yes in /etc/ssh/sshd_config",
+	"fix_text": "Set IgnoreUserKnownHosts yes in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255165 | V-258009 | CAT II
-# SSH PrintLastLog must be enabled
+# effective sshd PrintLastLog (case-insensitive) must be yes
+missing_rhel_09_255165 := [concat(".", p) | some p in [["ssh_config", "PrintLastLog"]]; not _collected(p)]
+
 default ssh_print_last_log := false
 
 ssh_print_last_log if {
-	lower(input.ssh_config.PrintLastLog) == "yes"
+	count(missing_rhel_09_255165) == 0
+	_kw(["ssh_config", "PrintLastLog"]) == "yes"
 }
 
 status_rhel_09_255165 := "Not_a_Finding" if ssh_print_last_log
@@ -467,7 +407,9 @@ else := "Open"
 
 detail_rhel_09_255165 := "RHEL-09-255165: Not_a_Finding" if ssh_print_last_log
 
-else := "RHEL-09-255165: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255165", concat(", ", missing_rhel_09_255165)]) if count(missing_rhel_09_255165) > 0
+
+else := "RHEL-09-255165: check failed — sshd PrintLastLog must be yes"
 
 finding_rhel_09_255165 := {
 	"vuln_id": "V-258009",
@@ -477,15 +419,22 @@ finding_rhel_09_255165 := {
 	"check_type": "machine",
 	"status": status_rhel_09_255165,
 	"detail": detail_rhel_09_255165,
-	"fix_text": "Set PrintLastLog yes in /etc/ssh/sshd_config",
+	"fix_text": "Set PrintLastLog yes in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # RHEL-09-255155 | V-258007 | CAT II
-# SSH X11Forwarding must be disabled
+# effective sshd X11Forwarding
+missing_rhel_09_255155 := [concat(".", p) | some p in [["ssh_config", "X11Forwarding"]]; not _collected(p)]
+
 default ssh_no_x11 := false
 
 ssh_no_x11 if {
-	lower(input.ssh_config.X11Forwarding) == "no"
+	count(missing_rhel_09_255155) == 0
+	_kw(["ssh_config", "X11Forwarding"]) == "no"
+}
+
+ssh_no_x11 if {
+	_attested("rhel_09_255155_x11_documented")
 }
 
 status_rhel_09_255155 := "Not_a_Finding" if ssh_no_x11
@@ -494,17 +443,87 @@ else := "Open"
 
 detail_rhel_09_255155 := "RHEL-09-255155: Not_a_Finding" if ssh_no_x11
 
-else := "RHEL-09-255155: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255155", concat(", ", missing_rhel_09_255155)]) if count(missing_rhel_09_255155) > 0
+
+else := "RHEL-09-255155: check failed — sshd X11Forwarding must be no, unless X11 forwarding is documented with the ISSO (input.attest.rhel_09_255155_x11_documented)"
 
 finding_rhel_09_255155 := {
 	"vuln_id": "V-258007",
 	"stig_id": "RHEL-09-255155",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 SSH daemon must disable remote X connections for interactive users.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_255155,
 	"detail": detail_rhel_09_255155,
-	"fix_text": "Set X11Forwarding no in /etc/ssh/sshd_config",
+	"fix_text": "Set X11Forwarding no in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+}
+
+# RHEL-09-255100 | V-257996 | CAT II
+# effective sshd ClientAliveInterval (sshd -T)
+missing_rhel_09_255100 := [concat(".", p) | some p in [["ssh_config", "ClientAliveInterval"]]; not _collected(p)]
+
+default ssh_client_alive_interval_ok := false
+
+ssh_client_alive_interval_ok if {
+	count(missing_rhel_09_255100) == 0
+	n := _num(["ssh_config", "ClientAliveInterval"])
+	n >= 1
+	n <= 600
+}
+
+status_rhel_09_255100 := "Not_a_Finding" if ssh_client_alive_interval_ok
+
+else := "Open"
+
+detail_rhel_09_255100 := "RHEL-09-255100: Not_a_Finding" if ssh_client_alive_interval_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255100", concat(", ", missing_rhel_09_255100)]) if count(missing_rhel_09_255100) > 0
+
+else := "RHEL-09-255100: check failed — sshd ClientAliveInterval must be set to 600 or less (0 disables it)"
+
+finding_rhel_09_255100 := {
+	"vuln_id": "V-257996",
+	"stig_id": "RHEL-09-255100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+	"check_type": "machine",
+	"status": status_rhel_09_255100,
+	"detail": detail_rhel_09_255100,
+	"fix_text": "Set ClientAliveInterval 600 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
+}
+
+# RHEL-09-255095 | V-257995 | CAT II
+# effective sshd ClientAliveCountMax (sshd -T)
+missing_rhel_09_255095 := [concat(".", p) | some p in [["ssh_config", "ClientAliveCountMax"]]; not _collected(p)]
+
+default ssh_client_alive_count_ok := false
+
+ssh_client_alive_count_ok if {
+	count(missing_rhel_09_255095) == 0
+	n := _num(["ssh_config", "ClientAliveCountMax"])
+	n >= 1
+	n <= 1
+}
+
+status_rhel_09_255095 := "Not_a_Finding" if ssh_client_alive_count_ok
+
+else := "Open"
+
+detail_rhel_09_255095 := "RHEL-09-255095: Not_a_Finding" if ssh_client_alive_count_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255095", concat(", ", missing_rhel_09_255095)]) if count(missing_rhel_09_255095) > 0
+
+else := "RHEL-09-255095: check failed — sshd ClientAliveCountMax must be 1"
+
+finding_rhel_09_255095 := {
+	"vuln_id": "V-257995",
+	"stig_id": "RHEL-09-255095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+	"check_type": "machine",
+	"status": status_rhel_09_255095,
+	"detail": detail_rhel_09_255095,
+	"fix_text": "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
 # =============================================================================
@@ -521,13 +540,13 @@ cat_i_findings := [
 cat_ii_findings := [
 	finding_rhel_09_255045,
 	finding_rhel_09_255080,
-	finding_rhel_09_255100,
-	finding_rhel_09_255095,
 	finding_rhel_09_255160,
 	finding_rhel_09_255145,
 	finding_rhel_09_255150,
 	finding_rhel_09_255165,
 	finding_rhel_09_255155,
+	finding_rhel_09_255100,
+	finding_rhel_09_255095,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

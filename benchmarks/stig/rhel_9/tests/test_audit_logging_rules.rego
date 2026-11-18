@@ -45,112 +45,6 @@ test_section_compliant_on_green_fixture if {
 	data.stig.rhel_9.audit_logging.compliant with input as green_fixture
 }
 
-test_rhel_09_653015_pass if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653015 == "Not_a_Finding" with input as green_fixture
-}
-
-test_rhel_09_653015_fail_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as object.union(green_fixture, {"services": {"auditd": "inactive"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653015: check failed")
-}
-
-test_rhel_09_653015_fail_2 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as object.union(green_fixture, {"services": {"auditd": "failed"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653015: check failed")
-}
-
-test_rhel_09_653015_evidence_missing_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as json.remove(green_fixture, [["services", "auditd"]])
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653015: evidence missing — services.auditd")
-}
-
-test_rhel_09_653055_pass if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as green_fixture
-}
-
-test_rhel_09_653055_fail_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "ignore"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653055: check failed")
-}
-
-test_rhel_09_653055_fail_2 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "keep_logs"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653055: check failed")
-}
-
-test_rhel_09_653055_evidence_missing_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as json.remove(green_fixture, [["auditd_config", "max_log_file_action"]])
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653055: evidence missing — auditd_config.max_log_file_action")
-}
-
-test_rhel_09_653055_pass_2 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "single"}})
-}
-
-test_rhel_09_653055_pass_3 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "ignore"}, "attest": {"rhel_09_653055_storage_action": true}})
-}
-
-test_rhel_09_653025_pass if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as green_fixture
-}
-
-test_rhel_09_653025_fail_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653025 with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "ignore"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653025: check failed")
-}
-
-test_rhel_09_653025_evidence_missing_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653025 with input as json.remove(green_fixture, [["auditd_config", "disk_full_action"]])
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653025: evidence missing — auditd_config.disk_full_action")
-}
-
-test_rhel_09_653025_pass_2 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "single"}})
-}
-
-test_rhel_09_653025_pass_3 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "halt"}})
-}
-
-test_rhel_09_653025_pass_4 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "ignore"}, "attest": {"rhel_09_653025_disk_full_action": true}})
-}
-
-test_rhel_09_653040_pass if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653040 == "Not_a_Finding" with input as green_fixture
-}
-
-test_rhel_09_653040_fail_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "ignore"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653040: check failed")
-}
-
-test_rhel_09_653040_fail_2 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "syslog"}})
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653040: check failed")
-}
-
-test_rhel_09_653040_evidence_missing_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as json.remove(green_fixture, [["auditd_config", "space_left_action"]])
-	f.status == "Open"
-	contains(f.detail, "RHEL-09-653040: evidence missing — auditd_config.space_left_action")
-}
-
-test_rhel_09_653040_pass_2 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_653040 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "ignore"}, "attest": {"rhel_09_653040_realtime_alerts": true}})
-}
-
 test_rhel_09_654010_pass if {
 	data.stig.rhel_9.audit_logging.status_rhel_09_654010 == "Not_a_Finding" with input as green_fixture
 }
@@ -331,6 +225,44 @@ test_rhel_09_654070_pass_2 if {
 	data.stig.rhel_9.audit_logging.status_rhel_09_654070 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=k"]})
 }
 
+test_rhel_09_654080_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654080_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654080: check failed")
+}
+
+test_rhel_09_654080_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F uid=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654080: check failed")
+}
+
+test_rhel_09_654080_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k -F exe=/usr/bin/true"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654080: check failed")
+}
+
+test_rhel_09_654080_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654080: check failed")
+}
+
+test_rhel_09_654080_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654080: evidence missing — audit_rules")
+}
+
+test_rhel_09_654080_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654080 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
 test_rhel_09_654215_pass if {
 	data.stig.rhel_9.audit_logging.status_rhel_09_654215 == "Not_a_Finding" with input as green_fixture
 }
@@ -469,40 +401,108 @@ test_rhel_09_654150_pass_3 if {
 	data.stig.rhel_9.audit_logging.status_rhel_09_654150 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -F arch=b64 -F path=/usr/bin/sudo -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
 }
 
-test_rhel_09_654080_pass if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_654080 == "Not_a_Finding" with input as green_fixture
+test_rhel_09_653015_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653015 == "Not_a_Finding" with input as green_fixture
 }
 
-test_rhel_09_654080_fail_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd"]})
+test_rhel_09_653015_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as object.union(green_fixture, {"services": {"auditd": "inactive"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-654080: check failed")
+	contains(f.detail, "RHEL-09-653015: check failed")
 }
 
-test_rhel_09_654080_fail_2 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F uid=1000 -F auid!=-1 -F key=k"]})
+test_rhel_09_653015_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as object.union(green_fixture, {"services": {"auditd": "failed"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-654080: check failed")
+	contains(f.detail, "RHEL-09-653015: check failed")
 }
 
-test_rhel_09_654080_fail_3 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k -F exe=/usr/bin/true"]})
+test_rhel_09_653015_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653015 with input as json.remove(green_fixture, [["services", "auditd"]])
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-654080: check failed")
+	contains(f.detail, "RHEL-09-653015: evidence missing — services.auditd")
 }
 
-test_rhel_09_654080_fail_4 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F key=k"]})
+test_rhel_09_653055_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653055_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "ignore"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-654080: check failed")
+	contains(f.detail, "RHEL-09-653055: check failed")
 }
 
-test_rhel_09_654080_evidence_missing_1 if {
-	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654080 with input as json.remove(green_fixture, [["audit_rules"]])
+test_rhel_09_653055_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "keep_logs"}})
 	f.status == "Open"
-	contains(f.detail, "RHEL-09-654080: evidence missing — audit_rules")
+	contains(f.detail, "RHEL-09-653055: check failed")
 }
 
-test_rhel_09_654080_pass_2 if {
-	data.stig.rhel_9.audit_logging.status_rhel_09_654080 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k", "-a always,exit -F arch=b32 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chown,fchown,fchownat,lchown -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S setxattr,fsetxattr,lsetxattr,removexattr,fremovexattr,lremovexattr -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b32 -F path=/etc/sudoers -F perm=wa -F key=identity", "-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity", "-w /etc/passwd -p wa -k identity", "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd", "-a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=unset -F key=k"]})
+test_rhel_09_653055_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653055 with input as json.remove(green_fixture, [["auditd_config", "max_log_file_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653055: evidence missing — auditd_config.max_log_file_action")
+}
+
+test_rhel_09_653055_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "single"}})
+}
+
+test_rhel_09_653055_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653055 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"max_log_file_action": "ignore"}, "attest": {"rhel_09_653055_storage_action": true}})
+}
+
+test_rhel_09_653025_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653025_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653025 with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "ignore"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653025: check failed")
+}
+
+test_rhel_09_653025_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653025 with input as json.remove(green_fixture, [["auditd_config", "disk_full_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653025: evidence missing — auditd_config.disk_full_action")
+}
+
+test_rhel_09_653025_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "single"}})
+}
+
+test_rhel_09_653025_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "halt"}})
+}
+
+test_rhel_09_653025_pass_4 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653025 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_full_action": "ignore"}, "attest": {"rhel_09_653025_disk_full_action": true}})
+}
+
+test_rhel_09_653040_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653040_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "ignore"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653040: check failed")
+}
+
+test_rhel_09_653040_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "syslog"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653040: check failed")
+}
+
+test_rhel_09_653040_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653040 with input as json.remove(green_fixture, [["auditd_config", "space_left_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653040: evidence missing — auditd_config.space_left_action")
+}
+
+test_rhel_09_653040_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653040 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "ignore"}, "attest": {"rhel_09_653040_realtime_alerts": true}})
 }

@@ -6,7 +6,19 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
+	"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]},
 	"dnf_config": {"localpkg_gpgcheck": "1"},
+	"kernel_params": {"kernel.kexec_load_disabled": "1"},
+	"packages": {"rsyslog": true},
+	"redhat_release_key_file": {"fingerprints": [
+		"567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
+		"7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3",
+	]},
+	"rpm_gpg_pubkeys": [
+		"Red Hat, Inc. (release key 2) <security@redhat.com> public key",
+		"Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key",
+	],
+	"services": {"rsyslog": "active"},
 	"yum_repos": [{
 		"file": "/etc/yum.repos.d/redhat.repo",
 		"gpgcheck": "1",
@@ -17,6 +29,10 @@ green_fixture := {
 test_every_finding_open_on_empty_input if {
 	fs := data.stig.rhel_9.software_integrity.findings with input as {}
 	count([f | some f in fs; f.status != "Open"]) == 0
+}
+
+test_section_compliant_on_green_fixture if {
+	data.stig.rhel_9.software_integrity.compliant with input as green_fixture
 }
 
 test_rhel_09_214025_pass if {
@@ -79,4 +95,106 @@ test_rhel_09_214020_evidence_missing_1 if {
 
 test_rhel_09_214020_pass_2 if {
 	data.stig.rhel_9.software_integrity.status_rhel_09_214020 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"localpkg_gpgcheck": "True"}})
+}
+
+test_rhel_09_214010_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_214010_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as object.union(green_fixture, {"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214010: check failed")
+}
+
+test_rhel_09_214010_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as object.union(green_fixture, {"redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51", "0000 0000 0000 0000 0000  0000 0000 0000 0000 0000"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214010: check failed")
+}
+
+test_rhel_09_214010_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as json.remove(green_fixture, [["rpm_gpg_pubkeys"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214010: evidence missing — rpm_gpg_pubkeys")
+}
+
+test_rhel_09_214010_evidence_missing_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as json.remove(green_fixture, [["redhat_release_key_file", "fingerprints"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214010: evidence missing — redhat_release_key_file.fingerprints")
+}
+
+test_rhel_09_651020_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_651020_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651020 with input as object.union(green_fixture, {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux", "NORMAL=p+i+n+u+g+s+m+sha256"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651020: check failed")
+}
+
+test_rhel_09_651020_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651020 with input as object.union(green_fixture, {"aide": {"rule_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651020: check failed")
+}
+
+test_rhel_09_651020_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651020 with input as json.remove(green_fixture, [["aide", "rule_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651020: evidence missing — aide.rule_lines")
+}
+
+test_rhel_09_213020_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_213020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_213020_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_213020 with input as object.union(green_fixture, {"kernel_params": {"kernel.kexec_load_disabled": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213020: check failed")
+}
+
+test_rhel_09_213020_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_213020 with input as json.remove(green_fixture, [["kernel_params", "kernel.kexec_load_disabled"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-213020: evidence missing — kernel_params.kernel.kexec_load_disabled")
+}
+
+test_rhel_09_213020_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_213020 == "Not_a_Finding" with input as object.union(green_fixture, {"kernel_params": {"kernel.kexec_load_disabled": 1}})
+}
+
+test_rhel_09_652010_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652010_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652010 with input as object.union(green_fixture, {"packages": {"rsyslog": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652010: check failed")
+}
+
+test_rhel_09_652010_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652010 with input as json.remove(green_fixture, [["packages", "rsyslog"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652010: evidence missing — packages.rsyslog")
+}
+
+test_rhel_09_652020_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652020_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652020 with input as object.union(green_fixture, {"services": {"rsyslog": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652020: check failed")
+}
+
+test_rhel_09_652020_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652020 with input as json.remove(green_fixture, [["services", "rsyslog"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652020: evidence missing — services.rsyslog")
 }

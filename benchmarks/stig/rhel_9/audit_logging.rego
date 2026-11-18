@@ -165,146 +165,6 @@ _path_field_ok(f, _) if _field_ok(f, set())
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
 
-# RHEL-09-653015 | V-258152 | CAT II
-# systemctl is-active auditd
-missing_rhel_09_653015 := [concat(".", p) | some p in [["services", "auditd"]]; not _collected(p)]
-
-default auditd_active := false
-
-auditd_active if {
-	count(missing_rhel_09_653015) == 0
-	_kw(["services", "auditd"]) == "active"
-}
-
-status_rhel_09_653015 := "Not_a_Finding" if auditd_active
-
-else := "Open"
-
-detail_rhel_09_653015 := "RHEL-09-653015: Not_a_Finding" if auditd_active
-
-else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653015", concat(", ", missing_rhel_09_653015)]) if count(missing_rhel_09_653015) > 0
-
-else := "RHEL-09-653015: check failed — auditd.service must be active (running)"
-
-finding_rhel_09_653015 := {
-	"vuln_id": "V-258152",
-	"stig_id": "RHEL-09-653015",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 audit service must be enabled.",
-	"check_type": "machine",
-	"status": status_rhel_09_653015,
-	"detail": detail_rhel_09_653015,
-	"fix_text": "Enable and start auditd: systemctl enable --now auditd",
-}
-
-# RHEL-09-653055 | V-258160 | CAT II
-# max_log_file_action as configured in /etc/audit/auditd.conf
-missing_rhel_09_653055 := [concat(".", p) | some p in [["auditd_config", "max_log_file_action"]]; not _collected(p)]
-
-default audit_storage_ok := false
-
-audit_storage_ok if {
-	count(missing_rhel_09_653055) == 0
-	_kw(["auditd_config", "max_log_file_action"]) in {"rotate", "single"}
-}
-
-audit_storage_ok if {
-	_attested("rhel_09_653055_storage_action")
-}
-
-status_rhel_09_653055 := "Not_a_Finding" if audit_storage_ok
-
-else := "Open"
-
-detail_rhel_09_653055 := "RHEL-09-653055: Not_a_Finding" if audit_storage_ok
-
-else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653055", concat(", ", missing_rhel_09_653055)]) if count(missing_rhel_09_653055) > 0
-
-else := "RHEL-09-653055: check failed — max_log_file_action in /etc/audit/auditd.conf must be ROTATE or SINGLE, or the SA must attest that the system takes appropriate action when the audit files reach maximum size (input.attest.rhel_09_653055_storage_action)"
-
-finding_rhel_09_653055 := {
-	"vuln_id": "V-258160",
-	"stig_id": "RHEL-09-653055",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
-	"check_type": "machine+attestation",
-	"status": status_rhel_09_653055,
-	"detail": detail_rhel_09_653055,
-	"fix_text": "Set max_log_file_action = ROTATE in /etc/audit/auditd.conf",
-}
-
-# RHEL-09-653025 | V-258154 | CAT II
-# disk_full_action as configured in /etc/audit/auditd.conf
-missing_rhel_09_653025 := [concat(".", p) | some p in [["auditd_config", "disk_full_action"]]; not _collected(p)]
-
-default admin_space_left_action_ok := false
-
-admin_space_left_action_ok if {
-	count(missing_rhel_09_653025) == 0
-	_kw(["auditd_config", "disk_full_action"]) in {"syslog", "single", "halt"}
-}
-
-admin_space_left_action_ok if {
-	_attested("rhel_09_653025_disk_full_action")
-}
-
-status_rhel_09_653025 := "Not_a_Finding" if admin_space_left_action_ok
-
-else := "Open"
-
-detail_rhel_09_653025 := "RHEL-09-653025: Not_a_Finding" if admin_space_left_action_ok
-
-else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653025", concat(", ", missing_rhel_09_653025)]) if count(missing_rhel_09_653025) > 0
-
-else := "RHEL-09-653025: check failed — disk_full_action in /etc/audit/auditd.conf must be SYSLOG or SINGLE or HALT, or the SA must attest that the system takes appropriate action when the audit storage volume is full (input.attest.rhel_09_653025_disk_full_action)"
-
-finding_rhel_09_653025 := {
-	"vuln_id": "V-258154",
-	"stig_id": "RHEL-09-653025",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
-	"check_type": "machine+attestation",
-	"status": status_rhel_09_653025,
-	"detail": detail_rhel_09_653025,
-	"fix_text": "Set disk_full_action = SYSLOG in /etc/audit/auditd.conf",
-}
-
-# RHEL-09-653040 | V-258157 | CAT II
-# space_left_action as configured in /etc/audit/auditd.conf
-missing_rhel_09_653040 := [concat(".", p) | some p in [["auditd_config", "space_left_action"]]; not _collected(p)]
-
-default space_left_action_ok := false
-
-space_left_action_ok if {
-	count(missing_rhel_09_653040) == 0
-	_kw(["auditd_config", "space_left_action"]) in {"email"}
-}
-
-space_left_action_ok if {
-	_attested("rhel_09_653040_realtime_alerts")
-}
-
-status_rhel_09_653040 := "Not_a_Finding" if space_left_action_ok
-
-else := "Open"
-
-detail_rhel_09_653040 := "RHEL-09-653040: Not_a_Finding" if space_left_action_ok
-
-else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653040", concat(", ", missing_rhel_09_653040)]) if count(missing_rhel_09_653040) > 0
-
-else := "RHEL-09-653040: check failed — space_left_action in /etc/audit/auditd.conf must be EMAIL, or the SA must attest that real-time alerts to the SA and ISSO are configured at 75 percent of audit storage (input.attest.rhel_09_653040_realtime_alerts)"
-
-finding_rhel_09_653040 := {
-	"vuln_id": "V-258157",
-	"stig_id": "RHEL-09-653040",
-	"severity": "CAT II",
-	"rule_title": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
-	"check_type": "machine+attestation",
-	"status": status_rhel_09_653040,
-	"detail": detail_rhel_09_653040,
-	"fix_text": "Set space_left_action = EMAIL in /etc/audit/auditd.conf",
-}
-
 # RHEL-09-654010 | V-258176 | CAT II
 # execve rules (auditctl -l) for both arches and both setuid/setgid conditions
 missing_rhel_09_654010 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
@@ -479,6 +339,40 @@ finding_rhel_09_654070 := {
 	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EACCES -F auid>=1000 -F auid!=-1 -F key=k",
 }
 
+# RHEL-09-654080 | V-258190 | CAT II
+# always,exit rules for init_module and finit_module, both arches (auditctl -l)
+missing_rhel_09_654080 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_modules := false
+
+audit_modules if {
+	count(missing_rhel_09_654080) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654080 := "Not_a_Finding" if audit_modules
+
+else := "Open"
+
+detail_rhel_09_654080 := "RHEL-09-654080: Not_a_Finding" if audit_modules
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654080", concat(", ", missing_rhel_09_654080)]) if count(missing_rhel_09_654080) > 0
+
+else := "RHEL-09-654080: check failed — init_module and finit_module must be audited for both b32 and b64"
+
+finding_rhel_09_654080 := {
+	"vuln_id": "V-258190",
+	"stig_id": "RHEL-09-654080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+	"check_type": "machine",
+	"status": status_rhel_09_654080,
+	"detail": detail_rhel_09_654080,
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k",
+}
+
 # RHEL-09-654215 | V-258217 | CAT II
 # a loaded rule (auditctl -l) on exactly /etc/sudoers: -w /etc/sudoers or -F path=/etc/sudoers
 missing_rhel_09_654215 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
@@ -578,38 +472,144 @@ finding_rhel_09_654150 := {
 	"fix_text": "Add an audit rule for /usr/bin/sudo to /etc/audit/rules.d/ and load it (augenrules --load)",
 }
 
-# RHEL-09-654080 | V-258190 | CAT II
-# always,exit rules for init_module and finit_module, both arches (auditctl -l)
-missing_rhel_09_654080 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+# RHEL-09-653015 | V-258152 | CAT II
+# systemctl is-active auditd
+missing_rhel_09_653015 := [concat(".", p) | some p in [["services", "auditd"]]; not _collected(p)]
 
-default audit_modules := false
+default auditd_active := false
 
-audit_modules if {
-	count(missing_rhel_09_654080) == 0
-	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
-	_syscalls_audited("b64", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+auditd_active if {
+	count(missing_rhel_09_653015) == 0
+	_kw(["services", "auditd"]) == "active"
 }
 
-status_rhel_09_654080 := "Not_a_Finding" if audit_modules
+status_rhel_09_653015 := "Not_a_Finding" if auditd_active
 
 else := "Open"
 
-detail_rhel_09_654080 := "RHEL-09-654080: Not_a_Finding" if audit_modules
+detail_rhel_09_653015 := "RHEL-09-653015: Not_a_Finding" if auditd_active
 
-else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654080", concat(", ", missing_rhel_09_654080)]) if count(missing_rhel_09_654080) > 0
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653015", concat(", ", missing_rhel_09_653015)]) if count(missing_rhel_09_653015) > 0
 
-else := "RHEL-09-654080: check failed — init_module and finit_module must be audited for both b32 and b64"
+else := "RHEL-09-653015: check failed — auditd.service must be active (running)"
 
-finding_rhel_09_654080 := {
-	"vuln_id": "V-258190",
-	"stig_id": "RHEL-09-654080",
+finding_rhel_09_653015 := {
+	"vuln_id": "V-258152",
+	"stig_id": "RHEL-09-653015",
 	"severity": "CAT II",
-	"rule_title": "RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+	"rule_title": "RHEL 9 audit service must be enabled.",
 	"check_type": "machine",
-	"status": status_rhel_09_654080,
-	"detail": detail_rhel_09_654080,
-	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S init_module,finit_module -F auid>=1000 -F auid!=-1 -F key=k",
+	"status": status_rhel_09_653015,
+	"detail": detail_rhel_09_653015,
+	"fix_text": "Enable and start auditd: systemctl enable --now auditd",
+}
+
+# RHEL-09-653055 | V-258160 | CAT II
+# max_log_file_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653055 := [concat(".", p) | some p in [["auditd_config", "max_log_file_action"]]; not _collected(p)]
+
+default audit_storage_ok := false
+
+audit_storage_ok if {
+	count(missing_rhel_09_653055) == 0
+	_kw(["auditd_config", "max_log_file_action"]) in {"rotate", "single"}
+}
+
+audit_storage_ok if {
+	_attested("rhel_09_653055_storage_action")
+}
+
+status_rhel_09_653055 := "Not_a_Finding" if audit_storage_ok
+
+else := "Open"
+
+detail_rhel_09_653055 := "RHEL-09-653055: Not_a_Finding" if audit_storage_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653055", concat(", ", missing_rhel_09_653055)]) if count(missing_rhel_09_653055) > 0
+
+else := "RHEL-09-653055: check failed — max_log_file_action in /etc/audit/auditd.conf must be ROTATE or SINGLE, or the SA must attest that the system takes appropriate action when the audit files reach maximum size (input.attest.rhel_09_653055_storage_action)"
+
+finding_rhel_09_653055 := {
+	"vuln_id": "V-258160",
+	"stig_id": "RHEL-09-653055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653055,
+	"detail": detail_rhel_09_653055,
+	"fix_text": "Set max_log_file_action = ROTATE in /etc/audit/auditd.conf",
+}
+
+# RHEL-09-653025 | V-258154 | CAT II
+# disk_full_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653025 := [concat(".", p) | some p in [["auditd_config", "disk_full_action"]]; not _collected(p)]
+
+default admin_space_left_action_ok := false
+
+admin_space_left_action_ok if {
+	count(missing_rhel_09_653025) == 0
+	_kw(["auditd_config", "disk_full_action"]) in {"syslog", "single", "halt"}
+}
+
+admin_space_left_action_ok if {
+	_attested("rhel_09_653025_disk_full_action")
+}
+
+status_rhel_09_653025 := "Not_a_Finding" if admin_space_left_action_ok
+
+else := "Open"
+
+detail_rhel_09_653025 := "RHEL-09-653025: Not_a_Finding" if admin_space_left_action_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653025", concat(", ", missing_rhel_09_653025)]) if count(missing_rhel_09_653025) > 0
+
+else := "RHEL-09-653025: check failed — disk_full_action in /etc/audit/auditd.conf must be SYSLOG or SINGLE or HALT, or the SA must attest that the system takes appropriate action when the audit storage volume is full (input.attest.rhel_09_653025_disk_full_action)"
+
+finding_rhel_09_653025 := {
+	"vuln_id": "V-258154",
+	"stig_id": "RHEL-09-653025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653025,
+	"detail": detail_rhel_09_653025,
+	"fix_text": "Set disk_full_action = SYSLOG in /etc/audit/auditd.conf",
+}
+
+# RHEL-09-653040 | V-258157 | CAT II
+# space_left_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653040 := [concat(".", p) | some p in [["auditd_config", "space_left_action"]]; not _collected(p)]
+
+default space_left_action_ok := false
+
+space_left_action_ok if {
+	count(missing_rhel_09_653040) == 0
+	_kw(["auditd_config", "space_left_action"]) in {"email"}
+}
+
+space_left_action_ok if {
+	_attested("rhel_09_653040_realtime_alerts")
+}
+
+status_rhel_09_653040 := "Not_a_Finding" if space_left_action_ok
+
+else := "Open"
+
+detail_rhel_09_653040 := "RHEL-09-653040: Not_a_Finding" if space_left_action_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653040", concat(", ", missing_rhel_09_653040)]) if count(missing_rhel_09_653040) > 0
+
+else := "RHEL-09-653040: check failed — space_left_action in /etc/audit/auditd.conf must be EMAIL, or the SA must attest that real-time alerts to the SA and ISSO are configured at 75 percent of audit storage (input.attest.rhel_09_653040_realtime_alerts)"
+
+finding_rhel_09_653040 := {
+	"vuln_id": "V-258157",
+	"stig_id": "RHEL-09-653040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653040,
+	"detail": detail_rhel_09_653040,
+	"fix_text": "Set space_left_action = EMAIL in /etc/audit/auditd.conf",
 }
 
 # =============================================================================
@@ -621,19 +621,19 @@ finding_rhel_09_654080 := {
 cat_i_findings := array.concat([], [])
 
 cat_ii_findings := [
-	finding_rhel_09_653015,
-	finding_rhel_09_653055,
-	finding_rhel_09_653025,
-	finding_rhel_09_653040,
 	finding_rhel_09_654010,
 	finding_rhel_09_654020,
 	finding_rhel_09_654015,
 	finding_rhel_09_654025,
 	finding_rhel_09_654070,
+	finding_rhel_09_654080,
 	finding_rhel_09_654215,
 	finding_rhel_09_654240,
 	finding_rhel_09_654150,
-	finding_rhel_09_654080,
+	finding_rhel_09_653015,
+	finding_rhel_09_653055,
+	finding_rhel_09_653025,
+	finding_rhel_09_653040,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

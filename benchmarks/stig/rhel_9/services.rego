@@ -75,22 +75,6 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
-# Helper: service is inactive or masked. Fail closed: a service with no
-# reported state is NOT treated as disabled (absent telemetry is not evidence).
-service_disabled(svc) if input.services[svc] in {"inactive", "masked"}
-
-# Helper: package not installed. Fail closed: only an explicit `false` counts.
-pkg_absent(pkg) if input.packages[pkg] == false
-
-# Helper: at least one alias is explicitly absent and no alias is installed.
-pkgs_absent(names) if {
-	some n in names
-	pkg_absent(n)
-	every m in names {
-		not input.packages[m] == true
-	}
-}
-
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -176,10 +160,15 @@ finding_rhel_09_215015 := {
 # =============================================================================
 
 # RHEL-09-215040 | V-257831 | CAT II
-# telnet server must not be installed
+# the telnet-server package must not be installed (dnf list --installed telnet-server)
+missing_rhel_09_215040 := [concat(".", p) | some p in [["packages", "telnet-server"]]; not _collected(p)]
+
 default telnet_server_absent := false
 
-telnet_server_absent if pkgs_absent(["telnet-server", "telnetd"])
+telnet_server_absent if {
+	count(missing_rhel_09_215040) == 0
+	input.packages["telnet-server"] == false
+}
 
 status_rhel_09_215040 := "Not_a_Finding" if telnet_server_absent
 
@@ -187,7 +176,9 @@ else := "Open"
 
 detail_rhel_09_215040 := "RHEL-09-215040: Not_a_Finding" if telnet_server_absent
 
-else := "RHEL-09-215040: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215040", concat(", ", missing_rhel_09_215040)]) if count(missing_rhel_09_215040) > 0
+
+else := "RHEL-09-215040: check failed — the telnet-server package must not be installed"
 
 finding_rhel_09_215040 := {
 	"vuln_id": "V-257831",
@@ -197,40 +188,19 @@ finding_rhel_09_215040 := {
 	"check_type": "machine",
 	"status": status_rhel_09_215040,
 	"detail": detail_rhel_09_215040,
-	"fix_text": "Remove telnet-server: dnf remove telnet-server -y",
-}
-
-# RHEL-09-231040 | V-257849 | CAT II
-# autofs must be disabled
-default autofs_disabled := false
-
-autofs_disabled if service_disabled("autofs")
-
-status_rhel_09_231040 := "Not_a_Finding" if autofs_disabled
-
-else := "Open"
-
-detail_rhel_09_231040 := "RHEL-09-231040: Not_a_Finding" if autofs_disabled
-
-else := "RHEL-09-231040: Open — logic not yet reviewed against the V2R10 check text"
-
-finding_rhel_09_231040 := {
-	"vuln_id": "V-257849",
-	"stig_id": "RHEL-09-231040",
-	"severity": "CAT II",
-	"rule_title": "The RHEL 9 file system automounter must be disabled.",
-	"check_type": "machine",
-	"status": status_rhel_09_231040,
-	"detail": detail_rhel_09_231040,
-	"fix_text": "Disable autofs: systemctl disable --now autofs",
+	"fix_text": "Remove the package: dnf remove telnet-server",
 }
 
 # RHEL-09-215025 | V-257828 | CAT II
-# NFS server must not be running unless required
+# the nfs-utils package must not be installed (dnf list --installed nfs-utils)
+missing_rhel_09_215025 := [concat(".", p) | some p in [["packages", "nfs-utils"]]; not _collected(p)]
+
 default nfs_disabled := false
 
-nfs_disabled if service_disabled("nfs-server")
-nfs_disabled if service_disabled("nfsd")
+nfs_disabled if {
+	count(missing_rhel_09_215025) == 0
+	input.packages["nfs-utils"] == false
+}
 
 status_rhel_09_215025 := "Not_a_Finding" if nfs_disabled
 
@@ -238,7 +208,9 @@ else := "Open"
 
 detail_rhel_09_215025 := "RHEL-09-215025: Not_a_Finding" if nfs_disabled
 
-else := "RHEL-09-215025: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215025", concat(", ", missing_rhel_09_215025)]) if count(missing_rhel_09_215025) > 0
+
+else := "RHEL-09-215025: check failed — the nfs-utils package must not be installed"
 
 finding_rhel_09_215025 := {
 	"vuln_id": "V-257828",
@@ -248,7 +220,39 @@ finding_rhel_09_215025 := {
 	"check_type": "machine",
 	"status": status_rhel_09_215025,
 	"detail": detail_rhel_09_215025,
-	"fix_text": "Disable NFS server: systemctl disable --now nfs-server",
+	"fix_text": "Remove the package: dnf remove nfs-utils",
+}
+
+# RHEL-09-231040 | V-257849 | CAT II
+# systemctl is-enabled autofs (input.unit_enabled[<unit>] is that command's output)
+missing_rhel_09_231040 := [concat(".", p) | some p in [["unit_enabled", "autofs"]]; not _collected(p)]
+
+default autofs_disabled := false
+
+autofs_disabled if {
+	count(missing_rhel_09_231040) == 0
+	_kw(["unit_enabled", "autofs"]) in {"masked", "disabled", "not-found"}
+}
+
+status_rhel_09_231040 := "Not_a_Finding" if autofs_disabled
+
+else := "Open"
+
+detail_rhel_09_231040 := "RHEL-09-231040: Not_a_Finding" if autofs_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-231040", concat(", ", missing_rhel_09_231040)]) if count(missing_rhel_09_231040) > 0
+
+else := "RHEL-09-231040: check failed — systemctl is-enabled autofs must return masked, disabled or not-found"
+
+finding_rhel_09_231040 := {
+	"vuln_id": "V-257849",
+	"stig_id": "RHEL-09-231040",
+	"severity": "CAT II",
+	"rule_title": "The RHEL 9 file system automounter must be disabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_231040,
+	"detail": detail_rhel_09_231040,
+	"fix_text": "Disable and mask the automounter: systemctl mask --now autofs.service",
 }
 
 # =============================================================================
@@ -262,8 +266,8 @@ cat_i_findings := [
 
 cat_ii_findings := [
 	finding_rhel_09_215040,
-	finding_rhel_09_231040,
 	finding_rhel_09_215025,
+	finding_rhel_09_231040,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

@@ -90,6 +90,19 @@ _backend_ok(b) if {
 	b.target == concat("", ["/usr/share/crypto-policies/FIPS/", base, ".txt"])
 }
 
+# a DoD root CA certificate from /etc/sssd/pki/sssd_auth_ca_db.pem that is inside its validity period
+# (input.sssd_ca_db.certificates: [{issuer, subject, not_before, not_after}], dates RFC 3339)
+_dod_root_valid(c) if {
+	is_string(c.issuer)
+	contains(c.issuer, "O = U.S. Government")
+	regex.match(`CN = DoD Root CA [0-9]+`, c.issuer)
+	nb := time.parse_rfc3339_ns(c.not_before)
+	na := time.parse_rfc3339_ns(c.not_after)
+	now := time.now_ns()
+	nb <= now
+	now < na
+}
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -172,51 +185,85 @@ finding_rhel_09_672055 := {
 # =============================================================================
 
 # RHEL-09-611170 | V-258123 | CAT II
-# Certificate revocation must be checked (OCSP/CRL)
+# certificate_verification from the [sssd] section of sssd.conf / conf.d (uncommented)
+missing_rhel_09_611170 := [concat(".", p) | some p in [["sssd", "certificate_verification"]]; not _collected(p)]
+
 default cert_revocation_check := false
 
 cert_revocation_check if {
-	input.pki_config.ocsp_enabled == true
+	count(missing_rhel_09_611170) == 0
+	s := _str(["sssd", "certificate_verification"])
+	contains(s, "ocsp_dgst=sha512")
 }
 
 cert_revocation_check if {
-	input.pki_config.crl_checking == true
+	_attested("rhel_09_611170_status_checking")
+}
+
+default na_rhel_09_611170 := false
+
+na_rhel_09_611170 if {
+	_attested("rhel_09_611170_alternate_mfa")
 }
 
 status_rhel_09_611170 := "Not_a_Finding" if cert_revocation_check
+
+else := "Not_Applicable" if na_rhel_09_611170
 
 else := "Open"
 
 detail_rhel_09_611170 := "RHEL-09-611170: Not_a_Finding" if cert_revocation_check
 
-else := "RHEL-09-611170: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-611170: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_611170
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611170", concat(", ", missing_rhel_09_611170)]) if count(missing_rhel_09_611170) > 0
+
+else := "RHEL-09-611170: check failed — certificate_verification in the [sssd] section must include ocsp_dgst=sha512, or the SA must show how certificate status checking is implemented (input.attest.rhel_09_611170_status_checking)"
 
 finding_rhel_09_611170 := {
 	"vuln_id": "V-258123",
 	"stig_id": "RHEL-09-611170",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must implement certificate status checking for multifactor authentication.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_611170,
 	"detail": detail_rhel_09_611170,
-	"fix_text": "Configure OCSP: Set ocsp_stapling=yes and enable CRL checking in SSSD",
+	"fix_text": "Set certificate_verification = ocsp_dgst=sha512 in the [sssd] section of /etc/sssd/sssd.conf",
 }
 
 # RHEL-09-631010 | V-258131 | CAT II
-# The system must use a DoD-approved PKI to authenticate
+# certificates in /etc/sssd/pki/sssd_auth_ca_db.pem (openssl x509 -text): issuer and validity
+missing_rhel_09_631010 := [concat(".", p) | some p in [["sssd_ca_db", "certificates"]]; not _collected(p)]
+
 default dod_ca_trusted := false
 
 dod_ca_trusted if {
-	input.certificates.dod_root_ca_installed == true
+	count(missing_rhel_09_631010) == 0
+	certs := input.sssd_ca_db.certificates
+	is_array(certs)
+	some c in certs
+	_dod_root_valid(c)
+}
+
+default na_rhel_09_631010 := false
+
+na_rhel_09_631010 if {
+	_attested("rhel_09_631010_alternate_mfa")
 }
 
 status_rhel_09_631010 := "Not_a_Finding" if dod_ca_trusted
+
+else := "Not_Applicable" if na_rhel_09_631010
 
 else := "Open"
 
 detail_rhel_09_631010 := "RHEL-09-631010: Not_a_Finding" if dod_ca_trusted
 
-else := "RHEL-09-631010: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-631010: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_631010
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-631010", concat(", ", missing_rhel_09_631010)]) if count(missing_rhel_09_631010) > 0
+
+else := "RHEL-09-631010: check failed — /etc/sssd/pki/sssd_auth_ca_db.pem must hold a DoD-issued root CA certificate within its validity dates"
 
 finding_rhel_09_631010 := {
 	"vuln_id": "V-258131",
@@ -226,24 +273,40 @@ finding_rhel_09_631010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_631010,
 	"detail": detail_rhel_09_631010,
-	"fix_text": "Install DoD Root CA: trust anchor --store DoD_PKE_CA_chain.pem",
+	"fix_text": "Install the DoD root CA bundle as /etc/sssd/pki/sssd_auth_ca_db.pem",
 }
 
 # RHEL-09-271045 | V-258019 | CAT II
-# smartcard removal must lock the session
+# gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action; no GUI is Not Applicable
+missing_rhel_09_271045 := [concat(".", p) | some p in [["gnome", "smartcard_removal_action"]]; not _collected(p)]
+
 default smartcard_lock_on_removal := false
 
 smartcard_lock_on_removal if {
-	input.pam_config.smartcard_removal_lock == true
+	count(missing_rhel_09_271045) == 0
+	s := _str(["gnome", "smartcard_removal_action"])
+	trim(s, "'") == "lock-screen"
+}
+
+default na_rhel_09_271045 := false
+
+na_rhel_09_271045 if {
+	input.gui_installed == false
 }
 
 status_rhel_09_271045 := "Not_a_Finding" if smartcard_lock_on_removal
+
+else := "Not_Applicable" if na_rhel_09_271045
 
 else := "Open"
 
 detail_rhel_09_271045 := "RHEL-09-271045: Not_a_Finding" if smartcard_lock_on_removal
 
-else := "RHEL-09-271045: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-271045: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271045
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271045", concat(", ", missing_rhel_09_271045)]) if count(missing_rhel_09_271045) > 0
+
+else := "RHEL-09-271045: check failed — gsettings get org.gnome.settings-daemon.peripherals.smartcard removal-action must return 'lock-screen'"
 
 finding_rhel_09_271045 := {
 	"vuln_id": "V-258019",
@@ -253,38 +316,57 @@ finding_rhel_09_271045 := {
 	"check_type": "machine",
 	"status": status_rhel_09_271045,
 	"detail": detail_rhel_09_271045,
-	"fix_text": "Configure pcscd and GNOME smart card removal action to lock session",
+	"fix_text": "Set removal-action='lock-screen' under [org/gnome/settings-daemon/peripherals/smartcard] in /etc/dconf/db/local.d/ and run dconf update",
 }
 
 # RHEL-09-631015 | V-258132 | CAT II
-# System must map certificate to user
+# [certmap/...] sections of sssd.conf and conf.d: [{section, matchrule, maprule, domains}]
+missing_rhel_09_631015 := [concat(".", p) | some p in [["sssd", "certmap_rules"]]; not _collected(p)]
+
 default cert_user_mapping := false
 
 cert_user_mapping if {
-	input.sssd_config.cert_user_mapping != ""
+	count(missing_rhel_09_631015) == 0
+	rules := input.sssd.certmap_rules
+	is_array(rules)
+	some r in rules
+	is_string(r.maprule)
+	trim_space(r.maprule) != ""
 }
 
 cert_user_mapping if {
-	input.pam_config.cert_mapping_configured == true
+	_attested("rhel_09_631015_certificate_mapping")
+}
+
+default na_rhel_09_631015 := false
+
+na_rhel_09_631015 if {
+	_attested("rhel_09_631015_alternate_mfa")
 }
 
 status_rhel_09_631015 := "Not_a_Finding" if cert_user_mapping
+
+else := "Not_Applicable" if na_rhel_09_631015
 
 else := "Open"
 
 detail_rhel_09_631015 := "RHEL-09-631015: Not_a_Finding" if cert_user_mapping
 
-else := "RHEL-09-631015: Open — logic not yet reviewed against the V2R10 check text"
+else := "RHEL-09-631015: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_631015
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-631015", concat(", ", missing_rhel_09_631015)]) if count(missing_rhel_09_631015) > 0
+
+else := "RHEL-09-631015: check failed — sssd.conf / conf.d must have a [certmap/...] section mapping certificates to accounts, or the SA must show how certificates are mapped (input.attest.rhel_09_631015_certificate_mapping)"
 
 finding_rhel_09_631015 := {
 	"vuln_id": "V-258132",
 	"stig_id": "RHEL-09-631015",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must map the authenticated identity to the user or group account for PKI-based authentication.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_631015,
 	"detail": detail_rhel_09_631015,
-	"fix_text": "Configure certificate to user mapping in SSSD configuration",
+	"fix_text": "Add a [certmap/<domain>/<rule>] section with matchrule and maprule to /etc/sssd/sssd.conf",
 }
 
 # =============================================================================

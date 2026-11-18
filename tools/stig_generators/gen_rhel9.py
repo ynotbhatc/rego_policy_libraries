@@ -128,34 +128,28 @@ def block(sid, r, spec):
     if spec.get("comment"):
         o.append("# " + spec["comment"])
     name = spec["name"]
-    if spec.get("legacy"):
-        o += [spec["rego"], "", f'status_{i} := "Not_a_Finding" if {name}', "", 'else := "Open"', "",
-              f'detail_{i} := "{sid}: Not_a_Finding" if {name}', "",
-              f'else := "{sid}: Open — logic not yet reviewed against the V2R10 check text"', ""]
-        kind = "machine"
+    kind = spec["kind"]
+    if spec["ev"]:
+        o.append(f'missing_{i} := [concat(".", p) | some p in {rego_list(spec["ev"])}; not _collected(p)]')
     else:
-        kind = spec["kind"]
-        if spec["ev"]:
-            o.append(f'missing_{i} := [concat(".", p) | some p in {rego_list(spec["ev"])}; not _collected(p)]')
-        else:
-            o.append(f"missing_{i} := []")
-        o += ["", f"default {name} := false", ""]
-        for alt in spec["alts"]:
-            o += [name + " if {", f"\tcount(missing_{i}) == 0"] + indent(alt) + ["}", ""]
-        for alt in spec.get("attest_alts", []):
-            o += [name + " if {"] + indent(alt) + ["}", ""]
-        if spec.get("na"):
-            o += [f"default na_{i} := false", ""]
-            for alt in spec["na"]:
-                o += [f"na_{i} if {{"] + indent(alt) + ["}", ""]
-        o += [f'status_{i} := "Not_a_Finding" if {name}', ""]
-        if spec.get("na"):
-            o += [f'else := "Not_Applicable" if na_{i}', ""]
-        o += ['else := "Open"', "", f'detail_{i} := "{sid}: Not_a_Finding" if {name}', ""]
-        if spec.get("na"):
-            o += [f'else := "{sid}: Not_Applicable — {esc(spec["na_expect"])}" if na_{i}', ""]
-        o += [f'else := sprintf("%s: evidence missing — %s not collected", ["{sid}", concat(", ", missing_{i})]) if count(missing_{i}) > 0',
-              "", f'else := "{sid}: check failed — {esc(spec["expect"])}"', ""]
+        o.append(f"missing_{i} := []")
+    o += ["", f"default {name} := false", ""]
+    for alt in spec["alts"]:
+        o += [name + " if {", f"\tcount(missing_{i}) == 0"] + indent(alt) + ["}", ""]
+    for alt in spec.get("attest_alts", []):
+        o += [name + " if {"] + indent(alt) + ["}", ""]
+    if spec.get("na"):
+        o += [f"default na_{i} := false", ""]
+        for alt in spec["na"]:
+            o += [f"na_{i} if {{"] + indent(alt) + ["}", ""]
+    o += [f'status_{i} := "Not_a_Finding" if {name}', ""]
+    if spec.get("na"):
+        o += [f'else := "Not_Applicable" if na_{i}', ""]
+    o += ['else := "Open"', "", f'detail_{i} := "{sid}: Not_a_Finding" if {name}', ""]
+    if spec.get("na"):
+        o += [f'else := "{sid}: Not_Applicable — {esc(spec["na_expect"])}" if na_{i}', ""]
+    o += [f'else := sprintf("%s: evidence missing — %s not collected", ["{sid}", concat(", ", missing_{i})]) if count(missing_{i}) > 0',
+          "", f'else := "{sid}: check failed — {esc(spec["expect"])}"', ""]
     o += [f"finding_{i} := {{", f'\t"vuln_id": "{r["vuln_id"]}",', f'\t"stig_id": "{sid}",',
           f'\t"severity": "{sev}",', f'\t"rule_title": "{title}",', f'\t"check_type": "{kind}",',
           f'\t"status": status_{i},', f'\t"detail": detail_{i},', f'\t"fix_text": "{esc(spec["fix"])}",', "}", ""]
@@ -205,10 +199,10 @@ def main():
         rest = text[text.index(AGG_MARK):]
         rest = rest[rest.index("violations contains"):]
         sec_rules = [(sid, s) for sid, s in RULES.items() if s["sec"] == sec]
-        legacy_helpers = SECTION_HELPERS.get(sec, "").strip()
+        section_helpers = SECTION_HELPERS.get(sec, "").strip()
         out = [header.rstrip("\n"), "", BAR, "# SHARED HELPERS (tools/stig_generators/gen_rhel9.py)", BAR, "", HELPERS, ""]
-        if legacy_helpers:
-            out += [legacy_helpers, ""]
+        if section_helpers:
+            out += [section_helpers, ""]
         groups = {"CAT I": [], "CAT II": [], "CAT III": []}
         names = {"CAT I": [], "CAT II": [], "CAT III": []}
         green, tests = {}, []
@@ -216,12 +210,10 @@ def main():
             sev, fname, b = block(sid, by[sid], spec)
             groups[sev].append(b)
             names[sev].append(fname)
-            if not spec.get("legacy"):
-                n_reviewed += 1
-                deep_merge(green, spec["green"], sid)
+            n_reviewed += 1
+            deep_merge(green, spec["green"], sid)
         for sid, spec in sec_rules:
-            if not spec.get("legacy"):
-                tests += tests_for(sec, sid, spec, "green_fixture")
+            tests += tests_for(sec, sid, spec, "green_fixture")
         for sev, label in (("CAT I", "HIGH"), ("CAT II", "MEDIUM"), ("CAT III", "LOW")):
             if groups[sev]:
                 out += [BAR, f"# {sev} - {label} SEVERITY", BAR, ""] + groups[sev]
@@ -238,7 +230,6 @@ def main():
         if tests:
             deep_merge(full_green, green, sec)
             gs = json.dumps(green, indent="\t", sort_keys=True).replace("\n", "\n")
-            legacy_left = any(s.get("legacy") for _, s in sec_rules)
             t = [f"package stig.rhel_9.{sec}_rules_test", "", "import rego.v1", "",
                  "# Generated by tools/stig_generators/gen_rhel9.py: for every reviewed rule a pass, a fail per mutation, an",
                  "# evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.", "",
@@ -246,9 +237,8 @@ def main():
                  "test_every_finding_open_on_empty_input if {",
                  f"\tfs := data.stig.rhel_9.{sec}.findings with input as {{}}",
                  '\tcount([f | some f in fs; f.status != "Open"]) == 0', "}", ""]
-            if not legacy_left:
-                t += ["test_section_compliant_on_green_fixture if {",
-                      f"\tdata.stig.rhel_9.{sec}.compliant with input as green_fixture", "}", ""]
+            t += ["test_section_compliant_on_green_fixture if {",
+                  f"\tdata.stig.rhel_9.{sec}.compliant with input as green_fixture", "}", ""]
             open(tpath, "w").write("\n".join(t + tests).rstrip() + "\n")
         elif os.path.exists(tpath):
             os.remove(tpath)
@@ -278,8 +268,7 @@ def main():
     sev = {}
     for sid in RULES:
         sev[SEV[by[sid]["severity"]]] = sev.get(SEV[by[sid]["severity"]], 0) + 1
-    print(f"rhel_9: {len(RULES)} of {len(cat['rules'])} {cat['version']} rules {sev}; {n_reviewed} reviewed, "
-          f"{len(RULES) - n_reviewed} legacy")
+    print(f"rhel_9: {len(RULES)} of {len(cat['rules'])} {cat['version']} rules {sev}; {n_reviewed} with tests")
 
 
 if __name__ == "__main__":

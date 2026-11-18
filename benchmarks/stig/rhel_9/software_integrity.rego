@@ -75,6 +75,26 @@ _truthy(v) if {
 # an organizational attestation (SA / ISSO documentation the check text asks for)
 _attested(key) if input.attest[key] == true
 
+# Red Hat RHEL 9 package-signing key fingerprints, from the RHEL-09-214010 check text
+redhat_key_fingerprints := {"567E347AD0044ADE55BA8A5F199E2F91FD431D51", "7E4624258C406535D56D6F135054E4A45A6340B3"}
+
+_fpr(s) := upper(replace(s, " ", "")) if is_string(s)
+
+# an installed gpg-pubkey whose summary names the Red Hat key `label`
+_rh_key_installed(label) if {
+	some s in input.rpm_gpg_pubkeys
+	is_string(s)
+	contains(lower(s), "red hat")
+	contains(s, label)
+}
+
+# an AIDE rule line (uncommented selection / group definition) that uses sha512
+_aide_sha512(l) if {
+	is_string(l)
+	parts := regex.split(`[=+ ]+`, trim_space(l))
+	"sha512" in parts
+}
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -161,15 +181,21 @@ finding_rhel_09_214020 := {
 # =============================================================================
 
 # RHEL-09-214010 | V-257819 | CAT II
-# GPG check must be globally activated for repository packages
+# installed gpg-pubkey summaries and the fingerprints in /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (null if the file is missing)
+missing_rhel_09_214010 := [concat(".", p) | some p in [["rpm_gpg_pubkeys"], ["redhat_release_key_file", "fingerprints"]]; not _collected(p)]
+
 default gpgcheck_global := false
 
 gpgcheck_global if {
-	input.dnf_config.gpgcheck == true
-}
-
-gpgcheck_global if {
-	input.yum_config.gpgcheck == true
+	count(missing_rhel_09_214010) == 0
+	_rh_key_installed("(release key 2)")
+	_rh_key_installed("(auxiliary key 3)")
+	fps := input.redhat_release_key_file.fingerprints
+	is_array(fps)
+	installed := {f | some x in fps; f := _fpr(x)}
+	every k in redhat_key_fingerprints {
+		k in installed
+	}
 }
 
 status_rhel_09_214010 := "Not_a_Finding" if gpgcheck_global
@@ -178,7 +204,9 @@ else := "Open"
 
 detail_rhel_09_214010 := "RHEL-09-214010: Not_a_Finding" if gpgcheck_global
 
-else := "RHEL-09-214010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-214010", concat(", ", missing_rhel_09_214010)]) if count(missing_rhel_09_214010) > 0
+
+else := "RHEL-09-214010: check failed — Red Hat GPG keys 'release key 2' and 'auxiliary key 3' must be installed and /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release must carry fingerprints 567E347AD0044ADE55BA8A5F199E2F91FD431D51 and 7E4624258C406535D56D6F135054E4A45A6340B3"
 
 finding_rhel_09_214010 := {
 	"vuln_id": "V-257819",
@@ -188,23 +216,27 @@ finding_rhel_09_214010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_214010,
 	"detail": detail_rhel_09_214010,
-	"fix_text": "Enable GPG check globally: Set gpgcheck=1 in /etc/dnf/dnf.conf",
+	"fix_text": "Install the Red Hat keys: rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release (from a verified redhat-release package)",
 }
 
 # RHEL-09-651020 | V-258136 | CAT II
-# AIDE must be configured to use FIPS 140-3 approved hashes
+# the uncommented rule / selection lines of /etc/aide.conf
+missing_rhel_09_651020 := [concat(".", p) | some p in [["aide", "rule_lines"]]; not _collected(p)]
+
 default aide_fips_hashes := false
 
 aide_fips_hashes if {
-	input.aide_config.hash_algorithms
-	algorithms := input.aide_config.hash_algorithms
-	"sha512" in algorithms
+	count(missing_rhel_09_651020) == 0
+	lines := input.aide.rule_lines
+	is_array(lines)
+	count(lines) > 0
+	every l in lines {
+		_aide_sha512(l)
+	}
 }
 
 aide_fips_hashes if {
-	input.aide_config.hash_algorithms
-	algorithms := input.aide_config.hash_algorithms
-	"sha256" in algorithms
+	_attested("rhel_09_651020_other_tool")
 }
 
 status_rhel_09_651020 := "Not_a_Finding" if aide_fips_hashes
@@ -213,25 +245,30 @@ else := "Open"
 
 detail_rhel_09_651020 := "RHEL-09-651020: Not_a_Finding" if aide_fips_hashes
 
-else := "RHEL-09-651020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651020", concat(", ", missing_rhel_09_651020)]) if count(missing_rhel_09_651020) > 0
+
+else := "RHEL-09-651020: check failed — every uncommented selection line in /etc/aide.conf must use sha512, or another tool using FIPS 140-3 hashes must be attested (input.attest.rhel_09_651020_other_tool)"
 
 finding_rhel_09_651020 := {
 	"vuln_id": "V-258136",
 	"stig_id": "RHEL-09-651020",
 	"severity": "CAT II",
 	"rule_title": "RHEL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.",
-	"check_type": "machine",
+	"check_type": "machine+attestation",
 	"status": status_rhel_09_651020,
 	"detail": detail_rhel_09_651020,
-	"fix_text": "Configure AIDE to use SHA-512: Set NORMAL = sha512+rmd160+sha1+haval+tiger+crc32 in /etc/aide.conf",
+	"fix_text": "Add sha512 to every uncommented selection line in /etc/aide.conf",
 }
 
 # RHEL-09-213020 | V-257799 | CAT II
-# kernel module loading via sysctl must be disabled (kexec)
+# runtime kernel.kexec_load_disabled (sysctl)
+missing_rhel_09_213020 := [concat(".", p) | some p in [["kernel_params", "kernel.kexec_load_disabled"]]; not _collected(p)]
+
 default kexec_disabled := false
 
 kexec_disabled if {
-	input.kernel_params["kernel.kexec_load_disabled"] == "1"
+	count(missing_rhel_09_213020) == 0
+	_str(["kernel_params", "kernel.kexec_load_disabled"]) == "1"
 }
 
 status_rhel_09_213020 := "Not_a_Finding" if kexec_disabled
@@ -240,7 +277,9 @@ else := "Open"
 
 detail_rhel_09_213020 := "RHEL-09-213020: Not_a_Finding" if kexec_disabled
 
-else := "RHEL-09-213020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-213020", concat(", ", missing_rhel_09_213020)]) if count(missing_rhel_09_213020) > 0
+
+else := "RHEL-09-213020: check failed — kernel.kexec_load_disabled must be 1"
 
 finding_rhel_09_213020 := {
 	"vuln_id": "V-257799",
@@ -250,14 +289,17 @@ finding_rhel_09_213020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_213020,
 	"detail": detail_rhel_09_213020,
-	"fix_text": "Disable kexec: Set kernel.kexec_load_disabled=1 in /etc/sysctl.d/99-stig.conf",
+	"fix_text": "Set kernel.kexec_load_disabled = 1 in /etc/sysctl.d/ and run sysctl --system",
 }
 
 # RHEL-09-652010 | V-258140 | CAT II
-# rsyslog must be installed
+# rsyslog package installed
+missing_rhel_09_652010 := [concat(".", p) | some p in [["packages", "rsyslog"]]; not _collected(p)]
+
 default rsyslog_installed := false
 
 rsyslog_installed if {
+	count(missing_rhel_09_652010) == 0
 	input.packages.rsyslog == true
 }
 
@@ -267,7 +309,9 @@ else := "Open"
 
 detail_rhel_09_652010 := "RHEL-09-652010: Not_a_Finding" if rsyslog_installed
 
-else := "RHEL-09-652010: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652010", concat(", ", missing_rhel_09_652010)]) if count(missing_rhel_09_652010) > 0
+
+else := "RHEL-09-652010: check failed — the rsyslog package must be installed"
 
 finding_rhel_09_652010 := {
 	"vuln_id": "V-258140",
@@ -277,15 +321,18 @@ finding_rhel_09_652010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_652010,
 	"detail": detail_rhel_09_652010,
-	"fix_text": "Install rsyslog: dnf install rsyslog -y",
+	"fix_text": "Install rsyslog: dnf install rsyslog",
 }
 
 # RHEL-09-652020 | V-258142 | CAT II
-# rsyslog service must be active
+# systemctl is-active rsyslog
+missing_rhel_09_652020 := [concat(".", p) | some p in [["services", "rsyslog"]]; not _collected(p)]
+
 default rsyslog_active := false
 
 rsyslog_active if {
-	input.services.rsyslog == "active"
+	count(missing_rhel_09_652020) == 0
+	_kw(["services", "rsyslog"]) == "active"
 }
 
 status_rhel_09_652020 := "Not_a_Finding" if rsyslog_active
@@ -294,7 +341,9 @@ else := "Open"
 
 detail_rhel_09_652020 := "RHEL-09-652020: Not_a_Finding" if rsyslog_active
 
-else := "RHEL-09-652020: Open — logic not yet reviewed against the V2R10 check text"
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652020", concat(", ", missing_rhel_09_652020)]) if count(missing_rhel_09_652020) > 0
+
+else := "RHEL-09-652020: check failed — rsyslog must be active (systemctl is-active rsyslog)"
 
 finding_rhel_09_652020 := {
 	"vuln_id": "V-258142",
@@ -304,7 +353,7 @@ finding_rhel_09_652020 := {
 	"check_type": "machine",
 	"status": status_rhel_09_652020,
 	"detail": detail_rhel_09_652020,
-	"fix_text": "Enable and start rsyslog: systemctl enable --now rsyslog",
+	"fix_text": "Enable rsyslog: systemctl enable --now rsyslog",
 }
 
 # =============================================================================
