@@ -29,3 +29,12 @@ test_semrev_report_not_compliant_when_cde_scope_undocumented if {
 	r.violation_count == 2
 	r.failed_controls <= r.total_controls
 }
+
+# Audit 2026-11-17: the family reports the version in force; v4.0 is retired.
+test_report_names_v4_0_1 if {
+	r := data.pci_dss.main.compliance_report with input as {}
+	r.standard == "PCI DSS v4.0.1"
+	r.compliant == false
+	r.total_controls == 12
+	r.failed_controls <= r.total_controls
+}

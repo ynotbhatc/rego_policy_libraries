@@ -1,7 +1,7 @@
-# PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data
+# PCI DSS v4.0.1 Requirement 9 - Restrict Physical Access to Cardholder Data
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 9 - Restrict Physical Access to Cardholder Data"
+# title: "PCI DSS v4.0.1 Requirement 9 - Restrict Physical Access to Cardholder Data"
 # custom:
 #   class: compliance
 #   framework: pci_dss

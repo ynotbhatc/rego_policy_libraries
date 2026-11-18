@@ -1,8 +1,8 @@
-# PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data
+# PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data
 # by Business Need to Know
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 7 - Restrict Access to System Components and Cardholder Data"
+# title: "PCI DSS v4.0.1 Requirement 7 - Restrict Access to System Components and Cardholder Data"
 # custom:
 #   class: compliance
 #   framework: pci_dss

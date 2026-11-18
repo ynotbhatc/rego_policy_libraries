@@ -1,7 +1,7 @@
-# PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly
+# PCI DSS v4.0.1 Requirement 11 - Test Security of Systems and Networks Regularly
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 11 - Test Security of Systems and Networks Regularly"
+# title: "PCI DSS v4.0.1 Requirement 11 - Test Security of Systems and Networks Regularly"
 # custom:
 #   class: compliance
 #   framework: pci_dss

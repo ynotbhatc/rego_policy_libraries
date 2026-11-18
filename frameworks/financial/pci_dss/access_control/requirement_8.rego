@@ -1,7 +1,7 @@
-# PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components
+# PCI DSS v4.0.1 Requirement 8 - Identify Users and Authenticate Access to System Components
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 8 - Identify Users and Authenticate Access to System Components"
+# title: "PCI DSS v4.0.1 Requirement 8 - Identify Users and Authenticate Access to System Components"
 # custom:
 #   class: compliance
 #   framework: pci_dss

@@ -30,7 +30,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | FISMA / FedRAMP / CMMC | `frameworks/federal/` | Full |
 | ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |
 | SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
-| PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
+| PCI DSS v4.0.1 | `frameworks/financial/pci_dss/` | All 12 requirements (one roll-up per requirement; v4.0.1 parameters for 8 and 11, superseded 6.4.1 not gating) |
 | SOX ITGC | `frameworks/financial/sox/` | Full |
 | HIPAA Administrative Simplification (45 CFR Parts 160, 162, 164 Subparts C/D/E, CFR-cited; 800-66 Rev 2 numbering) | `frameworks/privacy/hipaa/` | Full |
 | GDPR | `frameworks/privacy/gdpr/` | Full |

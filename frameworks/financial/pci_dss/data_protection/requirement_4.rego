@@ -1,8 +1,8 @@
-# PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography
+# PCI DSS v4.0.1 Requirement 4 - Protect Cardholder Data with Strong Cryptography
 # During Transmission Over Open, Public Networks
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 4 - Protect Cardholder Data with Strong Cryptography"
+# title: "PCI DSS v4.0.1 Requirement 4 - Protect Cardholder Data with Strong Cryptography"
 # custom:
 #   class: compliance
 #   framework: pci_dss

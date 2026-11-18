@@ -1,7 +1,7 @@
-# PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software
+# PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software
 
 # METADATA
-# title: "PCI DSS v4.0 Requirement 6 - Develop and Maintain Secure Systems and Software"
+# title: "PCI DSS v4.0.1 Requirement 6 - Develop and Maintain Secure Systems and Software"
 # custom:
 #   class: compliance
 #   framework: pci_dss
@@ -117,11 +117,18 @@ insecure_cryptography_prevented if {
 # 6.3 - Security vulnerabilities are identified and addressed
 # =================================================================
 
-# Security patch management
+# Security patch management (6.3.3). PCI DSS v4.0.1 limits the one-month installation window to patches for
+# critical vulnerabilities (v4.0 also named high-security patches); all other applicable patches are
+# installed within a time frame the entity determines. Either the former high-within-30-days evidence or
+# evidence that the entity-defined time frame is met satisfies the second condition.
+_other_patches_timely if input.pci.patch_management.high_patches.applied_within_30_days == true
+
+_other_patches_timely if input.pci.patch_management.other_patches.entity_defined_timeframe.met == true
+
 security_patch_management if {
 	input.pci.patch_management.process.documented == true
 	input.pci.patch_management.critical_patches.applied_within_30_days == true
-	input.pci.patch_management.high_patches.applied_within_30_days == true
+	_other_patches_timely
 	input.pci.patch_management.testing.required_before_deployment == true
 	input.pci.patch_management.rollback.procedures_defined == true
 }
@@ -175,7 +182,9 @@ automated_attack_detection if {
 	input.pci.automated_detection.logging.configured == true
 }
 
-# Penetration testing of web applications
+# Penetration testing / review of web applications: the 6.4.1 "review or automated solution" path,
+# superseded by 6.4.2 after 31 March 2025 (PCI SSC FAQ 1593). Reported for information only; it no longer
+# gates pci_requirement_6_compliant or counts in the score. 6.4.2 is automated_attack_detection above.
 web_app_pen_testing if {
 	input.pci.public_web_apps.in_scope == false
 } else if {
@@ -268,7 +277,7 @@ pci_requirement_6_compliant if {
 	vulnerability_identification
 	software_inventory_maintained
 	waf_implemented
-	web_app_pen_testing
+	automated_attack_detection
 	sast_dast_implemented
 	software_composition_analysis
 }
@@ -294,7 +303,7 @@ pci_requirement_6_score := score if {
 		vulnerability_identification,
 		software_inventory_maintained,
 		waf_implemented,
-		web_app_pen_testing,
+		automated_attack_detection,
 		sast_dast_implemented,
 		software_composition_analysis,
 	]
@@ -329,7 +338,7 @@ pci_requirement_6_findings := {
 	"requirement_6_4": {
 		"waf_implemented": waf_implemented,
 		"automated_attack_detection": automated_attack_detection,
-		"web_app_pen_testing": web_app_pen_testing,
+		"web_app_pen_testing_6_4_1_superseded": web_app_pen_testing,
 	},
 	"enhanced_controls": {
 		"sast_dast": sast_dast_implemented,
