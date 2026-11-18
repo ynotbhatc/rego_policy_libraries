@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.boot_security
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Sections 1.4, 1.5, 6.3: Bootloader, Process Hardening, Integrity Checking (AIDE).

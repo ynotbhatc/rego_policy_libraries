@@ -15,7 +15,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_windows_server_2022
 
 import data.cis_windows_server_2022.account_policies

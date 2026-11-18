@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.user_group
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 7.2: Local User and Group Settings.

@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.initial_setup
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Sections 1.2, 1.6-1.8: Package Management, Crypto Policy, Banners, GNOME Display Manager.

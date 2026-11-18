@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: none
 #     guard: n/a
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0: roll-up of the 14 section packages.

@@ -9,6 +9,15 @@
 #   framework: cis_saas
 #   source: cis
 #   domains: [saas, m365]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package cis_m365_v7.control_index
 
 import rego.v1

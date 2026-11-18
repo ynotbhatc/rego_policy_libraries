@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.file_permissions
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 7.1: System File Permissions.
