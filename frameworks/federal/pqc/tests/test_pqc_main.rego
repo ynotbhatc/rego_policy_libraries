@@ -240,7 +240,7 @@ test_sha1_flagged if {
 	v := main.violations with input as inp
 	count(v) == 1
 	some msg in v
-	contains(msg, "broken hash")
+	contains(msg, "SHA-1")
 }
 
 test_malformed_inventory_row_flagged if {
@@ -306,6 +306,9 @@ test_tooling_spellings_flagged if {
 }
 
 # Classification-order property: SLH-DSA/LMS/XMSS survive the DSA/EC prefixes.
+# general profile: the pre-standard Kyber hybrid is reported, not a violation
+# (under federal/nss it fails data.nist_approved_only — see
+# test_pqc_classification.rego).
 test_pqc_names_not_misclassified if {
 	rows := [
 		{"asset": "a1", "algorithm": "SLH-DSA-SHA2-128s", "usage": "signature", "pqc_migration_planned": false},
@@ -313,7 +316,7 @@ test_pqc_names_not_misclassified if {
 		{"asset": "a3", "algorithm": "XMSS", "usage": "signature", "pqc_migration_planned": false},
 		{"asset": "a4", "algorithm": "X25519Kyber768Draft00", "usage": "key_establishment", "pqc_migration_planned": false},
 	]
-	inp := json.patch(base, [{"op": "add", "path": "/pqc/crypto_inventory", "value": rows}])
+	inp := json.patch(general_base, [{"op": "add", "path": "/pqc/crypto_inventory", "value": rows}])
 	count(main.violations) == 0 with input as inp
 	r := main.compliance_report with input as inp
 	r.inventory_assets_quantum_vulnerable == 0
@@ -330,7 +333,7 @@ test_sha1_no_hyphen_flagged if {
 	v := main.violations with input as inp
 	count(v) == 1
 	some msg in v
-	contains(msg, "broken hash")
+	contains(msg, "SHA-1")
 }
 
 # pqc-05: a malformed row (wrong asset type) gets ONLY the input-contract
@@ -351,11 +354,11 @@ test_malformed_row_single_violation if {
 # pqc-06: controls_evaluated tracks the active profile.
 test_controls_evaluated_by_profile if {
 	rg := main.compliance_report with input as general_base
-	rg.controls_evaluated == 10
+	rg.controls_evaluated == 13
 	rf := main.compliance_report with input as federal_base
-	rf.controls_evaluated == 14
+	rf.controls_evaluated == 18
 	rn := main.compliance_report with input as base
-	rn.controls_evaluated == 18
+	rn.controls_evaluated == 22
 }
 
 # F1: a string "false" (truthy non-boolean) must NOT satisfy a boolean check.
@@ -412,14 +415,15 @@ test_freetext_algorithm_malformed if {
 test_empty_input_fails_closed if {
 	not main.compliant with input as {}
 
-	# 7 base boolean controls fire; profile-gated and data-driven do not.
-	count(main.violations) == 7 with input as {}
+	# 7 base boolean controls + crypto_inventory evidence missing;
+	# profile-gated rules do not fire.
+	count(main.violations) == 8 with input as {}
 }
 
 test_empty_input_report_populated if {
 	r := main.compliance_report with input as {}
 	r.compliant == false
-	r.violation_count == 7
+	r.violation_count == 8
 	r.profile == "general"
 	r.inventory_assets_total == 0
 }
