@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NIST Rego Policies for Open Policy Agent (OPA)</title>
-<meta name="description" content="44 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta name="description" content="57 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <link rel="canonical" href="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist.html">
 <meta property="og:title" content="NIST Rego Policies for Open Policy Agent (OPA)">
-<meta property="og:description" content="44 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta property="og:description" content="57 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-federal-nist.html">
 <meta property="og:site_name" content="Rego Policy Libraries">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NIST Rego Policies for Open Policy Agent (OPA)">
-<meta name="twitter:description" content="44 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
+<meta name="twitter:description" content="57 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.">
 <style>:root { --ink:#1b202b; --muted:#5c6573; --line:#d0d7de; --page:#ffffff; --card:#f6f8fa; --accent:#1f6feb; --accent2:#0f8f83; }
     * { box-sizing:border-box; }
     body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; color:var(--ink); background:var(--page); margin:0; line-height:1.5; }
@@ -51,10 +51,10 @@
 </head>
 <body>
 <h1>NIST — Rego Policies for OPA</h1>
-<p>44 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
+<p>57 open-source Rego policies encoding NIST 800-53, 800-171, CSF and RMF. Apache 2.0, Rego v1, ready to load into OPA or Enterprise OPA.</p>
 
 <h2>What this is</h2>
-<p><strong>44 Rego policy files</strong> encoding NIST 800-53, 800-171, CSF and RMF, part of the
+<p><strong>57 Rego policy files</strong> encoding NIST 800-53, 800-171, CSF and RMF, part of the
 <a href="https://ynotbhatc.github.io/rego_policy_libraries/">Rego Policy Libraries</a> — a standalone, dependency-free
 collection of Open Policy Agent policies for published security and compliance
 standards. No orchestrator, no agent, no vendor runtime.</p>
@@ -112,14 +112,27 @@ differs.</p>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_172/nist_800_172_main.rego"><code>nist_800_172_main.rego</code></a> <span style="opacity:.7">nist.sp800_172.main</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_39/nist_sp800_39_main.rego"><code>nist_sp800_39_main.rego</code></a> <span style="opacity:.7">nist.sp800_39.main</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"><code>ac_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.access_control</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/assessment_authorization/ca_controls.rego"><code>ca_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.assessment_authorization</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego"><code>au_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.audit_accountability</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/awareness_training/at_controls.rego"><code>at_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.awareness_training</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/configuration_management/cm_controls.rego"><code>cm_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.configuration_management</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/contingency_planning/cp_controls.rego"><code>cp_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.contingency_planning</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/identification_authentication/ia_controls.rego"><code>ia_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.identification_authentication</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego"><code>ir_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.incident_response</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/maintenance/ma_controls.rego"><code>ma_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.maintenance</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/media_protection/mp_controls.rego"><code>mp_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.media_protection</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/nist_800_53_key_main.rego"><code>nist_800_53_key_main.rego</code></a> <span style="opacity:.7">nist_800_53.main</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/nist_800_53_main.rego"><code>nist_800_53_main.rego</code></a> <span style="opacity:.7">nist.sp800_53.main</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/personnel_security/ps_controls.rego"><code>ps_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.personnel_security</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego"><code>pe_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.physical_environmental</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"><code>pt_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.pii_processing_transparency</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/planning/pl_controls.rego"><code>pl_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.planning</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/program_management/pm_controls.rego"><code>pm_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.program_management</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/risk_assessment/ra_controls.rego"><code>ra_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.risk_assessment</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/supply_chain_risk/sr_controls.rego"><code>sr_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.supply_chain_risk</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego"><code>sc_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.system_communications</span></li>
 <li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"><code>si_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.system_information_integrity</span></li>
+<li><a href="https://github.com/ynotbhatc/rego_policy_libraries/blob/main/frameworks/federal/nist/sp_800_53/system_services_acquisition/sa_controls.rego"><code>sa_controls.rego</code></a> <span style="opacity:.7">nist.sp800_53.system_services_acquisition</span></li>
 </ul>
 
 <h2>Contributing</h2>

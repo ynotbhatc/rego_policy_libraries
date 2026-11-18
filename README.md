@@ -4,7 +4,7 @@ Ready-to-run compliance checks for [Open Policy Agent](https://www.openpolicyage
 
 It covers the benchmarks and regulations most teams are asked about: CIS Benchmarks and DISA STIGs for Linux, Windows, cloud, containers, databases and network gear; NIST, ISO 27001, SOC 2, PCI DSS, HIPAA, GDPR, NERC CIP, IEC 62443, FedRAMP, CMMC, the EU AI Act, and regional rules from the UK, EU, India, Japan, Singapore, Malaysia, Hong Kong and Australia. The full list is in [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md).
 
-**1,051 production-ready Rego policies** (2,407 including tests) holding **29,297 control-level checks** across 190 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. The check count is a per-file measure, not a count of distinct requirements in the standards: [what it is and is not](docs/COMPARISON.md#what-the-count-is-and-is-not). How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
+**1,064 production-ready Rego policies** (2,446 including tests) holding **29,499 control-level checks** across 190 framework catalogs. CI recounts these numbers on every merge and fails if this line drifts. The check count is a per-file measure, not a count of distinct requirements in the standards: [what it is and is not](docs/COMPARISON.md#what-the-count-is-and-is-not). How that compares with other open libraries: [docs/COMPARISON.md](docs/COMPARISON.md).
 
 [![control-level checks](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fynotbhatc%2Frego_policy_libraries%2Fmain%2Fdocs%2Fmetrics.json)](docs/COMPARISON.md)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
@@ -107,7 +107,7 @@ A typical report:
 | **CIS Benchmarks + DISA STIGs** | 584 | CIS for Linux, Windows, cloud, containers, managed Kubernetes, databases, web servers, network devices, VMware and Microsoft 365, with Level 2 profiles; DISA STIGs — 25 platforms on the October 2026 library |
 | **Federal & K8s hardening baselines** | 19 | CISA SCuBA M365, NSA/CISA Kubernetes Hardening, Kubernetes Pod Security Standards |
 | **Application suite baselines** | 7 | SAP Security Baseline Template v2.6 (ABAP) |
-| **Regulatory Frameworks** | 389 | NIST (800-53, 800-171, CSF 2.0, AI RMF, SSDF, Zero Trust), ISO 27001 and 27701, SOC 2, PCI DSS, SOX, HIPAA, GDPR, CCPA, NERC CIP, IEC 62443, FedRAMP, CMMC, CJIS, DORA, NIS2, NY DFS, SWIFT CSP, HITRUST, TISAX, COBIT, CIS Controls v8.1, UK Cyber Essentials, BSI C5, Essential Eight, MAS TRM, APRA CPS 234, HKMA, BNM RMiT, DPDP, CERT-In, METI, SAE AS9100D, and more |
+| **Regulatory Frameworks** | 402 | NIST (800-53, 800-171, CSF 2.0, AI RMF, SSDF, Zero Trust), ISO 27001 and 27701, SOC 2, PCI DSS, SOX, HIPAA, GDPR, CCPA, NERC CIP, IEC 62443, FedRAMP, CMMC, CJIS, DORA, NIS2, NY DFS, SWIFT CSP, HITRUST, TISAX, COBIT, CIS Controls v8.1, UK Cyber Essentials, BSI C5, Essential Eight, MAS TRM, APRA CPS 234, HKMA, BNM RMiT, DPDP, CERT-In, METI, SAE AS9100D, and more |
 | **Enforcement** | 22 | Gates for Ansible, Terraform, Dockerfiles, Kubernetes admission, Git approvals, AAP jobs, CI/CD pipelines, SLSA supply chain |
 | **Governance** | 26 | AI agent authorisation, MCP tool calls, EU AI Act, ISO/IEC 42001 and 42005, OIDC tokens, FinOps tagging, estate continuity |
 | **Crosswalks** | 2 | STIG ↔ NIST 800-53 and framework-to-framework maps |
