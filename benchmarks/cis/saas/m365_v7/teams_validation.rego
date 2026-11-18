@@ -41,7 +41,7 @@
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.teams
 
 import rego.v1
@@ -236,4 +236,90 @@ compliance_report := {
 	"violations": violation,
 	"violation_count": count(violation),
 	"compliant": compliant,
+}
+
+# ── Per-control results ──────────────────────────────────────────────
+# `decidable` holds the controls of this section whose facts were all
+# collected; CONTROL_EVIDENCE names the input paths each one reads ("[]"
+# = every element of a list). The main report marks a control that is not
+# decidable "evidence_missing" even where no violation above names it: an
+# absent fact must never read as a pass. Each gate restates the condition
+# of its rule above; change them together.
+MEETING_POLICY_FIELDS := {
+	"8.5.1": "AllowAnonymousUsersToJoinMeeting",
+	"8.5.2": "AllowAnonymousUsersToStartMeeting",
+	"8.5.3": "AutoAdmittedUsers",
+	"8.5.4": "AllowPSTNUsersToBypassLobby",
+	"8.5.5": "MeetingChatEnabledType",
+	"8.5.6": "DesignatedPresenterRoleMode",
+	"8.5.7": "AllowExternalParticipantGiveRequestControl",
+	"8.5.8": "AllowExternalNonTrustedMeetingChat",
+	"8.5.9": "AllowCloudRecording",
+}
+
+FEDERATION_FIELDS := {
+	"8.2.1": "AllowFederatedUsers",
+	"8.2.2": "AllowTeamsConsumer",
+	"8.2.3": "AllowTeamsConsumerInbound",
+	"8.2.4": "ExternalAccessWithTrialTenants",
+}
+
+_meeting_evidence := {id: [path] |
+	some id, field in MEETING_POLICY_FIELDS
+	path := concat(".", ["teams", "meeting_policies[]", field])
+}
+
+_federation_evidence := {id: paths |
+	some id, field in FEDERATION_FIELDS
+	paths := _federation_paths(id, field)
+}
+
+_federation_paths("8.2.1", field) := ["teams.federation_configuration.AllowedDomains", concat(".", ["teams", "federation_configuration", field])]
+
+_federation_paths(id, field) := [concat(".", ["teams", "federation_configuration", field])] if id != "8.2.1"
+
+CONTROL_EVIDENCE := object.union(object.union(_meeting_evidence, _federation_evidence), {
+	"8.1.1": [concat(".", ["teams", "client_configuration", f]) | some f in APPROVED_STORAGE_FIELDS],
+	"8.1.2": ["teams.client_configuration.AllowEmailIntoChannel"],
+	"8.6.1": ["teams.messaging_policies[].AllowSecurityEndUserReporting"],
+})
+
+_present(obj, key) if {
+	v := object.get(obj, key, null)
+	v != null
+}
+
+decidable contains "8.1.1" if {
+	available("client_configuration")
+	every field in APPROVED_STORAGE_FIELDS {
+		is_boolean(client_config[field])
+	}
+}
+
+decidable contains "8.1.2" if {
+	available("client_configuration")
+	is_boolean(client_config.AllowEmailIntoChannel)
+}
+
+decidable contains id if {
+	some id, field in FEDERATION_FIELDS
+	available("federation_configuration")
+	_present(federation, field)
+}
+
+decidable contains id if {
+	some id, field in MEETING_POLICY_FIELDS
+	available("meeting_policies")
+	is_array(input.teams.meeting_policies)
+	every p in meeting_policies {
+		_present(p, field)
+	}
+}
+
+decidable contains "8.6.1" if {
+	available("messaging_policies")
+	is_array(input.teams.messaging_policies)
+	every p in messaging_policies {
+		is_boolean(p.AllowSecurityEndUserReporting)
+	}
 }

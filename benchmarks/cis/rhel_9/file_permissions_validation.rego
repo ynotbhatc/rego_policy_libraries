@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.file_permissions
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 7.1: System File Permissions.
@@ -509,3 +509,100 @@ p_7_1_13 if {
 }
 
 violations contains "7.1.13: manual review not attested — set attest.suid_sgid_files_reviewed to true once reviewed (SUID and SGID files must be reviewed)" if not p_7_1_13
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_7_1_1 := "evidence_missing" if {
+	not e_7_1_1
+} else := "pass" if {
+	p_7_1_1
+} else := "fail"
+
+s_7_1_2 := "evidence_missing" if {
+	not e_7_1_2
+} else := "pass" if {
+	p_7_1_2
+} else := "fail"
+
+s_7_1_3 := "evidence_missing" if {
+	not e_7_1_3
+} else := "pass" if {
+	p_7_1_3
+} else := "fail"
+
+s_7_1_4 := "evidence_missing" if {
+	not e_7_1_4
+} else := "pass" if {
+	p_7_1_4
+} else := "fail"
+
+s_7_1_5 := "evidence_missing" if {
+	not e_7_1_5
+} else := "pass" if {
+	p_7_1_5
+} else := "fail"
+
+s_7_1_6 := "evidence_missing" if {
+	not e_7_1_6
+} else := "pass" if {
+	p_7_1_6
+} else := "fail"
+
+s_7_1_7 := "evidence_missing" if {
+	not e_7_1_7
+} else := "pass" if {
+	p_7_1_7
+} else := "fail"
+
+s_7_1_8 := "evidence_missing" if {
+	not e_7_1_8
+} else := "pass" if {
+	p_7_1_8
+} else := "fail"
+
+s_7_1_9 := "evidence_missing" if {
+	not e_7_1_9
+} else := "pass" if {
+	p_7_1_9
+} else := "fail"
+
+s_7_1_10 := "evidence_missing" if {
+	not e_7_1_10
+} else := "pass" if {
+	p_7_1_10
+} else := "fail"
+
+s_7_1_11 := "evidence_missing" if {
+	not e_7_1_11
+} else := "pass" if {
+	p_7_1_11
+} else := "fail"
+
+s_7_1_12 := "evidence_missing" if {
+	not e_7_1_12
+} else := "pass" if {
+	p_7_1_12
+} else := "fail"
+
+s_7_1_13 := "pass" if {
+	p_7_1_13
+} else := "not_attested"
+
+control_status := {
+	"7.1.1": s_7_1_1,
+	"7.1.2": s_7_1_2,
+	"7.1.3": s_7_1_3,
+	"7.1.4": s_7_1_4,
+	"7.1.5": s_7_1_5,
+	"7.1.6": s_7_1_6,
+	"7.1.7": s_7_1_7,
+	"7.1.8": s_7_1_8,
+	"7.1.9": s_7_1_9,
+	"7.1.10": s_7_1_10,
+	"7.1.11": s_7_1_11,
+	"7.1.12": s_7_1_12,
+	"7.1.13": s_7_1_13,
+}

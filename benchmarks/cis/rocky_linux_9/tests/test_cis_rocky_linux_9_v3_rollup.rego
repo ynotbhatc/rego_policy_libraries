@@ -12,8 +12,8 @@ test_v3_every_recommendation_in_table if {
 
 test_v3_empty_input_fails_closed if {
 	r := data.cis_rocky_linux_9.main.compliance_report with input as {}
-	count(object.keys(r)) == 18
-	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage", "violation_count"] { k in object.keys(r) }
+	count(object.keys(r)) == 20
+	every k in ["framework", "benchmark", "version", "profile", "total_controls", "standard_total", "controls_basis", "passed_controls", "failed_controls", "compliance_percentage", "section_compliance_percentage", "compliant", "violations", "section_results", "sections_not_assessed", "missing_inputs", "assessment_coverage_percentage", "control_results", "control_result_counts", "violation_count"] { k in object.keys(r) }
 	r.compliant == false
 	r.total_controls == 263
 	r.failed_controls == r.total_controls

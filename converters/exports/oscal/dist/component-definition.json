@@ -525611,106 +525611,6 @@
         ]
        },
        {
-        "uuid": "ed8bcc58-fde7-5733-89d5-bada3653da4d",
-        "control-id": "stig_rhel_9-RHEL-09-653015",
-        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit service must be enabled.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-653015"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.audit_logging"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "205e8f4d-65eb-594b-a498-514e8a2f0aa7",
-        "control-id": "stig_rhel_9-RHEL-09-653055",
-        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-653055"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.audit_logging"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "2bccad60-162e-5049-ab1a-7d07a6043924",
-        "control-id": "stig_rhel_9-RHEL-09-653025",
-        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-653025"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.audit_logging"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "6f9fc440-eb21-50a5-b932-293418c8c085",
-        "control-id": "stig_rhel_9-RHEL-09-653040",
-        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-653040"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.audit_logging"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "c72047e7-f69f-57f1-a93b-fdb438d70bda",
         "control-id": "stig_rhel_9-RHEL-09-654010",
         "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must audit uses of the \"execve\" system call.",
@@ -525836,6 +525736,31 @@
         ]
        },
        {
+        "uuid": "4bfb6884-4e20-57ea-a71f-0e31b6846485",
+        "control-id": "stig_rhel_9-RHEL-09-654080",
+        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-654080"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.audit_logging"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "b36d62de-64b8-5f4a-ae6e-60a3a65df016",
         "control-id": "stig_rhel_9-RHEL-09-654215",
         "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.",
@@ -525911,13 +525836,88 @@
         ]
        },
        {
-        "uuid": "4bfb6884-4e20-57ea-a71f-0e31b6846485",
-        "control-id": "stig_rhel_9-RHEL-09-654080",
-        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must audit all uses of the init_module and finit_module system calls.",
+        "uuid": "ed8bcc58-fde7-5733-89d5-bada3653da4d",
+        "control-id": "stig_rhel_9-RHEL-09-653015",
+        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit service must be enabled.",
         "props": [
          {
           "name": "label",
-          "value": "RHEL-09-654080"
+          "value": "RHEL-09-653015"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.audit_logging"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "205e8f4d-65eb-594b-a498-514e8a2f0aa7",
+        "control-id": "stig_rhel_9-RHEL-09-653055",
+        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-653055"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.audit_logging"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2bccad60-162e-5049-ab1a-7d07a6043924",
+        "control-id": "stig_rhel_9-RHEL-09-653025",
+        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 audit system must take appropriate action when the audit storage volume is full.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-653025"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.audit_logging"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/audit_logging.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6f9fc440-eb21-50a5-b932-293418c8c085",
+        "control-id": "stig_rhel_9-RHEL-09-653040",
+        "description": "Evaluated by Rego package stig.rhel_9.audit_logging (benchmarks/stig/rhel_9/audit_logging.rego): RHEL 9 must notify the system administrator (SA) and information system security officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent utilization.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-653040"
          },
          {
           "name": "rego-package",
@@ -527411,13 +527411,13 @@
         ]
        },
        {
-        "uuid": "9621340b-fc9d-5e6d-8091-8e4fab983213",
-        "control-id": "stig_rhel_9-RHEL-09-231040",
-        "description": "Evaluated by Rego package stig.rhel_9.services (benchmarks/stig/rhel_9/services.rego): The RHEL 9 file system automounter must be disabled.",
+        "uuid": "51478b51-583e-5fb8-a9eb-3cf7a4e78847",
+        "control-id": "stig_rhel_9-RHEL-09-215025",
+        "description": "Evaluated by Rego package stig.rhel_9.services (benchmarks/stig/rhel_9/services.rego): RHEL 9 must not have the nfs-utils package installed.",
         "props": [
          {
           "name": "label",
-          "value": "RHEL-09-231040"
+          "value": "RHEL-09-215025"
          },
          {
           "name": "rego-package",
@@ -527436,13 +527436,13 @@
         ]
        },
        {
-        "uuid": "51478b51-583e-5fb8-a9eb-3cf7a4e78847",
-        "control-id": "stig_rhel_9-RHEL-09-215025",
-        "description": "Evaluated by Rego package stig.rhel_9.services (benchmarks/stig/rhel_9/services.rego): RHEL 9 must not have the nfs-utils package installed.",
+        "uuid": "9621340b-fc9d-5e6d-8091-8e4fab983213",
+        "control-id": "stig_rhel_9-RHEL-09-231040",
+        "description": "Evaluated by Rego package stig.rhel_9.services (benchmarks/stig/rhel_9/services.rego): The RHEL 9 file system automounter must be disabled.",
         "props": [
          {
           "name": "label",
-          "value": "RHEL-09-215025"
+          "value": "RHEL-09-231040"
          },
          {
           "name": "rego-package",
@@ -527536,13 +527536,13 @@
         ]
        },
        {
-        "uuid": "41c59d9b-7645-57f6-a609-1ed28581a902",
-        "control-id": "stig_rhel_9-RHEL-09-251010",
+        "uuid": "d8c1b770-1ff0-56d0-9a89-444e614fc133",
+        "control-id": "stig_rhel_9-RHEL-09-214010",
         "description": "Evaluated by Rego package stig.rhel_9.software_integrity (benchmarks/stig/rhel_9/software_integrity.rego): RHEL 9 must ensure cryptographic verification of vendor software packages.",
         "props": [
          {
           "name": "label",
-          "value": "RHEL-09-251010"
+          "value": "RHEL-09-214010"
          },
          {
           "name": "rego-package",
@@ -527836,56 +527836,6 @@
         ]
        },
        {
-        "uuid": "70130303-3aa6-562b-8465-b59dcae38cf2",
-        "control-id": "stig_rhel_9-RHEL-09-255100",
-        "description": "Evaluated by Rego package stig.rhel_9.ssh_config (benchmarks/stig/rhel_9/ssh_config.rego): RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-255100"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.ssh_config"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/ssh_config.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
-        "uuid": "ed72df0c-1597-591b-8247-87ed72f95b98",
-        "control-id": "stig_rhel_9-RHEL-09-255095",
-        "description": "Evaluated by Rego package stig.rhel_9.ssh_config (benchmarks/stig/rhel_9/ssh_config.rego): RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
-        "props": [
-         {
-          "name": "label",
-          "value": "RHEL-09-255095"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig.rhel_9.ssh_config"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "benchmarks/stig/rhel_9/ssh_config.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "f374c61d-0d4c-5c1a-9f58-2f7f786f237f",
         "control-id": "stig_rhel_9-RHEL-09-255160",
         "description": "Evaluated by Rego package stig.rhel_9.ssh_config (benchmarks/stig/rhel_9/ssh_config.rego): RHEL 9 SSH daemon must perform strict mode checking of home directory configuration files.",
@@ -527993,6 +527943,56 @@
          {
           "name": "label",
           "value": "RHEL-09-255155"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.ssh_config"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/ssh_config.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "70130303-3aa6-562b-8465-b59dcae38cf2",
+        "control-id": "stig_rhel_9-RHEL-09-255100",
+        "description": "Evaluated by Rego package stig.rhel_9.ssh_config (benchmarks/stig/rhel_9/ssh_config.rego): RHEL 9 must be configured so that all network connections associated with SSH traffic are terminated after 10 minutes of becoming unresponsive.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-255100"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "stig.rhel_9.ssh_config"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/stig/rhel_9/ssh_config.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ed72df0c-1597-591b-8247-87ed72f95b98",
+        "control-id": "stig_rhel_9-RHEL-09-255095",
+        "description": "Evaluated by Rego package stig.rhel_9.ssh_config (benchmarks/stig/rhel_9/ssh_config.rego): RHEL 9 must be configured so that all network connections associated with SSH traffic terminate after becoming unresponsive.",
+        "props": [
+         {
+          "name": "label",
+          "value": "RHEL-09-255095"
          },
          {
           "name": "rego-package",
@@ -563223,12 +563223,12 @@
        {
         "uuid": "a6c6bc78-fb41-5e50-8c9f-9eed1f662459",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -563773,12 +563773,12 @@
        {
         "uuid": "9e2d770f-79c4-50b7-84a1-cafbd06b146a",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -563817,12 +563817,12 @@
        {
         "uuid": "73ac8fce-17e0-5f03-a697-e1c9ae6c45c7",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -563927,12 +563927,12 @@
        {
         "uuid": "fd9ead85-1535-5bc8-828c-cf00287fa394",
         "control-id": "cm-14",
-        "description": "Evaluated by 12 library checks",
+        "description": "Evaluated by 13 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "stig_amazon_linux_2023:AZLX-23-000115;stig_amazon_linux_2023:AZLX-23-000120;stig_amazon_linux_2023:AZLX-23-000125;stig_apache_2_4_unix:AS24-U1-000230;stig_oracle_linux_8:OL08-00-010372;stig_oracle_linux_9:OL09-00-000498;stig_oracle_linux_9:OL09-00-002428;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "stig_amazon_linux_2023:AZLX-23-000115;stig_amazon_linux_2023:AZLX-23-000120;stig_amazon_linux_2023:AZLX-23-000125;stig_apache_2_4_unix:AS24-U1-000230;stig_oracle_linux_8:OL08-00-010372;stig_oracle_linux_9:OL09-00-000498;stig_oracle_linux_9:OL09-00-002428;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -565855,12 +565855,12 @@
        {
         "uuid": "2ddc58c1-26fe-5243-a2a4-d95fd8d5aac7",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -566251,12 +566251,12 @@
        {
         "uuid": "5890345f-1fde-5959-96f4-8ca510d96c1e",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -566295,12 +566295,12 @@
        {
         "uuid": "f2127845-3be4-5677-9cd7-77603db90837",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -567783,12 +567783,12 @@
        {
         "uuid": "6bfb39ed-133f-54d5-8b15-192fad2e4a2c",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -568179,12 +568179,12 @@
        {
         "uuid": "1e8a309b-840c-5c75-9499-6f546fc32dc1",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -568223,12 +568223,12 @@
        {
         "uuid": "9c732485-18c7-5174-90fa-e47d874586a9",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -569909,12 +569909,12 @@
        {
         "uuid": "06d16db4-d3e2-545a-bcbe-3f9b77bfb320",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -570437,12 +570437,12 @@
        {
         "uuid": "42009cdc-1252-572d-a3ce-4dd2a108eb2f",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -570481,12 +570481,12 @@
        {
         "uuid": "ddc672fa-01ea-59bb-9952-b399d75e7a12",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -572673,12 +572673,12 @@
        {
         "uuid": "9ac09316-8d6a-59d8-a732-b21187549947",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -573223,12 +573223,12 @@
        {
         "uuid": "fff91c12-79e1-5fd1-bfe9-58e4fd080728",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -573267,12 +573267,12 @@
        {
         "uuid": "5acfc24c-a4bd-5e65-8190-9e16944aef0f",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -575217,12 +575217,12 @@
        {
         "uuid": "3000a55f-a0e9-5e73-9fb8-f86018875020",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -575613,12 +575613,12 @@
        {
         "uuid": "19c20ea6-29c3-5734-b34e-833e8f53201c",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -575657,12 +575657,12 @@
        {
         "uuid": "50d54a40-d87f-553c-99c7-63efce86b39a",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",
@@ -577255,12 +577255,12 @@
        {
         "uuid": "b52c7432-67f7-54b0-ab97-48156848a214",
         "control-id": "ac-17",
-        "description": "Evaluated by 41 library checks",
+        "description": "Evaluated by 40 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
+          "value": "nist_sp_800_53:NIST AC-17;stig_amazon_linux_2023:AZLX-23-000050;stig_amazon_linux_2023:AZLX-23-001205;stig_amazon_linux_2023:AZLX-23-001206;stig_amazon_linux_2023:AZLX-23-001210;stig_amazon_linux_2023:AZLX-23-001211;stig_amazon_linux_2023:AZLX-23-001225;stig_apache_2_4_unix:AS24-U1-000030;stig_kubernetes:CNTR-K8-000150;stig_kubernetes:CNTR-K8-000160;stig_kubernetes:CNTR-K8-000170;stig_kubernetes:CNTR-K8-000180;stig_kubernetes:CNTR-K8-000190;stig_openshift_4:CNTR-OS-000010;stig_oracle_linux_8:OL08-00-010290;stig_oracle_linux_9:OL09-00-000070;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-000255;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-010020;stig_rhel_8:RHEL-08-010290;stig_rhel_8:RHEL-08-010291;stig_rhel_8:RHEL-08-040101;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-255065;stig_rhel_9:RHEL-09-255075;stig_rhel_9:RHEL-09-671010;stig_rke2:CNTR-R2-000010;stig_sles_15:SLES-15-010160;stig_sles_15:SLES-15-010220;stig_sles_15:SLES-15-010270;stig_ubuntu_22_04:UBTU-22-255050;stig_ubuntu_22_04:UBTU-22-255055;stig_vmware_vsphere_8:ESXI-80-000014;stig_windows_11:WN11-CC-000285;stig_windows_11:WN11-CC-000290;stig_windows_server_2022:WN22-CC-000370;stig_windows_server_2022:WN22-CC-000380;stig_windows_server_2025:WN25-CC-000370;stig_windows_server_2025:WN25-CC-000380"
          },
          {
           "name": "mapping-sources",
@@ -577783,12 +577783,12 @@
        {
         "uuid": "0b32f35c-937f-5d4b-8aca-d0ea79ef0673",
         "control-id": "cm-5",
-        "description": "Evaluated by 45 library checks",
+        "description": "Evaluated by 46 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
+          "value": "cjis:CM-5;nist_sp_800_53:NIST CM-5;stig_apache_2_4_unix:AS24-U1-000230;stig_apache_2_4_unix:AS24-U1-000440;stig_kubernetes:CNTR-K8-000850;stig_kubernetes:CNTR-K8-000860;stig_kubernetes:CNTR-K8-000880;stig_kubernetes:CNTR-K8-000890;stig_kubernetes:CNTR-K8-000900;stig_ms_sql_2016:SQL6-D0-006700;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000720;stig_oracle_database_19c:O19C-00-007300;stig_oracle_database_19c:O19C-00-007700;stig_oracle_database_19c:O19C-00-007900;stig_oracle_database_19c:O19C-00-008000;stig_oracle_database_19c:O19C-00-008100;stig_oracle_database_19c:O19C-00-008200;stig_oracle_database_19c:O19C-00-008300;stig_oracle_linux_8:OL08-00-010300;stig_oracle_linux_8:OL08-00-010330;stig_oracle_linux_8:OL08-00-010340;stig_oracle_linux_9:OL09-00-000441;stig_oracle_linux_9:OL09-00-002506;stig_oracle_linux_9:OL09-00-002524;stig_oracle_linux_9:OL09-00-002525;stig_oracle_mysql_8:MYS8-00-008300;stig_oracle_mysql_8:MYS8-00-008400;stig_oracle_mysql_8:MYS8-00-008500;stig_oracle_mysql_8:MYS8-00-008700;stig_oracle_mysql_8:MYS8-00-009200;stig_oracle_mysql_8:MYS8-00-009300;stig_postgresql_16:CD16-00-002700;stig_rhel_8:RHEL-08-010330;stig_rhel_9:RHEL-09-213020;stig_rhel_9:RHEL-09-214010;stig_rhel_9:RHEL-09-214020;stig_rhel_9:RHEL-09-214025;stig_rhel_9:RHEL-09-232010;stig_rhel_9:RHEL-09-232020;stig_rhel_9:RHEL-09-232200;stig_rhel_9:RHEL-09-653015;stig_rke2:CNTR-R2-000060;stig_rke2:CNTR-R2-000520;stig_sles_15:SLES-15-010430;stig_vmware_vsphere_8:ESXI-80-000133"
          },
          {
           "name": "mapping-sources",
@@ -577827,12 +577827,12 @@
        {
         "uuid": "4b4ab4c9-1dfa-5507-9269-f36578b49f77",
         "control-id": "cm-7",
-        "description": "Evaluated by 112 library checks",
+        "description": "Evaluated by 111 library checks",
         "props": [
          {
           "name": "library-checks",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251010;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
+          "value": "cjis:CM-7;nist_sp_800_53:NIST CM-7;stig_amazon_linux_2023:AZLX-23-000300;stig_apache_2_4_unix:AS24-U1-000270;stig_apache_2_4_unix:AS24-U1-000310;stig_apache_2_4_unix:AS24-U1-000440;stig_cisco_ios_xe_router:CISC-ND-000470;stig_kubernetes:CNTR-K8-000910;stig_kubernetes:CNTR-K8-000920;stig_kubernetes:CNTR-K8-000930;stig_kubernetes:CNTR-K8-000940;stig_kubernetes:CNTR-K8-000950;stig_kubernetes:CNTR-K8-000960;stig_openshift_4:CNTR-OS-000090;stig_openshift_4:CNTR-OS-000660;stig_openshift_4:CNTR-OS-001010;stig_oracle_database_19c:O19C-00-012900;stig_oracle_database_19c:O19C-00-013000;stig_oracle_database_19c:O19C-00-013100;stig_oracle_database_19c:O19C-00-013200;stig_oracle_database_19c:O19C-00-013300;stig_oracle_database_19c:O19C-00-013400;stig_oracle_database_19c:O19C-00-013500;stig_oracle_linux_8:OL08-00-040000;stig_oracle_linux_8:OL08-00-040002;stig_oracle_linux_8:OL08-00-040026;stig_oracle_linux_8:OL08-00-040080;stig_oracle_linux_9:OL09-00-000042;stig_oracle_linux_9:OL09-00-000046;stig_oracle_linux_9:OL09-00-000100;stig_oracle_linux_9:OL09-00-000110;stig_oracle_linux_9:OL09-00-000125;stig_oracle_linux_9:OL09-00-000130;stig_oracle_linux_9:OL09-00-000220;stig_oracle_linux_9:OL09-00-002070;stig_oracle_linux_9:OL09-00-002071;stig_oracle_mysql_8:MYS8-00-005600;stig_oracle_mysql_8:MYS8-00-005700;stig_oracle_mysql_8:MYS8-00-005800;stig_oracle_mysql_8:MYS8-00-006000;stig_oracle_mysql_8:MYS8-00-009000;stig_rhel_10:RHEL-09-251010;stig_rhel_8:RHEL-08-040000;stig_rhel_9:RHEL-09-213055;stig_rhel_9:RHEL-09-215015;stig_rhel_9:RHEL-09-215025;stig_rhel_9:RHEL-09-215040;stig_rhel_9:RHEL-09-231045;stig_rhel_9:RHEL-09-231050;stig_rhel_9:RHEL-09-251015;stig_rhel_9:RHEL-09-291010;stig_rhel_9:RHEL-09-291035;stig_rke2:CNTR-R2-000010;stig_rke2:CNTR-R2-000550;stig_rke2:CNTR-R2-000580;stig_sles_15:SLES-15-010030;stig_sles_15:SLES-15-010180;stig_sles_15:SLES-15-010220;stig_ubuntu_22_04:UBTU-22-215030;stig_vmware_vsphere_8:ESXI-80-000133;stig_windows_11:WN11-00-000126;stig_windows_11:WN11-00-000165;stig_windows_11:WN11-00-000170;stig_windows_11:WN11-00-000210;stig_windows_11:WN11-CC-000005;stig_windows_11:WN11-CC-000010;stig_windows_11:WN11-CC-000038;stig_windows_11:WN11-CC-000044;stig_windows_11:WN11-CC-000100;stig_windows_11:WN11-CC-000105;stig_windows_11:WN11-CC-000110;stig_windows_11:WN11-CC-000120;stig_windows_11:WN11-CC-000130;stig_windows_11:WN11-CC-000175;stig_windows_11:WN11-CC-000180;stig_windows_11:WN11-CC-000185;stig_windows_11:WN11-CC-000190;stig_windows_11:WN11-CC-000210;stig_windows_11:WN11-CC-000252;stig_windows_11:WN11-CC-000300;stig_windows_11:WN11-CC-000305;stig_windows_11:WN11-CC-000390;stig_windows_11:WN11-UC-000015;stig_windows_server_2022:WN22-00-000390;stig_windows_server_2022:WN22-00-000400;stig_windows_server_2022:WN22-CC-000010;stig_windows_server_2022:WN22-CC-000020;stig_windows_server_2022:WN22-CC-000150;stig_windows_server_2022:WN22-CC-000160;stig_windows_server_2022:WN22-CC-000170;stig_windows_server_2022:WN22-CC-000200;stig_windows_server_2022:WN22-CC-000210;stig_windows_server_2022:WN22-CC-000220;stig_windows_server_2022:WN22-CC-000230;stig_windows_server_2022:WN22-CC-000300;stig_windows_server_2022:WN22-CC-000400;stig_windows_server_2022:WN22-CC-000410;stig_windows_server_2022:WN22-MS-000030;stig_windows_server_2025:WN25-00-000390;stig_windows_server_2025:WN25-00-000400;stig_windows_server_2025:WN25-CC-000010;stig_windows_server_2025:WN25-CC-000150;stig_windows_server_2025:WN25-CC-000160;stig_windows_server_2025:WN25-CC-000170;stig_windows_server_2025:WN25-CC-000200;stig_windows_server_2025:WN25-CC-000210;stig_windows_server_2025:WN25-CC-000220;stig_windows_server_2025:WN25-CC-000300;stig_windows_server_2025:WN25-CC-000400;stig_windows_server_2025:WN25-CC-000410;stig_windows_server_2025:WN25-MS-000030"
          },
          {
           "name": "mapping-sources",

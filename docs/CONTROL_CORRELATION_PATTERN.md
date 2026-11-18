@@ -123,7 +123,7 @@ every other standard already defines its relationship to it.
   `control_status[<800-53>] = satisfied | gap | (absent = not evaluated)` plus
   a family rollup. **Gap wins**: if any evaluated rule mapping to a control is
   Open, the control is a gap. **Unassessed controls are absent, never passed**
-  — the same fail-closed honesty as the rest of the library.
+  — the same fail-closed discipline as the rest of the library.
 
 Downstream, any framework that declares its 800-53 inheritance reads
 `control_status` and reports its own posture from one assessment — the input
@@ -173,7 +173,7 @@ overlay (`crosswalk/framework_overlay.rego` + `crosswalk/framework_maps/`)
 answers the next question: **which frameworks does that discharge.** Given one
 platform's findings it emits, per framework, `satisfied / gaps / not_covered`.
 
-**Sourcing discipline (this is the part that keeps it honest):** every
+**Sourcing discipline (this is the part that keeps it accurate):** every
 framework map carries a `source` and a `status`. Only `status:"authoritative"`
 maps — those citing a fetchable NIST/standards-body source — are scored.
 `status:"pending"` maps are listed under `frameworks_pending` and never scored.
@@ -193,7 +193,7 @@ Seeded state (2026-09-03), from an authoritative-source audit:
 
 **First grounded result:** a STIG assessment addresses **54 of the 177 base
 controls in the 800-53 Moderate baseline** (Low: 36/131, High: 59/188) — an
-honest, single-assessment FedRAMP coverage-and-gap statement, at base-control
+accurate, single-assessment FedRAMP coverage-and-gap statement, at base-control
 granularity. The `not_covered` list is the exact set of baseline controls a
 STIG does not speak to — the work a STIG alone cannot close.
 
