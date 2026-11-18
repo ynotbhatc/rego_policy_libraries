@@ -374,59 +374,114 @@ _exit_rule(toks) if "always,exit" in toks
 
 _exit_rule(toks) if "exit,always" in toks
 
-# every syscall in `needed` is audited for `arch` by an always,exit rule that also carries every token in `fields`
-_syscalls_audited(arch, needed, fields) if {
+# the -F / -C field tokens of a rule (arch=b64, auid>=1000, exit=-EPERM, path=..., uid!=euid, ...)
+_fields(toks) := [v | some i, t in toks; t in {"-F", "-C"}; v := toks[i + 1]]
+
+_field_ok(f, _) if startswith(f, "arch=")
+
+_field_ok(f, _) if startswith(f, "key=")
+
+_field_ok(f, allowed) if f in allowed
+
+# auid != unset, as auditctl prints it (-1, 4294967295 or unset)
+auid_unset := {"auid!=-1", "auid!=4294967295", "auid!=unset"}
+
+# every syscall in `needed` is audited for `arch` by an always,exit rule that carries one value of every set in
+# `required` and no other field (a rule narrowed by uid=, exe=, ... does not audit every user)
+_syscalls_audited(arch, needed, required) if {
 	a := concat("=", ["arch", arch])
+	allowed := {f | some req in required; some f in req}
 	every s in needed {
 		some line in _audit_lines
 		toks := _tokens(line)
 		_exit_rule(toks)
 		a in toks
 		s in _syscalls(toks)
-		every f in fields {
-			f in toks
+		fs := _fields(toks)
+		every req in required {
+			some f in fs
+			f in req
+		}
+		every f in fs {
+			_field_ok(f, allowed)
 		}
 	}
 }
 
-# a rule watches exactly `path`: `-w <path>` or an always,exit rule with `-F path=<path>`
-_path_audited(path) if {
+# a rule audits exactly `path` with at least the permission letters in `perms` (e.g. ["w", "a"]):
+# `-w <path> -p <perm>`, or an always,exit rule with `-F path=<path> -F perm=<perm>` and no narrowing field
+_path_audited(path, perms) if {
 	some line in _audit_lines
 	toks := _tokens(line)
 	some i, t in toks
 	t == "-w"
 	toks[i + 1] == path
+	some j, u in toks
+	u == "-p"
+	p := toks[j + 1]
+	every c in perms {
+		contains(p, c)
+	}
 }
 
-_path_audited(path) if {
+_path_audited(path, perms) if {
 	some line in _audit_lines
 	toks := _tokens(line)
 	_exit_rule(toks)
-	concat("=", ["path", path]) in toks
-}'''
+	fs := _fields(toks)
+	concat("=", ["path", path]) in fs
+	some f in fs
+	startswith(f, "perm=")
+	p := substring(f, 5, -1)
+	every c in perms {
+		contains(p, c)
+	}
+	every g in fs {
+		_path_field_ok(g, path)
+	}
+}
+
+_path_field_ok(f, path) if f == concat("=", ["path", path])
+
+_path_field_ok(f, _) if startswith(f, "perm=")
+
+_path_field_ok(f, _) if f in ({"auid>=1000"} | auid_unset)
+
+_path_field_ok(f, _) if _field_ok(f, set())'''
 
 
-def sc_line(arch, calls, extra=""):
-    return f"-a always,exit -F arch={arch} -S {','.join(calls)}{extra} -F auid>=1000 -F auid!=-1 -F key=k"
+def sc_line(arch, calls, extra="", auid=True):
+    return f"-a always,exit -F arch={arch} -S {','.join(calls)}{extra}" + (" -F auid>=1000 -F auid!=-1" if auid else "") + " -F key=k"
 
 
-def syscall_rule(sid, name, calls, fields_sets, expect, comment, bad_drop):
-    alts = [[f"_syscalls_audited(\"{arch}\", {{{', '.join(chr(34) + c + chr(34) for c in calls)}}}, {{{', '.join(chr(34) + f + chr(34) for f in fs)}}})"
-             for arch in ("b32", "b64") for fs in fields_sets]]
-    alts[0] = ["is_array(input.audit_rules)"] + [a.replace("{}", "set()") for a in alts[0]]
-    lines = []
-    for arch in ("b32", "b64"):
-        for fs in fields_sets:
-            extra = "".join(f" -C {f}" if "!=" in f else f" -F {f}" for f in fs)
-            lines.append(sc_line(arch, calls, extra))
-    bad = [{"audit_rules": [l for l in AUDIT_GREEN_FINAL if l not in bad_drop(lines)]}]
+AUID = [["auid>=1000"], ["auid!=-1", "auid!=4294967295", "auid!=unset"]]
+
+
+def rego_set(xs):
+    return "{" + ", ".join(chr(34) + x + chr(34) for x in xs) + "}"
+
+
+def syscall_rule(sid, name, calls, required_sets, expect, comment, bad_drop):
+    """required_sets: per arch, one list of alternative-groups per expected rule line (from the check's example)"""
+    alts = [["is_array(input.audit_rules)"] + [
+        f'_syscalls_audited("{arch}", {rego_set(calls)}, [{", ".join(rego_set(g) for g in req)}])'
+        for arch in ("b32", "b64") for req in required_sets]]
+    lines = [l for l in AUDIT_GREEN_FINAL if f" -S {','.join(calls)} " in l]
+    narrowed = lines[-1].replace(" -F auid>=1000", " -F auid>=1000 -F uid=1000") if "auid>=1000" in lines[-1] else lines[-1] + " -F uid=1000"
+    exe = lines[-1] + " -F exe=/usr/bin/true"
+    others = [l for l in AUDIT_GREEN_FINAL if l != lines[-1]]
+    bad = [{"audit_rules": [l for l in AUDIT_GREEN_FINAL if l not in bad_drop(lines)]},
+           {"audit_rules": others + [narrowed]}, {"audit_rules": others + [exe]}]
+    if any("auid>=1000" in g for req in required_sets for g in req):
+        bad.append({"audit_rules": others + [lines[-1].replace(" -F auid>=1000 -F auid!=-1", "")]})
     R("audit_logging", sid, name, [("audit_rules",)], alts, {"audit_rules": "__AUDIT__"}, bad, expect,
       f"Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): {lines[-1]}",
-      comment=comment)
+      comment=comment,
+      pass_cases=[{"audit_rules": others + [lines[-1].replace("auid!=-1", "auid!=unset")]}] if "auid!=-1" in lines[-1] else [])
 
 
 AUDIT_GREEN_FINAL = (
-    [sc_line(a, ["execve"], f" -C {c} -F {e}") for a in ("b32", "b64") for c, e in (("uid!=euid", "euid=0"), ("gid!=egid", "egid=0"))]
+    [sc_line(a, ["execve"], f" -C {c} -F {e}", auid=False) for a in ("b32", "b64") for c, e in (("uid!=euid", "euid=0"), ("gid!=egid", "egid=0"))]
     + [sc_line(a, ["chown", "fchown", "fchownat", "lchown"]) for a in ("b32", "b64")]
     + [sc_line(a, ["chmod", "fchmod", "fchmodat"]) for a in ("b32", "b64")]
     + [sc_line(a, ["setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"]) for a in ("b32", "b64")]
@@ -438,42 +493,48 @@ AUDIT_GREEN_FINAL = (
        "-w /etc/passwd -p wa -k identity",
        "-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd"])
 
-syscall_rule("RHEL-09-654010", "audit_execve_b64", ["execve"], [("uid!=euid", "euid=0"), ("gid!=egid", "egid=0")],
+syscall_rule("RHEL-09-654010", "audit_execve_b64", ["execve"], [[["uid!=euid"], ["euid=0"]], [["gid!=egid"], ["egid=0"]]],
              "execve must be audited for b32 and b64 with -C uid!=euid -F euid=0 and -C gid!=egid -F egid=0 (all four rules)",
              "execve rules (auditctl -l) for both arches and both setuid/setgid conditions", lambda ls: [ls[3]])
-syscall_rule("RHEL-09-654020", "audit_chown", ["chown", "fchown", "fchownat", "lchown"], [()],
+syscall_rule("RHEL-09-654020", "audit_chown", ["chown", "fchown", "fchownat", "lchown"], [AUID],
              "chown, fchown, fchownat and lchown must be audited for both b32 and b64",
              "always,exit rules for the chown family, both arches (auditctl -l)", lambda ls: [ls[0]])
-syscall_rule("RHEL-09-654015", "audit_chmod", ["chmod", "fchmod", "fchmodat"], [()],
+syscall_rule("RHEL-09-654015", "audit_chmod", ["chmod", "fchmod", "fchmodat"], [AUID],
              "chmod, fchmod and fchmodat must be audited for both b32 and b64",
              "always,exit rules for the chmod family, both arches (auditctl -l)", lambda ls: [ls[0]])
-syscall_rule("RHEL-09-654025", "audit_setxattr", ["setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"], [()],
+syscall_rule("RHEL-09-654025", "audit_setxattr", ["setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"], [AUID],
              "setxattr, fsetxattr, lsetxattr, removexattr, fremovexattr and lremovexattr must be audited for both b32 and b64",
              "always,exit rules for the xattr family, both arches (auditctl -l)", lambda ls: [ls[1]])
 syscall_rule("RHEL-09-654070", "audit_open_failure", ["truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"],
-             [("exit=-EPERM",), ("exit=-EACCES",)],
+             [[["exit=-EPERM"]] + AUID, [["exit=-EACCES"]] + AUID],
              "truncate, ftruncate, creat, open, openat and open_by_handle_at must be audited for both arches with -F exit=-EPERM and -F exit=-EACCES",
              "always,exit rules for the open/truncate family with exit=-EPERM and exit=-EACCES, both arches", lambda ls: [ls[3]])
-syscall_rule("RHEL-09-654080", "audit_modules", ["init_module", "finit_module"], [()],
+syscall_rule("RHEL-09-654080", "audit_modules", ["init_module", "finit_module"], [AUID],
              "init_module and finit_module must be audited for both b32 and b64",
              "always,exit rules for init_module and finit_module, both arches (auditctl -l)", lambda ls: [ls[0]])
 
-for sid, name, path, expect in (
-        ("RHEL-09-654215", "audit_sudoers", "/etc/sudoers", "a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/)"),
-        ("RHEL-09-654240", "audit_passwd_file", "/etc/passwd", "a loaded audit rule must watch /etc/passwd"),
-        ("RHEL-09-654150", "audit_privileged_cmds", "/usr/bin/sudo", "a loaded audit rule must audit execution of /usr/bin/sudo")):
+for sid, name, path, perms, expect in (
+        ("RHEL-09-654215", "audit_sudoers", "/etc/sudoers", "wa",
+         "a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/) for write and attribute change (perm wa)"),
+        ("RHEL-09-654240", "audit_passwd_file", "/etc/passwd", "wa",
+         "a loaded audit rule must watch /etc/passwd for write and attribute change (perm wa)"),
+        ("RHEL-09-654150", "audit_privileged_cmds", "/usr/bin/sudo", "x",
+         "a loaded audit rule must audit execution (perm x) of /usr/bin/sudo")):
     keep = [l for l in AUDIT_GREEN_FINAL if path + " " not in l and "=" + path + " " not in l]
-    bads = [{"audit_rules": keep}]
+    bads = [{"audit_rules": keep}, {"audit_rules": keep + [f"-w {path} -p r -k k"]},
+            {"audit_rules": keep + [f"-a always,exit -F arch=b64 -F path={path} -F perm=r -F key=k"]},
+            {"audit_rules": keep + [f"-a always,exit -F arch=b64 -F path={path} -F perm={perms} -F uid=0 -F key=k"]}]
     if path == "/etc/sudoers":
         bads.append({"audit_rules": keep + ["-w /etc/sudoers.d/ -p wa -k identity"]})
     if path == "/usr/bin/sudo":
         bads.append({"audit_rules": keep + ["-a always,exit -F path=/usr/bin/su -F perm=x -F key=privileged"]})
     R("audit_logging", sid, name, [("audit_rules",)],
-      [["is_array(input.audit_rules)", f'_path_audited("{path}")']],
+      [["is_array(input.audit_rules)", f'_path_audited("{path}", [{", ".join(chr(34) + c + chr(34) for c in perms)}])']],
       {"audit_rules": "__AUDIT__"}, bads, expect,
       f"Add an audit rule for {path} to /etc/audit/rules.d/ and load it (augenrules --load)",
       comment=f"a loaded rule (auditctl -l) on exactly {path}: -w {path} or -F path={path}",
-      pass_cases=[{"audit_rules": keep + [f"-w {path} -p wa -k k"]}])
+      pass_cases=[{"audit_rules": keep + [f"-w {path} -p {perms} -k k"]},
+                  {"audit_rules": keep + [f"-a always,exit -F arch=b64 -F path={path} -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]}])
 
 # the shared green list: every audit rule above passes on it
 for _sid, _spec in RULES.items():

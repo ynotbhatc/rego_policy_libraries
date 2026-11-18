@@ -86,36 +86,80 @@ _exit_rule(toks) if "always,exit" in toks
 
 _exit_rule(toks) if "exit,always" in toks
 
-# every syscall in `needed` is audited for `arch` by an always,exit rule that also carries every token in `fields`
-_syscalls_audited(arch, needed, fields) if {
+# the -F / -C field tokens of a rule (arch=b64, auid>=1000, exit=-EPERM, path=..., uid!=euid, ...)
+_fields(toks) := [v | some i, t in toks; t in {"-F", "-C"}; v := toks[i + 1]]
+
+_field_ok(f, _) if startswith(f, "arch=")
+
+_field_ok(f, _) if startswith(f, "key=")
+
+_field_ok(f, allowed) if f in allowed
+
+# auid != unset, as auditctl prints it (-1, 4294967295 or unset)
+auid_unset := {"auid!=-1", "auid!=4294967295", "auid!=unset"}
+
+# every syscall in `needed` is audited for `arch` by an always,exit rule that carries one value of every set in
+# `required` and no other field (a rule narrowed by uid=, exe=, ... does not audit every user)
+_syscalls_audited(arch, needed, required) if {
 	a := concat("=", ["arch", arch])
+	allowed := {f | some req in required; some f in req}
 	every s in needed {
 		some line in _audit_lines
 		toks := _tokens(line)
 		_exit_rule(toks)
 		a in toks
 		s in _syscalls(toks)
-		every f in fields {
-			f in toks
+		fs := _fields(toks)
+		every req in required {
+			some f in fs
+			f in req
+		}
+		every f in fs {
+			_field_ok(f, allowed)
 		}
 	}
 }
 
-# a rule watches exactly `path`: `-w <path>` or an always,exit rule with `-F path=<path>`
-_path_audited(path) if {
+# a rule audits exactly `path` with at least the permission letters in `perms` (e.g. ["w", "a"]):
+# `-w <path> -p <perm>`, or an always,exit rule with `-F path=<path> -F perm=<perm>` and no narrowing field
+_path_audited(path, perms) if {
 	some line in _audit_lines
 	toks := _tokens(line)
 	some i, t in toks
 	t == "-w"
 	toks[i + 1] == path
+	some j, u in toks
+	u == "-p"
+	p := toks[j + 1]
+	every c in perms {
+		contains(p, c)
+	}
 }
 
-_path_audited(path) if {
+_path_audited(path, perms) if {
 	some line in _audit_lines
 	toks := _tokens(line)
 	_exit_rule(toks)
-	concat("=", ["path", path]) in toks
+	fs := _fields(toks)
+	concat("=", ["path", path]) in fs
+	some f in fs
+	startswith(f, "perm=")
+	p := substring(f, 5, -1)
+	every c in perms {
+		contains(p, c)
+	}
+	every g in fs {
+		_path_field_ok(g, path)
+	}
 }
+
+_path_field_ok(f, path) if f == concat("=", ["path", path])
+
+_path_field_ok(f, _) if startswith(f, "perm=")
+
+_path_field_ok(f, _) if f in ({"auid>=1000"} | auid_unset)
+
+_path_field_ok(f, _) if _field_ok(f, set())
 
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
@@ -270,10 +314,10 @@ default audit_execve_b64 := false
 audit_execve_b64 if {
 	count(missing_rhel_09_654010) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"execve"}, {"uid!=euid", "euid=0"})
-	_syscalls_audited("b32", {"execve"}, {"gid!=egid", "egid=0"})
-	_syscalls_audited("b64", {"execve"}, {"uid!=euid", "euid=0"})
-	_syscalls_audited("b64", {"execve"}, {"gid!=egid", "egid=0"})
+	_syscalls_audited("b32", {"execve"}, [{"uid!=euid"}, {"euid=0"}])
+	_syscalls_audited("b32", {"execve"}, [{"gid!=egid"}, {"egid=0"}])
+	_syscalls_audited("b64", {"execve"}, [{"uid!=euid"}, {"euid=0"}])
+	_syscalls_audited("b64", {"execve"}, [{"gid!=egid"}, {"egid=0"}])
 }
 
 status_rhel_09_654010 := "Not_a_Finding" if audit_execve_b64
@@ -294,7 +338,7 @@ finding_rhel_09_654010 := {
 	"check_type": "machine",
 	"status": status_rhel_09_654010,
 	"detail": detail_rhel_09_654010,
-	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F auid>=1000 -F auid!=-1 -F key=k",
+	"fix_text": "Add the rules to /etc/audit/rules.d/audit.rules and load them (augenrules --load): -a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -F key=k",
 }
 
 # RHEL-09-654020 | V-258178 | CAT II
@@ -306,8 +350,8 @@ default audit_chown := false
 audit_chown if {
 	count(missing_rhel_09_654020) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"chown", "fchown", "fchownat", "lchown"}, set())
-	_syscalls_audited("b64", {"chown", "fchown", "fchownat", "lchown"}, set())
+	_syscalls_audited("b32", {"chown", "fchown", "fchownat", "lchown"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"chown", "fchown", "fchownat", "lchown"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
 }
 
 status_rhel_09_654020 := "Not_a_Finding" if audit_chown
@@ -340,8 +384,8 @@ default audit_chmod := false
 audit_chmod if {
 	count(missing_rhel_09_654015) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"chmod", "fchmod", "fchmodat"}, set())
-	_syscalls_audited("b64", {"chmod", "fchmod", "fchmodat"}, set())
+	_syscalls_audited("b32", {"chmod", "fchmod", "fchmodat"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"chmod", "fchmod", "fchmodat"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
 }
 
 status_rhel_09_654015 := "Not_a_Finding" if audit_chmod
@@ -374,8 +418,8 @@ default audit_setxattr := false
 audit_setxattr if {
 	count(missing_rhel_09_654025) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, set())
-	_syscalls_audited("b64", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, set())
+	_syscalls_audited("b32", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"setxattr", "fsetxattr", "lsetxattr", "removexattr", "fremovexattr", "lremovexattr"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
 }
 
 status_rhel_09_654025 := "Not_a_Finding" if audit_setxattr
@@ -408,10 +452,10 @@ default audit_open_failure := false
 audit_open_failure if {
 	count(missing_rhel_09_654070) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EPERM"})
-	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EACCES"})
-	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EPERM"})
-	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, {"exit=-EACCES"})
+	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, [{"exit=-EPERM"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b32", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, [{"exit=-EACCES"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, [{"exit=-EPERM"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"truncate", "ftruncate", "creat", "open", "openat", "open_by_handle_at"}, [{"exit=-EACCES"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
 }
 
 status_rhel_09_654070 := "Not_a_Finding" if audit_open_failure
@@ -444,7 +488,7 @@ default audit_sudoers := false
 audit_sudoers if {
 	count(missing_rhel_09_654215) == 0
 	is_array(input.audit_rules)
-	_path_audited("/etc/sudoers")
+	_path_audited("/etc/sudoers", ["w", "a"])
 }
 
 status_rhel_09_654215 := "Not_a_Finding" if audit_sudoers
@@ -455,7 +499,7 @@ detail_rhel_09_654215 := "RHEL-09-654215: Not_a_Finding" if audit_sudoers
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654215", concat(", ", missing_rhel_09_654215)]) if count(missing_rhel_09_654215) > 0
 
-else := "RHEL-09-654215: check failed — a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/)"
+else := "RHEL-09-654215: check failed — a loaded audit rule must watch /etc/sudoers itself (not only /etc/sudoers.d/) for write and attribute change (perm wa)"
 
 finding_rhel_09_654215 := {
 	"vuln_id": "V-258217",
@@ -477,7 +521,7 @@ default audit_passwd_file := false
 audit_passwd_file if {
 	count(missing_rhel_09_654240) == 0
 	is_array(input.audit_rules)
-	_path_audited("/etc/passwd")
+	_path_audited("/etc/passwd", ["w", "a"])
 }
 
 status_rhel_09_654240 := "Not_a_Finding" if audit_passwd_file
@@ -488,7 +532,7 @@ detail_rhel_09_654240 := "RHEL-09-654240: Not_a_Finding" if audit_passwd_file
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654240", concat(", ", missing_rhel_09_654240)]) if count(missing_rhel_09_654240) > 0
 
-else := "RHEL-09-654240: check failed — a loaded audit rule must watch /etc/passwd"
+else := "RHEL-09-654240: check failed — a loaded audit rule must watch /etc/passwd for write and attribute change (perm wa)"
 
 finding_rhel_09_654240 := {
 	"vuln_id": "V-258222",
@@ -510,7 +554,7 @@ default audit_privileged_cmds := false
 audit_privileged_cmds if {
 	count(missing_rhel_09_654150) == 0
 	is_array(input.audit_rules)
-	_path_audited("/usr/bin/sudo")
+	_path_audited("/usr/bin/sudo", ["x"])
 }
 
 status_rhel_09_654150 := "Not_a_Finding" if audit_privileged_cmds
@@ -521,7 +565,7 @@ detail_rhel_09_654150 := "RHEL-09-654150: Not_a_Finding" if audit_privileged_cmd
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654150", concat(", ", missing_rhel_09_654150)]) if count(missing_rhel_09_654150) > 0
 
-else := "RHEL-09-654150: check failed — a loaded audit rule must audit execution of /usr/bin/sudo"
+else := "RHEL-09-654150: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/sudo"
 
 finding_rhel_09_654150 := {
 	"vuln_id": "V-258204",
@@ -543,8 +587,8 @@ default audit_modules := false
 audit_modules if {
 	count(missing_rhel_09_654080) == 0
 	is_array(input.audit_rules)
-	_syscalls_audited("b32", {"init_module", "finit_module"}, set())
-	_syscalls_audited("b64", {"init_module", "finit_module"}, set())
+	_syscalls_audited("b32", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"init_module", "finit_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
 }
 
 status_rhel_09_654080 := "Not_a_Finding" if audit_modules
