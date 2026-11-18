@@ -96,6 +96,9 @@ jewel_constraints_met if {
 jewel_constraints_met if {
 	classification.jewel_class != "none"
 	approval_valid
+
+	# is_number: "1" sorts above every number in Rego, so an unguarded >= passes on a string
+	is_number(input.approval.approvers_count)
 	input.approval.approvers_count >= 2
 	justification_valid
 }
@@ -148,6 +151,7 @@ default approval_obtained := false
 
 approval_obtained if {
 	input.approval.obtained == true
+	is_number(input.approval.approvers_count)
 	input.approval.approvers_count >= approval_requirements.approvers
 }
 

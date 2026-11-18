@@ -6,14 +6,14 @@
 #   source: geisa
 #   domains: [ot, energy, smart-grid]
 #   coverage:
-#     checks: 15
+#     checks: 16
 #     cited: 0
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package governance.geisa.api
 
 import rego.v1
@@ -70,6 +70,13 @@ violations contains "API: GEISA version must be >= 1.0" if {
 	is_object(_discovery)
 	is_object(_discovery.geisa_version)
 	_discovery.geisa_version.major < 1
+}
+
+# "0" sorts above every number, so a string major version would pass the check above.
+violations contains sprintf("API: GEISA version major must be a number, got %v", [_discovery.geisa_version.major]) if {
+	is_object(_discovery)
+	is_object(_discovery.geisa_version)
+	not is_number(object.get(_discovery.geisa_version, "major", null))
 }
 
 violations contains "API: discovery_response.pillars.api must be true" if {
