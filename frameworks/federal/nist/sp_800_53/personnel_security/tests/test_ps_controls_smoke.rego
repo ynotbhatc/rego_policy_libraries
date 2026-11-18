@@ -2,8 +2,8 @@ package nist.sp800_53.personnel_security_test
 
 import rego.v1
 
-# Generated smoke test for frameworks/federal/nist/sp_800_53/personnel_security/ps_controls.rego (scripts/gen_tests.py). Each rule states one thing the module was proven
-# to do on empty input; a missing rule means the module does not do that, see docs/TEST_GENERATION.md.
+# Smoke test for frameworks/federal/nist/sp_800_53/personnel_security/ps_controls.rego, written in the shape scripts/gen_tests.py generates: each rule states one thing the
+# module does on empty input (loads, returns a well-formed report, fails closed).
 
 test_ps_controls_loads_on_empty_input if {
 	m := data.nist.sp800_53.personnel_security with input as {}
