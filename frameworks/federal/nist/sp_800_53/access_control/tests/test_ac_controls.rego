@@ -165,8 +165,8 @@ test_ac15_withdrawn_never_a_finding if {
 
 test_ac_one_finding_per_evaluated_id_on_empty_input if {
 	r := ac.compliance_report with input as {}
-	r.controls_evaluated == 24
-	count(r.violations) == 24
+	r.controls_evaluated == 34
+	count(r.violations) == 34
 	every id in ac.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}

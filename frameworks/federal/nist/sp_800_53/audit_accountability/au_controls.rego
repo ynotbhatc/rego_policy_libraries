@@ -58,9 +58,12 @@ violation contains msg if {
 	msg := "NIST AU-7: Audit record reduction/report-generation tooling unavailable"
 }
 
+# AU-8 Time Stamps: internal clocks generate time stamps in UTC, with a fixed UTC offset, or with the
+# offset recorded. Synchronisation to an authoritative source was AU-8(1), withdrawn in Rev 5 and moved to
+# SC-45(1) (evaluated in the SC family); au_controls.time_stamps.synchronized is no longer read here.
 violation contains msg if {
-	not input.au_controls.time_stamps.synchronized
-	msg := "NIST AU-8: Audit record time stamps not synchronized to authoritative source"
+	not input.au_controls.time_stamps.utc_or_offset_recorded == true
+	msg := "NIST AU-8: Audit record time stamps not evidenced as UTC, fixed UTC offset, or recorded offset (input.au_controls.time_stamps.utc_or_offset_recorded)"
 }
 
 violation contains msg if {

@@ -20,7 +20,7 @@ fully_compliant_input := {
 		"logon_notification": {"timestamp_displayed": true, "location_displayed": true, "unsuccessful_attempts_displayed": true},
 		"session_control": {"limits_configured": true, "per_account_limits": true, "per_device_limits": true},
 		"session_lock": {"inactivity_timeout": 600, "pattern_hiding": true, "authentication_required": true, "odp": {"inactivity_timeout": 900}},
-		"session_termination": {"automatic_termination": true, "user_initiated": true, "administrative_termination": true},
+		"session_termination": {"automatic_termination": true, "user_initiated": true},
 		"permitted_actions": {"unauthenticated_functions": ["system_status"], "organization_approved_functions": ["system_status", "public_information"], "rationale_documented": true},
 		"security_attributes": {"attribute_binding": true, "attribute_association": true, "transmission_preservation": true},
 		"remote_access": {"authorized_only": true, "encrypted_connections": true, "monitored_controlled": true},
@@ -41,7 +41,7 @@ fully_compliant_input := {
 		"response_to_failures": {"alerting": true},
 		"review_and_analysis": {"regular": true},
 		"reduction_and_reporting": {"tools_available": true},
-		"time_stamps": {"synchronized": true},
+		"time_stamps": {"utc_or_offset_recorded": true},
 		"protection_of_records": {"tamper_resistant": true},
 		"non_repudiation": {"implemented": true},
 		"retention_period_days": 365,
@@ -68,15 +68,15 @@ fully_compliant_input := {
 		"identifier_management": {"unique_per_user": true},
 		"authenticator_management": {"complexity_enforced": true, "encrypted_in_transit": true, "encrypted_at_rest": true},
 		"authenticator_feedback": {"obscured": true},
-		"cryptographic_module_auth": {"fips_validated": true},
+		"cryptographic_module_auth": {"odp": {"required_standards": ["FIPS 140-3"]}, "standards_met": ["FIPS 140-3"]},
 		"non_organizational_users": {"identified": true},
 	},
 	"ir_controls": {
 		"policy": {"documented": true},
-		"training": {"completed_within_year": true},
-		"testing": {"exercised_within_year": true},
+		"training": {"days_since_last": 200, "odp": {"frequency_days": 365}},
+		"testing": {"days_since_last": 300, "odp": {"frequency_days": 365}},
 		"handling": {"process_defined": true},
-		"monitoring": {"continuous": true},
+		"incident_tracking": {"tracked_and_documented": true},
 		"reporting": {"timely": true},
 		"assistance": {"available": true},
 		"plan": {"documented": true},
@@ -92,7 +92,8 @@ fully_compliant_input := {
 		"transmission_integrity": {"protected": true, "cryptographic": true},
 		"network_disconnect": {"timeout_configured": true},
 		"cryptographic_key_mgmt": {"documented": true},
-		"cryptographic_protection": {"fips_validated": true},
+		"cryptographic_protection": {"odp": {"required_standards": ["FIPS 140-3"]}, "standards_implemented": ["FIPS 140-3"]},
+		"time_synchronization": {"clocks_synchronized": true, "authoritative_source_synchronized": true},
 		"collaborative_devices": {"disabled_when_unused": true},
 		"public_key_infrastructure": {"certificates_managed": true},
 		"mobile_code": {"controls_enforced": true},
@@ -148,7 +149,7 @@ test_family_summary_present if {
 
 test_total_controls_equals_evaluated_ids if {
 	main.total_controls == count(main.evaluated_controls)
-	main.total_controls == 97
+	main.total_controls == 109
 }
 
 test_empty_input_every_evaluated_id_fails_once if {
@@ -160,7 +161,7 @@ test_empty_input_every_evaluated_id_fails_once if {
 
 test_failed_never_exceeds_total_on_partial_input if {
 	r := main.compliance_report with input as {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}
-	r.failed_controls == 96
+	r.failed_controls == 108
 	r.failed_controls <= r.total_controls
 }
 
@@ -181,15 +182,15 @@ test_compliant_input_has_zero_failed if {
 test_coverage_states_partial_scope if {
 	r := main.compliance_report with input as {}
 	r.coverage.baseline_assessment == false
-	r.coverage.controls_evaluated == 97
+	r.coverage.controls_evaluated == 109
 	r.coverage.catalog_families == 20
 	count(r.coverage.families_evaluated) == 7
 }
 
 test_bridge_failed_controls_bounded if {
 	r := data.nist_800_53.main.compliance_report with input as {}
-	r.total_controls == 97
-	r.failed_controls == 97
+	r.total_controls == 109
+	r.failed_controls == 109
 	r.compliant == false
 }
 

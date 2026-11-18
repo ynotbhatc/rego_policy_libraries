@@ -23,7 +23,7 @@ import rego.v1
 #
 # Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0.
 # Evaluated: SC-1, SC-2, SC-3, SC-5, SC-7, SC-8, SC-8(1), SC-10, SC-12, SC-13, SC-15, SC-17, SC-18,
-# SC-20, SC-21, SC-23, SC-28, SC-28(1) (18 ids). SC-19 (Voice over Internet Protocol) is WITHDRAWN in Rev 5
+# SC-20, SC-21, SC-23, SC-28, SC-28(1), SC-45, SC-45(1) (20 ids). SC-19 (Voice over Internet Protocol) is WITHDRAWN in Rev 5
 # ("Technology-specific; addressed as any other technology or protocol") and is not assessed.
 #
 # SC-8 and SC-28 protect "the [Selection: confidentiality; integrity]" of information: the selection is an
@@ -125,9 +125,38 @@ violation contains msg if {
 	msg := "NIST SC-12: Cryptographic key management process not documented"
 }
 
+# SC-13: the organisation determines the cryptographic uses and the types of cryptography required for
+# each (ODP). NIST does not fix FIPS validation in the catalog text; FedRAMP's parameter does, and that
+# lives in the FedRAMP module. Here every organization-required standard must be evidenced as implemented.
+_sc13 := object.get(_sc, "cryptographic_protection", {})
+
+_sc13_missing contains "input.sc_controls.cryptographic_protection.odp.required_standards (organization-defined types of cryptography)" if {
+	not _nonempty_array(object.get(_sc13, ["odp", "required_standards"], null))
+}
+
+_sc13_missing contains "input.sc_controls.cryptographic_protection.standards_implemented" if {
+	not is_array(object.get(_sc13, "standards_implemented", null))
+}
+
+_nonempty_array(x) if {
+	is_array(x)
+	count(x) > 0
+}
+
+sc13_unmet contains s if {
+	count(_sc13_missing) == 0
+	some s in _sc13.odp.required_standards
+	not s in _sc13.standards_implemented
+}
+
 violation contains msg if {
-	not input.sc_controls.cryptographic_protection.fips_validated
-	msg := "NIST SC-13: Cryptographic mechanisms not FIPS-validated"
+	count(_sc13_missing) > 0
+	msg := sprintf("NIST SC-13: evidence missing — %s not collected", [concat(", ", sort(_sc13_missing))])
+}
+
+violation contains msg if {
+	count(sc13_unmet) > 0
+	msg := sprintf("NIST SC-13: Organization-required cryptography not implemented: %v", [sort(sc13_unmet)])
 }
 
 violation contains msg if {
@@ -183,10 +212,22 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# SC-45 System Time Synchronization and SC-45(1) Synchronization with Authoritative Time Source (SC-45(1)
+# is where Rev 5 moved the withdrawn AU-8(1)).
+violation contains msg if {
+	not object.get(_sc, ["time_synchronization", "clocks_synchronized"], false) == true
+	msg := "NIST SC-45: System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)"
+}
+
+violation contains msg if {
+	not object.get(_sc, ["time_synchronization", "authoritative_source_synchronized"], false) == true
+	msg := "NIST SC-45(1): Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)"
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SC-1", "SC-2", "SC-3", "SC-5", "SC-7", "SC-8", "SC-8(1)", "SC-10", "SC-12",
-	"SC-13", "SC-15", "SC-17", "SC-18", "SC-20", "SC-21", "SC-23", "SC-28", "SC-28(1)",
+	"SC-13", "SC-15", "SC-17", "SC-18", "SC-20", "SC-21", "SC-23", "SC-28", "SC-28(1)", "SC-45", "SC-45(1)",
 }
 
 compliance_report := {

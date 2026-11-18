@@ -78,9 +78,38 @@ violation contains msg if {
 	msg := "NIST IA-6: Authentication feedback (e.g., password entry) is not obscured"
 }
 
+# IA-7: authentication to a cryptographic module must meet "applicable laws, executive orders, directives,
+# policies, regulations, standards, and guidelines". Which standard applies is the organisation's input
+# (FedRAMP's FIPS-validated-or-NSA-approved parameter is applied in the FedRAMP module, not here).
+_ia7 := object.get(input, ["ia_controls", "cryptographic_module_auth"], {})
+
+_ia7_missing contains "input.ia_controls.cryptographic_module_auth.odp.required_standards (applicable standards)" if {
+	x := object.get(_ia7, ["odp", "required_standards"], null)
+	not is_array(x)
+}
+
+_ia7_missing contains "input.ia_controls.cryptographic_module_auth.odp.required_standards (applicable standards)" if {
+	count(object.get(_ia7, ["odp", "required_standards"], [])) == 0
+}
+
+_ia7_missing contains "input.ia_controls.cryptographic_module_auth.standards_met" if {
+	not is_array(object.get(_ia7, "standards_met", null))
+}
+
+ia7_unmet contains s if {
+	count(_ia7_missing) == 0
+	some s in _ia7.odp.required_standards
+	not s in _ia7.standards_met
+}
+
 violation contains msg if {
-	not input.ia_controls.cryptographic_module_auth.fips_validated
-	msg := "NIST IA-7: Cryptographic module authentication not FIPS-validated"
+	count(_ia7_missing) > 0
+	msg := sprintf("NIST IA-7: evidence missing — %s not collected", [concat(", ", sort(_ia7_missing))])
+}
+
+violation contains msg if {
+	count(ia7_unmet) > 0
+	msg := sprintf("NIST IA-7: Cryptographic module authentication does not meet the applicable standards: %v", [sort(ia7_unmet)])
 }
 
 violation contains msg if {

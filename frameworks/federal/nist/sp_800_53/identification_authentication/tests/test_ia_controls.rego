@@ -34,3 +34,30 @@ test_ia_one_finding_per_evaluated_id_on_empty_input if {
 	r.controls_evaluated == 11
 	count(r.violations) == 11
 }
+
+# IA-7: applicable standard is the organisation's input; FIPS is not hard-required.
+_ia7(x) := r if {
+	r := ia.compliance_report with input as {"ia_controls": {"cryptographic_module_auth": x}}
+}
+
+test_ia7_applicable_standard_met_passes if {
+	count(_finding(_ia7({"odp": {"required_standards": ["FIPS 140-3"]}, "standards_met": ["FIPS 140-3", "SP 800-63B AAL2"]}), "IA-7")) == 0
+}
+
+test_ia7_unmet_fails if {
+	f := _finding(_ia7({"odp": {"required_standards": ["FIPS 140-3"]}, "standards_met": []}), "IA-7")
+	count(f) == 1
+	not contains(f[0], "evidence missing")
+}
+
+test_ia7_old_fips_boolean_is_missing_evidence if {
+	f := _finding(_ia7({"fips_validated": true}), "IA-7")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_ia7_empty_required_list_is_missing_evidence if {
+	f := _finding(_ia7({"odp": {"required_standards": []}, "standards_met": ["x"]}), "IA-7")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}

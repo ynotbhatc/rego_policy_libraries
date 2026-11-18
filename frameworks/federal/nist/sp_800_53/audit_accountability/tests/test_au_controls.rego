@@ -40,3 +40,16 @@ test_au_one_finding_per_evaluated_id_on_empty_input if {
 		count(_finding(r, id)) == 1
 	}
 }
+
+# AU-8: UTC / offset, not synchronisation (AU-8(1) withdrawn, moved to SC-45(1)).
+test_au8_utc_passes if {
+	count(_finding(_au({"time_stamps": {"utc_or_offset_recorded": true}}), "AU-8")) == 0
+}
+
+test_au8_sync_alone_is_not_au8_evidence if {
+	count(_finding(_au({"time_stamps": {"synchronized": true}}), "AU-8")) == 1
+}
+
+test_au8_false_fails if {
+	count(_finding(_au({"time_stamps": {"utc_or_offset_recorded": false}}), "AU-8")) == 1
+}

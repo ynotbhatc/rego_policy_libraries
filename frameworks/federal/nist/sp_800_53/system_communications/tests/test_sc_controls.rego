@@ -120,9 +120,49 @@ test_sc28_missing_evidence_fails if {
 
 test_sc_one_finding_per_evaluated_id_on_empty_input if {
 	r := sc.compliance_report with input as {}
-	r.controls_evaluated == 18
-	count(r.violations) == 18
+	r.controls_evaluated == 20
+	count(r.violations) == 20
 	every id in sc.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}
+}
+
+# --- SC-13: organization-defined cryptography, no hard FIPS requirement ------------------
+
+test_sc13_org_standard_met_passes if {
+	r := _sc({"cryptographic_protection": {"odp": {"required_standards": ["NSA-approved (CNSA 2.0)"]}, "standards_implemented": ["NSA-approved (CNSA 2.0)"]}})
+	count(_finding(r, "SC-13")) == 0
+}
+
+test_sc13_fips_not_hard_required if {
+	r := _sc({"cryptographic_protection": {"fips_validated": false, "odp": {"required_standards": ["AES-256-GCM per org policy"]}, "standards_implemented": ["AES-256-GCM per org policy"]}})
+	count(_finding(r, "SC-13")) == 0
+}
+
+test_sc13_unmet_standard_fails if {
+	f := _finding(_sc({"cryptographic_protection": {"odp": {"required_standards": ["FIPS 140-3"]}, "standards_implemented": ["FIPS 140-2"]}}), "SC-13")
+	count(f) == 1
+	contains(f[0], "FIPS 140-3")
+}
+
+test_sc13_old_fips_boolean_is_not_evidence if {
+	f := _finding(_sc({"cryptographic_protection": {"fips_validated": true}}), "SC-13")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+# --- SC-45 / SC-45(1) ---------------------------------------------------------------
+
+test_sc45_split if {
+	r := _sc({"time_synchronization": {"clocks_synchronized": true, "authoritative_source_synchronized": false}})
+	count(_finding(r, "SC-45")) == 0
+	count(_finding(r, "SC-45(1)")) == 1
+	r2 := _sc({"time_synchronization": {"clocks_synchronized": true, "authoritative_source_synchronized": true}})
+	count(_finding(r2, "SC-45(1)")) == 0
+}
+
+test_sc45_missing_evidence_fails if {
+	r := _sc({})
+	count(_finding(r, "SC-45")) == 1
+	count(_finding(r, "SC-45(1)")) == 1
 }

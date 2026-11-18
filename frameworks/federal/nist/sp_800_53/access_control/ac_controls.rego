@@ -23,7 +23,9 @@ import rego.v1
 #
 # Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0
 # (usnistgov/oscal-content, nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json).
-# Evaluated here: AC-1..AC-12, AC-11(1), AC-14, AC-16..AC-25 (24 ids). Not evaluated: AC-13 (withdrawn,
+# Evaluated here: AC-1..AC-12, AC-14, AC-16..AC-25 and the enhancements AC-2(1), AC-4(1), AC-6(1), AC-6(2),
+# AC-9(1), AC-9(4), AC-11(1), AC-12(1), AC-17(1), AC-17(2), AC-18(1) (34 ids). A base control never fails on
+# an enhancement's requirement; each enhancement is its own finding. Not evaluated: AC-13 (withdrawn,
 # incorporated into AC-2 and AU-6) and AC-15 (withdrawn, "incorporated into MP-3" Media Marking; this
 # library has no MP family module, so AC-15 is not assessed and never produces a finding).
 #
@@ -39,9 +41,11 @@ access_control_policy if {
 	input.ac_controls.procedures.implementation_documented == true
 }
 
-# AC-2: Account Management
+# AC-2(1): Automated System Account Management
+automated_account_management if input.ac_controls.account_management.automated_tools == true
+
+# AC-2: Account Management — approval, review and timely removal; automated tooling is AC-2(1).
 account_management if {
-	input.ac_controls.account_management.automated_tools == true
 	input.ac_controls.account_management.approval_process == true
 	input.ac_controls.account_management.regular_reviews == true
 	input.ac_controls.account_management.timely_removal == true
@@ -65,9 +69,11 @@ ac3_enforced_models contains m if {
 
 access_enforcement if count(ac3_enforced_models) > 0
 
-# AC-4: Information Flow Enforcement
+# AC-4(1): Object Security and Privacy Attributes
+flow_object_attributes if input.ac_controls.information_flow.security_labels == true
+
+# AC-4: Information Flow Enforcement — approved flow-control policies enforced; labels are AC-4(1).
 information_flow_enforcement if {
-	input.ac_controls.information_flow.security_labels == true
 	input.ac_controls.information_flow.flow_control_policies == true
 	input.ac_controls.information_flow.automated_enforcement == true
 }
@@ -76,15 +82,17 @@ information_flow_enforcement if {
 separation_of_duties if {
 	input.ac_controls.separation_duties.critical_functions_divided == true
 	input.ac_controls.separation_duties.documented_assignments == true
-	input.ac_controls.separation_duties.monitored_compliance == true
 }
 
 # AC-6: Least Privilege
-least_privilege if {
-	input.ac_controls.least_privilege.minimum_access_granted == true
-	input.ac_controls.least_privilege.privileged_functions_authorized == true
-	input.ac_controls.least_privilege.non_privileged_access_default == true
-}
+# AC-6 base: only the accesses necessary for assigned tasks. AC-6(1) and AC-6(2) are evaluated separately.
+least_privilege if input.ac_controls.least_privilege.minimum_access_granted == true
+
+# AC-6(1) Authorize Access to Security Functions
+authorize_security_functions if input.ac_controls.least_privilege.privileged_functions_authorized == true
+
+# AC-6(2) Non-privileged Access for Nonsecurity Functions
+non_privileged_access_for_nonsecurity if input.ac_controls.least_privilege.non_privileged_access_default == true
 
 # AC-7: Unsuccessful Logon Attempts — "Enforce a limit of [ODP number] consecutive invalid logon attempts
 # ... and automatically [ODP action] when the maximum number of unsuccessful attempts is exceeded."
@@ -136,17 +144,17 @@ system_use_notification if {
 }
 
 # AC-9: Previous Logon Notification
-previous_logon_notification if {
-	input.ac_controls.logon_notification.timestamp_displayed == true
-	input.ac_controls.logon_notification.location_displayed == true
-	input.ac_controls.logon_notification.unsuccessful_attempts_displayed == true
-}
+# AC-9 base: date and time of the last logon. AC-9(1) unsuccessful logons; AC-9(4) additional information (location).
+previous_logon_notification if input.ac_controls.logon_notification.timestamp_displayed == true
+
+previous_logon_unsuccessful_count if input.ac_controls.logon_notification.unsuccessful_attempts_displayed == true
+
+previous_logon_additional_info if input.ac_controls.logon_notification.location_displayed == true
 
 # AC-10: Concurrent Session Control
 concurrent_session_control if {
 	input.ac_controls.session_control.limits_configured == true
 	input.ac_controls.session_control.per_account_limits == true
-	input.ac_controls.session_control.per_device_limits == true
 }
 
 # AC-11: Device Lock (Rev 5 title; "Session Lock" was the Rev 4 title) — lock after an organization-defined
@@ -175,11 +183,10 @@ session_lock if {
 pattern_hiding_display if _ac11.pattern_hiding == true
 
 # AC-12: Session Termination
-session_termination if {
-	input.ac_controls.session_termination.automatic_termination == true
-	input.ac_controls.session_termination.user_initiated == true
-	input.ac_controls.session_termination.administrative_termination == true
-}
+# AC-12 base: automatic termination after defined conditions. User-initiated logout is AC-12(1).
+session_termination if input.ac_controls.session_termination.automatic_termination == true
+
+user_initiated_logout if input.ac_controls.session_termination.user_initiated == true
 
 # AC-14: Permitted Actions Without Identification or Authentication — the organisation identifies the
 # permitted user actions (ODP) and documents the rationale in the security plan. The approved list is
@@ -218,18 +225,19 @@ security_attributes if {
 }
 
 # AC-17: Remote Access
-remote_access_control if {
-	input.ac_controls.remote_access.authorized_only == true
-	input.ac_controls.remote_access.encrypted_connections == true
-	input.ac_controls.remote_access.monitored_controlled == true
-}
+# AC-17 base: each type of remote access authorized. Monitoring is AC-17(1), encryption AC-17(2).
+remote_access_control if input.ac_controls.remote_access.authorized_only == true
+
+remote_access_monitoring if input.ac_controls.remote_access.monitored_controlled == true
+
+remote_access_encryption if input.ac_controls.remote_access.encrypted_connections == true
 
 # AC-18: Wireless Access
-wireless_access_control if {
-	input.ac_controls.wireless_access.authorized_only == true
-	input.ac_controls.wireless_access.encrypted_authentication == true
-	input.ac_controls.wireless_access.monitored_usage == true
-}
+# AC-18 base: each type of wireless access authorized. Authentication and encryption is AC-18(1).
+# (Rev 5 AC-18 has no monitoring requirement; monitored_usage is not read.)
+wireless_access_control if input.ac_controls.wireless_access.authorized_only == true
+
+wireless_auth_encryption if input.ac_controls.wireless_access.encrypted_authentication == true
 
 # AC-19: Access Control for Mobile Devices
 mobile_device_access_control if {
@@ -249,7 +257,6 @@ external_systems_control if {
 information_sharing_control if {
 	input.ac_controls.information_sharing.user_discretion_limited == true
 	input.ac_controls.information_sharing.automated_guidance == true
-	input.ac_controls.information_sharing.security_attributes_preserved == true
 }
 
 # AC-22: Publicly Accessible Content
@@ -306,6 +313,16 @@ nist_sp800_53_ac_compliant if {
 	data_mining_protection
 	access_control_decisions
 	reference_monitor
+	automated_account_management
+	flow_object_attributes
+	authorize_security_functions
+	non_privileged_access_for_nonsecurity
+	previous_logon_unsuccessful_count
+	previous_logon_additional_info
+	user_initiated_logout
+	remote_access_monitoring
+	remote_access_encryption
+	wireless_auth_encryption
 }
 
 # Detailed NIST SP 800-53 Access Control compliance report
@@ -334,6 +351,16 @@ nist_sp800_53_ac_compliance := {
 	"data_mining_protection": data_mining_protection,
 	"access_control_decisions": access_control_decisions,
 	"reference_monitor": reference_monitor,
+	"automated_account_management": automated_account_management,
+	"flow_object_attributes": flow_object_attributes,
+	"authorize_security_functions": authorize_security_functions,
+	"non_privileged_access_for_nonsecurity": non_privileged_access_for_nonsecurity,
+	"previous_logon_unsuccessful_count": previous_logon_unsuccessful_count,
+	"previous_logon_additional_info": previous_logon_additional_info,
+	"user_initiated_logout": user_initiated_logout,
+	"remote_access_monitoring": remote_access_monitoring,
+	"remote_access_encryption": remote_access_encryption,
+	"wireless_auth_encryption": wireless_auth_encryption,
 	"overall_compliant": nist_sp800_53_ac_compliant,
 }
 
@@ -349,7 +376,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not account_management
-	msg := "NIST AC-2: Account management lacks automated tooling, approval, reviews, or timely removal"
+	msg := "NIST AC-2: Account management lacks approval, regular review, or timely removal"
 }
 
 _ac3_any_collected if {
@@ -371,17 +398,17 @@ violation contains msg if {
 
 violation contains msg if {
 	not information_flow_enforcement
-	msg := "NIST AC-4: Information flow enforcement lacks security labels or automated flow control"
+	msg := "NIST AC-4: Information flow not enforced according to approved flow control policies"
 }
 
 violation contains msg if {
 	not separation_of_duties
-	msg := "NIST AC-5: Separation of duties not implemented for critical functions"
+	msg := "NIST AC-5: Duties not identified and documented or access authorizations not defined to support separation of duties"
 }
 
 violation contains msg if {
 	not least_privilege
-	msg := "NIST AC-6: Least privilege not enforced for privileged or non-privileged access"
+	msg := "NIST AC-6: Least privilege not employed (input.ac_controls.least_privilege.minimum_access_granted)"
 }
 
 violation contains msg if {
@@ -405,12 +432,12 @@ violation contains msg if {
 
 violation contains msg if {
 	not previous_logon_notification
-	msg := "NIST AC-9: Previous logon notification not displayed to users"
+	msg := "NIST AC-9: Date and time of the last logon not displayed to the user upon successful logon"
 }
 
 violation contains msg if {
 	not concurrent_session_control
-	msg := "NIST AC-10: Concurrent session limits not configured"
+	msg := "NIST AC-10: Concurrent sessions not limited per account or account type"
 }
 
 violation contains msg if {
@@ -434,7 +461,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not session_termination
-	msg := "NIST AC-12: Session termination (automatic/user-initiated/admin) not supported"
+	msg := "NIST AC-12: User sessions not automatically terminated after the defined conditions"
 }
 
 violation contains msg if {
@@ -453,12 +480,12 @@ violation contains msg if {
 
 violation contains msg if {
 	not remote_access_control
-	msg := "NIST AC-17: Remote access not authorized/encrypted/monitored"
+	msg := "NIST AC-17: Remote access types not authorized before connections are allowed"
 }
 
 violation contains msg if {
 	not wireless_access_control
-	msg := "NIST AC-18: Wireless access not authorized/encrypted/monitored"
+	msg := "NIST AC-18: Wireless access types not authorized before connections are allowed"
 }
 
 violation contains msg if {
@@ -483,7 +510,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not information_sharing_control
-	msg := "NIST AC-21: Information sharing lacks discretion limits, automated guidance, or preserved security attributes"
+	msg := "NIST AC-21: Information sharing lacks partner-authorization checks or automated decision support"
 }
 
 violation contains msg if {
@@ -501,14 +528,65 @@ violation contains msg if {
 	msg := "NIST AC-25: Reference monitor not tamper-proof, always-invoked, and small enough to verify"
 }
 
+violation contains msg if {
+	not automated_account_management
+	msg := "NIST AC-2(1): Automated system account management not supported (input.ac_controls.account_management.automated_tools)"
+}
+
+violation contains msg if {
+	not flow_object_attributes
+	msg := "NIST AC-4(1): Security and privacy attributes not used for flow control decisions (input.ac_controls.information_flow.security_labels)"
+}
+
+violation contains msg if {
+	not authorize_security_functions
+	msg := "NIST AC-6(1): Access to security functions not explicitly authorized (input.ac_controls.least_privilege.privileged_functions_authorized)"
+}
+
+violation contains msg if {
+	not non_privileged_access_for_nonsecurity
+	msg := "NIST AC-6(2): Privileged users not required to use non-privileged accounts for nonsecurity functions (input.ac_controls.least_privilege.non_privileged_access_default)"
+}
+
+violation contains msg if {
+	not previous_logon_unsuccessful_count
+	msg := "NIST AC-9(1): Number of unsuccessful logon attempts not shown upon successful logon (input.ac_controls.logon_notification.unsuccessful_attempts_displayed)"
+}
+
+violation contains msg if {
+	not previous_logon_additional_info
+	msg := "NIST AC-9(4): Additional logon information (location) not shown upon successful logon (input.ac_controls.logon_notification.location_displayed)"
+}
+
+violation contains msg if {
+	not user_initiated_logout
+	msg := "NIST AC-12(1): No user-initiated logout capability (input.ac_controls.session_termination.user_initiated)"
+}
+
+violation contains msg if {
+	not remote_access_monitoring
+	msg := "NIST AC-17(1): Remote access methods not monitored and controlled by automated mechanisms (input.ac_controls.remote_access.monitored_controlled)"
+}
+
+violation contains msg if {
+	not remote_access_encryption
+	msg := "NIST AC-17(2): Remote access sessions not cryptographically protected (input.ac_controls.remote_access.encrypted_connections)"
+}
+
+violation contains msg if {
+	not wireless_auth_encryption
+	msg := "NIST AC-18(1): Wireless access not protected by authentication and encryption (input.ac_controls.wireless_access.encrypted_authentication)"
+}
+
 default compliant := false
 
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"AC-1", "AC-2", "AC-3", "AC-4", "AC-5", "AC-6", "AC-7", "AC-8", "AC-9", "AC-10", "AC-11", "AC-11(1)",
-	"AC-12", "AC-14", "AC-16", "AC-17", "AC-18", "AC-19", "AC-20", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
+	"AC-1", "AC-2", "AC-2(1)", "AC-3", "AC-4", "AC-4(1)", "AC-5", "AC-6", "AC-6(1)", "AC-6(2)", "AC-7", "AC-8",
+	"AC-9", "AC-9(1)", "AC-9(4)", "AC-10", "AC-11", "AC-11(1)", "AC-12", "AC-12(1)", "AC-14", "AC-16", "AC-17",
+	"AC-17(1)", "AC-17(2)", "AC-18", "AC-18(1)", "AC-19", "AC-20", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
 }
 
 compliance_report := {
