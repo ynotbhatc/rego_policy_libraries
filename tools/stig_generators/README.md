@@ -60,6 +60,19 @@ content — tooling that regenerates it from DISA's own XCCDF data.
 - `gen_crosswalk.py <U_CCI_List.xml> <key> …` — stig_id → CCI → 800-53 Rev 5
   join for the given catalogs, merged into `crosswalk/stig_800_53/data.json`.
 
+## gen_rhel9.py (added 2026-11-18)
+
+- `gen_rhel9.py` — the RHEL 9 section modules and `tests/test_<section>_rules.rego`, from the reviewed logic
+  table in `rhel9_rules.py` (each rule written against its full V2R10 check text: evidence paths, expected
+  values, the check's Not Applicable clause, attestations for "ask the SA" clauses, a green fixture and fail
+  mutations). Fail-closed: an absent evidence path makes the finding Open with "evidence missing — <path> not
+  collected". Catalog id hard-gate as in the other generators. Each section's METADATA header (including the
+  `make coverage` block) and the aggregation tail are carried over from the file; output is formatted with
+  `opa fmt`, so `opa` must be on PATH.
+  `stamp_catalog.py rhel_9` is refused from now on (its MAP keys on the pre-stamp ids).
+- The derived modules (`gen_oracle_linux.py`: oracle_linux_9, oracle_linux_8, rhel_10) copy the RHEL 9 blocks;
+  they pick up the reviewed logic, and its input contract, the next time they are regenerated.
+
 ## Lessons encoded
 
 - Platforms leave the library (Win 10, Ubuntu 20.04) — absence means SUNSET.md, never silence.
