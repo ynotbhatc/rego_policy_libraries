@@ -13,7 +13,7 @@
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.auditd
 
 # CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0, Section 6.2: System Auditing (auditd).
@@ -493,9 +493,7 @@ default e_6_2_3_1 := false
 
 e_6_2_3_1 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_1 := false
@@ -518,9 +516,7 @@ default e_6_2_3_2 := false
 
 e_6_2_3_2 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_2 := false
@@ -542,9 +538,7 @@ default e_6_2_3_3 := false
 
 e_6_2_3_3 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 	text_collected(input.sudo.sudoers_content)
 }
 
@@ -568,9 +562,7 @@ default e_6_2_3_4 := false
 
 e_6_2_3_4 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_4 := false
@@ -593,9 +585,7 @@ default e_6_2_3_5 := false
 
 e_6_2_3_5 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_5 := false
@@ -617,9 +607,7 @@ default e_6_2_3_6 := false
 
 e_6_2_3_6 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_6 := false
@@ -642,9 +630,7 @@ default e_6_2_3_7 := false
 
 e_6_2_3_7 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_7 := false
@@ -667,9 +653,7 @@ default e_6_2_3_8 := false
 
 e_6_2_3_8 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_8 := false
@@ -692,9 +676,7 @@ default e_6_2_3_9 := false
 
 e_6_2_3_9 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_9 := false
@@ -716,9 +698,7 @@ default e_6_2_3_10 := false
 
 e_6_2_3_10 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 	is_array(input.auditd.privileged_commands)
 	count(input.auditd.privileged_commands) > 0
 }
@@ -742,9 +722,7 @@ default e_6_2_3_11 := false
 
 e_6_2_3_11 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_11 := false
@@ -767,9 +745,7 @@ default e_6_2_3_12 := false
 
 e_6_2_3_12 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_12 := false
@@ -791,9 +767,7 @@ default e_6_2_3_13 := false
 
 e_6_2_3_13 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_13 := false
@@ -815,9 +789,7 @@ default e_6_2_3_14 := false
 
 e_6_2_3_14 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_14 := false
@@ -840,9 +812,7 @@ default e_6_2_3_15 := false
 
 e_6_2_3_15 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_15 := false
@@ -864,9 +834,7 @@ default e_6_2_3_16 := false
 
 e_6_2_3_16 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_16 := false
@@ -888,9 +856,7 @@ default e_6_2_3_17 := false
 
 e_6_2_3_17 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_17 := false
@@ -913,9 +879,7 @@ default e_6_2_3_18 := false
 
 e_6_2_3_18 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_18 := false
@@ -937,9 +901,7 @@ default e_6_2_3_19 := false
 
 e_6_2_3_19 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_19 := false
@@ -961,9 +923,7 @@ default e_6_2_3_20 := false
 
 e_6_2_3_20 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_20 := false
@@ -985,9 +945,7 @@ default e_6_2_3_21 := false
 
 e_6_2_3_21 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_21 := false
@@ -1009,9 +967,7 @@ default e_6_2_3_22 := false
 
 e_6_2_3_22 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_22 := false
@@ -1035,9 +991,7 @@ default e_6_2_3_23 := false
 
 e_6_2_3_23 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_23 := false
@@ -1060,9 +1014,7 @@ default e_6_2_3_24 := false
 
 e_6_2_3_24 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_24 := false
@@ -1084,9 +1036,7 @@ default e_6_2_3_25 := false
 
 e_6_2_3_25 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_25 := false
@@ -1108,9 +1058,7 @@ default e_6_2_3_26 := false
 
 e_6_2_3_26 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_26 := false
@@ -1134,9 +1082,7 @@ default e_6_2_3_27 := false
 
 e_6_2_3_27 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_27 := false
@@ -1158,9 +1104,7 @@ default e_6_2_3_28 := false
 
 e_6_2_3_28 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_28 := false
@@ -1182,9 +1126,7 @@ default e_6_2_3_29 := false
 
 e_6_2_3_29 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_29 := false
@@ -1206,9 +1148,7 @@ default e_6_2_3_30 := false
 
 e_6_2_3_30 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_30 := false
@@ -1230,9 +1170,7 @@ default e_6_2_3_31 := false
 
 e_6_2_3_31 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_31 := false
@@ -1254,9 +1192,7 @@ default e_6_2_3_32 := false
 
 e_6_2_3_32 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_32 := false
@@ -1278,9 +1214,7 @@ default e_6_2_3_33 := false
 
 e_6_2_3_33 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_2_3_33 := false
@@ -1302,7 +1236,6 @@ default e_6_2_3_34 := false
 
 e_6_2_3_34 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 }
 
 default p_6_2_3_34 := false
@@ -1325,7 +1258,6 @@ default e_6_2_3_35 := false
 
 e_6_2_3_35 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 }
 
 default p_6_2_3_35 := false
@@ -1584,4 +1516,390 @@ violations contains "6.2.4.10: evidence missing — auditd.tools_permissions[].s
 violations contains "6.2.4.10: not met — audit tools group owner must be explicitly configured" if {
 	e_6_2_4_10
 	not p_6_2_4_10
+}
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_6_2_1_1 := "evidence_missing" if {
+	not e_6_2_1_1
+} else := "pass" if {
+	p_6_2_1_1
+} else := "fail"
+
+s_6_2_1_2 := "evidence_missing" if {
+	not e_6_2_1_2
+} else := "pass" if {
+	p_6_2_1_2
+} else := "fail"
+
+s_6_2_1_3 := "evidence_missing" if {
+	not e_6_2_1_3
+} else := "pass" if {
+	p_6_2_1_3
+} else := "fail"
+
+s_6_2_1_4 := "evidence_missing" if {
+	not e_6_2_1_4
+} else := "pass" if {
+	p_6_2_1_4
+} else := "fail"
+
+s_6_2_2_1 := "evidence_missing" if {
+	not e_6_2_2_1
+} else := "pass" if {
+	p_6_2_2_1
+} else := "fail"
+
+s_6_2_2_2 := "evidence_missing" if {
+	not e_6_2_2_2
+} else := "pass" if {
+	p_6_2_2_2
+} else := "fail"
+
+s_6_2_2_3 := "evidence_missing" if {
+	not e_6_2_2_3
+} else := "pass" if {
+	p_6_2_2_3
+} else := "fail"
+
+s_6_2_2_4 := "evidence_missing" if {
+	not e_6_2_2_4
+} else := "pass" if {
+	p_6_2_2_4
+} else := "fail"
+
+s_6_2_3_1 := "evidence_missing" if {
+	not e_6_2_3_1
+} else := "pass" if {
+	p_6_2_3_1
+} else := "fail"
+
+s_6_2_3_2 := "evidence_missing" if {
+	not e_6_2_3_2
+} else := "pass" if {
+	p_6_2_3_2
+} else := "fail"
+
+s_6_2_3_3 := "evidence_missing" if {
+	not e_6_2_3_3
+} else := "pass" if {
+	p_6_2_3_3
+} else := "fail"
+
+s_6_2_3_4 := "evidence_missing" if {
+	not e_6_2_3_4
+} else := "pass" if {
+	p_6_2_3_4
+} else := "fail"
+
+s_6_2_3_5 := "evidence_missing" if {
+	not e_6_2_3_5
+} else := "pass" if {
+	p_6_2_3_5
+} else := "fail"
+
+s_6_2_3_6 := "evidence_missing" if {
+	not e_6_2_3_6
+} else := "pass" if {
+	p_6_2_3_6
+} else := "fail"
+
+s_6_2_3_7 := "evidence_missing" if {
+	not e_6_2_3_7
+} else := "pass" if {
+	p_6_2_3_7
+} else := "fail"
+
+s_6_2_3_8 := "evidence_missing" if {
+	not e_6_2_3_8
+} else := "pass" if {
+	p_6_2_3_8
+} else := "fail"
+
+s_6_2_3_9 := "evidence_missing" if {
+	not e_6_2_3_9
+} else := "pass" if {
+	p_6_2_3_9
+} else := "fail"
+
+s_6_2_3_10 := "evidence_missing" if {
+	not e_6_2_3_10
+} else := "pass" if {
+	p_6_2_3_10
+} else := "fail"
+
+s_6_2_3_11 := "evidence_missing" if {
+	not e_6_2_3_11
+} else := "pass" if {
+	p_6_2_3_11
+} else := "fail"
+
+s_6_2_3_12 := "evidence_missing" if {
+	not e_6_2_3_12
+} else := "pass" if {
+	p_6_2_3_12
+} else := "fail"
+
+s_6_2_3_13 := "evidence_missing" if {
+	not e_6_2_3_13
+} else := "pass" if {
+	p_6_2_3_13
+} else := "fail"
+
+s_6_2_3_14 := "evidence_missing" if {
+	not e_6_2_3_14
+} else := "pass" if {
+	p_6_2_3_14
+} else := "fail"
+
+s_6_2_3_15 := "evidence_missing" if {
+	not e_6_2_3_15
+} else := "pass" if {
+	p_6_2_3_15
+} else := "fail"
+
+s_6_2_3_16 := "evidence_missing" if {
+	not e_6_2_3_16
+} else := "pass" if {
+	p_6_2_3_16
+} else := "fail"
+
+s_6_2_3_17 := "evidence_missing" if {
+	not e_6_2_3_17
+} else := "pass" if {
+	p_6_2_3_17
+} else := "fail"
+
+s_6_2_3_18 := "evidence_missing" if {
+	not e_6_2_3_18
+} else := "pass" if {
+	p_6_2_3_18
+} else := "fail"
+
+s_6_2_3_19 := "evidence_missing" if {
+	not e_6_2_3_19
+} else := "pass" if {
+	p_6_2_3_19
+} else := "fail"
+
+s_6_2_3_20 := "evidence_missing" if {
+	not e_6_2_3_20
+} else := "pass" if {
+	p_6_2_3_20
+} else := "fail"
+
+s_6_2_3_21 := "evidence_missing" if {
+	not e_6_2_3_21
+} else := "pass" if {
+	p_6_2_3_21
+} else := "fail"
+
+s_6_2_3_22 := "evidence_missing" if {
+	not e_6_2_3_22
+} else := "pass" if {
+	p_6_2_3_22
+} else := "fail"
+
+s_6_2_3_23 := "evidence_missing" if {
+	not e_6_2_3_23
+} else := "pass" if {
+	p_6_2_3_23
+} else := "fail"
+
+s_6_2_3_24 := "evidence_missing" if {
+	not e_6_2_3_24
+} else := "pass" if {
+	p_6_2_3_24
+} else := "fail"
+
+s_6_2_3_25 := "evidence_missing" if {
+	not e_6_2_3_25
+} else := "pass" if {
+	p_6_2_3_25
+} else := "fail"
+
+s_6_2_3_26 := "evidence_missing" if {
+	not e_6_2_3_26
+} else := "pass" if {
+	p_6_2_3_26
+} else := "fail"
+
+s_6_2_3_27 := "evidence_missing" if {
+	not e_6_2_3_27
+} else := "pass" if {
+	p_6_2_3_27
+} else := "fail"
+
+s_6_2_3_28 := "evidence_missing" if {
+	not e_6_2_3_28
+} else := "pass" if {
+	p_6_2_3_28
+} else := "fail"
+
+s_6_2_3_29 := "evidence_missing" if {
+	not e_6_2_3_29
+} else := "pass" if {
+	p_6_2_3_29
+} else := "fail"
+
+s_6_2_3_30 := "evidence_missing" if {
+	not e_6_2_3_30
+} else := "pass" if {
+	p_6_2_3_30
+} else := "fail"
+
+s_6_2_3_31 := "evidence_missing" if {
+	not e_6_2_3_31
+} else := "pass" if {
+	p_6_2_3_31
+} else := "fail"
+
+s_6_2_3_32 := "evidence_missing" if {
+	not e_6_2_3_32
+} else := "pass" if {
+	p_6_2_3_32
+} else := "fail"
+
+s_6_2_3_33 := "evidence_missing" if {
+	not e_6_2_3_33
+} else := "pass" if {
+	p_6_2_3_33
+} else := "fail"
+
+s_6_2_3_34 := "evidence_missing" if {
+	not e_6_2_3_34
+} else := "pass" if {
+	p_6_2_3_34
+} else := "fail"
+
+s_6_2_3_35 := "evidence_missing" if {
+	not e_6_2_3_35
+} else := "pass" if {
+	p_6_2_3_35
+} else := "fail"
+
+s_6_2_3_36 := "evidence_missing" if {
+	not e_6_2_3_36
+} else := "pass" if {
+	p_6_2_3_36
+} else := "fail"
+
+s_6_2_4_1 := "evidence_missing" if {
+	not e_6_2_4_1
+} else := "pass" if {
+	p_6_2_4_1
+} else := "fail"
+
+s_6_2_4_2 := "evidence_missing" if {
+	not e_6_2_4_2
+} else := "pass" if {
+	p_6_2_4_2
+} else := "fail"
+
+s_6_2_4_3 := "evidence_missing" if {
+	not e_6_2_4_3
+} else := "pass" if {
+	p_6_2_4_3
+} else := "fail"
+
+s_6_2_4_4 := "evidence_missing" if {
+	not e_6_2_4_4
+} else := "pass" if {
+	p_6_2_4_4
+} else := "fail"
+
+s_6_2_4_5 := "evidence_missing" if {
+	not e_6_2_4_5
+} else := "pass" if {
+	p_6_2_4_5
+} else := "fail"
+
+s_6_2_4_6 := "evidence_missing" if {
+	not e_6_2_4_6
+} else := "pass" if {
+	p_6_2_4_6
+} else := "fail"
+
+s_6_2_4_7 := "evidence_missing" if {
+	not e_6_2_4_7
+} else := "pass" if {
+	p_6_2_4_7
+} else := "fail"
+
+s_6_2_4_8 := "evidence_missing" if {
+	not e_6_2_4_8
+} else := "pass" if {
+	p_6_2_4_8
+} else := "fail"
+
+s_6_2_4_9 := "evidence_missing" if {
+	not e_6_2_4_9
+} else := "pass" if {
+	p_6_2_4_9
+} else := "fail"
+
+s_6_2_4_10 := "evidence_missing" if {
+	not e_6_2_4_10
+} else := "pass" if {
+	p_6_2_4_10
+} else := "fail"
+
+control_status := {
+	"6.2.1.1": s_6_2_1_1,
+	"6.2.1.2": s_6_2_1_2,
+	"6.2.1.3": s_6_2_1_3,
+	"6.2.1.4": s_6_2_1_4,
+	"6.2.2.1": s_6_2_2_1,
+	"6.2.2.2": s_6_2_2_2,
+	"6.2.2.3": s_6_2_2_3,
+	"6.2.2.4": s_6_2_2_4,
+	"6.2.3.1": s_6_2_3_1,
+	"6.2.3.2": s_6_2_3_2,
+	"6.2.3.3": s_6_2_3_3,
+	"6.2.3.4": s_6_2_3_4,
+	"6.2.3.5": s_6_2_3_5,
+	"6.2.3.6": s_6_2_3_6,
+	"6.2.3.7": s_6_2_3_7,
+	"6.2.3.8": s_6_2_3_8,
+	"6.2.3.9": s_6_2_3_9,
+	"6.2.3.10": s_6_2_3_10,
+	"6.2.3.11": s_6_2_3_11,
+	"6.2.3.12": s_6_2_3_12,
+	"6.2.3.13": s_6_2_3_13,
+	"6.2.3.14": s_6_2_3_14,
+	"6.2.3.15": s_6_2_3_15,
+	"6.2.3.16": s_6_2_3_16,
+	"6.2.3.17": s_6_2_3_17,
+	"6.2.3.18": s_6_2_3_18,
+	"6.2.3.19": s_6_2_3_19,
+	"6.2.3.20": s_6_2_3_20,
+	"6.2.3.21": s_6_2_3_21,
+	"6.2.3.22": s_6_2_3_22,
+	"6.2.3.23": s_6_2_3_23,
+	"6.2.3.24": s_6_2_3_24,
+	"6.2.3.25": s_6_2_3_25,
+	"6.2.3.26": s_6_2_3_26,
+	"6.2.3.27": s_6_2_3_27,
+	"6.2.3.28": s_6_2_3_28,
+	"6.2.3.29": s_6_2_3_29,
+	"6.2.3.30": s_6_2_3_30,
+	"6.2.3.31": s_6_2_3_31,
+	"6.2.3.32": s_6_2_3_32,
+	"6.2.3.33": s_6_2_3_33,
+	"6.2.3.34": s_6_2_3_34,
+	"6.2.3.35": s_6_2_3_35,
+	"6.2.3.36": s_6_2_3_36,
+	"6.2.4.1": s_6_2_4_1,
+	"6.2.4.2": s_6_2_4_2,
+	"6.2.4.3": s_6_2_4_3,
+	"6.2.4.4": s_6_2_4_4,
+	"6.2.4.5": s_6_2_4_5,
+	"6.2.4.6": s_6_2_4_6,
+	"6.2.4.7": s_6_2_4_7,
+	"6.2.4.8": s_6_2_4_8,
+	"6.2.4.9": s_6_2_4_9,
+	"6.2.4.10": s_6_2_4_10,
 }

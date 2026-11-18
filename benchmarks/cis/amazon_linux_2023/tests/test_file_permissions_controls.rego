@@ -257,3 +257,23 @@ test_file_permissions_violations_carry_section_ids if {
 	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {}
 	every v in vs { split(v, ":")[0] in ["6.1.1", "6.1.2", "6.1.3", "6.1.4", "6.1.5", "6.1.6", "6.1.7", "6.1.8", "6.1.9", "6.1.10", "6.1.11", "6.1.12", "6.1.13"] }
 }
+
+# 6.1.11 / 6.1.12: files found fail whether or not the sweep finished; only nothing found and an unfinished sweep is
+# missing evidence
+test_6_1_11_more_than_100_files_not_truncated_fails if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"world_writable": {"files": ["/srv/ww/0", "/srv/ww/1", "/srv/ww/2", "/srv/ww/3", "/srv/ww/4", "/srv/ww/5", "/srv/ww/6", "/srv/ww/7", "/srv/ww/8", "/srv/ww/9", "/srv/ww/10", "/srv/ww/11", "/srv/ww/12", "/srv/ww/13", "/srv/ww/14", "/srv/ww/15", "/srv/ww/16", "/srv/ww/17", "/srv/ww/18", "/srv/ww/19", "/srv/ww/20", "/srv/ww/21", "/srv/ww/22", "/srv/ww/23", "/srv/ww/24", "/srv/ww/25", "/srv/ww/26", "/srv/ww/27", "/srv/ww/28", "/srv/ww/29", "/srv/ww/30", "/srv/ww/31", "/srv/ww/32", "/srv/ww/33", "/srv/ww/34", "/srv/ww/35", "/srv/ww/36", "/srv/ww/37", "/srv/ww/38", "/srv/ww/39", "/srv/ww/40", "/srv/ww/41", "/srv/ww/42", "/srv/ww/43", "/srv/ww/44", "/srv/ww/45", "/srv/ww/46", "/srv/ww/47", "/srv/ww/48", "/srv/ww/49", "/srv/ww/50", "/srv/ww/51", "/srv/ww/52", "/srv/ww/53", "/srv/ww/54", "/srv/ww/55", "/srv/ww/56", "/srv/ww/57", "/srv/ww/58", "/srv/ww/59", "/srv/ww/60", "/srv/ww/61", "/srv/ww/62", "/srv/ww/63", "/srv/ww/64", "/srv/ww/65", "/srv/ww/66", "/srv/ww/67", "/srv/ww/68", "/srv/ww/69", "/srv/ww/70", "/srv/ww/71", "/srv/ww/72", "/srv/ww/73", "/srv/ww/74", "/srv/ww/75", "/srv/ww/76", "/srv/ww/77", "/srv/ww/78", "/srv/ww/79", "/srv/ww/80", "/srv/ww/81", "/srv/ww/82", "/srv/ww/83", "/srv/ww/84", "/srv/ww/85", "/srv/ww/86", "/srv/ww/87", "/srv/ww/88", "/srv/ww/89", "/srv/ww/90", "/srv/ww/91", "/srv/ww/92", "/srv/ww/93", "/srv/ww/94", "/srv/ww/95", "/srv/ww/96", "/srv/ww/97", "/srv/ww/98", "/srv/ww/99"], "count": 250, "truncated": false}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "6.1.11: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.11: evidence missing")]) == 0
+}
+
+test_6_1_11_nothing_found_in_an_unfinished_sweep_is_evidence_missing if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"world_writable": {"files": [], "count": 0, "truncated": true}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "6.1.11: evidence missing")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.11: not met")]) == 0
+}
+
+test_6_1_12_found_in_an_unfinished_sweep_fails if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"unowned_files": {"files": ["/srv/orphan"], "count": 1, "truncated": true}, "ungrouped_files": {"files": [], "count": 0}}
+	count([v | some v in vs; startswith(v, "6.1.12: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.12: evidence missing")]) == 0
+}

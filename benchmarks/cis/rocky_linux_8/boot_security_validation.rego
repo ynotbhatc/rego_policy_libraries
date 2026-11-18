@@ -611,3 +611,116 @@ violations contains "6.1.3: not met — cryptographic mechanisms must be used to
 	e_6_1_3
 	not p_6_1_3
 }
+
+# Per-recommendation status for the roll-up's control_results, read from the same predicates as the
+# violation rules: evidence_missing when not e_<id>, pass when p_<id>, fail otherwise (the evidence-missing
+# and not-met messages); a Manual recommendation is pass when attested, not_attested otherwise. Profile
+# scope is applied in the roll-up.
+
+s_1_4_1 := "evidence_missing" if {
+	not e_1_4_1
+} else := "pass" if {
+	p_1_4_1
+} else := "fail"
+
+s_1_4_2 := "evidence_missing" if {
+	not e_1_4_2
+} else := "pass" if {
+	p_1_4_2
+} else := "fail"
+
+s_1_5_1 := "evidence_missing" if {
+	not e_1_5_1
+} else := "pass" if {
+	p_1_5_1
+} else := "fail"
+
+s_1_5_2 := "evidence_missing" if {
+	not e_1_5_2
+} else := "pass" if {
+	p_1_5_2
+} else := "fail"
+
+s_1_5_3 := "evidence_missing" if {
+	not e_1_5_3
+} else := "pass" if {
+	p_1_5_3
+} else := "fail"
+
+s_1_5_4 := "evidence_missing" if {
+	not e_1_5_4
+} else := "pass" if {
+	p_1_5_4
+} else := "fail"
+
+s_1_5_5 := "evidence_missing" if {
+	not e_1_5_5
+} else := "pass" if {
+	p_1_5_5
+} else := "fail"
+
+s_1_5_6 := "evidence_missing" if {
+	not e_1_5_6
+} else := "pass" if {
+	p_1_5_6
+} else := "fail"
+
+s_1_5_7 := "evidence_missing" if {
+	not e_1_5_7
+} else := "pass" if {
+	p_1_5_7
+} else := "fail"
+
+s_1_5_8 := "evidence_missing" if {
+	not e_1_5_8
+} else := "pass" if {
+	p_1_5_8
+} else := "fail"
+
+s_1_5_9 := "evidence_missing" if {
+	not e_1_5_9
+} else := "pass" if {
+	p_1_5_9
+} else := "fail"
+
+s_1_5_10 := "evidence_missing" if {
+	not e_1_5_10
+} else := "pass" if {
+	p_1_5_10
+} else := "fail"
+
+s_6_1_1 := "evidence_missing" if {
+	not e_6_1_1
+} else := "pass" if {
+	p_6_1_1
+} else := "fail"
+
+s_6_1_2 := "evidence_missing" if {
+	not e_6_1_2
+} else := "pass" if {
+	p_6_1_2
+} else := "fail"
+
+s_6_1_3 := "evidence_missing" if {
+	not e_6_1_3
+} else := "pass" if {
+	p_6_1_3
+} else := "fail"
+
+control_status := {
+	"1.4.1": s_1_4_1,
+	"1.4.2": s_1_4_2,
+	"1.5.1": s_1_5_1,
+	"1.5.2": s_1_5_2,
+	"1.5.3": s_1_5_3,
+	"1.5.4": s_1_5_4,
+	"1.5.5": s_1_5_5,
+	"1.5.6": s_1_5_6,
+	"1.5.7": s_1_5_7,
+	"1.5.8": s_1_5_8,
+	"1.5.9": s_1_5_9,
+	"1.5.10": s_1_5_10,
+	"6.1.1": s_6_1_1,
+	"6.1.2": s_6_1_2,
+	"6.1.3": s_6_1_3,
+}

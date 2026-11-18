@@ -1219,3 +1219,33 @@ test_6_2_4_4_adm_passes if {
 	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"log_permissions": {"gr_name": "adm"}, "config": "log_group = adm"}}
 	count([v | some v in vs; startswith(v, "6.2.4.4: ")]) == 0
 }
+
+# a collected, empty rule list (auditctl -l printing "No rules", an empty rules.d) is a failure, not missing evidence
+test_6_2_3_1_collected_empty_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.1: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.1: evidence missing")]) == 0
+}
+
+test_6_2_3_21_collected_empty_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.21: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.21: evidence missing")]) == 0
+}
+
+test_6_2_3_34_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.34: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.34: evidence missing")]) == 0
+}
+
+test_6_2_3_35_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.35: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.2.3.35: evidence missing")]) == 0
+}
+
+test_6_2_3_1_rules_not_a_list_is_evidence_missing if {
+	vs := data.cis_rhel9.auditd.violations with input as {"auditd": {"rules": "No rules", "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.2.3.1: evidence missing")]) > 0
+}

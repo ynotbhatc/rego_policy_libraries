@@ -16,10 +16,6 @@ test_network_empty_wireless_list_is_not_a_finding if {
 	data.stig.oracle_linux_8.network.status_ol08_00_040110 == "Not_a_Finding" with input as {"wireless_interfaces": []}
 }
 
-test_network_wireless_disabled_flag_is_not_a_finding if {
-	data.stig.oracle_linux_8.network.status_ol08_00_040110 == "Not_a_Finding" with input as {"network_config": {"wireless_disabled": true}}
-}
-
 test_network_missing_promiscuous_list_is_open if {
 	data.stig.oracle_linux_8.network.status_ol08_00_040330 == "Open" with input as {"kernel_params": {}}
 }

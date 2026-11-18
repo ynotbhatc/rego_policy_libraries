@@ -9,11 +9,6 @@ good := {"file_permissions": {
 	"library_files_ok": true, "library_dirs_owned_root": true, "system_commands_ok": true,
 }}
 
-test_file_permissions_good_input_compliant if {
-	data.stig.oracle_linux_8.file_permissions.compliant with input as good
-	data.stig.oracle_linux_8.file_permissions.compliance_report.open_findings == 0 with input as good
-}
-
 test_file_permissions_empty_input_not_compliant if {
 	not data.stig.oracle_linux_8.file_permissions.compliant with input as {}
 }

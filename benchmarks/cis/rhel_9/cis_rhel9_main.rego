@@ -105,6 +105,14 @@ default _percentage := 0
 
 _percentage := round((_passed * 100000) / _total_controls) / 1000 if _total_controls > 0
 
+default _control_results := []
+
+_control_results := bench.control_results
+
+default _control_result_counts := {}
+
+_control_result_counts := bench.control_result_counts
+
 compliance_report := {
 	"framework": "cis_rhel9",
 	"benchmark": "CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0",
@@ -123,4 +131,6 @@ compliance_report := {
 	"sections_not_assessed": _not_assessed,
 	"missing_inputs": _missing_inputs,
 	"assessment_coverage_percentage": _coverage,
+	"control_results": _control_results,
+	"control_result_counts": _control_result_counts,
 }

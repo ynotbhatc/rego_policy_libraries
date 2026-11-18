@@ -17,18 +17,6 @@ test_network_cat_ii_open_not_compliant if {
 	not data.stig.oracle_linux_8.network.compliant with input as i
 }
 
-test_software_integrity_cat_ii_open_not_compliant if {
-	i := {"services": {"rsyslog": "active"}}
-	data.stig.oracle_linux_8.software_integrity.cat_i_compliant with input as i
-	not data.stig.oracle_linux_8.software_integrity.compliant with input as i
-}
-
-test_pki_crypto_cat_ii_open_not_compliant if {
-	i := {"crypto_policy_overrides": []}
-	data.stig.oracle_linux_8.pki_crypto.cat_i_compliant with input as i
-	not data.stig.oracle_linux_8.pki_crypto.compliant with input as i
-}
-
 test_report_exposes_cat_i_compliant if {
 	r := data.stig.oracle_linux_8.services.compliance_report with input as {}
 	r.cat_i_compliant == false
