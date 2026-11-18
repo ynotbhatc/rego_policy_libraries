@@ -54,7 +54,7 @@
 | `frameworks/critical_infrastructure/nerc_cip` | 17 | 407 | — (0) | 16/17 |
 | `benchmarks/cis/windows_server_2019_modular` | 12 | 401 | 400 (1) | 11/12 |
 | `frameworks/critical_infrastructure/c2m2` | 1 | 360 | 356 (1) | 1/1 |
-| `benchmarks/cis/saas` | 19 | 359 | — (0) | 18/19 |
+| `benchmarks/cis/saas` | 19 | 359 | — (0) | 19/19 |
 | `benchmarks/cis/vmware` | 5 | 357 | 268 (2) | 3/5 |
 | `frameworks/privacy/cms_mars_e` | 1 | 355 | 352 (1) | 1/1 |
 | `frameworks/privacy/hipaa` | 11 | 318 | 246 (5) | 11/11 |
