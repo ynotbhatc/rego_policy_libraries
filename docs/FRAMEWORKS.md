@@ -29,7 +29,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA / FedRAMP | `frameworks/federal/` | Full |
 | CMMC (32 CFR Part 170): Level 1 = the 15 FAR 52.204-21(b)(1) requirements (AC.L1-b.1.i … SI.L1-b.1.xv), Level 2 = the 110 NIST SP 800-171 Rev 2 requirements (AC.L2-3.1.1 …) | `frameworks/federal/cmmc/` | Levels 1 and 2 scored per practice (15 / 110); Level 3 (24 NIST SP 800-172 requirements) not evaluated |
-| ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 fact-decided) | `frameworks/management/iso27001/` | Full |
+| ISO 27001:2022 Annex A / ISO 27002:2022 (all 93 controls, 2022 numbering, titles and attributes only; 35 decided by sub-module checks, many of which read attested flags rather than observed values; 58 attested) | `frameworks/management/iso27001/` | Full |
 | SOC 2 Type II | `frameworks/management/soc2/` | All TSCs |
 | PCI-DSS v4.0 | `frameworks/financial/pci_dss/` | All 12 requirements |
 | SOX ITGC | `frameworks/financial/sox/` | Full |

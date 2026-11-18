@@ -1013,3 +1013,40 @@ test_semrev_public_services_weak_tls_label_fails if {
 	r := iso27001.compliance_report with input as inp
 	r.compliant == false
 }
+
+# Audit 2026-11-17 finding 8: post-quantum planning is not an A.8.24 condition.
+test_a824_passes_without_post_quantum_plan if {
+	inp := json.remove(_green, ["/cryptography/quantum_resistance"])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == true
+	r.annex_a["A.8.24"].fact_checks_failed == []
+	r.compliant == true
+}
+
+test_post_quantum_plan_is_advisory_only if {
+	inp := json.patch(_green, [{"op": "replace", "path": "/cryptography/quantum_resistance/migration_plan", "value": false}])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == true
+	d := data.iso27001.cryptography.compliance_details with input as inp
+	d.advisory.scoring == false
+	d.advisory.quantum_resistance_planned == false
+	"cryptography.quantum_resistance_planned" in r.unmapped_fact_rules
+}
+
+test_a824_algorithm_inventory_missing_is_not_satisfied if {
+	inp := json.remove(_green, ["/cryptography/algorithms_in_use"])
+	r := iso27001.compliance_report with input as inp
+	r.annex_a["A.8.24"].satisfied == false
+	r.annex_a["A.8.24"].fact_checks_failed == ["cryptography.algorithm_compliance"]
+}
+
+test_a824_checks_are_labelled_by_evidence_kind if {
+	r := iso27001.compliance_report with input as _green
+	r.annex_a["A.8.24"].fact_check_evidence == {
+		"cryptography.cryptographic_policy": "attestation",
+		"cryptography.key_management": "attestation",
+		"cryptography.data_encryption": "mixed",
+		"cryptography.digital_signatures": "attestation",
+		"cryptography.algorithm_compliance": "observed",
+	}
+}

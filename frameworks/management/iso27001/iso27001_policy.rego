@@ -66,7 +66,7 @@
 #     A.8.20  communications_security.network_controls (A.13.1.1), communications_security.network_management_secure
 #     A.8.21  communications_security.network_services_secure (A.13.1.2)
 #     A.8.22  communications_security.network_segregation (A.13.1.3)
-#     A.8.24  cryptography.cryptographic_policy (A.10.1.1), cryptography.key_management (A.10.1.2), cryptography.data_encryption, cryptography.digital_signatures, cryptography.algorithm_compliance
+#     A.8.24  cryptography.cryptographic_policy (A.10.1.1, attestation), cryptography.key_management (A.10.1.2, attestation), cryptography.data_encryption (mixed), cryptography.digital_signatures (attestation), cryptography.algorithm_compliance (observed)
 #     A.8.25  system_acquisition_maintenance.secure_development_policy (A.14.2.1)
 #     A.8.26  system_acquisition_maintenance.public_network_services_secure (A.14.1.2), system_acquisition_maintenance.transaction_protection (A.14.1.3)
 #     A.8.27  system_acquisition_maintenance.secure_engineering_principles (A.14.2.5)
@@ -76,6 +76,10 @@
 #     A.8.32  operations_security.change_management (A.12.1.2), system_acquisition_maintenance.change_control_procedures (A.14.2.2), system_acquisition_maintenance.os_change_review (A.14.2.3), system_acquisition_maintenance.software_package_control (A.14.2.4)
 #     A.8.33  system_acquisition_maintenance.data_protection_control (A.14.3.1)
 #     A.8.34  operations_security.audit_controls (A.12.7.1)
+#                 "Fact check" means decided by a sub-module rule, not that every value the rule reads
+#                 is observed on a system: many sub-module rules read true/false flags the assessed party
+#                 sets. The A.8.24 checks carry `evidence` (attestation / observed / mixed), reported per
+#                 control as fact_check_evidence; checks of the other controls are "unclassified" (not reviewed).
 #   attestation   58 controls have no fact check and are attested:
 #                 input.iso27001.annex_a["A.5.1"] == true. They are:
 #                A.5.1, A.5.2, A.5.3, A.5.4, A.5.5, A.5.6, A.5.7, A.5.9, A.5.10, A.5.11, A.5.12, A.5.13,
@@ -1154,12 +1158,16 @@ fact_checks := {
 	],
 	"A.8.21": [{"pkg": "communications_security", "rule": "network_services_secure", "iso2013": "A.13.1.2"}],
 	"A.8.22": [{"pkg": "communications_security", "rule": "network_segregation", "iso2013": "A.13.1.3"}],
+	# evidence: what the check reads — "attestation" (statements the assessed party makes
+	# about its own policy or process, as flags or declared values), "observed" (values
+	# collected from systems: algorithms in use) or "mixed" (both; data_encryption reads
+	# the TLS minimum version and SSH protocol version beside process flags).
 	"A.8.24": [
-		{"pkg": "cryptography", "rule": "cryptographic_policy", "iso2013": "A.10.1.1"},
-		{"pkg": "cryptography", "rule": "key_management", "iso2013": "A.10.1.2"},
-		{"pkg": "cryptography", "rule": "data_encryption", "iso2013": ""},
-		{"pkg": "cryptography", "rule": "digital_signatures", "iso2013": ""},
-		{"pkg": "cryptography", "rule": "algorithm_compliance", "iso2013": ""},
+		{"pkg": "cryptography", "rule": "cryptographic_policy", "iso2013": "A.10.1.1", "evidence": "attestation"},
+		{"pkg": "cryptography", "rule": "key_management", "iso2013": "A.10.1.2", "evidence": "attestation"},
+		{"pkg": "cryptography", "rule": "data_encryption", "iso2013": "", "evidence": "mixed"},
+		{"pkg": "cryptography", "rule": "digital_signatures", "iso2013": "", "evidence": "attestation"},
+		{"pkg": "cryptography", "rule": "algorithm_compliance", "iso2013": "", "evidence": "observed"},
 	],
 	"A.8.25": [{"pkg": "system_acquisition_maintenance", "rule": "secure_development_policy", "iso2013": "A.14.2.1"}],
 	"A.8.26": [
@@ -1190,6 +1198,7 @@ fact_checks := {
 unmapped_fact_rules := [
 	"communications_security.dns_security",
 	"cryptography.hsm_usage",
+	"cryptography.quantum_resistance_planned", # advisory: post-quantum planning is not an A.8.24 condition
 	"system_acquisition_maintenance.data_generation_control",
 	"system_acquisition_maintenance.cicd_security",
 	"system_acquisition_maintenance.sca_controls",
@@ -1319,6 +1328,7 @@ control_status[id] := s if {
 		"basis": _basis(id),
 		"attested": _attested_bool(id),
 		"fact_checks_failed": [concat(".", [c.pkg, c.rule]) | some c in object.get(_failed_facts, id, [])],
+		"fact_check_evidence": {concat(".", [c.pkg, c.rule]): object.get(c, "evidence", "unclassified") | some c in object.get(fact_checks, id, [])},
 		"satisfied": _satisfied_bool(id),
 	}
 }

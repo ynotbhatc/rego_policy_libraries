@@ -80,6 +80,9 @@ cryptographic_controls if {
 }
 
 # A.10.1.1 - Policy on the use of cryptographic controls (2022: A.8.24)
+# Evidence kind: attestation. Every value read is a statement the assessed party
+# makes about its own policy (flags and the list of approved algorithms); nothing
+# here is observed on a system. iso27001.fact_checks labels it so.
 cryptographic_policy if {
 	input.cryptography.policy.documented == true
 	input.cryptography.policy.approved == true
@@ -307,6 +310,11 @@ pki_implementation if {
 }
 
 # Cryptographic algorithm compliance (2022: A.8.24)
+# Post-quantum migration planning is not part of this decision: A.8.24 is about
+# rules for the effective use of cryptography, including key management, and
+# public descriptions of the control do not name post-quantum planning. It is
+# reported separately as a non-scoring advisory (quantum_resistance_planned,
+# listed in iso27001.unmapped_fact_rules).
 algorithm_compliance if {
 	# Only approved algorithms should be used
 	count(input.cryptography.algorithms_in_use) > 0
@@ -314,9 +322,6 @@ algorithm_compliance if {
 
 	# Weak algorithms should be disabled
 	weak_algorithms_disabled
-
-	# Quantum-resistant considerations
-	quantum_resistance_planned
 }
 
 # Weak algorithms disabled
@@ -336,7 +341,7 @@ _tls_version_acceptable(v) if {
 	regex.match(`^(tls)?v?[ ]?1\.[23]$`, lower(sprintf("%v", [v])))
 }
 
-# Quantum resistance planning
+# Quantum resistance planning — ADVISORY, decides no control (see algorithm_compliance)
 quantum_resistance_planned if {
 	input.cryptography.quantum_resistance.assessment_completed == true
 	input.cryptography.quantum_resistance.migration_plan == true
@@ -384,7 +389,10 @@ compliance_details := {
 	"algorithm_compliance": {
 		"approved_only": algorithm_compliance,
 		"weak_disabled": weak_algorithms_disabled,
-		"quantum_ready": quantum_resistance_planned,
+	},
+	"advisory": {
+		"scoring": false,
+		"quantum_resistance_planned": quantum_resistance_planned,
 	},
 	"hsm_usage": hsm_usage,
 	"overall_compliant": compliant,
