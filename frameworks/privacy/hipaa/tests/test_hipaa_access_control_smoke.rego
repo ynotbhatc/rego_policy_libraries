@@ -47,10 +47,13 @@ test_semrev_logoff_timeout_missing_fails if {
 	count(v) > 0
 }
 
-test_semrev_screen_lock_missing_fails if {
+test_semrev_screen_lock_missing_is_advisory_only if {
 	inp := object.union(object.remove(fx.full_input, ["session"]), {"session": object.remove(fx.full_input.session, ["screen_lock_enabled"])})
-	v := data.hipaa.access_control.violations with input as inp
-	count(v) > 0
+
+	# Audit 2026-11-17 follow-up: a library practice, not 45 CFR text - an advisory, never a violation.
+	a := data.hipaa.access_control.advisories with input as inp
+	count(a) > 0
+	count(data.hipaa.access_control.violations) == 0 with input as inp
 }
 
 # Audit 2026-11-17: 164.312(a)(2)(iv) contains no key-rotation period; missing rotation data is an advisory.

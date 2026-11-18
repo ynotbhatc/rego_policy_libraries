@@ -103,7 +103,7 @@ test_unencrypted_in_transit_with_documented_alternative_is_compliant if {
 	sr.compliant with input as _with(_unencrypted_in_transit, _decide("164.312(e)(2)(ii)", _alt))
 }
 
-_no_hashing := _with(_fx.full_input, {"integrity": {"checksum_or_hash_enabled": false}})
+_no_hashing := _with(_with(_fx.full_input, {"integrity": {"checksum_or_hash_enabled": false}}), {"phi_systems": [_with(_fx.full_input.phi_systems[0], {"integrity_checking_enabled": false})]})
 
 test_no_hashing_without_decision_fails_on_c2 if {
 	v := sr.violations with input as _no_hashing

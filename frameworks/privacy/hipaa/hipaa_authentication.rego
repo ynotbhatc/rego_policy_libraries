@@ -25,6 +25,11 @@ import rego.v1
 # Implement procedures to verify that a person or entity seeking access to
 # ePHI is the one claimed.
 #
+# The regulation requires authentication procedures and names no mechanism: MFA, password length, age,
+# history, lockout, session limits and certificate authentication are library choices reported in
+# `advisories` (not cited to 45 CFR, no effect on `compliant`). Evidence that ePHI access is authenticated is
+# input.authentication.ephi_access_requires_authentication == true, or MFA enabled for ePHI access.
+#
 # Input shape:
 #   input.authentication        - authentication configuration
 #   input.users[]               - user accounts
@@ -37,99 +42,108 @@ import rego.v1
 # Multi-Factor Authentication for ePHI systems
 # ---------------------------------------------------------------------------
 
-violation_mfa contains msg if {
+advisories contains msg if {
 	not input.mfa.enabled_for_phi_access
-	msg := "HIPAA 164.312(d): Multi-factor authentication is not enabled for ePHI access. MFA is required for all ePHI system access."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Multi-factor authentication is not enabled for ePHI access. MFA is required for all ePHI system access."
 }
 
-violation_mfa contains msg if {
+advisories contains msg if {
 	input.mfa.enabled_for_phi_access
 	not input.mfa.required_for_remote_access
-	msg := "HIPAA 164.312(d): MFA is not required for remote ePHI access. Remote access must always require MFA."
+	msg := "Advisory (library practice, not a 45 CFR requirement): MFA is not required for remote ePHI access. Remote access must always require MFA."
 }
 
-violation_mfa contains msg if {
+advisories contains msg if {
 	input.mfa.enabled_for_phi_access
 	not input.mfa.required_for_privileged_accounts
-	msg := "HIPAA 164.312(d): MFA is not required for privileged accounts. All privileged ePHI system accounts must use MFA."
+	msg := "Advisory (library practice, not a 45 CFR requirement): MFA is not required for privileged accounts. All privileged ePHI system accounts must use MFA."
 }
 
-violation_mfa contains msg if {
+advisories contains msg if {
 	input.mfa.methods_allowed
 	"sms" in input.mfa.methods_allowed
 	not input.mfa.stronger_method_also_available
-	msg := "HIPAA 164.312(d): SMS-only MFA is configured. SMS is susceptible to SIM swapping. Offer TOTP or hardware key as alternatives."
+	msg := "Advisory (library practice, not a 45 CFR requirement): SMS-only MFA is configured. SMS is susceptible to SIM swapping. Offer TOTP or hardware key as alternatives."
 }
 
 # ---------------------------------------------------------------------------
 # Password Policy
 # ---------------------------------------------------------------------------
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	input.password_policy.minimum_length < 12
 	msg := sprintf(
-		"HIPAA 164.312(d): Minimum password length is %v characters. HIPAA guidance recommends minimum 12 characters for ePHI systems.",
+		"Advisory (library practice, not a 45 CFR requirement): Minimum password length is %v characters. HIPAA guidance recommends minimum 12 characters for ePHI systems.",
 		[input.password_policy.minimum_length],
 	)
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not is_number(object.get(input, ["password_policy", "minimum_length"], null))
-	msg := "HIPAA 164.312(d): evidence missing — password_policy.minimum_length not collected. Password length requirement cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — password_policy.minimum_length not collected. Password length requirement cannot be verified."
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not is_number(object.get(input, ["password_policy", "max_age_days"], null))
-	msg := "HIPAA 164.312(d): evidence missing — password_policy.max_age_days not collected. Password maximum age requirement cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — password_policy.max_age_days not collected. Password maximum age requirement cannot be verified."
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not is_number(object.get(input, ["password_policy", "history_count"], null))
-	msg := "HIPAA 164.312(d): evidence missing — password_policy.history_count not collected. Password history requirement cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — password_policy.history_count not collected. Password history requirement cannot be verified."
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not is_number(object.get(input, ["password_policy", "lockout_threshold"], null))
-	msg := "HIPAA 164.312(d): evidence missing — password_policy.lockout_threshold not collected. Password lockout threshold requirement cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — password_policy.lockout_threshold not collected. Password lockout threshold requirement cannot be verified."
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not input.password_policy.complexity_required
-	msg := "HIPAA 164.312(d): Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Password complexity is not required. Passwords for ePHI access must meet complexity requirements."
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	input.password_policy.max_age_days > 90
 	msg := sprintf(
-		"HIPAA 164.312(d): Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days.",
+		"Advisory (library practice, not a 45 CFR requirement): Password maximum age is %v days. Passwords for ePHI access should be changed at least every 90 days.",
 		[input.password_policy.max_age_days],
 	)
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	input.password_policy.history_count < 12
 	msg := sprintf(
-		"HIPAA 164.312(d): Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse.",
+		"Advisory (library practice, not a 45 CFR requirement): Password history enforces only %v previous passwords. Enforce at least 12 to prevent password reuse.",
 		[input.password_policy.history_count],
 	)
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	input.password_policy.lockout_threshold > 5
 	msg := sprintf(
-		"HIPAA 164.312(d): Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems.",
+		"Advisory (library practice, not a 45 CFR requirement): Account lockout occurs after %v failed attempts. Maximum 5 failed attempts recommended for ePHI systems.",
 		[input.password_policy.lockout_threshold],
 	)
 }
 
-violation_password_policy contains msg if {
+advisories contains msg if {
 	not input.password_policy.lockout_enabled
-	msg := "HIPAA 164.312(d): Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Account lockout is not enabled. Accounts must lock after repeated failed authentication attempts."
 }
 
 # ---------------------------------------------------------------------------
 # Default and shared credentials
 # ---------------------------------------------------------------------------
+
+_authentication_evidenced if input.authentication.ephi_access_requires_authentication == true
+
+_authentication_evidenced if input.mfa.enabled_for_phi_access == true
+
+violation_procedure contains msg if {
+	not _authentication_evidenced
+	msg := "HIPAA 164.312(d): evidence missing — no procedure verifying that a person or entity seeking ePHI access is the one claimed (authentication.ephi_access_requires_authentication or mfa.enabled_for_phi_access not true)."
+}
 
 violation_credentials contains msg if {
 	some user in input.users
@@ -140,21 +154,21 @@ violation_credentials contains msg if {
 	)
 }
 
-violation_credentials contains msg if {
+advisories contains msg if {
 	some user in input.users
 	user.password_never_expires == true
 	user.phi_access == true
 	msg := sprintf(
-		"HIPAA 164.312(d): User '%v' has a non-expiring password and ePHI access. Password expiration must be enforced for all ePHI users.",
+		"Advisory (library practice, not a 45 CFR requirement): User '%v' has a non-expiring password and ePHI access. Password expiration must be enforced for all ePHI users.",
 		[user.username],
 	)
 }
 
-violation_credentials contains msg if {
+advisories contains msg if {
 	some acct in input.privileged_accounts
 	not acct.mfa_enrolled
 	msg := sprintf(
-		"HIPAA 164.312(d): Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA.",
+		"Advisory (library practice, not a 45 CFR requirement): Privileged account '%v' is not enrolled in MFA. All privileged accounts must use MFA.",
 		[acct.username],
 	)
 }
@@ -163,27 +177,27 @@ violation_credentials contains msg if {
 # Session authentication
 # ---------------------------------------------------------------------------
 
-violation_session contains msg if {
+advisories contains msg if {
 	not input.authentication.re_authentication_for_sensitive_ops
-	msg := "HIPAA 164.312(d): Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Re-authentication is not required for sensitive ePHI operations (delete, export). Require re-auth for high-risk actions."
 }
 
-violation_session contains msg if {
+advisories contains msg if {
 	input.authentication.concurrent_sessions_unlimited
-	msg := "HIPAA 164.312(d): Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Unlimited concurrent sessions are permitted. Limit concurrent sessions for ePHI access to detect credential sharing."
 }
 
 # ---------------------------------------------------------------------------
 # Certificate-based authentication (service accounts)
 # ---------------------------------------------------------------------------
 
-violation_service_accounts contains msg if {
+advisories contains msg if {
 	some svc in input.users
 	svc.is_service_account == true
 	svc.phi_access == true
 	not svc.certificate_based_auth
 	msg := sprintf(
-		"HIPAA 164.312(d): Service account '%v' with ePHI access uses password authentication. Service accounts should use certificate-based authentication.",
+		"Advisory (library practice, not a 45 CFR requirement): Service account '%v' with ePHI access uses password authentication. Service accounts should use certificate-based authentication.",
 		[svc.username],
 	)
 }
@@ -192,11 +206,8 @@ violation_service_accounts contains msg if {
 # All violations
 # ---------------------------------------------------------------------------
 
-violations contains msg if some msg in violation_mfa
-violations contains msg if some msg in violation_password_policy
+violations contains msg if some msg in violation_procedure
 violations contains msg if some msg in violation_credentials
-violations contains msg if some msg in violation_session
-violations contains msg if some msg in violation_service_accounts
 
 # ---------------------------------------------------------------------------
 # Compliance
@@ -215,11 +226,9 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 	"controls": {
-		"mfa_enabled": count(violation_mfa) == 0,
-		"password_policy": count(violation_password_policy) == 0,
+		"authentication_procedure": count(violation_procedure) == 0,
 		"credential_hygiene": count(violation_credentials) == 0,
-		"session_auth": count(violation_session) == 0,
-		"service_accounts": count(violation_service_accounts) == 0,
 	},
 }

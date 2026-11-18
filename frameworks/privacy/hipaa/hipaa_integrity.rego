@@ -30,6 +30,11 @@ import rego.v1
 #
 # Input shape:
 #   input.phi_systems[]         - systems storing ePHI
+#   input.integrity.policies_and_procedures_implemented - 164.312(c)(1) evidence
+#
+# Backup, restore testing, offsite copies, disposal and media re-use are decided by the Security Rule rows
+# 164.308(a)(7)(ii)(A) and 164.310(d)(2)(i)-(ii) (hipaa.security_rule), not by 164.312(c); this module reports
+# its former checks of them, and its library frequencies, as `advisories` only.
 #   input.integrity             - integrity control configuration
 #   input.transmission          - data in transit controls
 #   input.backup                - backup and recovery configuration
@@ -74,43 +79,40 @@ addressed_by_alternative contains id if {
 # Protect ePHI from improper alteration or destruction
 # ---------------------------------------------------------------------------
 
+# 164.312(c)(1): policies and procedures protecting ePHI from improper alteration or destruction.
 violation_data_integrity contains msg if {
-	some phi_system in input.phi_systems
-	not phi_system.integrity_checking_enabled
-	msg := sprintf(
-		"HIPAA 164.312(c)(1): System '%v' does not have integrity checking enabled for ePHI. File integrity monitoring is required.",
-		[phi_system.name],
-	)
+	not input.integrity.policies_and_procedures_implemented == true
+	msg := "HIPAA 164.312(c)(1): evidence missing — policies and procedures to protect ePHI from improper alteration or destruction are not evidenced (integrity.policies_and_procedures_implemented not true)."
 }
 
-violation_data_integrity contains msg if {
+advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.integrity_checking_enabled
 	phi_system.integrity_check_frequency_hours > 24
 	msg := sprintf(
-		"HIPAA 164.312(c)(1): System '%v' integrity checks run every %v hours. Daily or more frequent checks are required for ePHI.",
+		"Advisory (library practice, not a 45 CFR requirement): System '%v' integrity checks run every %v hours. Daily or more frequent checks are required for ePHI.",
 		[phi_system.name, phi_system.integrity_check_frequency_hours],
 	)
 }
 
-violation_data_integrity contains msg if {
+advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.integrity_checking_enabled
 	not is_number(object.get(phi_system, "integrity_check_frequency_hours", null))
 	msg := sprintf(
-		"HIPAA 164.312(c)(1): evidence missing — integrity_check_frequency_hours not collected for system '%v'.",
+		"Advisory (library practice, not a 45 CFR requirement): evidence missing — integrity_check_frequency_hours not collected for system '%v'.",
 		[object.get(phi_system, "name", "unknown")],
 	)
 }
 
-violation_data_integrity contains msg if {
+advisories contains msg if {
 	not input.integrity.change_management_process
-	msg := "HIPAA 164.312(c)(1): No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No change management process for ePHI systems. Changes must be controlled to prevent unauthorized alteration."
 }
 
-violation_data_integrity contains msg if {
+advisories contains msg if {
 	not input.integrity.write_protection_on_archived_phi
-	msg := "HIPAA 164.312(c)(1): Archived ePHI is not write-protected. Historical records must be protected from modification."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Archived ePHI is not write-protected. Historical records must be protected from modification."
 }
 
 # ---------------------------------------------------------------------------
@@ -118,64 +120,71 @@ violation_data_integrity contains msg if {
 # Implement electronic mechanisms to corroborate ePHI has not been altered
 # ---------------------------------------------------------------------------
 
+# 164.312(c)(2): an electronic mechanism corroborating that ePHI has not been altered or destroyed: integrity
+# checking on the system, or checksums/hashes. Which algorithm, how often and signatures are advisories.
 violation_phi_authentication contains msg if {
-	not input.integrity.checksum_or_hash_enabled
-	msg := "HIPAA 164.312(c)(2): No cryptographic hashing or checksums used for ePHI. Hash-based integrity verification is required."
+	some phi_system in input.phi_systems
+	not phi_system.integrity_checking_enabled == true
+	not input.integrity.checksum_or_hash_enabled == true
+	msg := sprintf(
+		"HIPAA 164.312(c)(2): System '%v' has no electronic mechanism (integrity checking or checksums/hashes) to corroborate that ePHI has not been altered or destroyed.",
+		[object.get(phi_system, "name", "unknown")],
+	)
 }
 
-violation_phi_authentication contains msg if {
+advisories contains msg if {
 	input.integrity.checksum_or_hash_enabled
 	input.integrity.hash_algorithm in {"MD5", "SHA1"}
 	msg := sprintf(
-		"HIPAA 164.312(c)(2): Hash algorithm '%v' is cryptographically weak. Use SHA-256 or stronger for ePHI integrity verification.",
+		"Advisory (library practice, not a 45 CFR requirement): Hash algorithm '%v' is cryptographically weak. Use SHA-256 or stronger for ePHI integrity verification.",
 		[input.integrity.hash_algorithm],
 	)
 }
 
-violation_phi_authentication contains msg if {
+advisories contains msg if {
 	not input.integrity.digital_signatures_for_phi_export
-	msg := "HIPAA 164.312(c)(2): ePHI exports do not use digital signatures. Signatures provide non-repudiation and integrity assurance."
+	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI exports do not use digital signatures. Signatures provide non-repudiation and integrity assurance."
 }
 
 # ---------------------------------------------------------------------------
 # Backup and Recovery (supports integrity)
 # ---------------------------------------------------------------------------
 
-violation_backup contains msg if {
+advisories contains msg if {
 	not input.backup.regular_backups_enabled
-	msg := "HIPAA 164.312(c)(1): Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Regular backups of ePHI are not configured. Backups are essential for recovery from corruption or destruction."
 }
 
-violation_backup contains msg if {
+advisories contains msg if {
 	input.backup.regular_backups_enabled
 	input.backup.backup_frequency_hours > 24
 	msg := sprintf(
-		"HIPAA 164.312(c)(1): ePHI is backed up every %v hours. Daily backups are the recommended minimum.",
+		"Advisory (library practice, not a 45 CFR requirement): ePHI is backed up every %v hours. Daily backups are the recommended minimum.",
 		[input.backup.backup_frequency_hours],
 	)
 }
 
-violation_backup contains msg if {
+advisories contains msg if {
 	input.backup.regular_backups_enabled
 	not is_number(object.get(input, ["backup", "backup_frequency_hours"], null))
-	msg := "HIPAA 164.312(c)(1): evidence missing — backup.backup_frequency_hours not collected. Backup cadence cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — backup.backup_frequency_hours not collected. Backup cadence cannot be verified."
 }
 
-violation_backup contains msg if {
+advisories contains msg if {
 	not input.backup.offsite_or_cloud_backup
-	msg := "HIPAA 164.312(c)(1): ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
+	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI backups are not stored offsite or in cloud. Backups must be protected from site-level disasters."
 }
 
-violation_backup contains msg if {
+advisories contains msg if {
 	not input.backup.restore_tested
-	msg := "HIPAA 164.312(c)(1): ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
+	msg := "Advisory (library practice, not a 45 CFR requirement): ePHI backup restoration has not been tested. Backups must be verified to ensure recoverability."
 }
 
-violation_backup contains msg if {
+advisories contains msg if {
 	input.backup.restore_tested
 	input.backup.restore_test_days > 90
 	msg := sprintf(
-		"HIPAA 164.312(c)(1): ePHI backup restore test is %v days old. Test restoration at least quarterly.",
+		"Advisory (library practice, not a 45 CFR requirement): ePHI backup restore test is %v days old. Test restoration at least quarterly.",
 		[input.backup.restore_test_days],
 	)
 }
@@ -184,20 +193,20 @@ violation_backup contains msg if {
 # Destruction of ePHI
 # ---------------------------------------------------------------------------
 
-violation_backup contains msg if {
+advisories contains msg if {
 	input.backup.restore_tested
 	not is_number(object.get(input, ["backup", "restore_test_days"], null))
-	msg := "HIPAA 164.312(c)(1): evidence missing — backup.restore_test_days not collected. Restore-test recency cannot be verified."
+	msg := "Advisory (library practice, not a 45 CFR requirement): evidence missing — backup.restore_test_days not collected. Restore-test recency cannot be verified."
 }
 
-violation_destruction contains msg if {
+advisories contains msg if {
 	not input.integrity.secure_deletion_policy
-	msg := "HIPAA 164.312(c)(1): No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No secure deletion policy for ePHI. Media containing ePHI must be securely destroyed when no longer needed."
 }
 
-violation_destruction contains msg if {
+advisories contains msg if {
 	input.integrity.media_reuse_without_sanitization
-	msg := "HIPAA 164.312(c)(1): Media containing ePHI is being reused without sanitization. Media must be sanitized before reuse."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Media containing ePHI is being reused without sanitization. Media must be sanitized before reuse."
 }
 
 # ---------------------------------------------------------------------------
@@ -210,9 +219,6 @@ violations contains msg if {
 	some msg in violation_phi_authentication
 	_kept(msg)
 }
-
-violations contains msg if some msg in violation_backup
-violations contains msg if some msg in violation_destruction
 
 _phi_authentication_ok if count(violation_phi_authentication) == 0
 
@@ -243,11 +249,10 @@ compliance_report := {
 	"compliant": compliant,
 	"violation_count": count(violations),
 	"violations": violations,
+	"advisories": advisories,
 	"addressed_by_alternative": addressed_by_alternative,
 	"controls": {
 		"data_integrity": count(violation_data_integrity) == 0,
 		"phi_authentication": _phi_authentication_ok,
-		"backup_recovery": count(violation_backup) == 0,
-		"secure_destruction": count(violation_destruction) == 0,
 	},
 }

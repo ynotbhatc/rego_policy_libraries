@@ -115,7 +115,7 @@ _compliant_technical_input := {
 	"session": {"automatic_logoff_enabled": true, "inactivity_timeout_minutes": 10, "screen_lock_enabled": true},
 	"encryption": {"key_management_policy_documented": true, "key_rotation_days": 90},
 	"integrity": {
-		"change_management_process": true, "checksum_or_hash_enabled": true,
+		"change_management_process": true, "checksum_or_hash_enabled": true, "policies_and_procedures_implemented": true,
 		"digital_signatures_for_phi_export": true, "hash_algorithm": "SHA-256",
 		"media_reuse_without_sanitization": false, "secure_deletion_policy": true,
 		"write_protection_on_archived_phi": true,
@@ -235,7 +235,7 @@ test_unknown_id_is_a_violation if {
 }
 
 test_failed_fact_is_named_under_its_citation if {
-	inp := object.union(_fx.full_input, {"hipaa": {"administrative": {"security_management": {"risk_analysis": {"frequency_months": 24}}}}})
+	inp := object.union(_fx.full_input, {"hipaa": {"administrative": {"security_management": {"risk_analysis": {"conducted": false}}}}})
 	v := sr.violations with input as inp
 	count(v) == 1
 	some m in v
@@ -265,9 +265,9 @@ test_thirty_minute_logoff_is_not_a_violation if {
 }
 
 test_uncited_technical_finding_lands_on_the_standard if {
-	# the access-control module cites 164.514(d) for minimum necessary; it is not a Security Rule row
-	inp := object.union(_fx.full_input, {"users": [{"username": "alice", "phi_access_level": "full"}]})
-	f := sr.technical_attribution with input as inp
+	# a module finding citing a paragraph that is not a Security Rule row (here 164.514(d)) lands on the standard
+	f := sr.technical_attribution with input as _fx.full_input
+		with data.hipaa.access_control.violations as {"HIPAA 164.514(d): example finding"}
 	count(f["164.312(a)(1)"]) == 1
 	count(f["164.312(a)(2)(i)"]) == 0
 }
@@ -292,9 +292,10 @@ test_every_technical_finding_is_attributed_to_one_row_of_its_module if {
 		"session": {"inactivity_timeout_minutes": 30},
 		"users": [{"username": "admin", "shared_account": true, "phi_access_level": "full"}],
 		"audit_logging": {"tamper_evident": false},
-		"integrity": {"hash_algorithm": "MD5"},
+		"phi_systems": [object.union(_fx.full_input.phi_systems[0], {"audit_logging_enabled": false})],
+		"integrity": {"policies_and_procedures_implemented": false},
 		"mfa": {"enabled_for_phi_access": false},
-		"network": {"phi_network_segmented": false},
+		"network": {"message_authentication_enabled": false},
 	})
 	f := sr.technical_attribution with input as inp
 	every m in {"access_control", "audit_controls", "integrity", "authentication", "transmission_security"} {
@@ -304,4 +305,35 @@ test_every_technical_finding_is_attributed_to_one_row_of_its_module if {
 		count(attributed) == count(v)
 		{x | some x in attributed} == v
 	}
+}
+
+# Audit 2026-11-17 follow-up: 164.308 sets no 12-month cadence; a 24-month risk analysis is an advisory only.
+test_risk_analysis_every_24_months_is_advisory_only if {
+	inp := object.union(_fx.full_input, {"hipaa": {"administrative": {"security_management": {"risk_analysis": {"frequency_months": 24}}}}})
+	count(sr.violations) == 0 with input as inp
+	some a in sr.advisories with input as inp
+	contains(a, "risk analysis")
+}
+
+test_no_forensics_no_ba_inventory_no_screen_lock_are_advisories_only if {
+	inp := object.union(_fx.full_input, {"hipaa": {
+		"administrative": {
+			"incident_response": {"forensic_capability": {"available": false}},
+			"business_associates": {"inventory": {"maintained": false}},
+		},
+		"physical": {"workstation_use": {"screen_lock": {"configured": false}}},
+	}})
+	count(sr.violations) == 0 with input as inp
+	count(sr.advisories) == 3 with input as inp
+}
+
+test_incident_response_procedures_missing_is_a_violation if {
+	inp := object.union(_fx.full_input, {"hipaa": {"administrative": {"incident_response": {"response_procedures": {"implemented": false}}}}})
+	v := sr.violations with input as inp
+	some m in v
+	startswith(m, "HIPAA 164.308(a)(6)(i) Security incident procedures (standard)")
+}
+
+test_full_input_has_no_advisories if {
+	count(sr.advisories) == 0 with input as _fx.full_input
 }

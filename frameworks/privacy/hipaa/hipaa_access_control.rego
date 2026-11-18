@@ -91,11 +91,11 @@ violation_unique_user_id contains msg if {
 	msg := "HIPAA 164.312(a)(2)(i): User account found with no username — unique identification required."
 }
 
-violation_unique_user_id contains msg if {
+advisories contains msg if {
 	generic_accounts := [u | some u in input.users; u.username in {"admin", "administrator", "root", "guest", "test", "demo", "shared"}; not u.phi_access_disabled]
 	count(generic_accounts) > 0
 	msg := sprintf(
-		"HIPAA 164.312(a)(2)(i): Generic/shared accounts with potential ePHI access detected: %v. Disable or restrict these accounts.",
+		"Advisory (library practice, not a 45 CFR requirement): Generic/shared accounts with potential ePHI access detected: %v. Disable or restrict these accounts.",
 		[[u.username | some u in generic_accounts]],
 	)
 }
@@ -122,9 +122,9 @@ violation_emergency_access contains msg if {
 	msg := "HIPAA 164.312(a)(2)(ii): No documented emergency access procedure found. An emergency access procedure for ePHI must be documented and implemented."
 }
 
-violation_emergency_access contains msg if {
+advisories contains msg if {
 	not input.access_controls.emergency_access_tested
-	msg := "HIPAA 164.312(a)(2)(ii): Emergency access procedure has not been tested. Procedures must be regularly tested to ensure operability."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Emergency access procedure has not been tested. Procedures must be regularly tested to ensure operability."
 }
 
 advisories contains msg if {
@@ -176,9 +176,9 @@ _positive_number(x) if {
 	x > 0
 }
 
-violation_automatic_logoff contains msg if {
+advisories contains msg if {
 	object.get(input, ["session", "screen_lock_enabled"], false) != true
-	msg := "HIPAA 164.312(a)(2)(iii): Screen lock is not enabled or evidence missing (session.screen_lock_enabled not collected). Unattended workstations accessing ePHI must lock automatically."
+	msg := "Advisory (library practice, not a 45 CFR requirement): Screen lock is not enabled or evidence missing (session.screen_lock_enabled not collected). Unattended workstations accessing ePHI must lock automatically."
 }
 
 control_a2iii_compliant if {
@@ -201,19 +201,19 @@ violation_encryption contains msg if {
 	)
 }
 
-violation_encryption contains msg if {
+advisories contains msg if {
 	some phi_system in input.phi_systems
 	phi_system.data_at_rest_encrypted
 	phi_system.encryption_algorithm in {"DES", "3DES", "RC4", "RC2", "MD5"}
 	msg := sprintf(
-		"HIPAA 164.312(a)(2)(iv): System '%v' uses deprecated encryption algorithm '%v'. Use AES-256 or equivalent.",
+		"Advisory (library practice, not a 45 CFR requirement): System '%v' uses deprecated encryption algorithm '%v'. Use AES-256 or equivalent.",
 		[phi_system.name, phi_system.encryption_algorithm],
 	)
 }
 
-violation_encryption contains msg if {
+advisories contains msg if {
 	not input.encryption.key_management_policy_documented
-	msg := "HIPAA 164.312(a)(2)(iv): No documented encryption key management policy. Key management procedures must be documented."
+	msg := "Advisory (library practice, not a 45 CFR requirement): No documented encryption key management policy. Key management procedures must be documented."
 }
 
 # Key rotation: 45 CFR 164.312(a)(2)(iv) sets no rotation period. Kept as a library advisory, not cited to
@@ -241,17 +241,23 @@ control_a2iv_compliant if _alternative_documented("164.312(a)(2)(iv)")
 # Role-Based Access Control (RBAC) for ePHI
 # ---------------------------------------------------------------------------
 
-violation_rbac contains msg if {
-	not input.access_controls.role_based_access_implemented
-	msg := "HIPAA 164.312(a)(1): Role-based access control not implemented. Access to ePHI must be based on job function."
-}
+# 164.312(a)(1) requires access only for persons or programs granted access rights; role-based access is one
+# way to show it, and a direct statement that access is restricted to granted rights is the other.
+_access_restricted if input.access_controls.role_based_access_implemented == true
+
+_access_restricted if input.access_controls.access_restricted_to_granted_rights == true
 
 violation_rbac contains msg if {
+	not _access_restricted
+	msg := "HIPAA 164.312(a)(1): access to ePHI is not shown to be limited to persons or software programs granted access rights (access_controls.role_based_access_implemented or access_controls.access_restricted_to_granted_rights not true)."
+}
+
+advisories contains msg if {
 	some user in input.users
 	user.phi_access == true
 	not user.phi_access_justified
 	msg := sprintf(
-		"HIPAA 164.312(a)(1): User '%v' has ePHI access with no documented business justification.",
+		"Advisory (library practice, not a 45 CFR requirement): User '%v' has ePHI access with no documented business justification.",
 		[user.username],
 	)
 }
@@ -280,12 +286,12 @@ advisories contains msg if {
 # Minimum Necessary Access
 # ---------------------------------------------------------------------------
 
-violation_minimum_necessary contains msg if {
+advisories contains msg if {
 	some user in input.users
 	user.phi_access_level == "full"
 	not user.minimum_necessary_justified
 	msg := sprintf(
-		"HIPAA 164.514(d): User '%v' has full ePHI access. Minimum necessary access principle requires limiting access to only what is needed.",
+		"Advisory (library practice, not a 45 CFR requirement): User '%v' has full ePHI access. Minimum necessary access principle requires limiting access to only what is needed.",
 		[user.username],
 	)
 }
@@ -320,10 +326,6 @@ addressed_by_alternative contains id if {
 
 violations contains msg if {
 	some msg in violation_rbac
-}
-
-violations contains msg if {
-	some msg in violation_minimum_necessary
 }
 
 # Fail-closed: no ePHI systems in scope → cannot certify this safeguard
