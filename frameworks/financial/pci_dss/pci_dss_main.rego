@@ -90,17 +90,23 @@ requirement_12_compliant if requirement_12.pci_requirement_12_compliant # Govern
 # PCI DSS LEVEL DETERMINATION
 # =================================================================
 
+# Card-brand merchant levels (not a PCI DSS requirement). A non-numeric volume gives "Unknown".
+_vol := v if {
+	v := input.pci.transaction_volume.annual
+	is_number(v)
+}
+
 pci_validation_level := level if {
-	input.pci.transaction_volume.annual >= 6000000
+	_vol >= 6000000
 	level := "Level 1"
 } else := level if {
-	input.pci.transaction_volume.annual >= 1000000
+	_vol >= 1000000
 	level := "Level 2"
 } else := level if {
-	input.pci.transaction_volume.annual >= 20000
+	_vol >= 20000
 	level := "Level 3"
 } else := level if {
-	input.pci.transaction_volume.annual < 20000
+	_vol < 20000
 	level := "Level 4"
 } else := "Unknown"
 

@@ -25,11 +25,12 @@ import rego.v1
 # 2.1 - Processes and mechanisms for applying secure configurations
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 system_hardening_policies_established if {
 	input.pci.system_hardening.policies.documented == true
 	input.pci.system_hardening.policies.approved == true
 	input.pci.system_hardening.policies.current == true
-	input.pci.system_hardening.policies.reviewed_annually == true
 }
 
 system_hardening_roles_defined if {

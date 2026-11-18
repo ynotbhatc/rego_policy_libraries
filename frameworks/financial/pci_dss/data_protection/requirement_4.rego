@@ -25,11 +25,12 @@ import rego.v1
 # 4.1 - Processes and mechanisms for protecting CHD in transit
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 transmission_security_policies_established if {
 	input.pci.transmission_security.policies.documented == true
 	input.pci.transmission_security.policies.approved == true
 	input.pci.transmission_security.policies.current == true
-	input.pci.transmission_security.policies.reviewed_annually == true
 }
 
 transmission_security_roles_defined if {

@@ -21,15 +21,32 @@ package pci_dss.logging_monitoring.requirement_10
 
 import rego.v1
 
+# Numbers are compared only when they are numbers: OPA orders every string above every number, so a string
+# such as "5" would otherwise satisfy `>= 12` (audit 2026-11-17 follow-up).
+_num_ge(x, n) if {
+	is_number(x)
+	x >= n
+}
+
+# A frequency the entity defines in its targeted risk analysis (12.3.1): both the defined value and the
+# actual value must be numbers, and the actual must not exceed the defined one.
+_within_defined(actual, defined) if {
+	is_number(actual)
+	is_number(defined)
+	defined > 0
+	actual <= defined
+}
+
 # =================================================================
 # 10.1 - Processes and mechanisms for logging and monitoring
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 logging_policies_established if {
 	input.pci.logging.policies.documented == true
 	input.pci.logging.policies.approved == true
 	input.pci.logging.policies.current == true
-	input.pci.logging.policies.reviewed_annually == true
 }
 
 logging_roles_defined if {
@@ -94,19 +111,16 @@ daily_log_review if {
 	input.pci.log_review.daily.security_controls_logs == true
 }
 
-# Automated log analysis
-automated_log_analysis if {
-	input.pci.log_review.automated.enabled == true
-	input.pci.log_review.automated.siem.deployed == true
-	input.pci.log_review.automated.alerts.configured == true
-	input.pci.log_review.automated.correlation.enabled == true
-	input.pci.log_review.automated.anomaly_detection.enabled == true
-}
+# 10.4.1.1: automated mechanisms are used to perform audit log reviews. A SIEM, correlation and anomaly
+# detection are ways to do it, not parameters, and no longer gate this control.
+automated_log_analysis if input.pci.log_review.automated.enabled == true
 
 # Periodic review of all other logs
 periodic_log_review if {
 	input.pci.log_review.periodic.performed == true
-	input.pci.log_review.periodic.frequency_days <= 7
+
+	# 10.4.2.1: the review frequency is the one the entity's targeted risk analysis defines
+	_within_defined(input.pci.log_review.periodic.frequency_days, input.pci.log_review.periodic.tra_defined_frequency_days)
 	input.pci.log_review.periodic.documented == true
 }
 
@@ -122,10 +136,9 @@ log_exceptions_followed_up if {
 # =================================================================
 
 log_retention if {
-	input.pci.log_retention.total_months >= 12
-	input.pci.log_retention.online_months >= 3
+	_num_ge(input.pci.log_retention.total_months, 12)
+	_num_ge(input.pci.log_retention.online_months, 3)
 	input.pci.log_retention.policy.documented == true
-	input.pci.log_retention.older_logs.accessible_within_24_hours == true
 }
 
 # =================================================================
@@ -137,7 +150,6 @@ time_synchronization if {
 	input.pci.time_sync.authoritative_time_source.used == true
 	input.pci.time_sync.internal_servers.synced_from_authoritative == true
 	input.pci.time_sync.cde_systems.synchronized == true
-	input.pci.time_sync.max_drift_seconds <= 1
 }
 
 time_data_protected if {
@@ -172,6 +184,7 @@ security_failure_response if {
 # SIEM Integration
 # =================================================================
 
+# A SIEM with these features is not a requirement (10.4.1.1 asks for automated review mechanisms). Informational; does not gate requirement 10 (audit 2026-11-17 follow-up).
 siem_deployed if {
 	input.pci.siem.deployed == true
 	input.pci.siem.all_cde_sources.integrated == true
@@ -236,7 +249,6 @@ pci_requirement_10_compliant if {
 	time_data_protected
 	security_control_failure_detection
 	security_failure_response
-	siem_deployed
 }
 
 default pci_requirement_10_score := 0
@@ -260,7 +272,6 @@ pci_requirement_10_score := score if {
 		time_data_protected,
 		security_control_failure_detection,
 		security_failure_response,
-		siem_deployed,
 	]
 	passed := count([c | some c in controls; c == true])
 	total := count(controls)

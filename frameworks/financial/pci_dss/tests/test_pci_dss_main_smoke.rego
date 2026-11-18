@@ -38,3 +38,11 @@ test_report_names_v4_0_1 if {
 	r.total_controls == 12
 	r.failed_controls <= r.total_controls
 }
+
+test_string_transaction_volume_is_unknown_level if {
+	data.pci_dss.main.pci_validation_level == "Unknown" with input as {"pci": {"transaction_volume": {"annual": "9000000"}}}
+}
+
+test_numeric_transaction_volume_level if {
+	data.pci_dss.main.pci_validation_level == "Level 1" with input as {"pci": {"transaction_volume": {"annual": 9000000}}}
+}

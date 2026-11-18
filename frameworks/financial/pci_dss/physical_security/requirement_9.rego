@@ -20,15 +20,32 @@ package pci_dss.physical_security.requirement_9
 
 import rego.v1
 
+# Numbers are compared only when they are numbers: OPA orders every string above every number, so a string
+# such as "5" would otherwise satisfy `>= 12` (audit 2026-11-17 follow-up).
+_num_ge(x, n) if {
+	is_number(x)
+	x >= n
+}
+
+# A frequency the entity defines in its targeted risk analysis (12.3.1): both the defined value and the
+# actual value must be numbers, and the actual must not exceed the defined one.
+_within_defined(actual, defined) if {
+	is_number(actual)
+	is_number(defined)
+	defined > 0
+	actual <= defined
+}
+
 # =================================================================
 # 9.1 - Processes and mechanisms for restricting physical access
 # =================================================================
 
+# x.1.1: documented, kept up to date (current), in use (approved). No annual review is part of x.1.1; the
+# annual review is 12.1.2 for the information security policy (audit 2026-11-17 follow-up).
 physical_security_policies_established if {
 	input.pci.physical_security.policies.documented == true
 	input.pci.physical_security.policies.approved == true
 	input.pci.physical_security.policies.current == true
-	input.pci.physical_security.policies.reviewed_annually == true
 }
 
 physical_security_roles_defined if {
@@ -44,8 +61,19 @@ physical_security_roles_defined if {
 physical_access_controls if {
 	input.pci.physical_access.sensitive_areas.access_controls_implemented == true
 	input.pci.physical_access.sensitive_areas.entry_logs.maintained == true
+	_sensitive_area_monitoring
+}
+
+# 9.2.1.1: entry/exit of sensitive areas monitored with video cameras OR physical access control mechanisms
+# (or both), collected data kept at least three months.
+_sensitive_area_monitoring if {
 	input.pci.physical_access.sensitive_areas.cameras.installed == true
-	input.pci.physical_access.sensitive_areas.cameras.footage_retained_days >= 90
+	_num_ge(input.pci.physical_access.sensitive_areas.cameras.footage_retained_days, 90)
+}
+
+_sensitive_area_monitoring if {
+	input.pci.physical_access.sensitive_areas.access_control_mechanisms.monitor_entry_exit == true
+	_num_ge(input.pci.physical_access.sensitive_areas.access_control_mechanisms.data_retained_days, 90)
 }
 
 # Badge or other ID management
@@ -81,7 +109,7 @@ visitor_management if {
 	input.pci.visitors.badge.visually_distinguishable == true
 	input.pci.visitors.escort.required_in_sensitive_areas == true
 	input.pci.visitors.log.maintained == true
-	input.pci.visitors.log.retention_months >= 3
+	_num_ge(input.pci.visitors.log.retention_months, 3)
 	input.pci.visitors.badge.surrendered_on_departure == true
 }
 
@@ -134,7 +162,9 @@ poi_device_protection if {
 	input.pci.poi_devices.in_scope
 	input.pci.poi_devices.inventory.maintained == true
 	input.pci.poi_devices.inspection.periodic == true
-	input.pci.poi_devices.inspection.frequency_days <= 180
+
+	# 9.5.1.2.1: inspection frequency defined by the entity's targeted risk analysis
+	_within_defined(input.pci.poi_devices.inspection.frequency_days, input.pci.poi_devices.inspection.tra_defined_frequency_days)
 	input.pci.poi_devices.tampering.training_for_personnel == true
 	input.pci.poi_devices.serial_numbers.verified == true
 	input.pci.poi_devices.substitution.procedures_for_detecting == true
