@@ -418,8 +418,27 @@ default e_6_1_11 := false
 
 e_6_1_11 if {
 	is_array(input.world_writable.files)
-	not input.world_writable.truncated == true
 	is_array(input.sticky_bit.world_writable_without_sticky)
+	not input.world_writable.truncated == true
+}
+
+e_6_1_11 if {
+	is_array(input.world_writable.files)
+	is_array(input.sticky_bit.world_writable_without_sticky)
+	count(input.world_writable.files) > 0
+}
+
+e_6_1_11 if {
+	is_array(input.world_writable.files)
+	is_array(input.sticky_bit.world_writable_without_sticky)
+	count(input.sticky_bit.world_writable_without_sticky) > 0
+}
+
+e_6_1_11 if {
+	is_array(input.world_writable.files)
+	is_array(input.sticky_bit.world_writable_without_sticky)
+	is_number(object.get(input.world_writable, "count", 0))
+	object.get(input.world_writable, "count", 0) > 0
 }
 
 default p_6_1_11 := false
@@ -444,6 +463,34 @@ default e_6_1_12 := false
 e_6_1_12 if {
 	is_array(input.unowned_files.files)
 	is_array(input.ungrouped_files.files)
+	not input.unowned_files.truncated == true
+	not input.ungrouped_files.truncated == true
+}
+
+e_6_1_12 if {
+	is_array(input.unowned_files.files)
+	is_array(input.ungrouped_files.files)
+	count(input.unowned_files.files) > 0
+}
+
+e_6_1_12 if {
+	is_array(input.unowned_files.files)
+	is_array(input.ungrouped_files.files)
+	count(input.ungrouped_files.files) > 0
+}
+
+e_6_1_12 if {
+	is_array(input.unowned_files.files)
+	is_array(input.ungrouped_files.files)
+	is_number(object.get(input.unowned_files, "count", 0))
+	object.get(input.unowned_files, "count", 0) > 0
+}
+
+e_6_1_12 if {
+	is_array(input.unowned_files.files)
+	is_array(input.ungrouped_files.files)
+	is_number(object.get(input.ungrouped_files, "count", 0))
+	object.get(input.ungrouped_files, "count", 0) > 0
 }
 
 default p_6_1_12 := false

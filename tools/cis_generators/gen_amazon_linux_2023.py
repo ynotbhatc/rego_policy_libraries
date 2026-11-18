@@ -993,6 +993,47 @@ def _rt(name, inp, rid, want):
     return f"test_{name} if {{\n\tvs := data.{{PKG}}.auditd.violations with input as {J(inp)}\n\t{cond}\n}}\n"
 
 
+# Generated regression tests: collected empty rule lists fail; a sweep's truncated flag only matters when
+# nothing was found.
+AL2023_EMPTY_RULES = r'''
+# a collected, empty rule list (auditctl -l printing "No rules", an empty rules.d) is a failure, not missing evidence
+test_5_2_3_1_collected_empty_rules_fail if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "5.2.3.1: not met")]) > 0
+	count([v | some v in vs; startswith(v, "5.2.3.1: evidence missing")]) == 0
+}
+
+test_5_2_3_20_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_amazon_linux_2023.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "5.2.3.20: not met")]) > 0
+	count([v | some v in vs; startswith(v, "5.2.3.20: evidence missing")]) == 0
+}
+
+'''
+
+AL2023_SWEEP = r'''
+# 6.1.11 / 6.1.12: files found fail whether or not the sweep finished; only nothing found and an unfinished sweep is
+# missing evidence
+test_6_1_11_more_than_100_files_not_truncated_fails if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"world_writable": {"files": ["/srv/ww/0", "/srv/ww/1", "/srv/ww/2", "/srv/ww/3", "/srv/ww/4", "/srv/ww/5", "/srv/ww/6", "/srv/ww/7", "/srv/ww/8", "/srv/ww/9", "/srv/ww/10", "/srv/ww/11", "/srv/ww/12", "/srv/ww/13", "/srv/ww/14", "/srv/ww/15", "/srv/ww/16", "/srv/ww/17", "/srv/ww/18", "/srv/ww/19", "/srv/ww/20", "/srv/ww/21", "/srv/ww/22", "/srv/ww/23", "/srv/ww/24", "/srv/ww/25", "/srv/ww/26", "/srv/ww/27", "/srv/ww/28", "/srv/ww/29", "/srv/ww/30", "/srv/ww/31", "/srv/ww/32", "/srv/ww/33", "/srv/ww/34", "/srv/ww/35", "/srv/ww/36", "/srv/ww/37", "/srv/ww/38", "/srv/ww/39", "/srv/ww/40", "/srv/ww/41", "/srv/ww/42", "/srv/ww/43", "/srv/ww/44", "/srv/ww/45", "/srv/ww/46", "/srv/ww/47", "/srv/ww/48", "/srv/ww/49", "/srv/ww/50", "/srv/ww/51", "/srv/ww/52", "/srv/ww/53", "/srv/ww/54", "/srv/ww/55", "/srv/ww/56", "/srv/ww/57", "/srv/ww/58", "/srv/ww/59", "/srv/ww/60", "/srv/ww/61", "/srv/ww/62", "/srv/ww/63", "/srv/ww/64", "/srv/ww/65", "/srv/ww/66", "/srv/ww/67", "/srv/ww/68", "/srv/ww/69", "/srv/ww/70", "/srv/ww/71", "/srv/ww/72", "/srv/ww/73", "/srv/ww/74", "/srv/ww/75", "/srv/ww/76", "/srv/ww/77", "/srv/ww/78", "/srv/ww/79", "/srv/ww/80", "/srv/ww/81", "/srv/ww/82", "/srv/ww/83", "/srv/ww/84", "/srv/ww/85", "/srv/ww/86", "/srv/ww/87", "/srv/ww/88", "/srv/ww/89", "/srv/ww/90", "/srv/ww/91", "/srv/ww/92", "/srv/ww/93", "/srv/ww/94", "/srv/ww/95", "/srv/ww/96", "/srv/ww/97", "/srv/ww/98", "/srv/ww/99"], "count": 250, "truncated": false}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "6.1.11: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.11: evidence missing")]) == 0
+}
+
+test_6_1_11_nothing_found_in_an_unfinished_sweep_is_evidence_missing if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"world_writable": {"files": [], "count": 0, "truncated": true}, "sticky_bit": {"world_writable_without_sticky": []}}
+	count([v | some v in vs; startswith(v, "6.1.11: evidence missing")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.11: not met")]) == 0
+}
+
+test_6_1_12_found_in_an_unfinished_sweep_fails if {
+	vs := data.cis_amazon_linux_2023.file_permissions.violations with input as {"unowned_files": {"files": ["/srv/orphan"], "count": 1, "truncated": true}, "ungrouped_files": {"files": [], "count": 0}}
+	count([v | some v in vs; startswith(v, "6.1.12: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.1.12: evidence missing")]) == 0
+}
+'''
+
+
 REGRESSION_TESTS = {"auditd": "\n".join([
     "# 5.2.3: a rule is required in the on-disk rules (auditd.rules) AND the running rules (auditd.active_rules),",
     "# a syscall rule for arch=b64 AND arch=b32 where the audit lists both (5.2.3.19: b64 only).",
@@ -1003,7 +1044,7 @@ REGRESSION_TESTS = {"auditd": "\n".join([
     _rt("module_syscalls_b64_only_passes", {"auditd": {"rules": _K, "active_rules": _K}}, "5.2.3.19", "pass"),
     _rt("privileged_command_watch_form_passes", {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-w /usr/bin/su -p x -k privileged"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}, "5.2.3.6", "pass"),
     _rt("privileged_command_running_only_fails", {"auditd": {"privileged_commands": ["/usr/bin/su"], "rules": ["-e 2"], "active_rules": ["-w /usr/bin/su -p x -k privileged"]}}, "5.2.3.6", "fail"),
-]).replace("{PKG}", PKG)}
+]).replace("{PKG}", PKG) + AL2023_EMPTY_RULES, "file_permissions": AL2023_SWEEP}
 
 
 PROFILES = {"level1_server": 1, "level2_server": 2}
