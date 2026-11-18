@@ -108,6 +108,12 @@ test_rhel_09_214010_fail_1 if {
 }
 
 test_rhel_09_214010_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as object.union(green_fixture, {"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key", "Not Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214010: check failed")
+}
+
+test_rhel_09_214010_fail_3 if {
 	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214010 with input as object.union(green_fixture, {"redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51", "0000 0000 0000 0000 0000  0000 0000 0000 0000 0000"]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-214010: check failed")

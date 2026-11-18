@@ -90,12 +90,29 @@ _backend_ok(b) if {
 	b.target == concat("", ["/usr/share/crypto-policies/FIPS/", base, ".txt"])
 }
 
-# a DoD root CA certificate from /etc/sssd/pki/sssd_auth_ca_db.pem that is inside its validity period
-# (input.sssd_ca_db.certificates: [{issuer, subject, not_before, not_after}], dates RFC 3339)
+# the comma-separated option list at path, each entry trimmed; undefined unless a string
+_csv(path) := [trim_space(x) | some x in parts] if {
+	s := _str(path)
+	parts := split(s, ",")
+}
+
+# a DoD root CA from /etc/sssd/pki/sssd_auth_ca_db.pem, as the RHEL-09-631010 check shows it: self-signed
+# (Subject == Issuer), Issuer C = US, O = U.S. Government, OU = DoD (the check text prints DoW), OU = PKI,
+# CN = DoD Root CA <n>, compared component by component; inside its validity dates.
+# input.sssd_ca_db.certificates: [{issuer_rdns, subject_rdns, not_before, not_after}], RDNs as [type, value]
+# pairs in certificate order, dates RFC 3339.
 _dod_root_valid(c) if {
-	is_string(c.issuer)
-	contains(c.issuer, "O = U.S. Government")
-	regex.match(`CN = DoD Root CA [0-9]+`, c.issuer)
+	rdns := c.issuer_rdns
+	is_array(rdns)
+	count(rdns) == 5
+	rdns[0] == ["C", "US"]
+	rdns[1] == ["O", "U.S. Government"]
+	rdns[2] in {["OU", "DoD"], ["OU", "DoW"]}
+	rdns[3] == ["OU", "PKI"]
+	rdns[4][0] == "CN"
+	is_string(rdns[4][1])
+	regex.match(`^DoD Root CA [0-9]+$`, rdns[4][1])
+	c.subject_rdns == rdns
 	nb := time.parse_rfc3339_ns(c.not_before)
 	na := time.parse_rfc3339_ns(c.not_after)
 	now := time.now_ns()
@@ -192,8 +209,10 @@ default cert_revocation_check := false
 
 cert_revocation_check if {
 	count(missing_rhel_09_611170) == 0
-	s := _str(["sssd", "certificate_verification"])
-	contains(s, "ocsp_dgst=sha512")
+	opts := {o | some o in _csv(["sssd", "certificate_verification"])}
+	"ocsp_dgst=sha512" in opts
+	not "no_ocsp" in opts
+	not "no_verification" in opts
 }
 
 cert_revocation_check if {
@@ -218,7 +237,7 @@ else := "RHEL-09-611170: Not_Applicable — the SA demonstrated an approved alte
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611170", concat(", ", missing_rhel_09_611170)]) if count(missing_rhel_09_611170) > 0
 
-else := "RHEL-09-611170: check failed — certificate_verification in the [sssd] section must include ocsp_dgst=sha512, or the SA must show how certificate status checking is implemented (input.attest.rhel_09_611170_status_checking)"
+else := "RHEL-09-611170: check failed — certificate_verification in the [sssd] section must carry the option ocsp_dgst=sha512 and neither no_ocsp nor no_verification, or the SA must show how certificate status checking is implemented (input.attest.rhel_09_611170_status_checking)"
 
 finding_rhel_09_611170 := {
 	"vuln_id": "V-258123",
@@ -232,7 +251,7 @@ finding_rhel_09_611170 := {
 }
 
 # RHEL-09-631010 | V-258131 | CAT II
-# certificates in /etc/sssd/pki/sssd_auth_ca_db.pem (openssl x509 -text): issuer and validity
+# certificates in /etc/sssd/pki/sssd_auth_ca_db.pem: issuer / subject RDNs and validity dates
 missing_rhel_09_631010 := [concat(".", p) | some p in [["sssd_ca_db", "certificates"]]; not _collected(p)]
 
 default dod_ca_trusted := false
@@ -263,7 +282,7 @@ else := "RHEL-09-631010: Not_Applicable — the SA demonstrated an approved alte
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-631010", concat(", ", missing_rhel_09_631010)]) if count(missing_rhel_09_631010) > 0
 
-else := "RHEL-09-631010: check failed — /etc/sssd/pki/sssd_auth_ca_db.pem must hold a DoD-issued root CA certificate within its validity dates"
+else := "RHEL-09-631010: check failed — /etc/sssd/pki/sssd_auth_ca_db.pem must hold a self-signed DoD root CA (Issuer = Subject = C=US, O=U.S. Government, OU=DoD, OU=PKI, CN=DoD Root CA <n>) within its validity dates"
 
 finding_rhel_09_631010 := {
 	"vuln_id": "V-258131",

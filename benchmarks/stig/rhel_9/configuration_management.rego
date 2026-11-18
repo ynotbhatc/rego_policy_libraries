@@ -129,8 +129,15 @@ _module_disabled(mod) if {
 # the AIDE job mails its result, or the SA attests to another notification path
 _aide_notifies if {
 	some l in input.aide.schedule
-	contains(l, "aide")
-	contains(l, "mail")
+	_aide_check_line(l)
+	regex.match(`\|\s*(\S*/)?(mail|mailx|sendmail)(\s|$)`, l)
+}
+
+# a cron line (as "<file>: <entry>") that runs the aide binary with --check, not commented out
+_aide_check_line(l) if {
+	is_string(l)
+	not regex.match(`^[^:]*:\s*#`, l)
+	regex.match(`(^|[\s:/])aide\s+(--check|-C)(\s|$)`, l)
 }
 
 _aide_notifies if _attested("rhel_09_651015_notification")
@@ -703,8 +710,7 @@ aide_cron_configured if {
 	lines := input.aide.schedule
 	is_array(lines)
 	some l in lines
-	contains(l, "aide")
-	contains(l, "--check")
+	_aide_check_line(l)
 	_aide_notifies
 }
 

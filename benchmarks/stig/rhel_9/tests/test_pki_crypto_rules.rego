@@ -39,10 +39,52 @@ green_fixture := {
 		}],
 	},
 	"sssd_ca_db": {"certificates": [{
-		"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+		"issuer_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
+		],
 		"not_after": "2099-12-30T18:46:41Z",
 		"not_before": "2012-03-20T18:46:41Z",
-		"subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+		"subject_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
+		],
 	}]},
 }
 
@@ -139,6 +181,24 @@ test_rhel_09_611170_fail_2 if {
 	contains(f.detail, "RHEL-09-611170: check failed")
 }
 
+test_rhel_09_611170_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": "no_ocsp,ocsp_dgst=sha512"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: check failed")
+}
+
+test_rhel_09_611170_fail_4 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": "no_verification, ocsp_dgst=sha512"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: check failed")
+}
+
+test_rhel_09_611170_fail_5 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as object.union(green_fixture, {"sssd": {"certificate_verification": "ocsp_dgst=sha5120"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611170: check failed")
+}
+
 test_rhel_09_611170_evidence_missing_1 if {
 	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_611170 with input as json.remove(green_fixture, [["sssd", "certificate_verification"]])
 	f.status == "Open"
@@ -150,23 +210,51 @@ test_rhel_09_611170_not_applicable_1 if {
 	f.status == "Not_Applicable"
 }
 
+test_rhel_09_611170_pass_2 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_611170 == "Not_a_Finding" with input as object.union(green_fixture, {"sssd": {"certificate_verification": "soft_ocsp, ocsp_dgst=sha512"}})
+}
+
 test_rhel_09_631010_pass if {
 	data.stig.rhel_9.pki_crypto.status_rhel_09_631010 == "Not_a_Finding" with input as green_fixture
 }
 
 test_rhel_09_631010_fail_1 if {
-	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "not_before": "2012-03-20T18:46:41Z", "not_after": "2020-01-01T00:00:00Z"}]}})
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2020-01-01T00:00:00Z"}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-631010: check failed")
 }
 
 test_rhel_09_631010_fail_2 if {
-	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer": "CN = Example Corp Root CA", "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3", "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["CN", "Example Corp Root CA"]], "subject_rdns": [["CN", "Example Corp Root CA"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-631010: check failed")
 }
 
 test_rhel_09_631010_fail_3 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3 Fake Intermediate"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3 Fake Intermediate"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_4 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "Evil Corp, O = U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "Evil Corp, O = U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_5 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DOD ID CA-70"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_6 if {
+	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "not_before": "2098-01-01T00:00:00Z", "not_after": "2099-12-30T18:46:41Z"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-631010: check failed")
+}
+
+test_rhel_09_631010_fail_7 if {
 	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": []}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-631010: check failed")
@@ -181,6 +269,10 @@ test_rhel_09_631010_evidence_missing_1 if {
 test_rhel_09_631010_not_applicable_1 if {
 	f := data.stig.rhel_9.pki_crypto.finding_rhel_09_631010 with input as object.union(green_fixture, {"sssd_ca_db": null, "attest": {"rhel_09_631010_alternate_mfa": true}})
 	f.status == "Not_Applicable"
+}
+
+test_rhel_09_631010_pass_2 if {
+	data.stig.rhel_9.pki_crypto.status_rhel_09_631010 == "Not_a_Finding" with input as object.union(green_fixture, {"sssd_ca_db": {"certificates": [{"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DOD ID CA-70"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}, {"issuer_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoW"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "subject_rdns": [["C", "US"], ["O", "U.S. Government"], ["OU", "DoW"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]], "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}]}})
 }
 
 test_rhel_09_271045_pass if {

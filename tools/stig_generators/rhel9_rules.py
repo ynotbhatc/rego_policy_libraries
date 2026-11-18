@@ -702,9 +702,13 @@ module_rule("configuration_management", "RHEL-09-213055", "firewire_disabled", "
 R("configuration_management", "RHEL-09-651015", "aide_cron_configured",
   [("packages", "aide"), ("aide", "schedule")],
   [["input.packages.aide == true", "lines := input.aide.schedule", "is_array(lines)",
-    "some l in lines", 'contains(l, "aide")', 'contains(l, "--check")', "_aide_notifies"]],
+    "some l in lines", "_aide_check_line(l)", "_aide_notifies"]],
   {"packages": {"aide": True}, "aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"]}},
-  [{"aide": {"schedule": []}}, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check"]}}],
+  [{"aide": {"schedule": []}}, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check"]}},
+   {"aide": {"schedule": ["/etc/crontab: # 30 04 * * * root /usr/sbin/aide --check | /bin/mail root"]}},
+   {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --checksum-report | /bin/mail root"]}},
+   {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/local/bin/notaide --check | /bin/mail root"]}},
+   {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check > /var/log/aide-mail.log"]}}],
   "a cron job (/etc/cron.*, /etc/crontab, /var/spool/cron/root) must run aide --check and notify designated personnel "
   "(mail in the job, or input.attest.rhel_09_651015_notification); another integrity tool must be attested (input.attest.rhel_09_651015_other_tool)",
   "Add /etc/cron.daily/aide running /usr/sbin/aide --check | /bin/mail -s \"$HOSTNAME - Daily aide integrity check run\" root@sysname.mil",
@@ -715,8 +719,15 @@ helpers("configuration_management", r'''
 # the AIDE job mails its result, or the SA attests to another notification path
 _aide_notifies if {
 	some l in input.aide.schedule
-	contains(l, "aide")
-	contains(l, "mail")
+	_aide_check_line(l)
+	regex.match(`\|\s*(\S*/)?(mail|mailx|sendmail)(\s|$)`, l)
+}
+
+# a cron line (as "<file>: <entry>") that runs the aide binary with --check, not commented out
+_aide_check_line(l) if {
+	is_string(l)
+	not regex.match(`^[^:]*:\s*#`, l)
+	regex.match(`(^|[\s:/])aide\s+(--check|-C)(\s|$)`, l)
 }
 
 _aide_notifies if _attested("rhel_09_651015_notification")''')
@@ -880,23 +891,45 @@ def ident_of(sid):
 
 m = alt_mfa("RHEL-09-611170")
 R("pki_crypto", "RHEL-09-611170", "cert_revocation_check", [("sssd", "certificate_verification")],
-  [['s := _str(["sssd", "certificate_verification"])', 'contains(s, "ocsp_dgst=sha512")']],
+  [['opts := {o | some o in _csv(["sssd", "certificate_verification"])}', '"ocsp_dgst=sha512" in opts',
+    'not "no_ocsp" in opts', 'not "no_verification" in opts']],
   {"sssd": {"certificate_verification": "ocsp_dgst=sha512"}},
-  [{"sssd": {"certificate_verification": "no_ocsp"}}, {"sssd": {"certificate_verification": "ocsp_dgst=sha1"}}],
-  "certificate_verification in the [sssd] section must include ocsp_dgst=sha512, or the SA must show how certificate status "
+  [{"sssd": {"certificate_verification": "no_ocsp"}}, {"sssd": {"certificate_verification": "ocsp_dgst=sha1"}},
+   {"sssd": {"certificate_verification": "no_ocsp,ocsp_dgst=sha512"}},
+   {"sssd": {"certificate_verification": "no_verification, ocsp_dgst=sha512"}},
+   {"sssd": {"certificate_verification": "ocsp_dgst=sha5120"}}],
+  "certificate_verification in the [sssd] section must carry the option ocsp_dgst=sha512 and neither no_ocsp nor no_verification, or the SA must show how certificate status "
   "checking is implemented (input.attest.rhel_09_611170_status_checking)",
   "Set certificate_verification = ocsp_dgst=sha512 in the [sssd] section of /etc/sssd/sssd.conf",
   comment="certificate_verification from the [sssd] section of sssd.conf / conf.d (uncommented)",
   attest_alts=[['_attested("rhel_09_611170_status_checking")']], na=m["na"], na_expect=m["na_expect"],
+  pass_cases=[{"sssd": {"certificate_verification": "soft_ocsp, ocsp_dgst=sha512"}}],
   na_cases=[{"sssd": {"certificate_verification": None}, "attest": {m["na_key"]: True}}])
 
 helpers("pki_crypto", r'''
-# a DoD root CA certificate from /etc/sssd/pki/sssd_auth_ca_db.pem that is inside its validity period
-# (input.sssd_ca_db.certificates: [{issuer, subject, not_before, not_after}], dates RFC 3339)
+# the comma-separated option list at path, each entry trimmed; undefined unless a string
+_csv(path) := [trim_space(x) | some x in parts] if {
+	s := _str(path)
+	parts := split(s, ",")
+}
+
+# a DoD root CA from /etc/sssd/pki/sssd_auth_ca_db.pem, as the RHEL-09-631010 check shows it: self-signed
+# (Subject == Issuer), Issuer C = US, O = U.S. Government, OU = DoD (the check text prints DoW), OU = PKI,
+# CN = DoD Root CA <n>, compared component by component; inside its validity dates.
+# input.sssd_ca_db.certificates: [{issuer_rdns, subject_rdns, not_before, not_after}], RDNs as [type, value]
+# pairs in certificate order, dates RFC 3339.
 _dod_root_valid(c) if {
-	is_string(c.issuer)
-	contains(c.issuer, "O = U.S. Government")
-	regex.match(`CN = DoD Root CA [0-9]+`, c.issuer)
+	rdns := c.issuer_rdns
+	is_array(rdns)
+	count(rdns) == 5
+	rdns[0] == ["C", "US"]
+	rdns[1] == ["O", "U.S. Government"]
+	rdns[2] in {["OU", "DoD"], ["OU", "DoW"]}
+	rdns[3] == ["OU", "PKI"]
+	rdns[4][0] == "CN"
+	is_string(rdns[4][1])
+	regex.match(`^DoD Root CA [0-9]+$`, rdns[4][1])
+	c.subject_rdns == rdns
 	nb := time.parse_rfc3339_ns(c.not_before)
 	na := time.parse_rfc3339_ns(c.not_after)
 	now := time.now_ns()
@@ -905,18 +938,27 @@ _dod_root_valid(c) if {
 }''')
 
 m = alt_mfa("RHEL-09-631010")
-DOD_CA = {"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
-          "subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
-          "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}
+DOD_RDNS = [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]]
+DOD_CA = {"issuer_rdns": DOD_RDNS, "subject_rdns": DOD_RDNS, "not_before": "2012-03-20T18:46:41Z", "not_after": "2099-12-30T18:46:41Z"}
+LOOKALIKE = DOD_RDNS[:4] + [["CN", "DoD Root CA 3 Fake Intermediate"]]
+EMBEDDED_O = [["C", "US"], ["O", "Evil Corp, O = U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DoD Root CA 3"]]
+INTERMEDIATE = [["C", "US"], ["O", "U.S. Government"], ["OU", "DoD"], ["OU", "PKI"], ["CN", "DOD ID CA-70"]]
 R("pki_crypto", "RHEL-09-631010", "dod_ca_trusted", [("sssd_ca_db", "certificates")],
   [["certs := input.sssd_ca_db.certificates", "is_array(certs)", "some c in certs", "_dod_root_valid(c)"]],
   {"sssd_ca_db": {"certificates": [DOD_CA]}},
   [{"sssd_ca_db": {"certificates": [dict(DOD_CA, not_after="2020-01-01T00:00:00Z")]}},
-   {"sssd_ca_db": {"certificates": [dict(DOD_CA, issuer="CN = Example Corp Root CA")]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, issuer_rdns=[["CN", "Example Corp Root CA"]], subject_rdns=[["CN", "Example Corp Root CA"]])]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, issuer_rdns=LOOKALIKE, subject_rdns=LOOKALIKE)]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, issuer_rdns=EMBEDDED_O, subject_rdns=EMBEDDED_O)]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, subject_rdns=INTERMEDIATE)]}},
+   {"sssd_ca_db": {"certificates": [dict(DOD_CA, not_before="2098-01-01T00:00:00Z")]}},
    {"sssd_ca_db": {"certificates": []}}],
-  "/etc/sssd/pki/sssd_auth_ca_db.pem must hold a DoD-issued root CA certificate within its validity dates",
+  "/etc/sssd/pki/sssd_auth_ca_db.pem must hold a self-signed DoD root CA (Issuer = Subject = C=US, O=U.S. Government, "
+  "OU=DoD, OU=PKI, CN=DoD Root CA <n>) within its validity dates",
   "Install the DoD root CA bundle as /etc/sssd/pki/sssd_auth_ca_db.pem",
-  comment="certificates in /etc/sssd/pki/sssd_auth_ca_db.pem (openssl x509 -text): issuer and validity",
+  comment="certificates in /etc/sssd/pki/sssd_auth_ca_db.pem: issuer / subject RDNs and validity dates",
+  pass_cases=[{"sssd_ca_db": {"certificates": [dict(DOD_CA, subject_rdns=INTERMEDIATE), dict(DOD_CA, issuer_rdns=[r if r[0] != "OU" or r[1] != "DoD" else ["OU", "DoW"] for r in DOD_RDNS],
+                                                                                              subject_rdns=[r if r[0] != "OU" or r[1] != "DoD" else ["OU", "DoW"] for r in DOD_RDNS])]}}],
   na=m["na"], na_expect=m["na_expect"], na_cases=[{"sssd_ca_db": None, "attest": {m["na_key"]: True}}])
 
 R("pki_crypto", "RHEL-09-271045", "smartcard_lock_on_removal", [("gnome", "smartcard_removal_action")],
@@ -967,12 +1009,11 @@ redhat_key_fingerprints := ''' + "{" + ", ".join(f'"{k}"' for k in RH_KEYS) + "}
 
 _fpr(s) := upper(replace(s, " ", "")) if is_string(s)
 
-# an installed gpg-pubkey whose summary names the Red Hat key `label`
+# an installed gpg-pubkey whose summary is exactly Red Hat's for key `label` (as the check's rpm -q output shows it)
 _rh_key_installed(label) if {
 	some s in input.rpm_gpg_pubkeys
 	is_string(s)
-	contains(lower(s), "red hat")
-	contains(s, label)
+	trim_space(s) == concat("", ["Red Hat, Inc. ", label, " <security@redhat.com> public key"])
 }
 
 # an AIDE rule line (uncommented selection / group definition) that uses sha512
@@ -993,6 +1034,8 @@ R("software_integrity", "RHEL-09-214010", "gpgcheck_global",
    "redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
                                                 "7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3"]}},
   [{"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key"]},
+   {"rpm_gpg_pubkeys": ["Red Hat, Inc. (release key 2) <security@redhat.com> public key",
+                        "Not Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key"]},
    {"redhat_release_key_file": {"fingerprints": ["567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
                                                  "0000 0000 0000 0000 0000  0000 0000 0000 0000 0000"]}}],
   "Red Hat GPG keys 'release key 2' and 'auxiliary key 3' must be installed and /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release "

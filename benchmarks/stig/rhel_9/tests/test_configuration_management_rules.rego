@@ -532,6 +532,30 @@ test_rhel_09_651015_fail_2 if {
 	contains(f.detail, "RHEL-09-651015: check failed")
 }
 
+test_rhel_09_651015_fail_3 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_651015 with input as object.union(green_fixture, {"aide": {"schedule": ["/etc/crontab: # 30 04 * * * root /usr/sbin/aide --check | /bin/mail root"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651015: check failed")
+}
+
+test_rhel_09_651015_fail_4 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_651015 with input as object.union(green_fixture, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --checksum-report | /bin/mail root"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651015: check failed")
+}
+
+test_rhel_09_651015_fail_5 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_651015 with input as object.union(green_fixture, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/local/bin/notaide --check | /bin/mail root"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651015: check failed")
+}
+
+test_rhel_09_651015_fail_6 if {
+	f := data.stig.rhel_9.configuration_management.finding_rhel_09_651015 with input as object.union(green_fixture, {"aide": {"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check > /var/log/aide-mail.log"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651015: check failed")
+}
+
 test_rhel_09_651015_evidence_missing_1 if {
 	f := data.stig.rhel_9.configuration_management.finding_rhel_09_651015 with input as json.remove(green_fixture, [["packages", "aide"]])
 	f.status == "Open"

@@ -80,12 +80,11 @@ redhat_key_fingerprints := {"567E347AD0044ADE55BA8A5F199E2F91FD431D51", "7E46242
 
 _fpr(s) := upper(replace(s, " ", "")) if is_string(s)
 
-# an installed gpg-pubkey whose summary names the Red Hat key `label`
+# an installed gpg-pubkey whose summary is exactly Red Hat's for key `label` (as the check's rpm -q output shows it)
 _rh_key_installed(label) if {
 	some s in input.rpm_gpg_pubkeys
 	is_string(s)
-	contains(lower(s), "red hat")
-	contains(s, label)
+	trim_space(s) == concat("", ["Red Hat, Inc. ", label, " <security@redhat.com> public key"])
 }
 
 # an AIDE rule line (uncommented selection / group definition) that uses sha512

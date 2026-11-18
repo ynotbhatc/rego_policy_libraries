@@ -245,10 +245,52 @@ green_fixture := {
 		"pam_cert_auth": "True",
 	},
 	"sssd_ca_db": {"certificates": [{
-		"issuer": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+		"issuer_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
+		],
 		"not_after": "2099-12-30T18:46:41Z",
 		"not_before": "2012-03-20T18:46:41Z",
-		"subject": "C = US, O = U.S. Government, OU = DoD, OU = PKI, CN = DoD Root CA 3",
+		"subject_rdns": [
+			[
+				"C",
+				"US",
+			],
+			[
+				"O",
+				"U.S. Government",
+			],
+			[
+				"OU",
+				"DoD",
+			],
+			[
+				"OU",
+				"PKI",
+			],
+			[
+				"CN",
+				"DoD Root CA 3",
+			],
+		],
 	}]},
 	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
 	"systemd_units": {"ctrl-alt-del.target": {"load_state": "masked"}},
