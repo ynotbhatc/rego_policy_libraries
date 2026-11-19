@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 12
-#     cited: 7
+#     checks: 18
+#     cited: 10
 #     density: sized
 #     basis: size
 #     tested: true
@@ -18,7 +18,9 @@ package nist.sp800_53.maintenance
 
 import rego.v1
 
-# NIST SP 800-53 Rev 5 — Maintenance (MA) Family, base controls MA-1 to MA-7 (no enhancements).
+# NIST SP 800-53 Rev 5 — Maintenance (MA) Family, base controls MA-1 to MA-7 and the NIST SP 800-53B
+# Moderate-baseline enhancements MA-3(1), MA-3(2), MA-3(3). An enhancement is its own requirement with its own
+# finding; a base control never fails for an enhancement.
 # Facts live under input.ma_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
 
@@ -67,6 +69,40 @@ _attested(name) if {
 	trim_space(a.by) != ""
 	is_string(a.date)
 	trim_space(a.date) != ""
+}
+
+# An attestation that is absent or of the wrong shape (not an object, attested not a boolean, by or date not a
+# string) is missing evidence; one that is well-formed but false or unsigned keeps the plain "not attested" text.
+_att_shaped(name) if {
+	a := _get(concat(".", [name, "attestation"]))
+	is_object(a)
+	is_boolean(a.attested)
+	is_string(a.by)
+	is_string(a.date)
+}
+
+_att_text(name, text) := text if {
+	_att_shaped(name)
+} else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
+
+# Counts that must be zero (exceptions found in maintenance records). A non-number or a negative number is
+# missing evidence.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+}
+
+_zero_missing(paths) := {_path(p) |
+	some p in paths
+	not _count_ok(_get(p))
+}
+
+_zero_unmet(checks) := {sprintf(c[1], [n]) |
+	some c in checks
+	n := _get(c[0])
+	is_number(n)
+	_count_ok(n)
+	n > 0
 }
 
 _missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
@@ -235,13 +271,82 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("field_maintenance")
-	msg := "NIST MA-7: Restriction of field maintenance to trusted facilities not attested — input.ma_controls.field_maintenance.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST MA-7: %s", [_att_text("field_maintenance", "Restriction of field maintenance to trusted facilities not attested — input.ma_controls.field_maintenance.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(1) Inspect Tools: maintenance tools brought in by maintenance personnel are inspected for improper or
+# unauthorized modifications.
+# Facts: maintenance_tools.inspection.tools_not_inspected (number of tools used in the review period with no
+#        inspection record; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_1 := [["maintenance_tools.inspection.tools_not_inspected", "%v maintenance tools used without an inspection for improper or unauthorized modification"]]
+
+_ma3_1_missing := _zero_missing([c[0] | some c in _ma3_1])
+
+violation contains msg if {
+	count(_ma3_1_missing) > 0
+	msg := sprintf("NIST MA-3(1): evidence missing — %s not collected", [concat(", ", sort(_ma3_1_missing))])
+}
+
+violation contains msg if {
+	count(_ma3_1_missing) == 0
+	failed := _zero_unmet(_ma3_1)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(1): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(2) Inspect Media: media with diagnostic and test programs are checked for malicious code before use.
+# Facts: maintenance_tools.media_inspection.media_not_scanned (number of diagnostic or test media used in the
+#        review period with no malicious-code scan record before use; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_2 := [["maintenance_tools.media_inspection.media_not_scanned", "%v diagnostic or test media used without a malicious-code check"]]
+
+_ma3_2_missing := _zero_missing([c[0] | some c in _ma3_2])
+
+violation contains msg if {
+	count(_ma3_2_missing) > 0
+	msg := sprintf("NIST MA-3(2): evidence missing — %s not collected", [concat(", ", sort(_ma3_2_missing))])
+}
+
+violation contains msg if {
+	count(_ma3_2_missing) == 0
+	failed := _zero_unmet(_ma3_2)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(2): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(3) Prevent Unauthorized Removal: maintenance equipment holding organizational information leaves the
+# facility only after it is verified empty, sanitized or destroyed, or under an exemption from the
+# organization-defined personnel; otherwise it is retained.
+# Facts: maintenance_tools.removal.removals_without_disposition (number of equipment removals in the review
+#        period with none of: verified no information, sanitized or destroyed, authorized exemption; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_3 := [["maintenance_tools.removal.removals_without_disposition", "%v maintenance equipment removals without verification, sanitization or destruction, or an authorized exemption"]]
+
+_ma3_3_missing := _zero_missing([c[0] | some c in _ma3_3])
+
+violation contains msg if {
+	count(_ma3_3_missing) > 0
+	msg := sprintf("NIST MA-3(3): evidence missing — %s not collected", [concat(", ", sort(_ma3_3_missing))])
+}
+
+violation contains msg if {
+	count(_ma3_3_missing) == 0
+	failed := _zero_unmet(_ma3_3)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(3): %s", [concat("; ", sort(failed))])
 }
 
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"MA-1", "MA-2", "MA-3", "MA-4", "MA-5", "MA-6", "MA-7"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"MA-1", "MA-2", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-5", "MA-6", "MA-7"}
 
 compliance_report := {
 	"family": "MA",

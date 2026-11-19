@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 28
-#     cited: 22
+#     checks: 32
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
@@ -18,7 +18,9 @@ package nist.sp800_53.physical_environmental
 
 import rego.v1
 
-# NIST SP 800-53 Rev 5 — Physical and Environmental Protection (PE) Family, base controls PE-1 to PE-23 (PE-7 withdrawn) (no enhancements).
+# NIST SP 800-53 Rev 5 — Physical and Environmental Protection (PE) Family, base controls PE-1 to PE-23 (PE-7
+# withdrawn) and the NIST SP 800-53B Moderate-baseline enhancements PE-6(1) and PE-13(1). An enhancement is its
+# own requirement with its own finding; a base control never fails for an enhancement.
 # Facts live under input.pe_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
 
@@ -68,6 +70,20 @@ _attested(name) if {
 	is_string(a.date)
 	trim_space(a.date) != ""
 }
+
+# An attestation that is absent or of the wrong shape (not an object, attested not a boolean, by or date not a
+# string) is missing evidence; one that is well-formed but false or unsigned keeps the plain "not attested" text.
+_att_shaped(name) if {
+	a := _get(concat(".", [name, "attestation"]))
+	is_object(a)
+	is_boolean(a.attested)
+	is_string(a.by)
+	is_string(a.date)
+}
+
+_att_text(name, text) := text if {
+	_att_shaped(name)
+} else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
 
 _missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
 
@@ -258,7 +274,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("transmission_access")
-	msg := "NIST PE-4: Physical access control over system distribution and transmission lines not attested — input.pe_controls.transmission_access.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-4: %s", [_att_text("transmission_access", "Physical access control over system distribution and transmission lines not attested — input.pe_controls.transmission_access.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -268,7 +284,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("output_devices")
-	msg := "NIST PE-5: Physical access control over output from the organization-defined output devices not attested — input.pe_controls.output_devices.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-5: %s", [_att_text("output_devices", "Physical access control over output from the organization-defined output devices not attested — input.pe_controls.output_devices.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -278,7 +294,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("power_equipment")
-	msg := "NIST PE-9: Protection of power equipment and power cabling from damage and destruction not attested — input.pe_controls.power_equipment.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-9: %s", [_att_text("power_equipment", "Protection of power equipment and power cabling from damage and destruction not attested — input.pe_controls.power_equipment.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -288,7 +304,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("emergency_shutoff")
-	msg := "NIST PE-10: Emergency power shutoff capability, its placement and its protection from unauthorized activation not attested — input.pe_controls.emergency_shutoff.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-10: %s", [_att_text("emergency_shutoff", "Emergency power shutoff capability, its placement and its protection from unauthorized activation not attested — input.pe_controls.emergency_shutoff.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -298,7 +314,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("emergency_lighting")
-	msg := "NIST PE-12: Automatic emergency lighting covering emergency exits and evacuation routes not attested — input.pe_controls.emergency_lighting.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-12: %s", [_att_text("emergency_lighting", "Automatic emergency lighting covering emergency exits and evacuation routes not attested — input.pe_controls.emergency_lighting.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -308,7 +324,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("fire_protection")
-	msg := "NIST PE-13: Fire detection and suppression systems supported by an independent energy source not attested — input.pe_controls.fire_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-13: %s", [_att_text("fire_protection", "Fire detection and suppression systems supported by an independent energy source not attested — input.pe_controls.fire_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -318,7 +334,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("water_damage_protection")
-	msg := "NIST PE-15: Accessible, working master shutoff or isolation valves known to key personnel not attested — input.pe_controls.water_damage_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-15: %s", [_att_text("water_damage_protection", "Accessible, working master shutoff or isolation valves known to key personnel not attested — input.pe_controls.water_damage_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -328,7 +344,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("delivery_removal")
-	msg := "NIST PE-16: Authorization and control of system components entering and exiting the facility, with records not attested — input.pe_controls.delivery_removal.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-16: %s", [_att_text("delivery_removal", "Authorization and control of system components entering and exiting the facility, with records not attested — input.pe_controls.delivery_removal.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -338,7 +354,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("alternate_work_site")
-	msg := "NIST PE-17: Alternate work sites determined, their controls employed and assessed, and incident communication provided not attested — input.pe_controls.alternate_work_site.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-17: %s", [_att_text("alternate_work_site", "Alternate work sites determined, their controls employed and assessed, and incident communication provided not attested — input.pe_controls.alternate_work_site.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -348,7 +364,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("component_location")
-	msg := "NIST PE-18: Positioning of system components to minimize physical and environmental hazards and unauthorized access not attested — input.pe_controls.component_location.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-18: %s", [_att_text("component_location", "Positioning of system components to minimize physical and environmental hazards and unauthorized access not attested — input.pe_controls.component_location.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -358,7 +374,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("information_leakage")
-	msg := "NIST PE-19: Protection of the system from information leakage through electromagnetic emanations not attested — input.pe_controls.information_leakage.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-19: %s", [_att_text("information_leakage", "Protection of the system from information leakage through electromagnetic emanations not attested — input.pe_controls.information_leakage.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -368,7 +384,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("asset_monitoring")
-	msg := "NIST PE-20: Tracking and monitoring of the location and movement of the organization-defined assets not attested — input.pe_controls.asset_monitoring.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-20: %s", [_att_text("asset_monitoring", "Tracking and monitoring of the location and movement of the organization-defined assets not attested — input.pe_controls.asset_monitoring.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -378,7 +394,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("emp_protection")
-	msg := "NIST PE-21: Protection of the organization-defined systems against electromagnetic pulse damage not attested — input.pe_controls.emp_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-21: %s", [_att_text("emp_protection", "Protection of the organization-defined systems against electromagnetic pulse damage not attested — input.pe_controls.emp_protection.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -388,7 +404,7 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("component_marking")
-	msg := "NIST PE-22: Marking of hardware components with the impact or classification level they may process not attested — input.pe_controls.component_marking.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-22: %s", [_att_text("component_marking", "Marking of hardware components with the impact or classification level they may process not attested — input.pe_controls.component_marking.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -398,15 +414,69 @@ violation contains msg if {
 
 violation contains msg if {
 	not _attested("facility_location")
-	msg := "NIST PE-23: Facility site planning that considers physical and environmental hazards not attested — input.pe_controls.facility_location.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
+	msg := sprintf("NIST PE-23: %s", [_att_text("facility_location", "Facility site planning that considers physical and environmental hazards not attested — input.pe_controls.facility_location.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-6(1) Intrusion Alarms and Surveillance Equipment: physical access to the facility is monitored with intrusion
+# alarms and surveillance equipment.
+# Facts: monitoring_physical_access.intrusion_alarms_and_surveillance.intrusion_alarms_monitored,
+#        .surveillance_monitored (booleans: the alarm and video systems report as armed/recording and monitored,
+#        from the physical security system's health status).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe6_1_bools := [
+	"monitoring_physical_access.intrusion_alarms_and_surveillance.intrusion_alarms_monitored",
+	"monitoring_physical_access.intrusion_alarms_and_surveillance.surveillance_monitored",
+]
+
+_pe6_1_missing := _bool_missing(_pe6_1_bools)
+
+violation contains msg if {
+	count(_pe6_1_missing) > 0
+	msg := sprintf("NIST PE-6(1): evidence missing — %s not collected", [concat(", ", sort(_pe6_1_missing))])
+}
+
+violation contains msg if {
+	count(_pe6_1_missing) == 0
+	failed := _bool_false(_pe6_1_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-6(1): Physical access not monitored with intrusion alarms and surveillance equipment — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-13(1) Detection Systems — Automatic Activation and Notification: fire detection activates automatically and
+# notifies the organization-defined personnel and emergency responders.
+# Facts: fire_protection.detection.automatic_activation, .notifies_personnel, .notifies_emergency_responders
+#        (booleans, from the fire alarm panel configuration and its last acceptance or inspection test).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe13_1_bools := [
+	"fire_protection.detection.automatic_activation",
+	"fire_protection.detection.notifies_personnel",
+	"fire_protection.detection.notifies_emergency_responders",
+]
+
+_pe13_1_missing := _bool_missing(_pe13_1_bools)
+
+violation contains msg if {
+	count(_pe13_1_missing) > 0
+	msg := sprintf("NIST PE-13(1): evidence missing — %s not collected", [concat(", ", sort(_pe13_1_missing))])
+}
+
+violation contains msg if {
+	count(_pe13_1_missing) == 0
+	failed := _bool_false(_pe13_1_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-13(1): Fire detection does not activate automatically and notify personnel and emergency responders — %s", [concat("; ", sort(failed))])
 }
 
 compliant if count(violation) == 0
 
 # The base control ids this family evaluates (PE-7 is withdrawn); each has exactly one finding when it fails.
 evaluated_controls := {
-	"PE-1", "PE-2", "PE-3", "PE-4", "PE-5", "PE-6", "PE-8", "PE-9", "PE-10", "PE-11", "PE-12",
-	"PE-13", "PE-14", "PE-15", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
+	"PE-1", "PE-2", "PE-3", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-8", "PE-9", "PE-10", "PE-11", "PE-12",
+	"PE-13", "PE-13(1)", "PE-14", "PE-15", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
 }
 
 compliance_report := {

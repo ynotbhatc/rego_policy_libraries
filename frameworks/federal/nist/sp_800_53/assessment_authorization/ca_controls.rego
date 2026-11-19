@@ -6,10 +6,10 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 8
-#     cited: 8
-#     density: section
-#     basis: role
+#     checks: 11
+#     cited: 11
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -19,8 +19,9 @@ package nist.sp800_53.assessment_authorization
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Assessment, Authorization, and Monitoring (CA) Family. Every active base control (CA-1,
-# CA-2, CA-3, CA-5, CA-6, CA-7, CA-8, CA-9; CA-4 is withdrawn). Enhancements are not evaluated: a control never
-# fails for an enhancement.
+# CA-2, CA-3, CA-5, CA-6, CA-7, CA-8, CA-9; CA-4 is withdrawn) and the NIST SP 800-53B Moderate-baseline
+# enhancements (CA-2(1), CA-7(1), CA-7(4)). An enhancement is its own requirement with its own finding; a base
+# control never fails for an enhancement.
 
 default compliant := false
 
@@ -38,18 +39,16 @@ _obj(path) := v if {
 	is_object(v)
 } else := {}
 
-# Boolean facts: `checks` is a list of [key, description of the unmet state]. Absent or null is missing evidence;
-# any other value except the boolean true ("true", 1, false) is a finding.
+# Boolean facts: `checks` is a list of [key, description of the unmet state]. A value that is absent or not a
+# boolean (null, "true", 1) is missing evidence; false is a finding; only true passes.
 _bool_missing(path, checks) := {concat(".", [_path_str(path), c[0]]) |
 	some c in checks
-	object.get(_obj(path), c[0], null) == null
+	not is_boolean(object.get(_obj(path), c[0], null))
 }
 
 _bool_failed(path, checks) := {sprintf("%s (%s.%s is not true)", [c[1], _path_str(path), c[0]]) |
 	some c in checks
-	v := object.get(_obj(path), c[0], null)
-	v != null
-	not v == true
+	object.get(_obj(path), c[0], null) == false
 }
 
 # Numeric facts: an observed value at <path>.<obs> and the organization-defined parameter at <path>.odp.<odp>.
@@ -99,6 +98,29 @@ _detail(missing, failed) := sprintf("%s; evidence missing — %s not collected",
 	count(missing) > 0
 	count(failed) > 0
 }
+
+# Organizational controls with no machine-checkable evidence pass only on an attestation object
+# {"attested": true, "by": <non-empty string>, "date": <non-empty string>} at <path>.attestation. An attestation
+# that is absent or of the wrong shape is missing evidence; one that is present but false or unsigned is a finding.
+_att(path) := object.get(input, array.concat(array.concat([_root], path), ["attestation"]), null)
+
+_att_shaped(a) if {
+	is_object(a)
+	is_boolean(a.attested)
+	is_string(a.by)
+	is_string(a.date)
+}
+
+_att_ok(a) if {
+	_att_shaped(a)
+	a.attested == true
+	trim_space(a.by) != ""
+	trim_space(a.date) != ""
+}
+
+_att_detail(path, what) := sprintf("evidence missing — %s not collected; %s not attested (organizational control, no machine-checkable evidence)", [_path_str(array.concat(path, ["attestation"])), what]) if {
+	not _att_shaped(_att(path))
+} else := sprintf("%s not attested — %s needs attested: true and a non-empty by and date (organizational control, no machine-checkable evidence)", [what, _path_str(array.concat(path, ["attestation"]))])
 
 # -1 Policy and Procedures: policy documented, procedures documented, an official designated, and policy and
 # procedures each reviewed within their organization-defined frequency. One finding lists every unmet element.
@@ -261,10 +283,46 @@ violation contains msg if {
 	msg := sprintf("NIST CA-9: %s", [_detail(_ca9_missing, _ca9_failed)])
 }
 
+# CA-2(1) Independent Assessors: control assessments are conducted by independent assessors or assessment teams.
+# Independence (no conflict of interest with the system or its owners) is an organizational judgment with no
+# machine-checkable evidence.
+# Facts: control_assessment.independent_assessors.attestation {"attested": true, "by": <name>, "date": <date>}.
+violation contains msg if {
+	not _att_ok(_att(["control_assessment", "independent_assessors"]))
+	msg := sprintf("NIST CA-2(1): %s", [_att_detail(["control_assessment", "independent_assessors"], "use of independent assessors or assessment teams for control assessments")])
+}
+
+# CA-7(1) Independent Assessment: the controls are monitored on an ongoing basis by independent assessors or
+# assessment teams. Organizational judgment, as CA-2(1).
+# Facts: continuous_monitoring.independent_assessment.attestation {"attested": true, "by": <name>, "date": <date>}.
+violation contains msg if {
+	not _att_ok(_att(["continuous_monitoring", "independent_assessment"]))
+	msg := sprintf("NIST CA-7(1): %s", [_att_detail(["continuous_monitoring", "independent_assessment"], "ongoing monitoring of the controls by independent assessors or assessment teams")])
+}
+
+# CA-7(4) Risk Monitoring: risk monitoring is part of the continuous monitoring strategy and covers effectiveness,
+# compliance and change monitoring.
+# Facts (input.ca_controls.continuous_monitoring.risk_monitoring): effectiveness_monitoring, compliance_monitoring,
+# change_monitoring (booleans).
+_ca7_4_bools := [
+	["effectiveness_monitoring", "continuous monitoring does not include effectiveness monitoring"],
+	["compliance_monitoring", "continuous monitoring does not include compliance monitoring"],
+	["change_monitoring", "continuous monitoring does not include change monitoring"],
+]
+
+_ca7_4_missing := _bool_missing(["continuous_monitoring", "risk_monitoring"], _ca7_4_bools)
+
+_ca7_4_failed := _bool_failed(["continuous_monitoring", "risk_monitoring"], _ca7_4_bools)
+
+violation contains msg if {
+	count(_ca7_4_missing | _ca7_4_failed) > 0
+	msg := sprintf("NIST CA-7(4): %s", [_detail(_ca7_4_missing, _ca7_4_failed)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"CA-1", "CA-2", "CA-3", "CA-5", "CA-6", "CA-7", "CA-8", "CA-9"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"CA-1", "CA-2", "CA-2(1)", "CA-3", "CA-5", "CA-6", "CA-7", "CA-7(1)", "CA-7(4)", "CA-8", "CA-9"}
 
 compliance_report := {
 	"family": "CA",
