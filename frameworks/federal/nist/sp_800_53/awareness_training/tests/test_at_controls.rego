@@ -25,6 +25,8 @@ _pass := {"at_controls": {
 		"lessons_learned_incorporated": true,
 		"refresher": _freq(300, 365),
 		"content_update": _freq(30, 365),
+		"insider_threat": {"module_in_curriculum": true, "users_not_completed": 0},
+		"social_engineering": {"module_in_curriculum": true, "users_not_completed": 0},
 	},
 	"role_based_training": {
 		"trained_before_access": true,
@@ -45,7 +47,7 @@ test_all_pass_fixture_is_compliant if {
 }
 
 test_evaluated_controls_match_the_catalog if {
-	at.evaluated_controls == {"AT-1", "AT-2", "AT-3", "AT-4", "AT-6"}
+	at.evaluated_controls == {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-4", "AT-6"}
 }
 
 test_empty_input_one_finding_per_control if {
@@ -128,17 +130,72 @@ test_string_organization_frequency_is_evidence_missing if {
 	contains(concat("", r.violations), "evidence missing")
 }
 
-test_boolean_as_string_true_is_a_finding if {
+# A boolean of the wrong type is missing evidence (per-control results classify it as evidence_missing).
+test_boolean_as_string_true_is_evidence_missing if {
 	fx := object.union(_pass, {"at_controls": {"policy_procedures": {"policy_documented": "true"}}})
 	r := at.compliance_report with input as fx
 	_ids(r) == {"AT-1"}
-	contains(concat("", r.violations), "policy_documented is not true")
+	contains(concat("", r.violations), "evidence missing — input.at_controls.policy_procedures.policy_documented")
 }
 
-test_boolean_as_one_is_a_finding if {
+test_boolean_as_one_is_evidence_missing if {
 	fx := object.union(_pass, {"at_controls": {"literacy_training": {"lessons_learned_incorporated": 1}}})
 	r := at.compliance_report with input as fx
 	_ids(r) == {"AT-2"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_boolean_false_is_a_finding_not_evidence_missing if {
+	fx := object.union(_pass, {"at_controls": {"policy_procedures": {"policy_documented": false}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-1"}
+	msg := concat("", r.violations)
+	contains(msg, "policy_documented is not true")
+	not contains(msg, "evidence missing")
+}
+
+# --- AT-2(2) / AT-2(3) ------------------------------------------------------------------------------------------
+
+test_at2_2_module_missing_from_curriculum_flips_only_at2_2 if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"insider_threat": {"module_in_curriculum": false}}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(2)"}
+	not contains(concat("", r.violations), "evidence missing")
+}
+
+test_at2_2_evidence_missing if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"insider_threat": {"users_not_completed": null}}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(2)"}
+	contains(concat("", r.violations), "evidence missing — input.at_controls.literacy_training.insider_threat.users_not_completed")
+}
+
+test_at2_3_users_not_completed_flips_only_at2_3 if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"social_engineering": {"users_not_completed": 12}}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(3)"}
+	contains(concat("", r.violations), "12 users have not completed")
+}
+
+test_at2_3_evidence_missing if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"social_engineering": null}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_at2_3_count_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"social_engineering": {"users_not_completed": "0"}}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_at2_2_boolean_as_string_true_is_evidence_missing if {
+	fx := object.union(_pass, {"at_controls": {"literacy_training": {"insider_threat": {"module_in_curriculum": "true"}}}})
+	r := at.compliance_report with input as fx
+	_ids(r) == {"AT-2(2)"}
+	contains(concat("", r.violations), "evidence missing")
 }
 
 test_section_not_an_object_is_evidence_missing if {
