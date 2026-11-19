@@ -11,27 +11,27 @@
   "nist-800-53-module"
  ],
  "granularity-note": "stig-cci maps to base controls only; an enhancement counts as covered only on an exact enhancement mapping",
- "excluded_topic_rows": 33,
+ "excluded_topic_rows": 47,
  "mapping": {
   "label_is_800_53_controls": 75,
-  "nist_module_controls_mapped": 109,
+  "nist_module_controls_mapped": 266,
   "stig_catalog_controls": 1587,
   "stig_catalog_controls_not_in_map": 463,
   "stig_controls_mapped": 1124,
   "stig_map_rules": 3807,
   "stig_map_rules_without_catalog_control": 2683,
-  "nist_ids_with_a_check": 144
+  "nist_ids_with_a_check": 276
  },
  "baselines": {
   "fedramp_rev5_high": {
    "title": "FedRAMP Rev 5 High",
    "controls": 410,
-   "covered": 129,
-   "covered_pct": 31.5,
+   "covered": 201,
+   "covered_pct": 49.0,
    "base": {
     "total": 191,
-    "covered": 116,
-    "covered_pct": 60.7
+    "covered": 188,
+    "covered_pct": 98.4
    },
    "enhancement": {
     "total": 219,
@@ -42,12 +42,12 @@
   "fedramp_rev5_li_saas": {
    "title": "FedRAMP Rev 5 LI-SaaS",
    "controls": 156,
-   "covered": 87,
-   "covered_pct": 55.8,
+   "covered": 139,
+   "covered_pct": 89.1,
    "base": {
     "total": 135,
-    "covered": 82,
-    "covered_pct": 60.7
+    "covered": 134,
+    "covered_pct": 99.3
    },
    "enhancement": {
     "total": 21,
@@ -58,12 +58,12 @@
   "fedramp_rev5_low": {
    "title": "FedRAMP Rev 5 Low",
    "controls": 156,
-   "covered": 87,
-   "covered_pct": 55.8,
+   "covered": 139,
+   "covered_pct": 89.1,
    "base": {
     "total": 135,
-    "covered": 82,
-    "covered_pct": 60.7
+    "covered": 134,
+    "covered_pct": 99.3
    },
    "enhancement": {
     "total": 21,
@@ -74,12 +74,12 @@
   "fedramp_rev5_moderate": {
    "title": "FedRAMP Rev 5 Moderate",
    "controls": 323,
-   "covered": 124,
-   "covered_pct": 38.4,
+   "covered": 191,
+   "covered_pct": 59.1,
    "base": {
     "total": 181,
-    "covered": 111,
-    "covered_pct": 61.3
+    "covered": 178,
+    "covered_pct": 98.3
    },
    "enhancement": {
     "total": 142,
@@ -90,12 +90,12 @@
   "nist_800_53_rev5_high": {
    "title": "NIST SP 800-53 Rev 5 High",
    "controls": 370,
-   "covered": 125,
-   "covered_pct": 33.8,
+   "covered": 197,
+   "covered_pct": 53.2,
    "base": {
     "total": 188,
-    "covered": 113,
-    "covered_pct": 60.1
+    "covered": 185,
+    "covered_pct": 98.4
    },
    "enhancement": {
     "total": 182,
@@ -106,12 +106,12 @@
   "nist_800_53_rev5_low": {
    "title": "NIST SP 800-53 Rev 5 Low",
    "controls": 149,
-   "covered": 83,
-   "covered_pct": 55.7,
+   "covered": 133,
+   "covered_pct": 89.3,
    "base": {
     "total": 131,
-    "covered": 80,
-    "covered_pct": 61.1
+    "covered": 130,
+    "covered_pct": 99.2
    },
    "enhancement": {
     "total": 18,
@@ -122,12 +122,12 @@
   "nist_800_53_rev5_moderate": {
    "title": "NIST SP 800-53 Rev 5 Moderate",
    "controls": 287,
-   "covered": 120,
-   "covered_pct": 41.8,
+   "covered": 186,
+   "covered_pct": 64.8,
    "base": {
     "total": 177,
-    "covered": 108,
-    "covered_pct": 61.0
+    "covered": 174,
+    "covered_pct": 98.3
    },
    "enhancement": {
     "total": 110,
@@ -138,12 +138,12 @@
   "nist_800_53_rev5_privacy": {
    "title": "NIST SP 800-53 Rev 5 Privacy",
    "controls": 96,
-   "covered": 22,
-   "covered_pct": 22.9,
+   "covered": 73,
+   "covered_pct": 76.0,
    "base": {
     "total": 75,
-    "covered": 22,
-    "covered_pct": 29.3
+    "covered": 73,
+    "covered_pct": 97.3
    },
    "enhancement": {
     "total": 21,

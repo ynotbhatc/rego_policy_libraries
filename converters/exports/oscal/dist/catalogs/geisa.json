@@ -586,7 +586,7 @@
      },
      {
       "id": "geisa-governance.geisa.api-4",
-      "title": "API: discovery_response.pillars.api must be true",
+      "title": "API: GEISA version major must be a number, got %v",
       "props": [
        {
         "name": "label",
@@ -612,14 +612,14 @@
        {
         "id": "geisa-governance.geisa.api-4_stmt",
         "name": "statement",
-        "prose": "API: discovery_response.pillars.api must be true"
+        "prose": "API: GEISA version major must be a number, got %v"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-5",
-      "title": "API: manifest.geisa.uses must include 'platform-discovery'",
+      "title": "API: discovery_response.pillars.api must be true",
       "props": [
        {
         "name": "label",
@@ -645,14 +645,14 @@
        {
         "id": "geisa-governance.geisa.api-5_stmt",
         "name": "statement",
-        "prose": "API: manifest.geisa.uses must include 'platform-discovery'"
+        "prose": "API: discovery_response.pillars.api must be true"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-6",
-      "title": "API: manifest must declare publish topic '%s'",
+      "title": "API: manifest.geisa.uses must include 'platform-discovery'",
       "props": [
        {
         "name": "label",
@@ -678,14 +678,14 @@
        {
         "id": "geisa-governance.geisa.api-6_stmt",
         "name": "statement",
-        "prose": "API: manifest must declare publish topic '%s'"
+        "prose": "API: manifest.geisa.uses must include 'platform-discovery'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-7",
-      "title": "API: manifest must declare subscribe topic '%s'",
+      "title": "API: manifest must declare publish topic '%s'",
       "props": [
        {
         "name": "label",
@@ -711,14 +711,14 @@
        {
         "id": "geisa-governance.geisa.api-7_stmt",
         "name": "statement",
-        "prose": "API: manifest must declare subscribe topic '%s'"
+        "prose": "API: manifest must declare publish topic '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-8",
-      "title": "API: manifest.applicationId must be set",
+      "title": "API: manifest must declare subscribe topic '%s'",
       "props": [
        {
         "name": "label",
@@ -744,14 +744,14 @@
        {
         "id": "geisa-governance.geisa.api-8_stmt",
         "name": "statement",
-        "prose": "API: manifest.applicationId must be set"
+        "prose": "API: manifest must declare subscribe topic '%s'"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-9",
-      "title": "API: manifest.applicationId must be non-empty",
+      "title": "API: manifest.applicationId must be set",
       "props": [
        {
         "name": "label",
@@ -777,14 +777,14 @@
        {
         "id": "geisa-governance.geisa.api-9_stmt",
         "name": "statement",
-        "prose": "API: manifest.applicationId must be non-empty"
+        "prose": "API: manifest.applicationId must be set"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-10",
-      "title": "API: evidence missing — discovery_response.status_code not collected (must be a number)",
+      "title": "API: manifest.applicationId must be non-empty",
       "props": [
        {
         "name": "label",
@@ -810,14 +810,14 @@
        {
         "id": "geisa-governance.geisa.api-10_stmt",
         "name": "statement",
-        "prose": "API: evidence missing — discovery_response.status_code not collected (must be a number)"
+        "prose": "API: manifest.applicationId must be non-empty"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-11",
-      "title": "API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)",
+      "title": "API: evidence missing — discovery_response.status_code not collected (must be a number)",
       "props": [
        {
         "name": "label",
@@ -843,14 +843,14 @@
        {
         "id": "geisa-governance.geisa.api-11_stmt",
         "name": "statement",
-        "prose": "API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)"
+        "prose": "API: evidence missing — discovery_response.status_code not collected (must be a number)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-12",
-      "title": "API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)",
+      "title": "API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)",
       "props": [
        {
         "name": "label",
@@ -876,14 +876,14 @@
        {
         "id": "geisa-governance.geisa.api-12_stmt",
         "name": "statement",
-        "prose": "API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)"
+        "prose": "API: evidence missing — discovery_response.geisa_version.major not collected (must be a number)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-13",
-      "title": "API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')",
+      "title": "API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)",
       "props": [
        {
         "name": "label",
@@ -909,14 +909,14 @@
        {
         "id": "geisa-governance.geisa.api-13_stmt",
         "name": "statement",
-        "prose": "API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')"
+        "prose": "API: evidence missing — discovery_response.pillars.api not collected (must be a boolean)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-14",
-      "title": "API: evidence missing — manifest.permissions.mqtt.publish not collected",
+      "title": "API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')",
       "props": [
        {
         "name": "label",
@@ -942,14 +942,14 @@
        {
         "id": "geisa-governance.geisa.api-14_stmt",
         "name": "statement",
-        "prose": "API: evidence missing — manifest.permissions.mqtt.publish not collected"
+        "prose": "API: evidence missing — manifest.geisa.uses not collected (must include 'platform-discovery')"
        }
       ],
       "class": "governance"
      },
      {
       "id": "geisa-governance.geisa.api-15",
-      "title": "API: evidence missing — manifest.permissions.mqtt.subscribe not collected",
+      "title": "API: evidence missing — manifest.permissions.mqtt.publish not collected",
       "props": [
        {
         "name": "label",
@@ -974,6 +974,39 @@
       "parts": [
        {
         "id": "geisa-governance.geisa.api-15_stmt",
+        "name": "statement",
+        "prose": "API: evidence missing — manifest.permissions.mqtt.publish not collected"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "geisa-governance.geisa.api-16",
+      "title": "API: evidence missing — manifest.permissions.mqtt.subscribe not collected",
+      "props": [
+       {
+        "name": "label",
+        "value": "governance.geisa.api#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "governance.geisa.api#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "governance.geisa.api"
+       }
+      ],
+      "links": [
+       {
+        "href": "#50f78788-0f99-5ca8-9dca-1a9b6076c232",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "geisa-governance.geisa.api-16_stmt",
         "name": "statement",
         "prose": "API: evidence missing — manifest.permissions.mqtt.subscribe not collected"
        }
