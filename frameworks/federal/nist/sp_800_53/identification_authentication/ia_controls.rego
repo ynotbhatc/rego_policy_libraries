@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 18
-#     cited: 15
+#     checks: 34
+#     cited: 24
 #     density: sized
 #     basis: size
 #     tested: true
@@ -112,30 +112,107 @@ _detail(missing, failed) := sprintf("%s; evidence missing — %s not collected",
 # [id, path below input.ia_controls, finding text when the fact is false]
 # ---------------------------------------------------------------------------------------------------------------
 
-_single_fact := [
-	["IA-1", ["policy", "documented"], "Identification and authentication policy not documented"],
-	["IA-2", ["user_id_auth", "uniquely_identified"], "Organizational users not uniquely identified and authenticated"],
-	["IA-2(1)", ["user_id_auth", "mfa_for_privileged"], "Multi-factor authentication not required for privileged accounts"],
-	["IA-2(2)", ["user_id_auth", "mfa_for_non_privileged"], "Multi-factor authentication not required for non-privileged accounts"],
-	["IA-3", ["device_identification", "implemented"], "Device identification and authentication not implemented"],
-	["IA-4", ["identifier_management", "unique_per_user"], "Identifier management does not assign unique IDs per user"],
-	["IA-5", ["authenticator_management", "complexity_enforced"], "Authenticator management lacks complexity/lifetime enforcement"],
-	["IA-6", ["authenticator_feedback", "obscured"], "Authentication feedback (e.g., password entry) is not obscured"],
-	["IA-8", ["non_organizational_users", "identified"], "Non-organizational users not uniquely identified and authenticated"],
-]
-
+# One rule pair per id, each message with its literal "NIST <id>: " prefix (the OSCAL catalog and the coverage
+# stamp read the id from the message literal).
 _fact(path) := object.get(input, array.concat([_root], path), _absent)
 
+# IA-1: input.ia_controls.policy.documented
 violation contains msg if {
-	some c in _single_fact
-	_fact(c[1]) == _absent
-	msg := sprintf("NIST %s: evidence missing — %s not collected", [c[0], _path_str(c[1])])
+	_fact(["policy", "documented"]) == _absent
+	msg := "NIST IA-1: evidence missing — input.ia_controls.policy.documented not collected"
 }
 
 violation contains msg if {
-	some c in _single_fact
-	_fact(c[1]) == false
-	msg := sprintf("NIST %s: %s", [c[0], c[2]])
+	_fact(["policy", "documented"]) == false
+	msg := "NIST IA-1: Identification and authentication policy not documented"
+}
+
+# IA-2: input.ia_controls.user_id_auth.uniquely_identified
+violation contains msg if {
+	_fact(["user_id_auth", "uniquely_identified"]) == _absent
+	msg := "NIST IA-2: evidence missing — input.ia_controls.user_id_auth.uniquely_identified not collected"
+}
+
+violation contains msg if {
+	_fact(["user_id_auth", "uniquely_identified"]) == false
+	msg := "NIST IA-2: Organizational users not uniquely identified and authenticated"
+}
+
+# IA-2(1): input.ia_controls.user_id_auth.mfa_for_privileged
+violation contains msg if {
+	_fact(["user_id_auth", "mfa_for_privileged"]) == _absent
+	msg := "NIST IA-2(1): evidence missing — input.ia_controls.user_id_auth.mfa_for_privileged not collected"
+}
+
+violation contains msg if {
+	_fact(["user_id_auth", "mfa_for_privileged"]) == false
+	msg := "NIST IA-2(1): Multi-factor authentication not required for privileged accounts"
+}
+
+# IA-2(2): input.ia_controls.user_id_auth.mfa_for_non_privileged
+violation contains msg if {
+	_fact(["user_id_auth", "mfa_for_non_privileged"]) == _absent
+	msg := "NIST IA-2(2): evidence missing — input.ia_controls.user_id_auth.mfa_for_non_privileged not collected"
+}
+
+violation contains msg if {
+	_fact(["user_id_auth", "mfa_for_non_privileged"]) == false
+	msg := "NIST IA-2(2): Multi-factor authentication not required for non-privileged accounts"
+}
+
+# IA-3: input.ia_controls.device_identification.implemented
+violation contains msg if {
+	_fact(["device_identification", "implemented"]) == _absent
+	msg := "NIST IA-3: evidence missing — input.ia_controls.device_identification.implemented not collected"
+}
+
+violation contains msg if {
+	_fact(["device_identification", "implemented"]) == false
+	msg := "NIST IA-3: Device identification and authentication not implemented"
+}
+
+# IA-4: input.ia_controls.identifier_management.unique_per_user
+violation contains msg if {
+	_fact(["identifier_management", "unique_per_user"]) == _absent
+	msg := "NIST IA-4: evidence missing — input.ia_controls.identifier_management.unique_per_user not collected"
+}
+
+violation contains msg if {
+	_fact(["identifier_management", "unique_per_user"]) == false
+	msg := "NIST IA-4: Identifier management does not assign unique IDs per user"
+}
+
+# IA-5: input.ia_controls.authenticator_management.complexity_enforced
+violation contains msg if {
+	_fact(["authenticator_management", "complexity_enforced"]) == _absent
+	msg := "NIST IA-5: evidence missing — input.ia_controls.authenticator_management.complexity_enforced not collected"
+}
+
+violation contains msg if {
+	_fact(["authenticator_management", "complexity_enforced"]) == false
+	msg := "NIST IA-5: Authenticator management lacks complexity/lifetime enforcement"
+}
+
+# IA-6: input.ia_controls.authenticator_feedback.obscured
+violation contains msg if {
+	_fact(["authenticator_feedback", "obscured"]) == _absent
+	msg := "NIST IA-6: evidence missing — input.ia_controls.authenticator_feedback.obscured not collected"
+}
+
+violation contains msg if {
+	_fact(["authenticator_feedback", "obscured"]) == false
+	msg := "NIST IA-6: Authentication feedback (e.g., password entry) is not obscured"
+}
+
+# IA-8: input.ia_controls.non_organizational_users.identified
+violation contains msg if {
+	_fact(["non_organizational_users", "identified"]) == _absent
+	msg := "NIST IA-8: evidence missing — input.ia_controls.non_organizational_users.identified not collected"
+}
+
+violation contains msg if {
+	_fact(["non_organizational_users", "identified"]) == false
+	msg := "NIST IA-8: Non-organizational users not uniquely identified and authenticated"
 }
 
 # IA-5(1) Password-based Authentication: passwords transmitted only over cryptographically protected

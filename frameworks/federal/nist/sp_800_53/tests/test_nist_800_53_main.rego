@@ -119,6 +119,13 @@ _original_families_input := {
 
 # Every family passes: the original seven families' fixture plus each new family's own all-pass fixture.
 fully_compliant_input := object.union(_original_families_input, object.union_n([
+	data.nist.sp800_53.access_control_logic_test._pass,
+	data.nist.sp800_53.audit_accountability_logic_test._pass,
+	data.nist.sp800_53.configuration_management_logic_test._pass,
+	data.nist.sp800_53.identification_authentication_logic_test._pass,
+	data.nist.sp800_53.incident_response_logic_test._pass,
+	data.nist.sp800_53.system_communications_logic_test._pass,
+	data.nist.sp800_53.system_information_integrity_logic_test._pass,
 	data.nist.sp800_53.awareness_training_logic_test._pass,
 	data.nist.sp800_53.assessment_authorization_logic_test._pass,
 	data.nist.sp800_53.contingency_planning_logic_test._pass,
@@ -166,7 +173,7 @@ test_family_summary_present if {
 
 test_total_controls_equals_evaluated_ids if {
 	main.total_controls == count(main.evaluated_controls)
-	main.total_controls == 266
+	main.total_controls == 370
 }
 
 test_empty_input_every_evaluated_id_fails_once if {
@@ -178,7 +185,7 @@ test_empty_input_every_evaluated_id_fails_once if {
 
 test_failed_never_exceeds_total_on_partial_input if {
 	r := main.compliance_report with input as {"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}
-	r.failed_controls == 265
+	r.failed_controls == 369
 	r.failed_controls <= r.total_controls
 }
 
@@ -199,16 +206,17 @@ test_compliant_input_has_zero_failed if {
 test_coverage_states_scope if {
 	r := main.compliance_report with input as {}
 	r.coverage.baseline_assessment == false
-	r.coverage.controls_evaluated == 266
-	r.coverage.base_controls_evaluated == 249
+	r.coverage.controls_evaluated == 370
+	r.coverage.base_controls_evaluated == 255
+	r.coverage.enhancements_evaluated == 115
 	r.coverage.catalog_families == 20
 	count(r.coverage.families_evaluated) == 20
 }
 
 test_bridge_failed_controls_bounded if {
 	r := data.nist_800_53.main.compliance_report with input as {}
-	r.total_controls == 266
-	r.failed_controls == 266
+	r.total_controls == 370
+	r.failed_controls == 370
 	r.compliant == false
 }
 

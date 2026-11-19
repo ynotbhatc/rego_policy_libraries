@@ -130,7 +130,7 @@ Three mapping sources, nothing else (a check is `<framework>:<label>`):
    as `library_controls` in `crosswalk_csv` `spine_800_53.csv` (the round-trip asserts they are equal).
 3. `nist-800-53-module`: our own `nist_sp_800_53` module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (two controls).
 
-**Excluded:** the 47 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
+**Excluded:** the 52 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
 nothing: its three 800-53B maps are baseline membership, not library mappings, and the five framework maps (800-171 R3, CSF 2.0, ISO 27001,
 PCI DSS v4, CIS Controls v8.1) are `pending` with no rows. **No ISO 27001, PCI DSS, CSF or 800-171 coverage is counted here.**
 
@@ -140,14 +140,14 @@ control covered by one STIG rule is covered by that rule alone, not by every enh
 
 | Baseline | Controls | Covered | Base covered / total | Enhancements covered / total |
 |---|---|---|---|---|
-| NIST SP 800-53 Rev 5 Low | 149 | 133 (89.3%) | 130 / 131 (99.2%) | 3 / 18 (16.7%) |
-| NIST SP 800-53 Rev 5 Moderate | 287 | 186 (64.8%) | 174 / 177 (98.3%) | 12 / 110 (10.9%) |
-| NIST SP 800-53 Rev 5 High | 370 | 197 (53.2%) | 185 / 188 (98.4%) | 12 / 182 (6.6%) |
-| NIST SP 800-53 Rev 5 Privacy | 96 | 73 (76.0%) | 73 / 75 (97.3%) | 0 / 21 (0.0%) |
-| FedRAMP Rev 5 Low | 156 | 139 (89.1%) | 134 / 135 (99.3%) | 5 / 21 (23.8%) |
-| FedRAMP Rev 5 Moderate | 323 | 191 (59.1%) | 178 / 181 (98.3%) | 13 / 142 (9.2%) |
-| FedRAMP Rev 5 High | 410 | 201 (49.0%) | 188 / 191 (98.4%) | 13 / 219 (5.9%) |
-| FedRAMP Rev 5 LI-SaaS | 156 | 139 (89.1%) | 134 / 135 (99.3%) | 5 / 21 (23.8%) |
+| NIST SP 800-53 Rev 5 Low | 149 | 149 (100.0%) | 131 / 131 (100.0%) | 18 / 18 (100.0%) |
+| NIST SP 800-53 Rev 5 Moderate | 287 | 287 (100.0%) | 177 / 177 (100.0%) | 110 / 110 (100.0%) |
+| NIST SP 800-53 Rev 5 High | 370 | 298 (80.5%) | 188 / 188 (100.0%) | 110 / 182 (60.4%) |
+| NIST SP 800-53 Rev 5 Privacy | 96 | 75 (78.1%) | 73 / 75 (97.3%) | 2 / 21 (9.5%) |
+| FedRAMP Rev 5 Low | 156 | 156 (100.0%) | 135 / 135 (100.0%) | 21 / 21 (100.0%) |
+| FedRAMP Rev 5 Moderate | 323 | 292 (90.4%) | 181 / 181 (100.0%) | 111 / 142 (78.2%) |
+| FedRAMP Rev 5 High | 410 | 302 (73.7%) | 191 / 191 (100.0%) | 111 / 219 (50.7%) |
+| FedRAMP Rev 5 LI-SaaS | 156 | 156 (100.0%) | 135 / 135 (100.0%) | 21 / 21 (100.0%) |
 
 Percentages are of the controls the baseline selects. FedRAMP Low and LI-SaaS select the same ids in the pinned source, so their rows are equal.
 

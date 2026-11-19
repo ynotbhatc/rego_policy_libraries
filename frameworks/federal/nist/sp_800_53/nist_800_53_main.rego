@@ -1,5 +1,5 @@
 # METADATA
-# title: "NIST SP 800-53 Rev 5 — catalog check: all 20 families, 249 of 300 base controls plus 17 enhancements"
+# title: "NIST SP 800-53 Rev 5 — catalog check: all 20 families, every Low and Moderate baseline control, 370 ids"
 # custom:
 #   class: compliance
 #   framework: nist_sp_800_53
@@ -29,15 +29,14 @@ import rego.v1
 # Coverage (checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0, which is also the
 # catalog behind this repo's converters/exports/oscal profiles, commit 78650f02): the catalog has 20
 # families and 1,014 controls and enhancements that are not withdrawn (300 base controls). This module
-# evaluates 266 of them — 249 of the 300 base controls, in all 20 families, and 17 enhancements (AC-2(1),
-# AC-4(1), AC-6(1), AC-6(2), AC-9(1), AC-9(4), AC-11(1), AC-12(1), AC-17(1), AC-17(2), AC-18(1), IA-2(1),
-# IA-2(2), IA-5(1), SC-8(1), SC-28(1), SC-45(1)). The 13 families added 2026-11-18 (AT, CA, CP, MA, MP, PE, PL,
-# PM, PS, PT, RA, SA, SR) cover every active base control; the base controls still missing are in AC, AU,
-# CM, IA, SC and SI. A base control never fails on an enhancement's requirement. Organizational controls with
-# no machine-checkable evidence require a signed attestation ({attested: true, by, date}). A compliant result
-# means "no finding in the 266 evaluated ids", nothing more. control_results gives every id's outcome, and
-# baseline_results says, for each 800-53B and FedRAMP baseline, which of its controls are evaluated and how they
-# came out and which are not evaluated; that is a statement about this module, not a baseline authorization. Withdrawn controls are not assessed.
+# evaluates 370 of them: 255 of the 300 base controls, in all 20 families, and 115 enhancements, which is every
+# control the NIST SP 800-53B Low and Moderate baselines select (149 and 287). The 45 base controls still missing
+# are in SC (27), SI (10), AU (3), IA (3) and CM (2); the High baseline's further enhancements are not evaluated yet.
+# A base control never fails on an enhancement's requirement. Organizational controls with no machine-checkable
+# evidence require a signed attestation ({attested: true, by, date}). A compliant result means "no finding in the
+# 370 evaluated ids", nothing more. control_results gives every id's outcome, and baseline_results says, for each
+# 800-53B and FedRAMP baseline, which of its controls are evaluated and how they came out and which are not
+# evaluated; that is a statement about this module, not a baseline authorization. Withdrawn controls are not assessed.
 #
 # Report contract: total_controls is the number of ids evaluated; failed_controls is the number of
 # distinct ids with a finding (each evaluated id produces at most one finding), so failed <= total.
@@ -122,17 +121,20 @@ compliant if count(violations) == 0
 #   not_attested      an organizational control without its signed attestation
 # basis is "attestation" for the ids in index.attestation_controls, otherwise "evidence"; baselines lists the
 # baseline keys (see baseline_results) that select the id.
-# (id, finding) pairs, parsed once: each finding names its id(s) in its prefix.
-_pairs := {[id, v] | some v in violations; some id in _finding_ids(v)}
+# Findings grouped by the id(s) their prefix names, parsed once per finding.
+_findings_by_id[id] contains v if {
+	some v in violations
+	some id in _finding_ids(v)
+}
 
-_findings_for[id] := [v | some p in _pairs; p[0] == id; v := p[1]] if some id in evaluated_controls
+_findings_for[id] := sort(object.get(_findings_by_id, id, set())) if some id in evaluated_controls
 
 _baseline_sets[k] := {id | some id in ids} if some k, ids in index.baselines
 
-_finding_status(msg) := "evidence_missing" if {
-	contains(msg, "evidence missing")
-} else := "not_attested" if {
+_finding_status(msg) := "not_attested" if {
 	contains(msg, "not attested")
+} else := "evidence_missing" if {
+	contains(msg, "evidence missing")
 } else := "fail"
 
 _status(msgs) := "pass" if {
@@ -188,7 +190,7 @@ assessed_at := input.assessment_date
 compliance_report := {
 	"framework": "NIST SP 800-53 Rev 5",
 	"version": "Rev 5",
-	"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 266 of 1,014 active controls and enhancements (249 of 300 base controls); per-baseline results, not a baseline authorization",
+	"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 370 of 1,014 active controls and enhancements (255 of 300 base controls; all of 800-53B Low and Moderate); per-baseline results, not a baseline authorization",
 	"assessed_at": assessed_at,
 	"total_controls": total_controls,
 	"failed_controls": failed_controls,
@@ -200,8 +202,8 @@ compliance_report := {
 		"catalog_active_base_controls": 300,
 		"families_evaluated": ["AC", "AT", "AU", "CA", "CM", "CP", "IA", "IR", "MA", "MP", "PE", "PL", "PM", "PS", "PT", "RA", "SA", "SC", "SI", "SR"],
 		"controls_evaluated": total_controls,
-		"base_controls_evaluated": 249,
-		"enhancements_evaluated": 17,
+		"base_controls_evaluated": count({id | some id in evaluated_controls; not contains(id, "(")}),
+		"enhancements_evaluated": count({id | some id in evaluated_controls; contains(id, "(")}),
 		"withdrawn_not_assessed": ["AC-15", "SC-19"],
 		"baseline_assessment": false,
 	},

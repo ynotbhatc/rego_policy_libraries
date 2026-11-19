@@ -8,11 +8,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 Rev 5: every Low and Moderate baseline control
+
+The module evaluates 370 ids (was 266): 255 base controls and 115 enhancements, which is every control the
+NIST SP 800-53B Low (149) and Moderate (287) baselines select. 104 ids added in 16 families (6 base controls:
+CM-12, IA-11, IA-12, SC-4, SC-22, SC-39; 98 enhancements), ids and titles from NIST's OSCAL catalog 5.2.0.
+FedRAMP Moderate is now 292 of 323 evaluated, FedRAMP High 300 of 410 (`baseline_results`).
+
+- Each new id fails closed (absent or mistyped evidence is "evidence missing"), compares organization-defined
+  values under `odp.`, guards every number; 102 are evidence-based, 2 (CA-2(1), CA-7(1)) need an attestation.
+  Enhancement facts nest under the base control's object; an enhancement never fails its base control.
+- Existing rules in AC, AT, AU, CA, CM, IA, IR, MA, PE, SC and SI now say "evidence missing" when their facts are
+  absent or the wrong type, so `control_results` no longer reports absent evidence as `fail` (on `{}`: 330
+  evidence missing, 40 not attested, 0 fail). Pass conditions are unchanged; IA-7 no longer passes silently on a
+  non-object fact. An absent attestation reads `not_attested`.
+- Tests for AC, AU, IA, IR and SC no longer wrap `with input as` in helper functions, so those families build
+  to wasm again; SI and CM gain full test files. 881 tests in the module.
+- Known gap, unchanged here: about 50 older AU, CM, IR, SC and SI rules still pass on a truthy non-boolean
+  (`"yes"`, `1`); making them strict changes pass conditions and is a separate change.
+
 ### Added — NIST SP 800-53 Rev 5: per-control and per-baseline results
 
 `nist_800_53.main.compliance_report` gains three fields. Additive: no existing field, total or finding changes.
 
-- `control_results`: one row per evaluated id (266), passes included, in natural id order (AC-2 before AC-2(1)
+- `control_results`: one row per evaluated id (370), passes included, in natural id order (AC-2 before AC-2(1)
   before AC-10): `id`, `status` (`pass`, `fail`, `evidence_missing`, `not_attested`), `basis` (`evidence` or
   `attestation`), `baselines` (the baseline keys that select the id) and `findings`. Every family check fails
   closed, so `pass` means the evidence was supplied and met the requirement.
@@ -24,9 +43,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The static half (attestation basis, natural order, baseline membership) is generated into
   `nist_800_53_index.rego` by `scripts/gen_nist_800_53_index.py` from the module itself and the committed OSCAL
   baseline profiles (`--check` reports a stale file). 11 tests in `tests/test_nist_800_53_results.rego`.
-- Known limit: the seven original families (AC, AU, CM, IA, IR, SC, SI) report some absent facts as a plain
-  finding, so on `{}` 99 rows read `fail` where `evidence_missing` is meant. The next 800-53 change rewords
-  those messages; the pass conditions do not change.
 - OSCAL assessment-results asserts a control `satisfied` only from a `control_results` pass row. NIST findings now
   target their catalog statements (the orchestrator package resolves to the framework of its family packages).
 
