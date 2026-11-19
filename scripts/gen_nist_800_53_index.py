@@ -88,7 +88,27 @@ def build():
     # titles apart from the id lists: an object carrying "title" reads as a control to scripts/count_controls.py
     out += ['', 'baseline_titles := {'] + titles + ['}']
     r = subprocess.run(["opa", "fmt"], input="\n".join(out) + "\n", capture_output=True, text=True, check=True)
-    return r.stdout
+    return keep_stamp(r.stdout)
+
+
+def keep_stamp(text):
+    """Carry over the coverage block scripts/coverage_stamp.py writes into the METADATA, so the stamper and this
+    generator agree on the file (the stamp is the stamper's to own)."""
+    if not OUT.exists():
+        return text
+    lines, block, on = OUT.read_text().splitlines(), [], False
+    for l in lines:
+        if l == "#   coverage:":
+            on = True
+        elif on and not l.startswith("#     "):
+            break
+        if on:
+            block.append(l)
+    if not block:
+        return text
+    t = text.splitlines()
+    i = t.index("#   domains: [us-federal, security-controls]") + 1
+    return "\n".join(t[:i] + block + t[i:]) + "\n"
 
 
 if __name__ == "__main__":

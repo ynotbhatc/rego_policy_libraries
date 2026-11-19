@@ -5,6 +5,15 @@
 #   framework: nist_sp_800_53
 #   source: nist
 #   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 0
+#     cited: 0
+#     density: unrecognised
+#     basis: role
+#     tested: false
+#     entrypoint: none
+#     guard: n/a
+#     as_of: v2.5.0
 package nist.sp800_53.index
 
 import rego.v1

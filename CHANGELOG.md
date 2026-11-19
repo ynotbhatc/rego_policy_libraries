@@ -24,6 +24,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The static half (attestation basis, natural order, baseline membership) is generated into
   `nist_800_53_index.rego` by `scripts/gen_nist_800_53_index.py` from the module itself and the committed OSCAL
   baseline profiles (`--check` reports a stale file). 11 tests in `tests/test_nist_800_53_results.rego`.
+- Known limit: the seven original families (AC, AU, CM, IA, IR, SC, SI) report some absent facts as a plain
+  finding, so on `{}` 99 rows read `fail` where `evidence_missing` is meant. The next 800-53 change rewords
+  those messages; the pass conditions do not change.
+- OSCAL assessment-results asserts a control `satisfied` only from a `control_results` pass row. NIST findings now
+  target their catalog statements (the orchestrator package resolves to the framework of its family packages).
 
 ### Added — NIST SP 800-53 Rev 5: all 20 control families
 
