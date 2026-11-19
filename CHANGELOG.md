@@ -8,6 +8,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 Rev 5: per-control and per-baseline results
+
+`nist_800_53.main.compliance_report` gains three fields. Additive: no existing field, total or finding changes.
+
+- `control_results`: one row per evaluated id (266), passes included, in natural id order (AC-2 before AC-2(1)
+  before AC-10): `id`, `status` (`pass`, `fail`, `evidence_missing`, `not_attested`), `basis` (`evidence` or
+  `attestation`), `baselines` (the baseline keys that select the id) and `findings`. Every family check fails
+  closed, so `pass` means the evidence was supplied and met the requirement.
+- `control_result_counts`: rows per status.
+- `baseline_results`: for NIST SP 800-53B Low, Moderate, High and Privacy and FedRAMP Rev 5 Low, Moderate and
+  High: `in_scope`, `evaluated`, `passed`, `not_passed` (+ ids) and `not_evaluated` (+ ids). Controls the module
+  does not evaluate are listed as not evaluated, never assumed met; the report is still not a baseline
+  authorization.
+- The static half (attestation basis, natural order, baseline membership) is generated into
+  `nist_800_53_index.rego` by `scripts/gen_nist_800_53_index.py` from the module itself and the committed OSCAL
+  baseline profiles (`--check` reports a stale file). 11 tests in `tests/test_nist_800_53_results.rego`.
+- Known limit: the seven original families (AC, AU, CM, IA, IR, SC, SI) report some absent facts as a plain
+  finding, so on `{}` 99 rows read `fail` where `evidence_missing` is meant. The next 800-53 change rewords
+  those messages; the pass conditions do not change.
+- OSCAL assessment-results asserts a control `satisfied` only from a `control_results` pass row. NIST findings now
+  target their catalog statements (the orchestrator package resolves to the framework of its family packages).
+
 ### Added — NIST SP 800-53 Rev 5: all 20 control families
 
 The NIST 800-53 module evaluated 7 of the 20 Rev 5 families. It now aggregates all 20. Thirteen new family

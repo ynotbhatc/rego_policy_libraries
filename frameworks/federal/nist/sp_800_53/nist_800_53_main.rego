@@ -34,9 +34,10 @@ import rego.v1
 # IA-2(2), IA-5(1), SC-8(1), SC-28(1), SC-45(1)). The 13 families added 2026-11-18 (AT, CA, CP, MA, MP, PE, PL,
 # PM, PS, PT, RA, SA, SR) cover every active base control; the base controls still missing are in AC, AU,
 # CM, IA, SC and SI. A base control never fails on an enhancement's requirement. Organizational controls with
-# no machine-checkable evidence require a signed attestation ({attested: true, by, date}). It is not a Low /
-# Moderate / High baseline assessment; a compliant result means "no finding in the 266 evaluated ids",
-# nothing more. Withdrawn controls are not assessed.
+# no machine-checkable evidence require a signed attestation ({attested: true, by, date}). A compliant result
+# means "no finding in the 266 evaluated ids", nothing more. control_results gives every id's outcome, and
+# baseline_results says, for each 800-53B and FedRAMP baseline, which of its controls are evaluated and how they
+# came out and which are not evaluated; that is a statement about this module, not a baseline authorization. Withdrawn controls are not assessed.
 #
 # Report contract: total_controls is the number of ids evaluated; failed_controls is the number of
 # distinct ids with a finding (each evaluated id produces at most one finding), so failed <= total.
@@ -51,6 +52,7 @@ import data.nist.sp800_53.configuration_management as cm
 import data.nist.sp800_53.contingency_planning as cp
 import data.nist.sp800_53.identification_authentication as ia
 import data.nist.sp800_53.incident_response as ir
+import data.nist.sp800_53.index
 import data.nist.sp800_53.maintenance as ma
 import data.nist.sp800_53.media_protection as mp
 import data.nist.sp800_53.personnel_security as ps
@@ -113,6 +115,69 @@ failed_controls := count(failed_control_ids & evaluated_controls)
 
 compliant if count(violations) == 0
 
+# Per-control results: one row per evaluated id, passes included, in natural id order.
+#   pass              no finding for the id (every family check is fail-closed: no evidence is a finding)
+#   fail              a finding that is not about missing evidence or a missing attestation
+#   evidence_missing  the facts the check reads were not collected
+#   not_attested      an organizational control without its signed attestation
+# basis is "attestation" for the ids in index.attestation_controls, otherwise "evidence"; baselines lists the
+# baseline keys (see baseline_results) that select the id.
+# (id, finding) pairs, parsed once: each finding names its id(s) in its prefix.
+_pairs := {[id, v] | some v in violations; some id in _finding_ids(v)}
+
+_findings_for[id] := [v | some p in _pairs; p[0] == id; v := p[1]] if some id in evaluated_controls
+
+_baseline_sets[k] := {id | some id in ids} if some k, ids in index.baselines
+
+_finding_status(msg) := "evidence_missing" if {
+	contains(msg, "evidence missing")
+} else := "not_attested" if {
+	contains(msg, "not attested")
+} else := "fail"
+
+_status(msgs) := "pass" if {
+	count(msgs) == 0
+} else := "fail" if {
+	"fail" in {_finding_status(m) | some m in msgs}
+} else := "not_attested" if {
+	"not_attested" in {_finding_status(m) | some m in msgs}
+} else := "evidence_missing"
+
+_basis(id) := "attestation" if {
+	id in index.attestation_controls
+} else := "evidence"
+
+_status_of[id] := _status(_findings_for[id]) if some id in evaluated_controls
+
+control_results := [{
+	"id": id,
+	"status": _status_of[id],
+	"basis": _basis(id),
+	"baselines": [k | some k, members in _baseline_sets; id in members],
+	"findings": _findings_for[id],
+} |
+	some id in index.order
+]
+
+control_result_counts := {s: count([id | some id, st in _status_of; st == s]) | some s in ["pass", "fail", "evidence_missing", "not_attested"]}
+
+# Per-baseline results: for each imported baseline, how many of its controls this module evaluates and how they
+# came out, and which it does not evaluate (natural order). This is a statement about this module's ids, not a
+# baseline authorization: not_evaluated controls are unassessed, never assumed met.
+baseline_results[k] := {
+	"title": index.baseline_titles[k],
+	"in_scope": count(ids),
+	"evaluated": count(ev),
+	"passed": count([id | some id in ev; _status_of[id] == "pass"]),
+	"not_passed": count([id | some id in ev; _status_of[id] != "pass"]),
+	"not_passed_ids": [id | some id in ev; _status_of[id] != "pass"],
+	"not_evaluated": count(ids) - count(ev),
+	"not_evaluated_ids": [id | some id in ids; not id in evaluated_controls],
+} if {
+	some k, ids in index.baselines
+	ev := [id | some id in ids; id in evaluated_controls]
+}
+
 # Default for fields supplied via input. Without a default, an undefined
 # reference inside the object literal would make the whole report undefined
 # (and the OPA endpoint would return {}).
@@ -123,7 +188,7 @@ assessed_at := input.assessment_date
 compliance_report := {
 	"framework": "NIST SP 800-53 Rev 5",
 	"version": "Rev 5",
-	"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 266 of 1,014 active controls and enhancements (249 of 300 base controls); not a baseline assessment",
+	"regulation": "NIST SP 800-53 Rev 5 control catalog — all 20 families; 266 of 1,014 active controls and enhancements (249 of 300 base controls); per-baseline results, not a baseline authorization",
 	"assessed_at": assessed_at,
 	"total_controls": total_controls,
 	"failed_controls": failed_controls,
@@ -140,6 +205,9 @@ compliance_report := {
 		"withdrawn_not_assessed": ["AC-15", "SC-19"],
 		"baseline_assessment": false,
 	},
+	"control_results": control_results,
+	"control_result_counts": control_result_counts,
+	"baseline_results": baseline_results,
 	"violations": violations,
 	"violation_count": count(violations),
 	"compliant": compliant,
