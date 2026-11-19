@@ -6,6 +6,7 @@ import rego.v1
 
 # The uniform key set every stig.<platform>.main.compliance_report emits.
 expected_keys := {
+	"rule_results",
 	"total_controls",
 	"open_findings",
 	"passed_controls",
