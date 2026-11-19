@@ -8,6 +8,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — STIG results roll up onto NIST SP 800-53 (crosswalk.correlation)
+
+- Every STIG report (24 platforms) gains `rule_results`: each rule's DISA status, passes included. Additive;
+  `violations`, totals and percentages do not change.
+- `crosswalk.correlation` reads `input.reports` (one or more STIG `compliance_report`s) as well as the older
+  `input.findings`, and rolls them onto 800-53 controls: `gap`, `not_reviewed`, `satisfied`, `not_applicable`;
+  unassessed controls stay absent. `summary` reports `rules_supplied` and `rules_unmapped`.
+- Fixed: a `Not_Reviewed` rule (an unresolved manual review) left its 800-53 control `satisfied`; it is now
+  `not_reviewed`. An unrecognised status counts as Open, and a report without facts contributes Open rules.
+- Known gap: the crosswalk map predates the rule ids of the current RHEL 10, Ubuntu 24.04 and Windows Server
+  2016 / 2019 modules; those rules are reported as unmapped until the map is regenerated.
 ### Added — NIST SP 800-53 Rev 5: every Low and Moderate baseline control
 
 The module evaluates 370 ids (was 266): 255 base controls and 115 enhancements, which is every control the

@@ -66,6 +66,9 @@ stig_assessment := {
 # Uniform library entrypoint contract (consumed by the .main alias's
 # fail-closed gate): total_controls + open_findings are required.
 compliance_report := {
+	# every rule's DISA status (Not_a_Finding, Open, Not_Applicable, Not_Reviewed), for rollups such as
+	# crosswalk.correlation; violations stay the open findings
+	"rule_results": [{"rule": f.stig_id, "status": f.status} | some f in all_findings],
 	"total_controls": count(all_findings),
 	"open_findings": unresolved_findings,
 	"passed_controls": count(all_findings) - count(unresolved_findings),
