@@ -93,7 +93,7 @@ So this directory adds 746 to the headline while the benchmark has 352 recommend
 `cis_rhel9_main.rego` compares the distinct-id figure (377) with the declared 352, and calls the module `full`
 because the ratio is above 0.9; it does not say the extra 25 are not recommendations.
 
-**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (22,386
+**OSCAL controls.** The catalog exporter's `controls` total in `converters/exports/oscal/dist/catalogs/index.json` (22,560
 at the last export) is also a different quantity: the exporter emits one OSCAL control per rule or message it finds in each
 framework's modules, and that includes message templates. SAE AS9100D is the example its own module documents
 (`frameworks/management/as9100d/as9100d_main.rego`): 71 clause rows are exported as 88 controls, because 17 template
