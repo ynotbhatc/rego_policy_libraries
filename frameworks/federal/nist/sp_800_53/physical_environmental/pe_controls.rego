@@ -434,7 +434,7 @@ _pe6_1_missing := _bool_missing(_pe6_1_bools)
 
 violation contains msg if {
 	count(_pe6_1_missing) > 0
-	msg := sprintf("NIST PE-6(1): evidence missing — %s not collected", [concat(", ", sort(_pe6_1_missing))])
+	msg := _missing_msg("PE-6(1)", _pe6_1_missing)
 }
 
 violation contains msg if {
@@ -461,7 +461,7 @@ _pe13_1_missing := _bool_missing(_pe13_1_bools)
 
 violation contains msg if {
 	count(_pe13_1_missing) > 0
-	msg := sprintf("NIST PE-13(1): evidence missing — %s not collected", [concat(", ", sort(_pe13_1_missing))])
+	msg := _missing_msg("PE-13(1)", _pe13_1_missing)
 }
 
 violation contains msg if {

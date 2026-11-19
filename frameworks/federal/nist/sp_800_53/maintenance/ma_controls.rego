@@ -287,7 +287,7 @@ _ma3_1_missing := _zero_missing([c[0] | some c in _ma3_1])
 
 violation contains msg if {
 	count(_ma3_1_missing) > 0
-	msg := sprintf("NIST MA-3(1): evidence missing — %s not collected", [concat(", ", sort(_ma3_1_missing))])
+	msg := _missing_msg("MA-3(1)", _ma3_1_missing)
 }
 
 violation contains msg if {
@@ -309,7 +309,7 @@ _ma3_2_missing := _zero_missing([c[0] | some c in _ma3_2])
 
 violation contains msg if {
 	count(_ma3_2_missing) > 0
-	msg := sprintf("NIST MA-3(2): evidence missing — %s not collected", [concat(", ", sort(_ma3_2_missing))])
+	msg := _missing_msg("MA-3(2)", _ma3_2_missing)
 }
 
 violation contains msg if {
@@ -333,7 +333,7 @@ _ma3_3_missing := _zero_missing([c[0] | some c in _ma3_3])
 
 violation contains msg if {
 	count(_ma3_3_missing) > 0
-	msg := sprintf("NIST MA-3(3): evidence missing — %s not collected", [concat(", ", sort(_ma3_3_missing))])
+	msg := _missing_msg("MA-3(3)", _ma3_3_missing)
 }
 
 violation contains msg if {
