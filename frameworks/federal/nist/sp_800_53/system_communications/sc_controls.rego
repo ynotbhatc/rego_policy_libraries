@@ -7,7 +7,7 @@
 #   domains: [us-federal, security-controls]
 #   coverage:
 #     checks: 30
-#     cited: 12
+#     cited: 28
 #     density: sized
 #     basis: size
 #     tested: true
@@ -44,19 +44,17 @@ _val(path) := object.get(input, array.concat([_root], path), null)
 
 _p(path) := concat(".", array.concat(["input", _root], path))
 
-_missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
-
 # The original boolean checks keep their pass condition (`not input.sc_controls.<path>`: only an absent fact or
 # false fails). The finding says which: false keeps the original text; an absent fact (or a path through a
 # non-object) is evidence missing.
-_legacy(id, path, text) := sprintf("NIST %s: %s", [id, text]) if {
+_legacy(path, text) := text if {
 	_val(path) == false
-} else := _missing_msg(id, {_p(path)})
+} else := sprintf("evidence missing — %s not collected", [_p(path)])
 
 # Checks that pass only on `== true`: false keeps the original text, any non-boolean is evidence missing.
-_strict(id, path, text) := sprintf("NIST %s: %s", [id, text]) if {
+_strict(path, text) := text if {
 	is_boolean(_val(path))
-} else := _missing_msg(id, {_p(path)})
+} else := sprintf("evidence missing — %s not collected", [_p(path)])
 
 # Leading "evidence missing — ... not collected; " when some facts behind a finding were not collected.
 _ev_prefix(m) := "" if {
@@ -161,27 +159,27 @@ default compliant := false
 
 violation contains msg if {
 	not input.sc_controls.policy.documented
-	msg := _legacy("SC-1", ["policy", "documented"], "System and communications protection policy not documented")
+	msg := sprintf("NIST SC-1: %s", [_legacy(["policy", "documented"], "System and communications protection policy not documented")])
 }
 
 violation contains msg if {
 	not input.sc_controls.app_partitioning.separated
-	msg := _legacy("SC-2", ["app_partitioning", "separated"], "User functionality is not separated from system management functionality")
+	msg := sprintf("NIST SC-2: %s", [_legacy(["app_partitioning", "separated"], "User functionality is not separated from system management functionality")])
 }
 
 violation contains msg if {
 	not input.sc_controls.security_function_isolation.implemented
-	msg := _legacy("SC-3", ["security_function_isolation", "implemented"], "Security functions not isolated from non-security functions")
+	msg := sprintf("NIST SC-3: %s", [_legacy(["security_function_isolation", "implemented"], "Security functions not isolated from non-security functions")])
 }
 
 violation contains msg if {
 	not input.sc_controls.denial_of_service.protections
-	msg := _legacy("SC-5", ["denial_of_service", "protections"], "Denial-of-service protections not in place")
+	msg := sprintf("NIST SC-5: %s", [_legacy(["denial_of_service", "protections"], "Denial-of-service protections not in place")])
 }
 
 violation contains msg if {
 	not input.sc_controls.boundary_protection.deployed
-	msg := _legacy("SC-7", ["boundary_protection", "deployed"], "System boundary protection not deployed at managed interfaces")
+	msg := sprintf("NIST SC-7: %s", [_legacy(["boundary_protection", "deployed"], "System boundary protection not deployed at managed interfaces")])
 }
 
 violation contains msg if {
@@ -202,12 +200,12 @@ violation contains msg if {
 
 violation contains msg if {
 	not input.sc_controls.network_disconnect.timeout_configured
-	msg := _legacy("SC-10", ["network_disconnect", "timeout_configured"], "Network session disconnect timeout not configured")
+	msg := sprintf("NIST SC-10: %s", [_legacy(["network_disconnect", "timeout_configured"], "Network session disconnect timeout not configured")])
 }
 
 violation contains msg if {
 	not input.sc_controls.cryptographic_key_mgmt.documented
-	msg := _legacy("SC-12", ["cryptographic_key_mgmt", "documented"], "Cryptographic key management process not documented")
+	msg := sprintf("NIST SC-12: %s", [_legacy(["cryptographic_key_mgmt", "documented"], "Cryptographic key management process not documented")])
 }
 
 # SC-13: the organisation determines the cryptographic uses and the types of cryptography required for
@@ -246,32 +244,32 @@ violation contains msg if {
 
 violation contains msg if {
 	not input.sc_controls.collaborative_devices.disabled_when_unused
-	msg := _legacy("SC-15", ["collaborative_devices", "disabled_when_unused"], "Collaborative computing devices (mic/camera) not disabled when unused")
+	msg := sprintf("NIST SC-15: %s", [_legacy(["collaborative_devices", "disabled_when_unused"], "Collaborative computing devices (mic/camera) not disabled when unused")])
 }
 
 violation contains msg if {
 	not input.sc_controls.public_key_infrastructure.certificates_managed
-	msg := _legacy("SC-17", ["public_key_infrastructure", "certificates_managed"], "Public key certificates not issued/managed by authorized PKI")
+	msg := sprintf("NIST SC-17: %s", [_legacy(["public_key_infrastructure", "certificates_managed"], "Public key certificates not issued/managed by authorized PKI")])
 }
 
 violation contains msg if {
 	not input.sc_controls.mobile_code.controls_enforced
-	msg := _legacy("SC-18", ["mobile_code", "controls_enforced"], "Mobile code controls (allow/deny lists) not enforced")
+	msg := sprintf("NIST SC-18: %s", [_legacy(["mobile_code", "controls_enforced"], "Mobile code controls (allow/deny lists) not enforced")])
 }
 
 violation contains msg if {
 	not input.sc_controls.secure_dns.dnssec_enforced
-	msg := _legacy("SC-20", ["secure_dns", "dnssec_enforced"], "Authoritative name resolution does not provide origin authentication and integrity artifacts (DNSSEC signing not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")
+	msg := sprintf("NIST SC-20: %s", [_legacy(["secure_dns", "dnssec_enforced"], "Authoritative name resolution does not provide origin authentication and integrity artifacts (DNSSEC signing not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")])
 }
 
 violation contains msg if {
 	not input.sc_controls.secure_dns.dnssec_enforced
-	msg := _legacy("SC-21", ["secure_dns", "dnssec_enforced"], "Recursive or caching resolver does not validate origin and integrity of responses (DNSSEC validation not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")
+	msg := sprintf("NIST SC-21: %s", [_legacy(["secure_dns", "dnssec_enforced"], "Recursive or caching resolver does not validate origin and integrity of responses (DNSSEC validation not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")])
 }
 
 violation contains msg if {
 	not input.sc_controls.session_authenticity.protected
-	msg := _legacy("SC-23", ["session_authenticity", "protected"], "Session authenticity not protected (session ID randomness, timeouts)")
+	msg := sprintf("NIST SC-23: %s", [_legacy(["session_authenticity", "protected"], "Session authenticity not protected (session ID randomness, timeouts)")])
 }
 
 _sc28_collected if is_boolean(object.get(_sc28, "protected", null))
@@ -292,7 +290,7 @@ violation contains msg if {
 
 violation contains msg if {
 	object.get(_sc28, "encrypted", false) != true
-	msg := _strict("SC-28(1)", ["protection_of_info_at_rest", "encrypted"], "Cryptographic protection of information at rest not evidenced (input.sc_controls.protection_of_info_at_rest.encrypted is not true)")
+	msg := sprintf("NIST SC-28(1): %s", [_strict(["protection_of_info_at_rest", "encrypted"], "Cryptographic protection of information at rest not evidenced (input.sc_controls.protection_of_info_at_rest.encrypted is not true)")])
 }
 
 compliant if count(violation) == 0
@@ -301,12 +299,12 @@ compliant if count(violation) == 0
 # is where Rev 5 moved the withdrawn AU-8(1)).
 violation contains msg if {
 	not object.get(_sc, ["time_synchronization", "clocks_synchronized"], false) == true
-	msg := _strict("SC-45", ["time_synchronization", "clocks_synchronized"], "System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)")
+	msg := sprintf("NIST SC-45: %s", [_strict(["time_synchronization", "clocks_synchronized"], "System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)")])
 }
 
 violation contains msg if {
 	not object.get(_sc, ["time_synchronization", "authoritative_source_synchronized"], false) == true
-	msg := _strict("SC-45(1)", ["time_synchronization", "authoritative_source_synchronized"], "Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)")
+	msg := sprintf("NIST SC-45(1): %s", [_strict(["time_synchronization", "authoritative_source_synchronized"], "Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)")])
 }
 
 # ---------------------------------------------------------------------------------------------------------

@@ -7,7 +7,7 @@
 #   domains: [us-federal, security-controls]
 #   coverage:
 #     checks: 19
-#     cited: 7
+#     cited: 19
 #     density: sized
 #     basis: size
 #     tested: true
@@ -37,14 +37,12 @@ _val(path) := object.get(input, array.concat([_root], path), null)
 
 _p(path) := concat(".", array.concat(["input", _root], path))
 
-_missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
-
 # The original base-control checks keep their pass condition (`not input.si_controls.<path>`: only an absent
 # fact or false fails). The finding says which: false keeps the original text; an absent fact (or a path through
 # a non-object) is evidence missing.
-_legacy(id, path, text) := sprintf("NIST %s: %s", [id, text]) if {
+_legacy(path, text) := text if {
 	_val(path) == false
-} else := _missing_msg(id, {_p(path)})
+} else := sprintf("evidence missing — %s not collected", [_p(path)])
 
 # Booleans: reqs maps a fact key to the text reported when that fact is false. Only `true` passes.
 _bool_missing(sec, reqs) := {_p(array.concat(sec, [k])) | some k, _ in reqs; not is_boolean(_val(array.concat(sec, [k])))}
@@ -84,62 +82,62 @@ _detail(m, u) := concat("; ", array.concat(_mpart(m), sort(u)))
 
 violation contains msg if {
 	not input.si_controls.policy.documented
-	msg := _legacy("SI-1", ["policy", "documented"], "System and information integrity policy not documented")
+	msg := sprintf("NIST SI-1: %s", [_legacy(["policy", "documented"], "System and information integrity policy not documented")])
 }
 
 violation contains msg if {
 	not input.si_controls.flaw_remediation.timely
-	msg := _legacy("SI-2", ["flaw_remediation", "timely"], "Flaw remediation (patching) not performed within defined timeframes")
+	msg := sprintf("NIST SI-2: %s", [_legacy(["flaw_remediation", "timely"], "Flaw remediation (patching) not performed within defined timeframes")])
 }
 
 violation contains msg if {
 	not input.si_controls.malicious_code_protection.deployed
-	msg := _legacy("SI-3", ["malicious_code_protection", "deployed"], "Malicious code protection (antivirus/EDR) not deployed at entry/exit points")
+	msg := sprintf("NIST SI-3: %s", [_legacy(["malicious_code_protection", "deployed"], "Malicious code protection (antivirus/EDR) not deployed at entry/exit points")])
 }
 
 violation contains msg if {
 	not input.si_controls.system_monitoring.continuous
-	msg := _legacy("SI-4", ["system_monitoring", "continuous"], "System monitoring (IDS/IPS, log review) not continuous")
+	msg := sprintf("NIST SI-4: %s", [_legacy(["system_monitoring", "continuous"], "System monitoring (IDS/IPS, log review) not continuous")])
 }
 
 violation contains msg if {
 	not input.si_controls.security_alerts.acted_upon
-	msg := _legacy("SI-5", ["security_alerts", "acted_upon"], "Security alerts/advisories not received and acted upon")
+	msg := sprintf("NIST SI-5: %s", [_legacy(["security_alerts", "acted_upon"], "Security alerts/advisories not received and acted upon")])
 }
 
 violation contains msg if {
 	not input.si_controls.security_function_verification.tested
-	msg := _legacy("SI-6", ["security_function_verification", "tested"], "Security function verification not periodically tested")
+	msg := sprintf("NIST SI-6: %s", [_legacy(["security_function_verification", "tested"], "Security function verification not periodically tested")])
 }
 
 violation contains msg if {
 	not input.si_controls.software_firmware_integrity.verified
-	msg := _legacy("SI-7", ["software_firmware_integrity", "verified"], "Software and firmware integrity not verified before execution")
+	msg := sprintf("NIST SI-7: %s", [_legacy(["software_firmware_integrity", "verified"], "Software and firmware integrity not verified before execution")])
 }
 
 violation contains msg if {
 	not input.si_controls.spam_protection.enabled
-	msg := _legacy("SI-8", ["spam_protection", "enabled"], "Spam protection not enabled at gateways or endpoints")
+	msg := sprintf("NIST SI-8: %s", [_legacy(["spam_protection", "enabled"], "Spam protection not enabled at gateways or endpoints")])
 }
 
 violation contains msg if {
 	not input.si_controls.input_validation.enforced
-	msg := _legacy("SI-10", ["input_validation", "enforced"], "Information input validation not enforced")
+	msg := sprintf("NIST SI-10: %s", [_legacy(["input_validation", "enforced"], "Information input validation not enforced")])
 }
 
 violation contains msg if {
 	not input.si_controls.error_handling.no_info_disclosure
-	msg := _legacy("SI-11", ["error_handling", "no_info_disclosure"], "Error handling discloses sensitive information")
+	msg := sprintf("NIST SI-11: %s", [_legacy(["error_handling", "no_info_disclosure"], "Error handling discloses sensitive information")])
 }
 
 violation contains msg if {
 	not input.si_controls.information_management_retention.policy_enforced
-	msg := _legacy("SI-12", ["information_management_retention", "policy_enforced"], "Information management/retention policies not enforced")
+	msg := sprintf("NIST SI-12: %s", [_legacy(["information_management_retention", "policy_enforced"], "Information management/retention policies not enforced")])
 }
 
 violation contains msg if {
 	not input.si_controls.memory_protection.enabled
-	msg := _legacy("SI-16", ["memory_protection", "enabled"], "Memory protection (ASLR, DEP, NX) not enabled")
+	msg := sprintf("NIST SI-16: %s", [_legacy(["memory_protection", "enabled"], "Memory protection (ASLR, DEP, NX) not enabled")])
 }
 
 # ---------------------------------------------------------------------------------------------------------
