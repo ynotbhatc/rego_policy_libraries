@@ -171,7 +171,7 @@ mp, stats = bc.build_mapping(tmp / "catalogs")
 mine = {cid: {c for c, src in v.items() if "label-is-800-53" in src} for cid, v in mp.items()}
 mine = {cid: v for cid, v in mine.items() if v}
 assert mine == spine, f"label-is-800-53 mapping differs from spine_800_53.csv library_controls ({len(mine)} vs {len(spine)} ids)"
-assert summ["excluded_topic_rows"] == stats["excluded_topic_rows"] == 33, f"excluded topic rows: {summ['excluded_topic_rows']}"
+assert summ["excluded_topic_rows"] == stats["excluded_topic_rows"] == 47, f"excluded topic rows: {summ['excluded_topic_rows']}"
 # component-definition: baseline control-implementations hold exactly the covered controls
 cd = json.loads((tmp / "component-definition.json").read_text())["component-definition"]
 bimpl = [ci for ci in cd["components"][0]["control-implementations"] if any(p["name"] == "baseline" for p in ci["props"])]

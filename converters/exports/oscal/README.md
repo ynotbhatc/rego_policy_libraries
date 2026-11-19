@@ -120,13 +120,13 @@ baseline (source = that dist profile at the release tag) with one implemented-re
 Three mapping sources, nothing else (a check is `<framework>:<label>`):
 
 1. `stig-cci`: `crosswalk/stig_800_53/data.json` maps a STIG rule id to 800-53 controls; each `stig_*` catalog control's label is the rule id
-   (998 of 1155 STIG catalog controls are in the map; 157 are not, and
-   2794 of the map's 3787 rules have no catalog control).
+   (1124 of 1587 STIG catalog controls are in the map; 463 are not, and
+   2683 of the map's 3807 rules have no catalog control).
 2. `label-is-800-53`: a library control whose label is itself an 800-53 id (`AC-2`, `AC-2(1)`; cjis, irs_1075, cyber_essentials, ...), the same rule
    as `library_controls` in `crosswalk_csv` `spine_800_53.csv` (the round-trip asserts they are equal).
 3. `nist-800-53-module`: our own `nist_sp_800_53` module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (two controls).
 
-**Excluded:** the 24 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
+**Excluded:** the 47 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
 nothing: its three 800-53B maps are baseline membership, not library mappings, and the five framework maps (800-171 R3, CSF 2.0, ISO 27001,
 PCI DSS v4, CIS Controls v8.1) are `pending` with no rows. **No ISO 27001, PCI DSS, CSF or 800-171 coverage is counted here.**
 
@@ -136,14 +136,14 @@ control covered by one STIG rule is covered by that rule alone, not by every enh
 
 | Baseline | Controls | Covered | Base covered / total | Enhancements covered / total |
 |---|---|---|---|---|
-| NIST SP 800-53 Rev 5 Low | 149 | 82 (55.0%) | 79 / 131 (60.3%) | 3 / 18 (16.7%) |
-| NIST SP 800-53 Rev 5 Moderate | 287 | 110 (38.3%) | 106 / 177 (59.9%) | 4 / 110 (3.6%) |
-| NIST SP 800-53 Rev 5 High | 370 | 115 (31.1%) | 111 / 188 (59.0%) | 4 / 182 (2.2%) |
-| NIST SP 800-53 Rev 5 Privacy | 96 | 22 (22.9%) | 22 / 75 (29.3%) | 0 / 21 (0.0%) |
-| FedRAMP Rev 5 Low | 156 | 85 (54.5%) | 81 / 135 (60.0%) | 4 / 21 (19.0%) |
-| FedRAMP Rev 5 Moderate | 323 | 113 (35.0%) | 109 / 181 (60.2%) | 4 / 142 (2.8%) |
-| FedRAMP Rev 5 High | 410 | 118 (28.8%) | 114 / 191 (59.7%) | 4 / 219 (1.8%) |
-| FedRAMP Rev 5 LI-SaaS | 156 | 85 (54.5%) | 81 / 135 (60.0%) | 4 / 21 (19.0%) |
+| NIST SP 800-53 Rev 5 Low | 149 | 133 (89.3%) | 130 / 131 (99.2%) | 3 / 18 (16.7%) |
+| NIST SP 800-53 Rev 5 Moderate | 287 | 186 (64.8%) | 174 / 177 (98.3%) | 12 / 110 (10.9%) |
+| NIST SP 800-53 Rev 5 High | 370 | 197 (53.2%) | 185 / 188 (98.4%) | 12 / 182 (6.6%) |
+| NIST SP 800-53 Rev 5 Privacy | 96 | 73 (76.0%) | 73 / 75 (97.3%) | 0 / 21 (0.0%) |
+| FedRAMP Rev 5 Low | 156 | 139 (89.1%) | 134 / 135 (99.3%) | 5 / 21 (23.8%) |
+| FedRAMP Rev 5 Moderate | 323 | 191 (59.1%) | 178 / 181 (98.3%) | 13 / 142 (9.2%) |
+| FedRAMP Rev 5 High | 410 | 201 (49.0%) | 188 / 191 (98.4%) | 13 / 219 (5.9%) |
+| FedRAMP Rev 5 LI-SaaS | 156 | 139 (89.1%) | 134 / 135 (99.3%) | 5 / 21 (23.8%) |
 
 Percentages are of the controls the baseline selects. FedRAMP Low and LI-SaaS select the same ids in the pinned source, so their rows are equal.
 
