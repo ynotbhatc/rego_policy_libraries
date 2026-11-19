@@ -1,0 +1,71 @@
+name: Exports are current
+
+# The OSCAL and crosswalk exports under converters/exports/*/dist are committed and generated from the
+# policy tree. converters.yml rebuilds them only on release tags, so a PR that changes policies could
+# leave them stale (it happened after #299: baseline coverage lagged by 13 families). This check
+# rebuilds both on every PR that can change them and fails on any difference.
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'frameworks/**'
+      - 'benchmarks/**'
+      - 'crosswalk/**'
+      - 'governance/**'
+      - 'threat_detection/**'
+      - 'enforcement/**'
+      - 'converters/**'
+      - 'scripts/inventory_controls.py'
+      - 'scripts/rego_ast.py'
+      - 'CHANGELOG.md'
+      - 'Makefile'
+      - '.github/workflows/exports-fresh.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  exports:
+    name: OSCAL and crosswalk exports are current
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - name: Install OPA 1.10.0
+        env:
+          OPA_VERSION: "1.10.0"
+        run: |
+          curl -L -o opa_linux_amd64_static \
+            "https://github.com/open-policy-agent/opa/releases/download/v${OPA_VERSION}/opa_linux_amd64_static"
+          curl -L -o opa.sha256 \
+            "https://github.com/open-policy-agent/opa/releases/download/v${OPA_VERSION}/opa_linux_amd64_static.sha256"
+          sha256sum -c opa.sha256
+          chmod +x opa_linux_amd64_static
+          sudo mv opa_linux_amd64_static /usr/local/bin/opa
+          rm -f opa.sha256
+
+      - name: Rebuild (make oscal, make crosswalk)
+        run: |
+          python3 -m pip install -q jsonschema
+          make oscal
+          make crosswalk
+
+      - name: Committed exports match the rebuild
+        run: |
+          if ! git diff --quiet -- converters/exports; then
+            git diff --stat -- converters/exports
+            echo "::error::converters/exports is stale: run 'make oscal && make crosswalk' and commit the result"
+            exit 1
+          fi
+          untracked=$(git ls-files --others --exclude-standard -- converters/exports)
+          if [ -n "$untracked" ]; then
+            echo "$untracked"
+            echo "::error::make oscal / make crosswalk wrote files that are not committed"
+            exit 1
+          fi
+
+      - name: Round-trip test
+        run: |
+          bash converters/exports/oscal/test/roundtrip.sh | tee /tmp/oscal.log
+          ! grep -q "^SKIP" /tmp/oscal.log
