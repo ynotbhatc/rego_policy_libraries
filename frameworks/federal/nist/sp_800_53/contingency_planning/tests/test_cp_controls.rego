@@ -1,7 +1,7 @@
 package nist.sp800_53.contingency_planning_logic_test
 
-# CP family: one finding per base control, fail closed, organization-defined frequencies and periods,
-# attestations for CP-11 and CP-13.
+# CP family: one finding per base control and Moderate-baseline enhancement, fail closed, organization-defined
+# frequencies and periods, attestations for CP-11 and CP-13.
 
 import data.nist.sp800_53.contingency_planning as cp
 import rego.v1
@@ -31,6 +31,9 @@ _pass := {"cp_controls": {
 		"lessons_learned_incorporated": true,
 		"protected_from_unauthorized_disclosure_and_modification": true,
 		"review": _freq(200, 365),
+		"coordination": {"related_plans": [{"name": "COOP", "coordinated": true}, {"name": "IRP", "coordinated": true}]},
+		"resumption": {"covers_all_in_scope_functions": true, "planned_hours": 24, "odp": {"function_scope": "essential", "resumption_hours": 48}},
+		"critical_assets": {"critical_asset_count": 12, "all_in_scope_functions_mapped": true, "odp": {"function_scope": "essential"}},
 	},
 	"contingency_training": {
 		"training_on_system_changes": true,
@@ -40,10 +43,19 @@ _pass := {"cp_controls": {
 		"content_update": _freq(100, 365),
 	},
 	"plan_testing": object.union(
-		{"defined_tests_used": true, "results_reviewed": true, "corrective_actions_initiated": true},
+		{
+			"defined_tests_used": true, "results_reviewed": true, "corrective_actions_initiated": true,
+			"coordination": {"related_plans": [{"name": "COOP", "coordinated": true}]},
+		},
 		_freq(200, 365),
 	),
-	"alternate_storage_site": {"established": true, "agreements_in_place": true, "equivalent_controls": true},
+	"alternate_storage_site": {
+		"established": true,
+		"agreements_in_place": true,
+		"equivalent_controls": true,
+		"separation": {"threats_assessed": true, "sufficiently_separated": true},
+		"accessibility": {"problems_identified": true, "mitigation_actions_outlined": true},
+	},
 	"alternate_processing_site": {
 		"established": true,
 		"agreements_in_place": true,
@@ -51,12 +63,24 @@ _pass := {"cp_controls": {
 		"equivalent_controls": true,
 		"resumption_hours": 8,
 		"odp": {"resumption_hours": 12},
+		"separation": {"threats_assessed": true, "sufficiently_separated": true},
+		"accessibility": {"problems_identified": true, "mitigation_actions_outlined": true},
+		"priority_of_service": {"provisions_in_agreements": true, "restoration_hours": 4, "odp": {"recovery_time_objective_hours": 12}},
 	},
 	"telecommunications": {
 		"alternate_services_established": true,
 		"agreements_in_place": true,
 		"resumption_hours": 4,
 		"odp": {"resumption_hours": 12},
+		"priority_of_service": {
+			"primary_agreement_provisions": true,
+			"alternate_agreement_provisions": true,
+			"restoration_hours": 2,
+			"odp": {"recovery_time_objective_hours": 12},
+			"common_carrier_for_nsep": true,
+			"tsp_requested": true,
+		},
+		"single_point_of_failure": {"diversity_assessed": true, "shared_points_of_failure": []},
 	},
 	"backup": {
 		"confidentiality_protected": true,
@@ -65,8 +89,15 @@ _pass := {"cp_controls": {
 		"user_level": _freq(1, 1),
 		"system_level": _freq(3, 7),
 		"documentation": _freq(10, 30),
+		"testing": object.union({"last_test_verified": true}, _freq(20, 30)),
+		"cryptographic_protection": {"unencrypted_backup_sets": 0, "sets_without_cryptographic_integrity": 0},
 	},
-	"recovery": {"recovers_to_known_state": true, "recovery_hours": 6, "odp": {"recovery_hours": 24}},
+	"recovery": {
+		"recovers_to_known_state": true,
+		"recovery_hours": 6,
+		"odp": {"recovery_hours": 24},
+		"transaction_recovery": {"transaction_based": true, "implemented": true},
+	},
 	"alternate_communications_protocols": {"attestation": _att},
 	"safe_mode": {"enters_on_defined_conditions": true, "defined_restrictions_applied": true},
 	"alternative_security_mechanisms": {"attestation": _att},
@@ -80,7 +111,12 @@ test_all_pass_fixture_is_compliant if {
 }
 
 test_evaluated_controls_match_the_catalog if {
-	cp.evaluated_controls == {"CP-1", "CP-2", "CP-3", "CP-4", "CP-6", "CP-7", "CP-8", "CP-9", "CP-10", "CP-11", "CP-12", "CP-13"}
+	cp.evaluated_controls == {
+		"CP-1", "CP-2", "CP-2(1)", "CP-2(3)", "CP-2(8)", "CP-3", "CP-4", "CP-4(1)", "CP-6", "CP-6(1)", "CP-6(3)",
+		"CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-8", "CP-8(1)", "CP-8(2)", "CP-9", "CP-9(1)", "CP-9(8)", "CP-10",
+		"CP-10(2)", "CP-11", "CP-12", "CP-13",
+	}
+	count(cp.evaluated_controls) == 26
 }
 
 test_empty_input_one_finding_per_control if {
@@ -227,4 +263,245 @@ test_boolean_as_string_true_is_a_finding if {
 	r := cp.compliance_report with input as fx
 	_ids(r) == {"CP-9"}
 	contains(concat("", r.violations), "integrity_protected is not true")
+}
+
+# --- enhancements: one failing case flips exactly that id, one evidence-missing case ---------------------------
+
+test_cp2_1_uncoordinated_plan_flips_only_cp2_1 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"coordination": {"related_plans": [{"name": "COOP", "coordinated": true}, {"name": "IRP", "coordinated": false}]}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(1)"}
+	contains(concat("", r.violations), "related plan IRP")
+}
+
+test_cp2_1_empty_register_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"coordination": {"related_plans": []}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp2_3_slow_resumption_flips_only_cp2_3 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"resumption": {"planned_hours": 72}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(3)"}
+	contains(concat("", r.violations), "up to 72 hours after plan activation; the organization-defined period is 48 hours")
+}
+
+test_cp2_3_missing_odp_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/contingency_plan/resumption/odp/resumption_hours"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(3)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.contingency_plan.resumption.odp.resumption_hours")
+}
+
+test_cp2_3_unknown_scope_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"resumption": {"odp": {"function_scope": "some"}}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(3)"}
+	contains(concat("", r.violations), "odp.function_scope")
+}
+
+test_cp2_8_no_critical_assets_flips_only_cp2_8 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"critical_assets": {"critical_asset_count": 0}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(8)"}
+	contains(concat("", r.violations), "no critical system assets identified")
+}
+
+test_cp2_8_count_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"critical_assets": {"critical_asset_count": "1"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(8)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.contingency_plan.critical_assets.critical_asset_count")
+}
+
+test_cp4_1_uncoordinated_testing_flips_only_cp4_1 if {
+	fx := object.union(_pass, {"cp_controls": {"plan_testing": {"coordination": {"related_plans": [{"name": "COOP"}]}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-4(1)"}
+	contains(concat("", r.violations), "contingency plan testing not coordinated")
+}
+
+test_cp4_1_missing_register_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/plan_testing/coordination"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-4(1)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.plan_testing.coordination.related_plans")
+}
+
+test_cp6_1_not_separated_flips_only_cp6_1 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_storage_site": {"separation": {"sufficiently_separated": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-6(1)"}
+}
+
+test_cp6_1_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/alternate_storage_site/separation"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-6(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp6_3_no_mitigation_flips_only_cp6_3 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_storage_site": {"accessibility": {"mitigation_actions_outlined": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-6(3)"}
+}
+
+test_cp6_3_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/alternate_storage_site/accessibility/problems_identified"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-6(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp7_1_not_assessed_flips_only_cp7_1 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_processing_site": {"separation": {"threats_assessed": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(1)"}
+}
+
+test_cp7_1_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/alternate_processing_site/separation"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp7_2_problems_not_identified_flips_only_cp7_2 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_processing_site": {"accessibility": {"problems_identified": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(2)"}
+}
+
+test_cp7_2_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/alternate_processing_site/accessibility"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp7_3_restoration_beyond_rto_flips_only_cp7_3 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_processing_site": {"priority_of_service": {"restoration_hours": 24}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(3)"}
+	contains(concat("", r.violations), "priority restoration in 24 hours; the organization-defined recovery time objective is 12 hours")
+}
+
+test_cp7_3_null_restoration_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_processing_site": {"priority_of_service": {"restoration_hours": null}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp8_1_tsp_not_requested_flips_only_cp8_1 if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"priority_of_service": {"tsp_requested": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(1)"}
+	contains(concat("", r.violations), "Telecommunications Service Priority not requested")
+}
+
+test_cp8_1_no_common_carrier_needs_no_tsp if {
+	fx := json.remove(
+		object.union(_pass, {"cp_controls": {"telecommunications": {"priority_of_service": {"common_carrier_for_nsep": false}}}}),
+		["cp_controls/telecommunications/priority_of_service/tsp_requested"],
+	)
+	r := cp.compliance_report with input as fx
+	r.violation_count == 0
+}
+
+test_cp8_1_common_carrier_without_tsp_fact_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/telecommunications/priority_of_service/tsp_requested"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(1)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.telecommunications.priority_of_service.tsp_requested")
+}
+
+test_cp8_1_carrier_flag_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"priority_of_service": {"common_carrier_for_nsep": "true"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp8_2_shared_point_flips_only_cp8_2 if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"single_point_of_failure": {"shared_points_of_failure": ["central office CO-7"]}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(2)"}
+	contains(concat("", r.violations), "central office CO-7")
+}
+
+test_cp8_2_list_not_an_array_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"single_point_of_failure": {"shared_points_of_failure": "none"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp9_1_overdue_backup_test_flips_only_cp9_1 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"testing": {"days_since_last": 45}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(1)"}
+	contains(concat("", r.violations), "backup information last tested 45 days ago")
+}
+
+test_cp9_1_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/backup/testing"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp9_8_unencrypted_sets_flip_only_cp9_8 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"cryptographic_protection": {"unencrypted_backup_sets": 3}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(8)"}
+	contains(concat("", r.violations), "3 backup sets not encrypted")
+}
+
+test_cp9_8_count_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"cryptographic_protection": {"sets_without_cryptographic_integrity": "0"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(8)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp10_2_not_implemented_flips_only_cp10_2 if {
+	fx := object.union(_pass, {"cp_controls": {"recovery": {"transaction_recovery": {"implemented": "true"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-10(2)"}
+	contains(concat("", r.violations), "implemented is not true")
+}
+
+test_cp10_2_not_transaction_based_passes if {
+	fx := json.remove(
+		object.union(_pass, {"cp_controls": {"recovery": {"transaction_recovery": {"transaction_based": false}}}}),
+		["cp_controls/recovery/transaction_recovery/implemented"],
+	)
+	r := cp.compliance_report with input as fx
+	r.violation_count == 0
+}
+
+test_cp10_2_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/recovery/transaction_recovery"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-10(2)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.recovery.transaction_recovery.transaction_based")
+}
+
+# A base control never fails for an enhancement: removing every enhancement fact leaves the base controls passing.
+test_base_controls_ignore_enhancement_facts if {
+	fx := json.remove(_pass, [
+		"cp_controls/contingency_plan/coordination", "cp_controls/contingency_plan/resumption",
+		"cp_controls/contingency_plan/critical_assets", "cp_controls/plan_testing/coordination",
+		"cp_controls/alternate_storage_site/separation", "cp_controls/alternate_storage_site/accessibility",
+		"cp_controls/alternate_processing_site/separation", "cp_controls/alternate_processing_site/accessibility",
+		"cp_controls/alternate_processing_site/priority_of_service", "cp_controls/telecommunications/priority_of_service",
+		"cp_controls/telecommunications/single_point_of_failure", "cp_controls/backup/testing",
+		"cp_controls/backup/cryptographic_protection", "cp_controls/recovery/transaction_recovery",
+	])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {id | some id in cp.evaluated_controls; contains(id, "(")}
 }
