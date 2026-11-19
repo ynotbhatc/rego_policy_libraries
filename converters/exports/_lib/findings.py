@@ -80,6 +80,12 @@ class Index:
             p = ".".join(parts)
             if p in self.by_pkg:
                 return self.by_pkg[p]
+            # an orchestrator (nist.sp800_53.main) is not in the inventory; its sibling family packages are, and
+            # they share one framework: use it when they all agree
+            if len(parts) > 1:
+                sib = {e["framework"]: v for k, v in self.by_pkg.items() if k.startswith(".".join(parts[:-1]) + ".") for e in v}
+                if len(sib) == 1:
+                    return next(iter(sib.values()))
             parts.pop()
         # last resort: a package whose first segment matches (cis_rhel9.main ~ cis_rhel9.auditd)
         head = package.split(".")[0]
@@ -97,6 +103,20 @@ class Index:
         label = cid or "unmapped"
         rid = token(f"{token(fw)}-{label}")
         return self.controls.setdefault((fw, label), Rule(rid, label, message.split(":", 1)[-1].strip()[:200] or message, fw, package, file, False))
+
+    def rule_for_row(self, package, row_id):
+        """The catalog control a control_results row names, or None. A row id is the control id without the
+        message prefix ("AC-2", "6.2.1.1"); the catalog keeps the label as messages write it ("NIST AC-2",
+        "6.2.1.1"). Exact label first, then the one label ending in " <id>"; ambiguous or unknown -> None."""
+        entries = self.framework_for(package)
+        if not entries or not isinstance(row_id, str) or not row_id:
+            return None
+        fw = entries[0]["framework"]
+        rule = self.controls.get((fw, row_id))
+        if rule and rule.mapped:
+            return rule
+        hits = [r for (f, label), r in self.controls.items() if f == fw and r.mapped and label.endswith(" " + row_id)]
+        return hits[0] if len(hits) == 1 else None
 
 
 def _is_report(node):
@@ -172,4 +192,23 @@ def findings(paths, ix=None):
         for m in msgs:
             text = finding_text(m)
             out.append(Finding(ix.rule_for(pkg, text), text, pkg, rpath, rep.get("compliant", rep.get("overall_compliant")), finding_severity(m)))
+    return out
+
+
+def passes(paths, ix=None):
+    """Rows a report's control_results marks "pass", resolved to catalog controls: [(Rule, row, package, report_path)].
+    Only reports that carry control_results contribute; a row that does not resolve to exactly one catalog control is
+    left out (never asserted), and so is any status other than "pass"."""
+    ix = ix or Index.build()
+    out = []
+    for rpath, rep in load_reports(paths):
+        rows = rep.get("control_results")
+        if not isinstance(rows, list):
+            continue
+        pkg = re.sub(r"\.(compliance_report|report)$", "", rpath).strip(".")
+        for row in rows:
+            if isinstance(row, dict) and row.get("status") == "pass":
+                rule = ix.rule_for_row(pkg, row.get("id"))
+                if rule:
+                    out.append((rule, row, pkg, rpath))
     return out

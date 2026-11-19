@@ -58,8 +58,12 @@ python3 converters/exports/oscal/build_assessment_results.py report.json -o resu
 
 One result per run: `reviewed-controls` lists every control of the frameworks that reported; one observation
 and one finding (`not-satisfied`, target = the control's statement part in the catalog) per distinct violation.
-Controls without a finding are **not** asserted satisfied: a report says which checks failed and fail-closed
-sections appear as violations, so absence of a finding is not evidence. Finding and observation uuids are
+A control is asserted `satisfied` only when the report carries `control_results` (CIS Windows, RHEL family and M365
+v7; NIST SP 800-53) and its row says `pass`: one observation (method `EXAMINE` when the row's basis is attestation,
+else `TEST`) and one `satisfied` finding on the control's statement. A row that does not resolve to exactly one catalog
+control is left out. Reports without `control_results` assert nothing satisfied: absence of a finding is not evidence.
+An orchestrator package that is not in the inventory (`nist.sp800_53.main`) takes the framework its sibling family
+packages share. Run it on the module package (`data.nist.sp800_53.main`); the `<key>.main` entrypoints are not resolved. Finding and observation uuids are
 uuid5 of (framework, control, message), so re-running on the same facts yields the same ids. Violations whose
 prefix is not a catalog control (section-level fail-closed notices) target a `statement-id` and carry
 `control-mapped: false`.

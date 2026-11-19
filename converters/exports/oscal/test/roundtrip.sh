@@ -87,7 +87,23 @@ stig = [f for f in res["findings"] if f["target"]["target-id"] == "stig_oracle_d
 assert stig and stig[0]["target"]["type"] == "objective-id" and "REMOTE_OS_ROLES" in stig[0]["description"], "STIG object finding did not target its catalog statement"
 reviewed = sum(len(s.get("include-controls", [])) for s in res["reviewed-controls"]["control-selections"])
 assert reviewed >= mapped
+assert not any(f["target"]["status"]["state"] == "satisfied" for f in res["findings"]), "empty input asserted a control satisfied"
 print(f"PASS roundtrip: component-definition {len(reqs)} implemented-requirements == catalogs; assessment-results {len(res['findings'])} findings ({mapped} on catalog statements), {reviewed} reviewed controls")
+PY
+# satisfied only from a control_results pass row: NIST 800-53 with one control's evidence supplied -> exactly AC-3
+echo '{"ac_controls": {"access_enforcement": {"role_based_access_control": true}}}' > "$TMP/nist_in.json"
+opa eval -f json -d "$ROOT/frameworks/federal/nist/sp_800_53" -i "$TMP/nist_in.json" 'data.nist.sp800_53.main.compliance_report' > "$TMP/nist.json"
+python3 "$HERE/build_assessment_results.py" "$TMP/nist.json" -o "$TMP/assessment-results-nist.json" --time 2026-10-12T00:00:00Z --subject roundtrip --catalogs "$TMP/catalogs" >/dev/null
+python3 - "$TMP" <<'PY'
+import sys, json, pathlib
+tmp = pathlib.Path(sys.argv[1])
+parts = {p["id"] for g in json.loads((tmp / "catalogs" / "nist_sp_800_53.json").read_text())["catalog"]["groups"] for c in g["controls"] for p in c["parts"]}
+res = json.loads((tmp / "assessment-results-nist.json").read_text())["assessment-results"]["results"][0]
+sat = [f for f in res["findings"] if f["target"]["status"]["state"] == "satisfied"]
+assert [f["target"]["target-id"] for f in sat] == ["nist_sp_800_53-NIST-AC-3_stmt"], [f["target"]["target-id"] for f in sat]
+assert all(f["target"]["target-id"] in parts for f in res["findings"]), "a NIST finding does not target a catalog statement"
+assert len(res["findings"]) == 266
+print(f"PASS roundtrip: assessment-results satisfied only from control_results (NIST 800-53: {len(sat)} satisfied, {len(res['findings']) - len(sat)} not satisfied, all on catalog statements)")
 PY
 # profiles: sources fetched (pinned + sha256-verified, cached), every selected control resolves in the NIST catalog
 rc=0; python3 "$HERE/build_profiles.py" --out "$TMP" >"$TMP/profiles.log" || rc=$?
