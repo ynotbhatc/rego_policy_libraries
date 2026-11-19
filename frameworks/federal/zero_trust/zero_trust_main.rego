@@ -106,6 +106,7 @@ compliance_report := {
 	"reference": "NIST SP 800-207",
 	"pillars_evaluated": count(pillar_reports),
 	"total_criteria": total_criteria,
+	"total_controls": total_criteria, # same number under the name every consumer reads (#324)
 	"criteria_met": criteria_met,
 	"maturity_by_stage": maturity_by_stage,
 	"pillars": pillars,

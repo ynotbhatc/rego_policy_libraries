@@ -115,6 +115,7 @@ compliance_report := {
 	"reference": "NIST SP 800-53",
 	"policy_areas_evaluated": count(area_reports),
 	"total_requirements": total_requirements,
+	"total_controls": total_requirements, # same number under the name every consumer reads (#324)
 	"requirements_met": requirements_met,
 	"policy_areas": policy_areas,
 	"violations": all_violations,

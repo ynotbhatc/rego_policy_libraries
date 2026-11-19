@@ -117,6 +117,7 @@ compliance_report := {
 	"framework": "ACSC Essential Eight Maturity Model (Nov 2023)",
 	"strategies_evaluated": count(strategy_reports),
 	"total_requirements": total_requirements,
+	"total_controls": total_requirements, # same number under the name every consumer reads (#324)
 	"requirements_met": requirements_met,
 	"overall_maturity_level": overall_maturity_level,
 	"maturity_by_level": maturity_by_level,

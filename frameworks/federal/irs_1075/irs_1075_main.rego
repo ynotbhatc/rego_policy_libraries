@@ -105,6 +105,7 @@ compliance_report := {
 	"reference": "IRC 6103(p)(4); NIST SP 800-53 Rev 5",
 	"areas_evaluated": count(area_reports),
 	"total_requirements": total_requirements,
+	"total_controls": total_requirements, # same number under the name every consumer reads (#324)
 	"requirements_met": requirements_met,
 	"safeguard_areas": safeguard_areas,
 	"violations": all_violations,

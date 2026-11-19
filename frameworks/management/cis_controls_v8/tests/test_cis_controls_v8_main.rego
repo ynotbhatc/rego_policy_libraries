@@ -55,3 +55,12 @@ test_semrev_ig_sizes_match_cis_v8_1 if {
 	r.implementation_groups.ig2.safeguards == 130
 	r.implementation_groups.ig3.safeguards == 153
 }
+
+# Contract (#287, #324): the report carries a numeric total_controls, equal
+# to the framework's own total, with and without input.
+test_report_carries_numeric_total_controls if {
+	r := main.compliance_report with input as {}
+	is_number(r.total_controls)
+	r.total_controls > 0
+	r.total_controls == r.total_safeguards
+}

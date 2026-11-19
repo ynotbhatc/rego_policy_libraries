@@ -65,3 +65,12 @@ test_malformed_attestation_keeps_totals if {
 	r.requirements_met == 0
 	r.compliant == false
 }
+
+# Contract (#287, #324): the report carries a numeric total_controls, equal
+# to the framework's own total, with and without input.
+test_report_carries_numeric_total_controls if {
+	r := main.compliance_report with input as {}
+	is_number(r.total_controls)
+	r.total_controls > 0
+	r.total_controls == r.total_requirements
+}

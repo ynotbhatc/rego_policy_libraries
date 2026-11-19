@@ -94,6 +94,7 @@ compliance_report := {
 	"standard_total": 153, # CIS Controls v8.1: safeguards per control on cisecurity.org/controls/cis-controls-navigator (5+7+14+12+6+8+7+12+7+7+5+8+11+9+7+14+9+5)
 	"controls_evaluated": count(reports),
 	"total_safeguards": count(all_safeguards),
+	"total_controls": count(all_safeguards), # same number under the name every consumer reads (#324)
 	"violations": all_violations,
 	"violation_count": count(all_violations),
 	"implementation_groups": {
