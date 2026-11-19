@@ -1,6 +1,6 @@
 package nist.sp800_53.assessment_authorization_logic_test
 
-# CA family: one finding per base control, fail closed, organization-defined frequencies.
+# CA family: one finding per evaluated id, fail closed, organization-defined frequencies, attestations.
 
 import data.nist.sp800_53.assessment_authorization as ca
 import rego.v1
@@ -9,6 +9,8 @@ import rego.v1
 _ids(r) := {trim_prefix(split(v, ":")[0], "NIST ") | some v in r.violations}
 
 _freq(days, odp) := {"days_since_last": days, "odp": {"frequency_days": odp}}
+
+_att := {"attestation": {"attested": true, "by": "Assessment program lead", "date": "2026-11-01"}}
 
 _pass := {"ca_controls": {
 	"policy_procedures": {
@@ -25,6 +27,7 @@ _pass := {"ca_controls": {
 			"plan_approved_before_assessment": true,
 			"report_produced": true,
 			"results_provided": true,
+			"independent_assessors": _att,
 		},
 		_freq(300, 365),
 	),
@@ -53,6 +56,8 @@ _pass := {"ca_controls": {
 		"correlation_and_analysis": true,
 		"response_actions": true,
 		"status_reporting": _freq(25, 30),
+		"independent_assessment": _att,
+		"risk_monitoring": {"effectiveness_monitoring": true, "compliance_monitoring": true, "change_monitoring": true},
 	},
 	"penetration_testing": object.union({"defined_scope_covered": true}, _freq(200, 365)),
 	"internal_connections": {
@@ -71,7 +76,7 @@ test_all_pass_fixture_is_compliant if {
 }
 
 test_evaluated_controls_match_the_catalog if {
-	ca.evaluated_controls == {"CA-1", "CA-2", "CA-3", "CA-5", "CA-6", "CA-7", "CA-8", "CA-9"}
+	ca.evaluated_controls == {"CA-1", "CA-2", "CA-2(1)", "CA-3", "CA-5", "CA-6", "CA-7", "CA-7(1)", "CA-7(4)", "CA-8", "CA-9"}
 }
 
 test_empty_input_one_finding_per_control if {
@@ -154,11 +159,20 @@ test_numeric_fact_as_null_is_evidence_missing if {
 	contains(concat("", r.violations), "evidence missing — input.ca_controls.poam.odp.frequency_days")
 }
 
-test_boolean_as_string_true_is_a_finding if {
+test_boolean_as_string_true_is_evidence_missing if {
 	fx := object.union(_pass, {"ca_controls": {"authorization": {"system_ao_assigned": "true"}}})
 	r := ca.compliance_report with input as fx
 	_ids(r) == {"CA-6"}
-	contains(concat("", r.violations), "system_ao_assigned is not true")
+	contains(concat("", r.violations), "evidence missing — input.ca_controls.authorization.system_ao_assigned not collected")
+}
+
+test_boolean_false_is_a_finding_not_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"authorization": {"system_ao_assigned": false}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-6"}
+	msg := concat("", r.violations)
+	contains(msg, "system_ao_assigned is not true")
+	not contains(msg, "evidence missing")
 }
 
 test_unmet_element_and_missing_evidence_share_one_finding if {
@@ -168,4 +182,57 @@ test_unmet_element_and_missing_evidence_share_one_finding if {
 	msg := concat("", r.violations)
 	contains(msg, "no control assessment report produced")
 	contains(msg, "evidence missing — input.ca_controls.control_assessment.days_since_last not collected")
+}
+
+# --- enhancements: one flip, one evidence-missing case ------------------------------------------------------------
+
+test_ca2_1_attestation_false_flips_only_ca2_1 if {
+	fx := object.union(_pass, {"ca_controls": {"control_assessment": {"independent_assessors": {"attestation": {"attested": false}}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-2(1)"}
+	msg := concat("", r.violations)
+	contains(msg, "not attested")
+	not contains(msg, "evidence missing")
+}
+
+test_ca2_1_attestation_absent_is_evidence_missing if {
+	fx := json.remove(_pass, ["ca_controls/control_assessment/independent_assessors"])
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-2(1)"}
+	msg := concat("", r.violations)
+	contains(msg, "evidence missing — input.ca_controls.control_assessment.independent_assessors.attestation not collected")
+	contains(msg, "not attested")
+}
+
+test_ca7_1_unsigned_attestation_flips_only_ca7_1 if {
+	fx := object.union(_pass, {"ca_controls": {"continuous_monitoring": {"independent_assessment": {"attestation": {"by": " "}}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-7(1)"}
+	contains(concat("", r.violations), "not attested")
+}
+
+test_ca7_1_attested_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"continuous_monitoring": {"independent_assessment": {"attestation": {"attested": "true"}}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-7(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_ca7_4_no_change_monitoring_flips_only_ca7_4 if {
+	fx := object.union(_pass, {"ca_controls": {"continuous_monitoring": {"risk_monitoring": {"change_monitoring": false}}}})
+	r := ca.compliance_report with input as fx
+	r.violations == {"NIST CA-7(4): continuous monitoring does not include change monitoring (input.ca_controls.continuous_monitoring.risk_monitoring.change_monitoring is not true)"}
+}
+
+test_ca7_4_missing_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"continuous_monitoring": {"risk_monitoring": {"compliance_monitoring": null}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-7(4)"}
+	contains(concat("", r.violations), "evidence missing — input.ca_controls.continuous_monitoring.risk_monitoring.compliance_monitoring not collected")
+}
+
+test_ca7_base_unaffected_by_enhancement_facts if {
+	fx := json.remove(_pass, ["ca_controls/continuous_monitoring/risk_monitoring", "ca_controls/continuous_monitoring/independent_assessment"])
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-7(1)", "CA-7(4)"}
 }

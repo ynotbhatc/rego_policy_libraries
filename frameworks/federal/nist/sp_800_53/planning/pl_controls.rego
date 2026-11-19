@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 16
-#     cited: 8
+#     checks: 18
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,9 @@ package nist.sp800_53.planning
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Planning (PL) Family
-# Base controls only (PL-1, PL-2, PL-4, PL-7, PL-8, PL-9, PL-10, PL-11); PL-3, PL-5 and PL-6 are withdrawn.
+# Base controls PL-1, PL-2, PL-4, PL-7, PL-8, PL-9, PL-10, PL-11 (PL-3, PL-5 and PL-6 are withdrawn) and the
+# NIST SP 800-53B Moderate-baseline enhancement PL-4(1). An enhancement is its own requirement with its own
+# finding; a base control never fails for an enhancement.
 # Facts live under input.pl_controls and every control fails closed: a fact that is absent or of the wrong
 # type is reported as evidence missing, never as a pass. Booleans pass only on true; numbers must be
 # non-negative numbers. Organization-defined frequencies are compared as observed days_since_last against the
@@ -148,6 +150,29 @@ violation contains msg if {
 	msg := sprintf("NIST PL-4: rules of behavior requirements not met: %s", [concat("; ", sort(_pl4.gaps))])
 }
 
+# --- PL-4(1) ---
+# Social Media and External Site/Application Usage Restrictions: the rules of behavior restrict use of social
+# media, social networking and external sites or applications; posting organizational information on public
+# websites; and use of organization-provided identifiers and authentication secrets for external accounts.
+# Facts: input.pl_controls.rules_of_behavior.social_media_restrictions.social_media_use,
+# .public_posting, .external_account_credentials (booleans: the current rules of behavior contain the restriction).
+_pl4_1 := _assess({"bools": [
+	[["rules_of_behavior", "social_media_restrictions", "social_media_use"], "rules of behavior do not restrict use of social media, social networking sites and external sites or applications"],
+	[["rules_of_behavior", "social_media_restrictions", "public_posting"], "rules of behavior do not restrict posting organizational information on public websites"],
+	[["rules_of_behavior", "social_media_restrictions", "external_account_credentials"], "rules of behavior do not restrict use of organization-provided identifiers and authentication secrets for external accounts"],
+]})
+
+violation contains msg if {
+	count(_pl4_1.missing) > 0
+	msg := sprintf("NIST PL-4(1): evidence missing — %s not collected%s", [concat(", ", sort(_pl4_1.missing)), _also(_pl4_1.gaps)])
+}
+
+violation contains msg if {
+	count(_pl4_1.missing) == 0
+	count(_pl4_1.gaps) > 0
+	msg := sprintf("NIST PL-4(1): rules of behavior restrictions not met: %s", [concat("; ", sort(_pl4_1.gaps))])
+}
+
 # --- PL-7 ---
 # Concept of Operations. Facts: input.pl_controls.conops.documented (boolean); input.pl_controls.conops.days_since_last / .odp.frequency_days.
 _pl7 := _assess({"bools": [[["conops", "documented"], "no Concept of Operations (CONOPS) developed for the system"]], "bounds": [_freq(["conops"], "CONOPS last reviewed")]})
@@ -231,7 +256,7 @@ violation contains msg if {
 compliant if count(violation) == 0
 
 # The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"PL-1", "PL-2", "PL-4", "PL-7", "PL-8", "PL-9", "PL-10", "PL-11"}
+evaluated_controls := {"PL-1", "PL-2", "PL-4", "PL-4(1)", "PL-7", "PL-8", "PL-9", "PL-10", "PL-11"}
 
 compliance_report := {
 	"family": "PL",
