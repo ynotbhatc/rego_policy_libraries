@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 15
+#     cited: 15
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,8 +19,9 @@ package nist.sp800_53.supply_chain_risk
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Supply Chain Risk Management (SR) Family: the twelve active base controls SR-1 to
-# SR-12. Enhancements are not evaluated and a base control never fails on an enhancement's requirement. Facts
-# live under input.sr_controls.
+# SR-12, and the Moderate-baseline enhancements SR-2(1), SR-11(1) and SR-11(2). Each enhancement is its own
+# requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under
+# input.sr_controls.
 
 default compliant := false
 
@@ -226,12 +227,51 @@ violation contains msg if {
 	msg := sprintf("NIST SR-12: %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# Moderate-baseline enhancements (SP 800-53B). Facts nest under the base control's object.
+# ---------------------------------------------------------------------------------------------------------
+
+# SR-2(1) Establish SCRM Team: input.sr_controls.scrm_plan.team.{established, unfilled_roles}. established is
+# true when a supply chain risk management team is chartered to lead and support the organization-defined SCRM
+# activities; unfilled_roles counts the organization-defined team roles with no assigned member.
+violation contains msg if {
+	sec := ["scrm_plan", "team"]
+	b := {"established": "no supply chain risk management team established to lead and support the organization-defined SCRM activities"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "unfilled_roles")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "unfilled_roles", "organization-defined SCRM team roles have no assigned member")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SR-2(1): %s", [_detail(m, u)])
+}
+
+# SR-11(1) Anti-counterfeit Training: input.sr_controls.anti_counterfeit.training.untrained_personnel, the number
+# of people in the organization-defined personnel or roles with no completed training in detecting counterfeit
+# hardware, software and firmware components (from the training record).
+violation contains msg if {
+	sec := ["anti_counterfeit", "training"]
+	m := _zero_missing(sec, "untrained_personnel")
+	u := _zero_unmet(sec, "untrained_personnel", "organization-defined personnel are not trained to detect counterfeit system components")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SR-11(1): %s", [_detail(m, u)])
+}
+
+# SR-11(2) Configuration Control for Component Service and Repair: input.sr_controls.anti_counterfeit.
+# service_repair.components_without_configuration_control, the number of organization-defined components
+# awaiting service or repair, or repaired and awaiting return to service, that are not under configuration
+# control (no tracked custody and configuration record).
+violation contains msg if {
+	sec := ["anti_counterfeit", "service_repair"]
+	m := _zero_missing(sec, "components_without_configuration_control")
+	u := _zero_unmet(sec, "components_without_configuration_control", "components awaiting or returning from service or repair are not under configuration control")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SR-11(2): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"SR-1", "SR-2", "SR-3", "SR-4", "SR-5", "SR-6",
-	"SR-7", "SR-8", "SR-9", "SR-10", "SR-11", "SR-12",
+	"SR-1", "SR-2", "SR-2(1)", "SR-3", "SR-4", "SR-5", "SR-6", "SR-7",
+	"SR-8", "SR-9", "SR-10", "SR-11", "SR-11(1)", "SR-11(2)", "SR-12",
 }
 
 compliance_report := {

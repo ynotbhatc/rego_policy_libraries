@@ -11,135 +11,135 @@
   "nist-800-53-module"
  ],
  "granularity-note": "stig-cci maps to base controls only; an enhancement counts as covered only on an exact enhancement mapping",
- "excluded_topic_rows": 47,
+ "excluded_topic_rows": 52,
  "mapping": {
   "label_is_800_53_controls": 75,
-  "nist_module_controls_mapped": 266,
+  "nist_module_controls_mapped": 370,
   "stig_catalog_controls": 1587,
   "stig_catalog_controls_not_in_map": 463,
   "stig_controls_mapped": 1124,
   "stig_map_rules": 3807,
   "stig_map_rules_without_catalog_control": 2683,
-  "nist_ids_with_a_check": 276
+  "nist_ids_with_a_check": 377
  },
  "baselines": {
   "fedramp_rev5_high": {
    "title": "FedRAMP Rev 5 High",
    "controls": 410,
-   "covered": 201,
-   "covered_pct": 49.0,
+   "covered": 302,
+   "covered_pct": 73.7,
    "base": {
     "total": 191,
-    "covered": 188,
-    "covered_pct": 98.4
+    "covered": 191,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 219,
-    "covered": 13,
-    "covered_pct": 5.9
+    "covered": 111,
+    "covered_pct": 50.7
    }
   },
   "fedramp_rev5_li_saas": {
    "title": "FedRAMP Rev 5 LI-SaaS",
    "controls": 156,
-   "covered": 139,
-   "covered_pct": 89.1,
+   "covered": 156,
+   "covered_pct": 100.0,
    "base": {
     "total": 135,
-    "covered": 134,
-    "covered_pct": 99.3
+    "covered": 135,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 21,
-    "covered": 5,
-    "covered_pct": 23.8
+    "covered": 21,
+    "covered_pct": 100.0
    }
   },
   "fedramp_rev5_low": {
    "title": "FedRAMP Rev 5 Low",
    "controls": 156,
-   "covered": 139,
-   "covered_pct": 89.1,
+   "covered": 156,
+   "covered_pct": 100.0,
    "base": {
     "total": 135,
-    "covered": 134,
-    "covered_pct": 99.3
+    "covered": 135,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 21,
-    "covered": 5,
-    "covered_pct": 23.8
+    "covered": 21,
+    "covered_pct": 100.0
    }
   },
   "fedramp_rev5_moderate": {
    "title": "FedRAMP Rev 5 Moderate",
    "controls": 323,
-   "covered": 191,
-   "covered_pct": 59.1,
+   "covered": 292,
+   "covered_pct": 90.4,
    "base": {
     "total": 181,
-    "covered": 178,
-    "covered_pct": 98.3
+    "covered": 181,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 142,
-    "covered": 13,
-    "covered_pct": 9.2
+    "covered": 111,
+    "covered_pct": 78.2
    }
   },
   "nist_800_53_rev5_high": {
    "title": "NIST SP 800-53 Rev 5 High",
    "controls": 370,
-   "covered": 197,
-   "covered_pct": 53.2,
+   "covered": 298,
+   "covered_pct": 80.5,
    "base": {
     "total": 188,
-    "covered": 185,
-    "covered_pct": 98.4
+    "covered": 188,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 182,
-    "covered": 12,
-    "covered_pct": 6.6
+    "covered": 110,
+    "covered_pct": 60.4
    }
   },
   "nist_800_53_rev5_low": {
    "title": "NIST SP 800-53 Rev 5 Low",
    "controls": 149,
-   "covered": 133,
-   "covered_pct": 89.3,
+   "covered": 149,
+   "covered_pct": 100.0,
    "base": {
     "total": 131,
-    "covered": 130,
-    "covered_pct": 99.2
+    "covered": 131,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 18,
-    "covered": 3,
-    "covered_pct": 16.7
+    "covered": 18,
+    "covered_pct": 100.0
    }
   },
   "nist_800_53_rev5_moderate": {
    "title": "NIST SP 800-53 Rev 5 Moderate",
    "controls": 287,
-   "covered": 186,
-   "covered_pct": 64.8,
+   "covered": 287,
+   "covered_pct": 100.0,
    "base": {
     "total": 177,
-    "covered": 174,
-    "covered_pct": 98.3
+    "covered": 177,
+    "covered_pct": 100.0
    },
    "enhancement": {
     "total": 110,
-    "covered": 12,
-    "covered_pct": 10.9
+    "covered": 110,
+    "covered_pct": 100.0
    }
   },
   "nist_800_53_rev5_privacy": {
    "title": "NIST SP 800-53 Rev 5 Privacy",
    "controls": 96,
-   "covered": 73,
-   "covered_pct": 76.0,
+   "covered": 75,
+   "covered_pct": 78.1,
    "base": {
     "total": 75,
     "covered": 73,
@@ -147,8 +147,8 @@
    },
    "enhancement": {
     "total": 21,
-    "covered": 0,
-    "covered_pct": 0.0
+    "covered": 2,
+    "covered_pct": 9.5
    }
   }
  }

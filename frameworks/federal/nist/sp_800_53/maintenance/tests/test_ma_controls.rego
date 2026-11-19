@@ -1,6 +1,6 @@
 package nist.sp800_53.maintenance_logic_test
 
-# MA-1 to MA-7: all-pass fixture, empty input, one flip per control id, type traps.
+# MA-1 to MA-7 and MA-3(1), MA-3(2), MA-3(3): all-pass fixture, empty input, one flip per control id, type traps.
 
 import rego.v1
 
@@ -15,7 +15,12 @@ _pass := {"ma_controls": {
 		"controls_checked_after_maintenance": true,
 		"records_include_required_information": true,
 	},
-	"maintenance_tools": {"approved": true, "controlled": true, "monitored": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}}},
+	"maintenance_tools": {
+		"approved": true, "controlled": true, "monitored": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}},
+		"inspection": {"tools_not_inspected": 0},
+		"media_inspection": {"media_not_scanned": 0},
+		"removal": {"removals_without_disposition": 0},
+	},
 	"nonlocal_maintenance": {
 		"approved_and_monitored": true,
 		"tools_per_policy_and_security_plan": true,
@@ -56,7 +61,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.maintenance.evaluated_controls == {"MA-1", "MA-2", "MA-3", "MA-4", "MA-5", "MA-6", "MA-7"}
+	data.nist.sp800_53.maintenance.evaluated_controls == {"MA-1", "MA-2", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-5", "MA-6", "MA-7"}
 }
 
 test_ma1_policy_not_documented if {
@@ -163,4 +168,74 @@ test_ma7_attestation_without_attester_is_a_finding if {
 	inp := object.union(_pass, {"ma_controls": {"field_maintenance": {"attestation": {"by": " "}}}})
 	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
 	_failing(r) == {"MA-7"}
+}
+
+test_empty_input_every_finding_is_evidence_missing if {
+	r := data.nist.sp800_53.maintenance.compliance_report with input as {}
+	every v in r.violations {
+		contains(v, "evidence missing")
+	}
+}
+
+test_ma7_attestation_false_is_not_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"field_maintenance": {"attestation": {"attested": false}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-7"}
+	msg := _msg(r, "MA-7")[0]
+	contains(msg, "not attested")
+	not contains(msg, "evidence missing")
+}
+
+test_ma7_attestation_absent_is_evidence_missing if {
+	inp := json.remove(_pass, ["ma_controls/field_maintenance/attestation"])
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-7"}
+	msg := _msg(r, "MA-7")[0]
+	contains(msg, "evidence missing — input.ma_controls.field_maintenance.attestation not collected")
+	contains(msg, "not attested")
+}
+
+test_ma3_1_uninspected_tools_flip_only_ma3_1 if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"inspection": {"tools_not_inspected": 2}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	r.violations == {"NIST MA-3(1): 2 maintenance tools used without an inspection for improper or unauthorized modification"}
+}
+
+test_ma3_1_count_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"inspection": {"tools_not_inspected": "1"}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(1)"}
+	contains(_msg(r, "MA-3(1)")[0], "evidence missing")
+}
+
+test_ma3_2_unscanned_media_flip_only_ma3_2 if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"media_inspection": {"media_not_scanned": 1}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(2)"}
+}
+
+test_ma3_2_count_as_null_is_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"media_inspection": {"media_not_scanned": null}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(2)"}
+	contains(_msg(r, "MA-3(2)")[0], "evidence missing")
+}
+
+test_ma3_3_removal_without_disposition_flips_only_ma3_3 if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"removal": {"removals_without_disposition": 1}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(3)"}
+}
+
+test_ma3_3_negative_count_is_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_tools": {"removal": {"removals_without_disposition": -2}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(3)"}
+	contains(_msg(r, "MA-3(3)")[0], "evidence missing")
+}
+
+test_ma3_base_unaffected_by_enhancement_facts if {
+	inp := json.remove(_pass, ["ma_controls/maintenance_tools/inspection", "ma_controls/maintenance_tools/media_inspection", "ma_controls/maintenance_tools/removal"])
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-3(1)", "MA-3(2)", "MA-3(3)"}
 }

@@ -5,9 +5,10 @@
     python3 build_assessment_results.py report.json [...] -o results.json [--time 2026-10-12T00:00:00Z] [--subject host01]
 
 One result per run: reviewed-controls lists every control of the frameworks that reported; one observation and
-one finding (state not-satisfied, target = the control's statement part) per violation. Controls without a
-violation are NOT asserted satisfied here: a report says which checks failed, and fail-closed sections appear
-as violations, so absence of a finding is not evidence. Finding and observation uuids are uuid5 of
+one finding (state not-satisfied, target = the control's statement part) per violation. A control is asserted
+satisfied only when the report carries control_results and its row says "pass" (one observation and one finding,
+state satisfied; method EXAMINE when the row's basis is attestation, else TEST). Absence of a finding is never
+taken as evidence: reports without control_results assert nothing satisfied. Finding and observation uuids are uuid5 of
 (framework, control id, message) so re-running on the same facts yields the same ids.
 """
 from __future__ import annotations
@@ -15,7 +16,7 @@ import json, sys, pathlib, argparse, datetime
 HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE)); sys.path.insert(0, str(HERE.parent))
 from build import version_and_date, u5, NS, REPO, OSCAL_VERSION  # noqa: E402
-from _lib.findings import Index, findings                        # noqa: E402
+from _lib.findings import Index, findings, passes                # noqa: E402
 
 RAW = f"{REPO}/raw/v{{v}}/converters/exports/oscal/dist/catalogs/{{fw}}.json"
 
@@ -33,7 +34,8 @@ def main():
     cat_dir = pathlib.Path(a.catalogs) if a.catalogs else HERE / "dist" / "catalogs"
     ix = Index.build()
     fs = findings(a.reports, ix)
-    fws = sorted({f.rule.framework for f in fs})
+    ps = passes(a.reports, ix)
+    fws = sorted({f.rule.framework for f in fs} | {r.framework for r, *_ in ps})
     # reviewed controls: every control of each framework that reported, from its catalog
     selections, known = [], set()
     for fw in fws:
@@ -67,6 +69,30 @@ def main():
                                  "target": {"type": "objective-id" if f.rule.id in known else "statement-id", "target-id": target_id,
                                             "status": {"state": "not-satisfied"}},
                                  "related-observations": [{"observation-uuid": ouid}]})
+    satisfied = 0
+    for rule, row, pkg, rpath in ps:
+        key = (rule.framework, rule.id, "pass")
+        if key in seen:
+            continue
+        seen.add(key); satisfied += 1
+        ouid = u5("observation", *key); fuid = u5("finding", *key)
+        basis = row.get("basis") if isinstance(row.get("basis"), str) else "evidence"
+        observations.append({"uuid": ouid, "title": f"{rule.label}: pass", "description": f"{rule.label} met ({basis}).",
+                             "methods": ["EXAMINE" if basis == "attestation" else "TEST"], "types": ["control-objective"], "collected": stamp,
+                             "props": [{"name": "rego-package", "ns": NS, "value": pkg},
+                                       {"name": "report", "ns": NS, "value": rpath},
+                                       {"name": "basis", "ns": NS, "value": basis}],
+                             "subjects": [{"subject-uuid": u5("subject", a.subject or "unspecified"), "type": "component",
+                                           "title": a.subject or "unspecified subject"}]})
+        known_ctl = rule.id in known
+        results_findings.append({"uuid": fuid, "title": f"{rule.label} satisfied", "description": f"control_results row {row.get('id')}: pass ({basis}).",
+                                 "props": [{"name": "framework", "ns": NS, "value": rule.framework},
+                                           {"name": "control-mapped", "ns": NS, "value": "true"}],
+                                 "target": {"type": "objective-id" if known_ctl else "statement-id",
+                                            "target-id": f"{rule.id}_stmt" if known_ctl else rule.id,
+                                            "status": {"state": "satisfied"}},
+                                 "related-observations": [{"observation-uuid": ouid}]})
+    violations_n = len(results_findings) - satisfied
     ap_uuid = u5("assessment-plan", "implicit", version)
     doc = {"assessment-results": {
         "uuid": u5("assessment-results", stamp, a.subject or "", *["|".join(k) for k in sorted(seen)[:50]]),
@@ -77,7 +103,7 @@ def main():
                               ([{"name": "subject", "ns": NS, "value": a.subject}] if a.subject else [])},
         "import-ap": {"href": f"#{ap_uuid}"},
         "results": [{"uuid": u5("result", stamp, *fws), "title": f"Automated evaluation, library v{version}",
-                     "description": f"{len(results_findings)} violations across {len(fws)} framework(s); controls without a finding are not asserted satisfied (absence of a finding is not evidence).",
+                     "description": f"{violations_n} violations and {satisfied} controls satisfied across {len(fws)} framework(s); a control is asserted satisfied only from a control_results pass row (absence of a finding is not evidence).",
                      "start": stamp, "end": stamp,
                      "reviewed-controls": {"control-selections": selections or [{"description": "no catalog found for the reporting frameworks"}]},
                      "observations": observations, "findings": results_findings}],
@@ -89,7 +115,7 @@ def main():
         sys.stdout.write(text)
     else:
         pathlib.Path(a.out).write_text(text)
-        print(f"oscal assessment-results: {len(results_findings)} findings / {len(observations)} observations, {sum(len(s.get('include-controls', [])) for s in selections)} reviewed controls -> {a.out}")
+        print(f"oscal assessment-results: {len(results_findings)} findings ({satisfied} satisfied) / {len(observations)} observations, {sum(len(s.get('include-controls', [])) for s in selections)} reviewed controls -> {a.out}")
     return 0
 
 

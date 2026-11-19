@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**991 of 1065 policy files have tests (93%).** 1441 test files, 74 policies still uncovered.
+**991 of 1066 policy files have tests (93%).** 1444 test files, 75 policies still uncovered.
 
 ## Why this file exists
 
@@ -25,7 +25,7 @@ took so two people do not write the same test.
 |---|---|
 | `benchmarks/cis` | 35 |
 | `benchmarks/stig` | 20 |
-| `frameworks/federal` | 5 |
+| `frameworks/federal` | 6 |
 | `benchmarks/sap` | 4 |
 | `frameworks/critical_infrastructure` | 2 |
 | `enforcement/ansible` | 1 |
@@ -393,8 +393,9 @@ took so two people do not write the same test.
 
 </details>
 
-<details><summary><code>frameworks/federal/nist/sp_800_53</code> — 1 file(s)</summary>
+<details><summary><code>frameworks/federal/nist/sp_800_53</code> — 2 file(s)</summary>
 
+- `nist_800_53_index.rego`
 - `nist_800_53_key_main.rego`
 
 </details>

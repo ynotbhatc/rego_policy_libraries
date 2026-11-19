@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 22
-#     cited: 20
+#     checks: 30
+#     cited: 28
 #     density: sized
 #     basis: size
 #     tested: true
@@ -22,8 +22,10 @@ import rego.v1
 # Boundary protection, transmission confidentiality/integrity, key management.
 #
 # Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0.
-# Evaluated: SC-1, SC-2, SC-3, SC-5, SC-7, SC-8, SC-8(1), SC-10, SC-12, SC-13, SC-15, SC-17, SC-18,
-# SC-20, SC-21, SC-23, SC-28, SC-28(1), SC-45, SC-45(1) (20 ids). SC-19 (Voice over Internet Protocol) is WITHDRAWN in Rev 5
+# Evaluated: SC-1, SC-2, SC-3, SC-4, SC-5, SC-7, SC-7(3), SC-7(4), SC-7(5), SC-7(7), SC-7(8), SC-8, SC-8(1),
+# SC-10, SC-12, SC-13, SC-15, SC-17, SC-18, SC-20, SC-21, SC-22, SC-23, SC-28, SC-28(1), SC-39, SC-45, SC-45(1)
+# (28 ids; SC-4, SC-7(3), SC-7(4), SC-7(5), SC-7(7), SC-7(8), SC-22 and SC-39 are the Moderate-baseline ids
+# added from SP 800-53B). SC-19 (Voice over Internet Protocol) is WITHDRAWN in Rev 5
 # ("Technology-specific; addressed as any other technology or protocol") and is not assessed.
 #
 # SC-8 and SC-28 protect "the [Selection: confidentiality; integrity]" of information: the selection is an
@@ -31,6 +33,69 @@ import rego.v1
 # enhancement SC-8(1) / SC-28(1), evaluated as its own control.
 
 _sc := object.get(input, "sc_controls", {})
+
+_root := "sc_controls"
+
+# ---------------------------------------------------------------------------------------------------------
+# Evidence helpers. Every value is read with object.get(..., null).
+# ---------------------------------------------------------------------------------------------------------
+
+_val(path) := object.get(input, array.concat([_root], path), null)
+
+_p(path) := concat(".", array.concat(["input", _root], path))
+
+# The original boolean checks keep their pass condition (`not input.sc_controls.<path>`: only an absent fact or
+# false fails). The finding says which: false keeps the original text; an absent fact (or a path through a
+# non-object) is evidence missing.
+_legacy(path, text) := text if {
+	_val(path) == false
+} else := sprintf("evidence missing — %s not collected", [_p(path)])
+
+# Checks that pass only on `== true`: false keeps the original text, any non-boolean is evidence missing.
+_strict(path, text) := text if {
+	is_boolean(_val(path))
+} else := sprintf("evidence missing — %s not collected", [_p(path)])
+
+# Leading "evidence missing — ... not collected; " when some facts behind a finding were not collected.
+_ev_prefix(m) := "" if {
+	count(m) == 0
+} else := sprintf("evidence missing — %s not collected; ", [concat(", ", sort(m))])
+
+# Booleans: reqs maps a fact key to the text reported when that fact is false. Only `true` passes.
+_bool_missing(sec, reqs) := {_p(array.concat(sec, [k])) | some k, _ in reqs; not is_boolean(_val(array.concat(sec, [k])))}
+
+_bool_unmet(sec, reqs) := {d | some k, d in reqs; _val(array.concat(sec, [k])) == false}
+
+# Organization-defined frequency: observed <sec>.days_since_last against <sec>.odp.frequency_days.
+_freq_keys := [["days_since_last"], ["odp", "frequency_days"]]
+
+_freq_missing(sec) := {_p(array.concat(sec, k)) | some k in _freq_keys; not is_number(_val(array.concat(sec, k)))}
+
+_freq_unmet(sec, what) := {d |
+	obs := _val(array.concat(sec, ["days_since_last"]))
+	odp := _val(array.concat(sec, ["odp", "frequency_days"]))
+	is_number(obs)
+	is_number(odp)
+	obs > odp
+	d := sprintf("%s last %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
+}
+
+# Counts that must be zero. A non-number is missing evidence.
+_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not is_number(_val(array.concat(sec, [k])))}
+
+_zero_unmet(sec, k, what) := {d |
+	n := _val(array.concat(sec, [k]))
+	is_number(n)
+	n > 0
+	d := sprintf("%v %s", [n, what])
+}
+
+# One finding text: the missing evidence first, then every unmet requirement.
+_mpart(m) := [] if {
+	count(m) == 0
+} else := [sprintf("evidence missing — %s not collected", [concat(", ", sort(m))])]
+
+_detail(m, u) := concat("; ", array.concat(_mpart(m), sort(u)))
 
 _valid_properties := {"confidentiality", "integrity"}
 
@@ -65,6 +130,24 @@ sc8_unprotected := sc8_required_properties - _sc8_protected
 
 sc8_1_uncovered := sc8_required_properties - _sc8_1_crypto
 
+# The facts behind each property; a property whose facts are all non-boolean was not collected.
+_sc8_facts := {
+	"confidentiality": [["transmission_confidentiality", "protected"], ["transmission_confidentiality", "encrypted"]],
+	"integrity": [["transmission_integrity", "protected"], ["transmission_integrity", "cryptographic"]],
+}
+
+_sc8_1_facts := {"confidentiality": [["transmission_confidentiality", "encrypted"]], "integrity": [["transmission_integrity", "cryptographic"]]}
+
+_none_boolean(paths) if {
+	every f in paths {
+		not is_boolean(_val(f))
+	}
+}
+
+_sc8_missing := {_p(f) | some prop in sc8_unprotected; _none_boolean(_sc8_facts[prop]); some f in _sc8_facts[prop]}
+
+_sc8_1_missing := {_p(f) | some prop in sc8_1_uncovered; _none_boolean(_sc8_1_facts[prop]); some f in _sc8_1_facts[prop]}
+
 _sc28 := object.get(_sc, "protection_of_info_at_rest", {})
 
 # SC-28 base: protection by the organisation's chosen mechanism (protected) or by encryption (encrypted).
@@ -76,53 +159,53 @@ default compliant := false
 
 violation contains msg if {
 	not input.sc_controls.policy.documented
-	msg := "NIST SC-1: System and communications protection policy not documented"
+	msg := sprintf("NIST SC-1: %s", [_legacy(["policy", "documented"], "System and communications protection policy not documented")])
 }
 
 violation contains msg if {
 	not input.sc_controls.app_partitioning.separated
-	msg := "NIST SC-2: User functionality is not separated from system management functionality"
+	msg := sprintf("NIST SC-2: %s", [_legacy(["app_partitioning", "separated"], "User functionality is not separated from system management functionality")])
 }
 
 violation contains msg if {
 	not input.sc_controls.security_function_isolation.implemented
-	msg := "NIST SC-3: Security functions not isolated from non-security functions"
+	msg := sprintf("NIST SC-3: %s", [_legacy(["security_function_isolation", "implemented"], "Security functions not isolated from non-security functions")])
 }
 
 violation contains msg if {
 	not input.sc_controls.denial_of_service.protections
-	msg := "NIST SC-5: Denial-of-service protections not in place"
+	msg := sprintf("NIST SC-5: %s", [_legacy(["denial_of_service", "protections"], "Denial-of-service protections not in place")])
 }
 
 violation contains msg if {
 	not input.sc_controls.boundary_protection.deployed
-	msg := "NIST SC-7: System boundary protection not deployed at managed interfaces"
+	msg := sprintf("NIST SC-7: %s", [_legacy(["boundary_protection", "deployed"], "System boundary protection not deployed at managed interfaces")])
 }
 
 violation contains msg if {
 	count(sc8_unprotected) > 0
 	msg := sprintf(
-		"NIST SC-8: Transmission confidentiality and integrity — selected properties %v not evidenced as protected (unprotected or not collected: %v; selection from input.sc_controls.transmission_protection.odp.properties, both when not supplied)",
-		[sort(sc8_required_properties), sort(sc8_unprotected)],
+		"NIST SC-8: %sTransmission confidentiality and integrity — selected properties %v not evidenced as protected (unprotected or not collected: %v; selection from input.sc_controls.transmission_protection.odp.properties, both when not supplied)",
+		[_ev_prefix(_sc8_missing), sort(sc8_required_properties), sort(sc8_unprotected)],
 	)
 }
 
 violation contains msg if {
 	count(sc8_1_uncovered) > 0
 	msg := sprintf(
-		"NIST SC-8(1): Cryptographic protection — cryptographic mechanisms not evidenced for transmitted-information properties %v (confidentiality: input.sc_controls.transmission_confidentiality.encrypted; integrity: input.sc_controls.transmission_integrity.cryptographic)",
-		[sort(sc8_1_uncovered)],
+		"NIST SC-8(1): %sCryptographic protection — cryptographic mechanisms not evidenced for transmitted-information properties %v (confidentiality: input.sc_controls.transmission_confidentiality.encrypted; integrity: input.sc_controls.transmission_integrity.cryptographic)",
+		[_ev_prefix(_sc8_1_missing), sort(sc8_1_uncovered)],
 	)
 }
 
 violation contains msg if {
 	not input.sc_controls.network_disconnect.timeout_configured
-	msg := "NIST SC-10: Network session disconnect timeout not configured"
+	msg := sprintf("NIST SC-10: %s", [_legacy(["network_disconnect", "timeout_configured"], "Network session disconnect timeout not configured")])
 }
 
 violation contains msg if {
 	not input.sc_controls.cryptographic_key_mgmt.documented
-	msg := "NIST SC-12: Cryptographic key management process not documented"
+	msg := sprintf("NIST SC-12: %s", [_legacy(["cryptographic_key_mgmt", "documented"], "Cryptographic key management process not documented")])
 }
 
 # SC-13: the organisation determines the cryptographic uses and the types of cryptography required for
@@ -161,32 +244,32 @@ violation contains msg if {
 
 violation contains msg if {
 	not input.sc_controls.collaborative_devices.disabled_when_unused
-	msg := "NIST SC-15: Collaborative computing devices (mic/camera) not disabled when unused"
+	msg := sprintf("NIST SC-15: %s", [_legacy(["collaborative_devices", "disabled_when_unused"], "Collaborative computing devices (mic/camera) not disabled when unused")])
 }
 
 violation contains msg if {
 	not input.sc_controls.public_key_infrastructure.certificates_managed
-	msg := "NIST SC-17: Public key certificates not issued/managed by authorized PKI"
+	msg := sprintf("NIST SC-17: %s", [_legacy(["public_key_infrastructure", "certificates_managed"], "Public key certificates not issued/managed by authorized PKI")])
 }
 
 violation contains msg if {
 	not input.sc_controls.mobile_code.controls_enforced
-	msg := "NIST SC-18: Mobile code controls (allow/deny lists) not enforced"
+	msg := sprintf("NIST SC-18: %s", [_legacy(["mobile_code", "controls_enforced"], "Mobile code controls (allow/deny lists) not enforced")])
 }
 
 violation contains msg if {
 	not input.sc_controls.secure_dns.dnssec_enforced
-	msg := "NIST SC-20: Authoritative name resolution does not provide origin authentication and integrity artifacts (DNSSEC signing not evidenced: input.sc_controls.secure_dns.dnssec_enforced)"
+	msg := sprintf("NIST SC-20: %s", [_legacy(["secure_dns", "dnssec_enforced"], "Authoritative name resolution does not provide origin authentication and integrity artifacts (DNSSEC signing not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")])
 }
 
 violation contains msg if {
 	not input.sc_controls.secure_dns.dnssec_enforced
-	msg := "NIST SC-21: Recursive or caching resolver does not validate origin and integrity of responses (DNSSEC validation not evidenced: input.sc_controls.secure_dns.dnssec_enforced)"
+	msg := sprintf("NIST SC-21: %s", [_legacy(["secure_dns", "dnssec_enforced"], "Recursive or caching resolver does not validate origin and integrity of responses (DNSSEC validation not evidenced: input.sc_controls.secure_dns.dnssec_enforced)")])
 }
 
 violation contains msg if {
 	not input.sc_controls.session_authenticity.protected
-	msg := "NIST SC-23: Session authenticity not protected (session ID randomness, timeouts)"
+	msg := sprintf("NIST SC-23: %s", [_legacy(["session_authenticity", "protected"], "Session authenticity not protected (session ID randomness, timeouts)")])
 }
 
 _sc28_collected if is_boolean(object.get(_sc28, "protected", null))
@@ -207,7 +290,7 @@ violation contains msg if {
 
 violation contains msg if {
 	object.get(_sc28, "encrypted", false) != true
-	msg := "NIST SC-28(1): Cryptographic protection of information at rest not evidenced (input.sc_controls.protection_of_info_at_rest.encrypted is not true)"
+	msg := sprintf("NIST SC-28(1): %s", [_strict(["protection_of_info_at_rest", "encrypted"], "Cryptographic protection of information at rest not evidenced (input.sc_controls.protection_of_info_at_rest.encrypted is not true)")])
 }
 
 compliant if count(violation) == 0
@@ -216,18 +299,145 @@ compliant if count(violation) == 0
 # is where Rev 5 moved the withdrawn AU-8(1)).
 violation contains msg if {
 	not object.get(_sc, ["time_synchronization", "clocks_synchronized"], false) == true
-	msg := "NIST SC-45: System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)"
+	msg := sprintf("NIST SC-45: %s", [_strict(["time_synchronization", "clocks_synchronized"], "System clocks not synchronized within and between systems and components (input.sc_controls.time_synchronization.clocks_synchronized)")])
 }
 
 violation contains msg if {
 	not object.get(_sc, ["time_synchronization", "authoritative_source_synchronized"], false) == true
-	msg := "NIST SC-45(1): Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)"
+	msg := sprintf("NIST SC-45(1): %s", [_strict(["time_synchronization", "authoritative_source_synchronized"], "Internal clocks not compared with and synchronized to an authoritative time source (input.sc_controls.time_synchronization.authoritative_source_synchronized)")])
+}
+
+# ---------------------------------------------------------------------------------------------------------
+# Moderate-baseline ids (SP 800-53B). Boundary-protection enhancements nest under boundary_protection.
+# ---------------------------------------------------------------------------------------------------------
+
+# SC-4 Information in Shared System Resources: input.sc_controls.shared_resources.residual_information_protected,
+# true when shared resources (memory, storage, caches) are cleared or isolated before reallocation so no
+# information passes between users or processes through them (object reuse protection).
+violation contains msg if {
+	sec := ["shared_resources"]
+	b := {"residual_information_protected": "unauthorized and unintended information transfer via shared system resources is not prevented"}
+	m := _bool_missing(sec, b)
+	u := _bool_unmet(sec, b)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-4: %s", [_detail(m, u)])
+}
+
+# SC-7(3) Access Points: input.sc_controls.boundary_protection.access_points.{external_connections,
+# odp.max_external_connections}: the observed number of external network connections against the
+# organization-approved limit.
+_sc7_3 := ["boundary_protection", "access_points"]
+
+_sc7_3_missing := {_p(array.concat(_sc7_3, k)) | some k in [["external_connections"], ["odp", "max_external_connections"]]; not is_number(_val(array.concat(_sc7_3, k)))}
+
+_sc7_3_unmet := {d |
+	n := _val(array.concat(_sc7_3, ["external_connections"]))
+	limit := _val(array.concat(_sc7_3, ["odp", "max_external_connections"]))
+	is_number(n)
+	is_number(limit)
+	n > limit
+	d := sprintf("%v external network connections; the organization-approved limit is %v", [n, limit])
+}
+
+violation contains msg if {
+	count(_sc7_3_missing) + count(_sc7_3_unmet) > 0
+	msg := sprintf("NIST SC-7(3): %s", [_detail(_sc7_3_missing, _sc7_3_unmet)])
+}
+
+# SC-7(4) External Telecommunications Services: input.sc_controls.boundary_protection.external_telecom.
+# {services_without_managed_interface, interfaces_without_flow_policy, unprotected_interfaces,
+# undocumented_exceptions, control_plane_traffic_controlled} and
+# input.sc_controls.boundary_protection.external_telecom.exception_review.{days_since_last, odp.frequency_days}.
+# The counts are external telecommunication services with no managed interface, managed interfaces with no
+# traffic flow policy, interfaces not protecting the confidentiality and integrity of transmitted information,
+# and flow-policy exceptions without a documented mission need and duration. control_plane_traffic_controlled
+# is true when unauthorized control plane traffic is prevented outbound, filtered inbound, and the information
+# remote networks need to detect it is published.
+_sc7_4_zero := {
+	"services_without_managed_interface": "external telecommunication services have no managed interface",
+	"interfaces_without_flow_policy": "managed interfaces have no traffic flow policy",
+	"unprotected_interfaces": "managed interfaces do not protect the confidentiality and integrity of transmitted information",
+	"undocumented_exceptions": "traffic flow policy exceptions lack a documented mission or business need and duration",
+}
+
+violation contains msg if {
+	sec := ["boundary_protection", "external_telecom"]
+	b := {"control_plane_traffic_controlled": "unauthorized control plane traffic is not prevented, published for detection and filtered"}
+	zm := {p | some k, _ in _sc7_4_zero; some p in _zero_missing(sec, k)}
+	zu := {d | some k, t in _sc7_4_zero; some d in _zero_unmet(sec, k, t)}
+	m := (_bool_missing(sec, b) | zm) | _freq_missing(array.concat(sec, ["exception_review"]))
+	u := (_bool_unmet(sec, b) | zu) | _freq_unmet(array.concat(sec, ["exception_review"]), "traffic flow policy exceptions reviewed")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-7(4): %s", [_detail(m, u)])
+}
+
+# SC-7(5) Deny by Default — Allow by Exception: input.sc_controls.boundary_protection.deny_by_default.
+# interfaces_allowing_by_default, the number of managed interfaces (or organization-defined systems) whose
+# filter rule set does not end in a default deny.
+violation contains msg if {
+	sec := ["boundary_protection", "deny_by_default"]
+	m := _zero_missing(sec, "interfaces_allowing_by_default")
+	u := _zero_unmet(sec, "interfaces_allowing_by_default", "managed interfaces do not deny network traffic by default and allow it by exception")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-7(5): %s", [_detail(m, u)])
+}
+
+# SC-7(7) Split Tunneling for Remote Devices: input.sc_controls.boundary_protection.split_tunneling.
+# unsafe_profiles, the number of remote-access (VPN) profiles that permit split tunneling without the
+# organization-defined safeguards.
+violation contains msg if {
+	sec := ["boundary_protection", "split_tunneling"]
+	m := _zero_missing(sec, "unsafe_profiles")
+	u := _zero_unmet(sec, "unsafe_profiles", "remote-access profiles permit split tunneling without the organization-defined safeguards")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-7(7): %s", [_detail(m, u)])
+}
+
+# SC-7(8) Route Traffic to Authenticated Proxy Servers: input.sc_controls.boundary_protection.proxy.
+# authenticated_proxy_enforced, true when the organization-defined internal traffic to the organization-defined
+# external networks can leave only through authenticated proxy servers at managed interfaces.
+violation contains msg if {
+	sec := ["boundary_protection", "proxy"]
+	b := {"authenticated_proxy_enforced": "internal traffic to external networks is not routed through authenticated proxy servers at managed interfaces"}
+	m := _bool_missing(sec, b)
+	u := _bool_unmet(sec, b)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-7(8): %s", [_detail(m, u)])
+}
+
+# SC-22 Architecture and Provisioning for Name/Address Resolution Service:
+# input.sc_controls.name_resolution_architecture.{fault_tolerant, role_separation}. fault_tolerant is true when
+# each zone is served by at least two name servers in separate network locations; role_separation is true when
+# internal and external (authoritative and recursive) roles run on separate servers.
+_sc22 := {
+	"fault_tolerant": "the name/address resolution servers are not fault-tolerant",
+	"role_separation": "the name/address resolution servers do not separate internal and external roles",
+}
+
+violation contains msg if {
+	sec := ["name_resolution_architecture"]
+	m := _bool_missing(sec, _sc22)
+	u := _bool_unmet(sec, _sc22)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-22: %s", [_detail(m, u)])
+}
+
+# SC-39 Process Isolation: input.sc_controls.process_isolation.separate_execution_domains, true when each
+# executing process has its own execution domain (separate address spaces enforced by the OS or hypervisor).
+violation contains msg if {
+	sec := ["process_isolation"]
+	b := {"separate_execution_domains": "a separate execution domain is not maintained for each executing process"}
+	m := _bool_missing(sec, b)
+	u := _bool_unmet(sec, b)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-39: %s", [_detail(m, u)])
 }
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"SC-1", "SC-2", "SC-3", "SC-5", "SC-7", "SC-8", "SC-8(1)", "SC-10", "SC-12",
-	"SC-13", "SC-15", "SC-17", "SC-18", "SC-20", "SC-21", "SC-23", "SC-28", "SC-28(1)", "SC-45", "SC-45(1)",
+	"SC-1", "SC-2", "SC-3", "SC-4", "SC-5", "SC-7", "SC-7(3)", "SC-7(4)", "SC-7(5)", "SC-7(7)", "SC-7(8)",
+	"SC-8", "SC-8(1)", "SC-10", "SC-12", "SC-13", "SC-15", "SC-17", "SC-18", "SC-20", "SC-21", "SC-22",
+	"SC-23", "SC-28", "SC-28(1)", "SC-39", "SC-45", "SC-45(1)",
 }
 
 compliance_report := {
