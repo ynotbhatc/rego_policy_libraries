@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 17
-#     cited: 17
+#     checks: 23
+#     cited: 23
 #     density: sized
 #     basis: size
 #     tested: true
@@ -20,8 +20,9 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — System and Services Acquisition (SA) Family: the seventeen active base controls
 # (SA-1 to SA-5, SA-8 to SA-11, SA-15 to SA-17, SA-20 to SA-24; SA-6, SA-7, SA-12, SA-13, SA-14, SA-18 and
-# SA-19 are withdrawn). Enhancements are not evaluated and a base control never fails on an enhancement's
-# requirement. Facts live under input.sa_controls.
+# SA-19 are withdrawn) and the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
+# SA-15(3). Each enhancement is its own requirement with its own finding; a base control never fails on an
+# enhancement's requirement. Facts live under input.sa_controls.
 
 default compliant := false
 
@@ -289,12 +290,81 @@ violation contains msg if {
 	msg := sprintf("NIST SA-24: %s", [d])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# Moderate-baseline enhancements (SP 800-53B). Facts nest under the base control's object.
+# ---------------------------------------------------------------------------------------------------------
+
+# A contract-clause enhancement: <sec>.contracts_missing_requirement counts the acquisition contracts for the
+# system, components or services that do not require the developer to deliver the stated item.
+_contract_detail(sec, what) := _detail(_zero_missing(sec, "contracts_missing_requirement"), _zero_unmet(sec, "contracts_missing_requirement", what))
+
+# SA-4(1) Functional Properties of Controls: input.sa_controls.acquisition.functional_properties.
+# contracts_missing_requirement.
+violation contains msg if {
+	d := _contract_detail(["acquisition", "functional_properties"], "acquisition contracts do not require the developer to describe the functional properties of the controls to be implemented")
+	d != ""
+	msg := sprintf("NIST SA-4(1): %s", [d])
+}
+
+# SA-4(2) Design and Implementation Information for Controls: input.sa_controls.acquisition.design_information.
+# contracts_missing_requirement (contracts that do not require the organization-defined design and
+# implementation information at the organization-defined level of detail).
+violation contains msg if {
+	d := _contract_detail(["acquisition", "design_information"], "acquisition contracts do not require the developer to provide the organization-defined design and implementation information for the controls at the organization-defined level of detail")
+	d != ""
+	msg := sprintf("NIST SA-4(2): %s", [d])
+}
+
+# SA-4(9) Functions, Ports, Protocols, and Services in Use: input.sa_controls.acquisition.ports_protocols_services.
+# contracts_missing_requirement.
+violation contains msg if {
+	d := _contract_detail(["acquisition", "ports_protocols_services"], "acquisition contracts do not require the developer to identify the functions, ports, protocols and services intended for organizational use")
+	d != ""
+	msg := sprintf("NIST SA-4(9): %s", [d])
+}
+
+# SA-4(10) Use of Approved PIV Products: input.sa_controls.acquisition.piv_products.non_approved_products, the
+# number of products implementing PIV capability that are not on the FIPS 201-approved products list.
+violation contains msg if {
+	sec := ["acquisition", "piv_products"]
+	m := _zero_missing(sec, "non_approved_products")
+	u := _zero_unmet(sec, "non_approved_products", "products implementing PIV capability are not on the FIPS 201-approved products list")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-4(10): %s", [_detail(m, u)])
+}
+
+# SA-9(2) Identification of Functions, Ports, Protocols, and Services: input.sa_controls.external_services.
+# ports_protocols_services.providers_not_identified, the number of providers of the organization-defined
+# external system services that have not identified the functions, ports, protocols and other services the
+# use of their service requires.
+violation contains msg if {
+	sec := ["external_services", "ports_protocols_services"]
+	m := _zero_missing(sec, "providers_not_identified")
+	u := _zero_unmet(sec, "providers_not_identified", "providers of the organization-defined external system services have not identified the functions, ports, protocols and services their use requires")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-9(2): %s", [_detail(m, u)])
+}
+
+# SA-15(3) Criticality Analysis: input.sa_controls.development_process.criticality_analysis.{required,
+# decision_points_without_analysis}. required is true when the developer is required to perform a criticality
+# analysis at the organization-defined breadth and depth; decision_points_without_analysis counts the
+# organization-defined SDLC decision points already passed with no developer criticality analysis on record.
+violation contains msg if {
+	sec := ["development_process", "criticality_analysis"]
+	b := {"required": "the developer is not required to perform a criticality analysis at the organization-defined breadth and depth"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "decision_points_without_analysis")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "decision_points_without_analysis", "organization-defined SDLC decision points passed without a developer criticality analysis")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-15(3): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"SA-1", "SA-2", "SA-3", "SA-4", "SA-5", "SA-8", "SA-9", "SA-10", "SA-11",
-	"SA-15", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24",
+	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9",
+	"SA-9(2)", "SA-10", "SA-11", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23",
+	"SA-24",
 }
 
 compliance_report := {

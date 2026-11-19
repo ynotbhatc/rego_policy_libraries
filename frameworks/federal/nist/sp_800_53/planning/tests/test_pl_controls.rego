@@ -7,7 +7,7 @@ import rego.v1
 
 _ids(vs) := {m[0][1] |
 	some v in vs
-	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+): `, v, 1)
+	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+(?:\([0-9]+\))?): `, v, 1)
 	count(m) == 1
 }
 
@@ -42,6 +42,7 @@ _pass := {"pl_controls": {
 		"days_since_last": 30,
 		"odp": {"frequency_days": 365},
 		"users_without_acknowledgment": 0,
+		"social_media_restrictions": {"social_media_use": true, "public_posting": true, "external_account_credentials": true},
 	},
 	"conops": {
 		"documented": true,
@@ -69,7 +70,7 @@ test_all_pass_fixture_is_compliant if {
 	r := data.nist.sp800_53.planning.compliance_report with input as _pass
 	r.compliant == true
 	r.violation_count == 0
-	r.controls_evaluated == 8
+	r.controls_evaluated == 9
 }
 
 test_empty_input_one_finding_per_control if {
@@ -86,11 +87,11 @@ test_empty_input_one_finding_per_control if {
 
 test_non_object_family_root_fails_closed if {
 	vs := data.nist.sp800_53.planning.violation with input as {"pl_controls": "yes"}
-	count(vs) == 8
+	count(vs) == 9
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.planning.evaluated_controls == {"PL-1", "PL-2", "PL-4", "PL-7", "PL-8", "PL-9", "PL-10", "PL-11"}
+	data.nist.sp800_53.planning.evaluated_controls == {"PL-1", "PL-2", "PL-4", "PL-4(1)", "PL-7", "PL-8", "PL-9", "PL-10", "PL-11"}
 }
 
 test_pl1_failing_case_flips_only_pl1 if {
@@ -321,4 +322,26 @@ test_pl1_review_within_frequency_passes if {
 	inp := json.patch(_pass, [{"op": "replace", "path": "/pl_controls/policy/days_since_last", "value": 365}])
 	vs := data.nist.sp800_53.planning.violation with input as inp
 	count(vs) == 0
+}
+
+test_pl4_1_public_posting_unrestricted_flips_only_pl4_1 if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/pl_controls/rules_of_behavior/social_media_restrictions/public_posting", "value": false}])
+	vs := data.nist.sp800_53.planning.violation with input as inp
+	vs == {"NIST PL-4(1): rules of behavior restrictions not met: rules of behavior do not restrict posting organizational information on public websites"}
+}
+
+test_pl4_1_boolean_as_string_is_evidence_missing if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/pl_controls/rules_of_behavior/social_media_restrictions/social_media_use", "value": "true"}])
+	vs := data.nist.sp800_53.planning.violation with input as inp
+	_ids(vs) == {"PL-4(1)"}
+	contains(concat("", vs), "evidence missing — input.pl_controls.rules_of_behavior.social_media_restrictions.social_media_use not collected")
+}
+
+test_pl4_base_unaffected_by_pl4_1_facts if {
+	inp := json.remove(_pass, ["pl_controls/rules_of_behavior/social_media_restrictions"])
+	vs := data.nist.sp800_53.planning.violation with input as inp
+	_ids(vs) == {"PL-4(1)"}
+	every v in vs {
+		contains(v, "evidence missing")
+	}
 }

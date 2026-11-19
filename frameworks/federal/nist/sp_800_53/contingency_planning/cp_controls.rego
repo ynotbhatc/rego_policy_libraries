@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 12
-#     cited: 12
+#     checks: 26
+#     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,9 @@ package nist.sp800_53.contingency_planning
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Contingency Planning (CP) Family. Every active base control (CP-1 to CP-4, CP-6 to
-# CP-13; CP-5 is withdrawn). Enhancements are not evaluated: a control never fails for an enhancement.
+# CP-13; CP-5 is withdrawn) and the enhancements the SP 800-53B Moderate baseline selects. Each enhancement is its
+# own requirement with its own finding, read from keys nested under its base control's object; a base control
+# never fails for an enhancement.
 
 default compliant := false
 
@@ -349,10 +351,345 @@ violation contains msg if {
 	msg := sprintf("NIST CP-13: %s", [_att_detail("alternative_security_mechanisms")])
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# Enhancements (SP 800-53B Moderate baseline). Each reads only its own keys, nested under its base control's
+# object, and has its own single finding.
+# ---------------------------------------------------------------------------------------------------------------
+
+_nonempty_array(x) if {
+	is_array(x)
+	count(x) > 0
+}
+
+# Coordination registers (CP-2(1), CP-4(1)): <path>.related_plans lists every related plan as
+# {"name": <string>, "coordinated": <boolean>}. Absent, not a list, or empty is missing evidence (a system always
+# has related plans: business continuity, incident response, COOP, crisis communications ...).
+_coord_missing(path) := {concat(".", [_path_str(path), "related_plans"]) |
+	not _nonempty_array(object.get(_obj(path), "related_plans", null))
+}
+
+_coordinated(p) if {
+	is_object(p)
+	p.coordinated == true
+}
+
+_plan_name(p) := p.name if {
+	is_object(p)
+	is_string(p.name)
+} else := sprintf("%v", [p])
+
+_coord_failed(path, what) := {sprintf("%s not coordinated with the element responsible for related plan %s (%s.related_plans)", [what, _plan_name(p), _path_str(path)]) |
+	plans := object.get(_obj(path), "related_plans", null)
+	_nonempty_array(plans)
+	some p in plans
+	not _coordinated(p)
+}
+
+# The organization-defined scope of mission and business functions (CP-2(3), CP-2(8)): "all" or "essential".
+_scope_missing(path) := {concat(".", [_path_str(path), "odp.function_scope (organization-defined: all or essential)"]) |
+	not object.get(_obj(path), ["odp", "function_scope"], null) in {"all", "essential"}
+}
+
+# A count that must be zero: <path>.<key> not a number is missing evidence; above zero is a finding.
+_count_missing(path, key) := {concat(".", [_path_str(path), key]) |
+	not is_number(object.get(_obj(path), key, null))
+}
+
+_count_nonzero(path, key, fmt) := {sprintf(fmt, [n]) |
+	n := object.get(_obj(path), key, null)
+	is_number(n)
+	n > 0
+}
+
+# CP-2(1) Coordinate with Related Plans: contingency plan development coordinated with the organizational
+# elements responsible for related plans.
+# Facts: input.cp_controls.contingency_plan.coordination.related_plans (list of {name, coordinated}).
+_cp2_1_path := ["contingency_plan", "coordination"]
+
+_cp2_1_missing := _coord_missing(_cp2_1_path)
+
+_cp2_1_failed := _coord_failed(_cp2_1_path, "contingency plan development")
+
+violation contains msg if {
+	count(_cp2_1_missing | _cp2_1_failed) > 0
+	msg := sprintf("NIST CP-2(1): %s", [_detail(_cp2_1_missing, _cp2_1_failed)])
+}
+
+# CP-2(3) Resume Mission and Business Functions: the plan provides for resuming the organization-defined (all or
+# essential) mission and business functions within the organization-defined period of plan activation.
+# Facts (input.cp_controls.contingency_plan.resumption): covers_all_in_scope_functions (boolean);
+# planned_hours (longest planned time from activation to resumption of an in-scope function) +
+# odp.resumption_hours; odp.function_scope ("all" or "essential").
+_cp2_3_path := ["contingency_plan", "resumption"]
+
+_cp2_3_bools := [["covers_all_in_scope_functions", "contingency plan does not provide for resuming every in-scope mission and business function"]]
+
+_cp2_3_missing := (_bool_missing(_cp2_3_path, _cp2_3_bools) | _num_missing(_cp2_3_path, "planned_hours", "resumption_hours")) | _scope_missing(_cp2_3_path)
+
+_cp2_3_failed := _bool_failed(_cp2_3_path, _cp2_3_bools) | _over(_cp2_3_path, "planned_hours", "resumption_hours", "mission and business functions planned to resume up to %v hours after plan activation; the organization-defined period is %v hours")
+
+violation contains msg if {
+	count(_cp2_3_missing | _cp2_3_failed) > 0
+	msg := sprintf("NIST CP-2(3): %s", [_detail(_cp2_3_missing, _cp2_3_failed)])
+}
+
+# CP-2(8) Identify Critical Assets: critical system assets supporting the organization-defined (all or essential)
+# mission and business functions are identified.
+# Facts (input.cp_controls.contingency_plan.critical_assets): critical_asset_count (assets tagged critical in the
+# inventory, a number); all_in_scope_functions_mapped (boolean: every in-scope function maps to its supporting
+# assets); odp.function_scope ("all" or "essential").
+_cp2_8_path := ["contingency_plan", "critical_assets"]
+
+_cp2_8_bools := [["all_in_scope_functions_mapped", "not every in-scope mission and business function is mapped to the critical system assets supporting it"]]
+
+_cp2_8_none := {"no critical system assets identified (critical_asset_count is below 1)" |
+	n := object.get(_obj(_cp2_8_path), "critical_asset_count", null)
+	is_number(n)
+	n < 1
+}
+
+_cp2_8_missing := (_bool_missing(_cp2_8_path, _cp2_8_bools) | _count_missing(_cp2_8_path, "critical_asset_count")) | _scope_missing(_cp2_8_path)
+
+_cp2_8_failed := _bool_failed(_cp2_8_path, _cp2_8_bools) | _cp2_8_none
+
+violation contains msg if {
+	count(_cp2_8_missing | _cp2_8_failed) > 0
+	msg := sprintf("NIST CP-2(8): %s", [_detail(_cp2_8_missing, _cp2_8_failed)])
+}
+
+# CP-4(1) Coordinate with Related Plans: contingency plan testing coordinated with the organizational elements
+# responsible for related plans.
+# Facts: input.cp_controls.plan_testing.coordination.related_plans (list of {name, coordinated}).
+_cp4_1_path := ["plan_testing", "coordination"]
+
+_cp4_1_missing := _coord_missing(_cp4_1_path)
+
+_cp4_1_failed := _coord_failed(_cp4_1_path, "contingency plan testing")
+
+violation contains msg if {
+	count(_cp4_1_missing | _cp4_1_failed) > 0
+	msg := sprintf("NIST CP-4(1): %s", [_detail(_cp4_1_missing, _cp4_1_failed)])
+}
+
+# Separation (CP-6(1), CP-7(1)): <path>.threats_assessed (the primary and alternate sites were assessed for shared
+# threats) and <path>.sufficiently_separated (the assessment found the alternate site separated enough to reduce
+# susceptibility to the same threats), both booleans.
+_sep_bools(site) := [
+	["threats_assessed", sprintf("primary and alternate %s sites not assessed for shared threats", [site])],
+	["sufficiently_separated", sprintf("alternate %s site not sufficiently separated from the primary site to reduce susceptibility to the same threats", [site])],
+]
+
+# Accessibility (CP-6(3), CP-7(2)): <path>.problems_identified (accessibility problems in an area-wide disruption
+# or disaster identified) and <path>.mitigation_actions_outlined (explicit mitigation actions outlined), booleans.
+_access_bools(site) := [
+	["problems_identified", sprintf("potential accessibility problems to the alternate %s site in an area-wide disruption or disaster not identified", [site])],
+	["mitigation_actions_outlined", sprintf("explicit mitigation actions for alternate %s site accessibility problems not outlined", [site])],
+]
+
+# CP-6(1) Separation from Primary Site. Facts: input.cp_controls.alternate_storage_site.separation.
+_cp6_1_path := ["alternate_storage_site", "separation"]
+
+_cp6_1_missing := _bool_missing(_cp6_1_path, _sep_bools("storage"))
+
+_cp6_1_failed := _bool_failed(_cp6_1_path, _sep_bools("storage"))
+
+violation contains msg if {
+	count(_cp6_1_missing | _cp6_1_failed) > 0
+	msg := sprintf("NIST CP-6(1): %s", [_detail(_cp6_1_missing, _cp6_1_failed)])
+}
+
+# CP-6(3) Accessibility. Facts: input.cp_controls.alternate_storage_site.accessibility.
+_cp6_3_path := ["alternate_storage_site", "accessibility"]
+
+_cp6_3_missing := _bool_missing(_cp6_3_path, _access_bools("storage"))
+
+_cp6_3_failed := _bool_failed(_cp6_3_path, _access_bools("storage"))
+
+violation contains msg if {
+	count(_cp6_3_missing | _cp6_3_failed) > 0
+	msg := sprintf("NIST CP-6(3): %s", [_detail(_cp6_3_missing, _cp6_3_failed)])
+}
+
+# CP-7(1) Separation from Primary Site. Facts: input.cp_controls.alternate_processing_site.separation.
+_cp7_1_path := ["alternate_processing_site", "separation"]
+
+_cp7_1_missing := _bool_missing(_cp7_1_path, _sep_bools("processing"))
+
+_cp7_1_failed := _bool_failed(_cp7_1_path, _sep_bools("processing"))
+
+violation contains msg if {
+	count(_cp7_1_missing | _cp7_1_failed) > 0
+	msg := sprintf("NIST CP-7(1): %s", [_detail(_cp7_1_missing, _cp7_1_failed)])
+}
+
+# CP-7(2) Accessibility. Facts: input.cp_controls.alternate_processing_site.accessibility.
+_cp7_2_path := ["alternate_processing_site", "accessibility"]
+
+_cp7_2_missing := _bool_missing(_cp7_2_path, _access_bools("processing"))
+
+_cp7_2_failed := _bool_failed(_cp7_2_path, _access_bools("processing"))
+
+violation contains msg if {
+	count(_cp7_2_missing | _cp7_2_failed) > 0
+	msg := sprintf("NIST CP-7(2): %s", [_detail(_cp7_2_missing, _cp7_2_failed)])
+}
+
+# CP-7(3) Priority of Service: alternate processing site agreements contain priority-of-service provisions in line
+# with availability requirements, including recovery time objectives.
+# Facts (input.cp_controls.alternate_processing_site.priority_of_service): provisions_in_agreements (boolean);
+# restoration_hours (priority restoration time the agreements commit to) + odp.recovery_time_objective_hours.
+_cp7_3_path := ["alternate_processing_site", "priority_of_service"]
+
+_cp7_3_bools := [["provisions_in_agreements", "alternate processing site agreements contain no priority-of-service provisions"]]
+
+_cp7_3_missing := _bool_missing(_cp7_3_path, _cp7_3_bools) | _num_missing(_cp7_3_path, "restoration_hours", "recovery_time_objective_hours")
+
+_cp7_3_failed := _bool_failed(_cp7_3_path, _cp7_3_bools) | _over(_cp7_3_path, "restoration_hours", "recovery_time_objective_hours", "alternate processing site agreements commit to priority restoration in %v hours; the organization-defined recovery time objective is %v hours")
+
+violation contains msg if {
+	count(_cp7_3_missing | _cp7_3_failed) > 0
+	msg := sprintf("NIST CP-7(3): %s", [_detail(_cp7_3_missing, _cp7_3_failed)])
+}
+
+# CP-8(1) Priority of Service Provisions: primary and alternate telecommunications agreements contain
+# priority-of-service provisions in line with availability requirements (including recovery time objectives);
+# Telecommunications Service Priority requested when a common carrier provides services used for national security
+# emergency preparedness.
+# Facts (input.cp_controls.telecommunications.priority_of_service): primary_agreement_provisions,
+# alternate_agreement_provisions (booleans); restoration_hours + odp.recovery_time_objective_hours;
+# common_carrier_for_nsep (boolean: a common carrier provides services used for NS/EP); tsp_requested (boolean,
+# read only when common_carrier_for_nsep is true).
+_cp8_1_path := ["telecommunications", "priority_of_service"]
+
+_cp8_1_bools := [
+	["primary_agreement_provisions", "primary telecommunications service agreement contains no priority-of-service provisions"],
+	["alternate_agreement_provisions", "alternate telecommunications service agreement contains no priority-of-service provisions"],
+]
+
+_cp8_1_obj := _obj(_cp8_1_path)
+
+_cp8_1_tsp_missing contains concat(".", [_path_str(_cp8_1_path), "common_carrier_for_nsep"]) if {
+	not is_boolean(object.get(_cp8_1_obj, "common_carrier_for_nsep", null))
+}
+
+_cp8_1_tsp_missing contains concat(".", [_path_str(_cp8_1_path), "tsp_requested"]) if {
+	_cp8_1_obj.common_carrier_for_nsep == true
+	object.get(_cp8_1_obj, "tsp_requested", null) == null
+}
+
+_cp8_1_tsp_failed contains sprintf("Telecommunications Service Priority not requested for services a common carrier provides for national security emergency preparedness (%s.tsp_requested is not true)", [_path_str(_cp8_1_path)]) if {
+	_cp8_1_obj.common_carrier_for_nsep == true
+	v := object.get(_cp8_1_obj, "tsp_requested", null)
+	v != null
+	not v == true
+}
+
+_cp8_1_missing := (_bool_missing(_cp8_1_path, _cp8_1_bools) | _num_missing(_cp8_1_path, "restoration_hours", "recovery_time_objective_hours")) | _cp8_1_tsp_missing
+
+_cp8_1_failed := (_bool_failed(_cp8_1_path, _cp8_1_bools) | _over(_cp8_1_path, "restoration_hours", "recovery_time_objective_hours", "telecommunications agreements commit to priority restoration in %v hours; the organization-defined recovery time objective is %v hours")) | _cp8_1_tsp_failed
+
+violation contains msg if {
+	count(_cp8_1_missing | _cp8_1_failed) > 0
+	msg := sprintf("NIST CP-8(1): %s", [_detail(_cp8_1_missing, _cp8_1_failed)])
+}
+
+# CP-8(2) Single Points of Failure: alternate telecommunications services obtained so they do not share a single
+# point of failure with the primary services.
+# Facts (input.cp_controls.telecommunications.single_point_of_failure): diversity_assessed (boolean: carrier,
+# route and facility diversity of primary and alternate services assessed); shared_points_of_failure (list of the
+# points of failure the two share, e.g. a common central office or conduit; an empty list passes).
+_cp8_2_path := ["telecommunications", "single_point_of_failure"]
+
+_cp8_2_bools := [["diversity_assessed", "diversity of primary and alternate telecommunications services not assessed"]]
+
+_cp8_2_shared := object.get(_obj(_cp8_2_path), "shared_points_of_failure", null)
+
+_cp8_2_list_missing := {concat(".", [_path_str(_cp8_2_path), "shared_points_of_failure"]) | not is_array(_cp8_2_shared)}
+
+_cp8_2_list_failed := {sprintf("primary and alternate telecommunications services share single points of failure: %s", [concat(", ", sort([sprintf("%v", [x]) | some x in _cp8_2_shared]))]) |
+	is_array(_cp8_2_shared)
+	count(_cp8_2_shared) > 0
+}
+
+_cp8_2_missing := _bool_missing(_cp8_2_path, _cp8_2_bools) | _cp8_2_list_missing
+
+_cp8_2_failed := _bool_failed(_cp8_2_path, _cp8_2_bools) | _cp8_2_list_failed
+
+violation contains msg if {
+	count(_cp8_2_missing | _cp8_2_failed) > 0
+	msg := sprintf("NIST CP-8(2): %s", [_detail(_cp8_2_missing, _cp8_2_failed)])
+}
+
+# CP-9(1) Testing for Reliability and Integrity: backup information tested at the organization-defined frequency to
+# verify media reliability and information integrity.
+# Facts (input.cp_controls.backup.testing): last_test_verified (boolean: the last test restored the backup and
+# confirmed media reliability and information integrity); days_since_last + odp.frequency_days.
+_cp9_1_path := ["backup", "testing"]
+
+_cp9_1_bools := [["last_test_verified", "last backup test did not verify media reliability and information integrity"]]
+
+_cp9_1_missing := _bool_missing(_cp9_1_path, _cp9_1_bools) | _freq_missing(_cp9_1_path)
+
+_cp9_1_failed := _bool_failed(_cp9_1_path, _cp9_1_bools) | _freq_over(_cp9_1_path, "backup information last tested %v days ago; the organization-defined frequency is %v days")
+
+violation contains msg if {
+	count(_cp9_1_missing | _cp9_1_failed) > 0
+	msg := sprintf("NIST CP-9(1): %s", [_detail(_cp9_1_missing, _cp9_1_failed)])
+}
+
+# CP-9(8) Cryptographic Protection: cryptographic mechanisms prevent unauthorized disclosure and modification of
+# the organization-defined backup information.
+# Facts (input.cp_controls.backup.cryptographic_protection), counts from the backup tool over the in-scope backup
+# sets: unencrypted_backup_sets (sets not encrypted), sets_without_cryptographic_integrity (sets without a
+# cryptographic integrity check: signature, MAC or authenticated encryption). Both must be 0.
+_cp9_8_path := ["backup", "cryptographic_protection"]
+
+_cp9_8_missing := _count_missing(_cp9_8_path, "unencrypted_backup_sets") | _count_missing(_cp9_8_path, "sets_without_cryptographic_integrity")
+
+_cp9_8_failed := _count_nonzero(_cp9_8_path, "unencrypted_backup_sets", "%v backup sets not encrypted") | _count_nonzero(_cp9_8_path, "sets_without_cryptographic_integrity", "%v backup sets without cryptographic integrity protection")
+
+violation contains msg if {
+	count(_cp9_8_missing | _cp9_8_failed) > 0
+	msg := sprintf("NIST CP-9(8): %s", [_detail(_cp9_8_missing, _cp9_8_failed)])
+}
+
+# CP-10(2) Transaction Recovery: transaction recovery implemented for transaction-based systems.
+# Facts (input.cp_controls.recovery.transaction_recovery): transaction_based (boolean; false means the enhancement
+# does not apply and it passes); implemented (boolean, read only when transaction_based is true: journaling,
+# rollback or transaction log replay in place).
+_cp10_2_obj := _obj(["recovery", "transaction_recovery"])
+
+_cp10_2_path := _path_str(["recovery", "transaction_recovery"])
+
+_cp10_2_missing contains concat(".", [_cp10_2_path, "transaction_based"]) if {
+	not is_boolean(object.get(_cp10_2_obj, "transaction_based", null))
+}
+
+_cp10_2_missing contains concat(".", [_cp10_2_path, "implemented"]) if {
+	_cp10_2_obj.transaction_based == true
+	object.get(_cp10_2_obj, "implemented", null) == null
+}
+
+_cp10_2_failed contains sprintf("transaction recovery not implemented for a transaction-based system (%s.implemented is not true)", [_cp10_2_path]) if {
+	_cp10_2_obj.transaction_based == true
+	v := object.get(_cp10_2_obj, "implemented", null)
+	v != null
+	not v == true
+}
+
+violation contains msg if {
+	count(_cp10_2_missing | _cp10_2_failed) > 0
+	msg := sprintf("NIST CP-10(2): %s", [_detail(_cp10_2_missing, _cp10_2_failed)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"CP-1", "CP-2", "CP-3", "CP-4", "CP-6", "CP-7", "CP-8", "CP-9", "CP-10", "CP-11", "CP-12", "CP-13"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {
+	"CP-1", "CP-2", "CP-2(1)", "CP-2(3)", "CP-2(8)", "CP-3", "CP-4", "CP-4(1)", "CP-6", "CP-6(1)", "CP-6(3)",
+	"CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-8", "CP-8(1)", "CP-8(2)", "CP-9", "CP-9(1)", "CP-9(8)", "CP-10",
+	"CP-10(2)", "CP-11", "CP-12", "CP-13",
+}
 
 compliance_report := {
 	"family": "CP",

@@ -6,7 +6,7 @@ import rego.v1
 # `with input as`, which the wasm build rejects); each failing case changes one fact of the all-pass fixture
 # and must flip exactly that control id.
 
-_pass := {"ra_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "categorization": {"performed": true, "documented_in_security_plan": true, "approved_by_authorizing_official": true}, "risk_assessment": {"conducted": true, "results_documented": true, "results_disseminated": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}}, "update": {"days_since_last": 30, "odp": {"frequency_days": 365}}}, "vulnerability_scanning": {"days_since_last": 7, "odp": {"frequency_days": 30}, "standards_based_tools": true, "reports_analyzed": true, "results_shared": true, "scanner_updatable": true, "overdue_remediations": 0}, "tscm_survey": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "risk_response": {"per_risk_tolerance": true, "unaddressed_findings": 0}, "privacy_impact_assessment": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "criticality_analysis": {"performed": true, "critical_components_identified": true}, "threat_hunting": {"capability_established": true, "days_since_last": 10, "odp": {"frequency_days": 90}}}}
+_pass := {"ra_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "categorization": {"performed": true, "documented_in_security_plan": true, "approved_by_authorizing_official": true}, "risk_assessment": {"conducted": true, "results_documented": true, "results_disseminated": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}}, "update": {"days_since_last": 30, "odp": {"frequency_days": 365}}, "supply_chain": {"performed": true, "unassessed_components": 0, "days_since_last": 100, "odp": {"frequency_days": 365}}}, "vulnerability_scanning": {"days_since_last": 7, "odp": {"frequency_days": 30}, "standards_based_tools": true, "reports_analyzed": true, "results_shared": true, "scanner_updatable": true, "overdue_remediations": 0, "vulnerability_updates": {"days_since_last": 1, "odp": {"frequency_days": 7}, "updated_before_last_scan": true}, "privileged_access": {"authorized": true, "targets_without_privileged_scan": 0}, "public_disclosure": {"channel_published": true}}, "tscm_survey": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "risk_response": {"per_risk_tolerance": true, "unaddressed_findings": 0}, "privacy_impact_assessment": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "criticality_analysis": {"performed": true, "critical_components_identified": true}, "threat_hunting": {"capability_established": true, "days_since_last": 10, "odp": {"frequency_days": 90}}}}
 
 _flagged(v, id) := [x | some x in v; startswith(x, concat("", ["NIST ", id, ":"]))]
 
@@ -28,7 +28,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.risk_assessment.evaluated_controls == {"RA-1", "RA-2", "RA-3", "RA-5", "RA-6", "RA-7", "RA-8", "RA-9", "RA-10"}
+	data.nist.sp800_53.risk_assessment.evaluated_controls == {"RA-1", "RA-2", "RA-3", "RA-3(1)", "RA-5", "RA-5(2)", "RA-5(5)", "RA-5(11)", "RA-6", "RA-7", "RA-8", "RA-9", "RA-10"}
 }
 
 test_ra1_policy_not_documented_fails if {
@@ -299,4 +299,131 @@ test_ra10_capability_numeric_one_fails if {
 	f := _flagged(v, "RA-10")
 	count(f) == 1
 	contains(f[0], "evidence missing")
+}
+
+# --- Moderate-baseline enhancements -------------------------------------------------------------
+
+test_ra3_1_not_performed_fails if {
+	inp := object.union(_pass, {"ra_controls": {"risk_assessment": {"supply_chain": {"performed": false}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-3(1)")
+	count(f) == 1
+	contains(f[0], "supply chain risks are not assessed")
+}
+
+test_ra3_1_update_overdue_fails if {
+	inp := object.union(_pass, {"ra_controls": {"risk_assessment": {"supply_chain": {"days_since_last": 400}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-3(1)")
+	count(f) == 1
+	contains(f[0], "organization-defined frequency is 365")
+}
+
+test_ra3_1_unassessed_components_fail if {
+	inp := object.union(_pass, {"ra_controls": {"risk_assessment": {"supply_chain": {"unassessed_components": 2}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-3(1)")
+	count(f) == 1
+	contains(f[0], "2 organization-defined")
+}
+
+test_ra3_1_odp_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"ra_controls": {"risk_assessment": {"supply_chain": {"odp": {"frequency_days": null}}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-3(1)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_ra5_2_feed_stale_fails if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"vulnerability_updates": {"days_since_last": 8}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(2)")
+	count(f) == 1
+	contains(f[0], "organization-defined frequency is 7")
+}
+
+test_ra5_2_not_before_scan_fails if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"vulnerability_updates": {"updated_before_last_scan": false}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(2)")
+	count(f) == 1
+	contains(f[0], "before the most recent scan")
+}
+
+test_ra5_2_days_string_is_evidence_missing if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"vulnerability_updates": {"days_since_last": "1"}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(2)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_ra5_2_days_null_is_evidence_missing if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"vulnerability_updates": {"days_since_last": null}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(2)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_ra5_5_not_authorized_fails if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"privileged_access": {"authorized": false}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(5)")
+	count(f) == 1
+	contains(f[0], "privileged access is not authorized")
+}
+
+test_ra5_5_unprivileged_targets_fail if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"privileged_access": {"targets_without_privileged_scan": 4}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(5)")
+	count(f) == 1
+	contains(f[0], "4 organization-defined")
+}
+
+test_ra5_5_authorized_string_is_evidence_missing if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"privileged_access": {"authorized": "true"}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(5)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_ra5_11_no_channel_fails if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"public_disclosure": {"channel_published": false}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(11)")
+	count(f) == 1
+	contains(f[0], "public reporting channel")
+}
+
+test_ra5_11_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"public_disclosure": {"channel_published": null}}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "RA-5(11)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_enhancement_missing_does_not_fail_base if {
+	inp := object.union(_pass, {"ra_controls": {"vulnerability_scanning": {"vulnerability_updates": null, "privileged_access": null, "public_disclosure": null}, "risk_assessment": {"supply_chain": null}}})
+	v := data.nist.sp800_53.risk_assessment.violation with input as inp
+	count(v) == 4
+	count(_flagged(v, "RA-3")) == 0
+	count(_flagged(v, "RA-5")) == 0
 }

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 5
-#     cited: 5
+#     checks: 7
+#     cited: 7
 #     density: section
 #     basis: role
 #     tested: true
@@ -19,7 +19,8 @@ package nist.sp800_53.awareness_training
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Awareness and Training (AT) Family. Every active base control (AT-1, AT-2, AT-3, AT-4,
-# AT-6; AT-5 is withdrawn). Enhancements are not evaluated: a control never fails for an enhancement.
+# AT-6; AT-5 is withdrawn) and the NIST SP 800-53B Moderate enhancements AT-2(2) and AT-2(3) (7 ids). A base
+# control never fails for an enhancement; each enhancement is its own finding.
 
 default compliant := false
 
@@ -37,18 +38,25 @@ _obj(path) := v if {
 	is_object(v)
 } else := {}
 
-# Boolean facts: `checks` is a list of [key, description of the unmet state]. Absent or null is missing evidence;
-# any other value except the boolean true ("true", 1, false) is a finding.
+# Boolean facts: `checks` is a list of [key, description of the unmet state]. Absent, null or not a boolean
+# ("true", 1) is missing evidence; the boolean false is a finding.
 _bool_missing(path, checks) := {concat(".", [_path_str(path), c[0]]) |
 	some c in checks
-	object.get(_obj(path), c[0], null) == null
+	not is_boolean(object.get(_obj(path), c[0], null))
 }
 
 _bool_failed(path, checks) := {sprintf("%s (%s.%s is not true)", [c[1], _path_str(path), c[0]]) |
 	some c in checks
-	v := object.get(_obj(path), c[0], null)
-	v != null
-	not v == true
+	object.get(_obj(path), c[0], null) == false
+}
+
+# A count that must be zero, at <path>.<key>: not a number is missing evidence, above zero is a finding.
+_zero_missing(path, key) := {concat(".", [_path_str(path), key]) | not is_number(object.get(_obj(path), key, null))}
+
+_zero_failed(path, key, fmt) := {sprintf(fmt, [v, concat(".", [_path_str(path), key])]) |
+	v := object.get(_obj(path), key, null)
+	is_number(v)
+	v > 0
 }
 
 # Numeric facts: an observed value at <path>.<obs> and the organization-defined parameter at <path>.odp.<odp>.
@@ -193,10 +201,38 @@ violation contains msg if {
 	msg := sprintf("NIST AT-6: %s", [_detail(_at6_missing, _at6_failed)])
 }
 
+# AT-2(2) Insider Threat and AT-2(3) Social Engineering and Mining: literacy training covers recognising and
+# reporting potential indicators of insider threat (AT-2(2)) and potential and actual social engineering and social
+# mining (AT-2(3)). Evidence comes from the learning-management system.
+# Facts (input.at_controls.literacy_training.insider_threat and .social_engineering): module_in_curriculum
+# (boolean: the topic is a module of the literacy curriculum); users_not_completed (count of in-scope users who have
+# not completed that module).
+_at2_topic_missing(key) := _bool_missing(["literacy_training", key], [["module_in_curriculum", ""]]) | _zero_missing(["literacy_training", key], "users_not_completed")
+
+_at2_topic_failed(key, topic) := _bool_failed(["literacy_training", key], [["module_in_curriculum", sprintf("%s module not in the literacy training curriculum", [topic])]]) | _zero_failed(["literacy_training", key], "users_not_completed", concat("", ["%v users have not completed the ", topic, " literacy training module (%s)"]))
+
+_at2_2_missing := _at2_topic_missing("insider_threat")
+
+_at2_2_failed := _at2_topic_failed("insider_threat", "insider-threat")
+
+violation contains msg if {
+	count(_at2_2_missing | _at2_2_failed) > 0
+	msg := sprintf("NIST AT-2(2): %s", [_detail(_at2_2_missing, _at2_2_failed)])
+}
+
+_at2_3_missing := _at2_topic_missing("social_engineering")
+
+_at2_3_failed := _at2_topic_failed("social_engineering", "social engineering and social mining")
+
+violation contains msg if {
+	count(_at2_3_missing | _at2_3_failed) > 0
+	msg := sprintf("NIST AT-2(3): %s", [_detail(_at2_3_missing, _at2_3_failed)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"AT-1", "AT-2", "AT-3", "AT-4", "AT-6"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-4", "AT-6"}
 
 compliance_report := {
 	"family": "AT",

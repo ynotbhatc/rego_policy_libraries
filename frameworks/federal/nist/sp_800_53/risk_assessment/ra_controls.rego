@@ -6,10 +6,10 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 9
-#     cited: 9
-#     density: section
-#     basis: role
+#     checks: 13
+#     cited: 13
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
@@ -19,7 +19,8 @@ package nist.sp800_53.risk_assessment
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Risk Assessment (RA) Family: the nine active base controls (RA-1, RA-2, RA-3, RA-5,
-# RA-6, RA-7, RA-8, RA-9, RA-10; RA-4 is withdrawn). Enhancements are not evaluated and a base control never
+# RA-6, RA-7, RA-8, RA-9, RA-10; RA-4 is withdrawn) and the Moderate-baseline enhancements RA-3(1), RA-5(2),
+# RA-5(5) and RA-5(11). Each enhancement is its own requirement with its own finding; a base control never
 # fails on an enhancement's requirement. Facts live under input.ra_controls.
 
 default compliant := false
@@ -204,10 +205,65 @@ violation contains msg if {
 	msg := sprintf("NIST RA-10: %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# Moderate-baseline enhancements (SP 800-53B). Facts nest under the base control's object.
+# ---------------------------------------------------------------------------------------------------------
+
+# RA-3(1) Supply Chain Risk Assessment: input.ra_controls.risk_assessment.supply_chain.{performed,
+# unassessed_components, days_since_last, odp.frequency_days}. unassessed_components counts the
+# organization-defined systems, components and services with no supply chain risk assessment on record;
+# days_since_last is the age of the last update, compared with the organization-defined frequency.
+violation contains msg if {
+	sec := ["risk_assessment", "supply_chain"]
+	b := {"performed": "supply chain risks are not assessed"}
+	m := (_bool_missing(sec, b) | _zero_missing(sec, "unassessed_components")) | _freq_missing(sec)
+	u := (_bool_unmet(sec, b) | _zero_unmet(sec, "unassessed_components", "organization-defined systems, components or services have no supply chain risk assessment")) | _freq_unmet(sec, "supply chain risk assessment updated")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-3(1): %s", [_detail(m, u)])
+}
+
+# RA-5(2) Update Vulnerabilities to Be Scanned: input.ra_controls.vulnerability_scanning.vulnerability_updates.
+# {days_since_last, odp.frequency_days, updated_before_last_scan}. days_since_last is the age of the scanner's
+# vulnerability feed or plugin set; updated_before_last_scan is true when the feed was refreshed before the
+# most recent scan started.
+violation contains msg if {
+	sec := ["vulnerability_scanning", "vulnerability_updates"]
+	b := {"updated_before_last_scan": "the vulnerabilities to be scanned were not updated before the most recent scan"}
+	m := _bool_missing(sec, b) | _freq_missing(sec)
+	u := _bool_unmet(sec, b) | _freq_unmet(sec, "vulnerabilities to be scanned updated")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(2): %s", [_detail(m, u)])
+}
+
+# RA-5(5) Privileged Access: input.ra_controls.vulnerability_scanning.privileged_access.{authorized,
+# targets_without_privileged_scan}. authorized is true when the scanner holds an authorized privileged
+# (credentialed) account for the organization-defined components; targets_without_privileged_scan counts those
+# components whose last scan ran without privileged access (failed or missing credentials).
+violation contains msg if {
+	sec := ["vulnerability_scanning", "privileged_access"]
+	b := {"authorized": "privileged access is not authorized for vulnerability scanning of the organization-defined system components"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "targets_without_privileged_scan")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "targets_without_privileged_scan", "organization-defined system components were scanned without privileged access")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(5): %s", [_detail(m, u)])
+}
+
+# RA-5(11) Public Disclosure Program: input.ra_controls.vulnerability_scanning.public_disclosure.channel_published,
+# true when a public vulnerability reporting channel is published and reachable (for example a vulnerability
+# disclosure policy page or an RFC 9116 security.txt with a contact).
+violation contains msg if {
+	sec := ["vulnerability_scanning", "public_disclosure"]
+	b := {"channel_published": "no public reporting channel for vulnerabilities in organizational systems and components is established"}
+	m := _bool_missing(sec, b)
+	u := _bool_unmet(sec, b)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(11): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"RA-1", "RA-2", "RA-3", "RA-5", "RA-6", "RA-7", "RA-8", "RA-9", "RA-10"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"RA-1", "RA-2", "RA-3", "RA-3(1)", "RA-5", "RA-5(2)", "RA-5(5)", "RA-5(11)", "RA-6", "RA-7", "RA-8", "RA-9", "RA-10"}
 
 compliance_report := {
 	"family": "RA",
