@@ -124,8 +124,8 @@ baseline (source = that dist profile at the release tag) with one implemented-re
 Three mapping sources, nothing else (a check is `<framework>:<label>`):
 
 1. `stig-cci`: `crosswalk/stig_800_53/data.json` maps a STIG rule id to 800-53 controls; each `stig_*` catalog control's label is the rule id
-   (1124 of 1587 STIG catalog controls are in the map; 463 are not, and
-   2683 of the map's 3807 rules have no catalog control).
+   (1246 of 1587 STIG catalog controls are in the map; 341 are not, and
+   3191 of the map's 4437 rules have no catalog control).
 2. `label-is-800-53`: a library control whose label is itself an 800-53 id (`AC-2`, `AC-2(1)`; cjis, irs_1075, cyber_essentials, ...), the same rule
    as `library_controls` in `crosswalk_csv` `spine_800_53.csv` (the round-trip asserts they are equal).
 3. `nist-800-53-module`: our own `nist_sp_800_53` module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (two controls).
