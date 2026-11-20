@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 18
-#     cited: 17
+#     checks: 31
+#     cited: 30
 #     density: sized
 #     basis: size
 #     tested: true
@@ -20,8 +20,10 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — Audit and Accountability (AU) Family
 # Generation, protection, review, and analysis of audit records.
-# Evaluated: AU-1..AU-12 and the NIST SP 800-53B Moderate enhancements AU-3(1), AU-6(1), AU-6(3), AU-7(1),
-# AU-9(4) (17 ids). A base control never fails on an enhancement's requirement; each enhancement is its own finding.
+# Evaluated: AU-1..AU-14 and AU-16, the NIST SP 800-53B Moderate enhancements AU-3(1), AU-6(1), AU-6(3), AU-7(1),
+# AU-9(4), and the NIST / FedRAMP High enhancements AU-5(1), AU-5(2), AU-6(4), AU-6(5), AU-6(6), AU-6(7), AU-9(2),
+# AU-9(3), AU-12(1), AU-12(3) (30 ids). AU-15 is withdrawn (moved to AU-5(5)).
+# A base control never fails on an enhancement's requirement; each enhancement is its own finding.
 
 default compliant := false
 
@@ -35,7 +37,8 @@ _au_path(p) := concat(".", ["input.au_controls", p])
 _au_bool_missing(ps) := {_au_path(p) | some p in ps; not is_boolean(_au_get(p))}
 
 # Finding text for an existing boolean rule that fired: evidence missing when one of the facts it reads is absent
-# or not a boolean, otherwise the rule's own text. The rule's pass condition is unchanged.
+# or not a boolean, otherwise the rule's own text. Every such rule passes only on `== true` (strict since
+# 2026-11-19: "yes", 1, "false" or an object no longer pass).
 _au_detail(ps, text) := sprintf("evidence missing — %s not collected", [concat(", ", sort(m))]) if {
 	m := _au_bool_missing(ps)
 	count(m) > 0
@@ -47,37 +50,37 @@ _au_enh_detail(missing, failed) := sprintf("evidence missing — %s not collecte
 } else := concat("; ", sort(failed))
 
 violation contains msg if {
-	not input.au_controls.policy.documented
+	not input.au_controls.policy.documented == true
 	msg := sprintf("NIST AU-1: %s", [_au_detail(["policy.documented"], "Audit and accountability policy not documented")])
 }
 
 violation contains msg if {
-	not input.au_controls.event_logging.enabled
+	not input.au_controls.event_logging.enabled == true
 	msg := sprintf("NIST AU-2: %s", [_au_detail(["event_logging.enabled"], "Event types for logging not identified or event logging not enabled")])
 }
 
 violation contains msg if {
-	not input.au_controls.content_of_records.adequate
+	not input.au_controls.content_of_records.adequate == true
 	msg := sprintf("NIST AU-3: %s", [_au_detail(["content_of_records.adequate"], "Audit record content lacks who/what/when/where/source/outcome")])
 }
 
 violation contains msg if {
-	not input.au_controls.storage_capacity.adequate
+	not input.au_controls.storage_capacity.adequate == true
 	msg := sprintf("NIST AU-4: %s", [_au_detail(["storage_capacity.adequate"], "Audit record storage capacity insufficient for required retention")])
 }
 
 violation contains msg if {
-	not input.au_controls.response_to_failures.alerting
+	not input.au_controls.response_to_failures.alerting == true
 	msg := sprintf("NIST AU-5: %s", [_au_detail(["response_to_failures.alerting"], "Audit logging failure does not alert appropriate personnel")])
 }
 
 violation contains msg if {
-	not input.au_controls.review_and_analysis.regular
+	not input.au_controls.review_and_analysis.regular == true
 	msg := sprintf("NIST AU-6: %s", [_au_detail(["review_and_analysis.regular"], "Audit records not regularly reviewed or analyzed")])
 }
 
 violation contains msg if {
-	not input.au_controls.reduction_and_reporting.tools_available
+	not input.au_controls.reduction_and_reporting.tools_available == true
 	msg := sprintf("NIST AU-7: %s", [_au_detail(["reduction_and_reporting.tools_available"], "Audit record reduction/report-generation tooling unavailable")])
 }
 
@@ -90,12 +93,12 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	not input.au_controls.protection_of_records.tamper_resistant
+	not input.au_controls.protection_of_records.tamper_resistant == true
 	msg := sprintf("NIST AU-9: %s", [_au_detail(["protection_of_records.tamper_resistant"], "Audit records not protected against unauthorized modification/deletion")])
 }
 
 violation contains msg if {
-	not input.au_controls.non_repudiation.implemented
+	not input.au_controls.non_repudiation.implemented == true
 	msg := sprintf("NIST AU-10: %s", [_au_detail(["non_repudiation.implemented"], "Non-repudiation of actions by individuals not implemented")])
 }
 
@@ -125,7 +128,7 @@ violation contains msg if {
 }
 
 violation contains msg if {
-	not input.au_controls.generation.required_events_captured
+	not input.au_controls.generation.required_events_captured == true
 	msg := sprintf("NIST AU-12: %s", [_au_detail(["generation.required_events_captured"], "Audit record generation does not capture all required events")])
 }
 
@@ -218,12 +221,213 @@ violation contains sprintf("NIST AU-7(1): %s", [_au_enh_detail(_au7_1_missing, _
 
 violation contains sprintf("NIST AU-9(4): %s", [_au_enh_detail(_au9_4_missing, _au9_4_failed)]) if count(_au9_4_missing | _au9_4_failed) > 0
 
+# ── NIST and FedRAMP High-baseline ids and remaining base controls ───────
+# Same shape as the Moderate enhancements: a set of missing evidence and a set of unmet elements per id.
+
+_au_f(base, f) := concat(".", [base, f])
+
+# The observed value may not exceed the organization-defined value; both must be numbers.
+_au_over(obs, odp, fmt) := {sprintf(fmt, [o, l]) |
+	o := _au_get(obs)
+	l := _au_get(odp)
+	is_number(o)
+	is_number(l)
+	o > l
+}
+
+# Organizational element with no machine-checkable evidence: {attested: true, by, date} at <base>.attestation.
+_au_attested(base) if {
+	a := _au_get(_au_f(base, "attestation"))
+	a.attested == true
+	is_string(a.by)
+	trim_space(a.by) != ""
+	is_string(a.date)
+	trim_space(a.date) != ""
+}
+
+# AU-5(1) Storage Capacity Warning: a warning reaches the organization-defined personnel, roles or locations
+# within the organization-defined period when audit log storage reaches the organization-defined percentage.
+# Facts (input.au_controls.response_to_failures.storage_warning): warning_threshold_percent (configured) +
+# odp.threshold_percent; warning_delivery_minutes (configured or longest observed) + odp.within_minutes;
+# odp.recipients (non-empty list); warning_recipients (list of the recipients the warning is configured to reach).
+_au5_1 := "response_to_failures.storage_warning"
+
+_au5_1_missing := (_au_num_missing([_au_f(_au5_1, f) | some f in ["warning_threshold_percent", "odp.threshold_percent", "warning_delivery_minutes", "odp.within_minutes"]]) | _au_list_missing([_au_f(_au5_1, "odp.recipients")])) | _au_array_missing([_au_f(_au5_1, "warning_recipients")])
+
+_au5_1_failed := (_au_over(_au_f(_au5_1, "warning_threshold_percent"), _au_f(_au5_1, "odp.threshold_percent"), "storage warning fires at %v%% of capacity; the organization-defined percentage is %v%%") | _au_over(_au_f(_au5_1, "warning_delivery_minutes"), _au_f(_au5_1, "odp.within_minutes"), "storage warning delivered within %v minutes; the organization-defined period is %v minutes")) | _au_lacking(_au_f(_au5_1, "warning_recipients"), _au_f(_au5_1, "odp.recipients"), "organization-defined warning recipients")
+
+# AU-5(2) Real-time Alerts: an alert reaches the organization-defined personnel, roles or locations within the
+# organization-defined real-time period when the organization-defined audit failure events occur.
+# Facts (input.au_controls.response_to_failures.real_time_alerts): odp.failure_events (non-empty list);
+# alerted_events (list of failure events with a configured alert); alert_latency_seconds (configured or longest
+# observed) + odp.within_seconds; odp.recipients (non-empty list).
+_au5_2 := "response_to_failures.real_time_alerts"
+
+_au5_2_missing := (_au_list_missing([_au_f(_au5_2, "odp.failure_events"), _au_f(_au5_2, "odp.recipients")]) | _au_array_missing([_au_f(_au5_2, "alerted_events")])) | _au_num_missing([_au_f(_au5_2, "alert_latency_seconds"), _au_f(_au5_2, "odp.within_seconds")])
+
+_au5_2_failed := _au_lacking(_au_f(_au5_2, "alerted_events"), _au_f(_au5_2, "odp.failure_events"), "organization-defined audit failure events") | _au_over(_au_f(_au5_2, "alert_latency_seconds"), _au_f(_au5_2, "odp.within_seconds"), "audit failure alerts delivered within %v seconds; the organization-defined real-time period is %v seconds")
+
+# AU-6(4) Central Review and Analysis: audit records from multiple components can be reviewed and analyzed
+# centrally. Facts (input.au_controls.review_and_analysis.central_review): enabled (boolean: a central review
+# capability such as a SIEM is in use); components_not_centralized (count of system components whose audit
+# records do not reach it).
+_au6_4 := "review_and_analysis.central_review"
+
+_au6_4_missing := _au_bool_missing([_au_f(_au6_4, "enabled")]) | _au_num_missing([_au_f(_au6_4, "components_not_centralized")])
+
+_au6_4_failed := _au_bool_false([_au_f(_au6_4, "enabled")]) | _au_nonzero(_au_f(_au6_4, "components_not_centralized"), "system components whose audit records are not centrally reviewed")
+
+# AU-6(5) Integrated Analysis of Audit Records: analysis of audit records is integrated with analysis of the
+# organization-defined sources (vulnerability scanning, performance data, system monitoring, other sources).
+# Facts (input.au_controls.review_and_analysis.integrated_analysis): odp.sources (non-empty list);
+# sources_integrated (list of the sources the audit analysis is observed to correlate with).
+_au6_5 := "review_and_analysis.integrated_analysis"
+
+_au6_5_missing := _au_list_missing([_au_f(_au6_5, "odp.sources")]) | _au_array_missing([_au_f(_au6_5, "sources_integrated")])
+
+_au6_5_failed := _au_lacking(_au_f(_au6_5, "sources_integrated"), _au_f(_au6_5, "odp.sources"), "organization-defined analysis sources")
+
+# AU-6(6) Correlation with Physical Monitoring: audit record information is correlated with physical access
+# monitoring information. Facts (input.au_controls.review_and_analysis.physical_correlation): enabled (boolean:
+# physical access logs are fed into and correlated with audit records); physical_access_sources_uncorrelated
+# (count of physical access monitoring sources not correlated).
+_au6_6 := "review_and_analysis.physical_correlation"
+
+_au6_6_missing := _au_bool_missing([_au_f(_au6_6, "enabled")]) | _au_num_missing([_au_f(_au6_6, "physical_access_sources_uncorrelated")])
+
+_au6_6_failed := _au_bool_false([_au_f(_au6_6, "enabled")]) | _au_nonzero(_au_f(_au6_6, "physical_access_sources_uncorrelated"), "physical access monitoring sources not correlated with audit records")
+
+# AU-6(7) Permitted Actions: the permitted review, analysis and reporting actions are specified for each
+# organization-defined system process, role or user.
+# Facts (input.au_controls.review_and_analysis.permitted_actions): odp.defined_for (non-empty list drawn from
+# "system process", "role", "user"); entities_without_defined_actions (count of such entities with access to audit
+# record information and no specified permitted actions).
+_au6_7 := "review_and_analysis.permitted_actions"
+
+_au6_7_kinds := {"system process", "role", "user"}
+
+_au6_7_odp_ok if {
+	l := _au_get(_au_f(_au6_7, "odp.defined_for"))
+	_au_nonempty_array(l)
+	every k in l {
+		k in _au6_7_kinds
+	}
+}
+
+_au6_7_missing contains concat("", [_au_path(_au_f(_au6_7, "odp.defined_for")), " (non-empty list of system process, role, user)"]) if {
+	not _au6_7_odp_ok
+}
+
+_au6_7_missing contains m if {
+	some m in _au_num_missing([_au_f(_au6_7, "entities_without_defined_actions")])
+}
+
+_au6_7_failed := _au_nonzero(_au_f(_au6_7, "entities_without_defined_actions"), "processes, roles or users with access to audit information and no specified permitted actions")
+
+# AU-9(2) Store on Separate Physical Systems or Components: audit records are stored at the organization-defined
+# frequency in a repository on a physically different system or component.
+# Facts (input.au_controls.protection_of_records.separate_system): stored_on_separate_system (boolean);
+# hours_since_last_transfer (age of the newest record copied off the audited system) + odp.frequency_hours.
+_au9_2 := "protection_of_records.separate_system"
+
+_au9_2_missing := _au_bool_missing([_au_f(_au9_2, "stored_on_separate_system")]) | _au_num_missing([_au_f(_au9_2, "hours_since_last_transfer"), _au_f(_au9_2, "odp.frequency_hours")])
+
+_au9_2_failed := _au_bool_false([_au_f(_au9_2, "stored_on_separate_system")]) | _au_over(_au_f(_au9_2, "hours_since_last_transfer"), _au_f(_au9_2, "odp.frequency_hours"), "audit records last stored to the separate repository %v hours ago; the organization-defined frequency is %v hours")
+
+# AU-9(3) Cryptographic Protection: cryptographic mechanisms protect the integrity of audit information and audit
+# tools. Facts (input.au_controls.protection_of_records.cryptographic): records_integrity_protected,
+# tools_integrity_protected (booleans: e.g. signed or hash-chained logs; signed audit tool binaries).
+_au9_3 := [_au_f("protection_of_records.cryptographic", f) | some f in ["records_integrity_protected", "tools_integrity_protected"]]
+
+_au9_3_missing := _au_bool_missing(_au9_3)
+
+_au9_3_failed := _au_bool_false(_au9_3)
+
+# AU-12(1) System-wide and Time-correlated Audit Trail: audit records from the organization-defined components are
+# compiled into a system-wide trail, time-correlated within the organization-defined tolerance.
+# Facts (input.au_controls.generation.system_wide_trail): odp.components (non-empty list); components_in_trail
+# (list); max_time_skew_ms (largest observed clock skew between contributing components) + odp.tolerance_ms.
+_au12_1 := "generation.system_wide_trail"
+
+_au12_1_missing := (_au_list_missing([_au_f(_au12_1, "odp.components")]) | _au_array_missing([_au_f(_au12_1, "components_in_trail")])) | _au_num_missing([_au_f(_au12_1, "max_time_skew_ms"), _au_f(_au12_1, "odp.tolerance_ms")])
+
+_au12_1_failed := _au_lacking(_au_f(_au12_1, "components_in_trail"), _au_f(_au12_1, "odp.components"), "organization-defined components") | _au_over(_au_f(_au12_1, "max_time_skew_ms"), _au_f(_au12_1, "odp.tolerance_ms"), "audit trail time-correlated within %v ms; the organization-defined tolerance is %v ms")
+
+# AU-12(3) Changes by Authorized Individuals: the organization-defined individuals or roles can change the logging
+# on the organization-defined components within the organization-defined time thresholds.
+# Facts (input.au_controls.generation.authorized_changes): capability_enabled (boolean); odp.roles (non-empty list);
+# accounts_outside_roles (count of accounts able to change logging that are not in those roles);
+# max_minutes_to_apply (longest observed time for a logging change to take effect) + odp.within_minutes.
+_au12_3 := "generation.authorized_changes"
+
+_au12_3_missing := (_au_bool_missing([_au_f(_au12_3, "capability_enabled")]) | _au_list_missing([_au_f(_au12_3, "odp.roles")])) | _au_num_missing([_au_f(_au12_3, f) | some f in ["accounts_outside_roles", "max_minutes_to_apply", "odp.within_minutes"]])
+
+_au12_3_failed := (_au_bool_false([_au_f(_au12_3, "capability_enabled")]) | _au_nonzero(_au_f(_au12_3, "accounts_outside_roles"), "accounts able to change logging outside the organization-defined roles")) | _au_over(_au_f(_au12_3, "max_minutes_to_apply"), _au_f(_au12_3, "odp.within_minutes"), "logging changes took up to %v minutes to apply; the organization-defined threshold is %v minutes")
+
+# AU-13 Monitoring for Information Disclosure: the organization-defined open-source information and sites are
+# monitored at the organization-defined frequency, and a discovered disclosure is notified to the
+# organization-defined personnel. Facts (input.au_controls.information_disclosure_monitoring): odp.sources
+# (non-empty list); days_since_last (last monitoring run) + odp.frequency_days; disclosures_not_notified (count of
+# disclosures found in the review period not notified to the organization-defined personnel or roles).
+_au13 := "information_disclosure_monitoring"
+
+_au13_missing := _au_list_missing([_au_f(_au13, "odp.sources")]) | _au_num_missing([_au_f(_au13, f) | some f in ["days_since_last", "odp.frequency_days", "disclosures_not_notified"]])
+
+_au13_failed := _au_over(_au_f(_au13, "days_since_last"), _au_f(_au13, "odp.frequency_days"), "information disclosure monitoring last run %v days ago; the organization-defined frequency is %v days") | _au_nonzero(_au_f(_au13, "disclosures_not_notified"), "discovered information disclosures not notified")
+
+# AU-14 Session Audit: the organization-defined users or roles can record, view, hear or log user session content,
+# and session auditing is developed and used in consultation with legal counsel.
+# Facts (input.au_controls.session_audit): capability_enabled (boolean); odp.roles (non-empty list);
+# legal_consultation.attestation {attested: true, by, date} (organizational element, no machine-checkable evidence).
+_au14 := "session_audit"
+
+_au14_missing := (_au_bool_missing([_au_f(_au14, "capability_enabled")]) | _au_list_missing([_au_f(_au14, "odp.roles")])) | {concat("", [_au_path(_au_f(_au14, "legal_consultation.attestation")), " (legal counsel consultation not attested)"]) | not _au_attested(_au_f(_au14, "legal_consultation"))}
+
+_au14_failed := _au_bool_false([_au_f(_au14, "capability_enabled")])
+
+# AU-16 Cross-organizational Audit Logging: the organization-defined methods coordinate the organization-defined
+# audit information among external organizations when it crosses organizational boundaries.
+# Facts (input.au_controls.cross_organizational): odp.methods (non-empty list); methods_in_use (list);
+# external_transfers_without_coordination (count of cross-boundary audit flows with no coordination method).
+_au16 := "cross_organizational"
+
+_au16_missing := (_au_list_missing([_au_f(_au16, "odp.methods")]) | _au_array_missing([_au_f(_au16, "methods_in_use")])) | _au_num_missing([_au_f(_au16, "external_transfers_without_coordination")])
+
+_au16_failed := _au_lacking(_au_f(_au16, "methods_in_use"), _au_f(_au16, "odp.methods"), "organization-defined coordination methods") | _au_nonzero(_au_f(_au16, "external_transfers_without_coordination"), "cross-boundary audit information flows without a coordination method")
+
+violation contains sprintf("NIST AU-5(1): %s", [_au_enh_detail(_au5_1_missing, _au5_1_failed)]) if count(_au5_1_missing | _au5_1_failed) > 0
+
+violation contains sprintf("NIST AU-5(2): %s", [_au_enh_detail(_au5_2_missing, _au5_2_failed)]) if count(_au5_2_missing | _au5_2_failed) > 0
+
+violation contains sprintf("NIST AU-6(4): %s", [_au_enh_detail(_au6_4_missing, _au6_4_failed)]) if count(_au6_4_missing | _au6_4_failed) > 0
+
+violation contains sprintf("NIST AU-6(5): %s", [_au_enh_detail(_au6_5_missing, _au6_5_failed)]) if count(_au6_5_missing | _au6_5_failed) > 0
+
+violation contains sprintf("NIST AU-6(6): %s", [_au_enh_detail(_au6_6_missing, _au6_6_failed)]) if count(_au6_6_missing | _au6_6_failed) > 0
+
+violation contains sprintf("NIST AU-6(7): %s", [_au_enh_detail(_au6_7_missing, _au6_7_failed)]) if count(_au6_7_missing | _au6_7_failed) > 0
+
+violation contains sprintf("NIST AU-9(2): %s", [_au_enh_detail(_au9_2_missing, _au9_2_failed)]) if count(_au9_2_missing | _au9_2_failed) > 0
+
+violation contains sprintf("NIST AU-9(3): %s", [_au_enh_detail(_au9_3_missing, _au9_3_failed)]) if count(_au9_3_missing | _au9_3_failed) > 0
+
+violation contains sprintf("NIST AU-12(1): %s", [_au_enh_detail(_au12_1_missing, _au12_1_failed)]) if count(_au12_1_missing | _au12_1_failed) > 0
+
+violation contains sprintf("NIST AU-12(3): %s", [_au_enh_detail(_au12_3_missing, _au12_3_failed)]) if count(_au12_3_missing | _au12_3_failed) > 0
+
+violation contains sprintf("NIST AU-13: %s", [_au_enh_detail(_au13_missing, _au13_failed)]) if count(_au13_missing | _au13_failed) > 0
+
+violation contains sprintf("NIST AU-14: %s", [_au_enh_detail(_au14_missing, _au14_failed)]) if count(_au14_missing | _au14_failed) > 0
+
+violation contains sprintf("NIST AU-16: %s", [_au_enh_detail(_au16_missing, _au16_failed)]) if count(_au16_missing | _au16_failed) > 0
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"AU-1", "AU-2", "AU-3", "AU-3(1)", "AU-4", "AU-5", "AU-6", "AU-6(1)", "AU-6(3)", "AU-7", "AU-7(1)", "AU-8", "AU-9",
-	"AU-9(4)", "AU-10", "AU-11", "AU-12",
+	"AU-1", "AU-2", "AU-3", "AU-3(1)", "AU-4", "AU-5", "AU-5(1)", "AU-5(2)", "AU-6", "AU-6(1)", "AU-6(3)", "AU-6(4)",
+	"AU-6(5)", "AU-6(6)", "AU-6(7)", "AU-7", "AU-7(1)", "AU-8", "AU-9", "AU-9(2)", "AU-9(3)", "AU-9(4)", "AU-10",
+	"AU-11", "AU-12", "AU-12(1)", "AU-12(3)", "AU-13", "AU-14", "AU-16",
 }
 
 compliance_report := {

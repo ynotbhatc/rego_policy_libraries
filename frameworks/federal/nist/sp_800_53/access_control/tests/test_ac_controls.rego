@@ -165,8 +165,8 @@ test_ac15_withdrawn_never_a_finding if {
 
 test_ac_one_finding_per_evaluated_id_on_empty_input if {
 	r := ac.compliance_report with input as {}
-	r.controls_evaluated == 49
-	count(r.violations) == 49
+	r.controls_evaluated == 59
+	count(r.violations) == 59
 	every id in ac.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}
@@ -186,15 +186,28 @@ _pass := {"ac_controls": {
 		"automated_audit": {"creation": true, "modification": true, "enabling": true, "disabling": true, "removal": true},
 		"inactivity_logout": {"enforced": true, "logout_after_minutes": 15, "odp": {"logout_after_minutes": 30}},
 		"high_risk_individuals": {"max_hours_to_disable": 0, "odp": {"disable_within_hours": 1, "significant_risks": ["termination for cause"]}},
+		"privileged_user_accounts": {
+			"administered_per_scheme": true, "assignments_monitored": true, "changes_monitored": true,
+			"inappropriate_assignments_not_revoked": 0, "odp": {"scheme": "role-based"},
+		},
+		"shared_accounts": {"accounts_not_meeting_conditions": 0, "odp": {"conditions": ["break-glass only, checked out from the vault"]}},
+		"usage_conditions": {"accounts_without_enforced_conditions": 0, "odp": {"conditions": ["business hours"], "accounts": ["batch-*"]}},
+		"atypical_usage": {"monitoring_enabled": true, "detections_not_reported": 0, "odp": {"atypical_usage": ["off-hours logon"], "report_to": ["soc"]}},
 	},
 	"access_enforcement": {"role_based_access_control": true},
-	"information_flow": {"flow_control_policies": true, "automated_enforcement": true, "security_labels": true},
+	"information_flow": {
+		"flow_control_policies": true, "automated_enforcement": true, "security_labels": true,
+		"encrypted_information": {"action_enforced": true, "uninspected_encrypted_flows": 0, "odp": {"mechanisms": ["egress proxy"], "action": "decrypt"}},
+		"separation": {"separations_not_enforced": 0, "odp": {"mechanisms": ["vlans"], "required_separations": ["management from user traffic"]}},
+	},
 	"separation_duties": {"critical_functions_divided": true, "documented_assignments": true},
 	"least_privilege": {
 		"minimum_access_granted": true, "privileged_functions_authorized": true, "non_privileged_access_default": true,
 		"privileged_functions_logged": true, "non_privileged_execution_prevented": true,
 		"privileged_accounts": {"accounts_outside_authorized_roles": 0, "odp": {"authorized_roles": ["sysadmin"]}},
 		"privilege_review": {"days_since_last": 30, "unremediated_findings": 0, "odp": {"frequency_days": 90}},
+		"network_privileged_commands": {"accounts_without_documented_need": 0, "rationale_in_security_plan": true, "odp": {"commands": ["sudo"], "needs": ["on-call recovery"]}},
+		"code_execution": {"software_above_user_privilege": 0, "odp": {"software": ["office suite", "browsers"]}},
 	},
 	"logon_attempts": {"lockout_configured": true, "maximum_attempts": 3, "odp": {"max_attempts": 3}},
 	"use_notification": {"banner_displayed": true, "acknowledgment_required": true, "monitoring_consent": true},
@@ -208,7 +221,11 @@ _pass := {"ac_controls": {
 		"authorized_only": true, "monitored_controlled": true, "encrypted_connections": true, "unmanaged_access_points": 0,
 		"privileged_commands": {"restricted_to_defined_needs": true, "assessable_evidence_produced": true, "rationale_in_security_plan": true, "odp": {"needs": ["break-glass recovery"]}},
 	},
-	"wireless_access": {"authorized_only": true, "encrypted_authentication": true, "components_with_unused_wireless_enabled": 0},
+	"wireless_access": {
+		"authorized_only": true, "encrypted_authentication": true, "components_with_unused_wireless_enabled": 0,
+		"user_configuration": {"authorized_users_identified": true, "unauthorized_users_able_to_configure": 0},
+		"signal_containment": {"power_levels_calibrated": true, "access_points_detected_outside_boundary": 0},
+	},
 	"mobile_devices": {
 		"usage_restrictions": true, "connection_requirements": true, "configuration_requirements": true,
 		"encryption": {"devices_without_required_encryption": 0, "odp": {"method": "full-device"}},
@@ -332,4 +349,78 @@ test_ac11_authentication_required_absent_is_evidence_missing if {
 	r := ac.compliance_report with input as fx
 	_ids(r) == {"AC-11"}
 	contains(concat("", r.violations), "evidence missing — input.ac_controls.session_lock.authentication_required")
+}
+
+# --- NIST / FedRAMP High-baseline enhancements -----------------------------------------------------------------
+
+# [id, override that fails only that id, override that removes that id's evidence]
+_high_cases := [
+	["AC-2(7)", {"account_management": {"privileged_user_accounts": {"changes_monitored": false}}}, {"account_management": {"privileged_user_accounts": {"odp": {"scheme": "ad hoc"}}}}],
+	["AC-2(9)", {"account_management": {"shared_accounts": {"accounts_not_meeting_conditions": 2}}}, {"account_management": {"shared_accounts": {"odp": {"conditions": []}}}}],
+	["AC-2(11)", {"account_management": {"usage_conditions": {"accounts_without_enforced_conditions": 1}}}, {"account_management": {"usage_conditions": {"odp": {"accounts": null}}}}],
+	["AC-2(12)", {"account_management": {"atypical_usage": {"detections_not_reported": 4}}}, {"account_management": {"atypical_usage": {"monitoring_enabled": null}}}],
+	["AC-4(4)", {"information_flow": {"encrypted_information": {"uninspected_encrypted_flows": 7}}}, {"information_flow": {"encrypted_information": {"odp": {"action": null}}}}],
+	["AC-4(21)", {"information_flow": {"separation": {"separations_not_enforced": 1}}}, {"information_flow": {"separation": {"separations_not_enforced": null}}}],
+	["AC-6(3)", {"least_privilege": {"network_privileged_commands": {"rationale_in_security_plan": false}}}, {"least_privilege": {"network_privileged_commands": {"odp": {"needs": []}}}}],
+	["AC-6(8)", {"least_privilege": {"code_execution": {"software_above_user_privilege": 3}}}, {"least_privilege": {"code_execution": {"odp": null}}}],
+	["AC-18(4)", {"wireless_access": {"user_configuration": {"unauthorized_users_able_to_configure": 5}}}, {"wireless_access": {"user_configuration": {"authorized_users_identified": null}}}],
+	["AC-18(5)", {"wireless_access": {"signal_containment": {"access_points_detected_outside_boundary": 2}}}, {"wireless_access": {"signal_containment": {"power_levels_calibrated": null}}}],
+]
+
+test_high_ids_are_evaluated if {
+	every c in _high_cases {
+		c[0] in ac.evaluated_controls
+	}
+	count(_high_cases) == 10
+}
+
+test_each_high_id_failing_case_flips_only_that_id if {
+	every c in _high_cases {
+		fx := object.union(_pass, {"ac_controls": c[1]})
+		r := ac.compliance_report with input as fx
+		_ids(r) == {c[0]}
+		not contains(concat("", r.violations), "evidence missing")
+	}
+}
+
+test_each_high_id_missing_evidence_flips_only_that_id if {
+	every c in _high_cases {
+		fx := object.union(_pass, {"ac_controls": c[2]})
+		r := ac.compliance_report with input as fx
+		_ids(r) == {c[0]}
+		contains(concat("", r.violations), "evidence missing")
+	}
+}
+
+test_high_numeric_fact_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"ac_controls": {"least_privilege": {"code_execution": {"software_above_user_privilege": "1"}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-6(8)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_high_numeric_fact_as_null_is_evidence_missing if {
+	fx := object.union(_pass, {"ac_controls": {"wireless_access": {"signal_containment": {"access_points_detected_outside_boundary": null}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-18(5)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_high_boolean_as_string_true_is_evidence_missing if {
+	fx := object.union(_pass, {"ac_controls": {"information_flow": {"encrypted_information": {"action_enforced": "true"}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-4(4)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_ac2_7_attribute_based_scheme_passes if {
+	fx := object.union(_pass, {"ac_controls": {"account_management": {"privileged_user_accounts": {"odp": {"scheme": "attribute-based"}}}}})
+	r := ac.compliance_report with input as fx
+	r.violation_count == 0
+}
+
+test_high_enhancement_failure_leaves_base_passing if {
+	fx := object.union(_pass, {"ac_controls": {"wireless_access": {"user_configuration": {"authorized_users_identified": false}}}})
+	r := ac.compliance_report with input as fx
+	_ids(r) == {"AC-18(4)"}
 }

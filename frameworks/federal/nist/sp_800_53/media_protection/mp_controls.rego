@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 11
-#     cited: 8
+#     checks: 17
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
@@ -18,7 +18,8 @@ package nist.sp800_53.media_protection
 
 import rego.v1
 
-# NIST SP 800-53 Rev 5 — Media Protection (MP) Family, base controls MP-1 to MP-8 (no enhancements).
+# NIST SP 800-53 Rev 5 — Media Protection (MP) Family, base controls MP-1 to MP-8 and the NIST / FedRAMP High
+# enhancements MP-6(1), MP-6(2), MP-6(3) (11 ids).
 # Facts live under input.mp_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
 
@@ -203,10 +204,104 @@ violation contains msg if {
 	msg := "NIST MP-8: Media downgrading process (established, verified, media identified and downgraded) not attested — input.mp_controls.media_downgrading.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)"
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# NIST / FedRAMP High-baseline enhancements of MP-6. Each is its own finding; MP-6 never fails for them.
+# ---------------------------------------------------------------------------------------------------------------
+
+# Counts that must be zero: a non-number or a negative number is missing evidence.
+_count_missing(paths) := {_path(p) |
+	some p in paths
+	not _count_ok(_get(p))
+}
+
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+}
+
+_nonzero(p, fmt) := {sprintf(fmt, [n]) |
+	n := _get(p)
+	is_number(n)
+	_count_ok(n)
+	n > 0
+}
+
+_list_missing(paths) := {concat("", [_path(p), " (non-empty list)"]) |
+	some p in paths
+	not _nonempty_list(_get(p))
+}
+
+_nonempty_list(x) if {
+	is_array(x)
+	count(x) > 0
+}
+
+# MP-6(1) Review, Approve, Track, Document, and Verify: media sanitization and disposal actions are reviewed,
+# approved, tracked, documented and verified.
+# Facts (input.mp_controls.media_sanitization.tracking): tracked_in_system (boolean: actions are recorded in a
+# tracking system); actions_without_complete_record (count of sanitization or disposal actions in the review
+# period whose record lacks the review, approval, documentation or verification step).
+_mp6_1_bools := ["media_sanitization.tracking.tracked_in_system"]
+
+_mp6_1_missing := _bool_missing(_mp6_1_bools) | _count_missing(["media_sanitization.tracking.actions_without_complete_record"])
+
+violation contains msg if {
+	count(_mp6_1_missing) > 0
+	msg := _missing_msg("MP-6(1)", _mp6_1_missing)
+}
+
+violation contains msg if {
+	count(_mp6_1_missing) == 0
+	failed := _bool_false(_mp6_1_bools) | _nonzero("media_sanitization.tracking.actions_without_complete_record", "%v sanitization or disposal actions without a reviewed, approved, documented and verified record")
+	count(failed) > 0
+	msg := sprintf("NIST MP-6(1): Media sanitization and disposal actions not reviewed, approved, tracked, documented and verified — %s", [concat("; ", sort(failed))])
+}
+
+# MP-6(2) Equipment Testing: sanitization equipment and sanitization procedures are each tested at the
+# organization-defined frequency.
+# Facts (input.mp_controls.media_sanitization): equipment_testing.days_since_last + equipment_testing.odp.frequency_days;
+# procedure_testing.days_since_last + procedure_testing.odp.frequency_days; equipment_testing.last_test_passed
+# (boolean: the last test confirmed the intended sanitization was achieved).
+_mp6_2_bools := ["media_sanitization.equipment_testing.last_test_passed"]
+
+_mp6_2_missing := (_bool_missing(_mp6_2_bools) | _freq_missing("media_sanitization.equipment_testing")) | _freq_missing("media_sanitization.procedure_testing")
+
+violation contains msg if {
+	count(_mp6_2_missing) > 0
+	msg := _missing_msg("MP-6(2)", _mp6_2_missing)
+}
+
+violation contains msg if {
+	count(_mp6_2_missing) == 0
+	overdue := {m | m := _overdue("media_sanitization.equipment_testing", "Sanitization equipment testing")} | {m | m := _overdue("media_sanitization.procedure_testing", "Sanitization procedure testing")}
+	failed := _bool_false(_mp6_2_bools) | overdue
+	count(failed) > 0
+	msg := sprintf("NIST MP-6(2): Sanitization equipment and procedures not tested as required — %s", [concat("; ", sort(failed))])
+}
+
+# MP-6(3) Nondestructive Techniques: portable storage devices are sanitized with nondestructive techniques before
+# they are connected to the system under the organization-defined circumstances.
+# Facts (input.mp_controls.media_sanitization.nondestructive): odp.circumstances (non-empty list);
+# devices_connected_without_sanitization (count of portable storage devices connected under those circumstances
+# with no sanitization record, e.g. from device-control and kiosk logs).
+_mp6_3_missing := _list_missing(["media_sanitization.nondestructive.odp.circumstances"]) | _count_missing(["media_sanitization.nondestructive.devices_connected_without_sanitization"])
+
+violation contains msg if {
+	count(_mp6_3_missing) > 0
+	msg := _missing_msg("MP-6(3)", _mp6_3_missing)
+}
+
+violation contains msg if {
+	count(_mp6_3_missing) == 0
+	failed := _nonzero("media_sanitization.nondestructive.devices_connected_without_sanitization", "%v portable storage devices connected without nondestructive sanitization")
+	count(failed) > 0
+	msg := sprintf("NIST MP-6(3): Portable storage devices not sanitized before connection — %s", [concat("; ", sort(failed))])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"MP-1", "MP-2", "MP-3", "MP-4", "MP-5", "MP-6", "MP-7", "MP-8"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"MP-1", "MP-2", "MP-3", "MP-4", "MP-5", "MP-6", "MP-6(1)", "MP-6(2)", "MP-6(3)", "MP-7", "MP-8"}
 
 compliance_report := {
 	"family": "MP",
