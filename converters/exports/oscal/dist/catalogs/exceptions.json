@@ -97,6 +97,138 @@
        }
       ],
       "class": "governance"
+     },
+     {
+      "id": "exceptions-exceptions-2",
+      "title": "expired matches",
+      "props": [
+       {
+        "name": "label",
+        "value": "exceptions#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "exceptions#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "exceptions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad2a3781-7a90-57e2-9820-7923453aaf6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "exceptions-exceptions-2_stmt",
+        "name": "statement",
+        "prose": "expired matches"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "exceptions-exceptions-3",
+      "title": "expiring soon",
+      "props": [
+       {
+        "name": "label",
+        "value": "exceptions#3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "exceptions#3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "exceptions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad2a3781-7a90-57e2-9820-7923453aaf6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "exceptions-exceptions-3_stmt",
+        "name": "statement",
+        "prose": "expiring soon"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "exceptions-exceptions-4",
+      "title": "rejected",
+      "props": [
+       {
+        "name": "label",
+        "value": "exceptions#4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "exceptions#4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "exceptions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad2a3781-7a90-57e2-9820-7923453aaf6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "exceptions-exceptions-4_stmt",
+        "name": "statement",
+        "prose": "rejected"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "exceptions-exceptions-5",
+      "title": "waived",
+      "props": [
+       {
+        "name": "label",
+        "value": "exceptions#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "exceptions#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "exceptions"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ad2a3781-7a90-57e2-9820-7923453aaf6f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "exceptions-exceptions-5_stmt",
+        "name": "statement",
+        "prose": "waived"
+       }
+      ],
+      "class": "governance"
      }
     ]
    }

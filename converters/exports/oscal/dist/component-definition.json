@@ -358896,7 +358896,7 @@
      {
       "uuid": "36491c32-a919-5bd6-afd6-32c9b7cdfacb",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/exceptions.json",
-      "description": "Controls of exceptions evaluated by the Rego Policy Libraries (1 controls, 1 Rego modules).",
+      "description": "Controls of exceptions evaluated by the Rego Policy Libraries (5 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -358913,6 +358913,106 @@
          {
           "name": "label",
           "value": "exceptions#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "exceptions"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/exceptions/waivers.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "33480fff-51f9-576a-93b0-2668cd8af081",
+        "control-id": "exceptions-exceptions-2",
+        "description": "Evaluated by Rego package exceptions (governance/exceptions/waivers.rego): expired matches",
+        "props": [
+         {
+          "name": "label",
+          "value": "exceptions#2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "exceptions"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/exceptions/waivers.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a9ac1c43-e864-5dc7-8adf-eabef1ca62fc",
+        "control-id": "exceptions-exceptions-3",
+        "description": "Evaluated by Rego package exceptions (governance/exceptions/waivers.rego): expiring soon",
+        "props": [
+         {
+          "name": "label",
+          "value": "exceptions#3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "exceptions"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/exceptions/waivers.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "936d10d6-7b12-521f-8c84-29d7c4ab5e71",
+        "control-id": "exceptions-exceptions-4",
+        "description": "Evaluated by Rego package exceptions (governance/exceptions/waivers.rego): rejected",
+        "props": [
+         {
+          "name": "label",
+          "value": "exceptions#4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "exceptions"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/exceptions/waivers.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ad736adf-8416-5ef2-864d-f9cf4c778418",
+        "control-id": "exceptions-exceptions-5",
+        "description": "Evaluated by Rego package exceptions (governance/exceptions/waivers.rego): waived",
+        "props": [
+         {
+          "name": "label",
+          "value": "exceptions#5"
          },
          {
           "name": "rego-package",
