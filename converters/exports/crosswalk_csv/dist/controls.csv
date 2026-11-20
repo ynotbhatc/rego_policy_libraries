@@ -15543,6 +15543,10 @@ eu_ai_act,Article 50.4,eu_ai_act-Article-50.4,AI-generated text on matters of pu
 eu_ai_act,Article 49,eu_ai_act-Article-49,High-risk AI system not registered in the EU database for AI systems as required before deployment,governance,eu,ai eu,eu_ai_act.transparency,governance/eu_ai_act/eu_ai_act_transparency.rego
 eu_ai_act,Article 50.5,eu_ai_act-Article-50.5,Deployer of emotion recognition system has not informed affected persons of the system's deployment and use,governance,eu,ai eu,eu_ai_act.transparency,governance/eu_ai_act/eu_ai_act_transparency.rego
 exceptions,exceptions#1,exceptions-exceptions-1,,governance,aac,exceptions,exceptions,governance/exceptions/waivers.rego
+exceptions,exceptions#2,exceptions-exceptions-2,expired matches,governance,aac,exceptions,exceptions,governance/exceptions/waivers.rego
+exceptions,exceptions#3,exceptions-exceptions-3,expiring soon,governance,aac,exceptions,exceptions,governance/exceptions/waivers.rego
+exceptions,exceptions#4,exceptions-exceptions-4,rejected,governance,aac,exceptions,exceptions,governance/exceptions/waivers.rego
+exceptions,exceptions#5,exceptions-exceptions-5,waived,governance,aac,exceptions,exceptions,governance/exceptions/waivers.rego
 far_cyber,52.204-21(b)(1)(i),far_cyber-52.204-21-b-1-i,"Limit information system access to authorized users, processes acting on behalf of authorized users, or devices (including other information systems).",compliance,us-federal,us-federal supply-chain,far_cyber.main,frameworks/federal/far_cyber/far_cyber_main.rego
 far_cyber,52.204-21(b)(1)(ii),far_cyber-52.204-21-b-1-ii,Limit information system access to the types of transactions and functions that authorized users are permitted to execute.,compliance,us-federal,us-federal supply-chain,far_cyber.main,frameworks/federal/far_cyber/far_cyber_main.rego
 far_cyber,52.204-21(b)(1)(iii),far_cyber-52.204-21-b-1-iii,Verify and control/limit connections to and use of external information systems.,compliance,us-federal,us-federal supply-chain,far_cyber.main,frameworks/federal/far_cyber/far_cyber_main.rego
