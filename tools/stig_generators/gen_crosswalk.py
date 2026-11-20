@@ -19,6 +19,8 @@ SOURCE_NOTES = {
     "oracle_linux_9": "Oracle platforms from the October 2026 compilation",
     "kubernetes": "Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21)",
     "rke2": "Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21)",
+    "rhel_10": "RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
+    "ubuntu_24_04": "RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
 }
 
 

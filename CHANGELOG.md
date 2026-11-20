@@ -23,6 +23,14 @@ the 800-53B Low, Moderate and High baselines and the FedRAMP Rev 5 Low, Moderate
 - `control_results` on `{}`: 475 evidence missing, 48 not attested, 0 fail. 1,216 tests in the module.
 - Report lookups read the grouped findings and baseline membership once (whole-object `object.get`).
 
+### Changed — STIG → 800-53 map: RHEL 10 and Ubuntu 24.04
+
+- `crosswalk/stig_800_53/data.json` gains RHEL 10 V1R3 (435 rules) and Ubuntu 24.04 V1R7 (195 rules), joined from
+  DISA's October 2026 compilation and CCI list (2025-01-23) with `tools/stig_generators/parse_xccdf.py` +
+  `gen_crosswalk.py`; 4,437 rules (was 3,807). Every rule of the library's RHEL 10 and Ubuntu 24.04 modules now
+  reaches its 800-53 controls in `crosswalk.correlation` and the OSCAL baseline coverage.
+- Windows Server 2016 / 2019 stay unmapped: DISA retired both in July 2026 and their XCCDF is not in the
+  compilation.
 ### Added — waivers: required fields, maximum time to live, expiring soon
 
 - `governance/exceptions/waivers.rego` reads optional site settings at `data.waivers.settings`:

@@ -135,9 +135,10 @@ every other standard already defines its relationship to it.
 
   `summary` adds counts, the satisfied and gap lists, and `rules_unmapped` (supplied rules the map does not
   cover). Before 2026-11-19 a Not_Reviewed rule left its control `satisfied`; it no longer does.
-- **Map coverage today:** the DISA compilation the map was built from does not carry the rule ids of the current
-  RHEL 10, Ubuntu 24.04 and Windows Server 2016 / 2019 modules, so their rules arrive as `rules_unmapped` until the
-  map is regenerated from the newer compilation.
+- **Map coverage today:** every current STIG platform's rules are in the map except Windows Server 2016 and 2019,
+  which DISA retired from the SRG-STIG Library in July 2026 (their XCCDF is no longer in the compilation); their
+  rules arrive as `rules_unmapped`. RHEL 10 V1R3 and Ubuntu 24.04 V1R7 were joined from the October 2026
+  compilation on 2026-11-19.
 
 Downstream, any framework that declares its 800-53 inheritance reads
 `control_status` and reports its own posture from one assessment — the input
