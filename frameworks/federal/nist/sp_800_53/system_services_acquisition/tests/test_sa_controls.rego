@@ -6,7 +6,7 @@ import rego.v1
 # `with input as`, which the wasm build rejects); each failing case changes one fact of the all-pass fixture
 # and must flip exactly that control id.
 
-_pass := {"sa_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "resource_allocation": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "sdlc": {"security_privacy_incorporated": true, "roles_documented": true, "role_holders_identified": true, "risk_management_integrated": true}, "acquisition": {"contract_language_defined": true, "contracts_missing_requirements": 0, "functional_properties": {"contracts_missing_requirement": 0}, "design_information": {"contracts_missing_requirement": 0}, "ports_protocols_services": {"contracts_missing_requirement": 0}, "piv_products": {"non_approved_products": 0}}, "documentation": {"administrator_documentation": true, "user_documentation": true, "unavailable_documentation_handled": true, "distributed": true}, "engineering_principles": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "external_services": {"oversight_roles_documented": true, "compliance_monitored": true, "noncompliant_providers": 0, "ports_protocols_services": {"providers_not_identified": 0}}, "developer_cm": {"performed": true, "change_integrity_controlled": true, "only_approved_changes": true, "changes_documented_with_impact": true, "flaws_tracked_and_reported": true}, "developer_testing": {"assessment_plan_implemented": true, "evidence_produced": true, "flaw_remediation_process": true, "flaws_corrected": true, "days_since_last": 60, "odp": {"frequency_days": 180}}, "development_process": {"documented": true, "addresses_security_privacy": true, "standards_tools_identified": true, "tool_configurations_documented": true, "process_changes_controlled": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}}, "criticality_analysis": {"required": true, "decision_points_without_analysis": 0}}, "developer_training": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "developer_architecture": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "custom_critical_components": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "developer_screening": {"criteria_defined": true, "unscreened_developers": 0}, "unsupported_components": {"without_alternative_support": 0}, "specialization": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "cyber_resiliency": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}}}
+_pass := {"sa_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "resource_allocation": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "sdlc": {"security_privacy_incorporated": true, "roles_documented": true, "role_holders_identified": true, "risk_management_integrated": true}, "acquisition": {"contract_language_defined": true, "contracts_missing_requirements": 0, "functional_properties": {"contracts_missing_requirement": 0}, "design_information": {"contracts_missing_requirement": 0}, "ports_protocols_services": {"contracts_missing_requirement": 0}, "piv_products": {"non_approved_products": 0}, "security_configurations": {"contracts_missing_requirement": 0, "components_deviating_from_default": 0}}, "documentation": {"administrator_documentation": true, "user_documentation": true, "unavailable_documentation_handled": true, "distributed": true}, "engineering_principles": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "external_services": {"oversight_roles_documented": true, "compliance_monitored": true, "noncompliant_providers": 0, "ports_protocols_services": {"providers_not_identified": 0}, "security_service_acquisitions": {"without_prior_risk_assessment": 0, "without_approval": 0}, "location_restriction": {"locations_defined": true, "resources_outside_locations": 0}}, "developer_cm": {"performed": true, "change_integrity_controlled": true, "only_approved_changes": true, "changes_documented_with_impact": true, "flaws_tracked_and_reported": true}, "developer_testing": {"assessment_plan_implemented": true, "evidence_produced": true, "flaw_remediation_process": true, "flaws_corrected": true, "days_since_last": 60, "odp": {"frequency_days": 180}, "static_analysis": {"components_not_analyzed": 0, "results_documented": true}, "threat_modeling": {"components_without_threat_model": 0, "analyses_failing_acceptance": 0}}, "development_process": {"documented": true, "addresses_security_privacy": true, "standards_tools_identified": true, "tool_configurations_documented": true, "process_changes_controlled": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}}, "criticality_analysis": {"required": true, "decision_points_without_analysis": 0}}, "developer_training": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "developer_architecture": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "custom_critical_components": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "developer_screening": {"criteria_defined": true, "unscreened_developers": 0}, "unsupported_components": {"without_alternative_support": 0}, "specialization": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "cyber_resiliency": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}}}
 
 _flagged(v, id) := [x | some x in v; startswith(x, concat("", ["NIST ", id, ":"]))]
 
@@ -28,7 +28,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.system_services_acquisition.evaluated_controls == {"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9", "SA-9(2)", "SA-10", "SA-11", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24"}
+	data.nist.sp800_53.system_services_acquisition.evaluated_controls == {"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24"}
 }
 
 test_sa1_policy_not_documented_fails if {
@@ -571,4 +571,148 @@ test_enhancement_missing_does_not_fail_base if {
 	count(_flagged(v, "SA-4")) == 0
 	count(_flagged(v, "SA-9")) == 0
 	count(_flagged(v, "SA-15")) == 0
+}
+
+test_sa4_5_contracts_missing_fail if {
+	inp := object.union(_pass, {"sa_controls": {"acquisition": {"security_configurations": {"contracts_missing_requirement": 2}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-4(5)")
+	count(f) == 1
+	contains(f[0], "2 acquisition contracts")
+}
+
+test_sa4_5_deviating_components_fail if {
+	inp := object.union(_pass, {"sa_controls": {"acquisition": {"security_configurations": {"components_deviating_from_default": 1}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-4(5)")
+	count(f) == 1
+	contains(f[0], "do not run the organization-defined security configurations")
+}
+
+test_sa4_5_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"acquisition": {"security_configurations": null}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-4(5)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_sa9_1_no_prior_assessment_fails if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"security_service_acquisitions": {"without_prior_risk_assessment": 1}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(1)")
+	count(f) == 1
+	contains(f[0], "without a prior organizational risk assessment")
+}
+
+test_sa9_1_string_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"security_service_acquisitions": {"without_approval": "0"}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(1)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_sa9_5_resources_outside_fail if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"location_restriction": {"resources_outside_locations": 3}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(5)")
+	count(f) == 1
+	contains(f[0], "3 processing, storage or service resources")
+}
+
+test_sa9_5_not_defined_fails if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"location_restriction": {"locations_defined": false}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(5)")
+	count(f) == 1
+	contains(f[0], "not restricted")
+}
+
+test_sa9_5_string_true_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"location_restriction": {"locations_defined": "true"}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(5)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_sa9_5_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"external_services": {"location_restriction": null}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-9(5)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_sa11_1_components_not_analyzed_fail if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"static_analysis": {"components_not_analyzed": 2}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(1)")
+	count(f) == 1
+	contains(f[0], "no static code analysis")
+}
+
+test_sa11_1_results_not_documented_fail if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"static_analysis": {"results_documented": false}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(1)")
+	count(f) == 1
+	contains(f[0], "not documented")
+}
+
+test_sa11_1_count_null_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"static_analysis": {"components_not_analyzed": null}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(1)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_sa11_2_no_threat_model_fails if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"threat_modeling": {"components_without_threat_model": 1}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(2)")
+	count(f) == 1
+	contains(f[0], "threat modeling")
+}
+
+test_sa11_2_failing_acceptance_fails if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"threat_modeling": {"analyses_failing_acceptance": 1}}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(2)")
+	count(f) == 1
+	contains(f[0], "acceptance criteria")
+}
+
+test_sa11_2_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"sa_controls": {"developer_testing": {"threat_modeling": null}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SA-11(2)")
+	count(f) == 1
+	contains(f[0], "evidence missing")
+}
+
+test_high_enhancements_missing_do_not_fail_base if {
+	inp := object.union(_pass, {"sa_controls": {"acquisition": {"security_configurations": null}, "external_services": {"security_service_acquisitions": null, "location_restriction": null}, "developer_testing": {"static_analysis": null, "threat_modeling": null}}})
+	v := data.nist.sp800_53.system_services_acquisition.violation with input as inp
+	count(v) == 5
+	every id in {"SA-4", "SA-9", "SA-11"} {
+		count(_flagged(v, id)) == 0
+	}
 }
