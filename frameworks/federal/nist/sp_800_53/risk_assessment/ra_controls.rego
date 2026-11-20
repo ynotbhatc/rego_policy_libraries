@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 13
-#     cited: 13
+#     checks: 16
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,8 +19,8 @@ package nist.sp800_53.risk_assessment
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Risk Assessment (RA) Family: the nine active base controls (RA-1, RA-2, RA-3, RA-5,
-# RA-6, RA-7, RA-8, RA-9, RA-10; RA-4 is withdrawn) and the Moderate-baseline enhancements RA-3(1), RA-5(2),
-# RA-5(5) and RA-5(11). Each enhancement is its own requirement with its own finding; a base control never
+# RA-6, RA-7, RA-8, RA-9, RA-10; RA-4 is withdrawn), the Moderate-baseline enhancements RA-3(1), RA-5(2),
+# RA-5(5) and RA-5(11), and the High-baseline enhancements RA-5(3), RA-5(4) and RA-5(8). Each enhancement is its own requirement with its own finding; a base control never
 # fails on an enhancement's requirement. Facts live under input.ra_controls.
 
 default compliant := false
@@ -260,10 +260,74 @@ violation contains msg if {
 	msg := sprintf("NIST RA-5(11): %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# High-baseline enhancements (NIST SP 800-53B High and the FedRAMP High baseline).
+# ---------------------------------------------------------------------------------------------------------
+
+# RA-5(3) Breadth and Depth of Coverage: input.ra_controls.vulnerability_scanning.coverage.breadth_depth_defined,
+# true when the scan configuration defines which components are scanned (breadth) and which checks and access
+# levels are used (depth), for example a scan policy listing target groups, credentialed checks and plugin
+# families.
+violation contains msg if {
+	sec := ["vulnerability_scanning", "coverage"]
+	b := {"breadth_depth_defined": "the breadth and depth of vulnerability scanning coverage are not defined"}
+	m := _bool_missing(sec, b)
+	u := _bool_unmet(sec, b)
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(3): %s", [_detail(m, u)])
+}
+
+# RA-5(4) Discoverable Information: input.ra_controls.vulnerability_scanning.discoverable_information.
+# {assessed, findings_without_corrective_action}. assessed is true when the information an adversary can discover
+# about the system (external exposure scans, banner and DNS enumeration, public code and document searches) has
+# been determined; findings_without_corrective_action counts discoverable-information findings with none of the
+# organization-defined corrective actions recorded.
+violation contains msg if {
+	sec := ["vulnerability_scanning", "discoverable_information"]
+	b := {"assessed": "the information about the system that is discoverable has not been determined"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "findings_without_corrective_action")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "findings_without_corrective_action", "discoverable-information findings have no organization-defined corrective action")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(4): %s", [_detail(m, u)])
+}
+
+# RA-5(8) Review Historic Audit Logs: input.ra_controls.vulnerability_scanning.historic_log_review.
+# {vulnerabilities_not_reviewed, lookback_days, odp.time_period_days}. vulnerabilities_not_reviewed counts
+# vulnerabilities identified in the organization-defined system with no review of historic audit logs for prior
+# exploitation; lookback_days is how far back those reviews search, compared with the organization-defined time
+# period (a shorter lookback is a finding).
+_ra5_8_sec := ["vulnerability_scanning", "historic_log_review"]
+
+_ra5_8_lookback := _val(array.concat(_ra5_8_sec, ["lookback_days"]))
+
+_ra5_8_period := _val(array.concat(_ra5_8_sec, ["odp", "time_period_days"]))
+
+_ra5_8_num_missing := {_p(array.concat(_ra5_8_sec, k)) |
+	some k in [["lookback_days"], ["odp", "time_period_days"]]
+	not is_number(_val(array.concat(_ra5_8_sec, k)))
+}
+
+_ra5_8_short := {d |
+	is_number(_ra5_8_lookback)
+	is_number(_ra5_8_period)
+	_ra5_8_lookback < _ra5_8_period
+	d := sprintf("historic audit logs reviewed back %v days; the organization-defined time period is %v days", [_ra5_8_lookback, _ra5_8_period])
+}
+
+violation contains msg if {
+	m := _zero_missing(_ra5_8_sec, "vulnerabilities_not_reviewed") | _ra5_8_num_missing
+	u := _zero_unmet(_ra5_8_sec, "vulnerabilities_not_reviewed", "identified vulnerabilities have no review of historic audit logs for prior exploitation") | _ra5_8_short
+	count(m) + count(u) > 0
+	msg := sprintf("NIST RA-5(8): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"RA-1", "RA-2", "RA-3", "RA-3(1)", "RA-5", "RA-5(2)", "RA-5(5)", "RA-5(11)", "RA-6", "RA-7", "RA-8", "RA-9", "RA-10"}
+evaluated_controls := {
+	"RA-1", "RA-2", "RA-3", "RA-3(1)", "RA-5", "RA-5(2)", "RA-5(3)", "RA-5(4)", "RA-5(5)", "RA-5(8)", "RA-5(11)",
+	"RA-6", "RA-7", "RA-8", "RA-9", "RA-10",
+}
 
 compliance_report := {
 	"family": "RA",

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 26
-#     cited: 26
+#     checks: 38
+#     cited: 38
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,7 @@ package nist.sp800_53.contingency_planning
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Contingency Planning (CP) Family. Every active base control (CP-1 to CP-4, CP-6 to
-# CP-13; CP-5 is withdrawn) and the enhancements the SP 800-53B Moderate baseline selects. Each enhancement is its
+# CP-13; CP-5 is withdrawn) and the enhancements the SP 800-53B Moderate and High baselines (and FedRAMP High) select. Each enhancement is its
 # own requirement with its own finding, read from keys nested under its base control's object; a base control
 # never fails for an enhancement.
 
@@ -682,13 +682,271 @@ violation contains msg if {
 	msg := sprintf("NIST CP-10(2): %s", [_detail(_cp10_2_missing, _cp10_2_failed)])
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# High-baseline enhancements (NIST SP 800-53B High and FedRAMP High). Each reads only its own keys, nested under
+# its base control's object, and has its own single finding.
+# ---------------------------------------------------------------------------------------------------------------
+
+# CP-2(2) Capacity Planning: capacity planning ensures the information processing, telecommunications and
+# environmental support capacity needed during contingency operations exists.
+# Facts (input.cp_controls.contingency_plan.capacity_planning): processing_capacity_planned,
+# telecommunications_capacity_planned, environmental_support_planned (booleans: the capacity plan for contingency
+# operations covers each and the capacity is in place or contracted).
+_cp2_2_path := ["contingency_plan", "capacity_planning"]
+
+_cp2_2_bools := [
+	["processing_capacity_planned", "information processing capacity for contingency operations not planned"],
+	["telecommunications_capacity_planned", "telecommunications capacity for contingency operations not planned"],
+	["environmental_support_planned", "environmental support capacity for contingency operations not planned"],
+]
+
+_cp2_2_missing := _bool_missing(_cp2_2_path, _cp2_2_bools)
+
+_cp2_2_failed := _bool_failed(_cp2_2_path, _cp2_2_bools)
+
+violation contains msg if {
+	count(_cp2_2_missing | _cp2_2_failed) > 0
+	msg := sprintf("NIST CP-2(2): %s", [_detail(_cp2_2_missing, _cp2_2_failed)])
+}
+
+# CP-2(5) Continue Mission and Business Functions: the plan provides for continuing the organization-defined (all
+# or essential) mission and business functions with minimal or no loss of continuity, sustained until full
+# restoration at the primary sites.
+# Facts (input.cp_controls.contingency_plan.continuity): covers_all_in_scope_functions,
+# sustained_until_full_restoration (booleans); odp.function_scope ("all" or "essential").
+_cp2_5_path := ["contingency_plan", "continuity"]
+
+_cp2_5_bools := [
+	["covers_all_in_scope_functions", "contingency plan does not provide for continuing every in-scope mission and business function with minimal or no loss of continuity"],
+	["sustained_until_full_restoration", "contingency plan does not sustain continuity until full restoration at the primary processing and storage sites"],
+]
+
+_cp2_5_missing := _bool_missing(_cp2_5_path, _cp2_5_bools) | _scope_missing(_cp2_5_path)
+
+_cp2_5_failed := _bool_failed(_cp2_5_path, _cp2_5_bools)
+
+violation contains msg if {
+	count(_cp2_5_missing | _cp2_5_failed) > 0
+	msg := sprintf("NIST CP-2(5): %s", [_detail(_cp2_5_missing, _cp2_5_failed)])
+}
+
+# CP-3(1) Simulated Events: contingency training incorporates simulated events.
+# Facts (input.cp_controls.contingency_training.simulated_events): included_in_last_training (boolean, from the
+# last training record).
+_cp3_1_path := ["contingency_training", "simulated_events"]
+
+_cp3_1_bools := [["included_in_last_training", "contingency training does not incorporate simulated events"]]
+
+_cp3_1_missing := _bool_missing(_cp3_1_path, _cp3_1_bools)
+
+_cp3_1_failed := _bool_failed(_cp3_1_path, _cp3_1_bools)
+
+violation contains msg if {
+	count(_cp3_1_missing | _cp3_1_failed) > 0
+	msg := sprintf("NIST CP-3(1): %s", [_detail(_cp3_1_missing, _cp3_1_failed)])
+}
+
+# CP-4(2) Alternate Processing Site: the contingency plan is tested at the alternate processing site, to
+# familiarize personnel with it and to evaluate its capability to support contingency operations.
+# Facts (input.cp_controls.plan_testing.alternate_processing_site): tested_at_site, personnel_familiarized,
+# capabilities_evaluated (booleans, from the last test's after-action report).
+_cp4_2_path := ["plan_testing", "alternate_processing_site"]
+
+_cp4_2_bools := [
+	["tested_at_site", "contingency plan not tested at the alternate processing site"],
+	["personnel_familiarized", "contingency plan testing did not familiarize contingency personnel with the alternate processing site"],
+	["capabilities_evaluated", "contingency plan testing did not evaluate the alternate processing site's capability to support contingency operations"],
+]
+
+_cp4_2_missing := _bool_missing(_cp4_2_path, _cp4_2_bools)
+
+_cp4_2_failed := _bool_failed(_cp4_2_path, _cp4_2_bools)
+
+violation contains msg if {
+	count(_cp4_2_missing | _cp4_2_failed) > 0
+	msg := sprintf("NIST CP-4(2): %s", [_detail(_cp4_2_missing, _cp4_2_failed)])
+}
+
+# CP-6(2) Recovery Time and Recovery Point Objectives: the alternate storage site is configured to support
+# recovery within the recovery time and recovery point objectives.
+# Facts (input.cp_controls.alternate_storage_site.recovery_objectives): replication_lag_minutes (worst observed
+# age of the data at the alternate storage site, the achieved recovery point) + odp.recovery_point_objective_minutes;
+# retrieval_hours (demonstrated time to retrieve and restore from the alternate storage site) +
+# odp.recovery_time_objective_hours.
+_cp6_2_path := ["alternate_storage_site", "recovery_objectives"]
+
+_cp6_2_missing := _num_missing(_cp6_2_path, "replication_lag_minutes", "recovery_point_objective_minutes") | _num_missing(_cp6_2_path, "retrieval_hours", "recovery_time_objective_hours")
+
+_cp6_2_failed := _over(_cp6_2_path, "replication_lag_minutes", "recovery_point_objective_minutes", "data at the alternate storage site lags by up to %v minutes; the recovery point objective is %v minutes") | _over(_cp6_2_path, "retrieval_hours", "recovery_time_objective_hours", "retrieval from the alternate storage site takes %v hours; the recovery time objective is %v hours")
+
+violation contains msg if {
+	count(_cp6_2_missing | _cp6_2_failed) > 0
+	msg := sprintf("NIST CP-6(2): %s", [_detail(_cp6_2_missing, _cp6_2_failed)])
+}
+
+# CP-7(4) Preparation for Use: the alternate processing site is prepared to serve as the operational site for
+# essential mission and business functions.
+# Facts (input.cp_controls.alternate_processing_site.preparation): configured_for_operations (boolean: the site's
+# systems are built and configured to the current baseline); failover_verified (boolean: the last failover test
+# ran the essential functions from the site).
+_cp7_4_path := ["alternate_processing_site", "preparation"]
+
+_cp7_4_bools := [
+	["configured_for_operations", "alternate processing site not configured to serve as the operational site"],
+	["failover_verified", "alternate processing site not verified as able to run essential mission and business functions"],
+]
+
+_cp7_4_missing := _bool_missing(_cp7_4_path, _cp7_4_bools)
+
+_cp7_4_failed := _bool_failed(_cp7_4_path, _cp7_4_bools)
+
+violation contains msg if {
+	count(_cp7_4_missing | _cp7_4_failed) > 0
+	msg := sprintf("NIST CP-7(4): %s", [_detail(_cp7_4_missing, _cp7_4_failed)])
+}
+
+# CP-8(3) Separation of Primary and Alternate Providers: alternate telecommunications services come from providers
+# separated from the primary providers.
+# Facts (input.cp_controls.telecommunications.provider_separation): primary_providers, alternate_providers
+# (non-empty lists of provider names from the service contracts; a provider in both is a finding);
+# shared_threats_assessed (boolean: the providers were assessed for susceptibility to the same threats, e.g.
+# shared upstream carrier or facility).
+_cp8_3_path := ["telecommunications", "provider_separation"]
+
+_cp8_3_obj := _obj(_cp8_3_path)
+
+_cp8_3_bools := [["shared_threats_assessed", "primary and alternate telecommunications providers not assessed for susceptibility to the same threats"]]
+
+_cp8_3_lists_missing := {concat(".", [_path_str(_cp8_3_path), k]) |
+	some k in ["primary_providers", "alternate_providers"]
+	not _nonempty_array(object.get(_cp8_3_obj, k, null))
+}
+
+_cp8_3_overlap := {sprintf("%v", [p]) |
+	_nonempty_array(object.get(_cp8_3_obj, "primary_providers", null))
+	_nonempty_array(object.get(_cp8_3_obj, "alternate_providers", null))
+	some p in _cp8_3_obj.alternate_providers
+	p in _cp8_3_obj.primary_providers
+}
+
+_cp8_3_overlap_failed := {sprintf("alternate telecommunications obtained from a primary provider: %s", [concat(", ", sort(_cp8_3_overlap))]) |
+	count(_cp8_3_overlap) > 0
+}
+
+_cp8_3_missing := _bool_missing(_cp8_3_path, _cp8_3_bools) | _cp8_3_lists_missing
+
+_cp8_3_failed := _bool_failed(_cp8_3_path, _cp8_3_bools) | _cp8_3_overlap_failed
+
+violation contains msg if {
+	count(_cp8_3_missing | _cp8_3_failed) > 0
+	msg := sprintf("NIST CP-8(3): %s", [_detail(_cp8_3_missing, _cp8_3_failed)])
+}
+
+# CP-8(4) Provider Contingency Plan: primary and alternate telecommunications providers have contingency plans,
+# the plans are reviewed against organizational contingency requirements, and evidence of provider contingency
+# testing and training is obtained at the organization-defined frequency.
+# Facts (input.cp_controls.telecommunications.provider_contingency_plans): all_providers_have_plans,
+# plans_reviewed_against_requirements (booleans); testing_evidence.days_since_last (age of the latest provider
+# testing and training evidence) + testing_evidence.odp.frequency_days.
+_cp8_4_path := ["telecommunications", "provider_contingency_plans"]
+
+_cp8_4_bools := [
+	["all_providers_have_plans", "not every primary and alternate telecommunications provider has a contingency plan"],
+	["plans_reviewed_against_requirements", "provider contingency plans not reviewed against organizational contingency requirements"],
+]
+
+_cp8_4_missing := _bool_missing(_cp8_4_path, _cp8_4_bools) | _freq_missing(array.concat(_cp8_4_path, ["testing_evidence"]))
+
+_cp8_4_failed := _bool_failed(_cp8_4_path, _cp8_4_bools) | _freq_over(array.concat(_cp8_4_path, ["testing_evidence"]), "evidence of provider contingency testing and training last obtained %v days ago; the organization-defined frequency is %v days")
+
+violation contains msg if {
+	count(_cp8_4_missing | _cp8_4_failed) > 0
+	msg := sprintf("NIST CP-8(4): %s", [_detail(_cp8_4_missing, _cp8_4_failed)])
+}
+
+# CP-9(2) Test Restoration Using Sampling: a sample of backup information is restored to selected system
+# functions as part of contingency plan testing.
+# Facts (input.cp_controls.backup.sampled_restoration): used_in_last_plan_test (boolean: the last contingency plan
+# test restored selected functions from sampled backup information); functions_restored (number of system
+# functions restored from the sample in that test; at least 1).
+_cp9_2_path := ["backup", "sampled_restoration"]
+
+_cp9_2_bools := [["used_in_last_plan_test", "last contingency plan test did not restore system functions from a sample of backup information"]]
+
+_cp9_2_none := {"no system function restored from sampled backup information in the last contingency plan test (functions_restored is below 1)" |
+	n := object.get(_obj(_cp9_2_path), "functions_restored", null)
+	is_number(n)
+	n < 1
+}
+
+_cp9_2_missing := _bool_missing(_cp9_2_path, _cp9_2_bools) | _count_missing(_cp9_2_path, "functions_restored")
+
+_cp9_2_failed := _bool_failed(_cp9_2_path, _cp9_2_bools) | _cp9_2_none
+
+violation contains msg if {
+	count(_cp9_2_missing | _cp9_2_failed) > 0
+	msg := sprintf("NIST CP-9(2): %s", [_detail(_cp9_2_missing, _cp9_2_failed)])
+}
+
+# CP-9(3) Separate Storage for Critical Information: backup copies of the organization-defined critical system
+# software and security-related information are kept in a separate facility or a fire-rated container not
+# collocated with the operational system.
+# Facts (input.cp_controls.backup.separate_storage): critical_sets_collocated (number of critical backup sets whose
+# only copies sit with the operational system, outside a separate facility or fire-rated container; from the backup
+# catalogue's storage locations; must be 0).
+_cp9_3_path := ["backup", "separate_storage"]
+
+_cp9_3_missing := _count_missing(_cp9_3_path, "critical_sets_collocated")
+
+_cp9_3_failed := _count_nonzero(_cp9_3_path, "critical_sets_collocated", "%v critical backup sets not stored separately from the operational system")
+
+violation contains msg if {
+	count(_cp9_3_missing | _cp9_3_failed) > 0
+	msg := sprintf("NIST CP-9(3): %s", [_detail(_cp9_3_missing, _cp9_3_failed)])
+}
+
+# CP-9(5) Transfer to Alternate Storage Site: backup information is transferred to the alternate storage site
+# within the organization-defined time period and at the organization-defined transfer rate.
+# Facts (input.cp_controls.backup.transfer_to_alternate_site): hours_since_last_transfer + odp.max_hours;
+# transfer_rate_mbps (achieved rate of the last transfer) + odp.min_transfer_rate_mbps.
+_cp9_5_path := ["backup", "transfer_to_alternate_site"]
+
+_cp9_5_missing := _num_missing(_cp9_5_path, "hours_since_last_transfer", "max_hours") | _num_missing(_cp9_5_path, "transfer_rate_mbps", "min_transfer_rate_mbps")
+
+_cp9_5_failed := _over(_cp9_5_path, "hours_since_last_transfer", "max_hours", "backup information last transferred to the alternate storage site %v hours ago; the organization-defined period is %v hours") | _under(_cp9_5_path, "transfer_rate_mbps", "min_transfer_rate_mbps", "backup transfer to the alternate storage site ran at %v Mbps; the organization-defined rate is %v Mbps")
+
+violation contains msg if {
+	count(_cp9_5_missing | _cp9_5_failed) > 0
+	msg := sprintf("NIST CP-9(5): %s", [_detail(_cp9_5_missing, _cp9_5_failed)])
+}
+
+# CP-10(4) Restore Within Time Period: system components can be restored within the organization-defined
+# restoration period from configuration-controlled, integrity-protected information representing a known
+# operational state.
+# Facts (input.cp_controls.recovery.component_restoration): restore_hours (longest demonstrated component restore
+# time, from restore tests) + odp.restoration_hours; from_integrity_protected_baseline (boolean: restores use
+# configuration-controlled, integrity-verified images or configuration).
+_cp10_4_path := ["recovery", "component_restoration"]
+
+_cp10_4_bools := [["from_integrity_protected_baseline", "system components not restored from configuration-controlled, integrity-protected information"]]
+
+_cp10_4_missing := _bool_missing(_cp10_4_path, _cp10_4_bools) | _num_missing(_cp10_4_path, "restore_hours", "restoration_hours")
+
+_cp10_4_failed := _bool_failed(_cp10_4_path, _cp10_4_bools) | _over(_cp10_4_path, "restore_hours", "restoration_hours", "system components restored in up to %v hours; the organization-defined restoration period is %v hours")
+
+violation contains msg if {
+	count(_cp10_4_missing | _cp10_4_failed) > 0
+	msg := sprintf("NIST CP-10(4): %s", [_detail(_cp10_4_missing, _cp10_4_failed)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"CP-1", "CP-2", "CP-2(1)", "CP-2(3)", "CP-2(8)", "CP-3", "CP-4", "CP-4(1)", "CP-6", "CP-6(1)", "CP-6(3)",
-	"CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-8", "CP-8(1)", "CP-8(2)", "CP-9", "CP-9(1)", "CP-9(8)", "CP-10",
-	"CP-10(2)", "CP-11", "CP-12", "CP-13",
+	"CP-1", "CP-2", "CP-2(1)", "CP-2(2)", "CP-2(3)", "CP-2(5)", "CP-2(8)", "CP-3", "CP-3(1)", "CP-4", "CP-4(1)",
+	"CP-4(2)", "CP-6", "CP-6(1)", "CP-6(2)", "CP-6(3)", "CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-7(4)", "CP-8",
+	"CP-8(1)", "CP-8(2)", "CP-8(3)", "CP-8(4)", "CP-9", "CP-9(1)", "CP-9(2)", "CP-9(3)", "CP-9(5)", "CP-9(8)",
+	"CP-10", "CP-10(2)", "CP-10(4)", "CP-11", "CP-12", "CP-13",
 }
 
 compliance_report := {

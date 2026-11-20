@@ -34,6 +34,8 @@ _pass := {"cp_controls": {
 		"coordination": {"related_plans": [{"name": "COOP", "coordinated": true}, {"name": "IRP", "coordinated": true}]},
 		"resumption": {"covers_all_in_scope_functions": true, "planned_hours": 24, "odp": {"function_scope": "essential", "resumption_hours": 48}},
 		"critical_assets": {"critical_asset_count": 12, "all_in_scope_functions_mapped": true, "odp": {"function_scope": "essential"}},
+		"capacity_planning": {"processing_capacity_planned": true, "telecommunications_capacity_planned": true, "environmental_support_planned": true},
+		"continuity": {"covers_all_in_scope_functions": true, "sustained_until_full_restoration": true, "odp": {"function_scope": "essential"}},
 	},
 	"contingency_training": {
 		"training_on_system_changes": true,
@@ -41,11 +43,13 @@ _pass := {"cp_controls": {
 		"odp": {"initial_training_days": 30},
 		"refresher": _freq(300, 365),
 		"content_update": _freq(100, 365),
+		"simulated_events": {"included_in_last_training": true},
 	},
 	"plan_testing": object.union(
 		{
 			"defined_tests_used": true, "results_reviewed": true, "corrective_actions_initiated": true,
 			"coordination": {"related_plans": [{"name": "COOP", "coordinated": true}]},
+			"alternate_processing_site": {"tested_at_site": true, "personnel_familiarized": true, "capabilities_evaluated": true},
 		},
 		_freq(200, 365),
 	),
@@ -55,6 +59,10 @@ _pass := {"cp_controls": {
 		"equivalent_controls": true,
 		"separation": {"threats_assessed": true, "sufficiently_separated": true},
 		"accessibility": {"problems_identified": true, "mitigation_actions_outlined": true},
+		"recovery_objectives": {
+			"replication_lag_minutes": 10, "retrieval_hours": 4,
+			"odp": {"recovery_point_objective_minutes": 15, "recovery_time_objective_hours": 12},
+		},
 	},
 	"alternate_processing_site": {
 		"established": true,
@@ -66,6 +74,7 @@ _pass := {"cp_controls": {
 		"separation": {"threats_assessed": true, "sufficiently_separated": true},
 		"accessibility": {"problems_identified": true, "mitigation_actions_outlined": true},
 		"priority_of_service": {"provisions_in_agreements": true, "restoration_hours": 4, "odp": {"recovery_time_objective_hours": 12}},
+		"preparation": {"configured_for_operations": true, "failover_verified": true},
 	},
 	"telecommunications": {
 		"alternate_services_established": true,
@@ -81,6 +90,11 @@ _pass := {"cp_controls": {
 			"tsp_requested": true,
 		},
 		"single_point_of_failure": {"diversity_assessed": true, "shared_points_of_failure": []},
+		"provider_separation": {"primary_providers": ["CarrierA"], "alternate_providers": ["CarrierB"], "shared_threats_assessed": true},
+		"provider_contingency_plans": {
+			"all_providers_have_plans": true, "plans_reviewed_against_requirements": true,
+			"testing_evidence": _freq(100, 365),
+		},
 	},
 	"backup": {
 		"confidentiality_protected": true,
@@ -91,12 +105,16 @@ _pass := {"cp_controls": {
 		"documentation": _freq(10, 30),
 		"testing": object.union({"last_test_verified": true}, _freq(20, 30)),
 		"cryptographic_protection": {"unencrypted_backup_sets": 0, "sets_without_cryptographic_integrity": 0},
+		"sampled_restoration": {"used_in_last_plan_test": true, "functions_restored": 3},
+		"separate_storage": {"critical_sets_collocated": 0},
+		"transfer_to_alternate_site": {"hours_since_last_transfer": 6, "transfer_rate_mbps": 500, "odp": {"max_hours": 24, "min_transfer_rate_mbps": 100}},
 	},
 	"recovery": {
 		"recovers_to_known_state": true,
 		"recovery_hours": 6,
 		"odp": {"recovery_hours": 24},
 		"transaction_recovery": {"transaction_based": true, "implemented": true},
+		"component_restoration": {"restore_hours": 2, "from_integrity_protected_baseline": true, "odp": {"restoration_hours": 4}},
 	},
 	"alternate_communications_protocols": {"attestation": _att},
 	"safe_mode": {"enters_on_defined_conditions": true, "defined_restrictions_applied": true},
@@ -112,11 +130,12 @@ test_all_pass_fixture_is_compliant if {
 
 test_evaluated_controls_match_the_catalog if {
 	cp.evaluated_controls == {
-		"CP-1", "CP-2", "CP-2(1)", "CP-2(3)", "CP-2(8)", "CP-3", "CP-4", "CP-4(1)", "CP-6", "CP-6(1)", "CP-6(3)",
-		"CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-8", "CP-8(1)", "CP-8(2)", "CP-9", "CP-9(1)", "CP-9(8)", "CP-10",
-		"CP-10(2)", "CP-11", "CP-12", "CP-13",
+		"CP-1", "CP-2", "CP-2(1)", "CP-2(2)", "CP-2(3)", "CP-2(5)", "CP-2(8)", "CP-3", "CP-3(1)", "CP-4", "CP-4(1)",
+		"CP-4(2)", "CP-6", "CP-6(1)", "CP-6(2)", "CP-6(3)", "CP-7", "CP-7(1)", "CP-7(2)", "CP-7(3)", "CP-7(4)", "CP-8",
+		"CP-8(1)", "CP-8(2)", "CP-8(3)", "CP-8(4)", "CP-9", "CP-9(1)", "CP-9(2)", "CP-9(3)", "CP-9(5)", "CP-9(8)",
+		"CP-10", "CP-10(2)", "CP-10(4)", "CP-11", "CP-12", "CP-13",
 	}
-	count(cp.evaluated_controls) == 26
+	count(cp.evaluated_controls) == 38
 }
 
 test_empty_input_one_finding_per_control if {
@@ -501,7 +520,178 @@ test_base_controls_ignore_enhancement_facts if {
 		"cp_controls/alternate_processing_site/priority_of_service", "cp_controls/telecommunications/priority_of_service",
 		"cp_controls/telecommunications/single_point_of_failure", "cp_controls/backup/testing",
 		"cp_controls/backup/cryptographic_protection", "cp_controls/recovery/transaction_recovery",
+		"cp_controls/contingency_plan/capacity_planning", "cp_controls/contingency_plan/continuity",
+		"cp_controls/contingency_training/simulated_events", "cp_controls/plan_testing/alternate_processing_site",
+		"cp_controls/alternate_storage_site/recovery_objectives", "cp_controls/alternate_processing_site/preparation",
+		"cp_controls/telecommunications/provider_separation", "cp_controls/telecommunications/provider_contingency_plans",
+		"cp_controls/backup/sampled_restoration", "cp_controls/backup/separate_storage",
+		"cp_controls/backup/transfer_to_alternate_site", "cp_controls/recovery/component_restoration",
 	])
 	r := cp.compliance_report with input as fx
 	_ids(r) == {id | some id in cp.evaluated_controls; contains(id, "(")}
+}
+
+# --- High-baseline enhancements: one failing case flips exactly that id, one evidence-missing case --------------
+
+test_cp2_2_no_telecom_capacity_flips_only_cp2_2 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"capacity_planning": {"telecommunications_capacity_planned": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(2)"}
+}
+
+test_cp2_2_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/contingency_plan/capacity_planning"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp2_5_not_sustained_flips_only_cp2_5 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"continuity": {"sustained_until_full_restoration": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(5)"}
+}
+
+test_cp2_5_unknown_scope_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_plan": {"continuity": {"odp": {"function_scope": "most"}}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-2(5)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp3_1_no_simulation_flips_only_cp3_1 if {
+	fx := object.union(_pass, {"cp_controls": {"contingency_training": {"simulated_events": {"included_in_last_training": false}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-3(1): contingency training does not incorporate simulated events (input.cp_controls.contingency_training.simulated_events.included_in_last_training is not true)"}
+}
+
+test_cp3_1_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/contingency_training/simulated_events"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-3(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp4_2_not_tested_at_site_flips_only_cp4_2 if {
+	fx := object.union(_pass, {"cp_controls": {"plan_testing": {"alternate_processing_site": {"tested_at_site": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-4(2)"}
+}
+
+test_cp4_2_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/plan_testing/alternate_processing_site/capabilities_evaluated"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-4(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp6_2_rpo_exceeded_flips_only_cp6_2 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_storage_site": {"recovery_objectives": {"replication_lag_minutes": 60}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-6(2): data at the alternate storage site lags by up to 60 minutes; the recovery point objective is 15 minutes"}
+}
+
+test_cp6_2_lag_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_storage_site": {"recovery_objectives": {"replication_lag_minutes": "1"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-6(2)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.alternate_storage_site.recovery_objectives.replication_lag_minutes")
+}
+
+test_cp7_4_failover_not_verified_flips_only_cp7_4 if {
+	fx := object.union(_pass, {"cp_controls": {"alternate_processing_site": {"preparation": {"failover_verified": false}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(4)"}
+}
+
+test_cp7_4_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/alternate_processing_site/preparation"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-7(4)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp8_3_same_provider_flips_only_cp8_3 if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"provider_separation": {"alternate_providers": ["CarrierA", "CarrierC"]}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-8(3): alternate telecommunications obtained from a primary provider: CarrierA"}
+}
+
+test_cp8_3_empty_list_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"provider_separation": {"primary_providers": []}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp8_4_stale_provider_evidence_flips_only_cp8_4 if {
+	fx := object.union(_pass, {"cp_controls": {"telecommunications": {"provider_contingency_plans": {"testing_evidence": {"days_since_last": 500}}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(4)"}
+	contains(concat("", r.violations), "last obtained 500 days ago")
+}
+
+test_cp8_4_missing_odp_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/telecommunications/provider_contingency_plans/testing_evidence/odp"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-8(4)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp9_2_no_functions_restored_flips_only_cp9_2 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"sampled_restoration": {"functions_restored": 0}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(2)"}
+}
+
+test_cp9_2_count_as_null_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"sampled_restoration": {"functions_restored": null}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp9_3_collocated_sets_flip_only_cp9_3 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"separate_storage": {"critical_sets_collocated": 2}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-9(3): 2 critical backup sets not stored separately from the operational system"}
+}
+
+test_cp9_3_count_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"separate_storage": {"critical_sets_collocated": "0"}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_cp9_5_slow_transfer_rate_flips_only_cp9_5 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"transfer_to_alternate_site": {"transfer_rate_mbps": 50}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-9(5): backup transfer to the alternate storage site ran at 50 Mbps; the organization-defined rate is 100 Mbps"}
+}
+
+test_cp9_5_overdue_transfer_flips_only_cp9_5 if {
+	fx := object.union(_pass, {"cp_controls": {"backup": {"transfer_to_alternate_site": {"hours_since_last_transfer": 30}}}})
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(5)"}
+}
+
+test_cp9_5_missing_rate_odp_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/backup/transfer_to_alternate_site/odp/min_transfer_rate_mbps"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-9(5)"}
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.backup.transfer_to_alternate_site.odp.min_transfer_rate_mbps")
+}
+
+test_cp10_4_slow_restore_flips_only_cp10_4 if {
+	fx := object.union(_pass, {"cp_controls": {"recovery": {"component_restoration": {"restore_hours": 8}}}})
+	r := cp.compliance_report with input as fx
+	r.violations == {"NIST CP-10(4): system components restored in up to 8 hours; the organization-defined restoration period is 4 hours"}
+}
+
+test_cp10_4_missing_is_evidence_missing if {
+	fx := json.remove(_pass, ["cp_controls/recovery/component_restoration"])
+	r := cp.compliance_report with input as fx
+	_ids(r) == {"CP-10(4)"}
+	contains(concat("", r.violations), "evidence missing")
 }

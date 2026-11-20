@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 17
-#     cited: 9
+#     checks: 21
+#     cited: 11
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,8 @@ package nist.sp800_53.personnel_security
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Personnel Security (PS) Family
-# Base controls only (PS-1 to PS-9). Facts live under input.ps_controls and every control fails closed: a fact
+# Base controls PS-1 to PS-9 and the NIST / FedRAMP High enhancements PS-3(3) and PS-4(2) (11 ids); an
+# enhancement is its own finding and a base control never fails for it. Facts live under input.ps_controls and every control fails closed: a fact
 # that is absent or of the wrong type is reported as evidence missing, never as a pass. Booleans pass only on
 # true; numbers must be non-negative numbers. Organization-defined frequencies and time periods are compared as
 # an observed value against the organisation's own value under .odp, as in IR-2/IR-3.
@@ -39,6 +40,7 @@ _ps := v if {
 #   strings: [path]                              a non-empty string; anything else is evidence missing
 #   bounds:  [[observed path, odp path, fmt]]    both non-negative numbers; observed > odp is unmet
 #   zeros:   [[path, fmt]]                       a non-negative number; above zero is unmet
+#   lists:   [path]                              a non-empty list (an organization-defined set); otherwise missing
 _get(p) := object.get(_ps, p, null)
 
 _path(p) := concat(".", array.concat([_prefix], p))
@@ -53,11 +55,17 @@ _text(x) if {
 	trim_space(x) != ""
 }
 
-_missing(spec) := ((b | s) | n) | z if {
+_missing(spec) := (((b | s) | n) | z) | l if {
 	b := {_path(e[0]) | some e in object.get(spec, "bools", []); not is_boolean(_get(e[0]))}
 	s := {_path(p) | some p in object.get(spec, "strings", []); not _text(_get(p))}
 	n := {_path(p) | some e in object.get(spec, "bounds", []); some p in [e[0], e[1]]; not _num(_get(p))}
 	z := {_path(e[0]) | some e in object.get(spec, "zeros", []); not _num(_get(e[0]))}
+	l := {concat("", [_path(p), " (non-empty list)"]) | some p in object.get(spec, "lists", []); not _list(_get(p))}
+}
+
+_list(x) if {
+	is_array(x)
+	count(x) > 0
 }
 
 _gaps(spec) := (b | n) | z if {
@@ -242,10 +250,62 @@ violation contains msg if {
 	msg := "NIST PS-9: incorporation of security and privacy roles and responsibilities into position descriptions not attested — organizational control with no machine-checkable evidence; input.ps_controls.position_descriptions.attestation must be {attested: true, by, date}"
 }
 
+# --- PS-3(3) ---
+# Information Requiring Special Protective Measures: individuals with access to a system processing information
+# that needs special protection hold valid access authorizations demonstrated by assigned official government
+# duties and satisfy the organization-defined additional screening criteria.
+# Facts (input.ps_controls.screening.special_protection): odp.criteria (non-empty list of the additional criteria);
+# individuals_without_valid_authorization (number of such individuals with no valid access authorization tied to
+# official duties); individuals_not_meeting_criteria (number not meeting the additional criteria).
+_ps3_3 := _assess({"lists": [["screening", "special_protection", "odp", "criteria"]], "zeros": [[["screening", "special_protection", "individuals_without_valid_authorization"], "%v individuals with access to specially protected information hold no valid access authorization tied to official duties"], [["screening", "special_protection", "individuals_not_meeting_criteria"], "%v individuals with access to specially protected information do not satisfy the organization-defined additional screening criteria"]]})
+
+violation contains msg if {
+	count(_ps3_3.missing) > 0
+	msg := sprintf("NIST PS-3(3): evidence missing — %s not collected%s", [concat(", ", sort(_ps3_3.missing)), _also(_ps3_3.gaps)])
+}
+
+violation contains msg if {
+	count(_ps3_3.missing) == 0
+	count(_ps3_3.gaps) > 0
+	msg := sprintf("NIST PS-3(3): special protective screening requirements not met: %s", [concat("; ", sort(_ps3_3.gaps))])
+}
+
+# --- PS-4(2) ---
+# Automated Actions: the organization-defined automated mechanisms notify the organization-defined personnel of
+# termination actions and/or disable access to system resources.
+# Facts (input.ps_controls.termination.automated_actions): odp.mechanisms (non-empty list, e.g. HR-to-IdP
+# deprovisioning); odp.actions (non-empty list drawn from "notify" and "disable_access"); enabled (boolean: the
+# mechanism is active); terminations_without_automated_action (number of terminations in the review period where
+# the selected actions were not performed by the mechanism).
+_ps4_2_actions := {"notify", "disable_access"}
+
+_ps4_2_actions_ok if {
+	a := object.get(_ps, ["termination", "automated_actions", "odp", "actions"], null)
+	_list(a)
+	every x in a {
+		x in _ps4_2_actions
+	}
+}
+
+_ps4_2_base := _assess({"bools": [[["termination", "automated_actions", "enabled"], "the automated termination mechanism is not enabled"]], "lists": [["termination", "automated_actions", "odp", "mechanisms"]], "zeros": [[["termination", "automated_actions", "terminations_without_automated_action"], "%v terminations were not acted on by the automated mechanism"]]})
+
+_ps4_2_missing := _ps4_2_base.missing | {"input.ps_controls.termination.automated_actions.odp.actions (non-empty list of notify, disable_access)" | not _ps4_2_actions_ok}
+
+violation contains msg if {
+	count(_ps4_2_missing) > 0
+	msg := sprintf("NIST PS-4(2): evidence missing — %s not collected%s", [concat(", ", sort(_ps4_2_missing)), _also(_ps4_2_base.gaps)])
+}
+
+violation contains msg if {
+	count(_ps4_2_missing) == 0
+	count(_ps4_2_base.gaps) > 0
+	msg := sprintf("NIST PS-4(2): automated termination actions not performed: %s", [concat("; ", sort(_ps4_2_base.gaps))])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"PS-1", "PS-2", "PS-3", "PS-4", "PS-5", "PS-6", "PS-7", "PS-8", "PS-9"}
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {"PS-1", "PS-2", "PS-3", "PS-3(3)", "PS-4", "PS-4(2)", "PS-5", "PS-6", "PS-7", "PS-8", "PS-9"}
 
 compliance_report := {
 	"family": "PS",

@@ -130,7 +130,7 @@ Three mapping sources, nothing else (a check is `<framework>:<label>`):
    as `library_controls` in `crosswalk_csv` `spine_800_53.csv` (the round-trip asserts they are equal).
 3. `nist-800-53-module`: our own `nist_sp_800_53` module, labels `NIST AC-2`, `NIST IA-2(1)`, `NIST SC-7/8` (two controls).
 
-**Excluded:** the 52 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
+**Excluded:** the 65 `nist.sp800_53.access_control#N` topic rows (a topic, not a control). `crosswalk/framework_maps` contributes
 nothing: its three 800-53B maps are baseline membership, not library mappings, and the five framework maps (800-171 R3, CSF 2.0, ISO 27001,
 PCI DSS v4, CIS Controls v8.1) are `pending` with no rows. **No ISO 27001, PCI DSS, CSF or 800-171 coverage is counted here.**
 
@@ -142,11 +142,11 @@ control covered by one STIG rule is covered by that rule alone, not by every enh
 |---|---|---|---|---|
 | NIST SP 800-53 Rev 5 Low | 149 | 149 (100.0%) | 131 / 131 (100.0%) | 18 / 18 (100.0%) |
 | NIST SP 800-53 Rev 5 Moderate | 287 | 287 (100.0%) | 177 / 177 (100.0%) | 110 / 110 (100.0%) |
-| NIST SP 800-53 Rev 5 High | 370 | 298 (80.5%) | 188 / 188 (100.0%) | 110 / 182 (60.4%) |
-| NIST SP 800-53 Rev 5 Privacy | 96 | 75 (78.1%) | 73 / 75 (97.3%) | 2 / 21 (9.5%) |
+| NIST SP 800-53 Rev 5 High | 370 | 370 (100.0%) | 188 / 188 (100.0%) | 182 / 182 (100.0%) |
+| NIST SP 800-53 Rev 5 Privacy | 96 | 77 (80.2%) | 75 / 75 (100.0%) | 2 / 21 (9.5%) |
 | FedRAMP Rev 5 Low | 156 | 156 (100.0%) | 135 / 135 (100.0%) | 21 / 21 (100.0%) |
-| FedRAMP Rev 5 Moderate | 323 | 292 (90.4%) | 181 / 181 (100.0%) | 111 / 142 (78.2%) |
-| FedRAMP Rev 5 High | 410 | 302 (73.7%) | 191 / 191 (100.0%) | 111 / 219 (50.7%) |
+| FedRAMP Rev 5 Moderate | 323 | 323 (100.0%) | 181 / 181 (100.0%) | 142 / 142 (100.0%) |
+| FedRAMP Rev 5 High | 410 | 410 (100.0%) | 191 / 191 (100.0%) | 219 / 219 (100.0%) |
 | FedRAMP Rev 5 LI-SaaS | 156 | 156 (100.0%) | 135 / 135 (100.0%) | 21 / 21 (100.0%) |
 
 Percentages are of the controls the baseline selects. FedRAMP Low and LI-SaaS select the same ids in the pinned source, so their rows are equal.

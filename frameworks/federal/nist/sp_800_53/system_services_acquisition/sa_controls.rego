@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 23
-#     cited: 23
+#     checks: 28
+#     cited: 28
 #     density: sized
 #     basis: size
 #     tested: true
@@ -20,9 +20,9 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — System and Services Acquisition (SA) Family: the seventeen active base controls
 # (SA-1 to SA-5, SA-8 to SA-11, SA-15 to SA-17, SA-20 to SA-24; SA-6, SA-7, SA-12, SA-13, SA-14, SA-18 and
-# SA-19 are withdrawn) and the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
-# SA-15(3). Each enhancement is its own requirement with its own finding; a base control never fails on an
-# enhancement's requirement. Facts live under input.sa_controls.
+# SA-19 are withdrawn), the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
+# SA-15(3), and the High-baseline enhancements SA-4(5), SA-9(1), SA-9(5), SA-11(1) and SA-11(2). Each enhancement
+# is its own requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under input.sa_controls.
 
 default compliant := false
 
@@ -358,13 +358,95 @@ violation contains msg if {
 	msg := sprintf("NIST SA-15(3): %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# High-baseline enhancements (SP 800-53B High and FedRAMP High). Facts nest under the base control's object.
+# ---------------------------------------------------------------------------------------------------------
+
+# SA-4(5) System, Component, and Service Configurations: input.sa_controls.acquisition.security_configurations.
+# {contracts_missing_requirement, components_deviating_from_default}. contracts_missing_requirement counts
+# acquisition contracts that do not require delivery with the organization-defined security configurations
+# implemented and their use as the default for reinstallation or upgrade; components_deviating_from_default
+# counts delivered, reinstalled or upgraded components whose configuration scan differs from that default.
+violation contains msg if {
+	sec := ["acquisition", "security_configurations"]
+	z := {
+		"contracts_missing_requirement": "acquisition contracts do not require delivery with the organization-defined security configurations implemented as the default for reinstallation or upgrade",
+		"components_deviating_from_default": "delivered, reinstalled or upgraded components do not run the organization-defined security configurations",
+	}
+	m := {p | some k, _ in z; some p in _zero_missing(sec, k)}
+	u := {d | some k, what in z; some d in _zero_unmet(sec, k, what)}
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-4(5): %s", [_detail(m, u)])
+}
+
+# SA-9(1) Risk Assessments and Organizational Approvals: input.sa_controls.external_services.
+# security_service_acquisitions.{without_prior_risk_assessment, without_approval}: counts of acquired or
+# outsourced information security services with no organizational risk assessment dated before the acquisition,
+# and of dedicated information security services not approved by the organization-defined personnel or roles
+# (from the procurement or vendor-risk register).
+violation contains msg if {
+	sec := ["external_services", "security_service_acquisitions"]
+	z := {
+		"without_prior_risk_assessment": "information security services were acquired or outsourced without a prior organizational risk assessment",
+		"without_approval": "dedicated information security services were acquired or outsourced without approval by the organization-defined personnel or roles",
+	}
+	m := {p | some k, _ in z; some p in _zero_missing(sec, k)}
+	u := {d | some k, what in z; some d in _zero_unmet(sec, k, what)}
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-9(1): %s", [_detail(m, u)])
+}
+
+# SA-9(5) Processing, Storage, and Service Location: input.sa_controls.external_services.location_restriction.
+# {locations_defined, resources_outside_locations}. locations_defined is true when the organization-defined
+# permitted locations (regions, jurisdictions) are set as an enforced restriction, such as a cloud region
+# allow-list policy; resources_outside_locations counts processing, storage or service resources found outside
+# them.
+violation contains msg if {
+	sec := ["external_services", "location_restriction"]
+	b := {"locations_defined": "the location of information processing, data or system services is not restricted to organization-defined locations"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "resources_outside_locations")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "resources_outside_locations", "processing, storage or service resources are outside the organization-defined locations")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-9(5): %s", [_detail(m, u)])
+}
+
+# SA-11(1) Static Code Analysis: input.sa_controls.developer_testing.static_analysis.{components_not_analyzed,
+# results_documented}. components_not_analyzed counts the system's developed components or repositories with no
+# static code analysis run in the CI pipeline; results_documented is true when the analysis results are
+# retained (SARIF reports or the scanner's findings record).
+violation contains msg if {
+	sec := ["developer_testing", "static_analysis"]
+	b := {"results_documented": "the results of static code analysis are not documented"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "components_not_analyzed")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "components_not_analyzed", "developed components have no static code analysis")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-11(1): %s", [_detail(m, u)])
+}
+
+# SA-11(2) Threat Modeling and Vulnerability Analyses: input.sa_controls.developer_testing.threat_modeling.
+# {components_without_threat_model, analyses_failing_acceptance}. components_without_threat_model counts
+# components with no current threat model and vulnerability analysis using the organization-defined contextual
+# information, tools and methods at the organization-defined breadth and depth; analyses_failing_acceptance
+# counts analyses whose evidence does not meet the organization-defined acceptance criteria.
+violation contains msg if {
+	sec := ["developer_testing", "threat_modeling"]
+	z := {
+		"components_without_threat_model": "components have no developer threat modeling and vulnerability analysis at the organization-defined rigor",
+		"analyses_failing_acceptance": "threat modeling and vulnerability analyses do not meet the organization-defined acceptance criteria",
+	}
+	m := {p | some k, _ in z; some p in _zero_missing(sec, k)}
+	u := {d | some k, what in z; some d in _zero_unmet(sec, k, what)}
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SA-11(2): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8", "SA-9",
-	"SA-9(2)", "SA-10", "SA-11", "SA-15", "SA-15(3)", "SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23",
-	"SA-24",
+	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8",
+	"SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)",
+	"SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24",
 }
 
 compliance_report := {

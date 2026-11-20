@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 34
-#     cited: 24
+#     checks: 43
+#     cited: 33
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,8 +19,8 @@ package nist.sp800_53.identification_authentication
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Identification and Authentication (IA) Family
-# Identify and authenticate users, devices, processes acting on behalf of users. The base controls IA-1 to IA-8,
-# IA-11 and IA-12, and the enhancements the SP 800-53B Moderate baseline selects. Each enhancement is its own
+# Identify and authenticate users, devices, processes acting on behalf of users. Every active base control (IA-1 to
+# IA-13) and the enhancements the SP 800-53B Moderate and High baselines (and FedRAMP High) select. Each enhancement is its own
 # requirement with its own finding; a base control never fails for an enhancement.
 
 default compliant := false
@@ -38,9 +38,6 @@ _obj(path) := v if {
 	v := object.get(input, array.concat([_root], path), {})
 	is_object(v)
 } else := {}
-
-# Returned by object.get when a fact is absent; no collected fact has this value.
-_absent := {"__absent__": "fact not collected"}
 
 _nonempty_array(x) if {
 	is_array(x)
@@ -107,18 +104,17 @@ _detail(missing, failed) := sprintf("%s; evidence missing — %s not collected",
 }
 
 # ---------------------------------------------------------------------------------------------------------------
-# Original single-fact rules. Each reads one fact and keeps its original pass condition (`not <fact>` fails only
-# when the fact is absent or false). An absent fact is reported as missing evidence; false keeps the original text.
-# [id, path below input.ia_controls, finding text when the fact is false]
+# Original single-fact rules. Each reads one boolean fact and passes only when it is true. A fact that is absent or
+# not a boolean ("true", 1, null, an object) is reported as missing evidence; false keeps the original text.
 # ---------------------------------------------------------------------------------------------------------------
 
 # One rule pair per id, each message with its literal "NIST <id>: " prefix (the OSCAL catalog and the coverage
 # stamp read the id from the message literal).
-_fact(path) := object.get(input, array.concat([_root], path), _absent)
+_fact(path) := object.get(input, array.concat([_root], path), null)
 
 # IA-1: input.ia_controls.policy.documented
 violation contains msg if {
-	_fact(["policy", "documented"]) == _absent
+	not is_boolean(_fact(["policy", "documented"]))
 	msg := "NIST IA-1: evidence missing — input.ia_controls.policy.documented not collected"
 }
 
@@ -129,7 +125,7 @@ violation contains msg if {
 
 # IA-2: input.ia_controls.user_id_auth.uniquely_identified
 violation contains msg if {
-	_fact(["user_id_auth", "uniquely_identified"]) == _absent
+	not is_boolean(_fact(["user_id_auth", "uniquely_identified"]))
 	msg := "NIST IA-2: evidence missing — input.ia_controls.user_id_auth.uniquely_identified not collected"
 }
 
@@ -140,7 +136,7 @@ violation contains msg if {
 
 # IA-2(1): input.ia_controls.user_id_auth.mfa_for_privileged
 violation contains msg if {
-	_fact(["user_id_auth", "mfa_for_privileged"]) == _absent
+	not is_boolean(_fact(["user_id_auth", "mfa_for_privileged"]))
 	msg := "NIST IA-2(1): evidence missing — input.ia_controls.user_id_auth.mfa_for_privileged not collected"
 }
 
@@ -151,7 +147,7 @@ violation contains msg if {
 
 # IA-2(2): input.ia_controls.user_id_auth.mfa_for_non_privileged
 violation contains msg if {
-	_fact(["user_id_auth", "mfa_for_non_privileged"]) == _absent
+	not is_boolean(_fact(["user_id_auth", "mfa_for_non_privileged"]))
 	msg := "NIST IA-2(2): evidence missing — input.ia_controls.user_id_auth.mfa_for_non_privileged not collected"
 }
 
@@ -162,7 +158,7 @@ violation contains msg if {
 
 # IA-3: input.ia_controls.device_identification.implemented
 violation contains msg if {
-	_fact(["device_identification", "implemented"]) == _absent
+	not is_boolean(_fact(["device_identification", "implemented"]))
 	msg := "NIST IA-3: evidence missing — input.ia_controls.device_identification.implemented not collected"
 }
 
@@ -173,7 +169,7 @@ violation contains msg if {
 
 # IA-4: input.ia_controls.identifier_management.unique_per_user
 violation contains msg if {
-	_fact(["identifier_management", "unique_per_user"]) == _absent
+	not is_boolean(_fact(["identifier_management", "unique_per_user"]))
 	msg := "NIST IA-4: evidence missing — input.ia_controls.identifier_management.unique_per_user not collected"
 }
 
@@ -184,7 +180,7 @@ violation contains msg if {
 
 # IA-5: input.ia_controls.authenticator_management.complexity_enforced
 violation contains msg if {
-	_fact(["authenticator_management", "complexity_enforced"]) == _absent
+	not is_boolean(_fact(["authenticator_management", "complexity_enforced"]))
 	msg := "NIST IA-5: evidence missing — input.ia_controls.authenticator_management.complexity_enforced not collected"
 }
 
@@ -195,7 +191,7 @@ violation contains msg if {
 
 # IA-6: input.ia_controls.authenticator_feedback.obscured
 violation contains msg if {
-	_fact(["authenticator_feedback", "obscured"]) == _absent
+	not is_boolean(_fact(["authenticator_feedback", "obscured"]))
 	msg := "NIST IA-6: evidence missing — input.ia_controls.authenticator_feedback.obscured not collected"
 }
 
@@ -206,7 +202,7 @@ violation contains msg if {
 
 # IA-8: input.ia_controls.non_organizational_users.identified
 violation contains msg if {
-	_fact(["non_organizational_users", "identified"]) == _absent
+	not is_boolean(_fact(["non_organizational_users", "identified"]))
 	msg := "NIST IA-8: evidence missing — input.ia_controls.non_organizational_users.identified not collected"
 }
 
@@ -217,8 +213,8 @@ violation contains msg if {
 
 # IA-5(1) Password-based Authentication: passwords transmitted only over cryptographically protected
 # channels and stored in a protected (approved salted key-derivation) form. One finding for the enhancement.
-# Facts (input.ia_controls.authenticator_management): encrypted_in_transit, encrypted_at_rest. Original pass
-# condition kept (absent or false fails); absent is reported as missing evidence.
+# Facts (input.ia_controls.authenticator_management): encrypted_in_transit, encrypted_at_rest (booleans; only true
+# passes, absent or not a boolean is missing evidence, false is a finding).
 _ia5_1_facts := [
 	["encrypted_in_transit", "transmitted only over cryptographically protected channels"],
 	["encrypted_at_rest", "stored cryptographically protected"],
@@ -226,7 +222,7 @@ _ia5_1_facts := [
 
 _ia5_1_missing := {_path_str(["authenticator_management", c[0]]) |
 	some c in _ia5_1_facts
-	_fact(["authenticator_management", c[0]]) == _absent
+	not is_boolean(_fact(["authenticator_management", c[0]]))
 }
 
 _ia5_1_gaps := {sprintf("%s (%s)", [c[1], _path_str(["authenticator_management", c[0]])]) |
@@ -563,13 +559,189 @@ violation contains msg if {
 	msg := sprintf("NIST IA-12(5): %s", [_detail(_ia12_5_missing, _ia12_5_failed)])
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# Remaining base controls (IA-9, IA-10, IA-13) and the High-baseline enhancements (NIST SP 800-53B High and
+# FedRAMP High: IA-2(5), IA-2(6), IA-5(7), IA-5(8), IA-5(13), IA-12(4)). Each reads only its own keys and has its
+# own single finding.
+# ---------------------------------------------------------------------------------------------------------------
+
+# Organization-defined maximum: <path>.<obs> may not exceed <path>.odp.<odp>. Either one not a number is missing
+# evidence. `fmt` takes the observed value and the organization-defined value, in that order.
+_num_missing(path, obs, odp) := {concat(".", [_path_str(path), pair[0]]) |
+	o := _obj(path)
+	some pair in [[obs, object.get(o, obs, null)], [concat(".", ["odp", odp]), object.get(o, ["odp", odp], null)]]
+	not is_number(pair[1])
+}
+
+_over(path, obs, odp, fmt) := {sprintf(fmt, [n, m]) |
+	o := _obj(path)
+	n := object.get(o, obs, null)
+	m := object.get(o, ["odp", odp], null)
+	is_number(n)
+	is_number(m)
+	n > m
+}
+
+# IA-2(5) Individual Authentication with Group Authentication: users are individually authenticated before they
+# can use a shared account or authenticator.
+# Facts (input.ia_controls.user_id_auth.shared_accounts): reachable_without_individual_auth (number of shared
+# accounts that can be used without first authenticating as an individual, e.g. not behind a privileged access
+# management checkout; from the PAM and directory inventory; 0 also when there are no shared accounts).
+_ia2_5_path := ["user_id_auth", "shared_accounts"]
+
+_ia2_5_missing := _count_missing(_ia2_5_path, "reachable_without_individual_auth")
+
+_ia2_5_failed := _count_nonzero(_ia2_5_path, "reachable_without_individual_auth", "%v shared accounts can be used without individual authentication first")
+
+violation contains msg if {
+	count(_ia2_5_missing | _ia2_5_failed) > 0
+	msg := sprintf("NIST IA-2(5): %s", [_detail(_ia2_5_missing, _ia2_5_failed)])
+}
+
+# IA-2(6) Access to Accounts — Separate Device: multi-factor authentication for the organization-defined access
+# types (local, network, remote) to the organization-defined account types, with one factor on a device separate
+# from the system gaining access that meets the organization-defined strength of mechanism.
+# Facts (input.ia_controls.user_id_auth.separate_device): odp.access_types, odp.account_types
+# (organization-defined lists); separate_device_access_types, separate_device_account_types (lists the IdP or
+# MFA policy enforces a separate-device factor for); device_meets_strength_requirements (boolean: the separate
+# device, e.g. a FIDO2 key or PIV card, meets the organization-defined strength of mechanism).
+_ia2_6_path := ["user_id_auth", "separate_device"]
+
+_ia2_6_bools := [["device_meets_strength_requirements", "separate authentication device does not meet the organization-defined strength of mechanism requirements"]]
+
+_ia2_6_missing := (_bool_missing(_ia2_6_path, _ia2_6_bools) | _list_missing(_ia2_6_path, "separate_device_access_types", "access_types")) | _list_missing(_ia2_6_path, "separate_device_account_types", "account_types")
+
+_ia2_6_failed := (_bool_failed(_ia2_6_path, _ia2_6_bools) | _list_unmet(_ia2_6_path, "separate_device_access_types", "access_types", "%v access does not require a factor from a separate device")) | _list_unmet(_ia2_6_path, "separate_device_account_types", "account_types", "access to %v accounts does not require a factor from a separate device")
+
+violation contains msg if {
+	count(_ia2_6_missing | _ia2_6_failed) > 0
+	msg := sprintf("NIST IA-2(6): %s", [_detail(_ia2_6_missing, _ia2_6_failed)])
+}
+
+# IA-5(7) No Embedded Unencrypted Static Authenticators: unencrypted static authenticators are not embedded in
+# applications or other static storage (source code, scripts, images, configuration files).
+# Facts (input.ia_controls.authenticator_management.embedded_authenticators): unencrypted_static_found (number of
+# unencrypted static authenticators the latest secret scan of code repositories, images and configuration found;
+# must be 0).
+_ia5_7_path := ["authenticator_management", "embedded_authenticators"]
+
+_ia5_7_missing := _count_missing(_ia5_7_path, "unencrypted_static_found")
+
+_ia5_7_failed := _count_nonzero(_ia5_7_path, "unencrypted_static_found", "%v unencrypted static authenticators embedded in applications or static storage")
+
+violation contains msg if {
+	count(_ia5_7_missing | _ia5_7_failed) > 0
+	msg := sprintf("NIST IA-5(7): %s", [_detail(_ia5_7_missing, _ia5_7_failed)])
+}
+
+# IA-5(8) Multiple System Accounts: the organization-defined security controls manage the risk of compromise from
+# individuals having accounts on multiple systems.
+# Facts (input.ia_controls.authenticator_management.multiple_system_accounts): odp.controls (organization-defined
+# list, e.g. "single sign-on", "distinct authenticators per system"); controls_implemented (controls in place).
+_ia5_8_path := ["authenticator_management", "multiple_system_accounts"]
+
+_ia5_8_missing := _list_missing(_ia5_8_path, "controls_implemented", "controls")
+
+_ia5_8_failed := _list_unmet(_ia5_8_path, "controls_implemented", "controls", "control %v for individuals with accounts on multiple systems not implemented")
+
+violation contains msg if {
+	count(_ia5_8_missing | _ia5_8_failed) > 0
+	msg := sprintf("NIST IA-5(8): %s", [_detail(_ia5_8_missing, _ia5_8_failed)])
+}
+
+# IA-5(13) Expiration of Cached Authenticators: cached authenticators may not be used after the
+# organization-defined time period.
+# Facts (input.ia_controls.authenticator_management.cached_authenticators): max_cache_hours (longest configured
+# lifetime of a cached credential, e.g. SSSD offline_credentials_expiration or the Windows cached logon setting,
+# across the estate) + odp.max_hours.
+_ia5_13_path := ["authenticator_management", "cached_authenticators"]
+
+_ia5_13_missing := _num_missing(_ia5_13_path, "max_cache_hours", "max_hours")
+
+_ia5_13_failed := _over(_ia5_13_path, "max_cache_hours", "max_hours", "cached authenticators usable for up to %v hours; the organization-defined period is %v hours")
+
+violation contains msg if {
+	count(_ia5_13_missing | _ia5_13_failed) > 0
+	msg := sprintf("NIST IA-5(13): %s", [_detail(_ia5_13_missing, _ia5_13_failed)])
+}
+
+# IA-9 Service Identification and Authentication: the organization-defined system services and applications are
+# uniquely identified and authenticated before communications are established.
+# Facts (input.ia_controls.service_authentication): odp.services (organization-defined list);
+# authenticated_services (services that present a unique identity and are authenticated, e.g. mutual TLS
+# certificates or workload identities, from the service mesh or PKI inventory).
+_ia9_path := ["service_authentication"]
+
+_ia9_missing := _list_missing(_ia9_path, "authenticated_services", "services")
+
+_ia9_failed := _list_unmet(_ia9_path, "authenticated_services", "services", "service %v not uniquely identified and authenticated before communicating")
+
+violation contains msg if {
+	count(_ia9_missing | _ia9_failed) > 0
+	msg := sprintf("NIST IA-9: %s", [_detail(_ia9_missing, _ia9_failed)])
+}
+
+# IA-10 Adaptive Authentication: the organization-defined supplemental authentication techniques are required in
+# the organization-defined circumstances (e.g. new device, unusual location, high-risk sign-in).
+# Facts (input.ia_controls.adaptive_authentication): odp.circumstances, odp.techniques (organization-defined
+# lists); enforced_circumstances (circumstances for which a conditional access or risk policy is enabled);
+# techniques_configured (supplemental techniques those policies require).
+_ia10_path := ["adaptive_authentication"]
+
+_ia10_missing := _list_missing(_ia10_path, "enforced_circumstances", "circumstances") | _list_missing(_ia10_path, "techniques_configured", "techniques")
+
+_ia10_failed := _list_unmet(_ia10_path, "enforced_circumstances", "circumstances", "supplemental authentication not required when %v") | _list_unmet(_ia10_path, "techniques_configured", "techniques", "supplemental authentication technique %v not configured")
+
+violation contains msg if {
+	count(_ia10_missing | _ia10_failed) > 0
+	msg := sprintf("NIST IA-10: %s", [_detail(_ia10_missing, _ia10_failed)])
+}
+
+# IA-12(4) In-person Validation and Verification: identity evidence validated and verified in person before a
+# designated registration authority.
+# Facts (input.ia_controls.identity_proofing.in_person): required (boolean: the proofing workflow requires an
+# in-person or supervised remote session with the registration authority); accounts_without_in_person_proofing
+# (number of active accounts whose proofing record shows no in-person verification; must be 0).
+_ia12_4_path := ["identity_proofing", "in_person"]
+
+_ia12_4_bools := [["required", "identity proofing workflow does not require in-person validation and verification"]]
+
+_ia12_4_missing := _bool_missing(_ia12_4_path, _ia12_4_bools) | _count_missing(_ia12_4_path, "accounts_without_in_person_proofing")
+
+_ia12_4_failed := _bool_failed(_ia12_4_path, _ia12_4_bools) | _count_nonzero(_ia12_4_path, "accounts_without_in_person_proofing", "%v accounts proofed without in-person validation and verification")
+
+violation contains msg if {
+	count(_ia12_4_missing | _ia12_4_failed) > 0
+	msg := sprintf("NIST IA-12(4): %s", [_detail(_ia12_4_missing, _ia12_4_failed)])
+}
+
+# IA-13 Identity Providers and Authorization Servers: identity providers and authorization servers manage user,
+# device and non-person entity identities, attributes and access rights for authentication and authorization
+# decisions, according to the organization-defined policy and mechanisms.
+# Facts (input.ia_controls.identity_providers): applications_with_local_authentication (number of applications
+# that authenticate or authorize users themselves instead of through an approved identity provider or
+# authorization server; must be 0); npe_and_device_identities_managed (boolean: device and NPE identities are
+# issued and managed by an identity provider).
+_ia13_path := ["identity_providers"]
+
+_ia13_bools := [["npe_and_device_identities_managed", "device and non-person entity identities not managed by an identity provider"]]
+
+_ia13_missing := _bool_missing(_ia13_path, _ia13_bools) | _count_missing(_ia13_path, "applications_with_local_authentication")
+
+_ia13_failed := _bool_failed(_ia13_path, _ia13_bools) | _count_nonzero(_ia13_path, "applications_with_local_authentication", "%v applications authenticate or authorize users outside an approved identity provider or authorization server")
+
+violation contains msg if {
+	count(_ia13_missing | _ia13_failed) > 0
+	msg := sprintf("NIST IA-13: %s", [_detail(_ia13_missing, _ia13_failed)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"IA-1", "IA-2", "IA-2(1)", "IA-2(2)", "IA-2(8)", "IA-2(12)", "IA-3", "IA-4", "IA-4(4)", "IA-5", "IA-5(1)",
-	"IA-5(2)", "IA-5(6)", "IA-6", "IA-7", "IA-8", "IA-8(1)", "IA-8(2)", "IA-8(4)", "IA-11", "IA-12", "IA-12(2)",
-	"IA-12(3)", "IA-12(5)",
+	"IA-1", "IA-2", "IA-2(1)", "IA-2(2)", "IA-2(5)", "IA-2(6)", "IA-2(8)", "IA-2(12)", "IA-3", "IA-4", "IA-4(4)",
+	"IA-5", "IA-5(1)", "IA-5(2)", "IA-5(6)", "IA-5(7)", "IA-5(8)", "IA-5(13)", "IA-6", "IA-7", "IA-8", "IA-8(1)",
+	"IA-8(2)", "IA-8(4)", "IA-9", "IA-10", "IA-11", "IA-12", "IA-12(2)", "IA-12(3)", "IA-12(4)", "IA-12(5)", "IA-13",
 }
 
 compliance_report := {
