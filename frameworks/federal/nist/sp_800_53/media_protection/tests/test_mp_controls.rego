@@ -1,6 +1,6 @@
 package nist.sp800_53.media_protection_logic_test
 
-# MP-1 to MP-8: all-pass fixture, empty input, one flip per control id, type traps.
+# MP-1 to MP-8 and MP-6(1) to MP-6(3): all-pass fixture, empty input, one flip per control id, type traps.
 
 import rego.v1
 
@@ -13,7 +13,13 @@ _pass := {"mp_controls": {
 	"media_marking": _att,
 	"media_storage": _att,
 	"media_transport": _att,
-	"media_sanitization": {"unsanitized_releases": 0, "techniques_per_odp": true, "mechanisms_commensurate": true},
+	"media_sanitization": {
+		"unsanitized_releases": 0, "techniques_per_odp": true, "mechanisms_commensurate": true,
+		"tracking": {"tracked_in_system": true, "actions_without_complete_record": 0},
+		"equipment_testing": {"days_since_last": 100, "last_test_passed": true, "odp": {"frequency_days": 365}},
+		"procedure_testing": {"days_since_last": 100, "odp": {"frequency_days": 365}},
+		"nondestructive": {"devices_connected_without_sanitization": 0, "odp": {"circumstances": ["device received from outside the organization"]}},
+	},
 	"media_use": {"use_restricted_per_odp": true, "ownerless_portable_devices_prohibited": true},
 	"media_downgrading": _att,
 }}
@@ -41,7 +47,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.media_protection.evaluated_controls == {"MP-1", "MP-2", "MP-3", "MP-4", "MP-5", "MP-6", "MP-7", "MP-8"}
+	data.nist.sp800_53.media_protection.evaluated_controls == {"MP-1", "MP-2", "MP-3", "MP-4", "MP-5", "MP-6", "MP-6(1)", "MP-6(2)", "MP-6(3)", "MP-7", "MP-8"}
 }
 
 test_mp1_procedures_not_documented if {
@@ -127,3 +133,68 @@ test_mp8_attestation_missing if {
 	r := data.nist.sp800_53.media_protection.compliance_report with input as {"mp_controls": inp}
 	_failing(r) == {"MP-8"}
 }
+
+# --- NIST / FedRAMP High-baseline enhancements -----------------------------------------------------------------
+
+# [id, override that fails only that id, override that removes that id's evidence]
+_high_cases := [
+	["MP-6(1)", {"media_sanitization": {"tracking": {"actions_without_complete_record": 2}}}, {"media_sanitization": {"tracking": {"tracked_in_system": null}}}],
+	["MP-6(2)", {"media_sanitization": {"procedure_testing": {"days_since_last": 400}}}, {"media_sanitization": {"equipment_testing": {"odp": null}}}],
+	["MP-6(3)", {"media_sanitization": {"nondestructive": {"devices_connected_without_sanitization": 1}}}, {"media_sanitization": {"nondestructive": {"odp": {"circumstances": []}}}}],
+]
+
+test_each_high_id_failing_case_flips_only_that_id if {
+	every c in _high_cases {
+		inp := object.union(_pass, {"mp_controls": c[1]})
+		r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+		_failing(r) == {c[0]}
+		not contains(concat("", r.violations), "evidence missing")
+	}
+}
+
+test_each_high_id_missing_evidence_flips_only_that_id if {
+	every c in _high_cases {
+		inp := object.union(_pass, {"mp_controls": c[2]})
+		r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+		_failing(r) == {c[0]}
+		contains(concat("", r.violations), "evidence missing")
+	}
+}
+
+test_mp6_2_failed_equipment_test if {
+	inp := object.union(_pass, {"mp_controls": {"media_sanitization": {"equipment_testing": {"last_test_passed": false}}}})
+	r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+	_failing(r) == {"MP-6(2)"}
+}
+
+test_mp6_2_frequency_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"mp_controls": {"media_sanitization": {"equipment_testing": {"days_since_last": "1"}}}})
+	r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+	_failing(r) == {"MP-6(2)"}
+	contains(_msg(r, "MP-6(2)")[0], "evidence missing")
+}
+
+test_mp6_3_count_as_null_is_evidence_missing if {
+	inp := object.union(_pass, {"mp_controls": {"media_sanitization": {"nondestructive": {"devices_connected_without_sanitization": null}}}})
+	r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+	_failing(r) == {"MP-6(3)"}
+	contains(_msg(r, "MP-6(3)")[0], "evidence missing")
+}
+
+test_mp6_1_boolean_as_string_true_is_evidence_missing if {
+	inp := object.union(_pass, {"mp_controls": {"media_sanitization": {"tracking": {"tracked_in_system": "true"}}}})
+	r := data.nist.sp800_53.media_protection.compliance_report with input as inp
+	_failing(r) == {"MP-6(1)"}
+	contains(_msg(r, "MP-6(1)")[0], "evidence missing")
+}
+
+test_empty_input_every_finding_fails_closed if {
+	r := data.nist.sp800_53.media_protection.compliance_report with input as {}
+	every v in r.violations {
+		_fail_closed(v)
+	}
+}
+
+_fail_closed(v) if contains(v, "evidence missing")
+
+_fail_closed(v) if contains(v, "not attested")

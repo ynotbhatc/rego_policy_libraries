@@ -7,7 +7,7 @@ import rego.v1
 
 _ids(vs) := {m[0][1] |
 	some v in vs
-	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+): `, v, 1)
+	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+(?:\([0-9]+\))?): `, v, 1)
 	count(m) == 1
 }
 
@@ -37,6 +37,11 @@ _pass := {"ps_controls": {
 	"screening": {
 		"unscreened_with_access": 0,
 		"rescreening_overdue": 0,
+		"special_protection": {
+			"individuals_without_valid_authorization": 0,
+			"individuals_not_meeting_criteria": 0,
+			"odp": {"criteria": ["polygraph for compartmented programs"]},
+		},
 	},
 	"termination": {
 		"exit_interviews_conducted": true,
@@ -45,6 +50,11 @@ _pass := {"ps_controls": {
 		"max_hours_to_disable": 30,
 		"odp": {"disable_within_hours": 365},
 		"active_credentials_after_termination": 0,
+		"automated_actions": {
+			"enabled": true,
+			"terminations_without_automated_action": 0,
+			"odp": {"mechanisms": ["HR feed to identity provider"], "actions": ["notify", "disable_access"]},
+		},
 	},
 	"transfer": {
 		"access_need_reviewed": true,
@@ -87,7 +97,7 @@ test_all_pass_fixture_is_compliant if {
 	r := data.nist.sp800_53.personnel_security.compliance_report with input as _pass
 	r.compliant == true
 	r.violation_count == 0
-	r.controls_evaluated == 9
+	r.controls_evaluated == 11
 }
 
 test_empty_input_one_finding_per_control if {
@@ -104,11 +114,11 @@ test_empty_input_one_finding_per_control if {
 
 test_non_object_family_root_fails_closed if {
 	vs := data.nist.sp800_53.personnel_security.violation with input as {"ps_controls": "yes"}
-	count(vs) == 9
+	count(vs) == 11
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.personnel_security.evaluated_controls == {"PS-1", "PS-2", "PS-3", "PS-4", "PS-5", "PS-6", "PS-7", "PS-8", "PS-9"}
+	data.nist.sp800_53.personnel_security.evaluated_controls == {"PS-1", "PS-2", "PS-3", "PS-3(3)", "PS-4", "PS-4(2)", "PS-5", "PS-6", "PS-7", "PS-8", "PS-9"}
 }
 
 test_ps1_failing_case_flips_only_ps1 if {
@@ -406,4 +416,59 @@ test_attestation_bare_true_is_a_finding if {
 	_ids(vs) == {"PS-9"}
 	some v in vs
 	contains(v, "not attested")
+}
+
+# --- NIST / FedRAMP High-baseline enhancements -----------------------------------------------------------------
+
+# [id, JSON patch that fails only that id, JSON patch that removes that id's evidence]
+_high_cases := [
+	["PS-3(3)", [{"op": "replace", "path": "/ps_controls/screening/special_protection/individuals_not_meeting_criteria", "value": 2}], [{"op": "replace", "path": "/ps_controls/screening/special_protection/odp/criteria", "value": []}]],
+	["PS-4(2)", [{"op": "replace", "path": "/ps_controls/termination/automated_actions/terminations_without_automated_action", "value": 1}], [{"op": "replace", "path": "/ps_controls/termination/automated_actions/odp/actions", "value": ["email the manager"]}]],
+]
+
+test_each_high_id_failing_case_flips_only_that_id if {
+	every c in _high_cases {
+		inp := json.patch(_pass, c[1])
+		vs := data.nist.sp800_53.personnel_security.violation with input as inp
+		_ids(vs) == {c[0]}
+		count(vs) == 1
+		not contains(concat("", vs), "evidence missing")
+	}
+}
+
+test_each_high_id_missing_evidence_flips_only_that_id if {
+	every c in _high_cases {
+		inp := json.patch(_pass, c[2])
+		vs := data.nist.sp800_53.personnel_security.violation with input as inp
+		_ids(vs) == {c[0]}
+		count(vs) == 1
+		contains(concat("", vs), "evidence missing")
+	}
+}
+
+test_ps4_2_disabled_mechanism_flips_only_ps4_2 if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/ps_controls/termination/automated_actions/enabled", "value": false}])
+	vs := data.nist.sp800_53.personnel_security.violation with input as inp
+	_ids(vs) == {"PS-4(2)"}
+}
+
+test_ps4_2_enabled_as_string_true_is_evidence_missing if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/ps_controls/termination/automated_actions/enabled", "value": "true"}])
+	vs := data.nist.sp800_53.personnel_security.violation with input as inp
+	_ids(vs) == {"PS-4(2)"}
+	contains(concat("", vs), "evidence missing")
+}
+
+test_ps3_3_count_as_string_is_evidence_missing if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/ps_controls/screening/special_protection/individuals_without_valid_authorization", "value": "0"}])
+	vs := data.nist.sp800_53.personnel_security.violation with input as inp
+	_ids(vs) == {"PS-3(3)"}
+	contains(concat("", vs), "evidence missing")
+}
+
+test_ps3_3_count_as_null_is_evidence_missing if {
+	inp := json.patch(_pass, [{"op": "replace", "path": "/ps_controls/screening/special_protection/individuals_not_meeting_criteria", "value": null}])
+	vs := data.nist.sp800_53.personnel_security.violation with input as inp
+	_ids(vs) == {"PS-3(3)"}
+	contains(concat("", vs), "evidence missing")
 }
