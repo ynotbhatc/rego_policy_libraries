@@ -28,6 +28,8 @@ _pass := {"ca_controls": {
 			"report_produced": true,
 			"results_provided": true,
 			"independent_assessors": _att,
+			"specialized_assessments": object.union({"defined_forms_included": true}, _freq(100, 365)),
+			"external_results": {"results_leveraged": true, "leveraged_not_meeting_requirements": 0},
 		},
 		_freq(300, 365),
 	),
@@ -35,6 +37,7 @@ _pass := {"ca_controls": {
 		"exchanges_approved_under_agreements": true,
 		"agreements_document_requirements": true,
 		"agreement_review": _freq(100, 365),
+		"transfer_authorization": {"verified_before_acceptance": true, "accepted_without_authorization": 0},
 	},
 	"poam": object.union({"documented": true}, _freq(20, 30)),
 	"authorization": object.union(
@@ -59,7 +62,14 @@ _pass := {"ca_controls": {
 		"independent_assessment": _att,
 		"risk_monitoring": {"effectiveness_monitoring": true, "compliance_monitoring": true, "change_monitoring": true},
 	},
-	"penetration_testing": object.union({"defined_scope_covered": true}, _freq(200, 365)),
+	"penetration_testing": object.union(
+		{
+			"defined_scope_covered": true,
+			"independent_team": _att,
+			"red_team": {"rules_of_engagement_approved": true, "defined_exercises_not_conducted": 0},
+		},
+		_freq(200, 365),
+	),
 	"internal_connections": {
 		"all_authorized": true,
 		"all_documented": true,
@@ -76,7 +86,10 @@ test_all_pass_fixture_is_compliant if {
 }
 
 test_evaluated_controls_match_the_catalog if {
-	ca.evaluated_controls == {"CA-1", "CA-2", "CA-2(1)", "CA-3", "CA-5", "CA-6", "CA-7", "CA-7(1)", "CA-7(4)", "CA-8", "CA-9"}
+	ca.evaluated_controls == {
+		"CA-1", "CA-2", "CA-2(1)", "CA-2(2)", "CA-2(3)", "CA-3", "CA-3(6)", "CA-5", "CA-6", "CA-7", "CA-7(1)",
+		"CA-7(4)", "CA-8", "CA-8(1)", "CA-8(2)", "CA-9",
+	}
 }
 
 test_empty_input_one_finding_per_control if {
@@ -235,4 +248,84 @@ test_ca7_base_unaffected_by_enhancement_facts if {
 	fx := json.remove(_pass, ["ca_controls/continuous_monitoring/risk_monitoring", "ca_controls/continuous_monitoring/independent_assessment"])
 	r := ca.compliance_report with input as fx
 	_ids(r) == {"CA-7(1)", "CA-7(4)"}
+}
+
+# --- High-baseline enhancements: one flip, one evidence-missing case ---------------------------------------------
+
+test_ca2_2_overdue_flips_only_ca2_2 if {
+	fx := object.union(_pass, {"ca_controls": {"control_assessment": {"specialized_assessments": {"days_since_last": 400}}}})
+	r := ca.compliance_report with input as fx
+	r.violations == {"NIST CA-2(2): specialized assessments last conducted 400 days ago; the organization-defined frequency is 365 days"}
+}
+
+test_ca2_2_odp_missing_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"control_assessment": {"specialized_assessments": {"odp": {"frequency_days": "365"}}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-2(2)"}
+	contains(concat("", r.violations), "evidence missing — input.ca_controls.control_assessment.specialized_assessments.odp.frequency_days")
+}
+
+test_ca2_3_results_not_meeting_requirements_flip_only_ca2_3 if {
+	fx := object.union(_pass, {"ca_controls": {"control_assessment": {"external_results": {"leveraged_not_meeting_requirements": 2}}}})
+	r := ca.compliance_report with input as fx
+	r.violations == {"NIST CA-2(3): 2 leveraged external assessment results do not meet the organization-defined requirements"}
+}
+
+test_ca2_3_missing_is_evidence_missing_and_base_unaffected if {
+	fx := json.remove(_pass, ["ca_controls/control_assessment/external_results"])
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-2(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_ca3_6_not_verified_flips_only_ca3_6 if {
+	fx := object.union(_pass, {"ca_controls": {"information_exchange": {"transfer_authorization": {"verified_before_acceptance": false}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-3(6)"}
+	not contains(concat("", r.violations), "evidence missing")
+}
+
+test_ca3_6_count_null_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"information_exchange": {"transfer_authorization": {"accepted_without_authorization": null}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-3(6)"}
+	contains(concat("", r.violations), "evidence missing — input.ca_controls.information_exchange.transfer_authorization.accepted_without_authorization")
+}
+
+test_ca3_6_count_as_string_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"information_exchange": {"transfer_authorization": {"accepted_without_authorization": "1"}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-3(6)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_ca8_1_attestation_false_flips_only_ca8_1 if {
+	fx := object.union(_pass, {"ca_controls": {"penetration_testing": {"independent_team": {"attestation": {"attested": false}}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-8(1)"}
+	msg := concat("", r.violations)
+	contains(msg, "not attested")
+	not contains(msg, "evidence missing")
+}
+
+test_ca8_1_attestation_absent_is_evidence_missing if {
+	fx := json.remove(_pass, ["ca_controls/penetration_testing/independent_team"])
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-8(1)"}
+	msg := concat("", r.violations)
+	contains(msg, "evidence missing")
+	contains(msg, "not attested")
+}
+
+test_ca8_2_exercises_not_conducted_flip_only_ca8_2 if {
+	fx := object.union(_pass, {"ca_controls": {"penetration_testing": {"red_team": {"defined_exercises_not_conducted": 1}}}})
+	r := ca.compliance_report with input as fx
+	r.violations == {"NIST CA-8(2): 1 organization-defined red team exercises not conducted"}
+}
+
+test_ca8_2_missing_is_evidence_missing if {
+	fx := object.union(_pass, {"ca_controls": {"penetration_testing": {"red_team": {"rules_of_engagement_approved": "true"}}}})
+	r := ca.compliance_report with input as fx
+	_ids(r) == {"CA-8(2)"}
+	contains(concat("", r.violations), "evidence missing — input.ca_controls.penetration_testing.red_team.rules_of_engagement_approved")
 }

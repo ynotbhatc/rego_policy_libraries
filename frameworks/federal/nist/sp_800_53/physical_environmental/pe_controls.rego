@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 32
-#     cited: 24
+#     checks: 46
+#     cited: 31
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,8 +19,9 @@ package nist.sp800_53.physical_environmental
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Physical and Environmental Protection (PE) Family, base controls PE-1 to PE-23 (PE-7
-# withdrawn) and the NIST SP 800-53B Moderate-baseline enhancements PE-6(1) and PE-13(1). An enhancement is its
-# own requirement with its own finding; a base control never fails for an enhancement.
+# withdrawn), the NIST SP 800-53B Moderate-baseline enhancements PE-6(1) and PE-13(1), and the High-baseline
+# enhancements PE-3(1), PE-6(4), PE-8(1), PE-11(1), PE-13(2), PE-14(2) and PE-15(1). An enhancement is its own
+# requirement with its own finding; a base control never fails for an enhancement.
 # Facts live under input.pe_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
 
@@ -84,6 +85,26 @@ _att_shaped(name) if {
 _att_text(name, text) := text if {
 	_att_shaped(name)
 } else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
+
+# Counts that must be zero (exceptions from physical security records). A non-number or a negative number is
+# missing evidence.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+}
+
+_zero_missing(paths) := {_path(p) |
+	some p in paths
+	not _count_ok(_get(p))
+}
+
+_zero_unmet(checks) := {sprintf(c[1], [n]) |
+	some c in checks
+	n := _get(c[0])
+	is_number(n)
+	_count_ok(n)
+	n > 0
+}
 
 _missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
 
@@ -225,7 +246,7 @@ violation contains msg if {
 # PE-11 Emergency Power
 # Facts (booleans) under emergency_power: ups_provided (an uninterruptible power supply serves the system),
 #   supports_odp_action (its capacity covers the organization-defined orderly shutdown or transition to
-#   long-term alternate power). The long-term alternate power supply itself is an enhancement, not evaluated.
+#   long-term alternate power). The long-term alternate power supply is PE-11(1), evaluated separately.
 # ---------------------------------------------------------------------------------------------------------------
 
 _pe11_bools := ["emergency_power.ups_provided", "emergency_power.supports_odp_action"]
@@ -471,12 +492,201 @@ violation contains msg if {
 	msg := sprintf("NIST PE-13(1): Fire detection does not activate automatically and notify personnel and emergency responders — %s", [concat("; ", sort(failed))])
 }
 
+# ===============================================================================================================
+# High-baseline enhancements (NIST SP 800-53B High and the FedRAMP High baseline).
+# ===============================================================================================================
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-3(1) System Access: physical access authorizations to the system are enforced at the organization-defined
+# physical spaces (server rooms, cages, racks) in addition to the facility access controls.
+# Facts: physical_access_control.system_access.spaces_without_access_enforcement (number of the
+#        organization-defined spaces with no system-level physical access control, from the access control system;
+#        must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe3_1 := [["physical_access_control.system_access.spaces_without_access_enforcement", "%v organization-defined physical spaces do not enforce physical access authorizations to the system"]]
+
+_pe3_1_missing := _zero_missing([c[0] | some c in _pe3_1])
+
+violation contains msg if {
+	count(_pe3_1_missing) > 0
+	msg := _missing_msg("PE-3(1)", _pe3_1_missing)
+}
+
+violation contains msg if {
+	count(_pe3_1_missing) == 0
+	failed := _zero_unmet(_pe3_1)
+	count(failed) > 0
+	msg := sprintf("NIST PE-3(1): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-6(4) Monitoring Physical Access to Systems: physical access to the system is monitored at the
+# organization-defined physical spaces in addition to the facility monitoring.
+# Facts: monitoring_physical_access.system_access_monitoring.spaces_not_monitored (number of the
+#        organization-defined spaces with no system-level physical access monitoring, such as badge-reader logging
+#        or cameras on the cage or rack; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe6_4 := [["monitoring_physical_access.system_access_monitoring.spaces_not_monitored", "%v organization-defined physical spaces without monitoring of physical access to the system"]]
+
+_pe6_4_missing := _zero_missing([c[0] | some c in _pe6_4])
+
+violation contains msg if {
+	count(_pe6_4_missing) > 0
+	msg := _missing_msg("PE-6(4)", _pe6_4_missing)
+}
+
+violation contains msg if {
+	count(_pe6_4_missing) == 0
+	failed := _zero_unmet(_pe6_4)
+	count(failed) > 0
+	msg := sprintf("NIST PE-6(4): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-8(1) Automated Records Maintenance and Review: visitor access records are maintained and reviewed with the
+# organization-defined automated mechanisms.
+# Facts: visitor_access_records.automation.maintained_automatically, .reviewed_automatically (booleans, from the
+#        visitor management system configuration).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe8_1_bools := [
+	"visitor_access_records.automation.maintained_automatically",
+	"visitor_access_records.automation.reviewed_automatically",
+]
+
+_pe8_1_missing := _bool_missing(_pe8_1_bools)
+
+violation contains msg if {
+	count(_pe8_1_missing) > 0
+	msg := _missing_msg("PE-8(1)", _pe8_1_missing)
+}
+
+violation contains msg if {
+	count(_pe8_1_missing) == 0
+	failed := _bool_false(_pe8_1_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-8(1): Visitor access records not maintained and reviewed with automated mechanisms — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-11(1) Alternate Power Supply — Minimal Operational Capability: an alternate power supply (generator) keeps
+# minimally required operations running through an extended loss of primary power, and is activated in the
+# organization-selected way (manually or automatically).
+# Facts: emergency_power.alternate_supply.provided, .maintains_minimal_capability (booleans, the latter from the
+#        last load test); emergency_power.alternate_supply.activation ("manually" or "automatically", the transfer
+#        switch configuration) against emergency_power.alternate_supply.odp.activation (the organization's
+#        selection). A manual supply where the organization selected automatic activation is a finding; an
+#        automatic supply meets either selection. Any other value is evidence missing.
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe11_1_bools := ["emergency_power.alternate_supply.provided", "emergency_power.alternate_supply.maintains_minimal_capability"]
+
+_pe11_1_modes := {"manually", "automatically"}
+
+_pe11_1_act := _get("emergency_power.alternate_supply.activation")
+
+_pe11_1_odp := _get("emergency_power.alternate_supply.odp.activation")
+
+_pe11_1_missing := (_bool_missing(_pe11_1_bools) | {_path("emergency_power.alternate_supply.activation") | not _pe11_1_act in _pe11_1_modes}) | {_path("emergency_power.alternate_supply.odp.activation") | not _pe11_1_odp in _pe11_1_modes}
+
+violation contains msg if {
+	count(_pe11_1_missing) > 0
+	msg := _missing_msg("PE-11(1)", _pe11_1_missing)
+}
+
+violation contains msg if {
+	count(_pe11_1_missing) == 0
+	mode := {"the alternate power supply is activated manually; the organization-defined activation is automatic" | _pe11_1_odp == "automatically"; _pe11_1_act == "manually"}
+	failed := _bool_false(_pe11_1_bools) | mode
+	count(failed) > 0
+	msg := sprintf("NIST PE-11(1): Alternate power supply does not maintain minimal operational capability as required — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-13(2) Suppression Systems — Automatic Activation and Notification: fire suppression activates automatically
+# and notifies the organization-defined personnel and emergency responders. Automatic activation is required in
+# every case, which also covers the requirement for automatic suppression when the facility is not staffed
+# continuously.
+# Facts: fire_protection.suppression.automatic_activation, .notifies_personnel, .notifies_emergency_responders
+#        (booleans, from the suppression panel configuration and its last inspection test).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe13_2_bools := [
+	"fire_protection.suppression.automatic_activation",
+	"fire_protection.suppression.notifies_personnel",
+	"fire_protection.suppression.notifies_emergency_responders",
+]
+
+_pe13_2_missing := _bool_missing(_pe13_2_bools)
+
+violation contains msg if {
+	count(_pe13_2_missing) > 0
+	msg := _missing_msg("PE-13(2)", _pe13_2_missing)
+}
+
+violation contains msg if {
+	count(_pe13_2_missing) == 0
+	failed := _bool_false(_pe13_2_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-13(2): Fire suppression does not activate automatically and notify personnel and emergency responders — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-14(2) Monitoring with Alarms and Notifications: environmental monitoring raises an alarm or notification to
+# the organization-defined personnel or roles on changes potentially harmful to personnel or equipment.
+# Facts: environmental_controls.alarms.alarm_on_harmful_change, .notifies_defined_personnel (booleans, from the
+#        environmental monitoring system's alert configuration).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe14_2_bools := ["environmental_controls.alarms.alarm_on_harmful_change", "environmental_controls.alarms.notifies_defined_personnel"]
+
+_pe14_2_missing := _bool_missing(_pe14_2_bools)
+
+violation contains msg if {
+	count(_pe14_2_missing) > 0
+	msg := _missing_msg("PE-14(2)", _pe14_2_missing)
+}
+
+violation contains msg if {
+	count(_pe14_2_missing) == 0
+	failed := _bool_false(_pe14_2_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-14(2): Environmental monitoring does not alarm or notify the organization-defined personnel — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# PE-15(1) Automation Support: the presence of water near the system is detected and the organization-defined
+# personnel or roles are alerted by the organization-defined automated mechanisms.
+# Facts: water_damage_protection.detection.automated_detection, .alerts_defined_personnel (booleans, from the leak
+#        detection system's sensor and alert configuration).
+# ---------------------------------------------------------------------------------------------------------------
+
+_pe15_1_bools := ["water_damage_protection.detection.automated_detection", "water_damage_protection.detection.alerts_defined_personnel"]
+
+_pe15_1_missing := _bool_missing(_pe15_1_bools)
+
+violation contains msg if {
+	count(_pe15_1_missing) > 0
+	msg := _missing_msg("PE-15(1)", _pe15_1_missing)
+}
+
+violation contains msg if {
+	count(_pe15_1_missing) == 0
+	failed := _bool_false(_pe15_1_bools)
+	count(failed) > 0
+	msg := sprintf("NIST PE-15(1): Water near the system not detected and alerted with automated mechanisms — %s", [concat("; ", sort(failed))])
+}
+
 compliant if count(violation) == 0
 
-# The base control ids this family evaluates (PE-7 is withdrawn); each has exactly one finding when it fails.
+# The control and enhancement ids this family evaluates (PE-7 is withdrawn); each has exactly one finding when it
+# fails.
 evaluated_controls := {
-	"PE-1", "PE-2", "PE-3", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-8", "PE-9", "PE-10", "PE-11", "PE-12",
-	"PE-13", "PE-13(1)", "PE-14", "PE-15", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
+	"PE-1", "PE-2", "PE-3", "PE-3(1)", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-6(4)", "PE-8", "PE-8(1)", "PE-9",
+	"PE-10", "PE-11", "PE-11(1)", "PE-12", "PE-13", "PE-13(1)", "PE-13(2)", "PE-14", "PE-14(2)", "PE-15",
+	"PE-15(1)", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
 }
 
 compliance_report := {

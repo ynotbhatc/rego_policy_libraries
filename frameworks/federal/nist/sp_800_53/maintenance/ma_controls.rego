@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 18
-#     cited: 10
+#     checks: 24
+#     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
@@ -18,9 +18,10 @@ package nist.sp800_53.maintenance
 
 import rego.v1
 
-# NIST SP 800-53 Rev 5 — Maintenance (MA) Family, base controls MA-1 to MA-7 and the NIST SP 800-53B
-# Moderate-baseline enhancements MA-3(1), MA-3(2), MA-3(3). An enhancement is its own requirement with its own
-# finding; a base control never fails for an enhancement.
+# NIST SP 800-53 Rev 5 — Maintenance (MA) Family, base controls MA-1 to MA-7, the NIST SP 800-53B
+# Moderate-baseline enhancements MA-3(1), MA-3(2), MA-3(3), and the High-baseline enhancements MA-2(2), MA-4(3)
+# and MA-5(1). An enhancement is its own requirement with its own finding; a base control never fails for an
+# enhancement.
 # Facts live under input.ma_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
 
@@ -343,10 +344,98 @@ violation contains msg if {
 	msg := sprintf("NIST MA-3(3): %s", [concat("; ", sort(failed))])
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# MA-2(2) Automated Maintenance Activities: maintenance, repair and replacement actions are scheduled, conducted
+# and documented with automated mechanisms, and the records of every action requested, scheduled, in process and
+# completed are up to date, accurate and complete.
+# Facts: controlled_maintenance.automation.automated (boolean: a maintenance management system schedules and
+#        records the actions); controlled_maintenance.automation.records_incomplete (number of maintenance actions
+#        in the review period whose record is missing, out of date or incomplete; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma2_2_bools := ["controlled_maintenance.automation.automated"]
+
+_ma2_2_zeros := [["controlled_maintenance.automation.records_incomplete", "%v maintenance, repair or replacement actions with an incomplete or out-of-date record"]]
+
+_ma2_2_missing := _bool_missing(_ma2_2_bools) | _zero_missing([c[0] | some c in _ma2_2_zeros])
+
+violation contains msg if {
+	count(_ma2_2_missing) > 0
+	msg := _missing_msg("MA-2(2)", _ma2_2_missing)
+}
+
+violation contains msg if {
+	count(_ma2_2_missing) == 0
+	failed := _bool_false(_ma2_2_bools) | _zero_unmet(_ma2_2_zeros)
+	count(failed) > 0
+	msg := sprintf("NIST MA-2(2): Maintenance actions not scheduled, conducted and documented with automated mechanisms — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-4(3) Comparable Security and Sanitization: nonlocal maintenance is performed from a system with security
+# comparable to the serviced system, or the component is removed, sanitized before service, and inspected and
+# sanitized again before it is reconnected. Either path satisfies the control, so one count covers both.
+# Facts: nonlocal_maintenance.comparable_security.sessions_meeting_neither (number of nonlocal maintenance or
+#        diagnostic sessions in the review period performed from a system without comparable security whose
+#        component was not removed, sanitized and inspected; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma4_3 := [["nonlocal_maintenance.comparable_security.sessions_meeting_neither", "%v nonlocal maintenance sessions neither performed from a system with comparable security nor on a removed, sanitized and inspected component"]]
+
+_ma4_3_missing := _zero_missing([c[0] | some c in _ma4_3])
+
+violation contains msg if {
+	count(_ma4_3_missing) > 0
+	msg := _missing_msg("MA-4(3)", _ma4_3_missing)
+}
+
+violation contains msg if {
+	count(_ma4_3_missing) == 0
+	failed := _zero_unmet(_ma4_3)
+	count(failed) > 0
+	msg := sprintf("NIST MA-4(3): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-5(1) Individuals Without Appropriate Access: maintenance personnel without the needed clearances or access
+# approvals are escorted and supervised by fully cleared, qualified personnel; before they start, volatile storage
+# is sanitized and nonvolatile media removed or disconnected and secured; organization-defined alternate controls
+# exist for components that cannot be sanitized, removed or disconnected.
+# Facts: maintenance_personnel.uncleared.alternate_controls_defined (boolean);
+#        maintenance_personnel.uncleared.sessions_without_escort,
+#        maintenance_personnel.uncleared.sessions_without_storage_protection (numbers of maintenance sessions by
+#        such personnel in the review period without escort and supervision, or without the storage sanitized and
+#        media removed or disconnected; both must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma5_1_bools := ["maintenance_personnel.uncleared.alternate_controls_defined"]
+
+_ma5_1_zeros := [
+	["maintenance_personnel.uncleared.sessions_without_escort", "%v maintenance sessions by personnel without appropriate access not escorted and supervised"],
+	["maintenance_personnel.uncleared.sessions_without_storage_protection", "%v maintenance sessions by personnel without appropriate access started before storage was sanitized and media removed or disconnected"],
+]
+
+_ma5_1_missing := _bool_missing(_ma5_1_bools) | _zero_missing([c[0] | some c in _ma5_1_zeros])
+
+violation contains msg if {
+	count(_ma5_1_missing) > 0
+	msg := _missing_msg("MA-5(1)", _ma5_1_missing)
+}
+
+violation contains msg if {
+	count(_ma5_1_missing) == 0
+	failed := _bool_false(_ma5_1_bools) | _zero_unmet(_ma5_1_zeros)
+	count(failed) > 0
+	msg := sprintf("NIST MA-5(1): Maintenance by personnel without appropriate access not controlled — %s", [concat("; ", sort(failed))])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"MA-1", "MA-2", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-5", "MA-6", "MA-7"}
+evaluated_controls := {
+	"MA-1", "MA-2", "MA-2(2)", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-4(3)", "MA-5", "MA-5(1)", "MA-6",
+	"MA-7",
+}
 
 compliance_report := {
 	"family": "MA",

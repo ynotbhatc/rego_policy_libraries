@@ -6,7 +6,7 @@ import rego.v1
 # `with input as`, which the wasm build rejects); each failing case changes one fact of the all-pass fixture
 # and must flip exactly that control id.
 
-_pass := {"sr_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "scrm_plan": {"documented": true, "protected": true, "days_since_last": 30, "odp": {"frequency_days": 365}, "team": {"established": true, "unfilled_roles": 0}}, "supply_chain_controls": {"weakness_process_established": true, "controls_employed": true, "documented": true}, "provenance": {"monitored": true, "components_without_provenance": 0}, "acquisition_strategies": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "supplier_assessments": {"days_since_last": 200, "odp": {"frequency_days": 365}}, "supply_chain_opsec": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "notification_agreements": {"entities_without_agreement": 0}, "tamper_protection": {"program_implemented": true}, "inspection": {"days_since_last": 20, "odp": {"frequency_days": 90}}, "anti_counterfeit": {"policy_procedures_implemented": true, "detection_prevention": true, "reporting_defined": true, "training": {"untrained_personnel": 0}, "service_repair": {"components_without_configuration_control": 0}}, "component_disposal": {"methods_defined": true, "disposals_without_approved_method": 0}}}
+_pass := {"sr_controls": {"policy": {"documented": true, "official_designated": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "procedures": {"documented": true, "days_since_last": 30, "odp": {"frequency_days": 365}}, "scrm_plan": {"documented": true, "protected": true, "days_since_last": 30, "odp": {"frequency_days": 365}, "team": {"established": true, "unfilled_roles": 0}}, "supply_chain_controls": {"weakness_process_established": true, "controls_employed": true, "documented": true}, "provenance": {"monitored": true, "components_without_provenance": 0}, "acquisition_strategies": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "supplier_assessments": {"days_since_last": 200, "odp": {"frequency_days": 365}}, "supply_chain_opsec": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "notification_agreements": {"entities_without_agreement": 0}, "tamper_protection": {"program_implemented": true, "sdlc": {"phases_without_anti_tamper": 0}}, "inspection": {"days_since_last": 20, "odp": {"frequency_days": 90}}, "anti_counterfeit": {"policy_procedures_implemented": true, "detection_prevention": true, "reporting_defined": true, "training": {"untrained_personnel": 0}, "service_repair": {"components_without_configuration_control": 0}}, "component_disposal": {"methods_defined": true, "disposals_without_approved_method": 0}}}
 
 _flagged(v, id) := [x | some x in v; startswith(x, concat("", ["NIST ", id, ":"]))]
 
@@ -28,7 +28,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.supply_chain_risk.evaluated_controls == {"SR-1", "SR-2", "SR-2(1)", "SR-3", "SR-4", "SR-5", "SR-6", "SR-7", "SR-8", "SR-9", "SR-10", "SR-11", "SR-11(1)", "SR-11(2)", "SR-12"}
+	data.nist.sp800_53.supply_chain_risk.evaluated_controls == {"SR-1", "SR-2", "SR-2(1)", "SR-3", "SR-4", "SR-5", "SR-6", "SR-7", "SR-8", "SR-9", "SR-9(1)", "SR-10", "SR-11", "SR-11(1)", "SR-11(2)", "SR-12"}
 }
 
 test_sr1_policy_not_documented_fails if {
@@ -363,4 +363,30 @@ test_enhancement_missing_does_not_fail_base if {
 	count(v) == 3
 	count(_flagged(v, "SR-2")) == 0
 	count(_flagged(v, "SR-11")) == 0
+}
+
+test_sr9_1_phase_without_anti_tamper_flips_only_sr9_1 if {
+	inp := object.union(_pass, {"sr_controls": {"tamper_protection": {"sdlc": {"phases_without_anti_tamper": 2}}}})
+	v := data.nist.sp800_53.supply_chain_risk.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SR-9(1)")
+	count(f) == 1
+	contains(f[0], "2 system development life cycle phases")
+	not contains(f[0], "evidence missing")
+}
+
+test_sr9_1_missing_is_evidence_missing_and_base_unaffected if {
+	inp := object.union(_pass, {"sr_controls": {"tamper_protection": {"sdlc": null}}})
+	v := data.nist.sp800_53.supply_chain_risk.violation with input as inp
+	count(v) == 1
+	f := _flagged(v, "SR-9(1)")
+	count(f) == 1
+	contains(f[0], "evidence missing — input.sr_controls.tamper_protection.sdlc.phases_without_anti_tamper")
+}
+
+test_sr9_1_count_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"sr_controls": {"tamper_protection": {"sdlc": {"phases_without_anti_tamper": "0"}}}})
+	v := data.nist.sp800_53.supply_chain_risk.violation with input as inp
+	count(v) == 1
+	contains(_flagged(v, "SR-9(1)")[0], "evidence missing")
 }
