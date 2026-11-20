@@ -14,6 +14,7 @@ _pass := {"ma_controls": {
 		"media_sanitized_before_offsite": true,
 		"controls_checked_after_maintenance": true,
 		"records_include_required_information": true,
+		"automation": {"automated": true, "records_incomplete": 0},
 	},
 	"maintenance_tools": {
 		"approved": true, "controlled": true, "monitored": true, "review": {"days_since_last": 30, "odp": {"frequency_days": 365}},
@@ -27,12 +28,14 @@ _pass := {"ma_controls": {
 		"strong_authentication": true,
 		"records_maintained": true,
 		"sessions_terminated_on_completion": true,
+		"comparable_security": {"sessions_meeting_neither": 0},
 	},
 	"maintenance_personnel": {
 		"authorization_process_established": true,
 		"authorized_list_maintained": true,
 		"unescorted_access_verified": true,
 		"supervisors_designated": true,
+		"uncleared": {"alternate_controls_defined": true, "sessions_without_escort": 0, "sessions_without_storage_protection": 0},
 	},
 	"timely_maintenance": {"components_covered": true, "max_hours_to_support": 24, "odp": {"time_period_hours": 48}},
 	"field_maintenance": {"attestation": {"attested": true, "by": "Facilities manager", "date": "2026-11-01"}},
@@ -61,7 +64,10 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.maintenance.evaluated_controls == {"MA-1", "MA-2", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-5", "MA-6", "MA-7"}
+	data.nist.sp800_53.maintenance.evaluated_controls == {
+		"MA-1", "MA-2", "MA-2(2)", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-4(3)", "MA-5", "MA-5(1)",
+		"MA-6", "MA-7",
+	}
 }
 
 test_ma1_policy_not_documented if {
@@ -238,4 +244,52 @@ test_ma3_base_unaffected_by_enhancement_facts if {
 	inp := json.remove(_pass, ["ma_controls/maintenance_tools/inspection", "ma_controls/maintenance_tools/media_inspection", "ma_controls/maintenance_tools/removal"])
 	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
 	_failing(r) == {"MA-3(1)", "MA-3(2)", "MA-3(3)"}
+}
+
+# --- High-baseline enhancements: one flip, one evidence-missing case ---------------------------------------------
+
+test_ma2_2_incomplete_records_flip_only_ma2_2 if {
+	inp := object.union(_pass, {"ma_controls": {"controlled_maintenance": {"automation": {"records_incomplete": 3}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	r.violations == {"NIST MA-2(2): Maintenance actions not scheduled, conducted and documented with automated mechanisms — 3 maintenance, repair or replacement actions with an incomplete or out-of-date record"}
+}
+
+test_ma2_2_automated_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"controlled_maintenance": {"automation": {"automated": "true"}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	r.violations == {"NIST MA-2(2): evidence missing — input.ma_controls.controlled_maintenance.automation.automated not collected"}
+}
+
+test_ma4_3_session_meeting_neither_flips_only_ma4_3 if {
+	inp := object.union(_pass, {"ma_controls": {"nonlocal_maintenance": {"comparable_security": {"sessions_meeting_neither": 1}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-4(3)"}
+	not contains(concat("", r.violations), "evidence missing")
+}
+
+test_ma4_3_count_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"ma_controls": {"nonlocal_maintenance": {"comparable_security": {"sessions_meeting_neither": "0"}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-4(3)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_ma5_1_unescorted_session_flips_only_ma5_1 if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_personnel": {"uncleared": {"sessions_without_escort": 2}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-5(1)"}
+	contains(concat("", r.violations), "2 maintenance sessions by personnel without appropriate access not escorted")
+}
+
+test_ma5_1_no_alternate_controls_flips_only_ma5_1 if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_personnel": {"uncleared": {"alternate_controls_defined": false}}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-5(1)"}
+}
+
+test_ma5_1_missing_is_evidence_missing_and_base_unaffected if {
+	inp := object.union(_pass, {"ma_controls": {"maintenance_personnel": {"uncleared": null}}})
+	r := data.nist.sp800_53.maintenance.compliance_report with input as inp
+	_failing(r) == {"MA-5(1)"}
+	contains(concat("", r.violations), "evidence missing")
 }

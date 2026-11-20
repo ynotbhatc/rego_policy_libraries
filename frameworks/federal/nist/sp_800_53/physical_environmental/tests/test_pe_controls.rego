@@ -1,6 +1,6 @@
 package nist.sp800_53.physical_environmental_logic_test
 
-# PE-1 to PE-23 (PE-7 withdrawn), PE-6(1) and PE-13(1): all-pass fixture, empty input, one flip per control id, type traps.
+# PE-1 to PE-23 (PE-7 withdrawn), the Moderate and High enhancements: all-pass fixture, empty input, one flip per control id, type traps.
 
 import rego.v1
 
@@ -26,21 +26,32 @@ _pass := {"pe_controls": {
 		"access_devices_secured": true,
 		"device_inventory": _freq,
 		"key_change": {"days_since_last": 200, "odp": {"frequency_days": 365}},
+		"system_access": {"spaces_without_access_enforcement": 0},
 	},
 	"monitoring_physical_access": {
 		"access_monitored": true, "results_coordinated_with_incident_response": true, "log_review": {"days_since_last": 5, "odp": {"frequency_days": 7}},
 		"intrusion_alarms_and_surveillance": {"intrusion_alarms_monitored": true, "surveillance_monitored": true},
+		"system_access_monitoring": {"spaces_not_monitored": 0},
 	},
-	"visitor_access_records": {"retention_days": 400, "odp": {"retention_days": 365}, "review": _freq, "anomalies_reported": true},
-	"emergency_power": {"ups_provided": true, "supports_odp_action": true},
-	"environmental_controls": {"levels_within_odp": true, "monitoring": {"days_since_last": 1, "odp": {"frequency_days": 1}}},
+	"visitor_access_records": {"retention_days": 400, "odp": {"retention_days": 365}, "review": _freq, "anomalies_reported": true, "automation": {"maintained_automatically": true, "reviewed_automatically": true}},
+	"emergency_power": {
+		"ups_provided": true, "supports_odp_action": true,
+		"alternate_supply": {"provided": true, "maintains_minimal_capability": true, "activation": "automatically", "odp": {"activation": "automatically"}},
+	},
+	"environmental_controls": {
+		"levels_within_odp": true, "monitoring": {"days_since_last": 1, "odp": {"frequency_days": 1}},
+		"alarms": {"alarm_on_harmful_change": true, "notifies_defined_personnel": true},
+	},
 	"transmission_access": _att,
 	"output_devices": _att,
 	"power_equipment": _att,
 	"emergency_shutoff": _att,
 	"emergency_lighting": _att,
-	"fire_protection": object.union(_att, {"detection": {"automatic_activation": true, "notifies_personnel": true, "notifies_emergency_responders": true}}),
-	"water_damage_protection": _att,
+	"fire_protection": object.union(_att, {
+		"detection": {"automatic_activation": true, "notifies_personnel": true, "notifies_emergency_responders": true},
+		"suppression": {"automatic_activation": true, "notifies_personnel": true, "notifies_emergency_responders": true},
+	}),
+	"water_damage_protection": object.union(_att, {"detection": {"automated_detection": true, "alerts_defined_personnel": true}}),
 	"delivery_removal": _att,
 	"alternate_work_site": _att,
 	"component_location": _att,
@@ -75,8 +86,9 @@ test_empty_input_one_finding_per_control if {
 
 test_evaluated_controls_match_catalog if {
 	data.nist.sp800_53.physical_environmental.evaluated_controls == {
-		"PE-1", "PE-2", "PE-3", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-8", "PE-9", "PE-10", "PE-11", "PE-12",
-		"PE-13", "PE-13(1)", "PE-14", "PE-15", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
+		"PE-1", "PE-2", "PE-3", "PE-3(1)", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-6(4)", "PE-8", "PE-8(1)", "PE-9",
+		"PE-10", "PE-11", "PE-11(1)", "PE-12", "PE-13", "PE-13(1)", "PE-13(2)", "PE-14", "PE-14(2)", "PE-15",
+		"PE-15(1)", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
 	}
 }
 
@@ -353,4 +365,110 @@ test_pe13_1_missing_is_evidence_missing if {
 	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
 	_failing(r) == {"PE-13(1)"}
 	contains(_msg(r, "PE-13(1)")[0], "evidence missing")
+}
+
+# --- High-baseline enhancements: one flip, one evidence-missing case ---------------------------------------------
+
+test_pe3_1_space_without_enforcement_flips_only_pe3_1 if {
+	inp := object.union(_pass, {"pe_controls": {"physical_access_control": {"system_access": {"spaces_without_access_enforcement": 1}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	r.violations == {"NIST PE-3(1): 1 organization-defined physical spaces do not enforce physical access authorizations to the system"}
+}
+
+test_pe3_1_count_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"physical_access_control": {"system_access": {"spaces_without_access_enforcement": "1"}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	r.violations == {"NIST PE-3(1): evidence missing — input.pe_controls.physical_access_control.system_access.spaces_without_access_enforcement not collected"}
+}
+
+test_pe6_4_space_not_monitored_flips_only_pe6_4 if {
+	inp := object.union(_pass, {"pe_controls": {"monitoring_physical_access": {"system_access_monitoring": {"spaces_not_monitored": 2}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-6(4)"}
+	not contains(concat("", r.violations), "evidence missing")
+}
+
+test_pe6_4_count_null_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"monitoring_physical_access": {"system_access_monitoring": {"spaces_not_monitored": null}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-6(4)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_pe8_1_not_reviewed_automatically_flips_only_pe8_1 if {
+	inp := object.union(_pass, {"pe_controls": {"visitor_access_records": {"automation": {"reviewed_automatically": false}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-8(1)"}
+}
+
+test_pe8_1_missing_is_evidence_missing_and_base_unaffected if {
+	inp := object.union(_pass, {"pe_controls": {"visitor_access_records": {"automation": null}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-8(1)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_pe11_1_manual_where_automatic_required_flips_only_pe11_1 if {
+	inp := object.union(_pass, {"pe_controls": {"emergency_power": {"alternate_supply": {"activation": "manually"}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-11(1)"}
+	contains(concat("", r.violations), "activated manually; the organization-defined activation is automatic")
+}
+
+test_pe11_1_automatic_meets_manual_selection if {
+	inp := object.union(_pass, {"pe_controls": {"emergency_power": {"alternate_supply": {"odp": {"activation": "manually"}}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	r.violation_count == 0
+}
+
+test_pe11_1_unknown_mode_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"emergency_power": {"alternate_supply": {"activation": true}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	r.violations == {"NIST PE-11(1): evidence missing — input.pe_controls.emergency_power.alternate_supply.activation not collected"}
+}
+
+test_pe11_1_odp_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"emergency_power": {"alternate_supply": {"odp": null}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-11(1)"}
+	contains(concat("", r.violations), "evidence missing — input.pe_controls.emergency_power.alternate_supply.odp.activation")
+}
+
+test_pe13_2_no_responder_notification_flips_only_pe13_2 if {
+	inp := object.union(_pass, {"pe_controls": {"fire_protection": {"suppression": {"notifies_emergency_responders": false}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-13(2)"}
+}
+
+test_pe13_2_boolean_as_string_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"fire_protection": {"suppression": {"automatic_activation": "true"}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-13(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_pe14_2_no_alarm_flips_only_pe14_2 if {
+	inp := object.union(_pass, {"pe_controls": {"environmental_controls": {"alarms": {"alarm_on_harmful_change": false}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-14(2)"}
+}
+
+test_pe14_2_missing_is_evidence_missing if {
+	inp := object.union(_pass, {"pe_controls": {"environmental_controls": {"alarms": {"notifies_defined_personnel": 1}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-14(2)"}
+	contains(concat("", r.violations), "evidence missing")
+}
+
+test_pe15_1_no_alert_flips_only_pe15_1 if {
+	inp := object.union(_pass, {"pe_controls": {"water_damage_protection": {"detection": {"alerts_defined_personnel": false}}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-15(1)"}
+}
+
+test_pe15_1_missing_is_evidence_missing_and_base_unaffected if {
+	inp := object.union(_pass, {"pe_controls": {"water_damage_protection": {"detection": null}}})
+	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
+	_failing(r) == {"PE-15(1)"}
+	contains(concat("", r.violations), "evidence missing")
 }

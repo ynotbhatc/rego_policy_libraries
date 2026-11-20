@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 15
-#     cited: 15
+#     checks: 16
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,8 @@ package nist.sp800_53.supply_chain_risk
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Supply Chain Risk Management (SR) Family: the twelve active base controls SR-1 to
-# SR-12, and the Moderate-baseline enhancements SR-2(1), SR-11(1) and SR-11(2). Each enhancement is its own
+# SR-12, the Moderate-baseline enhancements SR-2(1), SR-11(1) and SR-11(2), and the High-baseline enhancement
+# SR-9(1). Each enhancement is its own
 # requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under
 # input.sr_controls.
 
@@ -266,12 +267,28 @@ violation contains msg if {
 	msg := sprintf("NIST SR-11(2): %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# High-baseline enhancements (SP 800-53B High).
+# ---------------------------------------------------------------------------------------------------------
+
+# SR-9(1) Multiple Stages of System Development Life Cycle: input.sr_controls.tamper_protection.sdlc.
+# phases_without_anti_tamper, the number of system development life cycle phases (design, development,
+# integration, operations and maintenance, disposal) recorded in the tamper protection program with no
+# anti-tamper technology, tool or technique applied; must be 0.
+violation contains msg if {
+	sec := ["tamper_protection", "sdlc"]
+	m := _zero_missing(sec, "phases_without_anti_tamper")
+	u := _zero_unmet(sec, "phases_without_anti_tamper", "system development life cycle phases have no anti-tamper technologies, tools or techniques employed")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SR-9(1): %s", [_detail(m, u)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SR-1", "SR-2", "SR-2(1)", "SR-3", "SR-4", "SR-5", "SR-6", "SR-7",
-	"SR-8", "SR-9", "SR-10", "SR-11", "SR-11(1)", "SR-11(2)", "SR-12",
+	"SR-8", "SR-9", "SR-9(1)", "SR-10", "SR-11", "SR-11(1)", "SR-11(2)", "SR-12",
 }
 
 compliance_report := {

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 11
-#     cited: 11
+#     checks: 16
+#     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,9 +19,10 @@ package nist.sp800_53.assessment_authorization
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Assessment, Authorization, and Monitoring (CA) Family. Every active base control (CA-1,
-# CA-2, CA-3, CA-5, CA-6, CA-7, CA-8, CA-9; CA-4 is withdrawn) and the NIST SP 800-53B Moderate-baseline
-# enhancements (CA-2(1), CA-7(1), CA-7(4)). An enhancement is its own requirement with its own finding; a base
-# control never fails for an enhancement.
+# CA-2, CA-3, CA-5, CA-6, CA-7, CA-8, CA-9; CA-4 is withdrawn), the NIST SP 800-53B Moderate-baseline
+# enhancements (CA-2(1), CA-7(1), CA-7(4)) and the enhancements the NIST and FedRAMP High baselines add (CA-2(2),
+# CA-2(3), CA-3(6), CA-8(1), CA-8(2)). An enhancement is its own requirement with its own finding; a base control
+# never fails for an enhancement.
 
 default compliant := false
 
@@ -74,6 +75,26 @@ _under(path, obs, odp, fmt) := {sprintf(fmt, [o[obs], o.odp[odp]]) |
 	is_number(o[obs])
 	is_number(o.odp[odp])
 	o[obs] < o.odp[odp]
+}
+
+# Counts that must be zero (exceptions from a records query): `checks` is a list of [key, format taking the
+# count]. A value that is not a number, or is negative, is missing evidence.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+}
+
+_zero_missing(path, checks) := {concat(".", [_path_str(path), c[0]]) |
+	some c in checks
+	not _count_ok(object.get(_obj(path), c[0], null))
+}
+
+_zero_failed(path, checks) := {sprintf(c[1], [n]) |
+	some c in checks
+	n := object.get(_obj(path), c[0], null)
+	is_number(n)
+	_count_ok(n)
+	n > 0
 }
 
 # Organization-defined frequencies (the IR-2/IR-3 pattern): <path>.days_since_last against
@@ -319,10 +340,107 @@ violation contains msg if {
 	msg := sprintf("NIST CA-7(4): %s", [_detail(_ca7_4_missing, _ca7_4_failed)])
 }
 
+# ---------------------------------------------------------------------------------------------------------------
+# High-baseline enhancements (NIST SP 800-53B High and the FedRAMP High baseline).
+# ---------------------------------------------------------------------------------------------------------------
+
+# CA-2(2) Specialized Assessments: control assessments include the organization-selected specialized forms
+# (in-depth monitoring, security instrumentation, automated security test cases, vulnerability scanning,
+# malicious user testing, insider threat assessment, performance and load testing, data leakage or loss
+# assessment, or other forms), announced or unannounced, at the organization-defined frequency.
+# Facts (input.ca_controls.control_assessment.specialized_assessments): defined_forms_included (boolean: the
+# last assessment plan and report include every organization-selected specialized form);
+# days_since_last + odp.frequency_days.
+_ca2_2_bools := [["defined_forms_included", "control assessments do not include the organization-selected specialized assessment forms"]]
+
+_ca2_2_path := ["control_assessment", "specialized_assessments"]
+
+_ca2_2_missing := _bool_missing(_ca2_2_path, _ca2_2_bools) | _freq_missing(_ca2_2_path)
+
+_ca2_2_failed := _bool_failed(_ca2_2_path, _ca2_2_bools) | _freq_over(_ca2_2_path, "specialized assessments last conducted %v days ago; the organization-defined frequency is %v days")
+
+violation contains msg if {
+	count(_ca2_2_missing | _ca2_2_failed) > 0
+	msg := sprintf("NIST CA-2(2): %s", [_detail(_ca2_2_missing, _ca2_2_failed)])
+}
+
+# CA-2(3) Leveraging Results from External Organizations: results of control assessments performed by the
+# organization-defined external organizations on the organization-defined system are leveraged when they meet
+# the organization-defined requirements.
+# Facts (input.ca_controls.control_assessment.external_results): results_leveraged (boolean: the assessment plan
+# identifies and uses the external assessment results); leveraged_not_meeting_requirements (number of leveraged
+# external results that do not meet the organization-defined requirements; must be 0).
+_ca2_3_path := ["control_assessment", "external_results"]
+
+_ca2_3_bools := [["results_leveraged", "control assessment results from the organization-defined external organizations not leveraged"]]
+
+_ca2_3_zeros := [["leveraged_not_meeting_requirements", "%v leveraged external assessment results do not meet the organization-defined requirements"]]
+
+_ca2_3_missing := _bool_missing(_ca2_3_path, _ca2_3_bools) | _zero_missing(_ca2_3_path, _ca2_3_zeros)
+
+_ca2_3_failed := _bool_failed(_ca2_3_path, _ca2_3_bools) | _zero_failed(_ca2_3_path, _ca2_3_zeros)
+
+violation contains msg if {
+	count(_ca2_3_missing | _ca2_3_failed) > 0
+	msg := sprintf("NIST CA-2(3): %s", [_detail(_ca2_3_missing, _ca2_3_failed)])
+}
+
+# CA-3(6) Transfer Authorizations: individuals or systems transferring data between interconnecting systems are
+# verified to hold the requisite authorizations (write permissions or privileges) before the data is accepted.
+# Facts (input.ca_controls.information_exchange.transfer_authorization): verified_before_acceptance (boolean: the
+# receiving interface or cross-domain gateway checks the sender's write authorization before accepting data);
+# accepted_without_authorization (number of transfers in the review period accepted from a sender without a
+# verified authorization; must be 0).
+_ca3_6_path := ["information_exchange", "transfer_authorization"]
+
+_ca3_6_bools := [["verified_before_acceptance", "authorizations of individuals or systems transferring data not verified before the data is accepted"]]
+
+_ca3_6_zeros := [["accepted_without_authorization", "%v data transfers accepted without verifying the sender's authorization"]]
+
+_ca3_6_missing := _bool_missing(_ca3_6_path, _ca3_6_bools) | _zero_missing(_ca3_6_path, _ca3_6_zeros)
+
+_ca3_6_failed := _bool_failed(_ca3_6_path, _ca3_6_bools) | _zero_failed(_ca3_6_path, _ca3_6_zeros)
+
+violation contains msg if {
+	count(_ca3_6_missing | _ca3_6_failed) > 0
+	msg := sprintf("NIST CA-3(6): %s", [_detail(_ca3_6_missing, _ca3_6_failed)])
+}
+
+# CA-8(1) Independent Penetration Testing Agent or Team: penetration testing is performed by an independent agent
+# or team. Independence is an organizational judgment with no machine-checkable evidence, as CA-2(1).
+# Facts: penetration_testing.independent_team.attestation {"attested": true, "by": <name>, "date": <date>}.
+violation contains msg if {
+	not _att_ok(_att(["penetration_testing", "independent_team"]))
+	msg := sprintf("NIST CA-8(1): %s", [_att_detail(["penetration_testing", "independent_team"], "use of an independent penetration testing agent or team")])
+}
+
+# CA-8(2) Red Team Exercises: the organization-defined red team exercises are employed, under the applicable
+# rules of engagement, to simulate adversary attempts to compromise organizational systems.
+# Facts (input.ca_controls.penetration_testing.red_team): rules_of_engagement_approved (boolean);
+# defined_exercises_not_conducted (number of the organization-defined red team exercises with no record of being
+# conducted in the current assessment cycle; must be 0).
+_ca8_2_path := ["penetration_testing", "red_team"]
+
+_ca8_2_bools := [["rules_of_engagement_approved", "no approved rules of engagement for red team exercises"]]
+
+_ca8_2_zeros := [["defined_exercises_not_conducted", "%v organization-defined red team exercises not conducted"]]
+
+_ca8_2_missing := _bool_missing(_ca8_2_path, _ca8_2_bools) | _zero_missing(_ca8_2_path, _ca8_2_zeros)
+
+_ca8_2_failed := _bool_failed(_ca8_2_path, _ca8_2_bools) | _zero_failed(_ca8_2_path, _ca8_2_zeros)
+
+violation contains msg if {
+	count(_ca8_2_missing | _ca8_2_failed) > 0
+	msg := sprintf("NIST CA-8(2): %s", [_detail(_ca8_2_missing, _ca8_2_failed)])
+}
+
 compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"CA-1", "CA-2", "CA-2(1)", "CA-3", "CA-5", "CA-6", "CA-7", "CA-7(1)", "CA-7(4)", "CA-8", "CA-9"}
+evaluated_controls := {
+	"CA-1", "CA-2", "CA-2(1)", "CA-2(2)", "CA-2(3)", "CA-3", "CA-3(6)", "CA-5", "CA-6", "CA-7", "CA-7(1)", "CA-7(4)",
+	"CA-8", "CA-8(1)", "CA-8(2)", "CA-9",
+}
 
 compliance_report := {
 	"family": "CA",
