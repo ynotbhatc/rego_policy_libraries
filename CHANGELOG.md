@@ -8,6 +8,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — waivers: required fields, maximum time to live, expiring soon
+
+- `governance/exceptions/waivers.rego` reads optional site settings at `data.waivers.settings`:
+  `required_fields` (for example `["reason", "approver", "mitigation"]`), `max_ttl_days` and
+  `expiring_within_days` (default 14). Entries may carry `mitigation` and `evidence_ref`.
+- An unexpired entry that matches a finding but breaks a setting is not applied: the finding stays active and
+  the entry is listed in the new `rejected` set with the reasons (`rejected_count` alongside). A malformed
+  setting rejects every entry. `expiring_soon` lists applied waivers that run out inside the window.
+- No settings loaded: the decision is unchanged apart from the three new, empty keys.
+
 ### Added — STIG results roll up onto NIST SP 800-53 (crosswalk.correlation)
 
 - Every STIG report (24 platforms) gains `rule_results`: each rule's DISA status, passes included. Additive;
