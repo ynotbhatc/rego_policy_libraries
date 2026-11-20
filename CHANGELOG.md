@@ -8,6 +8,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 Rev 5: all 300 base controls and every High-baseline control (523 ids)
+
+The module evaluates 523 ids (was 370): all 300 active base controls and 223 enhancements, which is every control
+the 800-53B Low, Moderate and High baselines and the FedRAMP Rev 5 Low, Moderate and High baselines select
+(`baseline_results`: 149, 287, 370, 156, 323, 410 evaluated, none missing). Privacy baseline: 77 of 96.
+
+- 153 ids added in 16 families (45 base controls, 108 enhancements), from NIST's OSCAL catalog 5.2.0. Each fails
+  closed, compares organization-defined values under `odp.`, guards every number; 145 are evidence-based and 8 take
+  an attestation (AU-14 in part, CA-8(1), IR-9(3), SC-31, SC-37, SC-38, SC-48, SI-23).
+- **Strict booleans:** 62 older rules in AU (10), CM (11), IA (10), IR (6), SC (13) and SI (12) passed on any
+  truthy value (`"yes"`, `1`, `"false"`, an object). They now pass only on `true`; any other value is "evidence
+  missing" and `false` keeps the rule's message. Collectors that send booleans as strings will see findings.
+- `control_results` on `{}`: 475 evidence missing, 48 not attested, 0 fail. 1,216 tests in the module.
+- Report lookups read the grouped findings and baseline membership once (whole-object `object.get`).
+
 ### Added — waivers: required fields, maximum time to live, expiring soon
 
 - `governance/exceptions/waivers.rego` reads optional site settings at `data.waivers.settings`:
