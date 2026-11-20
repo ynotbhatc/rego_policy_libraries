@@ -198,6 +198,7 @@
 | `frameworks/federal/fisma` | 4 | 8 | — (0) | 4/4 |
 | `benchmarks/stig/ubuntu_20_04` | 1 | 7 | — (0) | 1/1 |
 | `governance/estate_continuity` | 1 | 7 | — (0) | 1/1 |
+| `governance/exceptions` | 1 | 5 | — (0) | 1/1 |
 | `enforcement/repo` | 1 | 4 | — (0) | 1/1 |
 | `governance/mcp` | 1 | 4 | — (0) | 1/1 |
 | `frameworks/management/corporate` | 4 | 3 | — (0) | 4/4 |
@@ -205,7 +206,6 @@
 | `benchmarks/supply_chain/baseline` | 1 | 1 | — (0) | 1/1 |
 | `benchmarks/supply_chain/scrm_800_161` | 1 | 1 | — (0) | 1/1 |
 | `enforcement/git` | 2 | 1 | — (0) | 2/2 |
-| `governance/exceptions` | 1 | 1 | — (0) | 1/1 |
 | `benchmarks/supply_chain/coverage` | 1 | 0 | — (0) | 1/1 |
 | `benchmarks/supply_chain/metrics` | 1 | 0 | — (0) | 1/1 |
 | `benchmarks/supply_chain/s2c2f` | 1 | 0 | — (0) | 1/1 |
