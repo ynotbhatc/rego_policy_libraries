@@ -16,6 +16,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   reaches its 800-53 controls in `crosswalk.correlation` and the OSCAL baseline coverage.
 - Windows Server 2016 / 2019 stay unmapped: DISA retired both in July 2026 and their XCCDF is not in the
   compilation.
+### Added — waivers: required fields, maximum time to live, expiring soon
+
+- `governance/exceptions/waivers.rego` reads optional site settings at `data.waivers.settings`:
+  `required_fields` (for example `["reason", "approver", "mitigation"]`), `max_ttl_days` and
+  `expiring_within_days` (default 14). Entries may carry `mitigation` and `evidence_ref`.
+- An unexpired entry that matches a finding but breaks a setting is not applied: the finding stays active and
+  the entry is listed in the new `rejected` set with the reasons (`rejected_count` alongside). A malformed
+  setting rejects every entry. `expiring_soon` lists applied waivers that run out inside the window.
+- No settings loaded: the decision is unchanged apart from the three new, empty keys.
 
 ### Added — STIG results roll up onto NIST SP 800-53 (crosswalk.correlation)
 
