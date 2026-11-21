@@ -353,7 +353,7 @@ def control_results_tests(pkg, recs, head, mixed, compliant, scopes):
            '\t\tc.basis in {"evidence", "attestation"}\n'
            '\t\tc.in_scope == (c.status != "not_applicable")\n'
            "\t\tis_array(c.profile)\n\t\tcount(c.profile) > 0\n"
-           '\t\tevery k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence"} }\n'
+           '\t\tevery k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence", "findings"} }\n'
            "\t}\n}\n"]
     cases = [("empty_input", "{}")] + list(mixed) + list(compliant)
     for label, expr in cases:

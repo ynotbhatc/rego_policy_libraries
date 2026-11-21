@@ -95,7 +95,8 @@ section_compliance := {r.name: {
 
 # ---------------------------------------------------------------------------------------------------------------
 # control_results: one object per recommendation of the benchmark (section rows and the Manual ledger) in natural
-# id order, with its status, basis, scope, profile tags and the input paths its decision reads. CONTROL_INDEX (the
+# id order, with its status, basis, scope, profile tags, the input paths its decision reads and the findings that
+# cite it. CONTROL_INDEX (the
 # static part: id, basis, profile, evidence) is written by the generator below this body; only the status is
 # computed here, from the per-row statuses above (no row is evaluated twice) and the attestation ledger, so it
 # cannot disagree with total_controls, failed_controls or the violations. Status mapping: pass -> pass,
@@ -129,10 +130,24 @@ _status(e) := s if {
 	s := _attested_status(e.id)
 }
 
+# findings: the violation messages whose "CIS <id>: " prefix cites the recommendation (the observed value is in
+# the "-- found:" part), grouped once per message; object.get reads the grouped rule whole (a keyed lookup would
+# re-evaluate it per id). Empty for a pass and for a recommendation outside the profile.
+_findings_by_id[cid] contains v if {
+	some v in all_violations
+	ms := regex.find_all_string_submatch_n(`^CIS ([0-9]+(?:\.[0-9]+)*): `, v, 1)
+	count(ms) == 1
+	cid := ms[0][1]
+}
+
+_row_findings(s, _) := [] if s == "not_applicable"
+
+_row_findings(s, id) := sort(object.get(_findings_by_id, id, set())) if s != "not_applicable"
+
 control_results := [r |
 	some e in CONTROL_INDEX
 	s := _status(e)
-	r := object.union(e, {"status": s, "in_scope": s != "not_applicable"})
+	r := object.union(e, {"status": s, "in_scope": s != "not_applicable", "findings": _row_findings(s, e.id)})
 ]
 
 _statuses := [r.status | some r in control_results]

@@ -45,7 +45,7 @@ test_control_results_fields if {
 		c.basis in {"evidence", "attestation"}
 		c.in_scope == c.status != "not_applicable"
 		count(c.profile) > 0
-		every k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence"} }
+		every k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence", "findings"} }
 	}
 	sum([n | some n in r.control_result_counts]) == r.benchmark_total_controls
 	count([c | some c in r.control_results; c.in_scope]) == r.benchmark_total_controls

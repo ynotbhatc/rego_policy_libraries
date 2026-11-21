@@ -39,7 +39,7 @@ test_control_results_fields_and_statuses if {
 		c.in_scope == c.status != "not_applicable"
 		is_array(c.profile)
 		count(c.profile) > 0
-		every k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence"} }
+		every k in object.keys(c) { k in {"id", "status", "basis", "in_scope", "profile", "evidence", "findings"} }
 		count(c.evidence) > 0
 	}
 }
