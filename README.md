@@ -120,6 +120,8 @@ Every framework, its path and what it covers: [docs/FRAMEWORKS.md](docs/FRAMEWOR
 | You are | Start here |
 |---|---|
 | Running OPA and want checks for a platform | [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md), then `opa eval` as above |
+| Trying a framework other than RHEL 9 | [docs/QUICKSTARTS.md](docs/QUICKSTARTS.md): Windows Server 2022, M365, NIST 800-53, PCI DSS, Kubernetes and AWS, each with an input and the expected result |
+| Judging how far to trust a framework | The label table in [COVERAGE.md](COVERAGE.md): validated, partial or experimental, with the evidence |
 | Gating CI, Terraform, containers or Ansible | [docs/INTEGRATIONS.md](docs/INTEGRATIONS.md) and [`enforcement/`](enforcement/) |
 | Writing or fixing a policy | [CONTRIBUTING.md](CONTRIBUTING.md), [CLAUDE.md](CLAUDE.md) for the house rules, `make test` |
 | Preparing an audit or an authorisation package | [docs/FRAMEWORKS.md](docs/FRAMEWORKS.md) for scope, the OSCAL exports below for evidence |
