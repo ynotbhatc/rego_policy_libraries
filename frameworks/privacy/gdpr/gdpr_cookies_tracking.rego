@@ -179,6 +179,7 @@ consent_records if {
 	input.cookies.consent.records.user_id_or_session.stored == true
 	input.cookies.consent.records.choices_stored == true
 	input.cookies.consent.records.cmp_version.stored == true
+	is_number(input.cookies.consent.records.retention_months)
 	input.cookies.consent.records.retention_months >= 24
 }
 

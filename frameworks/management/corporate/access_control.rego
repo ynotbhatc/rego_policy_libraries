@@ -238,6 +238,7 @@ privileged_controls_adequate(user) if {
 	user.mfa_enabled == true
 	user.session_recording == true
 	user.access_approval_workflow == true
+	is_number(user.privileged_access_review_frequency)
 	user.privileged_access_review_frequency <= 30 # 30 days
 	user.just_in_time_access == true
 }
@@ -534,7 +535,9 @@ login_monitoring_configured if {
 	# All login attempts must be logged and monitored
 	every system in input.systems {
 		system.login_monitoring.enabled == true
+		is_number(system.login_monitoring.failed_attempts_threshold)
 		system.login_monitoring.failed_attempts_threshold <= 5
+		is_number(system.login_monitoring.lockout_duration)
 		system.login_monitoring.lockout_duration >= 30 # minutes
 	}
 }
@@ -611,6 +614,7 @@ mfa_policy_enforced if {
 	# MFA policy must be technically enforced
 	input.mfa_policy.enforcement_mode == "enforced"
 	input.mfa_policy.bypass_allowed == false
+	is_number(input.mfa_policy.session_timeout_minutes)
 	input.mfa_policy.session_timeout_minutes <= 480 # 8 hours max
 }
 

@@ -101,6 +101,7 @@ transaction_completeness_verified if {
 	input.data_processing.transactions.sequence_checking == true
 	input.data_processing.transactions.batch_totals == true
 	input.data_processing.transactions.reconciliation.enabled == true
+	is_number(input.data_processing.transactions.reconciliation.frequency_hours)
 	input.data_processing.transactions.reconciliation.frequency_hours <= 24
 }
 

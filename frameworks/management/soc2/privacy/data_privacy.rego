@@ -121,7 +121,9 @@ default breach_notification_procedures := false
 
 breach_notification_procedures if {
 	input.privacy.breach_notification.procedures_documented == true
+	is_number(input.privacy.breach_notification.timeline_compliance.authorities)
 	input.privacy.breach_notification.timeline_compliance.authorities <= 72 # hours
+	is_number(input.privacy.breach_notification.timeline_compliance.individuals)
 	input.privacy.breach_notification.timeline_compliance.individuals <= 72 # hours
 	input.privacy.breach_notification.assessment_criteria.defined == true
 }
@@ -221,6 +223,7 @@ default data_subject_request_handling := false
 data_subject_request_handling if {
 	input.privacy.data_subject_requests.automated_workflow == true
 	input.privacy.data_subject_requests.identity_verification == true
+	is_number(input.privacy.data_subject_requests.response_timeline)
 	input.privacy.data_subject_requests.response_timeline <= 30 # days
 	input.privacy.data_subject_requests.request_logging == true
 }
