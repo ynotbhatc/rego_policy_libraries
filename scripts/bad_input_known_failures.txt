@@ -2,7 +2,7 @@
 # entrypoints that pass, go undefined or error on empty / missing / null / string-typed input.
 # `make check-bad-input` fails only on a failure NOT listed here. Fix the module, then regenerate.
 # Format: <package> <case> <kind>: <detail>. Kinds: pass, score-rise, undefined, error.
-# 195 entrypoints, 119 with an all-pass fixture, 8146 cases, 1315 failures in 81 packages.
+# 195 entrypoints, 119 with an all-pass fixture, 8146 cases, 1307 failures in 79 packages.
 # Entrypoints without an all-pass fixture (base cases only): 76
 
 aca_155_260.main keys_null undefined: compliance_report is undefined
@@ -145,7 +145,6 @@ cis_azure.main boolstr:virtual_networks[0].enableDdosProtection pass: compliant=
 cis_azure.main boolstr:virtual_networks[0].subnets[0].defaultOutboundAccess pass: compliant=true score=100
 cis_azure.main numstr:network_security_groups[0].securityRules[0].priority pass: compliant=true score=100
 cis_azure.main numstr:network_security_groups[0].securityRules[2].priority pass: compliant=true score=100
-cis_azure.main numstr:storage_accounts[0].blob_service_properties.deleteRetentionPolicy.days pass: compliant=true score=100
 cis_docker.main boolstr:docker.containers[0].Mounts[0].RW pass: compliant=true score=100
 cis_docker.main boolstr:docker.containers[0].State.Running pass: compliant=true score=100
 cis_docker.main boolstr:docker.containers[1].Mounts[0].RW pass: compliant=true score=100
@@ -260,7 +259,6 @@ cis_oci.main numstr:oci.network.security_groups[0].ingress[0].port_max pass: com
 cis_oci.main numstr:oci.network.security_groups[0].ingress[0].port_min pass: compliant=true score=null
 cis_oci.main numstr:oci.network.security_lists[1].ingress[0].port_max pass: compliant=true score=null
 cis_oci.main numstr:oci.network.security_lists[1].ingress[0].port_min pass: compliant=true score=null
-cis_oci.main numstr:oci.notifications.topics[0].subscriptions pass: compliant=true score=null
 cis_openshift.main boolstr:kubelet.nodes[0].config.authentication.webhook.enabled pass: compliant=true score=100
 cis_openshift.main boolstr:kubelet.nodes[1].config.authentication.webhook.enabled pass: compliant=true score=100
 cis_openshift.main boolstr:scc.items[0].allowHostIPC pass: compliant=true score=100
@@ -1093,17 +1091,11 @@ nist.csf.main boolstr:nist_csf.subcategories.PR.AA-05 pass: compliant=true score
 nist.csf.main boolstr:nist_csf.subcategories.PR.DS-01 pass: compliant=true score=null
 nist.csf.main boolstr:nist_csf.subcategories.PR.DS-02 pass: compliant=true score=null
 nist.csf.main boolstr:nist_csf.subcategories.RC.RP-01 pass: compliant=true score=null
-nist.sp800_53.main boolstr:ac_controls.wireless_access.monitored_usage pass: compliant=true score=null
 nist_800_171.main boolstr:nist_800_171.identification_authentication.inactivity_disable.policy_defined pass: compliant=true score=null
 nist_800_171.main boolstr:nist_800_171.identification_authentication.password_reuse.enforcement_automated pass: compliant=true score=null
 nist_800_171.main boolstr:nist_800_171.system_communications.split_tunneling.policy_enforced pass: compliant=true score=null
 nist_800_171.main boolstr:nist_800_171.system_communications.split_tunneling.prevention_implemented pass: compliant=true score=null
-nist_800_171.main numstr:cui_access.logon_limits.lockout_duration pass: compliant=true score=null
-nist_800_171.main numstr:nist_800_171.audit_accountability.audit_logs.retention_period_days pass: compliant=true score=null
-nist_800_171.main numstr:nist_800_171.identification_authentication.password_complexity.minimum_length pass: compliant=true score=null
 nist_800_171.main numstr:nist_800_171.identification_authentication.password_reuse.generations_remembered pass: compliant=true score=null
-nist_800_171.main numstr:nist_800_171.physical_protection.access_logs.retention_period_days pass: compliant=true score=null
-nist_800_53.main boolstr:ac_controls.wireless_access.monitored_usage pass: compliant=true score=null
 nist_csf.main boolstr:detect.continuous_monitoring.external_provider_activity_monitored pass: compliant=true score=null
 nist_csf.main boolstr:detect.continuous_monitoring.physical_environment_monitored pass: compliant=true score=null
 nist_csf.main boolstr:identify.risk_assessment.potential_impacts_identified pass: compliant=true score=null
