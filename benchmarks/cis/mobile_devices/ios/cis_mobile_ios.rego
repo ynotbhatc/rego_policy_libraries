@@ -573,6 +573,7 @@ _v_2 contains "2.4.2: an alphanumeric passcode must be required" if {
 default r_2_4_3 := false
 
 r_2_4_3 if {
+	is_number(input.ios_profile.passcode.minLength)
 	input.ios_profile.passcode.minLength >= 6
 }
 
@@ -597,6 +598,7 @@ _v_2 contains "2.4.3: the passcode must be at least 6 characters" if {
 default r_2_4_4 := false
 
 r_2_4_4 if {
+	is_number(input.ios_profile.passcode.maxInactivity)
 	input.ios_profile.passcode.maxInactivity >= 1
 	input.ios_profile.passcode.maxInactivity <= 2
 }
@@ -1779,6 +1781,7 @@ _v_3 contains "3.4.2: an alphanumeric passcode must be required" if {
 default r_3_4_3 := false
 
 r_3_4_3 if {
+	is_number(input.ios_profile.passcode.minLength)
 	input.ios_profile.passcode.minLength >= 6
 }
 
@@ -1803,6 +1806,7 @@ _v_3 contains "3.4.3: the passcode must be at least 6 characters" if {
 default r_3_4_4 := false
 
 r_3_4_4 if {
+	is_number(input.ios_profile.passcode.maxInactivity)
 	input.ios_profile.passcode.maxInactivity >= 1
 	input.ios_profile.passcode.maxInactivity <= 2
 }

@@ -106,3 +106,11 @@ test_database_vault_attested_not_required_passes if {
 test_database_vault_without_attestation_fails if {
 	not p.database_vault_configured with input as {"oracle": {"database_vault": {"enabled": false}}}
 }
+
+# #300 type traps: a non-number must not pass sec_max_failed_login_attempts_set.
+test_sec_max_failed_login_attempts_set_number_type_traps if {
+	data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": 3}}}
+	not data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": "1"}}}
+	not data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": null}}}
+	not data.cis.oracle_19c.sec_max_failed_login_attempts_set with input as {"oracle": {"init_parameters": {"sec_max_failed_login_attempts": "not-a-number"}}}
+}

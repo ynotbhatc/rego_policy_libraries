@@ -17,3 +17,11 @@ test_report_defined_when_one_check_fails if {
 	r.auto_lock_timeout == true
 	r.overall_compliant == false
 }
+
+# #300 type traps: a non-number must not pass max_failed_password_attempts.
+test_max_failed_password_attempts_number_type_traps if {
+	data.cis.mobile.android.max_failed_password_attempts with input as {"device_config": {"password_policy": {"max_failed_attempts": 5}}}
+	not data.cis.mobile.android.max_failed_password_attempts with input as {"device_config": {"password_policy": {"max_failed_attempts": "1"}}}
+	not data.cis.mobile.android.max_failed_password_attempts with input as {"device_config": {"password_policy": {"max_failed_attempts": null}}}
+	not data.cis.mobile.android.max_failed_password_attempts with input as {"device_config": {"password_policy": {"max_failed_attempts": "not-a-number"}}}
+}

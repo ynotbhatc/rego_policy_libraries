@@ -95,6 +95,7 @@ screen_lock_enabled if {
 
 # CIS 1.2 - required value of minimum password length is 6 or greater
 password_min_length if {
+	is_number(input.device_config.password_policy.min_length)
 	input.device_config.password_policy.min_length >= 6
 }
 
@@ -109,23 +110,27 @@ password_complexity if {
 
 # CIS 1.4 - required value of maximum failed password attempts is 10 or less
 max_failed_password_attempts if {
+	is_number(input.device_config.password_policy.max_failed_attempts)
 	input.device_config.password_policy.max_failed_attempts <= 10
 	input.device_config.password_policy.max_failed_attempts > 0
 }
 
 # CIS 1.5 - required value of auto-lock timeout is 5 minutes or less
 auto_lock_timeout if {
+	is_number(input.device_config.screen_lock.timeout_minutes)
 	input.device_config.screen_lock.timeout_minutes <= 5
 	input.device_config.screen_lock.timeout_minutes > 0
 }
 
 # CIS 1.6 - password history must be turned on
 password_history if {
+	is_number(input.device_config.password_policy.history_length)
 	input.device_config.password_policy.history_length >= 4
 }
 
 # CIS 1.7 - required value of password expiration is 90 days or less
 password_expiration if {
+	is_number(input.device_config.password_policy.expiration_days)
 	input.device_config.password_policy.expiration_days <= 90
 	input.device_config.password_policy.expiration_days > 0
 }

@@ -31,6 +31,7 @@ as_set(v) := {trim_space(x) | some x in split(v, ","); trim_space(x) != ""} if i
 default password_history_enforced := false
 
 password_history_enforced if {
+	is_number(input.security_policy.password_history)
 	input.security_policy.password_history >= 24
 }
 
@@ -38,6 +39,7 @@ password_history_enforced if {
 default password_max_age := false
 
 password_max_age if {
+	is_number(input.security_policy.password_max_age)
 	input.security_policy.password_max_age <= 365
 	input.security_policy.password_max_age > 0
 }
@@ -46,6 +48,7 @@ password_max_age if {
 default password_min_age := false
 
 password_min_age if {
+	is_number(input.security_policy.password_min_age)
 	input.security_policy.password_min_age >= 1
 }
 
@@ -53,6 +56,7 @@ password_min_age if {
 default password_min_length := false
 
 password_min_length if {
+	is_number(input.security_policy.password_min_length)
 	input.security_policy.password_min_length >= 14
 }
 
@@ -74,6 +78,7 @@ reversible_encryption_disabled if {
 default account_lockout_duration := false
 
 account_lockout_duration if {
+	is_number(input.security_policy.account_lockout_duration)
 	input.security_policy.account_lockout_duration >= 15
 }
 
@@ -81,6 +86,7 @@ account_lockout_duration if {
 default account_lockout_threshold := false
 
 account_lockout_threshold if {
+	is_number(input.security_policy.account_lockout_threshold)
 	input.security_policy.account_lockout_threshold <= 5
 	input.security_policy.account_lockout_threshold > 0
 }
@@ -89,6 +95,7 @@ account_lockout_threshold if {
 default lockout_counter_reset := false
 
 lockout_counter_reset if {
+	is_number(input.security_policy.lockout_counter_reset)
 	input.security_policy.lockout_counter_reset >= 15
 }
 
@@ -340,6 +347,7 @@ disable_machine_password_changes if {
 default machine_password_max_age := false
 
 machine_password_max_age if {
+	is_number(input.security_options.machine_password_max_age)
 	input.security_options.machine_password_max_age <= 30
 	input.security_options.machine_password_max_age > 0
 }

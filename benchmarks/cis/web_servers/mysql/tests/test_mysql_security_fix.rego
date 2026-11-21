@@ -61,3 +61,11 @@ test_report_populated_on_empty_input if {
 	r.overall_compliant == false
 	count(r) == 34
 }
+
+# #300 type traps: a non-number must not pass log_error_verbosity_appropriate.
+test_log_error_verbosity_appropriate_number_type_traps if {
+	data.cis.server.mysql.log_error_verbosity_appropriate with input as {"mysql_config": {"log_error_verbosity": 2}}
+	not data.cis.server.mysql.log_error_verbosity_appropriate with input as {"mysql_config": {"log_error_verbosity": "1"}}
+	not data.cis.server.mysql.log_error_verbosity_appropriate with input as {"mysql_config": {"log_error_verbosity": null}}
+	not data.cis.server.mysql.log_error_verbosity_appropriate with input as {"mysql_config": {"log_error_verbosity": "not-a-number"}}
+}
