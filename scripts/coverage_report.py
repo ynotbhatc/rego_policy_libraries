@@ -13,6 +13,7 @@ or it does not. See CONTRIBUTING.md for the pattern.
 """
 
 import collections
+import json
 import pathlib
 import re
 import subprocess
@@ -20,6 +21,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SKIP = {".git", ".github", "scripts"}
+LABELS_FILE = ROOT / "scripts" / "coverage_labels.json"
+LABELS = ("validated", "partial", "experimental")
 
 
 def is_test(p: pathlib.Path) -> bool:
@@ -29,6 +32,33 @@ def is_test(p: pathlib.Path) -> bool:
 def package_of(p: pathlib.Path) -> str:
     m = re.search(r"^package\s+([\w.]+)", p.read_text(errors="ignore"), re.M)
     return m.group(1) if m else ""
+
+
+def framework_keys() -> list[str]:
+    """Every framework key: the package holding a compliance_report entrypoint, as the wasm build finds them."""
+    sys.path.insert(0, str(ROOT / "converters" / "packaging" / "wasm"))
+    import build as wasm_build  # noqa: E402
+    eps = set()
+    for c in wasm_build.discover().values():
+        eps |= {e for e in c["entrypoints"] if e.endswith("/compliance_report")}
+    keys = set()
+    for e in eps:
+        pkg = e[: -len("/compliance_report")]
+        keys.add((pkg[: -len("/main")] if pkg.endswith("/main") else pkg).replace("/", "."))
+    return sorted(keys)
+
+
+def coverage_labels(keys: list[str]) -> tuple[dict, list[str], list[str]]:
+    """Return ({key: entry}, unlabelled keys, errors). A key without an entry is experimental."""
+    data = json.loads(LABELS_FILE.read_text())["coverage_labels"]
+    fw = data["frameworks"]
+    errors = [f"{k}: label {v.get('label')!r} is not one of {', '.join(LABELS)}"
+              for k, v in fw.items() if v.get("label") not in LABELS]
+    errors += [f"{k}: label {v['label']} needs an 'evidence' string saying where"
+               for k, v in fw.items() if v.get("label") in ("validated", "partial") and not v.get("evidence")]
+    errors += [f"{k}: labelled but no such framework key" for k in fw if k not in keys]
+    unlabelled = [k for k in keys if k not in fw]
+    return fw, unlabelled, errors
 
 
 def main() -> int:
@@ -54,6 +84,31 @@ def main() -> int:
       "`python3 scripts/coverage_report.py > COVERAGE.md`\n")
     w(f"**{covered} of {total} policy files have tests ({pct}%).** "
       f"{len(tests)} test files, {len(untested)} policies still uncovered.\n")
+    keys = framework_keys()
+    labels, unlabelled, errors = coverage_labels(keys)
+    if errors:
+        sys.stderr.write("scripts/coverage_labels.json:\n  " + "\n  ".join(errors) + "\n")
+        return 1
+    counts = collections.Counter(labels.get(k, {}).get("label", "experimental") for k in keys)
+    w("## How far each framework has been validated\n")
+    w("A passing unit test proves a rule does what its author meant; it does not prove the rule reads what a real")
+    w("collector sends. Every framework key carries one label, kept in `scripts/coverage_labels.json`:\n")
+    w("- **validated**: run against real host or tenant evidence and the results checked; the evidence column says where.")
+    w("- **partial**: rules implemented and unit-tested, but the evidence or collector is incomplete, or the module")
+    w("  covers a subset of the benchmark; the evidence column says what is missing.")
+    w("- **experimental**: generated or new, not yet run on real evidence. Treat its results as unverified.\n")
+    w(f"**{len(keys)} framework keys: {counts['validated']} validated, {counts['partial']} partial, "
+      f"{counts['experimental']} experimental.**\n")
+    w("| framework key | label | modules | evidence |")
+    w("|---|---|---|---|")
+    ranked = sorted(keys, key=lambda k: (LABELS.index(labels.get(k, {}).get("label", "experimental")), k))
+    for k in ranked:
+        e = labels.get(k, {})
+        label = e.get("label", "experimental") + ("" if k in labels else " (unlabelled)")
+        mods = f"`{e['modules']}`" if e.get("modules") else ""
+        w(f"| `{k}` | {label} | {mods} | {e.get('evidence', '')} |")
+    w("")
+
     w("## Why this file exists\n")
     w("This library is maintained on a best-effort basis and it is free. Publishing")
     w("the gap is cheaper than hiding it, and it answers \"where can I help?\"")

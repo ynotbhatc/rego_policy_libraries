@@ -6,6 +6,8 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 
 ## Coverage at a glance
 
+Each framework key is labelled validated, partial or experimental in [`scripts/coverage_labels.json`](../scripts/coverage_labels.json); the table is in [COVERAGE.md](../COVERAGE.md). Only CIS RHEL 9, CIS Windows Server 2022 and CIS M365 v7 are validated today; a row below says what a module holds, not that it has been run on real evidence.
+
 | Standard / Framework | Path | Controls / Requirements |
 |---------------------|------|------------------------|
 | **CIS RHEL 9 v3.0.0** | `benchmarks/cis/rhel_9/` | All 352 recommendations, generated from the benchmark's workbook (20 modules, including three STIG/NIST extension modules that are not benchmark recommendations); the deprecated v1.0.0 `cis.rhel_9` package was removed |
@@ -24,7 +26,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | Network devices — Cisco, Juniper, Palo Alto, Fortinet, Arista, VyOS, pfSense | `benchmarks/cis/network_devices/` | Full |
 | CIS AWS / Azure / GCP | `benchmarks/cis/cloud/` | Foundations |
 | CIS Docker / Kubernetes / OpenShift | `benchmarks/cis/containers/` | Full |
-| **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library; Oracle from October 2026; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator |
+| **DISA STIGs — 25 platforms** (RHEL 8/9, **Oracle Linux 8/9**, Windows Server 2016/2019/2022/**2025**, Windows 10/11, Ubuntu 20.04/22.04, Amazon Linux 2023, SLES 15, **Kubernetes (all 92 rules, V2R6)**, **RGS RKE2 (all 21 rules, V2R7)**, OpenShift 4, Crunchy Postgres 16, SQL 2016, **Oracle Database 19c**, **Oracle MySQL 8.0**, Apache 2.4, Cisco IOS-XE, vSphere 8 ESXi) | `benchmarks/stig/` | Per-rule findings with XCCDF-verified IDs (July 2026 library; Oracle from October 2026; Kubernetes V2R6 and RKE2 V2R7 verified 2026-10-21); every rule of the two Oracle database STIGs, Kubernetes and RKE2; all CAT I on new platforms; fail-closed entrypoints; coverage-of-total stated per aggregator; **RHEL 9 V2R10 is partial**: 104 rules checked against DISA's text and run on a real host, about 45 fact paths not collected yet ([README](../benchmarks/stig/rhel_9/README.md)) |
 | NIST 800-53 Rev 5 | `frameworks/federal/nist/sp_800_53/` | All 20 families; 523 controls and enhancements of the 1,014 active in the Rev 5 catalog (release 5.2.0): all 300 base controls plus 223 enhancements, each its own finding, covering every control of the 800-53B Low (149), Moderate (287) and High (370) baselines and the FedRAMP Rev 5 Low (156), Moderate (323) and High (410) baselines; Privacy baseline 77 of 96. Organizational controls with no machine-checkable evidence require a signed attestation. Per-control results (pass, fail, evidence missing, not attested) and per-baseline results for 800-53B Low/Moderate/High/Privacy and FedRAMP Low/Moderate/High (evaluated, passed, not evaluated), not a baseline authorization; withdrawn controls not assessed; organization-defined parameters supplied as input |
 | NIST 800-82 (OT) | `frameworks/critical_infrastructure/nist_800_82/` | Full |
 | FISMA | `frameworks/federal/` | Full |
@@ -43,7 +45,7 @@ Every implemented standard is tracked in [`../STANDARDS_UPDATE_REGISTRY.md`](../
 | NCSC CAF 4.0 | `frameworks/compliance/ncsc_caf/` | 23 Cyber Outcomes |
 | Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
 | **CSA CCM v4.0** | `frameworks/management/csa_ccm/` | 16 domains, 197 controls |
-| **ISO/IEC 27701:2019** | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
+| **ISO/IEC 27701:2019** (**experimental, not validated**: not checked against the standard's text, never run on real evidence; [README](../frameworks/privacy/iso27701/README.md)) | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
 | **NIST SP 800-171 Rev 3** | `frameworks/federal/nist/sp_800_171/` | 17 families, all 97 requirements with their 349 statements, ids and text from NIST's CPRT export; 79 decided by facts, 18 attested; 33 withdrawn listed with reasons |
 | **NIST SP 800-171A Rev 3** | `frameworks/federal/nist/sp_800_171a/` | all 422 assessment determination statements, rolled up per requirement; examine / interview / test methods carried as data |
 | **NIST SP 800-171 Rev 2** | `frameworks/federal/nist/sp_800_171_r2/` | the 110 requirements DFARS 7012 and CMMC 2.0 Level 2 still assess, basic / derived classification from CPRT |
