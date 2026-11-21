@@ -9,6 +9,11 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Weekly run against whatever OPA release is newest that day (job latest-opa), so a break in
+  # a new OPA shows up within a week instead of when someone bumps the pinned leg.
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,9 +28,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # 1.10.0 is the floor this library ships against. 1.22.0 is the newest
-        # stable release as of 2026-11-01; bump the second entry on a new OPA release.
-        opa: ["1.10.0", "1.22.0"]
+        # 1.10.0 is the oldest supported OPA and the version the published bundle is built with.
+        # 1.22.4 is the newest stable release as of 2026-11-21; bump it (and NEWEST_PINNED_OPA
+        # below) on a new OPA release. The weekly latest-opa job tests the newest release unpinned.
+        opa: ["1.10.0", "1.22.4"]
 
     steps:
       - name: Checkout
@@ -60,7 +66,7 @@ jobs:
 
       - name: Regal — the bugs category must stay clean (.regal/ci.yaml)
         # One leg is enough: the linter does not depend on the OPA version under test.
-        if: matrix.opa == '1.22.0'
+        if: matrix.opa == '1.22.4'
         env:
           REGAL_VERSION: "0.36.1"
           REGAL_SHA256: "75509b89de9d2fa12ac30157cc7269e7abc61e8c4c407a29ce897b681a78f8a4"
@@ -102,14 +108,14 @@ jobs:
         run: |
           # Per-class bundles only: the combined "all" bundle peaks near the runner's 16 GB.
           # converters.yml still builds it on every release tag.
-          # The build runs on the 1.22.0 leg only. On 1.10.0 the runner was shut down during this
+          # The build runs on the newest pinned leg (1.22.4) only. On 1.10.0 the runner was shut down during this
           # step often enough (main at ea38b446, and the next pull request) that the leg's tests
           # never ran; the bundle build does not depend on the OPA version under test, so one leg
           # proves it. The round-trip and dist/ staleness checks below still run on both legs.
-          if [ "${OPA_LEG}" = "1.22.0" ]; then
+          if [ "${OPA_LEG}" = "1.22.4" ]; then
             make wasm-classes
           else
-            echo "wasm bundle build skipped on OPA ${OPA_LEG}; it runs on the 1.22.0 leg"
+            echo "wasm bundle build skipped on OPA ${OPA_LEG}; it runs on the 1.22.4 leg"
           fi
           python3 -m pip install -q jsonschema
           make check-converters 2>&1 | tee /tmp/cc.log
@@ -281,3 +287,34 @@ jobs:
           result="${{ needs.validate.result }}"
           echo "OPA matrix result: ${result}"
           [ "${result}" = "success" ]
+
+  # Weekly (and on demand) only: the newest OPA release, unpinned, so a change in a new OPA
+  # (e.g. a built-in tightening, as with the CMMC `split` break) shows up within a week.
+  # Not part of the required check: a new OPA release must not block PRs on its own.
+  latest-opa:
+    name: Newest OPA release (weekly)
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - name: Install the newest OPA release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag=$(gh release view --repo open-policy-agent/opa --json tagName --jq .tagName)
+          echo "Newest OPA release: ${tag}"
+          curl -fsSL -o opa_linux_amd64_static \
+            "https://github.com/open-policy-agent/opa/releases/download/${tag}/opa_linux_amd64_static"
+          curl -fsSL -o opa.sha256 \
+            "https://github.com/open-policy-agent/opa/releases/download/${tag}/opa_linux_amd64_static.sha256"
+          sha256sum -c opa.sha256
+          chmod +x opa_linux_amd64_static
+          sudo mv opa_linux_amd64_static /usr/local/bin/opa
+          opa version
+
+      - name: Strict check and full test suite
+        run: |
+          opa check --strict benchmarks frameworks governance threat_detection crosswalk enforcement
+          opa test . --ignore .github --ignore converters --timeout 30s
