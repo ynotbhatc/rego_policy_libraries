@@ -51,22 +51,39 @@ baseline listing the baseline controls the library evaluates (see baseline cover
 
 ## assessment-results
 
+Any framework key, from the command line, schema-validated:
+
 ```bash
-opa eval -f json -d benchmarks/cis/rhel_9 -i facts.json 'data.cis_rhel9.main.compliance_report' > report.json
-python3 converters/exports/oscal/build_assessment_results.py report.json -o results.json --subject host01 [--time 2026-10-12T00:00:00Z]
+opa eval -f json -d . -i facts.json 'data.<key>.main.compliance_report' > report.json        # e.g. nist_800_53, cis_rhel9
+python3 converters/exports/oscal/build_assessment_results.py report.json --key <key> -o results.json --validate \
+    --subject host01 [--time 2026-10-12T00:00:00Z]
+# also accepted: the OPA REST response of POST /v1/data/<key>/main/compliance_report, or the bare report
 ```
 
-One result per run: `reviewed-controls` lists every control of the frameworks that reported; one observation
-and one finding (`not-satisfied`, target = the control's statement part in the catalog) per distinct violation.
-A control is asserted `satisfied` only when the report carries `control_results` (CIS Windows, RHEL family and M365
-v7; NIST SP 800-53) and its row says `pass`: one observation (method `EXAMINE` when the row's basis is attestation,
-else `TEST`) and one `satisfied` finding on the control's statement. A row that does not resolve to exactly one catalog
-control is left out. Reports without `control_results` assert nothing satisfied: absence of a finding is not evidence.
-An orchestrator package that is not in the inventory (`nist.sp800_53.main`) takes the framework its sibling family
-packages share. Run it on the module package (`data.nist.sp800_53.main`); the `<key>.main` entrypoints are not resolved. Finding and observation uuids are
-uuid5 of (framework, control, message), so re-running on the same facts yields the same ids. Violations whose
-prefix is not a catalog control (section-level fail-closed notices) target a `statement-id` and carry
-`control-mapped: false`.
+`--key` names the package for REST and bare reports (the `opa eval` shape already carries it). `--validate` checks the
+document against `schema/oscal_assessment-results_schema.json` and exits 1 when it does not validate, 2 when
+`jsonschema` is missing. Several inputs make one result. The `<key>.main` entrypoints are bridges with no controls of
+their own (`nist_800_53.main` imports `nist.sp800_53.main`); the reader follows their imports to the framework.
+
+One result per run: `reviewed-controls` lists every control of the frameworks that reported.
+
+| report | assessment-results |
+|---|---|
+| `control_results` row `pass` | finding `satisfied` (reason `pass`) on the control's statement part; method `EXAMINE` when the row's basis is attestation, else `TEST` |
+| row `fail`, `evidence_missing`, `not_attested`, any other status | finding `not-satisfied`, the status as `reason`; `not_attested` is `EXAMINE` |
+| row `not_applicable` | an observation, no finding: neither satisfied nor failed |
+| row `pass` contradicted by a violation for the same control | `not-satisfied` (fail closed) |
+| row findings, and violations that map to the row's control | the finding's observations |
+| violation with no row (reports without `control_results`) | one observation and one `not-satisfied` finding (`reason: evidence_missing` when the message says so) |
+| row or violation id that is not a catalog control | target `statement-id`, `control-mapped: false`; kept, never dropped |
+
+A control is asserted `satisfied` only from a `control_results` `pass` row (NIST SP 800-53; CIS Windows, RHEL family
+and M365 v7): absence of a finding is not evidence. Finding and observation uuids are uuid5 of (framework, control,
+message), so re-running on the same facts yields the same ids.
+
+`../_lib/test/roundtrip.sh` (in `make check-converters`) evaluates every framework key on empty input in one `opa eval`,
+converts each bare report with `--key`, validates SARIF and OSCAL against the vendored schemas, checks every violation
+is a result and an observation and nothing is satisfied, and runs a fixture with every `control_results` status.
 
 ## profiles
 
