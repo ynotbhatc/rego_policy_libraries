@@ -8,6 +8,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — decisions of 2026-11-21
+
+- NIST 800-53 PT-6(1) and PT-6(2) are attestation-based
+  (`input.pt_controls.system_of_records_notice.{routine_uses,exemptions}.attestation`): a system with no system
+  of records cannot produce review evidence. Attestation-based ids: 64 → 66.
+- The AC family aggregate `nist_sp800_53_ac_compliant` (the AC report's `overall_compliant`) is true exactly when
+  no AC id has a finding; it used to check 34 of the 60 evaluated ids.
+- STIG RHEL 9 / RHEL 10 / Oracle Linux 8 / 9 follow DISA's check text: the pwquality ucredit, lcredit, dcredit and
+  ocredit rules pass at 0 or any negative value (only a positive or commented-out value is a finding), and
+  ClientAliveInterval "600 or less" no longer treats 0 as a finding. Fixed in the generator tables; modules,
+  tests, golden cases and the Linux collector contract regenerated.
+- CI runs every `examples/*/check.sh`; a monthly standards-watch workflow opens a "standards watch: YYYY-MM" issue
+  when an upstream release is newer than `standards.yaml` or a source cannot be read.
+- examples/nist_800_53 supplies the AC-3(14) facts again; its pins match the 542-id module.
+
 ### Fixed — the last unguarded numeric comparisons (#300)
 
 - STIG: the last 26 unguarded numeric comparisons (Kubernetes version gates and group ranges, RHEL 8 account_auth,
