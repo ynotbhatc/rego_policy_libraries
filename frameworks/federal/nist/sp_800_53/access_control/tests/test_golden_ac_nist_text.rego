@@ -30,7 +30,11 @@ _green := {"ac_controls": {
 		"usage_conditions": {"accounts_without_enforced_conditions": 0, "odp": {"conditions": ["business hours"], "accounts": ["batch-*"]}},
 		"atypical_usage": {"monitoring_enabled": true, "detections_not_reported": 0, "odp": {"atypical_usage": ["off-hours logon"], "report_to": ["soc"]}},
 	},
-	"access_enforcement": {"role_based_access_control": true},
+	"access_enforcement": {
+		"role_based_access_control": true,
+		# AC-3(14) (Privacy baseline): individuals can reach the organization-defined elements of their PII
+		"individual_access": {"mechanisms_implemented": true, "odp": {"elements": ["name", "address"]}, "elements_accessible": ["name", "address", "email"]},
+	},
 	"information_flow": {
 		"flow_control_policies": true, "automated_enforcement": true, "security_labels": true,
 		"encrypted_information": {"action_enforced": true, "uninspected_encrypted_flows": 0, "odp": {"mechanisms": ["egress proxy"], "action": "decrypt"}},
