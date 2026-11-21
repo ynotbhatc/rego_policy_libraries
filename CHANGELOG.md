@@ -14,6 +14,9 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   2027-01-19, compliance 2027-07-19) reviewed: it amends Subpart E (164.501-.525, .532) and 160.103 only, not the
   Security Rule (Subpart C). No rule logic changed; `standards.yaml` hipaa checked_through 2026-11-19. The
   `hipaa.privacy_rule` changes owed before 2027-07-19 are listed in STANDARDS_UPDATE_REGISTRY.md.
+- 45 CFR Part 160 amendment of 2026-03-24 / 2026-05-26 (claims attachments final rule, 91 FR 14350, FR doc
+  2026-05676; compliance 2028-05-26) reviewed: it changes only the 160.103 "Transaction" definition, which
+  `hipaa.part160` does not evaluate. The standards watch now covers 45 CFR Parts 160 and 164.
 
 ### Changed — decisions of 2026-11-21
 
