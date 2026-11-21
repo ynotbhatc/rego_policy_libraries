@@ -1157,11 +1157,13 @@ default r_cntr_k8_000460 := false
 
 r_cntr_k8_000460 if {
 	count(missing_r_cntr_k8_000460) == 0
+	is_number(_k8s_minor)
 	_k8s_minor > 25
 }
 
 r_cntr_k8_000460 if {
 	count(missing_r_cntr_k8_000460) == 0
+	is_number(_k8s_minor)
 	_k8s_minor <= 25
 	every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {
 		_gate_all(c, "DynamicKubeletConfig", "false")
@@ -2542,6 +2544,7 @@ r_cntr_k8_002000 if {
 
 r_cntr_k8_002000 if {
 	count(missing_r_cntr_k8_002000) == 0
+	is_number(_k8s_minor)
 	_k8s_minor >= 25
 	disabled := _csv_set(input.api_server.flags, "disable-admission-plugins")
 	not "ValidatingAdmissionWebhook" in disabled
@@ -2590,6 +2593,7 @@ r_cntr_k8_002001 if {
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) in {null, true}
 	_kubelet_config_in_use
+	is_number(_k8s_minor)
 	_k8s_minor >= 25
 }
 
@@ -2606,6 +2610,7 @@ r_cntr_k8_002001 if {
 	is_object(input.kubelet.config)
 	object.get(input.kubelet.config, ["featureGates", "PodSecurity"], null) in {null, true}
 	_kubelet_config_in_use
+	is_number(_k8s_minor)
 	_k8s_minor < 25
 	every c in [input.api_server.flags, input.controller_manager.flags, input.scheduler.flags] {
 		_gate_all(c, "PodSecurity", "true")
@@ -2645,21 +2650,25 @@ default r_cntr_k8_002010 := false
 
 r_cntr_k8_002010 if {
 	count(missing_r_cntr_k8_002010) == 0
+	is_number(_k8s_minor)
 	_k8s_minor >= 25
 }
 
 r_cntr_k8_002010 if {
 	count(missing_r_cntr_k8_002010) == 0
+	is_number(_k8s_minor)
 	_k8s_minor < 25
 	count(input.pod_security.policies) > 0
 	every p in input.pod_security.policies {
 		p.runAsUser.rule == "MustRunAsNonRoot"
 		count(p.supplementalGroups.ranges) > 0
 		every g in p.supplementalGroups.ranges {
+			is_number(g.min)
 			g.min > 0
 		}
 		count(p.fsGroup.ranges) > 0
 		every g in p.fsGroup.ranges {
+			is_number(g.min)
 			g.min > 0
 		}
 	}

@@ -76,6 +76,7 @@ finding_v_254247_password_history := {
 }
 
 password_history_status := "Not_a_Finding" if {
+	is_number(input.password_policy.password_history_size)
 	input.password_policy.password_history_size >= 24
 } else := "Open"
 
@@ -88,6 +89,7 @@ finding_v_254250_password_length := {
 }
 
 password_length_status := "Not_a_Finding" if {
+	is_number(input.password_policy.minimum_password_length)
 	input.password_policy.minimum_password_length >= 14
 } else := "Open"
 

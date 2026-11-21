@@ -1,6 +1,6 @@
 {
  "coverage_labels": {
-  "_comment": "One label per framework key (the package that holds <key>.main.compliance_report, dots for slashes). Read by scripts/coverage_report.py, which prints the label column in COVERAGE.md. 'validated' only where a run on real evidence is recorded; cite it in 'evidence'. A key missing here is reported as experimental.",
+  "_comment": "One label per framework key (the package that holds <key>.main.compliance_report, dots for slashes). Read by scripts/coverage_report.py, which prints the label column in COVERAGE.md. 'validated' only where a run on real evidence is recorded; cite it in 'evidence'. This file is the single source: `coverage_report.py --check` (CI) fails when a framework key has no entry, an entry names no key, or a module's METADATA carries its own label. scripts/build_site.py shows each label on the published site.",
   "definitions": {
    "validated": "Run against real host or tenant evidence and the results checked; 'evidence' says where.",
    "partial": "Rules implemented and unit-tested, but the evidence or collector is incomplete, or the module covers a subset of the benchmark; 'evidence' says what is missing.",
