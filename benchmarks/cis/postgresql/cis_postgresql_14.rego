@@ -614,6 +614,7 @@ postgres_db_protected if {
 	databases := input.postgresql.databases
 	postgres_db := [db | db := databases[_]; db.name == "postgres"][0]
 	postgres_db.public_access == false
+	is_number(postgres_db.connection_limit)
 	postgres_db.connection_limit > 0
 }
 
@@ -665,6 +666,7 @@ password_auth_local_required if {
 
 password_complexity_configured if {
 	password_config := input.postgresql.password_policy
+	is_number(password_config.min_length)
 	password_config.min_length >= 8
 	password_config.require_mixed_case == true
 	password_config.require_numbers == true
@@ -680,17 +682,21 @@ password_expiration_enforced if {
 account_lockout_enforced if {
 	lockout_config := input.postgresql.account_lockout
 	lockout_config.enabled == true
+	is_number(lockout_config.max_failed_attempts)
 	lockout_config.max_failed_attempts <= 5
+	is_number(lockout_config.lockout_duration)
 	lockout_config.lockout_duration >= 300 # 5 minutes
 }
 
 min_password_age_enforced if {
 	password_config := input.postgresql.password_policy
+	is_number(password_config.min_age_days)
 	password_config.min_age_days >= 1
 }
 
 password_history_enforced if {
 	password_config := input.postgresql.password_policy
+	is_number(password_config.history_count)
 	password_config.history_count >= 5
 }
 
@@ -791,7 +797,9 @@ publication_subscription_security if {
 
 parallel_query_security if {
 	parallel_config := input.postgresql.parallel_query
+	is_number(parallel_config.max_parallel_workers_per_gather)
 	parallel_config.max_parallel_workers_per_gather <= 4
+	is_number(parallel_config.parallel_tuple_cost)
 	parallel_config.parallel_tuple_cost >= 0.1
 }
 
@@ -895,18 +903,21 @@ ssl_key_exchange_appropriate if {
 
 connection_limit_configured if {
 	connection_config := input.postgresql.connection
+	is_number(connection_config.max_connections)
 	connection_config.max_connections > 0
 	connection_config.max_connections <= 200
 }
 
 connection_timeout_configured if {
 	timeout_config := input.postgresql.timeouts
+	is_number(timeout_config.tcp_user_timeout)
 	timeout_config.tcp_user_timeout > 0
 	timeout_config.tcp_user_timeout <= 60000
 }
 
 superuser_connection_restricted if {
 	superuser_config := input.postgresql.superuser_restrictions
+	is_number(superuser_config.connection_limit)
 	superuser_config.connection_limit <= 5
 	superuser_config.source_ip_restricted == true
 }
@@ -932,25 +943,31 @@ ip_address_restrictions_configured if {
 
 authentication_timeout_configured if {
 	auth_config := input.postgresql.authentication
+	is_number(auth_config.authentication_timeout)
 	auth_config.authentication_timeout <= 60
 	auth_config.authentication_timeout > 0
 }
 
 tcp_keepalives_configured if {
 	tcp_config := input.postgresql.tcp_keepalives
+	is_number(tcp_config.tcp_keepalives_idle)
 	tcp_config.tcp_keepalives_idle <= 600
+	is_number(tcp_config.tcp_keepalives_interval)
 	tcp_config.tcp_keepalives_interval <= 30
+	is_number(tcp_config.tcp_keepalives_count)
 	tcp_config.tcp_keepalives_count <= 3
 }
 
 statement_timeout_configured if {
 	timeout_config := input.postgresql.timeouts
+	is_number(timeout_config.statement_timeout)
 	timeout_config.statement_timeout > 0
 	timeout_config.statement_timeout <= 1800000 # 30 minutes
 }
 
 idle_timeout_configured if {
 	timeout_config := input.postgresql.timeouts
+	is_number(timeout_config.idle_in_transaction_session_timeout)
 	timeout_config.idle_in_transaction_session_timeout > 0
 	timeout_config.idle_in_transaction_session_timeout <= 600000 # 10 minutes
 }
@@ -1131,6 +1148,7 @@ shared_buffers_configured if {
 	shared_buffers_mb := memory_config.shared_buffers_mb
 	total_memory_mb := memory_config.total_system_memory_mb
 	shared_buffers_percent := (shared_buffers_mb / total_memory_mb) * 100
+	is_number(shared_buffers_percent)
 	shared_buffers_percent >= 20
 	shared_buffers_percent <= 40
 }
@@ -1138,6 +1156,7 @@ shared_buffers_configured if {
 max_connections_configured if {
 	connection_config := input.postgresql.connection_settings
 	max_connections := connection_config.max_connections
+	is_number(max_connections)
 	max_connections >= 10
 	max_connections <= 500
 }
@@ -1145,6 +1164,7 @@ max_connections_configured if {
 work_mem_configured if {
 	memory_config := input.postgresql.memory_settings
 	work_mem_mb := memory_config.work_mem_mb
+	is_number(work_mem_mb)
 	work_mem_mb >= 4
 	work_mem_mb <= 1024
 }
@@ -1152,6 +1172,7 @@ work_mem_configured if {
 maintenance_work_mem_configured if {
 	memory_config := input.postgresql.memory_settings
 	maintenance_work_mem_mb := memory_config.maintenance_work_mem_mb
+	is_number(maintenance_work_mem_mb)
 	maintenance_work_mem_mb >= 64
 	maintenance_work_mem_mb <= 2048
 }
@@ -1161,6 +1182,7 @@ effective_cache_size_configured if {
 	effective_cache_size_mb := memory_config.effective_cache_size_mb
 	total_memory_mb := memory_config.total_system_memory_mb
 	cache_size_percent := (effective_cache_size_mb / total_memory_mb) * 100
+	is_number(cache_size_percent)
 	cache_size_percent >= 50
 	cache_size_percent <= 75
 }
@@ -1168,6 +1190,7 @@ effective_cache_size_configured if {
 checkpoint_completion_target_configured if {
 	checkpoint_config := input.postgresql.checkpoint_settings
 	completion_target := checkpoint_config.checkpoint_completion_target
+	is_number(completion_target)
 	completion_target >= 0.5
 	completion_target <= 0.9
 }
@@ -1175,6 +1198,7 @@ checkpoint_completion_target_configured if {
 wal_buffers_configured if {
 	wal_config := input.postgresql.wal_settings
 	wal_buffers_mb := wal_config.wal_buffers_mb
+	is_number(wal_buffers_mb)
 	wal_buffers_mb >= 16
 	wal_buffers_mb <= 64
 }
@@ -1182,6 +1206,7 @@ wal_buffers_configured if {
 max_wal_senders_configured if {
 	replication_config := input.postgresql.replication_settings
 	max_wal_senders := replication_config.max_wal_senders
+	is_number(max_wal_senders)
 	max_wal_senders >= 0
 	max_wal_senders <= 10
 }
@@ -1189,6 +1214,7 @@ max_wal_senders_configured if {
 max_replication_slots_configured if {
 	replication_config := input.postgresql.replication_settings
 	max_replication_slots := replication_config.max_replication_slots
+	is_number(max_replication_slots)
 	max_replication_slots >= 0
 	max_replication_slots <= 10
 }
@@ -1219,6 +1245,7 @@ archive_command_configured if {
 archive_timeout_configured if {
 	archive_config := input.postgresql.archive_settings
 	archive_timeout := archive_config.archive_timeout
+	is_number(archive_timeout)
 	archive_timeout > 0
 	archive_timeout <= 3600 # 1 hour
 }
@@ -1226,6 +1253,7 @@ archive_timeout_configured if {
 max_wal_size_configured if {
 	wal_config := input.postgresql.wal_settings
 	max_wal_size_gb := wal_config.max_wal_size_gb
+	is_number(max_wal_size_gb)
 	max_wal_size_gb >= 1
 	max_wal_size_gb <= 100
 }
@@ -1233,6 +1261,7 @@ max_wal_size_configured if {
 min_wal_size_configured if {
 	wal_config := input.postgresql.wal_settings
 	min_wal_size_mb := wal_config.min_wal_size_mb
+	is_number(min_wal_size_mb)
 	min_wal_size_mb >= 80
 	min_wal_size_mb <= 2048
 }
@@ -1240,6 +1269,7 @@ min_wal_size_configured if {
 wal_keep_size_configured if {
 	wal_config := input.postgresql.wal_settings
 	wal_keep_size_mb := wal_config.wal_keep_size_mb
+	is_number(wal_keep_size_mb)
 	wal_keep_size_mb >= 1024
 	wal_keep_size_mb <= 32768
 }
@@ -1274,6 +1304,7 @@ wal_sync_method_configured if {
 random_page_cost_configured if {
 	cost_config := input.postgresql.cost_settings
 	random_page_cost := cost_config.random_page_cost
+	is_number(random_page_cost)
 	random_page_cost >= 1.0
 	random_page_cost <= 4.0
 }
@@ -1287,6 +1318,7 @@ seq_page_cost_configured if {
 cpu_tuple_cost_configured if {
 	cost_config := input.postgresql.cost_settings
 	cpu_tuple_cost := cost_config.cpu_tuple_cost
+	is_number(cpu_tuple_cost)
 	cpu_tuple_cost >= 0.01
 	cpu_tuple_cost <= 0.1
 }
@@ -1294,6 +1326,7 @@ cpu_tuple_cost_configured if {
 cpu_index_tuple_cost_configured if {
 	cost_config := input.postgresql.cost_settings
 	cpu_index_tuple_cost := cost_config.cpu_index_tuple_cost
+	is_number(cpu_index_tuple_cost)
 	cpu_index_tuple_cost >= 0.005
 	cpu_index_tuple_cost <= 0.05
 }
@@ -1301,6 +1334,7 @@ cpu_index_tuple_cost_configured if {
 cpu_operator_cost_configured if {
 	cost_config := input.postgresql.cost_settings
 	cpu_operator_cost := cost_config.cpu_operator_cost
+	is_number(cpu_operator_cost)
 	cpu_operator_cost >= 0.0025
 	cpu_operator_cost <= 0.025
 }
@@ -1308,6 +1342,7 @@ cpu_operator_cost_configured if {
 vacuum_cost_delay_configured if {
 	vacuum_config := input.postgresql.vacuum_settings
 	vacuum_cost_delay := vacuum_config.vacuum_cost_delay
+	is_number(vacuum_cost_delay)
 	vacuum_cost_delay >= 0
 	vacuum_cost_delay <= 100
 }
@@ -1331,6 +1366,7 @@ huge_pages_configured if {
 max_parallel_workers_configured if {
 	parallel_config := input.postgresql.parallel_settings
 	max_parallel_workers := parallel_config.max_parallel_workers
+	is_number(max_parallel_workers)
 	max_parallel_workers >= 2
 	max_parallel_workers <= 32
 }

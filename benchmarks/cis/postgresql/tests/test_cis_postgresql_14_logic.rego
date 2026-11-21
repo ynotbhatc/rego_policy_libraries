@@ -50,3 +50,14 @@ test_database_names_tokens if {
 	not pkg.database_names_appropriate with input as {"postgresql": {"databases": [{"name": "app_prod"}]}}
 	not pkg.database_names_appropriate with input as {"postgresql": {"databases": [{"name": "dev-db"}]}}
 }
+
+# #300 type traps: a non-number must not pass a numeric check.
+test_account_lockout_real_numbers_pass if {
+	data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": 900}}}
+}
+
+test_account_lockout_type_traps_fail if {
+	not data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": "1"}}}
+	not data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": null, "lockout_duration": 900}}}
+	not data.cis.postgresql_14.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": "forever"}}}
+}
