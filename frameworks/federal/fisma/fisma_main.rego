@@ -235,6 +235,7 @@ rmf_step_4_implement_compliant if {
 }
 
 security_controls_implemented if {
+	is_number(input.fisma.implement.controls.implementation_percentage)
 	input.fisma.implement.controls.implementation_percentage >= 95
 	input.fisma.implement.controls.configuration_management_applied == true
 	input.fisma.implement.controls.change_control_applied == true
@@ -512,20 +513,24 @@ fisma_violations := violations if {
 
 # FISMA Compliance Level Determination
 fisma_compliance_level := "COMPLIANT" if {
+	is_number(fisma_compliance_score)
 	fisma_compliance_score >= 95
 }
 
 fisma_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
+	is_number(fisma_compliance_score)
 	fisma_compliance_score >= 85
 	fisma_compliance_score < 95
 }
 
 fisma_compliance_level := "PARTIALLY_COMPLIANT" if {
+	is_number(fisma_compliance_score)
 	fisma_compliance_score >= 70
 	fisma_compliance_score < 85
 }
 
 fisma_compliance_level := "NON_COMPLIANT" if {
+	is_number(fisma_compliance_score)
 	fisma_compliance_score < 70
 }
 

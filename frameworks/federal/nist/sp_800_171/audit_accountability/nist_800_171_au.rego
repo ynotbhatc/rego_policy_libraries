@@ -40,6 +40,7 @@ default audit_logs_created_retained := false
 
 audit_logs_created_retained if {
 	input.nist_800_171.audit_accountability.audit_logs.logging_enabled == true
+	is_number(input.nist_800_171.audit_accountability.audit_logs.retention_period_days)
 	input.nist_800_171.audit_accountability.audit_logs.retention_period_days >= 90
 	input.nist_800_171.audit_accountability.audit_logs.covers_all_systems == true
 }

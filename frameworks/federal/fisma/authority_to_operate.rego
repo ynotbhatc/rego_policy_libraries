@@ -152,6 +152,7 @@ security_controls_effective if {
 }
 
 control_implementation_verified if {
+	is_number(input.ato.controls.implementation.implementation_percentage)
 	input.ato.controls.implementation.implementation_percentage >= 95
 	input.ato.controls.implementation.evidence_artifacts_available == true
 	input.ato.controls.implementation.configuration_verified == true
@@ -310,6 +311,7 @@ ato_decision_recommendation := "DENY" if {
 } else := "INTERIM_AUTHORIZE" if {
 	input.ato.risk_assessment.residual_risk.overall_risk_level == "moderate"
 	input.ato.controls.deficiencies.critical_deficiencies_resolved == false
+	is_number(input.ato.poam.timeline.critical_items_timeline)
 	input.ato.poam.timeline.critical_items_timeline <= 90
 } else := "AUTHORIZE_WITH_CONDITIONS" if {
 	security_controls_effective
