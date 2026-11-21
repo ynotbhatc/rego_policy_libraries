@@ -6,7 +6,7 @@
 #   source: finops-foundation
 #   domains: [finops, cost]
 #   coverage:
-#     checks: 20
+#     checks: 21
 #     cited: 0
 #     density: sized
 #     basis: size

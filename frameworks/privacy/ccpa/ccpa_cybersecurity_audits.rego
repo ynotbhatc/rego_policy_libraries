@@ -6,14 +6,14 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 52
+#     checks: 53
 #     cited: 46
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ccpa.cybersecurity_audits
 
 import rego.v1
