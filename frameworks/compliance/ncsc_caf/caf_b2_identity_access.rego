@@ -55,6 +55,7 @@ _b2a_mfa_any if {
 default _b2a_access_review_current := false
 
 _b2a_access_review_current if {
+	is_number(input.identity_access.account_review.last_review_days)
 	input.identity_access.account_review.last_review_days <= 180
 }
 
@@ -118,12 +119,14 @@ _b2b_mdm_deployed if {
 default _b2b_mdm_coverage_full := false
 
 _b2b_mdm_coverage_full if {
+	is_number(input.device_management.mdm_enrollment_coverage_pct)
 	input.device_management.mdm_enrollment_coverage_pct >= 95
 }
 
 default _b2b_mdm_coverage_partial := false
 
 _b2b_mdm_coverage_partial if {
+	is_number(input.device_management.mdm_enrollment_coverage_pct)
 	input.device_management.mdm_enrollment_coverage_pct >= 70
 }
 

@@ -49,12 +49,14 @@ _c1a_all_assets_covered if {
 default _c1a_coverage_strong := false
 
 _c1a_coverage_strong if {
+	is_number(input.security_monitoring.log_sources.coverage_pct)
 	input.security_monitoring.log_sources.coverage_pct >= 95
 }
 
 default _c1a_coverage_acceptable := false
 
 _c1a_coverage_acceptable if {
+	is_number(input.security_monitoring.log_sources.coverage_pct)
 	input.security_monitoring.log_sources.coverage_pct >= 80
 }
 
@@ -141,12 +143,14 @@ _c1b_worm_or_append_only if {
 default _c1b_retention_adequate := false
 
 _c1b_retention_adequate if {
+	is_number(input.security_monitoring.log_integrity.retention_days)
 	input.security_monitoring.log_integrity.retention_days >= 365
 }
 
 default _c1b_retention_partial := false
 
 _c1b_retention_partial if {
+	is_number(input.security_monitoring.log_integrity.retention_days)
 	input.security_monitoring.log_integrity.retention_days >= 90
 }
 
@@ -208,12 +212,14 @@ _c1c_ids_deployed if {
 default _c1c_signatures_current := false
 
 _c1c_signatures_current if {
+	is_number(input.security_monitoring.alerting.signature_age_hours)
 	input.security_monitoring.alerting.signature_age_hours <= 24
 }
 
 default _c1c_signatures_acceptable := false
 
 _c1c_signatures_acceptable if {
+	is_number(input.security_monitoring.alerting.signature_age_hours)
 	input.security_monitoring.alerting.signature_age_hours <= 72
 }
 
@@ -226,12 +232,14 @@ _c1c_ioc_feeds_integrated if {
 default _c1c_ioc_feeds_current := false
 
 _c1c_ioc_feeds_current if {
+	is_number(input.security_monitoring.alerting.ioc_feed_age_hours)
 	input.security_monitoring.alerting.ioc_feed_age_hours <= 24
 }
 
 default _c1c_ioc_feeds_acceptable := false
 
 _c1c_ioc_feeds_acceptable if {
+	is_number(input.security_monitoring.alerting.ioc_feed_age_hours)
 	input.security_monitoring.alerting.ioc_feed_age_hours <= 72
 }
 
@@ -295,12 +303,14 @@ _c1d_process_documented if {
 default _c1d_mean_triage_fast := false
 
 _c1d_mean_triage_fast if {
+	is_number(input.security_monitoring.alert_triage.mean_triage_hours)
 	input.security_monitoring.alert_triage.mean_triage_hours <= 4
 }
 
 default _c1d_mean_triage_acceptable := false
 
 _c1d_mean_triage_acceptable if {
+	is_number(input.security_monitoring.alert_triage.mean_triage_hours)
 	input.security_monitoring.alert_triage.mean_triage_hours <= 24
 }
 
@@ -368,18 +378,21 @@ _c1f_feeds_configured if {
 default _c1f_feed_count_sufficient := false
 
 _c1f_feed_count_sufficient if {
+	is_number(input.security_monitoring.threat_intel.feed_count)
 	input.security_monitoring.threat_intel.feed_count >= 2
 }
 
 default _c1f_feeds_current := false
 
 _c1f_feeds_current if {
+	is_number(input.security_monitoring.threat_intel.last_update_hours)
 	input.security_monitoring.threat_intel.last_update_hours <= 24
 }
 
 default _c1f_feeds_acceptable := false
 
 _c1f_feeds_acceptable if {
+	is_number(input.security_monitoring.threat_intel.last_update_hours)
 	input.security_monitoring.threat_intel.last_update_hours <= 72
 }
 

@@ -56,6 +56,7 @@ default compliant := false
 
 violation contains msg if {
 	input.incident_reporting.actively_exploited_vuln_known == true
+	is_number(input.incident_reporting.hours_since_aware_of_vuln)
 	input.incident_reporting.hours_since_aware_of_vuln > 24
 	not input.incident_reporting.early_warning_sent
 	msg := sprintf("CRA Art.14(2)(a): no early warning submitted to the CSIRT coordinator and ENISA within 24h of awareness (current: %dh)", [input.incident_reporting.hours_since_aware_of_vuln])
@@ -63,6 +64,7 @@ violation contains msg if {
 
 violation contains msg if {
 	input.incident_reporting.actively_exploited_vuln_known == true
+	is_number(input.incident_reporting.hours_since_aware_of_vuln)
 	input.incident_reporting.hours_since_aware_of_vuln > 72
 	not input.incident_reporting.vulnerability_notification_sent
 	msg := sprintf("CRA Art.14(2)(b): no vulnerability notification submitted within 72h of awareness (current: %dh)", [input.incident_reporting.hours_since_aware_of_vuln])
@@ -73,6 +75,7 @@ violation contains msg if {
 violation contains msg if {
 	input.incident_reporting.actively_exploited_vuln_known == true
 	input.incident_reporting.corrective_measure_available == true
+	is_number(input.incident_reporting.days_since_corrective_measure_available)
 	input.incident_reporting.days_since_corrective_measure_available > 14
 	not input.incident_reporting.final_vuln_report_sent
 	msg := sprintf("CRA Art.14(2)(c): final vulnerability report not submitted within 14 days of a corrective/mitigating measure becoming available (current: %dd)", [input.incident_reporting.days_since_corrective_measure_available])
@@ -82,6 +85,7 @@ violation contains msg if {
 
 violation contains msg if {
 	input.incident_reporting.severe_incident_occurred == true
+	is_number(input.incident_reporting.hours_since_aware_of_incident)
 	input.incident_reporting.hours_since_aware_of_incident > 24
 	not input.incident_reporting.incident_early_warning_sent
 	msg := "CRA Art.14(4)(a): severe incident early warning not submitted to the CSIRT coordinator and ENISA within 24h of awareness"
@@ -89,6 +93,7 @@ violation contains msg if {
 
 violation contains msg if {
 	input.incident_reporting.severe_incident_occurred == true
+	is_number(input.incident_reporting.hours_since_aware_of_incident)
 	input.incident_reporting.hours_since_aware_of_incident > 72
 	not input.incident_reporting.incident_notification_sent
 	msg := "CRA Art.14(4)(b): severe incident notification not submitted within 72h of awareness"
@@ -98,6 +103,7 @@ violation contains msg if {
 violation contains msg if {
 	input.incident_reporting.severe_incident_occurred == true
 	input.incident_reporting.incident_notification_sent == true
+	is_number(input.incident_reporting.days_since_incident_notification)
 	input.incident_reporting.days_since_incident_notification > 30
 	not input.incident_reporting.incident_final_report_sent
 	msg := "CRA Art.14(4)(c): final incident report not submitted within 1 month of the incident notification"

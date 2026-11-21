@@ -109,12 +109,14 @@ co_b4a_details := {
 default _b4b_cis_score_strong := false
 
 _b4b_cis_score_strong if {
+	is_number(input.system_security.secure_configuration.baseline_compliance_pct)
 	input.system_security.secure_configuration.baseline_compliance_pct >= 90
 }
 
 default _b4b_cis_score_acceptable := false
 
 _b4b_cis_score_acceptable if {
+	is_number(input.system_security.secure_configuration.baseline_compliance_pct)
 	input.system_security.secure_configuration.baseline_compliance_pct >= 70
 }
 
@@ -193,12 +195,14 @@ _b4c_malware_deployed if {
 default _b4c_malware_signatures_current := false
 
 _b4c_malware_signatures_current if {
+	is_number(input.system_security.secure_management.malware_signatures_days)
 	input.system_security.secure_management.malware_signatures_days <= 2
 }
 
 default _b4c_malware_signatures_acceptable := false
 
 _b4c_malware_signatures_acceptable if {
+	is_number(input.system_security.secure_management.malware_signatures_days)
 	input.system_security.secure_management.malware_signatures_days <= 7
 }
 
@@ -252,24 +256,28 @@ co_b4c_details := {
 default _b4d_critical_patches_current := false
 
 _b4d_critical_patches_current if {
+	is_number(input.system_security.vulnerability_management.critical_patch_age_days)
 	input.system_security.vulnerability_management.critical_patch_age_days <= 14
 }
 
 default _b4d_critical_patches_acceptable := false
 
 _b4d_critical_patches_acceptable if {
+	is_number(input.system_security.vulnerability_management.critical_patch_age_days)
 	input.system_security.vulnerability_management.critical_patch_age_days <= 30
 }
 
 default _b4d_vuln_scan_recent := false
 
 _b4d_vuln_scan_recent if {
+	is_number(input.system_security.vulnerability_management.vuln_scan_age_days)
 	input.system_security.vulnerability_management.vuln_scan_age_days <= 7
 }
 
 default _b4d_vuln_scan_acceptable := false
 
 _b4d_vuln_scan_acceptable if {
+	is_number(input.system_security.vulnerability_management.vuln_scan_age_days)
 	input.system_security.vulnerability_management.vuln_scan_age_days <= 30
 }
 
@@ -282,12 +290,14 @@ _b4d_no_eol_software if {
 default _b4d_eol_low := false
 
 _b4d_eol_low if {
+	is_number(input.system_security.vulnerability_management.eol_software_count)
 	input.system_security.vulnerability_management.eol_software_count <= 2
 }
 
 default _b4d_pentest_recent := false
 
 _b4d_pentest_recent if {
+	is_number(input.system_security.vulnerability_management.pentest_age_days)
 	input.system_security.vulnerability_management.pentest_age_days <= 365
 }
 

@@ -44,24 +44,28 @@ _a3a_cmdb_exists if {
 default _a3a_coverage_strong := false
 
 _a3a_coverage_strong if {
+	is_number(input.asset_management.coverage_pct)
 	input.asset_management.coverage_pct >= 95
 }
 
 default _a3a_coverage_acceptable := false
 
 _a3a_coverage_acceptable if {
+	is_number(input.asset_management.coverage_pct)
 	input.asset_management.coverage_pct >= 80
 }
 
 default _a3a_audit_recent := false
 
 _a3a_audit_recent if {
+	is_number(input.asset_management.last_audit_days)
 	input.asset_management.last_audit_days <= 30
 }
 
 default _a3a_audit_acceptable := false
 
 _a3a_audit_acceptable if {
+	is_number(input.asset_management.last_audit_days)
 	input.asset_management.last_audit_days <= 90
 }
 

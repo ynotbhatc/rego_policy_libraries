@@ -81,6 +81,7 @@ violation contains msg if {
 violation contains msg if {
 	applies
 	input.online_marketplace.authority_takedown_order_received == true
+	is_number(input.online_marketplace.authority_takedown_order_hours_pending)
 	input.online_marketplace.authority_takedown_order_hours_pending > 48
 	not input.online_marketplace.authority_takedown_order_actioned
 	msg := sprintf("Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace has not actioned an authority takedown order within 48h (current: %dh pending)", [input.online_marketplace.authority_takedown_order_hours_pending])
@@ -115,6 +116,7 @@ violation contains msg if {
 violation contains msg if {
 	applies
 	input.online_marketplace.random_checks.performed == true
+	is_number(input.online_marketplace.random_checks.sample_size_pct)
 	input.online_marketplace.random_checks.sample_size_pct < 1.0
 	msg := sprintf("Marketplace due diligence (DSA/GPSR-derived, non-CRA): Marketplace random-check sample size (%v%%) is below a defensible threshold (1%% min)", [input.online_marketplace.random_checks.sample_size_pct])
 }
