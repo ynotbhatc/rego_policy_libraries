@@ -1,0 +1,447 @@
+# METADATA
+# title: "NIST SP 800-53 Rev 5 — Maintenance (MA) Family"
+# custom:
+#   class: compliance
+#   framework: nist_sp_800_53
+#   source: nist
+#   domains: [us-federal, security-controls]
+#   coverage:
+#     checks: 24
+#     cited: 13
+#     density: sized
+#     basis: size
+#     tested: true
+#     entrypoint: compliance_report
+#     guard: self
+#     as_of: v2.5.0
+package nist.sp800_53.maintenance
+
+import rego.v1
+
+# NIST SP 800-53 Rev 5 — Maintenance (MA) Family, base controls MA-1 to MA-7, the NIST SP 800-53B
+# Moderate-baseline enhancements MA-3(1), MA-3(2), MA-3(3), and the High-baseline enhancements MA-2(2), MA-4(3)
+# and MA-5(1). An enhancement is its own requirement with its own finding; a base control never fails for an
+# enhancement.
+# Facts live under input.ma_controls. Every control fails closed: a fact that is missing or of the wrong type is
+# reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
+
+default compliant := false
+
+# ---------------------------------------------------------------------------------------------------------------
+# Helpers. Paths are dotted and relative to input.ma_controls.
+# ---------------------------------------------------------------------------------------------------------------
+
+_get(path) := object.get(input, array.concat(["ma_controls"], split(path, ".")), null)
+
+_path(p) := concat("", ["input.ma_controls.", p])
+
+# Required booleans that are absent or not a boolean ("true", 1 and null are not evidence).
+_bool_missing(paths) := {_path(p) |
+	some p in paths
+	not is_boolean(_get(p))
+}
+
+# Required booleans that are present and false.
+_bool_false(paths) := {sprintf("%s is false", [_path(p)]) |
+	some p in paths
+	_get(p) == false
+}
+
+# Organization-defined frequency (IR-2/IR-3 shape): <base>.days_since_last against <base>.odp.frequency_days.
+_freq_missing(base) := {_path(concat(".", [base, k])) |
+	some k in ["days_since_last", "odp.frequency_days"]
+	not is_number(_get(concat(".", [base, k])))
+}
+
+_overdue(base, what) := msg if {
+	obs := _get(concat(".", [base, "days_since_last"]))
+	odp := _get(concat(".", [base, "odp.frequency_days"]))
+	is_number(obs)
+	is_number(odp)
+	obs > odp
+	msg := sprintf("%s last done %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
+}
+
+# Organizational controls with no machine-checkable evidence: {"attested": true, "by": "...", "date": "..."}.
+_attested(name) if {
+	a := _get(concat(".", [name, "attestation"]))
+	a.attested == true
+	is_string(a.by)
+	trim_space(a.by) != ""
+	is_string(a.date)
+	trim_space(a.date) != ""
+}
+
+# An attestation that is absent or of the wrong shape (not an object, attested not a boolean, by or date not a
+# string) is missing evidence; one that is well-formed but false or unsigned keeps the plain "not attested" text.
+_att_shaped(name) if {
+	a := _get(concat(".", [name, "attestation"]))
+	is_object(a)
+	is_boolean(a.attested)
+	is_string(a.by)
+	is_string(a.date)
+}
+
+_att_text(name, text) := text if {
+	_att_shaped(name)
+} else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
+
+# Counts that must be zero (exceptions found in maintenance records). A non-number or a negative number is
+# missing evidence.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+}
+
+_zero_missing(paths) := {_path(p) |
+	some p in paths
+	not _count_ok(_get(p))
+}
+
+_zero_unmet(checks) := {sprintf(c[1], [n]) |
+	some c in checks
+	n := _get(c[0])
+	is_number(n)
+	_count_ok(n)
+	n > 0
+}
+
+_missing_msg(id, paths) := sprintf("NIST %s: evidence missing — %s not collected", [id, concat(", ", sort(paths))])
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-1 Policy and Procedures
+# Facts: policy.documented, procedures.documented, policy.official_designated (booleans);
+#        policy.review.days_since_last + policy.review.odp.frequency_days;
+#        procedures.review.days_since_last + procedures.review.odp.frequency_days.
+# One finding listing every unmet element.
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma1_bools := ["policy.documented", "procedures.documented", "policy.official_designated"]
+
+_ma1_missing := (_bool_missing(_ma1_bools) | _freq_missing("policy.review")) | _freq_missing("procedures.review")
+
+_ma1_overdue := {m | m := _overdue("policy.review", "Policy review")} | {m | m := _overdue("procedures.review", "Procedures review")}
+
+_ma1_unmet := ({sprintf("evidence missing: %s not collected", [p]) | some p in _ma1_missing} | _bool_false(_ma1_bools)) | _ma1_overdue
+
+violation contains msg if {
+	count(_ma1_unmet) > 0
+	msg := sprintf("NIST MA-1: Maintenance policy and procedures requirements not met — %s", [concat("; ", sort(_ma1_unmet))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-2 Controlled Maintenance
+# Facts (booleans) under controlled_maintenance: records_scheduled_documented_reviewed,
+#   activities_approved_and_monitored, offsite_removal_approved, media_sanitized_before_offsite,
+#   controls_checked_after_maintenance, records_include_required_information.
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma2_bools := [
+	"controlled_maintenance.records_scheduled_documented_reviewed",
+	"controlled_maintenance.activities_approved_and_monitored",
+	"controlled_maintenance.offsite_removal_approved",
+	"controlled_maintenance.media_sanitized_before_offsite",
+	"controlled_maintenance.controls_checked_after_maintenance",
+	"controlled_maintenance.records_include_required_information",
+]
+
+_ma2_missing := _bool_missing(_ma2_bools)
+
+violation contains msg if {
+	count(_ma2_missing) > 0
+	msg := _missing_msg("MA-2", _ma2_missing)
+}
+
+violation contains msg if {
+	count(_ma2_missing) == 0
+	failed := _bool_false(_ma2_bools)
+	count(failed) > 0
+	msg := sprintf("NIST MA-2: Controlled maintenance not in place — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3 Maintenance Tools
+# Facts: maintenance_tools.approved, maintenance_tools.controlled, maintenance_tools.monitored (booleans);
+#        maintenance_tools.review.days_since_last + maintenance_tools.review.odp.frequency_days (review of
+#        previously approved tools at the organization-defined frequency).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_bools := ["maintenance_tools.approved", "maintenance_tools.controlled", "maintenance_tools.monitored"]
+
+_ma3_missing := _bool_missing(_ma3_bools) | _freq_missing("maintenance_tools.review")
+
+violation contains msg if {
+	count(_ma3_missing) > 0
+	msg := _missing_msg("MA-3", _ma3_missing)
+}
+
+violation contains msg if {
+	count(_ma3_missing) == 0
+	failed := _bool_false(_ma3_bools) | {m | m := _overdue("maintenance_tools.review", "Review of approved maintenance tools")}
+	count(failed) > 0
+	msg := sprintf("NIST MA-3: Maintenance tools not approved, controlled, monitored and reviewed — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-4 Nonlocal Maintenance
+# Facts (booleans) under nonlocal_maintenance: approved_and_monitored, tools_per_policy_and_security_plan,
+#   strong_authentication, records_maintained, sessions_terminated_on_completion.
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma4_bools := [
+	"nonlocal_maintenance.approved_and_monitored",
+	"nonlocal_maintenance.tools_per_policy_and_security_plan",
+	"nonlocal_maintenance.strong_authentication",
+	"nonlocal_maintenance.records_maintained",
+	"nonlocal_maintenance.sessions_terminated_on_completion",
+]
+
+_ma4_missing := _bool_missing(_ma4_bools)
+
+violation contains msg if {
+	count(_ma4_missing) > 0
+	msg := _missing_msg("MA-4", _ma4_missing)
+}
+
+violation contains msg if {
+	count(_ma4_missing) == 0
+	failed := _bool_false(_ma4_bools)
+	count(failed) > 0
+	msg := sprintf("NIST MA-4: Nonlocal maintenance not controlled — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-5 Maintenance Personnel
+# Facts (booleans) under maintenance_personnel: authorization_process_established, authorized_list_maintained,
+#   unescorted_access_verified, supervisors_designated.
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma5_bools := [
+	"maintenance_personnel.authorization_process_established",
+	"maintenance_personnel.authorized_list_maintained",
+	"maintenance_personnel.unescorted_access_verified",
+	"maintenance_personnel.supervisors_designated",
+]
+
+_ma5_missing := _bool_missing(_ma5_bools)
+
+violation contains msg if {
+	count(_ma5_missing) > 0
+	msg := _missing_msg("MA-5", _ma5_missing)
+}
+
+violation contains msg if {
+	count(_ma5_missing) == 0
+	failed := _bool_false(_ma5_bools)
+	count(failed) > 0
+	msg := sprintf("NIST MA-5: Maintenance personnel not authorized or supervised — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-6 Timely Maintenance
+# Facts: timely_maintenance.components_covered (boolean: support or spare-part arrangements exist for the
+#        organization-defined components); timely_maintenance.max_hours_to_support (longest observed time from
+#        failure to support or parts) against timely_maintenance.odp.time_period_hours. Observed above the
+#        organization-defined period is a finding.
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma6 := {
+	"covered": _get("timely_maintenance.components_covered"),
+	"hours": _get("timely_maintenance.max_hours_to_support"),
+	"odp": _get("timely_maintenance.odp.time_period_hours"),
+}
+
+_ma6_missing := (_bool_missing(["timely_maintenance.components_covered"]) | {_path("timely_maintenance.max_hours_to_support") | not is_number(_ma6.hours)}) | {_path("timely_maintenance.odp.time_period_hours") | not is_number(_ma6.odp)}
+
+violation contains msg if {
+	count(_ma6_missing) > 0
+	msg := _missing_msg("MA-6", _ma6_missing)
+}
+
+violation contains msg if {
+	count(_ma6_missing) == 0
+	failed := {"components not covered by support or spare-part arrangements" | _ma6.covered == false} | {sprintf("support or parts took %v hours; the organization-defined period is %v hours", [_ma6.hours, _ma6.odp]) | _ma6.hours > _ma6.odp}
+	count(failed) > 0
+	msg := sprintf("NIST MA-6: Maintenance support not obtained in time — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-7 Field Maintenance — organizational control, no machine-checkable evidence.
+# Facts: field_maintenance.attestation {"attested": true, "by": <name>, "date": <date>}.
+# ---------------------------------------------------------------------------------------------------------------
+
+violation contains msg if {
+	not _attested("field_maintenance")
+	msg := sprintf("NIST MA-7: %s", [_att_text("field_maintenance", "Restriction of field maintenance to trusted facilities not attested — input.ma_controls.field_maintenance.attestation needs attested: true, by and date (organizational control, no machine-checkable evidence)")])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(1) Inspect Tools: maintenance tools brought in by maintenance personnel are inspected for improper or
+# unauthorized modifications.
+# Facts: maintenance_tools.inspection.tools_not_inspected (number of tools used in the review period with no
+#        inspection record; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_1 := [["maintenance_tools.inspection.tools_not_inspected", "%v maintenance tools used without an inspection for improper or unauthorized modification"]]
+
+_ma3_1_missing := _zero_missing([c[0] | some c in _ma3_1])
+
+violation contains msg if {
+	count(_ma3_1_missing) > 0
+	msg := _missing_msg("MA-3(1)", _ma3_1_missing)
+}
+
+violation contains msg if {
+	count(_ma3_1_missing) == 0
+	failed := _zero_unmet(_ma3_1)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(1): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(2) Inspect Media: media with diagnostic and test programs are checked for malicious code before use.
+# Facts: maintenance_tools.media_inspection.media_not_scanned (number of diagnostic or test media used in the
+#        review period with no malicious-code scan record before use; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_2 := [["maintenance_tools.media_inspection.media_not_scanned", "%v diagnostic or test media used without a malicious-code check"]]
+
+_ma3_2_missing := _zero_missing([c[0] | some c in _ma3_2])
+
+violation contains msg if {
+	count(_ma3_2_missing) > 0
+	msg := _missing_msg("MA-3(2)", _ma3_2_missing)
+}
+
+violation contains msg if {
+	count(_ma3_2_missing) == 0
+	failed := _zero_unmet(_ma3_2)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(2): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-3(3) Prevent Unauthorized Removal: maintenance equipment holding organizational information leaves the
+# facility only after it is verified empty, sanitized or destroyed, or under an exemption from the
+# organization-defined personnel; otherwise it is retained.
+# Facts: maintenance_tools.removal.removals_without_disposition (number of equipment removals in the review
+#        period with none of: verified no information, sanitized or destroyed, authorized exemption; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma3_3 := [["maintenance_tools.removal.removals_without_disposition", "%v maintenance equipment removals without verification, sanitization or destruction, or an authorized exemption"]]
+
+_ma3_3_missing := _zero_missing([c[0] | some c in _ma3_3])
+
+violation contains msg if {
+	count(_ma3_3_missing) > 0
+	msg := _missing_msg("MA-3(3)", _ma3_3_missing)
+}
+
+violation contains msg if {
+	count(_ma3_3_missing) == 0
+	failed := _zero_unmet(_ma3_3)
+	count(failed) > 0
+	msg := sprintf("NIST MA-3(3): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-2(2) Automated Maintenance Activities: maintenance, repair and replacement actions are scheduled, conducted
+# and documented with automated mechanisms, and the records of every action requested, scheduled, in process and
+# completed are up to date, accurate and complete.
+# Facts: controlled_maintenance.automation.automated (boolean: a maintenance management system schedules and
+#        records the actions); controlled_maintenance.automation.records_incomplete (number of maintenance actions
+#        in the review period whose record is missing, out of date or incomplete; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma2_2_bools := ["controlled_maintenance.automation.automated"]
+
+_ma2_2_zeros := [["controlled_maintenance.automation.records_incomplete", "%v maintenance, repair or replacement actions with an incomplete or out-of-date record"]]
+
+_ma2_2_missing := _bool_missing(_ma2_2_bools) | _zero_missing([c[0] | some c in _ma2_2_zeros])
+
+violation contains msg if {
+	count(_ma2_2_missing) > 0
+	msg := _missing_msg("MA-2(2)", _ma2_2_missing)
+}
+
+violation contains msg if {
+	count(_ma2_2_missing) == 0
+	failed := _bool_false(_ma2_2_bools) | _zero_unmet(_ma2_2_zeros)
+	count(failed) > 0
+	msg := sprintf("NIST MA-2(2): Maintenance actions not scheduled, conducted and documented with automated mechanisms — %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-4(3) Comparable Security and Sanitization: nonlocal maintenance is performed from a system with security
+# comparable to the serviced system, or the component is removed, sanitized before service, and inspected and
+# sanitized again before it is reconnected. Either path satisfies the control, so one count covers both.
+# Facts: nonlocal_maintenance.comparable_security.sessions_meeting_neither (number of nonlocal maintenance or
+#        diagnostic sessions in the review period performed from a system without comparable security whose
+#        component was not removed, sanitized and inspected; must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma4_3 := [["nonlocal_maintenance.comparable_security.sessions_meeting_neither", "%v nonlocal maintenance sessions neither performed from a system with comparable security nor on a removed, sanitized and inspected component"]]
+
+_ma4_3_missing := _zero_missing([c[0] | some c in _ma4_3])
+
+violation contains msg if {
+	count(_ma4_3_missing) > 0
+	msg := _missing_msg("MA-4(3)", _ma4_3_missing)
+}
+
+violation contains msg if {
+	count(_ma4_3_missing) == 0
+	failed := _zero_unmet(_ma4_3)
+	count(failed) > 0
+	msg := sprintf("NIST MA-4(3): %s", [concat("; ", sort(failed))])
+}
+
+# ---------------------------------------------------------------------------------------------------------------
+# MA-5(1) Individuals Without Appropriate Access: maintenance personnel without the needed clearances or access
+# approvals are escorted and supervised by fully cleared, qualified personnel; before they start, volatile storage
+# is sanitized and nonvolatile media removed or disconnected and secured; organization-defined alternate controls
+# exist for components that cannot be sanitized, removed or disconnected.
+# Facts: maintenance_personnel.uncleared.alternate_controls_defined (boolean);
+#        maintenance_personnel.uncleared.sessions_without_escort,
+#        maintenance_personnel.uncleared.sessions_without_storage_protection (numbers of maintenance sessions by
+#        such personnel in the review period without escort and supervision, or without the storage sanitized and
+#        media removed or disconnected; both must be 0).
+# ---------------------------------------------------------------------------------------------------------------
+
+_ma5_1_bools := ["maintenance_personnel.uncleared.alternate_controls_defined"]
+
+_ma5_1_zeros := [
+	["maintenance_personnel.uncleared.sessions_without_escort", "%v maintenance sessions by personnel without appropriate access not escorted and supervised"],
+	["maintenance_personnel.uncleared.sessions_without_storage_protection", "%v maintenance sessions by personnel without appropriate access started before storage was sanitized and media removed or disconnected"],
+]
+
+_ma5_1_missing := _bool_missing(_ma5_1_bools) | _zero_missing([c[0] | some c in _ma5_1_zeros])
+
+violation contains msg if {
+	count(_ma5_1_missing) > 0
+	msg := _missing_msg("MA-5(1)", _ma5_1_missing)
+}
+
+violation contains msg if {
+	count(_ma5_1_missing) == 0
+	failed := _bool_false(_ma5_1_bools) | _zero_unmet(_ma5_1_zeros)
+	count(failed) > 0
+	msg := sprintf("NIST MA-5(1): Maintenance by personnel without appropriate access not controlled — %s", [concat("; ", sort(failed))])
+}
+
+compliant if count(violation) == 0
+
+# The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
+evaluated_controls := {
+	"MA-1", "MA-2", "MA-2(2)", "MA-3", "MA-3(1)", "MA-3(2)", "MA-3(3)", "MA-4", "MA-4(3)", "MA-5", "MA-5(1)", "MA-6",
+	"MA-7",
+}
+
+compliance_report := {
+	"family": "MA",
+	"name": "Maintenance",
+	"controls_evaluated": count(evaluated_controls),
+	"violations": violation,
+	"violation_count": count(violation),
+	"compliant": compliant,
+}

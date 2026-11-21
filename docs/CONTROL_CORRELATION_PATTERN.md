@@ -117,13 +117,28 @@ every other standard already defines its relationship to it.
 `crosswalk/` in this library:
 
 - **`crosswalk/stig_800_53/data.json`** — the measured `stig_id → [800-53]`
-  map for all 15 platforms (2,767 rules), with provenance.
-- **`crosswalk/correlation.rego`** (`package crosswalk.correlation`) — the
-  "assess once, report many" engine. Given a platform's findings it produces
-  `control_status[<800-53>] = satisfied | gap | (absent = not evaluated)` plus
-  a family rollup. **Gap wins**: if any evaluated rule mapping to a control is
-  Open, the control is a gap. **Unassessed controls are absent, never passed**
-  — the same fail-closed discipline as the rest of the library.
+  map (3,807 rules), with provenance.
+- **`rule_results` on every STIG report** — each `stig/<platform>` `compliance_report` lists every rule's DISA
+  status (`Not_a_Finding`, `Open`, `Not_Applicable`, `Not_Reviewed`), passes included; `violations` stay the
+  open findings.
+- **`crosswalk/correlation.rego`** (`package crosswalk.correlation`) — the "assess once, report many" engine.
+  Input: `input.reports` (one or more STIG `compliance_report`s) and/or `input.findings` (`stig_id` + `status`
+  rows). Output `control_status[<800-53>]`, per control, over every supplied rule the map ties to it:
+
+  | Status | When |
+  |---|---|
+  | `gap` | any mapped rule is Open (an unknown status counts as Open; a report with `facts_supplied: false` is all Open) |
+  | `not_reviewed` | none Open, at least one Not_Reviewed |
+  | `satisfied` | every mapped rule Not_a_Finding or Not_Applicable, at least one Not_a_Finding |
+  | `not_applicable` | every mapped rule Not_Applicable |
+  | absent | no supplied rule maps to it: not assessed, never passed |
+
+  `summary` adds counts, the satisfied and gap lists, and `rules_unmapped` (supplied rules the map does not
+  cover). Before 2026-11-19 a Not_Reviewed rule left its control `satisfied`; it no longer does.
+- **Map coverage today:** every current STIG platform's rules are in the map except Windows Server 2016 and 2019,
+  which DISA retired from the SRG-STIG Library in July 2026 (their XCCDF is no longer in the compilation); their
+  rules arrive as `rules_unmapped`. RHEL 10 V1R3 and Ubuntu 24.04 V1R7 were joined from the October 2026
+  compilation on 2026-11-19.
 
 Downstream, any framework that declares its 800-53 inheritance reads
 `control_status` and reports its own posture from one assessment — the input

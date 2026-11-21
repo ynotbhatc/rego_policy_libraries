@@ -864,3 +864,22 @@ test_audit_running_differs_from_disk_fails if {
 	vs := data.cis_rhel8.auditd.violations with input as {"auditd": {"rules": ok, "active_rules": ["-e 2"]}}
 	count([v | some v in vs; startswith(v, "6.3.3.10: not met")]) > 0
 }
+
+# a collected, empty rule list (auditctl -l printing "No rules", an empty rules.d) is a failure, not missing evidence
+test_6_3_3_1_collected_empty_rules_fail if {
+	vs := data.cis_rhel8.auditd.violations with input as {"auditd": {"rules": [], "active_rules": []}}
+	count([v | some v in vs; startswith(v, "6.3.3.1: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.3.3.1: evidence missing")]) == 0
+}
+
+test_6_3_3_20_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel8.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.3.3.20: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.3.3.20: evidence missing")]) == 0
+}
+
+test_6_3_3_21_collected_empty_on_disk_rules_fail if {
+	vs := data.cis_rhel8.auditd.violations with input as {"auditd": {"rules": []}}
+	count([v | some v in vs; startswith(v, "6.3.3.21: not met")]) > 0
+	count([v | some v in vs; startswith(v, "6.3.3.21: evidence missing")]) == 0
+}

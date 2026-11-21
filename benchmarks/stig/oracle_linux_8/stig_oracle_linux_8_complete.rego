@@ -190,6 +190,9 @@ stig_assessment := {
 open_findings := [f | some f in all_findings; f.status == "Open"]
 
 compliance_report := {
+	# every rule's DISA status (Not_a_Finding, Open, Not_Applicable, Not_Reviewed), for rollups such as
+	# crosswalk.correlation; violations stay the open findings
+	"rule_results": [{"rule": f.stig_id, "status": f.status} | some f in all_findings],
 	"total_controls": count(all_findings),
 	"open_findings": open_findings,
 	"passed_controls": count(all_findings) - count(open_findings),

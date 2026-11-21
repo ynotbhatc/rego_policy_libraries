@@ -38,14 +38,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 76
-#     cited: 68
+#     checks: 59
+#     cited: 53
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365_v7.entra
 
 import rego.v1
@@ -58,7 +58,7 @@ GUEST_ROLE_RESTRICTED := "2af84b1e-32c8-42b7-82bc-daa82404023b"
 
 default unavailable := {}
 
-unavailable := input.entra.unavailable
+unavailable := input.entra.unavailable if is_object(input.entra.unavailable)
 
 default collected := false
 
@@ -71,55 +71,88 @@ available(key) if {
 	not unavailable[key]
 }
 
+# Every rule below compares a field only when it has the type the rule expects
+# and iterates a list only when it is a list; a missing field or a wrong shape
+# leaves the control out of `decidable`, and the evidence rules at the end of
+# the file report it by id. It is never read as a pass or as a failure.
+
+# a number, or a string holding an integer (directory settings are strings)
+_number(v) := v if is_number(v)
+
+_number(v) := to_number(v) if {
+	is_string(v)
+	regex.match(`^-?[0-9]+$`, v)
+}
+
+# a directory-setting boolean: true/false, or the strings "True"/"False"
+_flag(v) := v if is_boolean(v)
+
+_flag(v) := lower(v) == "true" if {
+	is_string(v)
+	lower(v) in {"true", "false"}
+}
+
+_ap := input.entra.authorization_policy if {
+	available("authorization_policy")
+	is_object(input.entra.authorization_policy)
+}
+
 # ── /policies/authorizationPolicy -- seven controls ───────────────────
 
 # CIS 5.1.2.2 -- users must not be able to register applications.
 violation contains msg if {
-	available("authorization_policy")
-	input.entra.authorization_policy.allowed_to_create_apps == true
+	_ap.allowed_to_create_apps == true
 	msg := "CIS 5.1.2.2: users can register applications; any user can create an app registration and consent-phish other users"
 }
 
 # CIS 5.1.2.3 -- restrict non-admin users from creating tenants.
 violation contains msg if {
-	available("authorization_policy")
-	input.entra.authorization_policy.allowed_to_create_tenants == true
+	_ap.allowed_to_create_tenants == true
 	msg := "CIS 5.1.2.3: non-admin users are not restricted from creating tenants; a user can stand up an unmanaged tenant outside governance"
 }
 
 # CIS 5.1.3.1 -- users must not be able to create security groups.
 violation contains msg if {
-	available("authorization_policy")
-	input.entra.authorization_policy.allowed_to_create_security_groups == true
+	_ap.allowed_to_create_security_groups == true
 	msg := "CIS 5.1.3.1: users can create security groups; group membership drives access, so unmanaged group creation undermines authorization"
 }
 
 # CIS 5.1.4.6 -- users restricted from recovering BitLocker keys.
 violation contains msg if {
-	available("authorization_policy")
-	input.entra.authorization_policy.allowed_to_read_bitlocker_keys_for_owned_device == true
+	_ap.allowed_to_read_bitlocker_keys_for_owned_device == true
 	msg := "CIS 5.1.4.6: users are not restricted from recovering BitLocker keys for their own device, which defeats disk encryption against a device thief who has the account"
 }
 
 # CIS 5.1.5.1 -- user consent to apps must not be allowed.
+# permissionGrantPoliciesAssigned holds "managePermissionGrantsForSelf.{id}" for
+# each app consent policy that lets users consent for themselves; an empty set
+# of those means user consent is disabled. Other entries -- the
+# managePermissionGrantsForOwnedResource.* policies for group and team owners --
+# are not user consent and do not fail this control.
+# https://learn.microsoft.com/en-us/graph/api/resources/defaultuserrolepermissions?view=graph-rest-1.0
+USER_CONSENT_PREFIX := "managepermissiongrantsforself."
+
+_grant_ids := _ap.permission_grant_policy_ids_assigned if is_array(_ap.permission_grant_policy_ids_assigned)
+
 violation contains msg if {
-	available("authorization_policy")
-	count(input.entra.authorization_policy.permission_grant_policy_ids_assigned) > 0
-	msg := "CIS 5.1.5.1: user consent to apps accessing company data on their behalf is still permitted; consent should be routed to an administrator"
+	some id in _grant_ids
+	is_string(id)
+	startswith(lower(id), USER_CONSENT_PREFIX)
+	msg := sprintf("CIS 5.1.5.1: user consent to apps accessing company data on their behalf is still permitted (permission grant policy '%s'); consent should be routed to an administrator", [id])
 }
 
 # CIS 5.1.6.2 -- guest user access restricted.
 violation contains msg if {
-	available("authorization_policy")
-	input.entra.authorization_policy.guest_user_role_id != GUEST_ROLE_RESTRICTED
-	msg := sprintf("CIS 5.1.6.2: guest user access is not restricted -- guest role is '%s' rather than the most restrictive role, so guests can enumerate directory objects", [input.entra.authorization_policy.guest_user_role_id])
+	is_string(_ap.guest_user_role_id)
+	_ap.guest_user_role_id != GUEST_ROLE_RESTRICTED
+	msg := sprintf("CIS 5.1.6.2: guest user access is not restricted -- guest role is '%s' rather than the most restrictive role, so guests can enumerate directory objects", [_ap.guest_user_role_id])
 }
 
 # CIS 5.1.6.3 -- guest invitations limited to admins and inviters.
 violation contains msg if {
-	available("authorization_policy")
-	not object.get(input, ["entra", "authorization_policy", "allow_invites_from"], "not reported") in {"adminsAndGuestInviters", "none"}
-	msg := sprintf("CIS 5.1.6.3: guest user invitations are not limited -- allowInvitesFrom is '%s', so ordinary members can invite external guests", [object.get(input, ["entra", "authorization_policy", "allow_invites_from"], "not reported")])
+	is_string(_ap.allow_invites_from)
+	not _ap.allow_invites_from in {"adminsAndGuestInviters", "none"}
+	msg := sprintf("CIS 5.1.6.3: guest user invitations are not limited -- allowInvitesFrom is '%s', so ordinary members can invite external guests", [_ap.allow_invites_from])
 }
 
 # ── Authentication methods policy ─────────────────────────────────────
@@ -127,6 +160,7 @@ violation contains msg if {
 # CIS 5.2.3.5 -- weak authentication methods disabled.
 violation contains msg if {
 	available("authentication_methods_policy")
+	is_array(input.entra.weak_methods_enabled)
 	some m in input.entra.weak_methods_enabled
 	msg := sprintf("CIS 5.2.3.5: weak authentication method '%s' is enabled; SMS and voice are phishable and interceptable", [m])
 }
@@ -134,6 +168,7 @@ violation contains msg if {
 # CIS 5.2.3.6 -- system-preferred MFA enabled.
 violation contains msg if {
 	available("authentication_methods_policy")
+	is_string(input.entra.system_preferred_mfa_state)
 	input.entra.system_preferred_mfa_state != "enabled"
 	msg := "CIS 5.2.3.6: system-preferred multifactor authentication is not enabled, so users are not steered to their strongest registered method"
 }
@@ -172,27 +207,40 @@ violation contains msg if {
 # CIS 5.2.3.3 -- password protection for on-prem Active Directory.
 violation contains msg if {
 	available("group_settings")
-	input.entra.password_protection.on_premises_check_enabled != "True"
+	_flag(input.entra.password_protection.on_premises_check_enabled) == false
 	msg := "CIS 5.2.3.3: password protection is not enabled for on-prem Active Directory, so weak passwords set on-premises are never evaluated"
 }
 
 # CIS 5.2.3.4 -- all member users MFA capable.
 violation contains msg if {
 	available("mfa_registration_report")
+	is_array(input.entra.mfa_registration.members_not_mfa_capable)
 	some u in input.entra.mfa_registration.members_not_mfa_capable
-	msg := sprintf("CIS 5.2.3.4: member user '%s' is not MFA capable -- no strong method is registered, so a Conditional Access grant requiring MFA cannot be satisfied", [u.user_principal_name])
+	msg := sprintf("CIS 5.2.3.4: member user '%s' is not MFA capable -- no strong method is registered, so a Conditional Access grant requiring MFA cannot be satisfied", [object.get(u, "user_principal_name", "(unnamed)")])
 }
 
 # CIS 5.1.2.1 -- legacy per-user MFA must be disabled.
 violation contains msg if {
 	available("per_user_mfa")
+	is_array(input.entra.per_user_mfa.legacy_per_user_mfa)
 	some u in input.entra.per_user_mfa.legacy_per_user_mfa
-	msg := sprintf("CIS 5.1.2.1: per-user MFA is '%s' for '%s'; legacy per-user MFA should be disabled in favour of Conditional Access", [u.state, u.user_principal_name])
+	msg := sprintf("CIS 5.1.2.1: per-user MFA is '%s' for '%s'; legacy per-user MFA should be disabled in favour of Conditional Access", [object.get(u, "state", "(unnamed)"), object.get(u, "user_principal_name", "(unnamed)")])
 }
 
 # ── Conditional Access and PIM (carried forward) ──────────────────────
 
+# Conditional Access policies come from Graph, which returns null for a
+# condition or control a policy does not set; absent or null reads as not set.
+# These controls each ask whether SOME enabled policy meets the requirement, so
+# a field that is missing can only leave the requirement unmet (a failure), never
+# satisfy it. The list itself must be a list.
+_ca_listed if {
+	available("conditional_access_policies")
+	is_array(input.entra.conditional_access_policies)
+}
+
 enabled_policies contains p if {
+	_ca_listed
 	some p in input.entra.conditional_access_policies
 	p.state == "enabled"
 }
@@ -244,19 +292,19 @@ legacy_auth_blocked if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not admin_mfa_enforced
 	msg := "CIS 5.2.2.1: no enabled Conditional Access policy requires multifactor authentication for administrative roles"
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not all_user_mfa_enforced
 	msg := "CIS 5.2.2.2: no enabled Conditional Access policy requires multifactor authentication for all users"
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not legacy_auth_blocked
 	msg := "CIS 5.2.2.3: no enabled Conditional Access policy blocks legacy authentication; legacy protocols bypass multifactor authentication"
 }
@@ -290,7 +338,7 @@ signin_frequency_enforced if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not signin_frequency_enforced
 	msg := "CIS 5.2.2.4: no enabled Conditional Access policy sets a sign-in frequency with browser sessions made non-persistent, so a stolen session cookie stays valid indefinitely"
 }
@@ -305,7 +353,7 @@ phishing_resistant_admin_mfa if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not phishing_resistant_admin_mfa
 	msg := "CIS 5.2.2.5: phishing-resistant MFA strength is not required for administrators; a policy requiring generic MFA still admits phishable factors"
 }
@@ -317,13 +365,13 @@ risk_policy_exists(field) if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not risk_policy_exists("userRiskLevels")
 	msg := "CIS 5.2.2.6: no enabled Identity Protection user risk policy exists, so a user flagged as compromised is not challenged or blocked"
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not risk_policy_exists("signInRiskLevels")
 	msg := "CIS 5.2.2.7: no enabled Identity Protection sign-in risk policy exists, so a risky sign-in is not challenged"
 }
@@ -339,7 +387,7 @@ signin_risk_blocked if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not signin_risk_blocked
 	msg := "CIS 5.2.2.8: sign-in risk is not blocked for both medium and high risk levels"
 }
@@ -359,7 +407,7 @@ managed_device_required if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not managed_device_required
 	msg := "CIS 5.2.2.9: no enabled Conditional Access policy requires a managed device for authentication"
 }
@@ -373,7 +421,7 @@ managed_device_for_registration if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not managed_device_for_registration
 	msg := "CIS 5.2.2.10: no enabled Conditional Access policy requires a managed device to register security information, so an attacker can enrol their own MFA method"
 }
@@ -387,9 +435,22 @@ intune_enrolment_frequency if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not intune_enrolment_frequency
 	msg := "CIS 5.2.2.11: sign-in frequency for Intune enrollment is not set to every time"
+}
+
+# transferMethods is a flags enum Graph serialises as one comma-separated string
+# ("deviceCodeFlow,authenticationTransfer"); a list of strings is read too.
+_transfer_methods(p) := {trim_space(m) | some m in parts} if {
+	v := object.get(p, ["conditions", "authenticationFlows", "transferMethods"], "")
+	is_string(v)
+	parts := split(v, ",")
+}
+
+_transfer_methods(p) := {m | some m in v; is_string(m)} if {
+	v := object.get(p, ["conditions", "authenticationFlows", "transferMethods"], "")
+	is_array(v)
 }
 
 # CIS 5.2.2.12 -- device code flow blocked.
@@ -397,37 +458,43 @@ default device_code_blocked := false
 
 device_code_blocked if {
 	some p in enabled_policies
-	some f in object.get(p, ["conditions", "authenticationFlows", "transferMethods"], [])
-	f == "deviceCodeFlow"
+	"deviceCodeFlow" in _transfer_methods(p)
 	some g in object.get(p, ["grant_controls", "builtInControls"], [])
 	g == "block"
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not device_code_blocked
 	msg := "CIS 5.2.2.12: the device code sign-in flow is not blocked; it is a common phishing vector because the victim authenticates on their own device"
 }
 
 # CIS 5.2.2.13 -- periodic reauthentication.
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not signin_frequency_enforced
 	msg := "CIS 5.2.2.13: periodic reauthentication is not required for all users -- no enabled policy sets a sign-in frequency"
 }
 
 # CIS 5.2.2.14 / 5.2.2.15 -- named locations.
-violation contains msg if {
+_named_locations_listed if {
 	available("named_locations")
+	is_array(input.entra.named_locations)
+}
+
+violation contains msg if {
+	_named_locations_listed
 	count([l | some l in input.entra.named_locations; l.is_trusted == true]) == 0
 	msg := "CIS 5.2.2.14: no trusted named locations are defined, so location cannot be used as a signal in Conditional Access"
 }
 
 violation contains msg if {
-	available("named_locations")
+	_named_locations_listed
 	count([l |
 		some l in input.entra.named_locations
-		count(object.get(l, "countries_and_regions", [])) > 0
+		regions := object.get(l, "countries_and_regions", [])
+		is_array(regions)
+		count(regions) > 0
 	]) == 0
 	msg := "CIS 5.2.2.15: no exclusionary geographic access controls are utilized -- no country or region named location is defined"
 }
@@ -441,7 +508,7 @@ token_protection_enforced if {
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not token_protection_enforced
 	msg := "CIS 5.2.2.16: token protection is not enforced for session tokens, so a stolen refresh token can be replayed from another device"
 }
@@ -451,14 +518,13 @@ default auth_transfer_blocked := false
 
 auth_transfer_blocked if {
 	some p in enabled_policies
-	some f in object.get(p, ["conditions", "authenticationFlows", "transferMethods"], [])
-	f == "authenticationTransfer"
+	"authenticationTransfer" in _transfer_methods(p)
 	some g in object.get(p, ["grant_controls", "builtInControls"], [])
 	g == "block"
 }
 
 violation contains msg if {
-	available("conditional_access_policies")
+	_ca_listed
 	not auth_transfer_blocked
 	msg := "CIS 5.2.2.17: authentication transfer is not blocked, so a session can be handed from a desktop to an attacker-controlled device"
 }
@@ -477,7 +543,7 @@ violation contains msg if {
 
 violation contains msg if {
 	available("device_registration_policy")
-	to_number(object.get(input.entra.device_registration, "user_device_quota", 0)) > MAX_DEVICES_PER_USER
+	_number(input.entra.device_registration.user_device_quota) > MAX_DEVICES_PER_USER
 	msg := sprintf("CIS 5.1.4.2: the maximum number of devices per user is %v; the benchmark expects a limit of %d or fewer", [input.entra.device_registration.user_device_quota, MAX_DEVICES_PER_USER])
 }
 
@@ -504,6 +570,11 @@ violation contains msg if {
 # rather than flags, so each control asks whether a rule of its kind
 # exists and is enabled.
 
+_app_management_read if {
+	available("app_management_policy")
+	is_object(input.entra.app_management)
+}
+
 app_restriction_present(collection, rule_type) if {
 	some r in object.get(input.entra.app_management, collection, [])
 	r.restrictionType == rule_type
@@ -511,25 +582,25 @@ app_restriction_present(collection, rule_type) if {
 }
 
 violation contains msg if {
-	available("app_management_policy")
+	_app_management_read
 	not app_restriction_present("password_credentials", "passwordAddition")
 	msg := "CIS 5.1.5.3: password addition is not blocked for applications, so a secret can be added to an existing app registration"
 }
 
 violation contains msg if {
-	available("app_management_policy")
+	_app_management_read
 	not app_restriction_present("password_credentials", "passwordLifetime")
 	msg := "CIS 5.1.5.4: no password lifetime restriction is enforced for applications, so an application password can exceed 180 days"
 }
 
 violation contains msg if {
-	available("app_management_policy")
+	_app_management_read
 	not app_restriction_present("password_credentials", "symmetricKeyAddition")
 	msg := "CIS 5.1.5.5: new application passwords are not required to be system-generated, so a weak secret can be supplied by hand"
 }
 
 violation contains msg if {
-	available("app_management_policy")
+	_app_management_read
 	not app_restriction_present("key_credentials", "asymmetricKeyLifetime")
 	msg := "CIS 5.1.5.6: no maximum certificate lifetime is enforced for applications, so an application certificate can exceed 180 days"
 }
@@ -543,12 +614,14 @@ review_covers(term) if {
 
 violation contains msg if {
 	available("access_reviews")
+	is_array(input.entra.access_reviews)
 	not review_covers("guest")
 	msg := "CIS 5.3.2: no access review is configured for guest users, so external access is never re-attested"
 }
 
 violation contains msg if {
 	available("access_reviews")
+	is_array(input.entra.access_reviews)
 	not review_covers("roleassignment")
 	msg := "CIS 5.3.3: no access review is configured for privileged roles, so standing administrative access is never re-attested"
 }
@@ -567,6 +640,7 @@ violation contains msg if {
 	available("authentication_methods_policy")
 	input.entra.authenticator.state == "enabled"
 	some feature in ["number_matching_state", "show_app_information_state", "show_geographic_location_state"]
+	is_string(input.entra.authenticator[feature])
 	input.entra.authenticator[feature] != "enabled"
 	msg := sprintf("CIS 5.2.3.1: Microsoft Authenticator is not configured to protect against MFA fatigue -- '%s' is not enabled, so a push can be approved without seeing what is being approved", [feature])
 }
@@ -582,56 +656,35 @@ violation contains msg if {
 violation contains msg if {
 	available("group_settings")
 	input.entra.lockout.settings_present == true
-	to_number(input.entra.lockout.threshold) > MAX_LOCKOUT_THRESHOLD
+	_number(input.entra.lockout.threshold) > MAX_LOCKOUT_THRESHOLD
 	msg := sprintf("CIS 5.2.3.8: the account lockout threshold is %v; the benchmark expects '10' or less", [input.entra.lockout.threshold])
 }
 
 violation contains msg if {
 	available("group_settings")
 	input.entra.lockout.settings_present == true
-	to_number(input.entra.lockout.duration_seconds) < MIN_LOCKOUT_DURATION_SECONDS
+	_number(input.entra.lockout.duration_seconds) < MIN_LOCKOUT_DURATION_SECONDS
 	msg := sprintf("CIS 5.2.3.9: the account lockout duration in seconds is %v; the benchmark expects at least %d", [input.entra.lockout.duration_seconds, MIN_LOCKOUT_DURATION_SECONDS])
 }
 
 # CIS 5.1.3.4 -- Microsoft 365 group creation restricted.
+# Only EnableGroupCreation false restricts creation: GroupCreationAllowedGroupId
+# names who may still create groups WHEN creation is off, it does not restrict
+# anyone while it is on. With no Group.Unified setting object the directory runs
+# on the template defaults, and EnableGroupCreation defaults to True, so every
+# user can create groups: that is a failure, not a pass.
+# https://learn.microsoft.com/en-us/entra/identity/users/groups-settings-cmdlets
 violation contains msg if {
 	available("group_settings")
 	input.entra.group_creation.settings_present == true
-	lower(object.get(input.entra.group_creation, "enabled", "")) == "true"
-	input.entra.group_creation.allowed_group_id == ""
-	msg := "CIS 5.1.3.4: users can create Microsoft 365 groups in Azure portals, APIs or PowerShell with no restricting group -- group membership drives access, so unmanaged creation undermines authorization"
-}
-
-# ── Fail closed on every gap the collector recorded ───────────────────
-FACT_CONTROLS := {
-	"authorization_policy": "5.1.2.2",
-	"authentication_methods_policy": "5.2.3.5",
-	"admin_consent_request_policy": "5.1.5.2",
-	"on_premises_synchronization": "5.1.8.1",
-	"conditional_access_policies": "5.2.2.1",
-	"named_locations": "5.2.2.14",
-	"device_registration_policy": "5.1.4.1",
-	"laps_policy": "5.1.4.5",
-	"app_management_policy": "5.1.5.3",
-	"access_reviews": "5.3.2",
-	"pim_role_assignments": "5.3.1",
-	"group_settings": "5.2.3.2",
-	"mfa_registration_report": "5.2.3.4",
-	"per_user_mfa": "5.1.2.1",
-	"b2b_management_policy": "5.1.6.1",
-	"pim_approval_62e90394-69f5-4237-9190-012177145e10": "5.3.4",
-	"pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814": "5.3.5",
+	_flag(input.entra.group_creation.enabled) == true
+	msg := "CIS 5.1.3.4: users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- EnableGroupCreation is True; group membership drives access, so unmanaged creation undermines authorization"
 }
 
 violation contains msg if {
-	some key, reason in unavailable
-	control := object.get(FACT_CONTROLS, key, "5.1.2.2")
-	msg := sprintf("CIS %s: could not be evaluated -- %s (this is not a pass)", [control, reason])
-}
-
-violation contains msg if {
-	not collected
-	msg := "CIS 5.1.2.2: Entra facts were not collected, so whether users can register applications could not be established -- section 5 was not evaluated (this is not a pass)"
+	available("group_settings")
+	input.entra.group_creation.settings_present == false
+	msg := "CIS 5.1.3.4: users can create Microsoft 365 groups in Azure portals, APIs or PowerShell -- no Group.Unified directory setting exists, so the default (EnableGroupCreation True) applies to every user"
 }
 
 # ── CIS 5.1.6.1 -- invitations only to allowed domains ────────────────
@@ -754,7 +807,7 @@ CONTROL_EVIDENCE := {
 	"5.1.2.2": [concat("", [_AP, "allowed_to_create_apps"])],
 	"5.1.2.3": [concat("", [_AP, "allowed_to_create_tenants"])],
 	"5.1.3.1": [concat("", [_AP, "allowed_to_create_security_groups"])],
-	"5.1.3.4": ["entra.group_creation.allowed_group_id", "entra.group_creation.enabled", "entra.group_creation.settings_present"],
+	"5.1.3.4": ["entra.group_creation.enabled", "entra.group_creation.settings_present"],
 	"5.1.4.1": ["entra.device_registration.azure_ad_join_allowed_to_join"],
 	"5.1.4.2": ["entra.device_registration.user_device_quota"],
 	"5.1.4.3": ["entra.device_registration.local_admin_global_admins_enabled"],
@@ -807,22 +860,18 @@ _AP_BOOLEANS := {
 
 decidable contains id if {
 	some id, field in _AP_BOOLEANS
-	available("authorization_policy")
-	is_boolean(input.entra.authorization_policy[field])
+	is_boolean(_ap[field])
 }
 
 decidable contains "5.1.5.1" if {
-	available("authorization_policy")
-	is_array(input.entra.authorization_policy.permission_grant_policy_ids_assigned)
+	every id in _grant_ids {
+		is_string(id)
+	}
 }
 
-decidable contains "5.1.6.2" if {
-	available("authorization_policy")
-	is_string(input.entra.authorization_policy.guest_user_role_id)
-}
+decidable contains "5.1.6.2" if is_string(_ap.guest_user_role_id)
 
-# an absent allow_invites_from reads as "not reported" and fails
-decidable contains "5.1.6.3" if available("authorization_policy")
+decidable contains "5.1.6.3" if is_string(_ap.allow_invites_from)
 
 decidable contains "5.2.3.5" if {
 	available("authentication_methods_policy")
@@ -851,7 +900,7 @@ decidable contains "5.2.3.1" if {
 	available("authentication_methods_policy")
 	input.entra.authenticator.state == "enabled"
 	every feature in AUTHENTICATOR_FEATURES {
-		_present(input.entra.authenticator, feature)
+		is_string(input.entra.authenticator[feature])
 	}
 }
 
@@ -883,29 +932,35 @@ decidable contains "5.2.3.2" if {
 
 decidable contains "5.2.3.3" if {
 	available("group_settings")
-	_present(input.entra.password_protection, "on_premises_check_enabled")
+	is_boolean(_flag(input.entra.password_protection.on_premises_check_enabled))
 }
 
-# no lockout / group-creation directory setting object: the rules apply no check (the tenant runs on the
-# service defaults), so only the settings_present flag itself has to have been collected
+# no directory setting object: the tenant runs on the service defaults, so only
+# the settings_present flag itself has to have been collected. For lockout the
+# defaults (10 attempts, 60 seconds) meet 5.2.3.8 / 5.2.3.9, so the rules apply
+# no check; for group creation the default lets every user create groups and
+# 5.1.3.4 fails (see its rule).
+# https://learn.microsoft.com/en-us/entra/identity/authentication/howto-password-smart-lockout
 _setting_decidable(obj, _) if {
 	available("group_settings")
 	input.entra[obj].settings_present == false
 }
 
-_setting_decidable(obj, fields) if {
+_setting_decidable(obj, field) if {
 	available("group_settings")
 	input.entra[obj].settings_present == true
-	every f in fields {
-		_present(input.entra[obj], f)
-	}
+	_setting_readable(obj, field)
 }
 
-decidable contains "5.2.3.8" if _setting_decidable("lockout", ["threshold"])
+_setting_readable("lockout", field) if is_number(_number(input.entra.lockout[field]))
 
-decidable contains "5.2.3.9" if _setting_decidable("lockout", ["duration_seconds"])
+_setting_readable("group_creation", field) if is_boolean(_flag(input.entra.group_creation[field]))
 
-decidable contains "5.1.3.4" if _setting_decidable("group_creation", ["allowed_group_id", "enabled"])
+decidable contains "5.2.3.8" if _setting_decidable("lockout", "threshold")
+
+decidable contains "5.2.3.9" if _setting_decidable("lockout", "duration_seconds")
+
+decidable contains "5.1.3.4" if _setting_decidable("group_creation", "enabled")
 
 decidable contains "5.2.3.4" if {
 	available("mfa_registration_report")
@@ -923,7 +978,7 @@ decidable contains id if {
 		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
 		"5.2.2.9", "5.2.2.10", "5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.16", "5.2.2.17",
 	]
-	available("conditional_access_policies")
+	_ca_listed
 	is_array(input.entra.conditional_access_policies)
 }
 
@@ -940,13 +995,13 @@ decidable contains "5.3.1" if {
 
 decidable contains "5.1.4.1" if {
 	available("device_registration_policy")
-	_present(input.entra.device_registration, "azure_ad_join_allowed_to_join")
+	is_string(input.entra.device_registration.azure_ad_join_allowed_to_join)
 }
 
 # an absent quota reads as 0 and passes, so the quota itself must have been collected
 decidable contains "5.1.4.2" if {
 	available("device_registration_policy")
-	_present(input.entra.device_registration, "user_device_quota")
+	is_number(_number(input.entra.device_registration.user_device_quota))
 }
 
 decidable contains "5.1.4.3" if {
@@ -956,7 +1011,7 @@ decidable contains "5.1.4.3" if {
 
 decidable contains "5.1.4.4" if {
 	available("device_registration_policy")
-	_present(input.entra.device_registration, "local_admin_registering_user_enabled")
+	is_string(input.entra.device_registration.local_admin_registering_user_enabled)
 }
 
 decidable contains "5.1.4.5" if {
@@ -1000,3 +1055,77 @@ decidable contains meta.control if {
 	input.entra[key].is_approval_required == true
 	is_number(input.entra[key].primary_approver_count)
 }
+
+# ── Evidence gaps, reported by control id ─────────────────────────────
+# A gap names every control it blocks (authorization_policy alone blocks
+# seven), so the per-control results and an exporter reading the ids agree on
+# what was not evaluated. A key this module does not know is reported on its
+# own, attributed to no control.
+FACT_CONTROLS := {
+	"authorization_policy": ["5.1.2.2", "5.1.2.3", "5.1.3.1", "5.1.4.6", "5.1.5.1", "5.1.6.2", "5.1.6.3"],
+	"authentication_methods_policy": ["5.2.3.1", "5.2.3.5", "5.2.3.6", "5.2.3.7", "5.2.3.10"],
+	"admin_consent_request_policy": ["5.1.5.2"],
+	"on_premises_synchronization": ["5.1.8.1"],
+	"conditional_access_policies": [
+		"5.2.2.1", "5.2.2.2", "5.2.2.3", "5.2.2.4", "5.2.2.5", "5.2.2.6", "5.2.2.7", "5.2.2.8",
+		"5.2.2.9", "5.2.2.10", "5.2.2.11", "5.2.2.12", "5.2.2.13", "5.2.2.16", "5.2.2.17",
+	],
+	"named_locations": ["5.2.2.14", "5.2.2.15"],
+	"device_registration_policy": ["5.1.4.1", "5.1.4.2", "5.1.4.3", "5.1.4.4"],
+	"laps_policy": ["5.1.4.5"],
+	"app_management_policy": ["5.1.5.3", "5.1.5.4", "5.1.5.5", "5.1.5.6"],
+	"access_reviews": ["5.3.2", "5.3.3"],
+	"pim_role_assignments": ["5.3.1"],
+	"group_settings": ["5.1.3.4", "5.2.3.2", "5.2.3.3", "5.2.3.8", "5.2.3.9"],
+	"mfa_registration_report": ["5.2.3.4"],
+	"per_user_mfa": ["5.1.2.1"],
+	"b2b_management_policy": ["5.1.6.1"],
+	"pim_approval_62e90394-69f5-4237-9190-012177145e10": ["5.3.4"],
+	"pim_approval_e8611ab8-c189-46e8-94e1-60213ab1f814": ["5.3.5"],
+}
+
+_section_controls := _natural_sort(object.keys(CONTROL_EVIDENCE))
+
+# ids in benchmark order
+_natural_sort(ids) := [pair[1] | some pair in sort([[key, id] |
+	some id in ids
+	parts := split(id, ".")
+	key := concat(".", [sprintf("%03d", [to_number(x)]) | some x in parts])
+])]
+
+_gap(ids, why) := sprintf("CIS %s: evidence missing -- %s (this is not a pass)", [concat("/", ids), why])
+
+_source_gaps contains [_section_controls, "Entra facts were not collected (entra.collected is not true)"] if not collected
+
+_source_gaps contains [FACT_CONTROLS[key], sprintf("entra.unavailable.%s: %v", [key, reason])] if {
+	collected
+	some key, reason in unavailable
+}
+
+_gap_ids contains id if {
+	some g in _source_gaps
+	some id in g[0]
+}
+
+# a source gap names each control it leaves undecided in a message of its own, so the
+# violation count is never smaller than the number of controls that are not a pass
+_evidence_gaps contains _gap([id], concat("; ", sort(whys))) if {
+	some id in _gap_ids
+	not id in decidable
+	whys := {g[1] | some g in _source_gaps; id in g[0]}
+}
+
+_evidence_gaps contains msg if {
+	some key, reason in unavailable
+	not FACT_CONTROLS[key]
+	msg := sprintf("M365 section 5 (Entra): unrecognised unavailable key '%s' (%v) -- this module reads no fact of that name, so it is attributed to no control (this is not a pass)", [key, reason])
+}
+
+_evidence_gaps contains _gap([id], why) if {
+	some id, paths in CONTROL_EVIDENCE
+	not id in decidable
+	not id in _gap_ids
+	why := sprintf("%s not collected or not of the expected type", [concat(", ", paths)])
+}
+
+violation contains msg if some msg in _evidence_gaps

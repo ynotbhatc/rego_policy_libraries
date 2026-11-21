@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 71
-#     cited: 34
+#     checks: 96
+#     cited: 59
 #     density: sized
 #     basis: size
 #     tested: true
@@ -24,8 +24,11 @@ import rego.v1
 # Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0
 # (usnistgov/oscal-content, nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json).
 # Evaluated here: AC-1..AC-12, AC-14, AC-16..AC-25 and the enhancements AC-2(1), AC-4(1), AC-6(1), AC-6(2),
-# AC-9(1), AC-9(4), AC-11(1), AC-12(1), AC-17(1), AC-17(2), AC-18(1) (34 ids). A base control never fails on
-# an enhancement's requirement; each enhancement is its own finding. Not evaluated: AC-13 (withdrawn,
+# AC-9(1), AC-9(4), AC-11(1), AC-12(1), AC-17(1), AC-17(2), AC-18(1), and the further NIST SP 800-53B Moderate
+# enhancements AC-2(2), AC-2(3), AC-2(4), AC-2(5), AC-2(13), AC-6(5), AC-6(7), AC-6(9), AC-6(10), AC-17(3),
+# AC-17(4), AC-18(3), AC-19(5), AC-20(1), AC-20(2), and the NIST / FedRAMP High enhancements AC-2(7), AC-2(9),
+# AC-2(11), AC-2(12), AC-4(4), AC-4(21), AC-6(3), AC-6(8), AC-18(4), AC-18(5) (59 ids).
+# A base control never fails on an enhancement's requirement; each enhancement is its own finding. Not evaluated: AC-13 (withdrawn,
 # incorporated into AC-2 and AU-6) and AC-15 (withdrawn, "incorporated into MP-3" Media Marking; this
 # library has no MP family module, so AC-15 is not assessed and never produces a finding).
 #
@@ -171,6 +174,10 @@ ac11_evidence_missing contains "input.ac_controls.session_lock.odp.inactivity_ti
 
 ac11_evidence_missing contains "input.ac_controls.session_lock.inactivity_timeout" if {
 	not is_number(object.get(_ac11, "inactivity_timeout", null))
+}
+
+ac11_evidence_missing contains "input.ac_controls.session_lock.authentication_required" if {
+	not is_boolean(object.get(_ac11, "authentication_required", null))
 }
 
 session_lock if {
@@ -371,12 +378,12 @@ nist_sp800_53_ac_compliance := {
 
 violation contains msg if {
 	not access_control_policy
-	msg := "NIST AC-1: Access control policy/procedures not documented, disseminated, or reviewed"
+	msg := sprintf("NIST AC-1: %s", [_ac_detail(["policy.documented", "policy.disseminated", "policy.reviewed_updated", "procedures.implementation_documented"], "Access control policy/procedures not documented, disseminated, or reviewed")])
 }
 
 violation contains msg if {
 	not account_management
-	msg := "NIST AC-2: Account management lacks approval, regular review, or timely removal"
+	msg := sprintf("NIST AC-2: %s", [_ac_detail(["account_management.approval_process", "account_management.regular_reviews", "account_management.timely_removal"], "Account management lacks approval, regular review, or timely removal")])
 }
 
 _ac3_any_collected if {
@@ -398,17 +405,17 @@ violation contains msg if {
 
 violation contains msg if {
 	not information_flow_enforcement
-	msg := "NIST AC-4: Information flow not enforced according to approved flow control policies"
+	msg := sprintf("NIST AC-4: %s", [_ac_detail(["information_flow.flow_control_policies", "information_flow.automated_enforcement"], "Information flow not enforced according to approved flow control policies")])
 }
 
 violation contains msg if {
 	not separation_of_duties
-	msg := "NIST AC-5: Duties not identified and documented or access authorizations not defined to support separation of duties"
+	msg := sprintf("NIST AC-5: %s", [_ac_detail(["separation_duties.critical_functions_divided", "separation_duties.documented_assignments"], "Duties not identified and documented or access authorizations not defined to support separation of duties")])
 }
 
 violation contains msg if {
 	not least_privilege
-	msg := "NIST AC-6: Least privilege not employed (input.ac_controls.least_privilege.minimum_access_granted)"
+	msg := sprintf("NIST AC-6: %s", [_ac_detail(["least_privilege.minimum_access_granted"], "Least privilege not employed (input.ac_controls.least_privilege.minimum_access_granted)")])
 }
 
 violation contains msg if {
@@ -427,17 +434,17 @@ violation contains msg if {
 
 violation contains msg if {
 	not system_use_notification
-	msg := "NIST AC-8: System use notification banner/acknowledgment/consent missing"
+	msg := sprintf("NIST AC-8: %s", [_ac_detail(["use_notification.banner_displayed", "use_notification.acknowledgment_required", "use_notification.monitoring_consent"], "System use notification banner/acknowledgment/consent missing")])
 }
 
 violation contains msg if {
 	not previous_logon_notification
-	msg := "NIST AC-9: Date and time of the last logon not displayed to the user upon successful logon"
+	msg := sprintf("NIST AC-9: %s", [_ac_detail(["logon_notification.timestamp_displayed"], "Date and time of the last logon not displayed to the user upon successful logon")])
 }
 
 violation contains msg if {
 	not concurrent_session_control
-	msg := "NIST AC-10: Concurrent sessions not limited per account or account type"
+	msg := sprintf("NIST AC-10: %s", [_ac_detail(["session_control.limits_configured", "session_control.per_account_limits"], "Concurrent sessions not limited per account or account type")])
 }
 
 violation contains msg if {
@@ -456,12 +463,12 @@ violation contains msg if {
 
 violation contains msg if {
 	not pattern_hiding_display
-	msg := "NIST AC-11(1): Device lock does not conceal previously visible information (input.ac_controls.session_lock.pattern_hiding is not true)"
+	msg := sprintf("NIST AC-11(1): %s", [_ac_detail(["session_lock.pattern_hiding"], "Device lock does not conceal previously visible information (input.ac_controls.session_lock.pattern_hiding is not true)")])
 }
 
 violation contains msg if {
 	not session_termination
-	msg := "NIST AC-12: User sessions not automatically terminated after the defined conditions"
+	msg := sprintf("NIST AC-12: %s", [_ac_detail(["session_termination.automatic_termination"], "User sessions not automatically terminated after the defined conditions")])
 }
 
 violation contains msg if {
@@ -480,103 +487,475 @@ violation contains msg if {
 
 violation contains msg if {
 	not remote_access_control
-	msg := "NIST AC-17: Remote access types not authorized before connections are allowed"
+	msg := sprintf("NIST AC-17: %s", [_ac_detail(["remote_access.authorized_only"], "Remote access types not authorized before connections are allowed")])
 }
 
 violation contains msg if {
 	not wireless_access_control
-	msg := "NIST AC-18: Wireless access types not authorized before connections are allowed"
+	msg := sprintf("NIST AC-18: %s", [_ac_detail(["wireless_access.authorized_only"], "Wireless access types not authorized before connections are allowed")])
 }
 
 violation contains msg if {
 	not mobile_device_access_control
-	msg := "NIST AC-19: Mobile device access control missing usage restrictions or config requirements"
+	msg := sprintf("NIST AC-19: %s", [_ac_detail(["mobile_devices.usage_restrictions", "mobile_devices.connection_requirements", "mobile_devices.configuration_requirements"], "Mobile device access control missing usage restrictions or config requirements")])
 }
 
 violation contains msg if {
 	not external_systems_control
-	msg := "NIST AC-20: External system use not authorized or governed by user agreements"
+	msg := sprintf("NIST AC-20: %s", [_ac_detail(["external_systems.authorized_only", "external_systems.security_requirements", "external_systems.user_agreements"], "External system use not authorized or governed by user agreements")])
 }
 
 violation contains msg if {
 	not publicly_accessible_content
-	msg := "NIST AC-22: Publicly accessible content lacks review/removal process"
+	msg := sprintf("NIST AC-22: %s", [_ac_detail(["public_content.authorized_personnel_only", "public_content.review_process", "public_content.removal_procedures"], "Publicly accessible content lacks review/removal process")])
 }
 
 violation contains msg if {
 	not security_attributes
-	msg := "NIST AC-16: Security and privacy attributes not bound, associated, and preserved in transmission"
+	msg := sprintf("NIST AC-16: %s", [_ac_detail(["security_attributes.attribute_binding", "security_attributes.attribute_association", "security_attributes.transmission_preservation"], "Security and privacy attributes not bound, associated, and preserved in transmission")])
 }
 
 violation contains msg if {
 	not information_sharing_control
-	msg := "NIST AC-21: Information sharing lacks partner-authorization checks or automated decision support"
+	msg := sprintf("NIST AC-21: %s", [_ac_detail(["information_sharing.user_discretion_limited", "information_sharing.automated_guidance"], "Information sharing lacks partner-authorization checks or automated decision support")])
 }
 
 violation contains msg if {
 	not data_mining_protection
-	msg := "NIST AC-23: Data mining protection lacks detection techniques, warnings, or response procedures"
+	msg := sprintf("NIST AC-23: %s", [_ac_detail(["data_mining.detection_techniques", "data_mining.warning_notifications", "data_mining.response_procedures"], "Data mining protection lacks detection techniques, warnings, or response procedures")])
 }
 
 violation contains msg if {
 	not access_control_decisions
-	msg := "NIST AC-24: Access control decisions not based on security attributes, consistently enforced, or documented"
+	msg := sprintf("NIST AC-24: %s", [_ac_detail(["decisions.security_attributes_used", "decisions.consistent_enforcement", "decisions.documented_criteria"], "Access control decisions not based on security attributes, consistently enforced, or documented")])
 }
 
 violation contains msg if {
 	not reference_monitor
-	msg := "NIST AC-25: Reference monitor not tamper-proof, always-invoked, and small enough to verify"
+	msg := sprintf("NIST AC-25: %s", [_ac_detail(["reference_monitor.tamper_proof", "reference_monitor.always_invoked", "reference_monitor.small_verifiable"], "Reference monitor not tamper-proof, always-invoked, and small enough to verify")])
 }
 
 violation contains msg if {
 	not automated_account_management
-	msg := "NIST AC-2(1): Automated system account management not supported (input.ac_controls.account_management.automated_tools)"
+	msg := sprintf("NIST AC-2(1): %s", [_ac_detail(["account_management.automated_tools"], "Automated system account management not supported (input.ac_controls.account_management.automated_tools)")])
 }
 
 violation contains msg if {
 	not flow_object_attributes
-	msg := "NIST AC-4(1): Security and privacy attributes not used for flow control decisions (input.ac_controls.information_flow.security_labels)"
+	msg := sprintf("NIST AC-4(1): %s", [_ac_detail(["information_flow.security_labels"], "Security and privacy attributes not used for flow control decisions (input.ac_controls.information_flow.security_labels)")])
 }
 
 violation contains msg if {
 	not authorize_security_functions
-	msg := "NIST AC-6(1): Access to security functions not explicitly authorized (input.ac_controls.least_privilege.privileged_functions_authorized)"
+	msg := sprintf("NIST AC-6(1): %s", [_ac_detail(["least_privilege.privileged_functions_authorized"], "Access to security functions not explicitly authorized (input.ac_controls.least_privilege.privileged_functions_authorized)")])
 }
 
 violation contains msg if {
 	not non_privileged_access_for_nonsecurity
-	msg := "NIST AC-6(2): Privileged users not required to use non-privileged accounts for nonsecurity functions (input.ac_controls.least_privilege.non_privileged_access_default)"
+	msg := sprintf("NIST AC-6(2): %s", [_ac_detail(["least_privilege.non_privileged_access_default"], "Privileged users not required to use non-privileged accounts for nonsecurity functions (input.ac_controls.least_privilege.non_privileged_access_default)")])
 }
 
 violation contains msg if {
 	not previous_logon_unsuccessful_count
-	msg := "NIST AC-9(1): Number of unsuccessful logon attempts not shown upon successful logon (input.ac_controls.logon_notification.unsuccessful_attempts_displayed)"
+	msg := sprintf("NIST AC-9(1): %s", [_ac_detail(["logon_notification.unsuccessful_attempts_displayed"], "Number of unsuccessful logon attempts not shown upon successful logon (input.ac_controls.logon_notification.unsuccessful_attempts_displayed)")])
 }
 
 violation contains msg if {
 	not previous_logon_additional_info
-	msg := "NIST AC-9(4): Additional logon information (location) not shown upon successful logon (input.ac_controls.logon_notification.location_displayed)"
+	msg := sprintf("NIST AC-9(4): %s", [_ac_detail(["logon_notification.location_displayed"], "Additional logon information (location) not shown upon successful logon (input.ac_controls.logon_notification.location_displayed)")])
 }
 
 violation contains msg if {
 	not user_initiated_logout
-	msg := "NIST AC-12(1): No user-initiated logout capability (input.ac_controls.session_termination.user_initiated)"
+	msg := sprintf("NIST AC-12(1): %s", [_ac_detail(["session_termination.user_initiated"], "No user-initiated logout capability (input.ac_controls.session_termination.user_initiated)")])
 }
 
 violation contains msg if {
 	not remote_access_monitoring
-	msg := "NIST AC-17(1): Remote access methods not monitored and controlled by automated mechanisms (input.ac_controls.remote_access.monitored_controlled)"
+	msg := sprintf("NIST AC-17(1): %s", [_ac_detail(["remote_access.monitored_controlled"], "Remote access methods not monitored and controlled by automated mechanisms (input.ac_controls.remote_access.monitored_controlled)")])
 }
 
 violation contains msg if {
 	not remote_access_encryption
-	msg := "NIST AC-17(2): Remote access sessions not cryptographically protected (input.ac_controls.remote_access.encrypted_connections)"
+	msg := sprintf("NIST AC-17(2): %s", [_ac_detail(["remote_access.encrypted_connections"], "Remote access sessions not cryptographically protected (input.ac_controls.remote_access.encrypted_connections)")])
 }
 
 violation contains msg if {
 	not wireless_auth_encryption
-	msg := "NIST AC-18(1): Wireless access not protected by authentication and encryption (input.ac_controls.wireless_access.encrypted_authentication)"
+	msg := sprintf("NIST AC-18(1): %s", [_ac_detail(["wireless_access.encrypted_authentication"], "Wireless access not protected by authentication and encryption (input.ac_controls.wireless_access.encrypted_authentication)")])
 }
+
+# ── Evidence helpers ─────────────────────────────────────────────────────
+# A fact path is dotted below input.ac_controls. A fact that is absent, null or of the wrong type is missing
+# evidence, never a pass.
+_ac_get(p) := object.get(input, array.concat(["ac_controls"], split(p, ".")), null)
+
+_ac_path(p) := concat(".", ["input.ac_controls", p])
+
+# The boolean facts in `ps` that are absent or not a boolean.
+_ac_bool_missing(ps) := {_ac_path(p) | some p in ps; not is_boolean(_ac_get(p))}
+
+# Finding text for an existing boolean rule that fired: evidence missing when one of the facts it reads is absent
+# or not a boolean, otherwise the rule's own text. The rule's pass condition is unchanged.
+_ac_detail(ps, text) := sprintf("evidence missing — %s not collected", [concat(", ", sort(m))]) if {
+	m := _ac_bool_missing(ps)
+	count(m) > 0
+} else := text
+
+# Finding text for an enhancement: the missing evidence when any, otherwise the unmet elements.
+_ac_enh_detail(missing, failed) := sprintf("evidence missing — %s not collected", [concat(", ", sort(missing))]) if {
+	count(missing) > 0
+} else := concat("; ", sort(failed))
+
+_ac_bool_false(ps) := {sprintf("%s is not true", [_ac_path(p)]) | some p in ps; _ac_get(p) == false}
+
+_ac_num_missing(ps) := {_ac_path(p) | some p in ps; not is_number(_ac_get(p))}
+
+_ac_nonempty_array(v) if {
+	is_array(v)
+	count(v) > 0
+}
+
+_ac_list_missing(ps) := {concat("", [_ac_path(p), " (non-empty list)"]) | some p in ps; not _ac_nonempty_array(_ac_get(p))}
+
+# A count that must be zero: `what` names what was counted.
+_ac_nonzero(p, what) := {sprintf("%v %s (%s)", [v, what, _ac_path(p)]) |
+	v := _ac_get(p)
+	is_number(v)
+	v > 0
+}
+
+# The observed value may not exceed the organization-defined value.
+_ac_over(obs, odp, fmt) := {sprintf(fmt, [o, l]) |
+	o := _ac_get(obs)
+	l := _ac_get(odp)
+	is_number(o)
+	is_number(l)
+	o > l
+}
+
+# ── Moderate-baseline enhancements (NIST SP 800-53B) ─────────────────────
+# Each id has a set of missing evidence paths and a set of unmet elements; one finding per id: the missing
+# evidence when any, otherwise the unmet elements.
+
+# AC-2(2) Automated Temporary and Emergency Account Management: temporary and emergency accounts are removed or
+# disabled automatically after the organization-defined period.
+# Facts (input.ac_controls.account_management.temporary_accounts): automated_expiry_enforced (boolean);
+# max_lifetime_hours (longest lifetime configured for a temporary or emergency account) +
+# odp.max_lifetime_hours (organization-defined period).
+_ac2_2 := "account_management.temporary_accounts"
+
+_ac2_2_missing := _ac_bool_missing([concat(".", [_ac2_2, "automated_expiry_enforced"])]) | _ac_num_missing([concat(".", [_ac2_2, "max_lifetime_hours"]), concat(".", [_ac2_2, "odp.max_lifetime_hours"])])
+
+_ac2_2_failed := _ac_bool_false([concat(".", [_ac2_2, "automated_expiry_enforced"])]) | _ac_over(concat(".", [_ac2_2, "max_lifetime_hours"]), concat(".", [_ac2_2, "odp.max_lifetime_hours"]), "temporary or emergency accounts live up to %v hours; the organization-defined period is %v hours")
+
+# AC-2(3) Disable Accounts: accounts that have expired, are no longer associated with a user, violate policy or
+# have been inactive for the organization-defined period are disabled within the organization-defined period.
+# Facts (input.ac_controls.account_management.disable_accounts): inactivity_threshold_days (configured) +
+# odp.inactivity_days; max_days_to_disable (longest observed time from an account meeting a disable condition to
+# its disabling) + odp.disable_within_days.
+_ac2_3 := "account_management.disable_accounts"
+
+_ac2_3_missing := _ac_num_missing([concat(".", [_ac2_3, f]) | some f in ["inactivity_threshold_days", "odp.inactivity_days", "max_days_to_disable", "odp.disable_within_days"]])
+
+_ac2_3_failed := _ac_over(concat(".", [_ac2_3, "inactivity_threshold_days"]), concat(".", [_ac2_3, "odp.inactivity_days"]), "inactive accounts disabled after %v days of inactivity; the organization-defined period is %v days") | _ac_over(concat(".", [_ac2_3, "max_days_to_disable"]), concat(".", [_ac2_3, "odp.disable_within_days"]), "accounts meeting a disable condition were disabled up to %v days later; the organization-defined period is %v days")
+
+# AC-2(4) Automated Audit Actions: account creation, modification, enabling, disabling and removal are audited
+# automatically.
+# Facts (input.ac_controls.account_management.automated_audit): creation, modification, enabling, disabling,
+# removal (booleans).
+_ac2_4 := [concat(".", ["account_management.automated_audit", a]) | some a in ["creation", "modification", "enabling", "disabling", "removal"]]
+
+_ac2_4_missing := _ac_bool_missing(_ac2_4)
+
+_ac2_4_failed := _ac_bool_false(_ac2_4)
+
+# AC-2(5) Inactivity Logout: users are logged out after the organization-defined period of expected inactivity.
+# Facts (input.ac_controls.account_management.inactivity_logout): enforced (boolean); logout_after_minutes
+# (configured) + odp.logout_after_minutes.
+_ac2_5 := "account_management.inactivity_logout"
+
+_ac2_5_missing := _ac_bool_missing([concat(".", [_ac2_5, "enforced"])]) | _ac_num_missing([concat(".", [_ac2_5, "logout_after_minutes"]), concat(".", [_ac2_5, "odp.logout_after_minutes"])])
+
+_ac2_5_failed := _ac_bool_false([concat(".", [_ac2_5, "enforced"])]) | _ac_over(concat(".", [_ac2_5, "logout_after_minutes"]), concat(".", [_ac2_5, "odp.logout_after_minutes"]), "users logged out after %v minutes of inactivity; the organization-defined period is %v minutes")
+
+# AC-2(13) Disable Accounts for High-risk Individuals: accounts of individuals are disabled within the
+# organization-defined period of discovery of the organization-defined significant risks.
+# Facts (input.ac_controls.account_management.high_risk_individuals): max_hours_to_disable (longest observed time
+# from discovery to disabling in the assessment window; 0 when no case occurred) + odp.disable_within_hours;
+# odp.significant_risks (non-empty list of the risks the organisation defined).
+_ac2_13 := "account_management.high_risk_individuals"
+
+_ac2_13_missing := _ac_num_missing([concat(".", [_ac2_13, "max_hours_to_disable"]), concat(".", [_ac2_13, "odp.disable_within_hours"])]) | _ac_list_missing([concat(".", [_ac2_13, "odp.significant_risks"])])
+
+_ac2_13_failed := _ac_over(concat(".", [_ac2_13, "max_hours_to_disable"]), concat(".", [_ac2_13, "odp.disable_within_hours"]), "accounts of high-risk individuals disabled up to %v hours after discovery; the organization-defined period is %v hours")
+
+# AC-6(5) Privileged Accounts: privileged accounts are restricted to the organization-defined personnel or roles.
+# Facts (input.ac_controls.least_privilege.privileged_accounts): odp.authorized_roles (non-empty list);
+# accounts_outside_authorized_roles (count of privileged accounts not held by those roles).
+_ac6_5 := "least_privilege.privileged_accounts"
+
+_ac6_5_missing := _ac_list_missing([concat(".", [_ac6_5, "odp.authorized_roles"])]) | _ac_num_missing([concat(".", [_ac6_5, "accounts_outside_authorized_roles"])])
+
+_ac6_5_failed := _ac_nonzero(concat(".", [_ac6_5, "accounts_outside_authorized_roles"]), "privileged accounts held outside the organization-defined roles")
+
+# AC-6(7) Review of User Privileges: privileges of the organization-defined roles are reviewed at the
+# organization-defined frequency, and privileges are reassigned or removed where the review found them unneeded.
+# Facts (input.ac_controls.least_privilege.privilege_review): days_since_last + odp.frequency_days;
+# unremediated_findings (count of privileges the last review marked for removal or reassignment and still held).
+_ac6_7 := "least_privilege.privilege_review"
+
+_ac6_7_missing := _ac_num_missing([concat(".", [_ac6_7, f]) | some f in ["days_since_last", "odp.frequency_days", "unremediated_findings"]])
+
+_ac6_7_failed := _ac_over(concat(".", [_ac6_7, "days_since_last"]), concat(".", [_ac6_7, "odp.frequency_days"]), "user privileges last reviewed %v days ago; the organization-defined frequency is %v days") | _ac_nonzero(concat(".", [_ac6_7, "unremediated_findings"]), "privileges marked for removal or reassignment still held")
+
+# AC-6(9) Log Use of Privileged Functions. Fact: input.ac_controls.least_privilege.privileged_functions_logged
+# (boolean: execution of privileged functions is logged, e.g. audit rules on privileged commands).
+_ac6_9 := ["least_privilege.privileged_functions_logged"]
+
+_ac6_9_missing := _ac_bool_missing(_ac6_9)
+
+_ac6_9_failed := _ac_bool_false(_ac6_9)
+
+# AC-6(10) Prohibit Non-privileged Users from Executing Privileged Functions.
+# Fact: input.ac_controls.least_privilege.non_privileged_execution_prevented (boolean).
+_ac6_10 := ["least_privilege.non_privileged_execution_prevented"]
+
+_ac6_10_missing := _ac_bool_missing(_ac6_10)
+
+_ac6_10_failed := _ac_bool_false(_ac6_10)
+
+# AC-17(3) Managed Access Control Points: remote access is routed through authorized, managed access control
+# points. Fact: input.ac_controls.remote_access.unmanaged_access_points (count of remote access entry points that
+# bypass the managed access control points).
+_ac17_3_missing := _ac_num_missing(["remote_access.unmanaged_access_points"])
+
+_ac17_3_failed := _ac_nonzero("remote_access.unmanaged_access_points", "remote access entry points not routed through a managed access control point")
+
+# AC-17(4) Privileged Commands and Access: privileged commands and access to security-relevant information over
+# remote access are authorized only for the organization-defined needs, in a format that provides assessable
+# evidence, with the rationale documented in the security plan.
+# Facts (input.ac_controls.remote_access.privileged_commands): odp.needs (non-empty list); restricted_to_defined_needs,
+# assessable_evidence_produced (e.g. session recording or command logging), rationale_in_security_plan (booleans).
+_ac17_4 := [concat(".", ["remote_access.privileged_commands", f]) | some f in ["restricted_to_defined_needs", "assessable_evidence_produced", "rationale_in_security_plan"]]
+
+_ac17_4_missing := _ac_bool_missing(_ac17_4) | _ac_list_missing(["remote_access.privileged_commands.odp.needs"])
+
+_ac17_4_failed := _ac_bool_false(_ac17_4)
+
+# AC-18(3) Disable Wireless Networking: embedded wireless capabilities not intended for use are disabled before
+# issuance and deployment. Fact: input.ac_controls.wireless_access.components_with_unused_wireless_enabled (count).
+_ac18_3_missing := _ac_num_missing(["wireless_access.components_with_unused_wireless_enabled"])
+
+_ac18_3_failed := _ac_nonzero("wireless_access.components_with_unused_wireless_enabled", "deployed components with wireless networking enabled but not intended for use")
+
+# AC-19(5) Full Device or Container-based Encryption: the organization-defined encryption is employed on the
+# organization-defined mobile devices.
+# Facts (input.ac_controls.mobile_devices.encryption): odp.method ("full-device" or "container-based");
+# devices_without_required_encryption (count of in-scope mobile devices without it).
+_ac19_5 := "mobile_devices.encryption"
+
+_ac19_5_methods := {"full-device", "container-based"}
+
+_ac19_5_missing contains concat(".", [_ac_path(_ac19_5), "odp.method (full-device or container-based)"]) if {
+	not _ac_get(concat(".", [_ac19_5, "odp.method"])) in _ac19_5_methods
+}
+
+_ac19_5_missing contains m if {
+	some m in _ac_num_missing([concat(".", [_ac19_5, "devices_without_required_encryption"])])
+}
+
+_ac19_5_failed := _ac_nonzero(concat(".", [_ac19_5, "devices_without_required_encryption"]), "mobile devices without the organization-defined encryption")
+
+# AC-20(1) Limits on Authorized Use: an external system is used only after its controls are verified or an
+# approved connection or processing agreement is retained.
+# Fact: input.ac_controls.external_systems.limits_on_authorized_use.systems_without_verification_or_agreement
+# (count of external systems in use with neither).
+_ac20_1 := "external_systems.limits_on_authorized_use.systems_without_verification_or_agreement"
+
+_ac20_1_missing := _ac_num_missing([_ac20_1])
+
+_ac20_1_failed := _ac_nonzero(_ac20_1, "external systems in use without verified controls or a retained agreement")
+
+# AC-20(2) Portable Storage Devices — Restricted Use: use of organization-controlled portable storage devices on
+# external systems is restricted with the organization-defined restrictions.
+# Facts (input.ac_controls.external_systems.portable_storage): odp.restrictions (non-empty list);
+# restrictions_enforced (boolean).
+_ac20_2 := ["external_systems.portable_storage.restrictions_enforced"]
+
+_ac20_2_missing := _ac_bool_missing(_ac20_2) | _ac_list_missing(["external_systems.portable_storage.odp.restrictions"])
+
+_ac20_2_failed := _ac_bool_false(_ac20_2)
+
+violation contains sprintf("NIST AC-2(2): %s", [_ac_enh_detail(_ac2_2_missing, _ac2_2_failed)]) if count(_ac2_2_missing | _ac2_2_failed) > 0
+
+violation contains sprintf("NIST AC-2(3): %s", [_ac_enh_detail(_ac2_3_missing, _ac2_3_failed)]) if count(_ac2_3_missing | _ac2_3_failed) > 0
+
+violation contains sprintf("NIST AC-2(4): %s", [_ac_enh_detail(_ac2_4_missing, _ac2_4_failed)]) if count(_ac2_4_missing | _ac2_4_failed) > 0
+
+violation contains sprintf("NIST AC-2(5): %s", [_ac_enh_detail(_ac2_5_missing, _ac2_5_failed)]) if count(_ac2_5_missing | _ac2_5_failed) > 0
+
+violation contains sprintf("NIST AC-2(13): %s", [_ac_enh_detail(_ac2_13_missing, _ac2_13_failed)]) if count(_ac2_13_missing | _ac2_13_failed) > 0
+
+violation contains sprintf("NIST AC-6(5): %s", [_ac_enh_detail(_ac6_5_missing, _ac6_5_failed)]) if count(_ac6_5_missing | _ac6_5_failed) > 0
+
+violation contains sprintf("NIST AC-6(7): %s", [_ac_enh_detail(_ac6_7_missing, _ac6_7_failed)]) if count(_ac6_7_missing | _ac6_7_failed) > 0
+
+violation contains sprintf("NIST AC-6(9): %s", [_ac_enh_detail(_ac6_9_missing, _ac6_9_failed)]) if count(_ac6_9_missing | _ac6_9_failed) > 0
+
+violation contains sprintf("NIST AC-6(10): %s", [_ac_enh_detail(_ac6_10_missing, _ac6_10_failed)]) if count(_ac6_10_missing | _ac6_10_failed) > 0
+
+violation contains sprintf("NIST AC-17(3): %s", [_ac_enh_detail(_ac17_3_missing, _ac17_3_failed)]) if count(_ac17_3_missing | _ac17_3_failed) > 0
+
+violation contains sprintf("NIST AC-17(4): %s", [_ac_enh_detail(_ac17_4_missing, _ac17_4_failed)]) if count(_ac17_4_missing | _ac17_4_failed) > 0
+
+violation contains sprintf("NIST AC-18(3): %s", [_ac_enh_detail(_ac18_3_missing, _ac18_3_failed)]) if count(_ac18_3_missing | _ac18_3_failed) > 0
+
+violation contains sprintf("NIST AC-19(5): %s", [_ac_enh_detail(_ac19_5_missing, _ac19_5_failed)]) if count(_ac19_5_missing | _ac19_5_failed) > 0
+
+violation contains sprintf("NIST AC-20(1): %s", [_ac_enh_detail(_ac20_1_missing, _ac20_1_failed)]) if count(_ac20_1_missing | _ac20_1_failed) > 0
+
+violation contains sprintf("NIST AC-20(2): %s", [_ac_enh_detail(_ac20_2_missing, _ac20_2_failed)]) if count(_ac20_2_missing | _ac20_2_failed) > 0
+
+# ── NIST and FedRAMP High-baseline enhancements ──────────────────────────
+# Same shape as the Moderate enhancements: missing evidence and unmet elements per id, one finding per id.
+
+_ac_f(base, f) := concat(".", [base, f])
+
+# A selection ODP: the organisation's choice must be one of the values the statement allows.
+_ac_choice_missing(p, allowed) := {sprintf("%s (one of %s)", [_ac_path(p), concat(", ", sort(allowed))]) | not _ac_get(p) in allowed}
+
+# AC-2(7) Privileged User Accounts: privileged user accounts are administered under the organization-defined
+# role-based or attribute-based scheme; privileged role or attribute assignments and changes to them are
+# monitored; access is revoked when an assignment is no longer appropriate.
+# Facts (input.ac_controls.account_management.privileged_user_accounts): odp.scheme ("role-based" or
+# "attribute-based"); administered_per_scheme, assignments_monitored, changes_monitored (booleans);
+# inappropriate_assignments_not_revoked (count of privileged assignments found inappropriate and still held).
+_ac2_7 := "account_management.privileged_user_accounts"
+
+_ac2_7_bools := [_ac_f(_ac2_7, f) | some f in ["administered_per_scheme", "assignments_monitored", "changes_monitored"]]
+
+_ac2_7_missing := (_ac_bool_missing(_ac2_7_bools) | _ac_num_missing([_ac_f(_ac2_7, "inappropriate_assignments_not_revoked")])) | _ac_choice_missing(_ac_f(_ac2_7, "odp.scheme"), {"role-based", "attribute-based"})
+
+_ac2_7_failed := _ac_bool_false(_ac2_7_bools) | _ac_nonzero(_ac_f(_ac2_7, "inappropriate_assignments_not_revoked"), "privileged role or attribute assignments no longer appropriate and not revoked")
+
+# AC-2(9) Restrictions on Use of Shared and Group Accounts: only shared and group accounts that meet the
+# organization-defined conditions are permitted.
+# Facts (input.ac_controls.account_management.shared_accounts): odp.conditions (non-empty list);
+# accounts_not_meeting_conditions (count of enabled shared or group accounts that do not meet them).
+_ac2_9 := "account_management.shared_accounts"
+
+_ac2_9_missing := _ac_list_missing([_ac_f(_ac2_9, "odp.conditions")]) | _ac_num_missing([_ac_f(_ac2_9, "accounts_not_meeting_conditions")])
+
+_ac2_9_failed := _ac_nonzero(_ac_f(_ac2_9, "accounts_not_meeting_conditions"), "shared or group accounts enabled that do not meet the organization-defined conditions")
+
+# AC-2(11) Usage Conditions: the organization-defined circumstances or usage conditions (time of day, location,
+# source network) are enforced for the organization-defined system accounts.
+# Facts (input.ac_controls.account_management.usage_conditions): odp.conditions, odp.accounts (non-empty lists);
+# accounts_without_enforced_conditions (count of those accounts on which the conditions are not enforced).
+_ac2_11 := "account_management.usage_conditions"
+
+_ac2_11_missing := _ac_list_missing([_ac_f(_ac2_11, "odp.conditions"), _ac_f(_ac2_11, "odp.accounts")]) | _ac_num_missing([_ac_f(_ac2_11, "accounts_without_enforced_conditions")])
+
+_ac2_11_failed := _ac_nonzero(_ac_f(_ac2_11, "accounts_without_enforced_conditions"), "organization-defined accounts without the usage conditions enforced")
+
+# AC-2(12) Account Monitoring for Atypical Usage: system accounts are monitored for the organization-defined
+# atypical usage, which is reported to the organization-defined personnel or roles.
+# Facts (input.ac_controls.account_management.atypical_usage): odp.atypical_usage, odp.report_to (non-empty
+# lists); monitoring_enabled (boolean, e.g. UEBA or SIEM rules on account use); detections_not_reported (count of
+# atypical-usage detections in the review period not reported to those personnel or roles).
+_ac2_12 := "account_management.atypical_usage"
+
+_ac2_12_missing := (_ac_list_missing([_ac_f(_ac2_12, "odp.atypical_usage"), _ac_f(_ac2_12, "odp.report_to")]) | _ac_bool_missing([_ac_f(_ac2_12, "monitoring_enabled")])) | _ac_num_missing([_ac_f(_ac2_12, "detections_not_reported")])
+
+_ac2_12_failed := _ac_bool_false([_ac_f(_ac2_12, "monitoring_enabled")]) | _ac_nonzero(_ac_f(_ac2_12, "detections_not_reported"), "atypical account usage detections not reported")
+
+# AC-4(4) Flow Control of Encrypted Information: encrypted information is prevented from bypassing the
+# organization-defined flow control mechanisms by decrypting it, blocking it, terminating the session, or an
+# organization-defined method.
+# Facts (input.ac_controls.information_flow.encrypted_information): odp.mechanisms (non-empty list); odp.action
+# ("decrypt", "block", "terminate" or "other"); action_enforced (boolean: e.g. TLS inspection or a block rule is
+# active); uninspected_encrypted_flows (count of encrypted flows observed passing the mechanisms uninspected).
+_ac4_4 := "information_flow.encrypted_information"
+
+_ac4_4_missing := ((_ac_list_missing([_ac_f(_ac4_4, "odp.mechanisms")]) | _ac_choice_missing(_ac_f(_ac4_4, "odp.action"), {"decrypt", "block", "terminate", "other"})) | _ac_bool_missing([_ac_f(_ac4_4, "action_enforced")])) | _ac_num_missing([_ac_f(_ac4_4, "uninspected_encrypted_flows")])
+
+_ac4_4_failed := _ac_bool_false([_ac_f(_ac4_4, "action_enforced")]) | _ac_nonzero(_ac_f(_ac4_4, "uninspected_encrypted_flows"), "encrypted flows bypassing the organization-defined flow control mechanisms")
+
+# AC-4(21) Physical or Logical Separation of Information Flows: information flows are separated logically or
+# physically with the organization-defined mechanisms to accomplish the organization-defined separations.
+# Facts (input.ac_controls.information_flow.separation): odp.mechanisms, odp.required_separations (non-empty
+# lists); separations_not_enforced (count of required separations not in place, e.g. from network segmentation
+# tests).
+_ac4_21 := "information_flow.separation"
+
+_ac4_21_missing := _ac_list_missing([_ac_f(_ac4_21, "odp.mechanisms"), _ac_f(_ac4_21, "odp.required_separations")]) | _ac_num_missing([_ac_f(_ac4_21, "separations_not_enforced")])
+
+_ac4_21_failed := _ac_nonzero(_ac_f(_ac4_21, "separations_not_enforced"), "organization-defined information flow separations not enforced")
+
+# AC-6(3) Network Access to Privileged Commands: network access to the organization-defined privileged commands is
+# authorized only for the organization-defined compelling operational needs, with the rationale in the security
+# plan. Facts (input.ac_controls.least_privilege.network_privileged_commands): odp.commands, odp.needs (non-empty
+# lists); accounts_without_documented_need (count of accounts with network access to those commands and no
+# documented compelling need); rationale_in_security_plan (boolean).
+_ac6_3 := "least_privilege.network_privileged_commands"
+
+_ac6_3_missing := (_ac_list_missing([_ac_f(_ac6_3, "odp.commands"), _ac_f(_ac6_3, "odp.needs")]) | _ac_num_missing([_ac_f(_ac6_3, "accounts_without_documented_need")])) | _ac_bool_missing([_ac_f(_ac6_3, "rationale_in_security_plan")])
+
+_ac6_3_failed := _ac_bool_false([_ac_f(_ac6_3, "rationale_in_security_plan")]) | _ac_nonzero(_ac_f(_ac6_3, "accounts_without_documented_need"), "accounts with network access to privileged commands and no documented compelling operational need")
+
+# AC-6(8) Privilege Levels for Code Execution: the organization-defined software cannot execute at a higher
+# privilege level than the user running it.
+# Facts (input.ac_controls.least_privilege.code_execution): odp.software (non-empty list);
+# software_above_user_privilege (count of those programs found able to run with elevated privilege, e.g. setuid
+# bits, elevated service accounts).
+_ac6_8 := "least_privilege.code_execution"
+
+_ac6_8_missing := _ac_list_missing([_ac_f(_ac6_8, "odp.software")]) | _ac_num_missing([_ac_f(_ac6_8, "software_above_user_privilege")])
+
+_ac6_8_failed := _ac_nonzero(_ac_f(_ac6_8, "software_above_user_privilege"), "organization-defined programs able to execute above the invoking user's privilege level")
+
+# AC-18(4) Restrict Configurations by Users: users allowed to configure wireless networking independently are
+# identified and explicitly authorized.
+# Facts (input.ac_controls.wireless_access.user_configuration): authorized_users_identified (boolean: an explicit
+# list of authorized users exists); unauthorized_users_able_to_configure (count of users able to change wireless
+# settings who are not on it).
+_ac18_4 := "wireless_access.user_configuration"
+
+_ac18_4_missing := _ac_bool_missing([_ac_f(_ac18_4, "authorized_users_identified")]) | _ac_num_missing([_ac_f(_ac18_4, "unauthorized_users_able_to_configure")])
+
+_ac18_4_failed := _ac_bool_false([_ac_f(_ac18_4, "authorized_users_identified")]) | _ac_nonzero(_ac_f(_ac18_4, "unauthorized_users_able_to_configure"), "users able to configure wireless networking without explicit authorization")
+
+# AC-18(5) Antennas and Transmission Power Levels: antennas are selected and transmission power calibrated so that
+# signals are unlikely to be received outside organization-controlled boundaries.
+# Facts (input.ac_controls.wireless_access.signal_containment): power_levels_calibrated (boolean: access point
+# power settings set from a site survey); access_points_detected_outside_boundary (count of organizational access
+# points whose signal the last site survey detected outside the controlled boundary).
+_ac18_5 := "wireless_access.signal_containment"
+
+_ac18_5_missing := _ac_bool_missing([_ac_f(_ac18_5, "power_levels_calibrated")]) | _ac_num_missing([_ac_f(_ac18_5, "access_points_detected_outside_boundary")])
+
+_ac18_5_failed := _ac_bool_false([_ac_f(_ac18_5, "power_levels_calibrated")]) | _ac_nonzero(_ac_f(_ac18_5, "access_points_detected_outside_boundary"), "access points whose signal is received outside the organization-controlled boundary")
+
+violation contains sprintf("NIST AC-2(7): %s", [_ac_enh_detail(_ac2_7_missing, _ac2_7_failed)]) if count(_ac2_7_missing | _ac2_7_failed) > 0
+
+violation contains sprintf("NIST AC-2(9): %s", [_ac_enh_detail(_ac2_9_missing, _ac2_9_failed)]) if count(_ac2_9_missing | _ac2_9_failed) > 0
+
+violation contains sprintf("NIST AC-2(11): %s", [_ac_enh_detail(_ac2_11_missing, _ac2_11_failed)]) if count(_ac2_11_missing | _ac2_11_failed) > 0
+
+violation contains sprintf("NIST AC-2(12): %s", [_ac_enh_detail(_ac2_12_missing, _ac2_12_failed)]) if count(_ac2_12_missing | _ac2_12_failed) > 0
+
+violation contains sprintf("NIST AC-4(4): %s", [_ac_enh_detail(_ac4_4_missing, _ac4_4_failed)]) if count(_ac4_4_missing | _ac4_4_failed) > 0
+
+violation contains sprintf("NIST AC-4(21): %s", [_ac_enh_detail(_ac4_21_missing, _ac4_21_failed)]) if count(_ac4_21_missing | _ac4_21_failed) > 0
+
+violation contains sprintf("NIST AC-6(3): %s", [_ac_enh_detail(_ac6_3_missing, _ac6_3_failed)]) if count(_ac6_3_missing | _ac6_3_failed) > 0
+
+violation contains sprintf("NIST AC-6(8): %s", [_ac_enh_detail(_ac6_8_missing, _ac6_8_failed)]) if count(_ac6_8_missing | _ac6_8_failed) > 0
+
+violation contains sprintf("NIST AC-18(4): %s", [_ac_enh_detail(_ac18_4_missing, _ac18_4_failed)]) if count(_ac18_4_missing | _ac18_4_failed) > 0
+
+violation contains sprintf("NIST AC-18(5): %s", [_ac_enh_detail(_ac18_5_missing, _ac18_5_failed)]) if count(_ac18_5_missing | _ac18_5_failed) > 0
 
 default compliant := false
 
@@ -584,9 +963,12 @@ compliant if count(violation) == 0
 
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
-	"AC-1", "AC-2", "AC-2(1)", "AC-3", "AC-4", "AC-4(1)", "AC-5", "AC-6", "AC-6(1)", "AC-6(2)", "AC-7", "AC-8",
-	"AC-9", "AC-9(1)", "AC-9(4)", "AC-10", "AC-11", "AC-11(1)", "AC-12", "AC-12(1)", "AC-14", "AC-16", "AC-17",
-	"AC-17(1)", "AC-17(2)", "AC-18", "AC-18(1)", "AC-19", "AC-20", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
+	"AC-1", "AC-2", "AC-2(1)", "AC-2(2)", "AC-2(3)", "AC-2(4)", "AC-2(5)", "AC-2(7)", "AC-2(9)", "AC-2(11)",
+	"AC-2(12)", "AC-2(13)", "AC-3", "AC-4", "AC-4(1)", "AC-4(4)", "AC-4(21)", "AC-5", "AC-6", "AC-6(1)", "AC-6(2)",
+	"AC-6(3)", "AC-6(5)", "AC-6(7)", "AC-6(8)", "AC-6(9)", "AC-6(10)", "AC-7", "AC-8", "AC-9", "AC-9(1)", "AC-9(4)",
+	"AC-10", "AC-11", "AC-11(1)", "AC-12", "AC-12(1)", "AC-14", "AC-16", "AC-17", "AC-17(1)", "AC-17(2)", "AC-17(3)",
+	"AC-17(4)", "AC-18", "AC-18(1)", "AC-18(3)", "AC-18(4)", "AC-18(5)", "AC-19", "AC-19(5)", "AC-20", "AC-20(1)",
+	"AC-20(2)", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
 }
 
 compliance_report := {

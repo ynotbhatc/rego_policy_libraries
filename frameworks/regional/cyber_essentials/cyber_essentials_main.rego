@@ -96,6 +96,7 @@ compliance_report := {
 	"reference": "NCSC Cyber Essentials Requirements for IT infrastructure",
 	"themes_evaluated": count(theme_reports),
 	"total_requirements": total_requirements,
+	"total_controls": total_requirements, # same number under the name every consumer reads (#324)
 	"requirements_met": requirements_met,
 	"control_themes": control_themes,
 	"violations": all_violations,

@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -85,7 +85,15 @@ check-no-data:
 
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
+	@python3 scripts/check_numeric_guards.py --check
 	@python3 scripts/coverage_report.py --check
+	@$(MAKE) --no-print-directory check-generated
+
+# generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
+# matches the module and the OSCAL baseline profiles
+check-generated: check-no-data
+	@python3 scripts/gen_nist_800_53_index.py --check
+	@echo "NIST 800-53 index current"
 
 # The product loads this library with one PUT /v1/policies per file into an empty
 # server; a module that only compiles next to its siblings is rejected there even

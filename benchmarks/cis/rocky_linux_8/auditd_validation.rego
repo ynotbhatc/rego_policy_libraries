@@ -547,9 +547,7 @@ default e_6_3_3_1 := false
 
 e_6_3_3_1 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_1 := false
@@ -572,9 +570,7 @@ default e_6_3_3_2 := false
 
 e_6_3_3_2 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_2 := false
@@ -596,9 +592,7 @@ default e_6_3_3_3 := false
 
 e_6_3_3_3 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 	text_collected(input.sudo.sudoers_content)
 }
 
@@ -622,9 +616,7 @@ default e_6_3_3_4 := false
 
 e_6_3_3_4 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_4 := false
@@ -647,9 +639,7 @@ default e_6_3_3_5 := false
 
 e_6_3_3_5 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_5 := false
@@ -678,9 +668,7 @@ default e_6_3_3_6 := false
 
 e_6_3_3_6 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 	is_array(input.auditd.privileged_commands)
 	count(input.auditd.privileged_commands) > 0
 }
@@ -704,9 +692,7 @@ default e_6_3_3_7 := false
 
 e_6_3_3_7 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_7 := false
@@ -729,9 +715,7 @@ default e_6_3_3_8 := false
 
 e_6_3_3_8 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_8 := false
@@ -760,9 +744,7 @@ default e_6_3_3_9 := false
 
 e_6_3_3_9 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_9 := false
@@ -786,9 +768,7 @@ default e_6_3_3_10 := false
 
 e_6_3_3_10 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_10 := false
@@ -810,9 +790,7 @@ default e_6_3_3_11 := false
 
 e_6_3_3_11 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_11 := false
@@ -836,9 +814,7 @@ default e_6_3_3_12 := false
 
 e_6_3_3_12 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_12 := false
@@ -861,9 +837,7 @@ default e_6_3_3_13 := false
 
 e_6_3_3_13 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_13 := false
@@ -885,9 +859,7 @@ default e_6_3_3_14 := false
 
 e_6_3_3_14 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_14 := false
@@ -910,9 +882,7 @@ default e_6_3_3_15 := false
 
 e_6_3_3_15 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_15 := false
@@ -934,9 +904,7 @@ default e_6_3_3_16 := false
 
 e_6_3_3_16 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_16 := false
@@ -958,9 +926,7 @@ default e_6_3_3_17 := false
 
 e_6_3_3_17 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_17 := false
@@ -982,9 +948,7 @@ default e_6_3_3_18 := false
 
 e_6_3_3_18 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_18 := false
@@ -1006,9 +970,7 @@ default e_6_3_3_19 := false
 
 e_6_3_3_19 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 	is_array(input.auditd.active_rules)
-	count(input.auditd.active_rules) > 0
 }
 
 default p_6_3_3_19 := false
@@ -1031,7 +993,6 @@ default e_6_3_3_20 := false
 
 e_6_3_3_20 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 }
 
 default p_6_3_3_20 := false
@@ -1054,7 +1015,6 @@ default e_6_3_3_21 := false
 
 e_6_3_3_21 if {
 	is_array(input.auditd.rules)
-	count(input.auditd.rules) > 0
 }
 
 default p_6_3_3_21 := false

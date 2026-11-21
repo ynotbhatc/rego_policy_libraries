@@ -9,10 +9,6 @@ import rego.v1
 
 _finding(r, id) := [v | some v in r.violations; startswith(v, concat("", ["NIST ", id, ":"]))]
 
-_ac(x) := r if {
-	r := ac.compliance_report with input as {"ac_controls": x}
-}
-
 # [base id, enhancement id, base-only input, enhancement-only input]
 _cases := [
 	["AC-2", "AC-2(1)", {"account_management": {"approval_process": true, "regular_reviews": true, "timely_removal": true, "automated_tools": false}}, {"account_management": {"automated_tools": true}}],
@@ -29,7 +25,7 @@ _cases := [
 
 test_base_passes_without_enhancement if {
 	every c in _cases {
-		r := _ac(c[2])
+		r := ac.compliance_report with input as {"ac_controls": c[2]}
 		count(_finding(r, c[0])) == 0
 		count(_finding(r, c[1])) == 1
 	}
@@ -37,14 +33,14 @@ test_base_passes_without_enhancement if {
 
 test_enhancement_passes_without_base if {
 	every c in _cases {
-		r := _ac(c[3])
+		r := ac.compliance_report with input as {"ac_controls": c[3]}
 		count(_finding(r, c[1])) == 0
 		count(_finding(r, c[0])) == 1
 	}
 }
 
 test_missing_evidence_fails_base_and_enhancement if {
-	r := _ac({})
+	r := ac.compliance_report with input as {"ac_controls": {}}
 	every c in _cases {
 		count(_finding(r, c[0])) == 1
 		count(_finding(r, c[1])) == 1
@@ -55,22 +51,23 @@ test_enhancements_are_evaluated_ids if {
 	every c in _cases {
 		c[1] in ac.evaluated_controls
 	}
-	count(ac.evaluated_controls) == 34
+	count(ac.evaluated_controls) == 59
 }
 
 test_facts_outside_the_statement_not_required if {
-	r := _ac({
+	r := ac.compliance_report with input as {"ac_controls": {
 		"separation_duties": {"critical_functions_divided": true, "documented_assignments": true, "monitored_compliance": false},
 		"session_control": {"limits_configured": true, "per_account_limits": true, "per_device_limits": false},
 		"session_termination": {"automatic_termination": true, "administrative_termination": false},
 		"wireless_access": {"authorized_only": true, "monitored_usage": false},
 		"information_sharing": {"user_discretion_limited": true, "automated_guidance": true, "security_attributes_preserved": false},
-	})
+	}}
 	every id in ["AC-5", "AC-10", "AC-12", "AC-18", "AC-21"] {
 		count(_finding(r, id)) == 0
 	}
 }
 
 test_ac5_still_fails_on_its_own_facts if {
-	count(_finding(_ac({"separation_duties": {"critical_functions_divided": true, "documented_assignments": false}}), "AC-5")) == 1
+	rr1 := ac.compliance_report with input as {"ac_controls": {"separation_duties": {"critical_functions_divided": true, "documented_assignments": false}}}
+	count(_finding(rr1, "AC-5")) == 1
 }

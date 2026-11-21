@@ -8,6 +8,126 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 Rev 5: all 300 base controls and every High-baseline control (523 ids)
+
+The module evaluates 523 ids (was 370): all 300 active base controls and 223 enhancements, which is every control
+the 800-53B Low, Moderate and High baselines and the FedRAMP Rev 5 Low, Moderate and High baselines select
+(`baseline_results`: 149, 287, 370, 156, 323, 410 evaluated, none missing). Privacy baseline: 77 of 96.
+
+- 153 ids added in 16 families (45 base controls, 108 enhancements), from NIST's OSCAL catalog 5.2.0. Each fails
+  closed, compares organization-defined values under `odp.`, guards every number; 145 are evidence-based and 8 take
+  an attestation (AU-14 in part, CA-8(1), IR-9(3), SC-31, SC-37, SC-38, SC-48, SI-23).
+- **Strict booleans:** 62 older rules in AU (10), CM (11), IA (10), IR (6), SC (13) and SI (12) passed on any
+  truthy value (`"yes"`, `1`, `"false"`, an object). They now pass only on `true`; any other value is "evidence
+  missing" and `false` keeps the rule's message. Collectors that send booleans as strings will see findings.
+- `control_results` on `{}`: 475 evidence missing, 48 not attested, 0 fail. 1,216 tests in the module.
+- Report lookups read the grouped findings and baseline membership once (whole-object `object.get`).
+
+### Changed — STIG → 800-53 map: RHEL 10 and Ubuntu 24.04
+
+- `crosswalk/stig_800_53/data.json` gains RHEL 10 V1R3 (435 rules) and Ubuntu 24.04 V1R7 (195 rules), joined from
+  DISA's October 2026 compilation and CCI list (2025-01-23) with `tools/stig_generators/parse_xccdf.py` +
+  `gen_crosswalk.py`; 4,437 rules (was 3,807). Every rule of the library's RHEL 10 and Ubuntu 24.04 modules now
+  reaches its 800-53 controls in `crosswalk.correlation` and the OSCAL baseline coverage.
+- Windows Server 2016 / 2019 stay unmapped: DISA retired both in July 2026 and their XCCDF is not in the
+  compilation.
+### Added — waivers: required fields, maximum time to live, expiring soon
+
+- `governance/exceptions/waivers.rego` reads optional site settings at `data.waivers.settings`:
+  `required_fields` (for example `["reason", "approver", "mitigation"]`), `max_ttl_days` and
+  `expiring_within_days` (default 14). Entries may carry `mitigation` and `evidence_ref`.
+- An unexpired entry that matches a finding but breaks a setting is not applied: the finding stays active and
+  the entry is listed in the new `rejected` set with the reasons (`rejected_count` alongside). A malformed
+  setting rejects every entry. `expiring_soon` lists applied waivers that run out inside the window.
+- No settings loaded: the decision is unchanged apart from the three new, empty keys.
+
+### Added — STIG results roll up onto NIST SP 800-53 (crosswalk.correlation)
+
+- Every STIG report (24 platforms) gains `rule_results`: each rule's DISA status, passes included. Additive;
+  `violations`, totals and percentages do not change.
+- `crosswalk.correlation` reads `input.reports` (one or more STIG `compliance_report`s) as well as the older
+  `input.findings`, and rolls them onto 800-53 controls: `gap`, `not_reviewed`, `satisfied`, `not_applicable`;
+  unassessed controls stay absent. `summary` reports `rules_supplied` and `rules_unmapped`.
+- Fixed: a `Not_Reviewed` rule (an unresolved manual review) left its 800-53 control `satisfied`; it is now
+  `not_reviewed`. An unrecognised status counts as Open, and a report without facts contributes Open rules.
+- Known gap: the crosswalk map predates the rule ids of the current RHEL 10, Ubuntu 24.04 and Windows Server
+  2016 / 2019 modules; those rules are reported as unmapped until the map is regenerated.
+### Added — NIST SP 800-53 Rev 5: every Low and Moderate baseline control
+
+The module evaluates 370 ids (was 266): 255 base controls and 115 enhancements, which is every control the
+NIST SP 800-53B Low (149) and Moderate (287) baselines select. 104 ids added in 16 families (6 base controls:
+CM-12, IA-11, IA-12, SC-4, SC-22, SC-39; 98 enhancements), ids and titles from NIST's OSCAL catalog 5.2.0.
+FedRAMP Moderate is now 292 of 323 evaluated, FedRAMP High 300 of 410 (`baseline_results`).
+
+- Each new id fails closed (absent or mistyped evidence is "evidence missing"), compares organization-defined
+  values under `odp.`, guards every number; 102 are evidence-based, 2 (CA-2(1), CA-7(1)) need an attestation.
+  Enhancement facts nest under the base control's object; an enhancement never fails its base control.
+- Existing rules in AC, AT, AU, CA, CM, IA, IR, MA, PE, SC and SI now say "evidence missing" when their facts are
+  absent or the wrong type, so `control_results` no longer reports absent evidence as `fail` (on `{}`: 330
+  evidence missing, 40 not attested, 0 fail). Pass conditions are unchanged; IA-7 no longer passes silently on a
+  non-object fact. An absent attestation reads `not_attested`.
+- Tests for AC, AU, IA, IR and SC no longer wrap `with input as` in helper functions, so those families build
+  to wasm again; SI and CM gain full test files. 881 tests in the module.
+- Known gap, unchanged here: about 50 older AU, CM, IR, SC and SI rules still pass on a truthy non-boolean
+  (`"yes"`, `1`); making them strict changes pass conditions and is a separate change.
+
+### Added — NIST SP 800-53 Rev 5: per-control and per-baseline results
+
+`nist_800_53.main.compliance_report` gains three fields. Additive: no existing field, total or finding changes.
+
+- `control_results`: one row per evaluated id (370), passes included, in natural id order (AC-2 before AC-2(1)
+  before AC-10): `id`, `status` (`pass`, `fail`, `evidence_missing`, `not_attested`), `basis` (`evidence` or
+  `attestation`), `baselines` (the baseline keys that select the id) and `findings`. Every family check fails
+  closed, so `pass` means the evidence was supplied and met the requirement.
+- `control_result_counts`: rows per status.
+- `baseline_results`: for NIST SP 800-53B Low, Moderate, High and Privacy and FedRAMP Rev 5 Low, Moderate and
+  High: `in_scope`, `evaluated`, `passed`, `not_passed` (+ ids) and `not_evaluated` (+ ids). Controls the module
+  does not evaluate are listed as not evaluated, never assumed met; the report is still not a baseline
+  authorization.
+- The static half (attestation basis, natural order, baseline membership) is generated into
+  `nist_800_53_index.rego` by `scripts/gen_nist_800_53_index.py` from the module itself and the committed OSCAL
+  baseline profiles (`--check` reports a stale file). 11 tests in `tests/test_nist_800_53_results.rego`.
+- OSCAL assessment-results asserts a control `satisfied` only from a `control_results` pass row. NIST findings now
+  target their catalog statements (the orchestrator package resolves to the framework of its family packages).
+
+### Added — NIST SP 800-53 Rev 5: all 20 control families
+
+The NIST 800-53 module evaluated 7 of the 20 Rev 5 families. It now aggregates all 20. Thirteen new family
+modules (AT, CA, CP, MA, MP, PE, PL, PM, PS, PT, RA, SA, SR) cover every active base control in their family,
+157 controls, with ids and titles checked against NIST's OSCAL catalog (release 5.2.0, the same catalog the
+OSCAL export uses). The module now evaluates 266 ids: 249 of the 300 base controls plus 17 enhancements. The
+51 base controls still missing are in the original families (AC, AU, CM, IA, SC, SI).
+
+- Every new control fails closed: absent evidence, null, or the wrong type is "evidence missing", never a pass.
+  Booleans pass only on `true`; every numeric comparison is guarded with `is_number`.
+- Organization-defined frequencies and periods compare the observed value with the organisation's ODP, as
+  IR-2 and IR-3 already did.
+- Organizational controls with no machine-checkable evidence (much of PM, PE and PS) require an attestation
+  `{attested: true, by, date}` at `input.<fam>_controls.<name>.attestation`.
+- New fact roots for collectors: `input.{at,ca,cp,ma,mp,pe,pl,pm,ps,pt,ra,sa,sr}_controls`. Each control's fact
+  paths are documented above its rule. Until a collector supplies them, those controls report evidence missing.
+- `compliance_report.coverage` reports 20 families, 266 ids and 249 base controls; the label "partial: 7 of 20
+  families" is gone.
+
+### Fixed — CIS Microsoft 365 v7: a control no longer passes on a missing field or a wrong shape
+
+Nine defects found while checking the collector against the policy. Each let a control pass, or stay silent, when it should not.
+
+- **Fail closed per field and per shape.** A collected value that is not a list, or a compared field that is absent or of the wrong type, is evidence missing for the controls that read it. Every control that is not a pass now has its own message naming its id; on empty input the module reports 160 violations (was 31) and `failed_controls == total_controls == 160`. A compliant tenant still reports 0.
+- **`total_controls` and `failed_controls`** added to the main report. `controls_evaluated` and `evaluated_control_ids` now reflect the input; the static list moved to `implemented_control_ids`.
+- **Attestations:** `observed` must be a boolean and `false` is a failure; only ledger ids can be attested (an attestation for any other id is a finding and changes nothing); `attested_on` must be a date that is not in the future.
+- **Semantics corrected from Microsoft's documentation:** 2.1.2 / 2.1.11 read `FileTypes`; 6.3.2 reads the default OWA policy's personal-account settings; 5.1.5.1 counts only self-service permission-grant policies as user consent; 2.1.9 needs the DKIM signing configuration enabled, not only the published CNAMEs; 1.3.2 compares the timeout value; 2.4.2 needs enabled strict-preset rules; 5.1.3.4 treats an absent group setting as the permissive default; 8.2.1 reads the allow-list object Teams returns; 2.1.15 checks limits, action and notification.
+- An unrecognised `unavailable` key is its own finding and is no longer attributed to a control.
+
+**Breaking:** new fact paths (`defender.dkim_signing_configs`, `defender.atp_protection_rules`, malware-filter `FileTypes`, outbound-spam limits, timeout-policy `definition`, OWA `IsDefault` and personal-account fields) and `attestations[].observed` as a boolean; see the module README. Violation counts rise on tenants whose collector does not yet supply them.
+
+**Count:** control-level checks fall by 76: 67 lookup-table rows had been counted as checks, 29 literal gap messages went, 20 checks were added.
+
+### Fixed — CIS RHEL 9 / Rocky 9 / RHEL 8 / Rocky 8 / Amazon Linux 2023: audit-rule and file-sweep evidence
+
+- A collected but empty audit-rules list fails the audit-rule controls (it was evidence missing).
+- World-writable and unowned-file sweeps: files found fail whether or not the sweep finished; only "nothing found, sweep truncated" is evidence missing. An unfinished empty sweep no longer passes.
+
 ### Fixed — DISA STIG RHEL 9 V2R10: rules test what the check text tests
 
 The external audit found `benchmarks/stig/rhel_9` id-accurate but check-inaccurate. All 104 rules were reviewed against

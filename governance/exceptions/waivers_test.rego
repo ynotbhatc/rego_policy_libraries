@@ -114,3 +114,139 @@ test_waiver_matches_id_followed_by_sentence_period if {
 		with input as {"host": "web01", "framework": "cis_rhel9", "violations": ["Failed CIS 5.2.1. Fix it"]}
 	d.waived_count == 1
 }
+
+# ── Site settings: required fields, maximum time to live, expiring soon ──────
+
+# 2026-11-20T00:00:00Z
+now_ns := 1795132800000000000
+
+near_entry := object.union(active_entry, {"expires": "2026-12-20"})
+
+mitigated_entry := object.union(near_entry, {"mitigation": "WAF rule 4411", "evidence_ref": "CR-2201"})
+
+in_web01 := {"host": "web01", "framework": "cis_rhel9", "violations": violations_in}
+
+test_no_settings_changes_nothing if {
+	d := exceptions.decision with data.waivers as {"entries": [active_entry]} with input as in_web01
+	d.waived_count == 1
+	d.rejected_count == 0
+	count(d.rejected) == 0
+}
+
+test_required_mitigation_rejects_entry_without_one if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"required_fields": ["reason", "approver", "mitigation"]}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+	d.rejected_count == 1
+	count(d.active_violations) == 2
+	some r in d.rejected
+	r.problems == ["required field mitigation is missing or empty"]
+}
+
+test_blank_mitigation_counts_as_missing if {
+	d := exceptions.decision with data.waivers as {"entries": [object.union(near_entry, {"mitigation": "   "})], "settings": {"required_fields": ["mitigation"]}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+	d.rejected_count == 1
+}
+
+test_non_string_mitigation_counts_as_missing if {
+	d := exceptions.decision with data.waivers as {"entries": [object.union(near_entry, {"mitigation": true})], "settings": {"required_fields": ["mitigation"]}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+}
+
+test_required_mitigation_accepts_entry_with_one if {
+	d := exceptions.decision with data.waivers as {"entries": [mitigated_entry], "settings": {"required_fields": ["reason", "approver", "mitigation"]}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 1
+	d.rejected_count == 0
+	some w in d.waived
+	w.waiver.mitigation == "WAF rule 4411"
+	w.waiver.evidence_ref == "CR-2201"
+}
+
+test_max_ttl_rejects_far_expiry if {
+	d := exceptions.decision with data.waivers as {"entries": [active_entry], "settings": {"max_ttl_days": 180}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+	d.rejected_count == 1
+	some r in d.rejected
+	r.problems == ["expires more than 180 days ahead (maximum time to live)"]
+}
+
+test_max_ttl_accepts_expiry_inside_the_limit if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"max_ttl_days": 180}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 1
+	d.rejected_count == 0
+}
+
+test_max_ttl_boundary_exactly_at_limit_is_accepted if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"max_ttl_days": 30}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 1
+}
+
+test_max_ttl_one_day_over_is_rejected if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"max_ttl_days": 29}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+}
+
+test_malformed_max_ttl_rejects_every_entry if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"max_ttl_days": "180"}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+	some r in d.rejected
+	"setting max_ttl_days is not a positive number" in r.problems
+}
+
+test_malformed_required_fields_rejects_every_entry if {
+	d := exceptions.decision with data.waivers as {"entries": [mitigated_entry], "settings": {"required_fields": "mitigation"}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 0
+	d.rejected_count == 1
+}
+
+test_expired_entry_is_reported_as_expired_not_rejected if {
+	d := exceptions.decision with data.waivers as {"entries": [expired_entry], "settings": {"required_fields": ["mitigation"]}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.rejected_count == 0
+	count(d.expired_matches) == 1
+}
+
+test_expiring_soon_lists_waiver_inside_the_window if {
+	d := exceptions.decision with data.waivers as {"entries": [object.union(near_entry, {"expires": "2026-11-27"})]}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 1
+	some e in d.expiring_soon
+	e.days_left == 7
+}
+
+test_expiring_soon_empty_outside_the_window if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry]}
+		with input as in_web01
+		with time.now_ns as now_ns
+	d.waived_count == 1
+	count(d.expiring_soon) == 0
+}
+
+test_expiring_window_setting_is_honoured if {
+	d := exceptions.decision with data.waivers as {"entries": [near_entry], "settings": {"expiring_within_days": 45}}
+		with input as in_web01
+		with time.now_ns as now_ns
+	count(d.expiring_soon) == 1
+}

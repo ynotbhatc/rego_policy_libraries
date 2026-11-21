@@ -23,7 +23,7 @@ exactly one. `scripts/check_cis_coverage.py` fails CI otherwise, and
 check it without running anything.
 
 What that guard does **not** establish: the evaluated bucket is read from
-the section modules' own `controls` arrays, so it proves the declared ids
+`implemented_control_ids` (the section modules' own `controls` arrays), so it proves the declared ids
 partition the benchmark, not that each id has a violation rule behind it.
 An id added to a `controls` array with no logic would still be counted.
 `check_cis_ids.py` catches the common case — a control with a real
@@ -63,13 +63,24 @@ modules themselves.
 | 9 | Microsoft Fabric | 12 | **12** | `fabric_validation.rego` |
 | | **Total** | **160** | **144** | |
 
-The authoritative list of evaluated ids is the report itself — this file
+The authoritative list of implemented ids is the report itself — this file
 does not restate it, because a hand-maintained copy drifts:
 
 ```bash
 opa eval -d benchmarks/cis/saas/m365_v7 -I <<<'{}' \
-  'data.cis_m365_v7.main.compliance_report.evaluated_control_ids' --format raw
+  'data.cis_m365_v7.main.compliance_report.implemented_control_ids' --format raw
 ```
+
+"Evaluated" in the report is per input. `controls_evaluated`,
+`controls_not_evaluated` and `evaluated_control_ids` count the controls
+whose result was decided from collected evidence for that input (pass or
+fail); a control whose evidence is missing was not evaluated. On empty
+input `controls_evaluated` is 0, on a fully collected tenant it is 144.
+`implemented_controls` / `implemented_control_ids` hold the static 144, and
+`coverage_accounting` partitions the benchmark with them.
+`total_controls` is the number of controls in scope for `input.cis_profile`
+(160 with no profile) and `failed_controls` those of them that are fail,
+evidence_missing or not_attested; on empty input the two are equal.
 
 ## Why coverage is 90%, not 100%
 
@@ -116,8 +127,27 @@ Two caveats remain, both surfaced at runtime under `evidence_strength`:
   `assessed_controls_compliant`, which is scoped to `evaluated_control_ids`
   only. A partial assessment has no business emitting a benchmark verdict,
   and 144 of 160 is still partial.
-- **Fail-closed everywhere.** Missing facts produce a violation stating the
-  control could not be evaluated. Absent facts never read as a pass.
+- **Fail-closed everywhere, per field.** A control is evidence missing --
+  and a violation says so by id, "CIS <id>: evidence missing -- ... (this is
+  not a pass)" -- when its section was not collected, when a fact key it
+  reads is in `unavailable` (one message for every control that key
+  blocks: the malware filter gap names 2.1.2, 2.1.3 and 2.1.11, so the
+  violation count is never below `failed_controls`), when a list it iterates is
+  not a list, or when a field it compares is absent or of the wrong type.
+  Absent facts never read as a pass, and a wrong shape is never read as a
+  failure either. An `unavailable` key no module reads is reported on its
+  own ("M365 section N (...): unrecognised unavailable key ...") and
+  attributed to no control.
+- **Deliberate defaults.** A few fields keep an absent-means-not-set
+  reading because the platform returns null for a setting that is not
+  configured and the control can only fail on it, never pass: the
+  Conditional Access fields of 5.2.2.x and 1.3.2 step 2, `countries_and_regions`
+  (5.2.2.15), `scope_query` (5.3.2/5.3.3), the app-management restriction
+  lists (5.1.5.3-5.1.5.6), transport-rule `RedirectMessageTo` / `SetSCL` /
+  `SenderDomainIs` (6.2.1/6.2.2), DLP `TeamsLocation` null (3.2.2),
+  Fabric `enabled_security_groups` (9.1.x) and the DKIM `Status` (2.1.9;
+  read when present). With no lockout setting object, the Entra smart
+  lockout defaults (10 attempts, 60 seconds) satisfy 5.2.3.8/5.2.3.9.
 
 ## Controls dropped from the pre-v7 library
 
@@ -180,8 +210,15 @@ it" is the whole value of the ledger:
   parked. Until that probe runs, every one of the six fails closed with
   "could not be evaluated" rather than passing.
 
-An attestation missing `attested_by`, `attested_on` or `evidence_ref` is
-rejected as inadmissible rather than accepted. The report marks
+An attestation is admissible only for one of the 16 ledger ids, with a
+boolean `observed`, non-empty `attested_by` and `evidence_ref`, and an
+`attested_on` that is a date (YYYY-MM-DD or RFC 3339) not in the future.
+`observed: false` records the requirement as not met and the control
+**fails**; any admissible false for an id outweighs a true. An attestation
+for an evidence-evaluated or unknown id is reported ("ignored attestation:
+...") and changes no control. Anything else is rejected as inadmissible.
+The benchmark states no period after which an attestation lapses, so none
+is applied. The report marks
 `evidence_source: "attested"` so a measured result and a human assertion
 are never conflated.
 

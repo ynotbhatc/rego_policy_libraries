@@ -26,5 +26,5 @@ test_review_au11_fires_without_au_controls_block if {
 	r := data.nist.sp800_53.audit_accountability.compliance_report with input as {}
 	some v in r.violations
 	startswith(v, "NIST AU-11:")
-	r.violation_count == 12
+	r.violation_count == 30
 }
