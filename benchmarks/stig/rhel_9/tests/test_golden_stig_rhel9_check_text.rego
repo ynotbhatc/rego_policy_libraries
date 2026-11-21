@@ -64,6 +64,10 @@ test_golden_rhel_09_255100_300_passes if {
 	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "300"}}
 }
 
+test_golden_rhel_09_255100_1_passes if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as {"ssh_config": {"ClientAliveInterval": "1"}}
+}
+
 test_golden_rhel_09_255100_601_is_a_finding if {
 	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Open" with input as {"ssh_config": {"ClientAliveInterval": "601"}}
 }
@@ -92,6 +96,10 @@ test_golden_rhel_09_411085_900_passes if {
 
 test_golden_rhel_09_411085_901_is_a_finding if {
 	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Open" with input as {"faillock_conf": {"fail_interval": "901"}}
+}
+
+test_golden_rhel_09_411085_1_passes if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411085 == "Not_a_Finding" with input as {"faillock_conf": {"fail_interval": "1"}}
 }
 
 test_golden_rhel_09_411085_0_is_a_finding if {
@@ -138,6 +146,10 @@ test_golden_rhel_09_411010_181_is_a_finding if {
 	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Open" with input as {"password_policy": {"maxdays": "181"}}
 }
 
+test_golden_rhel_09_411010_1_passes if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411010 == "Not_a_Finding" with input as {"password_policy": {"maxdays": "1"}}
+}
+
 # RHEL-09-611075 (V-258104): ""1" or greater"
 test_golden_rhel_09_611075_1_passes if {
 	data.stig.rhel_9.account_auth.status_rhel_09_611075 == "Not_a_Finding" with input as {"password_policy": {"mindays": "1"}}
@@ -150,6 +162,10 @@ test_golden_rhel_09_611075_0_is_a_finding if {
 # RHEL-09-411050 (V-258049): "set to "-1", a value greater than "35""
 test_golden_rhel_09_411050_35_passes if {
 	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": "35"}}
+}
+
+test_golden_rhel_09_411050_0_passes if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411050 == "Not_a_Finding" with input as {"password_policy": {"inactive_days": "0"}}
 }
 
 test_golden_rhel_09_411050_minus_1_is_a_finding if {
@@ -206,6 +222,23 @@ test_golden_rhel_09_213070_conflicting_files_is_a_finding if {
 
 test_golden_rhel_09_213070_not_in_files_is_a_finding if {
 	data.stig.rhel_9.configuration_management.status_rhel_09_213070 == "Open" with input as {"kernel_params": {"kernel.randomize_va_space": "2"}, "sysctl_config": {"kernel.randomize_va_space": []}}
+}
+
+# RHEL-09-654010 (V-258176): "-S execve -C uid!=euid -F euid=0"
+test_golden_rhel_09_654010_four_rules_passes if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654010 == "Not_a_Finding" with input as {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -k execpriv"]}
+}
+
+test_golden_rhel_09_654010_b32_uid_rule_missing_is_a_finding if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654010 == "Open" with input as {"audit_rules": ["-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -k execpriv"]}
+}
+
+test_golden_rhel_09_654010_b32_gid_rule_missing_is_a_finding if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654010 == "Open" with input as {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -k execpriv"]}
+}
+
+test_golden_rhel_09_654010_b64_uid_rule_missing_is_a_finding if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654010 == "Open" with input as {"audit_rules": ["-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -k execpriv", "-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -k execpriv", "-a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -k execpriv"]}
 }
 
 # RHEL-09-213010 (V-257797): "not set to "1""
