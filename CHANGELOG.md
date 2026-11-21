@@ -8,6 +8,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Reviewed — HIPAA amendment of 2026-11-19
+
+- 45 CFR Part 164 amendment of 2026-11-19 (HIPAA Privacy Rule final rule, 91 FR 74848, FR doc 2026-23429; effective
+  2027-01-19, compliance 2027-07-19) reviewed: it amends Subpart E (164.501-.525, .532) and 160.103 only, not the
+  Security Rule (Subpart C). No rule logic changed; `standards.yaml` hipaa checked_through 2026-11-19. The
+  `hipaa.privacy_rule` changes owed before 2027-07-19 are listed in STANDARDS_UPDATE_REGISTRY.md.
+
 ### Changed — decisions of 2026-11-21
 
 - NIST 800-53 PT-6(1) and PT-6(2) are attestation-based
