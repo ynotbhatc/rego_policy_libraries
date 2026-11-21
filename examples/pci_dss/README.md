@@ -33,9 +33,13 @@ opa eval -d frameworks/financial/pci_dss -i examples/pci_dss/facts.json -f prett
   documented. Without that, the report is non-compliant even if every requirement passes.
 - `validation_level` is `Level 2`, from `pci.transaction_volume.annual`.
 
-This module reports at requirement level, so its violations name requirements, not individual checks, and it does
-not write "evidence missing" messages. A fact that is absent still fails: delete `pci.data_discovery` from the file
-and requirement 3 fails too (`failed_controls` becomes 4).
+This module reports at requirement level, so its violations name requirements, not individual checks. Each one
+carries a `status`: `fail` when a fact is present and non-compliant (the title lists the failing checks), or
+`evidence_missing` when the checks that fail only lack facts (the title says "evidence missing" and names the input
+paths). `requirement_results` gives the same status for all twelve requirements, passes included, and
+`requirement_result_counts` totals them (here 9 pass, 3 fail). Delete `pci.data_discovery` from the file and
+requirement 3 becomes `evidence_missing`, naming `input.pci.data_discovery.quarterly.conducted` and the other
+data-discovery facts (`failed_controls` becomes 4).
 
 ## What is wrong with this merchant
 

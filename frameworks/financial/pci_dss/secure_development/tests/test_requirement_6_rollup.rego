@@ -133,7 +133,8 @@ test_6_3_2_third_party_missing_fails if {
 	not _r6.software_inventory_maintained with input as {"pci": {"software_inventory": {"bespoke": {"documented": true}}}}
 }
 
-_waap(extra) := {"pci": {"public_web_apps": {"in_scope": true}, "automated_detection": object.union({"waf_or_vapt": {"implemented": true}, "logging": {"configured": true}}, extra)}}
+# 6.4.2 needs the WAF itself (waf.implemented); waf_or_vapt no longer satisfies it (2026-11-21).
+_waap(extra) := {"pci": {"public_web_apps": {"in_scope": true}, "waf": {"implemented": true}, "automated_detection": object.union({"logging": {"configured": true}}, extra)}}
 
 test_6_4_2_alert_with_immediate_investigation_passes if {
 	_r6.automated_attack_detection with input as _waap({"alerts": {"immediately_investigated": true}})
@@ -144,3 +145,23 @@ test_6_4_2_blocking_passes if _r6.automated_attack_detection with input as _waap
 test_6_4_2_neither_block_nor_alert_fails if not _r6.automated_attack_detection with input as _waap({})
 
 test_6_4_2_scope_flag_missing_fails if not _r6.automated_attack_detection with input as {}
+
+test_6_4_2_waf_blocking_mode_passes if {
+	_r6.automated_attack_detection with input as {"pci": {"public_web_apps": {"in_scope": true}, "waf": {"implemented": true, "mode": {"blocking": true}}, "automated_detection": {"logging": {"configured": true}}}}
+}
+
+test_6_4_2_waf_or_vapt_without_waf_fails if {
+	not _r6.automated_attack_detection with input as {"pci": {"public_web_apps": {"in_scope": true}, "automated_detection": {"waf_or_vapt": {"implemented": true}, "logging": {"configured": true}, "active_blocking": {"enabled": true}}}}
+}
+
+test_6_4_2_waf_not_implemented_fails if {
+	not _r6.automated_attack_detection with input as {"pci": {"public_web_apps": {"in_scope": true}, "waf": {"implemented": false, "mode": {"blocking": true}}, "automated_detection": {"logging": {"configured": true}}}}
+}
+
+test_6_4_2_string_scope_flag_fails if {
+	not _r6.automated_attack_detection with input as {"pci": {"public_web_apps": {"in_scope": "true"}}}
+}
+
+test_6_4_2_out_of_scope_passes_without_waf if {
+	_r6.automated_attack_detection with input as {"pci": {"public_web_apps": {"in_scope": false}}}
+}

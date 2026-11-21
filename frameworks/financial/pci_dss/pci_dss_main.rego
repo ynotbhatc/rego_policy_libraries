@@ -145,6 +145,8 @@ all_requirements_compliant if {
 	requirement_12_compliant
 }
 
+default pci_program_management := false
+
 pci_program_management if {
 	input.pci.program.policies.established == true
 	input.pci.program.roles.defined == true
@@ -262,31 +264,260 @@ default compliance_report := {
 	"total_controls": 1,
 }
 
-# The product reads violations, violation_count and total_controls: the twelve requirements are the units this
-# aggregator decides on, so a failing requirement is one finding and total_controls is 12.
-_requirement_violations := [{"control": name, "title": sprintf("PCI DSS v4.0.1 %v is not compliant", [name])} |
-	some name, ok in {
-		"req_1_network_security": requirement_1_compliant,
-		"req_2_system_hardening": requirement_2_compliant,
-		"req_3_stored_data": requirement_3_compliant,
-		"req_4_transmission_security": requirement_4_compliant,
-		"req_5_malware_protection": requirement_5_compliant,
-		"req_6_secure_development": requirement_6_compliant,
-		"req_7_access_restriction": requirement_7_compliant,
-		"req_8_authentication": requirement_8_compliant,
-		"req_9_physical_access": requirement_9_compliant,
-		"req_10_logging_monitoring": requirement_10_compliant,
-		"req_11_security_testing": requirement_11_compliant,
-		"req_12_governance": requirement_12_compliant,
-	}
-	not ok
+# =================================================================
+# EVIDENCE MISSING vs FAIL
+# =================================================================
+
+# A failing check is a real failure when one of its alternatives holds a fact that is present and
+# non-compliant; otherwise, when a fact it reads is absent or of the wrong type (a boolean not a boolean, a
+# number not a number), it is "evidence missing" and the finding names the input paths. "false" terms are
+# applicability gates (in_scope == false and the like): a gate that does not exempt is not itself a failure.
+# Each requirement module's evidence_spec (scripts/gen_pci_dss_evidence_spec.py) lists its gating checks.
+_value(path) := object.get(input, split(path, "."), null)
+
+_typed(test, v) if {
+	test in {"true", "false"}
+	is_boolean(v)
+}
+
+_typed(test, v) if {
+	test in {"ge", "le", "within"}
+	is_number(v)
+}
+
+_typed("str_ge", v) if is_string(v)
+
+_term_paths(t) := [t[0], t[2]] if {
+	t[1] == "within"
+} else := [t[0]]
+
+_term_missing(t) := {concat(".", ["input", p]) | some p in _term_paths(t); not _typed(t[1], _value(p))}
+
+_term_bad(t) if {
+	t[1] == "true"
+	_value(t[0]) == false
+}
+
+_term_bad(t) if {
+	t[1] == "ge"
+	v := _value(t[0])
+	is_number(v)
+	v < t[2]
+}
+
+_term_bad(t) if {
+	t[1] == "le"
+	v := _value(t[0])
+	is_number(v)
+	v > t[2]
+}
+
+_term_bad(t) if {
+	t[1] == "within"
+	a := _value(t[0])
+	d := _value(t[2])
+	is_number(a)
+	is_number(d)
+	not _within(a, d)
+}
+
+_term_bad(t) if {
+	t[1] == "str_ge"
+	v := _value(t[0])
+	is_string(v)
+	v < t[2]
+}
+
+_within(a, d) if {
+	is_number(a)
+	is_number(d)
+	d > 0
+	a <= d
+}
+
+# A gate that does not exempt (in_scope true where the alternative needs false) closes that alternative.
+_gate_closed(t) if {
+	t[1] == "false"
+	_value(t[0]) == true
+}
+
+_alt_closed(alt) if {
+	some t in alt
+	_term_bad(t)
+}
+
+_alt_closed(alt) if {
+	some t in alt
+	_gate_closed(t)
+}
+
+_alt_missing(alt) := {p | some t in alt; some p in _term_missing(t)}
+
+# The facts to collect: those missing from the alternatives still open (no fact present and wrong) that
+# need the fewest of them, so another route's facts are not demanded once one route is nearly evidenced.
+_check_missing(spec) := sort(union({m | some m in open; count(m) == least})) if {
+	open := [_alt_missing(alt) | some alt in spec.alternatives; not _alt_closed(alt)]
+	count(open) > 0
+	least := min({count(m) | some m in open})
+} else := sort({p | some alt in spec.alternatives; some p in _alt_missing(alt)})
+
+_check_status(spec) := "fail" if {
+	some alt in spec.alternatives
+	some t in alt
+	_term_bad(t)
+} else := "evidence_missing" if {
+	count(_check_missing(spec)) > 0
+} else := "fail"
+
+# Failing gating checks of one requirement: {"check", "status", "evidence_missing" (input paths)}.
+_failing_checks(specs) := [{"check": name, "status": st, "evidence_missing": missing} |
+	some name, spec in specs
+	spec.passed != true
+	st := _check_status(spec)
+	missing := [p | st == "evidence_missing"; some p in _check_missing(spec)]
 ]
 
-# CDE scope and program management gate overall_pci_dss_compliant, so a gap there is listed too (control ids stay literal).
-_scope_program_violations := array.concat(
-	[v | not cde_scope_defined; v := {"control": "cde_scope", "title": "PCI DSS v4.0.1 CDE scope is not defined and documented (cde_scope)"}],
-	[v | not pci_program_management; v := {"control": "program_management", "title": "PCI DSS v4.0.1 program management is not established (program_management)"}],
+_requirements := [
+	{"id": "req_1_network_security", "requirement": 1, "compliant": requirement_1_compliant, "specs": requirement_1.evidence_spec},
+	{"id": "req_2_system_hardening", "requirement": 2, "compliant": requirement_2_compliant, "specs": requirement_2.evidence_spec},
+	{"id": "req_3_stored_data", "requirement": 3, "compliant": requirement_3_compliant, "specs": requirement_3.evidence_spec},
+	{"id": "req_4_transmission_security", "requirement": 4, "compliant": requirement_4_compliant, "specs": requirement_4.evidence_spec},
+	{"id": "req_5_malware_protection", "requirement": 5, "compliant": requirement_5_compliant, "specs": requirement_5.evidence_spec},
+	{"id": "req_6_secure_development", "requirement": 6, "compliant": requirement_6_compliant, "specs": requirement_6.evidence_spec},
+	{"id": "req_7_access_restriction", "requirement": 7, "compliant": requirement_7_compliant, "specs": requirement_7.evidence_spec},
+	{"id": "req_8_authentication", "requirement": 8, "compliant": requirement_8_compliant, "specs": requirement_8.evidence_spec},
+	{"id": "req_9_physical_access", "requirement": 9, "compliant": requirement_9_compliant, "specs": requirement_9.evidence_spec},
+	{"id": "req_10_logging_monitoring", "requirement": 10, "compliant": requirement_10_compliant, "specs": requirement_10.evidence_spec},
+	{"id": "req_11_security_testing", "requirement": 11, "compliant": requirement_11_compliant, "specs": requirement_11.evidence_spec},
+	{"id": "req_12_governance", "requirement": 12, "compliant": requirement_12_compliant, "specs": requirement_12.evidence_spec},
+]
+
+# A requirement fails when any failing check is a real failure (or none is listed, e.g. a mocked roll-up);
+# it is evidence_missing when every failing check lacks evidence.
+_requirement_status(r, checks) := "pass" if {
+	r.compliant == true
+} else := "fail" if {
+	some c in checks
+	c.status == "fail"
+} else := "evidence_missing" if {
+	count(checks) > 0
+} else := "fail"
+
+_names_with(checks, st) := [c.check | some c in checks; c.status == st]
+
+_paths_of(checks) := sort({p | some c in checks; some p in c.evidence_missing})
+
+# A finding names at most ten paths (an empty collection would otherwise give a title of several KB); the
+# full list is requirement_results[_].evidence_missing.
+_path_list(paths) := concat(", ", paths) if {
+	count(paths) <= 10
+} else := sprintf("%v and %d more (requirement_results lists them all)", [
+	concat(", ", array.slice(paths, 0, 10)),
+	count(paths) - 10,
+])
+
+# Finding text keeps the literal "PCI DSS v4.0.1 <requirement id>" prefix.
+_requirement_title(id, "evidence_missing", checks) := sprintf(
+	"PCI DSS v4.0.1 %v: evidence missing for %v — not collected or not of the expected type: %v",
+	[id, concat(", ", _names_with(checks, "evidence_missing")), _path_list(_paths_of(checks))],
 )
+
+_requirement_title(id, "fail", checks) := sprintf("PCI DSS v4.0.1 %v is not compliant", [id]) if {
+	count(checks) == 0
+}
+
+_requirement_title(id, "fail", checks) := sprintf("PCI DSS v4.0.1 %v is not compliant (failing checks: %v)", [
+	id,
+	concat(", ", _names_with(checks, "fail")),
+]) if {
+	count(checks) > 0
+	count(_names_with(checks, "evidence_missing")) == 0
+}
+
+_requirement_title(id, "fail", checks) := sprintf(
+	"PCI DSS v4.0.1 %v is not compliant (failing checks: %v); evidence missing for %v: %v",
+	[
+		id,
+		concat(", ", _names_with(checks, "fail")),
+		concat(", ", _names_with(checks, "evidence_missing")),
+		_path_list(_paths_of(checks)),
+	],
+) if {
+	count(_names_with(checks, "evidence_missing")) > 0
+}
+
+# Per-requirement results, passes included, in requirement order (the NIST control_results model):
+#   pass              the requirement's gating checks all pass
+#   fail              at least one failing check has a present, non-compliant fact
+#   evidence_missing  every failing check lacks a fact it reads (evidence_missing lists the input paths)
+requirement_results := [res |
+	some r in _requirements
+	checks := _failing_checks(r.specs)
+	st := _requirement_status(r, checks)
+	res := {
+		"id": r.id,
+		"requirement": r.requirement,
+		"status": st,
+		"failing_checks": _names_with(checks, "fail"),
+		"evidence_missing_checks": _names_with(checks, "evidence_missing"),
+		"evidence_missing": _paths_of(checks),
+	}
+]
+
+requirement_result_counts := {s: count([r | some r in requirement_results; r.status == s]) |
+	some s in ["pass", "fail", "evidence_missing"]
+}
+
+# The product reads violations, violation_count and total_controls: the twelve requirements are the units this
+# aggregator decides on, so a failing requirement is one finding and total_controls is 12.
+_requirement_violations := [v |
+	some r in _requirements
+	r.compliant != true
+	checks := _failing_checks(r.specs)
+	st := _requirement_status(r, checks)
+	v := {"control": r.id, "status": st, "title": _requirement_title(r.id, st, checks)}
+]
+
+# CDE scope and program management gate overall_pci_dss_compliant, so a gap there is listed too (control ids stay
+# literal), with the same evidence-missing distinction.
+_scope_program_specs := {
+	"cde_scope": {
+		"passed": cde_scope_defined,
+		"alternatives": [[
+			["pci.cde.boundaries.documented", "true"],
+			["pci.cde.systems.inventoried", "true"],
+			["pci.cde.data_flows.mapped", "true"],
+			["pci.cde.network_diagram.current", "true"],
+		]],
+		"failure": "PCI DSS v4.0.1 CDE scope is not defined and documented (cde_scope)",
+	},
+	"program_management": {
+		"passed": pci_program_management,
+		"alternatives": [[
+			["pci.program.policies.established", "true"],
+			["pci.program.roles.defined", "true"],
+			["pci.program.training.conducted", "true"],
+			["pci.program.documentation.maintained", "true"],
+			["pci.program.risk_assessment.performed_annually", "true"],
+		]],
+		"failure": "PCI DSS v4.0.1 program management is not established (program_management)",
+	},
+}
+
+_scope_program_title(spec, "evidence_missing") := sprintf("%v: evidence missing — not collected or not of the expected type: %v", [
+	spec.failure,
+	_path_list(_check_missing(spec)),
+])
+
+_scope_program_title(spec, "fail") := spec.failure
+
+_scope_program_violations := [v |
+	some id in ["cde_scope", "program_management"]
+	spec := _scope_program_specs[id]
+	spec.passed != true
+	st := _check_status(spec)
+	v := {"control": id, "status": st, "title": _scope_program_title(spec, st)}
+]
 
 _all_violations := array.concat(_requirement_violations, _scope_program_violations)
 
@@ -294,6 +525,8 @@ compliance_report := object.union(pci_dss_detailed_findings, {
 	"framework_key": "pci_dss",
 	"compliant": _entrypoint_compliant,
 	"violations": _all_violations,
+	"requirement_results": requirement_results,
+	"requirement_result_counts": requirement_result_counts,
 	"violation_count": count(_all_violations),
 	"failed_controls": min([_declared_controls, count(_all_violations)]),
 	"total_controls": _declared_controls,

@@ -32,6 +32,8 @@ expect("requirements_passing", r.get("requirements_passing"), 9)
 expect("validation_level", r.get("validation_level"), "Level 2")
 expect("cde_scope_defined", r.get("compliance_status", {}).get("cde_scope_defined"), True)
 expect("failing requirements", sorted(v.get("control") for v in r.get("violations", [])), EXPECTED_FAILING)
+expect("violation statuses", sorted(v.get("status") for v in r.get("violations", [])), ["fail", "fail", "fail"])
+expect("requirement_result_counts", r.get("requirement_result_counts"), {"pass": 9, "fail": 3, "evidence_missing": 0})
 expect("fail-closed notices", [v for v in r.get("violations", []) if v.get("control") == "FAIL-CLOSED"], [])
 false_checks = []
 def walk(o, p):
@@ -44,5 +46,5 @@ walk(r.get("requirement_details", {}), [])
 expect("checks that are false", sorted(false_checks), EXPECTED_FALSE_CHECKS)
 if problems:
     sys.exit("FAIL: examples/pci_dss/facts.json no longer gives the documented result\n  " + "\n  ".join(problems))
-print("ok: compliant=false, 3 of 12 requirements fail (4 checks), CDE scope defined")
+print("ok: compliant=false, 3 of 12 requirements fail (4 checks, none for missing evidence), CDE scope defined")
 '
