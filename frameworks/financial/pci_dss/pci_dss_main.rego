@@ -268,9 +268,9 @@ default compliance_report := {
 # EVIDENCE MISSING vs FAIL
 # =================================================================
 
-# A failing check is a real failure when one of its alternatives holds a fact that is present and
-# non-compliant; otherwise, when a fact it reads is absent or of the wrong type (a boolean not a boolean, a
-# number not a number), it is "evidence missing" and the finding names the input paths. "false" terms are
+# A failing check is a real failure when a fully evidenced alternative fails or no alternative can pass any
+# more; otherwise, when a fact it reads is absent or of the wrong type (a boolean not a boolean, a number not a
+# number), it is "evidence missing" and the finding names the input paths. "false" terms are
 # applicability gates (in_scope == false and the like): a gate that does not exempt is not itself a failure.
 # Each requirement module's evidence_spec (scripts/gen_pci_dss_evidence_spec.py) lists its gating checks.
 _value(path) := object.get(input, split(path, "."), null)
@@ -361,10 +361,18 @@ _check_missing(spec) := sort(union({m | some m in open; count(m) == least})) if 
 	least := min({count(m) | some m in open})
 } else := sort({p | some alt in spec.alternatives; some p in _alt_missing(alt)})
 
+# fail: some alternative has every fact present and still fails, or no alternative can pass any more (each
+# holds a present non-compliant fact or a gate that does not exempt). Otherwise a route is still open and only
+# lacks facts: evidence_missing.
 _check_status(spec) := "fail" if {
 	some alt in spec.alternatives
+	count(_alt_missing(alt)) == 0
 	some t in alt
 	_term_bad(t)
+} else := "fail" if {
+	every alt in spec.alternatives {
+		_alt_closed(alt)
+	}
 } else := "evidence_missing" if {
 	count(_check_missing(spec)) > 0
 } else := "fail"
@@ -377,7 +385,7 @@ _failing_checks(specs) := [{"check": name, "status": st, "evidence_missing": mis
 	missing := [p | st == "evidence_missing"; some p in _check_missing(spec)]
 ]
 
-_requirements := [
+_pci_requirements := [
 	{"id": "req_1_network_security", "requirement": 1, "compliant": requirement_1_compliant, "specs": requirement_1.evidence_spec},
 	{"id": "req_2_system_hardening", "requirement": 2, "compliant": requirement_2_compliant, "specs": requirement_2.evidence_spec},
 	{"id": "req_3_stored_data", "requirement": 3, "compliant": requirement_3_compliant, "specs": requirement_3.evidence_spec},
@@ -403,7 +411,7 @@ _requirement_status(r, checks) := "pass" if {
 	count(checks) > 0
 } else := "fail"
 
-_names_with(checks, st) := [c.check | some c in checks; c.status == st]
+_names_with(checks, st) := sort([c.check | some c in checks; c.status == st])
 
 _paths_of(checks) := sort({p | some c in checks; some p in c.evidence_missing})
 
@@ -451,7 +459,7 @@ _requirement_title(id, "fail", checks) := sprintf(
 #   fail              at least one failing check has a present, non-compliant fact
 #   evidence_missing  every failing check lacks a fact it reads (evidence_missing lists the input paths)
 requirement_results := [res |
-	some r in _requirements
+	some r in _pci_requirements
 	checks := _failing_checks(r.specs)
 	st := _requirement_status(r, checks)
 	res := {
@@ -471,7 +479,7 @@ requirement_result_counts := {s: count([r | some r in requirement_results; r.sta
 # The product reads violations, violation_count and total_controls: the twelve requirements are the units this
 # aggregator decides on, so a failing requirement is one finding and total_controls is 12.
 _requirement_violations := [v |
-	some r in _requirements
+	some r in _pci_requirements
 	r.compliant != true
 	checks := _failing_checks(r.specs)
 	st := _requirement_status(r, checks)

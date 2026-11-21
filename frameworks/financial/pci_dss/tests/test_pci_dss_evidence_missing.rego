@@ -537,3 +537,34 @@ test_mixed_fail_and_missing_is_fail_and_names_the_missing_fact if {
 	vs[0].status == "fail"
 	vs[0].title == "PCI DSS v4.0.1 req_6_secure_development is not compliant (failing checks: automated_attack_detection); evidence missing for bespoke_code_review: input.pci.code_review.performed"
 }
+
+# A route the entity does not use failing (no active blocking) does not turn a missing WAF fact into a fail:
+# the alerting route is still open and lacks only input.pci.waf.implemented.
+test_req_6_4_2_waf_absent_with_alerting_route_is_evidence_missing if {
+	fx := object.union(json.remove(_all_pass, ["pci/waf"]), {"pci": {"automated_detection": {"active_blocking": {"enabled": false}, "alerts": {"immediately_investigated": true}}}})
+	some r in data.pci_dss.main.requirement_results with input as fx
+	r.id == "req_6_secure_development"
+	r.status == "evidence_missing"
+	r.evidence_missing == ["input.pci.waf.implemented"]
+}
+
+# Every route closed (blocking off, no alerting, WAF present) is a fail, though the alerting fact is absent.
+test_req_6_4_2_all_routes_closed_is_fail if {
+	fx := object.union(_all_pass, {"pci": {"waf": {"mode": {"blocking": false}}, "automated_detection": {"active_blocking": {"enabled": false}, "alerts": {"immediately_investigated": false}}}})
+	some r in data.pci_dss.main.requirement_results with input as fx
+	r.id == "req_6_secure_development"
+	r.status == "fail"
+}
+
+# 6.2.4: the detailed techniques all present with one false is a fail although the summary flag is absent.
+test_req_6_2_4_detailed_route_false_is_fail if {
+	fx := object.union(json.remove(_all_pass, ["pci/secure_coding/injection"]), {"pci": {"secure_coding": {
+		"sql_injection": {"input_validation": true, "parameterized_queries": false},
+		"command_injection": {"input_sanitization": true},
+		"ldap_injection": {"prevented": true},
+	}}})
+	some r in data.pci_dss.main.requirement_results with input as fx
+	r.id == "req_6_secure_development"
+	r.status == "fail"
+	r.failing_checks == ["injection_attacks_prevented"]
+}

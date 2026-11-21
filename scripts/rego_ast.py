@@ -27,7 +27,7 @@ REPORTING = re.compile(r"^(CONTROL_INDEX|CONTROL_EVIDENCE|CONTROL_STATUSES|CONTR
                        r"|_control_result_statuses|_control_evidence|_section_controls|decidable|_decidable"
                        r"|MEETING_POLICY_FIELDS|FEDERATION_FIELDS|AUTHENTICATOR_FEATURES|SHAREPOINT_CONTROL_PROPERTIES"
                        # PCI DSS: the facts each gating check reads and the per-requirement results built from them
-                       r"|evidence_spec|requirement_results|requirement_result_counts|_requirements|_scope_program_specs)$")
+                       r"|evidence_spec|requirement_results|requirement_result_counts|_pci_requirements|_scope_program_specs)$")
 SCAFFOLD = re.compile(r"^(report|.*_report|.*_metadata|metadata|summary)$")
 ID_KEY = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ -]*$")
 TEST_RE = re.compile(r"(^|/)(test_|.*_test\.rego$)")
