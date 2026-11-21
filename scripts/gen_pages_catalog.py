@@ -113,13 +113,14 @@ SECTIONS = [
 def main():
     # Headline figures are not counted here: they are the ones CI verifies (README count line and
     # docs/metrics.json, via build_site.figures), so the homepage cannot disagree with the README again.
-    from build_site import GITHUB, SITE, SITE_NAME, figures, social_head
+    from build_site import GITHUB, LABEL_PAGE, SITE, SITE_NAME, coverage_labels, figures, label_badge, labels_under, social_head
     os.chdir(pathlib.Path(__file__).resolve().parent.parent)
     fig = figures()
     total, checks = fig["files"], fig["checks"]
     stig_platforms = fig["stig_platforms"] or str(len(children("benchmarks/stig")))
     framework_count = sum(len(children(b)) for _, _, b in SECTIONS)
 
+    label_rows = coverage_labels()   # one badge per card: the coverage label of the framework keys under it
     cards = []
     for title, blurb, base in SECTIONS:
         rows = children(base)
@@ -128,7 +129,8 @@ def main():
         sect_total = sum(c for _, c, _ in rows)
         items = "\n".join(
             f'        <a class="mod" href="{TREE}/{p}" data-name="{nm.lower()}">'
-            f'<span class="mod-name">{nm}</span><span class="mod-count">{c}</span></a>'
+            f'<span class="mod-name">{nm}</span>{label_badge(labels_under(label_rows, p))}'
+            f'<span class="mod-count">{c}</span></a>'
             for nm, c, p in rows
         )
         cards.append(f'''    <section class="cat" data-search="{(title + ' ' + blurb).lower()}">
@@ -193,14 +195,28 @@ def main():
     .mods {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:8px; }}
     .mod {{ display:flex; justify-content:space-between; align-items:center; gap:10px; text-decoration:none; color:var(--ink); background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 13px; transition:border-color .12s,transform .12s; }}
     .mod:hover {{ border-color:var(--accent); transform:translateY(-1px); }}
-    .mod-name {{ font-weight:600; font-size:.93em; }}
+    .mod-name {{ font-weight:600; font-size:.93em; flex:1; }}
     .mod-count {{ background:#fff; border:1px solid var(--line); color:var(--muted); border-radius:20px; padding:1px 9px; font-size:.8em; font-variant-numeric:tabular-nums; }}
     .empty {{ color:var(--muted); padding:30px 0; display:none; }}
+    .lbl {{ display:inline-block; font-size:.7rem; font-weight:600; letter-spacing:.03em; text-transform:uppercase; border-radius:20px; padding:1px 8px; vertical-align:middle; border:1px solid; white-space:nowrap; }}
+    .lbl-validated {{ color:#0b6b46; background:#dcf5e8; border-color:#7fd1a8; }}
+    .lbl-partial {{ color:#7a4d00; background:#fff1d1; border-color:#e8bf6a; }}
+    .lbl-experimental {{ color:var(--muted); background:transparent; border-color:var(--line); }}
+    .lbl-mixed {{ color:#3d4f9c; background:#e8ecfb; border-color:#a7b4ea; }}
+    a.lbl-link {{ text-decoration:none; }}
+    .mod .lbl {{ font-size:.6rem; padding:0 6px; }}
+    .legend a {{ color:var(--accent); }}
+    .legend {{ color:var(--muted); font-size:.9em; margin:14px 0 0; }}
+    table {{ border-collapse:collapse; width:100%; font-size:.9em; }}
+    th, td {{ text-align:left; vertical-align:top; border-bottom:1px solid var(--line); padding:6px 8px; }}
     footer {{ border-top:1px solid var(--line); margin-top:48px; padding-top:20px; color:var(--muted); font-size:.9em; }}
     footer a {{ color:var(--accent); text-decoration:none; }}
     @media (prefers-color-scheme:dark) {{
       :root {{ --ink:#e6edf3; --muted:#9198a1; --line:#30363d; --page:#0d1117; --card:#161b22; }}
       .mod-count {{ background:#0d1117; }}
+      .lbl-validated {{ color:#7ee2b0; background:#0f2e21; border-color:#1f6f4a; }}
+      .lbl-partial {{ color:#f2c66d; background:#33270b; border-color:#7a5a1a; }}
+      .lbl-mixed {{ color:#aab8f5; background:#1a2142; border-color:#3d4f9c; }}
       .cta a {{ background:#e6edf3; }}
     }}
   </style>
@@ -230,12 +246,14 @@ def main():
   <div class="wrap">
     <div class="search"><input id="q" type="search" placeholder="Filter by standard — e.g. NERC, STIG, ISO, RHEL, AI…" autocomplete="off"></div>
     <p class="empty" id="empty">No standard matches that filter.</p>
+    <p class="legend">Each card carries its <a href="{LABEL_PAGE}">coverage label</a>: <span class="lbl lbl-validated">validated</span> run on real evidence, <span class="lbl lbl-partial">partial</span> evidence or collector incomplete, <span class="lbl lbl-experimental">experimental</span> not yet run on real evidence.</p>
 {chr(10).join(cards)}
     <footer>
       Part of the <a href="https://github.com/Ansible-Automated-Compliance/aac">Ansible Automated Compliance (AAC)</a> platform ·
       Apache 2.0 · generated from the repository tree, so counts stay current ·
       <a href="standard/">One page per standard</a> ·
       <a href="largest-policy-library.html">How big, measured</a> ·
+      <a href="{LABEL_PAGE}">Coverage labels</a> ·
       <a href="llms.txt">llms.txt</a> ·
       <a href="https://github.com/{REPO}/blob/{BRANCH}/CONTRIBUTING.md">Contributing</a> ·
       <a href="https://github.com/{REPO}/issues?q=is%3Aopen+label%3A%22good+first+issue%22">Good first issues</a>
