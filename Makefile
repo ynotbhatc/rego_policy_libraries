@@ -90,10 +90,11 @@ check-coverage:
 	@$(MAKE) --no-print-directory check-generated
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
-# matches the module and the OSCAL baseline profiles
+# matches the module and the OSCAL baseline profiles; the Linux STIG collector contract matches the rule tables
 check-generated: check-no-data
 	@python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current"
+	@python3 tools/stig_generators/gen_collector_contract.py --check
 
 # The product loads this library with one PUT /v1/policies per file into an empty
 # server; a module that only compiles next to its siblings is rejected there even

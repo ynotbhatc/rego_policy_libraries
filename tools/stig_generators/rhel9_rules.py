@@ -580,9 +580,18 @@ for sid, name, key, allowed, att, what in (
 # ── configuration_management ────────────────────────────────────────────────────────────────────
 import json as _json, os as _os, re as _re
 
-_CAT = {r["stig_id"]: r for r in _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "catalogs", "rhel_9.json")))["rules"]}
-# the banner text is the value the check compares against, taken from the check itself (whitespace-normalised)
-DOD_BANNER = " ".join(_re.search(r'"(You are accessing.*?details\.)"', _CAT["RHEL-09-211020"]["check"], _re.S).group(1).split())
+_HERE = _os.path.dirname(_os.path.abspath(__file__))
+_CATALOG = _os.path.join(_HERE, "catalogs", "rhel_9.json")
+if _os.path.exists(_CATALOG):
+    _CAT = {r["stig_id"]: r for r in _json.load(open(_CATALOG))["rules"]}
+    # the banner text is the value the check compares against, taken from the check itself (whitespace-normalised)
+    DOD_BANNER = " ".join(_re.search(r'"(You are accessing.*?details\.)"', _CAT["RHEL-09-211020"]["check"], _re.S).group(1).split())
+else:
+    # no catalog (gitignored; CI and gen_collector_contract.py import the table without it): the banner as the
+    # committed module carries it. gen_rhel9.py itself still requires the catalog and re-derives it from the check.
+    _m = _re.search(r'(?m)^dod_banner := "((?:[^"\\]|\\.)*)"$',
+                    open(_os.path.join(_HERE, "..", "..", "benchmarks", "stig", "rhel_9", "configuration_management.rego")).read())
+    DOD_BANNER = _json.loads('"' + _m.group(1) + '"')
 
 helpers("configuration_management", r'''
 # the Standard Mandatory DoW Notice and Consent Banner, from the RHEL-09-211020 check text (whitespace-normalised)

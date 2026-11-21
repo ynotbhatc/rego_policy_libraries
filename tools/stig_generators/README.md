@@ -82,6 +82,11 @@ content — tooling that regenerates it from DISA's own XCCDF data.
   secure-mode rule beside "tftp-server not installed") declares `green_na`: the shared fixture holds the N/A
   state and the rule's pass fixture is applied on top in its own tests.
   The by-title derivation (`gen_oracle_linux.py`) put ids on the wrong settings and is retired: it exits 1.
+- `gen_collector_contract.py [--check]` (2026-11-21) — writes `benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md`
+  from the four `gen_rhel9.py` tables (no catalog needed): every fact path a rule reads (required evidence,
+  bodies, the helpers they reference), its type and example from the pass fixtures, and the reading helper's
+  accepted forms. `--check` (run by `make check-generated`) fails when the file is stale or when a generated
+  section module reads an input path the contract lacks. Re-run it after every `gen_rhel9.py` run.
 
 ## Lessons encoded
 
