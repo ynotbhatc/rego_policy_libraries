@@ -22,6 +22,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - CI runs every `examples/*/check.sh`; a monthly standards-watch workflow opens a "standards watch: YYYY-MM" issue
   when an upstream release is newer than `standards.yaml` or a source cannot be read.
 - examples/nist_800_53 supplies the AC-3(14) facts again; its pins match the 542-id module.
+- PCI DSS v4.0.1: findings tell a real failure (`status: fail`) from missing evidence (`status: evidence_missing`,
+  whose title says "evidence missing" and names the input paths); new `requirement_results` and
+  `requirement_result_counts` report all 12 requirements, passes included. Scope flags pass only on boolean `true`.
+  `scripts/gen_pci_dss_evidence_spec.py --check` runs in `make check-generated`. Violation titles changed.
+- PCI DSS 6.4.2: public-facing web apps need an implemented WAF that blocks, or alerts for immediate
+  investigation, with audit logging; `automated_detection.waf_or_vapt` alone no longer satisfies it.
 
 ### Fixed — the last unguarded numeric comparisons (#300)
 
