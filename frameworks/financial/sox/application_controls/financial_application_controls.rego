@@ -482,20 +482,24 @@ financial_application_score := score if {
 
 # Application Controls Risk Assessment
 application_controls_risk_level := "LOW" if {
+	is_number(application_controls_score)
 	application_controls_score >= 90
 }
 
 application_controls_risk_level := "MEDIUM" if {
+	is_number(application_controls_score)
 	application_controls_score >= 75
 	application_controls_score < 90
 }
 
 application_controls_risk_level := "HIGH" if {
+	is_number(application_controls_score)
 	application_controls_score >= 60
 	application_controls_score < 75
 }
 
 application_controls_risk_level := "CRITICAL" if {
+	is_number(application_controls_score)
 	application_controls_score < 60
 }
 
@@ -546,15 +550,18 @@ application_controls_effectiveness := effectiveness if {
 
 # Helper function for effectiveness rating
 _get_effectiveness_rating(score) := "EFFECTIVE" if {
+	is_number(score)
 	score >= 0.9
 }
 
 _get_effectiveness_rating(score) := "PARTIALLY_EFFECTIVE" if {
+	is_number(score)
 	score >= 0.7
 	score < 0.9
 }
 
 _get_effectiveness_rating(score) := "INEFFECTIVE" if {
+	is_number(score)
 	score < 0.7
 }
 

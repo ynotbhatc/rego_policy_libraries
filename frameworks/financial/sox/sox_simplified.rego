@@ -292,20 +292,24 @@ _get_itgc_remediation(control) := "Implement secure development lifecycle (SDLC)
 
 # SOX Compliance Level Determination
 sox_compliance_level := "FULLY_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 0.95
 }
 
 sox_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 0.85
 	sox_compliance_score < 0.95
 }
 
 sox_compliance_level := "PARTIALLY_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 0.70
 	sox_compliance_score < 0.85
 }
 
 sox_compliance_level := "NON_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score < 0.70
 }
 
