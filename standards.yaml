@@ -1,0 +1,642 @@
+# standards.yaml — machine-readable registry of the upstream standard every framework key implements.
+#
+# One entry per `custom.framework` key found in the policy trees (opa inspect). For each key:
+#   standards: list of what the key implements
+#     standard   name of the upstream document
+#     version    the exact version the module implements, read from the module text. "unknown" when the module
+#                never states it (listed by --offline as a warning for a human to settle); "current" for living
+#                regulation text tracked by amendment date
+#     publisher  upstream owner
+#     literal    text that must appear in a non-test .rego file of the key's directories; `version` must be a
+#                substring of it (a leading "v" ignored). Keeps this file and the modules from drifting apart.
+#     check      how scripts/check_standard_releases.py looks for a newer release (methods documented there)
+#   internal: true  for AAC-authored policy with no upstream standard (no check)
+#
+# Validate offline:  python3 scripts/check_standard_releases.py --offline   (run by `make check-standards`)
+# Network check:     python3 scripts/check_standard_releases.py [--json out.json]
+# Human registry with cadence and notes: STANDARDS_UPDATE_REGISTRY.md. Update both in the PR that changes a module.
+schema: 1
+updated: "2026-11-21"
+
+# Checks shared by a whole family; run once per invocation.
+families:
+  cis:
+    method: cis_monthly
+    url: https://www.cisecurity.org/insights/blog
+    checked_against: "November 2026"
+    note: CIS publishes no machine-readable feed; the monthly "CIS Benchmarks <Month> <Year> Update" post is the signal. A newer post means every cis row needs a look.
+  disa:
+    method: disa_compilation
+    checked_against: "October 2026"
+    note: quarterly U_SRG-STIG_Library_<Month>_<Year>.zip on dl.dod.cyber.mil
+
+frameworks:
+  # ---------------------------------------------------------------- CIS benchmarks
+  cis_aks:
+    standards:
+      - {standard: CIS Azure Kubernetes Service (AKS) Benchmark, version: v2.1.0, publisher: CIS, literal: "CIS Azure Kubernetes Service (AKS) Benchmark v2.1.0", check: {family: cis}}
+  cis_aks_automatic:
+    standards:
+      - {standard: CIS Azure Kubernetes Service Automatic Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Azure Kubernetes Service Automatic (AKS Automatic) Benchmark v1.0.0", check: {family: cis}}
+  cis_amazon_linux_2023:
+    standards:
+      - {standard: CIS Amazon Linux 2023 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Amazon Linux 2023 Benchmark v1.0.0", check: {family: cis}}
+  cis_apache:
+    standards:
+      - {standard: CIS Apache HTTP Server 2.4 Benchmark, version: v2.4.0, publisher: CIS, literal: "CIS Apache HTTP Server 2.4 Benchmark v2.4.0", check: {family: cis}}
+  cis_aws:
+    standards:
+      - {standard: CIS Amazon Web Services Foundations Benchmark, version: v7.1.0, publisher: CIS, literal: "CIS Amazon Web Services Foundations Benchmark v7.1.0", check: {family: cis}}
+  cis_azure:
+    standards:
+      - {standard: CIS Microsoft Azure Foundations Benchmark, version: v7.0.0, publisher: CIS, literal: "CIS Microsoft Azure Foundations Benchmark v7.0.0", check: {family: cis}}
+  cis_cloud:
+    note: legacy per-cloud tree (benchmarks/cis/cloud); titles carry no version except GCP
+    standards:
+      - {standard: CIS Google Cloud Platform Foundation Benchmark, version: v5.0.0, publisher: CIS, literal: "CIS Google Cloud Platform Foundation Benchmark v5.0.0", check: {family: cis}}
+      - {standard: CIS Amazon Web Services Foundations Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+      - {standard: CIS Microsoft Azure Foundations Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+  cis_containers:
+    note: legacy tree benchmarks/cis/containers; superseded by cis_docker and cis_kubernetes
+    standards:
+      - {standard: CIS Docker Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+      - {standard: CIS Kubernetes Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+  cis_databases:
+    standards:
+      - {standard: CIS Oracle Database 19c Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis, note: "README names v1.2.0; no .rego file states it"}}
+  cis_debian_11:
+    note: DERIVED from the Ubuntu 20.04 benchmark (no CIS Debian 11 text used); see benchmarks/cis/debian_11/README
+    standards:
+      - {standard: CIS Ubuntu Linux 20.04 LTS Benchmark (derived for Debian 11), version: v3.0.0, publisher: CIS, literal: "CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0", check: {family: cis}}
+  cis_debian_12:
+    standards:
+      - {standard: CIS Debian Linux 12 Benchmark, version: v2.0.1, publisher: CIS, literal: "CIS Debian Linux 12 Benchmark v2.0.1", check: {family: cis}}
+  cis_debian_13:
+    standards:
+      - {standard: CIS Debian Linux 13 Benchmark, version: v1.1.1, publisher: CIS, literal: "CIS Debian Linux 13 Benchmark v1.1.1", check: {family: cis}}
+  cis_docker:
+    standards:
+      - {standard: CIS Docker Benchmark, version: v1.9.0, publisher: CIS, literal: "CIS Docker Benchmark v1.9.0", check: {family: cis}}
+  cis_eks:
+    standards:
+      - {standard: CIS Amazon EKS Benchmark, version: v2.0.0, publisher: CIS, literal: "CIS Amazon EKS Benchmark v2.0.0", check: {family: cis}}
+  cis_gcp:
+    standards:
+      - {standard: CIS Google Cloud Platform Foundation Benchmark, version: v5.0.0, publisher: CIS, literal: "CIS Google Cloud Platform Foundation Benchmark v5.0.0", check: {family: cis}}
+  cis_gke:
+    standards:
+      - {standard: CIS Google Kubernetes Engine (GKE) Benchmark, version: v1.9.0, publisher: CIS, literal: "CIS Google GKE (Google Kubernetes Engine) Benchmark v1.9.0", check: {family: cis}}
+  cis_intune_defender_antivirus:
+    standards:
+      - {standard: CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Microsoft Intune for Microsoft Defender Antivirus Benchmark v1.0.0", check: {family: cis}}
+  cis_kubernetes:
+    standards:
+      - {standard: CIS Kubernetes Benchmark, version: v2.1.0, publisher: CIS, literal: "CIS Kubernetes Benchmark v2.1.0", check: {family: cis}}
+  cis_mcp_server:
+    standards:
+      - {standard: CIS MCP Server Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS MCP Server Benchmark v1.0.0", check: {family: cis}}
+  cis_mobile_devices:
+    standards:
+      - {standard: CIS Apple iOS 27 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Apple iOS 27 Benchmark v1.0.0", check: {family: cis}}
+      - {standard: CIS Google Android Benchmark, version: unknown, publisher: CIS, check: {family: cis}}
+  cis_mysql:
+    standards:
+      - {standard: CIS MySQL 8.0 Benchmark, version: v1.2.0, publisher: CIS, literal: "CIS MySQL 8.0 Benchmark v1.2.0", check: {family: cis}}
+  cis_network:
+    note: legacy tree benchmarks/cis/network; superseded by cis_network_devices
+    standards:
+      - {standard: CIS Cisco IOS Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+  cis_network_devices:
+    standards:
+      - {standard: CIS Arista EOS Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Arista EOS Benchmark v1.0.0", check: {family: cis}}
+      - {standard: CIS Cisco IOS Benchmark, version: v4.1.0, publisher: CIS, literal: "CIS Cisco IOS Benchmark v4.1.0", check: {family: cis}}
+      - {standard: CIS Cisco IOS XE 17.x Benchmark, version: v2.2.2, publisher: CIS, literal: "CIS Cisco IOS XE 17.x Benchmark v2.2.2", check: {family: cis}}
+      - {standard: CIS FortiGate 7.4.x Benchmark, version: v1.0.1, publisher: CIS, literal: "CIS FortiGate 7.4.x Benchmark v1.0.1", check: {family: cis}}
+      - {standard: CIS Juniper JunOS Benchmark, version: v2.1.0, publisher: CIS, literal: "CIS Juniper JunOS Benchmark v2.1.0", check: {family: cis}}
+      - {standard: CIS OPNsense Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS OPNsense Benchmark v1.0.0", check: {family: cis}}
+      - {standard: CIS Palo Alto Firewall 11 Benchmark, version: v1.2.1, publisher: CIS, literal: "CIS Palo Alto Firewall 11 Benchmark v1.2.1", check: {family: cis}}
+      - {standard: CIS pfSense Firewall Benchmark, version: v1.1.1, publisher: CIS, literal: "CIS pfSense Firewall Benchmark v1.1.1", check: {family: cis}}
+      - {standard: CIS VyOS Benchmark, version: v1.0.1, publisher: CIS, literal: "CIS VyOS Benchmark v1.0.1", check: {family: cis}}
+  cis_nginx:
+    standards:
+      - {standard: CIS NGINX Benchmark, version: v3.1.0, publisher: CIS, literal: "CIS NGINX Benchmark v3.1.0", check: {family: cis}}
+  cis_oci:
+    standards:
+      - {standard: CIS Oracle Cloud Infrastructure Foundations Benchmark, version: v3.1, publisher: CIS, literal: "CIS Oracle Cloud Infrastructure Foundations Benchmark v3.1", check: {family: cis}}
+  cis_openshift:
+    standards:
+      - {standard: CIS Red Hat OpenShift Container Platform Benchmark, version: v2.0.0, publisher: CIS, literal: "CIS Red Hat OpenShift Container Platform Benchmark v2.0.0", check: {family: cis}}
+  cis_oracle:
+    standards:
+      - {standard: CIS Oracle Database 19c Benchmark, version: v2.0.0, publisher: CIS, literal: "CIS Oracle Database 19c Benchmark v2.0.0", check: {family: cis}}
+  cis_oracle_23ai:
+    note: deprecated, superseded by cis_oracle_26ai
+    standards:
+      - {standard: CIS Oracle Database 23ai Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Oracle Database 23ai Benchmark v1.0.0", check: {family: cis}}
+  cis_oracle_26ai:
+    standards:
+      - {standard: CIS Oracle Database 26ai Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Oracle Database 26ai Benchmark v1.0.0", check: {family: cis}}
+  cis_os:
+    note: legacy generic OS tree benchmarks/cis/os
+    standards:
+      - {standard: CIS Red Hat Enterprise Linux 9 Benchmark (legacy tree), version: v2.0.0, publisher: CIS, literal: "CIS RHEL 9 Benchmark v2.0.0", check: {family: cis}}
+  cis_postgresql:
+    standards:
+      - {standard: CIS PostgreSQL 13 Benchmark, version: v1.3.0, publisher: CIS, literal: "CIS PostgreSQL 13 Benchmark v1.3.0", check: {family: cis}}
+      - {standard: CIS PostgreSQL 14 Benchmark, version: v1.3.0, publisher: CIS, literal: "CIS PostgreSQL 14 Benchmark v1.3.0", check: {family: cis}}
+      - {standard: CIS PostgreSQL 15 Benchmark, version: v1.2.0, publisher: CIS, literal: "CIS PostgreSQL 15 Benchmark v1.2.0", check: {family: cis}}
+      - {standard: CIS PostgreSQL 17 Benchmark, version: v1.1.0, publisher: CIS, literal: "CIS PostgreSQL 17 Benchmark v1.1.0", check: {family: cis}}
+  cis_postgresql_16:
+    standards:
+      - {standard: CIS PostgreSQL 16 Benchmark, version: v1.1.0, publisher: CIS, literal: "CIS PostgreSQL 16 Benchmark v1.1.0", check: {family: cis}}
+  cis_postgresql_18:
+    standards:
+      - {standard: CIS PostgreSQL 18 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS PostgreSQL 18 Benchmark v1.0.0", check: {family: cis}}
+  cis_rhel_10:
+    standards:
+      - {standard: CIS Red Hat Enterprise Linux 10 Benchmark, version: v1.0.1, publisher: CIS, literal: "CIS Red Hat Enterprise Linux 10 Benchmark v1.0.1", check: {family: cis}}
+  cis_rhel_8:
+    standards:
+      - {standard: CIS Red Hat Enterprise Linux 8 Benchmark, version: v4.0.0, publisher: CIS, literal: "CIS Red Hat Enterprise Linux 8 Benchmark v4.0.0", check: {family: cis}}
+  cis_rhel_9:
+    standards:
+      - {standard: CIS Red Hat Enterprise Linux 9 Benchmark, version: v3.0.0, publisher: CIS, literal: "CIS Red Hat Enterprise Linux 9 Benchmark v3.0.0", check: {family: cis}}
+  cis_rocky_linux_8:
+    standards:
+      - {standard: CIS Rocky Linux 8 Benchmark, version: v3.0.0, publisher: CIS, literal: "CIS Rocky Linux 8 Benchmark v3.0.0", check: {family: cis}}
+  cis_rocky_linux_9:
+    standards:
+      - {standard: CIS Rocky Linux 9 Benchmark, version: v3.0.0, publisher: CIS, literal: "CIS Rocky Linux 9 Benchmark v3.0.0", check: {family: cis}}
+  cis_saas:
+    standards:
+      - {standard: CIS Microsoft 365 Foundations Benchmark, version: v7.0.0, publisher: CIS, literal: "CIS Microsoft 365 Foundations Benchmark v7.0.0", check: {family: cis}}
+      - {standard: CIS Microsoft 365 Foundations Benchmark (legacy m365/), version: unknown, publisher: CIS, check: {family: cis, note: "README names v3.1.0; no .rego file states it"}}
+  cis_sql_server_2022:
+    standards:
+      - {standard: CIS Microsoft SQL Server 2022 Benchmark, version: v1.3.0, publisher: CIS, literal: "CIS Microsoft SQL Server 2022 Benchmark v1.3.0", check: {family: cis}}
+  cis_sql_server_2025:
+    standards:
+      - {standard: CIS Microsoft SQL Server 2025 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Microsoft SQL Server 2025 Benchmark v1.0.0", check: {family: cis}}
+  cis_suse_16:
+    standards:
+      - {standard: CIS SUSE Linux Enterprise 16 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS SUSE Linux Enterprise 16 Benchmark v1.0.0", check: {family: cis}}
+  cis_ubuntu_20_04:
+    standards:
+      - {standard: CIS Ubuntu Linux 20.04 LTS Benchmark, version: v3.0.0, publisher: CIS, literal: "CIS Ubuntu 20.04 LTS Benchmark v3.0.0", check: {family: cis}}
+  cis_ubuntu_22_04:
+    standards:
+      - {standard: CIS Ubuntu Linux 22.04 LTS Benchmark, version: v3.0.0, publisher: CIS, literal: "CIS Ubuntu Linux 22.04 LTS Benchmark v3.0.0", check: {family: cis}}
+  cis_ubuntu_24_04:
+    standards:
+      - {standard: CIS Ubuntu Linux 24.04 LTS Benchmark, version: v2.0.1, publisher: CIS, literal: "CIS Ubuntu Linux 24.04 LTS Benchmark v2.0.1", check: {family: cis}}
+  cis_ubuntu_26_04:
+    standards:
+      - {standard: CIS Ubuntu Linux 26.04 LTS Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS Ubuntu Linux 26.04 LTS Benchmark v1.0.0", check: {family: cis}}
+  cis_vmware:
+    standards:
+      - {standard: CIS VMware ESXi 8.0 Benchmark, version: v1.4.0, publisher: CIS, literal: "CIS VMware ESXi 8.0 Benchmark v1.4.0", check: {family: cis}}
+      - {standard: CIS VMware ESXi 9.0 Benchmark, version: v1.0.0, publisher: CIS, literal: "CIS VMware ESXi 9.0 Benchmark v1.0.0", check: {family: cis}}
+      - {standard: CIS VMware vCenter 8 Benchmark, version: unknown, publisher: CIS, check: {family: cis}}
+  cis_web_servers:
+    note: legacy tree benchmarks/cis/web_servers; superseded by cis_mysql
+    standards:
+      - {standard: CIS MySQL Benchmark (legacy tree), version: unknown, publisher: CIS, check: {family: cis}}
+  cis_windows_10_modular:
+    standards:
+      - {standard: CIS Microsoft Windows 10 Enterprise Benchmark, version: v5.0.0, publisher: CIS, literal: "CIS Microsoft Windows 10 Enterprise Benchmark v5.0.0", check: {family: cis}}
+  cis_windows_11_modular:
+    standards:
+      - {standard: CIS Microsoft Windows 11 Enterprise Benchmark, version: v5.1.0, publisher: CIS, literal: "CIS Microsoft Windows 11 Enterprise Benchmark v5.1.0", check: {family: cis}}
+  cis_windows_server_2016_modular:
+    standards:
+      - {standard: CIS Microsoft Windows Server 2016 Benchmark, version: v4.0.0, publisher: CIS, literal: "CIS Microsoft Windows Server 2016 Benchmark v4.0.0", check: {family: cis}}
+  cis_windows_server_2019_modular:
+    standards:
+      - {standard: CIS Microsoft Windows Server 2019 Benchmark, version: v5.0.0, publisher: CIS, literal: "CIS Microsoft Windows Server 2019 Benchmark v5.0.0", check: {family: cis}}
+  cis_windows_server_2022:
+    note: single-file module; the modular tree (cis_windows_server_2022_modular) follows v5.1.0
+    standards:
+      - {standard: CIS Microsoft Windows Server 2022 Benchmark, version: v5.0.0, publisher: CIS, literal: "CIS Microsoft Windows Server 2022 Benchmark v5.0.0", check: {family: cis}}
+  cis_windows_server_2022_modular:
+    standards:
+      - {standard: CIS Microsoft Windows Server 2022 Benchmark, version: v5.1.0, publisher: CIS, literal: "CIS Microsoft Windows Server 2022 Benchmark v5.1.0", check: {family: cis}}
+  cis_windows_server_2025_modular:
+    standards:
+      - {standard: CIS Microsoft Windows Server 2025 Benchmark, version: v2.1.1, publisher: CIS, literal: "CIS Microsoft Windows Server 2025 Benchmark v2.1.1", check: {family: cis}}
+  cis_controls_v8:
+    standards:
+      - {standard: CIS Critical Security Controls, version: v8.1, publisher: CIS, literal: "CIS Controls v8.1", check: {method: page_regex, url: "https://www.cisecurity.org/controls/cis-controls-list", pattern: 'CIS Controls v(\d+(?:\.\d+)?)'}}
+
+  # ---------------------------------------------------------------- DISA STIGs
+  stig_amazon_linux_2023:
+    standards:
+      - {standard: DISA Amazon Linux 2023 STIG, version: V1R5, publisher: DISA, literal: "V1R5", check: {method: disa_stig_zip, stem: U_Amazon_Linux_2023}}
+  stig_apache_2_4_unix:
+    standards:
+      - {standard: DISA Apache Server 2.4 UNIX Server STIG, version: V3R3, publisher: DISA, literal: "V3R3", check: {family: disa}}
+  stig_cisco_ios_xe_router:
+    standards:
+      - {standard: DISA Cisco IOS XE Router STIG, version: V3R7, publisher: DISA, literal: "V3R7", check: {method: disa_dated_zip, stem: U_Cisco_IOS-XE_Router, released: "2026-04"}}
+  stig_kubernetes:
+    standards:
+      - {standard: DISA Kubernetes STIG, version: V2R6, publisher: DISA, literal: "V2R6", check: {method: disa_stig_zip, stem: U_Kubernetes}}
+  stig_ms_sql_2016:
+    standards:
+      - {standard: DISA MS SQL Server 2016 Instance STIG, version: V3R6, publisher: DISA, literal: "V3R6", check: {method: disa_dated_zip, stem: U_MS_SQL_Server_2016, released: "2026-01"}}
+  stig_openshift_4:
+    standards:
+      - {standard: DISA Red Hat OpenShift Container Platform 4.x STIG, version: V2R7, publisher: DISA, literal: "V2R7", check: {method: disa_stig_zip, stem: U_RH_OpenShift_Container_Platform_4-x}}
+  stig_oracle_database_19c:
+    standards:
+      - {standard: DISA Oracle Database 19c STIG, version: V1R6, publisher: DISA, literal: "V1R6", check: {method: disa_stig_zip, stem: U_Oracle_Database_19c}}
+  stig_oracle_linux_8:
+    standards:
+      - {standard: DISA Oracle Linux 8 STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_Oracle_Linux_8}}
+  stig_oracle_linux_9:
+    standards:
+      - {standard: DISA Oracle Linux 9 STIG, version: V1R7, publisher: DISA, literal: "V1R7", check: {method: disa_stig_zip, stem: U_Oracle_Linux_9}}
+  stig_oracle_mysql_8:
+    standards:
+      - {standard: DISA Oracle MySQL 8.0 STIG, version: V2R3, publisher: DISA, literal: "V2R3", check: {method: disa_stig_zip, stem: U_Oracle_MySQL_8-0}}
+  stig_postgresql_16:
+    standards:
+      - {standard: DISA PostgreSQL 16 STIG, version: V1R3, publisher: DISA, literal: "V1R3", check: {family: disa}}
+  stig_rhel_10:
+    standards:
+      - {standard: DISA Red Hat Enterprise Linux 10 STIG, version: V1R3, publisher: DISA, literal: "V1R3", check: {method: disa_stig_zip, stem: U_RHEL_10}}
+  stig_rhel_8:
+    standards:
+      - {standard: DISA Red Hat Enterprise Linux 8 STIG, version: V2R8, publisher: DISA, literal: "V2R8", check: {method: disa_stig_zip, stem: U_RHEL_8}}
+  stig_rhel_9:
+    standards:
+      - {standard: DISA Red Hat Enterprise Linux 9 STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_RHEL_9}}
+  stig_rke2:
+    standards:
+      - {standard: DISA Rancher Government Solutions RKE2 STIG, version: V2R7, publisher: DISA, literal: "V2R7", check: {method: disa_stig_zip, stem: U_RGS_RKE2}}
+  stig_sles_15:
+    standards:
+      - {standard: DISA SUSE Linux Enterprise Server 15 STIG, version: V2R9, publisher: DISA, literal: "V2R9", check: {method: disa_stig_zip, stem: U_SLES_15}}
+  stig_ubuntu_20_04:
+    standards:
+      - {standard: DISA Canonical Ubuntu 20.04 LTS STIG, version: V2R1, publisher: DISA, literal: "V2R1", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_20-04_LTS}}
+  stig_ubuntu_22_04:
+    standards:
+      - {standard: DISA Canonical Ubuntu 22.04 LTS STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_22-04_LTS}}
+  stig_ubuntu_24_04:
+    standards:
+      - {standard: DISA Canonical Ubuntu 24.04 LTS STIG, version: V1R7, publisher: DISA, literal: "V1R7", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_24-04_LTS}}
+  stig_vmware_vsphere_8:
+    standards:
+      - {standard: DISA VMware vSphere 8.0 ESXi STIG, version: V2R4, publisher: DISA, literal: "V2R4", check: {method: disa_dated_zip, stem: U_VMW_vSphere_8-0, released: "2026-07"}}
+  stig_windows_11:
+    standards:
+      - {standard: DISA Microsoft Windows 11 STIG, version: V2R11, publisher: DISA, literal: "V2R11", check: {method: disa_stig_zip, stem: U_MS_Windows_11}}
+  stig_windows_server_2016:
+    standards:
+      - {standard: DISA Microsoft Windows Server 2016 STIG, version: V2R10, publisher: DISA, literal: "V2R10", check: {method: disa_stig_zip, stem: U_MS_Windows_Server_2016}}
+  stig_windows_server_2019:
+    standards:
+      - {standard: DISA Microsoft Windows Server 2019 STIG, version: V3R9, publisher: DISA, literal: "V3R9", check: {method: disa_stig_zip, stem: U_MS_Windows_Server_2019}}
+  stig_windows_server_2022:
+    standards:
+      - {standard: DISA Microsoft Windows Server 2022 STIG, version: V2R11, publisher: DISA, literal: "V2R11", check: {method: disa_stig_zip, stem: U_MS_Windows_Server_2022}}
+  stig_windows_server_2025:
+    standards:
+      - {standard: DISA Microsoft Windows Server 2025 STIG, version: V1R4, publisher: DISA, literal: "V1R4", check: {method: disa_stig_zip, stem: U_MS_Windows_Server_2025}}
+
+  # ---------------------------------------------------------------- NIST and US federal
+  nist_sp_800_53:
+    standards:
+      - {standard: NIST SP 800-53 Rev 5 (OSCAL catalog), version: 5.2.0, publisher: NIST, literal: "SP 800-53 Rev 5 release 5.2.0", check: {method: oscal_catalog, url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json"}}
+  nist_sp_800_171:
+    standards:
+      - {standard: NIST SP 800-171, version: Rev 3, publisher: NIST, literal: "NIST SP 800-171 Rev 3", check: {method: oscal_catalog, implemented: "1.1.0", url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-171/rev3/json/NIST_SP800-171_rev3_catalog.json", note: "implemented = catalog file version reviewed, not the SP revision"}}
+  nist_sp_800_171_r2:
+    standards:
+      - {standard: NIST SP 800-171, version: Rev 2, publisher: NIST, literal: "NIST SP 800-171 Rev 2", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/171/r2/upd1/final", note: "kept for the DoD class deviation (CMMC assesses against r2); withdrawn upstream"}}
+  nist_sp_800_171a:
+    standards:
+      - {standard: NIST SP 800-171A, version: Rev 3, publisher: NIST, literal: "NIST SP 800-171A Rev 3", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/171/a/r3/final"}}
+  nist_sp_800_171a_r2:
+    standards:
+      - {standard: NIST SP 800-171A (for 800-171 Rev 2), version: June 2018, publisher: NIST, literal: "NIST SP 800-171A (June 2018)", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/171/a/final"}}
+  nist_sp_800_172:
+    standards:
+      - {standard: NIST SP 800-172 / 800-172A, version: Rev 3, publisher: NIST, literal: "NIST SP 800-172 Rev 3", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/172/r3/final"}}
+  nist_cybersecurity_framework_2_0:
+    standards:
+      - {standard: NIST Cybersecurity Framework, version: "2.0", publisher: NIST, literal: "NIST Cybersecurity Framework 2.0", check: {method: page_regex, url: "https://www.nist.gov/cyberframework", pattern: '(?:CSF|Cybersecurity Framework) ?(\d\.\d)'}}
+  nist_ai_rmf:
+    standards:
+      - {standard: NIST AI Risk Management Framework (AI 100-1), version: "1.0", publisher: NIST, literal: "NIST AI RMF 1.0", check: {method: manual, url: "https://www.nist.gov/itl/ai-risk-management-framework"}}
+  nist_ai_600_1:
+    standards:
+      - {standard: NIST AI 600-1 Generative AI Profile, version: "1.0", publisher: NIST, literal: "AI RMF 1.0", check: {method: manual, url: "https://www.nist.gov/itl/ai-risk-management-framework", note: "AI 600-1 has no revision number; the literal pins the AI RMF version it profiles"}}
+  nist_privacy_framework:
+    standards:
+      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Privacy Framework (?:Version |v)?(\d\.\d)'}}
+  nist_risk_management_framework:
+    standards:
+      - {standard: NIST SP 800-37 Risk Management Framework, version: Rev 2, publisher: NIST, literal: "NIST SP 800-37 Rev 2", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/37/r2/final"}}
+  nist_sp_800_160v2:
+    standards:
+      - {standard: NIST SP 800-160 Vol. 2, version: Rev. 1, publisher: NIST, literal: "NIST SP 800-160 Vol. 2 Rev. 1", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/160/v2/r1/final"}}
+  nist_sp_800_39:
+    standards:
+      - {standard: NIST SP 800-39, version: March 2011, publisher: NIST, literal: "document date March 2011", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/39/final"}}
+  nist_800_82:
+    standards:
+      - {standard: NIST SP 800-82, version: Revision 3, publisher: NIST, literal: "NIST Special Publication 800-82 Revision 3", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/82/r3/final"}}
+  nist_ssdf:
+    standards:
+      - {standard: NIST SP 800-218 SSDF, version: v1.1, publisher: NIST, literal: "SP 800-218 v1.1", check: {method: oscal_catalog, implemented: "1.0.0", url: "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-218/ver1/json/NIST_SP800-218_ver1_catalog.json", note: "implemented = catalog file version reviewed; SP 800-218 r1 (v1.2) drafts watched by hand"}}
+  ami:
+    standards:
+      - {standard: NIST IR 7628 Guidelines for Smart Grid Cybersecurity, version: Rev 1, publisher: NIST, literal: "NIST IR 7628 Rev 1", check: {method: manual, url: "https://csrc.nist.gov/pubs/ir/7628/r1/final"}}
+  fisma:
+    standards:
+      - {standard: FISMA, version: "2014", publisher: US Congress / OMB, literal: "Federal Information Security Modernization Act (FISMA) 2014", check: {method: manual, url: "https://www.cisa.gov/topics/cyber-threats-and-advisories/federal-information-security-modernization-act"}}
+  fedramp:
+    standards:
+      - {standard: FedRAMP Rev 5 baselines, version: Rev 5, publisher: GSA FedRAMP, literal: "FedRAMP Rev 5", check: {method: manual, url: "https://www.fedramp.gov/"}}
+  fedramp_20x:
+    standards:
+      - {standard: FedRAMP Consolidated Rules (20x KSI datafile), version: "2026", publisher: GSA FedRAMP, literal: "FedRAMP Consolidated Rules for 2026", check: {method: github_commit, repo: FedRAMP/rules, since: "2026-11-11", note: "any commit after the last reviewed date means the datafile may have moved"}}
+  cisa_cpg:
+    standards:
+      - {standard: CISA Cross-Sector Cybersecurity Performance Goals, version: "2.0", publisher: CISA, literal: "Cybersecurity Performance Goals (CPG) 2.0", check: {method: page_regex, url: "https://www.cisa.gov/cross-sector-cybersecurity-performance-goals", pattern: 'CPG[s]? (\d\.\d(?:\.\d)?)'}}
+  cisa_ssdaf:
+    standards:
+      - {standard: CISA Secure Software Development Attestation Form, version: v1.0, publisher: CISA, literal: "Attestation Form v1.0", check: {method: manual, url: "https://www.cisa.gov/secure-software-attestation-form"}}
+  cisa_tic3:
+    standards:
+      - {standard: CISA TIC 3.0 Security Capabilities Catalog, version: v3.3, publisher: CISA, literal: "Security Capabilities Catalog v3.3", check: {method: manual, url: "https://www.cisa.gov/resources-tools/resources/trusted-internet-connections-tic-30-security-capabilities-catalog"}}
+  zero_trust:
+    standards:
+      - {standard: CISA Zero Trust Maturity Model, version: v2.0, publisher: CISA, literal: "Zero Trust Maturity Model v2.0", check: {method: manual, url: "https://www.cisa.gov/zero-trust-maturity-model"}}
+  nsa_cisa_kubernetes:
+    standards:
+      - {standard: NSA/CISA Kubernetes Hardening Guidance, version: v1.2, publisher: NSA / CISA, literal: "Kubernetes Hardening Guidance v1.2", check: {method: manual, url: "https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF"}}
+  cjis:
+    standards:
+      - {standard: FBI CJIS Security Policy, version: unknown, publisher: FBI CJIS Division, check: {method: manual, url: "https://le.fbi.gov/cjis-division/cjis-security-policy-resource-center", note: "module states no CJIS Security Policy version; le.fbi.gov blocks scripted fetches (403)"}}
+  cmmc:
+    standards:
+      - {standard: CMMC 2.0 (32 CFR Part 170), version: current, publisher: DoD CIO, literal: "32 CFR Part 170", check: {method: ecfr, title: 32, parts: [170], checked_through: "2024-12-16"}}
+  dfars_7012:
+    standards:
+      - {standard: DFARS 252.204-7012, version: MAY 2024, publisher: DoD, literal: "DFARS 252.204-7012 (MAY 2024)", check: {method: ecfr, title: 48, parts: [252], checked_through: "2025-11-10", note: "part 252 holds every DFARS clause; a change needs a look at 252.204-7012 only"}}
+  far_cyber:
+    standards:
+      - {standard: FAR 52.204-21 / -25 / -27, version: current, publisher: GSA / DoD / NASA (FAR Council), literal: "FAR cyber clauses 52.204-21, 52.204-25, 52.204-27", check: {method: ecfr, title: 48, parts: [52], checked_through: "2026-03-13", note: "part 52 holds every FAR clause"}}
+  eo_14028:
+    standards:
+      - {standard: Executive Order 14028, version: "2021", publisher: The White House, literal: "Executive Order 14028 (May 12, 2021)", check: {method: manual, url: "https://www.federalregister.gov/documents/2021/05/17/2021-10460/improving-the-nations-cybersecurity"}}
+  irs_1075:
+    standards:
+      - {standard: IRS Publication 1075, version: Rev. 11-2021, publisher: IRS, literal: "IRS Publication 1075 (Rev. 11-2021)", check: {method: page_regex, url: "https://www.irs.gov/pub/irs-pdf/p1075.pdf", pattern: 'Rev\. (\d{1,2}-\d{4})', note: "flags any revision string other than the one implemented", known: ["11-2021"]}}
+  nispom_32cfr117:
+    standards:
+      - {standard: 32 CFR Part 117 (NISPOM), version: current, publisher: DoD, literal: "32 CFR Part 117 (NISPOM)", check: {method: ecfr, title: 32, parts: [117], checked_through: "2021-08-19"}}
+  pqc:
+    standards:
+      - {standard: NIST CSWP 39 Crypto Agility, version: upd1, publisher: NIST, literal: "NIST CSWP 39-upd1", check: {method: manual, url: "https://csrc.nist.gov/pubs/cswp/39/considerations-for-achieving-cryptographic-agility/final"}}
+      - {standard: NIST FIPS 203 / 204 / 205, version: "203", publisher: NIST, literal: "FIPS 203", check: {method: manual, url: "https://csrc.nist.gov/projects/post-quantum-cryptography"}}
+  ferpa:
+    standards:
+      - {standard: FERPA regulations (34 CFR Part 99), version: current, publisher: US Department of Education, literal: "34 CFR Part 99", check: {method: ecfr, title: 34, parts: [99], checked_through: "2017-03-21"}}
+  nrc_10cfr73_54:
+    standards:
+      - {standard: 10 CFR 73.54, version: current, publisher: US NRC, literal: "10 CFR 73.54", check: {method: ecfr, title: 10, parts: [73], checked_through: "2026-06-16", note: "part 73 changes often; a hit needs a look at §73.54 only"}}
+  uscg_33cfr101_subpart_f:
+    standards:
+      - {standard: 33 CFR Part 101 Subpart F, version: current, publisher: US Coast Guard, literal: "33 CFR Part 101 Subpart F", check: {method: ecfr, title: 33, parts: [101], checked_through: "2025-07-16"}}
+  tsa_pipeline:
+    standards:
+      - {standard: TSA Security Directive Pipeline-2021-02, version: 02G, publisher: TSA, literal: "Pipeline-2021-02G", check: {method: manual, url: "https://www.tsa.gov/sd-and-ea", note: "directive revisions are letter-suffixed (02F, 02G, ...)"}}
+  aca_155_260:
+    standards:
+      - {standard: 45 CFR 155.260, version: current, publisher: HHS CMS, literal: "45 CFR 155.260", check: {method: ecfr, title: 45, parts: [155], checked_through: "2026-09-23", note: "part 155 changes often; a hit needs a look at §155.260 only"}}
+  cms_mars_e:
+    standards:
+      - {standard: CMS MARS-E, version: "2.0", publisher: HHS CMS, literal: "CMS MARS-E 2.0", check: {method: manual, url: "https://www.cms.gov/marketplace/resources/regulations-guidance", note: "superseded upstream by ARC-AMPE; kept for legacy assessments"}}
+  hipaa:
+    standards:
+      - {standard: HIPAA Security, Privacy and Breach Notification Rules (45 CFR Part 164), version: current, publisher: HHS OCR, literal: "45 CFR 164", check: {method: ecfr, title: 45, parts: [164], checked_through: "2024-06-25"}}
+  coppa:
+    standards:
+      - {standard: COPPA Rule (16 CFR Part 312), version: 90 FR 16918, publisher: FTC, literal: "as amended by 90 FR 16918", check: {method: ecfr, title: 16, parts: [312], checked_through: "2025-06-23"}}
+  glba:
+    standards:
+      - {standard: FTC Safeguards Rule (16 CFR Part 314), version: current, publisher: FTC, literal: "16 CFR Part 314", check: {method: ecfr, title: 16, parts: [314], checked_through: "2024-05-13"}}
+  ftc_red_flags:
+    standards:
+      - {standard: FTC Red Flags Rule and Disposal Rule (16 CFR 681 / 682), version: current, publisher: FTC, literal: "16 CFR 681.1", check: {method: ecfr, title: 16, parts: [681, 682], checked_through: "2016-12-22"}}
+  cfr_part_11:
+    standards:
+      - {standard: 21 CFR Part 11, version: current, publisher: FDA, literal: "21 CFR Part 11", check: {method: ecfr, title: 21, parts: [11], checked_through: "2023-03-02"}}
+  itar:
+    standards:
+      - {standard: ITAR (22 CFR Parts 120-130), version: current, publisher: US State Department DDTC, literal: "22 CFR Parts 120-130", check: {method: ecfr, title: 22, parts: [120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130], checked_through: "2026-10-21"}}
+  sec_cyber:
+    standards:
+      - {standard: SEC cybersecurity disclosure rules (Form 8-K Item 1.05, Reg S-K Item 106), version: unknown, publisher: SEC, check: {method: manual, url: "https://www.sec.gov/rules-regulations/2023/07/s7-09-22", note: "module names effective dates, not a release number"}}
+  sox:
+    standards:
+      - {standard: Sarbanes-Oxley IT general controls, version: unknown, publisher: US Congress / PCAOB, check: {method: manual, url: "https://pcaobus.org/oversight/standards", note: "AAC ITGC operationalization; no versioned upstream text named in the module"}}
+
+  # ---------------------------------------------------------------- financial
+  pci_dss:
+    standards:
+      - {standard: PCI DSS, version: v4.0.1, publisher: PCI SSC, literal: "PCI DSS v4.0.1", check: {method: page_regex, url: "https://www.pcisecuritystandards.org/document_library/", pattern: 'PCI[ -]DSS v?(\d+\.\d+(?:\.\d+)?)'}}
+  swift_csp:
+    standards:
+      - {standard: SWIFT Customer Security Controls Framework (CSCF), version: v2024, publisher: SWIFT, literal: "Customer Security Controls Framework (CSCF) v2024", check: {method: manual, url: "https://www.swift.com/myswift/customer-security-programme-csp", note: "annual CSCF each July; swift.com blocks scripted fetches (403). Module is behind: v2026 is the current attestation year"}}
+  dora:
+    standards:
+      - {standard: DORA Regulation (EU) 2022/2554, version: 2022/2554, publisher: EU, literal: "Regulation (EU) 2022/2554", check: {method: manual, url: "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"}}
+      - {standard: DORA RTS on the ICT risk management framework, version: 2024/1774, publisher: EU (ESAs), literal: "2024/1774", check: {method: manual, url: "https://eur-lex.europa.eu/eli/reg_del/2024/1774/oj"}}
+  ny_dfs:
+    standards:
+      - {standard: 23 NYCRR Part 500, version: Version 2 (November 2023), publisher: NYDFS, literal: "Version 2 (November 2023)", check: {method: manual, url: "https://www.dfs.ny.gov/industry_guidance/cybersecurity"}}
+  apra_cps234:
+    standards:
+      - {standard: APRA CPS 234 Information Security, version: July 2019, publisher: APRA, literal: "APRA CPS 234 Information Security (Australia, July 2019)", check: {method: manual, url: "https://www.apra.gov.au/information-security"}}
+  bnm_rmit:
+    standards:
+      - {standard: BNM Risk Management in Technology (RMiT), version: September 2026, publisher: Bank Negara Malaysia, literal: "BNM Risk Management in Technology (RMiT), September 2026", check: {method: manual, url: "https://www.bnm.gov.my/-/policy-document-on-risk-management-in-technology"}}
+  hkma_trm:
+    standards:
+      - {standard: HKMA SPM TM-G-1 and TM-C-1, version: V.1, publisher: HKMA, literal: "(V.1,", check: {method: manual, url: "https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20030624-2-EN/20030624-2-EN.pdf"}}
+  mas_trm:
+    standards:
+      - {standard: MAS Technology Risk Management Guidelines, version: January 2021, publisher: MAS, literal: "MAS Technology Risk Management Guidelines (January 2021)", check: {method: manual, url: "https://www.mas.gov.sg/regulation/guidelines/technology-risk-management-guidelines"}}
+
+  # ---------------------------------------------------------------- management systems and frameworks
+  cobit:
+    standards:
+      - {standard: COBIT, version: "2019", publisher: ISACA, literal: "COBIT 2019", check: {method: page_regex, url: "https://www.isaca.org/resources/cobit", pattern: 'COBIT(?:®)? ?(\d{1,4})\b', known: ["2019", "19", "5"], note: "COBIT 7 published 2026-11-19 (#194); regeneration needs a licence decision"}}
+  hitrust:
+    standards:
+      - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: '(?:CSF|HITRUST)[^<]{0,20}v(\d+\.\d+(?:\.\d+)?)'}}
+  tisax:
+    standards:
+      - {standard: VDA ISA (TISAX), version: v6.0.3, publisher: ENX / VDA, literal: "VDA ISA (Information Security Assessment) Catalog v6.0.3", check: {method: page_regex, url: "https://portal.enx.com/en-US/TISAX/downloads/", pattern: 'ISA ?(20\d\d(?:\.\d)?|6\.\d\.\d)'}}
+  iso27001:
+    standards:
+      - {standard: ISO/IEC 27001, version: "2022", publisher: ISO/IEC, literal: "ISO/IEC 27001:2022", check: {method: manual, url: "https://www.iso.org/standard/27001", note: "iso.org blocks scripted fetches (403)"}}
+  iso27701:
+    standards:
+      - {standard: ISO/IEC 27701, version: "2019", publisher: ISO/IEC, literal: "27701:2019", check: {method: manual, url: "https://www.iso.org/standard/27701", note: "ISO/IEC 27701:2025 (standalone PIMS edition) may supersede 2019 — confirm"}}
+  iso_42001:
+    standards:
+      - {standard: ISO/IEC 42001, version: "2023", publisher: ISO/IEC, literal: "ISO/IEC 42001:2023", check: {method: manual, url: "https://www.iso.org/standard/42001"}}
+  iso_42005:
+    standards:
+      - {standard: ISO/IEC 42005, version: "2025", publisher: ISO/IEC, literal: "ISO/IEC 42005:2025", check: {method: manual, url: "https://www.iso.org/standard/42005"}}
+  soc2:
+    standards:
+      - {standard: AICPA Trust Services Criteria (SOC 2), version: "2017", publisher: AICPA, literal: "SOC 2 (2017 Trust Services Criteria)", check: {method: manual, url: "https://www.aicpa-cima.com/resources/download/2017-trust-services-criteria-with-revised-points-of-focus-2022"}}
+  csa_ccm:
+    standards:
+      - {standard: CSA Cloud Controls Matrix, version: v4.0, publisher: Cloud Security Alliance, literal: "CSA Cloud Controls Matrix (CCM) v4.0", check: {method: page_regex, url: "https://cloudsecurityalliance.org/research/cloud-controls-matrix", pattern: 'CCM v?(\d+(?:\.\d+)*)'}}
+  cert_rmm:
+    standards:
+      - {standard: CERT Resilience Management Model, version: v1.2, publisher: CMU SEI, literal: "CERT Resilience Management Model v1.2", check: {method: manual, url: "https://insights.sei.cmu.edu/library/cert-resilience-management-model-cert-rmm-collection/"}}
+  as9100d:
+    standards:
+      - {standard: SAE AS9100 (IAQG 9100), version: "9100:2016", publisher: SAE International / IAQG, literal: "SAE AS9100D (9100:2016)", check: {method: manual, url: "https://iaqg.org/", note: "successor IA9100 announced, no publication date"}}
+  c2m2:
+    standards:
+      - {standard: DOE C2M2, version: "2.1", publisher: US DOE, literal: "DOE C2M2 Version 2.1", check: {method: manual, url: "https://www.energy.gov/ceser/cybersecurity-capability-maturity-model-c2m2"}}
+
+  # ---------------------------------------------------------------- critical infrastructure / OT
+  nerc_cip:
+    note: per-standard versions; upstream CIP-003-9, CIP-012-2, CIP-015-2 not yet in the module (STANDARDS_UPDATE_REGISTRY.md)
+    standards:
+      - {standard: NERC CIP-002, version: CIP-002-5.1a, publisher: NERC, literal: "CIP-002-5.1a", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-003, version: CIP-003-8, publisher: NERC, literal: "CIP-003-8", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-004, version: CIP-004-6, publisher: NERC, literal: "CIP-004-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-005, version: CIP-005-7, publisher: NERC, literal: "CIP-005-7", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-006, version: CIP-006-6, publisher: NERC, literal: "CIP-006-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-007, version: CIP-007-6, publisher: NERC, literal: "CIP-007-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-008, version: CIP-008-6, publisher: NERC, literal: "CIP-008-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-009, version: CIP-009-6, publisher: NERC, literal: "CIP-009-6", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-010, version: CIP-010-4, publisher: NERC, literal: "CIP-010-4", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-011, version: CIP-011-3, publisher: NERC, literal: "CIP-011-3", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-012, version: CIP-012-1, publisher: NERC, literal: "CIP-012-1", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-013, version: CIP-013-2, publisher: NERC, literal: "CIP-013-2", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+      - {standard: NERC CIP-014, version: CIP-014-3, publisher: NERC, literal: "CIP-014-3", check: {method: manual, url: "https://www.nerc.com/pa/Stand/Pages/ReliabilityStandards.aspx"}}
+  iec_62443:
+    standards:
+      - {standard: IEC 62443-3-3 (and -2-1, -2-4, -3-2 references), version: unknown, publisher: IEC / ISA, check: {method: manual, url: "https://webstore.iec.ch/en/publication/7033", note: "module cites the parts but no edition year"}}
+
+  # ---------------------------------------------------------------- EU, UK and international
+  gdpr:
+    standards:
+      - {standard: GDPR Regulation (EU) 2016/679, version: 2016/679, publisher: EU, literal: "2016/679", check: {method: manual, url: "https://eur-lex.europa.eu/eli/reg/2016/679/oj"}}
+  eu_ai_act:
+    standards:
+      - {standard: EU AI Act Regulation (EU) 2024/1689 as amended by 2026/1744, version: 2026/1744, publisher: EU, literal: "2026/1744", check: {method: manual, url: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"}}
+  cra:
+    standards:
+      - {standard: EU Cyber Resilience Act Regulation (EU) 2024/2847, version: 2024/2847, publisher: EU, literal: "Regulation (EU) 2024/2847", check: {method: manual, url: "https://eur-lex.europa.eu/eli/reg/2024/2847/oj"}}
+  nis2:
+    standards:
+      - {standard: NIS2 Directive (EU) 2022/2555, version: 2022/2555, publisher: EU, literal: "Directive (EU) 2022/2555", check: {method: manual, url: "https://eur-lex.europa.eu/eli/dir/2022/2555/oj"}}
+  ncsc_caf:
+    standards:
+      - {standard: NCSC Cyber Assessment Framework, version: "4.0", publisher: UK NCSC, literal: "NCSC Cyber Assessment Framework 4.0", check: {method: page_regex, url: "https://www.ncsc.gov.uk/collection/cyber-assessment-framework", pattern: 'CAF (?:v|version )?(\d\.\d)'}}
+  cyber_essentials:
+    standards:
+      - {standard: UK Cyber Essentials requirements (question set), version: Willow, publisher: UK NCSC / IASME, literal: "Willow question set, effective April 2025", check: {method: manual, url: "https://www.ncsc.gov.uk/cyberessentials/overview", note: "question sets are tree-named (Montpellier, Willow, Danzell ...), released each April"}}
+  dcc:
+    standards:
+      - {standard: UK MoD DEF STAN 05-138, version: Issue 4, publisher: UK MoD DStan / IASME, literal: "DEF STAN 05-138 Issue 4", check: {method: manual, url: "https://www.gov.uk/government/publications/defence-cyber-certification"}}
+  uk_dpa_2018:
+    standards:
+      - {standard: UK Data Protection Act 2018, version: "2026-09-30", publisher: UK Parliament, literal: "revised to 2026-09-30", check: {method: manual, url: "https://www.legislation.gov.uk/ukpga/2018/12/contents"}}
+  bsi_c5:
+    standards:
+      - {standard: BSI C5 Cloud Computing Compliance Criteria Catalogue, version: "2026", publisher: BSI, literal: "BSI C5:2026", check: {method: page_regex, url: "https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Informationen-und-Empfehlungen/Empfehlungen-nach-Angriffszielen/Cloud-Computing/Kriterienkatalog-C5/kriterienkatalog-c5_node.html", pattern: 'C5:?(20\d\d)'}}
+  essential_eight:
+    standards:
+      - {standard: ACSC Essential Eight Maturity Model, version: Nov 2023, publisher: ASD ACSC, literal: "Essential Eight Maturity Model (Nov 2023)", check: {method: manual, url: "https://www.cyber.gov.au/resources-business-and-government/essential-cyber-security/essential-eight/essential-eight-maturity-model"}}
+  cert_in:
+    standards:
+      - {standard: CERT-In Directions under s.70B(6) IT Act, version: 28 April 2022, publisher: CERT-In / MeitY, literal: "(28 April 2022)", check: {method: manual, url: "https://www.cert-in.org.in/Directions70B.jsp"}}
+  dpdp_india:
+    standards:
+      - {standard: India DPDP Act 2023 and DPDP Rules 2025, version: Rules 2025, publisher: MeitY, literal: "DPDP Rules 2025", check: {method: manual, url: "https://www.meity.gov.in/data-protection-framework"}}
+  meti_csm:
+    standards:
+      - {standard: METI Cybersecurity Management Guidelines, version: Ver. 3.0, publisher: METI / IPA, literal: "METI Cybersecurity Management Guidelines Ver. 3.0", check: {method: manual, url: "https://www.meti.go.jp/policy/netsecurity/mng_guide.html"}}
+  ccpa:
+    standards:
+      - {standard: CCPA regulations (11 CCR) incl. 2025 CPPA package (ADMT, audits, risk assessments), version: current, publisher: California CPPA, literal: "11 CCR Article 11", check: {method: manual, url: "https://cppa.ca.gov/regulations/"}}
+  digital_sovereignty:
+    internal: true
+    note: AAC aggregator over sovereignty controls; no single upstream standard
+
+  # ---------------------------------------------------------------- AI, application security, platforms
+  owasp_llm:
+    standards:
+      - {standard: OWASP Top 10 for LLM Applications, version: "2026", publisher: OWASP GenAI Security Project, literal: "OWASP Top 10 for LLM Applications — 2026 edition", check: {method: manual, url: "https://genai.owasp.org/llm-top-10/"}}
+      - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.09, publisher: MITRE, literal: "atlas-data v2026.09", check: {method: github_release, repo: mitre-atlas/atlas-data}}
+  owasp_top10:
+    standards:
+      - {standard: OWASP Top 10, version: "2025", publisher: OWASP, literal: "OWASP Top 10:2025", check: {method: manual, url: "https://owasp.org/Top10/"}}
+  pss_kubernetes:
+    standards:
+      - {standard: Kubernetes Pod Security Standards, version: current, publisher: Kubernetes SIG Auth, literal: "Kubernetes Pod Security Standards", check: {method: manual, url: "https://kubernetes.io/docs/concepts/security/pod-security-standards/", note: "versionless page; field lists current as of 2026-09 per the module"}}
+  scuba_m365:
+    standards:
+      - {standard: CISA SCuBA Microsoft 365 baselines (ScubaGear), version: unknown, publisher: CISA, check: {method: github_release, repo: cisagov/ScubaGear, note: "policy ids are versioned one by one; the module pins no ScubaGear release, so any release is reported for review"}}
+  sap_abap_baseline:
+    standards:
+      - {standard: SAP Security Baseline Template (ABAP), version: v2.6, publisher: SAP, literal: "SAP Security Baseline Template v2.6", check: {method: manual, url: "https://support.sap.com/en/offerings-programs/support-services/security-optimization-services-portfolio/security-baseline-template.html"}}
+      - {standard: SAP-samples frun-csa-policies-best-practices (imported commit), version: 888f3c53, publisher: SAP, literal: "888f3c53", check: {method: github_commit, repo: SAP-samples/frun-csa-policies-best-practices}}
+  geisa:
+    standards:
+      - {standard: GEISA application manifest specification, version: unknown, publisher: GEISA, check: {method: none, note: "no public machine-readable release feed known"}}
+
+  # ---------------------------------------------------------------- supply chain
+  supply_chain_slsa:
+    standards:
+      - {standard: SLSA build track, version: v1.0, publisher: OpenSSF, literal: "SLSA v1.0", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
+  supply_chain_s2c2f:
+    standards:
+      - {standard: OpenSSF S2C2F, version: unknown, publisher: OpenSSF, check: {method: github_release, repo: ossf/s2c2f}}
+  supply_chain_scrm_800_161:
+    standards:
+      - {standard: NIST SP 800-161, version: r1, publisher: NIST, literal: "800-161r1", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final"}}
+  supply_chain_ssdf:
+    standards:
+      - {standard: NIST SP 800-218 SSDF (substrate mapping), version: unknown, publisher: NIST, check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/218/final", note: "the full SSDF module is nist_ssdf (v1.1)"}}
+  supply_chain_ssdf_genai:
+    standards:
+      - {standard: NIST SP 800-218A, version: unknown, publisher: NIST, check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/218/a/final"}}
+  supply_chain_baseline: {internal: true, note: AAC supply-chain spine}
+  supply_chain_coverage: {internal: true, note: AAC spine-coverage triage}
+  supply_chain_metrics: {internal: true, note: AAC cross-framework collapse metric}
+  supply_chain_substrate: {internal: true, note: AAC control substrate}
+
+  # ---------------------------------------------------------------- AAC-internal policy (no upstream standard)
+  ai: {internal: true, note: AAC AI governance policy}
+  corporate: {internal: true, note: AAC corporate policy examples}
+  crosswalk: {internal: true, note: framework inheritance overlay; source standards are tracked on their own keys}
+  crypto_mining: {internal: true, note: AAC threat detection}
+  enforcement_aap: {internal: true, note: AAC enforcement gate}
+  enforcement_ansible: {internal: true, note: AAC enforcement gate}
+  enforcement_cicd: {internal: true, note: AAC enforcement gate}
+  enforcement_dockerfile: {internal: true, note: AAC enforcement gate}
+  enforcement_kubernetes: {internal: true, note: AAC enforcement gate}
+  enforcement_provider: {internal: true, note: AAC enforcement gate}
+  enforcement_repo: {internal: true, note: AAC enforcement gate}
+  enforcement_terraform: {internal: true, note: AAC enforcement gate}
+  estate_continuity: {internal: true, note: AAC estate continuity}
+  exceptions: {internal: true, note: AAC waiver handling}
+  finops: {internal: true, note: tagging policy; FinOps Foundation framing only, no versioned standard}
+  mcp: {internal: true, note: AAC MCP governance; the CIS MCP benchmark is cis_mcp_server}
+  oidc: {internal: true, note: AAC token validation}
+  technical_debt: {internal: true, note: AAC debt scoring}
