@@ -113,7 +113,7 @@
    },
    "cis_m365_v7": {
     "label": "validated",
-    "evidence": "Run against a real M365 tenant in November 2026 with the AAC product collectors, results checked by hand; per-field fail-closed rework followed (CHANGELOG, CIS M365 v7).",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
     "modules": "benchmarks/cis/saas/m365_v7"
    },
    "cis_mcp_server": {
@@ -151,7 +151,7 @@
    },
    "cis_rhel9": {
     "label": "validated",
-    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors, results checked by hand (collector-driven fixes: CHANGELOG, CIS RHEL 9 'found while building the compliance collectors').",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors (collector-driven fixes: CHANGELOG, CIS RHEL 9 'found while building the compliance collectors').",
     "modules": "benchmarks/cis/rhel_9"
    },
    "cis_rocky_linux_8": {
@@ -208,7 +208,7 @@
    },
    "cis_windows_2022": {
     "label": "validated",
-    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors, results checked by hand.",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
     "modules": "benchmarks/cis/windows_server_2022_modular"
    },
    "cis_windows_server_2016": {
@@ -219,7 +219,7 @@
    },
    "cis_windows_server_2022": {
     "label": "validated",
-    "evidence": "Same module tree as cis_windows_2022. Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors, results checked by hand.",
+    "evidence": "Same module tree as cis_windows_2022. Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
     "modules": "benchmarks/cis/windows_server_2022_modular"
    },
    "cis_windows_server_2025": {
