@@ -31,6 +31,11 @@ STIGs ride a quarterly release cycle — see `STANDARDS_UPDATE_REGISTRY.md`.
 | `amazon_linux_2023` | V1R5, 30 Sep 2026 | 23 of 187 | `gen_linux.py`. |
 | `sles_15` | V2R9, 30 Sep 2026 | 27 of 220 | `gen_linux.py`. |
 
+Collector contract for the four `gen_rhel9.py` platforms (RHEL 9, RHEL 10, Oracle Linux 8 and 9):
+[`LINUX_COLLECTOR_CONTRACT.md`](LINUX_COLLECTOR_CONTRACT.md), every input fact path the rules read with its
+type, accepted forms, pass example and the rules that read it. Generated from the rule tables;
+`make check-generated` fails when it is stale.
+
 ## Windows platforms (October 2026 library, verified 2026-11-10)
 
 | Platform | STIG | Rules | How it was built |
