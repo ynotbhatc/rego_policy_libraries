@@ -88,6 +88,7 @@ violations contains msg if {
 
 # SR 6.1 RE 1 (SL 2+): Centralized audit log access
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.monitoring.centralized_log_collection
 	msg := sprintf(
@@ -97,6 +98,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.monitoring.automated_alerts_configured
 	msg := sprintf(
@@ -122,6 +124,7 @@ violations contains msg if {
 
 # SR 6.2 RE 1 (SL 2+): Automated monitoring with alert response
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not monitoring_at_most_or_least("mean_time_to_detect_hours", "max", 24)
 	msg := sprintf(
@@ -131,6 +134,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not monitoring_at_most_or_least("mean_time_to_respond_hours", "max", 4)
 	msg := sprintf(
@@ -141,6 +145,7 @@ violations contains msg if {
 
 # SR 6.2 RE 2 (SL 3+): ICS-specific SOC capability
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.monitoring.ics_specific_soc_capability
 	msg := sprintf(
@@ -151,6 +156,7 @@ violations contains msg if {
 
 # SR 6.2 RE 3 (SL 3+): Threat intelligence integration
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.monitoring.threat_intelligence_integrated
 	msg := sprintf(
@@ -160,6 +166,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 4
 	not input.monitoring.anomaly_detection_enabled
 	msg := sprintf(
@@ -171,6 +178,12 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 6 (TRE): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
+}
 
 compliant if count(violations) == 0
 

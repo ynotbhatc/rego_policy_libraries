@@ -88,6 +88,7 @@ violations contains msg if {
 
 # SR 2.1 RE 1 (SL 2+): Separate permission levels for different roles
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.authentication.role_based_access_control
 	msg := sprintf(
@@ -98,6 +99,7 @@ violations contains msg if {
 
 # SR 2.1 RE 2 (SL 3+): Dual approval for high-impact actions
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.authentication.dual_approval_for_critical_actions
 	msg := sprintf(
@@ -156,6 +158,7 @@ violations contains msg if {
 
 # SR 2.3 RE 1 (SL 2+): Central management of portable device authorizations
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.authentication.portable_device_central_mgmt
 	msg := sprintf(
@@ -180,6 +183,7 @@ violations contains msg if {
 
 # SR 2.4 RE 1 (SL 2+): Application whitelisting
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.application_whitelisting
@@ -205,6 +209,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not lock_timeout_within(system, 15)
@@ -244,6 +249,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	system.concurrent_session_limit == 0
@@ -254,12 +260,25 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
+	is_number(system.concurrent_session_limit)
 	system.concurrent_session_limit > 3
 	msg := sprintf(
 		"IEC 62443 SR 2.7 RE 1 SL%v (UC): ICS system '%v' allows up to %v concurrent sessions. Strict session limits (≤3) are recommended at Security Level 3+.",
 		[input.target_sl, system.name, system.concurrent_session_limit],
+	)
+}
+
+violations contains msg if {
+	is_number(input.target_sl)
+	input.target_sl >= 2
+	some system in input.ics_systems
+	not is_number(object.get(system, "concurrent_session_limit", null))
+	msg := sprintf(
+		"IEC 62443 SR 2.7 SL%v (UC): evidence missing - ICS system '%v' has no numeric concurrent_session_limit, so concurrent session control cannot be verified.",
+		[input.target_sl, object.get(system, "name", "<unnamed>")],
 	)
 }
 
@@ -289,6 +308,7 @@ violations contains msg if {
 
 # SR 2.8 RE 1 (SL 2+): Centralized audit log collection
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.monitoring.centralized_log_collection
 	msg := sprintf(
@@ -356,6 +376,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.non_repudiation_enabled
@@ -404,6 +425,12 @@ violations contains "IEC 62443 SR 2.8 (UC): evidence missing — input.ics_syste
 
 violations contains "IEC 62443 SR 2.12 (UC): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
 	count(object.get(input, "ics_systems", [])) == 0
+}
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 2 (UC): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
 }
 
 compliant if count(violations) == 0

@@ -78,6 +78,7 @@ violations contains msg if {
 
 # SR 3.1 RE 1 (SL 2+): Cryptographic integrity protection
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.cryptographic_integrity_protection
@@ -93,6 +94,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.malware_protection
@@ -115,6 +117,7 @@ violations contains msg if {
 
 # SR 3.2 RE 1 (SL 3+): Malware protection at all entry points
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.network.malware_protection_at_boundaries
 	msg := sprintf(
@@ -138,6 +141,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.security_management.security_testing_schedule_documented
 	msg := sprintf(
@@ -185,6 +189,7 @@ violations contains msg if {
 
 # SR 3.4 RE 1 (SL 2+): Automated integrity checking
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.automated_integrity_checking
@@ -261,6 +266,7 @@ violations contains msg if {
 
 # SR 3.8 RE 1 (SL 2+): Invalidate sessions on privilege change
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.session_invalidated_on_privilege_change
@@ -290,6 +296,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.monitoring.logs_sent_to_immutable_store
 	msg := sprintf(
@@ -333,6 +340,12 @@ violations contains "IEC 62443 SR 3.7 (SI): evidence missing — input.ics_syste
 
 violations contains "IEC 62443 SR 3.8 (SI): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
 	count(object.get(input, "ics_systems", [])) == 0
+}
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 3 (SI): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
 }
 
 compliant if count(violations) == 0

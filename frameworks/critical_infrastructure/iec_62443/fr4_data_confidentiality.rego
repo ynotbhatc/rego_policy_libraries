@@ -50,6 +50,7 @@ default compliant := false
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 
@@ -63,6 +64,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.data_at_rest_protected
@@ -74,6 +76,7 @@ violations contains msg if {
 
 # SR 4.1 RE 1 (SL 3+): Encryption of all IACS data in transit
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
 	not system.data_encrypted_in_transit
@@ -117,6 +120,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.secure_deletion_capability
@@ -150,6 +154,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
 	not system.fips_140_2_compliant

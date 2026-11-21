@@ -102,6 +102,7 @@ violations contains msg if {
 
 # SR 5.1 RE 1 (SL 2+): Independence of security zones
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	count(object.get(input, "zones", [])) < 3
 	msg := sprintf(
@@ -144,6 +145,7 @@ violations contains msg if {
 
 # IT/OT boundary requires unidirectional gateway at SL 3+
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some conduit in input.conduits
 	zone_class(conduit.source_zone) == "it"
@@ -162,6 +164,7 @@ violations contains msg if {
 
 # SR 5.2 RE 2 (SL 3+): Encrypted zone-to-zone communications
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some conduit in input.conduits
 	not conduit.encrypted
@@ -178,6 +181,7 @@ violations contains msg if {
 
 violations contains msg if {
 	some zone in input.zones
+	is_number(zone.security_level)
 	zone.security_level >= 2
 	zone.general_purpose_comms_unrestricted
 	msg := sprintf(
@@ -187,6 +191,17 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	some zone in input.zones
+	zone.general_purpose_comms_unrestricted
+	not is_number(object.get(zone, "security_level", null))
+	msg := sprintf(
+		"IEC 62443 SR 5.3 (RDF): evidence missing - zone '%v' permits unrestricted general-purpose communications and has no numeric security_level, so the restriction cannot be evaluated.",
+		[object.get(zone, "name", "<unnamed>")],
+	)
+}
+
+violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.network.general_purpose_comms_policy
 	msg := sprintf(
@@ -210,6 +225,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.virtualization_isolation
@@ -221,6 +237,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	some system in input.ics_systems
 	not system.dedicated_hardware
@@ -246,6 +263,12 @@ violations contains "IEC 62443 SR 5.4 (RDF): evidence missing — input.ics_syst
 
 violations contains "IEC 62443 SR 5.3 (RDF): evidence missing — input.network not collected, so this requirement cannot be verified" if {
 	not input.network
+}
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 5 (RDF): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
 }
 
 compliant if count(violations) == 0

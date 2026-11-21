@@ -184,11 +184,18 @@ violations contains msg if {
 violations contains msg if {
 	input.is_iacs_service_provider == true
 	input.service_provider.security_event_notification
+	is_number(input.service_provider.incident_notification_sla_hours)
 	input.service_provider.incident_notification_sla_hours > 24
 	msg := sprintf(
 		"IEC 62443-2-4 SP.09: Security event notification SLA is %v hours. Service providers must notify asset owners of critical security events within 24 hours; immediately for active incidents.",
 		[input.service_provider.incident_notification_sla_hours],
 	)
+}
+
+violations contains "IEC 62443-2-4 SP.09: evidence missing - input.service_provider.incident_notification_sla_hours is not a number" if {
+	input.is_iacs_service_provider == true
+	input.service_provider.security_event_notification
+	not is_number(object.get(input, ["service_provider", "incident_notification_sla_hours"], null))
 }
 
 # ---------------------------------------------------------------------------

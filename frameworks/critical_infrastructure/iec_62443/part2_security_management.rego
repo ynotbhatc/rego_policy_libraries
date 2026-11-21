@@ -72,11 +72,17 @@ violations contains msg if {
 
 violations contains msg if {
 	input.security_management.policy_approved
+	is_number(input.security_management.policy_review_cycle_months)
 	input.security_management.policy_review_cycle_months > 12
 	msg := sprintf(
 		"IEC 62443-2-1 (CSMS): IACS security policy is reviewed every %v months. Policy must be reviewed at least annually and after any significant incident or organizational change.",
 		[input.security_management.policy_review_cycle_months],
 	)
+}
+
+violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.policy_review_cycle_months is not a number" if {
+	input.security_management.policy_approved
+	not is_number(object.get(input, ["security_management", "policy_review_cycle_months"], null))
 }
 
 violations contains msg if {
@@ -100,11 +106,17 @@ violations contains msg if {
 
 violations contains msg if {
 	input.risk_assessment.conducted
+	is_number(input.risk_assessment.review_frequency_months)
 	input.risk_assessment.review_frequency_months > 24
 	msg := sprintf(
 		"IEC 62443-2-1 (CSMS): IACS risk assessment is reviewed every %v months. Risk assessments must be reviewed at least every 24 months or after significant system changes.",
 		[input.risk_assessment.review_frequency_months],
 	)
+}
+
+violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.risk_assessment.review_frequency_months is not a number" if {
+	input.risk_assessment.conducted
+	not is_number(object.get(input, ["risk_assessment", "review_frequency_months"], null))
 }
 
 violations contains msg if {
@@ -133,11 +145,17 @@ violations contains msg if {
 
 violations contains msg if {
 	input.security_management.security_awareness_training
+	is_number(input.security_management.training_frequency_months)
 	input.security_management.training_frequency_months > 12
 	msg := sprintf(
 		"IEC 62443-2-1 (CSMS): IACS security training is conducted every %v months. Training must be conducted at least annually.",
 		[input.security_management.training_frequency_months],
 	)
+}
+
+violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.training_frequency_months is not a number" if {
+	input.security_management.security_awareness_training
+	not is_number(object.get(input, ["security_management", "training_frequency_months"], null))
 }
 
 # ---------------------------------------------------------------------------
@@ -179,11 +197,17 @@ violations contains msg if {
 
 violations contains msg if {
 	input.security_management.csms_audit_conducted
+	is_number(input.security_management.csms_audit_frequency_months)
 	input.security_management.csms_audit_frequency_months > 24
 	msg := sprintf(
 		"IEC 62443-2-1 (CSMS): CSMS audits are conducted every %v months. Audits must be conducted at least every 24 months.",
 		[input.security_management.csms_audit_frequency_months],
 	)
+}
+
+violations contains "IEC 62443-2-1 (CSMS): evidence missing - input.security_management.csms_audit_frequency_months is not a number" if {
+	input.security_management.csms_audit_conducted
+	not is_number(object.get(input, ["security_management", "csms_audit_frequency_months"], null))
 }
 
 # ---------------------------------------------------------------------------
