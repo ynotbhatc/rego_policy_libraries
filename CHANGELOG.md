@@ -19,6 +19,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   ocredit rules pass at 0 or any negative value (only a positive or commented-out value is a finding), and
   ClientAliveInterval "600 or less" no longer treats 0 as a finding. Fixed in the generator tables; modules,
   tests, golden cases and the Linux collector contract regenerated.
+- STIG OpenShift 4 CNTR-OS-000400 follows DISA's V2R7 check text: only a ClientAliveInterval "> 600" (or missing)
+  is a finding, so 0 now passes. The module has no pwquality credit rules. Generator fixed, module regenerated, golden cases added.
 - CI runs every `examples/*/check.sh`; a monthly standards-watch workflow opens a "standards watch: YYYY-MM" issue
   when an upstream release is newer than `standards.yaml` or a source cannot be read.
 - examples/nist_800_53 supplies the AC-3(14) facts again; its pins match the 542-id module.

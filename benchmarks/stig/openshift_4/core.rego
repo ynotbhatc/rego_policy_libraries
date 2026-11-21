@@ -516,7 +516,6 @@ root_ssh_disabled_and_timeouts if {
 		_lower_eq(n.sshd_config.ClientAliveCountMax, "0")
 		is_string(n.sshd_config.ClientAliveInterval)
 		regex.match(`^[0-9]+$`, trim_space(n.sshd_config.ClientAliveInterval))
-		to_number(trim_space(n.sshd_config.ClientAliveInterval)) >= 1
 		to_number(trim_space(n.sshd_config.ClientAliveInterval)) <= 600
 	}
 	_virt_nonroot_ok
@@ -530,7 +529,7 @@ detail_cntr_os_000400 := "CNTR-OS-000400: Not_a_Finding" if root_ssh_disabled_an
 
 else := sprintf("%s: evidence missing — %s not collected", ["CNTR-OS-000400", concat(", ", missing_cntr_os_000400)]) if count(missing_cntr_os_000400) > 0
 
-else := "CNTR-OS-000400: check failed — on every node /etc/ssh/sshd_config must set PermitRootLogin no, ClientAliveCountMax 0 and ClientAliveInterval 1..600; with OpenShift Virtualization before 4.18 the hyperconverged featureGates.nonRoot must be true"
+else := "CNTR-OS-000400: check failed — on every node /etc/ssh/sshd_config must set PermitRootLogin no, ClientAliveCountMax 0 and ClientAliveInterval 600 or less; with OpenShift Virtualization before 4.18 the hyperconverged featureGates.nonRoot must be true"
 
 finding_cntr_os_000400 := {
 	"vuln_id": "V-257540",
