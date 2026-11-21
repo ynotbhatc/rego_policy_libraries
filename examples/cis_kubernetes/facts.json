@@ -1,0 +1,357 @@
+{
+ "cis_profile": {
+  "level": 2
+ },
+ "api_server": {
+  "audit_policy": {
+   "apiVersion": "audit.k8s.io/v1",
+   "kind": "Policy",
+   "rules": [
+    {
+     "level": "Metadata"
+    }
+   ]
+  },
+  "encryption_config": {
+   "resources": [
+    {
+     "providers": [
+      "aescbc",
+      "identity"
+     ],
+     "resources": [
+      "secrets"
+     ]
+    }
+   ]
+  },
+  "flags": {
+   "anonymous-auth": "false",
+   "audit-log-maxage": "30",
+   "audit-log-maxbackup": "10",
+   "audit-log-maxsize": "100",
+   "audit-log-path": "/var/log/kubernetes/audit.log",
+   "audit-policy-file": "/etc/kubernetes/audit-policy.yaml",
+   "authorization-mode": "Node,RBAC",
+   "client-ca-file": "/etc/kubernetes/pki/ca.crt",
+   "enable-admission-plugins": "NodeRestriction,EventRateLimit,AlwaysPullImages,DenyServiceExternalIPs",
+   "encryption-provider-config": "/etc/kubernetes/enc/config.yaml",
+   "etcd-cafile": "/etc/kubernetes/pki/etcd/ca.crt",
+   "etcd-certfile": "/etc/kubernetes/pki/apiserver-etcd-client.crt",
+   "etcd-keyfile": "/etc/kubernetes/pki/apiserver-etcd-client.key",
+   "kubelet-certificate-authority": "/etc/kubernetes/pki/ca.crt",
+   "kubelet-client-certificate": "/etc/kubernetes/pki/apiserver-kubelet-client.crt",
+   "kubelet-client-key": "/etc/kubernetes/pki/apiserver-kubelet-client.key",
+   "profiling": "true",
+   "service-account-extend-token-expiration": "false",
+   "service-account-key-file": "/etc/kubernetes/pki/sa.pub",
+   "service-account-lookup": "true",
+   "tls-cert-file": "/etc/kubernetes/pki/apiserver.crt",
+   "tls-cipher-suites": "TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+   "tls-private-key-file": "/etc/kubernetes/pki/apiserver.key"
+  }
+ },
+ "attest": {
+  "admission_capabilities_restricted": true,
+  "admission_host_ipc_restricted": true,
+  "admission_host_network_restricted": true,
+  "admission_host_path_restricted": true,
+  "admission_host_pid_restricted": true,
+  "admission_host_ports_restricted": true,
+  "admission_net_raw_restricted": true,
+  "admission_privilege_escalation_restricted": true,
+  "admission_privileged_restricted": true,
+  "admission_proc_mount_restricted": true,
+  "admission_root_containers_restricted": true,
+  "admission_windows_host_process_restricted": true,
+  "audit_policy_coverage_reviewed": true,
+  "bind_impersonate_escalate_reviewed": true,
+  "cluster_admin_bindings_reviewed": true,
+  "cni_enforces_network_policies": true,
+  "csr_approval_access_reviewed": true,
+  "external_secret_storage_reviewed": true,
+  "image_provenance_configured": true,
+  "kubelet_event_record_qps_reviewed": true,
+  "kubelet_fine_grained_access_reviewed": true,
+  "namespace_boundaries_reviewed": true,
+  "node_proxy_access_reviewed": true,
+  "persistent_volume_create_access_reviewed": true,
+  "pod_create_access_reviewed": true,
+  "pod_seccomp_profiles_reviewed": true,
+  "pod_security_contexts_reviewed": true,
+  "policy_control_mechanism_active": true,
+  "rbac_wildcards_reviewed": true,
+  "secret_access_reviewed": true,
+  "service_account_token_create_access_reviewed": true,
+  "service_account_token_mounts_reviewed": true,
+  "system_masters_not_used": true,
+  "users_no_bootstrap_token_auth": true,
+  "users_no_client_certificate_auth": true,
+  "users_no_service_account_token_auth": true,
+  "webhook_config_access_reviewed": true
+ },
+ "cluster": {
+  "namespace_resources": {
+   "default": [
+    "service/kubernetes"
+   ],
+   "payments": [
+    "deployment/checkout",
+    "service/checkout"
+   ]
+  }
+ },
+ "collection_status": {
+  "default_service_accounts": "ok",
+  "namespace_resources": "ok",
+  "network_policies": "ok",
+  "secret_env_scan": "ok"
+ },
+ "controller_manager": {
+  "flags": {
+   "bind-address": "127.0.0.1",
+   "profiling": "false",
+   "root-ca-file": "/etc/kubernetes/pki/ca.crt",
+   "service-account-private-key-file": "/etc/kubernetes/pki/sa.key",
+   "terminated-pod-gc-threshold": "1000",
+   "use-service-account-credentials": "true"
+  }
+ },
+ "etcd": {
+  "flags": {
+   "cert-file": "/etc/kubernetes/pki/etcd/server.crt",
+   "client-cert-auth": "true",
+   "data-dir": "/var/lib/etcd",
+   "key-file": "/etc/kubernetes/pki/etcd/server.key",
+   "peer-cert-file": "/etc/kubernetes/pki/etcd/peer.crt",
+   "peer-client-cert-auth": "true",
+   "peer-key-file": "/etc/kubernetes/pki/etcd/peer.key",
+   "trusted-ca-file": "/etc/kubernetes/pki/etcd/ca.crt"
+  }
+ },
+ "files": {
+  "cni": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/cni/net.d/10-calico.conflist"
+   }
+  ],
+  "control_plane_confs": [
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/admin.conf"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/scheduler.conf"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/controller-manager.conf"
+   },
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/super-admin.conf"
+   }
+  ],
+  "etcd_data": [
+   {
+    "group": "etcd",
+    "mode": "0700",
+    "owner": "etcd",
+    "path": "/var/lib/etcd"
+   },
+   {
+    "group": "etcd",
+    "mode": "0700",
+    "owner": "etcd",
+    "path": "/var/lib/etcd/member"
+   }
+  ],
+  "kube_proxy_kubeconfig": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/var/lib/kube-proxy/kubeconfig.conf"
+   }
+  ],
+  "kubelet_client_ca": [
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki/ca.crt"
+   }
+  ],
+  "kubelet_config_dir": [
+   {
+    "group": "root",
+    "mode": "0755",
+    "owner": "root",
+    "path": "/etc/kubernetes/kubelet.conf.d"
+   },
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/kubelet.conf.d/10-limits.conf"
+   }
+  ],
+  "kubelet_config_yaml": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/var/lib/kubelet/config.yaml"
+   }
+  ],
+  "kubelet_kubeconfig": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/kubelet.conf"
+   }
+  ],
+  "kubelet_service": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf"
+   }
+  ],
+  "manifests": [
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/manifests/kube-apiserver.yaml"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/manifests/kube-controller-manager.yaml"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/manifests/kube-scheduler.yaml"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/manifests/etcd.yaml"
+   }
+  ],
+  "pki": [
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki/ca.crt"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki/ca.key"
+   },
+   {
+    "group": "root",
+    "mode": "0755",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki"
+   },
+   {
+    "group": "root",
+    "mode": "0644",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki/apiserver.crt"
+   },
+   {
+    "group": "root",
+    "mode": "0600",
+    "owner": "root",
+    "path": "/etc/kubernetes/pki/apiserver.key"
+   }
+  ]
+ },
+ "kube_proxy": {
+  "config": {
+   "metricsBindAddress": "127.0.0.1:10249"
+  },
+  "flags": {
+   "config": "/var/lib/kube-proxy/config.conf"
+  },
+  "running": true
+ },
+ "kubelet": {
+  "config": {
+   "authentication": {
+    "anonymous": {
+     "enabled": false
+    },
+    "x509": {
+     "clientCAFile": "/etc/kubernetes/pki/ca.crt"
+    }
+   },
+   "authorization": {
+    "mode": "Webhook"
+   },
+   "makeIPTablesUtilChains": true,
+   "podPidsLimit": 4096,
+   "readOnlyPort": 10255,
+   "rotateCertificates": true,
+   "seccompDefault": true,
+   "serverTLSBootstrap": true,
+   "streamingConnectionIdleTimeout": "4h0m0s",
+   "tlsCertFile": "/var/lib/kubelet/pki/kubelet.crt",
+   "tlsCipherSuites": [
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+   ],
+   "tlsPrivateKeyFile": "/var/lib/kubelet/pki/kubelet.key"
+  },
+  "flags": {
+   "config": "/var/lib/kubelet/config.yaml",
+   "config-dir": "/etc/kubernetes/kubelet.conf.d",
+   "kubeconfig": "/etc/kubernetes/kubelet.conf"
+  }
+ },
+ "network_policies": {
+  "namespaces_without_policy": [
+   "payments"
+  ]
+ },
+ "secrets": {
+  "env_var_usage_count": 3
+ },
+ "service_accounts": {
+  "default": [
+   {
+    "automount_token": false,
+    "namespace": "default",
+    "role_bindings": []
+   },
+   {
+    "automount_token": false,
+    "namespace": "kube-system",
+    "role_bindings": []
+   }
+  ]
+ }
+}

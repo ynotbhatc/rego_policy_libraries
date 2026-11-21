@@ -1,0 +1,2224 @@
+{
+  "organization": {
+    "name": "Example Outfitters",
+    "cde_hosts": [
+      "pay01.example.com (192.0.2.30)",
+      "db01.example.com (192.0.2.31)"
+    ]
+  },
+  "pci": {
+    "secure_development": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      }
+    },
+    "sdlc": {
+      "documented": true,
+      "security_requirements": {
+        "defined": true
+      },
+      "security_integrated_at_all_phases": true,
+      "security_training": {
+        "required_for_developers": true
+      }
+    },
+    "developer_training": {
+      "secure_coding": {
+        "conducted": true
+      },
+      "records": {
+        "maintained": true
+      },
+      "frequency_months": 1
+    },
+    "testing": {
+      "preproduction": {
+        "performed": true
+      },
+      "production_data_not_used": true,
+      "test_accounts": {
+        "removed_before_production": true
+      },
+      "custom_application_accounts": {
+        "reviewed": true
+      }
+    },
+    "code_review": {
+      "performed": true,
+      "by_security_aware_personnel": true,
+      "all_code_changes_reviewed": true,
+      "vulnerabilities_corrected_before_release": true
+    },
+    "secure_coding": {
+      "injection": {
+        "techniques_defined_and_in_use": true
+      },
+      "sql_injection": {
+        "input_validation": true,
+        "parameterized_queries": true
+      },
+      "command_injection": {
+        "input_sanitization": true
+      },
+      "ldap_injection": {
+        "prevented": true
+      },
+      "xss": {
+        "techniques_defined_and_in_use": true,
+        "output_encoding": true,
+        "input_validation": true,
+        "csp_headers": {
+          "implemented": true
+        }
+      },
+      "authentication": {
+        "techniques_defined_and_in_use": true,
+        "secure_session_management": true,
+        "session_fixation": {
+          "prevented": true
+        },
+        "brute_force": {
+          "prevented": true
+        },
+        "mfa": {
+          "implemented": true
+        }
+      },
+      "memory": {
+        "techniques_defined_and_in_use": true,
+        "buffer_overflow": {
+          "prevented": true
+        },
+        "heap_spray": {
+          "mitigated": true
+        },
+        "secure_languages_preferred": true
+      },
+      "cryptography": {
+        "techniques_defined_and_in_use": true,
+        "weak_algorithms": {
+          "not_used": true
+        },
+        "approved_libraries": {
+          "used": true
+        },
+        "random_number_generation": {
+          "cryptographically_secure": true
+        }
+      }
+    },
+    "patch_management": {
+      "high_patches": {
+        "applied_within_30_days": true
+      },
+      "other_patches": {
+        "entity_defined_timeframe": {
+          "met": true
+        }
+      },
+      "process": {
+        "documented": true
+      },
+      "critical_patches": {
+        "applied_within_30_days": true
+      },
+      "testing": {
+        "required_before_deployment": true
+      },
+      "rollback": {
+        "procedures_defined": true
+      }
+    },
+    "vulnerability_management": {
+      "industry_sources": {
+        "monitored": true
+      },
+      "cve_tracking": {
+        "enabled": true
+      },
+      "nvd": {
+        "monitored": true
+      },
+      "risk_ranking": {
+        "assigned": true
+      }
+    },
+    "software_inventory": {
+      "bespoke": {
+        "documented": true
+      },
+      "third_party": {
+        "documented": true
+      }
+    },
+    "waf": {
+      "implemented": true,
+      "mode": {
+        "blocking": true
+      },
+      "rules": {
+        "pci_specific": true,
+        "owasp_crs": {
+          "enabled": true
+        }
+      },
+      "logging": {
+        "comprehensive": true
+      },
+      "monitoring": {
+        "real_time": true
+      }
+    },
+    "automated_detection": {
+      "waf_or_vapt": {
+        "implemented": true
+      },
+      "logging": {
+        "configured": true
+      },
+      "active_blocking": {
+        "enabled": true
+      },
+      "alerts": {
+        "immediately_investigated": true
+      }
+    },
+    "penetration_testing": {
+      "web_app": {
+        "performed": true,
+        "owasp_top10": {
+          "tested": true
+        },
+        "remediation": {
+          "tracked": true
+        },
+        "qualified_personnel": true,
+        "frequency_months": 1
+      }
+    },
+    "sast": {
+      "enabled": true,
+      "integrated_in_pipeline": true,
+      "critical_findings": {
+        "block_deployment": true
+      }
+    },
+    "dast": {
+      "enabled": true,
+      "run_against_staging": true
+    },
+    "sca": {
+      "enabled": true,
+      "third_party_components": {
+        "scanned": true
+      },
+      "known_vulnerabilities": {
+        "flagged": true
+      },
+      "license_compliance": {
+        "checked": true
+      }
+    },
+    "network_security": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true,
+        "documented": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      },
+      "maintenance": {
+        "scheduled": true,
+        "documented": true
+      },
+      "change_management": {
+        "implemented": true
+      },
+      "review_process": {
+        "established": true
+      },
+      "event_correlation": {
+        "enabled": true
+      },
+      "siem_integration": {
+        "configured": true
+      },
+      "threat_detection": {
+        "automated": true
+      },
+      "incident_response": {
+        "integrated": true
+      }
+    },
+    "firewalls": {
+      "configuration_standards": {
+        "documented": true,
+        "approved": true,
+        "implemented": true
+      },
+      "default_deny": {
+        "configured": true
+      },
+      "rules": {
+        "documented": true,
+        "business_justification": true,
+        "reviewed_regularly": true,
+        "approved_before_implementation": true
+      }
+    },
+    "network": {
+      "trusted_untrusted": {
+        "identified": true,
+        "controlled": true
+      },
+      "connections": {
+        "documented": true,
+        "justified": true
+      },
+      "nat": {
+        "implemented": true,
+        "hides_internal_addresses": true,
+        "documented": true,
+        "configured_securely": true
+      }
+    },
+    "cde": {
+      "inbound_traffic": {
+        "restricted": true,
+        "necessary_only": true,
+        "documented": true,
+        "authorized": true
+      },
+      "outbound_traffic": {
+        "restricted": true,
+        "necessary_only": true,
+        "documented": true,
+        "authorized": true
+      },
+      "direct_internet_access": {
+        "prohibited": true
+      },
+      "dmz": {
+        "implemented": true
+      },
+      "proxy_services": {
+        "configured": true
+      },
+      "internet_isolation": {
+        "enforced": true
+      },
+      "boundaries": {
+        "documented": true
+      },
+      "systems": {
+        "inventoried": true
+      },
+      "data_flows": {
+        "mapped": true
+      },
+      "network_diagram": {
+        "current": true
+      }
+    },
+    "network_segmentation": {
+      "implemented": true,
+      "cde_isolated": true,
+      "documented": true,
+      "validated": true
+    },
+    "dmz": {
+      "implemented": true,
+      "separates_untrusted_from_cde": true,
+      "controls_traffic_flow": true,
+      "monitored": true
+    },
+    "multi_tenant": {
+      "applicable": true,
+      "each_entity_isolated": true,
+      "cannot_access_others": true,
+      "documented": true
+    },
+    "network_monitoring": {
+      "traffic_analysis": {
+        "enabled": true
+      },
+      "intrusion_detection": {
+        "deployed": true
+      },
+      "anomaly_detection": {
+        "configured": true
+      },
+      "real_time_alerts": {
+        "enabled": true
+      }
+    },
+    "network_logging": {
+      "firewall_logs": {
+        "comprehensive": true
+      },
+      "access_attempts": {
+        "logged": true
+      },
+      "denied_connections": {
+        "logged": true
+      },
+      "centralized": {
+        "implemented": true
+      }
+    },
+    "logging": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      }
+    },
+    "audit_logs": {
+      "events": {
+        "user_access_to_chd": true,
+        "privileged_user_actions": true,
+        "invalid_logical_access_attempts": true,
+        "use_of_identification_mechanisms": true,
+        "initialization_of_audit_logs": true,
+        "deletion_of_audit_logs": true,
+        "system_object_creation_deletion": true
+      },
+      "data": {
+        "user_identification": true,
+        "event_type": true,
+        "date_and_time": true,
+        "success_or_failure": true,
+        "origination_of_event": true,
+        "identity_of_affected_data": true
+      },
+      "protection": {
+        "write_access_limited": true,
+        "backup": {
+          "promptly_backed_up": true
+        },
+        "centralized": {
+          "implemented": true
+        },
+        "immutable_storage": {
+          "enabled": true
+        },
+        "integrity": {
+          "checksums_or_hashing": true
+        }
+      },
+      "external_server": {
+        "implemented": true,
+        "separate_from_cde": true,
+        "write_only_from_cde": true
+      }
+    },
+    "log_review": {
+      "daily": {
+        "performed": true,
+        "all_security_events": true,
+        "privileged_component_logs": true,
+        "critical_system_logs": true,
+        "security_controls_logs": true
+      },
+      "automated": {
+        "enabled": true
+      },
+      "periodic": {
+        "performed": true,
+        "documented": true,
+        "frequency_days": 7,
+        "tra_defined_frequency_days": 7
+      },
+      "exceptions": {
+        "tracked": true,
+        "investigation": {
+          "timely": true
+        },
+        "remediation": {
+          "documented": true
+        }
+      }
+    },
+    "log_retention": {
+      "policy": {
+        "documented": true
+      },
+      "online_months": 1,
+      "total_months": 12
+    },
+    "time_sync": {
+      "ntp": {
+        "implemented": true
+      },
+      "authoritative_time_source": {
+        "used": true
+      },
+      "internal_servers": {
+        "synced_from_authoritative": true
+      },
+      "cde_systems": {
+        "synchronized": true
+      }
+    },
+    "time_data": {
+      "receiving": {
+        "only_from_designated_central_servers": true
+      },
+      "changes": {
+        "logged": true,
+        "alerts": {
+          "configured": true
+        }
+      }
+    },
+    "failure_detection": {
+      "security_controls_monitored": true,
+      "ids_ips": {
+        "monitoring": true
+      },
+      "fim": {
+        "monitoring": true
+      },
+      "antivirus": {
+        "monitoring": true
+      },
+      "physical_access": {
+        "monitoring": true
+      },
+      "logical_access": {
+        "monitoring": true
+      },
+      "audit_log": {
+        "monitoring": true
+      },
+      "network_security_controls": {
+        "monitoring": true
+      }
+    },
+    "failure_response": {
+      "alert": {
+        "immediate": true
+      },
+      "restore": {
+        "timely": true
+      },
+      "compensating_controls": {
+        "during_failure": true
+      },
+      "root_cause": {
+        "documented": true
+      }
+    },
+    "siem": {
+      "deployed": true,
+      "all_cde_sources": {
+        "integrated": true
+      },
+      "use_cases": {
+        "pci_specific": true
+      },
+      "threat_intelligence": {
+        "integrated": true
+      },
+      "tuned": {
+        "false_positives_managed": true
+      }
+    },
+    "data_protection": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true,
+        "documented": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      }
+    },
+    "data_inventory": {
+      "cardholder_data": {
+        "documented": true
+      },
+      "sensitive_auth_data": {
+        "documented": true
+      },
+      "locations": {
+        "identified": true
+      },
+      "data_flows": {
+        "mapped": true
+      }
+    },
+    "data_retention": {
+      "policy": {
+        "documented": true,
+        "business_justified": true,
+        "legal_requirements_met": true,
+        "regularly_reviewed": true
+      }
+    },
+    "data_purging": {
+      "automated": {
+        "implemented": true
+      },
+      "schedule": {
+        "defined": true
+      },
+      "verification": {
+        "conducted": true
+      },
+      "secure_deletion": {
+        "implemented": true
+      }
+    },
+    "sad_deletion": {
+      "post_authorization": {
+        "automated": true
+      },
+      "verification": {
+        "implemented": true
+      },
+      "logs": {
+        "maintained": true
+      },
+      "exceptions": {
+        "documented": true
+      }
+    },
+    "data_discovery": {
+      "quarterly": {
+        "conducted": true
+      },
+      "automated_tools": {
+        "used": true
+      },
+      "results": {
+        "documented": true
+      },
+      "remediation": {
+        "tracked": true
+      }
+    },
+    "sad_storage": {
+      "magnetic_stripe": {
+        "prohibited": true
+      },
+      "track_data": {
+        "prohibited": true
+      },
+      "track_equivalent": {
+        "prohibited": true
+      },
+      "cvc": {
+        "prohibited": true
+      },
+      "cvc2": {
+        "prohibited": true
+      },
+      "cvv2": {
+        "prohibited": true
+      },
+      "cid": {
+        "prohibited": true
+      },
+      "pin": {
+        "prohibited": true
+      },
+      "pin_blocks": {
+        "prohibited": true
+      },
+      "pin_verification": {
+        "prohibited": true
+      }
+    },
+    "pan_display": {
+      "restriction": {
+        "implemented": true
+      },
+      "business_need": {
+        "documented": true
+      },
+      "authorization": {
+        "required": true
+      },
+      "logging": {
+        "comprehensive": true
+      }
+    },
+    "pan_masking": {
+      "first_six_last_four": {
+        "maximum": true
+      },
+      "applications": {
+        "compliant": true
+      },
+      "reports": {
+        "implemented": true
+      },
+      "default": {
+        "enabled": true
+      }
+    },
+    "screen_protection": {
+      "automatic_timeout": {
+        "enabled": true
+      },
+      "shoulder_surfing": {
+        "prevented": true
+      },
+      "viewing_restrictions": {
+        "implemented": true
+      }
+    },
+    "pan_encryption": {
+      "strong_cryptography": {
+        "used": true
+      },
+      "aes_minimum": {
+        "compliant": true
+      },
+      "algorithm_approved": {
+        "implemented": true
+      },
+      "key_strength": {
+        "adequate": true
+      }
+    },
+    "database_encryption": {
+      "tablespace": {
+        "encrypted": true
+      },
+      "column_level": {
+        "implemented": true
+      },
+      "transparent_data_encryption": {
+        "enabled": true
+      },
+      "application_level": {
+        "implemented": true
+      }
+    },
+    "filesystem_encryption": {
+      "full_disk": {
+        "enabled": true
+      },
+      "file_level": {
+        "implemented": true
+      },
+      "removable_media": {
+        "required": true
+      },
+      "backup_media": {
+        "encrypted": true
+      }
+    },
+    "key_management": {
+      "policies": {
+        "documented": true,
+        "approved": true
+      },
+      "procedures": {
+        "defined": true
+      },
+      "lifecycle": {
+        "managed": true
+      },
+      "pan_transmission": {
+        "inventory_maintained": true,
+        "trusted_issuers_only": true,
+        "key_rotation": {
+          "documented": true
+        },
+        "compromise_procedures": {
+          "defined": true
+        }
+      }
+    },
+    "key_generation": {
+      "strong_methods": {
+        "used": true
+      },
+      "random_sources": {
+        "cryptographically_strong": true
+      },
+      "key_strength": {
+        "adequate": true
+      },
+      "algorithm_compliance": {
+        "verified": true
+      }
+    },
+    "key_distribution": {
+      "secure_channels": {
+        "used": true
+      },
+      "split_knowledge": {
+        "implemented": true
+      },
+      "dual_control": {
+        "enforced": true
+      },
+      "authorization": {
+        "required": true
+      }
+    },
+    "key_storage": {
+      "hsm": {
+        "used": true
+      },
+      "encrypted": {
+        "always": true
+      },
+      "access_controls": {
+        "strict": true
+      },
+      "separation": {
+        "from_data": true
+      }
+    },
+    "cryptography": {
+      "architecture": {
+        "documented": true
+      },
+      "algorithms": {
+        "approved": true
+      },
+      "protocols": {
+        "secure": true
+      },
+      "implementation": {
+        "validated": true
+      },
+      "tls": {
+        "tls_1_0": {
+          "disabled": true
+        },
+        "tls_1_1": {
+          "disabled": true
+        },
+        "weak_cipher_suites": {
+          "disabled": true
+        },
+        "strong_cipher_suites": {
+          "configured": true
+        },
+        "minimum_version": "1.2"
+      }
+    },
+    "crypto_admin": {
+      "procedures": {
+        "documented": true
+      },
+      "access_controls": {
+        "implemented": true
+      },
+      "change_management": {
+        "enforced": true
+      },
+      "monitoring": {
+        "comprehensive": true
+      }
+    },
+    "key_lifecycle": {
+      "generation": {
+        "secure": true
+      },
+      "distribution": {
+        "controlled": true
+      },
+      "rotation": {
+        "scheduled": true
+      },
+      "destruction": {
+        "secure": true
+      }
+    },
+    "transmission_security": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      }
+    },
+    "transmission": {
+      "pan": {
+        "strong_cryptography": true,
+        "trusted_keys_certificates": true,
+        "open_public_networks_encrypted": true
+      }
+    },
+    "certificates": {
+      "trusted_ca": {
+        "used": true
+      },
+      "validity": {
+        "monitored": true
+      },
+      "expiry": {
+        "alerts_configured": true
+      },
+      "revocation": {
+        "checked": true
+      },
+      "wildcard": {
+        "usage_justified": true
+      }
+    },
+    "ecommerce": {
+      "payment_pages": {
+        "tls_enforced": true,
+        "https_only": true,
+        "hsts_enabled": true,
+        "mixed_content": {
+          "blocked": true
+        },
+        "integrity_monitoring": true,
+        "change_detection": {
+          "implemented": true,
+          "tra_frequency_met": true,
+          "frequency_days": 1
+        },
+        "script_inventory": {
+          "maintained": false
+        },
+        "alerts": {
+          "configured": true
+        },
+        "in_scope": true
+      },
+      "in_scope": true
+    },
+    "pos": {
+      "terminals": {
+        "point_to_point_encryption": true,
+        "p2pe_solution": {
+          "validated": true
+        },
+        "terminal_management": {
+          "secure": true
+        }
+      },
+      "in_scope": false
+    },
+    "api": {
+      "tls_required": true,
+      "certificate_pinning": {
+        "implemented": true
+      },
+      "payload": {
+        "pan_not_in_url": true,
+        "pan_not_in_logs": true
+      },
+      "minimum_tls_version": "1.2"
+    },
+    "wireless": {
+      "pan_transmission": {
+        "strong_cryptography": true,
+        "wpa3_or_wpa2_enterprise": true,
+        "aes_encryption": true
+      },
+      "authorized_access_points": {
+        "inventoried": true
+      },
+      "rogue_detection": {
+        "implemented": true,
+        "frequency_days": 1
+      },
+      "unauthorized_access_points": {
+        "alerts": {
+          "configured": true
+        },
+        "response": {
+          "documented": true
+        }
+      },
+      "default_settings": {
+        "changed": true
+      },
+      "wpa3_or_wpa2": {
+        "enabled": true
+      },
+      "wep": {
+        "disabled": true
+      },
+      "ssid": {
+        "default_changed": true,
+        "cde_ssid_not_broadcast": true
+      },
+      "in_scope_for_cde": false,
+      "transmits_pan": false
+    },
+    "messaging": {
+      "pan_transmission": {
+        "prohibited": true,
+        "dlp_controls": {
+          "implemented": true
+        },
+        "policy": {
+          "documented": true
+        }
+      }
+    },
+    "weak_protocols": {
+      "inventory": {
+        "maintained": true
+      },
+      "ssl": {
+        "disabled": true
+      },
+      "tls_1_0": {
+        "disabled": true
+      },
+      "tls_1_1": {
+        "disabled": true
+      },
+      "early_tls": {
+        "migration_plan": {
+          "completed": true
+        }
+      }
+    },
+    "authentication": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      }
+    },
+    "user_ids": {
+      "shared_accounts": {
+        "prohibited": true
+      },
+      "generic_accounts": {
+        "prohibited_in_cde": true
+      },
+      "group_accounts": {
+        "prohibited": true
+      },
+      "shared_generic_group": {
+        "exception_basis_managed": true
+      },
+      "unique_per_user": true
+    },
+    "account_lifecycle": {
+      "provisioning": {
+        "approval_required": true
+      },
+      "modification": {
+        "approval_required": true
+      },
+      "termination": {
+        "immediate_revocation": true
+      },
+      "inactive_accounts": {
+        "disabled_after_90_days": true
+      }
+    },
+    "vendor_accounts": {
+      "disabled_when_not_in_use": true,
+      "monitored_when_active": true,
+      "time_limited": true
+    },
+    "sessions": {
+      "reauthentication_required": true,
+      "idle_timeout_minutes": 1
+    },
+    "passwords": {
+      "lockout": {
+        "until_identity_confirmed": true,
+        "after_attempts": 1,
+        "duration_minutes": 30
+      },
+      "numeric_and_alpha": {
+        "required": true
+      },
+      "dynamic_posture_analysis": {
+        "implemented": true
+      },
+      "single_factor_only": true,
+      "first_use": {
+        "change_required": true
+      },
+      "reset": {
+        "immediate_change_required": true
+      },
+      "temporary": {
+        "single_use": true
+      },
+      "max_age_days": 1,
+      "history": {
+        "count": 4
+      },
+      "minimum_length": 8
+    },
+    "entity": {
+      "service_provider": false
+    },
+    "auth_factors": {
+      "service_providers": {
+        "different_from_customers": true
+      },
+      "stored": {
+        "encrypted": true
+      },
+      "transmission": {
+        "encrypted": true
+      }
+    },
+    "mfa": {
+      "cde_admin_access": {
+        "required": true
+      },
+      "non_console_admin": {
+        "required": true
+      },
+      "factors": {
+        "at_least_two": true,
+        "different_categories": true,
+        "cannot_be_same_type": true
+      },
+      "remote_access": {
+        "required": true
+      },
+      "all_cde_access": {
+        "required": true
+      },
+      "user_cde_access": {
+        "enforced": true
+      },
+      "replay_attacks": {
+        "prevented": true
+      },
+      "bypass": {
+        "not_possible_by_any_single_admin": true
+      },
+      "all_factors_required": true,
+      "vpn": {
+        "mfa_enforced": true
+      },
+      "remote_desktop": {
+        "in_use": false
+      }
+    },
+    "system_accounts": {
+      "credentials": {
+        "in_vault": true,
+        "not_hard_coded": true,
+        "rotation": {
+          "automated": true,
+          "tra_frequency_met": true
+        }
+      },
+      "interactive_use": {
+        "prohibited_unless_exceptional": true
+      },
+      "authentication": {
+        "managed": true
+      },
+      "review": {
+        "performed_periodically": true,
+        "annually": true
+      },
+      "inventory": {
+        "maintained": true
+      },
+      "access": {
+        "limited_to_functions_needed": true
+      },
+      "interactive_login": {
+        "disabled_unless_needed": true
+      }
+    },
+    "access_control": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      }
+    },
+    "access_model": {
+      "least_privilege": {
+        "implemented": true
+      },
+      "need_to_know": {
+        "enforced": true
+      },
+      "default_deny": {
+        "configured": true
+      },
+      "access_rules": {
+        "documented": true
+      }
+    },
+    "rbac": {
+      "enabled": true,
+      "roles": {
+        "defined": true,
+        "cde_access": {
+          "restricted": true
+        }
+      },
+      "privilege_assignment": {
+        "approved": true
+      },
+      "conflicting_duties": {
+        "prevented": true
+      }
+    },
+    "access_assignment": {
+      "job_functions": {
+        "documented": true
+      },
+      "access_required": {
+        "justified": true
+      },
+      "approval_required": true,
+      "manager_approval": true
+    },
+    "privileged_access": {
+      "inventory": {
+        "maintained": true
+      },
+      "assignment": {
+        "approved": true
+      },
+      "separation_from_normal": {
+        "enforced": true
+      },
+      "just_in_time": {
+        "available": true
+      },
+      "monitoring": {
+        "enabled": true
+      }
+    },
+    "third_party_access": {
+      "inventory": {
+        "maintained": true
+      },
+      "need_to_know": {
+        "enforced": true
+      },
+      "time_limited": true,
+      "mfa": {
+        "required": true
+      },
+      "monitoring": {
+        "enabled": true
+      }
+    },
+    "access_review": {
+      "performed": true,
+      "all_accounts": {
+        "included": true
+      },
+      "results": {
+        "documented": true
+      },
+      "inappropriate_access": {
+        "removed": true
+      },
+      "frequency_months": 1
+    },
+    "acs": {
+      "implemented": true,
+      "all_cde_system_components": {
+        "covered": true
+      },
+      "default_deny": {
+        "configured": true
+      },
+      "settings": {
+        "restriction_unless_specifically_allowed": true
+      }
+    },
+    "security_policy": {
+      "documented": true,
+      "approved_by_management": true,
+      "published": true,
+      "communicated_to_all_users": true,
+      "reviewed_annually": true,
+      "updated_when_environment_changes": true
+    },
+    "security_roles": {
+      "ciso_or_equivalent": {
+        "assigned": true
+      },
+      "responsibilities": {
+        "documented": true
+      },
+      "accountability": {
+        "established": true
+      },
+      "executive_management": {
+        "accountability": true
+      }
+    },
+    "aup": {
+      "documented": true,
+      "approved": true,
+      "explicit_approval_required": true,
+      "updated_annually": true,
+      "covers": {
+        "technologies": true,
+        "cardholder_data": true,
+        "internet_usage": true,
+        "removable_media": true
+      }
+    },
+    "risk_management": {
+      "annual_risk_assessment": {
+        "performed": true
+      },
+      "methodology": {
+        "documented": true
+      },
+      "risk_register": {
+        "maintained": true
+      },
+      "treatment_plans": {
+        "documented": true
+      },
+      "management_review": {
+        "conducted": true
+      },
+      "threats_vulnerabilities": {
+        "considered": true
+      },
+      "residual_risk": {
+        "accepted_by_management": true
+      }
+    },
+    "targeted_risk_analysis": {
+      "performed": true,
+      "frequency": {
+        "defined": true
+      },
+      "documents": {
+        "what_is_being_protected": true,
+        "threat_actors": true,
+        "likelihood_and_impact": true
+      }
+    },
+    "technology_review": {
+      "hardware": {
+        "annual": true
+      },
+      "software": {
+        "annual": true
+      },
+      "end_of_life": {
+        "identified": true,
+        "plan": {
+          "documented": true
+        }
+      }
+    },
+    "compliance_management": {
+      "executive_responsibility": {
+        "established": true
+      },
+      "charter": {
+        "defined": true
+      },
+      "quarterly_review": {
+        "performed": true
+      },
+      "review": {
+        "operational_security_controls": true,
+        "failures_reviewed": true
+      }
+    },
+    "responsibilities": {
+      "all_activities": {
+        "assigned": true
+      },
+      "documented": true,
+      "communicated": true
+    },
+    "scope": {
+      "cde": {
+        "documented": true
+      },
+      "all_system_components": {
+        "identified": true
+      },
+      "connected_systems": {
+        "identified": true
+      },
+      "network_diagrams": {
+        "current": true
+      },
+      "data_flow_diagrams": {
+        "current": true
+      },
+      "validation": {
+        "annual": true,
+        "after_significant_changes": true
+      }
+    },
+    "pan_locations": {
+      "all_identified": true,
+      "storage": {
+        "verified_limited": true
+      },
+      "review": {
+        "annual": true
+      }
+    },
+    "security_awareness": {
+      "program": {
+        "implemented": true
+      },
+      "new_hires": {
+        "training_upon_hire": true
+      },
+      "frequency": {
+        "at_least_annually": true
+      },
+      "topics": {
+        "security_policies": true,
+        "phishing": true,
+        "cardholder_data_handling": true
+      },
+      "completion": {
+        "tracked": true
+      },
+      "acknowledgment": {
+        "required": true
+      }
+    },
+    "targeted_training": {
+      "high_risk_roles": {
+        "identified": true
+      },
+      "additional_training": {
+        "provided": true
+      },
+      "completion": {
+        "tracked": true
+      }
+    },
+    "personnel_screening": {
+      "background_checks": {
+        "conducted": true
+      },
+      "before_access": {
+        "to_cde": true
+      },
+      "local_laws": {
+        "complied_with": true
+      }
+    },
+    "third_party": {
+      "inventory": {
+        "maintained": true,
+        "pci_impact": {
+          "documented": true
+        }
+      },
+      "due_diligence": {
+        "conducted": true
+      },
+      "agreements": {
+        "include_pci_compliance": true,
+        "security_requirements": true
+      },
+      "monitoring": {
+        "program": true
+      },
+      "compliance_status": {
+        "tracked": true
+      },
+      "acknowledgment": {
+        "pci_compliance_responsibility": true,
+        "documented": true
+      }
+    },
+    "tpsp": {
+      "list": {
+        "maintained": true
+      },
+      "compliance": {
+        "pci_dss_compliant": true
+      },
+      "responsibilities": {
+        "documented": true
+      },
+      "aoc": {
+        "obtained": true
+      }
+    },
+    "incident_response": {
+      "plan": {
+        "documented": true,
+        "approved": true,
+        "tested": {
+          "annual": true
+        }
+      },
+      "roles": {
+        "designated": true
+      },
+      "training": {
+        "conducted": true
+      },
+      "monitoring": {
+        "for_alerts": true
+      },
+      "alerts": {
+        "addressed_timely": true
+      },
+      "scenarios": {
+        "chd_compromise": true,
+        "system_compromise": true,
+        "phishing_attack": true,
+        "insider_threat": true,
+        "ransomware": true
+      },
+      "communication": {
+        "card_brands": {
+          "notification_procedures": true
+        },
+        "acquirer": {
+          "notification_procedures": true
+        },
+        "legal": {
+          "counsel_included": true
+        },
+        "pr": {
+          "procedures_defined": true
+        }
+      }
+    },
+    "forensic_readiness": {
+      "evidence_preservation": {
+        "procedures": true
+      },
+      "forensic_firm": {
+        "on_retainer": true
+      },
+      "chain_of_custody": {
+        "procedures": true
+      }
+    },
+    "security_testing": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      }
+    },
+    "vuln_scanning": {
+      "internal": {
+        "performed": true,
+        "qualified_personnel": true,
+        "after_significant_changes": true,
+        "high_and_critical": {
+          "remediated": true
+        },
+        "rescans": {
+          "performed": true
+        },
+        "authenticated": {
+          "scan_accounts": {
+            "managed_per_8_2_2": true
+          },
+          "performed": true,
+          "non_credentialed_systems_documented": true,
+          "sufficient_privileges": true
+        },
+        "frequency_days": 120
+      },
+      "external": {
+        "performed": true,
+        "asv": {
+          "approved": true
+        },
+        "passing_scan": {
+          "achieved": true
+        },
+        "after_significant_changes": true,
+        "frequency_days": 1
+      }
+    },
+    "vuln_remediation": {
+      "medium": {
+        "risk_based_timeline": true
+      },
+      "tracking": {
+        "implemented": true
+      },
+      "verification": {
+        "rescan_after_fix": true
+      },
+      "critical": {
+        "resolved": true
+      },
+      "high": {
+        "resolved": true
+      }
+    },
+    "pen_testing": {
+      "performed": true,
+      "after_significant_infrastructure_changes": true,
+      "qualified": {
+        "independent_tester": true
+      },
+      "scope": {
+        "network_layer": true,
+        "application_layer": true,
+        "includes_cde_perimeter": true,
+        "includes_critical_systems": true
+      },
+      "exploitable_vulnerabilities": {
+        "corrected": true
+      },
+      "retesting": {
+        "performed_after_fixes": true
+      },
+      "results": {
+        "retained": true
+      },
+      "frequency_months": 1
+    },
+    "segmentation_testing": {
+      "performed": true,
+      "penetration_testing_method": true,
+      "confirms_isolation": true,
+      "after_segmentation_changes": true,
+      "frequency_months": 1
+    },
+    "ids_ips": {
+      "deployed": true,
+      "coverage": {
+        "all_cde_network_traffic": true
+      },
+      "signatures": {
+        "current": true
+      },
+      "alerts": {
+        "configured": true
+      },
+      "personnel": {
+        "responds_to_alerts": true
+      }
+    },
+    "fim": {
+      "deployed": true,
+      "critical_files": {
+        "covered": true,
+        "monitored": true
+      },
+      "os_files": {
+        "covered": true,
+        "monitored": true
+      },
+      "application_files": {
+        "covered": true,
+        "monitored": true
+      },
+      "configuration_files": {
+        "covered": true
+      },
+      "alerts": {
+        "immediate": true,
+        "real_time": true
+      },
+      "comparison": {
+        "against_baseline": true
+      },
+      "enabled": true,
+      "baseline": {
+        "established": true
+      },
+      "changes": {
+        "reviewed": true
+      },
+      "frequency_days": 1
+    },
+    "system_hardening": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      },
+      "configuration_standards": {
+        "documented": true,
+        "applied_to_all_systems": true,
+        "reviewed_after_vendor_updates": true
+      }
+    },
+    "hardening": {
+      "default_credentials": {
+        "changed": true,
+        "verified_on_new_systems": true,
+        "vendor_supplied_removed": true
+      },
+      "unnecessary_services": {
+        "removed": true
+      },
+      "unnecessary_protocols": {
+        "disabled": true
+      },
+      "unnecessary_ports": {
+        "closed": true
+      },
+      "unnecessary_functions": {
+        "disabled": true
+      },
+      "unnecessary_scripts": {
+        "removed": true
+      },
+      "server_roles": {
+        "single_primary_function": true,
+        "documented": true,
+        "justified": true
+      },
+      "security_patches": {
+        "current": true,
+        "applied_within_one_month": true
+      },
+      "vulnerability_management": {
+        "implemented": true
+      },
+      "standards": {
+        "industry_accepted": true,
+        "cis_benchmarks_referenced": true,
+        "applied_to_all_component_types": true,
+        "regularly_reviewed": true
+      },
+      "os": {
+        "unnecessary_services_disabled": true,
+        "host_based_firewall_enabled": true,
+        "unnecessary_users_removed": true,
+        "file_permissions_restricted": true,
+        "logging_enabled": true
+      },
+      "database": {
+        "default_accounts_disabled": true,
+        "unnecessary_procedures_removed": true,
+        "access_restricted": true,
+        "audit_logging_enabled": true
+      },
+      "network_devices": {
+        "default_passwords_changed": true,
+        "unnecessary_services_disabled": true,
+        "management_access_restricted": true,
+        "snmp_v3_configured": true,
+        "firmware_current": true
+      }
+    },
+    "admin_access": {
+      "non_console": {
+        "encrypted": true,
+        "strong_cryptography": true,
+        "telnet_disabled": true,
+        "ftp_disabled": true,
+        "ssh_v2_only": true,
+        "tls_enforced": true
+      }
+    },
+    "malware_protection": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      },
+      "accountability": {
+        "established": true
+      },
+      "risk_evaluation": {
+        "documented": true,
+        "methodology": {
+          "defined": true
+        },
+        "frequency_days": 180,
+        "tra_defined_frequency_days": 365
+      }
+    },
+    "antimalware": {
+      "deployed": true,
+      "coverage": {
+        "all_cde_systems": true,
+        "servers": true,
+        "workstations": true,
+        "mobile_devices": true
+      },
+      "signatures": {
+        "current": true
+      },
+      "definitions": {
+        "automatic_updates": true
+      },
+      "engine": {
+        "up_to_date": true
+      },
+      "realtime_scanning": {
+        "enabled": true
+      },
+      "on_access_scanning": {
+        "enabled": true
+      },
+      "scheduled_scans": {
+        "configured": true
+      },
+      "behavioral_analysis": {
+        "continuous": true
+      },
+      "automatic_updates": {
+        "enabled": true
+      },
+      "logging": {
+        "enabled": true,
+        "retention_months": 12,
+        "retention_days": 365
+      },
+      "tamper_protection": {
+        "enabled": true,
+        "admin_only": true
+      },
+      "user_disabling": {
+        "prevented": true
+      },
+      "configuration": {
+        "centrally_managed": true
+      }
+    },
+    "antiphishing": {
+      "email_filtering": {
+        "enabled": true
+      },
+      "automated_mechanisms": {
+        "in_place": true
+      },
+      "user_training": {
+        "conducted": true
+      },
+      "processes": {
+        "in_place": true
+      }
+    },
+    "edr": {
+      "deployed": true,
+      "coverage": {
+        "cde_systems": true
+      },
+      "behavioral_detection": {
+        "enabled": true
+      },
+      "threat_hunting": {
+        "available": true
+      },
+      "incident_response": {
+        "integrated": true
+      },
+      "centralized_management": {
+        "enabled": true
+      }
+    },
+    "physical_security": {
+      "policies": {
+        "documented": true,
+        "approved": true,
+        "current": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "responsibilities": {
+        "assigned": true
+      }
+    },
+    "physical_access": {
+      "sensitive_areas": {
+        "access_controls_implemented": true,
+        "entry_logs": {
+          "maintained": true
+        },
+        "cameras": {
+          "installed": true,
+          "footage_retained_days": 90
+        },
+        "access_control_mechanisms": {
+          "monitor_entry_exit": true,
+          "data_retained_days": 90
+        }
+      },
+      "authorization": {
+        "documented": true,
+        "approval_required": true,
+        "regularly_reviewed": true,
+        "access_list": {
+          "current": true
+        }
+      }
+    },
+    "badge_system": {
+      "implemented": true,
+      "unique_per_individual": true,
+      "lost_badges": {
+        "revoked_immediately": true
+      },
+      "terminated_employees": {
+        "revoked_immediately": true
+      }
+    },
+    "network_access": {
+      "public_area_jacks": {
+        "disabled": true
+      },
+      "public_area_wireless": {
+        "restricted": true
+      }
+    },
+    "visitors": {
+      "identification": {
+        "required": true
+      },
+      "badge": {
+        "temporary_issued": true,
+        "visually_distinguishable": true,
+        "surrendered_on_departure": true
+      },
+      "escort": {
+        "required_in_sensitive_areas": true
+      },
+      "log": {
+        "maintained": true,
+        "retention_months": 3
+      }
+    },
+    "media": {
+      "inventory": {
+        "maintained": true
+      },
+      "storage": {
+        "physically_secured": true
+      },
+      "access": {
+        "restricted_to_authorized": true
+      },
+      "external_distribution": {
+        "management_approval": true,
+        "logged": true
+      },
+      "distribution": {
+        "tracking_implemented": true,
+        "secured_courier": true,
+        "management_approval_required": true,
+        "encrypted": true
+      },
+      "destruction": {
+        "secure_process": true,
+        "certificates_obtained": true,
+        "cross_cut_shredding_or_equivalent": true,
+        "log": {
+          "maintained": true
+        },
+        "third_party": {
+          "verified": true
+        }
+      }
+    },
+    "disk": {
+      "destruction": {
+        "dod_or_nist_wipe": true,
+        "cryptographic_erasure_acceptable": true,
+        "physical_destruction": {
+          "when_cryptographic_not_possible": true
+        },
+        "documented": true
+      }
+    },
+    "poi_devices": {
+      "inventory": {
+        "maintained": true
+      },
+      "inspection": {
+        "periodic": true
+      },
+      "tampering": {
+        "training_for_personnel": true
+      },
+      "serial_numbers": {
+        "verified": true
+      },
+      "substitution": {
+        "procedures_for_detecting": true
+      },
+      "in_scope": false
+    },
+    "program": {
+      "policies": {
+        "established": true
+      },
+      "roles": {
+        "defined": true
+      },
+      "training": {
+        "conducted": true
+      },
+      "documentation": {
+        "maintained": true
+      },
+      "risk_assessment": {
+        "performed_annually": true
+      }
+    },
+    "public_web_apps": {
+      "in_scope": true
+    },
+    "transaction_volume": {
+      "annual": 1500000
+    }
+  },
+  "openshift": {
+    "network_policies": {
+      "cde_isolation": {
+        "enabled": true
+      },
+      "default_deny": {
+        "configured": true
+      },
+      "ingress_rules": {
+        "restrictive": true
+      },
+      "egress_rules": {
+        "restrictive": true
+      }
+    },
+    "service_mesh": {
+      "enabled": true,
+      "mutual_tls": {
+        "enforced": true
+      },
+      "traffic_policies": {
+        "pci_compliant": true
+      },
+      "access_control": {
+        "implemented": true
+      }
+    },
+    "containers": {
+      "network_isolation": {
+        "enabled": true
+      },
+      "pod_security": {
+        "network_restricted": true
+      },
+      "namespace_isolation": {
+        "cde_separated": true
+      },
+      "data_encryption": {
+        "persistent_volumes": true,
+        "ephemeral_storage": true,
+        "container_images": true,
+        "application_layer": true
+      }
+    },
+    "sdn": {
+      "network_policy": {
+        "enabled": true
+      },
+      "multitenant": {
+        "configured": true
+      },
+      "subnet_isolation": {
+        "enabled": true
+      },
+      "ingress_controllers": {
+        "secured": true
+      }
+    },
+    "secrets": {
+      "external_vault": {
+        "integrated": true
+      },
+      "encryption_at_rest": {
+        "enabled": true
+      },
+      "rotation": {
+        "automated": true
+      },
+      "access_control": {
+        "rbac": true
+      }
+    },
+    "storage": {
+      "csi_encryption": {
+        "enabled": true
+      },
+      "storage_classes": {
+        "encrypted": true
+      },
+      "volume_encryption": {
+        "automatic": true
+      },
+      "backup_encryption": {
+        "enabled": true
+      }
+    },
+    "registry": {
+      "image_encryption": {
+        "enabled": true
+      },
+      "vulnerability_scanning": {
+        "comprehensive": true
+      },
+      "image_signing": {
+        "required": true
+      },
+      "access_controls": {
+        "strict": true
+      }
+    }
+  },
+  "cloud": {
+    "security_groups": {
+      "cde_specific": true,
+      "least_privilege": true,
+      "regularly_reviewed": true,
+      "documented": true
+    },
+    "vpc": {
+      "cde_dedicated": true,
+      "private_subnets": {
+        "cde_isolated": true
+      },
+      "nat_gateways": {
+        "configured": true
+      },
+      "flow_logs": {
+        "enabled": true
+      }
+    },
+    "waf": {
+      "enabled": true,
+      "rules": {
+        "pci_specific": true
+      },
+      "logging": {
+        "comprehensive": true
+      },
+      "monitoring": {
+        "real_time": true
+      }
+    },
+    "encryption": {
+      "kms": {
+        "integrated": true
+      },
+      "customer_managed_keys": {
+        "used": true
+      },
+      "hsm": {
+        "available": true
+      },
+      "key_rotation": {
+        "automated": true
+      }
+    },
+    "databases": {
+      "encryption_at_rest": {
+        "enabled": true
+      },
+      "transparent_data_encryption": {
+        "configured": true
+      },
+      "backup_encryption": {
+        "enabled": true
+      },
+      "key_management": {
+        "integrated": true
+      }
+    },
+    "storage": {
+      "server_side_encryption": {
+        "enabled": true
+      },
+      "client_side_encryption": {
+        "implemented": true
+      },
+      "access_logging": {
+        "comprehensive": true
+      },
+      "bucket_encryption": {
+        "default": true
+      }
+    }
+  }
+}
