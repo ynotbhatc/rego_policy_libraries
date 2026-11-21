@@ -8,6 +8,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — coverage labels on the published site (#313)
+
+- Every standard page and homepage card shows its validated / partial / experimental badge with the evidence; the
+  new coverage-labels.html explains the three labels and lists every framework key.
+- `scripts/coverage_labels.json` is the single source: `coverage_report.py --check` (CI) fails when a framework key
+  has no label, a label names no key, or a module's METADATA carries its own label.
+
 ### Added — OSCAL assessment-results and SARIF for any framework key (#312)
 
 - `converters/exports/oscal/build_assessment_results.py` and `converters/exports/sarif/build.py` take a
