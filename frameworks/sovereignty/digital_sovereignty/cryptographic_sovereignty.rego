@@ -153,6 +153,7 @@ key_material_stays_in_hsm if {
 # Key rotation policy must be documented and enforced
 key_rotation_policy if {
 	input.key_management_policies.rotation_policy_documented == true
+	is_number(input.key_management_policies.rotation_frequency_days)
 	input.key_management_policies.rotation_frequency_days <= 365
 }
 
