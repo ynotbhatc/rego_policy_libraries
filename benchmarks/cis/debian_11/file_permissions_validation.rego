@@ -93,8 +93,14 @@ world_writable_violations contains msg if {
 
 world_writable_violations contains msg if {
 	not input.world_writable.compliant
+	is_number(input.world_writable.count)
 	input.world_writable.count > 0
 	msg := sprintf("CIS 6.1.10: %d world-writable files found on system", [input.world_writable.count])
+}
+
+world_writable_violations contains msg if {
+	not is_number(object.get(input, ["world_writable", "count"], 0))
+	msg := "CIS 6.1.10: evidence missing — world_writable.count is not a number"
 }
 
 # CIS 6.1.11: Unowned files
@@ -106,8 +112,14 @@ ownership_violations contains msg if {
 
 ownership_violations contains msg if {
 	not input.unowned_files.compliant
+	is_number(input.unowned_files.count)
 	input.unowned_files.count > 0
 	msg := sprintf("CIS 6.1.11: %d unowned files found on system", [input.unowned_files.count])
+}
+
+ownership_violations contains msg if {
+	not is_number(object.get(input, ["unowned_files", "count"], 0))
+	msg := "CIS 6.1.11: evidence missing — unowned_files.count is not a number"
 }
 
 # CIS 6.1.12: Ungrouped files
@@ -119,8 +131,14 @@ ownership_violations contains msg if {
 
 ownership_violations contains msg if {
 	not input.ungrouped_files.compliant
+	is_number(input.ungrouped_files.count)
 	input.ungrouped_files.count > 0
 	msg := sprintf("CIS 6.1.12: %d ungrouped files found on system", [input.ungrouped_files.count])
+}
+
+ownership_violations contains msg if {
+	not is_number(object.get(input, ["ungrouped_files", "count"], 0))
+	msg := "CIS 6.1.12: evidence missing — ungrouped_files.count is not a number"
 }
 
 # CIS 6.1.13: SUID executables
@@ -131,24 +149,46 @@ suid_sgid_violations contains msg if {
 }
 
 suid_sgid_violations contains msg if {
+	is_number(input.suid_files.total_count)
 	input.suid_files.total_count > 20
+	is_number(input.suid_files.unknown_count)
 	input.suid_files.unknown_count > 5
 	msg := sprintf("CIS 6.1.13: Excessive unknown SUID binaries found (%d unknown out of %d total)", [input.suid_files.unknown_count, input.suid_files.total_count])
 }
 
+suid_sgid_violations contains msg if {
+	not is_number(object.get(input, ["suid_files", "unknown_count"], 0))
+	msg := "CIS 6.1.13: evidence missing — suid_files.unknown_count is not a number"
+}
+
+suid_sgid_violations contains msg if {
+	not is_number(object.get(input, ["suid_files", "total_count"], 0))
+	msg := "CIS 6.1.13: evidence missing — suid_files.total_count is not a number"
+}
+
 # CIS 6.1.14: SGID executables
 suid_sgid_violations contains msg if {
+	is_number(input.sgid_files.count)
 	input.sgid_files.count > 30
 	msg := sprintf("CIS 6.1.14: Excessive SGID binaries found (%d files)", [input.sgid_files.count])
 }
 
+suid_sgid_violations contains msg if {
+	not is_number(object.get(input, ["sgid_files", "count"], 0))
+	msg := "CIS 6.1.14: evidence missing — sgid_files.count is not a number"
+}
+
 risk_level := "critical" if {
+	is_number(input.world_writable.count)
 	input.world_writable.count > 0
 } else := "critical" if {
+	is_number(input.critical_files.non_compliant_count)
 	input.critical_files.non_compliant_count > 0
 } else := "high" if {
+	is_number(input.suid_files.unknown_count)
 	input.suid_files.unknown_count > 5
 } else := "medium" if {
+	is_number(input.unowned_files.count)
 	input.unowned_files.count > 0
 } else := "low"
 

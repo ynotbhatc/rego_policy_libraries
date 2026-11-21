@@ -72,13 +72,20 @@ violations contains msg if {
 
 # CIS 5.3.6: sudo authentication timeout must match the approved configuration
 violations contains msg if {
+	is_number(input.sudo.timestamp_timeout)
 	input.sudo.timestamp_timeout > 15
 	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %d minutes, should be 15 or less", [input.sudo.timestamp_timeout])
 }
 
 violations contains msg if {
+	is_number(input.sudo.timestamp_timeout)
 	input.sudo.timestamp_timeout < 0
 	msg := "CIS 5.3.6: sudo timestamp_timeout is negative (0 is recommended for high security)"
+}
+
+violations contains msg if {
+	not is_number(object.get(input, ["sudo", "timestamp_timeout"], 0))
+	msg := "CIS 5.3.6: evidence missing — sudo.timestamp_timeout is not a number"
 }
 
 # CIS 5.3.7: access to the su command must be restricted

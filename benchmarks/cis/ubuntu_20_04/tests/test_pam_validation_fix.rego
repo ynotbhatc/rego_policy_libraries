@@ -60,3 +60,13 @@ test_umask_022_flagged if {
 	v := data.cis_ubuntu_20_04.pam.account_violations with input as with_pam({"default_umask": "0022"})
 	count(v) == 1
 }
+
+# #300 type traps: a non-number faillock_deny is evidence missing; real numbers keep their behaviour.
+test_faillock_deny_number_type_traps if {
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": "1"}}
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": null}}
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": "not-a-number"}}
+	not "CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 5}}
+	not "CIS 5.4.2: Account lockout threshold is 6 attempts, should be 5 or less" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 5}}
+	"CIS 5.4.2: Account lockout threshold is 6 attempts, should be 5 or less" in data.cis_ubuntu_20_04.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 6}}
+}

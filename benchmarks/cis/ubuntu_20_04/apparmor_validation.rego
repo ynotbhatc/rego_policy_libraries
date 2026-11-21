@@ -62,8 +62,14 @@ profile_violations contains "CIS 1.6.1.3: evidence missing - apparmor.unloaded_p
 }
 
 profile_violations contains msg if {
+	is_number(input.apparmor.unloaded_profiles)
 	input.apparmor.unloaded_profiles > 0
 	msg := sprintf("CIS 1.6.1.3: %d AppArmor profiles are not loaded", [input.apparmor.unloaded_profiles])
+}
+
+profile_violations contains msg if {
+	not is_number(object.get(input, ["apparmor", "unloaded_profiles"], 0))
+	msg := "CIS 1.6.1.3: evidence missing — apparmor.unloaded_profiles is not a number"
 }
 
 profile_violations contains msg if {
@@ -79,8 +85,14 @@ profile_violations contains "CIS 1.6.1.4: evidence missing - apparmor.complain_p
 }
 
 profile_violations contains msg if {
+	is_number(input.apparmor.complain_profiles)
 	input.apparmor.complain_profiles > 0
 	msg := sprintf("CIS 1.6.1.4: %d AppArmor profiles are in complain mode (should be enforce)", [input.apparmor.complain_profiles])
+}
+
+profile_violations contains msg if {
+	not is_number(object.get(input, ["apparmor", "complain_profiles"], 0))
+	msg := "CIS 1.6.1.4: evidence missing — apparmor.complain_profiles is not a number"
 }
 
 profile_violations contains msg if {

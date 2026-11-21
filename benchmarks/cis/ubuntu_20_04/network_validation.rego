@@ -143,8 +143,16 @@ sysctl_violations contains msg if {
 ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
 	not input.ipv6.disabled
+	is_number(input.ipv6.address_count)
 	input.ipv6.address_count > 0
 	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [input.ipv6.status, input.ipv6.address_count])
+}
+
+ipv6_violations contains msg if {
+	input.require_ipv6_disabled == true
+	not input.ipv6.disabled
+	not is_number(object.get(input, ["ipv6", "address_count"], 0))
+	msg := "CIS 3.3.1: evidence missing — ipv6.address_count is not a number"
 }
 
 # CIS 3.2.9: IPv6 router advertisements disabled
@@ -197,6 +205,7 @@ risk_level := "critical" if {
 } else := "critical" if {
 	not input.firewall.active
 } else := "high" if {
+	is_number(input.sysctl_parameters.non_compliant_count)
 	input.sysctl_parameters.non_compliant_count > 5
 } else := "medium" if {
 	input.wireless_interfaces.has_wireless

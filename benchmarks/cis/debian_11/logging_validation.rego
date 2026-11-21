@@ -103,9 +103,15 @@ rsyslog_violations contains msg if {
 }
 
 rsyslog_violations contains msg if {
+	is_number(input.rsyslog.logging_rules_count)
 	input.rsyslog.logging_rules_count > 0
 	input.rsyslog.logging_rules_count < 4
 	msg := sprintf("CIS 4.2.1.5: Insufficient rsyslog logging rules (%d rules, expected at least 4)", [input.rsyslog.logging_rules_count])
+}
+
+rsyslog_violations contains msg if {
+	not is_number(object.get(input, ["rsyslog", "logging_rules_count"], 0))
+	msg := "CIS 4.2.1.5: evidence missing — rsyslog.logging_rules_count is not a number"
 }
 
 # CIS 4.2.1.6: Remote logging (conditional)

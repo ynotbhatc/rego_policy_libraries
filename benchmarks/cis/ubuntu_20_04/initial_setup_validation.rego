@@ -222,8 +222,17 @@ violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
 	input.initial_setup.gdm_screen_lock_enabled
+	is_number(input.initial_setup.gdm_idle_delay)
 	input.initial_setup.gdm_idle_delay > 900
 	msg := sprintf("CIS 1.8.4: GDM idle delay is %d seconds, should be 900 or less", [input.initial_setup.gdm_idle_delay])
+}
+
+violations contains msg if {
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	not is_number(object.get(input, ["initial_setup", "gdm_idle_delay"], 0))
+	msg := "CIS 1.8.4: evidence missing — initial_setup.gdm_idle_delay is not a number"
 }
 
 report := {
