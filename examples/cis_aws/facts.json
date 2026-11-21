@@ -1,0 +1,622 @@
+{
+ "cis_profile": {
+  "level": 2
+ },
+ "entity_name": "example-prod",
+ "account_id": "111122223333",
+ "access_analyzers": [
+  {
+   "name": "external",
+   "region": "us-east-1",
+   "status": "ACTIVE",
+   "type": "ACCOUNT"
+  }
+ ],
+ "account_summary": {
+  "AccountAccessKeysPresent": 0,
+  "AccountMFAEnabled": 1,
+  "AccountPasswordPresent": 1
+ },
+ "assessment_time": "2026-11-20T09:00:00Z",
+ "attest": {
+  "account_contact_details_current": true,
+  "alarm_cloudtrail_configuration_changes": true,
+  "alarm_cmk_disable_or_deletion": true,
+  "alarm_config_configuration_changes": true,
+  "alarm_console_authentication_failures": true,
+  "alarm_console_sign_in_without_mfa": true,
+  "alarm_iam_policy_changes": true,
+  "alarm_nacl_changes": true,
+  "alarm_network_gateway_changes": true,
+  "alarm_organizations_changes": true,
+  "alarm_root_account_usage": false,
+  "alarm_route_table_changes": true,
+  "alarm_s3_bucket_policy_changes": true,
+  "alarm_security_group_changes": true,
+  "alarm_unauthorized_api_calls": true,
+  "alarm_vpc_changes": true,
+  "bedrock_agent_roles_least_privilege": true,
+  "bedrock_data_retention_matches_sensitivity": true,
+  "bedrock_encryption_key_management_appropriate": true,
+  "bedrock_log_destinations_protected": true,
+  "cloudshell_full_access_restricted": true,
+  "cloudtrail_bucket_access_logging_enabled": true,
+  "cloudtrail_enabled_all_regions": true,
+  "genai_invocation_and_management_roles_separated": true,
+  "genai_invocation_policies_least_privilege": true,
+  "guardrail_evaluation_independent_of_agent_reasoning": true,
+  "guardrail_on_every_invocation_point": true,
+  "guardrails_apply_contextual_grounding": true,
+  "guardrails_filter_sensitive_information": true,
+  "iam_users_managed_centrally": true,
+  "org_authorization_guardrails_in_place": true,
+  "org_management_account_runs_no_workloads": true,
+  "org_policies_managed_by_delegated_admin": true,
+  "org_root_access_centralized": true,
+  "org_services_managed_by_delegated_admins": true,
+  "org_units_structured_by_environment": true,
+  "rds_deletion_protection_enabled": true,
+  "rds_multi_az_where_availability_needed": true,
+  "resource_policies_have_no_wildcard_principal": true,
+  "root_hardware_mfa": true,
+  "root_not_used_for_daily_tasks": true,
+  "s3_data_classified_and_secured": true,
+  "s3_encryption_key_management_appropriate": true,
+  "s3_mfa_delete_enabled": true,
+  "scp_restricts_genai_models_to_approved_list": true,
+  "security_contact_registered": true,
+  "unguarded_invocation_points_monitored": true,
+  "vpc_endpoints_used_for_aws_services": true,
+  "vpc_peering_routes_least_access": true,
+  "web_frontend_access_logging_enabled": true
+ },
+ "bedrock_api_keys": [
+  {
+   "CreateDate": "2026-10-20T00:00:00Z",
+   "ExpirationDate": "2027-01-01T00:00:00Z",
+   "ServiceName": "bedrock.amazonaws.com",
+   "Status": "Active",
+   "UserName": "svc"
+  }
+ ],
+ "bedrock_endpoint_requirements": [
+  {
+   "region": "us-east-1",
+   "service_name": "com.amazonaws.us-east-1.bedrock-runtime",
+   "vpc_id": "vpc-1"
+  }
+ ],
+ "bedrock_guardrails": [
+  {
+   "blockedInputMessaging": "blocked",
+   "blockedOutputsMessaging": "blocked",
+   "contentPolicy": {
+    "filters": [
+     {
+      "inputStrength": "HIGH",
+      "outputStrength": "HIGH",
+      "type": "HATE"
+     },
+     {
+      "inputStrength": "HIGH",
+      "outputStrength": "NONE",
+      "type": "PROMPT_ATTACK"
+     }
+    ]
+   },
+   "id": "g1",
+   "name": "gr",
+   "region": "us-east-1"
+  }
+ ],
+ "bedrock_invocation_logging": [
+  {
+   "loggingConfig": {
+    "cloudWatchConfig": {
+     "logGroupName": "/bedrock/invocations",
+     "roleArn": "arn:aws:iam::111122223333:role/bedrock-logs"
+    },
+    "embeddingDataDeliveryEnabled": false,
+    "imageDataDeliveryEnabled": false,
+    "textDataDeliveryEnabled": true,
+    "videoDataDeliveryEnabled": false
+   },
+   "region": "us-east-1"
+  }
+ ],
+ "bedrock_jobs": [
+  {
+   "jobArn": "arn:aws:bedrock:us-east-1:111122223333:model-invocation-job/j1",
+   "region": "us-east-1",
+   "type": "batch",
+   "vpcConfig": {
+    "securityGroupIds": [
+     "sg-1"
+    ],
+    "subnetIds": [
+     "subnet-1"
+    ]
+   }
+  }
+ ],
+ "bedrock_knowledge_bases": [
+  {
+   "knowledgeBaseArn": "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/kb1",
+   "knowledgeBaseId": "kb1",
+   "region": "us-east-1",
+   "storageConfiguration": {
+    "opensearchServerlessConfiguration": {
+     "collectionArn": "arn:aws:aoss:us-east-1:111122223333:collection/abc123"
+    },
+    "type": "OPENSEARCH_SERVERLESS"
+   }
+  }
+ ],
+ "bedrock_marketplace_endpoints": [
+  {
+   "endpointArn": "arn:aws:sagemaker:us-east-1:111122223333:endpoint/ep1",
+   "models": [
+    {
+     "EnableNetworkIsolation": true,
+     "ModelName": "m1",
+     "VpcConfig": {
+      "SecurityGroupIds": [
+       "sg-1"
+      ],
+      "Subnets": [
+       "subnet-1"
+      ]
+     }
+    }
+   ],
+   "region": "us-east-1"
+  }
+ ],
+ "bedrock_modalities_in_use": [
+  "text"
+ ],
+ "bedrock_regions": [
+  "us-east-1"
+ ],
+ "bedrock_resource_types_in_use": [
+  "AWS::Bedrock::AgentAlias"
+ ],
+ "cloudtrail_trails": [
+  {
+   "HomeRegion": "us-east-1",
+   "IsMultiRegionTrail": true,
+   "KmsKeyId": "arn:aws:kms:us-east-1:111122223333:key/1234",
+   "LogFileValidationEnabled": false,
+   "Name": "main",
+   "TrailARN": "arn:aws:cloudtrail:us-east-1:111122223333:trail/main",
+   "event_selectors": {
+    "AdvancedEventSelectors": [
+     {
+      "FieldSelectors": [
+       {
+        "Equals": [
+         "Data"
+        ],
+        "Field": "eventCategory"
+       },
+       {
+        "Equals": [
+         "AWS::S3::Object"
+        ],
+        "Field": "resources.type"
+       }
+      ],
+      "Name": "s3"
+     },
+     {
+      "FieldSelectors": [
+       {
+        "Equals": [
+         "Data"
+        ],
+        "Field": "eventCategory"
+       },
+       {
+        "Equals": [
+         "AWS::Bedrock::AgentAlias"
+        ],
+        "Field": "resources.type"
+       }
+      ],
+      "Name": "bedrock"
+     }
+    ]
+   },
+   "status": {
+    "IsLogging": true
+   }
+  }
+ ],
+ "config_recorder_status": [
+  {
+   "lastStatus": "SUCCESS",
+   "name": "default",
+   "recording": true,
+   "region": "us-east-1"
+  }
+ ],
+ "config_recorders": [
+  {
+   "name": "default",
+   "recordingGroup": {
+    "allSupported": true,
+    "includeGlobalResourceTypes": true
+   },
+   "region": "us-east-1"
+  }
+ ],
+ "credential_report": [
+  {
+   "access_key_1_active": "false",
+   "access_key_1_last_rotated": "N/A",
+   "access_key_1_last_used_date": "N/A",
+   "access_key_2_active": "false",
+   "access_key_2_last_rotated": "N/A",
+   "access_key_2_last_used_date": "N/A",
+   "mfa_active": "true",
+   "password_enabled": "not_supported",
+   "password_last_used": "N/A",
+   "user": "<root_account>",
+   "user_creation_time": "2025-01-01T00:00:00+00:00"
+  },
+  {
+   "access_key_1_active": "true",
+   "access_key_1_last_rotated": "2026-09-01T00:00:00+00:00",
+   "access_key_1_last_used_date": "2026-11-01T00:00:00+00:00",
+   "access_key_2_active": "false",
+   "access_key_2_last_rotated": "N/A",
+   "access_key_2_last_used_date": "N/A",
+   "mfa_active": "true",
+   "password_enabled": "true",
+   "password_last_used": "2026-11-10T00:00:00+00:00",
+   "user": "alice",
+   "user_creation_time": "2025-01-01T00:00:00+00:00"
+  }
+ ],
+ "ebs_encryption_by_default": [
+  {
+   "EbsEncryptionByDefault": true,
+   "region": "us-east-1"
+  }
+ ],
+ "ec2_instances": [
+  {
+   "IamInstanceProfile": {
+    "Arn": "arn:aws:iam::111122223333:instance-profile/app"
+   },
+   "InstanceId": "i-1",
+   "MetadataOptions": {
+    "HttpTokens": "required",
+    "State": "applied"
+   },
+   "State": {
+    "Name": "running"
+   },
+   "region": "us-east-1"
+  }
+ ],
+ "efs_file_systems": [
+  {
+   "Encrypted": true,
+   "FileSystemId": "fs-1"
+  }
+ ],
+ "iam_instance_profiles": [
+  {
+   "Arn": "arn:aws:iam::111122223333:instance-profile/app",
+   "Roles": [
+    {
+     "RoleName": "app"
+    }
+   ]
+  }
+ ],
+ "iam_policies": [
+  {
+   "Arn": "arn:aws:iam::111122223333:policy/ReadOnly",
+   "AttachmentCount": 1,
+   "DefaultVersionDocument": {
+    "Statement": [
+     {
+      "Action": [
+       "s3:Get*"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+     }
+    ],
+    "Version": "2012-10-17"
+   },
+   "PolicyName": "ReadOnly"
+  }
+ ],
+ "iam_roles": [
+  {
+   "Arn": "arn:aws:iam::111122223333:role/bedrock-kb",
+   "AssumeRolePolicyDocument": {
+    "Statement": [
+     {
+      "Action": "sts:AssumeRole",
+      "Condition": {
+       "ArnLike": {
+        "aws:SourceArn": "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/*"
+       },
+       "StringEquals": {
+        "aws:SourceAccount": "111122223333"
+       }
+      },
+      "Effect": "Allow",
+      "Principal": {
+       "Service": "bedrock.amazonaws.com"
+      }
+     }
+    ],
+    "Version": "2012-10-17"
+   },
+   "Path": "/",
+   "RoleName": "bedrock-kb"
+  },
+  {
+   "Arn": "arn:aws:iam::111122223333:role/plain",
+   "AssumeRolePolicyDocument": {
+    "Statement": [
+     {
+      "Action": "sts:AssumeRole",
+      "Effect": "Allow",
+      "Principal": {
+       "Service": "ec2.amazonaws.com"
+      }
+     }
+    ]
+   },
+   "Path": "/",
+   "RoleName": "plain"
+  }
+ ],
+ "iam_server_certificates": [
+  {
+   "Expiration": "2027-06-01T00:00:00Z",
+   "ServerCertificateName": "c1"
+  }
+ ],
+ "iam_users": [
+  {
+   "UserName": "alice",
+   "attached_policies": [],
+   "inline_policies": []
+  }
+ ],
+ "kms_keys": [
+  {
+   "KeyId": "k1",
+   "KeyManager": "CUSTOMER",
+   "KeyRotationEnabled": false,
+   "KeySpec": "SYMMETRIC_DEFAULT",
+   "region": "us-east-1"
+  }
+ ],
+ "log_deliveries": [
+  {
+   "deliveryDestinationArn": "arn:aws:logs:us-east-1:111122223333:log-group:kb",
+   "deliveryDestinationType": "CWL",
+   "deliverySourceName": "kb1-src",
+   "region": "us-east-1"
+  }
+ ],
+ "log_delivery_sources": [
+  {
+   "logType": "APPLICATION_LOGS",
+   "name": "kb1-src",
+   "region": "us-east-1",
+   "resourceArns": [
+    "arn:aws:bedrock:us-east-1:111122223333:knowledge-base/kb1"
+   ]
+  }
+ ],
+ "network_acls": [
+  {
+   "Entries": [
+    {
+     "CidrBlock": "10.0.0.0/8",
+     "Egress": false,
+     "PortRange": {
+      "From": 22,
+      "To": 22
+     },
+     "Protocol": "6",
+     "RuleAction": "allow",
+     "RuleNumber": 100
+    },
+    {
+     "CidrBlock": "0.0.0.0/0",
+     "Egress": false,
+     "Protocol": "-1",
+     "RuleAction": "deny",
+     "RuleNumber": 32767
+    }
+   ],
+   "NetworkAclId": "acl-1"
+  }
+ ],
+ "opensearch_serverless_collections": [
+  {
+   "id": "abc123",
+   "name": "kbcoll",
+   "region": "us-east-1"
+  }
+ ],
+ "opensearch_serverless_network_policies": [
+  {
+   "name": "p1",
+   "policy": [
+    {
+     "AllowFromPublic": false,
+     "Rules": [
+      {
+       "Resource": [
+        "collection/kbcoll"
+       ],
+       "ResourceType": "collection"
+      }
+     ],
+     "SourceServices": [
+      "bedrock.amazonaws.com"
+     ]
+    }
+   ],
+   "region": "us-east-1"
+  }
+ ],
+ "password_policy": {
+  "MinimumPasswordLength": 8,
+  "PasswordReusePrevention": 24
+ },
+ "rds_instances": [
+  {
+   "AutoMinorVersionUpgrade": true,
+   "DBInstanceIdentifier": "db1",
+   "PubliclyAccessible": false,
+   "StorageEncrypted": true
+  }
+ ],
+ "regions": [
+  {
+   "RegionName": "us-east-1"
+  }
+ ],
+ "route_tables": [
+  {
+   "Associations": [
+    {
+     "Main": false,
+     "SubnetId": "subnet-1"
+    }
+   ],
+   "RouteTableId": "rtb-1",
+   "Routes": [
+    {
+     "DestinationCidrBlock": "10.0.0.0/16",
+     "GatewayId": "local"
+    }
+   ],
+   "VpcId": "vpc-1"
+  }
+ ],
+ "s3_buckets": [
+  {
+   "Name": "app-data",
+   "policy": {
+    "Statement": [
+     {
+      "Action": "s3:*",
+      "Condition": {
+       "Bool": {
+        "aws:SecureTransport": "false"
+       }
+      },
+      "Effect": "Deny",
+      "Principal": "*",
+      "Resource": [
+       "arn:aws:s3:::app-data",
+       "arn:aws:s3:::app-data/*"
+      ]
+     }
+    ],
+    "Version": "2012-10-17"
+   },
+   "public_access_block": {
+    "BlockPublicAcls": true,
+    "BlockPublicPolicy": true,
+    "IgnorePublicAcls": true,
+    "RestrictPublicBuckets": true
+   }
+  }
+ ],
+ "security_groups": [
+  {
+   "GroupId": "sg-1",
+   "GroupName": "web",
+   "IpPermissions": [
+    {
+     "FromPort": 443,
+     "IpProtocol": "tcp",
+     "IpRanges": [
+      {
+       "CidrIp": "0.0.0.0/0"
+      }
+     ],
+     "Ipv6Ranges": [
+      {
+       "CidrIpv6": "::/0"
+      }
+     ],
+     "ToPort": 443
+    },
+    {
+     "FromPort": 22,
+     "IpProtocol": "tcp",
+     "IpRanges": [
+      {
+       "CidrIp": "0.0.0.0/0"
+      }
+     ],
+     "Ipv6Ranges": [],
+     "ToPort": 22
+    }
+   ],
+   "IpPermissionsEgress": [],
+   "region": "us-east-1"
+  },
+  {
+   "GroupId": "sg-def",
+   "GroupName": "default",
+   "IpPermissions": [],
+   "IpPermissionsEgress": [],
+   "region": "us-east-1"
+  }
+ ],
+ "securityhub_hubs": [
+  {
+   "HubArn": "arn:aws:securityhub:us-east-1:111122223333:hub/default",
+   "SubscribedAt": "2025-01-01T00:00:00.000Z",
+   "region": "us-east-1"
+  }
+ ],
+ "subnets": [
+  {
+   "SubnetId": "subnet-1",
+   "VpcId": "vpc-1"
+  }
+ ],
+ "support_policy_entities": {
+  "PolicyGroups": [],
+  "PolicyRoles": [
+   {
+    "RoleName": "support"
+   }
+  ],
+  "PolicyUsers": []
+ },
+ "vpc_endpoints": [
+  {
+   "PolicyDocument": "{\"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::111122223333:root\"}, \"Action\": [\"bedrock:InvokeModel\"], \"Resource\": \"*\"}]}",
+   "PrivateDnsEnabled": true,
+   "ServiceName": "com.amazonaws.us-east-1.bedrock-runtime",
+   "State": "available",
+   "VpcEndpointId": "vpce-1",
+   "VpcEndpointType": "Interface",
+   "VpcId": "vpc-1"
+  }
+ ],
+ "vpcs": [
+  {
+   "VpcId": "vpc-1",
+   "region": "us-east-1"
+  }
+ ]
+}
