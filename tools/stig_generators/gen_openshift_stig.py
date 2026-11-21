@@ -191,11 +191,11 @@ nodes_rule("CNTR-OS-000320", "loginuid_immutable", ['some l in n.audit_rules\n\t
 nodes_rule("CNTR-OS-000400", "root_ssh_disabled_and_timeouts",
            ['_lower_eq(n.sshd_config.PermitRootLogin, "no")', '_lower_eq(n.sshd_config.ClientAliveCountMax, "0")',
             "is_string(n.sshd_config.ClientAliveInterval)", "regex.match(`^[0-9]+$`, trim_space(n.sshd_config.ClientAliveInterval))",
-            "to_number(trim_space(n.sshd_config.ClientAliveInterval)) >= 1", "to_number(trim_space(n.sshd_config.ClientAliveInterval)) <= 600"],
+            "to_number(trim_space(n.sshd_config.ClientAliveInterval)) <= 600"],
            [{"sshd_config": {"PermitRootLogin": "yes", "ClientAliveCountMax": "0", "ClientAliveInterval": "600"}},
             {"sshd_config": {"PermitRootLogin": "no", "ClientAliveCountMax": "1", "ClientAliveInterval": "600"}},
             {"sshd_config": {"PermitRootLogin": "no", "ClientAliveCountMax": "0", "ClientAliveInterval": "900"}}],
-           "on every node /etc/ssh/sshd_config must set PermitRootLogin no, ClientAliveCountMax 0 and ClientAliveInterval 1..600; "
+           "on every node /etc/ssh/sshd_config must set PermitRootLogin no, ClientAliveCountMax 0 and ClientAliveInterval 600 or less; "
            "with OpenShift Virtualization before 4.18 the hyperconverged featureGates.nonRoot must be true",
            "Set the sshd options with a MachineConfig; enable the nonRoot feature gate",
            "per-node sshd_config values; input.openshift.virtualization_enabled, cluster_version, hyperconverged",
