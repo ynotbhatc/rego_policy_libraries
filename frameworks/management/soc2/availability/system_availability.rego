@@ -34,7 +34,9 @@ import rego.v1
 default availability_commitments_met := false
 
 availability_commitments_met if {
+	is_number(input.availability.sla.target_uptime)
 	input.availability.sla.target_uptime >= 99.9
+	is_number(input.availability.current_uptime)
 	input.availability.current_uptime >= input.availability.sla.target_uptime
 	input.availability.downtime_tracking.enabled == true
 }
@@ -46,6 +48,7 @@ monitoring_systems_configured if {
 	input.monitoring.infrastructure.enabled == true
 	input.monitoring.application.enabled == true
 	input.monitoring.alerts.configured == true
+	is_number(input.monitoring.alerts.response_time_sla)
 	input.monitoring.alerts.response_time_sla <= 15 # minutes
 }
 
@@ -54,8 +57,11 @@ default capacity_planning_implemented := false
 
 capacity_planning_implemented if {
 	input.capacity_management.monitoring.enabled == true
+	is_number(input.capacity_management.thresholds.cpu_warning)
 	input.capacity_management.thresholds.cpu_warning <= 80
+	is_number(input.capacity_management.thresholds.memory_warning)
 	input.capacity_management.thresholds.memory_warning <= 85
+	is_number(input.capacity_management.thresholds.storage_warning)
 	input.capacity_management.thresholds.storage_warning <= 90
 	input.capacity_management.forecasting.enabled == true
 }
@@ -80,7 +86,9 @@ default backup_recovery_implemented := false
 backup_recovery_implemented if {
 	input.backup.automated_backups.enabled == true
 	input.backup.frequency.daily == true
+	is_number(input.backup.retention.days)
 	input.backup.retention.days >= 30
+	is_number(input.backup.recovery_testing.frequency_days)
 	input.backup.recovery_testing.frequency_days <= 90
 	input.backup.offsite_storage.enabled == true
 }
@@ -103,7 +111,9 @@ incident_response_ready if {
 default openshift_ha_configured := false
 
 openshift_ha_configured if {
+	is_number(input.openshift.control_plane.replicas)
 	input.openshift.control_plane.replicas >= 3
+	is_number(input.openshift.worker_nodes.count)
 	input.openshift.worker_nodes.count >= 3
 	input.openshift.etcd.ha_configured == true
 	input.openshift.load_balancer.configured == true
@@ -164,6 +174,7 @@ health_checks_configured if {
 default multi_zone_deployment := false
 
 multi_zone_deployment if {
+	is_number(input.infrastructure.zones.count)
 	input.infrastructure.zones.count >= 2
 	input.infrastructure.load_balancing.cross_zone == true
 	input.infrastructure.data_replication.cross_zone == true
@@ -173,6 +184,7 @@ multi_zone_deployment if {
 default network_redundancy_implemented := false
 
 network_redundancy_implemented if {
+	is_number(input.network.redundant_connections.count)
 	input.network.redundant_connections.count >= 2
 	input.network.failover.automatic == true
 	input.network.monitoring.enabled == true
@@ -183,6 +195,7 @@ default storage_redundancy_configured := false
 
 storage_redundancy_configured if {
 	input.storage.replication.enabled == true
+	is_number(input.storage.replication.factor)
 	input.storage.replication.factor >= 2
 	input.storage.backup.automated == true
 	input.storage.snapshots.enabled == true
@@ -206,8 +219,11 @@ performance_monitoring_active if {
 default performance_thresholds_defined := false
 
 performance_thresholds_defined if {
+	is_number(input.performance.thresholds.response_time_ms)
 	input.performance.thresholds.response_time_ms <= 2000
+	is_number(input.performance.thresholds.error_rate_percent)
 	input.performance.thresholds.error_rate_percent <= 1
+	is_number(input.performance.thresholds.cpu_utilization_percent)
 	input.performance.thresholds.cpu_utilization_percent <= 80
 }
 

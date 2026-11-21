@@ -137,6 +137,7 @@ soc2_type_ii_compliant if {
 
 # Operating effectiveness criteria
 operating_effectiveness_demonstrated if {
+	is_number(input.soc2.operating_effectiveness.testing_period_months)
 	input.soc2.operating_effectiveness.testing_period_months >= 12
 	input.soc2.operating_effectiveness.continuous_monitoring == true
 	input.soc2.operating_effectiveness.exception_reporting == true

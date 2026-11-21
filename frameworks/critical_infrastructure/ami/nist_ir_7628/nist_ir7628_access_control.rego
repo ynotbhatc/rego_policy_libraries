@@ -60,6 +60,7 @@ least_privilege_enforced if {
 # Sessions must use secure tokens with timeout enforcement
 session_management_secure if {
 	input.access_control.sessions.secure_tokens == true
+	is_number(input.access_control.sessions.timeout_minutes)
 	input.access_control.sessions.timeout_minutes <= 30
 	input.access_control.sessions.concurrent_sessions_limited == true
 }

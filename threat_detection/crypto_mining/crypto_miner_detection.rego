@@ -67,7 +67,9 @@ miner_process_detected contains process if {
 # High CPU usage processes (potential mining indicator)
 high_cpu_processes contains process if {
 	some process in input.running_processes
+	is_number(process.cpu_percent)
 	process.cpu_percent > 80
+	is_number(process.running_time_minutes)
 	process.running_time_minutes > 30
 }
 

@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 31
-#     cited: 8
+#     checks: 32
+#     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.fr7
 
 import rego.v1
@@ -91,6 +91,7 @@ violations contains msg if {
 
 # SR 7.1 RE 1 (SL 2+): DoS protection with traffic management
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.network.dos_traffic_management
 	msg := sprintf(
@@ -101,6 +102,7 @@ violations contains msg if {
 
 # SR 7.1 RE 2 (SL 3+): Redundant network paths
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.network.redundant_paths
 	msg := sprintf(
@@ -124,6 +126,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.resource_limits_configured
@@ -166,6 +169,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.backups.encryption_at_rest
 	msg := sprintf(
@@ -205,6 +209,7 @@ violations contains msg if {
 
 # SR 7.4 RE 1 (SL 2+): Tested recovery plan
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.security_management.recovery_plan_tested
 	msg := sprintf(
@@ -229,6 +234,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.emergency_power_backup
@@ -263,6 +269,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.security_management.configuration_change_management
 	msg := sprintf(
@@ -296,6 +303,7 @@ violations contains msg if {
 
 # SR 7.7 RE 1 (SL 2+): Periodic review of enabled functionality
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.security_management.functionality_review_schedule
 	msg := sprintf(
@@ -324,6 +332,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.security_management.inventory_auto_discovery
 	msg := sprintf(
@@ -365,6 +374,12 @@ violations contains "IEC 62443 SR 7.6 (RA): evidence missing — input.ics_syste
 
 violations contains "IEC 62443 SR 7.7 (RA): evidence missing — input.ics_systems not collected, so this requirement cannot be verified" if {
 	count(object.get(input, "ics_systems", [])) == 0
+}
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443 FR 7 (RA): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
 }
 
 compliant if count(violations) == 0

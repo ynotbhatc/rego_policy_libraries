@@ -132,6 +132,7 @@ violation_l1_ac_1_22 contains msg if {
 
 # AC.L2-3.1.3 — Control the flow of CUI
 violation_l2_ac_1_3 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.cui_flow_controls
 	msg := "CMMC AC.L2-3.1.3: No CUI information flow controls implemented. Data flow enforcement is required at Level 2."
@@ -139,6 +140,7 @@ violation_l2_ac_1_3 contains msg if {
 
 # AC.L2-3.1.4 — Separate duties of individuals to reduce risk of malevolent activity
 violation_l2_ac_1_4 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.separation_of_duties
 	msg := "CMMC AC.L2-3.1.4: Separation of duties is not implemented. No single user should be able to complete a high-risk action alone."
@@ -146,11 +148,13 @@ violation_l2_ac_1_4 contains msg if {
 
 # AC.L2-3.1.5 / 3.1.6 iterate the user inventory
 violation_l2_ac_1_5 contains "CMMC AC.L2-3.1.5: evidence missing - input.users not collected (absent, not an array or empty); privileged accounts cannot be reviewed" if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not _users
 }
 
 violation_l2_ac_1_5 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some user in _users
 	not _has_bool(user, "privileged")
@@ -159,6 +163,7 @@ violation_l2_ac_1_5 contains msg if {
 
 # AC.L2-3.1.5 — Employ least privilege
 violation_l2_ac_1_5 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some user in _users
 	user.privileged == true
@@ -170,11 +175,13 @@ violation_l2_ac_1_5 contains msg if {
 }
 
 violation_l2_ac_1_6 contains "CMMC AC.L2-3.1.6: evidence missing - input.users not collected (absent, not an array or empty); use of non-privileged accounts cannot be shown" if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not _users
 }
 
 violation_l2_ac_1_6 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some user in _users
 	not _has_bool(user, "privileged")
@@ -183,6 +190,7 @@ violation_l2_ac_1_6 contains msg if {
 
 # AC.L2-3.1.6 — Use non-privileged accounts for non-privileged actions
 violation_l2_ac_1_6 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some user in _users
 	user.privileged == true
@@ -195,6 +203,7 @@ violation_l2_ac_1_6 contains msg if {
 
 # AC.L2-3.1.7 — Prevent non-privileged users from executing privileged functions
 violation_l2_ac_1_7 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.privileged_function_auditing
 	msg := "CMMC AC.L2-3.1.7: Privileged function execution is not audited. All privileged function use must be logged."
@@ -202,6 +211,7 @@ violation_l2_ac_1_7 contains msg if {
 
 # AC.L2-3.1.8 — Limit unsuccessful logon attempts
 violation_l2_ac_1_8 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.unsuccessful_logon_attempts_limited == true
 	msg := "CMMC AC.L2-3.1.8: Unsuccessful logon attempts are not shown limited (input.access_controls.unsuccessful_logon_attempts_limited is not true)."
@@ -209,6 +219,7 @@ violation_l2_ac_1_8 contains msg if {
 
 # AC.L2-3.1.9 — Provide privacy and security notices consistent with applicable CUI rules
 violation_l2_ac_1_9 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.privacy_security_notices_displayed == true
 	msg := "CMMC AC.L2-3.1.9: Privacy and security notices are not shown displayed (input.access_controls.privacy_security_notices_displayed is not true)."
@@ -219,18 +230,21 @@ violation_l2_ac_1_9 contains msg if {
 # lock timeout is compared with input.org_defined.session_lock_minutes; either
 # missing is a finding.
 violation_l2_ac_1_10 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not is_number(object.get(input, ["session", "lock_timeout_minutes"], null))
 	msg := "CMMC AC.L2-3.1.10: evidence missing - input.session.lock_timeout_minutes not collected (not a number); session lock cannot be shown."
 }
 
 violation_l2_ac_1_10 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not is_number(object.get(input, ["org_defined", "session_lock_minutes"], null))
 	msg := "CMMC AC.L2-3.1.10: evidence missing - input.org_defined.session_lock_minutes (organisation-defined period of inactivity, NIST SP 800-171A 3.1.10[a]) not supplied or not a number."
 }
 
 violation_l2_ac_1_10 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	is_number(input.session.lock_timeout_minutes)
 	is_number(input.org_defined.session_lock_minutes)
@@ -243,6 +257,7 @@ violation_l2_ac_1_10 contains msg if {
 
 # AC.L2-3.1.11 — Terminate sessions after defined period
 violation_l2_ac_1_11 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.session.automatic_termination
 	msg := "CMMC AC.L2-3.1.11: Sessions are not automatically terminated after inactivity. Implement session termination for CUI access."
@@ -250,6 +265,7 @@ violation_l2_ac_1_11 contains msg if {
 
 # AC.L2-3.1.12 — Monitor and control remote access sessions
 violation_l2_ac_1_12 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.remote_access_monitored
 	msg := "CMMC AC.L2-3.1.12: Remote access sessions are not monitored. All remote access to CUI systems must be monitored."
@@ -257,6 +273,7 @@ violation_l2_ac_1_12 contains msg if {
 
 # AC.L2-3.1.13 — Use cryptographic mechanisms for remote access
 violation_l2_ac_1_13 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.remote_access_encrypted
 	msg := "CMMC AC.L2-3.1.13: Remote access does not use cryptographic mechanisms. VPN or equivalent encryption is required."
@@ -264,6 +281,7 @@ violation_l2_ac_1_13 contains msg if {
 
 # AC.L2-3.1.14 — Route remote access via managed access control points
 violation_l2_ac_1_14 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.remote_access_via_managed_points
 	msg := "CMMC AC.L2-3.1.14: Remote access is not routed through managed access control points (e.g., jump servers, VPN gateways)."
@@ -271,6 +289,7 @@ violation_l2_ac_1_14 contains msg if {
 
 # AC.L2-3.1.15 — Authorize remote execution of privileged commands
 violation_l2_ac_1_15 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.remote_privileged_commands_controlled
 	msg := "CMMC AC.L2-3.1.15: Remote execution of privileged commands is not controlled. Explicit authorization is required."
@@ -279,6 +298,7 @@ violation_l2_ac_1_15 contains msg if {
 # Wireless and mobile practices apply only when the capability exists; whether
 # it exists must be stated (a missing flag is not "no wireless").
 violation_l2_ac_1_16 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not is_boolean(object.get(input, ["access_controls", "wireless_access_enabled"], null))
 	msg := "CMMC AC.L2-3.1.16: evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless authorization cannot be decided."
@@ -286,6 +306,7 @@ violation_l2_ac_1_16 contains msg if {
 
 # AC.L2-3.1.16 — Authorize wireless access prior to allowing such connections
 violation_l2_ac_1_16 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.access_controls.wireless_access_enabled == true
 	not input.access_controls.wireless_access_authorized == true
@@ -293,6 +314,7 @@ violation_l2_ac_1_16 contains msg if {
 }
 
 violation_l2_ac_1_17 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not is_boolean(object.get(input, ["access_controls", "wireless_access_enabled"], null))
 	msg := "CMMC AC.L2-3.1.17: evidence missing - input.access_controls.wireless_access_enabled not collected (not a boolean); wireless protection cannot be decided."
@@ -300,6 +322,7 @@ violation_l2_ac_1_17 contains msg if {
 
 # AC.L2-3.1.17 — Protect wireless access using authentication/encryption
 violation_l2_ac_1_17 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.access_controls.wireless_access_enabled == true
 	not input.access_controls.wireless_access_encrypted
@@ -308,12 +331,14 @@ violation_l2_ac_1_17 contains msg if {
 
 # AC.L2-3.1.18 — Control connection of mobile devices
 violation_l2_ac_1_18 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.mobile_device_policy
 	msg := "CMMC AC.L2-3.1.18: No mobile device policy for CUI access. Mobile devices connecting to CUI systems must be managed."
 }
 
 violation_l2_ac_1_19 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not is_boolean(object.get(input, ["access_controls", "mobile_device_cui_access"], null))
 	msg := "CMMC AC.L2-3.1.19: evidence missing - input.access_controls.mobile_device_cui_access not collected (not a boolean); mobile-device encryption cannot be decided."
@@ -321,6 +346,7 @@ violation_l2_ac_1_19 contains msg if {
 
 # AC.L2-3.1.19 — Encrypt CUI on mobile devices
 violation_l2_ac_1_19 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.access_controls.mobile_device_cui_access == true
 	not input.access_controls.mobile_device_encryption
@@ -329,6 +355,7 @@ violation_l2_ac_1_19 contains msg if {
 
 # AC.L2-3.1.21 — Limit use of portable storage devices on external systems
 violation_l2_ac_1_21 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.access_controls.portable_storage_external_use_limited == true
 	msg := "CMMC AC.L2-3.1.21: Use of portable storage devices on external systems is not shown limited (input.access_controls.portable_storage_external_use_limited is not true)."
@@ -365,6 +392,7 @@ level_2_violations contains msg if {
 violations contains msg if some msg in level_1_violations
 
 violations contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some msg in level_2_violations
 }
@@ -372,8 +400,8 @@ violations contains msg if {
 # Input contract: every Level 2 rule is gated on input.cmmc_level >= 2, so a
 # missing level would silently evaluate the Level 1 safeguards only. This
 # finding names no practice (data.cmmc reports the missing level itself).
-violations contains "CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the Level 2 access-control practices were not evaluated and the domain is reported non-compliant" if {
-	not input.cmmc_level
+violations contains "CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the Level 2 access-control practices were not evaluated and the domain is reported non-compliant" if {
+	not is_number(object.get(input, "cmmc_level", null))
 }
 
 default compliant := false

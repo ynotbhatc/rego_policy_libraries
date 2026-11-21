@@ -467,20 +467,24 @@ financial_application_score := score if {
 
 # ITGC Risk Assessment
 itgc_risk_level := "LOW" if {
+	is_number(itgc_compliance_score)
 	itgc_compliance_score >= 90
 }
 
 itgc_risk_level := "MEDIUM" if {
+	is_number(itgc_compliance_score)
 	itgc_compliance_score >= 75
 	itgc_compliance_score < 90
 }
 
 itgc_risk_level := "HIGH" if {
+	is_number(itgc_compliance_score)
 	itgc_compliance_score >= 60
 	itgc_compliance_score < 75
 }
 
 itgc_risk_level := "CRITICAL" if {
+	is_number(itgc_compliance_score)
 	itgc_compliance_score < 60
 }
 
@@ -527,15 +531,18 @@ itgc_control_effectiveness := effectiveness if {
 
 # Helper functions for control status
 _get_control_status(score) := "EFFECTIVE" if {
+	is_number(score)
 	score >= 0.9
 }
 
 _get_control_status(score) := "PARTIALLY_EFFECTIVE" if {
+	is_number(score)
 	score >= 0.7
 	score < 0.9
 }
 
 _get_control_status(score) := "INEFFECTIVE" if {
+	is_number(score)
 	score < 0.7
 }
 

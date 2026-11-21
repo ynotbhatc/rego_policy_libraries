@@ -84,6 +84,7 @@ key_rotation_current if {
 # Head-end must use FIPS 140-2/3 validated cryptographic modules
 cryptographic_modules_validated if {
 	input.identification_auth.cryptography.fips_validated == true
+	is_number(input.identification_auth.cryptography.validation_level)
 	input.identification_auth.cryptography.validation_level >= 2
 }
 

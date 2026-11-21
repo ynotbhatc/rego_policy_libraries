@@ -113,6 +113,7 @@ default encryption_at_rest := false
 
 encryption_at_rest if {
 	input.encryption.at_rest.enabled == true
+	is_number(input.encryption.at_rest.algorithm.strength)
 	input.encryption.at_rest.algorithm.strength >= 256 # AES-256 or equivalent
 	input.encryption.at_rest.key_management.centralized == true
 	input.encryption.at_rest.database_encryption == true
@@ -247,6 +248,7 @@ confidential_data_access_logged if {
 	input.access_logging.confidential_data.enabled == true
 	input.access_logging.confidential_data.detailed == true
 	input.access_logging.confidential_data.real_time_monitoring == true
+	is_number(input.access_logging.confidential_data.retention_period)
 	input.access_logging.confidential_data.retention_period >= 365
 }
 

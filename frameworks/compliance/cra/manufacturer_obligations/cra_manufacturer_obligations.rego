@@ -6,14 +6,14 @@
 #   source: eu
 #   domains: [eu, product-security]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 12
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cra.manufacturer_obligations
 
 import rego.v1
@@ -73,8 +73,14 @@ violation contains msg if {
 }
 
 violation contains msg if {
+	is_number(input.manufacturer.support_period.years)
 	input.manufacturer.support_period.years < 5
 	msg := sprintf("CRA Art.13(8): Declared support period (%d years) is below the 5-year minimum", [input.manufacturer.support_period.years])
+}
+
+violation contains "CRA Art.13(8): evidence missing — support_period.years is not a number; the declared support period cannot be verified" if {
+	input.manufacturer.support_period.declared == true
+	not is_number(object.get(input, ["manufacturer", "support_period", "years"], null))
 }
 
 # Article 13(10) — User-facing instructions and information

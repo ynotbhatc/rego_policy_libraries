@@ -58,6 +58,7 @@ passing_controls := total_controls - count(all_violations)
 default compliance_percentage := 0
 
 compliance_percentage := (passing_controls * 100) / total_controls if {
+	is_number(total_controls)
 	total_controls > 0
 }
 

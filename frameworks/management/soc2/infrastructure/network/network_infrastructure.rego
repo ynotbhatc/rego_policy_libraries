@@ -31,6 +31,7 @@ default network_segmentation_compliant := false
 network_segmentation_compliant if {
 	input.network.architecture.segmentation.enabled == true
 	input.network.architecture.segmentation.dmz.configured == true
+	is_number(input.network.architecture.segmentation.internal_zones.count)
 	input.network.architecture.segmentation.internal_zones.count >= 3
 	input.network.architecture.segmentation.zero_trust.enabled == true
 }

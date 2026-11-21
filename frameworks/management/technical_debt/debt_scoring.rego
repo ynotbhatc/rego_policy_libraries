@@ -936,14 +936,21 @@ _age_num(d) := d if {
 	regex.match(`^[0-9]+(\.[0-9]+)?$`, d)
 } else := 0
 
-_age_mult(days) := 1.5 if days >= 90
+_age_mult(days) := 1.5 if {
+	is_number(days)
+	days >= 90
+}
 
 _age_mult(days) := 1.25 if {
+	is_number(days)
 	days >= 30
 	days < 90
 }
 
-_age_mult(days) := 1.0 if days < 30
+_age_mult(days) := 1.0 if {
+	is_number(days)
+	days < 30
+}
 
 # ---------------------------------------------------------------------------
 # Violation severity extractor

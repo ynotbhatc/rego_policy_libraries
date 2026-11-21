@@ -67,6 +67,7 @@ default physical_access_logs := false
 physical_access_logs if {
 	input.nist_800_171.physical_protection.access_logs.logs_maintained == true
 	input.nist_800_171.physical_protection.access_logs.covers_all_entry_points == true
+	is_number(input.nist_800_171.physical_protection.access_logs.retention_period_days)
 	input.nist_800_171.physical_protection.access_logs.retention_period_days >= 90
 	input.nist_800_171.physical_protection.access_logs.reviewed_periodically == true
 }

@@ -4,7 +4,7 @@
 In Rego a string sorts above every number and null below every number, so an unguarded `x >= 2` passes on
 "1" and `x <= 30` passes on null. This lint finds comparisons of a value against a numeric literal where the
 same rule body neither calls is_number(<value>) nor binds the value from a numeric expression (count, sum,
-to_number, time.*, ..., or a helper in the same package whose every clause checks is_number or calls to_number). Existing occurrences are recorded in scripts/numeric_guard_baseline.txt; CI fails on
+to_number, time.*, ..., also after a leading "(", or a helper in the same package whose every clause checks is_number or calls to_number). Existing occurrences are recorded in scripts/numeric_guard_baseline.txt; CI fails on
 any new one, so the baseline only shrinks.
 
     python3 scripts/check_numeric_guards.py               # summary
@@ -68,7 +68,8 @@ def scan():
                 if re.search(r"is_number\(\s*" + re.escape(lhs) + r"\s*\)", text):
                     continue
                 bound = re.search(r"\b" + re.escape(lhs) + r"\s*:?=\s*(.+)", text)
-                if bound and NUMERIC.match(bound.group(1).strip()):
+                # a leading "(" is arithmetic grouping, e.g. (time.now_ns() - t) / 86400000000000
+                if bound and NUMERIC.match(bound.group(1).strip().lstrip("(")):
                     continue
                 call = re.match(r"([A-Za-z_]\w*)\(", bound.group(1).strip()) if bound else None
                 if call and (p.parent, call[1]) in helpers:

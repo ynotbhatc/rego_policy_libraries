@@ -63,7 +63,9 @@ default vulnerability_remediation := false
 
 vulnerability_remediation if {
 	input.nist_800_171.risk_assessment.remediation.risk_based_prioritization == true
+	is_number(input.nist_800_171.risk_assessment.remediation.critical_days)
 	input.nist_800_171.risk_assessment.remediation.critical_days <= 15
+	is_number(input.nist_800_171.risk_assessment.remediation.high_days)
 	input.nist_800_171.risk_assessment.remediation.high_days <= 30
 	input.nist_800_171.risk_assessment.remediation.tracking_system == true
 }

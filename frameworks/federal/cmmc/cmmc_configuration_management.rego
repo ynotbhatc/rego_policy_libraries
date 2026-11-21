@@ -45,6 +45,7 @@ _per_system_practices := {"3.4.1", "3.4.2", "3.4.6", "3.4.7"}
 
 # CM.L2-3.4.1 — Establish baseline configurations
 violation_cm_1 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	not system.baseline_configuration_documented
@@ -56,6 +57,7 @@ violation_cm_1 contains msg if {
 
 # CM.L2-3.4.2 — Establish and enforce security configuration settings
 violation_cm_2 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	not system.security_configuration_enforced
@@ -67,12 +69,14 @@ violation_cm_2 contains msg if {
 
 # CM.L2-3.4.3 — Track, review, approve/disapprove changes to systems
 violation_cm_3 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.configuration.change_control_process
 	msg := "CMMC CM.L2-3.4.3: No change control process. All changes to CUI systems must go through an approval process."
 }
 
 violation_cm_3 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.configuration.changes_reviewed_before_implementation
 	msg := "CMMC CM.L2-3.4.3: Changes are not reviewed before implementation. Security impact analysis is required for all changes."
@@ -80,6 +84,7 @@ violation_cm_3 contains msg if {
 
 # CM.L2-3.4.4 — Analyze impact of changes prior to implementation
 violation_cm_4 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.configuration.security_impact_analysis
 	msg := "CMMC CM.L2-3.4.4: No security impact analysis process. Changes must be analyzed for security impact before implementation."
@@ -87,6 +92,7 @@ violation_cm_4 contains msg if {
 
 # CM.L2-3.4.5 — Define, document, approve, and enforce access restrictions for change
 violation_cm_5 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.configuration.change_access_restricted
 	msg := "CMMC CM.L2-3.4.5: Change access is not restricted. Only authorized personnel should be able to make changes to CUI systems."
@@ -94,6 +100,7 @@ violation_cm_5 contains msg if {
 
 # CM.L2-3.4.6 — Employ principle of least functionality
 violation_cm_6 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	is_array(system.unnecessary_services)
@@ -105,6 +112,7 @@ violation_cm_6 contains msg if {
 }
 
 violation_cm_6 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	not is_array(object.get(system, "unnecessary_services", null))
@@ -113,12 +121,14 @@ violation_cm_6 contains msg if {
 
 # CM.L2-3.4.7 — Restrict, disable, or prevent the use of nonessential programs
 violation_cm_7 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.software.application_whitelist_enabled
 	msg := "CMMC CM.L2-3.4.7: Application whitelisting is not enabled. Only authorized software should be permitted to execute."
 }
 
 violation_cm_7 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	is_array(system.unauthorized_software)
@@ -130,6 +140,7 @@ violation_cm_7 contains msg if {
 }
 
 violation_cm_7 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	some system in _systems
 	not is_array(object.get(system, "unauthorized_software", null))
@@ -138,6 +149,7 @@ violation_cm_7 contains msg if {
 
 # CM.L2-3.4.8 — Apply deny-by-exception policy for software usage
 violation_cm_8 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.software.deny_by_default
 	msg := "CMMC CM.L2-3.4.8: Software policy is allow-by-default. Implement deny-by-exception (whitelist approach) for software execution."
@@ -145,6 +157,7 @@ violation_cm_8 contains msg if {
 
 # CM.L2-3.4.9 — Control and monitor user-installed software
 violation_cm_9 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.software.user_install_controlled
 	msg := "CMMC CM.L2-3.4.9: User-installed software is not controlled. Users must be prevented from installing unauthorized software."
@@ -163,13 +176,14 @@ violations contains msg if {
 
 # Input contract: every CM practice is gated on cmmc_level >= 2. This finding
 # names no practice (data.cmmc reports the missing level itself).
-violations contains "CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the configuration-management practices were not evaluated and the domain is reported non-compliant" if {
-	not input.cmmc_level
+violations contains "CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the configuration-management practices were not evaluated and the domain is reported non-compliant" if {
+	not is_number(object.get(input, "cmmc_level", null))
 }
 
 # The per-system practices iterate input.systems; with no systems they never
 # run, so an absent/empty inventory is a finding for each of them.
 violations contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not _systems
 	some id in _per_system_practices
@@ -187,6 +201,7 @@ _ids := ["3.4.1", "3.4.2", "3.4.3", "3.4.4", "3.4.5", "3.4.6", "3.4.7", "3.4.8",
 practices := [{"id": id, "level": 2, "compliant": _practice_ok(id)} | some id in _ids]
 
 _practice_ok(id) if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	count(_by_practice[id]) == 0
 	not _inventory_missing(id)

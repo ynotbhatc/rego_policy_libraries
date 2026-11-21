@@ -135,6 +135,7 @@ incident_triggered_plan_updates if {
 	every incident in input.reportable_cyber_incidents {
 		incident.plan_review_triggered == true
 		update_age_days := (date_ns(incident.plan_review_completion_date) - date_ns(incident.incident_date)) / (((24 * 60) * 60) * 1000000000)
+		is_number(update_age_days)
 		update_age_days <= 90
 	}
 }
@@ -222,6 +223,7 @@ nerc_notification_timely if {
 notification_within_1_hour(incident) if {
 	incident.nerc_notification.sent == true
 	notification_hours := (date_ns(incident.nerc_notification.sent_time) - date_ns(incident.reportable_determination_time)) / (3600 * 1000000000)
+	is_number(notification_hours)
 	notification_hours <= 1
 }
 

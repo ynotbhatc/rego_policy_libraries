@@ -97,15 +97,19 @@ _vol := v if {
 }
 
 pci_validation_level := level if {
+	is_number(_vol)
 	_vol >= 6000000
 	level := "Level 1"
 } else := level if {
+	is_number(_vol)
 	_vol >= 1000000
 	level := "Level 2"
 } else := level if {
+	is_number(_vol)
 	_vol >= 20000
 	level := "Level 3"
 } else := level if {
+	is_number(_vol)
 	_vol < 20000
 	level := "Level 4"
 } else := "Unknown"

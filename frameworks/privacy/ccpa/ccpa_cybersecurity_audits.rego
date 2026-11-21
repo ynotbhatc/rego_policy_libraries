@@ -6,14 +6,14 @@
 #   source: us-state
 #   domains: [privacy, us-state]
 #   coverage:
-#     checks: 52
+#     checks: 53
 #     cited: 46
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ccpa.cybersecurity_audits
 
 import rego.v1
@@ -70,11 +70,13 @@ _thresholds_met if _in.thresholds.revenue_majority_from_selling_or_sharing == tr
 
 _thresholds_met if {
 	_in.thresholds.meets_revenue_threshold == true
+	is_number(_in.thresholds.consumers_processed_prior_year)
 	_in.thresholds.consumers_processed_prior_year >= 250000
 }
 
 _thresholds_met if {
 	_in.thresholds.meets_revenue_threshold == true
+	is_number(_in.thresholds.sensitive_consumers_processed_prior_year)
 	_in.thresholds.sensitive_consumers_processed_prior_year >= 50000
 }
 
@@ -83,6 +85,17 @@ violations contains msg if {
 	_in.applicable == false
 	_thresholds_met
 	msg := "CCPA §7120(b): business declares cybersecurity audits not applicable, but the supplied thresholds meet §7120 (revenue-from-selling test, or revenue threshold with 250,000+ consumers / 50,000+ sensitive-PI consumers)"
+}
+
+# A not-applicable declaration with the revenue threshold met needs numeric consumer counts to rule out §7120:
+# "300000" or null cannot be compared ("300000" sorts above every number, null below), so it is not evidence.
+violations contains msg if {
+	_in.applicable == false
+	_in.thresholds.meets_revenue_threshold == true
+	not _thresholds_met
+	some field in ["consumers_processed_prior_year", "sensitive_consumers_processed_prior_year"]
+	not is_number(object.get(_in, ["thresholds", field], null))
+	msg := sprintf("CCPA §7120(b): evidence missing - thresholds.%s is not a number, so the not-applicable declaration cannot be checked", [field])
 }
 
 # ── §7120–§7121 — the audit itself and its deadline ───────────────────────

@@ -45,12 +45,14 @@ _b5a_plan_exists if {
 default _b5a_plan_current := false
 
 _b5a_plan_current if {
+	is_number(input.resilience.bc_dr_plan.last_review_days)
 	input.resilience.bc_dr_plan.last_review_days <= 365
 }
 
 default _b5a_plan_acceptable_age := false
 
 _b5a_plan_acceptable_age if {
+	is_number(input.resilience.bc_dr_plan.last_review_days)
 	input.resilience.bc_dr_plan.last_review_days <= 730
 }
 
@@ -63,6 +65,7 @@ _b5a_covers_essential_functions if {
 default _b5a_tested := false
 
 _b5a_tested if {
+	is_number(input.resilience.bc_dr_plan.tested_days)
 	input.resilience.bc_dr_plan.tested_days <= 365
 }
 
@@ -207,12 +210,14 @@ _b5c_automated if {
 default _b5c_backup_recent := false
 
 _b5c_backup_recent if {
+	is_number(input.resilience.backups.backup_age_hours)
 	input.resilience.backups.backup_age_hours <= 24
 }
 
 default _b5c_backup_acceptable_age := false
 
 _b5c_backup_acceptable_age if {
+	is_number(input.resilience.backups.backup_age_hours)
 	input.resilience.backups.backup_age_hours <= 168
 }
 
@@ -231,12 +236,14 @@ _b5c_ransomware_resilient if {
 default _b5c_restore_tested := false
 
 _b5c_restore_tested if {
+	is_number(input.resilience.backups.restore_test_age_days)
 	input.resilience.backups.restore_test_age_days <= 30
 }
 
 default _b5c_restore_tested_annually := false
 
 _b5c_restore_tested_annually if {
+	is_number(input.resilience.backups.restore_test_age_days)
 	input.resilience.backups.restore_test_age_days <= 365
 }
 

@@ -487,6 +487,7 @@ _get_mgmt_remediation(control) := "Deploy continuous monitoring and automated te
 default _fully_compliant := false
 
 _fully_compliant if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 95
 	sox_compliant
 }
@@ -494,16 +495,19 @@ _fully_compliant if {
 sox_compliance_level := "FULLY_COMPLIANT" if _fully_compliant
 
 sox_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 85
 	not _fully_compliant
 }
 
 sox_compliance_level := "PARTIALLY_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score >= 70
 	sox_compliance_score < 85
 }
 
 sox_compliance_level := "NON_COMPLIANT" if {
+	is_number(sox_compliance_score)
 	sox_compliance_score < 70
 }
 

@@ -9,14 +9,14 @@
 #     checks: 0
 #     cited: 0
 #     expected: 7
-#     found: 197
+#     found: 198
 #     scope: directory
 #     density: full
 #     basis: declared-total
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package ccpa.main
 
 import rego.v1
