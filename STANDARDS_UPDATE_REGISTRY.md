@@ -32,7 +32,12 @@ feed are listed as `manual`. This document keeps the cadence, context and notes 
 3. **Regeneration rule:** new benchmark versions get a **new directory** (existing
    convention — do not mutate the old version). Framework modules revise in place with the
    version pinned in the header and this registry updated in the same PR.
-4. **Rows marked "verify"** carry cadence/next-expected values from general knowledge, to
+4. **Clearing a finding** (same PR as the triage, so the next run does not flag it again): `ecfr` → raise
+   `checked_through` to the amendment date reviewed; `page_regex` → add the reviewed value to `known` (or bump the
+   module and its `version`); a family (`cis`, `disa`) → raise `checked_against`; `github_commit` → new sha in
+   `version` (or a later `since`); `github_release` / `oscal_catalog` / DISA zips → only a module update with the new
+   `version` and `literal` clears them.
+5. **Rows marked "verify"** carry cadence/next-expected values from general knowledge, to
    be confirmed on their first sweep.
 
 ## Registry

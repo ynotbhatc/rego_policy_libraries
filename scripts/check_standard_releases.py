@@ -280,16 +280,15 @@ def chk_disa_zip(c: dict, impl: str) -> dict:
         raise CheckFailed(f"version {impl!r} is not VxRy")
     v, rel = int(m.group(1)), int(m.group(2))
     name = lambda vv, rr: f"{DISA_ZIP}{c['stem']}_V{vv}R{rr}_STIG.zip"  # noqa: E731
-    if not exists(name(v, rel)):
-        raise CheckFailed(f"{name(v, rel)} not found: wrong stem, or the implemented zip was withdrawn")
-    found = None
-    rr = rel + 1
-    while exists(name(v, rr)):
-        found, rr = f"V{v}R{rr}", rr + 1
-    if found is None and exists(name(v + 1, 1)):
-        found = f"V{v + 1}R1"
+    have = exists(name(v, rel))
+    # DISA withdraws superseded zips, so probe a few releases ahead (gaps happen) and the next major version
+    later = [(v, rr) for rr in range(rel + 1, rel + 6)] + [(v + 1, 1), (v + 1, 2)]
+    found = [f"V{vv}R{rr}" for vv, rr in later if exists(name(vv, rr))]
     if found:
-        return r("newer", f"{c['stem']}_{found}_STIG.zip published (implemented {impl})", found)
+        gone = "; implemented zip withdrawn" if not have else ""
+        return r("newer", f"{c['stem']}_{found[-1]}_STIG.zip published (implemented {impl}{gone})", found[-1])
+    if not have:
+        raise CheckFailed(f"{name(v, rel)} not found and no later release: wrong stem, or the STIG left the library")
     return r("current", f"no release after {impl}", impl)
 
 
@@ -303,15 +302,18 @@ def month_iter(start: dt.date, end: dt.date):
 def chk_disa_dated(c: dict, impl: str) -> dict:
     y, m = (int(x) for x in str(c["released"]).split("-"))
     name = lambda yy, mm: f"{DISA_ZIP}{c['stem']}_Y{yy % 100:02d}M{mm:02d}_STIG.zip"  # noqa: E731
-    if not exists(name(y, m)):
-        raise CheckFailed(f"{name(y, m)} not found: wrong stem or release month")
+    have = exists(name(y, m))
     start = dt.date(y + (m == 12), m % 12 + 1, 1)
     newest = None
     for yy, mm in month_iter(start, dt.date.today()):
         if exists(name(yy, mm)):
             newest = f"{yy}-{mm:02d}"
     if newest:
-        return r("newer", f"{c['stem']} bundle dated {newest} published (implemented {impl}, {c['released']})", newest)
+        gone = "; implemented bundle withdrawn" if not have else ""
+        return r("newer", f"{c['stem']} bundle dated {newest} published (implemented {impl}, {c['released']}{gone})",
+                 newest)
+    if not have:
+        raise CheckFailed(f"{name(y, m)} not found and no later bundle: wrong stem or release month")
     return r("current", f"no bundle after {c['released']}", c["released"])
 
 
