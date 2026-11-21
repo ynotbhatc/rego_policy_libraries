@@ -127,6 +127,11 @@ opa test benchmarks/cis/os/linux/rhel_9/ -v
 
 The CI pipeline (`.github/workflows/opa-test.yml`) runs all tests on every PR.
 
+To check that the tests check something, run `make mutation MODULE=<dir>` (on demand, not in CI). It flips
+comparisons and booleans, drops a `not` or a rule-body line, and lists every change the tests missed. Where the
+standard's text may be reused (NIST SP 800-53, DISA STIG check text), add golden cases built from that text. Both
+are described in [docs/testing/MUTATION_AND_GOLDEN.md](docs/testing/MUTATION_AND_GOLDEN.md).
+
 ---
 
 ## Pull request checklist
