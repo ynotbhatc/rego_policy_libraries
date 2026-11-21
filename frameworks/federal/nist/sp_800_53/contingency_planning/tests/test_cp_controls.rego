@@ -281,7 +281,7 @@ test_boolean_as_string_true_is_a_finding if {
 	fx := object.union(_pass, {"cp_controls": {"backup": {"integrity_protected": "true"}}})
 	r := cp.compliance_report with input as fx
 	_ids(r) == {"CP-9"}
-	contains(concat("", r.violations), "integrity_protected is not true")
+	contains(concat("", r.violations), "evidence missing — input.cp_controls.backup.integrity_protected not collected")
 }
 
 # --- enhancements: one failing case flips exactly that id, one evidence-missing case ---------------------------

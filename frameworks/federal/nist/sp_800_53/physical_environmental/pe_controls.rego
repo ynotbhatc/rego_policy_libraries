@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 46
-#     cited: 31
+#     checks: 48
+#     cited: 32
 #     density: sized
 #     basis: size
 #     tested: true
@@ -20,7 +20,8 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — Physical and Environmental Protection (PE) Family, base controls PE-1 to PE-23 (PE-7
 # withdrawn), the NIST SP 800-53B Moderate-baseline enhancements PE-6(1) and PE-13(1), and the High-baseline
-# enhancements PE-3(1), PE-6(4), PE-8(1), PE-11(1), PE-13(2), PE-14(2) and PE-15(1). An enhancement is its own
+# enhancements PE-3(1), PE-6(4), PE-8(1), PE-11(1), PE-13(2), PE-14(2) and PE-15(1), and the Privacy-baseline
+# enhancement PE-8(3). An enhancement is its own
 # requirement with its own finding; a base control never fails for an enhancement.
 # Facts live under input.pe_controls. Every control fails closed: a fact that is missing or of the wrong type is
 # reported as missing evidence. Booleans pass only on true; numbers are checked with is_number before comparing.
@@ -86,11 +87,12 @@ _att_text(name, text) := text if {
 	_att_shaped(name)
 } else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
 
-# Counts that must be zero (exceptions from physical security records). A non-number or a negative number is
-# missing evidence.
+# Counts that must be zero (exceptions from physical security records). A non-number, a negative or a fractional
+# number is missing evidence.
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _zero_missing(paths) := {_path(p) |
@@ -681,12 +683,47 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------------
+
+# PE-8(3) Limit Personally Identifiable Information Elements: visitor access records contain only the PII elements
+# the privacy risk assessment identified.
+# Facts (input.pe_controls.visitor_access_records.pii_elements): odp.permitted_elements (non-empty list of the
+# organization-defined elements); elements_recorded (list of the PII fields the visitor management system records).
+_pe8_3_obs := _get("visitor_access_records.pii_elements.elements_recorded")
+
+_pe8_3_odp := _get("visitor_access_records.pii_elements.odp.permitted_elements")
+
+_pe8_3_missing := {_path(p[0]) |
+	some p in [["visitor_access_records.pii_elements.elements_recorded", is_array(_pe8_3_obs)], ["visitor_access_records.pii_elements.odp.permitted_elements", _pe8_3_odp_ok]]
+	p[1] == false
+}
+
+_pe8_3_odp_ok if {
+	is_array(_pe8_3_odp)
+	count(_pe8_3_odp) > 0
+} else := false
+
+violation contains msg if {
+	count(_pe8_3_missing) > 0
+	msg := _missing_msg("PE-8(3)", _pe8_3_missing)
+}
+
+violation contains msg if {
+	count(_pe8_3_missing) == 0
+	extra := {x | some x in _pe8_3_obs; not x in _pe8_3_odp}
+	count(extra) > 0
+	msg := sprintf("NIST PE-8(3): Visitor access records contain PII elements outside the organization-defined list — %v", [sort(extra)])
+}
+
 # The control and enhancement ids this family evaluates (PE-7 is withdrawn); each has exactly one finding when it
 # fails.
 evaluated_controls := {
 	"PE-1", "PE-2", "PE-3", "PE-3(1)", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-6(4)", "PE-8", "PE-8(1)", "PE-9",
 	"PE-10", "PE-11", "PE-11(1)", "PE-12", "PE-13", "PE-13(1)", "PE-13(2)", "PE-14", "PE-14(2)", "PE-15",
 	"PE-15(1)", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
+	"PE-8(3)",
 }
 
 compliance_report := {

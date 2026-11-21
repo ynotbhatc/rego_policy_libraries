@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 45
-#     cited: 45
+#     checks: 49
+#     cited: 49
 #     density: sized
 #     basis: size
 #     tested: true
@@ -25,7 +25,7 @@ import rego.v1
 # SI-8, SI-8(2), SI-10, SI-11, SI-12, SI-16 (the Moderate baseline), and SI-2(3), SI-4(1), SI-4(10), SI-4(11),
 # SI-4(12), SI-4(14), SI-4(16), SI-4(18), SI-4(19), SI-4(20), SI-4(22), SI-4(23), SI-5(1), SI-7(2), SI-7(5),
 # SI-7(15), SI-13, SI-14, SI-15, SI-17 to SI-23 (the NIST and FedRAMP High-baseline ids and the remaining base
-# controls): 45 ids. Each enhancement is its own requirement: a base control never fails on an enhancement's
+# controls), and SI-12(1), SI-12(2), SI-12(3), SI-18(4) (the Privacy-baseline enhancements): 49 ids. Each enhancement is its own requirement: a base control never fails on an enhancement's
 # requirement. Every boolean passes only on true.
 
 default compliant := false
@@ -66,12 +66,21 @@ _freq_unmet(sec, what) := {d |
 	d := sprintf("%s last %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
 }
 
-# Counts that must be zero. A non-number is missing evidence.
-_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not is_number(_val(array.concat(sec, [k])))}
+# Counts that must be zero. A value that is not a non-negative whole number is missing evidence.
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not _count_ok(_val(array.concat(sec, [k])))}
 
 _zero_unmet(sec, k, what) := {d |
 	n := _val(array.concat(sec, [k]))
 	is_number(n)
+	_count_ok(n)
 	n > 0
 	d := sprintf("%v %s", [n, what])
 }
@@ -625,6 +634,88 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# Organization-defined lists for SI-12(1) to SI-12(3): <sec>.odp.<odp_key> must be a non-empty list and
+# <sec>.<obs_key> a list; anything else is evidence missing.
+_si_list_missing(sec, odp_key, obs_key) := {_p(array.concat(sec, ["odp", odp_key])) | not _si_nonempty_list(_val(array.concat(sec, ["odp", odp_key])))} | {_p(array.concat(sec, [obs_key])) | not is_array(_val(array.concat(sec, [obs_key])))}
+
+_si_nonempty_list(x) if {
+	is_array(x)
+	count(x) > 0
+}
+
+# Every item of the organization-defined list must be observed.
+_si_list_lacking(sec, odp_key, obs_key, what) := {sprintf("%s: %v", [what, sort(lack)]) |
+	req := _val(array.concat(sec, ["odp", odp_key]))
+	obs := _val(array.concat(sec, [obs_key]))
+	_si_nonempty_list(req)
+	is_array(obs)
+	lack := {x | some x in req; not x in obs}
+	count(lack) > 0
+}
+
+# SI-12(1) Limit Personally Identifiable Information Elements: PII processed in the information life cycle is
+# limited to the organization-defined elements.
+# Facts (input.si_controls.information_management_retention.pii_elements): odp.permitted_elements (non-empty
+# list); elements_processed (list of the PII elements the system's data stores hold, e.g. from data discovery).
+violation contains msg if {
+	sec := ["information_management_retention", "pii_elements"]
+	m := _si_list_missing(sec, "permitted_elements", "elements_processed")
+	u := {sprintf("PII elements processed outside the organization-defined list: %v", [sort(extra)]) |
+		obs := _val(array.concat(sec, ["elements_processed"]))
+		req := _val(array.concat(sec, ["odp", "permitted_elements"]))
+		is_array(obs)
+		_si_nonempty_list(req)
+		extra := {x | some x in obs; not x in req}
+		count(extra) > 0
+	}
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SI-12(1): %s", [_detail(m, u)])
+}
+
+# SI-12(2) Minimize Personally Identifiable Information in Testing, Training, and Research: the
+# organization-defined techniques are used to minimize PII used for research, testing or training.
+# Facts (input.si_controls.information_management_retention.pii_minimization): odp.techniques (non-empty list,
+# e.g. masking, synthetic data, de-identification); techniques_applied (list); unminimized_datasets (count of
+# research, test or training data sets found holding PII the techniques were not applied to).
+violation contains msg if {
+	sec := ["information_management_retention", "pii_minimization"]
+	m := _si_list_missing(sec, "techniques", "techniques_applied") | _zero_missing(sec, "unminimized_datasets")
+	u := _si_list_lacking(sec, "techniques", "techniques_applied", "organization-defined PII minimization techniques not used") | _zero_unmet(sec, "unminimized_datasets", "research, testing or training data sets hold PII that was not minimized")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SI-12(2): %s", [_detail(m, u)])
+}
+
+# SI-12(3) Information Disposal: the organization-defined techniques are used to dispose of, destroy or erase
+# information after its retention period.
+# Facts (input.si_controls.information_management_retention.disposal): odp.techniques (non-empty list);
+# techniques_applied (list); records_past_retention (count of records held beyond their retention period and not
+# disposed of).
+violation contains msg if {
+	sec := ["information_management_retention", "disposal"]
+	m := _si_list_missing(sec, "techniques", "techniques_applied") | _zero_missing(sec, "records_past_retention")
+	u := _si_list_lacking(sec, "techniques", "techniques_applied", "organization-defined disposal techniques not used") | _zero_unmet(sec, "records_past_retention", "records held beyond their retention period and not disposed of")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SI-12(3): %s", [_detail(m, u)])
+}
+
+# SI-18(4) Individual Requests: PII is corrected or deleted on request by individuals or their designated
+# representatives.
+# Facts (input.si_controls.pii_quality.individual_requests): process_implemented (boolean: a request channel and
+# workflow exist); requests_not_actioned (count of correction or deletion requests past the organization's
+# response period and not completed, from the request tracking system).
+violation contains msg if {
+	sec := ["pii_quality", "individual_requests"]
+	b := {"process_implemented": "no process corrects or deletes PII on request by individuals or their designated representatives"}
+	m := _bool_missing(sec, b) | _zero_missing(sec, "requests_not_actioned")
+	u := _bool_unmet(sec, b) | _zero_unmet(sec, "requests_not_actioned", "requests to correct or delete PII not actioned")
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SI-18(4): %s", [_detail(m, u)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)",
@@ -632,6 +723,7 @@ evaluated_controls := {
 	"SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)",
 	"SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21",
 	"SI-22", "SI-23",
+	"SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)",
 }
 
 compliance_report := {

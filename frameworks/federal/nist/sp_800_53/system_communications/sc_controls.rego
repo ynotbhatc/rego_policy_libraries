@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 63
-#     cited: 61
+#     checks: 64
+#     cited: 62
 #     density: sized
 #     basis: size
 #     tested: true
@@ -22,7 +22,7 @@ import rego.v1
 # Boundary protection, transmission confidentiality/integrity, key management.
 #
 # Control ids and titles checked against the NIST OSCAL catalog, SP 800-53 Rev 5 release 5.2.0.
-# Evaluated: 61 ids, listed in evaluated_controls at the end. The 28 Low/Moderate ids (SP 800-53B; SC-4,
+# Evaluated: 62 ids (SC-7(24) is the Privacy-baseline enhancement), listed in evaluated_controls at the end. The 28 Low/Moderate ids (SP 800-53B; SC-4,
 # SC-7(3), SC-7(4), SC-7(5), SC-7(7), SC-7(8), SC-22 and SC-39 are the Moderate additions) plus the High-baseline
 # enhancements SC-7(10), SC-7(12), SC-7(18), SC-7(20), SC-7(21), SC-12(1) and the remaining active base controls
 # SC-6, SC-11, SC-16, SC-24 to SC-27, SC-29 to SC-32, SC-34 to SC-38, SC-40 to SC-44 and SC-46 to SC-51
@@ -75,12 +75,21 @@ _freq_unmet(sec, what) := {d |
 	d := sprintf("%s last %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
 }
 
-# Counts that must be zero. A non-number is missing evidence.
-_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not is_number(_val(array.concat(sec, [k])))}
+# Counts that must be zero. A value that is not a non-negative whole number is missing evidence.
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not _count_ok(_val(array.concat(sec, [k])))}
 
 _zero_unmet(sec, k, what) := {d |
 	n := _val(array.concat(sec, [k]))
 	is_number(n)
+	_count_ok(n)
 	n > 0
 	d := sprintf("%v %s", [n, what])
 }
@@ -847,6 +856,35 @@ violation contains msg if {
 	msg := sprintf("NIST SC-51: %s", [_detail(m, u)])
 }
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# SC-7(24) Personally Identifiable Information: for systems that process PII, the organization-defined processing
+# rules are applied to PII data elements, permitted processing is monitored at the external interfaces and key
+# internal boundaries, each processing exception is documented, and exceptions no longer supported are removed.
+# Facts (input.sc_controls.boundary_protection.pii_processing): odp.processing_rules (non-empty list) and
+# rules_enforced (list of the rules the boundary devices or data-loss controls enforce); monitored_at_external_interfaces,
+# monitored_at_internal_boundaries (booleans); undocumented_exceptions, unsupported_exceptions (counts: exceptions
+# with no documentation, and exceptions whose justification has lapsed but are still in place).
+_sc7_24_bools := {
+	"monitored_at_external_interfaces": "permitted PII processing is not monitored at the system's external interfaces",
+	"monitored_at_internal_boundaries": "permitted PII processing is not monitored at key internal boundaries",
+}
+
+_sc7_24_zeros := {
+	"undocumented_exceptions": "PII processing exceptions are not documented",
+	"unsupported_exceptions": "PII processing exceptions no longer supported have not been removed",
+}
+
+violation contains msg if {
+	sec := ["boundary_protection", "pii_processing"]
+	m := (_list_missing(sec, "processing_rules", "rules_enforced") | _bool_missing(sec, _sc7_24_bools)) | {p | some k, _ in _sc7_24_zeros; some p in _zero_missing(sec, k)}
+	u := (_list_unmet(sec, "processing_rules", "rules_enforced", "organization-defined PII processing rules not applied") | _bool_unmet(sec, _sc7_24_bools)) | {d | some k, what in _sc7_24_zeros; some d in _zero_unmet(sec, k, what)}
+	count(m) + count(u) > 0
+	msg := sprintf("NIST SC-7(24): %s", [_detail(m, u)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SC-1", "SC-2", "SC-3", "SC-4", "SC-5", "SC-6", "SC-7", "SC-7(3)", "SC-7(4)", "SC-7(5)", "SC-7(7)", "SC-7(8)",
@@ -855,6 +893,7 @@ evaluated_controls := {
 	"SC-25", "SC-26", "SC-27", "SC-28", "SC-28(1)", "SC-29", "SC-30", "SC-31", "SC-32", "SC-34", "SC-35",
 	"SC-36", "SC-37", "SC-38", "SC-39", "SC-40", "SC-41", "SC-42", "SC-43", "SC-44", "SC-45", "SC-45(1)",
 	"SC-46", "SC-47", "SC-48", "SC-49", "SC-50", "SC-51",
+	"SC-7(24)",
 }
 
 compliance_report := {

@@ -57,12 +57,21 @@ _freq_unmet(sec, what) := {d |
 	d := sprintf("%s last %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
 }
 
-# Counts that must be zero (e.g. overdue remediations). A non-number is missing evidence.
-_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not is_number(_val(array.concat(sec, [k])))}
+# Counts that must be zero (e.g. overdue remediations). A value that is not a non-negative whole number is missing evidence.
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not _count_ok(_val(array.concat(sec, [k])))}
 
 _zero_unmet(sec, k, what) := {d |
 	n := _val(array.concat(sec, [k]))
 	is_number(n)
+	_count_ok(n)
 	n > 0
 	d := sprintf("%v %s", [n, what])
 }
@@ -78,7 +87,7 @@ _att_ok(a) if {
 
 _att_detail(sec, what) := d if {
 	not _att_ok(_val(array.concat(sec, ["attestation"])))
-	d := sprintf("evidence missing — no valid attestation at %s (needs attested: true and a non-empty by and date); this organizational control is evidenced by attestation only: %s", [_p(array.concat(sec, ["attestation"])), what])
+	d := sprintf("evidence missing — no valid attestation at %s (needs attested: true and a non-empty by and date); not attested: this organizational control is evidenced by attestation only: %s", [_p(array.concat(sec, ["attestation"])), what])
 }
 
 # Policy and procedures (the -1 control of the family).

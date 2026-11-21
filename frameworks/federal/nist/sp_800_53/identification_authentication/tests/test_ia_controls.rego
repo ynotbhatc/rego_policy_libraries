@@ -244,7 +244,7 @@ test_ia2_12_boolean_as_string_true_is_a_finding if {
 	fx := object.union(_pass, {"ia_controls": {"user_id_auth": {"piv": {"piv_accepted": "true"}}}})
 	r := ia.compliance_report with input as fx
 	_ids(r) == {"IA-2(12)"}
-	contains(concat("", r.violations), "piv_accepted is not true")
+	contains(concat("", r.violations), "evidence missing — input.ia_controls.user_id_auth.piv.piv_accepted not collected")
 }
 
 test_ia2_12_missing_is_evidence_missing if {

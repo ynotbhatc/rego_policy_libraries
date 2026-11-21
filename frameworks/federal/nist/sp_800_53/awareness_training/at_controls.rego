@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 7
-#     cited: 7
+#     checks: 8
+#     cited: 8
 #     density: section
 #     basis: role
 #     tested: true
@@ -19,7 +19,7 @@ package nist.sp800_53.awareness_training
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Awareness and Training (AT) Family. Every active base control (AT-1, AT-2, AT-3, AT-4,
-# AT-6; AT-5 is withdrawn) and the NIST SP 800-53B Moderate enhancements AT-2(2) and AT-2(3) (7 ids). A base
+# AT-6; AT-5 is withdrawn) and the NIST SP 800-53B Moderate enhancements AT-2(2) and AT-2(3), and the Privacy-baseline enhancement AT-3(5) (8 ids). A base
 # control never fails for an enhancement; each enhancement is its own finding.
 
 default compliant := false
@@ -51,11 +51,20 @@ _bool_failed(path, checks) := {sprintf("%s (%s.%s is not true)", [c[1], _path_st
 }
 
 # A count that must be zero, at <path>.<key>: not a number is missing evidence, above zero is a finding.
-_zero_missing(path, key) := {concat(".", [_path_str(path), key]) | not is_number(object.get(_obj(path), key, null))}
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_zero_missing(path, key) := {concat(".", [_path_str(path), key]) | not _count_ok(object.get(_obj(path), key, null))}
 
 _zero_failed(path, key, fmt) := {sprintf(fmt, [v, concat(".", [_path_str(path), key])]) |
 	v := object.get(_obj(path), key, null)
 	is_number(v)
+	_count_ok(v)
 	v > 0
 }
 
@@ -231,8 +240,31 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# AT-3(5) Processing Personally Identifiable Information: the organization-defined personnel or roles receive
+# initial training, and refresher training at the organization-defined frequency, in the employment and operation
+# of PII processing and transparency controls.
+# Facts (input.at_controls.role_based_training.pii_processing): initial_training_provided (boolean);
+# personnel_without_initial_training (count of the organization-defined personnel who have not had it);
+# refresher.days_since_last + refresher.odp.frequency_days.
+_at3_5_path := ["role_based_training", "pii_processing"]
+
+_at3_5_bools := [["initial_training_provided", "initial training in PII processing and transparency controls not provided"]]
+
+_at3_5_missing := (_bool_missing(_at3_5_path, _at3_5_bools) | _zero_missing(_at3_5_path, "personnel_without_initial_training")) | _freq_missing(array.concat(_at3_5_path, ["refresher"]))
+
+_at3_5_failed := (_bool_failed(_at3_5_path, _at3_5_bools) | _zero_failed(_at3_5_path, "personnel_without_initial_training", "%v of the organization-defined personnel have not had initial PII processing and transparency training (%s)")) | _freq_over(array.concat(_at3_5_path, ["refresher"]), "PII processing and transparency training last provided %v days ago; the organization-defined frequency is %v days")
+
+violation contains msg if {
+	count(_at3_5_missing | _at3_5_failed) > 0
+	msg := sprintf("NIST AT-3(5): %s", [_detail(_at3_5_missing, _at3_5_failed)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-4", "AT-6"}
+evaluated_controls := {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-4", "AT-6", "AT-3(5)"}
 
 compliance_report := {
 	"family": "AT",

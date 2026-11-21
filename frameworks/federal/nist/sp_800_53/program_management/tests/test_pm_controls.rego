@@ -7,7 +7,7 @@ import rego.v1
 
 _ids(vs) := {m[0][1] |
 	some v in vs
-	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+): `, v, 1)
+	m := regex.find_all_string_submatch_n(`^NIST ([A-Z]{2}-[0-9]+(?:\([0-9]+\))?): `, v, 1)
 	count(m) == 1
 }
 
@@ -16,7 +16,7 @@ _fail_closed_message(v) if contains(v, "evidence missing")
 
 _fail_closed_message(v) if contains(v, "not attested")
 
-_pass := {"pm_controls": {
+_pass_base := {"pm_controls": {
 	"security_program_plan": {
 		"documented": true,
 		"disseminated": true,
@@ -201,7 +201,7 @@ test_all_pass_fixture_is_compliant if {
 	r := data.nist.sp800_53.program_management.compliance_report with input as _pass
 	r.compliant == true
 	r.violation_count == 0
-	r.controls_evaluated == 32
+	r.controls_evaluated == 34
 }
 
 test_empty_input_one_finding_per_control if {
@@ -218,11 +218,11 @@ test_empty_input_one_finding_per_control if {
 
 test_non_object_family_root_fails_closed if {
 	vs := data.nist.sp800_53.program_management.violation with input as {"pm_controls": "yes"}
-	count(vs) == 32
+	count(vs) == 34
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.program_management.evaluated_controls == {"PM-1", "PM-2", "PM-3", "PM-4", "PM-5", "PM-6", "PM-7", "PM-8", "PM-9", "PM-10", "PM-11", "PM-12", "PM-13", "PM-14", "PM-15", "PM-16", "PM-17", "PM-18", "PM-19", "PM-20", "PM-21", "PM-22", "PM-23", "PM-24", "PM-25", "PM-26", "PM-27", "PM-28", "PM-29", "PM-30", "PM-31", "PM-32"}
+	data.nist.sp800_53.program_management.evaluated_controls == {"PM-1", "PM-2", "PM-3", "PM-4", "PM-5", "PM-6", "PM-7", "PM-8", "PM-9", "PM-10", "PM-11", "PM-12", "PM-13", "PM-14", "PM-15", "PM-16", "PM-17", "PM-18", "PM-19", "PM-20", "PM-21", "PM-22", "PM-23", "PM-24", "PM-25", "PM-26", "PM-27", "PM-28", "PM-29", "PM-30", "PM-31", "PM-32", "PM-5(1)", "PM-20(1)"}
 }
 
 test_pm1_failing_case_flips_only_pm1 if {
@@ -742,4 +742,44 @@ test_attestation_bare_true_is_a_finding if {
 	_ids(vs) == {"PM-2"}
 	some v in vs
 	contains(v, "not attested")
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"pm_controls": {"pii_inventory": {"maintained": true, "unlisted_pii_processing": 0, "days_since_last": 30, "odp": {"frequency_days": 365}}, "public_privacy_policies": {"services_without_policy": 0, "policies_without_revision_date": 0, "plain_language": true, "decision_information_provided": true, "updated_on_substantive_change": true}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_pm5_1_fails_1 if {
+	v := data.nist.sp800_53.program_management.violation with input as object.union(_pass, {"pm_controls": {"pii_inventory": {"unlisted_pii_processing": 2}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PM-5(1)"}
+	some x in v
+	contains(x, "not in the PII inventory")
+}
+
+test_privacy_pm5_1_evidence_missing_2 if {
+	v := data.nist.sp800_53.program_management.violation with input as object.union(_pass, {"pm_controls": {"pii_inventory": {"unlisted_pii_processing": -1}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PM-5(1)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_pm5_1_evidence_missing_3 if {
+	v := data.nist.sp800_53.program_management.violation with input as object.union(_pass, {"pm_controls": {"pii_inventory": {"unlisted_pii_processing": 1.5}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PM-5(1)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_pm20_1_fails_1 if {
+	v := data.nist.sp800_53.program_management.violation with input as object.union(_pass, {"pm_controls": {"public_privacy_policies": {"services_without_policy": 4}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PM-20(1)"}
+	some x in v
+	contains(x, "no posted privacy policy")
+}
+
+test_privacy_pm20_1_evidence_missing_2 if {
+	v := data.nist.sp800_53.program_management.violation with input as object.union(_pass, {"pm_controls": {"public_privacy_policies": {"plain_language": "true"}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PM-20(1)"}
+	some x in v
+	contains(x, "evidence missing")
 }

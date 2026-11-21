@@ -41,7 +41,7 @@ _pl := v if {
 #   bools:   [[path, text when false]]           pass only on true; a non-boolean is evidence missing
 #   strings: [path]                              a non-empty string; anything else is evidence missing
 #   bounds:  [[observed path, odp path, fmt]]    both non-negative numbers; observed > odp is unmet
-#   zeros:   [[path, fmt]]                       a non-negative number; above zero is unmet
+#   zeros:   [[path, fmt]]                       a non-negative whole number; above zero is unmet
 _get(p) := object.get(_pl, p, null)
 
 _path(p) := concat(".", array.concat([_prefix], p))
@@ -49,6 +49,12 @@ _path(p) := concat(".", array.concat([_prefix], p))
 _num(x) if {
 	is_number(x)
 	x >= 0
+}
+
+# A count (zeros): a non-negative whole number.
+_count(x) if {
+	_num(x)
+	floor(x) == x
 }
 
 _text(x) if {
@@ -60,7 +66,7 @@ _missing(spec) := ((b | s) | n) | z if {
 	b := {_path(e[0]) | some e in object.get(spec, "bools", []); not is_boolean(_get(e[0]))}
 	s := {_path(p) | some p in object.get(spec, "strings", []); not _text(_get(p))}
 	n := {_path(p) | some e in object.get(spec, "bounds", []); some p in [e[0], e[1]]; not _num(_get(p))}
-	z := {_path(e[0]) | some e in object.get(spec, "zeros", []); not _num(_get(e[0]))}
+	z := {_path(e[0]) | some e in object.get(spec, "zeros", []); not _count(_get(e[0]))}
 }
 
 _gaps(spec) := (b | n) | z if {
@@ -73,7 +79,7 @@ _gaps(spec) := (b | n) | z if {
 		_num(l)
 		o > l
 	}
-	z := {sprintf(e[1], [v]) | some e in object.get(spec, "zeros", []); v := _get(e[0]); _num(v); v > 0}
+	z := {sprintf(e[1], [v]) | some e in object.get(spec, "zeros", []); v := _get(e[0]); is_number(v); _count(v); v > 0}
 }
 
 _assess(spec) := {"missing": _missing(spec), "gaps": _gaps(spec)}

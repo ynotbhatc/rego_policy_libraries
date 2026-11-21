@@ -17,7 +17,7 @@ _failing(r) := {id |
 
 _att := {"attested": true, "by": "ISSO J. Doe", "date": "2026-11-01"}
 
-_pass := {"ir_controls": {
+_pass_base := {"ir_controls": {
 	"policy": {"documented": true},
 	"training": {
 		"days_since_last": 100, "odp": {"frequency_days": 365},
@@ -62,9 +62,9 @@ test_evaluated_controls_match_catalog if {
 	ir.evaluated_controls == {
 		"IR-1", "IR-2", "IR-2(1)", "IR-2(2)", "IR-3", "IR-3(2)", "IR-4", "IR-4(1)", "IR-4(2)", "IR-4(4)", "IR-4(6)",
 		"IR-4(11)", "IR-5", "IR-5(1)", "IR-6", "IR-6(1)", "IR-6(3)", "IR-7", "IR-7(1)", "IR-8", "IR-9", "IR-9(2)",
-		"IR-9(3)", "IR-9(4)",
+		"IR-9(3)", "IR-9(4)", "IR-2(3)", "IR-8(1)",
 	}
-	count(ir.evaluated_controls) == 24
+	count(ir.evaluated_controls) == 26
 }
 
 test_ir_one_finding_per_id_on_empty_input if {
@@ -432,4 +432,37 @@ test_base_controls_ignore_high_enhancement_facts if {
 	])
 	r := ir.compliance_report with input as inp
 	_failing(r) == {"IR-2(1)", "IR-2(2)", "IR-4(2)", "IR-4(4)", "IR-4(6)", "IR-4(11)", "IR-5(1)", "IR-9(2)", "IR-9(3)", "IR-9(4)"}
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"ir_controls": {"training": {"breach": {"covers_identification": true, "covers_response": true, "covers_reporting_process": true}}, "plan": {"breaches": {"notification_determination_process": true, "harm_assessment_process": true, "privacy_requirements_identified": true}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_ir2_3_fails_1 if {
+	v := data.nist.sp800_53.incident_response.violation with input as object.union(_pass, {"ir_controls": {"training": {"breach": {"covers_reporting_process": false}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"IR-2(3)"}
+	some x in v
+	contains(x, "reporting a breach")
+}
+
+test_privacy_ir2_3_evidence_missing_2 if {
+	v := data.nist.sp800_53.incident_response.violation with input as object.union(_pass, {"ir_controls": {"training": {"breach": {"covers_identification": 1}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"IR-2(3)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_ir8_1_fails_1 if {
+	v := data.nist.sp800_53.incident_response.violation with input as object.union(_pass, {"ir_controls": {"plan": {"breaches": {"harm_assessment_process": false}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"IR-8(1)"}
+	some x in v
+	contains(x, "assess the harm")
+}
+
+test_privacy_ir8_1_evidence_missing_2 if {
+	v := data.nist.sp800_53.incident_response.violation with input as object.union(_pass, {"ir_controls": {"plan": {"breaches": {"privacy_requirements_identified": null}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"IR-8(1)"}
+	some x in v
+	contains(x, "evidence missing")
 }

@@ -165,8 +165,8 @@ test_ac15_withdrawn_never_a_finding if {
 
 test_ac_one_finding_per_evaluated_id_on_empty_input if {
 	r := ac.compliance_report with input as {}
-	r.controls_evaluated == 59
-	count(r.violations) == 59
+	r.controls_evaluated == 60
+	count(r.violations) == 60
 	every id in ac.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}
@@ -176,7 +176,7 @@ test_ac_one_finding_per_evaluated_id_on_empty_input if {
 
 _ids(r) := {trim_prefix(split(v, ":")[0], "NIST ") | some v in r.violations}
 
-_pass := {"ac_controls": {
+_pass_base := {"ac_controls": {
 	"policy": {"documented": true, "disseminated": true, "reviewed_updated": true},
 	"procedures": {"implementation_documented": true},
 	"account_management": {
@@ -423,4 +423,37 @@ test_high_enhancement_failure_leaves_base_passing if {
 	fx := object.union(_pass, {"ac_controls": {"wireless_access": {"user_configuration": {"authorized_users_identified": false}}}})
 	r := ac.compliance_report with input as fx
 	_ids(r) == {"AC-18(4)"}
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"ac_controls": {"access_enforcement": {"individual_access": {"mechanisms_implemented": true, "odp": {"elements": ["name", "address"]}, "elements_accessible": ["name", "address", "email"]}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_ac3_14_fails_1 if {
+	v := data.nist.sp800_53.access_control.violation with input as object.union(_pass, {"ac_controls": {"access_enforcement": {"individual_access": {"elements_accessible": ["name"]}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AC-3(14)"}
+	some x in v
+	contains(x, "cannot access")
+}
+
+test_privacy_ac3_14_evidence_missing_2 if {
+	v := data.nist.sp800_53.access_control.violation with input as object.union(_pass, {"ac_controls": {"access_enforcement": {"individual_access": {"mechanisms_implemented": "true"}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AC-3(14)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_ac17_3_evidence_missing_1 if {
+	v := data.nist.sp800_53.access_control.violation with input as object.union(_pass, {"ac_controls": {"remote_access": {"unmanaged_access_points": -1}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AC-17(3)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_ac17_3_evidence_missing_2 if {
+	v := data.nist.sp800_53.access_control.violation with input as object.union(_pass, {"ac_controls": {"remote_access": {"unmanaged_access_points": 0.5}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AC-17(3)"}
+	some x in v
+	contains(x, "evidence missing")
 }
