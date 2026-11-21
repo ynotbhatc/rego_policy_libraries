@@ -11,7 +11,7 @@ survives: the tests never noticed that change to the rule.
 ```bash
 make mutation MODULE=frameworks/financial/pci_dss/access_control
 make mutation MODULE=benchmarks/cis/rhel_9 ARGS="--file ssh_validation.rego --json /tmp/cis_ssh.json"
-python3 scripts/mutation_test.py benchmarks/stig/rhel_9 --ops eq,bound --jobs 8
+python3 scripts/mutation_test.py benchmarks/stig/rhel_9 --ops eq,bound --jobs 4
 ```
 
 | operator | change |

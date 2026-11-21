@@ -10,7 +10,7 @@ hit --timeout as "timeout" (usually a loaded machine: rerun with fewer --jobs); 
 
     python3 scripts/mutation_test.py benchmarks/stig/rhel_9
     python3 scripts/mutation_test.py frameworks/financial/pci_dss --file 'requirement_8*'
-    python3 scripts/mutation_test.py benchmarks/cis/rhel_9 --ops eq,bool --json /tmp/m.json --jobs 8
+    python3 scripts/mutation_test.py benchmarks/cis/rhel_9 --ops eq,bool --json /tmp/m.json --jobs 4
     make mutation MODULE=frameworks/federal/nist/sp_800_53/access_control
 
 Operators (--ops, comma-separated; default all):
@@ -185,7 +185,7 @@ def main() -> int:
     ap.add_argument("module", help="module directory (policy files and their tests)")
     ap.add_argument("--file", action="append", default=[], help="only mutate policy files matching this glob (repeatable)")
     ap.add_argument("--ops", default=",".join(ALL_OPS), help="operators to apply (default: all)")
-    ap.add_argument("--jobs", type=int, default=os.cpu_count() or 4)
+    ap.add_argument("--jobs", type=int, default=2, help="concurrent opa test runs (default 2; each run is itself multi-threaded)")
     ap.add_argument("--timeout", type=int, default=30, help="opa test --timeout per run, seconds")
     ap.add_argument("--json", help="write every mutant's result to this file")
     ap.add_argument("--show", type=int, default=200, help="survivors to print (default 200)")
