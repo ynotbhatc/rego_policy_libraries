@@ -105,13 +105,13 @@ test_ol09_00_001015_fail_1 if {
 }
 
 test_ol09_00_001015_fail_2 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001015 with input as object.union(green_fixture, {"password_policy": {"lcredit": 0}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001015 with input as object.union(green_fixture, {"password_policy": {"lcredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001015: check failed")
 }
 
 test_ol09_00_001015_fail_3 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001015 with input as object.union(green_fixture, {"password_policy": {"lcredit": "1"}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001015 with input as object.union(green_fixture, {"password_policy": {"lcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001015: check failed")
 }
@@ -126,6 +126,14 @@ test_ol09_00_001015_pass_2 if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001015 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "-1"}})
 }
 
+test_ol09_00_001015_pass_3 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001015 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "0"}})
+}
+
+test_ol09_00_001015_pass_4 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001015 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": -2}})
+}
+
 test_ol09_00_001020_pass if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001020 == "Not_a_Finding" with input as green_fixture
 }
@@ -137,13 +145,13 @@ test_ol09_00_001020_fail_1 if {
 }
 
 test_ol09_00_001020_fail_2 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001020 with input as object.union(green_fixture, {"password_policy": {"dcredit": 0}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001020 with input as object.union(green_fixture, {"password_policy": {"dcredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001020: check failed")
 }
 
 test_ol09_00_001020_fail_3 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001020 with input as object.union(green_fixture, {"password_policy": {"dcredit": "1"}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001020 with input as object.union(green_fixture, {"password_policy": {"dcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001020: check failed")
 }
@@ -158,6 +166,14 @@ test_ol09_00_001020_pass_2 if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001020 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "-1"}})
 }
 
+test_ol09_00_001020_pass_3 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001020 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "0"}})
+}
+
+test_ol09_00_001020_pass_4 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001020 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": -2}})
+}
+
 test_ol09_00_001120_pass if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001120 == "Not_a_Finding" with input as green_fixture
 }
@@ -169,13 +185,13 @@ test_ol09_00_001120_fail_1 if {
 }
 
 test_ol09_00_001120_fail_2 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001120 with input as object.union(green_fixture, {"password_policy": {"ocredit": 0}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001120 with input as object.union(green_fixture, {"password_policy": {"ocredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001120: check failed")
 }
 
 test_ol09_00_001120_fail_3 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001120 with input as object.union(green_fixture, {"password_policy": {"ocredit": "1"}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001120 with input as object.union(green_fixture, {"password_policy": {"ocredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001120: check failed")
 }
@@ -188,6 +204,14 @@ test_ol09_00_001120_evidence_missing_1 if {
 
 test_ol09_00_001120_pass_2 if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001120 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "-1"}})
+}
+
+test_ol09_00_001120_pass_3 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001120 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "0"}})
+}
+
+test_ol09_00_001120_pass_4 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001120 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": -2}})
 }
 
 test_ol09_00_001095_pass if {
@@ -339,13 +363,13 @@ test_ol09_00_001005_fail_1 if {
 }
 
 test_ol09_00_001005_fail_2 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001005 with input as object.union(green_fixture, {"password_policy": {"ucredit": 0}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001005 with input as object.union(green_fixture, {"password_policy": {"ucredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001005: check failed")
 }
 
 test_ol09_00_001005_fail_3 if {
-	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001005 with input as object.union(green_fixture, {"password_policy": {"ucredit": "1"}})
+	f := data.stig.oracle_linux_9.account_auth.finding_ol09_00_001005 with input as object.union(green_fixture, {"password_policy": {"ucredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-001005: check failed")
 }
@@ -358,6 +382,14 @@ test_ol09_00_001005_evidence_missing_1 if {
 
 test_ol09_00_001005_pass_2 if {
 	data.stig.oracle_linux_9.account_auth.status_ol09_00_001005 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "-1"}})
+}
+
+test_ol09_00_001005_pass_3 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001005 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "0"}})
+}
+
+test_ol09_00_001005_pass_4 if {
+	data.stig.oracle_linux_9.account_auth.status_ol09_00_001005 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": -2}})
 }
 
 test_ol09_00_001085_pass if {

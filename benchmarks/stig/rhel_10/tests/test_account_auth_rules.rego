@@ -252,13 +252,13 @@ test_rhel_10_600250_fail_1 if {
 }
 
 test_rhel_10_600250_fail_2 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600250 with input as object.union(green_fixture, {"password_policy": {"ucredit": 0}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600250 with input as object.union(green_fixture, {"password_policy": {"ucredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600250: check failed")
 }
 
 test_rhel_10_600250_fail_3 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600250 with input as object.union(green_fixture, {"password_policy": {"ucredit": "1"}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600250 with input as object.union(green_fixture, {"password_policy": {"ucredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600250: check failed")
 }
@@ -273,6 +273,14 @@ test_rhel_10_600250_pass_2 if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600250 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "-1"}})
 }
 
+test_rhel_10_600250_pass_3 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600250 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": "0"}})
+}
+
+test_rhel_10_600250_pass_4 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600250 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ucredit": -2}})
+}
+
 test_rhel_10_600310_pass if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600310 == "Not_a_Finding" with input as green_fixture
 }
@@ -284,13 +292,13 @@ test_rhel_10_600310_fail_1 if {
 }
 
 test_rhel_10_600310_fail_2 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600310 with input as object.union(green_fixture, {"password_policy": {"dcredit": 0}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600310 with input as object.union(green_fixture, {"password_policy": {"dcredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600310: check failed")
 }
 
 test_rhel_10_600310_fail_3 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600310 with input as object.union(green_fixture, {"password_policy": {"dcredit": "1"}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600310 with input as object.union(green_fixture, {"password_policy": {"dcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600310: check failed")
 }
@@ -305,6 +313,14 @@ test_rhel_10_600310_pass_2 if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600310 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "-1"}})
 }
 
+test_rhel_10_600310_pass_3 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600310 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": "0"}})
+}
+
+test_rhel_10_600310_pass_4 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600310 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dcredit": -2}})
+}
+
 test_rhel_10_600230_pass if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600230 == "Not_a_Finding" with input as green_fixture
 }
@@ -316,13 +332,13 @@ test_rhel_10_600230_fail_1 if {
 }
 
 test_rhel_10_600230_fail_2 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600230 with input as object.union(green_fixture, {"password_policy": {"ocredit": 0}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600230 with input as object.union(green_fixture, {"password_policy": {"ocredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600230: check failed")
 }
 
 test_rhel_10_600230_fail_3 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600230 with input as object.union(green_fixture, {"password_policy": {"ocredit": "1"}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600230 with input as object.union(green_fixture, {"password_policy": {"ocredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600230: check failed")
 }
@@ -337,6 +353,14 @@ test_rhel_10_600230_pass_2 if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600230 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "-1"}})
 }
 
+test_rhel_10_600230_pass_3 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600230 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": "0"}})
+}
+
+test_rhel_10_600230_pass_4 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600230 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"ocredit": -2}})
+}
+
 test_rhel_10_600240_pass if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600240 == "Not_a_Finding" with input as green_fixture
 }
@@ -348,13 +372,13 @@ test_rhel_10_600240_fail_1 if {
 }
 
 test_rhel_10_600240_fail_2 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600240 with input as object.union(green_fixture, {"password_policy": {"lcredit": 0}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600240 with input as object.union(green_fixture, {"password_policy": {"lcredit": "1"}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600240: check failed")
 }
 
 test_rhel_10_600240_fail_3 if {
-	f := data.stig.rhel_10.account_auth.finding_rhel_10_600240 with input as object.union(green_fixture, {"password_policy": {"lcredit": "1"}})
+	f := data.stig.rhel_10.account_auth.finding_rhel_10_600240 with input as object.union(green_fixture, {"password_policy": {"lcredit": 2}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-600240: check failed")
 }
@@ -367,6 +391,14 @@ test_rhel_10_600240_evidence_missing_1 if {
 
 test_rhel_10_600240_pass_2 if {
 	data.stig.rhel_10.account_auth.status_rhel_10_600240 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "-1"}})
+}
+
+test_rhel_10_600240_pass_3 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600240 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": "0"}})
+}
+
+test_rhel_10_600240_pass_4 if {
+	data.stig.rhel_10.account_auth.status_rhel_10_600240 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"lcredit": -2}})
 }
 
 test_rhel_10_600160_pass if {

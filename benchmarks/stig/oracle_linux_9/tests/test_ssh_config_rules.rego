@@ -276,7 +276,7 @@ test_ol09_00_002347_fail_1 if {
 }
 
 test_ol09_00_002347_fail_2 if {
-	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 0}})
+	f := data.stig.oracle_linux_9.ssh_config.finding_ol09_00_002347 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": -1}})
 	f.status == "Open"
 	contains(f.detail, "OL09-00-002347: check failed")
 }
@@ -295,6 +295,10 @@ test_ol09_00_002347_evidence_missing_1 if {
 
 test_ol09_00_002347_pass_2 if {
 	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+}
+
+test_ol09_00_002347_pass_3 if {
+	data.stig.oracle_linux_9.ssh_config.status_ol09_00_002347 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
 }
 
 test_ol09_00_002345_pass if {

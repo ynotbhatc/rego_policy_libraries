@@ -110,9 +110,10 @@ DROP = "/etc/ssh/sshd_config.d/10-stig.conf"
 def ssh(sid, kw, name, want, bad_value, attest=None, numeric=False):
     lk = kw.lower()
     if numeric:
-        alt = [f'v := _r10_ssh_first("{kw}")', "regex.match(`^[0-9]+$`, v)", "to_number(v) >= 1", f"to_number(v) <= {want}",
-               f'r := _r10_ssh_runtime("{kw}")', "regex.match(`^[0-9]+$`, r)", "to_number(r) >= 1", f"to_number(r) <= {want}"]
-        expect = f"{kw} must be 1..{want} in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
+        # V1R3 check text: "600" or less (0 is not excluded); the digits-only match keeps negative values a finding
+        alt = [f'v := _r10_ssh_first("{kw}")', "regex.match(`^[0-9]+$`, v)", f"to_number(v) <= {want}",
+               f'r := _r10_ssh_runtime("{kw}")', "regex.match(`^[0-9]+$`, r)", f"to_number(r) <= {want}"]
+        expect = f"{kw} must be {want} or less in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
     else:
         alt = [f'_r10_ssh_first("{kw}") == "{want}"', f'_r10_ssh_runtime("{kw}") == "{want}"']
         expect = f"{kw} must be {want} in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
@@ -122,6 +123,9 @@ def ssh(sid, kw, name, want, bad_value, attest=None, numeric=False):
             {"sshd_config_files": {kw: [{"file": "/etc/ssh/sshd_config", "value": str(want)}]}},
             {"sshd_config_files": {kw: []}}, {"sshd_runtime": {lk: bad_value}}]
     kwargs = {}
+    if numeric:
+        bads.append({"sshd_config_files": {kw: [{"file": DROP, "value": "-1"}]}, "sshd_runtime": {lk: "-1"}})
+        kwargs = dict(pass_cases=[{"sshd_config_files": {kw: [{"file": DROP, "value": "0"}]}, "sshd_runtime": {lk: "0"}}])
     if attest:
         expect += f", or its use documented with the ISSO (input.attest.{attest})"
         kwargs = dict(attest_alts=[[f'_attested("{attest}")']],

@@ -432,7 +432,7 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | RHEL-09-255075 | ssh_config | `opensshserver_config.MACs` | MACs in /etc/crypto-policies/back-ends/opensshserver.config must list only hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-… |
 | RHEL-09-255080 | ssh_config | `ssh_config.HostbasedAuthentication` | sshd HostbasedAuthentication must be no |
 | RHEL-09-255095 | ssh_config | `ssh_config.ClientAliveCountMax` | sshd ClientAliveCountMax must be 1 |
-| RHEL-09-255100 | ssh_config | `ssh_config.ClientAliveInterval` | sshd ClientAliveInterval must be set to 600 or less (0 disables it) |
+| RHEL-09-255100 | ssh_config | `ssh_config.ClientAliveInterval` | sshd ClientAliveInterval must be set to 600 or less |
 | RHEL-09-255145 | ssh_config | `ssh_config.IgnoreRhosts` | sshd IgnoreRhosts must be yes |
 | RHEL-09-255150 | ssh_config | `ssh_config.IgnoreUserKnownHosts` | sshd IgnoreUserKnownHosts must be yes |
 | RHEL-09-255155 | ssh_config | `ssh_config.X11Forwarding` | sshd X11Forwarding must be no, unless X11 forwarding is documented with the ISSO (input.attest.rhel_09_255155_x11_documented) |
@@ -451,12 +451,12 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | RHEL-09-411110 | account_auth | `duplicate_gids` | no GID may appear twice in /etc/group |
 | RHEL-09-431010 | configuration_management | `selinux.getenforce`, `selinux.config_selinux` | getenforce must return Enforcing and /etc/selinux/config must set SELINUX=enforcing |
 | RHEL-09-431015 | configuration_management | `selinux.policy` | sestatus Loaded policy name must be targeted |
-| RHEL-09-611065 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character) |
-| RHEL-09-611070 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character) |
+| RHEL-09-611065 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character) |
+| RHEL-09-611070 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character) |
 | RHEL-09-611075 | account_auth | `password_policy.mindays` | PASS_MIN_DAYS in /etc/login.defs must be 1 or greater |
 | RHEL-09-611090 | account_auth | `password_policy.minlen` | minlen in /etc/security/pwquality.conf(.d) must be 15 or greater |
-| RHEL-09-611100 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character) |
-| RHEL-09-611110 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character) |
+| RHEL-09-611100 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character) |
+| RHEL-09-611110 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character) |
 | RHEL-09-611140 | account_auth | `login_defs.ENCRYPT_METHOD` | ENCRYPT_METHOD in /etc/login.defs must be SHA512 |
 | RHEL-09-611155 | account_auth | `local_accounts_with_empty_passwords` | no /etc/shadow entry may have an empty password field |
 | RHEL-09-611165 | account_auth | `sssd.pam_cert_auth` | pam_cert_auth = True must be set (uncommented) in /etc/sssd/sssd.conf or /etc/sssd/conf.d/ |
@@ -538,15 +538,15 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | OL09-00-000910 | pki_crypto | `sssd_conf_file.certmap_rules` | /etc/sssd/sssd.conf must have a [certmap/...] section with a maprule, or the SA must show how certificates are mapped to accounts (input.attest.ol09_00_000910_… |
 | OL09-00-000925 | account_auth | `sssd_conf_file.pam_cert_auth` | pam_cert_auth = True must be set (uncommented) in /etc/sssd/sssd.conf |
 | OL09-00-000930 | pki_crypto | `sssd.certificate_verification` | certificate_verification in the [sssd] section must carry the option ocsp_dgst=sha512 and neither no_ocsp nor no_verification, or the SA must show how certific… |
-| OL09-00-001005 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character) |
-| OL09-00-001015 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character) |
-| OL09-00-001020 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character) |
+| OL09-00-001005 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character) |
+| OL09-00-001015 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character) |
+| OL09-00-001020 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character) |
 | OL09-00-001055 | account_auth | `login_defs.ENCRYPT_METHOD` | ENCRYPT_METHOD in /etc/login.defs must be SHA512 |
 | OL09-00-001085 | account_auth | `password_policy.mindays` | PASS_MIN_DAYS in /etc/login.defs must be 1 or greater |
 | OL09-00-001095 | account_auth | `password_policy.maxdays` | PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit) |
 | OL09-00-001105 | account_auth | `password_policy.minlen` | minlen in /etc/security/pwquality.conf(.d) must be 15 or greater |
 | OL09-00-001115 | configuration_management | `grub.user_cfg_password` | GRUB2_PASSWORD in /boot/grub2/user.cfg must begin with grub.pbkdf2.sha512 |
-| OL09-00-001120 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character) |
+| OL09-00-001120 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character) |
 | OL09-00-001130 | account_auth | `local_accounts_with_empty_passwords` | no /etc/shadow entry may have an empty password field |
 | OL09-00-002000 | services | `unit_enabled.autofs` | systemctl is-enabled autofs must return masked, disabled or not-found |
 | OL09-00-002070 | configuration_management | `filesystem_mounts` | /home must be a separate file system mounted with nodev (home directories under / are a finding) |
@@ -558,7 +558,7 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | OL09-00-002344 | ssh_config | `ssh_config.UsePAM` | sshd UsePAM must be yes |
 | OL09-00-002345 | ssh_config | `ssh_config.PermitRootLogin` | sshd PermitRootLogin must be no |
 | OL09-00-002346 | ssh_config | `ssh_config.ClientAliveCountMax` | sshd ClientAliveCountMax must be 1 |
-| OL09-00-002347 | ssh_config | `ssh_config.ClientAliveInterval` | sshd ClientAliveInterval must be set to 600 or less (0 disables it) |
+| OL09-00-002347 | ssh_config | `ssh_config.ClientAliveInterval` | sshd ClientAliveInterval must be set to 600 or less |
 | OL09-00-002348 | ssh_config | `ssh_config.IgnoreRhosts` | sshd IgnoreRhosts must be yes |
 | OL09-00-002349 | ssh_config | `ssh_config.IgnoreUserKnownHosts` | sshd IgnoreUserKnownHosts must be yes |
 | OL09-00-002350 | ssh_config | `ssh_config.X11Forwarding` | sshd X11Forwarding must be no, unless X11 forwarding is documented with the ISSO (input.attest.ol09_00_002350_x11_documented) |
@@ -621,7 +621,7 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | OL08-00-010182 | configuration_management | `crypto_policy`, `crypto_policy_state.hash`, `crypto_policy_state.min_rsa_size` | update-crypto-policies --show must be FIPS; CURRENT.pol hash must include SHA2-256 SHA2-384 SHA2-512 SHA2-224 SHA3-256 SHA3-384 SHA3-512, nothing with SHA1 or … |
 | OL08-00-010183 | pki_crypto | `crypto_policy_check.is_applied` | update-crypto-policies --is-applied must report: The configured policy is applied |
 | OL08-00-010200 | ssh_config | `sshd_config_lines.ClientAliveCountMax` | ClientAliveCountMax must be 1 (none conflicting) |
-| OL08-00-010201 | ssh_config | `sshd_config_lines.ClientAliveInterval` | ClientAliveInterval must be 1..600 seconds on every line sshd reads (0 disables it), none conflicting |
+| OL08-00-010201 | ssh_config | `sshd_config_lines.ClientAliveInterval` | ClientAliveInterval must be 600 or less on every line sshd reads, none conflicting |
 | OL08-00-010290 | ssh_config | `opensshserver_config.MACs` | MACs in /etc/crypto-policies/back-ends/opensshserver.config must list only hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-… |
 | OL08-00-010291 | ssh_config | `opensshserver_config.Ciphers` | Ciphers in /etc/crypto-policies/back-ends/opensshserver.config must list only aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr |
 | OL08-00-010293 | pki_crypto | `openssl_cnf.lines` | /etc/pki/tls/openssl.cnf must include /etc/crypto-policies/back-ends/opensslcnf.config (uncommented) |
@@ -653,14 +653,14 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | OL08-00-020013 | account_auth | `faillock_conf.fail_interval` | fail_interval in /etc/security/faillock.conf must be 900 or more (OL 8's finding: not set to 900 or more) |
 | OL08-00-020050 | pki_crypto | `dconf_db.removal_action` | an uncommented removal-action='lock-screen' must be set in the dconf database files (/etc/dconf/db/*) |
 | OL08-00-020090 | pki_crypto | `sssd_conf_file.certmap_rules` | /etc/sssd/sssd.conf must have a [certmap/...] section with a maprule |
-| OL08-00-020110 | account_auth | `pwquality_values.ucredit` | ucredit must be <= -1 on every uncommented ucredit line of /etc/security/pwquality.conf*, with no conflicting values |
-| OL08-00-020120 | account_auth | `pwquality_values.lcredit` | lcredit must be <= -1 on every uncommented lcredit line of /etc/security/pwquality.conf*, with no conflicting values |
-| OL08-00-020130 | account_auth | `pwquality_values.dcredit` | dcredit must be <= -1 on every uncommented dcredit line of /etc/security/pwquality.conf*, with no conflicting values |
+| OL08-00-020110 | account_auth | `pwquality_values.ucredit` | ucredit must be <= 0 on every uncommented ucredit line of /etc/security/pwquality.conf*, with no conflicting values |
+| OL08-00-020120 | account_auth | `pwquality_values.lcredit` | lcredit must be <= 0 on every uncommented lcredit line of /etc/security/pwquality.conf*, with no conflicting values |
+| OL08-00-020130 | account_auth | `pwquality_values.dcredit` | dcredit must be <= 0 on every uncommented dcredit line of /etc/security/pwquality.conf*, with no conflicting values |
 | OL08-00-020190 | account_auth | `password_policy.mindays` | PASS_MIN_DAYS in /etc/login.defs must be 1 or greater |
 | OL08-00-020200 | account_auth | `password_policy.maxdays` | PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit) |
 | OL08-00-020230 | account_auth | `pwquality_values.minlen` | minlen must be >= 15 on every uncommented minlen line of /etc/security/pwquality.conf*, with no conflicting values |
 | OL08-00-020240 | account_auth | `duplicate_uid_accounts` | no interactive account in /etc/passwd may share its UID with another account |
-| OL08-00-020280 | account_auth | `pwquality_values.ocredit` | ocredit must be <= -1 on every uncommented ocredit line of /etc/security/pwquality.conf*, with no conflicting values |
+| OL08-00-020280 | account_auth | `pwquality_values.ocredit` | ocredit must be <= 0 on every uncommented ocredit line of /etc/security/pwquality.conf*, with no conflicting values |
 | OL08-00-020330 | ssh_config | `sshd_config_lines.PermitEmptyPasswords` | PermitEmptyPasswords must not be yes (none conflicting) |
 | OL08-00-020350 | ssh_config | `sshd_config_lines.PrintLastLog` | PrintLastLog must be yes (set, not no, none conflicting) |
 | OL08-00-030000 | audit_logging | `audit_rules_file` | execve must be audited for b32 and b64 with -C uid!=euid -F euid=0 and -C gid!=egid -F egid=0 (all four rules) |
@@ -759,10 +759,10 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | RHEL-10-600160 | account_auth | `password_policy.inactive_days` | INACTIVE in /etc/default/useradd must be 0 to 35 (not -1) |
 | RHEL-10-600210 | account_auth | `password_policy.mindays` | PASS_MIN_DAYS in /etc/login.defs must be 1 or greater |
 | RHEL-10-600220 | account_auth | `password_policy.minlen` | minlen in /etc/security/pwquality.conf(.d) must be 15 or greater |
-| RHEL-10-600230 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character) |
-| RHEL-10-600240 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character) |
-| RHEL-10-600250 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character) |
-| RHEL-10-600310 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character) |
+| RHEL-10-600230 | account_auth | `password_policy.ocredit` | ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character) |
+| RHEL-10-600240 | account_auth | `password_policy.lcredit` | lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character) |
+| RHEL-10-600250 | account_auth | `password_policy.ucredit` | ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character) |
+| RHEL-10-600310 | account_auth | `password_policy.dcredit` | dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character) |
 | RHEL-10-600410 | account_auth | `faillock_conf.deny` | deny in /etc/security/faillock.conf must be 1 to 3 (not 0) |
 | RHEL-10-600420 | account_auth | `faillock_conf.fail_interval` | fail_interval in /etc/security/faillock.conf must be 900 or less (not 0) |
 | RHEL-10-600460 | account_auth | `local_accounts_with_empty_passwords` | no /etc/shadow entry may have an empty password field |
@@ -786,7 +786,7 @@ Each is `input.attest.<key> == true`; the rule id is in the key.
 | RHEL-10-700850 | configuration_management | `modprobe["usb-storage"]` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install usb-storage /bin/false' and 'blacklist usb-storage', or its use must be documented with… |
 | RHEL-10-700860 | network | `modprobe.bluetooth` | /etc/modprobe.conf or /etc/modprobe.d/* must carry uncommented 'install bluetooth /bin/false' and 'blacklist bluetooth', or its use must be documented with the… |
 | RHEL-10-700870 | network | `wireless_interfaces` | no wireless interface may be configured unless documented and approved by the ISSO (input.attest.rhel_10_700870_wireless_approved) |
-| RHEL-10-700930 | ssh_config | `sshd_config_files.ClientAliveInterval`, `sshd_runtime.clientaliveinterval` | ClientAliveInterval must be 1..600 in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T) |
+| RHEL-10-700930 | ssh_config | `sshd_config_files.ClientAliveInterval`, `sshd_runtime.clientaliveinterval` | ClientAliveInterval must be 600 or less in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T) |
 | RHEL-10-700960 | configuration_management | `systemd_units["ctrl-alt-del.target"].load_state` | ctrl-alt-del.target must be masked (systemctl status: Loaded: masked) |
 | RHEL-10-701030 | configuration_management | `kernel_params["kernel.dmesg_restrict"]` | kernel.dmesg_restrict must be 1 |
 | RHEL-10-701040 | configuration_management | `kernel_params["kernel.perf_event_paranoid"]` | kernel.perf_event_paranoid must be 2 |
