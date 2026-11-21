@@ -8,6 +8,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — per-control findings for CIS M365 v7, RHEL 9 and Windows Server 2022 (#309)
+
+- Every `control_results` row now carries `findings`: the messages that cite that recommendation (Windows
+  includes the observed value). It is empty for passes and for out-of-profile rows.
+- #310: no CIS benchmark → other-framework crosswalk ships yet, so rows carry no `mappings` field.
+
 ### Added — NIST SP 800-53 Rev 5: all 300 base controls and every High-baseline control (523 ids)
 
 The module evaluates 523 ids (was 370): all 300 active base controls and 223 enhancements, which is every control
