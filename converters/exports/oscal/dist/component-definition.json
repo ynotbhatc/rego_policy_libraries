@@ -173060,7 +173060,7 @@
      {
       "uuid": "ca89850e-e999-56ce-a012-fb615ee468a7",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_saas.json",
-      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (228 controls, 17 Rego modules).",
+      "description": "Controls of cis_saas evaluated by the Rego Policy Libraries (255 controls, 17 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -175645,6 +175645,381 @@
         ]
        },
        {
+        "uuid": "4374d977-fcd6-50a2-aa70-b6c93d538e7b",
+        "control-id": "cis_saas-CIS-1.3.8",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): Sways cannot be shared outside the organization",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 1.3.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c74ae27a-7be1-5007-8820-1e2784876872",
+        "control-id": "cis_saas-CIS-2.2.1",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): emergency access account activity monitored",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 2.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "60074985-da37-57fb-a675-8cb876eb4d32",
+        "control-id": "cis_saas-CIS-2.4.3",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): Defender for Cloud Apps enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 2.4.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "32fa55da-46f4-51a4-becc-72d7f2f03a2e",
+        "control-id": "cis_saas-CIS-2.4.5",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): AIR remediation enabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 2.4.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2f43521a-9753-543a-8829-9e5af80cd078",
+        "control-id": "cis_saas-CIS-5.1.2.4",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): access to the Entra admin center restricted",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.1.2.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "83708e83-93d9-5494-af7f-4aed75cafe35",
+        "control-id": "cis_saas-CIS-5.1.2.5",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): the option to remain signed in is hidden",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.1.2.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3fab7bb4-7cf2-5891-a2b3-aa74082e668e",
+        "control-id": "cis_saas-CIS-5.1.2.6",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): LinkedIn account connections disabled",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.1.2.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b1dc5e4f-1f5f-544d-8fcd-628f6a60109b",
+        "control-id": "cis_saas-CIS-5.1.3.2",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): user ability to access groups features restricted",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.1.3.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "80c8b11a-182b-5e62-aaa0-82e4825b10e1",
+        "control-id": "cis_saas-CIS-5.1.3.3",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): owners can manage group membership requests",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.1.3.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e1dcc938-7184-5992-963a-0a55af82f77a",
+        "control-id": "cis_saas-CIS-5.2.4.1",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): self-service password reset enabled for all users",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.2.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "bd2c2670-a3ad-5397-b83d-9ae5c897c573",
+        "control-id": "cis_saas-CIS-5.2.4.2",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): two methods required for password reset",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.2.4.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6d6062bf-55b6-556e-b929-35d15bbac6cf",
+        "control-id": "cis_saas-CIS-5.2.4.3",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): SSPR registration and re-confirmation configured",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.2.4.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "df9b96a6-4ead-5011-9a4f-4f5e40129d7d",
+        "control-id": "cis_saas-CIS-5.2.4.4",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): users notified on password resets",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.2.4.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8c25545b-937f-57d5-9b72-b4ed9b803e19",
+        "control-id": "cis_saas-CIS-5.2.4.5",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): admins notified when other admins reset a password",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.2.4.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3e689880-7607-5607-9f07-60eb479f62fc",
+        "control-id": "cis_saas-CIS-8.4.1",
+        "description": "Evaluated by Rego package cis_m365_v7.attestation (benchmarks/cis/saas/m365_v7/attestation_validation.rego): app permission policies configured",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 8.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "e5559a0f-c161-515c-b436-e0ee03ac743b",
         "control-id": "cis_saas-CIS-2.1.9",
         "description": "Evaluated by Rego package cis_m365_v7.defender (benchmarks/cis/saas/m365_v7/defender_validation.rego): DKIM not enabled for domain '%s' -- no DKIM selector record is published, so outbound mail carries no verifiable origin signature",
@@ -177345,6 +177720,56 @@
         ]
        },
        {
+        "uuid": "483fcd2f-2361-584b-bc6f-d43d7002b3bc",
+        "control-id": "cis_saas-CIS-5.3.4",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): evaluated in benchmarks/cis/saas/m365_v7/entra_validation.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.3.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.entra"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b4fde077-e6f1-5b2b-9bb3-91ba3e7e343b",
+        "control-id": "cis_saas-CIS-5.3.5",
+        "description": "Evaluated by Rego package cis_m365_v7.entra (benchmarks/cis/saas/m365_v7/entra_validation.rego): evaluated in benchmarks/cis/saas/m365_v7/entra_validation.rego by a table-driven rule (id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 5.3.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.entra"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/entra_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "dac73714-ee91-5e1e-a049-083b0c947811",
         "control-id": "cis_saas-CIS-6.5.1",
         "description": "Evaluated by Rego package cis_m365_v7.exchange (benchmarks/cis/saas/m365_v7/exchange_validation.rego): modern authentication for Exchange Online is not enabled; legacy authentication bypasses Conditional Access and multifactor requirements",
@@ -177927,6 +178352,256 @@
          {
           "name": "label",
           "value": "cis_m365_v7.fabric#2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "57679b53-e839-5b9c-8826-28a2ca5a1803",
+        "control-id": "cis_saas-CIS-9.1.1",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks AllowGuestUserToAccessSharedContent, tenant_settings (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "75301226-9d27-5db2-a991-b57dc2ef5bb6",
+        "control-id": "cis_saas-CIS-9.1.2",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks ExternalSharingV2 (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b84fbbd4-3bc9-53f3-949f-a7fbf06ab779",
+        "control-id": "cis_saas-CIS-9.1.3",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks ElevatedGuestsTenant (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8f0e5e6f-e602-53ae-8dcd-e8b501c56c42",
+        "control-id": "cis_saas-CIS-9.1.4",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks PublishToWeb (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4f3bfa81-826b-5a3c-996f-226995311ff4",
+        "control-id": "cis_saas-CIS-9.1.5",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks RScriptVisual (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e2cb7cf8-fafa-54bb-93c8-f048fcda7788",
+        "control-id": "cis_saas-CIS-9.1.7",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks ShareLinkToEntireOrg (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5a257c96-811d-57e8-acf3-c4f2bad5b378",
+        "control-id": "cis_saas-CIS-9.1.8",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks EnableDatasetInPlaceSharing (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3bf8f3b0-67e2-52ed-94a9-31d70868f1a3",
+        "control-id": "cis_saas-CIS-9.1.10",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks ServicePrincipalAccessPermissionAPIs (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "85d83a4c-32bb-5280-a644-188b8df143f1",
+        "control-id": "cis_saas-CIS-9.1.11",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks AllowServicePrincipalsCreateAndUseProfiles (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.11"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_m365_v7.fabric"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/saas/m365_v7/fabric_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b17924db-b666-57e2-8da9-175020837ba9",
+        "control-id": "cis_saas-CIS-9.1.12",
+        "description": "Evaluated by Rego package cis_m365_v7.fabric (benchmarks/cis/saas/m365_v7/fabric_validation.rego): checks ServicePrincipalAccessGlobalAPIs (table-driven rule; id from the module's CONTROL_INDEX)",
+        "props": [
+         {
+          "name": "label",
+          "value": "CIS 9.1.12"
          },
          {
           "name": "rego-package",
@@ -224050,7 +224725,7 @@
      {
       "uuid": "9cb7ed7b-298a-57a4-be13-b8181f4a0c59",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_10_modular.json",
-      "description": "Controls of cis_windows_10_modular evaluated by the Rego Policy Libraries (504 controls, 9 Rego modules).",
+      "description": "Controls of cis_windows_10_modular evaluated by the Rego Policy Libraries (506 controls, 9 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -232385,6 +233060,56 @@
         ]
        },
        {
+        "uuid": "d8e3b677-6fc5-5ec6-a842-00a5a561f53b",
+        "control-id": "cis_windows_10_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_10.attestation (benchmarks/cis/windows_10_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_10.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_10_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ce1e97bf-7781-5946-99f1-f734506886c1",
+        "control-id": "cis_windows_10_modular-2.3.11.6",
+        "description": "Evaluated by Rego package cis_windows_10.attestation (benchmarks/cis/windows_10_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_10.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_10_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "db5a358f-6fff-57fb-8b5e-fd31d7c6c68e",
         "control-id": "cis_windows_10_modular-9.1.1",
         "description": "Evaluated by Rego package cis_windows_10.firewall (benchmarks/cis/windows_10_modular/firewall_validation.rego): EnableFirewall",
@@ -236664,7 +237389,7 @@
      {
       "uuid": "ca97da4a-7f82-53e9-a4be-5dae32b40d95",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_11_modular.json",
-      "description": "Controls of cis_windows_11_modular evaluated by the Rego Policy Libraries (538 controls, 9 Rego modules).",
+      "description": "Controls of cis_windows_11_modular evaluated by the Rego Policy Libraries (540 controls, 9 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -245899,6 +246624,56 @@
         ]
        },
        {
+        "uuid": "6d99cf39-423f-590e-9808-8a2043670610",
+        "control-id": "cis_windows_11_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_11.attestation (benchmarks/cis/windows_11_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_11.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_11_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6a2de39f-7ba7-5b2d-bde6-9ba385d71b62",
+        "control-id": "cis_windows_11_modular-2.3.11.5",
+        "description": "Evaluated by Rego package cis_windows_11.attestation (benchmarks/cis/windows_11_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_11.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_11_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "782ec0fa-2b47-5382-baa9-d1d5846e0516",
         "control-id": "cis_windows_11_modular-9.1.1",
         "description": "Evaluated by Rego package cis_windows_11.firewall (benchmarks/cis/windows_11_modular/firewall_validation.rego): EnableFirewall",
@@ -250128,7 +250903,7 @@
      {
       "uuid": "8257d268-0bcb-536d-a408-07b18d2d11c6",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_server_2016_modular.json",
-      "description": "Controls of cis_windows_server_2016_modular evaluated by the Rego Policy Libraries (423 controls, 9 Rego modules).",
+      "description": "Controls of cis_windows_server_2016_modular evaluated by the Rego Policy Libraries (425 controls, 9 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -257038,6 +257813,56 @@
         ]
        },
        {
+        "uuid": "5bee132b-a7b7-502e-8d7a-b1184a4c3fe8",
+        "control-id": "cis_windows_server_2016_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_server_2016.attestation (benchmarks/cis/windows_server_2016_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2016.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2016_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ee07cf01-0f7c-5735-9341-c2063d7431e9",
+        "control-id": "cis_windows_server_2016_modular-2.3.11.6",
+        "description": "Evaluated by Rego package cis_windows_server_2016.attestation (benchmarks/cis/windows_server_2016_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2016.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2016_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "b1a94853-d490-5f8b-8168-9b49d0a92583",
         "control-id": "cis_windows_server_2016_modular-risk_breakdown",
         "description": "Evaluated by Rego package cis_windows_server_2016 (benchmarks/cis/windows_server_2016_modular/cis_windows_server_2016_complete.rego): Implemented by a Rego rule in benchmarks/cis/windows_server_2016_modular/cis_windows_server_2016_complete.rego (package cis_windows_server_2016); see the rule body.",
@@ -260717,7 +261542,7 @@
      {
       "uuid": "94b34ed9-56f6-5a37-8961-4f36a8e5977d",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_server_2019_modular.json",
-      "description": "Controls of cis_windows_server_2019_modular evaluated by the Rego Policy Libraries (401 controls, 9 Rego modules).",
+      "description": "Controls of cis_windows_server_2019_modular evaluated by the Rego Policy Libraries (403 controls, 9 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -267152,6 +267977,56 @@
         ]
        },
        {
+        "uuid": "854b4bee-0719-5784-9e23-20c1a6f73d42",
+        "control-id": "cis_windows_server_2019_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_server_2019.attestation (benchmarks/cis/windows_server_2019_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2019.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2019_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "32010e60-e710-5796-a504-4321c3b89376",
+        "control-id": "cis_windows_server_2019_modular-2.3.11.6",
+        "description": "Evaluated by Rego package cis_windows_server_2019.attestation (benchmarks/cis/windows_server_2019_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2019.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2019_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "c7d843f6-3cef-5e17-89e3-4142227ff539",
         "control-id": "cis_windows_server_2019_modular-risk_breakdown",
         "description": "Evaluated by Rego package cis_windows_server_2019 (benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego): Implemented by a Rego rule in benchmarks/cis/windows_server_2019_modular/cis_windows_server_2019_complete.rego (package cis_windows_server_2019); see the rule body.",
@@ -271020,7 +271895,7 @@
      {
       "uuid": "76856984-fe2c-5d03-99e0-074f6cd12882",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_server_2022_modular.json",
-      "description": "Controls of cis_windows_server_2022_modular evaluated by the Rego Policy Libraries (408 controls, 8 Rego modules).",
+      "description": "Controls of cis_windows_server_2022_modular evaluated by the Rego Policy Libraries (410 controls, 8 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -277680,6 +278555,56 @@
         ]
        },
        {
+        "uuid": "d7a2e20f-0def-5d20-8b10-19ea281e81cb",
+        "control-id": "cis_windows_server_2022_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_server_2022.attestation (benchmarks/cis/windows_server_2022_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2022.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2022_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f04ce669-2181-573c-a717-6a5f79bc92c1",
+        "control-id": "cis_windows_server_2022_modular-2.3.11.6",
+        "description": "Evaluated by Rego package cis_windows_server_2022.attestation (benchmarks/cis/windows_server_2022_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2022.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2022_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "e55f5754-bffc-5866-b801-473d554ff50b",
         "control-id": "cis_windows_server_2022_modular-9.1.1",
         "description": "Evaluated by Rego package cis_windows_server_2022.firewall (benchmarks/cis/windows_server_2022_modular/firewall_validation.rego): EnableFirewall",
@@ -281234,7 +282159,7 @@
      {
       "uuid": "af015bb9-766d-5865-a7e4-9d13f8c3df4a",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/cis_windows_server_2025_modular.json",
-      "description": "Controls of cis_windows_server_2025_modular evaluated by the Rego Policy Libraries (429 controls, 9 Rego modules).",
+      "description": "Controls of cis_windows_server_2025_modular evaluated by the Rego Policy Libraries (431 controls, 9 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -288376,6 +289301,56 @@
          {
           "name": "label",
           "value": "cis_windows_server_2025.attestation#2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2025.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2025_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "393a11cd-b646-5876-8727-f6e12fa65aa1",
+        "control-id": "cis_windows_server_2025_modular-1.2.3",
+        "description": "Evaluated by Rego package cis_windows_server_2025.attestation (benchmarks/cis/windows_server_2025_modular/attestation_validation.rego): Administrator account lockout allowed; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "1.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "cis_windows_server_2025.attestation"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "benchmarks/cis/windows_server_2025_modular/attestation_validation.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5b547824-a66b-5fbe-9d0a-84df09b7dd88",
+        "control-id": "cis_windows_server_2025_modular-2.3.11.5",
+        "description": "Evaluated by Rego package cis_windows_server_2025.attestation (benchmarks/cis/windows_server_2025_modular/attestation_validation.rego): users forced off when logon hours expire; evidence: attestations",
+        "props": [
+         {
+          "name": "label",
+          "value": "2.3.11.5"
          },
          {
           "name": "rego-package",

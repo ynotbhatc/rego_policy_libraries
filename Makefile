@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
+.PHONY: test lint metadata check count mutation wasm wasm-classes coverage check-no-data check-bad-input check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -13,6 +13,8 @@ help:
 	@echo "  make check         lint + test + metadata"
 	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text (offline)"
 	@echo "  make standards-releases  Check upstream sources for releases newer than standards.yaml (network)"
+	@echo "  make mutation MODULE=<dir> [ARGS=...]  Mutation-test one module directory (slow; not run in CI)"
+	@echo "  make check-bad-input  Empty / null / string-typed input and mutated fixtures never pass (known failures listed)"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
@@ -37,6 +39,14 @@ lint:
 test:
 	@echo "=== Running OPA tests (same suite as .github/workflows/opa-test.yml) ==="
 	$(OPA) test . --ignore .github --ignore converters --timeout 30s
+
+# Mutation testing of one module directory (#306): flips comparisons and booleans, drops a `not` or a body
+# line, and reports which changes the module's own tests did not notice. Slow, so not part of CI.
+#   make mutation MODULE=frameworks/financial/pci_dss/access_control
+#   make mutation MODULE=benchmarks/cis/rhel_9 ARGS="--file ssh_validation.rego --json /tmp/m.json"
+mutation:
+	@test -n "$(MODULE)" || { echo 'usage: make mutation MODULE=<module dir> [ARGS="--file <glob> --ops eq,bool --json out.json"]'; exit 2; }
+	@python3 scripts/mutation_test.py $(MODULE) $(ARGS)
 
 count:
 	@echo "=== Control-level check count (scripts/count_controls.py) — also restamps docs/metrics.json ==="
@@ -69,6 +79,7 @@ check-converters:
 	@bash converters/packaging/terraform_platforms/test/roundtrip.sh
 	@bash converters/exports/oscal/test/roundtrip.sh
 	@bash converters/exports/sarif/test/roundtrip.sh
+	@bash converters/exports/_lib/test/roundtrip.sh
 	@bash converters/exports/ocsf/test/roundtrip.sh
 	@bash converters/exports/crosswalk_csv/test/roundtrip.sh
 	@bash converters/exports/xccdf_ids/test/roundtrip.sh
@@ -85,11 +96,17 @@ coverage:
 check-no-data:
 	@python3 scripts/check_no_data_fails.py --check-test
 
+# bad input never passes (#301): empty / missing / null / string-typed input and mutated all-pass fixtures,
+# for every entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt
+check-bad-input:
+	@OPA=$(OPA) python3 scripts/check_bad_input_fails.py --check
+
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check
 	@python3 scripts/coverage_report.py --check
 	@$(MAKE) --no-print-directory check-generated
+	@$(MAKE) --no-print-directory check-bad-input
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
 # matches the module and the OSCAL baseline profiles; the Linux STIG collector contract matches the rule tables;

@@ -75,7 +75,8 @@ assert len({r["uuid"] for r in reqs}) == len(reqs), "duplicate implemented-requi
 ar = json.loads((tmp / "assessment-results.json").read_text())["assessment-results"]
 res = ar["results"][0]
 obs = {o["uuid"] for o in res["observations"]}
-assert res["findings"] and len(res["findings"]) == len(res["observations"]) > 50
+# control_results reports (CIS RHEL 9) give one finding per row with one or more observations; violations one each
+assert res["findings"] and len(res["observations"]) >= len(res["findings"]) > 50
 for f in res["findings"]:
     assert f["target"]["status"]["state"] == "not-satisfied"
     assert all(ro["observation-uuid"] in obs for ro in f["related-observations"])
@@ -102,7 +103,7 @@ res = json.loads((tmp / "assessment-results-nist.json").read_text())["assessment
 sat = [f for f in res["findings"] if f["target"]["status"]["state"] == "satisfied"]
 assert [f["target"]["target-id"] for f in sat] == ["nist_sp_800_53-NIST-AC-3_stmt"], [f["target"]["target-id"] for f in sat]
 assert all(f["target"]["target-id"] in parts for f in res["findings"]), "a NIST finding does not target a catalog statement"
-assert len(res["findings"]) == 523, len(res["findings"])
+assert len(res["findings"]) == 542, len(res["findings"])
 print(f"PASS roundtrip: assessment-results satisfied only from control_results (NIST 800-53: {len(sat)} satisfied, {len(res['findings']) - len(sat)} not satisfied, all on catalog statements)")
 PY
 # profiles: sources fetched (pinned + sha256-verified, cached), every selected control resolves in the NIST catalog
@@ -187,7 +188,7 @@ mp, stats = bc.build_mapping(tmp / "catalogs")
 mine = {cid: {c for c, src in v.items() if "label-is-800-53" in src} for cid, v in mp.items()}
 mine = {cid: v for cid, v in mine.items() if v}
 assert mine == spine, f"label-is-800-53 mapping differs from spine_800_53.csv library_controls ({len(mine)} vs {len(spine)} ids)"
-assert summ["excluded_topic_rows"] == stats["excluded_topic_rows"] == 65, f"excluded topic rows: {summ['excluded_topic_rows']}"
+assert summ["excluded_topic_rows"] == stats["excluded_topic_rows"] == 66, f"excluded topic rows: {summ['excluded_topic_rows']}"
 # component-definition: baseline control-implementations hold exactly the covered controls
 cd = json.loads((tmp / "component-definition.json").read_text())["component-definition"]
 bimpl = [ci for ci in cd["components"][0]["control-implementations"] if any(p["name"] == "baseline" for p in ci["props"])]

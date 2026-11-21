@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 22
+#     checks: 30
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.pam
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies
@@ -105,15 +105,29 @@ faillock_violations contains msg if {
 
 faillock_violations contains msg if {
 	input.pam.faillock_configured
+	is_number(input.pam.faillock_deny)
 	input.pam.faillock_deny > 5
 	msg := sprintf("CIS 5.4.2: Account lockout threshold is %d attempts, should be 5 or less", [input.pam.faillock_deny])
 }
 
 faillock_violations contains msg if {
 	input.pam.faillock_configured
+	not is_number(object.get(input, ["pam", "faillock_deny"], 0))
+	msg := "CIS 5.4.2: evidence missing — pam.faillock_deny is not a number"
+}
+
+faillock_violations contains msg if {
+	input.pam.faillock_configured
+	is_number(input.pam.faillock_unlock_time)
 	input.pam.faillock_unlock_time > 0
 	input.pam.faillock_unlock_time < 900
 	msg := sprintf("CIS 5.4.2: Account unlock time is %d seconds, should be 900 or more (or 0 for never)", [input.pam.faillock_unlock_time])
+}
+
+faillock_violations contains msg if {
+	input.pam.faillock_configured
+	not is_number(object.get(input, ["pam", "faillock_unlock_time"], 0))
+	msg := "CIS 5.4.2: evidence missing — pam.faillock_unlock_time is not a number"
 }
 
 # CIS 5.4.3: password reuse must be limited to named principals
@@ -124,8 +138,15 @@ faillock_violations contains msg if {
 
 faillock_violations contains msg if {
 	input.pam.remember_configured
+	is_number(input.pam.remember_count)
 	input.pam.remember_count < 5
 	msg := sprintf("CIS 5.4.3: Password history remembers only %d passwords, should be 5 or more", [input.pam.remember_count])
+}
+
+faillock_violations contains msg if {
+	input.pam.remember_configured
+	not is_number(object.get(input, ["pam", "remember_count"], 0))
+	msg := "CIS 5.4.3: evidence missing — pam.remember_count is not a number"
 }
 
 # CIS 5.4.4: password hashing algorithm must be SHA-512 or yescrypt
@@ -143,31 +164,56 @@ pwquality_violations contains msg if {
 
 # CIS 5.5.1: checked condition — minimum days between password changes
 password_aging_violations contains msg if {
+	is_number(input.pam.pass_min_days)
 	input.pam.pass_min_days < 1
 	msg := sprintf("CIS 5.5.1: PASS_MIN_DAYS is %d, should be 1 or more", [input.pam.pass_min_days])
 }
 
+password_aging_violations contains msg if {
+	not is_number(object.get(input, ["pam", "pass_min_days"], 0))
+	msg := "CIS 5.5.1: evidence missing — pam.pass_min_days is not a number"
+}
+
 # CIS 5.5.2: password expiration must be 365 days or less
 password_aging_violations contains msg if {
+	is_number(input.pam.pass_max_days)
 	input.pam.pass_max_days > 365
 	msg := sprintf("CIS 5.5.2: PASS_MAX_DAYS is %d, should be 365 or less", [input.pam.pass_max_days])
 }
 
+password_aging_violations contains msg if {
+	not is_number(object.get(input, ["pam", "pass_max_days"], 0))
+	msg := "CIS 5.5.2: evidence missing — pam.pass_max_days is not a number"
+}
+
 # CIS 5.5.3: password expiration warning days must be 7 or more
 password_aging_violations contains msg if {
+	is_number(input.pam.pass_warn_age)
 	input.pam.pass_warn_age < 7
 	msg := sprintf("CIS 5.5.3: PASS_WARN_AGE is %d, should be 7 or more", [input.pam.pass_warn_age])
 }
 
+password_aging_violations contains msg if {
+	not is_number(object.get(input, ["pam", "pass_warn_age"], 0))
+	msg := "CIS 5.5.3: evidence missing — pam.pass_warn_age is not a number"
+}
+
 # CIS 5.5.4: inactive password lock must be 30 days or less
 account_violations contains msg if {
+	is_number(input.pam.inactive_days)
 	input.pam.inactive_days > 30
 	msg := sprintf("CIS 5.5.4: INACTIVE is %d days, should be 30 or less", [input.pam.inactive_days])
 }
 
 account_violations contains msg if {
+	is_number(input.pam.inactive_days)
 	input.pam.inactive_days < 0
 	msg := "CIS 5.5.4: INACTIVE is not set (-1), inactive accounts will never be locked"
+}
+
+account_violations contains msg if {
+	not is_number(object.get(input, ["pam", "inactive_days"], 0))
+	msg := "CIS 5.5.4: evidence missing — pam.inactive_days is not a number"
 }
 
 # CIS 5.5.5: all users last password change date must be in the past
@@ -190,8 +236,15 @@ account_violations contains msg if {
 
 account_violations contains msg if {
 	input.pam.tmout_configured
+	is_number(input.pam.tmout_value)
 	input.pam.tmout_value > 900
 	msg := sprintf("CIS 5.5.x: TMOUT is %d seconds, should be 900 or less", [input.pam.tmout_value])
+}
+
+account_violations contains msg if {
+	input.pam.tmout_configured
+	not is_number(object.get(input, ["pam", "tmout_value"], 0))
+	msg := "CIS 5.5.x: evidence missing — pam.tmout_value is not a number"
 }
 
 # Default umask

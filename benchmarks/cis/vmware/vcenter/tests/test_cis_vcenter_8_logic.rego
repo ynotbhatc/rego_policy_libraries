@@ -24,3 +24,11 @@ test_findings_populated_for_partial_input if {
 	f := pkg.findings with input as {"vcenter": {"logging": {"enabled": false}}}
 	count(f[0].violations) == 73
 }
+
+# #300 type traps: a non-number must not pass vcenter_session_timeout_configured.
+test_vcenter_session_timeout_configured_number_type_traps if {
+	data.cis_vcenter_8.vcenter_session_timeout_configured with input as {"vcenter": {"session": {"timeout_minutes": 15}}}
+	not data.cis_vcenter_8.vcenter_session_timeout_configured with input as {"vcenter": {"session": {"timeout_minutes": "1"}}}
+	not data.cis_vcenter_8.vcenter_session_timeout_configured with input as {"vcenter": {"session": {"timeout_minutes": null}}}
+	not data.cis_vcenter_8.vcenter_session_timeout_configured with input as {"vcenter": {"session": {"timeout_minutes": "not-a-number"}}}
+}

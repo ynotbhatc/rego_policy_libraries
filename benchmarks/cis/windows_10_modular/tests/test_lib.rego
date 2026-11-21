@@ -160,3 +160,11 @@ test_level_2_row_is_out_of_scope_at_level_1 if {
 	row := {"kind": "reg", "profiles": ["L2"], "path": "HKLM\\X", "name": "V", "op": "eq", "value": 1}
 	status(row) == "not_applicable" with input as {"cis_profile": {"level": 1}, "registry": {"HKLM\\X": {"V": 1}}}
 }
+
+# #300 type traps: a non-number profile level never narrows the assessment; it falls back to Level 2.
+test_level_number_type_traps if {
+	data.cis_windows_10.lib.level == 1 with input as {"cis_profile": {"level": 1}}
+	data.cis_windows_10.lib.level == 2 with input as {"cis_profile": {"level": "1"}}
+	data.cis_windows_10.lib.level == 2 with input as {"cis_profile": {"level": null}}
+	data.cis_windows_10.lib.level == 2 with input as {"cis_profile": {"level": "one"}}
+}

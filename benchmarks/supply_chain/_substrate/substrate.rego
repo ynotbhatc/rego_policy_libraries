@@ -70,6 +70,7 @@ default source_control_ok := false
 
 source_control_ok if {
 	input.source.branch_protection == true
+	is_number(input.source.required_reviews)
 	input.source.required_reviews >= 1
 	input.source.code_owner_review == true
 }

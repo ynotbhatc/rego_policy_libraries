@@ -269,15 +269,20 @@
        {
         "id": "cis_databases-CIS-2.2_obj.4",
         "name": "assessment-objective",
-        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION is '%s' (should be 'DROP,3' or 'DELAY,3')"
+        "prose": "evidence missing — oracle_version.major is not a number"
        },
        {
         "id": "cis_databases-CIS-2.2_obj.5",
         "name": "assessment-objective",
-        "prose": "Network encryption is not enabled (sqlnet.ora SQLNET.ENCRYPTION_SERVER)"
+        "prose": "SEC_PROTOCOL_ERROR_FURTHER_ACTION is '%s' (should be 'DROP,3' or 'DELAY,3')"
        },
        {
         "id": "cis_databases-CIS-2.2_obj.6",
+        "name": "assessment-objective",
+        "prose": "Network encryption is not enabled (sqlnet.ora SQLNET.ENCRYPTION_SERVER)"
+       },
+       {
+        "id": "cis_databases-CIS-2.2_obj.7",
         "name": "assessment-objective",
         "prose": "Network crypto checksumming is '%s' (should be 'REQUIRED' or 'REQUESTED')"
        }
@@ -861,40 +866,50 @@
        {
         "id": "cis_databases-CIS-1.1_obj.4",
         "name": "assessment-objective",
-        "prose": "%d critical security patches are missing"
+        "prose": "evidence missing — critical_patches.days_since_last_patch is not a number"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.5",
         "name": "assessment-objective",
-        "prose": "evidence missing — oracle_home.%s not collected"
+        "prose": "%d critical security patches are missing"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.6",
         "name": "assessment-objective",
-        "prose": "evidence missing — oracle_inventory.permissions not collected"
+        "prose": "evidence missing — critical_patches.critical_missing is not a number"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.7",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME permissions %s are too permissive (should be 755 or stricter, or not parseable as an octal mode)"
+        "prose": "evidence missing — oracle_home.%s not collected"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.8",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME owner is '%s' (should be 'oracle')"
+        "prose": "evidence missing — oracle_inventory.permissions not collected"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.9",
         "name": "assessment-objective",
-        "prose": "ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')"
+        "prose": "ORACLE_HOME permissions %s are too permissive (should be 755 or stricter, or not parseable as an octal mode)"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.10",
         "name": "assessment-objective",
-        "prose": "Oracle inventory (oraInventory) does not exist or is not accessible"
+        "prose": "ORACLE_HOME owner is '%s' (should be 'oracle')"
        },
        {
         "id": "cis_databases-CIS-1.1_obj.11",
+        "name": "assessment-objective",
+        "prose": "ORACLE_HOME group is '%s' (should be 'dba' or 'oinstall')"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.12",
+        "name": "assessment-objective",
+        "prose": "Oracle inventory (oraInventory) does not exist or is not accessible"
+       },
+       {
+        "id": "cis_databases-CIS-1.1_obj.13",
         "name": "assessment-objective",
         "prose": "Oracle inventory permissions %s are too permissive"
        }
@@ -1501,7 +1516,17 @@
        {
         "id": "cis_databases-CIS-3.4_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing — locked_days for account '%s' is not a number"
+       },
+       {
+        "id": "cis_databases-CIS-3.4_obj.2",
+        "name": "assessment-objective",
         "prose": "Account '%s' has not logged in for %d days (should be locked)"
+       },
+       {
+        "id": "cis_databases-CIS-3.4_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — last_login_days for account '%s' is not a number"
        }
       ],
       "class": "security"

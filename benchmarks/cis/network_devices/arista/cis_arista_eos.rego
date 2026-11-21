@@ -150,6 +150,7 @@ veto contains {"id": "2.8", "why": "telnet management is not shut down"} if {
 }
 
 timeout_ok(t) if {
+	is_number(t)
 	t > 0
 	t <= 10
 }

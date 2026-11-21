@@ -57,6 +57,7 @@ mfa_remember_disabled if {
 default password_reset_methods := false
 
 password_reset_methods if {
+	is_number(input.password_reset_policy.methods_required)
 	input.password_reset_policy.methods_required >= 2
 }
 
@@ -64,6 +65,7 @@ password_reset_methods if {
 default reconfirm_auth_info_days := false
 
 reconfirm_auth_info_days if {
+	is_number(input.password_reset_policy.reconfirm_days)
 	input.password_reset_policy.reconfirm_days > 0
 	input.password_reset_policy.reconfirm_days <= 180
 }
@@ -156,6 +158,7 @@ mfa_required_join_devices if {
 default max_devices_per_user := false
 
 max_devices_per_user if {
+	is_number(input.device_settings.max_devices_per_user)
 	input.device_settings.max_devices_per_user <= 50
 }
 

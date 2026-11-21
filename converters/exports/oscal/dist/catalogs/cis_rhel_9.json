@@ -2456,25 +2456,35 @@
        {
         "id": "cis_rhel_9-NIST-SC-13_obj.2",
         "name": "assessment-objective",
-        "prose": "evidence missing — Certificate '%v' has no key_bits"
+        "prose": "evidence missing — RSA key bits in %v is not a number (user: %v)"
        },
        {
         "id": "cis_rhel_9-NIST-SC-13_obj.3",
         "name": "assessment-objective",
-        "prose": "Certificate '%v' uses weak %v key (%v bits) — minimum: RSA 2048, EC P-256"
+        "prose": "evidence missing — Certificate '%v' has no key_bits"
        },
        {
         "id": "cis_rhel_9-NIST-SC-13_obj.4",
         "name": "assessment-objective",
-        "prose": "Certificate '%v' uses deprecated signature algorithm '%v' — use SHA-256 or stronger"
+        "prose": "Certificate '%v' uses weak %v key (%v bits) — minimum: RSA 2048, EC P-256"
        },
        {
         "id": "cis_rhel_9-NIST-SC-13_obj.5",
         "name": "assessment-objective",
-        "prose": "System crypto policy is LEGACY — permits MD5, RC4, DES. Upgrade to DEFAULT or FUTURE."
+        "prose": "evidence missing — certificate '%v' key_bits is not a number"
        },
        {
         "id": "cis_rhel_9-NIST-SC-13_obj.6",
+        "name": "assessment-objective",
+        "prose": "Certificate '%v' uses deprecated signature algorithm '%v' — use SHA-256 or stronger"
+       },
+       {
+        "id": "cis_rhel_9-NIST-SC-13_obj.7",
+        "name": "assessment-objective",
+        "prose": "System crypto policy is LEGACY — permits MD5, RC4, DES. Upgrade to DEFAULT or FUTURE."
+       },
+       {
+        "id": "cis_rhel_9-NIST-SC-13_obj.8",
         "name": "assessment-objective",
         "prose": "LUKS volume %v uses weak cipher '%v' — use aes-xts-plain64 with SHA-256 or stronger"
        }
@@ -3388,15 +3398,20 @@
        {
         "id": "cis_rhel_9-NIST-IA-5_obj.1",
         "name": "assessment-objective",
-        "prose": "Certificate '%v' expires in %v days (CRITICAL — renew now)"
+        "prose": "evidence missing — certificate '%v' days_until_expiry is not a number"
        },
        {
         "id": "cis_rhel_9-NIST-IA-5_obj.2",
         "name": "assessment-objective",
-        "prose": "Certificate '%v' expires in %v days (WARNING — schedule renewal)"
+        "prose": "Certificate '%v' expires in %v days (CRITICAL — renew now)"
        },
        {
         "id": "cis_rhel_9-NIST-IA-5_obj.3",
+        "name": "assessment-objective",
+        "prose": "Certificate '%v' expires in %v days (WARNING — schedule renewal)"
+       },
+       {
+        "id": "cis_rhel_9-NIST-IA-5_obj.4",
         "name": "assessment-objective",
         "prose": "evidence missing — Certificate '%v' has no days_until_expiry"
        }

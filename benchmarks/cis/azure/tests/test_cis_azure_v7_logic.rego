@@ -178,3 +178,11 @@ test_disabled_nsg_flow_log_out_of_scope if {
 	inp := json.patch(green, [{"op": "add", "path": "/flow_logs/1/enabled", "value": false}, {"op": "add", "path": "/flow_logs/1/retentionPolicy/days", "value": 7}])
 	not _has_id(b.violations, "7.12") with input as inp
 }
+
+# #300 type traps: a non-number retention days must not pass blob soft delete.
+test_blob_soft_delete_number_type_traps if {
+	not "9.1.1: Soft Delete for Blobs on Azure Blob Storage Storage Accounts must be turned on — storage account sa1 does not keep deleted blobs for at least 7 days" in data.cis_azure._messages with input as {"storage_accounts": [{"name": "sa1", "kind": "StorageV2", "blob_service_properties": {"deleteRetentionPolicy": {"enabled": true, "days": 7}}}]}
+	"9.1.1: Soft Delete for Blobs on Azure Blob Storage Storage Accounts must be turned on — storage account sa1 does not keep deleted blobs for at least 7 days" in data.cis_azure._messages with input as {"storage_accounts": [{"name": "sa1", "kind": "StorageV2", "blob_service_properties": {"deleteRetentionPolicy": {"enabled": true, "days": "30"}}}]}
+	"9.1.1: Soft Delete for Blobs on Azure Blob Storage Storage Accounts must be turned on — storage account sa1 does not keep deleted blobs for at least 7 days" in data.cis_azure._messages with input as {"storage_accounts": [{"name": "sa1", "kind": "StorageV2", "blob_service_properties": {"deleteRetentionPolicy": {"enabled": true, "days": null}}}]}
+	"9.1.1: Soft Delete for Blobs on Azure Blob Storage Storage Accounts must be turned on — storage account sa1 does not keep deleted blobs for at least 7 days" in data.cis_azure._messages with input as {"storage_accounts": [{"name": "sa1", "kind": "StorageV2", "blob_service_properties": {"deleteRetentionPolicy": {"enabled": true, "days": "not-a-number"}}}]}
+}

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.network
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 3.1/3.2/3.3: Network Configuration
@@ -143,8 +143,16 @@ sysctl_violations contains msg if {
 ipv6_violations contains msg if {
 	input.require_ipv6_disabled == true
 	not input.ipv6.disabled
+	is_number(input.ipv6.address_count)
 	input.ipv6.address_count > 0
 	msg := sprintf("CIS 3.3.1: IPv6 is enabled but should be disabled (status: %s, addresses: %d)", [input.ipv6.status, input.ipv6.address_count])
+}
+
+ipv6_violations contains msg if {
+	input.require_ipv6_disabled == true
+	not input.ipv6.disabled
+	not is_number(object.get(input, ["ipv6", "address_count"], 0))
+	msg := "CIS 3.3.1: evidence missing — ipv6.address_count is not a number"
 }
 
 # CIS 3.2.9: IPv6 router advertisements disabled
@@ -197,6 +205,7 @@ risk_level := "critical" if {
 } else := "critical" if {
 	not input.firewall.active
 } else := "high" if {
+	is_number(input.sysctl_parameters.non_compliant_count)
 	input.sysctl_parameters.non_compliant_count > 5
 } else := "medium" if {
 	input.wireless_interfaces.has_wireless

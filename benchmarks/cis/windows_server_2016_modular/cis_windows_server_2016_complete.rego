@@ -197,6 +197,7 @@ _sections_in_scope := count([name | some name; s := _legacy_sections[name]; s.in
 overall_status := "compliant" if {
 	_report.compliant
 } else := "non_compliant" if {
+	is_number(_report.compliance_percentage)
 	_report.compliance_percentage >= 80
 } else := "critical"
 

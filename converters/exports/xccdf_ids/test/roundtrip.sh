@@ -12,12 +12,27 @@ sys.path.insert(0, str(root / "scripts"))
 from inventory_controls import inventory
 sys.path.insert(0, str(root / "converters" / "exports" / "xccdf_ids"))
 from build import section_of
-want = {(e["file"].split("/")[2], section_of(e["file"], c["id"])) for e in inventory(root) if e["file"].startswith("benchmarks/cis/") for c in e["controls"] if section_of(e["file"], c["id"])}
+want = {(e["file"].split("/")[2], e["package"].split(".")[0], section_of(e["file"], c["id"])) for e in inventory(root) if e["file"].startswith("benchmarks/cis/") for c in e["controls"] if section_of(e["file"], c["id"])}
 with (tmp / "cis_xccdf_ids.csv").open(newline="") as f:
     rows = list(csv.DictReader(f))
-got = {(r["platform"], r["section"]) for r in rows}
+got = {(r["platform"], r["rego_package"].split(".")[0], r["section"]) for r in rows}
 assert got == want, f"rows {len(got)} vs inventory sections {len(want)}: missing {sorted(want - got)[:3]} extra {sorted(got - want)[:3]}"
-assert len(rows) == len(got), "duplicate platform/section rows"
+assert len(rows) == len(got), "duplicate benchmark/section rows"
+# #322: ids a module cites through sprintf or a lookup table come from its CONTROL_INDEX, so a benchmark that
+# publishes one exports every id in it (CIS M365 v7: all 160, not the 111 literal-text ids)
+sys.path.insert(0, str(root / "scripts"))
+from rego_ast import parse_tree, package
+from inventory_controls import control_index
+for rel, ast in parse_tree(root).items():
+    idx = {i for i, _ in control_index(ast)}
+    if not idx or not rel.startswith("benchmarks/cis/"):
+        continue
+    head = package(ast).split(".")[0]
+    have = {r["section"] for r in rows if r["rego_package"].split(".")[0] == head}
+    assert idx <= have, f"{rel}: {len(idx - have)} CONTROL_INDEX ids not exported, e.g. {sorted(idx - have)[:5]}"
+m365 = {r["section"] for r in rows if r["rego_package"].startswith("cis_m365_v7.")}
+assert len(m365) == 160, f"CIS M365 v7 exports {len(m365)} of 160 ids"
+
 assert all(re.fullmatch(r"xccdf_org\.cisecurity\.benchmarks_rule_\d+(\.\d+)*_", r["xccdf_rule_id_prefix"]) for r in rows)
 assert all((root / r["rego_file"]).exists() for r in rows)
 named = sum(1 for r in rows if r["benchmark"])

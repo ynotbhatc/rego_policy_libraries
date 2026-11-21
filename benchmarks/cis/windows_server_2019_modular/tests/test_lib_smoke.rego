@@ -6,3 +6,11 @@ import rego.v1
 test_lib_rows_are_not_assessed_without_facts if {
 	data.cis_windows_server_2019.lib.results["1.1.1"] == "not_assessed"
 }
+
+# #300 type traps: a non-number profile level never narrows the assessment; it falls back to Level 2.
+test_level_number_type_traps if {
+	data.cis_windows_server_2019.lib.level == 1 with input as {"cis_profile": {"level": 1}}
+	data.cis_windows_server_2019.lib.level == 2 with input as {"cis_profile": {"level": "1"}}
+	data.cis_windows_server_2019.lib.level == 2 with input as {"cis_profile": {"level": null}}
+	data.cis_windows_server_2019.lib.level == 2 with input as {"cis_profile": {"level": "one"}}
+}

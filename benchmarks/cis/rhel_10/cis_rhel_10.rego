@@ -374,7 +374,9 @@ default pam_faillock_configured := false
 
 pam_faillock_configured if {
 	pam := input.ansible_facts.pam_config
+	is_number(pam.faillock.deny)
 	pam.faillock.deny <= 5
+	is_number(pam.faillock.unlock_time)
 	pam.faillock.unlock_time >= 900
 }
 
@@ -382,7 +384,9 @@ default pam_pwquality_configured := false
 
 pam_pwquality_configured if {
 	pam := input.ansible_facts.pam_config
+	is_number(pam.pwquality.minlen)
 	pam.pwquality.minlen >= 14
+	is_number(pam.pwquality.minclass)
 	pam.pwquality.minclass >= 4
 }
 
@@ -406,6 +410,7 @@ default shell_timeout_configured := false
 
 shell_timeout_configured if {
 	timeout := input.ansible_facts.shell_timeout
+	is_number(timeout)
 	timeout <= 900
 }
 

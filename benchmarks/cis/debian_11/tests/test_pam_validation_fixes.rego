@@ -58,3 +58,13 @@ test_missing_faillock_deny_violates if {
 	i := json.patch(good, [{"op": "remove", "path": "/pam/faillock_deny"}])
 	not data.cis_debian_11.pam.compliant with input as i
 }
+
+# #300 type traps: a non-number faillock_deny is evidence missing; real numbers keep their behaviour.
+test_faillock_deny_number_type_traps if {
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": "1"}}
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": null}}
+	"CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": "not-a-number"}}
+	not "CIS 5.4.2: evidence missing — pam.faillock_deny is not a number" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 5}}
+	not "CIS 5.4.2: Account lockout threshold is 6 attempts, should be 5 or less" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 5}}
+	"CIS 5.4.2: Account lockout threshold is 6 attempts, should be 5 or less" in data.cis_debian_11.pam.faillock_violations with input as {"pam": {"faillock_configured": true, "faillock_deny": 6}}
+}

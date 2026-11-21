@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 ROOT = pathlib.Path(__file__).resolve().parents[3]  # converters/exports/_lib/findings.py -> repo root
 sys.path.insert(0, str(ROOT / "scripts"))
 from inventory_controls import inventory, _split  # noqa: E402
-from rego_ast import ID_KEYS, TEXT_KEYS  # noqa: E402
+from rego_ast import ID_KEYS, TEXT_KEYS, policy_files  # noqa: E402
 
 REPO = "https://github.com/ynotbhatc/rego_policy_libraries"
 TOKEN_BAD = re.compile(r"[^A-Za-z0-9._-]+")
@@ -54,14 +54,34 @@ class Finding:
     severity: str | None = None   # the module's own severity for this finding, when it states one
 
 
+PKG_RE = re.compile(r"^package\s+([A-Za-z0-9_.]+)", re.M)
+IMPORT_RE = re.compile(r"^import\s+data\.([A-Za-z0-9_.]+)", re.M)
+
+
+def package_imports(root=ROOT):
+    """{package: (dir, [imported data packages])} for every policy file. A `<key>.main` entrypoint that holds no
+    controls of its own (nist_800_53.main, stig_rhel9.main) is a bridge: it imports the package that does the work
+    (`import data.nist.sp800_53.main as _t`), so the exporters follow the import to find the framework."""
+    out = {}
+    for rel in policy_files(root):
+        src = (root / rel).read_text(errors="ignore")
+        m = PKG_RE.search(src)
+        if m:
+            d, imps = out.setdefault(m.group(1), (str(pathlib.PurePosixPath(rel).parent), []))
+            imps.extend(i for i in IMPORT_RE.findall(src) if i not in imps)
+    return out
+
+
 @dataclass
 class Index:
     by_pkg: dict = field(default_factory=dict)      # package -> inventory entries
     controls: dict = field(default_factory=dict)    # (framework, id) -> (Rule)
+    imports: dict = field(default_factory=dict)     # package -> (dir, imported packages), for bridge entrypoints
 
     @classmethod
     def build(cls):
         ix = cls()
+        ix.imports = package_imports(ROOT)
         for e in inventory(ROOT):
             ix.by_pkg.setdefault(e["package"], []).append(e)
             fw_tok = token(e["framework"])
@@ -73,8 +93,14 @@ class Index:
                                                                        e["framework"], e["package"], e["file"], True))
         return ix
 
-    def framework_for(self, package):
-        """cis_rhel9.main -> entries for the package, else the nearest parent package, else None."""
+    def framework_for(self, package, _seen=None):
+        """cis_rhel9.main -> entries for the package; else, for a bridge entrypoint (a package with no controls of
+        its own), the framework its imports resolve to; else the nearest parent package; else None."""
+        if package in self.by_pkg:
+            return self.by_pkg[package]
+        bridged = self._via_imports(package, _seen or set())
+        if bridged:
+            return bridged
         parts = package.split(".")
         while parts:
             p = ".".join(parts)
@@ -91,6 +117,41 @@ class Index:
         head = package.split(".")[0]
         hits = [v for k, v in self.by_pkg.items() if k.split(".")[0] == head]
         return hits[0] if hits else None
+
+    def _via_imports(self, package, seen):
+        """Follow a bridge's `import data.X` statements. The imports must agree on one framework; when they do not
+        (a roll-up of several frameworks), keep those whose files sit under the bridge's own directory."""
+        if package in seen or package not in self.imports:
+            return None
+        seen.add(package)
+        d, imps = self.imports[package]
+        found = {}
+        for imp in imps:
+            if imp in self.by_pkg:
+                ents = self.by_pkg[imp]
+            elif imp in self.imports and imp not in seen:
+                ents = self._via_imports(imp, seen) or self._siblings(imp)
+            else:
+                ents = self._siblings(imp)
+            if ents:
+                found.setdefault(ents[0]["framework"], ents)
+        if len(found) > 1:
+            found = {fw: v for fw, v in found.items() if all(e["file"].startswith(d + "/") for e in v[:1])}
+        return next(iter(found.values())) if len(found) == 1 else None
+
+    def _siblings(self, package):
+        """Entries of the packages under `package.` when they share one framework (nist.sp800_53.main is an
+        orchestrator over nist.sp800_53.<family>), walking up one level at a time; None otherwise."""
+        parts = package.split(".")
+        while len(parts) > 1:
+            pre = ".".join(parts[:-1]) + "."
+            sib = {e["framework"]: v for k, v in self.by_pkg.items() if k.startswith(pre) for e in v}
+            if len(sib) == 1:
+                return next(iter(sib.values()))
+            if sib:
+                return None
+            parts.pop()
+        return None
 
     def rule_for(self, package, message):
         entries = self.framework_for(package)
@@ -135,22 +196,39 @@ def _walk(node, path, out):
             _walk(v, f"{path}[{i}]", out)
 
 
-def load_reports(paths):
-    """Yield (report_path, report) for every report node in the given JSON files."""
+def _doc(src):
+    """A path to a JSON file, or an already-loaded document (dict/list), -> (name, document)."""
+    if isinstance(src, (dict, list)):
+        return "<memory>", src
+    return str(src), json.loads(pathlib.Path(src).read_text())
+
+
+def load_reports(paths, key=None):
+    """Yield (report_path, report) for every report node in the given inputs. Three input shapes:
+      opa eval -f json            {"result": [{"expressions": [{"text": "data.<key>.main.compliance_report", "value": ...}]}]}
+      OPA REST API response       {"result": {<compliance_report>}}   (POST /v1/data/<key>/main/compliance_report)
+      a bare compliance_report    {"compliant": ..., "violations": [...], ...}
+    The REST and bare shapes do not say which package produced them: `key` (the framework key of
+    data.<key>.main.compliance_report) names it; without a key such a report is reported under the path ""."""
+    top = f"{key}.main" if key else ""
     for p in paths:
-        doc = json.loads(pathlib.Path(p).read_text())
+        _, doc = _doc(p)
         if isinstance(doc, dict) and "result" in doc and isinstance(doc["result"], list):   # opa eval -f json
             for r in doc["result"]:
                 for ex in r.get("expressions", []):
                     text = ex.get("text", "data")
                     base = re.sub(r"^data\.", "", text)
                     base = re.sub(r"\.(compliance_report|report)$", "", base)
+                    if key and not re.fullmatch(r"[A-Za-z0-9_.]+", base):
+                        base = top     # a query that is not a plain data path ({k: ...}, x := ...): the key names it
                     found = []
                     _walk(ex.get("value"), base if base != "data" else "", found)
                     yield from found
+        elif isinstance(doc, dict) and isinstance(doc.get("result"), dict) and _is_report(doc["result"]):  # REST
+            yield top, doc["result"]
         else:
             found = []
-            _walk(doc, "", found)
+            _walk(doc, top, found)
             yield from found
 
 
@@ -182,10 +260,10 @@ def finding_severity(m):
     return str(m["severity"]).strip() if isinstance(m, dict) and isinstance(m.get("severity"), str) and m["severity"].strip() else None
 
 
-def findings(paths, ix=None):
+def findings(paths, ix=None, key=None):
     ix = ix or Index.build()
     out = []
-    for rpath, rep in load_reports(paths):
+    for rpath, rep in load_reports(paths, key):
         pkg = re.sub(r"\.(compliance_report|report)$", "", rpath).strip(".")
         viol = rep["violations"]
         msgs = list(viol.values()) if isinstance(viol, dict) else list(viol)
@@ -195,13 +273,13 @@ def findings(paths, ix=None):
     return out
 
 
-def passes(paths, ix=None):
+def passes(paths, ix=None, key=None):
     """Rows a report's control_results marks "pass", resolved to catalog controls: [(Rule, row, package, report_path)].
     Only reports that carry control_results contribute; a row that does not resolve to exactly one catalog control is
     left out (never asserted), and so is any status other than "pass"."""
     ix = ix or Index.build()
     out = []
-    for rpath, rep in load_reports(paths):
+    for rpath, rep in load_reports(paths, key):
         rows = rep.get("control_results")
         if not isinstance(rows, list):
             continue
@@ -211,4 +289,74 @@ def passes(paths, ix=None):
                 rule = ix.rule_for_row(pkg, row.get("id"))
                 if rule:
                     out.append((rule, row, pkg, rpath))
+    return out
+
+
+EVIDENCE_MISSING = re.compile(r"evidence missing|FAIL-CLOSED|not collected|(this is not a pass)", re.I)
+
+
+@dataclass
+class Assessed:
+    """One control's outcome in one report. From a control_results row (row_id set): status is the row's
+    ("pass", "fail", "evidence_missing", "not_attested", "not_applicable"; anything else is kept as given and
+    treated as not satisfied), messages are the row's findings plus any violation that maps to the same control.
+    From a violation alone (no control_results, or no row for its control): status "fail", or
+    "evidence_missing" when the message says so, one message."""
+    rule: Rule
+    status: str
+    messages: list
+    package: str
+    report_path: str
+    basis: str | None = None
+    severity: str | None = None
+    row_id: str | None = None
+    evidence: list | None = None
+
+    @property
+    def satisfied(self):
+        return self.status == "pass"
+
+
+def _pkg(rpath):
+    return re.sub(r"\.(compliance_report|report)$", "", rpath).strip(".")
+
+
+def assess(paths, ix=None, key=None):
+    """Every control outcome the reports state, control_results first, violations after. Nothing is dropped: a
+    row whose id is not a catalog control becomes an unmapped rule, a violation with no row stays a finding."""
+    ix = ix or Index.build()
+    out = []
+    for rpath, rep in load_reports(paths, key):
+        pkg = _pkg(rpath)
+        rows = rep.get("control_results") if isinstance(rep.get("control_results"), list) else []
+        by_rule = {}
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            rid = row.get("id") if isinstance(row.get("id"), str) and row.get("id") else None
+            rule = ix.rule_for_row(pkg, rid) if rid else None
+            msgs = [finding_text(m) for m in (row.get("findings") or []) if m is not None] if isinstance(row.get("findings"), list) else []
+            if rule is None:   # not a catalog control: keep it under its own id, flagged unmapped
+                rule = ix.rule_for(pkg, f"{rid or 'unmapped'}: {msgs[0] if msgs else 'control_results row'}")
+            status = row.get("status") if isinstance(row.get("status"), str) and row.get("status") else "unknown"
+            sev = next((finding_severity(m) for m in (row.get("findings") or []) if finding_severity(m)), None) if isinstance(row.get("findings"), list) else None
+            a = Assessed(rule, status, msgs, pkg, rpath, row.get("basis") if isinstance(row.get("basis"), str) else None,
+                         sev, rid, row.get("evidence") if isinstance(row.get("evidence"), list) else None)
+            out.append(a)
+            by_rule.setdefault(rule.id, a)
+        viol = rep["violations"]
+        for m in (list(viol.values()) if isinstance(viol, dict) else list(viol)):
+            text = finding_text(m)
+            rule = ix.rule_for(pkg, text)
+            row = by_rule.get(rule.id)
+            if row is not None:
+                if row.status == "pass":   # a violation for a control its row calls a pass: fail closed
+                    row.status = "fail"
+                if text not in row.messages:
+                    row.messages.append(text)
+                if row.severity is None:
+                    row.severity = finding_severity(m)
+                continue
+            out.append(Assessed(rule, "evidence_missing" if EVIDENCE_MISSING.search(text) else "fail", [text], pkg, rpath,
+                                severity=finding_severity(m)))
     return out

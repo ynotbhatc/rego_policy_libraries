@@ -1,0 +1,23 @@
+{
+ "framework": "NIST SP 800-53 Rev. 5",
+ "framework_key": "nist_800_53",
+ "compliant": false,
+ "total_controls": 7,
+ "failed_controls": 6,
+ "violations": [
+  "NIST AC-2: account management is not automated",
+  "NIST AC-6: evidence missing — input.ac_controls.least_privilege not collected",
+  "NIST AU-2: event logging is not configured",
+  "NIST ZZ-99: a finding for a control the catalog does not have"
+ ],
+ "control_results": [
+  {"id": "AC-3", "status": "pass", "basis": "evidence", "findings": []},
+  {"id": "AC-2", "status": "fail", "basis": "evidence", "findings": ["NIST AC-2: account management is not automated"]},
+  {"id": "AC-6", "status": "evidence_missing", "basis": "evidence", "findings": []},
+  {"id": "AT-2", "status": "not_attested", "basis": "attestation", "findings": []},
+  {"id": "AC-4", "status": "not_applicable", "basis": "evidence", "findings": []},
+  {"id": "AU-2", "status": "pass", "basis": "evidence", "findings": []},
+  {"id": "AC-5", "status": "waived", "basis": "evidence", "findings": []},
+  {"id": "QQ-1", "status": "fail", "basis": "evidence", "findings": ["QQ-1: a row the catalog does not know"]}
+ ]
+}

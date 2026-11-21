@@ -122,6 +122,8 @@ ADMIN_CASES := [
 	{"pkg": "admin_center", "id": "1.3.2", "expect": "evidence_missing", "patch": {"entra": {"unavailable": {"conditional_access_policies": "denied"}}}},
 	# typed comparisons
 	{"pkg": "admin_center", "id": "1.1.3", "expect": "evidence_missing", "patch": {"admin_center": {"global_admin_count": "2"}}},
+	{"pkg": "admin_center", "id": "1.1.3", "expect": "evidence_missing", "patch": {"admin_center": {"global_admin_count": null}}},
+	{"pkg": "admin_center", "id": "1.1.3", "expect": "evidence_missing", "patch": {"admin_center": {"global_admin_count": "two"}}},
 	{"pkg": "admin_center", "id": "1.1.3", "expect": "fail", "patch": {"admin_center": {"global_admin_count": 5}}},
 	{"pkg": "admin_center", "id": "1.1.1", "expect": "evidence_missing", "patch": {"admin_center": {"global_admins": [{"licenses": [], "user_principal_name": "ga1@contoso.example"}]}}},
 	{"pkg": "admin_center", "id": "1.1.1", "expect": "evidence_missing", "patch": {"admin_center": {"unavailable": {"admin_sync_state": "denied"}}}},

@@ -95,3 +95,11 @@ test_not_assessed_message_kept_for_applicable_section if {
 	some v in r.violations
 	startswith(v, "NOT ASSESSED: ")
 }
+
+# #300 type traps: a non-number must not pass p_5_2_6.
+test_p_5_2_6_number_type_traps if {
+	data.cis_debian_12.sudo.p_5_2_6 with input as {"sudo": {"sudoers_raw": "", "default_timestamp_timeout": 15}}
+	not data.cis_debian_12.sudo.p_5_2_6 with input as {"sudo": {"sudoers_raw": "", "default_timestamp_timeout": "1"}}
+	not data.cis_debian_12.sudo.p_5_2_6 with input as {"sudo": {"sudoers_raw": "", "default_timestamp_timeout": null}}
+	not data.cis_debian_12.sudo.p_5_2_6 with input as {"sudo": {"sudoers_raw": "", "default_timestamp_timeout": "not-a-number"}}
+}

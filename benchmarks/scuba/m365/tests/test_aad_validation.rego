@@ -334,3 +334,11 @@ test_aad_report_populated_on_empty_input if {
 	is_object(result)
 	count(result) > 0
 }
+
+# #300 type traps: a non-number must not pass app_password_lifetime_ok.
+test_app_password_lifetime_ok_number_type_traps if {
+	data.scuba_m365.aad.app_password_lifetime_ok with input as {"scuba": {"aad": {"apps": {"password_lifetime_days": 180}}}}
+	not data.scuba_m365.aad.app_password_lifetime_ok with input as {"scuba": {"aad": {"apps": {"password_lifetime_days": "1"}}}}
+	not data.scuba_m365.aad.app_password_lifetime_ok with input as {"scuba": {"aad": {"apps": {"password_lifetime_days": null}}}}
+	not data.scuba_m365.aad.app_password_lifetime_ok with input as {"scuba": {"aad": {"apps": {"password_lifetime_days": "not-a-number"}}}}
+}

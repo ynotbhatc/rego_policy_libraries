@@ -288,6 +288,7 @@ violations contains "4.2: Create at least one notification topic and subscriptio
 
 _topic_with_subscription if {
 	some t in input.oci.notifications.topics
+	is_number(t.subscriptions)
 	t.subscriptions > 0
 }
 

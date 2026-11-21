@@ -31,3 +31,11 @@ test_win2022_guests_denied_string_ok if {
 	i := {"user_rights": {"deny_rdp_logon": "Guests, Local account"}}
 	data.cis.windows.server2022.deny_rdp_logon_includes_guests with input as i
 }
+
+# #300 type traps: a non-number must not pass account_lockout_threshold.
+test_account_lockout_threshold_number_type_traps if {
+	data.cis.windows.server2022.account_lockout_threshold with input as {"security_policy": {"account_lockout_threshold": 5}}
+	not data.cis.windows.server2022.account_lockout_threshold with input as {"security_policy": {"account_lockout_threshold": "1"}}
+	not data.cis.windows.server2022.account_lockout_threshold with input as {"security_policy": {"account_lockout_threshold": null}}
+	not data.cis.windows.server2022.account_lockout_threshold with input as {"security_policy": {"account_lockout_threshold": "not-a-number"}}
+}

@@ -75,6 +75,7 @@ default anyone_link_expiration_ok := false
 
 anyone_link_expiration_ok if {
 	d := input.scuba.sharepoint.anyone_links.expiration_days
+	is_number(d)
 	d >= 1
 	d <= 30
 }
@@ -93,6 +94,7 @@ default verification_reauth_ok := false
 
 verification_reauth_ok if {
 	d := input.scuba.sharepoint.verification_code_reauth_days
+	is_number(d)
 	d >= 1
 	d <= 30
 }
