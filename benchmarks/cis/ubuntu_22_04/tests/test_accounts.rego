@@ -333,15 +333,46 @@ test_5_4_3_3_pass if {
 test_5_4_3_3_fail if {
 	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"profile_d_raw": "umask 022", "default_umask": "027"}}
 	count([v | some v in vs; startswith(v, "5.4.3.3: ")]) > 0
-	not "5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask not collected" in vs
+	not "5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected" in vs
 }
 
 test_5_4_3_3_evidence_missing if {
 	vs := data.cis_ubuntu_22_04.accounts.violations with input as {}
-	"5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask not collected" in vs
+	"5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected" in vs
 }
 
 test_5_4_3_3_hollow_evidence_not_a_pass if {
 	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"profile_d_raw": "", "default_umask": ""}}
 	count([v | some v in vs; startswith(v, "5.4.3.3: ")]) > 0
+}
+
+# 5.4.3.3 (#332): umask 027 is required in /etc/profile.d/*.sh and in login.defs UMASK.
+test_collected_umask_both_places_passes if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"collected": true, "profile_d_raw": "umask 027", "default_umask": "027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: ")]) == 0
+}
+
+test_collected_no_profile_umask_is_not_met if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"collected": true, "profile_d_raw": "", "default_umask": "027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: not met")]) > 0
+}
+
+test_profile_lines_without_umask_not_met if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"profile_d_raw": "export EDITOR=vi", "default_umask": "027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: not met")]) > 0
+}
+
+test_collected_no_login_defs_umask_is_not_met if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"collected": true, "profile_d_raw": "umask 027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: not met")]) > 0
+}
+
+test_empty_profile_without_marker_is_missing if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"profile_d_raw": "", "default_umask": "027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: evidence missing")]) > 0
+}
+
+test_marker_without_profile_text_is_missing if {
+	vs := data.cis_ubuntu_22_04.accounts.violations with input as {"pam": {"collected": true, "default_umask": "027"}}
+	count([v | some v in vs; startswith(v, "5.4.3.3: evidence missing")]) > 0
 }

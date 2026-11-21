@@ -139,12 +139,12 @@ test_2_4_1_7_pass if {
 test_2_4_1_7_fail if {
 	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {"cron": {"cron_yearly_mode": "0777", "cron_yearly_owner": "root", "cron_yearly_group": "root"}}
 	count([v | some v in vs; startswith(v, "2.4.1.7: ")]) > 0
-	not "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected" in vs
+	not "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected" in vs
 }
 
 test_2_4_1_7_evidence_missing if {
 	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {}
-	"2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected" in vs
+	"2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected" in vs
 }
 
 test_2_4_1_7_hollow_evidence_not_a_pass if {
@@ -213,4 +213,20 @@ test_2_4_2_1_evidence_missing if {
 test_2_4_2_1_hollow_evidence_not_a_pass if {
 	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {"cron": {"at_allow_exists": true, "at_allow_mode": "", "at_allow_owner": "", "at_allow_group": "", "at_deny_exists": false}}
 	count([v | some v in vs; startswith(v, "2.4.2.1: ")]) > 0
+}
+
+# 2.4.1.7 (#332): an absent /etc/cron.yearly has nothing to secure; a present one is checked.
+test_cron_yearly_absent_passes if {
+	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {"cron": {"cron_yearly_exists": false}}
+	count([v | some v in vs; startswith(v, "2.4.1.7: ")]) == 0
+}
+
+test_cron_yearly_present_open_mode_flagged if {
+	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {"cron": {"cron_yearly_exists": true, "cron_yearly_mode": "0755", "cron_yearly_owner": "root", "cron_yearly_group": "root"}}
+	count([v | some v in vs; startswith(v, "2.4.1.7: not met")]) > 0
+}
+
+test_cron_yearly_present_without_stat_is_missing if {
+	vs := data.cis_ubuntu_22_04.job_schedulers.violations with input as {"cron": {"cron_yearly_exists": true}}
+	count([v | some v in vs; startswith(v, "2.4.1.7: evidence missing")]) > 0
 }

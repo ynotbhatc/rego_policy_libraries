@@ -297,10 +297,53 @@ put("6.3.2", "regularly checked", custom(
     {"aide": {"cron_raw": "0 5 * * * root /usr/bin/updatedb",
               "aidecheck": {"service_unit_file_state": "disabled", "timer_unit_file_state": "disabled",
                             "timer_active_state": "inactive"}}},
-    {}, reads=[["aide", "cron_raw"], ["aide", "aidecheck"]],
+    {}, reads=[["aide", "cron_raw"], ["aide", "aidecheck"], ["aide", "collected"]],
     ev_alts=[['is_string(input.aide.cron_raw)'],
              [f'is_string({AK}.service_unit_file_state)', f'is_string({AK}.timer_unit_file_state)',
-              f'is_string({AK}.timer_active_state)']]))
+              f'is_string({AK}.timer_active_state)'],
+             # collected and empty (no cron file mentions aide) is "not met", not "evidence missing";
+             # type_name keeps the empty string (an is_string() condition is emitted as text_collected)
+             ['input.aide.collected == true', 'type_name(input.aide.cron_raw) == "string"']]))
+L["6.3.2"].field = "aide.cron_raw/aide.aidecheck/aide.collected"
+
+# ── #332: gaps found feeding the module real host evidence ────────────────────────────────────
+# An empty string or list cannot tell "collected, nothing found" from "not collected". A section's
+# `collected: true` marker (chronyd.collected, pam.collected, aide.collected) says the collector read the
+# host, so an empty value there is a real answer, judged by the requirement.
+
+# 2.4.1.7: "IF cron is installed" stat /etc/cron.yearly/. A host without the directory has nothing to
+# secure: a collected cron.cron_yearly_exists == false passes (as in rhel_9); a present one is checked.
+_cy = L["2.4.1.7"]
+_cy.ev_alts = _cy.ev_alts + [['input.cron.cron_yearly_exists == false']]
+_cy.passes = _cy.passes + [['input.cron.cron_yearly_exists == false']]
+_cy.reads = _cy.reads + [["cron", "cron_yearly_exists"]]
+_cy.field = "cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron)"
+
+# 2.3.3.2: "IF chrony is in use", no chronyd process may run as a user other than _chrony. With chronyd
+# collected and no process running, chrony is not running as _chrony: not met (2.3.3.3 fails it too).
+_cu = L["2.3.3.2"]
+_cu.ev_alts = _cu.ev_alts + [['input.chronyd.collected == true', 'is_array(input.chronyd.process_users)']]
+_cu.passes = [['timesyncd_only'],
+              ['count(input.chronyd.process_users) > 0', 'every u in input.chronyd.process_users { u == "_chrony" }']]
+_cu.reads = _cu.reads + [["chronyd", "collected"]]
+_cu.field = "chronyd.process_users/chronyd.collected"
+
+# 5.4.3.3: the 22.04 audit requires `umask` 027 or stricter in /etc/profile.d/*.sh AND UMASK 027 or stricter
+# in /etc/login.defs. No umask line in profile.d is "not met" (the 24.04 logic passed it on any other
+# profile line). pam.profile_d_raw: the profile.d lines; pam.default_umask: the login.defs UMASK value.
+_um = L["5.4.3.3"]
+_um.ev_alts = [['text_collected(input.pam.profile_d_raw)', 'input.pam.default_umask != null'],
+               ['input.pam.collected == true', 'type_name(input.pam.profile_d_raw) == "string"']]
+_um.passes = [['count(umask_values(input.pam.profile_d_raw)) > 0',
+               'every u in umask_values(input.pam.profile_d_raw) { umask_ok(u) }',
+               'umask_ok(sprintf("%v", [input.pam.default_umask]))']]
+_um.reads = _um.reads + [["pam", "collected"]]
+_um.field = "pam.profile_d_raw/pam.default_umask/pam.collected"
+
+# 5.2.6: the default timeout is compared only as a number (brief rule 2: guard every comparison)
+_st = L["5.2.6"]
+_st.passes = [_st.passes[0], ['count(sudo_timeouts) == 0', 'is_number(input.sudo.default_timestamp_timeout)',
+                              'input.sudo.default_timestamp_timeout >= 0', 'input.sudo.default_timestamp_timeout <= 15']]
 
 # 7.1.8: no "absent passes" note in 22.04: /etc/gshadow- must exist with the stated access
 put("7.1.8", "/etc/gshadow-", base.crit("/etc/gshadow-", "0640", ["root", "shadow"]))
@@ -410,6 +453,19 @@ _s.field += "/auditd.kmod_symlinks/kmod_target"
 # ── helpers used by one module only: the 24.04 ones (plus the 26.04 core-limit helper) and the 22.04 additions ──
 EXTRA = dict(u24.EXTRA)
 EXTRA["process_hardening"] = base.EXTRA["process_hardening"]   # 1.5.4 core_hard_limits
+
+
+def _guard(text, old, new):
+    """a numeric comparison of a shared helper, re-emitted here with its is_number guard"""
+    if text.count(old) != 1:
+        raise SystemExit(f"shared helper changed: {old!r} not found once")
+    return text.replace(old, new)
+
+
+EXTRA["pam"] = _guard(EXTRA["pam"], "\tn := pam_arg_num(l, \"unlock_time\")\n\tn > 0\n",
+                      "\tn := pam_arg_num(l, \"unlock_time\")\n\tis_number(n)\n\tn > 0\n")
+EXTRA["ssh"] = _guard(EXTRA["ssh"], "\topenssh_version[0] == 9\n\topenssh_version[1] >= 9\n",
+                      "\topenssh_version[0] == 9\n\tis_number(openssh_version[1])\n\topenssh_version[1] >= 9\n")
 EXTRA["gdm"] = r'''
 # a dconf lock entry for the key: "/org/gnome/desktop/screensaver/lock-delay", or the bare key name
 # (a value written after "=" is ignored)
@@ -578,7 +634,32 @@ REGRESSION_TESTS = {
         "# 6.3.2: the aidecheck units are an alternative to a cron entry; a commented cron entry is not one.",
         _t("integrity", "aidecheck_units_pass", {"aide": {"aidecheck": {"service_unit_file_state": "enabled", "timer_unit_file_state": "enabled", "timer_active_state": "active"}}}, "6.3.2", "pass"),
         _t("integrity", "commented_cron_entry_flagged", {"aide": {"cron_raw": "#0 5 * * * root /usr/bin/aide --check"}}, "6.3.2", "fail"),
-        _t("integrity", "audit_tools_without_autrace_flagged", {"aide": {"audit_tool_options": {t: base.AIDE_OPTS for t in ["auditctl", "auditd", "ausearch", "aureport", "augenrules"]}}}, "6.3.3", "fail")),
+        _t("integrity", "audit_tools_without_autrace_flagged", {"aide": {"audit_tool_options": {t: base.AIDE_OPTS for t in ["auditctl", "auditd", "ausearch", "aureport", "augenrules"]}}}, "6.3.3", "fail"),
+        "# 6.3.2 (#332): with aide.collected, cron text that names no aide check is not met, not missing evidence.",
+        _t("integrity", "collected_cron_with_aide_check_passes", {"aide": {"collected": True, "cron_raw": "0 5 * * * root /usr/bin/aide --check"}}, "6.3.2", "pass"),
+        _t("integrity", "collected_empty_cron_is_not_met", {"aide": {"collected": True, "cron_raw": ""}}, "6.3.2", "fail"),
+        _t("integrity", "empty_cron_without_marker_is_missing", {"aide": {"cron_raw": ""}}, "6.3.2", "missing"),
+        _t("integrity", "marker_without_cron_text_is_missing", {"aide": {"collected": True}}, "6.3.2", "missing")),
+    "job_schedulers": _R(
+        "# 2.4.1.7 (#332): an absent /etc/cron.yearly has nothing to secure; a present one is checked.",
+        _t("job_schedulers", "cron_yearly_absent_passes", {"cron": {"cron_yearly_exists": False}}, "2.4.1.7", "pass"),
+        _t("job_schedulers", "cron_yearly_present_open_mode_flagged", {"cron": {"cron_yearly_exists": True, "cron_yearly_mode": "0755", "cron_yearly_owner": "root", "cron_yearly_group": "root"}}, "2.4.1.7", "fail"),
+        _t("job_schedulers", "cron_yearly_present_without_stat_is_missing", {"cron": {"cron_yearly_exists": True}}, "2.4.1.7", "missing")),
+    "time_sync": _R(
+        "# 2.3.3.2 (#332): with chronyd.collected, no chronyd process is not met; an empty list alone is missing evidence.",
+        _t("time_sync", "collected_chronyd_as_chrony_passes", {"chronyd": {"collected": True, "process_users": ["_chrony"]}}, "2.3.3.2", "pass"),
+        _t("time_sync", "collected_chronyd_stopped_is_not_met", {"chronyd": {"collected": True, "process_users": []}}, "2.3.3.2", "fail"),
+        _t("time_sync", "empty_process_list_without_marker_is_missing", {"chronyd": {"process_users": []}}, "2.3.3.2", "missing"),
+        _t("time_sync", "marker_false_is_missing", {"chronyd": {"collected": False, "process_users": []}}, "2.3.3.2", "missing"),
+        _t("time_sync", "marker_without_process_list_is_missing", {"chronyd": {"collected": True}}, "2.3.3.2", "missing")),
+    "accounts": _R(
+        "# 5.4.3.3 (#332): umask 027 is required in /etc/profile.d/*.sh and in login.defs UMASK.",
+        _t("accounts", "collected_umask_both_places_passes", {"pam": {"collected": True, "profile_d_raw": "umask 027", "default_umask": "027"}}, "5.4.3.3", "pass"),
+        _t("accounts", "collected_no_profile_umask_is_not_met", {"pam": {"collected": True, "profile_d_raw": "", "default_umask": "027"}}, "5.4.3.3", "fail"),
+        _t("accounts", "profile_lines_without_umask_not_met", {"pam": {"profile_d_raw": "export EDITOR=vi", "default_umask": "027"}}, "5.4.3.3", "fail"),
+        _t("accounts", "collected_no_login_defs_umask_is_not_met", {"pam": {"collected": True, "profile_d_raw": "umask 027"}}, "5.4.3.3", "fail"),
+        _t("accounts", "empty_profile_without_marker_is_missing", {"pam": {"profile_d_raw": "", "default_umask": "027"}}, "5.4.3.3", "missing"),
+        _t("accounts", "marker_without_profile_text_is_missing", {"pam": {"collected": True, "default_umask": "027"}}, "5.4.3.3", "missing")),
     f"{PKG}_main": base.REGRESSION_TESTS[f"{base.FILE_STEM}_main"].replace(base.PKG, PKG),
 }
 

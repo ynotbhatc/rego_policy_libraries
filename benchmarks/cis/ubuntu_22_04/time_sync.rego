@@ -335,6 +335,11 @@ e_2_3_3_2 if {
 	count(input.chronyd.process_users) > 0
 }
 
+e_2_3_3_2 if {
+	input.chronyd.collected == true
+	is_array(input.chronyd.process_users)
+}
+
 default p_2_3_3_2 := false
 
 p_2_3_3_2 if {
@@ -342,10 +347,11 @@ p_2_3_3_2 if {
 }
 
 p_2_3_3_2 if {
+	count(input.chronyd.process_users) > 0
 	every u in input.chronyd.process_users { u == "_chrony" }
 }
 
-violations contains "2.3.3.2: evidence missing — chronyd.process_users not collected" if not e_2_3_3_2
+violations contains "2.3.3.2: evidence missing — chronyd.process_users/chronyd.collected not collected" if not e_2_3_3_2
 
 violations contains "2.3.3.2: not met — chrony must be running as user _chrony" if {
 	e_2_3_3_2
