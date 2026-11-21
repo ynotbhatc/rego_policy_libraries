@@ -319,10 +319,12 @@ for sid, name, key, what in (("RHEL-09-611110", "password_uppercase", "ucredit",
                              ("RHEL-09-611065", "password_lowercase", "lcredit", "lowercase"),
                              ("RHEL-09-611070", "password_numeric", "dcredit", "numeric"),
                              ("RHEL-09-611100", "password_special", "ocredit", "special")):
-    num_rule("account_auth", sid, name, ["password_policy", key], None, -1, -1, [1, 0, "1"],
-             f"{key} in /etc/security/pwquality.conf(.d) must be negative (-1: at least one {what} character)",
+    # V2R10 check text: only "a positive number or is commented out" is a finding, so 0 and negative values pass
+    num_rule("account_auth", sid, name, ["password_policy", key], None, 0, -1, [1, "1", 2],
+             f"{key} in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one {what} character)",
              f"Set {key} = -1 in /etc/security/pwquality.conf",
-             f"effective {key} from /etc/security/pwquality.conf and pwquality.conf.d/*.conf")
+             f"effective {key} from /etc/security/pwquality.conf and pwquality.conf.d/*.conf",
+             pass_cases=[{"password_policy": {key: "-1"}}, {"password_policy": {key: "0"}}, {"password_policy": {key: -2}}])
 
 num_rule("account_auth", "RHEL-09-411010", "password_maxage", ["password_policy", "maxdays"], 1, 180, 180, [181, 365, -1, "99999"],
          "PASS_MAX_DAYS in /etc/login.defs must be 180 or less (and set: -1 disables the limit)",
@@ -1097,10 +1099,13 @@ R("ssh_config", "RHEL-09-255155", "ssh_no_x11", [("ssh_config", "X11Forwarding")
   comment="effective sshd X11Forwarding", attest_alts=[['_attested("rhel_09_255155_x11_documented")']],
   pass_cases=[{"ssh_config": {"X11Forwarding": "yes"}, "attest": {"rhel_09_255155_x11_documented": True}}])
 
-num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_config", "ClientAliveInterval"], 1, 600, 600, [601, 0, "10m"],
-         "sshd ClientAliveInterval must be set to 600 or less (0 disables it)",
+# V2R10 check text: a finding only when it "does not have a value of "600" or less" (0 is not excluded); a negative
+# value is not a time sshd accepts, so it stays a finding
+num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_config", "ClientAliveInterval"], 0, 600, 600, [601, -1, "10m"],
+         "sshd ClientAliveInterval must be set to 600 or less",
          "Set ClientAliveInterval 600 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
-         "effective sshd ClientAliveInterval (sshd -T)")
+         "effective sshd ClientAliveInterval (sshd -T)",
+         pass_cases=[{"ssh_config": {"ClientAliveInterval": "600"}}, {"ssh_config": {"ClientAliveInterval": "0"}}])
 num_rule("ssh_config", "RHEL-09-255095", "ssh_client_alive_count_ok", ["ssh_config", "ClientAliveCountMax"], 1, 1, 1, [0, 3],
          "sshd ClientAliveCountMax must be 1", "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
          "effective sshd ClientAliveCountMax (sshd -T)")

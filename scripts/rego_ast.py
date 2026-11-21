@@ -20,11 +20,14 @@ INCLUDE = re.compile(r"(check|notice|consent|obligation|security|breach|retentio
 EXCLUDE = re.compile(r"^(sections|chapters|groups|first_report_deadline|notification_clocks|rules_commencement|dated_obligations|compliance_report|availability_targets|penalty|legacy|_in)$")
 # The per-control result contract (control_results, its static CONTROL_INDEX of id / basis / profile / evidence
 # and the per-section status maps) restates controls that are already counted from their violation rules. It is
-# reporting, not checking: counting it would raise the headline count without adding a check.
+# reporting, not checking: counting it would raise the headline count without adding a check. The PCI DSS
+# evidence_spec tables (scripts/gen_pci_dss_evidence_spec.py) restate the facts the checks read, for the same reason.
 REPORTING = re.compile(r"^(CONTROL_INDEX|CONTROL_EVIDENCE|CONTROL_STATUSES|CONTROL_SCOPE|control_status|control_results"
                        r"|control_result_counts|control_results_profile|_control_results|_control_result_counts"
                        r"|_control_result_statuses|_control_evidence|_section_controls|decidable|_decidable"
-                       r"|MEETING_POLICY_FIELDS|FEDERATION_FIELDS|AUTHENTICATOR_FEATURES|SHAREPOINT_CONTROL_PROPERTIES)$")
+                       r"|MEETING_POLICY_FIELDS|FEDERATION_FIELDS|AUTHENTICATOR_FEATURES|SHAREPOINT_CONTROL_PROPERTIES"
+                       # PCI DSS: the facts each gating check reads and the per-requirement results built from them
+                       r"|evidence_spec|requirement_results|requirement_result_counts|_pci_requirements|_scope_program_specs)$")
 SCAFFOLD = re.compile(r"^(report|.*_report|.*_metadata|metadata|summary)$")
 ID_KEY = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._ -]*$")
 TEST_RE = re.compile(r"(^|/)(test_|.*_test\.rego$)")

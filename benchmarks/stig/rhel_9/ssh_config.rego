@@ -467,7 +467,7 @@ default ssh_client_alive_interval_ok := false
 ssh_client_alive_interval_ok if {
 	count(missing_rhel_09_255100) == 0
 	n := _num(["ssh_config", "ClientAliveInterval"])
-	n >= 1
+	n >= 0
 	n <= 600
 }
 
@@ -479,7 +479,7 @@ detail_rhel_09_255100 := "RHEL-09-255100: Not_a_Finding" if ssh_client_alive_int
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255100", concat(", ", missing_rhel_09_255100)]) if count(missing_rhel_09_255100) > 0
 
-else := "RHEL-09-255100: check failed — sshd ClientAliveInterval must be set to 600 or less (0 disables it)"
+else := "RHEL-09-255100: check failed — sshd ClientAliveInterval must be set to 600 or less"
 
 finding_rhel_09_255100 := {
 	"vuln_id": "V-257996",

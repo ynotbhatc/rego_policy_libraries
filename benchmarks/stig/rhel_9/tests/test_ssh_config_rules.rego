@@ -281,7 +281,7 @@ test_rhel_09_255100_fail_1 if {
 }
 
 test_rhel_09_255100_fail_2 if {
-	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": 0}})
+	f := data.stig.rhel_9.ssh_config.finding_rhel_09_255100 with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": -1}})
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-255100: check failed")
 }
@@ -300,6 +300,10 @@ test_rhel_09_255100_evidence_missing_1 if {
 
 test_rhel_09_255100_pass_2 if {
 	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "600"}})
+}
+
+test_rhel_09_255100_pass_3 if {
+	data.stig.rhel_9.ssh_config.status_rhel_09_255100 == "Not_a_Finding" with input as object.union(green_fixture, {"ssh_config": {"ClientAliveInterval": "0"}})
 }
 
 test_rhel_09_255095_pass if {

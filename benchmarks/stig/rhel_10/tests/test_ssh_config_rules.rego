@@ -570,6 +570,12 @@ test_rhel_10_700930_fail_5 if {
 	contains(f.detail, "RHEL-10-700930: check failed")
 }
 
+test_rhel_10_700930_fail_6 if {
+	f := data.stig.rhel_10.ssh_config.finding_rhel_10_700930 with input as object.union(green_fixture, {"sshd_config_files": {"ClientAliveInterval": [{"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": "-1"}]}, "sshd_runtime": {"clientaliveinterval": "-1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-10-700930: check failed")
+}
+
 test_rhel_10_700930_evidence_missing_1 if {
 	f := data.stig.rhel_10.ssh_config.finding_rhel_10_700930 with input as json.remove(green_fixture, [["sshd_config_files", "ClientAliveInterval"]])
 	f.status == "Open"
@@ -580,6 +586,10 @@ test_rhel_10_700930_evidence_missing_2 if {
 	f := data.stig.rhel_10.ssh_config.finding_rhel_10_700930 with input as json.remove(green_fixture, [["sshd_runtime", "clientaliveinterval"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-10-700930: evidence missing — sshd_runtime.clientaliveinterval")
+}
+
+test_rhel_10_700930_pass_2 if {
+	data.stig.rhel_10.ssh_config.status_rhel_10_700930 == "Not_a_Finding" with input as object.union(green_fixture, {"sshd_config_files": {"ClientAliveInterval": [{"file": "/etc/ssh/sshd_config.d/10-stig.conf", "value": "0"}]}, "sshd_runtime": {"clientaliveinterval": "0"}})
 }
 
 test_rhel_10_300060_pass if {

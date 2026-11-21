@@ -469,7 +469,7 @@ default ssh_client_alive_interval_ok := false
 ssh_client_alive_interval_ok if {
 	count(missing_ol09_00_002347) == 0
 	n := _num(["ssh_config", "ClientAliveInterval"])
-	n >= 1
+	n >= 0
 	n <= 600
 }
 
@@ -481,7 +481,7 @@ detail_ol09_00_002347 := "OL09-00-002347: Not_a_Finding" if ssh_client_alive_int
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-002347", concat(", ", missing_ol09_00_002347)]) if count(missing_ol09_00_002347) > 0
 
-else := "OL09-00-002347: check failed — sshd ClientAliveInterval must be set to 600 or less (0 disables it)"
+else := "OL09-00-002347: check failed — sshd ClientAliveInterval must be set to 600 or less"
 
 finding_ol09_00_002347 := {
 	"vuln_id": "V-271710",

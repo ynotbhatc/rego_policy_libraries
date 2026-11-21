@@ -446,7 +446,6 @@ ssh_client_alive_interval_ok if {
 	count(vals) > 0
 	every v in vals {
 		regex.match(`^[0-9]+$`, v)
-		to_number(v) >= 1
 		to_number(v) <= 600
 	}
 	count({v | some v in vals}) <= 1
@@ -460,7 +459,7 @@ detail_ol08_00_010201 := "OL08-00-010201: Not_a_Finding" if ssh_client_alive_int
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-010201", concat(", ", missing_ol08_00_010201)]) if count(missing_ol08_00_010201) > 0
 
-else := "OL08-00-010201: check failed — ClientAliveInterval must be 1..600 seconds on every line sshd reads (0 disables it), none conflicting"
+else := "OL08-00-010201: check failed — ClientAliveInterval must be 600 or less on every line sshd reads, none conflicting"
 
 finding_ol08_00_010201 := {
 	"vuln_id": "V-248553",

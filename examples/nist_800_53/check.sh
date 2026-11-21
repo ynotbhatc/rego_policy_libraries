@@ -17,14 +17,14 @@ r = result[0]["expressions"][0]["value"]
 want = sorted(["AC-2(3)", "AC-6(7)", "AC-7", "AC-11", "AC-17(3)"])
 got = sorted(v.split(":")[0].removeprefix("NIST ") for v in r.get("violations", []))
 problems = [f"{k}: got {r.get(k)!r}, expected {w!r}" for k, w in
-            (("compliant", False), ("controls_evaluated", 59), ("violation_count", 5)) if r.get(k) != w]
+            (("compliant", False), ("controls_evaluated", 60), ("violation_count", 5)) if r.get(k) != w]
 if got != want:
     problems.append(f"failing ids: got {got}, expected {want}")
 if any("evidence missing" in v for v in r.get("violations", [])):
     problems.append("an AC finding says evidence missing; the sample supplies every AC fact")
 if problems:
     sys.exit("FAIL (AC family): " + "; ".join(problems))
-print("ok: AC family: 5 of 59 controls fail, no evidence missing")
+print("ok: AC family: 5 of 60 controls fail, no evidence missing")
 '
 
 # 2. The framework key on the same input: AC is assessed, the other 19 families have no facts.
@@ -41,11 +41,11 @@ def expect(label, got, want):
         problems.append(f"{label}: got {got!r}, expected {want!r}")
 expect("compliant", r.get("compliant"), False)
 expect("assessed_at", r.get("assessed_at"), "2026-11-20")
-expect("total_controls", r.get("total_controls"), 523)
-expect("failed_controls", r.get("failed_controls"), 469)
-expect("violation_count", r.get("violation_count"), 469)
+expect("total_controls", r.get("total_controls"), 542)
+expect("failed_controls", r.get("failed_controls"), 487)
+expect("violation_count", r.get("violation_count"), 487)
 expect("control_result_counts", r.get("control_result_counts"),
-       {"pass": 54, "fail": 5, "evidence_missing": 416, "not_attested": 48})
+       {"pass": 55, "fail": 5, "evidence_missing": 416, "not_attested": 66})
 expect("AC family summary", r.get("family_summary", {}).get("AC"), {"compliant": False, "violations": 5})
 fails = sorted(c["id"] for c in r.get("control_results", []) if c.get("status") == "fail")
 expect("ids with status fail", fails, sorted(["AC-2(3)", "AC-6(7)", "AC-7", "AC-11", "AC-17(3)"]))
@@ -53,5 +53,5 @@ passes = {c["id"].split("(")[0].split("-")[0] for c in r.get("control_results", 
 expect("families with a passing control", passes, {"AC"})
 if problems:
     sys.exit("FAIL (nist_800_53 key): examples/nist_800_53/facts.json no longer gives the documented result\n  " + "\n  ".join(problems))
-print("ok: nist_800_53: 54 pass, 5 fail, 416 evidence missing, 48 not attested of 523")
+print("ok: nist_800_53: 55 pass, 5 fail, 416 evidence missing, 66 not attested of 542")
 '

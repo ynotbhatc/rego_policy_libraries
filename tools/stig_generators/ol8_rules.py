@@ -239,23 +239,26 @@ T.reuse("OL08-00-020013", "RHEL-09-411085",
         comment="fail_interval in /etc/security/faillock.conf; OL 8 requires 900 or MORE (RHEL 9: 900 or less); 8.0/8.1 N/A",
         **NA82)
 
-for sid, opt, name, op, want, bad in [
-    ("OL08-00-020230", "minlen", "password_min_length", ">=", 15, 8),
-    ("OL08-00-020110", "ucredit", "password_ucredit", "<=", -1, 0),
-    ("OL08-00-020120", "lcredit", "password_lcredit", "<=", -1, 1),
-    ("OL08-00-020130", "dcredit", "password_dcredit", "<=", -1, 0),
-    ("OL08-00-020280", "ocredit", "password_ocredit", "<=", -1, 0),
+# V2R10 check text for the credits: only "a positive number or is commented out" is a finding, so the limit is 0
+# (0 and negative values pass) while the fix and the green fixture stay at -1
+for sid, opt, name, op, want, limit, bad in [
+    ("OL08-00-020230", "minlen", "password_min_length", ">=", 15, 15, 8),
+    ("OL08-00-020110", "ucredit", "password_ucredit", "<=", -1, 0, 1),
+    ("OL08-00-020120", "lcredit", "password_lcredit", "<=", -1, 0, 1),
+    ("OL08-00-020130", "dcredit", "password_dcredit", "<=", -1, 0, 1),
+    ("OL08-00-020280", "ocredit", "password_ocredit", "<=", -1, 0, 1),
 ]:
     T.R("account_auth", sid, name, [("pwquality_values", opt)],
-        [[f'ns := _pwq("{opt}")', "count(ns) > 0", f"every n in ns {{\n\tis_number(n)\n\tn {op} {want}\n}}", "count({n | some n in ns}) == 1"]],
+        [[f'ns := _pwq("{opt}")', "count(ns) > 0", f"every n in ns {{\n\tis_number(n)\n\tn {op} {limit}\n}}", "count({n | some n in ns}) == 1"]],
         {"pwquality_values": {opt: [str(want)]}},
         [{"pwquality_values": {opt: [str(bad)]}}, {"pwquality_values": {opt: []}},
          {"pwquality_values": {opt: [str(want), str(want - 1 if op == ">=" else want - 1)]}} if op == "<=" else
          {"pwquality_values": {opt: [str(want), str(want + 1)]}},
          {"pwquality_values": {opt: ["x"]}}],
-        f"{opt} must be {op} {want} on every uncommented {opt} line of /etc/security/pwquality.conf*, with no conflicting values",
+        f"{opt} must be {op} {limit} on every uncommented {opt} line of /etc/security/pwquality.conf*, with no conflicting values",
         f"Set {opt} = {want} in /etc/security/pwquality.conf and remove other {opt} lines",
-        comment=f"every {opt} = value line found by grep -r {opt} /etc/security/pwquality.conf* (conflicting results are a finding)")
+        comment=f"every {opt} = value line found by grep -r {opt} /etc/security/pwquality.conf* (conflicting results are a finding)",
+        **({"pass_cases": [{"pwquality_values": {opt: ["0"]}}]} if op == "<=" else {}))
 
 # ── sshd settings: every uncommented line in the files sshd reads; conflicting results are a finding ──────────
 T.helpers("ssh_config", r'''
@@ -295,10 +298,12 @@ ssh("OL08-00-040340", "X11Forwarding", "ssh_x11_disabled", 'v == "no"', ["no"], 
     "Set X11Forwarding no in /etc/ssh/sshd_config", "X11Forwarding lines sshd reads",
     attest_alts=[['_attested("ol08_00_040340_x11_documented")']],
     pass_cases=[{"sshd_config_lines": {"X11Forwarding": ["yes"]}, "attest": {"ol08_00_040340_x11_documented": True}}])
+# V2R10 check text: "600" or less (0 is not excluded); digits only, so a negative value stays a finding
 ssh("OL08-00-010201", "ClientAliveInterval", "ssh_client_alive_interval_ok",
-    'regex.match(`^[0-9]+$`, v)\n\tto_number(v) >= 1\n\tto_number(v) <= 600', ["600"], [["601"], ["0"], [], ["300", "600"], ["10m"]],
-    "ClientAliveInterval must be 1..600 seconds on every line sshd reads (0 disables it), none conflicting",
-    "Set ClientAliveInterval 600 in /etc/ssh/sshd_config", "ClientAliveInterval lines sshd reads")
+    'regex.match(`^[0-9]+$`, v)\n\tto_number(v) <= 600', ["600"], [["601"], ["-1"], [], ["300", "600"], ["10m"]],
+    "ClientAliveInterval must be 600 or less on every line sshd reads, none conflicting",
+    "Set ClientAliveInterval 600 in /etc/ssh/sshd_config", "ClientAliveInterval lines sshd reads",
+    pass_cases=[{"sshd_config_lines": {"ClientAliveInterval": ["0"]}}])
 ssh("OL08-00-010200", "ClientAliveCountMax", "ssh_client_alive_count_ok", 'v == "1"', ["1"], [["0"], ["3"], [], ["1", "3"]],
     "ClientAliveCountMax must be 1 (none conflicting)", "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config",
     "ClientAliveCountMax lines sshd reads")

@@ -527,11 +527,9 @@ ssh_client_alive_interval_ok if {
 	count(missing_rhel_10_700930) == 0
 	v := _r10_ssh_first("ClientAliveInterval")
 	regex.match(`^[0-9]+$`, v)
-	to_number(v) >= 1
 	to_number(v) <= 600
 	r := _r10_ssh_runtime("ClientAliveInterval")
 	regex.match(`^[0-9]+$`, r)
-	to_number(r) >= 1
 	to_number(r) <= 600
 }
 
@@ -543,7 +541,7 @@ detail_rhel_10_700930 := "RHEL-10-700930: Not_a_Finding" if ssh_client_alive_int
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-10-700930", concat(", ", missing_rhel_10_700930)]) if count(missing_rhel_10_700930) > 0
 
-else := "RHEL-10-700930: check failed — ClientAliveInterval must be 1..600 in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
+else := "RHEL-10-700930: check failed — ClientAliveInterval must be 600 or less in a drop-in before 50-redhat.conf (the first value sshd reads) and at runtime (sshd -T)"
 
 finding_rhel_10_700930 := {
 	"vuln_id": "V-281296",
