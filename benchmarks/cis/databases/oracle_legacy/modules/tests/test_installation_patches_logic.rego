@@ -48,3 +48,13 @@ test_old_numeric_version_violates if {
 test_missing_oracle_home_violates if {
 	not data.cis_oracle.installation_patches.compliant with input as object.remove(base, ["oracle_home"])
 }
+
+# #300 type traps: a non-number critical_missing is evidence missing; real numbers keep their behaviour.
+test_critical_missing_number_type_traps if {
+	"CIS 1.1: evidence missing — critical_patches.critical_missing is not a number" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": "1"}}
+	"CIS 1.1: evidence missing — critical_patches.critical_missing is not a number" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": null}}
+	"CIS 1.1: evidence missing — critical_patches.critical_missing is not a number" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": "not-a-number"}}
+	not "CIS 1.1: evidence missing — critical_patches.critical_missing is not a number" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": 0}}
+	not "CIS 1.1: 3 critical security patches are missing" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": 0}}
+	"CIS 1.1: 3 critical security patches are missing" in data.cis_oracle.installation_patches.installation_violations with input as {"critical_patches": {"critical_missing": 3}}
+}

@@ -96,6 +96,7 @@ l2_met := count([id | some id; c := _all[id]; c.level == "L2"; c.met])
 default l1_compliant := false
 
 l1_compliant if {
+	is_number(l1_total)
 	l1_total > 0
 	l1_met == l1_total
 }

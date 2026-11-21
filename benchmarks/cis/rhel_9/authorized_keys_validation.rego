@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 13
+#     checks: 14
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.authorized_keys
 
 import rego.v1
@@ -130,11 +130,20 @@ violations contains msg if {
 	some entry in input.authorized_keys.files
 	some key in entry.keys
 	key.type == "ssh-rsa"
+	is_number(key.bits)
 	key.bits < 2048
 	msg := sprintf(
 		"NIST SC-13: RSA key in %v is %v bits (user: %v) — NIST SP 800-131A minimum is 2048 bits",
 		[entry.path, key.bits, entry.user],
 	)
+}
+
+violations contains msg if {
+	some entry in input.authorized_keys.files
+	some key in entry.keys
+	key.type == "ssh-rsa"
+	not is_number(object.get(key, "bits", 0))
+	msg := sprintf("NIST SC-13: evidence missing — RSA key bits in %v is not a number (user: %v)", [entry.path, entry.user])
 }
 
 # ── Key Attribution ───────────────────────────────────────────────────────────

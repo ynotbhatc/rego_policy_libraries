@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 24
+#     checks: 25
 #     cited: 16
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_oracle.database_parameters
 
 # CIS Oracle Database 19c Benchmark - Section 2.2
@@ -214,9 +214,15 @@ parameter_violations contains violation if {
 # =============================================================================
 
 parameter_violations contains violation if {
+	is_number(input.oracle_version.major)
 	input.oracle_version.major >= 12
 	not input.unified_auditing.enabled
 	violation := "CIS 2.2: Unified Auditing is not enabled (recommended for Oracle 12c+)"
+}
+
+parameter_violations contains violation if {
+	not is_number(object.get(input, ["oracle_version", "major"], 0))
+	violation := "CIS 2.2: evidence missing — oracle_version.major is not a number"
 }
 
 # =============================================================================

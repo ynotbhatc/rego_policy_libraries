@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 14
+#     checks: 16
 #     cited: 3
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_oracle.installation_patches
 
 # CIS Oracle Database 19c Benchmark - Section 1
@@ -62,13 +62,25 @@ installation_violations contains violation if {
 }
 
 installation_violations contains violation if {
+	is_number(input.critical_patches.days_since_last_patch)
 	input.critical_patches.days_since_last_patch > 90
 	violation := sprintf("CIS 1.1: Last patch was applied %d days ago (should be < 90 days)", [input.critical_patches.days_since_last_patch])
 }
 
 installation_violations contains violation if {
+	not is_number(object.get(input, ["critical_patches", "days_since_last_patch"], 0))
+	violation := "CIS 1.1: evidence missing — critical_patches.days_since_last_patch is not a number"
+}
+
+installation_violations contains violation if {
+	is_number(input.critical_patches.critical_missing)
 	input.critical_patches.critical_missing > 0
 	violation := sprintf("CIS 1.1: %d critical security patches are missing", [input.critical_patches.critical_missing])
+}
+
+installation_violations contains violation if {
+	not is_number(object.get(input, ["critical_patches", "critical_missing"], 0))
+	violation := "CIS 1.1: evidence missing — critical_patches.critical_missing is not a number"
 }
 
 # =============================================================================
@@ -159,10 +171,12 @@ report := {
 }
 
 risk_level := "critical" if {
+	is_number(input.critical_patches.critical_missing)
 	input.critical_patches.critical_missing > 0
 } else := "critical" if {
 	not input.oracle_version.supported
 } else := "high" if {
+	is_number(input.critical_patches.days_since_last_patch)
 	input.critical_patches.days_since_last_patch > 180
 } else := "medium" if {
 	count(object.get(input, ["critical_patches", "missing_patches"], [])) > 0

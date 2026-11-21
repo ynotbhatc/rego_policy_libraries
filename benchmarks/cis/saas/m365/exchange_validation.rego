@@ -26,14 +26,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 20
+#     checks: 22
 #     cited: 7
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365.exchange
 
 import rego.v1
@@ -48,6 +48,7 @@ default compliant := false
 # default unless explicitly overridden).
 violation_4_1_1 contains msg if {
 	input.mailbox_audit_summary.evaluable
+	is_number(input.mailbox_audit_summary.audit_disabled)
 	input.mailbox_audit_summary.audit_disabled > 0
 	msg := sprintf("CIS 4.1.1: %d of %d sampled mailboxes have audit disabled; enable tenant-wide mailbox audit", [
 		input.mailbox_audit_summary.audit_disabled,
@@ -55,12 +56,24 @@ violation_4_1_1 contains msg if {
 	])
 }
 
+violation_4_1_1 contains msg if {
+	input.mailbox_audit_summary.evaluable
+	not is_number(object.get(input, ["mailbox_audit_summary", "audit_disabled"], 0))
+	msg := "CIS 4.1.1: evidence missing — mailbox_audit_summary.audit_disabled is not a number"
+}
+
 # When we couldn't evaluate (no mailboxAuditEnabled in any sampled
 # response), surface that explicitly rather than silently passing.
 violation_4_1_1 contains msg if {
 	not input.mailbox_audit_summary.evaluable
+	is_number(input.mailbox_audit_summary.sampled)
 	input.mailbox_audit_summary.sampled > 0
 	msg := "CIS 4.1.1: mailbox audit state not evaluable via Graph; verify tenant-wide setting via Exchange admin center"
+}
+
+violation_4_1_1 contains msg if {
+	not is_number(object.get(input, ["mailbox_audit_summary", "sampled"], 0))
+	msg := "CIS 4.1.1: evidence missing — mailbox_audit_summary.sampled is not a number"
 }
 
 violation_4_1_1 contains msg if {

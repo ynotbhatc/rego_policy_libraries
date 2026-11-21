@@ -358,3 +358,12 @@ test_fail_5_4_1_traversal if {
 	contains(v, "traversal")
 	not "5.4.1" in server_config.met with input as inp
 }
+
+# #300 type traps: a non-number minimum listChanged interval is evidence missing.
+test_list_changed_interval_number_type_traps if {
+	f := ["5.2.1", "evidence missing — configured minimum listChanged interval is not a number"]
+	f in data.cis_mcp_server.server_config.fail with input as {"cis_mcp_server": {"server_config": {"evidence": {"list_changed": {"min_interval_seconds": "1", "notifications": []}}}}}
+	f in data.cis_mcp_server.server_config.fail with input as {"cis_mcp_server": {"server_config": {"evidence": {"list_changed": {"min_interval_seconds": "often", "notifications": []}}}}}
+	["5.2.1", "configured minimum listChanged interval not reported"] in data.cis_mcp_server.server_config.fail with input as {"cis_mcp_server": {"server_config": {"evidence": {"list_changed": {"min_interval_seconds": null, "notifications": []}}}}}
+	not f in data.cis_mcp_server.server_config.fail with input as {"cis_mcp_server": {"server_config": {"evidence": {"list_changed": {"min_interval_seconds": 5, "notifications": []}}}}}
+}

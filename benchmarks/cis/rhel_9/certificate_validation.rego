@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 12
+#     checks: 14
 #     cited: 4
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_rhel9.certificate_validation
 
 import rego.v1
@@ -49,11 +49,13 @@ weak_signature(alg) if {
 
 weak_key(cert) if {
 	cert.key_type == "RSA"
+	is_number(cert.key_bits)
 	cert.key_bits < 2048
 }
 
 weak_key(cert) if {
 	cert.key_type == "EC"
+	is_number(cert.key_bits)
 	cert.key_bits < 256
 }
 
@@ -66,6 +68,7 @@ weak_key(cert) if {
 # NIST IA-5: Expired certificates
 violations contains msg if {
 	some cert in input.certificates.system_certs
+	is_number(cert.days_until_expiry)
 	cert.days_until_expiry < 0
 	msg := sprintf(
 		"NIST IA-5: Certificate '%v' EXPIRED %v days ago — replace immediately",
@@ -73,9 +76,16 @@ violations contains msg if {
 	)
 }
 
+violations contains msg if {
+	some cert in input.certificates.system_certs
+	not is_number(object.get(cert, "days_until_expiry", 0))
+	msg := sprintf("NIST IA-5: evidence missing — certificate '%v' days_until_expiry is not a number", [cert.subject])
+}
+
 # Critical: expiring within 7 days
 violations contains msg if {
 	some cert in input.certificates.system_certs
+	is_number(cert.days_until_expiry)
 	cert.days_until_expiry >= 0
 	cert.days_until_expiry <= expiry_critical_days
 	msg := sprintf(
@@ -125,6 +135,13 @@ violations contains msg if {
 		"NIST SC-13: Certificate '%v' uses weak %v key (%v bits) — minimum: RSA 2048, EC P-256",
 		[cert.subject, cert.key_type, cert.key_bits],
 	)
+}
+
+violations contains msg if {
+	some cert in input.certificates.system_certs
+	cert.key_type in {"RSA", "EC"}
+	not is_number(object.get(cert, "key_bits", 0))
+	msg := sprintf("NIST SC-13: evidence missing — certificate '%v' key_bits is not a number", [cert.subject])
 }
 
 # ── Weak Signature Algorithms ─────────────────────────────────────────────────
@@ -196,10 +213,12 @@ compliance_report := {
 	"total_certs": count(object.get(input, ["certificates", "system_certs"], [])),
 	"expired": count([c |
 		some c in object.get(input, ["certificates", "system_certs"], [])
+		is_number(c.days_until_expiry)
 		c.days_until_expiry < 0
 	]),
 	"expiring_critical": count([c |
 		some c in object.get(input, ["certificates", "system_certs"], [])
+		is_number(c.days_until_expiry)
 		c.days_until_expiry >= 0
 		c.days_until_expiry <= expiry_critical_days
 	]),
