@@ -237,6 +237,7 @@ unlock_ok(v) if num(v) >= 900
 faillock_unlock_arg_short if {
 	some l in faillock_auth_lines
 	n := pam_arg_num(l, "unlock_time")
+	is_number(n)
 	n > 0
 	n < 900
 }

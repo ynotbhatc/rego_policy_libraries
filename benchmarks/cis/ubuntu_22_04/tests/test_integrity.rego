@@ -29,12 +29,12 @@ test_6_3_2_pass if {
 test_6_3_2_fail if {
 	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"cron_raw": "0 5 * * * root /usr/bin/updatedb", "aidecheck": {"service_unit_file_state": "disabled", "timer_unit_file_state": "disabled", "timer_active_state": "inactive"}}}
 	count([v | some v in vs; startswith(v, "6.3.2: ")]) > 0
-	not "6.3.2: evidence missing — aide.cron_raw/aide.aidecheck not collected" in vs
+	not "6.3.2: evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected" in vs
 }
 
 test_6_3_2_evidence_missing if {
 	vs := data.cis_ubuntu_22_04.integrity.violations with input as {}
-	"6.3.2: evidence missing — aide.cron_raw/aide.aidecheck not collected" in vs
+	"6.3.2: evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected" in vs
 }
 
 test_6_3_2_hollow_evidence_not_a_pass if {
@@ -77,4 +77,25 @@ test_commented_cron_entry_flagged if {
 test_audit_tools_without_autrace_flagged if {
 	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"audit_tool_options": {"auditctl": "p+i+n+u+g+s+b+acl+xattrs+sha512", "auditd": "p+i+n+u+g+s+b+acl+xattrs+sha512", "ausearch": "p+i+n+u+g+s+b+acl+xattrs+sha512", "aureport": "p+i+n+u+g+s+b+acl+xattrs+sha512", "augenrules": "p+i+n+u+g+s+b+acl+xattrs+sha512"}}}
 	count([v | some v in vs; startswith(v, "6.3.3: not met")]) > 0
+}
+
+# 6.3.2 (#332): with aide.collected, cron text that names no aide check is not met, not missing evidence.
+test_collected_cron_with_aide_check_passes if {
+	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"collected": true, "cron_raw": "0 5 * * * root /usr/bin/aide --check"}}
+	count([v | some v in vs; startswith(v, "6.3.2: ")]) == 0
+}
+
+test_collected_empty_cron_is_not_met if {
+	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"collected": true, "cron_raw": ""}}
+	count([v | some v in vs; startswith(v, "6.3.2: not met")]) > 0
+}
+
+test_empty_cron_without_marker_is_missing if {
+	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"cron_raw": ""}}
+	count([v | some v in vs; startswith(v, "6.3.2: evidence missing")]) > 0
+}
+
+test_marker_without_cron_text_is_missing if {
+	vs := data.cis_ubuntu_22_04.integrity.violations with input as {"aide": {"collected": true}}
+	count([v | some v in vs; startswith(v, "6.3.2: evidence missing")]) > 0
 }

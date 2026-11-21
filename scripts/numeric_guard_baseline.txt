@@ -382,11 +382,6 @@ benchmarks/cis/ubuntu_20_04/sudo_validation.rego	input.sudo.timestamp_timeout < 
 benchmarks/cis/ubuntu_20_04/sudo_validation.rego	input.sudo.timestamp_timeout > 15
 benchmarks/cis/ubuntu_20_04/user_group_validation.rego	cnt > 1
 benchmarks/cis/ubuntu_20_04/user_group_validation.rego	cnt > 1
-benchmarks/cis/ubuntu_22_04/pam.rego	n < 900
-benchmarks/cis/ubuntu_22_04/pam.rego	n > 0
-benchmarks/cis/ubuntu_22_04/ssh.rego	openssh_version[1] >= 9
-benchmarks/cis/ubuntu_22_04/sudo.rego	input.sudo.default_timestamp_timeout <= 15
-benchmarks/cis/ubuntu_22_04/sudo.rego	input.sudo.default_timestamp_timeout >= 0
 benchmarks/cis/ubuntu_24_04/pam.rego	n < 900
 benchmarks/cis/ubuntu_24_04/pam.rego	n > 0
 benchmarks/cis/ubuntu_24_04/ssh.rego	openssh_version[0] >= 0
