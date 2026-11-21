@@ -274,7 +274,7 @@ test_ol08_00_020110_pass if {
 }
 
 test_ol08_00_020110_fail_1 if {
-	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020110 with input as object.union(green_fixture, {"pwquality_values": {"ucredit": ["0"]}})
+	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020110 with input as object.union(green_fixture, {"pwquality_values": {"ucredit": ["1"]}})
 	f.status == "Open"
 	contains(f.detail, "OL08-00-020110: check failed")
 }
@@ -301,6 +301,10 @@ test_ol08_00_020110_evidence_missing_1 if {
 	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020110 with input as json.remove(green_fixture, [["pwquality_values", "ucredit"]])
 	f.status == "Open"
 	contains(f.detail, "OL08-00-020110: evidence missing — pwquality_values.ucredit")
+}
+
+test_ol08_00_020110_pass_2 if {
+	data.stig.oracle_linux_8.account_auth.status_ol08_00_020110 == "Not_a_Finding" with input as object.union(green_fixture, {"pwquality_values": {"ucredit": ["0"]}})
 }
 
 test_ol08_00_020120_pass if {
@@ -337,12 +341,16 @@ test_ol08_00_020120_evidence_missing_1 if {
 	contains(f.detail, "OL08-00-020120: evidence missing — pwquality_values.lcredit")
 }
 
+test_ol08_00_020120_pass_2 if {
+	data.stig.oracle_linux_8.account_auth.status_ol08_00_020120 == "Not_a_Finding" with input as object.union(green_fixture, {"pwquality_values": {"lcredit": ["0"]}})
+}
+
 test_ol08_00_020130_pass if {
 	data.stig.oracle_linux_8.account_auth.status_ol08_00_020130 == "Not_a_Finding" with input as green_fixture
 }
 
 test_ol08_00_020130_fail_1 if {
-	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020130 with input as object.union(green_fixture, {"pwquality_values": {"dcredit": ["0"]}})
+	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020130 with input as object.union(green_fixture, {"pwquality_values": {"dcredit": ["1"]}})
 	f.status == "Open"
 	contains(f.detail, "OL08-00-020130: check failed")
 }
@@ -371,12 +379,16 @@ test_ol08_00_020130_evidence_missing_1 if {
 	contains(f.detail, "OL08-00-020130: evidence missing — pwquality_values.dcredit")
 }
 
+test_ol08_00_020130_pass_2 if {
+	data.stig.oracle_linux_8.account_auth.status_ol08_00_020130 == "Not_a_Finding" with input as object.union(green_fixture, {"pwquality_values": {"dcredit": ["0"]}})
+}
+
 test_ol08_00_020280_pass if {
 	data.stig.oracle_linux_8.account_auth.status_ol08_00_020280 == "Not_a_Finding" with input as green_fixture
 }
 
 test_ol08_00_020280_fail_1 if {
-	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020280 with input as object.union(green_fixture, {"pwquality_values": {"ocredit": ["0"]}})
+	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020280 with input as object.union(green_fixture, {"pwquality_values": {"ocredit": ["1"]}})
 	f.status == "Open"
 	contains(f.detail, "OL08-00-020280: check failed")
 }
@@ -403,4 +415,8 @@ test_ol08_00_020280_evidence_missing_1 if {
 	f := data.stig.oracle_linux_8.account_auth.finding_ol08_00_020280 with input as json.remove(green_fixture, [["pwquality_values", "ocredit"]])
 	f.status == "Open"
 	contains(f.detail, "OL08-00-020280: evidence missing — pwquality_values.ocredit")
+}
+
+test_ol08_00_020280_pass_2 if {
+	data.stig.oracle_linux_8.account_auth.status_ol08_00_020280 == "Not_a_Finding" with input as object.union(green_fixture, {"pwquality_values": {"ocredit": ["0"]}})
 }

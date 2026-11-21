@@ -263,7 +263,7 @@ default password_uppercase := false
 password_uppercase if {
 	count(missing_rhel_09_611110) == 0
 	n := _num(["password_policy", "ucredit"])
-	n <= -1
+	n <= 0
 }
 
 status_rhel_09_611110 := "Not_a_Finding" if password_uppercase
@@ -274,7 +274,7 @@ detail_rhel_09_611110 := "RHEL-09-611110: Not_a_Finding" if password_uppercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611110", concat(", ", missing_rhel_09_611110)]) if count(missing_rhel_09_611110) > 0
 
-else := "RHEL-09-611110: check failed — ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character)"
+else := "RHEL-09-611110: check failed — ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character)"
 
 finding_rhel_09_611110 := {
 	"vuln_id": "V-258111",
@@ -296,7 +296,7 @@ default password_lowercase := false
 password_lowercase if {
 	count(missing_rhel_09_611065) == 0
 	n := _num(["password_policy", "lcredit"])
-	n <= -1
+	n <= 0
 }
 
 status_rhel_09_611065 := "Not_a_Finding" if password_lowercase
@@ -307,7 +307,7 @@ detail_rhel_09_611065 := "RHEL-09-611065: Not_a_Finding" if password_lowercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611065", concat(", ", missing_rhel_09_611065)]) if count(missing_rhel_09_611065) > 0
 
-else := "RHEL-09-611065: check failed — lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character)"
+else := "RHEL-09-611065: check failed — lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character)"
 
 finding_rhel_09_611065 := {
 	"vuln_id": "V-258102",
@@ -329,7 +329,7 @@ default password_numeric := false
 password_numeric if {
 	count(missing_rhel_09_611070) == 0
 	n := _num(["password_policy", "dcredit"])
-	n <= -1
+	n <= 0
 }
 
 status_rhel_09_611070 := "Not_a_Finding" if password_numeric
@@ -340,7 +340,7 @@ detail_rhel_09_611070 := "RHEL-09-611070: Not_a_Finding" if password_numeric
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611070", concat(", ", missing_rhel_09_611070)]) if count(missing_rhel_09_611070) > 0
 
-else := "RHEL-09-611070: check failed — dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character)"
+else := "RHEL-09-611070: check failed — dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character)"
 
 finding_rhel_09_611070 := {
 	"vuln_id": "V-258103",
@@ -362,7 +362,7 @@ default password_special := false
 password_special if {
 	count(missing_rhel_09_611100) == 0
 	n := _num(["password_policy", "ocredit"])
-	n <= -1
+	n <= 0
 }
 
 status_rhel_09_611100 := "Not_a_Finding" if password_special
@@ -373,7 +373,7 @@ detail_rhel_09_611100 := "RHEL-09-611100: Not_a_Finding" if password_special
 
 else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611100", concat(", ", missing_rhel_09_611100)]) if count(missing_rhel_09_611100) > 0
 
-else := "RHEL-09-611100: check failed — ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character)"
+else := "RHEL-09-611100: check failed — ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character)"
 
 finding_rhel_09_611100 := {
 	"vuln_id": "V-258109",

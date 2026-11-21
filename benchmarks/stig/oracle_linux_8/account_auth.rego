@@ -415,7 +415,7 @@ password_ucredit if {
 	count(ns) > 0
 	every n in ns {
 		is_number(n)
-		n <= -1
+		n <= 0
 	}
 	count({n | some n in ns}) == 1
 }
@@ -428,7 +428,7 @@ detail_ol08_00_020110 := "OL08-00-020110: Not_a_Finding" if password_ucredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020110", concat(", ", missing_ol08_00_020110)]) if count(missing_ol08_00_020110) > 0
 
-else := "OL08-00-020110: check failed — ucredit must be <= -1 on every uncommented ucredit line of /etc/security/pwquality.conf*, with no conflicting values"
+else := "OL08-00-020110: check failed — ucredit must be <= 0 on every uncommented ucredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020110 := {
 	"vuln_id": "V-248687",
@@ -453,7 +453,7 @@ password_lcredit if {
 	count(ns) > 0
 	every n in ns {
 		is_number(n)
-		n <= -1
+		n <= 0
 	}
 	count({n | some n in ns}) == 1
 }
@@ -466,7 +466,7 @@ detail_ol08_00_020120 := "OL08-00-020120: Not_a_Finding" if password_lcredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020120", concat(", ", missing_ol08_00_020120)]) if count(missing_ol08_00_020120) > 0
 
-else := "OL08-00-020120: check failed — lcredit must be <= -1 on every uncommented lcredit line of /etc/security/pwquality.conf*, with no conflicting values"
+else := "OL08-00-020120: check failed — lcredit must be <= 0 on every uncommented lcredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020120 := {
 	"vuln_id": "V-248688",
@@ -491,7 +491,7 @@ password_dcredit if {
 	count(ns) > 0
 	every n in ns {
 		is_number(n)
-		n <= -1
+		n <= 0
 	}
 	count({n | some n in ns}) == 1
 }
@@ -504,7 +504,7 @@ detail_ol08_00_020130 := "OL08-00-020130: Not_a_Finding" if password_dcredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020130", concat(", ", missing_ol08_00_020130)]) if count(missing_ol08_00_020130) > 0
 
-else := "OL08-00-020130: check failed — dcredit must be <= -1 on every uncommented dcredit line of /etc/security/pwquality.conf*, with no conflicting values"
+else := "OL08-00-020130: check failed — dcredit must be <= 0 on every uncommented dcredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020130 := {
 	"vuln_id": "V-248689",
@@ -529,7 +529,7 @@ password_ocredit if {
 	count(ns) > 0
 	every n in ns {
 		is_number(n)
-		n <= -1
+		n <= 0
 	}
 	count({n | some n in ns}) == 1
 }
@@ -542,7 +542,7 @@ detail_ol08_00_020280 := "OL08-00-020280: Not_a_Finding" if password_ocredit
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL08-00-020280", concat(", ", missing_ol08_00_020280)]) if count(missing_ol08_00_020280) > 0
 
-else := "OL08-00-020280: check failed — ocredit must be <= -1 on every uncommented ocredit line of /etc/security/pwquality.conf*, with no conflicting values"
+else := "OL08-00-020280: check failed — ocredit must be <= 0 on every uncommented ocredit line of /etc/security/pwquality.conf*, with no conflicting values"
 
 finding_ol08_00_020280 := {
 	"vuln_id": "V-248709",

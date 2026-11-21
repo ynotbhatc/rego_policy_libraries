@@ -155,7 +155,7 @@ default password_lowercase := false
 password_lowercase if {
 	count(missing_ol09_00_001015) == 0
 	n := _num(["password_policy", "lcredit"])
-	n <= -1
+	n <= 0
 }
 
 status_ol09_00_001015 := "Not_a_Finding" if password_lowercase
@@ -166,7 +166,7 @@ detail_ol09_00_001015 := "OL09-00-001015: Not_a_Finding" if password_lowercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001015", concat(", ", missing_ol09_00_001015)]) if count(missing_ol09_00_001015) > 0
 
-else := "OL09-00-001015: check failed — lcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one lowercase character)"
+else := "OL09-00-001015: check failed — lcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one lowercase character)"
 
 finding_ol09_00_001015 := {
 	"vuln_id": "V-271615",
@@ -188,7 +188,7 @@ default password_numeric := false
 password_numeric if {
 	count(missing_ol09_00_001020) == 0
 	n := _num(["password_policy", "dcredit"])
-	n <= -1
+	n <= 0
 }
 
 status_ol09_00_001020 := "Not_a_Finding" if password_numeric
@@ -199,7 +199,7 @@ detail_ol09_00_001020 := "OL09-00-001020: Not_a_Finding" if password_numeric
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001020", concat(", ", missing_ol09_00_001020)]) if count(missing_ol09_00_001020) > 0
 
-else := "OL09-00-001020: check failed — dcredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one numeric character)"
+else := "OL09-00-001020: check failed — dcredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one numeric character)"
 
 finding_ol09_00_001020 := {
 	"vuln_id": "V-271616",
@@ -221,7 +221,7 @@ default password_special := false
 password_special if {
 	count(missing_ol09_00_001120) == 0
 	n := _num(["password_policy", "ocredit"])
-	n <= -1
+	n <= 0
 }
 
 status_ol09_00_001120 := "Not_a_Finding" if password_special
@@ -232,7 +232,7 @@ detail_ol09_00_001120 := "OL09-00-001120: Not_a_Finding" if password_special
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001120", concat(", ", missing_ol09_00_001120)]) if count(missing_ol09_00_001120) > 0
 
-else := "OL09-00-001120: check failed — ocredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one special character)"
+else := "OL09-00-001120: check failed — ocredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one special character)"
 
 finding_ol09_00_001120 := {
 	"vuln_id": "V-271636",
@@ -422,7 +422,7 @@ default password_uppercase := false
 password_uppercase if {
 	count(missing_ol09_00_001005) == 0
 	n := _num(["password_policy", "ucredit"])
-	n <= -1
+	n <= 0
 }
 
 status_ol09_00_001005 := "Not_a_Finding" if password_uppercase
@@ -433,7 +433,7 @@ detail_ol09_00_001005 := "OL09-00-001005: Not_a_Finding" if password_uppercase
 
 else := sprintf("%s: evidence missing — %s not collected", ["OL09-00-001005", concat(", ", missing_ol09_00_001005)]) if count(missing_ol09_00_001005) > 0
 
-else := "OL09-00-001005: check failed — ucredit in /etc/security/pwquality.conf(.d) must be negative (-1: at least one uppercase character)"
+else := "OL09-00-001005: check failed — ucredit in /etc/security/pwquality.conf(.d) must be set and not positive (-1: at least one uppercase character)"
 
 finding_ol09_00_001005 := {
 	"vuln_id": "V-271613",
