@@ -55,11 +55,18 @@ _bool_false(checks) := {sprintf("%s (%s is false)", [c[1], _path(c[0])]) |
 
 _paths(checks) := [c[0] | some c in checks]
 
-# Counts that must be zero (exceptions found by a tool or a records query). A non-number or a negative number is
-# missing evidence.
+# Counts that must be zero (exceptions found by a tool or a records query). A non-number, a negative or a fractional
+# number is missing evidence.
+# Days and other non-negative measures (not counts): a non-negative number.
+_nonneg(x) if {
+	is_number(x)
+	x >= 0
+}
+
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _zero_missing(paths) := {_path(p) |
@@ -78,7 +85,7 @@ _zero_unmet(checks) := {sprintf(c[1], [n]) |
 # Organization-defined frequency (IR-2/IR-3 shape): <base>.days_since_last against <base>.odp.frequency_days.
 _freq_missing(base) := {_path(concat(".", [base, k])) |
 	some k in ["days_since_last", "odp.frequency_days"]
-	not _count_ok(_get(concat(".", [base, k])))
+	not _nonneg(_get(concat(".", [base, k])))
 }
 
 _overdue(base, what) := {msg |
@@ -554,7 +561,7 @@ _cm3_1_period := _get("change_control.automation.odp.time_period_days")
 
 _cm3_1_num_missing := {_path(p) |
 	some pair in [["change_control.automation.highlight_after_days", _cm3_1_highlight], ["change_control.automation.odp.time_period_days", _cm3_1_period]]
-	not _count_ok(pair[1])
+	not _nonneg(pair[1])
 	p := pair[0]
 }
 

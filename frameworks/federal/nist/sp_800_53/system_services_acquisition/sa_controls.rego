@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 28
-#     cited: 28
+#     checks: 29
+#     cited: 29
 #     density: sized
 #     basis: size
 #     tested: true
@@ -21,7 +21,8 @@ import rego.v1
 # NIST SP 800-53 Rev 5 — System and Services Acquisition (SA) Family: the seventeen active base controls
 # (SA-1 to SA-5, SA-8 to SA-11, SA-15 to SA-17, SA-20 to SA-24; SA-6, SA-7, SA-12, SA-13, SA-14, SA-18 and
 # SA-19 are withdrawn), the Moderate-baseline enhancements SA-4(1), SA-4(2), SA-4(9), SA-4(10), SA-9(2) and
-# SA-15(3), and the High-baseline enhancements SA-4(5), SA-9(1), SA-9(5), SA-11(1) and SA-11(2). Each enhancement
+# SA-15(3), and the High-baseline enhancements SA-4(5), SA-9(1), SA-9(5), SA-11(1) and SA-11(2), and the
+# Privacy-baseline enhancement SA-8(33). Each enhancement
 # is its own requirement with its own finding; a base control never fails on an enhancement's requirement. Facts live under input.sa_controls.
 
 default compliant := false
@@ -58,12 +59,21 @@ _freq_unmet(sec, what) := {d |
 	d := sprintf("%s last %v days ago; the organization-defined frequency is %v days", [what, obs, odp])
 }
 
-# Counts that must be zero (e.g. overdue remediations). A non-number is missing evidence.
-_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not is_number(_val(array.concat(sec, [k])))}
+# Counts that must be zero (e.g. overdue remediations). A value that is not a non-negative whole number is missing evidence.
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_zero_missing(sec, k) := {_p(array.concat(sec, [k])) | not _count_ok(_val(array.concat(sec, [k])))}
 
 _zero_unmet(sec, k, what) := {d |
 	n := _val(array.concat(sec, [k]))
 	is_number(n)
+	_count_ok(n)
 	n > 0
 	d := sprintf("%v %s", [n, what])
 }
@@ -79,7 +89,7 @@ _att_ok(a) if {
 
 _att_detail(sec, what) := d if {
 	not _att_ok(_val(array.concat(sec, ["attestation"])))
-	d := sprintf("evidence missing — no valid attestation at %s (needs attested: true and a non-empty by and date); this organizational control is evidenced by attestation only: %s", [_p(array.concat(sec, ["attestation"])), what])
+	d := sprintf("evidence missing — no valid attestation at %s (needs attested: true and a non-empty by and date); not attested: this organizational control is evidenced by attestation only: %s", [_p(array.concat(sec, ["attestation"])), what])
 }
 
 # Policy and procedures (the -1 control of the family).
@@ -442,11 +452,46 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# SA-8(33) Minimization: the privacy principle of minimization is implemented using the organization-defined
+# processes.
+# Facts (input.sa_controls.engineering_principles.minimization): odp.processes (non-empty list of the
+# organization-defined processes); processes_implemented (list of the processes in place, e.g. from the system
+# design record or data-flow review).
+_sa8_33_sec := ["engineering_principles", "minimization"]
+
+_sa8_33_req := _val(array.concat(_sa8_33_sec, ["odp", "processes"]))
+
+_sa8_33_obs := _val(array.concat(_sa8_33_sec, ["processes_implemented"]))
+
+_sa8_33_missing := {_p(array.concat(_sa8_33_sec, ["odp", "processes"])) | not _sa8_33_req_ok} | {_p(array.concat(_sa8_33_sec, ["processes_implemented"])) | not is_array(_sa8_33_obs)}
+
+_sa8_33_req_ok if {
+	is_array(_sa8_33_req)
+	count(_sa8_33_req) > 0
+}
+
+_sa8_33_unmet := {sprintf("organization-defined minimization processes not implemented: %v", [sort(lack)]) |
+	_sa8_33_req_ok
+	is_array(_sa8_33_obs)
+	lack := {x | some x in _sa8_33_req; not x in _sa8_33_obs}
+	count(lack) > 0
+}
+
+violation contains msg if {
+	count(_sa8_33_missing) + count(_sa8_33_unmet) > 0
+	msg := sprintf("NIST SA-8(33): %s", [_detail(_sa8_33_missing, _sa8_33_unmet)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"SA-1", "SA-2", "SA-3", "SA-4", "SA-4(1)", "SA-4(2)", "SA-4(5)", "SA-4(9)", "SA-4(10)", "SA-5", "SA-8",
 	"SA-9", "SA-9(1)", "SA-9(2)", "SA-9(5)", "SA-10", "SA-11", "SA-11(1)", "SA-11(2)", "SA-15", "SA-15(3)",
 	"SA-16", "SA-17", "SA-20", "SA-21", "SA-22", "SA-23", "SA-24",
+	"SA-8(33)",
 }
 
 compliance_report := {

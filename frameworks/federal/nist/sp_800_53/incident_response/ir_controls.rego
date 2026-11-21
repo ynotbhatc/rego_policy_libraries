@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 33
-#     cited: 24
+#     checks: 35
+#     cited: 26
 #     density: sized
 #     basis: size
 #     tested: true
@@ -20,7 +20,7 @@ import rego.v1
 
 # NIST SP 800-53 Rev 5 — Incident Response (IR) Family
 # Detect, analyze, contain, eradicate, and recover from incidents. Base controls IR-1 to IR-9 and the
-# enhancements the NIST SP 800-53B Moderate and High baselines (and FedRAMP High) select. An enhancement is its own requirement with its own finding; a
+# enhancements the NIST SP 800-53B Moderate, High and Privacy baselines (and FedRAMP High) select. An enhancement is its own requirement with its own finding; a
 # base control never fails for an enhancement.
 #
 # IR-1 and IR-4 to IR-9 read one boolean fact each and pass only when it is true; a fact that is absent or not a
@@ -50,10 +50,11 @@ _bool_false(checks) := {sprintf("%s (%s is false)", [c[1], _path(c[0])]) |
 
 _paths(checks) := [c[0] | some c in checks]
 
-# Counts that must be zero. A non-number or a negative number is missing evidence.
+# Counts that must be zero. A non-number, a negative or a fractional number is missing evidence.
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _zero_missing(paths) := {_path(p) |
@@ -467,11 +468,55 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# IR-2(3) Breach: incident response training covers how to identify and respond to a breach, including the
+# organization's process for reporting a breach.
+# Facts (input.ir_controls.training.breach, from the training curriculum): covers_identification,
+# covers_response, covers_reporting_process (booleans).
+_ir2_3_bools := [
+	["training.breach.covers_identification", "incident response training does not cover how to identify a breach"],
+	["training.breach.covers_response", "incident response training does not cover how to respond to a breach"],
+	["training.breach.covers_reporting_process", "incident response training does not cover the organization's process for reporting a breach"],
+]
+
+_ir2_3_missing := _bool_missing(_paths(_ir2_3_bools))
+
+_ir2_3_unmet := _bool_false(_ir2_3_bools)
+
+violation contains msg if {
+	count(_ir2_3_missing | _ir2_3_unmet) > 0
+	msg := sprintf("NIST IR-2(3): %s", [_detail(_ir2_3_missing, _ir2_3_unmet)])
+}
+
+# IR-8(1) Breaches: the incident response plan, for breaches involving PII, includes a process to determine whether
+# notice to individuals or other organizations is needed, an assessment of the harm to affected individuals and
+# the means to mitigate it, and the applicable privacy requirements.
+# Facts (input.ir_controls.plan.breaches, from the plan's contents): notification_determination_process,
+# harm_assessment_process, privacy_requirements_identified (booleans).
+_ir8_1_bools := [
+	["plan.breaches.notification_determination_process", "incident response plan has no process to determine whether breach notice to individuals or other organizations is needed"],
+	["plan.breaches.harm_assessment_process", "incident response plan has no process to assess the harm to individuals affected by a breach and the means to mitigate it"],
+	["plan.breaches.privacy_requirements_identified", "incident response plan does not identify the applicable privacy requirements for breaches"],
+]
+
+_ir8_1_missing := _bool_missing(_paths(_ir8_1_bools))
+
+_ir8_1_unmet := _bool_false(_ir8_1_bools)
+
+violation contains msg if {
+	count(_ir8_1_missing | _ir8_1_unmet) > 0
+	msg := sprintf("NIST IR-8(1): %s", [_detail(_ir8_1_missing, _ir8_1_unmet)])
+}
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"IR-1", "IR-2", "IR-2(1)", "IR-2(2)", "IR-3", "IR-3(2)", "IR-4", "IR-4(1)", "IR-4(2)", "IR-4(4)", "IR-4(6)",
 	"IR-4(11)", "IR-5", "IR-5(1)", "IR-6", "IR-6(1)", "IR-6(3)", "IR-7", "IR-7(1)", "IR-8", "IR-9", "IR-9(2)",
 	"IR-9(3)", "IR-9(4)",
+	"IR-2(3)", "IR-8(1)",
 }
 
 compliance_report := {

@@ -86,11 +86,12 @@ _att_text(name, text) := text if {
 	_att_shaped(name)
 } else := sprintf("evidence missing — %s not collected; %s", [_path(concat(".", [name, "attestation"])), text])
 
-# Counts that must be zero (exceptions found in maintenance records). A non-number or a negative number is
-# missing evidence.
+# Counts that must be zero (exceptions found in maintenance records). A non-number, a negative or a fractional
+# number is missing evidence.
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _zero_missing(paths) := {_path(p) |
