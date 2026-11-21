@@ -22,9 +22,10 @@ Entrypoints come from the wasm build's discovery (the same list `make check-no-d
     boolstr:<path>   one boolean leaf replaced by its string form ("true" / "false")
     numstr:<path>    one number leaf replaced by its string form (90 -> "90")
     Fields whose name never appears in the module's own source are skipped (the module does not read them,
-    so dropping them is no test), and so are report metadata fields (META_FIELD: ids, timestamps, names,
-    profile and level selectors) for drop/null; their leaves are still type-swapped. Leaf swaps are capped per module (LEAF_CAP, chosen evenly over the
-    sorted paths) so the run stays CI-sized.
+    so dropping them is no test; the same holds for a leaf whose key never appears), and so are report metadata fields (META_FIELD: ids, timestamps, names,
+    profile and level selectors) for drop/null; their leaves are still type-swapped. Leaf swaps and fields
+    are capped per module (LEAF_CAP, FIELD_CAP) so the run stays CI-sized; the sample is chosen by a stable
+    hash of the case id, not by position, so editing a fixture does not reshuffle the known-failures list.
 
 A report passes if compliant == true, or its score (compliance_percentage / compliance_score / score) is
 >= 100, or, with neither field, it has no violations and no failed controls. A mutated fixture also fails
@@ -41,7 +42,7 @@ entries that now hold (stale) so the list can be regenerated.
     python3 scripts/check_bad_input_fails.py --only cmmc.main --verbose
 """
 from __future__ import annotations
-import argparse, concurrent.futures as cf, json, os, pathlib, re, socket, subprocess, sys, tempfile, time
+import argparse, concurrent.futures as cf, hashlib, json, os, pathlib, re, socket, subprocess, sys, tempfile, time
 import urllib.error, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -255,11 +256,13 @@ def field_root(fx):
     return path, cur
 
 
-def spread(items, cap):
+def spread(items, cap, key):
+    """Up to cap items, chosen by a stable hash of each case id: adding or removing one leaf in a fixture
+    changes at most one sampled case, so the known-failures list does not churn."""
     if len(items) <= cap:
         return items
-    step = len(items) / cap
-    return [items[int(i * step)] for i in range(cap)]
+    ranked = sorted(items, key=lambda it: hashlib.sha1(key(it).encode()).hexdigest())[:cap]
+    return sorted(ranked, key=key)
 
 
 def fixture_cases(fx, src):
@@ -267,18 +270,21 @@ def fixture_cases(fx, src):
     root, obj = field_root(fx)
     if isinstance(obj, dict):
         named = [k for k in sorted(obj) if re.search(rf"\b{re.escape(k)}\b", src) and not META_FIELD.search(k)]
-        for k in spread(named, FIELD_CAP):
+        for k in spread(named, FIELD_CAP, lambda k: fmt(root + (k,))):
             cases.append((f"drop:{fmt(root + (k,))}", setp(fx, root + (k,), None, drop=True)))
             cases.append((f"null:{fmt(root + (k,))}", setp(fx, root + (k,), None)))
     bools, nums = [], []
     for p, v in leaves(fx):
+        name = next((k for k in reversed(p) if isinstance(k, str)), None)
+        if name is None or not re.search(rf"\b{re.escape(name)}\b", src):
+            continue  # the module never names this leaf, so it cannot read it: swapping it is no test
         if isinstance(v, bool):
             bools.append((p, "true" if v else "false"))
         elif isinstance(v, (int, float)):
             nums.append((p, str(v)))
-    for p, s in spread(nums, LEAF_CAP):
+    for p, s in spread(nums, LEAF_CAP, lambda t: fmt(t[0])):
         cases.append((f"numstr:{fmt(p)}", setp(fx, p, s)))
-    for p, s in spread(bools, LEAF_CAP):
+    for p, s in spread(bools, LEAF_CAP, lambda t: fmt(t[0])):
         cases.append((f"boolstr:{fmt(p)}", setp(fx, p, s)))
     return cases
 
