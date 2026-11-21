@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim check-standards standards-releases load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -11,6 +11,8 @@ help:
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
+	@echo "  make check-standards  Verify standards.yaml covers every framework key and matches the module text (offline)"
+	@echo "  make standards-releases  Check upstream sources for releases newer than standards.yaml (network)"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
@@ -91,9 +93,17 @@ check-coverage:
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
 # matches the module and the OSCAL baseline profiles
-check-generated: check-no-data
+check-generated: check-no-data check-standards
 	@python3 scripts/gen_nist_800_53_index.py --check
 	@echo "NIST 800-53 index current"
+
+# standards.yaml must list every custom.framework key and each version must match literal module text (no network)
+check-standards:
+	@python3 scripts/check_standard_releases.py --offline --quiet
+
+# network: upstream releases newer than what standards.yaml records (monthly job); exit 1 = something to review
+standards-releases:
+	@python3 scripts/check_standard_releases.py --json standards-report.json
 
 # The product loads this library with one PUT /v1/policies per file into an empty
 # server; a module that only compiles next to its siblings is rejected there even
