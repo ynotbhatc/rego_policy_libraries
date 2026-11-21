@@ -75,7 +75,8 @@ assert len({r["uuid"] for r in reqs}) == len(reqs), "duplicate implemented-requi
 ar = json.loads((tmp / "assessment-results.json").read_text())["assessment-results"]
 res = ar["results"][0]
 obs = {o["uuid"] for o in res["observations"]}
-assert res["findings"] and len(res["findings"]) == len(res["observations"]) > 50
+# control_results reports (CIS RHEL 9) give one finding per row with one or more observations; violations one each
+assert res["findings"] and len(res["observations"]) >= len(res["findings"]) > 50
 for f in res["findings"]:
     assert f["target"]["status"]["state"] == "not-satisfied"
     assert all(ro["observation-uuid"] in obs for ro in f["related-observations"])

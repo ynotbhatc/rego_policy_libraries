@@ -4,6 +4,15 @@ import json, sys, pathlib
 HERE = pathlib.Path(__file__).resolve().parent
 
 
+def validate_doc(doc, _cache={}):
+    """Schema errors (up to 5) for one SARIF document, [] when it validates. Raises ImportError without jsonschema."""
+    import jsonschema
+    if "v" not in _cache:
+        schema = json.loads((HERE / "schema" / "sarif-2.1.0.json").read_text())
+        _cache["v"] = jsonschema.validators.validator_for(schema)(schema)
+    return [f"/{'/'.join(map(str, e.path))}: {e.message[:200]}" for e in sorted(_cache["v"].iter_errors(doc), key=lambda e: list(e.path))[:5]]
+
+
 def main():
     try:
         import jsonschema

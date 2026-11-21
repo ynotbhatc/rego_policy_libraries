@@ -69,6 +69,7 @@ check-converters:
 	@bash converters/packaging/terraform_platforms/test/roundtrip.sh
 	@bash converters/exports/oscal/test/roundtrip.sh
 	@bash converters/exports/sarif/test/roundtrip.sh
+	@bash converters/exports/_lib/test/roundtrip.sh
 	@bash converters/exports/ocsf/test/roundtrip.sh
 	@bash converters/exports/crosswalk_csv/test/roundtrip.sh
 	@bash converters/exports/xccdf_ids/test/roundtrip.sh

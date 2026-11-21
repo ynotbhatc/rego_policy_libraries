@@ -105,7 +105,9 @@ def main():
             sec = section_of(e["file"], c["id"])
             if not sec:
                 continue
-            key = (platform, sec)
+            # one row per benchmark and section: several benchmarks share a platform directory (saas holds CIS M365
+            # and CIS M365 v7, vmware holds ESXi 8 and 9, network_devices six vendors), so the package head is in the key
+            key = (platform, e["package"].split(".")[0], sec)
             if key in seen:
                 continue
             seen.add(key)

@@ -18,6 +18,18 @@ def load_schema(name):
     return json.loads(raw)
 
 
+def validate_doc(doc, _cache={}):
+    """Schema errors (up to 5) for one OSCAL document, [] when it validates. Raises ImportError without jsonschema."""
+    import jsonschema
+    model = next(iter(doc))
+    if model not in MODELS:
+        return [f"top-level key {model!r} is not an OSCAL model"]
+    if model not in _cache:
+        schema = load_schema(MODELS[model])
+        _cache[model] = jsonschema.validators.validator_for(schema)(schema)
+    return [f"/{'/'.join(map(str, e.path))}: {e.message[:200]}" for e in sorted(_cache[model].iter_errors(doc), key=lambda e: list(e.path))[:5]]
+
+
 def main():
     try:
         import jsonschema
