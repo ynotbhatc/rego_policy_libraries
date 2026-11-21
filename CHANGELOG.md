@@ -8,6 +8,39 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — OSCAL assessment-results and SARIF for any framework key (#312)
+
+- `converters/exports/oscal/build_assessment_results.py` and `converters/exports/sarif/build.py` take a
+  compliance_report (opa eval, REST or bare) and `--key`, read `control_results` statuses (only `pass` is
+  satisfied), fall back to violations, and `--validate` against the shipped schemas.
+- SARIF works with GitHub code scanning: physical locations, severity-based levels and `security-severity`,
+  per-finding fingerprints, categories, optional pass rows.
+- `<key>.main` entrypoints resolve to their framework in every results export (about 40 keys did not, including
+  `nist_800_53`, every `stig_*` key and `cis_windows_2022`). New all-keys roundtrip in `make check-converters`.
+- CIS id exports include ids a module lists in `CONTROL_INDEX` (CIS M365 v7: 160 of 160, was 111); the XCCDF table
+  keeps one row per benchmark, not per platform directory (#322).
+
+### Fixed — numeric comparisons in benchmarks/ require a number (#300)
+
+- 442 comparisons in benchmarks/ (outside STIG and Ubuntu 22.04, handled separately) now need `is_number`: pass
+  rules no longer pass on "1", null or text; violation rules report "<id>: evidence missing — <field> is not a
+  number". Type-trap tests across PostgreSQL, MySQL, Oracle, vCenter, Debian 11, Ubuntu 20.04, RHEL 9, M365, MCP and
+  others. Library-wide, 26 scanner-detected comparisons remain in the baseline.
+
+### Added — bad input never passes (#301)
+
+- `make check-bad-input` (run by `check-coverage`) evaluates every compliance_report entrypoint on empty, absent,
+  null and string-typed input, and mutates each module's all-pass test fixture (fields dropped or nulled, number and
+  boolean leaves as strings). Current failures are listed in `scripts/bad_input_known_failures.txt`; the gate fails
+  only on new ones and reports entries that now pass as stale.
+
+### Added — mutation testing and golden cases (#305, #306)
+
+- `scripts/mutation_test.py` / `make mutation MODULE=<dir>` (on demand, not CI) reports surviving mutants by
+  file:line; docs/testing/MUTATION_AND_GOLDEN.md.
+- Golden cases from public-domain text: 70 for NIST SP 800-53 AC (OSCAL statements), 87 for 32 DISA STIG RHEL 9
+  rules. New tests raise mutation scores: PCI DSS Req 7/8 31.7%→95.9%, NIST AC 78.8%→98.1%, SCuBA M365 96.3%→100%.
+
 ### Added — NIST SP 800-53: the full Privacy baseline (542 ids); stricter counts and booleans
 
 - All 96 Privacy-baseline ids are evaluated (19 added; 542 ids in total).
