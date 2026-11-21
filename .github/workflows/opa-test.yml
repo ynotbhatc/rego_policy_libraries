@@ -102,6 +102,13 @@ jobs:
           [ "$rc" -eq 1 ] || { echo "::error::evaluate.sh exit $rc, expected 1 (non-compliant) on empty facts"; exit 1; }
           rm -f report.json
 
+      - name: Quick-start examples (each examples/*/check.sh asserts the result its README states)
+        run: |
+          for c in examples/*/check.sh; do
+            echo "== $c"
+            bash "$c"
+          done
+
       - name: Converters — build the per-class wasm bundles (newest OPA leg) and run the round-trip tests
         env:
           OPA_LEG: ${{ matrix.opa }}

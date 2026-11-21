@@ -1,0 +1,51 @@
+name: Standards release watch
+
+# Monthly: compare upstream releases (NIST OSCAL, DISA STIG library, eCFR, CIS monthly post, publisher pages)
+# with the versions standards.yaml records. Anything newer, or a source that could not be read, opens or
+# updates one "standards watch: YYYY-MM" issue labelled standards-sweep. Triage per STANDARDS_UPDATE_REGISTRY.md.
+on:
+  schedule:
+    - cron: "17 6 2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+      - name: Check upstream releases against standards.yaml
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python3 scripts/check_standard_releases.py --json standards-report.json > standards-report.txt 2>&1
+          rc=$?
+          cat standards-report.txt
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update the monthly issue
+        if: steps.check.outputs.rc != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RC: ${{ steps.check.outputs.rc }}
+        run: |
+          title="standards watch: $(date -u +%Y-%m)"
+          {
+            echo "Monthly run of \`scripts/check_standard_releases.py\` (exit ${RC}: 1 = newer or review, 2 = a check failed)."
+            echo
+            echo '```'
+            grep -v '^current' standards-report.txt | head -150
+            echo '```'
+            echo
+            echo "Triage per STANDARDS_UPDATE_REGISTRY.md; \`manual\` rows still need the hand sweep."
+          } > body.md
+          n=$(gh issue list --label standards-sweep --state open --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then gh issue comment "$n" --body-file body.md; else gh issue create --title "$title" --label standards-sweep --body-file body.md; fi
