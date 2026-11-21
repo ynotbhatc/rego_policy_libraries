@@ -11,16 +11,16 @@
   "nist-800-53-module"
  ],
  "granularity-note": "stig-cci maps to base controls only; an enhancement counts as covered only on an exact enhancement mapping",
- "excluded_topic_rows": 65,
+ "excluded_topic_rows": 66,
  "mapping": {
   "label_is_800_53_controls": 75,
-  "nist_module_controls_mapped": 523,
+  "nist_module_controls_mapped": 542,
   "stig_catalog_controls": 1587,
   "stig_catalog_controls_not_in_map": 341,
   "stig_controls_mapped": 1246,
   "stig_map_rules": 4437,
   "stig_map_rules_without_catalog_control": 3191,
-  "nist_ids_with_a_check": 525
+  "nist_ids_with_a_check": 544
  },
  "baselines": {
   "fedramp_rev5_high": {
@@ -138,8 +138,8 @@
   "nist_800_53_rev5_privacy": {
    "title": "NIST SP 800-53 Rev 5 Privacy",
    "controls": 96,
-   "covered": 77,
-   "covered_pct": 80.2,
+   "covered": 96,
+   "covered_pct": 100.0,
    "base": {
     "total": 75,
     "covered": 75,
@@ -147,8 +147,8 @@
    },
    "enhancement": {
     "total": 21,
-    "covered": 2,
-    "covered_pct": 9.5
+    "covered": 21,
+    "covered_pct": 100.0
    }
   }
  }

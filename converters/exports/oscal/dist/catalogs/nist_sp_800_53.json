@@ -3120,6 +3120,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AC-3-14",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AC-3(14)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AC-3(14)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.access_control"
+       }
+      ],
+      "links": [
+       {
+        "href": "#633712bc-3829-5e1f-bf69-b24f5c5ce7e9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AC-3-14_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -4691,6 +4724,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AU-3-3",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AU-3(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AU-3(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.audit_accountability"
+       }
+      ],
+      "links": [
+       {
+        "href": "#2026e030-2c39-5e6b-a9c1-20dbe56df0b1",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AU-3-3_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -4941,6 +5007,39 @@
       "parts": [
        {
         "id": "nist_sp_800_53-NIST-AT-2-3_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-AT-3-5",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST AT-3(5)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST AT-3(5)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.awareness_training"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1ad1a1e3-a668-50f8-a039-c61a55da32b3",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-AT-3-5_stmt",
         "name": "statement",
         "prose": "%s"
        }
@@ -9487,6 +9586,72 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-2-3",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-2(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-2(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a1b1dd5-9b95-5e2f-a2b8-3cbf03f72b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-2-3_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-IR-8-1",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST IR-8(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST IR-8(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.incident_response"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9a1b1dd5-9b95-5e2f-a2b8-3cbf03f72b3f",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-IR-8-1_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -12867,6 +13032,72 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-nist.sp800_53.physical_environmental-16",
+      "title": "Implemented by a Rego rule in frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego (package nist.sp800_53.physical_environmental); see the rule body.",
+      "props": [
+       {
+        "name": "label",
+        "value": "nist.sp800_53.physical_environmental#16"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "nist.sp800_53.physical_environmental#16"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.physical_environmental"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36bca62f-0f6f-5460-99fd-ed38a77c7628",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-nist.sp800_53.physical_environmental-16_stmt",
+        "name": "statement",
+        "prose": "Implemented by a Rego rule in frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego (package nist.sp800_53.physical_environmental); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PE-8-3",
+      "title": "Visitor access records contain PII elements outside the organization-defined list — %v",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PE-8(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PE-8(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.physical_environmental"
+       }
+      ],
+      "links": [
+       {
+        "href": "#36bca62f-0f6f-5460-99fd-ed38a77c7628",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PE-8-3_stmt",
+        "name": "statement",
+        "prose": "Visitor access records contain PII elements outside the organization-defined list — %v"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -13150,6 +13381,171 @@
       "parts": [
        {
         "id": "nist_sp_800_53-NIST-PT-8_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PT-5-2",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PT-5(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PT-5(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.pii_processing_transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4dcdcf8-1a13-58b5-a43d-31e9c3f6a738",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PT-5-2_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PT-6-1",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PT-6(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PT-6(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.pii_processing_transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4dcdcf8-1a13-58b5-a43d-31e9c3f6a738",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PT-6-1_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PT-6-2",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PT-6(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PT-6(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.pii_processing_transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4dcdcf8-1a13-58b5-a43d-31e9c3f6a738",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PT-6-2_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PT-7-1",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PT-7(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PT-7(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.pii_processing_transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4dcdcf8-1a13-58b5-a43d-31e9c3f6a738",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PT-7-1_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PT-7-2",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PT-7(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PT-7(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.pii_processing_transparency"
+       }
+      ],
+      "links": [
+       {
+        "href": "#c4dcdcf8-1a13-58b5-a43d-31e9c3f6a738",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PT-7-2_stmt",
         "name": "statement",
         "prose": "%s"
        }
@@ -14673,6 +15069,82 @@
         "id": "nist_sp_800_53-NIST-PM-32_stmt",
         "name": "statement",
         "prose": "analysis that mission-essential systems are used consistent with their intended purpose not attested — organizational control with no machine-checkable evidence; input.pm_controls.purposing.attestation must be {attested: true, by, date}"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PM-5-1",
+      "title": "evidence missing — %s not collected%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PM-5(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PM-5(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.program_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5ade81d3-4d0c-56a4-b408-5725aaa71ebd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PM-5-1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — %s not collected%s"
+       },
+       {
+        "id": "nist_sp_800_53-NIST-PM-5-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "PII inventory requirements not met: %s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-PM-20-1",
+      "title": "evidence missing — %s not collected%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST PM-20(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST PM-20(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.program_management"
+       }
+      ],
+      "links": [
+       {
+        "href": "#5ade81d3-4d0c-56a4-b408-5725aaa71ebd",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-PM-20-1_stmt",
+        "name": "statement",
+        "prose": "evidence missing — %s not collected%s"
+       },
+       {
+        "id": "nist_sp_800_53-NIST-PM-20-1_obj.1",
+        "name": "assessment-objective",
+        "prose": "public privacy policy requirements not met: %s"
        }
       ],
       "class": "compliance"
@@ -17827,6 +18299,39 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SC-7-24",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SC-7(24)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SC-7(24)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_communications"
+       }
+      ],
+      "links": [
+       {
+        "href": "#a3e17ce9-0c46-5a32-a3ed-a54137d90c0c",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SC-7-24_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -19336,6 +19841,138 @@
        }
       ],
       "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-12-1",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-12(1)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-12(1)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d33be0ba-10f0-5646-b574-ae08e56ce3ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-12-1_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-12-2",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-12(2)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-12(2)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d33be0ba-10f0-5646-b574-ae08e56ce3ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-12-2_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-12-3",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-12(3)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-12(3)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d33be0ba-10f0-5646-b574-ae08e56ce3ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-12-3_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SI-18-4",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SI-18(4)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SI-18(4)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_information_integrity"
+       }
+      ],
+      "links": [
+       {
+        "href": "#d33be0ba-10f0-5646-b574-ae08e56ce3ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SI-18-4_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
      }
     ]
    },
@@ -20279,6 +20916,39 @@
       "parts": [
        {
         "id": "nist_sp_800_53-NIST-SA-11-2_stmt",
+        "name": "statement",
+        "prose": "%s"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "nist_sp_800_53-NIST-SA-8-33",
+      "title": "%s",
+      "props": [
+       {
+        "name": "label",
+        "value": "NIST SA-8(33)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "NIST SA-8(33)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "nist.sp800_53.system_services_acquisition"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9ec48e72-c515-5a11-9c09-8839764a6e94",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "nist_sp_800_53-NIST-SA-8-33_stmt",
         "name": "statement",
         "prose": "%s"
        }

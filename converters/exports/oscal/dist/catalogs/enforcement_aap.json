@@ -257,7 +257,7 @@
        {
         "id": "enforcement_aap-aac.aap.policy-3_obj.2",
         "name": "assessment-objective",
-        "prose": "Job template name '%s' contains the forbidden term '%s'."
+        "prose": "Naming config evidence missing: max_length is not a number (got %v)."
        },
        {
         "id": "enforcement_aap-aac.aap.policy-3_obj.3",
@@ -326,7 +326,7 @@
        {
         "id": "enforcement_aap-aac.aap.policy-4_obj.2",
         "name": "assessment-objective",
-        "prose": "Project source '%s' does not use HTTPS (ssh://, git@ and http:// are rejected) — HTTPS is required so access is brokered by a managed credential."
+        "prose": "Job template name '%s' contains the forbidden term '%s'."
        },
        {
         "id": "enforcement_aap-aac.aap.policy-4_obj.3",
@@ -386,7 +386,7 @@
        {
         "id": "enforcement_aap-aac.aap.policy-5_obj.1",
         "name": "assessment-objective",
-        "prose": "Project repository '%s' is not an approved automation source (allowed: %v)."
+        "prose": "Project source '%s' does not use HTTPS (ssh://, git@ and http:// are rejected) — HTTPS is required so access is brokered by a managed credential."
        },
        {
         "id": "enforcement_aap-aac.aap.policy-5_obj.2",
@@ -446,7 +446,7 @@
        {
         "id": "enforcement_aap-aac.aap.policy-6_obj.1",
         "name": "assessment-objective",
-        "prose": "Project branch '%s' is not approved for execution (allowed: %v)."
+        "prose": "Project repository '%s' is not an approved automation source (allowed: %v)."
        },
        {
         "id": "enforcement_aap-aac.aap.policy-6_obj.2",
@@ -487,7 +487,7 @@
     "controls": [
      {
       "id": "enforcement_aap-aac.aap.policy-7",
-      "title": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref.",
+      "title": "Project branch '%s' is not approved for execution (allowed: %v).",
       "props": [
        {
         "name": "label",
@@ -517,7 +517,7 @@
        {
         "id": "enforcement_aap-aac.aap.policy-7_stmt",
         "name": "statement",
-        "prose": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref."
+        "prose": "Project branch '%s' is not approved for execution (allowed: %v)."
        },
        {
         "id": "enforcement_aap-aac.aap.policy-7_obj.1",
@@ -529,7 +529,7 @@
      },
      {
       "id": "enforcement_aap-aac.aap.policy-8",
-      "title": "All automation is blocked: %s.",
+      "title": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref.",
       "props": [
        {
         "name": "label",
@@ -554,6 +554,39 @@
       "parts": [
        {
         "id": "enforcement_aap-aac.aap.policy-8_stmt",
+        "name": "statement",
+        "prose": "Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref."
+       }
+      ],
+      "class": "enforcement"
+     },
+     {
+      "id": "enforcement_aap-aac.aap.policy-9",
+      "title": "All automation is blocked: %s.",
+      "props": [
+       {
+        "name": "label",
+        "value": "aac.aap.policy#9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "aac.aap.policy#9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "aac.aap.policy"
+       }
+      ],
+      "links": [
+       {
+        "href": "#88813529-acc7-55c7-adb1-03eaa8f9076a",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_aap-aac.aap.policy-9_stmt",
         "name": "statement",
         "prose": "All automation is blocked: %s."
        }

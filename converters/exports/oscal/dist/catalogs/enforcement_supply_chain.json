@@ -62,7 +62,7 @@
     "controls": [
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-1",
-      "title": "SLSA: Build provenance attestation is missing",
+      "title": "SLSA Level: evidence missing - input.policy.required_slsa_level is not a number",
       "props": [
        {
         "name": "label",
@@ -87,6 +87,38 @@
       "parts": [
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-1_stmt",
+        "name": "statement",
+        "prose": "SLSA Level: evidence missing - input.policy.required_slsa_level is not a number"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-2",
+      "title": "SLSA: Build provenance attestation is missing",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58a910f0-4491-5c65-966c-0cf2c6b042df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-2_stmt",
         "name": "statement",
         "prose": "SLSA: Build provenance attestation is missing"
        }
@@ -125,16 +157,16 @@
       ]
      },
      {
-      "id": "enforcement_supply_chain-supply_chain.slsa-2",
+      "id": "enforcement_supply_chain-supply_chain.slsa-3",
       "title": "SLSA Level %d: Required minimum SLSA level not met (current: %d)",
       "props": [
        {
         "name": "label",
-        "value": "supply_chain.slsa#2"
+        "value": "supply_chain.slsa#3"
        },
        {
         "name": "alt-identifier",
-        "value": "supply_chain.slsa#2"
+        "value": "supply_chain.slsa#3"
        },
        {
         "name": "rego-package",
@@ -150,7 +182,7 @@
       ],
       "parts": [
        {
-        "id": "enforcement_supply_chain-supply_chain.slsa-2_stmt",
+        "id": "enforcement_supply_chain-supply_chain.slsa-3_stmt",
         "name": "statement",
         "prose": "SLSA Level %d: Required minimum SLSA level not met (current: %d)"
        }
@@ -231,40 +263,8 @@
       ]
      },
      {
-      "id": "enforcement_supply_chain-supply_chain.slsa-3",
-      "title": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)",
-      "props": [
-       {
-        "name": "label",
-        "value": "supply_chain.slsa#3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "supply_chain.slsa#3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "supply_chain.slsa"
-       }
-      ],
-      "links": [
-       {
-        "href": "#58a910f0-4491-5c65-966c-0cf2c6b042df",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "enforcement_supply_chain-supply_chain.slsa-3_stmt",
-        "name": "statement",
-        "prose": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)"
-       }
-      ]
-     },
-     {
       "id": "enforcement_supply_chain-supply_chain.slsa-4",
-      "title": "Signing: Artifact signature verification failed",
+      "title": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)",
       "props": [
        {
         "name": "label",
@@ -290,13 +290,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-4_stmt",
         "name": "statement",
-        "prose": "Signing: Artifact signature verification failed"
+        "prose": "Signing: Artifact is not signed (Cosign/Sigstore signature missing)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-5",
-      "title": "Signing: Signing identity not from an approved OIDC provider",
+      "title": "Signing: Artifact signature verification failed",
       "props": [
        {
         "name": "label",
@@ -322,13 +322,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-5_stmt",
         "name": "statement",
-        "prose": "Signing: Signing identity not from an approved OIDC provider"
+        "prose": "Signing: Artifact signature verification failed"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-6",
-      "title": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)",
+      "title": "Signing: Signing identity not from an approved OIDC provider",
       "props": [
        {
         "name": "label",
@@ -354,13 +354,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-6_stmt",
         "name": "statement",
-        "prose": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)"
+        "prose": "Signing: Signing identity not from an approved OIDC provider"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-7",
-      "title": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)",
+      "title": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)",
       "props": [
        {
         "name": "label",
@@ -386,13 +386,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-7_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)"
+        "prose": "SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-8",
-      "title": "SBOM: SBOM contains no components (empty bill of materials)",
+      "title": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)",
       "props": [
        {
         "name": "label",
@@ -418,13 +418,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-8_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM contains no components (empty bill of materials)"
+        "prose": "SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-9",
-      "title": "SBOM: SBOM missing required field 'document_namespace'",
+      "title": "SBOM: SBOM contains no components (empty bill of materials)",
       "props": [
        {
         "name": "label",
@@ -450,13 +450,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-9_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM missing required field 'document_namespace'"
+        "prose": "SBOM: SBOM contains no components (empty bill of materials)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-10",
-      "title": "SBOM: SBOM missing required field 'creation_timestamp'",
+      "title": "SBOM: SBOM missing required field 'document_namespace'",
       "props": [
        {
         "name": "label",
@@ -482,13 +482,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-10_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM missing required field 'creation_timestamp'"
+        "prose": "SBOM: SBOM missing required field 'document_namespace'"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-11",
-      "title": "SBOM: SBOM components are missing PURL (Package URL) identifiers",
+      "title": "SBOM: SBOM missing required field 'creation_timestamp'",
       "props": [
        {
         "name": "label",
@@ -514,13 +514,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-11_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM components are missing PURL (Package URL) identifiers"
+        "prose": "SBOM: SBOM missing required field 'creation_timestamp'"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-12",
-      "title": "SBOM: SBOM components missing license declarations",
+      "title": "SBOM: SBOM components are missing PURL (Package URL) identifiers",
       "props": [
        {
         "name": "label",
@@ -546,13 +546,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-12_stmt",
         "name": "statement",
-        "prose": "SBOM: SBOM components missing license declarations"
+        "prose": "SBOM: SBOM components are missing PURL (Package URL) identifiers"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-13",
-      "title": "Dependencies: Floating version constraint '%s' found in %s (pin to exact version)",
+      "title": "SBOM: SBOM components missing license declarations",
       "props": [
        {
         "name": "label",
@@ -578,13 +578,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-13_stmt",
         "name": "statement",
-        "prose": "Dependencies: Floating version constraint '%s' found in %s (pin to exact version)"
+        "prose": "SBOM: SBOM components missing license declarations"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-14",
-      "title": "Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)",
+      "title": "Dependencies: Floating version constraint '%s' found in %s (pin to exact version)",
       "props": [
        {
         "name": "label",
@@ -610,13 +610,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-14_stmt",
         "name": "statement",
-        "prose": "Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)"
+        "prose": "Dependencies: Floating version constraint '%s' found in %s (pin to exact version)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-15",
-      "title": "Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored",
+      "title": "Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)",
       "props": [
        {
         "name": "label",
@@ -642,13 +642,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-15_stmt",
         "name": "statement",
-        "prose": "Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored"
+        "prose": "Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-16",
-      "title": "Dependencies: %s@%s has critical CVE %s with no exemption",
+      "title": "Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored",
       "props": [
        {
         "name": "label",
@@ -674,13 +674,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-16_stmt",
         "name": "statement",
-        "prose": "Dependencies: %s@%s has critical CVE %s with no exemption"
+        "prose": "Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-17",
-      "title": "License: %s uses %s (strong copyleft — legal review required for commercial distribution)",
+      "title": "Dependencies: %s@%s has critical CVE %s with no exemption",
       "props": [
        {
         "name": "label",
@@ -706,13 +706,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-17_stmt",
         "name": "statement",
-        "prose": "License: %s uses %s (strong copyleft — legal review required for commercial distribution)"
+        "prose": "Dependencies: %s@%s has critical CVE %s with no exemption"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-18",
-      "title": "License: %s has no license declaration (unknown license risk)",
+      "title": "License: %s uses %s (strong copyleft — legal review required for commercial distribution)",
       "props": [
        {
         "name": "label",
@@ -738,13 +738,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-18_stmt",
         "name": "statement",
-        "prose": "License: %s has no license declaration (unknown license risk)"
+        "prose": "License: %s uses %s (strong copyleft — legal review required for commercial distribution)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-19",
-      "title": "Provenance: Build source URI missing from provenance (cannot verify repository)",
+      "title": "License: %s has no license declaration (unknown license risk)",
       "props": [
        {
         "name": "label",
@@ -770,13 +770,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-19_stmt",
         "name": "statement",
-        "prose": "Provenance: Build source URI missing from provenance (cannot verify repository)"
+        "prose": "License: %s has no license declaration (unknown license risk)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-20",
-      "title": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)",
+      "title": "Provenance: Build source URI missing from provenance (cannot verify repository)",
       "props": [
        {
         "name": "label",
@@ -802,13 +802,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-20_stmt",
         "name": "statement",
-        "prose": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)"
+        "prose": "Provenance: Build source URI missing from provenance (cannot verify repository)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-21",
-      "title": "Provenance: Build source URI does not match expected repository",
+      "title": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)",
       "props": [
        {
         "name": "label",
@@ -834,13 +834,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-21_stmt",
         "name": "statement",
-        "prose": "Provenance: Build source URI does not match expected repository"
+        "prose": "Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-22",
-      "title": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
+      "title": "Provenance: Build source URI does not match expected repository",
       "props": [
        {
         "name": "label",
@@ -866,13 +866,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-22_stmt",
         "name": "statement",
-        "prose": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)"
+        "prose": "Provenance: Build source URI does not match expected repository"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-23",
-      "title": "Provenance: Provenance predicate type not SLSA v1.0",
+      "title": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
       "props": [
        {
         "name": "label",
@@ -898,13 +898,13 @@
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-23_stmt",
         "name": "statement",
-        "prose": "Provenance: Provenance predicate type not SLSA v1.0"
+        "prose": "Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)"
        }
       ]
      },
      {
       "id": "enforcement_supply_chain-supply_chain.slsa-24",
-      "title": "Provenance: Builder identity not in approved builder registry",
+      "title": "Provenance: Provenance predicate type not SLSA v1.0",
       "props": [
        {
         "name": "label",
@@ -929,6 +929,38 @@
       "parts": [
        {
         "id": "enforcement_supply_chain-supply_chain.slsa-24_stmt",
+        "name": "statement",
+        "prose": "Provenance: Provenance predicate type not SLSA v1.0"
+       }
+      ]
+     },
+     {
+      "id": "enforcement_supply_chain-supply_chain.slsa-25",
+      "title": "Provenance: Builder identity not in approved builder registry",
+      "props": [
+       {
+        "name": "label",
+        "value": "supply_chain.slsa#25"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "supply_chain.slsa#25"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "supply_chain.slsa"
+       }
+      ],
+      "links": [
+       {
+        "href": "#58a910f0-4491-5c65-966c-0cf2c6b042df",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "enforcement_supply_chain-supply_chain.slsa-25_stmt",
         "name": "statement",
         "prose": "Provenance: Builder identity not in approved builder registry"
        }
