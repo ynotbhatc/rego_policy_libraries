@@ -43,11 +43,21 @@ _nm_violations contains msg if {
 }
 
 _nm_violations contains msg if {
+	is_number(_nm_cfg.max_length)
 	_nm_cfg.max_length > 0
 	count(_jt_name) > _nm_cfg.max_length
 	msg := sprintf(
 		"Job template name is %d characters; the maximum is %d.",
 		[count(_jt_name), _nm_cfg.max_length],
+	)
+}
+
+# A max_length that is not a number cannot be enforced ("80" sorts above every count): report the config.
+_nm_violations contains msg if {
+	not is_number(object.get(_nm_cfg, "max_length", null))
+	msg := sprintf(
+		"Naming config evidence missing: max_length is not a number (got %v).",
+		[object.get(_nm_cfg, "max_length", null)],
 	)
 }
 

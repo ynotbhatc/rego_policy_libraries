@@ -207,7 +207,17 @@ violations contains sprintf("Untagged: Resource '%s' (%s) has no tags at all —
 
 violations contains sprintf("Untagged: Resource '%s' was created more than 7 days ago and is still missing required tags — auto-remediation may apply", [resource.id]) if {
 	some resource in input.resources
+	is_number(resource.age_days)
 	resource.age_days > 7
+	some tag in required_tags
+	not resource.tags[tag]
+}
+
+# An untagged resource whose age is not a number cannot be ruled inside the 7-day grace period.
+violations contains sprintf("Untagged: Resource '%s' is missing required tags and its age_days is not a number (evidence missing) — treat as past the 7-day grace period", [resource.id]) if {
+	some resource in input.resources
+	object.get(resource, "billable", true) != false
+	not is_number(object.get(resource, "age_days", null))
 	some tag in required_tags
 	not resource.tags[tag]
 }
@@ -250,6 +260,7 @@ violations contains sprintf("Budget: Cost center '%s' has no budget defined in p
 
 violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)", [cost_center, actual, budget, round(((actual - budget) / budget) * 100)]) if {
 	some cost_center, budget in input.budget_registry
+	is_number(budget)
 	budget > 0
 	actual := object.get(input.current_spend, cost_center, 0)
 	actual > budget * 1.1
@@ -271,6 +282,7 @@ _both_numbers(a, b) if {
 # A zero (or negative) budget cannot be expressed as a percentage; any spend over it is still a violation.
 violations contains sprintf("Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)", [cost_center, actual, budget]) if {
 	some cost_center, budget in input.budget_registry
+	is_number(budget)
 	budget <= 0
 	actual := object.get(input.current_spend, cost_center, 0)
 	actual > budget * 1.1
@@ -292,6 +304,7 @@ resource_has_violation(resource_id) if {
 }
 
 tagging_score := (compliant_resources * 100) / total_resources if {
+	is_number(total_resources)
 	total_resources > 0
 } else := 100
 
