@@ -4,7 +4,9 @@
 Run from the repository root:
 
     python3 scripts/coverage_report.py > COVERAGE.md
-    python3 scripts/coverage_report.py --check   # CI (via make check-coverage): fail if COVERAGE.md is stale
+    python3 scripts/coverage_report.py --check   # CI (via make check-coverage): fail if COVERAGE.md is stale,
+                                                 # a framework key has no entry in scripts/coverage_labels.json,
+                                                 # an entry names no key, or a module's METADATA carries a label
 
 The untested list is a work queue, not an accusation. Every entry is a small,
 self-contained, verifiable contribution: copy the shape of an existing test,
@@ -34,18 +36,52 @@ def package_of(p: pathlib.Path) -> str:
     return m.group(1) if m else ""
 
 
-def framework_keys() -> list[str]:
-    """Every framework key: the package holding a compliance_report entrypoint, as the wasm build finds them."""
+def _wasm_build():
     sys.path.insert(0, str(ROOT / "converters" / "packaging" / "wasm"))
     import build as wasm_build  # noqa: E402
+    return wasm_build
+
+
+def _key_of(pkg: str) -> str:
+    return (pkg[: -len(".main")] if pkg.endswith(".main") else pkg)
+
+
+def framework_key_dirs() -> dict[str, str]:
+    """{framework key: directory of its compliance_report package}: the package holding a
+    compliance_report entrypoint, as the wasm build finds them. The directory is what the site
+    (scripts/build_site.py, scripts/gen_pages_catalog.py) uses to put a key's label on its page."""
+    wasm_build = _wasm_build()
     eps = set()
     for c in wasm_build.discover().values():
-        eps |= {e for e in c["entrypoints"] if e.endswith("/compliance_report")}
-    keys = set()
-    for e in eps:
-        pkg = e[: -len("/compliance_report")]
-        keys.add((pkg[: -len("/main")] if pkg.endswith("/main") else pkg).replace("/", "."))
-    return sorted(keys)
+        eps |= {e[: -len("/compliance_report")] for e in c["entrypoints"] if e.endswith("/compliance_report")}
+    dirs = {}
+    for p, rel in wasm_build.policy_files():
+        m = wasm_build.PKG_RE.search(p.read_text(errors="ignore"))
+        if m and m.group(1).replace(".", "/") in eps:
+            dirs.setdefault(_key_of(m.group(1)), rel.rsplit("/", 1)[0])
+    return dict(sorted(dirs.items()))
+
+
+def framework_keys() -> list[str]:
+    """Every framework key (dots for slashes, without the trailing .main)."""
+    return list(framework_key_dirs())
+
+
+# METADATA must not carry its own label: scripts/coverage_labels.json is the single source, so a
+# second copy in a module could only drift. (No module carries one today; this keeps it that way.)
+METADATA_LABEL_RE = re.compile(
+    r"(?m)^#\s+(coverage_label|validation_label|validation_status|maturity|label)\s*:")
+
+
+def metadata_label_fields() -> list[str]:
+    """Modules whose METADATA carries a label-like field; each is an error."""
+    found = []
+    for p, rel in _wasm_build().policy_files():
+        src = p.read_text(errors="ignore")
+        if "# METADATA" in src:
+            found += [f"{rel}: METADATA field '{m.group(1)}' duplicates scripts/coverage_labels.json; "
+                      "put the label there instead" for m in METADATA_LABEL_RE.finditer(src)]
+    return found
 
 
 def coverage_labels(keys: list[str]) -> tuple[dict, list[str], list[str]]:
@@ -59,6 +95,10 @@ def coverage_labels(keys: list[str]) -> tuple[dict, list[str], list[str]]:
     errors += [f"{k}: labelled but no such framework key" for k in fw if k not in keys]
     unlabelled = [k for k in keys if k not in fw]
     return fw, unlabelled, errors
+
+
+def label_of(labels: dict, key: str) -> str:
+    return labels.get(key, {}).get("label", "experimental")
 
 
 def main() -> int:
@@ -86,6 +126,11 @@ def main() -> int:
       f"{len(tests)} test files, {len(untested)} policies still uncovered.\n")
     keys = framework_keys()
     labels, unlabelled, errors = coverage_labels(keys)
+    errors += metadata_label_fields()
+    if "--check" in sys.argv:
+        # every framework key needs an explicit entry, so a new key cannot ship unlabelled
+        errors += [f"{k}: framework key has no entry; add one (\"label\": \"experimental\" if new)"
+                   for k in unlabelled]
     if errors:
         sys.stderr.write("scripts/coverage_labels.json:\n  " + "\n  ".join(errors) + "\n")
         return 1

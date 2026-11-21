@@ -15,6 +15,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   never Not_a_Finding. The numeric-guard baseline is empty, so any new unguarded comparison fails CI.
 - The generator tables (gen_k8s.py, gen_linux.py, ol8_rules.py) carry the guards; type-trap tests per module.
 
+### Added — coverage labels on the published site (#313)
+
+- Every standard page and homepage card shows its validated / partial / experimental badge with the evidence; the
+  new coverage-labels.html explains the three labels and lists every framework key.
+- `scripts/coverage_labels.json` is the single source: `coverage_report.py --check` (CI) fails when a framework key
+  has no label, a label names no key, or a module's METADATA carries its own label.
+
 ### Added — OSCAL assessment-results and SARIF for any framework key (#312)
 
 - `converters/exports/oscal/build_assessment_results.py` and `converters/exports/sarif/build.py` take a

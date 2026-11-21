@@ -126,6 +126,70 @@ def figures():
     }
 
 
+LABEL_PAGE = "coverage-labels.html"
+
+
+def coverage_labels():
+    """[(framework key, directory, label, evidence)] from scripts/coverage_labels.json, the single
+    source that scripts/coverage_report.py --check keeps in step with the framework keys."""
+    import coverage_report as cr
+    dirs = cr.framework_key_dirs()
+    labels, _, _ = cr.coverage_labels(list(dirs))
+    return [(k, d, cr.label_of(labels, k), labels.get(k, {}).get("evidence", "")) for k, d in dirs.items()]
+
+
+def labels_under(rows, base):
+    """The label rows whose module directory is base or below it."""
+    return [r for r in rows if r[1] == base or r[1].startswith(base + "/")]
+
+
+def label_badge(rows, href=None):
+    """One small badge for a page or card: the label when every key under it agrees, else 'mixed'
+    with the counts in the tooltip. Empty when no framework key lives there (gates, helpers)."""
+    if not rows:
+        return ""
+    seen = sorted({r[2] for r in rows}, key=["validated", "partial", "experimental"].index)
+    if len(seen) == 1:
+        text, cls = seen[0], seen[0]
+        tip = " ".join(f"{k}: {e}" for k, _, _, e in rows if e) or LABEL_TEXT[seen[0]]
+    else:
+        text, cls = "mixed", "mixed"
+        tip = ", ".join(f"{sum(r[2] == x for r in rows)} {x}" for x in seen)
+    tag = f'<span class="lbl lbl-{cls}" title="{html.escape(tip)}">{text}</span>'
+    return f'<a class="lbl-link" href="{href}">{tag}</a>' if href else tag
+
+
+LABEL_TEXT = {
+    "validated": "Run against real host or tenant evidence and the results checked; the evidence says where.",
+    "partial": "Rules implemented and unit-tested, but the evidence or collector is incomplete, or the module "
+               "covers a subset of the benchmark; the evidence says what is missing.",
+    "experimental": "Generated or new; unit-tested at most, not yet run on real evidence. Treat its results as unverified.",
+}
+
+LABEL_LEGEND = ("Every framework key carries one coverage label, so the library cannot claim more than it has shown. "
+                "A passing unit test proves a rule does what its author meant; it does not prove the rule reads what a "
+                "real collector sends. <strong>Validated</strong> means the framework has been run against real host or "
+                "tenant evidence and the results checked. <strong>Partial</strong> means the rules are implemented and "
+                "tested but the evidence or collector is incomplete, or only part of the benchmark is covered. "
+                "<strong>Experimental</strong> means generated or new and not yet run on real evidence: treat its "
+                "results as unverified. The labels are kept in "
+                f'<a href="{REPO}/scripts/coverage_labels.json"><code>scripts/coverage_labels.json</code></a>, '
+                "and CI fails when a framework key has no label.")
+
+
+def label_table(rows, page_for=None):
+    """A table of framework keys with their labels and evidence."""
+    order = ["validated", "partial", "experimental"]
+    out = ["<table>", "<tr><th>Framework key</th><th>Label</th><th>Evidence</th></tr>"]
+    for k, d, lab, ev in sorted(rows, key=lambda r: (order.index(r[2]), r[0])):
+        link = page_for(d) if page_for else None
+        name = f'<a href="{link}"><code>{k}</code></a>' if link else f'<a href="{GITHUB}/tree/main/{d}"><code>{k}</code></a>'
+        out.append(f'<tr><td>{name}</td><td>{label_badge([(k, d, lab, ev)])}</td>'
+                   f'<td>{html.escape(ev) if ev else "&mdash;"}</td></tr>')
+    out.append("</table>")
+    return "\n".join(out)
+
+
 def lastmod(*paths):
     """Date of the last commit that touched any of the paths; the build date when git cannot say."""
     try:
@@ -192,6 +256,15 @@ def main():
         key = "/".join(rel.parts[:3]) if len(rel.parts) > 3 else "/".join(rel.parts[:2])
         groups[key].append(rel)
 
+    label_rows = coverage_labels()
+    page_dirs = {k for k, f in groups.items() if len(f) >= MIN_POLICIES or k in ALWAYS}
+
+    def page_for(d, prefix=f"{SITE}/standard/"):
+        for k in sorted(page_dirs, key=len, reverse=True):
+            if d == k or d.startswith(k + "/"):
+                return f"{prefix}{slug(k)}.html"
+        return None
+
     OUTDIR.mkdir(exist_ok=True)
     built = []
     modified = {}   # page url -> <lastmod>
@@ -211,7 +284,14 @@ def main():
             f'<span style="opacity:.7">{package_of(ROOT / f)}</span></li>'
             for f in sorted(files))
 
-        body = f"""<h1>{html.escape(name)} — Rego Policies for OPA</h1>
+        here = labels_under(label_rows, key)
+        badge = label_badge(here, f"{SITE}/{LABEL_PAGE}")
+        validation = (f"""<h2>How far it has been validated</h2>
+<p>{badge} Each framework key below carries a coverage label:
+<a href="{SITE}/{LABEL_PAGE}">what the labels mean</a>.</p>
+{label_table(here)}
+""" if here else "")
+        body = f"""<h1>{html.escape(name)} — Rego Policies for OPA {badge}</h1>
 <p>{html.escape(desc)}</p>
 
 <h2>What this is</h2>
@@ -220,6 +300,7 @@ def main():
 collection of Open Policy Agent policies for published security and compliance
 standards. No orchestrator, no agent, no vendor runtime.</p>
 
+{validation}
 <h2>Load and query it</h2>
 <pre><code>git clone https://github.com/ynotbhatc/rego_policy_libraries.git
 opa eval -d rego_policy_libraries/{key} -f pretty 'data'</code></pre>
@@ -255,7 +336,7 @@ first contribution — each is small, self-contained, and either passes
 </ul>
 """
         (OUTDIR / f"{s}.html").write_text(page(title, desc, canonical, body, css))
-        built.append((s, name, len(files)))
+        built.append((s, name, len(files), badge))
         modified[canonical] = lastmod(key)
 
     # the positioning page: answers "largest policy library" directly, with structured data
@@ -351,13 +432,31 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
         (compare_dir / f"{cslug}.html").write_text(page(ctitle, cdesc, f"{SITE}/compare/{cslug}.html", cbody, css))
     compare_urls = [f"{SITE}/compare/{c[0]}.html" for c in COMPETITORS]
 
+    # the coverage-label legend: what validated, partial and experimental mean, and every key's label
+    counts = {x: sum(r[2] == x for r in label_rows) for x in LABEL_TEXT}
+    ltitle = "Coverage Labels: Validated, Partial, Experimental"
+    ldesc = (f"How far each of the {len(label_rows)} frameworks in the Rego Policy Libraries has been validated: "
+             f"{counts['validated']} validated, {counts['partial']} partial, {counts['experimental']} experimental.")
+    defs = "\n".join(f"<li>{label_badge([('', '', x, '')])} {html.escape(t)}</li>" for x, t in LABEL_TEXT.items())
+    lbody = f"""<h1>{html.escape(ltitle)}</h1>
+<p>{LABEL_LEGEND}</p>
+<ul>
+{defs}
+</ul>
+<p><strong>{html.escape(ldesc)}</strong></p>
+{label_table(label_rows, page_for)}
+<p><a href="{SITE}/">All standards</a> &middot; <a href="{REPO}/COVERAGE.md">COVERAGE.md</a> (the same labels, with test coverage)</p>
+"""
+    (ROOT / LABEL_PAGE).write_text(page(ltitle, ldesc, f"{SITE}/{LABEL_PAGE}", lbody, css))
+    modified[f"{SITE}/{LABEL_PAGE}"] = lastmod("scripts/coverage_labels.json", "scripts/build_site.py")
+
     # sitemap
     # <lastmod> is the last commit that touched what the page is made from: the policy directory for a
     # standard page, the policy trees for the homepage, and this script plus the README count line for the rest.
     policy_trees = ["benchmarks", "frameworks", "governance", "enforcement", "threat_detection"]
     modified[f"{SITE}/"] = lastmod(*policy_trees, "scripts/gen_pages_catalog.py")
     generated = lastmod("scripts/build_site.py", "README.md", "docs/metrics.json")
-    urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html"] + compare_urls + [f"{SITE}/standard/{s}.html" for s, _, _ in built]
+    urls = [f"{SITE}/", f"{SITE}/largest-policy-library.html", f"{SITE}/{LABEL_PAGE}"] + compare_urls + [f"{SITE}/standard/{s}.html" for s, _, _, _ in built]
     sm = ['<?xml version="1.0" encoding="UTF-8"?>',
           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u in urls:
@@ -376,7 +475,7 @@ Is one a replacement for the other? Usually not: {html.escape(cname)} is {html.e
         scope += f", mapped to {catalogs} framework catalogs"
     version_line = f"release {fig['version']}" if fig["version"] else "the current release"
     standards = "\n".join(f"- [{n}]({SITE}/standard/{s}.html): {c} policy files"
-                          for s, n, c in sorted(built, key=lambda x: x[1]))
+                          for s, n, c, _ in sorted(built, key=lambda x: x[1]))
     (ROOT / "llms.txt").write_text(f"""# Rego Policy Libraries
 
 > The largest open library of executable compliance policy anyone can verify: {scope}, written in
@@ -391,6 +490,7 @@ from OPA's parser on every pull request (`make count`); CI fails if the publishe
 ## Start here
 
 - [How big the library is, measured]({SITE}/largest-policy-library.html): the count, the method, and every public library compared
+- [Coverage labels]({SITE}/{LABEL_PAGE}): which frameworks are validated on real evidence, partial, or experimental
 - [Size and coverage comparison](https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/COMPARISON.md): units, sources and dates for each figure
 - [Repository](https://github.com/ynotbhatc/rego_policy_libraries): source, tests, CHANGELOG
 - [Monthly standards sweeps](https://github.com/ynotbhatc/rego_policy_libraries/blob/main/docs/sweeps/README.md): what changed upstream and what the library did about it
@@ -431,13 +531,14 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 
     # index of standards, for crawlers and humans
     items = "\n".join(
-        f'<li><a href="{s}.html">{html.escape(n)}</a> '
+        f'<li><a href="{s}.html">{html.escape(n)}</a> {b} '
         f'<span style="opacity:.7">{c} policies</span></li>'
-        for s, n, c in sorted(built, key=lambda x: x[1]))
+        for s, n, c, b in sorted(built, key=lambda x: x[1]))
     body = f"""<h1>Standards covered</h1>
 <p>{len(built)} standards, each with its own page listing the policy modules and
 how to load them. Part of the
-<a href="{SITE}/">Rego Policy Libraries</a>.</p>
+<a href="{SITE}/">Rego Policy Libraries</a>. The badge is the standard's
+<a href="{SITE}/{LABEL_PAGE}">coverage label</a>.</p>
 <ul>
 {items}
 </ul>
@@ -448,7 +549,7 @@ how to load them. Part of the
         f"{SITE}/standard/", body, css))
 
     print(f"built {len(built)} standard pages + index, sitemap ({len(urls)} urls), robots.txt, llms.txt")
-    for s, n, c in sorted(built, key=lambda x: -x[2])[:10]:
+    for s, n, c, _ in sorted(built, key=lambda x: -x[2])[:10]:
         print(f"  {c:>3}  {n}")
     return 0
 
