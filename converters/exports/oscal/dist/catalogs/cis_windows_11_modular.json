@@ -12337,6 +12337,72 @@
        }
       ],
       "class": "security"
+     },
+     {
+      "id": "cis_windows_11_modular-1.2.3",
+      "title": "Administrator account lockout allowed; evidence: attestations",
+      "props": [
+       {
+        "name": "label",
+        "value": "1.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "1.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_11.attestation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47aa8d1c-a1f7-5402-a11f-a07ad3fdc8c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11_modular-1.2.3_stmt",
+        "name": "statement",
+        "prose": "Administrator account lockout allowed; evidence: attestations"
+       }
+      ],
+      "class": "security"
+     },
+     {
+      "id": "cis_windows_11_modular-2.3.11.5",
+      "title": "users forced off when logon hours expire; evidence: attestations",
+      "props": [
+       {
+        "name": "label",
+        "value": "2.3.11.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "2.3.11.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "cis_windows_11.attestation"
+       }
+      ],
+      "links": [
+       {
+        "href": "#47aa8d1c-a1f7-5402-a11f-a07ad3fdc8c2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "cis_windows_11_modular-2.3.11.5_stmt",
+        "name": "statement",
+        "prose": "users forced off when logon hours expire; evidence: attestations"
+       }
+      ],
+      "class": "security"
      }
     ]
    },

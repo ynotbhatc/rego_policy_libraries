@@ -203,6 +203,11 @@
        {
         "id": "cis_ubuntu_20_04-CIS-1.6.1.3_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.unloaded_profiles is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.3_obj.3",
+        "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is not loaded"
        }
       ],
@@ -245,6 +250,11 @@
        },
        {
         "id": "cis_ubuntu_20_04-CIS-1.6.1.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — apparmor.complain_profiles is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.6.1.4_obj.3",
         "name": "assessment-objective",
         "prose": "AppArmor profile '%s' is in complain mode, should be enforce"
        }
@@ -1758,6 +1768,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.10_obj.2",
         "name": "assessment-objective",
         "prose": "%d world-writable files found on system"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.10_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — world_writable.count is not a number"
        }
       ],
       "class": "security"
@@ -1801,6 +1816,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.11_obj.2",
         "name": "assessment-objective",
         "prose": "%d unowned files found on system"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.11_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — unowned_files.count is not a number"
        }
       ],
       "class": "security"
@@ -1844,6 +1864,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.12_obj.2",
         "name": "assessment-objective",
         "prose": "%d ungrouped files found on system"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.12_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ungrouped_files.count is not a number"
        }
       ],
       "class": "security"
@@ -1887,6 +1912,16 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.2",
         "name": "assessment-objective",
         "prose": "Excessive unknown SUID binaries found (%d unknown out of %d total)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.unknown_count is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.13_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — suid_files.total_count is not a number"
        }
       ],
       "class": "security"
@@ -1925,6 +1960,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.1.14_obj.1",
         "name": "assessment-objective",
         "prose": "Excessive SGID binaries found (%d files)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.1.14_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sgid_files.count is not a number"
        }
       ],
       "class": "security"
@@ -2904,6 +2944,11 @@
         "id": "cis_ubuntu_20_04-CIS-1.8.4_stmt",
         "name": "statement",
         "prose": "GDM idle delay is %d seconds, should be 900 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-1.8.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — initial_setup.gdm_idle_delay is not a number"
        }
       ],
       "class": "security"
@@ -3212,6 +3257,11 @@
         "id": "cis_ubuntu_20_04-CIS-4.2.1.5_obj.1",
         "name": "assessment-objective",
         "prose": "Insufficient rsyslog logging rules (%d rules, expected at least 4)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-4.2.1.5_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — rsyslog.logging_rules_count is not a number"
        }
       ],
       "class": "security"
@@ -3936,6 +3986,11 @@
         "id": "cis_ubuntu_20_04-CIS-3.3.1_stmt",
         "name": "statement",
         "prose": "IPv6 is enabled but should be disabled (status: %s, addresses: %d)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-3.3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — ipv6.address_count is not a number"
        }
       ],
       "class": "security"
@@ -4210,7 +4265,17 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.4.2_obj.2",
         "name": "assessment-objective",
+        "prose": "evidence missing — pam.faillock_deny is not a number"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.2_obj.3",
+        "name": "assessment-objective",
         "prose": "Account unlock time is %d seconds, should be 900 or more (or 0 for never)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.2_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.faillock_unlock_time is not a number"
        }
       ],
       "class": "security"
@@ -4249,6 +4314,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.4.3_obj.1",
         "name": "assessment-objective",
         "prose": "Password history remembers only %d passwords, should be 5 or more"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.4.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.remember_count is not a number"
        }
       ],
       "class": "security"
@@ -4320,6 +4390,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.5.1_stmt",
         "name": "statement",
         "prose": "PASS_MIN_DAYS is %d, should be 1 or more"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.pass_min_days is not a number"
        }
       ],
       "class": "security"
@@ -4353,6 +4428,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.5.2_stmt",
         "name": "statement",
         "prose": "PASS_MAX_DAYS is %d, should be 365 or less"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.pass_max_days is not a number"
        }
       ],
       "class": "security"
@@ -4386,6 +4466,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.5.3_stmt",
         "name": "statement",
         "prose": "PASS_WARN_AGE is %d, should be 7 or more"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.pass_warn_age is not a number"
        }
       ],
       "class": "security"
@@ -4424,6 +4509,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.5.4_obj.1",
         "name": "assessment-objective",
         "prose": "INACTIVE is not set (-1), inactive accounts will never be locked"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.4_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.inactive_days is not a number"
        }
       ],
       "class": "security"
@@ -4532,10 +4622,15 @@
        {
         "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.2",
         "name": "assessment-objective",
-        "prose": "evidence missing — pam.default_umask not collected"
+        "prose": "evidence missing — pam.tmout_value is not a number"
        },
        {
         "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing — pam.default_umask not collected"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.5.x_obj.4",
         "name": "assessment-objective",
         "prose": "Default umask is %s, should be 027 or more restrictive"
        }
@@ -6073,6 +6168,11 @@
         "id": "cis_ubuntu_20_04-CIS-5.3.6_obj.1",
         "name": "assessment-objective",
         "prose": "sudo timestamp_timeout is negative (0 is recommended for high security)"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-5.3.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing — sudo.timestamp_timeout is not a number"
        }
       ],
       "class": "security"
@@ -6409,6 +6509,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.2.6_stmt",
         "name": "statement",
         "prose": "Duplicate username %s found %d times"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.2.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — duplicate_usernames count for %s is not a number"
        }
       ],
       "class": "security"
@@ -6442,6 +6547,11 @@
         "id": "cis_ubuntu_20_04-CIS-6.2.7_stmt",
         "name": "statement",
         "prose": "Duplicate group name %s found %d times"
+       },
+       {
+        "id": "cis_ubuntu_20_04-CIS-6.2.7_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing — duplicate_groupnames count for %s is not a number"
        }
       ],
       "class": "security"
