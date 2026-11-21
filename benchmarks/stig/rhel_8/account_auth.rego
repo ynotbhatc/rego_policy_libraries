@@ -81,6 +81,7 @@ finding_rhel_08_020250 := {
 default account_lockout := false
 
 account_lockout if {
+	is_number(input.pam_config.lockout_attempts)
 	input.pam_config.lockout_attempts <= 3
 	input.pam_config.lockout_attempts > 0
 }
@@ -120,7 +121,10 @@ finding_rhel_08_010110 := {
 # RHEL-08-020230 | V-230369 | CAT II - Password minimum length 15
 default password_minlen := false
 
-password_minlen if input.password_policy.minlen >= 15
+password_minlen if {
+	is_number(input.password_policy.minlen)
+	input.password_policy.minlen >= 15
+}
 
 status_rhel_08_020230 := "Not_a_Finding" if password_minlen
 
@@ -139,6 +143,7 @@ finding_rhel_08_020230 := {
 default password_maxage := false
 
 password_maxage if {
+	is_number(input.password_policy.maxdays)
 	input.password_policy.maxdays <= 60
 	input.password_policy.maxdays > 0
 }
@@ -159,7 +164,10 @@ finding_rhel_08_020200 := {
 # RHEL-08-020012 | V-230334 | CAT II - Lockout time 15 minutes
 default lockout_duration := false
 
-lockout_duration if input.pam_config.lockout_time >= 900
+lockout_duration if {
+	is_number(input.pam_config.lockout_time)
+	input.pam_config.lockout_time >= 900
+}
 
 status_rhel_08_020012 := "Not_a_Finding" if lockout_duration
 
@@ -178,6 +186,7 @@ finding_rhel_08_020012 := {
 default inactive_lock := false
 
 inactive_lock if {
+	is_number(input.password_policy.inactive_days)
 	input.password_policy.inactive_days <= 35
 	input.password_policy.inactive_days >= 0
 }

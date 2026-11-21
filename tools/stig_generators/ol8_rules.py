@@ -247,7 +247,7 @@ for sid, opt, name, op, want, bad in [
     ("OL08-00-020280", "ocredit", "password_ocredit", "<=", -1, 0),
 ]:
     T.R("account_auth", sid, name, [("pwquality_values", opt)],
-        [[f'ns := _pwq("{opt}")', "count(ns) > 0", f"every n in ns {{\n\tn {op} {want}\n}}", "count({n | some n in ns}) == 1"]],
+        [[f'ns := _pwq("{opt}")', "count(ns) > 0", f"every n in ns {{\n\tis_number(n)\n\tn {op} {want}\n}}", "count({n | some n in ns}) == 1"]],
         {"pwquality_values": {opt: [str(want)]}},
         [{"pwquality_values": {opt: [str(bad)]}}, {"pwquality_values": {opt: []}},
          {"pwquality_values": {opt: [str(want), str(want - 1 if op == ">=" else want - 1)]}} if op == "<=" else

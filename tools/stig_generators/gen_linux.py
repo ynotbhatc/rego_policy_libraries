@@ -71,7 +71,7 @@ def empty_list(path):
 def crypto_policy_fips():
     return (['input.crypto_policy.policy == "FIPS"'], ("BOOL2", "crypto_policy.policy", "FIPS"))
 def sshd_max(k, n):
-    return ([f'input.sshd_config.{k} <= {n}', f'input.sshd_config.{k} > 0'], ("sshd_config", k, n))
+    return ([f'is_number(input.sshd_config.{k})', f'input.sshd_config.{k} <= {n}', f'input.sshd_config.{k} > 0'], ("sshd_config", k, n))
 def cp_ossh(field, val):
     return ([f'input.crypto_policy.{field} == "{val}"'], ("BOOL2", f"crypto_policy.{field}", val))
 def crypto_not_overridden():

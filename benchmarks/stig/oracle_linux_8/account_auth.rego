@@ -372,6 +372,7 @@ password_min_length if {
 	ns := _pwq("minlen")
 	count(ns) > 0
 	every n in ns {
+		is_number(n)
 		n >= 15
 	}
 	count({n | some n in ns}) == 1
@@ -413,6 +414,7 @@ password_ucredit if {
 	ns := _pwq("ucredit")
 	count(ns) > 0
 	every n in ns {
+		is_number(n)
 		n <= -1
 	}
 	count({n | some n in ns}) == 1
@@ -450,6 +452,7 @@ password_lcredit if {
 	ns := _pwq("lcredit")
 	count(ns) > 0
 	every n in ns {
+		is_number(n)
 		n <= -1
 	}
 	count({n | some n in ns}) == 1
@@ -487,6 +490,7 @@ password_dcredit if {
 	ns := _pwq("dcredit")
 	count(ns) > 0
 	every n in ns {
+		is_number(n)
 		n <= -1
 	}
 	count({n | some n in ns}) == 1
@@ -524,6 +528,7 @@ password_ocredit if {
 	ns := _pwq("ocredit")
 	count(ns) > 0
 	every n in ns {
+		is_number(n)
 		n <= -1
 	}
 	count({n | some n in ns}) == 1

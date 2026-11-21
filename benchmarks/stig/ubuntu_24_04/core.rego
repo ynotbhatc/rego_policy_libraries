@@ -317,6 +317,7 @@ status_r_ubtu_24_600000 := "Open" if not r_ubtu_24_600000
 default r_ubtu_24_600010 := false
 
 r_ubtu_24_600010 if {
+	is_number(input.sshd_config.ClientAliveInterval)
 	input.sshd_config.ClientAliveInterval <= 600
 	input.sshd_config.ClientAliveInterval > 0
 }
