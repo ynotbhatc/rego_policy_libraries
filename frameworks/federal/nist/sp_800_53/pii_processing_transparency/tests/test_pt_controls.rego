@@ -248,7 +248,7 @@ test_pt8_attestation_empty_by_fails if {
 }
 
 # The all-pass fixture with the facts of the Privacy-baseline enhancements.
-_pass := object.union(_pass_base, {"pt_controls": {"privacy_notice": {"privacy_act_statements": {"forms_without_statement": 0}}, "system_of_records_notice": {"routine_uses": {"days_since_last": 100, "odp": {"frequency_days": 365}, "compatible_with_collection_purpose": true}, "exemptions": {"days_since_last": 100, "odp": {"frequency_days": 365}, "remain_necessary": true, "promulgated_as_regulations": true, "accurately_described": true}}, "specific_categories": {"social_security_numbers": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "first_amendment": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}}}})
+_pass := object.union(_pass_base, {"pt_controls": {"privacy_notice": {"privacy_act_statements": {"forms_without_statement": 0}}, "system_of_records_notice": {"routine_uses": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "exemptions": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}}, "specific_categories": {"social_security_numbers": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}, "first_amendment": {"attestation": {"attested": true, "by": "Privacy Officer", "date": "2026-11-01"}}}}})
 
 # --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
 
@@ -266,29 +266,61 @@ test_privacy_pt5_2_evidence_missing_2 if {
 	contains(x, "evidence missing")
 }
 
+test_privacy_pt6_1_attested_passes if {
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as _pass
+	count(_flagged(v, "PT-6(1)")) == 0
+}
+
 test_privacy_pt6_1_fails_1 if {
-	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"routine_uses": {"days_since_last": 400}}}})
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"routine_uses": {"attestation": {"attested": false}}}}})
 	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(1)"}
 	some x in v
-	contains(x, "organization-defined frequency is 365")
+	contains(x, "not attested")
+}
+
+test_privacy_pt6_1_malformed_attestation_fails if {
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"routine_uses": {"attestation": {"attested": "true", "date": 20261101}}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(1)"}
+	some x in v
+	contains(x, "not attested")
 }
 
 test_privacy_pt6_1_evidence_missing_2 if {
-	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"routine_uses": {"compatible_with_collection_purpose": null}}}})
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"routine_uses": {"attestation": null}}}})
 	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(1)"}
 	some x in v
 	contains(x, "evidence missing")
 }
 
+test_privacy_pt6_1_old_review_facts_do_not_pass if {
+	inp := {"pt_controls": {"system_of_records_notice": {"routine_uses": {"days_since_last": 100, "odp": {"frequency_days": 365}, "compatible_with_collection_purpose": true}}}}
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as inp
+	f := _flagged(v, "PT-6(1)")
+	count(f) == 1
+	contains(f[0], "not attested")
+}
+
+test_privacy_pt6_2_attested_passes if {
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as _pass
+	count(_flagged(v, "PT-6(2)")) == 0
+}
+
 test_privacy_pt6_2_fails_1 if {
-	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"exemptions": {"promulgated_as_regulations": false}}}})
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"exemptions": {"attestation": {"attested": false}}}}})
 	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(2)"}
 	some x in v
-	contains(x, "promulgated as regulations")
+	contains(x, "not attested")
+}
+
+test_privacy_pt6_2_malformed_attestation_fails if {
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"exemptions": {"attestation": {"by": "   "}}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(2)"}
+	some x in v
+	contains(x, "not attested")
 }
 
 test_privacy_pt6_2_evidence_missing_2 if {
-	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"exemptions": {"odp": {"frequency_days": "365"}}}}})
+	v := data.nist.sp800_53.pii_processing_transparency.violation with input as object.union(_pass, {"pt_controls": {"system_of_records_notice": {"exemptions": {"attestation": "yes"}}}})
 	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PT-6(2)"}
 	some x in v
 	contains(x, "evidence missing")

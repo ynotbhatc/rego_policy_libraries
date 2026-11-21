@@ -26,9 +26,9 @@ attestation_controls := {
 	"AU-14", "CA-2(1)", "CA-7(1)", "CA-8(1)", "IR-9(3)", "MA-7", "MP-3", "MP-4", "MP-5", "MP-8", "PE-4", "PE-5",
 	"PE-9", "PE-10", "PE-12", "PE-13", "PE-15", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22",
 	"PE-23", "PM-2", "PM-3", "PM-6", "PM-7", "PM-8", "PM-10", "PM-12", "PM-13", "PM-14", "PM-15", "PM-16",
-	"PM-19", "PM-20", "PM-23", "PM-24", "PM-29", "PM-32", "PS-9", "PT-6", "PT-7", "PT-7(1)", "PT-7(2)", "PT-8",
-	"RA-6", "RA-8", "SA-2", "SA-8", "SA-16", "SA-17", "SA-20", "SA-23", "SA-24", "SC-31", "SC-37", "SC-38",
-	"SC-48", "SI-23", "SR-5", "SR-7",
+	"PM-19", "PM-20", "PM-23", "PM-24", "PM-29", "PM-32", "PS-9", "PT-6", "PT-6(1)", "PT-6(2)", "PT-7",
+	"PT-7(1)", "PT-7(2)", "PT-8", "RA-6", "RA-8", "SA-2", "SA-8", "SA-16", "SA-17", "SA-20", "SA-23", "SA-24",
+	"SC-31", "SC-37", "SC-38", "SC-48", "SI-23", "SR-5", "SR-7",
 }
 
 # Every evaluated id in natural order (AC-2 before AC-10, AC-2 before AC-2(1)): the order of control_results.

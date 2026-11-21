@@ -6,7 +6,21 @@
   },
   "ac_controls": {
     "access_enforcement": {
-      "role_based_access_control": true
+      "role_based_access_control": true,
+      "individual_access": {
+        "elements_accessible": [
+          "name",
+          "address",
+          "email"
+        ],
+        "mechanisms_implemented": true,
+        "odp": {
+          "elements": [
+            "name",
+            "address"
+          ]
+        }
+      }
     },
     "account_management": {
       "approval_process": true,
