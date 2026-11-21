@@ -3,7 +3,7 @@
 
 OPA ?= opa
 
-.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
+.PHONY: test lint metadata check count wasm wasm-classes coverage check-no-data check-bad-input check-generated check-coverage check-per-file-load oscal crosswalk xccdf check-converters check-cis-verbatim load-security load-compliance load-ot help
 
 help:
 	@echo "Targets:"
@@ -11,6 +11,7 @@ help:
 	@echo "  make lint          Check syntax of all .rego files"
 	@echo "  make metadata      Verify every package carries a conforming METADATA block"
 	@echo "  make check         lint + test + metadata"
+	@echo "  make check-bad-input  Empty / null / string-typed input and mutated fixtures never pass (known failures listed)"
 	@echo "  make check-per-file-load  Upload every policy file one at a time into a throwaway OPA server, as the product does"
 	@echo "  make load-security    Load benchmarks into opa-security (:8181)"
 	@echo "  make load-compliance  Load frameworks into opa-compliance (:8182)"
@@ -83,11 +84,17 @@ coverage:
 check-no-data:
 	@python3 scripts/check_no_data_fails.py --check-test
 
+# bad input never passes (#301): empty / missing / null / string-typed input and mutated all-pass fixtures,
+# for every entrypoint; fails only on a failure not in scripts/bad_input_known_failures.txt
+check-bad-input:
+	@OPA=$(OPA) python3 scripts/check_bad_input_fails.py --check
+
 check-coverage:
 	@python3 scripts/coverage_stamp.py --check
 	@python3 scripts/check_numeric_guards.py --check
 	@python3 scripts/coverage_report.py --check
 	@$(MAKE) --no-print-directory check-generated
+	@$(MAKE) --no-print-directory check-bad-input
 
 # generated files that CI must see current: the no-data test lists every entrypoint; the NIST 800-53 index
 # matches the module and the OSCAL baseline profiles
