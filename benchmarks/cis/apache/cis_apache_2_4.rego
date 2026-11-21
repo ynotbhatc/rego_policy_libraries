@@ -1803,6 +1803,7 @@ default r_6_4 := false
 
 r_6_4 if {
 	input.apache.log_rotation.covers_configured_logs == true
+	is_number(input.apache.log_rotation.retention_weeks)
 	input.apache.log_rotation.retention_weeks >= 13
 	input.apache.log_rotation.vhost_logs_included == true
 }

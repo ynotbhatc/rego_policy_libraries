@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 24
+#     checks: 26
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.user_group
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings

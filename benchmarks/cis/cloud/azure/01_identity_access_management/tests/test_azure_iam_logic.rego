@@ -45,3 +45,11 @@ test_report_populated_on_empty_input if {
 	r.overall_compliant == false
 	r.mfa_enabled_privileged_users == false
 }
+
+# #300 type traps: a non-number must not pass password_reset_methods.
+test_password_reset_methods_number_type_traps if {
+	data.cis.azure.iam.password_reset_methods with input as {"password_reset_policy": {"methods_required": 2}}
+	not data.cis.azure.iam.password_reset_methods with input as {"password_reset_policy": {"methods_required": "1"}}
+	not data.cis.azure.iam.password_reset_methods with input as {"password_reset_policy": {"methods_required": null}}
+	not data.cis.azure.iam.password_reset_methods with input as {"password_reset_policy": {"methods_required": "not-a-number"}}
+}

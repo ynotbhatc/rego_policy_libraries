@@ -3677,6 +3677,7 @@ _v_swarm contains "7.6: the swarm unlock key must be rotated on the organisation
 default r_7_7 := false
 
 r_7_7 if {
+	is_number(input.docker.info.Swarm.Cluster.Spec.CAConfig.NodeCertExpiry)
 	input.docker.info.Swarm.Cluster.Spec.CAConfig.NodeCertExpiry > 0
 	input.docker.info.Swarm.Cluster.Spec.CAConfig.NodeCertExpiry <= _max_node_cert_ns
 }

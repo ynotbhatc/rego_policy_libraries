@@ -93,3 +93,11 @@ test_every_recommendation_has_a_rule if {
 	ids := {id | some m in v; id := split(m, ":")[0]}
 	count(ids) == 54
 }
+
+# #300 type traps: a non-number must not pass _topic_with_subscription.
+test_topic_with_subscription_number_type_traps if {
+	data.cis_oci.main._topic_with_subscription with input as {"oci": {"notifications": {"topics": [{"subscriptions": 1}]}}}
+	not data.cis_oci.main._topic_with_subscription with input as {"oci": {"notifications": {"topics": [{"subscriptions": "1"}]}}}
+	not data.cis_oci.main._topic_with_subscription with input as {"oci": {"notifications": {"topics": [{"subscriptions": null}]}}}
+	not data.cis_oci.main._topic_with_subscription with input as {"oci": {"notifications": {"topics": [{"subscriptions": "not-a-number"}]}}}
+}

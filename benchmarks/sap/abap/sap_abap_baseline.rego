@@ -210,11 +210,15 @@ _assessable_ids := {id | some id, c in registry.checks; c.assessable}
 _evaluated_ids := {id | some id in _assessable_ids; level_in_profile(registry.checks[id].level)}
 
 # The check id is everything before the first ": " of a violation message.
+_msg_id(msg) := substring(msg, 0, i) if {
+	i := indexof(msg, ": ")
+	is_number(i)
+	i > 0
+}
+
 _violated_ids := {id |
 	some msg in violations
-	i := indexof(msg, ": ")
-	i > 0
-	id := substring(msg, 0, i)
+	id := _msg_id(msg)
 }
 
 results := {id: status |
@@ -234,9 +238,7 @@ _status(id, c) := "not_assessable" if {
 # (the message alone carries only the id).
 violation_details := [{"id": id, "level": c.level, "severity": c.severity, "requirement": c.requirement, "message": msg} |
 	some msg in violations
-	i := indexof(msg, ": ")
-	i > 0
-	id := substring(msg, 0, i)
+	id := _msg_id(msg)
 	c := object.get(registry.checks, id, {"level": "unknown", "severity": "high", "requirement": "SAP-INPUT"})
 ]
 

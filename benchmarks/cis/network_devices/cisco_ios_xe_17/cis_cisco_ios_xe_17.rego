@@ -666,6 +666,7 @@ r_1_2_9 if {
 
 r_1_2_9 if {
 	some n in _nums(`^ip http max-connections\s+(\d+)`)
+	is_number(n)
 	n >= 1
 	n <= 2
 }
@@ -697,6 +698,7 @@ r_1_2_10 if {
 
 r_1_2_10 if {
 	some n in _nums(`^ip http timeout-policy idle\s+(\d+)`)
+	is_number(n)
 	n >= 1
 	n <= 600
 }
@@ -1179,6 +1181,7 @@ default r_2_1_1_1_4 := false
 
 r_2_1_1_1_4 if {
 	some n in _nums(`^ip ssh time-out\s+(\d+)`)
+	is_number(n)
 	n >= 1
 	n <= 60
 }
@@ -1431,6 +1434,7 @@ default r_2_2_2 := false
 
 r_2_2_2 if {
 	some n in _nums(`^logging buffered\s+(\d+)`)
+	is_number(n)
 	n >= 64000
 }
 

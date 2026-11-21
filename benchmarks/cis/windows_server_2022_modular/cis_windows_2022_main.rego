@@ -67,6 +67,7 @@ default _coverage := 0
 
 _coverage := round((_assessed * 100000) / _total) / 1000 if {
 	_facts_supplied
+	is_number(_total)
 	_total > 0
 }
 
@@ -80,6 +81,7 @@ default _compliant := false
 
 _compliant if {
 	_facts_supplied
+	is_number(_total)
 	_total > 0
 	_failed == 0
 }

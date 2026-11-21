@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 29
+#     checks: 30
 #     cited: 20
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.initial_setup
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 1.2, 1.7, 1.8: Initial System Setup

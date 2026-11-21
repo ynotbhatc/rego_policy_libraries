@@ -1089,3 +1089,11 @@ test_8_1_fail_2 if {
 	bad := json.patch(green, [{"op": "remove", "path": "/sql/attest/browser_service_reviewed"}])
 	"8.1: 'SQL Server Browser Service' must match the approved configuration (manual review not attested)" in b.violations with input as bad
 }
+
+# #300 type traps: a non-number must not pass r_5_1.
+test_r_5_1_number_type_traps if {
+	data.cis.sql_server_2025.r_5_1 with input as {"sql": {"num_error_logs": 12}}
+	not data.cis.sql_server_2025.r_5_1 with input as {"sql": {"num_error_logs": "1"}}
+	not data.cis.sql_server_2025.r_5_1 with input as {"sql": {"num_error_logs": null}}
+	not data.cis.sql_server_2025.r_5_1 with input as {"sql": {"num_error_logs": "not-a-number"}}
+}

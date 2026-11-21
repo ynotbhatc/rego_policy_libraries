@@ -56,6 +56,7 @@ score := sum([w |
 evaluation_depth := "focused" if score >= 6
 
 evaluation_depth := "standard" if {
+	is_number(score)
 	score >= 3
 	score < 6
 }

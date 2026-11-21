@@ -232,6 +232,7 @@ openssh_ge_9_9 if openssh_ver[0] > 9
 
 openssh_ge_9_9 if {
 	openssh_ver[0] == 9
+	is_number(openssh_ver[1])
 	openssh_ver[1] >= 9
 }
 
@@ -748,6 +749,7 @@ default e_5_1_23 := false
 e_5_1_23 if {
 	ssh_collected
 	sshd_first("kexalgorithms")
+	is_number(openssh_ver[0])
 	openssh_ver[0] >= 0
 }
 

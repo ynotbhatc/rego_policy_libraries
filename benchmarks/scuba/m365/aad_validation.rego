@@ -180,6 +180,7 @@ violations contains msg if {
 default app_password_lifetime_ok := false
 
 app_password_lifetime_ok if {
+	is_number(input.scuba.aad.apps.password_lifetime_days)
 	input.scuba.aad.apps.password_lifetime_days <= 180
 }
 
@@ -191,6 +192,7 @@ violations contains msg if {
 default app_cert_lifetime_ok := false
 
 app_cert_lifetime_ok if {
+	is_number(input.scuba.aad.apps.certificate_lifetime_days)
 	input.scuba.aad.apps.certificate_lifetime_days <= 365
 }
 
@@ -212,6 +214,7 @@ default global_admin_count_ok := false
 
 global_admin_count_ok if {
 	c := input.scuba.aad.privileged.global_admin_count
+	is_number(c)
 	c >= 2
 	c <= 8
 }

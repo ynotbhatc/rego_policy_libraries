@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 22
+#     checks: 30
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.pam
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Sections 5.4-5.5: PAM and Password Policies
