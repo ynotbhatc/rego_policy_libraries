@@ -457,3 +457,24 @@ test_privacy_ac17_3_evidence_missing_2 if {
 	some x in v
 	contains(x, "evidence missing")
 }
+
+# --- Family aggregate: nist_sp800_53_ac_compliant is true exactly when no AC id has a finding ---
+
+test_ac_aggregate_true_on_all_pass if {
+	data.nist.sp800_53.access_control.nist_sp800_53_ac_compliant with input as _pass
+}
+
+test_ac_aggregate_false_on_empty_input if {
+	not data.nist.sp800_53.access_control.nist_sp800_53_ac_compliant with input as {}
+}
+
+# AC-3(14) was not among the 34 rules the aggregate used to check; a failure there alone must make it false.
+test_ac_aggregate_false_on_late_enhancement_failure if {
+	inp := object.union(_pass, {"ac_controls": {"access_enforcement": {"individual_access": {"mechanisms_implemented": false}}}})
+	v := data.nist.sp800_53.access_control.violation with input as inp
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AC-3(14)"}
+	data.nist.sp800_53.access_control.access_enforcement with input as inp
+	not data.nist.sp800_53.access_control.nist_sp800_53_ac_compliant with input as inp
+	r := data.nist.sp800_53.access_control.nist_sp800_53_ac_compliance with input as inp
+	r.overall_compliant == false
+}

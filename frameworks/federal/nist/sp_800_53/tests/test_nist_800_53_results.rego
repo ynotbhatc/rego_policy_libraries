@@ -22,7 +22,7 @@ test_one_row_per_evaluated_id_in_natural_order if {
 
 test_empty_input_nothing_passes if {
 	r := main.compliance_report with input as {}
-	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 478, "not_attested": 64}
+	r.control_result_counts == {"pass": 0, "fail": 0, "evidence_missing": 476, "not_attested": 66}
 	_row(r, "MA-2").status == "evidence_missing"
 	_row(r, "PM-2").status == "not_attested"
 	_row(r, "AC-2").status == "evidence_missing"

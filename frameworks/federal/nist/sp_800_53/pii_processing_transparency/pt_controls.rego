@@ -215,36 +215,22 @@ violation contains msg if {
 	msg := sprintf("NIST PT-5(2): %s", [_detail(m, u)])
 }
 
-# PT-6(1) Routine Uses: the routine uses published in the system of records notice are reviewed at the
-# organization-defined frequency for accuracy and compatibility with the purpose of collection.
-# Facts (input.pt_controls.system_of_records_notice.routine_uses): days_since_last + odp.frequency_days (the last
-# review); compatible_with_collection_purpose (boolean, the review's outcome).
+# PT-6(1) Routine Uses: input.pt_controls.system_of_records_notice.routine_uses.attestation (organizational: the
+# routine uses published in the system of records notice are reviewed at the organization-defined frequency for
+# accuracy and compatibility with the purpose of collection). Attestation-based (Tim, 2026-11-21): a system that
+# maintains no system of records cannot produce review evidence, so the attestation covers either the review or that.
 violation contains msg if {
-	sec := ["system_of_records_notice", "routine_uses"]
-	b := {"compatible_with_collection_purpose": "the last review found published routine uses inaccurate or not compatible with the purpose of collection"}
-	m := _bool_missing(sec, b) | _freq_missing(sec)
-	u := _bool_unmet(sec, b) | _freq_unmet(sec, "routine uses reviewed")
-	count(m) + count(u) > 0
-	msg := sprintf("NIST PT-6(1): %s", [_detail(m, u)])
+	d := _att_detail(["system_of_records_notice", "routine_uses"], "routine uses published in the system of records notice are reviewed at the organization-defined frequency and remain accurate and compatible with the purpose of collection, or the system maintains no Privacy Act system of records")
+	msg := sprintf("NIST PT-6(1): %s", [d])
 }
 
-# PT-6(2) Exemption Rules: the Privacy Act exemptions claimed for the system of records are reviewed at the
-# organization-defined frequency: still appropriate and necessary, promulgated as regulations, and accurately
-# described in the notice.
-# Facts (input.pt_controls.system_of_records_notice.exemptions): days_since_last + odp.frequency_days (the last
-# review); remain_necessary, promulgated_as_regulations, accurately_described (booleans, the review's outcome).
-_pt6_2 := {
-	"remain_necessary": "claimed Privacy Act exemptions are no longer appropriate and necessary in accordance with law",
-	"promulgated_as_regulations": "claimed Privacy Act exemptions have not been promulgated as regulations",
-	"accurately_described": "claimed Privacy Act exemptions are not accurately described in the system of records notice",
-}
-
+# PT-6(2) Exemption Rules: input.pt_controls.system_of_records_notice.exemptions.attestation (organizational: the
+# Privacy Act exemptions claimed for the system of records are reviewed at the organization-defined frequency and
+# remain appropriate and necessary, promulgated as regulations, and accurately described in the notice).
+# Attestation-based (Tim, 2026-11-21) for the same reason as PT-6(1).
 violation contains msg if {
-	sec := ["system_of_records_notice", "exemptions"]
-	m := _bool_missing(sec, _pt6_2) | _freq_missing(sec)
-	u := _bool_unmet(sec, _pt6_2) | _freq_unmet(sec, "Privacy Act exemptions reviewed")
-	count(m) + count(u) > 0
-	msg := sprintf("NIST PT-6(2): %s", [_detail(m, u)])
+	d := _att_detail(["system_of_records_notice", "exemptions"], "claimed Privacy Act exemptions are reviewed at the organization-defined frequency and remain appropriate and necessary, promulgated as regulations and accurately described in the system of records notice, or no exemption is claimed or the system maintains no Privacy Act system of records")
+	msg := sprintf("NIST PT-6(2): %s", [d])
 }
 
 # PT-7(1) Social Security Numbers: input.pt_controls.specific_categories.social_security_numbers.attestation

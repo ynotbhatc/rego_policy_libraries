@@ -295,42 +295,14 @@ reference_monitor if {
 	input.ac_controls.reference_monitor.small_verifiable == true
 }
 
-# Aggregate NIST SP 800-53 Access Control compliance
+# Aggregate NIST SP 800-53 Access Control compliance: true exactly when every evaluated AC id passes (no
+# violation at all), not only the 34 legacy boolean rules (Tim, 2026-11-21). Facts must be supplied as an object
+# under input.ac_controls, so {} is never compliant.
+default nist_sp800_53_ac_compliant := false
+
 nist_sp800_53_ac_compliant if {
-	access_control_policy
-	account_management
-	access_enforcement
-	information_flow_enforcement
-	separation_of_duties
-	least_privilege
-	unsuccessful_logon_attempts
-	system_use_notification
-	previous_logon_notification
-	concurrent_session_control
-	session_lock
-	pattern_hiding_display
-	session_termination
-	permitted_actions_restricted
-	security_attributes
-	remote_access_control
-	wireless_access_control
-	mobile_device_access_control
-	external_systems_control
-	information_sharing_control
-	publicly_accessible_content
-	data_mining_protection
-	access_control_decisions
-	reference_monitor
-	automated_account_management
-	flow_object_attributes
-	authorize_security_functions
-	non_privileged_access_for_nonsecurity
-	previous_logon_unsuccessful_count
-	previous_logon_additional_info
-	user_initiated_logout
-	remote_access_monitoring
-	remote_access_encryption
-	wireless_auth_encryption
+	is_object(input.ac_controls)
+	count(violation) == 0
 }
 
 # Detailed NIST SP 800-53 Access Control compliance report
