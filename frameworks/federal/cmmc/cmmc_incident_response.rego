@@ -32,12 +32,14 @@ plan_reviewed_within(days) if input.incident_response.plan_age_days <= days
 
 # IR.L2-3.6.1 — Establish an operational incident-handling capability
 violation_ir_1 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.incident_response.plan_documented
 	msg := "CMMC IR.L2-3.6.1: No documented incident response plan. An operational IR capability covering preparation, detection, containment, and recovery is required."
 }
 
 violation_ir_1 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.incident_response.plan_documented
 	not input.incident_response.plan_tested
@@ -45,6 +47,7 @@ violation_ir_1 contains msg if {
 }
 
 violation_ir_1 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	input.incident_response.plan_documented
 	not plan_reviewed_within(365)
@@ -56,12 +59,14 @@ violation_ir_1 contains msg if {
 
 # IR.L2-3.6.2 — Track, document, and report incidents
 violation_ir_2 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.incident_response.incident_tracking_system
 	msg := "CMMC IR.L2-3.6.2: No incident tracking system. All incidents affecting CUI must be tracked and documented."
 }
 
 violation_ir_2 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.incident_response.reporting_to_dod_required_when_applicable
 	msg := "CMMC IR.L2-3.6.2: DoD incident reporting procedure not defined. CUI incidents must be reported to appropriate authorities within 72 hours."
@@ -69,6 +74,7 @@ violation_ir_2 contains msg if {
 
 # IR.L2-3.6.3 — Test the organizational incident response capability
 violation_ir_3 contains msg if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	not input.incident_response.tabletop_exercise_completed
 	msg := "CMMC IR.L2-3.6.3: No tabletop exercise completed. Incident response capability must be tested through exercises."
@@ -84,8 +90,8 @@ violations contains msg if {
 # Fail-closed: without the facts this module keys on, it reports a violation rather than silence.
 # Every IR practice is gated on cmmc_level >= 2; without the level nothing runs.
 # This finding names no practice (data.cmmc reports the missing level itself).
-violations contains "CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the incident-response practices were not evaluated and the domain is reported non-compliant" if {
-	not input.cmmc_level
+violations contains "CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the incident-response practices were not evaluated and the domain is reported non-compliant" if {
+	not is_number(object.get(input, "cmmc_level", null))
 }
 
 violations contains msg if {
@@ -104,6 +110,7 @@ _ids := ["3.6.1", "3.6.2", "3.6.3"]
 practices := [{"id": id, "level": 2, "compliant": _practice_ok(id)} | some id in _ids]
 
 _practice_ok(id) if {
+	is_number(input.cmmc_level)
 	input.cmmc_level >= 2
 	is_object(object.get(input, "incident_response", null))
 	count(_by_practice[id]) == 0
