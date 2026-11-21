@@ -62,3 +62,14 @@ test_passphrase_cat_flagged if {
 test_passphrase_echo_flagged if {
 	not pkg.ssl_passphrase_command_secure with input as {"postgresql": {"ssl": {"ssl_passphrase_command": "echo secret"}}}
 }
+
+# #300 type traps: a non-number must not pass a numeric check.
+test_account_lockout_real_numbers_pass if {
+	data.cis.postgresql_15.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": 900}}}
+}
+
+test_account_lockout_type_traps_fail if {
+	not data.cis.postgresql_15.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": "1"}}}
+	not data.cis.postgresql_15.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": null, "lockout_duration": 900}}}
+	not data.cis.postgresql_15.account_lockout_enforced with input as {"postgresql": {"account_lockout": {"enabled": true, "max_failed_attempts": 5, "lockout_duration": "forever"}}}
+}

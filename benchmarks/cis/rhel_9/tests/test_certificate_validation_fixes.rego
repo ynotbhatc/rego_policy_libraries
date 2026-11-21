@@ -19,3 +19,13 @@ test_cert_missing_key_bits_is_violation if {
 	i := json.remove(base, ["/certificates/system_certs/0/key_bits"])
 	not data.cis_rhel9.certificate_validation.compliant with input as i
 }
+
+# #300 type traps: a non-number days_until_expiry is evidence missing; real numbers keep their behaviour.
+test_days_until_expiry_number_type_traps if {
+	msg := "NIST IA-5: evidence missing — certificate 'c1' days_until_expiry is not a number"
+	msg in data.cis_rhel9.certificate_validation.violations with input as {"certificates": {"system_certs": [{"subject": "c1", "days_until_expiry": "1"}]}}
+	msg in data.cis_rhel9.certificate_validation.violations with input as {"certificates": {"system_certs": [{"subject": "c1", "days_until_expiry": null}]}}
+	msg in data.cis_rhel9.certificate_validation.violations with input as {"certificates": {"system_certs": [{"subject": "c1", "days_until_expiry": "soon"}]}}
+	not msg in data.cis_rhel9.certificate_validation.violations with input as {"certificates": {"system_certs": [{"subject": "c1", "days_until_expiry": 400}]}}
+	"NIST IA-5: Certificate 'c1' EXPIRED 3 days ago — replace immediately" in data.cis_rhel9.certificate_validation.violations with input as {"certificates": {"system_certs": [{"subject": "c1", "days_until_expiry": -3}]}}
+}

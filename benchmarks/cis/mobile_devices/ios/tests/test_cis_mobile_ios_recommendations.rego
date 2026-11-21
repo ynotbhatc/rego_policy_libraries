@@ -2236,3 +2236,11 @@ test_4_11_not_attested_when_absent if {
 	vs := b.violations with input as inp
 	"4.11: RCS messaging must be turned on where available (manual review not attested)" in vs
 }
+
+# #300 type traps: a non-number must not pass r_2_4_4.
+test_r_2_4_4_number_type_traps if {
+	data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": 2}}}
+	not data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": "1"}}}
+	not data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": null}}}
+	not data.cis.mobile.ios.r_2_4_4 with input as {"ios_profile": {"passcode": {"maxInactivity": "not-a-number"}}}
+}

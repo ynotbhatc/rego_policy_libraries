@@ -212,6 +212,7 @@ openssh_needs_mlkem if openssh_ver[0] > 9
 
 openssh_needs_mlkem if {
 	openssh_ver[0] == 9
+	is_number(openssh_ver[1])
 	openssh_ver[1] >= 9
 }
 

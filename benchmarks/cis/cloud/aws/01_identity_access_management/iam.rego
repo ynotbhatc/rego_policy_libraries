@@ -67,6 +67,7 @@ days_since_created(created_date) := days if {
 default password_policy_min_length := false
 
 password_policy_min_length if {
+	is_number(input.iam_password_policy.minimum_password_length)
 	input.iam_password_policy.minimum_password_length >= 14
 }
 
@@ -74,6 +75,7 @@ password_policy_min_length if {
 default password_policy_prevents_reuse := false
 
 password_policy_prevents_reuse if {
+	is_number(input.iam_password_policy.password_reuse_prevention)
 	input.iam_password_policy.password_reuse_prevention >= 24
 }
 
@@ -109,6 +111,7 @@ password_policy_numbers if {
 default password_policy_max_age := false
 
 password_policy_max_age if {
+	is_number(input.iam_password_policy.max_password_age)
 	input.iam_password_policy.max_password_age <= 90
 }
 

@@ -301,6 +301,7 @@ sec_case_sensitive_logon_true if {
 sec_max_failed_login_attempts_set if {
 	parameters := input.oracle.init_parameters
 	attempts := parameters.sec_max_failed_login_attempts
+	is_number(attempts)
 	attempts >= 3
 	attempts <= 5
 }
@@ -410,6 +411,7 @@ listener_log_files_protected if {
 connection_rate_limiting_configured if {
 	rate_limiting := input.oracle.connection_rate_limiting
 	rate_limiting.enabled == true
+	is_number(rate_limiting.max_connections_per_second)
 	rate_limiting.max_connections_per_second <= 10
 }
 
@@ -461,7 +463,9 @@ connection_timeout_configured if {
 	sqlnet_config := input.oracle.sqlnet_config
 	inbound_timeout := sqlnet_config.inbound_connect_timeout
 	expire_time := sqlnet_config.expire_time
+	is_number(inbound_timeout)
 	inbound_timeout <= 60
+	is_number(expire_time)
 	expire_time <= 10
 }
 
@@ -650,6 +654,7 @@ startup_shutdown_auditing_enabled if {
 log_retention_policies_configured if {
 	log_retention := input.oracle.log_retention
 	log_retention.policy_defined == true
+	is_number(log_retention.retention_days)
 	log_retention.retention_days >= 90
 	log_retention.automated_cleanup == true
 }
@@ -786,6 +791,7 @@ unneeded_default_accounts_locked if {
 password_complexity_enforced if {
 	password_policy := input.oracle.password_policy
 	password_policy.complexity_function_enabled == true
+	is_number(password_policy.min_length)
 	password_policy.min_length >= 8
 	password_policy.mixed_case_required == true
 	password_policy.numbers_required == true
@@ -794,25 +800,31 @@ password_complexity_enforced if {
 
 password_expiration_enforced if {
 	password_policy := input.oracle.password_policy
+	is_number(password_policy.password_life_time)
 	password_policy.password_life_time <= 90
 	password_policy.password_life_time > 0
 }
 
 password_reuse_limited if {
 	password_policy := input.oracle.password_policy
+	is_number(password_policy.password_reuse_max)
 	password_policy.password_reuse_max >= 5
+	is_number(password_policy.password_reuse_time)
 	password_policy.password_reuse_time >= 365
 }
 
 account_lockout_enforced if {
 	password_policy := input.oracle.password_policy
+	is_number(password_policy.failed_login_attempts)
 	password_policy.failed_login_attempts <= 5
 	password_policy.failed_login_attempts > 0
+	is_number(password_policy.password_lock_time)
 	password_policy.password_lock_time >= 1
 }
 
 password_grace_period_limited if {
 	password_policy := input.oracle.password_policy
+	is_number(password_policy.password_grace_time)
 	password_policy.password_grace_time <= 7
 	password_policy.password_grace_time >= 0
 }
@@ -865,18 +877,21 @@ session_management_configured if {
 
 idle_time_limits_enforced if {
 	resource_limits := input.oracle.resource_limits
+	is_number(resource_limits.idle_time)
 	resource_limits.idle_time <= 60
 	resource_limits.idle_time > 0
 }
 
 connect_time_limits_enforced if {
 	resource_limits := input.oracle.resource_limits
+	is_number(resource_limits.connect_time)
 	resource_limits.connect_time <= 480
 	resource_limits.connect_time > 0
 }
 
 concurrent_session_limits_enforced if {
 	resource_limits := input.oracle.resource_limits
+	is_number(resource_limits.sessions_per_user)
 	resource_limits.sessions_per_user <= 5
 	resource_limits.sessions_per_user > 0
 }

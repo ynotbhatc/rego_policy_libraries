@@ -36,3 +36,11 @@ test_grub_mode_stricter_than_600_ok if not has("UNMAPPED-RHEL10-1.2: grub config
 test_grub_mode_644_flagged if has("UNMAPPED-RHEL10-1.2: grub config must be secure (root:root, mode 0600 or stricter)", {"ansible_facts": {"grub_config": {"owner": "root", "group": "root", "mode": "0644"}}})
 
 test_cron_allow_mode_600_ok if not has("UNMAPPED-RHEL10-5.2: cron access must be restricted", {"ansible_facts": {"file_permissions": {"/etc/cron.allow": {"owner": "root", "group": "root", "mode": "0600"}}}})
+
+# #300 type traps: a non-number must not pass shell_timeout_configured.
+test_shell_timeout_configured_number_type_traps if {
+	data.cis.rhel_10.shell_timeout_configured with input as {"ansible_facts": {"shell_timeout": 600}}
+	not data.cis.rhel_10.shell_timeout_configured with input as {"ansible_facts": {"shell_timeout": "1"}}
+	not data.cis.rhel_10.shell_timeout_configured with input as {"ansible_facts": {"shell_timeout": null}}
+	not data.cis.rhel_10.shell_timeout_configured with input as {"ansible_facts": {"shell_timeout": "not-a-number"}}
+}

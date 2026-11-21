@@ -356,6 +356,7 @@ p_5_2_6 if {
 
 p_5_2_6 if {
 	count(sudo_timeouts) == 0
+	is_number(input.sudo.default_timestamp_timeout)
 	input.sudo.default_timestamp_timeout >= 0
 	input.sudo.default_timestamp_timeout <= 15
 }

@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [database, oracle]
 #   coverage:
-#     checks: 20
+#     checks: 22
 #     cited: 8
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_oracle.user_account_management
 
 # CIS Oracle Database 19c Benchmark - Section 3
@@ -219,6 +219,7 @@ privilege_violations contains violation if {
 account_lockout_violations contains violation if {
 	some account in input.locked_accounts
 	account.lock_reason == "FAILED_LOGIN_ATTEMPTS"
+	is_number(account.locked_days)
 	account.locked_days > 30
 	violation := sprintf("CIS 3.4: Account '%s' has been locked for %d days (should be reviewed/dropped)", [
 		account.account_name,
@@ -227,13 +228,28 @@ account_lockout_violations contains violation if {
 }
 
 account_lockout_violations contains violation if {
+	some account in input.locked_accounts
+	account.lock_reason == "FAILED_LOGIN_ATTEMPTS"
+	not is_number(object.get(account, "locked_days", 0))
+	violation := sprintf("CIS 3.4: evidence missing — locked_days for account '%s' is not a number", [account.account_name])
+}
+
+account_lockout_violations contains violation if {
 	some account in input.inactive_accounts
+	is_number(account.last_login_days)
 	account.last_login_days > 90
 	account.status == "OPEN"
 	violation := sprintf("CIS 3.4: Account '%s' has not logged in for %d days (should be locked)", [
 		account.account_name,
 		account.last_login_days,
 	])
+}
+
+account_lockout_violations contains violation if {
+	some account in input.inactive_accounts
+	account.status == "OPEN"
+	not is_number(object.get(account, "last_login_days", 0))
+	violation := sprintf("CIS 3.4: evidence missing — last_login_days for account '%s' is not a number", [account.account_name])
 }
 
 # =============================================================================

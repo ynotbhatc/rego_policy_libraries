@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 19
+#     checks: 20
 #     cited: 13
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.logging
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 4.2: Logging Configuration
@@ -113,9 +113,15 @@ rsyslog_violations contains msg if {
 }
 
 rsyslog_violations contains msg if {
+	is_number(input.rsyslog.logging_rules_count)
 	input.rsyslog.logging_rules_count > 0
 	input.rsyslog.logging_rules_count < 4
 	msg := sprintf("CIS 4.2.1.5: Insufficient rsyslog logging rules (%d rules, expected at least 4)", [input.rsyslog.logging_rules_count])
+}
+
+rsyslog_violations contains msg if {
+	not is_number(object.get(input, ["rsyslog", "logging_rules_count"], 0))
+	msg := "CIS 4.2.1.5: evidence missing — rsyslog.logging_rules_count is not a number"
 }
 
 # CIS 4.2.1.6: Remote logging (conditional)

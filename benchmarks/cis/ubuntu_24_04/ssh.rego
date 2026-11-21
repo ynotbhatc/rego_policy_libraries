@@ -232,6 +232,7 @@ openssh_at_least_9_9 if openssh_version[0] > 9
 
 openssh_at_least_9_9 if {
 	openssh_version[0] == 9
+	is_number(openssh_version[1])
 	openssh_version[1] >= 9
 }
 
@@ -749,6 +750,7 @@ default e_5_1_23 := false
 e_5_1_23 if {
 	ssh_collected
 	sshd_first("kexalgorithms")
+	is_number(openssh_version[0])
 	openssh_version[0] >= 0
 }
 

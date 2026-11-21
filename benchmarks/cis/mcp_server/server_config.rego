@@ -234,7 +234,14 @@ fail contains ["5.2.1", "configured minimum listChanged interval not reported"] 
 
 fail contains ["5.2.1", "listChanged notification record not reported"] if not is_array(_get(_lc, "notifications"))
 
+fail contains ["5.2.1", "evidence missing — configured minimum listChanged interval is not a number"] if {
+	v := _get(_lc, "min_interval_seconds")
+	v != null
+	not is_number(v)
+}
+
 fail contains ["5.2.1", sprintf("%v notifications emitted %v s apart (minimum %v s)", [t, gap, _lc.min_interval_seconds])] if {
+	is_number(_lc.min_interval_seconds)
 	_lc.min_interval_seconds > 0
 	some t in {n.type | some n in _lc.notifications}
 	ts := sort([n.ts | some n in _lc.notifications; n.type == t])

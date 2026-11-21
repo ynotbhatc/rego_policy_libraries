@@ -17,14 +17,14 @@
 #   source: cis
 #   domains: [saas, m365]
 #   coverage:
-#     checks: 12
+#     checks: 13
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_m365.fabric
 
 import rego.v1
@@ -62,8 +62,14 @@ violation_5_3_1 contains msg if {
 
 # Coverage gap evidence
 violation_coverage contains msg if {
+	is_number(input.controls_evaluable)
 	input.controls_evaluable < 3
 	msg := sprintf("CIS Section 5: Graph surface evaluated %d Fabric controls; the rest require the Fabric Admin REST API — supplement this evaluation with the operator-side Fabric audit", [input.controls_evaluable])
+}
+
+violation_coverage contains msg if {
+	not is_number(object.get(input, ["controls_evaluable"], 0))
+	msg := "CIS Section 5: evidence missing — controls_evaluable is not a number"
 }
 
 violations contains v if some v in violation_5_1_1

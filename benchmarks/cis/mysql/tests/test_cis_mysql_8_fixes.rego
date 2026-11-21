@@ -61,3 +61,11 @@ test_replication_slave_requires_config if {
 	not data.cis.mysql_8.master_ssl_ca_set with input as {"mysql": {"replication": {"is_slave": true}, "config": {"master_ssl_ca": ""}}}
 	data.cis.mysql_8.master_ssl_ca_set with input as {"mysql": {"replication": {"is_slave": true}, "config": {"master_ssl_ca": "/ca.pem"}}}
 }
+
+# #300 type traps: a non-number must not pass passwords_not_in_history.
+test_passwords_not_in_history_number_type_traps if {
+	data.cis.mysql_8.passwords_not_in_history with input as {"mysql": {"config": {"password_history": 5}}}
+	not data.cis.mysql_8.passwords_not_in_history with input as {"mysql": {"config": {"password_history": "1"}}}
+	not data.cis.mysql_8.passwords_not_in_history with input as {"mysql": {"config": {"password_history": null}}}
+	not data.cis.mysql_8.passwords_not_in_history with input as {"mysql": {"config": {"password_history": "not-a-number"}}}
+}

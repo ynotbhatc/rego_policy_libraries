@@ -31,3 +31,11 @@ test_report_populated_when_control_fails if {
 	r.overall_compliant == false
 	count(r) == 15
 }
+
+# #300 type traps: a non-number must not pass password_policy_min_length.
+test_password_policy_min_length_number_type_traps if {
+	data.cis.aws.iam.password_policy_min_length with input as {"iam_password_policy": {"minimum_password_length": 14}}
+	not data.cis.aws.iam.password_policy_min_length with input as {"iam_password_policy": {"minimum_password_length": "1"}}
+	not data.cis.aws.iam.password_policy_min_length with input as {"iam_password_policy": {"minimum_password_length": null}}
+	not data.cis.aws.iam.password_policy_min_length with input as {"iam_password_policy": {"minimum_password_length": "not-a-number"}}
+}

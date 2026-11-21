@@ -1927,6 +1927,7 @@ blob_account(sa) if not p_ieq(sa, "kind", "FileStorage")
 blob_soft_delete_ok(sa) if {
 	pol := p(sa.blob_service_properties, "deleteRetentionPolicy")
 	pol.enabled == true
+	is_number(pol.days)
 	pol.days >= 7
 }
 

@@ -117,11 +117,13 @@ _admin_count := input.admin_center.global_admin_count if {
 }
 
 violation contains msg if {
+	is_number(_admin_count)
 	_admin_count < 2
 	msg := sprintf("CIS 1.1.3: only %d global admin(s) designated; fewer than two risks lockout with no second administrator", [_admin_count])
 }
 
 violation contains msg if {
+	is_number(_admin_count)
 	_admin_count > 4
 	msg := sprintf("CIS 1.1.3: %d global admins designated; more than four widens standing privilege beyond what the benchmark permits", [_admin_count])
 }

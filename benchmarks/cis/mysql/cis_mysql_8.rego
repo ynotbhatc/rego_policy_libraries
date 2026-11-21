@@ -251,32 +251,39 @@ password_complexity_enabled if {
 }
 
 password_reuse_limited if {
+	is_number(input.mysql.config.password_history)
 	input.mysql.config.password_history >= 5
 }
 
 password_expiration_90_days if {
+	is_number(input.mysql.config.password_expiration)
 	input.mysql.config.password_expiration <= 90
 	input.mysql.config.password_expiration > 0
 }
 
 default_password_lifetime_90 if {
+	is_number(input.mysql.config.default_password_lifetime)
 	input.mysql.config.default_password_lifetime <= 90
 	input.mysql.config.default_password_lifetime > 0
 }
 
 password_length_configured if {
+	is_number(input.mysql.config.validate_password_length)
 	input.mysql.config.validate_password_length >= 8
 }
 
 mixed_case_count_configured if {
+	is_number(input.mysql.config.validate_password_mixed_case_count)
 	input.mysql.config.validate_password_mixed_case_count >= 1
 }
 
 number_count_configured if {
+	is_number(input.mysql.config.validate_password_number_count)
 	input.mysql.config.validate_password_number_count >= 1
 }
 
 special_char_count_configured if {
+	is_number(input.mysql.config.validate_password_special_char_count)
 	input.mysql.config.validate_password_special_char_count >= 1
 }
 
@@ -492,10 +499,12 @@ log_raw_disabled if {
 }
 
 password_lifetime_90 if {
+	is_number(input.mysql.config.password_lifetime)
 	input.mysql.config.password_lifetime <= 90
 }
 
 password_reuse_interval_365 if {
+	is_number(input.mysql.config.password_reuse_interval)
 	input.mysql.config.password_reuse_interval >= 365
 }
 
@@ -517,6 +526,7 @@ audit_log_policy_all if {
 
 audit_log_rotate_configured if {
 	rotate_size := input.mysql.config.audit_log_rotate_on_size
+	is_number(rotate_size)
 	rotate_size > 0
 	rotate_size <= 1073741824 # 1GB
 }
@@ -743,6 +753,7 @@ log_files_non_system_partition if {
 }
 
 log_error_verbosity_adequate if {
+	is_number(input.mysql.config.log_error_verbosity)
 	input.mysql.config.log_error_verbosity >= 2
 }
 
@@ -780,6 +791,7 @@ audit_log_include_accounts_configured if {
 logs_rotated if {
 	log_rotation := input.mysql.log_rotation
 	log_rotation.enabled == true
+	is_number(log_rotation.max_size)
 	log_rotation.max_size > 0
 }
 
@@ -812,6 +824,7 @@ slow_query_log_file_set if {
 }
 
 long_query_time_10 if {
+	is_number(input.mysql.config.long_query_time)
 	input.mysql.config.long_query_time <= 10
 }
 
@@ -836,11 +849,13 @@ sync_binlog_1 if {
 }
 
 expire_logs_days_30 if {
+	is_number(input.mysql.config.expire_logs_days)
 	input.mysql.config.expire_logs_days <= 30
 	input.mysql.config.expire_logs_days > 0
 }
 
 max_binlog_size_set if {
+	is_number(input.mysql.config.max_binlog_size)
 	input.mysql.config.max_binlog_size > 0
 }
 
@@ -881,9 +896,13 @@ password_validation_plugin_active if {
 
 password_complexity_configured if {
 	input.mysql.config.validate_password_policy in ["MEDIUM", "STRONG"]
+	is_number(input.mysql.config.validate_password_length)
 	input.mysql.config.validate_password_length >= 8
+	is_number(input.mysql.config.validate_password_mixed_case_count)
 	input.mysql.config.validate_password_mixed_case_count >= 1
+	is_number(input.mysql.config.validate_password_number_count)
 	input.mysql.config.validate_password_number_count >= 1
+	is_number(input.mysql.config.validate_password_special_char_count)
 	input.mysql.config.validate_password_special_char_count >= 1
 }
 
@@ -893,17 +912,21 @@ password_policy_enforced if {
 }
 
 password_reuse_limited_auth if {
+	is_number(input.mysql.config.password_history)
 	input.mysql.config.password_history >= 5
+	is_number(input.mysql.config.password_reuse_interval)
 	input.mysql.config.password_reuse_interval >= 365
 }
 
 password_expiration_enforced if {
+	is_number(input.mysql.config.default_password_lifetime)
 	input.mysql.config.default_password_lifetime <= 90
 	input.mysql.config.default_password_lifetime > 0
 }
 
 passwords_not_in_history if {
 	history_length := input.mysql.config.password_history
+	is_number(history_length)
 	history_length >= 5
 }
 
@@ -938,7 +961,9 @@ password_lifetime_set if {
 }
 
 account_locking_configured if {
+	is_number(input.mysql.config.failed_login_attempts)
 	input.mysql.config.failed_login_attempts <= 5
+	is_number(input.mysql.config.password_lock_time)
 	input.mysql.config.password_lock_time >= 3600
 }
 
@@ -1021,11 +1046,13 @@ ssl_type_configured if {
 certificates_valid if {
 	ssl_config := input.mysql.ssl
 	ssl_config.certificate_valid == true
+	is_number(ssl_config.certificate_expires_after)
 	ssl_config.certificate_expires_after > 86400000000000 # 24 hours in nanoseconds
 }
 
 ssl_strong_crypto if {
 	ssl_config := input.mysql.ssl
+	is_number(ssl_config.key_size)
 	ssl_config.key_size >= 2048
 	ssl_config.signature_algorithm in ["SHA256", "SHA384", "SHA512"]
 }
@@ -1052,18 +1079,25 @@ ssl_cipher_secure if {
 }
 
 connection_limits_set if {
+	is_number(input.mysql.config.max_connections)
 	input.mysql.config.max_connections > 0
+	is_number(input.mysql.config.max_user_connections)
 	input.mysql.config.max_user_connections > 0
 }
 
 connect_timeout_10 if {
+	is_number(input.mysql.config.connect_timeout)
 	input.mysql.config.connect_timeout <= 10
 }
 
 timeout_values_set if {
+	is_number(input.mysql.config.interactive_timeout)
 	input.mysql.config.interactive_timeout > 0
+	is_number(input.mysql.config.wait_timeout)
 	input.mysql.config.wait_timeout > 0
+	is_number(input.mysql.config.interactive_timeout)
 	input.mysql.config.interactive_timeout <= 28800 # 8 hours
+	is_number(input.mysql.config.wait_timeout)
 	input.mysql.config.wait_timeout <= 28800 # 8 hours
 }
 

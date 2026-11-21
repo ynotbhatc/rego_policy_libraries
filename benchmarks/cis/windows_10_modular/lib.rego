@@ -74,6 +74,7 @@ _tier_selected(tier) if tier == "L1"
 
 _tier_selected(tier) if {
 	tier == "L2"
+	is_number(level)
 	level >= 2
 }
 

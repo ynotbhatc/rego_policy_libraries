@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 12
+#     checks: 13
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_11.sudo
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Section 5.3: Configure Sudo
@@ -83,13 +83,20 @@ violations contains msg if {
 
 # CIS 5.3.6: sudo authentication timeout must match the approved configuration
 violations contains msg if {
+	is_number(input.sudo.timestamp_timeout)
 	input.sudo.timestamp_timeout > 15
 	msg := sprintf("CIS 5.3.6: sudo timestamp_timeout is %d minutes, should be 15 or less", [input.sudo.timestamp_timeout])
 }
 
 violations contains msg if {
+	is_number(input.sudo.timestamp_timeout)
 	input.sudo.timestamp_timeout < 0
 	msg := "CIS 5.3.6: sudo timestamp_timeout is negative (0 is recommended for high security)"
+}
+
+violations contains msg if {
+	not is_number(object.get(input, ["sudo", "timestamp_timeout"], 0))
+	msg := "CIS 5.3.6: evidence missing — sudo.timestamp_timeout is not a number"
 }
 
 # CIS 5.3.7: access to the su command must be restricted

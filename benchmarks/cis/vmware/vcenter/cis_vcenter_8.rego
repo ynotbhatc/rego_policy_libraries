@@ -205,6 +205,7 @@ vcenter_logging_configured if {
 default vcenter_session_timeout_configured := false
 
 vcenter_session_timeout_configured if {
+	is_number(input.vcenter.session.timeout_minutes)
 	input.vcenter.session.timeout_minutes <= 30
 	input.vcenter.session.timeout_minutes > 0
 }
@@ -213,8 +214,10 @@ default vcenter_password_policy_enforced := false
 
 vcenter_password_policy_enforced if {
 	policy := input.vcenter.password_policy
+	is_number(policy.min_length)
 	policy.min_length >= 8
 	policy.complexity_required == true
+	is_number(policy.max_age_days)
 	policy.max_age_days <= 90
 }
 
@@ -360,9 +363,12 @@ default sso_password_policy_secure := false
 
 sso_password_policy_secure if {
 	policy := input.vcenter.sso.password_policy
+	is_number(policy.min_length)
 	policy.min_length >= 8
 	policy.complexity_required == true
+	is_number(policy.max_age_days)
 	policy.max_age_days <= 90
+	is_number(policy.lockout_threshold)
 	policy.lockout_threshold <= 5
 }
 
@@ -370,7 +376,9 @@ default sso_lockout_policy_configured := false
 
 sso_lockout_policy_configured if {
 	lockout := input.vcenter.sso.lockout_policy
+	is_number(lockout.failed_attempts_threshold)
 	lockout.failed_attempts_threshold <= 5
+	is_number(lockout.lockout_duration_minutes)
 	lockout.lockout_duration_minutes >= 15
 }
 
@@ -386,6 +394,7 @@ default sso_token_policy_configured := false
 
 sso_token_policy_configured if {
 	token := input.vcenter.sso.token_policy
+	is_number(token.max_lifetime_hours)
 	token.max_lifetime_hours <= 24
 	token.renewal_count_limited == true
 }
@@ -458,6 +467,7 @@ default vsphere_client_session_timeout_configured := false
 
 vsphere_client_session_timeout_configured if {
 	client := input.vcenter.vsphere_client
+	is_number(client.session_timeout_minutes)
 	client.session_timeout_minutes <= 30
 	client.session_timeout_minutes > 0
 }

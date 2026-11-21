@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, debian]
 #   coverage:
-#     checks: 30
+#     checks: 31
 #     cited: 22
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_debian_11.initial_setup
 
 # DERIVED from CIS Ubuntu Linux 20.04 LTS Benchmark v3.0.0 — applied to Debian 11 (provenance: see README) - Sections 1.2, 1.7, 1.8: Initial System Setup
@@ -218,8 +218,17 @@ violations contains msg if {
 	input.initial_setup.gdm_installed
 	input.initial_setup.gui_required
 	input.initial_setup.gdm_screen_lock_enabled
+	is_number(input.initial_setup.gdm_idle_delay)
 	input.initial_setup.gdm_idle_delay > 900
 	msg := sprintf("CIS 1.8.4: GDM idle delay is %d seconds, should be 900 or less", [input.initial_setup.gdm_idle_delay])
+}
+
+violations contains msg if {
+	input.initial_setup.gdm_installed
+	input.initial_setup.gui_required
+	input.initial_setup.gdm_screen_lock_enabled
+	not is_number(object.get(input, ["initial_setup", "gdm_idle_delay"], 0))
+	msg := "CIS 1.8.4: evidence missing — initial_setup.gdm_idle_delay is not a number"
 }
 
 report := {

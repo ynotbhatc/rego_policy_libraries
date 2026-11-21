@@ -933,6 +933,7 @@ r_5_1 if {
 }
 
 r_5_1 if {
+	is_number(input.sql.num_error_logs)
 	input.sql.num_error_logs >= 12
 }
 

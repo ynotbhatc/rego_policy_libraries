@@ -29,3 +29,13 @@ test_all_facts_present_has_no_evidence_missing if {
 	}
 	data.cis_m365.exchange.compliant with input as inp
 }
+
+# #300 type traps: a non-number audit_disabled is evidence missing; real numbers keep their behaviour.
+test_audit_disabled_number_type_traps if {
+	"CIS 4.1.1: evidence missing — mailbox_audit_summary.audit_disabled is not a number" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": "1"}}
+	"CIS 4.1.1: evidence missing — mailbox_audit_summary.audit_disabled is not a number" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": null}}
+	"CIS 4.1.1: evidence missing — mailbox_audit_summary.audit_disabled is not a number" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": "not-a-number"}}
+	not "CIS 4.1.1: evidence missing — mailbox_audit_summary.audit_disabled is not a number" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": 0}}
+	not "CIS 4.1.1: 2 of 10 sampled mailboxes have audit disabled; enable tenant-wide mailbox audit" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": 0}}
+	"CIS 4.1.1: 2 of 10 sampled mailboxes have audit disabled; enable tenant-wide mailbox audit" in data.cis_m365.exchange.violation_4_1_1 with input as {"mailbox_audit_summary": {"evaluable": true, "sampled": 10, "audit_disabled": 2}}
+}

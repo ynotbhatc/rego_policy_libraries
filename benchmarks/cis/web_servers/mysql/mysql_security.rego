@@ -317,6 +317,7 @@ log_raw_disabled if {
 default log_error_verbosity_appropriate := false
 
 log_error_verbosity_appropriate if {
+	is_number(input.mysql_config.log_error_verbosity)
 	input.mysql_config.log_error_verbosity >= 2
 }
 
@@ -335,6 +336,7 @@ log_warnings_appropriate if {
 	minor := to_number(version_parts[1])
 	major == 5
 	minor == 7
+	is_number(input.mysql_config.log_warnings)
 	input.mysql_config.log_warnings >= 2
 }
 
@@ -356,6 +358,7 @@ secure_auth_enabled if {
 default password_length_configured := false
 
 password_length_configured if {
+	is_number(input.mysql_config.validate_password_length)
 	input.mysql_config.validate_password_length >= 14
 }
 
@@ -366,8 +369,11 @@ password_complexity_configured if {
 	policy := input.mysql_config.validate_password_policy
 	some valid_policy in ["MEDIUM", "STRONG"]
 	policy == valid_policy
+	is_number(input.mysql_config.validate_password_mixed_case_count)
 	input.mysql_config.validate_password_mixed_case_count >= 1
+	is_number(input.mysql_config.validate_password_number_count)
 	input.mysql_config.validate_password_number_count >= 1
+	is_number(input.mysql_config.validate_password_special_char_count)
 	input.mysql_config.validate_password_special_char_count >= 1
 }
 

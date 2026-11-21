@@ -6,14 +6,14 @@
 #   source: cis
 #   domains: [linux, ubuntu]
 #   coverage:
-#     checks: 24
+#     checks: 26
 #     cited: 17
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package cis_ubuntu_20_04.user_group
 
 # CIS Ubuntu 20.04 LTS Benchmark v3.0.0 - Section 6.2: User and Group Settings
@@ -94,15 +94,29 @@ violations contains msg if {
 # CIS 6.2.6: the local account database must not contain duplicate user names
 violations contains msg if {
 	some username, cnt in input.user_group.duplicate_usernames
+	is_number(cnt)
 	cnt > 1
 	msg := sprintf("CIS 6.2.6: Duplicate username %s found %d times", [username, cnt])
+}
+
+violations contains msg if {
+	some username, cnt in input.user_group.duplicate_usernames
+	not is_number(cnt)
+	msg := sprintf("CIS 6.2.6: evidence missing — duplicate_usernames count for %s is not a number", [username])
 }
 
 # CIS 6.2.7: the local account database must not contain duplicate group names
 violations contains msg if {
 	some groupname, cnt in input.user_group.duplicate_groupnames
+	is_number(cnt)
 	cnt > 1
 	msg := sprintf("CIS 6.2.7: Duplicate group name %s found %d times", [groupname, cnt])
+}
+
+violations contains msg if {
+	some groupname, cnt in input.user_group.duplicate_groupnames
+	not is_number(cnt)
+	msg := sprintf("CIS 6.2.7: evidence missing — duplicate_groupnames count for %s is not a number", [groupname])
 }
 
 # CIS 6.2.8: checked condition — root PATH Integrity
