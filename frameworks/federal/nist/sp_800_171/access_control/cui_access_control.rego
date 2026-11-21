@@ -100,8 +100,10 @@ privileged_function_prevention if {
 default logon_attempt_limits := false
 
 logon_attempt_limits if {
+	is_number(input.cui_access.logon_limits.maximum_attempts)
 	input.cui_access.logon_limits.maximum_attempts <= 3
 	input.cui_access.logon_limits.lockout_implemented == true
+	is_number(input.cui_access.logon_limits.lockout_duration)
 	input.cui_access.logon_limits.lockout_duration >= 15
 }
 
@@ -118,6 +120,7 @@ privacy_security_notices if {
 default session_lock_implementation := false
 
 session_lock_implementation if {
+	is_number(input.cui_access.session_lock.inactivity_timeout)
 	input.cui_access.session_lock.inactivity_timeout <= 900 # 15 minutes
 	input.cui_access.session_lock.pattern_hiding == true
 	input.cui_access.session_lock.authentication_required == true

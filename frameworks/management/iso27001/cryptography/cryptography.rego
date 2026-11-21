@@ -247,6 +247,7 @@ data_in_transit_encrypted if {
 # Secure network protocols
 network_protocols_secure if {
 	# SSH configuration
+	is_number(input.network.ssh.protocol_version)
 	input.network.ssh.protocol_version >= 2
 	input.network.ssh.strong_ciphers == true
 	input.network.ssh.key_based_auth == true
@@ -385,6 +386,7 @@ hsm_usage if {
 	input.hsm.key_storage == true
 	input.hsm.cryptographic_operations == true
 	input.hsm.tamper_protection == true
+	is_number(input.hsm.fips_140_2_level)
 	input.hsm.fips_140_2_level >= 2
 }
 

@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 47
-#     cited: 32
+#     checks: 51
+#     cited: 34
 #     density: sized
 #     basis: size
 #     tested: true
@@ -19,7 +19,7 @@ package nist.sp800_53.program_management
 import rego.v1
 
 # NIST SP 800-53 Rev 5 — Program Management (PM) Family
-# Base controls only (PM-1 to PM-32). Program management is mostly organizational: where a control has no
+# Base controls PM-1 to PM-32 and the Privacy-baseline enhancements PM-5(1) and PM-20(1). Program management is mostly organizational: where a control has no
 # machine-checkable evidence it passes only on an attestation object at input.pm_controls.<name>.attestation.
 # Other facts live under input.pm_controls and fail closed: a fact that is absent or of the wrong type is
 # reported as evidence missing, never as a pass. Booleans pass only on true; numbers must be non-negative
@@ -40,7 +40,7 @@ _pm := v if {
 #   bools:   [[path, text when false]]           pass only on true; a non-boolean is evidence missing
 #   strings: [path]                              a non-empty string; anything else is evidence missing
 #   bounds:  [[observed path, odp path, fmt]]    both non-negative numbers; observed > odp is unmet
-#   zeros:   [[path, fmt]]                       a non-negative number; above zero is unmet
+#   zeros:   [[path, fmt]]                       a non-negative whole number; above zero is unmet
 _get(p) := object.get(_pm, p, null)
 
 _path(p) := concat(".", array.concat([_prefix], p))
@@ -48,6 +48,12 @@ _path(p) := concat(".", array.concat([_prefix], p))
 _num(x) if {
 	is_number(x)
 	x >= 0
+}
+
+# A count (zeros): a non-negative whole number.
+_count(x) if {
+	_num(x)
+	floor(x) == x
 }
 
 _text(x) if {
@@ -59,7 +65,7 @@ _missing(spec) := ((b | s) | n) | z if {
 	b := {_path(e[0]) | some e in object.get(spec, "bools", []); not is_boolean(_get(e[0]))}
 	s := {_path(p) | some p in object.get(spec, "strings", []); not _text(_get(p))}
 	n := {_path(p) | some e in object.get(spec, "bounds", []); some p in [e[0], e[1]]; not _num(_get(p))}
-	z := {_path(e[0]) | some e in object.get(spec, "zeros", []); not _num(_get(e[0]))}
+	z := {_path(e[0]) | some e in object.get(spec, "zeros", []); not _count(_get(e[0]))}
 }
 
 _gaps(spec) := (b | n) | z if {
@@ -72,7 +78,7 @@ _gaps(spec) := (b | n) | z if {
 		_num(l)
 		o > l
 	}
-	z := {sprintf(e[1], [v]) | some e in object.get(spec, "zeros", []); v := _get(e[0]); _num(v); v > 0}
+	z := {sprintf(e[1], [v]) | some e in object.get(spec, "zeros", []); v := _get(e[0]); is_number(v); _count(v); v > 0}
 }
 
 _assess(spec) := {"missing": _missing(spec), "gaps": _gaps(spec)}
@@ -482,8 +488,48 @@ violation contains msg if {
 
 compliant if count(violation) == 0
 
+# --- PM-5(1) ---
+# Inventory of Personally Identifiable Information: an inventory of every system, application and project that
+# processes PII is established, maintained and updated at the organization-defined frequency.
+# Facts: input.pm_controls.pii_inventory.maintained (boolean); .unlisted_pii_processing (count of systems,
+# applications or projects found processing PII, e.g. by data discovery, that the inventory does not list);
+# .days_since_last / .odp.frequency_days (age of the last update).
+_pm5_1 := _assess({"bools": [[["pii_inventory", "maintained"], "no inventory of the systems, applications and projects that process PII is maintained"]], "bounds": [_freq(["pii_inventory"], "PII inventory last updated")], "zeros": [[["pii_inventory", "unlisted_pii_processing"], "%v systems, applications or projects process PII but are not in the PII inventory"]]})
+
+violation contains msg if {
+	count(_pm5_1.missing) > 0
+	msg := sprintf("NIST PM-5(1): evidence missing — %s not collected%s", [concat(", ", sort(_pm5_1.missing)), _also(_pm5_1.gaps)])
+}
+
+violation contains msg if {
+	count(_pm5_1.missing) == 0
+	count(_pm5_1.gaps) > 0
+	msg := sprintf("NIST PM-5(1): PII inventory requirements not met: %s", [concat("; ", sort(_pm5_1.gaps))])
+}
+
+# --- PM-20(1) ---
+# Privacy Policies on Websites, Applications, and Digital Services: every external-facing website, mobile
+# application and digital service posts a privacy policy that is in plain language, gives the public what it needs
+# to decide whether and how to interact, and is updated on each substantive change with a date stamp.
+# Facts: input.pm_controls.public_privacy_policies.services_without_policy (count of external-facing services with
+# no posted policy, e.g. from a crawl of the public inventory); .policies_without_revision_date (count of posted
+# policies with no date of last change); .plain_language, .decision_information_provided,
+# .updated_on_substantive_change (booleans, from the privacy office's review of the policies).
+_pm20_1 := _assess({"bools": [[["public_privacy_policies", "plain_language"], "posted privacy policies are not written in plain language and organized to be easy to understand"], [["public_privacy_policies", "decision_information_provided"], "posted privacy policies do not give the public the information needed to decide whether and how to interact with the organization"], [["public_privacy_policies", "updated_on_substantive_change"], "posted privacy policies are not updated whenever the practices they describe change substantively"]], "zeros": [[["public_privacy_policies", "services_without_policy"], "%v external-facing websites, applications or digital services have no posted privacy policy"], [["public_privacy_policies", "policies_without_revision_date"], "%v posted privacy policies carry no date of their most recent change"]]})
+
+violation contains msg if {
+	count(_pm20_1.missing) > 0
+	msg := sprintf("NIST PM-20(1): evidence missing — %s not collected%s", [concat(", ", sort(_pm20_1.missing)), _also(_pm20_1.gaps)])
+}
+
+violation contains msg if {
+	count(_pm20_1.missing) == 0
+	count(_pm20_1.gaps) > 0
+	msg := sprintf("NIST PM-20(1): public privacy policy requirements not met: %s", [concat("; ", sort(_pm20_1.gaps))])
+}
+
 # The base control ids this family evaluates; each has exactly one finding when it fails.
-evaluated_controls := {"PM-1", "PM-2", "PM-3", "PM-4", "PM-5", "PM-6", "PM-7", "PM-8", "PM-9", "PM-10", "PM-11", "PM-12", "PM-13", "PM-14", "PM-15", "PM-16", "PM-17", "PM-18", "PM-19", "PM-20", "PM-21", "PM-22", "PM-23", "PM-24", "PM-25", "PM-26", "PM-27", "PM-28", "PM-29", "PM-30", "PM-31", "PM-32"}
+evaluated_controls := {"PM-1", "PM-2", "PM-3", "PM-4", "PM-5", "PM-6", "PM-7", "PM-8", "PM-9", "PM-10", "PM-11", "PM-12", "PM-13", "PM-14", "PM-15", "PM-16", "PM-17", "PM-18", "PM-19", "PM-20", "PM-21", "PM-22", "PM-23", "PM-24", "PM-25", "PM-26", "PM-27", "PM-28", "PM-29", "PM-30", "PM-31", "PM-32", "PM-5(1)", "PM-20(1)"}
 
 compliance_report := {
 	"family": "PM",

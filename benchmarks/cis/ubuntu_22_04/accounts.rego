@@ -614,14 +614,20 @@ e_5_4_3_3 if {
 	input.pam.default_umask != null
 }
 
+e_5_4_3_3 if {
+	input.pam.collected == true
+	type_name(input.pam.profile_d_raw) == "string"
+}
+
 default p_5_4_3_3 := false
 
 p_5_4_3_3 if {
+	count(umask_values(input.pam.profile_d_raw)) > 0
 	every u in umask_values(input.pam.profile_d_raw) { umask_ok(u) }
 	umask_ok(sprintf("%v", [input.pam.default_umask]))
 }
 
-violations contains "5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask not collected" if not e_5_4_3_3
+violations contains "5.4.3.3: evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected" if not e_5_4_3_3
 
 violations contains "5.4.3.3: not met — default user umask must be explicitly configured" if {
 	e_5_4_3_3

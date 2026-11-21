@@ -1,0 +1,300 @@
+{
+  "assessment_date": "2026-11-20",
+  "system": {
+    "name": "payroll.example.com",
+    "address": "192.0.2.20"
+  },
+  "ac_controls": {
+    "access_enforcement": {
+      "role_based_access_control": true
+    },
+    "account_management": {
+      "approval_process": true,
+      "atypical_usage": {
+        "detections_not_reported": 0,
+        "monitoring_enabled": true,
+        "odp": {
+          "atypical_usage": [
+            "off-hours logon"
+          ],
+          "report_to": [
+            "soc"
+          ]
+        }
+      },
+      "automated_audit": {
+        "creation": true,
+        "disabling": true,
+        "enabling": true,
+        "modification": true,
+        "removal": true
+      },
+      "automated_tools": true,
+      "disable_accounts": {
+        "inactivity_threshold_days": 90,
+        "max_days_to_disable": 1,
+        "odp": {
+          "disable_within_days": 1,
+          "inactivity_days": 35
+        }
+      },
+      "high_risk_individuals": {
+        "max_hours_to_disable": 0,
+        "odp": {
+          "disable_within_hours": 1,
+          "significant_risks": [
+            "termination for cause"
+          ]
+        }
+      },
+      "inactivity_logout": {
+        "enforced": true,
+        "logout_after_minutes": 15,
+        "odp": {
+          "logout_after_minutes": 30
+        }
+      },
+      "privileged_user_accounts": {
+        "administered_per_scheme": true,
+        "assignments_monitored": true,
+        "changes_monitored": true,
+        "inappropriate_assignments_not_revoked": 0,
+        "odp": {
+          "scheme": "role-based"
+        }
+      },
+      "regular_reviews": true,
+      "shared_accounts": {
+        "accounts_not_meeting_conditions": 0,
+        "odp": {
+          "conditions": [
+            "break-glass only, checked out from the vault"
+          ]
+        }
+      },
+      "temporary_accounts": {
+        "automated_expiry_enforced": true,
+        "max_lifetime_hours": 72,
+        "odp": {
+          "max_lifetime_hours": 72
+        }
+      },
+      "timely_removal": true,
+      "usage_conditions": {
+        "accounts_without_enforced_conditions": 0,
+        "odp": {
+          "accounts": [
+            "batch-*"
+          ],
+          "conditions": [
+            "business hours"
+          ]
+        }
+      }
+    },
+    "data_mining": {
+      "detection_techniques": true,
+      "response_procedures": true,
+      "warning_notifications": true
+    },
+    "decisions": {
+      "consistent_enforcement": true,
+      "documented_criteria": true,
+      "security_attributes_used": true
+    },
+    "external_systems": {
+      "authorized_only": true,
+      "limits_on_authorized_use": {
+        "systems_without_verification_or_agreement": 0
+      },
+      "portable_storage": {
+        "odp": {
+          "restrictions": [
+            "encrypted devices only"
+          ]
+        },
+        "restrictions_enforced": true
+      },
+      "security_requirements": true,
+      "user_agreements": true
+    },
+    "information_flow": {
+      "automated_enforcement": true,
+      "encrypted_information": {
+        "action_enforced": true,
+        "odp": {
+          "action": "decrypt",
+          "mechanisms": [
+            "egress proxy"
+          ]
+        },
+        "uninspected_encrypted_flows": 0
+      },
+      "flow_control_policies": true,
+      "security_labels": true,
+      "separation": {
+        "odp": {
+          "mechanisms": [
+            "vlans"
+          ],
+          "required_separations": [
+            "management from user traffic"
+          ]
+        },
+        "separations_not_enforced": 0
+      }
+    },
+    "information_sharing": {
+      "automated_guidance": true,
+      "user_discretion_limited": true
+    },
+    "least_privilege": {
+      "code_execution": {
+        "odp": {
+          "software": [
+            "office suite",
+            "browsers"
+          ]
+        },
+        "software_above_user_privilege": 0
+      },
+      "minimum_access_granted": true,
+      "network_privileged_commands": {
+        "accounts_without_documented_need": 0,
+        "odp": {
+          "commands": [
+            "sudo"
+          ],
+          "needs": [
+            "on-call recovery"
+          ]
+        },
+        "rationale_in_security_plan": true
+      },
+      "non_privileged_access_default": true,
+      "non_privileged_execution_prevented": true,
+      "privilege_review": {
+        "days_since_last": 210,
+        "odp": {
+          "frequency_days": 90
+        },
+        "unremediated_findings": 0
+      },
+      "privileged_accounts": {
+        "accounts_outside_authorized_roles": 0,
+        "odp": {
+          "authorized_roles": [
+            "sysadmin"
+          ]
+        }
+      },
+      "privileged_functions_authorized": true,
+      "privileged_functions_logged": true
+    },
+    "logon_attempts": {
+      "lockout_configured": true,
+      "maximum_attempts": 5,
+      "odp": {
+        "max_attempts": 3
+      }
+    },
+    "logon_notification": {
+      "location_displayed": true,
+      "timestamp_displayed": true,
+      "unsuccessful_attempts_displayed": true
+    },
+    "mobile_devices": {
+      "configuration_requirements": true,
+      "connection_requirements": true,
+      "encryption": {
+        "devices_without_required_encryption": 0,
+        "odp": {
+          "method": "full-device"
+        }
+      },
+      "usage_restrictions": true
+    },
+    "permitted_actions": {
+      "organization_approved_functions": [],
+      "rationale_documented": true,
+      "unauthenticated_functions": []
+    },
+    "policy": {
+      "disseminated": true,
+      "documented": true,
+      "reviewed_updated": true
+    },
+    "procedures": {
+      "implementation_documented": true
+    },
+    "public_content": {
+      "authorized_personnel_only": true,
+      "removal_procedures": true,
+      "review_process": true
+    },
+    "reference_monitor": {
+      "always_invoked": true,
+      "small_verifiable": true,
+      "tamper_proof": true
+    },
+    "remote_access": {
+      "authorized_only": true,
+      "encrypted_connections": true,
+      "monitored_controlled": true,
+      "privileged_commands": {
+        "assessable_evidence_produced": true,
+        "odp": {
+          "needs": [
+            "break-glass recovery"
+          ]
+        },
+        "rationale_in_security_plan": true,
+        "restricted_to_defined_needs": true
+      },
+      "unmanaged_access_points": 1
+    },
+    "security_attributes": {
+      "attribute_association": true,
+      "attribute_binding": true,
+      "transmission_preservation": true
+    },
+    "separation_duties": {
+      "critical_functions_divided": true,
+      "documented_assignments": true
+    },
+    "session_control": {
+      "limits_configured": true,
+      "per_account_limits": true
+    },
+    "session_lock": {
+      "authentication_required": true,
+      "inactivity_timeout": 1800,
+      "odp": {
+        "inactivity_timeout": 900
+      },
+      "pattern_hiding": true
+    },
+    "session_termination": {
+      "automatic_termination": true,
+      "user_initiated": true
+    },
+    "use_notification": {
+      "acknowledgment_required": true,
+      "banner_displayed": true,
+      "monitoring_consent": true
+    },
+    "wireless_access": {
+      "authorized_only": true,
+      "components_with_unused_wireless_enabled": 0,
+      "encrypted_authentication": true,
+      "signal_containment": {
+        "access_points_detected_outside_boundary": 0,
+        "power_levels_calibrated": true
+      },
+      "user_configuration": {
+        "authorized_users_identified": true,
+        "unauthorized_users_able_to_configure": 0
+      }
+    }
+  }
+}

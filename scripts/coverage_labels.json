@@ -1,0 +1,617 @@
+{
+ "coverage_labels": {
+  "_comment": "One label per framework key (the package that holds <key>.main.compliance_report, dots for slashes). Read by scripts/coverage_report.py, which prints the label column in COVERAGE.md. 'validated' only where a run on real evidence is recorded; cite it in 'evidence'. A key missing here is reported as experimental.",
+  "definitions": {
+   "validated": "Run against real host or tenant evidence and the results checked; 'evidence' says where.",
+   "partial": "Rules implemented and unit-tested, but the evidence or collector is incomplete, or the module covers a subset of the benchmark; 'evidence' says what is missing.",
+   "experimental": "Generated or new; unit-tested at most, not yet run on real evidence. Treat results as unverified."
+  },
+  "frameworks": {
+   "aca_155_260": {
+    "label": "experimental"
+   },
+   "ai_governance": {
+    "label": "experimental"
+   },
+   "ami_device": {
+    "label": "experimental"
+   },
+   "ami_headend": {
+    "label": "experimental"
+   },
+   "ami_nist_ir7628": {
+    "label": "experimental"
+   },
+   "apra_cps234": {
+    "label": "experimental"
+   },
+   "as9100d": {
+    "label": "experimental"
+   },
+   "bnm_rmit": {
+    "label": "experimental"
+   },
+   "bsi_c5": {
+    "label": "experimental"
+   },
+   "c2m2": {
+    "label": "experimental"
+   },
+   "ccpa": {
+    "label": "experimental"
+   },
+   "cert_in": {
+    "label": "experimental"
+   },
+   "cert_rmm": {
+    "label": "experimental"
+   },
+   "cfr_part_11": {
+    "label": "experimental"
+   },
+   "cis.intune_defender_antivirus": {
+    "label": "experimental"
+   },
+   "cis.mobile.ios": {
+    "label": "experimental"
+   },
+   "cis.rhel_10": {
+    "label": "experimental"
+   },
+   "cis.sql_server_2022": {
+    "label": "experimental"
+   },
+   "cis.sql_server_2025": {
+    "label": "experimental"
+   },
+   "cis_aks": {
+    "label": "experimental"
+   },
+   "cis_aks_automatic": {
+    "label": "experimental"
+   },
+   "cis_amazon_linux_2023": {
+    "label": "partial",
+    "evidence": "Fed real host evidence 2026-11-19; collector gaps open (issue #332).",
+    "modules": "benchmarks/cis/amazon_linux_2023"
+   },
+   "cis_aws": {
+    "label": "experimental"
+   },
+   "cis_azure": {
+    "label": "experimental"
+   },
+   "cis_cisco_ios_xe_17": {
+    "label": "experimental"
+   },
+   "cis_controls_v8": {
+    "label": "experimental"
+   },
+   "cis_debian_11": {
+    "label": "experimental"
+   },
+   "cis_debian_12": {
+    "label": "experimental"
+   },
+   "cis_debian_13": {
+    "label": "experimental"
+   },
+   "cis_docker": {
+    "label": "experimental"
+   },
+   "cis_eks": {
+    "label": "experimental"
+   },
+   "cis_gcp": {
+    "label": "experimental"
+   },
+   "cis_gke": {
+    "label": "experimental"
+   },
+   "cis_kubernetes": {
+    "label": "experimental"
+   },
+   "cis_m365_v7": {
+    "label": "validated",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
+    "modules": "benchmarks/cis/saas/m365_v7"
+   },
+   "cis_mcp_server": {
+    "label": "experimental"
+   },
+   "cis_oci": {
+    "label": "experimental"
+   },
+   "cis_openshift": {
+    "label": "experimental"
+   },
+   "cis_opnsense": {
+    "label": "experimental"
+   },
+   "cis_palo_alto_panos": {
+    "label": "experimental"
+   },
+   "cis_pfsense": {
+    "label": "experimental"
+   },
+   "cis_postgresql": {
+    "label": "experimental"
+   },
+   "cis_postgresql_16": {
+    "label": "experimental"
+   },
+   "cis_postgresql_18": {
+    "label": "experimental"
+   },
+   "cis_rhel10": {
+    "label": "experimental"
+   },
+   "cis_rhel8": {
+    "label": "experimental"
+   },
+   "cis_rhel9": {
+    "label": "validated",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors (collector-driven fixes: CHANGELOG, CIS RHEL 9 'found while building the compliance collectors').",
+    "modules": "benchmarks/cis/rhel_9"
+   },
+   "cis_rocky_linux_8": {
+    "label": "experimental"
+   },
+   "cis_rocky_linux_9": {
+    "label": "experimental"
+   },
+   "cis_suse16": {
+    "label": "experimental"
+   },
+   "cis_ubuntu_2004": {
+    "label": "experimental"
+   },
+   "cis_ubuntu_20_04": {
+    "label": "experimental"
+   },
+   "cis_ubuntu_2204": {
+    "label": "partial",
+    "evidence": "Fed real host evidence 2026-11-19; collector gaps open (issue #332).",
+    "modules": "benchmarks/cis/ubuntu_22_04"
+   },
+   "cis_ubuntu_22_04": {
+    "label": "partial",
+    "evidence": "Same module tree as cis_ubuntu_2204. Fed real host evidence 2026-11-19; collector gaps open (issue #332).",
+    "modules": "benchmarks/cis/ubuntu_22_04"
+   },
+   "cis_ubuntu_2404": {
+    "label": "experimental"
+   },
+   "cis_ubuntu_24_04": {
+    "label": "experimental"
+   },
+   "cis_ubuntu_26_04": {
+    "label": "experimental"
+   },
+   "cis_vmware_esxi": {
+    "label": "experimental"
+   },
+   "cis_vmware_esxi_9": {
+    "label": "experimental"
+   },
+   "cis_vyos": {
+    "label": "experimental"
+   },
+   "cis_windows_10": {
+    "label": "experimental"
+   },
+   "cis_windows_11": {
+    "label": "experimental"
+   },
+   "cis_windows_2019": {
+    "label": "experimental"
+   },
+   "cis_windows_2022": {
+    "label": "validated",
+    "evidence": "Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
+    "modules": "benchmarks/cis/windows_server_2022_modular"
+   },
+   "cis_windows_server_2016": {
+    "label": "experimental"
+   },
+   "cis_windows_server_2019": {
+    "label": "experimental"
+   },
+   "cis_windows_server_2022": {
+    "label": "validated",
+    "evidence": "Same module tree as cis_windows_2022. Run against real evidence on a lab and customer estate in November 2026 with the AAC product collectors.",
+    "modules": "benchmarks/cis/windows_server_2022_modular"
+   },
+   "cis_windows_server_2025": {
+    "label": "experimental"
+   },
+   "cisa_cpg": {
+    "label": "experimental"
+   },
+   "cisa_ssdaf": {
+    "label": "experimental"
+   },
+   "cisa_tic3": {
+    "label": "experimental"
+   },
+   "cjis": {
+    "label": "experimental"
+   },
+   "cmmc": {
+    "label": "experimental"
+   },
+   "cms_mars_e": {
+    "label": "experimental"
+   },
+   "cobit": {
+    "label": "experimental"
+   },
+   "coppa": {
+    "label": "experimental"
+   },
+   "cra": {
+    "label": "experimental"
+   },
+   "crypto_miner_detection": {
+    "label": "experimental"
+   },
+   "csa_ccm": {
+    "label": "experimental"
+   },
+   "cyber_essentials": {
+    "label": "experimental"
+   },
+   "dcc": {
+    "label": "experimental"
+   },
+   "dfars_7012": {
+    "label": "experimental"
+   },
+   "digital_sovereignty": {
+    "label": "experimental"
+   },
+   "dora": {
+    "label": "experimental"
+   },
+   "dpdp": {
+    "label": "experimental"
+   },
+   "eo_14028": {
+    "label": "experimental"
+   },
+   "essential_eight": {
+    "label": "experimental"
+   },
+   "estate_continuity": {
+    "label": "experimental"
+   },
+   "eu_ai_act": {
+    "label": "experimental"
+   },
+   "far_cyber": {
+    "label": "experimental"
+   },
+   "fedramp": {
+    "label": "experimental"
+   },
+   "fedramp_20x": {
+    "label": "experimental"
+   },
+   "ferpa": {
+    "label": "experimental"
+   },
+   "fisma": {
+    "label": "experimental"
+   },
+   "ftc_red_flags": {
+    "label": "experimental"
+   },
+   "gdpr": {
+    "label": "experimental"
+   },
+   "glba": {
+    "label": "experimental"
+   },
+   "hipaa": {
+    "label": "experimental"
+   },
+   "hitrust": {
+    "label": "experimental"
+   },
+   "hkma_trm": {
+    "label": "experimental"
+   },
+   "iec_62443": {
+    "label": "experimental"
+   },
+   "irs_1075": {
+    "label": "experimental"
+   },
+   "iso27001": {
+    "label": "experimental"
+   },
+   "iso27701": {
+    "label": "experimental",
+    "evidence": "Not validated: written against ISO/IEC 27701:2019 without the standard's text at hand; the rebuild against the 2019 edition waits for its table of contents (issue #302). Never run on real evidence.",
+    "modules": "frameworks/privacy/iso27701"
+   },
+   "iso_42001": {
+    "label": "experimental"
+   },
+   "iso_42005": {
+    "label": "experimental"
+   },
+   "itar": {
+    "label": "experimental"
+   },
+   "k8s_pss": {
+    "label": "experimental"
+   },
+   "kubernetes.admission": {
+    "label": "experimental"
+   },
+   "maritime_33cfr101f": {
+    "label": "experimental"
+   },
+   "mas_trm": {
+    "label": "experimental"
+   },
+   "meti_csm": {
+    "label": "experimental"
+   },
+   "ncsc_caf": {
+    "label": "experimental"
+   },
+   "nerc_cip": {
+    "label": "experimental"
+   },
+   "nis2": {
+    "label": "experimental"
+   },
+   "nispom": {
+    "label": "experimental"
+   },
+   "nist.ai_600_1": {
+    "label": "experimental"
+   },
+   "nist.ai_rmf": {
+    "label": "experimental"
+   },
+   "nist.csf": {
+    "label": "experimental"
+   },
+   "nist.rmf": {
+    "label": "experimental"
+   },
+   "nist.sp800_160v2": {
+    "label": "experimental"
+   },
+   "nist.sp800_171_r2": {
+    "label": "experimental"
+   },
+   "nist.sp800_171a": {
+    "label": "experimental"
+   },
+   "nist.sp800_171a_r2": {
+    "label": "experimental"
+   },
+   "nist.sp800_172": {
+    "label": "experimental"
+   },
+   "nist.sp800_39": {
+    "label": "experimental"
+   },
+   "nist.sp800_53": {
+    "label": "experimental"
+   },
+   "nist_800_171": {
+    "label": "experimental"
+   },
+   "nist_800_53": {
+    "label": "experimental"
+   },
+   "nist_800_82": {
+    "label": "experimental"
+   },
+   "nist_ai_rmf": {
+    "label": "experimental"
+   },
+   "nist_csf": {
+    "label": "experimental"
+   },
+   "nist_privacy_framework": {
+    "label": "experimental"
+   },
+   "nist_ssdf": {
+    "label": "experimental"
+   },
+   "nrc_73_54": {
+    "label": "experimental"
+   },
+   "nsa_cisa_k8s": {
+    "label": "experimental"
+   },
+   "ny_dfs": {
+    "label": "experimental"
+   },
+   "owasp_llm": {
+    "label": "experimental"
+   },
+   "owasp_top10": {
+    "label": "experimental"
+   },
+   "pci_dss": {
+    "label": "experimental"
+   },
+   "pqc": {
+    "label": "experimental"
+   },
+   "provider_change": {
+    "label": "experimental"
+   },
+   "sap_abap_baseline": {
+    "label": "experimental"
+   },
+   "scuba_m365": {
+    "label": "experimental"
+   },
+   "sec_cyber": {
+    "label": "experimental"
+   },
+   "sentinel_ansible": {
+    "label": "experimental"
+   },
+   "sentinel_dockerfile": {
+    "label": "experimental"
+   },
+   "sentinel_kubernetes": {
+    "label": "experimental"
+   },
+   "sentinel_terraform": {
+    "label": "experimental"
+   },
+   "soc2": {
+    "label": "experimental"
+   },
+   "sox": {
+    "label": "experimental"
+   },
+   "stig.amazon_linux_2023": {
+    "label": "experimental"
+   },
+   "stig.apache_2_4_unix": {
+    "label": "experimental"
+   },
+   "stig.cisco_ios_xe_router": {
+    "label": "experimental"
+   },
+   "stig.kubernetes": {
+    "label": "experimental"
+   },
+   "stig.ms_sql_2016": {
+    "label": "experimental"
+   },
+   "stig.openshift_4": {
+    "label": "experimental"
+   },
+   "stig.oracle_database_19c": {
+    "label": "experimental"
+   },
+   "stig.oracle_linux_8": {
+    "label": "experimental"
+   },
+   "stig.oracle_linux_9": {
+    "label": "experimental"
+   },
+   "stig.oracle_mysql_8": {
+    "label": "experimental"
+   },
+   "stig.postgresql_16": {
+    "label": "experimental"
+   },
+   "stig.rhel_10": {
+    "label": "experimental"
+   },
+   "stig.rhel_8": {
+    "label": "experimental"
+   },
+   "stig.rhel_9": {
+    "label": "partial",
+    "evidence": "V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet, so those rules report evidence missing.",
+    "modules": "benchmarks/stig/rhel_9"
+   },
+   "stig.rke2": {
+    "label": "experimental"
+   },
+   "stig.sles_15": {
+    "label": "experimental"
+   },
+   "stig.ubuntu_22_04": {
+    "label": "experimental"
+   },
+   "stig.ubuntu_24_04": {
+    "label": "experimental"
+   },
+   "stig.vmware_vsphere_8": {
+    "label": "experimental"
+   },
+   "stig.windows_11": {
+    "label": "experimental"
+   },
+   "stig.windows_server_2016": {
+    "label": "experimental"
+   },
+   "stig.windows_server_2019": {
+    "label": "experimental"
+   },
+   "stig.windows_server_2022": {
+    "label": "experimental"
+   },
+   "stig.windows_server_2025": {
+    "label": "experimental"
+   },
+   "stig_amazon_linux_2023": {
+    "label": "experimental"
+   },
+   "stig_apache_2_4": {
+    "label": "experimental"
+   },
+   "stig_cisco_ios_xe_router": {
+    "label": "experimental"
+   },
+   "stig_kubernetes": {
+    "label": "experimental"
+   },
+   "stig_ms_sql_2016": {
+    "label": "experimental"
+   },
+   "stig_openshift_4": {
+    "label": "experimental"
+   },
+   "stig_postgresql_16": {
+    "label": "experimental"
+   },
+   "stig_rhel8": {
+    "label": "experimental"
+   },
+   "stig_rhel9": {
+    "label": "partial",
+    "evidence": "Bridge onto stig.rhel_9. V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet.",
+    "modules": "benchmarks/stig/rhel_9"
+   },
+   "stig_sles_15": {
+    "label": "experimental"
+   },
+   "stig_ubuntu_2204": {
+    "label": "experimental"
+   },
+   "stig_vsphere_8_esxi": {
+    "label": "experimental"
+   },
+   "stig_windows_11": {
+    "label": "experimental"
+   },
+   "stig_windows_server_2022": {
+    "label": "experimental"
+   },
+   "stig_windows_server_2025": {
+    "label": "experimental"
+   },
+   "swift_csp": {
+    "label": "experimental"
+   },
+   "tisax": {
+    "label": "experimental"
+   },
+   "tsa_pipeline": {
+    "label": "experimental"
+   },
+   "uk_dpa_2018": {
+    "label": "experimental"
+   },
+   "zero_trust": {
+    "label": "experimental"
+   }
+  }
+ }
+}

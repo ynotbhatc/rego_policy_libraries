@@ -138,6 +138,7 @@ physical_access_monitoring_enabled if {
 		location.monitoring.enabled == true
 		location.monitoring.recording_enabled == true
 		location.monitoring.retention_adequate == true
+		is_number(location.monitoring.retention_days)
 		location.monitoring.retention_days >= 90
 	}
 }

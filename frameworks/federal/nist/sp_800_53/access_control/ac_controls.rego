@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 96
-#     cited: 59
+#     checks: 97
+#     cited: 60
 #     density: sized
 #     basis: size
 #     tested: true
@@ -27,7 +27,8 @@ import rego.v1
 # AC-9(1), AC-9(4), AC-11(1), AC-12(1), AC-17(1), AC-17(2), AC-18(1), and the further NIST SP 800-53B Moderate
 # enhancements AC-2(2), AC-2(3), AC-2(4), AC-2(5), AC-2(13), AC-6(5), AC-6(7), AC-6(9), AC-6(10), AC-17(3),
 # AC-17(4), AC-18(3), AC-19(5), AC-20(1), AC-20(2), and the NIST / FedRAMP High enhancements AC-2(7), AC-2(9),
-# AC-2(11), AC-2(12), AC-4(4), AC-4(21), AC-6(3), AC-6(8), AC-18(4), AC-18(5) (59 ids).
+# AC-2(11), AC-2(12), AC-4(4), AC-4(21), AC-6(3), AC-6(8), AC-18(4), AC-18(5), and the Privacy-baseline enhancement
+# AC-3(14) (60 ids).
 # A base control never fails on an enhancement's requirement; each enhancement is its own finding. Not evaluated: AC-13 (withdrawn,
 # incorporated into AC-2 and AU-6) and AC-15 (withdrawn, "incorporated into MP-3" Media Marking; this
 # library has no MP family module, so AC-15 is not assessed and never produces a finding).
@@ -609,6 +610,15 @@ _ac_enh_detail(missing, failed) := sprintf("evidence missing — %s not collecte
 
 _ac_bool_false(ps) := {sprintf("%s is not true", [_ac_path(p)]) | some p in ps; _ac_get(p) == false}
 
+# A count: a non-negative whole number; anything else is evidence missing.
+_ac_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_ac_count_missing(ps) := {_ac_path(p) | some p in ps; not _ac_count_ok(_ac_get(p))}
+
 _ac_num_missing(ps) := {_ac_path(p) | some p in ps; not is_number(_ac_get(p))}
 
 _ac_nonempty_array(v) if {
@@ -622,6 +632,7 @@ _ac_list_missing(ps) := {concat("", [_ac_path(p), " (non-empty list)"]) | some p
 _ac_nonzero(p, what) := {sprintf("%v %s (%s)", [v, what, _ac_path(p)]) |
 	v := _ac_get(p)
 	is_number(v)
+	_ac_count_ok(v)
 	v > 0
 }
 
@@ -695,7 +706,7 @@ _ac2_13_failed := _ac_over(concat(".", [_ac2_13, "max_hours_to_disable"]), conca
 # accounts_outside_authorized_roles (count of privileged accounts not held by those roles).
 _ac6_5 := "least_privilege.privileged_accounts"
 
-_ac6_5_missing := _ac_list_missing([concat(".", [_ac6_5, "odp.authorized_roles"])]) | _ac_num_missing([concat(".", [_ac6_5, "accounts_outside_authorized_roles"])])
+_ac6_5_missing := (_ac_list_missing([concat(".", [_ac6_5, "odp.authorized_roles"])]) | _ac_num_missing([concat(".", [_ac6_5, "accounts_outside_authorized_roles"])])) | _ac_count_missing([concat(".", [_ac6_5, "accounts_outside_authorized_roles"])])
 
 _ac6_5_failed := _ac_nonzero(concat(".", [_ac6_5, "accounts_outside_authorized_roles"]), "privileged accounts held outside the organization-defined roles")
 
@@ -705,7 +716,7 @@ _ac6_5_failed := _ac_nonzero(concat(".", [_ac6_5, "accounts_outside_authorized_r
 # unremediated_findings (count of privileges the last review marked for removal or reassignment and still held).
 _ac6_7 := "least_privilege.privilege_review"
 
-_ac6_7_missing := _ac_num_missing([concat(".", [_ac6_7, f]) | some f in ["days_since_last", "odp.frequency_days", "unremediated_findings"]])
+_ac6_7_missing := _ac_num_missing([concat(".", [_ac6_7, f]) | some f in ["days_since_last", "odp.frequency_days", "unremediated_findings"]]) | _ac_count_missing([concat(".", [_ac6_7, "unremediated_findings"])])
 
 _ac6_7_failed := _ac_over(concat(".", [_ac6_7, "days_since_last"]), concat(".", [_ac6_7, "odp.frequency_days"]), "user privileges last reviewed %v days ago; the organization-defined frequency is %v days") | _ac_nonzero(concat(".", [_ac6_7, "unremediated_findings"]), "privileges marked for removal or reassignment still held")
 
@@ -728,7 +739,7 @@ _ac6_10_failed := _ac_bool_false(_ac6_10)
 # AC-17(3) Managed Access Control Points: remote access is routed through authorized, managed access control
 # points. Fact: input.ac_controls.remote_access.unmanaged_access_points (count of remote access entry points that
 # bypass the managed access control points).
-_ac17_3_missing := _ac_num_missing(["remote_access.unmanaged_access_points"])
+_ac17_3_missing := _ac_num_missing(["remote_access.unmanaged_access_points"]) | _ac_count_missing(["remote_access.unmanaged_access_points"])
 
 _ac17_3_failed := _ac_nonzero("remote_access.unmanaged_access_points", "remote access entry points not routed through a managed access control point")
 
@@ -745,7 +756,7 @@ _ac17_4_failed := _ac_bool_false(_ac17_4)
 
 # AC-18(3) Disable Wireless Networking: embedded wireless capabilities not intended for use are disabled before
 # issuance and deployment. Fact: input.ac_controls.wireless_access.components_with_unused_wireless_enabled (count).
-_ac18_3_missing := _ac_num_missing(["wireless_access.components_with_unused_wireless_enabled"])
+_ac18_3_missing := _ac_num_missing(["wireless_access.components_with_unused_wireless_enabled"]) | _ac_count_missing(["wireless_access.components_with_unused_wireless_enabled"])
 
 _ac18_3_failed := _ac_nonzero("wireless_access.components_with_unused_wireless_enabled", "deployed components with wireless networking enabled but not intended for use")
 
@@ -765,6 +776,10 @@ _ac19_5_missing contains m if {
 	some m in _ac_num_missing([concat(".", [_ac19_5, "devices_without_required_encryption"])])
 }
 
+_ac19_5_missing contains m if {
+	some m in _ac_count_missing([concat(".", [_ac19_5, "devices_without_required_encryption"])])
+}
+
 _ac19_5_failed := _ac_nonzero(concat(".", [_ac19_5, "devices_without_required_encryption"]), "mobile devices without the organization-defined encryption")
 
 # AC-20(1) Limits on Authorized Use: an external system is used only after its controls are verified or an
@@ -773,7 +788,7 @@ _ac19_5_failed := _ac_nonzero(concat(".", [_ac19_5, "devices_without_required_en
 # (count of external systems in use with neither).
 _ac20_1 := "external_systems.limits_on_authorized_use.systems_without_verification_or_agreement"
 
-_ac20_1_missing := _ac_num_missing([_ac20_1])
+_ac20_1_missing := _ac_num_missing([_ac20_1]) | _ac_count_missing([_ac20_1])
 
 _ac20_1_failed := _ac_nonzero(_ac20_1, "external systems in use without verified controls or a retained agreement")
 
@@ -835,7 +850,7 @@ _ac2_7 := "account_management.privileged_user_accounts"
 
 _ac2_7_bools := [_ac_f(_ac2_7, f) | some f in ["administered_per_scheme", "assignments_monitored", "changes_monitored"]]
 
-_ac2_7_missing := (_ac_bool_missing(_ac2_7_bools) | _ac_num_missing([_ac_f(_ac2_7, "inappropriate_assignments_not_revoked")])) | _ac_choice_missing(_ac_f(_ac2_7, "odp.scheme"), {"role-based", "attribute-based"})
+_ac2_7_missing := ((_ac_bool_missing(_ac2_7_bools) | _ac_num_missing([_ac_f(_ac2_7, "inappropriate_assignments_not_revoked")])) | _ac_choice_missing(_ac_f(_ac2_7, "odp.scheme"), {"role-based", "attribute-based"})) | _ac_count_missing([_ac_f(_ac2_7, "inappropriate_assignments_not_revoked")])
 
 _ac2_7_failed := _ac_bool_false(_ac2_7_bools) | _ac_nonzero(_ac_f(_ac2_7, "inappropriate_assignments_not_revoked"), "privileged role or attribute assignments no longer appropriate and not revoked")
 
@@ -845,7 +860,7 @@ _ac2_7_failed := _ac_bool_false(_ac2_7_bools) | _ac_nonzero(_ac_f(_ac2_7, "inapp
 # accounts_not_meeting_conditions (count of enabled shared or group accounts that do not meet them).
 _ac2_9 := "account_management.shared_accounts"
 
-_ac2_9_missing := _ac_list_missing([_ac_f(_ac2_9, "odp.conditions")]) | _ac_num_missing([_ac_f(_ac2_9, "accounts_not_meeting_conditions")])
+_ac2_9_missing := (_ac_list_missing([_ac_f(_ac2_9, "odp.conditions")]) | _ac_num_missing([_ac_f(_ac2_9, "accounts_not_meeting_conditions")])) | _ac_count_missing([_ac_f(_ac2_9, "accounts_not_meeting_conditions")])
 
 _ac2_9_failed := _ac_nonzero(_ac_f(_ac2_9, "accounts_not_meeting_conditions"), "shared or group accounts enabled that do not meet the organization-defined conditions")
 
@@ -855,7 +870,7 @@ _ac2_9_failed := _ac_nonzero(_ac_f(_ac2_9, "accounts_not_meeting_conditions"), "
 # accounts_without_enforced_conditions (count of those accounts on which the conditions are not enforced).
 _ac2_11 := "account_management.usage_conditions"
 
-_ac2_11_missing := _ac_list_missing([_ac_f(_ac2_11, "odp.conditions"), _ac_f(_ac2_11, "odp.accounts")]) | _ac_num_missing([_ac_f(_ac2_11, "accounts_without_enforced_conditions")])
+_ac2_11_missing := (_ac_list_missing([_ac_f(_ac2_11, "odp.conditions"), _ac_f(_ac2_11, "odp.accounts")]) | _ac_num_missing([_ac_f(_ac2_11, "accounts_without_enforced_conditions")])) | _ac_count_missing([_ac_f(_ac2_11, "accounts_without_enforced_conditions")])
 
 _ac2_11_failed := _ac_nonzero(_ac_f(_ac2_11, "accounts_without_enforced_conditions"), "organization-defined accounts without the usage conditions enforced")
 
@@ -866,7 +881,7 @@ _ac2_11_failed := _ac_nonzero(_ac_f(_ac2_11, "accounts_without_enforced_conditio
 # atypical-usage detections in the review period not reported to those personnel or roles).
 _ac2_12 := "account_management.atypical_usage"
 
-_ac2_12_missing := (_ac_list_missing([_ac_f(_ac2_12, "odp.atypical_usage"), _ac_f(_ac2_12, "odp.report_to")]) | _ac_bool_missing([_ac_f(_ac2_12, "monitoring_enabled")])) | _ac_num_missing([_ac_f(_ac2_12, "detections_not_reported")])
+_ac2_12_missing := ((_ac_list_missing([_ac_f(_ac2_12, "odp.atypical_usage"), _ac_f(_ac2_12, "odp.report_to")]) | _ac_bool_missing([_ac_f(_ac2_12, "monitoring_enabled")])) | _ac_num_missing([_ac_f(_ac2_12, "detections_not_reported")])) | _ac_count_missing([_ac_f(_ac2_12, "detections_not_reported")])
 
 _ac2_12_failed := _ac_bool_false([_ac_f(_ac2_12, "monitoring_enabled")]) | _ac_nonzero(_ac_f(_ac2_12, "detections_not_reported"), "atypical account usage detections not reported")
 
@@ -878,7 +893,7 @@ _ac2_12_failed := _ac_bool_false([_ac_f(_ac2_12, "monitoring_enabled")]) | _ac_n
 # active); uninspected_encrypted_flows (count of encrypted flows observed passing the mechanisms uninspected).
 _ac4_4 := "information_flow.encrypted_information"
 
-_ac4_4_missing := ((_ac_list_missing([_ac_f(_ac4_4, "odp.mechanisms")]) | _ac_choice_missing(_ac_f(_ac4_4, "odp.action"), {"decrypt", "block", "terminate", "other"})) | _ac_bool_missing([_ac_f(_ac4_4, "action_enforced")])) | _ac_num_missing([_ac_f(_ac4_4, "uninspected_encrypted_flows")])
+_ac4_4_missing := (((_ac_list_missing([_ac_f(_ac4_4, "odp.mechanisms")]) | _ac_choice_missing(_ac_f(_ac4_4, "odp.action"), {"decrypt", "block", "terminate", "other"})) | _ac_bool_missing([_ac_f(_ac4_4, "action_enforced")])) | _ac_num_missing([_ac_f(_ac4_4, "uninspected_encrypted_flows")])) | _ac_count_missing([_ac_f(_ac4_4, "uninspected_encrypted_flows")])
 
 _ac4_4_failed := _ac_bool_false([_ac_f(_ac4_4, "action_enforced")]) | _ac_nonzero(_ac_f(_ac4_4, "uninspected_encrypted_flows"), "encrypted flows bypassing the organization-defined flow control mechanisms")
 
@@ -889,7 +904,7 @@ _ac4_4_failed := _ac_bool_false([_ac_f(_ac4_4, "action_enforced")]) | _ac_nonzer
 # tests).
 _ac4_21 := "information_flow.separation"
 
-_ac4_21_missing := _ac_list_missing([_ac_f(_ac4_21, "odp.mechanisms"), _ac_f(_ac4_21, "odp.required_separations")]) | _ac_num_missing([_ac_f(_ac4_21, "separations_not_enforced")])
+_ac4_21_missing := (_ac_list_missing([_ac_f(_ac4_21, "odp.mechanisms"), _ac_f(_ac4_21, "odp.required_separations")]) | _ac_num_missing([_ac_f(_ac4_21, "separations_not_enforced")])) | _ac_count_missing([_ac_f(_ac4_21, "separations_not_enforced")])
 
 _ac4_21_failed := _ac_nonzero(_ac_f(_ac4_21, "separations_not_enforced"), "organization-defined information flow separations not enforced")
 
@@ -900,7 +915,7 @@ _ac4_21_failed := _ac_nonzero(_ac_f(_ac4_21, "separations_not_enforced"), "organ
 # documented compelling need); rationale_in_security_plan (boolean).
 _ac6_3 := "least_privilege.network_privileged_commands"
 
-_ac6_3_missing := (_ac_list_missing([_ac_f(_ac6_3, "odp.commands"), _ac_f(_ac6_3, "odp.needs")]) | _ac_num_missing([_ac_f(_ac6_3, "accounts_without_documented_need")])) | _ac_bool_missing([_ac_f(_ac6_3, "rationale_in_security_plan")])
+_ac6_3_missing := ((_ac_list_missing([_ac_f(_ac6_3, "odp.commands"), _ac_f(_ac6_3, "odp.needs")]) | _ac_num_missing([_ac_f(_ac6_3, "accounts_without_documented_need")])) | _ac_bool_missing([_ac_f(_ac6_3, "rationale_in_security_plan")])) | _ac_count_missing([_ac_f(_ac6_3, "accounts_without_documented_need")])
 
 _ac6_3_failed := _ac_bool_false([_ac_f(_ac6_3, "rationale_in_security_plan")]) | _ac_nonzero(_ac_f(_ac6_3, "accounts_without_documented_need"), "accounts with network access to privileged commands and no documented compelling operational need")
 
@@ -911,7 +926,7 @@ _ac6_3_failed := _ac_bool_false([_ac_f(_ac6_3, "rationale_in_security_plan")]) |
 # bits, elevated service accounts).
 _ac6_8 := "least_privilege.code_execution"
 
-_ac6_8_missing := _ac_list_missing([_ac_f(_ac6_8, "odp.software")]) | _ac_num_missing([_ac_f(_ac6_8, "software_above_user_privilege")])
+_ac6_8_missing := (_ac_list_missing([_ac_f(_ac6_8, "odp.software")]) | _ac_num_missing([_ac_f(_ac6_8, "software_above_user_privilege")])) | _ac_count_missing([_ac_f(_ac6_8, "software_above_user_privilege")])
 
 _ac6_8_failed := _ac_nonzero(_ac_f(_ac6_8, "software_above_user_privilege"), "organization-defined programs able to execute above the invoking user's privilege level")
 
@@ -922,7 +937,7 @@ _ac6_8_failed := _ac_nonzero(_ac_f(_ac6_8, "software_above_user_privilege"), "or
 # settings who are not on it).
 _ac18_4 := "wireless_access.user_configuration"
 
-_ac18_4_missing := _ac_bool_missing([_ac_f(_ac18_4, "authorized_users_identified")]) | _ac_num_missing([_ac_f(_ac18_4, "unauthorized_users_able_to_configure")])
+_ac18_4_missing := (_ac_bool_missing([_ac_f(_ac18_4, "authorized_users_identified")]) | _ac_num_missing([_ac_f(_ac18_4, "unauthorized_users_able_to_configure")])) | _ac_count_missing([_ac_f(_ac18_4, "unauthorized_users_able_to_configure")])
 
 _ac18_4_failed := _ac_bool_false([_ac_f(_ac18_4, "authorized_users_identified")]) | _ac_nonzero(_ac_f(_ac18_4, "unauthorized_users_able_to_configure"), "users able to configure wireless networking without explicit authorization")
 
@@ -933,7 +948,7 @@ _ac18_4_failed := _ac_bool_false([_ac_f(_ac18_4, "authorized_users_identified")]
 # points whose signal the last site survey detected outside the controlled boundary).
 _ac18_5 := "wireless_access.signal_containment"
 
-_ac18_5_missing := _ac_bool_missing([_ac_f(_ac18_5, "power_levels_calibrated")]) | _ac_num_missing([_ac_f(_ac18_5, "access_points_detected_outside_boundary")])
+_ac18_5_missing := (_ac_bool_missing([_ac_f(_ac18_5, "power_levels_calibrated")]) | _ac_num_missing([_ac_f(_ac18_5, "access_points_detected_outside_boundary")])) | _ac_count_missing([_ac_f(_ac18_5, "access_points_detected_outside_boundary")])
 
 _ac18_5_failed := _ac_bool_false([_ac_f(_ac18_5, "power_levels_calibrated")]) | _ac_nonzero(_ac_f(_ac18_5, "access_points_detected_outside_boundary"), "access points whose signal is received outside the organization-controlled boundary")
 
@@ -961,6 +976,30 @@ default compliant := false
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# AC-3(14) Individual Access: the organization-defined mechanisms let individuals access the organization-defined
+# elements of their PII.
+# Facts (input.ac_controls.access_enforcement.individual_access): mechanisms_implemented (boolean);
+# odp.elements (non-empty list of the organization-defined PII elements); elements_accessible (list of the elements
+# the mechanisms let an individual retrieve).
+_ac3_14 := "access_enforcement.individual_access"
+
+_ac3_14_missing := (_ac_bool_missing([_ac_f(_ac3_14, "mechanisms_implemented")]) | _ac_list_missing([_ac_f(_ac3_14, "odp.elements")])) | {concat("", [_ac_path(_ac_f(_ac3_14, "elements_accessible")), " (list)"]) | not is_array(_ac_get(_ac_f(_ac3_14, "elements_accessible")))}
+
+_ac3_14_failed := _ac_bool_false([_ac_f(_ac3_14, "mechanisms_implemented")]) | {sprintf("PII elements individuals cannot access: %v (%s)", [sort(lack), _ac_path(_ac_f(_ac3_14, "elements_accessible"))]) |
+	o := _ac_get(_ac_f(_ac3_14, "elements_accessible"))
+	l := _ac_get(_ac_f(_ac3_14, "odp.elements"))
+	is_array(o)
+	is_array(l)
+	lack := {x | some x in l; not x in o}
+	count(lack) > 0
+}
+
+violation contains sprintf("NIST AC-3(14): %s", [_ac_enh_detail(_ac3_14_missing, _ac3_14_failed)]) if count(_ac3_14_missing | _ac3_14_failed) > 0
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"AC-1", "AC-2", "AC-2(1)", "AC-2(2)", "AC-2(3)", "AC-2(4)", "AC-2(5)", "AC-2(7)", "AC-2(9)", "AC-2(11)",
@@ -969,6 +1008,7 @@ evaluated_controls := {
 	"AC-10", "AC-11", "AC-11(1)", "AC-12", "AC-12(1)", "AC-14", "AC-16", "AC-17", "AC-17(1)", "AC-17(2)", "AC-17(3)",
 	"AC-17(4)", "AC-18", "AC-18(1)", "AC-18(3)", "AC-18(4)", "AC-18(5)", "AC-19", "AC-19(5)", "AC-20", "AC-20(1)",
 	"AC-20(2)", "AC-21", "AC-22", "AC-23", "AC-24", "AC-25",
+	"AC-3(14)",
 }
 
 compliance_report := {

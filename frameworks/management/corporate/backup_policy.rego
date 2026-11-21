@@ -400,6 +400,7 @@ offsite_vendor_compliant if {
 
 vendor_compliance_adequate(vendor) if {
 	vendor.certifications[_] in ["SOC 2", "ISO 27001", "PCI DSS"]
+	is_number(vendor.sla.availability)
 	vendor.sla.availability >= 99.9
 	vendor.contract.data_residency_compliant
 }
@@ -564,6 +565,7 @@ sox_backup_compliant if {
 
 	# Only financial systems are in SOX scope.
 	every system in [s | some s in input.systems; "financial" in s.data_types] {
+		is_number(system.backup_config.retention_policy.years)
 		system.backup_config.retention_policy.years >= 7
 		disaster_recovery_testing_current(system)
 	}

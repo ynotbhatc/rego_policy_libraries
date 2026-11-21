@@ -670,7 +670,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-5.4.3.3",
-      "title": "evidence missing — pam.profile_d_raw/pam.default_umask not collected",
+      "title": "evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected",
       "props": [
        {
         "name": "label",
@@ -696,7 +696,7 @@
        {
         "id": "cis_ubuntu_22_04-5.4.3.3_stmt",
         "name": "statement",
-        "prose": "evidence missing — pam.profile_d_raw/pam.default_umask not collected"
+        "prose": "evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected"
        },
        {
         "id": "cis_ubuntu_22_04-5.4.3.3_obj.1",
@@ -5582,7 +5582,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-6.3.2",
-      "title": "evidence missing — aide.cron_raw/aide.aidecheck not collected",
+      "title": "evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected",
       "props": [
        {
         "name": "label",
@@ -5608,7 +5608,7 @@
        {
         "id": "cis_ubuntu_22_04-6.3.2_stmt",
         "name": "statement",
-        "prose": "evidence missing — aide.cron_raw/aide.aidecheck not collected"
+        "prose": "evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected"
        },
        {
         "id": "cis_ubuntu_22_04-6.3.2_obj.1",
@@ -5910,7 +5910,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-2.4.1.7",
-      "title": "evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected",
+      "title": "evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected",
       "props": [
        {
         "name": "label",
@@ -5936,7 +5936,7 @@
        {
         "id": "cis_ubuntu_22_04-2.4.1.7_stmt",
         "name": "statement",
-        "prose": "evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected"
+        "prose": "evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected"
        },
        {
         "id": "cis_ubuntu_22_04-2.4.1.7_obj.1",
@@ -11804,7 +11804,7 @@
      },
      {
       "id": "cis_ubuntu_22_04-2.3.3.2",
-      "title": "evidence missing — chronyd.process_users not collected",
+      "title": "evidence missing — chronyd.process_users/chronyd.collected not collected",
       "props": [
        {
         "name": "label",
@@ -11830,7 +11830,7 @@
        {
         "id": "cis_ubuntu_22_04-2.3.3.2_stmt",
         "name": "statement",
-        "prose": "evidence missing — chronyd.process_users not collected"
+        "prose": "evidence missing — chronyd.process_users/chronyd.collected not collected"
        },
        {
         "id": "cis_ubuntu_22_04-2.3.3.2_obj.1",

@@ -62,10 +62,14 @@ import rego.v1
 default compliant := false
 
 # A missing value fails closed: absent password length/lockout/feedback is a violation.
-min_value_at_least(system, key, n) if system[key] >= n
+min_value_at_least(system, key, n) if {
+	is_number(system[key])
+	system[key] >= n
+}
 
 # Lockout must be enabled (> 0) and no more than n failed attempts.
 lockout_within(system, n) if {
+	is_number(system.account_lockout_threshold)
 	system.account_lockout_threshold > 0
 	system.account_lockout_threshold <= n
 }
@@ -92,6 +96,7 @@ violations contains msg if {
 
 # SR 1.1 RE 1 (SL 2+): Multi-factor authentication for all interfaces
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.mfa_enabled
@@ -103,6 +108,7 @@ violations contains msg if {
 
 # SR 1.1 RE 2 (SL 3+): Hardware token-based authentication
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.authentication.hardware_token_authentication
 	msg := sprintf(
@@ -127,6 +133,7 @@ violations contains msg if {
 
 # SR 1.2 RE 1 (SL 2+): Unique identification for all devices
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not system.device_unique_id
@@ -157,6 +164,7 @@ violations contains msg if {
 
 # SR 1.3 RE 1 (SL 2+): Unified account management policy
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	not input.authentication.unified_account_policy
 	msg := sprintf(
@@ -248,6 +256,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not min_value_at_least(system, "password_min_length", 12)
@@ -272,6 +281,7 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.authentication.pki_or_certificate_based
 	msg := sprintf(
@@ -326,6 +336,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	not lockout_within(system, 5)
@@ -374,6 +385,7 @@ violations contains msg if {
 }
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 2
 	some system in input.ics_systems
 	system.remote_access_enabled

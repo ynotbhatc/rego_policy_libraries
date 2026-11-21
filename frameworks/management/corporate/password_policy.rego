@@ -53,6 +53,7 @@ password_compliant if {
 # Password Length Requirements
 # Corporate Policy: "Passwords must be at least 12 characters for standard users, 14 for privileged accounts"
 length_requirements_met if {
+	is_number(input.password.length)
 	input.password.length >= minimum_length_for_role
 }
 
@@ -71,6 +72,7 @@ minimum_length_for_role := 16 if {
 # Password Complexity Requirements
 # Corporate Policy: "Passwords must contain characters from at least 3 of 4 character classes"
 complexity_requirements_met if {
+	is_number(character_classes_used)
 	character_classes_used >= 3
 }
 
@@ -140,6 +142,7 @@ maximum_password_age := 45 if {
 }
 
 changed_too_recently if {
+	is_number(days_since_last_change)
 	days_since_last_change < 1
 }
 
@@ -224,10 +227,12 @@ service_account_compliant if {
 }
 
 service_account_length_met if {
+	is_number(input.password.length)
 	input.password.length >= 20
 }
 
 service_account_entropy_met if {
+	is_number(password_entropy)
 	password_entropy >= 60
 }
 
@@ -290,6 +295,7 @@ temporary_password_not_expired if {
 # Multi-Factor Authentication Integration
 # Corporate Policy: "Strong passwords may reduce MFA frequency requirements"
 mfa_frequency_reduced if {
+	is_number(password_strength_score)
 	password_strength_score >= 85
 	input.user.mfa_enabled
 }
@@ -307,14 +313,18 @@ password_strength_score := score if {
 pci_dss_password_compliant if {
 	password_compliant
 	input.user.access_level in ["cardholder_data", "payment_processing"]
+	is_number(input.password.length)
 	input.password.length >= 12
+	is_number(character_classes_used)
 	character_classes_used >= 3
 }
 
 sox_password_compliant if {
 	password_compliant
 	input.user.access_level in ["financial_reporting", "sox_relevant"]
+	is_number(input.password.length)
 	input.password.length >= 14
+	is_number(maximum_password_age)
 	maximum_password_age <= 60
 }
 

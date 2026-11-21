@@ -148,13 +148,16 @@ sovereignty_level := "SOVEREIGN" if {
 } else := "NON_SOVEREIGN" if {
 	count(critical_violations) > 0
 } else := "HIGH_ASSURANCE" if {
+	is_number(sovereignty_score)
 	sovereignty_score >= 85
 	count(critical_violations) == 0
 	count(high_violations) <= 2
 } else := "MODERATE_ASSURANCE" if {
+	is_number(sovereignty_score)
 	sovereignty_score >= 70
 	count(critical_violations) == 0
 } else := "LIMITED_ASSURANCE" if {
+	is_number(sovereignty_score)
 	sovereignty_score >= 50
 }
 

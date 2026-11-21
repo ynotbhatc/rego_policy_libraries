@@ -132,7 +132,7 @@ assessed_controls_compliant if {
 # ── Per-control results ──────────────────────────────────────────────
 # control_results: one object per recommendation of the benchmark (all
 # 160, natural id order; CONTROL_INDEX in control_index.rego), each
-# {id, status, basis, in_scope, profile, evidence}. No benchmark text.
+# {id, status, basis, in_scope, profile, evidence, findings}. No benchmark text.
 #
 # A control a section evaluates is
 #   fail              when a violation of its section cites it and is not
@@ -293,11 +293,26 @@ _with_evidence(base, id) := r if {
 
 _with_evidence(base, id) := base if not _evidence(id)
 
+# findings: the messages (section violations and the attestation ledger's) whose "CIS <id>: " prefix cites the
+# recommendation, grouped once per message; a message whose prefix names several ids joined by "/" is listed
+# under each. object.get reads the grouped rule whole (a keyed lookup would re-evaluate it per id). Empty for a
+# pass and for a recommendation outside the profile.
+_findings_by_id[id] contains v if {
+	some v in all_violations
+	ms := regex.find_all_string_submatch_n(`^CIS ([0-9]+(?:\.[0-9]+)+(?:/[0-9]+(?:\.[0-9]+)+)*): `, v, 1)
+	count(ms) == 1
+	some id in split(ms[0][1], "/")
+}
+
+_findings(id) := [] if {
+	not _in_scope(id)
+} else := sort(object.get(_findings_by_id, id, set()))
+
 control_results := [r |
 	some e in control_index.CONTROL_INDEX
 	s := _status(e.id)
 	b := _basis(e.id)
-	base := object.union(e, {"status": s, "basis": b, "in_scope": s != "not_applicable"})
+	base := object.union(e, {"status": s, "basis": b, "in_scope": s != "not_applicable", "findings": _findings(e.id)})
 	r := _with_evidence(base, e.id)
 ]
 

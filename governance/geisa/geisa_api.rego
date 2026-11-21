@@ -69,6 +69,7 @@ violations contains sprintf("API: platform discovery status_code must be 1 (OK),
 violations contains "API: GEISA version must be >= 1.0" if {
 	is_object(_discovery)
 	is_object(_discovery.geisa_version)
+	is_number(_discovery.geisa_version.major)
 	_discovery.geisa_version.major < 1
 }
 

@@ -48,12 +48,14 @@ _d1a_plan_exists if {
 default _d1a_plan_current := false
 
 _d1a_plan_current if {
+	is_number(input.incident_response.plan.last_review_days)
 	input.incident_response.plan.last_review_days <= 365
 }
 
 default _d1a_plan_acceptable_age := false
 
 _d1a_plan_acceptable_age if {
+	is_number(input.incident_response.plan.last_review_days)
 	input.incident_response.plan.last_review_days <= 730
 }
 
@@ -139,12 +141,14 @@ _d1b_ir_retainer if {
 default _d1b_sla_tight := false
 
 _d1b_sla_tight if {
+	is_number(input.incident_response.capability.response_time_sla_hours)
 	input.incident_response.capability.response_time_sla_hours <= 4
 }
 
 default _d1b_sla_acceptable := false
 
 _d1b_sla_acceptable if {
+	is_number(input.incident_response.capability.response_time_sla_hours)
 	input.incident_response.capability.response_time_sla_hours <= 24
 }
 
@@ -201,6 +205,7 @@ co_d1b_details := {
 default _d1c_exercise_annual := false
 
 _d1c_exercise_annual if {
+	is_number(input.incident_response.exercises.last_exercise_days)
 	input.incident_response.exercises.last_exercise_days <= 365
 }
 
@@ -213,6 +218,7 @@ _d1c_tabletop_conducted if {
 default _d1c_functional_exercise := false
 
 _d1c_functional_exercise if {
+	is_number(input.incident_response.exercises.functional_exercise_days)
 	input.incident_response.exercises.functional_exercise_days <= 365
 }
 

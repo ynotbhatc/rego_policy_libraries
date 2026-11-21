@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 18
+#     checks: 19
 #     cited: 9
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.part2_4
 
 import rego.v1
@@ -184,11 +184,18 @@ violations contains msg if {
 violations contains msg if {
 	input.is_iacs_service_provider == true
 	input.service_provider.security_event_notification
+	is_number(input.service_provider.incident_notification_sla_hours)
 	input.service_provider.incident_notification_sla_hours > 24
 	msg := sprintf(
 		"IEC 62443-2-4 SP.09: Security event notification SLA is %v hours. Service providers must notify asset owners of critical security events within 24 hours; immediately for active incidents.",
 		[input.service_provider.incident_notification_sla_hours],
 	)
+}
+
+violations contains "IEC 62443-2-4 SP.09: evidence missing - input.service_provider.incident_notification_sla_hours is not a number" if {
+	input.is_iacs_service_provider == true
+	input.service_provider.security_event_notification
+	not is_number(object.get(input, ["service_provider", "incident_notification_sla_hours"], null))
 }
 
 # ---------------------------------------------------------------------------

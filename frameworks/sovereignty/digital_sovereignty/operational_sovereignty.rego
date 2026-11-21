@@ -203,6 +203,7 @@ jit_provisioning_enabled if {
 # Privileged access must be reviewed regularly
 privileged_access_review_current if {
 	input.privileged_access_management.privileged_access_review_current == true
+	is_number(input.privileged_access_management.review_frequency_days)
 	input.privileged_access_management.review_frequency_days <= 90
 }
 

@@ -547,22 +547,26 @@ nerc_cip_violations := all_violations
 # =============================================================================
 
 nerc_cip_compliance_level := "COMPLIANT" if {
+	is_number(nerc_cip_compliance_score)
 	nerc_cip_compliance_score >= 95
 	cip_002_compliant
 	cip_003_compliant
 }
 
 nerc_cip_compliance_level := "SUBSTANTIALLY_COMPLIANT" if {
+	is_number(nerc_cip_compliance_score)
 	nerc_cip_compliance_score >= 85
 	nerc_cip_compliance_score < 95
 }
 
 nerc_cip_compliance_level := "PARTIALLY_COMPLIANT" if {
+	is_number(nerc_cip_compliance_score)
 	nerc_cip_compliance_score >= 70
 	nerc_cip_compliance_score < 85
 }
 
 nerc_cip_compliance_level := "NON_COMPLIANT" if {
+	is_number(nerc_cip_compliance_score)
 	nerc_cip_compliance_score < 70
 }
 

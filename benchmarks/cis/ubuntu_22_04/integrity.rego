@@ -239,6 +239,11 @@ e_6_3_2 if {
 	text_collected(input.aide.aidecheck.timer_active_state)
 }
 
+e_6_3_2 if {
+	input.aide.collected == true
+	type_name(input.aide.cron_raw) == "string"
+}
+
 default p_6_3_2 := false
 
 p_6_3_2 if {
@@ -251,7 +256,7 @@ p_6_3_2 if {
 	input.aide.aidecheck.timer_active_state == "active"
 }
 
-violations contains "6.3.2: evidence missing — aide.cron_raw/aide.aidecheck not collected" if not e_6_3_2
+violations contains "6.3.2: evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected" if not e_6_3_2
 
 violations contains "6.3.2: not met — filesystem integrity must be regularly checked" if {
 	e_6_3_2

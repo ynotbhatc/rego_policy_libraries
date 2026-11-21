@@ -80,16 +80,19 @@ compliance_level := "compliant" if {
 }
 
 compliance_level := "mostly_compliant" if {
+	is_number(compliance_score)
 	compliance_score >= 80
 	compliance_score < 100
 }
 
 compliance_level := "partially_compliant" if {
+	is_number(compliance_score)
 	compliance_score >= 50
 	compliance_score < 80
 }
 
 compliance_level := "non_compliant" if {
+	is_number(compliance_score)
 	compliance_score < 50
 }
 

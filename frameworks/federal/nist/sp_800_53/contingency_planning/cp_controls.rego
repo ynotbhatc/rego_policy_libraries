@@ -43,14 +43,12 @@ _obj(path) := v if {
 # any other value except the boolean true ("true", 1, false) is a finding.
 _bool_missing(path, checks) := {concat(".", [_path_str(path), c[0]]) |
 	some c in checks
-	object.get(_obj(path), c[0], null) == null
+	not is_boolean(object.get(_obj(path), c[0], null))
 }
 
 _bool_failed(path, checks) := {sprintf("%s (%s.%s is not true)", [c[1], _path_str(path), c[0]]) |
 	some c in checks
-	v := object.get(_obj(path), c[0], null)
-	v != null
-	not v == true
+	object.get(_obj(path), c[0], null) == false
 }
 
 # Numeric facts: an observed value at <path>.<obs> and the organization-defined parameter at <path>.odp.<odp>.
@@ -390,14 +388,23 @@ _scope_missing(path) := {concat(".", [_path_str(path), "odp.function_scope (orga
 	not object.get(_obj(path), ["odp", "function_scope"], null) in {"all", "essential"}
 }
 
-# A count that must be zero: <path>.<key> not a number is missing evidence; above zero is a finding.
+# A count that must be zero: <path>.<key> not a non-negative whole number is missing evidence; above zero is a finding.
+# A count: a non-negative whole number. Anything else (absent, null, "1", a negative or a fractional number) is
+# evidence missing.
+_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
 _count_missing(path, key) := {concat(".", [_path_str(path), key]) |
-	not is_number(object.get(_obj(path), key, null))
+	not _count_ok(object.get(_obj(path), key, null))
 }
 
 _count_nonzero(path, key, fmt) := {sprintf(fmt, [n]) |
 	n := object.get(_obj(path), key, null)
 	is_number(n)
+	_count_ok(n)
 	n > 0
 }
 

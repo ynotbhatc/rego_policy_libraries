@@ -149,6 +149,7 @@ remote_access_encrypted if {
 
 # R2.3 - Terminate remote access sessions that are inactive for 15 minutes
 remote_access_session_timeout if {
+	is_number(input.remote_access.session_management.idle_timeout_minutes)
 	input.remote_access.session_management.idle_timeout_minutes <= 15
 	input.remote_access.session_management.timeout_implemented == true
 }

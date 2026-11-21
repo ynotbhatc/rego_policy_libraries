@@ -76,6 +76,7 @@ replay_resistant_authentication if {
 default identifier_management := false
 
 identifier_management if {
+	is_number(input.nist_800_171.identification_authentication.identifier_mgmt.inactivity_period_days)
 	input.nist_800_171.identification_authentication.identifier_mgmt.inactivity_period_days <= 35
 	input.nist_800_171.identification_authentication.identifier_mgmt.disable_on_inactivity == true
 	input.nist_800_171.identification_authentication.identifier_mgmt.unique_identifiers == true
@@ -94,6 +95,7 @@ identifier_inactivity_disable if {
 default password_complexity := false
 
 password_complexity if {
+	is_number(input.nist_800_171.identification_authentication.password_complexity.minimum_length)
 	input.nist_800_171.identification_authentication.password_complexity.minimum_length >= 12
 	input.nist_800_171.identification_authentication.password_complexity.complexity_enforced == true
 	input.nist_800_171.identification_authentication.password_complexity.change_requirements_defined == true
@@ -103,6 +105,7 @@ password_complexity if {
 default password_reuse_prohibited := false
 
 password_reuse_prohibited if {
+	is_number(input.nist_800_171.identification_authentication.password_reuse.generations_remembered)
 	input.nist_800_171.identification_authentication.password_reuse.generations_remembered >= 5
 	input.nist_800_171.identification_authentication.password_reuse.enforcement_automated == true
 }

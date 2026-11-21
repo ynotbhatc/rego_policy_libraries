@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 16
+#     checks: 19
 #     cited: 6
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.part3_2
 
 import rego.v1
@@ -137,10 +137,21 @@ violations contains msg if {
 violations contains msg if {
 	some zone in input.zones
 	zone.criticality == "high"
+	is_number(zone.security_level)
 	zone.security_level < 2
 	msg := sprintf(
 		"IEC 62443-3-2 ZCR 3: High-criticality zone '%v' has Security Level %v. High-criticality IACS zones should have SL-T of at least 2 (SL 3 or 4 recommended for BES and safety-critical systems).",
 		[object.get(zone, "name", "<unnamed>"), zone.security_level],
+	)
+}
+
+violations contains msg if {
+	some zone in input.zones
+	zone.criticality == "high"
+	not is_number(object.get(zone, "security_level", null))
+	msg := sprintf(
+		"IEC 62443-3-2 ZCR 3: evidence missing - high-criticality zone '%v' has no numeric security_level, so its SL-T cannot be verified.",
+		[object.get(zone, "name", "<unnamed>")],
 	)
 }
 
@@ -168,6 +179,7 @@ violations contains msg if {
 
 violations contains msg if {
 	input.risk_assessment.conducted
+	is_number(input.risk_assessment.review_frequency_months)
 	input.risk_assessment.review_frequency_months > 24
 	msg := sprintf(
 		"IEC 62443-3-2: Risk assessment review cycle is %v months. IACS risk assessments must be reviewed at least every 24 months and after significant changes (new systems, topology changes, incident).",
@@ -175,11 +187,17 @@ violations contains msg if {
 	)
 }
 
+violations contains "IEC 62443-3-2: evidence missing - input.risk_assessment.review_frequency_months is not a number" if {
+	input.risk_assessment.conducted
+	not is_number(object.get(input, ["risk_assessment", "review_frequency_months"], null))
+}
+
 # ---------------------------------------------------------------------------
 # Third-Party Review (recommended for SL 3+)
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.target_sl)
 	input.target_sl >= 3
 	not input.risk_assessment.third_party_review
 	msg := sprintf(
@@ -191,6 +209,12 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 # Compliance Aggregation
 # ---------------------------------------------------------------------------
+
+# SL-dependent requirements are gated on target_sl. Without a number they
+# silently never run, so its absence is itself a violation.
+violations contains "IEC 62443-3-2: evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated" if {
+	not is_number(object.get(input, "target_sl", null))
+}
 
 compliant if count(violations) == 0
 

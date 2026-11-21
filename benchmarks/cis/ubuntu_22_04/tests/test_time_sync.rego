@@ -92,12 +92,12 @@ test_2_3_3_2_pass if {
 test_2_3_3_2_fail if {
 	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"process_users": ["root"]}}
 	count([v | some v in vs; startswith(v, "2.3.3.2: ")]) > 0
-	not "2.3.3.2: evidence missing — chronyd.process_users not collected" in vs
+	not "2.3.3.2: evidence missing — chronyd.process_users/chronyd.collected not collected" in vs
 }
 
 test_2_3_3_2_evidence_missing if {
 	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {}
-	"2.3.3.2: evidence missing — chronyd.process_users not collected" in vs
+	"2.3.3.2: evidence missing — chronyd.process_users/chronyd.collected not collected" in vs
 }
 
 test_2_3_3_2_hollow_evidence_not_a_pass if {
@@ -124,4 +124,30 @@ test_2_3_3_3_evidence_missing if {
 test_2_3_3_3_hollow_evidence_not_a_pass if {
 	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"services": {"ssh.service": {"state": "", "status": ""}, "chrony.service": {"state": "", "status": ""}}}
 	count([v | some v in vs; startswith(v, "2.3.3.3: ")]) > 0
+}
+
+# 2.3.3.2 (#332): with chronyd.collected, no chronyd process is not met; an empty list alone is missing evidence.
+test_collected_chronyd_as_chrony_passes if {
+	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"collected": true, "process_users": ["_chrony"]}}
+	count([v | some v in vs; startswith(v, "2.3.3.2: ")]) == 0
+}
+
+test_collected_chronyd_stopped_is_not_met if {
+	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"collected": true, "process_users": []}}
+	count([v | some v in vs; startswith(v, "2.3.3.2: not met")]) > 0
+}
+
+test_empty_process_list_without_marker_is_missing if {
+	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"process_users": []}}
+	count([v | some v in vs; startswith(v, "2.3.3.2: evidence missing")]) > 0
+}
+
+test_marker_false_is_missing if {
+	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"collected": false, "process_users": []}}
+	count([v | some v in vs; startswith(v, "2.3.3.2: evidence missing")]) > 0
+}
+
+test_marker_without_process_list_is_missing if {
+	vs := data.cis_ubuntu_22_04.time_sync.violations with input as {"chronyd": {"collected": true}}
+	count([v | some v in vs; startswith(v, "2.3.3.2: evidence missing")]) > 0
 }

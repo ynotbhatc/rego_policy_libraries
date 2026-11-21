@@ -68,6 +68,7 @@ _b3b_no_unencrypted_protocols if {
 default _b3b_cert_valid := false
 
 _b3b_cert_valid if {
+	is_number(input.data_in_transit.cert_validity_days_remaining)
 	input.data_in_transit.cert_validity_days_remaining > 30
 }
 
@@ -128,12 +129,14 @@ _b3c_backup_exists if {
 default _b3c_backup_recent := false
 
 _b3c_backup_recent if {
+	is_number(input.stored_data.backup_age_days)
 	input.stored_data.backup_age_days <= 1
 }
 
 default _b3c_backup_acceptable_age := false
 
 _b3c_backup_acceptable_age if {
+	is_number(input.stored_data.backup_age_days)
 	input.stored_data.backup_age_days <= 7
 }
 
@@ -146,12 +149,14 @@ _b3c_backup_segregated if {
 default _b3c_restore_tested := false
 
 _b3c_restore_tested if {
+	is_number(input.stored_data.restore_test_days)
 	input.stored_data.restore_test_days <= 30
 }
 
 default _b3c_restore_tested_annually := false
 
 _b3c_restore_tested_annually if {
+	is_number(input.stored_data.restore_test_days)
 	input.stored_data.restore_test_days <= 365
 }
 

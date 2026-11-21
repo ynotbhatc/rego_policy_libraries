@@ -48,6 +48,7 @@ all_required_events_logged if {
 # Audit log storage must not be allowed to reach capacity without alerting
 audit_capacity_managed if {
 	input.audit.storage.capacity_monitoring_enabled == true
+	is_number(input.audit.storage.alert_threshold_percent)
 	input.audit.storage.alert_threshold_percent <= 80
 	input.audit.storage.auto_archive_enabled == true
 }
@@ -62,6 +63,7 @@ audit_failure_alerting if {
 # SG.AU-5: Log Retention
 # Logs must be retained for minimum 365 days (1 year)
 log_retention_sufficient if {
+	is_number(input.audit.storage.retention_days)
 	input.audit.storage.retention_days >= 365
 }
 

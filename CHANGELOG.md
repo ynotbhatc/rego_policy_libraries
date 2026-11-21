@@ -8,6 +8,55 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53: the full Privacy baseline (542 ids); stricter counts and booleans
+
+- All 96 Privacy-baseline ids are evaluated (19 added; 542 ids in total).
+- A count that is negative or fractional is evidence missing in every 800-53 family.
+- CP and IA: a non-boolean fact is evidence missing; `false` keeps the failure message.
+- PT, SA, RA and SR attestation findings now say "not attested" and are counted as attestation-based.
+
+### Added — Linux STIG collector contract
+
+- `benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md` lists every input fact path the RHEL 9, RHEL 10 and Oracle Linux
+  8/9 STIG rules read, with type, accepted forms, a pass example and the rules that read it (for example
+  `fips.fips_enabled` must be the string "1"; `fips_mode` is not read). Generated from the rule tables;
+  `make check-generated` fails when it is stale. The RHEL 9 rule table imports without the DISA catalog.
+
+### Fixed — CIS Ubuntu 22.04: five gaps found with real host evidence (#332)
+
+- 2.4.1.7 passes when `/etc/cron.yearly` is absent (`cron.cron_yearly_exists: false`).
+- 2.3.3.2, 5.4.3.3 and 6.3.2 take a `collected: true` marker on `chronyd`, `pam` and `aide`, so collected-and-empty
+  is "not met" rather than "evidence missing"; 5.4.3.3 requires a umask line in `/etc/profile.d/*.sh`.
+- The module README holds the full input contract; its numeric comparisons are guarded.
+
+### Added — standards registry and release check (#308)
+
+- `standards.yaml`: every framework key with the standard, the implemented version tied to module text, the
+  publisher and a release-check method. `make check-standards` (run by `check-generated`) fails on drift.
+- `scripts/check_standard_releases.py` network mode checks OSCAL, GitHub, DISA, eCFR, CIS and publisher pages;
+  an unreadable source reports `failed`, never `current`.
+- STANDARDS_UPDATE_REGISTRY.md v1.2: stale rows fixed; COBIT 7 publication (2026-11-19) recorded (#194).
+
+### Added — coverage labels and quick starts beyond RHEL 9 (#313, #302, #311)
+
+- Every framework key is labelled validated, partial or experimental (`scripts/coverage_labels.json`); COVERAGE.md
+  prints the label with its evidence. 4 validated, 5 partial, 186 experimental.
+- STIG RHEL 9 V2R10 is partial (about 45 fact paths not collected); ISO/IEC 27701 is experimental, not validated.
+- `examples/` quick starts for CIS Windows Server 2022, CIS M365 v7, NIST 800-53, PCI DSS 4.0.1, CIS Kubernetes and
+  CIS AWS, each with a `check.sh` that asserts the result; walkthrough in docs/QUICKSTARTS.md.
+
+### Fixed — numeric comparisons outside benchmarks/ require a number (#300, part)
+
+- 390 comparisons across IEC 62443, NERC CIP, AMI, CMMC, NCSC CAF, CRA, FISMA, NIST 800-171, SSDF, SOX, PCI DSS,
+  SOC 2, ISO 27001, privacy, sovereignty, SLSA, FinOps and others now require `is_number`; violation rules report a
+  non-number as evidence missing. Type-trap tests in every changed module; the baseline shrinks to 468.
+
+### Added — per-control findings for CIS M365 v7, RHEL 9 and Windows Server 2022 (#309)
+
+- Every `control_results` row now carries `findings`: the messages that cite that recommendation (Windows
+  includes the observed value). It is empty for passes and for out-of-profile rows.
+- #310: no CIS benchmark → other-framework crosswalk ships yet, so rows carry no `mappings` field.
+
 ### Added — NIST SP 800-53 Rev 5: all 300 base controls and every High-baseline control (523 ids)
 
 The module evaluates 523 ids (was 370): all 300 active base controls and 223 enhancements, which is every control

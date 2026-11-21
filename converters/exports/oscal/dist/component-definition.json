@@ -194567,7 +194567,7 @@
        {
         "uuid": "fc56b808-5705-5baa-8c8c-2c76f8698868",
         "control-id": "cis_ubuntu_22_04-5.4.3.3",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.accounts (benchmarks/cis/ubuntu_22_04/accounts.rego): evidence missing — pam.profile_d_raw/pam.default_umask not collected",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.accounts (benchmarks/cis/ubuntu_22_04/accounts.rego): evidence missing — pam.profile_d_raw/pam.default_umask/pam.collected not collected",
         "props": [
          {
           "name": "label",
@@ -197667,7 +197667,7 @@
        {
         "uuid": "c0c7f2d2-d61a-5b36-aa10-45ae30bb298e",
         "control-id": "cis_ubuntu_22_04-6.3.2",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.integrity (benchmarks/cis/ubuntu_22_04/integrity.rego): evidence missing — aide.cron_raw/aide.aidecheck not collected",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.integrity (benchmarks/cis/ubuntu_22_04/integrity.rego): evidence missing — aide.cron_raw/aide.aidecheck/aide.collected not collected",
         "props": [
          {
           "name": "label",
@@ -197867,7 +197867,7 @@
        {
         "uuid": "7f5d08b8-54de-5f63-bec1-f9bebd5ff4ec",
         "control-id": "cis_ubuntu_22_04-2.4.1.7",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.job_schedulers (benchmarks/cis/ubuntu_22_04/job_schedulers.rego): evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.job_schedulers (benchmarks/cis/ubuntu_22_04/job_schedulers.rego): evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected",
         "props": [
          {
           "name": "label",
@@ -201642,7 +201642,7 @@
        {
         "uuid": "cdc6a763-b024-500c-a585-86514a2e3559",
         "control-id": "cis_ubuntu_22_04-2.3.3.2",
-        "description": "Evaluated by Rego package cis_ubuntu_22_04.time_sync (benchmarks/cis/ubuntu_22_04/time_sync.rego): evidence missing — chronyd.process_users not collected",
+        "description": "Evaluated by Rego package cis_ubuntu_22_04.time_sync (benchmarks/cis/ubuntu_22_04/time_sync.rego): evidence missing — chronyd.process_users/chronyd.collected not collected",
         "props": [
          {
           "name": "label",
@@ -300491,7 +300491,7 @@
        {
         "uuid": "e82e9922-cf21-5544-a6b2-3ad33d558dc3",
         "control-id": "cmmc-cmmc.access_control-27",
-        "description": "Evaluated by Rego package cmmc.access_control (frameworks/federal/cmmc/cmmc_access_control.rego): CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the Level 2 access-control practices were not evaluated and the domain is reported non-compliant",
+        "description": "Evaluated by Rego package cmmc.access_control (frameworks/federal/cmmc/cmmc_access_control.rego): CMMC AC input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the Level 2 access-control practices were not evaluated and the domain is reported non-compliant",
         "props": [
          {
           "name": "label",
@@ -301291,7 +301291,7 @@
        {
         "uuid": "0374e83e-3258-537f-aaf4-055d1beb4c56",
         "control-id": "cmmc-cmmc.configuration_management-11",
-        "description": "Evaluated by Rego package cmmc.configuration_management (frameworks/federal/cmmc/cmmc_configuration_management.rego): CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the configuration-management practices were not evaluated and the domain is reported non-compliant",
+        "description": "Evaluated by Rego package cmmc.configuration_management (frameworks/federal/cmmc/cmmc_configuration_management.rego): CMMC CM input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the configuration-management practices were not evaluated and the domain is reported non-compliant",
         "props": [
          {
           "name": "label",
@@ -301791,7 +301791,7 @@
        {
         "uuid": "5e3ae6ff-ce0d-5b87-bf41-e918ab5f7e28",
         "control-id": "cmmc-cmmc.incident_response-5",
-        "description": "Evaluated by Rego package cmmc.incident_response (frameworks/federal/cmmc/cmmc_incident_response.rego): CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied; the incident-response practices were not evaluated and the domain is reported non-compliant",
+        "description": "Evaluated by Rego package cmmc.incident_response (frameworks/federal/cmmc/cmmc_incident_response.rego): CMMC IR input contract: FAIL-CLOSED - input.cmmc_level was not supplied or is not a number (evidence missing); the incident-response practices were not evaluated and the domain is reported non-compliant",
         "props": [
          {
           "name": "label",
@@ -349425,7 +349425,7 @@
      {
       "uuid": "5575acf6-5063-5c37-8206-f05ac9e4645e",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/enforcement_aap.json",
-      "description": "Controls of enforcement_aap evaluated by the Rego Policy Libraries (8 controls, 2 Rego modules).",
+      "description": "Controls of enforcement_aap evaluated by the Rego Policy Libraries (9 controls, 2 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -349587,7 +349587,7 @@
        {
         "uuid": "f23f5e1b-a289-5dfe-8c2f-8ef7db8fc8d2",
         "control-id": "enforcement_aap-aac.aap.policy-7",
-        "description": "Evaluated by Rego package aac.aap.policy (enforcement/aap/naming_and_source.rego): Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref.",
+        "description": "Evaluated by Rego package aac.aap.policy (enforcement/aap/naming_and_source.rego): Project branch '%s' is not approved for execution (allowed: %v).",
         "props": [
          {
           "name": "label",
@@ -349612,11 +349612,36 @@
        {
         "uuid": "9fe65fa1-1609-50ba-b685-fb9599edc851",
         "control-id": "enforcement_aap-aac.aap.policy-8",
-        "description": "Evaluated by Rego package aac.aap.policy (enforcement/aap/naming_and_source.rego): All automation is blocked: %s.",
+        "description": "Evaluated by Rego package aac.aap.policy (enforcement/aap/naming_and_source.rego): Project is pinned to commit %s rather than a named branch — automation must run from a reviewable ref.",
         "props": [
          {
           "name": "label",
           "value": "aac.aap.policy#8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "aac.aap.policy"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/aap/naming_and_source.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4645200c-05e5-5180-b6ca-1ef1f38c51c3",
+        "control-id": "enforcement_aap-aac.aap.policy-9",
+        "description": "Evaluated by Rego package aac.aap.policy (enforcement/aap/naming_and_source.rego): All automation is blocked: %s.",
+        "props": [
+         {
+          "name": "label",
+          "value": "aac.aap.policy#9"
          },
          {
           "name": "rego-package",
@@ -352137,7 +352162,7 @@
      {
       "uuid": "99a71239-2365-5ec4-a1ac-8b92716bc904",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/enforcement_supply_chain.json",
-      "description": "Controls of enforcement_supply_chain evaluated by the Rego Policy Libraries (27 controls, 1 Rego modules).",
+      "description": "Controls of enforcement_supply_chain evaluated by the Rego Policy Libraries (28 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -352149,11 +352174,36 @@
        {
         "uuid": "364d8c4b-50e1-55fe-8bb0-834d6823de68",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-1",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SLSA: Build provenance attestation is missing",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SLSA Level: evidence missing - input.policy.required_slsa_level is not a number",
         "props": [
          {
           "name": "label",
           "value": "supply_chain.slsa#1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "supply_chain.slsa"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/supply_chain/slsa_governance.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "da3a4bd4-3ea4-5c20-b28e-5552cf683d92",
+        "control-id": "enforcement_supply_chain-supply_chain.slsa-2",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SLSA: Build provenance attestation is missing",
+        "props": [
+         {
+          "name": "label",
+          "value": "supply_chain.slsa#2"
          },
          {
           "name": "rego-package",
@@ -352197,13 +352247,13 @@
         ]
        },
        {
-        "uuid": "da3a4bd4-3ea4-5c20-b28e-5552cf683d92",
-        "control-id": "enforcement_supply_chain-supply_chain.slsa-2",
+        "uuid": "9f6c4d68-943f-5cae-bef3-77f28e9708da",
+        "control-id": "enforcement_supply_chain-supply_chain.slsa-3",
         "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SLSA Level %d: Required minimum SLSA level not met (current: %d)",
         "props": [
          {
           "name": "label",
-          "value": "supply_chain.slsa#2"
+          "value": "supply_chain.slsa#3"
          },
          {
           "name": "rego-package",
@@ -352272,34 +352322,9 @@
         ]
        },
        {
-        "uuid": "9f6c4d68-943f-5cae-bef3-77f28e9708da",
-        "control-id": "enforcement_supply_chain-supply_chain.slsa-3",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Artifact is not signed (Cosign/Sigstore signature missing)",
-        "props": [
-         {
-          "name": "label",
-          "value": "supply_chain.slsa#3"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "supply_chain.slsa"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "enforcement/supply_chain/slsa_governance.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
-       },
-       {
         "uuid": "973ba9ce-dfeb-583a-be09-9ee71abd6883",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-4",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Artifact signature verification failed",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Artifact is not signed (Cosign/Sigstore signature missing)",
         "props": [
          {
           "name": "label",
@@ -352324,7 +352349,7 @@
        {
         "uuid": "038f2ba1-db48-5154-957d-ab5be5742875",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-5",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Signing identity not from an approved OIDC provider",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Artifact signature verification failed",
         "props": [
          {
           "name": "label",
@@ -352349,7 +352374,7 @@
        {
         "uuid": "ec7a9e2b-bbc6-5aae-8ac4-38c350b78d9f",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-6",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Signing: Signing identity not from an approved OIDC provider",
         "props": [
          {
           "name": "label",
@@ -352374,7 +352399,7 @@
        {
         "uuid": "928c13e7-74d5-5010-b9c6-72a64e982472",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-7",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: No SBOM attached to artifact (SPDX or CycloneDX required)",
         "props": [
          {
           "name": "label",
@@ -352399,7 +352424,7 @@
        {
         "uuid": "6ae1a120-1a08-54f9-859d-c94d72e74bee",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-8",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM contains no components (empty bill of materials)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM format not recognized (expected SPDX-2.x or CycloneDX-1.x)",
         "props": [
          {
           "name": "label",
@@ -352424,7 +352449,7 @@
        {
         "uuid": "2b1fe43f-af93-5671-a7c1-6d2b067cbca3",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-9",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM missing required field 'document_namespace'",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM contains no components (empty bill of materials)",
         "props": [
          {
           "name": "label",
@@ -352449,7 +352474,7 @@
        {
         "uuid": "05b293ab-18b7-5dd8-a5d1-72709b725825",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-10",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM missing required field 'creation_timestamp'",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM missing required field 'document_namespace'",
         "props": [
          {
           "name": "label",
@@ -352474,7 +352499,7 @@
        {
         "uuid": "8428f672-e60a-5af6-9db4-1996fd0f6fba",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-11",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM components are missing PURL (Package URL) identifiers",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM missing required field 'creation_timestamp'",
         "props": [
          {
           "name": "label",
@@ -352499,7 +352524,7 @@
        {
         "uuid": "726ec16c-78ee-5668-a527-387c43246667",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-12",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM components missing license declarations",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM components are missing PURL (Package URL) identifiers",
         "props": [
          {
           "name": "label",
@@ -352524,7 +352549,7 @@
        {
         "uuid": "5ed99eec-1ad8-5e98-b2a7-997726fd5bdb",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-13",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: Floating version constraint '%s' found in %s (pin to exact version)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): SBOM: SBOM components missing license declarations",
         "props": [
          {
           "name": "label",
@@ -352549,7 +352574,7 @@
        {
         "uuid": "6b7ff74b-68da-5969-94b9-7ac3fbd8de93",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-14",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: Floating version constraint '%s' found in %s (pin to exact version)",
         "props": [
          {
           "name": "label",
@@ -352574,7 +352599,7 @@
        {
         "uuid": "1b712b39-b4eb-5708-bbba-3b9edf02aee8",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-15",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s has known CVE %s (CVSS %.1f — %s)",
         "props": [
          {
           "name": "label",
@@ -352599,7 +352624,7 @@
        {
         "uuid": "2eda7933-d69c-5349-aae8-3cf2d6daa828",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-16",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s has critical CVE %s with no exemption",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s CVE %s has no numeric CVSS score (got %v); treat as high until scored",
         "props": [
          {
           "name": "label",
@@ -352624,7 +352649,7 @@
        {
         "uuid": "d7f2c0f7-a08b-5c51-bc9f-11caa66fa94d",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-17",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): License: %s uses %s (strong copyleft — legal review required for commercial distribution)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Dependencies: %s@%s has critical CVE %s with no exemption",
         "props": [
          {
           "name": "label",
@@ -352649,7 +352674,7 @@
        {
         "uuid": "772f52fc-7377-586d-a422-57c4594e1f1b",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-18",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): License: %s has no license declaration (unknown license risk)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): License: %s uses %s (strong copyleft — legal review required for commercial distribution)",
         "props": [
          {
           "name": "label",
@@ -352674,7 +352699,7 @@
        {
         "uuid": "081a1b9d-05b5-527c-aa0e-41709dd0e978",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-19",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build source URI missing from provenance (cannot verify repository)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): License: %s has no license declaration (unknown license risk)",
         "props": [
          {
           "name": "label",
@@ -352699,7 +352724,7 @@
        {
         "uuid": "684db688-e1bf-57a1-8ee1-ef1b65df51c5",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-20",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build source URI missing from provenance (cannot verify repository)",
         "props": [
          {
           "name": "label",
@@ -352724,7 +352749,7 @@
        {
         "uuid": "2aca7685-d73d-5154-be21-54581f2e68f0",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-21",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build source URI does not match expected repository",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: policy.expected_source_uri_prefix is not set (source URI cannot be verified)",
         "props": [
          {
           "name": "label",
@@ -352749,7 +352774,7 @@
        {
         "uuid": "3cb1818b-9354-5134-8f7c-43fac8618cf2",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-22",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build source URI does not match expected repository",
         "props": [
          {
           "name": "label",
@@ -352774,7 +352799,7 @@
        {
         "uuid": "70c348d3-b5ad-5a96-9d4d-ea4e060d4521",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-23",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Provenance predicate type not SLSA v1.0",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Build triggered from unprotected ref (branch builds not allowed for releases)",
         "props": [
          {
           "name": "label",
@@ -352799,11 +352824,36 @@
        {
         "uuid": "fa13d54f-ab56-50e3-97a1-f392498d3c8e",
         "control-id": "enforcement_supply_chain-supply_chain.slsa-24",
-        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Builder identity not in approved builder registry",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Provenance predicate type not SLSA v1.0",
         "props": [
          {
           "name": "label",
           "value": "supply_chain.slsa#24"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "supply_chain.slsa"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enforcement/supply_chain/slsa_governance.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5afcc98b-f7cf-5e3f-a122-0ebc87e5c00b",
+        "control-id": "enforcement_supply_chain-supply_chain.slsa-25",
+        "description": "Evaluated by Rego package supply_chain.slsa (enforcement/supply_chain/slsa_governance.rego): Provenance: Builder identity not in approved builder registry",
+        "props": [
+         {
+          "name": "label",
+          "value": "supply_chain.slsa#25"
          },
          {
           "name": "rego-package",
@@ -362366,7 +362416,7 @@
      {
       "uuid": "f89fab19-fdef-5043-a983-70d59e32122a",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/finops.json",
-      "description": "Controls of finops evaluated by the Rego Policy Libraries (20 controls, 1 Rego modules).",
+      "description": "Controls of finops evaluated by the Rego Policy Libraries (21 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -362728,7 +362778,7 @@
        {
         "uuid": "085dbe66-c510-5f36-a211-2006eca86fe7",
         "control-id": "finops-finops.tagging-15",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Untagged: Resource '%s' is missing required tags and its age_days is not a number (evidence missing) — treat as past the 7-day grace period",
         "props": [
          {
           "name": "label",
@@ -362753,7 +362803,7 @@
        {
         "uuid": "3b4e75ca-9cc7-5749-b313-938336c7f969",
         "control-id": "finops-finops.tagging-16",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls",
         "props": [
          {
           "name": "label",
@@ -362778,7 +362828,7 @@
        {
         "uuid": "a164ca6c-a57f-5f77-9553-6349a6114ca8",
         "control-id": "finops-finops.tagging-17",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s",
         "props": [
          {
           "name": "label",
@@ -362803,7 +362853,7 @@
        {
         "uuid": "094cc745-8d00-5405-a8be-e694d2ad1d5f",
         "control-id": "finops-finops.tagging-18",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources",
         "props": [
          {
           "name": "label",
@@ -362828,7 +362878,7 @@
        {
         "uuid": "14dc6285-3514-5377-85dd-b76d22a1f181",
         "control-id": "finops-finops.tagging-19",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' budget %v or current spend %v is not a number",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)",
         "props": [
          {
           "name": "label",
@@ -362853,11 +362903,36 @@
        {
         "uuid": "eb6a93e9-4a87-50e2-bc01-64d4cdb9c407",
         "control-id": "finops-finops.tagging-20",
-        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' budget %v or current spend %v is not a number",
         "props": [
          {
           "name": "label",
           "value": "finops.tagging#20"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "finops.tagging"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "governance/finops/finops_tagging.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "14038217-d3a1-5d51-9cb8-d2f7cf8de137",
+        "control-id": "finops-finops.tagging-21",
+        "description": "Evaluated by Rego package finops.tagging (governance/finops/finops_tagging.rego): Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)",
+        "props": [
+         {
+          "name": "label",
+          "value": "finops.tagging#21"
          },
          {
           "name": "rego-package",
@@ -379492,7 +379567,7 @@
      {
       "uuid": "8a7b0f3b-008a-55b3-9e06-947bec82eb63",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/iec_62443.json",
-      "description": "Controls of iec_62443 evaluated by the Rego Policy Libraries (132 controls, 12 Rego modules).",
+      "description": "Controls of iec_62443 evaluated by the Rego Policy Libraries (138 controls, 12 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -380377,6 +380452,31 @@
         ]
        },
        {
+        "uuid": "939427eb-ff59-5e07-be6e-b2ba157dc3f3",
+        "control-id": "iec_62443-iec_62443.fr2-8",
+        "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): IEC 62443 SR 2.7 SL%v (UC): evidence missing - ICS system '%v' has no numeric concurrent_session_limit, so concurrent session control cannot be verified.",
+        "props": [
+         {
+          "name": "label",
+          "value": "iec_62443.fr2#8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr2"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "7fbc8a92-c32f-5eee-b372-916a44dcca6e",
         "control-id": "iec_62443-IEC-62443-SR-2.8-UC",
         "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): ICS system '%v' does not have audit logging enabled. Security-relevant events must be logged: login attempts, privilege use, configuration changes, and errors.",
@@ -380402,13 +380502,13 @@
         ]
        },
        {
-        "uuid": "939427eb-ff59-5e07-be6e-b2ba157dc3f3",
-        "control-id": "iec_62443-iec_62443.fr2-8",
+        "uuid": "ac456d56-f461-5938-bf01-d72daa660bd7",
+        "control-id": "iec_62443-iec_62443.fr2-9",
         "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): IEC 62443 SR 2.8 RE 1 SL%v (UC): Audit logs are not centrally collected. Centralized log aggregation is required at Security Level 2+ to enable correlation.",
         "props": [
          {
           "name": "label",
-          "value": "iec_62443.fr2#8"
+          "value": "iec_62443.fr2#9"
          },
          {
           "name": "rego-package",
@@ -380502,13 +380602,13 @@
         ]
        },
        {
-        "uuid": "ac456d56-f461-5938-bf01-d72daa660bd7",
-        "control-id": "iec_62443-iec_62443.fr2-9",
+        "uuid": "0af8ae4d-2c4c-5a89-a279-72079d66168a",
+        "control-id": "iec_62443-iec_62443.fr2-10",
         "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): IEC 62443 SR 2.12 SL%v (UC): ICS system '%v' does not provide non-repudiation. Cryptographic signing or equivalent mechanism is required at Security Level 2+ for critical actions.",
         "props": [
          {
           "name": "label",
-          "value": "iec_62443.fr2#9"
+          "value": "iec_62443.fr2#10"
          },
          {
           "name": "rego-package",
@@ -380559,6 +380659,31 @@
          {
           "name": "label",
           "value": "IEC 62443 SR 2.12 (UC)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr2"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8906e778-d5bf-584f-b2ed-5d29c6f83e8e",
+        "control-id": "iec_62443-IEC-62443-FR-2-UC",
+        "description": "Evaluated by Rego package iec_62443.fr2 (frameworks/critical_infrastructure/iec_62443/fr2_use_control.rego): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 FR 2 (UC)"
          },
          {
           "name": "rego-package",
@@ -380959,6 +381084,31 @@
          {
           "name": "label",
           "value": "iec_62443.fr3#7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr3"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr3_system_integrity.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4e7f1d57-7445-5f1e-9ed2-774cd16e067d",
+        "control-id": "iec_62443-IEC-62443-FR-3-SI",
+        "description": "Evaluated by Rego package iec_62443.fr3 (frameworks/critical_infrastructure/iec_62443/fr3_system_integrity.rego): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 FR 3 (SI)"
          },
          {
           "name": "rego-package",
@@ -381427,6 +381577,31 @@
         ]
        },
        {
+        "uuid": "c24232f5-6a25-5083-b12a-0e05e1c54f68",
+        "control-id": "iec_62443-IEC-62443-FR-5-RDF",
+        "description": "Evaluated by Rego package iec_62443.fr5 (frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 FR 5 (RDF)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr5"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr5_restricted_data_flow.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "b4de9184-aa6c-55fb-a346-bb68db69a69f",
         "control-id": "iec_62443-IEC-62443-SR-6.1-TRE",
         "description": "Evaluated by Rego package iec_62443.fr6 (frameworks/critical_infrastructure/iec_62443/fr6_timely_response.rego): IACS audit log access is not controlled. Logs must be accessible to authorized security and operations personnel while protected against unauthorized access.",
@@ -381634,6 +381809,31 @@
          {
           "name": "label",
           "value": "iec_62443.fr6#7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr6"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr6_timely_response.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f6fc6762-c5b7-5068-80db-95a32c80457d",
+        "control-id": "iec_62443-IEC-62443-FR-6-TRE",
+        "description": "Evaluated by Rego package iec_62443.fr6 (frameworks/critical_infrastructure/iec_62443/fr6_timely_response.rego): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 FR 6 (TRE)"
          },
          {
           "name": "rego-package",
@@ -382059,6 +382259,31 @@
          {
           "name": "label",
           "value": "iec_62443.fr7#9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iec_62443.fr7"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/critical_infrastructure/iec_62443/fr7_resource_availability.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "86533713-f0bb-5c94-b590-06aa07a41f7c",
+        "control-id": "iec_62443-IEC-62443-FR-7-RA",
+        "description": "Evaluated by Rego package iec_62443.fr7 (frameworks/critical_infrastructure/iec_62443/fr7_resource_availability.rego): evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+        "props": [
+         {
+          "name": "label",
+          "value": "IEC 62443 FR 7 (RA)"
          },
          {
           "name": "rego-package",
@@ -472395,7 +472620,7 @@
      {
       "uuid": "ee1b8856-f390-5990-b4bf-6b00fae137e4",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/nist_sp_800_53.json",
-      "description": "Controls of nist_sp_800_53 evaluated by the Rego Policy Libraries (588 controls, 20 Rego modules).",
+      "description": "Controls of nist_sp_800_53 evaluated by the Rego Policy Libraries (608 controls, 20 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -474705,6 +474930,31 @@
         ]
        },
        {
+        "uuid": "f6217912-a7bf-5afb-b1fc-e4861637b882",
+        "control-id": "nist_sp_800_53-NIST-AC-3-14",
+        "description": "Evaluated by Rego package nist.sp800_53.access_control (frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AC-3(14)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.access_control"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/access_control/ac_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "64d451ed-f7f9-5435-8495-e1786873851d",
         "control-id": "nist_sp_800_53-NIST-CA-1",
         "description": "Evaluated by Rego package nist.sp800_53.assessment_authorization (frameworks/federal/nist/sp_800_53/assessment_authorization/ca_controls.rego): %s",
@@ -475855,6 +476105,31 @@
         ]
        },
        {
+        "uuid": "453d0b43-970f-52b3-84db-7ea88f0a24d7",
+        "control-id": "nist_sp_800_53-NIST-AU-3-3",
+        "description": "Evaluated by Rego package nist.sp800_53.audit_accountability (frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AU-3(3)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.audit_accountability"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/audit_accountability/au_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "16ea0374-4cd8-5f20-9164-a28ff7e0e593",
         "control-id": "nist_sp_800_53-NIST-AT-1",
         "description": "Evaluated by Rego package nist.sp800_53.awareness_training (frameworks/federal/nist/sp_800_53/awareness_training/at_controls.rego): %s",
@@ -476012,6 +476287,31 @@
          {
           "name": "label",
           "value": "NIST AT-2(3)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.awareness_training"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/awareness_training/at_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "67bfec40-b3ec-50ab-9670-af8f0aea2ad8",
+        "control-id": "nist_sp_800_53-NIST-AT-3-5",
+        "description": "Evaluated by Rego package nist.sp800_53.awareness_training (frameworks/federal/nist/sp_800_53/awareness_training/at_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST AT-3(5)"
          },
          {
           "name": "rego-package",
@@ -479280,6 +479580,56 @@
         ]
        },
        {
+        "uuid": "322846e2-098e-51d1-9b7e-9cfda85b35d9",
+        "control-id": "nist_sp_800_53-NIST-IR-2-3",
+        "description": "Evaluated by Rego package nist.sp800_53.incident_response (frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST IR-2(3)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.incident_response"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e878a0ee-0278-5aab-bf45-e9698953f087",
+        "control-id": "nist_sp_800_53-NIST-IR-8-1",
+        "description": "Evaluated by Rego package nist.sp800_53.incident_response (frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST IR-8(1)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.incident_response"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/incident_response/ir_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "536e2807-17e3-547a-b106-152148f678d0",
         "control-id": "nist_sp_800_53-NIST-MA-1",
         "description": "Evaluated by Rego package nist.sp800_53.maintenance (frameworks/federal/nist/sp_800_53/maintenance/ma_controls.rego): Maintenance policy and procedures requirements not met — %s",
@@ -481730,6 +482080,56 @@
         ]
        },
        {
+        "uuid": "e9b70d17-b39c-54e9-a036-5cba8b8ba624",
+        "control-id": "nist_sp_800_53-nist.sp800_53.physical_environmental-16",
+        "description": "Evaluated by Rego package nist.sp800_53.physical_environmental (frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego): Implemented by a Rego rule in frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego (package nist.sp800_53.physical_environmental); see the rule body.",
+        "props": [
+         {
+          "name": "label",
+          "value": "nist.sp800_53.physical_environmental#16"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.physical_environmental"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a5d9e3cd-9d44-5218-9f6f-18ca21774f0a",
+        "control-id": "nist_sp_800_53-NIST-PE-8-3",
+        "description": "Evaluated by Rego package nist.sp800_53.physical_environmental (frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego): Visitor access records contain PII elements outside the organization-defined list — %v",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PE-8(3)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.physical_environmental"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/physical_environmental/pe_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "74d3a1c0-76bc-50c6-be47-cc589cdef655",
         "control-id": "nist_sp_800_53-NIST-PT-1",
         "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): PII processing and transparency policy and procedures: %s",
@@ -481912,6 +482312,131 @@
          {
           "name": "label",
           "value": "NIST PT-8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.pii_processing_transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ec2d349a-909b-559c-8742-95b09ca846dd",
+        "control-id": "nist_sp_800_53-NIST-PT-5-2",
+        "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PT-5(2)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.pii_processing_transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f3f81aac-6b74-50c6-9014-331ce6e39052",
+        "control-id": "nist_sp_800_53-NIST-PT-6-1",
+        "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PT-6(1)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.pii_processing_transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ae4a6c81-b058-5af4-b5ec-0fc09b46cd7a",
+        "control-id": "nist_sp_800_53-NIST-PT-6-2",
+        "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PT-6(2)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.pii_processing_transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "db363bfc-fe4e-5e8a-9a28-1799ba6a4c49",
+        "control-id": "nist_sp_800_53-NIST-PT-7-1",
+        "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PT-7(1)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.pii_processing_transparency"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d619932a-bea8-522b-8ca5-91adc8ed03d2",
+        "control-id": "nist_sp_800_53-NIST-PT-7-2",
+        "description": "Evaluated by Rego package nist.sp800_53.pii_processing_transparency (frameworks/federal/nist/sp_800_53/pii_processing_transparency/pt_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PT-7(2)"
          },
          {
           "name": "rego-package",
@@ -482937,6 +483462,56 @@
          {
           "name": "label",
           "value": "NIST PM-32"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.program_management"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/program_management/pm_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f6f7dc52-643c-5a8f-8fd4-1f3661c30fb1",
+        "control-id": "nist_sp_800_53-NIST-PM-5-1",
+        "description": "Evaluated by Rego package nist.sp800_53.program_management (frameworks/federal/nist/sp_800_53/program_management/pm_controls.rego): evidence missing — %s not collected%s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PM-5(1)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.program_management"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/program_management/pm_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9a4495ec-8dce-53f9-9ce8-2c6b56b78495",
+        "control-id": "nist_sp_800_53-NIST-PM-20-1",
+        "description": "Evaluated by Rego package nist.sp800_53.program_management (frameworks/federal/nist/sp_800_53/program_management/pm_controls.rego): evidence missing — %s not collected%s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST PM-20(1)"
          },
          {
           "name": "rego-package",
@@ -485280,6 +485855,31 @@
         ]
        },
        {
+        "uuid": "24f43c29-5be6-5ced-93b0-ab7cbcaab410",
+        "control-id": "nist_sp_800_53-NIST-SC-7-24",
+        "description": "Evaluated by Rego package nist.sp800_53.system_communications (frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SC-7(24)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_communications"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_communications/sc_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "634d526d-b0f0-5be8-8fd1-adb276c0ce57",
         "control-id": "nist_sp_800_53-NIST-SI-1",
         "description": "Evaluated by Rego package nist.sp800_53.system_information_integrity (frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego): %s",
@@ -486405,6 +487005,106 @@
         ]
        },
        {
+        "uuid": "4033a34e-e7cc-5790-a0fa-fc4869a851b0",
+        "control-id": "nist_sp_800_53-NIST-SI-12-1",
+        "description": "Evaluated by Rego package nist.sp800_53.system_information_integrity (frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SI-12(1)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_information_integrity"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a06d5f21-15cf-5b3e-8659-4c48c3491aa3",
+        "control-id": "nist_sp_800_53-NIST-SI-12-2",
+        "description": "Evaluated by Rego package nist.sp800_53.system_information_integrity (frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SI-12(2)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_information_integrity"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "43ecbc4f-28eb-5a81-851c-7c38899524ef",
+        "control-id": "nist_sp_800_53-NIST-SI-12-3",
+        "description": "Evaluated by Rego package nist.sp800_53.system_information_integrity (frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SI-12(3)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_information_integrity"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cad44a7f-2e13-5a9a-84e7-093182a7a820",
+        "control-id": "nist_sp_800_53-NIST-SI-18-4",
+        "description": "Evaluated by Rego package nist.sp800_53.system_information_integrity (frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SI-18(4)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_information_integrity"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_information_integrity/si_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
         "uuid": "5b6148a3-ad6b-505d-a1f2-e1f53a3fb877",
         "control-id": "nist_sp_800_53-NIST-SA-1",
         "description": "Evaluated by Rego package nist.sp800_53.system_services_acquisition (frameworks/federal/nist/sp_800_53/system_services_acquisition/sa_controls.rego): system and services acquisition policy and procedures: %s",
@@ -487087,6 +487787,31 @@
          {
           "name": "label",
           "value": "NIST SA-11(2)"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist.sp800_53.system_services_acquisition"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/federal/nist/sp_800_53/system_services_acquisition/sa_controls.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "10ad6f52-9dae-5669-ae14-58604b93b92e",
+        "control-id": "nist_sp_800_53-NIST-SA-8-33",
+        "description": "Evaluated by Rego package nist.sp800_53.system_services_acquisition (frameworks/federal/nist/sp_800_53/system_services_acquisition/sa_controls.rego): %s",
+        "props": [
+         {
+          "name": "label",
+          "value": "NIST SA-8(33)"
          },
          {
           "name": "rego-package",
@@ -614529,7 +615254,7 @@
      {
       "uuid": "c02c2dbb-58cb-558e-acbb-a443fad4b3de",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/profiles/nist_800_53_rev5_privacy.json",
-      "description": "NIST SP 800-53 Rev 5 Privacy baseline: the library evaluates 77 of 96 controls with at least one check (75/75 base controls, 2/21 enhancements). Controls not listed are not evaluated.",
+      "description": "NIST SP 800-53 Rev 5 Privacy baseline: the library evaluates 96 of 96 controls with at least one check (75/75 base controls, 21/21 enhancements). Controls not listed are not evaluated.",
       "props": [
        {
         "name": "baseline",
@@ -614557,6 +615282,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "70565980-5549-59cd-bada-00220454e74b",
+        "control-id": "ac-3.14",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AC-3(14)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -614627,6 +615374,28 @@
         ]
        },
        {
+        "uuid": "10f53134-630f-507b-b9ba-4736c5bb0d3c",
+        "control-id": "at-3.5",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AT-3(5)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "b3286380-f481-55ea-b9de-be04f473b581",
         "control-id": "at-4",
         "description": "Evaluated by 1 library check",
@@ -614689,6 +615458,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "2b5bbbcc-3b89-5ce7-b972-887c90c7aa36",
+        "control-id": "au-3.3",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST AU-3(3)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -614935,6 +615726,28 @@
         ]
        },
        {
+        "uuid": "a06ac56b-fa06-55e6-8c58-ad9a83822196",
+        "control-id": "ir-2.3",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST IR-2(3)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "0e975024-746a-58c2-9159-9010babe6a31",
         "control-id": "ir-3",
         "description": "Evaluated by 3 library checks",
@@ -615067,6 +615880,28 @@
         ]
        },
        {
+        "uuid": "90bc4c36-7772-5139-82d9-abc8889483d9",
+        "control-id": "ir-8.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST IR-8(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "54e60c1b-ff5d-5c5b-86d6-9fa3a213cd86",
         "control-id": "mp-1",
         "description": "Evaluated by 2 library checks",
@@ -615107,6 +615942,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "af448fed-7f45-5afd-b095-75f7adef6032",
+        "control-id": "pe-8.3",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PE-8(3)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -615283,6 +616140,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "7a52e196-261a-5691-a3f5-7fb86c7c750b",
+        "control-id": "pm-5.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PM-5(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -615547,6 +616426,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "5b0eb7dc-2841-51b7-9b9c-9a48bd114756",
+        "control-id": "pm-20.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PM-20(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -615859,6 +616760,28 @@
         ]
        },
        {
+        "uuid": "5e06a78d-e682-5a33-b4dc-1a35706f8f5d",
+        "control-id": "pt-5.2",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PT-5(2)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "e67b43b5-3e2d-55a6-925b-1aa4a6e3e0a3",
         "control-id": "pt-6",
         "description": "Evaluated by 1 library check",
@@ -615881,6 +616804,50 @@
         ]
        },
        {
+        "uuid": "65b39262-5ec8-5822-889d-63da7b4b5627",
+        "control-id": "pt-6.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PT-6(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
+        "uuid": "9812cbf3-e1a4-5b0b-84b3-8d251ef0a71d",
+        "control-id": "pt-6.2",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PT-6(2)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "51e9f02c-b7a8-5bd4-be70-576eb452d80c",
         "control-id": "pt-7",
         "description": "Evaluated by 1 library check",
@@ -615899,6 +616866,50 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "154a01a2-224e-57b7-bec8-668f2ea7eea1",
+        "control-id": "pt-7.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PT-7(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
+        "uuid": "e4169898-d85e-5396-9628-62900a23993c",
+        "control-id": "pt-7.2",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST PT-7(2)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -616101,6 +617112,28 @@
         ]
        },
        {
+        "uuid": "90ec7a7c-5386-5587-94ed-bf77b9907d7c",
+        "control-id": "sa-8.33",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SA-8(33)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "e968fb6f-94ec-5bfc-94d3-b4169041f61a",
         "control-id": "sa-9",
         "description": "Evaluated by 1 library check",
@@ -616141,6 +617174,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "e75b83b2-2e8a-53a2-af5b-9827fa23c167",
+        "control-id": "sc-7.24",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SC-7(24)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },
@@ -616189,6 +617244,72 @@
         ]
        },
        {
+        "uuid": "adb96c03-d464-5b0e-972c-28d3b2c48a70",
+        "control-id": "si-12.1",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SI-12(1)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
+        "uuid": "894504eb-8743-5db0-be05-fdf658427fa6",
+        "control-id": "si-12.2",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SI-12(2)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
+        "uuid": "3b361d2b-00c9-5b3e-8c26-c13ea5cc50ae",
+        "control-id": "si-12.3",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SI-12(3)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
+         }
+        ]
+       },
+       {
         "uuid": "00ddeda5-c704-5a7d-9845-a18c463cbf4a",
         "control-id": "si-18",
         "description": "Evaluated by 1 library check",
@@ -616207,6 +617328,28 @@
           "name": "granularity",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
           "value": "base-control"
+         }
+        ]
+       },
+       {
+        "uuid": "2f32b292-711e-5b07-9748-8e39f723bab6",
+        "control-id": "si-18.4",
+        "description": "Evaluated by 1 library check",
+        "props": [
+         {
+          "name": "library-checks",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist_sp_800_53:NIST SI-18(4)"
+         },
+         {
+          "name": "mapping-sources",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "nist-800-53-module"
+         },
+         {
+          "name": "granularity",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "enhancement"
          }
         ]
        },

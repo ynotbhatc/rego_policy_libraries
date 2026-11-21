@@ -282,26 +282,31 @@ performance_metrics_tracked if {
 
 # Continuous Monitoring Maturity Assessment
 continuous_monitoring_maturity_level := "LEVEL_1_INITIAL" if {
+	is_number(continuous_monitoring_score)
 	continuous_monitoring_score >= 0
 	continuous_monitoring_score < 40
 }
 
 continuous_monitoring_maturity_level := "LEVEL_2_DEVELOPING" if {
+	is_number(continuous_monitoring_score)
 	continuous_monitoring_score >= 40
 	continuous_monitoring_score < 60
 }
 
 continuous_monitoring_maturity_level := "LEVEL_3_DEFINED" if {
+	is_number(continuous_monitoring_score)
 	continuous_monitoring_score >= 60
 	continuous_monitoring_score < 80
 }
 
 continuous_monitoring_maturity_level := "LEVEL_4_MANAGED" if {
+	is_number(continuous_monitoring_score)
 	continuous_monitoring_score >= 80
 	continuous_monitoring_score < 95
 }
 
 continuous_monitoring_maturity_level := "LEVEL_5_OPTIMIZED" if {
+	is_number(continuous_monitoring_score)
 	continuous_monitoring_score >= 95
 }
 

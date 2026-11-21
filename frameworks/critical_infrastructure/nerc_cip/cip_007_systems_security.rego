@@ -141,6 +141,7 @@ security_patch_evaluation_timely if {
 patch_evaluated_timely(patch) if {
 	patch.evaluation.completed == true
 	evaluation_age_days := (date_ns(patch.evaluation.completion_date) - date_ns(patch.availability_date)) / (((24 * 60) * 60) * 1000000000)
+	is_number(evaluation_age_days)
 	evaluation_age_days <= 35
 }
 
@@ -217,6 +218,7 @@ security_monitoring_adequate(system) if {
 	monitoring := input.security_monitoring[system.system_id]
 	monitoring.logging_enabled == true
 	monitoring.log_retention_adequate == true
+	is_number(monitoring.log_retention_days)
 	monitoring.log_retention_days >= 90
 	monitoring.event_correlation == true
 	monitoring.alerting_configured == true
@@ -264,10 +266,12 @@ access_controls_adequate(system) if {
 
 # R5.2 - Implement a policy for authenticating interactive user access
 password_policy_enforced if {
+	is_number(input.password_policy.minimum_length)
 	input.password_policy.minimum_length >= 8
 	input.password_policy.complexity_required == true
 	input.password_policy.expiration_configured == true
 	input.password_policy.account_lockout_configured == true
+	is_number(input.password_policy.lockout_threshold)
 	input.password_policy.lockout_threshold <= 5
 }
 

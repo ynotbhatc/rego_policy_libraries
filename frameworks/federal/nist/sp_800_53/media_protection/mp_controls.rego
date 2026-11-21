@@ -217,6 +217,7 @@ _count_missing(paths) := {_path(p) |
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _nonzero(p, fmt) := {sprintf(fmt, [n]) |

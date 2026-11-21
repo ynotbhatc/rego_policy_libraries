@@ -10,7 +10,7 @@ _ids(r) := {trim_prefix(split(v, ":")[0], "NIST ") | some v in r.violations}
 
 _freq(days, odp) := {"days_since_last": days, "odp": {"frequency_days": odp}}
 
-_pass := {"at_controls": {
+_pass_base := {"at_controls": {
 	"policy_procedures": {
 		"policy_documented": true,
 		"procedures_documented": true,
@@ -47,7 +47,7 @@ test_all_pass_fixture_is_compliant if {
 }
 
 test_evaluated_controls_match_the_catalog if {
-	at.evaluated_controls == {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-4", "AT-6"}
+	at.evaluated_controls == {"AT-1", "AT-2", "AT-2(2)", "AT-2(3)", "AT-3", "AT-3(5)", "AT-4", "AT-6"}
 }
 
 test_empty_input_one_finding_per_control if {
@@ -203,4 +203,30 @@ test_section_not_an_object_is_evidence_missing if {
 	r := at.compliance_report with input as fx
 	_ids(r) == {"AT-6"}
 	contains(concat("", r.violations), "evidence missing")
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"at_controls": {"role_based_training": {"pii_processing": {"initial_training_provided": true, "personnel_without_initial_training": 0, "refresher": {"days_since_last": 100, "odp": {"frequency_days": 365}}}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_at3_5_fails_1 if {
+	v := data.nist.sp800_53.awareness_training.violation with input as object.union(_pass, {"at_controls": {"role_based_training": {"pii_processing": {"personnel_without_initial_training": 3}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AT-3(5)"}
+	some x in v
+	contains(x, "have not had initial PII processing")
+}
+
+test_privacy_at3_5_evidence_missing_2 if {
+	v := data.nist.sp800_53.awareness_training.violation with input as object.union(_pass, {"at_controls": {"role_based_training": {"pii_processing": {"refresher": {"odp": {"frequency_days": null}}}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AT-3(5)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_at3_5_evidence_missing_3 if {
+	v := data.nist.sp800_53.awareness_training.violation with input as object.union(_pass, {"at_controls": {"role_based_training": {"pii_processing": {"personnel_without_initial_training": -1}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AT-3(5)"}
+	some x in v
+	contains(x, "evidence missing")
 }

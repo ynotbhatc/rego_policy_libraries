@@ -399,6 +399,10 @@ e_2_4_1_7 if {
 	input.packages.cron == false
 }
 
+e_2_4_1_7 if {
+	input.cron.cron_yearly_exists == false
+}
+
 default p_2_4_1_7 := false
 
 p_2_4_1_7 if {
@@ -411,7 +415,11 @@ p_2_4_1_7 if {
 	input.packages.cron == false
 }
 
-violations contains "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group (or packages.cron) not collected" if not e_2_4_1_7
+p_2_4_1_7 if {
+	input.cron.cron_yearly_exists == false
+}
+
+violations contains "2.4.1.7: evidence missing — cron.cron_yearly_mode/cron.cron_yearly_owner/cron.cron_yearly_group/cron.cron_yearly_exists (or packages.cron) not collected" if not e_2_4_1_7
 
 violations contains "2.4.1.7: not met — access to /etc/cron.yearly must be explicitly configured" if {
 	e_2_4_1_7

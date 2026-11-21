@@ -6,14 +6,14 @@
 #   source: iec
 #   domains: [ot, industrial]
 #   coverage:
-#     checks: 14
+#     checks: 15
 #     cited: 1
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package iec_62443.part2_3
 
 import rego.v1
@@ -102,11 +102,16 @@ violations contains msg if {
 # ---------------------------------------------------------------------------
 
 violations contains msg if {
+	is_number(input.patch_management.max_patch_delay_days)
 	input.patch_management.max_patch_delay_days > 90
 	msg := sprintf(
 		"IEC 62443-2-3: Critical IACS patches are delayed up to %v days. Critical security patches must be deployed within 90 days; within 30 days for actively exploited vulnerabilities.",
 		[input.patch_management.max_patch_delay_days],
 	)
+}
+
+violations contains "IEC 62443-2-3: evidence missing - input.patch_management.max_patch_delay_days is not a number" if {
+	not is_number(object.get(input, ["patch_management", "max_patch_delay_days"], null))
 }
 
 violations contains msg if {

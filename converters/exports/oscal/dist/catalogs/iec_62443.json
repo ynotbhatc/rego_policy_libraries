@@ -1370,6 +1370,39 @@
       "class": "ot"
      },
      {
+      "id": "iec_62443-iec_62443.fr2-8",
+      "title": "IEC 62443 SR 2.7 SL%v (UC): evidence missing - ICS system '%v' has no numeric concurrent_session_limit, so concurrent session control cannot be verified.",
+      "props": [
+       {
+        "name": "label",
+        "value": "iec_62443.fr2#8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "iec_62443.fr2#8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f8b9817-1257-5c07-b077-61b5b59ed465",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-iec_62443.fr2-8_stmt",
+        "name": "statement",
+        "prose": "IEC 62443 SR 2.7 SL%v (UC): evidence missing - ICS system '%v' has no numeric concurrent_session_limit, so concurrent session control cannot be verified."
+       }
+      ],
+      "class": "ot"
+     },
+     {
       "id": "iec_62443-IEC-62443-SR-2.8-UC",
       "title": "ICS system '%v' does not have audit logging enabled. Security-relevant events must be logged: login attempts, privilege use, configuration changes, and errors.",
       "props": [
@@ -1413,16 +1446,16 @@
       "class": "ot"
      },
      {
-      "id": "iec_62443-iec_62443.fr2-8",
+      "id": "iec_62443-iec_62443.fr2-9",
       "title": "IEC 62443 SR 2.8 RE 1 SL%v (UC): Audit logs are not centrally collected. Centralized log aggregation is required at Security Level 2+ to enable correlation.",
       "props": [
        {
         "name": "label",
-        "value": "iec_62443.fr2#8"
+        "value": "iec_62443.fr2#9"
        },
        {
         "name": "alt-identifier",
-        "value": "iec_62443.fr2#8"
+        "value": "iec_62443.fr2#9"
        },
        {
         "name": "rego-package",
@@ -1438,7 +1471,7 @@
       ],
       "parts": [
        {
-        "id": "iec_62443-iec_62443.fr2-8_stmt",
+        "id": "iec_62443-iec_62443.fr2-9_stmt",
         "name": "statement",
         "prose": "IEC 62443 SR 2.8 RE 1 SL%v (UC): Audit logs are not centrally collected. Centralized log aggregation is required at Security Level 2+ to enable correlation."
        }
@@ -1560,16 +1593,16 @@
       "class": "ot"
      },
      {
-      "id": "iec_62443-iec_62443.fr2-9",
+      "id": "iec_62443-iec_62443.fr2-10",
       "title": "IEC 62443 SR 2.12 SL%v (UC): ICS system '%v' does not provide non-repudiation. Cryptographic signing or equivalent mechanism is required at Security Level 2+ for critical actions.",
       "props": [
        {
         "name": "label",
-        "value": "iec_62443.fr2#9"
+        "value": "iec_62443.fr2#10"
        },
        {
         "name": "alt-identifier",
-        "value": "iec_62443.fr2#9"
+        "value": "iec_62443.fr2#10"
        },
        {
         "name": "rego-package",
@@ -1585,7 +1618,7 @@
       ],
       "parts": [
        {
-        "id": "iec_62443-iec_62443.fr2-9_stmt",
+        "id": "iec_62443-iec_62443.fr2-10_stmt",
         "name": "statement",
         "prose": "IEC 62443 SR 2.12 SL%v (UC): ICS system '%v' does not provide non-repudiation. Cryptographic signing or equivalent mechanism is required at Security Level 2+ for critical actions."
        }
@@ -1654,6 +1687,39 @@
         "id": "iec_62443-IEC-62443-SR-2.12-UC_stmt",
         "name": "statement",
         "prose": "evidence missing — input.ics_systems not collected, so this requirement cannot be verified"
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-FR-2-UC",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 2 (UC)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 2 (UC)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr2"
+       }
+      ],
+      "links": [
+       {
+        "href": "#8f8b9817-1257-5c07-b077-61b5b59ed465",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-2-UC_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
        }
       ],
       "class": "ot"
@@ -2269,6 +2335,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-FR-3-SI",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 3 (SI)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 3 (SI)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr3"
+       }
+      ],
+      "links": [
+       {
+        "href": "#880b5dcf-8c14-5bc3-87cd-21d4fcd5e2e2",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-3-SI_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -2850,6 +2949,11 @@
        {
         "id": "iec_62443-IEC-62443-SR-5.3-RDF_obj.1",
         "name": "assessment-objective",
+        "prose": "evidence missing - zone '%v' permits unrestricted general-purpose communications and has no numeric security_level, so the restriction cannot be evaluated."
+       },
+       {
+        "id": "iec_62443-IEC-62443-SR-5.3-RDF_obj.2",
+        "name": "assessment-objective",
         "prose": "evidence missing — input.network not collected, so this requirement cannot be verified"
        }
       ],
@@ -2988,6 +3092,39 @@
         "id": "iec_62443-iec_62443.fr5-6_stmt",
         "name": "statement",
         "prose": "IEC 62443 SR 5.4 RE 2 SL%v (RDF): High-criticality ICS system '%v' does not run on dedicated hardware. Physical hardware separation from non-IACS workloads is required for high-criticality systems at SL 3+."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-FR-5-RDF",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 5 (RDF)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 5 (RDF)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr5"
+       }
+      ],
+      "links": [
+       {
+        "href": "#ff356c50-17b3-5cf5-a64c-5384fe04c6a9",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-5-RDF_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
        }
       ],
       "class": "ot"
@@ -3329,6 +3466,39 @@
         "id": "iec_62443-iec_62443.fr6-7_stmt",
         "name": "statement",
         "prose": "IEC 62443 SR 6.2 RE 4 SL%v (TRE): No anomaly-based detection for IACS. Behavioral anomaly detection is required at Security Level 4 to detect sophisticated, previously unseen attacks."
+       }
+      ],
+      "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-FR-6-TRE",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 6 (TRE)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 6 (TRE)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr6"
+       }
+      ],
+      "links": [
+       {
+        "href": "#1c9eb077-7b74-5b03-b004-ffff905b9b67",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-6-TRE_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
        }
       ],
       "class": "ot"
@@ -3987,6 +4157,39 @@
        }
       ],
       "class": "ot"
+     },
+     {
+      "id": "iec_62443-IEC-62443-FR-7-RA",
+      "title": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "IEC 62443 FR 7 (RA)"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "IEC 62443 FR 7 (RA)"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iec_62443.fr7"
+       }
+      ],
+      "links": [
+       {
+        "href": "#38841e05-4e53-5c5b-a008-1c828a9565f6",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iec_62443-IEC-62443-FR-7-RA_stmt",
+        "name": "statement",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
+       }
+      ],
+      "class": "ot"
      }
     ]
    },
@@ -4462,35 +4665,40 @@
        {
         "id": "iec_62443-IEC-62443-2-3_obj.7",
         "name": "assessment-objective",
-        "prose": "No documented patch deployment schedule. A maintenance window schedule for IACS patches must be established that balances security and operational continuity."
+        "prose": "evidence missing - input.patch_management.max_patch_delay_days is not a number"
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.8",
         "name": "assessment-objective",
-        "prose": "Patch management is not integrated with change management. All IACS patches must go through the formal change management process to maintain configuration control."
+        "prose": "No documented patch deployment schedule. A maintenance window schedule for IACS patches must be established that balances security and operational continuity."
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.9",
         "name": "assessment-objective",
-        "prose": "No emergency patch procedure defined. A documented emergency patch procedure for critical/zero-day vulnerabilities is required for timely response."
+        "prose": "Patch management is not integrated with change management. All IACS patches must go through the formal change management process to maintain configuration control."
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.10",
         "name": "assessment-objective",
-        "prose": "No rollback capability for IACS patches. The ability to revert to a pre-patch state is required in case a patch causes operational issues."
+        "prose": "No emergency patch procedure defined. A documented emergency patch procedure for critical/zero-day vulnerabilities is required for timely response."
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.11",
         "name": "assessment-objective",
-        "prose": "No compensating controls defined for unpatched IACS vulnerabilities. When patching is not immediately feasible, compensating controls (network isolation, additional monitoring, vendor mitigations) must be documented and implemented."
+        "prose": "No rollback capability for IACS patches. The ability to revert to a pre-patch state is required in case a patch causes operational issues."
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.12",
         "name": "assessment-objective",
-        "prose": "ICS system '%v' is running an outdated OS version. Unsupported or unpatched operating systems represent unacceptable risk in an IACS environment."
+        "prose": "No compensating controls defined for unpatched IACS vulnerabilities. When patching is not immediately feasible, compensating controls (network isolation, additional monitoring, vendor mitigations) must be documented and implemented."
        },
        {
         "id": "iec_62443-IEC-62443-2-3_obj.13",
+        "name": "assessment-objective",
+        "prose": "ICS system '%v' is running an outdated OS version. Unsupported or unpatched operating systems represent unacceptable risk in an IACS environment."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-3_obj.14",
         "name": "assessment-objective",
         "prose": "ICS system '%v' firmware is not current. Outdated firmware may contain unmitigated vulnerabilities — apply vendor-recommended firmware updates following the patch testing process."
        }
@@ -4564,77 +4772,97 @@
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.3",
         "name": "assessment-objective",
-        "prose": "Security roles and responsibilities are not defined. Ownership of each security control, including an IACS Security Manager role, must be assigned."
+        "prose": "evidence missing - input.security_management.policy_review_cycle_months is not a number"
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.4",
         "name": "assessment-objective",
-        "prose": "No IACS risk management process. A formal process for identifying, assessing, and treating cybersecurity risks to the IACS is required."
+        "prose": "Security roles and responsibilities are not defined. Ownership of each security control, including an IACS Security Manager role, must be assigned."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.5",
         "name": "assessment-objective",
-        "prose": "No IACS cybersecurity risk assessment has been conducted. A risk assessment is the foundation for all security decisions."
+        "prose": "No IACS risk management process. A formal process for identifying, assessing, and treating cybersecurity risks to the IACS is required."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.6",
         "name": "assessment-objective",
-        "prose": "IACS risk assessment is reviewed every %v months. Risk assessments must be reviewed at least every 24 months or after significant system changes."
+        "prose": "No IACS cybersecurity risk assessment has been conducted. A risk assessment is the foundation for all security decisions."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.7",
         "name": "assessment-objective",
-        "prose": "IACS asset inventory is incomplete. A complete asset inventory is a prerequisite for risk assessment and security program effectiveness."
+        "prose": "IACS risk assessment is reviewed every %v months. Risk assessments must be reviewed at least every 24 months or after significant system changes."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.8",
         "name": "assessment-objective",
-        "prose": "No threat modeling performed for IACS. Threat modeling (identifying realistic threat actors and attack vectors) must inform risk treatment decisions."
+        "prose": "evidence missing - input.risk_assessment.review_frequency_months is not a number"
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.9",
         "name": "assessment-objective",
-        "prose": "No consequence analysis performed. Impact analysis of cyber incidents on safety, operations, environment, and business continuity is required."
+        "prose": "IACS asset inventory is incomplete. A complete asset inventory is a prerequisite for risk assessment and security program effectiveness."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.10",
         "name": "assessment-objective",
-        "prose": "No security awareness training for IACS personnel. All employees with IACS access must receive role-appropriate cybersecurity training."
+        "prose": "No threat modeling performed for IACS. Threat modeling (identifying realistic threat actors and attack vectors) must inform risk treatment decisions."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.11",
         "name": "assessment-objective",
-        "prose": "IACS security training is conducted every %v months. Training must be conducted at least annually."
+        "prose": "No consequence analysis performed. Impact analysis of cyber incidents on safety, operations, environment, and business continuity is required."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.12",
         "name": "assessment-objective",
-        "prose": "No IACS incident response capability. A documented ICS-specific incident response plan with trained personnel and clear escalation paths is required."
+        "prose": "No security awareness training for IACS personnel. All employees with IACS access must receive role-appropriate cybersecurity training."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.13",
         "name": "assessment-objective",
-        "prose": "No supply chain security program for IACS. Security requirements must extend to OT vendors, integrators, and managed service providers with IACS access."
+        "prose": "IACS security training is conducted every %v months. Training must be conducted at least annually."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.14",
         "name": "assessment-objective",
-        "prose": "Security requirements are not imposed on third parties. All vendors and contractors with IACS access must meet defined security requirements (ref: IEC 62443-2-4)."
+        "prose": "evidence missing - input.security_management.training_frequency_months is not a number"
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.15",
         "name": "assessment-objective",
-        "prose": "No security metrics tracked. The CSMS must define and track key performance indicators (KPIs) for measuring security effectiveness."
+        "prose": "No IACS incident response capability. A documented ICS-specific incident response plan with trained personnel and clear escalation paths is required."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.16",
         "name": "assessment-objective",
-        "prose": "No CSMS audit conducted. The CSMS must be periodically audited against the defined objectives and requirements."
+        "prose": "No supply chain security program for IACS. Security requirements must extend to OT vendors, integrators, and managed service providers with IACS access."
        },
        {
         "id": "iec_62443-IEC-62443-2-1-CSMS_obj.17",
         "name": "assessment-objective",
+        "prose": "Security requirements are not imposed on third parties. All vendors and contractors with IACS access must meet defined security requirements (ref: IEC 62443-2-4)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.18",
+        "name": "assessment-objective",
+        "prose": "No security metrics tracked. The CSMS must define and track key performance indicators (KPIs) for measuring security effectiveness."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.19",
+        "name": "assessment-objective",
+        "prose": "No CSMS audit conducted. The CSMS must be periodically audited against the defined objectives and requirements."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.20",
+        "name": "assessment-objective",
         "prose": "CSMS audits are conducted every %v months. Audits must be conducted at least every 24 months."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-1-CSMS_obj.21",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.security_management.csms_audit_frequency_months is not a number"
        }
       ],
       "class": "ot"
@@ -5001,6 +5229,11 @@
         "id": "iec_62443-IEC-62443-2-4-SP.09_obj.1",
         "name": "assessment-objective",
         "prose": "Security event notification SLA is %v hours. Service providers must notify asset owners of critical security events within 24 hours; immediately for active incidents."
+       },
+       {
+        "id": "iec_62443-IEC-62443-2-4-SP.09_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.service_provider.incident_notification_sla_hours is not a number"
        }
       ],
       "class": "ot"
@@ -5169,6 +5402,11 @@
         "id": "iec_62443-IEC-62443-3-2-ZCR-3_obj.2",
         "name": "assessment-objective",
         "prose": "High-criticality zone '%v' has Security Level %v. High-criticality IACS zones should have SL-T of at least 2 (SL 3 or 4 recommended for BES and safety-critical systems)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2-ZCR-3_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - high-criticality zone '%v' has no numeric security_level, so its SL-T cannot be verified."
        }
       ],
       "class": "ot"
@@ -5268,6 +5506,16 @@
         "id": "iec_62443-IEC-62443-3-2_stmt",
         "name": "statement",
         "prose": "Risk assessment review cycle is %v months. IACS risk assessments must be reviewed at least every 24 months and after significant changes (new systems, topology changes, incident)."
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.risk_assessment.review_frequency_months is not a number"
+       },
+       {
+        "id": "iec_62443-IEC-62443-3-2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.target_sl not provided; Security Level dependent requirements cannot be evaluated"
        }
       ],
       "class": "ot"

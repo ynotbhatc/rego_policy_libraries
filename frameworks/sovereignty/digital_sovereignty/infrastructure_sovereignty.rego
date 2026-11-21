@@ -230,6 +230,7 @@ data_portability_in_open_formats if {
 default migration_timeline_acceptable := false
 
 migration_timeline_acceptable if {
+	is_number(input.exit_strategy.estimated_migration_days)
 	input.exit_strategy.estimated_migration_days <= 90
 }
 

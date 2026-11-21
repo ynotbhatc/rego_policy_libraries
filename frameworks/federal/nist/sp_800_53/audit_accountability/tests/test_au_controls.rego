@@ -35,7 +35,7 @@ test_au11_missing_retention_is_missing_evidence if {
 
 test_au_one_finding_per_evaluated_id_on_empty_input if {
 	r := au.compliance_report with input as {}
-	count(r.violations) == 30
+	count(r.violations) == 31
 	every id in au.evaluated_controls {
 		count(_finding(r, id)) == 1
 	}
@@ -61,7 +61,7 @@ test_au8_false_fails if {
 
 _ids(r) := {trim_prefix(split(v, ":")[0], "NIST ") | some v in r.violations}
 
-_pass := {"au_controls": {
+_pass_base := {"au_controls": {
 	"policy": {"documented": true},
 	"event_logging": {"enabled": true},
 	"content_of_records": {
@@ -145,7 +145,7 @@ test_new_ids_are_evaluated if {
 	every c in _new_cases {
 		c[0] in au.evaluated_controls
 	}
-	count(au.evaluated_controls) == 30
+	count(au.evaluated_controls) == 31
 }
 
 test_each_new_id_failing_case_flips_only_that_id if {
@@ -324,4 +324,23 @@ test_strict_boolean_false_keeps_rule_text if {
 	_ids(r) == {"AU-4"}
 	contains(concat("", r.violations), "storage capacity insufficient")
 	not contains(concat("", r.violations), "evidence missing")
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"au_controls": {"content_of_records": {"pii_elements": {"odp": {"permitted_elements": ["user_id"]}, "elements_present": ["user_id"]}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_au3_3_fails_1 if {
+	v := data.nist.sp800_53.audit_accountability.violation with input as object.union(_pass, {"au_controls": {"content_of_records": {"pii_elements": {"elements_present": ["user_id", "ssn"]}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AU-3(3)"}
+	some x in v
+	contains(x, "outside the organization-defined list")
+}
+
+test_privacy_au3_3_evidence_missing_2 if {
+	v := data.nist.sp800_53.audit_accountability.violation with input as object.union(_pass, {"au_controls": {"content_of_records": {"pii_elements": {"odp": {"permitted_elements": []}}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"AU-3(3)"}
+	some x in v
+	contains(x, "evidence missing")
 }

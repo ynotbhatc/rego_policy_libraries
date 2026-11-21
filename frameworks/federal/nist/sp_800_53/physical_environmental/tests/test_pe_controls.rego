@@ -8,7 +8,7 @@ _att := {"attestation": {"attested": true, "by": "Facility security officer", "d
 
 _freq := {"days_since_last": 30, "odp": {"frequency_days": 90}}
 
-_pass := {"pe_controls": {
+_pass_base := {"pe_controls": {
 	"policy": {"documented": true, "official_designated": true, "review": {"days_since_last": 100, "odp": {"frequency_days": 365}}},
 	"procedures": {"documented": true, "review": {"days_since_last": 200, "odp": {"frequency_days": 365}}},
 	"physical_access_authorizations": {
@@ -88,7 +88,7 @@ test_evaluated_controls_match_catalog if {
 	data.nist.sp800_53.physical_environmental.evaluated_controls == {
 		"PE-1", "PE-2", "PE-3", "PE-3(1)", "PE-4", "PE-5", "PE-6", "PE-6(1)", "PE-6(4)", "PE-8", "PE-8(1)", "PE-9",
 		"PE-10", "PE-11", "PE-11(1)", "PE-12", "PE-13", "PE-13(1)", "PE-13(2)", "PE-14", "PE-14(2)", "PE-15",
-		"PE-15(1)", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23",
+		"PE-15(1)", "PE-16", "PE-17", "PE-18", "PE-19", "PE-20", "PE-21", "PE-22", "PE-23", "PE-8(3)",
 	}
 }
 
@@ -471,4 +471,23 @@ test_pe15_1_missing_is_evidence_missing_and_base_unaffected if {
 	r := data.nist.sp800_53.physical_environmental.compliance_report with input as inp
 	_failing(r) == {"PE-15(1)"}
 	contains(concat("", r.violations), "evidence missing")
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"pe_controls": {"visitor_access_records": {"pii_elements": {"odp": {"permitted_elements": ["name", "organization"]}, "elements_recorded": ["name"]}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_pe8_3_fails_1 if {
+	v := data.nist.sp800_53.physical_environmental.violation with input as object.union(_pass, {"pe_controls": {"visitor_access_records": {"pii_elements": {"elements_recorded": ["name", "date_of_birth"]}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PE-8(3)"}
+	some x in v
+	contains(x, "date_of_birth")
+}
+
+test_privacy_pe8_3_evidence_missing_2 if {
+	v := data.nist.sp800_53.physical_environmental.violation with input as object.union(_pass, {"pe_controls": {"visitor_access_records": {"pii_elements": {"elements_recorded": "name"}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"PE-8(3)"}
+	some x in v
+	contains(x, "evidence missing")
 }

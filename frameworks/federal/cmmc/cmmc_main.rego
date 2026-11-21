@@ -351,6 +351,7 @@ cmmc_level_1_compliant if {
 default cmmc_level_2_compliant := false
 
 cmmc_level_2_compliant if {
+	is_number(assessed_level)
 	assessed_level >= 2
 	_all_satisfied(level_2_requirements)
 }

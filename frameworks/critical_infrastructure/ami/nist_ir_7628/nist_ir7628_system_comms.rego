@@ -80,6 +80,7 @@ rf_mesh_encrypted if {
 key_management_secure if {
 	input.system_comms.key_management.hsm_used == true
 	input.system_comms.key_management.key_escrow_policy_defined == true
+	is_number(input.system_comms.key_management.master_key_rotation_days)
 	input.system_comms.key_management.master_key_rotation_days <= 365
 }
 

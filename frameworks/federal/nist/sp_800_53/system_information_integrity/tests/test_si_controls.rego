@@ -6,7 +6,7 @@ import rego.v1
 # does `with input as`, which the wasm build rejects); each failing case changes one fact of the all-pass fixture
 # and must flip exactly that control id.
 
-_pass := {"si_controls": {"policy": {"documented": true}, "flaw_remediation": {"timely": true, "automated_status": {"automated": true, "days_since_last": 1, "odp": {"frequency_days": 7}}, "time_to_remediate": {"measured": true, "max_days_to_remediate": 12, "odp": {"benchmark_days": 30}}}, "malicious_code_protection": {"deployed": true}, "system_monitoring": {"continuous": true, "real_time_analysis": {"automated_tools_enabled": true}, "traffic_monitoring": {"criteria_defined": true, "inbound_monitored": true, "outbound_monitored": true, "days_since_last": 0, "odp": {"frequency_days": 1}}, "alerts": {"recipients_configured": true, "indicators_without_alert": 0}, "system_wide_ids": {"integrated": true, "tools_not_connected": 0}, "encrypted_traffic_visibility": {"traffic_types_not_visible": 0}, "outbound_anomaly_analysis": {"external_interfaces_not_analyzed": 0, "interior_points_not_analyzed": 0}, "organization_alerts": {"automated": true, "recipients_configured": true, "triggers_without_alert": 0}, "wireless_ids": {"deployed": true, "rogue_device_detection": true, "attack_detection": true}, "correlation": {"sources_not_correlated": 0}, "covert_exfiltration": {"external_interfaces_not_analyzed": 0, "interior_points_not_analyzed": 0}, "individual_risk": {"individuals_without_additional_monitoring": 0}, "privileged_users": {"accounts_without_additional_monitoring": 0}, "unauthorized_services": {"detection_enabled": true, "response_configured": true, "unhandled_detections": 0}, "host_based": {"components_without_monitoring": 0}}, "security_alerts": {"acted_upon": true, "automated_broadcast": {"automated": true}}, "security_function_verification": {"tested": true}, "software_firmware_integrity": {"verified": true, "integrity_checks": {"unchecked_items": 0, "days_since_last": 1, "odp": {"frequency_days": 7}}, "incident_response_integration": {"unauthorized_changes_routed": true}, "automated_notifications": {"enabled": true, "recipients_configured": true}, "automated_response": {"enabled": true, "components_without_response": 0}, "code_authentication": {"signature_verification_enforced": true, "unauthenticated_installations": 0}}, "spam_protection": {"enabled": true, "automatic_updates": {"enabled": true, "days_since_last": 1, "odp": {"frequency_days": 1}}}, "input_validation": {"enforced": true}, "error_handling": {"no_info_disclosure": true}, "information_management_retention": {"policy_enforced": true}, "memory_protection": {"enabled": true}, "predictable_failure_prevention": {"components_without_mttf": 0, "substitution_criteria_defined": true, "components_without_standby": 0}, "non_persistence": {"components_not_from_known_state": 0, "oldest_instance_age_days": 0, "odp": {"max_lifetime_days": 1}}, "output_filtering": {"applications_without_validation": 0}, "fail_safe": {"procedures_defined": true, "conditions_without_procedure": 0}, "pii_quality": {"days_since_last": 30, "odp": {"frequency_days": 90}, "uncorrected_records": 0}, "de_identification": {"datasets_with_identifying_elements": 0, "days_since_last": 30, "odp": {"frequency_days": 180}}, "tainting": {"components_without_taint": 0}, "information_refresh": {"days_since_last": 1, "odp": {"frequency_days": 7}}, "information_diversity": {"functions_without_alternative_source": 0, "components_without_failover": 0}, "information_fragmentation": {"attestation": {"attested": true, "by": "System Owner", "date": "2026-11-01"}}}}
+_pass_base := {"si_controls": {"policy": {"documented": true}, "flaw_remediation": {"timely": true, "automated_status": {"automated": true, "days_since_last": 1, "odp": {"frequency_days": 7}}, "time_to_remediate": {"measured": true, "max_days_to_remediate": 12, "odp": {"benchmark_days": 30}}}, "malicious_code_protection": {"deployed": true}, "system_monitoring": {"continuous": true, "real_time_analysis": {"automated_tools_enabled": true}, "traffic_monitoring": {"criteria_defined": true, "inbound_monitored": true, "outbound_monitored": true, "days_since_last": 0, "odp": {"frequency_days": 1}}, "alerts": {"recipients_configured": true, "indicators_without_alert": 0}, "system_wide_ids": {"integrated": true, "tools_not_connected": 0}, "encrypted_traffic_visibility": {"traffic_types_not_visible": 0}, "outbound_anomaly_analysis": {"external_interfaces_not_analyzed": 0, "interior_points_not_analyzed": 0}, "organization_alerts": {"automated": true, "recipients_configured": true, "triggers_without_alert": 0}, "wireless_ids": {"deployed": true, "rogue_device_detection": true, "attack_detection": true}, "correlation": {"sources_not_correlated": 0}, "covert_exfiltration": {"external_interfaces_not_analyzed": 0, "interior_points_not_analyzed": 0}, "individual_risk": {"individuals_without_additional_monitoring": 0}, "privileged_users": {"accounts_without_additional_monitoring": 0}, "unauthorized_services": {"detection_enabled": true, "response_configured": true, "unhandled_detections": 0}, "host_based": {"components_without_monitoring": 0}}, "security_alerts": {"acted_upon": true, "automated_broadcast": {"automated": true}}, "security_function_verification": {"tested": true}, "software_firmware_integrity": {"verified": true, "integrity_checks": {"unchecked_items": 0, "days_since_last": 1, "odp": {"frequency_days": 7}}, "incident_response_integration": {"unauthorized_changes_routed": true}, "automated_notifications": {"enabled": true, "recipients_configured": true}, "automated_response": {"enabled": true, "components_without_response": 0}, "code_authentication": {"signature_verification_enforced": true, "unauthenticated_installations": 0}}, "spam_protection": {"enabled": true, "automatic_updates": {"enabled": true, "days_since_last": 1, "odp": {"frequency_days": 1}}}, "input_validation": {"enforced": true}, "error_handling": {"no_info_disclosure": true}, "information_management_retention": {"policy_enforced": true}, "memory_protection": {"enabled": true}, "predictable_failure_prevention": {"components_without_mttf": 0, "substitution_criteria_defined": true, "components_without_standby": 0}, "non_persistence": {"components_not_from_known_state": 0, "oldest_instance_age_days": 0, "odp": {"max_lifetime_days": 1}}, "output_filtering": {"applications_without_validation": 0}, "fail_safe": {"procedures_defined": true, "conditions_without_procedure": 0}, "pii_quality": {"days_since_last": 30, "odp": {"frequency_days": 90}, "uncorrected_records": 0}, "de_identification": {"datasets_with_identifying_elements": 0, "days_since_last": 30, "odp": {"frequency_days": 180}}, "tainting": {"components_without_taint": 0}, "information_refresh": {"days_since_last": 1, "odp": {"frequency_days": 7}}, "information_diversity": {"functions_without_alternative_source": 0, "components_without_failover": 0}, "information_fragmentation": {"attestation": {"attested": true, "by": "System Owner", "date": "2026-11-01"}}}}
 
 _flagged(v, id) := [x | some x in v; startswith(x, concat("", ["NIST ", id, ":"]))]
 
@@ -18,7 +18,7 @@ test_all_pass_fixture_is_compliant if {
 
 test_empty_input_one_finding_per_control if {
 	r := data.nist.sp800_53.system_information_integrity.compliance_report with input as {}
-	r.controls_evaluated == 45
+	r.controls_evaluated == 49
 	count(r.violations) == count(data.nist.sp800_53.system_information_integrity.evaluated_controls)
 	every id in data.nist.sp800_53.system_information_integrity.evaluated_controls {
 		count(_flagged(r.violations, id)) == 1
@@ -29,7 +29,7 @@ test_empty_input_one_finding_per_control if {
 }
 
 test_evaluated_controls_match_catalog if {
-	data.nist.sp800_53.system_information_integrity.evaluated_controls == {"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)", "SI-4(11)", "SI-4(12)", "SI-4(14)", "SI-4(16)", "SI-4(18)", "SI-4(19)", "SI-4(20)", "SI-4(22)", "SI-4(23)", "SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)", "SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21", "SI-22", "SI-23"}
+	data.nist.sp800_53.system_information_integrity.evaluated_controls == {"SI-1", "SI-2", "SI-2(2)", "SI-2(3)", "SI-3", "SI-4", "SI-4(1)", "SI-4(2)", "SI-4(4)", "SI-4(5)", "SI-4(10)", "SI-4(11)", "SI-4(12)", "SI-4(14)", "SI-4(16)", "SI-4(18)", "SI-4(19)", "SI-4(20)", "SI-4(22)", "SI-4(23)", "SI-5", "SI-5(1)", "SI-6", "SI-7", "SI-7(1)", "SI-7(2)", "SI-7(5)", "SI-7(7)", "SI-7(15)", "SI-8", "SI-8(2)", "SI-10", "SI-11", "SI-12", "SI-13", "SI-14", "SI-15", "SI-16", "SI-17", "SI-18", "SI-19", "SI-20", "SI-21", "SI-22", "SI-23", "SI-12(1)", "SI-12(2)", "SI-12(3)", "SI-18(4)"}
 }
 
 test_enhancement_missing_does_not_fail_base if {
@@ -930,4 +930,65 @@ test_high_enhancements_missing_do_not_fail_base if {
 	every x in v {
 		contains(x, "evidence missing")
 	}
+}
+
+# The all-pass fixture with the facts of the Privacy-baseline enhancements.
+_pass := object.union(_pass_base, {"si_controls": {"information_management_retention": {"pii_elements": {"odp": {"permitted_elements": ["name", "email"]}, "elements_processed": ["name"]}, "pii_minimization": {"odp": {"techniques": ["masking"]}, "techniques_applied": ["masking", "synthetic data"], "unminimized_datasets": 0}, "disposal": {"odp": {"techniques": ["crypto-erase"]}, "techniques_applied": ["crypto-erase"], "records_past_retention": 0}}, "pii_quality": {"individual_requests": {"process_implemented": true, "requests_not_actioned": 0}}}})
+
+# --- Privacy-baseline enhancements and count type traps: each case flips exactly one id ---
+
+test_privacy_si12_1_fails_1 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"pii_elements": {"elements_processed": ["name", "ssn"]}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(1)"}
+	some x in v
+	contains(x, "outside the organization-defined list")
+}
+
+test_privacy_si12_1_evidence_missing_2 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"pii_elements": {"elements_processed": null}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(1)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_si12_2_fails_1 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"pii_minimization": {"techniques_applied": ["synthetic data"]}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(2)"}
+	some x in v
+	contains(x, "minimization techniques not used")
+}
+
+test_privacy_si12_2_evidence_missing_2 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"pii_minimization": {"unminimized_datasets": 2.5}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(2)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_si12_3_fails_1 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"disposal": {"records_past_retention": 7}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(3)"}
+	some x in v
+	contains(x, "beyond their retention period")
+}
+
+test_privacy_si12_3_evidence_missing_2 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"information_management_retention": {"disposal": {"records_past_retention": -1}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-12(3)"}
+	some x in v
+	contains(x, "evidence missing")
+}
+
+test_privacy_si18_4_fails_1 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"pii_quality": {"individual_requests": {"requests_not_actioned": 2}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-18(4)"}
+	some x in v
+	contains(x, "not actioned")
+}
+
+test_privacy_si18_4_evidence_missing_2 if {
+	v := data.nist.sp800_53.system_information_integrity.violation with input as object.union(_pass, {"si_controls": {"pii_quality": {"individual_requests": {"process_implemented": "true"}}}})
+	{trim_prefix(split(x, ":")[0], "NIST ") | some x in v} == {"SI-18(4)"}
+	some x in v
+	contains(x, "evidence missing")
 }

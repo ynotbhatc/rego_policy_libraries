@@ -6,8 +6,8 @@
 #   source: nist
 #   domains: [us-federal, security-controls]
 #   coverage:
-#     checks: 31
-#     cited: 30
+#     checks: 32
+#     cited: 31
 #     density: sized
 #     basis: size
 #     tested: true
@@ -22,7 +22,7 @@ import rego.v1
 # Generation, protection, review, and analysis of audit records.
 # Evaluated: AU-1..AU-14 and AU-16, the NIST SP 800-53B Moderate enhancements AU-3(1), AU-6(1), AU-6(3), AU-7(1),
 # AU-9(4), and the NIST / FedRAMP High enhancements AU-5(1), AU-5(2), AU-6(4), AU-6(5), AU-6(6), AU-6(7), AU-9(2),
-# AU-9(3), AU-12(1), AU-12(3) (30 ids). AU-15 is withdrawn (moved to AU-5(5)).
+# AU-9(3), AU-12(1), AU-12(3), and the Privacy-baseline enhancement AU-3(3) (31 ids). AU-15 is withdrawn (moved to AU-5(5)).
 # A base control never fails on an enhancement's requirement; each enhancement is its own finding.
 
 default compliant := false
@@ -143,6 +143,15 @@ _au_list_missing(ps) := {concat("", [_au_path(p), " (non-empty list)"]) | some p
 
 _au_array_missing(ps) := {concat("", [_au_path(p), " (list)"]) | some p in ps; not is_array(_au_get(p))}
 
+# A count: a non-negative whole number; anything else is evidence missing.
+_au_count_ok(x) if {
+	is_number(x)
+	x >= 0
+	floor(x) == x
+}
+
+_au_count_missing(ps) := {_au_path(p) | some p in ps; not _au_count_ok(_au_get(p))}
+
 _au_num_missing(ps) := {_au_path(p) | some p in ps; not is_number(_au_get(p))}
 
 _au_bool_false(ps) := {sprintf("%s is not true", [_au_path(p)]) | some p in ps; _au_get(p) == false}
@@ -160,6 +169,7 @@ _au_lacking(obs, odp, what) := {sprintf("%s not covered: %v (%s)", [what, sort(l
 _au_nonzero(p, what) := {sprintf("%v %s (%s)", [v, what, _au_path(p)]) |
 	v := _au_get(p)
 	is_number(v)
+	_au_count_ok(v)
 	v > 0
 }
 
@@ -187,7 +197,7 @@ _au6_1_failed := _au_lacking(concat(".", [_au6_1, "mechanisms_integrated"]), con
 # uncorrelated_repositories (count of audit record repositories not fed into the correlation).
 _au6_3 := "review_and_analysis.correlation"
 
-_au6_3_missing := _au_bool_missing([concat(".", [_au6_3, "correlation_enabled"])]) | _au_num_missing([concat(".", [_au6_3, "uncorrelated_repositories"])])
+_au6_3_missing := (_au_bool_missing([concat(".", [_au6_3, "correlation_enabled"])]) | _au_num_missing([concat(".", [_au6_3, "uncorrelated_repositories"])])) | _au_count_missing([concat(".", [_au6_3, "uncorrelated_repositories"])])
 
 _au6_3_failed := _au_bool_false([concat(".", [_au6_3, "correlation_enabled"])]) | _au_nonzero(concat(".", [_au6_3, "uncorrelated_repositories"]), "audit record repositories not correlated")
 
@@ -207,7 +217,7 @@ _au7_1_failed := _au_lacking(concat(".", [_au7_1, "searchable_fields"]), concat(
 # accounts_outside_authorized_roles (count of accounts able to manage audit logging that are not in those roles).
 _au9_4 := "protection_of_records.management_access"
 
-_au9_4_missing := _au_list_missing([concat(".", [_au9_4, "odp.authorized_roles"])]) | _au_num_missing([concat(".", [_au9_4, "accounts_outside_authorized_roles"])])
+_au9_4_missing := (_au_list_missing([concat(".", [_au9_4, "odp.authorized_roles"])]) | _au_num_missing([concat(".", [_au9_4, "accounts_outside_authorized_roles"])])) | _au_count_missing([concat(".", [_au9_4, "accounts_outside_authorized_roles"])])
 
 _au9_4_failed := _au_nonzero(concat(".", [_au9_4, "accounts_outside_authorized_roles"]), "accounts able to manage audit logging outside the organization-defined roles")
 
@@ -273,7 +283,7 @@ _au5_2_failed := _au_lacking(_au_f(_au5_2, "alerted_events"), _au_f(_au5_2, "odp
 # records do not reach it).
 _au6_4 := "review_and_analysis.central_review"
 
-_au6_4_missing := _au_bool_missing([_au_f(_au6_4, "enabled")]) | _au_num_missing([_au_f(_au6_4, "components_not_centralized")])
+_au6_4_missing := (_au_bool_missing([_au_f(_au6_4, "enabled")]) | _au_num_missing([_au_f(_au6_4, "components_not_centralized")])) | _au_count_missing([_au_f(_au6_4, "components_not_centralized")])
 
 _au6_4_failed := _au_bool_false([_au_f(_au6_4, "enabled")]) | _au_nonzero(_au_f(_au6_4, "components_not_centralized"), "system components whose audit records are not centrally reviewed")
 
@@ -293,7 +303,7 @@ _au6_5_failed := _au_lacking(_au_f(_au6_5, "sources_integrated"), _au_f(_au6_5, 
 # (count of physical access monitoring sources not correlated).
 _au6_6 := "review_and_analysis.physical_correlation"
 
-_au6_6_missing := _au_bool_missing([_au_f(_au6_6, "enabled")]) | _au_num_missing([_au_f(_au6_6, "physical_access_sources_uncorrelated")])
+_au6_6_missing := (_au_bool_missing([_au_f(_au6_6, "enabled")]) | _au_num_missing([_au_f(_au6_6, "physical_access_sources_uncorrelated")])) | _au_count_missing([_au_f(_au6_6, "physical_access_sources_uncorrelated")])
 
 _au6_6_failed := _au_bool_false([_au_f(_au6_6, "enabled")]) | _au_nonzero(_au_f(_au6_6, "physical_access_sources_uncorrelated"), "physical access monitoring sources not correlated with audit records")
 
@@ -320,6 +330,10 @@ _au6_7_missing contains concat("", [_au_path(_au_f(_au6_7, "odp.defined_for")), 
 
 _au6_7_missing contains m if {
 	some m in _au_num_missing([_au_f(_au6_7, "entities_without_defined_actions")])
+}
+
+_au6_7_missing contains m if {
+	some m in _au_count_missing([_au_f(_au6_7, "entities_without_defined_actions")])
 }
 
 _au6_7_failed := _au_nonzero(_au_f(_au6_7, "entities_without_defined_actions"), "processes, roles or users with access to audit information and no specified permitted actions")
@@ -360,7 +374,7 @@ _au12_1_failed := _au_lacking(_au_f(_au12_1, "components_in_trail"), _au_f(_au12
 # max_minutes_to_apply (longest observed time for a logging change to take effect) + odp.within_minutes.
 _au12_3 := "generation.authorized_changes"
 
-_au12_3_missing := (_au_bool_missing([_au_f(_au12_3, "capability_enabled")]) | _au_list_missing([_au_f(_au12_3, "odp.roles")])) | _au_num_missing([_au_f(_au12_3, f) | some f in ["accounts_outside_roles", "max_minutes_to_apply", "odp.within_minutes"]])
+_au12_3_missing := ((_au_bool_missing([_au_f(_au12_3, "capability_enabled")]) | _au_list_missing([_au_f(_au12_3, "odp.roles")])) | _au_num_missing([_au_f(_au12_3, f) | some f in ["accounts_outside_roles", "max_minutes_to_apply", "odp.within_minutes"]])) | _au_count_missing([_au_f(_au12_3, "accounts_outside_roles")])
 
 _au12_3_failed := (_au_bool_false([_au_f(_au12_3, "capability_enabled")]) | _au_nonzero(_au_f(_au12_3, "accounts_outside_roles"), "accounts able to change logging outside the organization-defined roles")) | _au_over(_au_f(_au12_3, "max_minutes_to_apply"), _au_f(_au12_3, "odp.within_minutes"), "logging changes took up to %v minutes to apply; the organization-defined threshold is %v minutes")
 
@@ -371,7 +385,7 @@ _au12_3_failed := (_au_bool_false([_au_f(_au12_3, "capability_enabled")]) | _au_
 # disclosures found in the review period not notified to the organization-defined personnel or roles).
 _au13 := "information_disclosure_monitoring"
 
-_au13_missing := _au_list_missing([_au_f(_au13, "odp.sources")]) | _au_num_missing([_au_f(_au13, f) | some f in ["days_since_last", "odp.frequency_days", "disclosures_not_notified"]])
+_au13_missing := (_au_list_missing([_au_f(_au13, "odp.sources")]) | _au_num_missing([_au_f(_au13, f) | some f in ["days_since_last", "odp.frequency_days", "disclosures_not_notified"]])) | _au_count_missing([_au_f(_au13, "disclosures_not_notified")])
 
 _au13_failed := _au_over(_au_f(_au13, "days_since_last"), _au_f(_au13, "odp.frequency_days"), "information disclosure monitoring last run %v days ago; the organization-defined frequency is %v days") | _au_nonzero(_au_f(_au13, "disclosures_not_notified"), "discovered information disclosures not notified")
 
@@ -391,7 +405,7 @@ _au14_failed := _au_bool_false([_au_f(_au14, "capability_enabled")])
 # external_transfers_without_coordination (count of cross-boundary audit flows with no coordination method).
 _au16 := "cross_organizational"
 
-_au16_missing := (_au_list_missing([_au_f(_au16, "odp.methods")]) | _au_array_missing([_au_f(_au16, "methods_in_use")])) | _au_num_missing([_au_f(_au16, "external_transfers_without_coordination")])
+_au16_missing := ((_au_list_missing([_au_f(_au16, "odp.methods")]) | _au_array_missing([_au_f(_au16, "methods_in_use")])) | _au_num_missing([_au_f(_au16, "external_transfers_without_coordination")])) | _au_count_missing([_au_f(_au16, "external_transfers_without_coordination")])
 
 _au16_failed := _au_lacking(_au_f(_au16, "methods_in_use"), _au_f(_au16, "odp.methods"), "organization-defined coordination methods") | _au_nonzero(_au_f(_au16, "external_transfers_without_coordination"), "cross-boundary audit information flows without a coordination method")
 
@@ -423,11 +437,36 @@ violation contains sprintf("NIST AU-16: %s", [_au_enh_detail(_au16_missing, _au1
 
 compliant if count(violation) == 0
 
+# ---------------------------------------------------------------------------------------------------------
+# NIST SP 800-53B Privacy-baseline enhancements. Each is its own requirement; its base control never fails for it.
+# ---------------------------------------------------------------------------------------------------------
+
+# AU-3(3) Limit Personally Identifiable Information Elements: audit records contain only the PII elements the
+# privacy risk assessment identified.
+# Facts (input.au_controls.content_of_records.pii_elements): odp.permitted_elements (non-empty list of the
+# organization-defined elements); elements_present (list of the PII elements the generated records contain, from
+# the audit record schema or a field scan; [] when they contain none).
+_au3_3 := "content_of_records.pii_elements"
+
+_au3_3_missing := _au_list_missing([_au_f(_au3_3, "odp.permitted_elements")]) | _au_array_missing([_au_f(_au3_3, "elements_present")])
+
+_au3_3_failed := {sprintf("audit records contain PII elements outside the organization-defined list: %v (%s)", [sort(extra), _au_path(_au_f(_au3_3, "elements_present"))]) |
+	o := _au_get(_au_f(_au3_3, "elements_present"))
+	l := _au_get(_au_f(_au3_3, "odp.permitted_elements"))
+	is_array(o)
+	is_array(l)
+	extra := {x | some x in o; not x in l}
+	count(extra) > 0
+}
+
+violation contains sprintf("NIST AU-3(3): %s", [_au_enh_detail(_au3_3_missing, _au3_3_failed)]) if count(_au3_3_missing | _au3_3_failed) > 0
+
 # The control and enhancement ids this family evaluates; each has exactly one finding when it fails.
 evaluated_controls := {
 	"AU-1", "AU-2", "AU-3", "AU-3(1)", "AU-4", "AU-5", "AU-5(1)", "AU-5(2)", "AU-6", "AU-6(1)", "AU-6(3)", "AU-6(4)",
 	"AU-6(5)", "AU-6(6)", "AU-6(7)", "AU-7", "AU-7(1)", "AU-8", "AU-9", "AU-9(2)", "AU-9(3)", "AU-9(4)", "AU-10",
 	"AU-11", "AU-12", "AU-12(1)", "AU-12(3)", "AU-13", "AU-14", "AU-16",
+	"AU-3(3)",
 }
 
 compliance_report := {

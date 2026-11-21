@@ -529,7 +529,7 @@
      },
      {
       "id": "finops-finops.tagging-15",
-      "title": "Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls",
+      "title": "Untagged: Resource '%s' is missing required tags and its age_days is not a number (evidence missing) — treat as past the 7-day grace period",
       "props": [
        {
         "name": "label",
@@ -555,14 +555,14 @@
        {
         "id": "finops-finops.tagging-15_stmt",
         "name": "statement",
-        "prose": "Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls"
+        "prose": "Untagged: Resource '%s' is missing required tags and its age_days is not a number (evidence missing) — treat as past the 7-day grace period"
        }
       ],
       "class": "governance"
      },
      {
       "id": "finops-finops.tagging-16",
-      "title": "Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s",
+      "title": "Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls",
       "props": [
        {
         "name": "label",
@@ -588,14 +588,14 @@
        {
         "id": "finops-finops.tagging-16_stmt",
         "name": "statement",
-        "prose": "Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s"
+        "prose": "Classification: Data-bearing resource '%s' (%s) missing 'data-classification' tag — required for compliance and security controls"
        }
       ],
       "class": "governance"
      },
      {
       "id": "finops-finops.tagging-17",
-      "title": "Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources",
+      "title": "Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s",
       "props": [
        {
         "name": "label",
@@ -621,14 +621,14 @@
        {
         "id": "finops-finops.tagging-17_stmt",
         "name": "statement",
-        "prose": "Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources"
+        "prose": "Classification: Resource '%s' has invalid data-classification '%s' — must be one of: %s"
        }
       ],
       "class": "governance"
      },
      {
       "id": "finops-finops.tagging-18",
-      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)",
+      "title": "Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources",
       "props": [
        {
         "name": "label",
@@ -654,14 +654,14 @@
        {
         "id": "finops-finops.tagging-18_stmt",
         "name": "statement",
-        "prose": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)"
+        "prose": "Budget: Cost center '%s' has no budget defined in policy — add to budget registry before provisioning resources"
        }
       ],
       "class": "governance"
      },
      {
       "id": "finops-finops.tagging-19",
-      "title": "Budget: Cost center '%s' budget %v or current spend %v is not a number",
+      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)",
       "props": [
        {
         "name": "label",
@@ -687,14 +687,14 @@
        {
         "id": "finops-finops.tagging-19_stmt",
         "name": "statement",
-        "prose": "Budget: Cost center '%s' budget %v or current spend %v is not a number"
+        "prose": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (%v%% over)"
        }
       ],
       "class": "governance"
      },
      {
       "id": "finops-finops.tagging-20",
-      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)",
+      "title": "Budget: Cost center '%s' budget %v or current spend %v is not a number",
       "props": [
        {
         "name": "label",
@@ -719,6 +719,39 @@
       "parts": [
        {
         "id": "finops-finops.tagging-20_stmt",
+        "name": "statement",
+        "prose": "Budget: Cost center '%s' budget %v or current spend %v is not a number"
+       }
+      ],
+      "class": "governance"
+     },
+     {
+      "id": "finops-finops.tagging-21",
+      "title": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)",
+      "props": [
+       {
+        "name": "label",
+        "value": "finops.tagging#21"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "finops.tagging#21"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "finops.tagging"
+       }
+      ],
+      "links": [
+       {
+        "href": "#e88dc6e6-9d1e-57c1-be8b-24c38bd5a0cc",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "finops-finops.tagging-21_stmt",
         "name": "statement",
         "prose": "Budget: Cost center '%s' current spend $%v exceeds budget $%v (no budget allocated)"
        }

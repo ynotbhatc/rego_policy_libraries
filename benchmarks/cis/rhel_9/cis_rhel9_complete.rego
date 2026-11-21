@@ -5259,7 +5259,7 @@ compliance_assessment := {
 # PER-CONTROL RESULTS: one object per recommendation, natural id order
 # =============================================================================
 #
-# control_results[i] = {id, status, basis, in_scope, profile, evidence}. CONTROL_INDEX is the static half
+# control_results[i] = {id, status, basis, in_scope, profile, evidence, findings}. CONTROL_INDEX is the static half
 # (written by the generator from the workbook's profiles and each logic entry's input paths; no benchmark text);
 # the status is each section's control_status, or not_applicable outside the selected profile. It is read from
 # the predicates the violation rules use, so it agrees with failed_controls and the violations by construction.
@@ -5645,10 +5645,22 @@ _control_result_status(e) := s if {
 	s := control_status[e.id]
 }
 
+# findings: the violation messages whose "<id>: " prefix cites the recommendation (the same split failing_ids
+# uses), grouped once per message; object.get reads the grouped rule whole (a keyed lookup would re-evaluate it
+# per id). Empty for a pass and for a recommendation outside the profile.
+_findings_by_id[id] contains v if {
+	some v in all_violations
+	id := split(v, ":")[0]
+}
+
+_row_findings(s, _) := [] if s == "not_applicable"
+
+_row_findings(s, id) := sort(object.get(_findings_by_id, id, set())) if s != "not_applicable"
+
 control_results := [r |
 	some e in CONTROL_INDEX
 	s := _control_result_status(e)
-	r := object.union(e, {"status": s, "in_scope": s != "not_applicable"})
+	r := object.union(e, {"status": s, "in_scope": s != "not_applicable", "findings": _row_findings(s, e.id)})
 ]
 
 _control_result_statuses := [r.status | some r in control_results]

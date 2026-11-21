@@ -78,10 +78,11 @@ _under(path, obs, odp, fmt) := {sprintf(fmt, [o[obs], o.odp[odp]]) |
 }
 
 # Counts that must be zero (exceptions from a records query): `checks` is a list of [key, format taking the
-# count]. A value that is not a number, or is negative, is missing evidence.
+# count]. A value that is not a non-negative whole number is missing evidence.
 _count_ok(x) if {
 	is_number(x)
 	x >= 0
+	floor(x) == x
 }
 
 _zero_missing(path, checks) := {concat(".", [_path_str(path), c[0]]) |

@@ -108,12 +108,23 @@ training_opt_out_enabled if count(training_offenders) == 0
 retention_offenders contains svc if {
 	some svc in ai_services
 	object.get(svc, "data_classification_processed", "") in regulated_classes
+	is_number(svc.data_retention_by_provider_days)
 	svc.data_retention_by_provider_days > 0
+}
+
+# A regulated-data service whose retention period is not a number cannot be verified
+retention_unverified contains svc if {
+	some svc in ai_services
+	object.get(svc, "data_classification_processed", "") in regulated_classes
+	not is_number(object.get(svc, "data_retention_by_provider_days", null))
 }
 
 default no_long_term_ai_data_retention := false
 
-no_long_term_ai_data_retention if count(retention_offenders) == 0
+no_long_term_ai_data_retention if {
+	count(retention_offenders) == 0
+	count(retention_unverified) == 0
+}
 
 # AI inference for regulated data must occur in approved jurisdiction
 inference_offenders contains svc if {
@@ -399,6 +410,18 @@ violations contains v if {
 		"service_id": object.get(svc, "service_id", "unknown"),
 		"description": concat("", ["AI provider retains regulated data beyond the session: ", object.get(svc, "service_name", "unknown")]),
 		"remediation": "Require zero-retention terms or move the workload to an approved self-hosted service",
+	}
+}
+
+violations contains v if {
+	some svc in retention_unverified
+	v := {
+		"domain": "ai_sovereignty",
+		"control": "AI-011",
+		"severity": "high",
+		"service_id": object.get(svc, "service_id", "unknown"),
+		"description": concat("", ["AI-011: evidence missing - data_retention_by_provider_days is not a number for ", object.get(svc, "service_name", "unknown")]),
+		"remediation": "Collect the provider's data retention period in days for every service that processes regulated data",
 	}
 }
 

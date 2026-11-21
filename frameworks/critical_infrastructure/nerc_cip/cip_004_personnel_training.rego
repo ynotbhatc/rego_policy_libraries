@@ -263,6 +263,7 @@ access_revoked_timely_on_termination if {
 access_revoked_within_24h(person) if {
 	person.access_revocation.completed == true
 	revocation_hours := (date_ns(person.access_revocation.completion_date) - date_ns(person.termination_date)) / (3600 * 1000000000)
+	is_number(revocation_hours)
 	revocation_hours <= 24
 }
 
@@ -291,6 +292,7 @@ access_changed_on_role_change if {
 role_change_access_updated_timely(change) if {
 	change.access_updated == true
 	update_hours := (date_ns(change.access_update_date) - date_ns(change.role_change_date)) / (3600 * 1000000000)
+	is_number(update_hours)
 	update_hours <= 24
 }
 
