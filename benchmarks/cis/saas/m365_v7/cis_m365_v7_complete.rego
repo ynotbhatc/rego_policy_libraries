@@ -294,7 +294,7 @@ _with_evidence(base, id) := r if {
 _with_evidence(base, id) := base if not _evidence(id)
 
 # findings: the messages (section violations and the attestation ledger's) whose "CIS <id>: " prefix cites the
-# recommendation, grouped once per message; a message citing several ids ("CIS 2.1.8/2.1.9/2.1.10: ") is listed
+# recommendation, grouped once per message; a message whose prefix names several ids joined by "/" is listed
 # under each. object.get reads the grouped rule whole (a keyed lookup would re-evaluate it per id). Empty for a
 # pass and for a recommendation outside the profile.
 _findings_by_id[id] contains v if {
