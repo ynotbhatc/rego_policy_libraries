@@ -16,7 +16,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `hipaa.privacy_rule` changes owed before 2027-07-19 are listed in STANDARDS_UPDATE_REGISTRY.md.
 - 45 CFR Part 160 amendment of 2026-03-24 / 2026-05-26 (claims attachments final rule, 91 FR 14350, FR doc
   2026-05676; compliance 2028-05-26) reviewed: it changes only the 160.103 "Transaction" definition, which
-  `hipaa.part160` does not evaluate. The standards watch now covers 45 CFR Parts 160 and 164.
+  `hipaa.part160` does not evaluate.
+- 45 CFR Part 162 amendments of 2025-04-14 and 2025-08-21 (NCPDP F6 retail pharmacy rule and its date
+  corrections, 90 FR 9289, 90 FR 40746) reviewed: `hipaa.part162` already carries the August 14, 2027 /
+  April 14, 2028 dates. The standards watch now covers 45 CFR Parts 160, 162 and 164.
 
 ### Changed — decisions of 2026-11-21
 
