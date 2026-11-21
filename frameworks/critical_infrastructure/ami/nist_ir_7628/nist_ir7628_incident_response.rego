@@ -68,6 +68,7 @@ automated_detection_enabled if {
 incident_reporting_configured if {
 	input.incident_response.reporting.internal_escalation_path_defined == true
 	input.incident_response.reporting.external_reporting_contacts_current == true
+	is_number(input.incident_response.reporting.reporting_timeframe_hours)
 	input.incident_response.reporting.reporting_timeframe_hours <= 24
 }
 

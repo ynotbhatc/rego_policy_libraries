@@ -37,6 +37,7 @@ api_gateway_mfa if {
 # OAuth2/JWT-based session management with expiry
 api_gateway_session_management if {
 	input.mdms.api_gateway.authentication.oauth2_enabled == true
+	is_number(input.mdms.api_gateway.authentication.jwt_expiry_minutes)
 	input.mdms.api_gateway.authentication.jwt_expiry_minutes <= 60
 	input.mdms.api_gateway.authentication.refresh_token_rotation == true
 }
@@ -124,6 +125,7 @@ audit_events_complete if {
 
 # Minimum 365-day log retention
 audit_log_retention if {
+	is_number(input.mdms.audit_logging.retention_days)
 	input.mdms.audit_logging.retention_days >= 365
 }
 
@@ -169,7 +171,9 @@ admin_access_via_bastion if {
 
 # Critical patches applied within 30 days, high within 60 days
 patch_management_current if {
+	is_number(input.mdms.patching.critical_patch_max_days)
 	input.mdms.patching.critical_patch_max_days <= 30
+	is_number(input.mdms.patching.high_patch_max_days)
 	input.mdms.patching.high_patch_max_days <= 60
 	input.mdms.patching.vulnerability_scanning_enabled == true
 }

@@ -105,6 +105,7 @@ assessment_updated_after_changes if {
 	every change in input.transmission_topology_changes {
 		change.assessment_triggered == true
 		update_age_days := (date_ns(change.assessment_completion_date) - date_ns(change.change_date)) / (((24 * 60) * 60) * 1000000000)
+		is_number(update_age_days)
 		update_age_days <= 60
 	}
 }
@@ -241,6 +242,7 @@ plan_implemented_timely(station) if {
 	plan := input.station_security_plans[station.station_id]
 	plan.implementation_completed == true
 	implementation_months := (date_ns(plan.implementation_date) - date_ns(input.transmission_risk_assessment.third_party_verification.last_verification_date)) / ((((30 * 24) * 60) * 60) * 1000000000)
+	is_number(implementation_months)
 	implementation_months <= 12
 }
 
@@ -302,6 +304,7 @@ plan_third_party_reviewed(station) if {
 
 	# Review must occur within 60 days of plan completion
 	review_age_days := (date_ns(plan.third_party_review.date) - date_ns(plan.initial_completion_date)) / (((24 * 60) * 60) * 1000000000)
+	is_number(review_age_days)
 	review_age_days <= 60
 }
 
