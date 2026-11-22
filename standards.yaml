@@ -603,7 +603,7 @@ frameworks:
   # ---------------------------------------------------------------- supply chain
   supply_chain_slsa:
     standards:
-      - {standard: SLSA build track, version: v1.0, publisher: OpenSSF, literal: "SLSA v1.0", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
+      - {standard: SLSA build track, version: v1.2, publisher: OpenSSF, literal: "SLSA v1.2", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
   supply_chain_s2c2f:
     standards:
       - {standard: OpenSSF S2C2F, version: v1.1, publisher: OpenSSF, literal: "S2C2F v1.1", check: {method: github_release, repo: ossf/s2c2f}}

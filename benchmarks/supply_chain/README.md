@@ -18,7 +18,7 @@ Vendor-neutral: SLSA and SSDF are public standards; nothing here is AAC-specific
 ```
 _substrate/     the 7 invariant control themes (SR/SA/CM anchors + centrality weights)
 baseline/       the default check — the supply-chain spine (compliance_report)
-slsa/           SLSA v1.0 build track            -> substrate
+slsa/           SLSA v1.2 build track            -> substrate
 ssdf/           NIST SSDF (SP 800-218)           -> substrate
 ssdf_genai/     NIST SSDF for GenAI (SP 800-218A)-> substrate + AI-contribution attestation
 scrm_800_161/   NIST SP 800-161r1 (C-SCRM)       -> substrate

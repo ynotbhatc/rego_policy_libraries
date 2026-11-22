@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — SLSA re-pinned to v1.2 (build track unchanged) (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/slsa` and `enforcement/supply_chain/slsa_governance.rego` now state SLSA v1.2 (2025-11-24;
+  v1.0 is retired on slsa.dev). The Build track's three levels and requirements are the same as in v1.0 — v1.1 and
+  v1.2 reworded them and added a RECOMMENDED signing method (transparency logs or time stamping) — so no level logic
+  changed. v1.2's new Source track (L1-L4) is not implemented. The `slsa_governance` header now records that its
+  gates keep the v0.1 shape (version-controlled source and verified history counted toward build levels; under v1.2
+  they are Source L1/L2). Report strings "SLSA v1.2 (build track)" and "SLSA v1.2 + Supply Chain Governance".
+
 ### Changed — OpenSSF S2C2F pinned to v1.1 (2026-11-21, issue #341)
 
 - `benchmarks/supply_chain/s2c2f` now states S2C2F v1.1 (ossf/s2c2f release, 2022-10-19, still the latest): the
