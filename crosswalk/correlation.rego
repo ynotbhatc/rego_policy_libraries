@@ -45,6 +45,16 @@ import rego.v1
 #   never a pass. A report whose facts_supplied is false contributes its rules as Open (the STIG mains already
 #   report every rule Open then).
 #   summary        — counts + the satisfied / gap control lists for downstream framework rollups
+#   control_evidence[<800-53 control>] = {status, rules, open_rules, not_reviewed_rules}: the same verdict as
+#     control_status with the contributing rule ids, so a framework module that takes its technical verdict
+#     from the spine can show which rules decided it. rules lists every supplied rule the crosswalk maps to
+#     the control; open_rules are the ones that make it a gap; not_reviewed_rules the unresolved manual reviews.
+#   evidence_supplied     — true when the input carries input.reports or input.findings at all
+#   spine_loaded          — true when the stig_id -> 800-53 map is present in data (a consumer that cannot see
+#                           the map must not read "no verdict" as "no gap")
+#   reports_without_facts — how many supplied reports had facts_supplied == false
+#
+# This package only carries verdicts through the DISA map. It does not score, weight or rank anything.
 
 crosswalk := data.crosswalk.stig_800_53.map
 
@@ -99,6 +109,37 @@ gap_controls := {c | some c, s in control_status; s == "gap"}
 not_reviewed_controls := {c | some c, s in control_status; s == "not_reviewed"}
 
 not_applicable_controls := {c | some c, s in control_status; s == "not_applicable"}
+
+# Rule ids behind each control's verdict, grouped by the status they were supplied with.
+_rules_by[ctrl][st] contains rule if {
+	some row in _rows
+	some ctrl in crosswalk[row[0]]
+	rule := row[0]
+	st := row[1]
+}
+
+_rules_with(ctrl, st) := sort(object.get(object.get(_rules_by, ctrl, {}), st, set()))
+
+control_evidence[ctrl] := {
+	"status": st,
+	"rules": sort({rule | some rules in _rules_by[ctrl]; some rule in rules}),
+	"open_rules": _rules_with(ctrl, "Open"),
+	"not_reviewed_rules": _rules_with(ctrl, "Not_Reviewed"),
+} if {
+	some ctrl, st in control_status
+}
+
+default evidence_supplied := false
+
+evidence_supplied if _ = input.reports
+
+evidence_supplied if _ = input.findings
+
+default spine_loaded := false
+
+spine_loaded if count(crosswalk) > 0
+
+reports_without_facts := count([rep | some rep in input.reports; rep.facts_supplied == false])
 
 # Family rollup — 800-53 controls grouped by their two-letter family.
 _family(ctrl) := split(ctrl, "-")[0]
