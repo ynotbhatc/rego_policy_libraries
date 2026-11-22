@@ -189,6 +189,10 @@ PLATFORMS = {
     },
     "rhel_8": {
         "prefix": "RHEL-08", "ident": "rhel_08", "name": "RHEL 8", "complete": "stig_rhel8_complete.rego",
+        # 2026-11-21: the V2R9 update was applied by hand; this MAP keys on the pre-2026-11-10 ids (a --check run
+        # retires autofs RHEL-08-040070 and collides five current blocks), so re-stamping is refused like rhel_9.
+        "retired": "hand-maintained against V2R9 since 2026-11-21; re-stamping is refused "
+                   "(this MAP keys on the pre-2026-11-10 ids and would retire and collide current rules)",
         # Reviewed 2026-11-10 against the V2R8 check text.
         "map": {
             "account_auth:RHEL-08-020000": "RHEL-08-020250",  # smart card logon for MFA
