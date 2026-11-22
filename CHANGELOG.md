@@ -8,6 +8,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — NIST SP 800-53 takes technical verdicts from benchmark results through the crosswalk (2026-11-22)
+- `nist.sp800_53.main` / `nist_800_53` now read benchmark results from the same input, in the two shapes
+  `crosswalk.correlation` already accepts (`input.reports`: STIG compliance reports; `input.findings`: a flat
+  `stig_id` + `status` list). For each 800-53 control the DISA map reaches, the row in `control_results` gains
+  `benchmark: {status, rules, open_rules, not_reviewed_rules}` and the report gains a `benchmark_evidence` block.
+- Combination rule: a benchmark gap fails the control, whatever its declared evidence or attestation says (the
+  finding names the Open rules; `family_summary` counts it). A satisfied verdict is recorded and changes no
+  status, so benchmark results never turn a control into a pass. Controls no rule maps to, and every enhancement
+  (the map is at base-control granularity), are `not_evaluated`.
+- Fail closed: a report with `facts_supplied: false` counts its rules as Open; rule ids the map does not know
+  are listed under `unmapped_rules` and speak to no control; unreadable benchmark results, results with no known
+  rule id, and results supplied while the crosswalk is not loaded each add a `FAIL-CLOSED` finding.
+- No change without benchmark results: with neither key in the input the report is identical to before.
+- New in `crosswalk`: `correlation.control_evidence`, `evidence_supplied`, `spine_loaded`,
+  `reports_without_facts`, and `framework_overlay.control_evidence[<map key>][<control id>]` for the frameworks
+  that will follow through `framework_maps`. No mapping was added; nothing is scored or ranked.
+- Fixed: `framework_overlay.coverage` listed a framework control once per mapped 800-53 control, so
+  `controls_satisfied` over-counted any control mapped to more than one (the shipped maps are one to one, so no
+  published number changes).
+- The RHEL 9 STIG module's 445 rules reach 47 base controls in 7 families (SC 11, AC 10, AU 9, IA 6, CM 5, SI 4,
+  MA 2). The RHEL 9 slice of `crosswalk/stig_800_53/data.json` was regenerated from the V2R10 XCCDF, so all 445
+  rule ids are in the map (three V2R10 ids were missing and three retired ids remained).
+- Loading: to use benchmark results, `crosswalk/correlation.rego` and the map at `data.crosswalk.stig_800_53`
+  must be in the same OPA as the 800-53 module. See `crosswalk/README.md` and `examples/nist_800_53/README.md`.
+
 ### Added — DISA STIG RHEL 9 V2R10: all 445 rules (2026-11-22)
 - `benchmarks/stig/rhel_9` now implements every rule of the V2R10 STIG (was 104 of 445). The 341 new rules are
   reviewed table entries written against DISA's full check text (`tools/stig_generators/rhel9_rules_part1.py`
