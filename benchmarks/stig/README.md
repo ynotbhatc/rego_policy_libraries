@@ -90,7 +90,9 @@ CCI has no Rev 5 mapping in the CCI list). `openshift_4` (V2R7) remains partial 
 ## Sunset platforms (absent from the current DISA library)
 
 `windows_10` — removed 2026-11-10, see [`SUNSET.md`](SUNSET.md) (DISA's final release is V3R6).
-`ubuntu_20_04` — see `SUNSET.md` in its directory; content frozen for historical assessments.
+`ubuntu_20_04` — see `SUNSET.md` in its directory. DISA's last release is V2R4 (01 Oct 2025, standalone
+`U_CAN_Ubuntu_20-04_LTS_V2R4_STIG.zip`, which adds the UBTU-20-010001 sunset control); the module follows it since
+2026-11-21 with 4 of 173 rules (its earlier ids were invented and are gone). No new rules are planned.
 `windows_server_2016` and `windows_server_2019` were listed here against the July 2026
 compilation; the October 2026 library ships both (V2R10, V3R9) and they are generated platforms again.
 
