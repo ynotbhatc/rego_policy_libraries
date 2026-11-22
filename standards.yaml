@@ -242,7 +242,7 @@ frameworks:
       - {standard: DISA Kubernetes STIG, version: V2R6, publisher: DISA, literal: "V2R6", check: {method: disa_stig_zip, stem: U_Kubernetes}}
   stig_ms_sql_2016:
     standards:
-      - {standard: DISA MS SQL Server 2016 Instance STIG, version: V3R6, publisher: DISA, literal: "V3R6", check: {method: disa_dated_zip, stem: U_MS_SQL_Server_2016, released: "2026-01"}}
+      - {standard: DISA MS SQL Server 2016 Instance STIG, version: V3R6, publisher: DISA, literal: "V3R6", check: {method: disa_dated_zip, stem: U_MS_SQL_Server_2016, released: "2026-04"}}
   stig_openshift_4:
     standards:
       - {standard: DISA Red Hat OpenShift Container Platform 4.x STIG, version: V2R7, publisher: DISA, literal: "V2R7", check: {method: disa_stig_zip, stem: U_RH_OpenShift_Container_Platform_4-x}}
@@ -287,7 +287,7 @@ frameworks:
       - {standard: DISA Canonical Ubuntu 24.04 LTS STIG, version: V1R7, publisher: DISA, literal: "V1R7", check: {method: disa_stig_zip, stem: U_CAN_Ubuntu_24-04_LTS}}
   stig_vmware_vsphere_8:
     standards:
-      - {standard: DISA VMware vSphere 8.0 ESXi STIG, version: V2R4, publisher: DISA, literal: "V2R4", check: {method: disa_dated_zip, stem: U_VMW_vSphere_8-0, released: "2026-07"}}
+      - {standard: DISA VMware vSphere 8.0 ESXi STIG, version: V2R5, publisher: DISA, literal: "V2R5", check: {method: disa_dated_zip, stem: U_VMW_vSphere_8-0, released: "2026-10"}}
   stig_windows_11:
     standards:
       - {standard: DISA Microsoft Windows 11 STIG, version: V2R11, publisher: DISA, literal: "V2R11", check: {method: disa_stig_zip, stem: U_MS_Windows_11}}

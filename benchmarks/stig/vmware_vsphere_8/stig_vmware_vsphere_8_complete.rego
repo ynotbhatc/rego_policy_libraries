@@ -17,9 +17,10 @@
 package stig.vmware_vsphere_8
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide — Master Aggregator
-# V2R4 | Release: 4 Benchmark Date: 01 Jul 2026
+# V2R5 | Release: 5 Benchmark Date: 30 Sep 2026
 # Coverage: 10 of 76 rules (4 of 4 CAT I).
-# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03.
+# Rule IDs verified against the July 2026 SRG-STIG library on 2026-09-03;
+# re-checked against the standalone V2R5 zip (U_VMW_vSphere_8-0_Y26M10) on 2026-11-21.
 
 import rego.v1
 
@@ -41,8 +42,8 @@ fully_compliant if count(open_findings) == 0
 stig_assessment := {
 	"metadata": {
 		"stig_title": "VMware vSphere 8.0 ESXi Security Technical Implementation Guide",
-		"version": "V2R4",
-		"release": "Release: 4 Benchmark Date: 01 Jul 2026",
+		"version": "V2R5",
+		"release": "Release: 5 Benchmark Date: 30 Sep 2026",
 		"platform": "VMware vSphere 8.0 ESXi",
 		"assessed_host": object.get(input, ["system_info", "hostname"], "unknown"),
 	},

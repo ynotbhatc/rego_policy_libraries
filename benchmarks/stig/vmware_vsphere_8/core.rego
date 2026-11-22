@@ -17,9 +17,10 @@
 package stig.vmware_vsphere_8.core
 
 # DISA STIG — VMware vSphere 8.0 ESXi Security Technical Implementation Guide
-# V2R4 | Release: 4 Benchmark Date: 01 Jul 2026
+# V2R5 | Release: 5 Benchmark Date: 30 Sep 2026
 # 10 rules (all CAT I + selected CAT II); IDs/severities/titles
-# verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03.
+# verified against the July 2026 SRG-STIG library XCCDF on 2026-09-03;
+# re-checked against the standalone V2R5 zip (U_VMW_vSphere_8-0_Y26M10) on 2026-11-21.
 # Organizational rules are explicit attestation booleans — named for what
 # a human verified, never silently passed. Input contract:
 #   input.esxi.advanced_settings[<key>] : Get-AdvancedSetting values

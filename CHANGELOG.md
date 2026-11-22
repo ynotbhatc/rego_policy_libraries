@@ -8,6 +8,17 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — DISA STIG VMware vSphere 8.0 ESXi V2R5, MS SQL Server 2016 bundle 2026-04 (2026-11-21, issue #341)
+
+- `benchmarks/stig/vmware_vsphere_8` follows DISA's V2R5 (30 Sep 2026, bundle `U_VMW_vSphere_8-0_Y26M10`): 76 rules,
+  none added or removed, no CCI changes. Of the eight rules DISA revised, only ESXI-80-000124 is implemented and its
+  change is DoD → DoW wording, so no rule logic changed; version strings and `standards.yaml` move to V2R5 / 2026-10.
+  Not implemented here: ESXI-80-000227 `Security.PasswordMaxDays` check now 365 (was 90) while the fix text says 180;
+  ESXI-80-000193 adds an SSH scanning note; 000006/191/192/229/247 are DoD → DoW wording.
+- `benchmarks/stig/ms_sql_2016`: the 2026-04 bundle `U_MS_SQL_Server_2016_Y26M04` carries the Instance STIG V3R6
+  byte-identical to the 2026-01 bundle; only the Database STIG moves V3R4 → V3R5 (SQL6-D0-003300 TDE check query
+  rewritten), which this Instance module does not cover. No rule change; `standards.yaml` released → 2026-04.
+
 ### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
 
 - `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
