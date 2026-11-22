@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 7
-#     cited: 6
-#     density: section
-#     basis: role
+#     checks: 20
+#     cited: 19
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_9.pki_crypto
 
 # DISA STIG for RHEL 9 - PKI and Cryptography Module

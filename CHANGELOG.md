@@ -20,6 +20,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - The coverage label stays `partial`: the new rules are unit-tested and have not run on a real host.
 - Oracle Linux 9, Oracle Linux 8 and RHEL 10 STIG modules regenerated (shared mount and audit-rule test
   fixtures grew); their rule sets are unchanged (114, 95 and 100 rules).
+- `stig.rhel_9` score: `compliance_percentage` is 100 only when every control passed. With 445 controls one Open
+  finding is 99.78 %, which rounded to 100 beside `compliant == false`; it now reports 99.
 - `test_gate_transparent_when_facts_supplied` no longer requires a non-zero percentage from one supplied fact
   (1 of 445 rounds to 0); it requires a passed control and fewer failures than controls.
 

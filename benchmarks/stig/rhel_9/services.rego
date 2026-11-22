@@ -6,10 +6,10 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 6
-#     cited: 5
-#     density: section
-#     basis: role
+#     checks: 20
+#     cited: 19
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self

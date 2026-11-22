@@ -25,8 +25,8 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `cis_amazon_linux_2023` | partial | `benchmarks/cis/amazon_linux_2023` | Fed real host evidence 2026-11-19; collector gaps open (issue #332). |
 | `cis_ubuntu_2204` | partial | `benchmarks/cis/ubuntu_22_04` | Fed real host evidence 2026-11-19; collector gaps open (issue #332). |
 | `cis_ubuntu_22_04` | partial | `benchmarks/cis/ubuntu_22_04` | Same module tree as cis_ubuntu_2204. Fed real host evidence 2026-11-19; collector gaps open (issue #332). |
-| `stig.rhel_9` | partial | `benchmarks/stig/rhel_9` | V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet, so those rules report evidence missing. |
-| `stig_rhel9` | partial | `benchmarks/stig/rhel_9` | Bridge onto stig.rhel_9. V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet. |
+| `stig.rhel_9` | partial | `benchmarks/stig/rhel_9` | All 445 V2R10 rules written against DISA's check text. 104 ran on a real RHEL 9.6 host 2026-11-20; the 341 added 2026-11-22 are unit-tested only and most of their fact paths are not collected yet, so those rules report evidence missing. |
+| `stig_rhel9` | partial | `benchmarks/stig/rhel_9` | Bridge onto stig.rhel_9. All 445 V2R10 rules written against DISA's check text; 104 ran on a real RHEL 9.6 host 2026-11-20, the 341 added 2026-11-22 are unit-tested only and most of their fact paths are not collected yet. |
 | `aca_155_260` | experimental |  |  |
 | `ai_governance` | experimental |  |  |
 | `ami_device` | experimental |  |  |

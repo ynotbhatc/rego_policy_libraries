@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 8
-#     cited: 7
-#     density: section
-#     basis: role
+#     checks: 31
+#     cited: 30
+#     density: sized
+#     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_9.software_integrity
 
 # DISA STIG for RHEL 9 - Software Integrity Module

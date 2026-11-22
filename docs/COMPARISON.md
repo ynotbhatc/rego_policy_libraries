@@ -11,7 +11,7 @@ this page (the claim line and the table row).
 > The largest open library of executable compliance policy anyone can verify, and the broadest regulatory
 > coverage of any machine-readable policy library, open or closed.
 
-- **"Largest open … anyone can verify"** rests on the control-level count: 29,911 checks across 1,066 policy files (counted by OPA's parser across every policy shape; earlier releases used a line-based counter and then a counter that read only one of six shapes, see CHANGELOG 2.3.0 and 2.3.1, so their figures are not comparable). What that number is and is not is set out under [What the count is](#what-the-count-is-and-is-not) below. The next
+- **"Largest open … anyone can verify"** rests on the control-level count: 30,252 checks across 1,066 policy files (counted by OPA's parser across every policy shape; earlier releases used a line-based counter and then a counter that read only one of six shapes, see CHANGELOG 2.3.0 and 2.3.1, so their figures are not comparable). What that number is and is not is set out under [What the count is](#what-the-count-is-and-is-not) below. The next
   largest public set is Azure Policy's built-in definitions (5,130), then ComplianceAsCode (2,574). Units differ
   slightly (one Azure definition is one resource-property check; one of our table rows is one attested control),
   which is why the claim says *verify*, not *by any measure*.
@@ -37,7 +37,7 @@ this page (the claim line and the table row).
 | Secure Controls Framework 2026.3 | one catalogue control | 1,591 | 270 mapping columns, 234 distinct documents ([gap plan](SCF_GAP.md)) | **no** (Excel / JSON / OSCAL) |
 | Steampipe AWS compliance mod | one SQL control | 1,361 | ~17 benchmarks | yes, AWS only |
 | Checkov | one IaC policy | ~1,000+ (vendor figure) | IaC | yes, IaC only |
-| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **1,066 files, 29,911 control-level checks** | 190 framework catalogs, 130+ framework directories | yes, every domain above |
+| **Rego Policy Libraries** | one Rego policy file (one to a few hundred controls each) | **1,066 files, 30,252 control-level checks** | 190 framework catalogs, 130+ framework directories | yes, every domain above |
 | trivy-checks (Aqua) | one Rego check | 563 | cloud, k8s, docker | yes |
 | Kubescape regolibrary (ARMO) | one Rego rule (Kubernetes misconfiguration) | 304 rules, 290 controls | 19 frameworks, all Kubernetes (CIS K8s/EKS/AKS/GKE, NSA, MITRE, SOC 2) | yes, Kubernetes only |
 | Kyverno policies | one admission policy | 180 | Kubernetes | yes |
@@ -65,7 +65,7 @@ CI runs the same script with `--check-readme` and fails the build if the README'
 
 ## What the count is, and is not
 
-`29,911` is a **parser metric**, not a count of distinct controls in the standards. Per non-test file, the counter
+`30,252` is a **parser metric**, not a count of distinct controls in the standards. Per non-test file, the counter
 adds the distinct (control id, message text) pairs it finds plus each violation rule or check entry that carries no
 id, and then sums over files. Four consequences:
 
@@ -100,7 +100,7 @@ framework's modules, and that includes message templates. SAE AS9100D is the exa
 controls (the "not attested" and `FAIL-CLOSED` message templates and the package's two contract rules) are counted as
 controls of their own. The 190 catalogs are one per framework key, not one per standard.
 
-**What to quote.** Use "29,911 control-level checks" only with its definition (per-file parser hits). For a number
+**What to quote.** Use "30,252 control-level checks" only with its definition (per-file parser hits). For a number
 that means "distinct requirements of a standard", take a module's declared `standard_total` where it has one
 (352 for the RHEL 9 benchmark above), not the sum. The 90 % density rule in `scripts/coverage_stamp.py` only flags a
 module whose cited ids fall below 90 % of its own declared total; a module can sit above that line and still be

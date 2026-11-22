@@ -6,14 +6,14 @@
 #   source: disa
 #   domains: [linux, rhel]
 #   coverage:
-#     checks: 14
-#     cited: 13
+#     checks: 78
+#     cited: 77
 #     density: sized
 #     basis: size
 #     tested: true
 #     entrypoint: compliance_report
 #     guard: self
-#     as_of: v2.4.2
+#     as_of: v2.5.0
 package stig.rhel_9.audit_logging
 
 # DISA STIG for RHEL 9 - Audit Logging Module

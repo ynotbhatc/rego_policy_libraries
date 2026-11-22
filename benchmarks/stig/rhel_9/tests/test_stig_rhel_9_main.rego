@@ -89,3 +89,10 @@ test_bridge_does_not_double_count_no_facts if {
 _is_fail_closed(v) if startswith(object.get(v, "rule_title", ""), "FAIL-CLOSED")
 
 _is_fail_closed(v) if object.get(v, "control", "") == "FAIL-CLOSED"
+
+# One Open finding among 445 controls is 99.78 %: the score must not round up to 100.
+test_percentage_is_100_only_when_all_pass if {
+	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "no"}}
+	report.passed_controls < report.total_controls
+	report.compliance_percentage < 100
+}
