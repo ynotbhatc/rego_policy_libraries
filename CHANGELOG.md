@@ -34,6 +34,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   fails closed with an "evidence missing" detail; `stig_assessment` carries `rule_results`. UBTU-20 joins the
   800-53 crosswalk (173 of 173).
 
+### Reviewed — HITRUST CSF and TISAX, licensed rows (2026-11-21, issue #341)
+
+- `frameworks/management/hitrust` still names CSF v11.3.0 (released 2024-04-16); upstream is v11.9.0 (HAA 2026-005,
+  2026-09-24) and v11.0–11.3 are decommissioned (HAA 2026-007: new r2 objects from 2026-12-23 must use v11.4+, no
+  v11.0–11.3 submissions after 2027-03-31). The header now says so and that its ids are the module's own numbering in CSF reference style
+  (the CSF has 14 categories, 00–13), not CSF control references; `published` corrected from 2023 to 2024-04-16. No
+  rule logic changed. A rebuild needs HITRUST's written consent: the CSF licence is free but excludes IT security
+  vendors and consultants and forbids derivative software without consent.
+- `frameworks/management/tisax` still names VDA ISA 6.0.3; ISA2027 (published 2026-07-01, English ISA2027.1 dated
+  2026-09-30) applies to assessments ordered from 2027-01-01. The header records that, the public id changes (1.2.4 →
+  6.1.3, Prototype Protection renumbered) and that the module's ids are its own numbering (30 of 49 exist in ISA 6,
+  nearly all on another topic); the objectives line now names the catalogue's Information Security, Prototype
+  Protection and Data Protection modules. No rule logic changed. The catalogue is a free CC BY-ND 4.0 download with
+  ENX's grant for marked derivatives, so a rebuild with catalogue ids and
+  checks in our own words needs no permission.
+- `standards.yaml`: notes on both rows (versions unchanged); the HITRUST watch pattern now matches "CSF Version
+  11.9.0" (it stopped at 11.8). `STANDARDS_UPDATE_REGISTRY.md` rows rewritten.
+
 ### Reviewed — HIPAA amendment of 2026-11-19
 
 - 45 CFR Part 164 amendment of 2026-11-19 (HIPAA Privacy Rule final rule, 91 FR 74848, FR doc 2026-23429; effective

@@ -478,10 +478,10 @@ frameworks:
       - {standard: COBIT, version: "2019", publisher: ISACA, literal: "COBIT 2019", check: {method: page_regex, url: "https://www.isaca.org/resources/cobit", pattern: 'COBIT(?:®)? ?(\d{1,4})\b', known: ["2019", "19", "5"], note: "COBIT 7 published 2026-11-19 (#194); regeneration needs a licence decision"}}
   hitrust:
     standards:
-      - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: '(?:CSF|HITRUST)[^<]{0,20}v(\d+\.\d+(?:\.\d+)?)'}}
+      - {standard: HITRUST CSF, version: v11.3.0, publisher: HITRUST Alliance, literal: "HITRUST Common Security Framework (CSF) v11.3.0", check: {method: page_regex, url: "https://hitrustalliance.net/advisories", pattern: 'CSF (?:[Vv]ersion |v)(1\d\.\d+(?:\.\d+)?)', note: "v11.0-11.3 decommissioned (HAA 2026-007; new r2 objects from 2026-12-23 must use v11.4+); upstream v11.9.0; rebuild needs HITRUST's written consent (licence excludes security vendors)"}}
   tisax:
     standards:
-      - {standard: VDA ISA (TISAX), version: v6.0.3, publisher: ENX / VDA, literal: "VDA ISA (Information Security Assessment) Catalog v6.0.3", check: {method: page_regex, url: "https://portal.enx.com/en-US/TISAX/downloads/", pattern: 'ISA ?(20\d\d(?:\.\d)?|6\.\d\.\d)'}}
+      - {standard: VDA ISA (TISAX), version: v6.0.3, publisher: ENX / VDA, literal: "VDA ISA (Information Security Assessment) Catalog v6.0.3", check: {method: page_regex, url: "https://portal.enx.com/en-US/TISAX/downloads/", pattern: 'ISA ?(20\d\d(?:\.\d)?|6\.\d\.\d)', note: "ISA2027.1 current (EN 2026-09-30); applies to orders from 2027-01-01; module ids are module-local, rebuild from the free CC BY-ND catalogue"}}
   iso27001:
     standards:
       - {standard: ISO/IEC 27001, version: "2022", publisher: ISO/IEC, literal: "ISO/IEC 27001:2022", check: {method: manual, url: "https://www.iso.org/standard/27001", note: "iso.org blocks scripted fetches (403)"}}
