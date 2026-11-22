@@ -49,6 +49,14 @@ def u5(*parts):
     return str(uuid.uuid5(uuid.NAMESPACE_URL, f"{REPO}/oscal/" + "/".join(parts)))
 
 
+# Catalogs whose control numbering comes from a third-party licensed work: the notice travels with the export.
+THIRD_PARTY_REMARKS = {
+    "tisax": ("Control numbering from VDA ISA2027.1, (c) ENX Association, used under CC BY-ND 4.0 with the ENX "
+              "additional grant (Section 9). NOT APPROVED BY ENX. Checks and descriptions are written independently "
+              "and are not ISA text. The ISA licence terms apply to the ISA numbering and structure."),
+}
+
+
 def build_catalog(fw, entries, version, stamp, blob):
     """entries: inventory rows for one framework. Controls with the same id across files are merged."""
     fw_tok = token(fw)
@@ -99,7 +107,8 @@ def build_catalog(fw, entries, version, stamp, blob):
                                {"name": "authored-with", "ns": NS, "value": "Claude (Anthropic)"}],
                      "links": [{"href": REPO, "rel": "canonical"}],
                      "parties": [{"uuid": u5("party", "ynotbhatc"), "type": "organization", "name": "Rego Policy Libraries (ynotbhatc)",
-                                  "links": [{"href": REPO}]}]},
+                                  "links": [{"href": REPO}]}],
+                     **({"remarks": THIRD_PARTY_REMARKS[fw]} if fw in THIRD_PARTY_REMARKS else {})},
         "groups": groups,
         "back-matter": {"resources": resources}}}
 

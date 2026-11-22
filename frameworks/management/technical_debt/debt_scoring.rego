@@ -6,8 +6,8 @@
 #   source: aac
 #   domains: [technical-debt]
 #   coverage:
-#     checks: 173
-#     cited: 173
+#     checks: 172
+#     cited: 172
 #     density: sized
 #     basis: size
 #     tested: true
@@ -350,19 +350,20 @@ effort_catalog := {
 		"11.300": {"hours": 4.0, "category": "compliance", "complexity": "quick_win", "severity": "HIGH"},
 		"_default": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
 	},
-	# ── TISAX VDA ISA v6.0.3 ─────────────────────────────────────────────────
-	# Violations: "TISAX VDA ISA 1.1.1: ..." → key "1"; "TISAX PD AL2: ..." → key "PD"
+	# ── TISAX, VDA ISA2027.1 ─────────────────────────────────────────────────
+	# Violations: "TISAX ISA2027 5.2.9 (...): ..." → key = catalogue chapter "1"–"9"
+	# (1 policies/organisation, 2 HR, 3 physical, 4 IAM, 5 IT security, 6 suppliers, 7 compliance,
+	# 8 prototype protection, 9 data protection)
 	"tisax": {
 		"1": {"hours": 16.0, "category": "compliance", "complexity": "complex", "severity": "CRITICAL"},
 		"2": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
-		"3": {"hours": 4.0, "category": "compliance", "complexity": "moderate", "severity": "MEDIUM"},
+		"3": {"hours": 8.0, "category": "security", "complexity": "moderate", "severity": "HIGH"},
 		"4": {"hours": 8.0, "category": "security", "complexity": "moderate", "severity": "HIGH"},
 		"5": {"hours": 8.0, "category": "security", "complexity": "moderate", "severity": "HIGH"},
-		"6": {"hours": 4.0, "category": "security", "complexity": "moderate", "severity": "HIGH"},
+		"6": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
 		"7": {"hours": 12.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
-		"8": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
-		"9": {"hours": 6.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
-		"PD": {"hours": 16.0, "category": "compliance", "complexity": "complex", "severity": "CRITICAL"},
+		"8": {"hours": 16.0, "category": "compliance", "complexity": "complex", "severity": "CRITICAL"},
+		"9": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
 		"_default": {"hours": 8.0, "category": "compliance", "complexity": "moderate", "severity": "HIGH"},
 	},
 	# ── CIS GCP Foundation Benchmark v2.0.0 ──────────────────────────────────
@@ -619,19 +620,15 @@ _cfr11_key(violation) := key if {
 	key := split(split(ctrl_raw, "(")[0], ":")[0]
 }
 
-# TISAX: "TISAX VDA ISA 1.1.1: ..." → "1"; "TISAX PD AL2: ..." → "PD"
+# TISAX: "TISAX ISA2027 5.2.9 (Backup and recovery): ..." → "5"; input-contract notes ("TISAX ISA2027 input: ...")
+# have no chapter and take the default
 _tisax_key(violation) := key if {
 	is_string(violation)
-	startswith(violation, "TISAX VDA ISA ")
+	startswith(violation, "TISAX ISA2027 ")
 	parts := split(violation, " ")
-	count(parts) >= 4
-	ctrl_raw := parts[3] # "1.1.1:" or "9.2.1:"
-	key := split(split(ctrl_raw, ".")[0], ":")[0]
-}
-
-_tisax_key(violation) := "PD" if {
-	is_string(violation)
-	startswith(violation, "TISAX PD ")
+	count(parts) >= 3
+	key := split(parts[2], ".")[0]
+	regex.match(`^[1-9]$`, key)
 }
 
 # CIS GCP: "CIS GCP 1.1: ..." → "1"

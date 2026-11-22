@@ -18,7 +18,7 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries (after v2.5.0) |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 29,887 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
+| Controls / checks | 1,591 controls in 34 domains | 29,911 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
 | Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 190 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 25 STIG platforms |
@@ -220,7 +220,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | Shared Assessments SIG \| 2025 | gap |  |
 | SPARTA \| 4.0 | gap |  |
 | SWIFT \| CSF \| 2025 | partial | frameworks/financial/swift_csp is v2024; SCF maps 2025 |
-| TISAX \| ISA \| 6.0.3 | covered | frameworks/management/tisax (6.0.3) |
+| TISAX \| ISA \| 6.0.3 | covered | frameworks/management/tisax (rebuilt on ISA2027.1: all 77 active controls of IS, Prototype and Data Protection; 13 from system facts, 64 attested) |
 | UL \| 2900-1 \| 2017 | gap |  |
 | UL \| 2900-2-2 \| 2016 | gap |  |
 | UN \| R155 | gap |  |

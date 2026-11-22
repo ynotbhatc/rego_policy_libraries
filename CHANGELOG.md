@@ -8,6 +8,31 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — TISAX rebuilt on VDA ISA2027.1 (2026-11-22) — BREAKING: control ids and input contract
+
+- `frameworks/management/tisax` (package `tisax.main`, entrypoint unchanged) now evaluates every active control
+  number of VDA ISA2027.1 (English workbook 2026-09-30; applies to TISAX assessments ordered from 2027-01-01):
+  Information Security 45 (chapters 1–7), Prototype Protection 20 (8.1.1–8.1.13, 8.2.1–8.2.7), Data Protection 12
+  (9.1.1–9.8.1) = 77. 3.1.2 is superseded in the catalogue and is listed under `not_assessed`.
+- 13 Information Security controls (1.3.4, 3.1.4, 4.1.2, 4.1.3, 4.2.1, 5.1.1, 5.1.2, 5.2.3, 5.2.4, 5.2.5, 5.2.6,
+  5.2.7, 5.2.9) are evaluated from system facts at `input.tisax.evidence.*` (facts and limits in `evidence_spec`;
+  the limits are library defaults). The other 64 are organisational and pass only on a signed attestation
+  `input.tisax.attestations["<id>"] = {attested: true, by, date}`, with an optional `maturity_level` that must be at
+  least 3. Absent evidence or attestation is `evidence_missing`, never a pass.
+- Prototype Protection and Data Protection are evaluated unless `input.tisax.scope.<part>` is the boolean false
+  (replaces the old `assessment_level`-based gating of the three "TISAX PD AL2" checks).
+- Report: `total_controls` = controls in scope, `failed_controls`, `failed_control_ids`, `control_results` (id, title,
+  part, chapter, basis, status pass / fail / evidence_missing / not_attested, findings) and
+  `control_result_counts`, `part_results`; `domain_summary` is gone. Violations read `TISAX ISA2027 <id> (<label>): ...`.
+- **Breaking:** the previous ids were the module's own numbering under an ISA 6.0.3 heading (most on another topic
+  than the catalogue control of the same number) and the old `input.isms.*` / `input.it_security.*` / ... facts are no
+  longer read. Any consumer keyed on the old ids, the old "TISAX VDA ISA" / "TISAX PD" message prefixes or the old
+  input paths must move. `technical_debt.scoring` now keys TISAX effort on the ISA2027 chapter (PD key removed).
+- Not approved by ENX. VDA ISA © ENX Association, used under CC BY-ND 4.0 with the ENX additional grant; checks
+  written independently. Only control numbers and paraphrased short labels are used; no catalogue text is carried.
+  NOTICE gains a "Third-party notices" section with that credit. `standards.yaml`, STANDARDS_UPDATE_REGISTRY.md,
+  docs/SCF_GAP.md, counts and the OSCAL / crosswalk exports updated.
+
 ### Reviewed — COBIT 7 blocked by vendor (2026-11-22, issue #194)
 
 - ISACA requires a paid commercial licence to embed COBIT 7 content, objectives or derived material in software, with
