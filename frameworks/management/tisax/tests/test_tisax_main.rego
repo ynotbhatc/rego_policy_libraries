@@ -210,7 +210,10 @@ test_is_attestation_maturity_at_target_passes if {
 
 test_is_attestation_maturity_not_a_number_fails if {
 	a := object.union(_signed, {"maturity_level": "3"})
-	_status(_with_attestation("1.1.1", a), "1.1.1") == "fail"
+	inp := _with_attestation("1.1.1", a)
+	_status(inp, "1.1.1") == "fail"
+	some v in _report(inp).violations
+	contains(v, "maturity_level must be a number")
 }
 
 # ── Prototype Protection (8.2.6 intrusion detection) ─────────────────────────

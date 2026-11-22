@@ -407,7 +407,11 @@ _detail(id, "evidence_missing") := sprintf("evidence missing — no attestation 
 
 _detail(id, "not_attested") := sprintf("not attested — %v must be {attested: true, by: <name>, date: <date>}", [_att_path(id)])
 
-_detail(id, "fail") := sprintf("fail — attested maturity level %v is below the target level %v", [_att(id).maturity_level, target_maturity_level]) if _basis(id) == "attestation"
+_detail(id, "fail") := _maturity_detail(_att(id).maturity_level) if _basis(id) == "attestation"
+
+_maturity_detail(ml) := sprintf("fail — attested maturity level %v is below the target level %v", [ml, target_maturity_level]) if is_number(ml)
+
+_maturity_detail(ml) := sprintf("fail — maturity_level must be a number (target %v or higher), got %v of type %v", [target_maturity_level, ml, type_name(ml)]) if not is_number(ml)
 
 _status_of[id] := _status(id) if some id in applicable
 
