@@ -18,3 +18,9 @@ Nothing is invented. A cell is empty when no map says otherwise, and a map marke
 
 `test/roundtrip.sh` proves every source row is present, none is invented, and the spine's STIG counts and
 baseline nesting (every Moderate control is in High) hold.
+
+## Third-party numbering
+
+Rows with `framework = tisax` carry control numbers from VDA ISA2027.1, © ENX Association, used under CC BY-ND 4.0
+with the ENX additional grant (Section 9). **Not approved by ENX.** The descriptions are written independently and
+are not ISA text; the ISA licence terms apply to the ISA numbering and structure. See [NOTICE](../../../NOTICE).
