@@ -45,7 +45,7 @@ Each framework key is labelled validated, partial or experimental in [`scripts/c
 | NCSC CAF 4.0 | `frameworks/compliance/ncsc_caf/` | 23 Cyber Outcomes |
 | Digital Sovereignty | `frameworks/sovereignty/` | 7 domains |
 | **CSA CCM v4.0** | `frameworks/management/csa_ccm/` | 16 domains, 197 controls |
-| **ISO/IEC 27701:2019** (**experimental, not validated**: not checked against the standard's text, never run on real evidence; [README](../frameworks/privacy/iso27701/README.md)) | `frameworks/privacy/iso27701/` | PIMS, PII Controller, PII Processor, DSR |
+| **ISO/IEC 27701:2019** (**experimental, not validated**: control list compiled from public secondary sources, not checked against the purchased standard, never run on real evidence; [README](../frameworks/privacy/iso27701/README.md)) | `frameworks/privacy/iso27701/` | 108 controls: clause 5 (23), clause 6 (36), Annex A controllers (31), Annex B processors (18); 8 from system facts, 100 attested |
 | **NIST SP 800-171 Rev 3** | `frameworks/federal/nist/sp_800_171/` | 17 families, all 97 requirements with their 349 statements, ids and text from NIST's CPRT export; 79 decided by facts, 18 attested; 33 withdrawn listed with reasons |
 | **NIST SP 800-171A Rev 3** | `frameworks/federal/nist/sp_800_171a/` | all 422 assessment determination statements, rolled up per requirement; examine / interview / test methods carried as data |
 | **NIST SP 800-171 Rev 2** | `frameworks/federal/nist/sp_800_171_r2/` | the 110 requirements DFARS 7012 and CMMC 2.0 Level 2 still assess, basic / derived classification from CPRT |
