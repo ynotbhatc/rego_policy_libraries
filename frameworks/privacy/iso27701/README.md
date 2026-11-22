@@ -6,25 +6,45 @@
 
 ## Read this before relying on it
 
-- The module has not been checked against the published text of ISO/IEC 27701:2019, and it has never been run on
-  real evidence. Its control ids and wording are the library's own reading, not an audited mapping.
-- A rebuild against the 2019 edition waits for the standard's table of contents (issue #302). The 2025 revision is
-  not covered.
-- It declares 134 controls and the coverage scan finds 67 (`scripts/coverage_stamp.py`, known gap), so about half
-  of what it declares is not evaluated.
+- The control list was compiled from public secondary sources: the publisher-distributed preview of the
+  standard's table of contents, two NQA control analyses and the NIST Privacy Framework crosswalk. The sources
+  and the inclusion rule are listed in the header of `iso27701_main.rego`.
+- It has not been checked against the purchased standard. It should be verified against the purchased standard
+  when one is bought. No ISO text is carried: ids are numbers, titles are the library's own paraphrases.
+- Five clause 6 ids are marked `unconfirmed` because the sources disagree on them: 6.3.2.2, 6.12.1.1,
+  6.14.2.1, 6.15.2.2 and 6.15.2.3 (`unconfirmed_ids` in the report, `id_source` per control).
+- It has never been run on real evidence.
 
-Use it to explore how privacy controls can be expressed as policy, not as evidence for a certification audit.
+## What it evaluates
+
+One result per control, 108 in all, edition 2019:
+
+| group | ids | controls | how decided |
+|---|---|---|---|
+| clause 5, requirements extending ISO/IEC 27001 | 5.2.1 to 5.8.2 | 23 | attestation |
+| clause 6, guidance extending ISO/IEC 27002 | 6.2.1.1 to 6.15.2.3 | 36 | 6 from system facts, 30 attestation |
+| Annex A, PII controllers | 7.2.1 to 7.5.4 | 31 | 7.4.9 from system facts, 30 attestation |
+| Annex B, PII processors | 8.2.1 to 8.5.8 | 18 | 8.4.3 from system facts, 17 attestation |
+
+Each control reports `pass`, `fail` or `not_assessed` (with `reason` `evidence_missing` or `not_attested`).
+Missing or mistyped evidence is never a pass. Annex A and Annex B apply unless
+`input.iso27701.scope.pii_controller` / `pii_processor` is the boolean `false`.
+
+Input: `input.iso27701.evidence.<area>.<fact>` for the technical controls (see `evidence_spec`),
+`input.iso27701.attestations["<id>"] = {attested: true, by, date}` for the rest. The boolean fields the module
+read before the rebuild (`pims_requirements.*`, `pii_controller.*`, `pii_processor.*`, `data_subject_rights.*`)
+are still read for the control each one evidences (`legacy_inputs`).
 
 ## Layout
 
 | file | package | area |
 |---|---|---|
-| `iso27701_pims_requirements.rego` | `iso27701.pims_requirements` | PIMS requirements (clauses 5 and 6) |
-| `iso27701_pii_controller.rego` | `iso27701.pii_controller` | PII controllers (clause 7) |
-| `iso27701_pii_processor.rego` | `iso27701.pii_processor` | PII processors (clause 8) |
-| `iso27701_data_subject_rights.rego` | `iso27701.data_subject_rights` | data subject rights |
-| `iso27701_main.rego` | `iso27701.main` | aggregate `compliance_report` |
+| `iso27701_main.rego` | `iso27701.main` | control list, evaluation, `compliance_report` |
+| `iso27701_pims_requirements.rego` | `iso27701.pims_requirements` | view: clauses 5 and 6 |
+| `iso27701_pii_controller.rego` | `iso27701.pii_controller` | view: Annex A |
+| `iso27701_pii_processor.rego` | `iso27701.pii_processor` | view: Annex B |
+| `iso27701_data_subject_rights.rego` | `iso27701.data_subject_rights` | view: 7.3.1 to 7.3.10 and 8.3.1 |
 
 ```bash
-opa eval -d frameworks/privacy/iso27701 -f pretty 'data.iso27701.main.compliance_report.compliant'
+opa eval -d frameworks/privacy/iso27701 -f pretty 'data.iso27701.main.compliance_report.control_result_counts'
 ```

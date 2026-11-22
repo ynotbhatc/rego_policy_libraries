@@ -33,6 +33,37 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   unsigned attestation, unknown key and type tests.
 - Not mapped (no check): PI1.1, PI1.4, PI1.5, P1.1, P2.1, P4.3, P6.2-P6.5, P6.7, P8.1.
 
+### Changed — ISO/IEC 27701:2019: one result for each of 108 controls (breaking ids) (2026-11-22)
+- `frameworks/privacy/iso27701` now evaluates 108 controls of the 2019 edition: clause 5 (23 requirements
+  extending ISO/IEC 27001), clause 6 (36 subclauses extending ISO/IEC 27002), Annex A controllers (31) and
+  Annex B processors (18). 8 are decided from system facts (`input.iso27701.evidence`), 100 by signed
+  attestation (`input.iso27701.attestations[id]`). Statuses are pass, fail and not_assessed; missing or
+  mistyped evidence is never a pass. Annex A / B drop out only on `scope.pii_controller` /
+  `scope.pii_processor` set to the boolean false.
+- The control list was compiled from public secondary sources (publisher preview table of contents, two NQA
+  analyses, the NIST Privacy Framework crosswalk by Microsoft) and has not been checked against the purchased
+  standard; sources, inclusion rule and the five unconfirmed clause 6 ids (6.3.2.2, 6.12.1.1, 6.14.2.1,
+  6.15.2.2, 6.15.2.3) are in the module header and in the report (`unconfirmed_ids`, `id_source`). It should be
+  verified against the purchased standard when one is bought. The old declared total of 134 had no source.
+- Per-control results: `control_results`, `control_result_counts`, `group_results`, `failed_control_ids`.
+  `iso27701.main`, `compliance_report` and `overall_compliant` are unchanged in name; the four area packages
+  (`pims_requirements`, `pii_controller`, `pii_processor`, `data_subject_rights`) are now views over the same
+  results.
+- Input paths: the old boolean fields are still read, mapped by meaning to the control each one evidences
+  (`legacy_inputs`); a control passes on them only when every mapped field is true, and any false one fails
+  it. Not read any more: `pii_processor.privacy_by_design.controls_throughout_lifecycle` (no 2019 control) and
+  `pii_controller.privacy_by_design.transmission_controls` (7.4.9 is now decided from evidence).
+- Breaking for anyone parsing violation prefixes: the old ids were misnumbered against the 2019 edition. Old
+  prefix -> new id: 5.2 -> 5.2.1; 5.3 -> 5.2.2; 5.4 -> 5.2.3; 5.5 -> 5.3.1 / 5.5.1; 5.6 -> 5.3.2; 6.1 ->
+  5.4.1.2 / 5.4.1.3 / 7.2.5; 6.2 -> 5.4.2; 6.3 -> 5.6.1; 7.2.5 -> 7.3.3; 7.3.2 -> 7.3.3; 7.3.3 -> 7.3.4;
+  7.3.4 / 7.3.5 -> 7.3.6; 7.3.6 -> 7.3.8; 7.3.7 -> 7.3.9; 7.3.8 -> 7.3.10; 7.4.8 -> 7.4.9; 7.5.3 -> 7.5.4;
+  8.2.3 -> 8.5.7; 8.2.4 -> 8.2.3; 8.3.2 -> 8.2.6; 8.4.1 -> retired; 8.4.2 -> 8.4.1; 8.4.3 -> 8.4.2;
+  8.5.1 -> 8.5.5; 8.5.2 -> 8.5.4; 8.5.3 -> 8.5.6; 8.5.4 -> 8.5.1; "Annex B / GDPR Art. 15-22" -> 7.3.5,
+  7.3.6, 7.3.7, 7.3.8, 7.3.9, 7.3.10. Unchanged: 7.2.1-7.2.4, 7.2.6, 7.2.7, 7.3.1, 7.4.1-7.4.7, 7.5.1, 7.5.2,
+  8.2.1, 8.2.2, 8.3.1.
+- 324 per-control tests (pass, fail and evidence-missing for each control) plus contract, scope, attestation
+  and legacy-input tests. `coverage_stamp.py` known gap for iso27701 removed; label stays experimental.
+
 ### Added — NIST SP 800-53 takes technical verdicts from benchmark results through the crosswalk (2026-11-22)
 - `nist.sp800_53.main` / `nist_800_53` now read benchmark results from the same input, in the two shapes
   `crosswalk.correlation` already accepts (`input.reports`: STIG compliance reports; `input.findings`: a flat

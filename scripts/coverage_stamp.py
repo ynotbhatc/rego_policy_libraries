@@ -47,7 +47,6 @@ ORCH = re.compile(r"(_main|_complete|_simplified)\.rego$")
 TOTAL_KEYS = ("standard_total", "total_controls", "controls_total", "total_recommendations", "total_checks")  # first match wins
 # Modules legitimately below their own declared total, with the reason. Everything else below 90 % fails --check.
 KNOWN_GAPS = {
-    "frameworks/privacy/iso27701/iso27701_main.rego": "ISO/IEC 27701 text is licensed; 67 of 134 controls written from public summaries",
 }
 KEYS = ("checks", "cited", "expected", "found", "scope", "density", "basis", "tested", "entrypoint", "guard", "as_of")
 # modules that evaluate nothing of their own by design
