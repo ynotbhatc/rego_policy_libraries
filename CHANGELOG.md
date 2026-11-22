@@ -8,6 +8,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
+
+- `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
+  (sshd CRYPTO_POLICY commented), RHEL-08-010293 (openssl.cnf includes opensslcnf.config) and RHEL-08-030565
+  (useradd audit rule), each fail-closed with an "evidence missing" detail. RHEL-08-020200 is 180 days (was 60);
+  RHEL-08-010020 now checks the FIPS crypto policy without subpolicies, the CURRENT.pol hashes and min_rsa_size (it
+  checked FIPS mode); the crossed banner ids are corrected (010040 sshd Banner file, 010060 /etc/issue, exact text);
+  DoD → DoW titles. Crosswalk re-joined (V2R9 CCIs; RHEL-08-040221/040222 now have no Rev 5 mapping).
+
 ### Changed — decisions of 2026-11-21
 
 - NIST 800-53 PT-6(1) and PT-6(2) are attestation-based

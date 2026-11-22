@@ -17,9 +17,10 @@
 package stig.rhel_8.services
 
 # DISA STIG for RHEL 8 - Services Module
-# STIG Version: V2R8 | Released: 01 Jul 2026
+# STIG Version: V2R9 | Released: 30 Sep 2026
 # Rule ids, vuln ids, severities and titles stamped from the October 2026 SRG-STIG library XCCDF on 2026-11-10
-# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks.
+# (tools/stig_generators/stamp_catalog.py); each finding is keyed on the fact its logic checks. Re-checked
+# 2026-11-21 against DISA's standalone U_RHEL_8_V2R9_STIG.zip XCCDF and its revision history.
 
 import rego.v1
 

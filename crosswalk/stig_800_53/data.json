@@ -1,8 +1,8 @@
 {
 "meta": {
-"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation; Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21); RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19)",
+"source": "DISA SRG-STIG Library Compilation, July 2026; CCI List 2025-01-23; Oracle platforms from the October 2026 compilation; Kubernetes V2R6 and RGS RKE2 V2R7 from DISA's standalone STIG zips (2026-10-21); RHEL 10 V1R3 and Ubuntu 24.04 V1R7 from the October 2026 compilation (2026-11-19); RHEL 8 V2R9 from DISA's standalone STIG zip (2026-11-21)",
 "join": "stig_id -> CCI (from XCCDF <ident>) -> NIST SP 800-53 (from U_CCI_List.xml)",
-"generated": "2026-11-19",
+"generated": "2026-11-21",
 "rule_count": 4437,
 "note": "Regenerate with tools/stig_generators/parse_xccdf.py + gen_crosswalk.py (per platform) from the current SRG-STIG Library compilation.",
 "platforms": {
@@ -13,7 +13,8 @@
 "CNTR-K8": "Kubernetes Security Technical Implementation Guide V2R6 (01 Apr 2026)",
 "CNTR-R2": "Rancher Government Solutions RKE2 Security Technical Implementation Guide V2R7 (01 Jul 2026)",
 "RHEL-10": "Red Hat Enterprise Linux 10 Security Technical Implementation Guide V1R3 (30 Sep 2026)",
-"UBTU-24": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide V1R7 (30 Sep 2026)"
+"UBTU-24": "Canonical Ubuntu 24.04 LTS Security Technical Implementation Guide V1R7 (30 Sep 2026)",
+"RHEL-08": "Red Hat Enterprise Linux 8 Security Technical Implementation Guide V2R9 (30 Sep 2026)"
 },
 "cci_list": "2025-01-23"
 },
@@ -2120,8 +2121,7 @@
 "SC-13"
 ],
 "RHEL-08-010019": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010020": [
 "AC-17"
@@ -2289,16 +2289,13 @@
 "CM-3"
 ],
 "RHEL-08-010370": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010371": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010372": [
-"CM-14",
-"CM-5"
+"CM-14"
 ],
 "RHEL-08-010373": [
 "AC-3"
@@ -2374,9 +2371,6 @@
 "CM-6"
 ],
 "RHEL-08-010470": [
-"CM-6"
-],
-"RHEL-08-010471": [
 "CM-6"
 ],
 "RHEL-08-010472": [
@@ -2665,8 +2659,7 @@
 "IA-2"
 ],
 "RHEL-08-020260": [
-"AC-2",
-"IA-4"
+"AC-2"
 ],
 "RHEL-08-020270": [
 "AC-2"
@@ -2951,7 +2944,6 @@
 "AU-5"
 ],
 "RHEL-08-030740": [
-"AU-8",
 "SC-45"
 ],
 "RHEL-08-030741": [
@@ -3121,12 +3113,6 @@
 ],
 "RHEL-08-040220": [
 "CM-6"
-],
-"RHEL-08-040221": [
-"SC-5"
-],
-"RHEL-08-040222": [
-"SC-5"
 ],
 "RHEL-08-040230": [
 "CM-6"
@@ -14451,6 +14437,15 @@
 ],
 "UBTU-24-101100": [
 "SI-6"
+],
+"RHEL-08-010293": [
+"AC-17"
+],
+"RHEL-08-010287": [
+"AC-17"
+],
+"RHEL-08-030565": [
+"AU-12"
 ]
 }
 }
