@@ -2,7 +2,7 @@
 
 > **Generated** — do not edit by hand. Refresh with `python3 scripts/coverage_report.py > COVERAGE.md`
 
-**992 of 1067 policy files have tests (93%).** 1502 test files, 75 policies still uncovered.
+**992 of 1067 policy files have tests (93%).** 1503 test files, 75 policies still uncovered.
 
 ## How far each framework has been validated
 
@@ -123,7 +123,7 @@ collector sends. Every framework key carries one label, kept in `scripts/coverag
 | `iec_62443` | experimental |  |  |
 | `irs_1075` | experimental |  |  |
 | `iso27001` | experimental |  |  |
-| `iso27701` | experimental | `frameworks/privacy/iso27701` | Not validated: written against ISO/IEC 27701:2019 without the standard's text at hand; the rebuild against the 2019 edition waits for its table of contents (issue #302). Never run on real evidence. |
+| `iso27701` | experimental | `frameworks/privacy/iso27701` | Not validated: 108 controls of ISO/IEC 27701:2019 compiled from public secondary sources (publisher preview table of contents, NQA analyses, NIST crosswalk), not checked against the purchased standard; 5 clause 6 ids unconfirmed. Never run on real evidence. |
 | `iso_42001` | experimental |  |  |
 | `iso_42005` | experimental |  |  |
 | `itar` | experimental |  |  |

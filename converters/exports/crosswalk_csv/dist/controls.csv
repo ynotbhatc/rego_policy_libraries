@@ -16789,60 +16789,114 @@ iso27001,devsecops,iso27001-devsecops,,compliance,iso,isms,iso27001.system_acqui
 iso27001,information_systems_security,iso27001-information_systems_security,,compliance,iso,isms,iso27001.system_acquisition_maintenance,frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego
 iso27001,security_in_development,iso27001-security_in_development,,compliance,iso,isms,iso27001.system_acquisition_maintenance,frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego
 iso27001,test_data,iso27001-test_data,,compliance,iso,isms,iso27001.system_acquisition_maintenance,frameworks/management/iso27001/system_acquisition_maintenance/system_acquisition_maintenance.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 15,iso27701-ISO-27701-Annex-B-GDPR-Art.-15,Right of access process not defined,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 16,iso27701-ISO-27701-Annex-B-GDPR-Art.-16,Right to rectification process not defined,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 17,iso27701-ISO-27701-Annex-B-GDPR-Art.-17,Technical capability for deletion of PII not implemented,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 18,iso27701-ISO-27701-Annex-B-GDPR-Art.-18,Flag-based processing restriction mechanism not implemented,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 20,iso27701-ISO-27701-Annex-B-GDPR-Art.-20,Data portability in machine-readable format not available,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 21,iso27701-ISO-27701-Annex-B-GDPR-Art.-21,Opt-out mechanism for processing objection not implemented,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 Annex B / GDPR Art. 22,iso27701-ISO-27701-Annex-B-GDPR-Art.-22,Human review not available for automated decision-making,compliance,iso,privacy isms,iso27701.data_subject_rights,frameworks/privacy/iso27701/iso27701_data_subject_rights.rego
-iso27701,ISO 27701 7.2.1,iso27701-ISO-27701-7.2.1,Purposes of PII processing not identified and documented,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.2,iso27701-ISO-27701-7.2.2,Lawful basis not identified for each processing purpose,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.3,iso27701-ISO-27701-7.2.3,When and how consent is to be obtained not determined,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.4,iso27701-ISO-27701-7.2.4,Consent not obtained and recorded from PII principals,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.5,iso27701-ISO-27701-7.2.5,Privacy notices not provided to PII principals,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.6,iso27701-ISO-27701-7.2.6,Contracts with PII processors do not include data protection obligations,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.2.7,iso27701-ISO-27701-7.2.7,Joint controllership arrangements not documented,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.1,iso27701-ISO-27701-7.3.1,Obligations to PII principals and means to fulfill them not determined,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.2,iso27701-ISO-27701-7.3.2,Privacy notice not provided to PII principals at point of collection,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.3,iso27701-ISO-27701-7.3.3,Mechanism for PII principals to modify or withdraw consent not provided,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.4,iso27701-ISO-27701-7.3.4,Mechanism for PII principals to access their PII upon request not provided,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.5,iso27701-ISO-27701-7.3.5,Mechanism for erasure and right to be forgotten not provided,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.6,iso27701-ISO-27701-7.3.6,Mechanism for data portability not provided,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.7,iso27701-ISO-27701-7.3.7,Process to handle complaints from PII principals not established,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.3.8,iso27701-ISO-27701-7.3.8,Safeguards for automated decision-making not implemented,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.1,iso27701-ISO-27701-7.4.1,PII collection not limited (data minimization principle not applied),compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.2,iso27701-ISO-27701-7.4.2,PII processing not limited to disclosed purposes (purpose limitation not applied),compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.3,iso27701-ISO-27701-7.4.3,Accuracy and quality of PII not maintained,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.4,iso27701-ISO-27701-7.4.4,PII minimization goals not defined,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.5,iso27701-ISO-27701-7.4.5,PII de-identification and deletion processes not established,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.6,iso27701-ISO-27701-7.4.6,Temporary files containing PII not disposed of appropriately,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.7,iso27701-ISO-27701-7.4.7,Retention schedule for PII not established or not enforced,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.4.8,iso27701-ISO-27701-7.4.8,Transmission controls for PII not implemented,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.5.1,iso27701-ISO-27701-7.5.1,Basis for PII transfer to third parties not established,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.5.2,iso27701-ISO-27701-7.5.2,Countries and organizations PII is transferred to not documented,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 7.5.3,iso27701-ISO-27701-7.5.3,Records of PII disclosures to third parties not maintained,compliance,iso,privacy isms,iso27701.pii_controller,frameworks/privacy/iso27701/iso27701_pii_controller.rego
-iso27701,ISO 27701 8.2.1,iso27701-ISO-27701-8.2.1,PII not processed only under documented customer instructions,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.2.2,iso27701-ISO-27701-8.2.2,Organization's processing purposes not limited to fulfilling customer's purposes,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.2.3,iso27701-ISO-27701-8.2.3,Subprocessors not contracted with equivalent data protection obligations,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.2.4,iso27701-ISO-27701-8.2.4,Marketing use of PII not prohibited without explicit customer authorization,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.3.1,iso27701-ISO-27701-8.3.1,Mechanism to support PII principal rights fulfillment by controller not provided,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.3.2,iso27701-ISO-27701-8.3.2,Records do not enable PII principal requests to be traced,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.4.1,iso27701-ISO-27701-8.4.1,Privacy controls not maintained throughout processing lifecycle,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.4.2,iso27701-ISO-27701-8.4.2,Temporary files not documented and disposed of appropriately,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.4.3,iso27701-ISO-27701-8.4.3,"Return, transfer, or disposal of PII not defined for contract termination",compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.5.1,iso27701-ISO-27701-8.5.1,Basis for disclosure of PII to third parties or law enforcement not established,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.5.2,iso27701-ISO-27701-8.5.2,Information about legally binding disclosure requests not provided to customer,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.5.3,iso27701-ISO-27701-8.5.3,Subprocessor disclosures not documented,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 8.5.4,iso27701-ISO-27701-8.5.4,Notification of PII transfers between jurisdictions not provided,compliance,iso,privacy isms,iso27701.pii_processor,frameworks/privacy/iso27701/iso27701_pii_processor.rego
-iso27701,ISO 27701 5.2,iso27701-ISO-27701-5.2,Privacy context factors not identified across applicable jurisdictions,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 5.3,iso27701-ISO-27701-5.3,"Stakeholders with privacy interests not identified (data subjects, regulators, processors)",compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 5.4,iso27701-ISO-27701-5.4,PIMS scope does not cover all PII processing activities,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 5.5,iso27701-ISO-27701-5.5,Executive sponsor for privacy program not designated,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 5.6,iso27701-ISO-27701-5.6,Overarching privacy policy not approved by top management,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 6.1,iso27701-ISO-27701-6.1,Privacy risk assessment not conducted covering all processing activities,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 6.2,iso27701-ISO-27701-6.2,Privacy objectives not established or not measurable,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
-iso27701,ISO 27701 6.3,iso27701-ISO-27701-6.3,Privacy impact of organizational changes not assessed before implementation,compliance,iso,privacy isms,iso27701.pims_requirements,frameworks/privacy/iso27701/iso27701_pims_requirements.rego
+iso27701,5.2.1,iso27701-5.2.1,Organisational context covers privacy and the PII controller or processor role,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.2.2,iso27701-5.2.2,Interested parties with a stake in PII processing and their requirements,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.2.3,iso27701-5.2.3,Management system scope covers the processing of PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.2.4,iso27701-5.2.4,Management system run and improved as a privacy information management system,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.3.1,iso27701-5.3.1,Top management commitment extends to privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.3.2,iso27701-5.3.2,Policy set covers privacy as well as security,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.3.3,iso27701-5.3.3,"Roles, responsibilities and authorities for privacy assigned",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.4.1.2,iso27701-5.4.1.2,"Risk assessment covers privacy risks, including risks to PII principals",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.4.1.3,iso27701-5.4.1.3,Risk treatment and statement of applicability cover the PIMS controls,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.4.2,iso27701-5.4.2,Objectives and plans cover privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.5.1,iso27701-5.5.1,Resources for the PIMS provided,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.5.2,iso27701-5.5.2,Competence of people affecting privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.5.3,iso27701-5.5.3,Awareness of the privacy policy and of one's part in it,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.5.4,iso27701-5.5.4,Internal and external communication on privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.5.5,iso27701-5.5.5,Documented information for the PIMS controlled,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.6.1,iso27701-5.6.1,"Operational planning and control, including changes affecting PII",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.6.2,iso27701-5.6.2,Privacy risk assessments carried out at planned intervals,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.6.3,iso27701-5.6.3,Privacy risk treatment plan carried out,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.7.1,iso27701-5.7.1,"Privacy performance monitored, measured and evaluated",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.7.2,iso27701-5.7.2,Internal audits cover the PIMS,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.7.3,iso27701-5.7.3,Management reviews cover the PIMS,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.8.1,iso27701-5.8.1,"Nonconformities corrected, including privacy ones",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,5.8.2,iso27701-5.8.2,PIMS continually improved,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.10.2.1,iso27701-6.10.2.1,Transfer rules cover PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.10.2.4,iso27701-6.10.2.4,People with access to PII bound to confidentiality,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.11.1.2,iso27701-6.11.1.2,PII sent over public networks protected,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.11.2.1,iso27701-6.11.2.1,Secure development rules address privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.11.2.5,iso27701-6.11.2.5,Systems engineered with privacy by design and by default,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.11.2.7,iso27701-6.11.2.7,Outsourced development held to the same privacy rules,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.11.3.1,iso27701-6.11.3.1,PII not used as test data without protection,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.12.1.1,iso27701-6.12.1.1,Supplier security policy covers PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.12.1.2,iso27701-6.12.1.2,Supplier agreements carry PII protection terms,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.13.1.1,iso27701-6.13.1.1,Incident responsibilities cover PII breaches,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.13.1.5,iso27701-6.13.1.5,"PII breaches responded to, recorded and notified",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.14.2.1,iso27701-6.14.2.1,Availability of facilities processing PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.15.1.1,iso27701-6.15.1.1,Privacy laws and contract terms that apply are identified,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.15.1.3,iso27701-6.15.1.3,Records of PII processing protected and retained,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.15.2.1,iso27701-6.15.2.1,Independent review covers privacy,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.15.2.2,iso27701-6.15.2.2,Adherence to privacy policies reviewed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.15.2.3,iso27701-6.15.2.3,Technical compliance reviews cover PII processing,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.2.1.1,iso27701-6.2.1.1,Security policies address PII protection,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.3.1.1,iso27701-6.3.1.1,Privacy roles and a privacy point of contact named,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.3.2.1,iso27701-6.3.2.1,Mobile device rules cover PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.3.2.2,iso27701-6.3.2.2,Teleworking rules cover PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.4.2.2,iso27701-6.4.2.2,Awareness and training cover privacy and breach consequences,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.5.2.1,iso27701-6.5.2.1,Information classification takes PII into account,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.5.2.2,iso27701-6.5.2.2,People can recognise PII through labelling,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.5.3.1,iso27701-6.5.3.1,Removable media holding PII controlled,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.5.3.2,iso27701-6.5.3.2,Media holding PII disposed of securely,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.5.3.3,iso27701-6.5.3.3,Physical transfer of media holding PII controlled,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.6.2.1,iso27701-6.6.2.1,User registration and removal on systems processing PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.6.2.2,iso27701-6.6.2.2,Access to PII provisioned under control,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.6.4.2,iso27701-6.6.4.2,Secure log-on to systems processing PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.7.1.1,iso27701-6.7.1.1,Cryptography protects PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.8.2.7,iso27701-6.8.2.7,Equipment holding PII wiped before disposal or reuse,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.8.2.9,iso27701-6.8.2.9,Clear desk and clear screen extend to PII,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.9.3.1,iso27701-6.9.3.1,Backups holding PII protected and restorable,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.9.4.1,iso27701-6.9.4.1,Processing of PII recorded in event logs,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,6.9.4.2,iso27701-6.9.4.2,Logs that hold PII protected,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.1,iso27701-7.2.1,Purposes of processing identified and documented,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.2,iso27701-7.2.2,Lawful basis identified for each purpose,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.3,iso27701-7.2.3,When and how consent is sought decided,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.4,iso27701-7.2.4,Consent obtained and kept on record,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.5,iso27701-7.2.5,Privacy impact assessment for new or changed processing,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.6,iso27701-7.2.6,Processor contracts carry the required terms,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.7,iso27701-7.2.7,Joint controller roles agreed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.2.8,iso27701-7.2.8,Records of PII processing kept,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.1,iso27701-7.3.1,Obligations to PII principals determined and met,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.10,iso27701-7.3.10,Automated decisions about principals addressed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.2,iso27701-7.3.2,Information owed to PII principals determined,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.3,iso27701-7.3.3,Clear information given to PII principals,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.4,iso27701-7.3.4,Way to change or withdraw consent provided,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.5,iso27701-7.3.5,Way to object to processing provided,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.6,iso27701-7.3.6,"Access, correction and erasure handled",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.7,iso27701-7.3.7,"Third parties told of corrections, erasures and objections",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.8,iso27701-7.3.8,Copy of their PII given to principals on request,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.3.9,iso27701-7.3.9,Requests from PII principals handled on time,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.1,iso27701-7.4.1,Collection limited to what the purpose needs,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.2,iso27701-7.4.2,Processing limited to the stated purposes,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.3,iso27701-7.4.3,PII kept accurate and of adequate quality,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.4,iso27701-7.4.4,Minimisation objectives set and met,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.5,iso27701-7.4.5,PII de-identified or deleted when processing ends,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.6,iso27701-7.4.6,Temporary files holding PII removed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.7,iso27701-7.4.7,PII kept no longer than needed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.8,iso27701-7.4.8,PII disposed of by documented means,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.4.9,iso27701-7.4.9,PII protected in transmission,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.5.1,iso27701-7.5.1,Basis for cross-border transfer identified,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.5.2,iso27701-7.5.2,Destinations of transfers listed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.5.3,iso27701-7.5.3,Transfers of PII recorded,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,7.5.4,iso27701-7.5.4,Disclosures of PII to third parties recorded,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.1,iso27701-8.2.1,Customer contract covers the processor's support duties,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.2,iso27701-8.2.2,PII processed only for the customer's purposes,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.3,iso27701-8.2.3,No marketing use without the principal's consent,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.4,iso27701-8.2.4,Customer told when an instruction would break the law,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.5,iso27701-8.2.5,Customer given what it needs to show its own compliance,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.2.6,iso27701-8.2.6,Records of processing done for the customer kept,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.3.1,iso27701-8.3.1,Customer helped to meet its obligations to principals,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.4.1,iso27701-8.4.1,Temporary files holding PII removed,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.4.2,iso27701-8.4.2,"PII returned, transferred or disposed of at contract end",compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.4.3,iso27701-8.4.3,PII protected in transmission,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.1,iso27701-8.5.1,Customer told of the basis for cross-border transfers,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.2,iso27701-8.5.2,Customer told of transfer destinations,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.3,iso27701-8.5.3,Disclosures to third parties recorded,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.4,iso27701-8.5.4,Customer told of disclosure requests,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.5,iso27701-8.5.5,Only legally binding disclosures made,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.6,iso27701-8.5.6,Subcontractors used disclosed to the customer,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.7,iso27701-8.5.7,Subcontractors engaged only as the contract allows,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
+iso27701,8.5.8,iso27701-8.5.8,Customer told before a subcontractor changes,compliance,iso,privacy isms,iso27701.main,frameworks/privacy/iso27701/iso27701_main.rego
 iso_42001,ISO 42001 4.1,iso_42001-ISO-42001-4.1,"Internal and external issues relevant to the AIMS not determined (including the organization's role as AI provider, deployer, or user)",governance,iso,ai,iso_42001.main,governance/iso_42001/iso_42001_main.rego
 iso_42001,ISO 42001 4.2,iso_42001-ISO-42001-4.2,Interested parties and their requirements relevant to the AIMS not identified,governance,iso,ai,iso_42001.main,governance/iso_42001/iso_42001_main.rego
 iso_42001,ISO 42001 4.3,iso_42001-ISO-42001-4.3,Scope of the AI management system not determined and documented,governance,iso,ai,iso_42001.main,governance/iso_42001/iso_42001_main.rego
