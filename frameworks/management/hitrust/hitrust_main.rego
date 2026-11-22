@@ -28,11 +28,10 @@ import rego.v1
 #   - Not current. Upstream is CSF v11.9.0 (HAA 2026-005, 2026-09-24); v11.4.0
 #     through v11.8.0 (HAA 2026-002, 2026-05-07) came between.
 #   - v11.0-v11.3 are DECOMMISSIONED (HAA 2026-007, 2026-09-24): maintenance
-#     ended 2026-09-24; no new r2 assessment objects after 2026-12-31 (the
-#     advisory also names 2026-12-23 for "v11.4 or later"); no submissions for
-#     report processing after 2027-03-31; libraries removed from MyCSF
-#     2028-06-30. A new HITRUST r2 assessment cannot use the version this
-#     module names.
+#     ended 2026-09-24; new r2 assessment objects created from 2026-12-23 must
+#     use v11.4 or later (the advisory also names 2026-12-31 for disabling
+#     v11.0-v11.3 creation); no v11.0-v11.3 submissions for report processing
+#     after 2027-03-31; libraries removed from MyCSF 2028-06-30.
 #   - The module is a set of HIPAA-oriented healthcare checks written from
 #     public knowledge. It carries no CSF requirement text, and its ids are the
 #     module's own numbering in CSF reference style, not CSF control references:

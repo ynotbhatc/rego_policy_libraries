@@ -33,7 +33,7 @@ import rego.v1
 #     ISA2027.1 followed 2026-10-01. ISA2027 is the basis for assessments
 #     ordered from 2027-01-01; ISA 6 still serves assessments ordered before
 #     then, and March 2027 is the last month to open an initial ISA 6
-#     assessment. From 2027 the catalogue is renamed by year (ISA2028 next).
+#     assessment. From 2027 the catalogue is named by year and revised annually.
 #   - ISA2027 id changes (from the catalogue's own change history and id
 #     lists): 1.2.4 moved to 6.1.3; Prototype Protection restructured into
 #     8.1.1-8.1.13 (organisational) and 8.2.1-8.2.7 (physical), and the ISA 6
@@ -44,9 +44,12 @@ import rego.v1
 #     same topic (e.g. ISA 5.1.1 is cryptography, here network segmentation),
 #     and the domain list below is the module's grouping. No catalogue question
 #     or requirement text is carried. The VDA ISA is a free download under
-#     CC BY-ND 4.0 plus ENX's Section 9 grant for marked derivatives, so a
-#     rebuild against ISA2027.1 needs no permission. See
-#     STANDARDS_UPDATE_REGISTRY.md.
+#     CC BY-ND 4.0 plus ENX's Section 9 grant for marked derivatives: a
+#     rebuild against ISA2027.1 with catalogue ids and checks in our own words
+#     needs no permission. Do not paste catalogue question or requirement text
+#     into this module: that makes it a derivative, which must be marked as not
+#     approved by ENX, keep the ISA licence (not Apache-2.0) and drop ENX logos
+#     and marks. See STANDARDS_UPDATE_REGISTRY.md.
 #
 # Applies to:
 #   - Automotive OEMs (BMW, VW, Mercedes, Stellantis, Renault, etc.)
