@@ -334,7 +334,7 @@ frameworks:
       - {standard: NIST AI 600-1 Generative AI Profile, version: "1.0", publisher: NIST, literal: "AI RMF 1.0", check: {method: manual, url: "https://www.nist.gov/itl/ai-risk-management-framework", note: "AI 600-1 has no revision number; the literal pins the AI RMF version it profiles"}}
   nist_privacy_framework:
     standards:
-      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Privacy Framework (?:Version |v)?(\d\.\d)'}}
+      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Version (\d\.\d) \(PDF\)', note: "PF 1.1 is still the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed 2025-06-13; no 2pd or final on CSRC, checked 2026-11-21). The pattern reads the final-document download link (today 'Version 1.0 (PDF)'), so the IPD banner and the 'Using Privacy Framework 1.1' navigation link no longer flag; a final 1.1 PDF link does. Regenerate the module from the 1.1 CPRT Core when final"}}
   nist_risk_management_framework:
     standards:
       - {standard: NIST SP 800-37 Risk Management Framework, version: Rev 2, publisher: NIST, literal: "NIST SP 800-37 Rev 2", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/37/r2/final"}}
@@ -582,7 +582,7 @@ frameworks:
   owasp_llm:
     standards:
       - {standard: OWASP Top 10 for LLM Applications, version: "2026", publisher: OWASP GenAI Security Project, literal: "OWASP Top 10 for LLM Applications — 2026 edition", check: {method: manual, url: "https://genai.owasp.org/llm-top-10/"}}
-      - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.09, publisher: MITRE, literal: "atlas-data v2026.09", check: {method: github_release, repo: mitre-atlas/atlas-data}}
+      - {standard: MITRE ATLAS (mitigation crosswalk metadata), version: v2026.10, publisher: MITRE, literal: "atlas-data v2026.10", check: {method: github_release, repo: mitre-atlas/atlas-data}}
   owasp_top10:
     standards:
       - {standard: OWASP Top 10, version: "2025", publisher: OWASP, literal: "OWASP Top 10:2025", check: {method: manual, url: "https://owasp.org/Top10/"}}
@@ -603,10 +603,10 @@ frameworks:
   # ---------------------------------------------------------------- supply chain
   supply_chain_slsa:
     standards:
-      - {standard: SLSA build track, version: v1.0, publisher: OpenSSF, literal: "SLSA v1.0", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
+      - {standard: SLSA build track, version: v1.2, publisher: OpenSSF, literal: "SLSA v1.2", check: {method: page_regex, url: "https://slsa.dev/spec/", pattern: 'SLSA (?:specification )?v(\d+\.\d+)'}}
   supply_chain_s2c2f:
     standards:
-      - {standard: OpenSSF S2C2F, version: unknown, publisher: OpenSSF, check: {method: github_release, repo: ossf/s2c2f}}
+      - {standard: OpenSSF S2C2F, version: v1.1, publisher: OpenSSF, literal: "S2C2F v1.1", check: {method: github_release, repo: ossf/s2c2f}}
   supply_chain_scrm_800_161:
     standards:
       - {standard: NIST SP 800-161, version: r1, publisher: NIST, literal: "800-161r1", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final"}}

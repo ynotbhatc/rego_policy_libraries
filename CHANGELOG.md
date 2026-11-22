@@ -19,6 +19,38 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   byte-identical to the 2026-01 bundle; only the Database STIG moves V3R4 → V3R5 (SQL6-D0-003300 TDE check query
   rewritten), which this Instance module does not cover. No rule change; `standards.yaml` released → 2026-04.
 
+### Changed — SLSA re-pinned to v1.2 (build track unchanged) (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/slsa` and `enforcement/supply_chain/slsa_governance.rego` now state SLSA v1.2 (2025-11-24;
+  v1.0 is retired on slsa.dev). The Build track's three levels and requirements are the same as in v1.0 — v1.1 and
+  v1.2 reworded them and added a RECOMMENDED signing method (transparency logs or time stamping) — so no level logic
+  changed. v1.2's new Source track (L1-L4) is not implemented. The `slsa_governance` header now records that its
+  gates keep the v0.1 shape (version-controlled source and verified history counted toward build levels; under v1.2
+  they are Source L1/L2). Report strings "SLSA v1.2 (build track)" and "SLSA v1.2 + Supply Chain Governance".
+
+### Changed — OpenSSF S2C2F pinned to v1.1 (2026-11-21, issue #341)
+
+- `benchmarks/supply_chain/s2c2f` now states S2C2F v1.1 (ossf/s2c2f release, 2022-10-19, still the latest): the
+  header maps all 25 v1.1 requirement ids with their maturity levels to the four substrate themes the overlay reuses
+  (AUD-1 and REB-1 have no consumption-side theme). Report string "OpenSSF S2C2F v1.1 (consumption)";
+  `reuses_substrate` and the collapse metrics are unchanged. `standards.yaml` pins v1.1 (was unknown).
+
+### Reviewed — NIST Privacy Framework 1.1 still a draft (2026-11-21, issue #341)
+
+- NIST Privacy Framework 1.1 remains the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed
+  2025-06-13; no second draft or final on CSRC). `frameworks/privacy/nist_privacy_framework` stays on 1.0; no rule
+  changed. The `standards.yaml` page check now reads the final-document link ("Version 1.0 (PDF)") instead of any
+  "Privacy Framework 1.1" text, so the draft no longer reports as a newer release; a final 1.1 link will. New
+  STANDARDS_UPDATE_REGISTRY.md row.
+
+### Changed — OWASP LLM MITRE ATLAS crosswalk re-pinned to atlas-data v2026.10 (2026-11-21, issue #341)
+
+- `governance/owasp_llm` crosswalk metadata now cites atlas-data v2026.10 (2026-10-28, 44 mitigations
+  AML.M0000-M0043; v2026.09 had 40). All 19 cited mitigation ids still exist with the same intent; three were renamed
+  upstream (AML.M0023 "Maintain an AI Bill of Materials", AML.M0026 "Manage AI Agent Service Access", AML.M0028
+  "Enforce Access Controls for AI Agent Tools"). The crosswalk table and the 30 checks are unchanged; the new
+  mitigations AML.M0040-M0043 are not mapped.
+
 ### Changed — DISA STIG RHEL 8 V2R9 (2026-11-21, issue #341)
 
 - `benchmarks/stig/rhel_8` follows DISA's standalone V2R9 (30 Sep 2026): 56 of 371 rules. Added RHEL-08-010287
