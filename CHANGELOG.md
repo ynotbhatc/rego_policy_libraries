@@ -8,6 +8,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Reviewed — NIST Privacy Framework 1.1 still a draft (2026-11-21, issue #341)
+
+- NIST Privacy Framework 1.1 remains the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed
+  2025-06-13; no second draft or final on CSRC). `frameworks/privacy/nist_privacy_framework` stays on 1.0; no rule
+  changed. The `standards.yaml` page check now reads the final-document link ("Version 1.0 (PDF)") instead of any
+  "Privacy Framework 1.1" text, so the draft no longer reports as a newer release; a final 1.1 link will. New
+  STANDARDS_UPDATE_REGISTRY.md row.
+
 ### Changed — OWASP LLM MITRE ATLAS crosswalk re-pinned to atlas-data v2026.10 (2026-11-21, issue #341)
 
 - `governance/owasp_llm` crosswalk metadata now cites atlas-data v2026.10 (2026-10-28, 44 mitigations

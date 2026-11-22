@@ -334,7 +334,7 @@ frameworks:
       - {standard: NIST AI 600-1 Generative AI Profile, version: "1.0", publisher: NIST, literal: "AI RMF 1.0", check: {method: manual, url: "https://www.nist.gov/itl/ai-risk-management-framework", note: "AI 600-1 has no revision number; the literal pins the AI RMF version it profiles"}}
   nist_privacy_framework:
     standards:
-      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Privacy Framework (?:Version |v)?(\d\.\d)'}}
+      - {standard: NIST Privacy Framework, version: "1.0", publisher: NIST, literal: "NIST Privacy Framework 1.0", check: {method: page_regex, url: "https://www.nist.gov/privacy-framework", pattern: 'Version (\d\.\d) \(PDF\)', note: "PF 1.1 is still the Initial Public Draft (NIST CSWP 40 ipd, 2025-04-14; comments closed 2025-06-13; no 2pd or final on CSRC, checked 2026-11-21). The pattern reads the final-document download link (today 'Version 1.0 (PDF)'), so the IPD banner and the 'Using Privacy Framework 1.1' navigation link no longer flag; a final 1.1 PDF link does. Regenerate the module from the 1.1 CPRT Core when final"}}
   nist_risk_management_framework:
     standards:
       - {standard: NIST SP 800-37 Risk Management Framework, version: Rev 2, publisher: NIST, literal: "NIST SP 800-37 Rev 2", check: {method: manual, url: "https://csrc.nist.gov/pubs/sp/800/37/r2/final"}}
