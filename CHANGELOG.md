@@ -24,6 +24,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   finding is 99.78 %, which rounded to 100 beside `compliant == false`; it now reports 99.
 - `test_gate_transparent_when_facts_supplied` no longer requires a non-zero percentage from one supplied fact
   (1 of 445 rounds to 0); it requires a passed control and fewer failures than controls.
+### Changed — SAP ABAP baseline re-pinned to frun-csa-policies-best-practices cb687307 (2026-11-21, issue #341)
+
+- `benchmarks/sap/abap` re-imported at `cb687307` (2026-11-12, upstream HEAD). The five commits since `888f3c53`
+  carry the November Patch Day only (`NotesPolicies/` ABAP and HANA security notes, FRUN 3.0 FP01 `NO_PD`
+  containers); `BaselinePolicies/SOS/v2.6/ABAP_ALL` is unchanged, so `scripts/import_sap_baseline.py` produces the
+  same 355 registry rows and 127 translated checks, and only the source-commit stamp moves.
 
 ### Changed — TISAX rebuilt on VDA ISA2027.1 (2026-11-22) — BREAKING: control ids and input contract
 
