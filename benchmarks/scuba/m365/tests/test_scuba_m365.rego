@@ -1,11 +1,11 @@
 package scuba_m365_test
 
 import data.scuba_m365.aad
-import data.scuba_m365.defender
 import data.scuba_m365.exo
 import data.scuba_m365.main
 import data.scuba_m365.powerbi
 import data.scuba_m365.powerplatform
+import data.scuba_m365.securitysuite
 import data.scuba_m365.sharepoint
 import data.scuba_m365.teams
 import rego.v1
@@ -18,10 +18,10 @@ test_aad_empty_input_fails_all_34 if {
 	r.violation_count == 34
 }
 
-test_defender_empty_input_fails_all_19 if {
-	r := defender.compliance_report with input as {}
+test_securitysuite_empty_input_fails_all_24 if {
+	r := securitysuite.compliance_report with input as {}
 	r.compliant == false
-	r.violation_count == 19
+	r.violation_count == 24
 }
 
 test_exo_empty_input_fails_all_12 if {
@@ -56,12 +56,12 @@ test_teams_empty_input_fails_all_14 if {
 
 # ── Main aggregation: coverage accounting and totals ─────────────────────────
 
-test_main_empty_input_reports_104_violations if {
+test_main_empty_input_reports_109_violations if {
 	r := main.compliance_report with input as {}
 	r.compliant == false
 	r.shall_compliant == false
-	r.violation_count == 104
-	r.policies_evaluated == 104
+	r.violation_count == 109
+	r.policies_evaluated == 109
 	r.accounting_balanced == true
 }
 
@@ -70,9 +70,9 @@ test_main_shall_should_partition if {
 	r.shall_violation_count + r.should_violation_count == r.violation_count
 
 	# Verified split from the baseline documents' machine-readable
-	# criticality comments: 59 SHALL, 45 SHOULD.
+	# criticality comments (ScubaGear v2.0.0): 59 SHALL, 50 SHOULD.
 	r.shall_violation_count == 59
-	r.should_violation_count == 45
+	r.should_violation_count == 50
 }
 
 test_main_report_wellformed_on_empty_input if {
@@ -135,36 +135,16 @@ compliant_input := {
 	"assessment_date": "2026-09-16",
 	"scuba": {
 		"aad": compliant_aad,
-		"defender": {
-			"presets": {
-				"standard_strict_enabled": true,
-				"eop_all_users": true,
-				"atp_all_users": true,
-				"eop_sensitive_strict": true,
-				"atp_sensitive_strict": true,
-			},
-			"impersonation": {
-				"user_protection_sensitive": true,
-				"domain_protection_owned": true,
-				"domain_protection_partners": true,
-			},
+		"securitysuite": {
+			"malware": {"click_to_run_blocked": true, "post_delivery_scan": true, "quarantine_or_drop": true},
 			"safe_attachments": {"spo_odb_teams_enabled": true},
-			"dlp": {
-				"custom_pii_policy": true,
-				"applied_all_workloads": true,
-				"block_everyone_action": true,
-				"user_notifications": true,
-				"restricted_apps_list": true,
-				"restricted_apps_blocked": true,
-			},
-			"alerts": {
-				"required_exo_alerts_enabled": true,
-				"routed_to_monitored_target": true,
-			},
-			"audit": {
-				"unified_logging_enabled": true,
-				"retention_meets_m2131": true,
-			},
+			"impersonation": {"user_protection_sensitive": true, "domain_protection_owned": true, "domain_protection_partners": true, "user_warnings": true},
+			"dlp": {"custom_pii_policy": true, "applied_all_workloads": true, "block_everyone_action": true, "user_notifications": true, "restricted_apps_blocked": true},
+			"alerts": {"enabled": ["Suspicious email sending patterns detected", "Suspicious Connector Activity", "Suspicious Email Forwarding Activity", "Messages have been delayed", "Tenant restricted from sending unprovisioned email", "Tenant restricted from sending email", "A potentially malicious URL click was detected"], "routed_to_monitored_target": true},
+			"audit": {"unified_logging_enabled": true, "searchable_retention_days": 90, "retrievable_retention_days": 365},
+			"antispam": {"spam_phish_not_in_inbox": true, "no_allowed_domains": true},
+			"links": {"url_blocklist_enabled": true, "download_links_scanned": true, "click_tracking_enabled": true},
+			"allow_lists": {"no_ip_allow_list": true, "safe_list_disabled": true},
 		},
 		"exo": {
 			"auto_forwarding_disabled": true,

@@ -2,7 +2,7 @@
 # entrypoints that pass, go undefined or error on empty / missing / null / string-typed input.
 # `make check-bad-input` fails only on a failure NOT listed here. Fix the module, then regenerate.
 # Format: <package> <case> <kind>: <detail>. Kinds: pass, score-rise, undefined, error.
-# 195 entrypoints, 121 with an all-pass fixture, 8364 cases, 1331 failures in 79 packages.
+# 195 entrypoints, 121 with an all-pass fixture, 8282 cases, 1289 failures in 79 packages.
 # Entrypoints without an all-pass fixture (base cases only): 74
 
 aca_155_260.main keys_null undefined: compliance_report is undefined
@@ -1156,24 +1156,6 @@ pqc.main boolstr:pqc.crypto_inventory[0].pqc_migration_planned pass: compliant=t
 pqc.main boolstr:pqc.crypto_inventory[1].pqc_migration_planned pass: compliant=true score=null
 pqc.main boolstr:pqc.crypto_inventory[2].pqc_migration_planned pass: compliant=true score=null
 pqc.main boolstr:pqc.crypto_inventory[3].pqc_migration_planned pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.admin_consent_workflow pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.password_addition_blocked pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.apps.user_consent_restricted pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.auth.mfa_enforced_all_users pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.auth.phishing_resistant_mfa_all_users pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.legacy_auth_blocked pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.cloud_only pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.ga_activation_alerts pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.granular_roles_used pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.pam_provisioning_only pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.aad.privileged.role_activation_alerts pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.alerts.required_exo_alerts_enabled pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.alerts.routed_to_monitored_target pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.audit.unified_logging_enabled pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.dlp.user_notifications pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.impersonation.domain_protection_owned pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.impersonation.domain_protection_partners pass: compliant=true score=null
-scuba_m365.main boolstr:scuba.defender.presets.eop_all_users pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dkim_enabled_all_domains pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dmarc.agency_poc_included pass: compliant=true score=null
 scuba_m365.main boolstr:scuba.exo.dmarc.published_all_domains pass: compliant=true score=null
@@ -1278,28 +1260,16 @@ stig.rhel_10.main numstr:password_policy.mindays pass: compliant=true score=100
 stig.rhel_10.main numstr:password_policy.minlen pass: compliant=true score=100
 stig.rhel_10.main numstr:password_policy.ocredit pass: compliant=true score=100
 stig.rhel_10.main numstr:password_policy.ucredit pass: compliant=true score=100
-stig.rhel_9.main numstr:auditd_config.freq pass: compliant=true score=100
 stig.rhel_9.main numstr:crypto_policy_state.min_rsa_size pass: compliant=true score=100
 stig.rhel_9.main numstr:faillock_conf.deny pass: compliant=true score=100
 stig.rhel_9.main numstr:faillock_conf.fail_interval pass: compliant=true score=100
-stig.rhel_9.main numstr:faillock_conf.unlock_time pass: compliant=true score=100
-stig.rhel_9.main numstr:interactive_users[0].home_gid pass: compliant=true score=100
-stig.rhel_9.main numstr:interactive_users[0].primary_gid pass: compliant=true score=100
-stig.rhel_9.main numstr:interactive_users[0].uid pass: compliant=true score=100
-stig.rhel_9.main numstr:login_defs.FAIL_DELAY pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.dcredit pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.dictcheck pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.difok pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.inactive_days pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.lcredit pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.maxclassrepeat pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.maxdays pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.maxrepeat pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.minclass pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.mindays pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.minlen pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.ocredit pass: compliant=true score=100
-stig.rhel_9.main numstr:password_policy.retry pass: compliant=true score=100
 stig.rhel_9.main numstr:password_policy.ucredit pass: compliant=true score=100
 stig.rhel_9.main numstr:ssh_config.ClientAliveCountMax pass: compliant=true score=100
 stig.rhel_9.main numstr:ssh_config.ClientAliveInterval pass: compliant=true score=100
@@ -1309,28 +1279,16 @@ stig_kubernetes.main numstr:workloads.user_pod_host_ports[0] pass: compliant=tru
 stig_openshift_4.main boolstr:openshift.image_config.spec.allowedRegistriesForImport[0].insecure pass: compliant=true score=100
 stig_openshift_4.main boolstr:scc.items[0].allowPrivilegedContainer pass: compliant=true score=100
 stig_openshift_4.main boolstr:scc.items[1].allowPrivilegedContainer pass: compliant=true score=100
-stig_rhel9.main numstr:auditd_config.freq pass: compliant=true score=100
 stig_rhel9.main numstr:crypto_policy_state.min_rsa_size pass: compliant=true score=100
 stig_rhel9.main numstr:faillock_conf.deny pass: compliant=true score=100
 stig_rhel9.main numstr:faillock_conf.fail_interval pass: compliant=true score=100
-stig_rhel9.main numstr:faillock_conf.unlock_time pass: compliant=true score=100
-stig_rhel9.main numstr:interactive_users[0].home_gid pass: compliant=true score=100
-stig_rhel9.main numstr:interactive_users[0].primary_gid pass: compliant=true score=100
-stig_rhel9.main numstr:interactive_users[0].uid pass: compliant=true score=100
-stig_rhel9.main numstr:login_defs.FAIL_DELAY pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.dcredit pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.dictcheck pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.difok pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.inactive_days pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.lcredit pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.maxclassrepeat pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.maxdays pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.maxrepeat pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.minclass pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.mindays pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.minlen pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.ocredit pass: compliant=true score=100
-stig_rhel9.main numstr:password_policy.retry pass: compliant=true score=100
 stig_rhel9.main numstr:password_policy.ucredit pass: compliant=true score=100
 stig_rhel9.main numstr:ssh_config.ClientAliveCountMax pass: compliant=true score=100
 stig_rhel9.main numstr:ssh_config.ClientAliveInterval pass: compliant=true score=100

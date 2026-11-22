@@ -2,18 +2,20 @@
 # Master orchestrator over the seven product baselines:
 #
 #   MS.AAD           Microsoft Entra ID          34 policies
-#   MS.DEFENDER      Defender for Office 365     19 policies
 #   MS.EXO           Exchange Online             12 policies
 #   MS.POWERBI       Power BI                     8 policies
 #   MS.POWERPLATFORM Power Platform               9 policies
+#   MS.SECURITYSUITE Security Suite              24 policies
 #   MS.SHAREPOINT    SharePoint & OneDrive        8 policies
 #   MS.TEAMS         Microsoft Teams             14 policies
-#                                       total   104 policies
+#                                       total   109 policies
 #
-# Source: cisagov/ScubaGear baseline documents (TLP:CLEAR). The SCuBA
-# baselines carry no document-level version; each policy ID is versioned
-# individually (the v-suffix) and this library pins the IDs it implements
-# in the per-product modules. Assessment against these baselines is
+# Source: cisagov/ScubaGear v2.0.0 baseline documents (TLP:CLEAR). Each
+# policy ID is versioned individually (the v-suffix) and this library pins
+# the IDs it implements in the per-product modules; the 109 IDs are every
+# active policy in the v2.0.0 baselines. v2.0.0 removed the Defender
+# baseline (MS.DEFENDER.*, 19 policies here before) in favour of the
+# Security Suite baseline. Assessment against these baselines is
 # required for U.S. federal civilian agencies by CISA BOD 25-01; they
 # apply equally to any M365 tenant.
 #
@@ -24,8 +26,15 @@
 # `shall_compliant`, which is true when no SHALL policy is violated;
 # nothing is hidden either way, both counts are always reported.
 #
+# Deprecated input path (one release): a collector that still sends only
+# scuba.defender.* is evaluated against the Security Suite baseline through
+# the scuba_m365.defender shim's one-to-one field projection; the Security
+# Suite policies with no legacy fact fail closed. scuba.securitysuite.*,
+# when present, always wins. The report names the path used
+# (securitysuite_input_path). MS.DEFENDER ids are never counted here.
+#
 # Fail-closed: absent facts fire every policy in every product module —
-# an empty assessment reports 104 violations, never a pass.
+# an empty assessment reports 109 violations, never a pass.
 #
 # OPA query path: /v1/data/scuba_m365/main/compliance_report
 
@@ -52,18 +61,42 @@ import data.scuba_m365.defender
 import data.scuba_m365.exo
 import data.scuba_m365.powerbi
 import data.scuba_m365.powerplatform
+import data.scuba_m365.securitysuite
 import data.scuba_m365.sharepoint
 import data.scuba_m365.teams
 import rego.v1
 
-BASELINE_TOTAL_POLICIES := 104
+BASELINE_TOTAL_POLICIES := 109
+
+_scuba := object.get(input, "scuba", {})
+
+_has(key) if is_object(_scuba[key])
+
+_LEGACY_PATH := "scuba.defender (deprecated; one-to-one fields only)"
+
+# Which input the Security Suite baseline is evaluated from.
+securitysuite_input_path := "scuba.securitysuite" if {
+	_has("securitysuite")
+} else := _LEGACY_PATH if {
+	_has("defender")
+} else := "none"
+
+securitysuite_report := securitysuite.compliance_report if {
+	securitysuite_input_path != _LEGACY_PATH
+} else := r if {
+	r := securitysuite.compliance_report with input.scuba.securitysuite as defender.as_securitysuite_input
+}
+
+input_note := "Security Suite evaluated from the deprecated scuba.defender.* input: only the one-to-one facts are translated, the Security Suite policies without a legacy fact fail closed. Move the collector to scuba.securitysuite.*; the scuba.defender path is removed in the next minor release." if {
+	securitysuite_input_path == _LEGACY_PATH
+} else := ""
 
 product_reports := [
 	aad.compliance_report,
-	defender.compliance_report,
 	exo.compliance_report,
 	powerbi.compliance_report,
 	powerplatform.compliance_report,
+	securitysuite_report,
 	sharepoint.compliance_report,
 	teams.compliance_report,
 ]
@@ -121,7 +154,7 @@ tenant_name := input.tenant_name
 
 compliance_report := {
 	"framework": "CISA SCuBA Secure Configuration Baselines for Microsoft 365",
-	"version": "per-policy versioning (IDs pinned in modules); cisagov/ScubaGear baselines; CISA BOD 25-01",
+	"version": "ScubaGear v2.0.0 baselines (per-policy IDs pinned in modules); CISA BOD 25-01",
 	"tenant_name": tenant_name,
 	"assessed_at": assessment_date,
 	"compliant": compliant,
@@ -135,5 +168,7 @@ compliance_report := {
 	"shall_violation_count": shall_violation_count,
 	"should_violation_count": should_violation_count,
 	"product_summary": product_summary,
+	"securitysuite_input_path": securitysuite_input_path,
+	"input_note": input_note,
 	"scope_note": "SHALL = mandatory, SHOULD = recommended per the baseline; shall_compliant reports the mandatory floor. SHOULD deviations for mission need belong in the caller's documented exception process — this report never suppresses them.",
 }

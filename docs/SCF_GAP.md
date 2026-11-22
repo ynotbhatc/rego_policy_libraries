@@ -18,7 +18,7 @@ against SCF by count and not only by kind.
 | Measure | SCF 2026.3 | Rego Policy Libraries (after v2.5.0) |
 |---|---|---|
 | Unit | one catalogue control, mapped to external documents | one executable Rego check, grouped by document |
-| Controls / checks | 1,591 controls in 34 domains | 30,252 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
+| Controls / checks | 1,591 controls in 34 domains | 29,941 control-level checks (`make count`; per-file parser hits, see [COMPARISON.md](COMPARISON.md#what-the-count-is-and-is-not)) |
 | Documents mapped | 270 mapping columns, 234 distinct documents once profile variants collapse | 190 framework catalogs, 130+ framework directories |
 | Executable | no (Excel, JSON, OSCAL catalog) | yes (OPA / EOPA, fail-closed) |
 | Technical benchmarks (CIS, STIG) | none | 30+ CIS platforms, 25 STIG platforms |
