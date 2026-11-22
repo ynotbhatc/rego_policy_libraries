@@ -1,6 +1,6 @@
 # Rego Policy Libraries
 
-> The largest open library of executable compliance policy anyone can verify: 30,282 control-level checks in 1,067 policy files, mapped to 190 framework catalogs, written in
+> The largest open library of executable compliance policy anyone can verify: 30,302 control-level checks in 1,068 policy files, mapped to 190 framework catalogs, written in
 > Open Policy Agent (OPA) Rego v1. Apache 2.0. Every framework exposes a uniform compliance_report
 > entrypoint that fails closed: no facts means non-compliant, with the reason.
 
@@ -39,7 +39,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
   (a list of strings, each starting with the control id). Most frameworks add `passed_controls`,
   `compliance_percentage` and per-section results.
 - Missing evidence fails: a control whose facts were not collected reports "evidence missing"; it never passes by default.
-- Size at release 2.5.0: 30,282 control-level checks in 1,067 policy files, mapped to 190 framework catalogs.
+- Size at release 2.5.0: 30,302 control-level checks in 1,068 policy files, mapped to 190 framework catalogs.
 - Release bundle (OCI, built with OPA 1.10.0): `ghcr.io/ynotbhatc/rego_policy_libraries:<version>`, for example
   `oras pull ghcr.io/ynotbhatc/rego_policy_libraries:latest`, then `opa run --server --bundle bundle.tar.gz`.
 
@@ -108,7 +108,7 @@ each named in `violations`. Drop `-i examples/rhel9/facts.json` and every contro
 - [Rhel 10](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-10.html): 11 policy files
 - [Rhel 8](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-8.html): 10 policy files
 - [Rhel 9](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-rhel-9.html): 12 policy files
-- [SOC 2](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-soc2.html): 12 policy files
+- [SOC 2](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-management-soc2.html): 13 policy files
 - [SOX](https://ynotbhatc.github.io/rego_policy_libraries/standard/frameworks-financial-sox.html): 4 policy files
 - [Sles 15](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-stig-sles-15.html): 4 policy files
 - [Suse 16](https://ynotbhatc.github.io/rego_policy_libraries/standard/benchmarks-cis-suse-16.html): 24 policy files

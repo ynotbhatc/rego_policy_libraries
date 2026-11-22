@@ -11,8 +11,8 @@
 #   source: aicpa
 #   domains: [assurance]
 #   coverage:
-#     checks: 85
-#     cited: 61
+#     checks: 56
+#     cited: 33
 #     density: orchestrator
 #     basis: role
 #     tested: true

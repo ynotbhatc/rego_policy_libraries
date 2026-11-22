@@ -36,7 +36,7 @@
 #     basis: size
 #     tested: true
 #     entrypoint: none
-#     guard: orchestrator
+#     guard: n/a
 #     as_of: v2.5.0
 package soc2.criteria
 
