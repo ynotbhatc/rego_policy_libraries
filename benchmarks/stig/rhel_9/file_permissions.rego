@@ -87,6 +87,58 @@ octal(s) := n if {
 # true when mode grants nothing beyond max (both octal strings)
 mode_within(mode, max) if bits.and(octal(mode), bits.and(bits.negate(octal(max)), 4095)) == 0
 
+# an entry {path, group, gid} whose group is a system account group (GID below 1000, type-guarded)
+_system_group(e) if {
+	is_number(e.gid)
+	e.gid < 1000
+}
+
+_system_group(e) if {
+	is_string(e.gid)
+	regex.match(`^\s*[0-9]+\s*$`, e.gid)
+	to_number(trim_space(e.gid)) < 1000
+}
+
+# device_t device files: none, only the hypervisor device the check text names, or attested as virtual machine devices
+_device_t_ok(dev) if {
+	every d in dev {
+		d.path == "/dev/vmci"
+	}
+}
+
+_device_t_ok(_) if _attested("rhel_09_232260_vm_device_files")
+
+# a line of `rpm --verify <package>` the SSH-permissions check does not print: a config file ($2 == "c") whose
+# verify flags leave mode, device, link, user, group and capabilities unchanged ($1 ~ /^.\..\.\.\.\..\./)
+_rpm_verify_line_ok(l) if {
+	is_string(l)
+	f := regex.split(`\s+`, trim_space(l))
+	count(f) >= 2
+	f[1] == "c"
+	regex.match(`^.\..\.\.\.\..\.`, f[0])
+}
+
+# a numeric id (uid / gid) given as a number or a decimal string; undefined otherwise
+_id_num(v) := v if is_number(v)
+
+_id_num(v) := to_number(trim_space(v)) if {
+	is_string(v)
+	regex.match(`^\s*[0-9]+\s*$`, v)
+}
+
+# a login shell the home-directory group check leaves out: awk's $7 !~ /(nologin|false)$/
+_no_login_shell(u) if {
+	is_string(u.shell)
+	regex.match(`(nologin|false)$`, u.shell)
+}
+
+_home_group_ok(u) if _no_login_shell(u)
+
+_home_group_ok(u) if {
+	not _no_login_shell(u)
+	_id_num(u.home_gid) == _id_num(u.primary_gid)
+}
+
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
@@ -425,6 +477,1888 @@ finding_rhel_09_232050 := {
 	"fix_text": "chmod 0750 each listed home directory",
 }
 
+# RHEL-09-212025 | V-257790 | CAT II
+# group of /boot/grub2/grub.cfg (stat -c "%G %n" /boot/grub2/grub.cfg)
+missing_rhel_09_212025 := [concat(".", p) | some p in [["file_permissions", "grub_cfg", "group"]]; not _collected(p)]
+
+default grub_cfg_group_root := false
+
+grub_cfg_group_root if {
+	count(missing_rhel_09_212025) == 0
+	_str(["file_permissions", "grub_cfg", "group"]) == "root"
+}
+
+status_rhel_09_212025 := "Not_a_Finding" if grub_cfg_group_root
+
+else := "Open"
+
+detail_rhel_09_212025 := "RHEL-09-212025: Not_a_Finding" if grub_cfg_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212025", concat(", ", missing_rhel_09_212025)]) if count(missing_rhel_09_212025) > 0
+
+else := "RHEL-09-212025: check failed — /boot/grub2/grub.cfg must have group root"
+
+finding_rhel_09_212025 := {
+	"vuln_id": "V-257790",
+	"stig_id": "RHEL-09-212025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /boot/grub2/grub.cfg file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_212025,
+	"detail": detail_rhel_09_212025,
+	"fix_text": "chgrp root /boot/grub2/grub.cfg",
+}
+
+# RHEL-09-212030 | V-257791 | CAT II
+# owner of /boot/grub2/grub.cfg (stat -c "%U %n" /boot/grub2/grub.cfg)
+missing_rhel_09_212030 := [concat(".", p) | some p in [["file_permissions", "grub_cfg", "owner"]]; not _collected(p)]
+
+default grub_cfg_owner_root := false
+
+grub_cfg_owner_root if {
+	count(missing_rhel_09_212030) == 0
+	_str(["file_permissions", "grub_cfg", "owner"]) == "root"
+}
+
+status_rhel_09_212030 := "Not_a_Finding" if grub_cfg_owner_root
+
+else := "Open"
+
+detail_rhel_09_212030 := "RHEL-09-212030: Not_a_Finding" if grub_cfg_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-212030", concat(", ", missing_rhel_09_212030)]) if count(missing_rhel_09_212030) > 0
+
+else := "RHEL-09-212030: check failed — /boot/grub2/grub.cfg must have owner root"
+
+finding_rhel_09_212030 := {
+	"vuln_id": "V-257791",
+	"stig_id": "RHEL-09-212030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /boot/grub2/grub.cfg file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_212030,
+	"detail": detail_rhel_09_212030,
+	"fix_text": "chown root /boot/grub2/grub.cfg",
+}
+
+# RHEL-09-232015 | V-257883 | CAT II
+# output of find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type d
+missing_rhel_09_232015 := [concat(".", p) | some p in [["file_permissions", "library_dirs_group_or_world_writable"]]; not _collected(p)]
+
+default library_dirs_permissions_ok := false
+
+library_dirs_permissions_ok if {
+	count(missing_rhel_09_232015) == 0
+	xs := object.get(input, ["file_permissions", "library_dirs_group_or_world_writable"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232015 := "Not_a_Finding" if library_dirs_permissions_ok
+
+else := "Open"
+
+detail_rhel_09_232015 := "RHEL-09-232015: Not_a_Finding" if library_dirs_permissions_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232015", concat(", ", missing_rhel_09_232015)]) if count(missing_rhel_09_232015) > 0
+
+else := "RHEL-09-232015: check failed — no directory under /lib, /lib64, /usr/lib, /usr/lib64 may be group- or world-writable"
+
+finding_rhel_09_232015 := {
+	"vuln_id": "V-257883",
+	"stig_id": "RHEL-09-232015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 library directories must have mode 755 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_232015,
+	"detail": detail_rhel_09_232015,
+	"fix_text": "chmod 755 each listed library directory",
+}
+
+# RHEL-09-232040 | V-257888 | CAT II
+# lines of rpm --verify cronie crontabs | awk '! ($2 == "c" && $1 ~ /^.\..\.\.\.\..\./) {print $0}'
+missing_rhel_09_232040 := [concat(".", p) | some p in [["file_permissions", "cron_rpm_verify_deviations"]]; not _collected(p)]
+
+default cron_permissions_default := false
+
+cron_permissions_default if {
+	count(missing_rhel_09_232040) == 0
+	xs := object.get(input, ["file_permissions", "cron_rpm_verify_deviations"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232040 := "Not_a_Finding" if cron_permissions_default
+
+else := "Open"
+
+detail_rhel_09_232040 := "RHEL-09-232040: Not_a_Finding" if cron_permissions_default
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232040", concat(", ", missing_rhel_09_232040)]) if count(missing_rhel_09_232040) > 0
+
+else := "RHEL-09-232040: check failed — rpm --verify cronie crontabs must report no owner, group or mode deviation for the cron files and directories"
+
+finding_rhel_09_232040 := {
+	"vuln_id": "V-257888",
+	"stig_id": "RHEL-09-232040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 permissions of cron configuration files and directories must not be modified from the operating system defaults.",
+	"check_type": "machine",
+	"status": status_rhel_09_232040,
+	"detail": detail_rhel_09_232040,
+	"fix_text": "Restore the defaults: dnf reinstall cronie crontabs; rpm --setugids cronie crontabs; rpm --setperms cronie crontabs",
+}
+
+# RHEL-09-232045 | V-257889 | CAT II
+# output of find /home /root -maxdepth 2 -type f -name '.*' -perm /037
+missing_rhel_09_232045 := [concat(".", p) | some p in [["file_permissions", "init_files_more_permissive_than_0740"]]; not _collected(p)]
+
+default init_files_permissions_ok := false
+
+init_files_permissions_ok if {
+	count(missing_rhel_09_232045) == 0
+	xs := object.get(input, ["file_permissions", "init_files_more_permissive_than_0740"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232045 := "Not_a_Finding" if init_files_permissions_ok
+
+else := "Open"
+
+detail_rhel_09_232045 := "RHEL-09-232045: Not_a_Finding" if init_files_permissions_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232045", concat(", ", missing_rhel_09_232045)]) if count(missing_rhel_09_232045) > 0
+
+else := "RHEL-09-232045: check failed — no local initialization file (dot file up to two levels under /home and /root) may have a mode more permissive than 0740"
+
+finding_rhel_09_232045 := {
+	"vuln_id": "V-257889",
+	"stig_id": "RHEL-09-232045",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local initialization files must have mode 0740 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_232045,
+	"detail": detail_rhel_09_232045,
+	"fix_text": "chmod 0740 each listed initialization file",
+}
+
+# RHEL-09-232190 | V-257918 | CAT II
+# output of find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root
+missing_rhel_09_232190 := [concat(".", p) | some p in [["file_permissions", "system_commands_not_owned_by_root"]]; not _collected(p)]
+
+default sys_commands_owned_root := false
+
+sys_commands_owned_root if {
+	count(missing_rhel_09_232190) == 0
+	xs := object.get(input, ["file_permissions", "system_commands_not_owned_by_root"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232190 := "Not_a_Finding" if sys_commands_owned_root
+
+else := "Open"
+
+detail_rhel_09_232190 := "RHEL-09-232190: Not_a_Finding" if sys_commands_owned_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232190", concat(", ", missing_rhel_09_232190)]) if count(missing_rhel_09_232190) > 0
+
+else := "RHEL-09-232190: check failed — every system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin must be owned by root"
+
+finding_rhel_09_232190 := {
+	"vuln_id": "V-257918",
+	"stig_id": "RHEL-09-232190",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 system commands must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232190,
+	"detail": detail_rhel_09_232190,
+	"fix_text": "chown root each listed command",
+}
+
+# RHEL-09-232205 | V-257921 | CAT II
+# output of find /lib /lib64 /usr/lib /usr/lib64 -type f -name '*.so*' ! -group root
+missing_rhel_09_232205 := [concat(".", p) | some p in [["file_permissions", "library_files_not_group_owned_by_root"]]; not _collected(p)]
+
+default lib_files_group_root := false
+
+lib_files_group_root if {
+	count(missing_rhel_09_232205) == 0
+	xs := object.get(input, ["file_permissions", "library_files_not_group_owned_by_root"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232205 := "Not_a_Finding" if lib_files_group_root
+
+else := "Open"
+
+detail_rhel_09_232205 := "RHEL-09-232205: Not_a_Finding" if lib_files_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232205", concat(", ", missing_rhel_09_232205)]) if count(missing_rhel_09_232205) > 0
+
+else := "RHEL-09-232205: check failed — every shared library file (*.so*) in /lib, /lib64, /usr/lib, /usr/lib64 must be group-owned by root"
+
+finding_rhel_09_232205 := {
+	"vuln_id": "V-257921",
+	"stig_id": "RHEL-09-232205",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 library files must be group-owned by root or a system account.",
+	"check_type": "machine",
+	"status": status_rhel_09_232205,
+	"detail": detail_rhel_09_232205,
+	"fix_text": "chown :root each listed library file",
+}
+
+# RHEL-09-232210 | V-257922 | CAT II
+# output of find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d
+missing_rhel_09_232210 := [concat(".", p) | some p in [["file_permissions", "library_dirs_not_owned_by_root"]]; not _collected(p)]
+
+default library_dirs_owned_root := false
+
+library_dirs_owned_root if {
+	count(missing_rhel_09_232210) == 0
+	xs := object.get(input, ["file_permissions", "library_dirs_not_owned_by_root"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232210 := "Not_a_Finding" if library_dirs_owned_root
+
+else := "Open"
+
+detail_rhel_09_232210 := "RHEL-09-232210: Not_a_Finding" if library_dirs_owned_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232210", concat(", ", missing_rhel_09_232210)]) if count(missing_rhel_09_232210) > 0
+
+else := "RHEL-09-232210: check failed — every directory under /lib, /lib64, /usr/lib, /usr/lib64 must be owned by root"
+
+finding_rhel_09_232210 := {
+	"vuln_id": "V-257922",
+	"stig_id": "RHEL-09-232210",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 library directories must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232210,
+	"detail": detail_rhel_09_232210,
+	"fix_text": "chown root each listed library directory",
+}
+
+# RHEL-09-232245 | V-257929 | CAT II
+# output of find / -type d \( -perm -0002 -a ! -perm -1000 \) -print
+missing_rhel_09_232245 := [concat(".", p) | some p in [["file_permissions", "world_writable_dirs_without_sticky_bit"]]; not _collected(p)]
+
+default public_dirs_sticky := false
+
+public_dirs_sticky if {
+	count(missing_rhel_09_232245) == 0
+	xs := object.get(input, ["file_permissions", "world_writable_dirs_without_sticky_bit"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_232245 := "Not_a_Finding" if public_dirs_sticky
+
+else := "Open"
+
+detail_rhel_09_232245 := "RHEL-09-232245: Not_a_Finding" if public_dirs_sticky
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232245", concat(", ", missing_rhel_09_232245)]) if count(missing_rhel_09_232245) > 0
+
+else := "RHEL-09-232245: check failed — every world-writable directory must have the sticky bit set"
+
+finding_rhel_09_232245 := {
+	"vuln_id": "V-257929",
+	"stig_id": "RHEL-09-232245",
+	"severity": "CAT II",
+	"rule_title": "A sticky bit must be set on all RHEL 9 public directories.",
+	"check_type": "machine",
+	"status": status_rhel_09_232245,
+	"detail": detail_rhel_09_232245,
+	"fix_text": "chmod a+t each listed directory",
+}
+
+# RHEL-09-232025 | V-257885 | CAT II
+# mode of /var/log (stat -c %a) as an octal string
+missing_rhel_09_232025 := [concat(".", p) | some p in [["file_permissions", "var_log", "mode"]]; not _collected(p)]
+
+default var_log_mode_ok := false
+
+var_log_mode_ok if {
+	count(missing_rhel_09_232025) == 0
+	mode_within(input.file_permissions.var_log.mode, "0755")
+}
+
+status_rhel_09_232025 := "Not_a_Finding" if var_log_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232025 := "RHEL-09-232025: Not_a_Finding" if var_log_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232025", concat(", ", missing_rhel_09_232025)]) if count(missing_rhel_09_232025) > 0
+
+else := "RHEL-09-232025: check failed — /var/log must have mode 0755 or less permissive"
+
+finding_rhel_09_232025 := {
+	"vuln_id": "V-257885",
+	"stig_id": "RHEL-09-232025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log directory must have mode 0755 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_232025,
+	"detail": detail_rhel_09_232025,
+	"fix_text": "chmod 0755 /var/log",
+}
+
+# RHEL-09-232030 | V-257886 | CAT II
+# mode of /var/log/messages (stat -c %a) as an octal string
+missing_rhel_09_232030 := [concat(".", p) | some p in [["file_permissions", "var_log_messages", "mode"]]; not _collected(p)]
+
+default var_log_messages_mode_ok := false
+
+var_log_messages_mode_ok if {
+	count(missing_rhel_09_232030) == 0
+	mode_within(input.file_permissions.var_log_messages.mode, "0640")
+}
+
+status_rhel_09_232030 := "Not_a_Finding" if var_log_messages_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232030 := "RHEL-09-232030: Not_a_Finding" if var_log_messages_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232030", concat(", ", missing_rhel_09_232030)]) if count(missing_rhel_09_232030) > 0
+
+else := "RHEL-09-232030: check failed — /var/log/messages must have mode 0640 or less permissive"
+
+finding_rhel_09_232030 := {
+	"vuln_id": "V-257886",
+	"stig_id": "RHEL-09-232030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log/messages file must have mode 0640 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_232030,
+	"detail": detail_rhel_09_232030,
+	"fix_text": "chmod 0640 /var/log/messages",
+}
+
+# RHEL-09-232060 | V-257892 | CAT II
+# mode of /etc/group- (stat -c %a) as an octal string
+missing_rhel_09_232060 := [concat(".", p) | some p in [["file_permissions", "etc_group_backup", "mode"]]; not _collected(p)]
+
+default group_backup_mode_ok := false
+
+group_backup_mode_ok if {
+	count(missing_rhel_09_232060) == 0
+	mode_within(input.file_permissions.etc_group_backup.mode, "0644")
+}
+
+status_rhel_09_232060 := "Not_a_Finding" if group_backup_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232060 := "RHEL-09-232060: Not_a_Finding" if group_backup_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232060", concat(", ", missing_rhel_09_232060)]) if count(missing_rhel_09_232060) > 0
+
+else := "RHEL-09-232060: check failed — /etc/group- must have mode 0644 or less permissive"
+
+finding_rhel_09_232060 := {
+	"vuln_id": "V-257892",
+	"stig_id": "RHEL-09-232060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/group- file must have mode 0644 or less permissive to prevent unauthorized access.",
+	"check_type": "machine",
+	"status": status_rhel_09_232060,
+	"detail": detail_rhel_09_232060,
+	"fix_text": "chmod 0644 /etc/group-",
+}
+
+# RHEL-09-232070 | V-257894 | CAT II
+# mode of /etc/gshadow- (stat -c %a) as an octal string
+missing_rhel_09_232070 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow_backup", "mode"]]; not _collected(p)]
+
+default gshadow_backup_mode_ok := false
+
+gshadow_backup_mode_ok if {
+	count(missing_rhel_09_232070) == 0
+	mode_within(input.file_permissions.etc_gshadow_backup.mode, "0000")
+}
+
+status_rhel_09_232070 := "Not_a_Finding" if gshadow_backup_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232070 := "RHEL-09-232070: Not_a_Finding" if gshadow_backup_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232070", concat(", ", missing_rhel_09_232070)]) if count(missing_rhel_09_232070) > 0
+
+else := "RHEL-09-232070: check failed — /etc/gshadow- must have mode 0000"
+
+finding_rhel_09_232070 := {
+	"vuln_id": "V-257894",
+	"stig_id": "RHEL-09-232070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/gshadow- file must have mode 0000 or less permissive to prevent unauthorized access.",
+	"check_type": "machine",
+	"status": status_rhel_09_232070,
+	"detail": detail_rhel_09_232070,
+	"fix_text": "chmod 0000 /etc/gshadow-",
+}
+
+# RHEL-09-232080 | V-257896 | CAT II
+# mode of /etc/passwd- (stat -c %a) as an octal string
+missing_rhel_09_232080 := [concat(".", p) | some p in [["file_permissions", "etc_passwd_backup", "mode"]]; not _collected(p)]
+
+default passwd_backup_mode_ok := false
+
+passwd_backup_mode_ok if {
+	count(missing_rhel_09_232080) == 0
+	mode_within(input.file_permissions.etc_passwd_backup.mode, "0644")
+}
+
+status_rhel_09_232080 := "Not_a_Finding" if passwd_backup_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232080 := "RHEL-09-232080: Not_a_Finding" if passwd_backup_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232080", concat(", ", missing_rhel_09_232080)]) if count(missing_rhel_09_232080) > 0
+
+else := "RHEL-09-232080: check failed — /etc/passwd- must have mode 0644 or less permissive"
+
+finding_rhel_09_232080 := {
+	"vuln_id": "V-257896",
+	"stig_id": "RHEL-09-232080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/passwd- file must have mode 0644 or less permissive to prevent unauthorized access.",
+	"check_type": "machine",
+	"status": status_rhel_09_232080,
+	"detail": detail_rhel_09_232080,
+	"fix_text": "chmod 0644 /etc/passwd-",
+}
+
+# RHEL-09-232085 | V-257897 | CAT II
+# mode of /etc/shadow- (stat -c %a) as an octal string
+missing_rhel_09_232085 := [concat(".", p) | some p in [["file_permissions", "etc_shadow_backup", "mode"]]; not _collected(p)]
+
+default shadow_backup_mode_ok := false
+
+shadow_backup_mode_ok if {
+	count(missing_rhel_09_232085) == 0
+	mode_within(input.file_permissions.etc_shadow_backup.mode, "0000")
+}
+
+status_rhel_09_232085 := "Not_a_Finding" if shadow_backup_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232085 := "RHEL-09-232085: Not_a_Finding" if shadow_backup_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232085", concat(", ", missing_rhel_09_232085)]) if count(missing_rhel_09_232085) > 0
+
+else := "RHEL-09-232085: check failed — /etc/shadow- must have mode 0000"
+
+finding_rhel_09_232085 := {
+	"vuln_id": "V-257897",
+	"stig_id": "RHEL-09-232085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/shadow- file must have mode 0000 or less permissive to prevent unauthorized access.",
+	"check_type": "machine",
+	"status": status_rhel_09_232085,
+	"detail": detail_rhel_09_232085,
+	"fix_text": "chmod 0000 /etc/shadow-",
+}
+
+# RHEL-09-232090 | V-257898 | CAT II
+# owner of /etc/group (stat -c "%U %n" /etc/group)
+missing_rhel_09_232090 := [concat(".", p) | some p in [["file_permissions", "etc_group", "owner"]]; not _collected(p)]
+
+default group_owner_root := false
+
+group_owner_root if {
+	count(missing_rhel_09_232090) == 0
+	_str(["file_permissions", "etc_group", "owner"]) == "root"
+}
+
+status_rhel_09_232090 := "Not_a_Finding" if group_owner_root
+
+else := "Open"
+
+detail_rhel_09_232090 := "RHEL-09-232090: Not_a_Finding" if group_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232090", concat(", ", missing_rhel_09_232090)]) if count(missing_rhel_09_232090) > 0
+
+else := "RHEL-09-232090: check failed — /etc/group must be owned by root"
+
+finding_rhel_09_232090 := {
+	"vuln_id": "V-257898",
+	"stig_id": "RHEL-09-232090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/group file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232090,
+	"detail": detail_rhel_09_232090,
+	"fix_text": "chown root /etc/group",
+}
+
+# RHEL-09-232095 | V-257899 | CAT II
+# group of /etc/group (stat -c "%G %n" /etc/group)
+missing_rhel_09_232095 := [concat(".", p) | some p in [["file_permissions", "etc_group", "group"]]; not _collected(p)]
+
+default group_group_root := false
+
+group_group_root if {
+	count(missing_rhel_09_232095) == 0
+	_str(["file_permissions", "etc_group", "group"]) == "root"
+}
+
+status_rhel_09_232095 := "Not_a_Finding" if group_group_root
+
+else := "Open"
+
+detail_rhel_09_232095 := "RHEL-09-232095: Not_a_Finding" if group_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232095", concat(", ", missing_rhel_09_232095)]) if count(missing_rhel_09_232095) > 0
+
+else := "RHEL-09-232095: check failed — /etc/group must be group-owned by root"
+
+finding_rhel_09_232095 := {
+	"vuln_id": "V-257899",
+	"stig_id": "RHEL-09-232095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/group file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232095,
+	"detail": detail_rhel_09_232095,
+	"fix_text": "chgrp root /etc/group",
+}
+
+# RHEL-09-232100 | V-257900 | CAT II
+# owner of /etc/group- (stat -c "%U %n" /etc/group-)
+missing_rhel_09_232100 := [concat(".", p) | some p in [["file_permissions", "etc_group_backup", "owner"]]; not _collected(p)]
+
+default group_backup_owner_root := false
+
+group_backup_owner_root if {
+	count(missing_rhel_09_232100) == 0
+	_str(["file_permissions", "etc_group_backup", "owner"]) == "root"
+}
+
+status_rhel_09_232100 := "Not_a_Finding" if group_backup_owner_root
+
+else := "Open"
+
+detail_rhel_09_232100 := "RHEL-09-232100: Not_a_Finding" if group_backup_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232100", concat(", ", missing_rhel_09_232100)]) if count(missing_rhel_09_232100) > 0
+
+else := "RHEL-09-232100: check failed — /etc/group- must be owned by root"
+
+finding_rhel_09_232100 := {
+	"vuln_id": "V-257900",
+	"stig_id": "RHEL-09-232100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/group- file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232100,
+	"detail": detail_rhel_09_232100,
+	"fix_text": "chown root /etc/group-",
+}
+
+# RHEL-09-232105 | V-257901 | CAT II
+# group of /etc/group- (stat -c "%G %n" /etc/group-)
+missing_rhel_09_232105 := [concat(".", p) | some p in [["file_permissions", "etc_group_backup", "group"]]; not _collected(p)]
+
+default group_backup_group_root := false
+
+group_backup_group_root if {
+	count(missing_rhel_09_232105) == 0
+	_str(["file_permissions", "etc_group_backup", "group"]) == "root"
+}
+
+status_rhel_09_232105 := "Not_a_Finding" if group_backup_group_root
+
+else := "Open"
+
+detail_rhel_09_232105 := "RHEL-09-232105: Not_a_Finding" if group_backup_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232105", concat(", ", missing_rhel_09_232105)]) if count(missing_rhel_09_232105) > 0
+
+else := "RHEL-09-232105: check failed — /etc/group- must be group-owned by root"
+
+finding_rhel_09_232105 := {
+	"vuln_id": "V-257901",
+	"stig_id": "RHEL-09-232105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/group- file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232105,
+	"detail": detail_rhel_09_232105,
+	"fix_text": "chgrp root /etc/group-",
+}
+
+# RHEL-09-232103 | V-270175 | CAT II
+# owner of /etc/audit/ (stat -c "%U %n" /etc/audit/)
+missing_rhel_09_232103 := [concat(".", p) | some p in [["file_permissions", "etc_audit_dir", "owner"]]; not _collected(p)]
+
+default audit_dir_owner_root := false
+
+audit_dir_owner_root if {
+	count(missing_rhel_09_232103) == 0
+	_str(["file_permissions", "etc_audit_dir", "owner"]) == "root"
+}
+
+status_rhel_09_232103 := "Not_a_Finding" if audit_dir_owner_root
+
+else := "Open"
+
+detail_rhel_09_232103 := "RHEL-09-232103: Not_a_Finding" if audit_dir_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232103", concat(", ", missing_rhel_09_232103)]) if count(missing_rhel_09_232103) > 0
+
+else := "RHEL-09-232103: check failed — /etc/audit/ must be owned by root"
+
+finding_rhel_09_232103 := {
+	"vuln_id": "V-270175",
+	"stig_id": "RHEL-09-232103",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 \"/etc/audit/\" must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232103,
+	"detail": detail_rhel_09_232103,
+	"fix_text": "chown root /etc/audit/",
+}
+
+# RHEL-09-232104 | V-270176 | CAT II
+# group of /etc/audit/ (stat -c "%G %n" /etc/audit/)
+missing_rhel_09_232104 := [concat(".", p) | some p in [["file_permissions", "etc_audit_dir", "group"]]; not _collected(p)]
+
+default audit_dir_group_root := false
+
+audit_dir_group_root if {
+	count(missing_rhel_09_232104) == 0
+	_str(["file_permissions", "etc_audit_dir", "group"]) == "root"
+}
+
+status_rhel_09_232104 := "Not_a_Finding" if audit_dir_group_root
+
+else := "Open"
+
+detail_rhel_09_232104 := "RHEL-09-232104: Not_a_Finding" if audit_dir_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232104", concat(", ", missing_rhel_09_232104)]) if count(missing_rhel_09_232104) > 0
+
+else := "RHEL-09-232104: check failed — /etc/audit/ must be group-owned by root"
+
+finding_rhel_09_232104 := {
+	"vuln_id": "V-270176",
+	"stig_id": "RHEL-09-232104",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 \"/etc/audit/\" must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232104,
+	"detail": detail_rhel_09_232104,
+	"fix_text": "chgrp root /etc/audit/",
+}
+
+# RHEL-09-232110 | V-257902 | CAT II
+# owner of /etc/gshadow (stat -c "%U %n" /etc/gshadow)
+missing_rhel_09_232110 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow", "owner"]]; not _collected(p)]
+
+default gshadow_owner_root := false
+
+gshadow_owner_root if {
+	count(missing_rhel_09_232110) == 0
+	_str(["file_permissions", "etc_gshadow", "owner"]) == "root"
+}
+
+status_rhel_09_232110 := "Not_a_Finding" if gshadow_owner_root
+
+else := "Open"
+
+detail_rhel_09_232110 := "RHEL-09-232110: Not_a_Finding" if gshadow_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232110", concat(", ", missing_rhel_09_232110)]) if count(missing_rhel_09_232110) > 0
+
+else := "RHEL-09-232110: check failed — /etc/gshadow must be owned by root"
+
+finding_rhel_09_232110 := {
+	"vuln_id": "V-257902",
+	"stig_id": "RHEL-09-232110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/gshadow file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232110,
+	"detail": detail_rhel_09_232110,
+	"fix_text": "chown root /etc/gshadow",
+}
+
+# RHEL-09-232115 | V-257903 | CAT II
+# group of /etc/gshadow (stat -c "%G %n" /etc/gshadow)
+missing_rhel_09_232115 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow", "group"]]; not _collected(p)]
+
+default gshadow_group_root := false
+
+gshadow_group_root if {
+	count(missing_rhel_09_232115) == 0
+	_str(["file_permissions", "etc_gshadow", "group"]) == "root"
+}
+
+status_rhel_09_232115 := "Not_a_Finding" if gshadow_group_root
+
+else := "Open"
+
+detail_rhel_09_232115 := "RHEL-09-232115: Not_a_Finding" if gshadow_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232115", concat(", ", missing_rhel_09_232115)]) if count(missing_rhel_09_232115) > 0
+
+else := "RHEL-09-232115: check failed — /etc/gshadow must be group-owned by root"
+
+finding_rhel_09_232115 := {
+	"vuln_id": "V-257903",
+	"stig_id": "RHEL-09-232115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/gshadow file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232115,
+	"detail": detail_rhel_09_232115,
+	"fix_text": "chgrp root /etc/gshadow",
+}
+
+# RHEL-09-232120 | V-257904 | CAT II
+# owner of /etc/gshadow- (stat -c "%U %n" /etc/gshadow-)
+missing_rhel_09_232120 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow_backup", "owner"]]; not _collected(p)]
+
+default gshadow_backup_owner_root := false
+
+gshadow_backup_owner_root if {
+	count(missing_rhel_09_232120) == 0
+	_str(["file_permissions", "etc_gshadow_backup", "owner"]) == "root"
+}
+
+status_rhel_09_232120 := "Not_a_Finding" if gshadow_backup_owner_root
+
+else := "Open"
+
+detail_rhel_09_232120 := "RHEL-09-232120: Not_a_Finding" if gshadow_backup_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232120", concat(", ", missing_rhel_09_232120)]) if count(missing_rhel_09_232120) > 0
+
+else := "RHEL-09-232120: check failed — /etc/gshadow- must be owned by root"
+
+finding_rhel_09_232120 := {
+	"vuln_id": "V-257904",
+	"stig_id": "RHEL-09-232120",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/gshadow- file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232120,
+	"detail": detail_rhel_09_232120,
+	"fix_text": "chown root /etc/gshadow-",
+}
+
+# RHEL-09-232125 | V-257905 | CAT II
+# group of /etc/gshadow- (stat -c "%G %n" /etc/gshadow-)
+missing_rhel_09_232125 := [concat(".", p) | some p in [["file_permissions", "etc_gshadow_backup", "group"]]; not _collected(p)]
+
+default gshadow_backup_group_root := false
+
+gshadow_backup_group_root if {
+	count(missing_rhel_09_232125) == 0
+	_str(["file_permissions", "etc_gshadow_backup", "group"]) == "root"
+}
+
+status_rhel_09_232125 := "Not_a_Finding" if gshadow_backup_group_root
+
+else := "Open"
+
+detail_rhel_09_232125 := "RHEL-09-232125: Not_a_Finding" if gshadow_backup_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232125", concat(", ", missing_rhel_09_232125)]) if count(missing_rhel_09_232125) > 0
+
+else := "RHEL-09-232125: check failed — /etc/gshadow- must be group-owned by root"
+
+finding_rhel_09_232125 := {
+	"vuln_id": "V-257905",
+	"stig_id": "RHEL-09-232125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/gshadow- file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232125,
+	"detail": detail_rhel_09_232125,
+	"fix_text": "chgrp root /etc/gshadow-",
+}
+
+# RHEL-09-232130 | V-257906 | CAT II
+# owner of /etc/passwd (stat -c "%U %n" /etc/passwd)
+missing_rhel_09_232130 := [concat(".", p) | some p in [["file_permissions", "etc_passwd", "owner"]]; not _collected(p)]
+
+default passwd_owner_root := false
+
+passwd_owner_root if {
+	count(missing_rhel_09_232130) == 0
+	_str(["file_permissions", "etc_passwd", "owner"]) == "root"
+}
+
+status_rhel_09_232130 := "Not_a_Finding" if passwd_owner_root
+
+else := "Open"
+
+detail_rhel_09_232130 := "RHEL-09-232130: Not_a_Finding" if passwd_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232130", concat(", ", missing_rhel_09_232130)]) if count(missing_rhel_09_232130) > 0
+
+else := "RHEL-09-232130: check failed — /etc/passwd must be owned by root"
+
+finding_rhel_09_232130 := {
+	"vuln_id": "V-257906",
+	"stig_id": "RHEL-09-232130",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/passwd file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232130,
+	"detail": detail_rhel_09_232130,
+	"fix_text": "chown root /etc/passwd",
+}
+
+# RHEL-09-232135 | V-257907 | CAT II
+# group of /etc/passwd (stat -c "%G %n" /etc/passwd)
+missing_rhel_09_232135 := [concat(".", p) | some p in [["file_permissions", "etc_passwd", "group"]]; not _collected(p)]
+
+default passwd_group_root := false
+
+passwd_group_root if {
+	count(missing_rhel_09_232135) == 0
+	_str(["file_permissions", "etc_passwd", "group"]) == "root"
+}
+
+status_rhel_09_232135 := "Not_a_Finding" if passwd_group_root
+
+else := "Open"
+
+detail_rhel_09_232135 := "RHEL-09-232135: Not_a_Finding" if passwd_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232135", concat(", ", missing_rhel_09_232135)]) if count(missing_rhel_09_232135) > 0
+
+else := "RHEL-09-232135: check failed — /etc/passwd must be group-owned by root"
+
+finding_rhel_09_232135 := {
+	"vuln_id": "V-257907",
+	"stig_id": "RHEL-09-232135",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/passwd file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232135,
+	"detail": detail_rhel_09_232135,
+	"fix_text": "chgrp root /etc/passwd",
+}
+
+# RHEL-09-232140 | V-257908 | CAT II
+# owner of /etc/passwd- (stat -c "%U %n" /etc/passwd-)
+missing_rhel_09_232140 := [concat(".", p) | some p in [["file_permissions", "etc_passwd_backup", "owner"]]; not _collected(p)]
+
+default passwd_backup_owner_root := false
+
+passwd_backup_owner_root if {
+	count(missing_rhel_09_232140) == 0
+	_str(["file_permissions", "etc_passwd_backup", "owner"]) == "root"
+}
+
+status_rhel_09_232140 := "Not_a_Finding" if passwd_backup_owner_root
+
+else := "Open"
+
+detail_rhel_09_232140 := "RHEL-09-232140: Not_a_Finding" if passwd_backup_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232140", concat(", ", missing_rhel_09_232140)]) if count(missing_rhel_09_232140) > 0
+
+else := "RHEL-09-232140: check failed — /etc/passwd- must be owned by root"
+
+finding_rhel_09_232140 := {
+	"vuln_id": "V-257908",
+	"stig_id": "RHEL-09-232140",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/passwd- file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232140,
+	"detail": detail_rhel_09_232140,
+	"fix_text": "chown root /etc/passwd-",
+}
+
+# RHEL-09-232145 | V-257909 | CAT II
+# group of /etc/passwd- (stat -c "%G %n" /etc/passwd-)
+missing_rhel_09_232145 := [concat(".", p) | some p in [["file_permissions", "etc_passwd_backup", "group"]]; not _collected(p)]
+
+default passwd_backup_group_root := false
+
+passwd_backup_group_root if {
+	count(missing_rhel_09_232145) == 0
+	_str(["file_permissions", "etc_passwd_backup", "group"]) == "root"
+}
+
+status_rhel_09_232145 := "Not_a_Finding" if passwd_backup_group_root
+
+else := "Open"
+
+detail_rhel_09_232145 := "RHEL-09-232145: Not_a_Finding" if passwd_backup_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232145", concat(", ", missing_rhel_09_232145)]) if count(missing_rhel_09_232145) > 0
+
+else := "RHEL-09-232145: check failed — /etc/passwd- must be group-owned by root"
+
+finding_rhel_09_232145 := {
+	"vuln_id": "V-257909",
+	"stig_id": "RHEL-09-232145",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/passwd- file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232145,
+	"detail": detail_rhel_09_232145,
+	"fix_text": "chgrp root /etc/passwd-",
+}
+
+# RHEL-09-232150 | V-257910 | CAT II
+# owner of /etc/shadow (stat -c "%U %n" /etc/shadow)
+missing_rhel_09_232150 := [concat(".", p) | some p in [["file_permissions", "etc_shadow", "owner"]]; not _collected(p)]
+
+default shadow_owner_root := false
+
+shadow_owner_root if {
+	count(missing_rhel_09_232150) == 0
+	_str(["file_permissions", "etc_shadow", "owner"]) == "root"
+}
+
+status_rhel_09_232150 := "Not_a_Finding" if shadow_owner_root
+
+else := "Open"
+
+detail_rhel_09_232150 := "RHEL-09-232150: Not_a_Finding" if shadow_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232150", concat(", ", missing_rhel_09_232150)]) if count(missing_rhel_09_232150) > 0
+
+else := "RHEL-09-232150: check failed — /etc/shadow must be owned by root"
+
+finding_rhel_09_232150 := {
+	"vuln_id": "V-257910",
+	"stig_id": "RHEL-09-232150",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/shadow file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232150,
+	"detail": detail_rhel_09_232150,
+	"fix_text": "chown root /etc/shadow",
+}
+
+# RHEL-09-232155 | V-257911 | CAT II
+# group of /etc/shadow (stat -c "%G %n" /etc/shadow)
+missing_rhel_09_232155 := [concat(".", p) | some p in [["file_permissions", "etc_shadow", "group"]]; not _collected(p)]
+
+default shadow_group_root := false
+
+shadow_group_root if {
+	count(missing_rhel_09_232155) == 0
+	_str(["file_permissions", "etc_shadow", "group"]) == "root"
+}
+
+status_rhel_09_232155 := "Not_a_Finding" if shadow_group_root
+
+else := "Open"
+
+detail_rhel_09_232155 := "RHEL-09-232155: Not_a_Finding" if shadow_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232155", concat(", ", missing_rhel_09_232155)]) if count(missing_rhel_09_232155) > 0
+
+else := "RHEL-09-232155: check failed — /etc/shadow must be group-owned by root"
+
+finding_rhel_09_232155 := {
+	"vuln_id": "V-257911",
+	"stig_id": "RHEL-09-232155",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/shadow file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232155,
+	"detail": detail_rhel_09_232155,
+	"fix_text": "chgrp root /etc/shadow",
+}
+
+# RHEL-09-232160 | V-257912 | CAT II
+# owner of /etc/shadow- (stat -c "%U %n" /etc/shadow-)
+missing_rhel_09_232160 := [concat(".", p) | some p in [["file_permissions", "etc_shadow_backup", "owner"]]; not _collected(p)]
+
+default shadow_backup_owner_root := false
+
+shadow_backup_owner_root if {
+	count(missing_rhel_09_232160) == 0
+	_str(["file_permissions", "etc_shadow_backup", "owner"]) == "root"
+}
+
+status_rhel_09_232160 := "Not_a_Finding" if shadow_backup_owner_root
+
+else := "Open"
+
+detail_rhel_09_232160 := "RHEL-09-232160: Not_a_Finding" if shadow_backup_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232160", concat(", ", missing_rhel_09_232160)]) if count(missing_rhel_09_232160) > 0
+
+else := "RHEL-09-232160: check failed — /etc/shadow- must be owned by root"
+
+finding_rhel_09_232160 := {
+	"vuln_id": "V-257912",
+	"stig_id": "RHEL-09-232160",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/shadow- file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232160,
+	"detail": detail_rhel_09_232160,
+	"fix_text": "chown root /etc/shadow-",
+}
+
+# RHEL-09-232165 | V-257913 | CAT II
+# group of /etc/shadow- (stat -c "%G %n" /etc/shadow-)
+missing_rhel_09_232165 := [concat(".", p) | some p in [["file_permissions", "etc_shadow_backup", "group"]]; not _collected(p)]
+
+default shadow_backup_group_root := false
+
+shadow_backup_group_root if {
+	count(missing_rhel_09_232165) == 0
+	_str(["file_permissions", "etc_shadow_backup", "group"]) == "root"
+}
+
+status_rhel_09_232165 := "Not_a_Finding" if shadow_backup_group_root
+
+else := "Open"
+
+detail_rhel_09_232165 := "RHEL-09-232165: Not_a_Finding" if shadow_backup_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232165", concat(", ", missing_rhel_09_232165)]) if count(missing_rhel_09_232165) > 0
+
+else := "RHEL-09-232165: check failed — /etc/shadow- must be group-owned by root"
+
+finding_rhel_09_232165 := {
+	"vuln_id": "V-257913",
+	"stig_id": "RHEL-09-232165",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /etc/shadow- file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232165,
+	"detail": detail_rhel_09_232165,
+	"fix_text": "chgrp root /etc/shadow-",
+}
+
+# RHEL-09-232170 | V-257914 | CAT II
+# owner of /var/log (stat -c "%U %n" /var/log)
+missing_rhel_09_232170 := [concat(".", p) | some p in [["file_permissions", "var_log", "owner"]]; not _collected(p)]
+
+default var_log_owner_root := false
+
+var_log_owner_root if {
+	count(missing_rhel_09_232170) == 0
+	_str(["file_permissions", "var_log", "owner"]) == "root"
+}
+
+status_rhel_09_232170 := "Not_a_Finding" if var_log_owner_root
+
+else := "Open"
+
+detail_rhel_09_232170 := "RHEL-09-232170: Not_a_Finding" if var_log_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232170", concat(", ", missing_rhel_09_232170)]) if count(missing_rhel_09_232170) > 0
+
+else := "RHEL-09-232170: check failed — /var/log must be owned by root"
+
+finding_rhel_09_232170 := {
+	"vuln_id": "V-257914",
+	"stig_id": "RHEL-09-232170",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log directory must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232170,
+	"detail": detail_rhel_09_232170,
+	"fix_text": "chown root /var/log",
+}
+
+# RHEL-09-232175 | V-257915 | CAT II
+# group of /var/log (stat -c "%G %n" /var/log)
+missing_rhel_09_232175 := [concat(".", p) | some p in [["file_permissions", "var_log", "group"]]; not _collected(p)]
+
+default var_log_group_root := false
+
+var_log_group_root if {
+	count(missing_rhel_09_232175) == 0
+	_str(["file_permissions", "var_log", "group"]) == "root"
+}
+
+status_rhel_09_232175 := "Not_a_Finding" if var_log_group_root
+
+else := "Open"
+
+detail_rhel_09_232175 := "RHEL-09-232175: Not_a_Finding" if var_log_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232175", concat(", ", missing_rhel_09_232175)]) if count(missing_rhel_09_232175) > 0
+
+else := "RHEL-09-232175: check failed — /var/log must be group-owned by root"
+
+finding_rhel_09_232175 := {
+	"vuln_id": "V-257915",
+	"stig_id": "RHEL-09-232175",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log directory must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232175,
+	"detail": detail_rhel_09_232175,
+	"fix_text": "chgrp root /var/log",
+}
+
+# RHEL-09-232180 | V-257916 | CAT II
+# owner of /var/log/messages (stat -c "%U %n" /var/log/messages)
+missing_rhel_09_232180 := [concat(".", p) | some p in [["file_permissions", "var_log_messages", "owner"]]; not _collected(p)]
+
+default var_log_messages_owner_root := false
+
+var_log_messages_owner_root if {
+	count(missing_rhel_09_232180) == 0
+	_str(["file_permissions", "var_log_messages", "owner"]) == "root"
+}
+
+status_rhel_09_232180 := "Not_a_Finding" if var_log_messages_owner_root
+
+else := "Open"
+
+detail_rhel_09_232180 := "RHEL-09-232180: Not_a_Finding" if var_log_messages_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232180", concat(", ", missing_rhel_09_232180)]) if count(missing_rhel_09_232180) > 0
+
+else := "RHEL-09-232180: check failed — /var/log/messages must be owned by root"
+
+finding_rhel_09_232180 := {
+	"vuln_id": "V-257916",
+	"stig_id": "RHEL-09-232180",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log/messages file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232180,
+	"detail": detail_rhel_09_232180,
+	"fix_text": "chown root /var/log/messages",
+}
+
+# RHEL-09-232185 | V-257917 | CAT II
+# group of /var/log/messages (stat -c "%G %n" /var/log/messages)
+missing_rhel_09_232185 := [concat(".", p) | some p in [["file_permissions", "var_log_messages", "group"]]; not _collected(p)]
+
+default var_log_messages_group_root := false
+
+var_log_messages_group_root if {
+	count(missing_rhel_09_232185) == 0
+	_str(["file_permissions", "var_log_messages", "group"]) == "root"
+}
+
+status_rhel_09_232185 := "Not_a_Finding" if var_log_messages_group_root
+
+else := "Open"
+
+detail_rhel_09_232185 := "RHEL-09-232185: Not_a_Finding" if var_log_messages_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232185", concat(", ", missing_rhel_09_232185)]) if count(missing_rhel_09_232185) > 0
+
+else := "RHEL-09-232185: check failed — /var/log/messages must be group-owned by root"
+
+finding_rhel_09_232185 := {
+	"vuln_id": "V-257917",
+	"stig_id": "RHEL-09-232185",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 /var/log/messages file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232185,
+	"detail": detail_rhel_09_232185,
+	"fix_text": "chgrp root /var/log/messages",
+}
+
+# RHEL-09-232035 | V-257887 | CAT II
+# mode of each audit tool (stat -c on /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules): input.file_permissions.audit_tools[{path, mode, owner, group}]
+missing_rhel_09_232035 := [concat(".", p) | some p in [["file_permissions", "audit_tools"]]; not _collected(p)]
+
+default audit_tools_mode_ok := false
+
+audit_tools_mode_ok if {
+	count(missing_rhel_09_232035) == 0
+	tools := input.file_permissions.audit_tools
+	is_array(tools)
+	every t in tools {
+		mode_within(t.mode, "0755")
+	}
+}
+
+status_rhel_09_232035 := "Not_a_Finding" if audit_tools_mode_ok
+
+else := "Open"
+
+detail_rhel_09_232035 := "RHEL-09-232035: Not_a_Finding" if audit_tools_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232035", concat(", ", missing_rhel_09_232035)]) if count(missing_rhel_09_232035) > 0
+
+else := "RHEL-09-232035: check failed — no audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) may have a mode more permissive than 0755"
+
+finding_rhel_09_232035 := {
+	"vuln_id": "V-257887",
+	"stig_id": "RHEL-09-232035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit tools must have a mode of 0755 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_232035,
+	"detail": detail_rhel_09_232035,
+	"fix_text": "chmod 0755 each listed audit tool",
+}
+
+# RHEL-09-232220 | V-257924 | CAT II
+# owner of each audit tool (stat -c on /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules): input.file_permissions.audit_tools[{path, mode, owner, group}]
+missing_rhel_09_232220 := [concat(".", p) | some p in [["file_permissions", "audit_tools"]]; not _collected(p)]
+
+default audit_tools_owner_root := false
+
+audit_tools_owner_root if {
+	count(missing_rhel_09_232220) == 0
+	tools := input.file_permissions.audit_tools
+	is_array(tools)
+	every t in tools {
+		t.owner == "root"
+	}
+}
+
+status_rhel_09_232220 := "Not_a_Finding" if audit_tools_owner_root
+
+else := "Open"
+
+detail_rhel_09_232220 := "RHEL-09-232220: Not_a_Finding" if audit_tools_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232220", concat(", ", missing_rhel_09_232220)]) if count(missing_rhel_09_232220) > 0
+
+else := "RHEL-09-232220: check failed — every audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) must be owned by root"
+
+finding_rhel_09_232220 := {
+	"vuln_id": "V-257924",
+	"stig_id": "RHEL-09-232220",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit tools must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232220,
+	"detail": detail_rhel_09_232220,
+	"fix_text": "chown root each listed audit tool",
+}
+
+# RHEL-09-232225 | V-257925 | CAT II
+# group of each audit tool (stat -c on /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/rsyslogd /sbin/augenrules): input.file_permissions.audit_tools[{path, mode, owner, group}]
+missing_rhel_09_232225 := [concat(".", p) | some p in [["file_permissions", "audit_tools"]]; not _collected(p)]
+
+default audit_tools_group_root := false
+
+audit_tools_group_root if {
+	count(missing_rhel_09_232225) == 0
+	tools := input.file_permissions.audit_tools
+	is_array(tools)
+	every t in tools {
+		t.group == "root"
+	}
+}
+
+status_rhel_09_232225 := "Not_a_Finding" if audit_tools_group_root
+
+else := "Open"
+
+detail_rhel_09_232225 := "RHEL-09-232225: Not_a_Finding" if audit_tools_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232225", concat(", ", missing_rhel_09_232225)]) if count(missing_rhel_09_232225) > 0
+
+else := "RHEL-09-232225: check failed — every audit tool (auditctl, aureport, ausearch, autrace, auditd, rsyslogd and augenrules under /sbin) must be group-owned by root"
+
+finding_rhel_09_232225 := {
+	"vuln_id": "V-257925",
+	"stig_id": "RHEL-09-232225",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit tools must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232225,
+	"detail": detail_rhel_09_232225,
+	"fix_text": "chgrp root each listed audit tool",
+}
+
+# RHEL-09-232230 | V-257926 | CAT II
+# stat -c "%U %n" /etc/cron*: input.file_permissions.cron_config[{path, owner, group}]
+missing_rhel_09_232230 := [concat(".", p) | some p in [["file_permissions", "cron_config"]]; not _collected(p)]
+
+default cron_config_owner_root := false
+
+cron_config_owner_root if {
+	count(missing_rhel_09_232230) == 0
+	items := input.file_permissions.cron_config
+	is_array(items)
+	every c in items {
+		c.owner == "root"
+	}
+}
+
+status_rhel_09_232230 := "Not_a_Finding" if cron_config_owner_root
+
+else := "Open"
+
+detail_rhel_09_232230 := "RHEL-09-232230: Not_a_Finding" if cron_config_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232230", concat(", ", missing_rhel_09_232230)]) if count(missing_rhel_09_232230) > 0
+
+else := "RHEL-09-232230: check failed — every /etc/cron* file and directory must be owned by root"
+
+finding_rhel_09_232230 := {
+	"vuln_id": "V-257926",
+	"stig_id": "RHEL-09-232230",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 cron configuration files directory must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232230,
+	"detail": detail_rhel_09_232230,
+	"fix_text": "chown root each listed cron configuration file or directory",
+}
+
+# RHEL-09-232235 | V-257927 | CAT II
+# stat -c "%G %n" /etc/cron*: input.file_permissions.cron_config[{path, owner, group}]
+missing_rhel_09_232235 := [concat(".", p) | some p in [["file_permissions", "cron_config"]]; not _collected(p)]
+
+default cron_config_group_root := false
+
+cron_config_group_root if {
+	count(missing_rhel_09_232235) == 0
+	items := input.file_permissions.cron_config
+	is_array(items)
+	every c in items {
+		c.group == "root"
+	}
+}
+
+status_rhel_09_232235 := "Not_a_Finding" if cron_config_group_root
+
+else := "Open"
+
+detail_rhel_09_232235 := "RHEL-09-232235: Not_a_Finding" if cron_config_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232235", concat(", ", missing_rhel_09_232235)]) if count(missing_rhel_09_232235) > 0
+
+else := "RHEL-09-232235: check failed — every /etc/cron* file and directory must be group-owned by root"
+
+finding_rhel_09_232235 := {
+	"vuln_id": "V-257927",
+	"stig_id": "RHEL-09-232235",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 cron configuration files directory must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_232235,
+	"detail": detail_rhel_09_232235,
+	"fix_text": "chgrp root each listed cron configuration file or directory",
+}
+
+# RHEL-09-232195 | V-257919 | CAT II
+# find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -group root -exec stat -L -c "%G %g %n": input.file_permissions.system_commands_not_group_owned_by_root[{path, group, gid}]
+missing_rhel_09_232195 := [concat(".", p) | some p in [["file_permissions", "system_commands_not_group_owned_by_root"]]; not _collected(p)]
+
+default sys_commands_group_root := false
+
+sys_commands_group_root if {
+	count(missing_rhel_09_232195) == 0
+	xs := input.file_permissions.system_commands_not_group_owned_by_root
+	is_array(xs)
+	every e in xs {
+		_system_group(e)
+	}
+}
+
+status_rhel_09_232195 := "Not_a_Finding" if sys_commands_group_root
+
+else := "Open"
+
+detail_rhel_09_232195 := "RHEL-09-232195: Not_a_Finding" if sys_commands_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232195", concat(", ", missing_rhel_09_232195)]) if count(missing_rhel_09_232195) > 0
+
+else := "RHEL-09-232195: check failed — every system command in /bin, /sbin, /usr/bin, /usr/sbin, /usr/libexec, /usr/local/bin, /usr/local/sbin must be group-owned by root or a system account group (GID below 1000)"
+
+finding_rhel_09_232195 := {
+	"vuln_id": "V-257919",
+	"stig_id": "RHEL-09-232195",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 system commands must be group-owned by root or a system account.",
+	"check_type": "machine",
+	"status": status_rhel_09_232195,
+	"detail": detail_rhel_09_232195,
+	"fix_text": "chgrp root each listed entry whose group is not a required system account",
+}
+
+# RHEL-09-232215 | V-257923 | CAT II
+# find /lib /lib64 /usr/lib /usr/lib64 ! -group root -type d -exec stat -c "%G %g %n": input.file_permissions.library_dirs_not_group_owned_by_root[{path, group, gid}]
+missing_rhel_09_232215 := [concat(".", p) | some p in [["file_permissions", "library_dirs_not_group_owned_by_root"]]; not _collected(p)]
+
+default library_dirs_group_root := false
+
+library_dirs_group_root if {
+	count(missing_rhel_09_232215) == 0
+	xs := input.file_permissions.library_dirs_not_group_owned_by_root
+	is_array(xs)
+	every e in xs {
+		_system_group(e)
+	}
+}
+
+status_rhel_09_232215 := "Not_a_Finding" if library_dirs_group_root
+
+else := "Open"
+
+detail_rhel_09_232215 := "RHEL-09-232215: Not_a_Finding" if library_dirs_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232215", concat(", ", missing_rhel_09_232215)]) if count(missing_rhel_09_232215) > 0
+
+else := "RHEL-09-232215: check failed — every directory under /lib, /lib64, /usr/lib, /usr/lib64 must be group-owned by root or a system account group (GID below 1000)"
+
+finding_rhel_09_232215 := {
+	"vuln_id": "V-257923",
+	"stig_id": "RHEL-09-232215",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 library directories must be group-owned by root or a system account.",
+	"check_type": "machine",
+	"status": status_rhel_09_232215,
+	"detail": detail_rhel_09_232215,
+	"fix_text": "chgrp root each listed entry whose group is not a required system account",
+}
+
+# RHEL-09-232240 | V-257928 | CAT II
+# output of find / -xdev -type d -perm -0002 -uid +999 -exec stat -c "%U, %u, %A, %n"
+missing_rhel_09_232240 := [concat(".", p) | some p in [["file_permissions", "world_writable_dirs_owned_by_uid_1000_plus"]]; not _collected(p)]
+
+default world_writable_dirs_owner_ok := false
+
+world_writable_dirs_owner_ok if {
+	count(missing_rhel_09_232240) == 0
+	xs := input.file_permissions.world_writable_dirs_owned_by_uid_1000_plus
+	is_array(xs)
+	count(xs) == 0
+}
+
+world_writable_dirs_owner_ok if {
+	_attested("rhel_09_232240_owners_approved")
+}
+
+status_rhel_09_232240 := "Not_a_Finding" if world_writable_dirs_owner_ok
+
+else := "Open"
+
+detail_rhel_09_232240 := "RHEL-09-232240: Not_a_Finding" if world_writable_dirs_owner_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232240", concat(", ", missing_rhel_09_232240)]) if count(missing_rhel_09_232240) > 0
+
+else := "RHEL-09-232240: check failed — no world-writable directory may be owned by an account with UID 1000 or above, unless every listed owner is an approved system or application account (input.attest.rhel_09_232240_owners_approved)"
+
+finding_rhel_09_232240 := {
+	"vuln_id": "V-257928",
+	"stig_id": "RHEL-09-232240",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 world-writable directories must be owned by root, sys, bin, or an application user.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_232240,
+	"detail": detail_rhel_09_232240,
+	"fix_text": "chown each listed directory to root or a system account",
+}
+
+# RHEL-09-232260 | V-257932 | CAT II
+# find /dev -context *:device_t:* / *:unlabeled_t:* \( -type c -o -type b \) -printf "%p %Z\n": input.device_file_labels.{device_t, unlabeled_t}[{path, context}]
+missing_rhel_09_232260 := [concat(".", p) | some p in [["device_file_labels", "device_t"], ["device_file_labels", "unlabeled_t"]]; not _collected(p)]
+
+default device_files_labeled := false
+
+device_files_labeled if {
+	count(missing_rhel_09_232260) == 0
+	un := input.device_file_labels.unlabeled_t
+	is_array(un)
+	count(un) == 0
+	dev := input.device_file_labels.device_t
+	is_array(dev)
+	_device_t_ok(dev)
+}
+
+status_rhel_09_232260 := "Not_a_Finding" if device_files_labeled
+
+else := "Open"
+
+detail_rhel_09_232260 := "RHEL-09-232260: Not_a_Finding" if device_files_labeled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-232260", concat(", ", missing_rhel_09_232260)]) if count(missing_rhel_09_232260) > 0
+
+else := "RHEL-09-232260: check failed — no character or block device file may carry the device_t or unlabeled_t SELinux type; device_t files a virtual machine needs (such as /dev/vmci) are allowed when attested (input.attest.rhel_09_232260_vm_device_files)"
+
+finding_rhel_09_232260 := {
+	"vuln_id": "V-257932",
+	"stig_id": "RHEL-09-232260",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that all system device files are correctly labeled to prevent unauthorized modification.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_232260,
+	"detail": detail_rhel_09_232260,
+	"fix_text": "Restore the label of each listed device file: restorecon -v <device_path>",
+}
+
+# RHEL-09-255105 | V-257997 | CAT II
+# find /etc/ssh/sshd_config /etc/ssh/sshd_config.d -exec stat -c "%G %n": input.file_permissions.sshd_config_paths [{path, owner, group}]
+missing_rhel_09_255105 := [concat(".", p) | some p in [["file_permissions", "sshd_config_paths"]]; not _collected(p)]
+
+default sshd_config_group_root := false
+
+sshd_config_group_root if {
+	count(missing_rhel_09_255105) == 0
+	fs := input.file_permissions.sshd_config_paths
+	is_array(fs)
+	every f in fs {
+		f.group == "root"
+	}
+}
+
+status_rhel_09_255105 := "Not_a_Finding" if sshd_config_group_root
+
+else := "Open"
+
+detail_rhel_09_255105 := "RHEL-09-255105: Not_a_Finding" if sshd_config_group_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255105", concat(", ", missing_rhel_09_255105)]) if count(missing_rhel_09_255105) > 0
+
+else := "RHEL-09-255105: check failed — /etc/ssh/sshd_config, /etc/ssh/sshd_config.d and every file in it must have group root"
+
+finding_rhel_09_255105 := {
+	"vuln_id": "V-257997",
+	"stig_id": "RHEL-09-255105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH server configuration file must be group-owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_255105,
+	"detail": detail_rhel_09_255105,
+	"fix_text": "chgrp -R root /etc/ssh/sshd_config /etc/ssh/sshd_config.d",
+}
+
+# RHEL-09-255110 | V-257998 | CAT II
+# find /etc/ssh/sshd_config /etc/ssh/sshd_config.d -exec stat -c "%U %n": input.file_permissions.sshd_config_paths [{path, owner, group}]
+missing_rhel_09_255110 := [concat(".", p) | some p in [["file_permissions", "sshd_config_paths"]]; not _collected(p)]
+
+default sshd_config_owner_root := false
+
+sshd_config_owner_root if {
+	count(missing_rhel_09_255110) == 0
+	fs := input.file_permissions.sshd_config_paths
+	is_array(fs)
+	every f in fs {
+		f.owner == "root"
+	}
+}
+
+status_rhel_09_255110 := "Not_a_Finding" if sshd_config_owner_root
+
+else := "Open"
+
+detail_rhel_09_255110 := "RHEL-09-255110: Not_a_Finding" if sshd_config_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255110", concat(", ", missing_rhel_09_255110)]) if count(missing_rhel_09_255110) > 0
+
+else := "RHEL-09-255110: check failed — /etc/ssh/sshd_config, /etc/ssh/sshd_config.d and every file in it must have owner root"
+
+finding_rhel_09_255110 := {
+	"vuln_id": "V-257998",
+	"stig_id": "RHEL-09-255110",
+	"severity": "CAT II",
+	"rule_title": "The RHEL 9 SSH server configuration file must be owned by root.",
+	"check_type": "machine",
+	"status": status_rhel_09_255110,
+	"detail": detail_rhel_09_255110,
+	"fix_text": "chown -R root /etc/ssh/sshd_config /etc/ssh/sshd_config.d",
+}
+
+# RHEL-09-255115 | V-257999 | CAT II
+# the output lines of rpm --verify openssh-server (input.rpm_verify["openssh-server"]); the policy applies the check's awk filter
+missing_rhel_09_255115 := [concat(".", p) | some p in [["rpm_verify", "openssh-server"]]; not _collected(p)]
+
+default sshd_files_permissions_unmodified := false
+
+sshd_files_permissions_unmodified if {
+	count(missing_rhel_09_255115) == 0
+	ls := input.rpm_verify["openssh-server"]
+	is_array(ls)
+	count([l | some l in ls; not _rpm_verify_line_ok(l)]) == 0
+}
+
+status_rhel_09_255115 := "Not_a_Finding" if sshd_files_permissions_unmodified
+
+else := "Open"
+
+detail_rhel_09_255115 := "RHEL-09-255115: Not_a_Finding" if sshd_files_permissions_unmodified
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255115", concat(", ", missing_rhel_09_255115)]) if count(missing_rhel_09_255115) > 0
+
+else := "RHEL-09-255115: check failed — rpm --verify openssh-server must report nothing but configuration files (c) whose mode, user, group, device, link and capabilities are unchanged"
+
+finding_rhel_09_255115 := {
+	"vuln_id": "V-257999",
+	"stig_id": "RHEL-09-255115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH server configuration files' permissions must not be modified.",
+	"check_type": "machine",
+	"status": status_rhel_09_255115,
+	"detail": detail_rhel_09_255115,
+	"fix_text": "Restore the packaged ownership and permissions: rpm --setugids openssh-server && rpm --setperms openssh-server",
+}
+
+# RHEL-09-255120 | V-258000 | CAT II
+# stat -c "%a %n" /etc/ssh/*_key: input.file_permissions.ssh_private_host_keys [{path, mode}]
+missing_rhel_09_255120 := [concat(".", p) | some p in [["file_permissions", "ssh_private_host_keys"]]; not _collected(p)]
+
+default ssh_private_host_keys_mode_ok := false
+
+ssh_private_host_keys_mode_ok if {
+	count(missing_rhel_09_255120) == 0
+	ks := input.file_permissions.ssh_private_host_keys
+	is_array(ks)
+	every k in ks {
+		mode_within(k.mode, "0600")
+	}
+}
+
+status_rhel_09_255120 := "Not_a_Finding" if ssh_private_host_keys_mode_ok
+
+else := "Open"
+
+detail_rhel_09_255120 := "RHEL-09-255120: Not_a_Finding" if ssh_private_host_keys_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255120", concat(", ", missing_rhel_09_255120)]) if count(missing_rhel_09_255120) > 0
+
+else := "RHEL-09-255120: check failed — every /etc/ssh/*_key file must have mode 0600 or less permissive"
+
+finding_rhel_09_255120 := {
+	"vuln_id": "V-258000",
+	"stig_id": "RHEL-09-255120",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH private host key files must have mode 0600 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_255120,
+	"detail": detail_rhel_09_255120,
+	"fix_text": "chmod 0600 /etc/ssh/*_key and restart sshd",
+}
+
+# RHEL-09-255125 | V-258001 | CAT II
+# stat -c "%a %n" /etc/ssh/*.pub: input.file_permissions.ssh_public_host_keys [{path, mode}]
+missing_rhel_09_255125 := [concat(".", p) | some p in [["file_permissions", "ssh_public_host_keys"]]; not _collected(p)]
+
+default ssh_public_host_keys_mode_ok := false
+
+ssh_public_host_keys_mode_ok if {
+	count(missing_rhel_09_255125) == 0
+	ks := input.file_permissions.ssh_public_host_keys
+	is_array(ks)
+	every k in ks {
+		mode_within(k.mode, "0644")
+	}
+}
+
+status_rhel_09_255125 := "Not_a_Finding" if ssh_public_host_keys_mode_ok
+
+else := "Open"
+
+detail_rhel_09_255125 := "RHEL-09-255125: Not_a_Finding" if ssh_public_host_keys_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255125", concat(", ", missing_rhel_09_255125)]) if count(missing_rhel_09_255125) > 0
+
+else := "RHEL-09-255125: check failed — every /etc/ssh/*.pub file must have mode 0644 or less permissive"
+
+finding_rhel_09_255125 := {
+	"vuln_id": "V-258001",
+	"stig_id": "RHEL-09-255125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH public host key files must have mode 0644 or less permissive.",
+	"check_type": "machine",
+	"status": status_rhel_09_255125,
+	"detail": detail_rhel_09_255125,
+	"fix_text": "chmod 0644 /etc/ssh/*.pub and restart sshd",
+}
+
+# RHEL-09-411070 | V-258053 | CAT II
+# primary_gid (getent passwd field 4) against home_gid (stat -c %g <home>) for each entry of input.interactive_users
+missing_rhel_09_411070 := [concat(".", p) | some p in [["interactive_users"]]; not _collected(p)]
+
+default home_dirs_group_owned_by_primary_group := false
+
+home_dirs_group_owned_by_primary_group if {
+	count(missing_rhel_09_411070) == 0
+	us := input.interactive_users
+	is_array(us)
+	every u in us {
+		_home_group_ok(u)
+	}
+}
+
+status_rhel_09_411070 := "Not_a_Finding" if home_dirs_group_owned_by_primary_group
+
+else := "Open"
+
+detail_rhel_09_411070 := "RHEL-09-411070: Not_a_Finding" if home_dirs_group_owned_by_primary_group
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-411070", concat(", ", missing_rhel_09_411070)]) if count(missing_rhel_09_411070) > 0
+
+else := "RHEL-09-411070: check failed — the home directory of every local interactive user (UID >= 1000, shell not nologin or false) must be group-owned by the user's primary GID"
+
+finding_rhel_09_411070 := {
+	"vuln_id": "V-258053",
+	"stig_id": "RHEL-09-411070",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 local interactive user home directories must be group-owned by the home directory owner's primary group.",
+	"check_type": "machine",
+	"status": status_rhel_09_411070,
+	"detail": detail_rhel_09_411070,
+	"fix_text": "Set the group of each listed home directory: chgrp <primary group> <home>",
+}
+
+# RHEL-09-653080 | V-258165 | CAT II
+# group of the auditd.conf log_file (stat -c %G); input.auditd_config.log_group is read when the group is not root
+missing_rhel_09_653080 := [concat(".", p) | some p in [["file_permissions", "audit_log", "group"]]; not _collected(p)]
+
+default audit_log_group_ok := false
+
+audit_log_group_ok if {
+	count(missing_rhel_09_653080) == 0
+	_str(["file_permissions", "audit_log", "group"]) == "root"
+}
+
+audit_log_group_ok if {
+	count(missing_rhel_09_653080) == 0
+	g := _str(["file_permissions", "audit_log", "group"])
+	g != ""
+	g == _str(["auditd_config", "log_group"])
+}
+
+status_rhel_09_653080 := "Not_a_Finding" if audit_log_group_ok
+
+else := "Open"
+
+detail_rhel_09_653080 := "RHEL-09-653080: Not_a_Finding" if audit_log_group_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653080", concat(", ", missing_rhel_09_653080)]) if count(missing_rhel_09_653080) > 0
+
+else := "RHEL-09-653080: check failed — the audit log (auditd.conf log_file) must be group-owned by root or by the log_group configured in /etc/audit/auditd.conf"
+
+finding_rhel_09_653080 := {
+	"vuln_id": "V-258165",
+	"stig_id": "RHEL-09-653080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit logs must be group-owned by root or by a restricted logging group to prevent unauthorized read access.",
+	"check_type": "machine",
+	"status": status_rhel_09_653080,
+	"detail": detail_rhel_09_653080,
+	"fix_text": "Set the group of the audit logs to the configured log_group: chgrp <group> /var/log/audit and its files",
+}
+
+# RHEL-09-653085 | V-258166 | CAT II
+# owner of the directory of the auditd.conf log_file (stat -c %U /var/log/audit)
+missing_rhel_09_653085 := [concat(".", p) | some p in [["file_permissions", "audit_log_dir", "owner"]]; not _collected(p)]
+
+default audit_log_dir_owner_root := false
+
+audit_log_dir_owner_root if {
+	count(missing_rhel_09_653085) == 0
+	_str(["file_permissions", "audit_log_dir", "owner"]) == "root"
+}
+
+status_rhel_09_653085 := "Not_a_Finding" if audit_log_dir_owner_root
+
+else := "Open"
+
+detail_rhel_09_653085 := "RHEL-09-653085: Not_a_Finding" if audit_log_dir_owner_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653085", concat(", ", missing_rhel_09_653085)]) if count(missing_rhel_09_653085) > 0
+
+else := "RHEL-09-653085: check failed — the audit log directory (the directory of auditd.conf log_file) must be owned by root"
+
+finding_rhel_09_653085 := {
+	"vuln_id": "V-258166",
+	"stig_id": "RHEL-09-653085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit log directory must be owned by root to prevent unauthorized read access.",
+	"check_type": "machine",
+	"status": status_rhel_09_653085,
+	"detail": detail_rhel_09_653085,
+	"fix_text": "chown root /var/log/audit",
+}
+
+# RHEL-09-653090 | V-258167 | CAT II
+# find <directory of auditd.conf log_file> -type f -exec stat -c '%a %n': [{path, mode}]
+missing_rhel_09_653090 := [concat(".", p) | some p in [["file_permissions", "audit_log_files"]]; not _collected(p)]
+
+default audit_log_files_mode_ok := false
+
+audit_log_files_mode_ok if {
+	count(missing_rhel_09_653090) == 0
+	fs := input.file_permissions.audit_log_files
+	is_array(fs)
+	every f in fs {
+		mode_within(f.mode, "0600")
+	}
+}
+
+status_rhel_09_653090 := "Not_a_Finding" if audit_log_files_mode_ok
+
+else := "Open"
+
+detail_rhel_09_653090 := "RHEL-09-653090: Not_a_Finding" if audit_log_files_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653090", concat(", ", missing_rhel_09_653090)]) if count(missing_rhel_09_653090) > 0
+
+else := "RHEL-09-653090: check failed — no file in the audit log directory may have a mode more permissive than 0600"
+
+finding_rhel_09_653090 := {
+	"vuln_id": "V-258167",
+	"stig_id": "RHEL-09-653090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit logs file must have mode 0600 or less permissive to prevent unauthorized access to the audit log.",
+	"check_type": "machine",
+	"status": status_rhel_09_653090,
+	"detail": detail_rhel_09_653090,
+	"fix_text": "chmod 0600 each listed audit log file",
+}
+
+# RHEL-09-653110 | V-258171 | CAT II
+# stat -c '%a %n' of /etc/audit/rules.d/*.rules, /etc/audit/audit.rules and /etc/audit/auditd.conf: [{path, mode}]
+missing_rhel_09_653110 := [concat(".", p) | some p in [["file_permissions", "audit_config_files"]]; not _collected(p)]
+
+default audit_config_files_mode_ok := false
+
+audit_config_files_mode_ok if {
+	count(missing_rhel_09_653110) == 0
+	fs := input.file_permissions.audit_config_files
+	is_array(fs)
+	every f in fs {
+		mode_within(f.mode, "0600")
+	}
+}
+
+status_rhel_09_653110 := "Not_a_Finding" if audit_config_files_mode_ok
+
+else := "Open"
+
+detail_rhel_09_653110 := "RHEL-09-653110: Not_a_Finding" if audit_config_files_mode_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653110", concat(", ", missing_rhel_09_653110)]) if count(missing_rhel_09_653110) > 0
+
+else := "RHEL-09-653110: check failed — /etc/audit/rules.d/*.rules, /etc/audit/audit.rules and /etc/audit/auditd.conf must have mode 0600 or less permissive"
+
+finding_rhel_09_653110 := {
+	"vuln_id": "V-258171",
+	"stig_id": "RHEL-09-653110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must allow only the information system security manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
+	"check_type": "machine",
+	"status": status_rhel_09_653110,
+	"detail": detail_rhel_09_653110,
+	"fix_text": "chmod 0600 /etc/audit/rules.d/*.rules /etc/audit/audit.rules /etc/audit/auditd.conf",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -444,6 +2378,62 @@ cat_ii_findings := [
 	finding_rhel_09_232200,
 	finding_rhel_09_232010,
 	finding_rhel_09_232050,
+	finding_rhel_09_212025,
+	finding_rhel_09_212030,
+	finding_rhel_09_232015,
+	finding_rhel_09_232040,
+	finding_rhel_09_232045,
+	finding_rhel_09_232190,
+	finding_rhel_09_232205,
+	finding_rhel_09_232210,
+	finding_rhel_09_232245,
+	finding_rhel_09_232025,
+	finding_rhel_09_232030,
+	finding_rhel_09_232060,
+	finding_rhel_09_232070,
+	finding_rhel_09_232080,
+	finding_rhel_09_232085,
+	finding_rhel_09_232090,
+	finding_rhel_09_232095,
+	finding_rhel_09_232100,
+	finding_rhel_09_232105,
+	finding_rhel_09_232103,
+	finding_rhel_09_232104,
+	finding_rhel_09_232110,
+	finding_rhel_09_232115,
+	finding_rhel_09_232120,
+	finding_rhel_09_232125,
+	finding_rhel_09_232130,
+	finding_rhel_09_232135,
+	finding_rhel_09_232140,
+	finding_rhel_09_232145,
+	finding_rhel_09_232150,
+	finding_rhel_09_232155,
+	finding_rhel_09_232160,
+	finding_rhel_09_232165,
+	finding_rhel_09_232170,
+	finding_rhel_09_232175,
+	finding_rhel_09_232180,
+	finding_rhel_09_232185,
+	finding_rhel_09_232035,
+	finding_rhel_09_232220,
+	finding_rhel_09_232225,
+	finding_rhel_09_232230,
+	finding_rhel_09_232235,
+	finding_rhel_09_232195,
+	finding_rhel_09_232215,
+	finding_rhel_09_232240,
+	finding_rhel_09_232260,
+	finding_rhel_09_255105,
+	finding_rhel_09_255110,
+	finding_rhel_09_255115,
+	finding_rhel_09_255120,
+	finding_rhel_09_255125,
+	finding_rhel_09_411070,
+	finding_rhel_09_653080,
+	finding_rhel_09_653085,
+	finding_rhel_09_653090,
+	finding_rhel_09_653110,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

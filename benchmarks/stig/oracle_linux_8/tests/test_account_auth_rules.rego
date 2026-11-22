@@ -12,17 +12,29 @@ green_fixture := {
 		"fail_interval": 900,
 	},
 	"local_accounts_with_empty_passwords": [],
-	"login_defs": {"ENCRYPT_METHOD": "SHA512"},
+	"login_defs": {
+		"ENCRYPT_METHOD": "SHA512",
+	},
 	"password_policy": {
 		"maxdays": 180,
 		"mindays": 1,
 	},
 	"pwquality_values": {
-		"dcredit": ["-1"],
-		"lcredit": ["-1"],
-		"minlen": ["15"],
-		"ocredit": ["-1"],
-		"ucredit": ["-1"],
+		"dcredit": [
+			"-1",
+		],
+		"lcredit": [
+			"-1",
+		],
+		"minlen": [
+			"15",
+		],
+		"ocredit": [
+			"-1",
+		],
+		"ucredit": [
+			"-1",
+		],
 	},
 }
 

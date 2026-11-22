@@ -597,7 +597,9 @@ finding_rhel_10_600420 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [finding_rhel_10_600740]
+cat_i_findings := [
+	finding_rhel_10_600740,
+]
 
 cat_ii_findings := [
 	finding_rhel_10_600100,

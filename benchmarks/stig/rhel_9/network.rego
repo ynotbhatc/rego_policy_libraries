@@ -473,6 +473,828 @@ finding_rhel_09_251040 := {
 	"fix_text": "Turn promiscuous mode off: ip link set dev <if> multicast off promisc off",
 }
 
+# RHEL-09-251010 | V-257935 | CAT II
+# input.packages.firewalld (dnf list --installed firewalld)
+missing_rhel_09_251010 := [concat(".", p) | some p in [["packages", "firewalld"]]; not _collected(p)]
+
+default firewalld_installed := false
+
+firewalld_installed if {
+	count(missing_rhel_09_251010) == 0
+	input.packages.firewalld == true
+}
+
+status_rhel_09_251010 := "Not_a_Finding" if firewalld_installed
+
+else := "Open"
+
+detail_rhel_09_251010 := "RHEL-09-251010: Not_a_Finding" if firewalld_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251010", concat(", ", missing_rhel_09_251010)]) if count(missing_rhel_09_251010) > 0
+
+else := "RHEL-09-251010: check failed — the firewalld package must be installed"
+
+finding_rhel_09_251010 := {
+	"vuln_id": "V-257935",
+	"stig_id": "RHEL-09-251010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the firewalld package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_251010,
+	"detail": detail_rhel_09_251010,
+	"fix_text": "Install firewalld: dnf install firewalld",
+}
+
+# RHEL-09-251020 | V-257937 | CAT II
+# firewall-cmd --get-active-zones (zone names; empty when none or firewalld is not running) and the target of the default zone: firewall-cmd --list-all --zone=$(firewall-cmd --get-default-zone), and the same with --permanent
+missing_rhel_09_251020 := [concat(".", p) | some p in [["firewalld", "active_zones"], ["firewalld", "default_zone", "target_runtime"], ["firewalld", "default_zone", "target_permanent"]]; not _collected(p)]
+
+default firewall_default_deny := false
+
+firewall_default_deny if {
+	count(missing_rhel_09_251020) == 0
+	zones := input.firewalld.active_zones
+	is_array(zones)
+	count(zones) > 0
+	_str(["firewalld", "default_zone", "target_runtime"]) == "DROP"
+	_str(["firewalld", "default_zone", "target_permanent"]) == "DROP"
+}
+
+status_rhel_09_251020 := "Not_a_Finding" if firewall_default_deny
+
+else := "Open"
+
+detail_rhel_09_251020 := "RHEL-09-251020: Not_a_Finding" if firewall_default_deny
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251020", concat(", ", missing_rhel_09_251020)]) if count(missing_rhel_09_251020) > 0
+
+else := "RHEL-09-251020: check failed — at least one firewalld zone must be active and the default zone's runtime and permanent targets must both be DROP"
+
+finding_rhel_09_251020 := {
+	"vuln_id": "V-257937",
+	"stig_id": "RHEL-09-251020",
+	"severity": "CAT II",
+	"rule_title": "The RHEL 9 firewall must employ a deny-all, allow-by-exception policy for allowing connections to other systems.",
+	"check_type": "machine",
+	"status": status_rhel_09_251020,
+	"detail": detail_rhel_09_251020,
+	"fix_text": "Add the required exceptions to the drop zone, then: firewall-cmd --reload; firewall-cmd --set-default-zone=drop; firewall-cmd --permanent --zone=drop --change-interface=<if>; firewall-cmd --reload",
+}
+
+# RHEL-09-251030 | V-257939 | CAT II
+# FirewallBackend as configured in /etc/firewalld/firewalld.conf (null when missing or commented out)
+missing_rhel_09_251030 := [concat(".", p) | some p in [["firewalld_conf", "FirewallBackend"]]; not _collected(p)]
+
+default firewall_backend_nftables := false
+
+firewall_backend_nftables if {
+	count(missing_rhel_09_251030) == 0
+	_str(["firewalld_conf", "FirewallBackend"]) == "nftables"
+}
+
+status_rhel_09_251030 := "Not_a_Finding" if firewall_backend_nftables
+
+else := "Open"
+
+detail_rhel_09_251030 := "RHEL-09-251030: Not_a_Finding" if firewall_backend_nftables
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251030", concat(", ", missing_rhel_09_251030)]) if count(missing_rhel_09_251030) > 0
+
+else := "RHEL-09-251030: check failed — FirewallBackend in /etc/firewalld/firewalld.conf must be nftables"
+
+finding_rhel_09_251030 := {
+	"vuln_id": "V-257939",
+	"stig_id": "RHEL-09-251030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must protect against or limit the effects of denial-of-service (DoS) attacks by ensuring rate-limiting measures on impacted network interfaces are implemented.",
+	"check_type": "machine",
+	"status": status_rhel_09_251030,
+	"detail": detail_rhel_09_251030,
+	"fix_text": "Set FirewallBackend=nftables in /etc/firewalld/firewalld.conf and establish the rate-limiting rules",
+}
+
+# RHEL-09-251035 | V-257940 | CAT II
+# document review: the lines of firewall-cmd --list-all-zones | grep -e "active" -e "services" are collected for the reviewer; the comparison with the PPSM CLSA is the attestation, never decided from the facts
+missing_rhel_09_251035 := [concat(".", p) | some p in [["firewalld", "zone_services"]]; not _collected(p)]
+
+default firewall_services_match_ppsm := false
+
+firewall_services_match_ppsm if {
+	count(missing_rhel_09_251035) == 0
+	is_array(input.firewalld.zone_services)
+	_attested("rhel_09_251035_ppsm_clsa_match")
+}
+
+status_rhel_09_251035 := "Not_a_Finding" if firewall_services_match_ppsm
+
+else := "Open"
+
+detail_rhel_09_251035 := "RHEL-09-251035: Not_a_Finding" if firewall_services_match_ppsm
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-251035", concat(", ", missing_rhel_09_251035)]) if count(missing_rhel_09_251035) > 0
+
+else := "RHEL-09-251035: check failed — the services the firewall allows (input.firewalld.zone_services) must be reviewed against the site PPSM CLSA and the PPSM CAL, and the match attested (input.attest.rhel_09_251035_ppsm_clsa_match)"
+
+finding_rhel_09_251035 := {
+	"vuln_id": "V-257940",
+	"stig_id": "RHEL-09-251035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the Ports, Protocols, and Services Management (PPSM) Category Assignments List (CAL) and vulnerability assessments.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_251035,
+	"detail": detail_rhel_09_251035,
+	"fix_text": "Update the firewall settings and running services to comply with the PPSM CLSA and the PPSM CAL, then firewall-cmd --reload",
+}
+
+# RHEL-09-252035 | V-257948 | CAT II
+# the value of each uncommented nameserver line of /etc/resolv.conf, in file order; a cloud platform whose provider gives a single highly available DNS address is Not Applicable (attested)
+missing_rhel_09_252035 := [concat(".", p) | some p in [["resolv_conf", "nameservers"]]; not _collected(p)]
+
+default two_nameservers := false
+
+two_nameservers if {
+	count(missing_rhel_09_252035) == 0
+	ns := input.resolv_conf.nameservers
+	is_array(ns)
+	count(ns) >= 2
+}
+
+default na_rhel_09_252035 := false
+
+na_rhel_09_252035 if {
+	_attested("rhel_09_252035_cloud_single_dns")
+}
+
+status_rhel_09_252035 := "Not_a_Finding" if two_nameservers
+
+else := "Not_Applicable" if na_rhel_09_252035
+
+else := "Open"
+
+detail_rhel_09_252035 := "RHEL-09-252035: Not_a_Finding" if two_nameservers
+
+else := "RHEL-09-252035: Not_Applicable — the system runs in a cloud platform whose provider gives a single, highly available DNS address" if na_rhel_09_252035
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252035", concat(", ", missing_rhel_09_252035)]) if count(missing_rhel_09_252035) > 0
+
+else := "RHEL-09-252035: check failed — /etc/resolv.conf must carry at least two uncommented nameserver lines"
+
+finding_rhel_09_252035 := {
+	"vuln_id": "V-257948",
+	"stig_id": "RHEL-09-252035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 systems using Domain Name Servers (DNS) resolution must have at least two name servers configured.",
+	"check_type": "machine",
+	"status": status_rhel_09_252035,
+	"detail": detail_rhel_09_252035,
+	"fix_text": "Configure two or more name servers (in /etc/resolv.conf when the NetworkManager DNS mode is none, else on the connection: nmcli connection modify <name> ipv4.dns <ip>)",
+}
+
+# RHEL-09-252040 | V-257949 | CAT II
+# dns key under [main] in NetworkManager --print-config (null when the key does not exist)
+missing_rhel_09_252040 := [concat(".", p) | some p in [["networkmanager", "main", "dns"]]; not _collected(p)]
+
+default networkmanager_dns_mode := false
+
+networkmanager_dns_mode if {
+	count(missing_rhel_09_252040) == 0
+	_str(["networkmanager", "main", "dns"]) in {"default", "none", "systemd-resolved"}
+}
+
+networkmanager_dns_mode if {
+	_attested("rhel_09_252040_other_resolver_approved")
+}
+
+status_rhel_09_252040 := "Not_a_Finding" if networkmanager_dns_mode
+
+else := "Open"
+
+detail_rhel_09_252040 := "RHEL-09-252040: Not_a_Finding" if networkmanager_dns_mode
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252040", concat(", ", missing_rhel_09_252040)]) if count(missing_rhel_09_252040) > 0
+
+else := "RHEL-09-252040: check failed — the dns key in the [main] section of NetworkManager --print-config must be default, none or systemd-resolved, or a DNS resolver other than NetworkManager must be documented and approved by the ISSO (input.attest.rhel_09_252040_other_resolver_approved)"
+
+finding_rhel_09_252040 := {
+	"vuln_id": "V-257949",
+	"stig_id": "RHEL-09-252040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must configure a DNS processing mode in Network Manager.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_252040,
+	"detail": detail_rhel_09_252040,
+	"fix_text": "Set dns = default, none or systemd-resolved in the [main] section of /etc/NetworkManager/NetworkManager.conf and reload NetworkManager",
+}
+
+# RHEL-09-252045 | V-257950 | CAT II
+# systemctl is-active ipsec; when active, the lines of grep -rni conn /etc/ipsec.conf /etc/ipsec.d/ (input.ipsec.conn_lines)
+missing_rhel_09_252045 := [concat(".", p) | some p in [["services", "ipsec"]]; not _collected(p)]
+
+default no_unauthorized_ip_tunnels := false
+
+no_unauthorized_ip_tunnels if {
+	count(missing_rhel_09_252045) == 0
+	s := _kw(["services", "ipsec"])
+	s != "active"
+}
+
+no_unauthorized_ip_tunnels if {
+	count(missing_rhel_09_252045) == 0
+	_kw(["services", "ipsec"]) == "active"
+	conns := input.ipsec.conn_lines
+	is_array(conns)
+	count(conns) == 0
+}
+
+no_unauthorized_ip_tunnels if {
+	_attested("rhel_09_252045_tunnels_approved")
+}
+
+status_rhel_09_252045 := "Not_a_Finding" if no_unauthorized_ip_tunnels
+
+else := "Open"
+
+detail_rhel_09_252045 := "RHEL-09-252045: Not_a_Finding" if no_unauthorized_ip_tunnels
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252045", concat(", ", missing_rhel_09_252045)]) if count(missing_rhel_09_252045) > 0
+
+else := "RHEL-09-252045: check failed — the ipsec service must not be active, or no IPsec connection (conn) may be configured, or the configured tunnels must be documented with the ISSO (input.attest.rhel_09_252045_tunnels_approved)"
+
+finding_rhel_09_252045 := {
+	"vuln_id": "V-257950",
+	"stig_id": "RHEL-09-252045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not have unauthorized IP tunnels configured.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_252045,
+	"detail": detail_rhel_09_252045,
+	"fix_text": "Remove all unapproved tunnels from the system, or document them with the ISSO",
+}
+
+# RHEL-09-252065 | V-257954 | CAT II
+# libreswan package installed (dnf list --installed libreswan); no operational need is Not Applicable (attested)
+missing_rhel_09_252065 := [concat(".", p) | some p in [["packages", "libreswan"]]; not _collected(p)]
+
+default libreswan_installed := false
+
+libreswan_installed if {
+	count(missing_rhel_09_252065) == 0
+	input.packages.libreswan == true
+}
+
+default na_rhel_09_252065 := false
+
+na_rhel_09_252065 if {
+	_attested("rhel_09_252065_no_operational_need")
+}
+
+status_rhel_09_252065 := "Not_a_Finding" if libreswan_installed
+
+else := "Not_Applicable" if na_rhel_09_252065
+
+else := "Open"
+
+detail_rhel_09_252065 := "RHEL-09-252065: Not_a_Finding" if libreswan_installed
+
+else := "RHEL-09-252065: Not_Applicable — there is no operational need for Libreswan to be installed" if na_rhel_09_252065
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252065", concat(", ", missing_rhel_09_252065)]) if count(missing_rhel_09_252065) > 0
+
+else := "RHEL-09-252065: check failed — the libreswan package must be installed (no operational need for Libreswan is Not Applicable: input.attest.rhel_09_252065_no_operational_need)"
+
+finding_rhel_09_252065 := {
+	"vuln_id": "V-257954",
+	"stig_id": "RHEL-09-252065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 libreswan package must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_252065,
+	"detail": detail_rhel_09_252065,
+	"fix_text": "Install the package: dnf install libreswan",
+}
+
+# RHEL-09-253025 | V-257960 | CAT II
+# runtime net.ipv4.conf.all.log_martians (sysctl)
+missing_rhel_09_253025 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.all.log_martians"]]; not _collected(p)]
+
+default ipv4_log_martians_all := false
+
+ipv4_log_martians_all if {
+	count(missing_rhel_09_253025) == 0
+	_str(["kernel_params", "net.ipv4.conf.all.log_martians"]) == "1"
+}
+
+status_rhel_09_253025 := "Not_a_Finding" if ipv4_log_martians_all
+
+else := "Open"
+
+detail_rhel_09_253025 := "RHEL-09-253025: Not_a_Finding" if ipv4_log_martians_all
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253025", concat(", ", missing_rhel_09_253025)]) if count(missing_rhel_09_253025) > 0
+
+else := "RHEL-09-253025: check failed — net.ipv4.conf.all.log_martians must be 1"
+
+finding_rhel_09_253025 := {
+	"vuln_id": "V-257960",
+	"stig_id": "RHEL-09-253025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must log IPv4 packets with impossible addresses.",
+	"check_type": "machine",
+	"status": status_rhel_09_253025,
+	"detail": detail_rhel_09_253025,
+	"fix_text": "Set net.ipv4.conf.all.log_martians = 1 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253030 | V-257961 | CAT II
+# runtime net.ipv4.conf.default.log_martians (sysctl)
+missing_rhel_09_253030 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.default.log_martians"]]; not _collected(p)]
+
+default ipv4_log_martians_default := false
+
+ipv4_log_martians_default if {
+	count(missing_rhel_09_253030) == 0
+	_str(["kernel_params", "net.ipv4.conf.default.log_martians"]) == "1"
+}
+
+status_rhel_09_253030 := "Not_a_Finding" if ipv4_log_martians_default
+
+else := "Open"
+
+detail_rhel_09_253030 := "RHEL-09-253030: Not_a_Finding" if ipv4_log_martians_default
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253030", concat(", ", missing_rhel_09_253030)]) if count(missing_rhel_09_253030) > 0
+
+else := "RHEL-09-253030: check failed — net.ipv4.conf.default.log_martians must be 1"
+
+finding_rhel_09_253030 := {
+	"vuln_id": "V-257961",
+	"stig_id": "RHEL-09-253030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must log IPv4 packets with impossible addresses by default.",
+	"check_type": "machine",
+	"status": status_rhel_09_253030,
+	"detail": detail_rhel_09_253030,
+	"fix_text": "Set net.ipv4.conf.default.log_martians = 1 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253040 | V-257963 | CAT II
+# runtime net.ipv4.conf.default.accept_redirects (sysctl)
+missing_rhel_09_253040 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.default.accept_redirects"]]; not _collected(p)]
+
+default ipv4_default_accept_redirects_disabled := false
+
+ipv4_default_accept_redirects_disabled if {
+	count(missing_rhel_09_253040) == 0
+	_str(["kernel_params", "net.ipv4.conf.default.accept_redirects"]) == "0"
+}
+
+status_rhel_09_253040 := "Not_a_Finding" if ipv4_default_accept_redirects_disabled
+
+else := "Open"
+
+detail_rhel_09_253040 := "RHEL-09-253040: Not_a_Finding" if ipv4_default_accept_redirects_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253040", concat(", ", missing_rhel_09_253040)]) if count(missing_rhel_09_253040) > 0
+
+else := "RHEL-09-253040: check failed — net.ipv4.conf.default.accept_redirects must be 0"
+
+finding_rhel_09_253040 := {
+	"vuln_id": "V-257963",
+	"stig_id": "RHEL-09-253040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent IPv4 Internet Control Message Protocol (ICMP) redirect messages from being accepted.",
+	"check_type": "machine",
+	"status": status_rhel_09_253040,
+	"detail": detail_rhel_09_253040,
+	"fix_text": "Set net.ipv4.conf.default.accept_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253045 | V-257964 | CAT II
+# runtime net.ipv4.conf.default.accept_source_route (sysctl)
+missing_rhel_09_253045 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.default.accept_source_route"]]; not _collected(p)]
+
+default ipv4_default_source_route_disabled := false
+
+ipv4_default_source_route_disabled if {
+	count(missing_rhel_09_253045) == 0
+	_str(["kernel_params", "net.ipv4.conf.default.accept_source_route"]) == "0"
+}
+
+status_rhel_09_253045 := "Not_a_Finding" if ipv4_default_source_route_disabled
+
+else := "Open"
+
+detail_rhel_09_253045 := "RHEL-09-253045: Not_a_Finding" if ipv4_default_source_route_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253045", concat(", ", missing_rhel_09_253045)]) if count(missing_rhel_09_253045) > 0
+
+else := "RHEL-09-253045: check failed — net.ipv4.conf.default.accept_source_route must be 0"
+
+finding_rhel_09_253045 := {
+	"vuln_id": "V-257964",
+	"stig_id": "RHEL-09-253045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not forward IPv4 source-routed packets by default.",
+	"check_type": "machine",
+	"status": status_rhel_09_253045,
+	"detail": detail_rhel_09_253045,
+	"fix_text": "Set net.ipv4.conf.default.accept_source_route = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253050 | V-257965 | CAT II
+# runtime net.ipv4.conf.default.rp_filter (sysctl)
+missing_rhel_09_253050 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.default.rp_filter"]]; not _collected(p)]
+
+default ipv4_default_rp_filter_enabled := false
+
+ipv4_default_rp_filter_enabled if {
+	count(missing_rhel_09_253050) == 0
+	_str(["kernel_params", "net.ipv4.conf.default.rp_filter"]) == "1"
+}
+
+status_rhel_09_253050 := "Not_a_Finding" if ipv4_default_rp_filter_enabled
+
+else := "Open"
+
+detail_rhel_09_253050 := "RHEL-09-253050: Not_a_Finding" if ipv4_default_rp_filter_enabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253050", concat(", ", missing_rhel_09_253050)]) if count(missing_rhel_09_253050) > 0
+
+else := "RHEL-09-253050: check failed — net.ipv4.conf.default.rp_filter must be 1"
+
+finding_rhel_09_253050 := {
+	"vuln_id": "V-257965",
+	"stig_id": "RHEL-09-253050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use a reverse-path filter for IPv4 network traffic when possible by default.",
+	"check_type": "machine",
+	"status": status_rhel_09_253050,
+	"detail": detail_rhel_09_253050,
+	"fix_text": "Set net.ipv4.conf.default.rp_filter = 1 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253055 | V-257966 | CAT II
+# runtime net.ipv4.icmp_echo_ignore_broadcasts (sysctl)
+missing_rhel_09_253055 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.icmp_echo_ignore_broadcasts"]]; not _collected(p)]
+
+default icmp_echo_ignore_broadcasts := false
+
+icmp_echo_ignore_broadcasts if {
+	count(missing_rhel_09_253055) == 0
+	_str(["kernel_params", "net.ipv4.icmp_echo_ignore_broadcasts"]) == "1"
+}
+
+status_rhel_09_253055 := "Not_a_Finding" if icmp_echo_ignore_broadcasts
+
+else := "Open"
+
+detail_rhel_09_253055 := "RHEL-09-253055: Not_a_Finding" if icmp_echo_ignore_broadcasts
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253055", concat(", ", missing_rhel_09_253055)]) if count(missing_rhel_09_253055) > 0
+
+else := "RHEL-09-253055: check failed — net.ipv4.icmp_echo_ignore_broadcasts must be 1"
+
+finding_rhel_09_253055 := {
+	"vuln_id": "V-257966",
+	"stig_id": "RHEL-09-253055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not respond to Internet Control Message Protocol (ICMP) echoes sent to a broadcast address.",
+	"check_type": "machine",
+	"status": status_rhel_09_253055,
+	"detail": detail_rhel_09_253055,
+	"fix_text": "Set net.ipv4.icmp_echo_ignore_broadcasts = 1 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-253070 | V-257969 | CAT II
+# runtime net.ipv4.conf.default.send_redirects (sysctl)
+missing_rhel_09_253070 := [concat(".", p) | some p in [["kernel_params", "net.ipv4.conf.default.send_redirects"]]; not _collected(p)]
+
+default ipv4_default_send_redirects_disabled := false
+
+ipv4_default_send_redirects_disabled if {
+	count(missing_rhel_09_253070) == 0
+	_str(["kernel_params", "net.ipv4.conf.default.send_redirects"]) == "0"
+}
+
+ipv4_default_send_redirects_disabled if {
+	_attested("rhel_09_253070_redirects_documented")
+}
+
+status_rhel_09_253070 := "Not_a_Finding" if ipv4_default_send_redirects_disabled
+
+else := "Open"
+
+detail_rhel_09_253070 := "RHEL-09-253070: Not_a_Finding" if ipv4_default_send_redirects_disabled
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-253070", concat(", ", missing_rhel_09_253070)]) if count(missing_rhel_09_253070) > 0
+
+else := "RHEL-09-253070: check failed — net.ipv4.conf.default.send_redirects must be 0, or the setting must be documented with the ISSO as an operational requirement (input.attest.rhel_09_253070_redirects_documented)"
+
+finding_rhel_09_253070 := {
+	"vuln_id": "V-257969",
+	"stig_id": "RHEL-09-253070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not allow interfaces to perform Internet Control Message Protocol (ICMP) redirects by default.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_253070,
+	"detail": detail_rhel_09_253070,
+	"fix_text": "Set net.ipv4.conf.default.send_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254010 | V-257971 | CAT II
+# runtime net.ipv6.conf.all.accept_ra (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254010 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.all.accept_ra"]]; not _collected(p)]
+
+default ipv6_all_accept_ra_disabled := false
+
+ipv6_all_accept_ra_disabled if {
+	count(missing_rhel_09_254010) == 0
+	_str(["kernel_params", "net.ipv6.conf.all.accept_ra"]) == "0"
+}
+
+default na_rhel_09_254010 := false
+
+na_rhel_09_254010 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254010 := "Not_a_Finding" if ipv6_all_accept_ra_disabled
+
+else := "Not_Applicable" if na_rhel_09_254010
+
+else := "Open"
+
+detail_rhel_09_254010 := "RHEL-09-254010: Not_a_Finding" if ipv6_all_accept_ra_disabled
+
+else := "RHEL-09-254010: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254010
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254010", concat(", ", missing_rhel_09_254010)]) if count(missing_rhel_09_254010) > 0
+
+else := "RHEL-09-254010: check failed — net.ipv6.conf.all.accept_ra must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254010 := {
+	"vuln_id": "V-257971",
+	"stig_id": "RHEL-09-254010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not accept router advertisements on all IPv6 interfaces.",
+	"check_type": "machine",
+	"status": status_rhel_09_254010,
+	"detail": detail_rhel_09_254010,
+	"fix_text": "Set net.ipv6.conf.all.accept_ra = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254015 | V-257972 | CAT II
+# runtime net.ipv6.conf.all.accept_redirects (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254015 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.all.accept_redirects"]]; not _collected(p)]
+
+default ipv6_all_accept_redirects_disabled := false
+
+ipv6_all_accept_redirects_disabled if {
+	count(missing_rhel_09_254015) == 0
+	_str(["kernel_params", "net.ipv6.conf.all.accept_redirects"]) == "0"
+}
+
+default na_rhel_09_254015 := false
+
+na_rhel_09_254015 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254015 := "Not_a_Finding" if ipv6_all_accept_redirects_disabled
+
+else := "Not_Applicable" if na_rhel_09_254015
+
+else := "Open"
+
+detail_rhel_09_254015 := "RHEL-09-254015: Not_a_Finding" if ipv6_all_accept_redirects_disabled
+
+else := "RHEL-09-254015: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254015
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254015", concat(", ", missing_rhel_09_254015)]) if count(missing_rhel_09_254015) > 0
+
+else := "RHEL-09-254015: check failed — net.ipv6.conf.all.accept_redirects must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254015 := {
+	"vuln_id": "V-257972",
+	"stig_id": "RHEL-09-254015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must ignore IPv6 Internet Control Message Protocol (ICMP) redirect messages.",
+	"check_type": "machine",
+	"status": status_rhel_09_254015,
+	"detail": detail_rhel_09_254015,
+	"fix_text": "Set net.ipv6.conf.all.accept_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254020 | V-257973 | CAT II
+# runtime net.ipv6.conf.all.accept_source_route (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254020 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.all.accept_source_route"]]; not _collected(p)]
+
+default ipv6_all_source_route_disabled := false
+
+ipv6_all_source_route_disabled if {
+	count(missing_rhel_09_254020) == 0
+	_str(["kernel_params", "net.ipv6.conf.all.accept_source_route"]) == "0"
+}
+
+default na_rhel_09_254020 := false
+
+na_rhel_09_254020 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254020 := "Not_a_Finding" if ipv6_all_source_route_disabled
+
+else := "Not_Applicable" if na_rhel_09_254020
+
+else := "Open"
+
+detail_rhel_09_254020 := "RHEL-09-254020: Not_a_Finding" if ipv6_all_source_route_disabled
+
+else := "RHEL-09-254020: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254020
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254020", concat(", ", missing_rhel_09_254020)]) if count(missing_rhel_09_254020) > 0
+
+else := "RHEL-09-254020: check failed — net.ipv6.conf.all.accept_source_route must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254020 := {
+	"vuln_id": "V-257973",
+	"stig_id": "RHEL-09-254020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not forward IPv6 source-routed packets.",
+	"check_type": "machine",
+	"status": status_rhel_09_254020,
+	"detail": detail_rhel_09_254020,
+	"fix_text": "Set net.ipv6.conf.all.accept_source_route = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254025 | V-257974 | CAT II
+# runtime net.ipv6.conf.all.forwarding (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254025 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.all.forwarding"]]; not _collected(p)]
+
+default ipv6_all_forwarding_disabled := false
+
+ipv6_all_forwarding_disabled if {
+	count(missing_rhel_09_254025) == 0
+	_str(["kernel_params", "net.ipv6.conf.all.forwarding"]) == "0"
+}
+
+default na_rhel_09_254025 := false
+
+na_rhel_09_254025 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254025 := "Not_a_Finding" if ipv6_all_forwarding_disabled
+
+else := "Not_Applicable" if na_rhel_09_254025
+
+else := "Open"
+
+detail_rhel_09_254025 := "RHEL-09-254025: Not_a_Finding" if ipv6_all_forwarding_disabled
+
+else := "RHEL-09-254025: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254025
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254025", concat(", ", missing_rhel_09_254025)]) if count(missing_rhel_09_254025) > 0
+
+else := "RHEL-09-254025: check failed — net.ipv6.conf.all.forwarding must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254025 := {
+	"vuln_id": "V-257974",
+	"stig_id": "RHEL-09-254025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not enable IPv6 packet forwarding unless the system is a router.",
+	"check_type": "machine",
+	"status": status_rhel_09_254025,
+	"detail": detail_rhel_09_254025,
+	"fix_text": "Set net.ipv6.conf.all.forwarding = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254030 | V-257975 | CAT II
+# runtime net.ipv6.conf.default.accept_ra (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254030 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.default.accept_ra"]]; not _collected(p)]
+
+default ipv6_default_accept_ra_disabled := false
+
+ipv6_default_accept_ra_disabled if {
+	count(missing_rhel_09_254030) == 0
+	_str(["kernel_params", "net.ipv6.conf.default.accept_ra"]) == "0"
+}
+
+default na_rhel_09_254030 := false
+
+na_rhel_09_254030 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254030 := "Not_a_Finding" if ipv6_default_accept_ra_disabled
+
+else := "Not_Applicable" if na_rhel_09_254030
+
+else := "Open"
+
+detail_rhel_09_254030 := "RHEL-09-254030: Not_a_Finding" if ipv6_default_accept_ra_disabled
+
+else := "RHEL-09-254030: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254030
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254030", concat(", ", missing_rhel_09_254030)]) if count(missing_rhel_09_254030) > 0
+
+else := "RHEL-09-254030: check failed — net.ipv6.conf.default.accept_ra must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254030 := {
+	"vuln_id": "V-257975",
+	"stig_id": "RHEL-09-254030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not accept router advertisements on all IPv6 interfaces by default.",
+	"check_type": "machine",
+	"status": status_rhel_09_254030,
+	"detail": detail_rhel_09_254030,
+	"fix_text": "Set net.ipv6.conf.default.accept_ra = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254035 | V-257976 | CAT II
+# runtime net.ipv6.conf.default.accept_redirects (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254035 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.default.accept_redirects"]]; not _collected(p)]
+
+default ipv6_default_accept_redirects_disabled := false
+
+ipv6_default_accept_redirects_disabled if {
+	count(missing_rhel_09_254035) == 0
+	_str(["kernel_params", "net.ipv6.conf.default.accept_redirects"]) == "0"
+}
+
+default na_rhel_09_254035 := false
+
+na_rhel_09_254035 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254035 := "Not_a_Finding" if ipv6_default_accept_redirects_disabled
+
+else := "Not_Applicable" if na_rhel_09_254035
+
+else := "Open"
+
+detail_rhel_09_254035 := "RHEL-09-254035: Not_a_Finding" if ipv6_default_accept_redirects_disabled
+
+else := "RHEL-09-254035: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254035
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254035", concat(", ", missing_rhel_09_254035)]) if count(missing_rhel_09_254035) > 0
+
+else := "RHEL-09-254035: check failed — net.ipv6.conf.default.accept_redirects must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254035 := {
+	"vuln_id": "V-257976",
+	"stig_id": "RHEL-09-254035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent IPv6 Internet Control Message Protocol (ICMP) redirect messages from being accepted.",
+	"check_type": "machine",
+	"status": status_rhel_09_254035,
+	"detail": detail_rhel_09_254035,
+	"fix_text": "Set net.ipv6.conf.default.accept_redirects = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
+# RHEL-09-254040 | V-257977 | CAT II
+# runtime net.ipv6.conf.default.accept_source_route (sysctl); IPv6 disabled on the system is Not Applicable (input.ipv6_disabled == true)
+missing_rhel_09_254040 := [concat(".", p) | some p in [["kernel_params", "net.ipv6.conf.default.accept_source_route"]]; not _collected(p)]
+
+default ipv6_default_source_route_disabled := false
+
+ipv6_default_source_route_disabled if {
+	count(missing_rhel_09_254040) == 0
+	_str(["kernel_params", "net.ipv6.conf.default.accept_source_route"]) == "0"
+}
+
+default na_rhel_09_254040 := false
+
+na_rhel_09_254040 if {
+	input.ipv6_disabled == true
+}
+
+status_rhel_09_254040 := "Not_a_Finding" if ipv6_default_source_route_disabled
+
+else := "Not_Applicable" if na_rhel_09_254040
+
+else := "Open"
+
+detail_rhel_09_254040 := "RHEL-09-254040: Not_a_Finding" if ipv6_default_source_route_disabled
+
+else := "RHEL-09-254040: Not_Applicable — IPv6 is disabled on the system" if na_rhel_09_254040
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-254040", concat(", ", missing_rhel_09_254040)]) if count(missing_rhel_09_254040) > 0
+
+else := "RHEL-09-254040: check failed — net.ipv6.conf.default.accept_source_route must be 0 (IPv6 disabled on the system is Not Applicable)"
+
+finding_rhel_09_254040 := {
+	"vuln_id": "V-257977",
+	"stig_id": "RHEL-09-254040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not forward IPv6 source-routed packets by default.",
+	"check_type": "machine",
+	"status": status_rhel_09_254040,
+	"detail": detail_rhel_09_254040,
+	"fix_text": "Set net.ipv6.conf.default.accept_source_route = 0 in /etc/sysctl.d/ and run sysctl --system",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -493,6 +1315,28 @@ cat_ii_findings := [
 	finding_rhel_09_291040,
 	finding_rhel_09_291035,
 	finding_rhel_09_251040,
+	finding_rhel_09_251010,
+	finding_rhel_09_251020,
+	finding_rhel_09_251030,
+	finding_rhel_09_251035,
+	finding_rhel_09_252035,
+	finding_rhel_09_252040,
+	finding_rhel_09_252045,
+	finding_rhel_09_252065,
+	finding_rhel_09_253025,
+	finding_rhel_09_253030,
+	finding_rhel_09_253040,
+	finding_rhel_09_253045,
+	finding_rhel_09_253050,
+	finding_rhel_09_253055,
+	finding_rhel_09_253070,
+	finding_rhel_09_254010,
+	finding_rhel_09_254015,
+	finding_rhel_09_254020,
+	finding_rhel_09_254025,
+	finding_rhel_09_254030,
+	finding_rhel_09_254035,
+	finding_rhel_09_254040,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

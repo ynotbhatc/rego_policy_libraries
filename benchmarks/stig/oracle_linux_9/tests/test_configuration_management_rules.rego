@@ -8,9 +8,13 @@ import rego.v1
 green_fixture := {
 	"aide": {
 		"check_output": "AIDE found NO differences between database and filesystem. Looks okay!!",
-		"schedule": ["/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil"],
+		"schedule": [
+			"/etc/cron.daily/aide: /usr/sbin/aide --check | /bin/mail -s \"aide integrity check\" root@sysname.mil",
+		],
 	},
-	"auditd_config": {"log_file": "/var/log/audit/audit.log"},
+	"auditd_config": {
+		"log_file": "/var/log/audit/audit.log",
+	},
 	"crypto_policy": "FIPS",
 	"crypto_policy_state": {
 		"hash": [
@@ -70,10 +74,71 @@ green_fixture := {
 				"noexec",
 			],
 		},
+		{
+			"device": "/dev/mapper/rhel-var",
+			"fstype": "xfs",
+			"mount": "/var",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/mapper/rhel-var_tmp",
+			"fstype": "xfs",
+			"mount": "/var/tmp",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda2",
+			"fstype": "xfs",
+			"mount": "/boot",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "/dev/sda1",
+			"fstype": "vfat",
+			"mount": "/boot/efi",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
+		{
+			"device": "tmpfs",
+			"fstype": "tmpfs",
+			"mount": "/dev/shm",
+			"options": [
+				"rw",
+				"nodev",
+				"nosuid",
+				"noexec",
+			],
+		},
 	],
-	"fips": {"mode_setup_check": "FIPS mode is enabled."},
-	"gnome": {"media_keys_logout": "['']"},
-	"grub": {"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF"},
+	"fips": {
+		"mode_setup_check": "FIPS mode is enabled.",
+	},
+	"gnome": {
+		"media_keys_logout": "['']",
+	},
+	"grub": {
+		"user_cfg_password": "grub.pbkdf2.sha512.10000.ABCDEF",
+	},
 	"kernel_params": {
 		"kernel.dmesg_restrict": "1",
 		"kernel.perf_event_paranoid": "2",
@@ -82,7 +147,9 @@ green_fixture := {
 		"kernel.yama.ptrace_scope": "1",
 		"net.core.bpf_jit_harden": "2",
 	},
-	"login_banner": {"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."},
+	"login_banner": {
+		"issue": "You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. By using this IS (which includes any device attached to this IS), you consent to the following conditions: -The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. -At any time, the USG may inspect and seize data stored on this IS. -Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. -This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.",
+	},
 	"modprobe": {
 		"firewire-core": {
 			"blacklisted": true,
@@ -93,16 +160,30 @@ green_fixture := {
 			"install": "/bin/false",
 		},
 	},
-	"packages": {"aide": true},
+	"packages": {
+		"aide": true,
+	},
 	"selinux": {
 		"config_selinux": "enforcing",
 		"getenforce": "Enforcing",
 		"policy": "targeted",
 	},
-	"ssh_banner_file": {"exists": true},
-	"ssh_config": {"Banner": "/etc/issue"},
-	"sysctl_config": {"kernel.randomize_va_space": ["2"]},
-	"systemd_units": {"ctrl-alt-del.target": {"load_state": "masked"}},
+	"ssh_banner_file": {
+		"exists": true,
+	},
+	"ssh_config": {
+		"Banner": "/etc/issue",
+	},
+	"sysctl_config": {
+		"kernel.randomize_va_space": [
+			"2",
+		],
+	},
+	"systemd_units": {
+		"ctrl-alt-del.target": {
+			"load_state": "masked",
+		},
+	},
 }
 
 test_every_finding_open_on_empty_input if {

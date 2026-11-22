@@ -226,6 +226,146 @@ finding_rhel_09_255050 := {
 	"fix_text": "Set UsePAM yes in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
+# RHEL-09-252070 | V-257955 | CAT I
+# files found by find / -name shosts.equiv
+missing_rhel_09_252070 := [concat(".", p) | some p in [["shosts_equiv_files"]]; not _collected(p)]
+
+default no_shosts_equiv_files := false
+
+no_shosts_equiv_files if {
+	count(missing_rhel_09_252070) == 0
+	xs := object.get(input, ["shosts_equiv_files"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_252070 := "Not_a_Finding" if no_shosts_equiv_files
+
+else := "Open"
+
+detail_rhel_09_252070 := "RHEL-09-252070: Not_a_Finding" if no_shosts_equiv_files
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252070", concat(", ", missing_rhel_09_252070)]) if count(missing_rhel_09_252070) > 0
+
+else := "RHEL-09-252070: check failed — no shosts.equiv file may exist on the system"
+
+finding_rhel_09_252070 := {
+	"vuln_id": "V-257955",
+	"stig_id": "RHEL-09-252070",
+	"severity": "CAT I",
+	"rule_title": "There must be no shosts.equiv files on RHEL 9.",
+	"check_type": "machine",
+	"status": status_rhel_09_252070,
+	"detail": detail_rhel_09_252070,
+	"fix_text": "Remove each listed file: rm <path>/shosts.equiv",
+}
+
+# RHEL-09-252075 | V-257956 | CAT I
+# files found by find / -name .shosts
+missing_rhel_09_252075 := [concat(".", p) | some p in [["shosts_files"]]; not _collected(p)]
+
+default no_shosts_files := false
+
+no_shosts_files if {
+	count(missing_rhel_09_252075) == 0
+	xs := object.get(input, ["shosts_files"], null)
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_252075 := "Not_a_Finding" if no_shosts_files
+
+else := "Open"
+
+detail_rhel_09_252075 := "RHEL-09-252075: Not_a_Finding" if no_shosts_files
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-252075", concat(", ", missing_rhel_09_252075)]) if count(missing_rhel_09_252075) > 0
+
+else := "RHEL-09-252075: check failed — no .shosts file may exist on the system"
+
+finding_rhel_09_252075 := {
+	"vuln_id": "V-257956",
+	"stig_id": "RHEL-09-252075",
+	"severity": "CAT I",
+	"rule_title": "There must be no .shosts files on RHEL 9.",
+	"check_type": "machine",
+	"status": status_rhel_09_252075,
+	"detail": detail_rhel_09_252075,
+	"fix_text": "Remove each listed file: rm <path>/.shosts",
+}
+
+# RHEL-09-255064 | V-270177 | CAT I
+# Ciphers line of /etc/crypto-policies/back-ends/openssh.config (the SSH client back-end; null when missing or commented out)
+missing_rhel_09_255064 := [concat(".", p) | some p in [["openssh_config", "Ciphers"]]; not _collected(p)]
+
+default ssh_client_fips_ciphers := false
+
+ssh_client_fips_ciphers if {
+	count(missing_rhel_09_255064) == 0
+	vals := _csv(["openssh_config", "Ciphers"])
+	count(vals) > 0
+	every v in vals {
+		v in fips_ssh_ciphers
+	}
+}
+
+status_rhel_09_255064 := "Not_a_Finding" if ssh_client_fips_ciphers
+
+else := "Open"
+
+detail_rhel_09_255064 := "RHEL-09-255064: Not_a_Finding" if ssh_client_fips_ciphers
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255064", concat(", ", missing_rhel_09_255064)]) if count(missing_rhel_09_255064) > 0
+
+else := "RHEL-09-255064: check failed — Ciphers in /etc/crypto-policies/back-ends/openssh.config must list only aes256-gcm@openssh.com,aes256-ctr,aes128-gcm@openssh.com,aes128-ctr"
+
+finding_rhel_09_255064 := {
+	"vuln_id": "V-270177",
+	"stig_id": "RHEL-09-255064",
+	"severity": "CAT I",
+	"rule_title": "The RHEL 9 SSH client must be configured to use only DoW-approved encryption ciphers employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
+	"check_type": "machine",
+	"status": status_rhel_09_255064,
+	"detail": detail_rhel_09_255064,
+	"fix_text": "Apply the FIPS crypto policy (dnf -y reinstall crypto-policies; update-crypto-policies --set FIPS) so openssh.config carries the DISA list",
+}
+
+# RHEL-09-255070 | V-270178 | CAT I
+# MACs line of /etc/crypto-policies/back-ends/openssh.config (the SSH client back-end; null when missing or commented out)
+missing_rhel_09_255070 := [concat(".", p) | some p in [["openssh_config", "MACs"]]; not _collected(p)]
+
+default ssh_client_fips_macs := false
+
+ssh_client_fips_macs if {
+	count(missing_rhel_09_255070) == 0
+	vals := _csv(["openssh_config", "MACs"])
+	count(vals) > 0
+	every v in vals {
+		v in fips_ssh_macs
+	}
+}
+
+status_rhel_09_255070 := "Not_a_Finding" if ssh_client_fips_macs
+
+else := "Open"
+
+detail_rhel_09_255070 := "RHEL-09-255070: Not_a_Finding" if ssh_client_fips_macs
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255070", concat(", ", missing_rhel_09_255070)]) if count(missing_rhel_09_255070) > 0
+
+else := "RHEL-09-255070: check failed — MACs in /etc/crypto-policies/back-ends/openssh.config must list only hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256,hmac-sha2-512"
+
+finding_rhel_09_255070 := {
+	"vuln_id": "V-270178",
+	"stig_id": "RHEL-09-255070",
+	"severity": "CAT I",
+	"rule_title": "The RHEL 9 SSH client must be configured to use only DoW-approved Message Authentication Codes (MACs) employing FIPS 140-3 validated cryptographic hash algorithms to protect the confidentiality of SSH client connections.",
+	"check_type": "machine",
+	"status": status_rhel_09_255070,
+	"detail": detail_rhel_09_255070,
+	"fix_text": "Apply the FIPS crypto policy (dnf -y reinstall crypto-policies; update-crypto-policies --set FIPS) so openssh.config carries the DISA list",
+}
+
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
@@ -526,6 +666,345 @@ finding_rhel_09_255095 := {
 	"fix_text": "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
 }
 
+# RHEL-09-255010 | V-257978 | CAT II
+# openssh-server package installed (dnf list --installed openssh-server)
+missing_rhel_09_255010 := [concat(".", p) | some p in [["packages", "openssh-server"]]; not _collected(p)]
+
+default openssh_server_installed := false
+
+openssh_server_installed if {
+	count(missing_rhel_09_255010) == 0
+	input.packages["openssh-server"] == true
+}
+
+status_rhel_09_255010 := "Not_a_Finding" if openssh_server_installed
+
+else := "Open"
+
+detail_rhel_09_255010 := "RHEL-09-255010: Not_a_Finding" if openssh_server_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255010", concat(", ", missing_rhel_09_255010)]) if count(missing_rhel_09_255010) > 0
+
+else := "RHEL-09-255010: check failed — the openssh-server package must be installed"
+
+finding_rhel_09_255010 := {
+	"vuln_id": "V-257978",
+	"stig_id": "RHEL-09-255010",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 networked systems must have SSH installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_255010,
+	"detail": detail_rhel_09_255010,
+	"fix_text": "Install the package: dnf install openssh-server",
+}
+
+# RHEL-09-255020 | V-257980 | CAT II
+# openssh-clients package installed (dnf list --installed openssh-clients)
+missing_rhel_09_255020 := [concat(".", p) | some p in [["packages", "openssh-clients"]]; not _collected(p)]
+
+default openssh_clients_installed := false
+
+openssh_clients_installed if {
+	count(missing_rhel_09_255020) == 0
+	input.packages["openssh-clients"] == true
+}
+
+status_rhel_09_255020 := "Not_a_Finding" if openssh_clients_installed
+
+else := "Open"
+
+detail_rhel_09_255020 := "RHEL-09-255020: Not_a_Finding" if openssh_clients_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255020", concat(", ", missing_rhel_09_255020)]) if count(missing_rhel_09_255020) > 0
+
+else := "RHEL-09-255020: check failed — the openssh-clients package must be installed"
+
+finding_rhel_09_255020 := {
+	"vuln_id": "V-257980",
+	"stig_id": "RHEL-09-255020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the openssh-clients package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_255020,
+	"detail": detail_rhel_09_255020,
+	"fix_text": "Install the package: dnf install openssh-clients",
+}
+
+# RHEL-09-255015 | V-257979 | CAT II
+# systemctl is-active sshd
+missing_rhel_09_255015 := [concat(".", p) | some p in [["services", "sshd"]]; not _collected(p)]
+
+default sshd_active := false
+
+sshd_active if {
+	count(missing_rhel_09_255015) == 0
+	_kw(["services", "sshd"]) == "active"
+}
+
+status_rhel_09_255015 := "Not_a_Finding" if sshd_active
+
+else := "Open"
+
+detail_rhel_09_255015 := "RHEL-09-255015: Not_a_Finding" if sshd_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255015", concat(", ", missing_rhel_09_255015)]) if count(missing_rhel_09_255015) > 0
+
+else := "RHEL-09-255015: check failed — sshd must be active (systemctl is-active sshd)"
+
+finding_rhel_09_255015 := {
+	"vuln_id": "V-257979",
+	"stig_id": "RHEL-09-255015",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.",
+	"check_type": "machine",
+	"status": status_rhel_09_255015,
+	"detail": detail_rhel_09_255015,
+	"fix_text": "Enable and start sshd: systemctl enable --now sshd",
+}
+
+# RHEL-09-255030 | V-257982 | CAT II
+# sshd LogLevel as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255030 := [concat(".", p) | some p in [["ssh_config", "LogLevel"]]; not _collected(p)]
+
+default ssh_loglevel_verbose := false
+
+ssh_loglevel_verbose if {
+	count(missing_rhel_09_255030) == 0
+	_kw(["ssh_config", "LogLevel"]) == "verbose"
+}
+
+status_rhel_09_255030 := "Not_a_Finding" if ssh_loglevel_verbose
+
+else := "Open"
+
+detail_rhel_09_255030 := "RHEL-09-255030: Not_a_Finding" if ssh_loglevel_verbose
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255030", concat(", ", missing_rhel_09_255030)]) if count(missing_rhel_09_255030) > 0
+
+else := "RHEL-09-255030: check failed — sshd LogLevel must be set to verbose (a missing or commented-out line is a finding)"
+
+finding_rhel_09_255030 := {
+	"vuln_id": "V-257982",
+	"stig_id": "RHEL-09-255030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must log SSH connection attempts and failures to the server.",
+	"check_type": "machine",
+	"status": status_rhel_09_255030,
+	"detail": detail_rhel_09_255030,
+	"fix_text": "Set LogLevel verbose in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255035 | V-257983 | CAT II
+# sshd PubkeyAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255035 := [concat(".", p) | some p in [["ssh_config", "PubkeyAuthentication"]]; not _collected(p)]
+
+default ssh_pubkey_authentication := false
+
+ssh_pubkey_authentication if {
+	count(missing_rhel_09_255035) == 0
+	_kw(["ssh_config", "PubkeyAuthentication"]) == "yes"
+}
+
+default na_rhel_09_255035 := false
+
+na_rhel_09_255035 if {
+	_attested("rhel_09_255035_alternate_mfa")
+}
+
+status_rhel_09_255035 := "Not_a_Finding" if ssh_pubkey_authentication
+
+else := "Not_Applicable" if na_rhel_09_255035
+
+else := "Open"
+
+detail_rhel_09_255035 := "RHEL-09-255035: Not_a_Finding" if ssh_pubkey_authentication
+
+else := "RHEL-09-255035: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_255035
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255035", concat(", ", missing_rhel_09_255035)]) if count(missing_rhel_09_255035) > 0
+
+else := "RHEL-09-255035: check failed — sshd PubkeyAuthentication must be set to yes (a missing or commented-out line is a finding)"
+
+finding_rhel_09_255035 := {
+	"vuln_id": "V-257983",
+	"stig_id": "RHEL-09-255035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSHD must accept public key authentication.",
+	"check_type": "machine",
+	"status": status_rhel_09_255035,
+	"detail": detail_rhel_09_255035,
+	"fix_text": "Set PubkeyAuthentication yes in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255085 | V-257993 | CAT II
+# sshd PermitUserEnvironment as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255085 := [concat(".", p) | some p in [["ssh_config", "PermitUserEnvironment"]]; not _collected(p)]
+
+default ssh_no_user_environment := false
+
+ssh_no_user_environment if {
+	count(missing_rhel_09_255085) == 0
+	_kw(["ssh_config", "PermitUserEnvironment"]) == "no"
+}
+
+status_rhel_09_255085 := "Not_a_Finding" if ssh_no_user_environment
+
+else := "Open"
+
+detail_rhel_09_255085 := "RHEL-09-255085: Not_a_Finding" if ssh_no_user_environment
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255085", concat(", ", missing_rhel_09_255085)]) if count(missing_rhel_09_255085) > 0
+
+else := "RHEL-09-255085: check failed — sshd PermitUserEnvironment must be set to no (a missing or commented-out line is a finding)"
+
+finding_rhel_09_255085 := {
+	"vuln_id": "V-257993",
+	"stig_id": "RHEL-09-255085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not allow users to override SSH environment variables.",
+	"check_type": "machine",
+	"status": status_rhel_09_255085,
+	"detail": detail_rhel_09_255085,
+	"fix_text": "Set PermitUserEnvironment no in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255175 | V-258011 | CAT II
+# sshd X11UseLocalhost as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255175 := [concat(".", p) | some p in [["ssh_config", "X11UseLocalhost"]]; not _collected(p)]
+
+default ssh_x11_use_localhost := false
+
+ssh_x11_use_localhost if {
+	count(missing_rhel_09_255175) == 0
+	_kw(["ssh_config", "X11UseLocalhost"]) == "yes"
+}
+
+status_rhel_09_255175 := "Not_a_Finding" if ssh_x11_use_localhost
+
+else := "Open"
+
+detail_rhel_09_255175 := "RHEL-09-255175: Not_a_Finding" if ssh_x11_use_localhost
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255175", concat(", ", missing_rhel_09_255175)]) if count(missing_rhel_09_255175) > 0
+
+else := "RHEL-09-255175: check failed — sshd X11UseLocalhost must be set to yes (a missing or commented-out line is a finding)"
+
+finding_rhel_09_255175 := {
+	"vuln_id": "V-258011",
+	"stig_id": "RHEL-09-255175",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH daemon must prevent remote hosts from connecting to the proxy display.",
+	"check_type": "machine",
+	"status": status_rhel_09_255175,
+	"detail": detail_rhel_09_255175,
+	"fix_text": "Set X11UseLocalhost yes in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255135 | V-258003 | CAT II
+# sshd GSSAPIAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255135 := [concat(".", p) | some p in [["ssh_config", "GSSAPIAuthentication"]]; not _collected(p)]
+
+default ssh_no_gssapi_auth := false
+
+ssh_no_gssapi_auth if {
+	count(missing_rhel_09_255135) == 0
+	_kw(["ssh_config", "GSSAPIAuthentication"]) == "no"
+}
+
+ssh_no_gssapi_auth if {
+	_attested("rhel_09_255135_gssapi_documented")
+}
+
+status_rhel_09_255135 := "Not_a_Finding" if ssh_no_gssapi_auth
+
+else := "Open"
+
+detail_rhel_09_255135 := "RHEL-09-255135: Not_a_Finding" if ssh_no_gssapi_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255135", concat(", ", missing_rhel_09_255135)]) if count(missing_rhel_09_255135) > 0
+
+else := "RHEL-09-255135: check failed — sshd GSSAPIAuthentication must be set to no (missing or commented out is a finding), unless the use of GSSAPI authentication is documented with the ISSO (input.attest.rhel_09_255135_gssapi_documented)"
+
+finding_rhel_09_255135 := {
+	"vuln_id": "V-258003",
+	"stig_id": "RHEL-09-255135",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH daemon must not allow GSSAPI authentication.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_255135,
+	"detail": detail_rhel_09_255135,
+	"fix_text": "Set GSSAPIAuthentication no in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255140 | V-258004 | CAT II
+# sshd KerberosAuthentication as set (uncommented) in sshd_config / sshd_config.d, the check's grep; null when no line sets it
+missing_rhel_09_255140 := [concat(".", p) | some p in [["ssh_config", "KerberosAuthentication"]]; not _collected(p)]
+
+default ssh_no_kerberos_auth := false
+
+ssh_no_kerberos_auth if {
+	count(missing_rhel_09_255140) == 0
+	_kw(["ssh_config", "KerberosAuthentication"]) == "no"
+}
+
+ssh_no_kerberos_auth if {
+	_attested("rhel_09_255140_kerberos_documented")
+}
+
+status_rhel_09_255140 := "Not_a_Finding" if ssh_no_kerberos_auth
+
+else := "Open"
+
+detail_rhel_09_255140 := "RHEL-09-255140: Not_a_Finding" if ssh_no_kerberos_auth
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255140", concat(", ", missing_rhel_09_255140)]) if count(missing_rhel_09_255140) > 0
+
+else := "RHEL-09-255140: check failed — sshd KerberosAuthentication must be set to no (missing or commented out is a finding), unless the use of Kerberos authentication is documented with the ISSO (input.attest.rhel_09_255140_kerberos_documented)"
+
+finding_rhel_09_255140 := {
+	"vuln_id": "V-258004",
+	"stig_id": "RHEL-09-255140",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 SSH daemon must not allow Kerberos authentication.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_255140,
+	"detail": detail_rhel_09_255140,
+	"fix_text": "Set KerberosAuthentication no in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
+# RHEL-09-255090 | V-257994 | CAT II
+# sshd RekeyLimit as set (uncommented) in sshd_config / sshd_config.d: <data amount> <time>; null when no line sets it
+missing_rhel_09_255090 := [concat(".", p) | some p in [["ssh_config", "RekeyLimit"]]; not _collected(p)]
+
+default ssh_rekey_limit_set := false
+
+ssh_rekey_limit_set if {
+	count(missing_rhel_09_255090) == 0
+	s := _kw(["ssh_config", "RekeyLimit"])
+	regex.match(`^[0-9]+[kmg]?\s+([0-9]+[smhdw]?)+$`, s)
+}
+
+status_rhel_09_255090 := "Not_a_Finding" if ssh_rekey_limit_set
+
+else := "Open"
+
+detail_rhel_09_255090 := "RHEL-09-255090: Not_a_Finding" if ssh_rekey_limit_set
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-255090", concat(", ", missing_rhel_09_255090)]) if count(missing_rhel_09_255090) > 0
+
+else := "RHEL-09-255090: check failed — sshd RekeyLimit must define both a maximum data amount and a maximum time (e.g. RekeyLimit 1G 1h); 'default' and 'none' define neither"
+
+finding_rhel_09_255090 := {
+	"vuln_id": "V-257994",
+	"stig_id": "RHEL-09-255090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must force a frequent session key renegotiation for SSH connections to the server.",
+	"check_type": "machine",
+	"status": status_rhel_09_255090,
+	"detail": detail_rhel_09_255090,
+	"fix_text": "Set RekeyLimit 1G 1h in /etc/ssh/sshd_config (or a file in /etc/ssh/sshd_config.d) and restart sshd",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -535,6 +1014,10 @@ cat_i_findings := [
 	finding_rhel_09_255075,
 	finding_rhel_09_255040,
 	finding_rhel_09_255050,
+	finding_rhel_09_252070,
+	finding_rhel_09_252075,
+	finding_rhel_09_255064,
+	finding_rhel_09_255070,
 ]
 
 cat_ii_findings := [
@@ -547,6 +1030,16 @@ cat_ii_findings := [
 	finding_rhel_09_255155,
 	finding_rhel_09_255100,
 	finding_rhel_09_255095,
+	finding_rhel_09_255010,
+	finding_rhel_09_255020,
+	finding_rhel_09_255015,
+	finding_rhel_09_255030,
+	finding_rhel_09_255035,
+	finding_rhel_09_255085,
+	finding_rhel_09_255175,
+	finding_rhel_09_255135,
+	finding_rhel_09_255140,
+	finding_rhel_09_255090,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

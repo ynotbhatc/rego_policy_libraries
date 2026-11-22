@@ -1109,3 +1109,8 @@ num_rule("ssh_config", "RHEL-09-255100", "ssh_client_alive_interval_ok", ["ssh_c
 num_rule("ssh_config", "RHEL-09-255095", "ssh_client_alive_count_ok", ["ssh_config", "ClientAliveCountMax"], 1, 1, 1, [0, 3],
          "sshd ClientAliveCountMax must be 1", "Set ClientAliveCountMax 1 in /etc/ssh/sshd_config (or a drop-in) and restart sshd",
          "effective sshd ClientAliveCountMax (sshd -T)")
+import rhel9_rules_part1  # noqa: E402,F401  (part 1 of the full V2R10 table)
+import rhel9_rules_part2  # noqa: E402,F401  (part 2 of the table: RHEL-09-231150 to RHEL-09-252060)
+import rhel9_rules_part3  # noqa: E402,F401  (part 3 of the table: RHEL-09-252065 to RHEL-09-411070)
+import rhel9_rules_part4  # noqa: E402,F401  (part 4 of the V2R10 table)
+import rhel9_rules_part5  # noqa: E402,F401  (part 5 of the table; registers its rules through R)

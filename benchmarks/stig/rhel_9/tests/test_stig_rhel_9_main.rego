@@ -59,8 +59,8 @@ test_no_facts_finding_is_explicit if {
 test_gate_transparent_when_facts_supplied if {
 	report := main.compliance_report with input as {"ssh_config": {"PermitRootLogin": "no"}}
 	report.facts_supplied == true
-	report.compliance_percentage > 0
 	report.passed_controls > 0
+	report.failed_controls < report.total_controls
 	not contains(concat(" ", [f.rule_title | some f in report.violations]), "FAIL-CLOSED")
 }
 

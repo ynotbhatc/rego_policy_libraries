@@ -94,6 +94,46 @@ _aide_sha512(l) if {
 	"sha512" in parts
 }
 
+# the audit tools the RHEL-09-651025 check lists
+_p4_audit_tools := {"/usr/sbin/auditctl", "/usr/sbin/auditd", "/usr/sbin/ausearch", "/usr/sbin/aureport", "/usr/sbin/autrace", "/usr/sbin/augenrules"}
+
+# an /etc/aide.conf selection line for exactly this path, with a rule after it
+_p4_aide_selects(l, path) if {
+	is_string(l)
+	parts := regex.split(`\s+`, trim_space(l))
+	count(parts) >= 2
+	parts[0] == path
+}
+
+# an AIDE rule line (uncommented selection / group definition) that uses the given rule (acl, xattrs)
+_p4_aide_uses(l, rule) if {
+	is_string(l)
+	parts := regex.split(`[=+ ]+`, trim_space(l))
+	rule in parts
+}
+
+# input.rsyslog.config_lines: the uncommented lines of /etc/rsyslog.conf and /etc/rsyslog.d/*, a multi-line
+# RainerScript statement joined into one line
+_p4_rsyslog := [l | some l in input.rsyslog.config_lines; is_string(l)]
+
+_p4_rsyslog_collected if is_array(input.rsyslog.config_lines)
+
+# the values a pattern's last capture group takes over the rsyslog lines (group index n)
+_p4_rsyslog_values(pattern, n) := [lower(m[n]) | some l in _p4_rsyslog; some m in regex.find_all_string_submatch_n(pattern, l, -1)]
+
+# a StreamDriver setting inside a module() block (the check: a finding; it belongs in the omfwd action)
+_p4_rsyslog_module_streamdriver(pattern) if {
+	some l in _p4_rsyslog
+	regex.match(`(?i)^\s*module\s*\(`, l)
+	regex.match(pattern, l)
+}
+
+# a facility selector (auth, authpriv, daemon) logged at every priority by some rule line
+_p4_rsyslog_logs(fac) if {
+	some l in _p4_rsyslog
+	regex.match(sprintf(`(^|[;,\s])%s\.\*`, [fac]), l)
+}
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -173,6 +213,42 @@ finding_rhel_09_214020 := {
 	"status": status_rhel_09_214020,
 	"detail": detail_rhel_09_214020,
 	"fix_text": "Set localpkg_gpgcheck=1 in /etc/dnf/dnf.conf",
+}
+
+# RHEL-09-214015 | V-257820 | CAT I
+# gpgcheck as written in /etc/dnf/dnf.conf (grep -w gpgcheck; null when missing or commented out)
+missing_rhel_09_214015 := [concat(".", p) | some p in [["dnf_config", "gpgcheck"]]; not _collected(p)]
+
+default dnf_gpgcheck := false
+
+dnf_gpgcheck if {
+	count(missing_rhel_09_214015) == 0
+	_truthy(input.dnf_config.gpgcheck)
+}
+
+dnf_gpgcheck if {
+	_attested("rhel_09_214015_gpg_process")
+}
+
+status_rhel_09_214015 := "Not_a_Finding" if dnf_gpgcheck
+
+else := "Open"
+
+detail_rhel_09_214015 := "RHEL-09-214015: Not_a_Finding" if dnf_gpgcheck
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-214015", concat(", ", missing_rhel_09_214015)]) if count(missing_rhel_09_214015) > 0
+
+else := "RHEL-09-214015: check failed — gpgcheck in /etc/dnf/dnf.conf must be 1, true or yes, or an approved GPG verification process must be attested (input.attest.rhel_09_214015_gpg_process)"
+
+finding_rhel_09_214015 := {
+	"vuln_id": "V-257820",
+	"stig_id": "RHEL-09-214015",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must check the GPG signature of software packages originating from external software repositories before installation.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_214015,
+	"detail": detail_rhel_09_214015,
+	"fix_text": "Set gpgcheck=1 in the [main] section of /etc/dnf/dnf.conf",
 }
 
 # =============================================================================
@@ -355,6 +431,839 @@ finding_rhel_09_652020 := {
 	"fix_text": "Enable rsyslog: systemctl enable --now rsyslog",
 }
 
+# RHEL-09-211015 | V-257778 | CAT II
+# a review of dnf history against Red Hat errata and the organizational patching policy: attestation only
+missing_rhel_09_211015 := []
+
+default security_patches_current := false
+
+security_patches_current if {
+	_attested("rhel_09_211015_patching_current")
+}
+
+status_rhel_09_211015 := "Not_a_Finding" if security_patches_current
+
+else := "Open"
+
+detail_rhel_09_211015 := "RHEL-09-211015: Not_a_Finding" if security_patches_current
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211015", concat(", ", missing_rhel_09_211015)]) if count(missing_rhel_09_211015) > 0
+
+else := "RHEL-09-211015: check failed — the SA must attest that security patches and updates are installed in line with the organizational patching policy (dnf history list compared with Red Hat errata; input.attest.rhel_09_211015_patching_current)"
+
+finding_rhel_09_211015 := {
+	"vuln_id": "V-257778",
+	"stig_id": "RHEL-09-211015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 vendor packaged system security patches and updates must be installed and up to date.",
+	"check_type": "attestation",
+	"status": status_rhel_09_211015,
+	"detail": detail_rhel_09_211015,
+	"fix_text": "Install security patches and updates at the organizationally defined frequency: dnf update",
+}
+
+# RHEL-09-214030 | V-257823 | CAT II
+# output lines of rpm -Va --noconfig | awk '$1 ~ /..5/ && $2 != "c"'
+missing_rhel_09_214030 := [concat(".", p) | some p in [["rpm_verify", "hash_mismatch_files"]]; not _collected(p)]
+
+default rpm_hashes_match := false
+
+rpm_hashes_match if {
+	count(missing_rhel_09_214030) == 0
+	xs := input.rpm_verify.hash_mismatch_files
+	is_array(xs)
+	count(xs) == 0
+}
+
+status_rhel_09_214030 := "Not_a_Finding" if rpm_hashes_match
+
+else := "Open"
+
+detail_rhel_09_214030 := "RHEL-09-214030: Not_a_Finding" if rpm_hashes_match
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-214030", concat(", ", missing_rhel_09_214030)]) if count(missing_rhel_09_214030) > 0
+
+else := "RHEL-09-214030: check failed — rpm -Va --noconfig must report no non-configuration file whose hash differs from the RPM database"
+
+finding_rhel_09_214030 := {
+	"vuln_id": "V-257823",
+	"stig_id": "RHEL-09-214030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that the cryptographic hashes of system files match vendor values.",
+	"check_type": "machine",
+	"status": status_rhel_09_214030,
+	"detail": detail_rhel_09_214030,
+	"fix_text": "Reinstall the package that owns each listed file: dnf provides <file>, then dnf -y reinstall <package>",
+}
+
+# RHEL-09-215035 | V-257830 | CAT II
+# the repositories printed by dnf repolist: [{id, name}] (the enabled ones; not the .repo files, which also list disabled repositories)
+missing_rhel_09_215035 := [concat(".", p) | some p in [["dnf_repolist"]]; not _collected(p)]
+
+default no_epel_repository := false
+
+no_epel_repository if {
+	count(missing_rhel_09_215035) == 0
+	repos := input.dnf_repolist
+	is_array(repos)
+	count([r | some r in repos; contains(lower(sprintf("%v %v", [object.get(r, "id", ""), object.get(r, "name", "")])), "epel")]) == 0
+}
+
+status_rhel_09_215035 := "Not_a_Finding" if no_epel_repository
+
+else := "Open"
+
+detail_rhel_09_215035 := "RHEL-09-215035: Not_a_Finding" if no_epel_repository
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215035", concat(", ", missing_rhel_09_215035)]) if count(missing_rhel_09_215035) > 0
+
+else := "RHEL-09-215035: check failed — dnf repolist must show no repository with epel in its id or name"
+
+finding_rhel_09_215035 := {
+	"vuln_id": "V-257830",
+	"stig_id": "RHEL-09-215035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must not install packages from the Extra Packages for Enterprise Linux (EPEL) repository.",
+	"check_type": "machine",
+	"status": status_rhel_09_215035,
+	"detail": detail_rhel_09_215035,
+	"fix_text": "Remove the repository: dnf remove epel-release, and dnf config-manager --set-disabled epel",
+}
+
+# RHEL-09-215010 | V-257825 | CAT II
+# the subscription-manager package must be installed (dnf list --installed subscription-manager); Not Applicable on input.attest.rhel_09_215010_not_internet_connected
+missing_rhel_09_215010 := [concat(".", p) | some p in [["packages", "subscription-manager"]]; not _collected(p)]
+
+default subscription_manager_installed := false
+
+subscription_manager_installed if {
+	count(missing_rhel_09_215010) == 0
+	input.packages["subscription-manager"] == true
+}
+
+default na_rhel_09_215010 := false
+
+na_rhel_09_215010 if {
+	_attested("rhel_09_215010_not_internet_connected")
+}
+
+status_rhel_09_215010 := "Not_a_Finding" if subscription_manager_installed
+
+else := "Not_Applicable" if na_rhel_09_215010
+
+else := "Open"
+
+detail_rhel_09_215010 := "RHEL-09-215010: Not_a_Finding" if subscription_manager_installed
+
+else := "RHEL-09-215010: Not_Applicable — the system is not an internet connected system" if na_rhel_09_215010
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215010", concat(", ", missing_rhel_09_215010)]) if count(missing_rhel_09_215010) > 0
+
+else := "RHEL-09-215010: check failed — the subscription-manager package must be installed"
+
+finding_rhel_09_215010 := {
+	"vuln_id": "V-257825",
+	"stig_id": "RHEL-09-215010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 subscription-manager package must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215010,
+	"detail": detail_rhel_09_215010,
+	"fix_text": "Install the package: dnf install subscription-manager",
+}
+
+# RHEL-09-215090 | V-257841 | CAT II
+# the rng-tools package must be installed (dnf list --installed rng-tools)
+missing_rhel_09_215090 := [concat(".", p) | some p in [["packages", "rng-tools"]]; not _collected(p)]
+
+default rng_tools_installed := false
+
+rng_tools_installed if {
+	count(missing_rhel_09_215090) == 0
+	input.packages["rng-tools"] == true
+}
+
+status_rhel_09_215090 := "Not_a_Finding" if rng_tools_installed
+
+else := "Open"
+
+detail_rhel_09_215090 := "RHEL-09-215090: Not_a_Finding" if rng_tools_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215090", concat(", ", missing_rhel_09_215090)]) if count(missing_rhel_09_215090) > 0
+
+else := "RHEL-09-215090: check failed — the rng-tools package must be installed"
+
+finding_rhel_09_215090 := {
+	"vuln_id": "V-257841",
+	"stig_id": "RHEL-09-215090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the rng-tools package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215090,
+	"detail": detail_rhel_09_215090,
+	"fix_text": "Install the package: dnf install rng-tools",
+}
+
+# RHEL-09-215095 | V-257842 | CAT II
+# the s-nail package must be installed (dnf list --installed s-nail)
+missing_rhel_09_215095 := [concat(".", p) | some p in [["packages", "s-nail"]]; not _collected(p)]
+
+default s_nail_installed := false
+
+s_nail_installed if {
+	count(missing_rhel_09_215095) == 0
+	input.packages["s-nail"] == true
+}
+
+status_rhel_09_215095 := "Not_a_Finding" if s_nail_installed
+
+else := "Open"
+
+detail_rhel_09_215095 := "RHEL-09-215095: Not_a_Finding" if s_nail_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215095", concat(", ", missing_rhel_09_215095)]) if count(missing_rhel_09_215095) > 0
+
+else := "RHEL-09-215095: check failed — the s-nail package must be installed"
+
+finding_rhel_09_215095 := {
+	"vuln_id": "V-257842",
+	"stig_id": "RHEL-09-215095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the s-nail package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215095,
+	"detail": detail_rhel_09_215095,
+	"fix_text": "Install the package: dnf install s-nail",
+}
+
+# RHEL-09-215101 | V-272488 | CAT II
+# the postfix package must be installed (dnf list --installed postfix); Not Applicable on input.attest.rhel_09_215101_other_notification
+missing_rhel_09_215101 := [concat(".", p) | some p in [["packages", "postfix"]]; not _collected(p)]
+
+default postfix_installed := false
+
+postfix_installed if {
+	count(missing_rhel_09_215101) == 0
+	input.packages.postfix == true
+}
+
+default na_rhel_09_215101 := false
+
+na_rhel_09_215101 if {
+	_attested("rhel_09_215101_other_notification")
+}
+
+status_rhel_09_215101 := "Not_a_Finding" if postfix_installed
+
+else := "Not_Applicable" if na_rhel_09_215101
+
+else := "Open"
+
+detail_rhel_09_215101 := "RHEL-09-215101: Not_a_Finding" if postfix_installed
+
+else := "RHEL-09-215101: Not_Applicable — the admin demonstrated another system or service that sends audit failure notifications to the administrator / ISSO" if na_rhel_09_215101
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215101", concat(", ", missing_rhel_09_215101)]) if count(missing_rhel_09_215101) > 0
+
+else := "RHEL-09-215101: check failed — the postfix package must be installed"
+
+finding_rhel_09_215101 := {
+	"vuln_id": "V-272488",
+	"stig_id": "RHEL-09-215101",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the Postfix package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215101,
+	"detail": detail_rhel_09_215101,
+	"fix_text": "Install the package: dnf install postfix",
+}
+
+# RHEL-09-433010 | V-258089 | CAT II
+# fapolicyd package installed (dnf list --installed fapolicyd)
+missing_rhel_09_433010 := [concat(".", p) | some p in [["packages", "fapolicyd"]]; not _collected(p)]
+
+default fapolicyd_installed := false
+
+fapolicyd_installed if {
+	count(missing_rhel_09_433010) == 0
+	input.packages.fapolicyd == true
+}
+
+status_rhel_09_433010 := "Not_a_Finding" if fapolicyd_installed
+
+else := "Open"
+
+detail_rhel_09_433010 := "RHEL-09-433010: Not_a_Finding" if fapolicyd_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-433010", concat(", ", missing_rhel_09_433010)]) if count(missing_rhel_09_433010) > 0
+
+else := "RHEL-09-433010: check failed — the fapolicyd package must be installed"
+
+finding_rhel_09_433010 := {
+	"vuln_id": "V-258089",
+	"stig_id": "RHEL-09-433010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 fapolicy module must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_433010,
+	"detail": detail_rhel_09_433010,
+	"fix_text": "Install the package: dnf install fapolicyd",
+}
+
+# RHEL-09-433015 | V-258090 | CAT II
+# systemctl is-active fapolicyd
+missing_rhel_09_433015 := [concat(".", p) | some p in [["services", "fapolicyd"]]; not _collected(p)]
+
+default fapolicyd_active := false
+
+fapolicyd_active if {
+	count(missing_rhel_09_433015) == 0
+	_kw(["services", "fapolicyd"]) == "active"
+}
+
+status_rhel_09_433015 := "Not_a_Finding" if fapolicyd_active
+
+else := "Open"
+
+detail_rhel_09_433015 := "RHEL-09-433015: Not_a_Finding" if fapolicyd_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-433015", concat(", ", missing_rhel_09_433015)]) if count(missing_rhel_09_433015) > 0
+
+else := "RHEL-09-433015: check failed — fapolicyd must be active (systemctl is-active fapolicyd)"
+
+finding_rhel_09_433015 := {
+	"vuln_id": "V-258090",
+	"stig_id": "RHEL-09-433015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 fapolicy module must be enabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_433015,
+	"detail": detail_rhel_09_433015,
+	"fix_text": "Enable fapolicyd: systemctl enable --now fapolicyd",
+}
+
+# RHEL-09-433016 | V-270180 | CAT II
+# permissive as configured in /etc/fapolicyd/fapolicyd.conf; the uncommented rules of /etc/fapolicyd/compiled.rules in file order
+missing_rhel_09_433016 := [concat(".", p) | some p in [["fapolicyd", "permissive"], ["fapolicyd", "compiled_rules"]]; not _collected(p)]
+
+default fapolicyd_deny_all := false
+
+fapolicyd_deny_all if {
+	count(missing_rhel_09_433016) == 0
+	_str(["fapolicyd", "permissive"]) == "0"
+	rules := input.fapolicyd.compiled_rules
+	is_array(rules)
+	count(rules) > 0
+	last := rules[count(rules) - 1]
+	is_string(last)
+	regex.match(`^\s*deny(_audit|_log)?\s+perm=any\s+all\s*:\s*all\s*$`, last)
+}
+
+status_rhel_09_433016 := "Not_a_Finding" if fapolicyd_deny_all
+
+else := "Open"
+
+detail_rhel_09_433016 := "RHEL-09-433016: Not_a_Finding" if fapolicyd_deny_all
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-433016", concat(", ", missing_rhel_09_433016)]) if count(missing_rhel_09_433016) > 0
+
+else := "RHEL-09-433016: check failed — permissive in /etc/fapolicyd/fapolicyd.conf must be 0 and the last rule of /etc/fapolicyd/compiled.rules must deny all (deny perm=any all : all; deny_audit and deny_log also meet it)"
+
+finding_rhel_09_433016 := {
+	"vuln_id": "V-270180",
+	"stig_id": "RHEL-09-433016",
+	"severity": "CAT II",
+	"rule_title": "The RHEL 9 fapolicy module must be configured to employ a deny-all, permit-by-exception policy to allow the execution of authorized software programs.",
+	"check_type": "machine",
+	"status": status_rhel_09_433016,
+	"detail": detail_rhel_09_433016,
+	"fix_text": "Set permissive = 0 in /etc/fapolicyd/fapolicyd.conf and end the rules in /etc/fapolicyd/rules.d/ with deny perm=any all : all",
+}
+
+# RHEL-09-651025 | V-258137 | CAT II
+# the uncommented lines of /etc/aide.conf naming /usr/sbin/au* (grep /usr/sbin/au /etc/aide.conf); empty when none
+missing_rhel_09_651025 := [concat(".", p) | some p in [["packages", "aide"], ["aide", "audit_tool_lines"]]; not _collected(p)]
+
+default aide_protects_audit_tools := false
+
+aide_protects_audit_tools if {
+	count(missing_rhel_09_651025) == 0
+	input.packages.aide == true
+	lines := input.aide.audit_tool_lines
+	is_array(lines)
+	every t in _p4_audit_tools {
+		some l in lines
+		_p4_aide_selects(l, t)
+	}
+}
+
+aide_protects_audit_tools if {
+	_attested("rhel_09_651025_other_mechanism")
+}
+
+status_rhel_09_651025 := "Not_a_Finding" if aide_protects_audit_tools
+
+else := "Open"
+
+detail_rhel_09_651025 := "RHEL-09-651025: Not_a_Finding" if aide_protects_audit_tools
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651025", concat(", ", missing_rhel_09_651025)]) if count(missing_rhel_09_651025) > 0
+
+else := "RHEL-09-651025: check failed — AIDE must be installed and /etc/aide.conf must carry a selection line for each of /usr/sbin/auditctl, auditd, ausearch, aureport, autrace and augenrules, or the SA must show the cryptographic mechanism protecting the audit tools (input.attest.rhel_09_651025_other_mechanism)"
+
+finding_rhel_09_651025 := {
+	"vuln_id": "V-258137",
+	"stig_id": "RHEL-09-651025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use cryptographic mechanisms to protect the integrity of audit tools.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_651025,
+	"detail": detail_rhel_09_651025,
+	"fix_text": "Add a line '<tool> p+i+n+u+g+s+b+acl+xattrs+sha512' to /etc/aide.conf for each audit tool under /usr/sbin",
+}
+
+# RHEL-09-652015 | V-258141 | CAT II
+# rsyslog-gnutls package installed (dnf list --installed rsyslog-gnutls)
+missing_rhel_09_652015 := [concat(".", p) | some p in [["packages", "rsyslog-gnutls"]]; not _collected(p)]
+
+default rsyslog_gnutls_installed := false
+
+rsyslog_gnutls_installed if {
+	count(missing_rhel_09_652015) == 0
+	input.packages["rsyslog-gnutls"] == true
+}
+
+status_rhel_09_652015 := "Not_a_Finding" if rsyslog_gnutls_installed
+
+else := "Open"
+
+detail_rhel_09_652015 := "RHEL-09-652015: Not_a_Finding" if rsyslog_gnutls_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652015", concat(", ", missing_rhel_09_652015)]) if count(missing_rhel_09_652015) > 0
+
+else := "RHEL-09-652015: check failed — the rsyslog-gnutls package must be installed"
+
+finding_rhel_09_652015 := {
+	"vuln_id": "V-258141",
+	"stig_id": "RHEL-09-652015",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the packages required for encrypting offloaded audit logs installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_652015,
+	"detail": detail_rhel_09_652015,
+	"fix_text": "Install the package: dnf install rsyslog-gnutls",
+}
+
+# RHEL-09-652025 | V-258143 | CAT II
+# rsyslog sockets from ss -tulnp | grep rsyslog (input.rsyslog.listening_sockets) and the uncommented rsyslog configuration lines (input.rsyslog.config_lines); another log off-load tool in lieu of rsyslog is Not Applicable
+missing_rhel_09_652025 := [concat(".", p) | some p in [["rsyslog", "listening_sockets"], ["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_no_remote_reception := false
+
+rsyslog_no_remote_reception if {
+	count(missing_rhel_09_652025) == 0
+	socks := input.rsyslog.listening_sockets
+	is_array(socks)
+	count(socks) == 0
+}
+
+rsyslog_no_remote_reception if {
+	count(missing_rhel_09_652025) == 0
+	_p4_rsyslog_collected
+	is_array(input.rsyslog.listening_sockets)
+	count([l | some l in _p4_rsyslog; regex.match(`(?i)(InputTCPServerRun|UDPServerRun|RELPServerRun|imtcp|imudp|imrelp)`, l)]) == 0
+}
+
+rsyslog_no_remote_reception if {
+	_attested("rhel_09_652025_log_aggregation_server")
+}
+
+default na_rhel_09_652025 := false
+
+na_rhel_09_652025 if {
+	_attested("rhel_09_652025_other_log_tool")
+}
+
+status_rhel_09_652025 := "Not_a_Finding" if rsyslog_no_remote_reception
+
+else := "Not_Applicable" if na_rhel_09_652025
+
+else := "Open"
+
+detail_rhel_09_652025 := "RHEL-09-652025: Not_a_Finding" if rsyslog_no_remote_reception
+
+else := "RHEL-09-652025: Not_Applicable — the SA demonstrated another tool managing log off-load and aggregation in lieu of rsyslog" if na_rhel_09_652025
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652025", concat(", ", missing_rhel_09_652025)]) if count(missing_rhel_09_652025) > 0
+
+else := "RHEL-09-652025: check failed — rsyslog must not listen for remote messages (ss -tulnp shows no rsyslog socket, or no uncommented imtcp / imudp / imrelp / ServerRun line in /etc/rsyslog.conf and /etc/rsyslog.d/*), unless the system is documented and authorized as a log aggregation server (input.attest.rhel_09_652025_log_aggregation_server)"
+
+finding_rhel_09_652025 := {
+	"vuln_id": "V-258143",
+	"stig_id": "RHEL-09-652025",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured so that the rsyslog daemon does not accept log messages from other servers unless the server is being used for log aggregation.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_652025,
+	"detail": detail_rhel_09_652025,
+	"fix_text": "Remove the InputTCPServerRun / UDPServerRun / RELPServerRun / imtcp / imudp / imrelp lines from /etc/rsyslog.conf and /etc/rsyslog.d/, then systemctl restart rsyslog.service",
+}
+
+# RHEL-09-652030 | V-258144 | CAT II
+# uncommented rsyslog rule lines selecting auth.*, authpriv.* and daemon.*
+missing_rhel_09_652030 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_remote_access_logged := false
+
+rsyslog_remote_access_logged if {
+	count(missing_rhel_09_652030) == 0
+	_p4_rsyslog_collected
+	every fac in {"auth", "authpriv", "daemon"} {
+		_p4_rsyslog_logs(fac)
+	}
+}
+
+status_rhel_09_652030 := "Not_a_Finding" if rsyslog_remote_access_logged
+
+else := "Open"
+
+detail_rhel_09_652030 := "RHEL-09-652030: Not_a_Finding" if rsyslog_remote_access_logged
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652030", concat(", ", missing_rhel_09_652030)]) if count(missing_rhel_09_652030) > 0
+
+else := "RHEL-09-652030: check failed — auth.*, authpriv.* and daemon.* must each be logged by an uncommented rule in /etc/rsyslog.conf or /etc/rsyslog.d/"
+
+finding_rhel_09_652030 := {
+	"vuln_id": "V-258144",
+	"stig_id": "RHEL-09-652030",
+	"severity": "CAT II",
+	"rule_title": "All RHEL 9 remote access methods must be monitored.",
+	"check_type": "machine",
+	"status": status_rhel_09_652030,
+	"detail": detail_rhel_09_652030,
+	"fix_text": "Add auth.*;authpriv.*;daemon.* /var/log/secure to /etc/rsyslog.conf and restart rsyslog",
+}
+
+# RHEL-09-652040 | V-258146 | CAT II
+# uncommented StreamDriver AuthMode settings of /etc/rsyslog.conf and /etc/rsyslog.d/*.conf (input.rsyslog.config_lines)
+missing_rhel_09_652040 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_authenticates_log_server := false
+
+rsyslog_authenticates_log_server if {
+	count(missing_rhel_09_652040) == 0
+	_p4_rsyslog_collected
+	vals := _p4_rsyslog_values(`(?i)streamdriver\.?authmode\s*(=\s*"?|\s+)([^"\s)]+)`, 2)
+	count(vals) > 0
+	every v in vals {
+		v == "x509/name"
+	}
+	not _p4_rsyslog_module_streamdriver(`(?i)streamdriver\.?authmode`)
+}
+
+rsyslog_authenticates_log_server if {
+	_attested("rhel_09_652040_offload_encrypted")
+}
+
+status_rhel_09_652040 := "Not_a_Finding" if rsyslog_authenticates_log_server
+
+else := "Open"
+
+detail_rhel_09_652040 := "RHEL-09-652040: Not_a_Finding" if rsyslog_authenticates_log_server
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652040", concat(", ", missing_rhel_09_652040)]) if count(missing_rhel_09_652040) > 0
+
+else := "RHEL-09-652040: check failed — $ActionSendStreamDriverAuthMode (or StreamDriverAuthMode / StreamDriver.AuthMode in an omfwd action, never in a module block) must be x509/name, or the SA must show that the audit log transfer to another system or media is encrypted (input.attest.rhel_09_652040_offload_encrypted)"
+
+finding_rhel_09_652040 := {
+	"vuln_id": "V-258146",
+	"stig_id": "RHEL-09-652040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must authenticate the remote logging server for offloading audit logs via rsyslog.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_652040,
+	"detail": detail_rhel_09_652040,
+	"fix_text": "Set $ActionSendStreamDriverAuthMode x509/name in /etc/rsyslog.conf or /etc/rsyslog.d/<file>.conf",
+}
+
+# RHEL-09-652045 | V-258147 | CAT II
+# uncommented StreamDriver Mode settings of /etc/rsyslog.conf and /etc/rsyslog.d/*.conf (input.rsyslog.config_lines)
+missing_rhel_09_652045 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_encrypts_offload := false
+
+rsyslog_encrypts_offload if {
+	count(missing_rhel_09_652045) == 0
+	_p4_rsyslog_collected
+	vals := _p4_rsyslog_values(`(?i)streamdriver\.?mode\s*(=\s*"?|\s+)([^"\s)]+)`, 2)
+	count(vals) > 0
+	every v in vals {
+		v == "1"
+	}
+	not _p4_rsyslog_module_streamdriver(`(?i)streamdriver\.?authmode`)
+}
+
+status_rhel_09_652045 := "Not_a_Finding" if rsyslog_encrypts_offload
+
+else := "Open"
+
+detail_rhel_09_652045 := "RHEL-09-652045: Not_a_Finding" if rsyslog_encrypts_offload
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652045", concat(", ", missing_rhel_09_652045)]) if count(missing_rhel_09_652045) > 0
+
+else := "RHEL-09-652045: check failed — $ActionSendStreamDriverMode (or StreamDriverMode / StreamDriver.Mode in an omfwd action) must be 1, and StreamDriverAuthMode must not be set in a module block"
+
+finding_rhel_09_652045 := {
+	"vuln_id": "V-258147",
+	"stig_id": "RHEL-09-652045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must encrypt the transfer of audit records offloaded onto a different system or media from the system being audited via rsyslog.",
+	"check_type": "machine",
+	"status": status_rhel_09_652045,
+	"detail": detail_rhel_09_652045,
+	"fix_text": "Set $ActionSendStreamDriverMode 1 in /etc/rsyslog.conf or /etc/rsyslog.d/<file>.conf",
+}
+
+# RHEL-09-652050 | V-258148 | CAT II
+# uncommented DefaultNetstreamDriver / StreamDriver settings of /etc/rsyslog.conf and /etc/rsyslog.d/*.conf (input.rsyslog.config_lines)
+missing_rhel_09_652050 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_gtls_driver := false
+
+rsyslog_gtls_driver if {
+	count(missing_rhel_09_652050) == 0
+	_p4_rsyslog_collected
+	vals := _p4_rsyslog_values(`(?i)(defaultnetstreamdriver|streamdriver(\.name)?)\s*(=\s*"?|\s+)([^"\s)]+)`, 4)
+	count(vals) > 0
+	every v in vals {
+		v == "gtls"
+	}
+	not _p4_rsyslog_module_streamdriver(`(?i)streamdriver(\.name)?\s*=`)
+}
+
+status_rhel_09_652050 := "Not_a_Finding" if rsyslog_gtls_driver
+
+else := "Open"
+
+detail_rhel_09_652050 := "RHEL-09-652050: Not_a_Finding" if rsyslog_gtls_driver
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652050", concat(", ", missing_rhel_09_652050)]) if count(missing_rhel_09_652050) > 0
+
+else := "RHEL-09-652050: check failed — $DefaultNetstreamDriver (or StreamDriver / StreamDriver.Name in an omfwd action, never in a module block) must be gtls"
+
+finding_rhel_09_652050 := {
+	"vuln_id": "V-258148",
+	"stig_id": "RHEL-09-652050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must encrypt via the gtls driver the transfer of audit records offloaded onto a different system or media from the system being audited via rsyslog.",
+	"check_type": "machine",
+	"status": status_rhel_09_652050,
+	"detail": detail_rhel_09_652050,
+	"fix_text": "Set $DefaultNetstreamDriver gtls in /etc/rsyslog.conf or /etc/rsyslog.d/<file>.conf",
+}
+
+# RHEL-09-652055 | V-258149 | CAT II
+# uncommented rsyslog lines with a @@ target or type="omfwd" (input.rsyslog.config_lines)
+missing_rhel_09_652055 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_forwards_via_tcp := false
+
+rsyslog_forwards_via_tcp if {
+	count(missing_rhel_09_652055) == 0
+	_p4_rsyslog_collected
+	some l in _p4_rsyslog
+	regex.match(`@@\S`, l)
+}
+
+rsyslog_forwards_via_tcp if {
+	count(missing_rhel_09_652055) == 0
+	_p4_rsyslog_collected
+	some l in _p4_rsyslog
+	contains(l, `type="omfwd"`)
+}
+
+rsyslog_forwards_via_tcp if {
+	_attested("rhel_09_652055_offload_documented")
+}
+
+status_rhel_09_652055 := "Not_a_Finding" if rsyslog_forwards_via_tcp
+
+else := "Open"
+
+detail_rhel_09_652055 := "RHEL-09-652055: Not_a_Finding" if rsyslog_forwards_via_tcp
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652055", concat(", ", missing_rhel_09_652055)]) if count(missing_rhel_09_652055) > 0
+
+else := "RHEL-09-652055: check failed — /etc/rsyslog.conf or /etc/rsyslog.d/ must forward to a remote server over TCP (*.* @@host:port, or an action of type omfwd), or the SA must show how audit logs are off-loaded to another system or media (input.attest.rhel_09_652055_offload_documented)"
+
+finding_rhel_09_652055 := {
+	"vuln_id": "V-258149",
+	"stig_id": "RHEL-09-652055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must be configured to forward audit records via TCP to a different system or media from the system being audited via rsyslog.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_652055,
+	"detail": detail_rhel_09_652055,
+	"fix_text": "Add *.* @@<remoteloggingserver>:<port> (or an omfwd action with protocol=\"tcp\") to /etc/rsyslog.conf or /etc/rsyslog.d/<file>.conf",
+}
+
+# RHEL-09-652060 | V-258150 | CAT II
+# uncommented cron.* rule lines of /etc/rsyslog.conf and /etc/rsyslog.d/*.conf logging to /var/log/cron
+missing_rhel_09_652060 := [concat(".", p) | some p in [["rsyslog", "config_lines"]]; not _collected(p)]
+
+default rsyslog_cron_logging := false
+
+rsyslog_cron_logging if {
+	count(missing_rhel_09_652060) == 0
+	_p4_rsyslog_collected
+	some l in _p4_rsyslog
+	regex.match(`(^|[;,\s])cron\.\*`, l)
+	contains(l, "/var/log/cron")
+}
+
+rsyslog_cron_logging if {
+	_attested("rhel_09_652060_cron_test_logged")
+}
+
+status_rhel_09_652060 := "Not_a_Finding" if rsyslog_cron_logging
+
+else := "Open"
+
+detail_rhel_09_652060 := "RHEL-09-652060: Not_a_Finding" if rsyslog_cron_logging
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-652060", concat(", ", missing_rhel_09_652060)]) if count(missing_rhel_09_652060) > 0
+
+else := "RHEL-09-652060: check failed — an uncommented rsyslog rule must log cron.* to /var/log/cron, or the functional test (logger -p cron.info, then grep /var/log/cron) must show the message logged (input.attest.rhel_09_652060_cron_test_logged)"
+
+finding_rhel_09_652060 := {
+	"vuln_id": "V-258150",
+	"stig_id": "RHEL-09-652060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use cron logging.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_652060,
+	"detail": detail_rhel_09_652060,
+	"fix_text": "Add cron.* /var/log/cron to /etc/rsyslog.conf or a file in /etc/rsyslog.d/ and restart rsyslog",
+}
+
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-09-214035 | V-257824 | CAT III
+# clean_requirements_on_remove as written in /etc/dnf/dnf.conf (grep -i; null when missing or commented out)
+missing_rhel_09_214035 := [concat(".", p) | some p in [["dnf_config", "clean_requirements_on_remove"]]; not _collected(p)]
+
+default dnf_clean_requirements := false
+
+dnf_clean_requirements if {
+	count(missing_rhel_09_214035) == 0
+	_truthy(input.dnf_config.clean_requirements_on_remove)
+}
+
+status_rhel_09_214035 := "Not_a_Finding" if dnf_clean_requirements
+
+else := "Open"
+
+detail_rhel_09_214035 := "RHEL-09-214035: Not_a_Finding" if dnf_clean_requirements
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-214035", concat(", ", missing_rhel_09_214035)]) if count(missing_rhel_09_214035) > 0
+
+else := "RHEL-09-214035: check failed — clean_requirements_on_remove in /etc/dnf/dnf.conf must be 1, true or yes"
+
+finding_rhel_09_214035 := {
+	"vuln_id": "V-257824",
+	"stig_id": "RHEL-09-214035",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must remove all software components after updated versions have been installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_214035,
+	"detail": detail_rhel_09_214035,
+	"fix_text": "Set clean_requirements_on_remove=True in /etc/dnf/dnf.conf",
+}
+
+# RHEL-09-651030 | V-258138 | CAT III
+# the uncommented rule / selection lines of /etc/aide.conf must each carry acl
+missing_rhel_09_651030 := [concat(".", p) | some p in [["aide", "rule_lines"]]; not _collected(p)]
+
+default aide_verifies_acls := false
+
+aide_verifies_acls if {
+	count(missing_rhel_09_651030) == 0
+	lines := input.aide.rule_lines
+	is_array(lines)
+	count(lines) > 0
+	every l in lines {
+		_p4_aide_uses(l, "acl")
+	}
+}
+
+aide_verifies_acls if {
+	_attested("rhel_09_651030_other_tool")
+}
+
+status_rhel_09_651030 := "Not_a_Finding" if aide_verifies_acls
+
+else := "Open"
+
+detail_rhel_09_651030 := "RHEL-09-651030: Not_a_Finding" if aide_verifies_acls
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651030", concat(", ", missing_rhel_09_651030)]) if count(missing_rhel_09_651030) > 0
+
+else := "RHEL-09-651030: check failed — every uncommented selection line in /etc/aide.conf must use the acl rule, or another file integrity tool checking ACLs must be attested (input.attest.rhel_09_651030_other_tool)"
+
+finding_rhel_09_651030 := {
+	"vuln_id": "V-258138",
+	"stig_id": "RHEL-09-651030",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must be configured so that the file integrity tool verifies Access Control Lists (ACLs).",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_651030,
+	"detail": detail_rhel_09_651030,
+	"fix_text": "Add acl to every uncommented selection line in /etc/aide.conf",
+}
+
+# RHEL-09-651035 | V-258139 | CAT III
+# the uncommented rule / selection lines of /etc/aide.conf must each carry xattrs
+missing_rhel_09_651035 := [concat(".", p) | some p in [["aide", "rule_lines"]]; not _collected(p)]
+
+default aide_verifies_xattrs := false
+
+aide_verifies_xattrs if {
+	count(missing_rhel_09_651035) == 0
+	lines := input.aide.rule_lines
+	is_array(lines)
+	count(lines) > 0
+	every l in lines {
+		_p4_aide_uses(l, "xattrs")
+	}
+}
+
+aide_verifies_xattrs if {
+	_attested("rhel_09_651035_other_tool")
+}
+
+status_rhel_09_651035 := "Not_a_Finding" if aide_verifies_xattrs
+
+else := "Open"
+
+detail_rhel_09_651035 := "RHEL-09-651035: Not_a_Finding" if aide_verifies_xattrs
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-651035", concat(", ", missing_rhel_09_651035)]) if count(missing_rhel_09_651035) > 0
+
+else := "RHEL-09-651035: check failed — every uncommented selection line in /etc/aide.conf must use the xattrs rule, or another file integrity tool checking extended attributes must be attested (input.attest.rhel_09_651035_other_tool)"
+
+finding_rhel_09_651035 := {
+	"vuln_id": "V-258139",
+	"stig_id": "RHEL-09-651035",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must be configured so that the file integrity tool verifies extended attributes.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_651035,
+	"detail": detail_rhel_09_651035,
+	"fix_text": "Add xattrs to every uncommented selection line in /etc/aide.conf",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -362,6 +1271,7 @@ finding_rhel_09_652020 := {
 cat_i_findings := [
 	finding_rhel_09_214025,
 	finding_rhel_09_214020,
+	finding_rhel_09_214015,
 ]
 
 cat_ii_findings := [
@@ -370,11 +1280,32 @@ cat_ii_findings := [
 	finding_rhel_09_213020,
 	finding_rhel_09_652010,
 	finding_rhel_09_652020,
+	finding_rhel_09_211015,
+	finding_rhel_09_214030,
+	finding_rhel_09_215035,
+	finding_rhel_09_215010,
+	finding_rhel_09_215090,
+	finding_rhel_09_215095,
+	finding_rhel_09_215101,
+	finding_rhel_09_433010,
+	finding_rhel_09_433015,
+	finding_rhel_09_433016,
+	finding_rhel_09_651025,
+	finding_rhel_09_652015,
+	finding_rhel_09_652025,
+	finding_rhel_09_652030,
+	finding_rhel_09_652040,
+	finding_rhel_09_652045,
+	finding_rhel_09_652050,
+	finding_rhel_09_652055,
+	finding_rhel_09_652060,
 ]
 
-# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
-# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
-cat_iii_findings := array.concat([], [])
+cat_iii_findings := [
+	finding_rhel_09_214035,
+	finding_rhel_09_651030,
+	finding_rhel_09_651035,
+]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 

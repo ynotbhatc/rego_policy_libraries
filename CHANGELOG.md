@@ -8,6 +8,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added — DISA STIG RHEL 9 V2R10: all 445 rules (2026-11-22)
+- `benchmarks/stig/rhel_9` now implements every rule of the V2R10 STIG (was 104 of 445). The 341 new rules are
+  reviewed table entries written against DISA's full check text (`tools/stig_generators/rhel9_rules_part1.py`
+  to `rhel9_rules_part5.py`), each with pass, fail and evidence-missing tests. 366 rules are decided from
+  facts, 77 from facts plus an attestation the check text asks for, 2 are attestation only.
+- Input contract: the module now reads 484 fact paths and 98 attestation keys (was 133 and 24), all listed in
+  `benchmarks/stig/LINUX_COLLECTOR_CONTRACT.md`. A rule whose facts are not supplied reports `evidence missing`
+  (Open), so an older collector sees more Open findings, never a false pass. `total_controls` for `stig.rhel_9`
+  and `stig_rhel9` rises to 445.
+- The coverage label stays `partial`: the new rules are unit-tested and have not run on a real host.
+- Oracle Linux 9, Oracle Linux 8 and RHEL 10 STIG modules regenerated (shared mount and audit-rule test
+  fixtures grew); their rule sets are unchanged (114, 95 and 100 rules).
+- `test_gate_transparent_when_facts_supplied` no longer requires a non-zero percentage from one supplied fact
+  (1 of 445 rounds to 0); it requires a passed control and fewer failures than controls.
+
 ### Changed — TISAX rebuilt on VDA ISA2027.1 (2026-11-22) — BREAKING: control ids and input contract
 
 - `frameworks/management/tisax` (package `tisax.main`, entrypoint unchanged) now evaluates every active control

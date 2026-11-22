@@ -559,7 +559,9 @@ finding_ol08_00_020280 := {
 # COMPLIANCE AGGREGATION
 # =============================================================================
 
-cat_i_findings := [finding_ol08_00_010121]
+cat_i_findings := [
+	finding_ol08_00_010121,
+]
 
 cat_ii_findings := [
 	finding_ol08_00_010110,

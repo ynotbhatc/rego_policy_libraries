@@ -9,22 +9,217 @@ green_fixture := {
 	"duplicate_gids": [],
 	"duplicate_uid_accounts": [],
 	"faillock_conf": {
+		"audit": true,
 		"deny": 3,
+		"dir": "/var/log/faillock",
+		"even_deny_root": true,
 		"fail_interval": 900,
+		"unlock_time": 0,
 	},
+	"interactive_shadow_hashes": [
+		{
+			"hash": "$6$",
+			"name": "nsauser",
+		},
+		{
+			"hash": "!",
+			"name": "svcacct",
+		},
+	],
+	"interactive_users": [
+		{
+			"home": "/home/disauser",
+			"home_exists": true,
+			"home_gid": 1002,
+			"name": "disauser",
+			"primary_gid": 1002,
+			"shell": "/bin/bash",
+			"uid": 1000,
+		},
+	],
+	"libuser_conf": {
+		"defaults": {
+			"crypt_style": "sha512",
+		},
+	},
+	"limits_maxlogins": [
+		{
+			"domain": "*",
+			"file": "/etc/security/limits.conf",
+			"type": "hard",
+			"value": "10",
+		},
+	],
 	"local_accounts_with_empty_passwords": [],
-	"login_defs": {"ENCRYPT_METHOD": "SHA512"},
+	"local_interactive_users": [],
+	"login_defs": {
+		"CREATE_HOME": "yes",
+		"ENCRYPT_METHOD": "SHA512",
+		"FAIL_DELAY": 4,
+		"UMASK": "077",
+	},
+	"logind_conf": {
+		"StopIdleSessionSec": "600",
+	},
+	"packages": {
+		"libuser": true,
+		"sudo": true,
+	},
+	"pam": {
+		"password_auth": {
+			"pam_unix_password_lines": [
+				"password    sufficient    pam_unix.so sha512 shadow use_authtok",
+			],
+		},
+	},
+	"pam_d": {
+		"password-auth": [
+			"auth required pam_env.so",
+			"auth required pam_faillock.so preauth",
+			"auth sufficient pam_unix.so",
+			"auth required pam_faillock.so authfail",
+			"auth required pam_deny.so",
+			"account required pam_faillock.so",
+			"account required pam_unix.so",
+			"password required pam_pwquality.so",
+			"password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000",
+			"session required pam_unix.so",
+		],
+		"su": [
+			"auth sufficient pam_rootok.so",
+			"auth required pam_wheel.so use_uid",
+			"auth substack system-auth",
+		],
+		"sudo": [
+			"auth include system-auth",
+			"account include system-auth",
+			"password include system-auth",
+			"session include system-auth",
+		],
+		"system-auth": [
+			"auth required pam_env.so",
+			"auth required pam_faillock.so preauth",
+			"auth sufficient pam_unix.so",
+			"auth required pam_faillock.so authfail",
+			"auth required pam_deny.so",
+			"account required pam_faillock.so",
+			"account required pam_unix.so",
+			"password required pam_pwquality.so",
+			"password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000",
+			"session required pam_unix.so",
+		],
+	},
 	"password_policy": {
 		"dcredit": -1,
+		"dictcheck": 1,
+		"difok": 8,
+		"enforce_for_root": true,
 		"inactive_days": 35,
 		"lcredit": -1,
+		"maxclassrepeat": 4,
 		"maxdays": 180,
+		"maxrepeat": 3,
+		"minclass": 4,
 		"mindays": 1,
 		"minlen": 15,
 		"ocredit": -1,
+		"retry": 3,
 		"ucredit": -1,
 	},
-	"sssd": {"pam_cert_auth": "True"},
+	"profile_tmout": [
+		{
+			"file": "/etc/profile.d/tmout.sh",
+			"value": "600",
+		},
+	],
+	"pwck_no_group_accounts": [],
+	"shadow_maxdays_out_of_range": [],
+	"shadow_min_age_below_one": [],
+	"shell_umask": {
+		"etc_bashrc": [
+			"077",
+		],
+		"etc_csh_cshrc": [
+			"077",
+		],
+		"etc_profile": [
+			"077",
+		],
+	},
+	"sssd": {
+		"pam_cert_auth": "True",
+	},
+	"sudoers": {
+		"lines": [
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults timestamp_timeout=0",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !targetpw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !rootpw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "Defaults !runaspw",
+			},
+			{
+				"file": "/etc/sudoers",
+				"line": "root ALL=(ALL) ALL",
+			},
+			{
+				"file": "/etc/sudoers.d/admins",
+				"line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL",
+			},
+		],
+	},
+	"sulogin_lines": {
+		"emergency.service": {
+			"drop_ins": [],
+			"unit_file": [
+				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency",
+			],
+		},
+		"rescue.service": {
+			"drop_ins": [],
+			"unit_file": [
+				"ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue",
+			],
+		},
+	},
+	"system_accounts_with_interactive_shell": [],
+	"temporary_accounts": [
+		{
+			"expires": "2020-01-04",
+			"name": "tempuser",
+		},
+	],
+	"uid_zero_accounts": [
+		"root",
+	],
+	"user_init_files": {
+		"path_statements": [
+			{
+				"entries": [
+					"$HOME/.local/bin",
+					"$HOME/bin",
+					"$PATH",
+				],
+				"file": "/home/disauser/.bash_profile",
+				"home": "/home/disauser",
+			},
+		],
+		"umask_statements": [
+			{
+				"file": "/home/disauser/.bashrc",
+				"umask": "077",
+			},
+		],
+	},
 }
 
 test_every_finding_open_on_empty_input if {
@@ -490,4 +685,1498 @@ test_rhel_09_411110_evidence_missing_1 if {
 	f := data.stig.rhel_9.account_auth.finding_rhel_09_411110 with input as json.remove(green_fixture, [["duplicate_gids"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-411110: evidence missing — duplicate_gids")
+}
+
+test_rhel_09_411015_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411015_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411015 with input as object.union(green_fixture, {"shadow_maxdays_out_of_range": [{"name": "alice", "max_days": "99999", "system_account": false}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411015: check failed")
+}
+
+test_rhel_09_411015_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411015 with input as object.union(green_fixture, {"shadow_maxdays_out_of_range": [{"name": "bob", "max_days": ""}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411015: check failed")
+}
+
+test_rhel_09_411015_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411015 with input as json.remove(green_fixture, [["shadow_maxdays_out_of_range"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411015: evidence missing — shadow_maxdays_out_of_range")
+}
+
+test_rhel_09_411015_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411015 == "Not_a_Finding" with input as object.union(green_fixture, {"shadow_maxdays_out_of_range": [{"name": "bin", "max_days": "99999", "system_account": true}]})
+}
+
+test_rhel_09_411020_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411020_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411020 with input as object.union(green_fixture, {"login_defs": {"CREATE_HOME": "no"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411020: check failed")
+}
+
+test_rhel_09_411020_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411020 with input as json.remove(green_fixture, [["login_defs", "CREATE_HOME"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411020: evidence missing — login_defs.CREATE_HOME")
+}
+
+test_rhel_09_411025_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411025_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411025 with input as object.union(green_fixture, {"user_init_files": {"umask_statements": [{"file": "/home/disauser/.bashrc", "umask": "022"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411025: check failed")
+}
+
+test_rhel_09_411025_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411025 with input as object.union(green_fixture, {"user_init_files": {"umask_statements": [{"file": "/home/disauser/.bashrc", "umask": "027"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411025: check failed")
+}
+
+test_rhel_09_411025_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411025 with input as object.union(green_fixture, {"user_init_files": {"umask_statements": [{"file": "/home/disauser/.profile", "umask": "u=rwx,g=rx,o="}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411025: check failed")
+}
+
+test_rhel_09_411025_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411025 with input as object.union(green_fixture, {"user_init_files": {"umask_statements": [{"file": "/home/disauser/.bashrc"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411025: check failed")
+}
+
+test_rhel_09_411025_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411025 with input as json.remove(green_fixture, [["user_init_files", "umask_statements"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411025: evidence missing — user_init_files.umask_statements")
+}
+
+test_rhel_09_411025_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411025 == "Not_a_Finding" with input as object.union(green_fixture, {"user_init_files": {"umask_statements": []}})
+}
+
+test_rhel_09_411025_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411025 == "Not_a_Finding" with input as object.union(green_fixture, {"user_init_files": {"umask_statements": [{"file": "/home/disauser/.bashrc", "umask": "0177"}]}})
+}
+
+test_rhel_09_411035_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411035_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411035 with input as object.union(green_fixture, {"system_accounts_with_interactive_shell": ["games:12:/bin/bash"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411035: check failed")
+}
+
+test_rhel_09_411035_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411035 with input as json.remove(green_fixture, [["system_accounts_with_interactive_shell"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411035: evidence missing — system_accounts_with_interactive_shell")
+}
+
+test_rhel_09_411040_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411040_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411040 with input as object.union(green_fixture, {"temporary_accounts": [{"name": "tempuser", "expires": "never"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411040: check failed")
+}
+
+test_rhel_09_411040_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411040 with input as object.union(green_fixture, {"temporary_accounts": [{"name": "tempuser", "expires": "2099-12-31"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411040: check failed")
+}
+
+test_rhel_09_411040_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411040 with input as object.union(green_fixture, {"temporary_accounts": [{"name": "tempuser"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411040: check failed")
+}
+
+test_rhel_09_411040_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411040 with input as json.remove(green_fixture, [["temporary_accounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411040: evidence missing — temporary_accounts")
+}
+
+test_rhel_09_411040_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411040 == "Not_a_Finding" with input as object.union(green_fixture, {"temporary_accounts": []})
+}
+
+test_rhel_09_411045_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411045_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411045 with input as object.union(green_fixture, {"pwck_no_group_accounts": [{"name": "alice", "gid": 1500, "interactive": true}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411045: check failed")
+}
+
+test_rhel_09_411045_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411045 with input as object.union(green_fixture, {"pwck_no_group_accounts": [{"name": "alice", "gid": 1500}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411045: check failed")
+}
+
+test_rhel_09_411045_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411045 with input as json.remove(green_fixture, [["pwck_no_group_accounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411045: evidence missing — pwck_no_group_accounts")
+}
+
+test_rhel_09_411045_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411045 == "Not_a_Finding" with input as object.union(green_fixture, {"pwck_no_group_accounts": [{"name": "svc", "gid": 990, "interactive": false}]})
+}
+
+test_rhel_09_411055_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411055_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411055 with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bash_profile", "home": "/home/disauser", "entries": ["$HOME/bin", "/opt/app/bin", "$PATH"]}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411055: check failed")
+}
+
+test_rhel_09_411055_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411055 with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bash_profile", "home": "/home/disauser", "entries": ["/home/disauser2/bin", "$PATH"]}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411055: check failed")
+}
+
+test_rhel_09_411055_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411055 with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bash_profile", "home": "/home/disauser", "entries": [".", "$PATH"]}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411055: check failed")
+}
+
+test_rhel_09_411055_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411055 with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bashrc", "home": "/home/disauser"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411055: check failed")
+}
+
+test_rhel_09_411055_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411055 with input as json.remove(green_fixture, [["user_init_files", "path_statements"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411055: evidence missing — user_init_files.path_statements")
+}
+
+test_rhel_09_411055_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411055 == "Not_a_Finding" with input as object.union(green_fixture, {"user_init_files": {"path_statements": []}})
+}
+
+test_rhel_09_411055_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411055 == "Not_a_Finding" with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bash_profile", "home": "/home/disauser", "entries": ["/home/disauser/bin", "~/tools", "${HOME}", "${PATH}"]}]}})
+}
+
+test_rhel_09_411055_pass_4 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411055 == "Not_a_Finding" with input as object.union(green_fixture, {"user_init_files": {"path_statements": [{"file": "/home/disauser/.bash_profile", "home": "/home/disauser", "entries": ["/opt/app/bin"]}]}, "attest": {"rhel_09_411055_path_documented": true}})
+}
+
+test_rhel_09_411060_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411060_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411060 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "", "home_exists": true, "home_gid": 1002}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411060: check failed")
+}
+
+test_rhel_09_411060_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411060 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": null, "home_exists": true, "home_gid": 1002}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411060: check failed")
+}
+
+test_rhel_09_411060_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411060 with input as json.remove(green_fixture, [["interactive_users"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411060: evidence missing — interactive_users")
+}
+
+test_rhel_09_411060_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411060 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": []})
+}
+
+test_rhel_09_411065_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411065_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411065 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": false, "home_gid": 1002}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411065: check failed")
+}
+
+test_rhel_09_411065_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411065 with input as object.union(green_fixture, {"interactive_users": [{"name": "disauser", "uid": 1000, "primary_gid": 1002, "shell": "/bin/bash", "home": "/home/disauser", "home_exists": null, "home_gid": 1002}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411065: check failed")
+}
+
+test_rhel_09_411065_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411065 with input as json.remove(green_fixture, [["interactive_users"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411065: evidence missing — interactive_users")
+}
+
+test_rhel_09_411065_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411065 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_users": []})
+}
+
+test_rhel_09_411080_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411080_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411080 with input as object.union(green_fixture, {"faillock_conf": {"even_deny_root": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411080: check failed")
+}
+
+test_rhel_09_411080_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411080 with input as object.union(green_fixture, {"faillock_conf": {"even_deny_root": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411080: check failed")
+}
+
+test_rhel_09_411080_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411080 with input as json.remove(green_fixture, [["faillock_conf", "even_deny_root"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411080: evidence missing — faillock_conf.even_deny_root")
+}
+
+test_rhel_09_411090_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411090_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": 900}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411090: check failed")
+}
+
+test_rhel_09_411090_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": "never"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411090: check failed")
+}
+
+test_rhel_09_411090_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411090 with input as json.remove(green_fixture, [["faillock_conf", "unlock_time"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411090: evidence missing — faillock_conf.unlock_time")
+}
+
+test_rhel_09_411090_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411090 == "Not_a_Finding" with input as object.union(green_fixture, {"faillock_conf": {"unlock_time": "0"}})
+}
+
+test_rhel_09_411095_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411095_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411095 with input as object.union(green_fixture, {"local_interactive_users": ["scsaustin", "djohnson"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411095: check failed")
+}
+
+test_rhel_09_411095_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411095 with input as json.remove(green_fixture, [["local_interactive_users"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411095: evidence missing — local_interactive_users")
+}
+
+test_rhel_09_411095_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411095 == "Not_a_Finding" with input as object.union(green_fixture, {"local_interactive_users": ["scsaustin"], "attest": {"rhel_09_411095_accounts_authorized": true}})
+}
+
+test_rhel_09_411100_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411100_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411100 with input as object.union(green_fixture, {"uid_zero_accounts": ["root", "toor"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411100: check failed")
+}
+
+test_rhel_09_411100_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411100 with input as object.union(green_fixture, {"uid_zero_accounts": ["admin"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411100: check failed")
+}
+
+test_rhel_09_411100_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411100 with input as json.remove(green_fixture, [["uid_zero_accounts"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411100: evidence missing — uid_zero_accounts")
+}
+
+test_rhel_09_411105_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_411105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_411105_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411105 with input as object.union(green_fixture, {"faillock_conf": {"dir": "/var/run/faillock"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411105: check failed")
+}
+
+test_rhel_09_411105_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411105 with input as object.union(green_fixture, {"faillock_conf": {"dir": "/run/faillock/"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411105: check failed")
+}
+
+test_rhel_09_411105_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411105 with input as object.union(green_fixture, {"faillock_conf": {"dir": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411105: check failed")
+}
+
+test_rhel_09_411105_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_411105 with input as json.remove(green_fixture, [["faillock_conf", "dir"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-411105: evidence missing — faillock_conf.dir")
+}
+
+test_rhel_09_412035_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412035_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: check failed")
+}
+
+test_rhel_09_412035_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "900"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: check failed")
+}
+
+test_rhel_09_412035_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": "600"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: check failed")
+}
+
+test_rhel_09_412035_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "$IDLE"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: check failed")
+}
+
+test_rhel_09_412035_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412035 with input as json.remove(green_fixture, [["profile_tmout"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412035: evidence missing — profile_tmout")
+}
+
+test_rhel_09_412035_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile.d/tmout.sh", "value": "300"}]})
+}
+
+test_rhel_09_412035_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412035 == "Not_a_Finding" with input as object.union(green_fixture, {"profile_tmout": [{"file": "/etc/profile", "value": "900"}, {"file": "/etc/profile.d/tmout.sh", "value": 600}]})
+}
+
+test_rhel_09_412040_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412040_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: check failed")
+}
+
+test_rhel_09_412040_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "11"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: check failed")
+}
+
+test_rhel_09_412040_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "10"}, {"file": "/etc/security/limits.d/ops.conf", "domain": "@ops", "type": "hard", "value": "50"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: check failed")
+}
+
+test_rhel_09_412040_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412040 with input as json.remove(green_fixture, [["limits_maxlogins"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412040: evidence missing — limits_maxlogins")
+}
+
+test_rhel_09_412040_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412040 == "Not_a_Finding" with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": 5}]})
+}
+
+test_rhel_09_412040_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412040 == "Not_a_Finding" with input as object.union(green_fixture, {"limits_maxlogins": [{"file": "/etc/security/limits.conf", "domain": "*", "type": "hard", "value": "50"}], "attest": {"rhel_09_412040_maxlogins_documented": true}})
+}
+
+test_rhel_09_412045_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412045_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412045 with input as object.union(green_fixture, {"faillock_conf": {"audit": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412045: check failed")
+}
+
+test_rhel_09_412045_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412045 with input as object.union(green_fixture, {"faillock_conf": {"audit": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412045: check failed")
+}
+
+test_rhel_09_412045_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412045 with input as json.remove(green_fixture, [["faillock_conf", "audit"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412045: evidence missing — faillock_conf.audit")
+}
+
+test_rhel_09_412050_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412050_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": 3}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412050: check failed")
+}
+
+test_rhel_09_412050_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": 0}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412050: check failed")
+}
+
+test_rhel_09_412050_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": "four"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412050: check failed")
+}
+
+test_rhel_09_412050_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412050 with input as json.remove(green_fixture, [["login_defs", "FAIL_DELAY"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412050: evidence missing — login_defs.FAIL_DELAY")
+}
+
+test_rhel_09_412050_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412050 == "Not_a_Finding" with input as object.union(green_fixture, {"login_defs": {"FAIL_DELAY": "5"}})
+}
+
+test_rhel_09_412055_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412055_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412055 with input as object.union(green_fixture, {"shell_umask": {"etc_bashrc": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412055: check failed")
+}
+
+test_rhel_09_412055_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412055 with input as object.union(green_fixture, {"shell_umask": {"etc_bashrc": ["022"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412055: check failed")
+}
+
+test_rhel_09_412055_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412055 with input as object.union(green_fixture, {"shell_umask": {"etc_bashrc": ["077", "002"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412055: check failed")
+}
+
+test_rhel_09_412055_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412055 with input as object.union(green_fixture, {"shell_umask": {"etc_bashrc": ["000"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412055: check failed")
+}
+
+test_rhel_09_412055_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412055 with input as json.remove(green_fixture, [["shell_umask", "etc_bashrc"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412055: evidence missing — shell_umask.etc_bashrc")
+}
+
+test_rhel_09_412060_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412060_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412060 with input as object.union(green_fixture, {"shell_umask": {"etc_csh_cshrc": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412060: check failed")
+}
+
+test_rhel_09_412060_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412060 with input as object.union(green_fixture, {"shell_umask": {"etc_csh_cshrc": ["022"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412060: check failed")
+}
+
+test_rhel_09_412060_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412060 with input as object.union(green_fixture, {"shell_umask": {"etc_csh_cshrc": ["077", "002"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412060: check failed")
+}
+
+test_rhel_09_412060_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412060 with input as object.union(green_fixture, {"shell_umask": {"etc_csh_cshrc": ["000"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412060: check failed")
+}
+
+test_rhel_09_412060_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412060 with input as json.remove(green_fixture, [["shell_umask", "etc_csh_cshrc"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412060: evidence missing — shell_umask.etc_csh_cshrc")
+}
+
+test_rhel_09_412070_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412070_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412070 with input as object.union(green_fixture, {"shell_umask": {"etc_profile": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412070: check failed")
+}
+
+test_rhel_09_412070_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412070 with input as object.union(green_fixture, {"shell_umask": {"etc_profile": ["022"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412070: check failed")
+}
+
+test_rhel_09_412070_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412070 with input as object.union(green_fixture, {"shell_umask": {"etc_profile": ["077", "002"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412070: check failed")
+}
+
+test_rhel_09_412070_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412070 with input as object.union(green_fixture, {"shell_umask": {"etc_profile": ["000"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412070: check failed")
+}
+
+test_rhel_09_412070_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412070 with input as json.remove(green_fixture, [["shell_umask", "etc_profile"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412070: evidence missing — shell_umask.etc_profile")
+}
+
+test_rhel_09_412065_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412065_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412065 with input as object.union(green_fixture, {"login_defs": {"UMASK": "022"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412065: check failed")
+}
+
+test_rhel_09_412065_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412065 with input as object.union(green_fixture, {"login_defs": {"UMASK": "000"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412065: check failed")
+}
+
+test_rhel_09_412065_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412065 with input as json.remove(green_fixture, [["login_defs", "UMASK"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412065: evidence missing — login_defs.UMASK")
+}
+
+test_rhel_09_412080_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_412080_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412080 with input as object.union(green_fixture, {"logind_conf": {"StopIdleSessionSec": "infinity"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412080: check failed")
+}
+
+test_rhel_09_412080_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412080 with input as object.union(green_fixture, {"logind_conf": {"StopIdleSessionSec": "900"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412080: check failed")
+}
+
+test_rhel_09_412080_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412080 with input as json.remove(green_fixture, [["logind_conf", "StopIdleSessionSec"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-412080: evidence missing — logind_conf.StopIdleSessionSec")
+}
+
+test_rhel_09_412080_not_applicable_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_412080 with input as object.union(green_fixture, {"logind_conf": {"StopIdleSessionSec": null}, "attest": {"rhel_09_412080_cloud_hosted": true}, "ssh_config": {"ClientAliveInterval": 600}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_412080_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_412080 == "Not_a_Finding" with input as object.union(green_fixture, {"logind_conf": {"StopIdleSessionSec": 600}})
+}
+
+test_rhel_09_432010_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432010_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432010 with input as object.union(green_fixture, {"packages": {"sudo": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432010: check failed")
+}
+
+test_rhel_09_432010_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432010 with input as json.remove(green_fixture, [["packages", "sudo"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432010: evidence missing — packages.sudo")
+}
+
+test_rhel_09_432015_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432015_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: check failed")
+}
+
+test_rhel_09_432015_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=5"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: check failed")
+}
+
+test_rhel_09_432015_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=-1"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: check failed")
+}
+
+test_rhel_09_432015_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/extra", "line": "Defaults timestamp_timeout=0"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: check failed")
+}
+
+test_rhel_09_432015_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=15"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: check failed")
+}
+
+test_rhel_09_432015_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432015 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432015: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_432015_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432015 == "Not_a_Finding" with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults env_reset, timestamp_timeout = 0"}]}})
+}
+
+test_rhel_09_432020_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432020_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: check failed")
+}
+
+test_rhel_09_432020_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: check failed")
+}
+
+test_rhel_09_432020_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: check failed")
+}
+
+test_rhel_09_432020_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: check failed")
+}
+
+test_rhel_09_432020_fail_5 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/pw", "line": "Defaults !runaspw"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: check failed")
+}
+
+test_rhel_09_432020_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432020 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432020: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_432020_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432020 == "Not_a_Finding" with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw, !rootpw, !runaspw"}]}})
+}
+
+test_rhel_09_432025_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432025_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432025 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/ops", "line": "Defaults:ops !authenticate"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432025: check failed")
+}
+
+test_rhel_09_432025_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432025 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "Defaults !AUTHENTICATE"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432025: check failed")
+}
+
+test_rhel_09_432025_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432025 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432025: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_432030_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432030_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432030 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "ALL     ALL=(ALL) ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432030: check failed")
+}
+
+test_rhel_09_432030_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432030 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/all", "line": "ALL ALL=(ALL:ALL) ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432030: check failed")
+}
+
+test_rhel_09_432030_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432030 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432030: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_432030_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432030 == "Not_a_Finding" with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "%wheel ALL=(ALL:ALL) ALL"}]}})
+}
+
+test_rhel_09_432035_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_432035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_432035_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432035 with input as object.union(green_fixture, {"pam_d": {"su": ["auth sufficient pam_rootok.so", "auth substack system-auth"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432035: check failed")
+}
+
+test_rhel_09_432035_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432035 with input as object.union(green_fixture, {"pam_d": {"su": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432035: check failed")
+}
+
+test_rhel_09_432035_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_432035 with input as json.remove(green_fixture, [["pam_d", "su"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-432035: evidence missing — pam_d.su")
+}
+
+test_rhel_09_611085_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611085_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611085 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/ops", "line": "%ops ALL=(ALL) NOPASSWD: ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611085: check failed")
+}
+
+test_rhel_09_611085_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611085 with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers", "line": "ansible ALL=(ALL) nopasswd: ALL"}]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611085: check failed")
+}
+
+test_rhel_09_611085_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611085 with input as json.remove(green_fixture, [["sudoers", "lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611085: evidence missing — sudoers.lines")
+}
+
+test_rhel_09_611085_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611085 == "Not_a_Finding" with input as object.union(green_fixture, {"sudoers": {"lines": [{"file": "/etc/sudoers", "line": "Defaults timestamp_timeout=0"}, {"file": "/etc/sudoers", "line": "Defaults !targetpw"}, {"file": "/etc/sudoers", "line": "Defaults !rootpw"}, {"file": "/etc/sudoers", "line": "Defaults !runaspw"}, {"file": "/etc/sudoers", "line": "root ALL=(ALL) ALL"}, {"file": "/etc/sudoers.d/admins", "line": "%wheel ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL"}, {"file": "/etc/sudoers.d/ops", "line": "%ops ALL=(ALL) NOPASSWD: ALL"}]}, "attest": {"rhel_09_611085_nopasswd_mfa_documented": true}})
+}
+
+test_rhel_09_611145_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611145 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611145_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611145 with input as object.union(green_fixture, {"pam_d": {"sudo": ["auth sufficient pam_succeed_if.so user ingroup wheel", "auth include system-auth"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611145: check failed")
+}
+
+test_rhel_09_611145_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611145 with input as json.remove(green_fixture, [["pam_d", "sudo"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611145: evidence missing — pam_d.sudo")
+}
+
+test_rhel_09_611025_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611025_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611025 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so nullok", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611025: check failed")
+}
+
+test_rhel_09_611025_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611025 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so try_first_pass NULLOK", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611025: check failed")
+}
+
+test_rhel_09_611025_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611025 with input as json.remove(green_fixture, [["pam_d", "system-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611025: evidence missing — pam_d.system-auth")
+}
+
+test_rhel_09_611025_evidence_missing_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611025 with input as json.remove(green_fixture, [["pam_d", "password-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611025: evidence missing — pam_d.password-auth")
+}
+
+test_rhel_09_611030_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611030_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611030 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611030: check failed")
+}
+
+test_rhel_09_611030_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611030 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth sufficient pam_unix.so", "auth required pam_faillock.so preauth", "auth required pam_faillock.so authfail"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611030: check failed")
+}
+
+test_rhel_09_611030_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611030 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_faillock.so authfail", "auth sufficient pam_unix.so", "account required pam_faillock.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611030: check failed")
+}
+
+test_rhel_09_611030_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611030 with input as json.remove(green_fixture, [["pam_d", "system-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611030: evidence missing — pam_d.system-auth")
+}
+
+test_rhel_09_611030_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611030 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}, "attest": {"rhel_09_611030_included_pam_config": true}})
+}
+
+test_rhel_09_611035_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611035_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611035 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611035: check failed")
+}
+
+test_rhel_09_611035_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611035 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth sufficient pam_unix.so", "auth required pam_faillock.so preauth", "auth required pam_faillock.so authfail"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611035: check failed")
+}
+
+test_rhel_09_611035_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611035 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_faillock.so authfail", "auth sufficient pam_unix.so", "account required pam_faillock.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611035: check failed")
+}
+
+test_rhel_09_611035_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611035 with input as json.remove(green_fixture, [["pam_d", "password-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611035: evidence missing — pam_d.password-auth")
+}
+
+test_rhel_09_611035_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611035 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}, "attest": {"rhel_09_611035_included_pam_config": true}})
+}
+
+test_rhel_09_611040_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611040_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611040 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611040: check failed")
+}
+
+test_rhel_09_611040_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611040 with input as json.remove(green_fixture, [["pam_d", "password-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611040: evidence missing — pam_d.password-auth")
+}
+
+test_rhel_09_611040_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611040 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}, "attest": {"rhel_09_611040_included_pam_config": true}})
+}
+
+test_rhel_09_611045_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611045_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611045 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611045: check failed")
+}
+
+test_rhel_09_611045_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611045 with input as json.remove(green_fixture, [["pam_d", "system-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611045: evidence missing — pam_d.system-auth")
+}
+
+test_rhel_09_611045_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611045 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password sufficient pam_unix.so sha512 shadow use_authtok rounds=100000", "session required pam_unix.so"]}, "attest": {"rhel_09_611045_included_pam_config": true}})
+}
+
+test_rhel_09_611050_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611050_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611050 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611050: check failed")
+}
+
+test_rhel_09_611050_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611050 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=5000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611050: check failed")
+}
+
+test_rhel_09_611050_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611050 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611050: check failed")
+}
+
+test_rhel_09_611050_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611050 with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611050: check failed")
+}
+
+test_rhel_09_611050_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611050 with input as json.remove(green_fixture, [["pam_d", "password-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611050: evidence missing — pam_d.password-auth")
+}
+
+test_rhel_09_611050_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611050 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"password-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=200000", "session required pam_unix.so"]}})
+}
+
+test_rhel_09_611055_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611055_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611055 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 shadow use_authtok", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611055: check failed")
+}
+
+test_rhel_09_611055_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611055 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=5000", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611055: check failed")
+}
+
+test_rhel_09_611055_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611055 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611055: check failed")
+}
+
+test_rhel_09_611055_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611055 with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "session required pam_unix.so"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611055: check failed")
+}
+
+test_rhel_09_611055_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611055 with input as json.remove(green_fixture, [["pam_d", "system-auth"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611055: evidence missing — pam_d.system-auth")
+}
+
+test_rhel_09_611055_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611055 == "Not_a_Finding" with input as object.union(green_fixture, {"pam_d": {"system-auth": ["auth required pam_env.so", "auth required pam_faillock.so preauth", "auth sufficient pam_unix.so", "auth required pam_faillock.so authfail", "auth required pam_deny.so", "account required pam_faillock.so", "account required pam_unix.so", "password required pam_pwquality.so", "password sufficient pam_unix.so sha512 rounds=200000", "session required pam_unix.so"]}})
+}
+
+test_rhel_09_611010_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611010_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": 0}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611010: check failed")
+}
+
+test_rhel_09_611010_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": 4}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611010: check failed")
+}
+
+test_rhel_09_611010_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as object.union(green_fixture, {"password_policy": {"retry": "three"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611010: check failed")
+}
+
+test_rhel_09_611010_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611010 with input as json.remove(green_fixture, [["password_policy", "retry"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611010: evidence missing — password_policy.retry")
+}
+
+test_rhel_09_611010_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611010 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"retry": "1"}})
+}
+
+test_rhel_09_611060_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611060_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611060 with input as object.union(green_fixture, {"password_policy": {"enforce_for_root": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611060: check failed")
+}
+
+test_rhel_09_611060_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611060 with input as object.union(green_fixture, {"password_policy": {"enforce_for_root": "false"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611060: check failed")
+}
+
+test_rhel_09_611060_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611060 with input as json.remove(green_fixture, [["password_policy", "enforce_for_root"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611060: evidence missing — password_policy.enforce_for_root")
+}
+
+test_rhel_09_611080_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611080 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611080_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611080 with input as object.union(green_fixture, {"shadow_min_age_below_one": [{"name": "djohnson", "min_days": 0, "system_account": false}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611080: check failed")
+}
+
+test_rhel_09_611080_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611080 with input as object.union(green_fixture, {"shadow_min_age_below_one": [{"name": "djohnson", "min_days": 0}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611080: check failed")
+}
+
+test_rhel_09_611080_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611080 with input as json.remove(green_fixture, [["shadow_min_age_below_one"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611080: evidence missing — shadow_min_age_below_one")
+}
+
+test_rhel_09_611080_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611080 == "Not_a_Finding" with input as object.union(green_fixture, {"shadow_min_age_below_one": [{"name": "bin", "min_days": 0, "system_account": true}]})
+}
+
+test_rhel_09_611105_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611105_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": 0}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611105: check failed")
+}
+
+test_rhel_09_611105_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611105: check failed")
+}
+
+test_rhel_09_611105_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as object.union(green_fixture, {"password_policy": {"dictcheck": "yes"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611105: check failed")
+}
+
+test_rhel_09_611105_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611105 with input as json.remove(green_fixture, [["password_policy", "dictcheck"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611105: evidence missing — password_policy.dictcheck")
+}
+
+test_rhel_09_611105_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611105 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"dictcheck": "1"}})
+}
+
+test_rhel_09_611115_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611115 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611115_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as object.union(green_fixture, {"password_policy": {"difok": 7}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611115: check failed")
+}
+
+test_rhel_09_611115_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as object.union(green_fixture, {"password_policy": {"difok": "5"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611115: check failed")
+}
+
+test_rhel_09_611115_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611115 with input as json.remove(green_fixture, [["password_policy", "difok"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611115: evidence missing — password_policy.difok")
+}
+
+test_rhel_09_611115_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611115 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"difok": "8"}})
+}
+
+test_rhel_09_611120_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611120 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611120_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": 0}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611120: check failed")
+}
+
+test_rhel_09_611120_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": 5}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611120: check failed")
+}
+
+test_rhel_09_611120_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611120: check failed")
+}
+
+test_rhel_09_611120_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611120 with input as json.remove(green_fixture, [["password_policy", "maxclassrepeat"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611120: evidence missing — password_policy.maxclassrepeat")
+}
+
+test_rhel_09_611120_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611120 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxclassrepeat": "4"}})
+}
+
+test_rhel_09_611125_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611125 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611125_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": 4}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611125: check failed")
+}
+
+test_rhel_09_611125_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": -1}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611125: check failed")
+}
+
+test_rhel_09_611125_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as object.union(green_fixture, {"password_policy": {"maxrepeat": "4"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611125: check failed")
+}
+
+test_rhel_09_611125_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611125 with input as json.remove(green_fixture, [["password_policy", "maxrepeat"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611125: evidence missing — password_policy.maxrepeat")
+}
+
+test_rhel_09_611125_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611125 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxrepeat": "3"}})
+}
+
+test_rhel_09_611125_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611125 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"maxrepeat": 0}})
+}
+
+test_rhel_09_611130_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611130 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611130_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as object.union(green_fixture, {"password_policy": {"minclass": 3}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611130: check failed")
+}
+
+test_rhel_09_611130_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as object.union(green_fixture, {"password_policy": {"minclass": "3"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611130: check failed")
+}
+
+test_rhel_09_611130_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611130 with input as json.remove(green_fixture, [["password_policy", "minclass"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611130: evidence missing — password_policy.minclass")
+}
+
+test_rhel_09_611130_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611130 == "Not_a_Finding" with input as object.union(green_fixture, {"password_policy": {"minclass": "4"}})
+}
+
+test_rhel_09_611135_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611135 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611135_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611135 with input as object.union(green_fixture, {"libuser_conf": {"defaults": {"crypt_style": "md5"}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611135: check failed")
+}
+
+test_rhel_09_611135_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611135 with input as object.union(green_fixture, {"libuser_conf": {"defaults": {"crypt_style": null}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611135: check failed")
+}
+
+test_rhel_09_611135_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611135 with input as json.remove(green_fixture, [["packages", "libuser"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611135: evidence missing — packages.libuser")
+}
+
+test_rhel_09_611135_not_applicable_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611135 with input as object.union(green_fixture, {"packages": {"libuser": false}, "libuser_conf": null})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_611195_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611195 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611195_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611195 with input as object.union(green_fixture, {"sulogin_lines": {"emergency.service": {"unit_file": []}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611195: check failed")
+}
+
+test_rhel_09_611195_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611195 with input as object.union(green_fixture, {"sulogin_lines": {"emergency.service": {"unit_file": ["ExecStart=-/usr/bin/bash"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611195: check failed")
+}
+
+test_rhel_09_611195_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611195 with input as object.union(green_fixture, {"sulogin_lines": {"emergency.service": {"unit_file": ["#ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611195: check failed")
+}
+
+test_rhel_09_611195_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611195 with input as json.remove(green_fixture, [["sulogin_lines", "emergency.service", "unit_file"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611195: evidence missing — sulogin_lines.emergency.service.unit_file")
+}
+
+test_rhel_09_611195_evidence_missing_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611195 with input as json.remove(green_fixture, [["sulogin_lines", "emergency.service", "drop_ins"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611195: evidence missing — sulogin_lines.emergency.service.drop_ins")
+}
+
+test_rhel_09_611195_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611195 == "Not_a_Finding" with input as object.union(green_fixture, {"sulogin_lines": {"emergency.service": {"unit_file": [], "drop_ins": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell emergency"]}}})
+}
+
+test_rhel_09_611200_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611200 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_611200_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611200 with input as object.union(green_fixture, {"sulogin_lines": {"rescue.service": {"unit_file": []}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611200: check failed")
+}
+
+test_rhel_09_611200_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611200 with input as object.union(green_fixture, {"sulogin_lines": {"rescue.service": {"unit_file": ["ExecStart=-/usr/bin/bash"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611200: check failed")
+}
+
+test_rhel_09_611200_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611200 with input as object.union(green_fixture, {"sulogin_lines": {"rescue.service": {"unit_file": ["#ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611200: check failed")
+}
+
+test_rhel_09_611200_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611200 with input as json.remove(green_fixture, [["sulogin_lines", "rescue.service", "unit_file"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611200: evidence missing — sulogin_lines.rescue.service.unit_file")
+}
+
+test_rhel_09_611200_evidence_missing_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_611200 with input as json.remove(green_fixture, [["sulogin_lines", "rescue.service", "drop_ins"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-611200: evidence missing — sulogin_lines.rescue.service.drop_ins")
+}
+
+test_rhel_09_611200_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_611200 == "Not_a_Finding" with input as object.union(green_fixture, {"sulogin_lines": {"rescue.service": {"unit_file": [], "drop_ins": ["ExecStart=-/usr/lib/systemd/systemd-sulogin-shell rescue"]}}})
+}
+
+test_rhel_09_671015_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_671015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_671015_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671015 with input as object.union(green_fixture, {"interactive_shadow_hashes": [{"name": "nsauser", "hash": "$y$"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671015: check failed")
+}
+
+test_rhel_09_671015_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671015 with input as object.union(green_fixture, {"interactive_shadow_hashes": [{"name": "nsauser", "hash": "$1$"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671015: check failed")
+}
+
+test_rhel_09_671015_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671015 with input as object.union(green_fixture, {"interactive_shadow_hashes": [{"name": "nsauser"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671015: check failed")
+}
+
+test_rhel_09_671015_fail_4 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671015 with input as object.union(green_fixture, {"interactive_shadow_hashes": [{"name": "nsauser", "hash": ""}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671015: check failed")
+}
+
+test_rhel_09_671015_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671015 with input as json.remove(green_fixture, [["interactive_shadow_hashes"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671015: evidence missing — interactive_shadow_hashes")
+}
+
+test_rhel_09_671015_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_671015 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_shadow_hashes": []})
+}
+
+test_rhel_09_671015_pass_3 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_671015 == "Not_a_Finding" with input as object.union(green_fixture, {"interactive_shadow_hashes": [{"name": "a", "hash": "*"}, {"name": "b", "hash": "!!"}]})
+}
+
+test_rhel_09_671025_pass if {
+	data.stig.rhel_9.account_auth.status_rhel_09_671025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_671025_fail_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671025 with input as object.union(green_fixture, {"pam": {"password_auth": {"pam_unix_password_lines": ["password    sufficient    pam_unix.so yescrypt shadow use_authtok"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671025: check failed")
+}
+
+test_rhel_09_671025_fail_2 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671025 with input as object.union(green_fixture, {"pam": {"password_auth": {"pam_unix_password_lines": []}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671025: check failed")
+}
+
+test_rhel_09_671025_fail_3 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671025 with input as object.union(green_fixture, {"pam": {"password_auth": {"pam_unix_password_lines": ["#password sufficient pam_unix.so sha512"]}}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671025: check failed")
+}
+
+test_rhel_09_671025_evidence_missing_1 if {
+	f := data.stig.rhel_9.account_auth.finding_rhel_09_671025 with input as json.remove(green_fixture, [["pam", "password_auth", "pam_unix_password_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-671025: evidence missing — pam.password_auth.pam_unix_password_lines")
+}
+
+test_rhel_09_671025_pass_2 if {
+	data.stig.rhel_9.account_auth.status_rhel_09_671025 == "Not_a_Finding" with input as object.union(green_fixture, {"pam": {"password_auth": {"pam_unix_password_lines": []}}, "attest": {"rhel_09_671025_included_pam_file": true}})
 }

@@ -6,6 +6,9 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
+	"attest": {
+		"rhel_09_653030_audit_capacity_sufficient": true,
+	},
 	"audit_rules": [
 		"-a always,exit -F arch=b32 -S execve -C uid!=euid -F euid=0 -F key=k",
 		"-a always,exit -F arch=b32 -S execve -C gid!=egid -F egid=0 -F key=k",
@@ -27,13 +30,110 @@ green_fixture := {
 		"-a always,exit -F arch=b64 -F path=/etc/sudoers -F perm=wa -F key=identity",
 		"-w /etc/passwd -p wa -k identity",
 		"-a always,exit -S all -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/bin/umount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+		"-a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+		"-a always,exit -S all -F path=/usr/sbin/semanage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/setfiles -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/setsebool -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged",
+		"-a always,exit -S all -F path=/usr/bin/chage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-chage",
+		"-a always,exit -S all -F path=/usr/bin/chsh -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/bin/crontab -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-crontab",
+		"-a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=modules",
+		"-a always,exit -S all -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-pam_timestamp_check",
+		"-a always,exit -S all -F path=/usr/sbin/postdrop -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/postqueue -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/bin/ssh-agent -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+		"-a always,exit -S all -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+		"-a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-priv_change",
+		"-a always,exit -S all -F path=/usr/bin/sudoedit -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+		"-a always,exit -S all -F path=/usr/sbin/unix_chkpwd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/unix_update -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/userhelper -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+		"-a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-usermod",
+		"-a always,exit -S all -F path=/usr/sbin/useradd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-useradd",
+		"-a always,exit -S all -F path=/usr/bin/mount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+		"-a always,exit -S all -F path=/usr/sbin/init -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-init",
+		"-a always,exit -S all -F path=/usr/sbin/poweroff -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-poweroff",
+		"-a always,exit -S all -F path=/usr/sbin/reboot -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-reboot",
+		"-a always,exit -F arch=b32 -S execve -F path=/usr/bin/gpasswd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b64 -S execve -F path=/usr/bin/gpasswd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/usr/bin/passwd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/usr/bin/passwd -F perm=x -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/group -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/gshadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/etc/shadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -F path=/var/log/faillock -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b64 -F path=/var/log/faillock -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b32 -F path=/var/log/lastlog -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+		"-a always,exit -F arch=b32 -F path=/etc/sudoers.d -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b64 -F path=/etc/sudoers.d -F perm=wa -F key=identity",
+		"-a always,exit -F arch=b32 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b32 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F key=k",
+		"-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k",
+		"-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k",
+		"-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k",
+		"-a always,exit -F arch=b32 -S umount -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
+		"-a always,exit -F arch=b32 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k",
+	],
+	"audit_rules_d": [
+		"-a always,exit -F path=/usr/sbin/shutdown -F perm=x -F auid>=1000 -F auid!=unset -k privileged-shutdown",
+	],
+	"audit_rules_file": [
+		"-D",
+		"-b 8192",
+		"-f 2",
+		"--loginuid-immutable",
+		"-e 2",
 	],
 	"auditd_config": {
+		"action_mail_acct": "root",
+		"admin_space_left": "5%",
+		"admin_space_left_action": "SINGLE",
+		"disk_error_action": "HALT",
 		"disk_full_action": "SYSLOG",
+		"freq": 100,
+		"local_events": "yes",
+		"log_format": "ENRICHED",
 		"max_log_file_action": "ROTATE",
+		"name_format": "hostname",
+		"overflow_action": "SYSLOG",
+		"space_left": "25%",
 		"space_left_action": "EMAIL",
+		"write_logs": "yes",
 	},
-	"services": {"auditd": "active"},
+	"grub": {
+		"kernel_args": [
+			"root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192",
+			"root=/dev/mapper/rhel-root ro audit=1 vsyscall=none page_poison=1 init_on_free=1 pti=on audit_backlog_limit=8192",
+		],
+	},
+	"packages": {
+		"audispd-plugins": true,
+		"audit": true,
+	},
+	"postfix": {
+		"root_alias": "isso",
+	},
+	"services": {
+		"auditd": "active",
+		"systemd-journald": "active",
+	},
+	"usbguard_daemon_conf": {
+		"AuditBackend": "LinuxAudit",
+	},
 }
 
 test_every_finding_open_on_empty_input if {
@@ -505,4 +605,2348 @@ test_rhel_09_653040_evidence_missing_1 if {
 
 test_rhel_09_653040_pass_2 if {
 	data.stig.rhel_9.audit_logging.status_rhel_09_653040 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"space_left_action": "ignore"}, "attest": {"rhel_09_653040_realtime_alerts": true}})
+}
+
+test_rhel_09_211040_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_211040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211040_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_211040 with input as object.union(green_fixture, {"services": {"systemd-journald": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211040: check failed")
+}
+
+test_rhel_09_211040_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_211040 with input as object.union(green_fixture, {"services": {"systemd-journald": "failed"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211040: check failed")
+}
+
+test_rhel_09_211040_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_211040 with input as json.remove(green_fixture, [["services", "systemd-journald"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211040: evidence missing — services.systemd-journald")
+}
+
+test_rhel_09_291025_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_291025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_291025_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_291025 with input as object.union(green_fixture, {"usbguard_daemon_conf": {"AuditBackend": "FileAudit"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291025: check failed")
+}
+
+test_rhel_09_291025_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_291025 with input as object.union(green_fixture, {"usbguard_daemon_conf": {"AuditBackend": "FileAudit"}, "virtual_machine": true, "usb_peripherals": ["Bus 001 Device 002: ID 0627:0001 QEMU USB Tablet"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291025: check failed")
+}
+
+test_rhel_09_291025_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_291025 with input as json.remove(green_fixture, [["usbguard_daemon_conf", "AuditBackend"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-291025: evidence missing — usbguard_daemon_conf.AuditBackend")
+}
+
+test_rhel_09_291025_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_291025 == "Not_a_Finding" with input as object.union(green_fixture, {"usbguard_daemon_conf": {"AuditBackend": "FileAudit"}, "virtual_machine": true, "usb_peripherals": []})
+}
+
+test_rhel_09_653010_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653010_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653010 with input as object.union(green_fixture, {"packages": {"audit": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653010: check failed")
+}
+
+test_rhel_09_653010_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653010 with input as json.remove(green_fixture, [["packages", "audit"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653010: evidence missing — packages.audit")
+}
+
+test_rhel_09_653020_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653020 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653020_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653020 with input as object.union(green_fixture, {"auditd_config": {"disk_error_action": "ignore"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653020: check failed")
+}
+
+test_rhel_09_653020_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653020 with input as object.union(green_fixture, {"auditd_config": {"disk_error_action": "suspend"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653020: check failed")
+}
+
+test_rhel_09_653020_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653020 with input as json.remove(green_fixture, [["auditd_config", "disk_error_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653020: evidence missing — auditd_config.disk_error_action")
+}
+
+test_rhel_09_653020_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653020 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_error_action": "syslog"}})
+}
+
+test_rhel_09_653020_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653020 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_error_action": "Single"}})
+}
+
+test_rhel_09_653020_pass_4 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653020 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"disk_error_action": "ignore"}, "attest": {"rhel_09_653020_disk_error_action": true}})
+}
+
+test_rhel_09_653030_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653030_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653030 with input as object.union(green_fixture, {"attest": {"rhel_09_653030_audit_capacity_sufficient": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653030: check failed")
+}
+
+test_rhel_09_653035_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653035_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653035 with input as object.union(green_fixture, {"auditd_config": {"space_left": "10%"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653035: check failed")
+}
+
+test_rhel_09_653035_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653035 with input as object.union(green_fixture, {"auditd_config": {"space_left": "75"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653035: check failed")
+}
+
+test_rhel_09_653035_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653035 with input as object.union(green_fixture, {"auditd_config": {"space_left": 25}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653035: check failed")
+}
+
+test_rhel_09_653035_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653035 with input as json.remove(green_fixture, [["auditd_config", "space_left"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653035: evidence missing — auditd_config.space_left")
+}
+
+test_rhel_09_653035_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653035 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"space_left": "30%"}})
+}
+
+test_rhel_09_653045_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653045_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653045 with input as object.union(green_fixture, {"auditd_config": {"admin_space_left": "2%"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653045: check failed")
+}
+
+test_rhel_09_653045_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653045 with input as object.union(green_fixture, {"auditd_config": {"admin_space_left": "50"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653045: check failed")
+}
+
+test_rhel_09_653045_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653045 with input as object.union(green_fixture, {"auditd_config": {"admin_space_left": "10%"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653045: check failed")
+}
+
+test_rhel_09_653045_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653045 with input as json.remove(green_fixture, [["auditd_config", "admin_space_left"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653045: evidence missing — auditd_config.admin_space_left")
+}
+
+test_rhel_09_653050_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653050_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653050 with input as object.union(green_fixture, {"auditd_config": {"admin_space_left_action": "suspend"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653050: check failed")
+}
+
+test_rhel_09_653050_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653050 with input as object.union(green_fixture, {"auditd_config": {"admin_space_left_action": "halt"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653050: check failed")
+}
+
+test_rhel_09_653050_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653050 with input as json.remove(green_fixture, [["auditd_config", "admin_space_left_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653050: evidence missing — auditd_config.admin_space_left_action")
+}
+
+test_rhel_09_653050_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653050 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"admin_space_left_action": "suspend"}, "attest": {"rhel_09_653050_realtime_alerts": true}})
+}
+
+test_rhel_09_653060_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653060_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653060 with input as object.union(green_fixture, {"auditd_config": {"name_format": "none"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653060: check failed")
+}
+
+test_rhel_09_653060_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653060 with input as object.union(green_fixture, {"auditd_config": {"name_format": "user"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653060: check failed")
+}
+
+test_rhel_09_653060_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653060 with input as json.remove(green_fixture, [["auditd_config", "name_format"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653060: evidence missing — auditd_config.name_format")
+}
+
+test_rhel_09_653060_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653060 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"name_format": "FQD"}})
+}
+
+test_rhel_09_653060_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653060 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"name_format": "NUMERIC"}})
+}
+
+test_rhel_09_653065_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653065_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653065 with input as object.union(green_fixture, {"auditd_config": {"overflow_action": "ignore"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653065: check failed")
+}
+
+test_rhel_09_653065_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653065 with input as object.union(green_fixture, {"auditd_config": {"overflow_action": "suspend"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653065: check failed")
+}
+
+test_rhel_09_653065_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653065 with input as json.remove(green_fixture, [["auditd_config", "overflow_action"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653065: evidence missing — auditd_config.overflow_action")
+}
+
+test_rhel_09_653065_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653065 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"overflow_action": "SINGLE"}})
+}
+
+test_rhel_09_653065_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653065 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"overflow_action": "HALT"}})
+}
+
+test_rhel_09_653065_pass_4 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653065 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"overflow_action": "ignore"}, "attest": {"rhel_09_653065_audit_offload": true}})
+}
+
+test_rhel_09_653075_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653075_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653075 with input as object.union(green_fixture, {"auditd_config": {"local_events": "no"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653075: check failed")
+}
+
+test_rhel_09_653075_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653075 with input as json.remove(green_fixture, [["auditd_config", "local_events"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653075: evidence missing — auditd_config.local_events")
+}
+
+test_rhel_09_653100_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653100_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653100 with input as object.union(green_fixture, {"auditd_config": {"log_format": "raw"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653100: check failed")
+}
+
+test_rhel_09_653100_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653100 with input as json.remove(green_fixture, [["auditd_config", "log_format"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653100: evidence missing — auditd_config.log_format")
+}
+
+test_rhel_09_653105_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653105_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653105 with input as object.union(green_fixture, {"auditd_config": {"write_logs": "no"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653105: check failed")
+}
+
+test_rhel_09_653105_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653105 with input as json.remove(green_fixture, [["auditd_config", "write_logs"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653105: evidence missing — auditd_config.write_logs")
+}
+
+test_rhel_09_653070_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653070 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653070_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653070 with input as object.union(green_fixture, {"auditd_config": {"action_mail_acct": "nobody"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653070: check failed")
+}
+
+test_rhel_09_653070_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653070 with input as json.remove(green_fixture, [["auditd_config", "action_mail_acct"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653070: evidence missing — auditd_config.action_mail_acct")
+}
+
+test_rhel_09_653070_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653070 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"action_mail_acct": "isso@example.mil"}, "attest": {"rhel_09_653070_failure_notification": true}})
+}
+
+test_rhel_09_653095_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653095_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": 0}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653095: check failed")
+}
+
+test_rhel_09_653095_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": 101}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653095: check failed")
+}
+
+test_rhel_09_653095_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as object.union(green_fixture, {"auditd_config": {"freq": "fifty"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653095: check failed")
+}
+
+test_rhel_09_653095_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653095 with input as json.remove(green_fixture, [["auditd_config", "freq"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653095: evidence missing — auditd_config.freq")
+}
+
+test_rhel_09_653095_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653095 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"freq": "50"}})
+}
+
+test_rhel_09_653095_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653095 == "Not_a_Finding" with input as object.union(green_fixture, {"auditd_config": {"freq": 1}})
+}
+
+test_rhel_09_653130_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653130 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653130_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653130 with input as object.union(green_fixture, {"packages": {"audispd-plugins": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653130: check failed")
+}
+
+test_rhel_09_653130_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653130 with input as json.remove(green_fixture, [["packages", "audispd-plugins"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653130: evidence missing — packages.audispd-plugins")
+}
+
+test_rhel_09_653125_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653125 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653125_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653125 with input as object.union(green_fixture, {"postfix": {"root_alias": ""}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653125: check failed")
+}
+
+test_rhel_09_653125_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653125 with input as object.union(green_fixture, {"postfix": {"root_alias": ["isso"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653125: check failed")
+}
+
+test_rhel_09_653125_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653125 with input as json.remove(green_fixture, [["postfix", "root_alias"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653125: evidence missing — postfix.root_alias")
+}
+
+test_rhel_09_653120_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653120 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_653120_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653120 with input as object.union(green_fixture, {"grub": {"kernel_args": ["ro audit=1 audit_backlog_limit=8192", "ro audit=1 audit_backlog_limit=4096"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653120: check failed")
+}
+
+test_rhel_09_653120_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653120 with input as object.union(green_fixture, {"grub": {"kernel_args": ["ro audit_backlog_limit=large"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653120: check failed")
+}
+
+test_rhel_09_653120_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653120 with input as object.union(green_fixture, {"grub": {"kernel_args": "ro audit_backlog_limit=8192"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653120: check failed")
+}
+
+test_rhel_09_653120_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_653120 with input as json.remove(green_fixture, [["grub", "kernel_args"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-653120: evidence missing — grub.kernel_args")
+}
+
+test_rhel_09_653120_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653120 == "Not_a_Finding" with input as object.union(green_fixture, {"grub": {"kernel_args": ["ro audit=1 audit_backlog_limit=16384"]}})
+}
+
+test_rhel_09_653120_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_653120 == "Not_a_Finding" with input as object.union(green_fixture, {"grub": {"kernel_args": ["ro audit=1"]}})
+}
+
+test_rhel_09_654030_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654030_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654030 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654030: check failed")
+}
+
+test_rhel_09_654030_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654030 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/umount -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654030: check failed")
+}
+
+test_rhel_09_654030_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654030 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/umount -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654030: check failed")
+}
+
+test_rhel_09_654030_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654030 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/umount.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654030: check failed")
+}
+
+test_rhel_09_654030_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654030 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654030: evidence missing — audit_rules")
+}
+
+test_rhel_09_654030_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654030 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/umount -p x -k k"]})
+}
+
+test_rhel_09_654030_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654030 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/umount -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654035_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654035_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654035 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654035: check failed")
+}
+
+test_rhel_09_654035_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654035 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chacl -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654035: check failed")
+}
+
+test_rhel_09_654035_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654035 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chacl -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654035: check failed")
+}
+
+test_rhel_09_654035_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654035 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/chacl.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654035: check failed")
+}
+
+test_rhel_09_654035_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654035 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654035: evidence missing — audit_rules")
+}
+
+test_rhel_09_654035_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654035 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chacl -p x -k k"]})
+}
+
+test_rhel_09_654035_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654035 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chacl -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654040_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654040_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654040 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654040: check failed")
+}
+
+test_rhel_09_654040_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654040 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/setfacl -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654040: check failed")
+}
+
+test_rhel_09_654040_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654040 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/setfacl -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654040: check failed")
+}
+
+test_rhel_09_654040_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654040 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/setfacl.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654040: check failed")
+}
+
+test_rhel_09_654040_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654040 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654040: evidence missing — audit_rules")
+}
+
+test_rhel_09_654040_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654040 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/setfacl -p x -k k"]})
+}
+
+test_rhel_09_654040_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654040 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/setfacl -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654045_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654045_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654045 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654045: check failed")
+}
+
+test_rhel_09_654045_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654045 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chcon -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654045: check failed")
+}
+
+test_rhel_09_654045_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654045 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chcon -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654045: check failed")
+}
+
+test_rhel_09_654045_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654045 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/chcon.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654045: check failed")
+}
+
+test_rhel_09_654045_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654045 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654045: evidence missing — audit_rules")
+}
+
+test_rhel_09_654045_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654045 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chcon -p x -k k"]})
+}
+
+test_rhel_09_654045_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654045 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chcon -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654050_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654050_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654050 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654050: check failed")
+}
+
+test_rhel_09_654050_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654050 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/semanage -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654050: check failed")
+}
+
+test_rhel_09_654050_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654050 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/semanage -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654050: check failed")
+}
+
+test_rhel_09_654050_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654050 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/semanage.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654050: check failed")
+}
+
+test_rhel_09_654050_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654050 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654050: evidence missing — audit_rules")
+}
+
+test_rhel_09_654050_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654050 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/semanage -p x -k k"]})
+}
+
+test_rhel_09_654050_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654050 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/semanage -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654055_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654055_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654055 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654055: check failed")
+}
+
+test_rhel_09_654055_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654055 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/setfiles -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654055: check failed")
+}
+
+test_rhel_09_654055_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654055 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/setfiles -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654055: check failed")
+}
+
+test_rhel_09_654055_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654055 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/setfiles.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654055: check failed")
+}
+
+test_rhel_09_654055_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654055 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654055: evidence missing — audit_rules")
+}
+
+test_rhel_09_654055_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654055 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/setfiles -p x -k k"]})
+}
+
+test_rhel_09_654055_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654055 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/setfiles -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654060_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654060_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654060 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654060: check failed")
+}
+
+test_rhel_09_654060_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654060 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/setsebool -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654060: check failed")
+}
+
+test_rhel_09_654060_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654060 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/setsebool -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654060: check failed")
+}
+
+test_rhel_09_654060_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654060 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/setsebool.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654060: check failed")
+}
+
+test_rhel_09_654060_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654060 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654060: evidence missing — audit_rules")
+}
+
+test_rhel_09_654060_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654060 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/setsebool -p x -k k"]})
+}
+
+test_rhel_09_654060_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654060 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/setsebool -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654085_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654085 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654085_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654085 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654085: check failed")
+}
+
+test_rhel_09_654085_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654085 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chage -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654085: check failed")
+}
+
+test_rhel_09_654085_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654085 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chage -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654085: check failed")
+}
+
+test_rhel_09_654085_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654085 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/chage.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654085: check failed")
+}
+
+test_rhel_09_654085_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654085 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654085: evidence missing — audit_rules")
+}
+
+test_rhel_09_654085_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654085 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chage -p x -k k"]})
+}
+
+test_rhel_09_654085_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654085 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chage -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654090_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654090_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654090 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654090: check failed")
+}
+
+test_rhel_09_654090_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654090 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chsh -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654090: check failed")
+}
+
+test_rhel_09_654090_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654090 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chsh -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654090: check failed")
+}
+
+test_rhel_09_654090_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654090 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/chsh.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654090: check failed")
+}
+
+test_rhel_09_654090_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654090 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654090: evidence missing — audit_rules")
+}
+
+test_rhel_09_654090_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654090 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/chsh -p x -k k"]})
+}
+
+test_rhel_09_654090_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654090 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/chsh -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654095_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654095_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654095 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654095: check failed")
+}
+
+test_rhel_09_654095_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654095 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/crontab -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654095: check failed")
+}
+
+test_rhel_09_654095_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654095 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/crontab -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654095: check failed")
+}
+
+test_rhel_09_654095_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654095 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/crontab.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654095: check failed")
+}
+
+test_rhel_09_654095_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654095 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654095: evidence missing — audit_rules")
+}
+
+test_rhel_09_654095_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654095 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/crontab -p x -k k"]})
+}
+
+test_rhel_09_654095_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654095 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/crontab -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654105_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654105 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654105_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654105 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654105: check failed")
+}
+
+test_rhel_09_654105_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654105 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/kmod -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654105: check failed")
+}
+
+test_rhel_09_654105_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654105 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/kmod -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654105: check failed")
+}
+
+test_rhel_09_654105_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654105 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/kmod.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654105: check failed")
+}
+
+test_rhel_09_654105_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654105 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654105: evidence missing — audit_rules")
+}
+
+test_rhel_09_654105_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654105 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/kmod -p x -k k"]})
+}
+
+test_rhel_09_654105_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654105 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/kmod -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654110_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654110 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654110_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654110 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654110: check failed")
+}
+
+test_rhel_09_654110_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654110 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/newgrp -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654110: check failed")
+}
+
+test_rhel_09_654110_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654110 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/newgrp -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654110: check failed")
+}
+
+test_rhel_09_654110_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654110 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/newgrp.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654110: check failed")
+}
+
+test_rhel_09_654110_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654110 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654110: evidence missing — audit_rules")
+}
+
+test_rhel_09_654110_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654110 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/newgrp -p x -k k"]})
+}
+
+test_rhel_09_654110_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654110 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/newgrp -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654115_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654115 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654115_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654115 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654115: check failed")
+}
+
+test_rhel_09_654115_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654115 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/pam_timestamp_check -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654115: check failed")
+}
+
+test_rhel_09_654115_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654115 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/pam_timestamp_check -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654115: check failed")
+}
+
+test_rhel_09_654115_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654115 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/pam_timestamp_check.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654115: check failed")
+}
+
+test_rhel_09_654115_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654115 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654115: evidence missing — audit_rules")
+}
+
+test_rhel_09_654115_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654115 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/pam_timestamp_check -p x -k k"]})
+}
+
+test_rhel_09_654115_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654115 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/pam_timestamp_check -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654125_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654125 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654125_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654125 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654125: check failed")
+}
+
+test_rhel_09_654125_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654125 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/postdrop -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654125: check failed")
+}
+
+test_rhel_09_654125_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654125 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/postdrop -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654125: check failed")
+}
+
+test_rhel_09_654125_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654125 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/postdrop.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654125: check failed")
+}
+
+test_rhel_09_654125_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654125 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654125: evidence missing — audit_rules")
+}
+
+test_rhel_09_654125_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654125 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/postdrop -p x -k k"]})
+}
+
+test_rhel_09_654125_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654125 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/postdrop -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654130_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654130 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654130_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654130 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654130: check failed")
+}
+
+test_rhel_09_654130_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654130 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/postqueue -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654130: check failed")
+}
+
+test_rhel_09_654130_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654130 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/postqueue -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654130: check failed")
+}
+
+test_rhel_09_654130_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654130 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/postqueue.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654130: check failed")
+}
+
+test_rhel_09_654130_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654130 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654130: evidence missing — audit_rules")
+}
+
+test_rhel_09_654130_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654130 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/postqueue -p x -k k"]})
+}
+
+test_rhel_09_654130_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654130 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/postqueue -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654135_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654135 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654135_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654135 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654135: check failed")
+}
+
+test_rhel_09_654135_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654135 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/ssh-agent -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654135: check failed")
+}
+
+test_rhel_09_654135_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654135 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/ssh-agent -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654135: check failed")
+}
+
+test_rhel_09_654135_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654135 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/ssh-agent.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654135: check failed")
+}
+
+test_rhel_09_654135_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654135 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654135: evidence missing — audit_rules")
+}
+
+test_rhel_09_654135_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654135 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/ssh-agent -p x -k k"]})
+}
+
+test_rhel_09_654135_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654135 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/ssh-agent -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654140_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654140 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654140_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654140 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654140: check failed")
+}
+
+test_rhel_09_654140_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654140 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/libexec/openssh/ssh-keysign -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654140: check failed")
+}
+
+test_rhel_09_654140_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654140 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654140: check failed")
+}
+
+test_rhel_09_654140_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654140 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/libexec/openssh/ssh-keysign.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654140: check failed")
+}
+
+test_rhel_09_654140_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654140 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654140: evidence missing — audit_rules")
+}
+
+test_rhel_09_654140_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654140 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/libexec/openssh/ssh-keysign -p x -k k"]})
+}
+
+test_rhel_09_654140_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654140 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/libexec/openssh/ssh-keysign -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654145_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654145 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654145_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654145 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654145: check failed")
+}
+
+test_rhel_09_654145_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654145 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/su -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654145: check failed")
+}
+
+test_rhel_09_654145_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654145 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654145: check failed")
+}
+
+test_rhel_09_654145_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654145 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/su.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654145: check failed")
+}
+
+test_rhel_09_654145_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654145 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654145: evidence missing — audit_rules")
+}
+
+test_rhel_09_654145_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654145 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/su -p x -k k"]})
+}
+
+test_rhel_09_654145_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654145 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/su -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654155_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654155 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654155_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654155 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654155: check failed")
+}
+
+test_rhel_09_654155_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654155 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/sudoedit -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654155: check failed")
+}
+
+test_rhel_09_654155_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654155 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/sudoedit -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654155: check failed")
+}
+
+test_rhel_09_654155_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654155 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/sudoedit.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654155: check failed")
+}
+
+test_rhel_09_654155_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654155 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654155: evidence missing — audit_rules")
+}
+
+test_rhel_09_654155_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654155 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/sudoedit -p x -k k"]})
+}
+
+test_rhel_09_654155_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654155 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/sudoedit -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654160_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654160 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654160_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654160 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654160: check failed")
+}
+
+test_rhel_09_654160_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654160 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/unix_chkpwd -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654160: check failed")
+}
+
+test_rhel_09_654160_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654160 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/unix_chkpwd -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654160: check failed")
+}
+
+test_rhel_09_654160_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654160 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/unix_chkpwd.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654160: check failed")
+}
+
+test_rhel_09_654160_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654160 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654160: evidence missing — audit_rules")
+}
+
+test_rhel_09_654160_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654160 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/unix_chkpwd -p x -k k"]})
+}
+
+test_rhel_09_654160_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654160 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/unix_chkpwd -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654165_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654165 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654165_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654165 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654165: check failed")
+}
+
+test_rhel_09_654165_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654165 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/unix_update -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654165: check failed")
+}
+
+test_rhel_09_654165_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654165 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/unix_update -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654165: check failed")
+}
+
+test_rhel_09_654165_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654165 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/unix_update.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654165: check failed")
+}
+
+test_rhel_09_654165_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654165 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654165: evidence missing — audit_rules")
+}
+
+test_rhel_09_654165_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654165 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/unix_update -p x -k k"]})
+}
+
+test_rhel_09_654165_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654165 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/unix_update -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654170_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654170 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654170_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654170 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654170: check failed")
+}
+
+test_rhel_09_654170_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654170 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/userhelper -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654170: check failed")
+}
+
+test_rhel_09_654170_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654170 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/userhelper -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654170: check failed")
+}
+
+test_rhel_09_654170_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654170 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/userhelper.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654170: check failed")
+}
+
+test_rhel_09_654170_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654170 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654170: evidence missing — audit_rules")
+}
+
+test_rhel_09_654170_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654170 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/userhelper -p x -k k"]})
+}
+
+test_rhel_09_654170_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654170 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/userhelper -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654175_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654175 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654175_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654175 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654175: check failed")
+}
+
+test_rhel_09_654175_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654175 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/usermod -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654175: check failed")
+}
+
+test_rhel_09_654175_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654175 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/usermod -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654175: check failed")
+}
+
+test_rhel_09_654175_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654175 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/usermod.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654175: check failed")
+}
+
+test_rhel_09_654175_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654175 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654175: evidence missing — audit_rules")
+}
+
+test_rhel_09_654175_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654175 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/usermod -p x -k k"]})
+}
+
+test_rhel_09_654175_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654175 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/usermod -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654176_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654176 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654176_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654176 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654176: check failed")
+}
+
+test_rhel_09_654176_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654176 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/useradd -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654176: check failed")
+}
+
+test_rhel_09_654176_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654176 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/useradd -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654176: check failed")
+}
+
+test_rhel_09_654176_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654176 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/useradd.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654176: check failed")
+}
+
+test_rhel_09_654176_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654176 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654176: evidence missing — audit_rules")
+}
+
+test_rhel_09_654176_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654176 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/useradd -p x -k k"]})
+}
+
+test_rhel_09_654176_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654176 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/useradd -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654180_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654180 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654180_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654180 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654180: check failed")
+}
+
+test_rhel_09_654180_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654180 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/mount -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654180: check failed")
+}
+
+test_rhel_09_654180_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654180 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/mount -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654180: check failed")
+}
+
+test_rhel_09_654180_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654180 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/mount.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654180: check failed")
+}
+
+test_rhel_09_654180_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654180 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654180: evidence missing — audit_rules")
+}
+
+test_rhel_09_654180_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654180 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/mount -p x -k k"]})
+}
+
+test_rhel_09_654180_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654180 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/mount -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654185_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654185 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654185_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654185 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654185: check failed")
+}
+
+test_rhel_09_654185_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654185 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/init -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654185: check failed")
+}
+
+test_rhel_09_654185_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654185 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/init -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654185: check failed")
+}
+
+test_rhel_09_654185_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654185 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/init.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654185: check failed")
+}
+
+test_rhel_09_654185_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654185 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654185: evidence missing — audit_rules")
+}
+
+test_rhel_09_654185_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654185 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/init -p x -k k"]})
+}
+
+test_rhel_09_654185_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654185 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/init -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654190_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654190 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654190_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654190 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654190: check failed")
+}
+
+test_rhel_09_654190_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654190 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/poweroff -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654190: check failed")
+}
+
+test_rhel_09_654190_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654190 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/poweroff -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654190: check failed")
+}
+
+test_rhel_09_654190_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654190 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/poweroff.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654190: check failed")
+}
+
+test_rhel_09_654190_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654190 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654190: evidence missing — audit_rules")
+}
+
+test_rhel_09_654190_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654190 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/poweroff -p x -k k"]})
+}
+
+test_rhel_09_654190_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654190 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/poweroff -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654195_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654195 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654195_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654195 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654195: check failed")
+}
+
+test_rhel_09_654195_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654195 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/reboot -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654195: check failed")
+}
+
+test_rhel_09_654195_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654195 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/reboot -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654195: check failed")
+}
+
+test_rhel_09_654195_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654195 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/sbin/reboot.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654195: check failed")
+}
+
+test_rhel_09_654195_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654195 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654195: evidence missing — audit_rules")
+}
+
+test_rhel_09_654195_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654195 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/sbin/reboot -p x -k k"]})
+}
+
+test_rhel_09_654195_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654195 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/sbin/reboot -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654100_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654100 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654100_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654100 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654100: check failed")
+}
+
+test_rhel_09_654100_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654100 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/gpasswd -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654100: check failed")
+}
+
+test_rhel_09_654100_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654100 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/gpasswd -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654100: check failed")
+}
+
+test_rhel_09_654100_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654100 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/gpasswd.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654100: check failed")
+}
+
+test_rhel_09_654100_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654100 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654100: evidence missing — audit_rules")
+}
+
+test_rhel_09_654100_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654100 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/gpasswd -p x -k k"]})
+}
+
+test_rhel_09_654100_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654100 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/gpasswd -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654120_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654120 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654120_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654120 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654120: check failed")
+}
+
+test_rhel_09_654120_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654120 with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/passwd -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654120: check failed")
+}
+
+test_rhel_09_654120_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654120 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/passwd -F perm=x -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654120: check failed")
+}
+
+test_rhel_09_654120_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654120 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/usr/bin/passwd.bak -F perm=x -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654120: check failed")
+}
+
+test_rhel_09_654120_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654120 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654120: evidence missing — audit_rules")
+}
+
+test_rhel_09_654120_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654120 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /usr/bin/passwd -p x -k k"]})
+}
+
+test_rhel_09_654120_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654120 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/usr/bin/passwd -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654225_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654225 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654225_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654225 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654225: check failed")
+}
+
+test_rhel_09_654225_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654225 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/group -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654225: check failed")
+}
+
+test_rhel_09_654225_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654225 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654225: check failed")
+}
+
+test_rhel_09_654225_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654225 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/etc/group.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654225: check failed")
+}
+
+test_rhel_09_654225_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654225 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654225: evidence missing — audit_rules")
+}
+
+test_rhel_09_654225_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654225 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/group -p wa -k k"]})
+}
+
+test_rhel_09_654225_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654225 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/group -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654230_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654230 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654230_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654230 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654230: check failed")
+}
+
+test_rhel_09_654230_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654230 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/gshadow -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654230: check failed")
+}
+
+test_rhel_09_654230_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654230 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654230: check failed")
+}
+
+test_rhel_09_654230_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654230 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/etc/gshadow.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654230: check failed")
+}
+
+test_rhel_09_654230_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654230 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654230: evidence missing — audit_rules")
+}
+
+test_rhel_09_654230_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654230 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/gshadow -p wa -k k"]})
+}
+
+test_rhel_09_654230_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654230 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654235_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654235 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654235_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654235 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654235: check failed")
+}
+
+test_rhel_09_654235_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654235 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/security/opasswd -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654235: check failed")
+}
+
+test_rhel_09_654235_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654235 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654235: check failed")
+}
+
+test_rhel_09_654235_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654235 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/etc/security/opasswd.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654235: check failed")
+}
+
+test_rhel_09_654235_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654235 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654235: evidence missing — audit_rules")
+}
+
+test_rhel_09_654235_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654235 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/security/opasswd -p wa -k k"]})
+}
+
+test_rhel_09_654235_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654235 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654245_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654245 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654245_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654245 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654245: check failed")
+}
+
+test_rhel_09_654245_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654245 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/shadow -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654245: check failed")
+}
+
+test_rhel_09_654245_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654245 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654245: check failed")
+}
+
+test_rhel_09_654245_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654245 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/etc/shadow.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654245: check failed")
+}
+
+test_rhel_09_654245_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654245 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654245: evidence missing — audit_rules")
+}
+
+test_rhel_09_654245_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654245 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/shadow -p wa -k k"]})
+}
+
+test_rhel_09_654245_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654245 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/etc/shadow -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654250_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654250 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654250_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654250 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654250: check failed")
+}
+
+test_rhel_09_654250_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654250 with input as object.union(green_fixture, {"audit_rules": ["-w /var/log/faillock -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654250: check failed")
+}
+
+test_rhel_09_654250_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654250 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/var/log/faillock -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654250: check failed")
+}
+
+test_rhel_09_654250_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654250 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/var/log/faillock.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654250: check failed")
+}
+
+test_rhel_09_654250_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654250 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654250: evidence missing — audit_rules")
+}
+
+test_rhel_09_654250_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654250 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /var/log/faillock -p wa -k k"]})
+}
+
+test_rhel_09_654250_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654250 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/var/log/faillock -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654255_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654255 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654255_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654255 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654255: check failed")
+}
+
+test_rhel_09_654255_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654255 with input as object.union(green_fixture, {"audit_rules": ["-w /var/log/lastlog -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654255: check failed")
+}
+
+test_rhel_09_654255_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654255 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654255: check failed")
+}
+
+test_rhel_09_654255_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654255 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -S all -F path=/var/log/lastlog.bak -F perm=wa -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654255: check failed")
+}
+
+test_rhel_09_654255_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654255 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654255: evidence missing — audit_rules")
+}
+
+test_rhel_09_654255_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654255 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /var/log/lastlog -p wa -k k"]})
+}
+
+test_rhel_09_654255_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654255 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=rwxa -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654220_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654220 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654220_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: check failed")
+}
+
+test_rhel_09_654220_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/sudoers -p wa -k identity"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: check failed")
+}
+
+test_rhel_09_654220_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as object.union(green_fixture, {"audit_rules": ["-w /etc/sudoers.d/ -p r -k identity"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: check failed")
+}
+
+test_rhel_09_654220_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F dir=/etc/sudoers.d -F perm=wa -F uid=0 -F key=identity"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: check failed")
+}
+
+test_rhel_09_654220_fail_5 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F dir=/etc/sudoers.d.bak -F perm=wa -F key=identity"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: check failed")
+}
+
+test_rhel_09_654220_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654220 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654220: evidence missing — audit_rules")
+}
+
+test_rhel_09_654220_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654220 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/sudoers.d/ -p wa -k identity"]})
+}
+
+test_rhel_09_654220_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654220 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-w /etc/sudoers.d -p wa -k identity"]})
+}
+
+test_rhel_09_654220_pass_4 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654220 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F dir=/etc/sudoers.d/ -F perm=wa -F key=identity"]})
+}
+
+test_rhel_09_654220_pass_5 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654220 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -F dir=/etc/sudoers.d -F perm=rwa -F auid>=1000 -F auid!=unset -F key=identity"]})
+}
+
+test_rhel_09_654065_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654065 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654065_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654065 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654065: check failed")
+}
+
+test_rhel_09_654065_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654065 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S rename,unlink,rmdir,renameat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654065: check failed")
+}
+
+test_rhel_09_654065_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654065 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F uid=1000 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654065: check failed")
+}
+
+test_rhel_09_654065_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654065 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat  -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654065: check failed")
+}
+
+test_rhel_09_654065_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654065 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654065: evidence missing — audit_rules")
+}
+
+test_rhel_09_654065_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654065 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S rename,unlink -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S rename,unlink -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k"]})
+}
+
+test_rhel_09_654075_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654075 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654075_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654075 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654075: check failed")
+}
+
+test_rhel_09_654075_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654075 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654075: check failed")
+}
+
+test_rhel_09_654075_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654075 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=-1 -F exe=/usr/bin/true -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654075: check failed")
+}
+
+test_rhel_09_654075_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654075 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k", "-a always,exit -F arch=b64 -S init_module -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654075: check failed")
+}
+
+test_rhel_09_654075_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654075 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654075: evidence missing — audit_rules")
+}
+
+test_rhel_09_654075_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654075 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S init_module,delete_module -F auid>=1000 -F auid!=4294967295 -F key=k", "-a always,exit -F arch=b64 -S init_module,delete_module -F auid>=1000 -F auid!=4294967295 -F key=k"]})
+}
+
+test_rhel_09_654097_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654097 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654097_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: check failed")
+}
+
+test_rhel_09_654097_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: check failed")
+}
+
+test_rhel_09_654097_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: check failed")
+}
+
+test_rhel_09_654097_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=unconfined_t -F auid>=1000 -F auid!=unset -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: check failed")
+}
+
+test_rhel_09_654097_fail_5 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -F key=k", "-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=unset -F key=k", "-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -F uid=0 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: check failed")
+}
+
+test_rhel_09_654097_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654097 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654097: evidence missing — audit_rules")
+}
+
+test_rhel_09_654097_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654097 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -k cron_exec", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F euid=0 -k cron_exec", "-a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=-1 -k cron_exec", "-a always,exit -F arch=b32 -S execve -F subj_type=crond_t -F auid>=1000 -F auid!=-1 -k cron_exec"]})
+}
+
+test_rhel_09_654205_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654205 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654205_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: check failed")
+}
+
+test_rhel_09_654205_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: check failed")
+}
+
+test_rhel_09_654205_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S umount -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: check failed")
+}
+
+test_rhel_09_654205_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount -F auid>=1000 -F auid!=-1 -F uid=1000 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: check failed")
+}
+
+test_rhel_09_654205_fail_5 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount  -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: check failed")
+}
+
+test_rhel_09_654205_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654205 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654205: evidence missing — audit_rules")
+}
+
+test_rhel_09_654205_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654205 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount,umount2 -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654210_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654210 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654210_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654210 with input as object.union(green_fixture, {"audit_rules": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654210: check failed")
+}
+
+test_rhel_09_654210_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654210 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount -F auid>=1000 -F auid!=-1 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654210: check failed")
+}
+
+test_rhel_09_654210_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654210 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F uid=1000 -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654210: check failed")
+}
+
+test_rhel_09_654210_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654210 with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S umount2  -F key=k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654210: check failed")
+}
+
+test_rhel_09_654210_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654210 with input as json.remove(green_fixture, [["audit_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654210: evidence missing — audit_rules")
+}
+
+test_rhel_09_654210_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654210 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k"]})
+}
+
+test_rhel_09_654210_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654210 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules": ["-a always,exit -F arch=b32 -S umount2 -F auid>=1000 -F auid!=unset -F key=k"]})
+}
+
+test_rhel_09_654200_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654200 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654200_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654200 with input as object.union(green_fixture, {"audit_rules_d": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654200: check failed")
+}
+
+test_rhel_09_654200_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654200 with input as object.union(green_fixture, {"audit_rules_d": ["-w /usr/sbin/shutdown -p r -k k"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654200: check failed")
+}
+
+test_rhel_09_654200_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654200 with input as object.union(green_fixture, {"audit_rules_d": ["-a always,exit -F path=/usr/sbin/reboot -F perm=x -F auid>=1000 -F auid!=unset -k privileged-shutdown"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654200: check failed")
+}
+
+test_rhel_09_654200_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654200 with input as object.union(green_fixture, {"audit_rules_d": ["-a always,exit -F path=/usr/sbin/shutdown -F perm=x -F uid=0 -F auid>=1000 -F auid!=unset -k privileged-shutdown"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654200: check failed")
+}
+
+test_rhel_09_654200_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654200 with input as json.remove(green_fixture, [["audit_rules_d"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654200: evidence missing — audit_rules_d")
+}
+
+test_rhel_09_654200_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654200 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules_d": ["-a always,exit -S all -F path=/usr/sbin/shutdown -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-shutdown"]})
+}
+
+test_rhel_09_654200_pass_3 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654200 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules_d": ["-w /usr/sbin/shutdown -p x -k privileged-shutdown"]})
+}
+
+test_rhel_09_654265_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654265 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654265_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654265 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 1", "--loginuid-immutable", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654265: check failed")
+}
+
+test_rhel_09_654265_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654265 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "--loginuid-immutable", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654265: check failed")
+}
+
+test_rhel_09_654265_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654265 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 2", "-f 1", "--loginuid-immutable", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654265: check failed")
+}
+
+test_rhel_09_654265_fail_4 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654265 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "#-f 2", "--loginuid-immutable", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654265: check failed")
+}
+
+test_rhel_09_654265_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654265 with input as json.remove(green_fixture, [["audit_rules_file"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654265: evidence missing — audit_rules_file")
+}
+
+test_rhel_09_654265_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654265 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 1", "--loginuid-immutable", "-e 2"], "attest": {"rhel_09_654265_availability_overriding": true}})
+}
+
+test_rhel_09_654270_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654270 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654270_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654270 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-b 8192", "-f 2", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654270: check failed")
+}
+
+test_rhel_09_654270_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654270 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 2", "# --loginuid-immutable", "-e 2"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654270: check failed")
+}
+
+test_rhel_09_654270_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654270 with input as json.remove(green_fixture, [["audit_rules_file"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654270: evidence missing — audit_rules_file")
+}
+
+test_rhel_09_654275_pass if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654275 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_654275_fail_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654275 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 2", "--loginuid-immutable", "-e 1"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654275: check failed")
+}
+
+test_rhel_09_654275_fail_2 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654275 with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-e 2", "-f 2", "--loginuid-immutable"]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654275: check failed")
+}
+
+test_rhel_09_654275_fail_3 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654275 with input as object.union(green_fixture, {"audit_rules_file": []})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654275: check failed")
+}
+
+test_rhel_09_654275_evidence_missing_1 if {
+	f := data.stig.rhel_9.audit_logging.finding_rhel_09_654275 with input as json.remove(green_fixture, [["audit_rules_file"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-654275: evidence missing — audit_rules_file")
+}
+
+test_rhel_09_654275_pass_2 if {
+	data.stig.rhel_9.audit_logging.status_rhel_09_654275 == "Not_a_Finding" with input as object.union(green_fixture, {"audit_rules_file": ["-D", "-f 2", "--loginuid-immutable", "-e   2", "# end"]})
 }

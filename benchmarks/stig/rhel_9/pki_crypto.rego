@@ -120,6 +120,13 @@ _dod_root_valid(c) if {
 	now < na
 }
 
+# a gsettings boolean (`gsettings get` / `gsettings writable`): "true" / "false" as printed, or a JSON boolean
+_gs_bool(path) := lower(s) if s := _str(path)
+
+_gs_bool(path) := "true" if object.get(input, path, null) == true
+
+_gs_bool(path) := "false" if object.get(input, path, null) == false
+
 # =============================================================================
 # CAT I - HIGH SEVERITY
 # =============================================================================
@@ -195,6 +202,132 @@ finding_rhel_09_672055 := {
 	"status": status_rhel_09_672055,
 	"detail": detail_rhel_09_672055,
 	"fix_text": "Add .include = /etc/crypto-policies/back-ends/opensslcnf.config to /etc/pki/tls/openssl.cnf",
+}
+
+# RHEL-09-215100 | V-258234 | CAT I
+# the crypto-policies package must be installed (dnf list --installed crypto-policies)
+missing_rhel_09_215100 := [concat(".", p) | some p in [["packages", "crypto-policies"]]; not _collected(p)]
+
+default crypto_policies_installed := false
+
+crypto_policies_installed if {
+	count(missing_rhel_09_215100) == 0
+	input.packages["crypto-policies"] == true
+}
+
+status_rhel_09_215100 := "Not_a_Finding" if crypto_policies_installed
+
+else := "Open"
+
+detail_rhel_09_215100 := "RHEL-09-215100: Not_a_Finding" if crypto_policies_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215100", concat(", ", missing_rhel_09_215100)]) if count(missing_rhel_09_215100) > 0
+
+else := "RHEL-09-215100: check failed — the crypto-policies package must be installed"
+
+finding_rhel_09_215100 := {
+	"vuln_id": "V-258234",
+	"stig_id": "RHEL-09-215100",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must have the crypto-policies package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215100,
+	"detail": detail_rhel_09_215100,
+	"fix_text": "Install the package: dnf install crypto-policies",
+}
+
+# RHEL-09-671020 | V-258232 | CAT I
+# input.packages.libreswan; the lines of /etc/ipsec.conf and /etc/ipsec.d/*.conf that contain include (grep include), with the file name prefix removed
+missing_rhel_09_671020 := [concat(".", p) | some p in [["packages", "libreswan"], ["ipsec", "include_lines"]]; not _collected(p)]
+
+default ipsec_uses_crypto_policy := false
+
+ipsec_uses_crypto_policy if {
+	count(missing_rhel_09_671020) == 0
+	input.packages.libreswan == true
+	ls := input.ipsec.include_lines
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	regex.match(`^\s*include\s+/etc/crypto-policies/back-ends/libreswan\.config\s*$`, l)
+}
+
+default na_rhel_09_671020 := false
+
+na_rhel_09_671020 if {
+	input.packages.libreswan == false
+}
+
+status_rhel_09_671020 := "Not_a_Finding" if ipsec_uses_crypto_policy
+
+else := "Not_Applicable" if na_rhel_09_671020
+
+else := "Open"
+
+detail_rhel_09_671020 := "RHEL-09-671020: Not_a_Finding" if ipsec_uses_crypto_policy
+
+else := "RHEL-09-671020: Not_Applicable — the libreswan package is not installed" if na_rhel_09_671020
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-671020", concat(", ", missing_rhel_09_671020)]) if count(missing_rhel_09_671020) > 0
+
+else := "RHEL-09-671020: check failed — /etc/ipsec.conf or /etc/ipsec.d/*.conf must contain include /etc/crypto-policies/back-ends/libreswan.config when the libreswan package is installed"
+
+finding_rhel_09_671020 := {
+	"vuln_id": "V-258232",
+	"stig_id": "RHEL-09-671020",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 IP tunnels must use FIPS 140-3 approved cryptographic algorithms.",
+	"check_type": "machine",
+	"status": status_rhel_09_671020,
+	"detail": detail_rhel_09_671020,
+	"fix_text": "Add to /etc/ipsec.conf: include /etc/crypto-policies/back-ends/libreswan.config",
+}
+
+# RHEL-09-672050 | V-258242 | CAT I
+# input.packages.bind; the lines of /etc/named.conf that contain include (grep include), with the file name prefix removed
+missing_rhel_09_672050 := [concat(".", p) | some p in [["packages", "bind"], ["named", "include_lines"]]; not _collected(p)]
+
+default bind_uses_crypto_policy := false
+
+bind_uses_crypto_policy if {
+	count(missing_rhel_09_672050) == 0
+	input.packages.bind == true
+	ls := input.named.include_lines
+	is_array(ls)
+	some l in ls
+	is_string(l)
+	regex.match(`^\s*include\s+\"/etc/crypto-policies/back-ends/bind\.config\"\s*;`, l)
+}
+
+default na_rhel_09_672050 := false
+
+na_rhel_09_672050 if {
+	input.packages.bind == false
+}
+
+status_rhel_09_672050 := "Not_a_Finding" if bind_uses_crypto_policy
+
+else := "Not_Applicable" if na_rhel_09_672050
+
+else := "Open"
+
+detail_rhel_09_672050 := "RHEL-09-672050: Not_a_Finding" if bind_uses_crypto_policy
+
+else := "RHEL-09-672050: Not_Applicable — the bind package is not installed" if na_rhel_09_672050
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-672050", concat(", ", missing_rhel_09_672050)]) if count(missing_rhel_09_672050) > 0
+
+else := "RHEL-09-672050: check failed — /etc/named.conf must contain include \"/etc/crypto-policies/back-ends/bind.config\"; (uncommented) when the bind package is installed"
+
+finding_rhel_09_672050 := {
+	"vuln_id": "V-258242",
+	"stig_id": "RHEL-09-672050",
+	"severity": "CAT I",
+	"rule_title": "RHEL 9 must implement DoW-approved encryption in the bind package.",
+	"check_type": "machine",
+	"status": status_rhel_09_672050,
+	"detail": detail_rhel_09_672050,
+	"fix_text": "Add to the options section of /etc/named.conf: include \"/etc/crypto-policies/back-ends/bind.config\";",
 }
 
 # =============================================================================
@@ -388,6 +521,377 @@ finding_rhel_09_631015 := {
 	"fix_text": "Add a [certmap/<domain>/<rule>] section with matchrule and maprule to /etc/sssd/sssd.conf",
 }
 
+# RHEL-09-215075 | V-257838 | CAT II
+# the openssl-pkcs11 package must be installed (dnf list --installed openssl-pkcs11); Not Applicable on input.attest.rhel_09_215075_alternate_mfa
+missing_rhel_09_215075 := [concat(".", p) | some p in [["packages", "openssl-pkcs11"]]; not _collected(p)]
+
+default openssl_pkcs11_installed := false
+
+openssl_pkcs11_installed if {
+	count(missing_rhel_09_215075) == 0
+	input.packages["openssl-pkcs11"] == true
+}
+
+default na_rhel_09_215075 := false
+
+na_rhel_09_215075 if {
+	_attested("rhel_09_215075_alternate_mfa")
+}
+
+status_rhel_09_215075 := "Not_a_Finding" if openssl_pkcs11_installed
+
+else := "Not_Applicable" if na_rhel_09_215075
+
+else := "Open"
+
+detail_rhel_09_215075 := "RHEL-09-215075: Not_a_Finding" if openssl_pkcs11_installed
+
+else := "RHEL-09-215075: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_215075
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215075", concat(", ", missing_rhel_09_215075)]) if count(missing_rhel_09_215075) > 0
+
+else := "RHEL-09-215075: check failed — the openssl-pkcs11 package must be installed"
+
+finding_rhel_09_215075 := {
+	"vuln_id": "V-257838",
+	"stig_id": "RHEL-09-215075",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the openssl-pkcs11 package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215075,
+	"detail": detail_rhel_09_215075,
+	"fix_text": "Install the package: dnf install openssl-pkcs11",
+}
+
+# RHEL-09-215080 | V-257839 | CAT II
+# the gnutls-utils package must be installed (dnf list --installed gnutls-utils)
+missing_rhel_09_215080 := [concat(".", p) | some p in [["packages", "gnutls-utils"]]; not _collected(p)]
+
+default gnutls_utils_installed := false
+
+gnutls_utils_installed if {
+	count(missing_rhel_09_215080) == 0
+	input.packages["gnutls-utils"] == true
+}
+
+status_rhel_09_215080 := "Not_a_Finding" if gnutls_utils_installed
+
+else := "Open"
+
+detail_rhel_09_215080 := "RHEL-09-215080: Not_a_Finding" if gnutls_utils_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215080", concat(", ", missing_rhel_09_215080)]) if count(missing_rhel_09_215080) > 0
+
+else := "RHEL-09-215080: check failed — the gnutls-utils package must be installed"
+
+finding_rhel_09_215080 := {
+	"vuln_id": "V-257839",
+	"stig_id": "RHEL-09-215080",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the gnutls-utils package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215080,
+	"detail": detail_rhel_09_215080,
+	"fix_text": "Install the package: dnf install gnutls-utils",
+}
+
+# RHEL-09-215085 | V-257840 | CAT II
+# the nss-tools package must be installed (dnf list --installed nss-tools)
+missing_rhel_09_215085 := [concat(".", p) | some p in [["packages", "nss-tools"]]; not _collected(p)]
+
+default nss_tools_installed := false
+
+nss_tools_installed if {
+	count(missing_rhel_09_215085) == 0
+	input.packages["nss-tools"] == true
+}
+
+status_rhel_09_215085 := "Not_a_Finding" if nss_tools_installed
+
+else := "Open"
+
+detail_rhel_09_215085 := "RHEL-09-215085: Not_a_Finding" if nss_tools_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-215085", concat(", ", missing_rhel_09_215085)]) if count(missing_rhel_09_215085) > 0
+
+else := "RHEL-09-215085: check failed — the nss-tools package must be installed"
+
+finding_rhel_09_215085 := {
+	"vuln_id": "V-257840",
+	"stig_id": "RHEL-09-215085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the nss-tools package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_215085,
+	"detail": detail_rhel_09_215085,
+	"fix_text": "Install the package: dnf install nss-tools",
+}
+
+# RHEL-09-271050 | V-258020 | CAT II
+# gsettings writable org.gnome.settings-daemon.peripherals.smartcard removal-action; no GUI installed is Not Applicable
+missing_rhel_09_271050 := [concat(".", p) | some p in [["gnome_writable", "smartcard_removal_action"]]; not _collected(p)]
+
+default smartcard_removal_action_locked := false
+
+smartcard_removal_action_locked if {
+	count(missing_rhel_09_271050) == 0
+	_gs_bool(["gnome_writable", "smartcard_removal_action"]) == "false"
+}
+
+default na_rhel_09_271050 := false
+
+na_rhel_09_271050 if {
+	input.gui_installed == false
+}
+
+status_rhel_09_271050 := "Not_a_Finding" if smartcard_removal_action_locked
+
+else := "Not_Applicable" if na_rhel_09_271050
+
+else := "Open"
+
+detail_rhel_09_271050 := "RHEL-09-271050: Not_a_Finding" if smartcard_removal_action_locked
+
+else := "RHEL-09-271050: Not_Applicable — no graphical user interface is installed" if na_rhel_09_271050
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-271050", concat(", ", missing_rhel_09_271050)]) if count(missing_rhel_09_271050) > 0
+
+else := "RHEL-09-271050: check failed — gsettings writable org.gnome.settings-daemon.peripherals.smartcard removal-action must return false (the key is locked)"
+
+finding_rhel_09_271050 := {
+	"vuln_id": "V-258020",
+	"stig_id": "RHEL-09-271050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prevent a user from overriding the disabling of the graphical user smart card removal action.",
+	"check_type": "machine",
+	"status": status_rhel_09_271050,
+	"detail": detail_rhel_09_271050,
+	"fix_text": "Add /org/gnome/settings-daemon/peripherals/smartcard/removal-action to a file in /etc/dconf/db/local.d/locks/ and run dconf update",
+}
+
+# RHEL-09-611160 | V-258121 | CAT II
+# output of opensc-tool --get-conf-entry app:default:card_drivers (comma-separated drivers; empty string when no line is returned)
+missing_rhel_09_611160 := [concat(".", p) | some p in [["opensc", "card_drivers"]]; not _collected(p)]
+
+default cac_card_driver := false
+
+cac_card_driver if {
+	count(missing_rhel_09_611160) == 0
+	drivers := {lower(d) | some d in _csv(["opensc", "card_drivers"])}
+	"cac" in drivers
+}
+
+status_rhel_09_611160 := "Not_a_Finding" if cac_card_driver
+
+else := "Open"
+
+detail_rhel_09_611160 := "RHEL-09-611160: Not_a_Finding" if cac_card_driver
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611160", concat(", ", missing_rhel_09_611160)]) if count(missing_rhel_09_611160) > 0
+
+else := "RHEL-09-611160: check failed — opensc-tool --get-conf-entry app:default:card_drivers must list cac"
+
+finding_rhel_09_611160 := {
+	"vuln_id": "V-258121",
+	"stig_id": "RHEL-09-611160",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must use the common access card (CAC) smart card driver.",
+	"check_type": "machine",
+	"status": status_rhel_09_611160,
+	"detail": detail_rhel_09_611160,
+	"fix_text": "Load the CAC driver: opensc-tool --set-conf-entry app:default:card_drivers:cac, then systemctl restart pcscd",
+}
+
+# RHEL-09-611175 | V-258124 | CAT II
+# pcsc-lite package installed (dnf list --installed pcsc-lite); an approved alternate MFA method is Not Applicable
+missing_rhel_09_611175 := [concat(".", p) | some p in [["packages", "pcsc-lite"]]; not _collected(p)]
+
+default pcsc_lite_installed := false
+
+pcsc_lite_installed if {
+	count(missing_rhel_09_611175) == 0
+	input.packages["pcsc-lite"] == true
+}
+
+default na_rhel_09_611175 := false
+
+na_rhel_09_611175 if {
+	_attested("rhel_09_611175_alternate_mfa")
+}
+
+status_rhel_09_611175 := "Not_a_Finding" if pcsc_lite_installed
+
+else := "Not_Applicable" if na_rhel_09_611175
+
+else := "Open"
+
+detail_rhel_09_611175 := "RHEL-09-611175: Not_a_Finding" if pcsc_lite_installed
+
+else := "RHEL-09-611175: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_611175
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611175", concat(", ", missing_rhel_09_611175)]) if count(missing_rhel_09_611175) > 0
+
+else := "RHEL-09-611175: check failed — the pcsc-lite package must be installed"
+
+finding_rhel_09_611175 := {
+	"vuln_id": "V-258124",
+	"stig_id": "RHEL-09-611175",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the pcsc-lite package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611175,
+	"detail": detail_rhel_09_611175,
+	"fix_text": "Install the package: dnf install pcsc-lite",
+}
+
+# RHEL-09-611180 | V-258125 | CAT II
+# systemctl is-active pcscd.socket
+missing_rhel_09_611180 := [concat(".", p) | some p in [["services", "pcscd.socket"]]; not _collected(p)]
+
+default pcscd_socket_active := false
+
+pcscd_socket_active if {
+	count(missing_rhel_09_611180) == 0
+	_kw(["services", "pcscd.socket"]) == "active"
+}
+
+status_rhel_09_611180 := "Not_a_Finding" if pcscd_socket_active
+
+else := "Open"
+
+detail_rhel_09_611180 := "RHEL-09-611180: Not_a_Finding" if pcscd_socket_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611180", concat(", ", missing_rhel_09_611180)]) if count(missing_rhel_09_611180) > 0
+
+else := "RHEL-09-611180: check failed — pcscd.socket must be active (systemctl is-active pcscd.socket)"
+
+finding_rhel_09_611180 := {
+	"vuln_id": "V-258125",
+	"stig_id": "RHEL-09-611180",
+	"severity": "CAT II",
+	"rule_title": "The pcscd socket on RHEL 9 must be active.",
+	"check_type": "machine",
+	"status": status_rhel_09_611180,
+	"detail": detail_rhel_09_611180,
+	"fix_text": "Enable the socket: systemctl enable --now pcscd.socket",
+}
+
+# RHEL-09-611185 | V-258126 | CAT II
+# opensc package installed (dnf list --installed opensc)
+missing_rhel_09_611185 := [concat(".", p) | some p in [["packages", "opensc"]]; not _collected(p)]
+
+default opensc_installed := false
+
+opensc_installed if {
+	count(missing_rhel_09_611185) == 0
+	input.packages.opensc == true
+}
+
+status_rhel_09_611185 := "Not_a_Finding" if opensc_installed
+
+else := "Open"
+
+detail_rhel_09_611185 := "RHEL-09-611185: Not_a_Finding" if opensc_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611185", concat(", ", missing_rhel_09_611185)]) if count(missing_rhel_09_611185) > 0
+
+else := "RHEL-09-611185: check failed — the opensc package must be installed"
+
+finding_rhel_09_611185 := {
+	"vuln_id": "V-258126",
+	"stig_id": "RHEL-09-611185",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have the opensc package installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_611185,
+	"detail": detail_rhel_09_611185,
+	"fix_text": "Install the package: dnf install opensc",
+}
+
+# RHEL-09-611190 | V-258127 | CAT II
+# paths of the private keys for which ssh-keygen -y -f <key> printed the public key without a passphrase prompt; an approved alternate MFA method is Not Applicable
+missing_rhel_09_611190 := [concat(".", p) | some p in [["ssh_private_keys_without_passphrase"]]; not _collected(p)]
+
+default ssh_private_keys_passphrase := false
+
+ssh_private_keys_passphrase if {
+	count(missing_rhel_09_611190) == 0
+	ks := input.ssh_private_keys_without_passphrase
+	is_array(ks)
+	count(ks) == 0
+}
+
+default na_rhel_09_611190 := false
+
+na_rhel_09_611190 if {
+	_attested("rhel_09_611190_alternate_mfa")
+}
+
+status_rhel_09_611190 := "Not_a_Finding" if ssh_private_keys_passphrase
+
+else := "Not_Applicable" if na_rhel_09_611190
+
+else := "Open"
+
+detail_rhel_09_611190 := "RHEL-09-611190: Not_a_Finding" if ssh_private_keys_passphrase
+
+else := "RHEL-09-611190: Not_Applicable — the SA demonstrated an approved alternate multifactor authentication method" if na_rhel_09_611190
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-611190", concat(", ", missing_rhel_09_611190)]) if count(missing_rhel_09_611190) > 0
+
+else := "RHEL-09-611190: check failed — every SSH private key stored on the system must be protected by a passphrase (ssh-keygen -y -f <key> must prompt for it)"
+
+finding_rhel_09_611190 := {
+	"vuln_id": "V-258127",
+	"stig_id": "RHEL-09-611190",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9, for PKI-based authentication, must enforce authorized access to the corresponding private key.",
+	"check_type": "machine",
+	"status": status_rhel_09_611190,
+	"detail": detail_rhel_09_611190,
+	"fix_text": "Create a new key pair protected by a passphrase: ssh-keygen -N <passphrase>",
+}
+
+# RHEL-09-631020 | V-258133 | CAT II
+# every uncommented cache_credentials value in /etc/sssd/sssd.conf and conf.d (empty list when the option is missing); offline_credentials_expiration is read when one of them is not false
+missing_rhel_09_631020 := [concat(".", p) | some p in [["sssd", "cache_credentials_values"]]; not _collected(p)]
+
+default sssd_cached_credentials_expire := false
+
+sssd_cached_credentials_expire if {
+	count(missing_rhel_09_631020) == 0
+	vals := input.sssd.cache_credentials_values
+	is_array(vals)
+	count([v | some v in vals; not lower(trim_space(sprintf("%v", [v]))) == "false"]) == 0
+}
+
+sssd_cached_credentials_expire if {
+	count(missing_rhel_09_631020) == 0
+	is_array(input.sssd.cache_credentials_values)
+	_str(["sssd", "offline_credentials_expiration"]) == "1"
+}
+
+status_rhel_09_631020 := "Not_a_Finding" if sssd_cached_credentials_expire
+
+else := "Open"
+
+detail_rhel_09_631020 := "RHEL-09-631020: Not_a_Finding" if sssd_cached_credentials_expire
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-631020", concat(", ", missing_rhel_09_631020)]) if count(missing_rhel_09_631020) > 0
+
+else := "RHEL-09-631020: check failed — when cache_credentials is true in /etc/sssd/sssd.conf or /etc/sssd/conf.d/, offline_credentials_expiration must be 1"
+
+finding_rhel_09_631020 := {
+	"vuln_id": "V-258133",
+	"stig_id": "RHEL-09-631020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must prohibit the use of cached authenticators after one day.",
+	"check_type": "machine",
+	"status": status_rhel_09_631020,
+	"detail": detail_rhel_09_631020,
+	"fix_text": "Set offline_credentials_expiration = 1 in the [pam] section of /etc/sssd/sssd.conf (or a conf.d file)",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -395,6 +899,9 @@ finding_rhel_09_631015 := {
 cat_i_findings := [
 	finding_rhel_09_672020,
 	finding_rhel_09_672055,
+	finding_rhel_09_215100,
+	finding_rhel_09_671020,
+	finding_rhel_09_672050,
 ]
 
 cat_ii_findings := [
@@ -402,6 +909,16 @@ cat_ii_findings := [
 	finding_rhel_09_631010,
 	finding_rhel_09_271045,
 	finding_rhel_09_631015,
+	finding_rhel_09_215075,
+	finding_rhel_09_215080,
+	finding_rhel_09_215085,
+	finding_rhel_09_271050,
+	finding_rhel_09_611160,
+	finding_rhel_09_611175,
+	finding_rhel_09_611180,
+	finding_rhel_09_611185,
+	finding_rhel_09_611190,
+	finding_rhel_09_631020,
 ]
 
 # No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal

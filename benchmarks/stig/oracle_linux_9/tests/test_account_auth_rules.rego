@@ -13,7 +13,9 @@ green_fixture := {
 		"fail_interval": 900,
 	},
 	"local_accounts_with_empty_passwords": [],
-	"login_defs": {"ENCRYPT_METHOD": "SHA512"},
+	"login_defs": {
+		"ENCRYPT_METHOD": "SHA512",
+	},
 	"password_policy": {
 		"dcredit": -1,
 		"inactive_days": 35,
@@ -24,7 +26,9 @@ green_fixture := {
 		"ocredit": -1,
 		"ucredit": -1,
 	},
-	"sssd_conf_file": {"pam_cert_auth": "True"},
+	"sssd_conf_file": {
+		"pam_cert_auth": "True",
+	},
 }
 
 test_every_finding_open_on_empty_input if {

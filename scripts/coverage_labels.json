@@ -517,7 +517,7 @@
    },
    "stig.rhel_9": {
     "label": "partial",
-    "evidence": "V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet, so those rules report evidence missing.",
+    "evidence": "All 445 V2R10 rules written against DISA's check text. 104 ran on a real RHEL 9.6 host 2026-11-20; the 341 added 2026-11-22 are unit-tested only and most of their fact paths are not collected yet, so those rules report evidence missing.",
     "modules": "benchmarks/stig/rhel_9"
    },
    "stig.rke2": {
@@ -576,7 +576,7 @@
    },
    "stig_rhel9": {
     "label": "partial",
-    "evidence": "Bridge onto stig.rhel_9. V2R10 rules compared with DISA's check text (#320) and run on a real RHEL 9.6 host 2026-11-20, but about 45 fact paths the rules read are not collected yet.",
+    "evidence": "Bridge onto stig.rhel_9. All 445 V2R10 rules written against DISA's check text; 104 ran on a real RHEL 9.6 host 2026-11-20, the 341 added 2026-11-22 are unit-tested only and most of their fact paths are not collected yet.",
     "modules": "benchmarks/stig/rhel_9"
    },
    "stig_sles_15": {

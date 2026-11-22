@@ -15,12 +15,16 @@ green_fixture := {
 		"net.ipv4.icmp_ignore_bogus_error_responses": "1",
 		"net.ipv4.tcp_syncookies": "1",
 	},
-	"modprobe": {"bluetooth": {
-		"blacklisted": true,
-		"install": "/bin/false",
-	}},
+	"modprobe": {
+		"bluetooth": {
+			"blacklisted": true,
+			"install": "/bin/false",
+		},
+	},
 	"promiscuous_interfaces": [],
-	"services": {"firewalld": "active"},
+	"services": {
+		"firewalld": "active",
+	},
 	"wireless_interfaces": [],
 }
 

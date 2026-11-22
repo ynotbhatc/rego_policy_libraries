@@ -6,24 +6,94 @@ import rego.v1
 # evidence-missing test per evidence path and, where the check text has one, the Not Applicable case.
 
 green_fixture := {
-	"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux"]},
-	"dnf_config": {"localpkg_gpgcheck": "1"},
-	"kernel_params": {"kernel.kexec_load_disabled": "1"},
-	"packages": {"rsyslog": true},
-	"redhat_release_key_file": {"fingerprints": [
-		"567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
-		"7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3",
-	]},
+	"aide": {
+		"audit_tool_lines": [
+			"/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512",
+			"/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512",
+			"/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512",
+			"/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512",
+			"/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512",
+			"/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512",
+		],
+		"rule_lines": [
+			"All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux",
+		],
+	},
+	"attest": {
+		"rhel_09_211015_patching_current": true,
+	},
+	"dnf_config": {
+		"clean_requirements_on_remove": "True",
+		"gpgcheck": "1",
+		"localpkg_gpgcheck": "1",
+	},
+	"dnf_repolist": [
+		{
+			"id": "rhel-9-for-x86_64-appstream-rpms",
+			"name": "Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)",
+		},
+		{
+			"id": "rhel-9-for-x86_64-baseos-rpms",
+			"name": "Red Hat Enterprise Linux 9 for x86_64 - BaseOS (RPMs)",
+		},
+	],
+	"fapolicyd": {
+		"compiled_rules": [
+			"allow perm=any uid=0 : dir=/var/tmp/",
+			"allow perm=open all : ftype=text/x-python trust=1",
+			"deny_audit perm=any pattern=ld_so : all",
+			"deny perm=any all : all",
+		],
+		"permissive": "0",
+	},
+	"kernel_params": {
+		"kernel.kexec_load_disabled": "1",
+	},
+	"packages": {
+		"aide": true,
+		"fapolicyd": true,
+		"postfix": true,
+		"rng-tools": true,
+		"rsyslog": true,
+		"rsyslog-gnutls": true,
+		"s-nail": true,
+		"subscription-manager": true,
+	},
+	"redhat_release_key_file": {
+		"fingerprints": [
+			"567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51",
+			"7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3",
+		],
+	},
 	"rpm_gpg_pubkeys": [
 		"Red Hat, Inc. (release key 2) <security@redhat.com> public key",
 		"Red Hat, Inc. (auxiliary key 3) <security@redhat.com> public key",
 	],
-	"services": {"rsyslog": "active"},
-	"yum_repos": [{
-		"file": "/etc/yum.repos.d/redhat.repo",
-		"gpgcheck": "1",
-		"name": "rhel-9-for-x86_64-baseos-rpms",
-	}],
+	"rpm_verify": {
+		"hash_mismatch_files": [],
+	},
+	"rsyslog": {
+		"config_lines": [
+			"$DefaultNetstreamDriver gtls",
+			"$ActionSendStreamDriverMode 1",
+			"$ActionSendStreamDriverAuthMode x509/name",
+			"auth.*;authpriv.*;daemon.* /var/log/secure",
+			"cron.* /var/log/cron",
+			"*.* @@logserver.example.com:6514",
+		],
+		"listening_sockets": [],
+	},
+	"services": {
+		"fapolicyd": "active",
+		"rsyslog": "active",
+	},
+	"yum_repos": [
+		{
+			"file": "/etc/yum.repos.d/redhat.repo",
+			"gpgcheck": "1",
+			"name": "rhel-9-for-x86_64-baseos-rpms",
+		},
+	],
 }
 
 test_every_finding_open_on_empty_input if {
@@ -203,4 +273,637 @@ test_rhel_09_652020_evidence_missing_1 if {
 	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652020 with input as json.remove(green_fixture, [["services", "rsyslog"]])
 	f.status == "Open"
 	contains(f.detail, "RHEL-09-652020: evidence missing — services.rsyslog")
+}
+
+test_rhel_09_211015_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_211015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_211015_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_211015 with input as object.union(green_fixture, {"attest": {"rhel_09_211015_patching_current": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-211015: check failed")
+}
+
+test_rhel_09_214015_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_214015_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214015 with input as object.union(green_fixture, {"dnf_config": {"gpgcheck": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214015: check failed")
+}
+
+test_rhel_09_214015_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214015 with input as object.union(green_fixture, {"dnf_config": {"gpgcheck": "False"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214015: check failed")
+}
+
+test_rhel_09_214015_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214015 with input as json.remove(green_fixture, [["dnf_config", "gpgcheck"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214015: evidence missing — dnf_config.gpgcheck")
+}
+
+test_rhel_09_214015_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214015 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"gpgcheck": "True"}})
+}
+
+test_rhel_09_214015_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214015 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"gpgcheck": "yes"}})
+}
+
+test_rhel_09_214015_pass_4 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214015 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"gpgcheck": "0"}, "attest": {"rhel_09_214015_gpg_process": true}})
+}
+
+test_rhel_09_214030_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_214030_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214030 with input as object.union(green_fixture, {"rpm_verify": {"hash_mismatch_files": ["S.5....T.    /usr/bin/znew"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214030: check failed")
+}
+
+test_rhel_09_214030_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214030 with input as json.remove(green_fixture, [["rpm_verify", "hash_mismatch_files"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214030: evidence missing — rpm_verify.hash_mismatch_files")
+}
+
+test_rhel_09_214035_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_214035_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214035 with input as object.union(green_fixture, {"dnf_config": {"clean_requirements_on_remove": "0"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214035: check failed")
+}
+
+test_rhel_09_214035_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214035 with input as object.union(green_fixture, {"dnf_config": {"clean_requirements_on_remove": "False"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214035: check failed")
+}
+
+test_rhel_09_214035_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_214035 with input as json.remove(green_fixture, [["dnf_config", "clean_requirements_on_remove"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-214035: evidence missing — dnf_config.clean_requirements_on_remove")
+}
+
+test_rhel_09_214035_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214035 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"clean_requirements_on_remove": "1"}})
+}
+
+test_rhel_09_214035_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_214035 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_config": {"clean_requirements_on_remove": "YES"}})
+}
+
+test_rhel_09_215035_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215035_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215035 with input as object.union(green_fixture, {"dnf_repolist": [{"id": "epel", "name": "Extra Packages for Enterprise Linux 9 - x86_64"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215035: check failed")
+}
+
+test_rhel_09_215035_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215035 with input as object.union(green_fixture, {"dnf_repolist": [{"id": "local-mirror", "name": "EPEL 9 mirror"}]})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215035: check failed")
+}
+
+test_rhel_09_215035_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215035 with input as json.remove(green_fixture, [["dnf_repolist"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215035: evidence missing — dnf_repolist")
+}
+
+test_rhel_09_215035_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215035 == "Not_a_Finding" with input as object.union(green_fixture, {"dnf_repolist": []})
+}
+
+test_rhel_09_215010_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215010_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215010 with input as object.union(green_fixture, {"packages": {"subscription-manager": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215010: check failed")
+}
+
+test_rhel_09_215010_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215010 with input as json.remove(green_fixture, [["packages", "subscription-manager"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215010: evidence missing — packages.subscription-manager")
+}
+
+test_rhel_09_215010_not_applicable_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215010 with input as object.union(green_fixture, {"packages": {"subscription-manager": false}, "attest": {"rhel_09_215010_not_internet_connected": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_215090_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215090 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215090_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215090 with input as object.union(green_fixture, {"packages": {"rng-tools": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215090: check failed")
+}
+
+test_rhel_09_215090_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215090 with input as json.remove(green_fixture, [["packages", "rng-tools"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215090: evidence missing — packages.rng-tools")
+}
+
+test_rhel_09_215095_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215095 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215095_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215095 with input as object.union(green_fixture, {"packages": {"s-nail": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215095: check failed")
+}
+
+test_rhel_09_215095_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215095 with input as json.remove(green_fixture, [["packages", "s-nail"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215095: evidence missing — packages.s-nail")
+}
+
+test_rhel_09_215101_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_215101 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_215101_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215101 with input as object.union(green_fixture, {"packages": {"postfix": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215101: check failed")
+}
+
+test_rhel_09_215101_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215101 with input as json.remove(green_fixture, [["packages", "postfix"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-215101: evidence missing — packages.postfix")
+}
+
+test_rhel_09_215101_not_applicable_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_215101 with input as object.union(green_fixture, {"packages": {"postfix": false}, "attest": {"rhel_09_215101_other_notification": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_433010_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_433010 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_433010_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433010 with input as object.union(green_fixture, {"packages": {"fapolicyd": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433010: check failed")
+}
+
+test_rhel_09_433010_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433010 with input as json.remove(green_fixture, [["packages", "fapolicyd"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433010: evidence missing — packages.fapolicyd")
+}
+
+test_rhel_09_433015_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_433015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_433015_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433015 with input as object.union(green_fixture, {"services": {"fapolicyd": "inactive"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433015: check failed")
+}
+
+test_rhel_09_433015_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433015 with input as object.union(green_fixture, {"services": {"fapolicyd": "failed"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433015: check failed")
+}
+
+test_rhel_09_433015_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433015 with input as json.remove(green_fixture, [["services", "fapolicyd"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433015: evidence missing — services.fapolicyd")
+}
+
+test_rhel_09_433016_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_433016 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_433016_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as object.union(green_fixture, {"fapolicyd": {"permissive": "1"}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: check failed")
+}
+
+test_rhel_09_433016_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as object.union(green_fixture, {"fapolicyd": {"compiled_rules": ["allow perm=any uid=0 : dir=/var/tmp/", "allow perm=open all : ftype=text/x-python trust=1", "deny_audit perm=any pattern=ld_so : all"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: check failed")
+}
+
+test_rhel_09_433016_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as object.union(green_fixture, {"fapolicyd": {"compiled_rules": ["allow perm=any uid=0 : dir=/var/tmp/", "allow perm=open all : ftype=text/x-python trust=1", "deny_audit perm=any pattern=ld_so : all", "deny perm=any all : all", "allow perm=any all : all"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: check failed")
+}
+
+test_rhel_09_433016_fail_4 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as object.union(green_fixture, {"fapolicyd": {"compiled_rules": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: check failed")
+}
+
+test_rhel_09_433016_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as json.remove(green_fixture, [["fapolicyd", "permissive"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: evidence missing — fapolicyd.permissive")
+}
+
+test_rhel_09_433016_evidence_missing_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_433016 with input as json.remove(green_fixture, [["fapolicyd", "compiled_rules"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-433016: evidence missing — fapolicyd.compiled_rules")
+}
+
+test_rhel_09_433016_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_433016 == "Not_a_Finding" with input as object.union(green_fixture, {"fapolicyd": {"compiled_rules": ["allow perm=any uid=0 : dir=/var/tmp/", "allow perm=open all : ftype=text/x-python trust=1", "deny_audit perm=any pattern=ld_so : all", "deny_audit perm=any all : all"]}})
+}
+
+test_rhel_09_433016_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_433016 == "Not_a_Finding" with input as object.union(green_fixture, {"fapolicyd": {"permissive": 0}})
+}
+
+test_rhel_09_651025_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_651025_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as object.union(green_fixture, {"aide": {"audit_tool_lines": ["/usr/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: check failed")
+}
+
+test_rhel_09_651025_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as object.union(green_fixture, {"aide": {"audit_tool_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: check failed")
+}
+
+test_rhel_09_651025_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as object.union(green_fixture, {"aide": {"audit_tool_lines": ["/usr/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512", "/usr/sbin/auditctl"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: check failed")
+}
+
+test_rhel_09_651025_fail_4 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as object.union(green_fixture, {"packages": {"aide": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: check failed")
+}
+
+test_rhel_09_651025_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as json.remove(green_fixture, [["packages", "aide"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: evidence missing — packages.aide")
+}
+
+test_rhel_09_651025_evidence_missing_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651025 with input as json.remove(green_fixture, [["aide", "audit_tool_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651025: evidence missing — aide.audit_tool_lines")
+}
+
+test_rhel_09_651025_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651025 == "Not_a_Finding" with input as object.union(green_fixture, {"packages": {"aide": false}, "attest": {"rhel_09_651025_other_mechanism": true}})
+}
+
+test_rhel_09_651030_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_651030_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651030 with input as object.union(green_fixture, {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux", "NORMAL=p+i+n+u+g+s+m+sha512"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651030: check failed")
+}
+
+test_rhel_09_651030_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651030 with input as object.union(green_fixture, {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+xattrs+selinux"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651030: check failed")
+}
+
+test_rhel_09_651030_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651030 with input as object.union(green_fixture, {"aide": {"rule_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651030: check failed")
+}
+
+test_rhel_09_651030_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651030 with input as json.remove(green_fixture, [["aide", "rule_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651030: evidence missing — aide.rule_lines")
+}
+
+test_rhel_09_651030_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651030 == "Not_a_Finding" with input as object.union(green_fixture, {"aide": {"rule_lines": []}, "attest": {"rhel_09_651030_other_tool": true}})
+}
+
+test_rhel_09_651035_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651035 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_651035_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651035 with input as object.union(green_fixture, {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+xattrs+selinux", "NORMAL=p+i+n+u+g+s+m+sha512"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651035: check failed")
+}
+
+test_rhel_09_651035_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651035 with input as object.union(green_fixture, {"aide": {"rule_lines": ["All=p+i+n+u+g+s+m+S+sha512+acl+selinux"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651035: check failed")
+}
+
+test_rhel_09_651035_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651035 with input as object.union(green_fixture, {"aide": {"rule_lines": []}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651035: check failed")
+}
+
+test_rhel_09_651035_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_651035 with input as json.remove(green_fixture, [["aide", "rule_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-651035: evidence missing — aide.rule_lines")
+}
+
+test_rhel_09_651035_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_651035 == "Not_a_Finding" with input as object.union(green_fixture, {"aide": {"rule_lines": []}, "attest": {"rhel_09_651035_other_tool": true}})
+}
+
+test_rhel_09_652015_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652015 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652015_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652015 with input as object.union(green_fixture, {"packages": {"rsyslog-gnutls": false}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652015: check failed")
+}
+
+test_rhel_09_652015_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652015 with input as json.remove(green_fixture, [["packages", "rsyslog-gnutls"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652015: evidence missing — packages.rsyslog-gnutls")
+}
+
+test_rhel_09_652025_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652025 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652025_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652025 with input as object.union(green_fixture, {"rsyslog": {"listening_sockets": ["udp UNCONN 0 0 *:514 *:* users:((\"rsyslogd\",pid=1045,fd=4))"], "config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "module(load=\"imudp\")", "input(type=\"imudp\" port=\"514\")"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652025: check failed")
+}
+
+test_rhel_09_652025_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652025 with input as object.union(green_fixture, {"rsyslog": {"listening_sockets": ["tcp LISTEN 0 25 *:514 *:* users:((\"rsyslogd\",pid=1045,fd=5))"], "config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "$InputTCPServerRun 514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652025: check failed")
+}
+
+test_rhel_09_652025_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652025 with input as json.remove(green_fixture, [["rsyslog", "listening_sockets"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652025: evidence missing — rsyslog.listening_sockets")
+}
+
+test_rhel_09_652025_evidence_missing_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652025 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652025: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652025_not_applicable_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652025 with input as object.union(green_fixture, {"rsyslog": {"listening_sockets": null, "config_lines": null}, "attest": {"rhel_09_652025_other_log_tool": true}})
+	f.status == "Not_Applicable"
+}
+
+test_rhel_09_652025_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652025 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"listening_sockets": ["udp UNCONN 0 0 *:514 *:* users:((\"rsyslogd\",pid=1045,fd=4))"], "config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}})
+}
+
+test_rhel_09_652025_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652025 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"listening_sockets": ["tcp LISTEN 0 25 *:514 *:* users:((\"rsyslogd\",pid=1045,fd=5))"], "config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "$InputTCPServerRun 514"]}, "attest": {"rhel_09_652025_log_aggregation_server": true}})
+}
+
+test_rhel_09_652030_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652030 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652030_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652030 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "authpriv.* /var/log/secure"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652030: check failed")
+}
+
+test_rhel_09_652030_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652030 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "auth.*;authpriv.* /var/log/secure"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652030: check failed")
+}
+
+test_rhel_09_652030_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652030 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652030: check failed")
+}
+
+test_rhel_09_652030_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652030 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652030: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652030_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652030 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "auth.* /var/log/secure", "authpriv.* /var/log/secure", "daemon.* /var/log/messages"]}})
+}
+
+test_rhel_09_652040_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652040 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652040_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652040 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652040: check failed")
+}
+
+test_rhel_09_652040_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652040 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "$ActionSendStreamDriverAuthMode anon"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652040: check failed")
+}
+
+test_rhel_09_652040_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652040 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "module(load=\"builtin:omfwd\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652040: check failed")
+}
+
+test_rhel_09_652040_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652040 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652040: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652040_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652040 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "action(type=\"omfwd\" target=\"logserver.example.com\" port=\"6514\" protocol=\"tcp\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+}
+
+test_rhel_09_652040_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652040 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}, "attest": {"rhel_09_652040_offload_encrypted": true}})
+}
+
+test_rhel_09_652045_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652045 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652045_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652045 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652045: check failed")
+}
+
+test_rhel_09_652045_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652045 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "$ActionSendStreamDriverMode 0"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652045: check failed")
+}
+
+test_rhel_09_652045_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652045 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "module(load=\"builtin:omfwd\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652045: check failed")
+}
+
+test_rhel_09_652045_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652045 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652045: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652045_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652045 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "action(type=\"omfwd\" target=\"logserver.example.com\" port=\"6514\" protocol=\"tcp\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+}
+
+test_rhel_09_652050_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652050 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652050_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652050 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652050: check failed")
+}
+
+test_rhel_09_652050_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652050 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "$DefaultNetstreamDriver ptcp"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652050: check failed")
+}
+
+test_rhel_09_652050_fail_3 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652050 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @@logserver.example.com:6514", "module(load=\"builtin:omfwd\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652050: check failed")
+}
+
+test_rhel_09_652050_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652050 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652050: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652050_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652050 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "action(type=\"omfwd\" target=\"logserver.example.com\" port=\"6514\" protocol=\"tcp\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+}
+
+test_rhel_09_652055_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652055 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652055_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652055 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652055: check failed")
+}
+
+test_rhel_09_652055_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652055 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "*.* @logserver.example.com:514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652055: check failed")
+}
+
+test_rhel_09_652055_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652055 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652055: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652055_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652055 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron", "action(type=\"omfwd\" target=\"logserver.example.com\" port=\"6514\" protocol=\"tcp\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\")"]}})
+}
+
+test_rhel_09_652055_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652055 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "cron.* /var/log/cron"]}, "attest": {"rhel_09_652055_offload_documented": true}})
+}
+
+test_rhel_09_652060_pass if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652060 == "Not_a_Finding" with input as green_fixture
+}
+
+test_rhel_09_652060_fail_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652060 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "*.* @@logserver.example.com:6514"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652060: check failed")
+}
+
+test_rhel_09_652060_fail_2 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652060 with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "*.* @@logserver.example.com:6514", "cron.* /var/log/messages"]}})
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652060: check failed")
+}
+
+test_rhel_09_652060_evidence_missing_1 if {
+	f := data.stig.rhel_9.software_integrity.finding_rhel_09_652060 with input as json.remove(green_fixture, [["rsyslog", "config_lines"]])
+	f.status == "Open"
+	contains(f.detail, "RHEL-09-652060: evidence missing — rsyslog.config_lines")
+}
+
+test_rhel_09_652060_pass_2 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652060 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "*.* @@logserver.example.com:6514", "cron.* action(type=\"omfile\" file=\"/var/log/cron\")"]}})
+}
+
+test_rhel_09_652060_pass_3 if {
+	data.stig.rhel_9.software_integrity.status_rhel_09_652060 == "Not_a_Finding" with input as object.union(green_fixture, {"rsyslog": {"config_lines": ["$DefaultNetstreamDriver gtls", "$ActionSendStreamDriverMode 1", "$ActionSendStreamDriverAuthMode x509/name", "auth.*;authpriv.*;daemon.* /var/log/secure", "*.* @@logserver.example.com:6514"]}, "attest": {"rhel_09_652060_cron_test_logged": true}})
 }

@@ -161,6 +161,90 @@ _path_field_ok(f, _) if f in ({"auid>=1000"} | auid_unset)
 
 _path_field_ok(f, _) if _field_ok(f, set())
 
+# an auditd.conf percentage ("25%") at path as a number; undefined for anything else (an absolute size in MiB
+# cannot be compared with the check's percentage without the volume size)
+_p4_percent(path) := to_number(m[0][1]) if {
+	s := _str(path)
+	m := regex.find_all_string_submatch_n(`^([0-9]+)\s*%$`, s, 1)
+	count(m) == 1
+}
+
+# the audit_backlog_limit values on one boot entry's kernel argument string (grubby --info=ALL, args= line)
+_backlog_values(args) := [m[1] | some m in regex.find_all_string_submatch_n(`(?:^|[\s"])audit_backlog_limit=([^\s"]*)`, args, -1)]
+
+_backlog_ok(v) if {
+	regex.match(`^[0-9]+$`, v)
+	to_number(v) >= 8192
+}
+
+# an always,exit rule on directory `dir` (-F dir=<dir>, with or without the trailing slash) with at least the
+# permission letters in `perms` and no narrowing field
+_dir_audited(dir, perms) if {
+	some line in _audit_lines
+	toks := _tokens(line)
+	_exit_rule(toks)
+	fs := _fields(toks)
+	some d in fs
+	startswith(d, "dir=")
+	trim_suffix(substring(d, 4, -1), "/") == dir
+	some f in fs
+	startswith(f, "perm=")
+	p := substring(f, 5, -1)
+	every c in perms {
+		contains(p, c)
+	}
+	every g in fs {
+		_dir_field_ok(g)
+	}
+}
+
+_dir_field_ok(f) if startswith(f, "dir=")
+
+_dir_field_ok(f) if _path_field_ok(f, "")
+
+# _path_audited over a given list of rule lines (the rule files on disk rather than the loaded rules)
+_path_audited_in(lines, path, perms) if {
+	some line in lines
+	is_string(line)
+	toks := _tokens(line)
+	some i, t in toks
+	t == "-w"
+	toks[i + 1] == path
+	some j, u in toks
+	u == "-p"
+	p := toks[j + 1]
+	every c in perms {
+		contains(p, c)
+	}
+}
+
+_path_audited_in(lines, path, perms) if {
+	some line in lines
+	is_string(line)
+	toks := _tokens(line)
+	_exit_rule(toks)
+	fs := _fields(toks)
+	concat("=", ["path", path]) in fs
+	some f in fs
+	startswith(f, "perm=")
+	p := substring(f, 5, -1)
+	every c in perms {
+		contains(p, c)
+	}
+	every g in fs {
+		_path_field_ok(g, path)
+	}
+}
+
+# the uncommented, non-blank lines of /etc/audit/audit.rules, each as its tokens
+_rules_file_toks := [toks |
+	some l in input.audit_rules_file
+	is_string(l)
+	toks := _tokens(replace(l, "\t", " "))
+	count(toks) > 0
+	not startswith(toks[0], "#")
+]
+
 # =============================================================================
 # CAT II - MEDIUM SEVERITY
 # =============================================================================
@@ -612,6 +696,2172 @@ finding_rhel_09_653040 := {
 	"fix_text": "Set space_left_action = EMAIL in /etc/audit/auditd.conf",
 }
 
+# RHEL-09-211040 | V-257783 | CAT II
+# systemctl is-active systemd-journald
+missing_rhel_09_211040 := [concat(".", p) | some p in [["services", "systemd-journald"]]; not _collected(p)]
+
+default journald_active := false
+
+journald_active if {
+	count(missing_rhel_09_211040) == 0
+	_kw(["services", "systemd-journald"]) == "active"
+}
+
+status_rhel_09_211040 := "Not_a_Finding" if journald_active
+
+else := "Open"
+
+detail_rhel_09_211040 := "RHEL-09-211040: Not_a_Finding" if journald_active
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-211040", concat(", ", missing_rhel_09_211040)]) if count(missing_rhel_09_211040) > 0
+
+else := "RHEL-09-211040: check failed — systemd-journald must be active (systemctl is-active systemd-journald)"
+
+finding_rhel_09_211040 := {
+	"vuln_id": "V-257783",
+	"stig_id": "RHEL-09-211040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 systemd-journald service must be enabled.",
+	"check_type": "machine",
+	"status": status_rhel_09_211040,
+	"detail": detail_rhel_09_211040,
+	"fix_text": "Enable the service: systemctl enable --now systemd-journald",
+}
+
+# RHEL-09-653010 | V-258151 | CAT II
+# audit package installed (dnf list --installed audit)
+missing_rhel_09_653010 := [concat(".", p) | some p in [["packages", "audit"]]; not _collected(p)]
+
+default audit_package_installed := false
+
+audit_package_installed if {
+	count(missing_rhel_09_653010) == 0
+	input.packages.audit == true
+}
+
+status_rhel_09_653010 := "Not_a_Finding" if audit_package_installed
+
+else := "Open"
+
+detail_rhel_09_653010 := "RHEL-09-653010: Not_a_Finding" if audit_package_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653010", concat(", ", missing_rhel_09_653010)]) if count(missing_rhel_09_653010) > 0
+
+else := "RHEL-09-653010: check failed — the audit package must be installed"
+
+finding_rhel_09_653010 := {
+	"vuln_id": "V-258151",
+	"stig_id": "RHEL-09-653010",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit package must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_653010,
+	"detail": detail_rhel_09_653010,
+	"fix_text": "Install the package: dnf install audit",
+}
+
+# RHEL-09-653020 | V-258153 | CAT II
+# disk_error_action as configured in /etc/audit/auditd.conf
+missing_rhel_09_653020 := [concat(".", p) | some p in [["auditd_config", "disk_error_action"]]; not _collected(p)]
+
+default disk_error_action_ok := false
+
+disk_error_action_ok if {
+	count(missing_rhel_09_653020) == 0
+	_kw(["auditd_config", "disk_error_action"]) in {"syslog", "single", "halt"}
+}
+
+disk_error_action_ok if {
+	_attested("rhel_09_653020_disk_error_action")
+}
+
+status_rhel_09_653020 := "Not_a_Finding" if disk_error_action_ok
+
+else := "Open"
+
+detail_rhel_09_653020 := "RHEL-09-653020: Not_a_Finding" if disk_error_action_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653020", concat(", ", missing_rhel_09_653020)]) if count(missing_rhel_09_653020) > 0
+
+else := "RHEL-09-653020: check failed — disk_error_action in /etc/audit/auditd.conf must be SYSLOG, SINGLE or HALT, or the SA must attest that the system takes appropriate action when an audit process failure occurs (input.attest.rhel_09_653020_disk_error_action)"
+
+finding_rhel_09_653020 := {
+	"vuln_id": "V-258153",
+	"stig_id": "RHEL-09-653020",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must take appropriate action when an error writing to the audit storage volume occurs.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653020,
+	"detail": detail_rhel_09_653020,
+	"fix_text": "Set disk_error_action = HALT in /etc/audit/auditd.conf",
+}
+
+# RHEL-09-653030 | V-258155 | CAT II
+# organizational review of the audit partition size (df -h of the log_file directory): attestation only
+missing_rhel_09_653030 := []
+
+default audit_storage_one_week := false
+
+audit_storage_one_week if {
+	_attested("rhel_09_653030_audit_capacity_sufficient")
+}
+
+status_rhel_09_653030 := "Not_a_Finding" if audit_storage_one_week
+
+else := "Open"
+
+detail_rhel_09_653030 := "RHEL-09-653030: Not_a_Finding" if audit_storage_one_week
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653030", concat(", ", missing_rhel_09_653030)]) if count(missing_rhel_09_653030) > 0
+
+else := "RHEL-09-653030: check failed — the partition holding the audit log (log_file in /etc/audit/auditd.conf; df -h) must be reviewed and attested as large enough for at least one week of audit records (input.attest.rhel_09_653030_audit_capacity_sufficient)"
+
+finding_rhel_09_653030 := {
+	"vuln_id": "V-258155",
+	"stig_id": "RHEL-09-653030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must allocate audit record storage capacity to store at least one week's worth of audit records.",
+	"check_type": "attestation",
+	"status": status_rhel_09_653030,
+	"detail": detail_rhel_09_653030,
+	"fix_text": "Resize the audit partition, or create one, with space for at least one week of audit records",
+}
+
+# RHEL-09-653035 | V-258156 | CAT II
+# space_left as written in /etc/audit/auditd.conf, with its % sign (null when missing or commented out)
+missing_rhel_09_653035 := [concat(".", p) | some p in [["auditd_config", "space_left"]]; not _collected(p)]
+
+default space_left_25_percent := false
+
+space_left_25_percent if {
+	count(missing_rhel_09_653035) == 0
+	n := _p4_percent(["auditd_config", "space_left"])
+	n >= 25
+	n <= 100
+}
+
+status_rhel_09_653035 := "Not_a_Finding" if space_left_25_percent
+
+else := "Open"
+
+detail_rhel_09_653035 := "RHEL-09-653035: Not_a_Finding" if space_left_25_percent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653035", concat(", ", missing_rhel_09_653035)]) if count(missing_rhel_09_653035) > 0
+
+else := "RHEL-09-653035: check failed — space_left in /etc/audit/auditd.conf must be 25% or more of the audit storage volume (written as a percentage)"
+
+finding_rhel_09_653035 := {
+	"vuln_id": "V-258156",
+	"stig_id": "RHEL-09-653035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must take action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.",
+	"check_type": "machine",
+	"status": status_rhel_09_653035,
+	"detail": detail_rhel_09_653035,
+	"fix_text": "Set space_left = 25% in /etc/audit/auditd.conf",
+}
+
+# RHEL-09-653045 | V-258158 | CAT II
+# admin_space_left as written in /etc/audit/auditd.conf, with its % sign (null when missing or commented out)
+missing_rhel_09_653045 := [concat(".", p) | some p in [["auditd_config", "admin_space_left"]]; not _collected(p)]
+
+default admin_space_left_5_percent := false
+
+admin_space_left_5_percent if {
+	count(missing_rhel_09_653045) == 0
+	_p4_percent(["auditd_config", "admin_space_left"]) == 5
+}
+
+status_rhel_09_653045 := "Not_a_Finding" if admin_space_left_5_percent
+
+else := "Open"
+
+detail_rhel_09_653045 := "RHEL-09-653045: Not_a_Finding" if admin_space_left_5_percent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653045", concat(", ", missing_rhel_09_653045)]) if count(missing_rhel_09_653045) > 0
+
+else := "RHEL-09-653045: check failed — admin_space_left in /etc/audit/auditd.conf must be 5% of the audit storage volume (written as a percentage)"
+
+finding_rhel_09_653045 := {
+	"vuln_id": "V-258158",
+	"stig_id": "RHEL-09-653045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must take action when allocated audit record storage volume reaches 95 percent of the audit record storage capacity.",
+	"check_type": "machine",
+	"status": status_rhel_09_653045,
+	"detail": detail_rhel_09_653045,
+	"fix_text": "Set admin_space_left = 5% in /etc/audit/auditd.conf",
+}
+
+# RHEL-09-653050 | V-258159 | CAT II
+# admin_space_left_action as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653050 := [concat(".", p) | some p in [["auditd_config", "admin_space_left_action"]]; not _collected(p)]
+
+default admin_space_left_single := false
+
+admin_space_left_single if {
+	count(missing_rhel_09_653050) == 0
+	_kw(["auditd_config", "admin_space_left_action"]) in {"single"}
+}
+
+admin_space_left_single if {
+	_attested("rhel_09_653050_realtime_alerts")
+}
+
+status_rhel_09_653050 := "Not_a_Finding" if admin_space_left_single
+
+else := "Open"
+
+detail_rhel_09_653050 := "RHEL-09-653050: Not_a_Finding" if admin_space_left_single
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653050", concat(", ", missing_rhel_09_653050)]) if count(missing_rhel_09_653050) > 0
+
+else := "RHEL-09-653050: check failed — admin_space_left_action in /etc/audit/auditd.conf must be single, or the SA must attest that real-time alerts to the SA and ISSO are configured for 95 percent of audit storage (input.attest.rhel_09_653050_realtime_alerts)"
+
+finding_rhel_09_653050 := {
+	"vuln_id": "V-258159",
+	"stig_id": "RHEL-09-653050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must take action when allocated audit record storage volume reaches 95 percent of the repository maximum audit record storage capacity.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653050,
+	"detail": detail_rhel_09_653050,
+	"fix_text": "Set admin_space_left_action = single in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653060 | V-258161 | CAT II
+# name_format as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653060 := [concat(".", p) | some p in [["auditd_config", "name_format"]]; not _collected(p)]
+
+default audit_name_format_set := false
+
+audit_name_format_set if {
+	count(missing_rhel_09_653060) == 0
+	_kw(["auditd_config", "name_format"]) in {"hostname", "fqd", "numeric"}
+}
+
+status_rhel_09_653060 := "Not_a_Finding" if audit_name_format_set
+
+else := "Open"
+
+detail_rhel_09_653060 := "RHEL-09-653060: Not_a_Finding" if audit_name_format_set
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653060", concat(", ", missing_rhel_09_653060)]) if count(missing_rhel_09_653060) > 0
+
+else := "RHEL-09-653060: check failed — name_format in /etc/audit/auditd.conf must be hostname or fqd or numeric"
+
+finding_rhel_09_653060 := {
+	"vuln_id": "V-258161",
+	"stig_id": "RHEL-09-653060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must label all offloaded audit logs before sending them to the central log server.",
+	"check_type": "machine",
+	"status": status_rhel_09_653060,
+	"detail": detail_rhel_09_653060,
+	"fix_text": "Set name_format = hostname in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653065 | V-258162 | CAT II
+# overflow_action as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653065 := [concat(".", p) | some p in [["auditd_config", "overflow_action"]]; not _collected(p)]
+
+default audit_overflow_action_ok := false
+
+audit_overflow_action_ok if {
+	count(missing_rhel_09_653065) == 0
+	_kw(["auditd_config", "overflow_action"]) in {"syslog", "single", "halt"}
+}
+
+audit_overflow_action_ok if {
+	_attested("rhel_09_653065_audit_offload")
+}
+
+status_rhel_09_653065 := "Not_a_Finding" if audit_overflow_action_ok
+
+else := "Open"
+
+detail_rhel_09_653065 := "RHEL-09-653065: Not_a_Finding" if audit_overflow_action_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653065", concat(", ", missing_rhel_09_653065)]) if count(missing_rhel_09_653065) > 0
+
+else := "RHEL-09-653065: check failed — overflow_action in /etc/audit/auditd.conf must be syslog or single or halt, or the SA must attest that the audit logs are off-loaded to a different system or media (input.attest.rhel_09_653065_audit_offload)"
+
+finding_rhel_09_653065 := {
+	"vuln_id": "V-258162",
+	"stig_id": "RHEL-09-653065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must take appropriate action when the internal event queue is full.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653065,
+	"detail": detail_rhel_09_653065,
+	"fix_text": "Set overflow_action = syslog in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653075 | V-258164 | CAT II
+# local_events as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653075 := [concat(".", p) | some p in [["auditd_config", "local_events"]]; not _collected(p)]
+
+default audit_local_events := false
+
+audit_local_events if {
+	count(missing_rhel_09_653075) == 0
+	_kw(["auditd_config", "local_events"]) in {"yes"}
+}
+
+status_rhel_09_653075 := "Not_a_Finding" if audit_local_events
+
+else := "Open"
+
+detail_rhel_09_653075 := "RHEL-09-653075: Not_a_Finding" if audit_local_events
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653075", concat(", ", missing_rhel_09_653075)]) if count(missing_rhel_09_653075) > 0
+
+else := "RHEL-09-653075: check failed — local_events in /etc/audit/auditd.conf must be yes"
+
+finding_rhel_09_653075 := {
+	"vuln_id": "V-258164",
+	"stig_id": "RHEL-09-653075",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must audit local events.",
+	"check_type": "machine",
+	"status": status_rhel_09_653075,
+	"detail": detail_rhel_09_653075,
+	"fix_text": "Set local_events = yes in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653100 | V-258169 | CAT II
+# log_format as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653100 := [concat(".", p) | some p in [["auditd_config", "log_format"]]; not _collected(p)]
+
+default audit_log_format_enriched := false
+
+audit_log_format_enriched if {
+	count(missing_rhel_09_653100) == 0
+	_kw(["auditd_config", "log_format"]) in {"enriched"}
+}
+
+status_rhel_09_653100 := "Not_a_Finding" if audit_log_format_enriched
+
+else := "Open"
+
+detail_rhel_09_653100 := "RHEL-09-653100: Not_a_Finding" if audit_log_format_enriched
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653100", concat(", ", missing_rhel_09_653100)]) if count(missing_rhel_09_653100) > 0
+
+else := "RHEL-09-653100: check failed — log_format in /etc/audit/auditd.conf must be enriched"
+
+finding_rhel_09_653100 := {
+	"vuln_id": "V-258169",
+	"stig_id": "RHEL-09-653100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must produce audit records containing information to establish the identity of any individual or process associated with the event.",
+	"check_type": "machine",
+	"status": status_rhel_09_653100,
+	"detail": detail_rhel_09_653100,
+	"fix_text": "Set log_format = enriched in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653105 | V-258170 | CAT II
+# write_logs as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653105 := [concat(".", p) | some p in [["auditd_config", "write_logs"]]; not _collected(p)]
+
+default audit_write_logs := false
+
+audit_write_logs if {
+	count(missing_rhel_09_653105) == 0
+	_kw(["auditd_config", "write_logs"]) in {"yes"}
+}
+
+status_rhel_09_653105 := "Not_a_Finding" if audit_write_logs
+
+else := "Open"
+
+detail_rhel_09_653105 := "RHEL-09-653105: Not_a_Finding" if audit_write_logs
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653105", concat(", ", missing_rhel_09_653105)]) if count(missing_rhel_09_653105) > 0
+
+else := "RHEL-09-653105: check failed — write_logs in /etc/audit/auditd.conf must be yes"
+
+finding_rhel_09_653105 := {
+	"vuln_id": "V-258170",
+	"stig_id": "RHEL-09-653105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must write audit records to disk.",
+	"check_type": "machine",
+	"status": status_rhel_09_653105,
+	"detail": detail_rhel_09_653105,
+	"fix_text": "Set write_logs = yes in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653070 | V-258163 | CAT II
+# action_mail_acct as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653070 := [concat(".", p) | some p in [["auditd_config", "action_mail_acct"]]; not _collected(p)]
+
+default audit_action_mail_acct_root := false
+
+audit_action_mail_acct_root if {
+	count(missing_rhel_09_653070) == 0
+	_str(["auditd_config", "action_mail_acct"]) == "root"
+}
+
+audit_action_mail_acct_root if {
+	_attested("rhel_09_653070_failure_notification")
+}
+
+status_rhel_09_653070 := "Not_a_Finding" if audit_action_mail_acct_root
+
+else := "Open"
+
+detail_rhel_09_653070 := "RHEL-09-653070: Not_a_Finding" if audit_action_mail_acct_root
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653070", concat(", ", missing_rhel_09_653070)]) if count(missing_rhel_09_653070) > 0
+
+else := "RHEL-09-653070: check failed — action_mail_acct in /etc/audit/auditd.conf must be root, or the SA must attest that the SA and ISSO are notified of an audit processing failure another way, e.g. another security account (input.attest.rhel_09_653070_failure_notification)"
+
+finding_rhel_09_653070 := {
+	"vuln_id": "V-258163",
+	"stig_id": "RHEL-09-653070",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 System Administrator (SA) and/or information system security officer (ISSO) (at a minimum) must be alerted of an audit processing failure event.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_653070,
+	"detail": detail_rhel_09_653070,
+	"fix_text": "Set action_mail_acct = root in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653095 | V-258168 | CAT II
+# freq as configured in /etc/audit/auditd.conf (null when missing or commented out)
+missing_rhel_09_653095 := [concat(".", p) | some p in [["auditd_config", "freq"]]; not _collected(p)]
+
+default audit_freq_ok := false
+
+audit_freq_ok if {
+	count(missing_rhel_09_653095) == 0
+	n := _num(["auditd_config", "freq"])
+	n >= 1
+	n <= 100
+}
+
+status_rhel_09_653095 := "Not_a_Finding" if audit_freq_ok
+
+else := "Open"
+
+detail_rhel_09_653095 := "RHEL-09-653095: Not_a_Finding" if audit_freq_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653095", concat(", ", missing_rhel_09_653095)]) if count(missing_rhel_09_653095) > 0
+
+else := "RHEL-09-653095: check failed — freq in /etc/audit/auditd.conf must be between 1 and 100"
+
+finding_rhel_09_653095 := {
+	"vuln_id": "V-258168",
+	"stig_id": "RHEL-09-653095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must periodically flush audit records to disk to prevent the loss of audit records.",
+	"check_type": "machine",
+	"status": status_rhel_09_653095,
+	"detail": detail_rhel_09_653095,
+	"fix_text": "Set freq = 100 in /etc/audit/auditd.conf and restart auditd",
+}
+
+# RHEL-09-653130 | V-258175 | CAT II
+# dnf list --installed audispd-plugins (input.packages["audispd-plugins"])
+missing_rhel_09_653130 := [concat(".", p) | some p in [["packages", "audispd-plugins"]]; not _collected(p)]
+
+default audispd_plugins_installed := false
+
+audispd_plugins_installed if {
+	count(missing_rhel_09_653130) == 0
+	input.packages["audispd-plugins"] == true
+}
+
+status_rhel_09_653130 := "Not_a_Finding" if audispd_plugins_installed
+
+else := "Open"
+
+detail_rhel_09_653130 := "RHEL-09-653130: Not_a_Finding" if audispd_plugins_installed
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653130", concat(", ", missing_rhel_09_653130)]) if count(missing_rhel_09_653130) > 0
+
+else := "RHEL-09-653130: check failed — the audispd-plugins package must be installed"
+
+finding_rhel_09_653130 := {
+	"vuln_id": "V-258175",
+	"stig_id": "RHEL-09-653130",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audispd-plugins package must be installed.",
+	"check_type": "machine",
+	"status": status_rhel_09_653130,
+	"detail": detail_rhel_09_653130,
+	"fix_text": "Install the package: dnf install audispd-plugins",
+}
+
+# RHEL-09-653125 | V-258174 | CAT II
+# output of postmap -q root <each map of postconf alias_maps>; an empty string when no alias is set
+missing_rhel_09_653125 := [concat(".", p) | some p in [["postfix", "root_alias"]]; not _collected(p)]
+
+default audit_root_mail_alias := false
+
+audit_root_mail_alias if {
+	count(missing_rhel_09_653125) == 0
+	a := _str(["postfix", "root_alias"])
+	a != ""
+}
+
+status_rhel_09_653125 := "Not_a_Finding" if audit_root_mail_alias
+
+else := "Open"
+
+detail_rhel_09_653125 := "RHEL-09-653125: Not_a_Finding" if audit_root_mail_alias
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653125", concat(", ", missing_rhel_09_653125)]) if count(missing_rhel_09_653125) > 0
+
+else := "RHEL-09-653125: check failed — the Postfix alias maps must hold an alias for root (postmap -q root <alias_maps> returns one)"
+
+finding_rhel_09_653125 := {
+	"vuln_id": "V-258174",
+	"stig_id": "RHEL-09-653125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must have mail aliases to notify the information system security officer (ISSO) and system administrator (SA) (at a minimum) in the event of an audit processing failure.",
+	"check_type": "machine",
+	"status": status_rhel_09_653125,
+	"detail": detail_rhel_09_653125,
+	"fix_text": "Add a root alias (root: <ISSO account>) to the aliases map (/etc/aliases by default) and run newaliases",
+}
+
+# RHEL-09-654030 | V-258180 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/umount: -w /usr/bin/umount or -F path=/usr/bin/umount
+missing_rhel_09_654030 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_umount_cmd := false
+
+audit_umount_cmd if {
+	count(missing_rhel_09_654030) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/umount", ["x"])
+}
+
+status_rhel_09_654030 := "Not_a_Finding" if audit_umount_cmd
+
+else := "Open"
+
+detail_rhel_09_654030 := "RHEL-09-654030: Not_a_Finding" if audit_umount_cmd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654030", concat(", ", missing_rhel_09_654030)]) if count(missing_rhel_09_654030) > 0
+
+else := "RHEL-09-654030: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/umount"
+
+finding_rhel_09_654030 := {
+	"vuln_id": "V-258180",
+	"stig_id": "RHEL-09-654030",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of umount system calls.",
+	"check_type": "machine",
+	"status": status_rhel_09_654030,
+	"detail": detail_rhel_09_654030,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/umount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+}
+
+# RHEL-09-654035 | V-258181 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/chacl: -w /usr/bin/chacl or -F path=/usr/bin/chacl
+missing_rhel_09_654035 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_chacl := false
+
+audit_chacl if {
+	count(missing_rhel_09_654035) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/chacl", ["x"])
+}
+
+status_rhel_09_654035 := "Not_a_Finding" if audit_chacl
+
+else := "Open"
+
+detail_rhel_09_654035 := "RHEL-09-654035: Not_a_Finding" if audit_chacl
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654035", concat(", ", missing_rhel_09_654035)]) if count(missing_rhel_09_654035) > 0
+
+else := "RHEL-09-654035: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/chacl"
+
+finding_rhel_09_654035 := {
+	"vuln_id": "V-258181",
+	"stig_id": "RHEL-09-654035",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the chacl command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654035,
+	"detail": detail_rhel_09_654035,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/chacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+}
+
+# RHEL-09-654040 | V-258182 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/setfacl: -w /usr/bin/setfacl or -F path=/usr/bin/setfacl
+missing_rhel_09_654040 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_setfacl := false
+
+audit_setfacl if {
+	count(missing_rhel_09_654040) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/setfacl", ["x"])
+}
+
+status_rhel_09_654040 := "Not_a_Finding" if audit_setfacl
+
+else := "Open"
+
+detail_rhel_09_654040 := "RHEL-09-654040: Not_a_Finding" if audit_setfacl
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654040", concat(", ", missing_rhel_09_654040)]) if count(missing_rhel_09_654040) > 0
+
+else := "RHEL-09-654040: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/setfacl"
+
+finding_rhel_09_654040 := {
+	"vuln_id": "V-258182",
+	"stig_id": "RHEL-09-654040",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the setfacl command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654040,
+	"detail": detail_rhel_09_654040,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/setfacl -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+}
+
+# RHEL-09-654045 | V-258183 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/chcon: -w /usr/bin/chcon or -F path=/usr/bin/chcon
+missing_rhel_09_654045 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_chcon := false
+
+audit_chcon if {
+	count(missing_rhel_09_654045) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/chcon", ["x"])
+}
+
+status_rhel_09_654045 := "Not_a_Finding" if audit_chcon
+
+else := "Open"
+
+detail_rhel_09_654045 := "RHEL-09-654045: Not_a_Finding" if audit_chcon
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654045", concat(", ", missing_rhel_09_654045)]) if count(missing_rhel_09_654045) > 0
+
+else := "RHEL-09-654045: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/chcon"
+
+finding_rhel_09_654045 := {
+	"vuln_id": "V-258183",
+	"stig_id": "RHEL-09-654045",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the chcon command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654045,
+	"detail": detail_rhel_09_654045,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/chcon -F perm=x -F auid>=1000 -F auid!=-1 -F key=perm_mod",
+}
+
+# RHEL-09-654050 | V-258184 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/semanage: -w /usr/sbin/semanage or -F path=/usr/sbin/semanage
+missing_rhel_09_654050 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_semanage := false
+
+audit_semanage if {
+	count(missing_rhel_09_654050) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/semanage", ["x"])
+}
+
+status_rhel_09_654050 := "Not_a_Finding" if audit_semanage
+
+else := "Open"
+
+detail_rhel_09_654050 := "RHEL-09-654050: Not_a_Finding" if audit_semanage
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654050", concat(", ", missing_rhel_09_654050)]) if count(missing_rhel_09_654050) > 0
+
+else := "RHEL-09-654050: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/semanage"
+
+finding_rhel_09_654050 := {
+	"vuln_id": "V-258184",
+	"stig_id": "RHEL-09-654050",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the semanage command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654050,
+	"detail": detail_rhel_09_654050,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/semanage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654055 | V-258185 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/setfiles: -w /usr/sbin/setfiles or -F path=/usr/sbin/setfiles
+missing_rhel_09_654055 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_setfiles := false
+
+audit_setfiles if {
+	count(missing_rhel_09_654055) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/setfiles", ["x"])
+}
+
+status_rhel_09_654055 := "Not_a_Finding" if audit_setfiles
+
+else := "Open"
+
+detail_rhel_09_654055 := "RHEL-09-654055: Not_a_Finding" if audit_setfiles
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654055", concat(", ", missing_rhel_09_654055)]) if count(missing_rhel_09_654055) > 0
+
+else := "RHEL-09-654055: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/setfiles"
+
+finding_rhel_09_654055 := {
+	"vuln_id": "V-258185",
+	"stig_id": "RHEL-09-654055",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the setfiles command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654055,
+	"detail": detail_rhel_09_654055,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/setfiles -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654060 | V-258186 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/setsebool: -w /usr/sbin/setsebool or -F path=/usr/sbin/setsebool
+missing_rhel_09_654060 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_setsebool := false
+
+audit_setsebool if {
+	count(missing_rhel_09_654060) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/setsebool", ["x"])
+}
+
+status_rhel_09_654060 := "Not_a_Finding" if audit_setsebool
+
+else := "Open"
+
+detail_rhel_09_654060 := "RHEL-09-654060: Not_a_Finding" if audit_setsebool
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654060", concat(", ", missing_rhel_09_654060)]) if count(missing_rhel_09_654060) > 0
+
+else := "RHEL-09-654060: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/setsebool"
+
+finding_rhel_09_654060 := {
+	"vuln_id": "V-258186",
+	"stig_id": "RHEL-09-654060",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the setsebool command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654060,
+	"detail": detail_rhel_09_654060,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/setsebool -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged",
+}
+
+# RHEL-09-654085 | V-258191 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/chage: -w /usr/bin/chage or -F path=/usr/bin/chage
+missing_rhel_09_654085 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_chage := false
+
+audit_chage if {
+	count(missing_rhel_09_654085) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/chage", ["x"])
+}
+
+status_rhel_09_654085 := "Not_a_Finding" if audit_chage
+
+else := "Open"
+
+detail_rhel_09_654085 := "RHEL-09-654085: Not_a_Finding" if audit_chage
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654085", concat(", ", missing_rhel_09_654085)]) if count(missing_rhel_09_654085) > 0
+
+else := "RHEL-09-654085: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/chage"
+
+finding_rhel_09_654085 := {
+	"vuln_id": "V-258191",
+	"stig_id": "RHEL-09-654085",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the chage command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654085,
+	"detail": detail_rhel_09_654085,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/chage -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-chage",
+}
+
+# RHEL-09-654090 | V-258192 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/chsh: -w /usr/bin/chsh or -F path=/usr/bin/chsh
+missing_rhel_09_654090 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_chsh := false
+
+audit_chsh if {
+	count(missing_rhel_09_654090) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/chsh", ["x"])
+}
+
+status_rhel_09_654090 := "Not_a_Finding" if audit_chsh
+
+else := "Open"
+
+detail_rhel_09_654090 := "RHEL-09-654090: Not_a_Finding" if audit_chsh
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654090", concat(", ", missing_rhel_09_654090)]) if count(missing_rhel_09_654090) > 0
+
+else := "RHEL-09-654090: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/chsh"
+
+finding_rhel_09_654090 := {
+	"vuln_id": "V-258192",
+	"stig_id": "RHEL-09-654090",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the chsh command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654090,
+	"detail": detail_rhel_09_654090,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/chsh -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+}
+
+# RHEL-09-654095 | V-258193 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/crontab: -w /usr/bin/crontab or -F path=/usr/bin/crontab
+missing_rhel_09_654095 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_crontab := false
+
+audit_crontab if {
+	count(missing_rhel_09_654095) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/crontab", ["x"])
+}
+
+status_rhel_09_654095 := "Not_a_Finding" if audit_crontab
+
+else := "Open"
+
+detail_rhel_09_654095 := "RHEL-09-654095: Not_a_Finding" if audit_crontab
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654095", concat(", ", missing_rhel_09_654095)]) if count(missing_rhel_09_654095) > 0
+
+else := "RHEL-09-654095: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/crontab"
+
+finding_rhel_09_654095 := {
+	"vuln_id": "V-258193",
+	"stig_id": "RHEL-09-654095",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the crontab command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654095,
+	"detail": detail_rhel_09_654095,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/crontab -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-crontab",
+}
+
+# RHEL-09-654105 | V-258195 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/kmod: -w /usr/bin/kmod or -F path=/usr/bin/kmod
+missing_rhel_09_654105 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_kmod := false
+
+audit_kmod if {
+	count(missing_rhel_09_654105) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/kmod", ["x"])
+}
+
+status_rhel_09_654105 := "Not_a_Finding" if audit_kmod
+
+else := "Open"
+
+detail_rhel_09_654105 := "RHEL-09-654105: Not_a_Finding" if audit_kmod
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654105", concat(", ", missing_rhel_09_654105)]) if count(missing_rhel_09_654105) > 0
+
+else := "RHEL-09-654105: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/kmod"
+
+finding_rhel_09_654105 := {
+	"vuln_id": "V-258195",
+	"stig_id": "RHEL-09-654105",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the kmod command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654105,
+	"detail": detail_rhel_09_654105,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/kmod -F perm=x -F auid>=1000 -F auid!=-1 -F key=modules",
+}
+
+# RHEL-09-654110 | V-258196 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/newgrp: -w /usr/bin/newgrp or -F path=/usr/bin/newgrp
+missing_rhel_09_654110 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_newgrp := false
+
+audit_newgrp if {
+	count(missing_rhel_09_654110) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/newgrp", ["x"])
+}
+
+status_rhel_09_654110 := "Not_a_Finding" if audit_newgrp
+
+else := "Open"
+
+detail_rhel_09_654110 := "RHEL-09-654110: Not_a_Finding" if audit_newgrp
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654110", concat(", ", missing_rhel_09_654110)]) if count(missing_rhel_09_654110) > 0
+
+else := "RHEL-09-654110: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/newgrp"
+
+finding_rhel_09_654110 := {
+	"vuln_id": "V-258196",
+	"stig_id": "RHEL-09-654110",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the newgrp command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654110,
+	"detail": detail_rhel_09_654110,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+}
+
+# RHEL-09-654115 | V-258197 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/pam_timestamp_check: -w /usr/sbin/pam_timestamp_check or -F path=/usr/sbin/pam_timestamp_check
+missing_rhel_09_654115 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_pam_timestamp_check := false
+
+audit_pam_timestamp_check if {
+	count(missing_rhel_09_654115) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/pam_timestamp_check", ["x"])
+}
+
+status_rhel_09_654115 := "Not_a_Finding" if audit_pam_timestamp_check
+
+else := "Open"
+
+detail_rhel_09_654115 := "RHEL-09-654115: Not_a_Finding" if audit_pam_timestamp_check
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654115", concat(", ", missing_rhel_09_654115)]) if count(missing_rhel_09_654115) > 0
+
+else := "RHEL-09-654115: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/pam_timestamp_check"
+
+finding_rhel_09_654115 := {
+	"vuln_id": "V-258197",
+	"stig_id": "RHEL-09-654115",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the pam_timestamp_check command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654115,
+	"detail": detail_rhel_09_654115,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/pam_timestamp_check -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-pam_timestamp_check",
+}
+
+# RHEL-09-654125 | V-258199 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/postdrop: -w /usr/sbin/postdrop or -F path=/usr/sbin/postdrop
+missing_rhel_09_654125 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_postdrop := false
+
+audit_postdrop if {
+	count(missing_rhel_09_654125) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/postdrop", ["x"])
+}
+
+status_rhel_09_654125 := "Not_a_Finding" if audit_postdrop
+
+else := "Open"
+
+detail_rhel_09_654125 := "RHEL-09-654125: Not_a_Finding" if audit_postdrop
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654125", concat(", ", missing_rhel_09_654125)]) if count(missing_rhel_09_654125) > 0
+
+else := "RHEL-09-654125: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/postdrop"
+
+finding_rhel_09_654125 := {
+	"vuln_id": "V-258199",
+	"stig_id": "RHEL-09-654125",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the postdrop command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654125,
+	"detail": detail_rhel_09_654125,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/postdrop -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654130 | V-258200 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/postqueue: -w /usr/sbin/postqueue or -F path=/usr/sbin/postqueue
+missing_rhel_09_654130 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_postqueue := false
+
+audit_postqueue if {
+	count(missing_rhel_09_654130) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/postqueue", ["x"])
+}
+
+status_rhel_09_654130 := "Not_a_Finding" if audit_postqueue
+
+else := "Open"
+
+detail_rhel_09_654130 := "RHEL-09-654130: Not_a_Finding" if audit_postqueue
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654130", concat(", ", missing_rhel_09_654130)]) if count(missing_rhel_09_654130) > 0
+
+else := "RHEL-09-654130: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/postqueue"
+
+finding_rhel_09_654130 := {
+	"vuln_id": "V-258200",
+	"stig_id": "RHEL-09-654130",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the postqueue command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654130,
+	"detail": detail_rhel_09_654130,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/postqueue -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654135 | V-258201 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/ssh-agent: -w /usr/bin/ssh-agent or -F path=/usr/bin/ssh-agent
+missing_rhel_09_654135 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_ssh_agent := false
+
+audit_ssh_agent if {
+	count(missing_rhel_09_654135) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/ssh-agent", ["x"])
+}
+
+status_rhel_09_654135 := "Not_a_Finding" if audit_ssh_agent
+
+else := "Open"
+
+detail_rhel_09_654135 := "RHEL-09-654135: Not_a_Finding" if audit_ssh_agent
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654135", concat(", ", missing_rhel_09_654135)]) if count(missing_rhel_09_654135) > 0
+
+else := "RHEL-09-654135: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/ssh-agent"
+
+finding_rhel_09_654135 := {
+	"vuln_id": "V-258201",
+	"stig_id": "RHEL-09-654135",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the ssh-agent command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654135,
+	"detail": detail_rhel_09_654135,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/ssh-agent -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+}
+
+# RHEL-09-654140 | V-258202 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/libexec/openssh/ssh-keysign: -w /usr/libexec/openssh/ssh-keysign or -F path=/usr/libexec/openssh/ssh-keysign
+missing_rhel_09_654140 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_ssh_keysign := false
+
+audit_ssh_keysign if {
+	count(missing_rhel_09_654140) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/libexec/openssh/ssh-keysign", ["x"])
+}
+
+status_rhel_09_654140 := "Not_a_Finding" if audit_ssh_keysign
+
+else := "Open"
+
+detail_rhel_09_654140 := "RHEL-09-654140: Not_a_Finding" if audit_ssh_keysign
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654140", concat(", ", missing_rhel_09_654140)]) if count(missing_rhel_09_654140) > 0
+
+else := "RHEL-09-654140: check failed — a loaded audit rule must audit execution (perm x) of /usr/libexec/openssh/ssh-keysign"
+
+finding_rhel_09_654140 := {
+	"vuln_id": "V-258202",
+	"stig_id": "RHEL-09-654140",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the ssh-keysign command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654140,
+	"detail": detail_rhel_09_654140,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/libexec/openssh/ssh-keysign -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-ssh",
+}
+
+# RHEL-09-654145 | V-258203 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/su: -w /usr/bin/su or -F path=/usr/bin/su
+missing_rhel_09_654145 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_su := false
+
+audit_su if {
+	count(missing_rhel_09_654145) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/su", ["x"])
+}
+
+status_rhel_09_654145 := "Not_a_Finding" if audit_su
+
+else := "Open"
+
+detail_rhel_09_654145 := "RHEL-09-654145: Not_a_Finding" if audit_su
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654145", concat(", ", missing_rhel_09_654145)]) if count(missing_rhel_09_654145) > 0
+
+else := "RHEL-09-654145: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/su"
+
+finding_rhel_09_654145 := {
+	"vuln_id": "V-258203",
+	"stig_id": "RHEL-09-654145",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the su command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654145,
+	"detail": detail_rhel_09_654145,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-priv_change",
+}
+
+# RHEL-09-654155 | V-258205 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/sudoedit: -w /usr/bin/sudoedit or -F path=/usr/bin/sudoedit
+missing_rhel_09_654155 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_sudoedit := false
+
+audit_sudoedit if {
+	count(missing_rhel_09_654155) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/sudoedit", ["x"])
+}
+
+status_rhel_09_654155 := "Not_a_Finding" if audit_sudoedit
+
+else := "Open"
+
+detail_rhel_09_654155 := "RHEL-09-654155: Not_a_Finding" if audit_sudoedit
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654155", concat(", ", missing_rhel_09_654155)]) if count(missing_rhel_09_654155) > 0
+
+else := "RHEL-09-654155: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/sudoedit"
+
+finding_rhel_09_654155 := {
+	"vuln_id": "V-258205",
+	"stig_id": "RHEL-09-654155",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the sudoedit command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654155,
+	"detail": detail_rhel_09_654155,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/sudoedit -F perm=x -F auid>=1000 -F auid!=-1 -F key=priv_cmd",
+}
+
+# RHEL-09-654160 | V-258206 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/unix_chkpwd: -w /usr/sbin/unix_chkpwd or -F path=/usr/sbin/unix_chkpwd
+missing_rhel_09_654160 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_unix_chkpwd := false
+
+audit_unix_chkpwd if {
+	count(missing_rhel_09_654160) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/unix_chkpwd", ["x"])
+}
+
+status_rhel_09_654160 := "Not_a_Finding" if audit_unix_chkpwd
+
+else := "Open"
+
+detail_rhel_09_654160 := "RHEL-09-654160: Not_a_Finding" if audit_unix_chkpwd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654160", concat(", ", missing_rhel_09_654160)]) if count(missing_rhel_09_654160) > 0
+
+else := "RHEL-09-654160: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/unix_chkpwd"
+
+finding_rhel_09_654160 := {
+	"vuln_id": "V-258206",
+	"stig_id": "RHEL-09-654160",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the unix_chkpwd command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654160,
+	"detail": detail_rhel_09_654160,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/unix_chkpwd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654165 | V-258207 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/unix_update: -w /usr/sbin/unix_update or -F path=/usr/sbin/unix_update
+missing_rhel_09_654165 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_unix_update := false
+
+audit_unix_update if {
+	count(missing_rhel_09_654165) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/unix_update", ["x"])
+}
+
+status_rhel_09_654165 := "Not_a_Finding" if audit_unix_update
+
+else := "Open"
+
+detail_rhel_09_654165 := "RHEL-09-654165: Not_a_Finding" if audit_unix_update
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654165", concat(", ", missing_rhel_09_654165)]) if count(missing_rhel_09_654165) > 0
+
+else := "RHEL-09-654165: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/unix_update"
+
+finding_rhel_09_654165 := {
+	"vuln_id": "V-258207",
+	"stig_id": "RHEL-09-654165",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the unix_update command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654165,
+	"detail": detail_rhel_09_654165,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/unix_update -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654170 | V-258208 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/userhelper: -w /usr/sbin/userhelper or -F path=/usr/sbin/userhelper
+missing_rhel_09_654170 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_userhelper := false
+
+audit_userhelper if {
+	count(missing_rhel_09_654170) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/userhelper", ["x"])
+}
+
+status_rhel_09_654170 := "Not_a_Finding" if audit_userhelper
+
+else := "Open"
+
+detail_rhel_09_654170 := "RHEL-09-654170: Not_a_Finding" if audit_userhelper
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654170", concat(", ", missing_rhel_09_654170)]) if count(missing_rhel_09_654170) > 0
+
+else := "RHEL-09-654170: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/userhelper"
+
+finding_rhel_09_654170 := {
+	"vuln_id": "V-258208",
+	"stig_id": "RHEL-09-654170",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the userhelper command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654170,
+	"detail": detail_rhel_09_654170,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/userhelper -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-unix-update",
+}
+
+# RHEL-09-654175 | V-258209 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/usermod: -w /usr/sbin/usermod or -F path=/usr/sbin/usermod
+missing_rhel_09_654175 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_usermod := false
+
+audit_usermod if {
+	count(missing_rhel_09_654175) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/usermod", ["x"])
+}
+
+status_rhel_09_654175 := "Not_a_Finding" if audit_usermod
+
+else := "Open"
+
+detail_rhel_09_654175 := "RHEL-09-654175: Not_a_Finding" if audit_usermod
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654175", concat(", ", missing_rhel_09_654175)]) if count(missing_rhel_09_654175) > 0
+
+else := "RHEL-09-654175: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/usermod"
+
+finding_rhel_09_654175 := {
+	"vuln_id": "V-258209",
+	"stig_id": "RHEL-09-654175",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the usermod command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654175,
+	"detail": detail_rhel_09_654175,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/usermod -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-usermod",
+}
+
+# RHEL-09-654176 | V-288832 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/useradd: -w /usr/sbin/useradd or -F path=/usr/sbin/useradd
+missing_rhel_09_654176 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_useradd := false
+
+audit_useradd if {
+	count(missing_rhel_09_654176) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/useradd", ["x"])
+}
+
+status_rhel_09_654176 := "Not_a_Finding" if audit_useradd
+
+else := "Open"
+
+detail_rhel_09_654176 := "RHEL-09-654176: Not_a_Finding" if audit_useradd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654176", concat(", ", missing_rhel_09_654176)]) if count(missing_rhel_09_654176) > 0
+
+else := "RHEL-09-654176: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/useradd"
+
+finding_rhel_09_654176 := {
+	"vuln_id": "V-288832",
+	"stig_id": "RHEL-09-654176",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the useradd command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654176,
+	"detail": detail_rhel_09_654176,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/useradd -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-useradd",
+}
+
+# RHEL-09-654180 | V-258210 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/mount: -w /usr/bin/mount or -F path=/usr/bin/mount
+missing_rhel_09_654180 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_mount_cmd := false
+
+audit_mount_cmd if {
+	count(missing_rhel_09_654180) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/mount", ["x"])
+}
+
+status_rhel_09_654180 := "Not_a_Finding" if audit_mount_cmd
+
+else := "Open"
+
+detail_rhel_09_654180 := "RHEL-09-654180: Not_a_Finding" if audit_mount_cmd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654180", concat(", ", missing_rhel_09_654180)]) if count(missing_rhel_09_654180) > 0
+
+else := "RHEL-09-654180: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/mount"
+
+finding_rhel_09_654180 := {
+	"vuln_id": "V-258210",
+	"stig_id": "RHEL-09-654180",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the mount command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654180,
+	"detail": detail_rhel_09_654180,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/bin/mount -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-mount",
+}
+
+# RHEL-09-654185 | V-258211 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/init: -w /usr/sbin/init or -F path=/usr/sbin/init
+missing_rhel_09_654185 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_init := false
+
+audit_init if {
+	count(missing_rhel_09_654185) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/init", ["x"])
+}
+
+status_rhel_09_654185 := "Not_a_Finding" if audit_init
+
+else := "Open"
+
+detail_rhel_09_654185 := "RHEL-09-654185: Not_a_Finding" if audit_init
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654185", concat(", ", missing_rhel_09_654185)]) if count(missing_rhel_09_654185) > 0
+
+else := "RHEL-09-654185: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/init"
+
+finding_rhel_09_654185 := {
+	"vuln_id": "V-258211",
+	"stig_id": "RHEL-09-654185",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the init command in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654185,
+	"detail": detail_rhel_09_654185,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/init -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-init",
+}
+
+# RHEL-09-654190 | V-258212 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/poweroff: -w /usr/sbin/poweroff or -F path=/usr/sbin/poweroff
+missing_rhel_09_654190 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_poweroff := false
+
+audit_poweroff if {
+	count(missing_rhel_09_654190) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/poweroff", ["x"])
+}
+
+status_rhel_09_654190 := "Not_a_Finding" if audit_poweroff
+
+else := "Open"
+
+detail_rhel_09_654190 := "RHEL-09-654190: Not_a_Finding" if audit_poweroff
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654190", concat(", ", missing_rhel_09_654190)]) if count(missing_rhel_09_654190) > 0
+
+else := "RHEL-09-654190: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/poweroff"
+
+finding_rhel_09_654190 := {
+	"vuln_id": "V-258212",
+	"stig_id": "RHEL-09-654190",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the poweroff command in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654190,
+	"detail": detail_rhel_09_654190,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/poweroff -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-poweroff",
+}
+
+# RHEL-09-654195 | V-258213 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/sbin/reboot: -w /usr/sbin/reboot or -F path=/usr/sbin/reboot
+missing_rhel_09_654195 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_reboot := false
+
+audit_reboot if {
+	count(missing_rhel_09_654195) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/sbin/reboot", ["x"])
+}
+
+status_rhel_09_654195 := "Not_a_Finding" if audit_reboot
+
+else := "Open"
+
+detail_rhel_09_654195 := "RHEL-09-654195: Not_a_Finding" if audit_reboot
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654195", concat(", ", missing_rhel_09_654195)]) if count(missing_rhel_09_654195) > 0
+
+else := "RHEL-09-654195: check failed — a loaded audit rule must audit execution (perm x) of /usr/sbin/reboot"
+
+finding_rhel_09_654195 := {
+	"vuln_id": "V-258213",
+	"stig_id": "RHEL-09-654195",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the reboot command in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654195,
+	"detail": detail_rhel_09_654195,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -S all -F path=/usr/sbin/reboot -F perm=x -F auid>=1000 -F auid!=-1 -F key=privileged-reboot",
+}
+
+# RHEL-09-654100 | V-258194 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/gpasswd: -w /usr/bin/gpasswd or -F path=/usr/bin/gpasswd
+missing_rhel_09_654100 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_gpasswd := false
+
+audit_gpasswd if {
+	count(missing_rhel_09_654100) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/gpasswd", ["x"])
+}
+
+status_rhel_09_654100 := "Not_a_Finding" if audit_gpasswd
+
+else := "Open"
+
+detail_rhel_09_654100 := "RHEL-09-654100: Not_a_Finding" if audit_gpasswd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654100", concat(", ", missing_rhel_09_654100)]) if count(missing_rhel_09_654100) > 0
+
+else := "RHEL-09-654100: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/gpasswd"
+
+finding_rhel_09_654100 := {
+	"vuln_id": "V-258194",
+	"stig_id": "RHEL-09-654100",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the gpasswd command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654100,
+	"detail": detail_rhel_09_654100,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -S execve -F path=/usr/bin/gpasswd -F perm=x -F key=identity",
+}
+
+# RHEL-09-654120 | V-258198 | CAT II
+# a loaded rule (auditctl -l) on exactly /usr/bin/passwd: -w /usr/bin/passwd or -F path=/usr/bin/passwd
+missing_rhel_09_654120 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_passwd_cmd := false
+
+audit_passwd_cmd if {
+	count(missing_rhel_09_654120) == 0
+	is_array(input.audit_rules)
+	_path_audited("/usr/bin/passwd", ["x"])
+}
+
+status_rhel_09_654120 := "Not_a_Finding" if audit_passwd_cmd
+
+else := "Open"
+
+detail_rhel_09_654120 := "RHEL-09-654120: Not_a_Finding" if audit_passwd_cmd
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654120", concat(", ", missing_rhel_09_654120)]) if count(missing_rhel_09_654120) > 0
+
+else := "RHEL-09-654120: check failed — a loaded audit rule must audit execution (perm x) of /usr/bin/passwd"
+
+finding_rhel_09_654120 := {
+	"vuln_id": "V-258198",
+	"stig_id": "RHEL-09-654120",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the passwd command.",
+	"check_type": "machine",
+	"status": status_rhel_09_654120,
+	"detail": detail_rhel_09_654120,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/usr/bin/passwd -F perm=x -F key=identity",
+}
+
+# RHEL-09-654225 | V-258219 | CAT II
+# a loaded rule (auditctl -l) on exactly /etc/group: -w /etc/group or -F path=/etc/group
+missing_rhel_09_654225 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_group_file := false
+
+audit_group_file if {
+	count(missing_rhel_09_654225) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/group", ["w", "a"])
+}
+
+status_rhel_09_654225 := "Not_a_Finding" if audit_group_file
+
+else := "Open"
+
+detail_rhel_09_654225 := "RHEL-09-654225: Not_a_Finding" if audit_group_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654225", concat(", ", missing_rhel_09_654225)]) if count(missing_rhel_09_654225) > 0
+
+else := "RHEL-09-654225: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /etc/group"
+
+finding_rhel_09_654225 := {
+	"vuln_id": "V-258219",
+	"stig_id": "RHEL-09-654225",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/group.",
+	"check_type": "machine",
+	"status": status_rhel_09_654225,
+	"detail": detail_rhel_09_654225,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/etc/group -F perm=wa -F key=identity",
+}
+
+# RHEL-09-654230 | V-258220 | CAT II
+# a loaded rule (auditctl -l) on exactly /etc/gshadow: -w /etc/gshadow or -F path=/etc/gshadow
+missing_rhel_09_654230 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_gshadow_file := false
+
+audit_gshadow_file if {
+	count(missing_rhel_09_654230) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/gshadow", ["w", "a"])
+}
+
+status_rhel_09_654230 := "Not_a_Finding" if audit_gshadow_file
+
+else := "Open"
+
+detail_rhel_09_654230 := "RHEL-09-654230: Not_a_Finding" if audit_gshadow_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654230", concat(", ", missing_rhel_09_654230)]) if count(missing_rhel_09_654230) > 0
+
+else := "RHEL-09-654230: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /etc/gshadow"
+
+finding_rhel_09_654230 := {
+	"vuln_id": "V-258220",
+	"stig_id": "RHEL-09-654230",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/gshadow.",
+	"check_type": "machine",
+	"status": status_rhel_09_654230,
+	"detail": detail_rhel_09_654230,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/etc/gshadow -F perm=wa -F key=identity",
+}
+
+# RHEL-09-654235 | V-258221 | CAT II
+# a loaded rule (auditctl -l) on exactly /etc/security/opasswd: -w /etc/security/opasswd or -F path=/etc/security/opasswd
+missing_rhel_09_654235 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_opasswd_file := false
+
+audit_opasswd_file if {
+	count(missing_rhel_09_654235) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/security/opasswd", ["w", "a"])
+}
+
+status_rhel_09_654235 := "Not_a_Finding" if audit_opasswd_file
+
+else := "Open"
+
+detail_rhel_09_654235 := "RHEL-09-654235: Not_a_Finding" if audit_opasswd_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654235", concat(", ", missing_rhel_09_654235)]) if count(missing_rhel_09_654235) > 0
+
+else := "RHEL-09-654235: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /etc/security/opasswd"
+
+finding_rhel_09_654235 := {
+	"vuln_id": "V-258221",
+	"stig_id": "RHEL-09-654235",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/security/opasswd.",
+	"check_type": "machine",
+	"status": status_rhel_09_654235,
+	"detail": detail_rhel_09_654235,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/etc/security/opasswd -F perm=wa -F key=identity",
+}
+
+# RHEL-09-654245 | V-258223 | CAT II
+# a loaded rule (auditctl -l) on exactly /etc/shadow: -w /etc/shadow or -F path=/etc/shadow
+missing_rhel_09_654245 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_shadow_file := false
+
+audit_shadow_file if {
+	count(missing_rhel_09_654245) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/shadow", ["w", "a"])
+}
+
+status_rhel_09_654245 := "Not_a_Finding" if audit_shadow_file
+
+else := "Open"
+
+detail_rhel_09_654245 := "RHEL-09-654245: Not_a_Finding" if audit_shadow_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654245", concat(", ", missing_rhel_09_654245)]) if count(missing_rhel_09_654245) > 0
+
+else := "RHEL-09-654245: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /etc/shadow"
+
+finding_rhel_09_654245 := {
+	"vuln_id": "V-258223",
+	"stig_id": "RHEL-09-654245",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/shadow.",
+	"check_type": "machine",
+	"status": status_rhel_09_654245,
+	"detail": detail_rhel_09_654245,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F key=identity",
+}
+
+# RHEL-09-654250 | V-258224 | CAT II
+# a loaded rule (auditctl -l) on exactly /var/log/faillock: -w /var/log/faillock or -F path=/var/log/faillock
+missing_rhel_09_654250 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_faillock_file := false
+
+audit_faillock_file if {
+	count(missing_rhel_09_654250) == 0
+	is_array(input.audit_rules)
+	_path_audited("/var/log/faillock", ["w", "a"])
+}
+
+status_rhel_09_654250 := "Not_a_Finding" if audit_faillock_file
+
+else := "Open"
+
+detail_rhel_09_654250 := "RHEL-09-654250: Not_a_Finding" if audit_faillock_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654250", concat(", ", missing_rhel_09_654250)]) if count(missing_rhel_09_654250) > 0
+
+else := "RHEL-09-654250: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /var/log/faillock"
+
+finding_rhel_09_654250 := {
+	"vuln_id": "V-258224",
+	"stig_id": "RHEL-09-654250",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/faillock.",
+	"check_type": "machine",
+	"status": status_rhel_09_654250,
+	"detail": detail_rhel_09_654250,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/var/log/faillock -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+}
+
+# RHEL-09-654255 | V-258225 | CAT II
+# a loaded rule (auditctl -l) on exactly /var/log/lastlog: -w /var/log/lastlog or -F path=/var/log/lastlog
+missing_rhel_09_654255 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_lastlog_file := false
+
+audit_lastlog_file if {
+	count(missing_rhel_09_654255) == 0
+	is_array(input.audit_rules)
+	_path_audited("/var/log/lastlog", ["w", "a"])
+}
+
+status_rhel_09_654255 := "Not_a_Finding" if audit_lastlog_file
+
+else := "Open"
+
+detail_rhel_09_654255 := "RHEL-09-654255: Not_a_Finding" if audit_lastlog_file
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654255", concat(", ", missing_rhel_09_654255)]) if count(missing_rhel_09_654255) > 0
+
+else := "RHEL-09-654255: check failed — a loaded audit rule must audit write and attribute change (perm wa) of /var/log/lastlog"
+
+finding_rhel_09_654255 := {
+	"vuln_id": "V-258225",
+	"stig_id": "RHEL-09-654255",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/lastlog.",
+	"check_type": "machine",
+	"status": status_rhel_09_654255,
+	"detail": detail_rhel_09_654255,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b64 -F path=/var/log/lastlog -F perm=wa -F auid>=1000 -F auid!=-1 -F key=logins",
+}
+
+# RHEL-09-654220 | V-258218 | CAT II
+# a loaded rule (auditctl -l) on /etc/sudoers.d: -w, -F path= or -F dir=
+missing_rhel_09_654220 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_sudoers_d := false
+
+audit_sudoers_d if {
+	count(missing_rhel_09_654220) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/sudoers.d", ["w", "a"])
+}
+
+audit_sudoers_d if {
+	count(missing_rhel_09_654220) == 0
+	is_array(input.audit_rules)
+	_path_audited("/etc/sudoers.d/", ["w", "a"])
+}
+
+audit_sudoers_d if {
+	count(missing_rhel_09_654220) == 0
+	is_array(input.audit_rules)
+	_dir_audited("/etc/sudoers.d", ["w", "a"])
+}
+
+status_rhel_09_654220 := "Not_a_Finding" if audit_sudoers_d
+
+else := "Open"
+
+detail_rhel_09_654220 := "RHEL-09-654220: Not_a_Finding" if audit_sudoers_d
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654220", concat(", ", missing_rhel_09_654220)]) if count(missing_rhel_09_654220) > 0
+
+else := "RHEL-09-654220: check failed — a loaded audit rule must watch /etc/sudoers.d for write and attribute change (perm wa)"
+
+finding_rhel_09_654220 := {
+	"vuln_id": "V-258218",
+	"stig_id": "RHEL-09-654220",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.d/directory.",
+	"check_type": "machine",
+	"status": status_rhel_09_654220,
+	"detail": detail_rhel_09_654220,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -w /etc/sudoers.d/ -p wa -k identity",
+}
+
+# RHEL-09-654065 | V-258187 | CAT II
+# always,exit rules for rename, unlink, rmdir, renameat and unlinkat, both arches (auditctl -l)
+missing_rhel_09_654065 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_delete_syscalls := false
+
+audit_delete_syscalls if {
+	count(missing_rhel_09_654065) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"rename", "unlink", "rmdir", "renameat", "unlinkat"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"rename", "unlink", "rmdir", "renameat", "unlinkat"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654065 := "Not_a_Finding" if audit_delete_syscalls
+
+else := "Open"
+
+detail_rhel_09_654065 := "RHEL-09-654065: Not_a_Finding" if audit_delete_syscalls
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654065", concat(", ", missing_rhel_09_654065)]) if count(missing_rhel_09_654065) > 0
+
+else := "RHEL-09-654065: check failed — rename, unlink, rmdir, renameat and unlinkat must be audited for both b32 and b64"
+
+finding_rhel_09_654065 := {
+	"vuln_id": "V-258187",
+	"stig_id": "RHEL-09-654065",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the rename, unlink, rmdir, renameat, and unlinkat system calls.",
+	"check_type": "machine",
+	"status": status_rhel_09_654065,
+	"detail": detail_rhel_09_654065,
+	"fix_text": "Add the rules to a file in /etc/audit/rules.d/ and load them (augenrules --load): -a always,exit -F arch=b64 -S rename,unlink,rmdir,renameat,unlinkat -F auid>=1000 -F auid!=-1 -F key=k",
+}
+
+# RHEL-09-654075 | V-258189 | CAT II
+# always,exit rules for delete_module, both arches (auditctl -l)
+missing_rhel_09_654075 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_delete_module := false
+
+audit_delete_module if {
+	count(missing_rhel_09_654075) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"delete_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"delete_module"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654075 := "Not_a_Finding" if audit_delete_module
+
+else := "Open"
+
+detail_rhel_09_654075 := "RHEL-09-654075: Not_a_Finding" if audit_delete_module
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654075", concat(", ", missing_rhel_09_654075)]) if count(missing_rhel_09_654075) > 0
+
+else := "RHEL-09-654075: check failed — delete_module must be audited for both b32 and b64"
+
+finding_rhel_09_654075 := {
+	"vuln_id": "V-258189",
+	"stig_id": "RHEL-09-654075",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit all uses of the delete_module system call.",
+	"check_type": "machine",
+	"status": status_rhel_09_654075,
+	"detail": detail_rhel_09_654075,
+	"fix_text": "Add the rules to a file in /etc/audit/rules.d/ and load them (augenrules --load): -a always,exit -F arch=b64 -S delete_module -F auid>=1000 -F auid!=-1 -F key=k",
+}
+
+# RHEL-09-654097 | V-279936 | CAT II
+# execve rules on subj_type=crond_t (auditctl -l): euid=0 and auid>=1000, both arches
+missing_rhel_09_654097 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_cron_exec := false
+
+audit_cron_exec if {
+	count(missing_rhel_09_654097) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"execve"}, [{"subj_type=crond_t"}, {"euid=0"}])
+	_syscalls_audited("b64", {"execve"}, [{"subj_type=crond_t"}, {"euid=0"}])
+	_syscalls_audited("b32", {"execve"}, [{"subj_type=crond_t"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+	_syscalls_audited("b64", {"execve"}, [{"subj_type=crond_t"}, {"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654097 := "Not_a_Finding" if audit_cron_exec
+
+else := "Open"
+
+detail_rhel_09_654097 := "RHEL-09-654097: Not_a_Finding" if audit_cron_exec
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654097", concat(", ", missing_rhel_09_654097)]) if count(missing_rhel_09_654097) > 0
+
+else := "RHEL-09-654097: check failed — execve by subj_type=crond_t must be audited for b32 and b64, once with -F euid=0 and once with -F auid>=1000 -F auid!=unset (all four rules)"
+
+finding_rhel_09_654097 := {
+	"vuln_id": "V-279936",
+	"stig_id": "RHEL-09-654097",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must audit any script or executable called by cron as root or by any privileged user.",
+	"check_type": "machine",
+	"status": status_rhel_09_654097,
+	"detail": detail_rhel_09_654097,
+	"fix_text": "Add the four rules to a file in /etc/audit/rules.d/ and load them (augenrules --load): -a always,exit -F arch=b64 -S execve -F subj_type=crond_t -F euid=0 -k cron_exec (and b32; and both with -F auid>=1000 -F auid!=unset in place of -F euid=0)",
+}
+
+# RHEL-09-654205 | V-258215 | CAT II
+# always,exit rule for the umount system call, arch b32 (auditctl -l)
+missing_rhel_09_654205 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_umount_syscall := false
+
+audit_umount_syscall if {
+	count(missing_rhel_09_654205) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"umount"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654205 := "Not_a_Finding" if audit_umount_syscall
+
+else := "Open"
+
+detail_rhel_09_654205 := "RHEL-09-654205: Not_a_Finding" if audit_umount_syscall
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654205", concat(", ", missing_rhel_09_654205)]) if count(missing_rhel_09_654205) > 0
+
+else := "RHEL-09-654205: check failed — the umount system call must be audited for b32"
+
+finding_rhel_09_654205 := {
+	"vuln_id": "V-258215",
+	"stig_id": "RHEL-09-654205",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the umount system call in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654205,
+	"detail": detail_rhel_09_654205,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F arch=b32 -S umount -F auid>=1000 -F auid!=-1 -F key=k",
+}
+
+# RHEL-09-654210 | V-258216 | CAT II
+# always,exit rule for the umount2 system call (auditctl -l)
+missing_rhel_09_654210 := [concat(".", p) | some p in [["audit_rules"]]; not _collected(p)]
+
+default audit_umount2_syscall := false
+
+audit_umount2_syscall if {
+	count(missing_rhel_09_654210) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b64", {"umount2"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+audit_umount2_syscall if {
+	count(missing_rhel_09_654210) == 0
+	is_array(input.audit_rules)
+	_syscalls_audited("b32", {"umount2"}, [{"auid>=1000"}, {"auid!=-1", "auid!=4294967295", "auid!=unset"}])
+}
+
+status_rhel_09_654210 := "Not_a_Finding" if audit_umount2_syscall
+
+else := "Open"
+
+detail_rhel_09_654210 := "RHEL-09-654210: Not_a_Finding" if audit_umount2_syscall
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654210", concat(", ", missing_rhel_09_654210)]) if count(missing_rhel_09_654210) > 0
+
+else := "RHEL-09-654210: check failed — the umount2 system call must be audited (the check expects a b64 and a b32 rule and is a finding when no rule is returned)"
+
+finding_rhel_09_654210 := {
+	"vuln_id": "V-258216",
+	"stig_id": "RHEL-09-654210",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the umount2 system call in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654210,
+	"detail": detail_rhel_09_654210,
+	"fix_text": "Add the rules to a file in /etc/audit/rules.d/ and load them (augenrules --load): -a always,exit -F arch=b64 -S umount2 -F auid>=1000 -F auid!=-1 -F key=k and the same for arch=b32",
+}
+
+# RHEL-09-654200 | V-258214 | CAT II
+# the uncommented lines of /etc/audit/rules.d/* (cat /etc/audit/rules.d/*), one string per line
+missing_rhel_09_654200 := [concat(".", p) | some p in [["audit_rules_d"]]; not _collected(p)]
+
+default audit_shutdown := false
+
+audit_shutdown if {
+	count(missing_rhel_09_654200) == 0
+	is_array(input.audit_rules_d)
+	_path_audited_in(input.audit_rules_d, "/usr/sbin/shutdown", ["x"])
+}
+
+status_rhel_09_654200 := "Not_a_Finding" if audit_shutdown
+
+else := "Open"
+
+detail_rhel_09_654200 := "RHEL-09-654200: Not_a_Finding" if audit_shutdown
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654200", concat(", ", missing_rhel_09_654200)]) if count(missing_rhel_09_654200) > 0
+
+else := "RHEL-09-654200: check failed — a rule in /etc/audit/rules.d/ must audit execution (perm x) of /usr/sbin/shutdown"
+
+finding_rhel_09_654200 := {
+	"vuln_id": "V-258214",
+	"stig_id": "RHEL-09-654200",
+	"severity": "CAT II",
+	"rule_title": "Successful/unsuccessful uses of the shutdown command in RHEL 9 must generate an audit record.",
+	"check_type": "machine",
+	"status": status_rhel_09_654200,
+	"detail": detail_rhel_09_654200,
+	"fix_text": "Add the rule to a file in /etc/audit/rules.d/ and load it (augenrules --load): -a always,exit -F path=/usr/sbin/shutdown -F perm=x -F auid>=1000 -F auid!=unset -k privileged-shutdown",
+}
+
+# RHEL-09-654265 | V-258227 | CAT II
+# the uncommented lines of /etc/audit/audit.rules (input.audit_rules_file): the -f lines
+missing_rhel_09_654265 := [concat(".", p) | some p in [["audit_rules_file"]]; not _collected(p)]
+
+default audit_failure_mode_panic := false
+
+audit_failure_mode_panic if {
+	count(missing_rhel_09_654265) == 0
+	is_array(input.audit_rules_file)
+	fs := [t | some t in _rules_file_toks; t[0] == "-f"]
+	count(fs) > 0
+	every t in fs {
+		t == ["-f", "2"]
+	}
+}
+
+audit_failure_mode_panic if {
+	_attested("rhel_09_654265_availability_overriding")
+}
+
+status_rhel_09_654265 := "Not_a_Finding" if audit_failure_mode_panic
+
+else := "Open"
+
+detail_rhel_09_654265 := "RHEL-09-654265: Not_a_Finding" if audit_failure_mode_panic
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654265", concat(", ", missing_rhel_09_654265)]) if count(missing_rhel_09_654265) > 0
+
+else := "RHEL-09-654265: check failed — /etc/audit/audit.rules must set -f 2, or availability must be documented as an overriding concern (input.attest.rhel_09_654265_availability_overriding)"
+
+finding_rhel_09_654265 := {
+	"vuln_id": "V-258227",
+	"stig_id": "RHEL-09-654265",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 must take appropriate action when a critical audit processing failure occurs.",
+	"check_type": "machine+attestation",
+	"status": status_rhel_09_654265,
+	"detail": detail_rhel_09_654265,
+	"fix_text": "Add -f 2 to a file in /etc/audit/rules.d/ and regenerate the rules (augenrules --load)",
+}
+
+# RHEL-09-654270 | V-258228 | CAT II
+# the uncommented lines of /etc/audit/audit.rules (input.audit_rules_file): --loginuid-immutable
+missing_rhel_09_654270 := [concat(".", p) | some p in [["audit_rules_file"]]; not _collected(p)]
+
+default audit_loginuid_immutable := false
+
+audit_loginuid_immutable if {
+	count(missing_rhel_09_654270) == 0
+	is_array(input.audit_rules_file)
+	some t in _rules_file_toks
+	t == ["--loginuid-immutable"]
+}
+
+status_rhel_09_654270 := "Not_a_Finding" if audit_loginuid_immutable
+
+else := "Open"
+
+detail_rhel_09_654270 := "RHEL-09-654270: Not_a_Finding" if audit_loginuid_immutable
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654270", concat(", ", missing_rhel_09_654270)]) if count(missing_rhel_09_654270) > 0
+
+else := "RHEL-09-654270: check failed — /etc/audit/audit.rules must contain --loginuid-immutable (uncommented)"
+
+finding_rhel_09_654270 := {
+	"vuln_id": "V-258228",
+	"stig_id": "RHEL-09-654270",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must protect logon UIDs from unauthorized change.",
+	"check_type": "machine",
+	"status": status_rhel_09_654270,
+	"detail": detail_rhel_09_654270,
+	"fix_text": "Add --loginuid-immutable to a file in /etc/audit/rules.d/ and regenerate the rules (augenrules --load)",
+}
+
+# RHEL-09-654275 | V-258229 | CAT II
+# the uncommented lines of /etc/audit/audit.rules (input.audit_rules_file): the last one
+missing_rhel_09_654275 := [concat(".", p) | some p in [["audit_rules_file"]]; not _collected(p)]
+
+default audit_rules_immutable := false
+
+audit_rules_immutable if {
+	count(missing_rhel_09_654275) == 0
+	is_array(input.audit_rules_file)
+	n := count(_rules_file_toks)
+	n > 0
+	_rules_file_toks[n - 1] == ["-e", "2"]
+}
+
+status_rhel_09_654275 := "Not_a_Finding" if audit_rules_immutable
+
+else := "Open"
+
+detail_rhel_09_654275 := "RHEL-09-654275: Not_a_Finding" if audit_rules_immutable
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-654275", concat(", ", missing_rhel_09_654275)]) if count(missing_rhel_09_654275) > 0
+
+else := "RHEL-09-654275: check failed — the last uncommented line of /etc/audit/audit.rules must be -e 2"
+
+finding_rhel_09_654275 := {
+	"vuln_id": "V-258229",
+	"stig_id": "RHEL-09-654275",
+	"severity": "CAT II",
+	"rule_title": "RHEL 9 audit system must protect auditing rules from unauthorized change.",
+	"check_type": "machine",
+	"status": status_rhel_09_654275,
+	"detail": detail_rhel_09_654275,
+	"fix_text": "Add -e 2 as the last line of the last file in /etc/audit/rules.d/ and regenerate the rules (augenrules --load)",
+}
+
+# =============================================================================
+# CAT III - LOW SEVERITY
+# =============================================================================
+
+# RHEL-09-291025 | V-258037 | CAT III
+# AuditBackend as set (uncommented) in /etc/usbguard/usbguard-daemon.conf, null when not set
+missing_rhel_09_291025 := [concat(".", p) | some p in [["usbguard_daemon_conf", "AuditBackend"]]; not _collected(p)]
+
+default usbguard_audit_backend := false
+
+usbguard_audit_backend if {
+	count(missing_rhel_09_291025) == 0
+	_str(["usbguard_daemon_conf", "AuditBackend"]) == "LinuxAudit"
+}
+
+usbguard_audit_backend if {
+	input.virtual_machine == true
+	ps := input.usb_peripherals
+	is_array(ps)
+	count(ps) == 0
+}
+
+status_rhel_09_291025 := "Not_a_Finding" if usbguard_audit_backend
+
+else := "Open"
+
+detail_rhel_09_291025 := "RHEL-09-291025: Not_a_Finding" if usbguard_audit_backend
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-291025", concat(", ", missing_rhel_09_291025)]) if count(missing_rhel_09_291025) > 0
+
+else := "RHEL-09-291025: check failed — AuditBackend in /etc/usbguard/usbguard-daemon.conf must be LinuxAudit; not a finding on a virtual machine with no virtual or physical USB peripherals attached (input.virtual_machine, input.usb_peripherals)"
+
+finding_rhel_09_291025 := {
+	"vuln_id": "V-258037",
+	"stig_id": "RHEL-09-291025",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must enable Linux audit logging for the USBGuard daemon.",
+	"check_type": "machine",
+	"status": status_rhel_09_291025,
+	"detail": detail_rhel_09_291025,
+	"fix_text": "Set AuditBackend=LinuxAudit in /etc/usbguard/usbguard-daemon.conf",
+}
+
+# RHEL-09-653120 | V-258173 | CAT III
+# the args= value of every boot entry of grubby --info=ALL, one string per entry
+missing_rhel_09_653120 := [concat(".", p) | some p in [["grub", "kernel_args"]]; not _collected(p)]
+
+default audit_backlog_limit_ok := false
+
+audit_backlog_limit_ok if {
+	count(missing_rhel_09_653120) == 0
+	entries := input.grub.kernel_args
+	is_array(entries)
+	every e in entries {
+		is_string(e)
+		every v in _backlog_values(e) {
+			_backlog_ok(v)
+		}
+	}
+}
+
+status_rhel_09_653120 := "Not_a_Finding" if audit_backlog_limit_ok
+
+else := "Open"
+
+detail_rhel_09_653120 := "RHEL-09-653120: Not_a_Finding" if audit_backlog_limit_ok
+
+else := sprintf("%s: evidence missing — %s not collected", ["RHEL-09-653120", concat(", ", missing_rhel_09_653120)]) if count(missing_rhel_09_653120) > 0
+
+else := "RHEL-09-653120: check failed — every boot entry that sets audit_backlog_limit (grubby --info=ALL, args) must set it to 8192 or more"
+
+finding_rhel_09_653120 := {
+	"vuln_id": "V-258173",
+	"stig_id": "RHEL-09-653120",
+	"severity": "CAT III",
+	"rule_title": "RHEL 9 must allocate an audit_backlog_limit of sufficient size to capture processes that start prior to the audit daemon.",
+	"check_type": "machine",
+	"status": status_rhel_09_653120,
+	"detail": detail_rhel_09_653120,
+	"fix_text": "Set the argument on every kernel: grubby --update-kernel=ALL --args=audit_backlog_limit=8192",
+}
+
 # =============================================================================
 # COMPLIANCE AGGREGATION
 # =============================================================================
@@ -634,11 +2884,74 @@ cat_ii_findings := [
 	finding_rhel_09_653055,
 	finding_rhel_09_653025,
 	finding_rhel_09_653040,
+	finding_rhel_09_211040,
+	finding_rhel_09_653010,
+	finding_rhel_09_653020,
+	finding_rhel_09_653030,
+	finding_rhel_09_653035,
+	finding_rhel_09_653045,
+	finding_rhel_09_653050,
+	finding_rhel_09_653060,
+	finding_rhel_09_653065,
+	finding_rhel_09_653075,
+	finding_rhel_09_653100,
+	finding_rhel_09_653105,
+	finding_rhel_09_653070,
+	finding_rhel_09_653095,
+	finding_rhel_09_653130,
+	finding_rhel_09_653125,
+	finding_rhel_09_654030,
+	finding_rhel_09_654035,
+	finding_rhel_09_654040,
+	finding_rhel_09_654045,
+	finding_rhel_09_654050,
+	finding_rhel_09_654055,
+	finding_rhel_09_654060,
+	finding_rhel_09_654085,
+	finding_rhel_09_654090,
+	finding_rhel_09_654095,
+	finding_rhel_09_654105,
+	finding_rhel_09_654110,
+	finding_rhel_09_654115,
+	finding_rhel_09_654125,
+	finding_rhel_09_654130,
+	finding_rhel_09_654135,
+	finding_rhel_09_654140,
+	finding_rhel_09_654145,
+	finding_rhel_09_654155,
+	finding_rhel_09_654160,
+	finding_rhel_09_654165,
+	finding_rhel_09_654170,
+	finding_rhel_09_654175,
+	finding_rhel_09_654176,
+	finding_rhel_09_654180,
+	finding_rhel_09_654185,
+	finding_rhel_09_654190,
+	finding_rhel_09_654195,
+	finding_rhel_09_654100,
+	finding_rhel_09_654120,
+	finding_rhel_09_654225,
+	finding_rhel_09_654230,
+	finding_rhel_09_654235,
+	finding_rhel_09_654245,
+	finding_rhel_09_654250,
+	finding_rhel_09_654255,
+	finding_rhel_09_654220,
+	finding_rhel_09_654065,
+	finding_rhel_09_654075,
+	finding_rhel_09_654097,
+	finding_rhel_09_654205,
+	finding_rhel_09_654210,
+	finding_rhel_09_654200,
+	finding_rhel_09_654265,
+	finding_rhel_09_654270,
+	finding_rhel_09_654275,
 ]
 
-# No CAT III rule in this module. array.concat rather than the literal `[]`: OPA >= 1.22 types a literal
-# empty array as having no members and rejects iterating it (scripts/check_per_file_load.py).
-cat_iii_findings := array.concat([], [])
+cat_iii_findings := [
+	finding_rhel_09_291025,
+	finding_rhel_09_653120,
+]
 
 findings := array.concat(cat_i_findings, array.concat(cat_ii_findings, cat_iii_findings))
 
