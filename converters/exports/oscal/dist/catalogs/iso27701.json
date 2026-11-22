@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "a7e4a87b-6b15-50d2-a961-596917f5a8ea",
   "metadata": {
-   "title": "Rego Policy Libraries — iso27701 (Iso27701 Data Subject Rights)",
+   "title": "Rego Policy Libraries — iso27701 (Iso27701 Main)",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -44,19 +44,19 @@
   },
   "groups": [
    {
-    "id": "iso27701-iso27701_data_subject_rights",
+    "id": "iso27701-iso27701_main",
     "class": "rego-module",
-    "title": "Iso27701 Data Subject Rights",
+    "title": "Iso27701 Main",
     "props": [
      {
       "name": "rego-package",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "iso27701.data_subject_rights"
+      "value": "iso27701.main"
      },
      {
       "name": "rego-file",
       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+      "value": "frameworks/privacy/iso27701/iso27701_main.rego"
      },
      {
       "name": "class",
@@ -66,1920 +66,3565 @@
     ],
     "controls": [
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-15",
-      "title": "Right of access process not defined",
+      "id": "iso27701-5.2.1",
+      "title": "Organisational context covers privacy and the PII controller or processor role",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 15"
+        "value": "5.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 15"
+        "value": "5.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-15_stmt",
+        "id": "iso27701-5.2.1_stmt",
         "name": "statement",
-        "prose": "Right of access process not defined"
-       },
-       {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-15_obj.1",
-        "name": "assessment-objective",
-        "prose": "Right of access response SLA of 30 days not established"
+        "prose": "Organisational context covers privacy and the PII controller or processor role"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-16",
-      "title": "Right to rectification process not defined",
+      "id": "iso27701-5.2.2",
+      "title": "Interested parties with a stake in PII processing and their requirements",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 16"
+        "value": "5.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 16"
+        "value": "5.2.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-16_stmt",
+        "id": "iso27701-5.2.2_stmt",
         "name": "statement",
-        "prose": "Right to rectification process not defined"
-       },
-       {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-16_obj.1",
-        "name": "assessment-objective",
-        "prose": "Rectification not propagated to processors and third parties"
+        "prose": "Interested parties with a stake in PII processing and their requirements"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-17",
-      "title": "Technical capability for deletion of PII not implemented",
+      "id": "iso27701-5.2.3",
+      "title": "Management system scope covers the processing of PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 17"
+        "value": "5.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 17"
+        "value": "5.2.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-17_stmt",
+        "id": "iso27701-5.2.3_stmt",
         "name": "statement",
-        "prose": "Technical capability for deletion of PII not implemented"
-       },
-       {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-17_obj.1",
-        "name": "assessment-objective",
-        "prose": "Right to erasure process does not address backup copies"
+        "prose": "Management system scope covers the processing of PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-18",
-      "title": "Flag-based processing restriction mechanism not implemented",
+      "id": "iso27701-5.2.4",
+      "title": "Management system run and improved as a privacy information management system",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 18"
+        "value": "5.2.4"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 18"
+        "value": "5.2.4"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-18_stmt",
+        "id": "iso27701-5.2.4_stmt",
         "name": "statement",
-        "prose": "Flag-based processing restriction mechanism not implemented"
+        "prose": "Management system run and improved as a privacy information management system"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-20",
-      "title": "Data portability in machine-readable format not available",
+      "id": "iso27701-5.3.1",
+      "title": "Top management commitment extends to privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 20"
+        "value": "5.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 20"
+        "value": "5.3.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-20_stmt",
+        "id": "iso27701-5.3.1_stmt",
         "name": "statement",
-        "prose": "Data portability in machine-readable format not available"
-       },
-       {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-20_obj.1",
-        "name": "assessment-objective",
-        "prose": "Direct transfer of PII to another controller not supported"
+        "prose": "Top management commitment extends to privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-21",
-      "title": "Opt-out mechanism for processing objection not implemented",
+      "id": "iso27701-5.3.2",
+      "title": "Policy set covers privacy as well as security",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 21"
+        "value": "5.3.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 21"
+        "value": "5.3.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-21_stmt",
+        "id": "iso27701-5.3.2_stmt",
         "name": "statement",
-        "prose": "Opt-out mechanism for processing objection not implemented"
-       },
-       {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-21_obj.1",
-        "name": "assessment-objective",
-        "prose": "Objection to direct marketing not always honored unconditionally"
+        "prose": "Policy set covers privacy as well as security"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-22",
-      "title": "Human review not available for automated decision-making",
+      "id": "iso27701-5.3.3",
+      "title": "Roles, responsibilities and authorities for privacy assigned",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 Annex B / GDPR Art. 22"
+        "value": "5.3.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 Annex B / GDPR Art. 22"
+        "value": "5.3.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.data_subject_rights"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#d489c6a9-5417-5577-bae6-3fc961620533",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-22_stmt",
+        "id": "iso27701-5.3.3_stmt",
         "name": "statement",
-        "prose": "Human review not available for automated decision-making"
-       }
-      ],
-      "class": "compliance"
-     }
-    ]
-   },
-   {
-    "id": "iso27701-iso27701_pii_controller",
-    "class": "rego-module",
-    "title": "Iso27701 Pii Controller",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "iso27701.pii_controller"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "compliance"
-     }
-    ],
-    "controls": [
-     {
-      "id": "iso27701-ISO-27701-7.2.1",
-      "title": "Purposes of PII processing not identified and documented",
-      "props": [
-       {
-        "name": "label",
-        "value": "ISO 27701 7.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ISO 27701 7.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
-       }
-      ],
-      "links": [
-       {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27701-ISO-27701-7.2.1_stmt",
-        "name": "statement",
-        "prose": "Purposes of PII processing not identified and documented"
+        "prose": "Roles, responsibilities and authorities for privacy assigned"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.2",
-      "title": "Lawful basis not identified for each processing purpose",
+      "id": "iso27701-5.4.1.2",
+      "title": "Risk assessment covers privacy risks, including risks to PII principals",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.2"
+        "value": "5.4.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.2"
+        "value": "5.4.1.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.2_stmt",
+        "id": "iso27701-5.4.1.2_stmt",
         "name": "statement",
-        "prose": "Lawful basis not identified for each processing purpose"
+        "prose": "Risk assessment covers privacy risks, including risks to PII principals"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.3",
-      "title": "When and how consent is to be obtained not determined",
+      "id": "iso27701-5.4.1.3",
+      "title": "Risk treatment and statement of applicability cover the PIMS controls",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.3"
+        "value": "5.4.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.3"
+        "value": "5.4.1.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.3_stmt",
+        "id": "iso27701-5.4.1.3_stmt",
         "name": "statement",
-        "prose": "When and how consent is to be obtained not determined"
+        "prose": "Risk treatment and statement of applicability cover the PIMS controls"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.4",
-      "title": "Consent not obtained and recorded from PII principals",
+      "id": "iso27701-5.4.2",
+      "title": "Objectives and plans cover privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.4"
+        "value": "5.4.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.4"
+        "value": "5.4.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.4_stmt",
+        "id": "iso27701-5.4.2_stmt",
         "name": "statement",
-        "prose": "Consent not obtained and recorded from PII principals"
+        "prose": "Objectives and plans cover privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.5",
-      "title": "Privacy notices not provided to PII principals",
+      "id": "iso27701-5.5.1",
+      "title": "Resources for the PIMS provided",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.5"
+        "value": "5.5.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.5"
+        "value": "5.5.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.5_stmt",
+        "id": "iso27701-5.5.1_stmt",
         "name": "statement",
-        "prose": "Privacy notices not provided to PII principals"
+        "prose": "Resources for the PIMS provided"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.6",
-      "title": "Contracts with PII processors do not include data protection obligations",
+      "id": "iso27701-5.5.2",
+      "title": "Competence of people affecting privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.6"
+        "value": "5.5.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.6"
+        "value": "5.5.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.6_stmt",
+        "id": "iso27701-5.5.2_stmt",
         "name": "statement",
-        "prose": "Contracts with PII processors do not include data protection obligations"
+        "prose": "Competence of people affecting privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.2.7",
-      "title": "Joint controllership arrangements not documented",
+      "id": "iso27701-5.5.3",
+      "title": "Awareness of the privacy policy and of one's part in it",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.2.7"
+        "value": "5.5.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.2.7"
+        "value": "5.5.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.2.7_stmt",
+        "id": "iso27701-5.5.3_stmt",
         "name": "statement",
-        "prose": "Joint controllership arrangements not documented"
+        "prose": "Awareness of the privacy policy and of one's part in it"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.1",
-      "title": "Obligations to PII principals and means to fulfill them not determined",
+      "id": "iso27701-5.5.4",
+      "title": "Internal and external communication on privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.1"
+        "value": "5.5.4"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.1"
+        "value": "5.5.4"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.1_stmt",
+        "id": "iso27701-5.5.4_stmt",
         "name": "statement",
-        "prose": "Obligations to PII principals and means to fulfill them not determined"
+        "prose": "Internal and external communication on privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.2",
-      "title": "Privacy notice not provided to PII principals at point of collection",
+      "id": "iso27701-5.5.5",
+      "title": "Documented information for the PIMS controlled",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.2"
+        "value": "5.5.5"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.2"
+        "value": "5.5.5"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.2_stmt",
+        "id": "iso27701-5.5.5_stmt",
         "name": "statement",
-        "prose": "Privacy notice not provided to PII principals at point of collection"
+        "prose": "Documented information for the PIMS controlled"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.3",
-      "title": "Mechanism for PII principals to modify or withdraw consent not provided",
+      "id": "iso27701-5.6.1",
+      "title": "Operational planning and control, including changes affecting PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.3"
+        "value": "5.6.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.3"
+        "value": "5.6.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.3_stmt",
+        "id": "iso27701-5.6.1_stmt",
         "name": "statement",
-        "prose": "Mechanism for PII principals to modify or withdraw consent not provided"
+        "prose": "Operational planning and control, including changes affecting PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.4",
-      "title": "Mechanism for PII principals to access their PII upon request not provided",
+      "id": "iso27701-5.6.2",
+      "title": "Privacy risk assessments carried out at planned intervals",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.4"
+        "value": "5.6.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.4"
+        "value": "5.6.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.4_stmt",
+        "id": "iso27701-5.6.2_stmt",
         "name": "statement",
-        "prose": "Mechanism for PII principals to access their PII upon request not provided"
+        "prose": "Privacy risk assessments carried out at planned intervals"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.5",
-      "title": "Mechanism for erasure and right to be forgotten not provided",
+      "id": "iso27701-5.6.3",
+      "title": "Privacy risk treatment plan carried out",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.5"
+        "value": "5.6.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.5"
+        "value": "5.6.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.5_stmt",
+        "id": "iso27701-5.6.3_stmt",
         "name": "statement",
-        "prose": "Mechanism for erasure and right to be forgotten not provided"
+        "prose": "Privacy risk treatment plan carried out"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.6",
-      "title": "Mechanism for data portability not provided",
+      "id": "iso27701-5.7.1",
+      "title": "Privacy performance monitored, measured and evaluated",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.6"
+        "value": "5.7.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.6"
+        "value": "5.7.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.6_stmt",
+        "id": "iso27701-5.7.1_stmt",
         "name": "statement",
-        "prose": "Mechanism for data portability not provided"
+        "prose": "Privacy performance monitored, measured and evaluated"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.7",
-      "title": "Process to handle complaints from PII principals not established",
+      "id": "iso27701-5.7.2",
+      "title": "Internal audits cover the PIMS",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.7"
+        "value": "5.7.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.7"
+        "value": "5.7.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.7_stmt",
+        "id": "iso27701-5.7.2_stmt",
         "name": "statement",
-        "prose": "Process to handle complaints from PII principals not established"
+        "prose": "Internal audits cover the PIMS"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.3.8",
-      "title": "Safeguards for automated decision-making not implemented",
+      "id": "iso27701-5.7.3",
+      "title": "Management reviews cover the PIMS",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.3.8"
+        "value": "5.7.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.3.8"
+        "value": "5.7.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.3.8_stmt",
+        "id": "iso27701-5.7.3_stmt",
         "name": "statement",
-        "prose": "Safeguards for automated decision-making not implemented"
+        "prose": "Management reviews cover the PIMS"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.1",
-      "title": "PII collection not limited (data minimization principle not applied)",
+      "id": "iso27701-5.8.1",
+      "title": "Nonconformities corrected, including privacy ones",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.1"
+        "value": "5.8.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.1"
+        "value": "5.8.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.1_stmt",
+        "id": "iso27701-5.8.1_stmt",
         "name": "statement",
-        "prose": "PII collection not limited (data minimization principle not applied)"
+        "prose": "Nonconformities corrected, including privacy ones"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.2",
-      "title": "PII processing not limited to disclosed purposes (purpose limitation not applied)",
+      "id": "iso27701-5.8.2",
+      "title": "PIMS continually improved",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.2"
+        "value": "5.8.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.2"
+        "value": "5.8.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.2_stmt",
+        "id": "iso27701-5.8.2_stmt",
         "name": "statement",
-        "prose": "PII processing not limited to disclosed purposes (purpose limitation not applied)"
+        "prose": "PIMS continually improved"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.3",
-      "title": "Accuracy and quality of PII not maintained",
+      "id": "iso27701-6.10.2.1",
+      "title": "Transfer rules cover PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.3"
+        "value": "6.10.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.3"
+        "value": "6.10.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.3_stmt",
+        "id": "iso27701-6.10.2.1_stmt",
         "name": "statement",
-        "prose": "Accuracy and quality of PII not maintained"
+        "prose": "Transfer rules cover PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.4",
-      "title": "PII minimization goals not defined",
+      "id": "iso27701-6.10.2.4",
+      "title": "People with access to PII bound to confidentiality",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.4"
+        "value": "6.10.2.4"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.4"
+        "value": "6.10.2.4"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.4_stmt",
+        "id": "iso27701-6.10.2.4_stmt",
         "name": "statement",
-        "prose": "PII minimization goals not defined"
+        "prose": "People with access to PII bound to confidentiality"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.5",
-      "title": "PII de-identification and deletion processes not established",
+      "id": "iso27701-6.11.1.2",
+      "title": "PII sent over public networks protected",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.5"
+        "value": "6.11.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.5"
+        "value": "6.11.1.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.5_stmt",
+        "id": "iso27701-6.11.1.2_stmt",
         "name": "statement",
-        "prose": "PII de-identification and deletion processes not established"
+        "prose": "PII sent over public networks protected"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.6",
-      "title": "Temporary files containing PII not disposed of appropriately",
+      "id": "iso27701-6.11.2.1",
+      "title": "Secure development rules address privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.6"
+        "value": "6.11.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.6"
+        "value": "6.11.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.6_stmt",
+        "id": "iso27701-6.11.2.1_stmt",
         "name": "statement",
-        "prose": "Temporary files containing PII not disposed of appropriately"
+        "prose": "Secure development rules address privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.7",
-      "title": "Retention schedule for PII not established or not enforced",
+      "id": "iso27701-6.11.2.5",
+      "title": "Systems engineered with privacy by design and by default",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.7"
+        "value": "6.11.2.5"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.7"
+        "value": "6.11.2.5"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.7_stmt",
+        "id": "iso27701-6.11.2.5_stmt",
         "name": "statement",
-        "prose": "Retention schedule for PII not established or not enforced"
+        "prose": "Systems engineered with privacy by design and by default"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.4.8",
-      "title": "Transmission controls for PII not implemented",
+      "id": "iso27701-6.11.2.7",
+      "title": "Outsourced development held to the same privacy rules",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.4.8"
+        "value": "6.11.2.7"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.4.8"
+        "value": "6.11.2.7"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.4.8_stmt",
+        "id": "iso27701-6.11.2.7_stmt",
         "name": "statement",
-        "prose": "Transmission controls for PII not implemented"
+        "prose": "Outsourced development held to the same privacy rules"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.5.1",
-      "title": "Basis for PII transfer to third parties not established",
+      "id": "iso27701-6.11.3.1",
+      "title": "PII not used as test data without protection",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.5.1"
+        "value": "6.11.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.5.1"
+        "value": "6.11.3.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.5.1_stmt",
+        "id": "iso27701-6.11.3.1_stmt",
         "name": "statement",
-        "prose": "Basis for PII transfer to third parties not established"
+        "prose": "PII not used as test data without protection"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.5.2",
-      "title": "Countries and organizations PII is transferred to not documented",
+      "id": "iso27701-6.12.1.1",
+      "title": "Supplier security policy covers PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.5.2"
+        "value": "6.12.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.5.2"
+        "value": "6.12.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.5.2_stmt",
+        "id": "iso27701-6.12.1.1_stmt",
         "name": "statement",
-        "prose": "Countries and organizations PII is transferred to not documented"
+        "prose": "Supplier security policy covers PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-7.5.3",
-      "title": "Records of PII disclosures to third parties not maintained",
+      "id": "iso27701-6.12.1.2",
+      "title": "Supplier agreements carry PII protection terms",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 7.5.3"
+        "value": "6.12.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 7.5.3"
+        "value": "6.12.1.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_controller"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#877ddab9-f047-5e6f-b1f4-2d171c2b1466",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-7.5.3_stmt",
+        "id": "iso27701-6.12.1.2_stmt",
         "name": "statement",
-        "prose": "Records of PII disclosures to third parties not maintained"
-       }
-      ],
-      "class": "compliance"
-     }
-    ]
-   },
-   {
-    "id": "iso27701-iso27701_pii_processor",
-    "class": "rego-module",
-    "title": "Iso27701 Pii Processor",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "iso27701.pii_processor"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "compliance"
-     }
-    ],
-    "controls": [
-     {
-      "id": "iso27701-ISO-27701-8.2.1",
-      "title": "PII not processed only under documented customer instructions",
-      "props": [
-       {
-        "name": "label",
-        "value": "ISO 27701 8.2.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ISO 27701 8.2.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
-       }
-      ],
-      "links": [
-       {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27701-ISO-27701-8.2.1_stmt",
-        "name": "statement",
-        "prose": "PII not processed only under documented customer instructions"
+        "prose": "Supplier agreements carry PII protection terms"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.2.2",
-      "title": "Organization's processing purposes not limited to fulfilling customer's purposes",
+      "id": "iso27701-6.13.1.1",
+      "title": "Incident responsibilities cover PII breaches",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.2.2"
+        "value": "6.13.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.2.2"
+        "value": "6.13.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.2.2_stmt",
+        "id": "iso27701-6.13.1.1_stmt",
         "name": "statement",
-        "prose": "Organization's processing purposes not limited to fulfilling customer's purposes"
+        "prose": "Incident responsibilities cover PII breaches"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.2.3",
-      "title": "Subprocessors not contracted with equivalent data protection obligations",
+      "id": "iso27701-6.13.1.5",
+      "title": "PII breaches responded to, recorded and notified",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.2.3"
+        "value": "6.13.1.5"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.2.3"
+        "value": "6.13.1.5"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.2.3_stmt",
+        "id": "iso27701-6.13.1.5_stmt",
         "name": "statement",
-        "prose": "Subprocessors not contracted with equivalent data protection obligations"
+        "prose": "PII breaches responded to, recorded and notified"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.2.4",
-      "title": "Marketing use of PII not prohibited without explicit customer authorization",
+      "id": "iso27701-6.14.2.1",
+      "title": "Availability of facilities processing PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.2.4"
+        "value": "6.14.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.2.4"
+        "value": "6.14.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.2.4_stmt",
+        "id": "iso27701-6.14.2.1_stmt",
         "name": "statement",
-        "prose": "Marketing use of PII not prohibited without explicit customer authorization"
+        "prose": "Availability of facilities processing PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.3.1",
-      "title": "Mechanism to support PII principal rights fulfillment by controller not provided",
+      "id": "iso27701-6.15.1.1",
+      "title": "Privacy laws and contract terms that apply are identified",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.3.1"
+        "value": "6.15.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.3.1"
+        "value": "6.15.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.3.1_stmt",
+        "id": "iso27701-6.15.1.1_stmt",
         "name": "statement",
-        "prose": "Mechanism to support PII principal rights fulfillment by controller not provided"
+        "prose": "Privacy laws and contract terms that apply are identified"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.3.2",
-      "title": "Records do not enable PII principal requests to be traced",
+      "id": "iso27701-6.15.1.3",
+      "title": "Records of PII processing protected and retained",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.3.2"
+        "value": "6.15.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.3.2"
+        "value": "6.15.1.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.3.2_stmt",
+        "id": "iso27701-6.15.1.3_stmt",
         "name": "statement",
-        "prose": "Records do not enable PII principal requests to be traced"
+        "prose": "Records of PII processing protected and retained"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.4.1",
-      "title": "Privacy controls not maintained throughout processing lifecycle",
+      "id": "iso27701-6.15.2.1",
+      "title": "Independent review covers privacy",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.4.1"
+        "value": "6.15.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.4.1"
+        "value": "6.15.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.4.1_stmt",
+        "id": "iso27701-6.15.2.1_stmt",
         "name": "statement",
-        "prose": "Privacy controls not maintained throughout processing lifecycle"
+        "prose": "Independent review covers privacy"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.4.2",
-      "title": "Temporary files not documented and disposed of appropriately",
+      "id": "iso27701-6.15.2.2",
+      "title": "Adherence to privacy policies reviewed",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.4.2"
+        "value": "6.15.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.4.2"
+        "value": "6.15.2.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.4.2_stmt",
+        "id": "iso27701-6.15.2.2_stmt",
         "name": "statement",
-        "prose": "Temporary files not documented and disposed of appropriately"
+        "prose": "Adherence to privacy policies reviewed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.4.3",
-      "title": "Return, transfer, or disposal of PII not defined for contract termination",
+      "id": "iso27701-6.15.2.3",
+      "title": "Technical compliance reviews cover PII processing",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.4.3"
+        "value": "6.15.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.4.3"
+        "value": "6.15.2.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.4.3_stmt",
+        "id": "iso27701-6.15.2.3_stmt",
         "name": "statement",
-        "prose": "Return, transfer, or disposal of PII not defined for contract termination"
+        "prose": "Technical compliance reviews cover PII processing"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.5.1",
-      "title": "Basis for disclosure of PII to third parties or law enforcement not established",
+      "id": "iso27701-6.2.1.1",
+      "title": "Security policies address PII protection",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.5.1"
+        "value": "6.2.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.5.1"
+        "value": "6.2.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.5.1_stmt",
+        "id": "iso27701-6.2.1.1_stmt",
         "name": "statement",
-        "prose": "Basis for disclosure of PII to third parties or law enforcement not established"
+        "prose": "Security policies address PII protection"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.5.2",
-      "title": "Information about legally binding disclosure requests not provided to customer",
+      "id": "iso27701-6.3.1.1",
+      "title": "Privacy roles and a privacy point of contact named",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.5.2"
+        "value": "6.3.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.5.2"
+        "value": "6.3.1.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.5.2_stmt",
+        "id": "iso27701-6.3.1.1_stmt",
         "name": "statement",
-        "prose": "Information about legally binding disclosure requests not provided to customer"
+        "prose": "Privacy roles and a privacy point of contact named"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.5.3",
-      "title": "Subprocessor disclosures not documented",
+      "id": "iso27701-6.3.2.1",
+      "title": "Mobile device rules cover PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.5.3"
+        "value": "6.3.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.5.3"
+        "value": "6.3.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.5.3_stmt",
+        "id": "iso27701-6.3.2.1_stmt",
         "name": "statement",
-        "prose": "Subprocessor disclosures not documented"
+        "prose": "Mobile device rules cover PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-8.5.4",
-      "title": "Notification of PII transfers between jurisdictions not provided",
+      "id": "iso27701-6.3.2.2",
+      "title": "Teleworking rules cover PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 8.5.4"
+        "value": "6.3.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 8.5.4"
+        "value": "6.3.2.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pii_processor"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#02eb1694-0131-536e-8515-451752bfa9a3",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-8.5.4_stmt",
+        "id": "iso27701-6.3.2.2_stmt",
         "name": "statement",
-        "prose": "Notification of PII transfers between jurisdictions not provided"
-       }
-      ],
-      "class": "compliance"
-     }
-    ]
-   },
-   {
-    "id": "iso27701-iso27701_pims_requirements",
-    "class": "rego-module",
-    "title": "Iso27701 Pims Requirements",
-    "props": [
-     {
-      "name": "rego-package",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "iso27701.pims_requirements"
-     },
-     {
-      "name": "rego-file",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
-     },
-     {
-      "name": "class",
-      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-      "value": "compliance"
-     }
-    ],
-    "controls": [
-     {
-      "id": "iso27701-ISO-27701-5.2",
-      "title": "Privacy context factors not identified across applicable jurisdictions",
-      "props": [
-       {
-        "name": "label",
-        "value": "ISO 27701 5.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "ISO 27701 5.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
-       }
-      ],
-      "links": [
-       {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "iso27701-ISO-27701-5.2_stmt",
-        "name": "statement",
-        "prose": "Privacy context factors not identified across applicable jurisdictions"
-       },
-       {
-        "id": "iso27701-ISO-27701-5.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Internal privacy factors (data flows, processing purposes, retention) not documented"
+        "prose": "Teleworking rules cover PII"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-5.3",
-      "title": "Stakeholders with privacy interests not identified (data subjects, regulators, processors)",
+      "id": "iso27701-6.4.2.2",
+      "title": "Awareness and training cover privacy and breach consequences",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 5.3"
+        "value": "6.4.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 5.3"
+        "value": "6.4.2.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-5.3_stmt",
+        "id": "iso27701-6.4.2.2_stmt",
         "name": "statement",
-        "prose": "Stakeholders with privacy interests not identified (data subjects, regulators, processors)"
-       },
-       {
-        "id": "iso27701-ISO-27701-5.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "Requirements of Data Protection Authorities and privacy regulators not documented"
+        "prose": "Awareness and training cover privacy and breach consequences"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-5.4",
-      "title": "PIMS scope does not cover all PII processing activities",
+      "id": "iso27701-6.5.2.1",
+      "title": "Information classification takes PII into account",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 5.4"
+        "value": "6.5.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 5.4"
+        "value": "6.5.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-5.4_stmt",
+        "id": "iso27701-6.5.2.1_stmt",
         "name": "statement",
-        "prose": "PIMS scope does not cover all PII processing activities"
-       },
-       {
-        "id": "iso27701-ISO-27701-5.4_obj.1",
-        "name": "assessment-objective",
-        "prose": "Interfaces with third parties processing PII are not included in PIMS scope"
+        "prose": "Information classification takes PII into account"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-5.5",
-      "title": "Executive sponsor for privacy program not designated",
+      "id": "iso27701-6.5.2.2",
+      "title": "People can recognise PII through labelling",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 5.5"
+        "value": "6.5.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 5.5"
+        "value": "6.5.2.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-5.5_stmt",
+        "id": "iso27701-6.5.2.2_stmt",
         "name": "statement",
-        "prose": "Executive sponsor for privacy program not designated"
-       },
-       {
-        "id": "iso27701-ISO-27701-5.5_obj.1",
-        "name": "assessment-objective",
-        "prose": "Privacy resources (budget, staff) not allocated"
+        "prose": "People can recognise PII through labelling"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-5.6",
-      "title": "Overarching privacy policy not approved by top management",
+      "id": "iso27701-6.5.3.1",
+      "title": "Removable media holding PII controlled",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 5.6"
+        "value": "6.5.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 5.6"
+        "value": "6.5.3.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-5.6_stmt",
+        "id": "iso27701-6.5.3.1_stmt",
         "name": "statement",
-        "prose": "Overarching privacy policy not approved by top management"
-       },
-       {
-        "id": "iso27701-ISO-27701-5.6_obj.1",
-        "name": "assessment-objective",
-        "prose": "Privacy policy not reviewed annually"
+        "prose": "Removable media holding PII controlled"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-6.1",
-      "title": "Privacy risk assessment not conducted covering all processing activities",
+      "id": "iso27701-6.5.3.2",
+      "title": "Media holding PII disposed of securely",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 6.1"
+        "value": "6.5.3.2"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 6.1"
+        "value": "6.5.3.2"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-6.1_stmt",
+        "id": "iso27701-6.5.3.2_stmt",
         "name": "statement",
-        "prose": "Privacy risk assessment not conducted covering all processing activities"
-       },
-       {
-        "id": "iso27701-ISO-27701-6.1_obj.1",
-        "name": "assessment-objective",
-        "prose": "Data Protection Impact Assessments not conducted for high-risk processing activities"
-       },
-       {
-        "id": "iso27701-ISO-27701-6.1_obj.2",
-        "name": "assessment-objective",
-        "prose": "Privacy risks not treated or accepted with documented rationale"
+        "prose": "Media holding PII disposed of securely"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-6.2",
-      "title": "Privacy objectives not established or not measurable",
+      "id": "iso27701-6.5.3.3",
+      "title": "Physical transfer of media holding PII controlled",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 6.2"
+        "value": "6.5.3.3"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 6.2"
+        "value": "6.5.3.3"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-6.2_stmt",
+        "id": "iso27701-6.5.3.3_stmt",
         "name": "statement",
-        "prose": "Privacy objectives not established or not measurable"
-       },
-       {
-        "id": "iso27701-ISO-27701-6.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Privacy objectives not communicated across the organization"
+        "prose": "Physical transfer of media holding PII controlled"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "iso27701-ISO-27701-6.3",
-      "title": "Privacy impact of organizational changes not assessed before implementation",
+      "id": "iso27701-6.6.2.1",
+      "title": "User registration and removal on systems processing PII",
       "props": [
        {
         "name": "label",
-        "value": "ISO 27701 6.3"
+        "value": "6.6.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "ISO 27701 6.3"
+        "value": "6.6.2.1"
        },
        {
         "name": "rego-package",
         "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "iso27701.pims_requirements"
+        "value": "iso27701.main"
        }
       ],
       "links": [
        {
-        "href": "#2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
         "rel": "implementation"
        }
       ],
       "parts": [
        {
-        "id": "iso27701-ISO-27701-6.3_stmt",
+        "id": "iso27701-6.6.2.1_stmt",
         "name": "statement",
-        "prose": "Privacy impact of organizational changes not assessed before implementation"
+        "prose": "User registration and removal on systems processing PII"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.6.2.2",
+      "title": "Access to PII provisioned under control",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.6.2.2_stmt",
+        "name": "statement",
+        "prose": "Access to PII provisioned under control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.6.4.2",
+      "title": "Secure log-on to systems processing PII",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.6.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.6.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.6.4.2_stmt",
+        "name": "statement",
+        "prose": "Secure log-on to systems processing PII"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.7.1.1",
+      "title": "Cryptography protects PII",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.7.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.7.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.7.1.1_stmt",
+        "name": "statement",
+        "prose": "Cryptography protects PII"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.8.2.7",
+      "title": "Equipment holding PII wiped before disposal or reuse",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.8.2.7_stmt",
+        "name": "statement",
+        "prose": "Equipment holding PII wiped before disposal or reuse"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.8.2.9",
+      "title": "Clear desk and clear screen extend to PII",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.8.2.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.8.2.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.8.2.9_stmt",
+        "name": "statement",
+        "prose": "Clear desk and clear screen extend to PII"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.9.3.1",
+      "title": "Backups holding PII protected and restorable",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.9.3.1_stmt",
+        "name": "statement",
+        "prose": "Backups holding PII protected and restorable"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.9.4.1",
+      "title": "Processing of PII recorded in event logs",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.9.4.1_stmt",
+        "name": "statement",
+        "prose": "Processing of PII recorded in event logs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-6.9.4.2",
+      "title": "Logs that hold PII protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "6.9.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "6.9.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-6.9.4.2_stmt",
+        "name": "statement",
+        "prose": "Logs that hold PII protected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.1",
+      "title": "Purposes of processing identified and documented",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.1_stmt",
+        "name": "statement",
+        "prose": "Purposes of processing identified and documented"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.2",
+      "title": "Lawful basis identified for each purpose",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.2_stmt",
+        "name": "statement",
+        "prose": "Lawful basis identified for each purpose"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.3",
+      "title": "When and how consent is sought decided",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.3_stmt",
+        "name": "statement",
+        "prose": "When and how consent is sought decided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.4",
+      "title": "Consent obtained and kept on record",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.4_stmt",
+        "name": "statement",
+        "prose": "Consent obtained and kept on record"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.5",
+      "title": "Privacy impact assessment for new or changed processing",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.5_stmt",
+        "name": "statement",
+        "prose": "Privacy impact assessment for new or changed processing"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.6",
+      "title": "Processor contracts carry the required terms",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.6_stmt",
+        "name": "statement",
+        "prose": "Processor contracts carry the required terms"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.7",
+      "title": "Joint controller roles agreed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.7_stmt",
+        "name": "statement",
+        "prose": "Joint controller roles agreed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.2.8",
+      "title": "Records of PII processing kept",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.2.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.2.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.2.8_stmt",
+        "name": "statement",
+        "prose": "Records of PII processing kept"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.1",
+      "title": "Obligations to PII principals determined and met",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.1_stmt",
+        "name": "statement",
+        "prose": "Obligations to PII principals determined and met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.10",
+      "title": "Automated decisions about principals addressed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.10"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.10"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.10_stmt",
+        "name": "statement",
+        "prose": "Automated decisions about principals addressed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.2",
+      "title": "Information owed to PII principals determined",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.2_stmt",
+        "name": "statement",
+        "prose": "Information owed to PII principals determined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.3",
+      "title": "Clear information given to PII principals",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.3_stmt",
+        "name": "statement",
+        "prose": "Clear information given to PII principals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.4",
+      "title": "Way to change or withdraw consent provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.4_stmt",
+        "name": "statement",
+        "prose": "Way to change or withdraw consent provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.5",
+      "title": "Way to object to processing provided",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.5_stmt",
+        "name": "statement",
+        "prose": "Way to object to processing provided"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.6",
+      "title": "Access, correction and erasure handled",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.6_stmt",
+        "name": "statement",
+        "prose": "Access, correction and erasure handled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.7",
+      "title": "Third parties told of corrections, erasures and objections",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.7_stmt",
+        "name": "statement",
+        "prose": "Third parties told of corrections, erasures and objections"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.8",
+      "title": "Copy of their PII given to principals on request",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.8_stmt",
+        "name": "statement",
+        "prose": "Copy of their PII given to principals on request"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.3.9",
+      "title": "Requests from PII principals handled on time",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.3.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.3.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.3.9_stmt",
+        "name": "statement",
+        "prose": "Requests from PII principals handled on time"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.1",
+      "title": "Collection limited to what the purpose needs",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.1_stmt",
+        "name": "statement",
+        "prose": "Collection limited to what the purpose needs"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.2",
+      "title": "Processing limited to the stated purposes",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.2_stmt",
+        "name": "statement",
+        "prose": "Processing limited to the stated purposes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.3",
+      "title": "PII kept accurate and of adequate quality",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.3_stmt",
+        "name": "statement",
+        "prose": "PII kept accurate and of adequate quality"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.4",
+      "title": "Minimisation objectives set and met",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.4_stmt",
+        "name": "statement",
+        "prose": "Minimisation objectives set and met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.5",
+      "title": "PII de-identified or deleted when processing ends",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.5_stmt",
+        "name": "statement",
+        "prose": "PII de-identified or deleted when processing ends"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.6",
+      "title": "Temporary files holding PII removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.6_stmt",
+        "name": "statement",
+        "prose": "Temporary files holding PII removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.7",
+      "title": "PII kept no longer than needed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.7_stmt",
+        "name": "statement",
+        "prose": "PII kept no longer than needed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.8",
+      "title": "PII disposed of by documented means",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.8_stmt",
+        "name": "statement",
+        "prose": "PII disposed of by documented means"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.4.9",
+      "title": "PII protected in transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.4.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.4.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.4.9_stmt",
+        "name": "statement",
+        "prose": "PII protected in transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.5.1",
+      "title": "Basis for cross-border transfer identified",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.5.1_stmt",
+        "name": "statement",
+        "prose": "Basis for cross-border transfer identified"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.5.2",
+      "title": "Destinations of transfers listed",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.5.2_stmt",
+        "name": "statement",
+        "prose": "Destinations of transfers listed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.5.3",
+      "title": "Transfers of PII recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.5.3_stmt",
+        "name": "statement",
+        "prose": "Transfers of PII recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-7.5.4",
+      "title": "Disclosures of PII to third parties recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "7.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "7.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-7.5.4_stmt",
+        "name": "statement",
+        "prose": "Disclosures of PII to third parties recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.1",
+      "title": "Customer contract covers the processor's support duties",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.1_stmt",
+        "name": "statement",
+        "prose": "Customer contract covers the processor's support duties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.2",
+      "title": "PII processed only for the customer's purposes",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.2_stmt",
+        "name": "statement",
+        "prose": "PII processed only for the customer's purposes"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.3",
+      "title": "No marketing use without the principal's consent",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.3_stmt",
+        "name": "statement",
+        "prose": "No marketing use without the principal's consent"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.4",
+      "title": "Customer told when an instruction would break the law",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.4_stmt",
+        "name": "statement",
+        "prose": "Customer told when an instruction would break the law"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.5",
+      "title": "Customer given what it needs to show its own compliance",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.5_stmt",
+        "name": "statement",
+        "prose": "Customer given what it needs to show its own compliance"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.2.6",
+      "title": "Records of processing done for the customer kept",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.2.6_stmt",
+        "name": "statement",
+        "prose": "Records of processing done for the customer kept"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.3.1",
+      "title": "Customer helped to meet its obligations to principals",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.3.1_stmt",
+        "name": "statement",
+        "prose": "Customer helped to meet its obligations to principals"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.4.1",
+      "title": "Temporary files holding PII removed",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.4.1_stmt",
+        "name": "statement",
+        "prose": "Temporary files holding PII removed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.4.2",
+      "title": "PII returned, transferred or disposed of at contract end",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.4.2_stmt",
+        "name": "statement",
+        "prose": "PII returned, transferred or disposed of at contract end"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.4.3",
+      "title": "PII protected in transmission",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.4.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.4.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.4.3_stmt",
+        "name": "statement",
+        "prose": "PII protected in transmission"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.1",
+      "title": "Customer told of the basis for cross-border transfers",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.1_stmt",
+        "name": "statement",
+        "prose": "Customer told of the basis for cross-border transfers"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.2",
+      "title": "Customer told of transfer destinations",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.2_stmt",
+        "name": "statement",
+        "prose": "Customer told of transfer destinations"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.3",
+      "title": "Disclosures to third parties recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.3_stmt",
+        "name": "statement",
+        "prose": "Disclosures to third parties recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.4",
+      "title": "Customer told of disclosure requests",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.4_stmt",
+        "name": "statement",
+        "prose": "Customer told of disclosure requests"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.5",
+      "title": "Only legally binding disclosures made",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.5_stmt",
+        "name": "statement",
+        "prose": "Only legally binding disclosures made"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.6",
+      "title": "Subcontractors used disclosed to the customer",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.6_stmt",
+        "name": "statement",
+        "prose": "Subcontractors used disclosed to the customer"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.7",
+      "title": "Subcontractors engaged only as the contract allows",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.7_stmt",
+        "name": "statement",
+        "prose": "Subcontractors engaged only as the contract allows"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "iso27701-8.5.8",
+      "title": "Customer told before a subcontractor changes",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.5.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.5.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "iso27701.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#9df17a45-60f2-5fae-980e-2347e4d8b299",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "iso27701-8.5.8_stmt",
+        "name": "statement",
+        "prose": "Customer told before a subcontractor changes"
        }
       ],
       "class": "compliance"
@@ -1990,69 +3635,18 @@
   "back-matter": {
    "resources": [
     {
-     "uuid": "d489c6a9-5417-5577-bae6-3fc961620533",
-     "title": "Iso27701 Data Subject Rights",
+     "uuid": "9df17a45-60f2-5fae-980e-2347e4d8b299",
+     "title": "Iso27701 Main",
      "props": [
       {
        "name": "rego-package",
        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "iso27701.data_subject_rights"
+       "value": "iso27701.main"
       }
      ],
      "rlinks": [
       {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/iso27701/iso27701_data_subject_rights.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "877ddab9-f047-5e6f-b1f4-2d171c2b1466",
-     "title": "Iso27701 Pii Controller",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "iso27701.pii_controller"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/iso27701/iso27701_pii_controller.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "02eb1694-0131-536e-8515-451752bfa9a3",
-     "title": "Iso27701 Pii Processor",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "iso27701.pii_processor"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/iso27701/iso27701_pii_processor.rego",
-       "media-type": "text/plain"
-      }
-     ]
-    },
-    {
-     "uuid": "2adfd69e-b97c-50b0-b6e4-d5883b656d3b",
-     "title": "Iso27701 Pims Requirements",
-     "props": [
-      {
-       "name": "rego-package",
-       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-       "value": "iso27701.pims_requirements"
-      }
-     ],
-     "rlinks": [
-      {
-       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/iso27701/iso27701_pims_requirements.rego",
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/privacy/iso27701/iso27701_main.rego",
        "media-type": "text/plain"
       }
      ]

@@ -487,7 +487,7 @@ frameworks:
       - {standard: ISO/IEC 27001, version: "2022", publisher: ISO/IEC, literal: "ISO/IEC 27001:2022", check: {method: manual, url: "https://www.iso.org/standard/27001", note: "iso.org blocks scripted fetches (403)"}}
   iso27701:
     standards:
-      - {standard: ISO/IEC 27701, version: "2019", publisher: ISO/IEC, literal: "27701:2019", check: {method: manual, url: "https://www.iso.org/standard/27701", note: "ISO/IEC 27701:2025 (standalone PIMS edition) may supersede 2019 — confirm"}}
+      - {standard: ISO/IEC 27701, version: "2019", publisher: ISO/IEC, literal: "27701:2019", check: {method: manual, url: "https://www.iso.org/standard/27701", note: "2019 edition, 108 controls compiled 2026-11-22 from public secondary sources (not the purchased text; 5 ids unconfirmed); the 2025 standalone edition renumbers Annex A and is not covered"}}
   iso_42001:
     standards:
       - {standard: ISO/IEC 42001, version: "2023", publisher: ISO/IEC, literal: "ISO/IEC 42001:2023", check: {method: manual, url: "https://www.iso.org/standard/42001"}}

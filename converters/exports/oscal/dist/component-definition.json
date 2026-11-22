@@ -390284,7 +390284,7 @@
      {
       "uuid": "ec2d93bf-895b-51b7-b14a-aef7e5455bd0",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/iso27701.json",
-      "description": "Controls of iso27701 evaluated by the Rego Policy Libraries (54 controls, 4 Rego modules).",
+      "description": "Controls of iso27701 evaluated by the Rego Policy Libraries (108 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -390294,23 +390294,23 @@
       ],
       "implemented-requirements": [
        {
-        "uuid": "0beb085f-8704-5bd5-8606-2336363dfa23",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-15",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Right of access process not defined",
+        "uuid": "c0533516-8289-5c77-aef6-2a72a1e00522",
+        "control-id": "iso27701-5.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Organisational context covers privacy and the PII controller or processor role",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 15"
+          "value": "5.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390319,23 +390319,23 @@
         ]
        },
        {
-        "uuid": "b0359728-08b5-5b62-beba-f2afeca4e066",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-16",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Right to rectification process not defined",
+        "uuid": "d7b17173-a8e7-5c60-881b-1d254629778c",
+        "control-id": "iso27701-5.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Interested parties with a stake in PII processing and their requirements",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 16"
+          "value": "5.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390344,23 +390344,23 @@
         ]
        },
        {
-        "uuid": "d2aa9564-f1e6-5aaa-92e2-49e2a4447298",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-17",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Technical capability for deletion of PII not implemented",
+        "uuid": "b76ad516-c866-55b3-af59-cef508b78451",
+        "control-id": "iso27701-5.2.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Management system scope covers the processing of PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 17"
+          "value": "5.2.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390369,23 +390369,23 @@
         ]
        },
        {
-        "uuid": "12f302a3-fa61-543b-b9ae-8f1b320b6d74",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-18",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Flag-based processing restriction mechanism not implemented",
+        "uuid": "10da3ccd-8ddf-55bf-b466-d3013aba4e10",
+        "control-id": "iso27701-5.2.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Management system run and improved as a privacy information management system",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 18"
+          "value": "5.2.4"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390394,23 +390394,23 @@
         ]
        },
        {
-        "uuid": "40c9bb7d-bca9-5b90-ad0e-f87282214e29",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-20",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Data portability in machine-readable format not available",
+        "uuid": "cf9b0e0d-c4c7-5a06-a199-f6a38aeb53d1",
+        "control-id": "iso27701-5.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Top management commitment extends to privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 20"
+          "value": "5.3.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390419,23 +390419,23 @@
         ]
        },
        {
-        "uuid": "808e3c30-02ab-508c-af8c-084982cb49d5",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-21",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Opt-out mechanism for processing objection not implemented",
+        "uuid": "341fd83e-2fa9-5392-9134-841efe5dfee4",
+        "control-id": "iso27701-5.3.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Policy set covers privacy as well as security",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 21"
+          "value": "5.3.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390444,23 +390444,23 @@
         ]
        },
        {
-        "uuid": "6049617b-493b-5b29-a58a-fa54171d5bbe",
-        "control-id": "iso27701-ISO-27701-Annex-B-GDPR-Art.-22",
-        "description": "Evaluated by Rego package iso27701.data_subject_rights (frameworks/privacy/iso27701/iso27701_data_subject_rights.rego): Human review not available for automated decision-making",
+        "uuid": "9af04365-ba08-544d-895b-6badf91cf8cc",
+        "control-id": "iso27701-5.3.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Roles, responsibilities and authorities for privacy assigned",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 Annex B / GDPR Art. 22"
+          "value": "5.3.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.data_subject_rights"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_data_subject_rights.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390469,23 +390469,23 @@
         ]
        },
        {
-        "uuid": "3400ecfb-5381-534f-bb88-c9795178fe9f",
-        "control-id": "iso27701-ISO-27701-7.2.1",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Purposes of PII processing not identified and documented",
+        "uuid": "2b44d02a-4706-5048-8fa6-e9ce81a71c4e",
+        "control-id": "iso27701-5.4.1.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Risk assessment covers privacy risks, including risks to PII principals",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.1"
+          "value": "5.4.1.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390494,23 +390494,23 @@
         ]
        },
        {
-        "uuid": "f9318a92-e001-5a5d-b4d5-4514c792ee5c",
-        "control-id": "iso27701-ISO-27701-7.2.2",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Lawful basis not identified for each processing purpose",
+        "uuid": "d597cbf3-28bb-53b0-b819-bf7651dd3cf3",
+        "control-id": "iso27701-5.4.1.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Risk treatment and statement of applicability cover the PIMS controls",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.2"
+          "value": "5.4.1.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390519,23 +390519,23 @@
         ]
        },
        {
-        "uuid": "ead1e1d2-dcb7-5625-90ba-4fa0281aa97a",
-        "control-id": "iso27701-ISO-27701-7.2.3",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): When and how consent is to be obtained not determined",
+        "uuid": "c58833d7-5422-57c0-80e8-a0180cf579f1",
+        "control-id": "iso27701-5.4.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Objectives and plans cover privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.3"
+          "value": "5.4.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390544,23 +390544,23 @@
         ]
        },
        {
-        "uuid": "e3b3fd6e-b793-5cac-821c-1ffd4edf6a28",
-        "control-id": "iso27701-ISO-27701-7.2.4",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Consent not obtained and recorded from PII principals",
+        "uuid": "d2f21fc2-feb1-501f-bf22-c8bbd60cb1d2",
+        "control-id": "iso27701-5.5.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Resources for the PIMS provided",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.4"
+          "value": "5.5.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390569,23 +390569,23 @@
         ]
        },
        {
-        "uuid": "9a3baf92-c3f9-51d2-8d64-aa692b120079",
-        "control-id": "iso27701-ISO-27701-7.2.5",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Privacy notices not provided to PII principals",
+        "uuid": "beb35a03-03ac-538d-94ad-7d474887f718",
+        "control-id": "iso27701-5.5.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Competence of people affecting privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.5"
+          "value": "5.5.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390594,23 +390594,23 @@
         ]
        },
        {
-        "uuid": "fcd9b63b-a2ce-51a5-9885-38dfb7278e11",
-        "control-id": "iso27701-ISO-27701-7.2.6",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Contracts with PII processors do not include data protection obligations",
+        "uuid": "7fdfa4fe-ca90-56b2-8f42-fdaa4cc496e0",
+        "control-id": "iso27701-5.5.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Awareness of the privacy policy and of one's part in it",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.6"
+          "value": "5.5.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390619,23 +390619,23 @@
         ]
        },
        {
-        "uuid": "de99aa39-6dfe-5870-b259-afdbd3d27324",
-        "control-id": "iso27701-ISO-27701-7.2.7",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Joint controllership arrangements not documented",
+        "uuid": "5455925b-5fb5-500a-89e6-0c9cb6f9e0cc",
+        "control-id": "iso27701-5.5.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Internal and external communication on privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.2.7"
+          "value": "5.5.4"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390644,23 +390644,23 @@
         ]
        },
        {
-        "uuid": "5b49ab94-ee01-5c89-93e7-72b401f36f34",
-        "control-id": "iso27701-ISO-27701-7.3.1",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Obligations to PII principals and means to fulfill them not determined",
+        "uuid": "d8e3c183-7f08-5464-8fe0-a8f44782f667",
+        "control-id": "iso27701-5.5.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Documented information for the PIMS controlled",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.1"
+          "value": "5.5.5"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390669,23 +390669,23 @@
         ]
        },
        {
-        "uuid": "857a6d43-f50d-5644-814b-12630b68319d",
-        "control-id": "iso27701-ISO-27701-7.3.2",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Privacy notice not provided to PII principals at point of collection",
+        "uuid": "35b546df-45c6-5e90-bda6-743afacd6e1d",
+        "control-id": "iso27701-5.6.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Operational planning and control, including changes affecting PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.2"
+          "value": "5.6.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390694,23 +390694,23 @@
         ]
        },
        {
-        "uuid": "7321d2bd-017f-522f-9837-3bba499e315a",
-        "control-id": "iso27701-ISO-27701-7.3.3",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Mechanism for PII principals to modify or withdraw consent not provided",
+        "uuid": "470e032f-670b-5d06-af82-6f58652d456c",
+        "control-id": "iso27701-5.6.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy risk assessments carried out at planned intervals",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.3"
+          "value": "5.6.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390719,23 +390719,23 @@
         ]
        },
        {
-        "uuid": "b0ab8396-b968-5b12-9d47-30497bf3e6c5",
-        "control-id": "iso27701-ISO-27701-7.3.4",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Mechanism for PII principals to access their PII upon request not provided",
+        "uuid": "fbd0e60b-9687-55d1-84f7-72ef2eddcdbc",
+        "control-id": "iso27701-5.6.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy risk treatment plan carried out",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.4"
+          "value": "5.6.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390744,23 +390744,23 @@
         ]
        },
        {
-        "uuid": "d7f59da0-33be-5c5b-a3b2-464d9c04e4e3",
-        "control-id": "iso27701-ISO-27701-7.3.5",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Mechanism for erasure and right to be forgotten not provided",
+        "uuid": "148dd4a2-c02b-5e82-945b-fbe2bf6500f6",
+        "control-id": "iso27701-5.7.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy performance monitored, measured and evaluated",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.5"
+          "value": "5.7.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390769,23 +390769,23 @@
         ]
        },
        {
-        "uuid": "eb4ceda7-dc1c-5c83-ad8a-79648d67e5ad",
-        "control-id": "iso27701-ISO-27701-7.3.6",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Mechanism for data portability not provided",
+        "uuid": "48798e8c-6ea7-5e69-b65c-7458129d07f5",
+        "control-id": "iso27701-5.7.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Internal audits cover the PIMS",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.6"
+          "value": "5.7.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390794,23 +390794,23 @@
         ]
        },
        {
-        "uuid": "942445d1-64b6-5af5-9677-1919cb3a48b3",
-        "control-id": "iso27701-ISO-27701-7.3.7",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Process to handle complaints from PII principals not established",
+        "uuid": "139d2c5e-f263-5593-8361-21a4b1f29984",
+        "control-id": "iso27701-5.7.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Management reviews cover the PIMS",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.7"
+          "value": "5.7.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390819,23 +390819,23 @@
         ]
        },
        {
-        "uuid": "22352ab4-f797-580b-aec4-e8be98f7bab6",
-        "control-id": "iso27701-ISO-27701-7.3.8",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Safeguards for automated decision-making not implemented",
+        "uuid": "44ed0d65-4ff8-567f-8874-0daf47ceba54",
+        "control-id": "iso27701-5.8.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Nonconformities corrected, including privacy ones",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.3.8"
+          "value": "5.8.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390844,23 +390844,23 @@
         ]
        },
        {
-        "uuid": "a38cf0e9-8b42-5d78-a134-8343fe517c97",
-        "control-id": "iso27701-ISO-27701-7.4.1",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): PII collection not limited (data minimization principle not applied)",
+        "uuid": "8dc3c3ef-5e26-5100-957a-e2b10baf21d0",
+        "control-id": "iso27701-5.8.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PIMS continually improved",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.1"
+          "value": "5.8.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390869,23 +390869,23 @@
         ]
        },
        {
-        "uuid": "d3d421e6-ab1b-5739-874b-4a902e3b8911",
-        "control-id": "iso27701-ISO-27701-7.4.2",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): PII processing not limited to disclosed purposes (purpose limitation not applied)",
+        "uuid": "d6571db4-4678-536e-bb8d-8de78ba552c4",
+        "control-id": "iso27701-6.10.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Transfer rules cover PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.2"
+          "value": "6.10.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390894,23 +390894,23 @@
         ]
        },
        {
-        "uuid": "a2f09ac0-c93a-5626-b3df-811d8abd2fb3",
-        "control-id": "iso27701-ISO-27701-7.4.3",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Accuracy and quality of PII not maintained",
+        "uuid": "07e6facc-678b-53c7-a174-14215a40e89c",
+        "control-id": "iso27701-6.10.2.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): People with access to PII bound to confidentiality",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.3"
+          "value": "6.10.2.4"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390919,23 +390919,23 @@
         ]
        },
        {
-        "uuid": "f887b520-2316-5e7e-add4-96321d3d2c1b",
-        "control-id": "iso27701-ISO-27701-7.4.4",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): PII minimization goals not defined",
+        "uuid": "07d44c28-d05f-5ea5-bc56-11674e19678f",
+        "control-id": "iso27701-6.11.1.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII sent over public networks protected",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.4"
+          "value": "6.11.1.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390944,23 +390944,23 @@
         ]
        },
        {
-        "uuid": "fe8d1bf3-d9f2-5089-bd76-80407dd6640f",
-        "control-id": "iso27701-ISO-27701-7.4.5",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): PII de-identification and deletion processes not established",
+        "uuid": "49cb6a18-d556-55a9-98e7-43ccba700848",
+        "control-id": "iso27701-6.11.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Secure development rules address privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.5"
+          "value": "6.11.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390969,23 +390969,23 @@
         ]
        },
        {
-        "uuid": "052c7a13-3c3c-52bb-91ba-4a09ae6c81dc",
-        "control-id": "iso27701-ISO-27701-7.4.6",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Temporary files containing PII not disposed of appropriately",
+        "uuid": "7b07554a-eb3a-5b1f-9a2e-0044670f9795",
+        "control-id": "iso27701-6.11.2.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Systems engineered with privacy by design and by default",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.6"
+          "value": "6.11.2.5"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -390994,23 +390994,23 @@
         ]
        },
        {
-        "uuid": "605df768-a527-5ed8-af46-d258b26b4916",
-        "control-id": "iso27701-ISO-27701-7.4.7",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Retention schedule for PII not established or not enforced",
+        "uuid": "7339ed64-749e-5d6d-b620-f704aa6c978e",
+        "control-id": "iso27701-6.11.2.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Outsourced development held to the same privacy rules",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.7"
+          "value": "6.11.2.7"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391019,23 +391019,23 @@
         ]
        },
        {
-        "uuid": "06c59d9d-445c-563f-ae29-a666cb7ae1d2",
-        "control-id": "iso27701-ISO-27701-7.4.8",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Transmission controls for PII not implemented",
+        "uuid": "2786fc08-c7de-544b-826d-e4b40bbd62a5",
+        "control-id": "iso27701-6.11.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII not used as test data without protection",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.4.8"
+          "value": "6.11.3.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391044,23 +391044,23 @@
         ]
        },
        {
-        "uuid": "cc2c737a-7dd7-5e21-a90f-ea69bda27030",
-        "control-id": "iso27701-ISO-27701-7.5.1",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Basis for PII transfer to third parties not established",
+        "uuid": "93424ae7-7d82-5b37-8211-4fd829ef66aa",
+        "control-id": "iso27701-6.12.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Supplier security policy covers PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.5.1"
+          "value": "6.12.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391069,23 +391069,23 @@
         ]
        },
        {
-        "uuid": "22e085f3-bc02-5de9-b55d-f59314915421",
-        "control-id": "iso27701-ISO-27701-7.5.2",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Countries and organizations PII is transferred to not documented",
+        "uuid": "9cf18630-40b1-5364-b8cf-17f74facd389",
+        "control-id": "iso27701-6.12.1.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Supplier agreements carry PII protection terms",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.5.2"
+          "value": "6.12.1.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391094,23 +391094,23 @@
         ]
        },
        {
-        "uuid": "955dcd94-ec19-51d3-bb47-85214f322433",
-        "control-id": "iso27701-ISO-27701-7.5.3",
-        "description": "Evaluated by Rego package iso27701.pii_controller (frameworks/privacy/iso27701/iso27701_pii_controller.rego): Records of PII disclosures to third parties not maintained",
+        "uuid": "1653d689-2fa5-5523-a6b5-f8beacb22979",
+        "control-id": "iso27701-6.13.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Incident responsibilities cover PII breaches",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 7.5.3"
+          "value": "6.13.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_controller"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_controller.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391119,23 +391119,23 @@
         ]
        },
        {
-        "uuid": "16f60bb8-6947-5ad8-a64a-f517b155291d",
-        "control-id": "iso27701-ISO-27701-8.2.1",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): PII not processed only under documented customer instructions",
+        "uuid": "be05ebb1-6b72-50f7-9b6e-ce249817aa0c",
+        "control-id": "iso27701-6.13.1.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII breaches responded to, recorded and notified",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.2.1"
+          "value": "6.13.1.5"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391144,23 +391144,23 @@
         ]
        },
        {
-        "uuid": "5981c920-8acc-501a-a96a-49fc320bca08",
-        "control-id": "iso27701-ISO-27701-8.2.2",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Organization's processing purposes not limited to fulfilling customer's purposes",
+        "uuid": "5fcf0c88-0949-5717-b5b6-81006d3d7fa2",
+        "control-id": "iso27701-6.14.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Availability of facilities processing PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.2.2"
+          "value": "6.14.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391169,23 +391169,23 @@
         ]
        },
        {
-        "uuid": "69a19a00-30be-59d6-a2da-d2626ddb6fe8",
-        "control-id": "iso27701-ISO-27701-8.2.3",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Subprocessors not contracted with equivalent data protection obligations",
+        "uuid": "3aabc470-85c6-580c-ac50-dfc78f7c93b0",
+        "control-id": "iso27701-6.15.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy laws and contract terms that apply are identified",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.2.3"
+          "value": "6.15.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391194,23 +391194,23 @@
         ]
        },
        {
-        "uuid": "db3d0f7b-8594-502a-95f2-fd8014226d0d",
-        "control-id": "iso27701-ISO-27701-8.2.4",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Marketing use of PII not prohibited without explicit customer authorization",
+        "uuid": "4b364866-d60f-58fe-95af-c6c45573763c",
+        "control-id": "iso27701-6.15.1.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Records of PII processing protected and retained",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.2.4"
+          "value": "6.15.1.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391219,23 +391219,23 @@
         ]
        },
        {
-        "uuid": "71f8cce4-a4ce-5203-a8f3-70598bb559a4",
-        "control-id": "iso27701-ISO-27701-8.3.1",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Mechanism to support PII principal rights fulfillment by controller not provided",
+        "uuid": "ba22d4ec-142d-5b37-882d-13178427c527",
+        "control-id": "iso27701-6.15.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Independent review covers privacy",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.3.1"
+          "value": "6.15.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391244,23 +391244,23 @@
         ]
        },
        {
-        "uuid": "136b5e19-e2c9-50ab-8632-76df872db68f",
-        "control-id": "iso27701-ISO-27701-8.3.2",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Records do not enable PII principal requests to be traced",
+        "uuid": "058a05c2-1012-5e68-bc9e-6a1474576029",
+        "control-id": "iso27701-6.15.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Adherence to privacy policies reviewed",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.3.2"
+          "value": "6.15.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391269,23 +391269,23 @@
         ]
        },
        {
-        "uuid": "5559d4d9-e2b0-50c2-ae28-892850196fca",
-        "control-id": "iso27701-ISO-27701-8.4.1",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Privacy controls not maintained throughout processing lifecycle",
+        "uuid": "1dcefb92-d844-543a-8a26-46038d8db03c",
+        "control-id": "iso27701-6.15.2.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Technical compliance reviews cover PII processing",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.4.1"
+          "value": "6.15.2.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391294,23 +391294,23 @@
         ]
        },
        {
-        "uuid": "a265c5ac-e883-5351-92f4-742b3bfd3b53",
-        "control-id": "iso27701-ISO-27701-8.4.2",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Temporary files not documented and disposed of appropriately",
+        "uuid": "7a3e4c46-1d9d-559b-97bc-19194ae37a62",
+        "control-id": "iso27701-6.2.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Security policies address PII protection",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.4.2"
+          "value": "6.2.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391319,23 +391319,23 @@
         ]
        },
        {
-        "uuid": "feb6d4c1-827e-514b-a011-03685d49f7c2",
-        "control-id": "iso27701-ISO-27701-8.4.3",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Return, transfer, or disposal of PII not defined for contract termination",
+        "uuid": "84d194e1-f387-56da-bf00-a1aaf49ff15b",
+        "control-id": "iso27701-6.3.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy roles and a privacy point of contact named",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.4.3"
+          "value": "6.3.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391344,23 +391344,23 @@
         ]
        },
        {
-        "uuid": "185f1799-6af8-5525-85cf-51cfc0d56ab8",
-        "control-id": "iso27701-ISO-27701-8.5.1",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Basis for disclosure of PII to third parties or law enforcement not established",
+        "uuid": "55ab4493-5ce1-51c7-8096-572c0b4dd84c",
+        "control-id": "iso27701-6.3.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Mobile device rules cover PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.5.1"
+          "value": "6.3.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391369,23 +391369,23 @@
         ]
        },
        {
-        "uuid": "03968e6c-6bb4-56bf-afad-df381296212d",
-        "control-id": "iso27701-ISO-27701-8.5.2",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Information about legally binding disclosure requests not provided to customer",
+        "uuid": "162c64de-783d-5359-8e58-317ea968f10d",
+        "control-id": "iso27701-6.3.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Teleworking rules cover PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.5.2"
+          "value": "6.3.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391394,23 +391394,23 @@
         ]
        },
        {
-        "uuid": "3faa39c4-cfb1-58b2-b8b5-c924f99aa2d4",
-        "control-id": "iso27701-ISO-27701-8.5.3",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Subprocessor disclosures not documented",
+        "uuid": "67a4864e-b72d-55df-9d81-8c783bf63e16",
+        "control-id": "iso27701-6.4.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Awareness and training cover privacy and breach consequences",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.5.3"
+          "value": "6.4.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391419,23 +391419,23 @@
         ]
        },
        {
-        "uuid": "494794ef-0346-5f3f-8c31-ba95cb7c7efa",
-        "control-id": "iso27701-ISO-27701-8.5.4",
-        "description": "Evaluated by Rego package iso27701.pii_processor (frameworks/privacy/iso27701/iso27701_pii_processor.rego): Notification of PII transfers between jurisdictions not provided",
+        "uuid": "a032d8cf-c127-5232-8fb1-db0c1b12ef59",
+        "control-id": "iso27701-6.5.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Information classification takes PII into account",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 8.5.4"
+          "value": "6.5.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pii_processor"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pii_processor.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391444,23 +391444,23 @@
         ]
        },
        {
-        "uuid": "2f31e956-8db9-5296-bdd6-37d8f007c7aa",
-        "control-id": "iso27701-ISO-27701-5.2",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Privacy context factors not identified across applicable jurisdictions",
+        "uuid": "6c62b10a-f7b1-55b3-8ccf-f09ea9018699",
+        "control-id": "iso27701-6.5.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): People can recognise PII through labelling",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 5.2"
+          "value": "6.5.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391469,23 +391469,23 @@
         ]
        },
        {
-        "uuid": "a8dc932b-aa98-5fc3-bff1-8189e14a2abb",
-        "control-id": "iso27701-ISO-27701-5.3",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Stakeholders with privacy interests not identified (data subjects, regulators, processors)",
+        "uuid": "bcab06c2-7dee-5443-9d7d-e31cc1b7ce21",
+        "control-id": "iso27701-6.5.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Removable media holding PII controlled",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 5.3"
+          "value": "6.5.3.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391494,23 +391494,23 @@
         ]
        },
        {
-        "uuid": "a2ae2546-df40-559d-ada4-52a35192943c",
-        "control-id": "iso27701-ISO-27701-5.4",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): PIMS scope does not cover all PII processing activities",
+        "uuid": "6889741c-0c15-570c-8b8e-70d8d721b778",
+        "control-id": "iso27701-6.5.3.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Media holding PII disposed of securely",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 5.4"
+          "value": "6.5.3.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391519,23 +391519,23 @@
         ]
        },
        {
-        "uuid": "ac7e4a66-a6c9-5f84-b5c7-bdaf6b494426",
-        "control-id": "iso27701-ISO-27701-5.5",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Executive sponsor for privacy program not designated",
+        "uuid": "8940a6c0-8190-5638-ab7e-104691d21ec3",
+        "control-id": "iso27701-6.5.3.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Physical transfer of media holding PII controlled",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 5.5"
+          "value": "6.5.3.3"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391544,23 +391544,23 @@
         ]
        },
        {
-        "uuid": "5b534e70-1852-5b59-890f-fa2445ad3ce8",
-        "control-id": "iso27701-ISO-27701-5.6",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Overarching privacy policy not approved by top management",
+        "uuid": "1519af89-906e-586c-8a9e-5d42c06488b1",
+        "control-id": "iso27701-6.6.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): User registration and removal on systems processing PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 5.6"
+          "value": "6.6.2.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391569,23 +391569,23 @@
         ]
        },
        {
-        "uuid": "2f032b7c-701b-5999-be7f-b1cebb91d861",
-        "control-id": "iso27701-ISO-27701-6.1",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Privacy risk assessment not conducted covering all processing activities",
+        "uuid": "e6b43910-7f93-5fdf-9f7e-e272c124a989",
+        "control-id": "iso27701-6.6.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Access to PII provisioned under control",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 6.1"
+          "value": "6.6.2.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391594,23 +391594,23 @@
         ]
        },
        {
-        "uuid": "0aac8e45-c914-585f-b184-50e2b89a4c3d",
-        "control-id": "iso27701-ISO-27701-6.2",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Privacy objectives not established or not measurable",
+        "uuid": "274e8110-0530-59ef-afaa-48034c5eb980",
+        "control-id": "iso27701-6.6.4.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Secure log-on to systems processing PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 6.2"
+          "value": "6.6.4.2"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
@@ -391619,23 +391619,1373 @@
         ]
        },
        {
-        "uuid": "bfe2166b-545d-5f4d-bb5d-81f972f978a4",
-        "control-id": "iso27701-ISO-27701-6.3",
-        "description": "Evaluated by Rego package iso27701.pims_requirements (frameworks/privacy/iso27701/iso27701_pims_requirements.rego): Privacy impact of organizational changes not assessed before implementation",
+        "uuid": "5bb3d5f5-6055-5461-b6ef-d6fc95d7ac6a",
+        "control-id": "iso27701-6.7.1.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Cryptography protects PII",
         "props": [
          {
           "name": "label",
-          "value": "ISO 27701 6.3"
+          "value": "6.7.1.1"
          },
          {
           "name": "rego-package",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "iso27701.pims_requirements"
+          "value": "iso27701.main"
          },
          {
           "name": "rego-file",
           "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/privacy/iso27701/iso27701_pims_requirements.rego"
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b00c7811-80a1-536f-80c2-611d427dab76",
+        "control-id": "iso27701-6.8.2.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Equipment holding PII wiped before disposal or reuse",
+        "props": [
+         {
+          "name": "label",
+          "value": "6.8.2.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2564a6e9-3f66-5f1f-b8b3-d64b84938fa0",
+        "control-id": "iso27701-6.8.2.9",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Clear desk and clear screen extend to PII",
+        "props": [
+         {
+          "name": "label",
+          "value": "6.8.2.9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "42460112-85d9-547a-9844-6a1a1a0b8353",
+        "control-id": "iso27701-6.9.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Backups holding PII protected and restorable",
+        "props": [
+         {
+          "name": "label",
+          "value": "6.9.3.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0e513629-1e37-5db6-bfa1-e4a4eebeaf2f",
+        "control-id": "iso27701-6.9.4.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Processing of PII recorded in event logs",
+        "props": [
+         {
+          "name": "label",
+          "value": "6.9.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7fc0c646-4dd3-53c5-893c-57bc52500276",
+        "control-id": "iso27701-6.9.4.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Logs that hold PII protected",
+        "props": [
+         {
+          "name": "label",
+          "value": "6.9.4.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c8c6f6f0-e8b3-5ff5-9925-c08104034e19",
+        "control-id": "iso27701-7.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Purposes of processing identified and documented",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4825c5bb-3297-5f7b-9c03-6d091c220f5c",
+        "control-id": "iso27701-7.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Lawful basis identified for each purpose",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5e5e8fc6-aa41-5a8e-8d10-fb33b27fdb04",
+        "control-id": "iso27701-7.2.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): When and how consent is sought decided",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "454e0270-70ef-5c96-9226-627573bbbb63",
+        "control-id": "iso27701-7.2.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Consent obtained and kept on record",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3d5df3e6-8df5-52a5-9a63-aec36e11c224",
+        "control-id": "iso27701-7.2.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Privacy impact assessment for new or changed processing",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2c3197db-fb77-51cf-8acc-b3d2f533bd59",
+        "control-id": "iso27701-7.2.6",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Processor contracts carry the required terms",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7e901fe6-fc95-552a-8fc2-1eef8778313c",
+        "control-id": "iso27701-7.2.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Joint controller roles agreed",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4dc63056-36f5-5002-b93a-02108ed05c89",
+        "control-id": "iso27701-7.2.8",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Records of PII processing kept",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.2.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "88233a88-4563-5366-9721-b673f53389d6",
+        "control-id": "iso27701-7.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Obligations to PII principals determined and met",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e02af59c-0736-51a7-8f6d-0b797d0f0082",
+        "control-id": "iso27701-7.3.10",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Automated decisions about principals addressed",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.10"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1aa94e75-83b9-5120-9c4f-81a793847ed8",
+        "control-id": "iso27701-7.3.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Information owed to PII principals determined",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0d8671d3-74f2-5052-bc0d-ed8153d630af",
+        "control-id": "iso27701-7.3.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Clear information given to PII principals",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "70671438-3a35-5380-b089-da6a5a0c92ba",
+        "control-id": "iso27701-7.3.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Way to change or withdraw consent provided",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f6dadf45-5d20-5386-bb33-36b6ff38e85a",
+        "control-id": "iso27701-7.3.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Way to object to processing provided",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "201f0a40-f2bf-5f47-a1fe-dd8b0d896f38",
+        "control-id": "iso27701-7.3.6",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Access, correction and erasure handled",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "9922ca1d-033a-5456-b738-813b3dcde35a",
+        "control-id": "iso27701-7.3.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Third parties told of corrections, erasures and objections",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "e9e83808-432d-5644-9763-dd19f6136db2",
+        "control-id": "iso27701-7.3.8",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Copy of their PII given to principals on request",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a5fc8551-5188-58b8-8781-356a0d905264",
+        "control-id": "iso27701-7.3.9",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Requests from PII principals handled on time",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.3.9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6eebd9d1-71cf-5640-a69c-901922ee711e",
+        "control-id": "iso27701-7.4.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Collection limited to what the purpose needs",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "60eb8356-d2f1-5dcf-a733-8411d2999c7b",
+        "control-id": "iso27701-7.4.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Processing limited to the stated purposes",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "77a49b85-0191-5df5-9aa8-a3f15a9167de",
+        "control-id": "iso27701-7.4.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII kept accurate and of adequate quality",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "20b1aa0e-828c-593f-9810-b91c5c1737d6",
+        "control-id": "iso27701-7.4.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Minimisation objectives set and met",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "386030f2-6a99-5fe3-8023-c684cf932795",
+        "control-id": "iso27701-7.4.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII de-identified or deleted when processing ends",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "93e592c2-a516-5529-844e-ab0d1d85dfe6",
+        "control-id": "iso27701-7.4.6",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Temporary files holding PII removed",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3e152ae2-de57-515e-b8a5-481be6002932",
+        "control-id": "iso27701-7.4.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII kept no longer than needed",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5f95f70f-9708-5437-875c-7ce73e918569",
+        "control-id": "iso27701-7.4.8",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII disposed of by documented means",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "68867e22-2ef1-58fa-9571-e06e8ab92865",
+        "control-id": "iso27701-7.4.9",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII protected in transmission",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.4.9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b7de1f28-2d21-5999-b01a-0c280aab8dd4",
+        "control-id": "iso27701-7.5.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Basis for cross-border transfer identified",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.5.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0f592cd8-5f01-51f2-b511-96d086fc8f97",
+        "control-id": "iso27701-7.5.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Destinations of transfers listed",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.5.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b8d23fd0-3975-52d7-9f87-befb6b9c5e04",
+        "control-id": "iso27701-7.5.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Transfers of PII recorded",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.5.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cc46e6ca-165e-540d-87d1-0e00a6218bea",
+        "control-id": "iso27701-7.5.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Disclosures of PII to third parties recorded",
+        "props": [
+         {
+          "name": "label",
+          "value": "7.5.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "0387b681-f112-5357-863c-3cc901ca2922",
+        "control-id": "iso27701-8.2.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer contract covers the processor's support duties",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2d6bbf03-19ea-5278-bf2f-3a05b3c14cef",
+        "control-id": "iso27701-8.2.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII processed only for the customer's purposes",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8816bdfa-88ad-5704-af45-b6555616dc25",
+        "control-id": "iso27701-8.2.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): No marketing use without the principal's consent",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2c72910b-fc64-51a0-95fd-709ae1d0469c",
+        "control-id": "iso27701-8.2.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer told when an instruction would break the law",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "661f148a-30ec-5166-a23f-58a9392725c8",
+        "control-id": "iso27701-8.2.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer given what it needs to show its own compliance",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "28b1d223-35f7-51ea-af07-e7c707e8bea9",
+        "control-id": "iso27701-8.2.6",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Records of processing done for the customer kept",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "4198995a-d995-55b0-889c-5280c7398589",
+        "control-id": "iso27701-8.3.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer helped to meet its obligations to principals",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.3.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f748e01c-51f1-5e3e-9560-b238954a699e",
+        "control-id": "iso27701-8.4.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Temporary files holding PII removed",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7d73c317-0629-50c0-84cc-088d2a0fdba1",
+        "control-id": "iso27701-8.4.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII returned, transferred or disposed of at contract end",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.4.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "577666d0-b4ac-5ead-b48c-c34cad866d20",
+        "control-id": "iso27701-8.4.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): PII protected in transmission",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.4.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "7df21c8d-e48e-5f9a-a514-9e6569113ebd",
+        "control-id": "iso27701-8.5.1",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer told of the basis for cross-border transfers",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "cae69e22-7f6f-5c85-bf8c-18e9ed23b70b",
+        "control-id": "iso27701-8.5.2",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer told of transfer destinations",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "890cd6a6-646e-5888-b765-bc8c88b1fc4e",
+        "control-id": "iso27701-8.5.3",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Disclosures to third parties recorded",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "df84e033-4ac4-54fe-9e49-86d1c783260c",
+        "control-id": "iso27701-8.5.4",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer told of disclosure requests",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "461292bd-c272-5fb1-bc2b-d2750f90b136",
+        "control-id": "iso27701-8.5.5",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Only legally binding disclosures made",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "646287a6-ec16-5bd7-8480-2d2220ff399e",
+        "control-id": "iso27701-8.5.6",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Subcontractors used disclosed to the customer",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "b62bab62-fe37-5b95-a7d3-05854242e539",
+        "control-id": "iso27701-8.5.7",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Subcontractors engaged only as the contract allows",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "779bd965-f181-5a89-bc06-930712bad3f3",
+        "control-id": "iso27701-8.5.8",
+        "description": "Evaluated by Rego package iso27701.main (frameworks/privacy/iso27701/iso27701_main.rego): Customer told before a subcontractor changes",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.5.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "iso27701.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/privacy/iso27701/iso27701_main.rego"
          },
          {
           "name": "implementation-status",
