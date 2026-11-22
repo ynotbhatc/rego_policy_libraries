@@ -1280,6 +1280,1966 @@
     ]
    },
    {
+    "id": "soc2-soc2_criteria",
+    "class": "rego-module",
+    "title": "SOC 2 - AICPA Trust Services Criteria: per-criterion evaluation for all 33 common criteria (CC1.1-CC9.2)",
+    "props": [
+     {
+      "name": "rego-package",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "soc2.criteria"
+     },
+     {
+      "name": "rego-file",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "frameworks/management/soc2/criteria/soc2_criteria.rego"
+     },
+     {
+      "name": "class",
+      "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+      "value": "compliance"
+     }
+    ],
+    "controls": [
+     {
+      "id": "soc2-A1.1",
+      "title": "Capacity planned and monitored",
+      "props": [
+       {
+        "name": "label",
+        "value": "A1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-A1.1_stmt",
+        "name": "statement",
+        "prose": "Capacity planned and monitored"
+       },
+       {
+        "id": "soc2-A1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-A1.2",
+      "title": "Backups and recovery infrastructure",
+      "props": [
+       {
+        "name": "label",
+        "value": "A1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-A1.2_stmt",
+        "name": "statement",
+        "prose": "Backups and recovery infrastructure"
+       },
+       {
+        "id": "soc2-A1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.backup_retention_days (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-A1.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.backup.retention.days not collected or not a number"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-A1.3",
+      "title": "Recovery testing carried out",
+      "props": [
+       {
+        "name": "label",
+        "value": "A1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "A1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-A1.3_stmt",
+        "name": "statement",
+        "prose": "Recovery testing carried out"
+       },
+       {
+        "id": "soc2-A1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-A1.3_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.backup.recovery_testing.frequency_days not collected or not a number"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-C1.1",
+      "title": "Confidential data identified and protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "C1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-C1.1_stmt",
+        "name": "statement",
+        "prose": "Confidential data identified and protected"
+       },
+       {
+        "id": "soc2-C1.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-C1.2",
+      "title": "Confidential data disposed of",
+      "props": [
+       {
+        "name": "label",
+        "value": "C1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "C1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-C1.2_stmt",
+        "name": "statement",
+        "prose": "Confidential data disposed of"
+       },
+       {
+        "id": "soc2-C1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC1.1",
+      "title": "Integrity and ethics upheld across the entity",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC1.1_stmt",
+        "name": "statement",
+        "prose": "Integrity and ethics upheld across the entity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC1.2",
+      "title": "Board independent of management and overseeing controls",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC1.2_stmt",
+        "name": "statement",
+        "prose": "Board independent of management and overseeing controls"
+       },
+       {
+        "id": "soc2-CC1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC1.3",
+      "title": "Reporting lines and authority defined",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC1.3_stmt",
+        "name": "statement",
+        "prose": "Reporting lines and authority defined"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC1.4",
+      "title": "Competent staff hired, developed and kept",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC1.4_stmt",
+        "name": "statement",
+        "prose": "Competent staff hired, developed and kept"
+       },
+       {
+        "id": "soc2-CC1.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC1.5",
+      "title": "Control responsibilities enforced",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC1.5_stmt",
+        "name": "statement",
+        "prose": "Control responsibilities enforced"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC2.1",
+      "title": "Quality information supports internal control",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC2.1_stmt",
+        "name": "statement",
+        "prose": "Quality information supports internal control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC2.2",
+      "title": "Control duties communicated inside the entity",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC2.2_stmt",
+        "name": "statement",
+        "prose": "Control duties communicated inside the entity"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC2.3",
+      "title": "Control matters communicated to outside parties",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC2.3_stmt",
+        "name": "statement",
+        "prose": "Control matters communicated to outside parties"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC3.1",
+      "title": "Objectives clear enough for risk assessment",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC3.1_stmt",
+        "name": "statement",
+        "prose": "Objectives clear enough for risk assessment"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC3.2",
+      "title": "Risk identification and analysis",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC3.2_stmt",
+        "name": "statement",
+        "prose": "Risk identification and analysis"
+       },
+       {
+        "id": "soc2-CC3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC3.3",
+      "title": "Fraud risk weighed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC3.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC3.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC3.3_stmt",
+        "name": "statement",
+        "prose": "Fraud risk weighed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC3.4",
+      "title": "Changes affecting controls assessed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC3.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC3.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC3.4_stmt",
+        "name": "statement",
+        "prose": "Changes affecting controls assessed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC4.1",
+      "title": "Control components evaluated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC4.1_stmt",
+        "name": "statement",
+        "prose": "Control components evaluated"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC4.2",
+      "title": "Control deficiencies reported and fixed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC4.2_stmt",
+        "name": "statement",
+        "prose": "Control deficiencies reported and fixed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC5.1",
+      "title": "Control activities that reduce risk",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC5.1_stmt",
+        "name": "statement",
+        "prose": "Control activities that reduce risk"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC5.2",
+      "title": "Technology general controls in place",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC5.2_stmt",
+        "name": "statement",
+        "prose": "Technology general controls in place"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC5.3",
+      "title": "Controls deployed via policy and procedure",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC5.3_stmt",
+        "name": "statement",
+        "prose": "Controls deployed via policy and procedure"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.1",
+      "title": "Logical access to protected systems and data controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.1_stmt",
+        "name": "statement",
+        "prose": "Logical access to protected systems and data controlled"
+       },
+       {
+        "id": "soc2-CC6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.2",
+      "title": "User access granted on approval, removed and reviewed",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.2_stmt",
+        "name": "statement",
+        "prose": "User access granted on approval, removed and reviewed"
+       },
+       {
+        "id": "soc2-CC6.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.access_review_interval_days (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-CC6.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.access_controls.periodic_reviews.frequency_days not collected or not a number"
+       },
+       {
+        "id": "soc2-CC6.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.3",
+      "title": "Role-based, least-privilege access",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.3_stmt",
+        "name": "statement",
+        "prose": "Role-based, least-privilege access"
+       },
+       {
+        "id": "soc2-CC6.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.4",
+      "title": "Physical access restricted",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.4_stmt",
+        "name": "statement",
+        "prose": "Physical access restricted"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.5",
+      "title": "Data protected until asset disposal",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.5_stmt",
+        "name": "statement",
+        "prose": "Data protected until asset disposal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.6",
+      "title": "Access from outside the system boundary protected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.6_stmt",
+        "name": "statement",
+        "prose": "Access from outside the system boundary protected"
+       },
+       {
+        "id": "soc2-CC6.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-CC6.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.remote_access.session_timeout.max_idle_minutes not collected or not a number"
+       },
+       {
+        "id": "soc2-CC6.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.7",
+      "title": "Information protected in transit and on removal",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.7_stmt",
+        "name": "statement",
+        "prose": "Information protected in transit and on removal"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC6.8",
+      "title": "Malicious and unauthorised software blocked or found",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC6.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC6.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC6.8_stmt",
+        "name": "statement",
+        "prose": "Malicious and unauthorised software blocked or found"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC7.1",
+      "title": "Configuration drift and vulnerabilities detected",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC7.1_stmt",
+        "name": "statement",
+        "prose": "Configuration drift and vulnerabilities detected"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC7.2",
+      "title": "Systems watched for signs of attack or error",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC7.2_stmt",
+        "name": "statement",
+        "prose": "Systems watched for signs of attack or error"
+       },
+       {
+        "id": "soc2-CC7.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.log_retention_days (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-CC7.2_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.access_controls.access_logging.retention_days not collected or not a number"
+       },
+       {
+        "id": "soc2-CC7.2_obj.3",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC7.3",
+      "title": "Security events triaged to find incidents",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC7.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC7.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC7.3_stmt",
+        "name": "statement",
+        "prose": "Security events triaged to find incidents"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC7.4",
+      "title": "Incident response programme operated",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC7.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC7.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC7.4_stmt",
+        "name": "statement",
+        "prose": "Incident response programme operated"
+       },
+       {
+        "id": "soc2-CC7.4_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC7.5",
+      "title": "Return to normal operation after an incident",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC7.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC7.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC7.5_stmt",
+        "name": "statement",
+        "prose": "Return to normal operation after an incident"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC8.1",
+      "title": "Changes controlled from request to release",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC8.1_stmt",
+        "name": "statement",
+        "prose": "Changes controlled from request to release"
+       },
+       {
+        "id": "soc2-CC8.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC9.1",
+      "title": "Business disruption risk reduced",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC9.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC9.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC9.1_stmt",
+        "name": "statement",
+        "prose": "Business disruption risk reduced"
+       },
+       {
+        "id": "soc2-CC9.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-CC9.2",
+      "title": "Vendor and partner risk handled",
+      "props": [
+       {
+        "name": "label",
+        "value": "CC9.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "CC9.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-CC9.2_stmt",
+        "name": "statement",
+        "prose": "Vendor and partner risk handled"
+       },
+       {
+        "id": "soc2-CC9.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P3.1",
+      "title": "Collection limited to stated purposes",
+      "props": [
+       {
+        "name": "label",
+        "value": "P3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P3.1_stmt",
+        "name": "statement",
+        "prose": "Collection limited to stated purposes"
+       },
+       {
+        "id": "soc2-P3.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P3.2",
+      "title": "Explicit consent recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "P3.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P3.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P3.2_stmt",
+        "name": "statement",
+        "prose": "Explicit consent recorded"
+       },
+       {
+        "id": "soc2-P3.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P4.1",
+      "title": "Use limited to stated purposes",
+      "props": [
+       {
+        "name": "label",
+        "value": "P4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P4.1_stmt",
+        "name": "statement",
+        "prose": "Use limited to stated purposes"
+       },
+       {
+        "id": "soc2-P4.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P4.2",
+      "title": "Retention schedules applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "P4.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P4.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P4.2_stmt",
+        "name": "statement",
+        "prose": "Retention schedules applied"
+       },
+       {
+        "id": "soc2-P4.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P5.1",
+      "title": "Data subject access",
+      "props": [
+       {
+        "name": "label",
+        "value": "P5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P5.1_stmt",
+        "name": "statement",
+        "prose": "Data subject access"
+       },
+       {
+        "id": "soc2-P5.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P5.2",
+      "title": "Data subject correction",
+      "props": [
+       {
+        "name": "label",
+        "value": "P5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P5.2_stmt",
+        "name": "statement",
+        "prose": "Data subject correction"
+       },
+       {
+        "id": "soc2-P5.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P6.1",
+      "title": "Third-party disclosure controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.1_stmt",
+        "name": "statement",
+        "prose": "Third-party disclosure controlled"
+       },
+       {
+        "id": "soc2-P6.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P6.6",
+      "title": "Breach notification within commitments",
+      "props": [
+       {
+        "name": "label",
+        "value": "P6.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P6.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P6.6_stmt",
+        "name": "statement",
+        "prose": "Breach notification within commitments"
+       },
+       {
+        "id": "soc2-P6.6_obj.1",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.breach_notice_hours_authorities (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-P6.6_obj.2",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.soc2.commitments.breach_notice_hours_individuals (the entity's stated value) not supplied or not a number"
+       },
+       {
+        "id": "soc2-P6.6_obj.3",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.privacy.breach_notification.timeline_compliance.authorities not collected or not a number"
+       },
+       {
+        "id": "soc2-P6.6_obj.4",
+        "name": "assessment-objective",
+        "prose": "evidence missing - input.privacy.breach_notification.timeline_compliance.individuals not collected or not a number"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-P7.1",
+      "title": "Personal data quality maintained",
+      "props": [
+       {
+        "name": "label",
+        "value": "P7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "P7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-P7.1_stmt",
+        "name": "statement",
+        "prose": "Personal data quality maintained"
+       },
+       {
+        "id": "soc2-P7.1_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-PI1.2",
+      "title": "Input validation",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI1.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI1.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-PI1.2_stmt",
+        "name": "statement",
+        "prose": "Input validation"
+       },
+       {
+        "id": "soc2-PI1.2_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-PI1.3",
+      "title": "Processing authorised and traced",
+      "props": [
+       {
+        "name": "label",
+        "value": "PI1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "PI1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.criteria"
+       }
+      ],
+      "links": [
+       {
+        "href": "#fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+        "rel": "implementation"
+       },
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-PI1.3_stmt",
+        "name": "statement",
+        "prose": "Processing authorised and traced"
+       },
+       {
+        "id": "soc2-PI1.3_obj.1",
+        "name": "assessment-objective",
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
+       }
+      ],
+      "class": "compliance"
+     }
+    ]
+   },
+   {
     "id": "soc2-applications_services",
     "class": "rego-module",
     "title": "SOC 2 Infrastructure - Applications and Services Security",
@@ -6981,147 +8941,6 @@
     ],
     "controls": [
      {
-      "id": "soc2-CC6.6",
-      "title": "evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC6.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC6.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.security.access_controls"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
-        "rel": "implementation"
-       },
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC6.6_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.max_idle_minutes (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-CC6.6_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.remote_access.session_timeout.max_idle_minutes not collected or not a number"
-       },
-       {
-        "id": "soc2-CC6.6_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC7.2",
-      "title": "evidence missing - input.soc2.commitments.log_retention_days (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC7.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC7.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.security.access_controls"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
-        "rel": "implementation"
-       },
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC7.2_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.log_retention_days (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-CC7.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.access_controls.access_logging.retention_days not collected or not a number"
-       },
-       {
-        "id": "soc2-CC7.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC6.2",
-      "title": "evidence missing - input.soc2.commitments.access_review_interval_days (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC6.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC6.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.security.access_controls"
-       }
-      ],
-      "links": [
-       {
-        "href": "#5403fe72-3b06-5108-8997-2bfdc05ebdf3",
-        "rel": "implementation"
-       },
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC6.2_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.access_review_interval_days (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-CC6.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.access_controls.periodic_reviews.frequency_days not collected or not a number"
-       },
-       {
-        "id": "soc2-CC6.2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "soc2-soc2.security.access_controls-1",
       "title": "platform: evidence missing - input.soc2.commitments.%v (the entity's stated value) not supplied or not a number",
       "props": [
@@ -7711,7 +9530,7 @@
    {
     "id": "soc2-soc2_main",
     "class": "rego-module",
-    "title": "SOC 2 Trust Services Criteria - 12 common criteria and up to 16 optional-category criteria scored by id",
+    "title": "SOC 2 - AICPA Trust Services Criteria: per-criterion results for all 33 common criteria (CC1.1-CC9.2):",
     "props": [
      {
       "name": "rego-package",
@@ -7830,1782 +9649,8 @@
       "class": "compliance"
      },
      {
-      "id": "soc2-CC1.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC1.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC1.4",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC1.4_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC3.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC3.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC6.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC6.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC6.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC6.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC6.3",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC6.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC6.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC6.3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC7.4",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC7.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC7.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC7.4_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC8.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC8.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC8.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC8.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC9.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC9.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC9.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC9.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-CC9.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "CC9.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "CC9.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-CC9.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-A1.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "A1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "A1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-A1.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-A1.2",
-      "title": "evidence missing - input.soc2.commitments.backup_retention_days (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "A1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "A1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-A1.2_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.backup_retention_days (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-A1.2_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.backup.retention.days not collected or not a number"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-A1.3",
-      "title": "evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "A1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "A1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-A1.3_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.recovery_test_interval_days (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-A1.3_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.backup.recovery_testing.frequency_days not collected or not a number"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-C1.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "C1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "C1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-C1.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-C1.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "C1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "C1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-C1.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P3.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P3.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P3.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P3.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P4.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P4.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P4.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P4.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P4.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P4.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P5.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P5.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P5.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P5.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P5.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P5.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P5.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P5.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P6.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P6.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P6.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P6.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P6.6",
-      "title": "evidence missing - input.soc2.commitments.breach_notice_hours_authorities (the entity's stated value) not supplied or not a number",
-      "props": [
-       {
-        "name": "label",
-        "value": "P6.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P6.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P6.6_stmt",
-        "name": "statement",
-        "prose": "evidence missing - input.soc2.commitments.breach_notice_hours_authorities (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-P6.6_obj.1",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.soc2.commitments.breach_notice_hours_individuals (the entity's stated value) not supplied or not a number"
-       },
-       {
-        "id": "soc2-P6.6_obj.2",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.privacy.breach_notification.timeline_compliance.authorities not collected or not a number"
-       },
-       {
-        "id": "soc2-P6.6_obj.3",
-        "name": "assessment-objective",
-        "prose": "evidence missing - input.privacy.breach_notification.timeline_compliance.individuals not collected or not a number"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-P7.1",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "P7.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "P7.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-P7.1_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-PI1.2",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "PI1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "PI1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-PI1.2_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-PI1.3",
-      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
-      "props": [
-       {
-        "name": "label",
-        "value": "PI1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "PI1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-PI1.3_stmt",
-        "name": "statement",
-        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC1.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC1.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC1.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC1.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC1.4",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC1.4\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC1.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC1.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC1.4_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC1.4\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC3.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC3.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC3.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC3.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC6.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC6.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC6.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC6.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC6.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC6.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC6.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC6.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC6.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC6.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC6.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC6.3",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC6.3\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC6.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC6.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC6.3_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC6.3\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC6.6",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC6.6\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC6.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC6.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC6.6_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC6.6\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC7.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC7.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC7.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC7.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC7.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC7.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC7.4",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC7.4\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC7.4"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC7.4"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC7.4_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC7.4\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC8.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC8.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC8.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC8.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC8.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC8.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC9.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC9.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC9.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC9.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC9.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC9.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-CC9.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"CC9.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 CC9.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 CC9.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-CC9.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"CC9.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-A1.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"A1.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 A1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 A1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-A1.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"A1.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-A1.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"A1.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 A1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 A1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-A1.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"A1.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-A1.3",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 A1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 A1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-A1.3_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"A1.3\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-C1.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"C1.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 C1.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 C1.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-C1.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"C1.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-C1.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"C1.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 C1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 C1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-C1.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"C1.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-PI1.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"PI1.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 PI1.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 PI1.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-PI1.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"PI1.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-PI1.3",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"PI1.3\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 PI1.3"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 PI1.3"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-PI1.3_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"PI1.3\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P3.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P3.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P3.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P3.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P3.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P3.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P3.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P3.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P3.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P3.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P3.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P3.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P4.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P4.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P4.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P4.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P4.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P4.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P4.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P4.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P4.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P4.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P4.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P4.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P5.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P5.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P5.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P5.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P5.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P5.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P5.2",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P5.2\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P5.2"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P5.2"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P5.2_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P5.2\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P6.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P6.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P6.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P6.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P6.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P6.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P6.6",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P6.6\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P6.6"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P6.6"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P6.6_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P6.6\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-SOC-2-P7.1",
-      "title": "criterion not met - at least one mapped check failed (criteria[\"P7.1\"].failed_checks)",
-      "props": [
-       {
-        "name": "label",
-        "value": "SOC 2 P7.1"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "SOC 2 P7.1"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-SOC-2-P7.1_stmt",
-        "name": "statement",
-        "prose": "criterion not met - at least one mapped check failed (criteria[\"P7.1\"].failed_checks)"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
       "id": "soc2-soc2.main-4",
-      "title": "SOC 2 %v: check %v not satisfied",
+      "title": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body.",
       "props": [
        {
         "name": "label",
@@ -9631,40 +9676,7 @@
        {
         "id": "soc2-soc2.main-4_stmt",
         "name": "statement",
-        "prose": "SOC 2 %v: check %v not satisfied"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-soc2.main-5",
-      "title": "SOC 2 %v",
-      "props": [
-       {
-        "name": "label",
-        "value": "soc2.main#5"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "soc2.main#5"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-soc2.main-5_stmt",
-        "name": "statement",
-        "prose": "SOC 2 %v"
+        "prose": "Implemented by a Rego rule in frameworks/management/soc2/soc2_main.rego (package soc2.main); see the rule body."
        }
       ],
       "class": "compliance"
@@ -9746,8 +9758,41 @@
       "class": "compliance"
      },
      {
-      "id": "soc2-soc2.main-6",
+      "id": "soc2-soc2.main-5",
       "title": "availability",
+      "props": [
+       {
+        "name": "label",
+        "value": "soc2.main#5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "soc2.main#5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "soc2.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "soc2-soc2.main-5_stmt",
+        "name": "statement",
+        "prose": "availability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "soc2-soc2.main-6",
+      "title": "confidentiality",
       "props": [
        {
         "name": "label",
@@ -9773,14 +9818,14 @@
        {
         "id": "soc2-soc2.main-6_stmt",
         "name": "statement",
-        "prose": "availability"
+        "prose": "confidentiality"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-7",
-      "title": "confidentiality",
+      "title": "privacy",
       "props": [
        {
         "name": "label",
@@ -9806,14 +9851,14 @@
        {
         "id": "soc2-soc2.main-7_stmt",
         "name": "statement",
-        "prose": "confidentiality"
+        "prose": "privacy"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-8",
-      "title": "privacy",
+      "title": "processing integrity",
       "props": [
        {
         "name": "label",
@@ -9839,14 +9884,14 @@
        {
         "id": "soc2-soc2.main-8_stmt",
         "name": "statement",
-        "prose": "privacy"
+        "prose": "processing integrity"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-9",
-      "title": "processing integrity",
+      "title": "applications services",
       "props": [
        {
         "name": "label",
@@ -9872,14 +9917,14 @@
        {
         "id": "soc2-soc2.main-9_stmt",
         "name": "statement",
-        "prose": "processing integrity"
+        "prose": "applications services"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-10",
-      "title": "applications services",
+      "title": "network",
       "props": [
        {
         "name": "label",
@@ -9905,14 +9950,14 @@
        {
         "id": "soc2-soc2.main-10_stmt",
         "name": "statement",
-        "prose": "applications services"
+        "prose": "network"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-11",
-      "title": "network",
+      "title": "security",
       "props": [
        {
         "name": "label",
@@ -9938,14 +9983,14 @@
        {
         "id": "soc2-soc2.main-11_stmt",
         "name": "statement",
-        "prose": "network"
+        "prose": "security"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-12",
-      "title": "security",
+      "title": "storage",
       "props": [
        {
         "name": "label",
@@ -9971,14 +10016,14 @@
        {
         "id": "soc2-soc2.main-12_stmt",
         "name": "statement",
-        "prose": "security"
+        "prose": "storage"
        }
       ],
       "class": "compliance"
      },
      {
       "id": "soc2-soc2.main-13",
-      "title": "storage",
+      "title": "systems",
       "props": [
        {
         "name": "label",
@@ -10003,39 +10048,6 @@
       "parts": [
        {
         "id": "soc2-soc2.main-13_stmt",
-        "name": "statement",
-        "prose": "storage"
-       }
-      ],
-      "class": "compliance"
-     },
-     {
-      "id": "soc2-soc2.main-14",
-      "title": "systems",
-      "props": [
-       {
-        "name": "label",
-        "value": "soc2.main#14"
-       },
-       {
-        "name": "alt-identifier",
-        "value": "soc2.main#14"
-       },
-       {
-        "name": "rego-package",
-        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-        "value": "soc2.main"
-       }
-      ],
-      "links": [
-       {
-        "href": "#eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-        "rel": "implementation"
-       }
-      ],
-      "parts": [
-       {
-        "id": "soc2-soc2.main-14_stmt",
         "name": "statement",
         "prose": "systems"
        }
@@ -10176,6 +10188,23 @@
      "rlinks": [
       {
        "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/management/soc2/confidentiality/data_confidentiality.rego",
+       "media-type": "text/plain"
+      }
+     ]
+    },
+    {
+     "uuid": "fab67826-6ad9-5bbc-8e75-6b7d8093197d",
+     "title": "SOC 2 - AICPA Trust Services Criteria: per-criterion evaluation for all 33 common criteria (CC1.1-CC9.2)",
+     "props": [
+      {
+       "name": "rego-package",
+       "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+       "value": "soc2.criteria"
+      }
+     ],
+     "rlinks": [
+      {
+       "href": "https://github.com/ynotbhatc/rego_policy_libraries/blob/v2.5.0/frameworks/management/soc2/criteria/soc2_criteria.rego",
        "media-type": "text/plain"
       }
      ]
@@ -10335,7 +10364,7 @@
     },
     {
      "uuid": "eaff82c8-5e4e-5f11-8695-f5374ef94b42",
-     "title": "SOC 2 Trust Services Criteria - 12 common criteria and up to 16 optional-category criteria scored by id",
+     "title": "SOC 2 - AICPA Trust Services Criteria: per-criterion results for all 33 common criteria (CC1.1-CC9.2):",
      "props": [
       {
        "name": "rego-package",
