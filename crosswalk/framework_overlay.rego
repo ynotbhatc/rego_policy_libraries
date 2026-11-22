@@ -67,20 +67,19 @@ _coverage_for(fwmap) := {
 	"controls_total": count(fwmap),
 	"controls_satisfied": count(sat),
 } if {
-	sat := sort([fc |
+	# Sets, then sorted: a framework control mapped to several spine controls is listed once.
+	sat := sort({fc |
 		some fc
 		ctrls := fwmap[fc]
 		count(ctrls) > 0
 		every c in ctrls { _control_status[c] == "satisfied" }
-		some c in ctrls
-		_control_status[c] # at least one actually evaluated
-	])
-	gaps := sort([fc |
+	})
+	gaps := sort({fc |
 		some fc
 		ctrls := fwmap[fc]
 		some c in ctrls
 		_control_status[c] == "gap"
-	])
+	})
 
 	# not_covered: every framework control that is neither satisfied nor a gap, so the three lists always
 	# partition controls_total. That includes controls whose spine controls were never evaluated and controls
@@ -97,6 +96,31 @@ _any_evaluated(ctrls) if {
 	some c in ctrls
 	_control_status[c]
 }
+
+# Per-control evidence for a framework that inherits from the spine: the helper a framework module reads to take
+# its technical verdict from benchmark results (data.crosswalk.framework_overlay.control_evidence[<key>][<id>]).
+#   status         gap | satisfied | not_covered, by the same rules as coverage above
+#   spine          the evaluated 800-53 controls behind it, each with its status and contributing rule ids
+#   not_evaluated  the mapped 800-53 controls no supplied rule speaks to
+# Authoritative maps only. Verdicts are carried through the maps unchanged; nothing is scored or ranked.
+control_evidence[fw][fc] := ev if {
+	some fw, spec in _maps
+	spec.status == "authoritative"
+	some fc, ctrls in spec.map
+	ev := {
+		"status": _evidence_status(ctrls),
+		"spine": {c: e | some c in ctrls; e := correlation.control_evidence[c]},
+		"not_evaluated": sort({c | some c in ctrls; not _control_status[c]}),
+	}
+}
+
+_evidence_status(ctrls) := "gap" if {
+	some c in ctrls
+	_control_status[c] == "gap"
+} else := "satisfied" if {
+	count(ctrls) > 0
+	every c in ctrls { _control_status[c] == "satisfied" }
+} else := "not_covered"
 
 frameworks_reported := sort([fw | some fw; _ = coverage[fw]])
 

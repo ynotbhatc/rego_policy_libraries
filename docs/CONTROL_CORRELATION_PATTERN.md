@@ -188,6 +188,14 @@ overlay (`crosswalk/framework_overlay.rego` + `crosswalk/framework_maps/`)
 answers the next question: **which frameworks does that discharge.** Given one
 platform's findings it emits, per framework, `satisfied / gaps / not_covered`.
 
+Since 2026-11-22 a framework module can also read the spine itself. NIST SP 800-53
+(`frameworks/federal/nist/sp_800_53`) takes each control's technical verdict from
+`crosswalk.correlation.control_evidence` when its input carries benchmark results: a
+gap fails the control, a satisfied verdict is recorded without changing the status,
+and nothing is passed on benchmark evidence alone. The frameworks in
+`framework_maps` follow through `framework_overlay.control_evidence`. The input
+shape, the combination rule and the loading notes are in `crosswalk/README.md`.
+
 **Sourcing discipline (this is the part that keeps it accurate):** every
 framework map carries a `source` and a `status`. Only `status:"authoritative"`
 maps — those citing a fetchable NIST/standards-body source — are scored.
