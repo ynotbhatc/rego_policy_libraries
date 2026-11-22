@@ -23,7 +23,13 @@ import rego.v1
 
 # COBIT 2019 — Governance and Management of Enterprise I&T (ISACA)
 #
-# HONEST SCOPE — read before quoting this to anyone: COBIT is a
+# COBIT 7 — BLOCKED BY VENDOR. ISACA published COBIT 7 on 2026-11-19 and
+# requires a paid commercial licence to embed COBIT 7 content, objectives
+# or derived material in software, with no exception for free or
+# open-source use. This library is free and takes no licence that costs
+# money, so the module stays on COBIT 2019 and COBIT 7 is not planned.
+#
+# SCOPE — read before quoting this to anyone: COBIT is a
 # governance PROCESS and MATURITY framework, not a technical control
 # catalog. Most of it (capability levels, design factors, goals
 # cascade) is not machine-assessable, and no tool that claims to

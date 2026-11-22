@@ -8,6 +8,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Reviewed — COBIT 7 blocked by vendor (2026-11-22, issue #194)
+
+- ISACA requires a paid commercial licence to embed COBIT 7 content, objectives or derived material in software, with
+  no free or open-source exception. The library takes no licence that costs money, so `frameworks/management/cobit`
+  stays on COBIT 2019 and COBIT 7 is not planned; the module header, STANDARDS_UPDATE_REGISTRY.md and
+  `standards.yaml` say "blocked by vendor", and the monthly watch no longer reports COBIT 7 as newer.
+
 ### Changed — DISA STIG VMware vSphere 8.0 ESXi V2R5, MS SQL Server 2016 bundle 2026-04 (2026-11-21, issue #341)
 
 - `benchmarks/stig/vmware_vsphere_8` follows DISA's V2R5 (30 Sep 2026, bundle `U_VMW_vSphere_8-0_Y26M10`): 76 rules,
