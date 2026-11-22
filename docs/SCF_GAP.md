@@ -220,7 +220,7 @@ Profile counts in brackets are the number of SCF columns collapsed into that doc
 | Shared Assessments SIG \| 2025 | gap |  |
 | SPARTA \| 4.0 | gap |  |
 | SWIFT \| CSF \| 2025 | partial | frameworks/financial/swift_csp is v2024; SCF maps 2025 |
-| TISAX \| ISA \| 6.0.3 | covered | frameworks/management/tisax (6.0.3) |
+| TISAX \| ISA \| 6.0.3 | covered | frameworks/management/tisax (rebuilt on ISA2027.1: all 77 active controls of IS, Prototype and Data Protection; 13 from system facts, 64 attested) |
 | UL \| 2900-1 \| 2017 | gap |  |
 | UL \| 2900-2-2 \| 2016 | gap |  |
 | UN \| R155 | gap |  |

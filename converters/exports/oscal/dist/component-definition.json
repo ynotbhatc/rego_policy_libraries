@@ -558300,7 +558300,7 @@
      {
       "uuid": "4dd84aff-4c8c-5432-821c-7e4b837ca270",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/technical_debt.json",
-      "description": "Controls of technical_debt evaluated by the Rego Policy Libraries (173 controls, 1 Rego modules).",
+      "description": "Controls of technical_debt evaluated by the Rego Policy Libraries (172 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -562608,38 +562608,13 @@
           "value": "implemented"
          }
         ]
-       },
-       {
-        "uuid": "660ddff4-befc-54d6-8f67-7723410ca9b4",
-        "control-id": "technical_debt-PD",
-        "description": "Evaluated by Rego package technical_debt.scoring (frameworks/management/technical_debt/debt_scoring.rego): Implemented by a Rego rule in frameworks/management/technical_debt/debt_scoring.rego (package technical_debt.scoring); see the rule body.",
-        "props": [
-         {
-          "name": "label",
-          "value": "PD"
-         },
-         {
-          "name": "rego-package",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "technical_debt.scoring"
-         },
-         {
-          "name": "rego-file",
-          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
-          "value": "frameworks/management/technical_debt/debt_scoring.rego"
-         },
-         {
-          "name": "implementation-status",
-          "value": "implemented"
-         }
-        ]
        }
       ]
      },
      {
       "uuid": "9083e938-4a5f-5425-ba28-bf165af56f38",
       "source": "https://github.com/ynotbhatc/rego_policy_libraries/raw/v2.5.0/converters/exports/oscal/dist/catalogs/tisax.json",
-      "description": "Controls of tisax evaluated by the Rego Policy Libraries (50 controls, 1 Rego modules).",
+      "description": "Controls of tisax evaluated by the Rego Policy Libraries (77 controls, 1 Rego modules).",
       "props": [
        {
         "name": "framework",
@@ -562649,13 +562624,13 @@
       ],
       "implemented-requirements": [
        {
-        "uuid": "ac9caf20-d5d2-5adb-a7ce-979a41b0498c",
-        "control-id": "tisax-TISAX-VDA-ISA-1.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information Security Management System (ISMS) not established and maintained",
+        "uuid": "5879f50d-386a-545a-92aa-57102c09c1a6",
+        "control-id": "tisax-1.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that a management-approved set of security policies exists, is published to the people it binds and is reviewed on a set schedule",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.1.1"
+          "value": "1.1.1"
          },
          {
           "name": "rego-package",
@@ -562674,13 +562649,13 @@
         ]
        },
        {
-        "uuid": "0ce6ef29-f34d-5c8a-b609-fdabe6ad65b2",
-        "control-id": "tisax-TISAX-VDA-ISA-1.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): ISMS scope not formally defined to include automotive customer information",
+        "uuid": "b3f660cd-a7c2-5ece-909c-ee6090ee2ff2",
+        "control-id": "tisax-1.2.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that an information security management system with a defined scope is run, measured and improved",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.1.2"
+          "value": "1.2.1"
          },
          {
           "name": "rego-package",
@@ -562699,13 +562674,13 @@
         ]
        },
        {
-        "uuid": "ef29625b-14e2-5a81-9cd9-98a12a30e76d",
-        "control-id": "tisax-TISAX-VDA-ISA-1.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information security policy not documented and approved by top management",
+        "uuid": "6c594c06-a3c3-5853-93a8-91a05e67c6f6",
+        "control-id": "tisax-1.2.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that security roles are named, staffed, free of conflicting duties and known across the organisation",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.2.1"
+          "value": "1.2.2"
          },
          {
           "name": "rego-package",
@@ -562724,13 +562699,13 @@
         ]
        },
        {
-        "uuid": "47b6bba8-b84f-50f5-a385-d659ec26e923",
-        "control-id": "tisax-TISAX-VDA-ISA-1.2.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information security policies not reviewed at least annually",
+        "uuid": "f6a6e5bd-df3a-5a77-9b89-126ce878291c",
+        "control-id": "tisax-1.2.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that projects classify their information and plan security measures from the start",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.2.2"
+          "value": "1.2.3"
          },
          {
           "name": "rego-package",
@@ -562749,13 +562724,13 @@
         ]
        },
        {
-        "uuid": "6bf2cfd2-af98-52b9-8531-ab9f328491c0",
-        "control-id": "tisax-TISAX-VDA-ISA-1.3.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information security risk assessment not conducted for automotive customer data",
+        "uuid": "eff2ed36-cc3d-52d7-bc72-485f390f8188",
+        "control-id": "tisax-1.3.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that information assets and the systems holding them are listed with an owner",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.3.1"
+          "value": "1.3.1"
          },
          {
           "name": "rego-package",
@@ -562774,13 +562749,13 @@
         ]
        },
        {
-        "uuid": "0799b589-66c9-51d1-9eaf-6626cd8b6bc8",
-        "control-id": "tisax-TISAX-VDA-ISA-1.3.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Risk treatment plan not documented with accepted residual risks",
+        "uuid": "54f5316f-505b-5158-ba52-c8498af2203d",
+        "control-id": "tisax-1.3.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that assets carry a protection-need class and are handled according to it",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.3.2"
+          "value": "1.3.2"
          },
          {
           "name": "rego-package",
@@ -562799,13 +562774,13 @@
         ]
        },
        {
-        "uuid": "6abb1faa-4836-58c7-b108-1d119cac5fa5",
-        "control-id": "tisax-TISAX-VDA-ISA-1.4.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Internal ISMS audits not conducted at least annually",
+        "uuid": "ab1e30cd-a027-5be3-ba93-50c79e519acd",
+        "control-id": "tisax-1.3.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that cloud and other external IT services are vetted and approved before they process company information",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.4.1"
+          "value": "1.3.3"
          },
          {
           "name": "rego-package",
@@ -562824,13 +562799,13 @@
         ]
        },
        {
-        "uuid": "b5c9dbd1-1387-5dff-be91-4b4cf6809a94",
-        "control-id": "tisax-TISAX-VDA-ISA-1.4.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Management review of ISMS not conducted at defined intervals",
+        "uuid": "083f21be-2efe-57cf-a957-35c7bedc59fd",
+        "control-id": "tisax-1.3.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): No software outside the approved list is installed, and package signature checking is on",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.4.2"
+          "value": "1.3.4"
          },
          {
           "name": "rego-package",
@@ -562849,13 +562824,13 @@
         ]
        },
        {
-        "uuid": "9bc5f47c-0793-5787-96cd-38a289c1d89c",
-        "control-id": "tisax-TISAX-VDA-ISA-1.5.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Continual improvement process not established for the ISMS",
+        "uuid": "fb477519-a3fb-506d-b8b2-2fcf12b3b170",
+        "control-id": "tisax-1.4.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that security risks are identified, rated, owned and treated on a repeating cycle",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 1.5.1"
+          "value": "1.4.1"
          },
          {
           "name": "rego-package",
@@ -562874,13 +562849,13 @@
         ]
        },
        {
-        "uuid": "98e32b34-d31b-5467-8aca-241a11f2fd99",
-        "control-id": "tisax-TISAX-VDA-ISA-2.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Responsible person for information security not designated (CISO or equivalent)",
+        "uuid": "c0be6c5a-f5fa-5a76-87e0-16eb7654916f",
+        "control-id": "tisax-1.5.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that adherence to the security rules is checked on a plan and deviations are followed up",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.1.1"
+          "value": "1.5.1"
          },
          {
           "name": "rego-package",
@@ -562899,13 +562874,13 @@
         ]
        },
        {
-        "uuid": "dd93ebfc-5358-53e8-8ab6-43861f1f640c",
-        "control-id": "tisax-TISAX-VDA-ISA-2.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information security roles and responsibilities not defined and communicated",
+        "uuid": "03f8f79e-069b-55d8-89c4-ac77762f6bde",
+        "control-id": "tisax-1.5.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that a party independent of the ISMS reviews it at planned intervals",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.1.2"
+          "value": "1.5.2"
          },
          {
           "name": "rego-package",
@@ -562924,13 +562899,13 @@
         ]
        },
        {
-        "uuid": "2cc7cb09-0743-58dc-a4d0-e01e2decb4fd",
-        "control-id": "tisax-TISAX-VDA-ISA-2.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Confidentiality agreements not signed by personnel handling OEM sensitive information",
+        "uuid": "a90d367c-1a3a-51bd-a7d8-05e18b045e52",
+        "control-id": "tisax-1.6.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that staff and partners have a known, low-friction way to report security events",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.2.1"
+          "value": "1.6.1"
          },
          {
           "name": "rego-package",
@@ -562949,13 +562924,13 @@
         ]
        },
        {
-        "uuid": "f9a52a10-08cd-5536-b323-e9a318c9992d",
-        "control-id": "tisax-TISAX-VDA-ISA-2.2.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Security screening and onboarding process not established for new employees with sensitive access",
+        "uuid": "e759c069-7c22-5b45-80f3-ee19bda62ade",
+        "control-id": "tisax-1.6.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that reported events are triaged, handled, closed and learned from",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.2.2"
+          "value": "1.6.2"
          },
          {
           "name": "rego-package",
@@ -562974,13 +562949,13 @@
         ]
        },
        {
-        "uuid": "df41f21c-0ade-5d26-82d8-cb63fba126d7",
-        "control-id": "tisax-TISAX-VDA-ISA-2.2.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Offboarding process not established — access rights not revoked upon termination",
+        "uuid": "abca5124-f491-515d-8e2e-4c151ecfa1c1",
+        "control-id": "tisax-1.6.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that a crisis organisation, plans and exercises exist for severe disruptions",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.2.3"
+          "value": "1.6.3"
          },
          {
           "name": "rego-package",
@@ -562999,13 +562974,13 @@
         ]
        },
        {
-        "uuid": "69b75d8d-8698-5003-a3b0-68de2a70ac55",
-        "control-id": "tisax-TISAX-VDA-ISA-2.3.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Annual security awareness training not provided to all personnel handling OEM data",
+        "uuid": "878ef625-9783-52fc-a267-9aa50748984c",
+        "control-id": "tisax-2.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that people placed in sensitive roles are checked for suitability as far as law allows",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 2.3.1"
+          "value": "2.1.1"
          },
          {
           "name": "rego-package",
@@ -563024,13 +562999,13 @@
         ]
        },
        {
-        "uuid": "fb82d2ca-9def-5068-b9d3-42eefe77c44a",
-        "control-id": "tisax-TISAX-VDA-ISA-3.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Asset inventory not maintained for information assets containing OEM sensitive data",
+        "uuid": "ca9abd36-523d-555b-881d-d1c244966c32",
+        "control-id": "tisax-2.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that every employee and contractor is bound by contract to follow the security rules",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 3.1.1"
+          "value": "2.1.2"
          },
          {
           "name": "rego-package",
@@ -563049,13 +563024,13 @@
         ]
        },
        {
-        "uuid": "59493370-7846-54bf-85df-a4db67767997",
-        "control-id": "tisax-TISAX-VDA-ISA-3.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information classification scheme not established (e.g., confidential, internal, public)",
+        "uuid": "769aa94a-efb7-5fb2-9dfc-8d4a20f4e4ad",
+        "control-id": "tisax-2.1.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that staff receive security awareness and training on joining and at regular intervals",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 3.1.2"
+          "value": "2.1.3"
          },
          {
           "name": "rego-package",
@@ -563074,13 +563049,13 @@
         ]
        },
        {
-        "uuid": "62df83c3-f804-5f34-b09f-e49157f5a617",
-        "control-id": "tisax-TISAX-VDA-ISA-3.1.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): OEM-provided information not classified according to OEM classification requirements",
+        "uuid": "ac3314db-94ac-5ac9-87eb-dfe87fb32678",
+        "control-id": "tisax-2.1.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that rules for working away from company premises exist and are applied",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 3.1.3"
+          "value": "2.1.4"
          },
          {
           "name": "rego-package",
@@ -563099,13 +563074,13 @@
         ]
        },
        {
-        "uuid": "4b5df448-b8dd-57a3-ba65-16b5e0c894cf",
-        "control-id": "tisax-TISAX-VDA-ISA-3.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Removable media containing OEM sensitive data not securely handled and controlled",
+        "uuid": "d776c51a-5648-5cd2-bd87-3244289fc907",
+        "control-id": "tisax-3.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that premises are divided into zones with physical protection matched to what they hold",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 3.2.1"
+          "value": "3.1.1"
          },
          {
           "name": "rego-package",
@@ -563124,13 +563099,13 @@
         ]
        },
        {
-        "uuid": "5ec581c4-44fb-52d9-9320-0497b45b72e5",
-        "control-id": "tisax-TISAX-VDA-ISA-3.2.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Secure data destruction process not established for media containing OEM sensitive information",
+        "uuid": "4564df29-aa55-5774-812d-bee69f5aa634",
+        "control-id": "tisax-3.1.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that equipment and media supporting information are handled across their life, including secure disposal",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 3.2.2"
+          "value": "3.1.3"
          },
          {
           "name": "rego-package",
@@ -563149,13 +563124,13 @@
         ]
        },
        {
-        "uuid": "2b5bd67d-7943-5ab0-b74a-eb6184babcc9",
-        "control-id": "tisax-TISAX-VDA-ISA-4.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Physical security zones for OEM sensitive information not defined",
+        "uuid": "1b64ac53-28fe-56a6-a8c4-8d09161f4840",
+        "control-id": "tisax-3.1.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Full-disk encryption is on and removable storage is restricted on the devices in scope",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 4.1.1"
+          "value": "3.1.4"
          },
          {
           "name": "rego-package",
@@ -563174,13 +563149,13 @@
         ]
        },
        {
-        "uuid": "c1b11407-8fa3-5dfb-8b2e-3db3ae2ceade",
-        "control-id": "tisax-TISAX-VDA-ISA-4.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Physical access controls not implemented for areas containing OEM sensitive systems",
+        "uuid": "48bd5f55-2577-506c-85a3-33b354ae5a0e",
+        "control-id": "tisax-4.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that badges, tokens and similar identification means are issued, tracked and withdrawn under control",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 4.1.2"
+          "value": "4.1.1"
          },
          {
           "name": "rego-package",
@@ -563199,13 +563174,13 @@
         ]
        },
        {
-        "uuid": "326b6d67-400c-5aef-b704-78dadeb092da",
-        "control-id": "tisax-TISAX-VDA-ISA-4.1.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Visitor access to secured areas not logged and escorted",
+        "uuid": "b37b8e53-7ea1-58d3-8328-579da7577435",
+        "control-id": "tisax-4.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Privileged access needs multi-factor authentication, repeated failed logins lock out and idle sessions end within 15 minutes",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 4.1.3"
+          "value": "4.1.2"
          },
          {
           "name": "rego-package",
@@ -563224,13 +563199,13 @@
         ]
        },
        {
-        "uuid": "5fd347d3-f33e-50ac-8d89-d9320d053f18",
-        "control-id": "tisax-TISAX-VDA-ISA-4.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Clear desk and clear screen policy not established for OEM sensitive information",
+        "uuid": "65a359d6-77e5-53b9-8370-7ec1365f0fc5",
+        "control-id": "tisax-4.1.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Passwords are at least 12 characters, and there are no shared, password-less or default-credential accounts",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 4.2.1"
+          "value": "4.1.3"
          },
          {
           "name": "rego-package",
@@ -563249,13 +563224,13 @@
         ]
        },
        {
-        "uuid": "05d96826-974f-5e06-9302-d2361bd6bc53",
-        "control-id": "tisax-TISAX-VDA-ISA-5.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Network not segmented to separate OEM sensitive systems from general IT",
+        "uuid": "cf2a7ac2-145b-5ad9-9a04-ae80da1b3a7f",
+        "control-id": "tisax-4.2.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): No privileged account lacks approval, direct remote root login is refused and dormant accounts are disabled",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.1.1"
+          "value": "4.2.1"
          },
          {
           "name": "rego-package",
@@ -563274,13 +563249,13 @@
         ]
        },
        {
-        "uuid": "dacc99e9-2a5c-5522-945f-a58bf1e1796a",
-        "control-id": "tisax-TISAX-VDA-ISA-5.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): OEM sensitive data not encrypted at rest on storage systems",
+        "uuid": "4014ec54-0150-5a44-b593-dfa2922776f8",
+        "control-id": "tisax-5.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): The system-wide crypto policy is an approved one and weak algorithms are not allowed",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.1.2"
+          "value": "5.1.1"
          },
          {
           "name": "rego-package",
@@ -563299,13 +563274,13 @@
         ]
        },
        {
-        "uuid": "5ef06e03-4f0d-572c-ada0-09329a0c12ff",
-        "control-id": "tisax-TISAX-VDA-ISA-5.1.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): OEM sensitive data not encrypted in transit (TLS 1.2+ required)",
+        "uuid": "5568ab7a-c9d2-5710-b0f4-e1eb884345ef",
+        "control-id": "tisax-5.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): TLS 1.2 or later is the minimum and no clear-text network services are enabled",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.1.3"
+          "value": "5.1.2"
          },
          {
           "name": "rego-package",
@@ -563324,13 +563299,13 @@
         ]
        },
        {
-        "uuid": "2a23ae2c-f9e2-5a92-a7ca-2cc85746d5e7",
-        "control-id": "tisax-TISAX-VDA-ISA-5.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Regular vulnerability scanning not performed on systems processing OEM data",
+        "uuid": "ea5ef120-cbf4-5ec0-89be-adb7db118aa7",
+        "control-id": "tisax-5.2.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that changes to systems are requested, assessed, approved and recorded",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.2.1"
+          "value": "5.2.1"
          },
          {
           "name": "rego-package",
@@ -563349,13 +563324,13 @@
         ]
        },
        {
-        "uuid": "ffbffe7a-3d52-5064-bc91-3ebf486c7a25",
-        "control-id": "tisax-TISAX-VDA-ISA-5.2.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Timely patching of systems processing OEM sensitive data not implemented",
+        "uuid": "40a06dd4-e34c-56b4-8e5b-23312811a1d2",
+        "control-id": "tisax-5.2.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that development and test run apart from production",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.2.2"
+          "value": "5.2.2"
          },
          {
           "name": "rego-package",
@@ -563374,13 +563349,13 @@
         ]
        },
        {
-        "uuid": "32d96ec1-90c5-513f-a7f9-870d3cfa258a",
-        "control-id": "tisax-TISAX-VDA-ISA-5.3.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Malware protection not deployed on all systems processing OEM data",
+        "uuid": "a6b3a382-3389-5554-952e-c8220ecc45f4",
+        "control-id": "tisax-5.2.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): An anti-malware agent runs with on-access scanning and signatures at most 7 days old",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.3.1"
+          "value": "5.2.3"
          },
          {
           "name": "rego-package",
@@ -563399,13 +563374,13 @@
         ]
        },
        {
-        "uuid": "b414c097-fd50-5e59-8b45-6fac2d3c111d",
-        "control-id": "tisax-TISAX-VDA-ISA-5.4.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Backup procedures for OEM data not established and regularly tested",
+        "uuid": "05fb77f4-9173-5180-ac29-395c280011f9",
+        "control-id": "tisax-5.2.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): The audit daemon runs, logs are forwarded to central collection and the clock is synchronised",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.4.1"
+          "value": "5.2.4"
          },
          {
           "name": "rego-package",
@@ -563424,13 +563399,13 @@
         ]
        },
        {
-        "uuid": "6a2faa28-9dc1-549d-9379-2cd91e8fd9bb",
-        "control-id": "tisax-TISAX-VDA-ISA-5.5.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Formal change management process not established for systems processing OEM data",
+        "uuid": "5dc5a06e-cd1c-5483-8994-7524f4612c7e",
+        "control-id": "tisax-5.2.5",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): A vulnerability scan ran within 30 days and no critical finding is past its fix date",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.5.1"
+          "value": "5.2.5"
          },
          {
           "name": "rego-package",
@@ -563449,13 +563424,13 @@
         ]
        },
        {
-        "uuid": "13c46f15-40af-532b-9e5d-c2da234e0f71",
-        "control-id": "tisax-TISAX-VDA-ISA-5.6.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Penetration testing not conducted to verify security of OEM data systems",
+        "uuid": "10955208-145c-5f18-a991-3812d259ec49",
+        "control-id": "tisax-5.2.6",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): A technical security test ran within 365 days and no high finding from it is past its fix date",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 5.6.1"
+          "value": "5.2.6"
          },
          {
           "name": "rego-package",
@@ -563474,13 +563449,13 @@
         ]
        },
        {
-        "uuid": "c9597df0-0168-59ea-9c45-2f395efb02f7",
-        "control-id": "tisax-TISAX-VDA-ISA-6.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Least privilege not enforced for access to OEM sensitive information",
+        "uuid": "713857a0-1f5e-52ab-bf6c-f566c5784e46",
+        "control-id": "tisax-5.2.7",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): A host firewall is on and denies inbound traffic by default",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.1.1"
+          "value": "5.2.7"
          },
          {
           "name": "rego-package",
@@ -563499,13 +563474,13 @@
         ]
        },
        {
-        "uuid": "4c6e6b3f-1c2d-5fc6-9a70-e5cf3189d875",
-        "control-id": "tisax-TISAX-VDA-ISA-6.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Access to OEM sensitive data not restricted on need-to-know basis",
+        "uuid": "1cfc8166-2aa5-5007-acdc-c304a7dc5940",
+        "control-id": "tisax-5.2.8",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that continuity plans for critical IT services exist and are exercised",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.1.2"
+          "value": "5.2.8"
          },
          {
           "name": "rego-package",
@@ -563524,13 +563499,13 @@
         ]
        },
        {
-        "uuid": "0b62d061-5858-57ec-bfc3-9795bb6ac02a",
-        "control-id": "tisax-TISAX-VDA-ISA-6.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Strong authentication not enforced for access to OEM sensitive systems",
+        "uuid": "de38ed21-8f0a-5180-a832-8a6f8027e4b3",
+        "control-id": "tisax-5.2.9",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Backups are configured, the last good backup is at most 7 days old and a restore was tested within 365 days",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.2.1"
+          "value": "5.2.9"
          },
          {
           "name": "rego-package",
@@ -563549,13 +563524,13 @@
         ]
        },
        {
-        "uuid": "a9ce2a8c-54f0-5257-96a9-90cff33a26d3",
-        "control-id": "tisax-TISAX-VDA-ISA-6.2.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Privileged access to OEM data systems not managed through formal process",
+        "uuid": "78c7fcd3-285d-5cb6-bfa4-3d8eaf9c652d",
+        "control-id": "tisax-5.3.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that security requirements are set and verified when IT services are built or changed",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.2.2"
+          "value": "5.3.1"
          },
          {
           "name": "rego-package",
@@ -563574,13 +563549,13 @@
         ]
        },
        {
-        "uuid": "bd767df2-eb87-5b0d-9969-73cff58dc81f",
-        "control-id": "tisax-TISAX-VDA-ISA-6.3.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): MFA not enforced for remote access to systems containing OEM data",
+        "uuid": "cb89d7c5-3966-5806-aea2-fbd3fb313ce9",
+        "control-id": "tisax-5.3.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that security requirements for network services are written down and agreed with providers",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.3.1"
+          "value": "5.3.2"
          },
          {
           "name": "rego-package",
@@ -563599,13 +563574,13 @@
         ]
        },
        {
-        "uuid": "0edfa45b-1726-50eb-8a44-598d87dd5075",
-        "control-id": "tisax-TISAX-VDA-ISA-6.4.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Periodic review of access rights to OEM sensitive data not conducted",
+        "uuid": "1ab75251-e16a-5c52-aeb6-98305f96b05d",
+        "control-id": "tisax-5.3.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that leaving an external IT service returns the data and removes it from the provider",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 6.4.1"
+          "value": "5.3.3"
          },
          {
           "name": "rego-package",
@@ -563624,13 +563599,13 @@
         ]
        },
        {
-        "uuid": "9889cd85-0495-52c2-92b1-5dcdd441daa8",
-        "control-id": "tisax-TISAX-VDA-ISA-7.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Security evaluation not performed for third parties accessing OEM sensitive information",
+        "uuid": "b9991ad7-45de-5c65-9602-bc7cc37101f1",
+        "control-id": "tisax-5.3.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that information in multi-tenant external services is protected from other tenants",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 7.1.1"
+          "value": "5.3.4"
          },
          {
           "name": "rego-package",
@@ -563649,13 +563624,13 @@
         ]
        },
        {
-        "uuid": "0e52c413-28eb-5ff1-a9c7-2330c1a268df",
-        "control-id": "tisax-TISAX-VDA-ISA-7.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Security requirements not included in contracts with third parties handling OEM data",
+        "uuid": "be521e04-7279-5110-844b-35a20641e5c9",
+        "control-id": "tisax-6.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that contractors and partners are held to security requirements matched to the information they handle",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 7.1.2"
+          "value": "6.1.1"
          },
          {
           "name": "rego-package",
@@ -563674,13 +563649,13 @@
         ]
        },
        {
-        "uuid": "9199cd93-2fb0-5a63-a54c-fe007e6099e1",
-        "control-id": "tisax-TISAX-VDA-ISA-7.1.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Subcontractors handling OEM data not required to meet TISAX or equivalent security standard",
+        "uuid": "d496a67b-64f0-5082-a837-dd4a41b6e953",
+        "control-id": "tisax-6.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that confidentiality is agreed in writing before sensitive information is exchanged",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 7.1.3"
+          "value": "6.1.2"
          },
          {
           "name": "rego-package",
@@ -563699,13 +563674,13 @@
         ]
        },
        {
-        "uuid": "6c2173f1-1b7a-5afe-9454-50df9eb94142",
-        "control-id": "tisax-TISAX-VDA-ISA-7.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Security assessment not performed before storing OEM sensitive data in cloud environments",
+        "uuid": "0ac79b99-3974-5652-be70-4b656126bde3",
+        "control-id": "tisax-6.1.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that the security duties of each external IT service provider and of the organisation are defined",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 7.2.1"
+          "value": "6.1.3"
          },
          {
           "name": "rego-package",
@@ -563724,13 +563699,13 @@
         ]
        },
        {
-        "uuid": "9b63204d-7b29-5550-911e-e5d310778c96",
-        "control-id": "tisax-TISAX-VDA-ISA-8.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Information security incident management plan not documented",
+        "uuid": "7c73d71f-53b7-5d24-959d-fdec8d9ce756",
+        "control-id": "tisax-7.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that applicable laws and contract terms are tracked and met",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 8.1.1"
+          "value": "7.1.1"
          },
          {
           "name": "rego-package",
@@ -563749,13 +563724,13 @@
         ]
        },
        {
-        "uuid": "89443699-a6b0-5044-8d4d-1eadfe27588d",
-        "control-id": "tisax-TISAX-VDA-ISA-8.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Process not established to notify OEM customers of security incidents affecting their data",
+        "uuid": "d87a438a-e9ee-528e-ae32-43b59c6ceb65",
+        "control-id": "tisax-7.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that privacy rules are respected when security measures process personal data",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 8.1.2"
+          "value": "7.1.2"
          },
          {
           "name": "rego-package",
@@ -563774,13 +563749,13 @@
         ]
        },
        {
-        "uuid": "08913c79-a55b-50de-97b9-4474a5d62486",
-        "control-id": "tisax-TISAX-VDA-ISA-8.1.3",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Incident management plan not periodically tested",
+        "uuid": "955f024d-5de3-5826-bb66-af1e81bbf725",
+        "control-id": "tisax-8.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that prototype protection rules exist and named people are responsible for them",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 8.1.3"
+          "value": "8.1.1"
          },
          {
           "name": "rego-package",
@@ -563799,13 +563774,13 @@
         ]
        },
        {
-        "uuid": "28b1fe93-a4f8-5c22-8668-3b90332f04ce",
-        "control-id": "tisax-TISAX-VDA-ISA-9.1.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Legal, regulatory, and contractual information security requirements not identified",
+        "uuid": "b845631e-e170-5d64-a00e-89e9114a5203",
+        "control-id": "tisax-8.1.10",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that taking prototype images and storing or sharing them is governed",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 9.1.1"
+          "value": "8.1.10"
          },
          {
           "name": "rego-package",
@@ -563824,13 +563799,13 @@
         ]
        },
        {
-        "uuid": "c1146397-ef73-5211-b376-74b1ea23d3c4",
-        "control-id": "tisax-TISAX-VDA-ISA-9.1.2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): OEM-specific information security contractual requirements not fully implemented",
+        "uuid": "60497e4e-c6e9-5e0f-bdf7-934ae24d4c89",
+        "control-id": "tisax-8.1.11",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that prototype security incidents are reported to the customer and handled as agreed",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 9.1.2"
+          "value": "8.1.11"
          },
          {
           "name": "rego-package",
@@ -563849,13 +563824,13 @@
         ]
        },
        {
-        "uuid": "78c4e662-ce1a-5407-8449-0a4a4b19c95c",
-        "control-id": "tisax-TISAX-VDA-ISA-9.2.1",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Audit trail not maintained for access to and processing of OEM sensitive data",
+        "uuid": "b255e5da-b141-5a10-a7ad-518033c2dcb1",
+        "control-id": "tisax-8.1.12",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that protected vehicles and parts are documented and traceable through every handling step",
         "props": [
          {
           "name": "label",
-          "value": "TISAX VDA ISA 9.2.1"
+          "value": "8.1.12"
          },
          {
           "name": "rego-package",
@@ -563874,13 +563849,688 @@
         ]
        },
        {
-        "uuid": "db96d4c9-4319-5f3b-a069-ac44efb9eb0b",
-        "control-id": "tisax-TISAX-PD-AL2",
-        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Prototype handling procedures not documented — physical protection of pre-series vehicles not defined",
+        "uuid": "ea08fc5f-7dce-592c-b190-9860ea088d4a",
+        "control-id": "tisax-8.1.13",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that protected items no longer needed are scrapped, recycled or returned as the customer requires",
         "props": [
          {
           "name": "label",
-          "value": "TISAX PD AL2"
+          "value": "8.1.13"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "a5c4413d-50c4-5e9e-ab00-829dd2029ccd",
+        "control-id": "tisax-8.1.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that each customer order's prototype handling terms are captured and applied",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "596cf94b-d616-5b4a-ae66-757f44039c13",
+        "control-id": "tisax-8.1.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that everyone on prototype work takes part in recorded prototype awareness training",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "6180739f-b2d6-5e4c-a294-b1e00dbcbf0a",
+        "control-id": "tisax-8.1.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that people working in prototype areas are checked for suitability",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f61a5b56-e2fd-5a16-b544-f4985ce77b7b",
+        "control-id": "tisax-8.1.5",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that valid, enforceable confidentiality obligations cover prototype work",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3ef6816e-33b0-5690-84da-b42b01f64e09",
+        "control-id": "tisax-8.1.6",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that customer conditions for using subcontractors are known and met",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "703101ee-4d8e-522a-9854-6d9cf191a879",
+        "control-id": "tisax-8.1.7",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that admission to prototype security areas follows a defined approval process",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8f1dde64-3cc0-53df-9ed5-79ba79737ea1",
+        "control-id": "tisax-8.1.8",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that visitors are registered and escorted in prototype areas",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.8"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "8b4f6ea4-b361-51bc-8f71-905a9940ec00",
+        "control-id": "tisax-8.1.9",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that bringing and using camera-equipped devices in security areas is governed",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.1.9"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ed12ebb2-b5b7-540f-af0f-53c2f58a03fe",
+        "control-id": "tisax-8.2.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that a written physical security concept for prototype sites sets the minimum measures",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "953bf13d-b04a-55a2-916b-96fa6951f563",
+        "control-id": "tisax-8.2.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that the site perimeter keeps unauthorised people away from protected property",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "2f595e6c-3ae2-5a28-af75-d3a211603a31",
+        "control-id": "tisax-8.2.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that the shell of security areas resists opening or removal of parts with ordinary tools",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "fd1b0975-8363-5fad-8644-74d5522b30a0",
+        "control-id": "tisax-8.2.4",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that protected items cannot be seen from outside the security areas",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.4"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c64e5fac-1130-5cf6-84e9-145545429b13",
+        "control-id": "tisax-8.2.5",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that entry to security areas is enforced by access control",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.5"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "42720998-3f99-5464-ae71-9ef7afbf085c",
+        "control-id": "tisax-8.2.6",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that security areas are watched by intrusion detection with a defined response",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.6"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "60c4b9d8-649e-55dd-9e88-ccbd98a04e44",
+        "control-id": "tisax-8.2.7",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that different customers' prototypes on one site are kept apart",
+        "props": [
+         {
+          "name": "label",
+          "value": "8.2.7"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "3d21ba3c-93b4-5521-b75e-11bf87148d66",
+        "control-id": "tisax-9.1.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that data protection policies exist, are approved and are kept current",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.1.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "c28547a8-335e-5cda-83a9-0dc31faee732",
+        "control-id": "tisax-9.2.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that data protection roles, including a data protection officer where required, are assigned",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.2.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f81bb9fa-2f3a-5929-b445-684bc64a03eb",
+        "control-id": "tisax-9.3.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that processing activities are identified and kept in a current record",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.3.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "f38cdd9c-89f5-58a7-94b0-75439698427a",
+        "control-id": "tisax-9.4.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that high-risk processing is assessed before it starts and the result is acted on",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.4.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "38e852c9-01c4-5813-ae26-ed244895c7d2",
+        "control-id": "tisax-9.5.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that transfers of personal data are known, lawful and controlled",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.5.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "836e4ab2-fae5-5038-ba94-f4cfac3e1019",
+        "control-id": "tisax-9.5.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that data protection terms flow down to subcontractors and partners and are checked",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.5.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "5696ab8e-ad9e-5c25-8008-2818288f4031",
+        "control-id": "tisax-9.5.3",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that transfers outside the home jurisdiction have a legal basis and safeguards",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.5.3"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1ac7ad52-bdab-5bf4-a3cf-17cc8cf43965",
+        "control-id": "tisax-9.6.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that requests from data subjects are recognised, answered and recorded in time",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.6.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "03079f1f-4877-50b8-b53d-743e8405637f",
+        "control-id": "tisax-9.6.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that personal data breaches are assessed, notified where required and recorded",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.6.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "ca3856c8-70d9-565e-b87b-f24b2f9d3497",
+        "control-id": "tisax-9.7.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that staff handling personal data are bound to confidentiality",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.7.1"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "1b25cb3d-aad4-5747-a407-31070b6579bf",
+        "control-id": "tisax-9.7.2",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that staff handling personal data are trained in data protection",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.7.2"
+         },
+         {
+          "name": "rego-package",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "tisax.main"
+         },
+         {
+          "name": "rego-file",
+          "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+          "value": "frameworks/management/tisax/tisax_main.rego"
+         },
+         {
+          "name": "implementation-status",
+          "value": "implemented"
+         }
+        ]
+       },
+       {
+        "uuid": "d6c88758-5288-516b-9477-780e645f34db",
+        "control-id": "tisax-9.8.1",
+        "description": "Evaluated by Rego package tisax.main (frameworks/management/tisax/tisax_main.rego): Attest that processing done for a customer follows that customer's documented instructions",
+        "props": [
+         {
+          "name": "label",
+          "value": "9.8.1"
          },
          {
           "name": "rego-package",

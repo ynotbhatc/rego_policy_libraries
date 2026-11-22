@@ -2,7 +2,7 @@
  "catalog": {
   "uuid": "8c6d833f-216a-51a5-877d-9af70b637cbe",
   "metadata": {
-   "title": "Rego Policy Libraries — tisax (TISAX — Trusted Information Security Assessment Exchange)",
+   "title": "Rego Policy Libraries — tisax (TISAX — VDA ISA2027.1 (Information Security, Prototype Protection, Data Protection))",
    "last-modified": "2026-11-13T00:00:00Z",
    "version": "2.5.0",
    "oscal-version": "1.2.3",
@@ -46,7 +46,7 @@
    {
     "id": "tisax-tisax_main",
     "class": "rego-module",
-    "title": "TISAX — Trusted Information Security Assessment Exchange",
+    "title": "TISAX — VDA ISA2027.1 (Information Security, Prototype Protection, Data Protection)",
     "props": [
      {
       "name": "rego-package",
@@ -66,16 +66,16 @@
     ],
     "controls": [
      {
-      "id": "tisax-TISAX-VDA-ISA-1.1.1",
-      "title": "Information Security Management System (ISMS) not established and maintained",
+      "id": "tisax-1.1.1",
+      "title": "Attest that a management-approved set of security policies exists, is published to the people it binds and is reviewed on a set schedule",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.1.1"
+        "value": "1.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.1.1"
+        "value": "1.1.1"
        },
        {
         "name": "rego-package",
@@ -91,24 +91,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.1.1_stmt",
+        "id": "tisax-1.1.1_stmt",
         "name": "statement",
-        "prose": "Information Security Management System (ISMS) not established and maintained"
+        "prose": "Attest that a management-approved set of security policies exists, is published to the people it binds and is reviewed on a set schedule"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.1.2",
-      "title": "ISMS scope not formally defined to include automotive customer information",
+      "id": "tisax-1.2.1",
+      "title": "Attest that an information security management system with a defined scope is run, measured and improved",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.1.2"
+        "value": "1.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.1.2"
+        "value": "1.2.1"
        },
        {
         "name": "rego-package",
@@ -124,24 +124,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.1.2_stmt",
+        "id": "tisax-1.2.1_stmt",
         "name": "statement",
-        "prose": "ISMS scope not formally defined to include automotive customer information"
+        "prose": "Attest that an information security management system with a defined scope is run, measured and improved"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.2.1",
-      "title": "Information security policy not documented and approved by top management",
+      "id": "tisax-1.2.2",
+      "title": "Attest that security roles are named, staffed, free of conflicting duties and known across the organisation",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.2.1"
+        "value": "1.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.2.1"
+        "value": "1.2.2"
        },
        {
         "name": "rego-package",
@@ -157,24 +157,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.2.1_stmt",
+        "id": "tisax-1.2.2_stmt",
         "name": "statement",
-        "prose": "Information security policy not documented and approved by top management"
+        "prose": "Attest that security roles are named, staffed, free of conflicting duties and known across the organisation"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.2.2",
-      "title": "Information security policies not reviewed at least annually",
+      "id": "tisax-1.2.3",
+      "title": "Attest that projects classify their information and plan security measures from the start",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.2.2"
+        "value": "1.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.2.2"
+        "value": "1.2.3"
        },
        {
         "name": "rego-package",
@@ -190,24 +190,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.2.2_stmt",
+        "id": "tisax-1.2.3_stmt",
         "name": "statement",
-        "prose": "Information security policies not reviewed at least annually"
+        "prose": "Attest that projects classify their information and plan security measures from the start"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.3.1",
-      "title": "Information security risk assessment not conducted for automotive customer data",
+      "id": "tisax-1.3.1",
+      "title": "Attest that information assets and the systems holding them are listed with an owner",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.3.1"
+        "value": "1.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.3.1"
+        "value": "1.3.1"
        },
        {
         "name": "rego-package",
@@ -223,24 +223,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.3.1_stmt",
+        "id": "tisax-1.3.1_stmt",
         "name": "statement",
-        "prose": "Information security risk assessment not conducted for automotive customer data"
+        "prose": "Attest that information assets and the systems holding them are listed with an owner"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.3.2",
-      "title": "Risk treatment plan not documented with accepted residual risks",
+      "id": "tisax-1.3.2",
+      "title": "Attest that assets carry a protection-need class and are handled according to it",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.3.2"
+        "value": "1.3.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.3.2"
+        "value": "1.3.2"
        },
        {
         "name": "rego-package",
@@ -256,24 +256,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.3.2_stmt",
+        "id": "tisax-1.3.2_stmt",
         "name": "statement",
-        "prose": "Risk treatment plan not documented with accepted residual risks"
+        "prose": "Attest that assets carry a protection-need class and are handled according to it"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.4.1",
-      "title": "Internal ISMS audits not conducted at least annually",
+      "id": "tisax-1.3.3",
+      "title": "Attest that cloud and other external IT services are vetted and approved before they process company information",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.4.1"
+        "value": "1.3.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.4.1"
+        "value": "1.3.3"
        },
        {
         "name": "rego-package",
@@ -289,24 +289,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.4.1_stmt",
+        "id": "tisax-1.3.3_stmt",
         "name": "statement",
-        "prose": "Internal ISMS audits not conducted at least annually"
+        "prose": "Attest that cloud and other external IT services are vetted and approved before they process company information"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.4.2",
-      "title": "Management review of ISMS not conducted at defined intervals",
+      "id": "tisax-1.3.4",
+      "title": "No software outside the approved list is installed, and package signature checking is on",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.4.2"
+        "value": "1.3.4"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.4.2"
+        "value": "1.3.4"
        },
        {
         "name": "rego-package",
@@ -322,24 +322,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.4.2_stmt",
+        "id": "tisax-1.3.4_stmt",
         "name": "statement",
-        "prose": "Management review of ISMS not conducted at defined intervals"
+        "prose": "No software outside the approved list is installed, and package signature checking is on"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-1.5.1",
-      "title": "Continual improvement process not established for the ISMS",
+      "id": "tisax-1.4.1",
+      "title": "Attest that security risks are identified, rated, owned and treated on a repeating cycle",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 1.5.1"
+        "value": "1.4.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 1.5.1"
+        "value": "1.4.1"
        },
        {
         "name": "rego-package",
@@ -355,24 +355,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-1.5.1_stmt",
+        "id": "tisax-1.4.1_stmt",
         "name": "statement",
-        "prose": "Continual improvement process not established for the ISMS"
+        "prose": "Attest that security risks are identified, rated, owned and treated on a repeating cycle"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.1.1",
-      "title": "Responsible person for information security not designated (CISO or equivalent)",
+      "id": "tisax-1.5.1",
+      "title": "Attest that adherence to the security rules is checked on a plan and deviations are followed up",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.1.1"
+        "value": "1.5.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.1.1"
+        "value": "1.5.1"
        },
        {
         "name": "rego-package",
@@ -388,24 +388,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.1.1_stmt",
+        "id": "tisax-1.5.1_stmt",
         "name": "statement",
-        "prose": "Responsible person for information security not designated (CISO or equivalent)"
+        "prose": "Attest that adherence to the security rules is checked on a plan and deviations are followed up"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.1.2",
-      "title": "Information security roles and responsibilities not defined and communicated",
+      "id": "tisax-1.5.2",
+      "title": "Attest that a party independent of the ISMS reviews it at planned intervals",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.1.2"
+        "value": "1.5.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.1.2"
+        "value": "1.5.2"
        },
        {
         "name": "rego-package",
@@ -421,24 +421,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.1.2_stmt",
+        "id": "tisax-1.5.2_stmt",
         "name": "statement",
-        "prose": "Information security roles and responsibilities not defined and communicated"
+        "prose": "Attest that a party independent of the ISMS reviews it at planned intervals"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.2.1",
-      "title": "Confidentiality agreements not signed by personnel handling OEM sensitive information",
+      "id": "tisax-1.6.1",
+      "title": "Attest that staff and partners have a known, low-friction way to report security events",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.2.1"
+        "value": "1.6.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.2.1"
+        "value": "1.6.1"
        },
        {
         "name": "rego-package",
@@ -454,24 +454,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.2.1_stmt",
+        "id": "tisax-1.6.1_stmt",
         "name": "statement",
-        "prose": "Confidentiality agreements not signed by personnel handling OEM sensitive information"
+        "prose": "Attest that staff and partners have a known, low-friction way to report security events"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.2.2",
-      "title": "Security screening and onboarding process not established for new employees with sensitive access",
+      "id": "tisax-1.6.2",
+      "title": "Attest that reported events are triaged, handled, closed and learned from",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.2.2"
+        "value": "1.6.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.2.2"
+        "value": "1.6.2"
        },
        {
         "name": "rego-package",
@@ -487,24 +487,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.2.2_stmt",
+        "id": "tisax-1.6.2_stmt",
         "name": "statement",
-        "prose": "Security screening and onboarding process not established for new employees with sensitive access"
+        "prose": "Attest that reported events are triaged, handled, closed and learned from"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.2.3",
-      "title": "Offboarding process not established — access rights not revoked upon termination",
+      "id": "tisax-1.6.3",
+      "title": "Attest that a crisis organisation, plans and exercises exist for severe disruptions",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.2.3"
+        "value": "1.6.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.2.3"
+        "value": "1.6.3"
        },
        {
         "name": "rego-package",
@@ -520,24 +520,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.2.3_stmt",
+        "id": "tisax-1.6.3_stmt",
         "name": "statement",
-        "prose": "Offboarding process not established — access rights not revoked upon termination"
+        "prose": "Attest that a crisis organisation, plans and exercises exist for severe disruptions"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-2.3.1",
-      "title": "Annual security awareness training not provided to all personnel handling OEM data",
+      "id": "tisax-2.1.1",
+      "title": "Attest that people placed in sensitive roles are checked for suitability as far as law allows",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 2.3.1"
+        "value": "2.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 2.3.1"
+        "value": "2.1.1"
        },
        {
         "name": "rego-package",
@@ -553,24 +553,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-2.3.1_stmt",
+        "id": "tisax-2.1.1_stmt",
         "name": "statement",
-        "prose": "Annual security awareness training not provided to all personnel handling OEM data"
+        "prose": "Attest that people placed in sensitive roles are checked for suitability as far as law allows"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-3.1.1",
-      "title": "Asset inventory not maintained for information assets containing OEM sensitive data",
+      "id": "tisax-2.1.2",
+      "title": "Attest that every employee and contractor is bound by contract to follow the security rules",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 3.1.1"
+        "value": "2.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 3.1.1"
+        "value": "2.1.2"
        },
        {
         "name": "rego-package",
@@ -586,24 +586,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-3.1.1_stmt",
+        "id": "tisax-2.1.2_stmt",
         "name": "statement",
-        "prose": "Asset inventory not maintained for information assets containing OEM sensitive data"
+        "prose": "Attest that every employee and contractor is bound by contract to follow the security rules"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-3.1.2",
-      "title": "Information classification scheme not established (e.g., confidential, internal, public)",
+      "id": "tisax-2.1.3",
+      "title": "Attest that staff receive security awareness and training on joining and at regular intervals",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 3.1.2"
+        "value": "2.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 3.1.2"
+        "value": "2.1.3"
        },
        {
         "name": "rego-package",
@@ -619,24 +619,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-3.1.2_stmt",
+        "id": "tisax-2.1.3_stmt",
         "name": "statement",
-        "prose": "Information classification scheme not established (e.g., confidential, internal, public)"
+        "prose": "Attest that staff receive security awareness and training on joining and at regular intervals"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-3.1.3",
-      "title": "OEM-provided information not classified according to OEM classification requirements",
+      "id": "tisax-2.1.4",
+      "title": "Attest that rules for working away from company premises exist and are applied",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 3.1.3"
+        "value": "2.1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 3.1.3"
+        "value": "2.1.4"
        },
        {
         "name": "rego-package",
@@ -652,24 +652,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-3.1.3_stmt",
+        "id": "tisax-2.1.4_stmt",
         "name": "statement",
-        "prose": "OEM-provided information not classified according to OEM classification requirements"
+        "prose": "Attest that rules for working away from company premises exist and are applied"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-3.2.1",
-      "title": "Removable media containing OEM sensitive data not securely handled and controlled",
+      "id": "tisax-3.1.1",
+      "title": "Attest that premises are divided into zones with physical protection matched to what they hold",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 3.2.1"
+        "value": "3.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 3.2.1"
+        "value": "3.1.1"
        },
        {
         "name": "rego-package",
@@ -685,24 +685,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-3.2.1_stmt",
+        "id": "tisax-3.1.1_stmt",
         "name": "statement",
-        "prose": "Removable media containing OEM sensitive data not securely handled and controlled"
+        "prose": "Attest that premises are divided into zones with physical protection matched to what they hold"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-3.2.2",
-      "title": "Secure data destruction process not established for media containing OEM sensitive information",
+      "id": "tisax-3.1.3",
+      "title": "Attest that equipment and media supporting information are handled across their life, including secure disposal",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 3.2.2"
+        "value": "3.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 3.2.2"
+        "value": "3.1.3"
        },
        {
         "name": "rego-package",
@@ -718,24 +718,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-3.2.2_stmt",
+        "id": "tisax-3.1.3_stmt",
         "name": "statement",
-        "prose": "Secure data destruction process not established for media containing OEM sensitive information"
+        "prose": "Attest that equipment and media supporting information are handled across their life, including secure disposal"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-4.1.1",
-      "title": "Physical security zones for OEM sensitive information not defined",
+      "id": "tisax-3.1.4",
+      "title": "Full-disk encryption is on and removable storage is restricted on the devices in scope",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 4.1.1"
+        "value": "3.1.4"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 4.1.1"
+        "value": "3.1.4"
        },
        {
         "name": "rego-package",
@@ -751,24 +751,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-4.1.1_stmt",
+        "id": "tisax-3.1.4_stmt",
         "name": "statement",
-        "prose": "Physical security zones for OEM sensitive information not defined"
+        "prose": "Full-disk encryption is on and removable storage is restricted on the devices in scope"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-4.1.2",
-      "title": "Physical access controls not implemented for areas containing OEM sensitive systems",
+      "id": "tisax-4.1.1",
+      "title": "Attest that badges, tokens and similar identification means are issued, tracked and withdrawn under control",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 4.1.2"
+        "value": "4.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 4.1.2"
+        "value": "4.1.1"
        },
        {
         "name": "rego-package",
@@ -784,24 +784,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-4.1.2_stmt",
+        "id": "tisax-4.1.1_stmt",
         "name": "statement",
-        "prose": "Physical access controls not implemented for areas containing OEM sensitive systems"
+        "prose": "Attest that badges, tokens and similar identification means are issued, tracked and withdrawn under control"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-4.1.3",
-      "title": "Visitor access to secured areas not logged and escorted",
+      "id": "tisax-4.1.2",
+      "title": "Privileged access needs multi-factor authentication, repeated failed logins lock out and idle sessions end within 15 minutes",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 4.1.3"
+        "value": "4.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 4.1.3"
+        "value": "4.1.2"
        },
        {
         "name": "rego-package",
@@ -817,24 +817,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-4.1.3_stmt",
+        "id": "tisax-4.1.2_stmt",
         "name": "statement",
-        "prose": "Visitor access to secured areas not logged and escorted"
+        "prose": "Privileged access needs multi-factor authentication, repeated failed logins lock out and idle sessions end within 15 minutes"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-4.2.1",
-      "title": "Clear desk and clear screen policy not established for OEM sensitive information",
+      "id": "tisax-4.1.3",
+      "title": "Passwords are at least 12 characters, and there are no shared, password-less or default-credential accounts",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 4.2.1"
+        "value": "4.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 4.2.1"
+        "value": "4.1.3"
        },
        {
         "name": "rego-package",
@@ -850,24 +850,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-4.2.1_stmt",
+        "id": "tisax-4.1.3_stmt",
         "name": "statement",
-        "prose": "Clear desk and clear screen policy not established for OEM sensitive information"
+        "prose": "Passwords are at least 12 characters, and there are no shared, password-less or default-credential accounts"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.1.1",
-      "title": "Network not segmented to separate OEM sensitive systems from general IT",
+      "id": "tisax-4.2.1",
+      "title": "No privileged account lacks approval, direct remote root login is refused and dormant accounts are disabled",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.1.1"
+        "value": "4.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.1.1"
+        "value": "4.2.1"
        },
        {
         "name": "rego-package",
@@ -883,24 +883,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.1.1_stmt",
+        "id": "tisax-4.2.1_stmt",
         "name": "statement",
-        "prose": "Network not segmented to separate OEM sensitive systems from general IT"
+        "prose": "No privileged account lacks approval, direct remote root login is refused and dormant accounts are disabled"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.1.2",
-      "title": "OEM sensitive data not encrypted at rest on storage systems",
+      "id": "tisax-5.1.1",
+      "title": "The system-wide crypto policy is an approved one and weak algorithms are not allowed",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.1.2"
+        "value": "5.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.1.2"
+        "value": "5.1.1"
        },
        {
         "name": "rego-package",
@@ -916,24 +916,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.1.2_stmt",
+        "id": "tisax-5.1.1_stmt",
         "name": "statement",
-        "prose": "OEM sensitive data not encrypted at rest on storage systems"
+        "prose": "The system-wide crypto policy is an approved one and weak algorithms are not allowed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.1.3",
-      "title": "OEM sensitive data not encrypted in transit (TLS 1.2+ required)",
+      "id": "tisax-5.1.2",
+      "title": "TLS 1.2 or later is the minimum and no clear-text network services are enabled",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.1.3"
+        "value": "5.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.1.3"
+        "value": "5.1.2"
        },
        {
         "name": "rego-package",
@@ -949,24 +949,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.1.3_stmt",
+        "id": "tisax-5.1.2_stmt",
         "name": "statement",
-        "prose": "OEM sensitive data not encrypted in transit (TLS 1.2+ required)"
+        "prose": "TLS 1.2 or later is the minimum and no clear-text network services are enabled"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.2.1",
-      "title": "Regular vulnerability scanning not performed on systems processing OEM data",
+      "id": "tisax-5.2.1",
+      "title": "Attest that changes to systems are requested, assessed, approved and recorded",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.2.1"
+        "value": "5.2.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.2.1"
+        "value": "5.2.1"
        },
        {
         "name": "rego-package",
@@ -982,24 +982,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.2.1_stmt",
+        "id": "tisax-5.2.1_stmt",
         "name": "statement",
-        "prose": "Regular vulnerability scanning not performed on systems processing OEM data"
+        "prose": "Attest that changes to systems are requested, assessed, approved and recorded"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.2.2",
-      "title": "Timely patching of systems processing OEM sensitive data not implemented",
+      "id": "tisax-5.2.2",
+      "title": "Attest that development and test run apart from production",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.2.2"
+        "value": "5.2.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.2.2"
+        "value": "5.2.2"
        },
        {
         "name": "rego-package",
@@ -1015,24 +1015,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.2.2_stmt",
+        "id": "tisax-5.2.2_stmt",
         "name": "statement",
-        "prose": "Timely patching of systems processing OEM sensitive data not implemented"
+        "prose": "Attest that development and test run apart from production"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.3.1",
-      "title": "Malware protection not deployed on all systems processing OEM data",
+      "id": "tisax-5.2.3",
+      "title": "An anti-malware agent runs with on-access scanning and signatures at most 7 days old",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.3.1"
+        "value": "5.2.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.3.1"
+        "value": "5.2.3"
        },
        {
         "name": "rego-package",
@@ -1048,24 +1048,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.3.1_stmt",
+        "id": "tisax-5.2.3_stmt",
         "name": "statement",
-        "prose": "Malware protection not deployed on all systems processing OEM data"
+        "prose": "An anti-malware agent runs with on-access scanning and signatures at most 7 days old"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.4.1",
-      "title": "Backup procedures for OEM data not established and regularly tested",
+      "id": "tisax-5.2.4",
+      "title": "The audit daemon runs, logs are forwarded to central collection and the clock is synchronised",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.4.1"
+        "value": "5.2.4"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.4.1"
+        "value": "5.2.4"
        },
        {
         "name": "rego-package",
@@ -1081,24 +1081,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.4.1_stmt",
+        "id": "tisax-5.2.4_stmt",
         "name": "statement",
-        "prose": "Backup procedures for OEM data not established and regularly tested"
+        "prose": "The audit daemon runs, logs are forwarded to central collection and the clock is synchronised"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.5.1",
-      "title": "Formal change management process not established for systems processing OEM data",
+      "id": "tisax-5.2.5",
+      "title": "A vulnerability scan ran within 30 days and no critical finding is past its fix date",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.5.1"
+        "value": "5.2.5"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.5.1"
+        "value": "5.2.5"
        },
        {
         "name": "rego-package",
@@ -1114,24 +1114,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.5.1_stmt",
+        "id": "tisax-5.2.5_stmt",
         "name": "statement",
-        "prose": "Formal change management process not established for systems processing OEM data"
+        "prose": "A vulnerability scan ran within 30 days and no critical finding is past its fix date"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-5.6.1",
-      "title": "Penetration testing not conducted to verify security of OEM data systems",
+      "id": "tisax-5.2.6",
+      "title": "A technical security test ran within 365 days and no high finding from it is past its fix date",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 5.6.1"
+        "value": "5.2.6"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 5.6.1"
+        "value": "5.2.6"
        },
        {
         "name": "rego-package",
@@ -1147,24 +1147,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-5.6.1_stmt",
+        "id": "tisax-5.2.6_stmt",
         "name": "statement",
-        "prose": "Penetration testing not conducted to verify security of OEM data systems"
+        "prose": "A technical security test ran within 365 days and no high finding from it is past its fix date"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.1.1",
-      "title": "Least privilege not enforced for access to OEM sensitive information",
+      "id": "tisax-5.2.7",
+      "title": "A host firewall is on and denies inbound traffic by default",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.1.1"
+        "value": "5.2.7"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.1.1"
+        "value": "5.2.7"
        },
        {
         "name": "rego-package",
@@ -1180,24 +1180,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.1.1_stmt",
+        "id": "tisax-5.2.7_stmt",
         "name": "statement",
-        "prose": "Least privilege not enforced for access to OEM sensitive information"
+        "prose": "A host firewall is on and denies inbound traffic by default"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.1.2",
-      "title": "Access to OEM sensitive data not restricted on need-to-know basis",
+      "id": "tisax-5.2.8",
+      "title": "Attest that continuity plans for critical IT services exist and are exercised",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.1.2"
+        "value": "5.2.8"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.1.2"
+        "value": "5.2.8"
        },
        {
         "name": "rego-package",
@@ -1213,24 +1213,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.1.2_stmt",
+        "id": "tisax-5.2.8_stmt",
         "name": "statement",
-        "prose": "Access to OEM sensitive data not restricted on need-to-know basis"
+        "prose": "Attest that continuity plans for critical IT services exist and are exercised"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.2.1",
-      "title": "Strong authentication not enforced for access to OEM sensitive systems",
+      "id": "tisax-5.2.9",
+      "title": "Backups are configured, the last good backup is at most 7 days old and a restore was tested within 365 days",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.2.1"
+        "value": "5.2.9"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.2.1"
+        "value": "5.2.9"
        },
        {
         "name": "rego-package",
@@ -1246,24 +1246,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.2.1_stmt",
+        "id": "tisax-5.2.9_stmt",
         "name": "statement",
-        "prose": "Strong authentication not enforced for access to OEM sensitive systems"
+        "prose": "Backups are configured, the last good backup is at most 7 days old and a restore was tested within 365 days"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.2.2",
-      "title": "Privileged access to OEM data systems not managed through formal process",
+      "id": "tisax-5.3.1",
+      "title": "Attest that security requirements are set and verified when IT services are built or changed",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.2.2"
+        "value": "5.3.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.2.2"
+        "value": "5.3.1"
        },
        {
         "name": "rego-package",
@@ -1279,24 +1279,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.2.2_stmt",
+        "id": "tisax-5.3.1_stmt",
         "name": "statement",
-        "prose": "Privileged access to OEM data systems not managed through formal process"
+        "prose": "Attest that security requirements are set and verified when IT services are built or changed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.3.1",
-      "title": "MFA not enforced for remote access to systems containing OEM data",
+      "id": "tisax-5.3.2",
+      "title": "Attest that security requirements for network services are written down and agreed with providers",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.3.1"
+        "value": "5.3.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.3.1"
+        "value": "5.3.2"
        },
        {
         "name": "rego-package",
@@ -1312,24 +1312,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.3.1_stmt",
+        "id": "tisax-5.3.2_stmt",
         "name": "statement",
-        "prose": "MFA not enforced for remote access to systems containing OEM data"
+        "prose": "Attest that security requirements for network services are written down and agreed with providers"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-6.4.1",
-      "title": "Periodic review of access rights to OEM sensitive data not conducted",
+      "id": "tisax-5.3.3",
+      "title": "Attest that leaving an external IT service returns the data and removes it from the provider",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 6.4.1"
+        "value": "5.3.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 6.4.1"
+        "value": "5.3.3"
        },
        {
         "name": "rego-package",
@@ -1345,24 +1345,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-6.4.1_stmt",
+        "id": "tisax-5.3.3_stmt",
         "name": "statement",
-        "prose": "Periodic review of access rights to OEM sensitive data not conducted"
+        "prose": "Attest that leaving an external IT service returns the data and removes it from the provider"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-7.1.1",
-      "title": "Security evaluation not performed for third parties accessing OEM sensitive information",
+      "id": "tisax-5.3.4",
+      "title": "Attest that information in multi-tenant external services is protected from other tenants",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 7.1.1"
+        "value": "5.3.4"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 7.1.1"
+        "value": "5.3.4"
        },
        {
         "name": "rego-package",
@@ -1378,24 +1378,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-7.1.1_stmt",
+        "id": "tisax-5.3.4_stmt",
         "name": "statement",
-        "prose": "Security evaluation not performed for third parties accessing OEM sensitive information"
+        "prose": "Attest that information in multi-tenant external services is protected from other tenants"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-7.1.2",
-      "title": "Security requirements not included in contracts with third parties handling OEM data",
+      "id": "tisax-6.1.1",
+      "title": "Attest that contractors and partners are held to security requirements matched to the information they handle",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 7.1.2"
+        "value": "6.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 7.1.2"
+        "value": "6.1.1"
        },
        {
         "name": "rego-package",
@@ -1411,24 +1411,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-7.1.2_stmt",
+        "id": "tisax-6.1.1_stmt",
         "name": "statement",
-        "prose": "Security requirements not included in contracts with third parties handling OEM data"
+        "prose": "Attest that contractors and partners are held to security requirements matched to the information they handle"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-7.1.3",
-      "title": "Subcontractors handling OEM data not required to meet TISAX or equivalent security standard",
+      "id": "tisax-6.1.2",
+      "title": "Attest that confidentiality is agreed in writing before sensitive information is exchanged",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 7.1.3"
+        "value": "6.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 7.1.3"
+        "value": "6.1.2"
        },
        {
         "name": "rego-package",
@@ -1444,24 +1444,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-7.1.3_stmt",
+        "id": "tisax-6.1.2_stmt",
         "name": "statement",
-        "prose": "Subcontractors handling OEM data not required to meet TISAX or equivalent security standard"
+        "prose": "Attest that confidentiality is agreed in writing before sensitive information is exchanged"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-7.2.1",
-      "title": "Security assessment not performed before storing OEM sensitive data in cloud environments",
+      "id": "tisax-6.1.3",
+      "title": "Attest that the security duties of each external IT service provider and of the organisation are defined",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 7.2.1"
+        "value": "6.1.3"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 7.2.1"
+        "value": "6.1.3"
        },
        {
         "name": "rego-package",
@@ -1477,24 +1477,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-7.2.1_stmt",
+        "id": "tisax-6.1.3_stmt",
         "name": "statement",
-        "prose": "Security assessment not performed before storing OEM sensitive data in cloud environments"
+        "prose": "Attest that the security duties of each external IT service provider and of the organisation are defined"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-8.1.1",
-      "title": "Information security incident management plan not documented",
+      "id": "tisax-7.1.1",
+      "title": "Attest that applicable laws and contract terms are tracked and met",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 8.1.1"
+        "value": "7.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 8.1.1"
+        "value": "7.1.1"
        },
        {
         "name": "rego-package",
@@ -1510,24 +1510,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-8.1.1_stmt",
+        "id": "tisax-7.1.1_stmt",
         "name": "statement",
-        "prose": "Information security incident management plan not documented"
+        "prose": "Attest that applicable laws and contract terms are tracked and met"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-8.1.2",
-      "title": "Process not established to notify OEM customers of security incidents affecting their data",
+      "id": "tisax-7.1.2",
+      "title": "Attest that privacy rules are respected when security measures process personal data",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 8.1.2"
+        "value": "7.1.2"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 8.1.2"
+        "value": "7.1.2"
        },
        {
         "name": "rego-package",
@@ -1543,24 +1543,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-8.1.2_stmt",
+        "id": "tisax-7.1.2_stmt",
         "name": "statement",
-        "prose": "Process not established to notify OEM customers of security incidents affecting their data"
+        "prose": "Attest that privacy rules are respected when security measures process personal data"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-8.1.3",
-      "title": "Incident management plan not periodically tested",
+      "id": "tisax-8.1.1",
+      "title": "Attest that prototype protection rules exist and named people are responsible for them",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 8.1.3"
+        "value": "8.1.1"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 8.1.3"
+        "value": "8.1.1"
        },
        {
         "name": "rego-package",
@@ -1576,24 +1576,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-8.1.3_stmt",
+        "id": "tisax-8.1.1_stmt",
         "name": "statement",
-        "prose": "Incident management plan not periodically tested"
+        "prose": "Attest that prototype protection rules exist and named people are responsible for them"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-9.1.1",
-      "title": "Legal, regulatory, and contractual information security requirements not identified",
+      "id": "tisax-8.1.10",
+      "title": "Attest that taking prototype images and storing or sharing them is governed",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 9.1.1"
+        "value": "8.1.10"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 9.1.1"
+        "value": "8.1.10"
        },
        {
         "name": "rego-package",
@@ -1609,24 +1609,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-9.1.1_stmt",
+        "id": "tisax-8.1.10_stmt",
         "name": "statement",
-        "prose": "Legal, regulatory, and contractual information security requirements not identified"
+        "prose": "Attest that taking prototype images and storing or sharing them is governed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-9.1.2",
-      "title": "OEM-specific information security contractual requirements not fully implemented",
+      "id": "tisax-8.1.11",
+      "title": "Attest that prototype security incidents are reported to the customer and handled as agreed",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 9.1.2"
+        "value": "8.1.11"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 9.1.2"
+        "value": "8.1.11"
        },
        {
         "name": "rego-package",
@@ -1642,24 +1642,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-9.1.2_stmt",
+        "id": "tisax-8.1.11_stmt",
         "name": "statement",
-        "prose": "OEM-specific information security contractual requirements not fully implemented"
+        "prose": "Attest that prototype security incidents are reported to the customer and handled as agreed"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-VDA-ISA-9.2.1",
-      "title": "Audit trail not maintained for access to and processing of OEM sensitive data",
+      "id": "tisax-8.1.12",
+      "title": "Attest that protected vehicles and parts are documented and traceable through every handling step",
       "props": [
        {
         "name": "label",
-        "value": "TISAX VDA ISA 9.2.1"
+        "value": "8.1.12"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX VDA ISA 9.2.1"
+        "value": "8.1.12"
        },
        {
         "name": "rego-package",
@@ -1675,24 +1675,24 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-VDA-ISA-9.2.1_stmt",
+        "id": "tisax-8.1.12_stmt",
         "name": "statement",
-        "prose": "Audit trail not maintained for access to and processing of OEM sensitive data"
+        "prose": "Attest that protected vehicles and parts are documented and traceable through every handling step"
        }
       ],
       "class": "compliance"
      },
      {
-      "id": "tisax-TISAX-PD-AL2",
-      "title": "Prototype handling procedures not documented — physical protection of pre-series vehicles not defined",
+      "id": "tisax-8.1.13",
+      "title": "Attest that protected items no longer needed are scrapped, recycled or returned as the customer requires",
       "props": [
        {
         "name": "label",
-        "value": "TISAX PD AL2"
+        "value": "8.1.13"
        },
        {
         "name": "alt-identifier",
-        "value": "TISAX PD AL2"
+        "value": "8.1.13"
        },
        {
         "name": "rego-package",
@@ -1708,19 +1708,900 @@
       ],
       "parts": [
        {
-        "id": "tisax-TISAX-PD-AL2_stmt",
+        "id": "tisax-8.1.13_stmt",
         "name": "statement",
-        "prose": "Prototype handling procedures not documented — physical protection of pre-series vehicles not defined"
+        "prose": "Attest that protected items no longer needed are scrapped, recycled or returned as the customer requires"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.2",
+      "title": "Attest that each customer order's prototype handling terms are captured and applied",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.2"
        },
        {
-        "id": "tisax-TISAX-PD-AL2_obj.1",
-        "name": "assessment-objective",
-        "prose": "Photography and recording controls not established for prototype/test vehicle environments"
+        "name": "alt-identifier",
+        "value": "8.1.2"
        },
        {
-        "id": "tisax-TISAX-PD-AL2_obj.2",
-        "name": "assessment-objective",
-        "prose": "Secure transport procedures not established for prototypes and test vehicles"
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.2_stmt",
+        "name": "statement",
+        "prose": "Attest that each customer order's prototype handling terms are captured and applied"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.3",
+      "title": "Attest that everyone on prototype work takes part in recorded prototype awareness training",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.3_stmt",
+        "name": "statement",
+        "prose": "Attest that everyone on prototype work takes part in recorded prototype awareness training"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.4",
+      "title": "Attest that people working in prototype areas are checked for suitability",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.4_stmt",
+        "name": "statement",
+        "prose": "Attest that people working in prototype areas are checked for suitability"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.5",
+      "title": "Attest that valid, enforceable confidentiality obligations cover prototype work",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.5_stmt",
+        "name": "statement",
+        "prose": "Attest that valid, enforceable confidentiality obligations cover prototype work"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.6",
+      "title": "Attest that customer conditions for using subcontractors are known and met",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.6_stmt",
+        "name": "statement",
+        "prose": "Attest that customer conditions for using subcontractors are known and met"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.7",
+      "title": "Attest that admission to prototype security areas follows a defined approval process",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.7_stmt",
+        "name": "statement",
+        "prose": "Attest that admission to prototype security areas follows a defined approval process"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.8",
+      "title": "Attest that visitors are registered and escorted in prototype areas",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.8"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.8"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.8_stmt",
+        "name": "statement",
+        "prose": "Attest that visitors are registered and escorted in prototype areas"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.1.9",
+      "title": "Attest that bringing and using camera-equipped devices in security areas is governed",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.1.9"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.1.9"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.1.9_stmt",
+        "name": "statement",
+        "prose": "Attest that bringing and using camera-equipped devices in security areas is governed"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.1",
+      "title": "Attest that a written physical security concept for prototype sites sets the minimum measures",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.1_stmt",
+        "name": "statement",
+        "prose": "Attest that a written physical security concept for prototype sites sets the minimum measures"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.2",
+      "title": "Attest that the site perimeter keeps unauthorised people away from protected property",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.2_stmt",
+        "name": "statement",
+        "prose": "Attest that the site perimeter keeps unauthorised people away from protected property"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.3",
+      "title": "Attest that the shell of security areas resists opening or removal of parts with ordinary tools",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.3_stmt",
+        "name": "statement",
+        "prose": "Attest that the shell of security areas resists opening or removal of parts with ordinary tools"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.4",
+      "title": "Attest that protected items cannot be seen from outside the security areas",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.4"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.4"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.4_stmt",
+        "name": "statement",
+        "prose": "Attest that protected items cannot be seen from outside the security areas"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.5",
+      "title": "Attest that entry to security areas is enforced by access control",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.5"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.5"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.5_stmt",
+        "name": "statement",
+        "prose": "Attest that entry to security areas is enforced by access control"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.6",
+      "title": "Attest that security areas are watched by intrusion detection with a defined response",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.6"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.6"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.6_stmt",
+        "name": "statement",
+        "prose": "Attest that security areas are watched by intrusion detection with a defined response"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-8.2.7",
+      "title": "Attest that different customers' prototypes on one site are kept apart",
+      "props": [
+       {
+        "name": "label",
+        "value": "8.2.7"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "8.2.7"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-8.2.7_stmt",
+        "name": "statement",
+        "prose": "Attest that different customers' prototypes on one site are kept apart"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.1.1",
+      "title": "Attest that data protection policies exist, are approved and are kept current",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.1.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.1.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.1.1_stmt",
+        "name": "statement",
+        "prose": "Attest that data protection policies exist, are approved and are kept current"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.2.1",
+      "title": "Attest that data protection roles, including a data protection officer where required, are assigned",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.2.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.2.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.2.1_stmt",
+        "name": "statement",
+        "prose": "Attest that data protection roles, including a data protection officer where required, are assigned"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.3.1",
+      "title": "Attest that processing activities are identified and kept in a current record",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.3.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.3.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.3.1_stmt",
+        "name": "statement",
+        "prose": "Attest that processing activities are identified and kept in a current record"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.4.1",
+      "title": "Attest that high-risk processing is assessed before it starts and the result is acted on",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.4.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.4.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.4.1_stmt",
+        "name": "statement",
+        "prose": "Attest that high-risk processing is assessed before it starts and the result is acted on"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.5.1",
+      "title": "Attest that transfers of personal data are known, lawful and controlled",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.5.1_stmt",
+        "name": "statement",
+        "prose": "Attest that transfers of personal data are known, lawful and controlled"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.5.2",
+      "title": "Attest that data protection terms flow down to subcontractors and partners and are checked",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.5.2_stmt",
+        "name": "statement",
+        "prose": "Attest that data protection terms flow down to subcontractors and partners and are checked"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.5.3",
+      "title": "Attest that transfers outside the home jurisdiction have a legal basis and safeguards",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.5.3"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.5.3"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.5.3_stmt",
+        "name": "statement",
+        "prose": "Attest that transfers outside the home jurisdiction have a legal basis and safeguards"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.6.1",
+      "title": "Attest that requests from data subjects are recognised, answered and recorded in time",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.6.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.6.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.6.1_stmt",
+        "name": "statement",
+        "prose": "Attest that requests from data subjects are recognised, answered and recorded in time"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.6.2",
+      "title": "Attest that personal data breaches are assessed, notified where required and recorded",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.6.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.6.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.6.2_stmt",
+        "name": "statement",
+        "prose": "Attest that personal data breaches are assessed, notified where required and recorded"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.7.1",
+      "title": "Attest that staff handling personal data are bound to confidentiality",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.7.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.7.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.7.1_stmt",
+        "name": "statement",
+        "prose": "Attest that staff handling personal data are bound to confidentiality"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.7.2",
+      "title": "Attest that staff handling personal data are trained in data protection",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.7.2"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.7.2"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.7.2_stmt",
+        "name": "statement",
+        "prose": "Attest that staff handling personal data are trained in data protection"
+       }
+      ],
+      "class": "compliance"
+     },
+     {
+      "id": "tisax-9.8.1",
+      "title": "Attest that processing done for a customer follows that customer's documented instructions",
+      "props": [
+       {
+        "name": "label",
+        "value": "9.8.1"
+       },
+       {
+        "name": "alt-identifier",
+        "value": "9.8.1"
+       },
+       {
+        "name": "rego-package",
+        "ns": "https://github.com/ynotbhatc/rego_policy_libraries/ns/oscal",
+        "value": "tisax.main"
+       }
+      ],
+      "links": [
+       {
+        "href": "#b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
+        "rel": "implementation"
+       }
+      ],
+      "parts": [
+       {
+        "id": "tisax-9.8.1_stmt",
+        "name": "statement",
+        "prose": "Attest that processing done for a customer follows that customer's documented instructions"
        }
       ],
       "class": "compliance"
@@ -1732,7 +2613,7 @@
    "resources": [
     {
      "uuid": "b8d2c7e4-649d-59c5-9a90-0af70574c4ad",
-     "title": "TISAX — Trusted Information Security Assessment Exchange",
+     "title": "TISAX — VDA ISA2027.1 (Information Security, Prototype Protection, Data Protection)",
      "props": [
       {
        "name": "rego-package",

@@ -71,7 +71,7 @@
 | `frameworks/regional/bsi_c5` | 18 | 192 | 168 (1) | 18/18 |
 | `benchmarks/cis/os` | 9 | 189 | — (0) | 9/9 |
 | `frameworks/management/iso27001` | 7 | 186 | 93 (1) | 6/7 |
-| `frameworks/management/technical_debt` | 1 | 173 | — (0) | 1/1 |
+| `frameworks/management/technical_debt` | 1 | 172 | — (0) | 1/1 |
 | `frameworks/management/cis_controls_v8` | 19 | 171 | 153 (1) | 19/19 |
 | `governance/eu_ai_act` | 6 | 169 | 5 (1) | 6/6 |
 | `frameworks/critical_infrastructure/tsa_pipeline` | 13 | 159 | — (0) | 13/13 |
@@ -131,7 +131,7 @@
 | `benchmarks/cis/oci` | 1 | 55 | 54 (1) | 1/1 |
 | `frameworks/regional/cert_in` | 1 | 54 | — (0) | 1/1 |
 | `frameworks/federal/eo_14028` | 1 | 53 | — (0) | 1/1 |
-| `frameworks/management/tisax` | 1 | 52 | 51 (1) | 1/1 |
+| `frameworks/management/tisax` | 1 | 77 | 77 (1) | 1/1 |
 | `frameworks/regional/meti_csm` | 1 | 52 | — (0) | 1/1 |
 | `frameworks/federal/fedramp_20x` | 1 | 50 | — (0) | 1/1 |
 | `enforcement/kubernetes` | 3 | 49 | — (0) | 2/3 |
